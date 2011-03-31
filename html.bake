@@ -1,0 +1,9 @@
+<?php
+$base = array(
+  'branch'=> '7.x-1.x',
+  'url'=> 'git@phase2.beanstalkapp.com:/bake-openpublish.git',
+  'type'=> 'git',
+  'name'=> 'openpublish.bake'
+);
+bake_merge_file($info, $config, $base);
+
