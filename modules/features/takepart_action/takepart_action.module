@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Action feature.
+ */
+
+include_once('takepart_action.features.inc');
