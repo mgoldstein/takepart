@@ -1,0 +1,8 @@
+core = "7.x"
+dependencies[] = "features"
+dependencies[] = "taxonomy"
+description = "Contains Features that are not easily matched to groups of other features"
+features[taxonomy][] = "free_tags"
+features[taxonomy][] = "topic"
+name = "TakePart Custom"
+package = "Features"
