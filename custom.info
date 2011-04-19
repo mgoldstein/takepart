@@ -64,3 +64,15 @@ libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEdi
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = http://colorpowered.com/colorbox/colorbox.zip
 
+dependencies[] = phase2_profile
+dependencies[] = openpublish_article
+dependencies[] = openpublish_author
+dependencies[] = openpublish_blog_post
+dependencies[] = openpublish_media
+dependencies[] = openpublish_section_fronts
+dependencies[] = openpublish_site_page
+
+
+dependencies[] = takepart_custom
+dependencies[] = takepart_action
+
