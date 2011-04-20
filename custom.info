@@ -76,4 +76,5 @@ dependencies[] = openpublish_site_page
 dependencies[] = takepart_custom
 dependencies[] = takepart_action
 dependencies[] = takepart_article
+dependencies[] = takepart_blog_post
 
