@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * takepart_blog_post.features.field.inc
+ * takepart_blog.features.field.inc
  */
 
 /**
  * Implementation of hook_field_default_fields().
  */
-function takepart_blog_post_field_default_fields() {
+function takepart_blog_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-openpublish_blog_post-field_blogpost_featured_action'

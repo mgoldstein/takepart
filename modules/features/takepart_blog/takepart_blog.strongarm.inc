@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * takepart_blog_post.strongarm.inc
+ * takepart_blog.strongarm.inc
  */
 
 /**
  * Implementation of hook_strongarm().
  */
-function takepart_blog_post_strongarm() {
+function takepart_blog_strongarm() {
   $export = array();
 
   $strongarm = new stdClass;
