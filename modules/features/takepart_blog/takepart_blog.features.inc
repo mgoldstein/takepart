@@ -13,3 +13,20 @@ function takepart_blog_ctools_plugin_api() {
     return array("version" => 1);
   }
 }
+
+/**
+ * Implementation of hook_node_info().
+ */
+function takepart_blog_node_info() {
+  $items = array(
+    'blog_front' => array(
+      'name' => t('Blog Front'),
+      'base' => 'node_content',
+      'description' => t('Landing Page for a Blog'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+  );
+  return $items;
+}
