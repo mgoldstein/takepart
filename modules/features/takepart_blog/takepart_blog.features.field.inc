@@ -77,9 +77,86 @@ function takepart_blog_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => -4,
+        'weight' => '-4',
       ),
       'widget_type' => 'text_textarea_with_summary',
+    ),
+  );
+
+  // Exported field: 'node-blog_front-field_blog_sectionfront'
+  $fields['node-blog_front-field_blog_sectionfront'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_blog_sectionfront',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'sectionfront',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'sectionfront',
+    ),
+    'field_instance' => array(
+      'bundle' => 'blog_front',
+      'default_value' => array(
+        0 => array(
+          'context' => '',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'sectionfront',
+          'settings' => array(),
+          'type' => 'sectionfront_context',
+          'weight' => 1,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_blog_sectionfront',
+      'label' => 'Section Front',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Features Box' => 0,
+          'Boxes for Field Box' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'boxes' => 'boxes',
+          'comment' => 0,
+          'context_ui' => 0,
+          'devel' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+        ),
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'sectionfront',
+        'settings' => array(
+          'widget_setting' => 'bob',
+        ),
+        'type' => 'sectionfront',
+        'weight' => '-3',
+      ),
     ),
   );
 
@@ -1155,6 +1232,7 @@ function takepart_blog_field_default_fields() {
   t('Related Actions');
   t('Related Campaign');
   t('Related Content');
+  t('Section Front');
   t('Series');
   t('Subhead');
   t('Suggest Related Actions?');
