@@ -83,6 +83,79 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-blog_front-field_blog_front_context'
+  $fields['node-blog_front-field_blog_front_context'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_blog_front_context',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'blog_front',
+      'default_value' => array(
+        0 => array(
+          'context' => '',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 1,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_blog_front_context',
+      'label' => 'Context',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'addthis' => 0,
+          'boxes' => 'boxes',
+          'comment' => 0,
+          'context_ui' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+        ),
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'context_field',
+        'settings' => array(
+          'widget_setting' => 'bob',
+        ),
+        'type' => 'context_field',
+        'weight' => '-3',
+      ),
+    ),
+  );
+
   // Exported field: 'node-openpublish_blog_post-field_blogpost_featured_action'
   $fields['node-openpublish_blog_post-field_blogpost_featured_action'] = array(
     'field_config' => array(
@@ -1161,6 +1234,7 @@ function takepart_blog_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Body');
   t('Branding Image');
+  t('Context');
   t('Featured action');
   t('Free Tag');
   t('Promo Headline');
@@ -1168,7 +1242,6 @@ function takepart_blog_field_default_fields() {
   t('Related Actions');
   t('Related Campaign');
   t('Related Content');
-  t('Section Front');
   t('Series');
   t('Subhead');
   t('Suggest Related Actions?');
