@@ -114,7 +114,15 @@ function takepart_article_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'action_type',
+            'vocabulary' => 'free_tags',
+          ),
+          1 => array(
+            'parent' => '0',
+            'vocabulary' => 'blog',
+          ),
+          2 => array(
+            'parent' => '0',
+            'vocabulary' => 'topic',
           ),
         ),
       ),
@@ -150,13 +158,13 @@ function takepart_article_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'taxonomy',
+        'module' => 'options',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
           'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
-        'type' => 'taxonomy_autocomplete',
+        'type' => 'options_select',
         'weight' => '7',
       ),
     ),

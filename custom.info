@@ -77,4 +77,5 @@ dependencies[] = takepart_custom
 dependencies[] = takepart_action
 dependencies[] = takepart_article
 dependencies[] = takepart_blog
+dependencies[] = takepart_author
 
