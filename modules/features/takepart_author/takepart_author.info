@@ -1,0 +1,7 @@
+core = "7.x"
+dependencies[] = "features"
+dependencies[] = "link"
+description = "Takepart Extention of Profile"
+features[field][] = "node-profile-field_author_links"
+name = "TakePart Author"
+package = "Features"
