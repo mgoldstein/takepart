@@ -156,6 +156,84 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-openpublish_blog_post-field_blogpost_display_tag'
+  $fields['node-openpublish_blog_post-field_blogpost_display_tag'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_blogpost_display_tag',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'blog',
+          ),
+          1 => array(
+            'parent' => '0',
+            'vocabulary' => 'free_tags',
+          ),
+          2 => array(
+            'parent' => '0',
+            'vocabulary' => 'topic',
+          ),
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_blog_post',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 18,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_blogpost_display_tag',
+      'label' => 'Display Tag',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '16',
+      ),
+    ),
+  );
+
   // Exported field: 'node-openpublish_blog_post-field_blogpost_featured_action'
   $fields['node-openpublish_blog_post-field_blogpost_featured_action'] = array(
     'field_config' => array(
@@ -812,7 +890,7 @@ function takepart_blog_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '19',
+        'weight' => '18',
       ),
     ),
   );
@@ -1016,7 +1094,7 @@ function takepart_blog_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '21',
+        'weight' => '19',
       ),
     ),
   );
@@ -1235,6 +1313,7 @@ function takepart_blog_field_default_fields() {
   t('Body');
   t('Branding Image');
   t('Context');
+  t('Display Tag');
   t('Featured action');
   t('Free Tag');
   t('Promo Headline');
