@@ -112,9 +112,9 @@ function takepart_blog_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'sectionfront',
+          'module' => NULL,
           'settings' => array(),
-          'type' => 'sectionfront_context',
+          'type' => NULL,
           'weight' => 1,
         ),
         'teaser' => array(
@@ -150,11 +150,11 @@ function takepart_blog_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'sectionfront',
+        'module' => NULL,
         'settings' => array(
           'widget_setting' => 'bob',
         ),
-        'type' => 'sectionfront',
+        'type' => NULL,
         'weight' => '-3',
       ),
     ),
@@ -1186,11 +1186,24 @@ function takepart_blog_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'media',
           'settings' => array(),
           'type' => 'media_large',
-          'weight' => '0',
+          'weight' => '2',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
+        'token' => array(
+          'label' => 'above',
+          'module' => 'media',
+          'settings' => array(),
+          'type' => 'media_large',
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'taxonomy_term',
