@@ -1,0 +1,4 @@
+name = Views Term Row View
+description = "Provides a views plugin that allows taxonomy term pages to be displayed
+files[] = views_plugin_row_term_view.inc
+
