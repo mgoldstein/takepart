@@ -49,7 +49,7 @@ function takepart_blog_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -115,7 +115,7 @@ function takepart_blog_field_default_fields() {
           'module' => 'context_field',
           'settings' => array(),
           'type' => 'context_field_context',
-          'weight' => 1,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -134,6 +134,7 @@ function takepart_blog_field_default_fields() {
           'boxes' => 'boxes',
           'comment' => 0,
           'context_ui' => 0,
+          'devel' => 0,
           'diff' => 0,
           'menu' => 0,
           'node' => 0,
@@ -142,6 +143,7 @@ function takepart_blog_field_default_fields() {
           'system' => 0,
           'user' => 0,
         ),
+        'default_context' => 'context_field_default_context',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
