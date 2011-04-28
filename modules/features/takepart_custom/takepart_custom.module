@@ -5,4 +5,3 @@
 
 // Drupal needs this blank file.
 //
-include_once(dirname(__file__) . "/takepart_custom.form.inc");
