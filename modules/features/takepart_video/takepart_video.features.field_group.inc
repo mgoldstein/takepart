@@ -20,8 +20,8 @@ function takepart_video_field_group_default_field_groups() {
     'label' => 'Series',
     'weight' => '7',
     'children' => array(
-      0 => 'field_series_videos_refs',
-      1 => 'field_series_videos_by_tag',
+      0 => 'field_series_videos_by_tag',
+      1 => 'field_series_videos_refs',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -40,7 +40,7 @@ function takepart_video_field_group_default_field_groups() {
     'mode' => 'form',
     'parent_name' => '',
     'label' => 'Series and Taxonomy',
-    'weight' => '12',
+    'weight' => '8',
     'children' => array(
       0 => 'group_series_videos',
       1 => 'group_vs_taxonomy',
@@ -64,8 +64,8 @@ function takepart_video_field_group_default_field_groups() {
     'label' => 'Taxonomy',
     'weight' => '8',
     'children' => array(
-      0 => 'field_vs_topic_term',
-      1 => 'field_vs_free_term',
+      0 => 'field_vs_free_term',
+      1 => 'field_vs_topic_term',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

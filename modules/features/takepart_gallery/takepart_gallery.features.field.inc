@@ -85,7 +85,7 @@ function takepart_gallery_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -147,7 +147,7 @@ function takepart_gallery_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -227,7 +227,7 @@ function takepart_gallery_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -289,155 +289,17 @@ function takepart_gallery_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '8',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-openpublish_photo_gallery-field_tp_gallery_promo_headline'
-  $fields['node-openpublish_photo_gallery-field_tp_gallery_promo_headline'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_tp_gallery_promo_headline',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'openpublish_photo_gallery',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'This is used instead of the Headline to represent the Gallery when it appears in any list on the site. If a Promo Headline is not provided, the Title will be displayed instead.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 4,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_tp_gallery_promo_headline',
-      'label' => 'Promo Headline',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '2',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-openpublish_photo_gallery-field_tp_gallery_promo_text'
-  $fields['node-openpublish_photo_gallery-field_tp_gallery_promo_text'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_tp_gallery_promo_text',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(),
-      'translatable' => '1',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'openpublish_photo_gallery',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'This is used in conjunction with the Promo Headline to tease the Gallery in lists that it appears in on the site. If Promo Text is not provided, nothing will be displayed in its place.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 5,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_tp_gallery_promo_text',
-      'label' => 'Promo Text',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '5',
-        ),
-        'type' => 'text_textarea',
-        'weight' => '3',
+        'weight' => '9',
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Promo Headline');
-  t('Promo Text');
   t('Related Actions');
   t('Related Content');
   t('Suggest Related Actions?');
   t('Suggest Related Content?');
-  t('This is used in conjunction with the Promo Headline to tease the Gallery in lists that it appears in on the site. If Promo Text is not provided, nothing will be displayed in its place.');
-  t('This is used instead of the Headline to represent the Gallery when it appears in any list on the site. If a Promo Headline is not provided, the Title will be displayed instead.');
   t('User can elect to toggle off the automatically generated list of Related Content (mixed bag) on a Gallery specific basis. This determination is made by common Topic tagging');
   t('Users can relate this node to one or more other Action nodes. These nodes are displayed in a block or inset on the Gallery page, atop an automatically-generated list of Related Actions.');
   t('Users can relate this node to one or more other nodes. These nodes are displayed in a block or inset on the Gallery page, atop an automatically-generated list of Related Content.');
