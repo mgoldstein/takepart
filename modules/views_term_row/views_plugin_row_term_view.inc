@@ -20,13 +20,14 @@ class views_plugin_term_view extends views_plugin_row {
   function init(&$view, &$display, $options = NULL) {
     parent::init($view, $display, $options);
     // Handle existing views with the deprecated 'teaser' option.
-    if (isset($this->options['teaser'])) {
-      $this->options['build_mode'] = $this->options['teaser'] ? 'teaser' : 'full';
-    }
+   // if (isset($this->options['teaser'])) {
+   //   $this->options['build_mode'] = $this->options['teaser'] ? 'teaser' : 'full';
+   // }
     // Handle existing views which has used build_mode instead of view_mode.
-    if (isset($this->options['build_mode'])) {
-      $this->options['view_mode'] = $this->options['build_mode'];
-    }
+   // if (isset($this->options['build_mode'])) {
+   //   $this->options['view_mode'] = $this->options['build_mode'];
+  //  }
+     //dpm($options);
   }
 
   function option_definition() {
