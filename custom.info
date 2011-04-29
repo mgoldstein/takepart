@@ -81,3 +81,4 @@ dependencies[] = takepart_author
 dependencies[] = takepart_video
 dependencies[] = takepart_image_media_asset
 dependencies[] = takepart_gallery
+dependencies[] = takepart_default_content
