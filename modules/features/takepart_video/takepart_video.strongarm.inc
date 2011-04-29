@@ -69,12 +69,5 @@ function takepart_video_strongarm() {
   );
   $export['node_options_video_series'] = $strongarm;
 
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_video_series_pattern';
-  $strongarm->value = 'video-series/[node:title]';
-  $export['pathauto_node_video_series_pattern'] = $strongarm;
-
   return $export;
 }
