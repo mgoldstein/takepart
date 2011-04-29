@@ -195,13 +195,17 @@ function takepart_article_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 'action',
+          'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
           'openpublish_site_page' => 0,
           'openpublish_video' => 0,
+          'profile' => 0,
           'section_front' => 0,
+          'takepart_quick_study' => 0,
+          'video_series' => 0,
         ),
       ),
       'translatable' => '1',
