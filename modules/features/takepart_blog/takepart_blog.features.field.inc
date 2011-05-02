@@ -228,9 +228,12 @@ function takepart_blog_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
         'weight' => '16',
       ),
     ),
@@ -261,6 +264,7 @@ function takepart_blog_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 'action',
+          'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
@@ -269,6 +273,8 @@ function takepart_blog_field_default_fields() {
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
+          'takepart_quick_study' => 0,
+          'video_series' => 0,
         ),
       ),
       'translatable' => '1',
@@ -296,7 +302,7 @@ function takepart_blog_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_blogpost_featured_action',
-      'label' => 'Featured action',
+      'label' => 'Featured Action',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -340,6 +346,7 @@ function takepart_blog_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 'action',
+          'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
@@ -348,6 +355,8 @@ function takepart_blog_field_default_fields() {
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
+          'takepart_quick_study' => 0,
+          'video_series' => 0,
         ),
       ),
       'translatable' => '1',
@@ -357,7 +366,7 @@ function takepart_blog_field_default_fields() {
       'bundle' => 'openpublish_blog_post',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'User can create and/or reference a series of Action nodes to be displayed in a list on the Blog Post page. These will be displayed atop an automatically-generated list of Related Actions',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -419,6 +428,7 @@ function takepart_blog_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
+          'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
@@ -427,6 +437,8 @@ function takepart_blog_field_default_fields() {
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
+          'takepart_quick_study' => 0,
+          'video_series' => 0,
         ),
       ),
       'translatable' => '1',
@@ -454,7 +466,7 @@ function takepart_blog_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_blogpost_related_campaign',
-      'label' => 'Related Campaign',
+      'label' => 'Related Campaigns',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -498,6 +510,7 @@ function takepart_blog_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
+          'blog_front' => 0,
           'openpublish_article' => 'openpublish_article',
           'openpublish_blog_post' => 'openpublish_blog_post',
           'openpublish_photo' => 'openpublish_photo',
@@ -506,6 +519,8 @@ function takepart_blog_field_default_fields() {
           'openpublish_video' => 'openpublish_video',
           'profile' => 0,
           'section_front' => 'section_front',
+          'takepart_quick_study' => 0,
+          'video_series' => 0,
         ),
       ),
       'translatable' => '1',
@@ -515,7 +530,7 @@ function takepart_blog_field_default_fields() {
       'bundle' => 'openpublish_blog_post',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'User can related this node to one or more nodes of various types. These are displayed in a block or inset on the Blog Post page, atop the automatically-generated list of Related Content.',
+      'description' => 'User can relate this node to one or more nodes of various types. These are displayed in a block or inset on the Blog Post page, atop the automatically-generated list of Related Content.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -789,7 +804,7 @@ function takepart_blog_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => 'User can related this node to one or more nodes of various types. These are displayed in a block or inset on the Blog Post page, atop the automatically-generated list of Related Content.',
+      'description' => 'User can relate this node to one or more nodes of various types. These are displayed in a block or inset on the Blog Post page, atop the automatically-generated list of Related Content.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -995,7 +1010,7 @@ function takepart_blog_field_default_fields() {
       'bundle' => 'openpublish_blog_post',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'http://takepart.integration.dev6.fayze2.com/?q=admin/structure/types/manage/action/display',
+      'description' => 'This is used to tease the Blog Post in certain placements on the site.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1316,12 +1331,12 @@ function takepart_blog_field_default_fields() {
   t('Branding Image');
   t('Context');
   t('Display Tag');
-  t('Featured action');
+  t('Featured Action');
   t('Free Tag');
   t('Promo Headline');
   t('Promo Text');
   t('Related Actions');
-  t('Related Campaign');
+  t('Related Campaigns');
   t('Related Content');
   t('Series');
   t('Subhead');
@@ -1329,14 +1344,15 @@ function takepart_blog_field_default_fields() {
   t('Suggest Related Campaigns?');
   t('Suggest Related Content?');
   t('This is used instead of the Headline to represent the Blog Post wherever it appears on the site');
+  t('This is used to tease the Blog Post in certain placements on the site.');
   t('Thumbnail Image');
   t('Topic');
   t('User can create and/or reference a Photo to be used as the thumbnail image for this blog post. The Thumbnail Image is displayed in certain lists that the Blog Post appears in around the site.');
+  t('User can create and/or reference a series of Action nodes to be displayed in a list on the Blog Post page. These will be displayed atop an automatically-generated list of Related Actions');
   t('User can create and/or reference an Action to be featured prominently in a fixed position on the Blog Post page.');
   t('User can elect to toggle off the automatically-generated list of Related Campaigns on a blog post-specific basis.');
   t('User can relate this Blog Post to one or more Campaign nodes to be displayed in a list on the Blog Post page. This will be displayed atop an automatically-generated list of Related Campaigns');
-  t('User can related this node to one or more nodes of various types. These are displayed in a block or inset on the Blog Post page, atop the automatically-generated list of Related Content.');
-  t('http://takepart.integration.dev6.fayze2.com/?q=admin/structure/types/manage/action/display');
+  t('User can relate this node to one or more nodes of various types. These are displayed in a block or inset on the Blog Post page, atop the automatically-generated list of Related Content.');
 
   return $fields;
 }
