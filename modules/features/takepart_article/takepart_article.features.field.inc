@@ -35,13 +35,17 @@ function takepart_article_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 'action',
+          'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
           'openpublish_site_page' => 0,
           'openpublish_video' => 0,
+          'profile' => 0,
           'section_front' => 0,
+          'takepart_quick_study' => 0,
+          'video_series' => 0,
         ),
       ),
       'translatable' => '1',
@@ -69,7 +73,7 @@ function takepart_article_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_article_action',
-      'label' => 'Featured action',
+      'label' => 'Featured Action',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -158,13 +162,13 @@ function takepart_article_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'options',
+        'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
           'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
-        'type' => 'options_select',
+        'type' => 'taxonomy_autocomplete',
         'weight' => '7',
       ),
     ),
@@ -362,7 +366,7 @@ function takepart_article_field_default_fields() {
       'bundle' => 'openpublish_article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Unable to allocate memory for pool. in theme_render_template() (line 1234 of /opt/development/esummerfield/www.takepart.com/drupal/includes/theme.inc).',
+      'description' => 'This is displayed beneath the Article\'s title on the node page',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -662,9 +666,12 @@ function takepart_article_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
         'weight' => '16',
       ),
     ),
@@ -947,7 +954,7 @@ function takepart_article_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Display Tag');
-  t('Featured action');
+  t('Featured Action');
   t('Free Tag');
   t('Promo Headline');
   t('Promo Text');
@@ -957,9 +964,9 @@ function takepart_article_field_default_fields() {
   t('Subhead');
   t('Suggest Related Campaigns?');
   t('Suggest Releated Content?');
+  t('This is displayed beneath the Article\'s title on the node page');
   t('Thumbnail Image');
   t('Topic');
-  t('Unable to allocate memory for pool. in theme_render_template() (line 1234 of /opt/development/esummerfield/www.takepart.com/drupal/includes/theme.inc).');
   t('User can create and/or reference an Action to be featured prominently in a fixed position on the Article page.');
   t('User can elect to toggle off the automatically-generated list of Related Content on an article-specific basis.');
   t('User can related this node to one or more nodes of various types. These are displayed in a block or inset on the Article page, atop the automatically-generated list of Related Content.');
