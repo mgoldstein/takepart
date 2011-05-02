@@ -83,72 +83,6 @@ function takepart_action_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-action-field_action_body'
-  $fields['node-action-field_action_body'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_action_body',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(),
-      'translatable' => '1',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'action',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'http://jira.phase2technology.com/browse/TPB-14',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 3,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_action_body',
-      'label' => 'Body',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '1',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '5',
-        ),
-        'type' => 'text_textarea',
-        'weight' => '4',
-      ),
-    ),
-  );
-
   // Exported field: 'node-action-field_action_main_image'
   $fields['node-action-field_action_main_image'] = array(
     'field_config' => array(
@@ -210,7 +144,7 @@ function takepart_action_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '5',
+        'weight' => '4',
       ),
     ),
   );
@@ -333,7 +267,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_action_promo_text',
-      'label' => 'Prom Text',
+      'label' => 'Promo Text',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -376,13 +310,17 @@ function takepart_action_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 'action',
+          'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
           'openpublish_site_page' => 0,
           'openpublish_video' => 0,
+          'profile' => 0,
           'section_front' => 0,
+          'takepart_quick_study' => 0,
+          'video_series' => 0,
         ),
       ),
       'translatable' => '1',
@@ -424,7 +362,7 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '10',
+        'weight' => '9',
       ),
     ),
   );
@@ -454,13 +392,17 @@ function takepart_action_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
+          'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
           'openpublish_site_page' => 0,
           'openpublish_video' => 0,
+          'profile' => 0,
           'section_front' => 0,
+          'takepart_quick_study' => 0,
+          'video_series' => 0,
         ),
       ),
       'translatable' => '1',
@@ -488,7 +430,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_action_related_campaigins',
-      'label' => 'Releated Campaigns',
+      'label' => 'Related Campaigns',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -502,7 +444,7 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '8',
+        'weight' => '7',
       ),
     ),
   );
@@ -580,7 +522,7 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '7',
+        'weight' => '6',
       ),
     ),
   );
@@ -648,73 +590,7 @@ function takepart_action_field_default_fields() {
           'display_label' => 0,
         ),
         'type' => 'options_onoff',
-        'weight' => '11',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-action-field_action_thumbnail_image'
-  $fields['node-action-field_action_thumbnail_image'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_action_thumbnail_image',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
-      'module' => 'media',
-      'settings' => array(),
-      'translatable' => '1',
-      'type' => 'media',
-    ),
-    'field_instance' => array(
-      'bundle' => 'action',
-      'deleted' => '0',
-      'description' => 'http://jira.phase2technology.com/browse/TPB-14',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'media',
-          'settings' => array(),
-          'type' => 'media_large',
-          'weight' => 5,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_action_thumbnail_image',
-      'label' => 'Thumbnail Image',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'media',
-        'settings' => array(
-          'allowed_schemes' => array(
-            'public' => 'public',
-          ),
-          'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            'image' => 'image',
-            'video' => 0,
-          ),
-          'progress_indicator' => 'throbber',
-        ),
-        'type' => 'media_generic',
-        'weight' => '6',
+        'weight' => '10',
       ),
     ),
   );
@@ -784,7 +660,7 @@ function takepart_action_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '12',
+        'weight' => '11',
       ),
     ),
   );
@@ -839,7 +715,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_action_url',
-      'label' => 'Take Part URL',
+      'label' => 'Take Action URL',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
@@ -861,7 +737,7 @@ function takepart_action_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '9',
+        'weight' => '8',
       ),
     ),
   );
@@ -934,7 +810,73 @@ function takepart_action_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '14',
+        'weight' => '13',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-action-field_thumbnail'
+  $fields['node-action-field_thumbnail'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_thumbnail',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'media',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'media',
+    ),
+    'field_instance' => array(
+      'bundle' => 'action',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'media',
+          'settings' => array(),
+          'type' => 'media_large',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_thumbnail',
+      'label' => 'Thumbnail Image',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'public' => 'public',
+          ),
+          'allowed_types' => array(
+            'audio' => 0,
+            'default' => 0,
+            'image' => 'image',
+            'video' => 0,
+          ),
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'media_generic',
+        'weight' => '5',
       ),
     ),
   );
@@ -1004,7 +946,7 @@ function takepart_action_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '13',
+        'weight' => '12',
       ),
     ),
   );
@@ -1017,12 +959,12 @@ function takepart_action_field_default_fields() {
   t('Free Tag');
   t('If a URL is provided in this field, the Take Action button that is displayed on the Action node page will be linked to this URL.');
   t('Main Image');
-  t('Prom Text');
   t('Promo Headline');
+  t('Promo Text');
   t('Related Actions');
-  t('Releated Campaigns');
+  t('Related Campaigns');
   t('Suggest Related Actions');
-  t('Take Part URL');
+  t('Take Action URL');
   t('This is used instead of the Title to represent the Action when it appears in various places around the site.');
   t('This is used to tease the Action in certain lists that it appears in on the site.');
   t('Thumbnail Image');
@@ -1030,7 +972,6 @@ function takepart_action_field_default_fields() {
   t('User can elect to toggle off the automatically-generated list of Related Actions.');
   t('User can reference a Photo to be used as the Main Image for the Action.');
   t('User can relate this Action to one or more other Action nodes directly. These Actions will be displayed atop an automatically-generated list of Related Actions.');
-  t('http://jira.phase2technology.com/browse/TPB-14');
 
   return $fields;
 }
