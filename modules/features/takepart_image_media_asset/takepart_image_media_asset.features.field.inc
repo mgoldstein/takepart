@@ -103,7 +103,7 @@ function takepart_image_media_asset_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -195,7 +195,7 @@ function takepart_image_media_asset_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -292,7 +292,99 @@ function takepart_image_media_asset_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '4',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'media-image-field_media_title'
+  $fields['media-image-field_media_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_media_title',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'image',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 5,
+        ),
+        'media_large' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_link' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_original' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_small' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'media',
+      'field_name' => 'field_media_title',
+      'label' => 'Title',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '0',
       ),
     ),
   );
@@ -384,124 +476,29 @@ function takepart_image_media_asset_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
 
-  // Exported field: 'media-image-file'
-  $fields['media-image-file'] = array(
+  // Exported field: 'media-image-field_topic'
+  $fields['media-image-field_topic'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'file',
+      'field_name' => 'field_topic',
       'foreign keys' => array(
-        'fid' => array(
+        'tid' => array(
           'columns' => array(
-            'fid' => 'fid',
+            'tid' => 'tid',
           ),
-          'table' => 'file_managed',
+          'table' => 'taxonomy_term_data',
         ),
       ),
       'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
-      'module' => 'file',
-      'settings' => array(
-        'display_default' => 0,
-        'display_field' => 0,
-        'uri_scheme' => 'public',
-      ),
-      'translatable' => '0',
-      'type' => 'file',
-    ),
-    'field_instance' => array(
-      'bundle' => 'image',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_default',
-          'weight' => 0,
-        ),
-        'media_large' => array(
-          'label' => 'above',
-          'module' => 'styles',
-          'settings' => array(),
-          'type' => 'styles_file_large',
-          'weight' => 0,
-        ),
-        'media_link' => array(
-          'label' => 'above',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_default',
-          'weight' => 0,
-        ),
-        'media_original' => array(
-          'label' => 'hidden',
-          'module' => 'styles',
-          'settings' => array(),
-          'type' => 'styles_file_original',
-          'weight' => -5,
-        ),
-        'media_preview' => array(
-          'label' => 'hidden',
-          'module' => 'styles',
-          'settings' => array(),
-          'type' => 'styles_file_square_thumbnail',
-          'weight' => -5,
-        ),
-        'media_small' => array(
-          'label' => 'above',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'media',
-      'field_name' => 'file',
-      'label' => 'File',
-      'locked' => TRUE,
-      'required' => TRUE,
-      'settings' => array(
-        'description_field' => 0,
-        'file_directory' => '',
-        'file_extensions' => 'txt',
-        'max_filesize' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'file',
-        'settings' => array(
-          'progress_indicator' => 'throbber',
-        ),
-        'type' => 'file_generic',
-        'weight' => '0',
-      ),
-      'widget_type' => 'file_file',
-    ),
-  );
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Agency');
-  t('Caption');
-  t('Credits');
-  t('File');
-  t('Rights');
-
-  return $fields;
-}
-(
+        'tid' => array(
           0 => 'tid',
         ),
       ),
