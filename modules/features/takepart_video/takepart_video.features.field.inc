@@ -47,6 +47,11 @@ function takepart_video_field_default_fields() {
           'takepart_quick_study' => 0,
           'video_series' => 0,
         ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
       ),
       'translatable' => '1',
       'type' => 'node_reference',
@@ -190,6 +195,11 @@ function takepart_video_field_default_fields() {
           'section_front' => 0,
           'video_series' => 0,
         ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
       ),
       'translatable' => '1',
       'type' => 'node_reference',
@@ -231,6 +241,79 @@ function takepart_video_field_default_fields() {
         ),
         'type' => 'node_reference_autocomplete',
         'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_video-field_free_tag'
+  $fields['node-openpublish_video-field_free_tag'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_free_tag',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'free_tags',
+          ),
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 20,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_free_tag',
+      'label' => 'Free Tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '21',
       ),
     ),
   );
@@ -707,6 +790,76 @@ function takepart_video_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-openpublish_video-field_topic'
+  $fields['node-openpublish_video-field_topic'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_topic',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'topic',
+          ),
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 21,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_topic',
+      'label' => 'Topic Tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '23',
+      ),
+    ),
+  );
+
   // Exported field: 'node-openpublish_video-field_video_related'
   $fields['node-openpublish_video-field_video_related'] = array(
     'field_config' => array(
@@ -741,6 +894,11 @@ function takepart_video_field_default_fields() {
           'profile' => 0,
           'section_front' => 0,
           'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
@@ -891,6 +1049,11 @@ function takepart_video_field_default_fields() {
           'profile' => 'profile',
           'section_front' => 0,
           'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
@@ -1246,6 +1409,11 @@ function takepart_video_field_default_fields() {
           'section_front' => 0,
           'video_series' => 0,
         ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
       ),
       'translatable' => '1',
       'type' => 'node_reference',
@@ -1569,6 +1737,7 @@ function takepart_video_field_default_fields() {
   t('Author(s)');
   t('Authors');
   t('Body');
+  t('Free Tags');
   t('Main Image');
   t('Promo Headline');
   t('Promo Text');
@@ -1584,6 +1753,7 @@ function takepart_video_field_default_fields() {
   t('Tags');
   t('Thumbnail');
   t('Topic');
+  t('Topic Tags');
   t('User can create and/or reference one or more Authors nodes to associate with this Video Series.');
   t('User can specify an ordered list of Video nodes that will comprise this series.');
 
