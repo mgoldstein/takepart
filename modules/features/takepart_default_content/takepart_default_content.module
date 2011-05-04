@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Takepart Default Content feature.
+ */
+
+include_once('takepart_default_content.features.inc');
