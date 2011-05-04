@@ -6,4 +6,14 @@ $base = array(
   'name'=> 'openpublish.bake'
 );
 bake_merge_file($info, $config, $base);
+//adding views_php we are using this for the topic front featured item pages
 
+$info['projects']['views_php'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'download' => array(
+    'type' => 'git',
+    'branch' => '7.x-1.x',
+    'url' => "http://git.drupal.org/project/views_php.git"
+  ),
+);
