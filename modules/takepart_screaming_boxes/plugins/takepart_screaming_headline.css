@@ -1,0 +1,34 @@
+div.block-boxes-headline input.form-text {
+  width:250px;
+}
+.block-boxes-headline {
+  border-width: 0px;
+  border-style: none;
+}
+.block-boxes-headline h2#screaming-headline {
+  display: block;
+}
+
+.block-boxes-headline h2#screaming-headline {
+ /*  border-bottom: 1px solid #D7D7D7; */
+  color: #000;
+  font-size: 49px;
+  font-family: Impact;
+  position: relative;
+/*   top: 38px; */
+  text-align: center;
+}
+.block-boxes-headline h2#screaming-headline a {
+  font-size: 49px;
+  font-family: Impact;
+  color: #000;
+}
+.block-boxes-headline h2#screaming-headline a:hover {
+  text-decoration: underline;
+}
+
+.block-boxes-headline h2#screaming-headline.preview {
+  border-top: 1px solid #D7D7D7;
+  margin-bottom: 20px;
+  position: static;
+}
