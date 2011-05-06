@@ -69,5 +69,12 @@ function takepart_topic_front_strongarm() {
   );
   $export['node_options_topic_front'] = $strongarm;
 
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'taxonomy_view_topic';
+  $strongarm->value = 'TRUE';
+  $export['taxonomy_view_topic'] = $strongarm;
+
   return $export;
 }
