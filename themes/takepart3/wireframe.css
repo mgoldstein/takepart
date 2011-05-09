@@ -1,0 +1,15 @@
+.wireframe {
+  padding:2px;
+  outline: 1px dashed #F60;
+}
+.wireframe div{
+  padding:2px;
+  margin:1px;
+  outline: 1px solid #F60;
+}
+.wireframe p, 
+.wireframe h1, 
+.wireframe h2, 
+.wireframe ul {
+  outline: 1px dotted #F60;
+}

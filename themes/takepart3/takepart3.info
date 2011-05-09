@@ -1,0 +1,9 @@
+name = TakePart 3.0 Theme
+description = The TakePart theme
+core = 7.x
+engine = phptemplate
+base theme = "tao"
+
+stylesheets[all][] = wireframe.css
+stylesheets[all][] = css/core.css
+stylesheets[all][] = profile.css
