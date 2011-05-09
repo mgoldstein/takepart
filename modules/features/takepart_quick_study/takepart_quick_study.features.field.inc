@@ -329,6 +329,11 @@ function takepart_quick_study_field_default_fields() {
           'takepart_quick_study' => 'takepart_quick_study',
           'video_series' => 0,
         ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
       ),
       'translatable' => '1',
       'type' => 'node_reference',
