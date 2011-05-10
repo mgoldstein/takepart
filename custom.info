@@ -86,4 +86,5 @@ dependencies[] = takepart_default_content
 dependencies[] = takepart_topic_front
 dependencies[] = takepart_quick_study
 dependencies[] = takepart_page
+dependencies[] = takepart_search
 
