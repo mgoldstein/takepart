@@ -232,7 +232,6 @@ print $value;
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'search block';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -265,7 +264,11 @@ print $value;
   $handler->display->display_options['arguments']['field_topic']['id'] = 'field_topic';
   $handler->display->display_options['arguments']['field_topic']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['arguments']['field_topic']['field'] = 'field_topic';
-  $handler->display->display_options['arguments']['field_topic']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_topic']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_topic']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['field_topic']['default_argument_options']['term_page'] = 1;
+  $handler->display->display_options['arguments']['field_topic']['default_argument_options']['node'] = 0;
+  $handler->display->display_options['arguments']['field_topic']['default_argument_options']['limit'] = 0;
   $handler->display->display_options['arguments']['field_topic']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['field_topic']['summary']['format'] = 'default_summary';
 
@@ -273,7 +276,6 @@ print $value;
   $handler = $view->new_display('block', 'Taxonomy Search List by Type', 'block');
   $translatables['taxonomy_search_list'] = array(
     t('Master'),
-    t('search block'),
     t('more'),
     t('Apply'),
     t('Reset'),
