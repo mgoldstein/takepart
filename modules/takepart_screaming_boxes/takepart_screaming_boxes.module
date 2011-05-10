@@ -1,4 +1,13 @@
 <?php
+// $Id$
+/**
+ * Takepart Screaming Headling Boxes Module
+ * @file
+ *    Creates a user interface for managing a screaming headline
+ * @author alphageekboy
+ * @date 05/10/2011
+ * @company Phase2 Technology
+ */
 
 /**
  * Implements hook_ctools_plugin_api().
@@ -26,8 +35,32 @@ function takepart_screaming_boxes_boxes_plugins() {
   );
   return $info;
 }
-
+/**
+ * Implements hook_boxes_preview_callback().
+ */
 function takepart_screaming_boxes_preview_callback($form, $form_state) {
   return $form['options']['tp_screaming_headline_preview'];
 }
+/**
+ * Implements hook_access_admin().
+ * Access check for whether current user should be able to administer screaming headline.
+ */
+function taakepart_screaming_boxes_access_admin() {
+  return user_access('administer screaming headline') || (module_exists('spaces') && spaces_access_admin());
+}
 
+/**
+ * Implements hook_permission().
+ */
+function takepart_screaming_boxes_permission() {
+  return array(
+    'edit screaming headline' => array(
+      'title' => t('Edit screaming headline'),
+      'description' => t('Allows users with this permission to edit the screaming headline on a given page.'),
+    ),
+    'administer screaming headline' => array(
+      'title' => t('Administer screaming headline'),
+      'description' => t('Allows users with this permission to fully administer the screaming headline functionality.'),
+    ),
+  );
+}

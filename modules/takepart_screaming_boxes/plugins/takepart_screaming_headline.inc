@@ -1,7 +1,13 @@
-
 <?php
-   $path = drupal_get_path("module", 'takepart_screaming_boxes');
-    drupal_add_css($path . '/plugins/takepart_screaming_headline.css');
+// $Id$
+/* @file
+ *  Extends boxes_box to provide additional fields for screaming headline
+ * @author alphageekboy
+ * @date 05/10/2011
+ * @company Phase2 Technology
+ */
+  $path = drupal_get_path("module", 'takepart_screaming_boxes');
+  drupal_add_css($path . '/plugins/takepart_screaming_headline.css');
 /**
  * Custom Features box.
  */
@@ -13,51 +19,42 @@ class boxes_headline extends boxes_box {
   function use_multistep_create() {
     return TRUE;
   }
-  
-  
 /*
  * Display Screaming Headline - Checkbox
  * Capitalization Style
-  */
+ */
 
-  /**
-   * Implementation of boxes_content::options_defaults().
-   */
+/**
+ * Implementation of boxes_content::options_defaults().
+ */
   public function options_defaults() {
-    
-    $tab['tp_screaming_headline_text'] = '';
-    $tab['tp_screaming_headline_link'] = '';
-    $tab['tp_screaming_headline_enable'] = '';
-    $tab['tp_screaming_headline_caps_style'] = '';
-    $tab['tp_screaming_headline_preview'] = '';
+    $default['tp_screaming_headline_text']        = '';
+    $default['tp_screaming_headline_link']        = '';
+    $default['tp_screaming_headline_enable']      = '';
+    $default['tp_screaming_headline_caps_style']  = '';
+    $default['tp_screaming_headline_preview']     = '';
+    return $default;
+  }
 
-    return $tab;
-  }  
-  
-  
   public function options_submit($form, &$form_state) {
   }
-  
-  
-  /**
-   * Implementation of boxes_content::options_form().
-   */
+/**
+ * Implementation of boxes_content::options_form().
+ */
   public function options_form(&$form_state) {
-  
-  $form = array();
-  foreach($form_state['values'] AS $key => $value) {
-    $this->options[$key] = $value;
-  }
-  $box = $this->render();
-  $markup = $box['content'];
-  $form['tp_screaming_headline_preview'] = array(
-    '#markup' => $markup,
-    '#prefix' => '<div id="screaming-markup-wrapper">',
-    '#suffix' => '</div>',
-    );
-    
+    $form = array();
+    foreach ($form_state['values'] AS $key => $value) {
+      $this->options[$key] = $value;
+    }
+    $box    = $this->render();
+    $markup = $box['content'];
+    $form['tp_screaming_headline_preview'] = array(
+      '#markup' => $markup,
+      '#prefix' => '<div id="screaming-markup-wrapper">',
+      '#suffix' => '</div>',
+      );
     $form['tp_screaming_headline_enable'] = array(
-      '#title' => t('Display Screaming Headline'),
+      '#title' => t('Display / Preview Screaming Headline'),
       '#description' => t('If selected then the screaming headline will be displayed.'),
       '#type' => 'checkbox',
       '#default_value' => $this->options['tp_screaming_headline_enable'],
@@ -84,12 +81,12 @@ class boxes_headline extends boxes_box {
     );
     $form['tp_screaming_headline_link'] = array(
       '#title' => t('Screaming headline URL'),
-      '#description' => t('Optional link to an on-site or off-site page. If off-site, please enter a full url (http://www.example.com), otherwise use a Drupal internal link (without the initial slash).'),
+      '#description' => t('Optional link to an on-site or off-site page. If off-site, enter a full URL (http://www.example.com), otherwise use a site internal link (without the initial slash).'),
       '#type' => 'textfield',
       '#default_value' => $this->options['tp_screaming_headline_link'],
       '#maxlength' => 255,
       '#size' => 80,
-      
+
     );
     $form['tp_screaming_headline_caps_style'] = array(
       '#title' => t('Capitalization Style'),
@@ -104,44 +101,44 @@ class boxes_headline extends boxes_box {
         'effect' => 'fade',
       ),
     );
-   return $form;    
+  return $form;
 }
-
-  /**
-   * Implementation of boxes_content::options_form().
-   */
+/**
+ * Implementation of boxes_content::options_form().
+ */
   public function render() {
     $content = '';
-   switch ($this->options['tp_screaming_headline_caps_style']) { 
-    case 1: // All Caps
-        $text = strtoupper($this->options['tp_screaming_headline_text']);
-        break;
-    case 2: // Sentence Cased
-        $text = ucfirst(strtolower($this->options['tp_screaming_headline_text']));
-        break;
-    case 0: // display as entered
-    default:
-        $text = $this->options['tp_screaming_headline_text'];
-        break;
-  }    
-  if ($this->options['tp_screaming_headline_link']) {
-    $options = array();
-    if (url_is_external($this->options['tp_screaming_headline_link'])) {    // External link
-      $options = array('attributes' => array('target' => '_blank'));
+    switch ($this->options['tp_screaming_headline_caps_style']) {
+      case 1: // All Caps
+          $text = drupal_strtoupper($this->options['tp_screaming_headline_text']);
+          break;
+      case 2: // Sentence Cased
+          $text = drupal_ucfirst(drupal_strtolower($this->options['tp_screaming_headline_text']));
+          break;
+      case 0: // display as entered
+      default:
+          $text = $this->options['tp_screaming_headline_text'];
+          break;
     }
-    $text = l($text, $this->options['tp_screaming_headline_link'], $options);
-  }
+    if ($this->options['tp_screaming_headline_link']) {
+      $options = array();
+      if (url_is_external($this->options['tp_screaming_headline_link'])) {    // External link
+        $options = array('attributes' => array('target' => '_blank'));
+      }
+      $text = l($text, $this->options['tp_screaming_headline_link'], $options);
+    }
 
     if (($text) && $this->options['tp_screaming_headline_enable'] == 1) {
         $content .= '<h2 id="screaming-headline">' . $text . '</h2>';
-    } else {
-        $content = 'Screaming Headline';
     }
-    
+    else {
+        $content = '';
+    }
+    $title = isset($this->title) ? check_plain($this->title) : NULL;
     $box = array(
       'delta' => $this->delta, // Crucial.
-      'title' => '',
-      'subject' => '',
+      'title' => $title,
+      'subject' => $title,
       'content' => render($content),
     );
     return $box;
