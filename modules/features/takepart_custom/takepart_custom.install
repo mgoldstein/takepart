@@ -1,0 +1,7 @@
+<?php
+
+function takepart_custom_install() {
+  // set the admin theme to rubik and allow it for node edits
+  variable_set("admin_theme", "rubik");
+  variable_set("node_admin_theme", '1');
+}
