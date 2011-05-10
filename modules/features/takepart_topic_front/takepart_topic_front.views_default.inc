@@ -224,7 +224,7 @@ print $value;
   $view->name = 'taxonomy_search_list';
   $view->description = '';
   $view->tag = 'default';
-  $view->base_table = 'search_api_index_default_node_index';
+  $view->base_table = 'search_api_index_standard_node_index';
   $view->human_name = 'Taxonomy Search List';
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
@@ -244,7 +244,7 @@ print $value;
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_default_node_index';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
@@ -276,7 +276,7 @@ print $value;
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('Broken handler search_api_index_default_node_index.title'),
+    t('Broken handler search_api_index_standard_node_index.title'),
     t('Taxonomy Search List by Type'),
   );
   $export['taxonomy_search_list'] = $view;
