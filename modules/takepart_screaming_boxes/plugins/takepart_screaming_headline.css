@@ -27,8 +27,17 @@ div.block-boxes-headline input.form-text {
   text-decoration: underline;
 }
 
-.block-boxes-headline h2#screaming-headline.preview {
-  border-top: 1px solid #D7D7D7;
-  margin-bottom: 20px;
-  position: static;
+#screaming-markup-wrapper h2#screaming-headline {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #DDDDDD;
+  width: auto;
+  padding: 10px 9px 9px;
+ 
+}
+.block-boxes-headline h2#screaming-headline {
+  display: block;
+  position: relative;
+  text-align: center;
+  
 }
