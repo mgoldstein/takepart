@@ -76,5 +76,12 @@ function takepart_blog_strongarm() {
   $strongarm->value = '[node:field-blogpost-term-blog:term:url:relative]/[node:created:custom:Y]/[node:created:custom:m]/[node:created:custom:d]/[node:title]';
   $export['pathauto_node_openpublish_blog_post_pattern'] = $strongarm;
 
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'taxonomy_view_blog';
+  $strongarm->value = 'TRUE';
+  $export['taxonomy_view_blog'] = $strongarm;
+
   return $export;
 }
