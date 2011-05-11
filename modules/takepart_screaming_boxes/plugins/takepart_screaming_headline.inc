@@ -137,8 +137,8 @@ class boxes_headline extends boxes_box {
     $title = isset($this->title) ? check_plain($this->title) : NULL;
     $box = array(
       'delta' => $this->delta, // Crucial.
-      'title' => $title,
-      'subject' => $title,
+      'title' => NULL,
+      'subject' => NULL,
       'content' => render($content),
     );
     return $box;

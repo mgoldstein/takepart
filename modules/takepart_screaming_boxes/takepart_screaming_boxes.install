@@ -13,7 +13,7 @@
  * Implementation of hook_install().
  */
 function takepart_screaming_boxes_install() {
-  drupal_set_message(st('The TakePart screaming boxes module has been installed');
+  drupal_set_message(st('The TakePart screaming boxes module has been installed.'));
 }
 
 /**
