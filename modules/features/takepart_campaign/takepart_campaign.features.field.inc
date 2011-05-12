@@ -1,0 +1,1932 @@
+<?php
+/**
+ * @file
+ * takepart_campaign.features.field.inc
+ */
+
+/**
+ * Implementation of hook_field_default_fields().
+ */
+function takepart_campaign_field_default_fields() {
+  $fields = array();
+
+  // Exported field: 'node-takepart_campaign-body'
+  $fields['node-takepart_campaign-body'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'field_name' => 'body',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_with_summary',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'trim_length' => 600,
+          ),
+          'type' => 'text_summary_or_trimmed',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'body',
+      'label' => 'Body',
+      'required' => FALSE,
+      'settings' => array(
+        'display_summary' => TRUE,
+        'text_processing' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 20,
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => '1',
+      ),
+      'widget_type' => 'text_textarea_with_summary',
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_action_related'
+  $fields['node-takepart_campaign-field_action_related'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_action_related',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'action' => 'action',
+          'audio' => 0,
+          'blog_front' => 0,
+          'openpublish_article' => 0,
+          'openpublish_blog_post' => 0,
+          'openpublish_photo' => 0,
+          'openpublish_photo_gallery' => 0,
+          'openpublish_site_page' => 0,
+          'openpublish_video' => 0,
+          'profile' => 0,
+          'section_front' => 0,
+          'takepart_campaign' => 0,
+          'takepart_page' => 0,
+          'takepart_quick_study' => 0,
+          'topic_front' => 0,
+          'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 13,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_action_related',
+      'label' => 'Related Actions',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campagin_cover_intro'
+  $fields['node-takepart_campaign-field_tp_campagin_cover_intro'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campagin_cover_intro',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 6,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campagin_cover_intro',
+      'label' => 'Intro',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '9',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campagin_sl_nodes'
+  $fields['node-takepart_campaign-field_tp_campagin_sl_nodes'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campagin_sl_nodes',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'action' => 0,
+          'audio' => 0,
+          'blog_front' => 0,
+          'openpublish_article' => 'openpublish_article',
+          'openpublish_blog_post' => 'openpublish_blog_post',
+          'openpublish_photo' => 0,
+          'openpublish_photo_gallery' => 0,
+          'openpublish_site_page' => 0,
+          'openpublish_video' => 0,
+          'profile' => 0,
+          'section_front' => 0,
+          'takepart_campaign' => 0,
+          'takepart_page' => 0,
+          'takepart_quick_study' => 0,
+          'topic_front' => 0,
+          'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Users can choose a set of nodes to be displayed in the Spotlight block (Promo headline/text displayed for each).',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 10,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campagin_sl_nodes',
+      'label' => 'Spotlight Nodes',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '12',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campagin_sponsers'
+  $fields['node-takepart_campaign-field_tp_campagin_sponsers'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campagin_sponsers',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'action' => 0,
+          'audio' => 0,
+          'blog_front' => 0,
+          'openpublish_article' => 0,
+          'openpublish_blog_post' => 0,
+          'openpublish_photo' => 0,
+          'openpublish_photo_gallery' => 0,
+          'openpublish_site_page' => 0,
+          'openpublish_video' => 0,
+          'profile' => 0,
+          'section_front' => 0,
+          'takepart_campaign' => 0,
+          'takepart_page' => 0,
+          'takepart_quick_study' => 0,
+          'topic_front' => 0,
+          'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'User can reference one or more Group nodes that sponsor this Campaign. The Groups will be featured prominently on the Campaign page in order to indicate their affiliation.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 7,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campagin_sponsers',
+      'label' => 'Campaign Sponsors',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '6',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_4_things_link'
+  $fields['node-takepart_campaign-field_tp_campaign_4_things_link'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '5',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_4_things_link',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '1',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Users can create a set of 5 links with custom labels and URLs to be overlaid on top of a full-width image atop the Campaign page.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'default',
+          'weight' => 4,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_4_things_link',
+      'label' => '5 things Links',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_5_things_head'
+  $fields['node-takepart_campaign-field_tp_campaign_5_things_head'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_5_things_head',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 3,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_5_things_head',
+      'label' => '5 things Header',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '10',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_allances'
+  $fields['node-takepart_campaign-field_tp_campaign_allances'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_allances',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '1',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'User can provide titles/URLs for links to 3rd party sites',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'default',
+          'weight' => 8,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_allances',
+      'label' => 'Alliances',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_cover_image'
+  $fields['node-takepart_campaign-field_tp_campaign_cover_image'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_cover_image',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'media',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'media',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'media',
+          'settings' => array(),
+          'type' => 'media_large',
+          'weight' => 5,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_cover_image',
+      'label' => 'Image',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'public' => 'public',
+          ),
+          'allowed_types' => array(
+            'audio' => 0,
+            'default' => 0,
+            'image' => 'image',
+            'video' => 0,
+          ),
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'media_generic',
+        'weight' => '8',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_intro_html'
+  $fields['node-takepart_campaign-field_tp_campaign_intro_html'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_intro_html',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 1,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_intro_html',
+      'label' => 'Intro HTML',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_intro_media'
+  $fields['node-takepart_campaign-field_tp_campaign_intro_media'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_intro_media',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'media',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'media',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'media',
+          'settings' => array(),
+          'type' => 'media_large',
+          'weight' => 2,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_intro_media',
+      'label' => 'Intro Media',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'public' => 'public',
+          ),
+          'allowed_types' => array(
+            'audio' => 0,
+            'default' => 0,
+            'image' => 'image',
+            'video' => 'video',
+          ),
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'media_generic',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_1_html'
+  $fields['node-takepart_campaign-field_tp_campaign_seg_1_html'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_seg_1_html',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => array(
+        0 => array(
+          'value' => 'User enters some custom HTML to be displayed atop the list of nodes for this segment.',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_seg_1_html',
+      'label' => 'Segment 1 HTML',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '18',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_1_label'
+  $fields['node-takepart_campaign-field_tp_campaign_seg_1_label'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_seg_1_label',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'User provides a name for this segment (equivalent to the label on the old tabs).',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 12,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_seg_1_label',
+      'label' => 'Segment 1 Label',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '17',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_1_rel'
+  $fields['node-takepart_campaign-field_tp_campaign_seg_1_rel'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_seg_1_rel',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'action' => 'action',
+          'audio' => 0,
+          'blog_front' => 0,
+          'openpublish_article' => 0,
+          'openpublish_blog_post' => 'openpublish_blog_post',
+          'openpublish_photo' => 0,
+          'openpublish_photo_gallery' => 0,
+          'openpublish_site_page' => 0,
+          'openpublish_video' => 0,
+          'profile' => 0,
+          'section_front' => 0,
+          'takepart_campaign' => 0,
+          'takepart_page' => 0,
+          'takepart_quick_study' => 0,
+          'topic_front' => 0,
+          'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'User references one or more nodes to be listed within this segment, represented by promo headline/text.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 14,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_seg_1_rel',
+      'label' => 'Segment 1 Related Content',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '19',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_2_html'
+  $fields['node-takepart_campaign-field_tp_campaign_seg_2_html'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_seg_2_html',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => array(
+        0 => array(
+          'value' => 'User enters some custom HTML to be displayed atop the list of nodes for this segment.',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_seg_2_html',
+      'label' => 'Segment 2 HTML',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '18',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_2_label'
+  $fields['node-takepart_campaign-field_tp_campaign_seg_2_label'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_seg_2_label',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'User provides a name for this segment (equivalent to the label on the old tabs).',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 12,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_seg_2_label',
+      'label' => 'Segment 2 Label',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '17',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_2_rel'
+  $fields['node-takepart_campaign-field_tp_campaign_seg_2_rel'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_seg_2_rel',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'action' => 'action',
+          'audio' => 0,
+          'blog_front' => 0,
+          'openpublish_article' => 0,
+          'openpublish_blog_post' => 'openpublish_blog_post',
+          'openpublish_photo' => 0,
+          'openpublish_photo_gallery' => 0,
+          'openpublish_site_page' => 0,
+          'openpublish_video' => 0,
+          'profile' => 0,
+          'section_front' => 0,
+          'takepart_campaign' => 0,
+          'takepart_page' => 0,
+          'takepart_quick_study' => 0,
+          'topic_front' => 0,
+          'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'User references one or more nodes to be listed within this segment, represented by promo headline/text.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 14,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_seg_2_rel',
+      'label' => 'Segment 2 Related Content',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '19',
+      ),
+    ),
+  );
+
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_3_html'
+  $fields['node-takepart_campaign-field_tp_campaign_seg_3_html'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_seg_3_html',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => array(
+        0 => array(
+          'value' => 'User enters some custom HTML to be displayed atop the list of nodes for this segment.',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_seg_3_html',
+      'label' => ' Segment 3 HTML',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '18',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_3_label'
+  $fields['node-takepart_campaign-field_tp_campaign_seg_3_label'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_seg_3_label',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'User provides a name for this segment (equivalent to the label on the old tabs).',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 12,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_seg_3_label',
+      'label' => ' Segment 3 Label',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '17',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_3_rel'
+  $fields['node-takepart_campaign-field_tp_campaign_seg_3_rel'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_seg_3_rel',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'action' => 'action',
+          'audio' => 0,
+          'blog_front' => 0,
+          'openpublish_article' => 0,
+          'openpublish_blog_post' => 'openpublish_blog_post',
+          'openpublish_photo' => 0,
+          'openpublish_photo_gallery' => 0,
+          'openpublish_site_page' => 0,
+          'openpublish_video' => 0,
+          'profile' => 0,
+          'section_front' => 0,
+          'takepart_campaign' => 0,
+          'takepart_page' => 0,
+          'takepart_quick_study' => 0,
+          'topic_front' => 0,
+          'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'User references one or more nodes to be listed within this segment, represented by promo headline/text.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 14,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_seg_3_rel',
+      'label' => ' Segment 3 Related Content',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '19',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_4_html'
+  $fields['node-takepart_campaign-field_tp_campaign_seg_4_html'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_seg_4_html',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => array(
+        0 => array(
+          'value' => 'User enters some custom HTML to be displayed atop the list of nodes for this segment.',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_seg_4_html',
+      'label' => '  Segment 4 HTML',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '18',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_4_label'
+  $fields['node-takepart_campaign-field_tp_campaign_seg_4_label'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_seg_4_label',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'User provides a name for this segment (equivalent to the label on the old tabs).',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 12,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_seg_4_label',
+      'label' => '  Segment 4 Label',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '17',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_4_rel'
+  $fields['node-takepart_campaign-field_tp_campaign_seg_4_rel'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_seg_4_rel',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'action' => 'action',
+          'audio' => 0,
+          'blog_front' => 0,
+          'openpublish_article' => 0,
+          'openpublish_blog_post' => 'openpublish_blog_post',
+          'openpublish_photo' => 0,
+          'openpublish_photo_gallery' => 0,
+          'openpublish_site_page' => 0,
+          'openpublish_video' => 0,
+          'profile' => 0,
+          'section_front' => 0,
+          'takepart_campaign' => 0,
+          'takepart_page' => 0,
+          'takepart_quick_study' => 0,
+          'topic_front' => 0,
+          'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'User references one or more nodes to be listed within this segment, represented by promo headline/text.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 14,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_seg_4_rel',
+      'label' => '  Segment 4 Related Content',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '19',
+      ),
+    ),
+  );
+
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_sl_html'
+  $fields['node-takepart_campaign-field_tp_campaign_sl_html'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_sl_html',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'User can populate custom HTML to be displayed in the Spotlight block instead of (or in addition to) Spotlight Nodes.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 11,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_sl_html',
+      'label' => 'Spotlight HTML',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '13',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_sl_image'
+  $fields['node-takepart_campaign-field_tp_campaign_sl_image'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_sl_image',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'media',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'media',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'deleted' => '0',
+      'description' => 'User can create and/or reference a Photo to serve as the Spotlight Image.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'media',
+          'settings' => array(),
+          'type' => 'media_large',
+          'weight' => 9,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_sl_image',
+      'label' => 'Spotlight Image',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'public' => 'public',
+          ),
+          'allowed_types' => array(
+            'audio' => 0,
+            'default' => 0,
+            'image' => 'image',
+            'video' => 0,
+          ),
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'media_generic',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('5 things Header');
+  t('5 things Links');
+  t('Alliances');
+  t('Body');
+  t('Campaign Sponsors');
+  t('Image');
+  t('Intro');
+  t('Intro HTML');
+  t('Intro Media');
+  t('Related Actions');
+  t('Segment 1 HTML');
+  t('Segment 1 Label');
+  t('Segment 1 Related Content');
+  t('Segment 2 HTML');
+  t('Segment 2 Label');
+  t('Segment 2 Related Content');
+  t('Segment 3 HTML');
+  t('Segment 3 Label');
+  t('Segment 3 Related Content');
+  t('Segment 4 HTML');
+  t('Segment 4 Label');
+  t('Segment 4 Related Content');
+  t('Spotlight HTML');
+  t('Spotlight Image');
+  t('Spotlight Nodes');
+  t('User can create and/or reference a Photo to serve as the Spotlight Image.');
+  t('User can populate custom HTML to be displayed in the Spotlight block instead of (or in addition to) Spotlight Nodes.');
+  t('User can provide titles/URLs for links to 3rd party sites');
+  t('User can reference one or more Group nodes that sponsor this Campaign. The Groups will be featured prominently on the Campaign page in order to indicate their affiliation.');
+  t('User provides a name for this segment (equivalent to the label on the old tabs).');
+  t('User references one or more nodes to be listed within this segment, represented by promo headline/text.');
+  t('Users can choose a set of nodes to be displayed in the Spotlight block (Promo headline/text displayed for each).');
+  t('Users can create a set of 5 links with custom labels and URLs to be overlaid on top of a full-width image atop the Campaign page.');
+
+  return $fields;
+}
