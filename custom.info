@@ -87,4 +87,5 @@ dependencies[] = takepart_topic_front
 dependencies[] = takepart_quick_study
 dependencies[] = takepart_page
 dependencies[] = takepart_search
+dependencies[] = takepart_screaming_boxes
 
