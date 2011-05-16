@@ -83,41 +83,38 @@ function takepart_page_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_page_author'
-  $fields['node-takepart_page-field_page_author'] = array(
+  // Exported field: 'node-takepart_page-field_free_tag'
+  $fields['node-takepart_page-field_free_tag'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_page_author',
+      'field_name' => 'field_free_tag',
       'foreign keys' => array(
-        'nid' => array(
+        'tid' => array(
           'columns' => array(
-            'nid' => 'nid',
+            'tid' => 'tid',
           ),
-          'table' => 'node',
+          'table' => 'taxonomy_term_data',
         ),
       ),
       'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
+        'tid' => array(
+          0 => 'tid',
         ),
       ),
-      'module' => 'node_reference',
+      'module' => 'taxonomy',
       'settings' => array(
-        'referenceable_types' => array(
-          'takepart_page' => 0,
-          'openpublish_blog_post' => 0,
-          'openpublish_photo' => 0,
-          'openpublish_photo_gallery' => 0,
-          'openpublish_site_page' => 0,
-          'openpublish_video' => 0,
-          'profile' => 'profile',
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'free_tags',
+          ),
         ),
       ),
       'translatable' => '1',
-      'type' => 'node_reference',
+      'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
       'bundle' => 'takepart_page',
@@ -127,10 +124,10 @@ function takepart_page_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => 1,
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 13,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -140,92 +137,24 @@ function takepart_page_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_page_author',
-      'label' => 'Author(s)',
+      'field_name' => 'field_free_tag',
+      'label' => 'Free Tag',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'node_reference',
+        'module' => 'taxonomy',
         'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => '60',
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
         ),
-        'type' => 'node_reference_autocomplete',
-        'weight' => '1',
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '16',
       ),
     ),
   );
-
-  // Exported field: 'node-takepart_page-field_page_main_image'
-  $fields['node-takepart_page-field_page_main_image'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_page_main_image',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
-      'module' => 'media',
-      'settings' => array(),
-      'translatable' => '1',
-      'type' => 'media',
-    ),
-    'field_instance' => array(
-      'bundle' => 'takepart_page',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'media',
-          'settings' => array(),
-          'type' => 'media_large',
-          'weight' => 2,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_page_main_image',
-      'label' => 'Main Image',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'media',
-        'settings' => array(
-          'allowed_schemes' => array(
-            'public' => 'public',
-          ),
-          'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            'image' => 'image',
-            'video' => 0,
-          ),
-          'progress_indicator' => 'throbber',
-        ),
-        'type' => 'media_generic',
-        'weight' => '3',
-      ),
-    ),
-  );
-
 
   // Exported field: 'node-takepart_page-field_page_action'
   $fields['node-takepart_page-field_page_action'] = array(
@@ -253,7 +182,6 @@ function takepart_page_field_default_fields() {
         'referenceable_types' => array(
           'action' => 'action',
           'blog_front' => 0,
-          'takepart_page' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
@@ -261,8 +189,14 @@ function takepart_page_field_default_fields() {
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
+          'takepart_page' => 0,
           'takepart_quick_study' => 0,
           'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
@@ -305,6 +239,88 @@ function takepart_page_field_default_fields() {
         ),
         'type' => 'node_reference_autocomplete',
         'weight' => '9',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_page-field_page_author'
+  $fields['node-takepart_page-field_page_author'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_page_author',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'openpublish_blog_post' => 0,
+          'openpublish_photo' => 0,
+          'openpublish_photo_gallery' => 0,
+          'openpublish_site_page' => 0,
+          'openpublish_video' => 0,
+          'profile' => 'profile',
+          'takepart_page' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_page',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 1,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_page_author',
+      'label' => 'Author(s)',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '1',
       ),
     ),
   );
@@ -391,6 +407,72 @@ function takepart_page_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-takepart_page-field_page_main_image'
+  $fields['node-takepart_page-field_page_main_image'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_page_main_image',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'media',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'media',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_page',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'media',
+          'settings' => array(),
+          'type' => 'media_large',
+          'weight' => 2,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_page_main_image',
+      'label' => 'Main Image',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'public' => 'public',
+          ),
+          'allowed_types' => array(
+            'audio' => 0,
+            'default' => 0,
+            'image' => 'image',
+            'video' => 0,
+          ),
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'media_generic',
+        'weight' => '3',
+      ),
+    ),
+  );
+
   // Exported field: 'node-takepart_page-field_page_related_actions'
   $fields['node-takepart_page-field_page_related_actions'] = array(
     'field_config' => array(
@@ -417,7 +499,6 @@ function takepart_page_field_default_fields() {
         'referenceable_types' => array(
           'action' => 'action',
           'blog_front' => 0,
-          'takepart_page' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
@@ -425,8 +506,14 @@ function takepart_page_field_default_fields() {
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
+          'takepart_page' => 0,
           'takepart_quick_study' => 0,
           'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
@@ -498,13 +585,18 @@ function takepart_page_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
-          'takepart_page' => 'takepart_page',
           'openpublish_blog_post' => 'openpublish_blog_post',
           'openpublish_photo' => 'openpublish_photo',
           'openpublish_photo_gallery' => 'openpublish_photo_gallery',
           'openpublish_site_page' => 0,
           'openpublish_video' => 0,
           'section_front' => 'section_front',
+          'takepart_page' => 'takepart_page',
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
@@ -821,79 +913,6 @@ function takepart_page_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_free_tag'
-  $fields['node-takepart_page-field_free_tag'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_free_tag',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'parent' => '0',
-            'vocabulary' => 'free_tags',
-          ),
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'takepart_page',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 13,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_free_tag',
-      'label' => 'Free Tag',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'taxonomy',
-        'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'taxonomy_autocomplete',
-        'weight' => '16',
-      ),
-    ),
-  );
-
   // Exported field: 'node-takepart_page-field_promo_headline'
   $fields['node-takepart_page-field_promo_headline'] = array(
     'field_config' => array(
@@ -1172,10 +1191,10 @@ function takepart_page_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Author(s)');
   t('Body');
-  t('Main Image');
   t('Display Tag');
   t('Featured Action');
   t('Free Tag');
+  t('Main Image');
   t('Promo Headline');
   t('Promo Text');
   t('Related Actions');
