@@ -77,7 +77,7 @@ function takepart_campaign_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '1',
+        'weight' => '2',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
@@ -1300,7 +1300,6 @@ function takepart_campaign_field_default_fields() {
     ),
   );
 
-
   // Exported field: 'node-takepart_campaign-field_tp_campaign_seg_3_html'
   $fields['node-takepart_campaign-field_tp_campaign_seg_3_html'] = array(
     'field_config' => array(
@@ -1759,7 +1758,6 @@ function takepart_campaign_field_default_fields() {
     ),
   );
 
-
   // Exported field: 'node-takepart_campaign-field_tp_campaign_sl_html'
   $fields['node-takepart_campaign-field_tp_campaign_sl_html'] = array(
     'field_config' => array(
@@ -1892,8 +1890,82 @@ function takepart_campaign_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_subheadline'
+  $fields['node-takepart_campaign-field_tp_campaign_subheadline'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_subheadline',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 16,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_subheadline',
+      'label' => 'Sub Headline',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('  Segment 4 HTML');
+  t('  Segment 4 Label');
+  t('  Segment 4 Related Content');
+  t(' Segment 3 HTML');
+  t(' Segment 3 Label');
+  t(' Segment 3 Related Content');
   t('5 things Header');
   t('5 things Links');
   t('Alliances');
@@ -1910,15 +1982,10 @@ function takepart_campaign_field_default_fields() {
   t('Segment 2 HTML');
   t('Segment 2 Label');
   t('Segment 2 Related Content');
-  t('Segment 3 HTML');
-  t('Segment 3 Label');
-  t('Segment 3 Related Content');
-  t('Segment 4 HTML');
-  t('Segment 4 Label');
-  t('Segment 4 Related Content');
   t('Spotlight HTML');
   t('Spotlight Image');
   t('Spotlight Nodes');
+  t('Sub Headline');
   t('User can create and/or reference a Photo to serve as the Spotlight Image.');
   t('User can populate custom HTML to be displayed in the Spotlight block instead of (or in addition to) Spotlight Nodes.');
   t('User can provide titles/URLs for links to 3rd party sites');

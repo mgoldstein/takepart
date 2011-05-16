@@ -122,7 +122,7 @@ function takepart_campaign_field_group_default_field_groups() {
     ),
   );
 
-  // Exported field_group: 'node-takepart_campaign-form-group_tp_campaign_seg_1'
+  // Exported field_group: 'node-takepart_campaign-form-group_tp_campaign_seg_2'
   $field_groups['node-takepart_campaign-form-group_tp_campaign_seg_2'] = array(
     'group_name' => 'group_tp_campaign_seg_2',
     'entity_type' => 'node',
@@ -130,7 +130,7 @@ function takepart_campaign_field_group_default_field_groups() {
     'mode' => 'form',
     'parent_name' => 'group_tp_campaign_vtab1',
     'label' => 'Segment 2',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(
       0 => 'field_tp_campaign_seg_2_label',
       1 => 'field_tp_campaign_seg_2_rel',
@@ -145,7 +145,7 @@ function takepart_campaign_field_group_default_field_groups() {
     ),
   );
 
-  // Exported field_group: 'node-takepart_campaign-form-group_tp_campaign_seg_1'
+  // Exported field_group: 'node-takepart_campaign-form-group_tp_campaign_seg_3'
   $field_groups['node-takepart_campaign-form-group_tp_campaign_seg_3'] = array(
     'group_name' => 'group_tp_campaign_seg_3',
     'entity_type' => 'node',
@@ -153,7 +153,7 @@ function takepart_campaign_field_group_default_field_groups() {
     'mode' => 'form',
     'parent_name' => 'group_tp_campaign_vtab1',
     'label' => 'Segment 3',
-    'weight' => '11',
+    'weight' => '9',
     'children' => array(
       0 => 'field_tp_campaign_seg_3_label',
       1 => 'field_tp_campaign_seg_3_rel',
@@ -168,7 +168,7 @@ function takepart_campaign_field_group_default_field_groups() {
     ),
   );
 
-  // Exported field_group: 'node-takepart_campaign-form-group_tp_campaign_seg_1'
+  // Exported field_group: 'node-takepart_campaign-form-group_tp_campaign_seg_4'
   $field_groups['node-takepart_campaign-form-group_tp_campaign_seg_4'] = array(
     'group_name' => 'group_tp_campaign_seg_4',
     'entity_type' => 'node',
@@ -178,9 +178,9 @@ function takepart_campaign_field_group_default_field_groups() {
     'label' => 'Segment 4',
     'weight' => '12',
     'children' => array(
-      0 => 'field_tp_campaign_seg_4_label',
-      1 => 'field_tp_campaign_seg_4_rel',
-      2 => 'field_tp_campaign_seg_4_html',
+      0 => 'field_tp_campaign_seg_4_html',
+      1 => 'field_tp_campaign_seg_4_label',
+      2 => 'field_tp_campaign_seg_4_rel',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -190,8 +190,6 @@ function takepart_campaign_field_group_default_field_groups() {
       ),
     ),
   );
-
-
 
   // Exported field_group: 'node-takepart_campaign-form-group_tp_campaign_sl'
   $field_groups['node-takepart_campaign-form-group_tp_campaign_sl'] = array(
@@ -224,18 +222,14 @@ function takepart_campaign_field_group_default_field_groups() {
     'mode' => 'form',
     'parent_name' => '',
     'label' => 'vtab1',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
-      0 => 'group_tp_campaign_seg_1',
-      0 => 'group_tp_campaign_seg_2',
-      0 => 'group_tp_campaign_seg_3',
-      0 => 'group_tp_campaign_seg_4',
-      1 => 'group_tp_campaign_intro',
-      2 => 'group_tp_campaign_cover',
-      3 => 'group_tp_campaign_groups',
-      4 => 'group_tp_campaign_sl',
-      5 => 'group_tp_campaign_seg',
-      6 => 'group_tp_campaign_rel',
+      0 => 'group_tp_campaign_intro',
+      1 => 'group_tp_campaign_cover',
+      2 => 'group_tp_campaign_groups',
+      3 => 'group_tp_campaign_sl',
+      4 => 'group_tp_campaign_rel',
+      5 => 'group_tp_campaign_seg_4',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(
