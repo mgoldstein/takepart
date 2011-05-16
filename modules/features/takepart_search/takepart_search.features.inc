@@ -278,7 +278,7 @@ function takepart_search_default_search_api_index() {
           "entity_type" : "node",
           "boost" : "1.0"
         },
-        "field_article_display_tag" : {
+        "field_display_tag" : {
           "name" : "Display Tag",
           "indexed" : 1,
           "type" : "integer",
@@ -340,7 +340,7 @@ function takepart_search_default_search_api_index() {
           "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
-        "field_blogpost_display_tag" : {
+        "field_display_tag" : {
           "name" : "Display Tag",
           "indexed" : 1,
           "type" : "integer",
@@ -526,7 +526,7 @@ function takepart_search_default_search_api_index() {
           "entity_type" : "node",
           "boost" : "1.0"
         },
-        "field_page_display_tag" : {
+        "field_display_tag" : {
           "name" : "Display Tag",
           "indexed" : 0,
           "type" : "integer",
@@ -658,8 +658,8 @@ function takepart_search_default_search_api_server() {
             "type" : "list\\u003cinteger\\u003e",
             "boost" : "1.0"
           },
-          "field_article_display_tag" : {
-            "table" : "search_api_db_standard_node_index_field_article_display_tag",
+          "field_display_tag" : {
+            "table" : "search_api_db_standard_node_index_field_display_tag",
             "type" : "integer",
             "boost" : "1.0"
           },
@@ -688,8 +688,8 @@ function takepart_search_default_search_api_server() {
             "type" : "integer",
             "boost" : "1.0"
           },
-          "field_blogpost_display_tag" : {
-            "table" : "search_api_db_standard_node_index_field_blogpost_display_tag",
+          "field_display_tag" : {
+            "table" : "search_api_db_standard_node_index_field_display_tag",
             "type" : "integer",
             "boost" : "1.0"
           },
