@@ -159,14 +159,14 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_blog_post-field_blogpost_display_tag'
-  $fields['node-openpublish_blog_post-field_blogpost_display_tag'] = array(
+  // Exported field: 'node-openpublish_blog_post-field_display_tag'
+  $fields['node-openpublish_blog_post-field_display_tag'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_blogpost_display_tag',
+      'field_name' => 'field_display_tag',
       'foreign keys' => array(
         'tid' => array(
           'columns' => array(
@@ -221,7 +221,7 @@ function takepart_blog_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_blogpost_display_tag',
+      'field_name' => 'field_display_tag',
       'label' => 'Display Tag',
       'required' => 0,
       'settings' => array(
