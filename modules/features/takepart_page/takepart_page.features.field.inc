@@ -325,14 +325,14 @@ function takepart_page_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_page_display_tag'
-  $fields['node-takepart_page-field_page_display_tag'] = array(
+  // Exported field: 'node-takepart_page-field_display_tag'
+  $fields['node-takepart_page-field_display_tag'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_page_display_tag',
+      'field_name' => 'field_display_tag',
       'foreign keys' => array(
         'tid' => array(
           'columns' => array(
@@ -387,7 +387,7 @@ function takepart_page_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_page_display_tag',
+      'field_name' => 'field_display_tag',
       'label' => 'Display Tag',
       'required' => 0,
       'settings' => array(
@@ -847,14 +847,14 @@ function takepart_page_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_page_thumbnail'
-  $fields['node-takepart_page-field_page_thumbnail'] = array(
+  // Exported field: 'node-takepart_page-field_thumbnail'
+  $fields['node-takepart_page-field_thumbnail'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_page_thumbnail',
+      'field_name' => 'field_thumbnail',
       'foreign keys' => array(),
       'indexes' => array(
         'fid' => array(
@@ -886,7 +886,7 @@ function takepart_page_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_page_thumbnail',
+      'field_name' => 'field_thumbnail',
       'label' => 'Thumbnail Image',
       'required' => 0,
       'settings' => array(
