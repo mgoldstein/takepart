@@ -35,6 +35,7 @@ function takepart_video_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 'action',
+          'audio' => 0,
           'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
@@ -44,7 +45,10 @@ function takepart_video_field_default_fields() {
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
+          'takepart_campaign' => 0,
+          'takepart_page' => 0,
           'takepart_quick_study' => 0,
+          'topic_front' => 0,
           'video_series' => 0,
         ),
         'view' => array(
@@ -1332,6 +1336,10 @@ function takepart_video_field_default_fields() {
             'parent' => '0',
             'vocabulary' => 'topic',
           ),
+          1 => array(
+            'parent' => '0',
+            'vocabulary' => 'free_tags',
+          ),
         ),
       ),
       'translatable' => '1',
@@ -1366,9 +1374,12 @@ function takepart_video_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
         'weight' => '8',
       ),
     ),
