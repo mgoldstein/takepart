@@ -92,14 +92,14 @@ function takepart_article_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_article-field_article_display_tag'
-  $fields['node-openpublish_article-field_article_display_tag'] = array(
+  // Exported field: 'node-openpublish_article-field_display_tag'
+  $fields['node-openpublish_article-field_display_tag'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_article_display_tag',
+      'field_name' => 'field_display_tag',
       'foreign keys' => array(
         'tid' => array(
           'columns' => array(
@@ -154,7 +154,7 @@ function takepart_article_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_article_display_tag',
+      'field_name' => 'field_display_tag',
       'label' => 'Display Tag',
       'required' => 0,
       'settings' => array(
@@ -538,14 +538,14 @@ function takepart_article_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_article-field_article_thumbnail'
-  $fields['node-openpublish_article-field_article_thumbnail'] = array(
+  // Exported field: 'node-openpublish_article-field_thumbnail'
+  $fields['node-openpublish_article-field_thumbnail'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_article_thumbnail',
+      'field_name' => 'field_thumbnail',
       'foreign keys' => array(),
       'indexes' => array(
         'fid' => array(
@@ -577,7 +577,7 @@ function takepart_article_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_article_thumbnail',
+      'field_name' => 'field_thumbnail',
       'label' => 'Thumbnail Image',
       'required' => 0,
       'settings' => array(
