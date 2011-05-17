@@ -26,7 +26,7 @@ $info['projects']['flag'] = array(
     'branch' => '7.x-2.x-dev',
     'url' => 'http://git.drupal.org/project/flag.git'
   ),
-),
+);
 
 
 $info['projects']['views_bulk_operations'] = array(
@@ -37,7 +37,7 @@ $info['projects']['views_bulk_operations'] = array(
     'branch' => '7.x-3.x-dev',
     'url' => 'http://git.drupal.org/project/views_builk_operations.git'
   ),
-),
+);
 
 
 $info['projects']['views_php'] = array(
