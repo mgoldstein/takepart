@@ -10,7 +10,6 @@ description = "Decorating the default Open publish video media asset and providi
 features[ctools][] = "strongarm:strongarm:1"
 features[field][] = "node-openpublish_video-field_action_related"
 features[field][] = "node-openpublish_video-field_action_suggest_related"
-features[field][] = "node-openpublish_video-field_author"
 features[field][] = "node-openpublish_video-field_free_tag"
 features[field][] = "node-openpublish_video-field_main_image"
 features[field][] = "node-openpublish_video-field_promo_headline"
