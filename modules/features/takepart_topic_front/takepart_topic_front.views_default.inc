@@ -224,7 +224,7 @@ print $value;
   $view->name = 'taxonomy_search_list';
   $view->description = '';
   $view->tag = 'default';
-  $view->base_table = 'search_api_index_default_node_index';
+  $view->base_table = 'search_api_index_standard_node_index';
   $view->human_name = 'Taxonomy Search List';
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
@@ -232,7 +232,6 @@ print $value;
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'search block';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -242,9 +241,9 @@ print $value;
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Broken/missing handler */
+  /* Field: Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_default_node_index';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
@@ -261,12 +260,22 @@ print $value;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  /* Contextual filter: Node: Topic */
+  $handler->display->display_options['arguments']['field_topic']['id'] = 'field_topic';
+  $handler->display->display_options['arguments']['field_topic']['table'] = 'search_api_index_standard_node_index';
+  $handler->display->display_options['arguments']['field_topic']['field'] = 'field_topic';
+  $handler->display->display_options['arguments']['field_topic']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_topic']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['field_topic']['default_argument_options']['term_page'] = 1;
+  $handler->display->display_options['arguments']['field_topic']['default_argument_options']['node'] = 0;
+  $handler->display->display_options['arguments']['field_topic']['default_argument_options']['limit'] = 0;
+  $handler->display->display_options['arguments']['field_topic']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['field_topic']['summary']['format'] = 'default_summary';
 
   /* Display: Taxonomy Search List by Type */
   $handler = $view->new_display('block', 'Taxonomy Search List by Type', 'block');
   $translatables['taxonomy_search_list'] = array(
     t('Master'),
-    t('search block'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -276,7 +285,8 @@ print $value;
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('Broken handler search_api_index_default_node_index.title'),
+    t('Title'),
+    t('All'),
     t('Taxonomy Search List by Type'),
   );
   $export['taxonomy_search_list'] = $view;

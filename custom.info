@@ -42,6 +42,7 @@ dependencies[] = diff
 dependencies[] = entity
 dependencies[] = entitycache
 dependencies[] = features
+dependencies[] = flag
 dependencies[] = field_group
 dependencies[] = imce
 dependencies[] = imce_wysiwyg
@@ -85,4 +86,7 @@ dependencies[] = takepart_gallery
 dependencies[] = takepart_default_content
 dependencies[] = takepart_topic_front
 dependencies[] = takepart_quick_study
+dependencies[] = takepart_page
+dependencies[] = takepart_search
+dependencies[] = takepart_screaming_boxes
 

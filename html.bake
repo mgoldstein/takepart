@@ -12,6 +12,11 @@ $info['projects']['search_api'] = array(
   'type'=> 'module',
   'subdir' => 'contrib',
 );
+
+bake_convert_to_dev($info,'nodeconnect');
+$info['projects']['entity']['version']                = '1.0-beta8';
+$info['projects']['flag']['version']                  = '7.x-2.x-dev';
+$info['projects']['views_bulk_operations']['version'] = '7.x-3.x-dev';
 $info['projects']['views_php'] = array(
   'type'=> 'module',
   'subdir' => 'contrib',
@@ -21,3 +26,4 @@ $info['projects']['views_php'] = array(
     'url' => "http://git.drupal.org/project/views_php.git"
   ),
 );
+$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';

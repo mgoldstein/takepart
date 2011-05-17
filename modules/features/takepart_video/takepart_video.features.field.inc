@@ -35,6 +35,7 @@ function takepart_video_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 'action',
+          'audio' => 0,
           'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
@@ -44,7 +45,10 @@ function takepart_video_field_default_fields() {
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
+          'takepart_campaign' => 0,
+          'takepart_page' => 0,
           'takepart_quick_study' => 0,
+          'topic_front' => 0,
           'video_series' => 0,
         ),
         'view' => array(
@@ -155,92 +159,6 @@ function takepart_video_field_default_fields() {
         'settings' => array(),
         'type' => 'options_buttons',
         'weight' => '17',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-openpublish_video-field_author'
-  $fields['node-openpublish_video-field_author'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_author',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
-        ),
-      ),
-      'module' => 'node_reference',
-      'settings' => array(
-        'referenceable_types' => array(
-          'action' => 0,
-          'blog_front' => 0,
-          'openpublish_article' => 0,
-          'openpublish_blog_post' => 0,
-          'openpublish_photo' => 0,
-          'openpublish_photo_gallery' => 0,
-          'openpublish_site_page' => 0,
-          'openpublish_video' => 0,
-          'profile' => 'profile',
-          'section_front' => 0,
-          'video_series' => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'node_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'openpublish_video',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => 11,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_author',
-      'label' => 'Author(s)',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'node_reference',
-        'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => '60',
-        ),
-        'type' => 'node_reference_autocomplete',
-        'weight' => '3',
       ),
     ),
   );
@@ -1018,7 +936,7 @@ function takepart_video_field_default_fields() {
   $fields['node-video_series-field_author'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_author',
@@ -1038,8 +956,6 @@ function takepart_video_field_default_fields() {
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
-          'action' => 0,
-          'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
@@ -1047,8 +963,6 @@ function takepart_video_field_default_fields() {
           'openpublish_site_page' => 0,
           'openpublish_video' => 0,
           'profile' => 'profile',
-          'section_front' => 0,
-          'video_series' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -1332,6 +1246,10 @@ function takepart_video_field_default_fields() {
             'parent' => '0',
             'vocabulary' => 'topic',
           ),
+          1 => array(
+            'parent' => '0',
+            'vocabulary' => 'free_tags',
+          ),
         ),
       ),
       'translatable' => '1',
@@ -1366,9 +1284,12 @@ function takepart_video_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
         'weight' => '8',
       ),
     ),
@@ -1734,7 +1655,6 @@ function takepart_video_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Author(s)');
   t('Authors');
   t('Body');
   t('Free Tags');

@@ -21,13 +21,12 @@ function node_reference_redirect_field_formatter_info() {
  * If we have a node reference and we can redirect to it lets do it!
  */
 function node_reference_redirect_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {  
-
   $current_field = $entity->{$instance['field_name']};
   if(!empty($current_field) &&
      !empty($current_field[$langcode])) {
     $nid = $current_field[$langcode][0]['nid'];
     $path = "node/$nid";
-    if(drupal_lookup_path($path)) {
+    if(drupal_lookup_path('alias',$path)) {
       drupal_goto($path);
     }
 

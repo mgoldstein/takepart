@@ -4,3 +4,4 @@
  */
 
 // Drupal needs this blank file.
+include_once('takepart_article.features.inc');
