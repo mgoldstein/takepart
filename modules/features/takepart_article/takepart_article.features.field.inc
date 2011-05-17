@@ -47,6 +47,11 @@ function takepart_article_field_default_fields() {
           'takepart_quick_study' => 0,
           'video_series' => 0,
         ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
       ),
       'translatable' => '1',
       'type' => 'node_reference',
@@ -92,88 +97,6 @@ function takepart_article_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_article-field_display_tag'
-  $fields['node-openpublish_article-field_display_tag'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_display_tag',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'parent' => '0',
-            'vocabulary' => 'free_tags',
-          ),
-          1 => array(
-            'parent' => '0',
-            'vocabulary' => 'blog',
-          ),
-          2 => array(
-            'parent' => '0',
-            'vocabulary' => 'topic',
-          ),
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'openpublish_article',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 5,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_display_tag',
-      'label' => 'Display Tag',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'taxonomy',
-        'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
-          'size' => 60,
-        ),
-        'type' => 'taxonomy_autocomplete',
-        'weight' => '7',
-      ),
-    ),
-  );
-
   // Exported field: 'node-openpublish_article-field_article_related_actions'
   $fields['node-openpublish_article-field_article_related_actions'] = array(
     'field_config' => array(
@@ -210,6 +133,11 @@ function takepart_article_field_default_fields() {
           'section_front' => 0,
           'takepart_quick_study' => 0,
           'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
@@ -288,6 +216,11 @@ function takepart_article_field_default_fields() {
           'openpublish_site_page' => 0,
           'openpublish_video' => 0,
           'section_front' => 'section_front',
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
@@ -538,36 +471,59 @@ function takepart_article_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_article-field_thumbnail'
-  $fields['node-openpublish_article-field_thumbnail'] = array(
+  // Exported field: 'node-openpublish_article-field_display_tag'
+  $fields['node-openpublish_article-field_display_tag'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_thumbnail',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
+      'field_name' => 'field_display_tag',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
         ),
       ),
-      'module' => 'media',
-      'settings' => array(),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'free_tags',
+          ),
+          1 => array(
+            'parent' => '0',
+            'vocabulary' => 'blog',
+          ),
+          2 => array(
+            'parent' => '0',
+            'vocabulary' => 'topic',
+          ),
+        ),
+      ),
       'translatable' => '1',
-      'type' => 'media',
+      'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
       'bundle' => 'openpublish_article',
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'media',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'media_large',
-          'weight' => 6,
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 5,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -577,29 +533,22 @@ function takepart_article_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_thumbnail',
-      'label' => 'Thumbnail Image',
+      'field_name' => 'field_display_tag',
+      'label' => 'Display Tag',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'media',
+        'active' => 0,
+        'module' => 'taxonomy',
         'settings' => array(
-          'allowed_schemes' => array(
-            'public' => 'public',
-          ),
-          'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            'image' => 'image',
-            'video' => 0,
-          ),
-          'progress_indicator' => 'throbber',
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
+          'size' => 60,
         ),
-        'type' => 'media_generic',
-        'weight' => '8',
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '7',
       ),
     ),
   );
@@ -881,6 +830,72 @@ function takepart_article_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-openpublish_article-field_thumbnail'
+  $fields['node-openpublish_article-field_thumbnail'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_thumbnail',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'media',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'media',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_article',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'media',
+          'settings' => array(),
+          'type' => 'media_large',
+          'weight' => 6,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_thumbnail',
+      'label' => 'Thumbnail Image',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'public' => 'public',
+          ),
+          'allowed_types' => array(
+            'audio' => 0,
+            'default' => 0,
+            'image' => 'image',
+            'video' => 0,
+          ),
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'media_generic',
+        'weight' => '8',
+      ),
+    ),
+  );
+
   // Exported field: 'node-openpublish_article-field_topic'
   $fields['node-openpublish_article-field_topic'] = array(
     'field_config' => array(
@@ -951,8 +966,84 @@ function takepart_article_field_default_fields() {
     ),
   );
 
+  // Exported field: 'taxonomy_term-series-field_series_context'
+  $fields['taxonomy_term-series-field_series_context'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_series_context',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'series',
+      'default_value' => array(
+        0 => array(
+          'context' => '',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'field_series_context',
+      'label' => 'Context',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Field Box' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'context_ui' => 0,
+          'devel' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'series_default_context',
+        'use_default' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'context_field',
+        'settings' => array(
+          'widget_setting' => 'bob',
+        ),
+        'type' => 'context_field',
+        'weight' => '1',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Context');
   t('Display Tag');
   t('Featured Action');
   t('Free Tag');
