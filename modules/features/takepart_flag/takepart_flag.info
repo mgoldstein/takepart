@@ -1,0 +1,8 @@
+core = "7.x"
+dependencies[] = "flag"
+description = "Configuration settings to create flags for nodes."
+features[flag][] = "needs_review"
+features[flag][] = "test_content"
+name = "TakePart Flag"
+package = "Features"
+version = "7.x-1.0"
