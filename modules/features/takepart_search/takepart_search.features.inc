@@ -25,9 +25,8 @@ function takepart_search_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "",
-      "field_name" : "Author(s)",
-      "entity_type" : "node"
+      "type" : null,
+      "field_name" : "Author(s)"
     },
     "rdf_mapping" : []
   }');
@@ -121,6 +120,7 @@ function takepart_search_default_search_api_facet() {
         "audio" : "Audio",
         "blog_front" : "Blog Front",
         "openpublish_blog_post" : "Blog Post",
+        "takepart_campaign" : "Campaign",
         "takepart_page" : "Page",
         "openpublish_photo" : "Photo",
         "openpublish_photo_gallery" : "Photo Gallery",
@@ -158,7 +158,7 @@ function takepart_search_default_search_api_index() {
           "type" : "string",
           "boost" : "1.0"
         },
-        "nid" : { "name" : "Node ID", "indexed" : 0, "type" : "integer", "boost" : "1.0" },
+        "nid" : { "name" : "Node ID", "indexed" : 1, "type" : "integer", "boost" : "1.0" },
         "vid" : {
           "name" : "Revision ID",
           "indexed" : 0,
@@ -174,7 +174,7 @@ function takepart_search_default_search_api_index() {
         },
         "title" : { "name" : "Title", "indexed" : 1, "type" : "text", "boost" : "1.0" },
         "language" : { "name" : "Language", "indexed" : 0, "type" : "string", "boost" : "1.0" },
-        "url" : { "name" : "URL", "indexed" : 0, "type" : "uri", "boost" : "1.0" },
+        "url" : { "name" : "URL", "indexed" : 1, "type" : "uri", "boost" : "1.0" },
         "edit_url" : { "name" : "Edit URL", "indexed" : 0, "type" : "uri", "boost" : "1.0" },
         "status" : {
           "name" : "Published",
@@ -250,13 +250,6 @@ function takepart_search_default_search_api_index() {
           "type" : "integer",
           "boost" : "1.0"
         },
-        "field_article_author" : {
-          "name" : "Author(s)",
-          "indexed" : 1,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
         "field_free_tag" : {
           "name" : "Free Tag",
           "indexed" : 1,
@@ -276,13 +269,6 @@ function takepart_search_default_search_api_index() {
           "indexed" : 0,
           "type" : "integer",
           "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_display_tag" : {
-          "name" : "Display Tag",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
         "field_article_related_actions" : {
@@ -326,22 +312,22 @@ function takepart_search_default_search_api_index() {
           "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
-        "field_blogpost_author" : {
-          "name" : "Author",
-          "indexed" : 1,
-          "type" : "integer",
+        "field_author" : {
+          "name" : "Author(s)",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_blogpost_blog" : {
-          "name" : "Blog",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
         "field_display_tag" : {
           "name" : "Display Tag",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_blogpost_blog" : {
+          "name" : "Blog",
           "indexed" : 1,
           "type" : "integer",
           "entity_type" : "taxonomy_term",
@@ -400,13 +386,6 @@ function takepart_search_default_search_api_index() {
           "type" : "text",
           "boost" : "1.0"
         },
-        "field_gallery_author" : {
-          "name" : "Author(s)",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
         "field_action_related" : {
           "name" : "Related Actions",
           "indexed" : 0,
@@ -431,20 +410,6 @@ function takepart_search_default_search_api_index() {
           "name" : "Suggest Related Content?",
           "indexed" : 0,
           "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "field_video_author" : {
-          "name" : "Author(s)",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_author" : {
-          "name" : "Author(s)",
-          "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "node",
           "boost" : "1.0"
         },
         "field_subhead" : { "name" : "Subhead", "indexed" : 0, "type" : "text", "boost" : "1.0" },
@@ -526,7 +491,7 @@ function takepart_search_default_search_api_index() {
           "entity_type" : "node",
           "boost" : "1.0"
         },
-        "field_display_tag" : {
+        "field_page_display_tag" : {
           "name" : "Display Tag",
           "indexed" : 0,
           "type" : "integer",
@@ -583,9 +548,117 @@ function takepart_search_default_search_api_index() {
         },
         "field_vs_topic_term" : {
           "name" : "Topic",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "integer",
           "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_5_things_head" : {
+          "name" : "5 things Header",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_tp_campagin_sponsers" : {
+          "name" : "Campaign Sponsors",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_tp_campagin_sl_nodes" : {
+          "name" : "Spotlight Nodes",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_sl_html" : {
+          "name" : "Spotlight HTML",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_seg_1_label" : {
+          "name" : "Segment 1 Label",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_seg_1_rel" : {
+          "name" : "Segment 1 Related Content",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_seg_1_html" : {
+          "name" : "Segment 1 HTML",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_seg_2_html" : {
+          "name" : "Segment 2 HTML",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_seg_2_label" : {
+          "name" : "Segment 2 Label",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_seg_2_rel" : {
+          "name" : "Segment 2 Related Content",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_seg_3_html" : {
+          "name" : " Segment 3 HTML",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_seg_3_label" : {
+          "name" : " Segment 3 Label",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_seg_3_rel" : {
+          "name" : " Segment 3 Related Content",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_seg_4_html" : {
+          "name" : "  Segment 4 HTML",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_seg_4_label" : {
+          "name" : "  Segment 4 Label",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_seg_4_rel" : {
+          "name" : "  Segment 4 Related Content",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_subheadline" : {
+          "name" : "Sub Headline",
+          "indexed" : 0,
+          "type" : "text",
           "boost" : "1.0"
         }
       },
@@ -637,88 +710,6 @@ function takepart_search_default_search_api_server() {
       "database" : "default:default",
       "min_chars" : "1",
       "indexes" : {
-        "standard_node_index" : {
-          "search_api_language" : {
-            "table" : "search_api_db_standard_node_index_search_api_language",
-            "type" : "string",
-            "boost" : "1.0"
-          },
-          "field_article_author" : {
-            "table" : "search_api_db_standard_node_index_field_article_author",
-            "type" : "list\\u003cinteger\\u003e",
-            "boost" : "1.0"
-          },
-          "field_free_tag" : {
-            "table" : "search_api_db_standard_node_index_field_free_tag",
-            "type" : "list\\u003cinteger\\u003e",
-            "boost" : "1.0"
-          },
-          "field_topic" : {
-            "table" : "search_api_db_standard_node_index_field_topic",
-            "type" : "list\\u003cinteger\\u003e",
-            "boost" : "1.0"
-          },
-          "field_display_tag" : {
-            "table" : "search_api_db_standard_node_index_field_display_tag",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_promo_headline" : {
-            "table" : "search_api_db_standard_node_index_field_promo_headline",
-            "type" : "string",
-            "boost" : "1.0"
-          },
-          "field_promo_text" : {
-            "table" : "search_api_db_standard_node_index_field_promo_text",
-            "type" : "text",
-            "boost" : "1.0"
-          },
-          "field_series" : {
-            "table" : "search_api_db_standard_node_index_field_series",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_blogpost_author" : {
-            "table" : "search_api_db_standard_node_index_field_blogpost_author",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_blogpost_blog" : {
-            "table" : "search_api_db_standard_node_index_field_blogpost_blog",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_display_tag" : {
-            "table" : "search_api_db_standard_node_index_field_display_tag",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_series_videos_by_tag" : {
-            "table" : "search_api_db_standard_node_index_field_series_videos_by_tag",
-            "type" : "list\\u003cinteger\\u003e",
-            "boost" : "1.0"
-          },
-          "field_vs_free_term" : {
-            "table" : "search_api_db_standard_node_index_field_vs_free_term",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_vs_topic_term" : {
-            "table" : "search_api_db_standard_node_index_field_vs_topic_term",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "type" : {
-            "table" : "search_api_db_standard_node_index_type",
-            "type" : "string",
-            "boost" : "1.0"
-          },
-          "title" : {
-            "table" : "search_api_db_standard_node_index_title",
-            "type" : "text",
-            "boost" : "1.0"
-          }
-        },
         "default_node_index" : {
           "search_api_language" : {
             "table" : "search_api_db_default_node_index_search_api_language",
@@ -823,6 +814,73 @@ function takepart_search_default_search_api_server() {
           "field_topic:name" : {
             "table" : "search_api_db_default_node_index_field_topic_name",
             "type" : "list\\u003ctext\\u003e",
+            "boost" : "1.0"
+          }
+        },
+        "standard_node_index" : {
+          "search_api_language" : {
+            "table" : "search_api_db_standard_node_index_search_api_language",
+            "type" : "string",
+            "boost" : "1.0"
+          },
+          "type" : {
+            "table" : "search_api_db_standard_node_index_type",
+            "type" : "string",
+            "boost" : "1.0"
+          },
+          "title" : {
+            "table" : "search_api_db_standard_node_index_title",
+            "type" : "text",
+            "boost" : "1.0"
+          },
+          "field_free_tag" : {
+            "table" : "search_api_db_standard_node_index_field_free_tag",
+            "type" : "list\\u003cinteger\\u003e",
+            "boost" : "1.0"
+          },
+          "field_promo_headline" : {
+            "table" : "search_api_db_standard_node_index_field_promo_headline",
+            "type" : "string",
+            "boost" : "1.0"
+          },
+          "field_promo_text" : {
+            "table" : "search_api_db_standard_node_index_field_promo_text",
+            "type" : "text",
+            "boost" : "1.0"
+          },
+          "field_series" : {
+            "table" : "search_api_db_standard_node_index_field_series",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "field_blogpost_blog" : {
+            "table" : "search_api_db_standard_node_index_field_blogpost_blog",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "field_series_videos_by_tag" : {
+            "table" : "search_api_db_standard_node_index_field_series_videos_by_tag",
+            "type" : "list\\u003cinteger\\u003e",
+            "boost" : "1.0"
+          },
+          "field_vs_free_term" : {
+            "table" : "search_api_db_standard_node_index_field_vs_free_term",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "nid" : {
+            "table" : "search_api_db_standard_node_index_nid",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "url" : {
+            "table" : "search_api_db_standard_node_index_url",
+            "type" : "uri",
+            "boost" : "1.0"
+          },
+          "field_topic" : {
+            "table" : "search_api_db_standard_node_index_field_topic",
+            "type" : "list\\u003cinteger\\u003e",
             "boost" : "1.0"
           }
         }
