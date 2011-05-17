@@ -42,6 +42,7 @@ dependencies[] = diff
 dependencies[] = entity
 dependencies[] = entitycache
 dependencies[] = features
+dependencies[] = flag
 dependencies[] = field_group
 dependencies[] = imce
 dependencies[] = imce_wysiwyg
