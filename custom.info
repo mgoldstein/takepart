@@ -1,6 +1,6 @@
 name = www.takepart.com Profile
 core = 7.x
-
+api = 2
 
 ; Core
 
@@ -89,4 +89,5 @@ dependencies[] = takepart_quick_study
 dependencies[] = takepart_page
 dependencies[] = takepart_search
 dependencies[] = takepart_screaming_boxes
+dependencies[] = takepart_group
 
