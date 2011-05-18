@@ -23,7 +23,7 @@ $info['projects']['flag'] = array(
   'subdir' => 'contrib',
   'download' => array(
     'type' => 'git',
-    'branch' => '7.x-2.x',
+    'branch' => 'master',
     'url' => 'http://git.drupal.org/project/flag.git'
   ),
 );
@@ -34,7 +34,7 @@ $info['projects']['views_bulk_operations'] = array(
   'subdir' => 'contrib',
   'download' => array(
     'type' => 'git',
-    'branch' => '7.x-3.x-dev',
+    'branch' => '7.x-3.x',
     'url' => 'http://git.drupal.org/project/views_bulk_operations.git'
   ),
 );
