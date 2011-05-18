@@ -14,12 +14,13 @@ function takepart_topic_front_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'topic_default_context';
-  $context->description = '';
+  $context->description = 'Default Context for topic';
   $context->tag = 'Context Field';
   $context->conditions = array(
     'context_field' => array(
       'values' => array(
         1 => 1,
+        2 => 2,
       ),
     ),
   );
@@ -52,6 +53,7 @@ function takepart_topic_front_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Context Field');
+  t('Default Context for topic');
   $export['topic_default_context'] = $context;
 
   return $export;
