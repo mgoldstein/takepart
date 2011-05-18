@@ -2,6 +2,6 @@
 /**
  * @file
  */
-
+include_once('takepart_custom.features.inc');
 // Drupal needs this blank file.
 //
