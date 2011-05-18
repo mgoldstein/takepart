@@ -38,6 +38,15 @@ $info['projects']['views_bulk_operations'] = array(
     'url' => 'http://git.drupal.org/project/views_bulk_operations.git'
   ),
 );
+$info['projects']['location'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'download' => array(
+    'type' => 'git',
+    'branch' => '7.x-3.x-dev',
+    'url' => 'http://git.drupal.org/project/location'
+  ),
+);
 
 
 $info['projects']['views_php'] = array(
