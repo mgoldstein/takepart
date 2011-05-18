@@ -4,6 +4,5 @@ core = 7.x
 engine = phptemplate
 base theme = "tao"
 
-stylesheets[all][] = wireframe.css
+stylesheets[all][] = css/wireframe.css
 stylesheets[all][] = css/core.css
-stylesheets[all][] = profile.css
