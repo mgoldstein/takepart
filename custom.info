@@ -73,21 +73,28 @@ dependencies[] = openpublish_media
 dependencies[] = openpublish_section_fronts
 dependencies[] = openpublish_site_page
 
+; TakePart Features
 
-dependencies[] = takepart_custom
 dependencies[] = takepart_action
 dependencies[] = takepart_article
-dependencies[] = takepart_blog
-dependencies[] = takepart_author
-dependencies[] = takepart_video
 dependencies[] = takepart_audio
-dependencies[] = takepart_image_media_asset
-dependencies[] = takepart_gallery
+dependencies[] = takepart_author
+dependencies[] = takepart_blog
+dependencies[] = takepart_campaign
+dependencies[] = takepart_custom
 dependencies[] = takepart_default_content
-dependencies[] = takepart_topic_front
-dependencies[] = takepart_quick_study
-dependencies[] = takepart_page
-dependencies[] = takepart_search
-dependencies[] = takepart_screaming_boxes
+dependencies[] = takepart_flag
+dependencies[] = takepart_gallery
 dependencies[] = takepart_group
+dependencies[] = takepart_image_media_asset
+dependencies[] = takepart_page
+dependencies[] = takepart_promo
+dependencies[] = takepart_quick_study
+dependencies[] = takepart_search
+dependencies[] = takepart_topic_front
+dependencies[] = takepart_video
+
+; TakePart Modules
+
+dependencies[] = takepart_screaming_boxes
 
