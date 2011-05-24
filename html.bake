@@ -48,6 +48,15 @@ $info['projects']['location'] = array(
   ),
 );
 
+$info['projects']['context_bool_field'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'download' => array(
+    'type' => 'git',
+    'branch' => '7.x-1.x',
+    'url' => 'http://git.drupal.org/project/context_bool_field.git'
+  ),
+);
 
 $info['projects']['views_php'] = array(
   'type'=> 'module',
