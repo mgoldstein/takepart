@@ -97,14 +97,14 @@ function takepart_article_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_article-field_article_related_actions'
-  $fields['node-openpublish_article-field_article_related_actions'] = array(
+  // Exported field: 'node-openpublish_article-field_related_actions'
+  $fields['node-openpublish_article-field_related_actions'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_article_related_actions',
+      'field_name' => 'field_related_actions',
       'foreign keys' => array(
         'nid' => array(
           'columns' => array(
@@ -164,7 +164,7 @@ function takepart_article_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_article_related_actions',
+      'field_name' => 'field_related_actions',
       'label' => 'Related Actions',
       'required' => 0,
       'settings' => array(
@@ -184,14 +184,14 @@ function takepart_article_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_article-field_article_related_content'
-  $fields['node-openpublish_article-field_article_related_content'] = array(
+  // Exported field: 'node-openpublish_article-field_related_content'
+  $fields['node-openpublish_article-field_related_content'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_article_related_content',
+      'field_name' => 'field_related_content',
       'foreign keys' => array(
         'nid' => array(
           'columns' => array(
@@ -247,7 +247,7 @@ function takepart_article_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_article_related_content',
+      'field_name' => 'field_related_content',
       'label' => 'Releated Content',
       'required' => 0,
       'settings' => array(
@@ -335,14 +335,14 @@ function takepart_article_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_article-field_article_suggest_campaigns'
-  $fields['node-openpublish_article-field_article_suggest_campaigns'] = array(
+  // Exported field: 'node-openpublish_article-field_suggest_campaigns'
+  $fields['node-openpublish_article-field_suggest_campaigns'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_article_suggest_campaigns',
+      'field_name' => 'field_suggest_campaigns',
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -385,7 +385,7 @@ function takepart_article_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_article_suggest_campaigns',
+      'field_name' => 'field_suggest_campaigns',
       'label' => 'Suggest Related Campaigns?',
       'required' => 0,
       'settings' => array(
@@ -403,14 +403,14 @@ function takepart_article_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_article-field_article_suggest_content'
-  $fields['node-openpublish_article-field_article_suggest_content'] = array(
+  // Exported field: 'node-openpublish_article-field_suggest_content'
+  $fields['node-openpublish_article-field_suggest_content'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_article_suggest_content',
+      'field_name' => 'field_suggest_content',
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -453,7 +453,7 @@ function takepart_article_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_article_suggest_content',
+      'field_name' => 'field_suggest_content',
       'label' => 'Suggest Releated Content?',
       'required' => 0,
       'settings' => array(
