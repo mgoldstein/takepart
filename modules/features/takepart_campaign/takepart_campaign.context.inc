@@ -19,7 +19,7 @@ function takepart_campaign_context_default_contexts() {
   $context->conditions = array(
     'field_bool' => array(
       'values' => array(
-        'field_article_suggest_campaigns' => 'field_article_suggest_campaigns',
+        'field_suggest_campaigns' => 'field_suggest_campaigns',
       ),
       'options' => array(
         'bool_field_value' => '0',
@@ -66,7 +66,7 @@ function takepart_campaign_context_default_contexts() {
   $context->conditions = array(
     'field_bool' => array(
       'values' => array(
-        'field_article_suggest_campaigns' => 'field_article_suggest_campaigns',
+        'field_suggest_campaigns' => 'field_suggest_campaigns',
       ),
       'options' => array(
         'bool_field_value' => '1',
