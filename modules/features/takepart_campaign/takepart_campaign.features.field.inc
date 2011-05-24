@@ -2046,7 +2046,6 @@ function takepart_campaign_field_default_fields() {
   t('Intro HTML');
   t('Intro Media');
   t('Related Actions');
-  t('Related Campaigns');
   t('Segment 1 HTML');
   t('Segment 1 Label');
   t('Segment 1 Related Content');

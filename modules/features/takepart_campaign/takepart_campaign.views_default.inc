@@ -198,12 +198,6 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Fields: Related Campaigns (field_related_campaigns) - nid */
-  $handler->display->display_options['relationships']['field_related_campaigns_nid']['id'] = 'field_related_campaigns_nid';
-  $handler->display->display_options['relationships']['field_related_campaigns_nid']['table'] = 'field_data_field_related_campaigns';
-  $handler->display->display_options['relationships']['field_related_campaigns_nid']['field'] = 'field_related_campaigns_nid';
-  $handler->display->display_options['relationships']['field_related_campaigns_nid']['required'] = 0;
-  $handler->display->display_options['relationships']['field_related_campaigns_nid']['delta'] = '-1';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -379,7 +373,6 @@ function takepart_campaign_views_default_views() {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('field_related_campaigns'),
     t('node/[nid]'),
     t('[title]'),
     t('All'),
