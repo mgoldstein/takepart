@@ -1,5 +1,7 @@
 core = "7.x"
 dependencies[] = "context"
+dependencies[] = "context_bool_field"
+dependencies[] = "views_arguments_extras"
 dependencies[] = "features"
 dependencies[] = "field_group"
 dependencies[] = "link"
