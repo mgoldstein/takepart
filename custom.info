@@ -90,6 +90,7 @@ dependencies[] = takepart_image_media_asset
 dependencies[] = takepart_page
 dependencies[] = takepart_promo
 dependencies[] = takepart_quick_study
+dependencies[] = takepart_rotator_slide
 dependencies[] = takepart_search
 dependencies[] = takepart_topic_front
 dependencies[] = takepart_video
