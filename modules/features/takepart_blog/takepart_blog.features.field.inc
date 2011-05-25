@@ -327,14 +327,14 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_blog_post-field_blogpost_related_actions'
-  $fields['node-openpublish_blog_post-field_blogpost_related_actions'] = array(
+  // Exported field: 'node-openpublish_blog_post-field_related_actions'
+  $fields['node-openpublish_blog_post-field_related_actions'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_blogpost_related_actions',
+      'field_name' => 'field_related_actions',
       'foreign keys' => array(
         'nid' => array(
           'columns' => array(
@@ -394,7 +394,7 @@ function takepart_blog_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_blogpost_related_actions',
+      'field_name' => 'field_related_actions',
       'label' => 'Related Actions',
       'required' => 0,
       'settings' => array(
@@ -414,14 +414,14 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_blog_post-field_blogpost_related_campaign'
-  $fields['node-openpublish_blog_post-field_blogpost_related_campaign'] = array(
+  // Exported field: 'node-openpublish_blog_post-field_related_campaign'
+  $fields['node-openpublish_blog_post-field_related_campaign'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_blogpost_related_campaign',
+      'field_name' => 'field_related_campaign',
       'foreign keys' => array(
         'nid' => array(
           'columns' => array(
@@ -481,7 +481,7 @@ function takepart_blog_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_blogpost_related_campaign',
+      'field_name' => 'field_related_campaign',
       'label' => 'Related Campaigns',
       'required' => 0,
       'settings' => array(
@@ -501,14 +501,14 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_blog_post-field_blogpost_related_content'
-  $fields['node-openpublish_blog_post-field_blogpost_related_content'] = array(
+  // Exported field: 'node-openpublish_blog_post-field_related_content'
+  $fields['node-openpublish_blog_post-field_related_content'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_blogpost_related_content',
+      'field_name' => 'field_related_content',
       'foreign keys' => array(
         'nid' => array(
           'columns' => array(
@@ -568,7 +568,7 @@ function takepart_blog_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_blogpost_related_content',
+      'field_name' => 'field_related_content',
       'label' => 'Related Content',
       'required' => 0,
       'settings' => array(
@@ -656,14 +656,14 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_blog_post-field_blogpost_suggest_actions'
-  $fields['node-openpublish_blog_post-field_blogpost_suggest_actions'] = array(
+  // Exported field: 'node-openpublish_blog_post-field_suggest_actions'
+  $fields['node-openpublish_blog_post-field_suggest_actions'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_blogpost_suggest_actions',
+      'field_name' => 'field_suggest_actions',
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -706,7 +706,7 @@ function takepart_blog_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_blogpost_suggest_actions',
+      'field_name' => 'field_suggest_actions',
       'label' => 'Suggest Related Actions?',
       'required' => 0,
       'settings' => array(
@@ -724,14 +724,14 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_blog_post-field_blogpost_suggest_campaigns'
-  $fields['node-openpublish_blog_post-field_blogpost_suggest_campaigns'] = array(
+  // Exported field: 'node-openpublish_blog_post-field_suggest_campaigns'
+  $fields['node-openpublish_blog_post-field_suggest_campaigns'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_blogpost_suggest_campaigns',
+      'field_name' => 'field_suggest_campaigns',
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -774,7 +774,7 @@ function takepart_blog_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_blogpost_suggest_campaigns',
+      'field_name' => 'field_suggest_campaigns',
       'label' => 'Suggest Related Campaigns?',
       'required' => 0,
       'settings' => array(
@@ -792,14 +792,14 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_blog_post-field_blogpost_suggest_content'
-  $fields['node-openpublish_blog_post-field_blogpost_suggest_content'] = array(
+  // Exported field: 'node-openpublish_blog_post-field_suggest_content'
+  $fields['node-openpublish_blog_post-field_suggest_content'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_blogpost_suggest_content',
+      'field_name' => 'field_suggest_content',
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -842,7 +842,7 @@ function takepart_blog_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_blogpost_suggest_content',
+      'field_name' => 'field_suggest_content',
       'label' => 'Suggest Related Content?',
       'required' => 0,
       'settings' => array(
