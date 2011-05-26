@@ -1,4 +1,4 @@
-<div class='wireframe <?php print $classes ?> clearfix' <?php print ($attributes) ?>>
+<div class='main-content clearfix <?php print $classes ?> clearfix' <?php print ($attributes) ?>>
   <div id='author_info'>
     <?php if (!empty($title)): ?>
       <h2><?php print $title ?></h2>
