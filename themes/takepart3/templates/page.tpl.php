@@ -6,23 +6,19 @@
 <?php endif; ?>
 
 <?php if ($page['header']): ?>
-  <div id='header'><div class='limiter clearfix'>
+  <div id='header' class='clearfix'>
     <?php print render($page['header']); ?>
-  </div></div>
+  </div>
 <?php endif; ?>
 
-<div id='branding'><div class='limiter clearfix'>
-  <?php if ($site_name): ?><h1 class='site-name'><?php print $site_name ?></h1><?php endif; ?>
-</div></div>
-
-<div id='navigation'><div class='limiter clearfix'>
+<div id='nav-wrap' class='clear clearfix'>
   <?php if (isset($main_menu)) : ?>
     <?php print theme('links', array('links' => $main_menu, 'attributes' => array('class' => 'links main-menu'))) ?>
   <?php endif; ?>
   <?php if (isset($secondary_menu)) : ?>
     <?php print theme('links', array('links' => $secondary_menu, 'attributes' => array('class' => 'links secondary-menu'))) ?>
   <?php endif; ?>
-</div></div>
+</div>
 
 <?php if ($page['highlighted']): ?>
   <div id='highlighted'><div class='limiter clearfix'>
@@ -30,13 +26,13 @@
   </div></div>
 <?php endif; ?>
 
-<div id='page'><div class='limiter clearfix'>
+<div id='page' class='page clearfix'>
 
   <?php if ($page['sidebar_first']): ?>
     <div id='left' class='clearfix'><?php print render($page['sidebar_first']) ?></div>
   <?php endif; ?>
 
-  <div id='main-content' class='clearfix'>
+  <div class='main-content'>
     <?php if ($breadcrumb) print $breadcrumb; ?>
     <?php if ($title): ?><h1 class='page-title'><?php print $title ?></h1><?php endif; ?>
     <?php if ($primary_local_tasks): ?><ul class='links clearfix'><?php print render($primary_local_tasks) ?></ul><?php endif; ?>
@@ -46,12 +42,11 @@
   </div>
 
   <?php if ($page['sidebar_second']): ?>
-    <div id='right' class='clearfix'><?php print render($page['sidebar_second']) ?></div>
+    <div id='right-rail' class='clearfix'><?php print render($page['sidebar_second']) ?></div>
   <?php endif; ?>
 
-</div></div>
+</div>
 
-<div id="footer"><div class='limiter clearfix'>
-  <?php print $feed_icons ?>
+<div id="footer" class='clear'>
   <?php print render($page['footer']) ?>
-</div></div>
+</div>
