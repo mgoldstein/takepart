@@ -1,71 +1,25 @@
 <?php
 /**
  * @file
- * takepart_custom.context.inc
+ * takepart_action.context.inc
  */
 
 /**
  * Implementation of hook_context_default_contexts().
  */
-function takepart_custom_context_default_contexts() {
+function takepart_action_context_default_contexts() {
   $export = array();
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'free_tags_default_context';
-  $context->description = 'Default Context for free_tags';
-  $context->tag = 'Context Field Default';
-  $context->conditions = array(
-    'context_field' => array(
-      'values' => array(
-        1 => 1,
-        2 => 2,
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'views-taxonomy_search_list-block_1' => array(
-          'module' => 'views',
-          'delta' => 'taxonomy_search_list-block_1',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
-        'search_api_facets-standard_node_index_type' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'standard_node_index_type',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'search_api_facets-standard_node_index_field_topic' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'standard_node_index_field_topic',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Context Field Default');
-  t('Default Context for free_tags');
-  $export['free_tags_default_context'] = $context;
-
-  $context = new stdClass;
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'related_content_curated';
+  $context->name = 'related_action_curated';
   $context->description = '';
   $context->tag = 'Blocks: Related';
   $context->conditions = array(
     'field_bool' => array(
       'values' => array(
-        'field_suggest_content' => 'field_suggest_content',
+        'field_suggest_actions' => 'field_suggest_actions',
       ),
       'options' => array(
         'bool_field_value' => '0',
@@ -87,9 +41,9 @@ function takepart_custom_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-related_content-block' => array(
+        'views-related_actions-block' => array(
           'module' => 'views',
-          'delta' => 'related_content-block',
+          'delta' => 'related_actions-block',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
@@ -101,18 +55,18 @@ function takepart_custom_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Blocks: Related');
-  $export['related_content_curated'] = $context;
+  $export['related_action_curated'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'related_content_suggested';
+  $context->name = 'related_action_suggested';
   $context->description = '';
   $context->tag = 'Blocks: Related';
   $context->conditions = array(
     'field_bool' => array(
       'values' => array(
-        'field_suggest_content' => 'field_suggest_content',
+        'field_suggest_actions' => 'field_suggest_actions',
       ),
       'options' => array(
         'bool_field_value' => '1',
@@ -134,9 +88,9 @@ function takepart_custom_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-related_content-block_1' => array(
+        'views-related_actions-block_1' => array(
           'module' => 'views',
-          'delta' => 'related_content-block_1',
+          'delta' => 'related_actions-block_1',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
@@ -148,7 +102,7 @@ function takepart_custom_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Blocks: Related');
-  $export['related_content_suggested'] = $context;
+  $export['related_action_suggested'] = $context;
 
   return $export;
 }
