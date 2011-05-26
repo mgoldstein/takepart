@@ -310,6 +310,7 @@ function takepart_action_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 'action',
+          'audio' => 0,
           'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
@@ -319,8 +320,16 @@ function takepart_action_field_default_fields() {
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
+          'takepart_campaign' => 0,
+          'takepart_page' => 0,
           'takepart_quick_study' => 0,
+          'topic_front' => 0,
           'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
@@ -404,6 +413,11 @@ function takepart_action_field_default_fields() {
           'takepart_quick_study' => 0,
           'video_series' => 0,
         ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
       ),
       'translatable' => '1',
       'type' => 'node_reference',
@@ -481,6 +495,11 @@ function takepart_action_field_default_fields() {
           'openpublish_site_page' => 0,
           'openpublish_video' => 0,
           'section_front' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
