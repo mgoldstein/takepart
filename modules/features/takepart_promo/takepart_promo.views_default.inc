@@ -150,7 +150,7 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['relationships']['field_author_nid']['table'] = 'field_data_field_author';
   $handler->display->display_options['relationships']['field_author_nid']['field'] = 'field_author_nid';
   $handler->display->display_options['relationships']['field_author_nid']['required'] = 0;
-  $handler->display->display_options['relationships']['field_author_nid']['delta'] = '-1';
+  $handler->display->display_options['relationships']['field_author_nid']['delta'] = '1';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
