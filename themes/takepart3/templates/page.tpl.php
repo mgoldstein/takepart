@@ -16,13 +16,13 @@
   			
   			<div class="login-fb clearfix">
   					<span class="login-text">	<?php print l("Login", "user")?> or</span>
-  				<span class="fb"><a href="#"><img src="images/btn-fb-1.gif"></a></span>
+  				<span class="fb"><a href="#"><img src="<?php print $directory?>/images/btn-fb-1.gif"></a></span>
   			</div><!--/login-fb-->
   		</div><!--/join-login-top-->
   		
   	  <div class="clear"></div>
   			<ul id="top-follow">
-  				<li class="title"><img alt="follow us" src="images/title-follow-us.gif"></li>
+  				<li class="title"><img alt="follow us" src="<?php print $directory?>/images/title-follow-us.gif"></li>
   				<li class="fb"><a href="#">facebook</a></li>
   				<li class="twitter"><a href="#">twitter</a></li>
   				<li class="rss"><a href="#">rss</a></li>

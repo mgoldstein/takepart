@@ -2,6 +2,5 @@ name = TakePart 3.0 Theme
 description = The TakePart theme
 core = 7.x
 engine = phptemplate
-base theme = "tao"
 
 stylesheets[all][] = css/style.css
