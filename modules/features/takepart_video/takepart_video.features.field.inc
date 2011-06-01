@@ -1250,6 +1250,10 @@ function takepart_video_field_default_fields() {
             'parent' => '0',
             'vocabulary' => 'free_tags',
           ),
+          2 => array(
+            'parent' => '0',
+            'vocabulary' => 'series',
+          ),
         ),
       ),
       'translatable' => '1',
