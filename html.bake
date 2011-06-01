@@ -67,6 +67,99 @@ $info['projects']['views_php'] = array(
     'url' => "http://git.drupal.org/project/views_php.git"
   ),
 );
+
+
+// Update contrib modules to latest version even though OP3.x does not contain these version yet
+
+$info['projects']['media'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'download' => array(
+    'type' => 'git',
+    'branch' => '7.x-1.x',
+    'url' => "http://git.drupal.org/project/media.git",
+    'version' => '1.0-beta4'
+  ),
+);
+
+$info['projects']['date'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'download' => array(
+    'type' => 'git',
+    'branch' => '7.x-2.x',
+    'url' => "http://git.drupal.org/project/date.git",
+    'version' => '7.x-2.9-alpha3',
+  ),
+);
+
+$info['projects']['ctools'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'download' => array(
+    'type' => 'git',
+    'branch' => '7.x-1.x',
+    'url' => "http://git.drupal.org/project/ctools.git",
+    'version' => '7.x-1.0-beta1'
+  ),
+);
+
+$info['projects']['field_group'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'download' => array(
+    'type' => 'git',
+    'branch' => '7.x-1.x',
+    'url' => "http://git.drupal.org/project/field_group.git",
+    'version' => '7.x-1.0'
+  ),
+);
+
+$info['projects']['styles'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'download' => array(
+    'type' => 'git',
+    'branch' => '7.x-2.x',
+    'url' => "http://git.drupal.org/project/styles.git",
+    'version' => '7.x-2.0-alpha7'
+  ),
+);
+
+$info['projects']['imce'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'download' => array(
+    'type' => 'git',
+    'branch' => '7.x-1.x',
+    'url' => "http://git.drupal.org/project/imce.git",
+    'version' => '7.x-1.3'
+  ),
+);
+
+$info['projects']['nodequeue'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'download' => array(
+    'type' => 'git',
+    'branch' => 'master',
+    'url' => "http://git.drupal.org/project/nodequeue.git",
+    'version' => '7.x-2.0-alpha2'
+  ),
+);
+
+$info['projects']['token'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'download' => array(
+    'type' => 'git',
+    'branch' => '7.x-1.x',
+    'url' => "http://git.drupal.org/project/token.git",
+    'version' => '7.x-1.0-beta2'
+  ),
+);
+
+// Update contrib modules to latest version even though OP3.x does not contain these version yet
 $info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 $info['projects']['flag']['patch'][]   = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
 $info['projects']['token']['patch'][]  = 'http://drupal.org/files/issues/691078-token-field-tokens-v2.patch';
