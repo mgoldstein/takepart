@@ -29,6 +29,11 @@ function takepart3_preprocess_page(&$variables) {
 
   $variables['top_nav']       = _render_tp3_main_menu();
   $variables['hottopic_nav']  = _render_tp3_hottopics_menu();
+  $variables['film_camp_nav'] = _render_tp3_film_campaign_menu();
+  $variables['friends_takepart_nav'] = _render_tp3_friends_takepart_menu();
+  $variables['takepart_topics_nav'] = _render_tp3_topics_takepart_menu();
+  $variables['corporate_links_nav'] = _render_tp3_corporate_links_menu();
+  
   return $variables;
 }
 
@@ -40,9 +45,8 @@ function _render_tp3_main_menu() {
 
   $links = array();
   foreach($menu_data as $menu_item) {
-    //debug($menu_item['link']);
     $opts = array(
-      'attributes' => $menu_item['link']['options']['attributes'],
+      'attributes' => _default_menu_options($menu_item),
     );
     
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
@@ -64,9 +68,9 @@ function _render_tp3_hottopics_menu() {
   $links = array( 0 => "<li class='title'>hot topics:</li>" );
   
   foreach($menu_data as $menu_item) {
-    //debug($menu_item['link']);
+     
     $opts = array(
-      'attributes' => $menu_item['link']['options']['attributes'],
+      'attributes' => _default_menu_options($menu_item),
     );
     
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
@@ -74,4 +78,63 @@ function _render_tp3_hottopics_menu() {
   }
   
   return "<ul class='clearfix'>" . implode($links) ."</ul>";
+}
+
+function _render_tp3_corporate_links_menu() {
+  $menu_data = menu_tree_page_data("menu-takepart-links");
+
+  $links = array();
+  
+  foreach($menu_data as $menu_item) {
+    $opts = array(
+      'attributes' => _default_menu_options($menu_item),
+    );
+    
+    $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+    $links[] = "<li>". $link ."</li>";
+  }
+  
+  return "<ul class='clearfix' id='global-links'>" . implode($links) ."</ul>";
+}
+
+function _render_tp3_film_campaign_menu() {
+  return _render_menu_columns("menu-takepart-film-campaigns", 4);
+}
+
+function _render_tp3_friends_takepart_menu() {
+  return _render_menu_columns('menu-takepart-friends', 5);
+}
+
+function _render_tp3_topics_takepart_menu() {
+  return _render_menu_columns('menu-takepart-topics', 4);
+}
+
+function _render_menu_columns($menu_key, $col_limit) {
+  $menu_data = menu_tree_page_data($menu_key);
+  $columns = array();
+  $count = 0;
+
+  foreach($menu_data as $menu_item) {
+    // divide by number in each column
+    $column_number = round(floor($count / $col_limit));
+   
+    $opts = array(
+      'attributes' => _default_menu_options($menu_item),
+    );
+    $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+    $columns[$column_number][] = "<li>". $link ."</li>";
+    $count++;
+  }
+
+  $menu_cols = "";
+  foreach ($columns as $col) {
+    $menu_cols .= "<div class='column'><ul>".  implode($col) ."</ul></div>\n";
+  }
+  return $menu_cols;
+}
+
+
+function _default_menu_options($menu_item) {
+  $menu_opts = empty($menu_item['link']['options']['attributes']) ? array() : $menu_item['link']['options']['attributes'];
+  return $menu_opts;
 }

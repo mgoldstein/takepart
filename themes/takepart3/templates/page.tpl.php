@@ -84,5 +84,47 @@
   
   <div id="footer" class='clear'>
     <?php print render($page['footer']) ?>
+    <div id="our-film-campaigns" class="footer-column-wrapper clearfix">
+      <div class="column title">
+        <a href="#">our film campaigns</a>
+      </div><!--/column-->
+      <?php print $film_camp_nav ?>
+     </div>
+     <div id="friends-of-takepart" class="footer-column-wrapper clearfix">
+      <div class="column title">
+        <a href="#">friends of takepart</a>
+      </div><!--/column-->
+      <?php print $friends_takepart_nav ?>
+    </div>
+    
+    <div id="footer-set-links" class="footer-column-wrapper clearfix">
+      <div class="column title">
+        <a href="#" id="news-and-blogs">news &amp; blogs</a>
+        <a href="#" id="issues">issues</a>
+        <a href="#" id="actions">actions</a>
+      </div><!--/column-->
+      <?php print $takepart_topics_nav ?>
+    </div>
+    <div id="footer-links" class="clear clearfix">
+      <ul class="clearfix" id="soc-links">
+        <li id="fb">  <a target="_blank" href="http://www.facebook.com/takepart">facebook</a></li>
+        <li id="twitter"> <a target="_blank" href="http://www.twitter.com/takepart">twitter</a></li>
+      </ul>
+      
+      <ul class="clearfix" id="global-links">
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
+        <li><a href="/help">Help</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li class="last"><a href="/terms-of-use">Terms of Use</a></li>
+      </ul>
+
+    </div>     
+
+    <div id="footer-about">
+      <p>TakePart is the Social Action Network&trade; of <a target="_blank" href="http://www.participantmedia.com/">Participant Media</a></p>
+      <div id="footer-legal">&copy; 2008-2011 TakePart, LLC</div>
+    </div>
+
   </div>
 </div>
