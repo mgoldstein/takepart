@@ -437,8 +437,10 @@ function takepart_campaign_field_default_fields() {
           'profile' => 0,
           'section_front' => 0,
           'takepart_campaign' => 0,
+          'takepart_group' => 'takepart_group',
           'takepart_page' => 0,
           'takepart_quick_study' => 0,
+          'takepart_slide' => 0,
           'topic_front' => 0,
           'video_series' => 0,
         ),
@@ -641,7 +643,7 @@ function takepart_campaign_field_default_fields() {
   $fields['node-takepart_campaign-field_tp_campaign_allances'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_tp_campaign_allances',
