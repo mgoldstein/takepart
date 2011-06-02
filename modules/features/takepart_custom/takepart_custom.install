@@ -6,7 +6,7 @@ function takepart_custom_install() {
   variable_set("node_admin_theme", '1');
   
   // populate menus with default items.
-  _takepart_custom_populate_main_menu();
+  //_takepart_custom_populate_main_menu();
   _takepart_custom_populate_hottopics_menu();
   _takepart_custom_populate_friedsoftakepart_menu();
   _takepart_custom_populate_topics_menu();
@@ -14,6 +14,16 @@ function takepart_custom_install() {
   _takepart_custom_populate_corporatelinks_menu();
   
   menu_cache_clear_all();
+}
+
+/**
+ * Add the main menu.
+ */
+function takepart_custom_update_7000() {
+  $main_menu = menu_tree_page_data('main-menu');
+  if (empty($main_menu)) {
+    _takepart_custom_populate_main_menu();
+  }
 }
 
 /**
