@@ -159,87 +159,6 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_blog_post-field_display_tag'
-  $fields['node-openpublish_blog_post-field_display_tag'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_display_tag',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'parent' => '0',
-            'vocabulary' => 'blog',
-          ),
-          1 => array(
-            'parent' => '0',
-            'vocabulary' => 'free_tags',
-          ),
-          2 => array(
-            'parent' => '0',
-            'vocabulary' => 'topic',
-          ),
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'openpublish_blog_post',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 18,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_display_tag',
-      'label' => 'Display Tag',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'taxonomy',
-        'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'taxonomy_autocomplete',
-        'weight' => '16',
-      ),
-    ),
-  );
-
   // Exported field: 'node-openpublish_blog_post-field_blogpost_featured_action'
   $fields['node-openpublish_blog_post-field_blogpost_featured_action'] = array(
     'field_config' => array(
@@ -303,7 +222,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '15',
         ),
       ),
       'entity_type' => 'node',
@@ -323,6 +242,362 @@ function takepart_blog_field_default_fields() {
         ),
         'type' => 'node_reference_autocomplete',
         'weight' => '9',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_blog_post-field_blogpost_subhead'
+  $fields['node-openpublish_blog_post-field_blogpost_subhead'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_blogpost_subhead',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_blog_post',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 4,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_blogpost_subhead',
+      'label' => 'Subhead',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_blog_post-field_display_tag'
+  $fields['node-openpublish_blog_post-field_display_tag'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_display_tag',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'blog',
+          ),
+          1 => array(
+            'parent' => '0',
+            'vocabulary' => 'free_tags',
+          ),
+          2 => array(
+            'parent' => '0',
+            'vocabulary' => 'topic',
+          ),
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_blog_post',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 18,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '16',
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_display_tag',
+      'label' => 'Display Tag',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '16',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_blog_post-field_free_tag'
+  $fields['node-openpublish_blog_post-field_free_tag'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_free_tag',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'free_tags',
+          ),
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_blog_post',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 16,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_free_tag',
+      'label' => 'Free Tag',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '18',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_blog_post-field_promo_headline'
+  $fields['node-openpublish_blog_post-field_promo_headline'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_promo_headline',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_blog_post',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'This is used instead of the Headline to represent the Blog Post wherever it appears on the site',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 5,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '23',
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_promo_headline',
+      'label' => 'Promo Headline',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '6',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_blog_post-field_promo_text'
+  $fields['node-openpublish_blog_post-field_promo_text'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_promo_text',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_blog_post',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'This is used to tease the Blog Post in certain placements on the site.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 6,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '22',
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_promo_text',
+      'label' => 'Promo Text',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '7',
       ),
     ),
   );
@@ -390,7 +665,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '14',
         ),
       ),
       'entity_type' => 'node',
@@ -477,7 +752,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '7',
         ),
       ),
       'entity_type' => 'node',
@@ -564,7 +839,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '6',
         ),
       ),
       'entity_type' => 'node',
@@ -588,33 +863,38 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_blog_post-field_blogpost_subhead'
-  $fields['node-openpublish_blog_post-field_blogpost_subhead'] = array(
+  // Exported field: 'node-openpublish_blog_post-field_series'
+  $fields['node-openpublish_blog_post-field_series'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_blogpost_subhead',
+      'field_name' => 'field_series',
       'foreign keys' => array(
-        'format' => array(
+        'tid' => array(
           'columns' => array(
-            'format' => 'format',
+            'tid' => 'tid',
           ),
-          'table' => 'filter_format',
+          'table' => 'taxonomy_term_data',
         ),
       ),
       'indexes' => array(
-        'format' => array(
-          0 => 'format',
+        'tid' => array(
+          0 => 'tid',
         ),
       ),
-      'module' => 'text',
+      'module' => 'taxonomy',
       'settings' => array(
-        'max_length' => '255',
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'series',
+          ),
+        ),
       ),
       'translatable' => '1',
-      'type' => 'text',
+      'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
       'bundle' => 'openpublish_blog_post',
@@ -624,34 +904,31 @@ function takepart_blog_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 4,
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 17,
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '21',
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_blogpost_subhead',
-      'label' => 'Subhead',
+      'field_name' => 'field_series',
+      'label' => 'Series',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '5',
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '19',
       ),
     ),
   );
@@ -702,7 +979,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '5',
         ),
       ),
       'entity_type' => 'node',
@@ -770,7 +1047,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'node',
@@ -838,7 +1115,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
       ),
       'entity_type' => 'node',
@@ -856,283 +1133,6 @@ function takepart_blog_field_default_fields() {
         ),
         'type' => 'options_onoff',
         'weight' => '15',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-openpublish_blog_post-field_free_tag'
-  $fields['node-openpublish_blog_post-field_free_tag'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_free_tag',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'parent' => '0',
-            'vocabulary' => 'free_tags',
-          ),
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'openpublish_blog_post',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 16,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_free_tag',
-      'label' => 'Free Tag',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'taxonomy',
-        'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'taxonomy_autocomplete',
-        'weight' => '18',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-openpublish_blog_post-field_promo_headline'
-  $fields['node-openpublish_blog_post-field_promo_headline'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_promo_headline',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'openpublish_blog_post',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'This is used instead of the Headline to represent the Blog Post wherever it appears on the site',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 5,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_promo_headline',
-      'label' => 'Promo Headline',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '6',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-openpublish_blog_post-field_promo_text'
-  $fields['node-openpublish_blog_post-field_promo_text'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_promo_text',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(),
-      'translatable' => '1',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'openpublish_blog_post',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'This is used to tease the Blog Post in certain placements on the site.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 6,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_promo_text',
-      'label' => 'Promo Text',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '1',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '5',
-        ),
-        'type' => 'text_textarea',
-        'weight' => '7',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-openpublish_blog_post-field_series'
-  $fields['node-openpublish_blog_post-field_series'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_series',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'parent' => '0',
-            'vocabulary' => 'series',
-          ),
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'openpublish_blog_post',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 17,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_series',
-      'label' => 'Series',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '19',
       ),
     ),
   );
@@ -1163,7 +1163,7 @@ function takepart_blog_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'media',
+          'module' => NULL,
           'settings' => array(),
           'type' => 'media_large',
           'weight' => 7,
@@ -1172,7 +1172,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '20',
         ),
       ),
       'entity_type' => 'node',
@@ -1251,9 +1251,10 @@ function takepart_blog_field_default_fields() {
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'node',
@@ -1299,7 +1300,7 @@ function takepart_blog_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'media',
+          'module' => NULL,
           'settings' => array(),
           'type' => 'media_large',
           'weight' => '2',
@@ -1312,7 +1313,7 @@ function takepart_blog_field_default_fields() {
         ),
         'token' => array(
           'label' => 'above',
-          'module' => 'media',
+          'module' => NULL,
           'settings' => array(),
           'type' => 'media_large',
           'weight' => '2',
