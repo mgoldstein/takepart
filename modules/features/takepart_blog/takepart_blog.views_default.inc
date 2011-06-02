@@ -190,7 +190,7 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Sort criterion: Broken/missing handler */
+  /* Sort criterion: Arguments: Multi-item Argument Order */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'views_sort_by_arg_order';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
