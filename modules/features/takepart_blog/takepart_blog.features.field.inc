@@ -1163,9 +1163,11 @@ function takepart_blog_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
-          'settings' => array(),
-          'type' => 'media_large',
+          'module' => 'media',
+          'settings' => array(
+            'file_view_mode' => 'media_large',
+          ),
+          'type' => 'media',
           'weight' => 7,
         ),
         'teaser' => array(
@@ -1300,9 +1302,11 @@ function takepart_blog_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
-          'settings' => array(),
-          'type' => 'media_large',
+          'module' => 'media',
+          'settings' => array(
+            'file_view_mode' => 'default',
+          ),
+          'type' => 'media',
           'weight' => '2',
         ),
         'full' => array(
@@ -1311,11 +1315,22 @@ function takepart_blog_field_default_fields() {
           'type' => 'hidden',
           'weight' => '3',
         ),
+        'summary' => array(
+          'label' => 'hidden',
+          'module' => 'media',
+          'settings' => array(
+            'file_view_mode' => 'default',
+          ),
+          'type' => 'media',
+          'weight' => '2',
+        ),
         'token' => array(
           'label' => 'above',
-          'module' => NULL,
-          'settings' => array(),
-          'type' => 'media_large',
+          'module' => 'media',
+          'settings' => array(
+            'file_view_mode' => 'media_large',
+          ),
+          'type' => 'media',
           'weight' => '2',
         ),
       ),
@@ -1407,7 +1422,21 @@ function takepart_blog_field_default_fields() {
           'module' => 'node_reference_redirect',
           'settings' => array(),
           'type' => 'rediect',
+          'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'module' => 'node_reference_redirect',
+          'settings' => array(),
+          'type' => 'rediect',
           'weight' => '0',
+        ),
+        'summary' => array(
+          'label' => 'hidden',
+          'module' => 'node_reference_redirect',
+          'settings' => array(),
+          'type' => 'rediect',
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'taxonomy_term',

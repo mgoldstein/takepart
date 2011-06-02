@@ -128,7 +128,7 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = 'field_blog_branding_image';
   $handler->display->display_options['row_plugin'] = 'term';
-  $handler->display->display_options['row_options']['view_mode'] = 'full';
+  $handler->display->display_options['row_options']['view_mode'] = 'summary';
   $handler->display->display_options['row_options']['links'] = 0;
   /* Field: Taxonomy term: Branding Image */
   $handler->display->display_options['fields']['field_blog_branding_image']['id'] = 'field_blog_branding_image';
