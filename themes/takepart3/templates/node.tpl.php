@@ -13,17 +13,17 @@
   <?php if (!empty($title_suffix)) print render($title_suffix); ?>
 
   <?php if (!empty($submitted)): ?>
-    <div class='<?php print $hook ?>-submitted clearfix'><?php print $submitted ?></div>
+    <div class='submitted clearfix'><?php print $submitted ?></div>
   <?php endif; ?>
 
   <?php if (!empty($content)): ?>
-    <div class='<?php print $hook ?>-content clearfix <?php if (!empty($is_prose)) print 'prose' ?>'>
+    <div class='content clearfix <?php if (!empty($is_prose)) print 'prose' ?>'>
       <?php print render($content) ?>
     </div>
   <?php endif; ?>
 
   <?php if (!empty($links)): ?>
-    <div class='<?php print $hook ?>-links clearfix'>
+    <div class='links clearfix'>
       <?php print render($links) ?>
     </div>
   <?php endif; ?>
