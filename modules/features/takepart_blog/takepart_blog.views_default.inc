@@ -57,7 +57,11 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['id'] = 'field_blogpost_blog_tid';
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['table'] = 'field_data_field_blogpost_blog';
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['field'] = 'field_blogpost_blog_tid';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_options']['term_page'] = 1;
+  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_options']['node'] = 0;
+  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_options']['limit'] = 0;
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['summary']['format'] = 'default_summary';
@@ -75,6 +79,17 @@ function takepart_blog_views_default_views() {
   /* Display: Blog Summary */
   $handler = $view->new_display('block', 'Blog Summary', 'block');
   $handler->display->display_options['display_description'] = 'List Blog post limited by blog bases on an argument';
+
+  /* Display: Blog Front List */
+  $handler = $view->new_display('block', 'Blog Front List', 'block_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['links'] = 0;
+  $handler->display->display_options['row_options']['comments'] = 0;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $translatables['blog_posts'] = array(
     t('Master'),
     t('Blog Posts'),
@@ -87,6 +102,7 @@ function takepart_blog_views_default_views() {
     t('All'),
     t('Blog Summary'),
     t('List Blog post limited by blog bases on an argument'),
+    t('Blog Front List'),
   );
   $export['blog_posts'] = $view;
 
@@ -112,7 +128,7 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = 'field_blog_branding_image';
   $handler->display->display_options['row_plugin'] = 'term';
-  $handler->display->display_options['row_options']['view_mode'] = 'full';
+  $handler->display->display_options['row_options']['view_mode'] = 'summary';
   $handler->display->display_options['row_options']['links'] = 0;
   /* Field: Taxonomy term: Branding Image */
   $handler->display->display_options['fields']['field_blog_branding_image']['id'] = 'field_blog_branding_image';
@@ -178,6 +194,7 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'views_sort_by_arg_order';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['order'] = 'DESC';
   $handler->display->display_options['sorts']['weight']['argument_number'] = '0';
   /* Contextual filter: Taxonomy: Term ID */
   $handler->display->display_options['arguments']['tid']['id'] = 'tid';
