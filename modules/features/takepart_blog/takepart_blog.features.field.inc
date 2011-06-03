@@ -350,6 +350,10 @@ function takepart_blog_field_default_fields() {
             'parent' => '0',
             'vocabulary' => 'topic',
           ),
+          3 => array(
+            'parent' => '0',
+            'vocabulary' => 'series',
+          ),
         ),
       ),
       'translatable' => '1',
