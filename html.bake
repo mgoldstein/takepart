@@ -1,11 +1,12 @@
 <?php
 $base = array(
-  'branch'=> '7.x-1.x',
+  'branch'=> 'master',
   'url'=> 'git@phase2.beanstalkapp.com:/bake-openpublish.git',
   'type'=> 'git',
   'name'=> 'openpublish.bake'
 );
 bake_merge_file($info, $config, $base);
+//bake_merge_file($info, $config, '/opt/development/tsmith/www.takepart.com/bake-openpublish/openpublish.bake');
 //adding views_php we are using this for the topic front featured item pages
 
 $info['projects']['search_api'] = array(
@@ -78,7 +79,7 @@ $info['projects']['media'] = array(
     'type' => 'git',
     'branch' => '7.x-1.x',
     'url' => "http://git.drupal.org/project/media.git",
-    'version' => '1.0-beta4'
+    'version' => '7.x-1.0-beta4'
   ),
 );
 
@@ -160,7 +161,7 @@ $info['projects']['token'] = array(
 );
 
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
-$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
+//$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 $info['projects']['flag']['patch'][]   = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
 $info['projects']['token']['patch'][]  = 'http://drupal.org/files/issues/691078-token-field-tokens-v2.patch';
 
