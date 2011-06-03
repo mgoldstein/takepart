@@ -32,10 +32,10 @@
   <div class="clear clearfix" id="nav-wrap">
     <?php print $top_nav ?>
   	<div id="top-search">
-  	  <div class="form-item">
+  	  <div class="tpform-item">
   	  <input type="text" class="form-text search-field" value="Search TakePart" size="15" id="edit-search-theme-form-1" name="search_theme_form">
   	  
-  	  <input type="submit" class="form-submit" value="submit" id="edit-submit">
+  	  <input type="submit" class="tpform-submit" value="submit" id="edit-submit">
   	  </div><!--form item-->
   	</div><!--/top search-->
   </div>

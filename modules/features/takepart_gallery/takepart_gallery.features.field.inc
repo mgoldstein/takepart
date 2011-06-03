@@ -35,6 +35,8 @@ function takepart_gallery_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 'action',
+          'audio' => 0,
+          'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
@@ -43,7 +45,16 @@ function takepart_gallery_field_default_fields() {
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
+          'takepart_campaign' => 0,
+          'takepart_page' => 0,
+          'takepart_quick_study' => 0,
+          'topic_front' => 0,
           'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
@@ -152,6 +163,79 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-openpublish_photo_gallery-field_free_tag'
+  $fields['node-openpublish_photo_gallery-field_free_tag'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_free_tag',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'free_tags',
+          ),
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_photo_gallery',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 13,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_free_tag',
+      'label' => 'Free Tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '17',
+      ),
+    ),
+  );
+
   // Exported field: 'node-openpublish_photo_gallery-field_related_content'
   $fields['node-openpublish_photo_gallery-field_related_content'] = array(
     'field_config' => array(
@@ -177,6 +261,7 @@ function takepart_gallery_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
+          'blog_front' => 0,
           'openpublish_article' => 'openpublish_article',
           'openpublish_blog_post' => 'openpublish_blog_post',
           'openpublish_photo' => 'openpublish_photo',
@@ -184,8 +269,14 @@ function takepart_gallery_field_default_fields() {
           'openpublish_site_page' => 0,
           'openpublish_video' => 'openpublish_video',
           'profile' => 0,
-          'section_front' => 0,
-          'video_series' => 'video_series',
+          'section_front' => 'section_front',
+          'takepart_quick_study' => 0,
+          'video_series' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
@@ -364,13 +455,85 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-openpublish_photo_gallery-field_topic'
+  $fields['node-openpublish_photo_gallery-field_topic'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_topic',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'topic',
+          ),
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_photo_gallery',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 12,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_topic',
+      'label' => 'Topic Tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '15',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Free Tags');
   t('Related Actions');
   t('Related Content');
   t('Series');
   t('Suggest Related Actions?');
   t('Suggest Related Content?');
+  t('Topic Tags');
   t('User can elect to toggle off the automatically generated list of Related Content (mixed bag) on a Gallery specific basis. This determination is made by common Topic tagging');
   t('Users can relate this node to one or more other Action nodes. These nodes are displayed in a block or inset on the Gallery page, atop an automatically-generated list of Related Actions.');
   t('Users can relate this node to one or more other nodes. These nodes are displayed in a block or inset on the Gallery page, atop an automatically-generated list of Related Content.');
