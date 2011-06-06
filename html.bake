@@ -133,13 +133,13 @@ $info['projects']['token'] = array(
 $info['projects']['wysiwyg'] = array(
   'type'=> 'module',
   'subdir' => 'contrib',
-  'version' => '7.x-2.0'
+  'version' => '2.0'
 );
 
 $info['projects']['ckeditor'] = array(
   'type'=> 'module',
   'subdir' => 'contrib',
-  'version' => '7.x-1.2'
+  'version' => '1.2'
 );
 
 
