@@ -109,8 +109,7 @@ $info['projects']['field_group'] = array(
 $info['projects']['styles'] = array(
   'type'=> 'module',
   'subdir' => 'contrib',
-  'version' => '2.0-alpha7'
-);
+   );
 
 $info['projects']['imce'] = array(
   'type'=> 'module',
@@ -135,14 +134,6 @@ $info['projects']['wysiwyg'] = array(
   'subdir' => 'contrib',
   'version' => '2.0'
 );
-
-$info['projects']['ckeditor'] = array(
-  'type'=> 'module',
-  'subdir' => 'contrib',
-  'version' => '1.2'
-);
-
-
 
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
 //$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
