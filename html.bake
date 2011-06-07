@@ -130,17 +130,17 @@ $info['projects']['token'] = array(
   'version' => '1.0-beta2'
 );
 
-$info['projects']['wysiwyg'] = array(
-  'type'=> 'module',
-  'subdir' => 'contrib',
-  'version' => '7.x-2.0'
-);
+//$info['projects']['wysiwyg'] = array(
+//  'type'=> 'module',
+//  'subdir' => 'contrib',
+//  'version' => '7.x-2.0'
+//);
 
-$info['projects']['ckeditor'] = array(
-  'type'=> 'module',
-  'subdir' => 'contrib',
-  'version' => '7.x-1.2'
-);
+//$info['projects']['ckeditor'] = array(
+//  'type'=> 'module',
+//  'subdir' => 'contrib',
+//  'version' => '7.x-1.2'
+//);
 
 
 
