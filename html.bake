@@ -130,6 +130,22 @@ $info['projects']['token'] = array(
   'version' => '1.0-beta2'
 );
 
+$info['projects']['wysiwyg'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'version' => '7.x-2.0'
+);
+
+$info['projects']['ckeditor'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'version' => '7.x-1.2'
+);
+
+
+
+
+
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
 //$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 $info['projects']['flag']['patch'][]   = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';

@@ -15,7 +15,7 @@
   			<a href="#" class="join">Join TakePart</a>
   			
   			<div class="login-fb clearfix">
-  					<span class="login-text">	<?php print l("Login", "user")?> or</span>
+  					<span class="login-text">	<?php print l("Login", "user/login")?> or</span>
   				<span class="fb"><a href="#"><img src="<?php print $directory?>/images/btn-fb-1.gif"></a></span>
   			</div><!--/login-fb-->
   		</div><!--/join-login-top-->
@@ -23,8 +23,8 @@
   	  <div class="clear"></div>
   			<ul id="top-follow">
   				<li class="title"><img alt="follow us" src="<?php print $directory?>/images/title-follow-us.gif"></li>
-  				<li class="fb"><a href="#">facebook</a></li>
-  				<li class="twitter"><a href="#">twitter</a></li>
+  				<li class="fb"><a href="http://www.facebook.com/takepart">facebook</a></li>
+  				<li class="twitter"><a href="http://www.twitter.com/takepart">twitter</a></li>
   				<li class="rss"><a href="#">rss</a></li>
   			</ul><!--/top follow-->
     </div>
@@ -111,7 +111,7 @@
         <li id="fb">  <a target="_blank" href="http://www.facebook.com/takepart">facebook</a></li>
         <li id="twitter"> <a target="_blank" href="http://www.twitter.com/takepart">twitter</a></li>
       </ul>
-      
+      <!-- These should be converted to a menu, so TP can manage these links without changing code as they may change from time to time -->
       <ul class="clearfix" id="global-links">
         <li><a href="/about-us">About Us</a></li>
         <li><a href="/contact-us">Contact Us</a></li>
