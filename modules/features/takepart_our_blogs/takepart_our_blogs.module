@@ -1,0 +1,8 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Our Blogs feature.
+ */
+
+include_once('takepart_our_blogs.features.inc');
+include_once('takepart_our_blogs.custom.inc');
