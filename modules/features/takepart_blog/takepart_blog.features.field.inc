@@ -222,7 +222,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -291,7 +291,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -350,10 +350,6 @@ function takepart_blog_field_default_fields() {
             'parent' => '0',
             'vocabulary' => 'topic',
           ),
-          3 => array(
-            'parent' => '0',
-            'vocabulary' => 'series',
-          ),
         ),
       ),
       'translatable' => '1',
@@ -376,7 +372,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -449,7 +445,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '19',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -517,7 +513,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '23',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -583,7 +579,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '22',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -669,7 +665,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -756,7 +752,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -843,7 +839,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -917,7 +913,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '21',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -983,7 +979,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -1051,7 +1047,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -1119,7 +1115,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -1167,18 +1163,16 @@ function takepart_blog_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'media',
-          'settings' => array(
-            'file_view_mode' => 'media_large',
-          ),
-          'type' => 'media',
+          'module' => NULL,
+          'settings' => array(),
+          'type' => 'media_large',
           'weight' => 7,
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '20',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -1257,10 +1251,9 @@ function takepart_blog_field_default_fields() {
         ),
         'teaser' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '2',
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -1311,7 +1304,7 @@ function takepart_blog_field_default_fields() {
             'file_view_mode' => 'default',
           ),
           'type' => 'media',
-          'weight' => '0',
+          'weight' => '2',
         ),
         'full' => array(
           'label' => 'above',
@@ -1319,8 +1312,8 @@ function takepart_blog_field_default_fields() {
           'type' => 'hidden',
           'weight' => '3',
         ),
-        'summary' => array(
-          'label' => 'hidden',
+        'our blogs summary' => array(
+          'label' => 'above',
           'module' => 'media',
           'settings' => array(
             'file_view_mode' => 'default',
@@ -1330,11 +1323,9 @@ function takepart_blog_field_default_fields() {
         ),
         'token' => array(
           'label' => 'above',
-          'module' => 'media',
-          'settings' => array(
-            'file_view_mode' => 'media_large',
-          ),
-          'type' => 'media',
+          'module' => NULL,
+          'settings' => array(),
+          'type' => 'media_large',
           'weight' => '2',
         ),
       ),
@@ -1423,19 +1414,13 @@ function takepart_blog_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '2',
-        ),
-        'full' => array(
-          'label' => 'above',
           'module' => 'node_reference_redirect',
           'settings' => array(),
           'type' => 'rediect',
           'weight' => '0',
         ),
-        'summary' => array(
-          'label' => 'hidden',
+        'our blogs summary' => array(
+          'label' => 'above',
           'module' => 'node_reference_redirect',
           'settings' => array(),
           'type' => 'rediect',
@@ -1463,68 +1448,6 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-blog-field_blog_summary'
-  $fields['taxonomy_term-blog-field_blog_summary'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_blog_summary',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'views_field',
-      'settings' => array(
-        'global_setting' => 255,
-      ),
-      'translatable' => '1',
-      'type' => 'views_field',
-    ),
-    'field_instance' => array(
-      'bundle' => 'blog',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'views_field',
-          'settings' => array(
-            'view' => 'blog_posts block',
-          ),
-          'type' => 'views_field_formatter',
-          'weight' => '1',
-        ),
-        'summary' => array(
-          'label' => 'hidden',
-          'module' => 'views_field',
-          'settings' => array(
-            'view' => 'blog_posts block',
-          ),
-          'type' => 'views_field_formatter',
-          'weight' => '3',
-        ),
-      ),
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'field_blog_summary',
-      'label' => 'Post Summary',
-      'required' => 0,
-      'settings' => array(
-        'local' => 0,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'views_field',
-        'settings' => array(
-          'widget_setting' => 'bob',
-        ),
-        'type' => 'views_field',
-        'weight' => '3',
-      ),
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
@@ -1534,7 +1457,6 @@ function takepart_blog_field_default_fields() {
   t('Featured Action');
   t('Free Tag');
   t('Override');
-  t('Post Summary');
   t('Promo Headline');
   t('Promo Text');
   t('Related Actions');
