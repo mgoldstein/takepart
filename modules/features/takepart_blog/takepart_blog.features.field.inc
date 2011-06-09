@@ -1312,7 +1312,16 @@ function takepart_blog_field_default_fields() {
           'type' => 'hidden',
           'weight' => '3',
         ),
-        'our blogs summary' => array(
+        'our_blogs_summary' => array(
+          'label' => 'above',
+          'module' => 'media',
+          'settings' => array(
+            'file_view_mode' => 'default',
+          ),
+          'type' => 'media',
+          'weight' => '2',
+        ),
+        'summary' => array(
           'label' => 'above',
           'module' => 'media',
           'settings' => array(
@@ -1417,14 +1426,21 @@ function takepart_blog_field_default_fields() {
           'module' => 'node_reference_redirect',
           'settings' => array(),
           'type' => 'rediect',
-          'weight' => '0',
+          'weight' => '1',
         ),
-        'our blogs summary' => array(
+        'our_blogs_summary' => array(
           'label' => 'above',
           'module' => 'node_reference_redirect',
           'settings' => array(),
           'type' => 'rediect',
           'weight' => '1',
+        ),
+        'summary' => array(
+          'label' => 'above',
+          'module' => 'node_reference_redirect',
+          'settings' => array(),
+          'type' => 'rediect',
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -1448,8 +1464,74 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
+  // Exported field: 'taxonomy_term-blog-field_blog_view'
+  $fields['taxonomy_term-blog-field_blog_view'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_blog_view',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'views_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'views_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'blog',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
+        'our_blogs_summary' => array(
+          'label' => 'hidden',
+          'module' => 'views_field',
+          'settings' => array(
+            'view' => 'blog_posts block_2',
+          ),
+          'type' => 'views_field_formatter',
+          'weight' => '3',
+        ),
+        'summary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'field_blog_view',
+      'label' => 'Blog View',
+      'required' => 0,
+      'settings' => array(
+        'local' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'views_field',
+        'settings' => array(
+          'widget_setting' => 'bob',
+        ),
+        'type' => 'views_field',
+        'weight' => '3',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Blog View');
   t('Body');
   t('Branding Image');
   t('Context');
