@@ -1,0 +1,34 @@
+<?php
+// $Id$
+/**
+ * TakePart User Module
+ * @file
+ * Creates a user interface for customizations to login and register forms.
+ * @author alphageekboy
+ * @date 06/10/2011
+ * @company Phase2 Technology
+ */
+
+function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+// print_r($form);
+  $register_title = variable_get("takepart_user_register_page_title","Join TakePart");
+  drupal_set_title($register_title);
+}
+
+function takepart_user_form_user_login_alter(&$form, &$form_state, $form_id) {
+  $login_title = variable_get("takepart_user_login_page_title","Member Login");
+  drupal_set_title($login_title);
+}
+
+function takepart_user_form_user_pass_alter(&$form, &$form_state, $form_id) {
+  $pass_title = variable_get("takepart_user_password_page_title","Forgot Password");
+  drupal_set_title($pass_title);
+}
+
+
+
+function custom_menu_alter(&$items) {
+  $items['user']['type']          =  MENU_CALLBACK;
+  $items['user/register']['type'] = MENU_CALLBACK;
+  $items['user/password']['type'] = MENU_CALLBACK;
+}
