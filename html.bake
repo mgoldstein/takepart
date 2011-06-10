@@ -137,7 +137,7 @@ $info['projects']['wysiwyg'] = array(
 
 $info['project'['terms_of_use'] = array(
   'type' => 'module',
-  'subdir' => 'contrib',
+  'subdir' => 'contrib'
 );
 
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
