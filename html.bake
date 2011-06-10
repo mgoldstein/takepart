@@ -137,7 +137,7 @@ $info['projects']['wysiwyg'] = array(
 
 $info['project']['terms_of_use'] = array(
   'type' => 'module',
-  'subdir' => 'contrib'
+  'subdir' => 'contrib',
   'version' = '1.1'
 );
 
