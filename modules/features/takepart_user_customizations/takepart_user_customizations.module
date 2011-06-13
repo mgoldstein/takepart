@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart User Customizations feature.
+ */
+
+include_once('takepart_user_customizations.features.inc');

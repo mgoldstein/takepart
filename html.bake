@@ -140,6 +140,7 @@ $info['projects']['terms_of_use'] = array(
   'subdir' => 'contrib',
   'version' => '1.1'
 );
+
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
 //$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 $info['projects']['flag']['patch'][]   = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';

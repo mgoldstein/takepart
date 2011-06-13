@@ -9,10 +9,25 @@
  * @company Phase2 Technology
  */
 
+/* ToDo 
+ * 
+ * - Add comments to functions
+ * - Add link if username is already taken to login
+ * - Add custom validation for email address
+ * - ? Change terms of use error message
+ */
+ 
+function takepart_user_menu_alter(&$items) {
+  $items['user/login']['type']    = MENU_CALLBACK;
+  $items['user/register']['type'] = MENU_CALLBACK;
+  $items['user/password']['type'] = MENU_CALLBACK;
+}
+ 
 function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form_id) {
-// print_r($form);
   $register_title = variable_get("takepart_user_register_page_title","Join TakePart");
   drupal_set_title($register_title);
+  $form['#validate'][] = '_takepart_user_validate';
+  $form['actions']['submit']['#value'] = 'Register';
 }
 
 function takepart_user_form_user_login_alter(&$form, &$form_state, $form_id) {
@@ -24,11 +39,33 @@ function takepart_user_form_user_pass_alter(&$form, &$form_state, $form_id) {
   $pass_title = variable_get("takepart_user_password_page_title","Forgot Password");
   drupal_set_title($pass_title);
 }
+                       
+function takepart_user_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
+  if(!in_array("administrator", $account->roles) && ($user->uid <> 1)) {
+    $form['field_account_dateofbirth']['#access'] = FALSE;
+  }
+}
 
+function _takepart_user_validate(&$form, &$form_state) {
+  
+  $values = $form_state['values'];
+  if (isset($values['field_account_dateofbirth'])) {
+    $language = $form['field_account_dateofbirth']['#language'];
+    $user_dob = $values['field_account_dateofbirth'][$language][0]['value'];
+    if (_takepart_checkage($user_dob) == 0) {
+      $_SESSION['underaged'] = true;
+      $underage_msg = variable_get('takepart_user_registration_underage_message','You do not meet TakePart&#39;s age requirement.');
+      form_set_error($name = 'field_account_dateofbirth', t($underage_msg));
+    }   // end checkage   
+  } // end date of birth
+}
 
-
-function custom_menu_alter(&$items) {
-  $items['user']['type']          =  MENU_CALLBACK;
-  $items['user/register']['type'] = MENU_CALLBACK;
-  $items['user/password']['type'] = MENU_CALLBACK;
+function _takepart_checkage($user_dob) {
+  $ageTime = strtotime($user_dob); // Get the person's birthday timestamp
+  $t = time(); // Store current time for consistency
+  $age = ($ageTime < 0) ? ( $t + ($ageTime * -1) ) : $t - $ageTime;
+  $year = 60 * 60 * 24 * 365;
+  $age_years = $age / $year;
+  return $age_years < 18 ? FALSE : TRUE;
 }
