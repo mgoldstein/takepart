@@ -145,6 +145,7 @@ $info['projects']['terms_of_use'] = array(
 //$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 $info['projects']['flag']['patch'][]   = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
 $info['projects']['token']['patch'][]  = 'http://drupal.org/files/issues/691078-token-field-tokens-v2.patch';
+$info['projects']['context']['patch'][]  = 'http://drupal.org/files/issues/context-block-contextual-links-1137794-2.patch';
 
 // libraries
 $info['libraries']['ckeditor']['download']['type'] = "get";
