@@ -1,0 +1,59 @@
+<?php
+
+
+/*
+ * implemntation of hook_context_plugins()
+ */
+function context_related_menu_context_plugins() {
+  $plugins = array();
+    $plugins['context_related_menu_reaction'] = array(
+      'handler' => array(
+      'path' => drupal_get_path('module', 'context_related_menu') .'/plugins',
+      'file' => 'context_related_menu_reaction.inc',
+      'class' => 'context_related_menu_reaction',
+      'parent' => 'context_reaction',
+    ),
+  );
+  return $plugins;
+}
+
+
+/*
+ * implemntation of hook_context_registry()
+ */
+function context_related_menu_context_registry() { 
+  return array(
+    'reactions' => array(
+      'related_menu' => array(
+        'title' => t('Releated Menu'),
+        'description' => 'Releate a menu to this context',
+        'plugin' => 'context_related_menu_reaction',
+      ),
+    ),
+  );
+}
+
+/*
+ * implements of hook_block_info()
+ */
+function context_related_menu_block_info() {
+  $blocks['context_related_menu'] = array(
+    'info' => 'Context Related Menu',
+  );
+  return $blocks;
+}
+
+/*
+ * implements of hook_block_view()
+ *
+ */
+function context_related_menu_block_view($delta = 'context_menu') {
+  dpm($delta);
+  if ($delta == 'context_related_menu') {
+    if ($plugin = context_get_plugin('reaction', 'related_menu')) {
+      $menu = $plugin->execute();
+        return menu_block_view($menu);
+    }
+  }
+}
+
