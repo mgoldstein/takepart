@@ -28,7 +28,7 @@ function takepart_rotator_slide_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_takepart_slide';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_takepart_slide'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -49,14 +49,14 @@ function takepart_rotator_slide_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_takepart_slide';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_subject_field_takepart_slide'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_takepart_slide';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['comment_takepart_slide'] = $strongarm;
 
   $strongarm = new stdClass;

@@ -28,7 +28,7 @@ function takepart_quick_study_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_takepart_quick_study';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_takepart_quick_study'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -49,7 +49,7 @@ function takepart_quick_study_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_takepart_quick_study';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_subject_field_takepart_quick_study'] = $strongarm;
 
   $strongarm = new stdClass;

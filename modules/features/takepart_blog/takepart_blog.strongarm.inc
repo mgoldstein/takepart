@@ -21,7 +21,7 @@ function takepart_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_blog_front';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['comment_blog_front'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -35,7 +35,7 @@ function takepart_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_blog_front';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_blog_front'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -56,7 +56,7 @@ function takepart_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_blog_front';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_subject_field_blog_front'] = $strongarm;
 
   $strongarm = new stdClass;

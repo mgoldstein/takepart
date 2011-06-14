@@ -28,7 +28,7 @@ function takepart_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_video_series';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_video_series'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -91,6 +91,20 @@ function takepart_video_strongarm() {
   $strongarm->name = 'node_submitted_video_series';
   $strongarm->value = 1;
   $export['node_submitted_video_series'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_openpublish_video_pattern';
+  $strongarm->value = 'video/[node:title]';
+  $export['pathauto_node_openpublish_video_pattern'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_video_series_pattern';
+  $strongarm->value = 'video-series/[node:title]';
+  $export['pathauto_node_video_series_pattern'] = $strongarm;
 
   return $export;
 }

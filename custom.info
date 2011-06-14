@@ -35,7 +35,6 @@ dependencies[] = apps
 dependencies[] = comment_notify
 dependencies[] = conditional_styles
 dependencies[] = context
-dependencies[] = ckeditor
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = defaultcontent
