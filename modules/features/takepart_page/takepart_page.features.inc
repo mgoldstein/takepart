@@ -22,7 +22,7 @@ function takepart_page_node_info() {
     'takepart_page' => array(
       'name' => t('Page'),
       'base' => 'node_content',
-      'description' => t('Genearl Page'),
+      'description' => t('General Page'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
