@@ -148,7 +148,7 @@ $info['projects']['captcha'] = array(
 $info['projects']['recaptcha'] = array(
   'type' => 'module',
   'subdir' => 'contrib',
-  'version' => '7.x-1.7'
+  'version' => '1.7'
 );
 
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
