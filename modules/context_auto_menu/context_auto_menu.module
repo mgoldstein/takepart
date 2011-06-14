@@ -1,0 +1,73 @@
+<?php
+
+
+/*
+ * implemntation of hook_context_plugins()
+ */
+function context_auto_menu_context_plugins() {
+  $plugins = array();
+    $plugins['context_auto_menu_reaction'] = array(
+      'handler' => array(
+      'path' => drupal_get_path('module', 'context_auto_menu') .'/plugins',
+      'file' => 'context_auto_menu_reaction.inc',
+      'class' => 'context_auto_menu_reaction',
+      'parent' => 'context_reaction',
+    ),
+  );
+  return $plugins;
+}
+
+
+/*
+ * implemntation of hook_context_registry()
+ */
+function context_auto_menu_context_registry() { 
+  return array(
+    'reactions' => array(
+      'auto_menu' => array(
+        'title' => t('Auto Menu'),
+        'description' => 'Create Menu linked to context',
+        'plugin' => 'context_auto_menu_reaction',
+      ),
+    ),
+  );
+}
+
+/*
+ * implements of hook_block_info()
+ */
+function context_auto_menu_block_info() {
+  $blocks['context_menu'] = array(
+    'info' => 'Context Related Menu',
+  );
+  return $blocks;
+}
+
+/*
+ * implements of hook_block_view()
+ *
+ */
+function context_auto_menu_block_view($delta = 'context_menu') {
+  dpm($delta);
+  if ($delta == 'context_menu') {
+    if ($plugin = context_get_plugin('reaction', 'auto_menu')) {
+      $active_contexts = context_active_contexts();
+      foreach($active_contexts as $context) {
+        if(isset($context->reactions['auto_menu']['context_menu'])) {
+          $menu = $context->reactions['auto_menu']['context_menu'];
+          $menu = $menu == 'context_auto_menu' ? $context->name : $menu;
+          if (!menu_load($menu)) {
+            $title = $context->description ? $context->description : $menu;
+            $menu_object = array("menu_name" => $menu, "title"=> $title, "description" => "");
+            dpm($menu_object);
+            menu_save($menu_object);
+          }
+          dpm($menu);
+          return menu_block_view($menu);
+        }
+      }
+    }
+  }
+  return array("subject"=> 'bob');
+}
+
