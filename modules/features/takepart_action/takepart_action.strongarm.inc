@@ -35,7 +35,7 @@ function takepart_action_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_action';
-  $strongarm->value = '10';
+  $strongarm->value = '50';
   $export['comment_default_per_page_action'] = $strongarm;
 
   $strongarm = new stdClass;
