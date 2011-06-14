@@ -10,7 +10,7 @@ class context_related_menu_reaction extends context_reaction {
   function options_form($context) {
     if (module_exists('menu')) {
 
-      $menus = menu_get_menus();
+      $menus = array('' =>'No Menu Selected') + menu_get_menus();
       $menus['context_related_menu'] = "*Context Specific*";
       $form = array();
       $form['context_menu'] = array(

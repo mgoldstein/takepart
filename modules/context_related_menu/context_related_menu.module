@@ -48,11 +48,17 @@ function context_related_menu_block_info() {
  *
  */
 function context_related_menu_block_view($delta = 'context_menu') {
-  dpm($delta);
   if ($delta == 'context_related_menu') {
     if ($plugin = context_get_plugin('reaction', 'related_menu')) {
       $menu = $plugin->execute();
-        return menu_block_view($menu);
+        
+        $block = menu_block_view($menu);
+        // if we have no items we want to show the block so we can add new things
+        if (!$block['content']) {
+          $block['content']['#markup'] = "empty";
+          $block['content']['#contextual_links'] = array("menu" => array("admin/structure/menu/manage", array($menu)));
+        }
+        return $block;
     }
   }
 }
