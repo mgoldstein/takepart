@@ -14,8 +14,8 @@ function takepart_user_customizations_captcha_default_points() {
   $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */
   $captcha->api_version = 1;
   $captcha->form_id = 'comment_node_action_form';
-  $captcha->module = '';
-  $captcha->captcha_type = '';
+  $captcha->module = 'recaptcha';
+  $captcha->captcha_type = 'reCAPTCHA';
   $export['comment_node_action_form'] = $captcha;
 
   $captcha = new stdClass;
@@ -38,16 +38,16 @@ function takepart_user_customizations_captcha_default_points() {
   $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */
   $captcha->api_version = 1;
   $captcha->form_id = 'comment_node_openpublish_article_form';
-  $captcha->module = '';
-  $captcha->captcha_type = '';
+  $captcha->module = 'recaptcha';
+  $captcha->captcha_type = 'reCAPTCHA';
   $export['comment_node_openpublish_article_form'] = $captcha;
 
   $captcha = new stdClass;
   $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */
   $captcha->api_version = 1;
   $captcha->form_id = 'comment_node_openpublish_blog_post_form';
-  $captcha->module = '';
-  $captcha->captcha_type = '';
+  $captcha->module = 'recaptcha';
+  $captcha->captcha_type = 'reCAPTCHA';
   $export['comment_node_openpublish_blog_post_form'] = $captcha;
 
   $captcha = new stdClass;
@@ -62,8 +62,8 @@ function takepart_user_customizations_captcha_default_points() {
   $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */
   $captcha->api_version = 1;
   $captcha->form_id = 'comment_node_openpublish_photo_gallery_form';
-  $captcha->module = '';
-  $captcha->captcha_type = '';
+  $captcha->module = 'recaptcha';
+  $captcha->captcha_type = 'reCAPTCHA';
   $export['comment_node_openpublish_photo_gallery_form'] = $captcha;
 
   $captcha = new stdClass;
@@ -78,8 +78,8 @@ function takepart_user_customizations_captcha_default_points() {
   $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */
   $captcha->api_version = 1;
   $captcha->form_id = 'comment_node_openpublish_video_form';
-  $captcha->module = '';
-  $captcha->captcha_type = '';
+  $captcha->module = 'recaptcha';
+  $captcha->captcha_type = 'reCAPTCHA';
   $export['comment_node_openpublish_video_form'] = $captcha;
 
   $captcha = new stdClass;
