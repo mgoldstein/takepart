@@ -233,7 +233,7 @@ function takepart_rotator_slide_field_default_fields() {
       'label' => 'Headline',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -301,7 +301,7 @@ function takepart_rotator_slide_field_default_fields() {
       'label' => 'Preview Headline',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -407,7 +407,7 @@ function takepart_rotator_slide_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'media',
+          'module' => NULL,
           'settings' => array(),
           'type' => 'media_large',
           'weight' => '3',
@@ -473,7 +473,7 @@ function takepart_rotator_slide_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'media',
+          'module' => NULL,
           'settings' => array(),
           'type' => 'media_large',
           'weight' => '4',
