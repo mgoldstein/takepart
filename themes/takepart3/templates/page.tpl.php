@@ -7,22 +7,25 @@
   		</div><!--/hot topics nav-->
   		
   		<div class="text">
-  		<img src="<?php print $directory?>/images/title-inspiration-to-action.gif" alt="inspiration to action">
+  		<img src="<?php print $takepart_theme_path; ?>/images/title-inspiration-to-action.gif" alt="inspiration to action">
   		</div><!--/text-->
 		</div>
 		<div class="header-right">
   		<div id="join-login-top">
-  			<a href="#" class="join">Join TakePart</a>
-  			
-  			<div class="login-fb clearfix">
-  					<span class="login-text">	<?php print l("Login", "user/login")?> or</span>
-  				<span class="fb"><a href="#"><img src="<?php print $directory?>/images/btn-fb-1.gif"></a></span>
-  			</div><!--/login-fb-->
+      <div class="login-fb clearfix">  	   <?php print $user_nav; ?>
+	<!--
+  					<span class="login-text">	<?php // print l("Login", "user/login")?> or</span>
+  				<span class="fb"><a href="#"><img src="<?php  //print $takepart_theme_path; ?>/images/btn-fb-1.gif"></a></span>
+  			-><!--/login-fb-->
+ </div>-
+       	  
   		</div><!--/join-login-top-->
   		
+  	 
+  	   
   	  <div class="clear"></div>
-  			<ul id="top-follow">
-  				<li class="title"><img alt="follow us" src="<?php print $directory?>/images/title-follow-us.gif"></li>
+  	  	<ul id="top-follow">
+  				<li class="title"><img alt="follow us" src="<?php print $takepart_theme_path; ?>/images/title-follow-us.gif"></li>
   				<li class="fb"><a href="http://www.facebook.com/takepart">facebook</a></li>
   				<li class="twitter"><a href="http://www.twitter.com/takepart">twitter</a></li>
   				<li class="rss"><a href="#">rss</a></li>
