@@ -340,15 +340,19 @@ function takepart_blog_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'blog',
+            'vocabulary' => 'free_tags',
           ),
           1 => array(
             'parent' => '0',
-            'vocabulary' => 'free_tags',
+            'vocabulary' => 'blog',
           ),
           2 => array(
             'parent' => '0',
             'vocabulary' => 'topic',
+          ),
+          3 => array(
+            'parent' => '0',
+            'vocabulary' => 'series',
           ),
         ),
       ),
@@ -1322,13 +1326,13 @@ function takepart_blog_field_default_fields() {
           'weight' => '2',
         ),
         'summary' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'media',
           'settings' => array(
-            'file_view_mode' => 'default',
+            'file_view_mode' => 'media_large',
           ),
           'type' => 'media',
-          'weight' => '2',
+          'weight' => '0',
         ),
         'token' => array(
           'label' => 'above',
@@ -1437,10 +1441,9 @@ function takepart_blog_field_default_fields() {
         ),
         'summary' => array(
           'label' => 'above',
-          'module' => 'node_reference_redirect',
           'settings' => array(),
-          'type' => 'rediect',
-          'weight' => '0',
+          'type' => 'hidden',
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -1503,10 +1506,13 @@ function takepart_blog_field_default_fields() {
           'weight' => '3',
         ),
         'summary' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'label' => 'hidden',
+          'module' => 'views_field',
+          'settings' => array(
+            'view' => 'blog_posts block',
+          ),
+          'type' => 'views_field_formatter',
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'taxonomy_term',
