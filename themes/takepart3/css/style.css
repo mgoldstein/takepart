@@ -200,6 +200,13 @@ img.photo, .gallery-item img {
 	left: 0px;
 	
 }
+/*
+ * TODO: remove this
+ * this is here to show how one can add styles for campaign-pages
+ */
+.campaign-page #header {
+  display:none;
+}
 
 #logo a {
 	text-indent: -9000px;
