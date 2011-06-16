@@ -27,13 +27,14 @@ function takepart3_preprocess_page(&$variables) {
   //debug($main_menu_data);
   //debug(array_keys($main_menu_data));
 
-  $variables['top_nav']       = _render_tp3_main_menu();
-  $variables['hottopic_nav']  = _render_tp3_hottopics_menu();
-  $variables['film_camp_nav'] = _render_tp3_film_campaign_menu();
-  $variables['friends_takepart_nav'] = _render_tp3_friends_takepart_menu();
-  $variables['takepart_topics_nav'] = _render_tp3_topics_takepart_menu();
-  $variables['corporate_links_nav'] = _render_tp3_corporate_links_menu();
-  
+  $variables['top_nav']               = _render_tp3_main_menu();
+  $variables['hottopic_nav']          = _render_tp3_hottopics_menu();
+  $variables['film_camp_nav']         = _render_tp3_film_campaign_menu();
+  $variables['friends_takepart_nav']  = _render_tp3_friends_takepart_menu();
+  $variables['takepart_topics_nav']   = _render_tp3_topics_takepart_menu();
+  $variables['corporate_links_nav']   = _render_tp3_corporate_links_menu();
+  $variables['user_nav']              = _render_tp3_user_menu();
+  $variables['takepart_theme_path']   = drupal_get_path('theme', 'takepart3');
   return $variables;
 }
 
@@ -56,6 +57,24 @@ function _render_tp3_main_menu() {
   return "<ul id='top-nav'>" . implode($links) ."</ul>";
 }
 
+/**
+ * Helper to output the custom HTML for out main menu.
+ */
+function _render_tp3_user_menu() {
+  $menu_data = menu_tree_page_data("user-menu");
+
+  $links = array();
+  foreach($menu_data as $menu_item) {
+    $opts = array(
+      'attributes' => _default_menu_options($menu_item),
+    );
+    
+    $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+    $links[] = "<li>". $link ."</li>";
+  }
+  
+  return "<ul id='user-nav'>" . implode($links) ."</ul>";
+}
 
 /**
  * Helper to output the custom HTML for out hot topic menu.  

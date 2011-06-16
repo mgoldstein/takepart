@@ -257,24 +257,23 @@ img.photo, .gallery-item img {
 /*** Join / Login links ***/
 
 #join-login-top {
-	background: url(../images/bg-login-wrap.gif) repeat-x;
-	font-size: 10px;
-	color: #FFF;
+/* 	background: url(../images/bg-login-wrap.gif) repeat-x; */
+	font-size: 15px;
 	padding: 0 10px;
 	height: 20px;
 	width: 200px;
 	float: right;
-	margin-top: -5px;
+/* 	margin-top: -5px; */
 }
 
 #join-login-top a {
-	color: #FFF;
+/* 	color: #FFF; */
 }
 
 a.join {
 	float: left;
 	display: block;
-	background: url(../images/sprite.png) no-repeat -291px 0;
+/* 	background: url(../images/sprite.png) no-repeat -291px 0; */
 	padding: 4px 0 0 6px;
 	height: 23px;
 	width: 73px;
