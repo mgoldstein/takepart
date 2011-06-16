@@ -38,6 +38,9 @@ function takepart_campaign_context_default_contexts() {
         ),
       ),
     ),
+    'theme_html' => array(
+      'class' => 'campaign-page',
+    ),
   );
   $context->condition_mode = 0;
 
