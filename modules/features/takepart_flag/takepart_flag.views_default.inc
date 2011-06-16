@@ -36,23 +36,23 @@ function takepart_flag_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
-  $handler->display->display_options['style_plugin'] = 'bulk';
+  $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['grouping'] = 'type';
   $handler->display->display_options['style_options']['columns'] = array(
-    'title' => 'title',
     'type' => 'type',
+    'title' => 'title',
     'changed' => 'changed',
     'edit_node' => 'edit_node',
   );
   $handler->display->display_options['style_options']['default'] = 'changed';
   $handler->display->display_options['style_options']['info'] = array(
-    'title' => array(
+    'type' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => 'views-align-left',
       'separator' => '',
     ),
-    'type' => array(
+    'title' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => 'views-align-left',
@@ -60,8 +60,8 @@ function takepart_flag_views_default_views() {
     ),
     'changed' => array(
       'sortable' => 1,
-      'default_sort_order' => 'desc',
-      'align' => 'views-align-left',
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-right',
       'separator' => '',
     ),
     'edit_node' => array(
@@ -71,47 +71,8 @@ function takepart_flag_views_default_views() {
   );
   $handler->display->display_options['style_options']['override'] = 1;
   $handler->display->display_options['style_options']['sticky'] = 1;
-  $handler->display->display_options['style_options']['empty_table'] = 1;
-  $handler->display->display_options['style_options']['selected_operations'] = array(
-    'views_bulk_operations_delete_node_action' => 'views_bulk_operations_delete_node_action',
-    'nodequeue_add_action' => 0,
-    'flag_nodes:1980f2a3af0b5c3577850d4ba2600405' => 0,
-    'node_assign_owner_action' => 0,
-    'flag_nodes:ebe84aecb2d7367fc9bf4299baca1f1a' => 0,
-    'node_mass_update:a27b9efabcd054685a549378b174ad11' => 0,
-    'system_message_action' => 0,
-    'views_bulk_operations_action' => 0,
-    'views_bulk_operations_script_action' => 0,
-    'node_make_sticky_action' => 0,
-    'node_make_unsticky_action' => 0,
-    'node_mass_update:8ce21b08bb8e773d10018b484fe4815e' => 0,
-    'node_mass_update:c4d3b28efb86fd703619a50b74d43794' => 0,
-    'views_bulk_operations_taxonomy_action' => 0,
-    'flag_nodes:2571021512a242b96db4be4eb237fda4' => 0,
-    'flag_nodes:d8286f2276bce336e17f92b1156eafc6' => 0,
-    'views_bulk_operations_argument_selector_action' => 0,
-    'node_promote_action' => 0,
-    'node_mass_update:14de7d028b4bffdf2b4a266562ca18ac' => 0,
-    'node_publish_action' => 0,
-    'node_mass_update:9c585624b9b3af0b4687d5f97f35e047' => 0,
-    'system_goto_action' => 0,
-    'node_unpromote_action' => 0,
-    'nodequeue_remove_action' => 0,
-    'node_save_action' => 0,
-    'system_send_email_action' => 0,
-    'flag_nodes:56773ac8417b39e0ec7224605183286b' => 0,
-    'flag_nodes:76e4c513dfadc798e2eb84ad0a677401' => 0,
-    'node_unpublish_action' => 0,
-    'node_unpublish_by_keyword_action' => 0,
-    'node_mass_update:0ccad85c1ebe4c9ceada1aa64293b080' => 0,
-    'pathauto_node_update_alias_multiple:0d56f9c10fbb36ec3264abea71b6f416' => 0,
-  );
-  $handler->display->display_options['style_options']['execution_type'] = '2';
-  $handler->display->display_options['style_options']['display_type'] = '1';
-  $handler->display->display_options['style_options']['skip_confirmation'] = 0;
-  $handler->display->display_options['style_options']['display_result'] = 1;
-  $handler->display->display_options['style_options']['merge_single_action'] = 0;
-  $handler->display->display_options['style_options']['hide_select_all'] = 0;
+  $handler->display->display_options['style_options']['order'] = 'desc';
+  $handler->display->display_options['style_options']['empty_table'] = 0;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['text']['id'] = 'text';
   $handler->display->display_options['empty']['text']['table'] = 'views';
@@ -187,6 +148,7 @@ function takepart_flag_views_default_views() {
   $handler->display->display_options['filters']['type']['exposed'] = TRUE;
   $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['label'] = 'Content: Type';
+  $handler->display->display_options['filters']['type']['expose']['use_operator'] = TRUE;
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
   $handler->display->display_options['filters']['type']['expose']['reduce'] = 0;
