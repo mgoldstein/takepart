@@ -1,3 +1,2 @@
 name = Context Auto Menu
 core = 7.x
-files[] = plugins/context_related_menu_reaction.inc
