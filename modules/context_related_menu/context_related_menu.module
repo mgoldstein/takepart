@@ -39,7 +39,6 @@ function context_related_menu_context_load_alter(&$context) {
     $menu_name = $context->name;
     $menu = menu_load($menu_name);
     if (!$menu) {
-      dpm("bob");
       $title = $context->description ? $context->description : $menu_name;
       $menu = array("menu_name" => $menu_name, "title"=> $title, "description" => "");
       //menu_save($menu);
