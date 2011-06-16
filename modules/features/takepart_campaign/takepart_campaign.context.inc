@@ -38,9 +38,6 @@ function takepart_campaign_context_default_contexts() {
         ),
       ),
     ),
-    'related_menu' => array(
-      'context_menu' => 'context_related_menu',
-    ),
   );
   $context->condition_mode = 0;
 
