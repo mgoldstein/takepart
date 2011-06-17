@@ -340,11 +340,11 @@ function takepart_blog_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'free_tags',
+            'vocabulary' => 'blog',
           ),
           1 => array(
             'parent' => '0',
-            'vocabulary' => 'blog',
+            'vocabulary' => 'free_tags',
           ),
           2 => array(
             'parent' => '0',
@@ -1323,7 +1323,7 @@ function takepart_blog_field_default_fields() {
             'file_view_mode' => 'default',
           ),
           'type' => 'media',
-          'weight' => '2',
+          'weight' => '1',
         ),
         'summary' => array(
           'label' => 'hidden',
@@ -1434,10 +1434,9 @@ function takepart_blog_field_default_fields() {
         ),
         'our_blogs_summary' => array(
           'label' => 'above',
-          'module' => 'node_reference_redirect',
           'settings' => array(),
-          'type' => 'rediect',
-          'weight' => '1',
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'summary' => array(
           'label' => 'above',
@@ -1503,7 +1502,7 @@ function takepart_blog_field_default_fields() {
             'view' => 'blog_posts block_2',
           ),
           'type' => 'views_field_formatter',
-          'weight' => '3',
+          'weight' => '2',
         ),
         'summary' => array(
           'label' => 'hidden',

@@ -1,38 +1,5 @@
 <?php
 
-
-/*
- * implemntation of hook_context_plugins()
- */
-function context_related_menu_context_plugins() {
-  $plugins = array();
-    $plugins['context_related_menu_reaction'] = array(
-      'handler' => array(
-      'path' => drupal_get_path('module', 'context_related_menu') .'/plugins',
-      'file' => 'context_related_menu_reaction.inc',
-      'class' => 'context_related_menu_reaction',
-      'parent' => 'context_reaction',
-    ),
-  );
-  return $plugins;
-}
-
-
-/*
- * implemntation of hook_context_registry()
- */
-function context_related_menu_context_registry() { 
-  return array(
-    'reactions' => array(
-      'related_menu' => array(
-        'title' => t('Releated Menu'),
-        'description' => 'Releate a menu to this context',
-        'plugin' => 'context_related_menu_reaction',
-      ),
-    ),
-  );
-}
-
 /*
  * implements of hook_block_info()
  */
@@ -46,20 +13,40 @@ function context_related_menu_block_info() {
 /*
  * implements of hook_block_view()
  *
+ * if our block is empty we want to still have it show so we can add stuff to it
+ * TODO: I think this should be based on somekind of perm and if so maybe should be general
+ * for all menu blocks
  */
 function context_related_menu_block_view($delta = 'context_menu') {
-  if ($delta == 'context_related_menu') {
-    if ($plugin = context_get_plugin('reaction', 'related_menu')) {
-      $menu = $plugin->execute();
-        
-        $block = menu_block_view($menu);
-        // if we have no items we want to show the block so we can add new things
-        if (!$block['content']) {
-          $block['content']['#markup'] = "empty";
-          $block['content']['#contextual_links'] = array("menu" => array("admin/structure/menu/manage", array($menu)));
-        }
-        return $block;
-    }
+  $block = menu_block_view($delta);
+  // if we have no items we want to show the block so we can add new things
+  if (!$block['content']) {
+    $block['content']['#markup'] = "empty";
+    $block['content']['#contextual_links'] = array("menu" => array("admin/structure/menu/manage", array($delta)));
   }
+  return $block;
 }
 
+/* 
+ * implements hook_context_load_alter()
+ *
+ * when the context loads we insure we have a menu with the same name as the context
+ * and then change the delta to that.
+ * If the menu has data we change the module as well
+ */
+function context_related_menu_context_load_alter(&$context) {
+  if(isset($context->reactions['block']['blocks']['context_related_menu-context_related_menu'])) {
+    $menu_name = $context->name;
+    $menu = menu_load($menu_name);
+    if (!$menu) {
+      $title = $context->description ? $context->description : $menu_name;
+      $menu = array("menu_name" => $menu_name, "title"=> $title, "description" => "");
+      //menu_save($menu);
+    }
+    $context->reactions['block']['blocks']['context_related_menu-context_related_menu']['delta'] = $menu_name;
+    if(menu_tree($menu_name)) {
+      $context->reactions['block']['blocks']['context_related_menu-context_related_menu']['module'] = 'menu';
+    }
+    
+  }
+}
