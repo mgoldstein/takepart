@@ -152,7 +152,8 @@ $info['projects']['recaptcha'] = array(
 );
 $info['projects']['views_slideshow'] = array(
   'type' => 'module',
-  'subdir' => 'contrib'
+  'subdir' => 'contrib',
+  'version' => '3.0-alpha1'
 );
 
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
