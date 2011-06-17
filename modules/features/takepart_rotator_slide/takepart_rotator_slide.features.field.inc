@@ -407,9 +407,9 @@ function takepart_rotator_slide_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'styles',
+          'module' => NULL,
           'settings' => array(),
-          'type' => 'styles_media_slide_rotator_main',
+          'type' => 'media_large',
           'weight' => '3',
         ),
         'teaser' => array(
