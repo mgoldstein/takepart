@@ -155,6 +155,12 @@ $info['projects']['views_slideshow'] = array(
   'subdir' => 'contrib',
   'version' => '3.0-alpha1'
 );
+$info['projects']['libraries'] = array(
+  'type' => 'module',
+  'subdir' => 'contrib',
+  'version' => '1.0'
+);
+
 
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
 //$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';

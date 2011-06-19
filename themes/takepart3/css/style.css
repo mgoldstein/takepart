@@ -1316,3 +1316,17 @@ span.comment-num {
 
 .share-this-strip li.email {margin-right: 0;}
 
+
+#views_slideshow_cycle_main_slide_rotator-block {
+ float: left;
+ margin-right: 15px;
+
+}
+
+#views_slideshow_pager_field_item_slide_rotator-block_0 {
+  margin-top: 10px;
+}
+
+.views-slideshow-pager-field-item {
+ margin-bottom: 30px;
+}
