@@ -25,6 +25,36 @@ function takepart_rotator_slide_views_api() {
 }
 
 /**
+ * Implementation of hook_image_default_styles().
+ */
+function takepart_rotator_slide_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: takepart_rotator_slide
+  $styles['takepart_rotator_slide'] = array(
+    'name' => 'takepart_rotator_slide',
+    'effects' => array(
+      3 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '420',
+          'height' => '370',
+        ),
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implementation of hook_node_info().
  */
 function takepart_rotator_slide_node_info() {

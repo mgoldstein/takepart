@@ -221,7 +221,7 @@ function takepart_rotator_slide_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_slide_headline_override',
-      'label' => 'Preview Headline',
+      'label' => 'Main Image Headline',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -328,11 +328,9 @@ function takepart_rotator_slide_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'media',
-          'settings' => array(
-            'file_view_mode' => 'media_original',
-          ),
-          'type' => 'media',
+          'module' => 'styles',
+          'settings' => array(),
+          'type' => 'styles_media_takepart_rotator_slide_main',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -376,8 +374,8 @@ function takepart_rotator_slide_field_default_fields() {
   t('Display Topic');
   t('Headline');
   t('Main Image');
+  t('Main Image Headline');
   t('Optional headline to serve as the main title of this slide.  If provided, the headline will appear in the transparent overlay and in the rollover preview.  Max limit of 35 characters. HTML is allowed, though not recommended.');
-  t('Preview Headline');
   t('Start typing the title of the story to feature.');
   t('Story Link');
   t('This will override the regular headline.  This is required for campaigns.');

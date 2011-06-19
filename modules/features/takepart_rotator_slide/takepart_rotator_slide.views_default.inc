@@ -144,7 +144,7 @@ function takepart_rotator_slide_views_default_views() {
   $handler->display->display_options['fields']['field_slide_label']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_slide_label']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_slide_label']['field_api_classes'] = 0;
-  /* Field: Content: Preview Headline */
+  /* Field: Content: Main Image Headline */
   $handler->display->display_options['fields']['field_slide_headline_override']['id'] = 'field_slide_headline_override';
   $handler->display->display_options['fields']['field_slide_headline_override']['table'] = 'field_data_field_slide_headline_override';
   $handler->display->display_options['fields']['field_slide_headline_override']['field'] = 'field_slide_headline_override';
@@ -172,7 +172,7 @@ function takepart_rotator_slide_views_default_views() {
   $handler->display->display_options['fields']['field_slide_main_media']['label'] = '';
   $handler->display->display_options['fields']['field_slide_main_media']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_slide_main_media']['alter']['text'] = '[field_slide_featured_item] ';
-  $handler->display->display_options['fields']['field_slide_main_media']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['field_slide_main_media']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_slide_main_media']['alter']['path'] = '[field_slide_featured_item] ';
   $handler->display->display_options['fields']['field_slide_main_media']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_slide_main_media']['alter']['external'] = 0;
