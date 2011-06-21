@@ -20,7 +20,7 @@
 function takepart_user_menu_alter(&$items) {
 //  $items['user/%user_category/edit']['title'] = 'My Account';
 
-  $items['user']['type']         = MENU_CALLBACK;
+  $items['user']['type']          = MENU_CALLBACK;
   $items['user/register']['type'] = MENU_CALLBACK;
   $items['user/password']['type'] = MENU_CALLBACK;
   /*
