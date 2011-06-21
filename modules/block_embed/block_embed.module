@@ -1,0 +1,200 @@
+<?php
+/*
+ * hook_page_alter()
+ *
+ * we are adding a post render to find embed to transform
+ */
+function block_embed_page_alter(&$page) {
+  $page['#post_render'][] = 'block_embed_post_render';
+  //@TODO this need to be embed on page that need it not everywhere
+  if(context_isset("block_embed", "get_form")) {
+    $embeds = block_embed_embeds();
+    drupal_add_css(drupal_get_path("module", "block_embed") . "/block_embed.css");
+    drupal_add_js(
+      array(
+        "block_embed_embeds"=> array_keys($embeds)
+      ), 'setting');
+    $page['content']['block_embed'] = drupal_get_form('block_embed_embed_form');
+  }
+}
+
+/*
+ * a post render function to transform all embeds
+ */
+function block_embed_post_render($content) {
+ $pattern = "/(<div[^>]*embed_type.*?<\/div>)/";
+ $content = preg_replace_callback($pattern, "_block_embed_replace", $content);
+  
+  return $content;
+}
+/*
+ * The tranform replace callback
+ *
+ * this take all match for embed divs
+ * and transforms them into there embed content
+ */
+function _block_embed_replace($matches) {
+  $replacements = array();
+  $subject = $matches[0];
+  $doc = new DOMDocument();
+  $f = $doc->createDocumentFragment();
+  $f->appendXML($subject);
+  $embed = $f->firstChild;
+  $type = $embed->getAttribute("embed_type");
+  foreach($embed->attributes as $attr) {
+    $info[$attr->nodeName] = $attr->nodeValue;
+  }
+  $plugin = block_embed_embed($type);
+  $cb = isset($plugin['embed callback']) ? $plugin['embed callback'] : $plugin['name'] ."embed";
+  if (function_exists($cb)) {
+    return $cb($info);
+  }
+  return $matches[0];
+}
+
+/*
+ * returns a embed plugin by its name
+ *
+ * PARAM: type the name of the embed plugin
+ *
+ * return: the plugin array
+ */
+function block_embed_embed($type) {
+  ctools_include('plugins');
+  return ctools_get_plugins('block_embed', 'embed', $type);
+}
+
+/*
+ * returns all embed plugins
+ *
+ * RETURN : an array of plugin arrays
+ */
+function block_embed_embeds() {
+  ctools_include('plugins');
+  return ctools_get_plugins('block_embed', 'embed');
+}
+
+function block_embed_ctools_plugin_type() {
+  return array("embed" => array('defaults' =>array()));
+}
+function block_embed_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'block_embed' && $plugin == 'embed') {
+    return 'plugins';
+  }
+}
+
+
+function block_embed_wysiwyg_include_directory($type) {
+  switch($type) {
+    case 'plugins':
+      return "wysiwyg_plugins";
+  }
+}
+
+function block_embed_menu() {
+  $items['block_embed/embed-form'] = array(
+    'title' => 'Embed',
+    'page callback' => 'block_embed_embed_form_page',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function block_embed_embed_form_page() {
+  $form = drupal_get_form('block_embed_embed_form');
+  return $form;
+  //ajax_deliver($form);
+}
+function block_embed_embed_form($form, &$form_state) {
+  $types = block_embed_embeds();
+  $plugin_options = array();
+  foreach($types as $id =>$type) {
+    $plugin_options[$id]  = $type['name'];
+  }
+  $form['plugin'] = array(
+    '#type' => 'select',
+    '#options' => $plugin_options,
+    '#ajax' => array(
+      'callback' => 'block_embed_ajax',
+      'wrapper' => 'form-wrapper',
+      'method' => 'replace',
+      '#default_value' => '',
+    ),
+  );
+  if (!isset($form_state['values']['plugin'])) {
+    $form_state['values']['plugin'] = 'block';
+  }
+  /*
+  $form['plugin'] = array(
+    '#type' => 'hidden',
+    '#default_value' => 'node',
+  );
+  */
+
+  if(isset($form_state['values']['plugin'])) {
+    $plugin = $types[$form_state['values']['plugin']];
+    $cb = isset($plugin['wysiwyg form callback']) ? $plugin['wysiwyg form callback'] : $plugin['name'] ."_wysiwyg_form";
+
+    if (function_exists($cb)) {
+      $cb($form, $form_state);
+    }
+  }
+  $form['submit'] = array(
+    '#value' =>'Insert',
+    '#type' => 'submit',
+    '#ajax' => array(
+      'callback' => 'block_embed_ajax',
+      //'wrapper' => 'form-wrapper',
+      'wrapper' => 'form-wrapper',
+      'method' => 'replace',
+    ),
+  );
+  $form = array('wrapper' => $form);
+  $form['wrapper']['#prefix'] = "<div id = 'form-wrapper'>";
+  $form['wrapper']['#suffix'] = "</div>";
+  $form['#submit'][] = 'block_embed_embed_form_submit';
+  
+  return $form;
+}
+function block_embed_embed_form_submit($form, &$form_state) {
+  $embed = block_embed_embed($form_state['values']['plugin']);
+  $cb = isset($embed['wysiwyg submit callback']) ? $embed['wysiwyg submit callback'] : $embed['name'] ."_wysiwyg_submit";
+  if (function_exists($cb)) {
+    $form_state['data'] = $cb($form, $form_state);
+  }
+  $cb = isset($embed['wysiwyg preview title callback']) ? $embed['wysiwyg preview title callback'] : $embed['name'] ."_wysiwyg_preview_title";
+  if (function_exists($cb)) {
+    $form_state['data']['title']= $cb($form_state['data']);
+  }
+  $cb = isset($embed['embed callback']) ? $embed['embed callback'] : $embed['name'] ."_embed";
+  if (function_exists($cb)) {
+    //$form_state['data']['preview']= $cb($form_state['data']);
+  }
+  $form_state['data']['embed_type'] = $form_state['values']['plugin'];
+  $form_state['data']['embed_type'] = $form_state['values']['plugin'];
+  $form_state['rebuild'] = TRUE;
+  $form_state['cache'] = FALSE;
+  unset($form_state['values']);
+  unset($form_state['input']);
+
+}
+
+function block_embed_ajax($form, &$form_state) {
+  if($form_state['submitted']) {
+    // give command to insert
+    $cmds['#commands'][] = ajax_command_invoke("#block-embed-embed-form",'trigger', array('insert', $form_state['data']));
+    // remember to add form back
+    // TODO :reset the form
+    //$form = drupal_get_form('block_embed_embed_form');
+    $cmds['#commands'][] = ajax_command_insert(NULL, drupal_render($form['wrapper']));
+    $cmds['#type'] = 'ajax';
+    return $cmds;
+    
+  }
+  return $form['wrapper'];
+}
+
+function block_embed_form_alter() {
+  context_set("block_embed", "get_form", TRUE);
+}
