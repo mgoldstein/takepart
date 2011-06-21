@@ -35,8 +35,15 @@ function takepart3_preprocess_page(&$variables) {
   $variables['corporate_links_nav']   = _render_tp3_corporate_links_menu();
   $variables['user_nav']              = _render_tp3_user_menu();
   $variables['takepart_theme_path']   = drupal_get_path('theme', 'takepart3');
+  
+  // Adds page template suggestions for specific content types
+  if (isset($variables['node'])) {  
+    $variables['theme_hook_suggestions'][] = 'page__type__'. $variables['node']->type;
+  }
+  
   return $variables;
 }
+
 
 /**
  * Helper to output the custom HTML for out main menu.
@@ -61,27 +68,18 @@ function _render_tp3_main_menu() {
  * Helper to output the custom HTML for out main menu.
  */
 function _render_tp3_user_menu() {
-  $menu_data = menu_tree_page_data("user-menu", NULL, TRUE);
+  $menu_data = menu_tree_page_data("user-menu");
 
   $links = array();
   foreach($menu_data as $menu_item) {
     $opts = array(
       'attributes' => _default_menu_options($menu_item),
     );
-    if($menu_item['link']['href'] == 'user') {
-      if (user_is_logged_in()) {
-        global $user;
-        $menu_item['link']['title'] = $user->name;
-        $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
-      } 
-      else {
-        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Log In");
-      }
-    }
+    
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
     $links[] = "<li>". $link ."</li>";
   }
- // print_r($links);die();
+  
   return "<ul id='user-nav'>" . implode($links) ."</ul>";
 }
 

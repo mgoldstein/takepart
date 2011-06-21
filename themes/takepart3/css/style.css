@@ -103,6 +103,52 @@ h3 {
 em {color: #000;}
 
 
+/***** Columns ***** - For use with full nodes without regions */
+
+  .layout-col-3 .content,
+  .layout-col-3 .content .no-sidebars{
+    float: left;
+    overflow: visible;
+    word-wrap: break-word;
+    width: 480px; /* original= 560px */
+    margin-left: 170px; /* original= 200px */
+    margin-right: -650px; /* original= -760px */
+  }
+
+  .layout-col-3 .sidebar-first {
+    float: left;
+    width: 170px; /* original= 200px */
+    margin-left: 0;
+    margin-right: -170px; /* original= -200px */
+    padding: 0;
+    overflow: visible;
+    word-wrap: break-word;
+  }
+
+  .layout-col-3 .sidebar-second {
+    float: left;
+    width: 330px; /* original= 200px */
+    margin-left: 650px; /* original= 760px */
+    margin-right: -980px; /* original= -960px */
+    padding: 0;
+    overflow: visible;
+    word-wrap: break-word;
+  }
+
+  .layout-col-3 .section {
+    margin: 0;
+    padding: 0;
+  }
+
+  .layout-col-3 .col .inner-content{
+    padding: 25px 10px 0 10px;
+  }
+
+  .layout-col-3 .col .sidebar-second .inner-content{
+    padding-right:20px;
+  }
+  
+  
 
 /***** Common ******/
 
@@ -1330,3 +1376,287 @@ span.comment-num {
 .views-slideshow-pager-field-item {
  margin-bottom: 30px;
 }
+
+
+
+
+
+/***** Content Types ******/
+
+
+/***** takepart-campaign ******/
+
+body.node-type-takepart-campaign .page {
+  padding: 0;
+}
+
+body.node-type-takepart-campaign .main-content {
+  width: 100%;
+}
+
+#node-type-takepart-campaign-header {
+  width: 980px;
+  height: 325px;
+}
+
+.node-type-takepart-campaign-five-things {
+  width: 340px;
+  float: right;
+  padding: 20px;
+}
+
+.node-type-takepart-campaign-five-things .campaign-five-things-num-1{ } /* Will be used soon */
+
+.node-takepart-campaign .field-name-field-tp-campaign-subheadline {
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted silver;
+  margin-bottom: 10px;
+}
+
+.node-takepart-campaign .field-name-body {
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.node-takepart-campaign .field-name-field-tp-campaign-seg-1-label,
+.node-takepart-campaign .field-name-field-tp-campaign-seg-2-label,
+.node-takepart-campaign .field-name-field-tp-campaign-seg-3-label,
+.node-takepart-campaign .field-name-field-tp-campaign-seg-4-label {
+  border-bottom: 1px dotted silver;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+
+.node-takepart-campaign .field-name-field-tp-campaign-seg-1-label .field-items,
+.node-takepart-campaign .field-name-field-tp-campaign-seg-2-label .field-items,
+.node-takepart-campaign .field-name-field-tp-campaign-seg-3-label .field-items,
+.node-takepart-campaign .field-name-field-tp-campaign-seg-4-label .field-items {
+  background: url('../images/sprite-horizontal.gif') no-repeat;
+  background-position: right -222px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 20px;
+  padding-right: 50px;
+}
+
+.node-takepart-campaign .field-name-body b {
+  color: #1ca9e7;
+  font-size: 20px;
+}
+
+.node-takepart-campaign .tag-sponsored-by {
+  border-top: 3px solid black;
+  padding: 8px 5px 10px 5px;
+}
+
+.node-takepart-campaign .tag-sponsored-by h3{
+  background: url('../images/sprite-horizontal.gif') no-repeat 0 -245px;
+  height: 16px;
+  font-size: 0;
+  text-indent: -9000;
+  padding-left: 15px;  
+}
+
+.node-takepart-campaign .tag h3{
+  background: url('../images/sprite-horizontal.gif') no-repeat;
+  height: 33px;
+  line-height: 38px;
+  padding-left: 35px;
+  text-transform: uppercase;
+  font-size: 15px;
+  border-bottom: 2px solid black;
+}
+
+.node-takepart-campaign .tag-take-action h3{
+  background-position: 0 -185px;
+}
+
+.node-takepart-campaign .tag-alliances h3{
+  background-position: 0 0;
+  border-bottom: 2px solid #8dc547;
+}
+
+.node-takepart-campaign .tag-spotlight h3{
+  background-position: 0 -148px;
+}
+
+/***** Front Page ******/
+
+  /*
+  Block Boxes (General)
+  */
+
+  body.front .block-boxes{
+    margin-top: 15px;
+    margin-bottom: 35px;
+  }
+
+  .front-my-take h2,
+  .front-news-to-know h2,
+  .front-features h2{
+    background: url('../images/sprite-block-box.gif') no-repeat;
+    font-size: 0;
+    text-indent: -90000;
+    margin-bottom: 25px;
+    }
+  
+  /*
+    Block Boxes (My Take)
+  */
+
+    .front-my-take h2{
+      height: 40px;
+      margin-bottom: 15px;
+      }
+  
+    .front-my-take .views-row {
+      background: #F9FCFF;
+      width: 289px;
+      height: 165px;
+      padding: 15px 7px;
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    .front-my-take .views-row.views-row-odd {
+      margin-right: 0;
+    }
+
+    .front-my-take .views-field-field-profile-photo {
+      background: black;
+      float: left;
+      font-size: 0;
+      line-height: 0;
+      margin-right: 15px;
+      margin-bottom: 10px;
+      width: 99px;
+      height:99px;
+      overflow:hidden;
+      text-align:center;
+    }
+
+    .front-my-take .views-field-field-profile-photo img{
+      border: 1px solid black;
+    }
+
+    .front-my-take  .views-field-field-promo-headline {
+      margin-bottom: 5px;
+    }
+
+    .front-my-take .views-field-title {
+      margin-left: 115px;
+      margin-bottom: 10px;
+      border-top: 1px dotted black;
+    }
+
+    .front-my-take .views-field-title a{
+      display: inline-block;
+      margin-top: 10px;
+      background: url('../images/sprite.gif') -383px 0 no-repeat;
+      color: #989898;
+      padding-left: 25px;
+      font-family: times;
+      font-size: 13px;
+    }
+
+    .front-my-take  .views-field-field-promo-headline a{
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    
+  /*
+    Block Boxes (News to Know)
+  */ 
+
+    .front-news-to-know h2{
+      background-position: 0 -56px;
+      height: 20px;
+      margin-bottom: 15px;
+      }
+  
+    .front-news-to-know .views-row {
+      display: inline-block;
+      width: 295px;
+      margin-right: 20px;
+      padding-top: 10px;
+      padding-bottom:10px;
+      border-bottom: 3px solid silver;
+      vertical-align: top;
+    }
+
+    .front-news-to-know .views-row.views-row-even {
+      margin-right: 0;
+    }
+ 
+    .front-news-to-know .views-row a{
+      display: inline-block;
+      font-weight: bold;
+      color: black;
+    }
+    
+  /*
+    Block Boxes (Features)
+  */
+  
+    .front-features h2{
+      background-position: 0 -93px;
+      height: 20px;
+      padding-bottom: 5px;
+      border-bottom: 1px dotted black;
+      }
+
+    .front-features .views-row {
+      width: 190px;
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 14px;
+      margin-bottom: 15px;
+    }
+
+    .front-features .views-field-field-thumbnail-1 {
+      width: 0;
+      height: 0;
+      position: relative;
+      overflow: visible;
+    }
+
+    .front-features .views-field-field-thumbnail-1 .field-content{
+      width: 190px;
+      height: 135px;
+      border:1px solid black;
+    }
+
+    .front-features .views-field-field-display-tag {
+      height: 0;
+      position: relative;
+      overflow: visible;
+      z-index: 100;
+    }
+
+    .front-features .views-field-field-display-tag .field-content {
+      margin-top: 103px;
+      line-height: 18px;
+      display: inline-block;
+      background: #8DC547 url('../images/sprite.png') -383px -122px no-repeat;
+      padding-left: 20px;
+      padding-right: 10px;
+      color: white;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .front-features .views-field-title {
+      margin-top: 142px;
+      font-size: 15px;
+    }
+
+    .front-features .views-field-title a{
+      color: black;
+      line-height: 20px;
+    }
