@@ -12,7 +12,7 @@ bake_merge_file($info, $config, $base);
 $info['projects']['search_api'] = array(
   'type'=> 'module',
   'subdir' => 'contrib',
-  'version' => '1.0-beta8',
+  'version' => '1.0-beta9',
 );
 
 bake_convert_to_dev($info,'nodeconnect');
