@@ -10,83 +10,6 @@
 function takepart_rotator_slide_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-takepart_slide-field_slide_aux_link'
-  $fields['node-takepart_slide-field_slide_aux_link'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '3',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_slide_aux_link',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'link',
-      'settings' => array(
-        'attributes' => array(
-          'class' => '',
-          'rel' => '',
-          'target' => 'default',
-        ),
-        'display' => array(
-          'url_cutoff' => 80,
-        ),
-        'enable_tokens' => 1,
-        'title' => 'optional',
-        'title_value' => '',
-        'url' => 0,
-      ),
-      'translatable' => '1',
-      'type' => 'link_field',
-    ),
-    'field_instance' => array(
-      'bundle' => 'takepart_slide',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'Provide up to 3 links to appear below the Lede in the overlay for this slide.',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'link',
-          'settings' => array(),
-          'type' => 'default',
-          'weight' => '7',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_slide_aux_link',
-      'label' => 'Teaser Links',
-      'required' => 0,
-      'settings' => array(
-        'attributes' => array(
-          'class' => '',
-          'rel' => '',
-          'target' => '_blank',
-        ),
-        'display' => array(
-          'url_cutoff' => '80',
-        ),
-        'enable_tokens' => 1,
-        'title' => 'required',
-        'title_value' => '',
-        'url' => 0,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_field',
-        'weight' => '5',
-      ),
-    ),
-  );
-
   // Exported field: 'node-takepart_slide-field_slide_featured_item'
   $fields['node-takepart_slide-field_slide_featured_item'] = array(
     'field_config' => array(
@@ -153,10 +76,10 @@ function takepart_rotator_slide_field_default_fields() {
           'weight' => '5',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -222,10 +145,10 @@ function takepart_rotator_slide_field_default_fields() {
           'weight' => '0',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -233,7 +156,7 @@ function takepart_rotator_slide_field_default_fields() {
       'label' => 'Headline',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '1',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -290,18 +213,18 @@ function takepart_rotator_slide_field_default_fields() {
           'weight' => '2',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_slide_headline_override',
-      'label' => 'Preview Headline',
+      'label' => 'Main Image Headline',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '1',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -333,11 +256,9 @@ function takepart_rotator_slide_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'act-now' => 'Act Now',
-          'breaking' => 'Breaking',
-          'exclusive' => 'Exclusive',
-          'slideshow' => 'Slideshow',
-          'video' => 'Video',
+          'everyday_innovators' => 'Everyday Innovators',
+          'opinion' => 'Opinion',
+          'qa' => 'Q&A',
         ),
         'allowed_values_function' => '',
       ),
@@ -358,15 +279,15 @@ function takepart_rotator_slide_field_default_fields() {
           'weight' => '8',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_slide_label',
-      'label' => 'Label',
+      'label' => 'Display Topic',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -407,16 +328,16 @@ function takepart_rotator_slide_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => NULL,
+          'module' => 'styles',
           'settings' => array(),
-          'type' => 'media_large',
+          'type' => 'styles_media_takepart_rotator_slide_main',
           'weight' => '3',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -447,228 +368,16 @@ function takepart_rotator_slide_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-takepart_slide-field_slide_preview_media'
-  $fields['node-takepart_slide-field_slide_preview_media'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_slide_preview_media',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
-      'module' => 'media',
-      'settings' => array(),
-      'translatable' => '1',
-      'type' => 'media',
-    ),
-    'field_instance' => array(
-      'bundle' => 'takepart_slide',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => NULL,
-          'settings' => array(),
-          'type' => 'media_large',
-          'weight' => '4',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_slide_preview_media',
-      'label' => 'Preview Image',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'media',
-        'settings' => array(
-          'allowed_schemes' => array(
-            'public' => 'public',
-          ),
-          'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            'image' => 'image',
-            'video' => 'video',
-          ),
-          'progress_indicator' => 'throbber',
-        ),
-        'type' => 'media_generic',
-        'weight' => '6',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-takepart_slide-field_slide_style'
-  $fields['node-takepart_slide-field_slide_style'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_slide_style',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'action' => 'Action',
-          'campaign' => 'Campaign',
-          'editorital' => 'Editorial',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '1',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'takepart_slide',
-      'default_value' => array(
-        0 => array(
-          'value' => 'editorital',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => 'Editorial: Standard story style. Please enter Headline, Teaser, Teaser Links and Photo Credit, and upload images.<br/>
-Action: Same as the Editorial style. Will display with the words “Take Action” in front of the headline, and a Take Part button in the overlay. <br />
-Campaign: Image Only. Do not fill out other fields. To be used with all commercial content.
-',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '1',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_slide_style',
-      'label' => 'Style',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '1',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-takepart_slide-field_slide_teaser'
-  $fields['node-takepart_slide-field_slide_teaser'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_slide_teaser',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(),
-      'translatable' => '1',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'takepart_slide',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'Enter a description or lede for this slide to appear in the transparent overlay.  If a lede is not provided, the transparent overlay will NOT appear for this slide.  Maximum length is 140 characters.  HTML is allowed.',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '6',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_slide_teaser',
-      'label' => 'Teaser',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '1',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '3',
-        ),
-        'type' => 'text_textarea',
-        'weight' => '4',
-      ),
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Choose an optional red label to appear near the headline of your slide.');
-  t('Editorial: Standard story style. Please enter Headline, Teaser, Teaser Links and Photo Credit, and upload images.<br/>
-Action: Same as the Editorial style. Will display with the words “Take Action” in front of the headline, and a Take Part button in the overlay. <br />
-Campaign: Image Only. Do not fill out other fields. To be used with all commercial content.
-');
-  t('Enter a description or lede for this slide to appear in the transparent overlay.  If a lede is not provided, the transparent overlay will NOT appear for this slide.  Maximum length is 140 characters.  HTML is allowed.');
+  t('Display Topic');
   t('Headline');
-  t('Label');
   t('Main Image');
+  t('Main Image Headline');
   t('Optional headline to serve as the main title of this slide.  If provided, the headline will appear in the transparent overlay and in the rollover preview.  Max limit of 35 characters. HTML is allowed, though not recommended.');
-  t('Preview Headline');
-  t('Preview Image');
-  t('Provide up to 3 links to appear below the Lede in the overlay for this slide.');
   t('Start typing the title of the story to feature.');
   t('Story Link');
-  t('Style');
-  t('Teaser');
-  t('Teaser Links');
   t('This will override the regular headline.  This is required for campaigns.');
   t('Upload an image to be used as the primary piece of content for each slide.  Images should use a 16:9 aspect ratio and should be at least 650x366.  The description field will be used as the photo credit to appear with the image in the lower right of the transparent overlay.');
 

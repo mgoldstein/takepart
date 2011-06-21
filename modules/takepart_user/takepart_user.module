@@ -4,7 +4,7 @@
  * TakePart User Module
  * @file
  * Creates a user interface for customizations to login and register forms.
- * @author alphageekboy
+ * @author tracycsmith
  * @date 06/10/2011
  * @company Phase2 Technology
  */
@@ -18,10 +18,24 @@
  */
  
 function takepart_user_menu_alter(&$items) {
-  $items['user/login']['type']    = MENU_CALLBACK;
+//  $items['user/%user_category/edit']['title'] = 'My Account';
+
+  $items['user']['type']          = MENU_CALLBACK;
   $items['user/register']['type'] = MENU_CALLBACK;
   $items['user/password']['type'] = MENU_CALLBACK;
+  /*
+$items['user/%user'] = array(
+    'type' => MENU_CALLBACK, 
+  );
+*/
+  unset($items['user/%user/view']);
+  unset($items['user/%user/bookmarks']);
+  unset($items['user/%user/openid']);
+  unset($items['user/%user/track']);
+  unset($items['user/%user/imce']);
 }
+
+
  
 function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form_id) {
   $register_title = variable_get("takepart_user_register_page_title","Join TakePart");
@@ -33,6 +47,7 @@ function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form
 function takepart_user_form_user_login_alter(&$form, &$form_state, $form_id) {
   $login_title = variable_get("takepart_user_login_page_title","Member Login");
   drupal_set_title($login_title);
+  $form['actions']['submit']['#value'] = 'Log In';
 }
 
 function takepart_user_form_user_pass_alter(&$form, &$form_state, $form_id) {
@@ -42,7 +57,7 @@ function takepart_user_form_user_pass_alter(&$form, &$form_state, $form_id) {
                        
 function takepart_user_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
   global $user;
-  if(!in_array("administrator", $account->roles) && ($user->uid <> 1)) {
+  if(!in_array("administrator", $user->roles) && ($user->uid <> 1)) {
     $form['field_account_dateofbirth']['#access'] = FALSE;
   }
 }
@@ -69,3 +84,4 @@ function _takepart_checkage($user_dob) {
   $age_years = $age / $year;
   return $age_years < 18 ? FALSE : TRUE;
 }
+
