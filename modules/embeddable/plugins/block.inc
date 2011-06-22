@@ -25,3 +25,7 @@ function block_wysiwyg_submit(&$form, &$form_state) {
   list($module, $delta) = explode("::", $form_state['values']['block']);
   return array("module"=> $module, "delta" => $delta);
 }
+function block_wysiwyg_title($data) {
+  $info = module_invoke($data['module'], "block_info");
+  return "BLOCK: {$info[$data['delta']]['info']}";
+}
