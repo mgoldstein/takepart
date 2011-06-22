@@ -17,6 +17,7 @@ function takepart_custom_form_embeddable_embed_form_alter(&$form, &$form_state) 
  * implements hook_info_alter()
  *
  * we are adding a embed view mode
+ */
 function takepart_custom_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes']['embed'] = array('label' => 'Embedded', 'custom settings' => FALSE);
 }
