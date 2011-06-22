@@ -164,7 +164,7 @@ $info['projects']['libraries'] = array(
 $info['project']['fb'] = array(
   'type' => 'module',
   'subdir' => 'contrib',
-  'version' => '3.x-dev'
+  'version' => '7.x-3.x-dev'
 );
 $info['project']['username_check'] = array(
   'type' => 'module',
