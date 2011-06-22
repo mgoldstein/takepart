@@ -180,9 +180,10 @@ $info['projects']['fb'] = array(
   ),
 );
 
-$info['project']['username_check'] = array(
-  'type' => 'module',
-  'subdir' => 'contrib'
+$info['projects']['username_check'] = array(
+ 'type' => 'module',
+ 'subdir' => 'contrib',
+ 'version' => '1.x-dev'
 );
 
 
