@@ -121,16 +121,19 @@ function takepart_search_default_search_api_facet() {
         "blog_front" : "Blog Front",
         "openpublish_blog_post" : "Blog Post",
         "takepart_campaign" : "Campaign",
+        "takepart_group" : "Group",
         "takepart_page" : "Page",
         "openpublish_photo" : "Photo",
         "openpublish_photo_gallery" : "Photo Gallery",
         "profile" : "Profile",
         "takepart_quick_study" : "Quick Study",
+        "takepart_slide" : "Rotator Slide",
         "section_front" : "Section Front",
         "openpublish_site_page" : "Site Page",
         "topic_front" : "Topic Front",
         "openpublish_video" : "Video",
-        "video_series" : "Video Series"
+        "video_series" : "Video Series",
+        "webform" : "Webform"
       }
     },
     "rdf_mapping" : []
@@ -669,8 +672,8 @@ function takepart_search_default_search_api_index() {
           "settings" : { "default" : "1", "bundles" : [] }
         },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_fulltext" : { "status" : 0, "weight" : "0", "settings" : null },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : null }
       },
       "processors" : {
         "search_api_case_ignore" : { "status" : 1, "weight" : "0", "settings" : { "strings" : 1 } },
@@ -691,6 +694,7 @@ function takepart_search_default_search_api_index() {
       }
     },
     "enabled" : "1",
+    "read_only" : "0",
     "rdf_mapping" : []
   }');
   return $items;
@@ -823,6 +827,11 @@ function takepart_search_default_search_api_server() {
             "type" : "string",
             "boost" : "1.0"
           },
+          "nid" : {
+            "table" : "search_api_db_standard_node_index_nid",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
           "type" : {
             "table" : "search_api_db_standard_node_index_type",
             "type" : "string",
@@ -833,8 +842,18 @@ function takepart_search_default_search_api_server() {
             "type" : "text",
             "boost" : "1.0"
           },
+          "url" : {
+            "table" : "search_api_db_standard_node_index_url",
+            "type" : "uri",
+            "boost" : "1.0"
+          },
           "field_free_tag" : {
             "table" : "search_api_db_standard_node_index_field_free_tag",
+            "type" : "list\\u003cinteger\\u003e",
+            "boost" : "1.0"
+          },
+          "field_topic" : {
+            "table" : "search_api_db_standard_node_index_field_topic",
             "type" : "list\\u003cinteger\\u003e",
             "boost" : "1.0"
           },
@@ -866,21 +885,6 @@ function takepart_search_default_search_api_server() {
           "field_vs_free_term" : {
             "table" : "search_api_db_standard_node_index_field_vs_free_term",
             "type" : "integer",
-            "boost" : "1.0"
-          },
-          "nid" : {
-            "table" : "search_api_db_standard_node_index_nid",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "url" : {
-            "table" : "search_api_db_standard_node_index_url",
-            "type" : "uri",
-            "boost" : "1.0"
-          },
-          "field_topic" : {
-            "table" : "search_api_db_standard_node_index_field_topic",
-            "type" : "list\\u003cinteger\\u003e",
             "boost" : "1.0"
           }
         }

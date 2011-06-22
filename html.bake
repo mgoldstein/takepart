@@ -12,6 +12,7 @@ bake_merge_file($info, $config, $base);
 $info['projects']['search_api'] = array(
   'type'=> 'module',
   'subdir' => 'contrib',
+  'version' => '1.0-beta9',
 );
 
 bake_convert_to_dev($info,'nodeconnect');
@@ -150,14 +151,30 @@ $info['projects']['recaptcha'] = array(
   'subdir' => 'contrib',
   'version' => '1.7'
 );
+$info['projects']['views_slideshow'] = array(
+  'type' => 'module',
+  'subdir' => 'contrib',
+  'version' => '3.0-alpha1'
+);
+$info['projects']['libraries'] = array(
+  'type' => 'module',
+  'subdir' => 'contrib',
+  'version' => '1.0'
+);
+
 
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
 //$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 $info['projects']['flag']['patch'][]   = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
 $info['projects']['token']['patch'][]  = 'http://drupal.org/files/issues/691078-token-field-tokens-v2.patch';
-$info['projects']['context']['patch'][]  = 'http://drupal.org/files/issues/context-block-contextual-links-1137794-2.patch';
-
+;$info['projects']['context']['patch'][]  = 'http://drupal.org/files/issues/context-block-contextual-links-1137794-2.patch';
+//$info['projects']['fb']['patch'][] = 'http://drupal.org/files/issues/fb-register-formid-1032636-2.patch';
 // libraries
 $info['libraries']['ckeditor']['download']['type'] = "get";
 $info['libraries']['ckeditor']['download']['url'] = 'http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6/ckeditor_3.6.tar.gz';
 $info['libraries']['ckeditor']["directory_name"] = "ckeditor";
+
+$info['libraries']['jquery.cycle']['download']['type'] = "get";
+$info['libraries']['jquery.cycle']['download']['url'] = 'http://jquery.malsup.com/cycle/release/jquery.cycle.zip?v2.99';
+$info['libraries']['jquery.cycle']["directory_name"] = "jquery.cycle";
+

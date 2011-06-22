@@ -27,9 +27,9 @@ function takepart_default_content_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-box-b3bfef52' => array(
+        'boxes-box-ecdb5429' => array(
           'module' => 'boxes',
-          'delta' => 'box-b3bfef52',
+          'delta' => 'box-ecdb5429',
           'region' => 'content',
           'weight' => 0,
         ),

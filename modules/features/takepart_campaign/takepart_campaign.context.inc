@@ -13,6 +13,46 @@ function takepart_campaign_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'multi_page_comapaign_default_context';
+  $context->description = 'Default Context for Multi Page Campaign';
+  $context->tag = 'Context Field Default';
+  $context->conditions = array(
+    'context_field' => array(
+      'values' => array(
+        1 => 1,
+        2 => 2,
+      ),
+      'options' => array(
+        'context_field_category' => '',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'context_related_menu-context_related_menu' => array(
+          'module' => 'context_related_menu',
+          'delta' => 'context_related_menu',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'theme_html' => array(
+      'class' => 'campaign-page',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Context Field Default');
+  t('Default Context for Multi Page Campaign');
+  $export['multi_page_comapaign_default_context'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'related_campaign_curated';
   $context->description = '';
   $context->tag = 'Blocks: Related';

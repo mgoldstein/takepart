@@ -10,6 +10,486 @@
 function takepart_campaign_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-action-field_multi_page_campaign'
+  $fields['node-action-field_multi_page_campaign'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_multi_page_campaign',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'action',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => '17',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_multi_page_campaign',
+      'label' => 'Campaign Page of',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'devel' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'multi_page_comapaign_default_context',
+        'use_default' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'form_element' => array(
+            'allow_create' => 0,
+            'category' => 'campaign',
+          ),
+        ),
+        'type' => 'context_field_select',
+        'weight' => '16',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-blog_front-field_multi_page_campaign'
+  $fields['node-blog_front-field_multi_page_campaign'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_multi_page_campaign',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'blog_front',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 2,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_multi_page_campaign',
+      'label' => 'Multi Page Campaign',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'devel' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'multi_page_comapaign_default_context',
+        'use_default' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'form_element' => array(
+            'allow_create' => 0,
+            'category' => 'campaign',
+          ),
+        ),
+        'type' => 'context_field_select',
+        'weight' => '-1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_article-field_multi_page_campaign'
+  $fields['node-openpublish_article-field_multi_page_campaign'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_multi_page_campaign',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_article',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 19,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_multi_page_campaign',
+      'label' => 'Multi Page Campaign',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'devel' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'multi_page_comapaign_default_context',
+        'use_default' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'form_element' => array(
+            'allow_create' => 0,
+            'category' => 'campaign',
+          ),
+        ),
+        'type' => 'context_field_select',
+        'weight' => '20',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_blog_post-field_multi_page_campaign'
+  $fields['node-openpublish_blog_post-field_multi_page_campaign'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_multi_page_campaign',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_blog_post',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 19,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_multi_page_campaign',
+      'label' => 'Multi Page Campaign',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'devel' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'context_field_default_context',
+        'use_default' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'form_element' => array(
+            'allow_create' => 0,
+            'category' => 'campaign',
+          ),
+        ),
+        'type' => 'context_field_select',
+        'weight' => '21',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_photo_gallery-field_multi_page_campaign'
+  $fields['node-openpublish_photo_gallery-field_multi_page_campaign'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_multi_page_campaign',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_photo_gallery',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 12,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_multi_page_campaign',
+      'label' => 'Multi Page Campaign',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'devel' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'multi_page_comapaign_default_context',
+        'use_default' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'form_element' => array(
+            'allow_create' => 0,
+            'category' => 'campaign',
+          ),
+        ),
+        'type' => 'context_field_select',
+        'weight' => '15',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_video-field_multi_page_campaign'
+  $fields['node-openpublish_video-field_multi_page_campaign'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_multi_page_campaign',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_video',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 22,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_multi_page_campaign',
+      'label' => 'Multi Page Campaign',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'devel' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'multi_page_comapaign_default_context',
+        'use_default' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'form_element' => array(
+            'allow_create' => 0,
+            'category' => 'campaign',
+          ),
+        ),
+        'type' => 'context_field_select',
+        'weight' => '25',
+      ),
+    ),
+  );
+
   // Exported field: 'node-takepart_campaign-body'
   $fields['node-takepart_campaign-body'] = array(
     'field_config' => array(
@@ -170,6 +650,86 @@ function takepart_campaign_field_default_fields() {
         ),
         'type' => 'node_reference_autocomplete',
         'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_multi_page_campaign'
+  $fields['node-takepart_campaign-field_multi_page_campaign'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_multi_page_campaign',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 18,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_multi_page_campaign',
+      'label' => 'Multi Page Campaign',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'devel' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'multi_page_comapaign_default_context',
+        'use_default' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'form_element' => array(
+            'allow_create' => 1,
+            'category' => 'campaign',
+          ),
+        ),
+        'type' => 'context_field_autocomplete',
+        'weight' => '22',
       ),
     ),
   );
@@ -2036,6 +2596,166 @@ function takepart_campaign_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-takepart_page-field_multi_page_campaign'
+  $fields['node-takepart_page-field_multi_page_campaign'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_multi_page_campaign',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_page',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 17,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_multi_page_campaign',
+      'label' => 'Multi Page Campaign',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'devel' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'multi_page_comapaign_default_context',
+        'use_default' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'form_element' => array(
+            'allow_create' => 0,
+            'category' => 'campaign',
+          ),
+        ),
+        'type' => 'context_field_select',
+        'weight' => '18',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-video_series-field_multi_page_campaign'
+  $fields['node-video_series-field_multi_page_campaign'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_multi_page_campaign',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video_series',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 14,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_multi_page_campaign',
+      'label' => 'Multi Page Campaign',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'devel' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'multi_page_comapaign_default_context',
+        'use_default' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'form_element' => array(
+            'allow_create' => 0,
+            'category' => 'campaign',
+          ),
+        ),
+        'type' => 'context_field_select',
+        'weight' => '13',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('  Segment 4 HTML');
@@ -2048,11 +2768,13 @@ function takepart_campaign_field_default_fields() {
   t('5 things Links');
   t('Alliances');
   t('Body');
+  t('Campaign Page of');
   t('Campaign Sponsors');
   t('Image');
   t('Intro');
   t('Intro HTML');
   t('Intro Media');
+  t('Multi Page Campaign');
   t('Related Actions');
   t('Segment 1 HTML');
   t('Segment 1 Label');

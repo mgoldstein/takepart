@@ -1,3 +1,4 @@
+
 <div id="page-wrapper">
   <div id="header" class='clearfix'>
     <div id='logo'><?php print l("", "<front>")?></div>
@@ -42,7 +43,6 @@
   	  </div><!--form item-->
   	</div><!--/top search-->
   </div>
-
 
   <?php if ($page['help'] || ($show_messages && $messages)): ?>
     <div id='console'><div class='limiter clearfix'>

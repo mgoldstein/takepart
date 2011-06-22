@@ -49,7 +49,7 @@ function takepart_action_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -110,9 +110,11 @@ function takepart_action_field_default_fields() {
         'default' => array(
           'label' => 'above',
           'module' => 'media',
-          'settings' => array(),
-          'type' => 'media_large',
-          'weight' => 4,
+          'settings' => array(
+            'file_view_mode' => 'default',
+          ),
+          'type' => 'media',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -210,7 +212,7 @@ function takepart_action_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 9,
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -297,7 +299,7 @@ function takepart_action_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 11,
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -380,7 +382,7 @@ function takepart_action_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 10,
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -450,7 +452,7 @@ function takepart_action_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 8,
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -522,7 +524,7 @@ function takepart_action_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 12,
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -587,7 +589,7 @@ function takepart_action_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'default',
-          'weight' => 6,
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -669,7 +671,7 @@ function takepart_action_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 14,
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -737,7 +739,7 @@ function takepart_action_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -803,7 +805,7 @@ function takepart_action_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 16,
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -859,9 +861,11 @@ function takepart_action_field_default_fields() {
         'default' => array(
           'label' => 'above',
           'module' => 'media',
-          'settings' => array(),
-          'type' => 'media_large',
-          'weight' => 15,
+          'settings' => array(
+            'file_view_mode' => 'default',
+          ),
+          'type' => 'media',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -942,7 +946,7 @@ function takepart_action_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 13,
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1760,7 +1764,6 @@ function takepart_action_field_default_fields() {
   t('Suggest Releated Content?');
   t('Take Action URL');
   t('This is used instead of the Title to represent the Action when it appears in various places around the site.');
-  t('This is used to tease the Action in certain lists that it appears in on the site.');
   t('Thumbnail Image');
   t('Topic');
   t('User can create and/or reference a series of Action nodes to be displayed in a list on the Blog Post page. These will be displayed atop an automatically-generated list of Related Actions');
