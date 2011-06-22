@@ -75,7 +75,17 @@ function _render_tp3_user_menu() {
     $opts = array(
       'attributes' => _default_menu_options($menu_item),
     );
-    
+    if($menu_item['link']['href'] == 'user') {
+      if (user_is_logged_in()) {
+        global $user;
+        $menu_item['link']['title'] = $user->name;
+        $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
+      } 
+      else {
+        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Log In");
+      }
+    }
+
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
     $links[] = "<li>". $link ."</li>";
   }
