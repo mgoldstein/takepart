@@ -13,8 +13,6 @@ function block_embed_embed_plugin() {
   //and we will look in the embed path for the icon
   //
   foreach($embeds as $id => $embed) {
-    dpm($embed);
-    
     $plugins[$id] = isset($embed['wysiwyg plugin']) ? $embed['wysiwyg plugin'] : array();
     $plugins[$id]  = $plugins[$id] + array(
       'title'=> 'Embed ' .$embed['name'],
