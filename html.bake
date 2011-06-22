@@ -161,11 +161,25 @@ $info['projects']['libraries'] = array(
   'subdir' => 'contrib',
   'version' => '1.0'
 );
+/*
 $info['project']['fb'] = array(
   'type' => 'module',
   'subdir' => 'contrib',
   'version' => '7.x-3.x-dev'
 );
+*/
+
+$info['projects']['fb'] = array(
+  'type'=> 'module',
+  'subdir' => 'contrib',
+  'download' => array(
+    'type' => 'git',
+    'branch' => 'master',
+    'url' => "http://git.drupal.org/project/fb.git",
+    'date' => '2011-06-21'
+  ),
+);
+
 $info['project']['username_check'] = array(
   'type' => 'module',
   'subdir' => 'contrib'
@@ -183,8 +197,11 @@ $info['libraries']['ckeditor']['download']['type'] = "get";
 $info['libraries']['ckeditor']['download']['url'] = 'http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6/ckeditor_3.6.tar.gz';
 $info['libraries']['ckeditor']["directory_name"] = "ckeditor";
 
-$info['libraries']['facebook-php-sdk']['download']['type'] = "get";
-$info['libraries']['facebook-php-sdk']['download']['url'] = 'https://github.com/facebook/php-sdk/zipball/v2.1.2';
+$info['libraries']['facebook-php-sdk']['download']['type'] = "git";
+$info['libraries']['facebook-php-sdk']['download']['branch'] = "master";
+$info['libraries']['facebook-php-sdk']['download']['tag'] = "v2.1.2";
+
+$info['libraries']['facebook-php-sdk']['download']['url'] = 'git://github.com/facebook/php-sdk.git';
 $info['libraries']['facebook-php-sdk']["directory_name"] = "facebook-php-sdk";
 
 $info['libraries']['jquery.cycle']['download']['type'] = "get";
