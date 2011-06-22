@@ -161,18 +161,30 @@ $info['projects']['libraries'] = array(
   'subdir' => 'contrib',
   'version' => '1.0'
 );
+$info['project']['fb'] = array(
+  'type' => 'module',
+  'subdir' => 'contrib'
+);
+$info['project']['username_check'] = array(
+  'type' => 'module',
+  'subdir' => 'contrib'
+);
 
 
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
 //$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 $info['projects']['flag']['patch'][]   = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
 $info['projects']['token']['patch'][]  = 'http://drupal.org/files/issues/691078-token-field-tokens-v2.patch';
-;$info['projects']['context']['patch'][]  = 'http://drupal.org/files/issues/context-block-contextual-links-1137794-2.patch';
-//$info['projects']['fb']['patch'][] = 'http://drupal.org/files/issues/fb-register-formid-1032636-2.patch';
+//$info['projects']['context']['patch'][]  = 'http://drupal.org/files/issues/context-block-contextual-links-1137794-2.patch';
+$info['projects']['fb']['patch'][] = 'http://drupal.org/files/issues/fb-register-formid-1032636-2.patch';
 // libraries
 $info['libraries']['ckeditor']['download']['type'] = "get";
 $info['libraries']['ckeditor']['download']['url'] = 'http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6/ckeditor_3.6.tar.gz';
 $info['libraries']['ckeditor']["directory_name"] = "ckeditor";
+
+$info['libraries']['facebook-php-sdk']['download']['type'] = "get";
+$info['libraries']['facebook-php-sdk']['download']['url'] = 'https://github.com/facebook/php-sdk/zipball/v2.1.2';
+$info['libraries']['facebook-php-sdk']["directory_name"] = "facebook-php-sdk";
 
 $info['libraries']['jquery.cycle']['download']['type'] = "get";
 $info['libraries']['jquery.cycle']['download']['url'] = 'http://jquery.malsup.com/cycle/release/jquery.cycle.zip?v2.99';
