@@ -6,6 +6,9 @@
  */
 function block_embed_page_alter(&$page) {
   $page['#post_render'][] = 'block_embed_post_render';
+  // we need to add the contextual lib here or they do not get themed
+  // in our embeds
+  $page['page_top']['add_contextual_lib']['#attached']['library'][] = array('contextual', 'contextual-links');
   //@TODO this need to be embed on page that need it not everywhere
   if(context_isset("block_embed", "get_form")) {
     $embeds = block_embed_embeds();
@@ -74,16 +77,35 @@ function block_embed_embeds() {
   return ctools_get_plugins('block_embed', 'embed');
 }
 
+
+/*
+ * implements hook_ctools_plugin_type()
+ */
 function block_embed_ctools_plugin_type() {
   return array("embed" => array('defaults' =>array()));
 }
+
+function block_embed_embed_cb($plugin, $key) {
+
+    $cb = isset($plugin["$key callback"]) ? $plugin["$key callback"] : $plugin['name'] ."_". str_replace(" ", "_", $key);
+    if (function_exists($cb)) {
+      return $cb;
+    }
+    return FALSE;
+
+}
+/*
+ * implements hook_ctools_plugin_directory()
+ */
 function block_embed_ctools_plugin_directory($module, $plugin) {
   if ($module == 'block_embed' && $plugin == 'embed') {
     return 'plugins';
   }
 }
 
-
+/*
+ * implements hook_wysiwyg_include_directory()
+ */
 function block_embed_wysiwyg_include_directory($type) {
   switch($type) {
     case 'plugins':
@@ -92,20 +114,26 @@ function block_embed_wysiwyg_include_directory($type) {
 }
 
 function block_embed_menu() {
-  $items['block_embed/embed-form'] = array(
-    'title' => 'Embed',
-    'page callback' => 'block_embed_embed_form_page',
+  $items['block_embed/title'] = array(
+    'title' => 'embed-title',
+    'page callback' => 'block_embed_embed_title',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
   return $items;
 }
 
-function block_embed_embed_form_page() {
-  $form = drupal_get_form('block_embed_embed_form');
-  return $form;
-  //ajax_deliver($form);
+function block_embed_embed_title() {
+  $key = $_POST['embed_type'];
+  $plugin = block_embed_embed($key);
+  if($cb = block_embed_embed_cb($plugin, "wysiwyg title")) {
+    echo $cb($_POST);
+  }
 }
+
+/*
+ * embed form for the wysiwyg plugin
+ */
 function block_embed_embed_form($form, &$form_state) {
   $types = block_embed_embeds();
   $plugin_options = array();
@@ -157,6 +185,11 @@ function block_embed_embed_form($form, &$form_state) {
   
   return $form;
 }
+
+/* 
+ * sumbit function for wysiwyg plugin form
+ */
+
 function block_embed_embed_form_submit($form, &$form_state) {
   $embed = block_embed_embed($form_state['values']['plugin']);
   $cb = isset($embed['wysiwyg submit callback']) ? $embed['wysiwyg submit callback'] : $embed['name'] ."_wysiwyg_submit";
@@ -180,6 +213,10 @@ function block_embed_embed_form_submit($form, &$form_state) {
 
 }
 
+
+/*
+ * an ajax callback function to handle refreshing of wysiwyg form
+ */
 function block_embed_ajax($form, &$form_state) {
   if($form_state['submitted']) {
     // give command to insert
@@ -195,6 +232,14 @@ function block_embed_ajax($form, &$form_state) {
   return $form['wrapper'];
 }
 
+/*
+ * implements hook_form_alter() 
+ *
+ * we are just saying we are on a form so we can load
+ * our wysiwyg form
+ * 
+ * @TODO: hopefully at some point we can load this form from js
+ */
 function block_embed_form_alter() {
   context_set("block_embed", "get_form", TRUE);
 }

@@ -96,7 +96,22 @@ Drupal.wysiwyg.plugins.embed = {
     var $content = $('<div>' + content + '</div>');
     plugin = this;
     $.each($('.drupal-embed', $content), function (i, elem) {
+      //first fill in a genearl placeholder
       $(elem).html(plugin._placeholder(elem));
+      //then go get a better one
+      //we have to do this not async becuase we need
+      //to get the values back so we can return them
+      //at the end of this function (note we are returning 
+      //a string at the end(
+      $.ajax({
+        async:false,
+        type: "POST",
+        url: "/block_embed/title",
+        data: $(elem).getAttributes(),
+        success: function(msg) {
+          $(elem).html(plugin._placeholder(elem, msg));
+        },
+      });
       //@TODO: this does not work
       //need to find a way to attach events to the
       //embed content so that people can edit it and 
@@ -128,13 +143,26 @@ Drupal.wysiwyg.plugins.embed = {
   },
   // This returns what should be shown in the wysiwyg
   // @TODO: this should get a preview or atleast the title of the content
-  _placeholder: function(elem) {
-    holder = $("<p>EMBED CONTENT</p>");
+  _placeholder: function(elem, title) {
+    title = typeof(title) != 'undefined' ? title : "EMBEDED CONTENT";
+    holder = $("<p>" + title + "</p>");
     holder.prepend($("<div class = 'drupal-embed-icon'></div>"));
     return holder.html();
   },
 }
 
+$.fn.getAttributes = function() {
+  var attributes = {}; 
+
+  if(!this.length)
+    return this;
+
+  $.each(this[0].attributes, function(index, attr) {
+    attributes[attr.name] = attr.value;
+  }); 
+
+  return attributes;
+}
 
 
 })(jQuery);
