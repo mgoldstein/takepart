@@ -1,11 +1,11 @@
 <?php
-function block_embed_embed_plugin() {
+function embeddable_embed_plugin() {
   $plugins['embed'] = array(
-    'title' => 'DRUPALEMBED',
+    'title' => 'Embed Embeddable',
     'settings' => array(),
     'icon title' => 'Embed me',
   );
-  $embeds = block_embed_embeds();
+  $embeds = embeddable_embeds();
 
   //we want to run through all of the embeds
   //and make plugins for them
@@ -20,7 +20,7 @@ function block_embed_embed_plugin() {
       'icon title' => 'Embed '. $embed['name'],
       'icon path' => $embed['path'],
       'icon file' => "$id.png",
-      'path' => drupal_get_path('module', 'block_embed') . '/wysiwyg_plugins/embed',
+      'path' => drupal_get_path('module', 'embeddable') . '/wysiwyg_plugins/embed',
       'filename' => 'embed.js',
 
     );
