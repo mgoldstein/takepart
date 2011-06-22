@@ -4,26 +4,29 @@
  *
  * we are adding a post render to find embed to transform
  */
-function block_embed_page_alter(&$page) {
-  $page['#post_render'][] = 'block_embed_post_render';
+function embeddable_page_alter(&$page) {
+  $page['#post_render'][] = 'embeddable_post_render';
+  // we need to add the contextual lib here or they do not get themed
+  // in our embeds
+  $page['page_top']['add_contextual_lib']['#attached']['library'][] = array('contextual', 'contextual-links');
   //@TODO this need to be embed on page that need it not everywhere
-  if(context_isset("block_embed", "get_form")) {
-    $embeds = block_embed_embeds();
-    drupal_add_css(drupal_get_path("module", "block_embed") . "/block_embed.css");
+  if(context_isset("embeddable", "get_form")) {
+    $embeds = embeddable_embeds();
+    drupal_add_css(drupal_get_path("module", "embeddable") . "/embeddable.css");
     drupal_add_js(
       array(
-        "block_embed_embeds"=> array_keys($embeds)
+        "embeddable_embeds"=> array_keys($embeds)
       ), 'setting');
-    $page['content']['block_embed'] = drupal_get_form('block_embed_embed_form');
+    $page['content']['embeddable'] = drupal_get_form('embeddable_embed_form');
   }
 }
 
 /*
  * a post render function to transform all embeds
  */
-function block_embed_post_render($content) {
+function embeddable_post_render($content) {
  $pattern = "/(<div[^>]*embed_type.*?<\/div>)/";
- $content = preg_replace_callback($pattern, "_block_embed_replace", $content);
+ $content = preg_replace_callback($pattern, "_embeddable_replace", $content);
   
   return $content;
 }
@@ -33,7 +36,7 @@ function block_embed_post_render($content) {
  * this take all match for embed divs
  * and transforms them into there embed content
  */
-function _block_embed_replace($matches) {
+function _embeddable_replace($matches) {
   $replacements = array();
   $subject = $matches[0];
   $doc = new DOMDocument();
@@ -44,7 +47,7 @@ function _block_embed_replace($matches) {
   foreach($embed->attributes as $attr) {
     $info[$attr->nodeName] = $attr->nodeValue;
   }
-  $plugin = block_embed_embed($type);
+  $plugin = embeddable_embed($type);
   $cb = isset($plugin['embed callback']) ? $plugin['embed callback'] : $plugin['name'] ."embed";
   if (function_exists($cb)) {
     return $cb($info);
@@ -59,9 +62,9 @@ function _block_embed_replace($matches) {
  *
  * return: the plugin array
  */
-function block_embed_embed($type) {
+function embeddable_embed($type) {
   ctools_include('plugins');
-  return ctools_get_plugins('block_embed', 'embed', $type);
+  return ctools_get_plugins('embeddable', 'embed', $type);
 }
 
 /*
@@ -69,45 +72,70 @@ function block_embed_embed($type) {
  *
  * RETURN : an array of plugin arrays
  */
-function block_embed_embeds() {
+function embeddable_embeds() {
   ctools_include('plugins');
-  return ctools_get_plugins('block_embed', 'embed');
+  return ctools_get_plugins('embeddable', 'embed');
 }
 
-function block_embed_ctools_plugin_type() {
+
+/*
+ * implements hook_ctools_plugin_type()
+ */
+function embeddable_ctools_plugin_type() {
   return array("embed" => array('defaults' =>array()));
 }
-function block_embed_ctools_plugin_directory($module, $plugin) {
-  if ($module == 'block_embed' && $plugin == 'embed') {
+
+function embeddable_embed_cb($plugin, $key) {
+
+    $cb = isset($plugin["$key callback"]) ? $plugin["$key callback"] : $plugin['name'] ."_". str_replace(" ", "_", $key);
+    if (function_exists($cb)) {
+      return $cb;
+    }
+    return FALSE;
+
+}
+/*
+ * implements hook_ctools_plugin_directory()
+ */
+function embeddable_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'embeddable' && $plugin == 'embed') {
     return 'plugins';
   }
 }
 
-
-function block_embed_wysiwyg_include_directory($type) {
+/*
+ * implements hook_wysiwyg_include_directory()
+ */
+function embeddable_wysiwyg_include_directory($type) {
   switch($type) {
     case 'plugins':
       return "wysiwyg_plugins";
   }
 }
 
-function block_embed_menu() {
-  $items['block_embed/embed-form'] = array(
-    'title' => 'Embed',
-    'page callback' => 'block_embed_embed_form_page',
+function embeddable_menu() {
+  $items['embeddable/title'] = array(
+    'title' => 'embed-title',
+    'page callback' => 'embeddable_embed_title',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
   return $items;
 }
 
-function block_embed_embed_form_page() {
-  $form = drupal_get_form('block_embed_embed_form');
-  return $form;
-  //ajax_deliver($form);
+function embeddable_embed_title() {
+  $key = $_POST['embed_type'];
+  $plugin = embeddable_embed($key);
+  if($cb = embeddable_embed_cb($plugin, "wysiwyg title")) {
+    echo $cb($_POST);
+  }
 }
-function block_embed_embed_form($form, &$form_state) {
-  $types = block_embed_embeds();
+
+/*
+ * embed form for the wysiwyg plugin
+ */
+function embeddable_embed_form($form, &$form_state) {
+  $types = embeddable_embeds();
   $plugin_options = array();
   foreach($types as $id =>$type) {
     $plugin_options[$id]  = $type['name'];
@@ -116,7 +144,7 @@ function block_embed_embed_form($form, &$form_state) {
     '#type' => 'select',
     '#options' => $plugin_options,
     '#ajax' => array(
-      'callback' => 'block_embed_ajax',
+      'callback' => 'embeddable_ajax',
       'wrapper' => 'form-wrapper',
       'method' => 'replace',
       '#default_value' => '',
@@ -144,7 +172,7 @@ function block_embed_embed_form($form, &$form_state) {
     '#value' =>'Insert',
     '#type' => 'submit',
     '#ajax' => array(
-      'callback' => 'block_embed_ajax',
+      'callback' => 'embeddable_ajax',
       //'wrapper' => 'form-wrapper',
       'wrapper' => 'form-wrapper',
       'method' => 'replace',
@@ -153,12 +181,17 @@ function block_embed_embed_form($form, &$form_state) {
   $form = array('wrapper' => $form);
   $form['wrapper']['#prefix'] = "<div id = 'form-wrapper'>";
   $form['wrapper']['#suffix'] = "</div>";
-  $form['#submit'][] = 'block_embed_embed_form_submit';
+  $form['#submit'][] = 'embeddable_embed_form_submit';
   
   return $form;
 }
-function block_embed_embed_form_submit($form, &$form_state) {
-  $embed = block_embed_embed($form_state['values']['plugin']);
+
+/* 
+ * sumbit function for wysiwyg plugin form
+ */
+
+function embeddable_embed_form_submit($form, &$form_state) {
+  $embed = embeddable_embed($form_state['values']['plugin']);
   $cb = isset($embed['wysiwyg submit callback']) ? $embed['wysiwyg submit callback'] : $embed['name'] ."_wysiwyg_submit";
   if (function_exists($cb)) {
     $form_state['data'] = $cb($form, $form_state);
@@ -180,13 +213,17 @@ function block_embed_embed_form_submit($form, &$form_state) {
 
 }
 
-function block_embed_ajax($form, &$form_state) {
+
+/*
+ * an ajax callback function to handle refreshing of wysiwyg form
+ */
+function embeddable_ajax($form, &$form_state) {
   if($form_state['submitted']) {
     // give command to insert
-    $cmds['#commands'][] = ajax_command_invoke("#block-embed-embed-form",'trigger', array('insert', $form_state['data']));
+    $cmds['#commands'][] = ajax_command_invoke("#embeddable-embed-form",'trigger', array('insert', $form_state['data']));
     // remember to add form back
     // TODO :reset the form
-    //$form = drupal_get_form('block_embed_embed_form');
+    //$form = drupal_get_form('embeddable_embed_form');
     $cmds['#commands'][] = ajax_command_insert(NULL, drupal_render($form['wrapper']));
     $cmds['#type'] = 'ajax';
     return $cmds;
@@ -195,6 +232,14 @@ function block_embed_ajax($form, &$form_state) {
   return $form['wrapper'];
 }
 
-function block_embed_form_alter() {
-  context_set("block_embed", "get_form", TRUE);
+/*
+ * implements hook_form_alter() 
+ *
+ * we are just saying we are on a form so we can load
+ * our wysiwyg form
+ * 
+ * @TODO: hopefully at some point we can load this form from js
+ */
+function embeddable_form_alter() {
+  context_set("embeddable", "get_form", TRUE);
 }

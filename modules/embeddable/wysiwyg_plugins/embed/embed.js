@@ -8,7 +8,7 @@ Drupal.behaviors.embed = {
     // TODO: currently we loading the form on page load and 
     // moving it into the dialog I would love for this to all
     // be ajax and pull the first form using ajax.
-    id = 'block-embed-embed-form'
+    id = 'embeddable-embed-form'
     form = $("#" + id);
     if(!form.hasClass('dialog')) {
       form.dialog({
@@ -23,7 +23,7 @@ Drupal.behaviors.embed = {
     }
 
     // we need to define the same plugin for each of our embed types
-    $.each(Drupal.settings.block_embed_embeds, function(key, value) {
+    $.each(Drupal.settings.embeddable_embeds, function(key, value) {
       Drupal.wysiwyg.plugins[value] = Drupal.wysiwyg.plugins.embed;
     });
     
@@ -38,7 +38,7 @@ Drupal.wysiwyg.plugins.embed = {
   // We are going to grab the form (which should already be
   // on the page)
   invoke: function(data,settings,instanceId) {
-    id = 'block-embed-embed-form'
+    id = 'embeddable-embed-form'
     form = $("#" + id);
     if(settings.embed_type) {
       form.find("[name='plugin']").val(settings.embed_type);
@@ -55,7 +55,7 @@ Drupal.wysiwyg.plugins.embed = {
     //
     // This is getting called by a 
     // drupal ajax command from php
-    // see block_enable_ajax in block_embed.module
+    // see block_enable_ajax in embeddable.module
     plugin = this;
     //remove anyother binding that might exist
     form.unbind("insert");
@@ -75,15 +75,15 @@ Drupal.wysiwyg.plugins.embed = {
     this was my attempt at pulling the form ajax   
       element = $("#" + id);
     $.ajax({ 
-      url :"/block_embed/embed-form",
+      url :"/embeddable/embed-form",
       'success': function(data) {
         $(element).replaceWith(data);        
         Drupal.attacheBehaviors(element);
         element_settings =  {
-          'url':"block_embed/embed-form",
+          'url':"embeddable/embed-form",
           'element' : element
          };
-        Drupal.ajax[id] = new Drupal.ajax(id, element, {'url':"block_embed/embed-form"});
+        Drupal.ajax[id] = new Drupal.ajax(id, element, {'url':"embeddable/embed-form"});
      }
     });
     */
@@ -96,7 +96,22 @@ Drupal.wysiwyg.plugins.embed = {
     var $content = $('<div>' + content + '</div>');
     plugin = this;
     $.each($('.drupal-embed', $content), function (i, elem) {
+      //first fill in a genearl placeholder
       $(elem).html(plugin._placeholder(elem));
+      //then go get a better one
+      //we have to do this not async becuase we need
+      //to get the values back so we can return them
+      //at the end of this function (note we are returning 
+      //a string at the end(
+      $.ajax({
+        async:false,
+        type: "POST",
+        url: "/embeddable/title",
+        data: $(elem).getAttributes(),
+        success: function(msg) {
+          $(elem).html(plugin._placeholder(elem, msg));
+        },
+      });
       //@TODO: this does not work
       //need to find a way to attach events to the
       //embed content so that people can edit it and 
@@ -128,13 +143,26 @@ Drupal.wysiwyg.plugins.embed = {
   },
   // This returns what should be shown in the wysiwyg
   // @TODO: this should get a preview or atleast the title of the content
-  _placeholder: function(elem) {
-    holder = $("<p>EMBED CONTENT</p>");
+  _placeholder: function(elem, title) {
+    title = typeof(title) != 'undefined' ? title : "EMBEDED CONTENT";
+    holder = $("<p>" + title + "</p>");
     holder.prepend($("<div class = 'drupal-embed-icon'></div>"));
     return holder.html();
   },
 }
 
+$.fn.getAttributes = function() {
+  var attributes = {}; 
+
+  if(!this.length)
+    return this;
+
+  $.each(this[0].attributes, function(index, attr) {
+    attributes[attr.name] = attr.value;
+  }); 
+
+  return attributes;
+}
 
 
 })(jQuery);
