@@ -3,5 +3,6 @@
  * @file
  */
 include_once('takepart_custom.features.inc');
+include_once('takepart_custom.embeddable.inc');
 // Drupal needs this blank file.
 //

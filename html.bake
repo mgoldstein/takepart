@@ -161,13 +161,6 @@ $info['projects']['libraries'] = array(
   'subdir' => 'contrib',
   'version' => '1.0'
 );
-/*
-$info['project']['fb'] = array(
-  'type' => 'module',
-  'subdir' => 'contrib',
-  'version' => '7.x-3.x-dev'
-);
-*/
 
 $info['projects']['fb'] = array(
   'type'=> 'module',
@@ -176,7 +169,7 @@ $info['projects']['fb'] = array(
     'type' => 'git',
     'branch' => 'master',
     'url' => "http://git.drupal.org/project/fb.git",
-    'date' => '2011-06-21'
+    'date' => '2011-06-23'
   ),
 );
 
@@ -201,7 +194,6 @@ $info['libraries']['ckeditor']["directory_name"] = "ckeditor";
 $info['libraries']['facebook-php-sdk']['download']['type'] = "git";
 $info['libraries']['facebook-php-sdk']['download']['branch'] = "master";
 $info['libraries']['facebook-php-sdk']['download']['tag'] = "v2.1.2";
-
 $info['libraries']['facebook-php-sdk']['download']['url'] = 'git://github.com/facebook/php-sdk.git';
 $info['libraries']['facebook-php-sdk']["directory_name"] = "facebook-php-sdk";
 

@@ -18,6 +18,7 @@ function embeddable_page_alter(&$page) {
         "embeddable_embeds"=> array_keys($embeds)
       ), 'setting');
     $page['content']['embeddable'] = drupal_get_form('embeddable_embed_form');
+
   }
 }
 
@@ -233,13 +234,21 @@ function embeddable_ajax($form, &$form_state) {
 }
 
 /*
- * implements hook_form_alter() 
+ * implements hook_element_info_alter() 
  *
- * we are just saying we are on a form so we can load
- * our wysiwyg form
+ * we are adding a new process method to all text_formats
+ * so that we can can make sure the embed form is added
+ *
+ * see @embeddable_pre_render_text_format()
+ * see @embeddable_page_alter()
  * 
  * @TODO: hopefully at some point we can load this form from js
  */
-function embeddable_form_alter() {
-  context_set("embeddable", "get_form", TRUE);
+function embeddable_element_info_alter(&$types) {
+  $types['text_format']['#process'][] = 'embeddable_pre_render_text_format';
+}
+
+function embeddable_pre_render_text_format($element) {
+    context_set("embeddable", "get_form", TRUE);
+  return $element;
 }
