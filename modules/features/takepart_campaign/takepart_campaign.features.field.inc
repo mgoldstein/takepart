@@ -681,7 +681,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'context_field',
           'settings' => array(),
           'type' => 'context_field_context',
-          'weight' => 18,
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1089,7 +1089,7 @@ function takepart_campaign_field_default_fields() {
       'description' => 'Users can create a set of 5 links with custom labels and URLs to be overlaid on top of a full-width image atop the Campaign page.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
           'type' => 'default',
@@ -1166,7 +1166,7 @@ function takepart_campaign_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1301,10 +1301,10 @@ function takepart_campaign_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'media',
           'settings' => array(
-            'file_view_mode' => 'default',
+            'file_view_mode' => 'media_original',
           ),
           'type' => 'media',
           'weight' => '5',
@@ -1377,7 +1377,7 @@ function takepart_campaign_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1435,10 +1435,10 @@ function takepart_campaign_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'media',
           'settings' => array(
-            'file_view_mode' => 'default',
+            'file_view_mode' => 'media_original',
           ),
           'type' => 'media',
           'weight' => '2',
@@ -1583,7 +1583,7 @@ function takepart_campaign_field_default_fields() {
       'description' => 'User provides a name for this segment (equivalent to the label on the old tabs).',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1673,7 +1673,7 @@ function takepart_campaign_field_default_fields() {
       'description' => 'User references one or more nodes to be listed within this segment, represented by promo headline/text.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
@@ -1812,7 +1812,7 @@ function takepart_campaign_field_default_fields() {
       'description' => 'User provides a name for this segment (equivalent to the label on the old tabs).',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1902,7 +1902,7 @@ function takepart_campaign_field_default_fields() {
       'description' => 'User references one or more nodes to be listed within this segment, represented by promo headline/text.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
@@ -2041,14 +2041,14 @@ function takepart_campaign_field_default_fields() {
       'description' => 'User provides a name for this segment (equivalent to the label on the old tabs).',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '12',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
@@ -2131,7 +2131,7 @@ function takepart_campaign_field_default_fields() {
       'description' => 'User references one or more nodes to be listed within this segment, represented by promo headline/text.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
@@ -2270,7 +2270,7 @@ function takepart_campaign_field_default_fields() {
       'description' => 'User provides a name for this segment (equivalent to the label on the old tabs).',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -2360,7 +2360,7 @@ function takepart_campaign_field_default_fields() {
       'description' => 'User references one or more nodes to be listed within this segment, represented by promo headline/text.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
@@ -2485,10 +2485,10 @@ function takepart_campaign_field_default_fields() {
       'description' => 'User can create and/or reference a Photo to serve as the Spotlight Image.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'media',
           'settings' => array(
-            'file_view_mode' => 'default',
+            'file_view_mode' => 'media_original',
           ),
           'type' => 'media',
           'weight' => '9',
@@ -2563,7 +2563,7 @@ function takepart_campaign_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
