@@ -2756,6 +2756,56 @@ function takepart_campaign_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_context'
+  $fields['node-takepart_campaign-field_tp_campaign_context'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_context',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => array(
+        0 => array(
+          'context' => '',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 19,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_context',
+      'label' => 'Context',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Features Box' => 0,
+
   // Translatables
   // Included for use with string extractors like potx.
   t('  Segment 4 HTML');
@@ -2775,6 +2825,7 @@ function takepart_campaign_field_default_fields() {
   t('Intro HTML');
   t('Intro Media');
   t('Multi Page Campaign');
+  t('Context');
   t('Related Actions');
   t('Segment 1 HTML');
   t('Segment 1 Label');
