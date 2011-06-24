@@ -1,0 +1,88 @@
+<?php
+
+function takepart_newsletter_signup_bulk_feature_schema() {
+  $schema['tp_newsletter_signup_bulk_queue'] = array(
+    'description' => 'Stores extra list information.',
+  	'fields' => array(
+  	  'queue_id' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Table primary key',
+      ),
+	  'email' => array(
+	    'type' => 'varchar',
+	    'length' => 60,
+	    'description' => "Email address",
+	  ),
+	  'campaign_code' => array(
+	    'type' => 'varchar',
+	    'length' => 10,
+	    'not null' => TRUE, 
+	    'default' =>  " " ,
+	    'description' => "Campaign ID from Pluris",
+	  ),
+	  'source' => array(
+	    'type' => 'varchar',
+	    'length' => 100,
+	    'not null' => TRUE, 
+	    'default' =>  " ",
+	    'description' => "Source of Email",
+	  ),
+	  'action' => array(
+	    'type' => 'varchar',
+	    'length' => 1,
+	    'not null' => TRUE, 
+	    'default' =>  "S",
+	    'description' => "S or U for subscribe or unsubscribe",
+	  ),
+	  'send_welcome' => array(
+	    'type' => int,
+	    'not null' => TRUE, 
+	    'default' =>  0,
+	    'description' => "Should a welcome email be sent",
+	  ),
+	  'load_nid' => array(
+	    'type' => int,
+	    'length' => 100,
+	    'not null' => TRUE, 
+	    'description' => "Identifier of the load of which this email is apart",
+	  ),
+	  'is_preprocessed' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "Record has been pre-processed flag",
+      ),
+	  'is_processed' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "Record has been processed flag",
+      ),
+	  'has_error' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "Record Not insert because of error",
+      ),
+	  'error_msg' => array(
+	    'type' => 'varchar',
+	    'length' => 255,
+	    'not null' => TRUE, 
+	    'default' => " ",
+	    'description' => "The error message if insert failed",
+	  ),
+    ),
+    'primary key' => array('queue_id'), 
+    'indexes' => array(
+      'email' => array('email'),
+    ),
+  );
+  return $schema;
+}
+
+function takepart_newsletter_signup_bulk_feature_install() {
+  drupal_install_schema('takepart_newsletter_signup_bulk_feature');
+}
+
+
