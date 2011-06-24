@@ -116,7 +116,7 @@ $info['projects']['styles'] = array(
 $info['projects']['imce'] = array(
   'type'=> 'module',
   'subdir' => 'contrib',
-  'version' => '1.3'
+  'version' => '1.4'
 );
 
 $info['projects']['nodequeue'] = array(
@@ -171,6 +171,11 @@ $info['projects']['xmlsitemap'] = array(
   'type' => 'module',
   'subdir' => 'contrib',
   'version' => '2.0-beta3'
+);
+$info['projects']['webform'] = array(
+  'type' => 'module',
+  'subdir' => 'contrib',
+  'version' => '3.11'
 );
 
 
