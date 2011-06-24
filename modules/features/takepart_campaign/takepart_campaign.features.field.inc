@@ -2756,6 +2756,93 @@ function takepart_campaign_field_default_fields() {
     ),
   );
 
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_context'
+  $fields['node-takepart_campaign-field_tp_campaign_context'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_context',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => array(
+        0 => array(
+          'context' => '',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 19,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_context',
+      'label' => 'Context',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Features Box' => 0,
+          'Boxes for Field Box' => 0,
+          'Boxes for Image Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'boxes' => 'boxes',
+          'comment' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'diff' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'context_field_default_context',
+        'use_default' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'widget_setting' => 'bob',
+        ),
+        'type' => 'context_field',
+        'weight' => '23',
+      ),
+    ),
+  );
+
+
+
   // Translatables
   // Included for use with string extractors like potx.
   t('  Segment 4 HTML');
