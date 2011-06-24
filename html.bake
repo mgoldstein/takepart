@@ -133,7 +133,7 @@ $info['projects']['token'] = array(
 $info['projects']['wysiwyg'] = array(
   'type'=> 'module',
   'subdir' => 'contrib',
-  'version' => '2.0'
+  'version' => '2.1'
 );
 
 $info['projects']['terms_of_use'] = array(
