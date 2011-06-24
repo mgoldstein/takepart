@@ -202,7 +202,11 @@ $info['projects']['username_check'] = array(
  'version' => '1.x-dev'
 );
 
-
+$info['projects']['features'] = array(
+ 'type' => 'module',
+ 'subdir' => 'contrib',
+ 'version' => '1.0-beta3'
+);
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
 //$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 $info['projects']['flag']['patch'][]   = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
