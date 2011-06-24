@@ -1,0 +1,11 @@
+name = Newsletter Email Collector Client
+description = Provides "front-end" that receives email addresses for newsletter signups and calls TakePart.com webservice for storage and submission to Pluris - Does NOT contain unsubscribe functionality. All unsubscribes are done via www.takepart.com
+package = Take Part
+dependencies[] = content
+dependencies[] = content_copy
+dependencies[] = filefield
+dependencies[] = imagefield
+dependencies[] = link
+dependencies[] = text
+version = VERSION
+core = 6.x

@@ -1,0 +1,3 @@
+<?php
+
+include_once('takepart_newsletter_signup_views.features.inc');

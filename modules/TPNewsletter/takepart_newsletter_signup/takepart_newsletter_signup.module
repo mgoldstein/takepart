@@ -1,0 +1,188 @@
+<?php
+
+require_once ( dirname(__FILE__) . '/takepart_newsletter_signup.db.inc');
+require_once ( dirname(__FILE__) . '/takepart_newsletter_signup.forms.inc');
+
+
+/**
+ * Implementation of hook_perms()
+ */
+function takepart_newsletter_signup_perm() {
+  return array('administer newsletter email collector service', 'access web service');
+}
+
+
+/**
+ * Implementation of hook_menu().
+ */
+function takepart_newsletter_signup_menu() {
+  $items = array();
+    
+  $items[variable_get('takepart_newsletter_signup_unsubscribe_page', 'newsletter-unsubscribe')] = array(
+    'title' => t('Unsubscribe?'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_newsletter_signup_unsubscribe_form'),
+    'access arguments' => array('access content'),
+  );
+  
+  $items[variable_get('takepart_newsletter_signup_unsubscribe_confirmation_page', 'newsletter-unsubscribe-confirmation')] = array(
+    'title' => t('Unsubscribe Successful'),
+    'page callback' => 'takepart_newsletter_signup_unsubscribe_confirmation_page',
+    'access arguments' => array('access content'),
+  );
+    
+  $items[variable_get('takepart_newsletter_signup_unsubscribe_problem_page', 'newsletter-unsubscribe-problem')] = array(
+    'title' => t('Problem Unsubscribing'),
+    'page callback' => 'takepart_newsletter_signup_unsubscribe_problem_page',
+    'access arguments' => array('access content'),
+  );
+
+  $items['admin/settings/takepart-newsletter-signup-service'] = array(
+    'type' => MENU_NORMAL_ITEM,
+	'title' => t('TakePart Newsletter Signup'),
+	'description' => t('Settings for newsletter signup service'),
+	'page callback' => 'drupal_get_form',
+	'page arguments' => array('takepart_newsletter_signup_admin_settings'),
+	'access arguments' => array('administer newsletter email collector service'),
+  );
+      
+  return $items;
+}
+
+
+/**
+ * Returns html for page after a user successfully unsubscribes
+ */
+function takepart_newsletter_signup_unsubscribe_confirmation_page() {
+  return '<br/>'.variable_get('takepart_newsletter_signup_unsubscribe_confirmation_text', 'Your have successfully unsubscribed.').'<br/><br/>'.l(t('Return to TakePart Home Page'), '<front>');
+}
+
+
+/**
+ * Returns html for page if there is a problem unsubscribing
+ */
+function takepart_newsletter_signup_unsubscribe_problem_page() {
+  return variable_get('takepart_newsletter_signup_unsubscribe_problem_text', 'There was a problem unsubscribing. Please try again later.');
+}
+
+
+/**
+ * Implementation of hook_user 
+ * looks to see if a new user had signed up for a user and adds his user id to the table
+ */
+function takepart_newsletter_signup_user($op, &$edit, &$account, $category = NULL) { 
+  if ($op == "insert") {
+    if (takepart_newsletter_signup_is_email_recorded($account->mail)) {
+      takepart_newsletter_signup_add_uid_to_email_records($account->mail, $account->uid);
+    }
+  }
+}
+
+
+/**
+ * Implementation of hook_server from services module().
+ */
+function takepart_newsletter_signup_server($endpoint = 'services/rest') {
+  
+  $canonical_path = trim(substr($_GET['q'], drupal_strlen($endpoint)), '/');
+ 
+  //find all the services available and map to appropriate call defined by hook_service
+  foreach (services_get_all() as $method) {
+  
+    if ($method['method'] == $canonical_path) {
+      $args = array( // required args by services for authentication for all
+        0 => check_plain($_GET['h']), //'hash'
+        1 => check_plain($_GET['d']), //'domain_name',
+        2 => check_plain($_GET['t']), //'domain_time_stamp',
+		3 => check_plain($_GET['n']), //'nonce',
+      );
+    
+      array_push($args, check_plain($_GET['e'])); // email
+      array_push($args, check_plain($_GET['c'])); // campaign_id  
+	
+      return services_method_call($method['method'], $args);
+    }
+  }
+    
+  // if there isn't a handler, throw an exception  
+  throw new Exception(t('Invalid url'), 0);
+}
+
+
+/**
+ *  Implementation of hook_server_info
+ */
+function takepart_newsletter_signup_server_info() {
+  return array(
+    '#name' => 'REST for TakePart',
+    '#path' => 'rest'
+  );
+}
+
+
+/*
+* Implementation of hook_service()
+* Required by all server modules
+* Returns array defining all the methods available in the service
+*/
+function takepart_newsletter_signup_service() {
+  return array(
+   
+    array(
+      // #method - defines the namespace and method name
+      '#method' => 'takepart_newsletter_signup.subscribe',
+     
+      // #callback - the php function to map the method call to
+      '#callback' => 'takepart_newsletter_save_campaign_handler',
+      
+      '#access arguments' => array('access web service'),
+     
+      //#args - a list of method arguments
+      '#args' => array(
+        array(
+          '#name' => 'email',         
+          '#type' => 'string',
+          '#optional' => FALSE,
+          '#description' => 'Email address to save.'
+        ),
+        array(
+          '#name' => 'campaign_id',         
+          '#type' => 'string',
+          '#optional' => FALSE,
+          '#description' => 'Pluris Campaign Code.'
+        ),
+      ),
+      '#return' => 'string',
+      '#help' => 'Returns JSON - an array with key 0 as status, 0 for failure, 1 for success and key 1 as the message, either success or an error message'
+    ),
+   
+  );
+}
+
+
+/**
+ * Services handler function
+ *
+ * @param $email string - email address
+ * @param $campaign_id string - pluris campaign id for subscription
+ *
+ * @return string - JSON format
+ */
+function takepart_newsletter_save_campaign_handler($email, $campaign_id) {
+  
+  $message = ''; 
+   
+  if (!valid_email_address($email)) {
+    $message = t('Invalid email.');
+  }
+
+  if (!takepart_newsletter_signup_get_campaign_nid($campaign_id)) {
+    $message = t('Invalid campaign');
+  }
+  
+  if ($message) {
+    return drupal_json(array('status' => 0, 'message' => $message));
+  }
+
+  return drupal_json(takepart_newsletter_save_campaign($email, $campaign_id));
+}
