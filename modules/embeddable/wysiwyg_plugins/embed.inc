@@ -22,6 +22,8 @@ function embeddable_embed_plugin() {
       'icon file' => "$id.png",
       'js path' => drupal_get_path('module', 'embeddable') . '/wysiwyg_plugins/embed',
       'js file' => 'embed.js',
+      'css path' => drupal_get_path('module', 'embeddable') . '/wysiwyg_plugins/embed',
+      'css file' => 'embed.css',
 
     );
   }
