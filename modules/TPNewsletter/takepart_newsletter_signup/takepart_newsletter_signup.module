@@ -37,13 +37,13 @@ function takepart_newsletter_signup_menu() {
     'access arguments' => array('access content'),
   );
 
-  $items['admin/settings/takepart-newsletter-signup-service'] = array(
+  $items['admin/config/takepart-newsletter-signup-service'] = array(
     'type' => MENU_NORMAL_ITEM,
-	'title' => t('TakePart Newsletter Signup'),
-	'description' => t('Settings for newsletter signup service'),
-	'page callback' => 'drupal_get_form',
-	'page arguments' => array('takepart_newsletter_signup_admin_settings'),
-	'access arguments' => array('administer newsletter email collector service'),
+    'title' => t('TakePart Newsletter Signup'),
+    'description' => t('Settings for newsletter signup service'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_newsletter_signup_admin_settings'),
+    'access arguments' => array('administer newsletter email collector service'),
   );
       
   return $items;
