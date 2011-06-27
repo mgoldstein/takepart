@@ -9,17 +9,17 @@
  * Implementation of hook_install().
  */
 function takepart_newsletter_signup_install() {
-  drupal_install_schema('takepart_newsletter_signup');
-  
-  $ret = array();
-  db_add_index($ret, 'content_type_newsletter_campaign', 'campaign_id', array('field_newsletter_campaign_id_value'));
+  // commenting this out for now.  Not sure what the new table name is for this
+  // or if it is even needed any longer.
+  // also, this is probably the wrong location for an index on the campaign type/field
+  //db_add_index('content_type_newsletter_campaign', 'campaign_id', array('field_newsletter_campaign_id_value'));
   
   variable_set('services_use_sessid', FALSE);
   variable_set('services_auth_module', 'services_keyauth');
   
   // not sure about this update.
   //db_query("UPDATE blocks SET pages = '<front>\nnews\nnews/*' WHERE pages = '<front>news*'");
-  
+
 }
 
 
@@ -27,9 +27,7 @@ function takepart_newsletter_signup_install() {
  * Implementation of hook_uninstall().
  */
 function takepart_newsletter_signup_uninstall() {
-  // Remove tables.
-  drupal_uninstall_schema('takepart_newsletter_signup');
-  
+ 
   variable_del('takepart_newsletter_signup_pluris_url');
   variable_del('takepart_newsletter_signup_problem_text');
   variable_del('takepart_newsletter_signup_unsubscribe_page');
