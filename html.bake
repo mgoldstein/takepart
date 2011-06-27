@@ -83,6 +83,7 @@ $info['projects']['media'] = array(
     'date' => '2011-06-03'
   ),
 );
+$info['projects']['media']['patch'][] = 'http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make.patch';
 
 $info['projects']['date'] = array(
   'type'=> 'module',
