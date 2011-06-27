@@ -12,13 +12,14 @@ bake_merge_file($info, $config, $base);
 $info['projects']['search_api'] = array(
   'type'=> 'module',
   'subdir' => 'contrib',
-  'version' => '1.0-beta9',
+  'version' => '1.0-beta10',
 );
 
 bake_convert_to_dev($info,'nodeconnect');
 
-$info['projects']['entity']['version'] = '1.0-beta8';
-
+$info['projects']['entity']['type']     = 'module';
+$info['projects']['entity']['subdir']   = '1.3';
+$info['projects']['entity']['version']  = '1.0-beta9';
 
 $info['projects']['flag'] = array(
   'type'=> 'module',
@@ -116,7 +117,7 @@ $info['projects']['styles'] = array(
 $info['projects']['imce'] = array(
   'type'=> 'module',
   'subdir' => 'contrib',
-  'version' => '1.3'
+  'version' => '1.4'
 );
 
 $info['projects']['nodequeue'] = array(
@@ -157,6 +158,28 @@ $info['projects']['views_slideshow'] = array(
   'subdir' => 'contrib',
   'version' => '3.0-alpha1'
 );
+$info['projects']['pathauto'] = array(
+  'type' => 'module',
+  'subdir' => 'contrib',
+  'version' => '1.0-rc2'
+);
+$info['projects']['views'] = array(
+  'type' => 'module',
+  'subdir' => 'contrib',
+  'version' => '3.0-rc1'
+);
+$info['projects']['xmlsitemap'] = array(
+  'type' => 'module',
+  'subdir' => 'contrib',
+  'version' => '2.0-beta3'
+);
+$info['projects']['webform'] = array(
+  'type' => 'module',
+  'subdir' => 'contrib',
+  'version' => '3.11'
+);
+
+
 $info['projects']['libraries'] = array(
   'type' => 'module',
   'subdir' => 'contrib',
@@ -180,7 +203,11 @@ $info['projects']['username_check'] = array(
  'version' => '1.x-dev'
 );
 
-
+$info['projects']['features'] = array(
+ 'type' => 'module',
+ 'subdir' => 'contrib',
+ 'version' => '1.0-beta3'
+);
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
 //$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 $info['projects']['flag']['patch'][]   = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
