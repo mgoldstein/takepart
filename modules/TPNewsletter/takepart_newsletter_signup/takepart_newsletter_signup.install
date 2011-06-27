@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * @file 
+ * Install, update, and uninstall for TakePart Newsletter module.
+ *
+ */
 
 /**
  * Implementation of hook_install().
@@ -13,8 +17,8 @@ function takepart_newsletter_signup_install() {
   variable_set('services_use_sessid', FALSE);
   variable_set('services_auth_module', 'services_keyauth');
   
-  db_query("UPDATE blocks SET pages = '<front>\nnews\nnews/*' WHERE pages = '<front>
-news*'");
+  // not sure about this update.
+  //db_query("UPDATE blocks SET pages = '<front>\nnews\nnews/*' WHERE pages = '<front>news*'");
   
 }
 
@@ -108,43 +112,11 @@ function takepart_newsletter_signup_schema() {
 
 /* 
  * Adding statusi and source fields to tp_newsletter_signups'
+ * this is left over from the D6 version.  I left it here just 
+ * in case.
  */
-function takepart_newsletter_signup_update_6001() {
+function _legacy_takepart_newsletter_signup_update_6001() {
   $ret = array();
-  $table = 'tp_newsletter_signups';
-  // Add Status
-  $specs = array(
-    'status' => array(
-      'type' => 'varchar',
-      'length' => 1,
-      'not null' => TRUE, 
-      'default' =>  's',
-      'description' => "Status of Subscription (s or u)",
-      'initial' => 's'
-    ),
-    'source' => array(
-      'type' => 'varchar',
-      'length' => 100,
-      'not null' => TRUE, 
-      'default' =>  " ",
-      'description' => "Source of Email",
-    ),
-    'subscribe_date' => array(
-      'description' => 'The Unix timestamp when the email was subscribed.',
-      'type' => 'int',
-      'not null' => TRUE,
-      'default' => 0
-    ),
-    'unsubscribe_date' => array(
-      'description' => 'The Unix timestamp when the email was unsubscribed.',
-      'type' => 'int',
-      'not null' => TRUE,
-      'default' => 0
-    )
-  );
-  foreach ($specs as $field=>$spec) {
-  db_add_field($ret, $table, $field, $spec);
-  }
   
   // now add records to the modified table for folks signed up for TP or MP mailings
   $mp_results = db_query("SELECT u.uid, u.mail FROM {users} u INNER JOIN {tp_mp_users} m ON m.uid = u.uid AND m.subscribe = 1");
