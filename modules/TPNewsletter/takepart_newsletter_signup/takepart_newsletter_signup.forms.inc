@@ -14,8 +14,8 @@ function takepart_newsletter_signup_unsubscribe_form(&$form_state) {
   
   $all_code = variable_get('takepart_newsletter_signup_unsubscribe_all_campaign_code', 'alltpnl');
   
-  $email = check_plain($_GET['email']);
-  $campaign_id = check_plain($_GET['campaign']); 
+  $email        = check_plain($_GET['email']);
+  $campaign_id  = check_plain($_GET['campaign']); 
 
   if ($campaign_id != $all_code) {
     $campaign_nid = takepart_newsletter_signup_get_campaign_nid($campaign_id);
@@ -26,7 +26,11 @@ function takepart_newsletter_signup_unsubscribe_form(&$form_state) {
   }
   
   if ($campaign_node && $campaign_node->field_newsletter_campaign_logo[0]['filepath']) {
-    $logo = theme('image', $campaign_node->field_newsletter_campaign_logo[0]['filepath'], $campaign_node->field_newsletter_campaign_logo[0]['title'], $campaign_node->field_newsletter_campaign_logo[0]['title']);
+    $logo = theme('image', 
+      $campaign_node->field_newsletter_campaign_logo[0]['filepath'], 
+      $campaign_node->field_newsletter_campaign_logo[0]['title'], 
+      $campaign_node->field_newsletter_campaign_logo[0]['title']
+    );
   } 
   
   $form = array();
@@ -39,7 +43,7 @@ function takepart_newsletter_signup_unsubscribe_form(&$form_state) {
     
     if ($logo) {
       $form['logo'] = array(
-        '#value' => "<div id='newsletter-unsubscribe-logo'>$logo</div>",
+        '#markup' => "<div id='newsletter-unsubscribe-logo'>$logo</div>",
       );
     }
     
@@ -63,13 +67,13 @@ function takepart_newsletter_signup_unsubscribe_form(&$form_state) {
       
       if (!empty($campaign_titles)) {
         $form['intro'] = array(
-          '#value' => '<br/>'.t(variable_get('takepart_newsletter_signup_unsubscribe_all_text', 'Please confirm that we should unsubscribe %email from all TakePart campaigns'), array('%email' => $email)).'<br/><br/>'
+          '#markup' => '<br/>'.t(variable_get('takepart_newsletter_signup_unsubscribe_all_text', 'Please confirm that we should unsubscribe %email from all TakePart campaigns'), array('%email' => $email)).'<br/><br/>'
         );
       }
     }
     else {
        $form['intro'] = array(
-        '#value' => '<br/>'.t(variable_get('takepart_newsletter_signup_unsubscribe_text', 'Please confirm that we should unsubscribe %email from the %campaign_title'), array('%email' => $email, '%campaign_title' => $campaign_node->title)).'<br/><br/>'
+        '#markup' => '<br/>'.t(variable_get('takepart_newsletter_signup_unsubscribe_text', 'Please confirm that we should unsubscribe %email from the %campaign_title'), array('%email' => $email, '%campaign_title' => $campaign_node->title)).'<br/><br/>'
       );
     }
     
@@ -77,12 +81,12 @@ function takepart_newsletter_signup_unsubscribe_form(&$form_state) {
       if (!empty($campaign_titles)) {
         asort($campaign_titles);
         $form['signup_listings'] = array(
-          '#value' => implode("<br/>", $campaign_titles).'<br/><br/>',
+          '#markup' => implode("<br/>", $campaign_titles).'<br/><br/>',
         );
       }
       else {
         $form['signup_listings'] = array(
-          '#value' => '<br/><p>'.t('You are currently unsubscribed from all mailings.').'</p>',
+          '#markup' => '<br/><p>'.t('You are currently unsubscribed from all mailings.').'</p>',
         );
       }
     }
@@ -116,14 +120,14 @@ function takepart_newsletter_signup_unsubscribe_form(&$form_state) {
     
     if ($campaign_id != $all_code) {
       $form['all_link'] = array(
-        '#value' => '<br/><br/>'.l(t(variable_get('takepart_newsletter_signup_unsubscribe_all_link_text', 'Unsubscribe from all TakePart mailings')), variable_get('takepart_newsletter_signup_unsubscribe_page', 'newsletter-unsubscribe'), array('query' => array('email' => $email, 'campaign' => $all_code, 'destination' => variable_get('takepart_newsletter_signup_unsubscribe_page', 'newsletter-unsubscribe').'?email='.$email.'&campaign='.$campaign_id))),
+        '#markup' => '<br/><br/>'.l(t(variable_get('takepart_newsletter_signup_unsubscribe_all_link_text', 'Unsubscribe from all TakePart mailings')), variable_get('takepart_newsletter_signup_unsubscribe_page', 'newsletter-unsubscribe'), array('query' => array('email' => $email, 'campaign' => $all_code, 'destination' => variable_get('takepart_newsletter_signup_unsubscribe_page', 'newsletter-unsubscribe').'?email='.$email.'&campaign='.$campaign_id))),
       );
     }
     
   }
   else {
     $form['intro'] = array(
-      '#value' => t('Invalid arguments supplied')
+      '#markup' => t('Invalid arguments supplied')
     );
   }
   
