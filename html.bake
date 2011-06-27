@@ -189,9 +189,8 @@ $info['projects']['fb'] = array(
   'type'=> 'module',
   'subdir' => 'contrib',
   'download' => array(
-    'type' => 'git',
-    'branch' => 'master',
-    'url' => "http://git.drupal.org/project/fb.git",
+    'type' => 'get',
+    'url' => "http://ftp.drupal.org/files/projects/fb-7.x-3.x-dev.tar.gz",
     'date' => '2011-06-23'
   ),
 );
