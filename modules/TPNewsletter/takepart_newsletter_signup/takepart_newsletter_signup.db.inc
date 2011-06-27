@@ -128,7 +128,8 @@ function takepart_newsletter_delete_campaign($email, $campaign_id) {
  *  @return int - node id from drupal node
  */
 function takepart_newsletter_signup_get_campaign_nid($campaign_id) {
-  return db_result(db_query("SELECT n.nid FROM {node} n INNER JOIN {content_type_newsletter_campaign} c ON n.vid = c.vid WHERE c.field_newsletter_campaign_id_value = '%s'", $campaign_id));
+  $query = db_query("SELECT n.nid FROM {node} n INNER JOIN {content_type_newsletter_campaign} c ON n.vid = c.vid WHERE c.field_newsletter_campaign_id_value = '%s'", $campaign_id);
+  return $query->fetchField();
 }
 
 
@@ -140,7 +141,8 @@ function takepart_newsletter_signup_get_campaign_nid($campaign_id) {
  * @return int - uid if found
  */
 function takepart_newsletter_signup_is_drupal_user($email) {
-  return db_result(db_query("SELECT uid FROM {users} WHERE mail = '%s'", $email));
+  $query = db_query("SELECT uid FROM {users} WHERE mail = '%s'", $email);
+  return $query->fetchField();
 }
 
 
@@ -152,7 +154,8 @@ function takepart_newsletter_signup_is_drupal_user($email) {
  * @return string - mail if found
  */
 function takepart_newsletter_signup_is_email_recorded($email) {
-  return db_result(db_query("SELECT mail FROM {tp_newsletter_signups} WHERE mail = '%s'", $email));
+  $query = db_query("SELECT mail FROM {tp_newsletter_signups} WHERE mail = '%s'", $email);
+  return $query->fetchField();
 }
 
 
@@ -177,7 +180,8 @@ function takepart_newsletter_signup_add_uid_to_email_records($email, $uid) {
  * @return string - current status if it exists
  */
 function takepart_newsletter_signup_is_email_recorded_for_campaign($email, $campaign_id = '') {
-  return db_result(db_query("SELECT status FROM {tp_newsletter_signups} WHERE mail = '%s' AND campaign_id = '%s'", $email, $campaign_id));
+  $query = db_query("SELECT status FROM {tp_newsletter_signups} WHERE mail = '%s' AND campaign_id = '%s'", $email, $campaign_id);
+  return $query->fetchField();
 }
 
 
@@ -221,7 +225,8 @@ function takepart_newsletter_signup_alert_pluris($email, $campaign_id, $action =
   }
   catch(Exception $ex) {
     $message = t('Problem connecting to pluris');
-    watchdog('newsletter service', 'Error connecting to pluris. Error: %error for email: %email, campaign id: %campaign', array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign));
+    watchdog('newsletter service', 'Error connecting to pluris. Error: %error for email: %email, campaign id: %campaign', 
+      array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign));
   }
   
   return $message;
