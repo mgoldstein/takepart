@@ -20,8 +20,10 @@ function embeddable_embed_plugin() {
       'icon title' => 'Embed '. $embed['name'],
       'icon path' => $embed['path'],
       'icon file' => "$id.png",
-      'path' => drupal_get_path('module', 'embeddable') . '/wysiwyg_plugins/embed',
-      'filename' => 'embed.js',
+      'js path' => drupal_get_path('module', 'embeddable') . '/wysiwyg_plugins/embed',
+      'js file' => 'embed.js',
+      'css path' => drupal_get_path('module', 'embeddable') . '/wysiwyg_plugins/embed',
+      'css file' => 'embed.css',
 
     );
   }

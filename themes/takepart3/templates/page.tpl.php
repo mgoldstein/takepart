@@ -13,15 +13,13 @@
 		<div class="header-right">
   		<div id="join-login-top">
       <div class="login-fb clearfix">  	   <?php print $user_nav; ?>
-	<!--
-  					<span class="login-text">	<?php // print l("Login", "user/login")?> or</span>
-  				<span class="fb"><a href="#"><img src="<?php  //print $takepart_theme_path; ?>/images/btn-fb-1.gif"></a></span>
-  			-><!--/login-fb-->
- </div>-
+	
+  			
+ </div>
        	  
   		</div><!--/join-login-top-->
   		
-  	 
+  	
   	   
   	  <div class="clear"></div>
   	  	<ul id="top-follow">
@@ -127,7 +125,7 @@
 
     <div id="footer-about">
       <p>TakePart is the Social Action Network&trade; of <a target="_blank" href="http://www.participantmedia.com/">Participant Media</a></p>
-      <div id="footer-legal">&copy; 2008-2011 TakePart, LLC</div>
+      <div id="footer-legal">&copy; 2008-<?php echo date('Y'); ?> TakePart, LLC</div>
     </div>
 
   </div>

@@ -35,7 +35,7 @@ function takepart_facebook_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'fb_connect_primary_label';
-  $strongarm->value = 'mainfbconnect';
+  $strongarm->value = 'takepart_fb_connect';
   $export['fb_connect_primary_label'] = $strongarm;
 
   $strongarm = new stdClass;

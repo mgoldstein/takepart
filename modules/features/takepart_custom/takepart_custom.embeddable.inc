@@ -7,8 +7,8 @@
  */
 function takepart_custom_form_embeddable_embed_form_alter(&$form, &$form_state) {
   if(isset($form['wrapper']['nid'])) {
-    $form['wrapper']['nid']['#autocomplete_path'] = 'entity-autocomplete/bundle/node/action+openpublish_video';
-    $form['wrapper']['nid']['#description'] = 'Limited to Videos and Actions';
+    $form['wrapper']['nid']['#autocomplete_path'] = 'entity-autocomplete/bundle/node/action+openpublish_video+openpublish_photo_gallery';
+    $form['wrapper']['nid']['#description'] = 'Limited to Videos Galleries and Actions';
     $form['wrapper']['view_mode']['#default_value'] = 'embed';
   }
 }
