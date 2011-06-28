@@ -41,14 +41,13 @@
   	</div><!--/top search-->
   </div>
 
-
   <?php if ($page['help'] || ($show_messages && $messages)): ?>
     <div id='console'><div class='limiter clearfix'>
       <?php print render($page['help']); ?>
       <?php if ($show_messages && $messages): print $messages; endif; ?>
     </div></div>
   <?php endif; ?>
-  
+
   <?php if ($page['header']): ?>
     <div id='header' class='clearfix'>
       <?php print render($page['header']); ?>

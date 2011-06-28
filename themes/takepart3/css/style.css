@@ -102,54 +102,6 @@ h3 {
 
 em {color: #000;}
 
-
-/***** Columns ***** - For use with full nodes without regions */
-
-  .layout-col-3 .content,
-  .layout-col-3 .content .no-sidebars{
-    float: left;
-    overflow: visible;
-    word-wrap: break-word;
-    width: 480px; /* original= 560px */
-    margin-left: 170px; /* original= 200px */
-    margin-right: -650px; /* original= -760px */
-  }
-
-  .layout-col-3 .sidebar-first {
-    float: left;
-    width: 170px; /* original= 200px */
-    margin-left: 0;
-    margin-right: -170px; /* original= -200px */
-    padding: 0;
-    overflow: visible;
-    word-wrap: break-word;
-  }
-
-  .layout-col-3 .sidebar-second {
-    float: left;
-    width: 330px; /* original= 200px */
-    margin-left: 650px; /* original= 760px */
-    margin-right: -980px; /* original= -960px */
-    padding: 0;
-    overflow: visible;
-    word-wrap: break-word;
-  }
-
-  .layout-col-3 .section {
-    margin: 0;
-    padding: 0;
-  }
-
-  .layout-col-3 .col .inner-content{
-    padding: 25px 10px 0 10px;
-  }
-
-  .layout-col-3 .col .sidebar-second .inner-content{
-    padding-right:20px;
-  }
-  
-  
-
 /***** Common ******/
 
 
@@ -989,6 +941,12 @@ ul#soc-links li#twitter a {
 
 #footer-about a {color: #fff;}
 
+/****** Boxes Overrides ******/
+
+.contextual-links-region {
+margin-bottom: 15px;
+}
+
 
 /****** Gallery Detail ******/
 
@@ -1362,301 +1320,359 @@ span.comment-num {
 
 .share-this-strip li.email {margin-right: 0;}
 
+/***** Front Page ******/
 
-#views_slideshow_cycle_main_slide_rotator-block {
- float: left;
- margin-right: 15px;
-
+body.front h1 {
+  display: none;
 }
 
-#views_slideshow_pager_field_item_slide_rotator-block_0 {
-  margin-top: 10px;
+/* Carousel */
+
+.view-id-slide_rotator {
+  background: black;
+  left: -19px;
+  margin-bottom: 15px;
+  padding: 8px 9px;
+  position: relative;
+  width: 620px;
 }
 
-.views-slideshow-pager-field-item {
- margin-bottom: 30px;
+.views_slideshow_cycle_main {
+  float: left;
+  margin-right: 5px;
 }
 
-
-
-
-
-/***** Content Types ******/
-
-
-/***** takepart-campaign ******/
-
-body.node-type-takepart-campaign .page {
-  padding: 0;
+.view-id-slide_rotator .views-field-field-slide-main-media {
+  height: 300px;
+  width: 470px;
 }
 
-body.node-type-takepart-campaign .main-content {
-  width: 100%;
+.view-id-slide_rotator .views-slideshow-pager-fields-render {
+  background: white;
+  height: 300px;
+  margin-left: 470px;
 }
 
-#node-type-takepart-campaign-header {
-  width: 980px;
-  height: 325px;
-}
-
-.node-type-takepart-campaign-five-things {
-  width: 340px;
-  float: right;
-  padding: 20px;
-}
-
-.node-type-takepart-campaign-five-things .campaign-five-things-num-1{ } /* Will be used soon */
-
-.node-takepart-campaign .field-name-field-tp-campaign-subheadline {
-  font-size: 30px;
-  font-weight: bold;
-  padding-bottom: 10px;
+.view-id-slide_rotator .views-slideshow-pager-field-item {
+  padding-bottom: 25px;
+  padding-top: 10px;
   border-bottom: 1px dotted silver;
+}
+
+.views-slideshow-pager-field-item .views-field-field-slide-label {
+  background: url('../images/sprite-vertical.gif') -602px 0 repeat-y;
+  line-height: 0px;
+  margin-bottom: 8px;
+}
+
+.views-slideshow-pager-field-item .views-content-field-slide-label {
+  background: white;
+  color: #8dc547;
+  display: inline;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 10px;
+  padding: 0 5px;
+  text-transform: uppercase;
+}
+
+.views-field-field-slide-featured-item a,
+.views-field-field-slide-headline {
+  color: black;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.views_slideshow_main .views-field-field-slide-label {
+  height: 0;
+  left: -11px;
+  overflow: visible;
+  position: relative;
+  top: -145px;
+  z-index: 500;
+}
+
+.views_slideshow_main .views-field-field-slide-label .field-content{
+  background: #8dc547 url('../images/sprite-horizontal.gif') 0 -312px no-repeat;
+  color: white;
+  display: inline-block;
+  font-size: 18px;
+  padding-left: 30px;
+  padding-right: 25px;
+  height: 33px;
+  line-height: 33px;
+}
+
+.views_slideshow_active_pager_field_item {
+  background: url('../images/sprite.png') -387px -368px no-repeat;
+  left: -12px;
+  padding-left: 12px;
+  position: relative;
+  width: 150px;
+}
+
+.views_slideshow_active_pager_field_item .views-field-field-slide-label {
+  padding-left: 5px;
+}
+
+.views_slideshow_main .views-field-field-slide-headline-override {
+  height: 0px;
+  overflow: visible;
+  position: relative;
+  top: -115px;
+  width: 400px;
+}
+
+.views_slideshow_main .views-field-field-slide-headline-override .field-content{
+  background: black;
+  display: inline-block;
+  font-size: 25px;
+  padding: 5px;
+}
+
+.views-field-field-slide-headline-override {
+  background: black;
+  color: white;
+}
+
+.views-field-field-slide-featured-item,
+.views-field-field-slide-headline {
+  margin-left: 10px;
+}
+
+
+
+/*
+Block Boxes (General)
+*/
+
+.block-box-my-take h2,
+.block-box-news-to-know h2,
+.block-box-features h2 {
+  background: url('../images/sprite-block-box.gif') no-repeat;
+  font-size: 0;
+  margin-bottom: 25px;
+  text-indent: -90000;
+}
+
+/** My Take **/
+
+.block-box-my-take h2 {
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.block-box-my-take .views-row {
+  background: #F9FCFF;
+  display: inline-block;
+  height: 165px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 15px 7px;
+  vertical-align: top;
+  width: 289px;
+}
+
+.block-box-my-take .views-row.views-row-odd {
+  margin-right: 0;
+}
+
+.block-box-my-take .views-field-field-profile-photo {
+  background: black;
+  float: left;
+  font-size: 0;
+  height:99px;
+  line-height: 0;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  overflow:hidden;
+  text-align:center;
+  width: 99px;
+}
+
+.block-box-my-take .views-field-field-profile-photo img {
+  border: 1px solid black;
+}
+
+.block-box-my-take .views-field-field-promo-headline {
+  margin-bottom: 5px;
+}
+
+.block-box-my-take .views-field-title {
+  border-top: 1px dotted black;
+  margin-left: 115px;
   margin-bottom: 10px;
 }
 
-.node-takepart-campaign .field-name-body {
+.block-box-my-take .views-field-title a {
+  background: url('../images/sprite.gif') -383px 0 no-repeat;
+  color: #989898;
+  display: inline-block;
+  font-family: times;
+  font-size: 13px;
+  margin-top: 10px;
+  padding-left: 25px;
+}
+
+.block-box-my-take  .views-field-field-promo-headline a {
+  color: black;
   font-size: 15px;
-  line-height: 22px;
+  font-weight: bold;
 }
 
-.node-takepart-campaign .field-name-field-tp-campaign-seg-1-label,
-.node-takepart-campaign .field-name-field-tp-campaign-seg-2-label,
-.node-takepart-campaign .field-name-field-tp-campaign-seg-3-label,
-.node-takepart-campaign .field-name-field-tp-campaign-seg-4-label {
-  border-bottom: 1px dotted silver;
-  padding-bottom: 10px;
-  margin-top: 20px;
+/*** News to Know ***/
+
+.block-box-news-to-know h2 {
+  background-position: 0 -55px;
+  height: 20px;
+  margin-bottom: 15px;
 }
 
-.node-takepart-campaign .field-name-field-tp-campaign-seg-1-label .field-items,
-.node-takepart-campaign .field-name-field-tp-campaign-seg-2-label .field-items,
-.node-takepart-campaign .field-name-field-tp-campaign-seg-3-label .field-items,
-.node-takepart-campaign .field-name-field-tp-campaign-seg-4-label .field-items {
-  background: url('../images/sprite-horizontal.gif') no-repeat;
-  background-position: right -222px;
+.block-box-news-to-know .views-row {
+  border-bottom: 3px solid silver;
+  display: inline-block;
+  margin-right: 20px;
+  padding-bottom:10px;
+  padding-top: 10px;
+  vertical-align: top;
+  width: 295px;
+}
+
+.block-box-news-to-know .views-row.views-row-even {
+  margin-right: 0;
+}
+
+.block-box-news-to-know .views-row a {
+  color: black;
   display: inline-block;
   font-weight: bold;
-  font-size: 20px;
-  line-height: 20px;
-  padding-right: 50px;
 }
+  
+/*
+  Block Boxes (Features)
+*/
 
-.node-takepart-campaign .field-name-body b {
-  color: #1ca9e7;
-  font-size: 20px;
-}
-
-.node-takepart-campaign .tag-sponsored-by {
-  border-top: 3px solid black;
-  padding: 8px 5px 10px 5px;
-}
-
-.node-takepart-campaign .tag-sponsored-by h3{
-  background: url('../images/sprite-horizontal.gif') no-repeat 0 -245px;
-  height: 16px;
-  font-size: 0;
-  text-indent: -9000;
-  padding-left: 15px;  
-}
-
-.node-takepart-campaign .tag h3{
-  background: url('../images/sprite-horizontal.gif') no-repeat;
-  height: 33px;
-  line-height: 38px;
-  padding-left: 35px;
-  text-transform: uppercase;
-  font-size: 15px;
-  border-bottom: 2px solid black;
-}
-
-.node-takepart-campaign .tag-take-action h3{
-  background-position: 0 -185px;
-}
-
-.node-takepart-campaign .tag-alliances h3{
-  background-position: 0 0;
-  border-bottom: 2px solid #8dc547;
-}
-
-.node-takepart-campaign .tag-spotlight h3{
-  background-position: 0 -148px;
-}
-
-/***** Front Page ******/
-
-  /*
-  Block Boxes (General)
-  */
-
-  body.front .block-boxes{
-    margin-top: 15px;
-    margin-bottom: 35px;
+.block-box-features h2 {
+  background-position: 0 -93px;
+  border-bottom: 1px dotted black;
+  height: 20px;
+  padding-bottom: 5px;
   }
 
-  .front-my-take h2,
-  .front-news-to-know h2,
-  .front-features h2{
-    background: url('../images/sprite-block-box.gif') no-repeat;
-    font-size: 0;
-    text-indent: -90000;
-    margin-bottom: 25px;
-    }
-  
-  /*
-    Block Boxes (My Take)
-  */
+.block-box-features .views-row {
+  display: inline-block;
+  margin-bottom: 15px;
+  margin-right: 14px;
+  vertical-align: top;
+  width: 190px;
+}
 
-    .front-my-take h2{
-      height: 40px;
-      margin-bottom: 15px;
-      }
-  
-    .front-my-take .views-row {
-      background: #F9FCFF;
-      width: 289px;
-      height: 165px;
-      padding: 15px 7px;
-      display: inline-block;
-      vertical-align: top;
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
+.block-box-features .views-field-field-thumbnail-1 {
+  height: 0;
+  overflow: visible;
+  position: relative;
+  width: 0;
+}
 
-    .front-my-take .views-row.views-row-odd {
-      margin-right: 0;
-    }
+.block-box-features .views-field-field-thumbnail-1 .field-content {
+  border:1px solid black;
+  height: 135px;
+  width: 190px;
+}
 
-    .front-my-take .views-field-field-profile-photo {
-      background: black;
-      float: left;
-      font-size: 0;
-      line-height: 0;
-      margin-right: 15px;
-      margin-bottom: 10px;
-      width: 99px;
-      height:99px;
-      overflow:hidden;
-      text-align:center;
-    }
+.block-box-features .views-field-field-display-tag {
+  height: 0;
+  overflow: visible;
+  position: relative;
+  z-index: 100;
+}
 
-    .front-my-take .views-field-field-profile-photo img{
-      border: 1px solid black;
-    }
+.block-box-features .views-field-field-display-tag .field-content {
+  background: #8DC547 url('../images/sprite.png') -383px -122px no-repeat;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 18px;
+  margin-top: 103px;
+  padding-left: 20px;
+  padding-right: 10px;
+  text-transform: uppercase;
+}
 
-    .front-my-take  .views-field-field-promo-headline {
-      margin-bottom: 5px;
-    }
+.block-box-features .views-field-title {
+  font-size: 15px;
+  margin-top: 142px;
+}
 
-    .front-my-take .views-field-title {
-      margin-left: 115px;
-      margin-bottom: 10px;
-      border-top: 1px dotted black;
-    }
+.block-box-features .views-field-title a {
+  color: black;
+  line-height: 20px;
+}
 
-    .front-my-take .views-field-title a{
-      display: inline-block;
-      margin-top: 10px;
-      background: url('../images/sprite.gif') -383px 0 no-repeat;
-      color: #989898;
-      padding-left: 25px;
-      font-family: times;
-      font-size: 13px;
-    }
+/* Blog section */
 
-    .front-my-take  .views-field-field-promo-headline a{
-      color: black;
-      font-size: 15px;
-      font-weight: bold;
-    }
+.block-box-our-blogs h2 {
+  background: url('../images/sprite-block-box.gif') 0 -122px no-repeat;
+  height: 70px;
+  left: -2px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-indent: -9000px;
+  width: 302px;
+}
+
+.block-box-our-blogs .taxonomy-term {
+  background: url('../images/sprite-vertical.gif') top left repeat-y;
+}
+
+.block-box-our-blogs .taxonomy-term h2 {
+  background: url('../images/sprite-horizontal.gif') right -271px #8dc547;
+  height: 39px;
+  left: 0;
+  margin:0;
+  text-indent: 0;
+}
+
+.block-box-our-blogs .taxonomy-term h2 a {
+  color: white;
+  line-height: 39px;
+  margin-left: 20px;
+}
+
+.block-boxes-headline h2#screaming-headline { 
+  height: 30px;
+  line-height: 68px;
+  margin: 0;
+  overflow: visible;
+}
+
+.block-box-our-blogs .content .content {
+  background: url('../images/sprite-vertical.gif') no-repeat;
+  background-position: -303px 0;
+  border-bottom: 25px solid black;
+  margin-left: 11px;
+  margin-right: 13px;
+  padding: 35px 25px 25px 25px;
+}
+
+.block-box-our-blogs .taxonomy-term-description {
+  margin: 0;
+}
     
-  /*
-    Block Boxes (News to Know)
-  */ 
+/* Articles */
 
-    .front-news-to-know h2{
-      background-position: 0 -56px;
-      height: 20px;
-      margin-bottom: 15px;
-      }
+body.node-type-openpublish-article h1 {
+  display: none;
+}
+
+.node-openpublish-article h2 {
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 30px;
+}
   
-    .front-news-to-know .views-row {
-      display: inline-block;
-      width: 295px;
-      margin-right: 20px;
-      padding-top: 10px;
-      padding-bottom:10px;
-      border-bottom: 3px solid silver;
-      vertical-align: top;
-    }
-
-    .front-news-to-know .views-row.views-row-even {
-      margin-right: 0;
-    }
- 
-    .front-news-to-know .views-row a{
-      display: inline-block;
-      font-weight: bold;
-      color: black;
-    }
-    
-  /*
-    Block Boxes (Features)
-  */
-  
-    .front-features h2{
-      background-position: 0 -93px;
-      height: 20px;
-      padding-bottom: 5px;
-      border-bottom: 1px dotted black;
-      }
-
-    .front-features .views-row {
-      width: 190px;
-      display: inline-block;
-      vertical-align: top;
-      margin-right: 14px;
-      margin-bottom: 15px;
-    }
-
-    .front-features .views-field-field-thumbnail-1 {
-      width: 0;
-      height: 0;
-      position: relative;
-      overflow: visible;
-    }
-
-    .front-features .views-field-field-thumbnail-1 .field-content{
-      width: 190px;
-      height: 135px;
-      border:1px solid black;
-    }
-
-    .front-features .views-field-field-display-tag {
-      height: 0;
-      position: relative;
-      overflow: visible;
-      z-index: 100;
-    }
-
-    .front-features .views-field-field-display-tag .field-content {
-      margin-top: 103px;
-      line-height: 18px;
-      display: inline-block;
-      background: #8DC547 url('../images/sprite.png') -383px -122px no-repeat;
-      padding-left: 20px;
-      padding-right: 10px;
-      color: white;
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-
-    .front-features .views-field-title {
-      margin-top: 142px;
-      font-size: 15px;
-    }
-
-    .front-features .views-field-title a{
-      color: black;
-      line-height: 20px;
-    }
+.node-openpublish-article h2 a{
+  color: black;
+  text-decoration: none;
+}
