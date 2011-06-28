@@ -14,11 +14,7 @@
   		<div id="join-login-top">
       <div class="login-fb clearfix">  	   <?php print $user_nav; ?>
 	
-  					<span class="login-text">or</span>
-  				<span class="fb">  			 
-  				  <fb:login-button show-faces="false" width="200" max-rows="1"></fb:login-button>
-  				</span>
-
+  			
  </div>
        	  
   		</div><!--/join-login-top-->

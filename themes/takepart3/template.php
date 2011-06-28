@@ -82,15 +82,22 @@ function _render_tp3_user_menu() {
         $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
       } 
       else {
-        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Log In");
+        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Login or");
       }
     }
-
+    
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
     $links[] = "<li>". $link ."</li>";
   }
+    $output = "<ul id='user-nav'>" . implode($links) ."</ul>";
+    
+    if (!user_is_logged_in()) {
+    	$output .= 	"<span class='fb'>  			 
+  				  <fb:login-button>Connect</fb:login-button>
+  				</span>";
+    }
   
-  return "<ul id='user-nav'>" . implode($links) ."</ul>";
+  return $output;
 }
 
 /**
