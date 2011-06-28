@@ -181,3 +181,17 @@ function _default_menu_options($menu_item) {
   $menu_opts = empty($menu_item['link']['options']['attributes']) ? array() : $menu_item['link']['options']['attributes'];
   return $menu_opts;
 }
+
+
+/**
+ * Preprocessor for theme('block').
+ */
+function takepart3_preprocess_block(&$vars) {
+  // dprint_r($vars);
+  if ($vars['block']->module === 'boxes' && isset($vars['block']->boxes_plugin)) {
+    if(!empty($vars['block']->title)){
+      $vars['classes_array'][] = 'block-box-' . preg_replace( array('/[^a-zA-Z\s0-9]/', '/[\s]/', '/---|--/'), array('', '-', '-'), strtolower($vars['block']->title));
+    }
+    $vars['classes_array'][] = 'block-boxes-' . $vars['block']->boxes_plugin;
+  }
+}
