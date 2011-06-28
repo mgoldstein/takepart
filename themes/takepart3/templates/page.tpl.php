@@ -13,15 +13,17 @@
 		<div class="header-right">
   		<div id="join-login-top">
       <div class="login-fb clearfix">  	   <?php print $user_nav; ?>
-	<!--
-  					<span class="login-text">	<?php // print l("Login", "user/login")?> or</span>
-  				<span class="fb"><a href="#"><img src="<?php  //print $takepart_theme_path; ?>/images/btn-fb-1.gif"></a></span>
-  			-><!--/login-fb-->
- </div>-
+	
+  					<span class="login-text">or</span>
+  				<span class="fb">  			 
+  				  <fb:login-button show-faces="false" width="200" max-rows="1"></fb:login-button>
+  				</span>
+
+ </div>
        	  
   		</div><!--/join-login-top-->
   		
-  	 
+  	
   	   
   	  <div class="clear"></div>
   	  	<ul id="top-follow">

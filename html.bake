@@ -18,7 +18,7 @@ $info['projects']['search_api'] = array(
 bake_convert_to_dev($info,'nodeconnect');
 
 $info['projects']['entity']['type']     = 'module';
-$info['projects']['entity']['subdir']   = '1.3';
+$info['projects']['entity']['subdir']   = 'contrib';
 $info['projects']['entity']['version']  = '1.0-beta9';
 
 $info['projects']['flag'] = array(
