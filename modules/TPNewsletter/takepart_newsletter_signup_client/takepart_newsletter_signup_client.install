@@ -1,25 +1,65 @@
 <?php
-
+/**
+ * @file
+ * Install module for takepart newsletter signup client
+ */
 
 /**
  * Implementation of hook_install().
+ * install a content type?  this might need to become a feature.
  */
-function takepart_newsletter_signup_client_install() {
-  $content = array();
 
-  ob_start();
-  include dirname(__FILE__) . '/newsletter_signup_cck_type.inc';
-  ob_end_clean();
 
-  $form_state = array();
-  $form = content_copy_import_form($form_state);
-
-  $form_state['values']['type_name'] = '<create>';
-  $form_state['values']['macro'] = '$content = '. var_export($content, 1) .';';
-
-  content_copy_import_form_submit($form, $form_state);
+/**
+ * Implementation of hook_schema.
+ * building the newsletter_campaign entity type
+ */
+function takepart_newsletter_signup_client_schema() {
+  $schema['takepart_newsletter_campaign'] = array(
+    'description' => 'Encapsulate campaign newsletter data.',
+    'fields' => array(
+      'ncid' => array(
+        'description' => 'Primary key for newsletter campaigns',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'title' => array(
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+        'description' => 'The main title of this campaign.',
+      ),
+      'header' => array(
+        'type' => 'varchar',
+        'length' => 25,
+        'not null' => FALSE,
+        'description' => 'This text will appear as the header of the block.',
+      ),
+      'promo_message' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'This text will appear above the email input box.',
+      ),
+      'campaign_id' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Campaign Code generated from the Pluris system.',
+      ),
+      'thankyou_message' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'Text to display in signup block after a user has successfully submitted their email.',
+      ),      
+      
+      // add file field with entity CRUD functions
+      
+    ),
+    'primary key' => array('ncid'),
+  );
+  
+  return $schema;  
 }
-
 
 /**
  * Implementation of hook_uninstall().

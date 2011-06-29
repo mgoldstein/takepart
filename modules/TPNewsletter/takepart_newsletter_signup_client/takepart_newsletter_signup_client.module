@@ -1,6 +1,65 @@
 <?php
 
-require_once ( dirname(__FILE__) . '/takepart_newsletter_signup_client.forms.inc');
+/**
+ * hook permission
+ */
+function takepart_newsletter_signup_client_permission() {
+  return array(
+    'view newsletter campaign' => array(
+      'title' => t('View newsletter campaign entity'),
+    ),
+    'add newsletter campaign' => array(
+      'title' => t('Add newsletter campaign entity'),
+    ),
+    'edit newsletter campaign' => array(
+      'title' => t('Edit newsletter campaign entity'),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_entity_info
+ *
+ */
+function takepart_newsletter_signup_client_entity_info() {
+  return array(
+    'takepart_newsletter_campaign' => array(
+      'label' => t("TakePart Newsletter Campaign"),
+      'base table' => 'takepart_newsletter_campaign',
+      'load hook' => 'tp_newsletter_campaign_load',
+      'uri callback' => 'tp_newsletter_campaign_uri',
+      'fieldable' => TRUE,
+      'entity keys' => array(
+        'label' => 'takepart_newsletter_campaign',
+        'id' => 'ncid',
+      ),
+      'view modes' => array(
+        'full' => array(
+          'label' => t('Full'),
+          'custom settings' => FALSE
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * load callback for entity
+ *
+ */
+function tp_newsletter_campaign_load($ncid = NULL, $reset = FALSE) {
+  $ids = (isset($ncid) ? array($ncid) : FALSE);
+  $campaigns = tp_newsletter_campaign_load_multiple($ids, NULL, $reset);
+  return $campaigns[$ncid];
+}
+
+/**
+ * define a function for loading multiple entities at once so entity_load can be leveraged
+ */
+function tp_newsletter_campaign_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  $loaded = entity_load('takepart_newsletter_campaign', $ids, $conditions, $reset);
+  return $loaded;
+}
 
 
 /**
@@ -30,20 +89,72 @@ function takepart_newsletter_signup_client_perm() {
 function takepart_newsletter_signup_client_menu() {
 
   $items = array();
-
+  // entity 
+  $items['admin/structure/newsletter-campaign'] = array(
+    'title' => 'Administer Newsletter Campaigns',
+    'description' => 'Adjust the structure of this entity, add fields',
+    'page callback' => 'tp_newsletter_campaign_admin',
+    'access arguments' => array('administer site configuration'),
+  );
+  $items['newsletter-campaign'] = array(
+    'title' => 'Newsletter Campaign Instances',
+    'description' => 'List all Newsletter Campaigns',
+    'page callback' => 'tp_newsletter_campaign_list',
+    'access arguments' => array('view newsletter campaign'),
+  );
+  
+  $items['newsletter-campaign/add'] = array(
+    'title' => 'Add a Newsletter Campaign',
+    'description' => 'Add a new Newsletter campaign instance',
+    'page callback' => 'tp_newsletter_campaign_add',
+    'access arguments' => array('add newsletter campaign'),
+  );
+  
+  $items['newsletter-campaign/%tp_newsletter_campaign'] = array(
+    'title callback' => 'tp_newsletter_campaign_title',
+    'title arguments' => array(1),
+    'description' => "View instance of this entity",
+    'page callback' => 'tp_newsletter_campaign_view',
+    'page arguments' => array(1),
+    'access arguments' => array('view newsletter campaign'),
+    'type' => MENU_CALLBACK, 
+  );
+  
+/*
+  // dont think i need this
+  $items['newsletter-campaign/%takepart_newsletter_campaign/view'] = array(
+    'view' => 'View',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+*/
+  
+  $items['newsletter-campaign/%tp_newsletter_campaign/edit'] = array(
+    'title' => 'Edit',
+    'description' => 'Edit an instance of this entity',
+    'page callback' => 'tp_newsletter_campaign_edit',
+    'page arguments' => array(1),
+    'access arguments' => array('edit newsletter campaign'),
+    'type' => MENU_CALLBACK,
+  );
+  
+  
+  // client settings
   $items['newsletter-campaign/submit-campaign'] = array(
     'title' => t('Newsletter Form Submission'),
     'access arguments' => array('access content'),
     'page callback' => 'takepart_newsletter_signup_client_newsletter_signup_form_submit_from_ajax',
+    'file' => 'takepart_newsletter_signup_client.forms.inc'
   );
   
-   $items['admin/settings/takepart-newsletter-signup-client'] = array(
+   $items['admin/config/services/takepart-newsletter-signup-client'] = array(
     'type' => MENU_NORMAL_ITEM,
-	'title' => t('TakePart Newsletter Signup client'),
-	'description' => t('Settings for newsletter signup client'),
-	'page callback' => 'drupal_get_form',
-	'page arguments' => array('takepart_newsletter_signup_client_admin_settings'),
-	'access arguments' => array('administer newsletter email collector client'),
+    'title' => t('TakePart Newsletter Signup client'),
+    'description' => t('Settings for newsletter signup client'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_newsletter_signup_client_admin_settings'),
+    'access arguments' => array('administer newsletter email collector client'),
+    'file' => 'takepart_newsletter_signup_admin.inc',
   );
   
   return $items; 
@@ -55,7 +166,7 @@ function takepart_newsletter_signup_client_menu() {
 function takepart_newsletter_signup_client_block($op = 'list', $delta = 0, $edit = array())
 { 
    if ($op == "list") {
-	$blocks = array();
+    $blocks = array();
     $campaigns = takepart_newsletter_signup_client_get_active_campaigns();
     
     if (!empty($campaigns)) {
@@ -131,6 +242,158 @@ function takepart_newsletter_signup_client_get_active_campaigns() {
  *  @return int - node id from drupal node
  */
 function takepart_newsletter_signup_client_get_campaign_nid($campaign_id) {
-  return db_result(db_query("SELECT n.nid FROM {node} n INNER JOIN {content_type_newsletter_campaign} c ON n.vid = c.vid WHERE c.field_newsletter_campaign_id_value = '%s'", $campaign_id));
+  $query = db_query("SELECT n.nid FROM {node} n INNER JOIN {content_type_newsletter_campaign} c ON n.vid = c.vid WHERE c.field_newsletter_campaign_id_value = '%s'", $campaign_id);
+  return $query->fetchField();
 }
 
+/** 
+ * Entity related callbacks
+ */
+
+function tp_newsletter_campaign_list() {
+  $campaigns = tp_newsletter_campaign_load_multiple(FALSE); // load them all
+  $h = array(t('Name'), t('Campaign ID'), t("Header"), t("Promo Msg"), t("Thank You Msg"), t("OP"));
+  $t = array();
+  foreach($campaigns as $camp) {
+    $row = array();
+    $row[] = l($camp->title, 'newsletter-campaign/' . $camp->ncid);
+    $row[] = $camp->campaign_id;
+    $row[] = $camp->header;
+    $row[] = $camp->promo_message;
+    $row[] = $camp->thankyou_message;
+    $row[] = l('Edit', 'newsletter-campaign/' . $camp->ncid ."/edit");
+    $t[] = $row;
+  }
+  return theme('table', array('header' => $h, 'rows' => $t));
+}
+ 
+function tp_newsletter_campaign_admin() {
+  return t('Not sure i need an Admin page'); 
+}
+
+function tp_newsletter_campaign_view() {
+}
+
+function tp_newsletter_campaign_add() {
+  $campaign = tp_campaign_newsletter_default();
+  return drupal_get_form('tp_newsletter_campaign_form', $campaign);
+}
+
+function tp_newsletter_campaign_edit($campaign) {
+
+  
+  
+  drupal_set_title( t("<em>Edit newsletter campaign</em> @title", array('@title' => $campaign->title)), PASS_THROUGH);
+  return drupal_get_form('tp_newsletter_campaign_form', $campaign);
+}
+
+function tp_newsletter_campaign_form($form, &$form_state, $campaign) {
+  $form = array();
+  
+  if ($campaign->ncid) {
+    $form['ncid'] = array(
+      '#type' => 'hidden',
+      '#default_value' => $campaign->ncid,
+    );
+  }
+  
+  $form['tpnc_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title'),
+    '#description' => t('The Newsletter Campaign title'),
+    '#max_length' => 50,
+    '#default_value' => $campaign->title,  
+  );
+  
+  $form['tpnc_header'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Header'),
+    '#description' => t('This text will appear as the header of the block.'),
+    '#max_length' => 255,
+    '#default_value' => $campaign->header,  
+  );
+  $form['tpnc_promo_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Promo message'),
+    '#description' => t('This text will appear above the email input box.'),
+    '#default_value' => $campaign->promo_message,
+  );
+  $form['tpnc_campaign_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Campaign ID'),
+    '#description' => t('Campaign Code generated from the Pluris system.'),
+    '#max_length' => 40,
+    '#default_value' => $campaign->campaign_id,  
+  
+  );
+  $form['tpnc_thankyou_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Thank you message'),
+    '#description' => t('Text to display in signup block after a user has successfully submitted their email.'),
+    '#default_value' => $campaign->thankyou_message,  
+  );
+  
+  // attach any fieldable fields, most notable a file field.
+  field_attach_form('takepart_newsletter_campaign', $campaign, $form, $form_state);
+  
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#default_value' => t('Save'),
+  );
+  
+  return $form;
+}
+
+function tp_newsletter_campaign_form_submit($form, &$form_state) {
+  $campaign = tp_campaign_newsletter_default();
+  $update = NULL;
+  
+  if (!empty($form_state['values']['ncid'])) {
+    $update = 'ncid';
+    $campaign->ncid = $form_state['values']['ncid'];
+  }
+  
+  $campaign->title            = $form_state['values']['tpnc_title'];
+  $campaign->header           = $form_state['values']['tpnc_header'];
+  $campaign->promo_message    = $form_state['values']['tpnc_promo_message'];
+  $campaign->campaign_id      = $form_state['values']['tpnc_campaign_id'];
+  $campaign->thankyou_message = $form_state['values']['tpnc_thankyou_message'];
+
+  field_attach_submit('takepart_newsletter_campaign', $campaign, $form, $form_state);
+  
+  if ($update) {
+    drupal_write_record('takepart_newsletter_campaign', $campaign, $update);
+    field_attach_update('takepart_newsletter_campaign', $campaign, $form, $form_state);
+  }
+  else {
+    drupal_write_record('takepart_newsletter_campaign', $campaign);
+    $update = 'ncid';
+    drupal_write_record('takepart_newsletter_campaign', $campaign, $update);
+    field_attach_insert('takepart_newsletter_campaign', $campaign, $form, $form_state);
+  }
+
+  drupal_goto('newsletter-campaign/' . $campaign->ncid);
+}
+
+/**
+ * define a title callback specified in hook menu
+ */
+function tp_newsletter_campaign_title($campaign) {
+  drupal_set_title(t('Newsletter Campaign @camp', array('@camp' => $campaign->title)));
+}
+
+function tp_newsletter_campaign_uri($newsletter_campaign_entity_instance) {
+  return array('path' => 'tp_newsletter_campaign/' . $newsletter_campaign_entity_instance->ncid);
+}
+
+function tp_campaign_newsletter_default() {
+  $campaign = new stdclass();
+  $campaign->ncid = NULL;
+  $campaign->title = NULL;
+  $campaign->header = NULL;
+  $campaign->promo_message = NULL;
+  $campaign->campaign_id = NULL;
+  $campaign->thankyou_message = NULL;
+  
+  return $campaign;
+}

@@ -37,7 +37,7 @@ function takepart_newsletter_signup_menu() {
     'access arguments' => array('access content'),
   );
 
-  $items['admin/config/takepart-newsletter-signup-service'] = array(
+  $items['admin/config/services/takepart-newsletter-signup-service'] = array(
     'type' => MENU_NORMAL_ITEM,
     'title' => t('TakePart Newsletter Signup'),
     'description' => t('Settings for newsletter signup service'),
@@ -94,7 +94,7 @@ function takepart_newsletter_signup_server($endpoint = 'services/rest') {
         0 => check_plain($_GET['h']), //'hash'
         1 => check_plain($_GET['d']), //'domain_name',
         2 => check_plain($_GET['t']), //'domain_time_stamp',
-		3 => check_plain($_GET['n']), //'nonce',
+		    3 => check_plain($_GET['n']), //'nonce',
       );
     
       array_push($args, check_plain($_GET['e'])); // email
