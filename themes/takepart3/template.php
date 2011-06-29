@@ -82,15 +82,22 @@ function _render_tp3_user_menu() {
         $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
       } 
       else {
-        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Log In");
+        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Login or");
       }
     }
-
+    
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
     $links[] = "<li>". $link ."</li>";
   }
+    $output = "<ul id='user-nav'>" . implode($links) ."</ul>";
+    
+    if (!user_is_logged_in()) {
+    	$output .= 	"<span class='fb'>  			 
+  				  <fb:login-button>Connect</fb:login-button>
+  				</span>";
+    }
   
-  return "<ul id='user-nav'>" . implode($links) ."</ul>";
+  return $output;
 }
 
 /**
@@ -173,4 +180,18 @@ function _render_menu_columns($menu_key, $col_limit) {
 function _default_menu_options($menu_item) {
   $menu_opts = empty($menu_item['link']['options']['attributes']) ? array() : $menu_item['link']['options']['attributes'];
   return $menu_opts;
+}
+
+
+/**
+ * Preprocessor for theme('block').
+ */
+function takepart3_preprocess_block(&$vars) {
+  // dprint_r($vars);
+  if ($vars['block']->module === 'boxes' && isset($vars['block']->boxes_plugin)) {
+    if(!empty($vars['block']->title)){
+      $vars['classes_array'][] = 'block-box-' . preg_replace( array('/[^a-zA-Z\s0-9]/', '/[\s]/', '/---|--/'), array('', '-', '-'), strtolower($vars['block']->title));
+    }
+    $vars['classes_array'][] = 'block-boxes-' . $vars['block']->boxes_plugin;
+  }
 }
