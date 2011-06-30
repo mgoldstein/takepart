@@ -1359,6 +1359,16 @@ body.front h1 {
   border-bottom: 1px dotted silver;
 }
 
+.view-id-slide_rotator .views-slideshow-pager-field-item:hover a,
+.view-id-slide_rotator .views-slideshow-pager-field-item:hover .views-field-field-slide-headline {
+  color: #1ca9e7;
+  text-decoration: none;
+}
+
+.view-id-slide_rotator .views-slideshow-cycle-main-frame:hover .views-field-field-slide-headline-override .field-content{
+  background: #1ca9e7; /* Hover */
+}
+
 .views-slideshow-pager-field-item .views-field-field-slide-label {
   background: url('../images/sprite-vertical.gif') -602px 0 repeat-y;
   line-height: 0px;
@@ -1462,6 +1472,10 @@ Block Boxes (General)
   margin-bottom: 15px;
 }
 
+.block-box-my-take:hover h2 {
+  background-position: 0 -55px;
+}
+
 .block-box-my-take .views-row {
   background: #F9FCFF;
   display: inline-block;
@@ -1523,7 +1537,7 @@ Block Boxes (General)
 /*** News to Know ***/
 
 .block-box-news-to-know h2 {
-  background-position: 0 -55px;
+  background-position: 0 -105px;
   height: 20px;
   margin-bottom: 15px;
 }
@@ -1553,7 +1567,7 @@ Block Boxes (General)
 */
 
 .block-box-features h2 {
-  background-position: 0 -93px;
+  background-position: 0 -143px;
   border-bottom: 1px dotted black;
   height: 20px;
   padding-bottom: 5px;
@@ -1578,6 +1592,17 @@ Block Boxes (General)
   border:1px solid black;
   height: 135px;
   width: 190px;
+}
+
+.block-box-features .views-row:hover .views-field-field-thumbnail-1 .field-content {
+  border:5px solid #1ca9e7;
+  height: 128px;
+  width: 182px;
+}
+
+.block-box-features .views-row:hover .views-field-title a {
+  color: #1ca9e7;
+  text-decoration: none;
 }
 
 .block-box-features .views-field-field-display-tag {
@@ -1612,7 +1637,7 @@ Block Boxes (General)
 /* Blog section */
 
 .block-box-our-blogs h2 {
-  background: url('../images/sprite-block-box.gif') 0 -122px no-repeat;
+  background: url('../images/sprite-block-box.gif') 0 -172px no-repeat;
   height: 70px;
   left: -2px;
   margin: 0;
@@ -1645,6 +1670,12 @@ Block Boxes (General)
   line-height: 68px;
   margin: 0;
   overflow: visible;
+}
+
+.block-boxes-headline h2#screaming-headline a:hover {
+  color: #1ca9e7;
+  text-decoration: none;
+  border-bottom: 3px solid #1ca9e7;
 }
 
 .block-box-our-blogs .content .content {
@@ -1786,5 +1817,5 @@ body.node-type-openpublish-article h1 {
   line-height: 40px;
   padding-left: 35px;
   text-transform: uppercase;
-  */
+  */sc
 }
