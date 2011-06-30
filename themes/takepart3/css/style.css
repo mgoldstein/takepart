@@ -5,7 +5,7 @@
 
 Light Green: #8dc547 
       Blue:  #1ca9e7 
-
+      Silver: #ccc
 
 
 /****
@@ -1667,12 +1667,124 @@ body.node-type-openpublish-article h1 {
 }
 
 .node-openpublish-article h2 {
-  font-size: 26px;
+  font-size: 32px;
   font-weight: bold;
-  line-height: 30px;
+  line-height: 35px;
+  margin-bottom: 12px;
 }
-  
+ 
 .node-openpublish-article h2 a{
   color: black;
   text-decoration: none;
+}
+
+.node-openpublish-article .field-name-field-article-subhead {
+  font-size: 18px;
+  color: #666;
+  font-weight: bold;
+  line-height: 25px;
+  margin-bottom: 15px;
+}
+
+.node-openpublish-article .field-name-field-article-main-image {
+  width: 615px;
+  height: 460px;
+  overflow: hidden;
+  background: silver;
+  border: 1px solid #666;
+}
+
+.node-openpublish-article .field-name-body {
+  margin-left: 160px;
+  margin-top: 30px;
+}
+
+.node-openpublish-article .field-name-field-display-tag {
+  background: url('../images/sprite-horizontal.gif') 0 -399px #8dc547 no-repeat;
+  border-bottom: 2px solid black;
+  display: inline-block;
+  height: 29px;
+  margin-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 15px;
+}
+
+.node-openpublish-article .field-name-field-display-tag a {
+  color: white;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.node-openpublish-article .field-name-body h1 {
+  display: block;
+}
+
+.node-openpublish-article .field-name-body h2 {
+  font-size: 25px;
+}
+
+.node-openpublish-article .submitted-wrapper {
+  border-bottom: 2px solid black;
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+}
+
+.node-openpublish-article .submitted .field {
+  display: inline-block;
+  font-size: 10px;
+  line-height: 17px;
+  vertical-align: top;
+}
+
+.node-openpublish-article .field-name-field-author {
+  background: url('../images/sprite-horizontal.gif') no-repeat;
+  background-position: 0 -347px;
+  height: 17px;
+  padding: 0 10px 0 20px;
+}
+
+.node-openpublish-article .article-date {
+  background: url('../images/sprite-horizontal.gif') no-repeat;
+  background-position: 0 -364px;
+  height: 17px;
+  padding: 0 10px 0 20px;
+}
+
+.node-openpublish-article .article-comment-count {
+  background: url('../images/sprite-horizontal.gif') no-repeat;
+  background-position: 0 -381px;
+  height: 17px;
+  padding: 0 10px 0 20px;
+}
+
+.block-view-also-see h2{
+  background: url('../images/sprite-horizontal.gif') 0 -73px no-repeat;
+  border-bottom: 2px solid black;
+  font-size: 14px;
+  height: 33px;
+  line-height: 40px;
+  padding-left: 35px;
+  text-transform: uppercase;
+}
+
+.block-view-similar-actions h2{
+  background: url('../images/sprite-horizontal.gif') 0 -111px no-repeat;
+  border-bottom: 2px solid black;
+  font-size: 14px;
+  height: 33px;
+  line-height: 40px;
+  padding-left: 35px;
+  text-transform: uppercase;
+}
+
+.block-view-related-actions h2{
+  /*
+  background: url('../images/sprite-horizontal.gif') 0 -111px no-repeat;
+  border-bottom: 2px solid black;
+  font-size: 14px;
+  height: 33px;
+  line-height: 40px;
+  padding-left: 35px;
+  text-transform: uppercase;
+  */
 }
