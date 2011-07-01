@@ -74,7 +74,6 @@ $info['projects']['views_php'] = array(
 
 // Update contrib modules to latest version even though OP3.x does not contain these version yet
 
-
 $info['projects']['media']['type']                  = 'module'; 
 $info['projects']['media']['subdir']                = 'contrib';
 $info['projects']['media']['download']['type']      =  'git';
@@ -82,7 +81,7 @@ $info['projects']['media']['download']['branch']    = '7.x-1.x';
 $info['projects']['media']['download']['url']       = 'http://git.drupal.org/project/media.git';
 
 
-$info['projects']['media']['patch'][] = 'http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make.patch';
+$info['projects']['media']['patch'][] = 'http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make_0.patch';
 
 $info['projects']['date'] = array(
   'type'=> 'module',
