@@ -78,9 +78,8 @@ $info['projects']['views_php'] = array(
 $info['projects']['media']['type']                  = 'module'; 
 $info['projects']['media']['subdir']                = 'contrib';
 $info['projects']['media']['download']['type']      =  'git';
-//$info['projects']['media']['download']['branch']  = '7.x-1.x';
+$info['projects']['media']['download']['branch']    = '7.x-1.x';
 $info['projects']['media']['download']['url']       = 'http://git.drupal.org/project/media.git';
-$info['projects']['media']['download']['revision']  = '7481b9e70c406dc1e84f5fdb8ae1a78dc196dbb0';
 
 
 $info['projects']['media']['patch'][] = 'http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make.patch';
