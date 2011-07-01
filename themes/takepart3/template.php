@@ -75,6 +75,10 @@ function _render_tp3_user_menu() {
     $opts = array(
       'attributes' => _default_menu_options($menu_item),
     );
+    if(empty($opts['attributes']['title'])){
+      unset($opts['attributes']['title']);
+    }
+    
     if($menu_item['link']['href'] == 'user') {
       if (user_is_logged_in()) {
         global $user;
@@ -82,8 +86,16 @@ function _render_tp3_user_menu() {
         $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
       } 
       else {
+        $opts['attributes']['class'][] = 'join-login';
         $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Login or");
       }
+      
+    }else{
+        switch($menu_item['link']['href']){
+          case 'user/register':
+            $opts['attributes']['class'][] = 'join-takepart';
+            break;
+        }
     }
     
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);

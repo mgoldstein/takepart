@@ -10,24 +10,21 @@
   		<img src="<?php print $takepart_theme_path; ?>/images/title-inspiration-to-action.gif" alt="inspiration to action">
   		</div><!--/text-->
 		</div>
+		
 		<div class="header-right">
   		<div id="join-login-top">
-      <div class="login-fb clearfix">  	   <?php print $user_nav; ?>
-	
-  			
- </div>
-       	  
-  		</div><!--/join-login-top-->
-  		
-  	
-  	   
-  	  <div class="clear"></div>
-  	  	<ul id="top-follow">
-  				<li class="title"><img alt="follow us" src="<?php print $takepart_theme_path; ?>/images/title-follow-us.gif"></li>
-  				<li class="fb"><a href="http://www.facebook.com/takepart">facebook</a></li>
-  				<li class="twitter"><a href="http://www.twitter.com/takepart">twitter</a></li>
-  				<li class="rss"><a href="#">rss</a></li>
-  			</ul><!--/top follow-->
+      <div class="login-fb clearfix">
+        <?php print $user_nav; ?>  			
+      </div> 
+  	</div><!--/join-login-top-->
+  
+  	<div class="clear"></div>
+	  	<ul id="top-follow">
+				<li class="title"><img alt="follow us" src="<?php print $takepart_theme_path; ?>/images/title-follow-us.gif"></li>
+				<li class="fb"><a href="http://www.facebook.com/takepart">facebook</a></li>
+				<li class="twitter"><a href="http://www.twitter.com/takepart">twitter</a></li>
+				<li class="rss"><a href="#">rss</a></li>
+			</ul><!--/top follow-->
     </div>
   </div>
   <div class="clear clearfix" id="nav-wrap">
