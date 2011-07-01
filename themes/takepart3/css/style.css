@@ -1386,6 +1386,10 @@ body.front h1 {
   text-transform: uppercase;
 }
 
+.views-slideshow-pager-field-item .views-content-field-slide-featured-item {
+  display: none;
+}
+
 .views-field-field-slide-featured-item a,
 .views-field-field-slide-headline {
   color: black;
@@ -1690,6 +1694,33 @@ Block Boxes (General)
 .block-box-our-blogs .taxonomy-term-description {
   margin: 0;
 }
+
+.block-box-action-impact {
+  border-top: 4px solid black;
+  padding: 10px;
+  background: #fceac8;
+}
+
+.block-box-action-impact h2 {
+  background: url('../images/sprite-block-box.gif') 0 -250px no-repeat;
+  width: 195px;
+  height: 50px;
+  position: relative;
+  left: -20px;
+  margin-bottom: -52px;
+  color: white;
+  line-height: 41px;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-left: 23px;
+}
+
+.block-box-action-impact .content {
+  background: #f8f2e7;
+  padding-top: 50px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
     
 /* Articles */
 
@@ -1817,5 +1848,76 @@ body.node-type-openpublish-article h1 {
   line-height: 40px;
   padding-left: 35px;
   text-transform: uppercase;
-  */sc
+  */
+}
+
+body.node-type-topic-front h1 {
+  background: #a0d332 url('../images/sprite-horizontal.gif') right -430px no-repeat;
+  color: white;
+  display: inline-block;
+  font-size: 25px;
+  height: 43px;
+  line-height: 43px;
+  padding-right: 85px;
+  padding-left: 17px;
+}
+
+.block-box-primary-features,
+.block-box-secondary-features {
+  clear: both;
+}
+
+.block-box-primary-features h2,
+.block-box-secondary-features h2 {
+  display: none;
+}
+
+.block-box-primary-features .view-featured-items .views-field-field-blogpost-main-image {
+  width: 298px;
+  height: 222px;
+  border: 1px solid black;
+  float: left;
+  margin-right: 18px;
+}
+
+.block-box-secondary-features .view-featured-items .views-field-field-blogpost-main-image {
+  width: 192px;
+  height: 158px;
+  border: 1px solid black;
+}
+
+.block-box-secondary-features .view-featured-items .views-row {
+  display: inline-block;
+  width: 191px;
+  vertical-align: top;
+  margin-right: 20px;
+}
+
+.block-box-secondary-features .view-featured-items .views-row.views-row-last {
+  margin-right: 0;
+}
+
+.block-box-secondary-features .view-featured-items .views-field-php {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.block-box-secondary-features .view-featured-items .views-field-php a {
+  color: black;
+  text-decoration: none;
+}
+
+.block-box-primary-features .view-featured-items .views-field-php {
+  border-bottom: 1px dotted silver;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  margin-left: 318px;
+}
+
+
+.block-box-primary-features .view-featured-items .views-field-php .field-content a {
+  font-size: 17px;
+  color: black;
 }
