@@ -32,7 +32,7 @@ function takepart_newsletter_signup_client_schema() {
       ),
       'header' => array(
         'type' => 'varchar',
-        'length' => 25,
+        'length' => 125,
         'not null' => FALSE,
         'description' => 'This text will appear as the header of the block.',
       ),

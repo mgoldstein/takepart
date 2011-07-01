@@ -68,7 +68,7 @@ function tp_newsletter_campaign_load_multiple($ids = array(), $conditions = arra
 function takepart_newsletter_signup_client_theme() {
   return array(
     'newsletter_signup_block' => array(
-      'arguments' => array('form_id' => NULL, 'promo_text' => NULL, 'signup_form' => NULL),
+      'variables' => array('form_id' => NULL, 'promo_text' => NULL, 'signup_form' => NULL),
       'template' => 'newsletter-signup-block',
     ),
   );
@@ -93,12 +93,12 @@ function takepart_newsletter_signup_client_menu() {
   $items['admin/structure/newsletter-campaign'] = array(
     'title' => 'Administer Newsletter Campaigns',
     'description' => 'Adjust the structure of this entity, add fields',
-    'page callback' => 'tp_newsletter_campaign_admin',
+    'page callback' => 'tp_newsletter_campaign_list',
     'access arguments' => array('administer site configuration'),
   );
   $items['newsletter-campaign'] = array(
     'title' => 'Newsletter Campaign Instances',
-    'description' => 'List all Newsletter Campaigns',
+    'description' => 'List all Newsletter Campaigns, Landing Page for campaign management.',
     'page callback' => 'tp_newsletter_campaign_list',
     'access arguments' => array('view newsletter campaign'),
   );
@@ -109,26 +109,7 @@ function takepart_newsletter_signup_client_menu() {
     'page callback' => 'tp_newsletter_campaign_add',
     'access arguments' => array('add newsletter campaign'),
   );
-  
-  $items['newsletter-campaign/%tp_newsletter_campaign'] = array(
-    'title callback' => 'tp_newsletter_campaign_title',
-    'title arguments' => array(1),
-    'description' => "View instance of this entity",
-    'page callback' => 'tp_newsletter_campaign_view',
-    'page arguments' => array(1),
-    'access arguments' => array('view newsletter campaign'),
-    'type' => MENU_CALLBACK, 
-  );
-  
-/*
-  // dont think i need this
-  $items['newsletter-campaign/%takepart_newsletter_campaign/view'] = array(
-    'view' => 'View',
-    'type' => MENU_DEFAULT_LOCAL_TASK,
-    'weight' => -10,
-  );
-*/
-  
+
   $items['newsletter-campaign/%tp_newsletter_campaign/edit'] = array(
     'title' => 'Edit',
     'description' => 'Edit an instance of this entity',
@@ -160,19 +141,43 @@ function takepart_newsletter_signup_client_menu() {
   return $items; 
 }
 
+
+/**
+ * Implementation of hook_block_info()
+ */
+function takepart_newsletter_signup_client_block_info() {
+  $campaigns = entity_load('takepart_newsletter_campaign'); 
+  
+
+   
+  if (!empty($campaigns)) {
+    foreach($campaigns as $campaign) {
+      $blocks[$campaign->ncid] = array(
+        'info' => t($campaign->title . " (Newsletter Campaign)"),
+        'cache' => DRUPAL_NO_CACHE,
+        
+      );
+    }
+  }
+ 
+  return $blocks;
+}
+
 /**
  * Implementation of hook_block()
+ * remove for d7
  */
 function takepart_newsletter_signup_client_block($op = 'list', $delta = 0, $edit = array())
 { 
    if ($op == "list") {
     $blocks = array();
-    $campaigns = takepart_newsletter_signup_client_get_active_campaigns();
-    
+    //$campaigns = takepart_newsletter_signup_client_get_active_campaigns();
+    $campaigns = entity_load('tp_newsletter_campaign');
+        
     if (!empty($campaigns)) {
       foreach($campaigns as $campaign) {
         $blocks[$campaign->nid] = array(
-          'info' => t($campaign->title),
+          'info' => t($campaign->title . " (Newsletter Campaign)"),
         );
       }
     }
@@ -189,7 +194,7 @@ function takepart_newsletter_signup_client_block($op = 'list', $delta = 0, $edit
 /**
  * return html to display in block; called from $op = view in hook_block
  */
-function _takepart_newsletter_signup_client_block_view($delta) {
+function takepart_newsletter_signup_client_block_view($delta) {
   $path = drupal_get_path('module', 'takepart_newsletter_signup_client');
   drupal_add_js($path .'/takepart_newsletter_signup.js', 'module');
   drupal_add_css($path .'/takepart_newsletter_signup.css');
@@ -197,23 +202,189 @@ function _takepart_newsletter_signup_client_block_view($delta) {
   $content = '';
   
   if (is_numeric($delta)) {
-    $node = node_load($delta);
-
-    $content = theme(
-      'newsletter_signup_block',
-      $node->field_newsletter_campaign_id[0]['value'],
-      $node->field_newsletter_promo_text[0]['value'],
-      drupal_get_form('takepart_newsletter_signup_client_newsletter_signup_form', $node->field_newsletter_campaign_id[0]['value'])
+    $result = entity_load('takepart_newsletter_campaign', array($delta));
+    $camp = $result[$delta];
+    
+    $form_vars = array(
+      'form_id' => $camp->campaign_id,
+      'promo_text' => $camp->promo_message,
+      'signup_form' => drupal_get_form('takepart_newsletter_signup_client_newsletter_signup_form', $camp->campaign_id)
     );
+    
+    $content = theme('newsletter_signup_block', $form_vars);
   }
   
   $block = array();
   $block['content'] = $content;
-  $block['subject'] = $node->field_newsletter_header[0]['value'];
+  $block['subject'] = $camp->header;
   
   return $block;
 }
 
+/**
+ * The newsletter form
+ *
+ * @param $form_state array - required by api; not used
+ * @param $campaign_id string - campaign id for subscription
+ *
+ * @return array - raw form array
+ */
+function takepart_newsletter_signup_client_newsletter_signup_form($form, &$form_state, $campaign_id) {
+  
+  $form = array();
+  
+  // adds ajax functionality to the block
+  drupal_add_js('
+    function takepart_newsletter_update_css(textBox) {
+      textBox.style[\'color\'] = "black";
+      textBox.bgColor = "white";
+    }', 'inline'
+  );
+
+  drupal_add_js('jQuery(document).ready(function(context) {   
+        jQuery("#wrapper-form-'.$campaign_id.' .form-submit", context).click(function(e) {
+          console.log("got click");
+          e.preventDefault();
+          if (takepart_newsletter_isValidEmailAddress(jQuery("#wrapper-form-'.$campaign_id.' [name=email]").val(), "'.$campaign_id.'")) {
+             jQuery.post("/newsletter-campaign/submit-campaign", jQuery("#wrapper-form-'.$campaign_id.' form").serialize(), 
+             function(result) {
+               jQuery("#takepart-newsletter-'.$campaign_id.'-body").hide();
+               jQuery("#takepart-newsletter-'.$campaign_id.'-results").html(result.message).text();
+             }, "json");
+           }
+          
+         return false;
+        }); 
+      }
+    );', 'inline'
+  );
+
+
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Email'),
+    '#default_value' => ' Enter email address',
+    '#size' => 60,
+    '#maxlength' => 128,
+    '#attributes' => array('onclick' => 'this.value=""; takepart_newsletter_update_css(this)'),
+  );
+  
+  $form['campaign_id'] = array(
+    '#type' => 'hidden',
+    '#value' => $campaign_id,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+  );
+  
+  return $form;
+}
+
+
+
+/**
+ * Valide the form values
+ *
+ * @param $form array - raw post values
+ *
+ * @return string - message if error, empty string if not
+ */
+function takepart_newsletter_signup_client_newsletter_signup_form_validate_from_ajax(&$form) {
+
+  if (!valid_email_address($form['email'])) {
+    return t('Invalid address, please try again');
+  }
+  
+  $form['email'] = check_plain($form['email'] );
+  $form['campaign_id'] = check_plain($form['campaign_id']);
+  
+  return '';
+}
+
+
+/**
+ * Ajax form handler
+ * returns a JSON string 
+ */      
+function takepart_newsletter_signup_client_newsletter_signup_form_submit_from_ajax() { 
+  $form = $_POST;
+  
+  $message = takepart_newsletter_signup_client_newsletter_signup_form_validate_from_ajax($form);
+  
+  if ($message) {
+    print drupal_json_output(array(0, $message));
+    exit();
+  }
+   
+  $email = $form['email'];
+  $campaign_id = $form['campaign_id'];
+  
+  if (!variable_get('takepart_newsletter_signup_client_direct_save', 0)) {
+    $result = takepart_newsletter_signup_client_call_webservice($email, $campaign_id);
+  } 
+  else {
+    $result = takepart_newsletter_save_campaign($email, $campaign_id, 's');
+  }
+  if ($result['status'] == 1 ) {
+    $nid = takepart_newsletter_signup_client_get_campaign_nid($campaign_id);
+    
+    if ($nid) {
+      $campaign = node_load($nid);
+      $message = $campaign->field_newsletter_thanks_text[0]['value'];
+    }
+
+    $result = array('status' => $result['status'], 'message' => $message);
+  }
+  print drupal_json_output($result);
+  
+  exit();
+}
+
+
+/**
+ *  Calls webservice at www.takepart.com to save email address
+ *
+ * @param $email string - email address
+ * @param $campaign_id string - campaign id for subscription
+ *
+ * @return string - error message if problem; empty strin if ok
+ */
+function takepart_newsletter_signup_client_call_webservice($email, $campaign_id) {
+  $kid = variable_get('takepart_newsletter_signup_client_api_key', 0);
+  $timestamp = (string)time();
+  $domain =  variable_get('takepart_newsletter_signup_client_domain', '');
+  
+  $code = md5(uniqid(rand(), true));
+  $nonce = substr($code, 0, 10);
+  
+  $hash_parameters = array( $timestamp, $domain, $nonce, 'takepart_newsletter_signup.subscribe' );
+  $hash = hash_hmac("sha256", implode(';', $hash_parameters), $kid);
+
+  $request_url = variable_get('takepart_newsletter_signup_client_service_url', '').'?';
+  $request_url .= "h=$hash&d=$domain&t=$timestamp&n=$nonce&e=$email&c=$campaign_id";
+  
+  $result = FALSE;
+  try {
+    $result = drupal_http_request($request_url, array(), 'POST');
+    if ($result->code == 200) {
+      #the JSON starts with Insert which needs to be removed be fore it can be decoded
+      $data = json_decode(preg_replace("/^Insert/","", $result->data), TRUE);
+      if (isset($data['status'])) {
+        return $data;
+      }
+    }
+    watchdog('newsletter service', 'Error from webservice: '.$result->error.' - '.$request_url);
+    return array('success'=>0, 'message'=>t('Problem saving email, please try again later.'));
+  }
+  catch(Exception $ex) {
+    watchdog('newsletter service', 'Error from webservice: '.$ex->getMessage());
+    return array('success'=>0, 'message' => t('Problem saving email, please try again later.'));
+  }
+
+  return array('success'=>0, 'message' => t('Problem saving email, please try again later.'));
+}
 
 
 /**
@@ -221,6 +392,8 @@ function _takepart_newsletter_signup_client_block_view($delta) {
  *
  *  @return array - contains object with nid and title properties
  */
+ 
+/* not used currently
 function takepart_newsletter_signup_client_get_active_campaigns() {
   $campaigns = array();
   
@@ -232,6 +405,7 @@ function takepart_newsletter_signup_client_get_active_campaigns() {
   
   return $campaigns;
 }
+*/
 
 
 /**
@@ -241,18 +415,21 @@ function takepart_newsletter_signup_client_get_active_campaigns() {
  *
  *  @return int - node id from drupal node
  */
+/* not used.
 function takepart_newsletter_signup_client_get_campaign_nid($campaign_id) {
   $query = db_query("SELECT n.nid FROM {node} n INNER JOIN {content_type_newsletter_campaign} c ON n.vid = c.vid WHERE c.field_newsletter_campaign_id_value = '%s'", $campaign_id);
   return $query->fetchField();
 }
+*/
 
 /** 
  * Entity related callbacks
  */
 
 function tp_newsletter_campaign_list() {
+
   $campaigns = tp_newsletter_campaign_load_multiple(FALSE); // load them all
-  $h = array(t('Name'), t('Campaign ID'), t("Header"), t("Promo Msg"), t("Thank You Msg"), t("OP"));
+  $h = array(t('Name'), t('Campaign ID'), t("Header"), t("Promo Msg"), t("Thank You Msg"), '');
   $t = array();
   foreach($campaigns as $camp) {
     $row = array();
@@ -264,7 +441,34 @@ function tp_newsletter_campaign_list() {
     $row[] = l('Edit', 'newsletter-campaign/' . $camp->ncid ."/edit");
     $t[] = $row;
   }
-  return theme('table', array('header' => $h, 'rows' => $t));
+
+  $table = theme('table', array('header' => $h, 'rows' => $t));
+  $camp_links[] = array(
+    'title' => t('Add new Newsletter Campaign'),
+    'href'  => 'newsletter-campaign/add',
+  );
+  $camp_links[] = array(
+    'title' => t('Client Configuration'),
+    'href'  => 'admin/config/services/takepart-newsletter-signup-client',
+  );
+  
+  if (module_exists('takepart_newsletter_signup')) {
+    $camp_links[] = array(
+      'title' => t('Server Configuration'),
+      'href'  => 'admin/config/services/takepart-newsletter-signup-service',
+    );    
+  }
+
+
+  $links_data = array(
+    'heading' => array('text' => t('Administration'), 'level' => 'h2'),
+    'links' => $camp_links,
+    'attributes' => array('class' => 'tp-newsletter-admin')
+  );
+  
+  $links = theme_links($links_data);
+  
+  return $links ."<p></p><h2>Current Newsletter Campaigns</h2>". $table;
 }
  
 function tp_newsletter_campaign_admin() {
@@ -279,14 +483,18 @@ function tp_newsletter_campaign_add() {
   return drupal_get_form('tp_newsletter_campaign_form', $campaign);
 }
 
+/**
+ * campaign edit callback
+ */
 function tp_newsletter_campaign_edit($campaign) {
-
-  
-  
   drupal_set_title( t("<em>Edit newsletter campaign</em> @title", array('@title' => $campaign->title)), PASS_THROUGH);
   return drupal_get_form('tp_newsletter_campaign_form', $campaign);
 }
 
+/**
+ * Entity edit form
+ *
+ */
 function tp_newsletter_campaign_form($form, &$form_state, $campaign) {
   $form = array();
   
@@ -372,7 +580,7 @@ function tp_newsletter_campaign_form_submit($form, &$form_state) {
     field_attach_insert('takepart_newsletter_campaign', $campaign, $form, $form_state);
   }
 
-  drupal_goto('newsletter-campaign/' . $campaign->ncid);
+  drupal_goto('newsletter-campaign');
 }
 
 /**
