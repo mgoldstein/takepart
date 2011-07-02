@@ -20,6 +20,11 @@ function alt_media_widget_field_widget_info() {
   );
 }
 
+/*
+ * implements hook_field_widget_settings_from
+ * 
+ * stilling mostly from the standard media field widget
+ */
 function alt_media_widget_field_widget_settings_form($field, $instance) {
   return media_field_widget_settings_form($field, $instance);
 }
@@ -62,7 +67,7 @@ function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $insta
   //wrapper our field so we can find and refesh it
   $wrapper_id = "{$element['#field_name']}-{$delta}";
   $element['#prefix'] = "<div class ='amw-field' id = '$wrapper_id'>";
-  $element['#suffix'] = "</div>";
+  $element['#suffix'] = "<div class ='clearfix'></div></div>";
 
   //field to store value
   $element['fid'] = array(
@@ -90,6 +95,8 @@ function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $insta
     $preview = file_view($file, 'media_preview');
     $element['preview'] = $preview;
     $element['preview']['#weight'] = -100;
+    $element['preview']['#prefix'] = '<div class ="amw-preview">';
+    $element['preview']['#suffix'] = '</div>';
 
     // change title of select
     $element['select']['#title'] = t('Change Media');
@@ -139,20 +146,29 @@ function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $insta
   return $element;
 }
 
+/*
+ * form for selecting media
+ *
+ */
 function alt_media_widget_amw_media_select($dialog_inner, $field) {
-$form['fid'] = array(
-  '#type' => '#textfield',
-);
+$form['#type'] = "vertical_tabs";
 $form['browse_set'] = array(
-  '#type' => 'vertical_tabs',
+  '#type' => 'fieldset',
   '#collapsible' => TRUE,
   '#collapsed' => TRUE,
   '#title' => 'Browse',
-  'browse_form' => drupal_get_form('media_widget_amw_media_browser'),
+  'browse_form' => drupal_get_form('media_widget_amw_media_browser', $types, $dialog_inner),
 );
 $types = array('image');
+$form['other'] = array(
+  '#type' => 'fieldset',
+  '#collapsible' => TRUE,
+  '#collapsed' => TRUE,
+  '#title' => 'Meta Data',
+  'browse_form' => array('#markup' => "baseball"),
+);
 $form['upload_set'] = array(
-  '#type' => 'vertical_tabs',
+  '#type' => 'fieldset',
   '#collapsible' => TRUE,
   '#collapsed' => TRUE,
   '#title' => 'Upload',
@@ -162,10 +178,22 @@ $form['upload_set'] = array(
 return $form;  
 }
 
-function media_widget_amw_media_browser($form, $form_state) {
-  $view_name = 'alt_media_widget_browser';
-  $view_display_name = 'page_1';
+/*
+ * form for views based browser
+ */
+function media_widget_amw_media_browser($form, $form_state, $types, $dialog_inner) {
+  $form['#dialog_inner'] = $dialog_inner;
+  $view_name = 'alt_media_widget_default';
+  $view_display_name = 'default';
   $form['browser']['#markup'] = views_embed_view($view_name, $view_display_name);
+  $form['fid'] = array(
+    '#type' => 'textfield',
+    '#ajax' => array(
+       'callback' => 'alt_media_widget_amw_update_from_dialog_callback',
+       'wrapper' => $dialog_inner,
+       'event' => 'update',
+     )
+  );
 return $form;
 }
 

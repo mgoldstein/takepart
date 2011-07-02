@@ -1,9 +1,20 @@
-.amw-field .media-item {
+.amw-preview {
   float:left;
+  background: #eee;
 }
-.amw-field a {
+.amw-field .form-submit {
   display:block;
+  margin:10px;
+  width:100px;
 }
-,float-left {
+.views-row {
   float:left;
+  margin:10px;
+}
+div.pager, .clearfix
+{
+  clear :both;
+}
+.amw-field .form-item {
+  display:none;
 }

@@ -15,6 +15,9 @@ Drupal.behaviors.alt_media_widget = {
           if (newid) {
             $(this).find('input.fid').val(newid);
           }
+            // This should not be need as it should be close 
+            // but the function that calls this one
+            $('.media-dialog-wrapper').dialog('destroy');
             $(this).find('input.fid').trigger("refresh");
         });
       }
@@ -42,6 +45,26 @@ Drupal.behaviors.alt_media_widget = {
             width: $('body').width() * .9,
             modal: true,
             dialogClass: 'media_dialog'
+          });
+        });
+      }
+    });
+    // make views selectings
+    $(".media-dialog-inner .views-row").each(function(e) {
+      if($(this).hasClass("amw-processed")) {
+      }
+      else {
+        $(this).addClass("amw-processed");
+        $(this).click(function(e) {
+          e.preventDefault();
+          results = Drupal.settings.amw_results;
+          //going to closure need to define the row
+          row = this;
+          $.each(results, function(i, value) {
+            //i ++;
+            if($(row).hasClass("views-row-" + i)) {
+              $(row).parents(".media-dialog-inner").find("[name='fid']").val(value.fid).trigger("update");
+            }
           });
         });
       }

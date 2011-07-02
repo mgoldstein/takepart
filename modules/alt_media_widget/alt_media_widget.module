@@ -4,37 +4,11 @@ module_load_include("inc", "media", "includes/media.pages");
 drupal_add_js(drupal_get_path('module', 'alt_media_widget') ."/alt_media_widget.js");
 drupal_add_css(drupal_get_path('module', 'alt_media_widget') ."/alt_media_widget.css");
 
-
-function alt_media_widget_menu() {
-  $menu['media/amw/%/%/%/%file'] = array(
-    'title' => 'ajax',
-    'page callback' => 'alt_media_widget_dialog_callback',
-    'page arguments' => array(5,2,3,4),
-    'access callback' => TRUE,
-    'type' => MENU_CALLBACK,
-  );
-  return $menu;
-}
-
-function alt_media_widget_dialog_callback($file, $action, $field, $delta) {
-  switch($action) {
-    case 'edit':
-      $file->dialog_inner = "media-dialog-inner-$field-$delta";
-      $form = drupal_get_form('media_edit', $file);
-    break;
-    case 'select':
-      $form = alt_media_widget_amw_media_select("media-dialog-inner-$field-$delta", $field);
-  }
-  $form['#prefix'] = "<div class = 'media-edit-wrapper' id = 'media-dialog-inner-$field-$delta'>";
-  $form['#suffix'] = "</div>";
-  //return $form;
-  $cmds['#commands'][] = ajax_command_insert(NULL, drupal_render($form));
-  $cmds['#commands'][] = ajax_command_invoke("#media-dialog-inner-$field-$delta", 'trigger', array('open'));
-  $cmds['#type'] = 'ajax';
-  ajax_deliver($cmds);
-  
-}
-
+/*
+ * implements hook_form_FORMID_alter()
+ *
+ * making the edit form ajaxy
+ */
 function alt_media_widget_form_media_edit_alter(&$form, $form_state) {
   $file = $form_state['file'];
   if(isset($file->dialog_inner)) {
@@ -49,8 +23,11 @@ function alt_media_widget_form_media_edit_alter(&$form, $form_state) {
     unset($form['actions']['delete']);
   }
 }
+
 /*
  * implements hook_FORMID_alter()
+ *
+ * making the upload form ajaxy
  */
 function alt_media_widget_form_media_add_upload_alter(&$form, $form_state) {
   if(isset($form_state['build_info']['args'][1])) {
@@ -68,6 +45,9 @@ function alt_media_widget_form_media_add_upload_alter(&$form, $form_state) {
 }
 /*
  * extra submit function on add_upload
+ *
+ * setting the file in the form state so that the 
+ * alt_media_widget_form_media_add_upload_sumbit can update
  */
 function alt_media_widget_form_media_add_upload_sumbit(&$form, &$form_state) {
   $file = $form_state['values']['upload'];
@@ -77,47 +57,33 @@ function alt_media_widget_form_media_add_upload_sumbit(&$form, &$form_state) {
 }
 
 /*
- * call back from add_upload save form
- */
-function alt_media_widget_dialog_add_upload_submit_callback($form, $form_state) {
-    $file = $form_state['file'];
-    $form = drupal_get_form('media_edit', $file);
-    $form['#prefix'] = "<div class = 'media-edit-wrapper' id = 'media-dialog-inner-$field-$delta'>";
-    $form['#suffix'] = "</div>";
-    $cmds['#commands'][] = ajax_command_insert(NULL, drupal_render($form));
-    //$cmds['#commands'][] = ajax_command_alert($file->dialog_inner ."joe");
-    $cmds['#type'] = 'ajax';
-  return $cmds;
-
-
-}
-
-function alt_media_widget_dialog_submit_callback($form, $form_state) {
-    $file = $form_state['file'];
-    $cmds['#commands'][] = ajax_command_insert(NULL, drupal_render($form));
-    $cmds['#commands'][] = ajax_command_invoke('#' . $file->dialog_inner, "trigger", array('close'));
-    $cmds['#type'] = 'ajax';
-  return $cmds;
-}
-
-
-/*
  * this is a #ajax callback
  *
  * it is used from dialogs to update a elements field and refresh it
  */
 function alt_media_widget_amw_update_from_dialog_callback($form, $form_state) {
   $file = $form_state['file'];
-  //$cmds['#commands'][] = ajax_command_alert(print_r($file, TRUE));
+  if(!$file) {  
+    $file->fid = $form_state['values']['fid'];
+    $file->dialog_inner = $form['#dialog_inner'];
+  }
+  $cmds['#commands'][] = ajax_command_alert(print_r($file, TRUE));
   $cmds['#commands'][] = ajax_command_insert(NULL, "<div class = 'media-dialog-inner' id = '{$file->dialog_inner}'></div>");
   $cmds['#commands'][] = alt_media_widget_ajax_command_update_from_dialog($file->dialog_inner, $file->fid);
   $cmds['#type'] = 'ajax';
   return $cmds;
 
 }
+
+/*
+ * our own ajax command builder
+ * 
+ * used to update a element from inside of the dialog
+ */
 function alt_media_widget_ajax_command_update_from_dialog($dialog_inner, $fid = NULL) {
   return ajax_command_invoke("#" . $dialog_inner, "trigger", array('update', $fid));
 }
+
 /*
  * this is a #ajax callback
  *
@@ -146,4 +112,18 @@ function alt_media_widget_amw_update_callback($form, $form_state) {
   }
   $cmds['#type'] = 'ajax';
   return $cmds;
+}
+
+function alt_media_widget_theme_alter(&$info) {
+  dpm($info['views_view_field']);
+  print_r($info['views_view_field']);
+}
+function alt_media_widget_preprocess_views_view($vars) {
+  dpm("here1");
+  drupal_add_js(array("amw_results" => $vars['view']->result), 'setting');
+  dpm($vars);
+}
+function alt_media_widget_preprocess_views_view_fields($vars) {
+  dpm($vars);
+  dpm("here12");
 }
