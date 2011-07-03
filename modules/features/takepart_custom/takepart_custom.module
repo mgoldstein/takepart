@@ -6,3 +6,16 @@ include_once('takepart_custom.features.inc');
 include_once('takepart_custom.embeddable.inc');
 // Drupal needs this blank file.
 //
+/**
+ * Implements hook_form_alter().
+ */
+function takepart_custom_form_alter(&$form, $form_state, $form_id) {
+
+ if (!empty($form['#node_edit_form'])) {
+//drupal_set_message("Form ID is : " . $form_id);
+    // Add access to the 'Publishing options' fieldset.
+    $form['options']['promote']['#access'] = FALSE;
+    $form['options']['sticky']['#access'] = FALSE;
+  }
+}
+
