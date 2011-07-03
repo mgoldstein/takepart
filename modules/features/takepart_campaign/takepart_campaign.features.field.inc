@@ -998,7 +998,7 @@ function takepart_campaign_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_tp_campaign_allances',
+      'field_name' => 'field_tp_campaign_alliances',
       'label' => 'Alliances',
       'required' => 0,
       'settings' => array(
