@@ -49,7 +49,7 @@ function takepart_campaign_field_group_info() {
     'label' => 'Groups',
     'weight' => '6',
     'children' => array(
-      0 => 'field_tp_campaign_allances',
+      0 => 'field_tp_campaign_alliances',
       1 => 'field_tp_campaign_sponsors',
     ),
     'format_type' => 'htab',
