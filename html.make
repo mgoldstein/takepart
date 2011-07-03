@@ -131,7 +131,6 @@ projects[media][download][type] = git
 projects[media][download][branch] = 7.x-1.x
 projects[media][download][url] = http://git.drupal.org/project/media.git
 projects[media][patch][] = http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make_0.patch
-projects[media][patch][] = http://drupal.org/files/issues/1206682-comment-out-dpm.patch
 projects[boxes][subdir] = contrib
 projects[boxes][type] = module
 projects[boxes][version] = 1.0-beta2
