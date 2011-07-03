@@ -222,11 +222,11 @@ $info['projects']['content_lock'] = array(
 //$info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 //$info['projects']['context']['patch'][]  = 'http://drupal.org/files/issues/context-block-contextual-links-1137794-2.patch';
 
-$info['projects']['flag']['patch'][]   = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
-$info['projects']['token']['patch'][]  = 'http://drupal.org/files/issues/691078-token-field-tokens-v2.patch';
-$info['projects']['fb']['patch'][]     = 'http://drupal.org/files/issues/fb-register-formid-1032636-2.patch';
-$info['projects']['media']['patch'][]  = 'http://drupal.org/files/issues/1206682-comment-out-dpm.patch';
-
+$info['projects']['flag']['patch'][]      = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
+$info['projects']['token']['patch'][]     = 'http://drupal.org/files/issues/691078-token-field-tokens-v2.patch';
+$info['projects']['fb']['patch'][]        = 'http://drupal.org/files/issues/fb-register-formid-1032636-2.patch';
+$info['projects']['media']['patch'][]     = 'http://drupal.org/files/issues/1206682-comment-out-dpm.patch';
+$info['projects']['features']['patch'][]  = 'http://drupal.org/files/issues/features_content_type_disable-1055460-32.patch'
 // libraries
 $info['libraries']['ckeditor']['download']['type'] = "get";
 $info['libraries']['ckeditor']['download']['url'] = 'http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6/ckeditor_3.6.tar.gz';
