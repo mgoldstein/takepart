@@ -1123,7 +1123,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_article_related_content',
-      'label' => 'Releated Content',
+      'label' => 'Related Content',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1261,7 +1261,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_article_suggest_content',
-      'label' => 'Suggest Releated Content?',
+      'label' => 'Suggest Related Content?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1756,12 +1756,12 @@ function takepart_action_field_default_fields() {
   t('Related Actions');
   t('Related Campaigns');
   t('Related Content');
-  t('Releated Content');
+  t('Related Content');
   t('Suggest Related Actions');
   t('Suggest Related Actions?');
   t('Suggest Related Campaigns?');
   t('Suggest Related Content?');
-  t('Suggest Releated Content?');
+  t('Suggest Related Content?');
   t('Take Action URL');
   t('This is used instead of the Title to represent the Action when it appears in various places around the site.');
   t('Thumbnail Image');
