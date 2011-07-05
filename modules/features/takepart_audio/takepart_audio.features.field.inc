@@ -185,14 +185,14 @@ function takepart_audio_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-audio-field_audio_assett'
-  $fields['node-audio-field_audio_assett'] = array(
+  // Exported field: 'node-audio-field_audio_asset'
+  $fields['node-audio-field_audio_asset'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_audio_assett',
+      'field_name' => 'field_audio_asset',
       'foreign keys' => array(),
       'indexes' => array(
         'fid' => array(
@@ -224,7 +224,7 @@ function takepart_audio_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_audio_assett',
+      'field_name' => 'field_audio_asset',
       'label' => 'Audio Asset',
       'required' => 0,
       'settings' => array(

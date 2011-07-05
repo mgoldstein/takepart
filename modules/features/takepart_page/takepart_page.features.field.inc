@@ -641,7 +641,7 @@ function takepart_page_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_page_related_content',
-      'label' => 'Releated Content',
+      'label' => 'Related Content',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -847,7 +847,7 @@ function takepart_page_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_page_suggest_content',
-      'label' => 'Suggest Releated Content?',
+      'label' => 'Suggest Related Content?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1217,11 +1217,11 @@ function takepart_page_field_default_fields() {
   t('Promo Headline');
   t('Promo Text');
   t('Related Actions');
-  t('Releated Content');
+  t('Related Content');
   t('Series');
   t('Subhead');
   t('Suggest Related Campaigns?');
-  t('Suggest Releated Content?');
+  t('Suggest Related Content?');
   t('This is displayed beneath the Article\'s title on the node page');
   t('Thumbnail Image');
   t('Topic');

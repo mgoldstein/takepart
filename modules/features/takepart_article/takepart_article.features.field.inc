@@ -217,14 +217,14 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '5',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
@@ -242,7 +242,7 @@ function takepart_article_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -844,7 +844,7 @@ function takepart_article_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_suggest_actions',
-      'label' => 'Suggest Related Actions',
+      'label' => 'Suggest Related Actions?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1220,10 +1220,10 @@ function takepart_article_field_default_fields() {
   t('Promo Text');
   t('Related Actions');
   t('Related Campaigns');
-  t('Related Content');
+  t('Releated Content');
   t('Series');
   t('Subhead');
-  t('Suggest Related Actions');
+  t('Suggest Related Actions?');
   t('Suggest Related Campaigns?');
   t('Suggest Related Content?');
   t('This is displayed beneath the Article\'s title on the node page');
