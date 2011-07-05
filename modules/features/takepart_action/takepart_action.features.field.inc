@@ -361,6 +361,7 @@ function takepart_action_field_default_fields() {
           'openpublish_site_page' => 0,
           'openpublish_video' => 0,
           'section_front' => 0,
+          'takepart_group' => 'takepart_group',
         ),
         'view' => array(
           'args' => array(),
@@ -411,6 +412,8 @@ function takepart_action_field_default_fields() {
       ),
     ),
   );
+
+
 
   // Exported field: 'node-action-field_action_suggest_related'
   $fields['node-action-field_action_suggest_related'] = array(
