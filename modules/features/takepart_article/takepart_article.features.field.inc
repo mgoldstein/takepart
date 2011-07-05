@@ -242,7 +242,7 @@ function takepart_article_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -1220,7 +1220,7 @@ function takepart_article_field_default_fields() {
   t('Promo Text');
   t('Related Actions');
   t('Related Campaigns');
-  t('Related Content');
+  t('Releated Content');
   t('Series');
   t('Subhead');
   t('Suggest Related Actions');
