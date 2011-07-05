@@ -148,48 +148,17 @@ function takepart_newsletter_signup_client_menu() {
 function takepart_newsletter_signup_client_block_info() {
   $campaigns = entity_load('takepart_newsletter_campaign'); 
   
-
-   
   if (!empty($campaigns)) {
     foreach($campaigns as $campaign) {
       $blocks[$campaign->ncid] = array(
         'info' => t($campaign->title . " (Newsletter Campaign)"),
         'cache' => DRUPAL_NO_CACHE,
-        
       );
     }
   }
  
   return $blocks;
 }
-
-/**
- * Implementation of hook_block()
- * remove for d7
- */
-function takepart_newsletter_signup_client_block($op = 'list', $delta = 0, $edit = array())
-{ 
-   if ($op == "list") {
-    $blocks = array();
-    //$campaigns = takepart_newsletter_signup_client_get_active_campaigns();
-    $campaigns = entity_load('tp_newsletter_campaign');
-        
-    if (!empty($campaigns)) {
-      foreach($campaigns as $campaign) {
-        $blocks[$campaign->nid] = array(
-          'info' => t($campaign->title . " (Newsletter Campaign)"),
-        );
-      }
-    }
-    
-    return $blocks;
-  }
-  else if ($op == 'view') {   
-    return _takepart_newsletter_signup_client_block_view($delta);
-  }
-}
-
-
 
 /**
  * return html to display in block; called from $op = view in hook_block
@@ -233,6 +202,8 @@ function takepart_newsletter_signup_client_newsletter_signup_form($form, &$form_
   
   $form = array();
   
+  drupal_add_js(drupal_get_path('module', 'takepart_newsletter_signup_client') . "/takepart_newsletter_signup.js");
+  
   // adds ajax functionality to the block
   drupal_add_js('
     function takepart_newsletter_update_css(textBox) {
@@ -241,22 +212,22 @@ function takepart_newsletter_signup_client_newsletter_signup_form($form, &$form_
     }', 'inline'
   );
 
-  drupal_add_js('jQuery(document).ready(function(context) {   
-        jQuery("#wrapper-form-'.$campaign_id.' .form-submit", context).click(function(e) {
-          console.log("got click");
-          e.preventDefault();
-          if (takepart_newsletter_isValidEmailAddress(jQuery("#wrapper-form-'.$campaign_id.' [name=email]").val(), "'.$campaign_id.'")) {
-             jQuery.post("/newsletter-campaign/submit-campaign", jQuery("#wrapper-form-'.$campaign_id.' form").serialize(), 
+  drupal_add_js('jQuery(document).ready(function(context){
+    jQuery("#wrapper-form-'.$campaign_id.' .form-submit").
+      click(function(e) {
+        e.preventDefault();
+        if (takepart_newsletter_isValidEmailAddress(jQuery("#wrapper-form-'.$campaign_id.' [name=email]").val(), "'.$campaign_id.'")) {
+          var data = jQuery("#wrapper-form-'.$campaign_id.' form").serialize();
+          jQuery.post("/newsletter-campaign/submit-campaign", data, 
              function(result) {
                jQuery("#takepart-newsletter-'.$campaign_id.'-body").hide();
                jQuery("#takepart-newsletter-'.$campaign_id.'-results").html(result.message).text();
-             }, "json");
-           }
-          
-         return false;
-        }); 
-      }
-    );', 'inline'
+              }, "json");        
+        
+        }
+        return false;
+      });
+    });', 'inline'
   );
 
 
