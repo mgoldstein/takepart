@@ -12,10 +12,11 @@ include_once('takepart_custom.embeddable.inc');
 function takepart_custom_form_alter(&$form, $form_state, $form_id) {
 
  if (!empty($form['#node_edit_form'])) {
-//drupal_set_message("Form ID is : " . $form_id);
     // Add access to the 'Publishing options' fieldset.
     $form['options']['promote']['#access'] = FALSE;
     $form['options']['sticky']['#access'] = FALSE;
+    $form['revision_information']['revision']['#default_value'] = 1;
+    $form['revision_information']['revision']['#access'] = FALSE;
   }
 }
 
