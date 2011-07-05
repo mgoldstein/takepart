@@ -466,7 +466,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_action_suggest_related',
-      'label' => 'Suggest Related Actions',
+      'label' => 'Suggest Related Actions?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -475,7 +475,7 @@ function takepart_action_field_default_fields() {
         'active' => 1,
         'module' => 'options',
         'settings' => array(
-          'display_label' => 0,
+          'display_label' => 1,
         ),
         'type' => 'options_onoff',
         'weight' => '12',
