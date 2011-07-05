@@ -631,7 +631,7 @@ function takepart_video_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_suggest_related',
-      'label' => 'Suggest Related Video',
+      'label' => 'Suggest Related Videos?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -857,10 +857,14 @@ function takepart_video_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '10',
+      'module' => 'node_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'node_reference/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'node_reference_autocomplete',        
+      'weight' => '10',
       ),
     ),
   );
@@ -1697,7 +1701,7 @@ function takepart_video_field_default_fields() {
   t('Subhead');
   t('Subtitle of the node, displayed beneath the Headline on the Video Series page.');
   t('Suggest Related Actions?');
-  t('Suggest Related Video');
+  t('Suggest Related Videos?');
   t('Tags');
   t('Thumbnail');
   t('Topic');
