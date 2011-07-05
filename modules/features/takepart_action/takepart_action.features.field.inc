@@ -1760,7 +1760,7 @@ function takepart_action_field_default_fields() {
   t('Related Campaigns');
   t('Related Content');
   t('Related Content');
-  t('Suggest Related Actions');
+  t('Suggest Related Actions?');
   t('Suggest Related Actions?');
   t('Suggest Related Campaigns?');
   t('Suggest Related Content?');

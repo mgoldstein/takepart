@@ -844,7 +844,7 @@ function takepart_article_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_suggest_actions',
-      'label' => 'Suggest Related Actions',
+      'label' => 'Suggest Related Actions?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1223,7 +1223,7 @@ function takepart_article_field_default_fields() {
   t('Releated Content');
   t('Series');
   t('Subhead');
-  t('Suggest Related Actions');
+  t('Suggest Related Actions?');
   t('Suggest Related Campaigns?');
   t('Suggest Related Content?');
   t('This is displayed beneath the Article\'s title on the node page');
