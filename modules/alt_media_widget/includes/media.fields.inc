@@ -11,6 +11,7 @@ function alt_media_widget_field_widget_info() {
         'progress_indicator' => 'throbber',
         'allowed_types' => array('image'),
         'allowed_schemes' => array('public', 'private'),
+        'view' => '',
       ),
       'behaviors' => array(
         'multiple values' => FIELD_BEHAVIOR_DEFAULT,
@@ -26,7 +27,29 @@ function alt_media_widget_field_widget_info() {
  * stilling mostly from the standard media field widget
  */
 function alt_media_widget_field_widget_settings_form($field, $instance) {
-  return media_field_widget_settings_form($field, $instance);
+  $widget = $instance['widget'];
+  $settings = $widget['settings'];
+  $form = media_field_widget_settings_form($field, $instance);
+  //find all view displays that are blocks
+  foreach(views_get_all_views() as $view) {
+    $name = $view->name;
+    foreach($view->display as $display_name => $display) {
+      // only show block displays
+      //if($display->display_plugin == 'block')  {
+        $view_options[$view->human_name]["$name--$display_name"] = "{$view->human_name} - {$display->display_title}";
+      //}
+    }
+  }
+  
+  // form element for the view, change this set off an ajax call on the settings
+  $form['view'] = array(
+    '#type' => 'select',
+    '#title' => t('View'),
+    '#description' => t('Select the View and Display to use.'),
+    '#options' => $view_options,
+    '#default_value' => $settings['view'],
+  );
+  return $form;
 }
 
 /**
@@ -183,46 +206,58 @@ function alt_media_widget_dialog_wrap($wrapper_id, $element, $inner_only = TRUE)
 function alt_media_widget_amw_media_select($dialog_inner, $active_tab, $field, $instance, $langcode, $items, $delta, $element, $file) {
 $form['#type'] = "vertical_tabs";
 
-$views = array(
-/*
-  array(
-    'name' => 'alt_media_widget_default',
-    'display' => 'default',
-    'title' => 'Browse',
-  ),
-  */
-  array(
-    'name' => 'alt_media_widget_default',
-    'display' => 'block_1',
-    'title' => 'Search',
-  ),
-);
-foreach ($views as $info) {
-  $form[$info['title']] = array(
+  
+  $widget = $instance['widget'];
+  $settings = $widget['settings'];
+  $view_string = $settings['view'];
+  if(preg_match("/--/", $view_string)) {
+    list($name, $display) = explode("--", $view_string);
+    }
+  $views = array(
+    array(
+      "name" => $name,
+      "display" => $display,
+      "title" => 'Browse',
+    ),
+  /*
+    array(
+      'name' => 'alt_media_widget_default',
+      'display' => 'default',
+      'title' => 'Browse',
+    ),
+    array(
+      'name' => 'alt_media_widget_default',
+      'display' => 'block_1',
+      'title' => 'Search',
+    ),
+    */
+  );
+  foreach ($views as $info) {
+    $form[$info['title']] = array(
+      '#type' => 'fieldset',
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+      '#title' => $info['title'],
+      'browse_form' => drupal_get_form('media_widget_amw_media_browser',$info['name'], $info['display'], $types, $dialog_inner),
+    );
+  }
+  $types = array('image');
+  $form['edit'] = array(
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
-    '#title' => $info['title'],
-    'browse_form' => drupal_get_form('media_widget_amw_media_browser',$info['name'], $info['display'], $types, $dialog_inner),
+    '#title' => 'Meta Data',
+    'browse_form' => drupal_get_form('media_edit', $file),
   );
-}
-$types = array('image');
-$form['edit'] = array(
-  '#type' => 'fieldset',
-  '#collapsible' => TRUE,
-  '#collapsed' => TRUE,
-  '#title' => 'Meta Data',
-  'browse_form' => drupal_get_form('media_edit', $file),
-);
-$form['upload'] = array(
-  '#type' => 'fieldset',
-  '#collapsible' => TRUE,
-  '#collapsed' => TRUE,
-  '#title' => 'Upload',
-  'browse_form' => drupal_get_form('media_add_upload', $types, $dialog_inner),
-);
+  $form['upload'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#title' => 'Upload',
+    'browse_form' => drupal_get_form('media_add_upload', $types, $dialog_inner),
+  );
 
-return $form;  
+  return $form;  
 }
 
 /*

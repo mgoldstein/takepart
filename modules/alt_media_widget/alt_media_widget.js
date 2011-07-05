@@ -36,6 +36,7 @@ Drupal.behaviors.alt_media_widget = {
           $("#" + field_id ).trigger("update", newid);
         });
         $(this).bind("open", function(e) {
+          Drupal.attachBehaviors(this);
           $(this).parent().dialog({
             title: 'Edit Meta Data',
           //  autoOpen: false,
@@ -62,7 +63,7 @@ Drupal.behaviors.alt_media_widget = {
           //going to closure need to define the row
           row = this;
           $.each(results, function(i, value) {
-            //i ++;
+            i ++;
             if($(row).hasClass("views-row-" + i)) {
               $(row).parents(".media-dialog-inner").find("[name='fid']").val(value.fid).trigger("update");
             }
