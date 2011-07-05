@@ -1389,13 +1389,20 @@ function takepart_video_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
+        'module' => 'node_reference',
         'type' => 'options_select',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'node_reference_autocomplete',
         'weight' => '7',
       ),
     ),
   );
+
+
 
   // Exported field: 'node-video_series-field_subhead'
   $fields['node-video_series-field_subhead'] = array(
