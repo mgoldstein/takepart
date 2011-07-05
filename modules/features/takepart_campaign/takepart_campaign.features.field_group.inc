@@ -45,7 +45,7 @@ function takepart_campaign_field_group_default_field_groups() {
     'weight' => '6',
     'children' => array(
       0 => 'field_tp_campaign_sponsors',
-      1 => 'field_tp_campaign_allances',
+      1 => 'field_tp_campaign_alliances',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
