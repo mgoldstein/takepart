@@ -2,7 +2,7 @@
 /**
  * Implement hook_field_widget_info().
  */
-function alt_media_widget_field_widget_info() {
+function media_views_widget_field_widget_info() {
   return array(
     'media_generic_alt' => array(
       'label' => t('Media file selector Alternative'),
@@ -26,7 +26,7 @@ function alt_media_widget_field_widget_info() {
  * 
  * stilling mostly from the standard media field widget
  */
-function alt_media_widget_field_widget_settings_form($field, $instance) {
+function media_views_widget_field_widget_settings_form($field, $instance) {
   $widget = $instance['widget'];
   $settings = $widget['settings'];
   $form = media_field_widget_settings_form($field, $instance);
@@ -55,7 +55,7 @@ function alt_media_widget_field_widget_settings_form($field, $instance) {
 /**
  * Implements hook_field_widget_form().
  */
-function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+function media_views_widget_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
   $widget_settings = $instance['widget']['settings'];
 
   $permission = user_access('edit media');
@@ -98,7 +98,7 @@ function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $insta
     '#default_value' => $fid,
     '#attributes' => array('class' => array('fid')),
     '#ajax' => array(
-      'callback' => "alt_media_widget_amw_update_callback",
+      'callback' => "media_views_widget_amw_update_callback",
       'wrapper' => $wrapper_id,
       'event' => 'refresh',
     ),
@@ -108,7 +108,7 @@ function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $insta
     '#type' => 'button',
     '#value' => t('Select Media'),
     '#ajax' => array(
-      'callback' => "alt_media_widget_amw_update_callback",
+      'callback' => "media_views_widget_amw_update_callback",
       'wrapper' => $wrapper_id,
     ),
   );
@@ -130,7 +130,7 @@ function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $insta
       '#value' => 'Meta Data',
       '#title' => 'Meta Data',
       '#ajax' => array(
-        'callback' => "alt_media_widget_amw_update_callback",
+        'callback' => "media_views_widget_amw_update_callback",
         'wrapper' => $wrapper_id,
       ),
     );
@@ -140,7 +140,7 @@ function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $insta
       '#type' => 'button',
       '#value' => 'Remove',
       '#ajax' => array(
-        'callback' => "alt_media_widget_amw_update_callback",
+        'callback' => "media_views_widget_amw_update_callback",
         'wrapper' => $wrapper_id,
       ),
    );
@@ -152,15 +152,15 @@ function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $insta
     $file->dialog_inner = "media-dialog-inner-$wrapper_id";
     $dialog_form = drupal_get_form('media_edit', $file);
     $element['dialog'] = array('#markup' => drupal_render($dialog_form));
-    $element['dialog'] = alt_media_widget_dialog_wrap($wrapper_id, $element['dialog'], FALSE);
+    $element['dialog'] = media_views_widget_dialog_wrap($wrapper_id, $element['dialog'], FALSE);
   }
 
   // if the select action is chosen we populate the dialog
   // with the select element
   if(($action_delta === $delta) && ($action == 'select')) {
-      $dialog_form = alt_media_widget_amw_media_select("media-dialog-inner-$wrapper_id", 'browser_set', $field, $instance, $langcode, $items, $delta, $element, $file);
+      $dialog_form = media_views_widget_amw_media_select("media-dialog-inner-$wrapper_id", 'browser_set', $field, $instance, $langcode, $items, $delta, $element, $file);
     $element['dialog'] = array('#markup' => drupal_render($dialog_form));
-    $element['dialog'] = alt_media_widget_dialog_wrap($wrapper_id, $element['dialog'], FALSE);
+    $element['dialog'] = media_views_widget_dialog_wrap($wrapper_id, $element['dialog'], FALSE);
   }
 
   // If we have not create a dialog create an empty one.
@@ -168,7 +168,7 @@ function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $insta
     $element['dialog'] = array(
       '#markup' => "",
     );
-    $element['dialog'] = alt_media_widget_dialog_wrap($wrapper_id, $element['dialog'], FALSE);
+    $element['dialog'] = media_views_widget_dialog_wrap($wrapper_id, $element['dialog'], FALSE);
   }
   return $element;
 }
@@ -183,7 +183,7 @@ function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $insta
  *
  * RETURN the $element wraped 
  */
-function alt_media_widget_dialog_wrap($wrapper_id, $element, $inner_only = TRUE) {
+function media_views_widget_dialog_wrap($wrapper_id, $element, $inner_only = TRUE) {
   $element['#prefix'] = isset($element['#prefix']) ? $element['#prefix'] : ''; 
   $element['#suffix'] = isset($element['#suffix']) ? $element['#suffix'] : ''; 
   // add the inner div
@@ -203,7 +203,7 @@ function alt_media_widget_dialog_wrap($wrapper_id, $element, $inner_only = TRUE)
  * form for selecting media
  *
  */
-function alt_media_widget_amw_media_select($dialog_inner, $active_tab, $field, $instance, $langcode, $items, $delta, $element, $file) {
+function media_views_widget_amw_media_select($dialog_inner, $active_tab, $field, $instance, $langcode, $items, $delta, $element, $file) {
 $form['#type'] = "vertical_tabs";
 
   
@@ -221,12 +221,12 @@ $form['#type'] = "vertical_tabs";
     ),
   /*
     array(
-      'name' => 'alt_media_widget_default',
+      'name' => 'media_views_widget_default',
       'display' => 'default',
       'title' => 'Browse',
     ),
     array(
-      'name' => 'alt_media_widget_default',
+      'name' => 'media_views_widget_default',
       'display' => 'block_1',
       'title' => 'Search',
     ),
@@ -269,7 +269,7 @@ function media_widget_amw_media_browser($form, $form_state, $view_name, $view_di
   $form['fid'] = array(
     '#type' => 'textfield',
     '#ajax' => array(
-       'callback' => 'alt_media_widget_amw_update_from_dialog_callback',
+       'callback' => 'media_views_widget_amw_update_from_dialog_callback',
        'wrapper' => $dialog_inner,
        'event' => 'update',
      )

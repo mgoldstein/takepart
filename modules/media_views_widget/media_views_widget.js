@@ -1,6 +1,6 @@
 (function($) {
 
-Drupal.behaviors.alt_media_widget = {
+Drupal.behaviors.media_views_widget = {
   attach: function(context) {
      
     $('.amw-field', context).each(function(e) {
