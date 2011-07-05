@@ -174,9 +174,10 @@ $info['projects']['features']['version']  = '1.0-beta3';
 
 $info['projects']['rubik']['version'] = '4.0-beta5';
 
-$info['projects']['nodequeue']['type']    = 'module';
-$info['projects']['nodequeue']['subdir']  = 'contrib';
-$info['projects']['nodequeue']['version'] = '2.0-alpha2';
+unset($info['projects']['nodequeue']);
+//['type']    = 'module';
+//$info['projects']['nodequeue']['subdir']  = 'contrib';
+//$info['projects']['nodequeue']['version'] = '2.0-alpha2';
 
 /* Patches */
 
