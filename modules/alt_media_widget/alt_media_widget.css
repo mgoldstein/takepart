@@ -1,6 +1,7 @@
 .amw-preview {
   float:left;
   background: #eee;
+  margin:10px;
 }
 .amw-field .form-submit {
   display:block;

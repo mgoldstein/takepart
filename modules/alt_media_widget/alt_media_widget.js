@@ -46,6 +46,7 @@ Drupal.behaviors.alt_media_widget = {
             modal: true,
             dialogClass: 'media_dialog'
           });
+
         });
       }
     });

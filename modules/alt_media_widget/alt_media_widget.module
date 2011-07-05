@@ -67,7 +67,6 @@ function alt_media_widget_amw_update_from_dialog_callback($form, $form_state) {
     $file->fid = $form_state['values']['fid'];
     $file->dialog_inner = $form['#dialog_inner'];
   }
-  $cmds['#commands'][] = ajax_command_alert(print_r($file, TRUE));
   $cmds['#commands'][] = ajax_command_insert(NULL, "<div class = 'media-dialog-inner' id = '{$file->dialog_inner}'></div>");
   $cmds['#commands'][] = alt_media_widget_ajax_command_update_from_dialog($file->dialog_inner, $file->fid);
   $cmds['#type'] = 'ajax';
@@ -106,7 +105,6 @@ function alt_media_widget_amw_update_callback($form, $form_state) {
   $cmds['#commands'][] = ajax_command_insert(NULL, drupal_render($form));
 
   //if this is a refresh that needs a dialog open the dialog
-    //$cmds['#commands'][] = ajax_command_alert(print_r($form_state['triggering_element'], TRUE));
   if(in_array($action,array('edit','select'))) {
     $cmds['#commands'][] = ajax_command_invoke("#media-dialog-inner-$wrapper_id", "trigger", array('open'));
   }
@@ -115,15 +113,8 @@ function alt_media_widget_amw_update_callback($form, $form_state) {
 }
 
 function alt_media_widget_theme_alter(&$info) {
-  dpm($info['views_view_field']);
-  print_r($info['views_view_field']);
 }
 function alt_media_widget_preprocess_views_view($vars) {
-  dpm("here1");
   drupal_add_js(array("amw_results" => $vars['view']->result), 'setting');
-  dpm($vars);
-}
-function alt_media_widget_preprocess_views_view_fields($vars) {
-  dpm($vars);
-  dpm("here12");
+
 }

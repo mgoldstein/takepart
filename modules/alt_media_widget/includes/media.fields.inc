@@ -123,26 +123,56 @@ function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $insta
    );
   }
 
+  // if the edit action is invoked we populated the dialog
+  // we populate the dilog with the media edit form
   if(($action_delta === $delta) && ($action == 'edit')) {
     $file->dialog_inner = "media-dialog-inner-$wrapper_id";
     $dialog_form = drupal_get_form('media_edit', $file);
-    $dialog_form['#prefix'] = "<div field = '$wrapper_id' class = 'media-dialog-wrapper' id = 'media-dialog-wrapper-$wrapper_id'><div class = 'media-dialog-inner' id = 'media-dialog-inner-$wrapper_id'>";
-    $dialog_form['#suffix'] = "</div></div>";
     $element['dialog'] = array('#markup' => drupal_render($dialog_form));
+    $element['dialog'] = alt_media_widget_dialog_wrap($wrapper_id, $element['dialog'], FALSE);
   }
+
+  // if the select action is chosen we populate the dialog
+  // with the select element
   if(($action_delta === $delta) && ($action == 'select')) {
-      $dialog_form = alt_media_widget_amw_media_select("media-dialog-inner-$wrapper_id", $field);
-    $dialog_form['#prefix'] = "<div field = '$wrapper_id' class = 'media-dialog-wrapper' id = 'media-dialog-wrapper-$wrapper_id'><div class = 'media-dialog-inner' id = 'media-dialog-inner-$wrapper_id'>";
-    $dialog_form['#suffix'] = "</div></div>";
+      $dialog_form = alt_media_widget_amw_media_select("media-dialog-inner-$wrapper_id", 'browser_set', $field, $instance, $langcode, $items, $delta, $element, $file);
     $element['dialog'] = array('#markup' => drupal_render($dialog_form));
+    $element['dialog'] = alt_media_widget_dialog_wrap($wrapper_id, $element['dialog'], FALSE);
   }
+
+  // If we have not create a dialog create an empty one.
   if(!isset($element['dialog'])) {
     $element['dialog'] = array(
-      '#prefix' => "<div field = '$wrapper_id' class = 'media-dialog-wrapper' id = 'media-dialog-wrapper-$wrapper_id'>",
-      '#suffix' => "</div>",
-      '#markup' => "<div class = 'media-dialog-inner' id = 'media-dialog-inner-$wrapper_id'></div>",
+      '#markup' => "",
     );
+    $element['dialog'] = alt_media_widget_dialog_wrap($wrapper_id, $element['dialog'], FALSE);
   }
+  return $element;
+}
+
+/*
+ * helper function to wrap the dialog in the proper divs so that we can replace stuff
+ * as well as attach the dialog
+ * PARAM wrapper_id : the wrapper_id for the element associated with this dialog
+ * PARAM $element : the dialog element that is to be wrapped
+ * PARAM inner_only : only add the dialog_inner not the dialog_wrapper (used when refreshing the dilog but not
+ * touching the core element
+ *
+ * RETURN the $element wraped 
+ */
+function alt_media_widget_dialog_wrap($wrapper_id, $element, $inner_only = TRUE) {
+  $element['#prefix'] = isset($element['#prefix']) ? $element['#prefix'] : ''; 
+  $element['#suffix'] = isset($element['#suffix']) ? $element['#suffix'] : ''; 
+  // add the inner div
+  $element['#prefix'] = "<div  class = 'media-dialog-inner' id = 'media-dialog-inner-$wrapper_id'>" . $element['#prefix'];
+  $element['#suffix'] .= "</div>";
+
+  // if we are doing thw whole wrapp include the media-dialog-wrapper
+  if(!$inner_only) {
+    $element['#prefix'] = "<div field = '$wrapper_id' class = 'media-dialog-wrapper' id = 'media-dialog-wrapper-$wrapper_id'>" . $element['#prefix'];
+    $element['#suffix'] .= "</div>";
+  }
+
   return $element;
 }
 
@@ -150,24 +180,41 @@ function alt_media_widget_field_widget_form(&$form, &$form_state, $field, $insta
  * form for selecting media
  *
  */
-function alt_media_widget_amw_media_select($dialog_inner, $field) {
+function alt_media_widget_amw_media_select($dialog_inner, $active_tab, $field, $instance, $langcode, $items, $delta, $element, $file) {
 $form['#type'] = "vertical_tabs";
-$form['browse_set'] = array(
-  '#type' => 'fieldset',
-  '#collapsible' => TRUE,
-  '#collapsed' => TRUE,
-  '#title' => 'Browse',
-  'browse_form' => drupal_get_form('media_widget_amw_media_browser', $types, $dialog_inner),
+
+$views = array(
+/*
+  array(
+    'name' => 'alt_media_widget_default',
+    'display' => 'default',
+    'title' => 'Browse',
+  ),
+  */
+  array(
+    'name' => 'alt_media_widget_default',
+    'display' => 'block_1',
+    'title' => 'Search',
+  ),
 );
+foreach ($views as $info) {
+  $form[$info['title']] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#title' => $info['title'],
+    'browse_form' => drupal_get_form('media_widget_amw_media_browser',$info['name'], $info['display'], $types, $dialog_inner),
+  );
+}
 $types = array('image');
-$form['other'] = array(
+$form['edit'] = array(
   '#type' => 'fieldset',
   '#collapsible' => TRUE,
   '#collapsed' => TRUE,
   '#title' => 'Meta Data',
-  'browse_form' => array('#markup' => "baseball"),
+  'browse_form' => drupal_get_form('media_edit', $file),
 );
-$form['upload_set'] = array(
+$form['upload'] = array(
   '#type' => 'fieldset',
   '#collapsible' => TRUE,
   '#collapsed' => TRUE,
@@ -181,10 +228,8 @@ return $form;
 /*
  * form for views based browser
  */
-function media_widget_amw_media_browser($form, $form_state, $types, $dialog_inner) {
+function media_widget_amw_media_browser($form, $form_state, $view_name, $view_display_name, $types, $dialog_inner) {
   $form['#dialog_inner'] = $dialog_inner;
-  $view_name = 'alt_media_widget_default';
-  $view_display_name = 'default';
   $form['browser']['#markup'] = views_embed_view($view_name, $view_display_name);
   $form['fid'] = array(
     '#type' => 'textfield',
