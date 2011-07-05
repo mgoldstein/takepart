@@ -41,6 +41,34 @@ function takepart_facebook_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'fb_connect_theme_username_1';
+  $strongarm->value = 0;
+  $export['fb_connect_theme_username_1'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'fb_connect_theme_username_2';
+  $strongarm->value = 0;
+  $export['fb_connect_theme_username_2'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'fb_connect_theme_userpic_1';
+  $strongarm->value = 1;
+  $export['fb_connect_theme_userpic_1'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'fb_connect_theme_userpic_2';
+  $strongarm->value = 1;
+  $export['fb_connect_theme_userpic_2'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'fb_language_en';
   $strongarm->value = 'en_US';
   $export['fb_language_en'] = $strongarm;
@@ -49,7 +77,7 @@ function takepart_facebook_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'fb_language_override';
-  $strongarm->value = 'override';
+  $strongarm->value = 0;
   $export['fb_language_override'] = $strongarm;
 
   $strongarm = new stdClass;
