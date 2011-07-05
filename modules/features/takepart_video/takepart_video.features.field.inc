@@ -1019,13 +1019,13 @@ function takepart_video_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'options',
+        'module' => 'node_reference',
         'settings' => array(
           'autocomplete_match' => 'contains',
           'autocomplete_path' => 'node_reference/autocomplete',
           'size' => '60',
         ),
-        'type' => 'options_buttons',
+        'type' => 'node_reference_autocomplete',
         'weight' => '3',
       ),
     ),
