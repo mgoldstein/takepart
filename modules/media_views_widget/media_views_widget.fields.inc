@@ -75,7 +75,7 @@ function media_views_widget_field_widget_form(&$form, &$form_state, $field, $ins
   $action = NULL;
   $action_delta = NULL;
   if(isset($form_state['triggering_element']['#array_parents'])) {
-    $action = end($form_state['triggering_element']['#array_parents']);
+    list($action, $other) = explode("-", end($form_state['triggering_element']['#array_parents']), 2);
     $action_delta = prev($form_state['triggering_element']['#array_parents']);
     reset($form_state['triggering_element']['#array_parents']);
   }
@@ -89,7 +89,7 @@ function media_views_widget_field_widget_form(&$form, &$form_state, $field, $ins
 
   //wrapper our field so we can find and refesh it
   $wrapper_id = "{$element['#field_name']}-{$delta}";
-  $element['#prefix'] = "<div class ='amw-field' id = '$wrapper_id'>";
+  $element['#prefix'] = "<div class ='mvw-field' id = '$wrapper_id'>";
   $element['#suffix'] = "<div class ='clearfix'></div></div>";
 
   //field to store value
@@ -98,17 +98,17 @@ function media_views_widget_field_widget_form(&$form, &$form_state, $field, $ins
     '#default_value' => $fid,
     '#attributes' => array('class' => array('fid')),
     '#ajax' => array(
-      'callback' => "media_views_widget_amw_update_callback",
+      'callback' => "media_views_widget_mvw_update_callback",
       'wrapper' => $wrapper_id,
       'event' => 'refresh',
     ),
   );
 
-  $element['select'] = array(
+  $element["select-$wrapper_id"] = array(
     '#type' => 'button',
     '#value' => t('Select Media'),
     '#ajax' => array(
-      'callback' => "media_views_widget_amw_update_callback",
+      'callback' => "media_views_widget_mvw_update_callback",
       'wrapper' => $wrapper_id,
     ),
   );
@@ -118,29 +118,29 @@ function media_views_widget_field_widget_form(&$form, &$form_state, $field, $ins
     $preview = file_view($file, 'media_preview');
     $element['preview'] = $preview;
     $element['preview']['#weight'] = -100;
-    $element['preview']['#prefix'] = '<div class ="amw-preview">';
+    $element['preview']['#prefix'] = '<div class ="mvw-preview">';
     $element['preview']['#suffix'] = '</div>';
 
     // change title of select
-    $element['select']['#title'] = t('Change Media');
+    $element["select-$wrapper_id"]['#value'] = t('Change Media');
 
     // add edit link
-    $element['edit'] = array(
+    $element["edit-$wrapper_id"] = array(
       '#type' => 'button',
       '#value' => 'Meta Data',
       '#title' => 'Meta Data',
       '#ajax' => array(
-        'callback' => "media_views_widget_amw_update_callback",
+        'callback' => "media_views_widget_mvw_update_callback",
         'wrapper' => $wrapper_id,
       ),
     );
 
     //add remove link
-    $element['delete'] = array(
+    $element["delete-$wrapper_id"] = array(
       '#type' => 'button',
       '#value' => 'Remove',
       '#ajax' => array(
-        'callback' => "media_views_widget_amw_update_callback",
+        'callback' => "media_views_widget_mvw_update_callback",
         'wrapper' => $wrapper_id,
       ),
    );
@@ -158,7 +158,7 @@ function media_views_widget_field_widget_form(&$form, &$form_state, $field, $ins
   // if the select action is chosen we populate the dialog
   // with the select element
   if(($action_delta === $delta) && ($action == 'select')) {
-      $dialog_form = media_views_widget_amw_media_select("media-dialog-inner-$wrapper_id", 'browser_set', $field, $instance, $langcode, $items, $delta, $element, $file);
+      $dialog_form = media_views_widget_mvw_media_select("media-dialog-inner-$wrapper_id", 'browser_set', $field, $instance, $langcode, $items, $delta, $element, $file);
     $element['dialog'] = array('#markup' => drupal_render($dialog_form));
     $element['dialog'] = media_views_widget_dialog_wrap($wrapper_id, $element['dialog'], FALSE);
   }
@@ -203,7 +203,7 @@ function media_views_widget_dialog_wrap($wrapper_id, $element, $inner_only = TRU
  * form for selecting media
  *
  */
-function media_views_widget_amw_media_select($dialog_inner, $active_tab, $field, $instance, $langcode, $items, $delta, $element, $file) {
+function media_views_widget_mvw_media_select($dialog_inner, $active_tab, $field, $instance, $langcode, $items, $delta, $element, $file) {
 $form['#type'] = "vertical_tabs";
 
   
@@ -238,7 +238,7 @@ $form['#type'] = "vertical_tabs";
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
       '#title' => $info['title'],
-      'browse_form' => drupal_get_form('media_widget_amw_media_browser',$info['name'], $info['display'], $types, $dialog_inner),
+      'browse_form' => drupal_get_form('media_widget_mvw_media_browser',$info['name'], $info['display'], $types, $dialog_inner),
     );
   }
   $types = array('image');
@@ -263,13 +263,13 @@ $form['#type'] = "vertical_tabs";
 /*
  * form for views based browser
  */
-function media_widget_amw_media_browser($form, $form_state, $view_name, $view_display_name, $types, $dialog_inner) {
+function media_widget_mvw_media_browser($form, $form_state, $view_name, $view_display_name, $types, $dialog_inner) {
   $form['#dialog_inner'] = $dialog_inner;
   $form['browser']['#markup'] = views_embed_view($view_name, $view_display_name);
   $form['fid'] = array(
     '#type' => 'textfield',
     '#ajax' => array(
-       'callback' => 'media_views_widget_amw_update_from_dialog_callback',
+       'callback' => 'media_views_widget_mvw_update_from_dialog_callback',
        'wrapper' => $dialog_inner,
        'event' => 'update',
      )

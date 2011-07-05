@@ -13,7 +13,7 @@ function media_views_widget_form_media_edit_alter(&$form, $form_state) {
   $file = $form_state['file'];
   if(isset($file->dialog_inner)) {
     $form['actions']['submit']['#ajax'] = array(
-       'callback' => 'media_views_widget_amw_update_from_dialog_callback',
+       'callback' => 'media_views_widget_mvw_update_from_dialog_callback',
        'wrapper' => $file->dialog_inner,
        #'wrapper' => $form['#dialog-inner'],
        'name' => 'sumbit2',
@@ -32,7 +32,7 @@ function media_views_widget_form_media_edit_alter(&$form, $form_state) {
 function media_views_widget_form_media_add_upload_alter(&$form, $form_state) {
   if(isset($form_state['build_info']['args'][1])) {
     $form['submit']['#ajax'] = array(
-       'callback' => 'media_views_widget_amw_update_from_dialog_callback',
+       'callback' => 'media_views_widget_mvw_update_from_dialog_callback',
        'wrapper' => $form_state['build_info']['args'][1],
        'name' => 'sumbit2',
     );
@@ -61,7 +61,7 @@ function media_views_widget_form_media_add_upload_sumbit(&$form, &$form_state) {
  *
  * it is used from dialogs to update a elements field and refresh it
  */
-function media_views_widget_amw_update_from_dialog_callback($form, $form_state) {
+function media_views_widget_mvw_update_from_dialog_callback($form, $form_state) {
   $file = $form_state['file'];
   if(!$file) {  
     $file->fid = $form_state['values']['fid'];
@@ -88,14 +88,14 @@ function media_views_widget_ajax_command_update_from_dialog($dialog_inner, $fid 
  *
  * it is used on the to process all of the buttons on the alt media widget
  */
-function media_views_widget_amw_update_callback($form, $form_state) {
+function media_views_widget_mvw_update_callback($form, $form_state) {
   //get file
   $file = $form_state['file'];
 
   //find parents and pop off the action this leaves parents replacing
   //the element which should match the triggering_element wrapper
   $parents = $form_state['triggering_element']['#array_parents'];
-  $action = array_pop($parents);
+  list($action, $other) = explode("-", array_pop($parents),2);
   $wrapper_id = $form_state['triggering_element']['#ajax']['wrapper'];
 
   //change the form to be just the part we want
@@ -112,9 +112,14 @@ function media_views_widget_amw_update_callback($form, $form_state) {
   return $cmds;
 }
 
-function media_views_widget_theme_alter(&$info) {
-}
+/*
+ * implements hook_preprocess_views_view()
+ * send view results to js
+ * 
+ * TODO make this only happen on our views
+ *
+ */
 function media_views_widget_preprocess_views_view($vars) {
-  drupal_add_js(array("amw_results" => $vars['view']->result), 'setting');
+  drupal_add_js(array("mvw_results" => $vars['view']->result), 'setting');
 
 }

@@ -3,11 +3,11 @@
 Drupal.behaviors.media_views_widget = {
   attach: function(context) {
      
-    $('.amw-field', context).each(function(e) {
-      if($(this).hasClass("amw-processed")) {
+    $('.mvw-field', context).each(function(e) {
+      if($(this).hasClass("mvw-processed")) {
       }
       else {
-        $(this).addClass("amw-processed");
+        $(this).addClass("mvw-processed");
 
         // this action updates the fid field and then
         // triggers a ajax refresh of the the element
@@ -23,10 +23,10 @@ Drupal.behaviors.media_views_widget = {
       }
     });
     $(".media-dialog-wrapper .media-dialog-inner").each(function() {
-      if($(this).hasClass("amw-processed")) {
+      if($(this).hasClass("mvw-processed")) {
       }
       else {
-        $(this).addClass("amw-processed");
+        $(this).addClass("mvw-processed");
 
         // this close the dialog and updates the related
         // element
@@ -53,13 +53,13 @@ Drupal.behaviors.media_views_widget = {
     });
     // make views selectings
     $(".media-dialog-inner .views-row").each(function(e) {
-      if($(this).hasClass("amw-processed")) {
+      if($(this).hasClass("mvw-processed")) {
       }
       else {
-        $(this).addClass("amw-processed");
+        $(this).addClass("mvw-processed");
         $(this).click(function(e) {
           e.preventDefault();
-          results = Drupal.settings.amw_results;
+          results = Drupal.settings.mvw_results;
           //going to closure need to define the row
           row = this;
           $.each(results, function(i, value) {

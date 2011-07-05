@@ -1,9 +1,9 @@
-.amw-preview {
+.mvw-preview {
   float:left;
   background: #eee;
   margin:10px;
 }
-.amw-field .form-submit {
+.mvw-field .form-submit {
   display:block;
   margin:10px;
   width:100px;
@@ -12,10 +12,10 @@
   float:left;
   margin:10px;
 }
+div.mvw-field div.form-item {
+  display:none;
+}
 div.pager, .clearfix
 {
   clear :both;
-}
-.amw-field .form-item {
-  display:none;
 }
