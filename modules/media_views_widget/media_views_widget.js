@@ -38,7 +38,7 @@ Drupal.behaviors.media_views_widget = {
         $(this).bind("open", function(e) {
           Drupal.attachBehaviors(this);
           $(this).parent().dialog({
-            title: 'Edit Meta Data',
+            title: 'Media',
           //  autoOpen: false,
           //  height: 400,
             hide: 'slide',
