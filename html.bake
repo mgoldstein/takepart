@@ -124,6 +124,12 @@ $info['projects']['media']['download']['type']      =  'git';
 $info['projects']['media']['download']['branch']    = '7.x-1.x';
 $info['projects']['media']['download']['url']       = 'http://git.drupal.org/project/media.git';
 
+$info['projects']['media_views_widget']['type']   = 'module';
+$info['projects']['media_views_widget']['subdir'] = 'contrib';
+$info['projects']['media_views_widget']['download']['type']   = 'git';
+$info['projects']['media_views_widget']['download']['branch'] = 'master';
+$info['projects']['media_views_widget']['download']['url']    = 'git@github.com:phase2/media_views_widget.git';
+
 $info['projects']['styles']['type']    = 'module';
 $info['projects']['styles']['subdir']  = 'contrib';
 $info['projects']['styles']['version'] = '2.0-alpha8';
