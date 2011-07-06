@@ -85,9 +85,72 @@ function takepart_user_customizations_field_default_fields() {
     ),
   );
 
+  // Exported field: 'user-user-field_registration_email_opt_in'
+  $fields['user-user-field_registration_email_opt_in'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_registration_email_opt_in',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '0',
+          1 => '1',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '1',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'user',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 1,
+        ),
+      ),
+      'entity_type' => 'user',
+      'field_name' => 'field_registration_email_opt_in',
+      'label' => 'Get TakePart emails and alerts',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => 0,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '8',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Date of Birth');
+  t('Get TakePart emails and alerts');
   t('You must be 18 years of age.');
 
   return $fields;
