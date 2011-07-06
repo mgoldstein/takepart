@@ -50,13 +50,15 @@ function takepart_newsletter_save_campaign($email, $campaign_id, $action = 's', 
         drupal_write_record("tp_newsletter_signups", $record);
         $message = 'success';
         $success = 1; 
-	  }
+      }
     }
       
     return array('status' => $success, 'message' => $message);
   }
   catch(Exception $ex) {
-    watchdog('newsletter service', 'General error: %error for email: %email, campaign id: %campaign', array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign));
+    watchdog('newsletter service', 'General error: %error for email: %email, campaign id: %campaign', 
+      array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign)
+    );
     $message = $action == 's' ? t('Problem saving email, please try again later.') : t('There was a problem unsubscribing. Please try again later.');
     
     return array('status' => 0, 'message' => $message);
@@ -98,11 +100,11 @@ function takepart_newsletter_delete_campaign($email, $campaign_id) {
         $xml = null;
         
         $record = new stdClass();
-		$record->mail = $email;
-		$record->status = 'u';
-		$record->unsubscribe_date = time();
+        $record->mail = $email;
+        $record->status = 'u';
+        $record->unsubscribe_date = time();
 
-		db_query("UPDATE {tp_newsletter_signups} SET status = 'u', unsubscribe_date = %d WHERE mail = '%s'", time(), $email);
+        db_query("UPDATE {tp_newsletter_signups} SET status = 'u', unsubscribe_date = %d WHERE mail = '%s'", time(), $email);
         $success = 1;
       }
       else {

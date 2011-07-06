@@ -81,8 +81,9 @@ function takepart_newsletter_signup_user($op, &$edit, &$account, $category = NUL
 
 /**
  * Implementation of hook_server from services module().
- */
-function takepart_newsletter_signup_server($endpoint = 'services/rest') {
+ * not sure this is needed for D7, they have built in REST server.
+ */ 
+function _takepart_newsletter_signup_server($endpoint = 'services/rest') {
   
   $canonical_path = trim(substr($_GET['q'], drupal_strlen($endpoint)), '/');
  
@@ -112,7 +113,7 @@ function takepart_newsletter_signup_server($endpoint = 'services/rest') {
 /**
  *  Implementation of hook_server_info
  */
-function takepart_newsletter_signup_server_info() {
+function _takepart_newsletter_signup_server_info() {
   return array(
     '#name' => 'REST for TakePart',
     '#path' => 'rest'
@@ -125,7 +126,7 @@ function takepart_newsletter_signup_server_info() {
 * Required by all server modules
 * Returns array defining all the methods available in the service
 */
-function takepart_newsletter_signup_service() {
+function _takepart_newsletter_signup_service() {
   return array(
    
     array(
@@ -156,6 +157,37 @@ function takepart_newsletter_signup_service() {
       '#help' => 'Returns JSON - an array with key 0 as status, 0 for failure, 1 for success and key 1 as the message, either success or an error message'
     ),
    
+  );
+}
+
+/**
+ * Implementation of hook_service_resources
+ *
+ */
+function takepart_newsletter_signup_services_resources() {
+  return array(
+    'tp_newsletter_signups' => array(
+      'create' => array(
+        'help' => 'save a newsletter signup',
+        'callback' => 'takepart_newsletter_save_campaign_handler',
+        'args' => array(
+          array(
+            'name' => 'email',
+            'type' => 'string',
+            'description' => 'Email address to save',
+            'optional' => FALSE,
+            'source' => array('param' => 'e'),
+          ),
+          array(
+            'name' => 'campaign_id',
+            'type' => 'string',
+            'description' => 'Pluris campaign code',
+            'optional' => FALSE,
+            'source' => array('param' => 'c'),
+          ),
+        ),
+      ),
+    ),
   );
 }
 

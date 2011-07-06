@@ -85,13 +85,13 @@ function takepart_newsletter_signup_schema() {
         'default' => 0,
         'description' => "Reference to {users}.uid",
       ),
-      'subscribe_date' => array(
+    'subscribe_date' => array(
         'description' => 'The Unix timestamp when the email was subscribed.',
         'type' => 'int',
         'not null' => TRUE,
         'default' => 0
       ),
-      'unsubscribe_date' => array(
+    'unsubscribe_date' => array(
         'description' => 'The Unix timestamp when the email was unsubscribed.',
         'type' => 'int',
         'not null' => TRUE,
