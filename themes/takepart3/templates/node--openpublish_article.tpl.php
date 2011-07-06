@@ -2,8 +2,6 @@
 
 <div class='<?php print $classes ?> clearfix' <?php print ($attributes) ?>>
   <?php if (!empty($title_prefix)) print render($title_prefix); ?>
-
-  <?php // dprint_r($node); ?>
   
   <?php print render($content['field_display_tag']); ?>
 
@@ -19,24 +17,71 @@
   <?php if (!empty($content)): ?>
     <div class='content clearfix <?php if (!empty($is_prose)) print 'prose' ?>'>
       
-      <?php print render($content['field_article_subhead']); ?>
+      <?php // dprint_r($content); ?>
       
-      <?php if (!empty($submitted)): ?>
-      <div class='submitted-wrapper'>
-        <div class='submitted clearfix'>
-          <?php print render($content['field_author']); ?>
-          <div class='field article-date'><?php print $date; ?></div>
-          <div class='field article-comment-count'>
-            <a href='#comments'>
-              <?php print $node->comment_count; ?> comments
-            </a>
+       <?php print render($content['field_article_subhead']); ?>
+
+        <?php if (!empty($submitted)): ?>
+        <div class='submitted-wrapper'>
+          <div class='submitted clearfix'>
+            <?php print render($content['field_author']); ?>
+            <div class='field article-date'><?php print $date; ?></div>
+            <div class='field article-comment-count'>
+              <a href='#comments'>
+                <?php print $node->comment_count; ?> comments
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <?php endif; ?>
+        <?php endif; ?>
+        
+        <?php print render($content['field_article_main_image']); ?>
+
+        <?php print render($content['body']); ?>
+        
+        <div class='secondary-content-col'>
+          
+          <ul class='social-media'>
+            <li class='social-media-digg'>Digg This</li>
+            <li class='social-media-stumble'>Stumble This</li>
+            <li class='social-media-email'>Email a friend</li>
+          </ul>
+          
+          <div class="block-boxes-view-name-related_content">
+            <h2></h2>
+            
+          <div class="views-row views-row-1 views-row-odd views-row-first">
+
+            <div class="views-field views-field-field-promo-headline">
+              <div class="field-content">
+                <a href="/article/2011/05/26/del-taco-mac-n-cheese-crunch-bites">Promo headline ipsum dolor sit amet</a>
+              </div>
+            </div>
+
+            <div class="views-field views-field-field-promo-text">
+              <div class="field-content">Promo text ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor.</div>
+            </div>
+
+          </div>
+          
+          <div class="views-row views-row-2 views-row-even views-row-last">
+
+            <div class="views-field views-field-field-promo-headline">
+              <div class="field-content">
+                <a href="/article/2011/05/26/del-taco-mac-n-cheese-crunch-bites">Promo headline ipsum dolor sit amet</a>
+              </div>
+            </div>
+
+            <div class="views-field views-field-field-promo-text">
+              <div class="field-content">Promo text ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor.</div>
+            </div>
+
+          </div>
+          
+        </div>
+          
+        </div>
       
-    <?php print render($content['body']); ?>
-    
     </div>
   <?php endif; ?>
 
