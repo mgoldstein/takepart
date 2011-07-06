@@ -242,6 +242,7 @@ $form['#type'] = "vertical_tabs";
     );
   }
   $types = array('image');
+  /*
   $form['edit'] = array(
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
@@ -249,6 +250,7 @@ $form['#type'] = "vertical_tabs";
     '#title' => 'Meta Data',
     'browse_form' => drupal_get_form('media_edit', $file),
   );
+  */
   $form['upload'] = array(
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
