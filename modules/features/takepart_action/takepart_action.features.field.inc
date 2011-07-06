@@ -361,6 +361,7 @@ function takepart_action_field_default_fields() {
           'openpublish_site_page' => 0,
           'openpublish_video' => 0,
           'section_front' => 0,
+          'takepart_group' => 'takepart_group',
         ),
         'view' => array(
           'args' => array(),
@@ -411,6 +412,8 @@ function takepart_action_field_default_fields() {
       ),
     ),
   );
+
+
 
   // Exported field: 'node-action-field_action_suggest_related'
   $fields['node-action-field_action_suggest_related'] = array(
@@ -463,7 +466,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_action_suggest_related',
-      'label' => 'Suggest Related Actions',
+      'label' => 'Suggest Related Actions?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -472,7 +475,7 @@ function takepart_action_field_default_fields() {
         'active' => 1,
         'module' => 'options',
         'settings' => array(
-          'display_label' => 0,
+          'display_label' => 1,
         ),
         'type' => 'options_onoff',
         'weight' => '12',
@@ -1123,7 +1126,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_article_related_content',
-      'label' => 'Releated Content',
+      'label' => 'Related Content',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1261,7 +1264,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_article_suggest_content',
-      'label' => 'Suggest Releated Content?',
+      'label' => 'Suggest Related Content?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1756,12 +1759,12 @@ function takepart_action_field_default_fields() {
   t('Related Actions');
   t('Related Campaigns');
   t('Related Content');
-  t('Releated Content');
-  t('Suggest Related Actions');
+  t('Related Content');
+  t('Suggest Related Actions?');
   t('Suggest Related Actions?');
   t('Suggest Related Campaigns?');
   t('Suggest Related Content?');
-  t('Suggest Releated Content?');
+  t('Suggest Related Content?');
   t('Take Action URL');
   t('This is used instead of the Title to represent the Action when it appears in various places around the site.');
   t('Thumbnail Image');

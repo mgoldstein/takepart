@@ -949,14 +949,14 @@ function takepart_campaign_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-takepart_campaign-field_tp_campaign_allances'
-  $fields['node-takepart_campaign-field_tp_campaign_allances'] = array(
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_alliances'
+  $fields['node-takepart_campaign-field_tp_campaign_alliances'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_tp_campaign_allances',
+      'field_name' => 'field_tp_campaign_alliances',
       'foreign keys' => array(),
       'indexes' => array(),
       'module' => 'link',
@@ -998,7 +998,7 @@ function takepart_campaign_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_tp_campaign_allances',
+      'field_name' => 'field_tp_campaign_alliances',
       'label' => 'Alliances',
       'required' => 0,
       'settings' => array(

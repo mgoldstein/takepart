@@ -128,7 +128,7 @@ if(isset($entity->field_promo_headline[$entity->language])) {
 else {
   $value = $data->node_title;
 }
-$value = l($value, "/node{$entity->nid}");
+$value = l($value, "node/{$entity->nid}");
 print $value;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';

@@ -126,7 +126,7 @@ function takepart_rotator_slide_field_default_fields() {
       ),
       'module' => 'text',
       'settings' => array(
-        'max_length' => '240',
+        'max_length' => '120',
       ),
       'translatable' => '1',
       'type' => 'text',
