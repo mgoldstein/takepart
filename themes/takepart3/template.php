@@ -200,22 +200,20 @@ function _default_menu_options($menu_item) {
  */
 function takepart3_preprocess_block(&$vars) {
   
-  if ($vars['block']->module === 'boxes' && isset($vars['block']->boxes_plugin)) {
-    if(!empty($vars['block']->title)){
-      $vars['classes_array'][] = 'block-box-' . preg_replace( array('/[^a-zA-Z\s0-9]/', '/[\s]/', '/---|--/'), array('', '-', '-'), strtolower($vars['block']->title));
+    if (!empty($vars['block']->title)) {
+      $vars['classes_array'][] = 'block-boxes-title-' . preg_replace( array('/[^a-zA-Z\s0-9]/', '/[\s]/', '/---|--/'), array('', '-', '-'), strtolower($vars['block']->title));
     }
-    $vars['classes_array'][] = 'block-boxes-' . $vars['block']->boxes_plugin;
-  }else if($vars['block']->module === 'views' && isset($vars['block']->subject)) {
-    if(!empty($vars['block']->subject)){
-      $vars['classes_array'][] = 'block-view-' . preg_replace( array('/[^a-zA-Z\s0-9]/', '/[\s]/', '/---|--/'), array('', '-', '-'), strtolower($vars['block']->subject));
+  
+    if(!empty($vars['elements']['#block']->current_view)){
+      $vars['classes_array'][] = 'block-boxes-current-' . $vars['elements']['#block']->current_view;
     }
-  }
-}
+  
+    if(!empty($vars['elements']['content']['#views_contextual_links_info']['views_ui']['view_name'])){
+      $vars['classes_array'][] = 'block-boxes-view-name-' . $vars['elements']['content']['#views_contextual_links_info']['views_ui']['view_name'];
+    }
+  
+    if(!empty($vars['elements']['#block']->delta)){
+      $vars['classes_array'][] = 'block-boxes-delta-' . $vars['elements']['#block']->delta;
+    }
 
-/*
-function takepart3_preprocess_node(&$vars){ 
-  if($vars['type'] == 'openpublish_article'){
-    $vars['submitted'] = '';
-  }
 }
-*/
