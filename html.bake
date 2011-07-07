@@ -185,6 +185,17 @@ $info['projects']['rubik']['version'] = '4.0-beta5';
 // Nodequeue is not needed in TP3.
 unset($info['projects']['nodequeue']);
 
+// use our own branch
+$info['projects']['openpublish_features']['download']['branch'] = 'takepart-3.0';
+
+// This come out of openpublish_features
+$info['projects']['field_boxes']['type']   = 'module';
+$info['projects']['field_boxes']['subdir'] = 'contrib';
+$info['projects']['field_boxes']['download']['type']   = 'git';
+$info['projects']['field_boxes']['download']['branch'] = '7.x-1.x';
+$info['projects']['field_boxes']['download']['url']    = 'http://git.drupal.org/project/field_boxes.git';
+$info['projects']['field_boxes']['patch'][] = 'http://drupal.org/files/issues/1211204-make_0.patch';
+
 /* Patches */
 
 $info['projects']['flag']['patch'][]  = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
