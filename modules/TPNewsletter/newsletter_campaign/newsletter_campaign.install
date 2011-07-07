@@ -1,0 +1,70 @@
+<?php
+/**
+ * @file
+ * Install module for takepart newsletter 
+ */
+
+/**
+ * Implementation of hook_schema.
+ * building the tpnewsletter entity type
+ */
+function newsletter_campaign_schema() {
+  $schema['newsletter_campaign'] = array(
+    'description' => 'Encapsulate campaign newsletter data.',
+    'fields' => array(
+      'ncid' => array(
+        'description' => 'Primary key for newsletter campaigns',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'title' => array(
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+        'description' => 'The main title of this campaign.',
+      ),
+      'header' => array(
+        'type' => 'varchar',
+        'length' => 125,
+        'not null' => FALSE,
+        'description' => 'This text will appear as the header of the block.',
+      ),
+      'promo_message' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'This text will appear above the email input box.',
+      ),
+      'campaign_id' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Campaign Code generated from the Pluris system.',
+      ),
+      'thankyou_message' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'Text to display in signup block after a user has successfully submitted their email.',
+      ),      
+      
+      // add file field with entity CRUD functions
+      
+    ),
+    'primary key' => array('ncid'),
+  );
+  
+  return $schema;  
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function newsletter_campaign_uninstall() {
+}
+/**
+  variable_del('takepart_newsletter_signup_client_service_url');
+  variable_del('takepart_newsletter_signup_client_api_key');
+  variable_del('takepart_newsletter_signup_client_domain');
+  variable_del('takepart_newsletter_signup_client_direct_save');
+  variable_del('takepart_newsletter_signup_client_problem_text');
+}
+**/
