@@ -9,8 +9,8 @@
  */
 function takepart_action_ctools_plugin_api() {
   list($module, $api) = func_get_args();
-  if ($module == "context" && $api == "context") {
-    return array("version" => "3");
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
   }
   list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
@@ -36,7 +36,7 @@ function takepart_action_node_info() {
     'action' => array(
       'name' => t('Action'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Used to add actions to the site.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

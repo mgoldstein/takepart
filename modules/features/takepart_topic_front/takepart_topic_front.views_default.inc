@@ -26,6 +26,7 @@ function takepart_topic_front_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -41,11 +42,11 @@ function takepart_topic_front_views_default_views() {
   $handler->display->display_options['fields']['field_blogpost_main_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_blogpost_main_image']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_blogpost_main_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_blogpost_main_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_blogpost_main_image']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_blogpost_main_image']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_blogpost_main_image']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_blogpost_main_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_blogpost_main_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_blogpost_main_image']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_blogpost_main_image']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_blogpost_main_image']['element_default_classes'] = 1;
@@ -53,7 +54,7 @@ function takepart_topic_front_views_default_views() {
   $handler->display->display_options['fields']['field_blogpost_main_image']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_blogpost_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_blogpost_main_image']['field_api_classes'] = 0;
-  /* Field: Content: Promo Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_action_promo_headline']['id'] = 'field_action_promo_headline';
   $handler->display->display_options['fields']['field_action_promo_headline']['table'] = 'field_data_field_action_promo_headline';
   $handler->display->display_options['fields']['field_action_promo_headline']['field'] = 'field_action_promo_headline';
@@ -64,17 +65,16 @@ function takepart_topic_front_views_default_views() {
   $handler->display->display_options['fields']['field_action_promo_headline']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_action_promo_headline']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_action_promo_headline']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_action_promo_headline']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_action_promo_headline']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_action_promo_headline']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_action_promo_headline']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_action_promo_headline']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_action_promo_headline']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_action_promo_headline']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_action_promo_headline']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_action_promo_headline']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_action_promo_headline']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_action_promo_headline']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_action_promo_headline']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -86,11 +86,11 @@ function takepart_topic_front_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -108,11 +108,11 @@ function takepart_topic_front_views_default_views() {
   $handler->display->display_options['fields']['php']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['php']['alter']['external'] = 0;
   $handler->display->display_options['fields']['php']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['php']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['php']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['php']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['php']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['php']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['php']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['php']['alter']['html'] = 0;
   $handler->display->display_options['fields']['php']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['php']['element_default_classes'] = 1;
@@ -143,11 +143,11 @@ print $value;
   $handler->display->display_options['fields']['field_promo_text']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_promo_text']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_promo_text']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_promo_text']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['element_default_classes'] = 1;
@@ -165,11 +165,11 @@ print $value;
   $handler->display->display_options['fields']['path']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['path']['alter']['external'] = 0;
   $handler->display->display_options['fields']['path']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['path']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['path']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['path']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['path']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['path']['alter']['html'] = 0;
   $handler->display->display_options['fields']['path']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['path']['element_default_classes'] = 0;
@@ -206,18 +206,6 @@ print $value;
 
   /* Display: Secondary */
   $handler = $view->new_display('block', 'Secondary', 'block_1');
-  $translatables['featured_items'] = array(
-    t('Master'),
-    t('Primary'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('All'),
-    t('Secondary'),
-  );
   $export['featured_items'] = $view;
 
   $view = new view;
@@ -259,11 +247,11 @@ print $value;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -283,11 +271,11 @@ print $value;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['element_default_classes'] = 1;
@@ -305,11 +293,11 @@ print $value;
   $handler->display->display_options['fields']['type']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['type']['alter']['external'] = 0;
   $handler->display->display_options['fields']['type']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['type']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['type']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['type']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['type']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['type']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['type']['alter']['html'] = 0;
   $handler->display->display_options['fields']['type']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['type']['element_default_classes'] = 1;
@@ -330,11 +318,11 @@ print $value;
   $handler->display->display_options['fields']['url']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['url']['alter']['external'] = 0;
   $handler->display->display_options['fields']['url']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['url']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['url']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['url']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['url']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['url']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['url']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['url']['alter']['html'] = 0;
   $handler->display->display_options['fields']['url']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['url']['element_default_classes'] = 1;
@@ -351,11 +339,11 @@ print $value;
   $handler->display->display_options['fields']['field_promo_text']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_promo_text']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_promo_text']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_promo_text']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['element_default_classes'] = 1;
@@ -406,28 +394,6 @@ print $value;
   $handler->display->display_options['arguments']['field_series']['default_argument_options']['limit'] = 0;
   $handler->display->display_options['arguments']['field_series']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['field_series']['summary']['format'] = 'default_summary';
-  $translatables['taxonomy_search_list'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('Empty'),
-    t('There is no associated content'),
-    t('[field_promo_headline] now'),
-    t('[url]'),
-    t('[title]'),
-    t('[field_promo_headline] '),
-    t('All'),
-    t('Topic'),
-    t('Free Tag'),
-    t('Series'),
-  );
   $export['taxonomy_search_list'] = $view;
 
   return $export;
