@@ -1570,6 +1570,10 @@ Block Boxes (General)
 
 /*** News to Know ***/
 
+.block-boxes-title-news-to-know {
+  margin-bottom: 50px;
+}
+
 .block-boxes-title-news-to-know h2 {
   background-position: 0 -105px;
   height: 20px;
@@ -1577,13 +1581,22 @@ Block Boxes (General)
 }
 
 .block-boxes-title-news-to-know .views-row {
-  border-bottom: 3px solid silver;
+  border-top: 3px solid #e6e6e6;
   display: inline-block;
   margin-right: 20px;
   padding-bottom:10px;
   padding-top: 10px;
   vertical-align: top;
   width: 295px;
+}
+
+.block-boxes-title-news-to-know .views-row a:hover {
+  color: #1ca9e7;
+}
+
+.block-boxes-title-news-to-know .views-row-1,
+.block-boxes-title-news-to-know .views-row-2 {
+  border-top: 0;
 }
 
 .block-boxes-title-news-to-know .views-row.views-row-even {
@@ -1678,7 +1691,6 @@ Block Boxes (General)
   padding: 0;
   position: relative;
   text-indent: -9000px;
-  width: 302px;
 }
 
 .block-boxes-current-blogs .taxonomy-term {
@@ -1837,18 +1849,17 @@ body.node-type-openpublish-article h1 {
   border: 1px solid #666;
 }
 
-.node-openpublish-article .field-name-body {
-  
+.node-openpublish-article .field-name-body,
+.node-takepart-campaign .field-name-body {
   margin-right: -619px;
   width: 460px;
   margin-top: 30px;
   margin-left: 160px;
   display: inline-block;
-  vertical-align: top;
-  
+  vertical-align: top; 
 }
 
-.node-openpublish-article .secondary-content-col {
+.secondary-content-col {
   display: inline-block;
   margin-top: 30px;
   width: 145px;
