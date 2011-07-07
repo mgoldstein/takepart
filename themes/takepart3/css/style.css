@@ -171,6 +171,9 @@ img.photo, .gallery-item img {
 	width: 619px;
 	float: left;
 }
+body.two-sidebars .main-content {
+  width:419px;
+}
 
 #footer {
 	border-top: 5px solid #000;
@@ -180,6 +183,10 @@ img.photo, .gallery-item img {
 #right-rail {
 	width: 300px;
 	float: right;
+}
+#left {
+	width: 200px;
+	float: left;
 }
 
 .col-140 {
