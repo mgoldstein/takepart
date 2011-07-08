@@ -217,7 +217,7 @@ print $value;
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
+  
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_ajax'] = TRUE;
@@ -350,50 +350,84 @@ print $value;
   $handler->display->display_options['fields']['field_promo_text']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['link_to_entity'] = 0;
-  /* Contextual filter: Node: Topic */
+  /* Contextual filter: Topics [taxonomy_term] */
   $handler->display->display_options['arguments']['field_topic_1']['id'] = 'field_topic_1';
   $handler->display->display_options['arguments']['field_topic_1']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['arguments']['field_topic_1']['field'] = 'field_topic';
+  $handler->display->display_options['arguments']['field_topic_1']['ui_name'] = 'Topics [taxonomy_term]';
   $handler->display->display_options['arguments']['field_topic_1']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_topic_1']['default_argument_type'] = 'taxonomy_tid';
   $handler->display->display_options['arguments']['field_topic_1']['default_argument_options']['term_page'] = 1;
   $handler->display->display_options['arguments']['field_topic_1']['default_argument_options']['node'] = 0;
   $handler->display->display_options['arguments']['field_topic_1']['default_argument_options']['limit'] = 0;
+  $handler->display->display_options['arguments']['field_topic_1']['default_argument_options']['vocabularies'] = array(
+    'action_type' => 0,
+    'agency' => 0,
+    'blog' => 0,
+    'free_tags' => 0,
+    'group_type' => 0,
+    'photo_credit' => 0,
+    'series' => 0,
+    'topic' => 0,
+  );
   $handler->display->display_options['arguments']['field_topic_1']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['field_topic_1']['summary']['format'] = 'default_summary';
-
+  
   /* Display: Topic */
   $handler = $view->new_display('block', 'Topic', 'block');
-
+  
   /* Display: Free Tag */
   $handler = $view->new_display('block', 'Free Tag', 'block_1');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Node: Free Tag */
+  /* Contextual filter: Free Tags [taxonomy_term] */
   $handler->display->display_options['arguments']['field_free_tag']['id'] = 'field_free_tag';
   $handler->display->display_options['arguments']['field_free_tag']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['arguments']['field_free_tag']['field'] = 'field_free_tag';
+  $handler->display->display_options['arguments']['field_free_tag']['ui_name'] = 'Free Tags [taxonomy_term]';
   $handler->display->display_options['arguments']['field_free_tag']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_free_tag']['default_argument_type'] = 'taxonomy_tid';
   $handler->display->display_options['arguments']['field_free_tag']['default_argument_options']['term_page'] = 1;
   $handler->display->display_options['arguments']['field_free_tag']['default_argument_options']['node'] = 0;
   $handler->display->display_options['arguments']['field_free_tag']['default_argument_options']['limit'] = 0;
+  $handler->display->display_options['arguments']['field_free_tag']['default_argument_options']['vocabularies'] = array(
+    'action_type' => 0,
+    'agency' => 0,
+    'blog' => 0,
+    'free_tags' => 0,
+    'group_type' => 0,
+    'photo_credit' => 0,
+    'series' => 0,
+    'topic' => 0,
+  );
   $handler->display->display_options['arguments']['field_free_tag']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['field_free_tag']['summary']['format'] = 'default_summary';
-
+  
   /* Display: Series */
   $handler = $view->new_display('block', 'Series', 'block_2');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Node: Series */
+  /* Contextual filter: Series [taxonomy_term] */
   $handler->display->display_options['arguments']['field_series']['id'] = 'field_series';
   $handler->display->display_options['arguments']['field_series']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['arguments']['field_series']['field'] = 'field_series';
+  $handler->display->display_options['arguments']['field_series']['ui_name'] = 'Series [taxonomy_term]';
   $handler->display->display_options['arguments']['field_series']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_series']['default_argument_type'] = 'taxonomy_tid';
   $handler->display->display_options['arguments']['field_series']['default_argument_options']['term_page'] = 1;
   $handler->display->display_options['arguments']['field_series']['default_argument_options']['node'] = 0;
   $handler->display->display_options['arguments']['field_series']['default_argument_options']['limit'] = 0;
+  $handler->display->display_options['arguments']['field_series']['default_argument_options']['vocabularies'] = array(
+    'action_type' => 0,
+    'agency' => 0,
+    'blog' => 0,
+    'free_tags' => 0,
+    'group_type' => 0,
+    'photo_credit' => 0,
+    'series' => 0,
+    'topic' => 0,
+  );
   $handler->display->display_options['arguments']['field_series']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['field_series']['summary']['format'] = 'default_summary';
+
   $export['taxonomy_search_list'] = $view;
 
   return $export;
