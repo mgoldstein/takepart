@@ -224,6 +224,7 @@ projects[field_boxes][download][type] = git
 projects[field_boxes][download][branch] = 7.x-1.x
 projects[field_boxes][download][url] = http://git.drupal.org/project/field_boxes.git
 projects[field_boxes][patch][] = http://drupal.org/files/issues/1211204-make_0.patch
+projects[field_boxes][patch][] = http://drupal.org/files/issues/1212226_0.patch
 // allow simpletest to look into profiles for modules
 projects[drupal][patch][] = http://drupal.org/files/issues/911354.46.patch
 // projects[views][patch][] = http://drupal.org/files/issues/views_relatedterms.patch
