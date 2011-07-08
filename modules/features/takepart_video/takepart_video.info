@@ -1,6 +1,6 @@
 core = "7.x"
 dependencies[] = "features"
-;dependencies[] = "field_group"
+dependencies[] = "field_group"
 dependencies[] = "list"
 dependencies[] = "media"
 dependencies[] = "node_reference"
