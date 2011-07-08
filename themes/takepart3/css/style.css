@@ -2145,6 +2145,93 @@ blockquote p {
   top: -5px;
 }
 
+
+
+/* Campaign */
+
+.group-tp-campaign-header {
+  background: #005;
+  width: 980px;
+  height: 320px;
+}
+
+.group-tp-campaign-header .field-group-format-toggler {
+  display: none;
+}
+
+.field-name-field-tp-campaign-4-things-link {
+  float: right;
+  height: 300px;
+  width: 275px;
+  clear: right;
+  position: relative;
+  top: -323px;
+}
+
+.field-name-field-tp-campaign-intro-html {
+  display: none;
+  /*
+  display: none; 
+  height: 200px;
+  width: 300px;
+  overflow: hidden;
+  position: relative;
+  top: -323px;
+  */
+}
+
+.field-name-field-tp-campaign-5-things-head {
+  width: 275px;
+  color: white;
+  font-weight: bold;
+  padding-bottom: 18px;
+  padding-top: 18px;
+  font-size: 18px;
+  float: right;
+  position: relative;
+  top: -323px;
+}
+
+.campaign-link {
+  width: 23px;
+  height: 19px;
+  line-height: 19px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  background-image: url('../images/sprite.gif');
+  background-position: -377px -381px;
+  display: inline-block;
+  float: left;
+  clear: both;
+}
+
+.field-name-field-tp-campaign-4-things-link a{
+  float: left;
+  display: inline-block;
+  padding-left: 8px;
+  vertical-align: top;
+  font-size: 15px;
+  color: white;
+  margin-bottom: 20px;
+  width: 240px;
+}
+
+.field-name-field-tp-campaign-intro-media {
+
+}
+
+
+
+
+
+
+
+.page-node-context-field.node-type-section-front h1.page-title,
+.page-node-context-field.node-type-section-front div.breadcrumb{
+  display: none;
+}
+
 .node-embedded a:hover {
   color: #f7aa0d;
   background: url('../images/bg-take-action-title-over.gif') left center no-repeat;
@@ -2156,3 +2243,7 @@ blockquote p {
   display: inline-block;
   padding:20px;
 }
+
+
+
+

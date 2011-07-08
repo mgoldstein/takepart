@@ -1,3 +1,7 @@
+<?php
+ // print render(block_get_blocks_by_region('content_left'));
+?>
+
 <?php if (!empty($pre_object)) print render($pre_object) ?>
 
 <div class='<?php print $classes ?> clearfix' <?php print ($attributes) ?>>
@@ -46,6 +50,8 @@
             <li class='social-media-stumble'>Stumble This</li>
             <li class='social-media-email'>Email a friend</li>
           </ul>
+          
+          <?php print render(block_get_blocks_by_region('content_left'));?>
           
           <!--
           <div class="block-boxes-view-name-similar_campaigns">
