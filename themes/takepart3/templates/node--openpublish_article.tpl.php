@@ -47,8 +47,9 @@
             <li class='social-media-email'>Email a friend</li>
           </ul>
           
-          <div class="block-boxes-view-name-related_content">
-            <h2></h2>
+          <!--
+          <div class="block-boxes-view-name-similar_campaigns">
+            <h2>Similar Campaigns</h2>
             
           <div class="views-row views-row-1 views-row-odd views-row-first">
 
@@ -58,12 +59,6 @@
               </div>
             </div>
 
-            <div class="views-field views-field-field-promo-text">
-              <div class="field-content">Promo text ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor.</div>
-            </div>
-
-          </div>
-          
           <div class="views-row views-row-2 views-row-even views-row-last">
 
             <div class="views-field views-field-field-promo-headline">
@@ -71,14 +66,14 @@
                 <a href="/article/2011/05/26/del-taco-mac-n-cheese-crunch-bites">Promo headline ipsum dolor sit amet</a>
               </div>
             </div>
-
-            <div class="views-field views-field-field-promo-text">
-              <div class="field-content">Promo text ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor.</div>
-            </div>
-
+            
+          </div>
+          
           </div>
           
         </div>
+        
+        -->
           
         </div>
       
