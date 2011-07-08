@@ -90,12 +90,5 @@ function takepart_content_lock_strongarm() {
   $strongarm->value = 'If you proceed, ALL of your changes will be lost.';
   $export['content_lock_unload_js_message'] = $strongarm;
 
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'context_block_rebuild_needed';
-  $strongarm->value = FALSE;
-  $export['context_block_rebuild_needed'] = $strongarm;
-
   return $export;
 }
