@@ -1,8 +1,13 @@
+<?php
+
+ // print render($content_left);
+
+?>
+
 <?php if (!empty($pre_object)) print render($pre_object) ?>
 
 <div class='<?php print $classes ?> clearfix' <?php print ($attributes) ?>>
   <?php if (!empty($title_prefix)) print render($title_prefix); ?>
-
   <?php if (!empty($title)): ?>
     <h2 <?php if (!empty($title_attributes)) print $title_attributes ?>>
       <?php if (!empty($new)): ?><span class='new'><?php print $new ?></span><?php endif; ?>

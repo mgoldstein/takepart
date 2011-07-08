@@ -194,6 +194,23 @@ function _default_menu_options($menu_item) {
   return $menu_opts;
 }
 
+/**
+ * Preprocessor for theme('block').
+ */
+function takepart3_preprocess_node(&$vars) {
+
+  if($vars['view_mode'] == 'embed') {
+      $vars['theme_hook_suggestions'][] = 'node__embed';
+    }
+    
+  if ($blocks = block_get_blocks_by_region('content_left')) {
+    $vars['content_left'] = $blocks;
+    $vars['content_left']['#theme_wrappers'] = array('region');
+    $vars['content_left']['#region'] = 'content_left';
+    }
+    
+}
+
 
 /**
  * Preprocessor for theme('block').
@@ -215,5 +232,20 @@ function takepart3_preprocess_block(&$vars) {
     if(!empty($vars['elements']['#block']->delta)){
       $vars['classes_array'][] = 'block-boxes-delta-' . $vars['elements']['#block']->delta;
     }
+
+}
+
+
+/**
+ * Preprocessor for theme('field').
+ */
+function takepart3_preprocess_field(&$vars) {
+  
+  // Wraps each link with an id for theming
+  if($vars['element']['#field_name'] == 'field_tp_campaign_4_things_link'){
+    foreach($vars['items'] as $key => &$value){
+      $value['#markup'] = "<span class='campaign-link campaign-link-" . ($key+1) . "'>" . ($key+1) . "</span>" . $value['#markup'];
+    }
+  }
 
 }
