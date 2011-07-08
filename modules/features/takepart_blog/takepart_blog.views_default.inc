@@ -57,11 +57,13 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['id'] = 'field_blogpost_blog_tid';
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['table'] = 'field_data_field_blogpost_blog';
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['field'] = 'field_blogpost_blog_tid';
+  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['ui_name'] = 'Blogs [taxonomy_term]';
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_type'] = 'taxonomy_tid';
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_options']['term_page'] = 1;
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_options']['node'] = 0;
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_options']['limit'] = 0;
+  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_options']['vocabularies'] = array('action_type' => 0,'agency' => 0,'blog' => 0,'free_tags' => 0,'group_type' => 0,'photo_credit' => 0,'series' => 0,'topic' => 0,);
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['summary']['format'] = 'default_summary';

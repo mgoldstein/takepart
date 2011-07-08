@@ -1146,7 +1146,7 @@ function takepart_campaign_field_default_fields() {
           'views' => 0,
         ),
         'default_context' => 'takepart_campaign_default',
-        'use_default' => '0',
+        'use_default' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
