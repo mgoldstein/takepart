@@ -690,7 +690,8 @@ function takepart_search_default_search_api_index() {
           "status" : 1,
           "weight" : "20",
           "settings" : { "spaces" : "[^\\\\p{L}\\\\p{N}]", "ignorable" : "[-]" }
-        }
+        }.
+        "index_directly" : "1",
       }
     },
     "enabled" : "1",
