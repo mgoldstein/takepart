@@ -197,23 +197,73 @@ function _default_menu_options($menu_item) {
 /**
  * Preprocessor for theme('block').
  */
-function takepart3_preprocess_node(&$vars) {
-
+function takepart3_preprocess_node(&$vars, $hook) {
+  
+  // Suggests a custom template for embedded node content through the WYSIWYG
   if($vars['view_mode'] == 'embed') {
       $vars['theme_hook_suggestions'][] = 'node__embed';
+  }   
+  
+  // Provides a method for printing regions within node templates
+  if ($blocks = block_get_blocks_by_region('sidebar_first')) {
+    $vars['sidebar_first'] = $blocks;
+    $vars['sidebar_first']['#theme_wrappers'] = array('region');
+    $vars['sidebar_first']['#region'] = 'sidebar_first';
+  }
+  
+  // Rewrites the 'Submitted' text for each node
+  $vars['submitted'] = "<div class='submitted-wrapper'><div class='submitted clearfix'>" . render($vars['content']['field_author']) . '<div class="field article-date">' . render($vars['date']) . '</div><div class="field article-comment-count"><a href="#comments">' . render($vars['node']->comment_count) . ' comments </a></div></div></div>';
+  
+  
+  // Standardizes the variable names for each 'Subhead' field for the below content types. Removes logic from tpl.
+  // Use render($content['subhead']) in node templates to print all subheads.
+  if($hook == 'node'){
+    foreach(array('field_article_subhead', 'field_blogpost_subhead') as $key => $value){
+      if(isset($vars['content'][$value]) && !empty($vars['content'][$value])){
+        $vars['content']['subhead'] = $vars['content'][$value];
+        hide($vars['content'][$value]);
+        break;
+      }
     }
+  }
     
-  if ($blocks = block_get_blocks_by_region('content_left')) {
-    $vars['content_left'] = $blocks;
-    $vars['content_left']['#theme_wrappers'] = array('region');
-    $vars['content_left']['#region'] = 'content_left';
-    }
+}
+
+
+// Rewrites 'field_tp_campaign_4_things_link' in Campaign content types
+// Prepends a <span> with id before each bullet point for theming
+function takepart3_field__field_tp_campaign_4_things_link(&$vars){
+  $output = '';
+  foreach($vars['items'] as $key => &$value){
+     $output .= "<span class='campaign-link campaign-link-" . ($key+1) . "'>" . ($key+1) . "</span>" . $vars['items'][$key]['#markup'];
+  }
+  return '<div class="field-name-field-tp-campaign-4-things-link">' . $output . '</div>';  
+}
+
+
+// Renders a comma separated list of taxonomy terms for a node
+// Used in page.tpl.php
+function _render_tp3_taxonomy_links($content) {
+  
+    // Set labels to hidden, if they aren't already
+    $content['field_free_tag']['#label_display'] = 'hidden';
+    $content['field_topic']['#label_display'] = 'hidden';
     
+    // Merge and modify the output
+    $combined_markup = render($content['field_topic']) . render($content['field_free_tag']);
+    $output = str_replace("<a", ", <a", $combined_markup); // adds commas
+    $output = strip_tags($output, '<a>'); // strips div tags
+    $output = substr($output, 2); // removes first comma
+    
+    return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . $output . '</div>';
 }
 
 
 /**
  * Preprocessor for theme('block').
+ *
+ *  - Adds additional classes based on block title, view and delta
+ *
  */
 function takepart3_preprocess_block(&$vars) {
   
@@ -232,20 +282,5 @@ function takepart3_preprocess_block(&$vars) {
     if(!empty($vars['elements']['#block']->delta)){
       $vars['classes_array'][] = 'block-boxes-delta-' . $vars['elements']['#block']->delta;
     }
-
-}
-
-
-/**
- * Preprocessor for theme('field').
- */
-function takepart3_preprocess_field(&$vars) {
-  
-  // Wraps each link with an id for theming
-  if($vars['element']['#field_name'] == 'field_tp_campaign_4_things_link'){
-    foreach($vars['items'] as $key => &$value){
-      $value['#markup'] = "<span class='campaign-link campaign-link-" . ($key+1) . "'>" . ($key+1) . "</span>" . $value['#markup'];
-    }
-  }
 
 }

@@ -4,3 +4,18 @@ core = 7.x
 engine = phptemplate
 
 stylesheets[all][] = css/style.css
+
+; Defaults
+regions[header] = Header
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[content] = Content
+regions[sidebar_first] = Left sidebar
+regions[sidebar_second] = Right sidebar
+regions[footer] = Footer
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+
+; Custom regions
+regions[content_left]  = Content left sidebar
+regions[content_header]  = Content top

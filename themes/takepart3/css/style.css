@@ -55,8 +55,6 @@ ul#cutuplist li {
 
 .float-right {float: right;}
 
-
-
 /***** HTML ******/
 
 body {
@@ -190,19 +188,35 @@ img.photo, .gallery-item img {
   width: 460px;
 }
 
-/***** Header ******/
+body.two-sidebars #left,
+body.sidebar-first #left{
+  display: inline-block;
+  margin-top: 30px;
+  width: 145px;
+}
 
+body.two-sidebars .content-bottom,
+body.sidebar-first .content-bottom{
+  margin-right: -619px;
+  width: 460px;
+  margin-top: 30px;
+  margin-left: 160px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/***** Header ******/
 
 #logo {
 	float: left;
-		width:  225px;
+	width:  225px;
 	padding: 0 0 0px 0;
 	margin-left: -9px;
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	
 }
+
 /*
  * TODO: remove this
  * this is here to show how one can add styles for campaign-pages
@@ -1822,21 +1836,19 @@ body.node-type-openpublish-article h1 {
   display: none;
 }
 
-.node-openpublish-article h2,
-.node-openpublish-photo-gallery h2 {
+h2.title {
   font-size: 32px;
   font-weight: bold;
   line-height: 35px;
   margin-bottom: 12px;
 }
  
-.node-openpublish-article h2 a,
-.node-openpublish-photo-gallery h2 a{
+h2.title a{
   color: black;
   text-decoration: none;
 }
 
-.node-openpublish-article .field-name-field-article-subhead {
+.node-subhead{
   font-size: 18px;
   color: #666;
   font-weight: bold;
@@ -1853,13 +1865,15 @@ body.node-type-openpublish-article h1 {
 }
 
 .node-openpublish-article .field-name-body,
-.node-takepart-campaign .field-name-body {
+.main-content .node .content {
+  /*
   margin-right: -619px;
   width: 460px;
   margin-top: 30px;
   margin-left: 160px;
   display: inline-block;
   vertical-align: top; 
+  */
 }
 
 .secondary-content-col {
@@ -1892,8 +1906,7 @@ body.node-type-openpublish-article h1 {
   background-position: -371px -318px;
 }
 
-.node-openpublish-article .field-name-field-display-tag,
-.field-name-field-topic {
+.field-name-field-display-tag {
   background: url('../images/sprite-horizontal.gif') 0 -430px #8dc547 no-repeat;
   border-bottom: 2px solid black;
   display: inline-block;
@@ -1903,12 +1916,12 @@ body.node-type-openpublish-article h1 {
   padding-right: 15px;
 }
 
-.node-openpublish-article .field-name-field-display-tag a,
-.field-name-field-topic a {
+.field-name-field-display-tag a {
   color: white;
   font-size: 18px;
   line-height: 30px;
 }
+
 
 .node-openpublish-article .field-name-body h1 {
   display: block;
@@ -1918,39 +1931,36 @@ body.node-type-openpublish-article h1 {
   font-size: 25px;
 }
 
-.node-openpublish-article .submitted-wrapper,
-.node-openpublish-photo-gallery .submitted-wrapper {
+/* Submitted */
+
+.submitted-wrapper {
   border-bottom: 2px solid black;
   margin-bottom: 10px;
   padding-bottom: 15px;
 }
 
-.node-openpublish-article .submitted .field,
-.node-openpublish-photo-gallery .submitted .field {
+.submitted-wrapper .field {
   display: inline-block;
   font-size: 10px;
   line-height: 17px;
   vertical-align: top;
 }
 
-.node-openpublish-article .field-name-field-author,
-.node-openpublish-photo-gallery .field-name-field-author {
+.submitted-wrapper .field-name-field-author {
   background: url('../images/sprite-horizontal.gif') no-repeat;
   background-position: 0 -375px;
   height: 17px;
   padding: 0 10px 0 20px;
 }
 
-.node-openpublish-article .article-date,
-.node-openpublish-photo-gallery .article-date {
+.submitted-wrapper .article-date {
   background: url('../images/sprite-horizontal.gif') no-repeat;
   background-position: 0 -395px;
   height: 17px;
   padding: 0 10px 0 20px;
 }
 
-.node-openpublish-article .article-comment-count,
-.node-openpublish-photo-gallery .article-comment-count {
+.submitted-wrapper .article-comment-count {
   background: url('../images/sprite-horizontal.gif') no-repeat;
   background-position: 0 -410px;
   height: 17px;
@@ -2103,6 +2113,32 @@ body.node-type-topic-front h1 {
   color: black;
 }
 
+/***** Blog Post *****/
+
+body.node-type-openpublish-blog-post h1.page-title {
+  display: none;
+}
+
+.field-name-field-blogpost-main-image {
+  float: left;
+  width: 300px;
+  height: 200px;
+  border: 1px solid black;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+#comments {
+  display: none;
+}
+
+/***** Blog Front *****/
+
+.node-blog-front h2.title,
+.node-blog-front .submitted-wrapper {
+  display: none;
+}
+
 /***** WYSIWYG *****/
 
 blockquote {
@@ -2117,6 +2153,8 @@ blockquote {
 blockquote p {
   font-size: 28px;
 }
+
+/* End of WYSIWYG */
 
 .node-embedded {
   background: #fdf0d7;
@@ -2218,10 +2256,47 @@ blockquote p {
 }
 
 .field-name-field-tp-campaign-intro-media {
-
+  width: 980px;
+  height: 320px;
 }
 
+/** Topics **/
+.node-topics {
+  border-top: 1px dotted silver;
+  border-bottom: 1px dotted silver;
+  padding: 25px 25px 25px 70px;
+}
 
+.node-topics-label {
+  font-family: times;
+  font-weight: bold;
+  position: relative;
+  left: -55px;
+  height: 0;
+  overflow: visible;
+}
+
+.node-takepart-campaign .field-name-field-tp-campaign-seg-1-label,
+.node-takepart-campaign .field-name-field-tp-campaign-seg-2-label,
+.node-takepart-campaign .field-name-field-tp-campaign-seg-3-label,
+.node-takepart-campaign .field-name-field-tp-campaign-seg-4-label {
+  border-bottom: 1px dotted silver;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+
+.node-takepart-campaign .field-name-field-tp-campaign-seg-1-label .field-items,
+.node-takepart-campaign .field-name-field-tp-campaign-seg-2-label .field-items,
+.node-takepart-campaign .field-name-field-tp-campaign-seg-3-label .field-items,
+.node-takepart-campaign .field-name-field-tp-campaign-seg-4-label .field-items {
+  background: url('../images/sprite-horizontal.gif') no-repeat;
+  background-position: right -252px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 20px;
+  padding-right: 50px;
+}
 
 
 
