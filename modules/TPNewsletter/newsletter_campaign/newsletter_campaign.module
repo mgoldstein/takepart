@@ -80,6 +80,13 @@ function newsletter_campaign_menu() {
     'type' => MENU_CALLBACK,
   );
   
+  $items['/newsletter-campaign/submit-campaign'] = array(
+    'title' => t('Newsletter Form Submission'),
+    'access arguments' => array('access content'),
+    'page callback' => '_newsletter_signup_form_submit_from_ajax',
+    'file' => 'signup.ajax.inc',
+  );
+  
   return $items;
 }
 
@@ -241,12 +248,14 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
       textBox.bgColor = "white";
     }', 'inline'
   );
-/*
+
+  // takepart_newsletter_isValidEmailAddress(jQuery("#wrapper-form-'.$campaign_id.' [name=email]").val(), "'.$campaign_id.'")
   drupal_add_js('jQuery(document).ready(function(context){
     jQuery("#wrapper-form-'.$campaign_id.' .form-submit").
       click(function(e) {
         e.preventDefault();
-        if (takepart_newsletter_isValidEmailAddress(jQuery("#wrapper-form-'.$campaign_id.' [name=email]").val(), "'.$campaign_id.'")) {
+        
+        if (TRUE) {
           var data = jQuery("#wrapper-form-'.$campaign_id.' form").serialize();
           jQuery.post("/newsletter-campaign/submit-campaign", data, 
              function(result) {
@@ -259,8 +268,6 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
       });
     });', 'inline'
   );
-
-*/
 
   $form['email'] = array(
     '#type' => 'textfield',
@@ -276,17 +283,45 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
     '#value' => $campaign_id,
   );
 
+  $form['result_box'] = array(
+    '#type' => 'markup',
+    //'#prefix' => '<div id="takepart-newsletter-'. $campaign_id .'-results">',
+    '#prefix' => '<div id="result_box">',
+    '#suffix' => '</div>',
+    '#markup' => '<pre>'. date('c') .'</pre>',
+  );
+
   $form['submit'] = array(
     '#type' => 'submit',
+    //'#ajax' => array(
+      //'callback' => 'ajax_newsletter_campaign_signup_form_submit',
+      //'wrapper' => 'result_box',
+      //'prevent' => 'click',
+    //),
+    //'#submit' => array('ajax_newsletter_campaign_signup_form_submit'),
     '#value' => t('Submit'),
+    //'#attributes' => array('class' => array('use-ajax-submit')),
   );
   
   return $form;
 }
 
+function ajax_newsletter_campaign_signup_form_submit($form, $form_state) {
+  // In most cases, it is recomended that you put this logic in form generation
+  // rather than the callback. Submit driven forms are an exception, because
+  // you may not want to return the form at all.
+  $element = $form['result_box'];
+  $element['#markup'] = "Clicked submit ({$form_state['values']['op']}): " . date('c');
+    
+  return $element;
+}
+
+
 /**
  * Other callbacks & helpers
  */
+ 
+
  
 /**
  * URI callback
