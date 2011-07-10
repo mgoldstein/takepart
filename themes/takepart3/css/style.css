@@ -1887,6 +1887,24 @@ h2.title a{
   color: #302009;
 }
 
+.addthis_toolbox .custom_images {
+  margin-top: 10px;
+}
+
+.addthis_toolbox .custom_images a {
+  display: block;
+  height: 29px;
+  line-height: 29px;
+  color: black;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+
+.addthis_toolbox .custom_images a img {
+  margin-right: 15px;
+  float: left;
+}
+
 .social-media li {
   background-image: url('../images/sprite.gif');
   height: 29px;

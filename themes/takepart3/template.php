@@ -198,7 +198,7 @@ function _default_menu_options($menu_item) {
  * Preprocessor for theme('block').
  */
 function takepart3_preprocess_node(&$vars, $hook) {
-  
+
   // Suggests a custom template for embedded node content through the WYSIWYG
   if($vars['view_mode'] == 'embed') {
       $vars['theme_hook_suggestions'][] = 'node__embed';
@@ -224,6 +224,22 @@ function takepart3_preprocess_node(&$vars, $hook) {
         hide($vars['content'][$value]);
         break;
       }
+    }
+  }
+  
+  // Adds a 'Featured Action' link into the body of a blog entry automatically (TPB-423)
+  if($hook == 'node'){
+    if($vars['type'] == 'openpublish_article'){
+      
+      $end = '/p>'; // end of a paragraph tag  
+      $featured_action = render($vars['content']['field_article_action']); // Markup to insert
+
+      $pos = 0; // Find the position of the end of the 3rd paragraph
+      for($i=0;$i<3;$i++){
+        $pos = strpos($vars['content']['body'][0]['#markup'], $end, $pos)+1;
+      }
+      
+      $vars['content']['body'][0]['#markup'] = substr_replace($vars['content']['body'][0]['#markup'], $featured_action, $pos+2, 0);
     }
   }
     
@@ -258,12 +274,34 @@ function _render_tp3_taxonomy_links($content) {
     return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . $output . '</div>';
 }
 
+/**
+ * Theme the AddThis button.
+ *  - Bypasses the module's output completely for the time being
+ */
+function takepart3_addthis_button(&$vars) {
+  
+  $images_url = base_path() . path_to_theme() . '/images/';
+  
+  $custom_btns = '<a class="addthis_button_digg"><img src="'. $images_url . 'social_media_digg.gif" width="29" height="29" border="0" alt="Digg This" />Digg This</a>';
+  $custom_btns .= '<a class="addthis_button_stumbleupon"><img src="'. $images_url . 'social_media_stumbleupon.gif" width="29" height="29" border="0" alt="Stumble This" />Stumble This</a>';
+  $custom_btns .= '<a class="addthis_button_email"><img src="'. $images_url . 'social_media_email.gif" width="29" height="29" border="0" alt="Email to a friend" />E-mail a friend</a>';
+  
+  return '<!-- AddThis Button BEGIN -->
+  <div class="addthis_toolbox addthis_default_style ">
+    <a class="addthis_button_facebook" fb:like:layout="button_count"></a>
+    <a class="addthis_button_tweet"></a>
+  </div>
+  <div class="addthis_toolbox">
+     <div class="custom_images">' . $custom_btns . '</div>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e191ae57dbd2572"></script>
+  <!-- AddThis Button END -->';
+}
+
 
 /**
  * Preprocessor for theme('block').
- *
  *  - Adds additional classes based on block title, view and delta
- *
  */
 function takepart3_preprocess_block(&$vars) {
   
