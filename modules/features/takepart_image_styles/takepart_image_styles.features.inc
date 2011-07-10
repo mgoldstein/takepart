@@ -10,9 +10,9 @@
 function takepart_image_styles_image_default_styles() {
   $styles = array();
 
-  // Exported image style: smaill_rail_wide
-  $styles['smaill_rail_wide'] = array(
-    'name' => 'smaill_rail_wide',
+  // Exported image style: tp_small_rail_wide
+  $styles['tp_small_rail_wide'] = array(
+    'name' => 'tp_small_rail_wide',
     'effects' => array(
       11 => array(
         'label' => 'Scale',
