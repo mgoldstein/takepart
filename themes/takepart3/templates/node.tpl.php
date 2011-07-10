@@ -34,6 +34,7 @@
     <?php hide($content['subhead']); ?>
     <?php hide($content['field_free_tag']); ?>
     <?php hide($content['field_topic']); ?>
+    <?php hide($content['field_article_action']); ?>
     <?php hide($content['body']); ?>
     
     <div class='content content-top clearfix <?php if (!empty($is_prose)) print 'prose' ?>'>
