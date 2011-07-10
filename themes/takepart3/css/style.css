@@ -23,6 +23,10 @@ ul, ol, li, h1, h2, h3, h4, h5, p {
 	margin: 0; padding: 0;
 }
 
+ul, ol {
+  list-style: inside;
+}
+
 
 /***** Cutup List ******/
 
@@ -1864,22 +1868,23 @@ h2.title a{
   border: 1px solid #666;
 }
 
-.node-openpublish-article .field-name-body,
-.main-content .node .content {
-  /*
-  margin-right: -619px;
-  width: 460px;
-  margin-top: 30px;
-  margin-left: 160px;
-  display: inline-block;
-  vertical-align: top; 
-  */
+.field-name-field-article-action {
+  background: #FFEFD8 url(../images/featured-action.gif) left center no-repeat;
+  margin: 9px 10px 10px -10px;
+  padding: 8px 10px;
+  margin-bottom: 25px;
 }
 
-.secondary-content-col {
-  display: inline-block;
-  margin-top: 30px;
-  width: 145px;
+.field-name-field-article-action .field-items {
+  padding-left: 160px;
+  width: 280px;
+}
+
+.field-name-field-article-action .field-item a {
+  font-size: 18px;
+  font-family: Georgia, serif;
+  padding: 3px 0 0 0;
+  color: #302009;
 }
 
 .social-media li {
@@ -2129,7 +2134,7 @@ body.node-type-openpublish-blog-post h1.page-title {
 }
 
 #comments {
-  display: none;
+  display: none; /* Temporary */
 }
 
 /***** Blog Front *****/
