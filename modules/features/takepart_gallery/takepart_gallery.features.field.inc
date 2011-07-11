@@ -514,6 +514,65 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-openpublish_photo_gallery-field_photo_gallery_slideshow'
+  $fields['node-openpublish_photo_gallery-field_photo_gallery_slideshow'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_photo_gallery_slideshow',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'views_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'views_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_photo_gallery',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'views_field',
+          'settings' => array(
+            'view' => 'photo_gallery block',
+          ),
+          'type' => 'views_field_formatter',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_photo_gallery_slideshow',
+      'label' => 'Slideshow',
+      'required' => 0,
+      'settings' => array(
+        'local' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'views_field',
+        'settings' => array(
+          'widget_setting' => 'bob',
+        ),
+        'type' => 'views_field',
+        'weight' => '23',
+      ),
+    ),
+  );
+
   // Exported field: 'node-openpublish_photo_gallery-field_related_content'
   $fields['node-openpublish_photo_gallery-field_related_content'] = array(
     'field_config' => array(
@@ -814,6 +873,7 @@ function takepart_gallery_field_default_fields() {
   t('Related Content');
   t('Rights');
   t('Series');
+  t('Slideshow');
   t('Suggest Related Actions?');
   t('Suggest Related Content?');
   t('Topic');
