@@ -1,13 +1,13 @@
-.views-slideshow-controls-top {
+.view-photo-gallery .views-slideshow-controls-top {
 position:relative;
 }
-#widget_pager_top_photo_gallery-block {
+.view-photo-gallery #widget_pager_top_photo_gallery-block {
 position:absolute;
 right: -325px;
 width:300px;
 }
 
-div.views-slideshow-pager-field-item {
+.view-photo-gallery div.views-slideshow-pager-field-item {
   float:left;
   width:100px;
   height:70px;
