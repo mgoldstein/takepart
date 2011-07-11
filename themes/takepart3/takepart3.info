@@ -17,5 +17,6 @@ regions[page_top] = Page top
 regions[page_bottom] = Page bottom
 
 ; Custom regions
-regions[content_left]  = Content left sidebar
-regions[content_header]  = Content top
+regions[content_top]  = Content top
+regions[content_bottom]  = Content bottom
+regions[content_footer]  = Content footer
