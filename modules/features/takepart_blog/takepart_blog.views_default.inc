@@ -19,7 +19,7 @@ function takepart_blog_views_default_views() {
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-  
+
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Blog Posts';
@@ -87,11 +87,11 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  
+
   /* Display: Blog Summary */
   $handler = $view->new_display('block', 'Blog Summary', 'block');
   $handler->display->display_options['display_description'] = 'List Blog post limited by blog bases on an argument';
-  
+
   /* Display: Blog Front List */
   $handler = $view->new_display('block', 'Blog Front List', 'block_1');
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -108,7 +108,7 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['row_options']['links'] = 0;
   $handler->display->display_options['row_options']['comments'] = 0;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  
+
   /* Display: Our Blogs Summary */
   $handler = $view->new_display('block', 'Our Blogs Summary', 'block_2');
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -132,7 +132,6 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['not'] = 0;
   $handler->display->display_options['block_description'] = 'Our Blogs Summary';
-
   $export['blog_posts'] = $view;
 
   $view = new view;
