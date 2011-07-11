@@ -256,7 +256,21 @@ function takepart3_field__field_tp_campaign_4_things_link(&$vars){
   return '<div class="field-name-field-tp-campaign-4-things-link">' . $output . '</div>';  
 }
 
+function takepart3_field__field_topic($vars){
+  
+  $links = array();
+  foreach($vars['items'] as $key => $value){
+    $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+  }
+  $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
+  foreach($field_free_tag as $key => $value){
+    $links[] = "<a href='" . url($value['taxonomy_term']->uri['path']) . "'>" . $value['taxonomy_term']->name . '</a>';
+  }
+  return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
+  
+}
 
+/*
 // Renders a comma separated list of taxonomy terms for a node
 // Used in page.tpl.php
 function _render_tp3_taxonomy_links($content) {
@@ -273,10 +287,11 @@ function _render_tp3_taxonomy_links($content) {
     
     return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . $output . '</div>';
 }
+*/
 
 /**
  * Theme the AddThis button.
- *  - Bypasses the module's output completely for the time being
+ *  - Bypasses the module's output completely. For the time being
  */
 function takepart3_addthis_button(&$vars) {
   
@@ -305,6 +320,8 @@ function takepart3_addthis_button(&$vars) {
  */
 function takepart3_preprocess_block(&$vars) {
   
+  
+  
     if (!empty($vars['block']->title)) {
       $vars['classes_array'][] = 'block-boxes-title-' . preg_replace( array('/[^a-zA-Z\s0-9]/', '/[\s]/', '/---|--/'), array('', '-', '-'), strtolower($vars['block']->title));
     }
@@ -319,6 +336,10 @@ function takepart3_preprocess_block(&$vars) {
   
     if(!empty($vars['elements']['#block']->delta)){
       $vars['classes_array'][] = 'block-boxes-delta-' . $vars['elements']['#block']->delta;
+    }
+    
+    if(!empty($vars['elements']['#block']->bid)){
+      $vars['classes_array'][] = 'block-boxes-bid-' . $vars['elements']['#block']->bid;
     }
 
 }
