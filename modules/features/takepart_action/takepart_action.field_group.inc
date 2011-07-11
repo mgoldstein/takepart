@@ -17,16 +17,11 @@ function takepart_action_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'action';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_actions_main';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Actions',
-    'weight' => '12',
-    'children' => array(
-      0 => 'field_action_related',
-      1 => 'field_action_type',
-      2 => 'field_action_url',
-      3 => 'field_suggest_actions',
-    ),
+    'weight' => '4',
+    'children' => array(),
     'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -47,14 +42,16 @@ function takepart_action_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_actions_main';
   $field_group->data = array(
-    'label' => 'Body Content',
+    'label' => 'Main',
     'weight' => '13',
     'children' => array(
       0 => 'body',
+      1 => 'field_action_type',
+      2 => 'field_action_url',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
-      'label' => 'Body Content',
+      'label' => 'Main',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
@@ -72,15 +69,11 @@ function takepart_action_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'action';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_actions_main';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Campaigns',
-    'weight' => '18',
-    'children' => array(
-      0 => 'field_multi_page_campaign',
-      1 => 'field_suggest_campaigns',
-      2 => 'field_related_campaigns',
-    ),
+    'weight' => '3',
+    'children' => array(),
     'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -101,19 +94,25 @@ function takepart_action_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_actions_main';
   $field_group->data = array(
-    'label' => 'Content',
-    'weight' => '19',
+    'label' => 'Related',
+    'weight' => '18',
     'children' => array(
-      0 => 'field_related_content',
-      1 => 'field_suggest_content',
+      0 => 'field_action_related',
+      1 => 'field_suggest_campaigns',
+      2 => 'field_related_content',
+      3 => 'field_suggest_content',
+      4 => 'field_related_campaigns',
+      5 => 'field_suggest_actions',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Related',
       'instance_settings' => array(
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $export['group_action_content|node|action|form'] = $field_group;
@@ -128,10 +127,8 @@ function takepart_action_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '2',
-    'children' => array(
-      0 => 'group_actions_main',
-    ),
+    'weight' => '5',
+    'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
       'label' => 'Content',
@@ -180,7 +177,7 @@ function takepart_action_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_actions_main';
   $field_group->data = array(
-    'label' => 'Promos',
+    'label' => 'Promo Head / Text',
     'weight' => '17',
     'children' => array(
       0 => 'field_promo_headline',
@@ -188,11 +185,13 @@ function takepart_action_field_group_info() {
     ),
     'format_type' => 'htab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Promo Head / Text',
       'instance_settings' => array(
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $export['group_action_promos|node|action|form'] = $field_group;
@@ -232,10 +231,11 @@ function takepart_action_field_group_info() {
   $field_group->parent_name = 'group_actions_main';
   $field_group->data = array(
     'label' => 'Tags',
-    'weight' => '20',
+    'weight' => '19',
     'children' => array(
       0 => 'field_free_tag',
       1 => 'field_topic',
+      2 => 'field_multi_page_campaign',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -257,19 +257,17 @@ function takepart_action_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'action';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_action_htab1';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Main',
-    'weight' => '5',
+    'weight' => '2',
     'children' => array(
-      0 => 'group_action_campaigns',
-      1 => 'group_action_content',
-      2 => 'group_action_actions',
-      3 => 'group_action_promos',
-      4 => 'group_action_sponsors',
-      5 => 'group_action_media',
-      6 => 'group_action_terms',
-      7 => 'group_action_body',
+      0 => 'group_action_content',
+      1 => 'group_action_promos',
+      2 => 'group_action_sponsors',
+      3 => 'group_action_media',
+      4 => 'group_action_terms',
+      5 => 'group_action_body',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(
