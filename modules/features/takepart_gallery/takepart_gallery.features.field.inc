@@ -347,10 +347,9 @@ function takepart_gallery_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => 6,
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -413,10 +412,9 @@ function takepart_gallery_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'list',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => 9,
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -435,9 +433,11 @@ function takepart_gallery_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '11',
+        'settings' => array(
+          'display_label' => 0,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '9',
       ),
     ),
   );
@@ -483,10 +483,9 @@ function takepart_gallery_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 13,
+          'type' => 'hidden',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -510,7 +509,7 @@ function takepart_gallery_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '17',
+        'weight' => '22',
       ),
     ),
   );
@@ -574,10 +573,9 @@ function takepart_gallery_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => 8,
+          'type' => 'hidden',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -648,10 +646,9 @@ function takepart_gallery_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 11,
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -672,7 +669,7 @@ function takepart_gallery_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '13',
+        'weight' => '19',
       ),
     ),
   );
@@ -710,10 +707,9 @@ function takepart_gallery_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'list',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => 10,
+          'type' => 'hidden',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -732,9 +728,11 @@ function takepart_gallery_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '9',
+        'settings' => array(
+          'display_label' => 0,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '7',
       ),
     ),
   );
@@ -780,10 +778,9 @@ function takepart_gallery_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 12,
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -794,7 +791,7 @@ function takepart_gallery_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_topic',
-      'label' => 'Topic Tags',
+      'label' => 'Topic',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -804,7 +801,7 @@ function takepart_gallery_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '15',
+        'weight' => '21',
       ),
     ),
   );
@@ -820,7 +817,6 @@ function takepart_gallery_field_default_fields() {
   t('Suggest Related Actions?');
   t('Suggest Related Content?');
   t('Topic');
-  t('Topic Tags');
   t('User can elect to toggle off the automatically generated list of Related Content (mixed bag) on a Gallery specific basis. This determination is made by common Topic tagging');
   t('Users can relate this node to one or more other Action nodes. These nodes are displayed in a block or inset on the Gallery page, atop an automatically-generated list of Related Actions.');
   t('Users can relate this node to one or more other nodes. These nodes are displayed in a block or inset on the Gallery page, atop an automatically-generated list of Related Content.');
