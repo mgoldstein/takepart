@@ -194,11 +194,133 @@ function _default_menu_options($menu_item) {
   return $menu_opts;
 }
 
-
 /**
  * Preprocessor for theme('block').
  */
+function takepart3_preprocess_node(&$vars, $hook) {
+
+  // Suggests a custom template for embedded node content through the WYSIWYG
+  if($vars['view_mode'] == 'embed') {
+      $vars['theme_hook_suggestions'][] = 'node__embed';
+  }   
+  
+  // Provides a method for printing regions within node templates
+  if ($blocks = block_get_blocks_by_region('sidebar_first')) {
+    $vars['sidebar_first'] = $blocks;
+    $vars['sidebar_first']['#theme_wrappers'] = array('region');
+    $vars['sidebar_first']['#region'] = 'sidebar_first';
+  }
+  
+  // Rewrites the 'Submitted' text for each node
+  $vars['submitted'] = "<div class='submitted-wrapper'><div class='submitted clearfix'>" . render($vars['content']['field_author']) . '<div class="field article-date">' . render($vars['date']) . '</div><div class="field article-comment-count"><a href="#comments">' . render($vars['node']->comment_count) . ' comments </a></div></div></div>';
+  
+  
+  // Standardizes the variable names for each 'Subhead' field for the below content types. Removes logic from tpl.
+  // Use render($content['subhead']) in node templates to print all subheads.
+  if($hook == 'node'){
+    foreach(array('field_article_subhead', 'field_blogpost_subhead') as $key => $value){
+      if(isset($vars['content'][$value]) && !empty($vars['content'][$value])){
+        $vars['content']['subhead'] = $vars['content'][$value];
+        hide($vars['content'][$value]);
+        break;
+      }
+    }
+  }
+  
+  // Adds a 'Featured Action' link into the body of a blog entry automatically (TPB-423)
+  if($hook == 'node'){
+    if($vars['type'] == 'openpublish_article'){
+      
+      $end = '/p>'; // end of a paragraph tag  
+      $featured_action = render($vars['content']['field_article_action']); // Markup to insert
+
+      $pos = 0; // Find the position of the end of the 3rd paragraph
+      for($i=0;$i<3;$i++){
+        $pos = strpos($vars['content']['body'][0]['#markup'], $end, $pos)+1;
+      }
+      
+      $vars['content']['body'][0]['#markup'] = substr_replace($vars['content']['body'][0]['#markup'], $featured_action, $pos+2, 0);
+    }
+  }
+    
+}
+
+
+// Rewrites 'field_tp_campaign_4_things_link' in Campaign content types
+// Prepends a <span> with id before each bullet point for theming
+function takepart3_field__field_tp_campaign_4_things_link(&$vars){
+  $output = '';
+  foreach($vars['items'] as $key => &$value){
+     $output .= "<span class='campaign-link campaign-link-" . ($key+1) . "'>" . ($key+1) . "</span>" . $vars['items'][$key]['#markup'];
+  }
+  return '<div class="field-name-field-tp-campaign-4-things-link">' . $output . '</div>';  
+}
+
+function takepart3_field__field_topic($vars){
+  
+  $links = array();
+  foreach($vars['items'] as $key => $value){
+    $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+  }
+  $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
+  foreach($field_free_tag as $key => $value){
+    $links[] = "<a href='" . url($value['taxonomy_term']->uri['path']) . "'>" . $value['taxonomy_term']->name . '</a>';
+  }
+  return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
+  
+}
+
+/*
+// Renders a comma separated list of taxonomy terms for a node
+// Used in page.tpl.php
+function _render_tp3_taxonomy_links($content) {
+  
+    // Set labels to hidden, if they aren't already
+    $content['field_free_tag']['#label_display'] = 'hidden';
+    $content['field_topic']['#label_display'] = 'hidden';
+    
+    // Merge and modify the output
+    $combined_markup = render($content['field_topic']) . render($content['field_free_tag']);
+    $output = str_replace("<a", ", <a", $combined_markup); // adds commas
+    $output = strip_tags($output, '<a>'); // strips div tags
+    $output = substr($output, 2); // removes first comma
+    
+    return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . $output . '</div>';
+}
+*/
+
+/**
+ * Theme the AddThis button.
+ *  - Bypasses the module's output completely. For the time being
+ */
+function takepart3_addthis_button(&$vars) {
+  
+  $images_url = base_path() . path_to_theme() . '/images/';
+  
+  $custom_btns = '<a class="addthis_button_digg"><img src="'. $images_url . 'social_media_digg.gif" width="29" height="29" border="0" alt="Digg This" />Digg This</a>';
+  $custom_btns .= '<a class="addthis_button_stumbleupon"><img src="'. $images_url . 'social_media_stumbleupon.gif" width="29" height="29" border="0" alt="Stumble This" />Stumble This</a>';
+  $custom_btns .= '<a class="addthis_button_email"><img src="'. $images_url . 'social_media_email.gif" width="29" height="29" border="0" alt="Email to a friend" />E-mail a friend</a>';
+  
+  return '<!-- AddThis Button BEGIN -->
+  <div class="addthis_toolbox addthis_default_style ">
+    <a class="addthis_button_facebook" fb:like:layout="button_count"></a>
+    <a class="addthis_button_tweet"></a>
+  </div>
+  <div class="addthis_toolbox">
+     <div class="custom_images">' . $custom_btns . '</div>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e191ae57dbd2572"></script>
+  <!-- AddThis Button END -->';
+}
+
+
+/**
+ * Preprocessor for theme('block').
+ *  - Adds additional classes based on block title, view and delta
+ */
 function takepart3_preprocess_block(&$vars) {
+  
+  
   
     if (!empty($vars['block']->title)) {
       $vars['classes_array'][] = 'block-boxes-title-' . preg_replace( array('/[^a-zA-Z\s0-9]/', '/[\s]/', '/---|--/'), array('', '-', '-'), strtolower($vars['block']->title));
@@ -214,6 +336,10 @@ function takepart3_preprocess_block(&$vars) {
   
     if(!empty($vars['elements']['#block']->delta)){
       $vars['classes_array'][] = 'block-boxes-delta-' . $vars['elements']['#block']->delta;
+    }
+    
+    if(!empty($vars['elements']['#block']->bid)){
+      $vars['classes_array'][] = 'block-boxes-bid-' . $vars['elements']['#block']->bid;
     }
 
 }

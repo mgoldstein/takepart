@@ -63,11 +63,10 @@ function takepart_article_field_default_fields() {
       'description' => 'User can create and/or reference an Action to be featured prominently in a fixed position on the Article page.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '7',
+          'type' => 'hidden',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -132,11 +131,11 @@ function takepart_article_field_default_fields() {
       'description' => 'This is displayed beneath the Article\'s title on the node page',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -160,7 +159,7 @@ function takepart_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '1',
       ),
     ),
   );
@@ -221,7 +220,7 @@ function takepart_article_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '5',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -291,11 +290,11 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '13',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -319,7 +318,7 @@ function takepart_article_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '18',
+        'weight' => '12',
       ),
     ),
   );
@@ -359,11 +358,10 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'text',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '15',
+          'type' => 'hidden',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -425,11 +423,10 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'text',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '16',
+          'type' => 'hidden',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -483,16 +480,21 @@ function takepart_article_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 'action',
+          'audio' => 0,
           'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
-          'openpublish_site_page' => 0,
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
+          'takepart_campaign' => 0,
+          'takepart_group' => 0,
+          'takepart_page' => 0,
           'takepart_quick_study' => 0,
+          'takepart_slide' => 0,
+          'topic_front' => 0,
           'video_series' => 0,
         ),
         'view' => array(
@@ -511,11 +513,10 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '8',
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -540,7 +541,7 @@ function takepart_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '10',
+        'weight' => '15',
       ),
     ),
   );
@@ -576,13 +577,14 @@ function takepart_article_field_default_fields() {
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
-          'openpublish_site_page' => 0,
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
           'takepart_campaign' => 'takepart_campaign',
+          'takepart_group' => 0,
           'takepart_page' => 0,
           'takepart_quick_study' => 0,
+          'takepart_slide' => 0,
           'topic_front' => 0,
           'video_series' => 0,
         ),
@@ -602,11 +604,10 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '17',
+          'type' => 'hidden',
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -631,7 +632,7 @@ function takepart_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '12',
+        'weight' => '19',
       ),
     ),
   );
@@ -661,16 +662,21 @@ function takepart_article_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
+          'audio' => 0,
           'blog_front' => 0,
           'openpublish_article' => 'openpublish_article',
           'openpublish_blog_post' => 'openpublish_blog_post',
           'openpublish_photo' => 'openpublish_photo',
           'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-          'openpublish_site_page' => 0,
           'openpublish_video' => 'openpublish_video',
           'profile' => 0,
           'section_front' => 'section_front',
+          'takepart_campaign' => 0,
+          'takepart_group' => 0,
+          'takepart_page' => 0,
           'takepart_quick_study' => 0,
+          'takepart_slide' => 0,
+          'topic_front' => 0,
           'video_series' => 0,
         ),
         'view' => array(
@@ -689,11 +695,10 @@ function takepart_article_field_default_fields() {
       'description' => 'User can related this node to one or more nodes of various types. These are displayed in a block or inset on the Article page, atop the automatically-generated list of Related Content.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '10',
+          'type' => 'hidden',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -718,7 +723,7 @@ function takepart_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '14',
+        'weight' => '17',
       ),
     ),
   );
@@ -763,11 +768,10 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '14',
+          'type' => 'hidden',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -788,7 +792,7 @@ function takepart_article_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '16',
+        'weight' => '10',
       ),
     ),
   );
@@ -829,11 +833,10 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'list',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '18',
+          'type' => 'hidden',
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -856,7 +859,7 @@ function takepart_article_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '11',
+        'weight' => '14',
       ),
     ),
   );
@@ -897,11 +900,10 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'list',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '9',
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -924,7 +926,7 @@ function takepart_article_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '13',
+        'weight' => '18',
       ),
     ),
   );
@@ -965,11 +967,10 @@ function takepart_article_field_default_fields() {
       'description' => 'User can elect to toggle off the automatically-generated list of Related Content on an article-specific basis.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'list',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '11',
+          'type' => 'hidden',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -992,7 +993,7 @@ function takepart_article_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '15',
+        'weight' => '16',
       ),
     ),
   );
@@ -1022,13 +1023,10 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'media',
-          'settings' => array(
-            'file_view_mode' => 'default',
-          ),
-          'type' => 'media',
-          'weight' => '6',
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1105,11 +1103,11 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '12',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1130,7 +1128,7 @@ function takepart_article_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '17',
+        'weight' => '11',
       ),
     ),
   );

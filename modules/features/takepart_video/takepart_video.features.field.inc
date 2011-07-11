@@ -857,14 +857,14 @@ function takepart_video_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-      'module' => 'node_reference',
-      'settings' => array(
-        'autocomplete_match' => 'contains',
-        'autocomplete_path' => 'node_reference/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'node_reference_autocomplete',        
-      'weight' => '10',
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '10',
       ),
     ),
   );
@@ -1394,7 +1394,6 @@ function takepart_video_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'node_reference',
-        'type' => 'options_select',
         'settings' => array(
           'autocomplete_match' => 'contains',
           'autocomplete_path' => 'node_reference/autocomplete',
@@ -1405,8 +1404,6 @@ function takepart_video_field_default_fields() {
       ),
     ),
   );
-
-
 
   // Exported field: 'node-video_series-field_subhead'
   $fields['node-video_series-field_subhead'] = array(

@@ -10,6 +10,11 @@ bake_convert_to_dev($info,'nodeconnect');
 
 /* TakePart Modules */
 
+// ga_stats used to drive most popular on some right rail blocks
+$info['projects']['ga_stats']['type']   = 'module';
+$info['projects']['ga_stats']['subdir'] = 'contrib';
+$info['projects']['ga_stats']['version']   = '1.0-alpha2';
+
 // Flag can be removed once site goes live, only used for flagging test content
 $info['projects']['flag']['type']   = 'module';
 $info['projects']['flag']['subdir'] = 'contrib';
@@ -130,6 +135,19 @@ $info['projects']['media_views_widget']['download']['type']   = 'git';
 $info['projects']['media_views_widget']['download']['branch'] = 'master';
 $info['projects']['media_views_widget']['download']['url']    = 'git@github.com:phase2/media_views_widget.git';
 
+$info['projects']['views_file_row']['type']   = 'module';
+$info['projects']['views_file_row']['subdir'] = 'contrib';
+$info['projects']['views_file_row']['download']['type']   = 'git';
+$info['projects']['views_file_row']['download']['branch'] = 'master';
+$info['projects']['views_file_row']['download']['url']    = 'git@github.com:phase2/views_file_row.git';
+
+$info['projects']['media_image_formatter']['type']   = 'module';
+$info['projects']['media_image_formatter']['subdir'] = 'contrib';
+$info['projects']['media_image_formatter']['download']['type']   = 'git';
+$info['projects']['media_image_formatter']['download']['branch'] = 'master';
+$info['projects']['media_image_formatter']['download']['url']    = 'git@github.com:phase2/media_image_formatter.git';
+
+
 $info['projects']['styles']['type']    = 'module';
 $info['projects']['styles']['subdir']  = 'contrib';
 $info['projects']['styles']['version'] = '2.0-alpha8';
@@ -184,6 +202,18 @@ $info['projects']['rubik']['version'] = '4.0-beta5';
 
 // Nodequeue is not needed in TP3.
 unset($info['projects']['nodequeue']);
+
+/* Use our own branch of OpenPublish Features */
+$info['projects']['openpublish_features']['download']['branch'] = 'takepart-3.0';
+
+// This come out of openpublish_features
+$info['projects']['field_boxes']['type']   = 'module';
+$info['projects']['field_boxes']['subdir'] = 'contrib';
+$info['projects']['field_boxes']['download']['type']   = 'git';
+$info['projects']['field_boxes']['download']['branch'] = '7.x-1.x';
+$info['projects']['field_boxes']['download']['url']    = 'http://git.drupal.org/project/field_boxes.git';
+$info['projects']['field_boxes']['patch'][] = 'http://drupal.org/files/issues/1211204-make_0.patch';
+$info['projects']['field_boxes']['patch'][] = 'http://drupal.org/files/issues/1212226_0.patch';
 
 /* Patches */
 

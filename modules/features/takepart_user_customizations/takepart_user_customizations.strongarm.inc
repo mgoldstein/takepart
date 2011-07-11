@@ -69,6 +69,68 @@ function takepart_user_customizations_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'captcha_placement_map_cache';
+  $strongarm->value = array(
+    'comment_form' => array(
+      'path' => array(),
+      'key' => NULL,
+      'weight' => 18.9,
+    ),
+    'user_register_form' => array(
+      'path' => array(
+        0 => 'actions',
+      ),
+      'key' => 'submit',
+      'weight' => NULL,
+    ),
+    'comment_node_openpublish_blog_post_form' => array(
+      'path' => array(
+        0 => 'actions',
+      ),
+      'key' => 'submit',
+      'weight' => 19,
+    ),
+    'comment_node_openpublish_article_form' => array(
+      'path' => array(
+        0 => 'actions',
+      ),
+      'key' => 'submit',
+      'weight' => 19,
+    ),
+    'comment_node_openpublish_video_form' => array(
+      'path' => array(
+        0 => 'actions',
+      ),
+      'key' => 'submit',
+      'weight' => 19,
+    ),
+    'comment_node_openpublish_photo_gallery_form' => array(
+      'path' => array(
+        0 => 'actions',
+      ),
+      'key' => 'submit',
+      'weight' => 19,
+    ),
+    'comment_node_action_form' => array(
+      'path' => array(
+        0 => 'actions',
+      ),
+      'key' => 'submit',
+      'weight' => 19,
+    ),
+  );
+  $export['captcha_placement_map_cache'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'captcha_wrong_response_counter';
+  $strongarm->value = 9;
+  $export['captcha_wrong_response_counter'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'date_default_timezone';
   $strongarm->value = 'America/Los_Angeles';
   $export['date_default_timezone'] = $strongarm;
@@ -442,6 +504,13 @@ Your account on [site:name] has been canceled.
   $strongarm->name = 'user_signatures';
   $strongarm->value = 0;
   $export['user_signatures'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'username_check_delay';
+  $strongarm->value = '1';
+  $export['username_check_delay'] = $strongarm;
 
   return $export;
 }

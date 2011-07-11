@@ -182,7 +182,7 @@ function takepart_quick_study_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'media',
+          'module' => NULL,
           'settings' => array(),
           'type' => 'media_large',
           'weight' => 1,

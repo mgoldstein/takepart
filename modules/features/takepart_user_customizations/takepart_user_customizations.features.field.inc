@@ -133,7 +133,7 @@ function takepart_user_customizations_field_default_fields() {
       'label' => 'Get TakePart emails and alerts',
       'required' => 0,
       'settings' => array(
-        'user_register_form' => 0,
+        'user_register_form' => 1,
       ),
       'widget' => array(
         'active' => 1,
