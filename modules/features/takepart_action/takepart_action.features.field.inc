@@ -126,7 +126,7 @@ function takepart_action_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'body',
       'label' => 'Body',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'display_summary' => 0,
         'text_processing' => '1',
@@ -140,7 +140,7 @@ function takepart_action_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '14',
+        'weight' => '16',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
@@ -300,7 +300,7 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '17',
+        'weight' => '16',
       ),
     ),
   );
@@ -604,7 +604,7 @@ function takepart_action_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '6',
+        'weight' => '19',
       ),
     ),
   );
@@ -830,7 +830,7 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '8',
+        'weight' => '18',
       ),
     ),
   );
@@ -922,7 +922,7 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '26',
+        'weight' => '14',
       ),
     ),
   );
@@ -990,7 +990,7 @@ function takepart_action_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '16',
+        'weight' => '15',
       ),
     ),
   );
@@ -1058,7 +1058,7 @@ function takepart_action_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '9',
+        'weight' => '17',
       ),
     ),
   );
@@ -1126,7 +1126,7 @@ function takepart_action_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '25',
+        'weight' => '13',
       ),
     ),
   );
@@ -1264,7 +1264,7 @@ function takepart_action_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '4',
+        'weight' => '18',
       ),
     ),
   );
@@ -1274,7 +1274,6 @@ function takepart_action_field_default_fields() {
   t('Action Sponsor');
   t('Action Type');
   t('Body');
-  t('Campaign Page of');
   t('Comment');
   t('Free Tag');
   t('If a URL is provided in this field, the Take Action button that is displayed on the Action node page will be linked to this URL.');
