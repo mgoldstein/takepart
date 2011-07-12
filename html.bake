@@ -8,12 +8,12 @@ $base = array(
 bake_merge_file($info, $config, $base);
 bake_convert_to_dev($info,'nodeconnect');
 
-/* TakePart Modules */
+/* TakePart Temporary Modules - These should be removed prior to launch or just after */
 
-// ga_stats used to drive most popular on some right rail blocks
-$info['projects']['ga_stats']['type']   = 'module';
-$info['projects']['ga_stats']['subdir'] = 'contrib';
-$info['projects']['ga_stats']['version']   = '1.0-alpha2';
+// Backup module to pull local copies of the db down for external developers
+$info['projects']['backup_migrate']['type']   = 'module';
+$info['projects']['backup_migrate']['subdir'] = 'contrib';
+$info['projects']['backup_migrate']['version']   = '2.1';
 
 // Flag can be removed once site goes live, only used for flagging test content
 $info['projects']['flag']['type']   = 'module';
@@ -21,6 +21,13 @@ $info['projects']['flag']['subdir'] = 'contrib';
 $info['projects']['flag']['download']['type']   = 'git';
 $info['projects']['flag']['download']['branch'] = 'master';
 $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project/flag.git';
+
+/* TakePart Modules */
+
+// ga_stats used to drive most popular on some right rail blocks
+$info['projects']['ga_stats']['type']   = 'module';
+$info['projects']['ga_stats']['subdir'] = 'contrib';
+$info['projects']['ga_stats']['version']   = '1.0-alpha2';
 
 // Views bulk operations can be removed once site goes live, used to show flag views and act on removing test content
 $info['projects']['views_bulk_operations']['type']    = 'module';
