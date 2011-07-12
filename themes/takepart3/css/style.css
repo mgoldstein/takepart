@@ -1277,20 +1277,17 @@ span.comment-num {
 }
 
 #comments .join-login span.fb {
+border: 1px solid black;
   margin: 5px 0 0 0;
-}
-
-.comment .author-date {
-  float: left;
-  width: 85px;
 }
 
 #comments .comment {
   margin: 30px 0 0 0;
+  clear: both;
 }
 
-#comments .comment-indent {
-  margin-left: 30px;
+#comments .indented {
+  margin-left: 80px;
 }
 
 .comment .comment-text-wrapper {
@@ -1298,39 +1295,34 @@ span.comment-num {
    width: 533px;
 }
 
-#comments .comment-indent .comment-text-wrapper{
-  width: 503px;
+#comments .submitted {
+  float: left;
+  width: 80px;
 }
-
-.comment .edge {
-   background: url(../images/comment-edge.gif) no-repeat 0 0;
-   width: 21px;
-   float: left;
-   height: 109px;
-  }
   
-.comment .post-date {
-  color: #999;
-  font-size: 10px;
-  display: block;
-  margin-top: 4px;
+.comment .content {
+  background: #f5f5f5;
+  padding: 25px;
+  line-height: 145%;
+  font-size: 14px;
+  margin-left: 80px;
 }
 
-.comment .post-author {
+#comments .submitted-user {
   font-weight: bold;
   font-size: 13px;
 }
-  
-.comment .comment-text {
-  float: left;
-  background: #f5f5f5;
-  padding: 25px;
-  width: 450px;
-  line-height: 145%;
-  font-size: 14px;
+
+#comments .submitted-date {
+  background: url('../images/sprite-horizontal.gif') right -208px no-repeat;
+  height: 36px;
+  padding-right: 20px;
+  color: #999;
+  font-size: 10px;
 }
 
 .comment-indent .comment-text {
+border: 1px solid black;
   width: 420px;
 }
 
@@ -2002,21 +1994,21 @@ h2.title a{
   vertical-align: top;
 }
 
-.field-name-field-author {
+.submitted-wrapper .field-name-field-author {
   background: url('../images/sprite-horizontal.gif') no-repeat;
   background-position: 0 -375px;
   height: 17px;
   padding: 0 10px 0 20px;
 }
 
-.article-date {
+.submitted-wrapper .article-date {
   background: url('../images/sprite-horizontal.gif') no-repeat;
   background-position: 0 -395px;
   height: 17px;
   padding: 0 10px 0 20px;
 }
 
-.article-comment-count {
+.submitted-wrapper .article-comment-count {
   background: url('../images/sprite-horizontal.gif') no-repeat;
   background-position: 0 -410px;
   height: 17px;
@@ -2281,7 +2273,7 @@ body.node-type-openpublish-blog-post h1.page-title {
 }
 
 #comments {
-  display: none; /* Temporary */
+ 
 }
 
 /***** Blog Front *****/

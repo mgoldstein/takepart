@@ -298,24 +298,9 @@ function takepart3_field__field_topic($vars){
   
 }
 
-/*
-// Renders a comma separated list of taxonomy terms for a node
-// Used in page.tpl.php
-function _render_tp3_taxonomy_links($content) {
-  
-    // Set labels to hidden, if they aren't already
-    $content['field_free_tag']['#label_display'] = 'hidden';
-    $content['field_topic']['#label_display'] = 'hidden';
-    
-    // Merge and modify the output
-    $combined_markup = render($content['field_topic']) . render($content['field_free_tag']);
-    $output = str_replace("<a", ", <a", $combined_markup); // adds commas
-    $output = strip_tags($output, '<a>'); // strips div tags
-    $output = substr($output, 2); // removes first comma
-    
-    return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . $output . '</div>';
+function takepart3_preprocess_comment(&$vars){
+  $vars['submitted'] = 'posted on ' . format_date($vars['elements']['#comment']->created, 'medium', 'M n, Y');
 }
-*/
 
 /**
  * Theme the AddThis button.

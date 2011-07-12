@@ -57,6 +57,7 @@
  * @see theme_comment()
  */
 ?>
+
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php print $picture ?>
 
@@ -64,13 +65,9 @@
     <span class="new"><?php print $new ?></span>
   <?php endif; ?>
 
-  <?php print render($title_prefix); ?>
-  <h3<?php print $title_attributes; ?>><?php print $title ?></h3>
-  <?php print render($title_suffix); ?>
-
   <div class="submitted">
-    <?php print $permalink; ?>
-    <?php print $submitted; ?>
+    <div class='submitted-user'><?php print $author; ?></div>
+    <div class='submitted-date'><?php print $submitted; ?></div>
   </div>
 
   <div class="content"<?php print $content_attributes; ?>>
@@ -86,5 +83,5 @@
     <?php endif; ?>
   </div>
 
-  <?php print render($content['links']) ?>
+  <?php // print render($content['links']) ?>
 </div>
