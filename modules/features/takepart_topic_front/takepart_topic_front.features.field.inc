@@ -761,9 +761,11 @@ function takepart_topic_front_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference_redirect',
-          'settings' => array(),
-          'type' => 'rediect',
+          'module' => 'field_redirection',
+          'settings' => array(
+            'code' => '301',
+          ),
+          'type' => 'field_redirection',
           'weight' => '1',
         ),
       ),

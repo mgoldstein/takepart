@@ -1486,9 +1486,11 @@ function takepart_blog_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference_redirect',
-          'settings' => array(),
-          'type' => 'rediect',
+          'module' => 'field_redirection',
+          'settings' => array(
+            'code' => '301',
+          ),
+          'type' => 'field_redirection',
           'weight' => '1',
         ),
         'our_blogs_summary' => array(
