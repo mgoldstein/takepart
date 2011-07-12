@@ -50,6 +50,11 @@ $info['projects']['views_php']['download']['type']    = 'git';
 $info['projects']['views_php']['download']['branch']  = '7.x-1.x';
 $info['projects']['views_php']['download']['url']     = 'http://git.drupal.org/project/views_php.git';
 
+// Options element for webform
+$info['projects']['options_element']['type']     = 'module';
+$info['projects']['options_element']['subdir']   = 'contrib';
+$info['projects']['options_element']['version']  = '1.4';
+
 // Used on registration page
 $info['projects']['terms_of_use']['type']     = 'module';
 $info['projects']['terms_of_use']['subdir']   = 'contrib';
