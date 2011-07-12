@@ -22,6 +22,11 @@ $info['projects']['flag']['download']['type']   = 'git';
 $info['projects']['flag']['download']['branch'] = 'master';
 $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project/flag.git';
 
+/* Unsure about this module */
+$info['projects']['field_redirection']['type']   = 'module';
+$info['projects']['field_redirection']['subdir'] = 'contrib';
+$info['projects']['field_redirection']['version']   = '1.0';
+
 /* TakePart Modules */
 
 // ga_stats used to drive most popular on some right rail blocks
@@ -56,11 +61,6 @@ $info['projects']['views_php']['subdir']  = 'contrib';
 $info['projects']['views_php']['download']['type']    = 'git';
 $info['projects']['views_php']['download']['branch']  = '7.x-1.x';
 $info['projects']['views_php']['download']['url']     = 'http://git.drupal.org/project/views_php.git';
-
-// Options element for webform
-$info['projects']['options_element']['type']     = 'module';
-$info['projects']['options_element']['subdir']   = 'contrib';
-$info['projects']['options_element']['version']  = '1.4';
 
 // Used on registration page
 $info['projects']['terms_of_use']['type']     = 'module';
@@ -146,33 +146,6 @@ $info['projects']['media_views_widget']['subdir'] = 'contrib';
 $info['projects']['media_views_widget']['download']['type']   = 'git';
 $info['projects']['media_views_widget']['download']['branch'] = 'master';
 $info['projects']['media_views_widget']['download']['url']    = 'git@github.com:phase2/media_views_widget.git';
-
-$info['projects']['views_file_row']['type']   = 'module';
-$info['projects']['views_file_row']['subdir'] = 'contrib';
-$info['projects']['views_file_row']['download']['type']   = 'git';
-$info['projects']['views_file_row']['download']['branch'] = 'master';
-$info['projects']['views_file_row']['download']['url']    = 'git@github.com:phase2/views_file_row.git';
-
-$info['projects']['media_image_formatter']['type']   = 'module';
-$info['projects']['media_image_formatter']['subdir'] = 'contrib';
-$info['projects']['media_image_formatter']['download']['type']   = 'git';
-$info['projects']['media_image_formatter']['download']['branch'] = 'master';
-$info['projects']['media_image_formatter']['download']['url']    = 'git@github.com:phase2/media_image_formatter.git';
-
-$info['projects']['embbedable']['type']   = 'module';
-$info['projects']['embbedable']['subdir'] = 'contrib';
-$info['projects']['embbedable']['download']['type']   = 'git';
-$info['projects']['embbedable']['download']['branch'] = 'master';
-$info['projects']['embbedable']['download']['url']    = 'git@github.com:phase2/embbedable.git';
-
-
-$info['projects']['field_redirection']['type']   = 'module';
-$info['projects']['field_redirection']['subdir'] = 'contrib';
-$info['projects']['field_redirection']['download']['type']   = 'git';
-$info['projects']['field_redirection']['download']['branch'] = 'master';
-$info['projects']['field_redirection']['download']['url']    = 'http://git.drupal.org/project/field_redirection.git';
-$info['projects']['field_redirection']['patch'][]    = 'http://drupal.org/files/issues/1215538-drush.patch';
-
 
 $info['projects']['styles']['type']    = 'module';
 $info['projects']['styles']['subdir']  = 'contrib';
