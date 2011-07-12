@@ -154,6 +154,14 @@ $info['projects']['embbedable']['download']['branch'] = 'master';
 $info['projects']['embbedable']['download']['url']    = 'git@github.com:phase2/embbedable.git';
 
 
+$info['projects']['field_redirection']['type']   = 'module';
+$info['projects']['field_redirection']['subdir'] = 'contrib';
+$info['projects']['field_redirection']['download']['type']   = 'git';
+$info['projects']['field_redirection']['download']['branch'] = 'master';
+$info['projects']['field_redirection']['download']['url']    = 'http://git.drupal.org/project/field_redirection.git';
+$info['projects']['field_redirection']['patch'][]    = 'http://drupal.org/files/issues/1215538-drush.patch';
+
+
 $info['projects']['styles']['type']    = 'module';
 $info['projects']['styles']['subdir']  = 'contrib';
 $info['projects']['styles']['version'] = '2.0-alpha8';
