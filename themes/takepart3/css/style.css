@@ -1680,9 +1680,9 @@ Block Boxes (General)
 }
 
 .block-boxes-title-features .views-field-field-thumbnail-1 .field-content {
-  border:1px solid black;
-  height: 135px;
-  width: 190px;
+  border: 1px solid black;
+  height: 133px;
+  width: 188px;
   overflow: hidden;
 }
 
@@ -1883,7 +1883,8 @@ h2.title a{
   text-decoration: none;
 }
 
-.node-subhead{
+.field-name-field-article-subhead,
+.field-name-blog-subhead{
   font-size: 18px;
   color: #666;
   font-weight: bold;
@@ -1892,8 +1893,8 @@ h2.title a{
 }
 
 .node-openpublish-article .field-name-field-article-main-image {
+  font-size: 0;
   width: 615px;
-  height: 460px;
   overflow: hidden;
   background: silver;
   border: 1px solid #666;
@@ -2001,21 +2002,21 @@ h2.title a{
   vertical-align: top;
 }
 
-.submitted-wrapper .field-name-field-author {
+.field-name-field-author {
   background: url('../images/sprite-horizontal.gif') no-repeat;
   background-position: 0 -375px;
   height: 17px;
   padding: 0 10px 0 20px;
 }
 
-.submitted-wrapper .article-date {
+.article-date {
   background: url('../images/sprite-horizontal.gif') no-repeat;
   background-position: 0 -395px;
   height: 17px;
   padding: 0 10px 0 20px;
 }
 
-.submitted-wrapper .article-comment-count {
+.article-comment-count {
   background: url('../images/sprite-horizontal.gif') no-repeat;
   background-position: 0 -410px;
   height: 17px;

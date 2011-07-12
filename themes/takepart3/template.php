@@ -212,8 +212,7 @@ function takepart3_preprocess_node(&$vars, $hook) {
   }
   
   // Rewrites the 'Submitted' text for each node
-  $vars['submitted'] = "<div class='submitted-wrapper'><div class='submitted clearfix'>" . render($vars['content']['field_author']) . '<div class="field article-date">' . render($vars['date']) . '</div><div class="field article-comment-count"><a href="#comments">' . render($vars['node']->comment_count) . ' comments </a></div></div></div>';
-  
+  $vars['submitted'] = render($vars['content']['field_author']);
   
   // Standardizes the variable names for each 'Subhead' field for the below content types. Removes logic from tpl.
   // Use render($content['subhead']) in node templates to print all subheads.
@@ -245,6 +244,35 @@ function takepart3_preprocess_node(&$vars, $hook) {
     
 }
 
+function takepart3_field__field_author(&$vars){
+  
+  // Author
+  $authors = array();
+  foreach($vars['items'] as $key => $value){
+    $authors[] = l( $value['#title'], url($value['#href']) );
+  }
+
+  switch(count($authors)){
+    case 1:
+      $authors = $authors[0];
+      break;
+    case 2:
+      $authors = implode( ' & ', $authors);
+      break;
+    default:
+      $last_author = array_pop($authors);
+      $authors = implode( ' & ', array(implode(', ', $authors), $last_author));
+      break;
+  }
+  
+  // Date
+  $date = format_date($vars['element']['#object']->created, 'medium', 'F j, Y | g:i a');
+  
+  //Comments
+  $comments = $vars['element']['#object']->comment_count;
+  
+  return sprintf("<div class='submitted-wrapper'><div class='submitted clearfix'>By %s<div class='field article-date'>%s</div><div class='field article-comment-count'><a href='#comments'>%s comments</a></div></div></div>", $authors, $date, $comments);
+}
 
 // Rewrites 'field_tp_campaign_4_things_link' in Campaign content types
 // Prepends a <span> with id before each bullet point for theming
@@ -319,19 +347,13 @@ function takepart3_addthis_button(&$vars) {
  *  - Adds additional classes based on block title, view and delta
  */
 function takepart3_preprocess_block(&$vars) {
-  
-  
-  
+
     if (!empty($vars['block']->title)) {
       $vars['classes_array'][] = 'block-boxes-title-' . preg_replace( array('/[^a-zA-Z\s0-9]/', '/[\s]/', '/---|--/'), array('', '-', '-'), strtolower($vars['block']->title));
     }
   
-    if(!empty($vars['elements']['#block']->current_view)){
-      $vars['classes_array'][] = 'block-boxes-current-' . $vars['elements']['#block']->current_view;
-    }
-  
-    if(!empty($vars['elements']['content']['#views_contextual_links_info']['views_ui']['view_name'])){
-      $vars['classes_array'][] = 'block-boxes-view-name-' . $vars['elements']['content']['#views_contextual_links_info']['views_ui']['view_name'];
+    if(!empty($vars['elements']['#contextual_links']['views_ui'][1][0])){
+      $vars['classes_array'][] = 'block-boxes-view-name-' . $vars['elements']['#contextual_links']['views_ui'][1][0];
     }
   
     if(!empty($vars['elements']['#block']->delta)){
