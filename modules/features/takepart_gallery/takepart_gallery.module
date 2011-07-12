@@ -5,7 +5,7 @@
  */
 
 include_once('takepart_gallery.features.inc');
-
+drupal_add_css(drupal_get_path("module", "takepart_gallery") ."/takepart_gallery.css");
 
 /*
  * Implementation of hook_form_alter to hide certain default phase2_profile fields

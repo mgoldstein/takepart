@@ -34,6 +34,7 @@
     <?php hide($content['subhead']); ?>
     <?php hide($content['field_free_tag']); ?>
     <?php hide($content['field_topic']); ?>
+    <?php hide($content['field_article_action']); ?>
     <?php hide($content['body']); ?>
     
     <div class='content content-top clearfix <?php if (!empty($is_prose)) print 'prose' ?>'>
@@ -46,7 +47,7 @@
     
   <?php endif; ?>
   
-  <?php if( !empty($sidebar_first) && $view_mode == 'full'): // Print the sidebar region within the content ?>
+  <?php if( !empty($sidebar_first) ): // Print the sidebar region within the content ?>
     <div id="left" class="clearfix">
       <?php print render($sidebar_first); ?>
     </div>
@@ -55,7 +56,8 @@
   <?php if( (isset($content['field_free_tag']['#items']) || isset($content['field_topic']['#items']) ) & ($view_mode == 'full')) : ?>
       <?php show($content['field_free_tag']); ?>
       <?php show($content['field_topic']); ?>
-      <?php print _render_tp3_taxonomy_links($content); ?>
+      <?php render($content['field_topic']); ?>
+      <?php // print _render_tp3_taxonomy_links($content); ?>
   <?php endif; ?>
 
   <?php if (!empty($links)): ?>

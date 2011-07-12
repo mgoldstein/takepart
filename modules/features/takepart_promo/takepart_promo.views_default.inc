@@ -19,7 +19,7 @@ function takepart_promo_views_default_views() {
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-  
+
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'My Take';
@@ -42,18 +42,24 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['type'] = 'media_preview';
+  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['settings'] = array(
+    'image_style' => 'tp_actions_impact_thumbnail',
+    'image_link' => 'content',
+  );
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['field_api_classes'] = 0;
   /* Field: Content: Main Image */
   $handler->display->display_options['fields']['field_action_main_image']['id'] = 'field_action_main_image';
@@ -65,18 +71,24 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['field_action_main_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_action_main_image']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_action_main_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_action_main_image']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_action_main_image']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_action_main_image']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_action_main_image']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_action_main_image']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_action_main_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_action_main_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_action_main_image']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_action_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_action_main_image']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_action_main_image']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_action_main_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_action_main_image']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_action_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_action_main_image']['type'] = 'media_preview';
+  $handler->display->display_options['fields']['field_action_main_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_action_main_image']['settings'] = array(
+    'image_style' => 'tp_actions_impact_thumbnail',
+    'image_link' => 'content',
+  );
   $handler->display->display_options['fields']['field_action_main_image']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -212,7 +224,7 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  
+
   /* Display: News to Know */
   $handler = $view->new_display('block', 'News to Know', 'block');
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -287,7 +299,7 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['field_api_classes'] = 0;
-  
+
   /* Display: Features */
   $handler = $view->new_display('block', 'Features', 'block_1');
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -323,18 +335,24 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail_1']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_1']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_1']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_1']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_1']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_thumbnail_1']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_thumbnail_1']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_1']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_1']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_thumbnail_1']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_thumbnail_1']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_1']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_1']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_1']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_thumbnail_1']['type'] = 'media_preview';
+  $handler->display->display_options['fields']['field_thumbnail_1']['type'] = 'image';
+  $handler->display->display_options['fields']['field_thumbnail_1']['settings'] = array(
+    'image_style' => 'tp_promo_feature_thumbnail',
+    'image_link' => 'content',
+  );
   $handler->display->display_options['fields']['field_thumbnail_1']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -352,7 +370,7 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  
+
   /* Display: My Take */
   $handler = $view->new_display('block', 'My Take', 'block_2');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -478,31 +496,9 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['field_promo_text']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['field_api_classes'] = 0;
-  
+
   /* Display: Get Involved */
   $handler = $view->new_display('block', 'Get Involved', 'block_3');
-
-  $translatables['promo'] = array(
-    t('Master'),
-    t('My Take'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('[title]'),
-    t('[field_promo_headline] '),
-    t('All'),
-    t('News to Know'),
-    t('Features'),
-    t('field_author'),
-    t('node/[nid]'),
-    t('Get Involved'),
-  );
   $export['promo'] = $view;
 
   return $export;

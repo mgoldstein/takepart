@@ -67,9 +67,22 @@
       <?php if (isset($secondary_local_tasks)): ?><ul class='links clearfix'><?php print render($secondary_local_tasks) ?></ul><?php endif; ?>
       <?php if ($action_links): ?><ul class='links clearfix'><?php print render($action_links); ?></ul><?php endif; ?>
       <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
-      <div id='content' class='clearfix'><?php print render($page['content']) ?></div>
+        
+      <?php print render($page['content_top']); ?>
+      
+      <div id='content' class='clearfix'>
+        <?php print render($page['content']) ?>
+      </div>
+      
+      <?php if ($page['sidebar_first']): ?>
+        <div id='left-rail' class='clearfix'><?php print render($page['sidebar_first']) ?></div>
+      <?php endif; ?>
+      
+      
+      <?php print render($page['content_bottom']); ?>
+      
     </div>
-
+    
     <?php if ($page['sidebar_second']): ?>
       <div id='right-rail' class='clearfix'><?php print render($page['sidebar_second']) ?></div>
     <?php endif; ?>

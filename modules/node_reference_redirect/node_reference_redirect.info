@@ -1,3 +1,0 @@
-name = Node Refereance Redirect
-Description = Provide a Node Refence Formatter that redirects the page to a the reverenced node
-core = 7.x
