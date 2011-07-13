@@ -60,50 +60,50 @@ function newsletter_campaign_schema() {
         'not null' => TRUE,
         'description' => 'Table primary key',
       ),
-	  'mail' => array(
-	    'type' => 'varchar',
-	    'length' => 60,
-	    'description' => "Email address",
-	  ),
-	  'campaign_id' => array(
-	    'type' => 'varchar',
-	    'length' => 10,
-	    'not null' => TRUE, 
-	    'default' =>  '',
-	    'description' => "Campaign ID from Pluris",
-	  ),
-	  'source' => array(
-	    'type' => 'varchar',
-	    'length' => 100,
-	    'not null' => TRUE, 
-	    'default' =>  " ",
-	    'description' => "Source of Email",
-	  ),
-	  'status' => array(
-	    'type' => 'varchar',
-	    'length' => 1,
-	    'not null' => TRUE, 
-	    'default' =>  's',
-	    'description' => "Status of Subscription (s or u)",
-	  ),
-	  'uid' => array(
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-        'description' => "Reference to {users}.uid",
-      ),
-    'subscribe_date' => array(
-        'description' => 'The Unix timestamp when the email was subscribed.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0
-      ),
-    'unsubscribe_date' => array(
-        'description' => 'The Unix timestamp when the email was unsubscribed.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0
-      ),
+  	  'mail' => array(
+  	    'type' => 'varchar',
+  	    'length' => 60,
+  	    'description' => "Email address",
+  	  ),
+  	  'campaign_id' => array(
+  	    'type' => 'varchar',
+  	    'length' => 10,
+  	    'not null' => TRUE, 
+  	    'default' =>  '',
+  	    'description' => "Campaign ID from Pluris",
+  	  ),
+  	  'source' => array(
+  	    'type' => 'varchar',
+  	    'length' => 100,
+  	    'not null' => TRUE, 
+  	    'default' =>  " ",
+  	    'description' => "Source of Email",
+  	  ),
+  	  'status' => array(
+  	    'type' => 'varchar',
+  	    'length' => 1,
+  	    'not null' => TRUE, 
+  	    'default' =>  's',
+  	    'description' => "Status of Subscription (s or u)",
+  	  ),
+  	  'uid' => array(
+          'type' => 'int',
+          'not null' => TRUE,
+          'default' => 0,
+          'description' => "Reference to {users}.uid",
+        ),
+      'subscribe_date' => array(
+          'description' => 'The Unix timestamp when the email was subscribed.',
+          'type' => 'int',
+          'not null' => TRUE,
+          'default' => 0
+        ),
+      'unsubscribe_date' => array(
+          'description' => 'The Unix timestamp when the email was unsubscribed.',
+          'type' => 'int',
+          'not null' => TRUE,
+          'default' => 0
+        ),
     ),
     'indexes' => array(
       'mail' => array('mail'),
