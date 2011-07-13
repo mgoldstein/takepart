@@ -22,12 +22,12 @@ $info['projects']['flag']['download']['type']   = 'git';
 $info['projects']['flag']['download']['branch'] = 'master';
 $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project/flag.git';
 
-/* Unsure about this module */
+/* TakePart Modules */
+
+/* Used for contact module */
 $info['projects']['field_redirection']['type']   = 'module';
 $info['projects']['field_redirection']['subdir'] = 'contrib';
 $info['projects']['field_redirection']['version']   = '1.0';
-
-/* TakePart Modules */
 
 // ga_stats used to drive most popular on some right rail blocks
 $info['projects']['ga_stats']['type']   = 'module';
