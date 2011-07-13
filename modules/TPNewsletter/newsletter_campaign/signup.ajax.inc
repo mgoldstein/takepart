@@ -1,45 +1,4 @@
 <?php
-
-/**
- * Ajax form handler
- * returns a JSON string 
- */      
-function _newsletter_signup_form_submit_from_ajax() { 
-  $form = $_POST;
-  
-  $message = _newsletter_signup_form_validate_from_ajax($form);
-  
-  if ($message) {
-    print drupal_json_output(array(0, $message));
-    exit();
-  }
-   
-  $email = $form['email'];
-  $campaign_id = $form['campaign_id'];
-  
-  if (!variable_get('takepart_newsletter_signup_client_direct_save', 0)) {
-    $result = takepart_newsletter_signup_client_call_webservice($email, $campaign_id);
-  } 
-  else {
-    $result = _save_campaign_signup($email, $campaign_id, 's');
-  }
-  if ($result['status'] == 1 ) {
-    $nid = takepart_newsletter_signup_client_get_campaign_nid($campaign_id);
-    
-    // switch to entity
-    if ($nid) {
-      $campaign = node_load($nid);
-      $message = $campaign->field_newsletter_thanks_text[0]['value'];
-    }
-
-    $result = array('status' => $result['status'], 'message' => $message);
-  }
-  print drupal_json_output($result);
-  
-  exit();
-} 
-
-
 /**
  * Valide the form values
  *
@@ -47,8 +6,7 @@ function _newsletter_signup_form_submit_from_ajax() {
  *
  * @return string - message if error, empty string if not
  */
-function _newsletter_signup_form_validate_from_ajax(&$form) {
-
+function _newsletter_signup_email_check(&$form) {
   if (!valid_email_address($form['email'])) {
     return t('Invalid address, please try again');
   }
@@ -58,6 +16,43 @@ function _newsletter_signup_form_validate_from_ajax(&$form) {
   
   return '';
 }
+
+/**
+ * Ajax form handler
+ * returns a JSON string 
+ */     
+function _newsletter_signup_form_submit_from_ajax() { 
+  $form = $_POST;
+  
+  $email = $form['email'];
+  $campaign_id = $form['campaign_id'];
+  //$message = _newsletter_signup_email_check($form);
+  
+  // if email is BAD
+  if ($message) {
+    print drupal_json_output(array(0, $message));
+    exit();
+  }
+  
+  $result = _save_campaign_signup($email, $campaign_id, 's');
+  //$result = _save_campaign_signup($test_email, $test_camp, 's');
+  
+  if ($result['status'] == 1 ) {
+    // loolup entity by campaign id
+    $query = new EntityFieldQuery();
+    $db_result = $query->entityCondition('entity_type', 'newsletter_campaign')
+                    ->propertyCondition('campaign_id', (int)$campaign_id, '=')
+                    ->execute();
+    $ncids = array_keys($db_result['newsletter_campaign']);
+    $camps = entity_load('newsletter_campaign', $ncids);
+    // i hate this.
+    $camp = $camps[$ncids[0]];
+    $result = array('status' => $result['status'], 'message' => $camp->thankyou_message);
+  }
+
+  print drupal_json_output($result);
+  exit();
+} 
 
 /**
  * Saves email/campaign id combo to the database
@@ -78,35 +73,35 @@ function _save_campaign_signup($email, $campaign_id, $action = 's', $source = ''
     case 's' : $record->subscribe_date = time(); break;
     case 'u' : $record->unsubscribe_date = time(); break;
   }
-
+  
   $success = 0;
-  //drupal_set_message(json_encode($record));
   
   try {
   
     // contact Pluris first, since it is the 'master'
-    $message = takepart_newsletter_signup_alert_pluris($record->mail, $record->campaign_id, $record->status, $record->source, $send_welcome);
-
+    $message = _newsletter_signup_alert_pluris($record->mail, $record->campaign_id, $record->status, $record->source, $send_welcome);
+    $message = '';
     if (!$message) {
-      $record->uid = takepart_newsletter_signup_is_drupal_user($record->mail);
+      $record->uid = _is_signee_drupal_user($record->mail);
       if (!$record->uid) {
         $record->uid = 0;
       }
  
       // If we have a row and the action is different the the status update the status
-      if ($status = takepart_newsletter_signup_is_email_recorded_for_campaign($record->mail, $record->campaign_id)) {
+      $status = _is_email_recorded_for_campaign($record->mail, $record->campaign_id);
+      
+      if ($status) {
         if ($status != $record->status) {
-          print 'Update';
-          drupal_write_record("tp_newsletter_signups", $record, array('mail', 'campaign_id'));
+          drupal_write_record("newsletter_signups", $record, array('mail', 'campaign_id'));
           $success = 1; 
         }
         else {
           $message = $status == 's' ? t('You are already subscribed.') : t('You are already unsubscribed.');
         }
       }
+      // does not exist
       else {
-        print 'Insert';
-        drupal_write_record("tp_newsletter_signups", $record);
+        drupal_write_record("newsletter_signups", $record);
         $message = 'success';
         $success = 1; 
       }
@@ -122,5 +117,83 @@ function _save_campaign_signup($email, $campaign_id, $action = 's', $source = ''
     
     return array('status' => 0, 'message' => $message);
   } 
+}
+
+
+/**
+ * Send a 'subscribe' or 'unsubscribe' message to pluris
+ *
+ * @param $email string - email address of the user to lookup
+ * @param $campaign_id string - pluris campaign id
+ * @param $action string - 's' for subscribe, 'u' for unsubscribe
+ *
+ * @return string - empty if no problems, otherwise error message
+ */
+function _newsletter_signup_alert_pluris($email, $campaign_id, $action = 's',$source = '', $send_welcome = 'y') {
+  $message = '';
+  try {
+    $ws_url = variable_get('takepart_newsletter_signup_pluris_url', 'https://digitalsubscriptions.plurismarketing.com/subscribeRequest.php');
+    $params = array(
+     'e'=>$email,
+     'a'=>$action,
+     'c'=>$campaign_id,
+     'r'=>variable_get('takepart_newsletter_signup_pluris_requester', 'tp'),
+     'w'=>$send_welcome,
+     's'=>$source
+    );
+    if (!$source) {
+      unset($params['s']);
+    }
+    $url = url($ws_url, array('query'=>$params));
+    $pluris_code = drupal_http_request($url, array(), 'GET');
+  
+    if ($pluris_code && $pluris_code->data) {
+      $xml = simplexml_load_string($pluris_code->data);
+      if ((string)$xml->returnCode) {
+        $message = (string)$xml->returnString;
+      }
+      $xml = null;
+    }
+    else {
+      $message = t('No response from pluris');
+    }
+  }
+  catch(Exception $ex) {
+    $message = t('Problem connecting to pluris');
+    watchdog('newsletter service', 'Error connecting to pluris. Error: %error for email: %email, campaign id: %campaign', 
+      array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign));
+  }
+  
+  return $message;
+}
+
+/**
+ * Query the DB to determine if user is site user
+ *
+ * @param $email string - email address of the user to lookup
+ *
+ * @return int - uid if found
+ */
+function _is_signee_drupal_user($email) {
+  $query = db_query("SELECT uid FROM {users} WHERE mail = ?", array($email));
+  return $query->fetchField();
+}
+
+
+/**
+ * Query the DB to determine if email/campaign id combo exists
+ *
+ * @param $email string - email address of the user to lookup
+ * @param $campaign_id string - email address of the user to lookup
+ *
+ * @return string - current status if it exists
+ */
+function _is_email_recorded_for_campaign($email, $campaign_id = '') {
+  $result = db_query("SELECT status FROM {newsletter_signups} WHERE mail = ? AND campaign_id = ?", array($email, $campaign_id));
+  return $result->fetchField();
+}
+
+function _newsletter_local_signup($email, $campaign_id) {
+  
 }
 

@@ -20,6 +20,6 @@
       <?php print l(t("Terms & Conditions"), "terms-of-use"); ?>
     </div>
   </div>
-  <div id="xxtakepart-newsletter-<?php print $form_id; ?>-results"></div>
+  <div id="takepart-newsletter-<?php print $form_id; ?>-results"></div>
 </div>
 

@@ -80,11 +80,12 @@ function newsletter_campaign_menu() {
     'type' => MENU_CALLBACK,
   );
   
-  $items['/newsletter-campaign/submit-campaign'] = array(
+  $items['newsletter-campaign/submit-campaign'] = array(
     'title' => t('Newsletter Form Submission'),
     'access arguments' => array('access content'),
     'page callback' => '_newsletter_signup_form_submit_from_ajax',
     'file' => 'signup.ajax.inc',
+    'type' => MENU_CALLBACK,    
   );
   
   return $items;
@@ -107,6 +108,8 @@ function newsletter_campaign_load_multiple($ids = array(), $conditions = array()
   $loaded = entity_load('newsletter_campaign', $ids, $conditions, $reset);
   return $loaded;
 }
+
+
 
 /**
  * Campaign default block
@@ -242,10 +245,27 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
   drupal_add_js(drupal_get_path('module', 'takepart_newsletter_signup_client') . "/takepart_newsletter_signup.js");
 */  
   // adds ajax functionality to the block
+  // add into own file
   drupal_add_js('
     function takepart_input_box_tweak(textBox) {
       textBox.style[\'color\'] = "black";
       textBox.bgColor = "white";
+    }', 'inline'
+  );
+
+  drupal_add_js('
+    function takepart_newsletter_isValidEmailAddress(emailAddress, formId) {
+      var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+      var isValid = pattern.test(emailAddress);
+      
+      var mesg_text = "";
+      
+      if (!isValid) {
+        mesg_text = "Email address is invalid.";
+      }
+      jQuery("#takepart-newsletter-"+formId+"-results").text(mesg_text);
+      
+      return isValid;
     }', 'inline'
   );
 
@@ -255,14 +275,16 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
       click(function(e) {
         e.preventDefault();
         
-        if (TRUE) {
+        var isvalid = takepart_newsletter_isValidEmailAddress(jQuery("#wrapper-form-'.$campaign_id.' [name=email]").val(), "'.$campaign_id.'");
+        
+        if (isvalid) {
           var data = jQuery("#wrapper-form-'.$campaign_id.' form").serialize();
+          
           jQuery.post("/newsletter-campaign/submit-campaign", data, 
              function(result) {
                jQuery("#takepart-newsletter-'.$campaign_id.'-body").hide();
-               jQuery("#takepart-newsletter-'.$campaign_id.'-results").html(result.message).text();
-              }, "json");        
-        
+               jQuery("#takepart-newsletter-'.$campaign_id.'-results").text(result.message);
+              }, "json");
         }
         return false;
       });
@@ -275,22 +297,16 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
     '#default_value' => ' Enter email address',
     '#size' => 60,
     '#maxlength' => 128,
-    '#attributes' => array('onclick' => 'this.value=""; takepart_input_box_tweak(this)'),
+    //'#attributes' => array('onclick' => 'this.value="blah.'.mt_rand(100, 10000).'@blah.com"; takepart_input_box_tweak(this)'),
+    '#attributes' => array('onclick' => 'takepart_input_box_tweak(this)'),
   );
   
   $form['campaign_id'] = array(
     '#type' => 'hidden',
     '#value' => $campaign_id,
   );
-
-  $form['result_box'] = array(
-    '#type' => 'markup',
-    //'#prefix' => '<div id="takepart-newsletter-'. $campaign_id .'-results">',
-    '#prefix' => '<div id="result_box">',
-    '#suffix' => '</div>',
-    '#markup' => '<pre>'. date('c') .'</pre>',
-  );
-
+  
+  // d7 ajax submit handler is bugged.
   $form['submit'] = array(
     '#type' => 'submit',
     //'#ajax' => array(
@@ -306,22 +322,9 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
   return $form;
 }
 
-function ajax_newsletter_campaign_signup_form_submit($form, $form_state) {
-  // In most cases, it is recomended that you put this logic in form generation
-  // rather than the callback. Submit driven forms are an exception, because
-  // you may not want to return the form at all.
-  $element = $form['result_box'];
-  $element['#markup'] = "Clicked submit ({$form_state['values']['op']}): " . date('c');
-    
-  return $element;
-}
-
-
 /**
  * Other callbacks & helpers
  */
- 
-
  
 /**
  * URI callback
