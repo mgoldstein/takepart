@@ -71,9 +71,15 @@ function newsletter_campaign_form($form, &$form_state, $campaign) {
   // attach any fieldable fields, most notable a file field.
   field_attach_form('newsletter_campaign', $campaign, $form, $form_state);
   
-  $form['submit'] = array(
+  $form['actions'] = array('#type' => 'actions');
+  
+  $form['actions']['submit'] = array(
     '#type' => 'submit',
     '#default_value' => t('Save'),
+  );
+  
+  $form['actions']['cancel'] = array(
+     '#markup' => l(t('Cancel'), 'admin/structure/newsletter-campaign'),
   );
   
   return $form;
@@ -110,6 +116,6 @@ function newsletter_campaign_form_submit($form, &$form_state) {
     field_attach_insert('newsletter_campaign', $campaign, $form, $form_state);
   }
 
-  drupal_goto('newsletter-campaign');
+  drupal_goto('admin/structure/newsletter-campaign');
 }
 
