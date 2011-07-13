@@ -2290,12 +2290,8 @@ body.node-type-openpublish-blog-post h1.page-title {
   display: none;
 }
 
-.field-name-field-blogpost-main-image {
-  width: 300px;
-  height: 200px;
+.field-name-field-blogpost-main-image img{
   border: 1px solid black;
-  margin-right: 10px;
-  margin-bottom: 10px;
 }
 
 #comments {
