@@ -1,5 +1,0 @@
-name = Newsletter Email Collector Service
-description = Provides a service for collecting email addresses from newsletter signups; handles all unsubscribes
-package = Take Part
-dependencies[] = services
-core = 7.x

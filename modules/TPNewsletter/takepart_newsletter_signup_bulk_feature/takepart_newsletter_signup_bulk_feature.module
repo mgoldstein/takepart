@@ -1,8 +1,0 @@
-<?php
-
-include_once('takepart_newsletter_signup_bulk_feature.features.inc');
-include_once(dirname(__FILE__). '/includes/processing.inc');
-include_once(dirname(__FILE__). '/includes/theme.inc');
-include_once(dirname(__FILE__). '/includes/menu.inc');
-include_once(dirname(__FILE__). '/includes/mail.inc');
-include_once(dirname(__FILE__). '/includes/form.inc');

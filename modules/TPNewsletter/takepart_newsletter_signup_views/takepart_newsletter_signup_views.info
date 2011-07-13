@@ -1,8 +1,0 @@
-core = "6.x"
-dependencies[] = "tw"
-description = "helpful views"
-features[views][] = "takepart_newsletter_signups"
-features[views][] = "tp_newsletter_signup_bulk_queue"
-name = "takepart newsletter signup views"
-package = "Features"
-project = "takepart_newsletter_signup_views"

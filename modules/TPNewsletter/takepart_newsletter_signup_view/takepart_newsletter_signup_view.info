@@ -1,4 +1,0 @@
-name = Newsletter Email Collector Service - View Results
-description = Provides a listing of all entries in the subscription table
-package = Take Part
-core = 6.x
