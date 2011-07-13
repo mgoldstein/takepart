@@ -1240,7 +1240,6 @@ margin-bottom: 15px;
 #comments h2 {
   display: inline;
   float: left;
-  padding: 8px 0 0 0;
   font-size: 24px;
 }
 
@@ -1288,6 +1287,34 @@ border: 1px solid black;
 
 #comments .indented {
   margin-left: 80px;
+}
+
+#comments .comment-count {
+  width: 21px;
+  height: 20px;
+  background: url('../images/sprite.gif') -291px -52px;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  line-height: 17px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 11px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+#comments .comments-header {
+  border-bottom: 3px solid black;
+  padding-bottom: 15px;
+}
+
+#comments h2.comment-form {
+  display: block;
+  border-bottom: 3px solid black;
+  padding-bottom: 5px;
+  float: none;
+  margin-top: 20px;
 }
 
 .comment .comment-text-wrapper {
@@ -1726,7 +1753,7 @@ Block Boxes (General)
 
 /* Blog section */
 
-.block-boxes-current-blogs h2 {
+.region-sidebar-second .block-boxes-title-our-blogs h2 {
   background: url('../images/sprite-block-box.gif') 0 -172px no-repeat;
   height: 70px;
   left: -2px;
@@ -1736,11 +1763,11 @@ Block Boxes (General)
   text-indent: -9000px;
 }
 
-.block-boxes-current-blogs .taxonomy-term {
+.region-sidebar-second .block-boxes-title-our-blogs .taxonomy-term {
   background: url('../images/sprite-vertical.gif') top left repeat-y;
 }
 
-.block-boxes-current-blogs .taxonomy-term h2 {
+.region-sidebar-second .block-boxes-title-our-blogs .taxonomy-term h2 {
   /* Bookmark */
   background: url('../images/sprite-horizontal.gif') right -301px #8dc547;
   height: 39px;
@@ -1749,7 +1776,7 @@ Block Boxes (General)
   text-indent: 0;
 }
 
-.block-boxes-current-blogs .taxonomy-term h2 a {
+.region-sidebar-second .block-boxes-title-our-blogs .taxonomy-term h2 a {
   color: white;
   line-height: 39px;
   margin-left: 20px;
@@ -1768,7 +1795,7 @@ Block Boxes (General)
   border-bottom: 3px solid #1ca9e7;
 }
 
-.block-boxes-current-blogs .content .content {
+.region-sidebar-second .block-boxes-title-our-blogs .content .content {
   background: url('../images/sprite-vertical.gif') no-repeat;
   background-position: -303px 0;
   border-bottom: 25px solid black;
@@ -1777,29 +1804,29 @@ Block Boxes (General)
   padding: 35px 15px 25px 15px;
 }
 
-.block-boxes-current-blogs .content .field-content{
+.region-sidebar-second .block-boxes-title-our-blogs .content .field-content{
   
 }
 
-.block-boxes-current-blogs .taxonomy-term-description {
+.region-sidebar-second .block-boxes-title-our-blogs .taxonomy-term-description {
   margin: 0;
 }
 
-.block-boxes-current-blogs .field-name-field-blog-view .field-content{
+.region-sidebar-second .block-boxes-title-our-blogs .field-name-field-blog-view .field-content{
   background: url('../images/sprite-vertical.gif') -754px 0px no-repeat;
   padding-left: 20px;
   display: inline-block;
   margin-bottom: 10px;
 }
 
-.block-boxes-current-blogs .field-name-field-blog-view a{
+.region-sidebar-second .block-boxes-title-our-blogs .field-name-field-blog-view a{
   color: black;
   text-decoration: none;
   font-weight: bold;
   font-size: 13px;
 }
 
-.block-boxes-current-blogs .field-name-field-blog-view a:hover{
+.region-sidebar-second .block-boxes-title-our-blogs .field-name-field-blog-view a:hover{
   color: #1ca9e7;
   text-decoration: underline;
 }
@@ -1888,7 +1915,6 @@ h2.title a{
   font-size: 0;
   width: 615px;
   overflow: hidden;
-  background: silver;
   border: 1px solid #666;
 }
 
@@ -2351,7 +2377,7 @@ blockquote p {
 
 .field-name-field-tp-campaign-4-things-link {
   float: right;
-  height: 300px;
+  height: 266px;
   width: 275px;
   clear: right;
   position: relative;

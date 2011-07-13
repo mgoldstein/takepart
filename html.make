@@ -104,6 +104,7 @@ projects[wysiwyg][subdir] = contrib
 projects[wysiwyg][type] = module
 projects[wysiwyg][version] = 2.1
 projects[wysiwyg][patch][] = http://drupal.org/files/issues/wysiwyg-835682-12.patch
+projects[wysiwyg][patch][] = http://drupal.org/files/issues/746524-91Drupal7_v3_1.patch
 projects[addthis][subdir] = contrib
 projects[addthis][version] = 2.1-beta1
 projects[google_analytics][subdir] = contrib

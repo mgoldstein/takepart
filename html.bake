@@ -227,6 +227,7 @@ $info['projects']['token']['patch'][] = 'http://drupal.org/files/issues/691078-t
 $info['projects']['fb']['patch'][]    = 'http://drupal.org/files/issues/fb-register-formid-1032636-2.patch';
 $info['projects']['media']['patch'][] = 'http://drupal.org/files/issues/views-integration-file-entity-type-1192326-6-D7-drush.patch';
 $info['projects']['media']['patch'][] = 'http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make_0_0.patch';
+$info['projects']['wysiwyg'][patch][] = 'http://drupal.org/files/issues/746524-91Drupal7_v3_1.patch';
 
 /* Commented out patches, not sure if they will be needed again */
 // $info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
