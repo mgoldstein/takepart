@@ -54,15 +54,35 @@ function newsletter_campaign_menu() {
     'description' => 'Adjust the structure of this entity, add fields',
     'page callback' => '_newsletter_campaign_list',
     'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
   );
+/*
   $items['newsletter-campaign'] = array(
     'title' => 'Newsletter Campaign Instances',
     'description' => 'List all Newsletter Campaigns, Landing Page for campaign management.',
     'page callback' => '_newsletter_campaign_list',
     'access arguments' => array('view newsletter campaign'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+*/
+  
+  $items['admin/structure/newsletter-campaign/list'] = array(
+    'title' => 'Newsletter Campaign Instances',
+    'description' => 'List all Newsletter Campaigns, Landing Page for campaign management.',
+    'page callback' => '_newsletter_campaign_list',
+    'access arguments' => array('view newsletter campaign'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
   );
   
-  $items['newsletter-campaign/add'] = array(
+  $items['admin/structure/newsletter-campaign/signups'] = array(
+    'title' => 'Signups',
+    'description' => 'List all signups',
+    'page callback' => '_newsletter_signups_list',
+    'access arguments' => array('view newsletter campaign'),
+    'type' => MENU_LOCAL_TASK
+  );
+    
+  $items['admin/structure/newsletter-campaign/add'] = array(
     'title' => 'Add a Newsletter Campaign',
     'description' => 'Add a new Newsletter campaign instance',
     'page callback' => '_newsletter_campaign_add',
@@ -70,7 +90,7 @@ function newsletter_campaign_menu() {
     'file' => 'campaign.crud.inc',
   );
 
-  $items['newsletter-campaign/%newsletter_campaign/edit'] = array(
+  $items['admin/structure/newsletter-campaign/%newsletter_campaign/edit'] = array(
     'title' => 'Edit',
     'description' => 'Edit an instance of this entity',
     'page callback' => '_newsletter_campaign_edit',
@@ -179,7 +199,7 @@ function newsletter_campaign_theme() {
 /** 
  * menu callbacks
  */
- 
+
 /**
  * callback for the list page
  */
@@ -190,19 +210,19 @@ function _newsletter_campaign_list() {
   $t = array();
   foreach($campaigns as $camp) {
     $row = array();
-    $row[] = l($camp->title, 'newsletter-campaign/' . $camp->ncid);
+    $row[] = l($camp->title, 'admin/structure/newsletter-campaign/' . $camp->ncid);
     $row[] = $camp->campaign_id;
     $row[] = $camp->header;
     $row[] = $camp->promo_message;
     $row[] = $camp->thankyou_message;
-    $row[] = l('Edit', 'newsletter-campaign/' . $camp->ncid ."/edit");
+    $row[] = l('Edit', 'admin/structure/newsletter-campaign/' . $camp->ncid ."/edit");
     $t[] = $row;
   }
 
   $table = theme('table', array('header' => $h, 'rows' => $t));
   $camp_links[] = array(
     'title' => t('Add new Newsletter Campaign'),
-    'href'  => 'newsletter-campaign/add',
+    'href'  => 'admin/structure/newsletter-campaign/add',
   );
 /*
   $camp_links[] = array(
@@ -227,6 +247,47 @@ function _newsletter_campaign_list() {
   $links = theme_links($links_data);
   
   return $links ."<p></p><h2>Newsletter Campaigns</h2>". $table;
+}
+
+/** 
+ * callback for signup listing
+ */
+function _newsletter_signups_list() {
+  $header = array(
+    array('data' => 'Mail', 'field' => 'mail'),
+    array('data' => 'Campaign ID', 'field' => 'campaign_id'),
+    array('data' => 'Status', 'field' => 'status'), 
+    array('data' => 'Subscribe Date', 'field' => 'subscribe_date', 'sort' => 'desc')
+  );
+
+  $result = db_select('newsletter_signups', 'ns')
+    ->fields('ns', array('mail', 'campaign_id', 'status', 'subscribe_date'))
+    ->extend('PagerDefault')
+      ->limit(15)
+    ->extend('TableSort')
+      ->orderByHeader($header)
+    ->execute();
+  
+  $signups = '';
+  $table_vars = array(
+    'header' => $header,
+    'rows' => array(),
+    'empty' => 'No signups found.'
+  );
+  
+  while($record = $result->fetchAssoc()) {
+    $record['status'] = $record['status'] == 's' ? $record['status'] = 'subscribed' : $record['status'] = 'unsubscribed';
+    $record['subscribe_date'] = format_date($record['subscribe_date']);
+    $table_vars['rows'][] = array(
+      'data' => $record,
+    );
+  }
+  
+  $table = theme('table', $table_vars);
+  
+  $pager =  theme('pager', array('tags' => array()));
+  
+  return $table . $pager;
 }
 
 /**
@@ -330,7 +391,7 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
  * URI callback
  */
 function _newsletter_campaign_uri($campaign_instance) {
-  return array('path' => 'newsletter-campaign/' . $campaign_instance->ncid . '/edit');
+  return array('path' => 'admin/structure/newsletter-campaign/' . $campaign_instance->ncid . '/edit');
 }
 
 /**
