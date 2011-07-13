@@ -22,9 +22,10 @@ function takepart_gallery_field_group_info() {
     'label' => 'Main',
     'weight' => '5',
     'children' => array(
-      0 => 'group_photo_gallery_related',
-      1 => 'group_photo_gallery_tagging',
-      2 => 'group_photo_gallery_photos',
+      0 => 'group_photo_gallery_promo',
+      1 => 'group_photo_gallery_photos',
+      2 => 'group_photo_gallery_related',
+      3 => 'group_photo_gallery_tagging',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(
@@ -60,6 +61,32 @@ function takepart_gallery_field_group_info() {
     ),
   );
   $export['group_photo_gallery_photos|node|openpublish_photo_gallery|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_photo_gallery_promo|node|openpublish_photo_gallery|form';
+  $field_group->group_name = 'group_photo_gallery_promo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'openpublish_photo_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_photo_gallery_main';
+  $field_group->data = array(
+    'label' => 'Promo',
+    'weight' => '28',
+    'children' => array(
+      0 => 'field_promo_text',
+      1 => 'field_promo_headline',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_photo_gallery_promo|node|openpublish_photo_gallery|form'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->api_version = 1;
