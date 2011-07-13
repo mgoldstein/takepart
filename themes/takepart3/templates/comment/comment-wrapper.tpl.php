@@ -35,10 +35,16 @@
  * @see theme_comment_wrapper()
  */
 ?>
+
+
 <div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php if ($content['comments'] && $node->type != 'forum'): ?>
     <?php print render($title_prefix); ?>
     <h2 class="title"><?php print t('Comments'); ?></h2>
+    <?php /*
+    <div><?php print $content['#node']->comment_count ?> comments</div>
+    To join this conversation, login.
+    */ ?>
     <?php print render($title_suffix); ?>
   <?php endif; ?>
 

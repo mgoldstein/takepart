@@ -1,0 +1,5 @@
+name = TakePart Newsletter Campaign
+description = Provides Entity for saving newsletter campaigns.  Also provides front end box for email capture, submits caputured data to 3rd party newsletter provider.
+package = Take Part
+version = VERSION
+core = 7.x
