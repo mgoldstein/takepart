@@ -28,6 +28,7 @@ $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project
 $info['projects']['field_redirection']['type']   = 'module';
 $info['projects']['field_redirection']['subdir'] = 'contrib';
 $info['projects']['field_redirection']['version']   = '1.0';
+$info['projects']['field_redirection']['patch'][]   = 'http://drupal.org/files/issues/1215538-drush.patch';
 
 // ga_stats used to drive most popular on some right rail blocks
 $info['projects']['ga_stats']['type']   = 'module';
@@ -121,7 +122,7 @@ $info['projects']['xmlsitemap']['version']  = '2.0-beta3';
 
 $info['projects']['wysiwyg']['type']     = 'module';
 $info['projects']['wysiwyg']['subdir']   = 'contrib';
-$info['projects']['wysiwyg']['version']  = '2.1';
+$info['projects']['wysiwyg']['version']  = '2.x-dev';
 
 $info['projects']['webform']['subdir']  = 'contrib';
 $info['projects']['webform']['type']    = 'module';
@@ -220,19 +221,6 @@ $info['projects']['field_boxes']['download']['url']    = 'http://git.drupal.org/
 $info['projects']['field_boxes']['patch'][] = 'http://drupal.org/files/issues/1211204-make_0.patch';
 $info['projects']['field_boxes']['patch'][] = 'http://drupal.org/files/issues/1212226_0.patch';
 
-/* Patches */
-
-$info['projects']['flag']['patch'][]  = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
-$info['projects']['token']['patch'][] = 'http://drupal.org/files/issues/691078-token-field-tokens-v2.patch';
-$info['projects']['fb']['patch'][]    = 'http://drupal.org/files/issues/fb-register-formid-1032636-2.patch';
-$info['projects']['media']['patch'][] = 'http://drupal.org/files/issues/views-integration-file-entity-type-1192326-6-D7-drush.patch';
-$info['projects']['media']['patch'][] = 'http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make_0_0.patch';
-$info['projects']['wysiwyg'][patch][] = 'http://drupal.org/files/issues/746524-91Drupal7_v3_1.patch';
-
-/* Commented out patches, not sure if they will be needed again */
-// $info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
-// $info['projects']['context']['patch'][]  = 'http://drupal.org/files/issues/context-block-contextual-links-1137794-2.patch';
-
 /* Libraries */
 
 $info['libraries']['ckeditor']['download']['type']  = 'get';
@@ -250,3 +238,17 @@ $info['libraries']['facebook-php-sdk']['directory_name']      = 'facebook-php-sd
 $info['libraries']['jquery.cycle']['download']['type']  = 'get';
 $info['libraries']['jquery.cycle']['download']['url']   = 'http://jquery.malsup.com/cycle/release/jquery.cycle.zip?v2.99';
 $info['libraries']['jquery.cycle']['directory_name']    = 'jquery.cycle';
+
+/* Patches */
+
+$info['projects']['flag']['patch'][]  = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
+$info['projects']['token']['patch'][] = 'http://drupal.org/files/issues/691078-token-field-tokens-v2.patch';
+$info['projects']['fb']['patch'][]    = 'http://drupal.org/files/issues/fb-register-formid-1032636-2.patch';
+$info['projects']['media']['patch'][] = 'http://drupal.org/files/issues/views-integration-file-entity-type-1192326-6-D7-drush.patch';
+$info['projects']['media']['patch'][] = 'http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make_0_0.patch';
+$info['projects']['wysiwyg']['patch'] = '';
+$info['projects']['wysiwyg']['patch'][] = 'http://drupal.org/files/issues/746524-91Drupal7-v3_drush_make.patch';
+/* Commented out patches, not sure if they will be needed again */
+// $info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
+// $info['projects']['context']['patch'][]  = 'http://drupal.org/files/issues/context-block-contextual-links-1137794-2.patch';
+

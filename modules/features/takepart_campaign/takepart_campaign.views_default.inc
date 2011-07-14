@@ -26,6 +26,7 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
@@ -41,11 +42,11 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -118,11 +119,11 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['element_default_classes'] = 1;
@@ -140,11 +141,11 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -161,33 +162,17 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_tp_campaign_subheadline']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_tp_campaign_subheadline']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['field_api_classes'] = 0;
-  $translatables['campaigns'] = array(
-    t('Master'),
-    t('Campaigns'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('All'),
-    t('List of Campaigns'),
-    t('Featured Campaigns'),
-  );
   $export['campaigns'] = $view;
 
   $view = new view;
@@ -206,6 +191,7 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
@@ -222,11 +208,11 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['nid']['alter']['external'] = 0;
   $handler->display->display_options['fields']['nid']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['nid']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['nid']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['nid']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['nid']['alter']['html'] = 0;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['nid']['element_default_classes'] = 1;
@@ -244,11 +230,11 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -266,11 +252,11 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['fields']['field_promo_headline']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['element_default_classes'] = 1;
@@ -287,11 +273,11 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['fields']['field_promo_text']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_promo_text']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_promo_text']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_promo_text']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['element_default_classes'] = 1;
@@ -358,7 +344,7 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['null']['must_not_be'] = 0;
-  /* Contextual filter: Taxonomy: Term ID */
+  /* Contextual filter: Content: Has taxonomy term ID */
   $handler->display->display_options['arguments']['tid']['id'] = 'tid';
   $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['arguments']['tid']['field'] = 'tid';
@@ -374,24 +360,6 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['arguments']['tid']['require_value'] = 0;
   $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['arguments']['tid']['set_breadcrumb'] = 0;
-  $translatables['related_campaigns'] = array(
-    t('Master'),
-    t('Related Campaigns'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('node/[nid]'),
-    t('[title]'),
-    t('All'),
-    t('Currated Only'),
-    t('Currated and Suggest'),
-  );
   $export['related_campaigns'] = $view;
 
   return $export;
