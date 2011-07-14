@@ -2430,6 +2430,67 @@ blockquote p {
   overflow: visible;
 }
 
+body.node-type-takepart-campaign .region-sidebar-first {
+  position: relative;
+  left: -15px;
+}
+
+.field-name-field-tp-campaign-sponsors {
+  border-top: 3px solid black;
+  border-bottom: 1px dotted silver;
+}
+
+.field-name-field-tp-campaign-sl-nodes {
+  
+}
+
+.field-name-field-tp-campaign-sl-nodes .field-label {
+  border-bottom: 2px solid black;
+  background-image: url('../images/sprite-box-ribbons.gif');
+  background-repeat: no-repeat;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 16px;
+  margin-bottom: 15px;
+  padding-left: 35px;
+  text-transform: uppercase;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  background-position: left -90px;
+}
+
+.field-name-field-tp-campaign-sponsors .field-label {
+  background: url('../images/sprite-horizontal.gif') left -270px no-repeat;
+  font-size: 0;
+  text-indent: -9000px;
+}
+
+.field-name-field-tp-campaign-sponsors .field-label{
+  line-height: 30px;
+  height: 30px;
+  font-weight: bold;
+  color: black;
+  padding-left: 20px;
+}
+
+.field-name-field-tp-campaign-sponsors .field-items {
+  
+}
+
+.field-name-field-tp-campaign-alliances .field-label{
+  border-bottom: 2px solid #8dc547;
+  background-image: url('../images/sprite-box-ribbons.gif');
+  background-repeat: no-repeat;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 16px;
+  margin-bottom: 15px;
+  padding-left: 35px;
+  text-transform: uppercase;
+  padding-top: 10px;
+  padding-bottom: 6px;
+}
+
 .node-type-takepart-campaign .field-name-field-tp-campaign-seg-1-label,
 .node-type-takepart-campaign .field-name-field-tp-campaign-seg-2-label,
 .node-type-takepart-campaign .field-name-field-tp-campaign-seg-3-label,
@@ -2437,6 +2498,14 @@ blockquote p {
   border-bottom: 1px dotted silver;
   padding-bottom: 10px;
   margin-top: 20px;
+}
+
+.node-type-takepart-campaign .field-name-field-tp-campaign-subheadline {
+  font-size: 23px;
+  font-weight: bold;
+  border-bottom: 1px dotted black;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .node-type-takepart-campaign .field-name-field-tp-campaign-seg-1-label .field-items,
