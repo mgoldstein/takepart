@@ -2466,10 +2466,6 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
   padding-top: 10px;
 }
 
-.block-boxes-bid-takepart_custom-page_title_h1 {
-  border: 0;
-}
-
 .field-name-field-tp-campaign-sl-nodes {
   
 }
@@ -2499,7 +2495,8 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
   margin-bottom: 30px;
 }
 
-.field-name-field-tp-campaign-alliances .field-label{
+.field-name-field-tp-campaign-alliances .field-label,
+.block-boxes-title-alliances h2 {
   border-bottom: 2px solid #8dc547;
   background-image: url('../images/sprite-box-ribbons.gif');
   background-repeat: no-repeat;
