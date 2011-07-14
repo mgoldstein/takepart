@@ -284,6 +284,19 @@ function takepart3_field__field_tp_campaign_4_things_link(&$vars){
   return '<div class="field-name-field-tp-campaign-4-things-link">' . $output . '</div>';  
 }
 
+function takepart3_field__field_tp_campaign_seg_1_rel(&$vars){
+  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+}
+function takepart3_field__field_tp_campaign_seg_2_rel(&$vars){
+  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+}
+function takepart3_field__field_tp_campaign_seg_3_rel(&$vars){
+  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+}
+function takepart3_field__field_tp_campaign_seg_4_rel(&$vars){
+  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+}
+
 function takepart3_field__field_topic($vars){
   
   $links = array();

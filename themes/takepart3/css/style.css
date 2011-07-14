@@ -2430,19 +2430,19 @@ blockquote p {
   overflow: visible;
 }
 
-.node-takepart-campaign .field-name-field-tp-campaign-seg-1-label,
-.node-takepart-campaign .field-name-field-tp-campaign-seg-2-label,
-.node-takepart-campaign .field-name-field-tp-campaign-seg-3-label,
-.node-takepart-campaign .field-name-field-tp-campaign-seg-4-label {
+.node-type-takepart-campaign .field-name-field-tp-campaign-seg-1-label,
+.node-type-takepart-campaign .field-name-field-tp-campaign-seg-2-label,
+.node-type-takepart-campaign .field-name-field-tp-campaign-seg-3-label,
+.node-type-takepart-campaign .field-name-field-tp-campaign-seg-4-label {
   border-bottom: 1px dotted silver;
   padding-bottom: 10px;
   margin-top: 20px;
 }
 
-.node-takepart-campaign .field-name-field-tp-campaign-seg-1-label .field-items,
-.node-takepart-campaign .field-name-field-tp-campaign-seg-2-label .field-items,
-.node-takepart-campaign .field-name-field-tp-campaign-seg-3-label .field-items,
-.node-takepart-campaign .field-name-field-tp-campaign-seg-4-label .field-items {
+.node-type-takepart-campaign .field-name-field-tp-campaign-seg-1-label .field-items,
+.node-type-takepart-campaign .field-name-field-tp-campaign-seg-2-label .field-items,
+.node-type-takepart-campaign .field-name-field-tp-campaign-seg-3-label .field-items,
+.node-type-takepart-campaign .field-name-field-tp-campaign-seg-4-label .field-items {
   background: url('../images/sprite-horizontal.gif') no-repeat;
   background-position: right -252px;
   display: inline-block;
