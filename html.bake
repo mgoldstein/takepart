@@ -28,6 +28,7 @@ $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project
 $info['projects']['field_redirection']['type']   = 'module';
 $info['projects']['field_redirection']['subdir'] = 'contrib';
 $info['projects']['field_redirection']['version']   = '1.0';
+$info['projects']['field_redirection']['patch'][]   = 'http://drupal.org/files/issues/1215538-drush.patch';
 
 // ga_stats used to drive most popular on some right rail blocks
 $info['projects']['ga_stats']['type']   = 'module';
