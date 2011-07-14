@@ -68,6 +68,11 @@ $info['projects']['terms_of_use']['type']     = 'module';
 $info['projects']['terms_of_use']['subdir']   = 'contrib';
 $info['projects']['terms_of_use']['version']  = '1.1';
 
+// Used for Devel Module
+$info['projects']['devel']['type']    =' module';
+$info['projects']['devel']['subdir']  = 'contrib';
+$info['projects']['devel']['version'] = '1.0';
+
 // Used for slide and rotator content
 $info['projects']['views_slideshow']['type']    = 'module';
 $info['projects']['views_slideshow']['subdir']  = 'contrib';
