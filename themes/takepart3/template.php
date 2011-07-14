@@ -340,6 +340,10 @@ function takepart3_preprocess_block(&$vars) {
     if(!empty($vars['elements']['#contextual_links']['views_ui'][1][0])){
       $vars['classes_array'][] = 'block-boxes-view-name-' . $vars['elements']['#contextual_links']['views_ui'][1][0];
     }
+    
+    if(!empty($vars['elements']['#block']->current_view)){
+      $vars['classes_array'][] = 'block-boxes-current-' . $vars['elements']['#block']->current_view;
+    }
   
     if(!empty($vars['elements']['#block']->delta)){
       $vars['classes_array'][] = 'block-boxes-delta-' . $vars['elements']['#block']->delta;
