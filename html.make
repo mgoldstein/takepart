@@ -102,7 +102,7 @@ projects[xmlsitemap][type] = module
 projects[xmlsitemap][version] = 2.0-beta3
 projects[wysiwyg][subdir] = contrib
 projects[wysiwyg][type] = module
-projects[wysiwyg][version] = 2.1
+projects[wysiwyg][version] = 2.x-dev
 projects[wysiwyg][patch][] = http://drupal.org/files/issues/wysiwyg-835682-12.patch
 projects[addthis][subdir] = contrib
 projects[addthis][version] = 2.1-beta1
@@ -245,7 +245,7 @@ projects[field_boxes][download][branch] = 7.x-1.x
 projects[field_boxes][download][url] = http://git.drupal.org/project/field_boxes.git
 projects[field_boxes][patch][] = http://drupal.org/files/issues/1211204-make_0.patch
 projects[field_boxes][patch][] = http://drupal.org/files/issues/1212226_0.patch
-projects[ckeditor][patch][] = http://drupal.org/files/issues/746524-91Drupal7_v3_1.patch
+projects[wysiwig][patch][] = http://drupal.org/files/issues/746524-91Drupal7-v3_drush_make.patch
 // allow simpletest to look into profiles for modules
 projects[drupal][patch][] = http://drupal.org/files/issues/911354.46.patch
 // projects[views][patch][] = http://drupal.org/files/issues/views_relatedterms.patch
