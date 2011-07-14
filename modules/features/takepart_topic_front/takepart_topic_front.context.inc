@@ -30,17 +30,17 @@ function takepart_topic_front_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'views-quick_study-block' => array(
+          'module' => 'views',
+          'delta' => 'quick_study-block',
+          'region' => 'content',
+          'weight' => '-70',
+        ),
         'views-taxonomy_search_list-block' => array(
           'module' => 'views',
           'delta' => 'taxonomy_search_list-block',
           'region' => 'content',
-          'weight' => '-10',
-        ),
-        'views-related_campaigns-block_2' => array(
-          'module' => 'views',
-          'delta' => 'related_campaigns-block_2',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-69',
         ),
         'search_api_facets-standard_node_index_type' => array(
           'module' => 'search_api_facets',
@@ -53,6 +53,12 @@ function takepart_topic_front_context_default_contexts() {
           'delta' => 'standard_node_index_field_blogpo',
           'region' => 'sidebar_second',
           'weight' => '-8',
+        ),
+        'views-related_campaigns-block_1' => array(
+          'module' => 'views',
+          'delta' => 'related_campaigns-block_1',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
         ),
       ),
     ),
