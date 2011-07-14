@@ -2357,51 +2357,36 @@ blockquote p {
 
 /* Campaign */
 
-.region-highlighted .boxes-box {
-  
-}
-
-.group-tp-campaign-header {
-  background: #005;
-  width: 980px;
-  height: 320px;
-}
-
-.group-tp-campaign-header .field-group-format-toggler {
+.field-name-field-tp-campaign-intro-html {
   display: none;
+  position: relative;
+  top: -323px;
+  height: 0px;
+  left: 20px;
+}
+
+.field-name-field-tp-campaign-5-things-head {
+  float: right;
+  height: 0px;
+  position: relative;
+  top: -300px;
+  width: 300px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  top: -323px;
+}
+
+.field-name-field-tp-campaign-5-things-head .field-items {
+  padding-top: 20px;
 }
 
 .field-name-field-tp-campaign-4-things-link {
   float: right;
-  height: 266px;
-  width: 275px;
-  clear: right;
-  position: relative;
-  top: -323px;
-}
-
-.field-name-field-tp-campaign-intro-html {
-  display: none;
-  /*
-  display: none; 
-  height: 200px;
   width: 300px;
-  overflow: hidden;
+  height: 0px;
   position: relative;
-  top: -323px;
-  */
-}
-
-.field-name-field-tp-campaign-5-things-head {
-  width: 275px;
-  color: white;
-  font-weight: bold;
-  padding-bottom: 18px;
-  padding-top: 18px;
-  font-size: 18px;
-  float: right;
-  position: relative;
-  top: -323px;
+  top: -272px;
 }
 
 .campaign-link {
@@ -2427,11 +2412,6 @@ blockquote p {
   color: white;
   margin-bottom: 20px;
   width: 240px;
-}
-
-.field-name-field-tp-campaign-intro-media {
-  width: 980px;
-  height: 320px;
 }
 
 /** Topics **/
