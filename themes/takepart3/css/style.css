@@ -2430,6 +2430,10 @@ blockquote p {
   overflow: visible;
 }
 
+body.node-type-takepart-campaign .node-takepart-campaign h2.title{
+  display: none;
+}
+
 body.node-type-takepart-campaign .region-sidebar-first {
   position: relative;
   left: -15px;
@@ -2462,6 +2466,10 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
   padding-top: 10px;
 }
 
+.block-boxes-bid-takepart_custom-page_title_h1 {
+  border: 0;
+}
+
 .field-name-field-tp-campaign-sl-nodes {
   
 }
@@ -2485,6 +2493,10 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
 
 .field-name-field-tp-campaign-sponsors .field-items {
   
+}
+
+.field-name-field-tp-campaign-alliances {
+  margin-bottom: 30px;
 }
 
 .field-name-field-tp-campaign-alliances .field-label{
