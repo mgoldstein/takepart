@@ -178,6 +178,7 @@ projects[flag][patch][] = http://drupal.org/files/issues/flag-strict-1-1119842.p
 projects[field_redirection][type] = module
 projects[field_redirection][subdir] = contrib
 projects[field_redirection][version] = 1.0
+projects[field_redirection][patch][] = http://drupal.org/files/issues/1215538-drush.patch
 projects[ga_stats][type] = module
 projects[ga_stats][subdir] = contrib
 projects[ga_stats][version] = 1.0-alpha2
