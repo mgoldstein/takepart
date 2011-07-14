@@ -2435,16 +2435,7 @@ body.node-type-takepart-campaign .region-sidebar-first {
   left: -15px;
 }
 
-.field-name-field-tp-campaign-sponsors {
-  border-top: 3px solid black;
-  border-bottom: 1px dotted silver;
-}
-
-.field-name-field-tp-campaign-sl-nodes {
-  
-}
-
-.field-name-field-tp-campaign-sl-nodes .field-label {
+body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
   border-bottom: 2px solid black;
   background-image: url('../images/sprite-box-ribbons.gif');
   background-repeat: no-repeat;
@@ -2457,6 +2448,25 @@ body.node-type-takepart-campaign .region-sidebar-first {
   padding-top: 10px;
   padding-bottom: 6px;
   background-position: left -90px;
+}
+
+.field-name-field-tp-campaign-sponsors {
+  border-top: 3px solid black;
+  border-bottom: 1px dotted silver;
+}
+
+.field-name-field-tp-campaign-seg-1-html,
+.field-name-field-tp-campaign-seg-2-html,
+.field-name-field-tp-campaign-seg-3-html,
+.field-name-field-tp-campaign-seg-4-html {
+  padding-top: 10px;
+}
+
+.field-name-field-tp-campaign-sl-nodes {
+  
+}
+
+.field-name-field-tp-campaign-sl-nodes .field-label {
 }
 
 .field-name-field-tp-campaign-sponsors .field-label {
