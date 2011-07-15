@@ -38,7 +38,7 @@ function _newsletter_signup_form_submit_from_ajax() {
   //$result = _save_campaign_signup($test_email, $test_camp, 's');
   
   if ($result['status'] == 1 ) {
-    // loolup entity by campaign id
+    // lookup entity by campaign id
     $query = new EntityFieldQuery();
     $db_result = $query->entityCondition('entity_type', 'newsletter_campaign')
                     ->propertyCondition('campaign_id', (int)$campaign_id, '=')
@@ -193,7 +193,129 @@ function _is_email_recorded_for_campaign($email, $campaign_id = '') {
   return $result->fetchField();
 }
 
-function _newsletter_local_signup($email, $campaign_id) {
+/** 
+ * callback for the unsubscribe
+ */
+function _newsletter_unsubscribe() {
+  global $user;
+  drupal_set_title("Unsubscribe from all Takepart newsletters?");
   
+  $email = false;
+  // grab email from logged in user if not admin or anonymous
+  if($user->uid > 1) {
+    $email = $user->mail; 
+  }
+  
+  $campaign_code = variable_get('newsletter_campaign_unsubscribe_all_campaign_code', 'alltpnl');
+  
+  return drupal_get_form('_newsletter_unsubscribe_all_form', $campaign_code, $email);
+  return 'unsubscribed';
 }
 
+/**
+ * unsubscribe form
+ */
+function _newsletter_unsubscribe_all_form($form, &$form_state, $campaign_code, $email) {
+  $form['header'] = array(
+    '#markup' => '<h2>Unsubscribe from all Takepart newsletters?</h2>'
+  );
+  
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Email'),
+    '#default_value' => $email,
+  );
+  
+  $form['campaign_id'] = array(
+    '#type' => 'hidden',
+    '#value' => $campaign_code,
+  );
+
+  $form['actions']['confirm'] = array(
+    '#type' => 'submit',
+    '#value' => t('Unsubscribe'),
+    '#prefix' => '<span class="form-button-wrapper">',
+    '#suffix' => '</span>&nbsp;'
+  );
+
+  $form['actions']['cancel'] = array(
+    '#markup' => l(t('Cancel'), ''),
+  );
+  
+  return $form;
+}
+
+/**
+ * Implementation of form_validate for newsletter unsubscribe form
+ */
+function _newsletter_unsubscribe_all_form_validate($form, &$form_state) {
+  if (!valid_email_address($form_state['values']['email'])) {
+    form_set_error('email', t('Invalid address'));
+  }
+}
+
+/**
+ * submit handler for '_newsletter_unsubscribe_form' form
+ */
+function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
+  //$response = takepart_newsletter_delete_campaign($email, $campaign_id);
+  $success = 0;
+  $message = '';
+  
+  $email = $form_state['values']['email'];
+  
+  $response = array('status' => $success, 'message' => $message);
+  
+  //$all_code = variable_get('takepart_newsletter_signup_unsubscribe_all_campaign_code', 'alltpnl');
+  
+  try {
+    $ws_url = variable_get('takepart_newsletter_signup_pluris_unsubscribe_url', 'https://digitalsubscriptions.plurismarketing.com/unsubscribeAll.php');
+    $params = array(
+      'e'=>$email,
+      'r'=>variable_get('takepart_newsletter_signup_pluris_requester', 'tp'),
+    );
+    $url = url($ws_url, array('query' => $params));
+     
+    $pluris_code = drupal_http_request($url, array(), 'GET');
+
+    if ($pluris_code && $pluris_code->data) {
+      $xml = simplexml_load_string($pluris_code->data);
+      if ((string)$xml->returnCode) {
+        $message = (string)$xml->returnString;
+      }
+      $xml = null;
+      
+      // the local update
+      db_query("UPDATE {newsletter_signups} SET status = 'u', unsubscribe_date = ? WHERE mail = ?", array(time(), $email));
+      $success = 1;
+    }
+    else {
+      $message = t('No response from pluris');
+    }
+  }
+  catch(Exception $ex) {
+    $message = t('Problem connecting to pluris');
+    watchdog('newsletter service', 'Error connecting to pluris. Error: %error for email: %email, campaign id: %campaign', 
+      array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign)
+    );
+  }
+  $response['status'] = $success;
+  $response['message'] = $message;
+  
+  //return array('status' => $success, 'message' => $message); 
+  
+  
+  // i think this is only called to get the response nad update locally? 
+  // this was for the case of only one campaign 
+  //return _save_campaign_signup($email, $campaign_id, 'u');
+
+  
+  // if there is a message, that means there was a problem
+  if (!$response['status']) {
+    drupal_set_message($response['message'], 'error', FALSE);
+    drupal_goto(variable_get('takepart_newsletter_signup_unsubscribe_problem_page', 'newsletter-unsubscribe-problem'));
+  }
+  else {
+    drupal_goto(variable_get('takepart_newsletter_signup_unsubscribe_confirmation_page', 'newsletter-unsubscribe-confirmation'));
+  }  
+}
