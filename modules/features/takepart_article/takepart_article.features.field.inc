@@ -64,6 +64,15 @@ function takepart_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
+          'module' => 'field_redirection',
+          'settings' => array(
+            'code' => '301',
+          ),
+          'type' => 'field_redirection',
+          'weight' => '7',
+        ),
+        'full' => array(
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '8',
@@ -135,6 +144,12 @@ function takepart_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
+          'weight' => '4',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '4',
         ),
         'teaser' => array(
@@ -222,6 +237,12 @@ function takepart_article_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '0',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
         'teaser' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -296,6 +317,12 @@ function takepart_article_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '6',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -363,6 +390,12 @@ function takepart_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '14',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -423,6 +456,12 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
@@ -513,6 +552,12 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
@@ -609,6 +654,12 @@ function takepart_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '16',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '16',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -700,6 +751,12 @@ function takepart_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '11',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -773,6 +830,12 @@ function takepart_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '13',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -833,6 +896,12 @@ function takepart_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
@@ -905,6 +974,12 @@ function takepart_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '10',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -972,6 +1047,12 @@ function takepart_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '12',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1026,7 +1107,13 @@ function takepart_article_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '8',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1108,6 +1195,12 @@ function takepart_article_field_default_fields() {
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '5',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',

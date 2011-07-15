@@ -1,0 +1,13 @@
+<?php
+function comment_block_simple_block_info() {
+  return array(
+    'comment_block' => array(
+      'info' => 'Comment Block',
+    ),
+  );
+}
+function comment_block_simple_block_view($delta= 1) {
+  $block['content'] = comment_node_page_additions(menu_get_object());
+  return $block;
+}
+

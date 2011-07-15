@@ -15,7 +15,7 @@ include_once('takepart_user_customizations.features.inc');
 function takepart_user_customizations_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
  
   $form['unsubscribe_link'] = array(
-    '#markup' => l('Unsubscribe from all TakePart emails', 'newsletter-unsubscribe'),
+    '#markup' => l('Unsubscribe from all TakePart emails', 'newsletter-campaign/unsubscribe'),
     '#weight' => 100,
   );
   
