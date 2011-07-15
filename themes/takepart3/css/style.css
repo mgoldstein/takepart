@@ -1886,10 +1886,6 @@ Block Boxes (General)
     
 /* Articles */
 
-body.node-type-openpublish-article h1 {
-  display: none;
-}
-
 h2.title {
   font-size: 32px;
   font-weight: bold;
