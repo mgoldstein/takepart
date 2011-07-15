@@ -119,3 +119,22 @@ function newsletter_campaign_form_submit($form, &$form_state) {
   drupal_goto('admin/structure/newsletter-campaign');
 }
 
+
+function _newsletter_campaign_settings() {
+  $form = array();
+  
+  $form['getvarsfor'] = array(
+    '#markup' => '
+    <ul>
+      <li>takepart_newsletter_signup_unsubscribe_problem_page</.li>
+      <li>takepart_newsletter_signup_unsubscribe_confirmation_page</li>
+      <li>takepart_newsletter_signup_pluris_url</li>
+      <li>takepart_newsletter_signup_pluris_requester</li>
+      <li>newsletter_campaign_unsubscribe_all_campaign_code</li>
+    </ul>
+    ',
+  );
+  
+  return system_settings_form($form);
+}
+

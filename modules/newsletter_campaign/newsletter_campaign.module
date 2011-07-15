@@ -81,6 +81,17 @@ function newsletter_campaign_menu() {
     'access arguments' => array('view newsletter campaign'),
     'type' => MENU_LOCAL_TASK
   );
+
+  $items['admin/structure/newsletter-campaign/settings'] = array(
+    'title' => 'Settings',
+    'description' => 'List all signups',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_newsletter_campaign_settings'),
+    'access arguments' => array('view newsletter campaign'),
+    'file' => 'campaign.crud.inc',   
+    'weight' => 100, 
+    'type' => MENU_LOCAL_TASK
+  );
     
   $items['admin/structure/newsletter-campaign/add'] = array(
     'title' => 'Add a Newsletter Campaign',
@@ -107,6 +118,17 @@ function newsletter_campaign_menu() {
     'file' => 'signup.ajax.inc',
     'type' => MENU_CALLBACK,    
   );
+  
+  $items['newsletter-campaign/unsubscribe'] = array(
+    'title' => t('Newsletter Form Submission'),
+    'access arguments' => array('access content'),
+    'page callback' => '_newsletter_unsubscribe',
+    'file' => 'signup.ajax.inc',
+    'type' => MENU_NORMAL_ITEM,    
+  );
+  
+  // newsletter-unsubscribe-problem
+  // newsletter-unsubscribe-confirmation
   
   return $items;
 }
