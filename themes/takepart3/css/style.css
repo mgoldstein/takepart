@@ -2495,6 +2495,17 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
   margin-bottom: 30px;
 }
 
+.campaign-alliances-wrapper {
+  width: 160px;
+}
+
+.campaign-alliances-image {
+  border: 1px solid black;
+  width: 44px;
+  height: 44px;
+  display: inline-block;
+}
+
 .field-name-field-tp-campaign-alliances .field-label,
 .block-boxes-title-alliances h2 {
   border-bottom: 2px solid #8dc547;
@@ -2519,7 +2530,8 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
   margin-top: 20px;
 }
 
-.node-type-takepart-campaign .field-name-field-tp-campaign-subheadline {
+.field-name-field-tp-campaign-subheadline,
+.field-name-field-blogpost-subhead {
   font-size: 23px;
   font-weight: bold;
   border-bottom: 1px dotted black;

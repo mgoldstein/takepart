@@ -297,6 +297,21 @@ function takepart3_field__field_tp_campaign_seg_4_rel(&$vars){
   return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
 }
 
+/*
+
+function takepart3_field__field_tp_campaign_sponsors(&$vars){
+
+}
+
+function takepart3_field__field_tp_campaign_alliances(&$vars){
+  $output = '';
+  foreach($vars['items'] as $key => $value){
+    $output .= '<div class="campaign-alliances-wrapper"><div class="campaign-alliances-image"></div>' . $value['#markup'] . '</div>';
+  }
+  return $output;
+}
+*/
+
 function takepart3_field__field_topic($vars){
   
   $links = array();

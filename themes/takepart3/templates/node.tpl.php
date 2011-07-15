@@ -17,22 +17,13 @@
   <?php endif; ?>
 
   <?php if (!empty($content)): ?>
-    <?php hide($content['subhead']); ?>
-    <?php hide($content['field_free_tag']); ?>
-    <?php hide($content['field_topic']); ?>
-    <?php hide($content['field_article_action']); ?>
-    <?php hide($content['body']); ?>
+    <?php hide($content['comments']); ?>
+    <?php if($view_mode == 'teaser'){ hide($content['field_free_tag']); }; ?>
     
     <div class='content content-bottom clearfix <?php if (!empty($is_prose)) print 'prose' ?>'>
-      <?php print render($content['body']); ?>
+      <?php print render($content); ?>
     </div>
     
-  <?php endif; ?>
-  
-  <?php if( (isset($content['field_free_tag']['#items']) || isset($content['field_topic']['#items']) ) & ($view_mode == 'full')) : ?>
-      <?php show($content['field_free_tag']); ?>
-      <?php show($content['field_topic']); ?>
-      <?php render($content['field_topic']); ?>
   <?php endif; ?>
   
   <?php // krumo($node); ?>
