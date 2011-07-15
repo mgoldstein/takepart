@@ -206,7 +206,6 @@ function takepart3_preprocess_node(&$vars, $hook) {
   
   // Provides a method for printing regions within node templates
   if ($blocks = block_get_blocks_by_region('sidebar_first')) {
-    krumo($vars);
     $vars['sidebar_first'] = $blocks;
     $vars['sidebar_first']['#theme_wrappers'] = array('region');
     $vars['sidebar_first']['#region'] = 'sidebar_first';
