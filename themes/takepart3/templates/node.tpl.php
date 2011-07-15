@@ -12,13 +12,16 @@
 
   <?php if (!empty($title_suffix)) print render($title_suffix); ?>
 
-  <?php if (!empty($submitted)): ?>
+  <?php if (!empty($submitted) && $view_mode != 'teaser'): ?>
     <?php print $submitted ?>
   <?php endif; ?>
 
   <?php if (!empty($content)): ?>
     <?php hide($content['comments']); ?>
-    <?php if($view_mode == 'teaser'){ hide($content['field_free_tag']); }; ?>
+    
+    <?php if($view_mode == 'teaser'): ?>
+      <?php hide($content['field_free_tag']); ?>
+    <?php endif; ?>
     
     <div class='content content-bottom clearfix <?php if (!empty($is_prose)) print 'prose' ?>'>
       <?php print render($content); ?>

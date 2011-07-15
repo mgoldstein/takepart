@@ -204,27 +204,9 @@ function takepart3_preprocess_node(&$vars, $hook) {
       $vars['theme_hook_suggestions'][] = 'node__embed';
   }   
   
-  // Provides a method for printing regions within node templates
-  if ($blocks = block_get_blocks_by_region('sidebar_first')) {
-    $vars['sidebar_first'] = $blocks;
-    $vars['sidebar_first']['#theme_wrappers'] = array('region');
-    $vars['sidebar_first']['#region'] = 'sidebar_first';
-  }
-  
   // Rewrites the 'Submitted' text for each node
   $vars['submitted'] = render($vars['content']['field_author']);
-  
-  // Standardizes the variable names for each 'Subhead' field for the below content types. Removes logic from tpl.
-  // Use render($content['subhead']) in node templates to print all subheads.
-  if($hook == 'node'){
-    foreach(array('field_article_subhead', 'field_blogpost_subhead') as $key => $value){
-      if(isset($vars['content'][$value]) && !empty($vars['content'][$value])){
-        $vars['content']['subhead'] = $vars['content'][$value];
-        hide($vars['content'][$value]);
-        break;
-      }
-    }
-  }
+  show($vars['content']['field_author']);
   
   // Adds a 'Featured Action' link into the body of a blog entry automatically (TPB-423)
   if($hook == 'node'){

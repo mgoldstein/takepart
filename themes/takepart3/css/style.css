@@ -1894,7 +1894,7 @@ h2.title {
   font-size: 32px;
   font-weight: bold;
   line-height: 35px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
  
 h2.title a{
@@ -1903,11 +1903,10 @@ h2.title a{
 }
 
 .field-name-field-article-subhead,
-.field-name-blog-subhead{
+.field-name-field-blogpost-subhead {  
   font-size: 18px;
   color: #666;
-  font-weight: bold;
-  line-height: 25px;
+  line-height: 120%;
   margin-bottom: 15px;
 }
 
@@ -2009,7 +2008,7 @@ h2.title a{
 
 .submitted-wrapper {
   border-bottom: 2px solid black;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding-bottom: 15px;
 }
 
@@ -2290,6 +2289,10 @@ body.node-type-openpublish-blog-post h1.page-title {
   display: none;
 }
 
+.field-name-field-blogpost-main-image {
+  margin-bottom: 30px;
+}
+
 .field-name-field-blogpost-main-image img{
   border: 1px solid black;
 }
@@ -2530,8 +2533,7 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
   margin-top: 20px;
 }
 
-.field-name-field-tp-campaign-subheadline,
-.field-name-field-blogpost-subhead {
+.field-name-field-tp-campaign-subheadline {
   font-size: 23px;
   font-weight: bold;
   border-bottom: 1px dotted black;
