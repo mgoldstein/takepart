@@ -92,7 +92,7 @@ function takepart_action_context_default_contexts() {
           'module' => 'views',
           'delta' => 'related_actions-block_1',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => 2,
         ),
       ),
     ),

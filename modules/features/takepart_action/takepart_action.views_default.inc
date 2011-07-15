@@ -196,6 +196,24 @@ function takepart_action_views_default_views() {
   $handler->display->display_options['arguments']['tid']['require_value'] = 0;
   $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['arguments']['tid']['set_breadcrumb'] = 0;
+
+  /* Display: By Sponsor */
+  $handler = $view->new_display('block', 'By Sponsor', 'block_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Sponsored Actions';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Action Sponsor (field_action_sponsor) */
+  $handler->display->display_options['arguments']['field_action_sponsor_nid']['id'] = 'field_action_sponsor_nid';
+  $handler->display->display_options['arguments']['field_action_sponsor_nid']['table'] = 'field_data_field_action_sponsor';
+  $handler->display->display_options['arguments']['field_action_sponsor_nid']['field'] = 'field_action_sponsor_nid';
+  $handler->display->display_options['arguments']['field_action_sponsor_nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_action_sponsor_nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['field_action_sponsor_nid']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['field_action_sponsor_nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_action_sponsor_nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_action_sponsor_nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_action_sponsor_nid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_action_sponsor_nid']['not'] = 0;
   $export['related_actions'] = $view;
 
   return $export;

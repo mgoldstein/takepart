@@ -126,7 +126,7 @@ function takepart_action_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'body',
       'label' => 'Body',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'display_summary' => 0,
         'text_processing' => '1',
@@ -171,7 +171,7 @@ function takepart_action_field_default_fields() {
       'description' => 'User can reference a Photo to be used as the Main Image for the Action.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'media',
           'settings' => array(
             'file_view_mode' => 'default',
@@ -300,7 +300,7 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '16',
+        'weight' => '12',
       ),
     ),
   );
@@ -805,7 +805,7 @@ function takepart_action_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 22,
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -830,7 +830,7 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '18',
+        'weight' => '14',
       ),
     ),
   );
@@ -897,7 +897,7 @@ function takepart_action_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 20,
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -922,7 +922,7 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '14',
+        'weight' => '16',
       ),
     ),
   );
@@ -967,7 +967,7 @@ function takepart_action_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 23,
+          'weight' => '23',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -990,7 +990,7 @@ function takepart_action_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '15',
+        'weight' => '11',
       ),
     ),
   );
@@ -1035,7 +1035,7 @@ function takepart_action_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 18,
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1058,7 +1058,7 @@ function takepart_action_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '17',
+        'weight' => '13',
       ),
     ),
   );
@@ -1103,7 +1103,7 @@ function takepart_action_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 21,
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1126,7 +1126,7 @@ function takepart_action_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '13',
+        'weight' => '15',
       ),
     ),
   );

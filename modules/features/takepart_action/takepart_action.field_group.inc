@@ -262,12 +262,12 @@ function takepart_action_field_group_info() {
     'label' => 'Main',
     'weight' => '2',
     'children' => array(
-      0 => 'group_action_content',
-      1 => 'group_action_promos',
-      2 => 'group_action_sponsors',
-      3 => 'group_action_media',
-      4 => 'group_action_terms',
-      5 => 'group_action_body',
+      0 => 'group_action_body',
+      1 => 'group_action_content',
+      2 => 'group_action_media',
+      3 => 'group_action_promos',
+      4 => 'group_action_sponsors',
+      5 => 'group_action_terms',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(
