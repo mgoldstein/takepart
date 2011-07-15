@@ -154,6 +154,12 @@ $info['projects']['media_image_formatter']['download']['type']   = 'git';
 $info['projects']['media_image_formatter']['download']['branch'] = 'master';
 $info['projects']['media_image_formatter']['download']['url']    = 'git@github.com:phase2/media_image_formatter.git';
 
+$info['projects']['context_title']['type']   = 'module';
+$info['projects']['context_title']['subdir'] = 'contrib';
+$info['projects']['context_title']['download']['type']   = 'git';
+$info['projects']['context_title']['download']['branch'] = 'master';
+$info['projects']['context_title']['download']['url']    = 'git@github.com:phase2/context_title.git';
+
 $info['projects']['styles']['type']    = 'module';
 $info['projects']['styles']['subdir']  = 'contrib';
 $info['projects']['styles']['version'] = '2.0-alpha8';
