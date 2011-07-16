@@ -17,14 +17,26 @@
   <?php endif; ?>
 
   <?php if (!empty($content)): ?>
+    
     <?php hide($content['comments']); ?>
     
-    <?php if($view_mode == 'teaser'): ?>
-      <?php hide($content['field_free_tag']); ?>
-    <?php endif; ?>
-    
     <div class='content content-bottom clearfix <?php if (!empty($is_prose)) print 'prose' ?>'>
+      
+      <?php if($view_mode == 'teaser'): ?>
+        <?php hide($content['field_free_tag']); ?>
+        <?php hide($content['field_topic']); ?>
+        <?php hide($content['body']); ?>
+      <?php endif; ?>
+      
       <?php print render($content); ?>
+      
+      <?php if($view_mode == 'teaser'): ?>
+        <?php show($content['field_topic']); ?>
+        <?php print takepart3_addthis_button(); ?>    
+        <?php print render($content['body']); ?>
+        <?php print render($content['field_topic']); ?>
+      <?php endif; ?>
+      
     </div>
     
   <?php endif; ?>

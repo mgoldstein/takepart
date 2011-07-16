@@ -2279,6 +2279,19 @@ body.node-type-topic-front h2.title a {
   font-size: 14px;
 }
 
+/***** Teasers *****/
+
+.node-teaser .addthis_toolbox {
+  width: 140px;
+  float: left;
+  clear: left;
+}
+
+.node-teaser .field-name-body {
+  width: 460px;
+  margin-left: 160px;
+}
+
 /***** Blog Post *****/
 
 body.node-type-openpublish-blog-post h1.page-title {
@@ -2418,6 +2431,7 @@ blockquote p {
   border-top: 1px dotted silver;
   border-bottom: 1px dotted silver;
   padding: 25px 25px 25px 70px;
+  clear: both;
 }
 
 .node-topics-label {

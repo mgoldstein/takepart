@@ -204,6 +204,13 @@ function takepart3_preprocess_node(&$vars, $hook) {
       $vars['theme_hook_suggestions'][] = 'node__embed';
   }   
   
+  // Provides a method for printing regions within node templates
+  if ($blocks = block_get_blocks_by_region('sidebar_first')) {
+    $vars['sidebar_first'] = $blocks;
+    $vars['sidebar_first']['#theme_wrappers'] = array('region');
+    $vars['sidebar_first']['#region'] = 'sidebar_first';
+  }
+  
   // Rewrites the 'Submitted' text for each node
   $vars['submitted'] = render($vars['content']['field_author']);
   show($vars['content']['field_author']);
@@ -316,7 +323,7 @@ function takepart3_preprocess_comment(&$vars){
  * Theme the AddThis button.
  *  - Bypasses the module's output completely. For the time being
  */
-function takepart3_addthis_button(&$vars) {
+function takepart3_addthis_button(&$vars = '') {
   
   $images_url = base_path() . path_to_theme() . '/images/';
   
@@ -326,7 +333,7 @@ function takepart3_addthis_button(&$vars) {
   
   return '<!-- AddThis Button BEGIN -->
   <div class="addthis_toolbox addthis_default_style ">
-    <a class="addthis_button_facebook" fb:like:layout="button_count"></a>
+    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
     <a class="addthis_button_tweet"></a>
   </div>
   <div class="addthis_toolbox">
