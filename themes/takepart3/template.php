@@ -301,6 +301,18 @@ function takepart3_field__field_tp_campaign_alliances(&$vars){
 }
 */
 
+/*
+function takepart3_field__field_display_tag($vars){
+  // field_blog_branding_image
+  krumo($vars);
+  
+  $tid = $vars['items'][0]['#options']['entity']->tid;
+ // krumo($tid);
+  $test = entity_load('taxonomy_term', array($tid) );
+  krumo($test);
+}
+*/
+
 function takepart3_field__field_topic($vars){
   
   $links = array();
@@ -369,5 +381,15 @@ function takepart3_preprocess_block(&$vars) {
     if(!empty($vars['elements']['#block']->bid)){
       $vars['classes_array'][] = 'block-boxes-bid-' . $vars['elements']['#block']->bid;
     }
+    
+}
 
+function _render_tp3_quick_study_topics($node){
+  $output = array();
+  if(isset($node->field_topic)){
+    foreach($node->field_topic['und'] as $key => $value){
+      $output[] = l( $value['taxonomy_term']->name, url($value['taxonomy_term']->uri['path']) );
+    }
+  }
+  return '<div class="node-takepart-quick-study-topics">' . implode(' | ', $output) . '</div>';
 }

@@ -22,6 +22,9 @@
     
     <div class='content content-bottom clearfix <?php if (!empty($is_prose)) print 'prose' ?>'>
       
+      <?php // krumo($node); ?>
+      <?php // krumo($content); ?>
+      
       <?php if($view_mode == 'teaser'): ?>
         <?php hide($content['field_free_tag']); ?>
         <?php hide($content['field_topic']); ?>
@@ -41,8 +44,6 @@
     
   <?php endif; ?>
   
-  <?php // krumo($node); ?>
-
   <?php if (!empty($links)): ?>
     <div class='links clearfix'>
       <?php print render($links) ?>
