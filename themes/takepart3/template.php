@@ -210,10 +210,14 @@ function takepart3_preprocess_node(&$vars, $hook) {
     $vars['sidebar_first']['#theme_wrappers'] = array('region');
     $vars['sidebar_first']['#region'] = 'sidebar_first';
   }
-  
+ 
   // Rewrites the 'Submitted' text for each node
-  $vars['submitted'] = render($vars['content']['field_author']);
-  show($vars['content']['field_author']);
+  if($vars['content']['field_author']){
+    $vars['submitted'] = render($vars['content']['field_author']);
+    show($vars['content']['field_author']);
+  }else{
+    $vars['submitted'] = sprintf("<div class='submitted-wrapper'><div class='submitted clearfix'><div class='field article-date'>%s</div><div class='field article-comment-count'><a href='#comments'>%s comments</a></div></div></div>", format_date($vars['created'], 'medium', 'F j, Y | g:i a'), $vars['comment_count']);   
+  }
   
   // Adds a 'Featured Action' link into the body of a blog entry automatically (TPB-423)
   if($hook == 'node'){
