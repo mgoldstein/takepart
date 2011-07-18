@@ -212,7 +212,7 @@ function takepart3_preprocess_node(&$vars, $hook) {
   }
  
   // Rewrites the 'Submitted' text for each node
-  if($vars['content']['field_author']){
+  if(isset($vars['content']['field_author'])){
     $vars['submitted'] = render($vars['content']['field_author']);
     show($vars['content']['field_author']);
   }else{
