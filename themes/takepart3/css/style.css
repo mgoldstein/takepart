@@ -2629,6 +2629,42 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
 }
 
 /*
+ * Login form
+ */
+#user-login label,
+#user-register-form label {
+	font-size:20px;
+	margin-bottom:10px;
+}
+#user-login input,
+#user-register-form input {
+	font-size:16px;
+	margin-bottom:5px;
+}
+#user-login input[type=text],
+#user-register-form input[type=text] {
+	width:550px;
+}
+#user-login input[type=checkbox],
+#user-register-form input[type=checkbox] {
+	margin-bottom:12px;
+}
+#user-login div.description,
+#user-register-form div.description {
+	font-style:italic;
+	color:#999;
+	font-size:12px;
+	margin-bottom:20px;
+}
+.form-item-field-account-dateofbirth-und-0-value div.description {
+	margin-top:5px;
+}
+#user-login .fb-login-button,
+#user-register-form .fb-login-button {
+	margin-bottom:20px;
+}
+
+/*
 
 .node-takepart-quick-study.node-teaser {
   margin-bottom: 0;
