@@ -14,7 +14,7 @@ Light Green: #8dc547
 /**** Temp ******/
 
 .node-section-front.clearfix {
-  display: none;
+ /*  display: none; */
 }
 
 /***** Reset ******/
@@ -480,7 +480,41 @@ ul#top-nav li.last a{
 	float: left;
 }
 
+/****** Blog Landing Page *****/
 
+.view-blogs .taxonomy-term {
+  border-bottom: 1px dotted silver;
+  margin-bottom: 30px;
+  width: 480px;
+}
+
+.view-blogs .views-row.views-row-last .taxonomy-term {
+  border-bottom: 0;
+}
+
+.view-blogs .taxonomy-term h2 {
+  display: none;
+}
+
+.view-blogs .taxonomy-term .field-name-field-blog-view {
+  margin-bottom: 10px;
+}
+
+.view-blogs .taxonomy-term .views-row {
+  padding: 15px;
+}
+
+.view-blogs .taxonomy-term .views-row .views-field-title {
+  font-size: 16px;
+}
+
+.view-blogs .taxonomy-term .views-row .views-field-title a {
+  color: black;
+}
+
+.view-blogs .taxonomy-term .views-row .views-field-title a:hover {
+  color: #1ca9e7;
+}
 
 /****** Blog Series *****/
 
@@ -2107,7 +2141,8 @@ body.node-type-topic-front .submitted-wrapper{
 
 body.node-type-topic-front h1,
 body.node-type-topic-front h2.title,
-body.page-taxonomy-term h1 {
+body.page-taxonomy-term h1,
+body.node-type-section-front h2.title {
   background: #A0D332 url('../images/sprite-horizontal.gif') right -470px no-repeat;
   color: white;
   display: inline-block;
@@ -2118,6 +2153,7 @@ body.page-taxonomy-term h1 {
   padding-left: 17px;
 }
 
+body.node-type-section-front h2.title a,
 body.node-type-topic-front h2.title a {
   color: white;
 }
