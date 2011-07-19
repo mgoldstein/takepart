@@ -73,6 +73,16 @@ $info['projects']['devel']['type']    =' module';
 $info['projects']['devel']['subdir']  = 'contrib';
 $info['projects']['devel']['version'] = '1.0';
 
+// Used for Options Element Module
+$info['projects']['options_element']['type']    =' module';
+$info['projects']['options_element']['subdir']  = 'contrib';
+$info['projects']['options_element']['version'] = '1.4';
+
+// Used for Webform Conditionals Module
+$info['projects']['webform_conditional']['type']    =' module';
+$info['projects']['webform_conditional']['subdir']  = 'contrib';
+$info['projects']['webform_conditional']['version'] = '1.x-dev';
+
 // Used for slide and rotator content
 $info['projects']['views_slideshow']['type']    = 'module';
 $info['projects']['views_slideshow']['subdir']  = 'contrib';
