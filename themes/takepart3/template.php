@@ -204,9 +204,12 @@ function takepart3_preprocess_node(&$vars, $hook) {
       $vars['theme_hook_suggestions'][] = 'node__embed';
   }   
   
-  // Rewrites the 'Submitted' text for each node
-  $vars['submitted'] = render($vars['content']['field_author']);
-  show($vars['content']['field_author']);
+  // Provides a method for printing regions within node templates
+  if ($blocks = block_get_blocks_by_region('sidebar_first')) {
+    $vars['sidebar_first'] = $blocks;
+    $vars['sidebar_first']['#theme_wrappers'] = array('region');
+    $vars['sidebar_first']['#region'] = 'sidebar_first';
+  }
   
   // Adds a 'Featured Action' link into the body of a blog entry automatically (TPB-423)
   if($hook == 'node'){
@@ -227,7 +230,7 @@ function takepart3_preprocess_node(&$vars, $hook) {
 }
 
 function takepart3_field__field_author(&$vars){
-  
+
   // Author
   $authors = array();
   foreach($vars['items'] as $key => $value){
@@ -279,33 +282,21 @@ function takepart3_field__field_tp_campaign_seg_4_rel(&$vars){
   return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
 }
 
-/*
-
-function takepart3_field__field_tp_campaign_sponsors(&$vars){
-
-}
-
-function takepart3_field__field_tp_campaign_alliances(&$vars){
-  $output = '';
-  foreach($vars['items'] as $key => $value){
-    $output .= '<div class="campaign-alliances-wrapper"><div class="campaign-alliances-image"></div>' . $value['#markup'] . '</div>';
-  }
-  return $output;
-}
-*/
-
 function takepart3_field__field_topic($vars){
   
-  $links = array();
-  foreach($vars['items'] as $key => $value){
-    $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+  if(count($vars['items'])){
+    $links = array();
+    foreach($vars['items'] as $key => $value){
+      $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+    }
+    $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
+
+    foreach($field_free_tag as $key => $value){
+      $term = taxonomy_term_load($value['tid']);
+      $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
+    }
+    return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
   }
-  $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
-  foreach($field_free_tag as $key => $value){
-    $links[] = "<a href='" . url($value['taxonomy_term']->uri['path']) . "'>" . $value['taxonomy_term']->name . '</a>';
-  }
-  return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
-  
 }
 
 function takepart3_preprocess_comment(&$vars){
@@ -316,7 +307,7 @@ function takepart3_preprocess_comment(&$vars){
  * Theme the AddThis button.
  *  - Bypasses the module's output completely. For the time being
  */
-function takepart3_addthis_button(&$vars) {
+function takepart3_addthis_button(&$vars = '') {
   
   $images_url = base_path() . path_to_theme() . '/images/';
   
@@ -326,7 +317,7 @@ function takepart3_addthis_button(&$vars) {
   
   return '<!-- AddThis Button BEGIN -->
   <div class="addthis_toolbox addthis_default_style ">
-    <a class="addthis_button_facebook" fb:like:layout="button_count"></a>
+    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
     <a class="addthis_button_tweet"></a>
   </div>
   <div class="addthis_toolbox">
@@ -362,5 +353,15 @@ function takepart3_preprocess_block(&$vars) {
     if(!empty($vars['elements']['#block']->bid)){
       $vars['classes_array'][] = 'block-boxes-bid-' . $vars['elements']['#block']->bid;
     }
+    
+}
 
+function _render_tp3_quick_study_topics($node){
+  $output = array();
+  if(isset($node->field_topic)){
+    foreach($node->field_topic['und'] as $key => $value){
+      $output[] = l( $value['taxonomy_term']->name, url($value['taxonomy_term']->uri['path']) );
+    }
+  }
+  return '<div class="node-takepart-quick-study-topics">' . implode(' | ', $output) . '</div>';
 }

@@ -1768,7 +1768,6 @@ Block Boxes (General)
 }
 
 .region-sidebar-second .block-boxes-title-our-blogs .taxonomy-term h2 {
-  /* Bookmark */
   background: url('../images/sprite-horizontal.gif') right -301px #8dc547;
   height: 39px;
   left: 0;
@@ -1975,7 +1974,6 @@ h2.title a{
 }
 
 .field-name-field-display-tag {
-  /* Bookmark */
   background: url('../images/sprite-horizontal.gif') 0 -430px #8dc547 no-repeat;
   border-bottom: 2px solid black;
   display: inline-block;
@@ -1990,7 +1988,6 @@ h2.title a{
   font-size: 18px;
   line-height: 30px;
 }
-
 
 .node-openpublish-article .field-name-body h1 {
   display: block;
@@ -2045,13 +2042,11 @@ h2.title a{
 .block-boxes-bid-views-related_campaigns-block_1 h2,
 .block-boxes-current-related_campaigns h2,
 .block-boxes-current-related_actions h2{
-  /* Bookmark */
   background-image: url('../images/sprite-box-ribbons.gif');
   background-repeat: no-repeat;
   border-bottom: 2px solid black;
   font-size: 15px;
   font-weight: bold;
-  /* height: 33px; */
   line-height: 16px;
   margin-bottom: 15px;
   padding-left: 35px;
@@ -2111,8 +2106,8 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 body.node-type-topic-front h1,
-body.node-type-topic-front h2.title {
-  /* Bookmark */
+body.node-type-topic-front h2.title,
+body.page-taxonomy-term h1 {
   background: #A0D332 url('../images/sprite-horizontal.gif') right -470px no-repeat;
   color: white;
   display: inline-block;
@@ -2125,13 +2120,6 @@ body.node-type-topic-front h2.title {
 
 body.node-type-topic-front h2.title a {
   color: white;
-}
-
-.block-boxes-current-taxonomy_search_list h2 {
-  font-size: 20px;
-  margin-bottom: 18px;
-  border-bottom: 3px solid black;
-  padding-bottom: 5px;
 }
 
 .block-box-primary,
@@ -2256,6 +2244,13 @@ body.node-type-topic-front h2.title a {
 
 /***** Taxonomy Search List *****/
 
+.block-boxes-current-taxonomy_search_list h2 {
+  font-size: 20px;
+  margin-bottom: 18px;
+  border-bottom: 3px solid black;
+  padding-bottom: 5px;
+}
+
 .view-taxonomy-search-list .views-field-type {
   color: #8dc547;
   font-size: 12px;
@@ -2277,6 +2272,23 @@ body.node-type-topic-front h2.title a {
 
 .view-taxonomy-search-list .views-field-field-promo-text {
   font-size: 14px;
+}
+
+/***** Teasers *****/
+
+.node.node-teaser {
+  margin-bottom: 50px;
+}
+
+.node-teaser .addthis_toolbox {
+  width: 140px;
+  float: left;
+  clear: left;
+}
+
+.node-teaser .field-name-body {
+  width: 460px;
+  margin-left: 160px;
 }
 
 /***** Blog Post *****/
@@ -2413,11 +2425,71 @@ blockquote p {
   width: 240px;
 }
 
+/** Campaign View **/
+
+.view-campaigns {
+
+}
+
+.view-campaigns.view-display-id-block_1 {
+
+}
+
+.view-campaigns.view-display-id-block_1 .views-row {
+  display: inline-block;
+  width: 199px;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.view-campaigns.view-display-id-block_1 .views-row .views-field-field-tp-campaign-cover-image {
+
+}
+
+.view-campaigns.view-display-id-block_1 .views-row .views-field-title {
+
+}
+
+.view-campaigns.view-display-id-block_1 .views-row .views-field-title a {
+  display: inline-block;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.view-campaigns.view-display-id-block_1 .views-row .views-field-title a:hover {
+  color: #1ca9e7;
+  text-decoration: underline;
+}
+
+.view-campaigns.view-display-id-block_1 .views-row .views-field-field-tp-campaign-subheadline {
+
+}
+
+.view-campaigns.view-display-id-block_1 .views-row .views-field-field-tp-campaign-subheadline {
+  color: #666;
+  font-size: 14px;
+}
+
+.view-campaigns.view-display-id-block_1 .views-row.views-row-odd {
+
+}
+
+.view-campaigns.view-display-id-block_1 .views-row.views-row-odd.views-row-first {
+
+}
+
+
 /** Topics **/
 .node-topics {
   border-top: 1px dotted silver;
   border-bottom: 1px dotted silver;
   padding: 25px 25px 25px 70px;
+  clear: both;
 }
 
 .node-topics-label {
@@ -2566,6 +2638,101 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
   padding:20px;
 }
 
+/*
+  Quick Study
+*/
+
+.node-takepart-quick-study.node-teaser {
+  background-color: #f8fcff;
+  margin-bottom: 0;
+  padding: 15px;
+}
+
+.node-takepart-quick-study.node-teaser .field-name-body {
+  width: auto;
+  margin:0;
+}
+
+.block-boxes-view-name-quick_study {
+  border-top: 3px solid #666;
+  border-bottom: 3px solid #666;
+}
+
+.block-boxes-view-name-quick_study .view-quick-study {
+  margin-bottom: 3px;
+}
+
+.block-boxes-view-name-quick_study h2 {
+  padding: 10px 0;
+  border-bottom: 1px dotted silver;
+  background-color: #f8fcff;
+  background-image: url('../images/sprite-horizontal.gif');
+  background-position: left -525px;
+  background-repeat: no-repeat;
+  text-indent: -9000px;
+  margin-top: 3px;
+  margin-bottom: 0;
+}
+
+.block-boxes-view-name-quick_study .content h2{
+  background: none;
+  padding: 0;
+  border: 0;
+  text-indent: 0;
+  margin: 0;
+  display: none;
+}
+
+.node-takepart-quick-study-topics {
+  margin-bottom: 10px;
+}
+
+/*
+
+.node-takepart-quick-study.node-teaser {
+  margin-bottom: 0;
+}
+
+.node-takepart-quick-study.node-teaser .field-name-body {
+  width: auto;
+  margin:0;
+  padding: 15px;
+}
+
+
+.view-quick-study {
+  padding-top: 3px;
+  border-top: 3px solid #666666;
+  border-bottom: 3px solid #666666;
+  background: #f8fbfe;
+}
+
+.view-quick-study h2,
+.node-takepart-quick-study h2 {
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0;
+  padding: 10px 0 10px 60px;
+  border-bottom: 1px dotted silver;
+  margin-bottom: 15px;
+  background-image: url('../images/sprite-horizontal.gif');
+  background-repeat: no-repeat;
+  background-position: left -510px;
+}
+
+.view-quick-study .field-name-field-quickstudy-main-image,
+.node-takepart-quick-study .field-name-field-quickstudy-main-image {
+  float: left;
+}
+
+.view-quick-study .field-name-field-quickstudy-main-image img,
+.node-takepart-quick-study .field-name-field-quickstudy-main-image img {
+  border: 1px solid silver;
+}
+*/
+
+/*
 .block-boxes-title-quick-study {
   padding-top: 3px;
   border-top: 3px solid #666666;
@@ -2593,5 +2760,5 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
 .block-boxes-title-quick-study .content {
   background: #f8fbfe;
 }
-
+*/
 
