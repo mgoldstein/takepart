@@ -210,14 +210,6 @@ function takepart3_preprocess_node(&$vars, $hook) {
     $vars['sidebar_first']['#theme_wrappers'] = array('region');
     $vars['sidebar_first']['#region'] = 'sidebar_first';
   }
- 
-  // Rewrites the 'Submitted' text for each node
-  if(isset($vars['content']['field_author'])){
-    $vars['submitted'] = render($vars['content']['field_author']);
-    show($vars['content']['field_author']);
-  }else{
-    $vars['submitted'] = sprintf("<div class='submitted-wrapper'><div class='submitted clearfix'><div class='field article-date'>%s</div><div class='field article-comment-count'><a href='#comments'>%s comments</a></div></div></div>", format_date($vars['created'], 'medium', 'F j, Y | g:i a'), $vars['comment_count']);   
-  }
   
   // Adds a 'Featured Action' link into the body of a blog entry automatically (TPB-423)
   if($hook == 'node'){
@@ -238,7 +230,7 @@ function takepart3_preprocess_node(&$vars, $hook) {
 }
 
 function takepart3_field__field_author(&$vars){
-  
+
   // Author
   $authors = array();
   foreach($vars['items'] as $key => $value){
@@ -290,45 +282,21 @@ function takepart3_field__field_tp_campaign_seg_4_rel(&$vars){
   return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
 }
 
-/*
-
-function takepart3_field__field_tp_campaign_sponsors(&$vars){
-
-}
-
-function takepart3_field__field_tp_campaign_alliances(&$vars){
-  $output = '';
-  foreach($vars['items'] as $key => $value){
-    $output .= '<div class="campaign-alliances-wrapper"><div class="campaign-alliances-image"></div>' . $value['#markup'] . '</div>';
-  }
-  return $output;
-}
-*/
-
-/*
-function takepart3_field__field_display_tag($vars){
-  // field_blog_branding_image
-  krumo($vars);
-  
-  $tid = $vars['items'][0]['#options']['entity']->tid;
- // krumo($tid);
-  $test = entity_load('taxonomy_term', array($tid) );
-  krumo($test);
-}
-*/
-
 function takepart3_field__field_topic($vars){
   
-  $links = array();
-  foreach($vars['items'] as $key => $value){
-    $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+  if(count($vars['items'])){
+    $links = array();
+    foreach($vars['items'] as $key => $value){
+      $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+    }
+    $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
+
+    foreach($field_free_tag as $key => $value){
+      $term = taxonomy_term_load($value['tid']);
+      $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
+    }
+    return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
   }
-  $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
-  foreach($field_free_tag as $key => $value){
-    $links[] = "<a href='" . url($value['taxonomy_term']->uri['path']) . "'>" . $value['taxonomy_term']->name . '</a>';
-  }
-  return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
-  
 }
 
 function takepart3_preprocess_comment(&$vars){

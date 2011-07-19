@@ -2106,7 +2106,8 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 body.node-type-topic-front h1,
-body.node-type-topic-front h2.title {
+body.node-type-topic-front h2.title,
+body.page-taxonomy-term h1 {
   background: #A0D332 url('../images/sprite-horizontal.gif') right -470px no-repeat;
   color: white;
   display: inline-block;
@@ -2621,6 +2622,10 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
   text-indent: 0;
   margin: 0;
   display: none;
+}
+
+.node-takepart-quick-study-topics {
+  margin-bottom: 10px;
 }
 
 /*

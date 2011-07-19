@@ -12,7 +12,7 @@
 
   <?php if (!empty($title_suffix)) print render($title_suffix); ?>
 
-  <?php if (!empty($submitted) && $view_mode != 'teaser'): ?>
+  <?php if (!empty($submitted)): ?>
     <?php print $submitted ?>
   <?php endif; ?>
 
