@@ -2425,6 +2425,65 @@ blockquote p {
   width: 240px;
 }
 
+/** Campaign View **/
+
+.view-campaigns {
+
+}
+
+.view-campaigns.view-display-id-block_1 {
+
+}
+
+.view-campaigns.view-display-id-block_1 .views-row {
+  display: inline-block;
+  width: 199px;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.view-campaigns.view-display-id-block_1 .views-row .views-field-field-tp-campaign-cover-image {
+
+}
+
+.view-campaigns.view-display-id-block_1 .views-row .views-field-title {
+
+}
+
+.view-campaigns.view-display-id-block_1 .views-row .views-field-title a {
+  display: inline-block;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.view-campaigns.view-display-id-block_1 .views-row .views-field-title a:hover {
+  color: #1ca9e7;
+  text-decoration: underline;
+}
+
+.view-campaigns.view-display-id-block_1 .views-row .views-field-field-tp-campaign-subheadline {
+
+}
+
+.view-campaigns.view-display-id-block_1 .views-row .views-field-field-tp-campaign-subheadline {
+  color: #666;
+  font-size: 14px;
+}
+
+.view-campaigns.view-display-id-block_1 .views-row.views-row-odd {
+
+}
+
+.view-campaigns.view-display-id-block_1 .views-row.views-row-odd.views-row-first {
+
+}
+
+
 /** Topics **/
 .node-topics {
   border-top: 1px dotted silver;
