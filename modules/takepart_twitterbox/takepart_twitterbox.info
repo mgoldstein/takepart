@@ -1,0 +1,6 @@
+name = TakePart Twitter Box
+description = Displays @takepart feed in Drupal box
+package = Take Part
+version = VERSION
+core = 7.x
+dependencies[] = "twitter_pull"
