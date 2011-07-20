@@ -2476,6 +2476,49 @@ blockquote p {
   width: 240px;
 }
 
+/** Author Node Page **/
+
+.author-links {
+  margin-bottom: 10px;
+}
+
+.author-links a {
+  padding: 0 5px;
+}
+
+.author-links a:first-child {
+  padding-left: 0;
+}
+
+.node-profile h2 {
+  font-size: 36px;
+  line-height: 100%;
+  color: #000;
+}
+
+.node-profile h3 {
+  font-size: 18px;
+  color: #666;
+  line-height: 120%;
+  margin-bottom: 10px;
+}
+
+.node-profile .author-bio-photo {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+#author_info {
+  margin-bottom: 30px;
+  border-bottom: 1px dotted silver;
+  padding-bottom: 15px;
+}
+
+#author-contributions {
+  clear: both;
+}
+
 /** Campaign View **/
 
 .view-campaigns {
