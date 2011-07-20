@@ -360,7 +360,8 @@ function _render_tp3_quick_study_topics($node){
   $output = array();
   if(isset($node->field_topic)){
     foreach($node->field_topic['und'] as $key => $value){
-      $output[] = l( $value['taxonomy_term']->name, url($value['taxonomy_term']->uri['path']) );
+      $term = taxonomy_term_load($value['tid']);
+      $output[] = l( $term->name, url('taxonomy/term/' . $value['tid']) );
     }
   }
   return '<div class="node-takepart-quick-study-topics">' . implode(' | ', $output) . '</div>';
