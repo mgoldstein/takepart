@@ -217,6 +217,58 @@ function newsletter_campaign_theme() {
   );
 }
 
+/**
+ * implement hook_module_implements_alter
+ * move our form alters after user customizations
+ */
+/*
+function newsletter_campaign_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'newsletter_campaign_form_user_profile_form_alter') {
+    //dpm($implementations);
+    $group = $implementations['newsletter_campaign'];
+    unset($implementations['newsletter_campaign']);
+    $implementations['newsletter_campaign'] = $group;
+  }
+}
+*/
+
+/**
+ * implement hook_form_alter
+ * add in submit handler for processing profile opt-in
+ */
+function newsletter_campaign_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
+  // for now, just use the same callbacks as the registration form.
+  // not sure we are keeping profile
+  
+  $form_user = $form['#user'];
+
+  // if form state 
+  $lang = $form['field_registration_email_opt_in']['#language'];
+  // the user obj on the form is not up date
+  $no_cache_user = user_load($form_user->uid, TRUE);
+  $opt_in = empty($no_cache_user->field_registration_email_opt_in[$lang][0]['value']) ? FALSE : TRUE;
+  
+  // remove the profile checkbox if checked.
+  if ($opt_in) {
+    unset($form['field_registration_email_opt_in']);
+  }
+  else {
+    // remove markup.
+    unset($form['unsubscribe_link']);
+  
+    $form['#submit'][]    = '_newsletter_campaign_profile_opt_in_submit';
+    $form['#validate'][]  = '_newsletter_campaign_profile_opt_in_validate';  
+  }
+}
+
+/**
+ * implement hook_form_alter
+ * add in submit handler for processing registration opt-in
+ */
+function newsletter_campaign_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+  $form['#submit'][] = '_newsletter_campaign_registration_opt_in_submit';
+  $form['#validate'][] = '_newsletter_campaign_registration_opt_in_validate';
+}
 
 /** 
  * menu callbacks
@@ -246,19 +298,6 @@ function _newsletter_campaign_list() {
     'title' => t('Add new Newsletter Campaign'),
     'href'  => 'admin/structure/newsletter-campaign/add',
   );
-/*
-  $camp_links[] = array(
-    'title' => t('Client Configuration'),
-    'href'  => 'admin/config/services/takepart-newsletter-signup-client',
-  );
-
-  if (module_exists('takepart_newsletter_signup')) {
-    $camp_links[] = array(
-      'title' => t('Server Configuration'),
-      'href'  => 'admin/config/services/takepart-newsletter-signup-service',
-    );    
-  }
-*/
 
   $links_data = array(
     'heading' => array('text' => t('Administration'), 'level' => 'h2'),
@@ -408,7 +447,55 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
 /**
  * Other callbacks & helpers
  */
- 
+
+/**
+ * submit handler for opt-in pages.
+ */
+
+function _newsletter_campaign_registration_opt_in_submit($form, &$form_state) {
+  $tp_campaign_id = variable_get('newsletter_campaign_tp_opt_in_code', '54');
+  $email = $form_state['values']['mail'];
+  $lang = $form_state['complete form']['field_registration_email_opt_in']['#language'];
+  $opt_in = $form_state['values']['field_registration_email_opt_in'][$lang][0]['value'];
+  
+  if ($opt_in === 1) {
+    module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
+    $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
+    drupal_set_message('status', $result['message']);
+  } 
+} 
+
+function _newsletter_campaign_profile_opt_in_submit($form, &$form_state) {
+  $tp_campaign_id = variable_get('newsletter_campaign_tp_opt_in_code', '54');
+  $email = $form_state['values']['mail'];
+  $lang = $form_state['complete form']['field_registration_email_opt_in']['#language'];
+  $opt_in = $form_state['values']['field_registration_email_opt_in'][$lang][0]['value'];
+  
+  if ($opt_in === 1) {
+    module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
+    $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
+    drupal_set_message('status', $result['message']);
+  } 
+} 
+
+/**
+ * validation for registration form.
+ *
+ */
+function _newsletter_campaign_registration_opt_in_validate($form, &$form_state) {
+  // validate email
+  valid_email_address($form_state['values']['mail']);
+}
+
+/**
+ * validation for profile form.
+ *
+ */
+function _newsletter_campaign_profile_opt_in_validate($form, &$form_state) {
+  // validate email
+  valid_email_address($form_state['values']['mail']);
+}
+
 /**
  * URI callback
  */

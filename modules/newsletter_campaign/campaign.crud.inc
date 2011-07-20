@@ -131,6 +131,7 @@ function _newsletter_campaign_settings() {
       <li>takepart_newsletter_signup_pluris_url</li>
       <li>takepart_newsletter_signup_pluris_requester</li>
       <li>newsletter_campaign_unsubscribe_all_campaign_code</li>
+      <li>newsletter_campaign_tp_opt_in_code</li>
     </ul>
     ',
   );
