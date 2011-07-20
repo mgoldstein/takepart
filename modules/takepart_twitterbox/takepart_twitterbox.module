@@ -4,7 +4,7 @@ function takepart_twitterbox_twitter_pull_blocks() {
   return array(
     0 => (object) array(
       'delta' => 'takepart_twitterbox_0',
-      'tweetkey' => 'TakePart',
+      'tweetkey' => '@TakePart',
       'title' => 'TakePart Twitter Feed',
       'name'  => 'TakePart Twitter Feed',   
       'number_of_items' => 5,
