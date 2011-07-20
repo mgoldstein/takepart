@@ -1010,10 +1010,11 @@ h3.title a:hover{
 }
 
 ul#global-links{
-  float:right;
-  width:470px;
-  text-transform: uppercase;
+  float: right;
   margin-top: 17px;
+  text-align: right;
+  text-transform: uppercase;
+  width: 500px;
 }
 
 ul#global-links li {
