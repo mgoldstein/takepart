@@ -83,6 +83,11 @@ $info['projects']['webform_conditional']['type']    =' module';
 $info['projects']['webform_conditional']['subdir']  = 'contrib';
 $info['projects']['webform_conditional']['version'] = '1.x-dev';
 
+// Used for Twitter Pull Module
+$info['projects']['twitter_pull']['type']    =' module';
+$info['projects']['twitter_pull']['subdir']  = 'contrib';
+$info['projects']['twitter_pull']['version'] = '1.0-rc1';
+
 // Used for slide and rotator content
 $info['projects']['views_slideshow']['type']    = 'module';
 $info['projects']['views_slideshow']['subdir']  = 'contrib';
