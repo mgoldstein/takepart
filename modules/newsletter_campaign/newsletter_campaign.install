@@ -121,15 +121,14 @@ function newsletter_campaign_schema() {
  * Implementation of hook_uninstall().
  */
 function newsletter_campaign_uninstall() {
+  variable_del('takepart_newsletter_signup_pluris_requester');
+  variable_del('takepart_newsletter_signup_pluris_unsubscribe_url');
+  variable_del('takepart_newsletter_signup_pluris_url');
+  variable_del('newsletter_campaign_unsubscribe_all_campaign_code');
+  variable_del('takepart_newsletter_signup_unsubscribe_problem_page');
+  variable_del('takepart_newsletter_signup_unsubscribe_confirmation_page');
+  variable_del('newsletter_campaign_tp_opt_in_code');
 }
-/**
-  variable_del('takepart_newsletter_signup_client_service_url');
-  variable_del('takepart_newsletter_signup_client_api_key');
-  variable_del('takepart_newsletter_signup_client_domain');
-  variable_del('takepart_newsletter_signup_client_direct_save');
-  variable_del('takepart_newsletter_signup_client_problem_text');
-}
-**/
 
 /**
  * Move this modules weight to be later than the takepart user customization feature.
