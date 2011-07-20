@@ -1,7 +1,16 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+function takepart_twitterbox_twitter_pull_blocks() {
+  return array(
+    0 => (object) array(
+      'delta' => 'takepart_twitterbox_0',
+      'tweetkey' => 'TakePart',
+      'title' => 'TakePart Twitter Feed',
+      'name'  => 'TakePart Twitter Feed',   
+      'number_of_items' => 5,
+      // 'theme_key' => 'twitter_pull_listing',   
+    )
+  );
+}
+
 ?>
