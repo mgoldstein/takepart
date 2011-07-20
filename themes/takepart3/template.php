@@ -52,13 +52,23 @@ function _render_tp3_main_menu() {
   $menu_data = menu_tree_page_data("main-menu");
 
   $links = array();
+  $count = count($menu_data);
+  $i = 0;
   foreach($menu_data as $menu_item) {
     $opts = array(
       'attributes' => _default_menu_options($menu_item),
     );
     
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-    $links[] = "<li>". $link ."</li>";
+    if ($i == 0) {
+      $li = '<li class="first">';
+    } elseif ($i == ($count - 1)) {
+      $li = '<li class="last">';
+    } else {
+      $li = '<li>';
+    }
+    $links[] = $li . $link ."</li>";
+    $i++;
   }
   
   return "<ul id='top-nav'>" . implode($links) ."</ul>";
@@ -87,7 +97,7 @@ function _render_tp3_user_menu() {
       } 
       else {
         $opts['attributes']['class'][] = 'join-login';
-        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Login or");
+        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Login");
       }
       
     }else{
@@ -120,8 +130,10 @@ function _render_tp3_user_menu() {
 function _render_tp3_hottopics_menu() {
   $menu_data = menu_tree_page_data("menu-hot-topics");
 
-  $links = array( 0 => "<li class='title'>hot topics:</li>" );
+  $links = array( 0 => "<li class='title'>hot topics</li>" );
   
+  $count = count($menu_data);
+  $i = 0;
   foreach($menu_data as $menu_item) {
      
     $opts = array(
@@ -129,7 +141,15 @@ function _render_tp3_hottopics_menu() {
     );
     
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-    $links[] = "<li>". $link ."</li>";
+    if ($i == 0) {
+      $li = '<li class="first">';
+    } elseif ($i == ($count - 1)) {
+      $li = '<li class="last">';
+    } else {
+      $li = '<li>';
+    }
+    $links[] = $li . $link ."</li>";
+    $i++;
   }
   
   return "<ul class='clearfix'>" . implode($links) ."</ul>";
