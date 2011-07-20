@@ -13,23 +13,8 @@ include_once('takepart_user_customizations.features.inc');
  * 
  */
 function takepart_user_customizations_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
- 
   $form['unsubscribe_link'] = array(
     '#markup' => l('Unsubscribe from all TakePart emails', 'newsletter-campaign/unsubscribe'),
     '#weight' => 100,
   );
-  
-  
-  /** 
-   this is the existing unsubscribe link from takepart.com
-  
-  <a href="/newsletter-unsubscribe?
-    email=emckenna+tp@phase2technology.com&
-    campaign=alltpnl&
-    fb_canvas_destination=user/338568/edit">
-  Unsubscribe from all TakePart emails
-  </a>
-  
-  */
-  
 }

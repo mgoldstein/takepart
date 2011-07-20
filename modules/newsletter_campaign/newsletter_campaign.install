@@ -130,3 +130,19 @@ function newsletter_campaign_uninstall() {
   variable_del('takepart_newsletter_signup_client_problem_text');
 }
 **/
+
+/**
+ * Move this modules weight to be later than the takepart user customization feature.
+ */
+function newsletter_campaign_update_7100(&$sandbox) {
+  $weight = db_select('system', 's')
+              ->fields('s', array('weight'))
+              ->condition('name', 'takepart_user_customizations', '=')
+              ->execute()
+              ->fetchField();
+  
+  db_update('system')
+    ->fields(array('weight' => $weight +1))
+    ->condition('name', 'newsletter_campaign', '=')
+    ->execute();
+}
