@@ -233,16 +233,21 @@ function takepart3_preprocess_node(&$vars, $hook) {
   
   // Adds a 'Featured Action' link into the body of a blog entry automatically (TPB-423)
   if($hook == 'node'){
-    if($vars['type'] == 'openpublish_article'){
-      
+    if($vars['type'] == 'openpublish_article' || $vars['type'] == 'openpublish_blog_post'){
+
       $end = '/p>'; // end of a paragraph tag  
-      $featured_action = render($vars['content']['field_article_action']); // Markup to insert
+      
+      if($vars['type'] == 'openpublish_article'){
+        $featured_action = render($vars['content']['field_article_action']);
+      }else{
+        $featured_action = render($vars['content']['field_blogpost_featured_action']);  
+      }
 
       $pos = 0; // Find the position of the end of the 3rd paragraph
       for($i=0;$i<3;$i++){
         $pos = strpos($vars['content']['body'][0]['#markup'], $end, $pos)+1;
       }
-      
+
       $vars['content']['body'][0]['#markup'] = substr_replace($vars['content']['body'][0]['#markup'], $featured_action, $pos+2, 0);
     }
   }

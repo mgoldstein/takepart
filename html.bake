@@ -160,18 +160,16 @@ $info['projects']['context_title']['download']['type']   = 'git';
 $info['projects']['context_title']['download']['branch'] = 'master';
 $info['projects']['context_title']['download']['url']    = 'git@github.com:phase2/context_title.git';
 
-$info['projects']['context_omniture']['type']   = 'module';
-$info['projects']['context_omniture']['subdir'] = 'contrib';
-$info['projects']['context_omniture']['download']['type']   = 'git';
-$info['projects']['context_omniture']['download']['branch'] = 'master';
-$info['projects']['context_omniture']['download']['url']    = 'git@github.com:phase2/context_omniture.git';
-$info['projects']['context_omniture']['patch'][]    = 'http://drupal.org/files/issues/omniture_context_1223462-make.patch';
+$info['projects']['omniture']['type']   = 'module';
+$info['projects']['omniture']['subdir'] = 'contrib';
+$info['projects']['omniture']['version'] = '1.x-dev';
+$info['projects']['omniture']['patch'][]    = 'http://drupal.org/files/issues/omniture_context_1223462-make.patch';
 
 $info['projects']['token_function']['type']   = 'module';
 $info['projects']['token_function']['subdir'] = 'contrib';
 $info['projects']['token_function']['download']['type']   = 'git';
-$info['projects']['token_function']['download']['branch'] = 'master';
-$info['projects']['token_function']['download']['url']    = 'git@github.com:phase2/token_function.git';
+$info['projects']['token_function']['download']['branch'] = '7.x-1.x';
+$info['projects']['token_function']['download']['url']    = 'git@git.drupal.org:project/token_function.git';
 
 // used for hiding the breadcrumbs on the user pages
 $info['projects']['context_breadcrumb_current_page']['type']   = 'module';
