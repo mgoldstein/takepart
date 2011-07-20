@@ -171,6 +171,13 @@ $info['projects']['token_function']['download']['type']   = 'git';
 $info['projects']['token_function']['download']['branch'] = 'master';
 $info['projects']['token_function']['download']['url']    = 'git@github.com:phase2/token_function.git';
 
+// used for hiding the breadcrumbs on the user pages
+$info['projects']['context_breadcrumb_current_page']['type']   = 'module';
+$info['projects']['context_breadcrumb_current_page']['subdir'] = 'contrib';
+$info['projects']['context_breadcrumb_current_page']['download']['type']   = 'git';
+$info['projects']['context_breadcrumb_current_page']['download']['branch'] = 'master';
+$info['projects']['context_breadcrumb_current_page']['download']['url']    = 'git@github.com:phase2/context_breadcrumb_current_page.git';
+
 $info['projects']['styles']['type']    = 'module';
 $info['projects']['styles']['subdir']  = 'contrib';
 $info['projects']['styles']['version'] = '2.0-alpha8';
