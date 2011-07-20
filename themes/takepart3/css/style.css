@@ -1010,10 +1010,11 @@ h3.title a:hover{
 }
 
 ul#global-links{
-  float:right;
-  width:470px;
-  text-transform: uppercase;
+  float: right;
   margin-top: 17px;
+  text-align: right;
+  text-transform: uppercase;
+  width: 500px;
 }
 
 ul#global-links li {
@@ -1961,19 +1962,22 @@ h2.title a{
   border: 1px solid #666;
 }
 
-.field-name-field-article-action {
+.field-name-field-article-action,
+.field-name-field-blogpost-featured-action {
   background: #FFEFD8 url(../images/featured-action.gif) left center no-repeat;
   margin: 9px 10px 10px -10px;
   padding: 8px 10px;
   margin-bottom: 25px;
 }
 
-.field-name-field-article-action .field-items {
+.field-name-field-article-action .field-items,
+.field-name-field-blogpost-featured-action .field-items {
   padding-left: 160px;
   width: 280px;
 }
 
-.field-name-field-article-action .field-item a {
+.field-name-field-article-action .field-item a,
+.field-name-field-blogpost-featured-action .field-item a {
   font-size: 18px;
   font-family: Georgia, serif;
   padding: 3px 0 0 0;
