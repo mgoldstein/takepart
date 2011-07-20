@@ -24,10 +24,10 @@ function takepart_omniture_context_default_contexts() {
     ),
   );
   $context->reactions = array(
-    'context_omniture_reaction' => array(
+    'omniture_reaction' => array(
       'variables' => 's.channel = takepart:[current-page:url-arg:0]:[current-page:url-arg:-1]
 s.eVar04 = [node:content-type:machine-name]
-',
+s.eVar11 = [f:bool:{current-user:uid}:Yes:No]',
     ),
   );
   $context->condition_mode = 0;
