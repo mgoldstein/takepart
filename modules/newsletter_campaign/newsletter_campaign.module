@@ -151,11 +151,6 @@ function newsletter_campaign_load_multiple($ids = array(), $conditions = array()
   return $loaded;
 }
 
-
-
-/**
- * Campaign default block
- */
 /**
  * Implementation of hook_block_info()
  */
@@ -218,44 +213,23 @@ function newsletter_campaign_theme() {
 }
 
 /**
- * implement hook_module_implements_alter
- * move our form alters after user customizations
- */
-/*
-function newsletter_campaign_module_implements_alter(&$implementations, $hook) {
-  if ($hook == 'newsletter_campaign_form_user_profile_form_alter') {
-    //dpm($implementations);
-    $group = $implementations['newsletter_campaign'];
-    unset($implementations['newsletter_campaign']);
-    $implementations['newsletter_campaign'] = $group;
-  }
-}
-*/
-
-/**
  * implement hook_form_alter
  * add in submit handler for processing profile opt-in
  */
 function newsletter_campaign_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
-  // for now, just use the same callbacks as the registration form.
-  // not sure we are keeping profile
-  
   $form_user = $form['#user'];
+  $lang   = $form['field_registration_email_opt_in']['#language'];
+  $opt_in = empty($form_user->field_registration_email_opt_in[$lang][0]['value']) ? FALSE : TRUE;
 
-  // if form state 
-  $lang = $form['field_registration_email_opt_in']['#language'];
-  // the user obj on the form is not up date
-  $no_cache_user = user_load($form_user->uid, TRUE);
-  $opt_in = empty($no_cache_user->field_registration_email_opt_in[$lang][0]['value']) ? FALSE : TRUE;
-  
-  // remove the profile checkbox if checked.
+  // remove the checkbox if already opt'd in, since we have the link to 
+  // kick off unsubscription.
   if ($opt_in) {
     unset($form['field_registration_email_opt_in']);
   }
-  else {
-    // remove markup.
+  else { 
+    // not opt'd in, so unsub link not necessary.
     unset($form['unsubscribe_link']);
-  
+    // add handling for extra profile handling   
     $form['#submit'][]    = '_newsletter_campaign_profile_opt_in_submit';
     $form['#validate'][]  = '_newsletter_campaign_profile_opt_in_validate';  
   }
@@ -266,8 +240,8 @@ function newsletter_campaign_form_user_profile_form_alter(&$form, &$form_state, 
  * add in submit handler for processing registration opt-in
  */
 function newsletter_campaign_form_user_register_form_alter(&$form, &$form_state, $form_id) {
-  $form['#submit'][] = '_newsletter_campaign_registration_opt_in_submit';
-  $form['#validate'][] = '_newsletter_campaign_registration_opt_in_validate';
+  $form['#submit'][]    = '_newsletter_campaign_registration_opt_in_submit';
+  $form['#validate'][]  = '_newsletter_campaign_registration_opt_in_validate';
 }
 
 /** 
@@ -461,7 +435,7 @@ function _newsletter_campaign_registration_opt_in_submit($form, &$form_state) {
   if ($opt_in === 1) {
     module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
     $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
-    drupal_set_message('status', $result['message']);
+    drupal_set_message($result['message'], 'status', FALSE);
   } 
 } 
 
@@ -474,7 +448,7 @@ function _newsletter_campaign_profile_opt_in_submit($form, &$form_state) {
   if ($opt_in === 1) {
     module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
     $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
-    drupal_set_message('status', $result['message']);
+    drupal_set_message($result['message'], 'status', FALSE);
   } 
 } 
 
