@@ -52,13 +52,23 @@ function _render_tp3_main_menu() {
   $menu_data = menu_tree_page_data("main-menu");
 
   $links = array();
+  $count = count($menu_data);
+  $i = 0;
   foreach($menu_data as $menu_item) {
     $opts = array(
       'attributes' => _default_menu_options($menu_item),
     );
     
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-    $links[] = "<li>". $link ."</li>";
+    if ($i == 0) {
+      $li = '<li class="first">';
+    } elseif ($i == ($count - 1)) {
+      $li = '<li class="last">';
+    } else {
+      $li = '<li>';
+    }
+    $links[] = $li . $link ."</li>";
+    $i++;
   }
   
   return "<ul id='top-nav'>" . implode($links) ."</ul>";
@@ -87,7 +97,7 @@ function _render_tp3_user_menu() {
       } 
       else {
         $opts['attributes']['class'][] = 'join-login';
-        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Login or");
+        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Login");
       }
       
     }else{
@@ -120,8 +130,10 @@ function _render_tp3_user_menu() {
 function _render_tp3_hottopics_menu() {
   $menu_data = menu_tree_page_data("menu-hot-topics");
 
-  $links = array( 0 => "<li class='title'>hot topics:</li>" );
+  $links = array( 0 => "<li class='title'>hot topics</li>" );
   
+  $count = count($menu_data);
+  $i = 0;
   foreach($menu_data as $menu_item) {
      
     $opts = array(
@@ -129,7 +141,15 @@ function _render_tp3_hottopics_menu() {
     );
     
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-    $links[] = "<li>". $link ."</li>";
+    if ($i == 0) {
+      $li = '<li class="first">';
+    } elseif ($i == ($count - 1)) {
+      $li = '<li class="last">';
+    } else {
+      $li = '<li>';
+    }
+    $links[] = $li . $link ."</li>";
+    $i++;
   }
   
   return "<ul class='clearfix'>" . implode($links) ."</ul>";
@@ -213,16 +233,21 @@ function takepart3_preprocess_node(&$vars, $hook) {
   
   // Adds a 'Featured Action' link into the body of a blog entry automatically (TPB-423)
   if($hook == 'node'){
-    if($vars['type'] == 'openpublish_article'){
-      
+    if($vars['type'] == 'openpublish_article' || $vars['type'] == 'openpublish_blog_post'){
+
       $end = '/p>'; // end of a paragraph tag  
-      $featured_action = render($vars['content']['field_article_action']); // Markup to insert
+      
+      if($vars['type'] == 'openpublish_article'){
+        $featured_action = render($vars['content']['field_article_action']);
+      }else{
+        $featured_action = render($vars['content']['field_blogpost_featured_action']);  
+      }
 
       $pos = 0; // Find the position of the end of the 3rd paragraph
       for($i=0;$i<3;$i++){
         $pos = strpos($vars['content']['body'][0]['#markup'], $end, $pos)+1;
       }
-      
+
       $vars['content']['body'][0]['#markup'] = substr_replace($vars['content']['body'][0]['#markup'], $featured_action, $pos+2, 0);
     }
   }
