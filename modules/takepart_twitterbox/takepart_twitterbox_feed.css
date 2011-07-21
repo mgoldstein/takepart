@@ -1,0 +1,31 @@
+div.tp-twitter-feed ul {
+  list-style: none;
+}
+
+div.tp-twitter-feed div.tweet-authorphoto {
+  margin: 0 5px 0 0;
+  float: left;
+}
+
+div.tp-twitter-feed div.tweet-authorphoto img {
+  max-height: 40px;
+  max-width: 40px;
+}
+
+div.tp-twitter-feed a {
+  color: blue;
+}
+
+div.tp-twitter-feed .tweet-author a {
+  font-weight: bold;
+}
+
+div.tp-twitter-feed .tweet-time a {
+  color: silver;
+}
+
+div.tp-twitter-feed div.tweet-divider {
+  clear: left;
+  border-bottom: 1px solid #efefef;
+  margin: 5px 0 5px 0;
+}

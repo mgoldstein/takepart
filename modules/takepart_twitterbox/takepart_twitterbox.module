@@ -1,5 +1,7 @@
 <?php
-
+/*
+ *  Creates a Drupal block that displays the five most recent tweets by user TakePart
+ */
 function takepart_twitterbox_twitter_pull_blocks() {
   return array(
     0 => (object) array(
@@ -8,9 +10,17 @@ function takepart_twitterbox_twitter_pull_blocks() {
       'title' => 'TakePart Twitter Feed',
       'name'  => 'TakePart Twitter Feed',   
       'number_of_items' => 5,
-      // 'theme_key' => 'twitter_pull_listing',   
+      'theme_key' => 'takepart_twitterbox_feed',   
     )
   );
 }
 
+function takepart_twitterbox_theme() {
+  return array(
+    'takepart_twitter_feed' => array(
+      'arguments' => array('tweets' => NULL, 'twitkey' => NULL, 'title' => NULL),
+      'template' => 'takepart_twitterbox_feed'
+    ),
+  );
+}
 ?>
