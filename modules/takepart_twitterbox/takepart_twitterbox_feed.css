@@ -10,20 +10,27 @@ div.tp-twitter-feed div.tweet-authorphoto {
 div.tp-twitter-feed div.tweet-authorphoto img {
   max-height: 40px;
   max-width: 40px;
+  margin: 0 .5em 0 0;
 }
 
 div.tp-twitter-feed a {
-  color: blue;
+  color: black;
+}
+
+div.tp-twitter-feed a:hover {
+  color: #1CA9E7;
+  text-decoration: underline;
 }
 
 div.tp-twitter-feed .tweet-author a {
   font-weight: bold;
-}
 
+}
+/*
 div.tp-twitter-feed .tweet-time a {
-  color: silver;
+  color: black;
 }
-
+*/
 div.tp-twitter-feed div.tweet-divider {
   clear: left;
   border-bottom: 1px solid #efefef;
