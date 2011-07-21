@@ -13,7 +13,7 @@ bake_convert_to_dev($info,'nodeconnect');
 // Backup module to pull local copies of the db down for external developers
 $info['projects']['backup_migrate']['type']   = 'module';
 $info['projects']['backup_migrate']['subdir'] = 'contrib';
-$info['projects']['backup_migrate']['version']   = '2.1';
+$info['projects']['backup_migrate']['version']   = '2.2';
 
 // Flag can be removed once site goes live, only used for flagging test content
 $info['projects']['flag']['type']   = 'module';
@@ -73,7 +73,7 @@ $info['projects']['devel']['type']    =' module';
 $info['projects']['devel']['subdir']  = 'contrib';
 $info['projects']['devel']['version'] = '1.0';
 
-// Used for Options Element Module
+// Used for Options Element Module for contact us form
 $info['projects']['options_element']['type']    =' module';
 $info['projects']['options_element']['subdir']  = 'contrib';
 $info['projects']['options_element']['version'] = '1.4';
@@ -130,6 +130,10 @@ $info['projects']['search_api']['subdir']   = 'contrib';
 $info['projects']['search_api']['version']  = '1.0-beta10';
 
 /* Overrides versions of OpenPublish Modules */
+
+$info['projects']['diff']['type']     = 'module';
+$info['projects']['diff']['subdir']   = 'contrib';
+$info['projects']['diff']['version']  = '2.0';
 
 $info['projects']['xmlsitemap']['type']     = 'module';
 $info['projects']['xmlsitemap']['subdir']   = 'contrib';
@@ -216,7 +220,7 @@ $info['projects']['date']['version']  = '2.0-alpha3';
 
 $info['projects']['entity']['type']     = 'module';
 $info['projects']['entity']['subdir']   = 'contrib';
-$info['projects']['entity']['version']  = '1.0-beta9';
+$info['projects']['entity']['version']  = '1.0-beta10';
 
 $info['projects']['field_group']['type']    = 'module';
 $info['projects']['field_group']['subdir']  = 'contrib';
@@ -251,7 +255,7 @@ unset($info['projects']['nodequeue']);
 /* Use our own branch of OpenPublish Features */
 $info['projects']['openpublish_features']['download']['branch'] = 'takepart-3.0';
 
-// This come out of openpublish_features
+// This came out of openpublish_features
 $info['projects']['field_boxes']['type']   = 'module';
 $info['projects']['field_boxes']['subdir'] = 'contrib';
 $info['projects']['field_boxes']['download']['type']   = 'git';
