@@ -7,7 +7,7 @@
   		</div><!--/hot topics nav-->
   		
   		<div class="text">
-  		<img src="<?php print $base_path . $takepart_theme_path; ?>/images/title-inspiration-to-action.gif" alt="inspiration to action">
+  		<img src="<?php print $base_path . $takepart_theme_path; ?>/images/tagline-be-a-participant.gif" alt="Be A Participant">
   		</div><!--/text-->
 		</div>
 		
@@ -20,7 +20,7 @@
   
   	<div class="clear"></div>
 	  	<ul id="top-follow">
-				<li class="title"><img alt="follow us" src="<?php print $base_path . $takepart_theme_path; ?>/images/title-follow-us.gif"></li>
+				<li class="title">Follow Us</li>
 				<li class="fb"><a href="http://www.facebook.com/takepart">facebook</a></li>
 				<li class="twitter"><a href="http://www.twitter.com/takepart">twitter</a></li>
 				<li class="rss"><a href="#">rss</a></li>

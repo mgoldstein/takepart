@@ -59,7 +59,6 @@ function newsletter_campaign_form($form, &$form_state, $campaign) {
     '#description' => t('Campaign Code generated from the Pluris system.'),
     '#max_length' => 40,
     '#default_value' => $campaign->campaign_id,  
-  
   );
   $form['tpnc_thankyou_message'] = array(
     '#type' => 'textarea',
@@ -122,19 +121,75 @@ function newsletter_campaign_form_submit($form, &$form_state) {
 
 function _newsletter_campaign_settings() {
   $form = array();
-  
-  $form['getvarsfor'] = array(
-    '#markup' => '
-    <ul>
-      <li>takepart_newsletter_signup_unsubscribe_problem_page</.li>
-      <li>takepart_newsletter_signup_unsubscribe_confirmation_page</li>
-      <li>takepart_newsletter_signup_pluris_url</li>
-      <li>takepart_newsletter_signup_pluris_requester</li>
-      <li>newsletter_campaign_unsubscribe_all_campaign_code</li>
-      <li>newsletter_campaign_tp_opt_in_code</li>
-    </ul>
-    ',
+
+  $form['subscribe_fs'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Subscribe Settings'),
   );
+  $form['subscribe_fs']['newsletter_campaign_tp_opt_in_code'] = array(
+    '#type' => 'textfield',
+    '#title' => ('TakePart campaign code'),
+    '#description' => t('TakePart campaign code for opting in from the profile or registration pages.'),
+    '#size' => 60,
+    '#default_value' => 'tpnews1'    
+  );
+  
+  $form['unsubscribe_fs'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Unsubscription Settings'),
+  );
+  $form['unsubscribe_fs']['takepart_newsletter_signup_unsubscribe_confirmation_page'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Unsubscription confirmation page.'),
+    '#description' => t('Page displayed when unsubscribe action is successful.'),
+    '#size' => 60,
+    '#default_value' => 'newsletter-unsubscribe-confirmation',     
+  );
+    
+  $form['unsubscribe_fs']['takepart_newsletter_signup_unsubscribe_problem_page'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Unsubscription problem page'),
+    '#description' => t('The Pluris system campaign id for unsubscribing from all emails.'),
+    '#size' => 60,
+    '#default_value' => 'newsletter-unsubscribe-problem',     
+  );
+  $form['unsubscribe_fs']['newsletter_campaign_unsubscribe_all_campaign_code'] = array(
+    '#type' => 'textfield',
+    '#title' => ('Unsubscribe-All campaign code'),
+    '#description' => t('The campaign code for opting out of all takepart emails.'),
+    '#size' => 60,
+    '#default_value' => 'alltpnl'
+  );  
+  
+  $form['pluris_fs'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Pluris Settings'),
+  );
+  
+  $form['pluris_fs']['takepart_newsletter_signup_pluris_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Pluris signup service URL'),
+    '#description' => t('The endpoint for campaign signups'),
+    '#size' => 60,
+    '#default_value' => 'https://digitalsubscriptions.plurismarketing.com/subscribeRequest.php'    
+  );
+  
+  $form['pluris_fs']['takepart_newsletter_signup_pluris_unsubscribe_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Pluris unsubscribe service URL'),
+    '#description' => t('The Pluris service endpoint for unsubscribing.'),
+    '#size' => 60,
+    '#default_value' => 'https://digitalsubscriptions.plurismarketing.com/unsubscribeAll.php'
+  );
+  
+  $form['pluris_fs']['takepart_newsletter_signup_pluris_requester'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Pluris requester key'),
+    '#description' => t('Requestor code required by the pluris service.'),
+    '#size' => 60,
+    '#default_value' => 'tp',
+  );
+  
   
   return system_settings_form($form);
 }
