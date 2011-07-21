@@ -160,6 +160,12 @@ $info['projects']['context_title']['download']['type']   = 'git';
 $info['projects']['context_title']['download']['branch'] = 'master';
 $info['projects']['context_title']['download']['url']    = 'git@github.com:phase2/context_title.git';
 
+$info['projects']['views_file_row']['type']   = 'module';
+$info['projects']['views_file_row']['subdir'] = 'contrib';
+$info['projects']['views_file_row']['download']['type']   = 'git';
+$info['projects']['views_file_row']['download']['branch'] = 'master';
+$info['projects']['views_file_row']['download']['url']    = 'git@github.com:phase2/views_file_row.git';
+
 $info['projects']['omniture']['type']   = 'module';
 $info['projects']['omniture']['subdir'] = 'contrib';
 $info['projects']['omniture']['version'] = '1.x-dev';
