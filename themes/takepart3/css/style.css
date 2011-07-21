@@ -940,56 +940,24 @@ h3.title a:hover{
   width: 110px;
 }
 
-.footer-column-wrapper .title a {
+.footer-column-wrapper .title {
   display: block;
   width: 100px;
 }
 
-#our-film-campaigns .title a {
+#our-film-campaigns .title {
   height: 36px;
   background: url(../images/footer-titles.gif) no-repeat 0 -5px;
 }
 
-#our-film-campaigns .title a:hover {
-  background: url(../images/footer-titles.gif) no-repeat 0 -48px;
-}
-
-#friends-of-takepart .title a {
+#friends-of-takepart .title {
   height: 36px;
-  background: url(../images/footer-titles.gif) no-repeat 0 -110px;
+  background: url(../images/footer-titles.gif) no-repeat 0 -55px;
 }
 
-#friends-of-takepart .title a:hover {
-  background: url(../images/footer-titles.gif) no-repeat 0 -158px;
-}
-
-
-#footer-set-links .title a#news-and-blogs {
-  background: url(../images/footer-titles.gif) no-repeat 0 -216px;
+#footer-set-links .title {
+  background: url(../images/footer-titles.gif) no-repeat 0 -107px;
   height: 21px;
-}
-
-#footer-set-links .title a#news-and-blogs:hover {
-  background: url(../images/footer-titles.gif) no-repeat -1px -242px;
-}
-
-#footer-set-links .title a#issues {
-  background: url(../images/footer-titles.gif) no-repeat 0 -277px;
-  height: 21px;
-}
-
-#footer-set-links .title a#issues:hover {
-  background: url(../images/footer-titles.gif) no-repeat -2px -299px;
-}
-
-#footer-set-links .title a#actions {
-  background: url(../images/footer-titles.gif) no-repeat 0 -333px;
-  height: 21px;
-  margin-top: 3px;
-}
-
-#footer-set-links .title a#actions:hover {
-  background: url(../images/footer-titles.gif) no-repeat -1px -357px;
 }
 
 .footer-column-wrapper li a {
