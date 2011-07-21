@@ -99,11 +99,6 @@ $info['projects']['akamai']['type']     = 'module';
 $info['projects']['akamai']['subdir']   = 'contrib';
 $info['projects']['akamai']['version']  = '1.1';
 
-// Used for Omniture SiteCatalyst captures
-$info['projects']['omniture']['type']     = 'module';
-$info['projects']['omniture']['subdir']   = 'contrib';
-$info['projects']['omniture']['version']  = '1.x-dev';
-
 // Used for integration with Apache Solr
 $info['projects']['apachesolr']['type']     = 'module';
 $info['projects']['apachesolr']['subdir']   = 'contrib';
@@ -164,6 +159,24 @@ $info['projects']['context_title']['subdir'] = 'contrib';
 $info['projects']['context_title']['download']['type']   = 'git';
 $info['projects']['context_title']['download']['branch'] = 'master';
 $info['projects']['context_title']['download']['url']    = 'git@github.com:phase2/context_title.git';
+
+$info['projects']['omniture']['type']   = 'module';
+$info['projects']['omniture']['subdir'] = 'contrib';
+$info['projects']['omniture']['version'] = '1.x-dev';
+$info['projects']['omniture']['patch'][]    = 'http://drupal.org/files/issues/omniture_context_1223462-make.patch';
+
+$info['projects']['token_function']['type']   = 'module';
+$info['projects']['token_function']['subdir'] = 'contrib';
+$info['projects']['token_function']['download']['type']   = 'git';
+$info['projects']['token_function']['download']['branch'] = '7.x-1.x';
+$info['projects']['token_function']['download']['url']    = 'git@git.drupal.org:project/token_function.git';
+
+// used for hiding the breadcrumbs on the user pages
+$info['projects']['context_breadcrumb_current_page']['type']   = 'module';
+$info['projects']['context_breadcrumb_current_page']['subdir'] = 'contrib';
+$info['projects']['context_breadcrumb_current_page']['download']['type']   = 'git';
+$info['projects']['context_breadcrumb_current_page']['download']['branch'] = 'master';
+$info['projects']['context_breadcrumb_current_page']['download']['url']    = 'git@github.com:phase2/context_breadcrumb_current_page.git';
 
 $info['projects']['styles']['type']    = 'module';
 $info['projects']['styles']['subdir']  = 'contrib';
