@@ -160,8 +160,8 @@ img.photo, .gallery-item img {
 }
 
 #header {
-	background: url(../images/dot-line-h.gif) repeat-x 0 40px;
-	margin: 5px 0 0 0;
+	background: url(../images/header-arrows.png) no-repeat 730px 0;
+	margin:0;
 	position: relative;
 }
 
@@ -234,9 +234,8 @@ body.sidebar-first #content{
 	float: left;
 	width:  225px;
 	padding: 0 0 0px 0;
-	margin-left: -9px;
 	position: absolute;
-	top: 0px;
+	top: 25px;
 	left: 0px;
 }
 
@@ -259,11 +258,12 @@ body.sidebar-first #content{
 .header-mid {
 	float: left;
 	width: 450px;
-	margin: 0 0 0 223px;
+	margin: 25px 0 0 250px;
 }
 
 .header-mid .text {
-	margin: 33px 0 0 0;
+	margin: 17px 0;
+	line-height:12px;
 }
 
 /****** Hot Topics Nav *****/
@@ -273,27 +273,27 @@ body.sidebar-first #content{
 #hot-topics-nav li {
 	list-style-type: none;
 	display: inline;
-	border-right: 1px dotted #ccc;
+	border-right: 1px solid #ccc;
 	padding: 0 10px;
+	font-size:14px;
 }
 
 #hot-topics-nav li a {
-	color: #000;
+	color: #ccc;
 }
 
 #hot-topics-nav li a:hover {
-	color: #8dc547;
-	text-decoration: none;
+	color: #1ca9e7;
 }
 
-#hot-topics-nav li.last a{
+#hot-topics-nav li.last {
 	border: 0;
 }
 
 #hot-topics-nav li.title {
 	text-transform: uppercase;
 	font-weight: bold;
-	color: #8dc547;
+	color: #fdab30;
 	padding-left: 0;
 	padding-right: 0;
 	border: none;
@@ -315,14 +315,13 @@ body.sidebar-first #content{
 }
 
 #join-login-top {
-  background: #1DA9E7;
   font-size: 15px;
   padding: 0 5px 0 10px;
   width: 200px;
   float: right;
-  margin-top: -5px;
   height: 23px;
   overflow: visible;
+	margin-top:8px;
 }
 
 #join-login-top #user-nav {
@@ -330,51 +329,53 @@ body.sidebar-first #content{
   float: left;
 }
 
-#join-login-top {
-  
-}
-
 #user-nav li{
   display: inline-block;
   vertical-align: top;
+	margin-top:3px;
 }
 
 #join-login-top a {
-	color: #FFF; 
+	font-size:14px;
+	text-transform:uppercase;
+	font-weight:bolder;
+	line-height:15px;
 }
 
 #join-login-top .join-takepart {
-  float: left;
-  display: block;
-  background: url(../images/sprite.png) no-repeat -291px 0;
-  padding: 4px 0 0 4px;
-  height: 23px;
-  width: 74px;
-  font-size: 11px;
-  line-height: 16px;
-  margin-right: 14px;
+  margin-right: 10px;
 }
 
 #join-login-top .join-login {
-  font-size: 11px;
-  height: 23px;
-  line-height: 16px;
-  display: inline-block;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 #join-login-top span.fb {
-  background: url('../images/sprite.gif') -291px -29px no-repeat;
+  background: url('../images/sprite.png') -186px -117px no-repeat;
   display: inline-block;
-  width: 64px;
-  height: 18px;
-  text-indent: -9000px;
-  margin-top: 2px;
+  width: 19px;
+  height: 19px;
+}
+#join-login-top span.fb a {
+	background:none;
+	color: #1CA9E7;
+}
+#join-login-top span.fb a:hover {
+	text-decoration:underline;
+}
+#join-login-top span.fb a span {
+	background: none repeat scroll 0 0 #FFFFFF;
+  border: medium none;
+  color: #1CA9E7;
+  font-family: Helvetica,Arial,sans-serif;
+  margin: 0 0 0 18px;
+	padding:4px 0 1px 3px
 }
 
 .header-right {
   width: 230px;
-	float: right;
+	float: left;
+	margin-left:43px;
 }
 
 
@@ -400,7 +401,7 @@ ul#top-follow li a {
 	}
 
 ul#top-follow li.title {
-	margin: 8px 5px 0 0;
+	margin-top: 8px;
 }
 
 ul#top-follow li.fb a {
@@ -420,11 +421,12 @@ ul#top-follow li.rss a {
 #nav-wrap{
 	margin: 0 0 0 0;
 	background: #000;
-	padding: 16px 15px 11px 5px;
+	padding: 5px 15px 5px 5px;
 }
 
 ul#top-nav {
 	float: left;
+	margin-left: 25px;
 }
 
 ul#top-nav li {
@@ -435,11 +437,11 @@ ul#top-nav li {
 }
 
 ul#top-nav li a {
-	color: #fff;
-	display: block;
-	padding: 3px 10px 3px 10px;
-	text-decoration: none;
-	border-right: 1px dotted #FFF;	
+	border-right: 1px dashed #FFFFFF;
+  color: #FFFFFF;
+  display: block;
+  padding: 9px 10px;
+  text-decoration: none;	
 }
 
 ul#top-nav li.last a{
@@ -453,18 +455,16 @@ ul#top-nav li.last a{
 #top-search {
 	width:  160px;
 	float: right;
-	margin: 0;
+	margin: 7px 8px 0;
 }
 
 #top-search .form-text {
-	border:1px solid #CCCCCC;
+	border:none;
 	color:#999999;
 	float:left;
-	font-family:Georgia,serif;
 	font-size:12px;
-	font-style:italic;
-	padding:2px 14px 2px 14px;
-	width:100px;
+	padding:2px 5px;
+	width:130px;
 	margin-top: 1px;
 }
 
@@ -472,9 +472,9 @@ ul#top-nav li.last a{
 	background: url(../images/sprite.png) no-repeat 0 -115px;
 	border: none;
 	cursor: pointer;
-	height: 22px;
+	height: 20px;
 	text-indent: -9999px;
-	width: 30px;
+	width: 20px;
 	font-size: 0;
 	line-height: 0;
 	float: left;
@@ -1010,10 +1010,11 @@ h3.title a:hover{
 }
 
 ul#global-links{
-  float:right;
-  width:470px;
-  text-transform: uppercase;
+  float: right;
   margin-top: 17px;
+  text-align: right;
+  text-transform: uppercase;
+  width: 500px;
 }
 
 ul#global-links li {
@@ -1961,19 +1962,22 @@ h2.title a{
   border: 1px solid #666;
 }
 
-.field-name-field-article-action {
+.field-name-field-article-action,
+.field-name-field-blogpost-featured-action {
   background: #FFEFD8 url(../images/featured-action.gif) left center no-repeat;
   margin: 9px 10px 10px -10px;
   padding: 8px 10px;
   margin-bottom: 25px;
 }
 
-.field-name-field-article-action .field-items {
+.field-name-field-article-action .field-items,
+.field-name-field-blogpost-featured-action .field-items {
   padding-left: 160px;
   width: 280px;
 }
 
-.field-name-field-article-action .field-item a {
+.field-name-field-article-action .field-item a,
+.field-name-field-blogpost-featured-action .field-item a {
   font-size: 18px;
   font-family: Georgia, serif;
   padding: 3px 0 0 0;
