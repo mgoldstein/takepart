@@ -1478,7 +1478,8 @@ body.front h1 {
   background: #1ca9e7; /* Hover */
 }
 
-.views-slideshow-pager-field-item .views-field-field-slide-label {
+.views-slideshow-pager-field-item .views-field-field-slide-label,
+.views-slideshow-pager-field-item .views-field-field-display-tag {
   background: url('../images/sprite-vertical.gif') -602px 0 repeat-y;
   line-height: 0px;
   margin-bottom: 8px;
@@ -1486,7 +1487,8 @@ body.front h1 {
   border-top: 1px dotted silver;
 }
 
-.views-slideshow-pager-field-item .views-content-field-slide-label {
+.views-slideshow-pager-field-item .views-content-field-slide-label,
+.views-slideshow-pager-field-item .views-content-field-display-tag {
   background: white;
   color: #8dc547;
   display: inline;
