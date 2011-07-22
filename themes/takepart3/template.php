@@ -400,7 +400,7 @@ function _render_tp3_quick_study_topics($node){
       $output[] = l( $term->name, url('taxonomy/term/' . $value['tid']) );
     }
   }
-  return '<div class="node-takepart-quick-study-topics">' . implode(' | ', $output) . '</div>';
+  return '<div class="node-takepart-quick-study-topics field-name-field-display-tag">' . implode(' | ', $output) . '</div>';
 }
 
 function _render_tp3_header_search_form() {

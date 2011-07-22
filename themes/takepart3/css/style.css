@@ -2023,7 +2023,7 @@ h2.title a{
 }
 
 .block-addthis {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .addthis_toolbox .custom_images {
@@ -2159,6 +2159,15 @@ h2.title a{
 
 .block-boxes-view-name-related_content h2 {
   background-position: 0 -180px;
+}
+
+.block-boxes-current-related_campaigns a {
+  color: black;
+  font-weight: bold;
+}
+
+.block-boxes-current-related_campaigns a:hover {
+  color: #1CA9E7;
 }
 
 .block-boxes-view-name-related_content .views-row,
@@ -2847,7 +2856,6 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
 }
 
 .node-takepart-quick-study-topics a {
-  display: inline-block;
   padding: 5px;
 }
 
