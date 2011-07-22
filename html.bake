@@ -128,7 +128,7 @@ $info['projects']['search_api']['version']  = '1.0-beta10';
 /* Used to update jQuery Libraries in core */
 $info['projects']['jquery_update']['type']     = 'module';
 $info['projects']['jquery_update']['subdir']   = 'contrib';
-$info['projects']['jquery_update']['version']  = '1.2';
+$info['projects']['jquery_update']['version']  = '2.2';
 
 /* Overrides versions of OpenPublish Modules */
 
