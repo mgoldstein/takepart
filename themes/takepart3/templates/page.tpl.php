@@ -106,9 +106,7 @@
     
     <div id="footer-set-links" class="footer-column-wrapper clearfix">
       <div class="column title">
-        <a href="#" id="news-and-blogs">news &amp; blogs</a>
-        <a href="#" id="issues">issues</a>
-        <a href="#" id="actions">actions</a>
+        <a href="#">Topics</a>
       </div><!--/column-->
       <?php print $takepart_topics_nav ?>
     </div>

@@ -940,56 +940,24 @@ h3.title a:hover{
   width: 110px;
 }
 
-.footer-column-wrapper .title a {
+.footer-column-wrapper .title {
   display: block;
   width: 100px;
 }
 
-#our-film-campaigns .title a {
+#our-film-campaigns .title {
   height: 36px;
   background: url(../images/footer-titles.gif) no-repeat 0 -5px;
 }
 
-#our-film-campaigns .title a:hover {
-  background: url(../images/footer-titles.gif) no-repeat 0 -48px;
-}
-
-#friends-of-takepart .title a {
+#friends-of-takepart .title {
   height: 36px;
-  background: url(../images/footer-titles.gif) no-repeat 0 -110px;
+  background: url(../images/footer-titles.gif) no-repeat 0 -55px;
 }
 
-#friends-of-takepart .title a:hover {
-  background: url(../images/footer-titles.gif) no-repeat 0 -158px;
-}
-
-
-#footer-set-links .title a#news-and-blogs {
-  background: url(../images/footer-titles.gif) no-repeat 0 -216px;
+#footer-set-links .title {
+  background: url(../images/footer-titles.gif) no-repeat 0 -107px;
   height: 21px;
-}
-
-#footer-set-links .title a#news-and-blogs:hover {
-  background: url(../images/footer-titles.gif) no-repeat -1px -242px;
-}
-
-#footer-set-links .title a#issues {
-  background: url(../images/footer-titles.gif) no-repeat 0 -277px;
-  height: 21px;
-}
-
-#footer-set-links .title a#issues:hover {
-  background: url(../images/footer-titles.gif) no-repeat -2px -299px;
-}
-
-#footer-set-links .title a#actions {
-  background: url(../images/footer-titles.gif) no-repeat 0 -333px;
-  height: 21px;
-  margin-top: 3px;
-}
-
-#footer-set-links .title a#actions:hover {
-  background: url(../images/footer-titles.gif) no-repeat -1px -357px;
 }
 
 .footer-column-wrapper li a {
@@ -1372,17 +1340,32 @@ border: 1px solid black;
    width: 533px;
 }
 
-#comments .submitted {
+#comments .submitted,
+.comment-form .comment-form-title {
   float: left;
   width: 80px;
 }
+
+.comment-form .comment-edge {
+  background: url('../images/sprite-horizontal.gif') right -208px no-repeat;
+  height: 36px;
+}
+
+.comment-form .form-actions {
+  text-align: right;
+}
   
-.comment .content {
+.comment .content,
+.comment-form .field-name-comment-body {
   background: #f5f5f5;
   padding: 25px;
   line-height: 145%;
   font-size: 14px;
   margin-left: 80px;
+}
+
+.comment-form .field-name-comment-body .form-item {
+  margin: 0;
 }
 
 #comments .submitted-user {
@@ -1399,9 +1382,48 @@ border: 1px solid black;
 }
 
 .comment-indent .comment-text {
-border: 1px solid black;
+  border: 1px solid black;
   width: 420px;
 }
+
+/* Comment Reply Form */
+
+/*
+form.comment-form {
+  background: whiteSmoke;
+  padding: 20px;
+}
+*/
+
+/* Comment Edit/Reply/Delete */
+
+#comments ul.links {
+  float: right;
+  position: relative;
+  top: -20px;
+  margin-right: 15px;
+}
+
+#comments ul.links,
+#comments ul.links li{
+  height: 0;
+  overflow: visible;
+}
+
+#comments .links a {
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+  color: #BBB;
+  font-weight: normal;
+}
+
+#comments .links a:hover {
+  color: #1ca9e7;
+}
+
+
 
 /***** Article ******/
 
@@ -1510,7 +1532,8 @@ body.front h1 {
   background: #1ca9e7; /* Hover */
 }
 
-.views-slideshow-pager-field-item .views-field-field-slide-label {
+.views-slideshow-pager-field-item .views-field-field-slide-label,
+.views-slideshow-pager-field-item .views-field-field-display-tag {
   background: url('../images/sprite-vertical.gif') -602px 0 repeat-y;
   line-height: 0px;
   margin-bottom: 8px;
@@ -1518,7 +1541,8 @@ body.front h1 {
   border-top: 1px dotted silver;
 }
 
-.views-slideshow-pager-field-item .views-content-field-slide-label {
+.views-slideshow-pager-field-item .views-content-field-slide-label,
+.views-slideshow-pager-field-item .views-content-field-display-tag {
   background: white;
   color: #8dc547;
   display: inline;
@@ -2085,7 +2109,6 @@ h2.title a{
   height: 17px;
   padding: 0 10px 0 20px;
 }
-
 
 /* Featured Block Configurations */
 

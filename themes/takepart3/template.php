@@ -254,6 +254,13 @@ function takepart3_preprocess_node(&$vars, $hook) {
     
 }
 
+
+function takepart3_form_comment_form_alter(&$form, &$form_state, $form_id) {
+  $form['author']['#prefix'] = '<div class="comment-form-title">';
+  $form['author']['#suffix'] = '<div class="comment-edge"></div></div>';
+  unset($form['author']['_author']['#title']);
+}
+
 function takepart3_field__field_author(&$vars){
 
   // Author
