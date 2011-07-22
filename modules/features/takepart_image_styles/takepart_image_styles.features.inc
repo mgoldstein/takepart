@@ -10,28 +10,6 @@
 function takepart_image_styles_image_default_styles() {
   $styles = array();
 
-  // Exported image style: tp_small_rail_wide
-  $styles['tp_small_rail_wide'] = array(
-    'name' => 'tp_small_rail_wide',
-    'effects' => array(
-      11 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
-        'name' => 'image_scale',
-        'data' => array(
-          'width' => '150',
-          'height' => '',
-          'upscale' => 1,
-        ),
-        'weight' => '1',
-      ),
-    ),
-  );
-
   // Exported image style: tp_actions_impact_thumbnail
   $styles['tp_actions_impact_thumbnail'] = array(
     'name' => 'tp_actions_impact_thumbnail',
