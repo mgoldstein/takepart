@@ -284,7 +284,7 @@ function takepart_campaign_default_box() {
   $box->api_version = 1;
   $box->delta = 'box-33756e58';
   $box->plugin_key = 'field';
-  $box->title = '';
+  $box->title = 'Spotlight';
   $box->description = 'Campaign: Spotlight';
   $box->options = array(
     'entity_type' => 'node',
@@ -332,7 +332,7 @@ function takepart_campaign_default_box() {
   $box->api_version = 1;
   $box->delta = 'box-4abd00a3';
   $box->plugin_key = 'field';
-  $box->title = '';
+  $box->title = 'Alliances';
   $box->description = 'Campaign: Alliances Block';
   $box->options = array(
     'entity_type' => 'node',

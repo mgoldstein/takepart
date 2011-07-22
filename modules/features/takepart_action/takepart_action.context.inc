@@ -45,7 +45,7 @@ function takepart_action_context_default_contexts() {
           'module' => 'views',
           'delta' => 'related_actions-block',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => 1,
         ),
       ),
     ),
@@ -85,18 +85,7 @@ function takepart_action_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'views-related_actions-block_1' => array(
-          'module' => 'views',
-          'delta' => 'related_actions-block_1',
-          'region' => 'sidebar_second',
-          'weight' => 2,
-        ),
-      ),
-    ),
-  );
+  $context->reactions = array();
   $context->condition_mode = 1;
 
   // Translatables
