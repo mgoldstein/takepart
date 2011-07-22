@@ -254,7 +254,7 @@ function takepart3_preprocess_node(&$vars, $hook) {
     
 }
 
-
+/* Comment form */
 function takepart3_form_comment_form_alter(&$form, &$form_state, $form_id) {
   $form['author']['#prefix'] = '<div class="comment-form-title">';
   $form['author']['#suffix'] = '<div class="comment-edge"></div></div>';
