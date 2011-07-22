@@ -1,5 +1,6 @@
 div.tp-twitter-feed ul {
   list-style: none;
+  font-size: 11px;
 }
 
 div.tp-twitter-feed div.tweet-authorphoto {
@@ -14,11 +15,11 @@ div.tp-twitter-feed div.tweet-authorphoto img {
 }
 
 div.tp-twitter-feed a {
-  color: black;
+  color: #1CA9E7;
 }
 
 div.tp-twitter-feed a:hover {
-  color: #1CA9E7;
+  color: #1585BG;
   text-decoration: underline;
 }
 
@@ -26,11 +27,7 @@ div.tp-twitter-feed .tweet-author a {
   font-weight: bold;
 
 }
-/*
-div.tp-twitter-feed .tweet-time a {
-  color: black;
-}
-*/
+
 div.tp-twitter-feed div.tweet-divider {
   clear: left;
   border-bottom: 1px solid #efefef;
