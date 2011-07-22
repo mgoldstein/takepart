@@ -1354,6 +1354,7 @@ border: 1px solid black;
 
 .comment-form .form-actions {
   text-align: right;
+  margin-top: 0;
 }
   
 .comment .content,
@@ -1363,6 +1364,18 @@ border: 1px solid black;
   line-height: 145%;
   font-size: 14px;
   margin-left: 80px;
+}
+
+.comment-form .form-actions input {
+  background: #1CA9E7;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  margin: 5px 0;
+  display: inline-block;
+  border: 0;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .comment-form .field-name-comment-body .form-item {
@@ -2009,6 +2022,10 @@ h2.title a{
   color: #302009;
 }
 
+.block-addthis {
+  margin-bottom: 15px;
+}
+
 .addthis_toolbox .custom_images {
   margin-top: 10px;
 }
@@ -2382,10 +2399,6 @@ body.node-type-openpublish-blog-post h1.page-title {
 
 .field-name-field-blogpost-main-image img{
   border: 1px solid black;
-}
-
-#comments {
- 
 }
 
 /***** Blog Front *****/
