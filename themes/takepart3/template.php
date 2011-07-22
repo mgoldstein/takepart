@@ -35,6 +35,7 @@ function takepart3_preprocess_page(&$variables) {
   $variables['corporate_links_nav']   = _render_tp3_corporate_links_menu();
   $variables['user_nav']              = _render_tp3_user_menu();
   $variables['takepart_theme_path']   = drupal_get_path('theme', 'takepart3');
+  $variables['search_takepart_form']  = _render_tp3_header_search_form();
   
   // Adds page template suggestions for specific content types
   if (isset($variables['node'])) {  
@@ -304,12 +305,15 @@ function takepart3_field__field_tp_campaign_4_things_link(&$vars){
 function takepart3_field__field_tp_campaign_seg_1_rel(&$vars){
   return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
 }
+
 function takepart3_field__field_tp_campaign_seg_2_rel(&$vars){
   return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
 }
+
 function takepart3_field__field_tp_campaign_seg_3_rel(&$vars){
   return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
 }
+
 function takepart3_field__field_tp_campaign_seg_4_rel(&$vars){
   return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
 }
@@ -397,4 +401,8 @@ function _render_tp3_quick_study_topics($node){
     }
   }
   return '<div class="node-takepart-quick-study-topics">' . implode(' | ', $output) . '</div>';
+}
+
+function _render_tp3_header_search_form() {
+  return module_invoke('search', 'block_view', 'search');
 }

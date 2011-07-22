@@ -5,3 +5,8 @@
  */
 
 include_once('takepart_search.features.inc');
+
+function takepart_search_form_search_block_form_alter(&$form, &$form_state, $form_id) {
+  $form['search_block_form']['#default_value'] = 'Search TakePart';
+  $form['actions']['submit']['#attributes'] = array('class' => array('tpform-submit'));
+}

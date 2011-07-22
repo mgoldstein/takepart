@@ -468,7 +468,8 @@ ul#top-nav li.last a{
 	margin-top: 1px;
 }
 
-#top-search input#edit-submit {
+#top-search input#edit-submit,
+#top-search input#edit-submit--2 {
 	background: url(../images/sprite.png) no-repeat 0 -115px;
 	border: none;
 	cursor: pointer;
