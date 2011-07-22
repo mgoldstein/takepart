@@ -202,28 +202,6 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['fields']['name']['hide_empty'] = 0;
   $handler->display->display_options['fields']['name']['empty_zero'] = 0;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = 1;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'nid';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = 0;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Sort criterion: Arguments: Multi-item Argument Order */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'views_sort_by_arg_order';
@@ -267,6 +245,55 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'term';
   $handler->display->display_options['row_options']['view_mode'] = 'our_blogs_summary';
+  $handler->display->display_options['row_options']['links'] = 0;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Arguments: Multi-item Argument Order */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'views_sort_by_arg_order';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['weight']['argument_number'] = '0';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Term ID */
+  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['tid']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['tid']['break_phrase'] = 1;
+  $handler->display->display_options['arguments']['tid']['not'] = 0;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'blog' => 'blog',
+  );
+
+  /* Display: Our Blogs Landing Page */
+  $handler = $view->new_display('block', 'Our Blogs Landing Page', 'block_2');
+  $handler->display->display_options['display_description'] = 'Our Blogs landing page block limited by argument';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['grouping'] = 'field_blog_branding_image';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'term';
+  $handler->display->display_options['row_options']['view_mode'] = 'summary';
   $handler->display->display_options['row_options']['links'] = 0;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
