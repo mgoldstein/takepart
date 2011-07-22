@@ -2160,6 +2160,15 @@ h2.title a{
   background-position: 0 -180px;
 }
 
+.block-boxes-current-related_campaigns a {
+  color: black;
+  font-weight: bold;
+}
+
+.block-boxes-current-related_campaigns a:hover {
+  color: #1CA9E7;
+}
+
 .block-boxes-view-name-related_content .views-row,
 .block-boxes-view-name-related_actions .views-row,
 .block-boxes-bid-views-related_campaigns-block_1 .views-row{
