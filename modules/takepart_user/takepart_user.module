@@ -39,7 +39,7 @@ function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form
   $register_title = variable_get("takepart_user_register_page_title","Join TakePart");
   drupal_set_title($register_title);
   global $user;
-  if(!$user_access('Administer users', $user)) {
+  if (!(user_access('administer users'))) {
     $form['#validate'][] = '_takepart_user_validate';
     $form['actions']['submit']['#value'] = 'Register';
   }
