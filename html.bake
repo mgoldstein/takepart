@@ -25,6 +25,11 @@ $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project
 
 /* TakePart Modules */
 
+/* Used for File Storage */
+$info['projects']['cdn']['type']   = 'module';
+$info['projects']['cdn']['subdir'] = 'contrib';
+$info['projects']['cdn']['version']   = '2.0-beta1';
+
 /* Used for contact module */
 $info['projects']['field_redirection']['type']   = 'module';
 $info['projects']['field_redirection']['subdir'] = 'contrib';
@@ -251,7 +256,7 @@ $info['projects']['rubik']['version'] = '4.0-beta5';
 /* Remove modules not used by TakePart that are standard in OpenPublish */
 
 // Nodequeue is not needed in TP3.
-unset($info['projects']['nodequeue']);
+// unset($info['projects']['nodequeue']);
 
 /* Use our own branch of OpenPublish Features */
 $info['projects']['openpublish_features']['download']['branch'] = 'takepart-3.0';
