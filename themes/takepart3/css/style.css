@@ -1521,9 +1521,13 @@ body.front h1 {
 
 .view-id-slide_rotator .views-slideshow-pager-field-item {
   padding-bottom: 25px;
-  padding-top: 10px;
-  height: 50px;
+  height: 75px;
   z-index: 300;
+}
+
+.view-id-slide_rotator .views-slideshow-pager-field-item a{
+  color: black;
+  font-weight: bold;
 }
 
 .view-id-slide_rotator .views-slideshow-pager-field-item:hover a,
@@ -1534,6 +1538,11 @@ body.front h1 {
 
 .view-id-slide_rotator .views-slideshow-cycle-main-frame:hover .views-field-field-slide-headline-override .field-content{
   background: #1ca9e7; /* Hover */
+}
+
+.views-slideshow-pager-field-item:first-child  .views-field-field-slide-label,
+.views-slideshow-pager-field-item:first-child  .views-field-field-display-tag{
+  border-top: 0;
 }
 
 .views-slideshow-pager-field-item .views-field-field-slide-label,
@@ -1568,16 +1577,20 @@ body.front h1 {
   text-decoration: none;
 }
 
-.views_slideshow_main .views-field-field-slide-label {
+.views_slideshow_main .views-field-field-display-tag {
   height: 0;
-  left: -11px;
+  left: -9px;
   overflow: visible;
   position: relative;
-  top: -145px;
+  top: -97px;
   z-index: 500;
 }
 
-.views_slideshow_main .views-field-field-slide-label .field-content{
+.views_slideshow_main .views-field-field-display-tag a {
+  color: white;
+}
+
+.views_slideshow_main .views-field-field-display-tag .field-content{
   background: #8dc547 url('../images/sprite-horizontal.gif') 0 -341px no-repeat;
   color: white;
   display: inline-block;
@@ -1604,15 +1617,19 @@ body.front h1 {
   height: 0px;
   overflow: visible;
   position: relative;
-  top: -115px;
+  top: -68px;
   width: 400px;
 }
 
-.views_slideshow_main .views-field-field-slide-headline-override .field-content{
+.views_slideshow_main .views-field-field-slide-headline-override .field-content {
   background: black;
   display: inline-block;
   font-size: 25px;
   padding: 5px;
+}
+
+.views_slideshow_main .views-field-field-slide-headline-override .field-content a {
+  color: white;
 }
 
 .views-field-field-slide-headline-override {
@@ -2015,6 +2032,10 @@ h2.title a{
 
 .addthis_toolbox .custom_images {
   margin-top: 10px;
+}
+
+.addthis_toolbox .addthis_button_facebook_like {
+  margin-bottom: 10px;
 }
 
 .addthis_toolbox .custom_images a {
