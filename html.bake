@@ -256,7 +256,7 @@ $info['projects']['rubik']['version'] = '4.0-beta5';
 /* Remove modules not used by TakePart that are standard in OpenPublish */
 
 // Nodequeue is not needed in TP3.
-unset($info['projects']['nodequeue']);
+// unset($info['projects']['nodequeue']);
 
 /* Use our own branch of OpenPublish Features */
 $info['projects']['openpublish_features']['download']['branch'] = 'takepart-3.0';
