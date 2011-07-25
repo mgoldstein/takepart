@@ -424,6 +424,7 @@ print $value;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
@@ -436,7 +437,7 @@ print $value;
   $handler->display->display_options['empty']['area']['label'] = 'Empty';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
   $handler->display->display_options['empty']['area']['content'] = 'There is no associated content';
-  /* Field: Node: Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -457,8 +458,7 @@ print $value;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_entity'] = 0;
-  /* Field: Node: Promo Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
@@ -482,8 +482,7 @@ print $value;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = 1;
-  $handler->display->display_options['fields']['field_promo_headline']['link_to_entity'] = 0;
-  /* Field: Node: Content type */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['fields']['type']['field'] = 'type';
@@ -503,9 +502,7 @@ print $value;
   $handler->display->display_options['fields']['type']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['type']['hide_empty'] = 0;
   $handler->display->display_options['fields']['type']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['type']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['type']['format_name'] = 1;
-  /* Field: Linked Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['fields']['url']['field'] = 'url';
@@ -528,8 +525,7 @@ print $value;
   $handler->display->display_options['fields']['url']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['url']['hide_empty'] = 0;
   $handler->display->display_options['fields']['url']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
-  /* Field: Node: Promo Text */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -549,8 +545,7 @@ print $value;
   $handler->display->display_options['fields']['field_promo_text']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_promo_text']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_promo_text']['link_to_entity'] = 0;
-  /* Contextual filter: Topics [taxonomy_term] */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['field_topic_1']['id'] = 'field_topic_1';
   $handler->display->display_options['arguments']['field_topic_1']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['arguments']['field_topic_1']['field'] = 'field_topic';
@@ -579,7 +574,7 @@ print $value;
   /* Display: Free Tag */
   $handler = $view->new_display('block', 'Free Tag', 'block_1');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Free Tags [taxonomy_term] */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['field_free_tag']['id'] = 'field_free_tag';
   $handler->display->display_options['arguments']['field_free_tag']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['arguments']['field_free_tag']['field'] = 'field_free_tag';
@@ -605,7 +600,7 @@ print $value;
   /* Display: Series */
   $handler = $view->new_display('block', 'Series', 'block_2');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Series [taxonomy_term] */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['field_series']['id'] = 'field_series';
   $handler->display->display_options['arguments']['field_series']['table'] = 'search_api_index_standard_node_index';
   $handler->display->display_options['arguments']['field_series']['field'] = 'field_series';

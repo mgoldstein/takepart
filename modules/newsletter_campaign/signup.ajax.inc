@@ -248,21 +248,6 @@ function _newsletter_unsubscribe_all_form($form, &$form_state, $campaign_code, $
  * Implementation of form_validate for newsletter unsubscribe form
  */
 function _newsletter_unsubscribe_all_form_validate($form, &$form_state) {
-/*
-  global $user;
-  
-  dpm($user);
-  $result = entity_load('user', array($user->uid));
-  $entity = $result[$user->uid];
-  dpm($entity);
-  $lang = empty($entity->language) ? 'und' : $entity->language;
-  dpm($lang);
-  $name = 'field_registration_email_opt_in';
-  $info = field_info_field($name);
-*/
-  
-   
-  //form_set_error('email', 'failed');
   
   if (!valid_email_address($form_state['values']['email'])) {
     form_set_error('email', t('Invalid address'));
@@ -306,15 +291,6 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
       $success = 1;
       
       // update our opt in field, ugh
-      global $user;
-      //$result = entity_load('user', array($user->uid));
-      //$entity = $result[$user->uid];
-      //$name = 'field_registration_email_opt_in';
-      //$info = field_info_field($name);
-      //$lang = empty($entity->language) ? 'und' : $entity->language;
-      //$entity->field_registration_email_opt_in[$lang][0]['value'] = 0; 
-      //also update our profile field.
-      //field_sql_storage_field_storage_write('user', $entity, FIELD_STORAGE_UPDATE, array($info['id']));
       user_save($user, array('field_registration_email_opt_in' => 0));
  
     }

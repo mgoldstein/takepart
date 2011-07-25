@@ -29,41 +29,41 @@ function takepart_blog_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'addthis-addthis' => array(
-          'module' => 'addthis',
-          'delta' => 'addthis',
-          'region' => 'sidebar_first',
-          'weight' => '0',
-        ),
         'boxes-box-bb0b625d' => array(
           'module' => 'boxes',
           'delta' => 'box-bb0b625d',
           'region' => 'content_top',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'takepart_custom-page_title_h1' => array(
           'module' => 'takepart_custom',
           'delta' => 'page_title_h1',
           'region' => 'content_top',
-          'weight' => '1',
+          'weight' => 1,
         ),
         'boxes-box-1dae03d3' => array(
           'module' => 'boxes',
           'delta' => 'box-1dae03d3',
           'region' => 'content_top',
-          'weight' => '2',
+          'weight' => 2,
+        ),
+        'addthis-addthis' => array(
+          'module' => 'addthis',
+          'delta' => 'addthis',
+          'region' => 'sidebar_first',
+          'weight' => 0,
         ),
         'boxes-box-4eb62add' => array(
           'module' => 'boxes',
           'delta' => 'box-4eb62add',
           'region' => 'content_bottom',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'comment_block_simple-comment_block' => array(
           'module' => 'comment_block_simple',
           'delta' => 'comment_block',
           'region' => 'content_bottom',
-          'weight' => '1',
+          'weight' => 1,
         ),
       ),
     ),

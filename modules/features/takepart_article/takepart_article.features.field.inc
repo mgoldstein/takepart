@@ -64,17 +64,16 @@ function takepart_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'field_redirection',
-          'settings' => array(
-            'code' => '301',
-          ),
-          'type' => 'field_redirection',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
           'weight' => '7',
         ),
         'full' => array(
           'label' => 'hidden',
+          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'node_reference_default',
           'weight' => '8',
         ),
         'teaser' => array(
@@ -535,6 +534,7 @@ function takepart_article_field_default_fields() {
           'takepart_slide' => 0,
           'topic_front' => 0,
           'video_series' => 0,
+          'webform' => 0,
         ),
         'view' => array(
           'args' => array(),

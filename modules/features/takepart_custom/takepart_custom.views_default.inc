@@ -187,7 +187,7 @@ function takepart_custom_views_default_views() {
   $handler->display->display_options['arguments']['tid']['break_phrase'] = 1;
   $handler->display->display_options['arguments']['tid']['add_table'] = 0;
   $handler->display->display_options['arguments']['tid']['require_value'] = 0;
-  $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 1;
   $handler->display->display_options['arguments']['tid']['set_breadcrumb'] = 0;
   $translatables['related_content'] = array(
     t('Master'),
