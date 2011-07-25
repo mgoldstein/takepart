@@ -110,7 +110,7 @@ function takepart_group_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -141,6 +141,95 @@ function takepart_group_field_default_fields() {
         'weight' => '4',
       ),
       'widget_type' => 'text_textarea_with_summary',
+    ),
+  );
+
+  // Exported field: 'node-takepart_group-field_group_context'
+  $fields['node-takepart_group-field_group_context'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_group_context',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '1',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_group',
+      'default_value' => array(
+        0 => array(
+          'context' => '',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => '8',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_group_context',
+      'label' => 'Context',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Features Box' => 0,
+          'Boxes for Field Box' => 0,
+          'Boxes for Image Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'akamai' => 0,
+          'apachesolr' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'comment_block_simple' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'diff' => 0,
+          'fb_connect' => 0,
+          'menu' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'takepart_custom' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'context_field_default_context',
+        'use_default' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'widget_setting' => 'bob',
+        ),
+        'type' => 'context_field',
+        'weight' => '31',
+      ),
     ),
   );
 
@@ -238,7 +327,7 @@ function takepart_group_field_default_fields() {
           'module' => 'location_cck',
           'settings' => array(),
           'type' => 'location_default',
-          'weight' => 4,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -290,10 +379,12 @@ function takepart_group_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
-          'settings' => array(),
-          'type' => 'media_large',
-          'weight' => 2,
+          'module' => 'media',
+          'settings' => array(
+            'file_view_mode' => 'media_original',
+          ),
+          'type' => 'media',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -356,10 +447,12 @@ function takepart_group_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
-          'settings' => array(),
-          'type' => 'media_large',
-          'weight' => 3,
+          'module' => 'media',
+          'settings' => array(
+            'file_view_mode' => 'media_original',
+          ),
+          'type' => 'media',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -435,7 +528,7 @@ function takepart_group_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -508,7 +601,7 @@ function takepart_group_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 7,
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -578,7 +671,7 @@ function takepart_group_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 6,
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -646,7 +739,7 @@ function takepart_group_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'default',
-          'weight' => 5,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -688,6 +781,7 @@ function takepart_group_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Body');
   t('Comment');
+  t('Context');
   t('Enter address information');
   t('Enter the group type for this group.');
   t('Enter the groups URL.');
