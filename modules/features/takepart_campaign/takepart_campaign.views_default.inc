@@ -119,24 +119,17 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['type'] = 'image';
-  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['settings'] = array(
-    'image_style' => 'tp_campaign_cover',
-    'image_link' => 'content',
-  );
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -194,15 +187,14 @@ function takepart_campaign_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Similar Campaigns';
+  $handler->display->display_options['title'] = 'Related Campaigns';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Nid */
