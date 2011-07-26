@@ -94,6 +94,11 @@ $info['projects']['twitter_pull']['type']    =' module';
 $info['projects']['twitter_pull']['subdir']  = 'contrib';
 $info['projects']['twitter_pull']['version'] = '1.0-rc1';
 
+// Google News XML sitemap module
+$info['projects']['googlenews']['type']    =' module';
+$info['projects']['googlenews']['subdir']  = 'contrib';
+$info['projects']['googlenews']['version'] = '1.4';
+
 // Used for slide and rotator content
 $info['projects']['views_slideshow']['type']    = 'module';
 $info['projects']['views_slideshow']['subdir']  = 'contrib';
