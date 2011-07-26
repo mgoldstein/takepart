@@ -296,7 +296,7 @@ $info['libraries']['jquery.cycle']['directory_name']    = 'jquery.cycle';
 
 $info['libraries']['SolrPhpClient']['download']['type']  = 'get';
 $info['libraries']['SolrPhpClient']['download']['url']   = 'http://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz';
-$info['libraries']['SolrPhpClient']['directory_name']    = '../modules/all/contrib/search_api_solr/SolrPhpClient';
+$info['libraries']['SolrPhpClient']['directory_name']    = '../modules/contrib/search_api_solr/SolrPhpClient';
 /* Patches */
 
 $info['projects']['flag']['patch'][]  = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
