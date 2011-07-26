@@ -130,6 +130,11 @@ $info['projects']['search_api']['type']     = 'module';
 $info['projects']['search_api']['subdir']   = 'contrib';
 $info['projects']['search_api']['version']  = '1.0-beta10';
 
+// Used for Apache SOLR Search Integration 
+$info['projects']['search_api_solr']['type']     = 'module';
+$info['projects']['search_api_solr']['subdir']   = 'contrib';
+$info['projects']['search_api_solr']['version']  = '1.0-beta3';
+
 /* Used to update jQuery Libraries in core */
 $info['projects']['jquery_update']['type']     = 'module';
 $info['projects']['jquery_update']['subdir']   = 'contrib';
@@ -256,7 +261,7 @@ $info['projects']['rubik']['version'] = '4.0-beta5';
 /* Remove modules not used by TakePart that are standard in OpenPublish */
 
 // Nodequeue is not needed in TP3.
-unset($info['projects']['nodequeue']);
+// unset($info['projects']['nodequeue']);
 
 /* Use our own branch of OpenPublish Features */
 $info['projects']['openpublish_features']['download']['branch'] = 'takepart-3.0';
@@ -287,6 +292,11 @@ $info['libraries']['facebook-php-sdk']['directory_name']      = 'facebook-php-sd
 $info['libraries']['jquery.cycle']['download']['type']  = 'get';
 $info['libraries']['jquery.cycle']['download']['url']   = 'http://jquery.malsup.com/cycle/release/jquery.cycle.zip?v2.99';
 $info['libraries']['jquery.cycle']['directory_name']    = 'jquery.cycle';
+
+
+$info['libraries']['SolrPhpClient']['download']['type']  = 'get';
+$info['libraries']['SolrPhpClient']['download']['url']   = 'http://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz';
+$info['libraries']['SolrPhpClient']['destination']       = 'modules/contrib/search_api_solr';
 
 /* Patches */
 

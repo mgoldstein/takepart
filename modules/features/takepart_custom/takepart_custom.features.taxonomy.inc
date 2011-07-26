@@ -13,7 +13,7 @@ function takepart_custom_taxonomy_default_vocabularies() {
       'name' => 'Free Tags',
       'machine_name' => 'free_tags',
       'description' => 'These tags will be pretty fine-grained and will support more broad categorizations of content via the Topic vocabulary',
-      'hierarchy' => '0',
+      'hierarchy' => '1',
       'module' => 'taxonomy',
       'weight' => '0',
       'rdf_mapping' => array(

@@ -38,6 +38,15 @@ function newsletter_campaign_entity_info() {
           'custom settings' => FALSE
         ),
       ),
+      'bundles' => array(
+        'newsletter_campaign' => array(
+          'label' => t('Default bundle'),
+          'admin' => array(
+            'path' => 'admin/structure/newsletter-campaign',
+            'access arguments' => array('administer site configuration'),
+          ),
+        ),
+      ),
     ),
   );
 }

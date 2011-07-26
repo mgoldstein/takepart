@@ -2887,13 +2887,15 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
  */
 #user-login label,
 #user-register-form label,
-#user-pass label {
+#user-pass label,
+#user-profile-form label {
 	font-size:18px;
 	margin-bottom:5px;
 }
 #user-login input,
 #user-register-form input,
-#user-pass input {
+#user-pass input,
+#user-profile-form input {
 	font-size:16px;
 	margin-bottom:5px;
 }
@@ -2902,12 +2904,14 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
 }
 #user-login input[type=checkbox],
 #user-register-form input[type=checkbox],
-#user-pass input[type=checkbox] {
+#user-pass input[type=checkbox],
+#user-profile-form input[type=checkbox] {
 	margin-bottom:12px;
 }
 #user-login div.description,
 #user-register-form div.description,
-#user-pass div.description {
+#user-pass div.description,
+#user-profile-form div.description {
   color:#999;
 	font-style:italic;
 	font-size:12px;
@@ -2921,7 +2925,24 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
 #user-pass  .fb-login-button {
 	margin-bottom:20px;
 }
+#user-profile-form .confirm-parent, 
+#user-profile-form .password-parent {
+	width:40em;
+}
+span.fieldset-legend {
+	color:#1CA9E7;
+	font-weight:bolder;
+	text-transform:uppercase;
+}
+.profile .field .field-label,
+.profile .field .field-items {
+	display:inline-block;
+	margin-right:3px;
+}
 
+.front .node-section-front h2.title {
+	display:none;
+}
 /*
  * Error messages
  */
