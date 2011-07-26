@@ -35,6 +35,7 @@ function takepart3_preprocess_page(&$variables) {
   $variables['corporate_links_nav']   = _render_tp3_corporate_links_menu();
   $variables['user_nav']              = _render_tp3_user_menu();
   $variables['takepart_theme_path']   = drupal_get_path('theme', 'takepart3');
+  $variables['search_takepart_form']  = _render_tp3_header_search_form();
   
   // Adds page template suggestions for specific content types
   if (isset($variables['node'])) {  
@@ -44,7 +45,6 @@ function takepart3_preprocess_page(&$variables) {
   return $variables;
 }
 
-
 /**
  * Helper to output the custom HTML for out main menu.
  */
@@ -52,13 +52,23 @@ function _render_tp3_main_menu() {
   $menu_data = menu_tree_page_data("main-menu");
 
   $links = array();
+  $count = count($menu_data);
+  $i = 0;
   foreach($menu_data as $menu_item) {
     $opts = array(
       'attributes' => _default_menu_options($menu_item),
     );
     
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-    $links[] = "<li>". $link ."</li>";
+    if ($i == 0) {
+      $li = '<li class="first">';
+    } elseif ($i == ($count - 1)) {
+      $li = '<li class="last">';
+    } else {
+      $li = '<li>';
+    }
+    $links[] = $li . $link ."</li>";
+    $i++;
   }
   
   return "<ul id='top-nav'>" . implode($links) ."</ul>";
@@ -87,7 +97,7 @@ function _render_tp3_user_menu() {
       } 
       else {
         $opts['attributes']['class'][] = 'join-login';
-        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Login or");
+        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name","Login");
       }
       
     }else{
@@ -120,8 +130,10 @@ function _render_tp3_user_menu() {
 function _render_tp3_hottopics_menu() {
   $menu_data = menu_tree_page_data("menu-hot-topics");
 
-  $links = array( 0 => "<li class='title'>hot topics:</li>" );
+  $links = array( 0 => "<li class='title'>hot topics</li>" );
   
+  $count = count($menu_data);
+  $i = 0;
   foreach($menu_data as $menu_item) {
      
     $opts = array(
@@ -129,7 +141,15 @@ function _render_tp3_hottopics_menu() {
     );
     
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-    $links[] = "<li>". $link ."</li>";
+    if ($i == 0) {
+      $li = '<li class="first">';
+    } elseif ($i == ($count - 1)) {
+      $li = '<li class="last">';
+    } else {
+      $li = '<li>';
+    }
+    $links[] = $li . $link ."</li>";
+    $i++;
   }
   
   return "<ul class='clearfix'>" . implode($links) ."</ul>";
@@ -234,6 +254,13 @@ function takepart3_preprocess_node(&$vars, $hook) {
     
 }
 
+/* Comment form */
+function takepart3_form_comment_form_alter(&$form, &$form_state, $form_id) {
+  $form['author']['#prefix'] = '<div class="comment-form-title">';
+  $form['author']['#suffix'] = '<div class="comment-edge"></div></div>';
+  unset($form['author']['_author']['#title']);
+}
+
 function takepart3_field__field_author(&$vars){
 
   // Author
@@ -277,12 +304,15 @@ function takepart3_field__field_tp_campaign_4_things_link(&$vars){
 function takepart3_field__field_tp_campaign_seg_1_rel(&$vars){
   return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
 }
+
 function takepart3_field__field_tp_campaign_seg_2_rel(&$vars){
   return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
 }
+
 function takepart3_field__field_tp_campaign_seg_3_rel(&$vars){
   return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
 }
+
 function takepart3_field__field_tp_campaign_seg_4_rel(&$vars){
   return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
 }
@@ -369,5 +399,9 @@ function _render_tp3_quick_study_topics($node){
       $output[] = l( $term->name, url('taxonomy/term/' . $value['tid']) );
     }
   }
-  return '<div class="node-takepart-quick-study-topics">' . implode(' | ', $output) . '</div>';
+  return '<div class="node-takepart-quick-study-topics field-name-field-display-tag">' . implode(' | ', $output) . '</div>';
+}
+
+function _render_tp3_header_search_form() {
+  return module_invoke('search', 'block_view', 'search');
 }

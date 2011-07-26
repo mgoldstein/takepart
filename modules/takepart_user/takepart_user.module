@@ -35,13 +35,14 @@ $items['user/%user'] = array(
   unset($items['user/%user/imce']);
 }
 
-
- 
 function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form_id) {
   $register_title = variable_get("takepart_user_register_page_title","Join TakePart");
   drupal_set_title($register_title);
-  $form['#validate'][] = '_takepart_user_validate';
-  $form['actions']['submit']['#value'] = 'Register';
+  global $user;
+  if (!(user_access('administer users'))) {
+    $form['#validate'][] = '_takepart_user_validate';
+    $form['actions']['submit']['#value'] = 'Register';
+  }
 }
 
 function takepart_user_form_user_login_alter(&$form, &$form_state, $form_id) {

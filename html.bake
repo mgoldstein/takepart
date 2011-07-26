@@ -13,7 +13,7 @@ bake_convert_to_dev($info,'nodeconnect');
 // Backup module to pull local copies of the db down for external developers
 $info['projects']['backup_migrate']['type']   = 'module';
 $info['projects']['backup_migrate']['subdir'] = 'contrib';
-$info['projects']['backup_migrate']['version']   = '2.1';
+$info['projects']['backup_migrate']['version']   = '2.2';
 
 // Flag can be removed once site goes live, only used for flagging test content
 $info['projects']['flag']['type']   = 'module';
@@ -22,7 +22,13 @@ $info['projects']['flag']['download']['type']   = 'git';
 $info['projects']['flag']['download']['branch'] = 'master';
 $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project/flag.git';
 
+
 /* TakePart Modules */
+
+/* Used for File Storage */
+$info['projects']['cdn']['type']   = 'module';
+$info['projects']['cdn']['subdir'] = 'contrib';
+$info['projects']['cdn']['version']   = '2.0-beta1';
 
 /* Used for contact module */
 $info['projects']['field_redirection']['type']   = 'module';
@@ -73,6 +79,16 @@ $info['projects']['devel']['type']    =' module';
 $info['projects']['devel']['subdir']  = 'contrib';
 $info['projects']['devel']['version'] = '1.0';
 
+// Used for Options Element Module for contact us form
+$info['projects']['options_element']['type']    =' module';
+$info['projects']['options_element']['subdir']  = 'contrib';
+$info['projects']['options_element']['version'] = '1.4';
+
+// Used for Webform Conditionals Module
+$info['projects']['webform_conditional']['type']    =' module';
+$info['projects']['webform_conditional']['subdir']  = 'contrib';
+$info['projects']['webform_conditional']['version'] = '1.x-dev';
+
 // Used for slide and rotator content
 $info['projects']['views_slideshow']['type']    = 'module';
 $info['projects']['views_slideshow']['subdir']  = 'contrib';
@@ -114,7 +130,21 @@ $info['projects']['search_api']['type']     = 'module';
 $info['projects']['search_api']['subdir']   = 'contrib';
 $info['projects']['search_api']['version']  = '1.0-beta10';
 
+// Used for Apache SOLR Search Integration 
+$info['projects']['search_api_solr']['type']     = 'module';
+$info['projects']['search_api_solr']['subdir']   = 'contrib';
+$info['projects']['search_api_solr']['version']  = '1.0-beta3';
+
+/* Used to update jQuery Libraries in core */
+$info['projects']['jquery_update']['type']     = 'module';
+$info['projects']['jquery_update']['subdir']   = 'contrib';
+$info['projects']['jquery_update']['version']  = '2.2';
+
 /* Overrides versions of OpenPublish Modules */
+
+$info['projects']['diff']['type']     = 'module';
+$info['projects']['diff']['subdir']   = 'contrib';
+$info['projects']['diff']['version']  = '2.0';
 
 $info['projects']['xmlsitemap']['type']     = 'module';
 $info['projects']['xmlsitemap']['subdir']   = 'contrib';
@@ -175,7 +205,7 @@ $info['projects']['token_function']['type']   = 'module';
 $info['projects']['token_function']['subdir'] = 'contrib';
 $info['projects']['token_function']['download']['type']   = 'git';
 $info['projects']['token_function']['download']['branch'] = '7.x-1.x';
-$info['projects']['token_function']['download']['url']    = 'git@git.drupal.org:project/token_function.git';
+$info['projects']['token_function']['download']['url']    = 'http://git.drupal.org/project/token_function.git';
 
 // used for hiding the breadcrumbs on the user pages
 $info['projects']['context_breadcrumb_current_page']['type']   = 'module';
@@ -207,7 +237,7 @@ $info['projects']['date']['version']  = '2.0-alpha3';
 
 $info['projects']['entity']['type']     = 'module';
 $info['projects']['entity']['subdir']   = 'contrib';
-$info['projects']['entity']['version']  = '1.0-beta9';
+$info['projects']['entity']['version']  = '1.0-beta10';
 
 $info['projects']['field_group']['type']    = 'module';
 $info['projects']['field_group']['subdir']  = 'contrib';
@@ -237,12 +267,12 @@ $info['projects']['rubik']['version'] = '4.0-beta5';
 /* Remove modules not used by TakePart that are standard in OpenPublish */
 
 // Nodequeue is not needed in TP3.
-unset($info['projects']['nodequeue']);
+// unset($info['projects']['nodequeue']);
 
 /* Use our own branch of OpenPublish Features */
 $info['projects']['openpublish_features']['download']['branch'] = 'takepart-3.0';
 
-// This come out of openpublish_features
+// This came out of openpublish_features
 $info['projects']['field_boxes']['type']   = 'module';
 $info['projects']['field_boxes']['subdir'] = 'contrib';
 $info['projects']['field_boxes']['download']['type']   = 'git';
@@ -268,6 +298,11 @@ $info['libraries']['facebook-php-sdk']['directory_name']      = 'facebook-php-sd
 $info['libraries']['jquery.cycle']['download']['type']  = 'get';
 $info['libraries']['jquery.cycle']['download']['url']   = 'http://jquery.malsup.com/cycle/release/jquery.cycle.zip?v2.99';
 $info['libraries']['jquery.cycle']['directory_name']    = 'jquery.cycle';
+
+
+$info['libraries']['SolrPhpClient']['download']['type']  = 'get';
+$info['libraries']['SolrPhpClient']['download']['url']   = 'http://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz';
+$info['libraries']['SolrPhpClient']['destination']       = 'modules/contrib/search_api_solr';
 
 /* Patches */
 
