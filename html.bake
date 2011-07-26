@@ -135,6 +135,11 @@ $info['projects']['search_api']['type']     = 'module';
 $info['projects']['search_api']['subdir']   = 'contrib';
 $info['projects']['search_api']['version']  = '1.0-beta10';
 
+// Used for Apache SOLR Search Integration 
+$info['projects']['search_api_solr']['type']     = 'module';
+$info['projects']['search_api_solr']['subdir']   = 'contrib';
+$info['projects']['search_api_solr']['version']  = '1.0-beta3';
+
 /* Used to update jQuery Libraries in core */
 $info['projects']['jquery_update']['type']     = 'module';
 $info['projects']['jquery_update']['subdir']   = 'contrib';
@@ -292,6 +297,11 @@ $info['libraries']['facebook-php-sdk']['directory_name']      = 'facebook-php-sd
 $info['libraries']['jquery.cycle']['download']['type']  = 'get';
 $info['libraries']['jquery.cycle']['download']['url']   = 'http://jquery.malsup.com/cycle/release/jquery.cycle.zip?v2.99';
 $info['libraries']['jquery.cycle']['directory_name']    = 'jquery.cycle';
+
+
+$info['libraries']['SolrPhpClient']['download']['type']  = 'get';
+$info['libraries']['SolrPhpClient']['download']['url']   = 'http://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz';
+$info['libraries']['SolrPhpClient']['destination']       = 'modules/contrib/search_api_solr';
 
 /* Patches */
 

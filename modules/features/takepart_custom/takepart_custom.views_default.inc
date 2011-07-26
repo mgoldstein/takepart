@@ -19,7 +19,7 @@ function takepart_custom_views_default_views() {
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-  
+
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Also See';
@@ -153,10 +153,10 @@ function takepart_custom_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  
+
   /* Display: Currated Only */
   $handler = $view->new_display('block', 'Currated Only', 'block');
-  
+
   /* Display: Currated and Suggest */
   $handler = $view->new_display('block', 'Currated and Suggest', 'block_1');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
@@ -189,21 +189,6 @@ function takepart_custom_views_default_views() {
   $handler->display->display_options['arguments']['tid']['require_value'] = 0;
   $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 1;
   $handler->display->display_options['arguments']['tid']['set_breadcrumb'] = 0;
-  $translatables['related_content'] = array(
-    t('Master'),
-    t('Related Content'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('node/[nid]'),
-    t('[title]'),
-    t('All'),
-    t('Currated Only'),
-    t('Currated and Suggest'),
-  );
   $export['related_content'] = $view;
 
   return $export;

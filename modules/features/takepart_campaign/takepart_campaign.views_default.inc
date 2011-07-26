@@ -134,7 +134,7 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['type'] = 'image';
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['settings'] = array(
-    'image_style' => '',
+    'image_style' => 'tp_campaign_cover',
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['field_api_classes'] = 0;

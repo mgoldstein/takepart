@@ -45,7 +45,6 @@ function takepart3_preprocess_page(&$variables) {
   return $variables;
 }
 
-
 /**
  * Helper to output the custom HTML for out main menu.
  */

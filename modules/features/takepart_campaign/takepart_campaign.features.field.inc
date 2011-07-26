@@ -34,15 +34,16 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'module' => 'context_field',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '11',
+          'type' => 'context_field_context',
+          'weight' => '17',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -199,15 +200,16 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
+          'module' => 'context_field',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '18',
+          'type' => 'context_field_context',
+          'weight' => '19',
         ),
         'full' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -284,21 +286,22 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'module' => 'context_field',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '19',
+          'type' => 'context_field_context',
+          'weight' => 19,
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '19',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -642,9 +645,8 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_default',
+          'type' => 'hidden',
           'weight' => '22',
         ),
         'full' => array(
@@ -808,9 +810,8 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'hidden',
           'weight' => '24',
         ),
         'full' => array(
@@ -1035,10 +1036,9 @@ function takepart_campaign_field_default_fields() {
       'description' => 'User can provide titles/URLs for links to 3rd party sites',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
-          'module' => 'link',
+          'label' => 'above',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'hidden',
           'weight' => '18',
         ),
         'full' => array(
@@ -1111,7 +1111,7 @@ function takepart_campaign_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'context_field',
           'settings' => array(),
           'type' => 'context_field_context',
@@ -1144,7 +1144,6 @@ function takepart_campaign_field_default_fields() {
           'Boxes for Screaming Headline' => 0,
           'Boxes for View Box' => 0,
           'addthis' => 0,
-          'akamai' => 0,
           'boxes' => 'boxes',
           'comment' => 0,
           'context_related_menu' => 0,
@@ -1157,7 +1156,6 @@ function takepart_campaign_field_default_fields() {
           'search_api_facets' => 0,
           'shortcut' => 0,
           'system' => 0,
-          'takepart_custom' => 0,
           'user' => 0,
           'views' => 0,
         ),
@@ -1203,12 +1201,8 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'media_image_formatter',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => '',
-          ),
-          'type' => 'image',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '15',
         ),
         'full' => array(
@@ -1285,10 +1279,9 @@ function takepart_campaign_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
+          'label' => 'above',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'hidden',
           'weight' => '16',
         ),
         'full' => array(
@@ -2491,10 +2484,9 @@ function takepart_campaign_field_default_fields() {
       'description' => 'User can populate custom HTML to be displayed in the Spotlight block instead of (or in addition to) Spotlight Nodes.',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
+          'label' => 'above',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'hidden',
           'weight' => '21',
         ),
         'full' => array(
@@ -2515,7 +2507,7 @@ function takepart_campaign_field_default_fields() {
       'label' => 'Spotlight HTML',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '1',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -2556,12 +2548,8 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'media_image_formatter',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => '',
-          ),
-          'type' => 'image',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '19',
         ),
         'full' => array(
@@ -2662,10 +2650,9 @@ function takepart_campaign_field_default_fields() {
       'description' => 'Users can choose a set of nodes to be displayed in the Spotlight block (Promo headline/text displayed for each).',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
-          'module' => 'node_reference',
+          'label' => 'above',
           'settings' => array(),
-          'type' => 'node_reference_default',
+          'type' => 'hidden',
           'weight' => '20',
         ),
         'full' => array(
@@ -2762,9 +2749,8 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_default',
+          'type' => 'hidden',
           'weight' => '17',
         ),
         'full' => array(
@@ -2837,9 +2823,8 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'hidden',
           'weight' => '23',
         ),
         'full' => array(
