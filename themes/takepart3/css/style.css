@@ -1176,6 +1176,13 @@ ul#soc-links li#twitter a {
   text-decoration: none;
 }
 
+
+/****** General ******/
+
+div.node div.content ul.links {
+  display: none;
+}
+
 /****** Share and Embed ******/
 
 /*
@@ -1338,9 +1345,15 @@ span.comment-num {
   width: 80px;
 }
 
+.comment-form .comment-form-title a {
+  font-weight: bold;
+}
+
 .comment-form .comment-edge {
-  background: url('../images/sprite-horizontal.gif') right -208px no-repeat;
-  height: 36px;
+  background: url('../images/sprite-vertical.gif') -1300px 0px no-repeat;
+  height:auto !important;
+  height:36px;
+  min-height:36px;
 }
 
 .comment-form .form-actions {
@@ -1676,7 +1689,7 @@ Block Boxes (General)
   margin-right: 10px;
   padding: 15px 7px;
   vertical-align: top;
-  width: 289px;
+  width: 288px;
 }
 
 .block-boxes-title-my-take .views-row.views-row-odd {
@@ -1828,6 +1841,7 @@ Block Boxes (General)
   background: #8DC547 url('../images/sprite.png') -383px -122px no-repeat;
   color: white;
   display: inline-block;
+  font-size: 11px;
   font-weight: bold;
   line-height: 18px;
   margin-top: 103px;
@@ -1945,6 +1959,10 @@ Block Boxes (General)
   width: 195px;
 }
 
+.block-boxes-title-action-impact .views-field-field-tp-campaign-subheadline {
+  margin-bottom: 10px;
+}
+
 .block-boxes-title-action-impact .content {
   background: #f8f2e7;
   padding: 50px 0 7px 7px;
@@ -1956,11 +1974,13 @@ Block Boxes (General)
   width: 193px;
 }
 
-.block-boxes-title-action-impact .views-field-field-tp-campaign-cover-image {
+.block-boxes-title-action-impact .views-field-field-tp-campaign-cover-image .field-content a, 
+.block-boxes-title-action-impact .views-field-field-action-main-image .field-content a{
   border: 1px solid gray;
+  display: inline-block;
   height: 90px;
   margin-bottom: 10px;
-  width: 150px;
+  width: 151px;
 }
 
 .block-boxes-title-action-impact .views-field-field-promo-headline {
