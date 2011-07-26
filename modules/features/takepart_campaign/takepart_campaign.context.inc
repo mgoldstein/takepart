@@ -68,7 +68,6 @@ function takepart_campaign_context_default_contexts() {
     'node' => array(
       'values' => array(
         'action' => 'action',
-        'openpublish_article' => 'openpublish_article',
         'openpublish_blog_post' => 'openpublish_blog_post',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
         'openpublish_video' => 'openpublish_video',
@@ -85,7 +84,7 @@ function takepart_campaign_context_default_contexts() {
           'module' => 'views',
           'delta' => 'related_campaigns-block',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '1',
         ),
       ),
     ),
@@ -115,7 +114,6 @@ function takepart_campaign_context_default_contexts() {
     'node' => array(
       'values' => array(
         'action' => 'action',
-        'openpublish_article' => 'openpublish_article',
         'openpublish_blog_post' => 'openpublish_blog_post',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
         'openpublish_video' => 'openpublish_video',
@@ -132,7 +130,7 @@ function takepart_campaign_context_default_contexts() {
           'module' => 'views',
           'delta' => 'related_campaigns-block_1',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => 1,
         ),
       ),
     ),
@@ -164,35 +162,11 @@ function takepart_campaign_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-box-81a645d6' => array(
+        'boxes-box-2988d8fb' => array(
           'module' => 'boxes',
-          'delta' => 'box-81a645d6',
-          'region' => 'sidebar_first',
+          'delta' => 'box-2988d8fb',
+          'region' => 'highlighted',
           'weight' => '0',
-        ),
-        'boxes-box-5cd7d5ce' => array(
-          'module' => 'boxes',
-          'delta' => 'box-5cd7d5ce',
-          'region' => 'sidebar_first',
-          'weight' => '1',
-        ),
-        'boxes-box-4abd00a3' => array(
-          'module' => 'boxes',
-          'delta' => 'box-4abd00a3',
-          'region' => 'sidebar_second',
-          'weight' => '0',
-        ),
-        'boxes-box-95b55e7' => array(
-          'module' => 'boxes',
-          'delta' => 'box-95b55e7',
-          'region' => 'sidebar_second',
-          'weight' => '1',
-        ),
-        'boxes-box-33756e58' => array(
-          'module' => 'boxes',
-          'delta' => 'box-33756e58',
-          'region' => 'sidebar_second',
-          'weight' => '2',
         ),
         'boxes-box-9ececd73' => array(
           'module' => 'boxes',
@@ -236,11 +210,35 @@ function takepart_campaign_context_default_contexts() {
           'region' => 'content',
           'weight' => '6',
         ),
-        'boxes-box-2988d8fb' => array(
+        'boxes-box-81a645d6' => array(
           'module' => 'boxes',
-          'delta' => 'box-2988d8fb',
-          'region' => 'highlighted',
-          'weight' => '0',
+          'delta' => 'box-81a645d6',
+          'region' => 'sidebar_first',
+          'weight' => '-68',
+        ),
+        'boxes-box-95b55e7' => array(
+          'module' => 'boxes',
+          'delta' => 'box-95b55e7',
+          'region' => 'sidebar_second',
+          'weight' => '-68',
+        ),
+        'boxes-box-5cd7d5ce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-5cd7d5ce',
+          'region' => 'sidebar_second',
+          'weight' => '-67',
+        ),
+        'boxes-box-4abd00a3' => array(
+          'module' => 'boxes',
+          'delta' => 'box-4abd00a3',
+          'region' => 'sidebar_second',
+          'weight' => '-66',
+        ),
+        'boxes-box-33756e58' => array(
+          'module' => 'boxes',
+          'delta' => 'box-33756e58',
+          'region' => 'sidebar_second',
+          'weight' => '-65',
         ),
       ),
     ),

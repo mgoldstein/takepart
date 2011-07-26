@@ -39,6 +39,12 @@ function takepart_campaign_field_default_fields() {
           'type' => 'context_field_context',
           'weight' => '17',
         ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -199,6 +205,12 @@ function takepart_campaign_field_default_fields() {
           'type' => 'context_field_context',
           'weight' => '19',
         ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -278,6 +290,12 @@ function takepart_campaign_field_default_fields() {
           'settings' => array(),
           'type' => 'context_field_context',
           'weight' => 19,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
