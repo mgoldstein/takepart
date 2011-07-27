@@ -2126,6 +2126,8 @@ h2.title a{
   border-bottom: 2px solid black;
   margin-bottom: 20px;
   padding-bottom: 15px;
+	background:url("../images/sprite.png") no-repeat scroll -383px 0 transparent;
+	padding-left:20px;
 }
 
 .submitted-wrapper .field {
@@ -2958,6 +2960,96 @@ div.messages a:link,
 div.messages a:visited {
 	color:#d94725;
 }
+
+
+/****** Gallery Detail ******/
+.node-type-openpublish-photo-gallery .main-content {
+	float:none;
+	width:auto;
+}
+.node-openpublish-photo-gallery h2.title {
+	color: #000000;
+  font-size: 36px;
+  line-height: 100%;
+  margin: 20px 0;
+}
+.node-openpublish-photo-gallery .field-name-body p{
+	color: #666666;
+  font-size: 18px;
+  line-height: 120%;
+	margin-bottom:15px;
+}
+.node-openpublish-photo-gallery .submitted-wrapper {
+	margin-bottom:0;
+	border-bottom:none;
+}
+.node-openpublish-photo-gallery .view-photo-gallery #widget_pager_top_photo_gallery-block {
+  left: 635px;
+	top:50px;
+  width: 312px;
+}
+#views_slideshow_controls_text_photo_gallery-block {
+	background: none repeat scroll 0 0 #1CA9E7;
+  color: #FFFFFF;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding: 7px 10px;
+	position:absolute;
+	width:284px;
+	left:635px;
+	height:29px;
+}
+#views_slideshow_controls_text_pause_photo_gallery-block {
+	display:none;
+}
+#views_slideshow_controls_text_previous_photo_gallery-block {
+	background: url("../images/sprite.png") repeat-x scroll -291px -71px transparent;
+  display: block;
+  padding: 2px 0 2px 25px;
+	float:left;
+	width:60px;
+	font-weight:bolder;
+	cursor:pointer;
+	margin-top: 6px;
+}
+#views_slideshow_controls_text_next_photo_gallery-block {
+	background: url("../images/sprite.png") repeat-x scroll -220px -40px transparent;
+  display: block;
+  padding: 2px 15px 2px 32px;
+	float:right;
+	width:42px;
+	font-weight:bolder;
+	cursor:pointer;
+	margin-top: 6px;
+}
+#views_slideshow_slide_counter_photo_gallery-block {
+	background: none repeat scroll 0 0 #3DB6EA;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0 0 0 16px;
+  padding: 7px 0;
+  text-align: center;
+  width: 60px;
+	position:absolute;
+	left:745px;
+	top:7px;
+	color:#fff;
+	font-family:Georgia, serif;
+}
+#views_slideshow_slide_counter_photo_gallery-block span {
+	font-family:Helvetica,Arial,sans-serif;
+	font-weight:bolder;
+}
+#widget_pager_top_photo_gallery-block img {
+	border:2px solid #707070;
+}
+.view-photo-gallery div.views-slideshow-pager-field-item {
+  height: 69px;
+  margin-bottom: 10px;
+  margin-right: 8px;
+  width: 96px;
+}
+
 
 /*
 
