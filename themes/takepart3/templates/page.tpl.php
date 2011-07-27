@@ -58,7 +58,6 @@
   <div id='page' class='page clearfix'>
   
     <div class='main-content'>
-      <?php if ($breadcrumb) print $breadcrumb; ?>
       <?php  /* if ($title): ?><h1 class='page-title'><?php print $title ?></h1><?php endif; */ ?>
       <?php if (isset($primary_local_tasks)): ?><ul class='links clearfix'><?php print render($primary_local_tasks) ?></ul><?php endif; ?>
       <?php if (isset($secondary_local_tasks)): ?><ul class='links clearfix'><?php print render($secondary_local_tasks) ?></ul><?php endif; ?>
