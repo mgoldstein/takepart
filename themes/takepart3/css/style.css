@@ -3034,3 +3034,37 @@ div.messages a:visited {
 }
 */
 
+/***** Pager ******/
+
+.item-list ul.pager {
+  text-align: right;
+}
+
+.item-list ul.pager li {
+  margin: 0;
+}
+
+.item-list ul.pager .pager-current,
+.item-list ul.pager .pager-item,
+.item-list ul.pager .pager-next,
+.item-list ul.pager .pager-last,
+.item-list ul.pager .pager-first,
+.item-list ul.pager .pager-previous {
+  padding: 2px 5px 1px;
+  color: #999;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.item-list ul.pager .pager-item a,
+.item-list ul.pager .pager-next a,
+.item-list ul.pager .pager-last a,
+.item-list ul.pager .pager-first a,
+.item-list ul.pager .pager-previous a{
+  color: #999;
+}
+
+.item-list ul.pager .pager-current {
+  background: #1CA9E7;
+  color: white;
+}
