@@ -1755,6 +1755,7 @@ Block Boxes (General)
 }
 .block-boxes-title-my-take .views-field-field-promo-headline a:hover {
 	text-decoration:none;
+	color: #1ca9e7;
 }
 
 /*** News to Know ***/
@@ -1938,23 +1939,26 @@ Block Boxes (General)
   margin: 0;
 }
 
-.region-sidebar-second .block-boxes-title-our-blogs .field-name-field-blog-view .field-content{
+.region-sidebar-second .block-boxes-title-our-blogs .field-name-field-blog-view .field-content {
   background: url('../images/sprite-vertical.gif') -754px 0px no-repeat;
   display: inline-block;
   margin-bottom: 10px;
   padding-left: 20px;
 }
+.region-sidebar-second .block-boxes-title-our-blogs .field-name-field-blog-view .field-content:hover {
+	background: url('../images/sprite-vertical.gif') -1302px 0px no-repeat;
+}
 
-.region-sidebar-second .block-boxes-title-our-blogs .field-name-field-blog-view a{
+.region-sidebar-second .block-boxes-title-our-blogs .field-name-field-blog-view a {
   color: black;
   font-size: 13px;
   font-weight: bold;
   text-decoration: none;
 }
 
-.region-sidebar-second .block-boxes-title-our-blogs .field-name-field-blog-view a:hover{
+.region-sidebar-second .block-boxes-title-our-blogs .field-name-field-blog-view .field-content:hover a {
   color: #1ca9e7;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .block-boxes-title-action-impact {
@@ -2245,10 +2249,9 @@ h2.title a{
   color: black;
   font-weight: bold;
 }
-
-.views-field-field-promo-headline:hover a{
-  color: #1ca9e7;
-  text-decoration: underline;
+.views-field-field-promo-headline a:hover {
+	color:#1ca9e7;
+	text-decoration:none;
 }
 
 body.node-type-topic-front .submitted-wrapper{
