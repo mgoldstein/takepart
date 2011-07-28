@@ -11,7 +11,7 @@
       <?php
         print theme_image_formatter(
             array('item' => $node->field_profile_photo['und'][0],
-              'image-style' => 'thumbnail'
+              'image_style' => 'thumbnail'
               )
           );
       ?>

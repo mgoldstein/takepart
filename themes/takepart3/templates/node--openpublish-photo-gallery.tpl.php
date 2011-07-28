@@ -13,7 +13,7 @@
   <?php if (!empty($title_suffix)) print render($title_suffix); ?>
 
   <?php if (!empty($submitted)): ?>
-    <?php print $submitted ?>
+    <?php //print $submitted ?>
   <?php endif; ?>
 
   <?php if (!empty($content)): ?>

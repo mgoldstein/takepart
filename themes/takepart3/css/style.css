@@ -412,6 +412,15 @@ ul#top-follow li.rss a {
 	margin: 0 0 0 0;
 	background: #000;
 	padding: 5px 15px 5px 5px;
+	position:relative;
+}
+#nav-logo-arrow {
+	background: url("../images/sprite.png") no-repeat scroll -14px -68px #000000;
+  height: 14px;
+  left: 14px;
+  position: absolute;
+  top: 0;
+  width: 24px;
 }
 
 ul#top-nav {
@@ -1176,6 +1185,13 @@ ul#soc-links li#twitter a {
   text-decoration: none;
 }
 
+
+/****** General ******/
+
+div.node div.content ul.links {
+  display: none;
+}
+
 /****** Share and Embed ******/
 
 /*
@@ -1338,9 +1354,15 @@ span.comment-num {
   width: 80px;
 }
 
+.comment-form .comment-form-title a {
+  font-weight: bold;
+}
+
 .comment-form .comment-edge {
-  background: url('../images/sprite-horizontal.gif') right -208px no-repeat;
-  height: 36px;
+  background: url('../images/sprite-vertical.gif') -1300px 0px no-repeat;
+  height:auto !important;
+  height:36px;
+  min-height:36px;
 }
 
 .comment-form .form-actions {
@@ -1530,10 +1552,13 @@ body.front h1 {
   font-weight: bold;
 }
 
-.view-id-slide_rotator .views-slideshow-pager-field-item:hover a,
-.view-id-slide_rotator .views-slideshow-pager-field-item:hover .views-field-field-slide-headline {
-  color: #1ca9e7;
+.view-id-slide_rotator .views-slideshow-pager-field-item:hover a {
+  color: #000;
   text-decoration: none;
+}
+.view-id-slide_rotator .views-slideshow-pager-field-item:hover .views-field-field-slide-headline a {
+	color: #1ca9e7;
+	text-decoration: none;
 }
 
 .view-id-slide_rotator .views-slideshow-cycle-main-frame:hover .views-field-field-slide-headline-override .field-content{
@@ -1564,6 +1589,9 @@ body.front h1 {
   line-height: 10px;
   padding: 0 5px;
   text-transform: uppercase;
+}
+.views-slideshow-pager-field-item .views-content-field-display-tag a {
+	color:#98B86C;
 }
 
 .views-slideshow-pager-field-item .views-content-field-slide-featured-item {
@@ -1676,7 +1704,7 @@ Block Boxes (General)
   margin-right: 10px;
   padding: 15px 7px;
   vertical-align: top;
-  width: 289px;
+  width: 288px;
 }
 
 .block-boxes-title-my-take .views-row.views-row-odd {
@@ -1724,6 +1752,9 @@ Block Boxes (General)
   color: black;
   font-size: 15px;
   font-weight: bold;
+}
+.block-boxes-title-my-take .views-field-field-promo-headline a:hover {
+	text-decoration:none;
 }
 
 /*** News to Know ***/
@@ -1828,6 +1859,7 @@ Block Boxes (General)
   background: #8DC547 url('../images/sprite.png') -383px -122px no-repeat;
   color: white;
   display: inline-block;
+  font-size: 11px;
   font-weight: bold;
   line-height: 18px;
   margin-top: 103px;
@@ -1945,6 +1977,10 @@ Block Boxes (General)
   width: 195px;
 }
 
+.block-boxes-title-action-impact .views-field-field-tp-campaign-subheadline {
+  margin-bottom: 10px;
+}
+
 .block-boxes-title-action-impact .content {
   background: #f8f2e7;
   padding: 50px 0 7px 7px;
@@ -1956,11 +1992,13 @@ Block Boxes (General)
   width: 193px;
 }
 
-.block-boxes-title-action-impact .views-field-field-tp-campaign-cover-image {
+.block-boxes-title-action-impact .views-field-field-tp-campaign-cover-image .field-content a, 
+.block-boxes-title-action-impact .views-field-field-action-main-image .field-content a{
   border: 1px solid gray;
+  display: inline-block;
   height: 90px;
   margin-bottom: 10px;
-  width: 150px;
+  width: 151px;
 }
 
 .block-boxes-title-action-impact .views-field-field-promo-headline {
@@ -2106,6 +2144,8 @@ h2.title a{
   border-bottom: 2px solid black;
   margin-bottom: 20px;
   padding-bottom: 15px;
+	background:url("../images/sprite.png") no-repeat scroll -383px 0 transparent;
+	padding-left:20px;
 }
 
 .submitted-wrapper .field {
@@ -2633,16 +2673,19 @@ blockquote p {
 
 }
 
-.view-campaigns.view-dom-id-2 .view-content {
+.view-campaigns.view-dom-id-2 .view-content,
+.view-campaigns.view-dom-id-3 .view-content {
   margin: 30px 0;
 }
 
-.view-campaigns.view-dom-id-2 .view-content ul{  
+.view-campaigns.view-dom-id-2 .view-content ul,
+.view-campaigns.view-dom-id-3 .view-content ul{  
   margin: 0;
   padding: 0;
 }
 
-.view-campaigns.view-dom-id-2 .view-content ul li {
+.view-campaigns.view-dom-id-2 .view-content ul li,
+.view-campaigns.view-dom-id-3 .view-content ul li {
   display: inline-block;
   margin: 0 10px 30px 0;
   padding: 0;
@@ -2650,7 +2693,8 @@ blockquote p {
   width: 190px;
 }
 
-.view-campaigns.view-dom-id-2 .view-content ul li a {
+.view-campaigns.view-dom-id-2 .view-content ul li a,
+.view-campaigns.view-dom-id-3 .view-content ul li a {
   font-size: 16px;
 }
 
@@ -2938,6 +2982,96 @@ div.messages a:link,
 div.messages a:visited {
 	color:#d94725;
 }
+
+
+/****** Gallery Detail ******/
+.node-type-openpublish-photo-gallery .main-content {
+	float:none;
+	width:auto;
+}
+.node-openpublish-photo-gallery h2.title {
+	color: #000000;
+  font-size: 36px;
+  line-height: 100%;
+  margin: 20px 0;
+}
+.node-openpublish-photo-gallery .field-name-body p{
+	color: #666666;
+  font-size: 18px;
+  line-height: 120%;
+	margin-bottom:15px;
+}
+.node-openpublish-photo-gallery .submitted-wrapper {
+	margin-bottom:0;
+	border-bottom:none;
+}
+.node-openpublish-photo-gallery .view-photo-gallery #widget_pager_top_photo_gallery-block {
+  left: 635px;
+	top:50px;
+  width: 312px;
+}
+#views_slideshow_controls_text_photo_gallery-block {
+	background: none repeat scroll 0 0 #1CA9E7;
+  color: #FFFFFF;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding: 7px 10px;
+	position:absolute;
+	width:284px;
+	left:635px;
+	height:29px;
+}
+#views_slideshow_controls_text_pause_photo_gallery-block {
+	display:none;
+}
+#views_slideshow_controls_text_previous_photo_gallery-block {
+	background: url("../images/sprite.png") repeat-x scroll -291px -71px transparent;
+  display: block;
+  padding: 2px 0 2px 25px;
+	float:left;
+	width:60px;
+	font-weight:bolder;
+	cursor:pointer;
+	margin-top: 6px;
+}
+#views_slideshow_controls_text_next_photo_gallery-block {
+	background: url("../images/sprite.png") repeat-x scroll -220px -40px transparent;
+  display: block;
+  padding: 2px 15px 2px 32px;
+	float:right;
+	width:42px;
+	font-weight:bolder;
+	cursor:pointer;
+	margin-top: 6px;
+}
+#views_slideshow_slide_counter_photo_gallery-block {
+	background: none repeat scroll 0 0 #3DB6EA;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0 0 0 16px;
+  padding: 7px 0;
+  text-align: center;
+  width: 60px;
+	position:absolute;
+	left:745px;
+	top:7px;
+	color:#fff;
+	font-family:Georgia, serif;
+}
+#views_slideshow_slide_counter_photo_gallery-block span {
+	font-family:Helvetica,Arial,sans-serif;
+	font-weight:bolder;
+}
+#widget_pager_top_photo_gallery-block img {
+	border:2px solid #707070;
+}
+.view-photo-gallery div.views-slideshow-pager-field-item {
+  height: 69px;
+  margin-bottom: 10px;
+  margin-right: 8px;
+  width: 96px;
+}
+
 
 /*
 
