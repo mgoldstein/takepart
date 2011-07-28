@@ -2,7 +2,7 @@
 $base = array(
   'branch'=> 'master',
   'url'=> 'git@phase2.beanstalkapp.com:/bake-openpublish.git',
-  'type'=> 'git',
+  'type'=> 'git', 
   'name'=> 'openpublish.bake'
 );
 bake_merge_file($info, $config, $base);
@@ -242,7 +242,7 @@ $info['projects']['field_group']['download']['date']    = '2011-06-03';
 
 $info['projects']['token']['type']    = 'module';
 $info['projects']['token']['subdir']  = 'contrib';
-$info['projects']['token']['version'] = '1.0-beta2';
+$info['projects']['token']['version'] = '1.0-beta3';
 
 $info['projects']['pathauto']['type']     = 'module';
 $info['projects']['pathauto']['subdir']   = 'contrib';
@@ -261,7 +261,11 @@ $info['projects']['rubik']['version'] = '4.0-beta5';
 /* Remove modules not used by TakePart that are standard in OpenPublish */
 
 // Nodequeue is not needed in TP3.
+// Commented out because one of the features from OP depends on NodeQueue, even though we aren't using it.
 // unset($info['projects']['nodequeue']);
+$info['projects']['nodequeue']['type']     = 'module';
+$info['projects']['nodequeue']['subdir']   = 'contrib';
+$info['projects']['nodequeue']['version']  = '2.0-alpha2';
 
 /* Use our own branch of OpenPublish Features */
 $info['projects']['openpublish_features']['download']['branch'] = 'takepart-3.0';
