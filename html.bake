@@ -118,7 +118,7 @@ $info['projects']['akamai']['version']  = '1.1';
 // Used for integration with Apache Solr
 $info['projects']['apachesolr']['type']     = 'module';
 $info['projects']['apachesolr']['subdir']   = 'contrib';
-$info['projects']['apachesolr']['version']  = '1.0-beta8';
+$info['projects']['apachesolr']['version']  = '1.x-dev';
 
 // Used to provide visual notification of content locks
 $info['projects']['content_lock']['type']     = 'module';
@@ -128,12 +128,12 @@ $info['projects']['content_lock']['version']  = '1.1';
 // Used for Search Integration 
 $info['projects']['search_api']['type']     = 'module';
 $info['projects']['search_api']['subdir']   = 'contrib';
-$info['projects']['search_api']['version']  = '1.0-beta10';
+$info['projects']['search_api']['version']  = '1.x-dev';
 
 // Used for Apache SOLR Search Integration 
 $info['projects']['search_api_solr']['type']     = 'module';
 $info['projects']['search_api_solr']['subdir']   = 'contrib';
-$info['projects']['search_api_solr']['version']  = '1.0-beta3';
+$info['projects']['search_api_solr']['version']  = '1.x-dev';
 
 /* Used to update jQuery Libraries in core */
 $info['projects']['jquery_update']['type']     = 'module';
