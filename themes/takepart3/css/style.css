@@ -1552,10 +1552,13 @@ body.front h1 {
   font-weight: bold;
 }
 
-.view-id-slide_rotator .views-slideshow-pager-field-item:hover a,
-.view-id-slide_rotator .views-slideshow-pager-field-item:hover .views-field-field-slide-headline {
-  color: #1ca9e7;
+.view-id-slide_rotator .views-slideshow-pager-field-item:hover a {
+  color: #000;
   text-decoration: none;
+}
+.view-id-slide_rotator .views-slideshow-pager-field-item:hover .views-field-field-slide-headline a {
+	color: #1ca9e7;
+	text-decoration: none;
 }
 
 .view-id-slide_rotator .views-slideshow-cycle-main-frame:hover .views-field-field-slide-headline-override .field-content{
@@ -1586,6 +1589,9 @@ body.front h1 {
   line-height: 10px;
   padding: 0 5px;
   text-transform: uppercase;
+}
+.views-slideshow-pager-field-item .views-content-field-display-tag a {
+	color:#98B86C;
 }
 
 .views-slideshow-pager-field-item .views-content-field-slide-featured-item {
@@ -1746,6 +1752,9 @@ Block Boxes (General)
   color: black;
   font-size: 15px;
   font-weight: bold;
+}
+.block-boxes-title-my-take .views-field-field-promo-headline a:hover {
+	text-decoration:none;
 }
 
 /*** News to Know ***/
