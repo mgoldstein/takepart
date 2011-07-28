@@ -3079,6 +3079,106 @@ div.messages a:visited {
 
 
 /*
+ * Slim header on campaigns
+ */
+#slim-header {
+	position:relative;
+	margin-top:10px;
+}
+#slim-header #logo {
+	top:4px;
+	left:20px;
+	height: 15px;
+  width: 105px;
+	border-right: 1px dashed #000;
+}
+#slim-header #logo a {
+  background: url("../images/sprite-slim-header.gif") no-repeat scroll 0 0 transparent;
+  display: block;
+  height: 15px;
+  text-indent: -9000px;
+  width: 77px;
+}
+#slim-header ul#top-follow {
+  float: left;
+  clear:none;
+  margin:0 0 3px 755px; 
+}
+#slim-header #join-login-top {
+  float: left;
+  height: auto;
+  margin-top: 0;
+  padding: 0;
+  width: auto;
+}
+#slim-header ul#top-follow li a {
+  height: 14px;
+  width: 14px;
+}
+#slim-header ul#top-follow li.title {
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: normal;
+  line-height: normal;
+  color:#666;
+	margin-right: 0;
+}
+#slim-header ul#top-follow li.fb a {
+  background: url("../images/sprite-slim-header.gif") no-repeat scroll -77px 0 transparent;
+	margin-top: 5px;
+}
+#slim-header ul#top-follow li.twitter a {
+  background: url("../images/sprite-slim-header.gif") no-repeat scroll -92px 0 transparent;
+	margin-top: 5px;
+}
+#slim-header #join-login-top a {
+  font-size: 10px;
+  font-weight: normal;
+  line-height: normal;
+	color:#666;
+  text-transform: none;
+}
+#slim-header #join-login-top span.fb {
+  background: url("../images/sprite-slim-header.gif") no-repeat scroll -106px 0 transparent;
+  display: inline-block;
+  height: 14px;
+  width: 48px;
+	font-size:0;
+  text-indent:-9999px;
+}
+#slim-header #join-login-top span.fb a span {
+  background: none;
+  margin: 0;
+  padding: 7px 0 0 0;
+	font-size:0;
+	text-indent:-9999px;
+}
+#slim-header #join-login-top #user-nav {
+    height: auto;
+}
+#slim-header #nav-wrap {
+  background: none;
+  margin: 2px 0 0 0;
+	border-top: 1px dashed #000;
+}
+#slim-header ul#top-nav {
+    margin-left: 123px;
+}
+#slim-header ul#top-nav li a {
+  border-right: 1px dashed #000;
+  color: #000;
+  font-weight: normal;
+	font-size:12px;
+  padding: 0 30px;
+}
+#slim-header ul#top-nav li a:hover {
+	text-decoration:underline;
+}
+#slim-header ul#top-nav li.last a {
+    border: 0 none;
+}
+
+/*
 
 .node-takepart-quick-study.node-teaser {
   margin-bottom: 0;
