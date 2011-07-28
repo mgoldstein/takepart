@@ -440,7 +440,8 @@ ul#top-nav li a {
   color: #FFFFFF;
   display: block;
   padding: 9px 10px;
-  text-decoration: none;	
+  text-decoration: none;
+	font-weight:bolder;
 }
 
 ul#top-nav li.last a{
@@ -1877,6 +1878,7 @@ Block Boxes (General)
 .block-boxes-title-features .views-field-title a {
   color: black;
   line-height: 20px;
+	font-weight:bolder;
 }
 
 /* Blog section */
