@@ -284,7 +284,7 @@ $info['projects']['rubik']['version'] = '4.0-beta5';
 
 // Nodequeue is not needed in TP3.
 // Commented out because one of the features from OP depends on NodeQueue, even though we aren't using it.
-// unset($info['projects']['nodequeue']);
+unset($info['projects']['nodequeue']);
 $info['projects']['nodequeue']['type']     = 'module';
 $info['projects']['nodequeue']['subdir']   = 'contrib';
 $info['projects']['nodequeue']['version']  = '2.0-alpha2';
