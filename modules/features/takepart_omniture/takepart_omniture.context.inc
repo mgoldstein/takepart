@@ -51,7 +51,7 @@ s.eVar21 = [tp_omniture:value_or_empty:{node:field-display-tag:term:name}]
 s.prop20 = [tp_omniture:value_or_empty:{node:field-display-tag:term:name}]
 s.eVar04 = [node:content-type]
 s.prop04 = [node:content-type]
-s.eVar16 = [node:title]
+s.eVar18 = [node:title]
 s.prop17 = [node:title]
 s.eVar17 = [node:field-profile-last-name]',
     ),
