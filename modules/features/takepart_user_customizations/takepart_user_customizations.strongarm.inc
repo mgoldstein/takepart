@@ -125,7 +125,7 @@ function takepart_user_customizations_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'captcha_wrong_response_counter';
-  $strongarm->value = 9;
+  $strongarm->value = 11;
   $export['captcha_wrong_response_counter'] = $strongarm;
 
   $strongarm = new stdClass;

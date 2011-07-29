@@ -119,17 +119,24 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_tp_campaign_cover_image']['settings'] = array(
+    'image_style' => 'tp_campaign_cover',
+    'image_link' => 'content',
+  );
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -187,14 +194,15 @@ function takepart_campaign_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Related Campaigns';
+  $handler->display->display_options['title'] = 'Similar Campaigns';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Nid */
@@ -351,43 +359,6 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['tid']['default_argument_options']['field'] = 'content_taxonomy::field_topic';
-  $handler->display->display_options['arguments']['tid']['default_argument_skip_url'] = 0;
-  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['tid']['break_phrase'] = 1;
-  $handler->display->display_options['arguments']['tid']['add_table'] = 0;
-  $handler->display->display_options['arguments']['tid']['require_value'] = 0;
-  $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 0;
-  $handler->display->display_options['arguments']['tid']['set_breadcrumb'] = 0;
-
-  /* Display: Suggest Only */
-  $handler = $view->new_display('block', 'Suggest Only', 'block_2');
-  $handler->display->display_options['display_description'] = 'Main used an Topic Term pages';
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '2';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Has taxonomy term ID */
-  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
-  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'taxonomy_tid';
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['term_page'] = 1;
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['node'] = 0;
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['limit'] = 0;
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['vocabularies'] = array(
-    'action_type' => 0,
-    'agency' => 0,
-    'blog' => 0,
-    'free_tags' => 0,
-    'group_type' => 0,
-    'photo_credit' => 0,
-    'series' => 0,
-    'topic' => 0,
-  );
   $handler->display->display_options['arguments']['tid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';

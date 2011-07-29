@@ -34,7 +34,7 @@ function takepart_search_default_search_api_facet() {
     "delta" : "standard_node_index_field_blogpo",
     "index_id" : "standard_node_index",
     "field" : "field_blogpost_blog",
-    "name" : "Standard Node_index: Blog",
+    "name" : "Standard Node Index: Blog",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -56,7 +56,7 @@ function takepart_search_default_search_api_facet() {
     "delta" : "standard_node_index_field_topic",
     "index_id" : "standard_node_index",
     "field" : "field_topic",
-    "name" : "Standard Node_index: Topic",
+    "name" : "Standard Node Index: Topic",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -100,7 +100,7 @@ function takepart_search_default_search_api_facet() {
     "delta" : "standard_node_index_type",
     "index_id" : "standard_node_index",
     "field" : "type",
-    "name" : "Standard Node_index: Content type",
+    "name" : "Standard Node Index: Content type",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -129,7 +129,6 @@ function takepart_search_default_search_api_facet() {
         "takepart_quick_study" : "Quick Study",
         "takepart_slide" : "Rotator Slide",
         "section_front" : "Section Front",
-        "openpublish_site_page" : "Site Page",
         "topic_front" : "Topic Front",
         "openpublish_video" : "Video",
         "video_series" : "Video Series",
@@ -154,6 +153,7 @@ function takepart_search_default_search_api_index() {
     "entity_type" : "node",
     "options" : {
       "cron_limit" : "50",
+      "index_directly" : 0,
       "fields" : {
         "search_api_language" : {
           "name" : "Item language",
@@ -168,7 +168,7 @@ function takepart_search_default_search_api_index() {
           "type" : "integer",
           "boost" : "1.0"
         },
-        "is_new" : { "name" : "Is new", "indexed" : 0, "type" : "boolean", "boost" : "1.0" },
+        "is_new" : { "name" : "Is new", "indexed" : 1, "type" : "boolean", "boost" : "1.0" },
         "type" : {
           "name" : "Content type",
           "indexed" : 1,
@@ -253,6 +253,26 @@ function takepart_search_default_search_api_index() {
           "type" : "integer",
           "boost" : "1.0"
         },
+        "views" : {
+          "name" : "Number of views",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "day_views" : {
+          "name" : "Views today",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "last_view" : { "name" : "Last view", "indexed" : 0, "type" : "date", "boost" : "1.0" },
+        "field_author" : {
+          "name" : "Author(s)",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
         "field_free_tag" : {
           "name" : "Free Tag",
           "indexed" : 1,
@@ -274,59 +294,65 @@ function takepart_search_default_search_api_index() {
           "entity_type" : "node",
           "boost" : "1.0"
         },
-        "field_article_related_actions" : {
+        "field_article_subhead" : { "name" : "Subhead", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_display_tag" : {
+          "name" : "Display Tag",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_promo_headline" : {
+          "name" : "Promo Headline",
+          "indexed" : 1,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_promo_text" : { "name" : "Promo Text", "indexed" : 1, "type" : "text", "boost" : "1.0" },
+        "field_series" : {
+          "name" : "Series",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_related_content" : {
+          "name" : "Releated Content",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_related_actions" : {
           "name" : "Related Actions",
           "indexed" : 0,
           "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
           "boost" : "1.0"
         },
-        "field_article_related_content" : {
-          "name" : "Releated Content",
-          "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_article_subhead" : { "name" : "Subhead", "indexed" : 0, "type" : "text", "boost" : "1.0" },
-        "field_article_suggest_campaigns" : {
+        "field_suggest_campaigns" : {
           "name" : "Suggest Related Campaigns?",
           "indexed" : 0,
           "type" : "boolean",
           "boost" : "1.0"
         },
-        "field_article_suggest_content" : {
-          "name" : "Suggest Releated Content?",
+        "field_suggest_content" : {
+          "name" : "Suggest Related Content?",
           "indexed" : 0,
           "type" : "boolean",
           "boost" : "1.0"
         },
-        "field_promo_headline" : {
-          "name" : "Promo Headline",
-          "indexed" : 1,
-          "type" : "string",
-          "boost" : "1.0"
-        },
-        "field_promo_text" : { "name" : "Promo Text", "indexed" : 1, "type" : "text", "boost" : "1.0" },
-        "field_series" : {
-          "name" : "Series",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_author" : {
-          "name" : "Author(s)",
+        "field_related_campaigns" : {
+          "name" : "Related Campaigns",
           "indexed" : 0,
           "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
           "boost" : "1.0"
         },
-        "field_display_tag" : {
-          "name" : "Display Tag",
+        "field_suggest_actions" : {
+          "name" : "Suggest Related Actions?",
           "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
+          "type" : "boolean",
           "boost" : "1.0"
         },
         "field_blogpost_blog" : {
@@ -343,44 +369,12 @@ function takepart_search_default_search_api_index() {
           "entity_type" : "node",
           "boost" : "1.0"
         },
-        "field_blogpost_related_actions" : {
-          "name" : "Related Actions",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_blogpost_related_campaign" : {
+        "field_blogpost_subhead" : { "name" : "Subhead", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_related_campaign" : {
           "name" : "Related Campaigns",
           "indexed" : 0,
           "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_blogpost_related_content" : {
-          "name" : "Related Content",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_blogpost_subhead" : { "name" : "Subhead", "indexed" : 0, "type" : "text", "boost" : "1.0" },
-        "field_blogpost_suggest_actions" : {
-          "name" : "Suggest Related Actions?",
-          "indexed" : 0,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "field_blogpost_suggest_campaigns" : {
-          "name" : "Suggest Related Campaigns?",
-          "indexed" : 0,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "field_blogpost_suggest_content" : {
-          "name" : "Suggest Related Content?",
-          "indexed" : 0,
-          "type" : "boolean",
           "boost" : "1.0"
         },
         "field_photo_credit" : {
@@ -400,13 +394,6 @@ function takepart_search_default_search_api_index() {
           "name" : "Suggest Related Actions?",
           "indexed" : 0,
           "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "field_related_content" : {
-          "name" : "Related Content",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
           "boost" : "1.0"
         },
         "field_suggest_related" : {
@@ -452,20 +439,6 @@ function takepart_search_default_search_api_index() {
           "entity_type" : "user",
           "boost" : "1.0"
         },
-        "field_action_promo_headline" : {
-          "name" : "Promo Headline",
-          "indexed" : 0,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_action_promo_text" : { "name" : "Promo Text", "indexed" : 0, "type" : "text", "boost" : "1.0" },
-        "field_action_related_campaigins" : {
-          "name" : "Related Campaigns",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
         "field_action_sponsor" : {
           "name" : "Action Sponsor",
           "indexed" : 0,
@@ -480,11 +453,19 @@ function takepart_search_default_search_api_index() {
           "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
-        "field_page_author" : {
-          "name" : "Author(s)",
+        "field_group_subhead" : { "name" : "Subhead", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_group_topic" : {
+          "name" : "Topic",
           "indexed" : 0,
           "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_group_type" : {
+          "name" : "Group Type",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
         "field_page_action" : {
@@ -492,13 +473,6 @@ function takepart_search_default_search_api_index() {
           "indexed" : 0,
           "type" : "integer",
           "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_page_display_tag" : {
-          "name" : "Display Tag",
-          "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
         "field_page_related_actions" : {
@@ -509,7 +483,7 @@ function takepart_search_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_page_related_content" : {
-          "name" : "Releated Content",
+          "name" : "Related Content",
           "indexed" : 0,
           "type" : "integer",
           "entity_type" : "node",
@@ -523,7 +497,7 @@ function takepart_search_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_page_suggest_content" : {
-          "name" : "Suggest Releated Content?",
+          "name" : "Suggest Related Content?",
           "indexed" : 0,
           "type" : "boolean",
           "boost" : "1.0"
@@ -562,22 +536,8 @@ function takepart_search_default_search_api_index() {
           "type" : "text",
           "boost" : "1.0"
         },
-        "field_tp_campagin_sponsers" : {
-          "name" : "Campaign Sponsors",
-          "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_tp_campagin_sl_nodes" : {
-          "name" : "Spotlight Nodes",
-          "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_tp_campaign_sl_html" : {
-          "name" : "Spotlight HTML",
+        "field_tp_campaign_seg_1_html" : {
+          "name" : "Segment 1 HTML",
           "indexed" : 0,
           "type" : "text",
           "boost" : "1.0"
@@ -593,12 +553,6 @@ function takepart_search_default_search_api_index() {
           "indexed" : 0,
           "type" : "integer",
           "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_tp_campaign_seg_1_html" : {
-          "name" : "Segment 1 HTML",
-          "indexed" : 0,
-          "type" : "text",
           "boost" : "1.0"
         },
         "field_tp_campaign_seg_2_html" : {
@@ -663,38 +617,38 @@ function takepart_search_default_search_api_index() {
           "indexed" : 0,
           "type" : "text",
           "boost" : "1.0"
+        },
+        "field_tp_campaign_sl_nodes" : {
+          "name" : "Spotlight Nodes",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_tp_campaign_sponsors" : {
+          "name" : "Campaign Sponsors",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_slide_featured_item" : {
+          "name" : "Story Link",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_slide_headline" : { "name" : "Headline", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_slide_headline_override" : {
+          "name" : "Main Image Headline",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
         }
-      },
-      "data_alter_callbacks" : {
-        "search_api_alter_bundle_filter" : {
-          "status" : 0,
-          "weight" : "0",
-          "settings" : { "default" : "1", "bundles" : [] }
-        },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : null }
-      },
-      "processors" : {
-        "search_api_case_ignore" : { "status" : 1, "weight" : "0", "settings" : { "strings" : 1 } },
-        "search_api_html_filter" : {
-          "status" : 1,
-          "weight" : "10",
-          "settings" : {
-            "title" : 0,
-            "alt" : 1,
-            "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
-          }
-        },
-        "search_api_tokenizer" : {
-          "status" : 1,
-          "weight" : "20",
-          "settings" : { "spaces" : "[^\\\\p{L}\\\\p{N}]", "ignorable" : "[-]" }
-        }.
-        "index_directly" : "1",
       }
     },
-    "enabled" : "1",
+    "enabled" : "0",
     "read_only" : "0",
     "rdf_mapping" : []
   }');
@@ -833,6 +787,11 @@ function takepart_search_default_search_api_server() {
             "type" : "integer",
             "boost" : "1.0"
           },
+          "is_new" : {
+            "table" : "search_api_db_standard_node_index_is_new",
+            "type" : "boolean",
+            "boost" : "1.0"
+          },
           "type" : {
             "table" : "search_api_db_standard_node_index_type",
             "type" : "string",
@@ -860,17 +819,12 @@ function takepart_search_default_search_api_server() {
           },
           "field_promo_headline" : {
             "table" : "search_api_db_standard_node_index_field_promo_headline",
-            "type" : "string",
+            "type" : "text",
             "boost" : "1.0"
           },
           "field_promo_text" : {
             "table" : "search_api_db_standard_node_index_field_promo_text",
             "type" : "text",
-            "boost" : "1.0"
-          },
-          "field_series" : {
-            "table" : "search_api_db_standard_node_index_field_series",
-            "type" : "integer",
             "boost" : "1.0"
           },
           "field_blogpost_blog" : {

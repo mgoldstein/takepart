@@ -7,7 +7,7 @@
   		</div><!--/hot topics nav-->
   		
   		<div class="text">
-  		<img src="<?php print $base_path . $takepart_theme_path; ?>/images/title-inspiration-to-action.gif" alt="inspiration to action">
+  		<img src="<?php print $base_path . $takepart_theme_path; ?>/images/tagline-be-a-participant.gif" alt="Be A Participant">
   		</div><!--/text-->
 		</div>
 		
@@ -20,7 +20,7 @@
   
   	<div class="clear"></div>
 	  	<ul id="top-follow">
-				<li class="title"><img alt="follow us" src="<?php print $base_path . $takepart_theme_path; ?>/images/title-follow-us.gif"></li>
+				<li class="title">Follow Us</li>
 				<li class="fb"><a href="http://www.facebook.com/takepart">facebook</a></li>
 				<li class="twitter"><a href="http://www.twitter.com/takepart">twitter</a></li>
 				<li class="rss"><a href="#">rss</a></li>
@@ -28,13 +28,10 @@
     </div>
   </div>
   <div class="clear clearfix" id="nav-wrap">
+    <div id="nav-logo-arrow"></div>
     <?php print $top_nav ?>
   	<div id="top-search">
-  	  <div class="tpform-item">
-  	  <input type="text" class="form-text search-field" value="Search TakePart" size="15" id="edit-search-theme-form-1" name="search_theme_form">
-  	  
-  	  <input type="submit" class="tpform-submit" value="submit" id="edit-submit">
-  	  </div><!--form item-->
+      <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
   	</div><!--/top search-->
   </div>
 
@@ -61,7 +58,6 @@
   <div id='page' class='page clearfix'>
   
     <div class='main-content'>
-      <?php if ($breadcrumb) print $breadcrumb; ?>
       <?php  /* if ($title): ?><h1 class='page-title'><?php print $title ?></h1><?php endif; */ ?>
       <?php if (isset($primary_local_tasks)): ?><ul class='links clearfix'><?php print render($primary_local_tasks) ?></ul><?php endif; ?>
       <?php if (isset($secondary_local_tasks)): ?><ul class='links clearfix'><?php print render($secondary_local_tasks) ?></ul><?php endif; ?>
@@ -106,9 +102,7 @@
     
     <div id="footer-set-links" class="footer-column-wrapper clearfix">
       <div class="column title">
-        <a href="#" id="news-and-blogs">news &amp; blogs</a>
-        <a href="#" id="issues">issues</a>
-        <a href="#" id="actions">actions</a>
+        <a href="#">Topics</a>
       </div><!--/column-->
       <?php print $takepart_topics_nav ?>
     </div>

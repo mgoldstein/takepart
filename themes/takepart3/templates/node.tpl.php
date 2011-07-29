@@ -12,7 +12,7 @@
 
   <?php if (!empty($title_suffix)) print render($title_suffix); ?>
 
-  <?php if (!empty($submitted) && $view_mode != 'teaser'): ?>
+  <?php if (!empty($submitted)): ?>
     <?php print $submitted ?>
   <?php endif; ?>
 
@@ -41,11 +41,9 @@
     
   <?php endif; ?>
   
-  <?php // krumo($node); ?>
-
   <?php if (!empty($links)): ?>
     <div class='links clearfix'>
-      <?php print render($links) ?>
+      <?php // print render($links) ?>
     </div>
   <?php endif; ?>
 </div>

@@ -209,7 +209,6 @@ function _newsletter_unsubscribe() {
   $campaign_code = variable_get('newsletter_campaign_unsubscribe_all_campaign_code', 'alltpnl');
   
   return drupal_get_form('_newsletter_unsubscribe_all_form', $campaign_code, $email);
-  return 'unsubscribed';
 }
 
 /**
@@ -249,6 +248,7 @@ function _newsletter_unsubscribe_all_form($form, &$form_state, $campaign_code, $
  * Implementation of form_validate for newsletter unsubscribe form
  */
 function _newsletter_unsubscribe_all_form_validate($form, &$form_state) {
+  
   if (!valid_email_address($form_state['values']['email'])) {
     form_set_error('email', t('Invalid address'));
   }
@@ -259,6 +259,7 @@ function _newsletter_unsubscribe_all_form_validate($form, &$form_state) {
  */
 function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
   //$response = takepart_newsletter_delete_campaign($email, $campaign_id);
+  global $user;
   $success = 0;
   $message = '';
   
@@ -288,6 +289,10 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
       // the local update
       db_query("UPDATE {newsletter_signups} SET status = 'u', unsubscribe_date = ? WHERE mail = ?", array(time(), $email));
       $success = 1;
+      
+      // update our opt in field, ugh
+      user_save($user, array('field_registration_email_opt_in' => 0));
+ 
     }
     else {
       $message = t('No response from pluris');
@@ -316,6 +321,6 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
     drupal_goto(variable_get('takepart_newsletter_signup_unsubscribe_problem_page', 'newsletter-unsubscribe-problem'));
   }
   else {
-    drupal_goto(variable_get('takepart_newsletter_signup_unsubscribe_confirmation_page', 'newsletter-unsubscribe-confirmation'));
+    drupal_goto(variable_get('takepart_newsletter_signup_unsubscribe_confirmation_page', 'user/'. $user->uid .'/edit'));
   }  
 }

@@ -39,6 +39,12 @@ function takepart_campaign_field_default_fields() {
           'type' => 'context_field_context',
           'weight' => '17',
         ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -194,9 +200,16 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => '19',
+        ),
+        'full' => array(
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -273,9 +286,16 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 19,
+        ),
+        'full' => array(
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '19',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1124,7 +1144,6 @@ function takepart_campaign_field_default_fields() {
           'Boxes for Screaming Headline' => 0,
           'Boxes for View Box' => 0,
           'addthis' => 0,
-          'akamai' => 0,
           'boxes' => 'boxes',
           'comment' => 0,
           'context_related_menu' => 0,
@@ -1137,7 +1156,6 @@ function takepart_campaign_field_default_fields() {
           'search_api_facets' => 0,
           'shortcut' => 0,
           'system' => 0,
-          'takepart_custom' => 0,
           'user' => 0,
           'views' => 0,
         ),
