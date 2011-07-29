@@ -13,6 +13,27 @@ function takepart_video_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'brightcove_player';
+  $strongarm->value = '96360173001';
+  $export['brightcove_player'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'brightcove_player_key';
+  $strongarm->value = 'AQ~~,AAAAAF9gv10~,C2TpzJtBrIC5tt2efHDX6tIKw36G5cHq';
+  $export['brightcove_player_key'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'brightcove_read_api_key';
+  $strongarm->value = 'x0mYnpoSXoAdsH5O1ASnihgPJzzcyu_BUcoCM9WAfbs.';
+  $export['brightcove_read_api_key'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_video_series';
   $strongarm->value = 0;
   $export['comment_anonymous_video_series'] = $strongarm;
