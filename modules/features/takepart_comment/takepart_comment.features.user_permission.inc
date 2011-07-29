@@ -17,6 +17,7 @@ function takepart_comment_user_default_permissions() {
       0 => 'administrator',
       1 => 'anonymous user',
       2 => 'authenticated user',
+      3 => 'editor',
     ),
     'module' => 'comment',
   );
@@ -38,6 +39,7 @@ function takepart_comment_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'authenticated user',
+      2 => 'editor',
     ),
     'module' => 'comment',
   );
@@ -48,6 +50,7 @@ function takepart_comment_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'authenticated user',
+      2 => 'editor',
     ),
     'module' => 'comment',
   );
@@ -58,6 +61,7 @@ function takepart_comment_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'authenticated user',
+      2 => 'editor',
     ),
     'module' => 'comment',
   );
