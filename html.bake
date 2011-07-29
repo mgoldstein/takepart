@@ -89,6 +89,16 @@ $info['projects']['webform_conditional']['type']    =' module';
 $info['projects']['webform_conditional']['subdir']  = 'contrib';
 $info['projects']['webform_conditional']['version'] = '1.x-dev';
 
+// Used for Twitter Pull Module
+$info['projects']['twitter_pull']['type']    =' module';
+$info['projects']['twitter_pull']['subdir']  = 'contrib';
+$info['projects']['twitter_pull']['version'] = '1.0-rc1';
+
+// Google News XML sitemap module
+$info['projects']['googlenews']['type']    =' module';
+$info['projects']['googlenews']['subdir']  = 'contrib';
+$info['projects']['googlenews']['version'] = '1.4';
+
 // Used for slide and rotator content
 $info['projects']['views_slideshow']['type']    = 'module';
 $info['projects']['views_slideshow']['subdir']  = 'contrib';
@@ -323,7 +333,6 @@ $info['libraries']['jquery.cycle']['download']['type']  = 'get';
 $info['libraries']['jquery.cycle']['download']['url']   = 'http://jquery.malsup.com/cycle/release/jquery.cycle.zip?v2.99';
 $info['libraries']['jquery.cycle']['directory_name']    = 'jquery.cycle';
 
-
 $info['libraries']['SolrPhpClient']['download']['type']  = 'get';
 $info['libraries']['SolrPhpClient']['download']['url']   = 'http://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz';
 $info['libraries']['SolrPhpClient']['destination']       = 'modules/contrib/search_api_solr';
@@ -340,4 +349,3 @@ $info['projects']['wysiwyg']['patch'][] = 'http://drupal.org/files/issues/746524
 /* Commented out patches, not sure if they will be needed again */
 // $info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 // $info['projects']['context']['patch'][]  = 'http://drupal.org/files/issues/context-block-contextual-links-1137794-2.patch';
-
