@@ -19,8 +19,8 @@ div.block-boxes-headline input.form-text {
   text-align: center;
 }
 .block-boxes-headline h2#screaming-headline a {
-  font-size: 49px;
-  font-family: Impact;
+  font-size: 41px;
+  font-family: sans-serif;
   color: #000;
 }
 .block-boxes-headline h2#screaming-headline a:hover {
