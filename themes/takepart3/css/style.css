@@ -1683,7 +1683,7 @@ Block Boxes (General)
   background: url('../images/sprite-block-box.gif') no-repeat;
   font-size: 0;
   margin-bottom: 25px;
-  text-indent: -90000;
+  text-indent: -9999px;
 }
 
 /** My Take **/
