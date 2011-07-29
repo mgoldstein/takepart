@@ -190,6 +190,16 @@ $info['projects']['media_image_formatter']['download']['type']   = 'git';
 $info['projects']['media_image_formatter']['download']['branch'] = 'master';
 $info['projects']['media_image_formatter']['download']['url']    = 'git@github.com:phase2/media_image_formatter.git';
 
+$info['projects']['brightcove']['type']                  = 'module'; 
+$info['projects']['brightcove']['subdir']                = 'contrib';
+$info['projects']['brightcove']['version']               = '2.0-alpha2';
+
+$info['projects']['media_brightcove']['type']   = 'module';
+$info['projects']['media_brightcove']['subdir'] = 'contrib';
+$info['projects']['media_brightcove']['download']['type']   = 'git';
+$info['projects']['media_brightcove']['download']['branch'] = 'master';
+$info['projects']['media_brightcove']['download']['url']    = 'git@github.com:phase2/media_brightcove.git';
+
 $info['projects']['context_title']['type']   = 'module';
 $info['projects']['context_title']['subdir'] = 'contrib';
 $info['projects']['context_title']['download']['type']   = 'git';
@@ -296,6 +306,10 @@ $info['projects']['field_boxes']['patch'][] = 'http://drupal.org/files/issues/12
 $info['libraries']['ckeditor']['download']['type']  = 'get';
 $info['libraries']['ckeditor']['download']['url']   = 'http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6/ckeditor_3.6.tar.gz';
 $info['libraries']['ckeditor']['directory_name']    = 'ckeditor';
+
+$info['libraries']['brightcove-php']['download']['type']  = 'get';
+$info['libraries']['brightcove-php']['download']['url']   = 'https://download.github.com/BrightcoveOS-PHP-MAPI-Wrapper-2.0.4-0-g237c407.tar.gz';
+$info['libraries']['brightcove-php']['directory_name']    = 'BrightcoveOS-PHP-MAPI-Wrapper';
 
 // Used with FB Connect modules, required
 $info['libraries']['facebook-php-sdk']['download']['type']    = 'git';
