@@ -85,7 +85,18 @@ function takepart_action_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array();
+   $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-related_actions-block' => array(
+          'module' => 'views',
+          'delta' => 'related_actions-block_1',
+          'region' => 'sidebar_second',
+          'weight' => 1,
+        ),
+      ),
+    ),
+  );
   $context->condition_mode = 1;
 
   // Translatables

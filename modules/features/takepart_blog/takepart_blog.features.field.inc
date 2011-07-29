@@ -829,17 +829,23 @@ function takepart_blog_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
+          'audio' => 0,
           'blog_front' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
-          'openpublish_site_page' => 0,
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
+          'takepart_campaign' => 'takepart_campaign',
+          'takepart_group' => 0,
+          'takepart_page' => 0,
           'takepart_quick_study' => 0,
+          'takepart_slide' => 0,
+          'topic_front' => 0,
           'video_series' => 0,
+          'webform' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -1470,10 +1476,14 @@ function takepart_blog_field_default_fields() {
           'weight' => '2',
         ),
         'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '3',
+          'label' => 'hidden',
+          'module' => 'media_image_formatter',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '0',
         ),
         'our_blogs_summary' => array(
           'label' => 'above',
@@ -1591,6 +1601,15 @@ function takepart_blog_field_default_fields() {
           'type' => 'field_redirection',
           'weight' => '1',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'field_redirection',
+          'settings' => array(
+            'code' => '301',
+          ),
+          'type' => 'field_redirection',
+          'weight' => '3',
+        ),
         'our_blogs_summary' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1656,6 +1675,15 @@ function takepart_blog_field_default_fields() {
           ),
           'type' => 'views_field_formatter',
           'weight' => '3',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'views_field',
+          'settings' => array(
+            'view' => 'blog_posts block_1',
+          ),
+          'type' => 'views_field_formatter',
+          'weight' => '2',
         ),
         'our_blogs_summary' => array(
           'label' => 'hidden',
