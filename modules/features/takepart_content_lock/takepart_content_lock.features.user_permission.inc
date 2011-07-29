@@ -25,6 +25,7 @@ function takepart_content_lock_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'authenticated user',
+      2 => 'editor',
     ),
     'module' => 'content_lock',
   );
