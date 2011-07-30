@@ -3314,3 +3314,33 @@ div.messages a:visited {
   background: #1CA9E7;
   color: white;
 }
+
+/**** Group ****/
+
+body.node-type-takepart-group #page {
+  padding-top: 0;
+}
+
+.field-name-field-group-url {
+  text-align: center;
+  background: #1CA9E7;
+  padding: 3px;
+  margin: 15px 0;
+}
+
+.field-name-field-group-url a {
+  font-weight: bold;
+  color: white;
+}
+
+.field-name-field-group-location {
+  color: #666;
+  margin-top: 15px;
+}
+
+.field-name-field-group-location .location.map-link {
+  border-top: 1px dotted silver;
+  margin-top: 15px;
+  padding-top: 15px;
+}
+

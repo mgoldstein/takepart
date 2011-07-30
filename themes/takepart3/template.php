@@ -301,6 +301,12 @@ function takepart3_field__field_tp_campaign_4_things_link(&$vars){
   return '<div class="field-name-field-tp-campaign-4-things-link">' . $output . '</div>';  
 }
 
+function takepart3_field__field_group_url(&$vars){
+  if(isset($vars['element']['#items'][0]) & $vars['element']['#items'][0]){
+    return "<div class='field field-name-field-group-url'>" . l('Visit Website', $vars['element']['#items'][0]['url']) . "</div>";
+  }
+}
+
 function takepart3_field__field_tp_campaign_seg_1_rel(&$vars){
   return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
 }
