@@ -85,7 +85,7 @@ function takepart_video_context_default_contexts() {
           'module' => 'views',
           'delta' => 'video-block',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => 0,
         ),
       ),
     ),
