@@ -804,14 +804,14 @@ function takepart_blog_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_blog_post-field_related_campaign'
-  $fields['node-openpublish_blog_post-field_related_campaign'] = array(
+  // Exported field: 'node-openpublish_blog_post-field_related_campaigns'
+  $fields['node-openpublish_blog_post-field_related_campaigns'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_related_campaign',
+      'field_name' => 'field_related_campaigns',
       'foreign keys' => array(
         'nid' => array(
           'columns' => array(
@@ -860,29 +860,30 @@ function takepart_blog_field_default_fields() {
       'bundle' => 'openpublish_blog_post',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'User can relate this Blog Post to one or more Campaign nodes to be displayed in a list on the Blog Post page. This will be displayed atop an automatically-generated list of Related Campaigns',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '15',
+          'type' => 'node_reference_default',
+          'weight' => 21,
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_related_campaign',
+      'field_name' => 'field_related_campaigns',
       'label' => 'Related Campaigns',
       'required' => 0,
       'settings' => array(
@@ -897,7 +898,7 @@ function takepart_blog_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -1753,7 +1754,6 @@ function takepart_blog_field_default_fields() {
   t('User can create and/or reference a series of Action nodes to be displayed in a list on the Blog Post page. These will be displayed atop an automatically-generated list of Related Actions');
   t('User can create and/or reference an Action to be featured prominently in a fixed position on the Blog Post page.');
   t('User can elect to toggle off the automatically-generated list of Related Campaigns on a blog post-specific basis.');
-  t('User can relate this Blog Post to one or more Campaign nodes to be displayed in a list on the Blog Post page. This will be displayed atop an automatically-generated list of Related Campaigns');
   t('User can relate this node to one or more nodes of various types. These are displayed in a block or inset on the Blog Post page, atop the automatically-generated list of Related Content.');
 
   return $fields;
