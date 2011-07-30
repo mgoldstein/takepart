@@ -13,6 +13,42 @@ function takepart_video_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'blocks_video';
+  $context->description = 'Video Blocks';
+  $context->tag = 'Blocks: Content Type';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'openpublish_video' => 'openpublish_video',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-box-208c3905' => array(
+          'module' => 'boxes',
+          'delta' => 'box-208c3905',
+          'region' => 'content_bottom',
+          'weight' => 0,
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Blocks: Content Type');
+  t('Video Blocks');
+  $export['blocks_video'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'related_video_curated';
   $context->description = 'Place of Releate Video Curated Block';
   $context->tag = 'Blocks: Related';
