@@ -96,7 +96,7 @@ function takepart_video_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '19',
+        'weight' => '14',
       ),
     ),
   );
@@ -164,7 +164,7 @@ function takepart_video_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '17',
+        'weight' => '13',
       ),
     ),
   );
@@ -237,7 +237,7 @@ function takepart_video_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '21',
+        'weight' => '15',
       ),
     ),
   );
@@ -306,7 +306,7 @@ function takepart_video_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -510,7 +510,7 @@ function takepart_video_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '13',
+        'weight' => '12',
       ),
     ),
   );
@@ -715,7 +715,7 @@ function takepart_video_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '9',
+        'weight' => '7',
       ),
     ),
   );
@@ -785,7 +785,7 @@ function takepart_video_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '23',
+        'weight' => '16',
       ),
     ),
   );
