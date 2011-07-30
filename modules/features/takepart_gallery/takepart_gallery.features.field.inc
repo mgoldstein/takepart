@@ -829,7 +829,7 @@ function takepart_gallery_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '34',
+        'weight' => '38',
       ),
     ),
   );
@@ -894,7 +894,7 @@ function takepart_gallery_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '35',
+        'weight' => '39',
       ),
     ),
   );

@@ -22,8 +22,8 @@ function takepart_gallery_field_group_info() {
     'label' => 'Main',
     'weight' => '5',
     'children' => array(
-      0 => 'group_photo_gallery_promo',
-      1 => 'group_photo_gallery_photos',
+      0 => 'group_photo_gallery_photos',
+      1 => 'group_photo_gallery_promo',
       2 => 'group_photo_gallery_related',
       3 => 'group_photo_gallery_tagging',
     ),
@@ -74,8 +74,9 @@ function takepart_gallery_field_group_info() {
     'label' => 'Promo',
     'weight' => '28',
     'children' => array(
-      0 => 'field_promo_text',
-      1 => 'field_promo_headline',
+      0 => 'field_promo_headline',
+      1 => 'field_promo_text',
+      2 => 'field_thumbnail',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
