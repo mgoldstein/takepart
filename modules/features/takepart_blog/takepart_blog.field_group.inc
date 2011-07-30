@@ -82,7 +82,7 @@ function takepart_blog_field_group_info() {
     'children' => array(
       0 => 'field_suggest_campaigns',
       1 => 'field_multi_page_campaign',
-      2 => 'field_related_campaign',
+      2 => 'field_related_campaigns',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

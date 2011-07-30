@@ -324,7 +324,9 @@ body.sidebar-first #content{
   vertical-align: top;
 	margin-top:3px;
 }
-
+.logged-in #user-nav li {
+	margin-right:10px;
+}
 #join-login-top a {
 	font-size:14px;
 	text-transform:uppercase;
@@ -468,8 +470,7 @@ ul#top-nav li.last a{
 	margin-top: 1px;
 }
 
-#top-search input#edit-submit,
-#top-search input#edit-submit--2 {
+#top-search .tpform-submit {
 	background: url(../images/sprite.png) no-repeat 0 -115px;
 	border: none;
 	cursor: pointer;
@@ -1705,7 +1706,7 @@ Block Boxes (General)
   background: url('../images/sprite-block-box.gif') no-repeat;
   font-size: 0;
   margin-bottom: 25px;
-  text-indent: -90000;
+  text-indent: -9999px;
 }
 
 /** My Take **/
@@ -1938,7 +1939,7 @@ Block Boxes (General)
 }
 
 .block-boxes-headline h2#screaming-headline { 
-  height: 30px;
+  height: 40px;
   line-height: 68px;
   margin: 0;
   overflow: visible;
