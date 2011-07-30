@@ -252,7 +252,7 @@ $info['projects']['google_analytics']['version']  = '1.2';
 
 $info['projects']['ctools']['type']    = 'module';
 $info['projects']['ctools']['subdir']  = 'contrib';
-$info['projects']['ctools']['version'] = '1.0-beta1';
+$info['projects']['ctools']['version'] = '1.0-rc1';
 
 $info['projects']['date']['type']     = 'module';
 $info['projects']['date']['subdir']   = 'contrib';
