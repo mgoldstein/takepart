@@ -45,7 +45,7 @@ function takepart_screaming_boxes_preview_callback($form, $form_state) {
  * Implements hook_access_admin().
  * Access check for whether current user should be able to administer screaming headline.
  */
-function taakepart_screaming_boxes_access_admin() {
+function takepart_screaming_boxes_access_admin() {
   return user_access('administer screaming headline') || (module_exists('spaces') && spaces_access_admin());
 }
 
