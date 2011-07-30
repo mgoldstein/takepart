@@ -1122,6 +1122,74 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-openpublish_photo_gallery-field_thumbnail'
+  $fields['node-openpublish_photo_gallery-field_thumbnail'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_thumbnail',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'media',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'media',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_photo_gallery',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => NULL,
+          'settings' => array(),
+          'type' => 'media_large',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_thumbnail',
+      'label' => 'Thumbnail',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media_views_widget',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'brightcove' => 0,
+            'public' => 'public',
+          ),
+          'allowed_types' => array(
+            'audio' => 0,
+            'default' => 0,
+            'image' => 'image',
+            'video' => 0,
+          ),
+          'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
+        ),
+        'type' => 'media_generic_alt',
+        'weight' => '37',
+      ),
+    ),
+  );
+
   // Exported field: 'node-openpublish_photo_gallery-field_topic'
   $fields['node-openpublish_photo_gallery-field_topic'] = array(
     'field_config' => array(
@@ -1207,6 +1275,7 @@ function takepart_gallery_field_default_fields() {
   t('Slideshow');
   t('Suggest Related Actions?');
   t('Suggest Related Content?');
+  t('Thumbnail');
   t('Topic');
   t('User can elect to toggle off the automatically generated list of Related Content (mixed bag) on a Gallery specific basis. This determination is made by common Topic tagging');
   t('Users can relate this node to one or more other Action nodes. These nodes are displayed in a block or inset on the Gallery page, atop an automatically-generated list of Related Actions.');
