@@ -190,15 +190,12 @@ $info['projects']['media_image_formatter']['download']['type']   = 'git';
 $info['projects']['media_image_formatter']['download']['branch'] = 'master';
 $info['projects']['media_image_formatter']['download']['url']    = 'git@github.com:phase2/media_image_formatter.git';
 
-$info['projects']['brightcove']['type']                  = 'module'; 
-$info['projects']['brightcove']['subdir']                = 'contrib';
-$info['projects']['brightcove']['version']               = '2.0-alpha2';
-
-$info['projects']['media_brightcove']['type']   = 'module';
-$info['projects']['media_brightcove']['subdir'] = 'contrib';
-$info['projects']['media_brightcove']['download']['type']   = 'git';
-$info['projects']['media_brightcove']['download']['branch'] = 'master';
-$info['projects']['media_brightcove']['download']['url']    = 'git@github.com:phase2/media_brightcove.git';
+$info['projects']['brightcove']['type']               = 'module'; 
+$info['projects']['brightcove']['subdir']             = 'contrib';
+$info['projects']['brightcove']['download']['type']   = 'git';
+$info['projects']['brightcove']['download']['branch'] = '7.x-2.x';
+$info['projects']['brightcove']['download']['url']    = 'http://git.drupal.org/project/brightcove.git';
+$info['projects']['brightcove']['patch'][] = 'http://drupal.org/files/issues/1232612-make.patch';
 
 $info['projects']['context_title']['type']   = 'module';
 $info['projects']['context_title']['subdir'] = 'contrib';
