@@ -49,8 +49,8 @@ function takepart_campaign_field_group_info() {
     'label' => 'Groups',
     'weight' => '6',
     'children' => array(
-      0 => 'field_tp_campaign_alliances',
-      1 => 'field_tp_campaign_sponsors',
+      0 => 'field_tp_campaign_sponsors',
+      1 => 'field_tp_campaign_alliances',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -262,6 +262,7 @@ function takepart_campaign_field_group_info() {
       6 => 'group_tp_campaign_seg_3',
       7 => 'group_tp_campaign_seg_4',
       8 => 'group_tp_campaign_sl',
+      9 => 'group_multi_page_campaign',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(

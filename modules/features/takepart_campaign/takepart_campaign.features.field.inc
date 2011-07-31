@@ -203,13 +203,13 @@ function takepart_campaign_field_default_fields() {
           'module' => 'context_field',
           'settings' => array(),
           'type' => 'context_field_context',
-          'weight' => '19',
+          'weight' => '6',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -343,7 +343,7 @@ function takepart_campaign_field_default_fields() {
           ),
         ),
         'type' => 'context_field_select',
-        'weight' => '15',
+        'weight' => '16',
       ),
     ),
   );
@@ -375,7 +375,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'context_field',
           'settings' => array(),
           'type' => 'context_field_context',
-          'weight' => 12,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -451,17 +451,23 @@ function takepart_campaign_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'context_field',
           'settings' => array(),
           'type' => 'context_field_context',
-          'weight' => 22,
+          'weight' => '5',
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '8',
         ),
       ),
       'entity_type' => 'node',
@@ -503,7 +509,7 @@ function takepart_campaign_field_default_fields() {
           ),
         ),
         'type' => 'context_field_select',
-        'weight' => '25',
+        'weight' => '9',
       ),
     ),
   );
@@ -764,7 +770,7 @@ function takepart_campaign_field_default_fields() {
           ),
         ),
         'type' => 'context_field_autocomplete',
-        'weight' => '22',
+        'weight' => '7',
       ),
     ),
   );
@@ -839,7 +845,7 @@ function takepart_campaign_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '21',
+        'weight' => '6',
       ),
     ),
   );
@@ -1170,7 +1176,7 @@ function takepart_campaign_field_default_fields() {
           'widget_setting' => 'bob',
         ),
         'type' => 'context_field',
-        'weight' => '23',
+        'weight' => '8',
       ),
     ),
   );
@@ -1313,6 +1319,83 @@ function takepart_campaign_field_default_fields() {
         ),
         'type' => 'text_textarea',
         'weight' => '9',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_header'
+  $fields['node-takepart_campaign-field_tp_campaign_header'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_header',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'media',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'media',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'media_image_formatter',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => 'tp_page_wide',
+          ),
+          'type' => 'image',
+          'weight' => '26',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_header',
+      'label' => 'Multi Page Header',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media_views_widget',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'brightcove' => 0,
+            'public' => 'public',
+          ),
+          'allowed_types' => array(
+            'audio' => 0,
+            'default' => 0,
+            'image' => 'image',
+            'video' => 0,
+          ),
+          'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
+        ),
+        'type' => 'media_generic_alt',
+        'weight' => '8',
       ),
     ),
   );
@@ -3041,6 +3124,7 @@ function takepart_campaign_field_default_fields() {
   t('Intro HTML');
   t('Intro Media');
   t('Multi Page Campaign');
+  t('Multi Page Header');
   t('Related Actions');
   t('Segment 1 HTML');
   t('Segment 1 Label');
