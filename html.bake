@@ -186,6 +186,10 @@ $info['projects']['media']['download']['type']      =  'git';
 $info['projects']['media']['download']['branch']    = '7.x-1.x';
 $info['projects']['media']['download']['url']       = 'http://git.drupal.org/project/media.git';
 
+$info['projects']['media_youtube']['type']                  = 'module'; 
+$info['projects']['media_youtube']['subdir']                = 'contrib';
+$info['projects']['media_youtube']['verison']      =  '1.0-alpha5';
+
 $info['projects']['media_views_widget']['type']   = 'module';
 $info['projects']['media_views_widget']['subdir'] = 'contrib';
 $info['projects']['media_views_widget']['download']['type']   = 'git';
