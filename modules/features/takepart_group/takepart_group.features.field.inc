@@ -112,14 +112,18 @@ function takepart_group_field_default_fields() {
           'type' => 'text_default',
           'weight' => '0',
         ),
-        'teaser' => array(
+        'full' => array(
           'label' => 'hidden',
           'module' => 'text',
-          'settings' => array(
-            'trim_length' => 600,
-          ),
-          'type' => 'text_summary_or_trimmed',
-          'weight' => 0,
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'node',
@@ -172,17 +176,23 @@ function takepart_group_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'context_field',
           'settings' => array(),
           'type' => 'context_field_context',
+          'weight' => '8',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
       ),
       'entity_type' => 'node',
@@ -323,17 +333,23 @@ function takepart_group_field_default_fields() {
       'description' => 'Enter address information',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'location_cck',
           'settings' => array(),
           'type' => 'location_default',
+          'weight' => '4',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '8',
         ),
       ),
       'entity_type' => 'node',
@@ -378,19 +394,30 @@ function takepart_group_field_default_fields() {
       'description' => 'Select an image to serve as the Logo for the Group.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'media',
+          'label' => 'hidden',
+          'module' => 'media_image_formatter',
           'settings' => array(
-            'file_view_mode' => 'media_original',
+            'image_link' => '',
+            'image_style' => 'tp_campaign_cover',
           ),
-          'type' => 'media',
+          'type' => 'image',
           'weight' => '2',
         ),
-        'teaser' => array(
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '2',
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'module' => 'media_image_formatter',
+          'settings' => array(
+            'image_link' => 'content',
+            'image_style' => 'right-sidebar-thumbnails',
+          ),
+          'type' => 'image',
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -446,7 +473,7 @@ function takepart_group_field_default_fields() {
       'description' => 'Select an image to be used as the Main Image for the Group',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'media',
           'settings' => array(
             'file_view_mode' => 'media_original',
@@ -454,11 +481,17 @@ function takepart_group_field_default_fields() {
           'type' => 'media',
           'weight' => '3',
         ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '7',
         ),
       ),
       'entity_type' => 'node',
@@ -524,17 +557,23 @@ function takepart_group_field_default_fields() {
       'description' => 'ubtitle of the node, displayed beneath the Headline on the Group page.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
+          'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '6',
         ),
       ),
       'entity_type' => 'node',
@@ -597,17 +636,23 @@ function takepart_group_field_default_fields() {
       'description' => 'Enter the topic associated with this group.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
+          'weight' => '7',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '5',
         ),
       ),
       'entity_type' => 'node',
@@ -667,17 +712,23 @@ function takepart_group_field_default_fields() {
       'description' => 'Enter the group type for this group.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
+          'weight' => '6',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'node',
@@ -735,17 +786,23 @@ function takepart_group_field_default_fields() {
       'description' => 'Enter the groups URL.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
           'type' => 'default',
+          'weight' => '5',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'node',
