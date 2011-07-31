@@ -369,6 +369,51 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['arguments']['tid']['require_value'] = 0;
   $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['arguments']['tid']['set_breadcrumb'] = 0;
+
+  /* Display: Currated and Suggest for taxonomy pages */
+  $handler = $view->new_display('block', 'Currated and Suggest for taxonomy pages', 'block_2');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Promoted Content */
+  $handler->display->display_options['arguments']['null']['id'] = 'null';
+  $handler->display->display_options['arguments']['null']['table'] = 'views';
+  $handler->display->display_options['arguments']['null']['field'] = 'null';
+  $handler->display->display_options['arguments']['null']['ui_name'] = 'Promoted Content';
+  $handler->display->display_options['arguments']['null']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'field';
+  $handler->display->display_options['arguments']['null']['default_argument_options']['field'] = 'nodereference::field_related_campaigns';
+  $handler->display->display_options['arguments']['null']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['null']['must_not_be'] = 0;
+  /* Contextual filter: Content: Has taxonomy term ID */
+  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['tid']['default_argument_options']['term_page'] = 1;
+  $handler->display->display_options['arguments']['tid']['default_argument_options']['node'] = 0;
+  $handler->display->display_options['arguments']['tid']['default_argument_options']['limit'] = 0;
+  $handler->display->display_options['arguments']['tid']['default_argument_options']['vocabularies'] = array(
+    'action_type' => 0,
+    'agency' => 0,
+    'blog' => 0,
+    'free_tags' => 0,
+    'group_type' => 0,
+    'photo_credit' => 0,
+    'series' => 0,
+    'topic' => 0,
+  );
+  $handler->display->display_options['arguments']['tid']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['tid']['break_phrase'] = 1;
+  $handler->display->display_options['arguments']['tid']['add_table'] = 0;
+  $handler->display->display_options['arguments']['tid']['require_value'] = 0;
+  $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['arguments']['tid']['set_breadcrumb'] = 0;
   $export['related_campaigns'] = $view;
 
   return $export;
