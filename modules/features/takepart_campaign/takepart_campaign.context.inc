@@ -84,7 +84,7 @@ function takepart_campaign_context_default_contexts() {
           'module' => 'views',
           'delta' => 'related_campaigns-block',
           'region' => 'sidebar_second',
-          'weight' => '1',
+          'weight' => 4,
         ),
       ),
     ),

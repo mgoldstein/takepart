@@ -437,6 +437,7 @@ function takepart_campaign_default_box() {
     'field' => array(
       'field_tp_campaign_cover_image' => 'field_tp_campaign_cover_image',
       'field_tp_campaign_cover_intro' => 'field_tp_campaign_cover_intro',
+      'field_tp_campaign_cover_link' => 'field_tp_campaign_cover_link',
       'body' => 0,
       'field_action_related' => 0,
       'field_topic' => 0,
@@ -464,6 +465,7 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_sponsors' => 0,
       'field_tp_campaign_context' => 0,
       'field_tp_campaign_alliances' => 0,
+      'field_tp_campaign_header' => 0,
     ),
     'use_page' => 1,
     'exclude_from_content' => 0,
