@@ -305,8 +305,6 @@ $info['projects']['field_boxes']['subdir'] = 'contrib';
 $info['projects']['field_boxes']['download']['type']   = 'git';
 $info['projects']['field_boxes']['download']['branch'] = '7.x-1.x';
 $info['projects']['field_boxes']['download']['url']    = 'http://git.drupal.org/project/field_boxes.git';
-$info['projects']['field_boxes']['patch'][] = 'http://drupal.org/files/issues/1211204-make_0.patch';
-$info['projects']['field_boxes']['patch'][] = 'http://drupal.org/files/issues/1212226_0.patch';
 
 /* Libraries */
 
