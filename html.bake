@@ -102,7 +102,11 @@ $info['projects']['googlenews']['version'] = '1.4';
 // Used for slide and rotator content
 $info['projects']['views_slideshow']['type']    = 'module';
 $info['projects']['views_slideshow']['subdir']  = 'contrib';
-$info['projects']['views_slideshow']['version'] = '3.0-alpha1';
+//$info['projects']['views_slideshow']['version'] = '3.0-alpha1';
+$info['projects']['views_slideshow']['download']['type']      =  'git';
+$info['projects']['views_slideshow']['download']['branch']    = '7.x-3.x';
+$info['projects']['views_slideshow']['download']['url']       = 'http://git.drupal.org/project/views_slideshow.git';
+$info['projects']['views_slideshow']['download']['date']    = '2011-06-27';
 
 // Needed for 3rd party modules, probably should be included in base
 $info['projects']['libraries']['type']    = 'module';
