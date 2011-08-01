@@ -348,7 +348,7 @@ $info['projects']['media']['patch'][]   = 'http://drupal.org/files/issues/views-
 $info['projects']['media']['patch'][]   = 'http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make_0_0.patch';
 $info['projects']['wysiwyg']['patch']   = '';
 $info['projects']['wysiwyg']['patch'][] = 'http://drupal.org/files/issues/746524-91Drupal7-v3_drush_make.patch';
-$info['projects']['wysiwyg']['patch'][] = 'http://drupal.org/files/issues/1197924_fb_url_rewrite.patch';
+$info['projects']['fb']['patch'][] = 'http://drupal.org/files/issues/1197924_fb_url_rewrite.patch';
 /* Commented out patches, not sure if they will be needed again */
 // $info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 // $info['projects']['context']['patch'][]  = 'http://drupal.org/files/issues/context-block-contextual-links-1137794-2.patch';
