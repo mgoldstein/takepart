@@ -618,10 +618,7 @@ function takepart_blog_field_default_fields() {
       'field_name' => 'field_promo_headline',
       'label' => 'Promo Headline',
       'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
+      'settings' => array(),
       'widget' => array(
         'active' => 1,
         'module' => 'text',
