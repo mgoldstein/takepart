@@ -371,11 +371,11 @@ function takepart_campaign_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'context_field',
           'settings' => array(),
           'type' => 'context_field_context',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2864,7 +2864,7 @@ function takepart_campaign_field_default_fields() {
   $fields['node-takepart_campaign-field_tp_campaign_sponsors'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_tp_campaign_sponsors',
@@ -2891,7 +2891,6 @@ function takepart_campaign_field_default_fields() {
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
-          'openpublish_site_page' => 0,
           'openpublish_video' => 0,
           'profile' => 0,
           'section_front' => 0,
@@ -2902,6 +2901,7 @@ function takepart_campaign_field_default_fields() {
           'takepart_slide' => 0,
           'topic_front' => 0,
           'video_series' => 0,
+          'webform' => 0,
         ),
         'view' => array(
           'args' => array(),
