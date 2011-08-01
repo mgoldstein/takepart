@@ -11,7 +11,9 @@ function takepart_action_preprocess(&$variables, $hook) {
    
   if($hook == 'page' && $variables['node']->type == 'action') {
     //dpm('action');
-    drupal_add_js(drupal_get_path('module', 'takepart_action') . '/js/takepart-action.js');
+    $path = drupal_get_path('module', 'takepart_action');
+    dpm($path);
+    drupal_add_js($path . '/js/takepart-action.js');
   
   }
 }
