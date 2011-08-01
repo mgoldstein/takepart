@@ -3044,17 +3044,13 @@ div.messages a:visited {
 
 
 /****** Gallery Detail ******/
-.node-type-openpublish-photo-gallery .main-content {
-	float:none;
-	width:auto;
-}
 .node-openpublish-photo-gallery h2.title {
 	color: #000000;
   font-size: 36px;
   line-height: 100%;
   margin: 20px 0;
 }
-.node-openpublish-photo-gallery .field-name-body p{
+.node-openpublish-photo-gallery .field-name-field-subhead {
 	color: #666666;
   font-size: 18px;
   line-height: 120%;
@@ -3077,8 +3073,9 @@ div.messages a:visited {
   padding: 7px 10px;
 	position:absolute;
 	width:284px;
-	left:635px;
+	left:0;
 	height:29px;
+	top:0;
 }
 #views_slideshow_controls_text_pause_photo_gallery-block {
 	display:none;
@@ -3112,7 +3109,7 @@ div.messages a:visited {
   text-align: center;
   width: 60px;
 	position:absolute;
-	left:745px;
+	left:105px;
 	top:7px;
 	color:#fff;
 	font-family:Georgia, serif;
@@ -3131,6 +3128,25 @@ div.messages a:visited {
   width: 96px;
 }
 
+
+/*
+ * Photo gallery
+ */
+.views-slideshow-pager-field-item {
+	float:left;
+	width:92px;
+	height:66px;
+	margin:0 8px 8px 0;
+}
+#widget_pager_top_photo_gallery-block .views-slideshow-pager-field-item.active img {
+	border:5px solid #1da9e7;
+}
+#ss_controls {
+	position:relative;
+}
+#widget_pager_top_photo_gallery-block {
+	padding-top:50px;
+}
 
 /*
  * Slim header on campaigns
