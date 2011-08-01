@@ -104,6 +104,7 @@ projects[wysiwyg][subdir] = contrib
 projects[wysiwyg][type] = module
 projects[wysiwyg][version] = 2.x-dev
 projects[wysiwyg][patch][] = http://drupal.org/files/issues/746524-91Drupal7-v3_drush_make.patch
+projects[wysiwyg][patch][] = http://drupal.org/files/issues/1197924_fb_url_rewrite.patch
 projects[addthis][subdir] = contrib
 projects[addthis][version] = 2.1-beta1
 projects[google_analytics][subdir] = contrib
