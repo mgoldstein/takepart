@@ -5,3 +5,15 @@
  */
 
 include_once('takepart_action.features.inc');
+
+
+function takepart_action_preprocess(&$variables, $hook) {
+   
+  if($hook == 'page' && $variables['node']->type == 'action') {
+    //dpm('action');
+    $path = drupal_get_path('module', 'takepart_action');
+    dpm($path);
+    drupal_add_js($path . '/js/takepart-action.js');
+  
+  }
+}
