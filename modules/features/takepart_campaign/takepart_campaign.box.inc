@@ -713,5 +713,24 @@ function takepart_campaign_default_box() {
   );
   $export['box-9ececd73'] = $box;
 
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'box-b68f20b9';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Campaign: Share';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="addthis_toolbox addthis_default_style ">
+    <a class="addthis_button_facebook_like at300b" fb:like:layout="button_count" title="Send to Facebook_like" href="#"><fb:like ref=".TjWHTBo-Ym0.like" layout="button_count" show_faces="false" action="like" width="90" font="arial" href="http://content.p2.takepart.com/article/2011/06/28/flawless-victory-supreme-court-rules-favor-violent-video-games" class=" fb_edge_widget_with_comment fb_iframe_widget"></fb:like></a>
+
+    <a class="addthis_button_tweet at300b" title="Tweet" href="#"><iframe src="http://platform.twitter.com/widgets/tweet_button.html#_=1312130893301&amp;count=horizontal&amp;id=twitter_tweet_button_0&amp;lang=en&amp;original_referer=http%3A%2F%2Fcontent.p2.takepart.com%2Fnode%2F76%2Fcontext_field&amp;text=Flawless%20Victory%3F%20Supreme%20Court%20Rules%20in%20Favor%20of%20Violent%20Video%20Games%20%7C%20TakePart%203.0%20(Content%20-%2007%2F30%2F11%2021%3A00%3A30%20EDT)%3A&amp;url=http%3A%2F%2Fcontent.p2.takepart.com%2Farticle%2F2011%2F06%2F28%2Fflawless-victory-supreme-court-rules-favor-violent-video-games%23.TjWHTLiwqJA.tweet&amp;via=AddThis" allowtransparency="true" frameborder="0" scrolling="no" class="twitter-share-button twitter-count-horizontal" style="width: 110px; height: 20px; " title="Twitter For Websites: Tweet Button"></iframe></a>
+  <div class="atclear"></div></div>',
+      'format' => 'full_html',
+    ),
+  );
+  $export['box-b68f20b9'] = $box;
+
   return $export;
 }
