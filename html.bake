@@ -166,6 +166,8 @@ $info['projects']['webform']['subdir']  = 'contrib';
 $info['projects']['webform']['type']    = 'module';
 $info['projects']['webform']['version'] = '3.11';
 
+/* Unsetting because an older patch is being applied from OPublish */
+unset($info['projects']['captcha']);
 $info['projects']['captcha']['type']    =' module';
 $info['projects']['captcha']['subdir']  = 'contrib';
 $info['projects']['captcha']['version'] = '1.0-alpha3';
