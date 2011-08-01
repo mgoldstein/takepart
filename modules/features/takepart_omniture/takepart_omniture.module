@@ -4,5 +4,6 @@
  * Code for the takepart_omniture feature.
  */
 
+include_once('takepart_omniture.custom.inc');
 include_once('takepart_omniture.features.inc');
 include_once('takepart_omniture.token.inc');

@@ -10,18 +10,12 @@ bake_convert_to_dev($info,'nodeconnect');
 
 /* TakePart Temporary Modules - These should be removed prior to launch or just after */
 
-// Backup module to pull local copies of the db down for external developers
-$info['projects']['backup_migrate']['type']   = 'module';
-$info['projects']['backup_migrate']['subdir'] = 'contrib';
-$info['projects']['backup_migrate']['version']   = '2.2';
-
 // Flag can be removed once site goes live, only used for flagging test content
 $info['projects']['flag']['type']   = 'module';
 $info['projects']['flag']['subdir'] = 'contrib';
 $info['projects']['flag']['download']['type']   = 'git';
 $info['projects']['flag']['download']['branch'] = 'master';
 $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project/flag.git';
-
 
 /* TakePart Modules */
 
