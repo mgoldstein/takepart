@@ -266,7 +266,7 @@ function takepart3_field__field_author(&$vars){
   // Author
   $authors = array();
   foreach($vars['items'] as $key => $value){
-    $authors[] = l( $value['#title'], url($value['#href']) );
+    $authors[] = render($value);
   }
 
   switch(count($authors)){
