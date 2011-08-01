@@ -23,7 +23,10 @@ $databases = array (
  */
 
 if (!is_array($conf))
-  $conf = array();
+  $conf = array(
+   'omniture_account_name' = 'takeparttakepartdev2',
+);
+
 
 //$conf['fb_verbose'] = TRUE; // debug output
 //$conf['fb_verbose'] = 'extreme'; // for verbosity fetishists.

@@ -17,20 +17,3 @@ function takepart_omniture_ctools_plugin_api() {
     return array("version" => "1");
   }
 }
-
-/**
- * Implementation of hook_node_info().
- */
-function takepart_omniture_node_info() {
-  $items = array(
-    'section_front' => array(
-      'name' => t('Section Front'),
-      'base' => 'node_content',
-      'description' => t('Default section front content type.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-  );
-  return $items;
-}

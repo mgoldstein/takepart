@@ -137,8 +137,8 @@ s.prop18 = [node:field-blogpost-blog:term:name]',
   $context->reactions = array(
     'omniture_reaction' => array(
       'variables' => 's.channel = takepart:[current-page:url-arg:0]
-s.eVar11 = [f:bool:{current-user:uid}:Yes:No]
-s.pageName = takepart:[current-page:url-arg:0]:[current-page:title]',
+s.eVar04 = [node:content-type:machine-name]
+s.eVar11 = [f:bool:{current-user:uid}:Yes:No]',
     ),
   );
   $context->condition_mode = 0;
