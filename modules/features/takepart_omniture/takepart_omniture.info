@@ -1,7 +1,7 @@
 core = "7.x"
 dependencies[] = "context"
 dependencies[] = "omniture"
-dependencies[] = "omniture_basic"
+;dependencies[] = "omniture_basic"
 dependencies[] = "token_function"
 description = "TakePart Omniture Intergration "
 features[context][] = "omniture_all_content_types"
