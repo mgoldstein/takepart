@@ -24,7 +24,7 @@ $databases = array (
 
 if (!is_array($conf))
   $conf = array(
-   'omniture_account_name' = 'takeparttakepartdev2',
+   'omniture_account_name' => 'takeparttakepartdev2',
 );
 
 

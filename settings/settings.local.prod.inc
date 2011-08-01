@@ -61,7 +61,7 @@ $conf['cacherouter'] = array(
  */
 if (!is_array($conf))
   $conf = array(
-   'omniture_account_name' = 'takepart',
+   'omniture_account_name' => 'takepart',
 );
 
 
