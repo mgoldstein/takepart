@@ -102,11 +102,12 @@ function takepart_campaign_field_group_info() {
     'children' => array(
       0 => 'field_action_related',
     ),
-    'format_type' => 'tabs',
+    'format_type' => 'htab',
     'format_settings' => array(
-      'formatter' => '',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'classes' => '',
+        'required_fields' => 1,
       ),
     ),
   );
