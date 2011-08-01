@@ -162,11 +162,23 @@ function takepart_campaign_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'takepart_custom-page_title_h1' => array(
+          'module' => 'takepart_custom',
+          'delta' => 'page_title_h1',
+          'region' => 'highlighted',
+          'weight' => 0,
+        ),
+        'boxes-box-b68f20b9' => array(
+          'module' => 'boxes',
+          'delta' => 'box-b68f20b9',
+          'region' => 'highlighted',
+          'weight' => 1,
+        ),
         'boxes-box-2988d8fb' => array(
           'module' => 'boxes',
           'delta' => 'box-2988d8fb',
           'region' => 'highlighted',
-          'weight' => 0,
+          'weight' => 2,
         ),
         'boxes-box-9ececd73' => array(
           'module' => 'boxes',
@@ -214,7 +226,7 @@ function takepart_campaign_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-81a645d6',
           'region' => 'sidebar_first',
-          'weight' => 1,
+          'weight' => 0,
         ),
         'boxes-box-95b55e7' => array(
           'module' => 'boxes',
@@ -226,25 +238,25 @@ function takepart_campaign_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-5cd7d5ce',
           'region' => 'sidebar_second',
-          'weight' => 1,
+          'weight' => 2,
         ),
         'boxes-box-4abd00a3' => array(
           'module' => 'boxes',
           'delta' => 'box-4abd00a3',
           'region' => 'sidebar_second',
-          'weight' => 2,
+          'weight' => 3,
         ),
         'boxes-box-33756e58' => array(
           'module' => 'boxes',
           'delta' => 'box-33756e58',
           'region' => 'sidebar_second',
-          'weight' => 3,
+          'weight' => 5,
         ),
         'newsletter_campaign-1' => array(
           'module' => 'newsletter_campaign',
           'delta' => '1',
           'region' => 'sidebar_second',
-          'weight' => 4,
+          'weight' => 6,
         ),
       ),
     ),

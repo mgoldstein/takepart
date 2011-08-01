@@ -151,7 +151,7 @@ function takepart_user_customizations_field_default_fields() {
       ),
       'entity_type' => 'user',
       'field_name' => 'field_registration_email_opt_in',
-      'label' => 'Get TakePart emails and alerts',
+      'label' => variable_get('takepart_newsletter_user_reg_opt_in_msg','Get the daily TakePart Today email and other alerts'),
       'required' => 0,
       'settings' => array(
         'user_register_form' => 1,
@@ -171,7 +171,7 @@ function takepart_user_customizations_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Date of Birth');
-  t('Get TakePart emails and alerts');
+  t(variable_get('takepart_newsletter_user_reg_opt_in_msg','Get the daily TakePart Today email and other alerts'));
   t('You must be 18 years of age.');
 
   return $fields;

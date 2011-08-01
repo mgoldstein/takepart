@@ -60,7 +60,10 @@ $conf['cacherouter'] = array(
  * Drupal for Facebook settings.
  */
 if (!is_array($conf))
-  $conf = array();
+  $conf = array(
+   'omniture_account_name' => 'takepart',
+);
+
 
 //$conf['fb_verbose'] = TRUE; // debug output
 //$conf['fb_verbose'] = 'extreme'; // for verbosity fetishists.

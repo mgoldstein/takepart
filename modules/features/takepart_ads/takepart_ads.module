@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Ads feature.
+ */
+
+include_once('takepart_ads.features.inc');

@@ -1,6 +1,6 @@
 <?php
 /**
- * @file
+ * @file 
  * takepart_promo.views_default.inc
  */
 
@@ -19,7 +19,7 @@ function takepart_promo_views_default_views() {
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
+  
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'My Take';
@@ -201,6 +201,12 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['type']['empty_zero'] = 0;
   $handler->display->display_options['fields']['type']['link_to_node'] = 1;
   $handler->display->display_options['fields']['type']['machine_name'] = 0;
+  /* Sort criterion: Arguments: Multi-item Argument Order */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'views_sort_by_arg_order';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['weight']['argument_number'] = '0';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -226,7 +232,7 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-
+  
   /* Display: News to Know */
   $handler = $view->new_display('block', 'News to Know', 'block');
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -301,7 +307,7 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['field_api_classes'] = 0;
-
+  
   /* Display: Features */
   $handler = $view->new_display('block', 'Features', 'block_1');
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -372,7 +378,7 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-
+  
   /* Display: My Take */
   $handler = $view->new_display('block', 'My Take', 'block_2');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -498,9 +504,11 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['field_promo_text']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['field_api_classes'] = 0;
-
+  
   /* Display: Get Involved */
   $handler = $view->new_display('block', 'Get Involved', 'block_3');
+
+  
   $export['promo'] = $view;
 
   return $export;
