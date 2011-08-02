@@ -209,7 +209,7 @@ $info['projects']['brightcove']['subdir']             = 'contrib';
 $info['projects']['brightcove']['download']['type']   = 'git';
 $info['projects']['brightcove']['download']['branch'] = '7.x-2.x';
 $info['projects']['brightcove']['download']['url']    = 'http://git.drupal.org/project/brightcove.git';
-$info['projects']['brightcove']['patch'][] = 'http://drupal.org/files/issues/1232612-make_1.patch';
+$info['projects']['brightcove']['patch'][] = 'http://drupal.org/files/issues/1232612-make_3.patch';
 
 $info['projects']['context_title']['type']   = 'module';
 $info['projects']['context_title']['subdir'] = 'contrib';
@@ -226,7 +226,7 @@ $info['projects']['views_file_row']['download']['url']    = 'git@github.com:phas
 $info['projects']['omniture']['type']   = 'module';
 $info['projects']['omniture']['subdir'] = 'contrib';
 $info['projects']['omniture']['version'] = '1.x-dev';
-$info['projects']['omniture']['patch'][]    = 'http://drupal.org/files/issues/omniture_context_1223462-make_0.patch';
+$info['projects']['omniture']['patch'][]    = 'http://drupal.org/files/issues/omniture_context_1223462-make_2.patch';
 
 $info['projects']['token_function']['type']   = 'module';
 $info['projects']['token_function']['subdir'] = 'contrib';
@@ -353,3 +353,8 @@ $info['projects']['wysiwyg']['patch'][] = 'http://drupal.org/files/issues/746524
 /* Commented out patches, not sure if they will be needed again */
 // $info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
 // $info['projects']['context']['patch'][]  = 'http://drupal.org/files/issues/context-block-contextual-links-1137794-2.patch';
+
+function html_post_make($path, $info, &$config) {
+    system("rm $path/robots.txt");
+    system("cd $path && ln -s profiles/custom/settings/robots.dev.txt robots.txt");
+}
