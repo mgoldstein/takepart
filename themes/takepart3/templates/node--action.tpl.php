@@ -22,6 +22,7 @@
     
     <div class='content content-bottom clearfix <?php if (!empty($is_prose)) print 'prose' ?>'>
       ACTION
+      <h4><?php print $action_url?></h4>
       <form id='take-action'>
         <input id='take-action-btn' type='button' value='Take Action'>
       </form>

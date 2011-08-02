@@ -10,10 +10,23 @@ include_once('takepart_action.features.inc');
 function takepart_action_preprocess(&$variables, $hook) {
    
   if($hook == 'page' && $variables['node']->type == 'action') {
-    //dpm('action');
+    
+    // add the action url as a variable
+    $node = $variables['node'];
+    $action_url = $node->field_action_url[$node->language][0]['url'];
+    
+    $actionClick_vars = array();
+    
+    if (valid_url($action_url)) {
+      $variables['action_url'] = $node->field_action_url[$node->language][0]['url'];
+      $actionClick_vars = array('action_url' => $action_url);
+      //drupal_add_js($tp_action_vars, 'setting');
+    }
+    
+    drupal_add_js(array('TPactionClick' => $actionClick_vars), 'setting');
+
     $path = drupal_get_path('module', 'takepart_action');
-    dpm($path);
     drupal_add_js($path . '/js/takepart-action.js');
-  
   }
+  
 }
