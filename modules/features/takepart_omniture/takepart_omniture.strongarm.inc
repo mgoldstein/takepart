@@ -21,7 +21,7 @@ function takepart_omniture_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'omniture_image_file_location';
-  $strongarm->value = 'http://examplecom.112.2O7.net/b/ss/examplecom/1/H.20.3--NS/0';
+  $strongarm->value = 'http://takepart.122.2o7.net/b/ss/takeparttakepartdev2/1/H.23.4--NS/0';
   $export['omniture_image_file_location'] = $strongarm;
 
   $strongarm = new stdClass;
