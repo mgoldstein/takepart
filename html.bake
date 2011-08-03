@@ -222,6 +222,12 @@ $info['projects']['brightcove']['download']['branch'] = '7.x-2.x';
 $info['projects']['brightcove']['download']['url']    = 'http://git.drupal.org/project/brightcove.git';
 $info['projects']['brightcove']['patch'][] = 'http://drupal.org/files/issues/1232612-make_4.patch';
 
+$info['projects']['media_vimeo']['type']               = 'module'; 
+$info['projects']['media_vimeo']['subdir']             = 'contrib';
+$info['projects']['media_vimeo']['download']['type']   = 'git';
+$info['projects']['media_vimeo']['download']['branch'] = '7.x-1.x';
+$info['projects']['media_vimeo']['download']['url']    = 'http://git.drupal.org/project/media_vimeo.git';
+
 $info['projects']['context_title']['type']   = 'module';
 $info['projects']['context_title']['subdir'] = 'contrib';
 $info['projects']['context_title']['download']['type']   = 'git';
