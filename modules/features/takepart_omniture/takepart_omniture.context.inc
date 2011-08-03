@@ -14,7 +14,7 @@ function takepart_omniture_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'omniture_all_content_types';
-  $context->description = 'set eVar20,21,4,18,17 and prop19,20,04,17,16';
+  $context->description = 'set eVar20,21,4,18,17 and prop19,20,4,17,16';
   $context->tag = 'Omniture';
   $context->conditions = array(
     'node' => array(
@@ -50,7 +50,7 @@ s.prop19 = [node:created]
 s.eVar21 = [tp_omniture:value_or_empty:{node:field-display-tag:term:name}]
 s.prop20 = [tp_omniture:value_or_empty:{node:field-display-tag:term:name}]
 s.eVar4 = [node:content-type]
-s.prop04 = [node:content-type]
+s.prop4 = [node:content-type]
 s.eVar18 = [node:title]
 s.prop17 = [node:title]
 s.eVar17 = [tp_omniture:get_author:{node:nid}]
@@ -62,7 +62,7 @@ s.prop16 = [tp_omniture:get_author:{node:nid}]',
   // Translatables
   // Included for use with string extractors like potx.
   t('Omniture');
-  t('set eVar20,21,4,18,17 and prop19,20,04,17,16');
+  t('set eVar20,21,4,18,17 and prop19,20,4,17,16');
   $export['omniture_all_content_types'] = $context;
 
   $context = new stdClass;
@@ -137,7 +137,7 @@ s.prop18 = [node:field-blogpost-blog:term:name]',
   $context->reactions = array(
     'omniture_reaction' => array(
       'variables' => 's.channel = takepart:[current-page:url-arg:0]
-s.eVar04 = [node:content-type:machine-name]
+s.eVar4 = [node:content-type:machine-name]
 s.eVar11 = [f:bool:{current-user:uid}:Yes:No]',
     ),
   );

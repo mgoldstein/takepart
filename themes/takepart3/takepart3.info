@@ -1,9 +1,11 @@
+
 name = TakePart 3.0 Theme
 description = The TakePart theme
 core = 7.x
 engine = phptemplate
 
 stylesheets[all][] = css/style.css
+stylesheets[all][] = css/josh.css
 stylesheets-conditional[lte IE 7][all][] = css/ie7.css
 features[] = favicon
 ; Defaults

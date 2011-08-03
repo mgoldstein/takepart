@@ -1,0 +1,79 @@
+/* Tabs */
+.not-logged-in .tabs{
+	display:none;
+}
+
+/* Carousel */
+.view-id-slide_rotator {
+	overflow:hidden;
+}
+.views_slideshow_cycle_main {
+	margin:0;
+}
+.views_slideshow_main .views-field-field-slide-headline-override .field-content a:hover {
+  text-decoration:none;
+}
+
+
+.views-slideshow-pager-field-item.active .views-content-field-slide-featured-item {
+  height: 97px;
+  width: 13px;
+  background: url('../images/sprite.png') -390px -361px no-repeat;
+  font-size: 0;
+  text-indent: -9999px;
+  left:7px;
+  top:-9px;
+  position:relative;
+}
+
+.views-slideshow-controls-bottom {
+    float: left;
+    width: 148px;
+	margin:0;
+}
+
+.view-id-slide_rotator .views-slideshow-pager-field-item {
+   	width:100%;
+	margin:0;
+}
+
+/***** Taxonomy Search List *****/
+
+.view-taxonomy-search-list .views-field-url a{
+  font-size:18px;
+  line-height:22px;
+  padding:0;
+}
+
+.view-taxonomy-search-list .views-field-field-promo-text{
+  font-size: 12px !important;
+  line-height:18px !important;
+}
+
+
+/**** Campaign Page(s) ****/
+body.node-type-takepart-campaign #content,
+body.node-type-takepart-campaign #left-rail{
+	margin-top:0;
+}
+
+.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a{
+	font-size:14px;
+	margin: 12px 22px;
+    padding-right: 15px;
+	 background: url("../images/white-arrow.png") no-repeat scroll right 4px;
+}
+	.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a:hover{
+		text-decoration:none;
+	}
+
+.node-type-takepart-campaign #content h2{
+	font-size:20px;
+	line-height:24px;
+	color:#1ca9e7;
+}
+
+.node-type-takepart-campaign #content .block-boxes a{
+	color:#1686b7;
+	font-weight:bold;
+}
