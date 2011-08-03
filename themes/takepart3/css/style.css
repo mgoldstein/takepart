@@ -3173,6 +3173,7 @@ div.messages a:visited {
  */
 .block-boxes-title-popular-galleries {
 	border-bottom:3px solid #666;
+	margin-bottom:25px;
 }
 .block-boxes-title-popular-galleries h2 {
 	background:#ccc;
@@ -3187,6 +3188,7 @@ div.messages a:visited {
 .block-boxes-title-popular-galleries .content {
 	border-top:1px dotted #000;
 	padding-top:10px;
+	padding-bottom:20px;
 }
 .view-id-photo_galleries td {
 	vertical-align:top;
