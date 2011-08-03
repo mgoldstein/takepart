@@ -17,6 +17,7 @@ $info['projects']['flag']['download']['type']   = 'git';
 $info['projects']['flag']['download']['branch'] = 'master';
 $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project/flag.git';
 
+
 /* TakePart Modules */
 
 /* Used for File Storage */
@@ -337,6 +338,18 @@ $info['libraries']['jquery.cycle']['directory_name']    = 'jquery.cycle';
 $info['libraries']['SolrPhpClient']['download']['type']  = 'get';
 $info['libraries']['SolrPhpClient']['download']['url']   = 'http://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz';
 $info['libraries']['SolrPhpClient']['destination']       = 'modules/contrib/search_api_solr';
+
+
+$info['projects']['backup_migrate']['type']   = 'module';
+$info['projects']['backup_migrate']['subdir'] = 'contrib';
+$info['projects']['backup_migrate']['version'] = '2.2';
+
+$info['libraries']['amazon-s3-php-class']['download']['type']   = 'git';
+$info['libraries']['amazon-s3-php-class']['download']['branch'] = 'master';
+$info['libraries']['amazon-s3-php-class']['download']['url']    = 'git://github.com/tpyo/amazon-s3-php-class.git';
+$info['libraries']['amazon-s3-php-class']['destination']        = 'modules/contrib/backup_migrate/includes';
+
+
 
 /* Patches */
 
