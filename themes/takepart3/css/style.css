@@ -3442,3 +3442,20 @@ body.node-type-takepart-group #page {
   padding-top: 15px;
 }
 
+/*
+ * Actions content type
+ */
+.field-name-field-action-main-image {
+	float:left;
+	margin-right:15px;
+}
+#take-action-btn {
+	border:none;
+	background:#FDAB30;
+	color:#fff;
+	font-weight:bolder;
+	text-transform:uppercase;
+	font-size:14px;
+	padding:10px 20px;
+	cursor:pointer;
+}

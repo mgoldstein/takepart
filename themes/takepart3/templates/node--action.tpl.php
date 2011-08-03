@@ -13,7 +13,7 @@
   <?php if (!empty($title_suffix)) print render($title_suffix); ?>
 
   <?php if (!empty($submitted)): ?>
-    <?php print $submitted ?>
+    <?php //print $submitted ?>
   <?php endif; ?>
 
   <?php if (!empty($content)): ?>
@@ -21,11 +21,6 @@
     <?php hide($content['comments']); ?>
     
     <div class='content content-bottom clearfix <?php if (!empty($is_prose)) print 'prose' ?>'>
-      ACTION
-      <h4><?php print $action_url?></h4>
-      <form id='take-action'>
-        <input id='take-action-btn' type='button' value='Take Action'>
-      </form>
       
       <?php if($view_mode == 'teaser'): ?>
         <?php hide($content['field_free_tag']); ?>
@@ -42,13 +37,17 @@
         <?php print render($content['field_topic']); ?>
       <?php endif; ?>
       
+      <form id='take-action'>
+        <input id='take-action-btn' type='button' value='Take Action'>
+      </form>
+      
     </div>
     
   <?php endif; ?>
-  
+
   <?php if (!empty($links)): ?>
     <div class='links clearfix'>
-      <?php // print render($links) ?>
+      <?php //print render($links) ?>
     </div>
   <?php endif; ?>
 </div>
