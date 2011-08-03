@@ -339,18 +339,6 @@ $info['libraries']['SolrPhpClient']['download']['type']  = 'get';
 $info['libraries']['SolrPhpClient']['download']['url']   = 'http://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz';
 $info['libraries']['SolrPhpClient']['destination']       = 'modules/contrib/search_api_solr';
 
-
-$info['projects']['backup_migrate']['type']   = 'module';
-$info['projects']['backup_migrate']['subdir'] = 'contrib';
-$info['projects']['backup_migrate']['version'] = '2.2';
-
-$info['libraries']['amazon-s3-php-class']['download']['type']   = 'git';
-$info['libraries']['amazon-s3-php-class']['download']['branch'] = 'master';
-$info['libraries']['amazon-s3-php-class']['download']['url']    = 'git://github.com/tpyo/amazon-s3-php-class.git';
-$info['libraries']['amazon-s3-php-class']['destination']        = 'modules/contrib/backup_migrate/includes';
-
-
-
 /* Patches */
 
 $info['projects']['flag']['patch'][]    = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
@@ -370,4 +358,5 @@ $info['projects']['wysiwyg']['patch'][] = 'http://drupal.org/files/issues/746524
 function html_post_make($path, $info, &$config) {
     system("rm $path/robots.txt");
     system("cd $path && ln -s profiles/custom/settings/robots.dev.txt robots.txt");
+    
 }

@@ -304,9 +304,6 @@ projects[field_boxes][subdir] = contrib
 projects[field_boxes][download][type] = git
 projects[field_boxes][download][branch] = 7.x-1.x
 projects[field_boxes][download][url] = http://git.drupal.org/project/field_boxes.git
-projects[backup_migrate][type] = module
-projects[backup_migrate][subdir] = contrib
-projects[backup_migrate][version] = 2.2
 // allow simpletest to look into profiles for modules
 projects[drupal][patch][] = http://drupal.org/files/issues/911354.46.patch
 // projects[views][patch][] = http://drupal.org/files/issues/views_relatedterms.patch
@@ -332,7 +329,3 @@ libraries[jquery.cycle][directory_name] = jquery.cycle
 libraries[SolrPhpClient][download][type] = get
 libraries[SolrPhpClient][download][url] = http://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz
 libraries[SolrPhpClient][destination] = modules/contrib/search_api_solr
-libraries[amazon-s3-php-class][download][type] = git
-libraries[amazon-s3-php-class][download][branch] = master
-libraries[amazon-s3-php-class][download][url] = git://github.com/tpyo/amazon-s3-php-class.git
-libraries[amazon-s3-php-class][destination] = modules/contrib/backup_migrate/includes
