@@ -4,6 +4,7 @@ core = 7.x
 engine = phptemplate
 
 stylesheets[all][] = css/style.css
+stylesheets[all][] = css/josh.css
 stylesheets-conditional[lte IE 7][all][] = css/ie7.css
 
 ; Defaults
