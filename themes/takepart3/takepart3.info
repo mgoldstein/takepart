@@ -5,7 +5,7 @@ engine = phptemplate
 
 stylesheets[all][] = css/style.css
 stylesheets-conditional[lte IE 7][all][] = css/ie7.css
-
+features[] = favicon
 ; Defaults
 regions[header] = Header
 regions[highlighted] = Highlighted

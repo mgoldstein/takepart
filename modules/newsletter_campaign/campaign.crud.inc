@@ -9,13 +9,26 @@ function _newsletter_campaign_add() {
   return drupal_get_form('newsletter_campaign_form', $campaign);
 }
 
-
 /**
  * campaign edit callback
  */
 function _newsletter_campaign_edit($campaign) {
   drupal_set_title( t("<em>Edit newsletter campaign</em> @title", array('@title' => $campaign->title)), PASS_THROUGH);
   return drupal_get_form('newsletter_campaign_form', $campaign);
+}
+
+/** 
+ * campaign delete callback
+ */
+function _newsletter_campaign_delete($campaign) {
+  $result = entity_delete('newsletter_campaign', $campaign->ncid);
+
+  if ($result === NULL)
+    drupal_set_message("Newsletter Campaign, '$campaign->title' was deleted", "status");
+  else
+    drupal_set_message("Campaign, '$campaign->title' could not be removed.", "status");
+    
+  drupal_goto('admin/structure/newsletter-campaign');
 }
 
 /**
@@ -37,7 +50,8 @@ function newsletter_campaign_form($form, &$form_state, $campaign) {
     '#title' => t('Title'),
     '#description' => t('The Newsletter Campaign title'),
     '#max_length' => 50,
-    '#default_value' => $campaign->title,  
+    '#default_value' => $campaign->title, 
+    '#required' => TRUE, 
   );
   
   $form['tpnc_header'] = array(
@@ -58,7 +72,8 @@ function newsletter_campaign_form($form, &$form_state, $campaign) {
     '#title' => t('Campaign ID'),
     '#description' => t('Campaign Code generated from the Pluris system.'),
     '#max_length' => 40,
-    '#default_value' => $campaign->campaign_id,  
+    '#default_value' => $campaign->campaign_id,
+      
   );
   $form['tpnc_thankyou_message'] = array(
     '#type' => 'textarea',

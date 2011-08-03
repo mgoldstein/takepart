@@ -19,5 +19,4 @@
 User-agent: *
 Crawl-delay: 10
 # Directories
-
 Disallow: /

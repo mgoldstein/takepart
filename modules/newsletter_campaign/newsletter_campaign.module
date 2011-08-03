@@ -25,6 +25,7 @@ function newsletter_campaign_entity_info() {
     'newsletter_campaign' => array(
       'label' => t("TakePart Newsletter"),
       'base table' => 'newsletter_campaign',
+      'controller class' => 'EntityAPIController',
       'load hook' => 'newsletter_campaign_load',
       'uri callback' => '_newsletter_campaign_uri',
       'fieldable' => TRUE,
@@ -65,16 +66,7 @@ function newsletter_campaign_menu() {
     'access arguments' => array('administer site configuration'),
     'type' => MENU_NORMAL_ITEM,
   );
-/*
-  $items['newsletter-campaign'] = array(
-    'title' => 'Newsletter Campaign Instances',
-    'description' => 'List all Newsletter Campaigns, Landing Page for campaign management.',
-    'page callback' => '_newsletter_campaign_list',
-    'access arguments' => array('view newsletter campaign'),
-    'type' => MENU_NORMAL_ITEM,
-  );
-*/
-  
+
   $items['admin/structure/newsletter-campaign/list'] = array(
     'title' => 'Newsletter Campaign Instances',
     'description' => 'List all Newsletter Campaigns, Landing Page for campaign management.',
@@ -114,11 +106,21 @@ function newsletter_campaign_menu() {
     'title' => 'Edit',
     'description' => 'Edit an instance of this entity',
     'page callback' => '_newsletter_campaign_edit',
-    'page arguments' => array(1),
+    'page arguments' => array(3),
     'access arguments' => array('edit newsletter campaign'),
     'file' => 'campaign.crud.inc',
     'type' => MENU_CALLBACK,
   );
+  $items['admin/structure/newsletter-campaign/%newsletter_campaign/delete'] = array(
+    'title' => 'Delete',
+    'description' => 'Delete an instance of this entity',
+    'page callback' => '_newsletter_campaign_delete',
+    'page arguments' => array(3),
+    'access arguments' => array('edit newsletter campaign'),
+    'file' => 'campaign.crud.inc',
+    'type' => MENU_CALLBACK,
+  );  
+  
   
   $items['newsletter-campaign/submit-campaign'] = array(
     'title' => t('Newsletter Form Submission'),
@@ -159,6 +161,9 @@ function newsletter_campaign_load_multiple($ids = array(), $conditions = array()
   $loaded = entity_load('newsletter_campaign', $ids, $conditions, $reset);
   return $loaded;
 }
+
+
+
 
 /**
  * Implementation of hook_block_info()
@@ -267,12 +272,14 @@ function _newsletter_campaign_list() {
   $t = array();
   foreach($campaigns as $camp) {
     $row = array();
-    $row[] = l($camp->title, 'admin/structure/newsletter-campaign/' . $camp->ncid);
+    $row[] = l($camp->title, 'admin/structure/newsletter-campaign/'. $camp->ncid .'/edit');
     $row[] = $camp->campaign_id;
     $row[] = $camp->header;
     $row[] = $camp->promo_message;
     $row[] = $camp->thankyou_message;
-    $row[] = l('Edit', 'admin/structure/newsletter-campaign/' . $camp->ncid ."/edit");
+    $edit   = l('Edit', 'admin/structure/newsletter-campaign/' . $camp->ncid ."/edit");
+    $delete = l('X', 'admin/structure/newsletter-campaign/'. $camp->ncid .'/delete', array('attributes' => array('title' => 'Delete')));
+    $row[] = $edit ." | ". $delete; 
     $t[] = $row;
   }
 
