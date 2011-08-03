@@ -220,7 +220,7 @@ $info['projects']['brightcove']['subdir']             = 'contrib';
 $info['projects']['brightcove']['download']['type']   = 'git';
 $info['projects']['brightcove']['download']['branch'] = '7.x-2.x';
 $info['projects']['brightcove']['download']['url']    = 'http://git.drupal.org/project/brightcove.git';
-$info['projects']['brightcove']['patch'][] = 'http://drupal.org/files/issues/1232612-make_3.patch';
+$info['projects']['brightcove']['patch'][] = 'http://drupal.org/files/issues/1232612-make_4.patch';
 
 $info['projects']['context_title']['type']   = 'module';
 $info['projects']['context_title']['subdir'] = 'contrib';
@@ -237,7 +237,7 @@ $info['projects']['views_file_row']['download']['url']    = 'git@github.com:phas
 $info['projects']['omniture']['type']   = 'module';
 $info['projects']['omniture']['subdir'] = 'contrib';
 $info['projects']['omniture']['version'] = '1.x-dev';
-$info['projects']['omniture']['patch'][]    = 'http://drupal.org/files/issues/omniture_context_1223462-make_2.patch';
+$info['projects']['omniture']['patch'][]    = 'http://drupal.org/files/issues/omniture_context_1223462-make_3.patch';
 
 $info['projects']['token_function']['type']   = 'module';
 $info['projects']['token_function']['subdir'] = 'contrib';
