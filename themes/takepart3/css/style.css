@@ -3152,6 +3152,54 @@ div.messages a:visited {
 #views_slideshow_controls_text_next_photo_gallery-block a {
 	color:#fff;
 }
+#views_slideshow_cycle_teaser_section_photo_gallery-block {
+	margin-bottom:20px;
+}
+.views-slideshow-cycle-main-frame-row-item {
+	background:#e7e6eb;
+}
+.views-field-field-image-title {
+	margin:15px 20px;
+	font-size:20px;
+}
+.views-field-field-media-caption {
+	padding:0 20px 15px 20px;
+	font-size:14px; 
+	
+}
+
+/*
+ * Popular galleries block
+ */
+.block-boxes-title-popular-galleries {
+	border-bottom:3px solid #666;
+}
+.block-boxes-title-popular-galleries h2 {
+	background:#ccc;
+	margin:25px 0 7px 0;
+}
+.block-boxes-title-popular-galleries h2 span {
+	background:#fff url(../images/photo-icon.jpg) no-repeat center right;
+	text-transform:uppercase;
+	padding:2px 35px 2px 0;
+	border-right:5px solid #fff;
+}
+.block-boxes-title-popular-galleries .content {
+	border-top:1px dotted #000;
+	padding-top:10px;
+}
+.view-id-photo_galleries td {
+	vertical-align:top;
+}
+.view-id-photo_galleries .views-field-field-thumbnail {
+	margin:0 15px 0 0;
+}
+.view-id-photo_galleries .views-field-field-promo-headline {
+	font-weight:bolder;
+	font-size:20px;
+	color:#010101;
+}
+
 
 /*
  * Slim header on campaigns
