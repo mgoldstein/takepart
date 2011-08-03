@@ -17,7 +17,18 @@ $info['projects']['flag']['download']['type']   = 'git';
 $info['projects']['flag']['download']['branch'] = 'master';
 $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project/flag.git';
 
+
 /* TakePart Modules */
+
+/* MemCache */
+$info['projects']['memcache']['type']    = 'module';
+$info['projects']['memcache']['subdir']  = 'contrib';
+$info['projects']['memcache']['version'] = '0.0';
+
+/* Taxonomy List Manager */
+$info['projects']['taxonomy_manager']['type']    = 'module';
+$info['projects']['taxonomy_manager']['subdir']  = 'contrib';
+$info['projects']['taxonomy_manager']['version'] = '1.0-beta1';
 
 /* Used for File Storage */
 $info['projects']['cdn']['type']   = 'module';
@@ -209,7 +220,13 @@ $info['projects']['brightcove']['subdir']             = 'contrib';
 $info['projects']['brightcove']['download']['type']   = 'git';
 $info['projects']['brightcove']['download']['branch'] = '7.x-2.x';
 $info['projects']['brightcove']['download']['url']    = 'http://git.drupal.org/project/brightcove.git';
-$info['projects']['brightcove']['patch'][] = 'http://drupal.org/files/issues/1232612-make_3.patch';
+$info['projects']['brightcove']['patch'][] = 'http://drupal.org/files/issues/1232612-make_4.patch';
+
+$info['projects']['media_vimeo']['type']               = 'module'; 
+$info['projects']['media_vimeo']['subdir']             = 'contrib';
+$info['projects']['media_vimeo']['download']['type']   = 'git';
+$info['projects']['media_vimeo']['download']['branch'] = '7.x-1.x';
+$info['projects']['media_vimeo']['download']['url']    = 'http://git.drupal.org/project/media_vimeo.git';
 
 $info['projects']['context_title']['type']   = 'module';
 $info['projects']['context_title']['subdir'] = 'contrib';
@@ -226,7 +243,7 @@ $info['projects']['views_file_row']['download']['url']    = 'git@github.com:phas
 $info['projects']['omniture']['type']   = 'module';
 $info['projects']['omniture']['subdir'] = 'contrib';
 $info['projects']['omniture']['version'] = '1.x-dev';
-$info['projects']['omniture']['patch'][]    = 'http://drupal.org/files/issues/omniture_context_1223462-make_2.patch';
+$info['projects']['omniture']['patch'][]    = 'http://drupal.org/files/issues/omniture_context_1223462-make_3.patch';
 
 $info['projects']['token_function']['type']   = 'module';
 $info['projects']['token_function']['subdir'] = 'contrib';
@@ -357,4 +374,5 @@ $info['projects']['wysiwyg']['patch'][] = 'http://drupal.org/files/issues/746524
 function html_post_make($path, $info, &$config) {
     system("rm $path/robots.txt");
     system("cd $path && ln -s profiles/custom/settings/robots.dev.txt robots.txt");
+    
 }

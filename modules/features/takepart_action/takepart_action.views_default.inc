@@ -140,6 +140,10 @@ function takepart_action_views_default_views() {
   $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['nid']['default_argument_options']['field'] = 'nodereference::field_related_actions';
+  $handler->display->display_options['arguments']['nid']['default_argument_options']['settings'] = array(
+    'argument_default_field_nodereference_format' => 'nid',
+    'argument_default_field_nodereference_delta' => '0',
+  );
   $handler->display->display_options['arguments']['nid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
@@ -161,11 +165,11 @@ function takepart_action_views_default_views() {
     'action' => 'action',
   );
 
-  /* Display: Currated Only */
-  $handler = $view->new_display('block', 'Currated Only', 'block');
+  /* Display: Curated Only */
+  $handler = $view->new_display('block', 'Curated Only', 'block');
 
-  /* Display: Currated and Suggest */
-  $handler = $view->new_display('block', 'Currated and Suggest', 'block_1');
+  /* Display: Curated and Suggest */
+  $handler = $view->new_display('block', 'Curated and Suggest', 'block_1');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Promoted Content */
   $handler->display->display_options['arguments']['null']['id'] = 'null';
@@ -175,6 +179,10 @@ function takepart_action_views_default_views() {
   $handler->display->display_options['arguments']['null']['default_action'] = 'default';
   $handler->display->display_options['arguments']['null']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['null']['default_argument_options']['field'] = 'nodereference::field_related_actions';
+  $handler->display->display_options['arguments']['null']['default_argument_options']['settings'] = array(
+    'argument_default_field_nodereference_format' => 'nid',
+    'argument_default_field_nodereference_delta' => '0',
+  );
   $handler->display->display_options['arguments']['null']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
@@ -215,8 +223,8 @@ function takepart_action_views_default_views() {
   $handler->display->display_options['arguments']['field_action_sponsor_nid']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['field_action_sponsor_nid']['not'] = 0;
 
-  /* Display: Currated and Suggest for taxonomy page */
-  $handler = $view->new_display('block', 'Currated and Suggest for taxonomy page', 'block_3');
+  /* Display: Curated and Suggest for taxonomy page */
+  $handler = $view->new_display('block', 'Curated and Suggest for taxonomy page', 'block_3');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Promoted Content */
   $handler->display->display_options['arguments']['null']['id'] = 'null';

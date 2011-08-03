@@ -4,4 +4,6 @@
       <a href="<?php print $node_url ?>"><?php print $title ?></a>
     </h2>
   <?php endif; ?>
+  <?php print render($content); ?>
+
 </div>
