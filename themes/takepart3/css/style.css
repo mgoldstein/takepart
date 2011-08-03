@@ -3049,21 +3049,23 @@ div.messages a:visited {
   font-size: 36px;
   line-height: 100%;
   margin: 20px 0;
+	width:936px;
 }
 .node-openpublish-photo-gallery .field-name-field-subhead {
 	color: #666666;
   font-size: 18px;
   line-height: 120%;
 	margin-bottom:15px;
+	width:936px;
+	font-weight:bolder;
 }
 .node-openpublish-photo-gallery .submitted-wrapper {
 	margin-bottom:0;
 	border-bottom:none;
 }
-.node-openpublish-photo-gallery .view-photo-gallery #widget_pager_top_photo_gallery-block {
-  left: 635px;
-	top:50px;
-  width: 312px;
+.node-type-openpublish-photo-gallery .views-slideshow-controls-bottom {
+	margin-left:0;
+	width:auto;
 }
 #views_slideshow_controls_text_photo_gallery-block {
 	background: none repeat scroll 0 0 #1CA9E7;
@@ -3072,7 +3074,7 @@ div.messages a:visited {
   margin-bottom: 20px;
   padding: 7px 10px;
 	position:absolute;
-	width:284px;
+	width:276px;
 	left:0;
 	height:29px;
 	top:0;
@@ -3139,13 +3141,19 @@ div.messages a:visited {
 	margin:0 8px 8px 0;
 }
 #widget_pager_top_photo_gallery-block .views-slideshow-pager-field-item.active img {
-	border:5px solid #1da9e7;
+	border:2px solid #1da9e7;
 }
 #ss_controls {
 	position:relative;
+	margin-top:144px;
+	margin-bottom:20px;
 }
 #widget_pager_top_photo_gallery-block {
-	padding-top:50px;
+	padding-top:60px;
+}
+#views_slideshow_controls_text_previous_photo_gallery-block a,
+#views_slideshow_controls_text_next_photo_gallery-block a {
+	color:#fff;
 }
 
 /*
