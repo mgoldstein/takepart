@@ -17,6 +17,7 @@ $info['projects']['flag']['download']['type']   = 'git';
 $info['projects']['flag']['download']['branch'] = 'master';
 $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project/flag.git';
 
+
 /* TakePart Modules */
 
 /* Used for File Storage */
@@ -357,4 +358,5 @@ $info['projects']['wysiwyg']['patch'][] = 'http://drupal.org/files/issues/746524
 function html_post_make($path, $info, &$config) {
     system("rm $path/robots.txt");
     system("cd $path && ln -s profiles/custom/settings/robots.dev.txt robots.txt");
+    
 }
