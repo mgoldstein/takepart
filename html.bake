@@ -16,7 +16,7 @@ $info['projects']['flag']['subdir'] = 'contrib';
 $info['projects']['flag']['download']['type']   = 'git';
 $info['projects']['flag']['download']['branch'] = 'master';
 $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project/flag.git';
-
+$info['projects']['flag']['patch'][]            = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
 
 /* TakePart Modules */
 
@@ -119,10 +119,11 @@ $info['projects']['libraries']['subdir']  = 'contrib';
 $info['projects']['libraries']['version'] = '1.0';
 
 // Used for FB connect and FB registration
-$info['projects']['fb']['type']   = 'module';
-$info['projects']['fb']['subdir'] = 'contrib';
+$info['projects']['fb']['type']             = 'module';
+$info['projects']['fb']['subdir']           = 'contrib';
 $info['projects']['fb']['download']['type'] = 'get';
 $info['projects']['fb']['download']['url']  = 'http://ftp.drupal.org/files/projects/fb-7.x-3.x-dev.tar.gz';
+$info['projects']['fb']['patch'][]          = 'http://drupal.org/files/issues/1197924_fb_url_rewrite_0.patch';
 
 // Used for registration page
 $info['projects']['username_check']['type']     = 'module';
@@ -172,6 +173,9 @@ $info['projects']['xmlsitemap']['version']  = '2.0-beta3';
 $info['projects']['wysiwyg']['type']     = 'module';
 $info['projects']['wysiwyg']['subdir']   = 'contrib';
 $info['projects']['wysiwyg']['version']  = '2.x-dev';
+$info['projects']['wysiwyg']['patch']    = '';  // Need to clear out previous patches for earlier version provided OPub.
+$info['projects']['wysiwyg']['patch'][]  = 'http://drupal.org/files/issues/746524-91Drupal7-v3_drush_make.patch';
+
 
 $info['projects']['webform']['subdir']  = 'contrib';
 $info['projects']['webform']['type']    = 'module';
@@ -192,6 +196,9 @@ $info['projects']['media']['subdir']                = 'contrib';
 $info['projects']['media']['download']['type']      =  'git';
 $info['projects']['media']['download']['branch']    = '7.x-1.x';
 $info['projects']['media']['download']['url']       = 'http://git.drupal.org/project/media.git';
+$info['projects']['media']['patch'][]               = 'http://drupal.org/files/issues/views-integration-file-entity-type-1192326-6-D7-drush.patch';
+$info['projects']['media']['patch'][]               = 'http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make_0_0.patch';
+
 
 $info['projects']['media_youtube']['type']                  = 'module'; 
 $info['projects']['media_youtube']['subdir']                = 'contrib';
@@ -292,7 +299,8 @@ $info['projects']['field_group']['download']['date']    = '2011-06-03';
 
 $info['projects']['token']['type']    = 'module';
 $info['projects']['token']['subdir']  = 'contrib';
-$info['projects']['token']['version'] = '1.0-beta3';
+$info['projects']['token']['version'] = '1.0-beta2';
+$info['projects']['token']['patch'][] = 'http://drupal.org/files/issues/691078-466_same_as_462.field_tokens.patch';
 
 $info['projects']['pathauto']['type']     = 'module';
 $info['projects']['pathauto']['subdir']   = 'contrib';
@@ -357,15 +365,7 @@ $info['libraries']['SolrPhpClient']['destination']       = 'modules/contrib/sear
 
 /* Patches */
 
-$info['projects']['flag']['patch'][]    = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
-/* Commented out the patch because it is broken and not passing the automated tests on d.o.  However, this may be needed, so may need to handle this manually */
-//$info['projects']['token']['patch'][] = 'http://drupal.org/files/issues/691078-462-field_tokens_0.patch';
-$info['projects']['fb']['patch'][]      = 'http://drupal.org/files/issues/1197924_fb_url_rewrite_0.patch';
-
-$info['projects']['media']['patch'][]   = 'http://drupal.org/files/issues/views-integration-file-entity-type-1192326-6-D7-drush.patch';
-$info['projects']['media']['patch'][]   = 'http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make_0_0.patch';
-$info['projects']['wysiwyg']['patch']   = '';
-$info['projects']['wysiwyg']['patch'][] = 'http://drupal.org/files/issues/746524-91Drupal7-v3_drush_make.patch';
+// Moved patches to their appropriate modules so we an tell when looking at module versions where it is has been patch 
 
 /* Commented out patches, not sure if they will be needed again */
 // $info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
