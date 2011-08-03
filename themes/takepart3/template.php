@@ -220,10 +220,12 @@ function _default_menu_options($menu_item) {
 function takepart3_preprocess_node(&$vars, $hook) {
 
   // Suggests a custom template for embedded node content through the WYSIWYG
+  // We suggest a theme for a general embed as well as for each content type
+  //
   if($vars['view_mode'] == 'embed') {
-      $vars['theme_hook_suggestions'][] = 'node__embed';
+      $vars['theme_hook_suggestions'][] = "node__embed";
+      $vars['theme_hook_suggestions'][] = "node__embed__{$vars['type']}";
   }   
-  
   // Provides a method for printing regions within node templates
   if ($blocks = block_get_blocks_by_region('sidebar_first')) {
     $vars['sidebar_first'] = $blocks;
