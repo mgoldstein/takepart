@@ -20,6 +20,16 @@ $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project
 
 /* TakePart Modules */
 
+/* MemCache */
+$info['projects']['memcache']['type']    = 'module';
+$info['projects']['memcache']['subdir']  = 'contrib';
+$info['projects']['memcache']['version'] = '0.0';
+
+/* Taxonomy List Manager */
+$info['projects']['taxonomy_manager']['type']    = 'module';
+$info['projects']['taxonomy_manager']['subdir']  = 'contrib';
+$info['projects']['taxonomy_manager']['version'] = '1.0-beta1';
+
 /* Used for File Storage */
 $info['projects']['cdn']['type']   = 'module';
 $info['projects']['cdn']['subdir'] = 'contrib';
