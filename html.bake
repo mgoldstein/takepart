@@ -226,7 +226,7 @@ $info['projects']['views_file_row']['download']['url']    = 'git@github.com:phas
 $info['projects']['omniture']['type']   = 'module';
 $info['projects']['omniture']['subdir'] = 'contrib';
 $info['projects']['omniture']['version'] = '1.x-dev';
-$info['projects']['omniture']['patch'][]    = 'http://drupal.org/files/issues/omniture_context_1223462-make_2.patch';
+$info['projects']['omniture']['patch'][]    = 'http://drupal.org/files/issues/omniture_context_1223462-make_3.patch';
 
 $info['projects']['token_function']['type']   = 'module';
 $info['projects']['token_function']['subdir'] = 'contrib';
