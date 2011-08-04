@@ -359,11 +359,13 @@ function takepart3_addthis_button(&$vars = '') {
   $custom_btns = '<a class="addthis_button_digg"><img src="'. $images_url . 'social_media_digg.gif" width="29" height="29" border="0" alt="Digg This" />Digg This</a>';
   $custom_btns .= '<a class="addthis_button_stumbleupon"><img src="'. $images_url . 'social_media_stumbleupon.gif" width="29" height="29" border="0" alt="Stumble This" />Stumble This</a>';
   $custom_btns .= '<a class="addthis_button_email"><img src="'. $images_url . 'social_media_email.gif" width="29" height="29" border="0" alt="Email to a friend" />E-mail a friend</a>';
+
   
   return '<!-- AddThis Button BEGIN -->
   <div class="addthis_toolbox addthis_default_style ">
     <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
     <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone"></a>
   </div>
   <div class="addthis_toolbox">
      <div class="custom_images">' . $custom_btns . '</div>
