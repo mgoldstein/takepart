@@ -5,3 +5,56 @@
  */
 
 include_once('takepart_ads.features.inc');
+
+function takepart_ads_preprocess_page(&$vars) {
+  $ad_slots = array();
+
+  foreach ($vars['page'] as $region => $blocks) {
+    if (strpos($region, "#") === FALSE) {
+      foreach ($blocks as $name => $content) {
+        if (strpos($name, 'boxes_box-') !== FALSE) {
+          if (strpos($content['content']['#markup'], 'GA_googleFillSlot') !== FALSE) {
+            preg_match('/GA_googleFillSlot\(\"(.*)\"\)/', $content['content']['#markup'], $matches);
+            if (!empty($matches[1])) {
+              array_push($ad_slots, $matches[1]);  
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  $ad_html = '';
+  foreach ($ad_slots as $ad) {
+    $ad_html .= 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad . '");';
+  }
+
+  $header1 = 'GS_googleAddAdSenseService("' . variable_get('takepart_ads_dfp_property_code', '') . '");
+GS_googleEnableAllServices();';
+  $header2 = $ad_html;
+  $header3 = 'GA_googleFetchAds();';
+  
+  if (!empty($ad_html)) {
+    drupal_add_js('http://partner.googleadservices.com/gampad/google_service.js', 'external');
+    drupal_add_js($header1, 'inline');
+    drupal_add_js($header2, 'inline');
+    drupal_add_js($header3, 'inline');
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function takepart_ads_menu() {
+  $items['admin/config/system/ads'] = array(
+    'title' => 'Doubleclick Ad Settings',
+    'description' => 'Manage ads settings.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_ads_configure_ads'),
+    'access arguments' => array('administer site configuration'),
+    'weight' => -10,
+    'file' => 'takepart_ads.admin.inc',
+  );
+
+  return $items;
+}
