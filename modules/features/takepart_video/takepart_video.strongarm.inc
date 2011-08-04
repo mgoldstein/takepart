@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_strongarm().
+ * Implements hook_strongarm().
  */
 function takepart_video_strongarm() {
   $export = array();
@@ -112,6 +112,13 @@ function takepart_video_strongarm() {
   $strongarm->name = 'node_submitted_video_series';
   $strongarm->value = 1;
   $export['node_submitted_video_series'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'taxonomy_view_video_series';
+  $strongarm->value = 'TRUE';
+  $export['taxonomy_view_video_series'] = $strongarm;
 
   return $export;
 }

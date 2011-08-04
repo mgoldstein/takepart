@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function takepart_video_field_default_fields() {
   $fields = array();
@@ -70,7 +70,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '13',
         ),
         'embed' => array(
           'label' => 'above',
@@ -145,7 +145,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => '17',
         ),
         'embed' => array(
           'label' => 'above',
@@ -231,11 +231,11 @@ function takepart_video_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 17,
+          'weight' => '0',
         ),
         'embed' => array(
           'label' => 'above',
@@ -313,7 +313,7 @@ function takepart_video_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'embed' => array(
           'label' => 'above',
@@ -376,7 +376,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '11',
         ),
         'embed' => array(
           'label' => 'above',
@@ -457,7 +457,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '16',
         ),
         'embed' => array(
           'label' => 'hidden',
@@ -530,7 +530,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '9',
         ),
         'embed' => array(
           'label' => 'hidden',
@@ -610,7 +610,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '12',
         ),
         'embed' => array(
           'label' => 'above',
@@ -681,7 +681,7 @@ function takepart_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
         'embed' => array(
           'label' => 'above',
@@ -755,7 +755,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '15',
         ),
         'embed' => array(
           'label' => 'above',
@@ -817,7 +817,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '10',
         ),
         'embed' => array(
           'label' => 'above',
@@ -908,7 +908,7 @@ function takepart_video_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'embed' => array(
           'label' => 'above',
@@ -994,7 +994,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '14',
         ),
         'embed' => array(
           'label' => 'above',
@@ -1071,10 +1071,9 @@ function takepart_video_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 16,
+          'type' => 'hidden',
+          'weight' => '8',
         ),
         'embed' => array(
           'label' => 'above',
@@ -1985,7 +1984,13 @@ function takepart_video_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 0,
+          'weight' => '0',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -2009,10 +2014,103 @@ function takepart_video_field_default_fields() {
     ),
   );
 
+  // Exported field: 'taxonomy_term-video_series-field_video_series_context'
+  $fields['taxonomy_term-video_series-field_video_series_context'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_video_series_context',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '0',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video_series',
+      'default_value' => array(
+        0 => array(
+          'context' => '',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => '0',
+        ),
+      ),
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'field_video_series_context',
+      'label' => 'Context',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Features Box' => 0,
+          'Boxes for Field Box' => 0,
+          'Boxes for Image Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'addthis' => 0,
+          'akamai' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'comment_block_simple' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'diff' => 0,
+          'fb_connect' => 0,
+          'menu' => 0,
+          'newsletter_campaign' => 0,
+          'node' => 0,
+          'search' => 0,
+          'search_api_facets' => 0,
+          'search_api_page' => 0,
+          'search_api_sorts' => 0,
+          'shortcut' => 0,
+          'system' => 0,
+          'takepart_custom' => 0,
+          'twitter_pull' => 0,
+          'user' => 0,
+          'views' => 0,
+        ),
+        'default_context' => 'blocks_video_series',
+        'use_default' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'widget_setting' => 'bob',
+        ),
+        'type' => 'context_field_default',
+        'weight' => '32',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Authors');
   t('Body');
+  t('Context');
   t('Display Tag');
   t('Feature Video');
   t('Free Tags');

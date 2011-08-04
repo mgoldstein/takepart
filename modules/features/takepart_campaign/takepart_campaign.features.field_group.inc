@@ -85,7 +85,7 @@ function takepart_campaign_field_group_default_field_groups() {
     'bundle' => 'takepart_campaign',
     'mode' => 'form',
     'parent_name' => 'group_tp_campaign_vtab1',
-    'label' => 'Releated Actions',
+    'label' => 'Related Actions',
     'weight' => '5',
     'children' => array(
       0 => 'field_action_related',

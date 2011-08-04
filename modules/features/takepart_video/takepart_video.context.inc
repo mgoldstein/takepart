@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function takepart_video_context_default_contexts() {
   $export = array();
@@ -29,11 +29,17 @@ function takepart_video_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'views-video-block_8' => array(
+          'module' => 'views',
+          'delta' => 'video-block_8',
+          'region' => 'content_bottom',
+          'weight' => 0,
+        ),
         'boxes-box-208c3905' => array(
           'module' => 'boxes',
           'delta' => 'box-208c3905',
           'region' => 'content_bottom',
-          'weight' => 0,
+          'weight' => 1,
         ),
       ),
     ),
@@ -45,6 +51,49 @@ function takepart_video_context_default_contexts() {
   t('Blocks: Content Type');
   t('Video Blocks');
   $export['blocks_video'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'blocks_video_series';
+  $context->description = 'Default Context for the video series taxonomy term';
+  $context->tag = 'Context Field: Default';
+  $context->conditions = array(
+    'context_field' => array(
+      'values' => array(
+        1 => 1,
+        2 => 2,
+      ),
+      'options' => array(
+        'context_field_category' => '',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-video-block_6' => array(
+          'module' => 'views',
+          'delta' => 'video-block_6',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'views-video-block_3' => array(
+          'module' => 'views',
+          'delta' => 'video-block_3',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Context Field: Default');
+  t('Default Context for the video series taxonomy term');
+  $export['blocks_video_series'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -77,7 +126,7 @@ function takepart_video_context_default_contexts() {
           'module' => 'views',
           'delta' => 'video-block_1',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => 0,
         ),
       ),
     ),
