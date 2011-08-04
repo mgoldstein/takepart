@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function takepart_custom_views_default_views() {
   $export = array();
@@ -140,6 +140,10 @@ function takepart_custom_views_default_views() {
   $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['nid']['default_argument_options']['field'] = 'nodereference::field_related_content';
+  $handler->display->display_options['arguments']['nid']['default_argument_options']['settings'] = array(
+    'argument_default_field_nodereference_format' => 'nid',
+    'argument_default_field_nodereference_delta' => '0',
+  );
   $handler->display->display_options['arguments']['nid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
@@ -153,12 +157,21 @@ function takepart_custom_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['operator'] = 'not in';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'action' => 'action',
+    'takepart_campaign' => 'takepart_campaign',
+  );
 
-  /* Display: Currated Only */
-  $handler = $view->new_display('block', 'Currated Only', 'block');
+  /* Display: Curated Only */
+  $handler = $view->new_display('block', 'Curated Only', 'block');
 
-  /* Display: Currated and Suggest */
-  $handler = $view->new_display('block', 'Currated and Suggest', 'block_1');
+  /* Display: Curated and Suggest */
+  $handler = $view->new_display('block', 'Curated and Suggest', 'block_1');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Promoted Content */
   $handler->display->display_options['arguments']['null']['id'] = 'null';
@@ -168,6 +181,10 @@ function takepart_custom_views_default_views() {
   $handler->display->display_options['arguments']['null']['default_action'] = 'default';
   $handler->display->display_options['arguments']['null']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['null']['default_argument_options']['field'] = 'nodereference::field_related_content';
+  $handler->display->display_options['arguments']['null']['default_argument_options']['settings'] = array(
+    'argument_default_field_nodereference_format' => 'nid',
+    'argument_default_field_nodereference_delta' => '0',
+  );
   $handler->display->display_options['arguments']['null']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
@@ -180,6 +197,9 @@ function takepart_custom_views_default_views() {
   $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['tid']['default_argument_options']['field'] = 'content_taxonomy::field_topic';
+  $handler->display->display_options['arguments']['tid']['default_argument_options']['settings'] = array(
+    'content_taxonomy_format' => 'tid',
+  );
   $handler->display->display_options['arguments']['tid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';

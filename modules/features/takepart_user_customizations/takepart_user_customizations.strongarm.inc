@@ -146,14 +146,14 @@ function takepart_user_customizations_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'recaptcha_private_key';
-  $strongarm->value = '6LdqNMUSAAAAAG92rGLMzd6pNHz2C9d9fJHm2d7R';
+  $strongarm->value = '6Lcl0MYSAAAAAK1zwne_K4PPPBh85t_FyVwSX12K';
   $export['recaptcha_private_key'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'recaptcha_public_key';
-  $strongarm->value = '6LdqNMUSAAAAAGhJ2QVKoY_Nc5wJCscjbI8GNDdS';
+  $strongarm->value = '6Lcl0MYSAAAAAOBgjAmQB8uGXEWaS7kFGAdVChOO';
   $export['recaptcha_public_key'] = $strongarm;
 
   $strongarm = new stdClass;

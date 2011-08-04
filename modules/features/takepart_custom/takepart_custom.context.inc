@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function takepart_custom_context_default_contexts() {
   $export = array();
@@ -86,7 +86,7 @@ function takepart_custom_context_default_contexts() {
           'module' => 'views',
           'delta' => 'related_content-block',
           'region' => 'sidebar_second',
-          'weight' => 0,
+          'weight' => 2,
         ),
       ),
     ),
@@ -133,7 +133,7 @@ function takepart_custom_context_default_contexts() {
           'module' => 'views',
           'delta' => 'related_content-block_1',
           'region' => 'sidebar_second',
-          'weight' => 2,
+          'weight' => 3,
         ),
       ),
     ),
