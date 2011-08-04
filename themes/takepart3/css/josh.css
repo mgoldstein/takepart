@@ -35,6 +35,7 @@
 .view-id-slide_rotator .views-slideshow-pager-field-item {
    	width:100%;
 	margin:0;
+	height:76px;
 }
 
 /***** Taxonomy Search List *****/
@@ -52,8 +53,8 @@
 
 
 /**** Campaign Page(s) ****/
-body.node-type-takepart-campaign #content,
-body.node-type-takepart-campaign #left-rail{
+.node-type-takepart-campaign #content,
+.node-type-takepart-campaign #left-rail{
 	margin-top:0;
 }
 
@@ -66,7 +67,10 @@ body.node-type-takepart-campaign #left-rail{
 	.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a:hover{
 		text-decoration:none;
 	}
-
+.node-type-takepart-campaign .field-name-field-tp-campaign-subheadline{
+	font-size:30px;
+	line-height:30px;
+}	
 .node-type-takepart-campaign #content h2{
 	font-size:20px;
 	line-height:24px;
@@ -76,4 +80,29 @@ body.node-type-takepart-campaign #left-rail{
 .node-type-takepart-campaign #content .block-boxes a{
 	color:#1686b7;
 	font-weight:bold;
+}
+
+
+
+/* display terms */
+.field-name-field-display-tag a:first-letter{
+	text-transform:uppercase;
+}
+.field-name-field-display-tag a:hover{
+	text-decoration:none;
+}
+
+
+.block-box-secondary .view-featured-items .views-row, 
+.block-boxes-current-featured_items .view-dom-id-2 .views-row {
+    margin-right: 15px;
+    width: 196px;
+    float:left;
+    display: block;
+}
+.block-box-secondary .view-featured-items .views-field-field-blogpost-main-image, 
+.block-boxes-current-featured_items .view-dom-id-2 .views-field-field-blogpost-main-image {
+    border: 1px solid black;
+    height: 160px;
+    width: 194px;
 }
