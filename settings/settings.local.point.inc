@@ -15,43 +15,18 @@ $databases = array (
     ),
 );
 
-/*
+/* MemCache Settings */
 
-$conf['cache_inc'] = './sites/default/modules/takepart/takepart_optimization/takepart_optimization.cache.inc';
-$conf['cacherouter'] = array(
-        'cache_form' => array(
-                'engine' => 'db',
-                'servers' => array(),
-                'shared' => false,
-                'prefix' => '',
-                'path' => '',
-                'static' => FALSE,
-                'fast_cache' => TRUE,
-        ),
+// the path to the core cache file
+  include_once('./includes/cache.inc');
+// the path to the memcache cache file
+  include_once('./sites/all/modules/contrib/memcache/memcache.inc');
 
-        'default' => array(
-                'engine' => 'memcache',
-                'servers' => array(
-                        '127.0.0.1:11211'
-                ),
-                'shared' => false,
-                'prefix' => '',
-                'path' => '',
-                'static' => FALSE,
-                'fast_cache' => TRUE,
-        ),
 
-);
-*/
-
-//// Code to add to settings.php:
-/////////////////////////////////
-/**
- * Drupal for Facebook settings.
- */
 if (!is_array($conf))
   $conf = array(
    'omniture_account_name' => 'takeparttakepartdev2',
+    'cache_default_class'   => 'MemCacheDrupal',
 );
 
 

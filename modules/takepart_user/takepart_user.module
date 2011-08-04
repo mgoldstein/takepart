@@ -42,6 +42,7 @@ function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form
   if (!(user_access('administer users'))) {
     $form['#validate'][] = '_takepart_user_validate';
     $form['actions']['submit']['#value'] = 'Register';
+    $form_state['redirect'] = '/testpage';
   }
 }
 
