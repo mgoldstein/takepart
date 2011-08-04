@@ -5,36 +5,25 @@
  */
 
 /**
+ * Implementation of hook_ctools_plugin_api().
+ */
+function takepart_search_ctools_plugin_api() {
+  list($module, $api) = func_get_args();
+  if ($module == "context" && $api == "context") {
+    return array("version" => "3");
+  }
+}
+
+/**
  * Implementation of hook_default_search_api_facet().
  */
 function takepart_search_default_search_api_facet() {
   $items = array();
-  $items['standard_node_index_field_articl'] = entity_import('search_api_facet', '{
-    "delta" : "standard_node_index_field_articl",
-    "index_id" : "standard_node_index",
-    "field" : "field_article_author",
-    "name" : "Standard Node_index: Author(s)",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : null,
-      "field_name" : "Author(s)"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['standard_node_index_field_blogpo'] = entity_import('search_api_facet', '{
-    "delta" : "standard_node_index_field_blogpo",
-    "index_id" : "standard_node_index",
+  $items['site_node_index_field_blogpost_b'] = entity_import('search_api_facet', '{
+    "delta" : "site_node_index_field_blogpost_b",
+    "index_id" : "site_node_index",
     "field" : "field_blogpost_blog",
-    "name" : "Standard Node Index: Blog",
+    "name" : "Site Node Index: Blog",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -52,11 +41,55 @@ function takepart_search_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
-  $items['standard_node_index_field_topic'] = entity_import('search_api_facet', '{
-    "delta" : "standard_node_index_field_topic",
-    "index_id" : "standard_node_index",
+  $items['site_node_index_field_free_tag'] = entity_import('search_api_facet', '{
+    "delta" : "site_node_index_field_free_tag",
+    "index_id" : "site_node_index",
+    "field" : "field_free_tag",
+    "name" : "Site Node Index: Free Tag",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Free Tag",
+      "entity_type" : "taxonomy_term"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['site_node_index_field_series'] = entity_import('search_api_facet', '{
+    "delta" : "site_node_index_field_series",
+    "index_id" : "site_node_index",
+    "field" : "field_series",
+    "name" : "Site Node Index: Series",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Series",
+      "entity_type" : "taxonomy_term"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['site_node_index_field_topic'] = entity_import('search_api_facet', '{
+    "delta" : "site_node_index_field_topic",
+    "index_id" : "site_node_index",
     "field" : "field_topic",
-    "name" : "Standard Node Index: Topic",
+    "name" : "Site Node Index: Topic",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -74,33 +107,11 @@ function takepart_search_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
-  $items['standard_node_index_field_vs_top'] = entity_import('search_api_facet', '{
-    "delta" : "standard_node_index_field_vs_top",
-    "index_id" : "standard_node_index",
-    "field" : "field_vs_topic_term",
-    "name" : "Standard Node_index: Topic",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "",
-      "field_name" : "Topic",
-      "entity_type" : "taxonomy_term"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['standard_node_index_type'] = entity_import('search_api_facet', '{
-    "delta" : "standard_node_index_type",
-    "index_id" : "standard_node_index",
+  $items['site_node_index_type'] = entity_import('search_api_facet', '{
+    "delta" : "site_node_index_type",
+    "index_id" : "site_node_index",
     "field" : "type",
-    "name" : "Standard Node Index: Content type",
+    "name" : "Site Node Index: Content type",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -145,15 +156,15 @@ function takepart_search_default_search_api_facet() {
  */
 function takepart_search_default_search_api_index() {
   $items = array();
-  $items['standard_node_index'] = entity_import('search_api_index', '{
-    "name" : "Standard Node Index",
-    "machine_name" : "standard_node_index",
+  $items['site_node_index'] = entity_import('search_api_index', '{
+    "name" : "Site Node Index",
+    "machine_name" : "site_node_index",
     "description" : null,
-    "server" : "db",
+    "server" : "solr",
     "entity_type" : "node",
     "options" : {
       "cron_limit" : "50",
-      "index_directly" : 0,
+      "index_directly" : 1,
       "fields" : {
         "search_api_language" : {
           "name" : "Item language",
@@ -199,7 +210,7 @@ function takepart_search_default_search_api_index() {
         },
         "created" : {
           "name" : "Date created",
-          "indexed" : 0,
+          "indexed" : 1,
           "type" : "date",
           "boost" : "1.0"
         },
@@ -311,7 +322,7 @@ function takepart_search_default_search_api_index() {
         "field_promo_text" : { "name" : "Promo Text", "indexed" : 1, "type" : "text", "boost" : "1.0" },
         "field_series" : {
           "name" : "Series",
-          "indexed" : 0,
+          "indexed" : 1,
           "type" : "integer",
           "entity_type" : "taxonomy_term",
           "boost" : "1.0"
@@ -370,13 +381,6 @@ function takepart_search_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_blogpost_subhead" : { "name" : "Subhead", "indexed" : 0, "type" : "text", "boost" : "1.0" },
-        "field_related_campaign" : {
-          "name" : "Related Campaigns",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
         "field_photo_credit" : {
           "name" : "Photo Credit",
           "indexed" : 0,
@@ -402,7 +406,7 @@ function takepart_search_default_search_api_index() {
           "type" : "boolean",
           "boost" : "1.0"
         },
-        "field_subhead" : { "name" : "Subhead", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_subhead" : { "name" : "Sub Head", "indexed" : 0, "type" : "text", "boost" : "1.0" },
         "field_video_related" : {
           "name" : "Related Video",
           "indexed" : 0,
@@ -456,7 +460,7 @@ function takepart_search_default_search_api_index() {
         "field_group_subhead" : { "name" : "Subhead", "indexed" : 0, "type" : "text", "boost" : "1.0" },
         "field_group_topic" : {
           "name" : "Topic",
-          "indexed" : 0,
+          "indexed" : 1,
           "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "taxonomy_term",
           "boost" : "1.0"
@@ -525,7 +529,7 @@ function takepart_search_default_search_api_index() {
         },
         "field_vs_topic_term" : {
           "name" : "Topic",
-          "indexed" : 0,
+          "indexed" : 1,
           "type" : "integer",
           "entity_type" : "taxonomy_term",
           "boost" : "1.0"
@@ -612,6 +616,12 @@ function takepart_search_default_search_api_index() {
           "entity_type" : "node",
           "boost" : "1.0"
         },
+        "field_tp_campaign_sl_html" : {
+          "name" : "Spotlight HTML",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
         "field_tp_campaign_subheadline" : {
           "name" : "Sub Headline",
           "indexed" : 0,
@@ -628,7 +638,7 @@ function takepart_search_default_search_api_index() {
         "field_tp_campaign_sponsors" : {
           "name" : "Campaign Sponsors",
           "indexed" : 0,
-          "type" : "integer",
+          "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
           "boost" : "1.0"
         },
@@ -646,9 +656,105 @@ function takepart_search_default_search_api_index() {
           "type" : "text",
           "boost" : "1.0"
         }
+      },
+      "data_alter_callbacks" : {
+        "search_api_alter_bundle_filter" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "default" : "1", "bundles" : { "takepart_slide" : "takepart_slide" } }
+        },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : null },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
+      },
+      "processors" : {
+        "search_api_case_ignore" : {
+          "status" : 0,
+          "weight" : "0",
+          "settings" : { "fields" : {
+              "title" : "title",
+              "field_promo_headline" : "field_promo_headline",
+              "field_promo_text" : "field_promo_text",
+              "search_api_language" : 0,
+              "nid" : 0,
+              "is_new" : 0,
+              "type" : 0,
+              "url" : 0,
+              "created" : 0,
+              "field_free_tag" : 0,
+              "field_topic" : 0,
+              "field_series" : 0,
+              "field_blogpost_blog" : 0,
+              "field_group_topic" : 0,
+              "field_series_videos_by_tag" : 0,
+              "field_vs_free_term" : 0,
+              "field_vs_topic_term" : 0
+            }
+          }
+        },
+        "search_api_html_filter" : {
+          "status" : 0,
+          "weight" : "10",
+          "settings" : {
+            "fields" : {
+              "title" : "title",
+              "field_promo_headline" : "field_promo_headline",
+              "field_promo_text" : "field_promo_text",
+              "search_api_language" : 0,
+              "nid" : 0,
+              "is_new" : 0,
+              "type" : 0,
+              "url" : 0,
+              "created" : 0,
+              "field_free_tag" : 0,
+              "field_topic" : 0,
+              "field_series" : 0,
+              "field_blogpost_blog" : 0,
+              "field_group_topic" : 0,
+              "field_series_videos_by_tag" : 0,
+              "field_vs_free_term" : 0,
+              "field_vs_topic_term" : 0
+            },
+            "title" : 0,
+            "alt" : 1,
+            "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
+          }
+        },
+        "search_api_tokenizer" : {
+          "status" : 0,
+          "weight" : "20",
+          "settings" : {
+            "fields" : {
+              "title" : "title",
+              "field_promo_headline" : "field_promo_headline",
+              "field_promo_text" : "field_promo_text",
+              "search_api_language" : 0,
+              "nid" : 0,
+              "is_new" : 0,
+              "type" : 0,
+              "url" : 0,
+              "created" : 0,
+              "field_free_tag" : 0,
+              "field_topic" : 0,
+              "field_series" : 0,
+              "field_blogpost_blog" : 0,
+              "field_group_topic" : 0,
+              "field_series_videos_by_tag" : 0,
+              "field_vs_free_term" : 0,
+              "field_vs_topic_term" : 0
+            },
+            "spaces" : "[^\\\\p{L}\\\\p{N}^\']",
+            "ignorable" : "[-]"
+          }
+        },
+        "search_api_stopwords" : {
+          "status" : 0,
+          "weight" : "30",
+          "settings" : { "file" : "", "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc" }
+        }
       }
     },
-    "enabled" : "0",
+    "enabled" : "1",
     "read_only" : "0",
     "rdf_mapping" : []
   }');
@@ -660,190 +766,17 @@ function takepart_search_default_search_api_index() {
  */
 function takepart_search_default_search_api_server() {
   $items = array();
-  $items['db'] = entity_import('search_api_server', '{
-    "name" : "DB",
-    "machine_name" : "db",
+  $items['solr'] = entity_import('search_api_server', '{
+    "name" : "Solr",
+    "machine_name" : "solr",
     "description" : "",
-    "class" : "search_api_db_service",
+    "class" : "search_api_solr_service",
     "options" : {
-      "database" : "default:default",
-      "min_chars" : "1",
-      "indexes" : {
-        "default_node_index" : {
-          "search_api_language" : {
-            "table" : "search_api_db_default_node_index_search_api_language",
-            "type" : "string",
-            "boost" : "1.0"
-          },
-          "type" : {
-            "table" : "search_api_db_default_node_index_type",
-            "type" : "string",
-            "boost" : "1.0"
-          },
-          "title" : {
-            "table" : "search_api_db_default_node_index_title",
-            "type" : "text",
-            "boost" : "5.0"
-          },
-          "status" : {
-            "table" : "search_api_db_default_node_index_status",
-            "type" : "boolean",
-            "boost" : "1.0"
-          },
-          "promote" : {
-            "table" : "search_api_db_default_node_index_promote",
-            "type" : "boolean",
-            "boost" : "1.0"
-          },
-          "sticky" : {
-            "table" : "search_api_db_default_node_index_sticky",
-            "type" : "boolean",
-            "boost" : "1.0"
-          },
-          "created" : {
-            "table" : "search_api_db_default_node_index_created",
-            "type" : "date",
-            "boost" : "1.0"
-          },
-          "changed" : {
-            "table" : "search_api_db_default_node_index_changed",
-            "type" : "date",
-            "boost" : "1.0"
-          },
-          "author" : {
-            "table" : "search_api_db_default_node_index_author",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "comment_count" : {
-            "table" : "search_api_db_default_node_index_comment_count",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_article_author" : {
-            "table" : "search_api_db_default_node_index_field_article_author",
-            "type" : "list\\u003cinteger\\u003e",
-            "boost" : "1.0"
-          },
-          "field_topic" : {
-            "table" : "search_api_db_default_node_index_field_topic",
-            "type" : "list\\u003cinteger\\u003e",
-            "boost" : "1.0"
-          },
-          "field_series" : {
-            "table" : "search_api_db_default_node_index_field_series",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_blogpost_blog" : {
-            "table" : "search_api_db_default_node_index_field_blogpost_blog",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_vs_free_term" : {
-            "table" : "search_api_db_default_node_index_field_vs_free_term",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_vs_topic_term" : {
-            "table" : "search_api_db_default_node_index_field_vs_topic_term",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "author:name" : {
-            "table" : "search_api_db_default_node_index_author_name",
-            "type" : "string",
-            "boost" : "1.0"
-          },
-          "author:roles" : {
-            "table" : "search_api_db_default_node_index_author_roles",
-            "type" : "list\\u003cinteger\\u003e",
-            "boost" : "1.0"
-          },
-          "body:value" : {
-            "table" : "search_api_db_default_node_index_body_value",
-            "type" : "text",
-            "boost" : "1.0"
-          },
-          "field_topic:tid" : {
-            "table" : "search_api_db_default_node_index_field_topic_tid",
-            "type" : "list\\u003cinteger\\u003e",
-            "boost" : "1.0"
-          },
-          "field_topic:name" : {
-            "table" : "search_api_db_default_node_index_field_topic_name",
-            "type" : "list\\u003ctext\\u003e",
-            "boost" : "1.0"
-          }
-        },
-        "standard_node_index" : {
-          "search_api_language" : {
-            "table" : "search_api_db_standard_node_index_search_api_language",
-            "type" : "string",
-            "boost" : "1.0"
-          },
-          "nid" : {
-            "table" : "search_api_db_standard_node_index_nid",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "is_new" : {
-            "table" : "search_api_db_standard_node_index_is_new",
-            "type" : "boolean",
-            "boost" : "1.0"
-          },
-          "type" : {
-            "table" : "search_api_db_standard_node_index_type",
-            "type" : "string",
-            "boost" : "1.0"
-          },
-          "title" : {
-            "table" : "search_api_db_standard_node_index_title",
-            "type" : "text",
-            "boost" : "1.0"
-          },
-          "url" : {
-            "table" : "search_api_db_standard_node_index_url",
-            "type" : "uri",
-            "boost" : "1.0"
-          },
-          "field_free_tag" : {
-            "table" : "search_api_db_standard_node_index_field_free_tag",
-            "type" : "list\\u003cinteger\\u003e",
-            "boost" : "1.0"
-          },
-          "field_topic" : {
-            "table" : "search_api_db_standard_node_index_field_topic",
-            "type" : "list\\u003cinteger\\u003e",
-            "boost" : "1.0"
-          },
-          "field_promo_headline" : {
-            "table" : "search_api_db_standard_node_index_field_promo_headline",
-            "type" : "text",
-            "boost" : "1.0"
-          },
-          "field_promo_text" : {
-            "table" : "search_api_db_standard_node_index_field_promo_text",
-            "type" : "text",
-            "boost" : "1.0"
-          },
-          "field_blogpost_blog" : {
-            "table" : "search_api_db_standard_node_index_field_blogpost_blog",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_series_videos_by_tag" : {
-            "table" : "search_api_db_standard_node_index_field_series_videos_by_tag",
-            "type" : "list\\u003cinteger\\u003e",
-            "boost" : "1.0"
-          },
-          "field_vs_free_term" : {
-            "table" : "search_api_db_standard_node_index_field_vs_free_term",
-            "type" : "integer",
-            "boost" : "1.0"
-          }
-        }
-      }
+      "host" : "solr.p2technology.com",
+      "port" : "8081",
+      "path" : "\\/solr-www.takepart.com",
+      "http_user" : "",
+      "http_pass" : ""
     },
     "enabled" : "1",
     "rdf_mapping" : []
