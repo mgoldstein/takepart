@@ -1,4 +1,4 @@
-blockquote {
+q {
   background: url('../images/bg-quote.gif') no-repeat 0 4px;
   color: #999;
   font-size: 28px;
@@ -7,7 +7,7 @@ blockquote {
   padding: 0 10px 0 60px;
 }
 
-blockquote p {
+q p{
   font-size: 28px;
 }
 
@@ -33,7 +33,7 @@ ul li, ol li{
 	margin:0 0 10px 0;
 }
 
-q{
+blockquote{
 	margin:0 0 25px 30px;
 	padding:0 20px;
 	border-left:solid 1px #ccc;
