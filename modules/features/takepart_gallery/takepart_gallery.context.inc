@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function takepart_gallery_context_default_contexts() {
   $export = array();
@@ -29,23 +29,29 @@ function takepart_gallery_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'takepart_custom-slideshow_controls' => array(
-          'module' => 'takepart_custom',
-          'delta' => 'slideshow_controls',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
+        'boxes-box-bb0b625d' => array(
+          'module' => 'boxes',
+          'delta' => 'box-bb0b625d',
+          'region' => 'content_top',
+          'weight' => 0,
         ),
         'boxes-box-7d1ce087' => array(
           'module' => 'boxes',
           'delta' => 'box-7d1ce087',
           'region' => 'content_bottom',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'comment_block_simple-comment_block' => array(
           'module' => 'comment_block_simple',
           'delta' => 'comment_block',
           'region' => 'content_bottom',
-          'weight' => '1',
+          'weight' => 1,
+        ),
+        'takepart_custom-slideshow_controls' => array(
+          'module' => 'takepart_custom',
+          'delta' => 'slideshow_controls',
+          'region' => 'sidebar_second',
+          'weight' => 0,
         ),
       ),
     ),

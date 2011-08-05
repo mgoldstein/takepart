@@ -5,12 +5,13 @@
  */
 
 /**
- * Implementation of hook_field_group_info().
+ * Implements hook_field_group_info().
  */
 function takepart_gallery_field_group_info() {
   $export = array();
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_photo_gallery_main|node|openpublish_photo_gallery|form';
   $field_group->group_name = 'group_photo_gallery_main';
@@ -39,6 +40,7 @@ function takepart_gallery_field_group_info() {
   $export['group_photo_gallery_main|node|openpublish_photo_gallery|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_photo_gallery_photos|node|openpublish_photo_gallery|form';
   $field_group->group_name = 'group_photo_gallery_photos';
@@ -64,6 +66,7 @@ function takepart_gallery_field_group_info() {
   $export['group_photo_gallery_photos|node|openpublish_photo_gallery|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_photo_gallery_promo|node|openpublish_photo_gallery|form';
   $field_group->group_name = 'group_photo_gallery_promo';
@@ -91,6 +94,7 @@ function takepart_gallery_field_group_info() {
   $export['group_photo_gallery_promo|node|openpublish_photo_gallery|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_photo_gallery_related|node|openpublish_photo_gallery|form';
   $field_group->group_name = 'group_photo_gallery_related';
@@ -103,10 +107,9 @@ function takepart_gallery_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_related_content',
-      1 => 'field_suggest_related',
-      2 => 'field_suggest_actions',
-      3 => 'field_related_actions',
-      4 => 'field_suggest_content',
+      1 => 'field_suggest_actions',
+      2 => 'field_related_actions',
+      3 => 'field_suggest_content',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -120,6 +123,7 @@ function takepart_gallery_field_group_info() {
   $export['group_photo_gallery_related|node|openpublish_photo_gallery|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_photo_gallery_tagging|node|openpublish_photo_gallery|form';
   $field_group->group_name = 'group_photo_gallery_tagging';
@@ -135,6 +139,7 @@ function takepart_gallery_field_group_info() {
       1 => 'field_free_tag',
       2 => 'field_topic',
       3 => 'field_multi_page_campaign',
+      4 => 'field_display_tag',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
