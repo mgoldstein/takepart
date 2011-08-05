@@ -46,9 +46,31 @@ include "sites/all/modules/contrib/fb/fb_settings.inc";
 // the path to the memcache cache file
   include_once('./sites/all/modules/contrib/memcache/memcache.inc');
 
-
 if (!is_array($conf))
   $conf = array(
    'omniture_account_name' => 'takepart',
    'cache_default_class'   => 'MemCacheDrupal',
+
+   'memcache_options' => array(
+     // Requires Memcached 1.4 or greater - enables binaray protocal (faster).
+        Memcached::OPT_BINARY_PROTOCOL => TRUE
+   ),
+
+   'memcache_servers' => array(
+        '10.181.229.207:11211' => 'default', // web1.takepart.com
+        '10.181.227.7:11211' => 'default', // web2.takepart.com
+        '10.181.227.8.7:11211' => 'default', // web3.takepart.com
+        '10.181.227.104:11211' => 'default' // web4.takepart.com
+   ),
+
+   'memcache_bins' => array(
+        'cache' => 'default',
+        'cache_filter' => 'default',
+        'cache_menu' => 'default',
+        'cache_page' => 'default',
+        'session' => 'default',
+        'users' => 'default',
+   ),
+
+
 );
