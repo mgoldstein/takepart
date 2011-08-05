@@ -2509,7 +2509,7 @@ blockquote p {
 }
 
 /* End of WYSIWYG */
-
+/*
 .node-embedded {
   background: #fdf0d7;
   padding: 9px 12px;
@@ -2541,7 +2541,7 @@ blockquote p {
   background: url('../images/bg-take-action-title-over.gif') left center no-repeat;
   color: #f7aa0d;
 }
-
+*/
 
 /* Campaign */
 
@@ -3070,11 +3070,19 @@ div.messages a:visited {
   font-size: 14px;
   margin-bottom: 20px;
   padding: 7px 10px;
-	position:absolute;
 	width:276px;
 	left:0;
 	height:29px;
 	top:0;
+}
+.drupal-embed #views_slideshow_controls_text_photo_gallery-block,
+.drupal-embed .views-slideshow-controls-bottom {
+  margin-bottom:0px;
+  width:595px;
+
+}
+.drupal-embed #views_slideshow_slide_counter_photo_gallery-block {
+  margin-left:165px;
 }
 #views_slideshow_controls_text_pause_photo_gallery-block {
 	display:none;
