@@ -40,7 +40,6 @@ jQuery.fn.DefaultValue = function(text){
     });
 };
 
-		$(document).ready(function() {
-			//Assign default value to form field #1
-			$("#top-search .form-text").DefaultValue("Search TakePart");		
-		});
+jQuery(document).ready(function() {
+	jQuery('#top-search .form-text').DefaultValue('Search TakePart');		
+});
