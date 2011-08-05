@@ -10,10 +10,12 @@ function takepart_ads_preprocess_page(&$vars) {
   $ad_slots = array();
 
   foreach ($vars['page'] as $region => $blocks) {
+    
     if (strpos($region, "#") === FALSE) {
       foreach ($blocks as $name => $content) {
+        
         if (strpos($name, 'boxes_box-') !== FALSE) {
-          if (strpos($content['content']['#markup'], 'GA_googleFillSlot') !== FALSE) {
+          if (!empty($content['content']) && strpos($content['content']['#markup'], 'GA_googleFillSlot') !== FALSE) {
             preg_match('/GA_googleFillSlot\(\"(.*)\"\)/', $content['content']['#markup'], $matches);
             if (!empty($matches[1])) {
               array_push($ad_slots, $matches[1]);  
