@@ -68,6 +68,7 @@ function takepart_custom_update_7001() {
         'SpecialChar' => 1,
         'Table' => 1,
         'Maximize' => 1,
+        'Styles' => 1,
       ),
       'imce' => array(
         'imce' => 1,
@@ -88,7 +89,7 @@ function takepart_custom_update_7001() {
     'paste_auto_cleanup_on_paste' => 1,
     'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
     'css_setting' => 'self',
-    'css_path' => '%t/css/editor.css',
+    'css_path' => '/profiles/custom/themes/takepart3/css/wysiwyg.css',
     'css_classes' => '',
   );
   

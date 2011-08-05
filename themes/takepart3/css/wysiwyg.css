@@ -1,0 +1,44 @@
+q {
+  background: url('../images/bg-quote.gif') no-repeat 0 4px;
+  color: #999;
+  font-size: 28px;
+  font-family: Georgia, serif;
+  margin:0 0 60px 0;
+  padding: 0 10px 0 60px;
+}
+
+q p{
+  font-size: 28px;
+}
+
+hr {
+  background: url('../images/sprite2.png') repeat-x 0 -159px;
+  clear: both;
+  margin: 0 0 20px;
+  height:1px;
+}
+
+ul, ol{
+	margin:0 0 25px 45px;
+	font-size:14px;
+}
+ol{
+	list-style:decimal;
+}
+ul{
+	list-style:disc;
+}
+
+ul li, ol li{
+	margin:0 0 10px 0;
+}
+
+blockquote{
+	margin:0 0 25px 30px;
+	padding:0 20px;
+	border-left:solid 1px #ccc;
+	display:block;
+	font-size: 14px;
+	quotes: none;
+	line-height:24px;
+}

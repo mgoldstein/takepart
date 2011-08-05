@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function takepart_campaign_field_default_fields() {
   $fields = array();
@@ -38,6 +38,12 @@ function takepart_campaign_field_default_fields() {
           'settings' => array(),
           'type' => 'context_field_context',
           'weight' => '2',
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -423,7 +429,7 @@ function takepart_campaign_field_default_fields() {
           ),
         ),
         'type' => 'context_field_select',
-        'weight' => '15',
+        'weight' => '45',
       ),
     ),
   );
@@ -462,6 +468,13 @@ function takepart_campaign_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '7',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1011,47 +1024,46 @@ function takepart_campaign_field_default_fields() {
   $fields['node-takepart_campaign-field_tp_campaign_alliances'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_tp_campaign_alliances',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'link',
-      'settings' => array(
-        'attributes' => array(
-          'class' => '',
-          'rel' => '',
-          'target' => 'default',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
         ),
-        'display' => array(
-          'url_cutoff' => 80,
-        ),
-        'enable_tokens' => 1,
-        'title' => 'optional',
-        'title_value' => '',
-        'url' => 0,
       ),
-      'translatable' => '1',
-      'type' => 'link_field',
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
     ),
     'field_instance' => array(
       'bundle' => 'takepart_campaign',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'User can provide titles/URLs for links to 3rd party sites',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '20',
+          'type' => 'text_default',
+          'weight' => 28,
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1065,25 +1077,16 @@ function takepart_campaign_field_default_fields() {
       'label' => 'Alliances',
       'required' => 0,
       'settings' => array(
-        'attributes' => array(
-          'class' => '',
-          'rel' => '',
-          'target' => 'default',
-        ),
-        'display' => array(
-          'url_cutoff' => '80',
-        ),
-        'enable_tokens' => 1,
-        'title' => 'optional',
-        'title_value' => '',
-        'url' => 0,
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_field',
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
         'weight' => '8',
       ),
     ),
@@ -1150,23 +1153,29 @@ function takepart_campaign_field_default_fields() {
           'Boxes for Screaming Headline' => 0,
           'Boxes for View Box' => 0,
           'addthis' => 0,
+          'akamai' => 0,
           'boxes' => 'boxes',
           'comment' => 0,
+          'comment_block_simple' => 0,
           'context_related_menu' => 0,
           'context_ui' => 0,
           'diff' => 0,
           'fb_connect' => 0,
           'menu' => 0,
+          'newsletter_campaign' => 0,
           'node' => 0,
           'search' => 0,
           'search_api_facets' => 0,
+          'search_api_page' => 0,
           'shortcut' => 0,
           'system' => 0,
+          'takepart_custom' => 0,
+          'twitter_pull' => 0,
           'user' => 0,
           'views' => 0,
         ),
         'default_context' => 'takepart_campaign_default',
-        'use_default' => '1',
+        'use_default' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1237,7 +1246,7 @@ function takepart_campaign_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'public' => 'public',
@@ -1249,8 +1258,9 @@ function takepart_campaign_field_default_fields() {
             'video' => 0,
           ),
           'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_generic_alt',
         'weight' => '11',
       ),
     ),
@@ -1952,7 +1962,7 @@ function takepart_campaign_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '18',
+        'weight' => '22',
       ),
     ),
   );
@@ -2026,7 +2036,7 @@ function takepart_campaign_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '17',
+        'weight' => '21',
       ),
     ),
   );
@@ -2123,7 +2133,7 @@ function takepart_campaign_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '19',
+        'weight' => '23',
       ),
     ),
   );
@@ -2745,7 +2755,7 @@ function takepart_campaign_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'public' => 'public',
@@ -2757,8 +2767,9 @@ function takepart_campaign_field_default_fields() {
             'video' => 0,
           ),
           'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_generic_alt',
         'weight' => '11',
       ),
     ),
@@ -3112,86 +3123,6 @@ function takepart_campaign_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video_series-field_multi_page_campaign'
-  $fields['node-video_series-field_multi_page_campaign'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_multi_page_campaign',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'context_field',
-      'settings' => array(
-        'global_setting' => 255,
-      ),
-      'translatable' => '1',
-      'type' => 'context_field',
-    ),
-    'field_instance' => array(
-      'bundle' => 'video_series',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'context_field',
-          'settings' => array(),
-          'type' => 'context_field_context',
-          'weight' => 14,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_multi_page_campaign',
-      'label' => 'Multi Page Campaign',
-      'required' => 0,
-      'settings' => array(
-        'allowed_blocks' => array(
-          'Boxes for Box' => 0,
-          'Boxes for Screaming Headline' => 0,
-          'Boxes for View Box' => 0,
-          'addthis' => 0,
-          'boxes' => 0,
-          'comment' => 0,
-          'context_related_menu' => 0,
-          'context_ui' => 0,
-          'devel' => 0,
-          'diff' => 0,
-          'menu' => 0,
-          'node' => 0,
-          'search' => 0,
-          'search_api_facets' => 0,
-          'shortcut' => 0,
-          'system' => 0,
-          'user' => 0,
-          'views' => 0,
-        ),
-        'default_context' => 'multi_page_comapaign_default_context',
-        'use_default' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'context_field',
-        'settings' => array(
-          'form_element' => array(
-            'allow_create' => 0,
-            'category' => 'campaign',
-          ),
-        ),
-        'type' => 'context_field_select',
-        'weight' => '13',
-      ),
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('  Segment 4 HTML');
@@ -3228,7 +3159,6 @@ function takepart_campaign_field_default_fields() {
   t('Topic');
   t('User can create and/or reference a Photo to serve as the Spotlight Image.');
   t('User can populate custom HTML to be displayed in the Spotlight block instead of (or in addition to) Spotlight Nodes.');
-  t('User can provide titles/URLs for links to 3rd party sites');
   t('User can reference one or more Group nodes that sponsor this Campaign. The Groups will be featured prominently on the Campaign page in order to indicate their affiliation.');
   t('User provides a name for this segment (equivalent to the label on the old tabs).');
   t('User references one or more nodes to be listed within this segment, represented by promo headline/text.');

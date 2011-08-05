@@ -1,6 +1,51 @@
+/* base styles */
+hr {
+  background: url(../images/sprite.png) repeat-x 0 -159px;
+  clear: both;
+  margin: 0 0 20px;
+  height:1px;
+}
+
+#content ul,
+#content ol{
+	margin:0 0 25px 45px;
+	font-size:14px;
+}
+#content ol{
+	list-style:decimal;
+}
+#content ul{
+	list-style:disc;
+}
+
+#content ul li,
+#content ol li{
+	margin:0 0 10px 0;
+}
+
+#content blockquote{
+	margin:0 0 25px 30px;
+	padding:0 20px;
+	border-left:solid 1px #ccc;
+	display:block;
+	font-size: 14px;
+	quotes: none;
+	line-height:24px;
+}
+#content q{
+	margin:0 0 60px 0;
+}
+
+
 /* Tabs */
 .not-logged-in .tabs{
 	display:none;
+}
+
+
+/* logo */
+#logo a {
+    background: url("../images/sprite2.png") no-repeat scroll 0 0;
 }
 
 /* Carousel */
@@ -87,11 +132,14 @@
 /* display terms */
 .field-name-field-display-tag a:first-letter{
 	text-transform:uppercase;
+	display:block;
 }
 .field-name-field-display-tag a:hover{
 	text-decoration:none;
 }
-
+.block-boxes-current-featured_items .view-dom-id-2 {
+    overflow: hidden;
+}
 
 .block-box-secondary .view-featured-items .views-row, 
 .block-boxes-current-featured_items .view-dom-id-2 .views-row {
@@ -106,3 +154,171 @@
     height: 160px;
     width: 194px;
 }
+
+/* photo page */
+
+.view-id-photo_galleries .views-field-field-promo-headline {
+    font-size: 16px;
+}
+
+
+
+/* Video Page */
+
+#block-boxes-box-907abe5f .views-row{
+	width:100%;
+	float:none;
+}
+
+/* Video Node */
+.node-type-openpublish-video .field-name-field-subhead {
+    color: #666666;
+    font-size: 18px;
+    font-weight: bolder;
+    line-height: 120%;
+    margin-bottom: 15px;
+}
+.node-type-openpublish-video .submitted-wrapper {
+    border-bottom: medium none;
+    margin-bottom: 0;
+}
+.node-type-openpublish-video .field-name-field-video-embedded{
+	margin:0 0 20px 0;
+}
+
+.node-topics-label {
+    font-family:Georgia, "Times New Roman", Times, serif;
+    height: 0;
+    left: -55px;
+    overflow: visible;
+    position: relative;
+	font-weight:normal;
+}
+
+
+
+/* videos in content-bottom */
+
+#block-boxes-box-fa7bb73f h2,
+#block-boxes-box-c4f8d8d1 h2,
+#block-boxes-box-c4fcb2ac h2,
+#block-views-video-block-8 h2,
+#block-views-video-block-6 h2,
+#block-boxes-box-208c3905 h2{
+    background: none repeat scroll 0 0 #CCCCCC;
+    margin: 25px 0 7px;
+}
+	#block-boxes-box-fa7bb73f h2 span,
+	#block-boxes-box-c4f8d8d1 h2 span,
+	#block-boxes-box-c4fcb2ac h2 span,
+	#block-views-video-block-8 h2 span,
+	#block-views-video-block-6 h2 span,
+	#block-boxes-box-208c3905 h2 span{
+		background-color:#fff;
+		border-right: 5px solid #FFFFFF;
+		padding: 2px 5px 2px 0;
+		text-transform: uppercase;
+	}
+	#block-boxes-box-fa7bb73f .content,
+	#block-boxes-box-c4f8d8d1 .content,
+	#block-boxes-box-c4fcb2ac .content,
+	#block-views-video-block-8 .content,
+	#block-views-video-block-6 .content,
+	#block-boxes-box-208c3905 .content{
+		border-top: 1px dotted #000000;
+		padding-bottom: 20px;
+		padding-top: 10px;
+	}
+	
+.view-video .views-row{
+    margin-right: 15px;
+    width: 196px;
+    float:left;
+    display: block;
+}
+	.view-video .views-row-last{
+	  margin-right: 0;
+	}
+.view-video .views-field-field-thumbnail{
+    height: 130px;
+    width: 196px;
+}
+	.view-video .views-field-field-thumbnail img{
+		display:block;
+		border: 1px solid black;
+		height: 128px;
+    	width: 194px;
+	}
+
+.view-video .views-field-field-promo-headline {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+ 
+#block-views-video-block-6 .content {
+    border-top: 1px dotted #000000;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+.view-video tr{
+	display:block;
+	margin:0 0 25px 0;
+}
+.view-video td {
+	vertical-align:top;
+	padding:0;
+	width:196px;
+	padding:0 15px 0 0;
+}
+.view-video td .views-field-field-thumbnail {
+	margin:0;
+}
+	.view-video td.col-last{
+		padding:0;
+	}
+.view-video td .views-field-field-promo-headline h3{
+	font-weight:bolder;
+	font-size:16px;
+	color:#010101;
+}
+.view-video .views-field-field-promo-text{
+	margin:0;	
+}
+
+/* right rail video page(s) */
+#right-rail #block-boxes-box-e9e8814f h2,
+#right-rail #block-views-video-block h2{
+    background: url("../images/sprite-box-ribbons.gif") no-repeat 0 -180px;
+    border-bottom: 2px solid black;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 16px;
+    margin-bottom: 15px;
+    padding: 10px 0 6px 35px;
+    text-transform: uppercase;	
+}
+
+#right-rail .view-video .views-row{
+    float: none;
+    margin: 0 0 20px 0;
+    overflow: hidden;
+    width: 100%;
+}
+#right-rail .view-video .views-field-field-thumbnail{
+	width:	127px;
+	height:102px;
+	float:left;
+	margin:0 15px 0 0;
+}
+	#right-rail .view-video .views-field-field-thumbnail img{
+		width:	125px;
+		height:100px;
+	}
+#right-rail .view-video .views-field-field-promo-headline{
+	margin-top:0;
+}
+	#right-rail .view-video .views-field-field-promo-headline h3{
+		font-size:14px;
+	}

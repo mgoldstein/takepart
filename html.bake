@@ -113,6 +113,11 @@ $info['projects']['views_slideshow']['download']['branch']    = '7.x-3.x';
 $info['projects']['views_slideshow']['download']['url']       = 'http://git.drupal.org/project/views_slideshow.git';
 $info['projects']['views_slideshow']['download']['date']    = '2011-06-27';
 
+//Jcarousel for video list
+$info['projects']['jcarousel']['type']    = 'module';
+$info['projects']['jcarousel']['subdir']  = 'contrib';
+$info['projects']['jcarousel']['version'] = '2.4-alpha3';
+
 // Needed for 3rd party modules, probably should be included in base
 $info['projects']['libraries']['type']    = 'module';
 $info['projects']['libraries']['subdir']  = 'contrib';

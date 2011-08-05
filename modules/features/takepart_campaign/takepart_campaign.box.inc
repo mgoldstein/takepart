@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_default_box().
+ * Implements hook_default_box().
  */
 function takepart_campaign_default_box() {
   $export = array();
@@ -706,6 +706,8 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_sponsors' => 0,
       'field_tp_campaign_context' => 0,
       'field_tp_campaign_alliances' => 0,
+      'field_tp_campaign_header' => 0,
+      'field_tp_campaign_cover_link' => 0,
     ),
     'use_page' => 1,
     'exclude_from_content' => 0,

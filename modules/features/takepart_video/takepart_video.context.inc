@@ -29,6 +29,12 @@ function takepart_video_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-box-bb0b625d' => array(
+          'module' => 'boxes',
+          'delta' => 'box-bb0b625d',
+          'region' => 'content_top',
+          'weight' => 0,
+        ),
         'views-video-block_8' => array(
           'module' => 'views',
           'delta' => 'video-block_8',
@@ -61,6 +67,7 @@ function takepart_video_context_default_contexts() {
   $context->conditions = array(
     'context_field' => array(
       'values' => array(
+        'context_field' => 'context_field',
         1 => 1,
         2 => 2,
       ),
@@ -72,17 +79,23 @@ function takepart_video_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-video-block_6' => array(
-          'module' => 'views',
-          'delta' => 'video-block_6',
-          'region' => 'content',
-          'weight' => '-10',
+        'takepart_custom-page_title_h1' => array(
+          'module' => 'takepart_custom',
+          'delta' => 'page_title_h1',
+          'region' => 'content_top',
+          'weight' => 0,
         ),
         'views-video-block_3' => array(
           'module' => 'views',
           'delta' => 'video-block_3',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => 0,
+        ),
+        'views-video-block_6' => array(
+          'module' => 'views',
+          'delta' => 'video-block_6',
+          'region' => 'content',
+          'weight' => 1,
         ),
       ),
     ),

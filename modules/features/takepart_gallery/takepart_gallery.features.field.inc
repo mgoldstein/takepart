@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function takepart_gallery_field_default_fields() {
   $fields = array();
@@ -182,7 +182,7 @@ function takepart_gallery_field_default_fields() {
       'label' => 'Caption',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '1',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -472,13 +472,108 @@ function takepart_gallery_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
+        'module' => 'options',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'options_select',
+        'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_photo_gallery-field_display_tag'
+  $fields['node-openpublish_photo_gallery-field_display_tag'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_display_tag',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'blog',
+          ),
+          1 => array(
+            'parent' => '0',
+            'vocabulary' => 'free_tags',
+          ),
+          2 => array(
+            'parent' => '0',
+            'vocabulary' => 'topic',
+          ),
+          3 => array(
+            'parent' => '0',
+            'vocabulary' => 'series',
+          ),
+          4 => array(
+            'parent' => '0',
+            'vocabulary' => 'video_series',
+          ),
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_photo_gallery',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '20',
+        ),
+        'embed' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_display_tag',
+      'label' => 'Display Tag',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '4',
+        'weight' => '44',
       ),
     ),
   );
@@ -528,6 +623,12 @@ function takepart_gallery_field_default_fields() {
           'type' => 'hidden',
           'weight' => '16',
         ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -550,7 +651,7 @@ function takepart_gallery_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '22',
+        'weight' => '48',
       ),
     ),
   );
@@ -583,6 +684,15 @@ function takepart_gallery_field_default_fields() {
           'module' => 'views_field',
           'settings' => array(
             'view' => 'photo_gallery block',
+          ),
+          'type' => 'views_field_formatter',
+          'weight' => '2',
+        ),
+        'embed' => array(
+          'label' => 'hidden',
+          'module' => 'views_field',
+          'settings' => array(
+            'view' => 'photo_gallery block_1',
           ),
           'type' => 'views_field_formatter',
           'weight' => '2',
@@ -654,6 +764,13 @@ function takepart_gallery_field_default_fields() {
           'type' => 'hidden',
           'weight' => '7',
         ),
+        'embed' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -718,6 +835,13 @@ function takepart_gallery_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '8',
+        ),
+        'embed' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -809,7 +933,13 @@ function takepart_gallery_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 18,
+          'weight' => '18',
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -902,6 +1032,12 @@ function takepart_gallery_field_default_fields() {
           'type' => 'hidden',
           'weight' => '12',
         ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -975,6 +1111,12 @@ function takepart_gallery_field_default_fields() {
           'type' => 'hidden',
           'weight' => '15',
         ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '16',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -994,7 +1136,7 @@ function takepart_gallery_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '19',
+        'weight' => '46',
       ),
     ),
   );
@@ -1039,6 +1181,12 @@ function takepart_gallery_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '0',
+        ),
+        'embed' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1107,7 +1255,13 @@ function takepart_gallery_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 17,
+          'weight' => '17',
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1175,7 +1329,13 @@ function takepart_gallery_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 19,
+          'weight' => '19',
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1232,6 +1392,12 @@ function takepart_gallery_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '6',
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1316,6 +1482,12 @@ function takepart_gallery_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '5',
         ),
+        'embed' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1335,7 +1507,7 @@ function takepart_gallery_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '21',
+        'weight' => '47',
       ),
     ),
   );
@@ -1344,6 +1516,7 @@ function takepart_gallery_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Agency');
   t('Caption');
+  t('Display Tag');
   t('Free Tags');
   t('Photo Credit');
   t('Promo Headline');

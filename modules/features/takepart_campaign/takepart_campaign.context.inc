@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function takepart_campaign_context_default_contexts() {
   $export = array();
@@ -238,25 +238,31 @@ function takepart_campaign_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-5cd7d5ce',
           'region' => 'sidebar_second',
-          'weight' => 2,
+          'weight' => 1,
         ),
         'boxes-box-4abd00a3' => array(
           'module' => 'boxes',
           'delta' => 'box-4abd00a3',
           'region' => 'sidebar_second',
-          'weight' => 3,
+          'weight' => 2,
         ),
         'boxes-box-33756e58' => array(
           'module' => 'boxes',
           'delta' => 'box-33756e58',
           'region' => 'sidebar_second',
-          'weight' => 5,
+          'weight' => 3,
         ),
-        'newsletter_campaign-1' => array(
+        'newsletter_campaign-7' => array(
           'module' => 'newsletter_campaign',
-          'delta' => '1',
+          'delta' => '7',
           'region' => 'sidebar_second',
-          'weight' => 6,
+          'weight' => 4,
+        ),
+        'newsletter_campaign-6' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '6',
+          'region' => 'sidebar_second',
+          'weight' => 5,
         ),
       ),
     ),
