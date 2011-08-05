@@ -6,8 +6,6 @@
 Light Green: #8dc547 
       Blue:  #1ca9e7 
       Silver: #ccc
-
-
 /****
 
 
@@ -2508,41 +2506,6 @@ blockquote p {
   font-size: 28px;
 }
 
-/* End of WYSIWYG */
-/*
-.node-embedded {
-  background: #fdf0d7;
-  padding: 9px 12px;
-}
-
-.node-embedded:hover h2 {
-  background: white;
-}
-
-.node-embedded h2{
-  margin: 0;
-}
-
-.node-embedded a {
-  background: url('../images/bg-take-action-title.gif') left center no-repeat;
-  display: inline-block;
-  font-size: 18px;
-  font-family: times;
-  font-weight: normal;
-  left: -92px;
-  line-height: 23px;
-  position: relative;
-  padding: 20px 10px 10px 175px;
-  top: -5px;
-  width: 350px;
-}
-
-.node-embedded:hover a {
-  background: url('../images/bg-take-action-title-over.gif') left center no-repeat;
-  color: #f7aa0d;
-}
-*/
-
 /* Campaign */
 
 .field-name-field-tp-campaign-intro-html {
@@ -2889,10 +2852,6 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
   line-height: 20px;
   padding-right: 50px;
 }
-
-
-
-
 
 .page-node-context-field.node-type-section-front h1.page-title,
 .page-node-context-field.node-type-section-front div.breadcrumb{
@@ -3310,81 +3269,6 @@ div.messages a:visited {
 #slim-header ul#top-nav li.last a {
     border: 0 none;
 }
-
-/*
-
-.node-takepart-quick-study.node-teaser {
-  margin-bottom: 0;
-}
-
-.node-takepart-quick-study.node-teaser .field-name-body {
-  width: auto;
-  margin:0;
-  padding: 15px;
-}
-
-
-.view-quick-study {
-  padding-top: 3px;
-  border-top: 3px solid #666666;
-  border-bottom: 3px solid #666666;
-  background: #f8fbfe;
-}
-
-.view-quick-study h2,
-.node-takepart-quick-study h2 {
-  display: block;
-  font-weight: bold;
-  font-size: 20px;
-  margin: 0;
-  padding: 10px 0 10px 60px;
-  border-bottom: 1px dotted silver;
-  margin-bottom: 15px;
-  background-image: url('../images/sprite-horizontal.gif');
-  background-repeat: no-repeat;
-  background-position: left -510px;
-}
-
-.view-quick-study .field-name-field-quickstudy-main-image,
-.node-takepart-quick-study .field-name-field-quickstudy-main-image {
-  float: left;
-}
-
-.view-quick-study .field-name-field-quickstudy-main-image img,
-.node-takepart-quick-study .field-name-field-quickstudy-main-image img {
-  border: 1px solid silver;
-}
-*/
-
-/*
-.block-boxes-title-quick-study {
-  padding-top: 3px;
-  border-top: 3px solid #666666;
-  border-bottom: 3px solid #666666;
-  background: #f8fbfe;
-}
-
-.block-boxes-current-featured_items.block-boxes-title-quick-study h2 {
-  display: block;
-  font-weight: bold;
-  font-size: 20px;
-  margin: 0;
-  padding: 10px 0 10px 60px;
-  border-bottom: 1px dotted silver;
-  margin-bottom: 15px;
-  background-image: url('../images/sprite-horizontal.gif');
-  background-repeat: no-repeat;
-  background-position: left -515px;
-}
-
-.block-boxes-title-quick-study .view-content {
-  padding: 0 20px;
-}
-
-.block-boxes-title-quick-study .content {
-  background: #f8fbfe;
-}
-*/
 
 /***** Pager ******/
 
