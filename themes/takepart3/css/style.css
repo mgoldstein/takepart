@@ -3459,3 +3459,30 @@ body.node-type-takepart-group #page {
 	padding:10px 20px;
 	cursor:pointer;
 }
+
+/*
+ * Jcarousel
+ */
+.view-display-id-block_8 .jcarousel-prev-horizontal {
+  position:absolute;
+  top:20px;
+  left:-20px;
+  height:60px;
+  width:20px;
+  background: #555;
+  border-bottom-left-radius: 10px 30px;
+  border-top-left-radius: 10px 30px;
+}
+.view-display-id-block_8 .jcarousel-next-horizontal {
+  position:absolute;
+  top:20px;
+  right:-20px;
+  height:60px;
+  width:20px;
+  background: #555;
+  border-bottom-right-radius: 10px 30px;
+  border-top-right-radius: 10px 30px;
+}
+.view-display-id-block_8 .jcarousel-item {
+  width:200px;
+}
