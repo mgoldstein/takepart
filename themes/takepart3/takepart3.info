@@ -4,10 +4,16 @@ description = The TakePart theme
 core = 7.x
 engine = phptemplate
 
+; Stylsheets
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/josh.css
 stylesheets-conditional[lte IE 7][all][] = css/ie7.css
+
+; Javascript
+scripts[] = js/script.js
+
 features[] = favicon
+
 ; Defaults
 regions[header] = Header
 regions[highlighted] = Highlighted
