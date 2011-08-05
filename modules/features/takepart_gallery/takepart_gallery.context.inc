@@ -53,6 +53,12 @@ function takepart_gallery_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => 0,
         ),
+        'addthis-addthis' => array(
+          'module' => 'addthis',
+          'delta' => 'addthis',
+          'region' => 'sidebar_second',
+          'weight' => 1,
+        ),
       ),
     ),
   );
