@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function takepart_campaign_views_default_views() {
   $export = array();
@@ -19,7 +19,7 @@ function takepart_campaign_views_default_views() {
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-  
+
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Campaigns';
@@ -29,7 +29,10 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '6';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Title */
@@ -89,7 +92,7 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'takepart_campaign' => 'takepart_campaign',
   );
-  
+
   /* Display: List of Campaigns */
   $handler = $view->new_display('block', 'List of Campaigns', 'block');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
@@ -105,13 +108,9 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['break_phrase'] = 1;
   $handler->display->display_options['arguments']['nid']['not'] = 1;
-  
+
   /* Display: Featured Campaigns */
   $handler = $view->new_display('block', 'Featured Campaigns', 'block_1');
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '6';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Image */
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['id'] = 'field_tp_campaign_cover_image';
@@ -419,7 +418,6 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['arguments']['tid']['set_breadcrumb'] = 0;
   $export['related_campaigns'] = $view;
-
 
   return $export;
 }
