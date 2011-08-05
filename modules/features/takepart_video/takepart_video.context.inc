@@ -29,6 +29,12 @@ function takepart_video_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-box-bb0b625d' => array(
+          'module' => 'boxes',
+          'delta' => 'box-bb0b625d',
+          'region' => 'content_top',
+          'weight' => 0,
+        ),
         'views-video-block_8' => array(
           'module' => 'views',
           'delta' => 'video-block_8',
