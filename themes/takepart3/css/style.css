@@ -3486,3 +3486,20 @@ body.node-type-takepart-group #page {
 .view-display-id-block_8 .jcarousel-item {
   width:200px;
 }
+
+/*
+ * Move tabs
+ */
+
+ul.links{
+  position: fixed;
+  right: 100px;
+  top: 62px;
+  z-index: 10000000;
+}
+ul.tabs{
+  position: fixed;
+  right: 100px;
+  top: 43px;
+  z-index: 10000000;
+}
