@@ -858,16 +858,16 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['fields']['view_node']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['view_node']['text'] = 'Full Video';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Has taxonomy term ID */
-  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
-  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'taxonomy_tid';
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['term_page'] = 1;
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['node'] = 0;
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['limit'] = 0;
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['vocabularies'] = array(
+  /* Contextual filter: Content: Video Series (field_video_series) */
+  $handler->display->display_options['arguments']['field_video_series_tid']['id'] = 'field_video_series_tid';
+  $handler->display->display_options['arguments']['field_video_series_tid']['table'] = 'field_data_field_video_series';
+  $handler->display->display_options['arguments']['field_video_series_tid']['field'] = 'field_video_series_tid';
+  $handler->display->display_options['arguments']['field_video_series_tid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_options']['term_page'] = 1;
+  $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_options']['node'] = 0;
+  $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_options']['limit'] = 0;
+  $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_options']['vocabularies'] = array(
     'action_type' => 0,
     'agency' => 0,
     'blog' => 0,
@@ -878,15 +878,12 @@ function takepart_video_views_default_views() {
     'topic' => 0,
     'video_series' => 0,
   );
-  $handler->display->display_options['arguments']['tid']['default_argument_skip_url'] = 0;
-  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['tid']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['tid']['add_table'] = 0;
-  $handler->display->display_options['arguments']['tid']['require_value'] = 0;
-  $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 0;
-  $handler->display->display_options['arguments']['tid']['set_breadcrumb'] = 0;
+  $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['field_video_series_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_video_series_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_video_series_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_video_series_tid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_video_series_tid']['not'] = 0;
 
   /* Display: Series List On Video Node */
   $handler = $view->new_display('block', 'Series List On Video Node', 'block_8');
