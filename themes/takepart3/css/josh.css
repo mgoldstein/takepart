@@ -23,7 +23,7 @@ hr {
 	margin:0 0 10px 0;
 }
 
-#content q{
+#content blockquote{
 	margin:0 0 25px 30px;
 	padding:0 20px;
 	border-left:solid 1px #ccc;
@@ -32,7 +32,7 @@ hr {
 	quotes: none;
 	line-height:24px;
 }
-#content blockquote{
+#content q{
 	margin:0 0 60px 0;
 }
 
@@ -154,6 +154,13 @@ hr {
     height: 160px;
     width: 194px;
 }
+
+/* photo page */
+
+.view-id-photo_galleries .views-field-field-promo-headline {
+    font-size: 16px;
+}
+
 
 
 /* Video Page */
@@ -293,3 +300,25 @@ hr {
     text-transform: uppercase;	
 }
 
+#right-rail .view-video .views-row{
+    float: none;
+    margin: 0 0 20px 0;
+    overflow: hidden;
+    width: 100%;
+}
+#right-rail .view-video .views-field-field-thumbnail{
+	width:	127px;
+	height:102px;
+	float:left;
+	margin:0 15px 0 0;
+}
+	#right-rail .view-video .views-field-field-thumbnail img{
+		width:	125px;
+		height:100px;
+	}
+#right-rail .view-video .views-field-field-promo-headline{
+	margin-top:0;
+}
+	#right-rail .view-video .views-field-field-promo-headline h3{
+		font-size:14px;
+	}

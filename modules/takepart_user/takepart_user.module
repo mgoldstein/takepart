@@ -33,6 +33,18 @@ $items['user/%user'] = array(
   unset($items['user/%user/openid']);
   unset($items['user/%user/track']);
   unset($items['user/%user/imce']);
+  
+  $items['user/%user']['page callback'] = 'takepart_user_profile_redirect';
+}
+
+function takepart_user_profile_redirect() {
+  global $user;
+  if (empty($user->uid) || $user->uid != arg(1)) {
+    drupal_not_found();
+  }
+  else {
+    drupal_goto('user/' . intval($user->uid) . '/edit');
+  }
 }
 
 function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form_id) {
@@ -86,3 +98,13 @@ function _takepart_checkage($user_dob) {
   return $age_years < 18 ? FALSE : TRUE;
 }
 
+/**
+ * Implements hook_user_login().
+ *
+ * Redirects user to homepage after login.
+ */
+function takepart_user_user_login(&$edit, $account) {
+  if (!isset($_POST['form_id']) || $_POST['form_id'] != 'user_pass_reset') {
+    drupal_goto('<front>');
+  }
+}
