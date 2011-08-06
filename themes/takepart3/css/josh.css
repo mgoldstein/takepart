@@ -130,9 +130,11 @@ hr {
 
 
 /* display terms */
+.field-name-field-display-tag a{
+	display:block;
+}
 .field-name-field-display-tag a:first-letter{
 	text-transform:uppercase;
-	display:block;
 }
 .field-name-field-display-tag a:hover{
 	text-decoration:none;
@@ -159,6 +161,9 @@ hr {
 
 .view-id-photo_galleries .views-field-field-promo-headline {
     font-size: 16px;
+}
+.node-type-openpublish-photo-gallery .views-slideshow-controls-bottom {
+    position: relative;
 }
 
 
@@ -228,6 +233,7 @@ hr {
 		border-top: 1px dotted #000000;
 		padding-bottom: 20px;
 		padding-top: 10px;
+		border-bottom: 3px solid #666666;
 	}
 	
 .view-video .views-row{
