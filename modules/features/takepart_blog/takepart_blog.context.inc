@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function takepart_blog_context_default_contexts() {
   $export = array();
@@ -64,12 +64,6 @@ function takepart_blog_context_default_contexts() {
           'delta' => 'comment_block',
           'region' => 'content_bottom',
           'weight' => 1,
-        ),
-        'views-related_campaigns-block_1' => array(
-          'module' => 'views',
-          'delta' => 'related_campaigns-block_1',
-          'region' => 'sidebar_second',
-          'weight' => 4,
         ),
       ),
     ),
