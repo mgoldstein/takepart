@@ -29,7 +29,7 @@ if (!is_array($conf))
     'cache_default_class'   => 'MemCacheDrupal',
 
   'memcache_options' => array(
-    // Requires Memcached 1.4 or greater - enables binaray protocal (faster).
+    // Requires Memcached 1.4 or greater - enables binary protocal (faster).
     Memcached::OPT_BINARY_PROTOCOL => TRUE
   )
 );
