@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function takepart_quick_study_field_default_fields() {
   $fields = array();
@@ -130,6 +130,10 @@ function takepart_quick_study_field_default_fields() {
             'parent' => '0',
             'vocabulary' => 'series',
           ),
+          4 => array(
+            'parent' => '0',
+            'vocabulary' => 'video_series',
+          ),
         ),
       ),
       'translatable' => '1',
@@ -146,13 +150,13 @@ function takepart_quick_study_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '4',
+          'weight' => '3',
         ),
         'full' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -224,13 +228,13 @@ function takepart_quick_study_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'full' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -323,7 +327,7 @@ function takepart_quick_study_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'public' => 'public',
@@ -335,8 +339,9 @@ function takepart_quick_study_field_default_fields() {
             'video' => 0,
           ),
           'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_generic_alt',
         'weight' => '-3',
       ),
     ),
@@ -383,14 +388,16 @@ function takepart_quick_study_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '2',
         ),
         'full' => array(
           'label' => 'hidden',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '2',
         ),
         'teaser' => array(
@@ -470,13 +477,19 @@ function takepart_quick_study_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'field_redirection',
+          'label' => 'hidden',
+          'module' => 'node_reference',
           'settings' => array(
-            'code' => '301',
+            'node_reference_view_mode' => 'teaser',
           ),
-          'type' => 'field_redirection',
-          'weight' => '0',
+          'type' => 'node_reference_node',
+          'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'taxonomy_term',
