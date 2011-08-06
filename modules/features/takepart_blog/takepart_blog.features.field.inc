@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function takepart_blog_field_default_fields() {
   $fields = array();
@@ -283,8 +283,10 @@ function takepart_blog_field_default_fields() {
         'full' => array(
           'label' => 'hidden',
           'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
+          'settings' => array(
+            'node_reference_view_mode' => 'embed',
+          ),
+          'type' => 'node_reference_node',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -429,6 +431,10 @@ function takepart_blog_field_default_fields() {
           3 => array(
             'parent' => '0',
             'vocabulary' => 'series',
+          ),
+          4 => array(
+            'parent' => '0',
+            'vocabulary' => 'video_series',
           ),
         ),
       ),
@@ -618,7 +624,10 @@ function takepart_blog_field_default_fields() {
       'field_name' => 'field_promo_headline',
       'label' => 'Promo Headline',
       'required' => 0,
-      'settings' => array(),
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
       'widget' => array(
         'active' => 1,
         'module' => 'text',
@@ -687,7 +696,7 @@ function takepart_blog_field_default_fields() {
       'label' => 'Promo Text',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '1',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -870,7 +879,7 @@ function takepart_blog_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',

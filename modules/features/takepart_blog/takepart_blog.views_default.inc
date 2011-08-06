@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function takepart_blog_views_default_views() {
   $export = array();
@@ -329,6 +329,65 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['filters']['machine_name']['value'] = array(
     'blog' => 'blog',
   );
+
+  /* Display: Blog Header */
+  $handler = $view->new_display('block', 'Blog Header', 'block_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = 0;
+  $handler->display->display_options['row_options']['default_field_elements'] = 0;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Taxonomy term: Branding Image */
+  $handler->display->display_options['fields']['field_blog_branding_image']['id'] = 'field_blog_branding_image';
+  $handler->display->display_options['fields']['field_blog_branding_image']['table'] = 'field_data_field_blog_branding_image';
+  $handler->display->display_options['fields']['field_blog_branding_image']['field'] = 'field_blog_branding_image';
+  $handler->display->display_options['fields']['field_blog_branding_image']['label'] = '';
+  $handler->display->display_options['fields']['field_blog_branding_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_blog_branding_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_blog_branding_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_blog_branding_image']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_blog_branding_image']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_blog_branding_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_blog_branding_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_blog_branding_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => 'content',
+  );
+  $handler->display->display_options['fields']['field_blog_branding_image']['field_api_classes'] = 0;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Term ID */
+  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'field';
+  $handler->display->display_options['arguments']['tid']['default_argument_options']['field'] = 'content_taxonomy::field_blogpost_blog';
+  $handler->display->display_options['arguments']['tid']['default_argument_options']['settings'] = array(
+    'content_taxonomy_format' => 'tid',
+  );
+  $handler->display->display_options['arguments']['tid']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['tid']['break_phrase'] = 1;
+  $handler->display->display_options['arguments']['tid']['not'] = 0;
   $export['blogs'] = $view;
 
   return $export;

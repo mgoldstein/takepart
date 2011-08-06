@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_strongarm().
+ * Implements hook_strongarm().
  */
 function takepart_blog_strongarm() {
   $export = array();
@@ -98,14 +98,14 @@ function takepart_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_blog_front';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_preview_blog_front'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_openpublish_blog_post';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_preview_openpublish_blog_post'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -231,7 +231,7 @@ function takepart_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_blog_front_pattern';
-  $strongarm->value = '';
+  $strongarm->value = '[node:title]';
   $export['pathauto_node_blog_front_pattern'] = $strongarm;
 
   $strongarm = new stdClass;
