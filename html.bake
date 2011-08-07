@@ -1,24 +1,218 @@
 <?php
 $base = array(
-  'branch'=> 'master',
-  'url'=> 'git@phase2.beanstalkapp.com:/bake-openpublish.git',
-  'type'=> 'git', 
-  'name'=> 'openpublish.bake'
+  'url' => 'git@phase2.beanstalkapp.com:/bake-openpublish.git',
+  'type' => 'git', 
+  'name' => 'openpublish.bake',
+  'revision' => 'd658bd461092f1a3d95a475206c16bf353fb9df6'
 );
+
 bake_merge_file($info, $config, $base);
 bake_convert_to_dev($info,'nodeconnect');
 
+/* What about overriding base-bake so we do not automatically pull in new versions of that */
+
+$info['projects']['drupal']['version']                    = '7.7';
+$info['projects']['apps']['download']['revision']         = '4722dd4c76b06f0912d1770bdcd420b5c04dcde4';
+$info['projects']['openpublish']['download']['revision']  = '9f95fce4758dae9e92dbc1af2f6724a27efc0b74';
+unset($info['projects']['references']['download']['branch']);
+$info['projects']['references']['download']['revision']   = '8e1e57bea4f6c7915e5b8be8690a3e28590cca2d';
+$info['projects']['imce_wysiwyg']['revision']             = '3a5a5acad386aae2ca47bd2cd02b9c3c68f6d306';
+$info['projects']['nodeblock']['download']['revision']    = '5de85bbcbdb3c5d6ef619b59e4835e121501d5fb';
+$info['projects']['diff']['version']                      = '2.0';
+$info['projects']['xmlsitemap']['version']                = '2.0-beta3';
+$info['projects']['ctools']['version']                    = '1.0-rc1';
+$info['projects']['date']['version']                      = '2.0-alpha3';
+$info['projects']['entity']['version']                    = '1.0-beta10';
+$info['projects']['token']['version']                     = '1.0-beta2';
+$info['projects']['token']['patch'][]                     = 'http://drupal.org/files/issues/691078-token-field-tokens-v2.patch';
+$info['projects']['pathauto']['version']                  = '1.0-rc2';
+$info['projects']['views']['version']                     = '3.0-rc1';
+$info['projects']['features']['version']                  = '1.0-beta3';
+
 /* TakePart Temporary Modules - These should be removed prior to launch or just after */
 
-// Flag can be removed once site goes live, only used for flagging test content
-$info['projects']['flag']['type']   = 'module';
-$info['projects']['flag']['subdir'] = 'contrib';
+/* Flag can be removed once site goes live, only used for flagging test content */
+$info['projects']['flag']['type']               = 'module';
+$info['projects']['flag']['subdir']             = 'contrib';
 $info['projects']['flag']['download']['type']   = 'git';
 $info['projects']['flag']['download']['branch'] = 'master';
 $info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project/flag.git';
 $info['projects']['flag']['patch'][]            = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
 
-/* TakePart Modules */
+/* Views bulk operations can be removed once site goes live, used to show flag views and act on removing test content */
+$info['projects']['views_bulk_operations']['type']                  = 'module';
+$info['projects']['views_bulk_operations']['subdir']                = 'contrib';
+$info['projects']['views_bulk_operations']['version']               = '3.0-beta1';
+
+/* TakePart Specific Modules */
+
+/* Phase2 GitHub Modules */
+
+/* Media views widget */
+$info['projects']['media_views_widget']['type']                 = 'module';
+$info['projects']['media_views_widget']['subdir']               = 'contrib';
+$info['projects']['media_views_widget']['download']['type']     = 'git';
+$info['projects']['media_views_widget']['download']['url']      = 'git@github.com:phase2/media_views_widget.git';
+$info['projects']['media_views_widget']['download']['revision'] = 'feee8a1dc67b682c9c436d57515e52acb349f216';
+
+/* Taxonomy View */
+$info['projects']['taxonomy_view']['type']                 = 'module';
+$info['projects']['taxonomy_view']['subdir']               = 'contrib';
+$info['projects']['taxonomy_view']['download']['type']     = 'git';
+$info['projects']['taxonomy_view']['download']['url']      = 'git@github.com:phase2/taxonomy_view.git';
+$info['projects']['taxonomy_view']['download']['revision'] = 'e6a0256ac24e3107e3a2d1df9f6755b3b2a2f72a';
+
+/* Media Image Formatter */
+$info['projects']['media_image_formatter']['type']                  = 'module';
+$info['projects']['media_image_formatter']['subdir']                = 'contrib';
+$info['projects']['media_image_formatter']['download']['type']      = 'git';
+$info['projects']['media_image_formatter']['download']['url']       = 'git@github.com:phase2/media_image_formatter.git';
+$info['projects']['media_image_formatter']['download']['revision']  = '097faa8b5752222ec640bf7df78575bd16ce53a7';
+
+/* Used for hiding the breadcrumbs on the user pages */
+$info['projects']['context_breadcrumb_current_page']['type']                 = 'module';
+$info['projects']['context_breadcrumb_current_page']['subdir']               = 'contrib';
+$info['projects']['context_breadcrumb_current_page']['download']['type']     = 'git';
+$info['projects']['context_breadcrumb_current_page']['download']['url']      = 'git@github.com:phase2/context_breadcrumb_current_page.git';
+$info['projects']['context_breadcrumb_current_page']['download']['revision'] = 'b419eaf9a033a92dec339aa7835010ecf5884769';
+
+/* Views File Row */
+$info['projects']['views_file_row']['type']                 = 'module';
+$info['projects']['views_file_row']['subdir']               = 'contrib';
+$info['projects']['views_file_row']['download']['type']     = 'git';
+$info['projects']['views_file_row']['download']['url']      = 'git@github.com:phase2/views_file_row.git';
+$info['projects']['views_file_row']['download']['revision'] = '2fc030bdf6a43816f44384e7921e9a5274ef70fb';
+
+/* Context Title */
+$info['projects']['context_title']['type']               = 'module';
+$info['projects']['context_title']['subdir']             = 'contrib';
+$info['projects']['context_title']['download']['type']   = 'git';
+$info['projects']['context_title']['download']['url']    = 'git@github.com:phase2/context_title.git';
+$info['projects']['context_title']['download']['revision'] = '8083030cd5cf9b48b1b0f8739cc9bf7d3e3e5c90';
+
+/* Drupal Contrib Modules */
+
+/* Modules using git revision numbers that are on a development release */
+
+/* Used in various content types */
+$info['projects']['location']['type']                 = 'module';
+$info['projects']['location']['subdir']               = 'contrib';
+$info['projects']['location']['download']['type']     = 'git';
+$info['projects']['location']['download']['url']      = 'http://git.drupal.org/project/location.git';
+$info['projects']['location']['download']['revision'] = '99ce4bc42d19fd6ae243ebebc356cd0bbb7edbcc';
+
+/* Used in various content types */
+$info['projects']['context_bool_field']['type']                 = 'module';
+$info['projects']['context_bool_field']['subdir']               = 'contrib';
+$info['projects']['context_bool_field']['download']['type']     = 'git';
+$info['projects']['context_bool_field']['download']['url']      = 'http://git.drupal.org/project/context_bool_field.git';
+$info['projects']['context_bool_field']['download']['revision'] = '18f6c6bf7e1cce492418d9f05344969be4fdb118';
+
+/* Used in various content types */
+$info['projects']['content_taxonomy']['type']                 = 'module';
+$info['projects']['content_taxonomy']['subdir']               = 'contrib';
+$info['projects']['content_taxonomy']['download']['type']     = 'git';
+$info['projects']['content_taxonomy']['download']['url']      = 'http://git.drupal.org/project/content_taxonomy.git';
+$info['projects']['content_taxonomy']['download']['revision'] = 'f62521bccbb5097e015c123edd06a1341583fdb8';
+
+/* Used for the topic front featured item pages */
+$info['projects']['views_php']['type']                  = 'module';
+$info['projects']['views_php']['subdir']                = 'contrib';
+$info['projects']['views_php']['download']['type']      = 'git';
+$info['projects']['views_php']['download']['url']       = 'http://git.drupal.org/project/views_php.git';
+$info['projects']['views_php']['download']['revision']  = '989aa6e5e19b8996d84b26437d191cfa7255f960';
+
+/* Used for slide and rotator content */
+$info['projects']['views_slideshow']['type']                  = 'module';
+$info['projects']['views_slideshow']['subdir']                = 'contrib';//$info['projects']['views_slideshow']['version'] = '3.0-alpha1';
+$info['projects']['views_slideshow']['download']['type']      =  'git';
+$info['projects']['views_slideshow']['download']['url']       = 'http://git.drupal.org/project/views_slideshow.git';
+$info['projects']['views_slideshow']['download']['revision']  = '9a91a5f6459c324568b0146531b8303d02c4b651';
+
+/* Used for FB connect and FB registration */
+$info['projects']['fb']['type']                 = 'module';
+$info['projects']['fb']['subdir']               = 'contrib';
+$info['projects']['fb']['download']['type']     = 'git';
+$info['projects']['fb']['download']['url']      = 'http://git.drupal.org/project/fb.git';
+$info['projects']['fb']['download']['revision'] = 'b3adf0894a1a3a76f23e5a3cd599c34610aaa28a';
+$info['projects']['fb']['patch'][]              = 'http://drupal.org/files/issues/1197924_fb_url_rewrite_0.patch';
+  
+/* Media Module used for images, videos, audio */
+$info['projects']['media']['type']                 = 'module'; 
+$info['projects']['media']['subdir']               = 'contrib';
+$info['projects']['media']['download']['type']     =  'git';
+$info['projects']['media']['download']['url']      = 'http://git.drupal.org/project/media.git';
+$info['projects']['media']['download']['revision'] = '58fc0858e777869eabe4e9ba66e74bc841df0918';
+$info['projects']['media']['patch'][]              = 'http://drupal.org/files/issues/views-integration-file-entity-type-1192326-6-D7-drush.patch';
+$info['projects']['media']['patch'][]              = 'http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make_0_0.patch';
+
+/* Brightcove Module */
+$info['projects']['brightcove']['type']                 = 'module'; 
+$info['projects']['brightcove']['subdir']               = 'contrib';
+$info['projects']['brightcove']['download']['type']     = 'git';
+$info['projects']['brightcove']['download']['url']      = 'http://git.drupal.org/project/brightcove.git';
+$info['projects']['brightcove']['download']['revision'] = '4e9b63da0d9a73d192acc2980068182f08d47582';
+$info['projects']['brightcove']['patch'][]              = 'http://drupal.org/files/issues/1232612-make_4.patch';
+
+/* Media Vimeo Wrapper */
+$info['projects']['media_vimeo']['type']                 = 'module'; 
+$info['projects']['media_vimeo']['subdir']               = 'contrib';
+$info['projects']['media_vimeo']['download']['type']     = 'git';
+$info['projects']['media_vimeo']['download']['url']      = 'http://git.drupal.org/project/media_vimeo.git';
+$info['projects']['media_vimeo']['download']['revision'] = '74c055e137f717d39430e3b45537ca0031e0f3c3';
+
+/* Token Function Module */
+$info['projects']['token_function']['type']                 = 'module';
+$info['projects']['token_function']['subdir']               = 'contrib';
+$info['projects']['token_function']['download']['type']     = 'git';
+$info['projects']['token_function']['download']['url']      = 'http://git.drupal.org/project/token_function.git';
+$info['projects']['token_function']['download']['revision'] = '53c714fc1420a982c5c6c7f2293bd3a499cf9b94';
+
+/* Webform Conditionals Module */
+$info['projects']['webform_conditional']['type']                  =' module';
+$info['projects']['webform_conditional']['subdir']                = 'contrib';
+$info['projects']['webform_conditional']['download']['type']      = 'git';
+$info['projects']['webform_conditional']['download']['url']       = 'http://git.drupal.org/project/webform_conditional.git';
+$info['projects']['webform_conditional']['download']['revision']  = '58c1b10c9fb221c4a1147f1967ce5ed511968762';
+
+/* Omniture Site Catalyst Module */
+$info['projects']['omniture']['type']                 = 'module';
+$info['projects']['omniture']['subdir']               = 'contrib';
+$info['projects']['omniture']['download']['type']     = 'git';
+$info['projects']['omniture']['download']['url']      = 'http://git.drupal.org/project/omniture.git';
+$info['projects']['omniture']['download']['revision'] = 'e5fa6af829e93206b9ab2cc9f6291c9d6ffe6673';
+$info['projects']['omniture']['patch'][]              = 'http://drupal.org/files/issues/omniture_context_1223462-make_3.patch';
+
+/* Field Group */
+$info['projects']['field_group']['type']                  = 'module';
+$info['projects']['field_group']['subdir']                = 'contrib';
+$info['projects']['field_group']['download']['type']      = 'git';
+$info['projects']['field_group']['download']['url']       = 'http://git.drupal.org/project/field_group.git';
+$info['projects']['field_group']['download']['revision']  = 'b613244fabeb397839355f2869f50e1b44fc82e6';
+
+/* Used for registration page */
+$info['projects']['username_check']['type']                 = 'module';
+$info['projects']['username_check']['subdir']               = 'contrib';
+$info['projects']['username_check']['download']['type']     = 'git';
+$info['projects']['username_check']['download']['url']      = 'http://git.drupal.org/project/username_check.git';
+$info['projects']['username_check']['download']['revision'] = '299f05438af20211dda6c15e0c832b9af70e4138';
+
+/* Drupal contrib modules using a published release */
+
+/* Styles Module */
+$info['projects']['styles']['type']    = 'module';
+$info['projects']['styles']['subdir']  = 'contrib';
+$info['projects']['styles']['version'] = '2.0-alpha8';
+
+/* IMCE Module */
+$info['projects']['imce']['type']     = 'module';
+$info['projects']['imce']['subdir']   = 'contrib';
+$info['projects']['imce']['version']  = '1.4';
+
+/* Google Analytics Module */
+$info['projects']['google_analytics']['module']  = 'module';
+$info['projects']['google_analytics']['subdir']  = 'contrib';
+$info['projects']['google_analytics']['version'] = '1.2';
 
 /* MemCache */
 $info['projects']['memcache']['type']    = 'module';
@@ -31,131 +225,82 @@ $info['projects']['taxonomy_manager']['subdir']  = 'contrib';
 $info['projects']['taxonomy_manager']['version'] = '1.0-beta1';
 
 /* Used for File Storage */
-$info['projects']['cdn']['type']   = 'module';
-$info['projects']['cdn']['subdir'] = 'contrib';
-$info['projects']['cdn']['version']   = '2.0-beta1';
+$info['projects']['cdn']['type']    = 'module';
+$info['projects']['cdn']['subdir']  = 'contrib';
+$info['projects']['cdn']['version'] = '2.0-beta1';
 
 /* Used for contact module */
-$info['projects']['field_redirection']['type']   = 'module';
-$info['projects']['field_redirection']['subdir'] = 'contrib';
+$info['projects']['field_redirection']['type']      = 'module';
+$info['projects']['field_redirection']['subdir']    = 'contrib';
 $info['projects']['field_redirection']['version']   = '1.0';
 $info['projects']['field_redirection']['patch'][]   = 'http://drupal.org/files/issues/1215538-drush.patch';
 
-// ga_stats used to drive most popular on some right rail blocks
-$info['projects']['ga_stats']['type']   = 'module';
-$info['projects']['ga_stats']['subdir'] = 'contrib';
-$info['projects']['ga_stats']['version']   = '1.0-alpha2';
+/* GA Stats used to drive most popular on some right rail blocks */
+$info['projects']['ga_stats']['type']     = 'module';
+$info['projects']['ga_stats']['subdir']   = 'contrib';
+$info['projects']['ga_stats']['version']  = '1.0-alpha2';
 
-// Views bulk operations can be removed once site goes live, used to show flag views and act on removing test content
-$info['projects']['views_bulk_operations']['type']    = 'module';
-$info['projects']['views_bulk_operations']['subdir']  = 'contrib';
-$info['projects']['views_bulk_operations']['download']['type']    = 'git';
-$info['projects']['views_bulk_operations']['download']['branch']  = '7.x-3.x';
-$info['projects']['views_bulk_operations']['download']['url']     = 'http://git.drupal.org/project/views_bulk_operations.git';
-
-// Used in various content types 
-$info['projects']['location']['type']   = 'module';
-$info['projects']['location']['subdir'] = 'contrib';
-$info['projects']['location']['download']['type']   = 'git';
-$info['projects']['location']['download']['branch'] = '7.x-3.x';
-$info['projects']['location']['download']['url']    = 'http://git.drupal.org/project/location.git';
-
-// Used in various content types
-$info['projects']['context_bool_field']['type']   = 'module';
-$info['projects']['context_bool_field']['subdir'] = 'contrib';
-$info['projects']['context_bool_field']['download']['type']   = 'git';
-$info['projects']['context_bool_field']['download']['branch'] = '7.x-1.x';
-$info['projects']['context_bool_field']['download']['url']    = 'http://git.drupal.org/project/context_bool_field.git';
-
-// Used for the topic front featured item pages
-$info['projects']['views_php']['type']    = 'module';
-$info['projects']['views_php']['subdir']  = 'contrib';
-$info['projects']['views_php']['download']['type']    = 'git';
-$info['projects']['views_php']['download']['branch']  = '7.x-1.x';
-$info['projects']['views_php']['download']['url']     = 'http://git.drupal.org/project/views_php.git';
-
-// Used on registration page
-$info['projects']['terms_of_use']['type']     = 'module';
-$info['projects']['terms_of_use']['subdir']   = 'contrib';
-$info['projects']['terms_of_use']['version']  = '1.1';
-
-// Used for Devel Module
-$info['projects']['devel']['type']    =' module';
-$info['projects']['devel']['subdir']  = 'contrib';
-$info['projects']['devel']['version'] = '1.0';
-
-// Used for Options Element Module for contact us form
-$info['projects']['options_element']['type']    =' module';
-$info['projects']['options_element']['subdir']  = 'contrib';
-$info['projects']['options_element']['version'] = '1.4';
-
-// Used for Webform Conditionals Module
-$info['projects']['webform_conditional']['type']    =' module';
-$info['projects']['webform_conditional']['subdir']  = 'contrib';
-$info['projects']['webform_conditional']['version'] = '1.x-dev';
-
-// Used for Twitter Pull Module
-$info['projects']['twitter_pull']['type']    =' module';
-$info['projects']['twitter_pull']['subdir']  = 'contrib';
-$info['projects']['twitter_pull']['version'] = '1.0-rc1';
-
-// Google News XML sitemap module
-$info['projects']['googlenews']['type']    =' module';
-$info['projects']['googlenews']['subdir']  = 'contrib';
-$info['projects']['googlenews']['version'] = '1.4';
-
-// Used for slide and rotator content
-$info['projects']['views_slideshow']['type']    = 'module';
-$info['projects']['views_slideshow']['subdir']  = 'contrib';
-//$info['projects']['views_slideshow']['version'] = '3.0-alpha1';
-$info['projects']['views_slideshow']['download']['type']      =  'git';
-$info['projects']['views_slideshow']['download']['branch']    = '7.x-3.x';
-$info['projects']['views_slideshow']['download']['url']       = 'http://git.drupal.org/project/views_slideshow.git';
-$info['projects']['views_slideshow']['download']['date']    = '2011-06-27';
-
-//Jcarousel for video list
+/* Jcarousel for video list */
 $info['projects']['jcarousel']['type']    = 'module';
 $info['projects']['jcarousel']['subdir']  = 'contrib';
 $info['projects']['jcarousel']['version'] = '2.4-alpha3';
 
-// Needed for 3rd party modules, probably should be included in base
+/* Needed for 3rd party modules, probably should be included in base */
 $info['projects']['libraries']['type']    = 'module';
 $info['projects']['libraries']['subdir']  = 'contrib';
 $info['projects']['libraries']['version'] = '1.0';
 
-// Used for FB connect and FB registration
-$info['projects']['fb']['type']             = 'module';
-$info['projects']['fb']['subdir']           = 'contrib';
-$info['projects']['fb']['download']['type'] = 'get';
-$info['projects']['fb']['download']['url']  = 'http://ftp.drupal.org/files/projects/fb-7.x-3.x-dev.tar.gz';
-$info['projects']['fb']['patch'][]          = 'http://drupal.org/files/issues/1197924_fb_url_rewrite_0.patch';
+/* Used on registration page */
+$info['projects']['terms_of_use']['type']     = 'module';
+$info['projects']['terms_of_use']['subdir']   = 'contrib';
+$info['projects']['terms_of_use']['version']  = '1.1';
 
-// Used for registration page
-$info['projects']['username_check']['type']     = 'module';
-$info['projects']['username_check']['subdir']   = 'contrib';
-$info['projects']['username_check']['version']  = '1.x-dev';
+/* Used for Devel Module */
+$info['projects']['devel']['type']    =' module';
+$info['projects']['devel']['subdir']  = 'contrib';
+$info['projects']['devel']['version'] = '1.2';
 
-// Used for managing caching
+/* Used for Options Element Module for contact us form */
+$info['projects']['options_element']['type']    =' module';
+$info['projects']['options_element']['subdir']  = 'contrib';
+$info['projects']['options_element']['version'] = '1.4';
+
+/* Used for Twitter Pull Module */
+$info['projects']['twitter_pull']['type']    =' module';
+$info['projects']['twitter_pull']['subdir']  = 'contrib';
+$info['projects']['twitter_pull']['version'] = '1.0-rc1';
+
+/* Google News XML sitemap module */
+$info['projects']['googlenews']['type']    =' module';
+$info['projects']['googlenews']['subdir']  = 'contrib';
+$info['projects']['googlenews']['version'] = '1.4';
+
+/* Used for managing caching */
 $info['projects']['akamai']['type']     = 'module';
 $info['projects']['akamai']['subdir']   = 'contrib';
 $info['projects']['akamai']['version']  = '1.1';
 
-// Used for integration with Apache Solr
+/* Media YouTube Widget */
+$info['projects']['media_youtube']['type']        = 'module'; 
+$info['projects']['media_youtube']['subdir']      = 'contrib';
+$info['projects']['media_youtube']['verison']     =  '1.0-alpha5';
+
+/* Used for integration with Apache Solr */
 $info['projects']['apachesolr']['type']     = 'module';
 $info['projects']['apachesolr']['subdir']   = 'contrib';
 $info['projects']['apachesolr']['version']  = '1.0-beta8';
 
-// Used to provide visual notification of content locks
+/* Used to provide visual notification of content locks */
 $info['projects']['content_lock']['type']     = 'module';
 $info['projects']['content_lock']['subdir']   = 'contrib';
 $info['projects']['content_lock']['version']  = '1.1';
 
-// Used for Search Integration 
+/* Used for Search Integration */
 $info['projects']['search_api']['type']     = 'module';
 $info['projects']['search_api']['subdir']   = 'contrib';
 $info['projects']['search_api']['version']  = '1.0-beta10';
 
-// Used for Apache SOLR Search Integration 
+/* Used for Apache SOLR Search Integration */
 $info['projects']['search_api_solr']['type']     = 'module';
 $info['projects']['search_api_solr']['subdir']   = 'contrib';
 $info['projects']['search_api_solr']['version']  = '1.0-beta2';
@@ -165,219 +310,84 @@ $info['projects']['jquery_update']['type']     = 'module';
 $info['projects']['jquery_update']['subdir']   = 'contrib';
 $info['projects']['jquery_update']['version']  = '2.2';
 
-/* Overrides versions of OpenPublish Modules */
-
-$info['projects']['diff']['type']     = 'module';
-$info['projects']['diff']['subdir']   = 'contrib';
-$info['projects']['diff']['version']  = '2.0';
-
-$info['projects']['xmlsitemap']['type']     = 'module';
-$info['projects']['xmlsitemap']['subdir']   = 'contrib';
-$info['projects']['xmlsitemap']['version']  = '2.0-beta3';
-
-$info['projects']['wysiwyg']['type']     = 'module';
-$info['projects']['wysiwyg']['subdir']   = 'contrib';
-$info['projects']['wysiwyg']['version']  = '2.x-dev';
-$info['projects']['wysiwyg']['patch']    = '';  // Need to clear out previous patches for earlier version provided OPub.
-$info['projects']['wysiwyg']['patch'][]  = 'http://drupal.org/files/issues/746524-91Drupal7-v3_drush_make.patch';
-
-
+/* Web Form Module */
 $info['projects']['webform']['subdir']  = 'contrib';
 $info['projects']['webform']['type']    = 'module';
 $info['projects']['webform']['version'] = '3.11';
 
-/* Unsetting because an older patch is being applied from OPublish */
-unset($info['projects']['captcha']);
+/* Captcha Module */
+unset($info['projects']['captcha']); // Unsetting because an older patch is being applied from OPublish 
 $info['projects']['captcha']['type']    =' module';
 $info['projects']['captcha']['subdir']  = 'contrib';
 $info['projects']['captcha']['version'] = '1.0-alpha3';
 
+/* Recaptcha Module */
 $info['projects']['recaptcha']['type']     = 'module';
 $info['projects']['recaptcha']['subdir']   = 'contrib';
 $info['projects']['recaptcha']['version']  = '1.7';
 
-$info['projects']['media']['type']                  = 'module'; 
-$info['projects']['media']['subdir']                = 'contrib';
-$info['projects']['media']['download']['type']      =  'git';
-$info['projects']['media']['download']['branch']    = '7.x-1.x';
-$info['projects']['media']['download']['url']       = 'http://git.drupal.org/project/media.git';
-$info['projects']['media']['patch'][]               = 'http://drupal.org/files/issues/views-integration-file-entity-type-1192326-6-D7-drush.patch';
-$info['projects']['media']['patch'][]               = 'http://drupal.org/files/issues/1199482-add_views_relationship_to_media_field-drush_make_0_0.patch';
+/* Overrides versions of OpenPublish Modules */
 
+/* Wysiwyg Module */
+$info['projects']['wysiwyg']['type']                  = 'module';
+$info['projects']['wysiwyg']['subdir']                = 'contrib';
+$info['projects']['wysiwyg']['download']['type']      = 'git';
+$info['projects']['wysiwyg']['download']['url']       = 'http://git.drupal.org/project/wysiwyg.git';
+$info['projects']['wysiwyg']['download']['revision']  = 'cd2142614c3d17ec7b0111712226aa51b5ffba6e';
+unset($info['projects']['wysiwyg']['patch']); // Removes previous patches from OpenPublish that are not used in this version'
+$info['projects']['wysiwyg']['patch'][]  = 'http://drupal.org/files/issues/746524-91Drupal7-v3_drush_make.patch';
 
-$info['projects']['media_youtube']['type']                  = 'module'; 
-$info['projects']['media_youtube']['subdir']                = 'contrib';
-$info['projects']['media_youtube']['verison']      =  '1.0-alpha5';
-
-$info['projects']['media_views_widget']['type']   = 'module';
-$info['projects']['media_views_widget']['subdir'] = 'contrib';
-$info['projects']['media_views_widget']['download']['type']   = 'git';
-$info['projects']['media_views_widget']['download']['branch'] = 'master';
-$info['projects']['media_views_widget']['download']['url']    = 'git@github.com:phase2/media_views_widget.git';
-
-$info['projects']['taxonomy_view']['type']   = 'module';
-$info['projects']['taxonomy_view']['subdir'] = 'contrib';
-$info['projects']['taxonomy_view']['download']['type']   = 'git';
-$info['projects']['taxonomy_view']['download']['branch'] = 'master';
-$info['projects']['taxonomy_view']['download']['url']    = 'git@github.com:phase2/taxonomy_view.git';
-
-$info['projects']['media_image_formatter']['type']   = 'module';
-$info['projects']['media_image_formatter']['subdir'] = 'contrib';
-$info['projects']['media_image_formatter']['download']['type']   = 'git';
-$info['projects']['media_image_formatter']['download']['branch'] = 'master';
-$info['projects']['media_image_formatter']['download']['url']    = 'git@github.com:phase2/media_image_formatter.git';
-
-$info['projects']['brightcove']['type']               = 'module'; 
-$info['projects']['brightcove']['subdir']             = 'contrib';
-$info['projects']['brightcove']['download']['type']   = 'git';
-$info['projects']['brightcove']['download']['branch'] = '7.x-2.x';
-$info['projects']['brightcove']['download']['url']    = 'http://git.drupal.org/project/brightcove.git';
-$info['projects']['brightcove']['patch'][] = 'http://drupal.org/files/issues/1232612-make_4.patch';
-
-$info['projects']['media_vimeo']['type']               = 'module'; 
-$info['projects']['media_vimeo']['subdir']             = 'contrib';
-$info['projects']['media_vimeo']['download']['type']   = 'git';
-$info['projects']['media_vimeo']['download']['branch'] = '7.x-1.x';
-$info['projects']['media_vimeo']['download']['url']    = 'http://git.drupal.org/project/media_vimeo.git';
-
-$info['projects']['context_title']['type']   = 'module';
-$info['projects']['context_title']['subdir'] = 'contrib';
-$info['projects']['context_title']['download']['type']   = 'git';
-$info['projects']['context_title']['download']['branch'] = 'master';
-$info['projects']['context_title']['download']['url']    = 'git@github.com:phase2/context_title.git';
-
-$info['projects']['views_file_row']['type']   = 'module';
-$info['projects']['views_file_row']['subdir'] = 'contrib';
-$info['projects']['views_file_row']['download']['type']   = 'git';
-$info['projects']['views_file_row']['download']['branch'] = 'master';
-$info['projects']['views_file_row']['download']['url']    = 'git@github.com:phase2/views_file_row.git';
-
-$info['projects']['omniture']['type']   = 'module';
-$info['projects']['omniture']['subdir'] = 'contrib';
-$info['projects']['omniture']['version'] = '1.x-dev';
-$info['projects']['omniture']['patch'][]    = 'http://drupal.org/files/issues/omniture_context_1223462-make_3.patch';
-
-$info['projects']['token_function']['type']   = 'module';
-$info['projects']['token_function']['subdir'] = 'contrib';
-$info['projects']['token_function']['download']['type']   = 'git';
-$info['projects']['token_function']['download']['branch'] = '7.x-1.x';
-$info['projects']['token_function']['download']['url']    = 'http://git.drupal.org/project/token_function.git';
-
-// used for hiding the breadcrumbs on the user pages
-$info['projects']['context_breadcrumb_current_page']['type']   = 'module';
-$info['projects']['context_breadcrumb_current_page']['subdir'] = 'contrib';
-$info['projects']['context_breadcrumb_current_page']['download']['type']   = 'git';
-$info['projects']['context_breadcrumb_current_page']['download']['branch'] = 'master';
-$info['projects']['context_breadcrumb_current_page']['download']['url']    = 'git@github.com:phase2/context_breadcrumb_current_page.git';
-
-$info['projects']['styles']['type']    = 'module';
-$info['projects']['styles']['subdir']  = 'contrib';
-$info['projects']['styles']['version'] = '2.0-alpha8';
-
-$info['projects']['imce']['type']     = 'module';
-$info['projects']['imce']['subdir']   = 'contrib';
-$info['projects']['imce']['version']  = '1.4';
-
-$info['projects']['google_analytics']['subdir']   = 'contrib';
-$info['projects']['google_analytics']['version']  = '1.2';
-
-/* Overrides versions of Base modules */
-
-$info['projects']['ctools']['type']    = 'module';
-$info['projects']['ctools']['subdir']  = 'contrib';
-$info['projects']['ctools']['version'] = '1.0-rc1';
-
-$info['projects']['date']['type']     = 'module';
-$info['projects']['date']['subdir']   = 'contrib';
-$info['projects']['date']['version']  = '2.0-alpha3';
-
-$info['projects']['entity']['type']     = 'module';
-$info['projects']['entity']['subdir']   = 'contrib';
-$info['projects']['entity']['version']  = '1.0-beta10';
-
-$info['projects']['field_group']['type']    = 'module';
-$info['projects']['field_group']['subdir']  = 'contrib';
-$info['projects']['field_group']['download']['type']    = 'git';
-$info['projects']['field_group']['download']['branch']  = '7.x-1.x';
-$info['projects']['field_group']['download']['url']     = 'http://git.drupal.org/project/field_group.git';
-$info['projects']['field_group']['download']['date']    = '2011-06-03';
-
-$info['projects']['token']['type']    = 'module';
-$info['projects']['token']['subdir']  = 'contrib';
-$info['projects']['token']['version'] = '1.0-beta2';
-$info['projects']['token']['patch'][] = 'http://drupal.org/files/issues/691078-token-field-tokens-v2.patch';
-
-$info['projects']['pathauto']['type']     = 'module';
-$info['projects']['pathauto']['subdir']   = 'contrib';
-$info['projects']['pathauto']['version']  = '1.0-rc2';
-
-$info['projects']['views']['type']    = 'module';
-$info['projects']['views']['subdir']  = 'contrib';
-$info['projects']['views']['version'] = '3.0-rc1';
-
-$info['projects']['features']['type']     = 'module';
-$info['projects']['features']['subdir']   = 'contrib';
-$info['projects']['features']['version']  = '1.0-beta3';
-
-$info['projects']['rubik']['version'] = '4.0-beta5';
-
-/* Remove modules not used by TakePart that are standard in OpenPublish */
-
-// Nodequeue is not needed in TP3.
-// Commented out because one of the features from OP depends on NodeQueue, even though we aren't using it.
+/* Nodequeue is need for some of the standard featyres in OpenPublish */
 unset($info['projects']['nodequeue']);
 $info['projects']['nodequeue']['type']     = 'module';
 $info['projects']['nodequeue']['subdir']   = 'contrib';
 $info['projects']['nodequeue']['version']  = '2.0-alpha2';
 
 /* Use our own branch of OpenPublish Features */
-$info['projects']['openpublish_features']['download']['branch'] = 'takepart-3.0';
+$info['projects']['openpublish_features']['type']                 = 'module';
+$info['projects']['openpublish_features']['download']['type']     = 'git';
+$info['projects']['openpublish_features']['download']['url']      = 'git@phase2.beanstalkapp.com:/openpublish_features.git';
+$info['projects']['openpublish_features']['download']['revision'] = '829432e1565cf1fd535ca47cd4686dd16164f8a9';
 
 // This came out of openpublish_features
-$info['projects']['field_boxes']['type']   = 'module';
-$info['projects']['field_boxes']['subdir'] = 'contrib';
-$info['projects']['field_boxes']['download']['type']   = 'git';
-$info['projects']['field_boxes']['download']['branch'] = '7.x-1.x';
-$info['projects']['field_boxes']['download']['url']    = 'http://git.drupal.org/project/field_boxes.git';
+$info['projects']['field_boxes']['type']                  = 'module';
+$info['projects']['field_boxes']['subdir']                = 'contrib';
+$info['projects']['field_boxes']['download']['type']      = 'git';
+$info['projects']['field_boxes']['download']['url']       = 'http://git.drupal.org/project/field_boxes.git';
+$info['projects']['field_boxes']['download']['revision']  = '54918ad944e516c62c27b1116c1adac38d4d4507';
 
 /* Libraries */
 
+/* CKeditor */
 $info['libraries']['ckeditor']['download']['type']  = 'get';
 $info['libraries']['ckeditor']['download']['url']   = 'http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6/ckeditor_3.6.tar.gz';
 $info['libraries']['ckeditor']['directory_name']    = 'ckeditor';
 
+/* Brightcove Wrapper */
 $info['libraries']['brightcove-php']['download']['type']    = 'git';
 $info['libraries']['brightcove-php']['download']['branch']  = 'master';
 $info['libraries']['brightcove-php']['download']['tag']     = '2.0.4';
 $info['libraries']['brightcove-php']['download']['url']     = 'git://github.com/BrightcoveOS/PHP-MAPI-Wrapper.git';
 $info['libraries']['brightcove-php']['directory_name']      = 'BrightcoveOS-PHP-MAPI-Wrapper';
 
-// Used with FB Connect modules, required
+/* Facebook PHP SDK */
 $info['libraries']['facebook-php-sdk']['download']['type']    = 'git';
 $info['libraries']['facebook-php-sdk']['download']['branch']  = 'master';
 $info['libraries']['facebook-php-sdk']['download']['tag']     = 'v2.1.2';
 $info['libraries']['facebook-php-sdk']['download']['url']     = 'git://github.com/facebook/php-sdk.git';
 $info['libraries']['facebook-php-sdk']['directory_name']      = 'facebook-php-sdk';
 
-// Required for the rotator to work
+/* jQuery Cycle for use with rotator */
 $info['libraries']['jquery.cycle']['download']['type']  = 'get';
 $info['libraries']['jquery.cycle']['download']['url']   = 'http://jquery.malsup.com/cycle/release/jquery.cycle.zip?v2.99';
 $info['libraries']['jquery.cycle']['directory_name']    = 'jquery.cycle';
 
+/* SolrPhpClient for Search API SOLR */
 $info['libraries']['SolrPhpClient']['download']['type']  = 'get';
 $info['libraries']['SolrPhpClient']['download']['url']   = 'http://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz';
 $info['libraries']['SolrPhpClient']['destination']       = 'modules/contrib/search_api_solr';
 
-/* Patches */
-
-// Moved patches to their appropriate modules so we an tell when looking at module versions where it is has been patch 
-
-/* Commented out patches, not sure if they will be needed again */
-// $info['projects']['drupal']['patch'][] = 'http://drupal.org/files/issues/1007830.drupal.nested-transactions-ddl.patch';
-// $info['projects']['context']['patch'][]  = 'http://drupal.org/files/issues/context-block-contextual-links-1137794-2.patch';
-
 function html_post_make($path, $info, &$config) {
     system("rm $path/robots.txt");
-    system("cd $path && ln -s profiles/custom/settings/robots.dev.txt robots.txt");
-    
+    system("cd $path && ln -s profiles/custom/settings/robots.dev.txt robots.txt");   
 }

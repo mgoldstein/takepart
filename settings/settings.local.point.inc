@@ -27,6 +27,11 @@ if (!is_array($conf))
   $conf = array(
    'omniture_account_name' => 'takeparttakepartdev2',
     'cache_default_class'   => 'MemCacheDrupal',
+
+  'memcache_options' => array(
+    // Requires Memcached 1.4 or greater - enables binary protocal (faster).
+    Memcached::OPT_BINARY_PROTOCOL => TRUE
+  )
 );
 
 

@@ -434,7 +434,7 @@ function takepart_video_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'public' => 'public',
@@ -446,8 +446,9 @@ function takepart_video_field_default_fields() {
             'video' => 0,
           ),
           'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_generic_alt',
         'weight' => '6',
       ),
     ),
@@ -916,7 +917,7 @@ function takepart_video_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'public' => 'public',
@@ -928,8 +929,9 @@ function takepart_video_field_default_fields() {
             'video' => 0,
           ),
           'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_generic_alt',
         'weight' => '7',
       ),
     ),

@@ -1,5 +1,3 @@
-<?php print _render_tp3_quick_study_topics($node); ?>
-
 <?php if (!empty($pre_object)) print render($pre_object) ?>
 
 <div class='<?php print $classes ?> clearfix' <?php print ($attributes) ?>>
@@ -14,28 +12,38 @@
 
   <?php if (!empty($title_suffix)) print render($title_suffix); ?>
 
-  <?php if (!empty($submitted) && $view_mode != 'teaser'): ?>
-    <?php print $submitted ?>
+  <?php if (!empty($submitted)): ?>
+    <?php //print $submitted ?>
   <?php endif; ?>
 
   <?php if (!empty($content)): ?>
     
     <?php hide($content['comments']); ?>
-    <?php hide($content['field_topic']); ?>
     
     <div class='content content-bottom clearfix <?php if (!empty($is_prose)) print 'prose' ?>'>
-
+      
+      <?php if($view_mode == 'teaser'): ?>
+        <?php hide($content['field_free_tag']); ?>
+        <?php hide($content['field_topic']); ?>
+        <?php hide($content['body']); ?>
+      <?php endif; ?>
+      
       <?php print render($content); ?>
+      
+      <?php if($view_mode == 'teaser'): ?>
+        <?php show($content['field_topic']); ?>
+        <?php print takepart3_addthis_button(); ?>    
+        <?php print render($content['body']); ?>
+        <?php print render($content['field_topic']); ?>
+      <?php endif; ?>
       
     </div>
     
   <?php endif; ?>
   
-  <?php // krumo($node); ?>
-
   <?php if (!empty($links)): ?>
     <div class='links clearfix'>
-      <?php print render($links) ?>
+      <?php // print render($links) ?>
     </div>
   <?php endif; ?>
 </div>

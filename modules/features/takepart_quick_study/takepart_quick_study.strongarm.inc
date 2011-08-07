@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_strongarm().
+ * Implements hook_strongarm().
  */
 function takepart_quick_study_strongarm() {
   $export = array();
@@ -42,7 +42,7 @@ function takepart_quick_study_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_takepart_quick_study';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['comment_preview_takepart_quick_study'] = $strongarm;
 
   $strongarm = new stdClass;
