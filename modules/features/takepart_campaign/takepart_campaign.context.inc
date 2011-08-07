@@ -53,7 +53,7 @@ function takepart_campaign_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'related_campaign_curated';
+  $context->name = 'related_campaign_curated_left';
   $context->description = '';
   $context->tag = 'Blocks: Related';
   $context->conditions = array(
@@ -67,10 +67,9 @@ function takepart_campaign_context_default_contexts() {
     ),
     'node' => array(
       'values' => array(
-        'action' => 'action',
+        'openpublish_article' => 'openpublish_article',
         'openpublish_blog_post' => 'openpublish_blog_post',
-        'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-        'openpublish_video' => 'openpublish_video',
+        'takepart_page' => 'takepart_page',
       ),
       'options' => array(
         'node_form' => '1',
@@ -83,8 +82,8 @@ function takepart_campaign_context_default_contexts() {
         'views-related_campaigns-block' => array(
           'module' => 'views',
           'delta' => 'related_campaigns-block',
-          'region' => 'sidebar_second',
-          'weight' => 4,
+          'region' => 'sidebar_first',
+          'weight' => '5',
         ),
       ),
     ),
@@ -94,12 +93,12 @@ function takepart_campaign_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Blocks: Related');
-  $export['related_campaign_curated'] = $context;
+  $export['related_campaign_curated_left'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'related_campaign_suggested';
+  $context->name = 'related_campaign_suggested_left';
   $context->description = '';
   $context->tag = 'Blocks: Related';
   $context->conditions = array(
@@ -113,9 +112,9 @@ function takepart_campaign_context_default_contexts() {
     ),
     'node' => array(
       'values' => array(
-        'action' => 'action',
-        'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-        'openpublish_video' => 'openpublish_video',
+        'openpublish_article' => 'openpublish_article',
+        'openpublish_blog_post' => 'openpublish_blog_post',
+        'takepart_page' => 'takepart_page',
       ),
       'options' => array(
         'node_form' => '1',
@@ -128,8 +127,8 @@ function takepart_campaign_context_default_contexts() {
         'views-related_campaigns-block_1' => array(
           'module' => 'views',
           'delta' => 'related_campaigns-block_1',
-          'region' => 'sidebar_second',
-          'weight' => '3',
+          'region' => 'sidebar_first',
+          'weight' => '5',
         ),
       ),
     ),
@@ -139,7 +138,7 @@ function takepart_campaign_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Blocks: Related');
-  $export['related_campaign_suggested'] = $context;
+  $export['related_campaign_suggested_left'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
