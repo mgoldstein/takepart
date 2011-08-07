@@ -108,6 +108,13 @@ $info['projects']['context_bool_field']['download']['type']     = 'git';
 $info['projects']['context_bool_field']['download']['url']      = 'http://git.drupal.org/project/context_bool_field.git';
 $info['projects']['context_bool_field']['download']['revision'] = '18f6c6bf7e1cce492418d9f05344969be4fdb118';
 
+/* Used in various content types */
+$info['projects']['content_taxonomy']['type']                 = 'module';
+$info['projects']['content_taxonomy']['subdir']               = 'contrib';
+$info['projects']['content_taxonomy']['download']['type']     = 'git';
+$info['projects']['content_taxonomy']['download']['url']      = 'http://git.drupal.org/project/content_taxonomy.git';
+$info['projects']['content_taxonomy']['download']['revision'] = 'f62521bccbb5097e015c123edd06a1341583fdb8';
+
 /* Used for the topic front featured item pages */
 $info['projects']['views_php']['type']                  = 'module';
 $info['projects']['views_php']['subdir']                = 'contrib';
