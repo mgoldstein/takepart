@@ -60,7 +60,7 @@ function takepart_gallery_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -147,10 +147,11 @@ function takepart_gallery_field_default_fields() {
           'weight' => 0,
         ),
         'media_large' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'text_default',
+          'weight' => '1',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -247,7 +248,7 @@ function takepart_gallery_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '2',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -339,7 +340,7 @@ function takepart_gallery_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '6',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -436,7 +437,7 @@ function takepart_gallery_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '5',
         ),
         'media_link' => array(
           'label' => 'above',
