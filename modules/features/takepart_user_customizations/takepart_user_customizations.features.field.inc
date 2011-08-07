@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function takepart_user_customizations_field_default_fields() {
   $fields = array();
@@ -151,7 +151,7 @@ function takepart_user_customizations_field_default_fields() {
       ),
       'entity_type' => 'user',
       'field_name' => 'field_registration_email_opt_in',
-      'label' => variable_get('takepart_newsletter_user_reg_opt_in_msg','Get TakePart Today emails&mdash;one great story a day, direct to your inbox.'),
+      'label' => 'Get TakePart Today emails&mdash;one great story a day, direct to your inbox.',
       'required' => 0,
       'settings' => array(
         'user_register_form' => 1,
@@ -171,7 +171,7 @@ function takepart_user_customizations_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Date of Birth');
-  t(variable_get('takepart_newsletter_user_reg_opt_in_msg','Get TakePart Today emails&mdash;one great story a day, direct to your inbox.'));
+  t('Get TakePart Today emails&mdash;one great story a day, direct to your inbox.');
   t('You must be 18 years of age.');
 
   return $fields;

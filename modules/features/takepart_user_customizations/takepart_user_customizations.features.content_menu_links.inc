@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_content_menu_links_defaults().
+ * Implements hook_content_menu_links_defaults().
  */
 function takepart_user_customizations_content_menu_links_defaults() {
   $menu_links = array();
