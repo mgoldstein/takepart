@@ -253,7 +253,6 @@ function takepart3_preprocess_node(&$vars, $hook) {
       $vars['content']['body'][0]['#markup'] = substr_replace($vars['content']['body'][0]['#markup'], $featured_action, $pos+2, 0);
     }
   }
-    
 }
 
 /* Comment form */
