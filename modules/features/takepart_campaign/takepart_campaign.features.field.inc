@@ -383,6 +383,19 @@ function takepart_campaign_field_default_fields() {
           'type' => 'context_field_context',
           'weight' => '4',
         ),
+        'embed' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => '5',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -566,7 +579,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -666,7 +679,7 @@ function takepart_campaign_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '24',
+          'weight' => '25',
         ),
         'full' => array(
           'label' => 'above',
@@ -817,6 +830,7 @@ function takepart_campaign_field_default_fields() {
             'vocabulary' => 'topic',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -1057,7 +1071,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 28,
+          'weight' => '20',
         ),
         'full' => array(
           'label' => 'above',
@@ -1124,7 +1138,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'context_field',
           'settings' => array(),
           'type' => 'context_field_context',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'full' => array(
           'label' => 'above',
@@ -1222,7 +1236,7 @@ function takepart_campaign_field_default_fields() {
             'image_style' => 'tp_campaign_cover',
           ),
           'type' => 'image',
-          'weight' => '18',
+          'weight' => '19',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -1303,7 +1317,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '17',
+          'weight' => '18',
         ),
         'full' => array(
           'label' => 'above',
@@ -1377,7 +1391,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'default',
-          'weight' => '16',
+          'weight' => '17',
         ),
         'full' => array(
           'label' => 'above',
@@ -1453,7 +1467,7 @@ function takepart_campaign_field_default_fields() {
             'image_style' => 'tp_page_wide',
           ),
           'type' => 'image',
-          'weight' => '15',
+          'weight' => '16',
         ),
         'full' => array(
           'label' => 'above',
@@ -1685,7 +1699,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'full' => array(
           'label' => 'above',
@@ -1759,7 +1773,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -1855,7 +1869,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -1932,7 +1946,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'full' => array(
           'label' => 'above',
@@ -2006,7 +2020,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -2102,7 +2116,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -2179,7 +2193,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '10',
+          'weight' => '11',
         ),
         'full' => array(
           'label' => 'above',
@@ -2253,7 +2267,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -2349,7 +2363,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '11',
+          'weight' => '12',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -2426,7 +2440,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '13',
+          'weight' => '14',
         ),
         'full' => array(
           'label' => 'above',
@@ -2500,7 +2514,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '12',
+          'weight' => '13',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -2596,7 +2610,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '14',
+          'weight' => '15',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -2668,7 +2682,7 @@ function takepart_campaign_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '23',
+          'weight' => '24',
         ),
         'full' => array(
           'label' => 'above',
@@ -2731,7 +2745,7 @@ function takepart_campaign_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '21',
+          'weight' => '22',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -2835,7 +2849,7 @@ function takepart_campaign_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '22',
+          'weight' => '23',
         ),
         'full' => array(
           'label' => 'above',
@@ -2933,7 +2947,7 @@ function takepart_campaign_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '19',
+          'weight' => '21',
         ),
         'full' => array(
           'label' => 'above',
@@ -3005,9 +3019,10 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '25',
+          'type' => 'text_default',
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'hidden',

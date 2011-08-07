@@ -316,6 +316,10 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['nid']['default_argument_options']['field'] = 'nodereference::field_related_campaigns';
+  $handler->display->display_options['arguments']['nid']['default_argument_options']['settings'] = array(
+    'argument_default_field_nodereference_format' => 'nid',
+    'argument_default_field_nodereference_delta' => '0',
+  );
   $handler->display->display_options['arguments']['nid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
