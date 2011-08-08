@@ -13,80 +13,119 @@ function takepart_video_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_series_videos|node|video_series|form';
-  $field_group->group_name = 'group_series_videos';
+  $field_group->identifier = 'group_video_media|node|openpublish_video|form';
+  $field_group->group_name = 'group_video_media';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'video_series';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_vs_hz_group';
-  $field_group->data = array(
-    'label' => 'Series',
-    'weight' => '7',
-    'children' => array(
-      0 => 'field_series_videos_by_tag',
-      1 => 'field_series_videos_refs',
-    ),
-    'format_type' => 'htab',
-    'format_settings' => array(
-      'formatter' => 'open',
-      'instance_settings' => array(
-        'classes' => '',
-      ),
-    ),
-  );
-  $export['group_series_videos|node|video_series|form'] = $field_group;
-
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_vs_hz_group|node|video_series|form';
-  $field_group->group_name = 'group_vs_hz_group';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'video_series';
+  $field_group->bundle = 'openpublish_video';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Series and Taxonomy',
-    'weight' => '8',
+    'label' => 'Media',
+    'weight' => '2',
     'children' => array(
-      0 => 'group_series_videos',
-      1 => 'group_vs_taxonomy',
+      0 => 'field_video_embedded',
+      1 => 'field_main_image',
+      2 => 'field_thumbnail',
     ),
-    'format_type' => 'htabs',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => '',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'classes' => '',
+        'required_fields' => 1,
       ),
     ),
   );
-  $export['group_vs_hz_group|node|video_series|form'] = $field_group;
+  $export['group_video_media|node|openpublish_video|form'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_vs_taxonomy|node|video_series|form';
-  $field_group->group_name = 'group_vs_taxonomy';
+  $field_group->identifier = 'group_video_promo|node|openpublish_video|form';
+  $field_group->group_name = 'group_video_promo';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'video_series';
+  $field_group->bundle = 'openpublish_video';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_vs_hz_group';
+  $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Taxonomy',
-    'weight' => '8',
+    'label' => 'Promo',
+    'weight' => '3',
     'children' => array(
-      0 => 'field_vs_free_term',
-      1 => 'field_vs_topic_term',
+      0 => 'field_promo_headline',
+      1 => 'field_promo_text',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'open',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'classes' => '',
+        'required_fields' => 1,
       ),
     ),
   );
-  $export['group_vs_taxonomy|node|video_series|form'] = $field_group;
+  $export['group_video_promo|node|openpublish_video|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_video_related|node|openpublish_video|form';
+  $field_group->group_name = 'group_video_related';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'openpublish_video';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_suggest_related',
+      1 => 'field_video_related',
+      2 => 'field_suggest_actions',
+      3 => 'field_related_actions',
+      4 => 'field_suggest_video',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_video_related|node|openpublish_video|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_video_tags|node|openpublish_video|form';
+  $field_group->group_name = 'group_video_tags';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'openpublish_video';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Tags',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_free_tag',
+      1 => 'field_series',
+      2 => 'field_topic',
+      3 => 'field_multi_page_campaign',
+      4 => 'field_video_series',
+      5 => 'field_display_tag',
+      6 => 'path',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_video_tags|node|openpublish_video|form'] = $field_group;
 
   return $export;
 }
