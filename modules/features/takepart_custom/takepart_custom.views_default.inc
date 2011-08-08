@@ -88,16 +88,19 @@ function takepart_custom_views_default_views() {
   $handler->display->display_options['fields']['field_promo_headline']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['field_api_classes'] = 0;
   /* Field: Content: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
@@ -109,17 +112,18 @@ function takepart_custom_views_default_views() {
   $handler->display->display_options['fields']['field_promo_text']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_promo_text']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_promo_text']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_text']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_promo_text']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_text']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['field_api_classes'] = 0;
   /* Sort criterion: Arguments: Multi-item Argument Order */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
