@@ -37,6 +37,11 @@ $items['user/%user'] = array(
   $items['user/%user']['page callback'] = 'takepart_user_profile_redirect';
 }
 
+/* This functions insures that the drupal username is always used */
+function takepart_user_username_alter(&$name, $account) {
+	$name = $account->name;
+}
+
 function takepart_user_profile_redirect() {
   global $user;
   if (empty($user->uid) || $user->uid != arg(1)) {
