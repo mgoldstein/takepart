@@ -42,24 +42,23 @@ function takepart_action_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'action';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_actions_main';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Main',
-    'weight' => '13',
+    'weight' => '3',
     'children' => array(
       0 => 'body',
-      1 => 'field_action_type',
-      2 => 'field_action_url',
+      1 => 'field_action_main_image',
+      2 => 'field_action_type',
+      3 => 'field_action_url',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Main',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
       'formatter' => 'closed',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
     ),
   );
   $export['group_action_body|node|action|form'] = $field_group;
@@ -96,10 +95,10 @@ function takepart_action_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'action';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_actions_main';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related',
-    'weight' => '18',
+    'weight' => '6',
     'children' => array(
       0 => 'field_action_related',
       1 => 'field_suggest_campaigns',
@@ -108,15 +107,13 @@ function takepart_action_field_group_info() {
       4 => 'field_related_campaigns',
       5 => 'field_suggest_actions',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Related',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
       'formatter' => 'closed',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
     ),
   );
   $export['group_action_content|node|action|form'] = $field_group;
@@ -182,23 +179,22 @@ function takepart_action_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'action';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_actions_main';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo Head / Text',
-    'weight' => '17',
+    'weight' => '5',
     'children' => array(
-      0 => 'field_promo_headline',
-      1 => 'field_promo_text',
+      0 => 'field_thumbnail',
+      1 => 'field_promo_headline',
+      2 => 'field_promo_text',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Promo Head / Text',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
       'formatter' => 'closed',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
     ),
   );
   $export['group_action_promos|node|action|form'] = $field_group;
@@ -211,14 +207,14 @@ function takepart_action_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'action';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_actions_main';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sponsors',
-    'weight' => '16',
+    'weight' => '4',
     'children' => array(
       0 => 'field_action_sponsor',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
@@ -237,24 +233,22 @@ function takepart_action_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'action';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_actions_main';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tags',
-    'weight' => '19',
+    'weight' => '7',
     'children' => array(
       0 => 'field_free_tag',
       1 => 'field_topic',
       2 => 'field_multi_page_campaign',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Tags',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
       'formatter' => 'closed',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
     ),
   );
   $export['group_action_terms|node|action|form'] = $field_group;

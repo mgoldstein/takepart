@@ -29,6 +29,12 @@ function takepart_action_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'comment_block_simple-comment_block' => array(
+          'module' => 'comment_block_simple',
+          'delta' => 'comment_block',
+          'region' => 'content_bottom',
+          'weight' => 0,
+        ),
         'views-groups-block' => array(
           'module' => 'views',
           'delta' => 'groups-block',
@@ -39,7 +45,7 @@ function takepart_action_context_default_contexts() {
           'module' => 'views',
           'delta' => 'related_content-block',
           'region' => 'sidebar_second',
-          'weight' => 3,
+          'weight' => 2,
         ),
         'views-related_actions-block' => array(
           'module' => 'views',

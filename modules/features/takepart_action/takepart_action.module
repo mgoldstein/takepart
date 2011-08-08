@@ -6,6 +6,13 @@
 
 include_once('takepart_action.features.inc');
 
+function takepart_action_form_action_node_form_alter(&$form, &$form_state, $form_id) {
+  drupal_add_css(
+    ".field-name-field-action-sponsor.field-widget-node-reference-autocomplete input.form-autocomplete {width:90%!important;}",
+    array('type' => 'inline')
+  );
+}
+
 
 function takepart_action_preprocess_page(&$variables) {
    
