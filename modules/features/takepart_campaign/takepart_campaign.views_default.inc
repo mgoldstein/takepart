@@ -309,11 +309,11 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Promoted */
+  /* Contextual filter: Null Promoted/Ordering */
   $handler->display->display_options['arguments']['null_1']['id'] = 'null_1';
   $handler->display->display_options['arguments']['null_1']['table'] = 'views';
   $handler->display->display_options['arguments']['null_1']['field'] = 'null';
-  $handler->display->display_options['arguments']['null_1']['ui_name'] = 'Promoted';
+  $handler->display->display_options['arguments']['null_1']['ui_name'] = 'Null Promoted/Ordering';
   $handler->display->display_options['arguments']['null_1']['default_action'] = 'default';
   $handler->display->display_options['arguments']['null_1']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['null_1']['default_argument_options']['field'] = 'nodereference::field_related_campaigns';
@@ -329,10 +329,11 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['arguments']['null_1']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['null_1']['validate_options']['code'] = 'return TRUE;';
   $handler->display->display_options['arguments']['null_1']['must_not_be'] = 0;
-  /* Contextual filter: Global: Null */
+  /* Contextual filter: Null: Suggested Bool */
   $handler->display->display_options['arguments']['null']['id'] = 'null';
   $handler->display->display_options['arguments']['null']['table'] = 'views';
   $handler->display->display_options['arguments']['null']['field'] = 'null';
+  $handler->display->display_options['arguments']['null']['ui_name'] = 'Null: Suggested Bool';
   $handler->display->display_options['arguments']['null']['default_action'] = 'default';
   $handler->display->display_options['arguments']['null']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['null']['default_argument_options']['field'] = 'list_boolean::field_suggest_campaigns';
@@ -349,10 +350,11 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['arguments']['null']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['null']['validate_options']['code'] = 'return TRUE;';
   $handler->display->display_options['arguments']['null']['must_not_be'] = 0;
-  /* Contextual filter: Content: Nid */
+  /* Contextual filter: Related NIDs */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['ui_name'] = 'Related NIDs';
   $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['nid']['default_argument_options']['field'] = 'nodereference::field_related_campaigns';
@@ -369,36 +371,42 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['arguments']['nid']['validate_options']['code'] = 'if($view->args[1]) {
   $handler->argument = "all";
 }
-dpm($view->arg);
 return TRUE;';
   $handler->display->display_options['arguments']['nid']['break_phrase'] = 1;
   $handler->display->display_options['arguments']['nid']['not'] = 0;
-  /* Contextual filter: Content: Has taxonomy term ID */
-  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
-  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'field';
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['field'] = 'content_taxonomy::field_topic';
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['settings'] = array(
-    'content_taxonomy_format' => 'tid',
-  );
-  $handler->display->display_options['arguments']['tid']['default_argument_skip_url'] = 0;
-  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['tid']['specify_validation'] = 1;
-  $handler->display->display_options['arguments']['tid']['validate']['type'] = 'php';
-  $handler->display->display_options['arguments']['tid']['validate_options']['code'] = 'if(!$view->args[1]) {
+  /* Contextual filter: Topics */
+  $handler->display->display_options['arguments']['field_topic_tid']['id'] = 'field_topic_tid';
+  $handler->display->display_options['arguments']['field_topic_tid']['table'] = 'field_data_field_topic';
+  $handler->display->display_options['arguments']['field_topic_tid']['field'] = 'field_topic_tid';
+  $handler->display->display_options['arguments']['field_topic_tid']['ui_name'] = 'Topics';
+  $handler->display->display_options['arguments']['field_topic_tid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_topic_tid']['default_argument_type'] = 'field';
+  $handler->display->display_options['arguments']['field_topic_tid']['default_argument_options']['field'] = 'content_taxonomy::field_topic';
+  $handler->display->display_options['arguments']['field_topic_tid']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['field_topic_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_topic_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_topic_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_topic_tid']['specify_validation'] = 1;
+  $handler->display->display_options['arguments']['field_topic_tid']['validate']['type'] = 'php';
+  $handler->display->display_options['arguments']['field_topic_tid']['validate_options']['code'] = 'if(!$view->args[1]) {
   $handler->argument = "all";
 }
 return TRUE;';
-  $handler->display->display_options['arguments']['tid']['validate']['fail'] = 'ignore';
-  $handler->display->display_options['arguments']['tid']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['tid']['add_table'] = 0;
-  $handler->display->display_options['arguments']['tid']['require_value'] = 0;
-  $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 1;
-  $handler->display->display_options['arguments']['tid']['set_breadcrumb'] = 0;
+  $handler->display->display_options['arguments']['field_topic_tid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_topic_tid']['not'] = 0;
+  /* Contextual filter: Exclude Current Node */
+  $handler->display->display_options['arguments']['nid_1']['id'] = 'nid_1';
+  $handler->display->display_options['arguments']['nid_1']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid_1']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid_1']['ui_name'] = 'Exclude Current Node';
+  $handler->display->display_options['arguments']['nid_1']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid_1']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid_1']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['nid_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid_1']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['nid_1']['not'] = 1;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -414,11 +422,12 @@ return TRUE;';
     'takepart_campaign' => 'takepart_campaign',
   );
 
-  /* Display: Currated Only */
-  $handler = $view->new_display('block', 'Currated Only', 'block');
+  /* Display: Curate and/or Suggest */
+  $handler = $view->new_display('block', 'Curate and/or Suggest', 'block');
+  $handler->display->display_options['display_description'] = 'Used on pages that have a suggest and curate field';
 
-  /* Display: Currated and Suggest for taxonomy pages */
-  $handler = $view->new_display('block', 'Currated and Suggest for taxonomy pages', 'block_2');
+  /* Display: Term Page Curate and Suggest */
+  $handler = $view->new_display('block', 'Term Page Curate and Suggest', 'block_2');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Promoted Content */
   $handler->display->display_options['arguments']['null']['id'] = 'null';

@@ -1199,7 +1199,7 @@ function takepart_campaign_field_default_fields() {
           'widget_setting' => 'bob',
         ),
         'type' => 'context_field',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
