@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function takepart_action_field_default_fields() {
   $fields = array();
@@ -185,11 +185,12 @@ function takepart_action_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'media',
+          'module' => 'media_image_formatter',
           'settings' => array(
-            'file_view_mode' => 'media_original',
+            'image_link' => '',
+            'image_style' => 'medium',
           ),
-          'type' => 'media',
+          'type' => 'image',
           'weight' => '0',
         ),
         'embed' => array(
@@ -200,11 +201,12 @@ function takepart_action_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'media',
+          'module' => 'media_image_formatter',
           'settings' => array(
-            'file_view_mode' => 'default',
+            'image_link' => '',
+            'image_style' => 'medium',
           ),
-          'type' => 'media',
+          'type' => 'image',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -223,7 +225,7 @@ function takepart_action_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'public' => 'public',
@@ -235,8 +237,9 @@ function takepart_action_field_default_fields() {
             'video' => 0,
           ),
           'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_generic_alt',
         'weight' => '12',
       ),
     ),
@@ -471,6 +474,7 @@ function takepart_action_field_default_fields() {
             'vocabulary' => 'action_type',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -640,6 +644,7 @@ function takepart_action_field_default_fields() {
             'vocabulary' => 'free_tags',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -687,6 +692,7 @@ function takepart_action_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -1353,7 +1359,7 @@ function takepart_action_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'public' => 'public',
@@ -1365,8 +1371,9 @@ function takepart_action_field_default_fields() {
             'video' => 0,
           ),
           'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_generic_alt',
         'weight' => '13',
       ),
     ),
@@ -1401,6 +1408,7 @@ function takepart_action_field_default_fields() {
             'vocabulary' => 'topic',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',

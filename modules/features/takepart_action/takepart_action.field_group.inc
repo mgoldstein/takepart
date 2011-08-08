@@ -5,12 +5,13 @@
  */
 
 /**
- * Implementation of hook_field_group_info().
+ * Implements hook_field_group_info().
  */
 function takepart_action_field_group_info() {
   $export = array();
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_action_actions|node|action|form';
   $field_group->group_name = 'group_action_actions';
@@ -34,6 +35,7 @@ function takepart_action_field_group_info() {
   $export['group_action_actions|node|action|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_action_body|node|action|form';
   $field_group->group_name = 'group_action_body';
@@ -63,6 +65,7 @@ function takepart_action_field_group_info() {
   $export['group_action_body|node|action|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_action_campaigns|node|action|form';
   $field_group->group_name = 'group_action_campaigns';
@@ -86,6 +89,7 @@ function takepart_action_field_group_info() {
   $export['group_action_campaigns|node|action|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_action_content|node|action|form';
   $field_group->group_name = 'group_action_content';
@@ -118,6 +122,7 @@ function takepart_action_field_group_info() {
   $export['group_action_content|node|action|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_action_htab1|node|action|form';
   $field_group->group_name = 'group_action_htab1';
@@ -143,6 +148,7 @@ function takepart_action_field_group_info() {
   $export['group_action_htab1|node|action|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_action_media|node|action|form';
   $field_group->group_name = 'group_action_media';
@@ -169,6 +175,7 @@ function takepart_action_field_group_info() {
   $export['group_action_media|node|action|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_action_promos|node|action|form';
   $field_group->group_name = 'group_action_promos';
@@ -197,6 +204,7 @@ function takepart_action_field_group_info() {
   $export['group_action_promos|node|action|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_action_sponsors|node|action|form';
   $field_group->group_name = 'group_action_sponsors';
@@ -222,6 +230,7 @@ function takepart_action_field_group_info() {
   $export['group_action_sponsors|node|action|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_action_terms|node|action|form';
   $field_group->group_name = 'group_action_terms';
@@ -251,6 +260,7 @@ function takepart_action_field_group_info() {
   $export['group_action_terms|node|action|form'] = $field_group;
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_actions_main|node|action|form';
   $field_group->group_name = 'group_actions_main';
