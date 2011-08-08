@@ -152,7 +152,6 @@ projects[openpublish_features][type] = module
 projects[openpublish_features][download][type] = git
 projects[openpublish_features][download][url] = git@phase2.beanstalkapp.com:/openpublish_features.git
 projects[openpublish_features][download][revision] = 829432e1565cf1fd535ca47cd4686dd16164f8a9
-projects[nodeblock][download][revision] = 1110321718e3137a475a132c3e987c6aebdb7699
 projects[flag][type] = module
 projects[flag][subdir] = contrib
 projects[flag][download][type] = git
