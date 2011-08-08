@@ -7,7 +7,7 @@
   		</div><!--/hot topics nav-->
   		
   		<div class="text">
-  		<img src="<?php print $base_path . $takepart_theme_path; ?>/images/tagline-be-a-participant.gif" alt="Be A Participant">
+  		<img src="<?php print $base_path . $takepart_theme_path; ?>/images/tagline-be-a-participant.gif" alt="Be A Participant" />
   		</div><!--/text-->
 		</div>
 		
