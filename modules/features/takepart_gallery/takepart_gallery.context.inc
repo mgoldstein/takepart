@@ -65,6 +65,18 @@ function takepart_gallery_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => 2,
         ),
+        'views-related_content-block' => array(
+          'module' => 'views',
+          'delta' => 'related_content-block',
+          'region' => 'sidebar_second',
+          'weight' => 5,
+        ),
+        'views-related_actions-block' => array(
+          'module' => 'views',
+          'delta' => 'related_actions-block',
+          'region' => 'sidebar_second',
+          'weight' => 6,
+        ),
       ),
     ),
   );

@@ -953,7 +953,6 @@ function takepart_gallery_field_default_fields() {
           'takepart_quick_study' => 0,
           'takepart_slide' => 0,
           'topic_front' => 0,
-          'video_series' => 0,
           'webform' => 0,
         ),
         'view' => array(
