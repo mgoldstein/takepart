@@ -36,8 +36,10 @@ function newsletter_campaign_schema() {
         'description' => 'This text will appear above the email input box.',
       ),
       'campaign_id' => array(
-        'type' => 'int',
-        'not null' => FALSE,
+        'type' => 'varchar',
+        'length' => 60,
+  	    'not null' => TRUE, 
+  	    'default' =>  '',
         'description' => 'Campaign Code generated from the Pluris system.',
       ),
       'thankyou_message' => array(
@@ -67,7 +69,7 @@ function newsletter_campaign_schema() {
   	  ),
   	  'campaign_id' => array(
   	    'type' => 'varchar',
-  	    'length' => 10,
+  	    'length' => 60,
   	    'not null' => TRUE, 
   	    'default' =>  '',
   	    'description' => "Campaign ID from Pluris",
@@ -144,4 +146,37 @@ function newsletter_campaign_update_7100(&$sandbox) {
     ->fields(array('weight' => $weight +1))
     ->condition('name', 'newsletter_campaign', '=')
     ->execute();
+}
+
+/**
+ * Update the type and size of the campaign_id column from the newsletter_campaign table.
+ * Update the size of the campaign_id column of the newsletter_signups table.
+ */
+function newsletter_campaign_update_7101(&$sandbox) {
+  db_drop_index('newsletter_signups', 'campaign_id');
+  
+  db_change_field('newsletter_signups', 'campaign_id', 'campaign_id', 
+    array(
+      'type' => 'varchar',
+      'length' => 60,
+  	  'not null' => TRUE, 
+  	  'default' =>  '',
+  	  'description' => "Campaign ID from Pluris",
+    )
+  );
+
+  db_add_index('newsletter_signups', 'campaign_id_index', array('campaign_id'));
+  
+  db_change_field('newsletter_campaign', 'campaign_id', 'campaign_id', 
+    array(
+      'type' => 'varchar',
+      'length' => 60,
+  	  'not null' => TRUE, 
+  	  'default' =>  '',
+  	  'description' => "Campaign Code generated from the Pluris system.",
+    )
+  );
+
+
+
 }
