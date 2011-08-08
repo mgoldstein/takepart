@@ -3389,7 +3389,7 @@ ul.links{
   top: 62px;
   z-index: 10000000;
 }
-ul.tabs{
+ul.tabs.primary{
   position: fixed;
   right: 100px;
   top: 43px;

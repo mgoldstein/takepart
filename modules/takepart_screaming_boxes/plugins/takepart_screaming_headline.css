@@ -41,3 +41,6 @@ div.block-boxes-headline input.form-text {
   text-align: center;
   
 }
+div.field-group-tabs-wrapper {
+  position:relative;
+}
