@@ -240,7 +240,7 @@ function takepart_action_field_default_fields() {
           'view' => 'media_views_widget_default--default',
         ),
         'type' => 'media_generic_alt',
-        'weight' => '12',
+        'weight' => '17',
       ),
     ),
   );
@@ -1374,7 +1374,7 @@ function takepart_action_field_default_fields() {
           'view' => 'media_views_widget_default--default',
         ),
         'type' => 'media_generic_alt',
-        'weight' => '13',
+        'weight' => '4',
       ),
     ),
   );
