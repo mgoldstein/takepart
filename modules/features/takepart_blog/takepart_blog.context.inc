@@ -59,6 +59,12 @@ function takepart_blog_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => 0,
         ),
+        'views-related_campaigns-block' => array(
+          'module' => 'views',
+          'delta' => 'related_campaigns-block',
+          'region' => 'sidebar_first',
+          'weight' => 1,
+        ),
         'boxes-box-4eb62add' => array(
           'module' => 'boxes',
           'delta' => 'box-4eb62add',
@@ -70,6 +76,18 @@ function takepart_blog_context_default_contexts() {
           'delta' => 'comment_block',
           'region' => 'content_bottom',
           'weight' => 1,
+        ),
+        'views-related_content-block' => array(
+          'module' => 'views',
+          'delta' => 'related_content-block',
+          'region' => 'sidebar_second',
+          'weight' => 2,
+        ),
+        'views-related_actions-block' => array(
+          'module' => 'views',
+          'delta' => 'related_actions-block',
+          'region' => 'sidebar_second',
+          'weight' => 3,
         ),
       ),
     ),
