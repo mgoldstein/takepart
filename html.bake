@@ -17,7 +17,7 @@ $info['projects']['openpublish']['download']['revision']  = '9f95fce4758dae9e92d
 unset($info['projects']['references']['download']['branch']);
 $info['projects']['references']['download']['revision']   = '8e1e57bea4f6c7915e5b8be8690a3e28590cca2d';
 $info['projects']['imce_wysiwyg']['revision']             = '3a5a5acad386aae2ca47bd2cd02b9c3c68f6d306';
-$info['projects']['nodeblock']['download']['revision']    = '5de85bbcbdb3c5d6ef619b59e4835e121501d5fb';
+$info['projects']['nodeblock']['download']['revision']    = '1110321718e3137a475a132c3e987c6aebdb7699';
 $info['projects']['diff']['version']                      = '2.0';
 $info['projects']['xmlsitemap']['version']                = '2.0-beta3';
 $info['projects']['ctools']['version']                    = '1.0-rc1';
