@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_default_box().
+ * Implements hook_default_box().
  */
 function takepart_article_default_box() {
   $export = array();
@@ -58,7 +58,7 @@ function takepart_article_default_box() {
   $box->options = array(
     'view' => 'related_campaigns--block_1',
     'settings' => array(
-      'null' => '',
+      'null' => '132+28',
       'tid' => '',
     ),
     'view_object' => NULL,

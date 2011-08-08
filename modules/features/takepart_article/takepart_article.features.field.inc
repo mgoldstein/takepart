@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function takepart_article_field_default_fields() {
   $fields = array();
@@ -72,8 +72,10 @@ function takepart_article_field_default_fields() {
         'full' => array(
           'label' => 'hidden',
           'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
+          'settings' => array(
+            'node_reference_view_mode' => 'embed',
+          ),
+          'type' => 'node_reference_node',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -218,7 +220,12 @@ function takepart_article_field_default_fields() {
             'parent' => '0',
             'vocabulary' => 'series',
           ),
+          4 => array(
+            'parent' => '0',
+            'vocabulary' => 'video_series',
+          ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -299,6 +306,7 @@ function takepart_article_field_default_fields() {
             'vocabulary' => 'free_tags',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -341,6 +349,7 @@ function takepart_article_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -533,7 +542,6 @@ function takepart_article_field_default_fields() {
           'takepart_quick_study' => 0,
           'takepart_slide' => 0,
           'topic_front' => 0,
-          'video_series' => 0,
           'webform' => 0,
         ),
         'view' => array(
@@ -632,6 +640,7 @@ function takepart_article_field_default_fields() {
           'takepart_slide' => 0,
           'topic_front' => 0,
           'video_series' => 0,
+          'webform' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -814,6 +823,7 @@ function takepart_article_field_default_fields() {
             'vocabulary' => 'series',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -1179,6 +1189,7 @@ function takepart_article_field_default_fields() {
             'vocabulary' => 'topic',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
