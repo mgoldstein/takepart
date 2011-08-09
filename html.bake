@@ -351,7 +351,13 @@ $info['projects']['openpublish_features']['type']                 = 'module';
 $info['projects']['openpublish_features']['download']['type']     = 'git';
 $info['projects']['openpublish_features']['download']['url']      = 'git@phase2.beanstalkapp.com:/openpublish_features.git';
 $info['projects']['openpublish_features']['download']['revision'] = '829432e1565cf1fd535ca47cd4686dd16164f8a9';
-
+                                               
+/* Use static_404 module from OpenPublic */
+$info['projects']['static_404']['type']                 = 'module';
+$info['projects']['static_404']['download']['type']     = 'svn';
+$info['projects']['static_404']['download']['url']      = 'https://phase2.svn.beanstalkapp.com/phase2_d7/trunk/openpublic/modules/custom/static_404';
+$info['projects']['static_404']['download']['revision'] = '822';
+                                               
 // This came out of openpublish_features
 $info['projects']['field_boxes']['type']                  = 'module';
 $info['projects']['field_boxes']['subdir']                = 'contrib';
