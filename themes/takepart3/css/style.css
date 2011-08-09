@@ -458,6 +458,10 @@ ul#top-nav li.last a{
 	margin: 7px 8px 0;
 }
 
+#top-search .form-item {
+  margin: 0px;
+}
+
 #top-search .form-text {
 	border:none;
 	color:#999999;

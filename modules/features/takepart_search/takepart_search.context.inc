@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function takepart_search_context_default_contexts() {
   $export = array();
@@ -44,16 +44,22 @@ function takepart_search_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
+        'search_api_facets-site_node_index_field_free_tag' => array(
+          'module' => 'search_api_facets',
+          'delta' => 'site_node_index_field_free_tag',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
         'search_api_facets-site_node_index_field_blogpost_b' => array(
           'module' => 'search_api_facets',
           'delta' => 'site_node_index_field_blogpost_b',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
-        'search_api_facets-site_node_index_field_free_tag' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'site_node_index_field_free_tag',
-          'region' => 'sidebar_second',
+        'search_api_sorts-search-sorts' => array(
+          'module' => 'search_api_sorts',
+          'delta' => 'search-sorts',
+          'region' => 'content_top',
           'weight' => '-10',
         ),
       ),
