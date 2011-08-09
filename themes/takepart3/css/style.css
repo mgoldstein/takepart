@@ -3360,6 +3360,16 @@ body.node-type-takepart-group #page {
 	padding:10px 20px;
 	cursor:pointer;
 }
+.field-name-field-action-url a {
+	border:none;
+	background:#FDAB30;
+	color:#fff;
+	font-weight:bolder;
+	text-transform:uppercase;
+	font-size:14px;
+	padding:10px 20px;
+	cursor:pointer;
+}
 
 /*
  * Jcarousel
@@ -3391,18 +3401,73 @@ body.node-type-takepart-group #page {
 /*
  * Move tabs
  */
-
+    
 ul.links{
   position: fixed;
-  right: 100px;
-  top: 62px;
+  right: 140px;
+  top: 26px;
   z-index: 10000000;
 }
 ul.tabs.primary{
   position: fixed;
-  right: 100px;
-  top: 43px;
+  right: 230px;
+  top: 40px;
   z-index: 10000000;
+}
+ 
+/*
+div.tabs {
+  height: 150px;
+  background-color: #555;
+  position: fixed;
+  left: 0; bottom: 0;
+  width: 80px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  border: 1px solid #222;
+  z-index: 100;
+  filter: alpha(opacity=90);
+  -moz-opacity: 0.90;
+  -khtml-opacity: 0.90;
+  opacity: 0.90;
+}
+*/
+
+div.tabs ul.tabs.primary, ul.links{
+  padding: 0; margin: 0; border: 0;
+  /* position: absolute;
+  left: 0; top: 200px; */
+}
+
+div.tabs ul.tabs.primary li, ul.links li {
+  /* display: block; */
+  margin-top: 5px;
+}
+
+ul.links li {
+  width: 80px;
+}
+
+div.tabs ul.tabs.primary li a, ul.links li a {
+  background-color: inherit;
+  border: 0;
+  padding-top: 5px;
+  color: #FFF;
+  width: 80px;
+}
+
+div#page ul.links li a {
+  background: none !important;
+  width: 120px;
+}
+
+div.tabs ul.tabs.primary li a.active, ul.links li a.active {
+  font-weight: bold;
+  color: #FFF5A8;
+}
+
+div.tabs ul.tabs.primary li a:hover, ul.links li a:hover {
+  text-decoration: underline;
 }
 
 /*
