@@ -150,8 +150,8 @@ hr {
     float:left;
     display: block;
 }
-.block-box-secondary .view-featured-items .views-field-field-blogpost-main-image, 
-.block-boxes-current-featured_items .view-dom-id-2 .views-field-field-blogpost-main-image {
+.block-box-secondary .view-featured-items .views-field-field-thumbnail img, 
+.block-boxes-current-featured_items .view-dom-id-2 .views-field-field-thumbnail img {
     border: 1px solid black;
     height: 160px;
     width: 194px;
@@ -367,3 +367,53 @@ hr {
 			color:#1ca9e7;
 			text-decoration:none;
 		}
+		
+
+/* currated topic front page(s) */
+.block-box-primary .view-featured-items .views-field-field-blogpost-main-image, 
+.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-blogpost-main-image {
+    margin-bottom: 0;
+}
+#block-boxes-box-f6d81c32 .view-featured-items {
+     border-bottom: 3px solid #666666;
+}
+
+#block-boxes-box-38d154ab{
+	background-color:#f7fcff;
+	margin-top: -10px;
+	margin-bottom:25px;
+}
+
+	#block-boxes-box-38d154ab h2{
+		color:#676767;
+		padding: 8px 0 5px 20px;
+		border-bottom: 1px dotted silver;
+		background:url('../images/bg-quick-study.png') no-repeat 150px 6px;
+	}
+#block-boxes-box-38d154ab .field-name-field-topic-featured-quick-study	{
+	padding:10px 15px 10px 20px;
+}
+	#block-boxes-box-38d154ab .field-name-field-topic-featured-quick-study h2{
+		border:none;
+		font-size:16px;
+		margin-bottom:10px;
+		padding:0;
+		background:none;
+	}
+		#block-boxes-box-38d154ab .field-name-field-topic-featured-quick-study h2 a{
+			color:black;
+		}
+	#block-boxes-box-38d154ab .field-name-field-topic-featured-quick-study .field-name-field-quickstudy-main-image{
+		float:right;
+		margin:0 0 0 20px;
+	}
+		#block-boxes-box-38d154ab .field-name-field-topic-featured-quick-study .field-name-field-quickstudy-main-image img{
+			display:block;
+			border:solid 1px #000;
+		}
+	#block-boxes-box-38d154ab .field-name-field-topic-featured-quick-study .field-name-body,
+	#block-boxes-box-38d154ab .field-name-field-topic-featured-quick-study .field-name-body p{
+		font-size:12px;
+		line-height:15px;
+		margin:0;
+	}

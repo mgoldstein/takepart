@@ -3351,6 +3351,16 @@ body.node-type-takepart-group #page {
 	padding:10px 20px;
 	cursor:pointer;
 }
+.field-name-field-action-url a {
+	border:none;
+	background:#FDAB30;
+	color:#fff;
+	font-weight:bolder;
+	text-transform:uppercase;
+	font-size:14px;
+	padding:10px 20px;
+	cursor:pointer;
+}
 
 /*
  * Jcarousel
