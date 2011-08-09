@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function takepart_topic_front_context_default_contexts() {
   $export = array();
@@ -43,23 +43,29 @@ function takepart_topic_front_context_default_contexts() {
           'region' => 'content_top',
           'weight' => 1,
         ),
-        'views-quick_study-block' => array(
-          'module' => 'views',
-          'delta' => 'quick_study-block',
-          'region' => 'content_top',
-          'weight' => 2,
-        ),
         'views-taxonomy_search_list-block' => array(
           'module' => 'views',
           'delta' => 'taxonomy_search_list-block',
           'region' => 'content_bottom',
           'weight' => 0,
         ),
-        'views-related_campaigns-block_1' => array(
+        'boxes-box-f8bddbae' => array(
+          'module' => 'boxes',
+          'delta' => 'box-f8bddbae',
+          'region' => 'content_bottom',
+          'weight' => 1,
+        ),
+        'views-related_actions-block_3' => array(
           'module' => 'views',
-          'delta' => 'related_campaigns-block_1',
+          'delta' => 'related_actions-block_3',
           'region' => 'sidebar_second',
           'weight' => 0,
+        ),
+        'views-related_campaigns-block_2' => array(
+          'module' => 'views',
+          'delta' => 'related_campaigns-block_2',
+          'region' => 'sidebar_second',
+          'weight' => 1,
         ),
       ),
     ),

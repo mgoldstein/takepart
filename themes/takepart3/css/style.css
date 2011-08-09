@@ -2194,6 +2194,7 @@ h2.title a{
   padding: 0 10px 0 20px;
 }
 
+.view-article-date,
 .submitted-wrapper .article-date {
   background: url('../images/sprite-horizontal.gif') no-repeat;
   background-position: 0 -395px;
@@ -3405,3 +3406,23 @@ ul.tabs.primary{
 .field-name-field-media-caption{
   text-align:center;
 }
+/*
+ * contrib view
+ */
+
+.view-author-contributions .views-row {
+  margin-top:25px;
+}
+.view-author-contributions .view-article-date {
+  margin-left :0px;
+}
+.view-author-contributions .views-field {
+  //margin-left :110px;
+}
+.view-author-contributions .views-field-field-promo-text {
+  margin-top:10px;
+}
+.view-author-contributions .views-field-field-thumbnail {
+  margin-left:0px;
+}
+

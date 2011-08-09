@@ -55,7 +55,7 @@ $info['projects']['media_views_widget']['type']                 = 'module';
 $info['projects']['media_views_widget']['subdir']               = 'contrib';
 $info['projects']['media_views_widget']['download']['type']     = 'git';
 $info['projects']['media_views_widget']['download']['url']      = 'git@github.com:phase2/media_views_widget.git';
-$info['projects']['media_views_widget']['download']['revision'] = '136354c3a2990eb991633ef64cae9c40520fc323';
+$info['projects']['media_views_widget']['download']['revision'] = '520ec324fb7932ef916450d673010d87b3499da8';
 
 /* Taxonomy View */
 $info['projects']['taxonomy_view']['type']                 = 'module';
@@ -358,7 +358,13 @@ $info['projects']['openpublish_features']['type']                 = 'module';
 $info['projects']['openpublish_features']['download']['type']     = 'git';
 $info['projects']['openpublish_features']['download']['url']      = 'git@phase2.beanstalkapp.com:/openpublish_features.git';
 $info['projects']['openpublish_features']['download']['revision'] = '829432e1565cf1fd535ca47cd4686dd16164f8a9';
-
+                                               
+/* Use static_404 module from OpenPublic */
+$info['projects']['static_404']['type']                 = 'module';
+$info['projects']['static_404']['download']['type']     = 'svn';
+$info['projects']['static_404']['download']['url']      = 'https://phase2.svn.beanstalkapp.com/phase2_d7/trunk/openpublic/modules/custom/static_404';
+$info['projects']['static_404']['download']['revision'] = '822';
+                                               
 // This came out of openpublish_features
 $info['projects']['field_boxes']['type']                  = 'module';
 $info['projects']['field_boxes']['subdir']                = 'contrib';

@@ -51,6 +51,13 @@ function takepart_quick_study_field_default_fields() {
           'type' => 'text_default',
           'weight' => '1',
         ),
+        'embed' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
         'full' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -135,6 +142,7 @@ function takepart_quick_study_field_default_fields() {
             'vocabulary' => 'video_series',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -150,6 +158,12 @@ function takepart_quick_study_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
+          'weight' => '3',
+        ),
+        'embed' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '3',
         ),
         'full' => array(
@@ -177,6 +191,7 @@ function takepart_quick_study_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -214,6 +229,7 @@ function takepart_quick_study_field_default_fields() {
             'vocabulary' => 'free_tags',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -225,6 +241,12 @@ function takepart_quick_study_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
+        'embed' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
@@ -255,6 +277,7 @@ function takepart_quick_study_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -293,6 +316,16 @@ function takepart_quick_study_field_default_fields() {
           'settings' => array(
             'image_link' => '',
             'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '0',
+        ),
+        'embed' => array(
+          'label' => 'hidden',
+          'module' => 'media_image_formatter',
+          'settings' => array(
+            'image_link' => 'content',
+            'image_style' => 'tp_popular_gallery_thumbnail',
           ),
           'type' => 'image',
           'weight' => '0',
@@ -376,6 +409,7 @@ function takepart_quick_study_field_default_fields() {
             'vocabulary' => 'topic',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -391,6 +425,12 @@ function takepart_quick_study_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
+          'weight' => '2',
+        ),
+        'embed' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '2',
         ),
         'full' => array(
@@ -480,7 +520,7 @@ function takepart_quick_study_field_default_fields() {
           'label' => 'hidden',
           'module' => 'node_reference',
           'settings' => array(
-            'node_reference_view_mode' => 'teaser',
+            'node_reference_view_mode' => 'embed',
           ),
           'type' => 'node_reference_node',
           'weight' => '1',
