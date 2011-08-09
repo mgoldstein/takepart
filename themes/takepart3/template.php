@@ -414,5 +414,5 @@ function _render_tp3_quick_study_topics($node){
 }
 
 function _render_tp3_header_search_form() {
-  return module_invoke('search_api_page', 'block_view', '1');
+  return module_invoke('search_api_page', 'block_view', '2');
 }
