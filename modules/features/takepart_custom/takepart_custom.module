@@ -12,6 +12,7 @@ include_once('takepart_custom.block.inc');
  */
  
 function takepart_custom_form_node_form_alter(&$form, $form_state, $form_id) {
+    drupal_add_css(drupal_get_path("module", 'takepart_custom') . "/takepart_custom.css");
     // Add access to the 'Publishing options' fieldset.
     $form['options']['promote']['#access'] = FALSE;
     $form['options']['sticky']['#access'] = FALSE;

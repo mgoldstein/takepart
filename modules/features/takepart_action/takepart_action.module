@@ -13,7 +13,35 @@ function takepart_action_form_action_node_form_alter(&$form, &$form_state, $form
   );
 }
 
+/*
+ * implement hook_field_actach_load()
+ *
+ * we are adding a local link if there is no action url
+ * we need to add this or no item will show.
+ * JS makes sure that this link is not followed
+ */
+function takepart_action_field_attach_load($entity_type, $entities, $age, $options) {
 
+  if ($entity_type == 'node') {
+    foreach($entities as $entity) {
+      if($entity->type == 'action') {
+        drupal_set_message("<pre>".print_r($entity, TRUE)."</pre>");
+        if (empty($entity->field_action_url)) {
+          $entity->field_action_url = Array(
+            'und' => array(
+              0 => Array(
+               'url' => 'local',
+               'title' => 'Take Action',
+               'attributes' => array(
+               ),
+              ),
+            ),
+          );
+        }
+      }
+    }
+  }
+}
 function takepart_action_preprocess_page(&$variables) {
    
   if(!empty($variables['node']) && $variables['node']->type == 'action') {

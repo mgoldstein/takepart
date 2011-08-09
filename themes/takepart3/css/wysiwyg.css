@@ -1,4 +1,4 @@
-q {
+q, q.pull-quote {
   background: url('../images/bg-quote.gif') no-repeat 0 4px;
   color: #999;
   font-size: 28px;
@@ -7,7 +7,7 @@ q {
   padding: 0 10px 0 60px;
 }
 
-q p{
+q p, q.pull-quote p{
   font-size: 28px;
 }
 
@@ -41,4 +41,11 @@ blockquote{
 	font-size: 14px;
 	quotes: none;
 	line-height:24px;
+}
+.caption {
+  font-size: 11px;
+  color: #999;
+  line-height: normal;
+  border-bottom: 1px dotted #999;
+  padding: 15px 0;
 }
