@@ -29,7 +29,12 @@
     </div>
     <div class="clear clearfix" id="nav-wrap">
         <div id="nav-logo-arrow"></div>
-        <?php print $top_nav; ?>
+        
+        <?php 
+        print render($page['main_nav']); 
+        // print $top_nav; 
+        ?>
+        
         <div id="top-search">
             <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
         </div><!--/top search-->

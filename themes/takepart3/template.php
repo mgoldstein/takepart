@@ -72,6 +72,7 @@ function _render_tp3_main_menu() {
   }
   
   return "<ul id='top-nav'>" . implode($links) ."</ul>";
+  // return var_dump($menu_data);
 }
 
 /**
