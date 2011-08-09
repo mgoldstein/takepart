@@ -3404,13 +3404,13 @@ body.node-type-takepart-group #page {
     
 ul.links{
   position: fixed;
-  right: 420px;
+  right: 140px;
   top: 26px;
   z-index: 10000000;
 }
 ul.tabs.primary{
   position: fixed;
-  right: 140px;
+  right: 230px;
   top: 40px;
   z-index: 10000000;
 }
