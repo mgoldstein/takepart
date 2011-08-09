@@ -43,3 +43,9 @@ jQuery.fn.DefaultValue = function(text){
 jQuery(document).ready(function() {
 	jQuery('#top-search .form-text').DefaultValue('Search TakePart');		
 });
+
+(function($) {
+  Drupal.behaviors.takepart3 = { attach: function(context) {
+    jQuery("a[href^='http']", context).attr('target','_blank');
+    
+  }};
