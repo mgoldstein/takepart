@@ -198,9 +198,12 @@ function newsletter_campaign_block_view($delta) {
     $result = entity_load('newsletter_campaign', array($delta));
     $camp = $result[$delta];
     
+    $allowed_tags = array('i', 'strong', 'u');
+    
     $form_vars = array(
-      'form_id' => $camp->campaign_id,
-      'promo_text' => $camp->promo_message,
+      'form_id' => check_plain($camp->campaign_id),
+      'promo_text' => filter_xss($camp->promo_message, $allowed_tags),
+      'header_text' => filter_xss($camp->header, $allowed_tags),
       'signup_form' => drupal_get_form('newsletter_campaign_signup_form', $camp->campaign_id)
     );
     
@@ -209,7 +212,7 @@ function newsletter_campaign_block_view($delta) {
   
   $block = array();
   $block['content'] = $content;
-  $block['subject'] = $camp->header;
+  $block['subject'] = filter_xss($camp->header, $allowed_tags);
   
   return $block;
 }
@@ -220,7 +223,7 @@ function newsletter_campaign_block_view($delta) {
 function newsletter_campaign_theme() {
   return array(
     'newsletter_signup_block' => array(
-      'variables' => array('form_id' => NULL, 'promo_text' => NULL, 'signup_form' => NULL),
+      'variables' => array('form_id' => NULL, 'promo_text' => NULL, 'header_text' => NULL, 'signup_form' => NULL),
       'template' => 'newsletter-signup-block',
     ),
   );
@@ -273,10 +276,10 @@ function _newsletter_campaign_list() {
   foreach($campaigns as $camp) {
     $row = array();
     $row[] = l($camp->title, 'admin/structure/newsletter-campaign/'. $camp->ncid .'/edit');
-    $row[] = $camp->campaign_id;
-    $row[] = $camp->header;
-    $row[] = $camp->promo_message;
-    $row[] = $camp->thankyou_message;
+    $row[] = check_plain($camp->campaign_id);
+    $row[] = filter_xss_admin($camp->header);
+    $row[] = filter_xss_admin($camp->promo_message);
+    $row[] = filter_xss_admin($camp->thankyou_message);
     $edit   = l('Edit', 'admin/structure/newsletter-campaign/' . $camp->ncid ."/edit");
     $delete = l('X', 'admin/structure/newsletter-campaign/'. $camp->ncid .'/delete', array('attributes' => array('title' => 'Delete')));
     $row[] = $edit ." | ". $delete; 
