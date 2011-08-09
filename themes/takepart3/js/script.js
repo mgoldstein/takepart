@@ -49,3 +49,4 @@ jQuery(document).ready(function() {
     jQuery("a[href^='http']", context).attr('target','_blank');
     
   }};
+})(jQuery);

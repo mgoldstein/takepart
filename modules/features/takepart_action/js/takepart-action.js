@@ -2,17 +2,15 @@
   // handle the click funciton on the take action button.
   Drupal.behaviors.TPactionClick = {
     attach: function (context, settings) {
-      $('.node-action form#take-action #take-action-btn', context).click(
-        function() {
+      $('.node-action .field-name-field-action-url a', context).click(
+        function(e) {
+          //if it is marked as local we are just recording the hit
+          if ($(this).attr('href') == '/local') {
+            e.preventDefault();
+          }
           s.events='event37';
           s.tl(true, 'o', 'Take Action Button Click');
-
-          if(typeof settings.TPactionClick.action_url != 'undefined') {
-            window.location = settings.TPactionClick.action_url;
-          }
-          else {
-            $(this).val('Action Taken').addClass('action-taken');
-          }
+          $(this).html('Action Taken').addClass('action-taken');
         }
       );
     }

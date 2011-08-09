@@ -327,12 +327,12 @@ function takepart3_field__field_tp_campaign_seg_4_rel(&$vars){
 
 function takepart3_field__field_topic($vars){
   
-  if(count($vars['items'])){
+  $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
+  if(count($vars['items']) || count($field_free_tag)){
     $links = array();
     foreach($vars['items'] as $key => $value){
       $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
     }
-    $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
 
     foreach($field_free_tag as $key => $value){
       $term = taxonomy_term_load($value['tid']);
@@ -415,5 +415,5 @@ function _render_tp3_quick_study_topics($node){
 }
 
 function _render_tp3_header_search_form() {
-  return module_invoke('search', 'block_view', 'search');
+  return module_invoke('search_api_page', 'block_view', '2');
 }

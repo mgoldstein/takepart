@@ -58,18 +58,8 @@ function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form
   
   $form['#prefix'] = '<h2 class="title">' . $register_title . '</h2>';
   $form['#prefix'] .= variable_get("takepart_user_register_intro_text","<p>In order to participate in discussions on TakePart.com, you must be a member (no obligation).</p>");
-  $form['#prefix'] .='<div class="fb-login-button">
-<fb:login-button>
-<a class="fb_button fb_button_medium">
-<span class="fb_button_text">
-<fb:intl>
-Connect with Facebook
-</fb:intl>
-</span>
-</a>
-</fb:login-button>
-</div>';
-    global $user;
+  $form['#prefix'] .='<div class="fb-login-button"><fb:login-button perms="user_birthday, email" ><fb:intl>Connect with Facebook</fb:intl></fb:login-button></div>';
+  global $user;
   if (!(user_access('administer users'))) {
     $form['#validate'][] = '_takepart_user_validate';
     $form['actions']['submit']['#value'] = 'Register';

@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_ctools_plugin_api().
+ * Implements hook_ctools_plugin_api().
  */
 function takepart_search_ctools_plugin_api() {
   list($module, $api) = func_get_args();
@@ -15,7 +15,7 @@ function takepart_search_ctools_plugin_api() {
 }
 
 /**
- * Implementation of hook_default_search_api_facet().
+ * Implements hook_default_search_api_facet().
  */
 function takepart_search_default_search_api_facet() {
   $items = array();
@@ -142,7 +142,6 @@ function takepart_search_default_search_api_facet() {
         "section_front" : "Section Front",
         "topic_front" : "Topic Front",
         "openpublish_video" : "Video",
-        "video_series" : "Video Series",
         "webform" : "Webform"
       }
     },
@@ -152,7 +151,7 @@ function takepart_search_default_search_api_facet() {
 }
 
 /**
- * Implementation of hook_default_search_api_index().
+ * Implements hook_default_search_api_index().
  */
 function takepart_search_default_search_api_index() {
   $items = array();
@@ -279,7 +278,7 @@ function takepart_search_default_search_api_index() {
         "last_view" : { "name" : "Last view", "indexed" : 0, "type" : "date", "boost" : "1.0" },
         "field_author" : {
           "name" : "Author(s)",
-          "indexed" : 0,
+          "indexed" : 1,
           "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
           "boost" : "1.0"
@@ -381,37 +380,25 @@ function takepart_search_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_blogpost_subhead" : { "name" : "Subhead", "indexed" : 0, "type" : "text", "boost" : "1.0" },
-        "field_photo_credit" : {
-          "name" : "Photo Credit",
-          "indexed" : 0,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_action_related" : {
-          "name" : "Related Actions",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_action_suggest_related" : {
-          "name" : "Suggest Related Actions?",
-          "indexed" : 0,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "field_suggest_related" : {
-          "name" : "Suggest Related Content?",
-          "indexed" : 0,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
         "field_subhead" : { "name" : "Sub Head", "indexed" : 0, "type" : "text", "boost" : "1.0" },
         "field_video_related" : {
           "name" : "Related Video",
           "indexed" : 0,
           "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_video_series" : {
+          "name" : "Video Series",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_suggest_video" : {
+          "name" : "Suggest Related Videos?",
+          "indexed" : 0,
+          "type" : "boolean",
           "boost" : "1.0"
         },
         "field_profile_job_title" : { "name" : "Job Title", "indexed" : 0, "type" : "text", "boost" : "1.0" },
@@ -441,6 +428,13 @@ function takepart_search_default_search_api_index() {
           "indexed" : 0,
           "type" : "integer",
           "entity_type" : "user",
+          "boost" : "1.0"
+        },
+        "field_action_related" : {
+          "name" : "Related Actions",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "node",
           "boost" : "1.0"
         },
         "field_action_sponsor" : {
@@ -504,34 +498,6 @@ function takepart_search_default_search_api_index() {
           "name" : "Suggest Related Content?",
           "indexed" : 0,
           "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "field_series_videos_by_tag" : {
-          "name" : "Series Videos by Tag",
-          "indexed" : 1,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_series_videos_refs" : {
-          "name" : "Series Videos",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_vs_free_term" : {
-          "name" : "Tags",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_vs_topic_term" : {
-          "name" : "Topic",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
         "field_tp_campaign_5_things_head" : {
@@ -655,6 +621,164 @@ function takepart_search_default_search_api_index() {
           "indexed" : 0,
           "type" : "text",
           "boost" : "1.0"
+        },
+        "body:value" : {
+          "name" : "The main body text \\u00bb Text",
+          "indexed" : 1,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "body:summary" : {
+          "name" : "The main body text \\u00bb Summary",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "body:format" : {
+          "name" : "The main body text \\u00bb Text format",
+          "indexed" : 0,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_author:nid" : {
+          "name" : "Author(s) \\u00bb Node ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:vid" : {
+          "name" : "Author(s) \\u00bb Revision ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:is_new" : {
+          "name" : "Author(s) \\u00bb Is new",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:type" : {
+          "name" : "Author(s) \\u00bb Content type",
+          "indexed" : 0,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:title" : {
+          "name" : "Author(s) \\u00bb Title",
+          "indexed" : 1,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:language" : {
+          "name" : "Author(s) \\u00bb Language",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:url" : {
+          "name" : "Author(s) \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:edit_url" : {
+          "name" : "Author(s) \\u00bb Edit URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:status" : {
+          "name" : "Author(s) \\u00bb Published",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:promote" : {
+          "name" : "Author(s) \\u00bb Promoted to frontpage",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:sticky" : {
+          "name" : "Author(s) \\u00bb Sticky in lists",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:created" : {
+          "name" : "Author(s) \\u00bb Date created",
+          "indexed" : 0,
+          "type" : "list\\u003cdate\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:changed" : {
+          "name" : "Author(s) \\u00bb Date changed",
+          "indexed" : 0,
+          "type" : "list\\u003cdate\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:author" : {
+          "name" : "Author(s) \\u00bb Author",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "user",
+          "boost" : "1.0"
+        },
+        "field_author:source" : {
+          "name" : "Author(s) \\u00bb Translation source node",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_author:log" : {
+          "name" : "Author(s) \\u00bb Revision log message",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:revision" : {
+          "name" : "Author(s) \\u00bb Creates revision",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:comment" : {
+          "name" : "Author(s) \\u00bb Comments allowed",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:comment_count" : {
+          "name" : "Author(s) \\u00bb Comment count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:comment_count_new" : {
+          "name" : "Author(s) \\u00bb New comment count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:views" : {
+          "name" : "Author(s) \\u00bb Number of views",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:day_views" : {
+          "name" : "Author(s) \\u00bb Views today",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_author:last_view" : {
+          "name" : "Author(s) \\u00bb Last view",
+          "indexed" : 0,
+          "type" : "list\\u003cdate\\u003e",
+          "boost" : "1.0"
         }
       },
       "data_alter_callbacks" : {
@@ -762,7 +886,7 @@ function takepart_search_default_search_api_index() {
 }
 
 /**
- * Implementation of hook_default_search_api_server().
+ * Implements hook_default_search_api_server().
  */
 function takepart_search_default_search_api_server() {
   $items = array();
