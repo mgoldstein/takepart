@@ -21,8 +21,8 @@
   	<div class="clear"></div>
 	  	<ul id="top-follow">
 				<li class="title">Follow Us</li>
-				<li class="fb"><a href="http://www.facebook.com/takepart">facebook</a></li>
-				<li class="twitter"><a href="http://www.twitter.com/takepart">twitter</a></li>
+				<li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
+				<li class="twitter"><a target = '_blank' href="http://www.twitter.com/takepart">twitter</a></li>
 				<li class="rss"><a href="#">rss</a></li>
 			</ul><!--/top follow-->
     </div>
