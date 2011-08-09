@@ -458,6 +458,10 @@ ul#top-nav li.last a{
 	margin: 7px 8px 0;
 }
 
+#top-search .form-item {
+  margin: 0px;
+}
+
 #top-search .form-text {
 	border:none;
 	color:#999999;
@@ -2957,6 +2961,11 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2 {
 	font-size:12px;
 	margin-bottom:20px;
 }
+.confirm-parent,
+.password-parent {
+  width: 45.3em;
+}
+
 .form-item-field-account-dateofbirth-und-0-value div.description {
 	margin-top:5px;
 }
@@ -3342,6 +3351,16 @@ body.node-type-takepart-group #page {
 	margin-right:15px;
 }
 #take-action-btn {
+	border:none;
+	background:#FDAB30;
+	color:#fff;
+	font-weight:bolder;
+	text-transform:uppercase;
+	font-size:14px;
+	padding:10px 20px;
+	cursor:pointer;
+}
+.field-name-field-action-url a {
 	border:none;
 	background:#FDAB30;
 	color:#fff;
