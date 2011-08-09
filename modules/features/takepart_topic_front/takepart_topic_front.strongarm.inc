@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_strongarm().
+ * Implements hook_strongarm().
  */
 function takepart_topic_front_strongarm() {
   $export = array();
