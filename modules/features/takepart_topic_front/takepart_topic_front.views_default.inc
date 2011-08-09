@@ -492,7 +492,7 @@ print $value;
   $view->name = 'taxonomy_search_list';
   $view->description = '';
   $view->tag = 'default';
-  $view->base_table = 'search_api_index_standard_node_index';
+  $view->base_table = 'search_api_index_site_node_index';
   $view->human_name = 'Taxonomy Search List';
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
@@ -521,7 +521,7 @@ print $value;
   $handler->display->display_options['empty']['area']['content'] = 'There is no associated content';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_standard_node_index';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
@@ -542,7 +542,7 @@ print $value;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   /* Field: Content: Promo Headline */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
-  $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_standard_node_index';
+  $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['label'] = '';
   $handler->display->display_options['fields']['field_promo_headline']['exclude'] = TRUE;
@@ -566,7 +566,7 @@ print $value;
   $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = 1;
   /* Field: Content: Content type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'search_api_index_standard_node_index';
+  $handler->display->display_options['fields']['type']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['alter']['alter_text'] = 0;
@@ -586,7 +586,7 @@ print $value;
   $handler->display->display_options['fields']['type']['empty_zero'] = 0;
   /* Field: Linked Headline */
   $handler->display->display_options['fields']['url']['id'] = 'url';
-  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_standard_node_index';
+  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['url']['field'] = 'url';
   $handler->display->display_options['fields']['url']['ui_name'] = 'Linked Headline';
   $handler->display->display_options['fields']['url']['label'] = '';
@@ -609,7 +609,7 @@ print $value;
   $handler->display->display_options['fields']['url']['empty_zero'] = 0;
   /* Field: Content: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['table'] = 'search_api_index_standard_node_index';
+  $handler->display->display_options['fields']['field_promo_text']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['label'] = '';
   $handler->display->display_options['fields']['field_promo_text']['alter']['alter_text'] = 0;
@@ -629,7 +629,7 @@ print $value;
   $handler->display->display_options['fields']['field_promo_text']['empty_zero'] = 0;
   /* Contextual filter: Topics [taxonomy_term] */
   $handler->display->display_options['arguments']['field_topic_1']['id'] = 'field_topic_1';
-  $handler->display->display_options['arguments']['field_topic_1']['table'] = 'search_api_index_standard_node_index';
+  $handler->display->display_options['arguments']['field_topic_1']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['arguments']['field_topic_1']['field'] = 'field_topic';
   $handler->display->display_options['arguments']['field_topic_1']['ui_name'] = 'Topics [taxonomy_term]';
   $handler->display->display_options['arguments']['field_topic_1']['default_action'] = 'default';
@@ -658,7 +658,7 @@ print $value;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Free Tags [taxonomy_term] */
   $handler->display->display_options['arguments']['field_free_tag']['id'] = 'field_free_tag';
-  $handler->display->display_options['arguments']['field_free_tag']['table'] = 'search_api_index_standard_node_index';
+  $handler->display->display_options['arguments']['field_free_tag']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['arguments']['field_free_tag']['field'] = 'field_free_tag';
   $handler->display->display_options['arguments']['field_free_tag']['ui_name'] = 'Free Tags [taxonomy_term]';
   $handler->display->display_options['arguments']['field_free_tag']['default_action'] = 'default';
@@ -684,7 +684,7 @@ print $value;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['field_series']['id'] = 'field_series';
-  $handler->display->display_options['arguments']['field_series']['table'] = 'search_api_index_standard_node_index';
+  $handler->display->display_options['arguments']['field_series']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['arguments']['field_series']['field'] = 'field_series';
   $handler->display->display_options['arguments']['field_series']['ui_name'] = 'Series [taxonomy_term]';
   $handler->display->display_options['arguments']['field_series']['default_action'] = 'default';

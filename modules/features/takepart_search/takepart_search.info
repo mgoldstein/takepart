@@ -1,6 +1,7 @@
 core = "7.x"
 dependencies[] = "context"
 dependencies[] = "search_api_facets"
+dependencies[] = "search_api_sorts"
 description = "Search API items exported"
 features[context][] = "block_search"
 features[ctools][] = "context:context:3"

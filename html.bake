@@ -308,6 +308,13 @@ $info['projects']['search_api_solr']['type']     = 'module';
 $info['projects']['search_api_solr']['subdir']   = 'contrib';
 $info['projects']['search_api_solr']['version']  = '1.0-beta2';
 
+/* Used for Apache SOLR Sort Block */
+$info['projects']['search_api_sorts']['type']                 = 'module';
+$info['projects']['search_api_sorts']['subdir']               = 'contrib';
+$info['projects']['search_api_sorts']['download']['type']     = 'git';
+$info['projects']['search_api_sorts']['download']['url']      = 'http://git.drupal.org/project/search_api_sorts.git';
+$info['projects']['search_api_sorts']['download']['revision'] = '4c37337bbcbb32005eed46c0108470d8cf6cd1b7';
+
 /* Used to update jQuery Libraries in core */
 $info['projects']['jquery_update']['type']     = 'module';
 $info['projects']['jquery_update']['subdir']   = 'contrib';
@@ -351,7 +358,13 @@ $info['projects']['openpublish_features']['type']                 = 'module';
 $info['projects']['openpublish_features']['download']['type']     = 'git';
 $info['projects']['openpublish_features']['download']['url']      = 'git@phase2.beanstalkapp.com:/openpublish_features.git';
 $info['projects']['openpublish_features']['download']['revision'] = '829432e1565cf1fd535ca47cd4686dd16164f8a9';
-
+                                               
+/* Use static_404 module from OpenPublic */
+$info['projects']['static_404']['type']                 = 'module';
+$info['projects']['static_404']['download']['type']     = 'svn';
+$info['projects']['static_404']['download']['url']      = 'https://phase2.svn.beanstalkapp.com/phase2_d7/trunk/openpublic/modules/custom/static_404';
+$info['projects']['static_404']['download']['revision'] = '822';
+                                               
 // This came out of openpublish_features
 $info['projects']['field_boxes']['type']                  = 'module';
 $info['projects']['field_boxes']['subdir']                = 'contrib';
