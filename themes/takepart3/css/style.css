@@ -2493,7 +2493,7 @@ body.node-type-openpublish-blog-post h1.page-title {
 
 /***** WYSIWYG *****/
 
-q {
+q, q.pull-quote {
   background: url('../images/bg-quote.gif') no-repeat 0 4px;
   color: #999;
   font-size: 28px;
@@ -2502,7 +2502,7 @@ q {
   padding: 0 10px 0 60px;
 }
 
-q p {
+q p, q.pull-quote p{
   font-size: 28px;
 }
 
