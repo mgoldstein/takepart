@@ -328,3 +328,42 @@ hr {
 	#right-rail .view-video .views-field-field-promo-headline h3{
 		font-size:14px;
 	}
+
+
+
+/* action + impact page */
+.view-campaigns{
+    border-bottom: 3px solid #666666;
+    padding-bottom: 20px;
+}
+.view-campaigns tr{
+	display:block;
+	margin:0 0 25px 0;
+}
+.view-campaigns td {
+	vertical-align:top;
+	padding:0;
+	width:196px;
+	padding:0 15px 0 0;
+}
+.view-campaigns td .views-field-field-tp-campaign-cover-image img{
+	border: 1px solid black;
+	display:block;
+}
+	.view-campaigns td.col-last{
+		padding:0;
+	}
+.view-campaigns td .views-field-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+	.view-campaigns td .views-field-title a {
+		color: black;
+		font-weight: bold;
+	}
+		.view-campaigns td .views-field-title a:hover{
+			color:#1ca9e7;
+			text-decoration:none;
+		}
