@@ -382,11 +382,13 @@ hr {
 /* videos in content-bottom */
 
 
-.block h2{
+.block-boxes-current-video h2,
+.block-boxes-view-name-video h2{
     background: none repeat scroll 0 0 #CCCCCC;
     margin: 25px 0 7px;
 }
-	.block h2 span{
+	.block-boxes-current-video h2 span,
+	.block-boxes-view-name-video h2 span{
    	 background: none repeat scroll 0 0 #CCCCCC;
     	margin: 25px 0 7px;
 		background-color:#fff;
@@ -395,13 +397,17 @@ hr {
 		text-transform: uppercase;
 	}
 
-	.block .content{
+	.block-boxes-current-video .content,
+	.block-boxes-view-name-video .content{
 		border-top: 1px dotted #000000;
 		padding-bottom: 20px;
 		padding-top: 10px;
 		border-bottom: 3px solid #666666;
 	}
-	
+		#right-rail .block-boxes-view-name-video .content{
+			border:none;
+			padding:0;
+		}
 .view-video .views-row{
     margin-right: 15px;
     width: 196px;
@@ -471,6 +477,7 @@ hr {
     margin-bottom: 15px;
     padding: 10px 0 6px 35px;
     text-transform: uppercase;	
+	 margin-top: 0;
 }
 #left-rail #block-views-related-campaigns-block h2{
     background: url("../images/sprite-box-ribbons.gif") no-repeat 0 -360px;
