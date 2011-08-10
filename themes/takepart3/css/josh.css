@@ -503,11 +503,19 @@ hr {
 	padding:15px 20px;
 	overflow:hidden;
 	margin:0 0 25px 0;
+	clear: both;
 }
 #search-api-page-search-form .form-type-textfield{
 	float:left;
 	margin:0 30px 0 0;
 }
+	#search-api-page-search-form .form-type-textfield label{
+		color: #666666;
+		font-size: 22px;
+		font-weight: bold;
+		line-height: 26px;
+		margin: 0 0 10px;
+	}
 #search-api-page-search-form .form-text{
     border: solid 1px #bcbcbc;
     color: #999999;
@@ -531,7 +539,7 @@ hr {
 	font-weight:bold;
 	font-size:16px;
 	padding:0;
-	margin: 8px 0 0;
+	margin: 28px 0 0;
 	text-indent: 38px;
 }
 	p.search-performance{
@@ -542,6 +550,54 @@ hr {
 	}
 #content .region-content ol.search-results{
 	margin:0;
+	padding:25px 0 0 0;
+	border-top:1px dotted silver;
 }
-
-	
+	#content .region-content ol.search-results li{
+		margin:0 0 20px 0;
+		padding:0 0 15px 0;
+		border-bottom:1px dotted silver;
+	}
+		#content .region-content ol.search-results li h3{
+			margin:0 0 10px 0;
+		}
+			#content .region-content ol.search-results li h3 a{
+				color:#000;
+			}
+		#content .region-content ol.search-results li p{
+			margin:0;
+			color:#666;
+			line-height:17px;
+		}
+#block-search-api-sorts-search-sorts{
+	overflow:hidden;
+	margin:0 0 10px 0;
+}
+#block-search-api-sorts-search-sorts h2{
+	font-size:15px;
+	color:#676868;
+	font-weight:normal;
+	float:left;
+}
+#block-search-api-sorts-search-sorts .content{
+	float:left;
+}
+	#block-search-api-sorts-search-sorts ul{
+		list-style:none;
+		overflow:hidden;
+		margin:5px 0 0 0;
+	}	
+		#block-search-api-sorts-search-sorts ul li{
+			float:left;
+			border-left:solid 1px #676868;
+			padding:0 12px;
+			margin:0;
+			font-size:14px;
+			line-height:16px;
+		}
+			#block-search-api-sorts-search-sorts ul li.first{
+				border-left:none;
+			}		
+			#block-search-api-sorts-search-sorts ul li a{
+				color:#2aaee9;
+			}
