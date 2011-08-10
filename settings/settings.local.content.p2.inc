@@ -13,6 +13,19 @@ $databases = array (
           'prefix' => '',
         ),
     ),
+  'migrate' =>
+    array (
+      'default' =>
+        array (
+          'database' => 'takepart2_bblake',
+          'username' => 'root',
+          'password' => 'papa16',
+          'host' => 'localhost',
+          'port' => '',
+          'driver' => 'mysql',
+          'prefix' => '',
+        ),
+    ),    
 );
 
 //// Code to add to settings.php:
