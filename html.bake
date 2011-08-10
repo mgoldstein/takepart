@@ -29,7 +29,7 @@ $info['projects']['pathauto']['version']                  = '1.0-rc2';
 $info['projects']['views']['version']                     = '3.0-rc1';
 $info['projects']['features']['version']                  = '1.0-beta3';
 $info['projects']['rubik']['version']                     = '4.0-beta6';
-
+unset($info['projects']['addthis']);
 
 /* TakePart Temporary Modules - These should be removed prior to launch or just after */
 
