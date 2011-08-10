@@ -630,3 +630,36 @@ hr {
 			color:#333;
 			font-size:14px;
 		}
+
+/* sponsored by block */
+#block-views-groups-block h2{
+    background: url("../images/sprite-box-ribbons.gif") no-repeat scroll 0 -180px transparent;
+    border-bottom: 2px solid black;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 16px;
+    margin-bottom: 15px;
+    padding: 10px 0 6px 35px;
+    text-transform: uppercase;	
+}
+#block-views-groups-block .view-groups .views-row{
+	overflow:hidden;
+	margin: 0 0 20px;
+}
+#block-views-groups-block .view-groups .views-field-field-group-logo{
+	margin:0 15px 0 0;
+	display:block;
+	float:left;
+}
+	#block-views-groups-block .view-groups img{
+		border:solid 1px black;
+	}
+#block-views-groups-block .view-groups .views-field-title a{
+	font-size: 14px;
+	color:#000;
+	font-weight:bold;
+}
+	#block-views-groups-block .view-groups .views-field-title a:hover{
+		text-decoration:none;
+		color:#1ca9e7;
+	}
