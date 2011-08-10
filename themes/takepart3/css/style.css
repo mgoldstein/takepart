@@ -129,12 +129,22 @@ img.photo, .gallery-item img {
   border: 1px solid #707070;
 }
 
-.caption {
+.caption,
+.field-name-field-media-caption {
   font-size: 11px;
   color: #999;
   line-height: normal;
   border-bottom: 1px dotted #999;
   padding: 15px 0;
+}
+.field-name-field-media-credit {
+  text-align: right;
+}
+.field-name-field-media-credit .field-item:before {
+  content : "(Photo: "
+}
+.field-name-field-media-credit .field-item:after {
+  content : ")"
 }
 
 .photo-wrapper {

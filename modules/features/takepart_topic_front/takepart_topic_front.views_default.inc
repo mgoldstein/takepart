@@ -649,6 +649,20 @@ print $value;
   );
   $handler->display->display_options['arguments']['field_topic_1']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['field_topic_1']['summary']['format'] = 'default_summary';
+  /* Filter criterion: Content: Content type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'action' => 'action',
+    'openpublish_article' => 'openpublish_article',
+    'audio' => 'audio',
+    'openpublish_blog_post' => 'openpublish_blog_post',
+    'takepart_group' => 'takepart_group',
+    'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+    'takepart_quick_study' => 'takepart_quick_study',
+    'openpublish_video' => 'openpublish_video',
+  );
 
   /* Display: Topic */
   $handler = $view->new_display('block', 'Topic', 'block');
@@ -682,7 +696,7 @@ print $value;
   /* Display: Series */
   $handler = $view->new_display('block', 'Series', 'block_2');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Broken/missing handler */
+  /* Contextual filter: Series [taxonomy_term] */
   $handler->display->display_options['arguments']['field_series']['id'] = 'field_series';
   $handler->display->display_options['arguments']['field_series']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['arguments']['field_series']['field'] = 'field_series';
