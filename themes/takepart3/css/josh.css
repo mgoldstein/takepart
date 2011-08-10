@@ -8,13 +8,22 @@ body.sidebar-first #left-rail{
 	width:140px;
 }
 
-.node-type-openpublish-photo-gallery .region-highlighted{
+.region-highlighted{
 	padding:35px 20px 0;
 }
-.node-type-openpublish-photo-gallery .page {
-    padding: 20px 20px 35px;
+	.node-type-takepart-group .region-highlighted{
+		padding:35px 15px 0;
+	}
+.node-type-openpublish-photo-gallery .page,
+.node-type-takepart-group .page {
+    padding: 20px 20px 35px !important;
 }
 
+
+body.node-type-takepart-group #content,
+body.node-type-takepart-group #left-rail{
+	margin-top:0;
+}
 
 
 .contextual-links-region{
@@ -144,6 +153,34 @@ hr {
 .node-type-openpublish-blog-post .region-content-top .field-name-field-blogpost-main-image{
 	margin:0;
 }
+
+
+/* group pages */
+
+.node-type-takepart-group h1 {
+    margin: 0 0 5px;
+}
+.node-type-takepart-group .region-highlighted .field-name-field-group-subhead {
+    color: #666666;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
+	margin:0 0 10px 0;
+	float:left;
+}
+.node-type-takepart-group .region-highlighted .field-name-field-group-type{
+	float:right;
+}
+	.node-type-takepart-group .region-highlighted .field-name-field-group-type a{
+		color: #1686B7;
+		font-weight: bold;
+	}
+
+.node-type-takepart-group .region-highlighted .field-name-field-group-main-image{
+	clear:both;
+}
+
+
 
 
 /***** Taxonomy Search List *****/
