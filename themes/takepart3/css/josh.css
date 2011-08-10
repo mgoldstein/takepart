@@ -525,6 +525,8 @@ hr {
     padding: 2px 5px;
     width: 328px;
 	font-style:italic;
+	height: 15px;
+	line-height:14px;
 }
 #search-api-page-search-form .form-submit{
 	background:url('../images/bg-search-btn.png') no-repeat 105px 12px;
@@ -539,8 +541,9 @@ hr {
 	font-weight:bold;
 	font-size:16px;
 	padding:0;
-	margin: 28px 0 0;
+	margin: 30px 0 0;
 	text-indent: 38px;
+	cursor:pointer;
 }
 	p.search-performance{
 		color:#707071;
@@ -578,6 +581,7 @@ hr {
 	color:#676868;
 	font-weight:normal;
 	float:left;
+	margin:0 5px 0 0;
 }
 #block-search-api-sorts-search-sorts .content{
 	float:left;
@@ -597,7 +601,32 @@ hr {
 		}
 			#block-search-api-sorts-search-sorts ul li.first{
 				border-left:none;
+				padding-left: 0;
 			}		
 			#block-search-api-sorts-search-sorts ul li a{
 				color:#2aaee9;
 			}
+/* search facets */
+.block-search-api-facets{
+	padding:0 0 0 10px;
+	margin:0 0 30px 0;
+}
+.block-search-api-facets .search-api-facets{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+	.block-search-api-facets h2{
+		font-size:16px;
+		line-height:24px;
+		font-weight:bold;
+		color:#000;
+	}
+	.block-search-api-facets .search-api-facets li{
+		margin:0 0 8px 0;
+		padding:0;
+	}
+		.block-search-api-facets .search-api-facets li a{
+			color:#333;
+			font-size:14px;
+		}
