@@ -3487,12 +3487,18 @@ div.tabs ul.tabs.primary li a:hover, ul.links li a:hover {
   margin-left :0px;
 }
 .view-author-contributions .views-field {
-  //margin-left :110px;
+ /*  margin-left :110px; */
 }
 .view-author-contributions .views-field-field-promo-text {
   margin-top:10px;
 }
 .view-author-contributions .views-field-field-thumbnail {
   margin-left:0px;
+}
+
+.blog-post-continue-reading-link { 
+  font-size: 16px;
+  color: #1686B7;
+  font-weight: bold;
 }
 
