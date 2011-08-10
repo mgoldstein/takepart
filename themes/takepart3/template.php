@@ -256,8 +256,14 @@ function takepart3_preprocess_node(&$vars, $hook) {
   
   // add read more link to blog posts.
   if ($hook == 'node' && $vars['view_mode'] == 'teaser' && $vars['type'] == 'openpublish_blog_post') {
-    $more_link = l("Continue Reading &raquo;", "node/". $vars['nid'], array('html' => TRUE));
-    $vars['content']['body'][0]['#markup'] .= "<span class='blog-post-continue-reading-link'>" . $more_link . "</span>"; 
+    $markup_size = strlen($vars['content']['body'][0]['#markup']);
+    $safe_size    = strlen($vars['body'][0]['safe_value']);
+
+    // if markup and safe_value differ, then there is a page break.
+    if ($markup_size < $safe_size) {
+      $more_link = l("Continue Reading &raquo;", "node/". $vars['nid'], array('html' => TRUE));
+      $vars['content']['body'][0]['#markup'] .= "<span class='blog-post-continue-reading-link'>" . $more_link . "</span>"; 
+    }
   }
 }
 
@@ -356,6 +362,7 @@ function takepart3_preprocess_comment(&$vars){
 /**
  * Theme the AddThis button.
  *  - Bypasses the module's output completely. For the time being
+ */
 function takepart3_addthis_button(&$vars = '') {
   
   $images_url = base_path() . path_to_theme() . '/images/';
@@ -377,7 +384,6 @@ function takepart3_addthis_button(&$vars = '') {
   <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e191ae57dbd2572"></script>
   <!-- AddThis Button END -->';
 }
-*/
 
 
 /**
