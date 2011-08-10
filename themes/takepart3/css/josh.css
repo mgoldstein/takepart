@@ -1,7 +1,6 @@
 /* layout styles */
 
 .main-content{
-	overflow: hidden;
 	width:620px;
 }
 body.two-sidebars #left-rail, 
@@ -9,7 +8,29 @@ body.sidebar-first #left-rail{
 	width:140px;
 }
 
+.node-type-openpublish-photo-gallery .region-highlighted{
+	padding:35px 20px 0;
+}
+.node-type-openpublish-photo-gallery .page {
+    padding: 20px 20px 35px;
+}
+
+
+
+.contextual-links-region{
+	margin-bottom:0;
+}
+
 /* base styles */
+@font-face {
+	font-family: Gorrisans;
+	font-weight: normal;
+	src: url('../includes/GorriSans.ttf');
+}
+h1{
+	margin:0 0 20px 0;
+}
+
 hr {
   background: url(../images/sprite.png) repeat-x 0 -159px;
   clear: both;
@@ -59,7 +80,7 @@ hr {
     background: url("../images/sprite2.png") no-repeat scroll 0 0;
 }
 
-/* Carousel */
+/* homepage rotator */
 .view-id-slide_rotator {
 	overflow:hidden;
 }
@@ -71,6 +92,20 @@ hr {
 }
 
 
+.views_slideshow_main .views-field-field-display-tag{
+	top:-145px;
+	font-family: Gorrisans, sans-serif;
+}
+	.views_slideshow_main .views-field-field-display-tag a{
+		font-size:14px;
+		line-height:36px;
+	}
+	.views_slideshow_main .views-field-field-display-tag a:hover{
+		text-decoration:none;
+	}
+.views_slideshow_main .views-field-field-slide-headline-override{
+	top:-112px;
+}
 .views-slideshow-pager-field-item.active .views-content-field-slide-featured-item {
   height: 97px;
   width: 13px;
@@ -93,6 +128,23 @@ hr {
 	margin:0;
 	height:76px;
 }
+
+/* display tag */
+.field-name-field-display-tag{
+	font-family: Gorrisans, sans-serif;
+	margin-bottom:20px;
+}
+	.field-name-field-display-tag a{
+		font-size:14px;
+		line-height:36px;
+	}
+
+
+/* blog pages */
+.node-type-openpublish-blog-post .region-content-top .field-name-field-blogpost-main-image{
+	margin:0;
+}
+
 
 /***** Taxonomy Search List *****/
 
@@ -169,6 +221,26 @@ hr {
 }
 
 /* photo page */
+
+
+.node-type-openpublish-photo-gallery .region-highlighted .field-name-field-display-tag{
+	margin-left:-10px;
+}
+.node-type-openpublish-photo-gallery h1{
+	margin:0 0 5px 0;
+}
+.node-type-openpublish-photo-gallery .submitted-wrapper{
+    border-bottom: medium none;
+    margin: 10px 0 0;
+    padding-bottom: 0;
+}
+
+.node-type-openpublish-photo-gallery .region-highlighted .field-name-field-subhead{
+	font-size:18px;	
+	line-height:22px;
+	font-weight:bold;
+	color:#666;
+}
 
 .view-id-photo_galleries .views-field-field-promo-headline {
     font-size: 16px;
@@ -654,6 +726,10 @@ hr {
 	#block-views-groups-block .view-groups img{
 		border:solid 1px black;
 	}
+#block-views-groups-block .view-groups .views-field-title{
+	display:block;
+	float:left;
+}
 #block-views-groups-block .view-groups .views-field-title a{
 	font-size: 14px;
 	color:#000;
@@ -663,3 +739,47 @@ hr {
 		text-decoration:none;
 		color:#1ca9e7;
 	}
+/* homepage features block */
+.block-boxes-title-features{
+	margin:0 0 20px 0;
+	padding-bottom:10px;
+	border-bottom:1px dotted silver;
+}
+
+
+/* Take Part TV */
+.block-boxes-title-takepart-tv{
+    background:#eff3f5 url("../images/bg-take-tv.jpg") repeat-x scroll 0 0;	
+	margin:0 0 20px 0;
+
+}
+.block-boxes-title-takepart-tv h2{
+    background: url("../images/sprite2.png") no-repeat scroll 0 -600px;	
+	height:44px;
+	width:216px;
+	text-indent:-9999px;
+	margin:0 0 0 22px;
+}
+.block-boxes-title-takepart-tv .content{
+	padding:5px 15px 10px;
+}
+
+.block-boxes-title-takepart-tv .views-row{
+	width:100%;
+	float:none;
+}
+
+.block-boxes-title-takepart-tv .views-field-field-promo-headline h3,
+.block-boxes-title-takepart-tv .views-field-field-promo-text,
+.block-boxes-title-takepart-tv .views-field-view-node a{
+	color:#8e8e8e;
+}
+	.block-boxes-title-takepart-tv .views-field-field-promo-headline h3{
+		margin:0;
+	}
+	.block-boxes-title-takepart-tv .views-field-field-promo-text{
+		margin:0 0 5px 0;
+	}
+
+
+
