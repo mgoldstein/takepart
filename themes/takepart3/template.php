@@ -256,8 +256,6 @@ function takepart3_preprocess_node(&$vars, $hook) {
   
   // add read more link to blog posts.
   if ($hook == 'node' && $vars['view_mode'] == 'teaser' && $vars['type'] == 'openpublish_blog_post') {
-    //dpm($vars);
-    //$vars['nid'];
     $more_link = l("Continue Reading &raquo;", "node/". $vars['nid'], array('html' => TRUE));
     $vars['content']['body'][0]['#markup'] .= "<span class='blog-post-continue-reading-link'>" . $more_link . "</span>"; 
   }

@@ -3502,3 +3502,12 @@ div.tabs ul.tabs.primary li a:hover, ul.links li a:hover {
   font-weight: bold;
 }
 
+
+.node-takepart-quick-study h2{
+  border-bottom: 2px solid black;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+}
+.node-takepart-quick-study .field-name-field-media-caption {
+  padding-bottom:15px;
+}
