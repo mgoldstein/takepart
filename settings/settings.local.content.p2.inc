@@ -17,7 +17,7 @@ $databases = array (
     array (
       'default' =>
         array (
-          'database' => 'bblake_takepart2',
+          'database' => 'takepart2_bblake',
           'username' => 'root',
           'password' => 'papa16',
           'host' => 'localhost',
@@ -34,10 +34,10 @@ $databases = array (
  * Drupal for Facebook settings.
  */
 
-//if (!is_array($conf))
-//  $conf = array(
-//   'omniture_account_name' => 'takeparttakepartdev2',
-//);
+if (!is_array($conf))
+  $conf = array(
+   'omniture_account_name' => 'takeparttakepartdev2',
+);
 
 //$conf['fb_verbose'] = TRUE; // debug output
 //$conf['fb_verbose'] = 'extreme'; // for verbosity fetishists.
