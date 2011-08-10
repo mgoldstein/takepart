@@ -8,9 +8,12 @@ body.sidebar-first #left-rail{
 	width:140px;
 }
 
-.node-type-openpublish-photo-gallery .region-highlighted{
+.region-highlighted{
 	padding:35px 20px 0;
 }
+	.node-type-takepart-group .region-highlighted{
+		padding:35px 15px 0;
+	}
 .node-type-openpublish-photo-gallery .page {
     padding: 20px 20px 35px;
 }
