@@ -381,32 +381,17 @@ hr {
 
 /* videos in content-bottom */
 
-#block-boxes-box-fa7bb73f h2,
-#block-boxes-box-c4f8d8d1 h2,
-#block-boxes-box-c4fcb2ac h2,
-#block-views-video-block-8 h2,
-#block-views-video-block-6 h2,
-#block-boxes-box-208c3905 h2{
+.block h2{
     background: none repeat scroll 0 0 #CCCCCC;
     margin: 25px 0 7px;
 }
-	#block-boxes-box-fa7bb73f h2 span,
-	#block-boxes-box-c4f8d8d1 h2 span,
-	#block-boxes-box-c4fcb2ac h2 span,
-	#block-views-video-block-8 h2 span,
-	#block-views-video-block-6 h2 span,
-	#block-boxes-box-208c3905 h2 span{
+	.block h2 span{
 		background-color:#fff;
 		border-right: 5px solid #FFFFFF;
 		padding: 2px 5px 2px 0;
 		text-transform: uppercase;
 	}
-	#block-boxes-box-fa7bb73f .content,
-	#block-boxes-box-c4f8d8d1 .content,
-	#block-boxes-box-c4fcb2ac .content,
-	#block-views-video-block-8 .content,
-	#block-views-video-block-6 .content,
-	#block-boxes-box-208c3905 .content{
+	.block .content{
 		border-top: 1px dotted #000000;
 		padding-bottom: 20px;
 		padding-top: 10px;
