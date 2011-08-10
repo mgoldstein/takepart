@@ -627,6 +627,11 @@ print $value;
   $handler->display->display_options['fields']['field_promo_text']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_promo_text']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['empty_zero'] = 0;
+  /* Sort criterion: Content: Date created */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   /* Contextual filter: Topics [taxonomy_term] */
   $handler->display->display_options['arguments']['field_topic_1']['id'] = 'field_topic_1';
   $handler->display->display_options['arguments']['field_topic_1']['table'] = 'search_api_index_site_node_index';
