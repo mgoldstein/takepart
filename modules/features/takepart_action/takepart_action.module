@@ -25,7 +25,7 @@ function takepart_action_field_attach_load($entity_type, $entities, $age, $optio
   if ($entity_type == 'node') {
     foreach($entities as $entity) {
       if($entity->type == 'action') {
-        drupal_set_message("<pre>".print_r($entity, TRUE)."</pre>");
+     //   drupal_set_message("<pre>".print_r($entity, TRUE)."</pre>");
         if (empty($entity->field_action_url)) {
           $entity->field_action_url = Array(
             'und' => array(
