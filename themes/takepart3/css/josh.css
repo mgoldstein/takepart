@@ -381,17 +381,17 @@ hr {
 
 /* videos in content-bottom */
 
-.main-content .block h2{
+.block h2{
     background: none repeat scroll 0 0 #CCCCCC;
     margin: 25px 0 7px;
 }
-	.main-content .block h2 span{
+	.block h2 span{
 		background-color:#fff;
 		border-right: 5px solid #FFFFFF;
 		padding: 2px 5px 2px 0;
 		text-transform: uppercase;
 	}
-	.main-content .block .content{
+	.block .content{
 		border-top: 1px dotted #000000;
 		padding-bottom: 20px;
 		padding-top: 10px;
