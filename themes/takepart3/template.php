@@ -356,7 +356,6 @@ function takepart3_preprocess_comment(&$vars){
 /**
  * Theme the AddThis button.
  *  - Bypasses the module's output completely. For the time being
- */
 function takepart3_addthis_button(&$vars = '') {
   
   $images_url = base_path() . path_to_theme() . '/images/';
@@ -378,6 +377,7 @@ function takepart3_addthis_button(&$vars = '') {
   <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e191ae57dbd2572"></script>
   <!-- AddThis Button END -->';
 }
+*/
 
 
 /**
