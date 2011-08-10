@@ -1,7 +1,6 @@
 /* layout styles */
 
 .main-content{
-	overflow: hidden;
 	width:620px;
 }
 body.two-sidebars #left-rail, 
@@ -654,6 +653,10 @@ hr {
 	#block-views-groups-block .view-groups img{
 		border:solid 1px black;
 	}
+#block-views-groups-block .view-groups .views-field-title{
+	display:block;
+	float:left;
+}
 #block-views-groups-block .view-groups .views-field-title a{
 	font-size: 14px;
 	color:#000;
@@ -663,3 +666,47 @@ hr {
 		text-decoration:none;
 		color:#1ca9e7;
 	}
+/* homepage features block */
+.block-boxes-title-features{
+	margin:0 0 20px 0;
+	padding-bottom:10px;
+	border-bottom:1px dotted silver;
+}
+
+
+/* Take Part TV */
+.block-boxes-title-takepart-tv{
+    background:#eff3f5 url("../images/bg-take-tv.jpg") repeat-x scroll 0 0;	
+	margin:0 0 20px 0;
+
+}
+.block-boxes-title-takepart-tv h2{
+    background: url("../images/sprite2.png") no-repeat scroll 0 -600px;	
+	height:44px;
+	width:216px;
+	text-indent:-9999px;
+	margin:0 0 0 22px;
+}
+.block-boxes-title-takepart-tv .content{
+	padding:5px 15px 10px;
+}
+
+.block-boxes-title-takepart-tv .views-row{
+	width:100%;
+	float:none;
+}
+
+.block-boxes-title-takepart-tv .views-field-field-promo-headline h3,
+.block-boxes-title-takepart-tv .views-field-field-promo-text,
+.block-boxes-title-takepart-tv .views-field-view-node a{
+	color:#8e8e8e;
+}
+	.block-boxes-title-takepart-tv .views-field-field-promo-headline h3{
+		margin:0;
+	}
+	.block-boxes-title-takepart-tv .views-field-field-promo-text{
+		margin:0 0 5px 0;
+	}
+
+
+
