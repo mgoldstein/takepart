@@ -823,4 +823,40 @@ hr {
 	}
 
 
+/* author page */
+#author_info .auhor-bio p{
+	margin:0;
+}
+.node-profile .author-bio-photo img{
+	border:solid 1px black;
+}
+.view-author-contributions{
+	margin-top:15px;	
+}
+#author-contributions h2{
+	font-size:20px;
+	text-transform:uppercase;
+}
+.view-author-contributions .views-row{
+	overflow:hidden;
+	border-bottom: 1px dotted silver;
+    margin: 0 0 20px;
+    padding: 0 0 15px;
+}
 
+.view-author-contributions .views-field-field-thumbnail{	
+	float: right;
+}
+	.view-author-contributions .views-field-field-thumbnail img{
+		display:block;
+		border:solid 1px black;
+	}
+.view-author-contributions .views-field-field-promo-text {
+    margin-top: 10px;
+	margin-bottom:0;
+}
+.view-author-contributions .views-field-type {
+    color: #8DC547;
+    font-size: 12px;
+    text-transform: uppercase;
+}
