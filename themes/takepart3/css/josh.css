@@ -8,13 +8,28 @@ body.sidebar-first #left-rail{
 	width:140px;
 }
 
-.node-type-openpublish-photo-gallery .region-highlighted{
+.region-highlighted{
 	padding:35px 20px 0;
 }
-.node-type-openpublish-photo-gallery .page {
-    padding: 20px 20px 35px;
+	.front .region-highlighted{
+		padding:0;
+	}
+	.node-type-takepart-group .region-highlighted{
+		padding:35px 15px 0;
+	}
+.node-type-openpublish-photo-gallery .page,
+.node-type-takepart-group .page {
+    padding: 20px 20px 35px !important;
+}
+.front .page{
+    padding: 10px 20px 35px;
 }
 
+
+body.node-type-takepart-group #content,
+body.node-type-takepart-group #left-rail{
+	margin-top:0;
+}
 
 
 .contextual-links-region{
@@ -23,10 +38,18 @@ body.sidebar-first #left-rail{
 
 /* base styles */
 @font-face {
-	font-family: Gorrisans;
-	font-weight: normal;
-	src: url('../includes/GorriSans.ttf');
+    font-family: 'GorriSansRegular';
+    src: url('../includes/gorrisans-webfont.eot');
+    src: url('../includes/gorrisans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../includes/gorrisans-webfont.woff') format('woff'),
+         url('../includes/gorrisans-webfont.ttf') format('truetype'),
+         url('../includes/gorrisans-webfont.svg#GorriSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
+
+
 h1{
 	margin:0 0 20px 0;
 }
@@ -74,6 +97,10 @@ hr {
 	display:none;
 }
 
+/* homepage fixes */
+.block-boxes-headline h2#screaming-headline {
+    height: 68px;
+}
 
 /* logo */
 #logo a {
@@ -94,7 +121,7 @@ hr {
 
 .views_slideshow_main .views-field-field-display-tag{
 	top:-145px;
-	font-family: Gorrisans, sans-serif;
+	font-family: 'GorriSansRegular', sans-serif;
 }
 	.views_slideshow_main .views-field-field-display-tag a{
 		font-size:14px;
@@ -131,7 +158,7 @@ hr {
 
 /* display tag */
 .field-name-field-display-tag{
-	font-family: Gorrisans, sans-serif;
+	font-family: 'GorriSansRegular', sans-serif;
 	margin-bottom:20px;
 }
 	.field-name-field-display-tag a{
@@ -146,6 +173,34 @@ hr {
 }
 
 
+/* group pages */
+
+.node-type-takepart-group h1 {
+    margin: 0 0 5px;
+}
+.node-type-takepart-group .region-highlighted .field-name-field-group-subhead {
+    color: #666666;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
+	margin:0 0 10px 0;
+	float:left;
+}
+.node-type-takepart-group .region-highlighted .field-name-field-group-type{
+	float:right;
+}
+	.node-type-takepart-group .region-highlighted .field-name-field-group-type a{
+		color: #1686B7;
+		font-weight: bold;
+	}
+
+.node-type-takepart-group .region-highlighted .field-name-field-group-main-image{
+	clear:both;
+}
+
+
+
+
 /***** Taxonomy Search List *****/
 
 .view-taxonomy-search-list .views-field-url a{
@@ -157,10 +212,23 @@ hr {
 .view-taxonomy-search-list .views-field-field-promo-text{
   font-size: 12px !important;
   line-height:18px !important;
+  margin:0;
+}
+
+
+.view-taxonomy-search-list .views-row{
+    border-bottom: 1px dotted silver;
+    margin: 0 0 20px;
+    padding: 0 0 15px;	
 }
 
 
 /**** Campaign Page(s) ****/
+
+#slim-header ul#top-nav li a{
+	padding:0 28px;
+}
+
 .node-type-takepart-campaign #content,
 .node-type-takepart-campaign #left-rail{
 	margin-top:0;
@@ -336,38 +404,33 @@ hr {
 
 /* videos in content-bottom */
 
-#block-boxes-box-fa7bb73f h2,
-#block-boxes-box-c4f8d8d1 h2,
-#block-boxes-box-c4fcb2ac h2,
-#block-views-video-block-8 h2,
-#block-views-video-block-6 h2,
-#block-boxes-box-208c3905 h2{
+
+.block-boxes-current-video h2,
+.block-boxes-view-name-video h2{
     background: none repeat scroll 0 0 #CCCCCC;
     margin: 25px 0 7px;
 }
-	#block-boxes-box-fa7bb73f h2 span,
-	#block-boxes-box-c4f8d8d1 h2 span,
-	#block-boxes-box-c4fcb2ac h2 span,
-	#block-views-video-block-8 h2 span,
-	#block-views-video-block-6 h2 span,
-	#block-boxes-box-208c3905 h2 span{
+	.block-boxes-current-video h2 span,
+	.block-boxes-view-name-video h2 span{
+   	 background: none repeat scroll 0 0 #CCCCCC;
+    	margin: 25px 0 7px;
 		background-color:#fff;
 		border-right: 5px solid #FFFFFF;
 		padding: 2px 5px 2px 0;
 		text-transform: uppercase;
 	}
-	#block-boxes-box-fa7bb73f .content,
-	#block-boxes-box-c4f8d8d1 .content,
-	#block-boxes-box-c4fcb2ac .content,
-	#block-views-video-block-8 .content,
-	#block-views-video-block-6 .content,
-	#block-boxes-box-208c3905 .content{
+
+	.block-boxes-current-video .content,
+	.block-boxes-view-name-video .content{
 		border-top: 1px dotted #000000;
 		padding-bottom: 20px;
 		padding-top: 10px;
 		border-bottom: 3px solid #666666;
 	}
-	
+		#right-rail .block-boxes-view-name-video .content{
+			border:none;
+			padding:0;
+		}
 .view-video .views-row{
     margin-right: 15px;
     width: 196px;
@@ -388,13 +451,28 @@ hr {
     	width: 194px;
 	}
 
+.node-openpublish-video .field-name-field-promo-headline,
 .view-video .views-field-field-promo-headline {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
     margin-top: 10px;
 }
+
+.drupal-embed {
+    background:#eff3f5 url("../images/bg-take-tv.jpg") repeat-x scroll 0 0;	
+	margin:20px 0 20px 0;
+	width: 420px;
+	padding:30px 20px 20px 20px;
+
+}
+.node-openpublish-video {
+}
  
+ /**
+ http://jira.phase2technology.com/browse/TPB-488
+ 
+ */
 #block-views-video-block-6 .content {
     border-top: 1px dotted #000000;
     padding-bottom: 20px;
@@ -421,9 +499,17 @@ hr {
 	font-size:16px;
 	color:#010101;
 }
+
+.node-openpublish-video .field-name-field-promo-text,
 .view-video .views-field-field-promo-text{
 	margin:0;	
 }
+
+.node-openpublish-video .field-name-field-promo-text {
+  padding-bottom: 5px; 
+  margin-bottom: 10px;
+}
+
 
 /* right rail video page(s) */
 #right-rail #block-boxes-box-e9e8814f h2,
@@ -437,6 +523,7 @@ hr {
     margin-bottom: 15px;
     padding: 10px 0 6px 35px;
     text-transform: uppercase;	
+	 margin-top: 0;
 }
 #left-rail #block-views-related-campaigns-block h2{
     background: url("../images/sprite-box-ribbons.gif") no-repeat 0 -360px;
@@ -748,6 +835,7 @@ hr {
 
 
 /* Take Part TV */
+
 .block-boxes-title-takepart-tv{
     background:#eff3f5 url("../images/bg-take-tv.jpg") repeat-x scroll 0 0;	
 	margin:0 0 20px 0;
@@ -762,6 +850,7 @@ hr {
 }
 .block-boxes-title-takepart-tv .content{
 	padding:5px 15px 10px;
+	border:none;
 }
 
 .block-boxes-title-takepart-tv .views-row{
@@ -782,4 +871,88 @@ hr {
 	}
 
 
+/* author page */
+#author_info .auhor-bio p{
+	margin:0;
+}
+.node-profile .author-bio-photo img{
+	border:solid 1px black;
+}
+.view-author-contributions{
+	margin-top:15px;	
+}
+#author-contributions h2{
+	font-size:20px;
+	text-transform:uppercase;
+}
+.view-author-contributions .views-row{
+	overflow:hidden;
+	border-bottom: 1px dotted silver;
+    margin: 0 0 20px;
+    padding: 0 0 15px;
+}
 
+.view-author-contributions .views-field-field-thumbnail{	
+	float: right;
+}
+	.view-author-contributions .views-field-field-thumbnail img{
+		display:block;
+		border:solid 1px black;
+	}
+.view-author-contributions .views-field-field-promo-text {
+    margin-top: 10px;
+	margin-bottom:0;
+}
+.view-author-contributions .views-field-type {
+    color: #8DC547;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+/* footer campaigns */
+.footer-column-wrapper {
+    clear: both;
+}
+#footer #campaign-links{
+    border-bottom: 1px dotted silver;
+    margin: 0 0 10px;
+    overflow: hidden;
+    padding: 20px 12px;
+}
+#campaign-links a{
+	background:url('../images/sprite-campaign.png') no-repeat 0 0;
+	display:block;
+	float:left;
+	text-indent:-9999px;
+	height:31px;
+	margin:0 60px 0 0;
+}
+	#footer a#climate-crisis{
+		background-position: -12px -9px;
+		width:185px;
+	}
+		#footer a#climate-crisis:hover{
+		background-position: -12px -59px;
+	}
+	#footer a#save-my-oceans{
+		background-position: -244px -4px;
+		width:217px;
+	}
+		#footer a#save-my-oceans:hover{
+			background-position: -244px -54px;
+		}
+	#footer a#hungry-for-change{
+		background-position: -512px -9px;
+		width:202px;
+	}
+		#footer a#hungry-for-change:hover{
+			background-position: -512px -59px;
+		}
+	#footer a#waiting-for-superman{
+		background-position: -783px -9px;
+		width:169px;
+		margin-right:0;
+	}
+		#footer a#waiting-for-superman:hover{
+			background-position: -783px -59px;
+		}

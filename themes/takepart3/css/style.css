@@ -2260,7 +2260,6 @@ h2.title a{
   padding: 3px 0 0 0;
 }
 
-/*
 .block-addthis {
   margin-bottom: 30px;
 }
@@ -2272,7 +2271,20 @@ h2.title a{
 .addthis_toolbox .addthis_button_facebook_like {
   margin-bottom: 10px;
 }
-*/
+
+.addthis_toolbox .custom_images a {
+  color: black;
+  display: block;
+  height: 29px;
+  line-height: 29px;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+
+.addthis_toolbox .custom_images a img {
+  float: left;
+  margin-right: 15px;
+}
 
 .social-media li {
   background-image: url('../images/sprite.gif');
@@ -2876,8 +2888,8 @@ q p, q.pull-quote p{
 
 /** Topics **/
 .node-topics {
-  border-top: 1px dotted #555;
-  border-bottom: 1px dotted #555;
+  border-top: 1px dotted silver;
+  border-bottom: 1px dotted silver;
   clear: both;
   padding: 25px 25px 25px 70px;
 }
@@ -3652,5 +3664,34 @@ div.tabs ul.tabs.primary li a:hover, ul.links li a:hover {
   font-size: 16px;
   color: #1686B7;
   font-weight: bold;
+  display:block;
 }
 
+
+.node-takepart-quick-study h2{
+  border-bottom: 2px solid black;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+}
+.node-takepart-quick-study .field-name-field-media-caption {
+  padding-bottom:15px;
+}
+
+body.page-node-19529 .main-content, body.page-node-19530 .main-content, body.page-node-19531 .main-content,  body.page-node-19532 .main-content,  body.page-node-19533 .main-content,  body.page-node-19534 .main-content,  body.page-node-19535 .main-content,  body.page-node-19536 .main-content {
+  width:960px;
+}
+
+body.page-node-19529 #page, body.page-node-19530 #page, body.page-node-19531 #page, body.page-node-19532 #page, body.page-node-19533 #page, body.page-node-19534 #page, body.page-node-19535 #page, body.page-node-19536 #page {
+  padding-right: 0px;
+}
+
+body.page-node-19529 #right-rail, body.page-node-19530 #right-rail, body.page-node-19531 #right-rail, body.page-node-19532 #right-rail, body.page-node-19533 #right-rail, body.page-node-19534 #right-rail, body.page-node-19535 #right-rail, body.page-node-19536 #right-rail {
+  display:none;
+}
+
+body.page-node .article-campaign-blocks .article-campaign-blocks-block {
+    border: 1px solid #DDDDDD;
+    float: left;
+    padding: 15px;
+    width: 273px;
+}
