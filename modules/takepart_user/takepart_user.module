@@ -58,6 +58,7 @@ function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form
   $form['#prefix'] = '<h2 class="title">' . $register_title . '</h2>';
   $form['#prefix'] .= variable_get("takepart_user_register_intro_text","<p>In order to participate in discussions on TakePart.com, you must be a member (no obligation).</p>");
   global $user;
+  $form['fb_user']['#weight'] = -100;
   if (!(user_access('administer users'))) {
     $form['#validate'][] = '_takepart_user_validate';
     $form['actions']['submit']['#value'] = 'Register';
