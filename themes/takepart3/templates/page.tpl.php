@@ -87,6 +87,12 @@
   
   <div id="footer" class='clear'>
     <?php print render($page['footer']) ?>
+    <ul id="campaign-links">
+    	<li><a href="http://www.climatecrisis.net/" id="climate-crisis">Climate Crisis</a></li>
+        <li><a href="http://www.savemyoceans.com/" id="save-my-oceans">Save My Oceans</a></li>
+        <li><a href="http://www.foodincmovie.com/" id="hungry-for-change">Hungry For Change</a></li>
+        <li><a href="http://www.waitingforsuperman.com/action/" id="waiting-for-superman">Waiting For Superman</a></li>
+    </ul>
     <div id="our-film-campaigns" class="footer-column-wrapper clearfix">
       <div class="column title">
         <a href="#">our film campaigns</a>

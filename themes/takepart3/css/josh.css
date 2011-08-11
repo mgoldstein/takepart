@@ -11,12 +11,18 @@ body.sidebar-first #left-rail{
 .region-highlighted{
 	padding:35px 20px 0;
 }
+	.front .region-highlighted{
+		padding:0;
+	}
 	.node-type-takepart-group .region-highlighted{
 		padding:35px 15px 0;
 	}
 .node-type-openpublish-photo-gallery .page,
 .node-type-takepart-group .page {
     padding: 20px 20px 35px !important;
+}
+.front .page{
+    padding: 10px 20px 35px;
 }
 
 
@@ -83,6 +89,10 @@ hr {
 	display:none;
 }
 
+/* homepage fixes */
+.block-boxes-headline h2#screaming-headline {
+    height: 68px;
+}
 
 /* logo */
 #logo a {
@@ -198,7 +208,7 @@ hr {
 }
 
 
-.page-taxonomy-term .view-taxonomy-search-list .views-row{
+.view-taxonomy-search-list .views-row{
     border-bottom: 1px dotted silver;
     margin: 0 0 20px;
     padding: 0 0 15px;	
@@ -870,3 +880,51 @@ hr {
     font-size: 12px;
     text-transform: uppercase;
 }
+
+/* footer campaigns */
+.footer-column-wrapper {
+    clear: both;
+}
+#footer #campaign-links{
+    border-bottom: 1px dotted silver;
+    margin: 0 0 10px;
+    overflow: hidden;
+    padding: 20px 12px;
+}
+#campaign-links a{
+	background:url('../images/sprite-campaign.png') no-repeat 0 0;
+	display:block;
+	float:left;
+	text-indent:-9999px;
+	height:31px;
+	margin:0 60px 0 0;
+}
+	#footer a#climate-crisis{
+		background-position: -12px -9px;
+		width:185px;
+	}
+		#footer a#climate-crisis:hover{
+		background-position: -12px -59px;
+	}
+	#footer a#save-my-oceans{
+		background-position: -244px -4px;
+		width:217px;
+	}
+		#footer a#save-my-oceans:hover{
+			background-position: -244px -54px;
+		}
+	#footer a#hungry-for-change{
+		background-position: -512px -9px;
+		width:202px;
+	}
+		#footer a#hungry-for-change:hover{
+			background-position: -512px -59px;
+		}
+	#footer a#waiting-for-superman{
+		background-position: -783px -9px;
+		width:169px;
+		margin-right:0;
+	}
+		#footer a#waiting-for-superman:hover{
+			background-position: -783px -59px;
+		}
