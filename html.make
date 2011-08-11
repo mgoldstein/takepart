@@ -218,6 +218,7 @@ projects[fb][download][type] = git
 projects[fb][download][url] = http://git.drupal.org/project/fb.git
 projects[fb][download][revision] = b3adf0894a1a3a76f23e5a3cd599c34610aaa28a
 projects[fb][patch][] = http://drupal.org/files/issues/1197924_fb_url_rewrite_0.patch
+projects[fb][patch][] = http://drupal.org/files/issues/fb-register-formid-1032636-2.patch
 projects[brightcove][type] = module
 projects[brightcove][subdir] = contrib
 projects[brightcove][download][type] = git

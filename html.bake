@@ -139,7 +139,7 @@ $info['projects']['fb']['download']['type']     = 'git';
 $info['projects']['fb']['download']['url']      = 'http://git.drupal.org/project/fb.git';
 $info['projects']['fb']['download']['revision'] = 'b3adf0894a1a3a76f23e5a3cd599c34610aaa28a';
 $info['projects']['fb']['patch'][]              = 'http://drupal.org/files/issues/1197924_fb_url_rewrite_0.patch';
-  
+$info['projects']['fb']['patch'][]              = 'http://drupal.org/files/issues/fb-register-formid-1032636-2.patch';  
 /* Media Module used for images, videos, audio */
 $info['projects']['media']['type']                 = 'module'; 
 $info['projects']['media']['subdir']               = 'contrib';
