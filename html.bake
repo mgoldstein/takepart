@@ -207,10 +207,10 @@ $info['projects']['username_check']['download']['revision'] = '299f05438af20211d
 
 /* Drupal contrib modules using a published release */
 
-/* Styles Module */
+/* Scheduler Module */
 $info['projects']['scheduler']['type']    = 'module';
 $info['projects']['scheduler']['subdir']  = 'contrib';
-$info['projects']['scheduler']['version'] = '7.x-1.0';
+$info['projects']['scheduler']['version'] = '1.0';
 
 
 /* Styles Module */
