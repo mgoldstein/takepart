@@ -949,7 +949,6 @@ function takepart_gallery_field_default_fields() {
           'section_front' => 0,
           'takepart_campaign' => 0,
           'takepart_group' => 0,
-          'takepart_list' => 0,
           'takepart_page' => 0,
           'takepart_quick_study' => 0,
           'takepart_slide' => 0,
