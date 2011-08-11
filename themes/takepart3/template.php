@@ -256,10 +256,14 @@ function takepart3_preprocess_node(&$vars, $hook) {
   
   // add read more link to blog posts.
   if ($hook == 'node' && $vars['view_mode'] == 'teaser' && $vars['type'] == 'openpublish_blog_post') {
-    //dpm($vars);
-    //$vars['nid'];
-    $more_link = l("Continue Reading &raquo;", "node/". $vars['nid'], array('html' => TRUE));
-    $vars['content']['body'][0]['#markup'] .= "<span class='blog-post-continue-reading-link'>" . $more_link . "</span>"; 
+    $markup_size = strlen($vars['content']['body'][0]['#markup']);
+    $safe_size    = strlen($vars['body'][0]['safe_value']);
+
+    // if markup and safe_value differ, then there is a page break.
+    if ($markup_size < $safe_size) {
+      $more_link = l("Continue Reading &raquo;", "node/". $vars['nid'], array('html' => TRUE));
+      $vars['content']['body'][0]['#markup'] .= "<span class='blog-post-continue-reading-link'>" . $more_link . "</span>"; 
+    }
   }
 }
 
