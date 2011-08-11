@@ -1,0 +1,313 @@
+<?php
+/**
+ * @file
+ * This is the Examiner 2012 AddThis Blocks module.
+ */
+
+/**
+ * Implements hook_preprocess().
+ *
+ * Attaches a few key strings to $variables for use by the template, including a 
+ * string full of custom buttons and the AddThis public ID.
+ */
+function takepart_addthis_preprocess(&$variables, $hook) {
+  $ADD_THIS_PUB_ID = 'xa-4e191ae57dbd2572';
+
+  drupal_add_js(drupal_get_path('module','takepart_addthis') 
+    . '/js/exaddthis.js', 'file');
+  drupal_add_js('http://s7.addthis.com/js/250/addthis_widget.js#pubid=' . 
+  $ADD_THIS_PUB_ID, 'external');
+
+  $takepart_blogpost_custom_btns =<<<EOS
+<a class="addthis_button_digg">Digg this</a>
+<a class="addthis_button_stumbleupon">Stumble this</a>
+<a class="addthis_button_email">E-mail this</a>
+EOS;
+
+  $variables['addthis_custom_buttons'] = $takepart_blogpost_custom_btns;
+  $variables['addthis_pubid'] = $ADD_THIS_PUB_ID;
+}
+
+function takepart_addthis_views_api() {
+  return array(
+    'api' => '3.0-alpha1',
+  );
+}
+
+//hook_block_info() router
+function takepart_addthis_block_info(){
+  $zeBlocks = array();
+  
+  takepart_addthis_footer_block_info($zeBlocks);
+  takepart_addthis_full_block_info($zeBlocks);
+  takepart_addthis_rightrail_block_info($zeBlocks);
+
+  return $zeBlocks;
+}
+
+//hook_theme() router
+function takepart_addthis_theme(){
+  $ret_arr = array();
+  
+  takepart_addthis_footer_theme($ret_arr);
+  takepart_addthis_full_theme($ret_arr);
+  takepart_addthis_rightrail_theme($ret_arr);
+    
+  return $ret_arr;
+}
+
+//hook_block_view() router
+function takepart_addthis_block_view($delta = ''){
+  $ret_view = array();
+  
+  switch($delta) {
+    case 'addthis_footer':
+      $ret_view = takepart_addthis_footer_block_view($delta);
+      break;
+    case 'addthis_full':
+      $ret_view = takepart_addthis_full_block_view($delta);
+      break;
+    case 'addthis_rightrail':
+      $ret_view = takepart_addthis_rightrail_block_view($delta);
+      break;
+  }
+  
+  return $ret_view;
+}
+
+//hook_block_configure() router
+function takepart_addthis_block_configure($delta = ''){
+  $ret_form = array();
+  
+  switch($delta){
+    case 'addthis_footer':
+      $ret_form = takepart_addthis_footer_block_configure($delta);
+      break;
+    case 'addthis_full':
+      $ret_form = takepart_addthis_full_block_configure($delta);
+      break;
+    case 'addthis_rightrail':
+      $ret_form = takepart_addthis_rightrail_block_configure($delta);
+      break;
+  }
+  
+  return $ret_form;
+}
+
+//hook_block_save() router
+function takepart_addthis_block_save($delta = '', $edits = array()){
+  switch($delta){
+    case 'addthis_footer':
+      takepart_addthis_footer_block_save($delta, $edits);
+      break;
+    case 'addthis_full':
+      takepart_addthis_full_block_save($delta, $edits);
+      break;
+    case 'addthis_rightrail':
+      takepart_addthis_rightrail_block_save($delta, $edits);
+      break;
+  }
+}
+
+
+
+/*********************************
+ * Add Blocks below here using the example block
+ *********************************/
+/******************
+ * Example Block section
+ */
+/*******
+function takepart_blockname_block_info(&$blocks){
+  $blocks['blockname'] = array(
+    'info' => t('Example Title'),
+  );
+}
+
+function takepart_blockname_theme(&$theme_funcs){
+  $theme_funcs['takepart_blockname_block'] = array(
+    'variables' => array('example_theme_var' => 'example_default_var_value'),
+    'template' => 'theme/takepart-blocknamedashesforunderscores-block',
+  );
+}
+
+function takepart_blockname_block_view($delta = ''){
+  $block = array();
+
+  //there is only one delta here, switch anyway
+  if($delta == 'blockname'){
+    //create the block
+    $block['subject'] = t('Example Title');
+    $block['content'] = theme(
+      'takepart_blockname_block', array(
+      'example_theme_var' => variable_get('takepart_somevar', 'some default value' ),
+    );
+
+    return $block;
+  }
+}
+
+function takepart_blockname_block_configure($delta){
+  $form = array();
+    
+  if($delta == 'blockname'){
+    $form['takepart_example_form_field'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Some Variable'),
+      '#description' => t('Description of the Var'),
+      '#size' => 100,
+      '#default_value' => variable_get('takepart_somevar', 'some default value'),
+      '#required' => TRUE,
+    );    
+  }
+  
+  return $form;
+}
+
+function takepart_blockname_block_save($delta, $edits){
+  if($delta == 'blockname'){
+    if( isset($edits['takepart_example_form_field'])){
+        //add validation
+        variable_set('takepart_somevar', $edits['takepart_example_form_field']);
+    }
+  }
+}
+END EXAMPLE BLOCK********************************************/
+
+/******************
+ * AddThis_full section
+ */
+ 
+function takepart_addthis_full_block_info(&$blocks){
+  $blocks['addthis_full'] = array(
+    'info' => t('AddThis - full'),
+  );
+}
+
+function takepart_addthis_full_theme(&$theme_funcs){
+  $theme_funcs['takepart_addthis_full_block'] = array(
+    'variables' => array(),
+    'template' => 'theme/takepart-addthis-full-block',
+  );
+}
+
+function takepart_addthis_full_block_view($delta = ''){
+  $block = array();
+
+  //there is only one delta here, switch anyway
+  if($delta == 'addthis_full'){
+    //create the block
+    $block['subject'] = t('');
+    $block['content'] = theme(
+      'takepart_addthis_full_block', array()
+    );
+
+    return $block;
+  }
+}
+
+function takepart_addthis_full_block_configure($delta){
+  $form = array();
+    
+  if($delta == 'addthis_full'){
+  }
+  
+  return $form;
+}
+
+function takepart_addthis_full_block_save($delta, $edits){
+  if($delta == 'addthis_full'){
+  }
+}
+
+/******************
+ * AddThis_rightrail section
+ */
+ 
+function takepart_addthis_rightrail_block_info(&$blocks){
+  $blocks['addthis_rightrail'] = array(
+    'info' => t('AddThis - rightrail'),
+  );
+}
+
+function takepart_addthis_rightrail_theme(&$theme_funcs){
+  $theme_funcs['takepart_addthis_rightrail_block'] = array(
+    'variables' => array(),
+    'template' => 'theme/takepart-addthis-rightrail-block',
+  );
+}
+
+function takepart_addthis_rightrail_block_view($delta = ''){
+  $block = array();
+
+  //there is only one delta here, switch anyway
+  if($delta == 'addthis_rightrail'){
+    //create the block
+    $block['subject'] = t('');
+    $block['content'] = theme(
+      'takepart_addthis_rightrail_block', array()
+    );
+
+    return $block;
+  }
+}
+
+function takepart_addthis_rightrail_block_configure($delta){
+  $form = array();
+    
+  if($delta == 'addthis_rightrail'){
+  }
+  
+  return $form;
+}
+
+function takepart_addthis_rightrail_block_save($delta, $edits){
+  if($delta == 'addthis_rightrail'){
+  }
+}
+ 
+/******************
+ * addthis_footer section
+ */
+
+function takepart_addthis_footer_block_info(&$blocks){
+  $blocks['addthis_footer'] = array(
+    'info' => t('AddThis - footer'),
+  );
+}
+
+function takepart_addthis_footer_theme(&$theme_funcs){
+  $theme_funcs['takepart_addthis_footer_block'] = array(
+    'variables' => array(),
+    'template' => 'theme/takepart-addthis-footer-block',
+  );
+}
+
+function takepart_addthis_footer_block_view($delta = ''){
+  $block = array();
+
+  //there is only one delta here, switch anyway
+  if($delta == 'addthis_footer'){
+    //create the block
+    $block['subject'] = t('');
+    $block['content'] = theme(
+      'takepart_addthis_footer_block', array()
+    );
+
+    return $block;
+  }
+}
+
+function takepart_addthis_footer_block_configure($delta){
+  $form = array();
+    
+  if($delta == 'addthis_footer'){
+  }
+  
+  return $form;
+}
+
+function takepart_addthis_footer_block_save($delta, $edits){
+  if($delta == 'addthis_footer'){
+  }
+}
