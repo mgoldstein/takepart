@@ -53,6 +53,9 @@ function takepart_user_profile_redirect() {
 }
 
 function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+  // add in our registration confirmation page.
+  $form['#submit'][] = 'takepart_user_register_submit';
+  
   $register_title = variable_get("takepart_user_register_page_title","Join TakePart");
   drupal_set_title($register_title);
   $form['#prefix'] = '<h2 class="title">' . $register_title . '</h2>';
@@ -67,6 +70,16 @@ function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form
   else {
     unset($form['field_account_dateofbirth']);
   }
+
+}
+
+/**
+ * submit handler for adding our custom registraiton page.
+ * borrowed from logintoboggan
+ */
+function takepart_user_register_submit($form, &$form_state) {
+  $redirect = variable_get('takepart_registration_confirmation_page_url', '<front>');
+  $form_state['redirect'] = $redirect;
 }
 
 function takepart_user_form_user_login_alter(&$form, &$form_state, $form_id) {
@@ -75,6 +88,16 @@ function takepart_user_form_user_login_alter(&$form, &$form_state, $form_id) {
   $form['#prefix'] = '<h2 class="title">' . $login_title . '</h2>';
   $form['#prefix'] .= variable_get("takepart_user_login_intro_text","<p class='fb-login-text'>Click Connect with Facebook or complete the form below to log in.</p>");
   $form['actions']['submit']['#value'] = 'Log In';
+  
+  $form['#submit'][] = 'takepart_user_login_submit';
+}
+
+/**
+ * submit handler for adding our custom destination after login.
+ * borrowed from logintoboggan
+ */
+function takepart_user_login_submit($form, &$form_state) {
+  $form_state['redirect'] = '<front>';
 }
 
 function takepart_user_form_user_pass_alter(&$form, &$form_state, $form_id) {
@@ -113,15 +136,4 @@ function _takepart_checkage($user_dob) {
   $year = 60 * 60 * 24 * 365;
   $age_years = $age / $year;
   return $age_years < 18 ? FALSE : TRUE;
-}
-
-/**
- * Implements hook_user_login().
- *
- * Redirects user to homepage after login.
- */
-function takepart_user_user_login(&$edit, $account) {
-  if (!isset($_POST['form_id']) || $_POST['form_id'] != 'user_pass_reset') {
-    drupal_goto(variable_get('takepart_registration_confirmation_page_url', '<front>'));
-  }
 }
