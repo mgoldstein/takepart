@@ -13,7 +13,7 @@ bake_convert_to_dev($info,'nodeconnect');
 
 $info['projects']['drupal']['version']                    = '7.7';
 $info['projects']['apps']['download']['revision']         = '4722dd4c76b06f0912d1770bdcd420b5c04dcde4';
-$info['projects']['openpublish']['download']['revision']  = '9f95fce4758dae9e92dbc1af2f6724a27efc0b74';
+$info['projects']['openpublish']['download']['revision']  = '376010e228a6e6d6cb9fd5fb7fbd3fa60343de4b';
 unset($info['projects']['references']['download']['branch']);
 $info['projects']['references']['download']['revision']   = '8e1e57bea4f6c7915e5b8be8690a3e28590cca2d';
 $info['projects']['imce_wysiwyg']['revision']             = '3a5a5acad386aae2ca47bd2cd02b9c3c68f6d306';
