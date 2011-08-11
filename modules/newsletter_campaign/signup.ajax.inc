@@ -41,7 +41,7 @@ function _newsletter_signup_form_submit_from_ajax() {
     // lookup entity by campaign id
     $query = new EntityFieldQuery();
     $db_result = $query->entityCondition('entity_type', 'newsletter_campaign')
-                    ->propertyCondition('campaign_id', (int)$campaign_id, '=')
+                    ->propertyCondition('campaign_id', $campaign_id, '=')
                     ->execute();
     $ncids = array_keys($db_result['newsletter_campaign']);
     $camps = entity_load('newsletter_campaign', $ncids);
