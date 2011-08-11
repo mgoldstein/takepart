@@ -120,6 +120,6 @@ function _takepart_checkage($user_dob) {
  */
 function takepart_user_user_login(&$edit, $account) {
   if (!isset($_POST['form_id']) || $_POST['form_id'] != 'user_pass_reset') {
-    drupal_goto('<front>');
+    drupal_goto(variable_get('takepart_registration_confirmation_page_url', '<front>'));
   }
 }
