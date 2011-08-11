@@ -129,22 +129,12 @@ img.photo, .gallery-item img {
   border: 1px solid #707070;
 }
 
-.caption,
-.field-name-field-media-caption {
+.caption {
   font-size: 11px;
   color: #999;
   line-height: normal;
   border-bottom: 1px dotted #999;
   padding: 15px 0;
-}
-.field-name-field-media-credit {
-  text-align: right;
-}
-.field-name-field-media-credit .field-item:before {
-  content : "(Photo: "
-}
-.field-name-field-media-credit .field-item:after {
-  content : ")"
 }
 
 .photo-wrapper {
@@ -1207,72 +1197,6 @@ div.node div.content ul.links {
 }
 
 /****** Share and Embed ******/
- 
-div.addthis_toolbox {
-  float: right;
-}
-     
-.addthis_toolbox .custom_images a img {
-  float: left;
-  margin-right: 15px;
-}
- 
-.addthis_toolbox .custom_images a {
-  color: black;
-  display: block;
-  height: 29px;
-  line-height: 29px;
-  margin-bottom: 10px;
-  /* vertical-align: middle; */
-}
-
-div.addthis_toolbox a.addthis_button_google_plusone div {
-  width: 68px !important;
-}                                                       
-
-/*
-div.addthis_toolbox.custom_images {
-  margin:0; padding:0;
-}
-*/
-
-div.addthis_toolbox.takepart_addthis_leftpanel {
-}
-
-div.takepart_addthis_leftpanel div.addthis_toolbox a {
-  margin-bottom: 10px;
-}
-
-div.takepart_addthis_leftpanel div.addthis_toolbox {
-  float: left;
-}
-
-div.takepart_addthis_footer {
-  padding-top: 12px;
-  
-  margin-bottom: 12px;
-
-  border-top: 1px dotted #555;
-
-  width: 100%;
-  float: right;
-}
-
-div.takepart_addthis_footer a {
-  margin-left: 3px;
-}
-
-div.takepart_addthis_footer span#addthis_footer_sharethis {
-  padding-top: 6px;
-  margin-right: 10px;
-  color: #BBB;
-  float: right;
-  font-size: 1.2em;
-}
-
-div.takepart_addthis_footer div.buttons {
-  float:right;
-}
 
 /*
 
@@ -2172,7 +2096,6 @@ h2.title a{
   padding: 3px 0 0 0;
 }
 
-/*
 .block-addthis {
   margin-bottom: 30px;
 }
@@ -2184,7 +2107,20 @@ h2.title a{
 .addthis_toolbox .addthis_button_facebook_like {
   margin-bottom: 10px;
 }
-*/
+
+.addthis_toolbox .custom_images a {
+  color: black;
+  display: block;
+  height: 29px;
+  line-height: 29px;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+
+.addthis_toolbox .custom_images a img {
+  float: left;
+  margin-right: 15px;
+}
 
 .social-media li {
   background-image: url('../images/sprite.gif');
@@ -2788,8 +2724,8 @@ q p, q.pull-quote p{
 
 /** Topics **/
 .node-topics {
-  border-top: 1px dotted #555;
-  border-bottom: 1px dotted #555;
+  border-top: 1px dotted silver;
+  border-bottom: 1px dotted silver;
   clear: both;
   padding: 25px 25px 25px 70px;
 }
@@ -3564,6 +3500,7 @@ div.tabs ul.tabs.primary li a:hover, ul.links li a:hover {
   font-size: 16px;
   color: #1686B7;
   font-weight: bold;
+  display:block;
 }
 
 
