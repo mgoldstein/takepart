@@ -3512,3 +3512,22 @@ div.tabs ul.tabs.primary li a:hover, ul.links li a:hover {
 .node-takepart-quick-study .field-name-field-media-caption {
   padding-bottom:15px;
 }
+
+body.page-node-19529 .main-content, body.page-node-19530 .main-content, body.page-node-19531 .main-content,  body.page-node-19532 .main-content,  body.page-node-19533 .main-content,  body.page-node-19534 .main-content,  body.page-node-19535 .main-content,  body.page-node-19536 .main-content {
+  width:960px;
+}
+
+body.page-node-19529 #page, body.page-node-19530 #page, body.page-node-19531 #page, body.page-node-19532 #page, body.page-node-19533 #page, body.page-node-19534 #page, body.page-node-19535 #page, body.page-node-19536 #page {
+  padding-right: 0px;
+}
+
+body.page-node-19529 #right-rail, body.page-node-19530 #right-rail, body.page-node-19531 #right-rail, body.page-node-19532 #right-rail, body.page-node-19533 #right-rail, body.page-node-19534 #right-rail, body.page-node-19535 #right-rail, body.page-node-19536 #right-rail {
+  display:none;
+}
+
+body.page-node .article-campaign-blocks .article-campaign-blocks-block {
+    border: 1px solid #DDDDDD;
+    float: left;
+    padding: 15px;
+    width: 273px;
+}
