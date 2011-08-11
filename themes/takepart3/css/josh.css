@@ -454,20 +454,33 @@ hr {
     margin-top: 10px;
 }
 
-.drupal-embed {
+.drupal-embed .node-openpublish-photo-gallery,
+.drupal-embed .node-openpublish-video{
     background:#eff3f5 url("../images/bg-take-tv.jpg") repeat-x scroll 0 0;	
 	margin:20px 0 20px 0;
-	width: 420px;
-	padding:30px 20px 20px 20px;
+	padding: 40px 13px 20px;
+}
+.drupal-embed .node-openpublish-photo-gallery .field-name-field-photo-gallery-slideshow{
+	margin:10px 0 0 0;
+}	
+	.drupal-embed .node-openpublish-photo-gallery .field-name-field-promo-headline{
+		font-size:16px;
+		margin:0 0 10px 0;
+		font-weight:bold;
+	}
+	.drupal-embed .node-openpublish-photo-gallery .views-row img{
+		border:solid 1px black;
+		margin:0 5px 10px 0;
+		display:block;
+		float:left;
+	}
 
-}
-.node-openpublish-video {
+.drupal-embed .embed-action-wrapper{
+	width:420px;
 }
  
- /**
- http://jira.phase2technology.com/browse/TPB-488
+ /**   video blocks **/
  
- */
 #block-views-video-block-6 .content {
     border-top: 1px dotted #000000;
     padding-bottom: 20px;
