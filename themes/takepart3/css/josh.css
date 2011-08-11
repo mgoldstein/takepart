@@ -870,3 +870,51 @@ hr {
     font-size: 12px;
     text-transform: uppercase;
 }
+
+/* footer campaigns */
+.footer-column-wrapper {
+    clear: both;
+}
+#footer #campaign-links{
+    border-bottom: 1px dotted silver;
+    margin: 0 0 10px;
+    overflow: hidden;
+    padding: 20px 12px;
+}
+#campaign-links a{
+	background:url('../images/sprite-campaign.png') no-repeat 0 0;
+	display:block;
+	float:left;
+	text-indent:-9999px;
+	height:31px;
+	margin:0 60px 0 0;
+}
+	#footer a#climate-crisis{
+		background-position: -12px -9px;
+		width:185px;
+	}
+		#footer a#climate-crisis:hover{
+		background-position: -12px -59px;
+	}
+	#footer a#save-my-oceans{
+		background-position: -244px -4px;
+		width:217px;
+	}
+		#footer a#save-my-oceans:hover{
+			background-position: -244px -54px;
+		}
+	#footer a#hungry-for-change{
+		background-position: -512px -9px;
+		width:202px;
+	}
+		#footer a#hungry-for-change:hover{
+			background-position: -512px -59px;
+		}
+	#footer a#waiting-for-superman{
+		background-position: -783px -9px;
+		width:169px;
+		margin-right:0;
+	}
+		#footer a#waiting-for-superman:hover{
+			background-position: -783px -59px;
+		}
