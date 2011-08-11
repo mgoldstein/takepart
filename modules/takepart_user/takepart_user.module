@@ -57,6 +57,7 @@ function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form
   drupal_set_title($register_title);
   $form['#prefix'] = '<h2 class="title">' . $register_title . '</h2>';
   $form['#prefix'] .= variable_get("takepart_user_register_intro_text","<p>In order to participate in discussions on TakePart.com, you must be a member (no obligation).</p>");
+  $form['#prefix'] .= variable_get("takepart_user_register_intro_text_fb","<p class='fb-register-text'>To register using your Facebook account click the Connect with Facebook button. Your Facebook information will pre-fill the fields below.  Confirm all the required fields are filled out and click Register.</p>");
   global $user;
   $form['fb_user']['#weight'] = -100;
   if (!(user_access('administer users'))) {
@@ -71,6 +72,8 @@ function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form
 function takepart_user_form_user_login_alter(&$form, &$form_state, $form_id) {
   $login_title = variable_get("takepart_user_login_page_title","Member Login");
   drupal_set_title($login_title);
+  $form['#prefix'] = '<h2 class="title">' . $login_title . '</h2>';
+  $form['#prefix'] .= variable_get("takepart_user_login_intro_text","<p>Complete the form below or</p>");
   $form['actions']['submit']['#value'] = 'Log In';
 }
 

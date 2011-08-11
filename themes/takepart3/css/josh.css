@@ -11,12 +11,18 @@ body.sidebar-first #left-rail{
 .region-highlighted{
 	padding:35px 20px 0;
 }
+	.front .region-highlighted{
+		padding:0;
+	}
 	.node-type-takepart-group .region-highlighted{
 		padding:35px 15px 0;
 	}
 .node-type-openpublish-photo-gallery .page,
 .node-type-takepart-group .page {
     padding: 20px 20px 35px !important;
+}
+.front .page{
+    padding: 10px 20px 35px;
 }
 
 
@@ -83,6 +89,10 @@ hr {
 	display:none;
 }
 
+/* homepage fixes */
+.block-boxes-headline h2#screaming-headline {
+    height: 68px;
+}
 
 /* logo */
 #logo a {
