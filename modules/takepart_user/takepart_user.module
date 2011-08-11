@@ -72,7 +72,7 @@ function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form
 function takepart_user_form_user_login_alter(&$form, &$form_state, $form_id) {
   $login_title = variable_get("takepart_user_login_page_title","Member Login");
   drupal_set_title($login_title);
-  $form['#prefix'] = '<h2 class="title">' . $register_title . '</h2>';
+  $form['#prefix'] = '<h2 class="title">' . $login_title . '</h2>';
   $form['#prefix'] .= variable_get("takepart_user_login_intro_text","<p>Complete the form below or</p>");
   $form['actions']['submit']['#value'] = 'Log In';
 }
