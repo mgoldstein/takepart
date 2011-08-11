@@ -128,6 +128,7 @@ projects[boxes][version] = 1.0-beta2
 projects[boxes][download][type] = git
 projects[boxes][download][branch] = 7.x-1.x
 projects[boxes][download][url] = http://git.drupal.org/project/boxes.git
+projects[boxes][patch][] = http://drupal.org/files/issues/boxes-modified-simple-box.make_.patch
 projects[styles][subdir] = contrib
 projects[styles][type] = module
 projects[styles][version] = 2.0-alpha8
