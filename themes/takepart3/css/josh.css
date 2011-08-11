@@ -224,6 +224,11 @@ hr {
 
 
 /**** Campaign Page(s) ****/
+
+#slim-header ul#top-nav li a{
+	padding:0 28px;
+}
+
 .node-type-takepart-campaign #content,
 .node-type-takepart-campaign #left-rail{
 	margin-top:0;
