@@ -428,6 +428,7 @@ hr {
     	width: 194px;
 	}
 
+.node-openpublish-video .field-name-field-promo-headline,
 .view-video .views-field-field-promo-headline {
     font-size: 20px;
     font-weight: bold;
@@ -461,9 +462,17 @@ hr {
 	font-size:16px;
 	color:#010101;
 }
+
+.node-openpublish-video .field-name-field-promo-text,
 .view-video .views-field-field-promo-text{
 	margin:0;	
 }
+
+.node-openpublish-video .field-name-field-promo-text {
+  padding-bottom: 5px; 
+  margin-bottom: 10px;
+}
+
 
 /* right rail video page(s) */
 #right-rail #block-boxes-box-e9e8814f h2,
