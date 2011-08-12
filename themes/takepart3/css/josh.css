@@ -1100,3 +1100,22 @@ body.node-type-topic-front h2.title a {
     padding: 15px 0;
     clear: both;
 }
+
+/* pagers */
+
+.item-list ul.pager .pager-current, 
+.item-list ul.pager .pager-item, 
+.item-list ul.pager .pager-next,
+ .item-list ul.pager .pager-last, 
+ .item-list ul.pager .pager-first, 
+ .item-list ul.pager .pager-previous {
+    color: #999999;
+	display:inline;
+    padding: 2px 5px;
+    text-transform: capitalize;
+	line-height: 20px;
+}
+.item-list ul.pager .pager-current {
+    background: none repeat scroll 0 0 #1CA9E7;
+    color: white;
+}
