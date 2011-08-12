@@ -284,9 +284,7 @@ ul#top-nav li a:hover{
 
 /* these are ie7 fixes because ie7 doesn't recognize inline-block. */
 
-body.node-type-topic-front h1,
 body.node-type-topic-front h2.title,
-body.page-taxonomy-term h1,
 body.node-type-section-front h2.title {
   background:none;
   color: white;
@@ -297,7 +295,11 @@ body.node-type-section-front h2.title {
   padding-right: 0;
   padding-left: 0;
 }
-
+body.node-type-topic-front h1,
+body.page-taxonomy-term h1{
+	display:block;
+	float:left;
+}
 body.node-type-section-front h2.title a,
 body.node-type-topic-front h2.title a {
   color: white;
@@ -537,7 +539,7 @@ body.node-type-topic-front h2.title a {
 		}
 .view-video .views-row{
     margin-right: 15px;
-    width: 196px;
+    /*width: 196px;*/
     float:left;
     display: block;
 }
