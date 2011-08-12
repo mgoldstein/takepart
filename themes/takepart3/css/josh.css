@@ -1080,3 +1080,7 @@ body.node-type-topic-front h2.title a {
 		}
 
 
+/* image captions */
+.caption {
+    clear: both;
+}

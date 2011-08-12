@@ -40,7 +40,14 @@ jQuery.fn.DefaultValue = function(text){
     });
 };
 
+
+
+
 jQuery(document).ready(function() {
+	  jQuery('.photo-wrapper').width(function(ind, width){
+        return jQuery('img', this).outerWidth(true);
+      });
+	
 	jQuery('#top-search .form-text').DefaultValue('Search TakePart');		
 });
 
@@ -50,3 +57,4 @@ jQuery(document).ready(function() {
     
   }};
 })(jQuery);
+
