@@ -219,14 +219,6 @@ function _default_menu_options($menu_item) {
  * Preprocessor for theme('block').
  */
 function takepart3_preprocess_node(&$vars, $hook) {
-  
-  
-  //dpm($hook);
-  dpm($vars);
-  // type = openpublish_video
-  // view_mode = embed
-  
-  
     
   // Suggests a custom template for embedded node content through the WYSIWYG
   // We suggest a theme for a general embed as well as for each content type
