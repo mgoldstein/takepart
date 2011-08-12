@@ -27,7 +27,7 @@ function takepart_action_field_attach_load($entity_type, $entities, $age, $optio
       if($entity->type == 'action') {
         if (empty($entity->field_action_url)) {
           $entity->field_action_url = Array(
-            'und' => array(
+            $entity->language => array(
               0 => Array(
                'url' => 'local',
                'title' => 'Take Action',
@@ -41,6 +41,15 @@ function takepart_action_field_attach_load($entity_type, $entities, $age, $optio
     }
   }
 }
+/**
+ * handle some node preprocessing.  remove submitted
+ */
+function takepart_action_preprocess_node(&$variables) {
+  if($variables['type'] == 'action') {
+    $variables['submitted'] = NULL;
+  }
+}
+
 function takepart_action_preprocess_page(&$variables) {
    
   if(!empty($variables['node']) && $variables['node']->type == 'action') {
