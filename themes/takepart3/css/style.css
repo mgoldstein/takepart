@@ -1585,6 +1585,19 @@ span.comment-num {
   width: 420px;
 }
 
+#comments .comments-join-login {
+  float:right;
+  position:relative;
+  top:14px;
+  font-size:14px;
+}
+
+#comments .fb_button {
+  position: relative;
+  bottom:1px;
+  margin-left:4px;
+}
+
 /* Comment Reply Form */
 
 /*
