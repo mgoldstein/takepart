@@ -1391,7 +1391,7 @@ function takepart_gallery_field_default_fields() {
       'bundle' => 'openpublish_photo_gallery',
       'default_value' => array(
         0 => array(
-          'value' => 0,
+          'value' => 1,
         ),
       ),
       'deleted' => '0',
