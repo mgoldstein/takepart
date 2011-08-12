@@ -43,7 +43,7 @@ $conf = array(
    'memcache_servers' => array(
         '10.181.229.207:11211' => 'default', // web1.takepart.com
         '10.181.227.7:11211' => 'default', // web2.takepart.com
-        '10.181.227.8.7:11211' => 'default', // web3.takepart.com
+        '10.181.227.8:11211' => 'default', // web3.takepart.com
         '10.181.227.104:11211' => 'default' // web4.takepart.com
    ),
 
