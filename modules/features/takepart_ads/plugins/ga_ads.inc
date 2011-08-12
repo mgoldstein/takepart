@@ -44,7 +44,7 @@ class boxes_ga_ad extends boxes_box {
       $content = <<<HTM
 <script type='text/javascript'>
   GA_googleFillSlot('$slot');
-</script> ad!
+</script> 
 HTM;
     return array(
       'delta' => $this->delta, // Crucial.
