@@ -107,6 +107,11 @@ hr {
     background: url("../images/sprite2.png") no-repeat scroll 0 0;
 }
 
+/* navigation */
+ul#top-nav li a:hover{
+	color:#1ca9e7;
+}
+
 /* homepage rotator */
 .view-id-slide_rotator {
 	overflow:hidden;
