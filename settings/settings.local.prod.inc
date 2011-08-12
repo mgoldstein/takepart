@@ -25,22 +25,7 @@ $databases = array (
     ),
 );
 
-
-
-//$conf['fb_verbose'] = TRUE; // debug output
-//$conf['fb_verbose'] = 'extreme'; // for verbosity fetishists.
-
-// More efficient connect session discovery.
-// Required if supporting one connect app and different canvas apps.
-//$conf['fb_apikey'] = '123.....XYZ'; // Your connect app's apikey goes here.
-
-// Enable URL rewriting (for canvas page apps).
-include "sites/all/modules/contrib/fb/fb_url_rewrite.inc";
-include "sites/all/modules/contrib/fb/fb_settings.inc";
-//ini_set('error_reporting', !E_NOTICE & !E_WARNING);
-
 /* MemCache Settings */
-
 // the path to the core cache file
 include_once('./includes/cache.inc');
 // the path to the memcache cache file
@@ -50,10 +35,10 @@ $conf = array(
    'omniture_account_name' => 'takepart',
    'cache_default_class'   => 'MemCacheDrupal',
 
-   'memcache_options' => array(
+   //'memcache_options' => array(
      // Requires Memcached 1.4 or greater - enables binary protocal (faster).
-        Memcached::OPT_BINARY_PROTOCOL => TRUE
-   ),
+     //Memcached::OPT_BINARY_PROTOCOL => TRUE
+   //),
 
    'memcache_servers' => array(
         '10.181.229.207:11211' => 'default', // web1.takepart.com
@@ -71,3 +56,15 @@ $conf = array(
         'users' => 'default',
    ),
 );
+
+//$conf['fb_verbose'] = TRUE; // debug output
+//$conf['fb_verbose'] = 'extreme'; // for verbosity fetishists.
+
+// More efficient connect session discovery.
+// Required if supporting one connect app and different canvas apps.
+//$conf['fb_apikey'] = '123.....XYZ'; // Your connect app's apikey goes here.
+
+// Enable URL rewriting (for canvas page apps).
+include "sites/all/modules/contrib/fb/fb_url_rewrite.inc";
+include "sites/all/modules/contrib/fb/fb_settings.inc";
+
