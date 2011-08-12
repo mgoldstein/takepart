@@ -906,5 +906,20 @@ function takepart_search_default_search_api_server() {
     "enabled" : "1",
     "rdf_mapping" : []
   }');
+  $items['takepart_solr_production'] = entity_import('search_api_server', '{
+    "name" : "TakePart SOLR Production",
+    "machine_name" : "takepart_solr_production",
+    "description" : "Used for TakePart SOLR on production.",
+    "class" : "search_api_solr_service",
+    "options" : {
+      "host" : "solr1.takepart.com",
+      "port" : "8080",
+      "path" : "\\/solr",
+      "http_user" : "",
+      "http_pass" : ""
+    },
+    "enabled" : "1",
+    "rdf_mapping" : []
+  }');
   return $items;
 }
