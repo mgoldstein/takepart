@@ -3536,6 +3536,14 @@ body.node-type-takepart-group #page {
 /*
  * Jcarousel
  */
+div.jcarousel-container {
+  width: 620px;
+  overflow-y: hidden;
+}
+
+div.jcarousel-clip {
+  width: 635px;
+}
 div#block-views-video-block-8 div.content {
   position: relative;
   padding-top: 3px;
