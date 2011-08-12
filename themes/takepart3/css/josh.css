@@ -118,6 +118,9 @@ hr {
   text-decoration:none;
 }
 
+.views-slideshow-cycle-main-frame-row-item {
+	background:none;
+}
 
 .views_slideshow_main .views-field-field-display-tag{
 	font-family: 'GorriSansRegular', sans-serif;
@@ -150,7 +153,7 @@ hr {
 .view-id-slide_rotator .views-slideshow-pager-field-item {
    	width:100%;
 	margin:0;
-	height:76px;
+	height:75px;
 }
 
 
