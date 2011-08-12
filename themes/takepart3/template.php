@@ -219,7 +219,7 @@ function _default_menu_options($menu_item) {
  * Preprocessor for theme('block').
  */
 function takepart3_preprocess_node(&$vars, $hook) {
-
+    
   // Suggests a custom template for embedded node content through the WYSIWYG
   // We suggest a theme for a general embed as well as for each content type
   //
@@ -266,6 +266,17 @@ function takepart3_preprocess_node(&$vars, $hook) {
       $vars['content']['body'][0]['#markup'] .= "<span class='blog-post-continue-reading-link'>" . $more_link . "</span>"; 
     }
   }
+  
+  if ($hook == 'node' && $vars['view_mode'] == 'embed' && $vars['type'] == 'openpublish_video') {
+    // add in out link to the title
+    $vars['content']['embedded_video_link'] = array(
+      '#weight' => 10,
+      '#theme' => 'link',
+      '#text' => 'Full Video',
+      '#path' => "node/". $vars['nid'],
+      '#options' => array('html' => FALSE, 'attributes' => array('class' => 'embedded-video-link')),
+    );
+  }  
 }
 
 /* Comment form */

@@ -282,11 +282,9 @@ ul#top-nav li a:hover{
 }
 
 
-/* these are ie7 fixes because ie7 doesn't recognize inline-block.
-*/
-body.node-type-topic-front h1,
+/* these are ie7 fixes because ie7 doesn't recognize inline-block. */
+
 body.node-type-topic-front h2.title,
-body.page-taxonomy-term h1,
 body.node-type-section-front h2.title {
   background:none;
   color: white;
@@ -297,7 +295,11 @@ body.node-type-section-front h2.title {
   padding-right: 0;
   padding-left: 0;
 }
-
+body.node-type-topic-front h1,
+body.page-taxonomy-term h1{
+	display:block;
+	float:left;
+}
 body.node-type-section-front h2.title a,
 body.node-type-topic-front h2.title a {
   color: white;
@@ -537,7 +539,7 @@ body.node-type-topic-front h2.title a {
 		}
 .view-video .views-row{
     margin-right: 15px;
-    width: 196px;
+    /*width: 196px;*/
     float:left;
     display: block;
 }
@@ -629,14 +631,24 @@ body.node-type-topic-front h2.title a {
 	color:#010101;
 }
 
+.node-openpublish-video .field-name-field-promo-headline {
+	font-weight:bolder;
+	font-size:16px;  
+		color:#8E8E8E;
+}
+
 .node-openpublish-video .field-name-field-promo-text,
+.node-openpublish-video a.embedded-video-link,
 .view-video .views-field-field-promo-text{
 	margin:0;	
+	color:#8E8E8E;
 }
 
 .node-openpublish-video .field-name-field-promo-text {
   padding-bottom: 5px; 
   margin-bottom: 10px;
+	color:#8E8E8E;
+
 }
 
 
@@ -1099,23 +1111,4 @@ body.node-type-topic-front h2.title a {
     line-height: normal;
     padding: 15px 0;
     clear: both;
-}
-
-/* pagers */
-
-.item-list ul.pager .pager-current, 
-.item-list ul.pager .pager-item, 
-.item-list ul.pager .pager-next,
- .item-list ul.pager .pager-last, 
- .item-list ul.pager .pager-first, 
- .item-list ul.pager .pager-previous {
-    color: #999999;
-	display:inline;
-    padding: 2px 5px;
-    text-transform: capitalize;
-	line-height: 20px;
-}
-.item-list ul.pager .pager-current {
-    background: none repeat scroll 0 0 #1CA9E7;
-    color: white;
 }
