@@ -322,19 +322,68 @@ function takepart3_field__field_group_url(&$vars){
 }
 
 function takepart3_field__field_tp_campaign_seg_1_rel(&$vars){
-  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+  $output = '';
+  foreach ($vars['element']['#items'] as $item) {
+    $node_type = takepart3_return_node_type($item['node']->type);
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+  }
+  return $output;
 }
 
 function takepart3_field__field_tp_campaign_seg_2_rel(&$vars){
-  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+  $output = '';
+  foreach ($vars['element']['#items'] as $item) {
+    $node_type = takepart3_return_node_type($item['node']->type);
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+  }
+  return $output;
 }
 
 function takepart3_field__field_tp_campaign_seg_3_rel(&$vars){
-  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+  $output = '';
+  foreach ($vars['element']['#items'] as $item) {
+    $node_type = takepart3_return_node_type($item['node']->type);
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+  }
+  return $output;
 }
 
 function takepart3_field__field_tp_campaign_seg_4_rel(&$vars){
-  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+  $output = '';
+  foreach ($vars['element']['#items'] as $item) {
+    $node_type = takepart3_return_node_type($item['node']->type);
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+  }
+  return $output;
+}
+
+function takepart3_return_node_type($type) {
+  switch ($type) {
+    case 'action': 
+      return t('Action');
+    case 'openpublish_article':
+      return t('Article');
+    case 'audio': 
+      return t('Audio');
+    case 'openpublish_blog_post':
+      return t('Blog Post');
+    case 'takepart_campaign': 
+      return t('Campaign');
+    case 'takepart_group':
+      return t('Group');            
+    case 'takepart_list': 
+      return t('List');
+    case 'takepart_page':
+      return t('Page');    
+    case 'openpublish_photo_gallery': 
+      return t('Photo Gallery');
+    case 'takepart_quick_study':
+      return t('Quick Study');   
+    case 'openpublish_video': 
+      return t('Video');         
+  }
+  
+  return '';
 }
 
 function takepart3_field__field_topic($vars){
