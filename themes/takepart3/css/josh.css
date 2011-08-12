@@ -236,7 +236,7 @@ hr {
 
 .node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a{
 	font-size:14px;
-	margin: 12px 22px;
+	margin: 7px 22px 7px 10px;
     padding-right: 15px;
 	 background: url("../images/white-arrow.png") no-repeat scroll right 4px;
 }
@@ -257,7 +257,16 @@ hr {
 	color:#1686b7;
 	font-weight:bold;
 }
+.node-type-takepart-campaign .node-takepart-campaign {
+  display: none;
+}
+.node-type-takepart-campaign #content {
+  padding-bottom:20px;
+}
 
+.field-name-field-tp-campaign-sl-html p {
+  margin-bottom:10px;
+}
 
 
 /* display terms */

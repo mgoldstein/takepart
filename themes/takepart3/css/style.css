@@ -2690,6 +2690,14 @@ q p, q.pull-quote p{
   padding-top: 20px;
 }
 
+.field-name-field-tp-campaign-intro-media .odd { 
+  background: none;
+  float: left;
+  height: 0px;
+  position: relative;
+  top: -340px;
+}
+
 .field-name-field-tp-campaign-4-things-link {
   float: right;
   height: 0px;
