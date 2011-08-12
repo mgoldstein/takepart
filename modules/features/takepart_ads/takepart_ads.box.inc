@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_default_box().
+ * Implements hook_default_box().
  */
 function takepart_ads_default_box() {
   $export = array();
@@ -13,32 +13,26 @@ function takepart_ads_default_box() {
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'box-3981ef30';
-  $box->plugin_key = 'simple';
+  $box->delta = 'box-1104adce';
+  $box->plugin_key = 'ga_ad';
   $box->title = '';
-  $box->description = 'Ad - Right Rail Top';
+  $box->description = 'GA: Bottom Right';
   $box->options = array(
-    'body' => array(
-      'value' => '<img src="/sites/default/files/tp_pageone_banner320x250_0.jpg">',
-      'format' => 'full_html',
-    ),
+    'ga_ad_slot' => 'TP3_Home_RR_BTF_300x600',
   );
-  $export['box-3981ef30'] = $box;
+  $export['box-1104adce'] = $box;
 
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'box-f130b806';
-  $box->plugin_key = 'simple';
+  $box->delta = 'box-66c05d6f';
+  $box->plugin_key = 'ga_ad';
   $box->title = '';
-  $box->description = 'Ad - Right Rail Bottom';
+  $box->description = 'GA: Top Right';
   $box->options = array(
-    'body' => array(
-      'value' => '<img src="/sites/default/files/gardencentre300x600static.gif">',
-      'format' => 'full_html',
-    ),
+    'ga_ad_slot' => 'TP3_Home_RR_ATF_300x250',
   );
-  $export['box-f130b806'] = $box;
+  $export['box-66c05d6f'] = $box;
 
   return $export;
 }
