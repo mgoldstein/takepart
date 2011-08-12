@@ -302,7 +302,7 @@ function takepart3_field__field_author(&$vars){
   //Comments
   $comments = $vars['element']['#object']->comment_count;
   
-  return sprintf("<div class='submitted-wrapper'><div class='submitted clearfix'>By %s<div class='field article-date'>%s</div><div class='field article-comment-count'><a href='#comments'>%s comments</a></div></div></div>", $authors, $date, $comments);
+  return sprintf("<div class='submitted-wrapper'><div class='submitted clearfix'><div class='field field-author'>By %s</div><div class='field article-date'>%s</div><div class='field article-comment-count'><a href='#comments'>%s comments</a></div></div></div>", $authors, $date, $comments);
 }
 
 // Rewrites 'field_tp_campaign_4_things_link' in Campaign content types
