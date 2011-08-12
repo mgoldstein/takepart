@@ -133,6 +133,7 @@ function takepart_search_default_search_api_facet() {
         "openpublish_blog_post" : "Blog Post",
         "takepart_campaign" : "Campaign",
         "takepart_group" : "Group",
+        "takepart_list" : "List",
         "takepart_page" : "Page",
         "openpublish_photo" : "Photo",
         "openpublish_photo_gallery" : "Photo Gallery",
@@ -891,9 +892,9 @@ function takepart_search_default_search_api_index() {
 function takepart_search_default_search_api_server() {
   $items = array();
   $items['solr'] = entity_import('search_api_server', '{
-    "name" : "Solr",
+    "name" : "Phase2 Development SOLR Server",
     "machine_name" : "solr",
-    "description" : "",
+    "description" : "This is the Phase2 Development SOLR Server to be used on P2 development sites.",
     "class" : "search_api_solr_service",
     "options" : {
       "host" : "solr.p2technology.com",
