@@ -26,24 +26,6 @@ function takepart_search_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'search_api_facets-site_node_index_type' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'site_node_index_type',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'search_api_facets-site_node_index_field_topic' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'site_node_index_field_topic',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'search_api_facets-site_node_index_field_series' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'site_node_index_field_series',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
         'search_api_facets-site_node_index_field_free_tag' => array(
           'module' => 'search_api_facets',
           'delta' => 'site_node_index_field_free_tag',
@@ -53,6 +35,24 @@ function takepart_search_context_default_contexts() {
         'search_api_facets-site_node_index_field_blogpost_b' => array(
           'module' => 'search_api_facets',
           'delta' => 'site_node_index_field_blogpost_b',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+        'search_api_facets-site_node_index_field_series' => array(
+          'module' => 'search_api_facets',
+          'delta' => 'site_node_index_field_series',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+        'search_api_facets-site_node_index_field_topic' => array(
+          'module' => 'search_api_facets',
+          'delta' => 'site_node_index_field_topic',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+        'search_api_facets-site_node_index_type' => array(
+          'module' => 'search_api_facets',
+          'delta' => 'site_node_index_type',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),

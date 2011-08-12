@@ -219,7 +219,15 @@ function _default_menu_options($menu_item) {
  * Preprocessor for theme('block').
  */
 function takepart3_preprocess_node(&$vars, $hook) {
-
+  
+  
+  //dpm($hook);
+  dpm($vars);
+  // type = openpublish_video
+  // view_mode = embed
+  
+  
+    
   // Suggests a custom template for embedded node content through the WYSIWYG
   // We suggest a theme for a general embed as well as for each content type
   //
@@ -266,6 +274,17 @@ function takepart3_preprocess_node(&$vars, $hook) {
       $vars['content']['body'][0]['#markup'] .= "<span class='blog-post-continue-reading-link'>" . $more_link . "</span>"; 
     }
   }
+  
+  if ($hook == 'node' && $vars['view_mode'] == 'embed' && $vars['type'] == 'openpublish_video') {
+    // add in out link to the title
+    $vars['content']['embedded_video_link'] = array(
+      '#weight' => 10,
+      '#theme' => 'link',
+      '#text' => 'Full Video',
+      '#path' => "node/". $vars['nid'],
+      '#options' => array('html' => FALSE, 'attributes' => array('class' => 'embedded-video-link')),
+    );
+  }  
 }
 
 /* Comment form */
@@ -302,7 +321,7 @@ function takepart3_field__field_author(&$vars){
   //Comments
   $comments = $vars['element']['#object']->comment_count;
   
-  return sprintf("<div class='submitted-wrapper'><div class='submitted clearfix'>By %s<div class='field article-date'>%s</div><div class='field article-comment-count'><a href='#comments'>%s comments</a></div></div></div>", $authors, $date, $comments);
+  return sprintf("<div class='submitted-wrapper'><div class='submitted clearfix'><div class='field field-author'>By %s</div><div class='field article-date'>%s</div><div class='field article-comment-count'><a href='#comments'>%s comments</a></div></div></div>", $authors, $date, $comments);
 }
 
 // Rewrites 'field_tp_campaign_4_things_link' in Campaign content types
@@ -322,19 +341,68 @@ function takepart3_field__field_group_url(&$vars){
 }
 
 function takepart3_field__field_tp_campaign_seg_1_rel(&$vars){
-  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+  $output = '';
+  foreach ($vars['element']['#items'] as $item) {
+    $node_type = takepart3_return_node_type($item['node']->type);
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+  }
+  return $output;
 }
 
 function takepart3_field__field_tp_campaign_seg_2_rel(&$vars){
-  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+  $output = '';
+  foreach ($vars['element']['#items'] as $item) {
+    $node_type = takepart3_return_node_type($item['node']->type);
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+  }
+  return $output;
 }
 
 function takepart3_field__field_tp_campaign_seg_3_rel(&$vars){
-  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+  $output = '';
+  foreach ($vars['element']['#items'] as $item) {
+    $node_type = takepart3_return_node_type($item['node']->type);
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+  }
+  return $output;
 }
 
 function takepart3_field__field_tp_campaign_seg_4_rel(&$vars){
-  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+  $output = '';
+  foreach ($vars['element']['#items'] as $item) {
+    $node_type = takepart3_return_node_type($item['node']->type);
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+  }
+  return $output;
+}
+
+function takepart3_return_node_type($type) {
+  switch ($type) {
+    case 'action': 
+      return t('Action');
+    case 'openpublish_article':
+      return t('Article');
+    case 'audio': 
+      return t('Audio');
+    case 'openpublish_blog_post':
+      return t('Blog Post');
+    case 'takepart_campaign': 
+      return t('Campaign');
+    case 'takepart_group':
+      return t('Group');            
+    case 'takepart_list': 
+      return t('List');
+    case 'takepart_page':
+      return t('Page');    
+    case 'openpublish_photo_gallery': 
+      return t('Photo Gallery');
+    case 'takepart_quick_study':
+      return t('Quick Study');   
+    case 'openpublish_video': 
+      return t('Video');         
+  }
+  
+  return '';
 }
 
 function takepart3_field__field_topic($vars){

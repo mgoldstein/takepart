@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function takepart_ads_context_default_contexts() {
   $export = array();
@@ -19,10 +19,29 @@ function takepart_ads_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'openpublish_photo_gallery' => 'openpublish_photo_gallery',
         'takepart_campaign' => 'takepart_campaign',
       ),
       'options' => array(
         'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'afinefrenzy' => 'afinefrenzy',
+        'thepeoplespeak' => 'thepeoplespeak',
+        'wavesofaction' => 'wavesofaction',
+        'congowomen' => 'congowomen',
+        'crisisinegypt' => 'crisisinegypt',
+        'journeyofaction' => 'journeyofaction',
+        'skollworldforum' => 'skollworldforum',
+        'thejohnalexanderproject' => 'thejohnalexanderproject',
+        'casinojack/followthemoney' => 'casinojack/followthemoney',
+        'thecove/gotmercury' => 'thecove/gotmercury',
+        'searchforcommonground' => 'searchforcommonground',
+        'underourskin' => 'underourskin',
+        'eradicatewaterborneillnesses' => 'eradicatewaterborneillnesses',
+        'teachinggarden' => 'teachinggarden',
       ),
     ),
   );
@@ -57,17 +76,17 @@ function takepart_ads_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-box-f130b806' => array(
+        'boxes-box-66c05d6f' => array(
           'module' => 'boxes',
-          'delta' => 'box-f130b806',
+          'delta' => 'box-66c05d6f',
           'region' => 'sidebar_second',
-          'weight' => '100000000',
+          'weight' => -10000000,
         ),
-        'boxes-box-3981ef30' => array(
+        'boxes-box-1104adce' => array(
           'module' => 'boxes',
-          'delta' => 'box-3981ef30',
+          'delta' => 'box-1104adce',
           'region' => 'sidebar_second',
-          'weight' => '-100000000',
+          'weight' => 10000000,
         ),
       ),
     ),
