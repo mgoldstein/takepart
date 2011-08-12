@@ -120,7 +120,6 @@ hr {
 
 
 .views_slideshow_main .views-field-field-display-tag{
-	top:-145px;
 	font-family: 'GorriSansRegular', sans-serif;
 }
 	.views_slideshow_main .views-field-field-display-tag a{
@@ -130,9 +129,7 @@ hr {
 	.views_slideshow_main .views-field-field-display-tag a:hover{
 		text-decoration:none;
 	}
-.views_slideshow_main .views-field-field-slide-headline-override{
-	top:-112px;
-}
+
 .views-slideshow-pager-field-item.active .views-content-field-slide-featured-item {
   height: 97px;
   width: 13px;
@@ -275,6 +272,10 @@ hr {
 	color:#1686b7;
 	font-weight:bold;
 }
+
+
+/* these are ie7 fixes because ie7 doesn't recognize inline-block.
+/*
 
 body.node-type-topic-front h1,
 body.node-type-topic-front h2.title,
