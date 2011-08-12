@@ -1087,3 +1087,12 @@ body.node-type-topic-front h2.title a {
 .caption {
     clear: both;
 }
+
+.field-name-field-media-caption{
+	border-bottom: 1px dotted #999999;
+    color: #999999;
+    font-size: 11px;
+    line-height: normal;
+    padding: 15px 0;
+    clear: both;
+}
