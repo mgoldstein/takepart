@@ -42,12 +42,11 @@ include "sites/all/modules/contrib/fb/fb_settings.inc";
 /* MemCache Settings */
 
 // the path to the core cache file
-  include_once('./includes/cache.inc');
+include_once('./includes/cache.inc');
 // the path to the memcache cache file
-  include_once('./sites/all/modules/contrib/memcache/memcache.inc');
+include_once('./sites/all/modules/contrib/memcache/memcache.inc');
 
-if (!is_array($conf))
-  $conf = array(
+$conf = array(
    'omniture_account_name' => 'takepart',
    'cache_default_class'   => 'MemCacheDrupal',
 
@@ -71,6 +70,4 @@ if (!is_array($conf))
         'session' => 'default',
         'users' => 'default',
    ),
-
-
 );
