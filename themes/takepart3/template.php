@@ -397,13 +397,17 @@ function takepart3_return_node_type($type) {
   return '';
 }
 
+
+
 function takepart3_field__field_topic($vars){
   
   $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
   if(count($vars['items']) || count($field_free_tag)){
     $links = array();
     foreach($vars['items'] as $key => $value){
-      $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+      if(isset($value['#href'])) {
+        $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+      }
     }
 
     foreach($field_free_tag as $key => $value){
