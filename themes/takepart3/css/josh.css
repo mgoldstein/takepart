@@ -1235,5 +1235,11 @@ body.node-type-topic-front h2.title a {
 }
 
 
-
+/* social media stuff */
+div.takepart_addthis_leftpanel div.custom_images a{
+	padding: 8px 0 0 45px;
+	font-weight:bold;
+	width: inherit;
+		
+}
 
