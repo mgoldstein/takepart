@@ -65,6 +65,7 @@ function takepart_omniture_test($param) {
 function takepart_omniture_value_or_empty($param) {
   // if param wrapped in brakets [], then token was not
   // found, just retuen empty string.  
+  $param = html_entity_decode($param, ENT_QUOTES);
   return preg_replace('/^\[[\w].*\]$/', '', $param);
   
 }
@@ -128,7 +129,7 @@ function takepart_omniture_url_after_arg($path, $index = 0) {
  *
  */
 function takepart_omniture_str_decode($str) {
-  return html_entity_decode($str);
+  return html_entity_decode($str, ENT_QUOTES);
 } 
 
 
