@@ -14,7 +14,7 @@ function takepart_omniture_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'omniture_all_content_types';
-  $context->description = 'set eVar20,21,4,18,17 and prop19,20,4,17,16';
+  $context->description = 'Omniture: All content types';
   $context->tag = 'Omniture';
   $context->conditions = array(
     'node' => array(
@@ -62,7 +62,7 @@ s.prop16 = [tp_omniture:get_author:{node:nid}]',
   // Translatables
   // Included for use with string extractors like potx.
   t('Omniture');
-  t('set eVar20,21,4,18,17 and prop19,20,4,17,16');
+  t('Omniture: All content types');
   $export['omniture_all_content_types'] = $context;
 
   $context = new stdClass;
@@ -138,7 +138,8 @@ s.prop18 = [node:field-blogpost-blog:term:name]',
     'omniture_reaction' => array(
       'variables' => 's.channel = takepart:[current-page:url-arg:0]
 s.eVar4 = [node:content-type:machine-name]
-s.eVar11 = [f:bool:{current-user:uid}:Yes:No]',
+s.eVar11 = [f:bool:{current-user:uid}:Yes:No]
+s.prop3 = [tp_omniture:url_after_arg:{current-page:url:relative}:1]',
     ),
   );
   $context->condition_mode = 0;
