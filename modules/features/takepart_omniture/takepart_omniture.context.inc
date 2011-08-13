@@ -45,8 +45,7 @@ function takepart_omniture_context_default_contexts() {
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.eVar20 = [node:created]
-s.prop19 = [node:created]
+      'variables' => 's.prop19 = [tp_omniture:date:{node:created:raw}]
 s.eVar21 = [tp_omniture:value_or_empty:{node:field-display-tag:term:name}]
 s.prop20 = [tp_omniture:value_or_empty:{node:field-display-tag:term:name}]
 s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
