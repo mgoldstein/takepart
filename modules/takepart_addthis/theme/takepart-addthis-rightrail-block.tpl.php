@@ -1,6 +1,23 @@
 <?php
 $view = views_get_view('photo_gallery'); 
-$addthis_embed = $view->preview('block_2');
+$style = <<<STYLE
+<style type="text/css">
+.view-photo-gallery{ font-family:Helvetica, Arial, sans-serif; width: 302px; }
+.view-photo-gallery a,
+.view-photo-gallery a:link,
+.view-photo-gallery a:visited{ border:none; text-decoration:none; }
+.view-photo-gallery .views-field-field-gallery-main-image img{ border:solid 1px black; display:block; }
+.view-photo-gallery .views-field-field-promo-headline a,
+.view-photo-gallery .views-field-field-promo-headline a:link,
+.view-photo-gallery .views-field-field-promo-headline a:visited{ font-size: 20px; color:#333; font-weight:bold; display:block; margin:10px 0; }
+.view-photo-gallery .views-field-field-promo-text a,
+.view-photo-gallery .views-field-field-promo-text a:link,
+.view-photo-gallery .views-field-field-promo-text a:visited{ color:#333; font-size:14px; line-height:16px; }
+.view-photo-gallery .views-field-field-promo-headline a:hover,
+.view-photo-gallery .views-field-field-promo-text a:hover{ color:#1CA9E7; }
+</style>
+STYLE;
+$addthis_embed = $view->preview('block_2'). $style;
 ?>
  
 <!-- AddThis Button BEGIN -->
