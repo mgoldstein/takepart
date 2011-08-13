@@ -1268,11 +1268,12 @@ div.takepart_addthis_footer span#addthis_footer_sharethis {
 	.takepart_addthis_footer a.addthis_button_twitter span{
 		 background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
 	}
-	div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone.at300b div#___plusone_1{
+	div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone.at300b div{
 		
 		width:50px !important;
 		height: 21px !important;
 		/*background: url("../images/social_media_googleplus.png") no-repeat scroll -3px -2px transparent !important; */
+		  margin: 3px 0 0 !important;
 	}
 	.takepart_addthis_footer a.addthis_button_stumbleupon span{
 		 background: url("../images/sprite-social-media.png") no-repeat scroll -55px -5px transparent;
