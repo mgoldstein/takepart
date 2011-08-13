@@ -32,6 +32,12 @@ body.node-type-takepart-group #left-rail{
 }
 
 
+
+body.node-type-openpublish-article #content,
+body.node-type-openpublish-article #left-rail{
+	margin-top:20px;
+} 
+
 .contextual-links-region{
 	margin-bottom:0;
 }
@@ -406,6 +412,8 @@ body.node-type-topic-front h2.title a {
 }
 .submitted-wrapper{
 	overflow:hidden;
+	 padding-bottom: 10px;
+	 margin-bottom:10px;
 }
 .node-type-openpublish-photo-gallery .submitted-wrapper{
     border-bottom: medium none;
@@ -1080,6 +1088,9 @@ body.node-type-topic-front h2.title a {
 
 
 /* author page */
+#author_info {
+	overflow:hidden;
+}
 #author_info .auhor-bio p{
 	margin:0;
 }
