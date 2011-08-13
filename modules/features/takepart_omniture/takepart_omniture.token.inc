@@ -43,6 +43,16 @@ function takepart_omniture_token_info() {
       'function' => "takepart_omniture_url_after_arg",
     ),
   );
+ 
+  $info['tokens']['tp_omniture']['str_decode'] = array(
+    'name' => t('Run token through html_entity_decode'),
+    'description' => t('Process token with html_entity_decode function.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+      'function' => "takepart_omniture_str_decode",
+    ),
+  );
   
   return $info;
 }
@@ -112,4 +122,13 @@ function takepart_omniture_url_after_arg($path, $index = 0) {
   
   return implode('/', $path_arr); 
 }
+
+/**
+ * run string through html_entity_decode
+ *
+ */
+function takepart_omniture_str_decode($str) {
+  return html_entity_decode($str);
+} 
+
 
