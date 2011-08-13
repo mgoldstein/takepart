@@ -135,6 +135,7 @@ ul#top-nav li a:hover{
 
 .views_slideshow_main .views-field-field-display-tag{
 	font-family: 'GorriSansRegular', sans-serif;
+	top:-115px;
 }
 	.views_slideshow_main .views-field-field-display-tag a{
 		font-size:14px;
@@ -143,6 +144,9 @@ ul#top-nav li a:hover{
 	.views_slideshow_main .views-field-field-display-tag a:hover{
 		text-decoration:none;
 	}
+.views_slideshow_main .views-field-field-slide-headline-override{
+ top: -82px;
+}
 
 .views-slideshow-pager-field-item.active .views-content-field-slide-featured-item {
   height: 97px;

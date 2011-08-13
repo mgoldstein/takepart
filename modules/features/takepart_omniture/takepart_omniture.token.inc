@@ -34,7 +34,25 @@ function takepart_omniture_token_info() {
     ),
   );
   
-  
+  $info['tokens']['tp_omniture']['url_after_arg'] = array(
+    'name' => t('Get URL after arg'),
+    'description' => t('Retrieve the current URL beyond the arg provided.  e.g. http://example.com/article/1999/myblog/12'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+      'function' => "takepart_omniture_url_after_arg",
+    ),
+  );
+ 
+  $info['tokens']['tp_omniture']['str_decode'] = array(
+    'name' => t('Run token through html_entity_decode'),
+    'description' => t('Process token with html_entity_decode function.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+      'function' => "takepart_omniture_str_decode",
+    ),
+  );
   
   return $info;
 }
@@ -78,9 +96,39 @@ function takepart_omniture_get_author($nid) {
   return implode(',', $authors);
 }
 
+/**
+ * provide the current_path token as the path.
+ * get the current path and based on the given arg position,  
+ * skip those positions and return whats left of the url path.
+ *       index:     0/   1/   2/   3/   4/      5
+ * so, path: /article/blog/test/2011/1110/my-blog
+ * 
+ * called with index 3 would return: 1110/my-blog
+ */
+function takepart_omniture_url_after_arg($path, $index = 0) {
+  if (!is_numeric($index)) {
+    return $path;
+  }
+  
+  $path_arr = explode("/", $path);
+  
+  for ($i = 0; $i <= $index; $i++) {
+    $parts = array_shift($path_arr);
+    
+    // if we shift too far (NULL), return empty string.
+    if(empty($parts)) 
+      return '';
+  }
+  
+  return implode('/', $path_arr); 
+}
 
-
-
-
+/**
+ * run string through html_entity_decode
+ *
+ */
+function takepart_omniture_str_decode($str) {
+  return html_entity_decode($str);
+} 
 
 
