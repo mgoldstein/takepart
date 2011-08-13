@@ -269,9 +269,9 @@ ul#top-nav li a:hover{
 
 .node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a{
 	font-size:14px;
-	margin: 12px 22px;
+	margin: 6px 22px 7px 10px;
     padding-right: 15px;
-	 background: url("../images/white-arrow.png") no-repeat scroll right 4px;
+    background: url("../images/white-arrow.png") no-repeat scroll right 4px;
 }
 	.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a:hover{
 		text-decoration:none;
