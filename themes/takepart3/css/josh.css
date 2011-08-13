@@ -1247,3 +1247,40 @@ div.takepart_addthis_leftpanel div.custom_images a{
 		
 }
 
+
+/* addthis footer */
+.takepart_addthis_footer a span{
+	height:21px;
+	width:20px;	
+}
+div.takepart_addthis_footer span#addthis_footer_sharethis {
+    color: #999999;
+    font-size: 14px;
+    padding-top: 5px;
+}
+.takepart_addthis_footer a.at300b{
+	padding:0;
+	 margin-left: 5px;
+}
+	.takepart_addthis_footer a.addthis_button_facebook span{
+		 background: url("../images/sprite-social-media.png") no-repeat scroll 0 -5px transparent;
+	} 
+	.takepart_addthis_footer a.addthis_button_twitter span{
+		 background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
+	}
+	div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone.at300b div{
+		
+		width:50px !important;
+		height: 21px !important;
+		/*background: url("../images/social_media_googleplus.png") no-repeat scroll -3px -2px transparent !important; */
+		  margin: 3px 0 0 !important;
+	}
+	.takepart_addthis_footer a.addthis_button_stumbleupon span{
+		 background: url("../images/sprite-social-media.png") no-repeat scroll -55px -5px transparent;
+	}
+	.takepart_addthis_footer a.addthis_button_digg span{
+		 background: url("../images/sprite-social-media.png") no-repeat scroll -83px -5px transparent;
+	}
+	.takepart_addthis_footer a.addthis_button_email span{
+		 background: url("../images/sprite-social-media.png") no-repeat scroll -111px -5px transparent;
+	}
