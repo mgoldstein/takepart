@@ -1171,6 +1171,11 @@ body.node-type-topic-front h2.title a {
 
 
 /* image captions */
+.field-name-field-article-main-image img{
+	display:block;
+	border:1px solid #6a6a6a;
+}
+
 .caption {
     clear: both;
 	text-align: center;
@@ -1181,9 +1186,16 @@ body.node-type-topic-front h2.title a {
 	border-bottom: 1px dotted #999999;
     color: #999999;
     font-size: 11px;
+	line-height:12px;
     line-height: normal;
-    padding: 15px 0;
+    padding: 15px 0 10px;
     clear: both;
+	text-align:left;
+}
+.field-name-field-media-caption p{
+	margin:0;
+	    font-size: 11px;
+	line-height:12px;
 }
 
 
