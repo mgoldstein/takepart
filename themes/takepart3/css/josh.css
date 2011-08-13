@@ -135,6 +135,7 @@ ul#top-nav li a:hover{
 
 .views_slideshow_main .views-field-field-display-tag{
 	font-family: 'GorriSansRegular', sans-serif;
+	top:-115px;
 }
 	.views_slideshow_main .views-field-field-display-tag a{
 		font-size:14px;
@@ -143,6 +144,9 @@ ul#top-nav li a:hover{
 	.views_slideshow_main .views-field-field-display-tag a:hover{
 		text-decoration:none;
 	}
+.views_slideshow_main .views-field-field-slide-headline-override{
+ top: -82px;
+}
 
 .views-slideshow-pager-field-item.active .views-content-field-slide-featured-item {
   height: 97px;
@@ -830,7 +834,7 @@ body.node-type-topic-front h2.title a {
 	margin:0;
 	padding:0;
 	overflow:hidden;
-	width:130px;
+	width:140px;
 	float: left;
 }
 #top-search .form-text,
@@ -844,7 +848,7 @@ body.node-type-topic-front h2.title a {
     line-height: 16px;
     margin: 0;
     padding: 2px 5px;
-    width: 120px;
+    width: 130px;
 }
 #top-search .tpform-submit {
     background: url("../images/sprite.png") no-repeat scroll 0 -115px transparent;
