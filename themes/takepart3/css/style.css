@@ -2771,6 +2771,10 @@ q p, q.pull-quote p{
 	line-height:14px;
 }
 
+.node-type-takepart-campaign .region-highlighted {
+  padding-left:0px;
+}
+
 /** Author Node Page **/
 
 .author-links {
