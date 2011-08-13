@@ -557,6 +557,7 @@ function takepart3_search_api_page_result(array $variables) {
     );
   }
 
+  $text = '';
   if (!empty($variables['result']['excerpt'])) {
     $text = $variables['result']['excerpt'];
   }
