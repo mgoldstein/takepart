@@ -34,12 +34,12 @@ function takepart_video_default_box() {
   $box->api_version = 1;
   $box->delta = 'box-e9e8814f';
   $box->plugin_key = 'view';
-  $box->title = 'Popular';
-  $box->description = 'Video Front: Popular Video';
+  $box->title = 'Popular Video';
+  $box->description = 'Popular Video';
   $box->options = array(
     'view' => 'video--block_1',
     'settings' => array(
-      'nid' => '31+210',
+      'nid' => '31+32',
     ),
     'view_object' => NULL,
     'view_more_text' => '',

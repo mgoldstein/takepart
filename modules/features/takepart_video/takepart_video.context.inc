@@ -47,17 +47,17 @@ function takepart_video_context_default_contexts() {
           'region' => 'content_bottom',
           'weight' => 1,
         ),
-        'views-video-block_7' => array(
-          'module' => 'views',
-          'delta' => 'video-block_7',
+        'boxes-box-e9e8814f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-e9e8814f',
           'region' => 'sidebar_second',
-          'weight' => 0,
+          'weight' => 1,
         ),
         'views-related_actions-block' => array(
           'module' => 'views',
           'delta' => 'related_actions-block',
           'region' => 'sidebar_second',
-          'weight' => 1,
+          'weight' => 2,
         ),
       ),
     ),
