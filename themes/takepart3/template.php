@@ -219,7 +219,7 @@ function _default_menu_options($menu_item) {
  * Preprocessor for theme('block').
  */
 function takepart3_preprocess_node(&$vars, $hook) {
-
+    
   // Suggests a custom template for embedded node content through the WYSIWYG
   // We suggest a theme for a general embed as well as for each content type
   //
@@ -266,6 +266,17 @@ function takepart3_preprocess_node(&$vars, $hook) {
       $vars['content']['body'][0]['#markup'] .= "<span class='blog-post-continue-reading-link'>" . $more_link . "</span>"; 
     }
   }
+  
+  if ($hook == 'node' && $vars['view_mode'] == 'embed' && $vars['type'] == 'openpublish_video') {
+    // add in out link to the title
+    $vars['content']['embedded_video_link'] = array(
+      '#weight' => 10,
+      '#theme' => 'link',
+      '#text' => 'Full Video',
+      '#path' => "node/". $vars['nid'],
+      '#options' => array('html' => FALSE, 'attributes' => array('class' => 'embedded-video-link')),
+    );
+  }  
 }
 
 /* Comment form */
@@ -302,7 +313,7 @@ function takepart3_field__field_author(&$vars){
   //Comments
   $comments = $vars['element']['#object']->comment_count;
   
-  return sprintf("<div class='submitted-wrapper'><div class='submitted clearfix'>By %s<div class='field article-date'>%s</div><div class='field article-comment-count'><a href='#comments'>%s comments</a></div></div></div>", $authors, $date, $comments);
+  return sprintf("<div class='submitted-wrapper'><div class='submitted clearfix'><div class='field field-author'>By %s</div><div class='field article-date'>%s</div><div class='field article-comment-count'><a href='#comments'>%s comments</a></div></div></div>", $authors, $date, $comments);
 }
 
 // Rewrites 'field_tp_campaign_4_things_link' in Campaign content types
@@ -322,19 +333,68 @@ function takepart3_field__field_group_url(&$vars){
 }
 
 function takepart3_field__field_tp_campaign_seg_1_rel(&$vars){
-  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+  $output = '';
+  foreach ($vars['element']['#items'] as $item) {
+    $node_type = takepart3_return_node_type($item['node']->type);
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+  }
+  return $output;
 }
 
 function takepart3_field__field_tp_campaign_seg_2_rel(&$vars){
-  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+  $output = '';
+  foreach ($vars['element']['#items'] as $item) {
+    $node_type = takepart3_return_node_type($item['node']->type);
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+  }
+  return $output;
 }
 
 function takepart3_field__field_tp_campaign_seg_3_rel(&$vars){
-  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+  $output = '';
+  foreach ($vars['element']['#items'] as $item) {
+    $node_type = takepart3_return_node_type($item['node']->type);
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+  }
+  return $output;
 }
 
 function takepart3_field__field_tp_campaign_seg_4_rel(&$vars){
-  return l('View Campaign >>', url($vars['element']['#items'][0]['node']->uri['path']));
+  $output = '';
+  foreach ($vars['element']['#items'] as $item) {
+    $node_type = takepart3_return_node_type($item['node']->type);
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+  }
+  return $output;
+}
+
+function takepart3_return_node_type($type) {
+  switch ($type) {
+    case 'action': 
+      return t('Action');
+    case 'openpublish_article':
+      return t('Article');
+    case 'audio': 
+      return t('Audio');
+    case 'openpublish_blog_post':
+      return t('Blog Post');
+    case 'takepart_campaign': 
+      return t('Campaign');
+    case 'takepart_group':
+      return t('Group');            
+    case 'takepart_list': 
+      return t('List');
+    case 'takepart_page':
+      return t('Page');    
+    case 'openpublish_photo_gallery': 
+      return t('Photo Gallery');
+    case 'takepart_quick_study':
+      return t('Quick Study');   
+    case 'openpublish_video': 
+      return t('Video');         
+  }
+  
+  return '';
 }
 
 function takepart3_field__field_topic($vars){
@@ -424,6 +484,98 @@ function _render_tp3_quick_study_topics($node){
     }
   }
   return '<div class="node-takepart-quick-study-topics field-name-field-display-tag">' . implode(' | ', $output) . '</div>';
+}
+
+/**
+ * Theme function for displaying search results.
+ */
+function takepart3_search_api_page_results(array $variables) {
+  drupal_add_css(drupal_get_path('module', 'search_api_page') . '/search_api_page.css');
+
+  $index = $variables['index'];
+  $results = $variables['results'];
+  $entities = $variables['entities'];
+  $keys = $variables['keys'];
+
+  $output = '<p class="search-performance">' . format_plural($results['result count'],
+      'Current search found 1 result for ' . check_plain($keys),
+      'Current search found @count results for ' . check_plain($keys),
+      array('@sec' => round($results['performance']['complete'], 3))) . '</p>';
+
+  if (!$results['result count']) {
+    $output .= "\n<h2>" . t('Your search yielded no results') . "</h2>\n";
+    return $output;
+  }
+  else {
+    $block = module_invoke('search_api_sorts', 'block_view', 'search-sorts');
+    $output .= '<div id="block-search-api-sorts-search-sorts"><h2>Sort by:</h2><div class="content">' . $block['content'] . '</div></div>';
+  }
+
+  if ($variables['view_mode'] == 'search_api_page_result') {
+    entity_prepare_view($index->entity_type, $entities);
+    $output .= '<ol class="search-results">';
+    foreach ($results['results'] as $item) {
+      $output .= '<li class="search-result">' . theme('search_api_page_result', array('index' => $index, 'result' => $item, 'entity' => isset($entities[$item['id']]) ? $entities[$item['id']] : NULL, 'keys' => $keys)) . '</li>';
+    }
+    $output .= '</ol>';
+  }
+  else {
+    $output .= '<div class="search-results">';
+    $render = entity_view($index->entity_type, $entities, $variables['view_mode']);
+    $output .= render($render);
+    $output .= '</div>';
+  }
+
+  return $output;
+}
+
+/**
+ * Theme function for displaying search results.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - index: The index this search was executed on.
+ *   - result: One item of the search results, an array containing the keys
+ *     'id' and 'score'.
+ *   - entity: The loaded entity corresponding to the result.
+ *   - keys: The keywords of the executed search.
+ */
+function takepart3_search_api_page_result(array $variables) {
+  $index = $variables['index'];
+  $id = $variables['result']['id'];
+  $entity = $variables['entity'];
+
+  $wrapper = entity_metadata_wrapper($index->entity_type, $entity);
+
+  $url = entity_uri($index->entity_type, $entity);
+  $name = entity_label($index->entity_type, $entity);
+
+  if ($index->entity_type == 'file') {
+    $url = array(
+      'path' => file_create_url($url),
+      'options' => array(),
+    );
+  }
+
+  $text = '';
+  if (!empty($variables['result']['excerpt'])) {
+    $text = $variables['result']['excerpt'];
+  }
+  elseif (!empty($entity->field_promo_text[$entity->language][0]['safe_value'])) {
+    $text = $entity->field_promo_text[$entity->language][0]['safe_value'];
+  }
+  
+  $output = '';
+  $type = takepart3_return_node_type($entity->type);
+  if (!empty($type)) {
+    $output = '<div class="views-field views-field-type"><span class="field-content">' . $type . '</span></div>';
+  }
+  $output .= '<h3>' . ($url ? l($name, $url['path'], $url['options']) : check_plain($name)) . "</h3>\n";
+  if ($text) {
+    $output .= $text;
+  }
+
+  return $output;
 }
 
 function _render_tp3_header_search_form() {

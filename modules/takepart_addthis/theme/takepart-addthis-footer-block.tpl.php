@@ -1,6 +1,6 @@
 <!-- AddThis Button BEGIN -->
 <div class="takepart_addthis_footer">
-  <div class="addthis_toolbox addthis_32x32_style addthis_default_style">
+  <div class="addthis_toolbox addthis_default_style">
       <a class="addthis_button_facebook"></a>
       <a class="addthis_button_twitter"></a>
       <a class="addthis_button_google_plusone"></a>
