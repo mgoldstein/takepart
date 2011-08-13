@@ -830,7 +830,7 @@ body.node-type-topic-front h2.title a {
 	margin:0;
 	padding:0;
 	overflow:hidden;
-	width:130px;
+	width:140px;
 	float: left;
 }
 #top-search .form-text,
@@ -844,7 +844,7 @@ body.node-type-topic-front h2.title a {
     line-height: 16px;
     margin: 0;
     padding: 2px 5px;
-    width: 120px;
+    width: 130px;
 }
 #top-search .tpform-submit {
     background: url("../images/sprite.png") no-repeat scroll 0 -115px transparent;
