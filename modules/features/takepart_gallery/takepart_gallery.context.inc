@@ -63,13 +63,25 @@ function takepart_gallery_context_default_contexts() {
           'module' => 'takepart_custom',
           'delta' => 'slideshow_controls',
           'region' => 'sidebar_second',
-          'weight' => 1,
+          'weight' => 0,
         ),
         'takepart_addthis-addthis_rightrail' => array(
           'module' => 'takepart_addthis',
           'delta' => 'addthis_rightrail',
           'region' => 'sidebar_second',
+          'weight' => 1,
+        ),
+        'boxes-box-3981ef30' => array(
+          'module' => 'boxes',
+          'delta' => 'box-3981ef30',
+          'region' => 'sidebar_second',
           'weight' => 2,
+        ),
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar_second',
+          'weight' => 3,
         ),
         'views-related_content-block' => array(
           'module' => 'views',
