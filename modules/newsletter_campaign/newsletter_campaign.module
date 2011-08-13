@@ -133,10 +133,27 @@ function newsletter_campaign_menu() {
   $items['newsletter-campaign/unsubscribe'] = array(
     'title' => t('Newsletter Form Submission'),
     'access arguments' => array('access content'),
+    'page callback' => '_newsletter_unsubscribe_all',
+    'file' => 'signup.ajax.inc',
+    'type' => MENU_NORMAL_ITEM,    
+  );
+
+  $items['newsletter-unsubscribe'] = array(
+    'title' => t('Newsletter Form Submission'),
+    'access arguments' => array('access content'),
     'page callback' => '_newsletter_unsubscribe',
     'file' => 'signup.ajax.inc',
     'type' => MENU_NORMAL_ITEM,    
   );
+  $items['newsletter-unsubscribe/success'] = array(
+    'title' => t('Newsletter Unsubscribe'),
+    'access arguments' => array('access content'),
+    'page callback' => '_newsletter_unsubscribe_success',
+    'file' => 'signup.ajax.inc',
+    'type' => MENU_NORMAL_ITEM,    
+  );
+  
+  // newsletter-unsubscribe-problem
   
   // newsletter-unsubscribe-problem
   // newsletter-unsubscribe-confirmation
