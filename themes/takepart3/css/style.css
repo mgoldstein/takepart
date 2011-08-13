@@ -3705,6 +3705,13 @@ div.tabs ul.tabs.primary li a:hover, ul.links li a:hover {
   font-weight: bold;
 }
 
+.search-results .views-field-type {
+  color: #8dc547;
+  font-size: 12px;
+  padding-bottom:4px;
+  text-transform: uppercase;
+}
+
 body.page-node-19529 .main-content, body.page-node-19530 .main-content, body.page-node-19531 .main-content,  body.page-node-19532 .main-content,  body.page-node-19533 .main-content,  body.page-node-19534 .main-content,  body.page-node-19535 .main-content,  body.page-node-19536 .main-content,  body.page-node-19537 .main-content,  body.page-node-19538 .main-content,  body.page-node-19546 .main-content,  body.page-node-19550 .main-content,  body.page-node-19551 .main-content,  body.page-node-19552 .main-content {
   width:960px;
 }

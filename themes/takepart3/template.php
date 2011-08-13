@@ -486,6 +486,97 @@ function _render_tp3_quick_study_topics($node){
   return '<div class="node-takepart-quick-study-topics field-name-field-display-tag">' . implode(' | ', $output) . '</div>';
 }
 
+/**
+ * Theme function for displaying search results.
+ */
+function takepart3_search_api_page_results(array $variables) {
+  drupal_add_css(drupal_get_path('module', 'search_api_page') . '/search_api_page.css');
+
+  $index = $variables['index'];
+  $results = $variables['results'];
+  $entities = $variables['entities'];
+  $keys = $variables['keys'];
+
+  $output = '<p class="search-performance">' . format_plural($results['result count'],
+      'Current search found 1 result for ' . check_plain($keys),
+      'Current search found @count results for ' . check_plain($keys),
+      array('@sec' => round($results['performance']['complete'], 3))) . '</p>';
+
+  if (!$results['result count']) {
+    $output .= "\n<h2>" . t('Your search yielded no results') . "</h2>\n";
+    return $output;
+  }
+  else {
+    $block = module_invoke('search_api_sorts', 'block_view', 'search-sorts');
+    $output .= '<div id="block-search-api-sorts-search-sorts"><h2>Sort by:</h2><div class="content">' . $block['content'] . '</div></div>';
+  }
+
+  if ($variables['view_mode'] == 'search_api_page_result') {
+    entity_prepare_view($index->entity_type, $entities);
+    $output .= '<ol class="search-results">';
+    foreach ($results['results'] as $item) {
+      $output .= '<li class="search-result">' . theme('search_api_page_result', array('index' => $index, 'result' => $item, 'entity' => isset($entities[$item['id']]) ? $entities[$item['id']] : NULL, 'keys' => $keys)) . '</li>';
+    }
+    $output .= '</ol>';
+  }
+  else {
+    $output .= '<div class="search-results">';
+    $render = entity_view($index->entity_type, $entities, $variables['view_mode']);
+    $output .= render($render);
+    $output .= '</div>';
+  }
+
+  return $output;
+}
+
+/**
+ * Theme function for displaying search results.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - index: The index this search was executed on.
+ *   - result: One item of the search results, an array containing the keys
+ *     'id' and 'score'.
+ *   - entity: The loaded entity corresponding to the result.
+ *   - keys: The keywords of the executed search.
+ */
+function takepart3_search_api_page_result(array $variables) {
+  $index = $variables['index'];
+  $id = $variables['result']['id'];
+  $entity = $variables['entity'];
+
+  $wrapper = entity_metadata_wrapper($index->entity_type, $entity);
+
+  $url = entity_uri($index->entity_type, $entity);
+  $name = entity_label($index->entity_type, $entity);
+
+  if ($index->entity_type == 'file') {
+    $url = array(
+      'path' => file_create_url($url),
+      'options' => array(),
+    );
+  }
+
+  if (!empty($variables['result']['excerpt'])) {
+    $text = $variables['result']['excerpt'];
+  }
+  elseif (!empty($entity->field_promo_text[$entity->language][0]['safe_value'])) {
+    $text = $entity->field_promo_text[$entity->language][0]['safe_value'];
+  }
+  
+  $output = '';
+  $type = takepart3_return_node_type($entity->type);
+  if (!empty($type)) {
+    $output = '<div class="views-field views-field-type"><span class="field-content">' . $type . '</span></div>';
+  }
+  $output .= '<h3>' . ($url ? l($name, $url['path'], $url['options']) : check_plain($name)) . "</h3>\n";
+  if ($text) {
+    $output .= $text;
+  }
+
+  return $output;
+}
+
 function _render_tp3_header_search_form() {
   return module_invoke('search_api_page', 'block_view', '2');
 }
