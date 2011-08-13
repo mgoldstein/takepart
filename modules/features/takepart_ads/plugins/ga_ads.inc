@@ -29,7 +29,7 @@ class boxes_ga_ad extends boxes_box {
     $form['ga_ad_slot'] = array(
       '#type' => 'textfield',
       '#title' => 'Ad Slot',
-      '#default_value' => $this->options['entity_type'],
+      '#default_value' => $this->options['ga_ad_slot'],
     );  
 
     return $form; 
