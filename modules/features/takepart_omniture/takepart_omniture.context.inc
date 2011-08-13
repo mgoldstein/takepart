@@ -82,8 +82,8 @@ s.prop16 = [tp_omniture:get_author:{node:nid}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.eVar19 = [node:field-blogpost-blog:term:name]
-s.prop18 = [node:field-blogpost-blog:term:name]',
+      'variables' => 's.eVar19 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]
+s.prop18 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]',
     ),
   );
   $context->condition_mode = 0;
