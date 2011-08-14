@@ -2707,8 +2707,9 @@ q p, q.pull-quote p{
   background: none;
   float: left;
   height: 0px;
+  left: 90px;
   position: relative;
-  top: -340px;
+  top: -309px;
 }
 
 .field-name-field-tp-campaign-4-things-link {
