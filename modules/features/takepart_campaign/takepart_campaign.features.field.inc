@@ -1276,7 +1276,7 @@ function takepart_campaign_field_default_fields() {
           'widget_setting' => 'bob',
         ),
         'type' => 'context_field',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -2731,6 +2731,80 @@ function takepart_campaign_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-takepart_campaign-field_tp_campaign_show_title'
+  $fields['node-takepart_campaign-field_tp_campaign_show_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_show_title',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '0',
+          1 => '1',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'Check this box to remove the headline from the campaign page.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 30,
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_show_title',
+      'label' => 'Remove Headline on Campaign Page',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '1',
+      ),
+    ),
+  );
+
   // Exported field: 'node-takepart_campaign-field_tp_campaign_sl_html'
   $fields['node-takepart_campaign-field_tp_campaign_sl_html'] = array(
     'field_config' => array(
@@ -3247,6 +3321,7 @@ function takepart_campaign_field_default_fields() {
   t('Body');
   t('Campaign Page of');
   t('Campaign Sponsors');
+  t('Check this box to remove the headline from the campaign page.');
   t('Context');
   t('Image');
   t('Intro HTML');
@@ -3256,6 +3331,7 @@ function takepart_campaign_field_default_fields() {
   t('Multi Page Campaign');
   t('Multi Page Header');
   t('Related Actions');
+  t('Remove Headline on Campaign Page');
   t('Segment 1 HTML');
   t('Segment 1 Label');
   t('Segment 1 Related Content');
