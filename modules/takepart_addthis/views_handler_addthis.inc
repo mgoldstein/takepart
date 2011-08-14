@@ -27,7 +27,7 @@ class views_handler_addthis extends views_handler_field {
   addthis:title="$curtitle"
 >
   <a class="addthis_button_facebook"></a>
-  <a class="addthis_button_twitter"></a>
+  <a class="addthis_button_twitter" tw:via="<?php print $variables['takepart_addthis_tweet_via']; ?>"></a>
   <a class="addthis_button_email"></a>
   <a class="addthis_button_print"></a>
   <a class="addthis_counter addthis_bubble_style"></a>
