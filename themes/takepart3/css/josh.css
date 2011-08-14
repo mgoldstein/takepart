@@ -42,6 +42,11 @@ body.node-type-openpublish-article #left-rail{
 	margin-bottom:0;
 }
 
+#right-rail .block{
+	margin-bottom:15px;
+}
+
+
 /* base styles */
 @font-face {
     font-family: 'GorriSansRegular';
@@ -417,7 +422,7 @@ body.node-type-topic-front h2.title a {
 .submitted-wrapper{
 	overflow:hidden;
 	 padding-bottom: 10px;
-	 margin-bottom:10px;
+	 margin-bottom:0px;
 }
 .node-type-openpublish-photo-gallery .submitted-wrapper{
     border-bottom: medium none;
@@ -1189,6 +1194,15 @@ body.node-type-topic-front h2.title a {
 .field-name-field-article-main-image img{
 	display:block;
 	border:1px solid #6a6a6a;
+	margin-top:10px;
+}
+.photo-wrapper{
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.photo-wrapper .photo img{
+	display:block;
 }
 
 .caption {
@@ -1284,3 +1298,90 @@ div.takepart_addthis_footer span#addthis_footer_sharethis {
 	.takepart_addthis_footer a.addthis_button_email span{
 		 background: url("../images/sprite-social-media.png") no-repeat scroll -111px -5px transparent;
 	}
+
+
+/* newsletter campaign signup block */
+.block-newsletter-campaign h2{
+	    background-image: url("../images/sprite-box-ribbons2.gif");
+		background-position:0 -552px;
+    background-repeat: no-repeat;
+    border-bottom: 2px solid #0a0a0a;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 16px;
+    margin-bottom: 15px;
+    padding: 10px 0 6px 35px;
+    text-transform: uppercase;
+}
+.block-newsletter-campaign .takepart-newsletter-header{
+	 color:#333;
+	 font-size:14px;
+	 line-height:17px;
+	 font-weight:bold;
+	 margin:0 0 10px 0;
+}
+.block-newsletter-campaign .takepart-newsletter-promo-text{
+	 color:#333;
+	 font-size:12px;
+	 line-height:17px;
+	 margin:0 0 10px 0;
+}
+.block-newsletter-campaign #newsletter-campaign-signup-form{
+	overflow:hidden;
+}
+.block-newsletter-campaign #newsletter-campaign-signup-form .form-type-textfield{
+	float:left;
+	width:217px;
+	margin:0;
+	 height: 26px;
+}
+	.block-newsletter-campaign #newsletter-campaign-signup-form .form-type-textfield label{
+		display:none;
+	}
+	.block-newsletter-campaign .form-text{
+		padding-left: 10px;
+		padding-right: 10px;
+		width: 195px;
+		height:23px;	
+		display: block;
+	}
+.block-newsletter-campaign #newsletter-campaign-signup-form .form-submit{
+    background-color: #1CA9E7;
+    border: medium none;
+    color: #FFFFFF;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-align: center;
+    text-transform: uppercase;
+	font-family:Helvetica, Arial, sans-serif;
+	height: 26px;
+	display:block;
+	margin:0;
+}
+
+
+.block-newsletter-campaign #takepart-newsletter-wrapper{
+	clear:both;
+	margin: 10px 0;
+}
+
+.block-newsletter-campaign #takepart-newsletter-circ-results{
+	font-size:12px;
+	line-height:17px;
+	color:#333;
+}
+
+/* homepage promo box */
+.block-boxes-title-features .views-row {
+    position: relative;
+}
+.block-boxes-title-features .views-field-field-display-tag {
+	position:absolute;
+    top: 117px;
+}
+.block-boxes-title-features .views-field-field-display-tag .field-content{
+	margin-top:0;
+}
+
