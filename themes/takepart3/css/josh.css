@@ -1263,6 +1263,9 @@ div.takepart_addthis_leftpanel div.custom_images a{
 
 
 /* addthis footer */
+.takepart_addthis_footer{
+	margin-top:10px;
+}
 .takepart_addthis_footer a span{
 	height:21px;
 	width:20px;	
