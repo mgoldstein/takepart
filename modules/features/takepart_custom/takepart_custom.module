@@ -39,3 +39,7 @@ function takepart_custom_field_attach_load($entity_type, $entities, $age, $optio
     }
   }
 }
+
+function takepart_custom_wysiwyg_editor_settings_alter(&$settings, &$context) {
+  drupal_add_js(drupal_get_path("module", 'takepart_custom') ."/takepart_custom.js");
+}
