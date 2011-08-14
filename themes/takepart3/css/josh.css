@@ -31,6 +31,10 @@ body.node-type-takepart-group #left-rail{
 	margin-top:0;
 }
 
+body.node-type-takepart-campaign #content,
+body.node-type-takepart-campaign #left-rail {
+    padding-bottom: 20px;
+}
 
 
 body.node-type-openpublish-article #content,
