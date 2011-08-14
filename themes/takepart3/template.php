@@ -43,6 +43,7 @@ function takepart3_preprocess_page(&$variables) {
   }
   
   return $variables;
+  
 }
 
 /**
