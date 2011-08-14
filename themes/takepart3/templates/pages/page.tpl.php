@@ -118,14 +118,7 @@
         <li id="twitter"> <a target="_blank" href="http://www.twitter.com/takepart">twitter</a></li>
       </ul>
       <!-- These should be converted to a menu, so TP can manage these links without changing code as they may change from time to time -->
-      <ul class="clearfix" id="global-links">
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/contact-us">Contact Us</a></li>
-        <li><a href="/help">Help</a></li>
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li class="last"><a href="/terms-of-use">Terms of Use</a></li>
-      </ul>
-
+      <?php print $corporate_links_nav;?>
     </div>     
 
     <div id="footer-about">
