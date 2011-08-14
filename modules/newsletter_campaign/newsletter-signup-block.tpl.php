@@ -10,7 +10,6 @@
 ?>
 <div class="takepart-newsletter-wrapper">
   <div id="takepart-newsletter-<?php print $form_id; ?>-body">
-    <div class="takepart-newsletter-header"><?php print $header_text; ?></div>
     <div class="takepart-newsletter-promo-text"><?php print $promo_text; ?></div>
     <div class="takepart-newsletter-form">
       <div id="wrapper-form-<?php print $form_id; ?>">
