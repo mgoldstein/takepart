@@ -601,6 +601,11 @@ body.node-type-topic-front h2.title a {
     margin-bottom: 10px;
     margin-top: 10px;
 }
+.view-display-id-block_8 .jcarousel-item {
+    margin: 0 16px 0 0;
+    width: 196px !important;
+}
+
 
 .drupal-embed .node-openpublish-photo-gallery,
 .drupal-embed .node-openpublish-video{
