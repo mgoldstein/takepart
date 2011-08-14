@@ -7,7 +7,16 @@ function comment_block_simple_block_info() {
   );
 }
 function comment_block_simple_block_view($delta= 1) {
-  $block['content'] = comment_node_page_additions(menu_get_object());
+   $node = menu_get_object();
+
+  $block['content'] = comment_node_page_additions($node);
+  //if the comment count is 0 we still want to show the comment section 
+  //so we send an empty comment_wrapper throw
+  if($node->comment_count == 0 ) {
+    $block['content'] = theme('comment_wrapper');
+    
+  }
+
   return $block;
 }
 
