@@ -29,11 +29,17 @@ function takepart_action_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-box-4eb62add' => array(
+          'module' => 'boxes',
+          'delta' => 'box-4eb62add',
+          'region' => 'content_bottom',
+          'weight' => 1,
+        ),
         'comment_block_simple-comment_block' => array(
           'module' => 'comment_block_simple',
           'delta' => 'comment_block',
           'region' => 'content_bottom',
-          'weight' => 0,
+          'weight' => 2,
         ),
         'views-groups-block' => array(
           'module' => 'views',
