@@ -40,6 +40,16 @@ function takepart3_preprocess_page(&$variables) {
   // Adds page template suggestions for specific content types
   if (isset($variables['node'])) {  
     $variables['theme_hook_suggestions'][] = 'page__type__'. $variables['node']->type;
+    
+    if ($variables['node']->type == 'takepart_campaign') {
+      $variables['is_multipage'] = FALSE;
+      if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
+        $variables['is_multipage'] = TRUE;
+      }
+      if (!empty($variables['node']->field_tp_campaign_show_title[$variables['node']->language][0]['value'])) {
+        unset($variables['page']['highlighted']['takepart_custom_page_title_h1']);
+      }
+    }
   }
   
   return $variables;
@@ -590,3 +600,6 @@ function takepart3_search_api_page_result(array $variables) {
 function _render_tp3_header_search_form() {
   return module_invoke('search_api_page', 'block_view', '2');
 }
+
+
+

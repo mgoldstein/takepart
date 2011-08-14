@@ -386,6 +386,9 @@ return TRUE;';
   $handler->display->display_options['arguments']['field_topic_tid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_topic_tid']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['field_topic_tid']['default_argument_options']['field'] = 'content_taxonomy::field_topic';
+  $handler->display->display_options['arguments']['field_topic_tid']['default_argument_options']['settings'] = array(
+    'content_taxonomy_format' => 'tid',
+  );
   $handler->display->display_options['arguments']['field_topic_tid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['field_topic_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_topic_tid']['summary']['format'] = 'default_summary';
@@ -396,7 +399,7 @@ return TRUE;';
   $handler->argument = "all";
 }
 return TRUE;';
-  $handler->display->display_options['arguments']['field_topic_tid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_topic_tid']['break_phrase'] = 1;
   $handler->display->display_options['arguments']['field_topic_tid']['not'] = 0;
   /* Contextual filter: Exclude Current Node */
   $handler->display->display_options['arguments']['nid_1']['id'] = 'nid_1';
