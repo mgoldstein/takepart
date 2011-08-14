@@ -1431,12 +1431,7 @@ ul#global-links a{
 
 
 /* campaign page */
-body.node-type-takepart-campaign .block-boxes-title-spotlight h2,
-.field-name-field-tp-campaign-alliances .field-label, 
-.block-boxes-title-alliances h2,
-.block-boxes-title-sponsored-by h2 {
-	margin-bottom:10px;
-}
+
 
 
 #slim-header #join-login-top{
@@ -1491,7 +1486,7 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2,
     font-size: 15px;
     font-weight: bold;
     line-height: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding: 10px 0 6px 35px;
     text-transform: uppercase;
 	background-position:0 -180px;
@@ -1520,4 +1515,17 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2,
 	font-size:15px;
 	line-height:80px;
 	font-weight:bold;
+}
+
+
+/* audio page */
+.node-type-audio .field-name-field-audio-asset{
+	margin:10px 0 0 0;	
+}
+
+/* blog post */
+.node-openpublish-blog-post .field-name-body{
+	font-size:14px;
+	line-height:24px;
+	margin:0 0 25px 0;
 }
