@@ -12,6 +12,7 @@ bake_convert_to_dev($info,'nodeconnect');
 /* What about overriding base-bake so we do not automatically pull in new versions of that */
 
 $info['projects']['drupal']['version']                    = '7.7';
+$info['projects']['drupal']['patch'][]                    = 'http://drupal.org/files/issues/fix_autocompletion_with_slashes-93854-99-make.patch';
 $info['projects']['apps']['download']['revision']         = '4722dd4c76b06f0912d1770bdcd420b5c04dcde4';
 $info['projects']['openpublish']['download']['revision']  = '9f95fce4758dae9e92dbc1af2f6724a27efc0b74';
 unset($info['projects']['references']['download']['branch']);
