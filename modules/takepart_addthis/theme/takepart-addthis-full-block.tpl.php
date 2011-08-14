@@ -2,7 +2,7 @@
 <div class="takepart_addthis_leftpanel clearfix">
   <div class="addthis_toolbox addthis_default_style">
     <a class="addthis_button_google_plusone"></a>
-    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    <a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:action="recommend"></a>
     <a class="addthis_button_tweet"></a>
   </div>
   <div class="addthis_toolbox">

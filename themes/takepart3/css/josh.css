@@ -11,7 +11,8 @@ body.sidebar-first #left-rail{
 .region-highlighted{
 	padding:35px 20px 0;
 }
-	.front .region-highlighted{
+	.front .region-highlighted,
+	.campaign-page .region-highlighted{
 		padding:0;
 	}
 	.node-type-takepart-group .region-highlighted{
@@ -1423,6 +1424,67 @@ ul#global-links a{
 
 
 /* campaign page */
+body.node-type-takepart-campaign .block-boxes-title-spotlight h2,
+.field-name-field-tp-campaign-alliances .field-label, 
+.block-boxes-title-alliances h2,
+.block-boxes-title-sponsored-by h2 {
+	margin-bottom:10px;
+}
+
+
+#slim-header #join-login-top{
+	width:120px;
+}
+
 .field-name-field-tp-campaign-alliances tbody{
     border-top:none;
 }
+
+.node-type-takepart-campaign .region-highlighted{
+	padding-bottom:15px;
+	border-bottom:solid 5px black;
+}
+
+.node-type-takepart-campaign .region-highlighted .field-name-field-tp-campaign-header img{
+ 	display: block;
+}
+.node-type-takepart-campaign .region-highlighted h2{
+	display:none;
+}
+.node-type-takepart-campaign .region-highlighted ul.menu{
+	background-color:black;
+	list-style:none;
+	height:28px;
+	overflow:hidden;
+}
+	.node-type-takepart-campaign .region-highlighted ul.menu li{
+		display: block;
+		float: left;
+		list-style: none outside none;
+		margin: 0;
+		 padding: 0 25px;
+		 border-right: 1px dotted #FFFFFF;
+	}
+	.node-type-takepart-campaign .region-highlighted ul.menu li.last{
+		 border-right: none;
+	}
+		.node-type-takepart-campaign .region-highlighted ul.menu li a{
+			color:#fff;
+			font-weight:bold;
+			font-size:14px;
+			line-height:28px;
+		}
+			.node-type-takepart-campaign .region-highlighted ul.menu li a:hover{
+				text-decoration:none;
+				color:#1ca9e7;
+			}
+.block-boxes-title-sponsored-by h2 {
+    background-image: url("../images/sprite-box-ribbons.gif");
+    background-repeat: no-repeat;
+    border-bottom: 2px solid #8DC547;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 16px;
+    margin-bottom: 15px;
+    padding: 10px 0 6px 35px;
+    text-transform: uppercase;
