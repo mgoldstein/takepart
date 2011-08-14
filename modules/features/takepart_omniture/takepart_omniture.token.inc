@@ -45,12 +45,22 @@ function takepart_omniture_token_info() {
   );
  
   $info['tokens']['tp_omniture']['str_decode'] = array(
-    'name' => t('Run token through html_entity_decode'),
+    'name' => t('HTML entity decode'),
     'description' => t('Process token with html_entity_decode function.'),
     'dynamic' => TRUE,
     'function' => array(
       'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
       'function' => "takepart_omniture_str_decode",
+    ),
+  );
+ 
+  $info['tokens']['tp_omniture']['date'] = array(
+    'name' => t('date YYYY/MM/DD'),
+    'description' => t('Put date into YYYY/MM/DD format.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+      'function' => "takepart_omniture_date",
     ),
   );
   
@@ -65,6 +75,7 @@ function takepart_omniture_test($param) {
 function takepart_omniture_value_or_empty($param) {
   // if param wrapped in brakets [], then token was not
   // found, just retuen empty string.  
+  $param = html_entity_decode($param, ENT_QUOTES);
   return preg_replace('/^\[[\w].*\]$/', '', $param);
   
 }
@@ -128,7 +139,13 @@ function takepart_omniture_url_after_arg($path, $index = 0) {
  *
  */
 function takepart_omniture_str_decode($str) {
-  return html_entity_decode($str);
+  return html_entity_decode($str, ENT_QUOTES);
 } 
 
+/**
+ * built in date token with custom formatter was not working.
+ */
+function takepart_omniture_date($date_str) {
+  return date('Y/m/d', $date_str);
+}
 

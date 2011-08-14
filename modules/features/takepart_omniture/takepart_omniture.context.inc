@@ -45,12 +45,10 @@ function takepart_omniture_context_default_contexts() {
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.eVar20 = [node:created]
-s.prop19 = [node:created]
+      'variables' => 's.prop19 = [tp_omniture:date:{node:created:raw}]
 s.eVar21 = [tp_omniture:value_or_empty:{node:field-display-tag:term:name}]
 s.prop20 = [tp_omniture:value_or_empty:{node:field-display-tag:term:name}]
-s.eVar4 = [node:content-type]
-s.prop4 = [node:content-type]
+s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.eVar18 = [tp_omniture:str_decode:{node:title}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
 s.eVar17 = [tp_omniture:get_author:{node:nid}]
@@ -83,8 +81,8 @@ s.prop16 = [tp_omniture:get_author:{node:nid}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.eVar19 = [node:field-blogpost-blog:term:name]
-s.prop18 = [node:field-blogpost-blog:term:name]',
+      'variables' => 's.eVar19 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]
+s.prop18 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]',
     ),
   );
   $context->condition_mode = 0;
@@ -137,7 +135,6 @@ s.prop18 = [node:field-blogpost-blog:term:name]',
   $context->reactions = array(
     'omniture_reaction' => array(
       'variables' => 's.channel = takepart:[current-page:url-arg:0]
-s.eVar4 = [node:content-type:machine-name]
 s.eVar11 = [f:bool:{current-user:uid}:Yes:No]
 s.prop3 = [tp_omniture:url_after_arg:{current-page:url:relative}:1]
 s.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]',

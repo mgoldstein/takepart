@@ -477,6 +477,11 @@ function takepart3_preprocess_block(&$vars) {
       $vars['classes_array'][] = 'block-boxes-bid-' . $vars['elements']['#block']->bid;
     }
     
+    if (in_array($vars['elements']['#block']->delta, array('box-4abd00a3', 'box-33756e58'))) {
+      if (stripos($vars['content'], '<div class="boxes-box-content"></div>')) {
+        $vars['content'] = '';
+      }
+    }
 }
 
 function _render_tp3_quick_study_topics($node){
