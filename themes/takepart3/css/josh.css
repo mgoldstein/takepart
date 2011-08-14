@@ -12,7 +12,7 @@ body.sidebar-first #left-rail{
 	padding:35px 20px 0;
 }
 	.front .region-highlighted,
-	.node-type-takepart-campaign .region-highlighted{
+	.campaign-page .region-highlighted{
 		padding:0;
 	}
 	.node-type-takepart-group .region-highlighted{
@@ -1426,7 +1426,8 @@ ul#global-links a{
 /* campaign page */
 body.node-type-takepart-campaign .block-boxes-title-spotlight h2,
 .field-name-field-tp-campaign-alliances .field-label, 
-.block-boxes-title-alliances h2 {
+.block-boxes-title-alliances h2,
+.block-boxes-title-sponsored-by h2 {
 	margin-bottom:10px;
 }
 
@@ -1477,3 +1478,13 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2,
 				text-decoration:none;
 				color:#1ca9e7;
 			}
+.block-boxes-title-sponsored-by h2 {
+    background-image: url("../images/sprite-box-ribbons.gif");
+    background-repeat: no-repeat;
+    border-bottom: 2px solid #8DC547;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 16px;
+    margin-bottom: 15px;
+    padding: 10px 0 6px 35px;
+    text-transform: uppercase;
