@@ -1419,3 +1419,10 @@ ul#global-links a{
 	display:block;
 	float:left;
 }
+
+
+
+/* campaign page */
+.field-name-field-tp-campaign-alliances tbody{
+    border-top:none;
+}
