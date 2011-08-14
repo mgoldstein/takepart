@@ -31,6 +31,10 @@ body.node-type-takepart-group #left-rail{
 	margin-top:0;
 }
 
+body.node-type-takepart-campaign #content,
+body.node-type-takepart-campaign #left-rail {
+    padding-bottom: 20px;
+}
 
 
 body.node-type-openpublish-article #content,
@@ -1388,3 +1392,37 @@ div.takepart_addthis_footer span#addthis_footer_sharethis {
 	margin-top:0;
 }
 
+
+/* media browser for wysiwyg */
+#overlay-container #media-tab-brightcove a.fake-ok,
+#overlay-container #media-tab-library a.fake-ok{
+	    background: url("images/buttons.png") no-repeat scroll -1px 50% #FFFFFF;
+    border-color: #DDDDDD #DDDDDD #CCCCCC;
+    border-style: solid;
+    border-width: 1px;
+    color: #333333;
+    cursor: pointer;
+    font-weight: normal;
+    padding: 2px 10px;
+    text-align: center;
+}
+
+
+
+/* global footer links */
+ul#global-links {
+    text-align: left;
+	overflow:hidden;
+	width:505px;
+}
+ul#global-links a{
+	display:block;
+	float:left;
+}
+
+
+
+/* campaign page */
+.field-name-field-tp-campaign-alliances tbody{
+    border-top:none;
+}
