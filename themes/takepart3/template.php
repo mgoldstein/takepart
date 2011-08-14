@@ -42,6 +42,13 @@ function takepart3_preprocess_page(&$variables) {
     $variables['theme_hook_suggestions'][] = 'page__type__'. $variables['node']->type;
   }
   
+  
+    $status = drupal_get_http_header("status");  
+  if($status == "404 Not Found") {      
+    $variables['theme_hook_suggestions'][] = 'page__404';
+  }
+  
+  
   return $variables;
 }
 
@@ -592,9 +599,4 @@ function _render_tp3_header_search_form() {
 }
 
 
-function takepart3_preprocess_page(&$variables) {   
-  $status = drupal_get_http_header("status");  
-  if($status == "404 Not Found") {      
-    $variables['theme_hook_suggestions'][] = 'page__404';
-  }
-}
+
