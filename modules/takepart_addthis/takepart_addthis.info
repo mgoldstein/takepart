@@ -3,3 +3,9 @@ description = "This contains the blocks and their logic that is used to customiz
 name = "TakePart AddThis Blocks"
 files[] = views_handler_addthis.inc
 version = "7.x-1.0"
+/*Custom vars should be*/
+/*
+Publication ID
+Tweet Via
+Tweet Text
+*/
