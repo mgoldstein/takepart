@@ -1431,6 +1431,10 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2,
 }
 
 
+#slim-header #join-login-top{
+	width:120px;
+}
+
 .field-name-field-tp-campaign-alliances tbody{
     border-top:none;
 }
@@ -1440,7 +1444,7 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2,
 	border-bottom:solid 5px black;
 }
 
-.node-type-takepart-campaign .region-highlighted .block-boxes-image img{
+.node-type-takepart-campaign .region-highlighted .field-name-field-tp-campaign-header img{
  	display: block;
 }
 .node-type-takepart-campaign .region-highlighted h2{
