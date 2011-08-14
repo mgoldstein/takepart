@@ -1,5 +1,4 @@
 <?php if (!empty($pre_object)) print render($pre_object) ?>
-AUDIO NODE
 <div class='<?php print $classes ?> clearfix' <?php print ($attributes) ?>>
   <?php if (!empty($title_prefix)) print render($title_prefix); ?>
   

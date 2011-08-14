@@ -12,7 +12,7 @@ body.sidebar-first #left-rail{
 	padding:35px 20px 0;
 }
 	.front .region-highlighted,
-	.node-type-takepart-campaign .region-highlighted{
+	.campaign-page .region-highlighted{
 		padding:0;
 	}
 	.node-type-takepart-group .region-highlighted{
@@ -601,6 +601,11 @@ body.node-type-topic-front h2.title a {
     margin-bottom: 10px;
     margin-top: 10px;
 }
+.view-display-id-block_8 .jcarousel-item {
+    margin: 0 16px 0 0;
+    width: 196px !important;
+}
+
 
 .drupal-embed .node-openpublish-photo-gallery,
 .drupal-embed .node-openpublish-video{
@@ -617,16 +622,18 @@ body.node-type-topic-front h2.title a {
 		font-weight:bold;
 	}
     .drupal-embed .node-openpublish-photo-gallery .views-field{
-     	margin:0 0 20px 0;
+     	margin:0;
       	overflow: hidden;
     }
-	.drupal-embed .node-openpublish-photo-gallery .views-row img{
-		border:solid 1px black;
-		margin:0 5px 0 0;
+	.drupal-embed .node-openpublish-photo-gallery .views-row a{
+		margin:0 5px 10px 0;
 		display:block;
 		float:left;
 	}
-	
+	.drupal-embed .node-openpublish-photo-gallery .views-row img{
+		border:solid 1px black;
+		display:block;
+	}	
 	.drupal-embed .node-openpublish-photo-gallery .views-field-view-node{
 		clear:both;
 		text-align:right;
@@ -1424,11 +1431,7 @@ ul#global-links a{
 
 
 /* campaign page */
-body.node-type-takepart-campaign .block-boxes-title-spotlight h2,
-.field-name-field-tp-campaign-alliances .field-label, 
-.block-boxes-title-alliances h2 {
-	margin-bottom:10px;
-}
+
 
 
 #slim-header #join-login-top{
@@ -1477,3 +1480,52 @@ body.node-type-takepart-campaign .block-boxes-title-spotlight h2,
 				text-decoration:none;
 				color:#1ca9e7;
 			}
+.block-boxes-title-sponsored-by h2 {
+    background-image: url("../images/sprite-box-ribbons.gif");
+    background-repeat: no-repeat;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 16px;
+    margin-bottom: 15px;
+    padding: 10px 0 6px 35px;
+    text-transform: uppercase;
+	background-position:0 -180px;
+}
+
+
+.block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors {
+	border-top:none;
+	padding:0 15px 15px;
+	overflow:hidden;
+}
+.block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors .view-groups .views-field-field-group-logo,
+.block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors .view-groups .views-field-title{
+	display:block;
+	float:left;
+}
+.block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors .view-groups .views-field-field-group-logo{
+	margin:0 10px 0 0;
+}
+	.block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors .view-groups .views-field-field-group-logo img{
+		border:solid 1px #999;
+		display:block;
+	}
+.block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors .view-groups .views-field-title a{
+	color:#000;
+	font-size:15px;
+	line-height:80px;
+	font-weight:bold;
+}
+
+
+/* audio page */
+.node-type-audio .field-name-field-audio-asset{
+	margin:10px 0 0 0;	
+}
+
+/* blog post */
+.node-openpublish-blog-post .field-name-body{
+	font-size:14px;
+	line-height:24px;
+	margin:0 0 25px 0;
+}

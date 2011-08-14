@@ -35,21 +35,18 @@
  * @see theme_comment_wrapper()
  */
 ?>
-
 <div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php if ($content['comments'] && $node->type != 'forum'): ?>
     <?php print render($title_prefix); ?>
     
     <div class='comments-header'>
       <?php if (!user_is_logged_in()): ?>
-      <div class="comments-join-login"><?php print t('To join the conversation'); ?>, <a href="/user/"><?php print t('log in'); ?></a> <?php print t('or'); ?> <fb:login-button ><?php print t('Connect'); ?></fb:login-button></div>
+      <div class="comments-join-login"><?php print t('To join the conversation'); ?>, <?php print l('log in', "/user/", array("query"=>drupal_get_destination())); ?></a> <?php print t('or'); ?> <fb:login-button ><?php print t('Connect'); ?></fb:login-button></div>
       <?php endif; ?>
       <h2 class="title"><?php print t('Comments'); ?></h2>
       <span class='comment-count'><?php print $content['#node']->comment_count ?></span>
     </div>
     
     <?php print render($title_suffix); ?>
-  <?php endif; ?>
 
   <?php print render($content['comments']); ?>
 
