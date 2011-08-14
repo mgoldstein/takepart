@@ -346,7 +346,9 @@ function takepart3_field__field_tp_campaign_seg_1_rel(&$vars){
   $output = '';
   foreach ($vars['element']['#items'] as $item) {
     $node_type = takepart3_return_node_type($item['node']->type);
-    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">';
+    $output .= '<div class="title">' . check_plain($item['node']->title) . '</div>';
+    $output .= l(t('View') . ' ' . $node_type . ' &raquo;', $item['node']->uri['path'], array('html' => TRUE)) . '</div>';
   }
   return $output;
 }
@@ -355,7 +357,9 @@ function takepart3_field__field_tp_campaign_seg_2_rel(&$vars){
   $output = '';
   foreach ($vars['element']['#items'] as $item) {
     $node_type = takepart3_return_node_type($item['node']->type);
-    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">';
+    $output .= '<div class="title">' . check_plain($item['node']->title) . '</div>';
+    $output .= l(t('View') . ' ' . $node_type . ' &raquo;', $item['node']->uri['path'], array('html' => TRUE)) . '</div>';
   }
   return $output;
 }
@@ -364,7 +368,9 @@ function takepart3_field__field_tp_campaign_seg_3_rel(&$vars){
   $output = '';
   foreach ($vars['element']['#items'] as $item) {
     $node_type = takepart3_return_node_type($item['node']->type);
-    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">';
+    $output .= '<div class="title">' . check_plain($item['node']->title) . '</div>';
+    $output .= l(t('View') . ' ' . $node_type . ' &raquo;', $item['node']->uri['path'], array('html' => TRUE)) . '</div>';
   }
   return $output;
 }
@@ -373,7 +379,9 @@ function takepart3_field__field_tp_campaign_seg_4_rel(&$vars){
   $output = '';
   foreach ($vars['element']['#items'] as $item) {
     $node_type = takepart3_return_node_type($item['node']->type);
-    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">';
+    $output .= '<div class="title">' . check_plain($item['node']->title) . '</div>';
+    $output .= l(t('View') . ' ' . $node_type . ' &raquo;', $item['node']->uri['path'], array('html' => TRUE)) . '</div>';
   }
   return $output;
 }

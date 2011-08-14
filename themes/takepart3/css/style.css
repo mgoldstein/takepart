@@ -2695,12 +2695,22 @@ q p, q.pull-quote p{
   font-size: 18px;
   height: 0px;
   position: relative;
-  top: -323px;
+  top: -333px;
   width: 300px;
 }
 
 .field-name-field-tp-campaign-5-things-head .field-items {
   padding-top: 20px;
+}
+
+.field-name-field-tp-campaign-seg_rel {
+  padding: 10px 0;
+}
+
+.field-name-field-tp-campaign-seg_rel .title {
+  font-weight: bold;
+  font-size:16px;
+  margin-bottom:5px;
 }
 
 .field-name-field-tp-campaign-intro-media .odd { 
@@ -2716,7 +2726,7 @@ q p, q.pull-quote p{
   float: right;
   height: 0px;
   position: relative;
-  top: -272px;
+  top: -282px;
   width: 300px;
 }
 
