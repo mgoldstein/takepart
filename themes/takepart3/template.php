@@ -44,13 +44,6 @@ function takepart3_preprocess_page(&$variables) {
   
   return $variables;
   
-  
-    $status = drupal_get_http_header("status");  
-  if($status == "404 Not Found") {      
-    $variables['theme_hook_suggestions'][] = 'page__404';
-  }
-
-  
 }
 
 /**
