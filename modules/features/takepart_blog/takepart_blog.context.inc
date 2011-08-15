@@ -53,12 +53,6 @@ function takepart_blog_context_default_contexts() {
           'region' => 'content_top',
           'weight' => 3,
         ),
-        'addthis-addthis' => array(
-          'module' => 'addthis',
-          'delta' => 'addthis',
-          'region' => 'sidebar_first',
-          'weight' => 0,
-        ),
         'views-related_campaigns-block' => array(
           'module' => 'views',
           'delta' => 'related_campaigns-block',
