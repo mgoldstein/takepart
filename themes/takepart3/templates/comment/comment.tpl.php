@@ -59,7 +59,7 @@
 ?>
 
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-
+    <?php print $picture;?>
   <?php /* if ($new): ?>
     <span class="new"><?php print $new ?></span>
   <?php endif; */ ?>
@@ -67,7 +67,7 @@
   <div class="submitted">
     <div class='submitted-user'><?php print $author; ?></div>
     <div class='submitted-date'><?php print $submitted; ?></div>
-    <?php print $picture;?>
+
     </div>
 
   <div class="content"<?php print $content_attributes; ?>>
