@@ -382,6 +382,7 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
     function takepart_input_box_tweak(textBox) {
       textBox.style[\'color\'] = "black";
       textBox.bgColor = "white";
+      textBox.value = "";
     }', 'inline'
   );
 
