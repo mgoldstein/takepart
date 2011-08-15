@@ -9,7 +9,7 @@
 function takepart_addthis_permission() {
   return array(
     'administer takepart_addthis' => array(
-      'title' => 'Administer Addthis sharing widget',
+      'title' => 'Administer AddThis sharing widget',
       'description' => 'Change which services are shown, color, etc and add addthis.com username',
     ),
   );
@@ -70,6 +70,7 @@ function takepart_addthis_block_info(){
   takepart_addthis_footer_block_info($zeBlocks);
   takepart_addthis_full_block_info($zeBlocks);
   takepart_addthis_rightrail_block_info($zeBlocks);
+  takepart_addthis_simple_block_info($zeBlocks);
 
   return $zeBlocks;
 }
@@ -81,7 +82,7 @@ function takepart_addthis_theme(){
   takepart_addthis_footer_theme($ret_arr);
   takepart_addthis_full_theme($ret_arr);
   takepart_addthis_rightrail_theme($ret_arr);
-    
+  takepart_addthis_simple_block_info($ret_arr);
   return $ret_arr;
 }
 
@@ -98,6 +99,9 @@ function takepart_addthis_block_view($delta = ''){
       break;
     case 'addthis_rightrail':
       $ret_view = takepart_addthis_rightrail_block_view($delta);
+      break;
+    case 'addthis_simple':
+      $ret_view = takepart_addthis_simple_block_view($delta);
       break;
   }
   
@@ -118,6 +122,9 @@ function takepart_addthis_block_configure($delta = ''){
     case 'addthis_rightrail':
       $ret_form = takepart_addthis_rightrail_block_configure($delta);
       break;
+    case 'addthis_simple':
+      $ret_form = takepart_addthis_simple_block_configure($delta);
+      break;
   }
   
   return $ret_form;
@@ -134,6 +141,9 @@ function takepart_addthis_block_save($delta = '', $edits = array()){
       break;
     case 'addthis_rightrail':
       takepart_addthis_rightrail_block_save($delta, $edits);
+      break;
+    case 'addthis_simple':
+      takepart_addthis_simple_block_save($delta, $edits);
       break;
   }
 }
@@ -275,3 +285,50 @@ function takepart_addthis_footer_block_save($delta, $edits){
   if($delta == 'addthis_footer'){
   }
 }
+
+/******************
+ * addthis_top section
+ */
+
+function takepart_addthis_simple_block_info(&$blocks){
+  $blocks['addthis_simple'] = array(
+    'info' => t('AddThis - Share FB and Tweet'),
+  );
+}
+
+function takepart_addthis_simple_theme(&$theme_funcs){
+  $theme_funcs['takepart_addthis_simple_block'] = array(
+    'variables' => array(),
+    'template' => 'theme/takepart-addthis-simple-block',
+  );
+}
+
+function takepart_addthis_simple_block_view($delta = ''){
+  $block = array();
+
+  //there is only one delta here, switch anyway
+  if($delta == 'addthis_simple'){
+    //create the block
+    $block['subject'] = t('test');
+    $block['content'] = theme(
+      'takepart_addthis_simple_block', array()
+    );
+
+    return $block;
+  }
+}
+
+function takepart_addthis_simple_block_configure($delta){
+  $form = array();
+    
+  if($delta == 'addthis_simple'){
+  }
+  
+  return $form;
+}
+
+function takepart_addthis_simple_block_save($delta, $edits){
+  if($delta == 'addthis_simple'){
+  }
+}
+
