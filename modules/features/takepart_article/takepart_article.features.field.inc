@@ -216,19 +216,19 @@ function takepart_article_field_default_fields() {
           ),
           1 => array(
             'parent' => '0',
-            'vocabulary' => 'free_tags',
+            'vocabulary' => 'topic',
           ),
           2 => array(
             'parent' => '0',
-            'vocabulary' => 'topic',
+            'vocabulary' => 'series',
           ),
           3 => array(
             'parent' => '0',
-            'vocabulary' => 'series',
+            'vocabulary' => 'video_series',
           ),
           4 => array(
             'parent' => '0',
-            'vocabulary' => 'video_series',
+            'vocabulary' => 'free_tags',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
