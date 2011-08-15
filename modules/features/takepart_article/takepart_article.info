@@ -1,4 +1,5 @@
 core = "7.x"
+dependencies[] = "addthis"
 dependencies[] = "comment_block_simple"
 dependencies[] = "context_field"
 dependencies[] = "features"
