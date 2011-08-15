@@ -225,6 +225,19 @@ function _default_menu_options($menu_item) {
   return $menu_opts;
 }
 
+function takepart3_views_pre_render(&$vars) {
+  if ($vars->name == 'featured_items' && $vars->current_display == 'block') {
+    for ($i=0;$i<sizeof($vars->result);$i++) {
+      if (!empty($vars->result[$i]->field_field_thumbnail)) {
+        $vars->result[$i]->field_field_gallery_main_image = array();
+        $vars->result[$i]->field_field_article_main_image = array();
+        $vars->result[$i]->field_field_page_main_image = array();
+        $vars->result[$i]->field_field_blogpost_main_image = array();
+      }
+    }
+  }
+}
+
 /**
  * Preprocessor for theme('block').
  */
