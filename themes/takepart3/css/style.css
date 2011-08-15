@@ -2037,6 +2037,10 @@ Block Boxes (General)
   overflow: hidden;
 }
 
+.block-boxes-title-features .views-field-field-thumbnail-1 .field-content img {
+  width:188px;
+}
+
 .block-boxes-title-features .views-row:hover .views-field-field-thumbnail-1 .field-content {
   border:5px solid #1ca9e7;
   height: 128px;
