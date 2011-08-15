@@ -601,6 +601,7 @@ function takepart3_search_api_page_result(array $variables) {
   if ($text) {
     $output .= $text;
   }
+  $output .= "<div class='by-line'>Posted by ". _get_author($entity->nid) ." on " . date('M d, Y', $entity->created) ."</div>";
 
   return $output;
 }
@@ -609,5 +610,43 @@ function _render_tp3_header_search_form() {
   return module_invoke('search_api_page', 'block_view', '2');
 }
 
+/**
+ * find the authors of a nid.
+ *
+ */
+function _get_author($nid) {
+  if (!is_numeric($nid) ) 
+    return 'Tracy Smith';
+  
+  $query = db_select('field_data_field_author', 'a');
+  $query->addField('a', 'field_author_nid');
+  $query->condition('a.entity_id', $nid);
+  
+  $query->join('field_data_field_profile_last_name', 'fpl', 'a.field_author_nid = fpl.entity_id');
+  $query->join('field_data_field_profile_first_name', 'fpf', 'a.field_author_nid = fpf.entity_id');
+  $query->addField('fpl', 'field_profile_last_name_value', 'last_name');
+  $query->addField('fpf', 'field_profile_first_name_value', 'first_name');
+  $query->orderBy('last_name', 'ASC')->orderby('first_name', 'ASC');
+  
+  $result = $query->execute();
+  
+  $authors = array();
+  foreach($result as $record) {
+    $authors[] = l($record->first_name ." ". $record->last_name, "node/".$record->field_author_nid);
+  }
+  
+  switch(count($authors)){
+    case 1:
+      $authors = $authors[0];
+      break;
+    case 2:
+      $authors = implode( ' & ', $authors);
+      break;
+    default:
+      $last_author = array_pop($authors);
+      $authors = implode( ' & ', array(implode(', ', $authors), $last_author));
+      break;
+  }
 
-
+  return $authors;
+}
