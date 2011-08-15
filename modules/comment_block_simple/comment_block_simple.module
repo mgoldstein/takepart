@@ -12,7 +12,8 @@ function comment_block_simple_block_view($delta= 1) {
   $block['content'] = comment_node_page_additions($node);
   //if the comment count is 0 we still want to show the comment section 
   //so we send an empty comment_wrapper throw
-  if($node->comment_count == 0 ) {
+  global $user;
+  if(($node->comment_count == 0) && (!$user->uid)  ) {
     $block['content'] = theme('comment_wrapper');
     
   }

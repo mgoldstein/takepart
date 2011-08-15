@@ -43,7 +43,7 @@
       <div class="comments-join-login"><?php print t('To join the conversation'); ?>, <?php print l('log in', "user/", array("query"=>drupal_get_destination())); ?></a> <?php print t('or'); ?> <fb:login-button ><?php print t('Connect'); ?></fb:login-button></div>
       <?php endif; ?>
       <h2 class="title"><?php print t('Comments'); ?></h2>
-      <span class='comment-count'><?php print $content['#node']->comment_count ?></span>
+      <span class='comment-count'><?php print $content['#node']->comment_count; ?></span>
     </div>
     
     <?php print render($title_suffix); ?>
