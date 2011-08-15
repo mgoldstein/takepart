@@ -34,6 +34,12 @@ function takepart_share_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'views-related_campaigns-block' => array(
+          'module' => 'views',
+          'delta' => 'related_campaigns-block',
+          'region' => 'sidebar_first',
+          'weight' => 0,
+        ),
         'takepart_addthis-addthis_footer' => array(
           'module' => 'takepart_addthis',
           'delta' => 'addthis_footer',
@@ -75,7 +81,7 @@ function takepart_share_context_default_contexts() {
           'module' => 'takepart_addthis',
           'delta' => 'addthis_full',
           'region' => 'sidebar_first',
-          'weight' => 0,
+          'weight' => 1,
         ),
       ),
     ),
