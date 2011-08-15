@@ -59,7 +59,6 @@ features[field_group][] = "group_blogpost_promos|node|openpublish_blog_post|form
 features[field_group][] = "group_blogpost_terms|node|openpublish_blog_post|form"
 features[node][] = "blog_front"
 features[variable][] = "additional_settings__active_tab_openpublish_blog_post"
-features[variable][] = "addthis_nodetype_openpublish_blog_post"
 features[variable][] = "comment_anonymous_blog_front"
 features[variable][] = "comment_anonymous_openpublish_blog_post"
 features[variable][] = "comment_blog_front"
