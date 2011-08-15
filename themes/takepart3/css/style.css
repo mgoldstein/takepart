@@ -2512,7 +2512,17 @@ body.node-type-topic-front h2.title a {
 }
 
 .block-box-primary .view-featured-items .views-field-field-blogpost-main-image,
-.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-blogpost-main-image {
+.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-blogpost-main-image img {
+  border: 1px solid black;
+  float: left;
+  height: 222px;
+  margin-right: 18px;
+  margin-bottom: 15px;
+  width: 298px;
+}
+
+.block-box-primary .view-featured-items .views-field-field-thumbnail,
+.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-thumbnail img {
   border: 1px solid black;
   float: left;
   height: 222px;
