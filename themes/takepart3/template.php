@@ -472,6 +472,13 @@ function takepart3_preprocess_block(&$vars) {
         $vars['content'] = '';
       }
     }
+    
+    if (in_array($vars['elements']['#block']->delta, array('box-2988d8fb'))) {
+      if (stripos($vars['content'], '<object')) {
+        $vars['content'] = str_replace('<object', '<a class="play" href="#" style="display: none;">Play</a><div class="campaign-video"><object', $vars['content']);
+        $vars['content'] = str_replace('</object>', '</object><a class="close" href="#">Close</a></div>', $vars['content']);
+      }
+    }
 }
 
 function _render_tp3_quick_study_topics($node){

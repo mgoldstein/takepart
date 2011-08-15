@@ -58,3 +58,17 @@ jQuery(document).ready(function() {
   }};
 })(jQuery);
 
+(function($) {
+  Drupal.behaviors.campaignVideo = { attach: function(context) {
+    $('.field-name-field-tp-campaign-intro-media .close').click(function() {
+      $('.campaign-video').hide();
+      $('.field-name-field-tp-campaign-intro-media .play').show();
+      return false;
+    });
+    $('.field-name-field-tp-campaign-intro-media .play').click(function() {
+      $('.field-name-field-tp-campaign-intro-media .play').hide();
+      $('.campaign-video').show();
+      return false;
+    });    
+  }};
+})(jQuery);
