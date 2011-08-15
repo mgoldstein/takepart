@@ -82,7 +82,7 @@ function takepart_addthis_theme(){
   takepart_addthis_footer_theme($ret_arr);
   takepart_addthis_full_theme($ret_arr);
   takepart_addthis_rightrail_theme($ret_arr);
-  takepart_addthis_simple_block_info($ret_arr);
+  takepart_addthis_simple_theme($ret_arr);
   return $ret_arr;
 }
 
@@ -309,7 +309,7 @@ function takepart_addthis_simple_block_view($delta = ''){
   //there is only one delta here, switch anyway
   if($delta == 'addthis_simple'){
     //create the block
-    $block['subject'] = t('test');
+    $block['subject'] = t('');
     $block['content'] = theme(
       'takepart_addthis_simple_block', array()
     );
