@@ -2717,9 +2717,34 @@ q p, q.pull-quote p{
   background: none;
   float: left;
   height: 0px;
-  left: 90px;
+  left: 75px;
   position: relative;
   top: -309px;
+}
+
+.field-name-field-tp-campaign-intro-media a.play {
+    background: url("../images/play.png") no-repeat scroll center center transparent;
+    display: block;
+    height: 272px;
+    outline: medium none;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 480px;
+}
+
+.field-name-field-tp-campaign-intro-media a.close {
+  -moz-box-shadow: 0 0 5px #333333;
+  background: url("../images/close.png") no-repeat scroll 0 0 transparent;
+  display: block;
+  height: 15px;
+  outline: medium none;
+  overflow: hidden;
+  position: absolute;
+  right: -23px;
+  text-indent: -9999px;
+  top: 0;
+  width: 15px;
+  z-index: 100;
 }
 
 .field-name-field-tp-campaign-4-things-link {
