@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function takepart_omniture_context_default_contexts() {
   $export = array();
@@ -102,13 +102,14 @@ s.prop18 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]',
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'user/register' => 'user/register',
+        'node/19528' => 'node/19528',
       ),
     ),
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.events = event23',
+      'variables' => 's.events = event23
+s.eVar11 = Yes',
     ),
   );
   $context->condition_mode = 0;

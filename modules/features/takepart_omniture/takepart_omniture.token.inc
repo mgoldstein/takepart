@@ -103,7 +103,7 @@ function takepart_omniture_get_author($nid) {
   $authors = array();
   foreach($result as $record) {
     //$authors[] = $record->last_name ."-". $record->first_name ."-". $record->field_author_nid;
-    $authors[] = strtolower($record->firstname ." ". $record->lastname);
+    $authors[] = strtolower($record->first_name ." ". $record->last_name);
   }
   return implode(';', $authors);
 }
