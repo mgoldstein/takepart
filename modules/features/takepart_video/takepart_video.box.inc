@@ -39,7 +39,7 @@ function takepart_video_default_box() {
   $box->options = array(
     'view' => 'video--block_1',
     'settings' => array(
-      'nid' => '31+32',
+      'nid' => '31+210+180+183',
     ),
     'view_object' => NULL,
     'view_more_text' => '',
