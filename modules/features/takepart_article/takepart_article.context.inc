@@ -47,12 +47,6 @@ function takepart_article_context_default_contexts() {
           'region' => 'content_top',
           'weight' => 2,
         ),
-        'addthis-addthis' => array(
-          'module' => 'addthis',
-          'delta' => 'addthis',
-          'region' => 'sidebar_first',
-          'weight' => 0,
-        ),
         'boxes-box-4eb62add' => array(
           'module' => 'boxes',
           'delta' => 'box-4eb62add',
@@ -65,17 +59,29 @@ function takepart_article_context_default_contexts() {
           'region' => 'content_bottom',
           'weight' => 2,
         ),
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar_second',
+          'weight' => 0,
+        ),
         'views-related_actions-block' => array(
           'module' => 'views',
           'delta' => 'related_actions-block',
           'region' => 'sidebar_second',
-          'weight' => 0,
+          'weight' => 1,
         ),
         'views-related_content-block' => array(
           'module' => 'views',
           'delta' => 'related_content-block',
           'region' => 'sidebar_second',
           'weight' => 2,
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar_second',
+          'weight' => 3,
         ),
       ),
     ),
