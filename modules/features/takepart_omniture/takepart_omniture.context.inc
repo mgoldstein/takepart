@@ -52,7 +52,8 @@ s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.eVar18 = [tp_omniture:str_decode:{node:title}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
 s.eVar17 = [tp_omniture:get_author:{node:nid}]
-s.prop16 = [tp_omniture:get_author:{node:nid}]',
+s.prop16 = [tp_omniture:get_author:{node:nid}]
+s.prop6 = [node:nid]',
     ),
   );
   $context->condition_mode = 0;
@@ -137,7 +138,7 @@ s.prop18 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.events = event23
+      'variables' => 's.events = event23,event33,event21
 s.eVar11 = Yes',
     ),
   );
