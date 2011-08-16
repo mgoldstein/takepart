@@ -66,6 +66,35 @@ s.prop16 = [tp_omniture:get_author:{node:nid}]',
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'omniture_article';
+  $context->description = 'Omniture article context';
+  $context->tag = 'Omniture';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'openpublish_article' => 'openpublish_article',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'omniture_reaction' => array(
+      'variables' => 's.prop5 = [tp_omniture:str_decode:{node:title}]',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Omniture');
+  t('Omniture article context');
+  $export['omniture_article'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'omniture_blog';
   $context->description = 'Variables to set on blog pages.';
   $context->tag = 'Omniture';
