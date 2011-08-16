@@ -19,8 +19,13 @@ function takepart_ads_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'action' => 'action',
+        'openpublish_article' => 'openpublish_article',
+        'openpublish_blog_post' => 'openpublish_blog_post',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+        'openpublish_video' => 'openpublish_video',
         'takepart_campaign' => 'takepart_campaign',
+        'takepart_group' => 'takepart_group',
       ),
       'options' => array(
         'node_form' => '1',
@@ -28,6 +33,8 @@ function takepart_ads_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
+        'video' => 'video',
+        'photos' => 'photos',
         'afinefrenzy' => 'afinefrenzy',
         'thepeoplespeak' => 'thepeoplespeak',
         'wavesofaction' => 'wavesofaction',
@@ -45,18 +52,7 @@ function takepart_ads_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'boxes-box-95b55e7' => array(
-          'module' => 'boxes',
-          'delta' => 'box-95b55e7',
-          'region' => 'sidebar_second',
-          'weight' => 2,
-        ),
-      ),
-    ),
-  );
+  $context->reactions = array();
   $context->condition_mode = 0;
 
   // Translatables
@@ -97,7 +93,7 @@ function takepart_ads_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar_second',
-          'weight' => 3,
+          'weight' => 4,
         ),
       ),
     ),

@@ -192,6 +192,7 @@ function takepart_blog_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'allowed_blocks' => array(
+          'addthis' => 0,
           'boxes' => 'boxes',
           'comment' => 0,
           'context_ui' => 0,
