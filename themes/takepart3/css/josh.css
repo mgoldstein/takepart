@@ -1546,3 +1546,63 @@ ul#global-links a{
 	display:block;
 	float:left;
 }
+
+
+
+
+/* unsubscribe page */
+
+#-newsletter-unsubscribe-all-form{
+    color: #333333;
+    font-size: 12px;
+    line-height: 17px;
+    margin: 0 0 10px;
+    overflow:hidden;
+}
+
+#-newsletter-unsubscribe-all-form .form-type-textfield {
+    float: left;
+    height: 53px;
+    margin: 10px 0 0;
+    width: 275px;
+}
+#-newsletter-unsubscribe-all-form .form-type-textfield label {
+	 color:#333;
+	 font-size:14px;
+	 line-height:17px;
+	 font-weight:bold;
+	 margin:0 0 10px 0;
+}
+#-newsletter-unsubscribe-all-form .form-text {
+    display: block;
+    height: 23px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 253px;
+}
+#-newsletter-unsubscribe-all-form .form-button-wrapper{ 
+    display: block;
+    float: left;
+    margin: 37px 0 0;
+}
+#-newsletter-unsubscribe-all-form .form-submit {
+    background-color: #1CA9E7;
+    border: medium none;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    height: 26px;
+    padding: 5px 10px;
+    text-align: center;
+    margin:0;
+    text-transform: uppercase;
+    cursor:pointer;
+}
+#-newsletter-unsubscribe-all-form a{
+    float: left;
+    margin: 42px 0 0 10px;
+    display:block;
+}
