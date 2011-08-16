@@ -2037,6 +2037,10 @@ Block Boxes (General)
   overflow: hidden;
 }
 
+.block-boxes-title-features .views-field-field-thumbnail-1 .field-content img {
+  width:188px;
+}
+
 .block-boxes-title-features .views-row:hover .views-field-field-thumbnail-1 .field-content {
   border:5px solid #1ca9e7;
   height: 128px;
@@ -2508,7 +2512,17 @@ body.node-type-topic-front h2.title a {
 }
 
 .block-box-primary .view-featured-items .views-field-field-blogpost-main-image,
-.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-blogpost-main-image {
+.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-blogpost-main-image img {
+  border: 1px solid black;
+  float: left;
+  height: 222px;
+  margin-right: 18px;
+  margin-bottom: 15px;
+  width: 298px;
+}
+
+.block-box-primary .view-featured-items .views-field-field-thumbnail,
+.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-thumbnail img {
   border: 1px solid black;
   float: left;
   height: 222px;
@@ -2717,9 +2731,34 @@ q p, q.pull-quote p{
   background: none;
   float: left;
   height: 0px;
-  left: 90px;
+  left: 75px;
   position: relative;
   top: -309px;
+}
+
+.field-name-field-tp-campaign-intro-media a.play {
+    background: url("../images/play.png") no-repeat scroll center center transparent;
+    display: block;
+    height: 272px;
+    outline: medium none;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 480px;
+}
+
+.field-name-field-tp-campaign-intro-media a.close {
+  -moz-box-shadow: 0 0 5px #333333;
+  background: url("../images/close.png") no-repeat scroll 0 0 transparent;
+  display: block;
+  height: 15px;
+  outline: medium none;
+  overflow: hidden;
+  position: absolute;
+  right: -23px;
+  text-indent: -9999px;
+  top: 0;
+  width: 15px;
+  z-index: 100;
 }
 
 .field-name-field-tp-campaign-4-things-link {

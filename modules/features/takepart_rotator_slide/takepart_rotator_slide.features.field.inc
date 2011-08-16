@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function takepart_rotator_slide_field_default_fields() {
   $fields = array();
@@ -50,7 +50,12 @@ function takepart_rotator_slide_field_default_fields() {
             'parent' => '0',
             'vocabulary' => 'series',
           ),
+          4 => array(
+            'parent' => '0',
+            'vocabulary' => 'video_series',
+          ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -87,6 +92,7 @@ function takepart_rotator_slide_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -371,7 +377,7 @@ function takepart_rotator_slide_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'public' => 'public',
@@ -383,8 +389,9 @@ function takepart_rotator_slide_field_default_fields() {
             'video' => 'video',
           ),
           'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_generic_alt',
         'weight' => '5',
       ),
     ),

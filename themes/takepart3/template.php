@@ -225,6 +225,19 @@ function _default_menu_options($menu_item) {
   return $menu_opts;
 }
 
+function takepart3_views_pre_render(&$vars) {
+  if ($vars->name == 'featured_items' && $vars->current_display == 'block') {
+    for ($i=0;$i<sizeof($vars->result);$i++) {
+      if (!empty($vars->result[$i]->field_field_thumbnail)) {
+        $vars->result[$i]->field_field_gallery_main_image = array();
+        $vars->result[$i]->field_field_article_main_image = array();
+        $vars->result[$i]->field_field_page_main_image = array();
+        $vars->result[$i]->field_field_blogpost_main_image = array();
+      }
+    }
+  }
+}
+
 /**
  * Preprocessor for theme('block').
  */
@@ -470,6 +483,13 @@ function takepart3_preprocess_block(&$vars) {
     if (in_array($vars['elements']['#block']->delta, array('box-4abd00a3', 'box-33756e58'))) {
       if (stripos($vars['content'], '<div class="boxes-box-content"></div>')) {
         $vars['content'] = '';
+      }
+    }
+    
+    if (in_array($vars['elements']['#block']->delta, array('box-2988d8fb'))) {
+      if (stripos($vars['content'], '<object')) {
+        $vars['content'] = str_replace('<object', '<a class="play" href="#" style="display: none;">Play</a><div class="campaign-video"><object', $vars['content']);
+        $vars['content'] = str_replace('</object>', '</object><a class="close" href="#">Close</a></div>', $vars['content']);
       }
     }
 }

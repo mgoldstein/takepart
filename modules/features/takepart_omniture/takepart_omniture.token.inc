@@ -102,9 +102,10 @@ function takepart_omniture_get_author($nid) {
   
   $authors = array();
   foreach($result as $record) {
-    $authors[] = $record->last_name ."-". $record->first_name ."-". $record->field_author_nid;
+    //$authors[] = $record->last_name ."-". $record->first_name ."-". $record->field_author_nid;
+    $authors[] = strtolower($record->first_name ." ". $record->last_name);
   }
-  return implode(',', $authors);
+  return implode(';', $authors);
 }
 
 /**
@@ -123,15 +124,15 @@ function takepart_omniture_url_after_arg($path, $index = 0) {
   
   $path_arr = explode("/", $path);
   
-  for ($i = 0; $i <= $index; $i++) {
-    $parts = array_shift($path_arr);
-    
-    // if we shift too far (NULL), return empty string.
-    if(empty($parts)) 
-      return '';
+  if ($index > count($path_arr) ) {
+    return $path;
   }
   
-  return implode('/', $path_arr); 
+  for ($i = 0; $i <= $index; $i++) {
+    $parts = array_shift($path_arr);
+  }
+  $clipped = implode('/', $path_arr);
+  return $clipped;
 }
 
 /**

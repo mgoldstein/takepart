@@ -14,7 +14,7 @@ function takepart_ads_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'ad_exclude_campaign';
-  $context->description = 'Context used by general_ad to exclude ads from campaigns';
+  $context->description = 'Context used by general_ad to exclude ads from pages/sections';
   $context->tag = 'Ads';
   $context->conditions = array(
     'node' => array(
@@ -45,13 +45,24 @@ function takepart_ads_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array();
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-box-95b55e7' => array(
+          'module' => 'boxes',
+          'delta' => 'box-95b55e7',
+          'region' => 'sidebar_second',
+          'weight' => 2,
+        ),
+      ),
+    ),
+  );
   $context->condition_mode = 0;
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Ads');
-  t('Context used by general_ad to exclude ads from campaigns');
+  t('Context used by general_ad to exclude ads from pages/sections');
   $export['ad_exclude_campaign'] = $context;
 
   $context = new stdClass;
@@ -80,13 +91,13 @@ function takepart_ads_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-66c05d6f',
           'region' => 'sidebar_second',
-          'weight' => -10000000,
+          'weight' => 1,
         ),
         'boxes-box-1104adce' => array(
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar_second',
-          'weight' => 10000000,
+          'weight' => 3,
         ),
       ),
     ),

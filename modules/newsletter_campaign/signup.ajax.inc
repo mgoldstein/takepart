@@ -253,7 +253,7 @@ function _newsletter_unsubscribe_all_form($form, &$form_state, $campaign_code, $
     '#type' => 'textfield',
     '#title' => t('Email'),
     '#default_value' => $email,
-    '#disabled' => TRUE,
+    //'#disabled' => TRUE,
   );
   
   $form['campaign_id'] = array(
@@ -320,7 +320,8 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
   $campaign_id = $form_state['values']['campaign_id'];
   
   //$all_code = variable_get('takepart_newsletter_signup_unsubscribe_all_campaign_code', 'alltpnl');
-  if ($campaign_id) {
+  drupal_set_message($campaign_id);
+  if ($campaign_id && $campaign_id != 'alltpnl') {
     $message = _newsletter_signup_alert_pluris($email, $campaign_id, 'u');
     if (!$message) {
         $success = 1;
@@ -380,7 +381,7 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
   // if there is a message, that means there was a problem
   if (!$response['status']) {
     drupal_set_message($response['message'], 'error', FALSE);
-    drupal_goto(variable_get('takepart_newsletter_signup_unsubscribe_problem_page', 'newsletter-unsubscribe-problem'));
+    //drupal_goto(variable_get('takepart_newsletter_signup_unsubscribe_problem_page', 'newsletter-unsubscribe-problem'));
   }
   else {
      drupal_goto(
