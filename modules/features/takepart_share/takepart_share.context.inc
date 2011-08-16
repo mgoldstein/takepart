@@ -40,6 +40,13 @@ function takepart_share_context_default_contexts() {
           'region' => 'content_bottom',
           'weight' => 0,
         ),
+       'takepart_addthis-addthis_simple' => array(
+        'module' => 'takepart_addthis',
+        'delta' => 'addthis_simple',
+        'region' => 'header',
+        'weight' => 0,
+        ),
+
       ),
     ),
   );

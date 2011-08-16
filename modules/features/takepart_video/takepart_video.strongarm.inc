@@ -14,14 +14,14 @@ function takepart_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'brightcove_player';
-  $strongarm->value = '96360173001';
+  $strongarm->value = '28137370001';
   $export['brightcove_player'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'brightcove_player_key';
-  $strongarm->value = 'AQ~~,AAAAAF9gv10~,C2TpzJtBrIC5tt2efHDX6tIKw36G5cHq';
+  $strongarm->value = 'AQ~~,AAAAAF9gv10~,C2TpzJtBrICuOm2BL_HLMajK2gXBu37r';
   $export['brightcove_player_key'] = $strongarm;
 
   $strongarm = new stdClass;

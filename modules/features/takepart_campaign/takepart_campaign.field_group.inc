@@ -108,6 +108,8 @@ function takepart_campaign_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_action_related',
+      1 => 'field_related_actions',
+      2 => 'field_suggest_actions',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

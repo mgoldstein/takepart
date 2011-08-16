@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function takepart_omniture_context_default_contexts() {
   $export = array();
@@ -14,7 +14,7 @@ function takepart_omniture_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'omniture_all_content_types';
-  $context->description = 'set eVar20,21,4,18,17 and prop19,20,4,17,16';
+  $context->description = 'Omniture: All content types';
   $context->tag = 'Omniture';
   $context->conditions = array(
     'node' => array(
@@ -45,16 +45,15 @@ function takepart_omniture_context_default_contexts() {
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.eVar20 = [node:created]
-s.prop19 = [node:created]
+      'variables' => 's.prop19 = [tp_omniture:date:{node:created:raw}]
 s.eVar21 = [tp_omniture:value_or_empty:{node:field-display-tag:term:name}]
 s.prop20 = [tp_omniture:value_or_empty:{node:field-display-tag:term:name}]
-s.eVar4 = [node:content-type]
-s.prop4 = [node:content-type]
-s.eVar18 = [node:title]
-s.prop17 = [node:title]
+s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
+s.eVar18 = [tp_omniture:str_decode:{node:title}]
+s.prop17 = [tp_omniture:str_decode:{node:title}]
 s.eVar17 = [tp_omniture:get_author:{node:nid}]
-s.prop16 = [tp_omniture:get_author:{node:nid}]',
+s.prop16 = [tp_omniture:get_author:{node:nid}]
+s.prop6 = [node:nid]',
     ),
   );
   $context->condition_mode = 0;
@@ -62,8 +61,37 @@ s.prop16 = [tp_omniture:get_author:{node:nid}]',
   // Translatables
   // Included for use with string extractors like potx.
   t('Omniture');
-  t('set eVar20,21,4,18,17 and prop19,20,4,17,16');
+  t('Omniture: All content types');
   $export['omniture_all_content_types'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'omniture_article';
+  $context->description = 'Omniture article context';
+  $context->tag = 'Omniture';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'openpublish_article' => 'openpublish_article',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'omniture_reaction' => array(
+      'variables' => 's.prop5 = [tp_omniture:str_decode:{node:title}]',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Omniture');
+  t('Omniture article context');
+  $export['omniture_article'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -83,8 +111,8 @@ s.prop16 = [tp_omniture:get_author:{node:nid}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.eVar19 = [node:field-blogpost-blog:term:name]
-s.prop18 = [node:field-blogpost-blog:term:name]',
+      'variables' => 's.eVar19 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]
+s.prop18 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]',
     ),
   );
   $context->condition_mode = 0;
@@ -104,13 +132,14 @@ s.prop18 = [node:field-blogpost-blog:term:name]',
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'user/register' => 'user/register',
+        'node/19528' => 'node/19528',
       ),
     ),
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.events = event23',
+      'variables' => 's.events = event23,event33,event21
+s.eVar11 = Yes',
     ),
   );
   $context->condition_mode = 0;
@@ -137,8 +166,9 @@ s.prop18 = [node:field-blogpost-blog:term:name]',
   $context->reactions = array(
     'omniture_reaction' => array(
       'variables' => 's.channel = takepart:[current-page:url-arg:0]
-s.eVar4 = [node:content-type:machine-name]
-s.eVar11 = [f:bool:{current-user:uid}:Yes:No]',
+s.eVar11 = [f:bool:{current-user:uid}:Yes:No]
+s.prop3 = [tp_omniture:url_after_arg:{current-page:url:relative}:1]
+s.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]',
     ),
   );
   $context->condition_mode = 0;

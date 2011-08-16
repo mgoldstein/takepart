@@ -1585,6 +1585,19 @@ span.comment-num {
   width: 420px;
 }
 
+#comments .comments-join-login {
+  float:right;
+  position:relative;
+  top:14px;
+  font-size:14px;
+}
+
+#comments .fb_button {
+  position: relative;
+  bottom:1px;
+  margin-left:4px;
+}
+
 /* Comment Reply Form */
 
 /*
@@ -2022,6 +2035,10 @@ Block Boxes (General)
   height: 133px;
   width: 188px;
   overflow: hidden;
+}
+
+.block-boxes-title-features .views-field-field-thumbnail-1 .field-content img {
+  width:188px;
 }
 
 .block-boxes-title-features .views-row:hover .views-field-field-thumbnail-1 .field-content {
@@ -2495,7 +2512,17 @@ body.node-type-topic-front h2.title a {
 }
 
 .block-box-primary .view-featured-items .views-field-field-blogpost-main-image,
-.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-blogpost-main-image {
+.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-blogpost-main-image img {
+  border: 1px solid black;
+  float: left;
+  height: 222px;
+  margin-right: 18px;
+  margin-bottom: 15px;
+  width: 298px;
+}
+
+.block-box-primary .view-featured-items .views-field-field-thumbnail,
+.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-thumbnail img {
   border: 1px solid black;
   float: left;
   height: 222px;
@@ -2682,7 +2709,7 @@ q p, q.pull-quote p{
   font-size: 18px;
   height: 0px;
   position: relative;
-  top: -323px;
+  top: -333px;
   width: 300px;
 }
 
@@ -2690,19 +2717,55 @@ q p, q.pull-quote p{
   padding-top: 20px;
 }
 
+.field-name-field-tp-campaign-seg_rel {
+  padding: 10px 0;
+}
+
+.field-name-field-tp-campaign-seg_rel .title {
+  font-weight: bold;
+  font-size:16px;
+  margin-bottom:5px;
+}
+
 .field-name-field-tp-campaign-intro-media .odd { 
   background: none;
   float: left;
   height: 0px;
+  left: 75px;
   position: relative;
-  top: -340px;
+  top: -309px;
+}
+
+.field-name-field-tp-campaign-intro-media a.play {
+    background: url("../images/play.png") no-repeat scroll center center transparent;
+    display: block;
+    height: 272px;
+    outline: medium none;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 480px;
+}
+
+.field-name-field-tp-campaign-intro-media a.close {
+  -moz-box-shadow: 0 0 5px #333333;
+  background: url("../images/close.png") no-repeat scroll 0 0 transparent;
+  display: block;
+  height: 15px;
+  outline: medium none;
+  overflow: hidden;
+  position: absolute;
+  right: -23px;
+  text-indent: -9999px;
+  top: 0;
+  width: 15px;
+  z-index: 100;
 }
 
 .field-name-field-tp-campaign-4-things-link {
   float: right;
   height: 0px;
   position: relative;
-  top: -272px;
+  top: -282px;
   width: 300px;
 }
 
@@ -2756,6 +2819,14 @@ q p, q.pull-quote p{
 	font-weight:bolder;
 	color:#1CA9E7;
 	line-height:14px;
+}
+
+.node-type-takepart-campaign .region-highlighted {
+  padding-left:0px;
+}
+
+body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #left-rail {
+  margin-top:0px;
 }
 
 /** Author Node Page **/
@@ -2906,7 +2977,7 @@ body.node-type-takepart-campaign .node-takepart-campaign h2.title{
 }
 
 body.node-type-takepart-campaign .region-sidebar-first {  
-  left: -15px;
+  left: -24px;
   position: relative;
 }
 
@@ -3690,6 +3761,13 @@ div.tabs ul.tabs.primary li a:hover, ul.links li a:hover {
   font-size: 16px;
   color: #1686B7;
   font-weight: bold;
+}
+
+.search-results .views-field-type {
+  color: #8dc547;
+  font-size: 12px;
+  padding-bottom:4px;
+  text-transform: uppercase;
 }
 
 body.page-node-19529 .main-content, body.page-node-19530 .main-content, body.page-node-19531 .main-content,  body.page-node-19532 .main-content,  body.page-node-19533 .main-content,  body.page-node-19534 .main-content,  body.page-node-19535 .main-content,  body.page-node-19536 .main-content,  body.page-node-19537 .main-content,  body.page-node-19538 .main-content,  body.page-node-19546 .main-content,  body.page-node-19550 .main-content,  body.page-node-19551 .main-content,  body.page-node-19552 .main-content {

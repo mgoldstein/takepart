@@ -40,6 +40,16 @@ function takepart3_preprocess_page(&$variables) {
   // Adds page template suggestions for specific content types
   if (isset($variables['node'])) {  
     $variables['theme_hook_suggestions'][] = 'page__type__'. $variables['node']->type;
+    
+    if ($variables['node']->type == 'takepart_campaign') {
+      $variables['is_multipage'] = FALSE;
+      if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
+        $variables['is_multipage'] = TRUE;
+      }
+      if (!empty($variables['node']->field_tp_campaign_show_title[$variables['node']->language][0]['value'])) {
+        unset($variables['page']['highlighted']['takepart_custom_page_title_h1']);
+      }
+    }
   }
   
   return $variables;
@@ -215,6 +225,19 @@ function _default_menu_options($menu_item) {
   return $menu_opts;
 }
 
+function takepart3_views_pre_render(&$vars) {
+  if ($vars->name == 'featured_items' && $vars->current_display == 'block') {
+    for ($i=0;$i<sizeof($vars->result);$i++) {
+      if (!empty($vars->result[$i]->field_field_thumbnail)) {
+        $vars->result[$i]->field_field_gallery_main_image = array();
+        $vars->result[$i]->field_field_article_main_image = array();
+        $vars->result[$i]->field_field_page_main_image = array();
+        $vars->result[$i]->field_field_blogpost_main_image = array();
+      }
+    }
+  }
+}
+
 /**
  * Preprocessor for theme('block').
  */
@@ -336,7 +359,9 @@ function takepart3_field__field_tp_campaign_seg_1_rel(&$vars){
   $output = '';
   foreach ($vars['element']['#items'] as $item) {
     $node_type = takepart3_return_node_type($item['node']->type);
-    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">';
+    $output .= '<div class="title">' . check_plain($item['node']->title) . '</div>';
+    $output .= l(t('View') . ' ' . $node_type . ' &raquo;', $item['node']->uri['path'], array('html' => TRUE)) . '</div>';
   }
   return $output;
 }
@@ -345,7 +370,9 @@ function takepart3_field__field_tp_campaign_seg_2_rel(&$vars){
   $output = '';
   foreach ($vars['element']['#items'] as $item) {
     $node_type = takepart3_return_node_type($item['node']->type);
-    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">';
+    $output .= '<div class="title">' . check_plain($item['node']->title) . '</div>';
+    $output .= l(t('View') . ' ' . $node_type . ' &raquo;', $item['node']->uri['path'], array('html' => TRUE)) . '</div>';
   }
   return $output;
 }
@@ -354,7 +381,9 @@ function takepart3_field__field_tp_campaign_seg_3_rel(&$vars){
   $output = '';
   foreach ($vars['element']['#items'] as $item) {
     $node_type = takepart3_return_node_type($item['node']->type);
-    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">';
+    $output .= '<div class="title">' . check_plain($item['node']->title) . '</div>';
+    $output .= l(t('View') . ' ' . $node_type . ' &raquo;', $item['node']->uri['path'], array('html' => TRUE)) . '</div>';
   }
   return $output;
 }
@@ -363,7 +392,9 @@ function takepart3_field__field_tp_campaign_seg_4_rel(&$vars){
   $output = '';
   foreach ($vars['element']['#items'] as $item) {
     $node_type = takepart3_return_node_type($item['node']->type);
-    $output .= '<div class="field-name-field-tp-campaign-seg_rel">' . l('View ' . $node_type . ' >>', $item['node']->uri['path']) . '</div>'; 
+    $output .= '<div class="field-name-field-tp-campaign-seg_rel">';
+    $output .= '<div class="title">' . check_plain($item['node']->title) . '</div>';
+    $output .= l(t('View') . ' ' . $node_type . ' &raquo;', $item['node']->uri['path'], array('html' => TRUE)) . '</div>';
   }
   return $output;
 }
@@ -397,13 +428,17 @@ function takepart3_return_node_type($type) {
   return '';
 }
 
+
+
 function takepart3_field__field_topic($vars){
   
   $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
   if(count($vars['items']) || count($field_free_tag)){
     $links = array();
     foreach($vars['items'] as $key => $value){
-      $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+      if(isset($value['#href'])) {
+        $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+      }
     }
 
     foreach($field_free_tag as $key => $value){
@@ -419,34 +454,6 @@ function takepart3_preprocess_comment(&$vars){
   //unlinking author name for logged in users
   $vars['author'] = '<span>' . $vars['author'] = $vars['elements']['#comment']->name . '</span>';
 }
-
-/**
- * Theme the AddThis button.
- *  - Bypasses the module's output completely. For the time being
- */
-function takepart3_addthis_button(&$vars = '') {
-  
-  $images_url = base_path() . path_to_theme() . '/images/';
-  
-  $custom_btns = '<a class="addthis_button_digg"><img src="'. $images_url . 'social_media_digg.gif" width="29" height="29" border="0" alt="Digg This" />Digg This</a>';
-  $custom_btns .= '<a class="addthis_button_stumbleupon"><img src="'. $images_url . 'social_media_stumbleupon.gif" width="29" height="29" border="0" alt="Stumble This" />Stumble This</a>';
-  $custom_btns .= '<a class="addthis_button_email"><img src="'. $images_url . 'social_media_email.gif" width="29" height="29" border="0" alt="Email to a friend" />E-mail a friend</a>';
-
-  
-  return '<!-- AddThis Button BEGIN -->
-  <div class="addthis_toolbox addthis_default_style ">
-    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    <a class="addthis_button_tweet"></a>
-    <a class="addthis_button_google_plusone"></a>
-  </div>
-  <div class="addthis_toolbox">
-     <div class="custom_images">' . $custom_btns . '</div>
-  </div>
-  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e191ae57dbd2572"></script>
-  <!-- AddThis Button END -->';
-}
-
-
 /**
  * Preprocessor for theme('block').
  *  - Adds additional classes based on block title, view and delta
@@ -473,6 +480,18 @@ function takepart3_preprocess_block(&$vars) {
       $vars['classes_array'][] = 'block-boxes-bid-' . $vars['elements']['#block']->bid;
     }
     
+    if (in_array($vars['elements']['#block']->delta, array('box-4abd00a3', 'box-33756e58'))) {
+      if (stripos($vars['content'], '<div class="boxes-box-content"></div>')) {
+        $vars['content'] = '';
+      }
+    }
+    
+    if (in_array($vars['elements']['#block']->delta, array('box-2988d8fb'))) {
+      if (stripos($vars['content'], '<object')) {
+        $vars['content'] = str_replace('<object', '<a class="play" href="#" style="display: none;">Play</a><div class="campaign-video"><object', $vars['content']);
+        $vars['content'] = str_replace('</object>', '</object><a class="close" href="#">Close</a></div>', $vars['content']);
+      }
+    }
 }
 
 function _render_tp3_quick_study_topics($node){
@@ -486,6 +505,140 @@ function _render_tp3_quick_study_topics($node){
   return '<div class="node-takepart-quick-study-topics field-name-field-display-tag">' . implode(' | ', $output) . '</div>';
 }
 
+/**
+ * Theme function for displaying search results.
+ */
+function takepart3_search_api_page_results(array $variables) {
+  drupal_add_css(drupal_get_path('module', 'search_api_page') . '/search_api_page.css');
+
+  $index = $variables['index'];
+  $results = $variables['results'];
+  $entities = $variables['entities'];
+  $keys = $variables['keys'];
+
+  $output = '<p class="search-performance">' . format_plural($results['result count'],
+      'Current search found 1 result for ' . check_plain($keys),
+      'Current search found @count results for ' . check_plain($keys),
+      array('@sec' => round($results['performance']['complete'], 3))) . '</p>';
+
+  if (!$results['result count']) {
+    $output .= "\n<h2>" . t('Your search yielded no results') . "</h2>\n";
+    return $output;
+  }
+  else {
+    $block = module_invoke('search_api_sorts', 'block_view', 'search-sorts');
+    $output .= '<div id="block-search-api-sorts-search-sorts"><h2>Sort by:</h2><div class="content">' . $block['content'] . '</div></div>';
+  }
+
+  if ($variables['view_mode'] == 'search_api_page_result') {
+    entity_prepare_view($index->entity_type, $entities);
+    $output .= '<ol class="search-results">';
+    foreach ($results['results'] as $item) {
+      $output .= '<li class="search-result">' . theme('search_api_page_result', array('index' => $index, 'result' => $item, 'entity' => isset($entities[$item['id']]) ? $entities[$item['id']] : NULL, 'keys' => $keys)) . '</li>';
+    }
+    $output .= '</ol>';
+  }
+  else {
+    $output .= '<div class="search-results">';
+    $render = entity_view($index->entity_type, $entities, $variables['view_mode']);
+    $output .= render($render);
+    $output .= '</div>';
+  }
+
+  return $output;
+}
+
+/**
+ * Theme function for displaying search results.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - index: The index this search was executed on.
+ *   - result: One item of the search results, an array containing the keys
+ *     'id' and 'score'.
+ *   - entity: The loaded entity corresponding to the result.
+ *   - keys: The keywords of the executed search.
+ */
+function takepart3_search_api_page_result(array $variables) {
+  $index = $variables['index'];
+  $id = $variables['result']['id'];
+  $entity = $variables['entity'];
+
+  $wrapper = entity_metadata_wrapper($index->entity_type, $entity);
+
+  $url = entity_uri($index->entity_type, $entity);
+  $name = entity_label($index->entity_type, $entity);
+
+  if ($index->entity_type == 'file') {
+    $url = array(
+      'path' => file_create_url($url),
+      'options' => array(),
+    );
+  }
+
+  $text = '';
+  if (!empty($variables['result']['excerpt'])) {
+    $text = $variables['result']['excerpt'];
+  }
+  elseif (!empty($entity->field_promo_text[$entity->language][0]['safe_value'])) {
+    $text = $entity->field_promo_text[$entity->language][0]['safe_value'];
+  }
+  
+  $output = '';
+  $type = takepart3_return_node_type($entity->type);
+  if (!empty($type)) {
+    $output = '<div class="views-field views-field-type"><span class="field-content">' . $type . '</span></div>';
+  }
+  $output .= '<h3>' . ($url ? l($name, $url['path'], $url['options']) : check_plain($name)) . "</h3>\n";
+  if ($text) {
+    $output .= $text;
+  }
+  $output .= "<div class='by-line'>Posted by ". _get_author($entity->nid) ." on " . date('M d, Y', $entity->created) ."</div>";
+
+  return $output;
+}
+
 function _render_tp3_header_search_form() {
   return module_invoke('search_api_page', 'block_view', '2');
+}
+
+/**
+ * find the authors of a nid.
+ *
+ */
+function _get_author($nid) {
+  if (!is_numeric($nid) ) 
+    return 'Tracy Smith';
+  
+  $query = db_select('field_data_field_author', 'a');
+  $query->addField('a', 'field_author_nid');
+  $query->condition('a.entity_id', $nid);
+  
+  $query->join('field_data_field_profile_last_name', 'fpl', 'a.field_author_nid = fpl.entity_id');
+  $query->join('field_data_field_profile_first_name', 'fpf', 'a.field_author_nid = fpf.entity_id');
+  $query->addField('fpl', 'field_profile_last_name_value', 'last_name');
+  $query->addField('fpf', 'field_profile_first_name_value', 'first_name');
+  $query->orderBy('last_name', 'ASC')->orderby('first_name', 'ASC');
+  
+  $result = $query->execute();
+  
+  $authors = array();
+  foreach($result as $record) {
+    $authors[] = l($record->first_name ." ". $record->last_name, "node/".$record->field_author_nid);
+  }
+  
+  switch(count($authors)){
+    case 1:
+      $authors = $authors[0];
+      break;
+    case 2:
+      $authors = implode( ' & ', $authors);
+      break;
+    default:
+      $last_author = array_pop($authors);
+      $authors = implode( ' & ', array(implode(', ', $authors), $last_author));
+      break;
+  }
+
+  return $authors;
 }

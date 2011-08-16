@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_user_default_permissions().
+ * Implements hook_user_default_permissions().
  */
 function takepart_content_lock_user_default_permissions() {
   $permissions = array();
@@ -24,8 +24,10 @@ function takepart_content_lock_user_default_permissions() {
     'name' => 'check out documents',
     'roles' => array(
       0 => 'administrator',
-      1 => 'authenticated user',
-      2 => 'editor',
+      1 => 'author',
+      2 => 'contributor',
+      3 => 'editor',
+      4 => 'layout editor',
     ),
     'module' => 'content_lock',
   );

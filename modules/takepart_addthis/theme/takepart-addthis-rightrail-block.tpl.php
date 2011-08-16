@@ -1,6 +1,23 @@
 <?php
 $view = views_get_view('photo_gallery'); 
-$addthis_embed = $view->preview('block_2');
+$style = <<<STYLE
+<style type="text/css">
+.view-photo-gallery{ font-family:Helvetica, Arial, sans-serif; width: 302px; }
+.view-photo-gallery a,
+.view-photo-gallery a:link,
+.view-photo-gallery a:visited{ border:none; text-decoration:none; }
+.view-photo-gallery .views-field-field-gallery-main-image img{ border:solid 1px black; display:block; }
+.view-photo-gallery .views-field-field-promo-headline a,
+.view-photo-gallery .views-field-field-promo-headline a:link,
+.view-photo-gallery .views-field-field-promo-headline a:visited{ font-size: 20px; color:#333; font-weight:bold; display:block; margin:10px 0; }
+.view-photo-gallery .views-field-field-promo-text a,
+.view-photo-gallery .views-field-field-promo-text a:link,
+.view-photo-gallery .views-field-field-promo-text a:visited{ color:#333; font-size:14px; line-height:16px; }
+.view-photo-gallery .views-field-field-promo-headline a:hover,
+.view-photo-gallery .views-field-field-promo-text a:hover{ color:#1CA9E7; }
+</style>
+STYLE;
+$addthis_embed = $view->preview('block_2'). $style;
 ?>
  
 <!-- AddThis Button BEGIN -->
@@ -8,9 +25,9 @@ $addthis_embed = $view->preview('block_2');
   <div class="addthis_share clearfix">
     <div class="addthis_rightrail_title">Share</div>
     <div class="addthis_toolbox addthis_default_style addthis_rightrail_firstrow clearfix">
-      <!-- <span class="button_container"><a class="addthis_button_google_plusone"></a></span> -->
-      <span class="button_container button_fb"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a></span>
-      <span class="button_container button_twitter"><a class="addthis_button_tweet"></a></span>
+      <span class="button_container"><a class="addthis_button_google_plusone"></a></span>
+      <span class="button_container button_fb"><a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:action="<?php print $variables['takepart_addthis_facebook_like_text'];?>"></a></span>
+      <span class="button_container button_twitter"><a class="addthis_button_tweet" tw:via="<?php print $variables['takepart_addthis_tweet_via']; ?>"></a></span>
     </div>
 
     <div class="addthis_toolbox clearfix">

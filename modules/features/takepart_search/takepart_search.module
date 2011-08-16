@@ -11,3 +11,9 @@ function takepart_search_form_search_api_page_search_form_2_alter(&$form, &$form
   $form['keys_2']['#attributes'] = array('onfocus' => array("if(this.value=='" . t('Search TakePart') . "'){this.value=''};"));
   $form['submit_2']['#attributes'] = array('class' => array('tpform-submit'));
 }
+
+function takepart_search_form_search_api_page_search_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['form']['keys_2']['#default_value'])) {
+    $form['form']['keys_2']['#title'] = t('Search:') . '<span class="search-term"> ' . $form['form']['keys_2']['#default_value'] . '</span>';
+  }
+}

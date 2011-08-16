@@ -12,6 +12,8 @@ bake_convert_to_dev($info,'nodeconnect');
 /* What about overriding base-bake so we do not automatically pull in new versions of that */
 
 $info['projects']['drupal']['version']                    = '7.7';
+$info['projects']['drupal']['patch'][]                    = 'http://drupal.org/files/issues/fix_autocompletion_with_slashes-93854-99-make.patch';
+$info['projects']['drupal']['patch'][]                    = 'https://raw.github.com/phase2/taxonomy_field_autocomplete_multi_voc_widget/master/use_double_colon_to_show_voc_on_term_fields.patch';
 $info['projects']['apps']['download']['revision']         = '4722dd4c76b06f0912d1770bdcd420b5c04dcde4';
 $info['projects']['openpublish']['download']['revision']  = '9f95fce4758dae9e92dbc1af2f6724a27efc0b74';
 unset($info['projects']['references']['download']['branch']);
@@ -215,11 +217,21 @@ $info['projects']['username_check']['download']['revision'] = '299f05438af20211d
 
 /* Drupal contrib modules using a published release */
 
+/* Added Job Scheduler used with Feeds Module */
+
+$info['projects']['job_scheduler']['type']    = 'module';
+$info['projects']['job_scheduler']['subdir']  = 'contrib';
+$info['projects']['job_scheduler']['version'] = '2.0-alpha2';
+
 /* Scheduler Module */
 $info['projects']['scheduler']['type']    = 'module';
 $info['projects']['scheduler']['subdir']  = 'contrib';
 $info['projects']['scheduler']['version'] = '1.0';
 
+/* Feeds */
+$info['projects']['feeds']['type']    = 'module';
+$info['projects']['feeds']['subdir']  = 'contrib';
+$info['projects']['feeds']['version'] = '2.0-alpha4';
 
 /* Styles Module */
 $info['projects']['styles']['type']    = 'module';
@@ -239,7 +251,7 @@ $info['projects']['google_analytics']['version'] = '1.2';
 /* MemCache */
 $info['projects']['memcache']['type']    = 'module';
 $info['projects']['memcache']['subdir']  = 'contrib';
-$info['projects']['memcache']['version'] = '0.0';
+$info['projects']['memcache']['version'] = '1.0-beta4';
 
 /* Taxonomy List Manager */
 $info['projects']['taxonomy_manager']['type']    = 'module';
@@ -325,7 +337,7 @@ $info['projects']['search_api']['version']  = '1.0-beta10';
 /* Used for Apache SOLR Search Integration */
 $info['projects']['search_api_solr']['type']     = 'module';
 $info['projects']['search_api_solr']['subdir']   = 'contrib';
-$info['projects']['search_api_solr']['version']  = '1.0-beta2';
+$info['projects']['search_api_solr']['version']  = '1.0-beta3';
 
 /* Used for Apache SOLR Sort Block */
 $info['projects']['search_api_sorts']['type']                 = 'module';

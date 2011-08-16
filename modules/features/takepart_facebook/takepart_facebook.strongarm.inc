@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_strongarm().
+ * Implements hook_strongarm().
  */
 function takepart_facebook_strongarm() {
   $export = array();
@@ -77,7 +77,7 @@ function takepart_facebook_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'fb_language_override';
-  $strongarm->value = 0;
+  $strongarm->value = 'override';
   $export['fb_language_override'] = $strongarm;
 
   $strongarm = new stdClass;

@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_image_default_styles().
+ * Implements hook_image_default_styles().
  */
 function takepart_image_styles_image_default_styles() {
   $styles = array();
@@ -173,8 +173,8 @@ function takepart_image_styles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '188',
-          'height' => '133',
+          'width' => '298',
+          'height' => '222',
         ),
         'weight' => '1',
       ),
