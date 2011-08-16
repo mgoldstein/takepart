@@ -75,7 +75,7 @@ function takepart_article_context_default_contexts() {
           'module' => 'views',
           'delta' => 'related_content-block',
           'region' => 'sidebar_second',
-          'weight' => 1,
+          'weight' => 2,
         ),
       ),
     ),
