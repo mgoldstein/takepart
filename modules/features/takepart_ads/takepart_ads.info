@@ -1,5 +1,7 @@
 core = "7.x"
 dependencies[] = "boxes"
+dependencies[] = "takepart_campaign"
+dependencies[] = "takepart_group"
 description = "Ad placement for TakePart"
 features[box][] = "box-1104adce"
 features[box][] = "box-66c05d6f"
