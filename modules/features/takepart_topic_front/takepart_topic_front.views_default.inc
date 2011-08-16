@@ -201,7 +201,7 @@ function takepart_topic_front_views_default_views() {
 $entity = $data->_field_data[\'nid\'][\'entity\'];
 if(isset($entity->field_promo_headline[$entity->language])) {
   $promo_headline_array = $entity->field_promo_headline[$entity->language];
-  $value = !empty($promo_headline_array) ? $promo_headline_array[0][\'safe_value\'] : $data->node_title;
+  $value = !empty($promo_headline_array) ? $promo_headline_array[0][\'value\'] : $data->node_title;
 }
 else {
   $value = $data->node_title;
@@ -479,7 +479,7 @@ print $value;
 $entity = $data->_field_data[\'nid\'][\'entity\'];
 if(isset($entity->field_promo_headline[$entity->language])) {
   $promo_headline_array = $entity->field_promo_headline[$entity->language];
-  $value = !empty($promo_headline_array) ? $promo_headline_array[0][\'safe_value\'] : $data->node_title;
+  $value = !empty($promo_headline_array) ? $promo_headline_array[0][\'value\'] : $data->node_title;
 }
 else {
   $value = $data->node_title;
@@ -736,7 +736,7 @@ print $value;
 $entity = $data->_field_data[\'nid\'][\'entity\'];
 if(isset($entity->field_promo_headline[$entity->language])) {
   $promo_headline_array = $entity->field_promo_headline[$entity->language];
-  $value = !empty($promo_headline_array) ? $promo_headline_array[0][\'safe_value\'] : $data->node_title;
+  $value = !empty($promo_headline_array) ? $promo_headline_array[0][\'value\'] : $data->node_title;
 }
 else {
   $value = $data->node_title;
