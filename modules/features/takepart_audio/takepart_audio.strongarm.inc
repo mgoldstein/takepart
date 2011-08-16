@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_strongarm().
+ * Implements hook_strongarm().
  */
 function takepart_audio_strongarm() {
   $export = array();
@@ -100,10 +100,7 @@ function takepart_audio_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_audio';
-  $strongarm->value = array(
-    0 => 'status',
-    1 => 'promote',
-  );
+  $strongarm->value = array();
   $export['node_options_audio'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -131,7 +128,7 @@ function takepart_audio_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_audio_pattern';
-  $strongarm->value = '';
+  $strongarm->value = 'audio/[node:title]';
   $export['pathauto_node_audio_pattern'] = $strongarm;
 
   $strongarm = new stdClass;
