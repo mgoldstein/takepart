@@ -52,7 +52,7 @@ function takepart_ads_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-95b55e7',
           'region' => 'sidebar_second',
-          'weight' => 1,
+          'weight' => 2,
         ),
       ),
     ),
