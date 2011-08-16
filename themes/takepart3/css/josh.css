@@ -1452,7 +1452,9 @@ ul#global-links a{
 }
 
 .node-type-takepart-campaign .region-highlighted{
-	padding-bottom:15px;
+}
+
+.node-type-takepart-campaign .field-name-field-tp-campaign-intro-media img {
 	border-bottom:solid 5px black;
 }
 
