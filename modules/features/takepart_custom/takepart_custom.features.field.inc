@@ -57,7 +57,6 @@ function takepart_custom_field_default_fields() {
           'Boxes for Image Box' => 0,
           'Boxes for Screaming Headline' => 0,
           'Boxes for View Box' => 0,
-          'addthis' => 0,
           'akamai' => 0,
           'boxes' => 0,
           'comment' => 0,
