@@ -75,7 +75,7 @@ function takepart_share_context_default_contexts() {
           'module' => 'takepart_addthis',
           'delta' => 'addthis_full',
           'region' => 'sidebar_first',
-          'weight' => 1,
+          'weight' => 0,
         ),
       ),
     ),
