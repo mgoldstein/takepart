@@ -211,6 +211,12 @@ $info['projects']['username_check']['download']['revision'] = '299f05438af20211d
 
 /* Drupal contrib modules using a published release */
 
+/* Added Job Scheduler used with Feeds Module */
+
+$info['projects']['job_scheduler']['type']    = 'module';
+$info['projects']['job_scheduler']['subdir']  = 'contrib';
+$info['projects']['job_scheduler']['version'] = '2.0-alpha2';
+
 /* Scheduler Module */
 $info['projects']['scheduler']['type']    = 'module';
 $info['projects']['scheduler']['subdir']  = 'contrib';
