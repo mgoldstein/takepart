@@ -49,6 +49,7 @@ blockquote{
   line-height: normal;
   border-bottom: 1px dotted #999;
   padding: 15px 0;
+  text-align:center; 
 }
 
 .photo-wrapper{
