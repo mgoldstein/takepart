@@ -3,7 +3,7 @@
 (function ($) {
   Drupal.behaviors.scSearchClick = {
     attach: function (context, settings) {
-      $('#search-block-form .tpform-submit', context).click(function(){
+      $('#top-search #search-api-page-search-form-2 .tpform-submit', context).click(function(){
         //console.log('search click');
         var search_terms = $('#search-block-form #edit-search-block-form--2').val();
         s.eVar7 = search_terms.toLowerCase();
