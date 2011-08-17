@@ -331,7 +331,7 @@ function takepart3_field__field_author(&$vars){
   }
   
   // Date
-  $date = format_date($vars['element']['#object']->created, 'medium', 'F j, Y | g:i a');
+  $date = format_date($vars['element']['#object']->created, 'medium', 'F j, Y');
   
   //Comments
   $comments = $vars['element']['#object']->comment_count;
