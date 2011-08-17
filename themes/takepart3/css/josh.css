@@ -1218,12 +1218,8 @@ p.search-performance{
 	margin-top:10px;
 }
 .photo-wrapper{
-	/*margin-left: auto;
-    margin-right: auto;*/
-     margin: 0 10px 25px;
-     
-     
-         border-bottom: 1px dotted #999999;
+    margin: 0 10px 25px;   
+    border-bottom: 1px dotted #999999;
     color: #999999;
     font-size: 11px;
     line-height: normal;
