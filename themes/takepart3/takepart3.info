@@ -6,7 +6,7 @@ engine = phptemplate
 
 ; Stylsheets
 stylesheets[all][] = css/style.css
-stylesheets[all][] = css/josh.css
+stylesheets[all][] = css/custom.css
 stylesheets-conditional[lte IE 7][all][] = css/ie7.css
 
 ; Javascript

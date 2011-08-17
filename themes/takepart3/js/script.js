@@ -49,13 +49,13 @@ jQuery(document).ready(function() {
 		//store inline style value in 'floated'
 		//traverse back to parent div and apply style value there
 		//clear style value from nested image
-	  jQuery.each( jQuery('.photo-wrapper .photo img'), function(index, value){
+	  jQuery.each( jQuery('.photo-wrapper img'), function(index, value){
 		var floated = jQuery(value).css('float');
 		jQuery(value).closest('.photo-wrapper').css('float', floated);
 		jQuery(value).css('float','');
 		
 		//clear inline margin value on img
-		jQuery('.photo-wrapper .photo img').css('margin', '');
+		jQuery('.photo-wrapper img').css('margin', '');
 	  })
 
 		//detect width of photo-wrapper based on img size and set container to that size 
