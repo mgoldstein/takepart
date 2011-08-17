@@ -195,7 +195,8 @@ s.eVar11 = Yes
       'variables' => 's.channel = takepart:[current-page:url-arg:0]
 s.eVar11 = [f:bool:{current-user:uid}:Yes:No]
 s.prop3 = [tp_omniture:url_after_arg:{current-page:url:relative}:1]
-s.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]',
+s.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+s.prop1 = [current-page:url-arg:0]',
     ),
   );
   $context->condition_mode = 0;
