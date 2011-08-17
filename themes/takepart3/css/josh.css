@@ -1323,6 +1323,31 @@ div.takepart_addthis_footer span#addthis_footer_sharethis {
 		 background: url("../images/sprite-social-media.png") no-repeat scroll -111px -5px transparent;
 	}
 
+/* addthis simple */
+.takepart_addthis_simple {
+	margin-top:10px;
+}
+.takepart_addthis_simple a span{
+	height:21px;
+	width:20px;	
+}
+div.takepart_addthis_simple span#addthis_simple_sharethis {
+    color: #999999;
+    font-size: 14px;
+    padding-top: 2px;
+    padding-bottom: 15px;
+    float: left;
+}
+.takepart_addthis_simple a.at300b{
+	padding:0;
+	 margin-left: 5px;
+}
+	.takepart_addthis_simple a.addthis_button_facebook span{
+		 background: url("../images/sprite-social-media.png") no-repeat scroll 0 -5px transparent;
+	} 
+	.takepart_addthis_simple a.addthis_button_twitter span{
+		 background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
+	}
 
 /* newsletter campaign signup block */
 .block-newsletter-campaign h2{
