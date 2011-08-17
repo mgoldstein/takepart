@@ -1232,11 +1232,18 @@ p.search-performance{
 	display:block;
     margin-bottom:15px;
 }
-
+.photo-wrapper .photo img{
+	display:block;
+    margin-bottom:0;
+}
 .caption {
     clear: both;
 	text-align: center;
 	overflow:hidden; /* ie7 fix */
+}
+.photo-wrapper .caption {
+  border-bottom:0;
+  padding-bottom:0;
 }
 
 .field-name-field-media-caption{
