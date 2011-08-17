@@ -64,6 +64,15 @@ function takepart_omniture_token_info() {
     ),
   );
   
+  $info['tokens']['tp_omniture']['urldecode'] = array(
+    'name' => t('urldecode'),
+    'description' => t('call urldecode() on param.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+      'function' => "takepart_omniture_urldecode",
+    ),
+  );  
   return $info;
 }
 
@@ -150,3 +159,9 @@ function takepart_omniture_date($date_str) {
   return date('Y/m/d', $date_str);
 }
 
+/**
+ * run $url through urldecode()
+ */
+function takepart_omniture_urldecode($url) {
+  return urldecode($url);
+}
