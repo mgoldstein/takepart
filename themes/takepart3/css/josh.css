@@ -1221,10 +1221,19 @@ p.search-performance{
 	/*margin-left: auto;
     margin-right: auto;*/
      margin: 0 10px 25px;
+     
+     
+         border-bottom: 1px dotted #999999;
+    color: #999999;
+    font-size: 11px;
+    line-height: normal;
+    padding:0 0 15px 0;
+    text-align:center;
 }
 
-.photo-wrapper .photo img{
+.photo-wrapper img{
 	display:block;
+    margin-bottom:15px;
 }
 
 .caption {
