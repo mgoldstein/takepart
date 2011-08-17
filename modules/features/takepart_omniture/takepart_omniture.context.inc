@@ -35,7 +35,6 @@ function takepart_omniture_context_default_contexts() {
         'takepart_quick_study' => 'takepart_quick_study',
         'takepart_slide' => 'takepart_slide',
         'topic_front' => 'topic_front',
-        'video_series' => 'video_series',
         'webform' => 'webform',
       ),
       'options' => array(
@@ -139,7 +138,8 @@ s.prop18 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]',
   $context->reactions = array(
     'omniture_reaction' => array(
       'variables' => 's.events = event23,event33,event21
-s.eVar11 = Yes',
+s.eVar11 = Yes
+',
     ),
   );
   $context->condition_mode = 0;
@@ -149,6 +149,33 @@ s.eVar11 = Yes',
   t('Omniture');
   t('Omniture registration page load variables');
   $export['omniture_registration'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'omniture_search';
+  $context->description = 'omniture search';
+  $context->tag = 'Omniture';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'search/*' => 'search/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'omniture_reaction' => array(
+      'variables' => 's.prop7 = [tp_omniture:urldecode:{current-page:url-arg:1}]
+',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Omniture');
+  t('omniture search');
+  $export['omniture_search'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */

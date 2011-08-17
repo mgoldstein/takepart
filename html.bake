@@ -101,6 +101,12 @@ $info['projects']['context_title']['download']['revision'] = '8083030cd5cf9b48b1
 
 /* Drupal Contrib Modules */
 
+$info['projects']['static_404']['type']                 = 'module';
+$info['projects']['static_404']['subdir']               = 'contrib';
+$info['projects']['static_404']['download']['type']     = 'git';
+$info['projects']['static_404']['download']['url']      = 'http://git.drupal.org/project/static_404.git';
+$info['projects']['static_404']['download']['revision'] = '18bcd1e8c48f30a2412a073b584fa010c23b2641';
+ 
 /* Modules using git revision numbers that are on a development release */
 
 
@@ -383,13 +389,7 @@ $info['projects']['openpublish_features']['type']                 = 'module';
 $info['projects']['openpublish_features']['download']['type']     = 'git';
 $info['projects']['openpublish_features']['download']['url']      = 'git@phase2.beanstalkapp.com:/openpublish_features.git';
 $info['projects']['openpublish_features']['download']['revision'] = '829432e1565cf1fd535ca47cd4686dd16164f8a9';
-                                               
-/* Use static_404 module from OpenPublic */
-$info['projects']['static_404']['type']                 = 'module';
-$info['projects']['static_404']['download']['type']     = 'svn';
-$info['projects']['static_404']['download']['url']      = 'https://phase2.svn.beanstalkapp.com/phase2_d7/trunk/openpublic/modules/custom/static_404';
-$info['projects']['static_404']['download']['revision'] = '822';
-                                               
+                                              
 // This came out of openpublish_features
 $info['projects']['field_boxes']['type']                  = 'module';
 $info['projects']['field_boxes']['subdir']                = 'contrib';
