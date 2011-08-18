@@ -33,7 +33,30 @@
     }
   }
 
+  Drupal.behaviors.scSocialClick = {
+    attach: function (context, settings) {
+      //console.log('socialclick');
+
+    
+      $('.takepart_addthis_leftpanel .addthis_toolbox a, .takepart_addthis_footer .addthis_toolbox a').click(function(){
+        var title = $(this).attr('title');
+        //console.log(title);
+        s.events="event25";
+        s.prop26=title;
+        s.eVar27=title;
+        //console.log(s);
+        //return false;
+      });
+    }
+  }
+
+// takepart_addthis_leftpanel a
+// takepart_addthis_footer
+
 }(jQuery));
+
+
+
 
 
 /*
