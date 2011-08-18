@@ -2787,11 +2787,12 @@ q p, q.pull-quote p{
   color: white;
   display: inline-block;
   float: left;
-  font-size: 15px;
+  font-size: 13px;
   margin-bottom: 20px;
   padding-left: 8px;
   vertical-align: top;
   width: 240px;
+  line-height:120%;
 }
 .field-name-field-tp-campaign-cover-link .field-item {
 	height:40px;
