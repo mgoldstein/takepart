@@ -3771,16 +3771,11 @@ div.tabs ul.tabs.primary li a:hover, ul.links li a:hover {
   text-transform: uppercase;
 }
 
-body.page-node-19529 .main-content, body.page-node-19530 .main-content, body.page-node-19531 .main-content,  body.page-node-19532 .main-content,  body.page-node-19533 .main-content,  body.page-node-19534 .main-content,  body.page-node-19535 .main-content,  body.page-node-19536 .main-content,  body.page-node-19537 .main-content,  body.page-node-19538 .main-content,  body.page-node-19546 .main-content,  body.page-node-19550 .main-content,  body.page-node-19551 .main-content,  body.page-node-19552 .main-content {
+body.node-type-takepart-page .main-content {
   width:960px;
 }
-
-body.page-node-19529 #page, body.page-node-19530 #page, body.page-node-19531 #page, body.page-node-19532 #page, body.page-node-19533 #page, body.page-node-19534 #page, body.page-node-19535 #page, body.page-node-19536 #page, body.page-node-19537 #page, body.page-node-19538 #page, body.page-node-19546 #page, body.page-node-19550 #page, body.page-node-19551 #page, body.page-node-19552 #page {
+body.node-type-takepart-page #page {
   padding-right: 0px;
-}
-
-body.page-node-19529 #right-rail, body.page-node-19530 #right-rail, body.page-node-19531 #right-rail, body.page-node-19532 #right-rail, body.page-node-19533 #right-rail, body.page-node-19534 #right-rail, body.page-node-19535 #right-rail, body.page-node-19536 #right-rail, body.page-node-19537 #right-rail, body.page-node-19538 #right-rail, body.page-node-19546 #right-rail, body.page-node-19550 #right-rail, body.page-node-19551 #right-rail, body.page-node-19552 #right-rail {
-  display:none;
 }
 
 body.page-node .article-campaign-blocks .article-campaign-blocks-block, body.node-type-takepart-group .article-campaign-blocks .article-campaign-blocks-block {
