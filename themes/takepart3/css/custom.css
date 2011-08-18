@@ -721,6 +721,14 @@ body.node-type-topic-front h2.title a {
     text-transform: uppercase;	
 }
 
+#right-rail .block-boxes-title-take-action h2{
+  background-position:0 -450px;
+}
+
+#right-rail .block-boxes-title-related-campaigns h2{
+   background-position:0 -360px; 
+}
+
 #right-rail .view-video .views-row{
     float: none;
     margin: 0 0 20px 0;
