@@ -40,7 +40,17 @@ jQuery.fn.DefaultValue = function(text){
     });
 };
 
-
+		var el = jQuery('.photo-wrapper img');
+	  
+		function makeMargin(el, app){
+			var margin = ''; 
+			var dirs = ['top','right', 'bottom', 'left']; 
+			for(var t in dirs){ 
+				var t = dirs[t]; 
+				var mar = jQuery(el).css('margin-'+t);
+				jQuery(app).css('margin-'+t, mar);
+			}
+		}
 
 
 jQuery(document).ready(function() {
@@ -54,10 +64,14 @@ jQuery(document).ready(function() {
 		jQuery(value).closest('.photo-wrapper').css('float', floated);
 		jQuery(value).css('float','');
 		
-		//clear inline margin value on img
-		jQuery('.photo-wrapper img').css('margin', '');
+		makeMargin(value, jQuery(value).parent());
+					
+		jQuery('.photo-wrapper img').css('margin','');
+			
+		
 	  })
-
+	  
+			
 		//detect width of photo-wrapper based on img size and set container to that size 
 	  jQuery('.photo-wrapper').width(function(ind, width){
         return jQuery('img', this).outerWidth(true);
