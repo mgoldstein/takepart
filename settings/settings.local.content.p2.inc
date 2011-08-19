@@ -6,7 +6,7 @@ $databases = array (
         array (
           'database' => 'takepart_content',
           'username' => 'takepart_conten',
-          'password' => '7b65aada',
+          'password' => '8dadb65a',
           'host' => 'localhost',
           'port' => '',
           'driver' => 'mysql',
