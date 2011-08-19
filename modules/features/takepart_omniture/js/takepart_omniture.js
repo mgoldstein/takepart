@@ -16,21 +16,13 @@
   Drupal.behaviors.scCommentClick = {
     attach: function (context, settings) {
       $('form.comment-form input.form-submit', context).click(function(){
-        s.linkTrackVars="eVar22,prop21,events";
+        s.linkTrackVars="eVar31,eVar22,prop21,events";
         s.linkTrackEvents="event24";
-        s.events='event24';
+        s.events="event24";
         s.eVar22=s.pageName;
         s.prop21=s.eVar5;
-        s.tl(true, 'o', 'Searches');
-      });
-    }
-  }
-
-  Drupal.behaviors.scBlogCommentClick = {
-    attach: function (context, settings) {
-      $('.node-type-openpublish-blog-post form.comment-form input.form-submit').click(function(){
-        s.eVar31="Action";
-        
+        s.eVar31=s.eVar4;
+        s.tl(true, 'o', 'Comments');
       });
     }
   }
@@ -45,7 +37,7 @@
         s.eVar27=title;
         s.linkTrackVars="eVar27,prop26,events";
         s.linkTrackEvents="event25";
-        s.tl(true, 'o', 'Content Share');
+        s.tl(this.href, 'o', 'Content Share');
         //console.log(s);
         //return false;
       });
@@ -59,7 +51,7 @@
         s.linkTrackEvents="event34";
         s.eVar28="editorial";
         s.events="event34";
-        s.tl(true, 'o', 'Embedded Action Click');
+        s.tl(this.href, 'o', 'Embedded Action Click');
       });
     }
   }
@@ -71,7 +63,7 @@
         s.linkTrackEvents="event38";
         s.eVar28="fivethings";
         s.events="event38";
-        s.tl(true, 'o', 'Five Things Click');
+        s.tl(this.href, 'o', 'Five Things Click');
       });
     }
   }
