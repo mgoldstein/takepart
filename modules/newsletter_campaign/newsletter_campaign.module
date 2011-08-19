@@ -206,7 +206,9 @@ function newsletter_campaign_block_info() {
  */
 function newsletter_campaign_block_view($delta) {
   $path = drupal_get_path('module', 'newsletter_campaign');
-  drupal_add_js($path .'/js/newsletter_campaign_block.js', 'module');
+  drupal_add_js($path .'/js/newsletter_campaign_block.js');
+  drupal_add_js($path .'/js/newsletter_campaign_omniture.js');
+  
   drupal_add_css($path .'/css/newsletter_campaign_block.css');
 
   $content = '';
