@@ -234,10 +234,10 @@ function takepart_campaign_default_box() {
     'entity_id' => '',
     'bundle' => 'takepart_campaign',
     'field' => array(
-      'field_tp_campaign_intro_html' => 'field_tp_campaign_intro_html',
-      'field_tp_campaign_intro_media' => 'field_tp_campaign_intro_media',
       'field_tp_campaign_5_things_head' => 'field_tp_campaign_5_things_head',
-      'field_tp_campaign_4_things_link' => 'field_tp_campaign_4_things_link',
+      'field_tp_campaign_4_things_link' => 'field_tp_campaign_4_things_link',    
+      'field_tp_campaign_intro_html' => 'field_tp_campaign_intro_html',      
+      'field_tp_campaign_intro_media' => 'field_tp_campaign_intro_media',
       'body' => 0,
       'field_action_related' => 0,
       'field_topic' => 0,

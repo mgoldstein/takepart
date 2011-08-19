@@ -2709,7 +2709,7 @@ q p, q.pull-quote p{
   font-size: 18px;
   height: 0px;
   position: relative;
-  top: -333px;
+  top: 0px;
   width: 300px;
 }
 
@@ -2727,13 +2727,13 @@ q p, q.pull-quote p{
   margin-bottom:5px;
 }
 
-.field-name-field-tp-campaign-intro-media .odd { 
+.field-name-field-tp-campaign-intro-media .field-item-video { 
   background: none;
   float: left;
   height: 0px;
   left: 75px;
   position: relative;
-  top: -309px;
+  top: -20px;
 }
 
 .field-name-field-tp-campaign-intro-media a.play {
@@ -2765,7 +2765,7 @@ q p, q.pull-quote p{
   float: right;
   height: 0px;
   position: relative;
-  top: -282px;
+  top: 53px;
   width: 300px;
 }
 

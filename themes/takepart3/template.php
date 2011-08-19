@@ -349,6 +349,29 @@ function takepart3_field__field_tp_campaign_4_things_link(&$vars){
   return '<div class="field-name-field-tp-campaign-4-things-link">' . $output . '</div>';  
 }
 
+function takepart3_field__field_tp_campaign_intro_media(&$vars) {
+  $delta = 0;
+  $output = '<div class="field field-name-field-tp-campaign-intro-media field-type-media field-label-hidden"><div class="field-items">';
+  
+  // Videos go first
+  foreach ($vars['element']['#items'] as $id => $item) {
+    if ($item['file']->type == 'video') {
+      $output .= '<div class="field-item ' . ($delta % 2 ? "odd" : "even") . ' field-item-video">' . render($vars['element'][$id]) . '</div>';
+      $delta++;
+    }
+  }
+  // Images go next
+  foreach ($vars['element']['#items'] as $id => $item) {
+    if ($item['file']->type == 'image') {
+      $output .= '<div class="field-item ' . ($delta % 2 ? "odd" : "even") . ' field-item-image">' . render($vars['element'][$id]) . '</div>';
+      $delta++;
+    }
+  }
+  
+  $output .= '</div></div>';
+  return $output;
+}
+
 function takepart3_field__field_group_url(&$vars){
   if(isset($vars['element']['#items'][0]) & $vars['element']['#items'][0]){
     return "<div class='field field-name-field-group-url'>" . l('Visit Website', $vars['element']['#items'][0]['url']) . "</div>";
