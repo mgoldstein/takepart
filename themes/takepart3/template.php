@@ -341,12 +341,17 @@ function takepart3_field__field_author(&$vars){
 
 // Rewrites 'field_tp_campaign_4_things_link' in Campaign content types
 // Prepends a <span> with id before each bullet point for theming
+function takepart3_field__field_tp_campaign_5_things_head(&$vars){
+  return '<div class="field field-name-field-tp-campaign-5-things-head"><div class="field-items field-5-things-head">' . $vars['element']['#items'][0]['safe_value'] . '</div>';
+
+}
+
 function takepart3_field__field_tp_campaign_4_things_link(&$vars){
   $output = '';
   foreach($vars['items'] as $key => &$value){
      $output .= "<span class='campaign-link campaign-link-" . ($key+1) . "'>" . ($key+1) . "</span>" . str_replace('&amp;amp;', '&amp;', $vars['items'][$key]['#markup']);
   }
-  return '<div class="field-name-field-tp-campaign-4-things-link">' . $output . '</div>';  
+  return '<div class="field-name-field-tp-campaign-4-things-link">' . $output . '</div></div>';  
 }
 
 function takepart3_field__field_tp_campaign_cover_link(&$vars){

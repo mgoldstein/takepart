@@ -2703,18 +2703,18 @@ q p, q.pull-quote p{
 }
 
 .field-name-field-tp-campaign-5-things-head { 
-  color: white;
   float: right;
-  font-weight: bold;
-  font-size: 18px;
   height: 0px;
   position: relative;
   top: 0px;
   width: 300px;
 }
 
-.field-name-field-tp-campaign-5-things-head .field-items {
+.field-name-field-tp-campaign-5-things-head .field-5-things-head { 
   padding-top: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .field-name-field-tp-campaign-seg_rel {
@@ -2733,7 +2733,7 @@ q p, q.pull-quote p{
   height: 0px;
   left: 75px;
   position: relative;
-  top: -20px;
+  top: 30px;
 }
 
 .field-name-field-tp-campaign-intro-media a.play {
@@ -2763,9 +2763,7 @@ q p, q.pull-quote p{
 
 .field-name-field-tp-campaign-4-things-link {
   float: right;
-  height: 0px;
-  position: relative;
-  top: 53px;
+  margin-top:15px;
   width: 300px;
 }
 
