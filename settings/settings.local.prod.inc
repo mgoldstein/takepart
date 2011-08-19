@@ -12,16 +12,16 @@ $databases = array (
           'driver' => 'mysql',
           'prefix' => '',
         ),
-//      'slave' =>
-//        array (
-//          'database' => 'takepart',
-//          'username' => 'takepart-slave',
-//          'password' => '7mEwdni8tbcXBQ',
-//          'host' => '172.17.128.111',
-//          'port' => '',
-//          'driver' => 'mysql',
-//          'prefix' => '',
-//        ),
+      'slave' =>
+        array (
+          'database' => 'takepart',
+          'username' => 'takepart-slave',
+          'password' => '7mEwdni8tbcXBQ',
+          'host' => '172.17.128.111',
+          'port' => '',
+          'driver' => 'mysql',
+          'prefix' => '',
+        ),
     ),
 );
 
