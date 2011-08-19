@@ -2695,11 +2695,10 @@ q p, q.pull-quote p{
 /* Campaign */
 
 .field-name-field-tp-campaign-intro-html {
-  display: none;
   position: relative;
-  top: -323px;
+  top: 0px;
   height: 0px;
-  left: 20px;
+  left: 0px;
 }
 
 .field-name-field-tp-campaign-5-things-head { 
