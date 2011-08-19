@@ -33,4 +33,6 @@ PROFILEPATH=`cd $CALLPATH; pwd`
 echo $TARGET
 DRUPAL=`cd $TARGET; pwd`
 PROFILE_DIR="$DRUPAL/profiles/takepart"
+rm -rf $DRUPAL/robots.txt
+ln -s $DRUPAL/profiles/takepart/settings/robots.dev.txt robots.txt
 ln -s $PROFILEPATH $DRUPAL/profiles/takepart
