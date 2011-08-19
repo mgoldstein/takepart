@@ -344,7 +344,7 @@ function takepart3_field__field_author(&$vars){
 function takepart3_field__field_tp_campaign_4_things_link(&$vars){
   $output = '';
   foreach($vars['items'] as $key => &$value){
-     $output .= "<span class='campaign-link campaign-link-" . ($key+1) . "'>" . ($key+1) . "</span>" . $vars['items'][$key]['#markup'];
+     $output .= "<span class='campaign-link campaign-link-" . ($key+1) . "'>" . ($key+1) . "</span>" . str_replace('&amp;amp;', '&amp;', $vars['items'][$key]['#markup']);
   }
   return '<div class="field-name-field-tp-campaign-4-things-link">' . $output . '</div>';  
 }
