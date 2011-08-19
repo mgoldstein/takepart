@@ -349,6 +349,13 @@ function takepart3_field__field_tp_campaign_4_things_link(&$vars){
   return '<div class="field-name-field-tp-campaign-4-things-link">' . $output . '</div>';  
 }
 
+function takepart3_field__field_tp_campaign_cover_link(&$vars){
+  if(!empty($vars['element']['#items'][0])){
+    return "<div class='field field-name-field-tp-campaign-cover-link field-type-link-field field-label-hidden'><div class='field-items'><div class='field-item even'>" . str_replace('&amp;amp;', '&amp;', $vars['items'][0]['#markup']) . "</div></div></div>";
+  }
+}
+
+
 function takepart3_field__field_tp_campaign_intro_media(&$vars) {
   $delta = 0;
   $output = '<div class="field field-name-field-tp-campaign-intro-media field-type-media field-label-hidden"><div class="field-items">';
