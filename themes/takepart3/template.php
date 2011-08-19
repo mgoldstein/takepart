@@ -40,12 +40,13 @@ function takepart3_preprocess_page(&$variables) {
   // Adds page template suggestions for specific content types
   if (isset($variables['node'])) {  
     $variables['theme_hook_suggestions'][] = 'page__type__'. $variables['node']->type;
+     
+    $variables['is_multipage'] = FALSE;
+    if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
+      $variables['is_multipage'] = TRUE;
+    }
     
     if ($variables['node']->type == 'takepart_campaign') {
-      $variables['is_multipage'] = FALSE;
-      if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
-        $variables['is_multipage'] = TRUE;
-      }
       if (!empty($variables['node']->field_tp_campaign_show_title[$variables['node']->language][0]['value'])) {
         unset($variables['page']['highlighted']['takepart_custom_page_title_h1']);
       }
@@ -346,6 +347,10 @@ function takepart3_field__field_tp_campaign_5_things_head(&$vars){
 
 }
 
+function takepart3_field__field_tp_campaign_header(&$vars){
+  return '<div class="field field-name-field-tp-campaign-header field-type-media field-label-hidden"><div class="field-items"><div class="field-item even">' . l(render($vars['element'][0]), 'node/' . $vars['element']['#object']->nid, array('html' => TRUE)) . '</div></div></div>';
+}
+
 function takepart3_field__field_tp_campaign_4_things_link(&$vars){
   $output = '';
   foreach($vars['items'] as $key => &$value){
@@ -383,6 +388,8 @@ function takepart3_field__field_tp_campaign_intro_media(&$vars) {
   $output .= '</div></div>';
   return $output;
 }
+
+
 
 function takepart3_field__field_group_url(&$vars){
   if(isset($vars['element']['#items'][0]) & $vars['element']['#items'][0]){

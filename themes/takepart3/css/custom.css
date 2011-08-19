@@ -1527,19 +1527,19 @@ ul#global-links a{
 	border-bottom:solid 5px black;
 }
 
-.node-type-takepart-campaign .region-highlighted .field-name-field-tp-campaign-header img{
+.field-name-field-tp-campaign-header img{
  	display: block;
 }
-.node-type-takepart-campaign .region-highlighted h2{
+.node-type-takepart-campaign .region-highlighted h2, .region-highlighted .block-context-related-menu h2, .region-highlighted .block-menu h2{
 	display:none;
 }
-.node-type-takepart-campaign .region-highlighted ul.menu{
+.region-highlighted .block-context-related-menu ul.menu, .region-highlighted .block-menu ul.menu{
 	background-color:black;
 	list-style:none;
 	height:28px;
 	overflow:hidden;
 }
-	.node-type-takepart-campaign .region-highlighted ul.menu li{
+	.region-highlighted .block-context-related-menu ul.menu li, .region-highlighted .block-menu ul.menu li{
 		display: block;
 		float: left;
 		list-style: none outside none;
@@ -1547,16 +1547,16 @@ ul#global-links a{
 		 padding: 0 25px;
 		 border-right: 1px dotted #FFFFFF;
 	}
-	.node-type-takepart-campaign .region-highlighted ul.menu li.last{
+	.region-highlighted .block-context-related-menu ul.menu li.last, .region-highlighted .block-menu ul.menu li.last{
 		 border-right: none;
 	}
-		.node-type-takepart-campaign .region-highlighted ul.menu li a{
+		.region-highlighted .block-context-related-menu ul.menu li a, .region-highlighted .block-menu ul.menu li a{
 			color:#fff;
 			font-weight:bold;
 			font-size:14px;
 			line-height:28px;
 		}
-			.node-type-takepart-campaign .region-highlighted ul.menu li a:hover{
+			.region-highlighted .block-context-related-menu ul.menu li a:hover, .region-highlighted .block-menu ul.menu li a:hover{
 				text-decoration:none;
 				color:#1ca9e7;
 			}
