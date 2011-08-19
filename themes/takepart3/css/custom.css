@@ -1226,7 +1226,7 @@ p.search-performance{
 	margin-top:10px;
 }
 .photo-wrapper{
-    margin: 0 auto 25px;   
+    margin: 0 auto;   
     border-bottom: 1px dotted #999999;
     color: #999999;
     font-size: 11px;
@@ -1234,6 +1234,7 @@ p.search-performance{
     padding:0 0 15px 0;
     text-align:center;
     overflow:hidden;
+	margin-bottom:25px !important;
 }
 
 .photo-wrapper img{
