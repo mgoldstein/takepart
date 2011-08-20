@@ -105,7 +105,7 @@ $info['projects']['static_404']['type']                 = 'module';
 $info['projects']['static_404']['subdir']               = 'contrib';
 $info['projects']['static_404']['type']                 = 'git';
 $info['projects']['static_404']['url']                  = 'http://git.drupal.org/project/static_404.git';
-$info['projects']['static_404']['revision']             = '576c12191825e1c67d27cc7d0d6452a7f2a5be02';
+$info['projects']['static_404']['revision']             = '41af087d004704d9cd55130bc51b2944f1e42300';
  
 /* Modules using git revision numbers that are on a development release */
 
