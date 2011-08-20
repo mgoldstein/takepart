@@ -277,6 +277,11 @@ function takepart3_preprocess_node(&$vars, $hook) {
 
       $vars['content']['body'][0]['#markup'] = substr_replace($vars['content']['body'][0]['#markup'], $featured_action, $pos+2, 0);
     }
+
+    $vars['remove_title'] = FALSE;
+    if (!empty($vars['field_tp_campaign_show_title'][0]['value'])) {
+      $vars['remove_title'] = TRUE;
+    }    
   }
   
   // add read more link to blog posts.
