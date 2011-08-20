@@ -74,7 +74,7 @@
     </div></div>
   <?php endif; ?>
   
-  <div id='page' class='page clearfix'>
+  <div id='page' class='page clearfix <?php if ($is_multipage): ?>page-multipage<?php endif; ?>'>
   
     <div class='main-content'>
       <?php  /* if ($title): ?><h1 class='page-title'><?php print $title ?></h1><?php endif; */ ?>

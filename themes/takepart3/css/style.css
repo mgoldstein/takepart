@@ -176,6 +176,10 @@ img.photo, .gallery-item img {
 	padding: 35px 20px;
 }
 
+#page.page-multipage {
+  padding:0px;
+}
+
 .main-content {
 	width: 619px;
 	float: left;
