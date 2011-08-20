@@ -53,6 +53,12 @@ function takepart3_preprocess_page(&$variables) {
     }
   }
   
+  $status = drupal_get_http_header('status');
+  $status_code = explode(' ', $status);
+  if ($status_code[0] == '403') {
+    unset($variables['page']['sidebar_second']);
+  }  
+  
   return $variables;
 }
 
