@@ -114,8 +114,8 @@ function takepart_omniture_get_author($nid) {
     //$authors[] = $record->last_name ."-". $record->first_name ."-". $record->field_author_nid;
     $authors[] = strtolower($record->first_name ." ". $record->last_name);
   }
-  return implode(';', $authors);
-}
+  return implode('; ', $authors);
+} 
 
 /**
  * provide the current_path token as the path.
