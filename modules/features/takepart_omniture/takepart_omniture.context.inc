@@ -141,7 +141,7 @@ s.prop2 = [current-page:url-arg:1]',
   $context->reactions = array(
     'omniture_reaction' => array(
       'variables' => 's.events = event23,event33,event21
-s.eVar11 = Yes
+s.eVar11 = Logged_In
 ',
     ),
   );
@@ -196,7 +196,7 @@ s.eVar11 = Yes
   $context->reactions = array(
     'omniture_reaction' => array(
       'variables' => 's.channel = takepart:[current-page:url-arg:0]
-s.eVar11 = [f:bool:{current-user:uid}:Yes:No]
+s.eVar11 = [f:bool:{current-user:uid}:Logged_In:Anonymous]
 s.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
 s.prop1 = [current-page:url-arg:0]
 ',
