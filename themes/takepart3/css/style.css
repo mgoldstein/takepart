@@ -1232,7 +1232,7 @@ div.takepart_addthis_rightrail span.button_container {
   padding-left: 2px;
   padding-bottom: 10px;
   padding-top: 10px;
-  background-color: #DDD;
+
 
   height: 20px;
 }
@@ -1250,7 +1250,6 @@ div.takepart_addthis_rightrail span.button_container a.addthis_button_google_plu
 }
 
 div.takepart_addthis_rightrail div.addthis_toolbox div.custom_images {
-  background-color: #DDD;
   padding-top: 10px;
   padding-left: 5px;
 }
