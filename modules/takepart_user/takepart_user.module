@@ -37,6 +37,17 @@ $items['user/%user'] = array(
   $items['user/%user']['page callback'] = 'takepart_user_profile_redirect';
 }
 
+/* This function adds a checkbox on account settings to not send the user register email */
+function takepart_user_form_user_admin_settings_alter(&$form, &$form_state) {
+  // allow admin to choose if a notification mail is sent to user (who register without approval)
+  $form['email_no_approval_required']['user_mail_register_no_approval_required_notify'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Send welcome emails through Drupal to user upon registering.'),
+    '#description' => t('By checking this box welcome emails for this email type will be sent to the user when the user registers.'),
+    '#weight' => -99,
+    '#default_value' => variable_get('user_mail_register_no_approval_required_notify', true),
+  );
+}
 /* This functions insures that the drupal username is always used */
 function takepart_user_username_alter(&$name, $account) {
 	$name = $account->name;
