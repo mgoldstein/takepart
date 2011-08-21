@@ -34,6 +34,7 @@ include_once('./sites/all/modules/contrib/memcache/memcache.inc');
 $conf = array(
    'omniture_account_name' => 'takepart',
    'cache_default_class'   => 'MemCacheDrupal',
+   'session_inc' => './sites/all/modules/contrib/memcache/memcache-session.inc'
 
    //'memcache_options' => array(
      // Requires Memcached 1.4 or greater - enables binary protocal (faster).
@@ -65,6 +66,8 @@ $conf = array(
 //$conf['fb_apikey'] = '123.....XYZ'; // Your connect app's apikey goes here.
 
 // Enable URL rewriting (for canvas page apps).
+/*
 include "sites/all/modules/contrib/fb/fb_url_rewrite.inc";
 include "sites/all/modules/contrib/fb/fb_settings.inc";
+*/
 

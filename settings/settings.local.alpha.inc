@@ -25,7 +25,7 @@ $databases = array (
 if (!is_array($conf))
   $conf = array(
    'omniture_account_name' => 'takeparttakepartdev2',
-);
+  );
 
 
 //$conf['fb_verbose'] = TRUE; // debug output
@@ -36,7 +36,9 @@ if (!is_array($conf))
 //$conf['fb_apikey'] = '123.....XYZ'; // Your connect app's apikey goes here.
 
 // Enable URL rewriting (for canvas page apps).
+/*
 include "sites/all/modules/contrib/fb/fb_url_rewrite.inc";
 include "sites/all/modules/contrib/fb/fb_settings.inc";
+*/
 ini_set('error_reporting', !E_NOTICE & !E_WARNING);
 // end of settings.php
