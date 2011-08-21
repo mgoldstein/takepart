@@ -474,7 +474,7 @@ function _newsletter_campaign_registration_opt_in_submit($form, &$form_state) {
   if ($opt_in === 1) {
     module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
     $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
-    drupal_set_message($result['message'], 'status', FALSE);
+ //   drupal_set_message($result['message'], 'status', FALSE);
   } 
 } 
 
@@ -487,7 +487,7 @@ function _newsletter_campaign_profile_opt_in_submit($form, &$form_state) {
   if ($opt_in === 1) {
     module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
     $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
-    drupal_set_message($result['message'], 'status', FALSE);
+//    drupal_set_message($result['message'], 'status', FALSE);
   } 
 } 
 
