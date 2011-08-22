@@ -317,6 +317,7 @@ $info['projects']['akamai']['version']  = '1.1';
 $info['projects']['media_youtube']['type']        = 'module'; 
 $info['projects']['media_youtube']['subdir']      = 'contrib';
 $info['projects']['media_youtube']['verison']     =  '1.0-alpha5';
+$info['projects']['media_youtube']['patch'][]     =  'http://drupal.org/files/issues/media_youtube-file-not-deleted-1235852-7-make.patch';
 
 /* Used for integration with Apache Solr */
 $info['projects']['apachesolr']['type']     = 'module';
