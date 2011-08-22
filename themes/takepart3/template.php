@@ -503,7 +503,7 @@ function takepart3_field__field_topic($vars){
 }
 
 function takepart3_preprocess_comment(&$vars){
-  $vars['submitted'] = 'posted on ' . format_date($vars['elements']['#comment']->created, 'medium', 'M n, Y');
+  $vars['submitted'] = 'posted on ' . format_date($vars['elements']['#comment']->created, 'medium', 'M j, Y');
   //unlinking author name for logged in users
   $vars['author'] = '<span>' . $vars['author'] = $vars['elements']['#comment']->name . '</span>';
 }
