@@ -531,6 +531,28 @@ body.node-type-topic-front h2.title a {
 	float:none;
 }
 
+
+
+.block-boxes-title-must-see-video-of-the-day .views-field-view-node-1{
+	position:relative;
+	text-align:center;
+	top: -265px;	
+	margin-bottom:-121px;
+}
+	.block-boxes-title-must-see-video-of-the-day .views-field-view-node-1 span{
+		display:none;
+	}
+	.block-boxes-title-must-see-video-of-the-day .views-field-view-node-1 a{
+		display:inline-block;
+		text-indent:-9999px;
+		background:url('../images/videobutton.png') no-repeat 0 0;
+		width:121px;
+		height:121px;
+		
+		
+		zoom:1; *display: inline; _height: 121px;
+	}
+
 /* Video Node */
 .node-type-openpublish-video .field-name-field-subhead {
     color: #666666;
@@ -1577,6 +1599,20 @@ ul#global-links a{
 				text-decoration:none;
 				color:#1ca9e7;
 			}
+
+.node-type-takepart-list .node-takepart-list{
+	margin-bottom:20px;
+}
+
+.node-type-takepart-list .node-takepart-list h2{
+	margin-top:20px;
+}
+.node-type-takepart-list .node-takepart-list .field-type-text-with-summary .field-item {
+    padding:0;
+	margin:0;
+}
+
+
 .block-boxes-title-sponsored-by h2 {
     background-image: url("../images/sprite-box-ribbons.gif");
     background-repeat: no-repeat;
@@ -1692,3 +1728,11 @@ ul#global-links a{
     margin: 42px 0 0 10px;
     display:block;
 }
+
+
+/* node topics */
+.node-topics {
+    border-bottom: 1px dotted silver;
+    border-top: 1px dotted silver;
+}
+
