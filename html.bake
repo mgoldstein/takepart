@@ -15,7 +15,7 @@ $info['projects']['drupal']['version']                    = '7.7';
 $info['projects']['drupal']['patch'][]                    = 'http://drupal.org/files/issues/fix_autocompletion_with_slashes-93854-99-make.patch';
 $info['projects']['drupal']['patch'][]                    = 'https://raw.github.com/phase2/taxonomy_field_autocomplete_multi_voc_widget/master/use_double_colon_to_show_voc_on_term_fields.patch';
 $info['projects']['apps']['download']['revision']         = '4722dd4c76b06f0912d1770bdcd420b5c04dcde4';
-$info['projects']['openpublish']['download']['revision']  = '9f95fce4758dae9e92dbc1af2f6724a27efc0b74';
+$info['projects']['openpublish']['download']['revision']  = 'efc3f23ea47720e3b178848d95b07b7d29267397';
 unset($info['projects']['references']['download']['branch']);
 $info['projects']['references']['download']['revision']   = '8e1e57bea4f6c7915e5b8be8690a3e28590cca2d';
 $info['projects']['imce_wysiwyg']['revision']             = '3a5a5acad386aae2ca47bd2cd02b9c3c68f6d306';
