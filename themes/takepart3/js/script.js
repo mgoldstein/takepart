@@ -48,7 +48,12 @@ jQuery.fn.DefaultValue = function(text){
 			for(var t in dirs){ 
 				var t = dirs[t]; 
 				var mar = jQuery(el).css('margin-'+t);
-				jQuery(app).css('margin-'+t, mar);
+				var real = t.substring(0, 1).toUpperCase() + t.substring(1);
+				if(mar && ( (t == 'top' || t == 'bottom') || (el.style['margin'+real] &&  jQuery(el).css('float') != 'none') ) ){
+					jQuery(app).css('margin-'+t, mar);
+				} else {					
+					jQuery(app).css('margin-'+t, 'auto');	
+				}
 			}
 		}
 
@@ -60,13 +65,13 @@ jQuery(document).ready(function() {
 		//traverse back to parent div and apply style value there
 		//clear style value from nested image
 	  jQuery.each( jQuery('.photo-wrapper img'), function(index, value){
+
+		makeMargin(value, jQuery(value).parent());
+		
 		var floated = jQuery(value).css('float');
 		jQuery(value).closest('.photo-wrapper').css('float', floated);
-		jQuery(value).css('float','');
-		
-		makeMargin(value, jQuery(value).parent());
-					
-		jQuery('.photo-wrapper img').css('margin','');
+		jQuery(value).css('float','');			
+		//jQuery('.photo-wrapper img').css('margin','');
 			
 		
 	  })
