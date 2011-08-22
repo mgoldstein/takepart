@@ -47,8 +47,8 @@ if (!is_array($conf))
 //$conf['fb_apikey'] = '123.....XYZ'; // Your connect app's apikey goes here.
 
 // Enable URL rewriting (for canvas page apps).
-include "sites/all/modules/contrib/fb/fb_url_rewrite.inc";
-include "sites/all/modules/contrib/fb/fb_settings.inc";
+//include "sites/all/modules/contrib/fb/fb_url_rewrite.inc";
+//include "sites/all/modules/contrib/fb/fb_settings.inc";
 ini_set('error_reporting', !E_NOTICE & !E_WARNING);
 ini_set('memory_limit','512M');
 // end of settings.php
