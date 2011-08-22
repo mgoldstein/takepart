@@ -1600,6 +1600,10 @@ ul#global-links a{
 				color:#1ca9e7;
 			}
 
+.node-type-takepart-list .node-takepart-list{
+	margin-bottom:20px;
+}
+
 .node-type-takepart-list .node-takepart-list h2{
 	margin-top:20px;
 }
