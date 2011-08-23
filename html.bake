@@ -1,4 +1,4 @@
-<?php
+ <?php
 $base = array(
   'url' => 'git@phase2.beanstalkapp.com:/bake-openpublish.git',
   'type' => 'git', 
@@ -39,19 +39,6 @@ unset($info['projects']['openidadmin']);
 unset($info['projects']['nodeblock']);
 
 /* TakePart Temporary Modules - These should be removed prior to launch or just after */
-
-/* Flag can be removed once site goes live, only used for flagging test content */
-$info['projects']['flag']['type']               = 'module';
-$info['projects']['flag']['subdir']             = 'contrib';
-$info['projects']['flag']['download']['type']   = 'git';
-$info['projects']['flag']['download']['branch'] = 'master';
-$info['projects']['flag']['download']['url']    = 'http://git.drupal.org/project/flag.git';
-$info['projects']['flag']['patch'][]            = 'http://drupal.org/files/issues/flag-strict-1-1119842.patch';
-
-/* Views bulk operations can be removed once site goes live, used to show flag views and act on removing test content */
-$info['projects']['views_bulk_operations']['type']                  = 'module';
-$info['projects']['views_bulk_operations']['subdir']                = 'contrib';
-$info['projects']['views_bulk_operations']['version']               = '3.0-beta2';
 
 /* TakePart Specific Modules */
 
@@ -257,11 +244,6 @@ $info['projects']['taxonomy_manager']['type']    = 'module';
 $info['projects']['taxonomy_manager']['subdir']  = 'contrib';
 $info['projects']['taxonomy_manager']['version'] = '1.0-beta1';
 
-/* Used for File Storage */
-$info['projects']['cdn']['type']    = 'module';
-$info['projects']['cdn']['subdir']  = 'contrib';
-$info['projects']['cdn']['version'] = '2.0-beta1';
-
 /* Used for contact module */
 $info['projects']['field_redirection']['type']      = 'module';
 $info['projects']['field_redirection']['subdir']    = 'contrib';
@@ -318,11 +300,6 @@ $info['projects']['media_youtube']['type']        = 'module';
 $info['projects']['media_youtube']['subdir']      = 'contrib';
 $info['projects']['media_youtube']['verison']     =  '1.0-alpha5';
 
-/* Used for integration with Apache Solr */
-$info['projects']['apachesolr']['type']     = 'module';
-$info['projects']['apachesolr']['subdir']   = 'contrib';
-$info['projects']['apachesolr']['version']  = '1.0-beta8';
-
 /* Used to provide visual notification of content locks */
 $info['projects']['content_lock']['type']     = 'module';
 $info['projects']['content_lock']['subdir']   = 'contrib';
@@ -377,7 +354,7 @@ $info['projects']['wysiwyg']['download']['revision']  = 'cd2142614c3d17ec7b01117
 unset($info['projects']['wysiwyg']['patch']); // Removes previous patches from OpenPublish that are not used in this version'
 $info['projects']['wysiwyg']['patch'][]  = 'http://drupal.org/files/issues/746524-91Drupal7-v3_drush_make.patch';
 
-/* Nodequeue is need for some of the standard featyres in OpenPublish */
+/* Nodequeue is needed for some of the standard features in OpenPublish */
 unset($info['projects']['nodequeue']);
 $info['projects']['nodequeue']['type']     = 'module';
 $info['projects']['nodequeue']['subdir']   = 'contrib';
