@@ -198,7 +198,7 @@ function _is_email_recorded_for_campaign($email, $campaign_id = '') {
  */
 function _newsletter_unsubscribe_all() {
   global $user;
-  drupal_set_title("Unsubscribe from all Takepart newsletters?");
+  drupal_set_title("Unsubscribe from all TakePart newsletters?");
   
   $email = false;
   // grab email from logged in user if not admin or anonymous
@@ -226,7 +226,7 @@ function _newsletter_unsubscribe() {
  * unsubscribe form
  */
 function _newsletter_unsubscribe_all_form($form, &$form_state, $campaign_code, $email) {
-  
+    $all_code = variable_get('takepart_newsletter_signup_unsubscribe_all_campaign_code', 'alltpnl');
     $query = new EntityFieldQuery();
     $db_result = $query->entityCondition('entity_type', 'newsletter_campaign')
                     ->propertyCondition('campaign_id', $campaign_code, '=')
@@ -286,7 +286,7 @@ function _newsletter_unsubscribe_all_form($form, &$form_state, $campaign_code, $
       '#options' => array(
         'attributes' => array(),
         'html' => FALSE,
-        'query' => array("email"=>$email),
+        'query' => array("email"=>$email,"campaign"=>$all_code),
       ),
     );
   }
@@ -319,8 +319,8 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
   $email = $form_state['values']['email'];
   $campaign_id = $form_state['values']['campaign_id'];
   
-  //$all_code = variable_get('takepart_newsletter_signup_unsubscribe_all_campaign_code', 'alltpnl');
-  drupal_set_message($campaign_id);
+  $all_code = variable_get('takepart_newsletter_signup_unsubscribe_all_campaign_code', 'alltpnl');
+  //drupal_set_message($campaign_id);
   if ($campaign_id && $campaign_id != 'alltpnl') {
     $message = _newsletter_signup_alert_pluris($email, $campaign_id, 'u');
     if (!$message) {
@@ -357,12 +357,12 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
    
       }
       else {
-        $message = t('No response from pluris');
+        $message = t('No response from pPluris');
       }
     }
     catch(Exception $ex) {
       $message = t('Problem connecting to pluris');
-      watchdog('newsletter service', 'Error connecting to pluris. Error: %error for email: %email, campaign id: %campaign', 
+      watchdog('newsletter service', 'Error connecting to Pluris. Error: %error for email: %email, campaign id: %campaign', 
         array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign)
       );
     }
@@ -408,12 +408,11 @@ function _newsletter_unsubscribe_success() {
                   ->execute();
   $ncids = array_keys($db_result['newsletter_campaign']);
   $camps = entity_load('newsletter_campaign', $ncids);
-  // i hate this.
   $campaign = $camps[$ncids[0]];
   $title = $campaign ? $campaign->title : "all campaigns";
   drupal_set_title("Unsubscribed from {$title}.");
   return array(
-    '#markup' => "<h2> {$campaign->title} Unsubscibe Confirm</h2>You have successfully unsubscribed from {$title}"
+    '#markup' => "<h2>{$campaign->title} Unsubscribe confirm</h2>You have successfully unsubscribed from {$title}"
   );
 
 }
