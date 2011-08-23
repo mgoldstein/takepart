@@ -392,6 +392,20 @@ body.node-type-topic-front h2.title a {
 /* photo page */
 
 
+.block-boxes-current-photo_galleries h2 {
+    background: none repeat scroll 0 0 #CCCCCC;
+    margin: 25px 0 7px;
+}
+    .block-boxes-current-photo_galleries h2 span {
+        background: url("../images/photo-icon.jpg") no-repeat scroll right center #FFFFFF;
+        border-right: 5px solid #FFFFFF;
+        padding: 2px 35px 2px 0;
+        text-transform: uppercase;
+    }
+    .block-boxes-current-photo_galleries .content{
+          padding-top: 10px;
+          border-top: 1px dotted #000000;
+    }
 .node-type-openpublish-photo-gallery .region-highlighted .field-name-field-display-tag{
 	margin-left:-10px;
 }
@@ -516,6 +530,28 @@ body.node-type-topic-front h2.title a {
 	width:100%;
 	float:none;
 }
+
+
+
+.block-boxes-title-must-see-video-of-the-day .views-field-view-node-1{
+	position:relative;
+	text-align:center;
+	top: -265px;	
+	margin-bottom:-121px;
+}
+	.block-boxes-title-must-see-video-of-the-day .views-field-view-node-1 span{
+		display:none;
+	}
+	.block-boxes-title-must-see-video-of-the-day .views-field-view-node-1 a{
+		display:inline-block;
+		text-indent:-9999px;
+		background:url('../images/videobutton.png') no-repeat 0 0;
+		width:121px;
+		height:121px;
+		
+		
+		zoom:1; *display: inline; _height: 121px;
+	}
 
 /* Video Node */
 .node-type-openpublish-video .field-name-field-subhead {
@@ -1081,7 +1117,8 @@ p.search-performance{
 		color:#1ca9e7;
 	}
 /* homepage features block */
-.block-boxes-title-features{
+.block-boxes-title-features,
+.block-boxes-title-popular-galleries{
 	margin:0 0 20px 0;
 	padding-bottom:10px;
 	border-bottom:1px dotted silver;
@@ -1226,7 +1263,7 @@ p.search-performance{
 	margin-top:10px;
 }
 .photo-wrapper{
-    margin: 0 auto;   
+    margin: 0;   
     border-bottom: 1px dotted #999999;
     color: #999999;
     font-size: 11px;
@@ -1240,6 +1277,8 @@ p.search-performance{
 .photo-wrapper img{
 	display:block;
     margin-bottom:15px;
+    margin-left:auto;
+    margin-right:auto;
 }
 .photo-wrapper .photo img{
 	display:block;
@@ -1560,6 +1599,20 @@ ul#global-links a{
 				text-decoration:none;
 				color:#1ca9e7;
 			}
+
+.node-type-takepart-list .node-takepart-list{
+	margin-bottom:20px;
+}
+
+.node-type-takepart-list .node-takepart-list h2{
+	margin-top:20px;
+}
+.node-type-takepart-list .node-takepart-list .field-type-text-with-summary .field-item {
+    padding:0;
+	margin:0;
+}
+
+
 .block-boxes-title-sponsored-by h2 {
     background-image: url("../images/sprite-box-ribbons.gif");
     background-repeat: no-repeat;
@@ -1675,3 +1728,11 @@ ul#global-links a{
     margin: 42px 0 0 10px;
     display:block;
 }
+
+
+/* node topics */
+.node-topics {
+    border-bottom: 1px dotted silver;
+    border-top: 1px dotted silver;
+}
+
