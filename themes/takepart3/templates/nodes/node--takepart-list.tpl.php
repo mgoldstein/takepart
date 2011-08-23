@@ -12,9 +12,9 @@
 
   <?php if (!empty($title_suffix)) print render($title_suffix); ?>
 
-  <?php if (!empty($submitted)): ?>
+  <?php // if (!empty($submitted)): ?>
     <?php //print $submitted ?>
-  <?php endif; ?>
+  <?php // endif; ?>
 
   <?php if (!empty($content)): ?>
     
@@ -32,7 +32,7 @@
       
       <?php if($view_mode == 'teaser'): ?>
         <?php show($content['field_topic']); ?>
-        <?php print takepart3_addthis_button(); ?>    
+        <!-- addthis here -->
         <?php print render($content['body']); ?>
         <?php print render($content['field_topic']); ?>
       <?php endif; ?>

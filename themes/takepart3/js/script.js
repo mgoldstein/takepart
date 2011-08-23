@@ -40,7 +40,51 @@ jQuery.fn.DefaultValue = function(text){
     });
 };
 
+		var el = jQuery('.photo-wrapper img');
+	  
+		function makeMargin(el, app){
+			var margin = ''; 
+			var dirs = ['top','right', 'bottom', 'left']; 
+			for(var t in dirs){ 
+				var t = dirs[t]; 
+				var mar = jQuery(el).css('margin-'+t);
+				var real = t.substring(0, 1).toUpperCase() + t.substring(1);
+				if(mar && ( (t == 'top' || t == 'bottom') || (el.style['margin'+real] &&  jQuery(el).css('float') != 'none') ) ){
+					jQuery(app).css('margin-'+t, mar);
+				} else {					
+					jQuery(app).css('margin-'+t, 'auto');	
+				}
+			}
+		}
+
+
 jQuery(document).ready(function() {
+	
+		//for eaach photo wrapper element presented:
+		//store inline style value in 'floated'
+		//traverse back to parent div and apply style value there
+		//clear style value from nested image
+	  jQuery.each( jQuery('.photo-wrapper img'), function(index, value){
+
+		makeMargin(value, jQuery(value).parent());
+		
+		var floated = jQuery(value).css('float');
+		jQuery(value).closest('.photo-wrapper').css('float', floated);
+		jQuery(value).css('float','');			
+		//jQuery('.photo-wrapper img').css('margin','');
+			
+		
+	  })
+	  
+			
+		//detect width of photo-wrapper based on img size and set container to that size 
+	  jQuery('.photo-wrapper').width(function(ind, width){
+        return jQuery('img', this).outerWidth(true);
+      });
+	  
+	  
+	  
+
 	jQuery('#top-search .form-text').DefaultValue('Search TakePart');		
 });
 
@@ -48,5 +92,20 @@ jQuery(document).ready(function() {
   Drupal.behaviors.takepart3 = { attach: function(context) {
     jQuery("a[href^='http']", context).attr('target','_blank');
     
+  }};
+})(jQuery);
+
+(function($) {
+  Drupal.behaviors.campaignVideo = { attach: function(context) {
+    $('.field-name-field-tp-campaign-intro-media .close').click(function() {
+      $('.campaign-video').hide();
+      $('.field-name-field-tp-campaign-intro-media .play').show();
+      return false;
+    });
+    $('.field-name-field-tp-campaign-intro-media .play').click(function() {
+      $('.field-name-field-tp-campaign-intro-media .play').hide();
+      $('.campaign-video').show();
+      return false;
+    });    
   }};
 })(jQuery);

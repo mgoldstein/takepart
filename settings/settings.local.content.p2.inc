@@ -6,7 +6,7 @@ $databases = array (
         array (
           'database' => 'takepart_content',
           'username' => 'takepart_conten',
-          'password' => '7b65aada',
+          'password' => '8dadb65a',
           'host' => 'localhost',
           'port' => '',
           'driver' => 'mysql',
@@ -17,7 +17,7 @@ $databases = array (
     array (
       'default' =>
         array (
-          'database' => 'takepart2_bblake',
+          'database' => 'bblake_takepart2',
           'username' => 'root',
           'password' => 'papa16',
           'host' => 'localhost',
@@ -47,7 +47,8 @@ if (!is_array($conf))
 //$conf['fb_apikey'] = '123.....XYZ'; // Your connect app's apikey goes here.
 
 // Enable URL rewriting (for canvas page apps).
-include "sites/all/modules/contrib/fb/fb_url_rewrite.inc";
-include "sites/all/modules/contrib/fb/fb_settings.inc";
-//ini_set('error_reporting', !E_NOTICE & !E_WARNING);
+//include "sites/all/modules/contrib/fb/fb_url_rewrite.inc";
+//include "sites/all/modules/contrib/fb/fb_settings.inc";
+ini_set('error_reporting', !E_NOTICE & !E_WARNING);
+ini_set('memory_limit','512M');
 // end of settings.php
