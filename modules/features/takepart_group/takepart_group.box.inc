@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_default_box().
+ * Implements hook_default_box().
  */
 function takepart_group_default_box() {
   $export = array();
@@ -16,19 +16,19 @@ function takepart_group_default_box() {
   $box->delta = 'box-c5c30007';
   $box->plugin_key = 'field';
   $box->title = '';
-  $box->description = 'Group Main Image';
+  $box->description = 'Group Header';
   $box->options = array(
     'entity_type' => 'node',
     'entity_id' => '',
     'bundle' => 'takepart_group',
     'field' => array(
+      'field_group_subhead' => 'field_group_subhead',
+      'field_group_type' => 'field_group_type',
       'field_group_main_image' => 'field_group_main_image',
       'body' => 0,
       'field_group_location' => 0,
       'field_group_logo' => 0,
-      'field_group_subhead' => 0,
       'field_group_topic' => 0,
-      'field_group_type' => 0,
       'field_group_url' => 0,
       'field_group_context' => 0,
     ),

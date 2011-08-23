@@ -29,59 +29,59 @@ function takepart_article_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'addthis-addthis' => array(
-          'module' => 'addthis',
-          'delta' => 'addthis',
-          'region' => 'sidebar_first',
-          'weight' => '0',
-        ),
-        'views-related_campaigns-block' => array(
-          'module' => 'views',
-          'delta' => 'related_campaigns-block',
-          'region' => 'sidebar_first',
-          'weight' => '1',
-        ),
-        'views-related_actions-block' => array(
-          'module' => 'views',
-          'delta' => 'related_actions-block',
-          'region' => 'sidebar_second',
-          'weight' => '2',
-        ),
-        'views-related_content-block' => array(
-          'module' => 'views',
-          'delta' => 'related_content-block',
-          'region' => 'sidebar_second',
-          'weight' => '3',
-        ),
         'boxes-box-bb0b625d' => array(
           'module' => 'boxes',
           'delta' => 'box-bb0b625d',
           'region' => 'content_top',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'takepart_custom-page_title_h1' => array(
           'module' => 'takepart_custom',
           'delta' => 'page_title_h1',
           'region' => 'content_top',
-          'weight' => '1',
+          'weight' => 1,
         ),
         'boxes-box-9753089b' => array(
           'module' => 'boxes',
           'delta' => 'box-9753089b',
           'region' => 'content_top',
-          'weight' => '2',
+          'weight' => 2,
         ),
         'boxes-box-4eb62add' => array(
           'module' => 'boxes',
           'delta' => 'box-4eb62add',
           'region' => 'content_bottom',
-          'weight' => '0',
+          'weight' => 1,
         ),
         'comment_block_simple-comment_block' => array(
           'module' => 'comment_block_simple',
           'delta' => 'comment_block',
           'region' => 'content_bottom',
-          'weight' => '1',
+          'weight' => 2,
+        ),
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar_second',
+          'weight' => 0,
+        ),
+        'views-related_actions-block' => array(
+          'module' => 'views',
+          'delta' => 'related_actions-block',
+          'region' => 'sidebar_second',
+          'weight' => 1,
+        ),
+        'views-related_content-block' => array(
+          'module' => 'views',
+          'delta' => 'related_content-block',
+          'region' => 'sidebar_second',
+          'weight' => 2,
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar_second',
+          'weight' => 3,
         ),
       ),
     ),

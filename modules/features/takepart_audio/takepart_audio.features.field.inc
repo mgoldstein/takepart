@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function takepart_audio_field_default_fields() {
   $fields = array();
@@ -49,7 +49,7 @@ function takepart_audio_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -108,11 +108,13 @@ function takepart_audio_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => NULL,
-          'settings' => array(),
-          'type' => 'media_large',
-          'weight' => 2,
+          'label' => 'hidden',
+          'module' => 'media',
+          'settings' => array(
+            'file_view_mode' => 'media_link',
+          ),
+          'type' => 'media',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -208,11 +210,11 @@ function takepart_audio_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 6,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -271,6 +273,7 @@ function takepart_audio_field_default_fields() {
             'vocabulary' => 'free_tags',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -283,10 +286,9 @@ function takepart_audio_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 4,
+          'type' => 'hidden',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -307,6 +309,7 @@ function takepart_audio_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -351,10 +354,9 @@ function takepart_audio_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 1,
+          'type' => 'hidden',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -417,10 +419,9 @@ function takepart_audio_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 7,
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -478,6 +479,7 @@ function takepart_audio_field_default_fields() {
             'vocabulary' => 'series',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -490,10 +492,9 @@ function takepart_audio_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 5,
+          'type' => 'hidden',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -554,11 +555,10 @@ function takepart_audio_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'text',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 9,
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -613,10 +613,9 @@ function takepart_audio_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
           'settings' => array(),
-          'type' => 'media_large',
-          'weight' => 8,
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -634,7 +633,7 @@ function takepart_audio_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'public' => 'public',
@@ -646,8 +645,9 @@ function takepart_audio_field_default_fields() {
             'video' => 0,
           ),
           'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_generic_alt',
         'weight' => '7',
       ),
     ),
@@ -682,6 +682,7 @@ function takepart_audio_field_default_fields() {
             'vocabulary' => 'topic',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -694,10 +695,9 @@ function takepart_audio_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 3,
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',

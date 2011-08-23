@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function takepart_group_views_default_views() {
   $export = array();
@@ -29,7 +29,7 @@ function takepart_group_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -96,11 +96,15 @@ function takepart_group_views_default_views() {
   $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['nid']['default_argument_options']['field'] = 'nodereference::field_action_sponsor';
+  $handler->display->display_options['arguments']['nid']['default_argument_options']['settings'] = array(
+    'argument_default_field_nodereference_format' => 'nid',
+    'argument_default_field_nodereference_delta' => '0',
+  );
   $handler->display->display_options['arguments']['nid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['nid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['nid']['break_phrase'] = 1;
   $handler->display->display_options['arguments']['nid']['not'] = 0;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';

@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function takepart_group_context_default_contexts() {
   $export = array();
@@ -29,13 +29,47 @@ function takepart_group_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'takepart_custom-page_title_h1' => array(
+          'module' => 'takepart_custom',
+          'delta' => 'page_title_h1',
+          'region' => 'highlighted',
+          'weight' => '0',
+        ),
+        'boxes-box-c5c30007' => array(
+          'module' => 'boxes',
+          'delta' => 'box-c5c30007',
+          'region' => 'highlighted',
+          'weight' => '1',
+        ),
+        'boxes-box-f070c115' => array(
+          'module' => 'boxes',
+          'delta' => 'box-f070c115',
+          'region' => 'sidebar_first',
+          'weight' => '0',
+        ),
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
         'views-related_actions-block_2' => array(
           'module' => 'views',
           'delta' => 'related_actions-block_2',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-9',
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
         ),
       ),
+    ),
+    'title' => array(
+      'title_off' => 1,
+      'title_override' => '',
     ),
   );
   $context->condition_mode = 0;

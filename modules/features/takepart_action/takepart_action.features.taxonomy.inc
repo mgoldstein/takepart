@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_taxonomy_default_vocabularies().
+ * Implements hook_taxonomy_default_vocabularies().
  */
 function takepart_action_taxonomy_default_vocabularies() {
   return array(

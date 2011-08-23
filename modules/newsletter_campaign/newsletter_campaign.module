@@ -133,10 +133,27 @@ function newsletter_campaign_menu() {
   $items['newsletter-campaign/unsubscribe'] = array(
     'title' => t('Newsletter Form Submission'),
     'access arguments' => array('access content'),
+    'page callback' => '_newsletter_unsubscribe_all',
+    'file' => 'signup.ajax.inc',
+    'type' => MENU_NORMAL_ITEM,    
+  );
+
+  $items['newsletter-unsubscribe'] = array(
+    'title' => t('Newsletter Form Submission'),
+    'access arguments' => array('access content'),
     'page callback' => '_newsletter_unsubscribe',
     'file' => 'signup.ajax.inc',
     'type' => MENU_NORMAL_ITEM,    
   );
+  $items['newsletter-unsubscribe/success'] = array(
+    'title' => t('Newsletter Unsubscribe'),
+    'access arguments' => array('access content'),
+    'page callback' => '_newsletter_unsubscribe_success',
+    'file' => 'signup.ajax.inc',
+    'type' => MENU_NORMAL_ITEM,    
+  );
+  
+  // newsletter-unsubscribe-problem
   
   // newsletter-unsubscribe-problem
   // newsletter-unsubscribe-confirmation
@@ -189,7 +206,9 @@ function newsletter_campaign_block_info() {
  */
 function newsletter_campaign_block_view($delta) {
   $path = drupal_get_path('module', 'newsletter_campaign');
-  drupal_add_js($path .'/js/newsletter_campaign_block.js', 'module');
+  drupal_add_js($path .'/js/newsletter_campaign_block.js');
+  drupal_add_js($path .'/js/newsletter_campaign_omniture.js');
+  
   drupal_add_css($path .'/css/newsletter_campaign_block.css');
 
   $content = '';
@@ -365,6 +384,7 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
     function takepart_input_box_tweak(textBox) {
       textBox.style[\'color\'] = "black";
       textBox.bgColor = "white";
+      textBox.value = "";
     }', 'inline'
   );
 
@@ -454,7 +474,7 @@ function _newsletter_campaign_registration_opt_in_submit($form, &$form_state) {
   if ($opt_in === 1) {
     module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
     $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
-    drupal_set_message($result['message'], 'status', FALSE);
+ //   drupal_set_message($result['message'], 'status', FALSE);
   } 
 } 
 
@@ -467,7 +487,7 @@ function _newsletter_campaign_profile_opt_in_submit($form, &$form_state) {
   if ($opt_in === 1) {
     module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
     $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
-    drupal_set_message($result['message'], 'status', FALSE);
+//    drupal_set_message($result['message'], 'status', FALSE);
   } 
 } 
 

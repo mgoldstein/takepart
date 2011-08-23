@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function takepart_page_field_default_fields() {
   $fields = array();
@@ -58,7 +58,7 @@ function takepart_page_field_default_fields() {
             'trim_length' => 600,
           ),
           'type' => 'text_summary_or_trimmed',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -142,17 +142,17 @@ function takepart_page_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
           'weight' => '1',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '10',
         ),
       ),
       'entity_type' => 'node',
@@ -216,7 +216,12 @@ function takepart_page_field_default_fields() {
             'parent' => '0',
             'vocabulary' => 'series',
           ),
+          4 => array(
+            'parent' => '0',
+            'vocabulary' => 'video_series',
+          ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -228,17 +233,17 @@ function takepart_page_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '5',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '12',
         ),
       ),
       'entity_type' => 'node',
@@ -253,7 +258,7 @@ function takepart_page_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -291,6 +296,7 @@ function takepart_page_field_default_fields() {
             'vocabulary' => 'free_tags',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -302,17 +308,17 @@ function takepart_page_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '13',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '16',
         ),
       ),
       'entity_type' => 'node',
@@ -327,6 +333,7 @@ function takepart_page_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -388,17 +395,17 @@ function takepart_page_field_default_fields() {
       'description' => 'User can create and/or reference an Action to be featured prominently in a fixed position on the Article page.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
           'weight' => '7',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '11',
         ),
       ),
       'entity_type' => 'node',
@@ -447,7 +454,7 @@ function takepart_page_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'media',
           'settings' => array(
             'file_view_mode' => 'default',
@@ -456,10 +463,10 @@ function takepart_page_field_default_fields() {
           'weight' => '2',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '13',
         ),
       ),
       'entity_type' => 'node',
@@ -471,7 +478,7 @@ function takepart_page_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'public' => 'public',
@@ -483,8 +490,9 @@ function takepart_page_field_default_fields() {
             'video' => 0,
           ),
           'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_generic_alt',
         'weight' => '3',
       ),
     ),
@@ -543,17 +551,17 @@ function takepart_page_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
           'weight' => '8',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '15',
         ),
       ),
       'entity_type' => 'node',
@@ -602,13 +610,24 @@ function takepart_page_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
+          'audio' => 0,
+          'blog_front' => 0,
+          'openpublish_article' => 0,
           'openpublish_blog_post' => 'openpublish_blog_post',
           'openpublish_photo' => 'openpublish_photo',
           'openpublish_photo_gallery' => 'openpublish_photo_gallery',
           'openpublish_site_page' => 0,
           'openpublish_video' => 0,
+          'profile' => 0,
           'section_front' => 'section_front',
+          'takepart_campaign' => 0,
+          'takepart_group' => 0,
           'takepart_page' => 'takepart_page',
+          'takepart_quick_study' => 0,
+          'takepart_slide' => 0,
+          'topic_front' => 0,
+          'video_series' => 0,
+          'webform' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -626,17 +645,17 @@ function takepart_page_field_default_fields() {
       'description' => 'User can related this node to one or more nodes of various types. These are displayed in a block or inset on the Article page, atop the automatically-generated list of Related Content.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
           'weight' => '10',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '14',
         ),
       ),
       'entity_type' => 'node',
@@ -695,17 +714,17 @@ function takepart_page_field_default_fields() {
       'description' => 'This is displayed beneath the Article\'s title on the node page',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '3',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '9',
         ),
       ),
       'entity_type' => 'node',
@@ -757,24 +776,24 @@ function takepart_page_field_default_fields() {
       'bundle' => 'takepart_page',
       'default_value' => array(
         0 => array(
-          'value' => 1,
+          'value' => 0,
         ),
       ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
           'weight' => '9',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '8',
         ),
       ),
       'entity_type' => 'node',
@@ -832,17 +851,17 @@ function takepart_page_field_default_fields() {
       'description' => 'User can elect to toggle off the automatically-generated list of Related Content on an page-specific basis.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
           'weight' => '11',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'node',
@@ -899,17 +918,17 @@ function takepart_page_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '15',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'node',
@@ -965,17 +984,17 @@ function takepart_page_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '16',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
       ),
       'entity_type' => 'node',
@@ -1027,6 +1046,7 @@ function takepart_page_field_default_fields() {
             'vocabulary' => 'series',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -1038,17 +1058,17 @@ function takepart_page_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '14',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '5',
         ),
       ),
       'entity_type' => 'node',
@@ -1093,7 +1113,7 @@ function takepart_page_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'media',
           'settings' => array(
             'file_view_mode' => 'default',
@@ -1102,10 +1122,10 @@ function takepart_page_field_default_fields() {
           'weight' => '6',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'node',
@@ -1117,7 +1137,7 @@ function takepart_page_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'public' => 'public',
@@ -1129,8 +1149,9 @@ function takepart_page_field_default_fields() {
             'video' => 0,
           ),
           'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_generic_alt',
         'weight' => '8',
       ),
     ),
@@ -1165,6 +1186,7 @@ function takepart_page_field_default_fields() {
             'vocabulary' => 'topic',
           ),
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '1',
       'type' => 'taxonomy_term_reference',
@@ -1176,17 +1198,17 @@ function takepart_page_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '12',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '7',
         ),
       ),
       'entity_type' => 'node',

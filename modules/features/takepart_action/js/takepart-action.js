@@ -8,9 +8,13 @@
           if ($(this).attr('href') == '/local') {
             e.preventDefault();
           }
+          s.linkTrackVars="eVar28,events";
+          s.linkTrackEvents="event37";
+          s.eVar28='tpaction'
           s.events='event37';
-          s.tl(true, 'o', 'Take Action Button Click');
+          s.tl(this.href, 'o', 'Take Action Button Click');
           $(this).html('Action Taken').addClass('action-taken');
+          
         }
       );
     }

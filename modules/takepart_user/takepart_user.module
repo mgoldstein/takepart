@@ -37,6 +37,17 @@ $items['user/%user'] = array(
   $items['user/%user']['page callback'] = 'takepart_user_profile_redirect';
 }
 
+/* This function adds a checkbox on account settings to not send the user register email */
+function takepart_user_form_user_admin_settings_alter(&$form, &$form_state) {
+  // allow admin to choose if a notification mail is sent to user (who register without approval)
+  $form['email_no_approval_required']['user_mail_register_no_approval_required_notify'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Send welcome emails through Drupal to user upon registering.'),
+    '#description' => t('By checking this box welcome emails for this email type will be sent to the user when the user registers.'),
+    '#weight' => -99,
+    '#default_value' => variable_get('user_mail_register_no_approval_required_notify', true),
+  );
+}
 /* This functions insures that the drupal username is always used */
 function takepart_user_username_alter(&$name, $account) {
 	$name = $account->name;
@@ -53,13 +64,16 @@ function takepart_user_profile_redirect() {
 }
 
 function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+  // add in our registration confirmation page.
+  $form['#submit'][] = 'takepart_user_register_submit';
+  
   $register_title = variable_get("takepart_user_register_page_title","Join TakePart");
   drupal_set_title($register_title);
-  
   $form['#prefix'] = '<h2 class="title">' . $register_title . '</h2>';
   $form['#prefix'] .= variable_get("takepart_user_register_intro_text","<p>In order to participate in discussions on TakePart.com, you must be a member (no obligation).</p>");
-  $form['#prefix'] .='<div class="fb-login-button"><fb:login-button perms="user_birthday, email" ><fb:intl>Connect with Facebook</fb:intl></fb:login-button></div>';
+  $form['#prefix'] .= variable_get("takepart_user_register_intro_text_fb","<p class='fb-register-text'>To register using your Facebook account click the Connect with Facebook button. Once you are connected with Facebook your Facebook picture will appear and the fields below will be filled out with your Facebook information.  Confirm all the required fields are filled out and click Register.</p>");
   global $user;
+  $form['fb_user']['#weight'] = -100;
   if (!(user_access('administer users'))) {
     $form['#validate'][] = '_takepart_user_validate';
     $form['actions']['submit']['#value'] = 'Register';
@@ -67,12 +81,40 @@ function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form
   else {
     unset($form['field_account_dateofbirth']);
   }
+
+}
+function takepart_user_user_insert(&$edit, $account, $category) {
+    $pluris_registration_code = variable_get('takepart_user_pluris_registration_code','regtp');
+    module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
+    $result = _newsletter_signup_alert_pluris($account->mail, $pluris_registration_code, $action = 's',$source = '', $send_welcome = 'y'); 
+    drupal_set_message($result['message'], 'status', FALSE);
+}
+
+/**
+ * submit handler for adding our custom registraiton page.
+ * borrowed from logintoboggan
+ */
+function takepart_user_register_submit($form, &$form_state) {
+  $redirect = variable_get('takepart_registration_confirmation_page_url', '<front>');
+  $form_state['redirect'] = $redirect;
 }
 
 function takepart_user_form_user_login_alter(&$form, &$form_state, $form_id) {
   $login_title = variable_get("takepart_user_login_page_title","Member Login");
   drupal_set_title($login_title);
+  $form['#prefix'] = '<h2 class="title">' . $login_title . '</h2>';
+  $form['#prefix'] .= variable_get("takepart_user_login_intro_text","<p class='fb-login-text'>Click Connect with Facebook or complete the form below to log in.</p>");
   $form['actions']['submit']['#value'] = 'Log In';
+  
+  $form['#submit'][] = 'takepart_user_login_submit';
+}
+
+/**
+ * submit handler for adding our custom destination after login.
+ * borrowed from logintoboggan
+ */
+function takepart_user_login_submit($form, &$form_state) {
+  $form_state['redirect'] = '<front>';
 }
 
 function takepart_user_form_user_pass_alter(&$form, &$form_state, $form_id) {
@@ -111,15 +153,4 @@ function _takepart_checkage($user_dob) {
   $year = 60 * 60 * 24 * 365;
   $age_years = $age / $year;
   return $age_years < 18 ? FALSE : TRUE;
-}
-
-/**
- * Implements hook_user_login().
- *
- * Redirects user to homepage after login.
- */
-function takepart_user_user_login(&$edit, $account) {
-  if (!isset($_POST['form_id']) || $_POST['form_id'] != 'user_pass_reset') {
-    drupal_goto('<front>');
-  }
 }

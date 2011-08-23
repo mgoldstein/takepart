@@ -29,29 +29,47 @@ function takepart_action_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'comment_block_simple-comment_block' => array(
-          'module' => 'comment_block_simple',
-          'delta' => 'comment_block',
-          'region' => 'content_bottom',
-          'weight' => 0,
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
         ),
         'views-groups-block' => array(
           'module' => 'views',
           'delta' => 'groups-block',
           'region' => 'sidebar_second',
-          'weight' => 0,
+          'weight' => '-9',
         ),
         'views-related_content-block' => array(
           'module' => 'views',
           'delta' => 'related_content-block',
           'region' => 'sidebar_second',
-          'weight' => 2,
+          'weight' => '-8',
         ),
         'views-related_actions-block' => array(
           'module' => 'views',
           'delta' => 'related_actions-block',
           'region' => 'sidebar_second',
-          'weight' => 4,
+          'weight' => '-7',
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar_second',
+          'weight' => '-6',
+        ),
+        'boxes-box-4eb62add' => array(
+          'module' => 'boxes',
+          'delta' => 'box-4eb62add',
+          'region' => 'content_bottom',
+          'weight' => '1',
+        ),
+        'comment_block_simple-comment_block' => array(
+          'module' => 'comment_block_simple',
+          'delta' => 'comment_block',
+          'region' => 'content_bottom',
+          'weight' => '2',
         ),
       ),
     ),
