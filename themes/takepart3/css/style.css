@@ -471,7 +471,7 @@ ul#top-follow li.rss a {
 }
 
 .dhtml-menu ul.menu li a {
-    border: none;
+    border-bottom: #e6e6e6 1px solid;
     color: #000;
     display: block;
     padding: 9px 10px;
