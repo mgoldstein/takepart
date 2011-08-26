@@ -191,30 +191,35 @@ function _render_tp3_corporate_links_menu() {
 }
 
 function _render_tp3_film_campaign_menu() {
-  return _render_menu_columns("menu-takepart-film-campaigns", 4);
+  return _render_menu_columns("menu-takepart-film-campaigns", 6);
 }
 
 function _render_tp3_friends_takepart_menu() {
-  return _render_menu_columns('menu-takepart-friends', 5);
+  return _render_menu_columns('menu-takepart-friends', 6);
 }
 
 function _render_tp3_topics_takepart_menu() {
-  return _render_menu_columns('menu-takepart-topics', 4);
+  return _render_menu_columns('menu-takepart-topics', 6);
 }
 
 function _render_menu_columns($menu_key, $col_limit) {
   $menu_data = menu_tree_page_data($menu_key);
   $columns = array();
   $count = 0;
-
+  
+  $total_items = count($menu_data);
+  $rows_per_col = ceil(count($menu_data) / $col_limit);
+  
   foreach($menu_data as $menu_item) {
-    // divide by number in each column
-    $column_number = round(floor($count / $col_limit));
+    // divide by rows in each column
+    $column_number = round(floor($count / $rows_per_col));
    
     $opts = array(
       'attributes' => _default_menu_options($menu_item),
     );
+    
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+    
     $columns[$column_number][] = "<li>". $link ."</li>";
     $count++;
   }
