@@ -473,11 +473,15 @@ body.node-type-topic-front h2.title a {
 	overflow:hidden;
 }
 
-
 .view-photo-galleries tr{
 	display:block;
 	margin:0 0 25px 0;
 }
+
+.block-boxes-view block-boxes-title-todays-top-picks .view-photo-galleries td {
+	padding-right:15px;
+}
+
 .view-photo-galleries td {
 	vertical-align:top;
 	padding:0 20px 0 0;
