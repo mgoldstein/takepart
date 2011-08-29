@@ -39,6 +39,8 @@ s.eventList="" //Abandon,Success,Error
 
 s.channelDomain="Partner|americanexpress.com"; /*KN: Remove/update? */
 
+// s.pageURL
+
 /* Plugin Config */
 s.usePlugins=true
 function s_doPlugins(s) {
