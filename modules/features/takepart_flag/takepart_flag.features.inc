@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_api().
+ * Implements hook_views_api().
  */
 function takepart_flag_views_api() {
   list($module, $api) = func_get_args();
@@ -15,7 +15,7 @@ function takepart_flag_views_api() {
 }
 
 /**
- * Implementation of hook_flag_default_flags().
+ * Implements hook_flag_default_flags().
  */
 function takepart_flag_flag_default_flags() {
   $flags = array();
@@ -27,21 +27,19 @@ function takepart_flag_flag_default_flags() {
     'types' => array(
       0 => 'openpublish_article',
       1 => 'openpublish_blog_post',
-      2 => 'openpublish_photo',
-      3 => 'openpublish_photo_gallery',
-      4 => 'openpublish_video',
-      5 => 'section_front',
-      6 => 'profile',
-      7 => 'action',
-      8 => 'audio',
-      9 => 'blog_front',
-      10 => 'takepart_campaign',
-      11 => 'takepart_group',
-      12 => 'takepart_page',
-      13 => 'takepart_quick_study',
-      14 => 'takepart_slide',
-      15 => 'topic_front',
-      16 => 'video_series',
+      2 => 'openpublish_photo_gallery',
+      3 => 'openpublish_video',
+      4 => 'section_front',
+      5 => 'profile',
+      6 => 'action',
+      7 => 'audio',
+      8 => 'blog_front',
+      9 => 'takepart_campaign',
+      10 => 'takepart_group',
+      11 => 'takepart_page',
+      12 => 'takepart_quick_study',
+      13 => 'takepart_slide',
+      14 => 'topic_front',
     ),
     'flag_short' => 'Needs Review',
     'flag_long' => 'Mark a specific piece of content as needs review',
@@ -78,21 +76,20 @@ function takepart_flag_flag_default_flags() {
     'types' => array(
       0 => 'openpublish_article',
       1 => 'openpublish_blog_post',
-      2 => 'openpublish_photo',
-      3 => 'openpublish_photo_gallery',
-      4 => 'openpublish_video',
-      5 => 'section_front',
-      6 => 'profile',
-      7 => 'action',
-      8 => 'audio',
-      9 => 'blog_front',
-      10 => 'takepart_campaign',
-      11 => 'takepart_group',
-      12 => 'takepart_page',
-      13 => 'takepart_quick_study',
-      14 => 'takepart_slide',
-      15 => 'topic_front',
-      16 => 'video_series',
+      2 => 'openpublish_photo_gallery',
+      3 => 'openpublish_video',
+      4 => 'profile',
+      5 => 'action',
+      6 => 'audio',
+      7 => 'blog_front',
+      8 => 'takepart_campaign',
+      9 => 'webform',
+      10 => 'takepart_group',
+      11 => 'takepart_page',
+      12 => 'takepart_quick_study',
+      13 => 'takepart_slide',
+      14 => 'topic_front',
+      15 => 'section_front',
     ),
     'flag_short' => 'Test Content',
     'flag_long' => 'Marks a specific piece of content as test data.',

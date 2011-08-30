@@ -13,6 +13,20 @@ function takepart_gallery_default_box() {
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'box-3981ef30';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Ad - Right Rail Top';
+  $box->options = array(
+    'body' => '<script type=\'text/javascript\'>
+GA_googleFillSlot("TP3_Home_RR_ATF_300x250");
+</script>',
+  );
+  $export['box-3981ef30'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'box-7d1ce087';
   $box->plugin_key = 'view';
   $box->title = 'Popular Galleries';

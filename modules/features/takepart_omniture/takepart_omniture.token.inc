@@ -34,8 +34,45 @@ function takepart_omniture_token_info() {
     ),
   );
   
+  $info['tokens']['tp_omniture']['url_after_arg'] = array(
+    'name' => t('Get URL after arg'),
+    'description' => t('Retrieve the current URL beyond the arg provided.  e.g. http://example.com/article/1999/myblog/12'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+      'function' => "takepart_omniture_url_after_arg",
+    ),
+  );
+ 
+  $info['tokens']['tp_omniture']['str_decode'] = array(
+    'name' => t('HTML entity decode'),
+    'description' => t('Process token with html_entity_decode function.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+      'function' => "takepart_omniture_str_decode",
+    ),
+  );
+ 
+  $info['tokens']['tp_omniture']['date'] = array(
+    'name' => t('date YYYY/MM/DD'),
+    'description' => t('Put date into YYYY/MM/DD format.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+      'function' => "takepart_omniture_date",
+    ),
+  );
   
-  
+  $info['tokens']['tp_omniture']['urldecode'] = array(
+    'name' => t('urldecode'),
+    'description' => t('call urldecode() on param.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+      'function' => "takepart_omniture_urldecode",
+    ),
+  );  
   return $info;
 }
 
@@ -47,6 +84,7 @@ function takepart_omniture_test($param) {
 function takepart_omniture_value_or_empty($param) {
   // if param wrapped in brakets [], then token was not
   // found, just retuen empty string.  
+  $param = html_entity_decode($param, ENT_QUOTES);
   return preg_replace('/^\[[\w].*\]$/', '', $param);
   
 }
@@ -73,14 +111,57 @@ function takepart_omniture_get_author($nid) {
   
   $authors = array();
   foreach($result as $record) {
-    $authors[] = $record->last_name ."-". $record->first_name ."-". $record->field_author_nid;
+    //$authors[] = $record->last_name ."-". $record->first_name ."-". $record->field_author_nid;
+    $authors[] = trim($record->first_name) ." ". trim($record->last_name);
   }
-  return implode(',', $authors);
+  return implode('; ', $authors);
+} 
+
+/**
+ * provide the current_path token as the path.
+ * get the current path and based on the given arg position,  
+ * skip those positions and return whats left of the url path.
+ *       index:     0/   1/   2/   3/   4/      5
+ * so, path: /article/blog/test/2011/1110/my-blog
+ * 
+ * called with index 3 would return: 1110/my-blog
+ */
+function takepart_omniture_url_after_arg($path, $index = 0) {
+  if (!is_numeric($index)) {
+    return $path;
+  }
+  
+  $path_arr = explode("/", $path);
+  
+  if ($index > count($path_arr) ) {
+    return $path;
+  }
+  
+  for ($i = 0; $i <= $index; $i++) {
+    $parts = array_shift($path_arr);
+  }
+  $clipped = implode('/', $path_arr);
+  return $clipped;
 }
 
+/**
+ * run string through html_entity_decode
+ *
+ */
+function takepart_omniture_str_decode($str) {
+  return html_entity_decode($str, ENT_QUOTES);
+} 
 
+/**
+ * built in date token with custom formatter was not working.
+ */
+function takepart_omniture_date($date_str) {
+  return date('Y/m/d', $date_str);
+}
 
-
-
-
-
+/**
+ * run $url through urldecode()
+ */
+function takepart_omniture_urldecode($url) {
+  return urldecode($url);
+}

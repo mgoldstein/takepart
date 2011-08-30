@@ -23,11 +23,9 @@ function takepart_campaign_field_group_info() {
     'label' => 'Cover',
     'weight' => '4',
     'children' => array(
-      0 => 'field_tp_campaign_4_things_link',
-      1 => 'field_tp_campaign_5_things_head',
-      2 => 'field_tp_campaign_cover_image',
-      3 => 'field_tp_campaign_cover_intro',
-      4 => 'field_tp_campaign_cover_link',
+      0 => 'field_tp_campaign_cover_image',
+      1 => 'field_tp_campaign_cover_intro',
+      2 => 'field_tp_campaign_cover_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -80,8 +78,10 @@ function takepart_campaign_field_group_info() {
     'label' => 'Intro',
     'weight' => '3',
     'children' => array(
-      0 => 'field_tp_campaign_intro_html',
-      1 => 'field_tp_campaign_intro_media',
+      0 => 'field_tp_campaign_4_things_link',
+      1 => 'field_tp_campaign_5_things_head',
+      2 => 'field_tp_campaign_intro_html',
+      3 => 'field_tp_campaign_intro_media',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -108,6 +108,8 @@ function takepart_campaign_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_action_related',
+      1 => 'field_related_actions',
+      2 => 'field_suggest_actions',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

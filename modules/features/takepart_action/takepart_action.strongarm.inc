@@ -20,13 +20,6 @@ function takepart_action_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'addthis_nodetype_action';
-  $strongarm->value = 1;
-  $export['addthis_nodetype_action'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_action';
   $strongarm->value = '2';
   $export['comment_action'] = $strongarm;
@@ -98,9 +91,7 @@ function takepart_action_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_action';
-  $strongarm->value = array(
-    0 => 'status',
-  );
+  $strongarm->value = array();
   $export['node_options_action'] = $strongarm;
 
   $strongarm = new stdClass;

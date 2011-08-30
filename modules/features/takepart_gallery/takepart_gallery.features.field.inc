@@ -185,7 +185,7 @@ function takepart_gallery_field_default_fields() {
       'label' => 'Caption',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -949,6 +949,7 @@ function takepart_gallery_field_default_fields() {
           'section_front' => 0,
           'takepart_campaign' => 0,
           'takepart_group' => 0,
+          'takepart_list' => 0,
           'takepart_page' => 0,
           'takepart_quick_study' => 0,
           'takepart_slide' => 0,
@@ -1391,7 +1392,7 @@ function takepart_gallery_field_default_fields() {
       'bundle' => 'openpublish_photo_gallery',
       'default_value' => array(
         0 => array(
-          'value' => 0,
+          'value' => 1,
         ),
       ),
       'deleted' => '0',

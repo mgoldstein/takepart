@@ -5,11 +5,11 @@
  */
 
 /**
- * Implementation of hook_strongarm().
+ * Implements hook_strongarm().
  */
 function takepart_omniture_strongarm() {
   $export = array();
-
+  
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -21,7 +21,7 @@ function takepart_omniture_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'omniture_image_file_location';
-  $strongarm->value = 'http://takepart.122.2o7.net/b/ss/takeparttakepartdev2/1/H.23.4--NS/0';
+  $strongarm->value = ' http://takepart.122.2o7.net/b/ss/takeparttakepartdev2/1/H.23.4--NS/0';
   $export['omniture_image_file_location'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -98,7 +98,7 @@ function takepart_omniture_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'omniture_version';
-  $strongarm->value = 'H.23.0.';
+  $strongarm->value = 'H.23.4.';
   $export['omniture_version'] = $strongarm;
 
   $strongarm = new stdClass;

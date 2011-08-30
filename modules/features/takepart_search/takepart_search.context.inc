@@ -26,15 +26,15 @@ function takepart_search_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'search_api_facets-site_node_index_type' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'site_node_index_type',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
         'search_api_facets-site_node_index_field_topic' => array(
           'module' => 'search_api_facets',
           'delta' => 'site_node_index_field_topic',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+        'search_api_facets-site_node_index_type' => array(
+          'module' => 'search_api_facets',
+          'delta' => 'site_node_index_type',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
@@ -44,22 +44,16 @@ function takepart_search_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
-        'search_api_facets-site_node_index_field_free_tag' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'site_node_index_field_free_tag',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
         'search_api_facets-site_node_index_field_blogpost_b' => array(
           'module' => 'search_api_facets',
           'delta' => 'site_node_index_field_blogpost_b',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
-        'search_api_sorts-search-sorts' => array(
-          'module' => 'search_api_sorts',
-          'delta' => 'search-sorts',
-          'region' => 'content_top',
+        'search_api_facets-site_node_index_field_free_tag' => array(
+          'module' => 'search_api_facets',
+          'delta' => 'site_node_index_field_free_tag',
+          'region' => 'sidebar_second',
           'weight' => '-10',
         ),
       ),

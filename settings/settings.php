@@ -232,7 +232,7 @@ $drupal_hash_salt = '';
  * It is not allowed to have a trailing slash; Drupal will add it
  * for you.
  */
-# $base_url = 'http://www.example.com';  // NO trailing slash!
+ $base_url = '';  // NO trailing slash!
 
 /**
  * PHP settings:
@@ -319,7 +319,7 @@ ini_set('session.cookie_lifetime', 2000000);
  * theme. It is located inside 'modules/system/maintenance-page.tpl.php'.
  * Note: This setting does not apply to installation and update pages.
  */
-# $conf['maintenance_theme'] = 'bartik';
+ $conf['maintenance_theme'] = 'takepart3';
 
 /**
  * Enable this setting to determine the correct IP address of the remote

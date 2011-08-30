@@ -125,7 +125,7 @@ function takepart_user_customizations_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'captcha_wrong_response_counter';
-  $strongarm->value = 11;
+  $strongarm->value = 12;
   $export['captcha_wrong_response_counter'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -298,7 +298,6 @@ This link can only be used once to log in and will lead you to a page where you 
 After setting your password, you will be able to log in at [site:login-url] in the future using:
 
 username: [user:name]
-password: Your password
 
 --  [site:name] team';
   $export['user_mail_register_admin_created_body'] = $strongarm;

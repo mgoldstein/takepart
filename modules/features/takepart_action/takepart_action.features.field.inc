@@ -305,7 +305,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'embed' => array(
           'label' => 'above',
@@ -317,7 +317,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -415,7 +415,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -489,7 +489,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'embed' => array(
           'label' => 'above',
@@ -501,7 +501,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -565,7 +565,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'embed' => array(
           'label' => 'above',
@@ -574,10 +574,11 @@ function takepart_action_field_default_fields() {
           'weight' => '5',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '3',
+          'type' => 'default',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -600,9 +601,9 @@ function takepart_action_field_default_fields() {
           'url_cutoff' => '80',
         ),
         'enable_tokens' => 1,
-        'title' => 'none',
-        'title_value' => '',
-        'url' => 0,
+        'title' => 'value',
+        'title_value' => 'Take Action',
+        'url' => 'optional',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -671,7 +672,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -739,7 +740,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'embed' => array(
           'label' => 'above',
@@ -751,7 +752,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '2',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -828,7 +829,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1093,7 +1094,7 @@ function takepart_action_field_default_fields() {
       'bundle' => 'action',
       'default_value' => array(
         0 => array(
-          'value' => 1,
+          'value' => 0,
         ),
       ),
       'deleted' => '0',
@@ -1172,7 +1173,7 @@ function takepart_action_field_default_fields() {
       'bundle' => 'action',
       'default_value' => array(
         0 => array(
-          'value' => 1,
+          'value' => 0,
         ),
       ),
       'deleted' => '0',
@@ -1341,7 +1342,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1420,10 +1421,11 @@ function takepart_action_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '8',
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '4',
         ),
         'embed' => array(
           'label' => 'above',
@@ -1435,7 +1437,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',

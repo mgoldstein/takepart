@@ -31,8 +31,6 @@ function takepart_campaign_default_box() {
       'field_profile_job_title' => 0,
       'field_blogpost_blog' => 0,
       'field_blogpost_main_image' => 0,
-      'field_photo_credit' => 0,
-      'field_photo_image' => 0,
       'field_gallery_images' => 0,
       'field_gallery_main_image' => 0,
       'field_video_embedded' => 0,
@@ -47,9 +45,7 @@ function takepart_campaign_default_box() {
       'field_profile_user' => 0,
       'field_action_main_image' => 0,
       'field_action_related' => 0,
-      'field_action_related_campaigins' => 0,
       'field_action_sponsor' => 0,
-      'field_action_suggest_related' => 0,
       'field_action_type' => 0,
       'field_action_url' => 0,
       'field_free_tag' => 0,
@@ -66,7 +62,6 @@ function takepart_campaign_default_box() {
       'field_blogpost_featured_action' => 0,
       'field_blogpost_subhead' => 0,
       'field_related_content' => 0,
-      'field_suggest_related' => 0,
       'field_group_location' => 0,
       'field_group_logo' => 0,
       'field_group_main_image' => 0,
@@ -86,10 +81,6 @@ function takepart_campaign_default_box() {
       'field_main_image' => 0,
       'field_subhead' => 0,
       'field_video_related' => 0,
-      'field_series_videos_by_tag' => 0,
-      'field_series_videos_refs' => 0,
-      'field_vs_free_term' => 0,
-      'field_vs_topic_term' => 0,
       'field_tp_campaign_4_things_link' => 0,
       'field_tp_campaign_5_things_head' => 0,
       'field_tp_campaign_cover_image' => 0,
@@ -110,7 +101,6 @@ function takepart_campaign_default_box() {
       'field_slide_featured_item' => 0,
       'field_slide_headline' => 0,
       'field_slide_headline_override' => 0,
-      'field_slide_label' => 0,
       'field_slide_main_media' => 0,
       'field_related_actions' => 0,
       'field_suggest_campaigns' => 0,
@@ -122,15 +112,16 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_sl_nodes' => 0,
       'field_tp_campaign_sponsors' => 0,
       'field_tp_campaign_context' => 0,
-      'field_tp_campaign_alliances' => 0,
       'field_audio_asset' => 0,
-      'field_related_campaign' => 0,
-      'field_blogpost_related_actions' => 0,
-      'field_blogpost_related_campaign' => 0,
-      'field_blogpost_related_content' => 0,
-      'field_blogpost_suggest_actions' => 0,
-      'field_blogpost_suggest_campaigns' => 0,
-      'field_blogpost_suggest_content' => 0,
+      'field_photo_gallery_slideshow' => 0,
+      'field_group_context' => 0,
+      'field_blog_context' => 0,
+      'field_tp_campaign_header' => 0,
+      'field_tp_campaign_cover_link' => 0,
+      'field_video_series' => 0,
+      'field_tp_campaign_alliances' => 0,
+      'field_suggest_video' => 0,
+      'field_list_items' => 0,
     ),
     'use_page' => 1,
     'exclude_from_content' => 0,
@@ -243,10 +234,10 @@ function takepart_campaign_default_box() {
     'entity_id' => '',
     'bundle' => 'takepart_campaign',
     'field' => array(
-      'field_tp_campaign_intro_html' => 'field_tp_campaign_intro_html',
-      'field_tp_campaign_intro_media' => 'field_tp_campaign_intro_media',
       'field_tp_campaign_5_things_head' => 'field_tp_campaign_5_things_head',
-      'field_tp_campaign_4_things_link' => 'field_tp_campaign_4_things_link',
+      'field_tp_campaign_4_things_link' => 'field_tp_campaign_4_things_link',    
+      'field_tp_campaign_intro_html' => 'field_tp_campaign_intro_html',      
+      'field_tp_campaign_intro_media' => 'field_tp_campaign_intro_media',
       'body' => 0,
       'field_action_related' => 0,
       'field_topic' => 0,
@@ -319,6 +310,8 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_cover_intro' => 0,
       'field_tp_campaign_sponsors' => 0,
       'field_tp_campaign_context' => 0,
+      'field_tp_campaign_header' => 0,
+      'field_tp_campaign_cover_link' => 0,
       'field_tp_campaign_alliances' => 0,
     ),
     'use_page' => 1,
@@ -535,9 +528,9 @@ function takepart_campaign_default_box() {
     'field' => array(
       'field_tp_campaign_seg_3_label' => 'field_tp_campaign_seg_3_label',
       'field_tp_campaign_seg_3_html' => 'field_tp_campaign_seg_3_html',
-      'field_tp_campaign_seg_2_rel' => 'field_tp_campaign_seg_2_rel',
+      'field_tp_campaign_seg_3_rel' => 'field_tp_campaign_seg_3_rel',
+      'field_tp_campaign_seg_2_rel' => 0,
       'body' => 0,
-      'field_action_related' => 0,
       'field_topic' => 0,
       'field_tp_campaign_4_things_link' => 0,
       'field_tp_campaign_5_things_head' => 0,
@@ -549,18 +542,21 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_seg_1_rel' => 0,
       'field_tp_campaign_seg_2_html' => 0,
       'field_tp_campaign_seg_2_label' => 0,
-      'field_tp_campaign_seg_3_rel' => 0,
       'field_tp_campaign_seg_4_html' => 0,
       'field_tp_campaign_seg_4_label' => 0,
       'field_tp_campaign_seg_4_rel' => 0,
       'field_tp_campaign_sl_html' => 0,
       'field_tp_campaign_sl_image' => 0,
       'field_tp_campaign_subheadline' => 0,
+      'field_related_actions' => 0,
+      'field_suggest_actions' => 0,
       'field_multi_page_campaign' => 0,
       'field_tp_campaign_cover_intro' => 0,
       'field_tp_campaign_sl_nodes' => 0,
       'field_tp_campaign_sponsors' => 0,
       'field_tp_campaign_context' => 0,
+      'field_tp_campaign_header' => 0,
+      'field_tp_campaign_cover_link' => 0,
       'field_tp_campaign_alliances' => 0,
     ),
     'use_page' => 1,
@@ -568,54 +564,6 @@ function takepart_campaign_default_box() {
     'view_mode' => 'default',
   );
   $export['box-907caa9b'] = $box;
-
-  $box = new stdClass;
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
-  $box->delta = 'box-95b55e7';
-  $box->plugin_key = 'field';
-  $box->title = '';
-  $box->description = 'Campaign: Sponsored By Block';
-  $box->options = array(
-    'entity_type' => 'node',
-    'entity_id' => '',
-    'bundle' => 'takepart_campaign',
-    'field' => array(
-      'field_tp_campaign_sponsors' => 'field_tp_campaign_sponsors',
-      'body' => 0,
-      'field_action_related' => 0,
-      'field_topic' => 0,
-      'field_tp_campaign_4_things_link' => 0,
-      'field_tp_campaign_5_things_head' => 0,
-      'field_tp_campaign_cover_image' => 0,
-      'field_tp_campaign_intro_html' => 0,
-      'field_tp_campaign_intro_media' => 0,
-      'field_tp_campaign_seg_1_html' => 0,
-      'field_tp_campaign_seg_1_label' => 0,
-      'field_tp_campaign_seg_1_rel' => 0,
-      'field_tp_campaign_seg_2_html' => 0,
-      'field_tp_campaign_seg_2_label' => 0,
-      'field_tp_campaign_seg_2_rel' => 0,
-      'field_tp_campaign_seg_3_html' => 0,
-      'field_tp_campaign_seg_3_label' => 0,
-      'field_tp_campaign_seg_3_rel' => 0,
-      'field_tp_campaign_seg_4_html' => 0,
-      'field_tp_campaign_seg_4_label' => 0,
-      'field_tp_campaign_seg_4_rel' => 0,
-      'field_tp_campaign_sl_html' => 0,
-      'field_tp_campaign_sl_image' => 0,
-      'field_tp_campaign_subheadline' => 0,
-      'field_multi_page_campaign' => 0,
-      'field_tp_campaign_cover_intro' => 0,
-      'field_tp_campaign_sl_nodes' => 0,
-      'field_tp_campaign_context' => 0,
-      'field_tp_campaign_alliances' => 0,
-    ),
-    'use_page' => 1,
-    'exclude_from_content' => 0,
-    'view_mode' => 'default',
-  );
-  $export['box-95b55e7'] = $box;
 
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
@@ -723,14 +671,7 @@ function takepart_campaign_default_box() {
   $box->title = '';
   $box->description = 'Campaign: Share';
   $box->options = array(
-    'body' => array(
-      'value' => '<div class="addthis_toolbox addthis_default_style ">
-    <a class="addthis_button_facebook_like at300b" fb:like:layout="button_count" title="Send to Facebook_like" href="#"><fb:like ref=".TjWHTBo-Ym0.like" layout="button_count" show_faces="false" action="like" width="90" font="arial" href="http://content.p2.takepart.com/article/2011/06/28/flawless-victory-supreme-court-rules-favor-violent-video-games" class=" fb_edge_widget_with_comment fb_iframe_widget"></fb:like></a>
-
-    <a class="addthis_button_tweet at300b" title="Tweet" href="#"><iframe src="http://platform.twitter.com/widgets/tweet_button.html#_=1312130893301&amp;count=horizontal&amp;id=twitter_tweet_button_0&amp;lang=en&amp;original_referer=http%3A%2F%2Fcontent.p2.takepart.com%2Fnode%2F76%2Fcontext_field&amp;text=Flawless%20Victory%3F%20Supreme%20Court%20Rules%20in%20Favor%20of%20Violent%20Video%20Games%20%7C%20TakePart%203.0%20(Content%20-%2007%2F30%2F11%2021%3A00%3A30%20EDT)%3A&amp;url=http%3A%2F%2Fcontent.p2.takepart.com%2Farticle%2F2011%2F06%2F28%2Fflawless-victory-supreme-court-rules-favor-violent-video-games%23.TjWHTLiwqJA.tweet&amp;via=AddThis" allowtransparency="true" frameborder="0" scrolling="no" class="twitter-share-button twitter-count-horizontal" style="width: 110px; height: 20px; " title="Twitter For Websites: Tweet Button"></iframe></a>
-  <div class="atclear"></div></div>',
-      'format' => 'full_html',
-    ),
+    'body' => 'Share',
   );
   $export['box-b68f20b9'] = $box;
 
