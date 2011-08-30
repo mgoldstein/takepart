@@ -423,32 +423,88 @@ ul#top-follow li.rss a {
   width: 24px;
 }
 
+.region-main-nav {
+    float: left;
+    margin-left: 25px;
+}
+
+.region-main-nav ul.menu {
+    float: left;
+}
+
+.region-main-nav .contextual-links-region {
+    margin:0;
+}
+
+.region-main-nav ul.menu li {
+    float: left;
+    list-style-type: none;
+    list-style-image: none;
+    text-align: center;
+    font-size: 15px;
+    margin:0;
+}
+
+.region-main-nav ul.menu li a {
+    border-right: 1px dashed #FFFFFF;
+    color: #FFFFFF;
+    display: block;
+    padding: 9px 10px;
+    text-decoration: none;
+    font-weight:bolder;
+}
+
+.dhtml-menu ul.menu {
+    position: absolute;
+    top: 50px;
+    z-index: 1000;
+    background-color: #FFF;
+}
+
+.dhtml-menu ul.menu li {
+    float: none;
+    list-style-type: none;
+    list-style-image: none;
+    text-align: left;
+    font-size: 15px;
+    margin:0;
+}
+
+.dhtml-menu ul.menu li a {
+    border-bottom: #e6e6e6 1px solid;
+    color: #000;
+    display: block;
+    padding: 9px 10px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+/*
 ul#top-nav {
-	float: left;
-	margin-left: 25px;
+    float: left;
+    margin-left: 25px;
 }
 
 ul#top-nav li {
-	float: left;
-	list-style-type: none;
-	text-align: center;
-	font-size: 15px;
+    float: left;
+    list-style-type: none;
+    text-align: center;
+    font-size: 15px;  
 }
 
 ul#top-nav li a {
-	border-right: 1px dashed #FFFFFF;
-  color: #FFFFFF;
-  display: block;
-  padding: 9px 10px;
-  text-decoration: none;
-	font-weight:bolder;
+    border-right: 1px dashed #FFFFFF;
+    color: #FFFFFF;
+    display: block;
+    padding: 9px 10px;
+    text-decoration: none;
+    font-weight:bolder;
 }
 
 ul#top-nav li.last a{
-	border: 0;
+    border: 0;
 }
-
-
+*/
 
 /**** Top Search ****/
 
