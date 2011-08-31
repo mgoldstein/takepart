@@ -44,5 +44,6 @@ ln -s /opt/development/files/www.takepart.com-extra/tsign_apps $DRUPAL/tsign_app
 rm -rf $DRUPAL/sites/default/files
 cd $DRUPAL/sites/default
 ln -s ../../../files
+drush pm-disable memcache_admin
 
 
