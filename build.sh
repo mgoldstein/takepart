@@ -43,7 +43,7 @@ ln -s /opt/development/files/www.takepart.com-extra/js $DRUPAL/js
 ln -s /opt/development/files/www.takepart.com-extra/tsign_apps $DRUPAL/tsign_apps
 rm -rf $DRUPAL/sites/default/files
 cd $DRUPAL/sites/default
+rm -rf $CALLPATH/files
 ln -s $CALLPATH/files files
 drush pm-disable memcache_admin
-
-
+echo "ini_set('memory_limit','320M')" >> $CALLPATH/settings.local.inc
