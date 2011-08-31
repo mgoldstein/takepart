@@ -13,7 +13,10 @@
     </div><!--/join-login-top-->
     <div class="clear clearfix" id="nav-wrap">
       <div id='logo'><?php print l("", "<front>")?></div>
-      <?php print $top_nav ?>
+      <?php
+        print render($page['main_nav']);
+        // print $top_nav; 
+        ?>
     </div>
   </div>
   <?php else: ?>
