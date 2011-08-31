@@ -88,7 +88,12 @@ function s_doPlugins(s) {
     }
 
     /* Capture 404 error page in prop13 */
-    s.prop13 = s.pageType;
+    if (s.pageType == 'errorPage') {
+        s.prop13 = s.pageURL;
+    } else {
+        s.prop13 = '';
+    }
+
 
     /* Call to Days Since LastVisit Plugin */
     s.eVar29 = s.getDaysSinceLastVisit();
@@ -115,8 +120,8 @@ function s_doPlugins(s) {
     s.eVar6=s.prop6?s.prop6:'';    // Content ID
     s.eVar7=s.prop7?s.prop7:'';    // Internal Search Terms
     s.eVar12=s.channel?s.channel:'';    // Site Sections
-    s.eVar13=s.prop13?s.prop13:'';  // 404 error page -- was previously "Featured Content ID"
-    //s.eVar15=s.prop14?s.prop14:'';  Retire -- was previuously "Article open click"
+    s.eVar13=s.prop13?s.prop13:'';  // 404 error page URL -- was previously "Featured Content ID"
+    // s.eVar15=s.prop14?s.prop14:'';  // Retire -- was previuously "Article open click"
     s.eVar17=s.prop16?s.prop16:''; // Author
     s.eVar18=s.prop17?s.prop17:''; // Content Title
     s.eVar19=s.prop18?s.prop18:''; // Blog Series
@@ -601,42 +606,42 @@ function s_gi(un,pg,ss){
             if((!x||x=='s_c'||x=='s_l')&&(s.oun==un||(s.fs&&s.sa&&s.fs(s.oun,un)))){
                 if(s.sa)s.sa(un);
                 if(x=='s_c')return s
-                    }else s=0
-                }
-            }
-        w.s_an='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-w.s_sp=new Function("x","d","var a=new Array,i=0,j;if(x){if(x.split)a=x.split(d);else if(!d)for(i=0;i<x.length;i++)a[a.length]=x.substring(i,i+1);else while(i>=0){j=x.indexOf(d,i);a[a.length]=x.subst"
-    +"ring(i,j<0?x.length:j);i=j;if(i>=0)i+=d.length}}return a");
-w.s_jn=new Function("a","d","var x='',i,j=a.length;if(a&&j>0){x=a[0];if(j>1){if(a.join)x=a.join(d);else for(i=1;i<j;i++)x+=d+a[i]}}return x");
-w.s_rep=new Function("x","o","n","return s_jn(s_sp(x,o),n)");
-w.s_d=new Function("x","var t='`^@$#',l=s_an,l2=new Object,x2,d,b=0,k,i=x.lastIndexOf('~~'),j,v,w;if(i>0){d=x.substring(0,i);x=x.substring(i+2);l=s_sp(l,'');for(i=0;i<62;i++)l2[l[i]]=i;t=s_sp(t,'');d"
-    +"=s_sp(d,'~');i=0;while(i<5){v=0;if(x.indexOf(t[i])>=0) {x2=s_sp(x,t[i]);for(j=1;j<x2.length;j++){k=x2[j].substring(0,1);w=t[i]+k;if(k!=' '){v=1;w=d[b+l2[k]]}x2[j]=w+x2[j].substring(1)}}if(v)x=s_jn("
-    +"x2,'');else{w=t[i]+' ';if(x.indexOf(w)>=0)x=s_rep(x,w,t[i]);i++;b+=62}}}return x");
-w.s_fe=new Function("c","return s_rep(s_rep(s_rep(c,'\\\\','\\\\\\\\'),'\"','\\\\\"'),\"\\n\",\"\\\\n\")");
-w.s_fa=new Function("f","var s=f.indexOf('(')+1,e=f.indexOf(')'),a='',c;while(s>=0&&s<e){c=f.substring(s,s+1);if(c==',')a+='\",\"';else if((\"\\n\\r\\t \").indexOf(c)<0)a+=c;s++}return a?'\"'+a+'\"':"
-    +"a");
-w.s_ft=new Function("c","c+='';var s,e,o,a,d,q,f,h,x;s=c.indexOf('=function(');while(s>=0){s++;d=1;q='';x=0;f=c.substring(s);a=s_fa(f);e=o=c.indexOf('{',s);e++;while(d>0){h=c.substring(e,e+1);if(q){i"
-    +"f(h==q&&!x)q='';if(h=='\\\\')x=x?0:1;else x=0}else{if(h=='\"'||h==\"'\")q=h;if(h=='{')d++;if(h=='}')d--}if(d>0)e++}c=c.substring(0,s)+'new Function('+(a?a+',':'')+'\"'+s_fe(c.substring(o+1,e))+'\")"
-    +"'+c.substring(e+1);s=c.indexOf('=function(')}return c;");
-c=s_d(c);
-if(e>0){
-    a=parseInt(i=v.substring(e+5));
-    if(a>3)a=parseFloat(i)
-        }else if(m>0)a=parseFloat(u.substring(m+10));else a=parseFloat(v);
-if(a<5||v.indexOf('Opera')>=0||u.indexOf('Opera')>=0)c=s_ft(c);
-if(!s){
-    s=new Object;
-    if(!w.s_c_in){
-        w.s_c_il=new Array;
-        w.s_c_in=0
+            }else s=0
+        }
+    }
+    w.s_an='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    w.s_sp=new Function("x","d","var a=new Array,i=0,j;if(x){if(x.split)a=x.split(d);else if(!d)for(i=0;i<x.length;i++)a[a.length]=x.substring(i,i+1);else while(i>=0){j=x.indexOf(d,i);a[a.length]=x.subst"
+        +"ring(i,j<0?x.length:j);i=j;if(i>=0)i+=d.length}}return a");
+    w.s_jn=new Function("a","d","var x='',i,j=a.length;if(a&&j>0){x=a[0];if(j>1){if(a.join)x=a.join(d);else for(i=1;i<j;i++)x+=d+a[i]}}return x");
+    w.s_rep=new Function("x","o","n","return s_jn(s_sp(x,o),n)");
+    w.s_d=new Function("x","var t='`^@$#',l=s_an,l2=new Object,x2,d,b=0,k,i=x.lastIndexOf('~~'),j,v,w;if(i>0){d=x.substring(0,i);x=x.substring(i+2);l=s_sp(l,'');for(i=0;i<62;i++)l2[l[i]]=i;t=s_sp(t,'');d"
+        +"=s_sp(d,'~');i=0;while(i<5){v=0;if(x.indexOf(t[i])>=0) {x2=s_sp(x,t[i]);for(j=1;j<x2.length;j++){k=x2[j].substring(0,1);w=t[i]+k;if(k!=' '){v=1;w=d[b+l2[k]]}x2[j]=w+x2[j].substring(1)}}if(v)x=s_jn("
+        +"x2,'');else{w=t[i]+' ';if(x.indexOf(w)>=0)x=s_rep(x,w,t[i]);i++;b+=62}}}return x");
+    w.s_fe=new Function("c","return s_rep(s_rep(s_rep(c,'\\\\','\\\\\\\\'),'\"','\\\\\"'),\"\\n\",\"\\\\n\")");
+    w.s_fa=new Function("f","var s=f.indexOf('(')+1,e=f.indexOf(')'),a='',c;while(s>=0&&s<e){c=f.substring(s,s+1);if(c==',')a+='\",\"';else if((\"\\n\\r\\t \").indexOf(c)<0)a+=c;s++}return a?'\"'+a+'\"':"
+        +"a");
+    w.s_ft=new Function("c","c+='';var s,e,o,a,d,q,f,h,x;s=c.indexOf('=function(');while(s>=0){s++;d=1;q='';x=0;f=c.substring(s);a=s_fa(f);e=o=c.indexOf('{',s);e++;while(d>0){h=c.substring(e,e+1);if(q){i"
+        +"f(h==q&&!x)q='';if(h=='\\\\')x=x?0:1;else x=0}else{if(h=='\"'||h==\"'\")q=h;if(h=='{')d++;if(h=='}')d--}if(d>0)e++}c=c.substring(0,s)+'new Function('+(a?a+',':'')+'\"'+s_fe(c.substring(o+1,e))+'\")"
+        +"'+c.substring(e+1);s=c.indexOf('=function(')}return c;");
+    c=s_d(c);
+    if(e>0){
+        a=parseInt(i=v.substring(e+5));
+        if(a>3)a=parseFloat(i)
+    }else if(m>0)a=parseFloat(u.substring(m+10));else a=parseFloat(v);
+    if(a<5||v.indexOf('Opera')>=0||u.indexOf('Opera')>=0)c=s_ft(c);
+    if(!s){
+        s=new Object;
+        if(!w.s_c_in){
+            w.s_c_il=new Array;
+            w.s_c_in=0
         }
         s._il=w.s_c_il;
-    s._in=w.s_c_in;
-    s._il[s._in]=s;
-    w.s_c_in++;
-}
-s._c='s_c';
-(new Function("s","un","pg","ss",c))(s,un,pg,ss);
-return s
+        s._in=w.s_c_in;
+        s._il[s._in]=s;
+        w.s_c_in++;
+    }
+    s._c='s_c';
+    (new Function("s","un","pg","ss",c))(s,un,pg,ss);
+    return s
 }
 
