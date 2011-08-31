@@ -1468,6 +1468,176 @@ div.takepart_addthis_footer div.buttons {
 .share a.digg {
   background: url(../images/sprite.png) no-repeat -370px -188px;
 }
+span.button_fb {
+  width: 153px;
+  margin-right: 5px;
+}
+
+div.takepart_addthis_rightrail span.button_container a.addthis_button_google_plusone div {
+  width: 48px !important;
+}
+
+div.takepart_addthis_rightrail div.addthis_toolbox div.custom_images {
+  padding-top: 10px;
+  padding-left: 5px;
+}
+ 
+
+div.takepart_addthis_rightrail div.custom_images a.addthis_button_digg,
+div.takepart_addthis_leftpanel div.custom_images a.addthis_button_digg
+{
+  background: url(../images/social_media_digg.gif) no-repeat;
+}
+
+*/
+
+/***** Comments ******/
+
+div.takepart_addthis_rightrail div.custom_images a.addthis_button_email,
+div.takepart_addthis_leftpanel div.custom_images a.addthis_button_email
+{
+  background: url(../images/social_media_email.gif) no-repeat;
+}
+
+div.takepart_addthis_rightrail div.custom_images a,
+div.takepart_addthis_leftpanel div.custom_images a {
+  display: block;
+  float: left;
+  height: 30px;
+  padding: 8px 0 0 35px;
+  color: #555;
+  font-size: 0.8em;
+  margin-right: 8px;
+}
+
+div.takepart_addthis_leftpanel div.custom_images a {
+  margin-left: 4px;
+  padding-bottom: 0;
+}
+
+div.takepart_addthis_rightrail div.custom_images a span,
+div.takepart_addthis_leftpanel div.custom_images a span
+{
+  display: none !important;
+}
+
+div.takepart_addthis_rightrail div.custom_images img {
+  margin-right: 4px;
+}
+ 
+div.takepart_addthis_rightrail input {
+  width: 250px;
+}
+
+div.takepart_addthis_rightrail .addthis_rightrail_title {
+  padding-top: 10px;
+  font-size: 1.7em;
+  font-weight: bold;
+  display: block;
+}
+
+div.takepart_addthis_rightrail div.addthis_embed_textbox {
+  margin-bottom: 10px;
+}
+ 
+div.takepart_addthis_leftpanel div.addthis_toolbox,
+div.takepart_addthis_footer div.addthis_toolbox {
+  float: right;
+}
+     
+div.takepart_addthis_leftpanel .addthis_toolbox .custom_images a img {
+  float: left;
+  margin-right: 15px;
+  
+}
+
+div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone div {
+  width: 68px !important;
+}                                                       
+
+div.takepart_addthis_leftpanel {
+  margin-bottom: 8px;
+}
+
+div.takepart_addthis_leftpanel div.addthis_toolbox a {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+div.takepart_addthis_leftpanel div.addthis_toolbox {
+  float: left;
+}
+
+div.takepart_addthis_footer {
+  padding-top: 12px;
+  
+  margin-bottom: 12px;
+
+  border-top: 1px dotted #555;
+
+  width: 100%;
+  float: right;
+}
+
+div.takepart_addthis_footer a {
+  margin-left: 3px;
+}
+
+div.takepart_addthis_footer span#addthis_footer_sharethis {
+  padding-top: 6px;
+  margin-right: 10px;
+  color: #BBB;
+  float: right;
+  font-size: 1.2em;
+}
+
+div.takepart_addthis_footer div.buttons {
+  float:right;
+}
+
+/*
+
+#share-embed-wrapper {
+  background: #f2f2f4;
+  margin: 0 0 20px 0;
+  padding: 10px;
+}
+
+#share-embed-wrapper h2 {
+  color: #000;
+  font-size: 18px;
+}
+
+#share-embed-wrapper .fb, #share-embed-wrapper .tweet {
+  margin-bottom: 5px;
+  width: 123px;
+} 
+
+#share-embed-wrapper .group {
+  background: #e6e6ea;
+  padding: 7px;
+}
+
+.share ul li {float: left; padding: 1px 0; list-style-type: none; }
+
+.share a.digg,
+.share a.stumble,
+.share a.email
+ {
+ display: block;
+ padding-left: 34px;
+ padding-top: 9px;
+ color: #666;
+ height: 20px;
+ width: 53px;
+ font-weight: bold;
+ font-size: 9px;
+ float: left;
+}
+.share a.digg {
+  background: url(../images/sprite.png) no-repeat -370px -188px;
+}
 .share a.stumble {
   background: url(../images/sprite.png) no-repeat -370px -250px;
 }
@@ -1776,13 +1946,19 @@ body.front h1 {
   margin-right: 5px;
 }
 
-
-/*
-.view-id-slide_rotator .views-field-field-slide-main-media {
-  height: 300px;
-  width: 470px;
+.view-id-slide_rotator {
+  background: black;
+  left: -19px;
+  margin-bottom: 15px;
+  padding: 8px 9px;
+  position: relative;
+  width: 620px;
 }
-*/
+
+.views_slideshow_cycle_main {
+  float: left;
+  margin-right: 5px;
+}
 
 .view-id-slide_rotator .views-slideshow-pager-field-item {
   padding-bottom: 25px;
