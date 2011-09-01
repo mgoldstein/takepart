@@ -36,9 +36,3 @@ PROFILE_DIR="$DRUPAL/profiles/takepart"
 rm -rf $DRUPAL/robots.txt
 ln -s $DRUPAL/profiles/takepart/settings/robots.dev.txt $DRUPAL/robots.txt
 ln -s $PROFILEPATH $DRUPAL/profiles/takepart
-ln -s /opt/development/files/www.takepart.com-extra/flash $DRUPAL/flash
-ln -s /opt/development/files/www.takepart.com-extra/help_app $DRUPAL/help_app
-ln -s /opt/development/files/www.takepart.com-extra/images $DRUPAL/images
-ln -s /opt/development/files/www.takepart.com-extra/js $DRUPAL/js
-ln -s /opt/development/files/www.takepart.com-extra/tsign_apps $DRUPAL/tsign_apps
-echo "ini_set('memory_limit','320M')" >> $CALLPATH/settings.local.inc
