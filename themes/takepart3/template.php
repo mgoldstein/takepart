@@ -202,6 +202,9 @@ function _render_tp3_topics_takepart_menu() {
   return _render_menu_columns('menu-takepart-topics', 4);
 }
 
+// so we need to render the menus as follows,
+// order from top to bottom, but distribute evenly from left 
+// to right.
 function _render_menu_columns($menu_key, $col_limit) {
   $menu_data = menu_tree_page_data($menu_key);
   $columns = array();
