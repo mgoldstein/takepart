@@ -202,35 +202,51 @@ function _render_tp3_topics_takepart_menu() {
   return _render_menu_columns('menu-takepart-topics', 6);
 }
 
+// so we need to render the menus as follows,
+// order from top to bottom, but distribute evenly from left 
+// to right.
 function _render_menu_columns($menu_key, $col_limit) {
-  $menu_data = menu_tree_page_data($menu_key);
+  $menu_data = _tp_menu_tree_data($menu_key);
   $columns = array();
-  $count = 0;
   
-  $total_items = count($menu_data);
-  $rows_per_col = ceil(count($menu_data) / $col_limit);
+  $total_items    = count($menu_data);
+  $remainder_row = $total_items % $col_limit;
+   
+  $column_idx = 0;
   
   foreach($menu_data as $menu_item) {
-    // divide by rows in each column
-    $column_number = round(floor($count / $rows_per_col));
-   
-    $opts = array(
-      'attributes' => _default_menu_options($menu_item),
-    );
-    
+    $opts = array('attributes' => _default_menu_options($menu_item));
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
     
-    $columns[$column_number][] = "<li>". $link ."</li>";
-    $count++;
+    $depth = _tp_col_depth($total_items, $col_limit, $remainder_row); 
+    
+    $list_count = count($columns[$column_idx])+1;
+    $columns[$column_idx][] = "<li>". $link ."</li>";
+    
+    if (count($columns[$column_idx]) == $depth ) {
+      $column_idx++;
+      $remainder_row = $remainder_row > 0 ? $remainder_row -1 : 0;
+    }
   }
 
   $menu_cols = "";
   foreach ($columns as $col) {
     $menu_cols .= "<div class='column'><ul>".  implode($col) ."</ul></div>\n";
   }
-  return $menu_cols;
+  return $menu_cols . "<pre>$debug</pre>";
 }
 
+function _tp_col_depth($total, $col_limit, $remainder) {
+  return floor($total / $col_limit) + ( $remainder === 0 ? 0 : 1);
+}
+
+function _tp_menu_tree_data($menu_key) {
+  $menu_data = menu_tree_page_data($menu_key);
+  
+  return $menu_data;
+  
+  // $item['link']['hidden'] = 0
+}
 
 function _default_menu_options($menu_item) {
   $menu_opts = empty($menu_item['link']['options']['attributes']) ? array() : $menu_item['link']['options']['attributes'];
