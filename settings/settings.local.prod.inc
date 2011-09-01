@@ -30,7 +30,7 @@ include_once('./includes/cache.inc');
 // the path to the memcache cache file
 include_once('./sites/all/modules/contrib/memcache/memcache.inc');
 
-$conf['omniture_account_name'] = 'takepart';
+$conf['omniture_account_name'] = 'takepartprod';
 $conf['cache_default_class']   = 'MemCacheDrupal';
 $conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
 $conf['memcache_servers'] = array(
