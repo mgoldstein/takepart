@@ -3776,6 +3776,7 @@ body.node-type-takepart-page .main-content {
 }
 body.node-type-takepart-page #page {
   padding-right: 0px;
+  padding-left: 0px;
 }
 
 body.page-node .article-campaign-blocks .article-campaign-blocks-block, body.node-type-takepart-group .article-campaign-blocks .article-campaign-blocks-block {
