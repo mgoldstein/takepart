@@ -554,7 +554,7 @@ function takepart3_preprocess_block(&$vars) {
       $vars['classes_array'][] = 'block-boxes-bid-' . $vars['elements']['#block']->bid;
     }
     
-    if (in_array($vars['elements']['#block']->delta, array('box-4abd00a3', 'box-33756e58', 'box-5cd7d5ce', 'box-95b55e7'))) {
+    if (in_array($vars['elements']['#block']->delta, array('box-4abd00a3', 'box-33756e58', 'box-5cd7d5ce', 'box-95b55e7', 'box-a08d035e'))) {
       if (stripos($vars['content'], '<div class="boxes-box-content"></div>')) {
         $vars['content'] = '';
       }
