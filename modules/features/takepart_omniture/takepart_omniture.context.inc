@@ -195,7 +195,7 @@ s.eVar11 = Logged_In
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.channel = takepart:[current-page:url-arg:0]
+      'variables' => 's.channel = [current-page:url-arg:0]
 s.eVar11 = [f:bool:{current-user:uid}:Logged_In:Anonymous]
 s.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
 s.prop1 = [current-page:url-arg:0]
