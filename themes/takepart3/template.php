@@ -220,7 +220,6 @@ function _render_menu_columns($menu_key, $col_limit) {
     
     $depth = _tp_col_depth($total_items, $col_limit, $remainder_row); 
     
-    $list_count = count($columns[$column_idx])+1;
     $columns[$column_idx][] = "<li>". $link ."</li>";
     
     if (count($columns[$column_idx]) == $depth ) {
@@ -233,7 +232,8 @@ function _render_menu_columns($menu_key, $col_limit) {
   foreach ($columns as $col) {
     $menu_cols .= "<div class='column'><ul>".  implode($col) ."</ul></div>\n";
   }
-  return $menu_cols . "<pre>$debug</pre>";
+  
+  return $menu_cols;
 }
 
 function _tp_col_depth($total, $col_limit, $remainder) {
