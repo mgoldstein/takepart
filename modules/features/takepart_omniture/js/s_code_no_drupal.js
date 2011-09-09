@@ -2,14 +2,14 @@
 Copyright 1996-2011 Adobe, Inc. All Rights Reserved
 More info available at http://www.omniture.com */
 
-var s_account=Drupal.settings.omniture.s_account; // "takepartprod"
-var s=s_gi(s_account)
+var s_account="takepartprod";
+var s=s_gi(s_account);
 /************************** CONFIG SECTION **************************/
 /* You may add or alter any code config here. */
-s.charSet="UTF-8"
+s.charSet="UTF-8";
 
 /* Conversion Config */
-s.currencyCode="USD"
+s.currencyCode="USD";
 
 /* Link Tracking Config */
 s.trackDownloadLinks=true
