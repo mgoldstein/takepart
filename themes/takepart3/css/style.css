@@ -3728,3 +3728,30 @@ div.tabs ul.tabs.primary li a:hover, ul.links li a:hover {
   margin-left:0px;
 }
 
+.blog-post-continue-reading-link { 
+  font-size: 16px;
+  color: #1686B7;
+  font-weight: bold;
+}
+
+.search-results .views-field-type {
+  color: #8dc547;
+  font-size: 12px;
+  padding-bottom:4px;
+  text-transform: uppercase;
+}
+
+body.node-type-takepart-page .main-content {
+  width:960px;
+}
+body.node-type-takepart-page #page {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+body.page-node .article-campaign-blocks .article-campaign-blocks-block, body.node-type-takepart-group .article-campaign-blocks .article-campaign-blocks-block {
+    border: 1px solid #DDDDDD;
+    float: left;
+    padding: 15px;
+    width: 273px;
+}
