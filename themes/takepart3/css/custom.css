@@ -681,10 +681,11 @@ body.node-type-topic-front h2.title a {
       	margin:0;
 	}
 	
-
+/* why was this needed? removed because generated fb#17246
+https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 .drupal-embed .embed-action-wrapper{
 	width:420px;
-}
+}*/
  
  /**   video blocks **/
  
