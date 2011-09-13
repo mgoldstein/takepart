@@ -36,12 +36,12 @@ function takepart3_preprocess_page(&$variables) {
   $variables['user_nav']              = _render_tp3_user_menu();
   $variables['takepart_theme_path']   = drupal_get_path('theme', 'takepart3');
   $variables['search_takepart_form']  = _render_tp3_header_search_form();
-  
+  $variables['is_multipage'] = FALSE;
   // Adds page template suggestions for specific content types
   if (isset($variables['node'])) {  
     $variables['theme_hook_suggestions'][] = 'page__type__'. $variables['node']->type;
      
-    $variables['is_multipage'] = FALSE;
+    
     if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
       $variables['is_multipage'] = TRUE;
     }

@@ -441,7 +441,7 @@ body.node-type-topic-front h2.title a {
 .submitted-wrapper{
 	overflow:hidden;
 	 padding-bottom: 10px;
-	 margin-bottom:0px;
+	 /*margin-bottom:0px;*/
 }
 .node-type-openpublish-photo-gallery .submitted-wrapper{
     border-bottom: medium none;
