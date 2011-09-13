@@ -1745,3 +1745,6 @@ ul#global-links a{
 font-size: 14px;
 margin-top: 142px;
 }
+/* this is needed because embeddable will display the node title, which we donot want sometimes
+right now is specific to node-openpublish-photo-gallery, but change as needed */
+.views-row .drupal-embed .node.node-openpublish-photo-gallery h2{display:none}

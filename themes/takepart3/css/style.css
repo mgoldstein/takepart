@@ -2266,7 +2266,7 @@ h2.title a{
 
 .embed-action-wrapper {
   background: #FFEFD8 url(../images/featured-action.gif) left center no-repeat;
-  margin: 9px 10px 25px -10px;
+  margin: 9px 0 25px 0;
   padding: 8px 10px;
 }
 
