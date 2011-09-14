@@ -1748,3 +1748,7 @@ margin-top: 142px;
 /* this is needed because embeddable will display the node title, which we donot want sometimes
 right now is specific to node-openpublish-photo-gallery, but change as needed */
 .views-row .drupal-embed .node.node-openpublish-photo-gallery h2{display:none}
+
+/* use this rule as long as the openpublish-blog-post main image display cannot be overriden
+in take-part feature */
+.node-teaser .field-name-field-blogpost-main-image img{width:620px;}
