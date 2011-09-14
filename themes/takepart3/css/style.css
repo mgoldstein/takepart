@@ -2272,7 +2272,7 @@ h2.title a{
 
 .embed-action-wrapper .embed-action {
   padding-left: 160px;
-  width: 280px;
+  /*width: 280px;*/
 }
 
 .embed-action-wrapper .embed-action a {
