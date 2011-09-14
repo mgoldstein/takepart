@@ -191,7 +191,7 @@ function _render_tp3_corporate_links_menu() {
 }
 
 function _render_tp3_film_campaign_menu() {
-  return _render_menu_columns("menu-takepart-film-campaigns", 5);
+  return _render_menu_columns("menu-takepart-film-campaigns", 4);
 }
 
 function _render_tp3_friends_takepart_menu() {
