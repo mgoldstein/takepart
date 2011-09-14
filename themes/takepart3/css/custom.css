@@ -16,11 +16,11 @@ body.sidebar-first #left-rail{
 		padding:0;
 	}
 	.node-type-takepart-group .region-highlighted{
-		padding:35px 0px 0;
+		padding:35px 15px 0;
 	}
 .node-type-openpublish-photo-gallery .page,
 .node-type-takepart-group .page {
-    padding: 20px 20px 35px 0px !important;
+    padding: 20px 20px 35px !important;
 }
 .front .page{
     padding: 10px 20px 35px;
@@ -473,15 +473,11 @@ body.node-type-topic-front h2.title a {
 	overflow:hidden;
 }
 
+
 .view-photo-galleries tr{
 	display:block;
 	margin:0 0 25px 0;
 }
-
-.block-boxes-title-todays-top-picks .view-photo-galleries td {
-	padding-right:15px;
-}
-
 .view-photo-galleries td {
 	vertical-align:top;
 	padding:0 20px 0 0;
@@ -1740,7 +1736,3 @@ ul#global-links a{
     border-top: 1px dotted silver;
 }
 
-.front .view-display-id-block_1 .views-field-field-promo-headline {
-font-size: 14px;
-margin-top: 142px;
-}

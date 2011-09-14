@@ -87,7 +87,7 @@ function takepart_user_user_insert(&$edit, $account, $category) {
     $pluris_registration_code = variable_get('takepart_user_pluris_registration_code','regtp');
     module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
     $result = _newsletter_signup_alert_pluris($account->mail, $pluris_registration_code, $action = 's',$source = '', $send_welcome = 'y'); 
-// Removed per FB #17348   drupal_set_message($result['message'], 'status', FALSE);
+    drupal_set_message($result['message'], 'status', FALSE);
 }
 
 /**
