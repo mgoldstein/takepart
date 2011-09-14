@@ -88,6 +88,8 @@ function s_doPlugins(s) {
     /* Capture 404 error page in prop13 */
     s.prop13 = s.pageType;
 
+    s.prop13 = s.pageType;
+
     /* Call to Days Since LastVisit Plugin */
     s.eVar29 = s.getDaysSinceLastVisit();
     s.prop29 = s.eVar29;
