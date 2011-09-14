@@ -15,7 +15,7 @@ s.currencyCode="USD"
 s.trackDownloadLinks=true
 s.trackExternalLinks=true
 s.trackInlineStats=true
-s.linkDownloadFileTypes="exe,zip,wav,mp3,mov,mpg,avi,wmv,pdf,doc,docx,xls,xlsx,ppt,pptx,point-web1.png"
+s.linkDownloadFileTypes="exe,zip,wav,mp3,mov,mpg,avi,wmv,pdf,doc,docx,xls,xlsx,ppt,pptx"
 s.linkInternalFilters="javascript:,takepart.com"
 s.linkLeaveQueryString=false
 s.linkTrackVars="prop33,prop34,prop35,prop36"
@@ -86,11 +86,7 @@ function s_doPlugins(s) {
     }
 
     /* Capture 404 error page in prop13 */
-    if(s.pageType=="errorPage"){
-        s.prop13="D=g";             // bad url
-        s.prop40=document.referrer; // referring url with the bad link
-        s.eVar40="D=c40";           // copy referring url to eVar
-    }
+    s.prop13 = s.pageType;
 
     s.prop13 = s.pageType;
 

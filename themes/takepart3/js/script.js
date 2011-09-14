@@ -76,15 +76,6 @@ jQuery(document).ready(function() {
 		
 	  })
 	  
-			
-		//detect width of photo-wrapper based on img size and set container to that size 
-	  jQuery('.photo-wrapper').width(function(ind, width){
-        return jQuery('img', this).outerWidth(true);
-      });
-	  
-	  
-	  
-
 	jQuery('#top-search .form-text').DefaultValue('Search TakePart');		
 });
 
