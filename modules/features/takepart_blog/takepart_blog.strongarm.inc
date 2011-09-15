@@ -226,7 +226,7 @@ function takepart_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_openpublish_blog_post_pattern';
-  $strongarm->value = '[node:field-blogpost-blog:term:url:relative]/[node:created:custom:Y]/[node:created:custom:m]/[node:created:custom:d]/[node:title]';
+  $strongarm->value = '/blog/[node:field-blogpost-blog:term:name]/[node:created:custom:Y]/[node:created:custom:m]/[node:created:custom:d]/[node:title]';
   $export['pathauto_node_openpublish_blog_post_pattern'] = $strongarm;
 
   $strongarm = new stdClass;

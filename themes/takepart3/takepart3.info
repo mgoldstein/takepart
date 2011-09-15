@@ -15,7 +15,6 @@ scripts[] = js/script.js
 features[] = favicon
 
 ; Defaults
-regions[main_nav] = Main Navigation
 regions[header] = Header
 regions[highlighted] = Highlighted
 regions[help] = Help

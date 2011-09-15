@@ -56,7 +56,7 @@ function takepart_image_styles_image_default_styles() {
   $styles['tp_content_wide'] = array(
     'name' => 'tp_content_wide',
     'effects' => array(
-      7 => array(
+      6 => array(
         'label' => 'Scale',
         'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
         'effect callback' => 'image_scale_effect',
@@ -65,7 +65,7 @@ function takepart_image_styles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '615',
+          'width' => '620',
           'height' => '',
           'upscale' => 1,
         ),

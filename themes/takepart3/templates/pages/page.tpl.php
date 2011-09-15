@@ -13,10 +13,7 @@
     </div><!--/join-login-top-->
     <div class="clear clearfix" id="nav-wrap">
       <div id='logo'><?php print l("", "<front>")?></div>
-      <?php
-        print render($page['main_nav']);
-        // print $top_nav; 
-        ?>
+      <?php print $top_nav ?>
     </div>
   </div>
   <?php else: ?>
@@ -77,7 +74,7 @@
     </div></div>
   <?php endif; ?>
   
-  <div id='page' class='page clearfix <?php if ($is_multipage): ?>page-multipage<?php endif; ?>'>
+  <div id='page' class='page clearfix <?php print $multipage_class; ?>'>
   
     <div class='main-content'>
       <?php  /* if ($title): ?><h1 class='page-title'><?php print $title ?></h1><?php endif; */ ?>

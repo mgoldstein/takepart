@@ -290,11 +290,6 @@ $info['projects']['googlenews']['type']    =' module';
 $info['projects']['googlenews']['subdir']  = 'contrib';
 $info['projects']['googlenews']['version'] = '1.4';
 
-/* Used for Options Element Module for contact us form */
-$info['projects']['menu_block']['type']    =' module';
-$info['projects']['menu_block']['subdir']  = 'contrib';
-$info['projects']['menu_block']['version'] = '2.2';
-
 /* Used for managing caching */
 $info['projects']['akamai']['type']     = 'module';
 $info['projects']['akamai']['subdir']   = 'contrib';
