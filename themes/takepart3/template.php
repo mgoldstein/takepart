@@ -37,6 +37,7 @@ function takepart3_preprocess_page(&$variables) {
   $variables['takepart_theme_path']   = drupal_get_path('theme', 'takepart3');
   $variables['search_takepart_form']  = _render_tp3_header_search_form();
   $variables['is_multipage'] = FALSE;
+  $variables['multipage_class'] = '';
   // Adds page template suggestions for specific content types
   if (isset($variables['node'])) {  
     $variables['theme_hook_suggestions'][] = 'page__type__'. $variables['node']->type;
@@ -44,8 +45,9 @@ function takepart3_preprocess_page(&$variables) {
     
     if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
       $variables['is_multipage'] = TRUE;
+      $variables['multipage_class'] = 'page-multipage';// although this is not needed because the context set the body class itself
     }
-    
+    dsm($variables['page']['highlighted']);
     if ($variables['node']->type == 'takepart_campaign') {
       if (!empty($variables['node']->field_tp_campaign_show_title[$variables['node']->language][0]['value'])) {
         unset($variables['page']['highlighted']['takepart_custom_page_title_h1']);
@@ -333,6 +335,10 @@ function takepart3_preprocess_node(&$vars, $hook) {
       '#options' => array('html' => FALSE, 'attributes' => array('class' => 'embedded-video-link')),
     );
   }  
+  /* see https://takepart1.fogbugz.com/default.asp?17143*/
+    if (isset($vars['field_tp_campaign_show_title']) && !empty($vars['field_tp_campaign_show_title'][$vars['language']]['0']['value'])) {
+  	unset($vars['title']);
+  }
 }
 
 /* Comment form */

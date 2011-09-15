@@ -177,7 +177,9 @@ img.photo, .gallery-item img {
 }
 
 #page.page-multipage {
-  padding:0px;
+  /*padding:0px;*/
+  padding-right: 0;
+  /*padding-top: 0;*/
 }
 
 .main-content {
