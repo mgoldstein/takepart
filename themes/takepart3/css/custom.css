@@ -1159,12 +1159,17 @@ p.search-performance{
 .block-boxes-title-takepart-tv .views-field-view-node a{
 	color:#8e8e8e;
 }
-	.block-boxes-title-takepart-tv .views-field-field-promo-headline h3{
-		margin:0;
-	}
-	.block-boxes-title-takepart-tv .views-field-field-promo-text{
-		margin:0 0 5px 0;
-	}
+.block-boxes-title-takepart-tv .views-field-view-node a:hover {
+  color:#1CA9E7;
+}
+
+.block-boxes-title-takepart-tv .views-field-field-promo-headline h3{
+  margin:0;
+}
+.block-boxes-title-takepart-tv .views-field-field-promo-text{
+  margin:0 0 5px 0;
+}
+
 
 
 /* author page */
