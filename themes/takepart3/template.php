@@ -47,7 +47,7 @@ function takepart3_preprocess_page(&$variables) {
       $variables['is_multipage'] = TRUE;
       $variables['multipage_class'] = 'page-multipage';// although this is not needed because the context set the body class itself
     }
-    dsm($variables['page']['highlighted']);
+
     if ($variables['node']->type == 'takepart_campaign') {
       if (!empty($variables['node']->field_tp_campaign_show_title[$variables['node']->language][0]['value'])) {
         unset($variables['page']['highlighted']['takepart_custom_page_title_h1']);
