@@ -31,7 +31,8 @@
     attach: function (context, settings) {
       $('.takepart_addthis_leftpanel .addthis_toolbox a, .takepart_addthis_footer .addthis_toolbox a').click(function(){
         var title = $(this).attr('title');
-        //console.log(title);
+        
+        console.debug("%c title: #%s#", 'color:red;', convert_title(title)); 
         s.events="event25";
         s.prop26=title;
         s.eVar27=title;
@@ -39,7 +40,7 @@
         s.linkTrackEvents="event25";
         s.tl(this.href, 'o', 'Content Share');
         //console.log(s);
-        //return false;
+        return false;
       });
     }
   }
@@ -70,6 +71,28 @@
 
 }(jQuery));
 
+// Takepart wanted different names for the values.  We only
+// had the alt title on the link available to tell them apart
+// so I used that and convert the title to what they wanted.
+// the alt tags could easily change, but this was the only
+// option to present itself.
+function convert_title(title) {
+  switch (title) {
+    case "Send to Facebook":
+      return "Facebook Recommend";
+    case "Tweet This":
+      return "Twitter Tweet";
+    case "Send to StumbleUpon":
+      return "StumbleUpon";
+    case "Digg This":
+      return "Digg";
+    case "Send to Google_plusone":
+      return "Google Plus One";
+    
+    default:
+      return title; 
+  }
+}
 
 /*
   Drupal.behaviors.scCommentClick = {
