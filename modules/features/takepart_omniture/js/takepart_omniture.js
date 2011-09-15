@@ -30,17 +30,14 @@
   Drupal.behaviors.scSocialClick = {
     attach: function (context, settings) {
       $('.takepart_addthis_leftpanel .addthis_toolbox a, .takepart_addthis_footer .addthis_toolbox a').click(function(){
-        var title = $(this).attr('title');
-        
-        console.debug("%c title: #%s#", 'color:red;', convert_title(title)); 
+        var link_title = $(this).attr('title');
+        var title = convert_title(link_title);
         s.events="event25";
         s.prop26=title;
         s.eVar27=title;
         s.linkTrackVars="eVar27,prop26,events";
         s.linkTrackEvents="event25";
         s.tl(this.href, 'o', 'Content Share');
-        //console.log(s);
-        return false;
       });
     }
   }
