@@ -177,7 +177,9 @@ img.photo, .gallery-item img {
 }
 
 #page.page-multipage {
-  padding:0px;
+  /*padding:0px;*/
+  padding-right: 0;
+  /*padding-top: 0;*/
 }
 
 .main-content {
@@ -1874,11 +1876,13 @@ body.front h1 {
   color: white;
 }
 
-.views-field-field-slide-featured-item,
-.views-field-field-slide-headline {
+.views-field-field-slide-featured-item {
   margin-left: 10px;
 }
 
+.views-field-field-slide-headline {
+  margin:0 10px;
+}
 
 /*
 Block Boxes (General)
