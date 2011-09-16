@@ -1,9 +1,12 @@
+<?php
+$node = menu_get_object(); 
+?>
 <!-- AddThis Button BEGIN -->
 <div class="takepart_addthis_simple">
   <span id="addthis_simple_sharethis">Share:</span>
   <div class="addthis_toolbox addthis_default_style">
       <a class="addthis_button_facebook"></a>
-      <a class="addthis_button_twitter" tw:via="<?php print $variables['takepart_addthis_tweet_via']; ?>" ></a>
+      <a class="addthis_button_twitter" tw:via="<?php print $variables['takepart_addthis_tweet_via']; ?>" tw:text="<?php print $node->title; ?>"></a>
   </div>
 </div>
 <?php
