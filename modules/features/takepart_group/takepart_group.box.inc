@@ -52,8 +52,8 @@ function takepart_group_default_box() {
     'field' => array(
       'field_group_logo' => 'field_group_logo',
       'field_group_url' => 'field_group_url',
-      'field_group_location' => 'field_group_location',
       'body' => 0,
+      'field_group_location' => 0,
       'field_group_main_image' => 0,
       'field_group_subhead' => 0,
       'field_group_topic' => 0,
