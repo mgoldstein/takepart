@@ -431,7 +431,7 @@ ul#top-follow li.rss a {
 
 .region-top-nav {
     float: left;
-    margin-left: 0px;
+    margin-left: 25px;
 }
 
 .region-top-nav ul.menu {
@@ -449,6 +449,7 @@ ul#top-follow li.rss a {
     text-align: center;
     font-size: 15px;
     margin:0;
+    padding:0;
 }
 
 .region-top-nav ul.menu li a {
