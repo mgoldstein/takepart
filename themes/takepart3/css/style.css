@@ -486,32 +486,6 @@ ul#top-follow li.rss a {
     font-weight: bolder;
 }
 
-/* Slim header */
-
-#slim-header ul#top-nav {
-    float: left;
-    margin-left: 123px;
-}
-
-#slim-header .region-top-nav ul.menu li {
-    float: none;
-    list-style-type: none;
-    list-style-image: none;
-    text-align: center;
-    font-size: 12px;
-    margin:0;
-    padding:0;
-}
-
-#slim-header .region-top-nav ul.menu li a {
-    border-right: 1px dashed #000000;
-    color: #000000;
-    font-size: 12px;
-    font-weight: normal;
-    padding: 0 28px;
-    text-decoration: none
-}
-
 .dhtml-menu ul.menu {
     position: absolute;
     top: 40px;
@@ -539,6 +513,31 @@ ul#top-follow li.rss a {
     font-weight: bolder;
 }
 
+/* Slim header */
+
+#slim-header ul#top-nav {
+    float: left;
+    margin-left: 123px;
+}
+
+#slim-header .region-top-nav ul.menu li {
+    float: left;
+    list-style-type: none;
+    list-style-image: none;
+    text-align: center;
+    font-size: 12px;
+    margin:0;
+    padding:0;
+}
+
+#slim-header .region-top-nav ul.menu li a {
+    border-right: 1px dashed #000000;
+    color: #000000;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 0 28px;
+    text-decoration: none
+}
 #slim-header .dhtml-menu ul.menu {
     position: absolute;
     top: 26px;
