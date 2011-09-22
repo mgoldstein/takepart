@@ -494,11 +494,11 @@ ul#top-follow li.rss a {
 }
 
 #slim-header .region-top-nav ul.menu li {
-    float: left;
+    float: none;
     list-style-type: none;
     list-style-image: none;
     text-align: center;
-    font-size: 15px;
+    font-size: 12px;
     margin:0;
     padding:0;
 }
@@ -535,6 +535,33 @@ ul#top-follow li.rss a {
     color: #000;
     display: block;
     padding: 9px 10px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+#slim-header .dhtml-menu ul.menu {
+    position: absolute;
+    top: 26px;
+    z-index: 1000;
+    background-color: #FFF;
+}
+
+#slim-header .dhtml-menu ul.menu li {
+    float: none;
+    list-style-type: none;
+    list-style-image: none;
+    text-align: left;
+    font-size: 12px;
+    font-weight: normal;
+    margin:0;
+}
+
+#slim-header .dhtml-menu ul.menu li a {
+    border-right: none;
+    border-bottom: #e6e6e6 1px solid;
+    color: #000;
+    display: block;
+    padding: 6px 10px;
     text-decoration: none;
     font-weight: bolder;
 }
@@ -3535,12 +3562,10 @@ div.messages a:visited {
 	margin-top:10px;
 }
 #slim-header #logo {
-	top:4px;
-	left:20px;
 	height: 15px;
         width: 105px;
 	border-right: 1px dashed #000;
-        position: relative;
+        position: static;
 }
 #slim-header #logo a {
   background: url("../images/sprite-slim-header.gif") no-repeat scroll 0 0 transparent;
