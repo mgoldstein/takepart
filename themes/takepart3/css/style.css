@@ -486,6 +486,60 @@ ul#top-follow li.rss a {
     font-weight: bolder;
 }
 
+/* Slim header */
+
+#slim-header ul#top-nav {
+    float: left;
+    margin-left: 123px;
+}
+
+#slim-header .region-top-nav ul.menu li {
+    float: left;
+    list-style-type: none;
+    list-style-image: none;
+    text-align: center;
+    font-size: 15px;
+    margin:0;
+    padding:0;
+}
+
+#slim-header .region-top-nav ul.menu li a {
+    border-right: 1px dashed #000000;
+    color: #000000;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 0 28px;
+    text-decoration: none
+}
+
+.dhtml-menu ul.menu {
+    position: absolute;
+    top: 40px;
+    z-index: 1000;
+    background-color: #FFF;
+}
+
+.dhtml-menu ul.menu li {
+    float: none;
+    list-style-type: none;
+    list-style-image: none;
+    text-align: left;
+    font-size: 12px;
+    font-weight: normal;
+    margin:0;
+}
+
+.dhtml-menu ul.menu li a {
+    border-right: none;
+    border-bottom: #e6e6e6 1px solid;
+    color: #000;
+    display: block;
+    padding: 9px 10px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+/* Old Main Navigation */
 ul#top-nav {
 	float: left;
 	margin-left: 25px;
@@ -3484,8 +3538,9 @@ div.messages a:visited {
 	top:4px;
 	left:20px;
 	height: 15px;
-  width: 105px;
+        width: 105px;
 	border-right: 1px dashed #000;
+        position: relative;
 }
 #slim-header #logo a {
   background: url("../images/sprite-slim-header.gif") no-repeat scroll 0 0 transparent;
