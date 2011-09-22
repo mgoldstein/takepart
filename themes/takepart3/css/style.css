@@ -463,7 +463,7 @@ ul#top-follow li.rss a {
 
 .dhtml-menu ul.menu {
     position: absolute;
-    top: 50px;
+    top: 40px;
     z-index: 1000;
     background-color: #FFF;
 }
