@@ -429,20 +429,20 @@ ul#top-follow li.rss a {
   width: 24px;
 }
 
-.region-main-nav {
+.region-top-nav {
     float: left;
     margin-left: 25px;
 }
 
-.region-main-nav ul.menu {
+.region-top-nav ul.menu {
     float: left;
 }
 
-.region-main-nav .contextual-links-region {
+.region-top-nav .contextual-links-region {
     margin:0;
 }
 
-.region-main-nav ul.menu li {
+.region-top-nav ul.menu li {
     float: left;
     list-style-type: none;
     list-style-image: none;
@@ -451,7 +451,7 @@ ul#top-follow li.rss a {
     margin:0;
 }
 
-.region-main-nav ul.menu li a {
+.region-top-nav ul.menu li a {
     border-right: 1px dashed #FFFFFF;
     color: #FFFFFF;
     display: block;
