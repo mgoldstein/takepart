@@ -540,7 +540,8 @@ ul#top-follow li.rss a {
 }
 #slim-header .dhtml-menu ul.menu {
     position: absolute;
-    top: 26px;
+    top: 20px;
+    margin-left: 20px;
     z-index: 1000;
     background-color: #FFF;
 }
@@ -562,7 +563,7 @@ ul#top-follow li.rss a {
     display: block;
     padding: 6px 10px;
     text-decoration: none;
-    font-weight: bolder;
+    font-weight: normal;
 }
 
 /* Old Main Navigation */
