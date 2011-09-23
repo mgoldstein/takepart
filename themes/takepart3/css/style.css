@@ -517,6 +517,7 @@ ul#top-follow li.rss a {
     margin-left: 20px;
     z-index: 1000;
     background-color: #FFF;
+    display: none;
 }
 
 #slim-header .dhtml-menu ul.menu li {
