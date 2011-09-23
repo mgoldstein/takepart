@@ -21,7 +21,7 @@ function takepart_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Media',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_video_embedded',
       1 => 'field_main_image',
@@ -49,7 +49,7 @@ function takepart_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_text',
@@ -76,13 +76,12 @@ function takepart_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
-      0 => 'field_suggest_related',
-      1 => 'field_video_related',
-      2 => 'field_suggest_actions',
-      3 => 'field_related_actions',
-      4 => 'field_suggest_video',
+      0 => 'field_video_related',
+      1 => 'field_suggest_actions',
+      2 => 'field_related_actions',
+      3 => 'field_suggest_video',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -106,7 +105,7 @@ function takepart_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tags',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_free_tag',
       1 => 'field_series',

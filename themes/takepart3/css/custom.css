@@ -557,6 +557,27 @@ body.node-type-topic-front h2.title a {
 		zoom:1; *display: inline; _height: 121px;
 	}
 
+/* more generic featured video CSS: Added to the views display(featured); in Format >> format >> settings: custom class:'featured-video' 
+* The previous rules will override these or will be overriden, but both are the same */
+.featured-video .views-field-view-node-1{
+  position:relative;
+  text-align:center;
+  top: -265px;  
+  margin-bottom:-121px;
+}
+  .featured-video .views-field-view-node-1 span{
+    display:none;
+  }
+  .featured-video .views-field-view-node-1 a{
+    display:inline-block;
+    text-indent:-9999px;
+    background:url('../images/videobutton.png') no-repeat 0 0;
+    width:121px;
+    height:121px;
+    zoom:1; *display: inline; _height: 121px;
+  }
+
+
 /* Video Node */
 .node-type-openpublish-video .field-name-field-subhead {
     color: #666666;
