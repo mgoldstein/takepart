@@ -435,6 +435,7 @@ ul#top-follow li.rss a {
 }
 
 .region-top-nav ul.menu {
+    height: 34px;
     float: left;
 }
 
@@ -443,6 +444,7 @@ ul#top-follow li.rss a {
 }
 
 .region-top-nav ul.menu li {
+    height: 34px;
     float: left;
     list-style-type: none;
     list-style-image: none;
@@ -467,10 +469,11 @@ ul#top-follow li.rss a {
 
 .dhtml-menu ul.menu {
     position: absolute;
-    top: 39px;
+    top: 34px;
     z-index: 1000;
     background-color: #FFF;
     display: none;
+    border-top:5px solid #000;
 }
 
 .dhtml-menu ul.menu li {
