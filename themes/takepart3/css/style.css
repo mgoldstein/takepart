@@ -473,7 +473,7 @@ ul#top-follow li.rss a {
     z-index: 1000;
     background-color: #FFF;
     display: none;
-    border-top:5px solid #000;
+    border-top:10px solid #000;
 }
 
 .dhtml-menu ul.menu li {
@@ -530,6 +530,7 @@ ul#top-follow li.rss a {
     z-index: 1000;
     background-color: #FFF;
     display: none;
+    border-top:0;
 }
 
 #slim-header .dhtml-menu ul.menu li {
