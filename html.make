@@ -335,6 +335,7 @@ projects[menu_block][version] = 2.2
 projects[dhtml_menu][type] =  module
 projects[dhtml_menu][subdir] = contrib
 projects[dhtml_menu][version] = 1.0-beta1
+projects[dhtml_menu][patch][] = http://drupal.org/files/issues/dhtml_menu-absolute_positioning-no_active_trail_0.patch
 projects[nodequeue][type] = module
 projects[nodequeue][subdir] = contrib
 projects[nodequeue][version] = 2.0-alpha2
