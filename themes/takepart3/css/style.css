@@ -444,7 +444,6 @@ ul#top-follow li.rss a {
 }
 
 .region-top-nav ul.menu li {
-    height: 34px;
     float: left;
     list-style-type: none;
     list-style-image: none;
@@ -469,6 +468,7 @@ ul#top-follow li.rss a {
 
 .dhtml-menu ul.menu {
     position: absolute;
+    height: auto;
     top: 34px;
     z-index: 1000;
     background-color: #FFF;
@@ -483,6 +483,7 @@ ul#top-follow li.rss a {
     text-align: left;
     font-size: 15px;
     margin:0;
+    background-color: #FFF;
 }
 
 .dhtml-menu ul.menu li a {
