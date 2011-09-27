@@ -505,6 +505,11 @@ ul#top-follow li.rss a {
     margin-left: 123px;
 }
 
+#slim-header ul.menu {
+    height: auto;
+    float: left;
+}
+
 #slim-header .region-top-nav ul.menu li {
     float: left;
     list-style-type: none;
