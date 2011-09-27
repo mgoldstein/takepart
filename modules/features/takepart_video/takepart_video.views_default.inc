@@ -1097,8 +1097,7 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['label'] = '';
   $handler->display->display_options['fields']['field_promo_text']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_promo_text']['alter']['make_link'] = 1;
-  $handler->display->display_options['fields']['field_promo_text']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_promo_text']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['replace_spaces'] = 0;
