@@ -284,6 +284,7 @@ projects[ga_stats][version] = 1.0-alpha2
 projects[jcarousel][type] = module
 projects[jcarousel][subdir] = contrib
 projects[jcarousel][version] = 2.4-alpha3
+projects[jcarousel][patch][] = http://drupal.org/files/issues/jcarousel_update-1196558-8-make.patch
 projects[libraries][type] = module
 projects[libraries][subdir] = contrib
 projects[libraries][version] = 1.0
