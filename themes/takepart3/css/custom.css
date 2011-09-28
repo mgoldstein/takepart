@@ -1630,6 +1630,15 @@ ul#global-links a{
 				text-decoration:none;
 				color:#1ca9e7;
 			}
+.region-highlighted .block-context-related-menu ul.menu li a.active, .region-highlighted .block-menu ul.menu li a.active{
+    border-bottom: 1px solid #CCCFFF;
+    border-top: 1px solid #CCCFFF;
+    color: #1CA9E7;
+    display: block;
+    padding: 0 10px;
+    line-height:26px;
+}
+
 
 .node-type-takepart-list .node-takepart-list{
 	margin-bottom:20px;
