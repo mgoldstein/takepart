@@ -11,6 +11,145 @@ function takepart_campaign_views_default_views() {
   $export = array();
 
   $view = new view;
+  $view->name = 'campaign_spotlight_nodes';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Campaign Spotlight Nodes';
+  $view->core = 7;
+  $view->api_version = '3.0-alpha1';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = 0;
+  $handler->display->display_options['row_options']['default_field_elements'] = 1;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['nid']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['nid']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['nid']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['nid']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['nid']['link_to_node'] = 0;
+  /* Field: Content: Promo Headline */
+  $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
+  $handler->display->display_options['fields']['field_promo_headline']['table'] = 'field_data_field_promo_headline';
+  $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
+  $handler->display->display_options['fields']['field_promo_headline']['label'] = '';
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_promo_headline']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_promo_headline']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_promo_headline']['field_api_classes'] = 0;
+  /* Field: Content: Promo Text */
+  $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
+  $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
+  $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
+  $handler->display->display_options['fields']['field_promo_text']['label'] = '';
+  $handler->display->display_options['fields']['field_promo_text']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_promo_text']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_promo_text']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_promo_text']['field_api_classes'] = 0;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['nid']['not'] = 0;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Promo Display */
+  $handler = $view->new_display('block', 'Promo Display', 'block_1');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'field';
+  $handler->display->display_options['arguments']['nid']['default_argument_options']['field'] = 'nodereference::field_tp_campaign_sl_nodes';
+  $handler->display->display_options['arguments']['nid']['default_argument_options']['settings'] = array(
+    'argument_default_field_nodereference_format' => 'nid',
+    'argument_default_field_nodereference_delta' => '0',
+  );
+  $handler->display->display_options['arguments']['nid']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['nid']['not'] = 0;
+  $export['campaign_spotlight_nodes'] = $view;
+
+  $view = new view;
   $view->name = 'campaigns';
   $view->description = '';
   $view->tag = 'default';
