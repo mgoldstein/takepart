@@ -36,16 +36,18 @@ function takepart3_preprocess_page(&$variables) {
   $variables['user_nav']              = _render_tp3_user_menu();
   $variables['takepart_theme_path']   = drupal_get_path('theme', 'takepart3');
   $variables['search_takepart_form']  = _render_tp3_header_search_form();
-  
+  $variables['is_multipage'] = FALSE;
+  $variables['multipage_class'] = '';
   // Adds page template suggestions for specific content types
   if (isset($variables['node'])) {  
     $variables['theme_hook_suggestions'][] = 'page__type__'. $variables['node']->type;
      
-    $variables['is_multipage'] = FALSE;
+    
     if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
       $variables['is_multipage'] = TRUE;
+      $variables['multipage_class'] = 'page-multipage';// although this is not needed because the context set the body class itself
     }
-    
+
     if ($variables['node']->type == 'takepart_campaign') {
       if (!empty($variables['node']->field_tp_campaign_show_title[$variables['node']->language][0]['value'])) {
         unset($variables['page']['highlighted']['takepart_custom_page_title_h1']);
@@ -220,7 +222,6 @@ function _render_menu_columns($menu_key, $col_limit) {
     
     $depth = _tp_col_depth($total_items, $col_limit, $remainder_row); 
     
-    $list_count = count($columns[$column_idx])+1;
     $columns[$column_idx][] = "<li>". $link ."</li>";
     
     if (count($columns[$column_idx]) == $depth ) {
@@ -233,7 +234,8 @@ function _render_menu_columns($menu_key, $col_limit) {
   foreach ($columns as $col) {
     $menu_cols .= "<div class='column'><ul>".  implode($col) ."</ul></div>\n";
   }
-  return $menu_cols . "<pre>$debug</pre>";
+  
+  return $menu_cols;
 }
 
 function _tp_col_depth($total, $col_limit, $remainder) {
@@ -333,6 +335,10 @@ function takepart3_preprocess_node(&$vars, $hook) {
       '#options' => array('html' => FALSE, 'attributes' => array('class' => 'embedded-video-link')),
     );
   }  
+  /* see https://takepart1.fogbugz.com/default.asp?17143*/
+    if (isset($vars['field_tp_campaign_show_title']) && !empty($vars['field_tp_campaign_show_title'][$vars['language']]['0']['value'])) {
+  	unset($vars['title']);
+  }
 }
 
 /* Comment form */
@@ -554,7 +560,7 @@ function takepart3_preprocess_block(&$vars) {
       $vars['classes_array'][] = 'block-boxes-bid-' . $vars['elements']['#block']->bid;
     }
     
-    if (in_array($vars['elements']['#block']->delta, array('box-4abd00a3', 'box-33756e58', 'box-5cd7d5ce', 'box-95b55e7'))) {
+    if (in_array($vars['elements']['#block']->delta, array('box-4abd00a3', 'box-33756e58', 'box-5cd7d5ce', 'box-95b55e7', 'box-a08d035e'))) {
       if (stripos($vars['content'], '<div class="boxes-box-content"></div>')) {
         $vars['content'] = '';
       }

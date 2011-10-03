@@ -177,7 +177,9 @@ img.photo, .gallery-item img {
 }
 
 #page.page-multipage {
-  padding:0px;
+  /*padding:0px;*/
+  padding-right: 0;
+  /*padding-top: 0;*/
 }
 
 .main-content {
@@ -1874,11 +1876,13 @@ body.front h1 {
   color: white;
 }
 
-.views-field-field-slide-featured-item,
-.views-field-field-slide-headline {
+.views-field-field-slide-featured-item {
   margin-left: 10px;
 }
 
+.views-field-field-slide-headline {
+  margin:0 10px;
+}
 
 /*
 Block Boxes (General)
@@ -2266,13 +2270,13 @@ h2.title a{
 
 .embed-action-wrapper {
   background: #FFEFD8 url(../images/featured-action.gif) left center no-repeat;
-  margin: 9px 10px 25px -10px;
+  margin: 9px 0 25px 0;
   padding: 8px 10px;
 }
 
 .embed-action-wrapper .embed-action {
   padding-left: 160px;
-  width: 280px;
+  /*width: 280px;*/
 }
 
 .embed-action-wrapper .embed-action a {
@@ -2656,7 +2660,6 @@ body.node-type-topic-front h2.title a {
 
 .node-teaser .field-name-body {
   margin-left: 160px;
-  width: 460px;
 }
 
 /***** Blog Post *****/
@@ -3776,6 +3779,7 @@ body.node-type-takepart-page .main-content {
 }
 body.node-type-takepart-page #page {
   padding-right: 0px;
+  padding-left: 0px;
 }
 
 body.page-node .article-campaign-blocks .article-campaign-blocks-block, body.node-type-takepart-group .article-campaign-blocks .article-campaign-blocks-block {

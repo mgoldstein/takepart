@@ -16,11 +16,11 @@ body.sidebar-first #left-rail{
 		padding:0;
 	}
 	.node-type-takepart-group .region-highlighted{
-		padding:35px 15px 0;
+		padding:35px 0px 0;
 	}
 .node-type-openpublish-photo-gallery .page,
 .node-type-takepart-group .page {
-    padding: 20px 20px 35px !important;
+    padding: 20px 20px 35px 0px !important;
 }
 .front .page{
     padding: 10px 20px 35px;
@@ -441,7 +441,7 @@ body.node-type-topic-front h2.title a {
 .submitted-wrapper{
 	overflow:hidden;
 	 padding-bottom: 10px;
-	 margin-bottom:0px;
+	 /*margin-bottom:0px;*/
 }
 .node-type-openpublish-photo-gallery .submitted-wrapper{
     border-bottom: medium none;
@@ -681,10 +681,11 @@ body.node-type-topic-front h2.title a {
       	margin:0;
 	}
 	
-
+/* why was this needed? removed because generated fb#17246
+https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 .drupal-embed .embed-action-wrapper{
 	width:420px;
-}
+}*/
  
  /**   video blocks **/
  
@@ -1158,12 +1159,17 @@ p.search-performance{
 .block-boxes-title-takepart-tv .views-field-view-node a{
 	color:#8e8e8e;
 }
-	.block-boxes-title-takepart-tv .views-field-field-promo-headline h3{
-		margin:0;
-	}
-	.block-boxes-title-takepart-tv .views-field-field-promo-text{
-		margin:0 0 5px 0;
-	}
+.block-boxes-title-takepart-tv .views-field-view-node a:hover {
+  color:#1CA9E7;
+}
+
+.block-boxes-title-takepart-tv .views-field-field-promo-headline h3{
+  margin:0;
+}
+.block-boxes-title-takepart-tv .views-field-field-promo-text{
+  margin:0 0 5px 0;
+}
+
 
 
 /* author page */
@@ -1744,3 +1750,10 @@ ul#global-links a{
 font-size: 14px;
 margin-top: 142px;
 }
+/* this is needed because embeddable will display the node title, which we donot want sometimes
+right now is specific to node-openpublish-photo-gallery, but change as needed */
+.views-row .drupal-embed .node.node-openpublish-photo-gallery h2{display:none}
+
+/* use this rule as long as the openpublish-blog-post main image display cannot be overriden
+in take-part feature */
+.node-teaser .field-name-field-blogpost-main-image img{width:620px;}
