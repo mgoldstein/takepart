@@ -66,6 +66,74 @@
     }
   }
 
+  Drupal.behaviors.scPhotoGalleryThumbClick = {
+    attach: function (context, settings) {
+      $('.views-slideshow-controls-bottom .views-content-field-gallery-images img').click(function(){
+         // find our block id of this thumb
+        var blockId = $(this).parents('.views-slideshow-pager-field-item')[0].id;
+        var focusBlockId = blockId.replace('views_slideshow_pager_field_item_bottom_photo_gallery-', 
+          'views_slideshow_cycle_div_photo_gallery-');
+        
+        var title = $('#'+ focusBlockId +' .views-field-field-image-title h4').text();
+        
+        s.linkTrackVars="eVar15,events";
+        s.linkTrackEvents="event2, event15";
+        s.eVar15=s.prop17 +":"+ title;
+        s.prop15=s.eVar15;
+        s.events="event2, event15";
+        s.tl(this.href, 'o', 'Gallery Photo View');
+      });
+    }
+  }
+
+  Drupal.behaviors.scPhotoGalleryNextClick = {
+    attach: function (context, settings) {
+      $('#views_slideshow_controls_text_next_photo_gallery-block').click(function(){
+        var activeElement = $('.views-slideshow-pager-field-item.active').next()[0];
+        if (activeElement == undefined) {
+          activeElement = $('.views-slideshow-pager-field-item').first()[0];
+        }
+        var activeId = activeElement.id;
+        var focusBlockId = activeId.replace('views_slideshow_pager_field_item_bottom_photo_gallery-', 
+          'views_slideshow_cycle_div_photo_gallery-');
+        
+        var title = $('#'+ focusBlockId +' .views-field-field-image-title h4').text();
+        console.debug(title);
+        
+        s.linkTrackVars="eVar15,events";
+        s.linkTrackEvents="event2, event15";
+        s.eVar15=s.prop17 +":"+ title;
+        s.prop15=s.eVar15;
+        s.events="event2, event15";
+        s.tl(this.href, 'o', 'Gallery Photo View');
+      });
+
+    }
+  }
+
+  Drupal.behaviors.scPhotoGalleryPrevClick = {
+    attach: function (context, settings) {
+      $('#views_slideshow_controls_text_previous_photo_gallery-block').click(function(){
+        var activeElement = $('.views-slideshow-pager-field-item.active').prev()[0];
+        if (activeElement == undefined) {
+          activeElement = $('.views-slideshow-pager-field-item').last()[0];
+        }
+        var activeId = activeElement.id;
+        var focusBlockId = activeId.replace('views_slideshow_pager_field_item_bottom_photo_gallery-', 
+          'views_slideshow_cycle_div_photo_gallery-');
+        
+        var title = $('#'+ focusBlockId +' .views-field-field-image-title h4').text();
+        
+        s.linkTrackVars="eVar15,events";
+        s.linkTrackEvents="event2, event15";
+        s.eVar15=s.prop17 +":"+ title;
+        s.prop15=s.eVar15;
+        s.events="event2, event15";
+        s.tl(this.href, 'o', 'Gallery Photo View');        
+      });
+    }
+  }
+
 }(jQuery));
 
 // Takepart wanted different names for the values.  We only
