@@ -289,7 +289,7 @@ $info['projects']['menu_block']['version'] = '2.2';
 $info['projects']['dhtml_menu']['type']    =' module';
 $info['projects']['dhtml_menu']['subdir']  = 'contrib';
 $info['projects']['dhtml_menu']['version'] = '1.0-beta1';
-$info['projects']['dhtml_menu']['patch'][] = 'http://drupal.org/files/issues/dhtml_menu-abs_pos-no_active_trail.patch';
+// $info['projects']['dhtml_menu']['patch'][] = 'http://drupal.org/files/issues/dhtml_menu-abs_pos-no_active_trail.patch';
 
 /* Used for Twitter Pull Module */
 $info['projects']['twitter_pull']['type']    =' module';
