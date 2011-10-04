@@ -123,6 +123,7 @@ projects[phase2_profile][type] = module
 projects[phase2_profile][subdir] = contrib
 projects[phase2_profile][download][type] = svn
 projects[phase2_profile][download][url] = https://phase2.svn.beanstalkapp.com/phase2_d7/trunk/phase2_profile
+projects[phase2_profile][download][revision] = 825
 
 projects[media][subdir] = contrib
 projects[media][type] = module
