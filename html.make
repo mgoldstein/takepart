@@ -392,6 +392,16 @@ project[devel][version] = 1.2
 project[coder][subdir] = contrib
 project[coder][version] = 1.0
 
+projects[menu_block][type] =  module
+projects[menu_block][subdir] = contrib
+projects[menu_block][version] = 2.2
+
+projects[dhtml_menu][type] =  module
+projects[dhtml_menu][subdir] = contrib
+projects[dhtml_menu][version] = 1.0-beta1
+// projects[dhtml_menu][patch][] = http://drupal.org/files/issues/dhtml_menu-abs_pos-no_active_trail.patch
+
+
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6/ckeditor_3.6.tar.gz
 libraries[ckeditor][directory_name] = ckeditor
