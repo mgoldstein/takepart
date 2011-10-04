@@ -160,10 +160,9 @@ projects[openpublish][download][type] = git
 projects[openpublish][download][url] = git@phase2.beanstalkapp.com:/openpublish3.git
 projects[openpublish][download][revision] = 9f95fce4758dae9e92dbc1af2f6724a27efc0b74
 
+projects[openpublish_features][subdir] = contrib
 projects[openpublish_features][type] = module
-projects[openpublish_features][download][type] = git
-projects[openpublish_features][download][url] = git@phase2.beanstalkapp.com:/openpublish_features.git
-projects[openpublish_features][download][revision] = 829432e1565cf1fd535ca47cd4686dd16164f8a9
+projects[openpublish_features][version] = 1.0-alpha1
 
 projects[media_views_widget][type] = module
 projects[media_views_widget][subdir] = contrib
@@ -287,7 +286,7 @@ projects[job_scheduler][version] = 2.0-alpha2
 projects[defaultcontent][type] = module
 projects[defaultcontent][subdir] = contrib
 projects[defaultcontent][version] = 1.0-alpha4
-
+  
 projects[scheduler][type] = module
 projects[scheduler][subdir] = contrib
 projects[scheduler][version] = 1.0
