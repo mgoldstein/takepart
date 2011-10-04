@@ -284,6 +284,10 @@ projects[job_scheduler][type] = module
 projects[job_scheduler][subdir] = contrib
 projects[job_scheduler][version] = 2.0-alpha2
 
+projects[defaultcontent][type] = module
+projects[defaultcontent][subdir] = contrib
+projects[defaultcontent][version] = 1.0-alpha4
+
 projects[scheduler][type] = module
 projects[scheduler][subdir] = contrib
 projects[scheduler][version] = 1.0
@@ -399,7 +403,7 @@ projects[menu_block][version] = 2.2
 projects[dhtml_menu][type] =  module
 projects[dhtml_menu][subdir] = contrib
 projects[dhtml_menu][version] = 1.0-beta1
-// projects[dhtml_menu][patch][] = http://drupal.org/files/issues/dhtml_menu-abs_pos-no_active_trail.patch
+projects[dhtml_menu][patch][] = http://drupal.org/files/issues/dhtml_menu-abs_pos-no_active_trail.patch
 
 
 libraries[ckeditor][download][type] = get
