@@ -136,6 +136,10 @@ projects[styles][subdir] = contrib
 projects[styles][type] = module
 projects[styles][version] = 2.0-alpha8
 
+projects[video_embed_field][subdir] = contrib
+projects[video_embed_field][type] = module
+projects[video_embed_field][version] = 1.0-alpha4
+
 projects[views_arguments_extras][subdir] = contrib
 projects[views_arguments_extras][download][type] = git
 projects[views_arguments_extras][download][url] = http://git.drupal.org/project/views_arguments_extras.git
