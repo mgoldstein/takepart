@@ -160,19 +160,19 @@ projects[openpublish_features][version] = 1.0-alpha1
 
 projects[views_boxes][subdir] = contrib
 projects[views_boxes][type] = module
-projects[views_boxes][version] = 7.x-1.0-beta6
+projects[views_boxes][version] = 1.0-beta6
 
 projects[views_field][subdir] = contrib
 projects[views_field][type] = module
-projects[views_field][version] = 7.x-1.0
+projects[views_field][version] = 1.0
 
 projects[entity_autocomplete][subdir] = contrib
 projects[entity_autocomplete][type] = module
-projects[entity_autocomplete][version] = 7.x-1.0-beta1
+projects[entity_autocomplete][version] = 1.0-beta1
 
 project[context_field][subdir] = contrib
 project[context_field][type] = module
-project[context_field][version] = 7.x-1.0-beta2
+project[context_field][version] = 1.0-beta2
 
 projects[media_views_widget][type] = module
 projects[media_views_widget][subdir] = contrib
