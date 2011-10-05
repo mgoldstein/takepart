@@ -119,12 +119,6 @@ projects[link][subdir] = contrib
 projects[link][type] = module
 projects[link][version] = 1.0-alpha3
 
-projects[phase2_profile][type] = module
-projects[phase2_profile][subdir] = contrib
-projects[phase2_profile][download][type] = svn
-projects[phase2_profile][download][url] = https://phase2.svn.beanstalkapp.com/phase2_d7/trunk/phase2_profile
-projects[phase2_profile][download][revision] = 825
-
 projects[media][subdir] = contrib
 projects[media][type] = module
 projects[media][download][type] = git
@@ -163,6 +157,22 @@ projects[openpublish][download][revision] = 9f95fce4758dae9e92dbc1af2f6724a27efc
 projects[openpublish_features][subdir] = contrib
 projects[openpublish_features][type] = module
 projects[openpublish_features][version] = 1.0-alpha1
+
+projects[views_boxes][subdir] = contrib
+projects[views_boxes][type] = module
+projects[views_boxes][version] = 7.x-1.0-beta6
+
+projects[views_field][subdir] = contrib
+projects[views_field][type] = module
+projects[views_field][version] = 7.x-1.0
+
+projects[entity_autocomplete][subdir] = contrib
+projects[entity_autocomplete][type] = module
+projects[entity_autocomplete][version] = 7.x-1.0-beta1
+
+project[context_field][subdir] = contrib
+project[context_field][type] = module
+project[context_field][version] = 7.x-1.0-beta2
 
 projects[media_views_widget][type] = module
 projects[media_views_widget][subdir] = contrib
