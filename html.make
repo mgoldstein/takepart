@@ -136,7 +136,7 @@ projects[media][patch][] = http://drupal.org/files/issues/1199482-add_views_rela
 projects[boxes][subdir] = contrib
 projects[boxes][type] = module
 projects[boxes][download][type] = git
-projects[boxes][download][revision] = 5fc88dba179c00907ce86ccefeef1b9e9d362a9d
+projects[boxes][download][revision] = 3fdd068ee2b76bb517448a22f50849d08500f5c5
 projects[boxes][download][url] = http://git.drupal.org/project/boxes.git
 projects[boxes][patch][] = http://drupal.org/files/issues/boxes-modified-simple-box.make_.patch
 
