@@ -119,6 +119,12 @@ projects[link][subdir] = contrib
 projects[link][type] = module
 projects[link][version] = 1.0-alpha3
 
+projects[phase2_profile][type] = module
+projects[phase2_profile][subdir] = contrib
+projects[phase2_profile][download][type] = svn
+projects[phase2_profile][download][url] = https://phase2.svn.beanstalkapp.com/phase2_d7/trunk/phase2_profile
+projects[phase2_profile][download][revision] = 825
+
 projects[media][subdir] = contrib
 projects[media][type] = module
 projects[media][download][type] = git
@@ -130,7 +136,7 @@ projects[media][patch][] = http://drupal.org/files/issues/1199482-add_views_rela
 projects[boxes][subdir] = contrib
 projects[boxes][type] = module
 projects[boxes][download][type] = git
-projects[boxes][download][revision] = 3fdd068ee2b76bb517448a22f50849d08500f5c5
+projects[boxes][download][revision] = 5fc88dba179c00907ce86ccefeef1b9e9d362a9d
 projects[boxes][download][url] = http://git.drupal.org/project/boxes.git
 projects[boxes][patch][] = http://drupal.org/files/issues/boxes-modified-simple-box.make_.patch
 
@@ -153,30 +159,6 @@ projects[openpublish][type] = profile
 projects[openpublish][download][type] = git
 projects[openpublish][download][url] = git@phase2.beanstalkapp.com:/openpublish3.git
 projects[openpublish][download][revision] = 9f95fce4758dae9e92dbc1af2f6724a27efc0b74
-
-projects[openpublish_features][subdir] = contrib
-projects[openpublish_features][type] = module
-projects[openpublish_features][version] = 1.0-alpha1
-
-projects[views_boxes][subdir] = contrib
-projects[views_boxes][type] = module
-projects[views_boxes][version] = 1.0-beta6
-
-projects[views_field][subdir] = contrib
-projects[views_field][type] = module
-projects[views_field][version] = 1.0
-
-projects[entity_autocomplete][subdir] = contrib
-projects[entity_autocomplete][type] = module
-projects[entity_autocomplete][version] = 1.0-beta1
-
-projects[context_field][subdir] = contrib
-projects[context_field][type] = module
-projects[context_field][version] = 1.0-beta2
-
-projects[video_embed_field][subdir] = contrib
-projects[video_embed_field][type] = module
-projects[video_embed_field][version] = 1.0-alpha4
 
 projects[media_views_widget][type] = module
 projects[media_views_widget][subdir] = contrib
