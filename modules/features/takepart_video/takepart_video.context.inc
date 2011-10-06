@@ -29,47 +29,47 @@ function takepart_video_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-box-66c05d6f' => array(
-          'module' => 'boxes',
-          'delta' => 'box-66c05d6f',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'boxes-box-e9e8814f' => array(
-          'module' => 'boxes',
-          'delta' => 'box-e9e8814f',
-          'region' => 'sidebar_second',
-          'weight' => '-9',
-        ),
-        'views-related_actions-block' => array(
-          'module' => 'views',
-          'delta' => 'related_actions-block',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
-        ),
-        'boxes-box-1104adce' => array(
-          'module' => 'boxes',
-          'delta' => 'box-1104adce',
-          'region' => 'sidebar_second',
-          'weight' => '-7',
-        ),
         'boxes-box-bb0b625d' => array(
           'module' => 'boxes',
           'delta' => 'box-bb0b625d',
           'region' => 'content_top',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'views-video-block_8' => array(
           'module' => 'views',
           'delta' => 'video-block_8',
           'region' => 'content_bottom',
-          'weight' => '0',
+          'weight' => 1,
         ),
         'views-video-block' => array(
           'module' => 'views',
           'delta' => 'video-block',
           'region' => 'content_bottom',
-          'weight' => '1',
+          'weight' => 2,
+        ),
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar_second',
+          'weight' => 0,
+        ),
+        'boxes-box-e9e8814f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-e9e8814f',
+          'region' => 'sidebar_second',
+          'weight' => 1,
+        ),
+        'views-related_actions-block' => array(
+          'module' => 'views',
+          'delta' => 'related_actions-block',
+          'region' => 'sidebar_second',
+          'weight' => 2,
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar_second',
+          'weight' => 3,
         ),
       ),
     ),
@@ -91,7 +91,6 @@ function takepart_video_context_default_contexts() {
   $context->conditions = array(
     'context_field' => array(
       'values' => array(
-        'context_field' => 'context_field',
         1 => 1,
         2 => 2,
       ),
@@ -103,29 +102,41 @@ function takepart_video_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'takepart_custom-page_title_h1' => array(
-          'module' => 'takepart_custom',
-          'delta' => 'page_title_h1',
-          'region' => 'content_top',
-          'weight' => 0,
-        ),
         'views-video-block_3' => array(
           'module' => 'views',
           'delta' => 'video-block_3',
           'region' => 'content',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'views-video-block_6' => array(
           'module' => 'views',
           'delta' => 'video-block_6',
           'region' => 'content',
-          'weight' => 1,
+          'weight' => '1',
+        ),
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
         ),
         'boxes-box-e9e8814f' => array(
           'module' => 'boxes',
           'delta' => 'box-e9e8814f',
           'region' => 'sidebar_second',
-          'weight' => 1,
+          'weight' => '-9',
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
+        ),
+        'takepart_custom-page_title_h1' => array(
+          'module' => 'takepart_custom',
+          'delta' => 'page_title_h1',
+          'region' => 'content_top',
+          'weight' => '0',
         ),
       ),
     ),

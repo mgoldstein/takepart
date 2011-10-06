@@ -118,6 +118,27 @@ function takepart_user_customizations_strongarm() {
       'key' => 'submit',
       'weight' => 19,
     ),
+    'comment_node_takepart_group_form' => array(
+      'path' => array(
+        0 => 'actions',
+      ),
+      'key' => 'submit',
+      'weight' => 19,
+    ),
+    'comment_node_profile_form' => array(
+      'path' => array(
+        0 => 'actions',
+      ),
+      'key' => 'submit',
+      'weight' => 19,
+    ),
+    'comment_node_takepart_page_form' => array(
+      'path' => array(
+        0 => 'actions',
+      ),
+      'key' => 'submit',
+      'weight' => 19,
+    ),
   );
   $export['captcha_placement_map_cache'] = $strongarm;
 
@@ -125,7 +146,7 @@ function takepart_user_customizations_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'captcha_wrong_response_counter';
-  $strongarm->value = 12;
+  $strongarm->value = 44;
   $export['captcha_wrong_response_counter'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -174,7 +195,7 @@ function takepart_user_customizations_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'recaptcha_theme';
-  $strongarm->value = 'red';
+  $strongarm->value = 'clean';
   $export['recaptcha_theme'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -265,7 +286,7 @@ This link expires in one day and nothing will happen if it is not used.
   $strongarm->name = 'user_mail_password_reset_body';
   $strongarm->value = '[user:name],
 
-A request to reset the password for your account has been made at [site:name].
+A request to reset the password for your account has been made at TakePart.com.
 
 You may now log in by clicking this link or copying and pasting it to your browser:
 
@@ -273,7 +294,7 @@ You may now log in by clicking this link or copying and pasting it to your brows
 
 This link can only be used once to log in and will lead you to a page where you can set your password. It expires after one day and nothing will happen if it\'s not used.
 
---  [site:name] team';
+--  TakePart Team';
   $export['user_mail_password_reset_body'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -480,7 +501,7 @@ Your account on [site:name] has been canceled.
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_picture_style';
-  $strongarm->value = '';
+  $strongarm->value = 'thumbnail';
   $export['user_picture_style'] = $strongarm;
 
   $strongarm = new stdClass;

@@ -176,10 +176,14 @@ img.photo, .gallery-item img {
 	padding: 35px 20px;
 }
 
+.node-type-takepart-campaign #page.page-multipage {
+  padding-left: 20px;
+}
 #page.page-multipage {
   /*padding:0px;*/
   padding-right: 0;
   /*padding-top: 0;*/
+ padding-left: 0;
 }
 
 .main-content {
@@ -3609,7 +3613,7 @@ body.node-type-takepart-group #page {
 }
 
 /*
- * Jcarousel
+ *
  */
 div.jcarousel-container {
   width: 620px;
@@ -3617,6 +3621,7 @@ div.jcarousel-container {
 
 div.jcarousel-clip {
   width: 635px;
+  overflow:hidden;
 }
 div#block-views-video-block-8 div.content {
   position: relative;

@@ -25,11 +25,15 @@ function takepart_user_customizations_context_default_contexts() {
     ),
   );
   $context->reactions = array(
-    'breadcrumb_current_page' => array(
-      'breadcrumb_show_current_page' => 0,
-      'breadcrumb_show_current_page_title' => '',
-      'breadcrumb_show_current_page_only' => 0,
-      'empty_all_breadcrumbs' => 1,
+    'block' => array(
+      'blocks' => array(
+        'boxes-user_not_a_member_join' => array(
+          'module' => 'boxes',
+          'delta' => 'user_not_a_member_join',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+      ),
     ),
   );
   $context->condition_mode = 0;

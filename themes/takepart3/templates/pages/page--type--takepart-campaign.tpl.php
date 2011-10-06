@@ -41,7 +41,7 @@
 				<li class="title">Follow Us</li>
 				<li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
 				<li class="twitter"><a target = '_blank' href="http://www.twitter.com/takepart">twitter</a></li>
-				<li class="rss"><a href="#">rss</a></li>
+				<li class="rss"><a href="/rss">rss</a></li>
 			</ul><!--/top follow-->
     </div>
   </div>
