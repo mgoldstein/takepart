@@ -1,0 +1,3 @@
+name = Views Field
+description = "Plugin that allows display of any field as a box"
+core = 7.x
