@@ -16,6 +16,7 @@ features[] = favicon
 
 ; Defaults
 regions[header] = Header
+regions[top_nav] = Top Navigation
 regions[highlighted] = Highlighted
 regions[help] = Help
 regions[content] = Content
