@@ -13,7 +13,11 @@
     </div><!--/join-login-top-->
     <div class="clear clearfix" id="nav-wrap">
       <div id='logo'><?php print l("", "<front>")?></div>
+      <?php if ($page['top_nav']): ?>
+      <?php print render($page['top_nav']); ?>
+      <?php else: ?>
       <?php print $top_nav ?>
+      <?php endif; ?>
     </div>
   </div>
   
@@ -53,6 +57,16 @@
 			</ul><!--/top follow-->
 </div><!--/header right-top--></div>
 
+    <div id="nav-logo-arrow"></div>
+    <?php if ($page['top_nav']): ?>
+    <?php print render($page['top_nav']); ?>
+    <?php else: ?>
+    <?php print $top_nav ?>
+    <?php endif; ?>
+    <div id="top-search">
+      <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
+    </div><!--/top search-->
+  </div>
   <?php endif; ?>  
 
   <?php if ($page['help'] || ($show_messages && $messages)): ?>
