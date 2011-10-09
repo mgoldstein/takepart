@@ -16,42 +16,43 @@
       <?php print $top_nav ?>
     </div>
   </div>
+  
   <?php else: ?>
   <div id="header" class='clearfix'>
     <div id='logo'><?php print l("", "<front>")?></div>
-    <div class="header-mid">
-  		<div id="hot-topics-nav">
-        <?php print $hottopic_nav ?>
-  		</div><!--/hot topics nav-->
-  		
-  		<div class="text">
-  		<img src="<?php print $base_path . $takepart_theme_path; ?>/images/tagline-be-a-participant.gif" alt="Be A Participant">
-  		</div><!--/text-->
-		</div>
-		
+   
+   <div class="header-right-top clearfix">	
+   	
 		<div class="header-right">
   		<div id="join-login-top">
       <div class="login-fb clearfix">
         <?php print $user_nav; ?>  			
-      </div> 
+      </div> <!--/login-fb-->
   	</div><!--/join-login-top-->
   
-  	<div class="clear"></div>
-	  	<ul id="top-follow">
-				<li class="title">Follow Us</li>
-				<li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
-				<li class="twitter"><a target = '_blank' href="http://www.twitter.com/takepart">twitter</a></li>
-				<li class="rss"><a href="rss">rss</a></li>
-			</ul><!--/top follow-->
-    </div>
-  </div>
+ 	
+    </div><!--/header-right-->
+
   <div class="clear clearfix" id="nav-wrap">
-    <div id="nav-logo-arrow"></div>
+
     <?php print $top_nav ?>
+      </div><!--/nav wrap-->
+     		<div id="hot-topics-nav">
+        <?php print $hottopic_nav ?>
+  		</div><!--/hot topics nav-->
+    
   	<div id="top-search">
       <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
   	</div><!--/top search-->
-  </div>
+  	
+  	  	<ul id="top-follow">
+				<li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
+				<li class="twitter"><a target = '_blank' href="http://www.twitter.com/takepart">twitter</a></li>
+				<li class="youtube"><a target = '_blank' href="http://www.youtube.com/takepart">youtube</a></li>
+				<li class="rss"><a href="rss">rss</a></li>
+			</ul><!--/top follow-->
+</div><!--/header right-top--></div>
+
   <?php endif; ?>  
 
   <?php if ($page['help'] || ($show_messages && $messages)): ?>

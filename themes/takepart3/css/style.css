@@ -1,4 +1,20 @@
 
+
+
+@font-face {
+    font-family: 'NewsGothicBoldCondensed';
+    src: url('news-2-webfont.eot');
+    src: url('news-2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('news-2-webfont.woff') format('woff'),
+         url('news-2-webfont.ttf') format('truetype'),
+         url('news-2-webfont.svg#NewsGothicBoldCondensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
 /***** Colors*******/
 
 /**** 
@@ -64,7 +80,7 @@ ul#cutuplist li {
 /***** HTML ******/
 
 body {
-	background: #FFF;
+	background: #eff3f5 url(../images/bg-page2.jpg) no-repeat top center;
 	color: #333;
 	font-size: 12px;
   font-family: Helvetica, Arial, sans-serif;
@@ -163,14 +179,15 @@ img.photo, .gallery-item img {
 
 #page-wrapper {
 	margin: 0 auto;
-	width: 980px;
+	width: 1001px;
 }
 
 #header {
-	background: url(../images/header-arrows.png) no-repeat 730px 0;
 	margin:0;
 	position: relative;
 }
+
+#page {background: #FFF;}
 
 .page {
 	padding: 35px 20px;
@@ -190,6 +207,7 @@ img.photo, .gallery-item img {
 #footer {
 	border-top: 5px solid #000;
 	margin-bottom: 25px;
+	background: #FFF;
 }
 
 #right-rail {
@@ -226,10 +244,10 @@ body.sidebar-first #content{
 
 #logo {
 	float: left;
-	width:  225px;
+	width:  125px;
 	padding: 0 0 0px 0;
 	position: absolute;
-	top: 25px;
+	top: 20px;
 	left: 0px;
 }
 
@@ -241,18 +259,26 @@ body.sidebar-first #content{
   display:none;
 }
 
+#top-logo-wrapper {
+	width: 130px;
+	float: left;
+}
+
 #logo a {
 	text-indent: -9000px;
 	display: block;
-	width: 225px;
-	height: 88px;
-	background: url(../images/sprite.png) no-repeat;
+	width: 115px;
+	height: 115px;
+	z-index: 1;
+	position: absolute;
+	background: url("../images/sprite2.png") no-repeat scroll 0 -678px;
+
 }
+
 
 .header-mid {
 	float: left;
 	width: 450px;
-	margin: 25px 0 0 250px;
 }
 
 .header-mid .text {
@@ -262,18 +288,25 @@ body.sidebar-first #content{
 
 /****** Hot Topics Nav *****/
 
-#hot-topics-nav {}
+#hot-topics-nav {
+ width: 550px;
+ float: left;
+ padding: 15px 0 13px 0;
+}
 
 #hot-topics-nav li {
 	list-style-type: none;
 	display: inline;
-	border-right: 1px solid #ccc;
-	padding: 0 10px;
-	font-size:14px;
+	padding: 0 0;
+	font-size: 15px;
+	
 }
 
 #hot-topics-nav li a {
-	color: #ccc;
+	color: #000;
+	padding-left: 15px;
+	padding-right: 12px;
+	background: url(../images/dot.png) no-repeat 0 4px;
 }
 
 #hot-topics-nav li a:hover {
@@ -284,13 +317,18 @@ body.sidebar-first #content{
 	border: 0;
 }
 
+#hot-topics-nav li.first a {
+	background: none;
+}
+
 #hot-topics-nav li.title {
 	text-transform: uppercase;
 	font-weight: bold;
-	color: #fdab30;
+	color: #1ca9e7;
 	padding-left: 0;
-	padding-right: 0;
+	padding-right: 10px;
 	border: none;
+	margin-left: 15px;
 }
 
 /*** Join / Login links ***/
@@ -309,18 +347,17 @@ body.sidebar-first #content{
 }
 
 #join-login-top {
-  font-size: 15px;
-  padding: 0 5px 0 10px;
-  width: 200px;
+  font-size: 13px;
+  padding: 0 5px 0 0;
   float: right;
-  height: 23px;
   overflow: visible;
-	margin-top:8px;
+	margin-top:5px;
 }
 
 #join-login-top #user-nav {
   height: 26px; 
-  float: left;
+  background: url(../images/arrows-blk.png) no-repeat 0 6px;
+  padding-left: 17px;
 }
 
 #user-nav li{
@@ -331,10 +368,11 @@ body.sidebar-first #content{
 .logged-in #user-nav li {
 	margin-right:10px;
 }
+
 #join-login-top a {
-	font-size:14px;
-	text-transform:uppercase;
-	font-weight:bolder;
+	font-size:13px;
+	color: #000;
+	font-weight: bold;
 	line-height:15px;
 }
 
@@ -351,6 +389,7 @@ body.sidebar-first #content{
   display: inline-block;
   width: 19px;
   height: 19px;
+  display: none;
 }
 #join-login-top span.fb a {
 	background:none;
@@ -370,8 +409,7 @@ body.sidebar-first #content{
 
 .header-right {
   width: 230px;
-	float: left;
-	margin-left:43px;
+	float: right;
 }
 
 
@@ -379,20 +417,21 @@ body.sidebar-first #content{
 
 ul#top-follow {
 	clear: both;
-	margin: 35px 11px 0 40px;
+	margin: -30px 0 0 0;
 	float: right;
+	
 }
 
 ul#top-follow li {
 	list-style-type: none;
 	float: left;
-	margin-right: 5px;
+	margin: 0 0 0 0;
 }
 
 ul#top-follow li a {
 	display: block;
-	height: 24px;
-	width: 24px;
+	height: 18px;
+	width: 18px;
 	text-indent: -9000px;
 	}
 
@@ -401,25 +440,34 @@ ul#top-follow li.title {
 }
 
 ul#top-follow li.fb a {
-  background: url(../images/sprite.png) no-repeat -61px -115px;
+  background: url(../images/sprite2.png) no-repeat -153px -678px;
 }
 
 ul#top-follow li.twitter a {
-  background: url(../images/sprite.png) no-repeat -91px -115px;
+  background: url(../images/sprite2.png) no-repeat -177px -678px;
+}
+
+ul#top-follow li.youtube a {
+  background: url(../images/sprite2.png) no-repeat -201px -678px;
 }
 
 ul#top-follow li.rss a {
-  background: url(../images/sprite.png) no-repeat -121px -115px;
+  background: url(../images/sprite2.png) no-repeat -226px -678px;
 }
 
 /**** Top Navigation ***/
 
-#nav-wrap{
-	margin: 0 0 0 0;
-	background: #000;
-	padding: 5px 15px 5px 5px;
-	position:relative;
+.header-right-top {
+float: right;
+width: 865px;
 }
+
+#nav-wrap{
+	margin: 0 0 5px 0;
+	float: right;
+		
+}
+
 #nav-logo-arrow {
 	background: url("../images/sprite.png") no-repeat scroll -14px -68px #000000;
   height: 14px;
@@ -429,29 +477,30 @@ ul#top-follow li.rss a {
   width: 24px;
 }
 
-ul#top-nav {
-	float: left;
-	margin-left: 25px;
-}
 
 ul#top-nav li {
 	float: left;
+	font-family: 'NewsGothicBoldCondensed';
 	list-style-type: none;
+	letter-spacing: 0.05em;
 	text-align: center;
-	font-size: 15px;
+	font-size: 27px;
+	text-transform: uppercase;
+	font-weight: normal;
 }
 
 ul#top-nav li a {
-	border-right: 1px dashed #FFFFFF;
-  color: #FFFFFF;
+  color: #000;
+  background: #FFF;
   display: block;
-  padding: 9px 10px;
+  padding: 4px 15px;
   text-decoration: none;
-	font-weight:bolder;
+  margin-right: 8px;
 }
 
 ul#top-nav li.last a{
-	border: 0;
+	margin-right: 0;
+	
 }
 
 
@@ -460,7 +509,7 @@ ul#top-nav li.last a{
 
 #top-search {
 	width:  160px;
-	float: right;
+	float: left;
 	margin: 7px 8px 0;
 }
 
@@ -469,7 +518,7 @@ ul#top-nav li.last a{
 }
 
 #top-search .form-text {
-	border:none;
+	border:1px soid #CCC;
 	color:#999999;
 	float:left;
 	font-size:12px;
@@ -1710,7 +1759,6 @@ body.front h1 {
 
 .view-id-slide_rotator {
   background: black;
-  left: -19px;
   margin-bottom: 15px;
   padding: 8px 9px;
   position: relative;
@@ -2829,6 +2877,8 @@ q p, q.pull-quote p{
   padding-left:0px;
 }
 
+
+
 body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #left-rail {
   margin-top:0px;
 }
@@ -2979,6 +3029,7 @@ body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #lef
 body.node-type-takepart-campaign .node-takepart-campaign h2.title{
   display: none;
 }
+
 
 body.node-type-takepart-campaign .region-sidebar-first {  
   left: -24px;
@@ -3787,4 +3838,54 @@ body.page-node .article-campaign-blocks .article-campaign-blocks-block, body.nod
     float: left;
     padding: 15px;
     width: 273px;
+}
+
+/* Laura */
+
+.campaign-top {background: #FFF; padding: 20px;}
+
+
+/***** Slim header on the Cove  - Laura *******/
+
+body.page-node-1204 {
+    background: #eff3f5 url(../images/bg-page-cv.png) repeat-x;
+
+}
+
+body.page-node-1204 .header-mid {
+	display: none;
+}
+
+body.page-node-1204 #logo {
+	width: 42px;
+	height: 42px;
+}
+
+body.page-node-1204 #logo a {
+    background: url(../images/logo-sm-slim.png) no-repeat;
+    display: block;
+    height: 42px;
+    text-indent: -9000px;
+    width: 42px;
+    z-index: auto;
+}
+
+body.page-node-1204 ul#top-nav li {
+    float: none;
+    float: left;
+    font-family: 'NewsGothicBoldCondensed';
+    font-size: 15px;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    list-style-type: none;
+    text-align: center;
+  
+} 
+
+body.page-node-1204 ul#top-nav li a {
+	background: none;
+}
+
+body.page-node-1204 #nav-wrap {
+	float: left;
 }

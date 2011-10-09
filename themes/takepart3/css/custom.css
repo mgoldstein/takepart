@@ -23,7 +23,7 @@ body.sidebar-first #left-rail{
     padding: 20px 20px 35px 0px !important;
 }
 .front .page{
-    padding: 10px 20px 35px;
+    padding: 20px 20px 35px;
 }
 
 
@@ -118,10 +118,7 @@ hr {
     height: 68px;
 }
 
-/* logo */
-#logo a {
-    background: url("../images/sprite2.png") no-repeat scroll 0 0;
-}
+
 
 /* navigation */
 ul#top-nav li a:hover{

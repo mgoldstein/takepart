@@ -98,12 +98,15 @@ function _render_tp3_main_menu() {
  */
 function _render_tp3_user_menu() {
   $menu_data = menu_tree_page_data("user-menu");
-
+  
   $links = array();
   foreach($menu_data as $menu_item) {
     $opts = array(
       'attributes' => _default_menu_options($menu_item),
     );
+    
+    $opts['attributes']['class'][] = 'user-menu-'.strtolower($menu_item['link']['title']);
+    
     if(empty($opts['attributes']['title'])){
       unset($opts['attributes']['title']);
     }
@@ -127,7 +130,7 @@ function _render_tp3_user_menu() {
             break;
         }
     }
-    
+
     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
     $links[] = "<li>". $link ."</li>";
   }
@@ -722,3 +725,6 @@ function _get_author($nid) {
 
   return $authors;
 }
+
+
+
