@@ -280,6 +280,17 @@ $info['projects']['options_element']['type']    =' module';
 $info['projects']['options_element']['subdir']  = 'contrib';
 $info['projects']['options_element']['version'] = '1.4';
 
+/* Menu Block Used for dropdown menus */
+$info['projects']['menu_block']['type']    =' module';
+$info['projects']['menu_block']['subdir']  = 'contrib';
+$info['projects']['menu_block']['version'] = '2.2';
+
+/* DHTML Menu Used for dropdown menus */
+$info['projects']['dhtml_menu']['type']    =' module';
+$info['projects']['dhtml_menu']['subdir']  = 'contrib';
+$info['projects']['dhtml_menu']['version'] = '1.0-beta1';
+// $info['projects']['dhtml_menu']['patch'][] = 'http://drupal.org/files/issues/dhtml_menu-abs_pos-no_active_trail.patch';
+
 /* Used for Twitter Pull Module */
 $info['projects']['twitter_pull']['type']    =' module';
 $info['projects']['twitter_pull']['subdir']  = 'contrib';
