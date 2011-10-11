@@ -13,60 +13,53 @@
     </div><!--/join-login-top-->
     <div class="clear clearfix" id="nav-wrap">
       <div id='logo'><?php print l("", "<front>")?></div>
-      <?php if ($page['top_nav']): ?>
-      <?php print render($page['top_nav']); ?>
-      <?php else: ?>
       <?php print $top_nav ?>
-      <?php endif; ?>
     </div>
   </div>
   
   <?php else: ?>
+  
   <div id="header" class='clearfix'>
     <div id='logo'><?php print l("", "<front>")?></div>
-   
-   <div class="header-right-top clearfix">	
-   	
+
+		
 		<div class="header-right">
   		<div id="join-login-top">
       <div class="login-fb clearfix">
         <?php print $user_nav; ?>  			
-      </div> <!--/login-fb-->
+      </div> 
   	</div><!--/join-login-top-->
   
- 	
-    </div><!--/header-right-->
 
-  <div class="clear clearfix" id="nav-wrap">
+
+    <?php if ($page['header']): ?>
+    <div id='header' class='clear clearfix'>
+      <?php print render($page['header']); ?>
+    </div>
+  <?php endif; ?>
+
+ 
+  <!--<div class="clear clearfix" id="nav-wrap">
 
     <?php print $top_nav ?>
-      </div><!--/nav wrap-->
+    
+    </div><!/-->
+    
      		<div id="hot-topics-nav">
         <?php print $hottopic_nav ?>
   		</div><!--/hot topics nav-->
-    
+  		
   	<div id="top-search">
       <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
   	</div><!--/top search-->
-  	
+  
   	  	<ul id="top-follow">
-				<li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
+					<li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
 				<li class="twitter"><a target = '_blank' href="http://www.twitter.com/takepart">twitter</a></li>
 				<li class="youtube"><a target = '_blank' href="http://www.youtube.com/takepart">youtube</a></li>
 				<li class="rss"><a href="rss">rss</a></li>
 			</ul><!--/top follow-->
-</div><!--/header right-top--></div>
-
-    <div id="nav-logo-arrow"></div>
-    <?php if ($page['top_nav']): ?>
-    <?php print render($page['top_nav']); ?>
-    <?php else: ?>
-    <?php print $top_nav ?>
-    <?php endif; ?>
-    <div id="top-search">
-      <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
-    </div><!--/top search-->
-  </div>
+</div></div>
   <?php endif; ?>  
 
   <?php if ($page['help'] || ($show_messages && $messages)): ?>
@@ -76,17 +69,13 @@
     </div></div>
   <?php endif; ?>
 
-  <?php if ($page['header']): ?>
-    <div id='header' class='clearfix'>
-      <?php print render($page['header']); ?>
-    </div>
-  <?php endif; ?>
+
 
   
   <?php if ($page['highlighted']): ?>
     <div id='highlighted'><div class='limiter clearfix'>
       <?php print render($page['highlighted']); ?>
-    </div></div>
+    </div>
   <?php endif; ?>
   
   <div id='page' class='page clearfix <?php print $multipage_class; ?>'>

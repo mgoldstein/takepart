@@ -110,7 +110,7 @@ function _render_tp3_user_menu() {
     if(empty($opts['attributes']['title'])){
       unset($opts['attributes']['title']);
     }
-    
+
     if($menu_item['link']['href'] == 'user') {
       if (user_is_logged_in()) {
         global $user;
@@ -646,43 +646,38 @@ function takepart3_search_api_page_result(array $variables) {
   $index = $variables['index'];
   $id = $variables['result']['id'];
   $entity = $variables['entity'];
-  $output = '';
-  if (isset($entity->nid) && is_numeric($entity->nid)) {
-      $wrapper = entity_metadata_wrapper($index->entity_type, $entity);
-    
-      $url = entity_uri($index->entity_type, $entity);
-      $name = entity_label($index->entity_type, $entity);
-    
-      if ($index->entity_type == 'file') {
-        $url = array(
-          'path' => file_create_url($url),
-          'options' => array(),
-        );
-      }
-    
-      $text = '';
-      if (!empty($variables['result']['excerpt'])) {
-        $text = $variables['result']['excerpt'];
-      }
-      elseif (!empty($entity->field_promo_text[$entity->language][0]['safe_value'])) {
-        $text = $entity->field_promo_text[$entity->language][0]['safe_value'];
-      }
-      
-    
-      $type = takepart3_return_node_type($entity->type);
-      if (!empty($type)) {
-        $output = '<div class="views-field views-field-type"><span class="field-content">' . $type . '</span></div>';
-      }
-      $output .= '<h3>' . ($url ? l($name, $url['path'], $url['options']) : check_plain($name)) . "</h3>\n";
-      if ($text) {
-        $output .= $text;
-      }
-      $content_types_with_byline = array ('openpublish_article', 'openpublish_blog_post','openpublish_video','audio','openpublish_photo_gallery');
-      //dsm($entity);
-      if (in_array($entity->type, $content_types_with_byline)){
-      	$output .= "<div class='by-line'>Posted by ". _get_author($entity->nid) ." on " . date('M d, Y', $entity->created) ."</div>";
-      }
+
+  $wrapper = entity_metadata_wrapper($index->entity_type, $entity);
+
+  $url = entity_uri($index->entity_type, $entity);
+  $name = entity_label($index->entity_type, $entity);
+
+  if ($index->entity_type == 'file') {
+    $url = array(
+      'path' => file_create_url($url),
+      'options' => array(),
+    );
   }
+
+  $text = '';
+  if (!empty($variables['result']['excerpt'])) {
+    $text = $variables['result']['excerpt'];
+  }
+  elseif (!empty($entity->field_promo_text[$entity->language][0]['safe_value'])) {
+    $text = $entity->field_promo_text[$entity->language][0]['safe_value'];
+  }
+  
+  $output = '';
+  $type = takepart3_return_node_type($entity->type);
+  if (!empty($type)) {
+    $output = '<div class="views-field views-field-type"><span class="field-content">' . $type . '</span></div>';
+  }
+  $output .= '<h3>' . ($url ? l($name, $url['path'], $url['options']) : check_plain($name)) . "</h3>\n";
+  if ($text) {
+    $output .= $text;
+  }
+  $output .= "<div class='by-line'>Posted by ". _get_author($entity->nid) ." on " . date('M d, Y', $entity->created) ."</div>";
+
   return $output;
 }
 
@@ -695,6 +690,8 @@ function _render_tp3_header_search_form() {
  *
  */
 function _get_author($nid) {
+  if (!is_numeric($nid) ) 
+    return 'Tracy Smith';
   
   $query = db_select('field_data_field_author', 'a');
   $query->addField('a', 'field_author_nid');

@@ -2,7 +2,8 @@
   <?php if ($is_multipage): ?>
   <div id="slim-header" class='clearfix'>
     <ul id="top-follow">
-       <li class="fb"><a href="http://www.facebook.com/takepart">facebook</a></li>
+      <li class="title">Follow us:</li>
+      <li class="fb"><a href="http://www.facebook.com/takepart">facebook</a></li>
       <li class="twitter"><a href="http://www.twitter.com/takepart">twitter</a></li>
     </ul><!--/top follow-->
     <div id="join-login-top">
@@ -15,37 +16,44 @@
       <?php print $top_nav ?>
     </div>
   </div>
+  
   <?php else: ?>
   <div id="header" class='clearfix'>
-    <div id='slim-logo'><?php print l("", "<front>")?></div>
+    <div id='logo'><?php print l("", "<front>")?></div>
+   
+   <div class="header-right-top clearfix">	
+   	
+		<div class="header-right">
+  		<div id="join-login-top">
+      <div class="login-fb clearfix">
+        <?php print $user_nav; ?>  			
+      </div> <!--/login-fb-->
+  	</div><!--/join-login-top-->
+  
+ 	
+    </div><!--/header-right-->
 
+  <div cid="nav-wrap">
 
- 
-  <div class="clearfix" id="nav-wrap">
     <?php print $top_nav ?>
-  
-  </div><!--/nav-wrap-->
-  
+      </div><!--/nav wrap-->
+     		<div id="hot-topics-nav">
+        <?php print $hottopic_nav ?>
+  		</div><!--/hot topics nav-->
+    
   	<div id="top-search">
       <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
   	</div><!--/top search-->
-			  		<div id="join-login-top">
-      <div class="login-fb clearfix">
-        <?php print $user_nav; ?>  			
-      </div> 
-  	</div><!--/join-login-top-->  
-
-
+  	
   	  	<ul id="top-follow">
-								<li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
+				<li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
 				<li class="twitter"><a target = '_blank' href="http://www.twitter.com/takepart">twitter</a></li>
 				<li class="youtube"><a target = '_blank' href="http://www.youtube.com/takepart">youtube</a></li>
 				<li class="rss"><a href="rss">rss</a></li>
 			</ul><!--/top follow-->
-			
- </div><!--/header-->
-  
-  <?php endif; ?>
+</div><!--/header right-top--></div>
+
+  <?php endif; ?>  
 
   <?php if ($page['help'] || ($show_messages && $messages)): ?>
     <div id='console'><div class='limiter clearfix'>
@@ -54,16 +62,20 @@
     </div></div>
   <?php endif; ?>
 
-
+  <?php if ($page['header']): ?>
+    <div id='header' class='clearfix'>
+      <?php print render($page['header']); ?>
+    </div>
+  <?php endif; ?>
 
   
   <?php if ($page['highlighted']): ?>
-    <div id='highlighted'><div class='clear limiter clearfix'>
+    <div id='highlighted'><div class='limiter clearfix'>
       <?php print render($page['highlighted']); ?>
     </div></div>
   <?php endif; ?>
   
-  <div id='page' class='clear page clearfix <?php print $multipage_class; ?>'>
+  <div id='page' class='page clearfix <?php print $multipage_class; ?>'>
   
     <div class='main-content'>
       <?php  /* if ($title): ?><h1 class='page-title'><?php print $title ?></h1><?php endif; */ ?>
@@ -126,14 +138,7 @@
         <li id="twitter"> <a target="_blank" href="http://www.twitter.com/takepart">twitter</a></li>
       </ul>
       <!-- These should be converted to a menu, so TP can manage these links without changing code as they may change from time to time -->
-      <ul class="clearfix" id="global-links">
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/contact-us">Contact Us</a></li>
-        <li><a href="/help">Help</a></li>
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li class="last"><a href="/terms-of-use">Terms of Use</a></li>
-      </ul>
-
+      <?php print $corporate_links_nav;?>
     </div>     
 
     <div id="footer-about">
