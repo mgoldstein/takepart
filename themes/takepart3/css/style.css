@@ -3752,6 +3752,7 @@ div.jcarousel-container {
 
 div.jcarousel-clip {
   width: 635px;
+  overflow: hidden;
 }
 div#block-views-video-block-8 div.content {
   position: relative;
