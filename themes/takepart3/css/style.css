@@ -2544,10 +2544,13 @@ h2.title a{
   background-position: 0 -73px;
 }
 
-.block-boxes-view-name-related_actions h2{
+.block-boxes-view-name-related_actions h2,
+.block-boxes-delta-related_actions-block h2,
+.block-boxes-bid-views-related_actions-block h2{
   background-position: 0 -270px;
 }
 
+.block-boxes-title-related-stories h2,
 .block-boxes-view-name-related_content h2 {
   background-position: 0 -180px;
 }
