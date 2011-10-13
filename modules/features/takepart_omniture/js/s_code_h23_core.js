@@ -86,9 +86,11 @@ function s_doPlugins(s) {
     }
 
     /* Capture 404 error page in prop13 */
-    s.prop13 = s.pageType;
-
-    s.prop13 = s.pageType;
+    if(s.pageType=="errorPage"){
+        s.prop13="D=g";             // bad url
+        s.prop40=document.referrer; // referring url with the bad link
+        s.eVar40="D=c40";           // copy referring url to eVar
+    }
 
     /* Call to Days Since LastVisit Plugin */
     s.eVar29 = s.getDaysSinceLastVisit();
