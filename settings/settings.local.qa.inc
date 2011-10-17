@@ -39,5 +39,4 @@ $conf['memcache_bins'] = array(
  // $conf['memcache_options'] = array(
     //  //  Requires Memcached 1.4 or greater - enables binary protocal (faster).
     //  Memcached::OPT_BINARY_PROTOCOL => TRUE
-    // ); 
-
+    // );
