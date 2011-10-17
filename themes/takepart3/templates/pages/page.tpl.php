@@ -12,6 +12,9 @@
       </div> 
     </div><!--/join-login-top-->
     <div class="clear clearfix" id="nav-wrap">
+    
+ 
+
       <div id='logo'><?php print l("", "<front>")?></div>
       <?php print $top_nav ?>
     </div>
@@ -19,7 +22,10 @@
   
   <?php else: ?>
   
-  <div id="header" class='clearfix'>
+  <div id="header-wrapper" class='clearfix'>
+  <div class="logo-wrapper">
+  
+       
     <div id='logo'><?php print l("", "<front>")?></div>
 
 		
@@ -39,12 +45,7 @@
   <?php endif; ?>
 
  
-  <!--<div class="clear clearfix" id="nav-wrap">
-
-    <?php print $top_nav ?>
-    
-    </div><!/-->
-    
+   
      		<div id="hot-topics-nav">
         <?php print $hottopic_nav ?>
   		</div><!--/hot topics nav-->
@@ -73,7 +74,7 @@
 
   
   <?php if ($page['highlighted']): ?>
-    <div id='highlighted'><div class='limiter clearfix'>
+    <div class="clear" id='highlighted'><div class='limiter clearfix'>
       <?php print render($page['highlighted']); ?>
     </div>
   <?php endif; ?>

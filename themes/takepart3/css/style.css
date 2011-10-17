@@ -187,6 +187,11 @@ img.photo, .gallery-item img {
 	position: relative;
 }
 
+#header-wrapper {
+	margin: 0;
+	position: relative;
+}
+
 #page {background: #FFF; clear: both;}
 
 .page {
@@ -271,7 +276,7 @@ body.sidebar-first #content{
 	height: 115px;
 	z-index: 1;
 	position: absolute;
-	background: url("../images/sprite2.png") no-repeat scroll 0 -678px;
+	background: url(../images/logo.png) no-repeat 0 0;
 
 }
 
@@ -490,7 +495,7 @@ width: 865px;
 	list-style-type: none;
 }
 
-#block-menu-block-2 li {
+#block-menu-block-1 li {
 	float: left;
 	font-family: 'NewsGothicBoldCondensed';
 	list-style-type: none;
@@ -505,16 +510,16 @@ width: 865px;
 }
 
 
-#block-menu-block-2 {
+#block-menu-block-1 {
 	position: relative;
 }
 
-#block-menu-block-2 li.dhtml-menu {
+#block-menu-block-1 li.dhtml-menu {
 	margin-right: 10px;
 	position: relative;
 }
 
-#block-menu-block-2 li.dhtml-menu a {
+#block-menu-block-1 li.dhtml-menu a {
 	display: block;
 	padding: 3px 12px;
 	text-decoration: none;
@@ -522,18 +527,18 @@ width: 865px;
 	color: #000;
 }
 
-#block-menu-block-2 li ul {
+#block-menu-block-1 li ul {
 	position: absolute;
 	z-index: 1000;
 }
 
-#block-menu-block-2 ul.menu ul.menu {
+#block-menu-block-1 ul.menu ul.menu {
 	height: auto;
-	width: 178px;
+	width: 100%;
 }
 
 
-#block-menu-block-2 li.dhtml-menu li {
+#block-menu-block-1 li.dhtml-menu li {
 	font-size: 14px;
 	color: #000;
 	font-family: Arial, sans-serif;
@@ -546,41 +551,37 @@ width: 865px;
 	margin-right: 0;
 }
 
-#block-menu-block-2 li.collapsed, #block-menu-block-2 li.collapsed a{
+#block-menu-block-1 li.collapsed, #block-menu-block-1 li.collapsed a{
 	display: block;
 	}
 	
-#block-menu-block-2 li.collapsed a{}
 
-#block-menu-block-2 li.expanded a,
-#block-menu-block-2 li#dhtml_menu-1171 a:hover, 
-#block-menu-block-2 li#dhtml_menu-1771 a:hover,
-li#dhtml_menu-1172 a:hover, li#dhtml_menu-1772 a:hover, li#dhtml_menu-1173 a:hover {
-	background: #4eade7; 
-		background: -moz-linear-gradient(left, #4eade7 0%, #82ccf1 50%, #4eade7 100%); 
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#4eade7), color-stop(50%,#82ccf1), color-	stop(100%,#4eade7)); 
-	background: -webkit-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
-sbackground: -o-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
-background: -ms-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4eade7', endColorstr='#4eade7',GradientType=1 );
-background: linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
-	display: block;
-	color: #fff;
-	z-index: 1;
-	}
-	
-
-
-#block-menu-block-2 li.expanded li  {
+#block-menu-block-1 li.expanded a,
+#block-menu-block-1 li.dhtml-menu a:hover {/*this should be enough */
+  background: #4eade7; 
+  background: -moz-linear-gradient(left, #4eade7 0%, #82ccf1 50%, #4eade7 100%); 
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#4eade7), color-stop(50%,#82ccf1), color-	stop(100%,#4eade7)); 
+  background: -webkit-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+  sbackground: -o-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+  background: -ms-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4eade7', endColorstr='#4eade7',GradientType=1 );
+  background: linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+  display: block;
+  color: #fff;
+  z-index: 1;
 }
 
-#block-menu-block-2 li.last a{
+
+#block-menu-block-1 li.expanded li  {
+}
+
+#block-menu-block-1 li.last a{
 	margin-right: 0;	
 }
 
-#block-menu-block-2 li.dhtml-menu li a {color: #000; font-weight: bold; padding-top: 5px; padding-bottom: 5px;}
+#block-menu-block-1 li.dhtml-menu li a {color: #000; font-weight: bold; padding-top: 5px; padding-bottom: 5px;}
 
-#block-menu-block-2 li.dhtml-menu li a:hover {color: #FFF;}
+#block-menu-block-1 li.dhtml-menu li a:hover {color: #FFF;}
 
 
 
@@ -590,6 +591,7 @@ background: linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%);
 	width:  230px;
 	float: left;
 	margin: 7px 0 0;
+
 }
 
 form#search-api-page-search-form-2 {
@@ -2834,7 +2836,7 @@ q p, q.pull-quote p{
 
 .field-name-field-tp-campaign-intro-html {
   position: relative;
-  top: 0px;
+  top: 15px;
   height: 0px;
   left: 0px;
 }
@@ -3556,27 +3558,32 @@ div.messages a:visited {
  */
 #slim-header {
 	position:relative;
-	margin-top:10px;
+	margin: 0 0 15px 0;
 }
+
 #slim-header #logo {
-	top:4px;
-	left:20px;
-	height: 15px;
-  width: 105px;
-	border-right: 1px dashed #000;
+	width: 42px;
+	height: 42px;
+	float: left;
+	position: relative;
+	clear: none;
+	margin: 0 15px 0 0;
+	top: 0;
+
 }
 #slim-header #logo a {
-  background: url("../images/sprite-slim-header.gif") no-repeat scroll 0 0 transparent;
-  display: block;
-  height: 15px;
-  text-indent: -9000px;
-  width: 77px;
+    background: url(../images/logo-sm-slim.png) no-repeat;
+    display: block;
+    height: 42px;
+    text-indent: -9000px;
+    width: 42px;
 }
 #slim-header ul#top-follow {
-  float: left;
-  clear:none;
-  margin:0 0 3px 755px; 
+	clear: none;
+	margin: 9px 0 0 0;
+	float: right;
 }
+
 #slim-header #join-login-top {
   float: left;
   height: auto;
@@ -3584,10 +3591,21 @@ div.messages a:visited {
   padding: 0;
   width: auto;
 }
-#slim-header ul#top-follow li a {
-  height: 14px;
-  width: 14px;
-}
+
+#slim-header ul#top-nav li {
+    float: none;
+    float: left;
+    font-family: 'NewsGothicBoldCondensed';
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    list-style-type: none;
+    text-align: center;
+    padding: 8px 0 0 0;
+  } 
+
+
 #slim-header ul#top-follow li.title {
   margin-top: 8px;
   font-size: 10px;
@@ -3596,25 +3614,29 @@ div.messages a:visited {
   color:#666;
 	margin-right: 0;
 }
-#slim-header ul#top-follow li.fb a {
+/*#slim-header ul#top-follow li.fb a {
   background: url("../images/sprite-slim-header.gif") no-repeat scroll -77px 0 transparent;
 	margin-top: 5px;
 }
 #slim-header ul#top-follow li.twitter a {
   background: url("../images/sprite-slim-header.gif") no-repeat scroll -92px 0 transparent;
 	margin-top: 5px;
-}
+}*/
 #slim-header #join-login-top a {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: normal;
   line-height: normal;
-	color:#666;
+	color:#000;
   text-transform: none;
 }
+
+#block-takepart-addthis-addthis-simple {display: none;}
+
 #slim-header #join-login-top span.fb {
   background: url("../images/sprite-slim-header.gif") no-repeat scroll -106px 0 transparent;
   display: inline-block;
   height: 14px;
+  display: none;
   width: 48px;
 	font-size:0;
   text-indent:-9999px;
@@ -3626,27 +3648,35 @@ div.messages a:visited {
 	font-size:0;
 	text-indent:-9999px;
 }
+
+#slim-header ul#top-nav li.first a {
+	background: none;
+	padding-left: 0;
+}
+
 #slim-header #join-login-top #user-nav {
     height: auto;
+    margin-top: 9px;
 }
+
 #slim-header #nav-wrap {
   background: none;
-  margin: 2px 0 0 0;
-	border-top: 1px dashed #000;
+   float: left;
+   width: 470px;
 }
-#slim-header ul#top-nav {
-    margin-left: 123px;
-}
+ 
+
 #slim-header ul#top-nav li a {
-  border-right: 1px dashed #000;
-  color: #000;
-  font-weight: normal;
-	font-size:12px;
-  padding: 0 30px;
+ 	background: none;
+	color: #000;
+    background: url(../images/dot.png) no-repeat 0 7px;
+    padding: 0 0 0 15px;
 }
 #slim-header ul#top-nav li a:hover {
-	text-decoration:underline;
+   	color: #1ca9e7;
+	text-decoration: none;
 }
+
 #slim-header ul#top-nav li.last a {
     border: 0 none;
 }
@@ -3924,59 +3954,29 @@ body.page-node .article-campaign-blocks .article-campaign-blocks-block, body.nod
     width: 273px;
 }
 
-/* Laura */
-
-#boxes-box-box-907abe5f {
-}
 
 .campaign-top {background: #FFF; padding: 20px;}
 
+#highlighted {
+	background: #FFF;
+	padding: 10px;
+}
 
-/***** Slim header on the Cove  - Laura *******/
+body.front #highlighted {background: none; padding: 0;}
 
 body.node-type-takepart-campaign {
     background: #eff3f5 url(../images/bg-page-cv.png) repeat-x;
-
 }
 
-body.node-type-takepart-campaign .header-mid {
-	display: none;
+.page-node-1204 #highlighted {
+	margin-bottom: -35px;
 }
 
 body.node-type-takepart-campaign #join-login-top {
 	float: left;
 }
 
-body.node-type-takepart-campaign #slim-logo {
-	width: 42px;
-	height: 42px;
-	float: left;
-	position: relative;
-	clear: none;
-	margin: 0 15px 0 0;
-}
-
-body.node-type-takepart-campaign #slim-logo a {
-    background: url(../images/logo-sm-slim.png) no-repeat;
-    display: block;
-    height: 42px;
-    text-indent: -9000px;
-    width: 42px;
-}
-
-body.node-type-takepart-campaign ul#top-nav li {
-    float: none;
-    float: left;
-    font-family: 'NewsGothicBoldCondensed';
-    font-size: 15px;
-    text-transform: uppercase;
-    font-weight: normal;
-    letter-spacing: 0.05em;
-    list-style-type: none;
-    text-align: center;
-    padding: 8px 0 0 0;
-  
-} 
+#boxes-box-box-2988d8fb {margin-top: 22px;}
 
 body.node-type-takepart-campaign
 #join-login-top #user-nav {margin: 4px 0 0 10px;}
@@ -3991,23 +3991,13 @@ body.node-type-takepart-campaign #top-search {
 	margin: 4px 0 0 35px;
 }
 
-body.node-type-takepart-campaign ul#top-nav li a {
-	background: none;
-	color: #000;
-    background: url(../images/dot.png) no-repeat 0 7px;
-    padding: 0 0 0 15px;
+body.node-type-takepart-campaign #highlighted {
+	padding-bottom: 0;
 }
 
-body.node-type-takepart-campaign ul#top-nav li.first a {
-	background: none;
-	padding-left: 0;
-}
+#block-context-related-menu-the-cove-campaign {padding-top: 40px;}
 
-body.node-type-takepart-campaign ul#top-nav li a:hover {
-	color: #1ca9e7;
-	text-decoration: none;
-}
 
-body.node-type-takepart-campaign #nav-wrap {
-	float: left;
-}
+.limiter {position: relative;}
+
+

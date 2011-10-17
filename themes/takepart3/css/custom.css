@@ -35,6 +35,11 @@ body.node-type-takepart-group #left-rail{
 body.node-type-takepart-campaign #content,
 body.node-type-takepart-campaign #left-rail {
     padding-bottom: 20px;
+    padding-left: 5px;
+}
+
+body.node-type-takepart-campaign #right-rail {
+	margin-right: 10px;
 }
 
 
@@ -266,7 +271,7 @@ ul#top-nav li a:hover{
 /**** Campaign Page(s) ****/
 
 #slim-header ul#top-nav li a{
-	padding:0 28px;
+	/*padding:0 28px;*/
 }
 
 .node-type-takepart-campaign #content,
@@ -913,6 +918,8 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     line-height: 16px;
     margin: 0;
     padding: 2px 5px;
+    background: #FFF;
+   
 }
 #top-search .tpform-submit {
     background: url("../images/sprite.png") no-repeat scroll 0 -115px transparent;
@@ -1584,23 +1591,27 @@ ul#global-links a{
 	background-color:black;
 	list-style:none;
 	height:28px;
-	overflow:hidden;
+	width: 980px;
+	top: 120px;
+	position: absolute;
 }
 	.region-highlighted .block-context-related-menu ul.menu li, .region-highlighted .block-menu ul.menu li{
 		display: block;
 		float: left;
+			font-family: 'NewsGothicBoldCondensed';
 		list-style: none outside none;
 		margin: 0;
 		 padding: 0 25px;
-		 border-right: 1px dotted #FFFFFF;
+		 border-right: 1px dotted #4c4c4c;
 	}
 	.region-highlighted .block-context-related-menu ul.menu li.last, .region-highlighted .block-menu ul.menu li.last{
 		 border-right: none;
 	}
 		.region-highlighted .block-context-related-menu ul.menu li a, .region-highlighted .block-menu ul.menu li a{
 			color:#fff;
-			font-weight:bold;
-			font-size:14px;
+			font-size:19px;
+			letter-spacing: 0.03em;
+			text-transform: uppercase;
 			line-height:28px;
 		}
 			.region-highlighted .block-context-related-menu ul.menu li a:hover, .region-highlighted .block-menu ul.menu li a:hover{
