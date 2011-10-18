@@ -12,55 +12,47 @@
       </div> 
     </div><!--/join-login-top-->
     <div class="clear clearfix" id="nav-wrap">
-    
- 
-
       <div id='logo'><?php print l("", "<front>")?></div>
       <?php print $top_nav ?>
     </div>
   </div>
   
   <?php else: ?>
-  
-  <div id="header-wrapper" class='clearfix'>
-  <div class="logo-wrapper">
-  
-       
+  <div id="header" class='clearfix'>
     <div id='logo'><?php print l("", "<front>")?></div>
-
-		
+   
+   <div class="header-right-top clearfix">	
+   	
 		<div class="header-right">
   		<div id="join-login-top">
       <div class="login-fb clearfix">
         <?php print $user_nav; ?>  			
-      </div> 
+      </div> <!--/login-fb-->
   	</div><!--/join-login-top-->
   
+ 	
+    </div><!--/header-right-->
 
+  <div cid="nav-wrap">
 
-    <?php if ($page['header']): ?>
-    <div id='header' class='clear clearfix'>
-      <?php print render($page['header']); ?>
-    </div>
-  <?php endif; ?>
-
- 
-   
+    <?php print $top_nav ?>
+      </div><!--/nav wrap-->
      		<div id="hot-topics-nav">
         <?php print $hottopic_nav ?>
   		</div><!--/hot topics nav-->
-  		
+    
   	<div id="top-search">
       <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
   	</div><!--/top search-->
-  
+  	
   	  	<ul id="top-follow">
-					<li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
+				<li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
 				<li class="twitter"><a target = '_blank' href="http://www.twitter.com/takepart">twitter</a></li>
 				<li class="youtube"><a target = '_blank' href="http://www.youtube.com/takepart">youtube</a></li>
 				<li class="rss"><a href="rss">rss</a></li>
 			</ul><!--/top follow-->
-</div></div>
+</div><!--/header right-top--></div>
+
   <?php endif; ?>  
 
   <?php if ($page['help'] || ($show_messages && $messages)): ?>
@@ -70,13 +62,17 @@
     </div></div>
   <?php endif; ?>
 
-
+  <?php if ($page['header']): ?>
+    <div id='header' class='clearfix'>
+      <?php print render($page['header']); ?>
+    </div>
+  <?php endif; ?>
 
   
   <?php if ($page['highlighted']): ?>
-    <div class="clear" id='highlighted'><div class='limiter clearfix'>
+    <div id='highlighted'><div class='limiter clearfix'>
       <?php print render($page['highlighted']); ?>
-    </div>
+    </div></div>
   <?php endif; ?>
   
   <div id='page' class='page clearfix <?php print $multipage_class; ?>'>
