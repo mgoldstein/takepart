@@ -9,6 +9,7 @@
  */
 function takepart_video_views_default_views() {
   $export = array();
+
   $view = new view;
   $view->name = 'video';
   $view->description = 'Views and display pages for all things related to video.';
@@ -18,7 +19,7 @@ function takepart_video_views_default_views() {
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-  
+
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Related Videos';
@@ -44,7 +45,7 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['header']['php']['label'] = 'Rotator navigation';
   $handler->display->display_options['header']['php']['empty'] = FALSE;
   $handler->display->display_options['header']['php']['php_output'] = '<div class="rotator_nav_bar">
-  </div>';
+</div>';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -95,8 +96,8 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['type'] = 'image';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-  'image_style' => 'tp_large_rail_wide',
-  'image_link' => 'content',
+    'image_style' => 'tp_large_rail_wide',
+    'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
   /* Field: Content: Thumbnail Image */
@@ -125,8 +126,8 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
   $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-  'image_style' => 'tp_large_rail_wide',
-  'image_link' => 'content',
+    'image_style' => 'tp_large_rail_wide',
+    'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_thumbnail']['field_api_classes'] = 0;
   /* Field: Content: Title */
@@ -224,8 +225,8 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['null']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['null']['default_argument_options']['field'] = 'nodereference::field_video_related';
   $handler->display->display_options['arguments']['null']['default_argument_options']['settings'] = array(
-  'argument_default_field_nodereference_format' => 'nid',
-  'argument_default_field_nodereference_delta' => '0',
+    'argument_default_field_nodereference_format' => 'nid',
+    'argument_default_field_nodereference_delta' => '0',
   );
   $handler->display->display_options['arguments']['null']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
@@ -254,8 +255,8 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['nid']['default_argument_options']['field'] = 'nodereference::field_video_related';
   $handler->display->display_options['arguments']['nid']['default_argument_options']['settings'] = array(
-  'argument_default_field_nodereference_format' => 'nid',
-  'argument_default_field_nodereference_delta' => '0',
+    'argument_default_field_nodereference_format' => 'nid',
+    'argument_default_field_nodereference_delta' => '0',
   );
   $handler->display->display_options['arguments']['nid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
@@ -265,8 +266,8 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['nid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['nid']['validate_options']['code'] = 'if(isset($view->args[1]) && $view->args[1]) {
   $handler->argument = "all";
-  }
-  return TRUE;';
+}
+return TRUE;';
   $handler->display->display_options['arguments']['nid']['break_phrase'] = 1;
   $handler->display->display_options['arguments']['nid']['not'] = 0;
   /* Contextual filter: Topics */
@@ -285,8 +286,8 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['field_topic_tid']['validate']['type'] = 'php';
   $handler->display->display_options['arguments']['field_topic_tid']['validate_options']['code'] = 'if(isset($view->args[1]) && !$view->args[1]) {
   $handler->argument = "all";
-  }
-  return TRUE;';
+}
+return TRUE;';
   $handler->display->display_options['arguments']['field_topic_tid']['break_phrase'] = 1;
   $handler->display->display_options['arguments']['field_topic_tid']['not'] = 0;
   /* Contextual filter: Exclude Current Node */
@@ -317,9 +318,9 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-  'openpublish_video' => 'openpublish_video',
+    'openpublish_video' => 'openpublish_video',
   );
-  
+
   /* Display: Currated and Suggest */
   $handler = $view->new_display('block', 'Currated and Suggest', 'block');
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -336,7 +337,7 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['row_options']['hide_empty'] = 0;
   $handler->display->display_options['row_options']['default_field_elements'] = 1;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  
+
   /* Display: Currated Only */
   $handler = $view->new_display('block', 'Currated Only', 'block_1');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
@@ -353,7 +354,7 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['break_phrase'] = 1;
   $handler->display->display_options['arguments']['nid']['not'] = 0;
-  
+
   /* Display: TakePart TV */
   $handler = $view->new_display('block', 'TakePart TV', 'block_4');
   $handler->display->display_options['defaults']['title'] = FALSE;
@@ -367,30 +368,6 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['row_options']['default_field_elements'] = 1;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['nid']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nid']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['nid']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['nid']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['nid']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['nid']['link_to_node'] = 0;
   /* Field: Content: Embedded Video */
   $handler->display->display_options['fields']['field_video_embedded']['id'] = 'field_video_embedded';
   $handler->display->display_options['fields']['field_video_embedded']['table'] = 'field_data_field_video_embedded';
@@ -416,7 +393,7 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['fields']['field_video_embedded']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_video_embedded']['type'] = 'media';
   $handler->display->display_options['fields']['field_video_embedded']['settings'] = array(
-  'file_view_mode' => 'media_large',
+    'file_view_mode' => 'media_large',
   );
   $handler->display->display_options['fields']['field_video_embedded']['field_api_classes'] = 0;
   /* Field: Content: Promo Headline */
@@ -473,7 +450,6 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['label'] = '';
   $handler->display->display_options['fields']['view_node']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['view_node']['alter']['text'] = 'blah blah lbha lbhal bahl';
   $handler->display->display_options['fields']['view_node']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['view_node']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['view_node']['alter']['external'] = 0;
@@ -505,7 +481,7 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['break_phrase'] = 1;
   $handler->display->display_options['arguments']['nid']['not'] = 0;
-  
+
   /* Display: Currated horizontal */
   $handler = $view->new_display('block', 'Currated horizontal', 'block_2');
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -535,13 +511,14 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['break_phrase'] = 1;
   $handler->display->display_options['arguments']['nid']['not'] = 0;
-  
+
   /* Display: Featured */
   $handler = $view->new_display('block', 'Featured', 'block_3');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Featured Video';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'featured-video';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -574,8 +551,8 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['type'] = 'image';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-  'image_style' => 'tp_content_wide',
-  'image_link' => 'content',
+    'image_style' => 'tp_content_wide',
+    'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
   /* Field: Content: Link */
@@ -709,8 +686,8 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['nid']['default_argument_options']['field'] = 'nodereference::field_feature_video';
   $handler->display->display_options['arguments']['nid']['default_argument_options']['settings'] = array(
-  'argument_default_field_nodereference_format' => 'nid',
-  'argument_default_field_nodereference_delta' => '0',
+    'argument_default_field_nodereference_format' => 'nid',
+    'argument_default_field_nodereference_delta' => '0',
   );
   $handler->display->display_options['arguments']['nid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
@@ -718,7 +695,7 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['break_phrase'] = 1;
   $handler->display->display_options['arguments']['nid']['not'] = 0;
-  
+
   /* Display: Suggested horizontal */
   $handler = $view->new_display('block', 'Suggested horizontal', 'block_5');
   $handler->display->display_options['defaults']['query'] = FALSE;
@@ -748,7 +725,7 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['tid']['default_argument_options']['field'] = 'content_taxonomy::field_video_series';
   $handler->display->display_options['arguments']['tid']['default_argument_options']['settings'] = array(
-  'content_taxonomy_format' => 'tid',
+    'content_taxonomy_format' => 'tid',
   );
   $handler->display->display_options['arguments']['tid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
@@ -759,11 +736,11 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['tid']['require_value'] = 0;
   $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 1;
   $handler->display->display_options['arguments']['tid']['set_breadcrumb'] = 0;
-  
+
   /* Display: Series List */
   $handler = $view->new_display('block', 'Series List', 'block_6');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Videos In Series';
+  $handler->display->display_options['title'] = 'More Videos In the Series';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '12';
@@ -830,8 +807,8 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
   $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-  'image_style' => 'tp_popular_gallery_thumbnail',
-  'image_link' => 'content',
+    'image_style' => 'tp_popular_gallery_thumbnail',
+    'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_thumbnail']['field_api_classes'] = 0;
   /* Field: Content: Promo Headline */
@@ -917,15 +894,15 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_options']['node'] = 0;
   $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_options']['limit'] = 0;
   $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_options']['vocabularies'] = array(
-  'action_type' => 0,
-  'agency' => 0,
-  'blog' => 0,
-  'free_tags' => 0,
-  'group_type' => 0,
-  'photo_credit' => 0,
-  'series' => 0,
-  'topic' => 0,
-  'video_series' => 0,
+    'action_type' => 0,
+    'agency' => 0,
+    'blog' => 0,
+    'free_tags' => 0,
+    'group_type' => 0,
+    'photo_credit' => 0,
+    'series' => 0,
+    'topic' => 0,
+    'video_series' => 0,
   );
   $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['field_video_series_tid']['summary']['number_of_records'] = '0';
@@ -933,7 +910,7 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['field_video_series_tid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['field_video_series_tid']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['field_video_series_tid']['not'] = 0;
-  
+
   /* Display: Series List On Video Node */
   $handler = $view->new_display('block', 'Series List On Video Node', 'block_8');
   $handler->display->display_options['defaults']['title'] = FALSE;
@@ -1007,8 +984,8 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['type'] = 'image';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-  'image_style' => 'tp_large_rail_wide',
-  'image_link' => 'content',
+    'image_style' => 'tp_large_rail_wide',
+    'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
   /* Field: Content: Thumbnail Image */
@@ -1037,8 +1014,8 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
   $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-  'image_style' => 'tp_large_rail_wide',
-  'image_link' => 'content',
+    'image_style' => 'tp_large_rail_wide',
+    'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_thumbnail']['field_api_classes'] = 0;
   /* Field: Content: Title */
@@ -1097,8 +1074,7 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['label'] = '';
   $handler->display->display_options['fields']['field_promo_text']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_promo_text']['alter']['make_link'] = 1;
-  $handler->display->display_options['fields']['field_promo_text']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_promo_text']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['alter']['replace_spaces'] = 0;
@@ -1126,7 +1102,7 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_options']['field'] = 'content_taxonomy::field_video_series';
   $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_options']['settings'] = array(
-  'content_taxonomy_format' => 'tid',
+    'content_taxonomy_format' => 'tid',
   );
   $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['field_video_series_tid']['summary']['number_of_records'] = '0';
@@ -1144,14 +1120,14 @@ function takepart_video_views_default_views() {
   $handler->display->display_options['arguments']['null']['default_argument_type'] = 'field';
   $handler->display->display_options['arguments']['null']['default_argument_options']['field'] = 'content_taxonomy::field_video_series';
   $handler->display->display_options['arguments']['null']['default_argument_options']['settings'] = array(
-  'content_taxonomy_format' => 'name',
+    'content_taxonomy_format' => 'name',
   );
   $handler->display->display_options['arguments']['null']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['null']['must_not_be'] = 0;
-  
+
   /* Display: Most Recent */
   $handler = $view->new_display('block', 'Most Recent', 'block_7');
   $handler->display->display_options['defaults']['title'] = FALSE;

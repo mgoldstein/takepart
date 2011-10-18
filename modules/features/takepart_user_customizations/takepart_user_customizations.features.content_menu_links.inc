@@ -18,15 +18,12 @@ function takepart_user_customizations_content_menu_links_defaults() {
     'link_title' => 'User account',
     'options' => array(
       'alter' => TRUE,
-      'attributes' => array(
-        'title' => '',
-      ),
     ),
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
-    'expanded' => '1',
+    'expanded' => '0',
     'weight' => '-10',
   );
   // Exported menu link: user-menu:user/logout

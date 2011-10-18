@@ -16,12 +16,6 @@ function takepart_user_customizations_user_default_roles() {
     'weight' => '6',
   );
 
-  // Exported role: author
-  $roles['author'] = array(
-    'name' => 'author',
-    'weight' => '3',
-  );
-
   // Exported role: contributor
   $roles['contributor'] = array(
     'name' => 'contributor',

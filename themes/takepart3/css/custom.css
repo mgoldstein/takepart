@@ -559,6 +559,27 @@ body.node-type-topic-front h2.title a {
 		zoom:1; *display: inline; _height: 121px;
 	}
 
+/* more generic featured video CSS: Added to the views display(featured); in Format >> format >> settings: custom class:'featured-video' 
+* The previous rules will override these or will be overriden, but both are the same */
+.featured-video .views-field-view-node-1{
+  position:relative;
+  text-align:center;
+  top: -265px;  
+  margin-bottom:-121px;
+}
+  .featured-video .views-field-view-node-1 span{
+    display:none;
+  }
+  .featured-video .views-field-view-node-1 a{
+    display:inline-block;
+    text-indent:-9999px;
+    background:url('../images/videobutton.png') no-repeat 0 0;
+    width:121px;
+    height:121px;
+    zoom:1; *display: inline; _height: 121px;
+  }
+
+
 /* Video Node */
 .node-type-openpublish-video .field-name-field-subhead {
     color: #666666;
@@ -1618,6 +1639,15 @@ ul#global-links a{
 				text-decoration:none;
 				color:#1ca9e7;
 			}
+.region-highlighted .block-context-related-menu ul.menu li a.active, .region-highlighted .block-menu ul.menu li a.active{
+    border-bottom: 1px solid #CCCFFF;
+    border-top: 1px solid #CCCFFF;
+    color: #1CA9E7;
+    display: block;
+    padding: 0 10px;
+    line-height:26px;
+}
+
 
 .node-type-takepart-list .node-takepart-list{
 	margin-bottom:20px;
@@ -1766,3 +1796,38 @@ right now is specific to node-openpublish-photo-gallery, but change as needed */
 /* use this rule as long as the openpublish-blog-post main image display cannot be overriden
 in take-part feature */
 .node-teaser .field-name-field-blogpost-main-image img{width:620px;}
+
+/* adding a join link as per : https://takepart1.fogbugz.com/default.asp?16968 */
+#join-login-box {
+  font-size: 15px;
+  padding: 5px 5px 5px 40px;
+  width: 200px;
+  height: 23px;
+  overflow: visible;
+  margin-top:0px;
+  background: url("../images/header-arrows.png") no-repeat scroll 0 0 transparent;
+}
+#join-login-box #user-nav {
+  height: 26px; 
+  float: left;
+}
+#join-login-box a {
+  font-size:14px;
+  text-transform:uppercase;
+  font-weight:bolder;
+  line-height:15px;
+}
+#join-login-box .join-takepart {
+  margin-right: 10px;
+}
+#join-login-box .join-login {
+  margin-right: 10px;
+}
+#block-boxes-user-not-a-member-join{border: 5px solid #000000;padding: 0px 10px 10px 41px}
+#block-boxes-user-not-a-member-join h2 span {
+  background-color: #1CA9E7;
+  display: block;
+  margin:10px 10px 10px -46px;
+  padding: 8px 10px;
+}
+#block-boxes-user-not-a-member-join .boxes-box-content p{margin:0;}

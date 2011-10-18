@@ -32,6 +32,11 @@ BASE=`pwd`
 PROFILEPATH=`cd $CALLPATH; pwd`
 echo $TARGET
 DRUPAL=`cd $TARGET; pwd`
+# Make sure we have a Drupal directory
+if [ -z "$DRUPAL" ]; then
+  echo "Drupal folder not created, please check"
+  exit 2
+fi
 PROFILE_DIR="$DRUPAL/profiles/takepart"
 rm -rf $DRUPAL/robots.txt
 ln -s $DRUPAL/profiles/takepart/settings/robots.dev.txt $DRUPAL/robots.txt

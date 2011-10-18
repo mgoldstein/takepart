@@ -198,10 +198,14 @@ img.photo, .gallery-item img {
 	padding: 35px 20px;
 }
 
+.node-type-takepart-campaign #page.page-multipage {
+  padding-left: 20px;
+}
 #page.page-multipage {
   /*padding:0px;*/
   padding-right: 0;
   /*padding-top: 0;*/
+ padding-left: 0;
 }
 
 .main-content {
@@ -2529,6 +2533,9 @@ h2.title a{
 .block-boxes-view-name-related_content h2,
 .block-boxes-bid-views-related_campaigns-block_1 h2,
 .block-boxes-current-related_campaigns h2,
+.block-boxes-delta-related_actions-block h2,
+.block-boxes-bid-views-related_actions-block h2,
+.block-boxes-title-related-stories h2,
 .block-boxes-current-related_actions h2{
   background-image: url('../images/sprite-box-ribbons.gif');
   background-repeat: no-repeat;
@@ -2545,10 +2552,13 @@ h2.title a{
   background-position: 0 -73px;
 }
 
-.block-boxes-view-name-related_actions h2{
+.block-boxes-view-name-related_actions h2,
+.block-boxes-delta-related_actions-block h2,
+.block-boxes-bid-views-related_actions-block h2{
   background-position: 0 -270px;
 }
 
+.block-boxes-title-related-stories h2,
 .block-boxes-view-name-related_content h2 {
   background-position: 0 -180px;
 }
@@ -3774,7 +3784,7 @@ body.node-type-takepart-group #page {
 }
 
 /*
- * Jcarousel
+ *
  */
 div.jcarousel-container {
   width: 620px;
@@ -3782,6 +3792,7 @@ div.jcarousel-container {
 
 div.jcarousel-clip {
   width: 635px;
+  overflow:hidden;
 }
 div#block-views-video-block-8 div.content {
   position: relative;
