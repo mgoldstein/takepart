@@ -1569,7 +1569,7 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
 ul#global-links {
     text-align: left;
 	overflow:hidden;
-	width:505px;
+	width:auto;
 }
 ul#global-links a{
 	display:block;
