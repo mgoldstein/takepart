@@ -506,7 +506,7 @@ ul#top-follow li.rss a {
 /* Slim header */
 #slim-header ul#top-nav {
     float: left;
-    margin-left: 123px;
+    margin-left: 0;
 }
 
 #slim-header ul.menu {
@@ -3639,7 +3639,7 @@ div.messages a:visited {
 	border-top: 1px dashed #000;
 }
 #slim-header ul#top-nav {
-    margin-left: 123px;
+    margin-left: 0;
 }
 #slim-header ul#top-nav li a {
   border-right: 1px dashed #000;
