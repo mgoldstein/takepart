@@ -942,6 +942,13 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     background: #FFF;
    
 }
+
+.multipage-campaign #top-search .form-text,
+.multipage-campaign #top-search .form-text:focus,
+.multipage-campaign #top-search .form-text:active {
+  width: 200px;
+}
+
 #top-search .tpform-submit {
     background: url("../images/sprite.png") no-repeat scroll 0 -115px transparent;
     border: medium none;
@@ -1588,7 +1595,8 @@ ul#global-links a{
 
 
 #slim-header #join-login-top{
-	width:120px;
+	width:78px;
+	float: right;
 }
 
 .field-name-field-tp-campaign-alliances tbody{
@@ -1611,10 +1619,11 @@ ul#global-links a{
 .region-highlighted .block-context-related-menu ul.menu, .region-highlighted .block-menu ul.menu{
 	background-color:black;
 	list-style:none;
-	height:28px;
+	overflow: hidden;
+/*	height:28px;
 	width: 980px;
 	top: 120px;
-	position: absolute;
+	position: absolute;*/
 }
 	.region-highlighted .block-context-related-menu ul.menu li, .region-highlighted .block-menu ul.menu li{
 		display: block;
@@ -1648,6 +1657,10 @@ ul#global-links a{
     line-height:26px;
 }
 
+
+#block-menu-menu-thecove ul.menu li a.active { border: none;}
+
+#block-menu-menu-thecove ul.menu  {top: 35px;}
 
 .node-type-takepart-list .node-takepart-list{
 	margin-bottom:20px;

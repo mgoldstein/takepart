@@ -26,7 +26,6 @@ function takepart3_preprocess_page(&$variables) {
 
   //debug($main_menu_data);
   //debug(array_keys($main_menu_data));
-
   $variables['top_nav']               = _render_tp3_main_menu();
   $variables['hottopic_nav']          = _render_tp3_hottopics_menu();
   $variables['film_camp_nav']         = _render_tp3_film_campaign_menu();
@@ -38,12 +37,19 @@ function takepart3_preprocess_page(&$variables) {
   $variables['search_takepart_form']  = _render_tp3_header_search_form();
   $variables['is_multipage'] = FALSE;
   $variables['multipage_class'] = '';
+  $variables['follow_us_links']       = '<ul id="top-follow">
+      <li class="fb"><a target ="_blank" href="http://www.facebook.com/takepart">facebook</a></li>
+      <li class="twitter"><a target ="_blank" href="http://www.twitter.com/takepart">twitter</a></li>
+      <li class="youtube"><a target = "_blank" href="http://www.youtube.com/takepart">youtube</a></li>
+      <li class="rss"><a href="/rss">rss</a></li>
+    </ul>';
   // Adds page template suggestions for specific content types
   if (isset($variables['node'])) {  
     $variables['theme_hook_suggestions'][] = 'page__type__'. $variables['node']->type;
      
     
     if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
+      //$variables['theme_hook_suggestions'][] = 'page__takepart_campaign__multipage';
       $variables['is_multipage'] = TRUE;
       $variables['multipage_class'] = 'page-multipage';// although this is not needed because the context set the body class itself
     }
@@ -66,8 +72,15 @@ function takepart3_preprocess_page(&$variables) {
 
 /**
  * Helper to output the custom HTML for out main menu.
+ * starting release 342 we are using a new design and dropdown menu
+ * We need to have the menus children rendered
  */
 function _render_tp3_main_menu() {
+  $tree = menu_tree("main-menu");
+  return drupal_render($tree); 
+}
+
+function _render_tp3_main_menu_341() {
   $menu_data = menu_tree_page_data("main-menu");
 
   $links = array();
@@ -725,6 +738,5 @@ function _get_author($nid) {
 
   return $authors;
 }
-
 
 

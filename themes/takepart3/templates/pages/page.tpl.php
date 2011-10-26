@@ -1,58 +1,44 @@
+<?php if ($is_multipage): ?>
 <div id="page-wrapper">
-  <?php if ($is_multipage): ?>
-  <div id="slim-header" class='clearfix'>
-    <ul id="top-follow">
-      <li class="title">Follow us:</li>
-      <li class="fb"><a href="http://www.facebook.com/takepart">facebook</a></li>
-      <li class="twitter"><a href="http://www.twitter.com/takepart">twitter</a></li>
-    </ul><!--/top follow-->
+  <div id="slim-header" class='clearfix multipage-campaign'>
+    <div id='logo'><?php print l("", "<front>")?></div>
+    <div class="clear clearfix" id="nav-wrap">
+      <?php print $top_nav ?> 
+    </div>
+    <div id="top-search">
+      <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
+    </div><!--/top search-->
     <div id="join-login-top">
       <div class="login-fb clearfix">
         <?php print $user_nav; ?>       
       </div> 
     </div><!--/join-login-top-->
-    <div class="clear clearfix" id="nav-wrap">
-    
- 
-
-      <div id='logo'><?php print l("", "<front>")?></div>
-      <?php print $top_nav ?>
-    </div>
+    <?php print $follow_us_links; ?><!--/top follow-->
   </div>
-  
+
+
   <?php else: ?>
-  
-  <div id="header-wrapper" class='clearfix'>
+<div id="page-wrapper">
+  <div id="header-wrapper" class='clearfix regular-content'>
+      <div id="join-login-top">
+        <div class="login-fb clearfix">
+          <?php print $user_nav; ?>       
+        </div> 
+      </div><!--/join-login-top-->
   <div class="logo-wrapper">
-  
-       
     <div id='logo'><?php print l("", "<front>")?></div>
-
-		
 		<div class="header-right">
-  		<div id="join-login-top">
-      <div class="login-fb clearfix">
-        <?php print $user_nav; ?>  			
-      </div> 
-  	</div><!--/join-login-top-->
-  
-
-
-    <?php if ($page['header']): ?>
-    <div id='header' class='clear clearfix'>
-      <?php print render($page['header']); ?>
+    <div class="clear clearfix" id="nav-wrap">
+      <div id="block-menu-block-1">
+        <?php print $top_nav ?>
+      </div>
     </div>
-  <?php endif; ?>
-
- 
-   
-     		<div id="hot-topics-nav">
-        <?php print $hottopic_nav ?>
-  		</div><!--/hot topics nav-->
-  		
-  	<div id="top-search">
+    <div id="hot-topics-nav">
+      <?php print $hottopic_nav ?>
+    </div><!--/hot topics nav-->
+    <div id="top-search">
       <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
-  	</div><!--/top search-->
+    </div><!--/top search-->
   
   	  	<ul id="top-follow">
 					<li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>

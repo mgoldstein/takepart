@@ -1,11 +1,15 @@
-<div id="page-wrapper">
-  <?php if ($is_multipage): ?>
-  <div id="slim-header" class='clearfix multipage-campaign'>
+<?php die('dfdf'); ?><div id="page-wrapper" class="multipage-campaign">
+
+  <div id="slim-header" class='clearfix'>
     <div id='logo'><?php print l("", "<front>")?></div>
    
     <div class="clearfix" id="nav-wrap">
-      <?php print $top_nav ?>
-
+    
+      <?php if ($page['header']): ?>
+        <div id='header' class='clear clearfix'>
+          <?php print render($page['header']); ?>
+        </div>
+      <?php endif; ?>
     </div>
    	
     <div id="top-search">
@@ -17,35 +21,14 @@
         <?php print $user_nav; ?>       
       </div> 
     </div><!--/join-login-top-->
-    <?php print $follow_us_links; ?><!--/top follow-->
-  </div>
-  
-
-  <?php else: ?>
-  <div id="slim-header" class='clearfix'>
-    <div id='logo'><?php print l("", "<front>")?></div>
-    <div class="clearfix" id="nav-wrap">
-      <?php print $top_nav ?>
-   
-  </div><!--/nav-wrap-->
-  
-  	<div id="top-search">
-      <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
-  	</div><!--/top search-->
-			  		<div id="join-login-top">
-      <div class="login-fb clearfix">
-        <?php print $user_nav; ?>  			
-      </div> 
-  	</div><!--/join-login-top-->  
-    <ul id="top-follow">
-      <li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
+   	<ul id="top-follow">
+		  <li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
 			<li class="twitter"><a target = '_blank' href="http://www.twitter.com/takepart">twitter</a></li>
 			<li class="youtube"><a target = '_blank' href="http://www.youtube.com/takepart">youtube</a></li>
 			<li class="rss"><a href="rss">rss</a></li>
-    </ul><!--/top follow-->
- </div><!--/header-->
-  
-  <?php endif; ?>
+		</ul><!--/top follow-->
+  </div>
+
 
   <?php if ($page['help'] || ($show_messages && $messages)): ?>
     <div id='console'><div class='limiter clearfix'>
