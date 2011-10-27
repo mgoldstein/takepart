@@ -96,7 +96,6 @@
   
   <div id="footer" class='clear'>
     <?php print render($page['footer']) ?>
-    <?php print $follow_us_links; ?>
     <div id="our-film-campaigns" class="footer-column-wrapper clearfix">
       <div class="column title">
         <a href="#">our film campaigns</a>
@@ -122,7 +121,7 @@
         <li id="twitter"> <a target="_blank" href="http://www.twitter.com/takepart">twitter</a></li>
       </ul>
       <!-- These should be converted to a menu, so TP can manage these links without changing code as they may change from time to time -->
-      <?php print $follow_us_links; ?>
+      <?php print $corporate_links_nav; ?>
 
     </div>     
 
