@@ -1,0 +1,115 @@
+/* Borders
+------------------------------------------------------------------------*/
+.fc .fc-border-separate th, .fc .fc-border-separate td {
+    border-color: #eff3f2;
+}
+
+.fc .fc-border-separate td {
+    border-width: 2px 0 0 2px;
+}
+
+.fc .fc-border-separate th {
+    border-width: 0px 0 0 2px;
+}
+
+.fc table.fc-border-separate {
+    border-left: 3px solid #eff3f2;
+    border-right: 4px solid #eff3f2;
+}
+
+.fc .fc-border-separate tr.fc-last th {
+    border-bottom-width: 5px;
+}
+
+/* Event Styles
+------------------------------------------------------------------------*/
+.fc .fc-event-skin {
+    background-color: transparent;
+    border-color: #fff;
+    border: 0px;
+    color: #000;
+}
+.fc .fc-event-title a {
+	line-height: 0;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    color: #46c3f1;
+    font-weight: bold;
+}
+.fc .fc-today .fc-event-title a,
+.fc .fc-today .fc-event-subtext a {
+    color: #fff;
+}
+.fc .fc-event-subtext {
+   /* clear: both; */
+}
+.fc .fc-event-subtext a {
+    font-family: times, serif; 
+    font-size:13px; 
+    font-style:italic; 
+    color: #b9b9b9;
+    text-decoration: none;
+}
+.fc .fc-event-sharebar {
+	clear:both
+}
+.fc .fc-event-sharebar img {
+    padding: 0 1px;
+}
+/* Cell Styles
+------------------------------------------------------------------------*/
+.fc .fc-state-highlight {
+	background: none no-repeat scroll 0 0 #fdaa30;
+	background-image: url('images/arrow.png');
+    background-position: 37px 14px;  
+}
+.fc td.fc-today div.fc-day-number {
+	background: none no-repeat scroll 0 0 #fdaa30;
+    background-image: url('images/starburst.png');
+    background-position: 8px 8px;  
+}
+.fc tr,.fc tr.even {
+	background: none repeat scroll 0 0 #ffffff;
+}
+.fc .fc-grid .fc-day-number {
+	float: left;
+	font-size: 9px;
+	padding: 13px 14px;
+	font-weight: bold;
+}
+/* Weekday Images
+------------------------------------------------------------------------*/
+.fc thead .fc-sun {
+	background: url("images/Sunday.png") no-repeat scroll 10px 50% #FFFFFF;
+	text-indent: -9999px;
+}
+
+.fc thead .fc-mon {
+	background: url("images/Monday.png") no-repeat scroll 10px 50% #FFFFFF;
+	text-indent: -9999px;
+}
+
+.fc thead .fc-tue {
+	background: url("images/Tuesday.png") no-repeat scroll 10px 50% #FFFFFF;
+	text-indent: -9999px;
+}
+
+.fc thead .fc-wed {
+	background: url("images/Wednesday.png") no-repeat scroll 10px 50% #FFFFFF;
+	text-indent: -9999px;
+}
+
+.fc thead .fc-thu {
+	background: url("images/Thursday.png") no-repeat scroll 10px 50% #FFFFFF;
+	text-indent: -9999px;
+}
+
+.fc thead .fc-fri {
+	background: url("images/Friday.png") no-repeat scroll 10px 50% #FFFFFF;
+	text-indent: -9999px;
+}
+
+.fc thead .fc-sat {
+	background: url("images/Saturday.png") no-repeat scroll 10px 50% #FFFFFF;
+	text-indent: -9999px;
+}

@@ -1,0 +1,39 @@
+<?php
+// $Id$
+/**
+ * TakePart Calendar Module
+ * @file
+ * Install, update and uninstall functions for the TakePart Calendar module.
+ * @author ctoepfer
+ * @date 10/20/2011
+ * @company TakePart, LLC
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function takepart_calendar_install() {
+  drupal_set_message(st('The TakePart Calendar module has been installed.'));
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function takepart_calendar_uninstall() {
+  drupal_set_message(st('The TakePart Calendar module has been uninstalled.'));
+}
+
+/**
+ * Implementation of hook_field_schema().
+ */
+function takepart_calendar_field_schema($field) {
+  return array(
+    'columns' => array(
+      'takepart_calendar' => array(
+      'type' => 'text',
+      'size' => 'big',
+      'not null' => FALSE,
+    ),
+   ),
+  );
+}
