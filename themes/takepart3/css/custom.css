@@ -1581,7 +1581,7 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
 ul#global-links {
     text-align: left;
 	overflow:hidden;
-	width:505px;
+	width:auto;
 }
 ul#global-links a{
 	display:block;
@@ -1595,8 +1595,10 @@ ul#global-links a{
 
 
 #slim-header #join-login-top{
-	width:78px;
-	float: right;
+	width:110px;
+	float: left;
+	font-size: 11px;
+	
 }
 
 .field-name-field-tp-campaign-alliances tbody{

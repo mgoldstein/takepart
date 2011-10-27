@@ -21,6 +21,12 @@ function takepart3_dolinks($links_field) {
   return implode("<span class='delimiter'>|</span>", $links);
   
 }
+function takepart3_preprocess_html(&$vars){
+  if (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage')){
+    $vars['classes_array'][]= 'multipage-campaign';
+  }
+  
+}
 
 function takepart3_preprocess_page(&$variables) {
 
@@ -44,13 +50,12 @@ function takepart3_preprocess_page(&$variables) {
       <li class="rss"><a href="/rss">rss</a></li>
     </ul>';
   // Adds page template suggestions for specific content types
-  if (isset($variables['node'])) {  
+  if (isset($variables['node'])) {
     $variables['theme_hook_suggestions'][] = 'page__type__'. $variables['node']->type;
-     
     
     if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
-      //$variables['theme_hook_suggestions'][] = 'page__takepart_campaign__multipage';
       $variables['is_multipage'] = TRUE;
+      context_set('takepart3_page', 'campaign_is_multipage', TRUE);
       $variables['multipage_class'] = 'page-multipage';// although this is not needed because the context set the body class itself
     }
 
@@ -689,7 +694,7 @@ function takepart3_search_api_page_result(array $variables) {
   if ($text) {
     $output .= $text;
   }
-  $output .= "<div class='by-line'>Posted by ". _get_author($entity->nid) ." on " . date('M d, Y', $entity->created) ."</div>";
+  $output .= "<div class='by-line'>".t("Posted by @author on @created ", array ('@author'=>_get_author($entity->nid), '@created'=> date('M d, Y', $entity->created))) ."</div>";
 
   return $output;
 }
@@ -703,9 +708,7 @@ function _render_tp3_header_search_form() {
  *
  */
 function _get_author($nid) {
-  if (!is_numeric($nid) ) 
-    return 'Tracy Smith';
-  
+ 
   $query = db_select('field_data_field_author', 'a');
   $query->addField('a', 'field_author_nid');
   $query->condition('a.entity_id', $nid);

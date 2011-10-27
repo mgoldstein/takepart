@@ -117,6 +117,8 @@
         <li class="last"><a href="/terms-of-use">Terms of Use</a></li>
       </ul>
 
+
+
     </div>     
 
     <div id="footer-about">

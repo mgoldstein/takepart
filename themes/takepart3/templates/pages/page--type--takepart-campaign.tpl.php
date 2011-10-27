@@ -22,29 +22,30 @@
   
 
   <?php else: ?>
-  <div id="slim-header" class='clearfix'>
-    <div id='logo'><?php print l("", "<front>")?></div>
-    <div class="clearfix" id="nav-wrap">
-      <?php print $top_nav ?>
-   
-  </div><!--/nav-wrap-->
-  
-  	<div id="top-search">
-      <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
-  	</div><!--/top search-->
-			  		<div id="join-login-top">
+  <div id="header-wrapper" class='clearfix regular-content'>
+    <div id="join-login-top">
       <div class="login-fb clearfix">
-        <?php print $user_nav; ?>  			
+        <?php print $user_nav; ?>       
       </div> 
-  	</div><!--/join-login-top-->  
-    <ul id="top-follow">
-      <li class="fb"><a target = '_blank' href="http://www.facebook.com/takepart">facebook</a></li>
-			<li class="twitter"><a target = '_blank' href="http://www.twitter.com/takepart">twitter</a></li>
-			<li class="youtube"><a target = '_blank' href="http://www.youtube.com/takepart">youtube</a></li>
-			<li class="rss"><a href="rss">rss</a></li>
-    </ul><!--/top follow-->
- </div><!--/header-->
-  
+    </div><!--/join-login-top-->
+    <div class="logo-wrapper">
+      <div id='logo'><?php print l("", "<front>")?></div>
+      <div class="header-right">
+        <div class="clear clearfix" id="nav-wrap">
+          <div id="block-menu-block-1">
+            <?php print $top_nav ?>
+          </div>
+        </div>
+        <div id="hot-topics-nav">
+          <?php print $hottopic_nav ?>
+        </div><!--/hot topics nav-->
+        <?php print $follow_us_links; ?><!--/top follow-->
+        <div id="top-search">
+          <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
+        </div><!--/top search-->
+      </div>
+    </div>
+  </div>
   <?php endif; ?>
 
   <?php if ($page['help'] || ($show_messages && $messages)): ?>
@@ -95,12 +96,7 @@
   
   <div id="footer" class='clear'>
     <?php print render($page['footer']) ?>
-    <ul id="campaign-links">
-    	<li><a href="http://www.climatecrisis.net/" id="climate-crisis">Climate Crisis</a></li>
-        <li><a href="http://www.savemyoceans.com/" id="save-my-oceans">Save My Oceans</a></li>
-        <li><a href="http://www.foodincmovie.com/" id="hungry-for-change">Hungry For Change</a></li>
-        <li><a href="http://www.waitingforsuperman.com/action/" id="waiting-for-superman">Waiting For Superman</a></li>
-    </ul>
+    <?php print $follow_us_links; ?>
     <div id="our-film-campaigns" class="footer-column-wrapper clearfix">
       <div class="column title">
         <a href="#">our film campaigns</a>
@@ -126,13 +122,7 @@
         <li id="twitter"> <a target="_blank" href="http://www.twitter.com/takepart">twitter</a></li>
       </ul>
       <!-- These should be converted to a menu, so TP can manage these links without changing code as they may change from time to time -->
-      <ul class="clearfix" id="global-links">
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/contact-us">Contact Us</a></li>
-        <li><a href="/help">Help</a></li>
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li class="last"><a href="/terms-of-use">Terms of Use</a></li>
-      </ul>
+      <?php print $follow_us_links; ?>
 
     </div>     
 
