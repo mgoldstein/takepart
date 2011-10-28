@@ -20,23 +20,23 @@ function _takepart_calendar_init() {
   drupal_add_css($css_path);
 
   #@todo: use drupal's jquery:
-  $js_path = drupal_get_path('module', 'takepart_calendar') . '/jquery/jquery-1.5.2.min.js';
-  drupal_add_js($js_path);
-  $js_path = drupal_get_path('module', 'takepart_calendar') . '/jquery/jquery-ui-1.8.11.custom.min.js';
-  drupal_add_js($js_path);
+  //$js_path = drupal_get_path('module', 'takepart_calendar') . '/jquery/jquery-1.5.2.min.js';
+  //drupal_add_js($js_path);
+  //$js_path = drupal_get_path('module', 'takepart_calendar') . '/jquery/jquery-ui-1.8.11.custom.min.js';
+  //drupal_add_js($js_path);
   //$js_path = drupal_get_path('module', 'takepart_calendar') . '/fullcalendar/fullcalendar.min.js';
   $js_path = drupal_get_path('module', 'takepart_calendar') . '/fullcalendar/fullcalendar.js';
   drupal_add_js($js_path);
 
 
-  drupal_add_js("$(document).ready(function() {
+  drupal_add_js("jQuery(document).ready(function() {
       var date = new Date();
       var d = date.getDate();
       var m = date.getMonth();
       var y = date.getFullYear();
       if (typeof calendar_events != 'undefined') {
 	   if(calendar_events) {
-        $('#calendar').fullCalendar({
+        jQuery('#calendar').fullCalendar({
           editable: false	,
           events: calendar_events,
           disableDragging: true
@@ -50,8 +50,8 @@ function _takepart_calendar_init() {
 
   drupal_add_js("jQuery(document).ready(function() {
   					var shareattach = (function() {
-  						$('.fc-event-sharebar a').click(function() { 
-                          var link_title = $(this).attr('title');
+  						jQuery('.fc-event-sharebar a').click(function() { 
+                          var link_title = jQuery(this).attr('title');
                           var title = convert_title(link_title);
                           s.events='event25';
                           s.prop26=title;
@@ -61,7 +61,7 @@ function _takepart_calendar_init() {
                           s.tl(this.href, 'o', 'Content Share');						
 						});
 					});
-        			$('.fc-header-right').click(shareattach);
+        			jQuery('.fc-header-right').click(shareattach);
         			shareattach();
       			});",
   array('type' => 'inline', 'scope' => 'footer', 'weight' => 6)
@@ -107,7 +107,7 @@ function takepart_calendar_field_formatter_view($entity_type, $entity, $field, $
 
 
 
-  _takepart_calendar_init();
+ 
 
   $element = array();
 
@@ -116,10 +116,12 @@ function takepart_calendar_field_formatter_view($entity_type, $entity, $field, $
 
       foreach ($items as $delta => $item) {
         if ($item['takepart_calendar']) {
+          
           $json = $item['takepart_calendar'];
           //@todo: turn this into an ajax feed:
           //$element[$delta]['#markup'] = '<span><script type=\'text/javascript\'>var calendar_events = ' . $json .';</script><div id=\'calendar\'></div></span>';
           if(!empty($json)) {
+            _takepart_calendar_init();  
             $element[$delta] = array('#markup' => '<span><script type=\'text/javascript\'>var calendar_events = ' . $json .';</script><div id=\'calendar\'></div></span>');
           }
         }
