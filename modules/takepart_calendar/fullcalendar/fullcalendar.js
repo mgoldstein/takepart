@@ -4673,11 +4673,20 @@ function DayEventRenderer() {
 					htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
 					"</span>";
 			}
-			html +=
-				"<span class='fc-event-title'>" + 
-				"<a href='" + htmlEscape(url) + "'>" + 
-				htmlEscape(event.title) + "</a></span>" +
-				"</div>";
+
+			if((url.indexOf(window.location.hostname) > -1) || (!url.indexOf('http://'))) {
+				html +=
+					"<span class='fc-event-title'>" + 
+					"<a href='" + htmlEscape(url) + "'>" + 
+					htmlEscape(event.title) + "</a></span>" +
+					"</div>";
+			} else {
+				html +=
+					"<span class='fc-event-title'>" + 
+					"<a href='" + htmlEscape(url) + "' target='_blank'>" + 
+					htmlEscape(event.title) + "</a></span>" +
+					"</div>";
+			}
 			
 			
 			
@@ -4708,38 +4717,53 @@ function DayEventRenderer() {
 							"?subject=" + escape(htmlEscape(event.title)) +	
 							"&body=" + escape(htmlEscape(url));
 			
+			//mobile?
 			plusone = 		"https://m.google.com/app/plus/x/?v=compose&content=" + 
 			 				htmlEscape(event.title) + ' ' +
 			 				htmlEscape(url);
 			
-	
+			plusone = 		"https://plusone.google.com/u/0/+1/profile/?" + 
+							htmlEscape(event.title) + ' ' +
+							htmlEscape(url);
+			
+			https://plusone.google.com/u/0/+1/profile/?type=po&source=p&client=1&parent=https%3A%2F%2Fplusone.google.com&proxy=I2_1319736844175&hl=en_US#728862452
+			
 					
 			html +=
 				"<div class='fc-event-sharebar'>" + 
-				"<a href = '" + facebookurl + "' target='_blank'>" + 
-				"<img src='/sites/all/modules/takepart_calendar/themes/takepart/images/facebook-16x16.png'/>" +
+				"<a href = '" + facebookurl + "' target='_blank' title='Send to Facebook'>" + 
+				"<img src='/profiles/takepart/modules/takepart_calendar/themes/takepart/images/facebook-16x16.png'/>" +
 				"</a>" +
-				"<a href = '" + tweeturl + "' target='_blank'>" + 
-				"<img src='/sites/all/modules/takepart_calendar/themes/takepart/images/twitter-16x16.png'/>" +
+				"<a href = '" + tweeturl + "' target='_blank' title='Tweet This'>" + 
+				"<img src='/profiles/takepart/modules/takepart_calendar/themes/takepart/images/twitter-16x16.png'/>" +
 				"</a>" +	
-				"<a href = '" + mailto + "' target='_blank'>" + 
-				"<img src='/sites/all/modules/takepart_calendar/themes/takepart/images/email-16x16.png'/>" +
+				"<a href = '" + mailto + "' target='_blank' title='Email'>" + 
+				"<img src='/profiles/takepart/modules/takepart_calendar/themes/takepart/images/email-16x16.png'/>" +
 				"</a>" +
-				"<a href = '" + plusone + "' target='_blank'>" + 
-				"<img src='/sites/all/modules/takepart_calendar/themes/takepart/images/googleplus-16x16.png'/>" +
+				"<a href = '" + plusone + "' target='_blank' title='Send to Google_plusone'>" + 
+				"<img src='/profiles/takepart/modules/takepart_calendar/themes/takepart/images/googleplus-16x16.png'/>" +
 				"</a>" +
 				"</div>";
 			
 			
 			// --------------------------
 
+			
 			// TakePart Change -----------
 			if((event.subtexturl) && (event.subtext)) {
-				html +=
+				if(((event.subtexturl).indexOf(window.location.hostname) > -1) || (!(event.subtexturl).indexOf('http://'))) {
+					html +=
 					"<div class='fc-event-subtext'>" + 
 					"<a href='" + htmlEscape(event.subtexturl) + "'>" + 
 					htmlEscape(event.subtext) + "</a></div>"	 +
 					"</div>";
+				} else {
+					html +=
+						"<div class='fc-event-subtext'>" + 
+						"<a href='" + htmlEscape(event.subtexturl) + "' target='_blank'>" + 
+						htmlEscape(event.subtext) + "</a></div>"	 +
+						"</div>";				
+				}
 			}
 			// --------------------------
 			
