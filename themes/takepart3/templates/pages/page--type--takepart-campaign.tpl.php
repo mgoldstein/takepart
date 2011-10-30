@@ -48,12 +48,6 @@
   </div>
   <?php endif; ?>
 
-  <?php if ($page['help'] || ($show_messages && $messages)): ?>
-    <div id='console'><div class='limiter clearfix'>
-      <?php print render($page['help']); ?>
-      <?php if ($show_messages && $messages): print $messages; endif; ?>
-    </div></div>
-  <?php endif; ?>
 
 
 
@@ -73,6 +67,12 @@
       <?php if ($action_links): ?><ul class='links clearfix'><?php print render($action_links); ?></ul><?php endif; ?>
       <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
         
+  <?php if ($page['help'] || ($show_messages && $messages)): ?>
+    <div id='console'><div class='limiter clearfix'>
+      <?php print render($page['help']); ?>
+      <?php if ($show_messages && $messages): print $messages; endif; ?>
+    </div></div>
+  <?php endif; ?>
       <?php print render($page['content_top']); ?>
       
       <div id='content' class='clearfix'>
