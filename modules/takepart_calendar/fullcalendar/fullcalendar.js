@@ -2283,6 +2283,9 @@ function BasicView(element, calendar, viewName) {
 		var cell;
 		var date;
 		var row;
+	    var month_names =  ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+	    var month_names_short =  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 	
 		if (dowDirty) {
 			headCells.each(function(i, _cell) {
@@ -2306,7 +2309,7 @@ function BasicView(element, calendar, viewName) {
 			}else{
 				cell.removeClass(tm + '-state-highlight fc-today');
 			}
-			cell.find('div.fc-day-number').text(date.getDate());
+			cell.find('div.fc-day-number').text(month_names_short[date.getMonth()] + ' ' + date.getDate());
 			if (dowDirty) {
 				setDayID(cell, date);
 			}
@@ -4716,18 +4719,11 @@ function DayEventRenderer() {
 			mailto = 		"mailto:" + 
 							"?subject=" + escape(htmlEscape(event.title)) +	
 							"&body=" + escape(htmlEscape(url));
+						
+			plusone = 		htmlEscape(url);
+					
 			
-			//mobile?
-			plusone = 		"https://m.google.com/app/plus/x/?v=compose&content=" + 
-			 				htmlEscape(event.title) + ' ' +
-			 				htmlEscape(url);
-			
-			plusone = 		"https://plusone.google.com/u/0/+1/profile/?" + 
-							htmlEscape(event.title) + ' ' +
-							htmlEscape(url);
-			
-			https://plusone.google.com/u/0/+1/profile/?type=po&source=p&client=1&parent=https%3A%2F%2Fplusone.google.com&proxy=I2_1319736844175&hl=en_US#728862452
-			
+	
 					
 			html +=
 				"<div class='fc-event-sharebar'>" + 
@@ -4737,15 +4733,17 @@ function DayEventRenderer() {
 				"<a href = '" + tweeturl + "' target='_blank' title='Tweet This'>" + 
 				"<img src='/profiles/takepart/modules/takepart_calendar/themes/takepart/images/twitter-16x16.png'/>" +
 				"</a>" +	
-				"<a href = '" + mailto + "' target='_blank' title='Email'>" + 
+				"<a href = '" + mailto + "' target='_blank' title='Email' class='addthis_button_email' addthis:url='" + htmlEscape(url) +"' addthis:title='" + (event.title) + "'>" + 
 				"<img src='/profiles/takepart/modules/takepart_calendar/themes/takepart/images/email-16x16.png'/>" +
 				"</a>" +
-				"<a href = '" + plusone + "' target='_blank' title='Send to Google_plusone'>" + 
-				"<img src='/profiles/takepart/modules/takepart_calendar/themes/takepart/images/googleplus-16x16.png'/>" +
-				"</a>" +
-				"</div>";
+				"<span class='googleplus'>" + 
+				"<a target='_blank' title='Send to Google_plusone'>" + 
+				"<g:plusone annotation='inline' width='' href='" + plusone + "'></g:plusone>" +
+			    "</a>" +
+			    "</span>" +
+				"</div><br/>";
 			
-			
+			//"<g:plusone annotation='inline' width='' href='" + plusone + "'></g:plusone>"
 			// --------------------------
 
 			

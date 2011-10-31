@@ -60,14 +60,47 @@ function _takepart_calendar_init() {
                           s.linkTrackEvents='event25';
                           s.tl(this.href, 'o', 'Content Share');						
 						});
+						//Refresh Google Share and addthis:
+						(function() {
+    						gapi.plusone.go();
+    						var script = 'http://s7.addthis.com/js/250/addthis_widget.js#domready=1';
+							if (window.addthis){
+    							window.addthis = null;
+							}
+							jQuery.getScript( script );
+  						})();
 					});
         			jQuery('.fc-header-right').click(shareattach);
+        			jQuery('.fc-header-left').click(shareattach);
         			shareattach();
       			});",
   array('type' => 'inline', 'scope' => 'footer', 'weight' => 6)
   );
 
   
+  drupal_add_js("jQuery(document).ready(function() {
+		jQuery('.fc td.fc-widget-content').hover(  
+         function() {  
+          jQuery(this).addClass('fc-hover');  
+         },  
+         function() {  
+          jQuery(this).removeClass('fc-hover');  
+         }  
+        );
+	});",
+  array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
+  );
+  
+  //Google Plus:
+  drupal_add_js("(function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();",
+  array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
+  );
+ 
+
 }
 
 /**
