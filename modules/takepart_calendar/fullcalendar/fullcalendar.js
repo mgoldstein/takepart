@@ -15,7 +15,7 @@
  *
  */
  
-(function($, undefined) {
+(function(jQuery, undefined) {
 
 
 var defaults = {
@@ -111,13 +111,13 @@ var rtlDefaults = {
 
 
 
-var fc = $.fullCalendar = { version: "1.5.2" };
+var fc = jQuery.fullCalendar = { version: "1.5.2" };
 var fcViews = fc.views = {};
 
 
 
 
-$.fn.fullCalendar = function(options) {
+jQuery.fn.fullCalendar = function(options) {
 
 
 	// method calling
@@ -125,14 +125,14 @@ $.fn.fullCalendar = function(options) {
 		var args = Array.prototype.slice.call(arguments, 1);
 		var res;
 		this.each(function() {
-			var calendar = $.data(this, 'fullCalendar');
-			if (calendar && $.isFunction(calendar[options])) {
+			var calendar = jQuery.data(this, 'fullCalendar');
+			if (calendar && jQuery.isFunction(calendar[options])) {
 				var r = calendar[options].apply(calendar, args);
 				if (res === undefined) {
 					res = r;
 				}
 				if (options == 'destroy') {
-					$.removeData(this, 'fullCalendar');
+					jQuery.removeData(this, 'fullCalendar');
 				}
 			}
 		});
@@ -152,7 +152,7 @@ $.fn.fullCalendar = function(options) {
 	}
 	
 
-	options = $.extend(true, {},
+	options = jQuery.extend(true, {},
 		defaults,
 		(options.isRTL || options.isRTL===undefined && defaults.isRTL) ? rtlDefaults : {},
 		options
@@ -160,7 +160,7 @@ $.fn.fullCalendar = function(options) {
 	
 	
 	this.each(function(i, _element) {
-		var element = $(_element);
+		var element = jQuery(_element);
 		var calendar = new Calendar(element, options, eventSources);
 		element.data('fullCalendar', calendar); // TODO: look into memory leak implications
 		calendar.render();
@@ -174,7 +174,7 @@ $.fn.fullCalendar = function(options) {
 
 // function for adding/overriding defaults
 function setDefaults(d) {
-	$.extend(true, defaults, d);
+	jQuery.extend(true, defaults, d);
 }
 
 
@@ -263,7 +263,7 @@ function Calendar(element, options, eventSources) {
 		if (options.theme) {
 			element.addClass('ui-widget');
 		}
-		content = $("<div class='fc-content' style='position:relative'/>")
+		content = jQuery("<div class='fc-content' style='position:relative'/>")
 			.prependTo(element);
 		header = new Header(t, options);
 		headerElement = header.render();
@@ -271,7 +271,7 @@ function Calendar(element, options, eventSources) {
 			element.prepend(headerElement);
 		}
 		changeView(options.defaultView);
-		$(window).resize(windowResize);
+		jQuery(window).resize(windowResize);
 		// needed for IE in a 0x0 iframe, b/c when it is resized, never triggers a windowResize
 		if (!bodyVisible()) {
 			lateRender();
@@ -291,7 +291,7 @@ function Calendar(element, options, eventSources) {
 	
 	
 	function destroy() {
-		$(window).unbind('resize', windowResize);
+		jQuery(window).unbind('resize', windowResize);
 		header.destroy();
 		content.remove();
 		element.removeClass('fc fc-rtl ui-widget');
@@ -305,7 +305,7 @@ function Calendar(element, options, eventSources) {
 	
 	
 	function bodyVisible() {
-		return $('body')[0].offsetWidth !== 0;
+		return jQuery('body')[0].offsetWidth !== 0;
 	}
 	
 	
@@ -339,7 +339,7 @@ function Calendar(element, options, eventSources) {
 			}else{
 				currentView = viewInstances[newViewName] = new fcViews[newViewName](
 					newViewElement = absoluteViewElement =
-						$("<div class='fc-view fc-view-" + newViewName + "' style='position:absolute'/>")
+						jQuery("<div class='fc-view fc-view-" + newViewName + "' style='position:absolute'/>")
 							.appendTo(content),
 					t // the calendar object
 				);
@@ -433,7 +433,7 @@ function Calendar(element, options, eventSources) {
 	
 	
 	function markSizesDirty() {
-		$.each(viewInstances, function(i, inst) {
+		jQuery.each(viewInstances, function(i, inst) {
 			inst.sizeDirty = true;
 		});
 	}
@@ -532,7 +532,7 @@ function Calendar(element, options, eventSources) {
 	
 	
 	function markEventsDirty() {
-		$.each(viewInstances, function(i, inst) {
+		jQuery.each(viewInstances, function(i, inst) {
 			inst.eventsDirty = true;
 		});
 	}
@@ -653,13 +653,13 @@ function Calendar(element, options, eventSources) {
 	------------------------------------------------------------------------*/
 	
 	if (options.droppable) {
-		$(document)
+		jQuery(document)
 			.bind('dragstart', function(ev, ui) {
 				var _e = ev.target;
-				var e = $(_e);
+				var e = jQuery(_e);
 				if (!e.parents('.fc').length) { // not already inside a calendar
 					var accept = options.dropAccept;
-					if ($.isFunction(accept) ? accept.call(_e, e) : e.is(accept)) {
+					if (jQuery.isFunction(accept) ? accept.call(_e, e) : e.is(accept)) {
 						_dragElement = _e;
 						currentView.dragStart(_dragElement, ev, ui);
 					}
@@ -691,7 +691,7 @@ function Header(calendar, options) {
 	
 	
 	// locals
-	var element = $([]);
+	var element = jQuery([]);
 	var tm;
 	
 
@@ -700,9 +700,9 @@ function Header(calendar, options) {
 		tm = options.theme ? 'ui' : 'fc';
 		var sections = options.header;
 		if (sections) {
-			element = $("<table class='fc-header' style='width:100%'/>")
+			element = jQuery("<table class='fc-header' style='width:100%'/>")
 				.append(
-					$("<tr/>")
+					jQuery("<tr/>")
 						.append(renderSection('left'))
 						.append(renderSection('center'))
 						.append(renderSection('right'))
@@ -718,15 +718,15 @@ function Header(calendar, options) {
 	
 	
 	function renderSection(position) {
-		var e = $("<td class='fc-header-" + position + "'/>");
+		var e = jQuery("<td class='fc-header-" + position + "'/>");
 		var buttonStr = options.header[position];
 		if (buttonStr) {
-			$.each(buttonStr.split(' '), function(i) {
+			jQuery.each(buttonStr.split(' '), function(i) {
 				if (i > 0) {
 					e.append("<span class='fc-header-space'/>");
 				}
 				var prevButton;
-				$.each(this.split(','), function(j, buttonName) {
+				jQuery.each(this.split(','), function(j, buttonName) {
 					if (buttonName == 'title') {
 						e.append("<span class='fc-header-title'><h2>&nbsp;</h2></span>");
 						if (prevButton) {
@@ -747,7 +747,7 @@ function Header(calendar, options) {
 						if (buttonClick) {
 							var icon = options.theme ? smartProperty(options.buttonIcons, buttonName) : null; // why are we using smartProperty here?
 							var text = smartProperty(options.buttonText, buttonName); // why are we using smartProperty here?
-							var button = $(
+							var button = jQuery(
 								"<span class='fc-button fc-button-" + buttonName + " " + tm + "-state-default'>" +
 									"<span class='fc-button-inner'>" +
 										"<span class='fc-button-content'>" +
@@ -949,14 +949,14 @@ function EventManager(options, _sources) {
 		}
 		var events = source.events;
 		if (events) {
-			if ($.isFunction(events)) {
+			if (jQuery.isFunction(events)) {
 				pushLoading();
 				events(cloneDate(rangeStart), cloneDate(rangeEnd), function(events) {
 					callback(events);
 					popLoading();
 				});
 			}
-			else if ($.isArray(events)) {
+			else if (jQuery.isArray(events)) {
 				callback(events);
 			}
 			else {
@@ -968,7 +968,7 @@ function EventManager(options, _sources) {
 				var success = source.success;
 				var error = source.error;
 				var complete = source.complete;
-				var data = $.extend({}, source.data || {});
+				var data = jQuery.extend({}, source.data || {});
 				var startParam = firstDefined(source.startParam, options.startParam);
 				var endParam = firstDefined(source.endParam, options.endParam);
 				if (startParam) {
@@ -978,12 +978,12 @@ function EventManager(options, _sources) {
 					data[endParam] = Math.round(+rangeEnd / 1000);
 				}
 				pushLoading();
-				$.ajax($.extend({}, ajaxDefaults, source, {
+				jQuery.ajax(jQuery.extend({}, ajaxDefaults, source, {
 					data: data,
 					success: function(events) {
 						events = events || [];
 						var res = applyAll(success, this, arguments);
-						if ($.isArray(res)) {
+						if (jQuery.isArray(res)) {
 							events = res;
 						}
 						callback(events);
@@ -1019,7 +1019,7 @@ function EventManager(options, _sources) {
 	
 	
 	function _addEventSource(source) {
-		if ($.isFunction(source) || $.isArray(source)) {
+		if (jQuery.isFunction(source) || jQuery.isArray(source)) {
 			source = { events: source };
 		}
 		else if (typeof source == 'string') {
@@ -1034,11 +1034,11 @@ function EventManager(options, _sources) {
 	
 
 	function removeEventSource(source) {
-		sources = $.grep(sources, function(src) {
+		sources = jQuery.grep(sources, function(src) {
 			return !isSourcesEqual(src, source);
 		});
 		// remove all client events from that source
-		cache = $.grep(cache, function(e) {
+		cache = jQuery.grep(cache, function(e) {
 			return !isSourcesEqual(e.source, source);
 		});
 		reportEvents(cache);
@@ -1105,22 +1105,22 @@ function EventManager(options, _sources) {
 			cache = [];
 			// clear all array sources
 			for (var i=0; i<sources.length; i++) {
-				if ($.isArray(sources[i].events)) {
+				if (jQuery.isArray(sources[i].events)) {
 					sources[i].events = [];
 				}
 			}
 		}else{
-			if (!$.isFunction(filter)) { // an event ID
+			if (!jQuery.isFunction(filter)) { // an event ID
 				var id = filter + '';
 				filter = function(e) {
 					return e._id == id;
 				};
 			}
-			cache = $.grep(cache, filter, true);
+			cache = jQuery.grep(cache, filter, true);
 			// remove events from array sources
 			for (var i=0; i<sources.length; i++) {
-				if ($.isArray(sources[i].events)) {
-					sources[i].events = $.grep(sources[i].events, filter, true);
+				if (jQuery.isArray(sources[i].events)) {
+					sources[i].events = jQuery.grep(sources[i].events, filter, true);
 				}
 			}
 		}
@@ -1129,12 +1129,12 @@ function EventManager(options, _sources) {
 	
 	
 	function clientEvents(filter) {
-		if ($.isFunction(filter)) {
-			return $.grep(cache, filter);
+		if (jQuery.isFunction(filter)) {
+			return jQuery.grep(cache, filter);
 		}
 		else if (filter) { // an event ID
 			filter += '';
-			return $.grep(cache, function(e) {
+			return jQuery.grep(cache, function(e) {
 				return e._id == filter;
 			});
 		}
@@ -1716,7 +1716,7 @@ function lazySegBind(container, segs, bindHandlers) {
 			e._fci = undefined;
 			seg = segs[i];
 			bindHandlers(seg.event, seg.element, seg);
-			$(ev.target).trigger(ev);
+			jQuery(ev.target).trigger(ev);
 		}
 		ev.stopPropagation();
 	});
@@ -1730,7 +1730,7 @@ function lazySegBind(container, segs, bindHandlers) {
 
 function setOuterWidth(element, width, includeMargins) {
 	for (var i=0, e; i<element.length; i++) {
-		e = $(element[i]);
+		e = jQuery(element[i]);
 		e.width(Math.max(0, width - hsides(e, includeMargins)));
 	}
 }
@@ -1738,7 +1738,7 @@ function setOuterWidth(element, width, includeMargins) {
 
 function setOuterHeight(element, height, includeMargins) {
 	for (var i=0, e; i<element.length; i++) {
-		e = $(element[i]);
+		e = jQuery(element[i]);
 		e.height(Math.max(0, height - vsides(e, includeMargins)));
 	}
 }
@@ -1753,20 +1753,20 @@ function hsides(element, includeMargins) {
 
 
 function hpadding(element) {
-	return (parseFloat($.curCSS(element[0], 'paddingLeft', true)) || 0) +
-	       (parseFloat($.curCSS(element[0], 'paddingRight', true)) || 0);
+	return (parseFloat(jQuery.curCSS(element[0], 'paddingLeft', true)) || 0) +
+	       (parseFloat(jQuery.curCSS(element[0], 'paddingRight', true)) || 0);
 }
 
 
 function hmargins(element) {
-	return (parseFloat($.curCSS(element[0], 'marginLeft', true)) || 0) +
-	       (parseFloat($.curCSS(element[0], 'marginRight', true)) || 0);
+	return (parseFloat(jQuery.curCSS(element[0], 'marginLeft', true)) || 0) +
+	       (parseFloat(jQuery.curCSS(element[0], 'marginRight', true)) || 0);
 }
 
 
 function hborders(element) {
-	return (parseFloat($.curCSS(element[0], 'borderLeftWidth', true)) || 0) +
-	       (parseFloat($.curCSS(element[0], 'borderRightWidth', true)) || 0);
+	return (parseFloat(jQuery.curCSS(element[0], 'borderLeftWidth', true)) || 0) +
+	       (parseFloat(jQuery.curCSS(element[0], 'borderRightWidth', true)) || 0);
 }
 
 
@@ -1776,20 +1776,20 @@ function vsides(element, includeMargins) {
 
 
 function vpadding(element) {
-	return (parseFloat($.curCSS(element[0], 'paddingTop', true)) || 0) +
-	       (parseFloat($.curCSS(element[0], 'paddingBottom', true)) || 0);
+	return (parseFloat(jQuery.curCSS(element[0], 'paddingTop', true)) || 0) +
+	       (parseFloat(jQuery.curCSS(element[0], 'paddingBottom', true)) || 0);
 }
 
 
 function vmargins(element) {
-	return (parseFloat($.curCSS(element[0], 'marginTop', true)) || 0) +
-	       (parseFloat($.curCSS(element[0], 'marginBottom', true)) || 0);
+	return (parseFloat(jQuery.curCSS(element[0], 'marginTop', true)) || 0) +
+	       (parseFloat(jQuery.curCSS(element[0], 'marginBottom', true)) || 0);
 }
 
 
 function vborders(element) {
-	return (parseFloat($.curCSS(element[0], 'borderTopWidth', true)) || 0) +
-	       (parseFloat($.curCSS(element[0], 'borderBottomWidth', true)) || 0);
+	return (parseFloat(jQuery.curCSS(element[0], 'borderTopWidth', true)) || 0) +
+	       (parseFloat(jQuery.curCSS(element[0], 'borderBottomWidth', true)) || 0);
 }
 
 
@@ -1935,7 +1935,7 @@ function getSkinCss(event, opt) {
 
 
 function applyAll(functions, thisObj, args) {
-	if ($.isFunction(functions)) {
+	if (jQuery.isFunction(functions)) {
 		functions = [ functions ];
 	}
 	if (functions) {
@@ -2253,7 +2253,7 @@ function BasicView(element, calendar, viewName) {
 		s +=
 			"</tbody>" +
 			"</table>";
-		table = $(s).appendTo(element);
+		table = jQuery(s).appendTo(element);
 		
 		head = table.find('thead');
 		headCells = head.find('th');
@@ -2270,7 +2270,7 @@ function BasicView(element, calendar, viewName) {
 		dayBind(bodyCells);
 		
 		daySegmentContainer =
-			$("<div style='position:absolute;z-index:8;top:0;left:0'/>")
+			jQuery("<div style='position:absolute;z-index:8;top:0;left:0'/>")
 				.appendTo(element);
 	}
 	
@@ -2286,7 +2286,7 @@ function BasicView(element, calendar, viewName) {
 	
 		if (dowDirty) {
 			headCells.each(function(i, _cell) {
-				cell = $(_cell);
+				cell = jQuery(_cell);
 				date = indexDate(i);
 				cell.html(formatDate(date, colFormat));
 				setDayID(cell, date);
@@ -2294,7 +2294,7 @@ function BasicView(element, calendar, viewName) {
 		}
 		
 		bodyCells.each(function(i, _cell) {
-			cell = $(_cell);
+			cell = jQuery(_cell);
 			date = indexDate(i);
 			if (date.getMonth() == month) {
 				cell.removeClass('fc-other-month');
@@ -2313,7 +2313,7 @@ function BasicView(element, calendar, viewName) {
 		});
 		
 		bodyRows.each(function(i, _row) {
-			row = $(_row);
+			row = jQuery(_row);
 			if (i < rowCnt) {
 				row.show();
 				if (i == rowCnt-1) {
@@ -2346,7 +2346,7 @@ function BasicView(element, calendar, viewName) {
 		
 		bodyFirstCells.each(function(i, _cell) {
 			if (i < rowCnt) {
-				cell = $(_cell);
+				cell = jQuery(_cell);
 				setMinHeight(
 					cell.find('> div'),
 					(i==rowCnt-1 ? rowHeightLast : rowHeight) - vsides(cell)
@@ -2489,7 +2489,7 @@ function BasicView(element, calendar, viewName) {
 	coordinateGrid = new CoordinateGrid(function(rows, cols) {
 		var e, n, p;
 		headCells.each(function(i, _e) {
-			e = $(_e);
+			e = jQuery(_e);
 			n = e.offset().left;
 			if (i) {
 				p[1] = n;
@@ -2500,7 +2500,7 @@ function BasicView(element, calendar, viewName) {
 		p[1] = n + e.outerWidth();
 		bodyRows.each(function(i, _e) {
 			if (i < rowCnt) {
-				e = $(_e);
+				e = jQuery(_e);
 				n = e.offset().top;
 				if (i) {
 					p[1] = n;
@@ -2635,7 +2635,7 @@ function BasicEventRenderer() {
 			colCnt = getColCnt(),
 			d1 = cloneDate(t.visStart),
 			d2 = addDays(cloneDate(d1), colCnt),
-			visEventsEnds = $.map(events, exclEndDay),
+			visEventsEnds = jQuery.map(events, exclEndDay),
 			i, row,
 			j, level,
 			k, seg,
@@ -3006,7 +3006,7 @@ function AgendaView(element, calendar, viewName) {
 			"</tr>" +
 			"</tbody>" +
 			"</table>";
-		dayTable = $(s).appendTo(element);
+		dayTable = jQuery(s).appendTo(element);
 		dayHead = dayTable.find('thead');
 		dayHeadCells = dayHead.find('th').slice(1, -1);
 		dayBody = dayTable.find('tbody');
@@ -3022,13 +3022,13 @@ function AgendaView(element, calendar, viewName) {
 		gutterCells = dayTable.find('.fc-agenda-gutter');
 		
 		slotLayer =
-			$("<div style='position:absolute;z-index:2;left:0;width:100%'/>")
+			jQuery("<div style='position:absolute;z-index:2;left:0;width:100%'/>")
 				.appendTo(element);
 				
 		if (opt('allDaySlot')) {
 		
 			daySegmentContainer =
-				$("<div style='position:absolute;z-index:8;top:0;left:0'/>")
+				jQuery("<div style='position:absolute;z-index:8;top:0;left:0'/>")
 					.appendTo(slotLayer);
 		
 			s =
@@ -3041,7 +3041,7 @@ function AgendaView(element, calendar, viewName) {
 				"<th class='" + headerClass + " fc-agenda-gutter'>&nbsp;</th>" +
 				"</tr>" +
 				"</table>";
-			allDayTable = $(s).appendTo(slotLayer);
+			allDayTable = jQuery(s).appendTo(slotLayer);
 			allDayRow = allDayTable.find('tr');
 			
 			dayBind(allDayRow.find('td'));
@@ -3057,20 +3057,20 @@ function AgendaView(element, calendar, viewName) {
 			
 		}else{
 		
-			daySegmentContainer = $([]); // in jQuery 1.4, we can just do $()
+			daySegmentContainer = jQuery([]); // in jQuery 1.4, we can just do $()
 		
 		}
 		
 		slotScroller =
-			$("<div style='position:absolute;width:100%;overflow-x:hidden;overflow-y:auto'/>")
+			jQuery("<div style='position:absolute;width:100%;overflow-x:hidden;overflow-y:auto'/>")
 				.appendTo(slotLayer);
 				
 		slotContent =
-			$("<div style='position:relative;width:100%;overflow:hidden'/>")
+			jQuery("<div style='position:relative;width:100%;overflow:hidden'/>")
 				.appendTo(slotScroller);
 				
 		slotSegmentContainer =
-			$("<div style='position:absolute;z-index:8;top:0;left:0'/>")
+			jQuery("<div style='position:absolute;z-index:8;top:0;left:0'/>")
 				.appendTo(slotContent);
 		
 		s =
@@ -3097,7 +3097,7 @@ function AgendaView(element, calendar, viewName) {
 		s +=
 			"</tbody>" +
 			"</table>";
-		slotTable = $(s).appendTo(slotContent);
+		slotTable = jQuery(s).appendTo(slotContent);
 		slotTableFirstInner = slotTable.find('div:first');
 		
 		slotBind(slotTable.find('td'));
@@ -3168,7 +3168,7 @@ function AgendaView(element, calendar, viewName) {
 			axisFirstCells
 				.width('')
 				.each(function(i, _cell) {
-					axisWidth = Math.max(axisWidth, $(_cell).outerWidth());
+					axisWidth = Math.max(axisWidth, jQuery(_cell).outerWidth());
 				}),
 			axisWidth
 		);
@@ -3319,7 +3319,7 @@ function AgendaView(element, calendar, viewName) {
 	coordinateGrid = new CoordinateGrid(function(rows, cols) {
 		var e, n, p;
 		dayHeadCells.each(function(i, _e) {
-			e = $(_e);
+			e = jQuery(_e);
 			n = e.offset().left;
 			if (i) {
 				p[1] = n;
@@ -3488,19 +3488,19 @@ function AgendaView(element, calendar, viewName) {
 					rect.height = bottom - top;
 					rect.left += 2;
 					rect.width -= 5;
-					if ($.isFunction(helperOption)) {
+					if (jQuery.isFunction(helperOption)) {
 						var helperRes = helperOption(startDate, endDate);
 						if (helperRes) {
 							rect.position = 'absolute';
 							rect.zIndex = 8;
-							selectionHelper = $(helperRes)
+							selectionHelper = jQuery(helperRes)
 								.css(rect)
 								.appendTo(slotContent);
 						}
 					}else{
 						rect.isStart = true; // conside rect a "seg" now
 						rect.isEnd = true;   //
-						selectionHelper = $(slotSegHtml(
+						selectionHelper = jQuery(slotSegHtml(
 							{
 								title: '',
 								start: startDate,
@@ -3555,7 +3555,7 @@ function AgendaView(element, calendar, viewName) {
 					dates = null;
 				}
 			}, ev);
-			$(document).one('mouseup', function(ev) {
+			jQuery(document).one('mouseup', function(ev) {
 				hoverListener.stop();
 				if (dates) {
 					if (+dates[0] == +dates[1]) {
@@ -3688,7 +3688,7 @@ function AgendaEventRenderer() {
 	
 	
 	function compileDaySegs(events) {
-		var levels = stackSegs(sliceSegs(events, $.map(events, exclEndDay), t.visStart, t.visEnd)),
+		var levels = stackSegs(sliceSegs(events, jQuery.map(events, exclEndDay), t.visStart, t.visEnd)),
 			i, levelCnt=levels.length, level,
 			j, seg,
 			segs=[];
@@ -3710,7 +3710,7 @@ function AgendaEventRenderer() {
 			minMinute = getMinMinute(),
 			maxMinute = getMaxMinute(),
 			d = addMinutes(cloneDate(t.visStart), minMinute),
-			visEventEnds = $.map(events, slotEventEnd),
+			visEventEnds = jQuery.map(events, slotEventEnd),
 			i, col,
 			j, level,
 			k, seg,
@@ -3816,14 +3816,14 @@ function AgendaEventRenderer() {
 		for (i=0; i<segCnt; i++) {
 			seg = segs[i];
 			event = seg.event;
-			eventElement = $(eventElements[i]); // faster than eq()
+			eventElement = jQuery(eventElements[i]); // faster than eq()
 			triggerRes = trigger('eventRender', event, event, eventElement);
 			if (triggerRes === false) {
 				eventElement.remove();
 			}else{
 				if (triggerRes && triggerRes !== true) {
 					eventElement.remove();
-					eventElement = $(triggerRes)
+					eventElement = jQuery(triggerRes)
 						.css({
 							position: 'absolute',
 							top: seg.top,
@@ -4562,7 +4562,7 @@ function DayEventRenderer() {
 	
 	
 	function renderTempDaySegs(segs, adjustRow, adjustTop) {
-		var tempContainer = $("<div/>");
+		var tempContainer = jQuery("<div/>");
 		var elements;
 		var segmentContainer = getDaySegmentContainer();
 		var i;
@@ -4586,7 +4586,7 @@ function DayEventRenderer() {
 				elements.push(element[0]);
 			}
 		}
-		return $(elements);
+		return jQuery(elements);
 	}
 	
 	
@@ -4673,11 +4673,20 @@ function DayEventRenderer() {
 					htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
 					"</span>";
 			}
-			html +=
-				"<span class='fc-event-title'>" + 
-				"<a href='" + htmlEscape(url) + "'>" + 
-				htmlEscape(event.title) + "</a></span>" +
-				"</div>";
+
+			if((url.indexOf(window.location.hostname) > -1) || (!url.indexOf('http://'))) {
+				html +=
+					"<span class='fc-event-title'>" + 
+					"<a href='" + htmlEscape(url) + "'>" + 
+					htmlEscape(event.title) + "</a></span>" +
+					"</div>";
+			} else {
+				html +=
+					"<span class='fc-event-title'>" + 
+					"<a href='" + htmlEscape(url) + "' target='_blank'>" + 
+					htmlEscape(event.title) + "</a></span>" +
+					"</div>";
+			}
 			
 			
 			
@@ -4708,38 +4717,53 @@ function DayEventRenderer() {
 							"?subject=" + escape(htmlEscape(event.title)) +	
 							"&body=" + escape(htmlEscape(url));
 			
+			//mobile?
 			plusone = 		"https://m.google.com/app/plus/x/?v=compose&content=" + 
 			 				htmlEscape(event.title) + ' ' +
 			 				htmlEscape(url);
 			
-	
+			plusone = 		"https://plusone.google.com/u/0/+1/profile/?" + 
+							htmlEscape(event.title) + ' ' +
+							htmlEscape(url);
+			
+			https://plusone.google.com/u/0/+1/profile/?type=po&source=p&client=1&parent=https%3A%2F%2Fplusone.google.com&proxy=I2_1319736844175&hl=en_US#728862452
+			
 					
 			html +=
 				"<div class='fc-event-sharebar'>" + 
-				"<a href = '" + facebookurl + "' target='_blank'>" + 
-				"<img src='/sites/all/modules/takepart_calendar/themes/takepart/images/facebook-16x16.png'/>" +
+				"<a href = '" + facebookurl + "' target='_blank' title='Send to Facebook'>" + 
+				"<img src='/profiles/takepart/modules/takepart_calendar/themes/takepart/images/facebook-16x16.png'/>" +
 				"</a>" +
-				"<a href = '" + tweeturl + "' target='_blank'>" + 
-				"<img src='/sites/all/modules/takepart_calendar/themes/takepart/images/twitter-16x16.png'/>" +
+				"<a href = '" + tweeturl + "' target='_blank' title='Tweet This'>" + 
+				"<img src='/profiles/takepart/modules/takepart_calendar/themes/takepart/images/twitter-16x16.png'/>" +
 				"</a>" +	
-				"<a href = '" + mailto + "' target='_blank'>" + 
-				"<img src='/sites/all/modules/takepart_calendar/themes/takepart/images/email-16x16.png'/>" +
+				"<a href = '" + mailto + "' target='_blank' title='Email'>" + 
+				"<img src='/profiles/takepart/modules/takepart_calendar/themes/takepart/images/email-16x16.png'/>" +
 				"</a>" +
-				"<a href = '" + plusone + "' target='_blank'>" + 
-				"<img src='/sites/all/modules/takepart_calendar/themes/takepart/images/googleplus-16x16.png'/>" +
+				"<a href = '" + plusone + "' target='_blank' title='Send to Google_plusone'>" + 
+				"<img src='/profiles/takepart/modules/takepart_calendar/themes/takepart/images/googleplus-16x16.png'/>" +
 				"</a>" +
 				"</div>";
 			
 			
 			// --------------------------
 
+			
 			// TakePart Change -----------
 			if((event.subtexturl) && (event.subtext)) {
-				html +=
+				if(((event.subtexturl).indexOf(window.location.hostname) > -1) || (!(event.subtexturl).indexOf('http://'))) {
+					html +=
 					"<div class='fc-event-subtext'>" + 
 					"<a href='" + htmlEscape(event.subtexturl) + "'>" + 
 					htmlEscape(event.subtext) + "</a></div>"	 +
 					"</div>";
+				} else {
+					html +=
+						"<div class='fc-event-subtext'>" + 
+						"<a href='" + htmlEscape(event.subtexturl) + "' target='_blank'>" + 
+						htmlEscape(event.subtext) + "</a></div>"	 +
+						"</div>";				
+				}
 			}
 			// --------------------------
 			
@@ -4771,13 +4795,13 @@ function DayEventRenderer() {
 		for (i=0; i<segCnt; i++) {
 			seg = segs[i];
 			event = seg.event;
-			element = $(elements[i]); // faster than .eq()
+			element = jQuery(elements[i]); // faster than .eq()
 			triggerRes = trigger('eventRender', event, event, element);
 			if (triggerRes === false) {
 				element.remove();
 			}else{
 				if (triggerRes && triggerRes !== true) {
-					triggerRes = $(triggerRes)
+					triggerRes = jQuery(triggerRes)
 						.css({
 							position: 'absolute',
 							left: seg.left
@@ -4969,10 +4993,10 @@ function DayEventRenderer() {
 			var elementTop = element.css('top');
 			var dayDelta;
 			var helpers;
-			var eventCopy = $.extend({}, event);
+			var eventCopy = jQuery.extend({}, event);
 			var minCell = dateCell(event.start);
 			clearSelection();
-			$('body')
+			jQuery('body')
 				.css('cursor', direction + '-resize')
 				.one('mouseup', mouseup);
 			trigger('eventResizeStart', this, event, ev);
@@ -5015,7 +5039,7 @@ function DayEventRenderer() {
 			
 			function mouseup(ev) {
 				trigger('eventResizeStop', this, event, ev);
-				$('body').css('cursor', '');
+				jQuery('body').css('cursor', '');
 				hoverListener.stop();
 				clearOverlays();
 				if (dayDelta) {
@@ -5063,10 +5087,10 @@ function SelectionManager() {
 
 	// unselectAuto
 	if (opt('selectable') && opt('unselectAuto')) {
-		$(document).mousedown(function(ev) {
+		jQuery(document).mousedown(function(ev) {
 			var ignore = opt('unselectCancel');
 			if (ignore) {
-				if ($(ev.target).parents(ignore).length) { // could be optimized to stop after first match
+				if (jQuery(ev.target).parents(ignore).length) { // could be optimized to stop after first match
 					return;
 				}
 			}
@@ -5118,7 +5142,7 @@ function SelectionManager() {
 					dates = null;
 				}
 			}, ev);
-			$(document).one('mouseup', function(ev) {
+			jQuery(document).one('mouseup', function(ev) {
 				hoverListener.stop();
 				if (dates) {
 					if (+dates[0] == +dates[1]) {
@@ -5150,7 +5174,7 @@ function OverlayManager() {
 	function renderOverlay(rect, parent) {
 		var e = unusedOverlays.shift();
 		if (!e) {
-			e = $("<div class='fc-cell-overlay' style='position:absolute;z-index:3'/>");
+			e = jQuery("<div class='fc-cell-overlay' style='position:absolute;z-index:3'/>");
 		}
 		if (e[0].parentNode != parent[0]) {
 			e.appendTo(parent);
@@ -5232,7 +5256,7 @@ function HoverListener(coordinateGrid) {
 		coordinateGrid.build();
 		mouse(ev);
 		bindType = _bindType || 'mousemove';
-		$(document).bind(bindType, mouse);
+		jQuery(document).bind(bindType, mouse);
 	};
 	
 	
@@ -5253,7 +5277,7 @@ function HoverListener(coordinateGrid) {
 	
 	
 	t.stop = function() {
-		$(document).unbind(bindType, mouse);
+		jQuery(document).unbind(bindType, mouse);
 		return cell;
 	};
 	

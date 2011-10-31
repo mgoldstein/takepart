@@ -9,50 +9,66 @@ function _takepart_calendar_init() {
   //@todo: only add this w/ content
   //move to formatter_view?
   //media print $css_paths[] = drupal_get_path('module', 'takepart_calendar') . '/fullcalendar/fullcalendar.print.css';
-  
+
   //$css_path = drupal_get_path('module', 'takepart_calendar') . '/themes/cupertino/theme.css';
-  //drupal_add_css($css_path);  
+  //drupal_add_css($css_path);
 
   $css_path = drupal_get_path('module', 'takepart_calendar') . '/themes/takepart/theme.css';
-  drupal_add_css($css_path);  
-  
+  drupal_add_css($css_path);
+
   $css_path = drupal_get_path('module', 'takepart_calendar') . '/fullcalendar/fullcalendar.css';
   drupal_add_css($css_path);
-  
+
   #@todo: use drupal's jquery:
-  $js_path = drupal_get_path('module', 'takepart_calendar') . '/jquery/jquery-1.5.2.min.js';
-  drupal_add_js($js_path);
-  $js_path = drupal_get_path('module', 'takepart_calendar') . '/jquery/jquery-ui-1.8.11.custom.min.js';
-  drupal_add_js($js_path);
+  //$js_path = drupal_get_path('module', 'takepart_calendar') . '/jquery/jquery-1.5.2.min.js';
+  //drupal_add_js($js_path);
+  //$js_path = drupal_get_path('module', 'takepart_calendar') . '/jquery/jquery-ui-1.8.11.custom.min.js';
+  //drupal_add_js($js_path);
   //$js_path = drupal_get_path('module', 'takepart_calendar') . '/fullcalendar/fullcalendar.min.js';
   $js_path = drupal_get_path('module', 'takepart_calendar') . '/fullcalendar/fullcalendar.js';
   drupal_add_js($js_path);
 
 
-  drupal_add_js("$(document).ready(function() {
+  drupal_add_js("jQuery(document).ready(function() {
       var date = new Date();
       var d = date.getDate();
       var m = date.getMonth();
       var y = date.getFullYear();
-	  if(calendar_events) {
-        $('#calendar').fullCalendar({
-          editable: true,
-          events: calendar_events
+      if (typeof calendar_events != 'undefined') {
+	   if(calendar_events) {
+        jQuery('#calendar').fullCalendar({
+          editable: false	,
+          events: calendar_events,
+          disableDragging: true
         });
-      }
+       }
+	  }
     });",
   array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
   );
-  
-  
+
+
   drupal_add_js("jQuery(document).ready(function() {
-      		//alert(jQuery('#page').html());
-      });",
+  					var shareattach = (function() {
+  						jQuery('.fc-event-sharebar a').click(function() { 
+                          var link_title = jQuery(this).attr('title');
+                          var title = convert_title(link_title);
+                          s.events='event25';
+                          s.prop26=title;
+                          s.eVar27=title;
+                          s.linkTrackVars='eVar27,prop26,events';
+                          s.linkTrackEvents='event25';
+                          s.tl(this.href, 'o', 'Content Share');						
+						});
+					});
+        			jQuery('.fc-header-right').click(shareattach);
+        			shareattach();
+      			});",
   array('type' => 'inline', 'scope' => 'footer', 'weight' => 6)
   );
 
-
-}  
+  
+}
 
 /**
  * Implements hook_field_info().
@@ -61,6 +77,7 @@ function takepart_calendar_field_info() {
   return array(
     'takepart_calendar' => array(
       'label' => t('TakePart Calendar'),
+  	  'fieldable' => TRUE,	    	  
       'description' => t('Managable Calendar'),
       'default_widget' => 'takepart_calendar_widget',
       'default_formatter' => 'takepart_calendar_formatter',
@@ -84,21 +101,29 @@ function takepart_calendar_field_formatter_info() {
 
 
 /**
-* Implements hook_field_formatter_view().
-*/
+ * Implements hook_field_formatter_view().
+ */
 function takepart_calendar_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-  
-  _takepart_calendar_init();
-  
+
+
+
+ 
+
   $element = array();
 
   switch ($display['type']) {
     case 'takepart_calendar_formatter':
+
       foreach ($items as $delta => $item) {
         if ($item['takepart_calendar']) {
+          
           $json = $item['takepart_calendar'];
           //@todo: turn this into an ajax feed:
-          $element[$delta]['#markup'] = '<span><script type=\'text/javascript\'>var calendar_events = ' . $json .';</script><div id=\'calendar\'></div></span>';
+          //$element[$delta]['#markup'] = '<span><script type=\'text/javascript\'>var calendar_events = ' . $json .';</script><div id=\'calendar\'></div></span>';
+          if(!empty($json)) {
+            _takepart_calendar_init();  
+            $element[$delta] = array('#markup' => '<span><script type=\'text/javascript\'>var calendar_events = ' . $json .';</script><div id=\'calendar\'></div></span>');
+          }
         }
       }
       break;
@@ -110,8 +135,8 @@ function takepart_calendar_field_formatter_view($entity_type, $entity, $field, $
 
 
 /**
-* Implements hook_field_widget_form().
-*/
+ * Implements hook_field_widget_form().
+ */
 function takepart_calendar_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
   $field_name = $field['field_name'];
   $field_type = $field['type'];
@@ -119,7 +144,8 @@ function takepart_calendar_field_widget_form(&$form, &$form_state, $field, $inst
   $default = $instance['default_value'][0][$field_type][$field_type];
 
   //@todo: check delta for null offset?
-  
+
+
   switch ($instance['widget']['type']) {
     case 'takepart_calendar':
 
@@ -134,28 +160,29 @@ function takepart_calendar_field_widget_form(&$form, &$form_state, $field, $inst
           '#element_validate' => array('_takepart_calendar_validation'),
       );
 
-      $element['takepart_calendar_html'] = array(
-        '#type' => 'markup',
-        '#value' => t('TEST MARKUP'),
-      );
-      
-      
-    /*  
-     * 
-      drupal_add_js("jQuery('test');",
-        array('type' => 'inline', 'scope' => 'footer', 'weight' => 6)
-      );
-      */
-      
       /*
-      drupal_add_js("jQuery(document).ready(function() {
-      				alert('ready');
-            		//alert(jQuery('#edit-field-cal-test-und-0-takepart-calendar').attr('id'));
-            });",
+       $element['takepart_calendar_html'] = array(
+      '#type' => 'markup',
+      '#value' => t('TEST MARKUP'),
+      );
+
+
+      /*
+      *
+      drupal_add_js("jQuery('test');",
       array('type' => 'inline', 'scope' => 'footer', 'weight' => 6)
       );
       */
-      
+
+      /*
+       drupal_add_js("jQuery(document).ready(function() {
+      alert('ready');
+      //alert(jQuery('#edit-field-cal-test-und-0-takepart-calendar').attr('id'));
+      });",
+      array('type' => 'inline', 'scope' => 'footer', 'weight' => 6)
+      );
+      */
+
       break;
   }
   return $element;
@@ -163,8 +190,8 @@ function takepart_calendar_field_widget_form(&$form, &$form_state, $field, $inst
 
 
 /**
-* Implements hook_field_widget_error().
-*/
+ * Implements hook_field_widget_error().
+ */
 function takepart_calendar_widget_error($element, $error, $form, &$form_state) {
   switch ($error['error']) {
     case 'takepart_calendar_invalid':
@@ -198,7 +225,7 @@ function takepart_calendar_field_widget_info() {
 
 function _takepart_calendar_validation($element, &$form_state) {
   if (isset($element['#value'])) {
-     //form_set_value($element, array('takepart_calendar' => $value), $form_state);
+    //form_set_value($element, array('takepart_calendar' => $value), $form_state);
   }
 }
 
