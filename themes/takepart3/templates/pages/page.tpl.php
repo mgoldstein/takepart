@@ -1,5 +1,5 @@
-<?php if ($is_multipage): ?>
 <div id="page-wrapper">
+<?php if ($is_multipage): ?>
   <div id="slim-header" class='clearfix multipage-campaign'>
     <div id='logo'><?php print l("", "<front>")?></div>
     <div class="clear clearfix" id="nav-wrap">
@@ -18,42 +18,34 @@
 
 
   <?php else: ?>
-<div id="page-wrapper">
   <div id="header-wrapper" class='clearfix regular-content'>
-      <div id="join-login-top">
-        <div class="login-fb clearfix">
-          <?php print $user_nav; ?>       
-        </div> 
-      </div><!--/join-login-top-->
-  <div class="logo-wrapper">
-    <div id='logo'><?php print l("", "<front>")?></div>
-		<div class="header-right">
-    <div class="clear clearfix" id="nav-wrap">
-      <div id="block-menu-block-1">
-        <?php print $top_nav ?>
+  	<div id="join-login-top">
+    	<div class="login-fb clearfix">
+      	<?php print $user_nav; ?>       
+      </div> 
+    </div><!--/join-login-top-->
+  	<div class="logo-wrapper">
+  		<div id='logo'><?php print l("", "<front>")?></div>
+			<div class="header-right">
+  			<div class="clear clearfix" id="nav-wrap">
+      		<div id="block-menu-block-1">
+        		<?php print $top_nav ?>
+      		</div>
+    		</div>
+        <div id="hot-topics-nav">
+   	      <?php print $hottopic_nav ?>
+        </div><!--/hot topics nav-->
+        <?php print $follow_us_links; ?><!--/top follow-->
+        <div id="top-search">
+   	      <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
+        </div><!--/top search-->
       </div>
     </div>
-    <div id="hot-topics-nav">
-      <?php print $hottopic_nav ?>
-    </div><!--/hot topics nav-->
-  	<?php print $follow_us_links; ?><!--/top follow-->
-    <div id="top-search">
-      <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
-    </div><!--/top search-->
-  
-</div></div>
+  </div>
+
   <?php endif; ?>  
 
-  <?php if ($page['help'] || ($show_messages && $messages)): ?>
-    <div id='console'><div class='limiter clearfix'>
-      <?php print render($page['help']); ?>
-      <?php if ($show_messages && $messages): print $messages; endif; ?>
-    </div></div>
-  <?php endif; ?>
-
-
-
-  
+ 
   <?php if ($page['highlighted']): ?>
     <div class="clear" id='highlighted'><div class='limiter clearfix'>
       <?php print render($page['highlighted']); ?>
@@ -68,11 +60,17 @@
       <?php if (isset($secondary_local_tasks)): ?><ul class='links clearfix'><?php print render($secondary_local_tasks) ?></ul><?php endif; ?>
       <?php if ($action_links): ?><ul class='links clearfix'><?php print render($action_links); ?></ul><?php endif; ?>
       <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
-        
+        <?php if ($page['help'] || ($show_messages && $messages)): ?>
+          <div id='console'><div class='limiter clearfix'>
+          <?php print render($page['help']); ?>
+          <?php if ($show_messages && $messages): print $messages; endif; ?>
+          </div></div>
+        <?php endif; ?> 
+         
       <?php print render($page['content_top']); ?>
       
       <div id='content' class='clearfix'>
-        <?php print render($page['content']) ?>
+       <?php print render($page['content']) ?>
       </div>
       
       <?php if ($page['sidebar_first']): ?>
