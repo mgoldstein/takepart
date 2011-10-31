@@ -1,5 +1,5 @@
-<?php
 
+<?php
 /**
  * Each item of the array should be keyed as follows:
  * url (String, 21 characters ) http://www.google.com
@@ -686,16 +686,20 @@ function takepart3_search_api_page_result(array $variables) {
   }
   
   $output = '';
-  $type = takepart3_return_node_type($entity->type);
-  if (!empty($type)) {
-    $output = '<div class="views-field views-field-type"><span class="field-content">' . $type . '</span></div>';
+  if (isset($entity->nid)){
+    $type = takepart3_return_node_type($entity->type);
+    if (!empty($type)) {
+      $output = '<div class="views-field views-field-type"><span class="field-content">' . $type . '</span></div>';
+    }
+    $output .= '<h3>' . ($url ? l($name, $url['path'], $url['options']) : check_plain($name)) . "</h3>\n";
+    if ($text) {
+      $output .= $text;
+    }
+    $authors = _get_author($entity->nid);
+    if (!empty($authors)){
+      $output .= "<div class='by-line'>".t("Posted by !authors on @date", array('!authors'=> $authors,  '@date' => date('M d, Y', $entity->created))) . "</div>";
+    }
   }
-  $output .= '<h3>' . ($url ? l($name, $url['path'], $url['options']) : check_plain($name)) . "</h3>\n";
-  if ($text) {
-    $output .= $text;
-  }
-  $output .= "<div class='by-line'>".t("Posted by @author on @created ", array ('@author'=>_get_author($entity->nid), '@created'=> date('M d, Y', $entity->created))) ."</div>";
-
   return $output;
 }
 
@@ -703,29 +707,39 @@ function _render_tp3_header_search_form() {
   return module_invoke('search_api_page', 'block_view', '2');
 }
 
+
 /**
  * find the authors of a nid.
- *
+ * Uses a caching mechanism based on static variable
+ *  if the NID is already in the static array it will retrieve its value 
+ *  if not will query the DB
+ * then will build the HTML list
  */
 function _get_author($nid) {
- 
-  $query = db_select('field_data_field_author', 'a');
-  $query->addField('a', 'field_author_nid');
-  $query->condition('a.entity_id', $nid);
-  
-  $query->join('field_data_field_profile_last_name', 'fpl', 'a.field_author_nid = fpl.entity_id');
-  $query->join('field_data_field_profile_first_name', 'fpf', 'a.field_author_nid = fpf.entity_id');
-  $query->addField('fpl', 'field_profile_last_name_value', 'last_name');
-  $query->addField('fpf', 'field_profile_first_name_value', 'first_name');
-  $query->orderBy('last_name', 'ASC')->orderby('first_name', 'ASC');
-  
-  $result = $query->execute();
-  
+  static $nodes=array();
+  #check first if we have the nid  
   $authors = array();
-  foreach($result as $record) {
-    $authors[] = l($record->first_name ." ". $record->last_name, "node/".$record->field_author_nid);
+  if (isset($nodes[$nid])){
+    $authors = $nodes[$nid];
   }
+  else{
+    $query = db_select('field_data_field_author', 'a');
+    $query->addField('a', 'field_author_nid');
+    $query->condition('a.entity_id', $nid);
   
+    $query->join('field_data_field_profile_last_name', 'fpl', 'a.field_author_nid = fpl.entity_id');
+    $query->join('field_data_field_profile_first_name', 'fpf', 'a.field_author_nid = fpf.entity_id');
+    $query->addField('fpl', 'field_profile_last_name_value', 'last_name');
+    $query->addField('fpf', 'field_profile_first_name_value', 'first_name');
+    $query->orderBy('last_name', 'ASC')->orderby('first_name', 'ASC');
+    $result = $query->execute();
+    foreach($result as $record) {
+      $authors[] = l($record->first_name ." ". $record->last_name, "node/".$record->field_author_nid);
+    }
+
+    if (empty($authors)){return NULL;}
+    $nodes[$nid]=$authors;
+  }
   switch(count($authors)){
     case 1:
       $authors = $authors[0];
