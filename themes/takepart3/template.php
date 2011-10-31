@@ -697,7 +697,7 @@ function takepart3_search_api_page_result(array $variables) {
     }
     $authors = _get_author($entity->nid);
     if (!empty($authors)){
-      $output .= "<div class='by-line'>Posted by ". $authors ." on ". date('M d, Y', $entity->created) . "</div>";
+      $output .= "<div class='by-line'>".t("Posted by !authors on @date", array('!authors'=> $authors,  '@date' => date('M d, Y', $entity->created))) . "</div>";
     }
   }
   return $output;
@@ -707,9 +707,13 @@ function _render_tp3_header_search_form() {
   return module_invoke('search_api_page', 'block_view', '2');
 }
 
+
 /**
  * find the authors of a nid.
- *  
+ * Uses a caching mechanism based on static variable
+ *  if the NID is already in the static array it will retrieve its value 
+ *  if not will query the DB
+ * then will build the HTML list
  */
 function _get_author($nid) {
   static $nodes=array();
@@ -728,14 +732,11 @@ function _get_author($nid) {
     $query->addField('fpl', 'field_profile_last_name_value', 'last_name');
     $query->addField('fpf', 'field_profile_first_name_value', 'first_name');
     $query->orderBy('last_name', 'ASC')->orderby('first_name', 'ASC');
-  
     $result = $query->execute();
-  
     foreach($result as $record) {
       $authors[] = l($record->first_name ." ". $record->last_name, "node/".$record->field_author_nid);
     }
 
-    //Empty results? shouldnt be!
     if (empty($authors)){return NULL;}
     $nodes[$nid]=$authors;
   }

@@ -1,5 +1,5 @@
-<?php if ($is_multipage): ?>
 <div id="page-wrapper">
+<?php if ($is_multipage): ?>
   <div id="slim-header" class='clearfix multipage-campaign'>
     <div id='logo'><?php print l("", "<front>")?></div>
     <div class="clear clearfix" id="nav-wrap">
@@ -18,7 +18,6 @@
 
 
   <?php else: ?>
-<div id="page-wrapper else">
   <div id="header-wrapper" class='clearfix regular-content'>
   	<div id="join-login-top">
     	<div class="login-fb clearfix">
@@ -43,7 +42,7 @@
       </div>
     </div>
   </div>
-</div>
+
   <?php endif; ?>  
 
  

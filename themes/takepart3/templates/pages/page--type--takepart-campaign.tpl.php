@@ -1,5 +1,5 @@
-<div id="page-wrapper">
-  <?php if ($is_multipage): ?>
+<?php if ($is_multipage): ?>
+<div id="page-wrapper" class="multipage-campaign">
   <div id="slim-header" class='clearfix multipage-campaign'>
     <div id='logo'><?php print l("", "<front>")?></div>
    
@@ -45,7 +45,7 @@
         </div><!--/top search-->
       </div>
     </div>
-  </div>
+
   <?php endif; ?>
 
 
