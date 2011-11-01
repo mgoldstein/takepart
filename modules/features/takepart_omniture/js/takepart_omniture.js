@@ -153,7 +153,8 @@ function convert_title(title) {
       return "Digg";
     case "Send to Google_plusone":
       return "Google Plus One";
-    
+    case "30 Ways in 30 Days":
+      return "30 Ways";   
     default:
       return title; 
   }
