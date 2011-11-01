@@ -58,7 +58,7 @@
 }
 
 
-.fc .fc-today .fc-event-title a,.fc .fc-today .fc-event-subtext a {
+.fc .fc-today-computed .fc-event-title a,.fc .fc-today-computed .fc-event-subtext a {
 	color: #fff;
 }
 
