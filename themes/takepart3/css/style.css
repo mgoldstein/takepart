@@ -572,7 +572,7 @@ width: 865px;
 	}
 	
 	
-#block-menu-block-1 li.expanded ul.menu li a {font-size:18px;font-weight:bold}
+#block-menu-block-1 li.expanded ul.menu li a {font-size:16px;font-weight:bold; padding:6px 12px;}
 #block-menu-block-1 li a:hover {color: #FFF;}
 #block-menu-block-1 li.dhtml-menu a:hover,
 #block-menu-block-1 li.expanded a
