@@ -67,8 +67,8 @@ function _takepart_calendar_init() {
                           var pg_title = '" . drupal_get_title() . "';
                           var pg_title = convert_title(pg_title);
                           s.events = 'event19';
-                          s.eVar19 = (pg_title + ' - ' + link_title);
-                          s.linkTrackVars='eVar19,events';
+                          s.eVar28 = (pg_title + ' - ' + link_title);
+                          s.linkTrackVars='eVar28,events';
                           s.linkTrackEvents='event19';
                           s.tl(this.href, 'o', pg_title);					
 						});						
