@@ -5,7 +5,6 @@
    
     <div class="clearfix" id="nav-wrap">
       <?php print $top_nav ?>
-
     </div>
    	
     <div id="top-search">
@@ -19,10 +18,11 @@
     </div><!--/join-login-top-->
     <?php print $follow_us_links; ?><!--/top follow-->
   </div>
-  
+
 
   <?php else: ?>
-  <div id="header-wrapper" class='clearfix regular-content'>
+<div id="page-wrapper" class="campaign">
+  <div id="header-wrapper" class='clearfix campaign'>
     <div id="join-login-top">
       <div class="login-fb clearfix">
         <?php print $user_nav; ?>       
@@ -45,11 +45,8 @@
         </div><!--/top search-->
       </div>
     </div>
-
+</div>
   <?php endif; ?>
-
-
-
 
   
   <?php if ($page['highlighted']): ?>
@@ -58,8 +55,8 @@
     </div></div>
   <?php endif; ?>
   
-  <div id='page' class='clear page clearfix <?php print $multipage_class; ?>'>
   
+  <div id='page' class='clear page clearfix <?php print $multipage_class; ?>'>
     <div class='main-content'>
       <?php  /* if ($title): ?><h1 class='page-title'><?php print $title ?></h1><?php endif; */ ?>
       <?php if (isset($primary_local_tasks)): ?><ul class='links clearfix'><?php print render($primary_local_tasks) ?></ul><?php endif; ?>
