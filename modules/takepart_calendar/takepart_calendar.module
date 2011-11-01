@@ -194,7 +194,8 @@ function takepart_calendar_field_widget_form(&$form, &$form_state, $field, $inst
   switch ($instance['widget']['type']) {
     case 'takepart_calendar':
 
-      $element['takepart_calendar']['textarea'] = array(
+      //$element['takepart_calendar']['textarea'] = array(
+      $element['takepart_calendar'] = array(
           '#type' => 'textarea',
           '#title' => $element['#title'],
           '#description' => $element['#description'],
@@ -205,6 +206,7 @@ function takepart_calendar_field_widget_form(&$form, &$form_state, $field, $inst
           '#element_validate' => array('_takepart_calendar_validation'),
       );
       
+      /*
       $element['takepart_calendar']['html'] = array(
   			'#markup' => "<script type=\"text/javascript\">
 				<!--//--><![CDATA[//><!--
@@ -212,6 +214,7 @@ function takepart_calendar_field_widget_form(&$form, &$form_state, $field, $inst
 				//--><!]]>
 			</script>",
       );
+      */
       
       /*
        $element['takepart_calendar_html'] = array(
