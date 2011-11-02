@@ -4,7 +4,7 @@ $databases = array (
     array (
       'default' =>
         array (
-          'database' => 'takepart',
+          'database' => 'takepart_standbylane',
           'username' => 'takepart',
           'password' => 'GkA29UFJeumGLB',
           'host' => '172.17.128.100',
@@ -14,7 +14,7 @@ $databases = array (
         ),
       'slave' =>
         array (
-          'database' => 'takepart',
+          'database' => 'takepart_standbylane',
           'username' => 'takepart-slave',
           'password' => '7mEwdni8tbcXBQ',
           'host' => '172.17.128.111',
@@ -52,8 +52,8 @@ $conf['memcache_bins'] = array(
 require_once('sites/all/modules/contrib/fb/fb_settings.inc');
 
 // $conf['memcache_key_prefix'] = 'lane_b';
-// 
+
 // $conf['memcache_options'] = array(
 //  Requires Memcached 1.4 or greater - enables binary protocal (faster).
 //  Memcached::OPT_BINARY_PROTOCOL => TRUE
-// ); 
+// );
