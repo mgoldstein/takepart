@@ -31,5 +31,7 @@ $conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.in
 //  Memcached::OPT_BINARY_PROTOCOL => TRUE
 // ); 
 
+require_once('sites/all/modules/contrib/fb/fb_settings.inc');
+
 ini_set('error_reporting', !E_NOTICE & !E_WARNING);
 ini_set('memory_limit','512M');
