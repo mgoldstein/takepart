@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Each item of the array should be keyed as follows:
