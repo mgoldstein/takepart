@@ -100,3 +100,16 @@ jQuery(document).ready(function() {
     });    
   }};
 })(jQuery);
+
+//Fix for dhtml menus:
+jQuery(document).ready(function() {
+    jQuery('div > ul.menu > li').each(function() {
+	jQuery(this).mouseleave(function() {
+		jQuery(this).parent().children().each(function() {
+			jQuery(this).addClass( 'collapsed' );
+			jQuery(this).removeClass( 'expanded' );
+			jQuery(this).children('ul').hide();
+		});
+	});
+    });
+});

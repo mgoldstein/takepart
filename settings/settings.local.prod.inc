@@ -48,7 +48,12 @@ $conf['memcache_bins'] = array(
       'session' => 'default',
       'users' => 'default',
 );
- // $conf['memcache_options'] = array(
-    //  //  Requires Memcached 1.4 or greater - enables binary protocal (faster).
-    //  Memcached::OPT_BINARY_PROTOCOL => TRUE
-    // ); 
+
+require_once('sites/all/modules/contrib/fb/fb_settings.inc');
+
+// $conf['memcache_key_prefix'] = 'lane_b';
+// 
+// $conf['memcache_options'] = array(
+//  Requires Memcached 1.4 or greater - enables binary protocal (faster).
+//  Memcached::OPT_BINARY_PROTOCOL => TRUE
+// ); 
