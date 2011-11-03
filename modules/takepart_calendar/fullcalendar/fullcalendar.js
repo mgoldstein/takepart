@@ -4650,8 +4650,8 @@ function DayEventRenderer() {
 			
 			
 			var dateNow = new Date();
-			if((dateNow.getMonth() == event.start.getMonth()) && (dateNow.getDay() == event.start.getDay())){ 
-				classes.push('fc-today');
+			if((dateNow.getMonth() == event.start.getMonth()) && (dateNow.getDate() == event.start.getDate())){ 
+				classes.push('fc-today-computed');
 			}
 			
 			

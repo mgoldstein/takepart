@@ -256,7 +256,7 @@ body.sidebar-first #content{
 	width:  125px;
 	padding: 0 0 0px 0;
 	position: absolute;
-	top: 20px;
+	top: 11px;
 	left: 0px;
 }
 
@@ -2590,8 +2590,10 @@ h2.title a{
 
 .block-view-also-see h2,
 .block-boxes-view-name-related_actions h2,
+.block-boxes-title-take-action h2,
 .block-boxes-view-name-related_content h2,
 .block-boxes-bid-views-related_campaigns-block_1 h2,
+.block-boxes-bid-views-related_campaigns-block_2 h2,
 .block-boxes-current-related_campaigns h2,
 .block-boxes-delta-related_actions-block h2,
 .block-boxes-bid-views-related_actions-block h2,
@@ -4153,8 +4155,12 @@ body.page-node .article-campaign-blocks .article-campaign-blocks-block, body.nod
 body.front #highlighted {background: none; padding: 0;}
 
 body.node-type-takepart-campaign {
-    background: #eff3f5 url(../images/bg-page-cv.png) repeat-x;
+    background: #eff3f5 url(../images/bg-page-cv.png) repeat-x 0 -5px;
 }
+body.node-type-takepart-campaign.multipage-campaign {
+    background: #eff3f5 url(../images/bg-page-cv.png) repeat-x 0 0;
+}
+
 
 .page-node-1204 #highlighted {
 	margin-bottom: -35px;
@@ -4162,22 +4168,10 @@ body.node-type-takepart-campaign {
 
 #boxes-box-box-2988d8fb {/*margin-top: 22px;*/}
 
-body.node-type-takepart-campaign
-#join-login-top #user-nav {margin: 4px 0 0 10px;}
-
 #slim-header.multipage-campaign #join-login-top #user-nav {margin: 9px 0 0 0;}
-
-body.node-type-takepart-campaign
-a.user-menu-register {background: none; padding-left: 0;}
-
-body.node-type-takepart-campaign
-#join-login-top a {font-size: 11px; line-height: normal;}
-
-body.node-type-takepart-campaign #top-search {
-	margin: 4px 0 0 0;
-	float: right;
-}
-
+#slim-header.multipage-campaign #join-login-top #user-nav a{background: none; padding-left: 0;font-size: 11px; line-height: normal;} 
+ 
+ 
 body.node-type-takepart-campaign #highlighted {
 	padding-bottom: 0;
 }
