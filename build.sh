@@ -42,20 +42,8 @@ echo "BASE $BASE"
 #DRupal is drupal inside of the repo container, update if the drupal folder name is updated
 DRUPAL=$TARGET 
 echo "Grupal $DRUPAL"
+exit 0
 
-
-#exit 0
-
-#Empty the current site
-#rm -rf $TARGET
-#mkdir $TARGET
-#DRUPAL=`cd $TARGET/drupal;pwd`
-
-
-#ln -s $CALLPATH/$TARGET/drupal $CALLPATH/drupal
-
-#pull the new stuff
-#cd $TARGET
 rm $DRUPAL/robots.txt
 ln -s $DRUPAL html
 ln -s $CALLPATH/settings/robots.dev.txt $DRUPAL/robots.txt
