@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Share feature.
- */
-
-include_once('takepart_share.features.inc');

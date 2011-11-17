@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Article feature.
- */
-
-include_once('takepart_page.features.inc');

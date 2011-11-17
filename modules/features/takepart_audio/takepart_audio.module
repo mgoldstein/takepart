@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Audio feature.
- */
-
-include_once('takepart_audio.features.inc');

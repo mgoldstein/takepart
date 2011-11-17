@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Image styles feature.
- */
-
-include_once('takepart_image_styles.features.inc');

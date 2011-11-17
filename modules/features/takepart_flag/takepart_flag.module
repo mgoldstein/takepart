@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the takepart_flag feature.
- */
-
-include_once('takepart_flag.features.inc');
