@@ -32,8 +32,11 @@ if [ -z "$TARGET" ]; then
 fi
 
 # Do the build
+#CALLPATH should be the repo root
 CALLPATH=`dirname $0`
+#BASE should be the shiva container
 BASE=`cd $CALLPATH; cd ../; pwd`
+#DRupal is drupal inside of the repo container, update if the drupal folder name is updated
 DRUPAL=`cd $CALLPATH/drupal; pwd` 
 echo "BASE $BASE"
 echo "Callpath $CALLPATH"
@@ -49,13 +52,13 @@ echo "Grupal $DRUPAL"
 #DRUPAL=`cd $TARGET/drupal;pwd`
 
 
-ln -s $CALLPATH/$TARGET/drupal $CALLPATH/drupal
+#ln -s $CALLPATH/$TARGET/drupal $CALLPATH/drupal
 
 #pull the new stuff
-cd $TARGET
-rm -rf $DRUPAL/robots.txt
+#cd $TARGET
+rm $DRUPAL/robots.txt
 ln -s $DRUPAL html
-ln -s $TARGET/settings/robots.dev.txt $DRUPAL/robots.txt
+ln -s $CALLPATH/settings/robots.dev.txt $DRUPAL/robots.txt
 ln -s /opt/development/files/www.takepart.com-extra/flash $DRUPAL/flash
 ln -s /opt/development/files/www.takepart.com-extra/help_app $DRUPAL/help_app
 ln -s /opt/development/files/www.takepart.com-extra/images $DRUPAL/images
