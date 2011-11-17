@@ -26,12 +26,12 @@ else
   TARGET=$1
 fi
 # Make sure we have a target directory
-if [ -z "$TARGET" ]; then
-  echo "usage $0 target_build_dir"  
-  exit 2
-fi
+#if [ -z "$TARGET" ]; then
+#  echo "usage $0 target_build_dir"  
+#  exit 2
+#fi
 
-# Do the build
+# Work only with callback 
 echo "Target $TARGET"
 #CALLPATH should be the repo root
 CALLPATH=`dirname $0`
@@ -40,13 +40,17 @@ echo "Callpath $CALLPATH"
 BASE=`cd $CALLPATH; cd ../; pwd`
 echo "BASE $BASE"
 #DRupal is drupal inside of the repo container, update if the drupal folder name is updated
-DRUPAL=$TARGET 
+DRUPAL=$CALLPATH 
 echo "Grupal $DRUPAL"
-exit 0
+#exit 0
 
-rm $DRUPAL/robots.txt
 ln -s $DRUPAL html
-ln -s $CALLPATH/settings/robots.dev.txt $DRUPAL/robots.txt
+
+cd $DRUPAL
+if [ -e ./robots.txt ]; then
+  rm robots.txt
+  ln -s $CALLPATH/settings/robots.dev.txt $DRUPAL/robots.txt
+fi
 ln -s /opt/development/files/www.takepart.com-extra/flash $DRUPAL/flash
 ln -s /opt/development/files/www.takepart.com-extra/help_app $DRUPAL/help_app
 ln -s /opt/development/files/www.takepart.com-extra/images $DRUPAL/images
