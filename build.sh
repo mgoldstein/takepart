@@ -40,7 +40,7 @@ echo "Callpath $CALLPATH"
 BASE=`cd $CALLPATH; cd ../; pwd`
 echo "BASE $BASE"
 #DRupal is drupal inside of the repo container, update if the drupal folder name is updated
-DRUPAL=$CALLPATH 
+DRUPAL=`cd "$CALLPATH/drupal"; pwd` 
 echo "Grupal $DRUPAL"
 #exit 0
 
@@ -51,10 +51,10 @@ if [ -e ./robots.txt ]; then
   rm robots.txt
   ln -s $CALLPATH/settings/robots.dev.txt $DRUPAL/robots.txt
 fi
-ln -s /opt/development/files/www.takepart.com-extra/flash $DRUPAL/flash
-ln -s /opt/development/files/www.takepart.com-extra/help_app $DRUPAL/help_app
-ln -s /opt/development/files/www.takepart.com-extra/images $DRUPAL/images
-ln -s /opt/development/files/www.takepart.com-extra/js $DRUPAL/js
-ln -s /opt/development/files/www.takepart.com-extra/tsign_apps $DRUPAL/tsign_apps
+#ln -s /opt/development/files/www.takepart.com-extra/flash $DRUPAL/flash
+#ln -s /opt/development/files/www.takepart.com-extra/help_app $DRUPAL/help_app
+#ln -s /opt/development/files/www.takepart.com-extra/images $DRUPAL/images
+#ln -s /opt/development/files/www.takepart.com-extra/js $DRUPAL/js
+#ln -s /opt/development/files/www.takepart.com-extra/tsign_apps $DRUPAL/tsign_apps
 
 echo "$0 successfully finished."
