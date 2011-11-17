@@ -40,7 +40,7 @@ echo "Callpath $CALLPATH"
 BASE=`cd $CALLPATH; cd ../; pwd`
 echo "BASE $BASE"
 #DRupal is drupal inside of the repo container, update if the drupal folder name is updated
-DRUPAL=`cd $CALLPATH/drupal; pwd` 
+DRUPAL=`cd $CALLPATH; cd drupal; pwd` 
 echo "Grupal $DRUPAL"
 
 
