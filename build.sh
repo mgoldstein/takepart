@@ -32,15 +32,15 @@ if [ -z "$TARGET" ]; then
 fi
 
 # Do the build
+echo "Target $TARGET"
 #CALLPATH should be the repo root
 CALLPATH=`dirname $0`
+echo "Callpath $CALLPATH"
 #BASE should be the shiva container
 BASE=`cd $CALLPATH; cd ../; pwd`
+echo "BASE $BASE"
 #DRupal is drupal inside of the repo container, update if the drupal folder name is updated
 DRUPAL=`cd $CALLPATH/drupal; pwd` 
-echo "BASE $BASE"
-echo "Callpath $CALLPATH"
-echo "Target $TARGET"
 echo "Grupal $DRUPAL"
 
 
