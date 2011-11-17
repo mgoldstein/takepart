@@ -1,20 +1,16 @@
 #!/bin/sh
-# Script to build the Ready.gov site.
-
+# Script to build the site.
 function usage()
 {
   echo "Usage $0 [--prod] target_build_dir \n  Or: $0 [--rebuild] target_build_dir"
 }
-
 #echo "PRvidaded arguments \$1=$1 and \$2=$2"
 # Make sure the correct number of args was passed from the command line
 if [ $# -eq 0 ]; then
   echo "usage $0 [--prod] target_build_dir \n  Or: $0 [--rebuild] target_build_dir"
   exit 1
 fi
-
 echo "dollar1=$1"
-
 # Initialize variables based on target environment
 if [ "$1" = "--prod" ]; then
   DRUSH_OPTS=
@@ -30,7 +26,6 @@ fi
 #  echo "usage $0 target_build_dir"  
 #  exit 2
 #fi
-
 # Work only with callback 
 echo "Target $TARGET"
 #CALLPATH should be the repo root
@@ -46,7 +41,6 @@ echo "Grupal $DRUPAL"
 #add mem to the settings
 echo "ini_set('memory_limit','320M')" >> $BASE/settings.local.inc
 ln -s $DRUPAL html
-
 cd $DRUPAL
 if [ -e ./robots.txt ]; then
   rm robots.txt
@@ -59,5 +53,4 @@ ln -s /opt/development/files/www.takepart.com-extra/js $DRUPAL/js
 ln -s /opt/development/files/www.takepart.com-extra/tsign_apps $DRUPAL/tsign_apps
 ln -s ../../../../settings.local.inc sites/default/settings.local.inc
 ln -s ../../../../files sites/default/files
-
 #echo "$0 successfully finished."
