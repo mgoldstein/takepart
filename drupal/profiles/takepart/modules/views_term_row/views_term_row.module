@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * Implements hook_views_plugins().
+ */
+
+function views_term_theme() {
+  
+}
+function views_term_row_views_plugins() {
+  return array(
+    'module' => 'views', // This just tells our themes are elsewhere.
+    'row' => array(
+      'term' => array(
+        'title' => t('Content'),
+        'help' => t('Display the content with standard term view.'),
+        'handler' => 'views_plugin_term_view',
+        //'path' => drupal_get_path('module', 'views') . '/modules/term', // not necessary for most modules
+        'theme path' => drupal_get_path('module', 'views_term_row'), // not necessary for most modules
+        'theme' => 'views_view_row_term',
+        'base' => array('taxonomy_term'), // only works with 'term' as base.
+        'uses options' => TRUE,
+        'type' => 'normal',
+        //'help topic' => 'style-term',
+      ),
+    ),
+  );
+}
+

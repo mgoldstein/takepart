@@ -1,0 +1,7 @@
+name = "Boxes"
+description = "Provides exports for custom blocks and spaces integration."
+core = 7.x
+dependencies[] = "ctools"
+
+files[] = boxes.module
+files[] = tests/boxes.test

@@ -1,0 +1,6 @@
+; $ID:$
+
+name = "Node Connect"
+description = Allows for referenced nodes to be created and edited from the node reference field
+core = "7.x"
+dependencies[] = node_reference

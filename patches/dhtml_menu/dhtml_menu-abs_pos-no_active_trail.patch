@@ -1,0 +1,28 @@
+diff --git a/dhtml_menu.js b/dhtml_menu.js
+index 806a1f6..66b7370 100644
+--- a/dhtml_menu.js
++++ b/dhtml_menu.js
+@@ -29,6 +29,8 @@ Drupal.behaviors.dhtmlMenu = {
+ 
+     // Sanitize by removing "expanded" on menus already marked "collapsed".
+     $('li.dhtml-menu.collapsed.expanded').removeClass('expanded');
++    // Remove active trail
++    $('li.dhtml-menu.active-trail.expanded').removeClass('expanded').removeClass('active-trail').addClass('start-collapsed');
+ 
+     /* Relevant only on "open-only" menus:
+      * The links of expanded items should be marked for emphasis.
+@@ -125,9 +127,13 @@ Drupal.behaviors.dhtmlMenu = {
+          */
+         else if (settings.nav == 'hover') {
+           link.mouseenter(function(e) {
++              if (li.hasClass('active-trail') && li.hasClass('expanded')) {
++                li.removeClass('expanded').addClass('start-collapsed');
++                li.removeClass('active-trail');
++              }
+               Drupal.dhtmlMenu.switchMenu(li, link, ul, true);
+           });
+-          li.mouseleave(function(e) {
++          ul.mouseleave(function(e) {
+             // Only collapse the menu if it was initially collapsed.
+             if (li.hasClass('start-collapsed')) {
+               /* As explained earlier, this event fires before the body event.

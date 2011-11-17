@@ -1,0 +1,9 @@
+name= FB User Tracking
+description = (fb_user_app.module) Keep records of users most recent visits to your apps.  Note that this adds some overhead to each app visit.
+package = Drupal for Facebook - contrib
+configure = admin/structure/fb/fb_user_app
+core = 7.x
+dependencies[] = fb
+dependencies[] = fb_app
+
+files[] = fb_user_app.module

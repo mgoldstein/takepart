@@ -1,0 +1,6 @@
+name = TakePart Action and Impact Calendar
+description = A Calendar Field for Drupal 7
+package = Fields
+core = 7.x
+files[] = takepart_calendar.module
+files[] = takepart_calendar.install

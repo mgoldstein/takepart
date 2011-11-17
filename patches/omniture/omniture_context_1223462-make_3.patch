@@ -1,0 +1,148 @@
+diff --git omniture.module b/omniture.module
+index 0397168..961a429 100644
+--- omniture.module
++++ omniture.module
+@@ -135,14 +135,16 @@ function _omniture_format_variables(array $variables = array()) {
+       // Use the last element.
+       $value = end($value);
+     }
+-
++    
+     if (isset($extra_variables[$key])) {
+       $value = $extra_variables[$key];
+     }
+-
+-    $key = check_plain($key);
+-    $value = check_plain($value);
+-    $variables_formatted .= "{$key}=\"{$value}\";\n";
++    
++    if (isset($value)) {
++      $key = check_plain(trim($key));
++      $value = check_plain(trim($value));
++      $variables_formatted .= "{$key}=\"{$value}\";\n";
++    }
+   }
+   return $variables_formatted;
+ }
+@@ -232,7 +234,6 @@ function omniture_admin_settings() {
+  */
+ function omniture_set_variable($name = NULL, $value = NULL) {
+   $variables = &drupal_static(__FUNCTION__, array());
+-
+   if (empty($name)) {
+     return $variables;
+   }
+@@ -244,3 +245,51 @@ function omniture_set_variable($name = NULL, $value = NULL) {
+ function omniture_get_variables() {
+   return omniture_set_variable();
+ }
++
++
++/**
++ * Implements hook_context_plugins().
++ */
++function omniture_context_plugins() {
++  $plugins = array();
++  $plugins['omniture_reaction'] = array(
++    'handler' => array(
++      'path' => drupal_get_path('module', 'omniture') .'/plugins',
++      'file' => 'omniture_reaction.inc',
++      'class' => 'omniture_reaction',
++      'parent' => 'context_reaction',
++    ),
++  );
++  return $plugins;
++}
++
++/**
++ * Implements hook_context_registry().
++ */
++function omniture_context_registry() {
++  $reg = array(
++    'reactions' => array(
++      'omniture_reaction' => array(
++        'title' => t('Omniture'),
++        'plugin' => 'omniture_reaction',
++      ),
++    ),
++  );
++  return $reg;
++}
++
++/**
++ * Implements hook_omniture_variables().
++ */
++function omniture_omniture_variables() {
++  
++  //check if context is enabled
++  if (function_exists('context_get_plugin') ){
++    //get variables from context 
++    if ($plugin = context_get_plugin('reaction', 'omniture_reaction')) {
++      $variables = $plugin->execute();
++      return array("variables" => $variables);
++    } 
++  }
++}
++
+diff --git plugins/omniture_reaction.inc b/plugins/omniture_reaction.inc
+new file mode 100644
+index 0000000..8a777a9
+--- /dev/null
++++ plugins/omniture_reaction.inc
+@@ -0,0 +1,56 @@
++<?php
++class omniture_reaction extends context_reaction {
++  /*
++   * implements context_reaction::options_form()
++   *
++   * Add a text area for placing variables as well as a
++   * token help section that show all of avaiable tokens
++   */
++  function options_form($context) {
++    $settings = $this->fetch_from_context($context);
++    $form = array(
++      '#title' => 'Omniture Variables',
++      '#type' => 'fieldset'
++    );
++    $form['variables'] = array(
++      '#title' => 'Name',
++      '#type' => 'textarea',
++      '#description' => t('A list of variables to set for omniture each line should be of the form VARIABLE = VALUE.  tokens can be used for the value. variables examples are s.eVar10 or s.prop5'),
++      '#default_value' => isset($settings['variables'])? $settings['variables'] : 0,
++    );
++    $form['token_help'] = array(
++      '#theme' => 'token_tree',
++      '#token_types' => array('node'),
++
++    );
++    return $form;
++  }
++
++  /*
++   * implements context_reaction::execute()
++   *
++   * go through all active context and covert the 
++   * stored text in to variables. making sure we replace tokens
++   * before for sending it out
++   */
++  function execute() {
++    $settings = array();
++    //grab the node object so we can use node tokens
++    $node = menu_get_object();
++    foreach ($this->get_contexts() as $context) {
++      if (isset($context->reactions[$this->plugin])) {
++        $settings = $context->reactions[$this->plugin]['variables'];
++        $settings = token_replace($settings, array("node" => $node));
++        $lines = explode("\n", $settings);
++        foreach($lines as $line) {
++          if(preg_match("/^ *(.*?) *= *(.*?) *$/", $line, $match)) {
++            $variables[$match[1]] = $match[2];
++            
++          }
++        }
++      }
++    }
++    return $variables;
++  }
++
++}

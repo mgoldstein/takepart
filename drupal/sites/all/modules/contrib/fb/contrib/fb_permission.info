@@ -1,0 +1,7 @@
+name= FB Extended Permissions
+description = (fb_permission.module) Host applications that require or support <a href=http://developers.facebook.com/docs/authentication/permissions target=_blank>Extended Permissions</a>.
+package = Drupal for Facebook - contrib
+dependencies[] = fb
+dependencies[] = fb_app
+core = 7.x
+files[] = fb_permission.module

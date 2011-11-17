@@ -1,0 +1,7 @@
+name = FB Registration
+description = (fb_registration.module) Use the <a href=http://developers.facebook.com/docs/user_registration target=_blank>registration</a> feature.
+package = Drupal for Facebook - contrib
+core = 6.x
+dependencies[] = fb
+dependencies[] = fb_app
+

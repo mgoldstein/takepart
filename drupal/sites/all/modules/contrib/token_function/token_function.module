@@ -1,0 +1,122 @@
+<?php
+
+function token_function_token_info() {
+  $info['types']['f'] = array(
+    'name'=> t('Functions'),
+    'description' => t("Proform a function with passed in params one can use {} for tokens inside of the function.  function will be of the form [f:FUNCTIONAME:PARAM1:PARAM2"),
+  );
+  $info['tokens']['f']['cap'] = array(
+    'name' => t('Capitalize'),
+    'description' => t("Capitalizes the value. ") . token_function_help(1),
+    'dynamic' => TRUE,
+    'function' => 'strtoupper',
+  );
+  $info['tokens']['f']['substr'] = array(
+    'name' => t('Sub string'),
+    'description' => t('Return part of the first parameter. '). token_function_help(3),
+    'dynamic' => TRUE,
+    'function' => 'substr',
+  );
+  $info['tokens']['f']['bool'] = array(
+    'name' => t('Boolean'),
+    'description' => t('See if somethings is True or false (empty or 0 would be false), a second and third param can be use for what to return when true and false respectively'),
+    'dynamic' => TRUE,
+    'function' => 'token_function_bool',
+  );
+
+
+  return $info;
+}
+function token_function_token_info_alter(&$info) {
+  $info['tokens']['current-page']['url-arg'] = array(
+    'name' => t('URL Argument'),
+    'description' => t('Return the x item in the URL (eg. url-arg:0 on the page news/baseball-rocks would return news), and accept a negative number.'),
+    'dynamic' => TRUE,
+    'function' => 'token_function_url_arg',
+  );
+}
+
+/*
+ * token function for bool token
+ *
+ * PARAM bool : a value that can be true or false
+ * PARAM true : the return value if true
+ * PARAM false : the return value if false
+ * RETURN: either the $true or $false value
+ */
+function token_function_bool($bool, $true= 'TRUE', $false = "FALSE") {
+  return (bool) $bool ? $true : $false;
+}
+
+/*
+ * token function for url-arg token
+ *
+ * PARAM: an index of the url part to pull
+ * RETURN: the $index's term of the url
+ */
+function token_function_url_arg($index) {
+  $url = url($_GET['q']);
+  $args = explode("/", $url);
+
+  //remove empty first term (if url starts with /
+  if(!$args[0]) {
+    array_shift($args);
+  }
+
+  // if the index is negative lets count back
+  // from the end of the url
+  if ($index < 0) {
+    $args = array_reverse($args);
+    $index = ($index + 1) * -1;
+  }
+
+  return $args[$index];
+}
+
+function token_function_help($count) {
+  return t("This is a function token it takes @count arguments. This arguements are seperated by :.  These arguments can be a token but, you must used {} instead of [].  The can not be spaces in your params.", array("@count" => $count));
+}
+
+/**
+ * Implements hook_tokens().
+*/
+function token_function_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+  $f_token_types = token_function_function_tokens();
+  if(isset($f_token_types[$type])) {
+   foreach ($f_token_types[$type] as $f_token_name => $func) {
+      $f_tokens = token_find_with_prefix($tokens, $f_token_name);
+      foreach($f_tokens as $param => $token) {
+        //split up params on any : not in a {}
+        $params = preg_split("/:(?![^{}]*})/", $param);
+        foreach($params as $i => $param) {
+          $param = str_replace(array("{","}"), array("[","]"), $param);
+          $params[$i] = token_replace($param, $data);
+        }
+        if(is_array($func)) {
+          $path = DRUPAL_ROOT . "/" . $func['file'];
+          require_once $path;
+          $replacements[$token] = call_user_func_array($func['function'], $params);
+        }
+        else {
+          $replacements[$token] = call_user_func_array($func, $params);
+        }
+      }
+    }
+  }
+  return $replacements;
+}
+
+function token_function_function_tokens() {
+  $infos = token_info();
+  $tokens = array();
+  foreach($infos['tokens'] as $type => $info) {
+    foreach($info as $name => $value) {
+      if (isset($value['function'])) {
+        $tokens[$type][$name] = $value['function'];
+      }
+    }
+  }
+  return $tokens;
+}
+

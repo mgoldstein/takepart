@@ -1,0 +1,4 @@
+core = "7.x"
+description = "Provides a context condition to be set by a bool field on a node"
+name = "Context Bool Field"
+package = "Context"

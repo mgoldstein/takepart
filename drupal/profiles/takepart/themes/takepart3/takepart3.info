@@ -1,0 +1,32 @@
+
+name = TakePart 3.0 Theme
+description = The TakePart theme
+core = 7.x
+engine = phptemplate
+
+; Stylsheets
+stylesheets[all][] = css/style.css
+stylesheets[all][] = css/custom.css
+stylesheets-conditional[lte IE 7][all][] = css/ie7.css
+
+; Javascript
+scripts[] = js/script.js
+
+features[] = favicon
+
+; Defaults
+regions[header] = Header
+regions[top_nav] = Top Navigation
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[content] = Content
+regions[sidebar_first] = Left sidebar
+regions[sidebar_second] = Right sidebar
+regions[footer] = Footer
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+
+; Custom regions
+regions[content_top]  = Content top
+regions[content_bottom]  = Content bottom
+regions[content_footer]  = Content footer

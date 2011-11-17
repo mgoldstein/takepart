@@ -1,0 +1,6 @@
+name = Field Boxes
+descriptions = Provides a box type that pulls a field from an entity.A
+dependancies[] = 'boxes'
+dependancies[] = 'entity_autocomplete'
+core = 7.x
+

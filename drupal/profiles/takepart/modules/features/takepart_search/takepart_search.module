@@ -1,0 +1,34 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Search feature.
+ */
+
+include_once('takepart_search.features.inc');
+
+function takepart_search_form_search_api_page_search_form_2_alter(&$form, &$form_state, $form_id) {
+  $form['keys_2']['#default_value'] = 'Search TakePart';
+  $form['keys_2']['#attributes'] = array('onfocus' => array("if(this.value=='" . t('Search TakePart') . "'){this.value=''};"));
+  $form['submit_2']['#attributes'] = array('class' => array('tpform-submit'));
+  // On the 404 page, unset any form tokens so that we bypass attempted validation ( and give a warning to authenticated users )
+  if (request_uri() == '/' . drupal_get_normal_path(variable_get('static_404', ''))) {
+    unset($form['form_token']); 
+    unset($form['#token']);
+  }
+}
+
+function takepart_search_form_search_api_page_search_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['form']['keys_2']['#default_value'])) {
+    $form['form']['keys_2']['#title'] = t('Search:') . '<span class="search-term"> ' . $form['form']['keys_2']['#default_value'] . '</span>';
+  }
+}
+
+/**
+ * Lets modules alter a search query before executing it.
+ *
+ * @param SearchApiQueryInterface $query
+ *   The SearchApiQueryInterface object representing the search query.
+ */
+function takepart_search_search_api_query_alter($query) {
+  $query->condition('status', 1, "=");
+}

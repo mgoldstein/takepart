@@ -1,0 +1,13 @@
+name = "Views Arguments Extras"
+description = "Adds extra to Views around arguments"
+core = "7.x"
+dependencies[] = views
+dependencies[] = ctools
+files[] = views_plugin_argument_default_field.inc
+files[] = views_plugin_argument_default_request_params.inc
+files[] = views_sort_by_arg_order_handler_sort.inc
+
+package = "Views"
+
+
+

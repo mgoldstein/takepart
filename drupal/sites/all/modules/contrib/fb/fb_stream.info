@@ -1,0 +1,5 @@
+name = FB Streams
+description = (fb_stream.module) APIs for posting to <a href=http://developers.facebook.com/docs/guides/canvas/#stream target=_blank>Facebook Streams</a> (a.k.a. News Feed or Wall)
+package = Drupal for Facebook
+dependencies[] = fb
+core = 6.x

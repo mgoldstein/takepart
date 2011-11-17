@@ -1,0 +1,139 @@
+<?php
+/**
+ * @file
+ * Provides a field formatter to redirect to another path.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function field_redirection_permission() {
+  return array(
+    'bypass redirection' => array(
+      'title' => t('Bypass Redirection'),
+      'description' => t('Allow the user to see the page this field belongs to and <em>not</em> redirect to the given path; the user will instead be provided a link to the path.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function field_redirection_field_formatter_info() {
+  return array(
+    'field_redirection' => array(
+      'label' => t('Redirect'),
+      'settings' => array('code'=>'301'),
+      'field types' => array('link_field', 'node_reference', 'user_reference'),
+    ),
+  );
+}
+
+/*
+ * implementation of hook_field_formatter_settings_from()
+ */
+function field_redirection_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $form['code'] = array(
+    '#title' => 'HTTP status code',
+    '#type' => 'select',
+    '#options' => field_redirection_http_codes(),
+    '#default_value' => $settings['code'],
+  );
+  return $form;
+}
+function field_redirection_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $codes = field_redirection_http_codes();
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  return $codes[$settings['code']];
+}
+
+function field_redirection_http_codes() {
+  return array(
+    '300' => t('HTTP status code 300 - rarely used'),
+    '301' => t('HTTP status code 301 - permanently moved'),
+    '302' => t('HTTP status code 302 - rarely used'),
+    '303' => t('HTTP status code 303 - rarely used'),
+    '304' => t('HTTP status code 304 - rarely used'),
+    '305' => t('HTTP status code 305 - rarely used'),
+    '307' => t('HTTP status code 307 - temporarily moved'),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ *
+ * If we have a node reference and we can redirect to it lets do it!
+ */
+function field_redirection_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+
+  // Only proceed if there's data.
+  if (!empty($items[0])) {
+    // There are different types of formatter allowed.
+    $element = field_redirection_goto($field['type'], $items[0], $settings['code']);
+  }
+  return $element;
+}
+
+/**
+ * Redirect to the destination value from a given field.
+ *
+ * @param $type
+ *   The type of field used
+ * @param $item
+ *   The field data to work on.
+ * @param $response_code
+ *   The HTTP Response Code to use, defaults to "301".
+ */
+function field_redirection_goto($type, $item, $response_code = 301) {
+  $element = array();
+
+  // Work out the destination path to redirect to.
+  $path = '';
+  if (!empty($type)) {
+    switch ($type) {
+      // Link field.
+      case 'link_field':
+        if (!empty($item['url'])) {
+          $path = $item['url'];
+        }
+        break;
+
+      // Node reference field.
+      case 'node_reference':
+        if (!empty($item['nid'])) {
+          $path = 'node/' . $item['nid'];
+          //insure path is valid
+          $path = drupal_valid_path($path) ? $path : '';
+          
+        }
+        break;
+
+      // User reference field.
+      case 'user_reference':
+        if (!empty($item['uid'])) {
+          $path = 'user/' . $item['uid'];
+          //insure path is valid
+          $path = drupal_valid_path($path) ? $path : '';
+        }
+        break;
+    }
+  }
+  // Only proceed if a path was identified.
+  if (!empty($path)) {
+    // If the user has permission to bypass the page redirection, return a
+    // message explaining where they would have been redirected to.
+    if (user_access('bypass redirection')) {
+      drupal_set_message(t('This page is set to redirect to <a href="!path">another URL</a>, but you have permission to see the page and not be automatically redirected.', array('!path' => $path)), 'warning');
+    }
+    else {
+      drupal_goto($path, array(), $response_code);
+    }
+  }
+
+  return $element;
+}

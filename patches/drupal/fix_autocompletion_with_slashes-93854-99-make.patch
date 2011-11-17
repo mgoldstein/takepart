@@ -1,0 +1,99 @@
+From 462aa9ca6144f37d44a88e92d98ba87fdb2f2ec0 Mon Sep 17 00:00:00 2001
+From: Bob Vincent <bobvin@pillars.net>
+Date: Thu, 19 May 2011 13:17:56 -0400
+Subject: [PATCH] Issue #93854 by moonray, becw, Dave Reid, pounard, das-peter, Steven Jones, c960657: Fix autocompletion of taxonomy terms with slashes.
+
+---
+ includes/form.inc                |    2 +-
+ misc/autocomplete.js             |    2 +-
+ modules/taxonomy/taxonomy.module |    5 +++--
+ modules/taxonomy/taxonomy.test   |   25 +++++++++++++++++++++++++
+ 4 files changed, 30 insertions(+), 4 deletions(-)
+
+diff --git includes/form.inc includes/form.inc
+index 40363d6a738e9b0f373f4f8179898a45a91de928..bf98085f04d7e74102f7d2cab23723c84ea9e800 100644
+--- includes/form.inc
++++ includes/form.inc
+@@ -3661,7 +3661,7 @@ function theme_textfield($variables) {
+   _form_set_class($element, array('form-text'));
+ 
+   $extra = '';
+-  if ($element['#autocomplete_path'] && drupal_valid_path($element['#autocomplete_path'])) {
++  if ($element['#autocomplete_path'] && drupal_valid_path($element['#autocomplete_path'] . '/dummy')) {
+     drupal_add_library('system', 'drupal.autocomplete');
+     $element['#attributes']['class'][] = 'form-autocomplete';
+ 
+diff --git misc/autocomplete.js misc/autocomplete.js
+index 5e85be44fc5f372e1d4a6ccc4cef2454e3be7376..da3b82074dcf399dc3fa1cd798b36bfb09e91176 100644
+--- misc/autocomplete.js
++++ misc/autocomplete.js
+@@ -290,7 +290,7 @@ Drupal.ACDB.prototype.search = function (searchString) {
+     // Ajax GET request for autocompletion.
+     $.ajax({
+       type: 'GET',
+-      url: db.uri + '/' + encodeURIComponent(searchString),
++      url: db.uri + '/' + Drupal.encodePath(searchString),
+       dataType: 'json',
+       success: function (matches) {
+         if (typeof matches.status == 'undefined' || matches.status != 0) {
+diff --git modules/taxonomy/taxonomy.module modules/taxonomy/taxonomy.module
+index eb81870f998395c64ff8d1a69bb7f145e661478e..2915272be61f81d2c066bb41dc2bbe1d9f2df8ea 100644
+--- modules/taxonomy/taxonomy.module
++++ modules/taxonomy/taxonomy.module
+@@ -312,14 +312,15 @@ function taxonomy_menu() {
+     'type' => MENU_CALLBACK,
+     'file' => 'taxonomy.pages.inc',
+   );
+-  $items['taxonomy/autocomplete'] = array(
++  $items['taxonomy/autocomplete/%/%menu_tail'] = array(
+     'title' => 'Autocomplete taxonomy',
+     'page callback' => 'taxonomy_autocomplete',
++    'page arguments' => array(2, 3),
+     'access arguments' => array('access content'),
+     'type' => MENU_CALLBACK,
+     'file' => 'taxonomy.pages.inc',
++    'load arguments' => array('%map', '%index'),
+   );
+-
+   $items['admin/structure/taxonomy/%taxonomy_vocabulary_machine_name'] = array(
+     'title callback' => 'taxonomy_admin_vocabulary_title_callback',
+     'title arguments' => array(3),
+diff --git modules/taxonomy/taxonomy.test modules/taxonomy/taxonomy.test
+index aa7cc2e44a68943f66c446aa3835274301f65ffa..d52664df23f2b33829b5c6f12e552022c3eccd6a 100644
+--- modules/taxonomy/taxonomy.test
++++ modules/taxonomy/taxonomy.test
+@@ -641,6 +641,31 @@ class TaxonomyTermTestCase extends TaxonomyWebTestCase {
+   }
+ 
+   /**
++   * Test term autocompletion edge cases.
++   */
++  function testTermAutocompletion() {
++    $base_len = 5;
++    $base = $this->randomName($base_len);
++    // Add a term with a slash in the name.
++    $first_term = $this->createTerm($this->vocabulary);
++    $first_term->name = $base . '/' . $this->randomName();
++    taxonomy_term_save($first_term);
++    // Add another term that differs after the slash character.
++    $search_term = $this->createTerm($this->vocabulary);
++    $search_term->name = $base . '/' . $this->randomName();
++    taxonomy_term_save($search_term);
++
++    // Try to autocomplete a term name that contains a slash.
++    // We should only get a single term returned.
++    $input = substr($search_term->name, 0, $base_len + 3);
++    $url = 'taxonomy/autocomplete/taxonomy_';
++    $url .= $this->vocabulary->machine_name . '/' . $input;
++    $this->drupalGet($url);
++    $target = array($search_term->name => check_plain($search_term->name));
++    $this->assertRaw(drupal_json_encode($target), t('Autocomplete returns term %term_name after typing the first %num letters, including a slash in the name.', array('%term_name' => $search_term->name, '%num' => $base_len + 3)));
++  }
++
++  /**
+    * Save, edit and delete a term using the user interface.
+    */
+   function testTermInterface() {
+-- 
+1.7.4.1
+
