@@ -41,6 +41,11 @@ BASE=`cd $CALLPATH; cd ../; pwd`
 echo "BASE $BASE"
 #DRupal is drupal inside of the repo container, update if the drupal folder name is updated
 DRUPAL=`cd $CALLPATH; cd drupal; pwd` 
+#mkae sre drupoal folder is created
+if [ ! -d $DRUPAL ]; then
+  mkdir -p $CALLPATH/drupal
+  DRUPAL=$CALLPATH/drupal
+fi
 echo "Grupal $DRUPAL"
 
 
