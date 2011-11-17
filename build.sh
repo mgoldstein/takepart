@@ -13,6 +13,8 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
+echo "dollar1=$1"
+
 # Initialize variables based on target environment
 if [ "$1" = "--prod" ]; then
   DRUSH_OPTS=
@@ -31,17 +33,20 @@ fi
 
 # Do the build
 CALLPATH=`dirname $0`
+BASE=`cd $CALLPATH; cd ../; pwd`
+DRUPAL=`cd $CALLPATH/drupal; pwd` 
+echo "BASE $BASE"
 echo "Callpath $CALLPATH"
 echo "Target $TARGET"
+echo "Grupal $DRUPAL"
+
 
 #exit 0
-BASE=`pwd`
 
 #Empty the current site
 #rm -rf $TARGET
 #mkdir $TARGET
-DRUPAL=`cd $TARGET/drupal;pwd`
-echo "Grupal $DRUPAL"
+#DRUPAL=`cd $TARGET/drupal;pwd`
 
 
 ln -s $CALLPATH/$TARGET/drupal $CALLPATH/drupal
