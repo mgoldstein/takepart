@@ -43,7 +43,8 @@ echo "BASE $BASE"
 DRUPAL=`cd "$CALLPATH/drupal"; pwd` 
 echo "Grupal $DRUPAL"
 #exit 0
-
+#add mem to the settings
+echo "ini_set('memory_limit','320M')" >> $BASE/settings.local.inc
 ln -s $DRUPAL html
 
 cd $DRUPAL
@@ -56,4 +57,7 @@ ln -s /opt/development/files/www.takepart.com-extra/help_app $DRUPAL/help_app
 ln -s /opt/development/files/www.takepart.com-extra/images $DRUPAL/images
 ln -s /opt/development/files/www.takepart.com-extra/js $DRUPAL/js
 ln -s /opt/development/files/www.takepart.com-extra/tsign_apps $DRUPAL/tsign_apps
+ln -s ../../../../settings.local.inc sites/default/settings.local.inc
+ln -s ../../../../files sites/default/files
+
 #echo "$0 successfully finished."
