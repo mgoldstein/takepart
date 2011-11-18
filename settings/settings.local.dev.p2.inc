@@ -4,9 +4,9 @@ $databases = array (
     array (
       'default' =>
         array (
-          'database' => 'fsilberstein_www_takepart_com',
-          'username' => 'fsilberstein_ww',
-          'password' => 'a24de887',
+          'database' => 'takepart_integration',
+          'username' => 'takepart_integr',
+          'password' => 'a3985797',
           'host' => 'localhost',
           'port' => '',
           'driver' => 'mysql',
