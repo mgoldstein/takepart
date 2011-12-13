@@ -45,12 +45,15 @@ function takepart_action_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Main',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'body',
       1 => 'field_action_main_image',
       2 => 'field_action_type',
       3 => 'field_action_url',
+      4 => 'field_altcontent',
+      5 => 'field_actionheaderimghref',
+      6 => 'field_actionheaderimg',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -98,7 +101,7 @@ function takepart_action_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_action_related',
       1 => 'field_suggest_campaigns',
@@ -182,7 +185,7 @@ function takepart_action_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo Head / Text',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_thumbnail',
       1 => 'field_promo_headline',
@@ -210,7 +213,7 @@ function takepart_action_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sponsors',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_action_sponsor',
     ),
@@ -236,7 +239,7 @@ function takepart_action_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tags',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_free_tag',
       1 => 'field_topic',

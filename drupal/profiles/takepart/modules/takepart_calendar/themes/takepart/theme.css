@@ -44,6 +44,9 @@
 	color: #000;
 	padding: 0px 3px 0px 3px;
 }
+.fc .fc-event-title a {
+    padding-bottom: 5px;
+}
 
 .fc .fc-event-title a {
 	line-height: 18px;
@@ -52,6 +55,13 @@
 	color: #46c3f1;
 	font-weight: normal;
 }
+
+/*
+.fc .fc-future-computed .fc-event-title a, .fc .fc-future-computed .fc-event-title a:hover {
+    text-decoration:  none;
+    color: #B9B9B9;    
+}
+*/
 
 .fc .fc-event-time, .fc .fc-event-title {
     padding: 0px;
@@ -82,12 +92,38 @@
 .fc .fc-event-sharebar img {
 	padding: 0 1px;
 }
+/* today hover state */
+.fc .fc-hover .fc-event-title a, .fc .fc-hover .fc-event-subtext a {
+    color: #fcaa31;
+}
+
+.fc .fc-today-computed .fc-event-title a, .fc .fc-hover .fc-event-subtext a {
+    color: #ffffff !important;
+}
+
+.fc td.fc-hover {
+	/* background-color: #ffea98; */
+}
+.fc td.fc-hover div.fc-day-number {
+    /* color: #fcaa31; */
+}
+
+/*
+.fc td.fc-hover div.fc-day-number {
+    background: none no-repeat scroll 0 0 #ffea98 !important;
+    background-image: url('images/starburst.png') !important;;
+    background-position: 8px 8px !important;;    
+} */
+
 /* Cell Styles
 ------------------------------------------------------------------------*/
+.fc td.fc-past {
+    background-color: #f9f9f9;
+}
 .fc .fc-state-highlight {
 	background: none no-repeat scroll 0 0 #fdaa30;
 	background-image: url('images/arrow.png');
-	background-position: 45px 14px;
+	background-position: 48px 14px;
 }
 
 .fc td.fc-today div.fc-day-number {
@@ -114,6 +150,9 @@
 */
 .fc .fc-event-title a:hover {
     color: #fdaa30;
+}
+.fc .fc-today-computed .fc-event-title a:hover {
+    color: #ffffff !important;
 }
 /* Weekday Images
 ------------------------------------------------------------------------*/
@@ -151,4 +190,13 @@
 .fc thead .fc-sat {
 	background: url("images/Saturday.png") no-repeat scroll 10px 50% #FFFFFF;
 	text-indent: -9999px;
+}
+/* Header
+------------------------------------------------------------------------*/
+.fc .fc-header {
+	display: none;
+}
+/* misc */
+.fc .fc-event-subtext {
+    padding-bottom: 5px;
 }

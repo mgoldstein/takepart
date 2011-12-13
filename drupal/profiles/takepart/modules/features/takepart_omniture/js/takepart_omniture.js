@@ -46,9 +46,9 @@
     attach: function (context, settings) {
       $('.embed-action a').click(function(){
         s.linkTrackVars="eVar28,events";
-        s.linkTrackEvents="event34";
+        s.linkTrackEvents="event34, event19";
         s.eVar28="editorial";
-        s.events="event34";
+        s.events="event34, event19";
         s.tl(this.href, 'o', 'Embedded Action Click');
       });
     }
@@ -58,9 +58,9 @@
     attach: function (context, settings) {
       $('.field-name-field-tp-campaign-4-things-link a').click(function(){
         s.linkTrackVars="eVar28,events";
-        s.linkTrackEvents="event38";
+        s.linkTrackEvents="event38, event19";
         s.eVar28="fivethings";
-        s.events="event38";
+        s.events="event38, event19";
         s.tl(this.href, 'o', 'Five Things Click');
       });
     }

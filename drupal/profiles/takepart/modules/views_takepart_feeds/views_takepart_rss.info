@@ -1,0 +1,6 @@
+name = Views TakePart RSS
+description = Views style plugin to render node content as RSS.
+package = Views
+core = 7.x
+dependencies[] = views
+files[] = views/plugins/views_plugin_style_takepart_rss.inc

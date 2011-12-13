@@ -14,6 +14,60 @@
  * Date: Sun Aug 21 22:06:09 2011 -0700
  *
  */
+
+function defineLast(weeknum, itteration) {
+	if(jQuery('.fc-week' + weeknum).length != 0) {
+		jQuery('.fc-week' + weeknum).addClass('fc-last');
+	} else if(itteration < 50) {
+		itteration++;
+		var timeoutID = window.setTimeout('defineLast(' + weeknum + ',' + itteration + ')', 500);
+	}
+}
+
+
+jQuery(document).ready(function () {
+    if (calendar_events) {
+        for(var i=0;i<calendar_events.length;i++){
+            var obj = calendar_events[i];
+            var isheader = false;
+            for(var attrName in obj){
+                if(attrName == 'headerimg') {
+                	isheader = true;
+                	break;
+                }
+            }
+            if(isheader) {
+
+            	var dateNow = new Date();
+            	if(obj['headerstart'] && (obj['headerstart'].getTime() <= dateNow.getTime()) 
+            			&& (obj['headerend'].getTime() >= dateNow.getTime())
+            			&& (obj['headertarget'] && (obj['headertarget'] == location.href))) {
+            
+            		var oImg=document.createElement("img");
+            		oImg.setAttribute('src', obj['headerimg']);
+            		oImg.setAttribute('alt', obj['headeralt']);
+            		
+            		if(obj['headerurl']) { 
+            		    var a = document.createElement('a');  
+            		    a.setAttribute('href', obj['headerurl']); 
+            		    oImg.setAttribute('border', '0'); 
+            		    a.appendChild(oImg);
+            		    jQuery("#calendarheader").append(a);
+            		} else {
+            			jQuery("#calendarheader").append(oImg);
+            		}
+            		            	
+            	}
+            }
+        }
+    }
+});
+
+
+
+
+
+
  
 (function(jQuery, undefined) {
 
@@ -2309,6 +2363,9 @@ function BasicView(element, calendar, viewName) {
 			}else{
 				cell.removeClass(tm + '-state-highlight fc-today');
 			}
+			if (+date < +today) {
+				cell.addClass('fc-past');
+			}
 			cell.find('div.fc-day-number').text(month_names_short[date.getMonth()] + ' ' + date.getDate());
 			if (dowDirty) {
 				setDayID(cell, date);
@@ -3126,6 +3183,9 @@ function AgendaView(element, calendar, viewName) {
 			}else{
 				bodyCell.removeClass(tm + '-state-highlight fc-today');
 			}
+			if (+date < +today) {
+				bodyCell.addClass('fc-past');
+			}	
 			setDayID(headCell.add(bodyCell), date);
 		}
 	}
@@ -4594,6 +4654,7 @@ function DayEventRenderer() {
 	
 	
 	function daySegHTML(segs) { // also sets seg.left and seg.outerWidth
+		//@todo: clean this up once the functionality is locked down:
 		var rtl = opt('isRTL');
 		var i;
 		var segCnt=segs.length;
@@ -4610,6 +4671,8 @@ function DayEventRenderer() {
 		var right;
 		var skinCss;
 		var html = '';
+		var row = 0;
+		var column = 0;
 		// calculate desired position/dimensions, create html
 		for (i=0; i<segCnt; i++) {
 			seg = segs[i];
@@ -4648,18 +4711,34 @@ function DayEventRenderer() {
 			url = event.url;
 			skinCss = getSkinCss(event, opt);
 			
+			var showlink = true;
 			
 			var dateNow = new Date();
-			if((dateNow.getMonth() == event.start.getMonth()) && (dateNow.getDate() == event.start.getDate())){ 
+			if((dateNow.getMonth() == event.start.getMonth()) && (dateNow.getDate() == event.start.getDate())) { 
 				classes.push('fc-today-computed');
 			}
 			
+			if((dateNow.getMonth() > event.start.getMonth()) && (dateNow.getDate() > event.start.getDate())) { 
+				classes.push('fc-past-computed');
+			}
+
+			if((dateNow.getMonth() <= event.start.getMonth()) && (dateNow.getDate() < event.start.getDate())) { 
+				classes.push('fc-future-computed');
+				//showlink = false;
+			}
+			
+			
+			column = dayOfWeekCol(seg.end.getDay()-1);
+			if(column == 0) {
+				row++;
+			}
 			
 		// TakePart Change -----------
 		//	if (url) {
 		//		//html += "<a href='" + htmlEscape(url) + "'";
 		//		html += "<a ";
 		//	}else{
+			
 				html += "<div";
 		//	}
 			html +=
@@ -4670,6 +4749,16 @@ function DayEventRenderer() {
 				" class='fc-event-inner fc-event-skin'" +
 				(skinCss ? " style='" + skinCss + "'" : '') +
 				">";
+			
+		  /*
+				html += column;
+				html += "\n";
+				html += i;
+				html += "\n";
+				html += row;
+		  */	
+			
+			
 			if (!event.allDay && seg.isStart) {
 				html +=
 					"<span class='fc-event-time'>" +
@@ -4677,22 +4766,56 @@ function DayEventRenderer() {
 					"</span>";
 			}
 
-			if((url.indexOf(window.location.hostname) > -1) || (!url.indexOf('http://'))) {
+			
+			// TakePart Change -----------
+			if((event.subtexturl) && (event.subtext)) {
+				//if(!showlink) {
+					html +=
+						"<div class='fc-event-subtext'>" + 
+						"<a>" + htmlEscape(event.subtext) + "</a></div>"	 +
+						"</div>";
+				/*} else if(((event.subtexturl).indexOf(window.location.hostname) > -1) || (!(event.subtexturl).indexOf('http://'))) {
+					html +=
+						"<div class='fc-event-subtext'>" + 
+						"<a href='" + htmlEscape(event.subtexturl) + "'>" + 
+						htmlEscape(event.subtext) + "</a></div>"	 +
+						"</div>";
+				} else {
+					html +=
+						"<div class='fc-event-subtext'>" + 
+						"<a href='" + htmlEscape(event.subtexturl) + "' target='_blank'>" + 
+						htmlEscape(event.subtext) + "</a></div>"	 +
+						"</div>";				
+				}*/
+			} else {
+				html +=
+					"<div class='fc-event-subtext'>" + 
+					"<a>&nbsp;</a></div>"	 +
+					"</div>";
+			}
+			// --------------------------
+			if(!showlink) {
+				html +=
+					"<span class='fc-event-title'>" + 
+					"<a>" + htmlEscape(event.title) + "<br/><br/></a></span>" +
+					"</div>";
+			} else if((url.indexOf(window.location.hostname) > -1) || (!url.indexOf('http://'))) {
 				html +=
 					"<span class='fc-event-title'>" + 
 					"<a href='" + htmlEscape(url) + "'>" + 
-					htmlEscape(event.title) + "</a></span>" +
+					htmlEscape(event.title) + "<br/><br/></a></span>" +
 					"</div>";
 			} else {
 				html +=
 					"<span class='fc-event-title'>" + 
 					"<a href='" + htmlEscape(url) + "' target='_blank'>" + 
-					htmlEscape(event.title) + "</a></span>" +
+					htmlEscape(event.title) + "<br/><br/></a></span>" +
 					"</div>";
 			}
 			
 			
 			
+
 			
 			if (seg.isEnd && isEventResizable(event)) {
 				html +=
@@ -4723,7 +4846,7 @@ function DayEventRenderer() {
 			plusone = 		htmlEscape(url);
 					
 			
-	
+			/* Disable sharing
 					
 			html +=
 				"<div class='fc-event-sharebar'>" + 
@@ -4742,28 +4865,13 @@ function DayEventRenderer() {
 			    "</a>" +
 			    "</span>" +
 				"</div><br/>";
+			*/
 			
 			//"<g:plusone annotation='inline' width='' href='" + plusone + "'></g:plusone>"
 			// --------------------------
 
 			
-			// TakePart Change -----------
-			if((event.subtexturl) && (event.subtext)) {
-				if(((event.subtexturl).indexOf(window.location.hostname) > -1) || (!(event.subtexturl).indexOf('http://'))) {
-					html +=
-					"<div class='fc-event-subtext'>" + 
-					"<a href='" + htmlEscape(event.subtexturl) + "'>" + 
-					htmlEscape(event.subtext) + "</a></div>"	 +
-					"</div>";
-				} else {
-					html +=
-						"<div class='fc-event-subtext'>" + 
-						"<a href='" + htmlEscape(event.subtexturl) + "' target='_blank'>" + 
-						htmlEscape(event.subtext) + "</a></div>"	 +
-						"</div>";				
-				}
-			}
-			// --------------------------
+
 			
 			// TakePart Change -----------
 			//html +=
@@ -4778,8 +4886,20 @@ function DayEventRenderer() {
 			seg.startCol = leftCol;
 			seg.endCol = rightCol + 1; // needs to be exclusive
 		}
+		
+		//jQuery.rule('tr.fc-week5 { display:none }').appendTo('style');
+		
+		//hide empty rows if they are last:
+		var style = document.createElement('style');
+		style.type = 'text/css';
+		style.innerHTML = '.fc-week' + (row + 1) + '  { display: none; }';
+		document.getElementsByTagName('head')[0].appendChild(style);
+		defineLast(row,0);
+		
+		
 		return html;
 	}
+	
 	
 	
 	
@@ -5311,3 +5431,6 @@ function HorizontalPositionCache(getElement) {
 
 })(jQuery);
 
+
+
+	

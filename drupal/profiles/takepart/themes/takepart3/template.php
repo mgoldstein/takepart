@@ -20,34 +20,21 @@ function takepart3_dolinks($links_field) {
   return implode("<span class='delimiter'>|</span>", $links);
   
 }
+
 function takepart3_preprocess_html(&$vars){
   if (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage')){
     $vars['classes_array'][]= 'multipage-campaign';
-  }
-  
+  }  
+  _render_tp3_renderheaderfooterfeed($vars);
 }
 
 function takepart3_preprocess_page(&$variables) {
 
-  //debug($main_menu_data);
-  //debug(array_keys($main_menu_data));
-  $variables['top_nav']               = _render_tp3_main_menu();
-  $variables['hottopic_nav']          = _render_tp3_hottopics_menu();
-  $variables['film_camp_nav']         = _render_tp3_film_campaign_menu();
-  $variables['friends_takepart_nav']  = _render_tp3_friends_takepart_menu();
-  $variables['takepart_topics_nav']   = _render_tp3_topics_takepart_menu();
-  $variables['corporate_links_nav']   = _render_tp3_corporate_links_menu();
-  $variables['user_nav']              = _render_tp3_user_menu();
-  $variables['takepart_theme_path']   = drupal_get_path('theme', 'takepart3');
-  $variables['search_takepart_form']  = _render_tp3_header_search_form();
+  _tp3_fill_template_vars($variables);
+
   $variables['is_multipage'] = FALSE;
   $variables['multipage_class'] = '';
-  $variables['follow_us_links']       = '<ul id="top-follow">
-      <li class="fb"><a target ="_blank" href="http://www.facebook.com/takepart">facebook</a></li>
-      <li class="twitter"><a target ="_blank" href="http://www.twitter.com/takepart">twitter</a></li>
-      <li class="youtube"><a target = "_blank" href="http://www.youtube.com/takepart">youtube</a></li>
-      <li class="rss"><a href="/rss">rss</a></li>
-    </ul>';
+  
   // Adds page template suggestions for specific content types
   if (isset($variables['node'])) {
     $variables['theme_hook_suggestions'][] = 'page__type__'. $variables['node']->type;
@@ -70,6 +57,9 @@ function takepart3_preprocess_page(&$variables) {
   if ($status_code[0] == '403') {
     unset($variables['page']['sidebar_second']);
   }  
+  
+  $variables['header']  = _render_tp3_header($variables);
+  $variables['footer']  = _render_tp3_footer($variables);
   
   return $variables;
 }
@@ -755,4 +745,72 @@ function _get_author($nid) {
   return $authors;
 }
 
+/**
+* Helper functions for header / footer.
+*/
+function _tp3_fill_template_vars(&$variables) {
+  if(!$variables['top_nav']) $variables['top_nav'] = _render_tp3_main_menu();
+  if(!$variables['hottopic_nav']) $variables['hottopic_nav'] = _render_tp3_hottopics_menu();
+  if(!$variables['film_camp_nav']) $variables['film_camp_nav'] = _render_tp3_film_campaign_menu();
+  if(!$variables['friends_takepart_nav']) $variables['friends_takepart_nav'] = _render_tp3_friends_takepart_menu();
+  if(!$variables['takepart_topics_nav']) $variables['takepart_topics_nav'] = _render_tp3_topics_takepart_menu();
+  if(!$variables['corporate_links_nav']) $variables['corporate_links_nav'] = _render_tp3_corporate_links_menu();
+  if(!$variables['user_nav']) $variables['user_nav'] = _render_tp3_user_menu();
+  if(!$variables['takepart_theme_path']) $variables['takepart_theme_path'] = drupal_get_path('theme', 'takepart3');
+  if(!$variables['search_takepart_form']) $variables['search_takepart_form'] = _render_tp3_header_search_form();
+  if(!$variables['follow_us_links']) $variables['follow_us_links'] = theme('takepart3_follow_us_links', $variables);
 
+}
+
+function _render_tp3_header(&$params) {
+  return theme('takepart3_header', $params);
+}
+
+function _render_tp3_footer(&$params) {
+  return theme('takepart3_footer', $params);
+}
+/*
+ * Clears page, page bottom and top, fills custom section
+ * with the header or footer depending on the path.
+ */
+function _render_tp3_renderheaderfooterfeed(&$vars) {
+  $uri = drupal_get_path_alias($_GET['q']);
+  $uri = substr($uri, 0, 14);
+  if (($uri == 'iframes/header') || ($uri == 'iframes/footer')) {
+    $vars['page_top'] = null;
+    $vars['page_bottom'] = null;
+    $vars['page'] = null;
+    _tp3_fill_template_vars($vars);
+    if ($uri == 'iframes/header') {
+      $vars['custom'] = _render_tp3_header($vars);
+    } elseif ($uri == 'iframes/footer') {
+      $vars['custom'] = _render_tp3_footer($vars);
+    }
+  }
+}
+
+/**
+* Implementation of hook_theme().
+*/
+function takepart3_theme() {
+  return array(
+    'takepart3_header' => array(
+      'template' => 'templates/pages/header',
+      'arguments' => array(
+        'params' => NULL,
+      ),
+    ),
+    'takepart3_footer' => array(
+      'template' => 'templates/pages/footer',
+      'arguments' => array(
+        'params' => NULL,
+      ),
+    ),    
+    'takepart3_follow_us_links' => array(
+          'template' => 'templates/pages/follow_us_links',
+          'arguments' => array(
+            'params' => NULL,
+    ),
+  ),
+  );
+}

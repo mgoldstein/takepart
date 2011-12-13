@@ -59,6 +59,8 @@
   </div>
   <?php print $page_top; ?>
   <?php print $page; ?>
+  <?php print $custom; ?>
   <?php print $page_bottom; ?>
+  <?php print $tp_sysinfo_comment_tags; ?>
 </body>
 </html>

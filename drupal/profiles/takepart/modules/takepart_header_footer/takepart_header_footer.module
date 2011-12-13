@@ -1,0 +1,31 @@
+<?php
+/**
+ * Implementation of hook_menu().
+ * See /include directory for corrisponding files.
+ */
+function takepart_header_footer_menu() {
+
+  $items = array();
+
+  $items['iframes/header'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => '_takepart_iframes_header',
+  );
+  
+  $items['iframes/footer'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'page callback' => '_takepart_iframes_footer',
+  );
+
+  return $items;
+}
+
+function _takepart_iframes_header() {
+ return '';
+}
+
+function _takepart_iframes_footer() {
+  return '';
+}

@@ -138,7 +138,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'body',
-      'label' => 'Body',
+      'label' => 'Action Copy',
       'required' => 0,
       'settings' => array(
         'display_summary' => 0,
@@ -153,7 +153,7 @@ function takepart_action_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '16',
+        'weight' => '31',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
@@ -218,7 +218,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_action_main_image',
-      'label' => 'Main Image',
+      'label' => 'Article Image',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -228,7 +228,10 @@ function takepart_action_field_default_fields() {
         'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
+            'brightcove' => 0,
             'public' => 'public',
+            'vimeo' => 0,
+            'youtube' => 0,
           ),
           'allowed_types' => array(
             'audio' => 0,
@@ -240,7 +243,7 @@ function takepart_action_field_default_fields() {
           'view' => 'media_views_widget_default--default',
         ),
         'type' => 'media_generic_alt',
-        'weight' => '17',
+        'weight' => '32',
       ),
     ),
   );
@@ -305,7 +308,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'embed' => array(
           'label' => 'above',
@@ -317,7 +320,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -415,7 +418,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -489,7 +492,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'embed' => array(
           'label' => 'above',
@@ -501,7 +504,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -522,7 +525,7 @@ function takepart_action_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '14',
+        'weight' => '30',
       ),
     ),
   );
@@ -565,7 +568,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'embed' => array(
           'label' => 'above',
@@ -589,7 +592,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_action_url',
-      'label' => 'Take Action URL',
+      'label' => 'Take Action Button URL',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
@@ -611,7 +614,266 @@ function takepart_action_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '15',
+        'weight' => '33',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-action-field_actionheaderimg'
+  $fields['node-action-field_actionheaderimg'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_actionheaderimg',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'image',
+    ),
+    'field_instance' => array(
+      'bundle' => 'action',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'media_image_formatter',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => 22,
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_actionheaderimg',
+      'label' => 'Action Header Image',
+      'required' => 0,
+      'settings' => array(
+        'alt_field' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'png gif jpg jpeg',
+        'max_filesize' => '',
+        'max_resolution' => '',
+        'min_resolution' => '',
+        'title_field' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'image',
+        'settings' => array(
+          'preview_image_style' => 'action_header_image',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'image_image',
+        'weight' => '28',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-action-field_actionheaderimghref'
+  $fields['node-action-field_actionheaderimghref'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_actionheaderimghref',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'action',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'default',
+          'weight' => 21,
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_actionheaderimghref',
+      'label' => 'Action Header Image Link',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '29',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-action-field_altcontent'
+  $fields['node-action-field_altcontent'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_altcontent',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_with_summary',
+    ),
+    'field_instance' => array(
+      'bundle' => 'action',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 20,
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_altcontent',
+      'label' => 'Alternate Content',
+      'required' => 0,
+      'settings' => array(
+        'display_summary' => 0,
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '20',
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => '34',
       ),
     ),
   );
@@ -660,7 +922,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'embed' => array(
           'label' => 'above',
@@ -672,7 +934,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -740,7 +1002,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'embed' => array(
           'label' => 'above',
@@ -752,7 +1014,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -817,7 +1079,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '12',
         ),
         'embed' => array(
           'label' => 'above',
@@ -829,7 +1091,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -920,7 +1182,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => '16',
         ),
         'embed' => array(
           'label' => 'above',
@@ -932,7 +1194,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1023,7 +1285,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '13',
         ),
         'embed' => array(
           'label' => 'above',
@@ -1035,7 +1297,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1104,7 +1366,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '17',
         ),
         'embed' => array(
           'label' => 'above',
@@ -1116,7 +1378,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1183,7 +1445,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '14',
         ),
         'embed' => array(
           'label' => 'above',
@@ -1195,7 +1457,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1262,7 +1524,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '15',
         ),
         'embed' => array(
           'label' => 'above',
@@ -1274,7 +1536,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1330,7 +1592,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '11',
         ),
         'embed' => array(
           'label' => 'above',
@@ -1342,7 +1604,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1437,7 +1699,7 @@ function takepart_action_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1459,6 +1721,86 @@ function takepart_action_field_default_fields() {
         'settings' => array(),
         'type' => 'options_select',
         'weight' => '18',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-action-field_tp_campaign_show_title'
+  $fields['node-action-field_tp_campaign_show_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tp_campaign_show_title',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '0',
+          1 => '1',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'action',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '5',
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tp_campaign_show_title',
+      'label' => 'Remove Headline from Display',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '1',
       ),
     ),
   );
@@ -1495,7 +1837,7 @@ function takepart_action_field_default_fields() {
           'module' => 'context_field',
           'settings' => array(),
           'type' => 'context_field_context',
-          'weight' => 20,
+          'weight' => '20',
         ),
         'full' => array(
           'label' => 'above',
@@ -1553,30 +1895,34 @@ function takepart_action_field_default_fields() {
           'widget_setting' => 'bob',
         ),
         'type' => 'context_field',
-        'weight' => '16',
+        'weight' => '3',
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Action Copy');
+  t('Action Header Image');
+  t('Action Header Image Link');
   t('Action Sponsor');
   t('Action Type');
-  t('Body');
+  t('Alternate Content');
+  t('Article Image');
   t('Comment');
   t('Context');
   t('Free Tag');
   t('If a URL is provided in this field, the Take Action button that is displayed on the Action node page will be linked to this URL.');
-  t('Main Image');
   t('Promo Headline');
   t('Promo Text');
   t('Related Actions');
   t('Related Campaigns');
   t('Related Content');
+  t('Remove Headline from Display');
   t('Suggest Related Actions?');
   t('Suggest Related Campaigns?');
   t('Suggest Related Content?');
-  t('Take Action URL');
+  t('Take Action Button URL');
   t('This is used instead of the Title to represent the Action when it appears in various places around the site.');
   t('Thumbnail Image');
   t('Topic');

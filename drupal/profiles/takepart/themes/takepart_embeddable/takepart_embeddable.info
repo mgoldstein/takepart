@@ -1,0 +1,6 @@
+name = Takepart Embeddable
+description = A minimal sub-theme for including site content in inline frames.
+
+base theme = takepart3
+core = 7.x
+engine = phptemplate

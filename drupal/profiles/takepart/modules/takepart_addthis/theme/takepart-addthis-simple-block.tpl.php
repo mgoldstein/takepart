@@ -7,6 +7,7 @@ $node = menu_get_object();
   <div class="addthis_toolbox addthis_default_style">
       <a class="addthis_button_facebook"></a>
       <a class="addthis_button_twitter" tw:via="<?php print $variables['takepart_addthis_tweet_via']; ?>" tw:text="<?php print $node->title; ?>"></a>
+      <a class="addthis_button_linkedin_counter"></a>
   </div>
 </div>
 <?php
