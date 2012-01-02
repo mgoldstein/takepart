@@ -389,6 +389,10 @@ function media_get_file_without_label($file, $view_mode, $settings = array()) {
   if (!isset($element['#attributes']) && isset($settings['attributes'])) {
     $element['#attributes'] = $settings['attributes'];
   }
+  
+  if(isset($settings['attributes']) && isset($settings['attributes']['alt'])) {
+    $element['#alt'] = $settings['attributes']['alt'];
+  }
 
   return $element;
 }
