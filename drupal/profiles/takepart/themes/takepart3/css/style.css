@@ -3800,7 +3800,7 @@ background: none repeat scroll 0 0 transparent;
   text-transform: none;
 }
 
-#block-takepart-addthis-addthis-simple {display: none;}
+/* #block-takepart-addthis-addthis-simple {display: none;} */
 
 #slim-header #join-login-top span.fb {
   background: url("../images/sprite-slim-header.gif") no-repeat scroll -106px 0 transparent;
