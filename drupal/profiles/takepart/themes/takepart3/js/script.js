@@ -121,20 +121,6 @@ jQuery(document).ready(function() {
     });
 });
 
-//Take Action Buttons:
-jQuery(document).ready(function() {
-    jQuery('.take_action_button').click(function() {
-        var href = jQuery(this).attr('href');
-        var suffix = '/local';
-        var test = href.indexOf(suffix, href.length - suffix.length) !== -1;
-        if(test) {
-            jQuery(this).children(":first").text('Thanks!');
-        } else {
-            window.location = jQuery(this).attr('href');
-        }
-    });
-});
-
 //Analytics functions:
 //@todo: move into seprate file
 takepart.analytics = takepart.analytics || {};

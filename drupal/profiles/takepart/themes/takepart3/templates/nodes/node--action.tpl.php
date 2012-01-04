@@ -57,8 +57,17 @@ class='title'>
       } else {
       print ($content['body']['#object']->body['und'][0]['value']);
       }
-    ?>
-<a href="<?php print $content['body']['#object']->field_action_url['und'][0]['display_url']; //Take Action Button ?>" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>
+   
+    $takeactionurl = $content['body']['#object']->field_action_url['und'][0]['display_url'];
+    $takeactionurl_parts = parse_url($takeactionurl);
+   
+?>
+
+<?php if((array_key_exists('host', $takeactionurl_parts)) && ($takeactionurl_parts['host'] == $_SERVER['HTTP_HOST']) || ($takeactionurl_parts['host'] == '')) { ?>
+	<a href="<?php print $takeactionurl; //Take Action Button ?>" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>
+<?php } else { ?>
+	<a href="<?php print $takeactionurl; //Take Action Button ?>" class="take_action_button" target="_blank" onclick="this.blur(); return false;"><span>Take Action</span></a>
+<?php } ?>
         </div>
    
         <div id="action_alt_copy">
