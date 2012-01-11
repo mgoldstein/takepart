@@ -1,0 +1,79 @@
+<?php
+
+include(drupal_get_path('module', 'takepart_bsd').'/include/bsd_api/bsd_api.class.inc');
+
+/**
+ * Implements hook_init().
+ */
+function takepart_bsd_init() {
+
+}
+
+/**
+ * Implement hook_menu().
+ */
+function takepart_bsd_menu() {
+  $items = array();
+  $items['admin/config/development/takepart_bsd'] = array(
+    'title' => 'TakePart BSD',
+    'description' => 'Configuration for the TakePart BSD module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_bsd_form'),
+    'access arguments' => array('administer users'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['admin/config/development/takepart_bsd/test'] = array(
+      'title' => 'BSD Test Page',
+      'page callback' => '_ctakepart_bsd_test_page',
+      'access arguments' => array('administer users'),
+      'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function _ctakepart_bsd_test_page($node) {
+  
+  $bsd = new BSD_API(variable_get('takepart_bsd_api_id', 'takepart-com'),variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'));
+  
+  $req = $bsd->callApi("cons/get_constituents", array("filter"=>"primary_state_cd=CA"));
+  $req = $bsd->callApi("account/check_credentials", array("userid"=>"charles@takepart.com","password"=>"Exc@l1bur"));
+  
+  
+  print "<pre>";
+  print_r($req);
+  print "</pre>";
+  
+  return "test";
+}
+
+/**
+ * Admin Form
+ */
+function takepart_bsd_form($form, &$form_state) {
+  $form['takepart_bsd_api_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('API ID'),
+    '#required' => TRUE,
+    '#size' => 40,
+    '#maxlength' => 64,
+    '#default_value' => variable_get('takepart_bsd_api_id', 'takepart-com')
+  );
+  $form['takepart_bsd_api_secret'] = array(
+      '#type' => 'textfield',
+      '#title' => t('API Secret'),
+      '#required' => TRUE,
+      '#size' => 40,
+      '#maxlength' => 64,
+      '#default_value' => variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8')
+  );
+  $form['submit'] = array(
+  	'#type' => 'submit',
+  	'#value' => t('Save settings'),
+  );
+  return $form;
+}
+
+
+
+
+
