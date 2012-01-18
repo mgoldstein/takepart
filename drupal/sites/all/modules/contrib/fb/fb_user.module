@@ -744,7 +744,9 @@ function fb_user_user_delete($account) {
  */
 function fb_user_user_logout($account) {
   global $user, $_fb_app;
-    
+   
+  _fb_logout();
+  
   $app_id = $_fb_app->id;
   $api_key = $_fb_app->apikey;
  

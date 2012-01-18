@@ -58,23 +58,15 @@ FB_Connect.sessionChangeHandler = function(context, status) {
 // click handler
 FB_Connect.logoutHandler = function(event) {
   if (typeof(FB) != 'undefined') {
-	  
-	  
-	 FB_JS.deleteCookie('fbsr_' + FB._apiKey, '/', ''); // app id
-	 FB_JS.deleteCookie('fbsr_' + Drupal.settings.fb.apikey, '/', ''); // apikey
-	  
-	 //alert('logout');
-	 
-	 //alert(FB.logout);
 
-	 FB.logout();
-	 
-	 /*
-    FB.logout(function () {
-      // Logged out of facebook.  Need we act on this?
-    	alert('really?');
-    });
-    */
+	//alert('test'); 
+	  
+	FB_JS.deleteCookie('fbsr_' + FB._apiKey, '/', ''); // app id
+	FB_JS.deleteCookie('fbsr_' + Drupal.settings.fb.apikey, '/', ''); // apikey
+	  
+	//FB.Connect.ifUserConnected(function(){FB.logout()});
+	
+	FB.logout(function(){});
     
     // Facebook's invalid cookies persist if third-party cookies disabled.
     // Let's try to clean up the mess.
@@ -82,9 +74,10 @@ FB_Connect.logoutHandler = function(event) {
 
 
   }
-  if (FB.getSession()) { // @TODO: still needed with newer oauth SDK???
+  if (FB.getUserID()) { // @TODO: still needed with newer oauth SDK???
 	 //alert('try again');
     // Facebook needs more time to log us out. (http://drupal.org/node/1164048)
+	  //alert('reload');
     Drupal.settings.fb.reload_url = Drupal.settings.fb_connect.front_url;
     
     return false;

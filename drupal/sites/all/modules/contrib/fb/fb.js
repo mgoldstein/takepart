@@ -266,6 +266,7 @@ FB_JS.ajaxEvent = function(event_type, request_data) {
         else {
           if (event_type == 'session_change') {
             // No instructions from ajax, reload entire page.
+        	  //alert('ok');
             FB_JS.reload();
           }
         }
