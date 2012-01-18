@@ -5111,8 +5111,6 @@ function enableTextSelection(element) {
                 rowDivs[i] = allDayRow(i)
                 .find('td:first div.fc-day-content > div'); // optimal selector?
             }
-            console.debug(rowDivs);
-
             return rowDivs;
         }
 	
