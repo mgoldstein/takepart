@@ -21,17 +21,17 @@ function theme_fb_login_button($params) {
   $options += array(
     'attributes' => array(),
   );
-  if (!isset($options['attributes']['perms'])) {
+  if (!isset($options['attributes']['scope'])) {
     // Which permissions to prompt for?
     $perms = array();
     drupal_alter('fb_required_perms', $perms);
     if (count($perms)) {
-      $options['attributes']['perms'] = implode(',', $perms);
+      $options['attributes']['scope'] = implode(',', $perms);
     }
   }
 
 
-  $button = '<fb:login-button ' . drupal_attributes($options['attributes']) . '>' .
+  $button = '<fb:login-button ' . drupal_attributes($options['attributes']) . ' data-scope="email,user_checkins">' .
     ($text ? '<fb:intl>' . check_plain($text) . '</fb:intl>' : '') . '</fb:login-button>';
 
   return $button;

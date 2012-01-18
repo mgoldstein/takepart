@@ -339,6 +339,7 @@ function fb_app_admin_delete_confirm_form_submit($form, &$form_state) {
 function fb_app_set_app_properties($fb_app) {
   $data = fb_get_app_data($fb_app);
   $fb_app_data = $data['fb_app'];
+  // Collect properties from all modules.
   $props = fb_invoke(FB_ADMIN_OP_SET_PROPERTIES, array('fb_app' => $fb_app), array(), FB_ADMIN_HOOK);
   if (count($props)) {
     if ($fb_app_data['set_app_props']) {
@@ -356,6 +357,13 @@ function fb_app_set_app_properties($fb_app) {
                      WATCHDOG_NOTICE,
                      l(t('view apps'), FB_PATH_ADMIN));
           }
+
+          // Allow third-parties to set additional "properties" such as restrictions.
+          fb_invoke(FB_ADMIN_OP_POST_SET_PROPERTIES, array(
+                      'fb_app' => $fb_app,
+                      'fb' => $fb,
+                      'properties' => $props,
+                    ), array(), FB_ADMIN_HOOK);
         } catch (Exception $e) {
           drupal_set_message(t('Failed to set the following properties for %label application.  You may need to manually editing remote settings!<br/><pre>!props</pre>', array('%label' => $fb_app->label, '!props' => print_r($props, 1))), 'error');
           fb_log_exception($e, t('Failed to set application properties on Facebook'));

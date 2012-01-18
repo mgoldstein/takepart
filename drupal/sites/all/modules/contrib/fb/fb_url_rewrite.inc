@@ -69,32 +69,6 @@ function _fb_settings_parse($key) {
 
 //// URL Management
 
-/**
- * Define custom_url_rewrite_inbound() if not defined already.
- */
-/* D7 should not need.
-if (!function_exists('custom_url_rewrite_inbound')) {
-  function custom_url_rewrite_inbound(&$result, $path, $path_language) {
-    fb_url_inbound_alter($result, $path, $path_language);
-  }
-}
-*/
-/**
- * Define custom_url_rewrite_outbound() if not defined already.
- */
-/* D7 should not need.
-
-if (!function_exists('custom_url_rewrite_outbound')) {
-  function custom_url_rewrite_outbound(&$path, &$options, $original_path) {
-    if (!isset($options['fb_url_alter']) || $options['fb_url_alter']) {
-      if (function_exists('fb_canvas_url_outbound_alter')) {
-        fb_canvas_url_outbound_alter($path, $options, $original_path);
-      }
-      fb_url_outbound_alter($path, $options, $original_path);
-    }
-  }
-}
-*/
 
 /**
  * Implements hook_url_outbound_alter().
@@ -123,13 +97,18 @@ function fb_url_outbound_alter(&$path, &$options, $original_path) {
       if ($value = fb_settings($prefix))
         $pre .= $prefix . '/' . $value . '/';
     }
+  }
 
-    // Rewrite path to allow for use of language prefixes.
-    $original_path = $path;
+  if ($pre) {
+    if ($path == '<front>') {
+      // Do we really have to do this here?
+      $path = '';
+    }
 
-    $path  = $pre;
-    $path .= !empty($options['prefix']) ? $options['prefix'] : '';
-    $path .= $original_path;
+    $path =
+      $pre .
+      (!empty($options['prefix']) ? $options['prefix'] : '') .
+      $path;
 
     // We have manually set the prefix, so remove the options prefix.
     $options['prefix'] = '';
@@ -145,8 +124,9 @@ function fb_url_outbound_alter(&$path, &$options, $original_path) {
  * Rewrite URLs for facebook canvas pages, and connect callbacks.
  *
  */
-function fb_url_inbound_alter(&$result, $path, $path_language) {
-  //dpm(func_get_args(), 'fb_settings_url_rewrite_outbound'); // debug
+function fb_url_inbound_alter(&$path, $original_path, $path_language) {
+  global $language;
+
   // See if this is a request for us.
   if (strpos($path, FB_SETTINGS_CB . '/') === 0) {
     // Too soon for arg() function.
@@ -157,13 +137,18 @@ function fb_url_inbound_alter(&$result, $path, $path_language) {
       if (fb_settings($key) === NULL) // defer to previously set values
         fb_settings($key, $value); // Store for use later.
     }
-  }
-  else { //resolve aliases for non-fb-callbacks
-    $alias = drupal_lookup_path('source', $path, $path_language);
-    $alias = drupal_lookup_path('source', $path);
 
-    if ($alias)
+    // Remove our prefixes
+    $path = implode('/', $args);
+
+    // Because Drupal calls hook_url_inbound_alter() later than it should, we have to repeat this work, which path.inc has already done.
+    if (!$path) {
+      $path = variable_get('site_frontpage', 'node');
+    }
+    $alias = drupal_lookup_path('source', $path, $path_language);
+    if ($alias) {
       $path = $alias;
+    }
   }
 
   $result = $path;
