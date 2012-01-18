@@ -11,29 +11,43 @@ window.fbAsyncInit = function() {
     // Check the login status.  If offline_access granted, this
     // is the only whay to know if user has logged out of facebook.
     FB.getLoginStatus(function(response) {
+      // Note this callback is often not called, due to bugs in facebook's JS SDK.
       FB_JS.initFinal(response);
     });
+
+    // getLoginStatus is broken and may never call its callback!
+    setTimeout("FB_JS.initFinal({'session' : null})", 500);
   }
   else {
     // No application.  Not safe to call FB.getLoginStatus().
     // We still want to initialize XFBML, third-party modules, etc.
     FB_JS.initFinal({'session' : null});
   }
+
 };
 
 FB_JS = function(){};
-
+FB_JS._calledInitFinal = false; // workaround broken FB.getLoginStatus.
 /**
  * Finish initializing, whether there is an application or not.
  */
 FB_JS.initFinal = function(response) {
-  var status = {'session' : response.session, 'response': response};
+  // This semaphore prevents this function from being called more than once.
+  if (FB_JS._calledInitFinal && response.session == null) {
+    return;
+  }
+  FB_JS._calledInitFinal = true;
+
+  var status = {
+    'session' : response.authResponse, // deprecated
+    'auth': response.authResponse,
+    'response': response
+  };
   jQuery.event.trigger('fb_init', status);  // Trigger event for third-party modules.
 
-  FB_JS.sessionChange(response); // This will act only if fbu changed.
+  FB_JS.authResponseChange(response); // This will act only if fbu changed.
 
   FB_JS.eventSubscribe();
-
   FB.XFBML.parse();
 }
 
@@ -42,7 +56,7 @@ FB_JS.initFinal = function(response) {
  */
 FB_JS.eventSubscribe = function() {
   // Use FB.Event to detect Connect login/logout.
-  FB.Event.subscribe('auth.sessionChange', FB_JS.sessionChange);
+  FB.Event.subscribe('auth.authResponseChange', FB_JS.authResponseChange);
 
   // Q: what the heck is "edge.create"? A: the like button was clicked.
   FB.Event.subscribe('edge.create', FB_JS.edgeCreate);
@@ -75,17 +89,23 @@ FB_JS.getUrlVars = function(href) {
  */
 FB_JS.reload = function(destination) {
   // Determine url hash.
-  var session = FB.getSession();
+  var auth = FB.getAuthResponse();
+
   var fbhash;
-  if (session != null)
-    fbhash = session.sig; // Use sig rather than compute a new hash.
+  if (auth != null)
+    fbhash = auth.signedRequest; // Use sig rather than compute a new hash.
   else
     fbhash = 0;
 
   // Avoid infinite reloads.  Still needed? It would be nice to do away with this code if not needed.
   ///@TODO - does not work on iframe because facebook does not pass url args to canvas frame when cookies not accepted.  http://forum.developers.facebook.net/viewtopic.php?id=77236
   var vars = FB_JS.getUrlVars(window.location.href);
-  if (vars.fbhash == fbhash) {
+
+  //alert(fbhash);
+  
+  //if (vars.fbhash == fbhash) {
+  if ((vars.fbhash) && (vars.fbhash != 0)) {
+	//alert('no reload');
     return; // Do not reload (again)
   }
 
@@ -132,15 +152,24 @@ FB_JS.reload = function(destination) {
 };
 
 // Facebook pseudo-event handlers.
-FB_JS.sessionChange = function(response) {
+FB_JS.authResponseChange = function(response) {
+  //debugger;
   if (response.status == 'unknown') {
     // @TODO can we test if third-party cookies are disabled?
   }
 
-  var status = {'changed': false, 'fbu': null, 'session': response.session, 'response' : response};
+  var status = {
+    'changed': false,
+    'fbu': FB.getUserID(),
+    'session': response.authResponse, // deprecated,  still needed???
+    'auth': response.authResponse, // still needed???
+    'response' : response
+  };
 
-  if (response.session) {
-    status.fbu = response.session.uid;
+  // Note that FB.getUserID() is more accurate than
+  // response.authResponse.UserID when third party cookies are disabled.
+
+  if (response.authResponse || status.fbu) {
     if (Drupal.settings.fb.fbu != status.fbu) {
       // A user has logged in.
       status.changed = true;
@@ -152,8 +181,9 @@ FB_JS.sessionChange = function(response) {
 
     // Sometimes Facebook's invalid cookies are left around.  Let's try to clean up their crap.
     // Can get left behind when third-party cookies disabled.
-    FB_JS.deleteCookie('fbs_' + FB._apiKey, '/', '');
-    FB_JS.deleteCookie('fbs_' + Drupal.settings.fb.apikey, '/', '');
+    // @TODO: Still needed with new oauth??? Have cookies been renamed (fbsr_...)???
+    FB_JS.deleteCookie('fbsr_' + FB._apiKey, '/', '');
+    FB_JS.deleteCookie('fbsr_' + Drupal.settings.fb.apikey, '/', '');
   }
 
   if (status.changed) {
@@ -180,7 +210,7 @@ FB_JS.sessionChangeHandler = function(context, status) {
   };
 
   if (status.session) {
-    data.fbu = status.session.uid;
+    data.fbu = status.session.userID;
     // Suppress facebook-controlled session.
     data.fb_session_handoff = true;
   }
@@ -196,7 +226,7 @@ FB_JS.ajaxEvent = function(event_type, request_data) {
   if (Drupal.settings.fb.ajax_event_url) {
 
     // Session data helpful in ajax callbacks.  See fb_settings.inc.
-    request_data.fb_js_session = JSON.stringify(FB.getSession());
+    // request_data.fb_js_session = JSON.stringify(FB.getSession()); // FB.getSession() FAILS! REMOVE or REPLACE.
     if (typeof(Drupal.settings.fb_page_type) != 'undefined') {
       request_data.fb_js_page_type = Drupal.settings.fb_page_type;
     }
@@ -211,6 +241,15 @@ FB_JS.ajaxEvent = function(event_type, request_data) {
     // Other values to pass to ajax handler.
     if (Drupal.settings.fb.controls) {
       request_data.fb_controls = Drupal.settings.fb.controls;
+    }
+
+    // In case cookies are not accurate, always pass in signed request.
+    response = FB.getAuthResponse();
+    if (response) {
+      request_data.signed_request = response.signedRequest;
+    }
+    else {
+      request_data.signedRequest = '';
     }
 
     jQuery.ajax({
@@ -232,12 +271,11 @@ FB_JS.ajaxEvent = function(event_type, request_data) {
         }
       },
       error: function(jqXHR, textStatus, errorThrown) {
-        var header = jqXHR.getResponseHeader();
-        var headers = jqXHR.getAllResponseHeaders();
+        // Unexpected error (i.e. ajax did not return json-encoded data).
+        var headers = jqXHR.getAllResponseHeaders(); // debug info.
+        var responseText = jqXHR.responseText; // debug info.
         debugger;
         // @TODO: handle error, but how?
-        FB_JS.reload();
-        //alert('FB_JS.ajaxEvent error handler called.');
       }
     });
   }

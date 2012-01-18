@@ -7,7 +7,7 @@
  * In this code we set up special session management and url
  * rewriting.  These things must be done before modules are loaded, so
  * the code is here instead of fb.module. And that is why this
- * must be include from settings.php.
+ * must be included from settings.php.
  *
  */
 
@@ -38,10 +38,7 @@ define('FB_SETTINGS_TYPE_PAGE_TAB', 'page_tab'); // iframe tab
  * Helper function to remember values as we learn them.
  */
 function fb_settings($key = NULL, $value = NULL) {
-  static $cache;
-  if (!isset($cache)) {
-    $cache = array();
-  }
+  static $cache = array();
   if (isset($value)) {
     $cache[$key] = $value;
   }
@@ -70,8 +67,9 @@ function _fb_settings_base64_url_decode($input) {
 }
 
 /**
- * See facebook.php for a more reliable version of this function.  We skip
- * validation because we do not yet know the app secret.
+ * See https://developers.facebook.com/docs/authentication/signed_request/ for
+ * a more reliable version of this function.  We skip validation because we do
+ * not yet know the app secret.
  */
 function _fb_settings_parse_signed_request($signed_request) {
   list($encoded_sig, $payload) = explode('.', $signed_request, 2);
@@ -113,9 +111,12 @@ function _fb_settings_honor_signed_request($sr) {
 
   if (isset($sr['oauth_token'])) {
     fb_settings(FB_SETTINGS_TOKEN, $sr['oauth_token']);
-    $tokens = explode('|', $sr['oauth_token']);
-    if ($app_id = $tokens[0]) {
-      fb_settings(FB_SETTINGS_ID, $app_id);
+    if (!fb_settings(FB_SETTINGS_ID)) {
+      // Prefer app id learned from url rewriting over that learned from signed request (because sr may be encrypted).
+      $tokens = explode('|', $sr['oauth_token']);
+      if (($app_id = $tokens[0]) && !empty($tokens[1])) {
+        fb_settings(FB_SETTINGS_ID, $app_id);
+      }
     }
   }
 }
@@ -205,31 +206,6 @@ elseif (isset($_REQUEST['signed_request']) &&
   // @TODO - somehow detect whether a signed request indicates canvas page or not.
   //fb_settings(FB_SETTINGS_TYPE, FB_SETTINGS_TYPE_CANVAS);
 }
-elseif (isset($_REQUEST['session'])) {
-  // New SDK's use session param for canvas pages.
-  // Deprecated!  'session' has been replaced with 'signed_request'.  This clause can go away.
-  $session = json_decode($_REQUEST['session'], TRUE);
-  fb_settings(FB_SETTINGS_TYPE, FB_SETTINGS_TYPE_CANVAS);
-  fb_settings(FB_SETTINGS_FBU, $session['uid']);
-  fb_settings(FB_SETTINGS_TOKEN, $session['access_token']);
-  // Which app?
-  $access_tokens = explode('|', $session['access_token']);
-  if ($app_id = $access_tokens[0]) {
-    fb_settings(FB_SETTINGS_ID, $app_id);
-  }
-}
-elseif (isset($_REQUEST['fb_js_session'])) {
-  // Ajax callback via fb.js.
-  $session = json_decode($_REQUEST['fb_js_session'], TRUE);
-  fb_settings(FB_SETTINGS_TYPE, isset($_REQUEST['fb_js_page_type']) ? $_REQUEST['fb_js_page_type'] : FB_SETTINGS_TYPE_CONNECT);
-  fb_settings(FB_SETTINGS_FBU, $session['uid']);
-  fb_settings(FB_SETTINGS_TOKEN, $session['access_token']);
-  // Which app?
-  $access_tokens = explode('|', $session['access_token']);
-  if ($app_id = $access_tokens[0]) {
-    fb_settings(FB_SETTINGS_ID, $app_id);
-  }
-}
 else {
   // We're not in a canvas page.
   // We might be in a facebook connect page.  We have to inspect cookies to make sure.
@@ -254,7 +230,8 @@ if (fb_settings(FB_SETTINGS_TYPE) &&
     fb_settings(FB_SETTINGS_TYPE) . $unique_id;
   fb_settings(FB_SETTINGS_COOKIE_DOMAIN, $cookie_domain); // for debugging.
 }
+
 if (fb_settings(FB_SETTINGS_FBU)) {
-  // Disable Drupal cache when logged into facebook.
+  // Tells Drupal, don't pull from (or save to) cache when logged into facebook.
   $conf['cache'] = 0;
 }

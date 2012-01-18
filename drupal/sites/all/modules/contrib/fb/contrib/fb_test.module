@@ -108,7 +108,7 @@ function fb_test_accounts_form($form, &$form_state, $fb_app) {
                            'access_token' => $test_account['access_token'], // Only when account is authorized
                          ));
         if ($data['name']) {
-          $markup .= " $data[name] (<a href=$data[link]>profile</a> | <a href=https://graph.facebook.com/{$test_account[id]}?access_token={$test_account[access_token]}>graph</a> | <a href=https://graph.facebook.com/{$test_account[id]}?access_token=" . fb_get_token($fb) . ">graph2</a>) ";
+          $markup .= " $data[name] (<a href=$data[link]>profile</a> | <a href=https://graph.facebook.com/{$test_account['id']}?access_token={$test_account['access_token']}>graph (user token)</a> | <a href=https://graph.facebook.com/{$test_account['id']}?access_token=" . fb_get_token($fb) . ">graph (app token)</a>) ";
         }
       }
 
@@ -196,7 +196,9 @@ function fb_test_accounts_form_submit($form, &$form_state) {
       }
     }
     else {
-      dpm("Operation $values[operation] not implemented.", __FUNCTION__); // debug
+      if (function_exists('dpm')) {
+        dpm("Operation $values[operation] not implemented.", __FUNCTION__);
+      }
     }
   }
   catch (Exception $e) {
