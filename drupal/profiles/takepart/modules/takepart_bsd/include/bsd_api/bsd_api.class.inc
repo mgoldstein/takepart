@@ -1,8 +1,7 @@
 <?
 
-//@todo: Add check for these:
-require_once 'Crypt/HMAC.php';
-require_once 'HTTP/Request.php';
+//require_once 'Crypt/HMAC.php';
+//require_once 'HTTP/Request.php';
 
 class BSD_API {
     
@@ -43,7 +42,7 @@ class BSD_API {
         
         // *modify the value below*
         //$this->http_request_base = 'http://www.mydomain.com/page/api/';
-        $this->http_request_base = 'https://tkprt.bluestatedigital.com/page/api/';
+        $this->http_request_base = 'http://tkprt.bluestatedigital.com/page/api/';
         
         $this->http_request_options = array(
             'timeout' => 10,
@@ -72,8 +71,10 @@ class BSD_API {
         $url .= '?' . http_build_query($query_params);
         
         // create new request object and pass it connection options
-        $req = new HTTP_Request($url, $this->http_request_options);
+        //$req = new HTTP_Request($url, $this->http_request_options);
         
+        $req = file_get_contents($url);
+        /*
         // send request to API url
         $result = $req->sendRequest();
         
@@ -83,7 +84,7 @@ class BSD_API {
             // return a new HTTP_Request object with the actual requested content
             $req = $this->_deferredResult( $req->getResponseBody() );
         }
-        
+        */
         return $req;
     }
     
@@ -101,14 +102,20 @@ class BSD_API {
             $query_string;
         
         // return encrypted hash
-        $signer = new Crypt_HMAC($this->api_secret, 'sha1');
+        //$signer = new Crypt_HMAC($this->api_secret, 'sha1');
+        //$hash = $signer->hash($signing_string);
         
-        $hash = $signer->hash($signing_string);
+        $hash = base64_encode(hash_hmac('sha1', $signing_string, $this->api_secret, true));
         
-        if($this->output_format == self::OUTPUT_BASE64) {
-            $hash = $this->_hex2b64($hash);
-        }
-        // else, output_format is the default self::OUTPUT_40CHARHEX
+        
+        //if($this->output_format == self::OUTPUT_BASE64) {
+        //    $hash = $this->_hex2b64($hash);
+        //}
+        //else, output_format is the default self::OUTPUT_40CHARHEX
+        
+        //$hash = hash_hmac('sha256', $signing_string, $this->api_secret, $raw = true);
+       // $hash = base64_decode($hash);
+        
         
         return $hash;
         

@@ -35,15 +35,18 @@ function _ctakepart_bsd_test_page($node) {
   
   $bsd = new BSD_API(variable_get('takepart_bsd_api_id', 'takepart-com'),variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'));
   
-  $req = $bsd->callApi("cons/get_constituents", array("filter"=>"primary_state_cd=CA"));
-  $req = $bsd->callApi("account/check_credentials", array("userid"=>"charles@takepart.com","password"=>"Exc@l1bur"));
+  //$req = $bsd->callApi("cons/get_constituents", array("filter"=>"primary_state_cd=CA"));
+  $req = $bsd->callApi("cons/get_constituents_by_id", array("cons_ids"=>"2"));
   
   
+  
+  print "<hr>";
   print "<pre>";
   print_r($req);
   print "</pre>";
+  exit();
   
-  return "test";
+  return "";
 }
 
 /**
