@@ -13,7 +13,7 @@ include_once DRUPAL_ROOT . '/sites/default/settings.local.inc';
 $link = mysql_connect("{$databases['default']['default']['host']}", "{$databases['default']['default']['username']}", "{$databases['default']['default']['password']}");
 
 if (!$link) {
-  echo "MySQL Connection - FAILURE\n<br>\n . mysql_error()";
+  echo "MySQL Connection - FAILURE\n<br>\n " . mysql_error();
 }
 else
 {
@@ -25,7 +25,7 @@ else
     if ($row['uid'] == 0)
       echo "MySQL - OK";
     else
-      echo "MySQL SELECT - FAILURE\n<BR>\n . mysql_error()";
+      echo "MySQL SELECT - FAILURE\n<BR>\n" . mysql_error();
   }
 }
 
