@@ -82,9 +82,6 @@ function _takepart_bsd_apipost($url, $data) {
 }
 
 
-
-
-
 /**
  * Admin Form
  */
