@@ -22,32 +22,68 @@ function takepart_bsd_menu() {
     'access arguments' => array('administer users'),
     'type' => MENU_NORMAL_ITEM,
   );
-  $items['admin/config/development/takepart_bsd/test'] = array(
-      'title' => 'BSD Test Page',
-      'page callback' => '_ctakepart_bsd_test_page',
-      'access arguments' => array('administer users'),
-      'type' => MENU_CALLBACK,
-  );
   return $items;
 }
 
-function _ctakepart_bsd_test_page($node) {
-  
+
+/**
+* BSD API Call
+*/
+function _takepart_bsd_apiquery($url, $query) {
+  echo "called api!";
   $bsd = new BSD_API(variable_get('takepart_bsd_api_id', 'takepart-com'),variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'));
-  
-  //$req = $bsd->callApi("cons/get_constituents", array("filter"=>"primary_state_cd=CA"));
-  $req = $bsd->callApi("cons/get_constituents_by_id", array("cons_ids"=>"2"));
-  
-  
-  
-  print "<hr>";
-  print "<pre>";
-  print_r($req);
-  print "</pre>";
-  exit();
-  
-  return "";
+  $req = $bsd->callApi($url, $query);
+  return $req;
 }
+
+// function defination to convert array to xml
+function _takepart_bsd_array_to_xml($array, &$root) {
+  foreach($array as $key => $value) {
+    if(is_array($value)) {
+      if($key == "@attributes") {
+        if(is_array($value)) {
+          foreach($value as $subkey => $subvalue) {
+            $subnode = $root->addAttribute("$subkey", "$subvalue");
+          }
+        }
+      } else if(!is_numeric($key)) {
+        $subnode = $root->addChild("$key");
+        _takepart_bsd_array_to_xml($value, $subnode);
+      }
+
+      if(!is_numeric($key)) {
+      } else{
+        _takepart_bsd_array_to_xml($value, $root);
+      }
+    }
+    else {
+      if($key == "@value") {
+        $root[0] = $value;
+      } else {
+        $root->addChild("$key","$value");
+      }
+    }
+  }
+}
+
+
+
+//See: http://tkprt.bluestatedigital.com/page/api/doc#set_constituent_data
+function _takepart_bsd_apipost($url, $data) {
+  
+  // creating object of SimpleXMLElement
+  $xml = new SimpleXMLElement("<?xml version=\"1.0\"?><api></api>");
+ 
+  _takepart_bsd_array_to_xml($data, $xml);
+
+  $bsd = new BSD_API(variable_get('takepart_bsd_api_id', 'takepart-com'),variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'));
+  $req = $bsd->callApi($url, null, $xml->asXML());
+  return $req;
+}
+
+
+
+
 
 /**
  * Admin Form

@@ -126,7 +126,7 @@ function newsletter_campaign_menu() {
     'title' => t('Newsletter Form Submission'),
     'access arguments' => array('access content'),
     'page callback' => '_newsletter_signup_form_submit_from_ajax',
-    'file' => 'signup.ajax.inc',
+    'file' => 'signup.ajax.bsd.inc',
     'type' => MENU_CALLBACK,    
   );
   
@@ -134,7 +134,7 @@ function newsletter_campaign_menu() {
     'title' => t('Newsletter Form Submission'),
     'access arguments' => array('access content'),
     'page callback' => '_newsletter_unsubscribe_all',
-    'file' => 'signup.ajax.inc',
+    'file' => 'signup.ajax.bsd.inc',
     'type' => MENU_NORMAL_ITEM,    
   );
 
@@ -142,14 +142,14 @@ function newsletter_campaign_menu() {
     'title' => t('Newsletter Form Submission'),
     'access arguments' => array('access content'),
     'page callback' => '_newsletter_unsubscribe',
-    'file' => 'signup.ajax.inc',
+    'file' => 'signup.ajax.bsd.inc',
     'type' => MENU_NORMAL_ITEM,    
   );
   $items['newsletter-unsubscribe/success'] = array(
     'title' => t('Newsletter Unsubscribe'),
     'access arguments' => array('access content'),
     'page callback' => '_newsletter_unsubscribe_success',
-    'file' => 'signup.ajax.inc',
+    'file' => 'signup.ajax.bsd.inc',
     'type' => MENU_NORMAL_ITEM,    
   );
   
