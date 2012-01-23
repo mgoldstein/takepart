@@ -1,9 +1,5 @@
 <?
 
-//@charles:
-//require_once 'Crypt/HMAC.php';
-//require_once 'HTTP/Request.php';
-
 class BSD_API {
 
   var $api_id;
@@ -14,15 +10,9 @@ class BSD_API {
 
   var $deferred_result_call_interval;
   var $deferred_result_call_max_attempts;
+  var $deferred_result_attempts;
 
   var $output_format;
-
-  const HTTP_CODE_OK                          = 200;
-  const HTTP_CODE_DEFERRED_RESULT             = 202;
-  const HTTP_CODE_DEFERRED_RESULT_COMPILING   = 503;
-
-  const OUTPUT_40CHARHEX = 1;
-  const OUTPUT_BASE64 = 2;
 
   const API_VER = 1;
 
@@ -34,13 +24,10 @@ class BSD_API {
     // set deferred result defaults
 
     // *these are sample values and may be modified as you see fit*
-    $this->deferred_result_call_interval = 30; // in seconds
+    $this->deferred_result_call_interval = 5; // in seconds
     $this->deferred_result_call_max_attempts = 20;
-
-    $this->output_format = self::OUTPUT_40CHARHEX;
-
-    // store options to be used by HTTP_Request
-
+    $this->deferred_result_attempts = 0;
+    
     // *modify the value below*
     //$this->http_request_base = 'http://www.mydomain.com/page/api/';
     $this->http_request_base = 'http://tkprt.bluestatedigital.com/page/api/';
@@ -80,18 +67,15 @@ class BSD_API {
       $req = $this->_post($url, $data);
     } else {
       $req = file_get_contents($url);
+      if(stripos($http_response_header[0], '202 Accepted') !== false) {
+        $deferred_id = $req;
+        do {
+          $this->deferred_result_attempts++;
+          sleep($this->deferred_result_call_interval);
+          $req = $this->callApi("get_deferred_results", array("deferred_id"=>$deferred_id));
+        } while ((stripos($http_response_header[0], '503') !== false) && ($this->deferred_result_attempts <= $this->deferred_result_call_max_attempts));
+      }
     }
-    /*
-     // send request to API url
-    $result = $req->sendRequest();
-
-    // is this a deferred result?
-    if($req->getResponseCode() == self::HTTP_CODE_DEFERRED_RESULT) {
-    // reroute this request for more processing. the _deferredResult function should
-    // return a new HTTP_Request object with the actual requested content
-    $req = $this->_deferredResult( $req->getResponseBody() );
-    }
-    */
     return $req;
   }
 
@@ -108,24 +92,9 @@ class BSD_API {
     $url_parts['path'] . "\n" .
     $query_string;
 
-    //return encrypted hash
-    //$signer = new Crypt_HMAC($this->api_secret, 'sha1');
-    //$hash = $signer->hash($signing_string);
-
     //@charles: changed to eliminate need for HMAC pear module:
     $hash = base64_encode(hash_hmac('sha1', $signing_string, $this->api_secret, true));
-
-    //@charles: output is already encoded:
-    //if($this->output_format == self::OUTPUT_BASE64) {
-    //    $hash = $this->_hex2b64($hash);
-      //}
-      //else, output_format is the default self::OUTPUT_40CHARHEX
-
-      //$hash = hash_hmac('sha256', $signing_string, $this->api_secret, $raw = true);
-      // $hash = base64_decode($hash);
-
-
-      return $hash;
+    return $hash;
 
   }
 
@@ -150,39 +119,6 @@ class BSD_API {
     return $response;
   }
 
-
-  private function _deferredResult($deferred_id) {
-    $attempt = 0;
-
-    // loop until result is ready or until we give up
-    do {
-      // delay between calls (in seconds)
-      sleep($this->deferred_result_call_interval);
-
-      // check to see if result is ready
-      $req = $this->callApi('get_deferred_results', array('deferred_id' => $deferred_id));
-
-      // increment attempts counter
-      $attempt++;
-    } while($req->getResponseCode() == self::HTTP_CODE_DEFERRED_RESULT_COMPILING && $attempt < $this->deferred_result_call_max_attempts);
-
-    // if the response code isn't HTTP_CODE_OK then we didn't get the result we wanted
-    if($req->getResponseCode() != self::HTTP_CODE_OK) {
-      // did we go over our "max attempts"?
-      if($iteration >= $this->deferred_result_call_max_attempts) {
-        throw new Exception('Could not retrieve deferred result.  Max attempts reached.', 1);
-      }
-      // we must have received an unexpected HTTP code
-      else {
-        throw new Exception('Could not retrieve deferred result.  HTTP Code ' .
-        $req->getResponseCode() . ' was returned, with the following message: ' .
-        $req->getResponseBody(), 2);
-      }
-    }
-
-    // return request result
-    return $req;
-  }
 
   protected function _hex2b64($str) {
     $raw = '';
