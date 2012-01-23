@@ -223,7 +223,7 @@ function newsletter_campaign_block_view($delta) {
       'form_id' => check_plain($camp->campaign_id),
       'promo_text' => filter_xss($camp->promo_message, $allowed_tags),
       'header_text' => filter_xss($camp->header, $allowed_tags),
-      'signup_form' => drupal_get_form('newsletter_campaign_signup_form', $camp->campaign_id)
+      'signup_form' => drupal_get_form('newsletter_campaign_signup_form', $camp->campaign_id, $camp->signup_form_id)
     );
     
     $content = theme('newsletter_signup_block', $form_vars);
@@ -371,7 +371,7 @@ function _newsletter_signups_list() {
  *
  * @return array - raw form array
  */
-function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
+function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $camp_signup_form_id) {
   
   $form = array();
   
@@ -439,6 +439,11 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
   $form['campaign_id'] = array(
     '#type' => 'hidden',
     '#value' => $campaign_id,
+  );
+  
+  $form['camp_signup_form_id'] = array(
+      '#type' => 'hidden',
+      '#value' => $camp_signup_form_id,
   );
   
   // d7 ajax submit handler is bugged.

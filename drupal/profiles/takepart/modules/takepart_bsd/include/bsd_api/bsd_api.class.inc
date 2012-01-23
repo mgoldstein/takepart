@@ -1,5 +1,9 @@
 <?
-
+/**
+* BSD API Class.
+* @see
+*  http://tkprt.bluestatedigital.com/modules/api/resources/v1_0/bsd_api.zip
+**/
 class BSD_API {
 
   var $api_id;
@@ -15,6 +19,7 @@ class BSD_API {
   var $output_format;
 
   const API_VER = 1;
+  
 
   public function __construct($api_id, $api_secret) {
     // store vars requied by BSD API
@@ -39,6 +44,7 @@ class BSD_API {
             'maxRedirects' => 3,
     );
   }
+  
 
   public function callApi($url, $query_params = array(), $data = null) {
     // prepend URL with base path for the API
@@ -78,6 +84,7 @@ class BSD_API {
     }
     return $req;
   }
+  
 
   private function _buildApiMac($url, $query) {
     // break URL into parts to get the path
