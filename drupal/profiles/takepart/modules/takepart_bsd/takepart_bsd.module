@@ -3,13 +3,6 @@
 include(drupal_get_path('module', 'takepart_bsd').'/include/bsd_api/bsd_api.class.inc');
 
 /**
- * Implements hook_init().
- */
-function takepart_bsd_init() {
-
-}
-
-/**
  * Implements hook_menu().
  */
 function takepart_bsd_menu() {
@@ -270,50 +263,7 @@ function takepart_bsd_form($form, &$form_state) {
 }
 
 
-/*
- * Unsubscribe user from all campaigns:
-*/
-function _takepart_bsd_usubscribe_all($email) {
-
-  /*
-   set_constituent_data
-  is_subscribed:
-
-
-  set_constituent_data
-
-  $cons_group_id = _takepart_bsd_getconsgroupbyname($campaign);
-  $cons_ids = _takepart_bsd_getconsbyemail($email);
-
-  $r = _takepart_bsd_apiquery("cons_group/remove_cons_ids_from_group", array("cons_group_id"=>$cons_group_id, "cons_ids"=>$cons_ids));
-
-  return $r;
-  */
-
-}
-
-//Menu callbacks
+//Menu callback for test page:
 function _takepart_bsd_test_page() {
-  
-  $id = 2;
-  
-  $fieldsxml = _takepart_bsd_apiquery("signup/list_form_fields", array('signup_form_id' => $id));
-  
-  //find email field id:
-  $fields = simplexml_load_string($fieldsxml);
-  
-  print "<pre>";
-  print_r($fields);
-  print "</pre>";
-  
-  exit();
-  
-  foreach ($fields as $child) {
-    if(strtolower((string) $child->label) == 'email') {
-      $field_id = (int) $child->attributes()->id;
-    }
-  }
-  
-  
-  return $s;
+  return "";
 }
