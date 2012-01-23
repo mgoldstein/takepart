@@ -22,23 +22,91 @@ function takepart_bsd_menu() {
     'access arguments' => array('administer users'),
     'type' => MENU_NORMAL_ITEM,
   );
+  $items['admin/config/development/takepart_bsd/test2'] = array(
+    'title' => 'BSD Test Page',
+    'page callback' => '_takepart_bsd_test_page',
+    'access arguments' => array('administer users'),
+    'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
+/*
+ * Returns the constituent group ID for a given
+* constituent group name:
+*/
+function _takepart_bsd_getconsgroupbyname($name) {
+  $ret = -1;
+  $groups = _takepart_bsd_apiquery("cons_group/list_constituent_groups", array());
+  $cgxml = simplexml_load_string($groups);
+  if ($cgxml) {
+    $cons_groups = $cgxml->xpath('/api/cons_group');
+    if($cons_groups) {
+      foreach ($cons_groups as $child) {
+        if((string) $child->name == $name) {
+          $ret = (int) $child->attributes()->id;
+        }
+      }
+    }
+  }
+  return $ret;
+}
+
+
+/*
+ * Returns the constituent ID for a given
+* constituent email address:
+*/
+function _takepart_bsd_getconsbyemail($email) {
+  $ret = -1;
+  $cons = _takepart_bsd_apiquery("cons/get_constituents", array("filter"=>"email=" . $email));
+  $cxml = simplexml_load_string($cons);
+  if ($cxml) {
+    $ret = $cxml->cons->attributes()->id;
+  }
+  return $ret;
+}
+
+
+/*
+ * Unsubscribe user from a given campaign:
+*/
+function _takepart_bsd_usubscribe($email, $campaign) {
+  
+  $cons_group_id = _takepart_bsd_getconsgroupbyname($campaign);
+  $cons_ids = _takepart_bsd_getconsbyemail($email);
+  
+  $r = _takepart_bsd_apiquery("cons_group/remove_cons_ids_from_group", array("cons_group_id"=>$cons_group_id, "cons_ids"=>$cons_ids));
+
+  return $r;
+  
+}
+
+
+
+function _takepart_bsd_test_page() {
+  return $s;
+}
 
 /**
-* BSD API Call
-*/
+ * BSD API Call
+ */
 function _takepart_bsd_apiquery($url, $query) {
-  echo "called api!";
+  //echo "called api!";
   $bsd = new BSD_API(variable_get('takepart_bsd_api_id', 'takepart-com'),variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'));
   $req = $bsd->callApi($url, $query);
   return $req;
 }
 
+/**
+ * Apply array to SimpleXML:
+ */
 // function defination to convert array to xml
 function _takepart_bsd_array_to_xml($array, &$root) {
   foreach($array as $key => $value) {
+    if(strrpos($key, 'signup_form_field') > -1) {
+      $key = preg_replace('/[0-9]/i', '', $key);
+    }
     if(is_array($value)) {
       if($key == "@attributes") {
         if(is_array($value)) {
@@ -68,17 +136,19 @@ function _takepart_bsd_array_to_xml($array, &$root) {
 
 
 
+
 //See: http://tkprt.bluestatedigital.com/page/api/doc#set_constituent_data
 function _takepart_bsd_apipost($url, $data) {
-  
-  // creating object of SimpleXMLElement
-  $xml = new SimpleXMLElement("<?xml version=\"1.0\"?><api></api>");
- 
-  _takepart_bsd_array_to_xml($data, $xml);
+   
+  $xml = new SimpleXMLElement("<?xml version=\"1.0\" encoding=\"utf-8\"?><api></api>");
 
-  $bsd = new BSD_API(variable_get('takepart_bsd_api_id', 'takepart-com'),variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'));
+  _takepart_bsd_array_to_xml($data, $xml);
+   
+  $bsd = new BSD_API(variable_get('takepart_bsd_api_id', 'takepart-com'), variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'));
   $req = $bsd->callApi($url, null, $xml->asXML());
+
   return $req;
+
 }
 
 
