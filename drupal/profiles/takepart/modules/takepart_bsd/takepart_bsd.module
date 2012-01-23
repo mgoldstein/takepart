@@ -72,16 +72,84 @@ function _takepart_bsd_getconsbyemail($email) {
  * Unsubscribe user from a given campaign:
 */
 function _takepart_bsd_usubscribe($email, $campaign) {
-  
+
   $cons_group_id = _takepart_bsd_getconsgroupbyname($campaign);
   $cons_ids = _takepart_bsd_getconsbyemail($email);
-  
+
   $r = _takepart_bsd_apiquery("cons_group/remove_cons_ids_from_group", array("cons_group_id"=>$cons_group_id, "cons_ids"=>$cons_ids));
 
   return $r;
-  
+
 }
 
+
+/*
+* Signup user through specified form ID:
+*/
+function _takepart_bsd_signup($email, $form_id) {
+  
+  $id = $form_id;
+  
+  if(!is_numeric($id)) {
+    $formsxml = _takepart_bsd_apiquery("signup/list_forms");
+    $forms = simplexml_load_string($formsxml);
+    foreach ($forms as $child) {
+      if((string) $child->signup_form_slug == $id) {
+        $id = (int) $child->attributes()->id;
+      }
+    }
+  }
+  
+  $fieldsxml = _takepart_bsd_apiquery("signup/list_form_fields", array('signup_form_id' => $id));
+  
+  //find email field id:
+  $fields = simplexml_load_string($fieldsxml);
+  foreach ($fields as $child) {
+    if(strtolower((string) $child->label) == 'email') {
+      $field_id = (int) $child->attributes()->id;
+    }
+  }
+  
+  $constituent = array (
+        'signup_form' => array (
+          '@attributes' => array (
+          	'id' => $id, ),
+          'signup_form_field' => array (
+          	'@attributes' => array (
+          		'id' => $field_id,),
+          	'@value' => $email,),
+      ),
+  );
+  
+  $resp = _takepart_bsd_apipost("signup/process_signup", $constituent);
+  
+  return $resp;
+
+}
+
+
+
+/*
+ * Unsubscribe user from all campaigns:
+*/
+function _takepart_bsd_usubscribe_all($email) {
+
+  /*
+  set_constituent_data
+  is_subscribed:
+  
+  
+  set_constituent_data
+  
+  $cons_group_id = _takepart_bsd_getconsgroupbyname($campaign);
+  $cons_ids = _takepart_bsd_getconsbyemail($email);
+
+  $r = _takepart_bsd_apiquery("cons_group/remove_cons_ids_from_group", array("cons_group_id"=>$cons_group_id, "cons_ids"=>$cons_ids));
+
+  return $r;
+  */
+
+}
 
 
 function _takepart_bsd_test_page() {
