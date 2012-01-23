@@ -59,7 +59,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign) {
     '#title' => t('Header'),
     '#description' => t('This text will appear as the header of the block.'),
     '#max_length' => 255,
-    '#default_value' => $campaign->header,  
+    '#default_value' => $campaign->header,
   );
   $form['tpnc_promo_message'] = array(
     '#type' => 'textarea',
@@ -70,9 +70,17 @@ function newsletter_campaign_form($form, &$form_state, $campaign) {
   $form['tpnc_campaign_id'] = array(
     '#type' => 'textfield',
     '#title' => t('Campaign ID'),
-    '#description' => t('Campaign Code generated from the Pluris system.'),
+    '#description' => t('Campaign Code generated from the BSD system.'),
     '#max_length' => 40,
     '#default_value' => $campaign->campaign_id,
+      
+  );
+    $form['tpnc_signup_form_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Signup Form ID'),
+    '#description' => t('ID Code for signup form that serves this campaign.'),
+    '#max_length' => 40,
+    '#default_value' => $campaign->signup_form_id,
       
   );
   $form['tpnc_thankyou_message'] = array(
@@ -100,7 +108,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign) {
 }
 
 /** 
- * form submit handler for campaigin edit form
+ * form submit handler for campaign edit form
  */
 function newsletter_campaign_form_submit($form, &$form_state) {
   $campaign = _newsletter_campaign_default();
@@ -115,6 +123,7 @@ function newsletter_campaign_form_submit($form, &$form_state) {
   $campaign->header           = $form_state['values']['tpnc_header'];
   $campaign->promo_message    = $form_state['values']['tpnc_promo_message'];
   $campaign->campaign_id      = $form_state['values']['tpnc_campaign_id'];
+  $campaign->signup_form_id   = $form_state['values']['tpnc_signup_form_id'];
   $campaign->thankyou_message = $form_state['values']['tpnc_thankyou_message'];
 
   field_attach_submit('newsletter_campaign', $campaign, $form, $form_state);
@@ -175,7 +184,7 @@ function _newsletter_campaign_settings() {
     '#size' => 60,
     '#default_value' => 'alltpnl'
   );  
-  
+  /*
   $form['pluris_fs'] = array(
     '#type' => 'fieldset',
     '#title' => t('Pluris Settings'),
@@ -204,7 +213,7 @@ function _newsletter_campaign_settings() {
     '#size' => 60,
     '#default_value' => 'tp',
   );
-  
+  */
   
   return system_settings_form($form);
 }
