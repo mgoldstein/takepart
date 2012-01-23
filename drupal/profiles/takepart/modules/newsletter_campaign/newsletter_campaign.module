@@ -290,18 +290,19 @@ function newsletter_campaign_form_user_register_form_alter(&$form, &$form_state,
 function _newsletter_campaign_list() {
 
   $campaigns = newsletter_campaign_load_multiple(FALSE); // load them all
-  $h = array(t('Name'), t('Campaign ID'), t("Header"), t("Promo Msg"), t("Thank You Msg"), '');
+  $h = array(t('Name'), t('Campaign ID'), t('Signup Form ID'), t("Header"), t("Promo Msg"), t("Thank You Msg"), '');
   $t = array();
   foreach($campaigns as $camp) {
     $row = array();
     $row[] = l($camp->title, 'admin/structure/newsletter-campaign/'. $camp->ncid .'/edit');
     $row[] = check_plain($camp->campaign_id);
+    $row[] = check_plain($camp->signup_form_id);
     $row[] = filter_xss_admin($camp->header);
     $row[] = filter_xss_admin($camp->promo_message);
     $row[] = filter_xss_admin($camp->thankyou_message);
     $edit   = l('Edit', 'admin/structure/newsletter-campaign/' . $camp->ncid ."/edit");
     $delete = l('X', 'admin/structure/newsletter-campaign/'. $camp->ncid .'/delete', array('attributes' => array('title' => 'Delete')));
-    $row[] = $edit ." | ". $delete; 
+    $row[] = "<div style='width:4em'>" .$edit ." | ". $delete . "</div>"; 
     $t[] = $row;
   }
 
