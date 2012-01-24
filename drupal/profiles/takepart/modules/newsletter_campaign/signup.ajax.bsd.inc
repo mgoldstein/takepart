@@ -125,30 +125,29 @@ function _save_campaign_signup($email, $campaign_id, $action = 's', $source = ''
 
 
 /**
- * Send a 'subscribe' or 'unsubscribe' message to pluris
+ * Send a 'subscribe' or 'unsubscribe' message to BSD
  *
  * @param $email string - email address of the user to lookup
  * @param $campaign_id string - pluris campaign id
  * @param $action string - 's' for subscribe, 'u' for unsubscribe
  *
  * @return string - empty if no problems, otherwise error message
+ * 
  */
 function _newsletter_signup_alert_bsd($email, $campaign_id, $action = 's',$source = '', $send_welcome = 'y', $signup_form_id) {
-
-  $message = '';
- 
-  $bsdresponse = _takepart_bsd_signup($email, $signup_form_id);
-  
-  if(!strlen($bsdresponse) == 0) {
-    watchdog('bsd', $bsdresponse);
+  $message = '';  
+  if($action = 's') {
+    $bsdresponse = _takepart_bsd_signup($email, $signup_form_id);
+    if(!strlen($bsdresponse) == 0) {
+      watchdog('bsd', $bsdresponse);
+    }
+    $newslettername = _takepart_bsd_getformname($signup_form_id);
+  }elseif($action = 'u') {
+    _takepart_bsd_set_subscription_state($email, 0);
   }
-
-  $newslettername = _takepart_bsd_getformname($signup_form_id);
-  
   //Note the the message is ignored if the 
   //caller is _save_campaign_signup:
   return $message;
-
 }
 
 /**

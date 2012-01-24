@@ -16,7 +16,7 @@ function takepart_bsd_menu() {
     'access arguments' => array('administer users'),
     'type' => MENU_NORMAL_ITEM,
   );
-  $items['admin/config/development/takepart_bsd/test2'] = array(
+  $items['admin/config/development/takepart_bsd/test'] = array(
     'title' => 'BSD Test Page',
     'page callback' => '_takepart_bsd_test_page',
     'access arguments' => array('administer users'),
@@ -112,6 +112,39 @@ function _takepart_bsd_usubscribe($email, $campaign) {
 
   return $r;
 
+}
+
+
+/**
+* Unsubscribe / subscribe user from all campaigns.
+* @param $email
+*   The email address of the user.
+* @param $value
+*   The subscription state
+*   0 = unsubscribed
+*   1 = subscribed
+* @see http://tkprt.bluestatedigital.com/modules/constituent/admin/group_list.php
+* @return
+* A string containing the REST response from BSD.
+**/
+function _takepart_bsd_set_subscription_state($email, $value) {
+  $cons_ids = _takepart_bsd_getconsbyemail($email);
+  $r = '';
+  if($cons_ids) {
+    $cons_xml = array (
+    'cons' => array (
+      '@attributes' => array (
+        'is_new' => 0, 
+        'id' => $cons_ids),
+        'cons_email' => array (
+          'email' => $email,
+    		'is_subscribed' => $value,
+    		)
+        ),
+     );
+    $r = _takepart_bsd_apipost("cons/set_constituent_data", $cons_xml);
+  }
+  return $r;
 }
 
 
@@ -282,7 +315,6 @@ function takepart_bsd_form($form, &$form_state) {
   );
   return $form;
 }
-
 
 //Menu callback for test page:
 function _takepart_bsd_test_page() {

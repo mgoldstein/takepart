@@ -70,7 +70,12 @@ class BSD_API {
     //@charles: changed to eliminate need for request pear module:
     //note that this will not work with deffered requests:
     if($data) {
-      $req = $this->_post($url, $data);
+      try {
+        $req = $this->_post($url, $data);
+      } catch(Exception $ex) {
+          $message = t('Problem connecting to pluris');
+          watchdog('bsd', $ex->getMessage());
+      }
     } else {
       $req = file_get_contents($url);
       if(stripos($http_response_header[0], '202 Accepted') !== false) {
