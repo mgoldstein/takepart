@@ -84,7 +84,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign) {
     $options[((int) $child->attributes()->id)] = ((string) $child->signup_form_name);
   }
   
-  if(!empty($options)) {
+  if(!empty($options) && (count($options) > 1)) {
     $form['tpnc_signup_form_id'] = array(
       '#type' => 'select',
       '#title' => t('Signup Form'),
