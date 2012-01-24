@@ -12,6 +12,16 @@ $databases = array (
           'driver' => 'mysql',
           'prefix' => '',
         ),
+      'slave' =>
+        array (
+          'database' => 'takepart',
+          'username' => 'takepart-slave',
+          'password' => 'veud6uft8yo2he5o',
+          'host' => '192.168.100.110',
+          'port' => '',
+          'driver' => 'mysql',
+          'prefix' => '',
+        ),
     ),
 );
 // the path to the core cache file
