@@ -182,7 +182,7 @@ function _newsletter_campaign_settings() {
     '#size' => 10,
     '#default_value' => 7    
   );
-    
+/*
   $form['unsubscribe_fs'] = array(
     '#type' => 'fieldset',
     '#title' => t('Pluris Legacy - Unsubscription Settings'),
@@ -238,6 +238,6 @@ function _newsletter_campaign_settings() {
     '#size' => 60,
     '#default_value' => 'tp',
   );
-  
+  */
   return system_settings_form($form);
 }

@@ -74,7 +74,7 @@ function newsletter_campaign_menu() {
     'access arguments' => array('view newsletter campaign'),
     'type' => MENU_DEFAULT_LOCAL_TASK,
   );
-  
+  /*
   $items['admin/structure/newsletter-campaign/signups'] = array(
     'title' => 'Signups',
     'description' => 'List all signups',
@@ -82,10 +82,10 @@ function newsletter_campaign_menu() {
     'access arguments' => array('view newsletter campaign'),
     'type' => MENU_LOCAL_TASK
   );
-
+  */
   $items['admin/structure/newsletter-campaign/settings'] = array(
     'title' => 'Settings',
-    'description' => 'List all signups',
+    'description' => 'Global newsletter settings',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('_newsletter_campaign_settings'),
     'access arguments' => array('view newsletter campaign'),
@@ -552,6 +552,7 @@ function _newsletter_campaign_default() {
   $campaign->header = NULL;
   $campaign->promo_message = NULL;
   $campaign->campaign_id = NULL;
+  $campaign->signup_form_id = NULL;
   $campaign->thankyou_message = NULL;
   
   return $campaign;
