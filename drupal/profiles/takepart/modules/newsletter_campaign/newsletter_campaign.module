@@ -509,7 +509,6 @@ function _newsletter_campaign_profile_opt_in_submit($form, &$form_state) {
     
     /* 
      * BSD call to process signup form for TakePart newsletter
-     * TODO: Pull signup form ID from variable set in CMS interface for campaigns 
      */
     module_load_include('inc', 'newsletter_campaign', 'signup.ajax.bsd');
     $result = _takepart_bsd_signup($email, $tp_signup_id);
