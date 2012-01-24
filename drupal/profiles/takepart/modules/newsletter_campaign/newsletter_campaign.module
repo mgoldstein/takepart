@@ -372,7 +372,7 @@ function _newsletter_signups_list() {
  *
  * @return array - raw form array
  */
-function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $camp_signup_form_id) {
+function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $signup_form_id) {
   
   $form = array();
   
@@ -406,9 +406,12 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $cam
   );
 
   // takepart_newsletter_isValidEmailAddress(jQuery("#wrapper-form-'.$campaign_id.' [name=email]").val(), "'.$campaign_id.'")
-  drupal_add_js('jQuery(document).ready(function(context){
+  drupal_add_js('var takepart_newsletter_callcount = 0; jQuery(document).ready(function(context) {
+  if(takepart_newsletter_callcount == 0) {
+  takepart_newsletter_callcount++;
     jQuery("#wrapper-form-'.$campaign_id.' .form-submit").
       click(function(e) {
+      
         e.preventDefault();
         
         var isvalid = takepart_newsletter_isValidEmailAddress(jQuery("#wrapper-form-'.$campaign_id.' [name=email]").val(), "'.$campaign_id.'");
@@ -424,6 +427,7 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $cam
         }
         return false;
       });
+      }
     });', 'inline'
   );
 
@@ -442,9 +446,9 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $cam
     '#value' => $campaign_id,
   );
   
-  $form['camp_signup_form_id'] = array(
+  $form['signup_form_id'] = array(
       '#type' => 'hidden',
-      '#value' => $camp_signup_form_id,
+      '#value' => $signup_form_id,
   );
   
   // d7 ajax submit handler is bugged.

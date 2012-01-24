@@ -10,39 +10,43 @@ function _newsletter_signup_email_check(&$form) {
   if (!valid_email_address($form['email'])) {
     return t('Invalid address, please try again');
   }
-  
+
   $form['email'] = check_plain($form['email'] );
   $form['campaign_id'] = check_plain($form['campaign_id']);
-  
+  $form['signup_form_id'] = check_plain($form['signup_form_id']);
+
+
   return '';
 }
 
 /**
  * Ajax form handler
- * returns a JSON string 
- */     
-function _newsletter_signup_form_submit_from_ajax() { 
+ * returns a JSON string
+ */
+function _newsletter_signup_form_submit_from_ajax() {
   $form = $_POST;
-  
+
   $email = $form['email'];
   $campaign_id = $form['campaign_id'];
+  $signup_form_id = $form['signup_form_id'];
+
   //$message = _newsletter_signup_email_check($form);
-  
+
   // if email is BAD
   if ($message) {
     print drupal_json_output(array(0, $message));
     exit();
   }
-  
-  $result = _save_campaign_signup($email, $campaign_id, 's');
+
+  $result = _save_campaign_signup($email, $campaign_id, 's', null, null, $signup_form_id);
   //$result = _save_campaign_signup($test_email, $test_camp, 's');
-  
+
   if ($result['status'] == 1 ) {
     // lookup entity by campaign id
     $query = new EntityFieldQuery();
     $db_result = $query->entityCondition('entity_type', 'newsletter_campaign')
-                    ->propertyCondition('campaign_id', $campaign_id, '=')
-                    ->execute();
+    ->propertyCondition('campaign_id', $campaign_id, '=')
+    ->execute();
     $ncids = array_keys($db_result['newsletter_campaign']);
     $camps = entity_load('newsletter_campaign', $ncids);
     // i hate this.
@@ -52,7 +56,7 @@ function _newsletter_signup_form_submit_from_ajax() {
 
   print drupal_json_output($result);
   exit();
-} 
+}
 
 /**
  * Saves email/campaign id combo to the database
@@ -63,7 +67,7 @@ function _newsletter_signup_form_submit_from_ajax() {
  *
  * @return string - empty if success, message if error
  */
-function _save_campaign_signup($email, $campaign_id, $action = 's', $source = '', $send_welcome = 'y') {
+function _save_campaign_signup($email, $campaign_id, $action = 's', $source = '', $send_welcome = 'y', $signup_form_id) {
   $record = new stdClass();
   $record->mail = $email;
   $record->campaign_id = $campaign_id;
@@ -73,27 +77,27 @@ function _save_campaign_signup($email, $campaign_id, $action = 's', $source = ''
     case 's' : $record->subscribe_date = time(); break;
     case 'u' : $record->unsubscribe_date = time(); break;
   }
-  
+
   $success = 0;
-  
+
   try {
-  
+
     // contact Pluris first, since it is the 'master'
-    $message = _newsletter_signup_alert_pluris($record->mail, $record->campaign_id, $record->status, $record->source, $send_welcome);
+    $message = _newsletter_signup_alert_bsd($record->mail, $record->campaign_id, $record->status, $record->source, $send_welcome, $signup_form_id);
     $message = '';
     if (!$message) {
       $record->uid = _is_signee_drupal_user($record->mail);
       if (!$record->uid) {
         $record->uid = 0;
       }
- 
+
       // If we have a row and the action is different the the status update the status
       $status = _is_email_recorded_for_campaign($record->mail, $record->campaign_id);
-      
+
       if ($status) {
         if ($status != $record->status) {
           drupal_write_record("newsletter_signups", $record, array('mail', 'campaign_id'));
-          $success = 1; 
+          $success = 1;
         }
         else {
           $message = $status == 's' ? t('You are already subscribed.') : t('You are already unsubscribed.');
@@ -103,20 +107,20 @@ function _save_campaign_signup($email, $campaign_id, $action = 's', $source = ''
       else {
         drupal_write_record("newsletter_signups", $record);
         $message = 'success';
-        $success = 1; 
+        $success = 1;
       }
     }
-      
+
     return array('status' => $success, 'message' => $message);
   }
   catch(Exception $ex) {
-    watchdog('newsletter service', 'General error: %error for email: %email, campaign id: %campaign', 
-      array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign)
+    watchdog('newsletter service', 'General error: %error for email: %email, campaign id: %campaign',
+    array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign)
     );
     $message = $action == 's' ? t('Problem saving email, please try again later.') : t('There was a problem unsubscribing. Please try again later.');
-    
+
     return array('status' => 0, 'message' => $message);
-  } 
+  }
 }
 
 
@@ -129,108 +133,22 @@ function _save_campaign_signup($email, $campaign_id, $action = 's', $source = ''
  *
  * @return string - empty if no problems, otherwise error message
  */
-function _newsletter_signup_alert_pluris($email, $campaign_id, $action = 's',$source = '', $send_welcome = 'y') {
-  
-  
-  
-  
-$constituent = array (
-  'cons' => array (
-    'signup_form' => array (
-      '@attributes' => array (
-      	'id' => '9',
-       ),
-      'signup_form_field' => array (
-      	'@attributes' => array (
-      		'id' => '82',
-          ),
-      	'@value' => "charles.toepfer@gmail.com",
-        ),
-     ),
-   ),
-);
-    
-/* 
-<?xml version="1.0" encoding="utf-8"?>
-<api>
-  <signup_form id="9">
-    <signup_form_field id="82">user@domain.com</signup_form_field>
-    <signup_form_field id="83">First Name</signup_form_field>
-    <signup_form_field id="84">Last Name</signup_form_field>
-    <signup_form_field id="85">Address</signup_form_field>
-    <signup_form_field id="86">City</signup_form_field>
-    <signup_form_field id="87">MA</signup_form_field>
-    <signup_form_field id="88">02135</signup_form_field>
-    <signup_form_field id="89">USA</signup_form_field>
-    <signup_form_field id="90">1112223333</signup_form_field>
-    <signup_form_field id="108">custom-form-field</signup_form_field>
-    <signup_form_field id="120">
-        <items>
-            <item>1</item>
-            <item>2</item>
-        </items>
-    </signup_form_field>
-    <signup_form_field id="123">custom-cons-field</signup_form_field>
-    <signup_form_field id="124">
-        <file>
-            <filename>filename.jpg</filename>
-            <data>[BASE64 encoded data]</data>
-        </file>
-    </signup_form_field>
-  </signup_form>
-</api>
-        
-  * 
-  */
-  
+function _newsletter_signup_alert_bsd($email, $campaign_id, $action = 's',$source = '', $send_welcome = 'y', $signup_form_id) {
 
-
-  if (function_exists('_takepart_bsd_apipost')) {
-    $resp = _takepart_bsd_apipost("cons/set_constituent_data",$constituent);
-  } else {
-    echo "error";
-  }
-  
-  print "test";
-  print_r($resp);
-  exit();
-  
-  
   $message = '';
-  try {
-    $ws_url = variable_get('takepart_newsletter_signup_pluris_url', 'https://digitalsubscriptions.plurismarketing.com/subscribeRequest.php');
-    $params = array(
-     'e'=>$email,
-     'a'=>$action,
-     'c'=>$campaign_id,
-     'r'=>variable_get('takepart_newsletter_signup_pluris_requester', 'tp'),
-     'w'=>$send_welcome,
-     's'=>$source
-    );
-    if (!$source) {
-      unset($params['s']);
-    }
-    $url = url($ws_url, array('query'=>$params));
-    $pluris_code = drupal_http_request($url, array(), 'GET');
+ 
+  $bsdresponse = _takepart_bsd_signup($email, $signup_form_id);
   
-    if ($pluris_code && $pluris_code->data) {
-      $xml = simplexml_load_string($pluris_code->data);
-      if ((string)$xml->returnCode) {
-        $message = (string)$xml->returnString;
-      }
-      $xml = null;
-    }
-    else {
-      $message = t('No response from pluris');
-    }
+  if(!strlen($bsdresponse) == 0) {
+    watchdog('bsd', $bsdresponse);
   }
-  catch(Exception $ex) {
-    $message = t('Problem connecting to pluris');
-    watchdog('newsletter service', 'Error connecting to pluris. Error: %error for email: %email, campaign id: %campaign', 
-      array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign));
-  }
+
+  $newslettername = _takepart_bsd_getformname($signup_form_id);
   
+  //Note the the message is ignored if the 
+  //caller is _save_campaign_signup:
   return $message;
+
 }
 
 /**
@@ -259,25 +177,25 @@ function _is_email_recorded_for_campaign($email, $campaign_id = '') {
   return $result->fetchField();
 }
 
-/** 
+/**
  * callback for the unsubscribe
  */
 function _newsletter_unsubscribe_all() {
   global $user;
   drupal_set_title("Unsubscribe from all TakePart newsletters?");
-  
+
   $email = false;
   // grab email from logged in user if not admin or anonymous
   if($user->uid > 1) {
-    $email = $user->mail; 
+    $email = $user->mail;
   }
-  
+
   $campaign_code = variable_get('newsletter_campaign_unsubscribe_all_campaign_code', 'alltpnl');
-  
+
   return drupal_get_form('_newsletter_unsubscribe_all_form', $campaign_code, $email);
 }
 
-/** 
+/**
  * callback for the unsubscribe
  */
 function _newsletter_unsubscribe() {
@@ -285,22 +203,22 @@ function _newsletter_unsubscribe() {
   $email = $_GET['email'];
   $campaign_code = isset($_GET['campaign']) ? $_GET['campaign'] :  'all';
   return drupal_get_form('_newsletter_unsubscribe_all_form', $campaign_code, $email);
-  
+
 }
 
 /**
  * unsubscribe form
  */
 function _newsletter_unsubscribe_all_form($form, &$form_state, $campaign_code, $email) {
-    $all_code = variable_get('takepart_newsletter_signup_unsubscribe_all_campaign_code', 'alltpnl');
-    $query = new EntityFieldQuery();
-    $db_result = $query->entityCondition('entity_type', 'newsletter_campaign')
-                    ->propertyCondition('campaign_id', $campaign_code, '=')
-                    ->execute();
-    $ncids = array_keys($db_result['newsletter_campaign']);
-    $camps = entity_load('newsletter_campaign', $ncids);
-    // i hate this.
-    $campaign = isset($camps[$ncids[0]]) ? $camps[$ncids[0]] : FALSE;
+  $all_code = variable_get('takepart_newsletter_signup_unsubscribe_all_campaign_code', 'alltpnl');
+  $query = new EntityFieldQuery();
+  $db_result = $query->entityCondition('entity_type', 'newsletter_campaign')
+  ->propertyCondition('campaign_id', $campaign_code, '=')
+  ->execute();
+  $ncids = array_keys($db_result['newsletter_campaign']);
+  $camps = entity_load('newsletter_campaign', $ncids);
+  // i hate this.
+  $campaign = isset($camps[$ncids[0]]) ? $camps[$ncids[0]] : FALSE;
 
   if ($campaign) {
     drupal_set_title("Unsubscribe from {$campaign->title}?");
@@ -314,14 +232,14 @@ function _newsletter_unsubscribe_all_form($form, &$form_state, $campaign_code, $
     );
 
   }
-  
+
   $form['email'] = array(
     '#type' => 'textfield',
     '#title' => t('Email'),
     '#default_value' => $email,
-    //'#disabled' => TRUE,
+  //'#disabled' => TRUE,
   );
-  
+
   $form['campaign_id'] = array(
     '#type' => 'hidden',
     '#value' => $campaign_code,
@@ -340,9 +258,9 @@ function _newsletter_unsubscribe_all_form($form, &$form_state, $campaign_code, $
     '#options' => array(
       'attributes' => array(),
       'html' => FALSE,
-    ),
+  ),
   );
-    
+
 
   if($campaign) {
     $form['actions']['unsubscribe_from_all'] = array(
@@ -353,10 +271,10 @@ function _newsletter_unsubscribe_all_form($form, &$form_state, $campaign_code, $
         'attributes' => array(),
         'html' => FALSE,
         'query' => array("email"=>$email,"campaign"=>$all_code),
-      ),
+    ),
     );
   }
-  
+
   return $form;
 }
 
@@ -364,7 +282,7 @@ function _newsletter_unsubscribe_all_form($form, &$form_state, $campaign_code, $
  * Implementation of form_validate for newsletter unsubscribe form
  */
 function _newsletter_unsubscribe_all_form_validate($form, &$form_state) {
-  
+
   if (!valid_email_address($form_state['values']['email'])) {
     form_set_error('email', t('Invalid address'));
   }
@@ -378,21 +296,22 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
   global $user;
   $success = 0;
   $message = '';
-  
+
   $email = $form_state['values']['email'];
-  
+
   $response = array('status' => $success, 'message' => $message);
   $email = $form_state['values']['email'];
   $campaign_id = $form_state['values']['campaign_id'];
-  
+  $signup_form_id = $form_state['values']['signup_form_id'];
+
   $all_code = variable_get('takepart_newsletter_signup_unsubscribe_all_campaign_code', 'alltpnl');
   //drupal_set_message($campaign_id);
   if ($campaign_id && $campaign_id != 'alltpnl') {
-    $message = _newsletter_signup_alert_pluris($email, $campaign_id, 'u');
+    $message = _newsletter_signup_alert_bsd($email, $campaign_id, 'u', null, null, $signup_form_id);
     if (!$message) {
-        $success = 1;
-        // the local update
-        db_query("UPDATE {newsletter_signups} SET status = 'u', unsubscribe_date = ? WHERE mail = ? and campaign_id = ?" , array(time(), $email, $campaign_id));
+      $success = 1;
+      // the local update
+      db_query("UPDATE {newsletter_signups} SET status = 'u', unsubscribe_date = ? WHERE mail = ? and campaign_id = ?" , array(time(), $email, $campaign_id));
     }
   }
   else {
@@ -413,14 +332,14 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
           $message = (string)$xml->returnString;
         }
         $xml = null;
-        
+
         // the local update
         db_query("UPDATE {newsletter_signups} SET status = 'u', unsubscribe_date = ? WHERE mail = ?", array(time(), $email));
         $success = 1;
-        
+
         // update our opt in field, ugh
         user_save($user, array('field_registration_email_opt_in' => 0));
-   
+         
       }
       else {
         $message = t('No response from pPluris');
@@ -428,50 +347,50 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
     }
     catch(Exception $ex) {
       $message = t('Problem connecting to pluris');
-      watchdog('newsletter service', 'Error connecting to Pluris. Error: %error for email: %email, campaign id: %campaign', 
-        array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign)
+      watchdog('newsletter service', 'Error connecting to Pluris. Error: %error for email: %email, campaign id: %campaign',
+      array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign)
       );
     }
   }
   $response['status'] = $success;
   $response['message'] = $message;
-  
-  //return array('status' => $success, 'message' => $message); 
-  
-  
-  // i think this is only called to get the response nad update locally? 
-  // this was for the case of only one campaign 
+
+  //return array('status' => $success, 'message' => $message);
+
+
+  // i think this is only called to get the response nad update locally?
+  // this was for the case of only one campaign
   //return _save_campaign_signup($email, $campaign_id, 'u');
 
-  
+
   // if there is a message, that means there was a problem
   if (!$response['status']) {
     drupal_set_message($response['message'], 'error', FALSE);
     //drupal_goto(variable_get('takepart_newsletter_signup_unsubscribe_problem_page', 'newsletter-unsubscribe-problem'));
   }
   else {
-     drupal_goto(
+    drupal_goto(
        'newsletter-unsubscribe/success', 
-       array(
+    array(
          'query' => array(
            'email' => $email,
            'campaign' => $campaign_id,
-         ),
-       )
-     );
-  }  
+    ),
+    )
+    );
+  }
 }
 
 /*
  * successful unsubscribe page callback
- */
+*/
 function _newsletter_unsubscribe_success() {
   $email = $_GET['email'];
   $campaign_id = $_GET['campaign'];
   $query = new EntityFieldQuery();
   $db_result = $query->entityCondition('entity_type', 'newsletter_campaign')
-                  ->propertyCondition('campaign_id', $campaign_id, '=')
-                  ->execute();
+  ->propertyCondition('campaign_id', $campaign_id, '=')
+  ->execute();
   $ncids = array_keys($db_result['newsletter_campaign']);
   $camps = entity_load('newsletter_campaign', $ncids);
   $campaign = $camps[$ncids[0]];

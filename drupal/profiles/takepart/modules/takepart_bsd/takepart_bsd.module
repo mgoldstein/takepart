@@ -2,6 +2,7 @@
 
 include(drupal_get_path('module', 'takepart_bsd').'/include/bsd_api/bsd_api.class.inc');
 
+
 /**
  * Implements hook_menu().
  */
@@ -69,6 +70,26 @@ function _takepart_bsd_getconsbyemail($email) {
     $ret = $cxml->cons->attributes()->id;
   }
   return $ret;
+}
+
+
+/**
+* Get newsletter name for a given form id.
+* @param $id
+*   The id of the form.
+* @return
+* A string containing the form name;
+**/
+function _takepart_bsd_getformname($id) {
+  $newslettername = '';
+  $formsxml = _takepart_bsd_apiquery("signup/list_forms");
+  $forms = simplexml_load_string($formsxml);
+  foreach ($forms as $child) {
+    if((int) $child->attributes()->id == $id) {
+      $newslettername = (string) $child->signup_form_name;
+    }
+  }
+  return $newslettername;
 }
 
 
