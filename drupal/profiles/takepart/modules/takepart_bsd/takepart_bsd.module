@@ -311,7 +311,7 @@ function takepart_bsd_form($form, &$form_state) {
   );
   $form['takepart_bsd_api_restmethod'] = array(
       '#type' => 'select',
-      '#title' => t('Show Comments'),
+      '#title' => t('REST Method'),
       '#default_value' => variable_get('takepart_bsd_api_restmethod', 0),
       '#options' => array(0 => t('Stream Wrappers'), 1 => t('Curl'),),
       '#required' => TRUE,
