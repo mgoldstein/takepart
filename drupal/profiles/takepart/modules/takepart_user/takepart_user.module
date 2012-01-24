@@ -81,13 +81,26 @@ function takepart_user_form_user_register_form_alter(&$form, &$form_state, $form
   else {
     unset($form['field_account_dateofbirth']);
   }
-
 }
+
+/*
+ * Automatically sign up new user for welcome email.
+ */
 function takepart_user_user_insert(&$edit, $account, $category) {
-    $pluris_registration_code = variable_get('takepart_user_pluris_registration_code','regtp');
-    module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
-    $result = _newsletter_signup_alert_pluris($account->mail, $pluris_registration_code, $action = 's',$source = '', $send_welcome = 'y'); 
-// Removed per FB #17348   drupal_set_message($result['message'], 'status', FALSE);
+    
+    /*
+     * BSD call to process_signup API 
+     */
+    $welcome_signup_code = variable_get('newsletter_campaign_welcome_signup_code', 7);
+    module_load_include('inc', 'newsletter_campaign', 'signup.ajax.bsd');
+    $result = _takepart_bsd_signup($account->mail, $welcome_signup_code);
+
+    /* Pluris   
+     * $pluris_registration_code = variable_get('takepart_user_pluris_registration_code','regtp');
+     * module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
+     * $result = _newsletter_signup_alert_pluris($account->mail, $pluris_registration_code, $action = 's',$source = '', $send_welcome = 'y'); 
+     */
+    // Removed per FB #17348   drupal_set_message($result['message'], 'status', FALSE);
 }
 
 /**

@@ -142,25 +142,50 @@ function newsletter_campaign_form_submit($form, &$form_state) {
   drupal_goto('admin/structure/newsletter-campaign');
 }
 
-
 function _newsletter_campaign_settings() {
   $form = array();
 
   $form['subscribe_fs'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Subscribe Settings'),
+    '#title' => t('TakePart Newsletter'),
   );
   $form['subscribe_fs']['newsletter_campaign_tp_opt_in_code'] = array(
     '#type' => 'textfield',
-    '#title' => ('TakePart campaign code'),
+    '#title' => ('TakePart newsletter campaign code'),
     '#description' => t('TakePart campaign code for opting in from the profile or registration pages.'),
     '#size' => 60,
     '#default_value' => 'tpnews1'    
   );
-  
+    $form['subscribe_fs']['newsletter_campaign_tp_signup_code'] = array(
+    '#type' => 'textfield',
+    '#title' => ('TakePart newsletter signup form code'),
+    '#description' => t('The BSD signup form that processes subscriptions for the TakePart newsletter campaign.'),
+    '#size' => 10,
+    '#default_value' => 5    
+  );
+
+  $form['welcome_fs'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('TakePart Welcome Email'),
+  );
+    $form['welcome_fs']['newsletter_campaign_welcome_code'] = array(
+    '#type' => 'textfield',
+    '#title' => ('TakePart welcome email campaign code'),
+    '#description' => t('Campaign code for sending welcome email to new users.'),
+    '#size' => 60,
+    '#default_value' => 'regtp'    
+  );
+    $form['welcome_fs']['newsletter_campaign_welcome_signup_code'] = array(
+    '#type' => 'textfield',
+    '#title' => ('TakePart welcome email signup form code'),
+    '#description' => t('The BSD signup form that processes subscriptions for TakePart welcome emails.'),
+    '#size' => 10,
+    '#default_value' => 7    
+  );
+/*
   $form['unsubscribe_fs'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Unsubscription Settings'),
+    '#title' => t('Pluris Legacy - Unsubscription Settings'),
   );
   $form['unsubscribe_fs']['takepart_newsletter_signup_unsubscribe_confirmation_page'] = array(
     '#type' => 'textfield',
@@ -184,10 +209,10 @@ function _newsletter_campaign_settings() {
     '#size' => 60,
     '#default_value' => 'alltpnl'
   );  
-  /*
+  
   $form['pluris_fs'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Pluris Settings'),
+    '#title' => t('Pluris Legacy - API Settings'),
   );
   
   $form['pluris_fs']['takepart_newsletter_signup_pluris_url'] = array(
@@ -214,7 +239,5 @@ function _newsletter_campaign_settings() {
     '#default_value' => 'tp',
   );
   */
-  
   return system_settings_form($form);
 }
-
