@@ -53,5 +53,8 @@
     <?php print render($content['comment_form']); ?>
     <?php endif; ?>
     
-    <?php print render($content['comments']); ?>
+    <?php 
+    $comments = array_reverse($content['comments']);
+    print render($comments);
+    ?>
 </div>

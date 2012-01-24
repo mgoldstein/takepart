@@ -117,8 +117,12 @@ function takepart_user_form_user_login_alter(&$form, &$form_state, $form_id) {
   drupal_set_title($login_title);
   $form['#prefix'] = '<h2 class="title">' . $login_title . '</h2>';
   $form['#prefix'] .= variable_get("takepart_user_login_intro_text","<p class='fb-login-text'>Click Connect with Facebook or complete the form below to log in.</p>");
-  $form['actions']['submit']['#value'] = 'Log In';
   
+  //$form['#prefix'] .= variable_get("takepart_user_login_intro_text","<p><fb:login-button scope=\"!perms\" v=\"2\">Connect</fb:login-button></p>");
+  //$form['#prefix'] .= variable_get("takepart_user_login_intro_text"," <fb:login-button onlogin=\"window.location.reload()\" data-scope=\"email,user_checkins\"></fb:login-button>");
+  //$form['#prefix'] .= variable_get("takepart_user_login_intro_text"," <fb:login-button onlogin=\"FB.login(function(response) {}, {perms:Drupal.settings.fb.perms}); return false;\" data-scope=\"email,user_checkins\"></fb:login-button>");
+  //$form['#prefix'] .= fbconnect_render_button(array('perms' => 'email'));
+  $form['actions']['submit']['#value'] = 'Log In';
   $form['#submit'][] = 'takepart_user_login_submit';
 }
 

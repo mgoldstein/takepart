@@ -23,8 +23,8 @@ To upgrade from on D7 version to the next:
 
 To install:
 
-- Make sure you have a PHP client from facebook (version < 3.0.0).
-  The 3.0.0 or higher versions are not supported by this version of Drupal for Facebook.
+- Make sure you have a PHP client from facebook (version >= 3.1.1).
+  The 2.x.y versions are not supported by this version of Drupal for Facebook.
   Download from http://github.com/facebook/php-sdk.
   Extract the files, and place them in sites/all/libraries/facebook-php-sdk.
 
@@ -32,10 +32,10 @@ To install:
   another recognised location (such as sites/all/libraries), providing that the
   directory is named 'facebook-php-sdk'.
 
-  Or, to manually set the location of the php-sdk in any other directory, edit
-  your settings.php to include a line similar to this (add to the section where
-  the $conf variable is defined, or the very end of settings.php. And
-  customize the path as needed.):
+  Or, to manually set the location of the php-sdk in any other
+  directory, edit your settings.php to include a line similar to the
+  one below. Add to the section where the $conf variable is defined,
+  or the very end of settings.php. And customize the path as needed.
 
   $conf['fb_api_file'] = 'sites/all/libraries/facebook-php-sdk/src/facebook.php';
 
@@ -124,6 +124,12 @@ Disable Global Redirect, if you have that module installed.  Users
 have reported problems with it and Drupal for Facebook.  Any module
 which implements custom url rewrites could interfere with canvas page
 and profile tab support.
+
+On the facebook side, make sure your application is not in "sandbox
+mode".  This is known to have unwanted side effects.  Also, don't use
+a test account. If you've used a test account, ever, even for another
+application, clear all your browser's cookies.  Try to reproduce the
+problem not in sandbox mode, and not using a test account.
 
 Bug reports and feature requests may be submitted.
 Here's an idea: check the issue queue before you submit
