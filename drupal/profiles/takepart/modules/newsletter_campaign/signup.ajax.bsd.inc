@@ -69,57 +69,20 @@ function _newsletter_signup_form_submit_from_ajax() {
  */
 
 function _save_campaign_signup($email, $campaign_id, $action = 's', $source = '', $send_welcome = 'y', $signup_form_id) {
-  
-  $record = new stdClass();
-  $record->mail = $email;
-  $record->campaign_id = $campaign_id;
-  $record->status = $action;
-  $record->source = $source;
-  
-  switch ($action) {
-    case 's' : $record->subscribe_date = time(); break;
-    case 'u' : $record->unsubscribe_date = time(); break;
-  }
-
   $success = 0;
-
   try {
-
-    // contact BSD first, since it is the 'master'
     $message = _newsletter_signup_alert_bsd($record->mail, $record->campaign_id, $record->status, $record->source, $send_welcome, $signup_form_id);
-
-    if (!$message) {
+    if ((!$message) || (strlen($message)==0)) {
       $success = 1;
-      
-      $record->uid = _is_signee_drupal_user($record->mail);
-      if (!$record->uid) {
-        $record->uid = 0;
-      }
-
-      // If we have a row and the action is different the the status update the status
-      $status = _is_email_recorded_for_campaign($record->mail, $record->campaign_id);
-
-      if ($status) {
-        if ($status != $record->status) {
-          drupal_write_record("newsletter_signups", $record, array('mail', 'campaign_id'));
-        }
-      }
-      // does not exist
-      else {
-        drupal_write_record("newsletter_signups", $record);
-      }
     } else {
       $success = 0;
     }
-
     return array('status' => $success, 'message' => $message);
   }
   catch(Exception $ex) {
     watchdog('newsletter service', 'General error: %error for email: %email, campaign id: %campaign',
-    array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign)
-    );
+    array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign));
     $message = $action == 's' ? t('Problem saving email, please try again later.') : t('There was a problem unsubscribing. Please try again later.');
-
     return array('status' => 0, 'message' => $message);
   }
 }
