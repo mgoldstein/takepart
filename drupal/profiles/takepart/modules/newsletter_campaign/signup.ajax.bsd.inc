@@ -256,81 +256,21 @@ function _newsletter_unsubscribe_all_form_validate($form, &$form_state) {
  * submit handler for '_newsletter_unsubscribe_form' form
  */
 function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
-  //$response = takepart_newsletter_delete_campaign($email, $campaign_id);
+
   global $user;
-  $success = 0;
   $message = '';
-
-  $email = $form_state['values']['email'];
-
-  $response = array('status' => $success, 'message' => $message);
+  
   $email = $form_state['values']['email'];
   $campaign_id = $form_state['values']['campaign_id'];
   $signup_form_id = $form_state['values']['signup_form_id'];
-
   $all_code = variable_get('takepart_newsletter_signup_unsubscribe_all_campaign_code', 'alltpnl');
-  //drupal_set_message($campaign_id);
-  if ($campaign_id && $campaign_id != 'alltpnl') {
-    $message = _newsletter_signup_alert_bsd($email, $campaign_id, 'u', null, null, $signup_form_id);
-    if (!$message) {
-      $success = 1;
-      // the local update
-      db_query("UPDATE {newsletter_signups} SET status = 'u', unsubscribe_date = ? WHERE mail = ? and campaign_id = ?" , array(time(), $email, $campaign_id));
-    }
+  
+  if ($campaign_id && $campaign_id == $all_code) {
+    $message = _takepart_bsd_set_subscription_state($email, 0);
   }
-  else {
-
-    try {
-      $ws_url = variable_get('takepart_newsletter_signup_pluris_unsubscribe_url', 'https://digitalsubscriptions.plurismarketing.com/unsubscribeAll.php');
-      $params = array(
-        'e'=>$email,
-        'r'=>variable_get('takepart_newsletter_signup_pluris_requester', 'tp'),
-      );
-      $url = url($ws_url, array('query' => $params));
-       
-      $pluris_code = drupal_http_request($url, array(), 'GET');
-
-      if ($pluris_code && $pluris_code->data) {
-        $xml = simplexml_load_string($pluris_code->data);
-        if ((string)$xml->returnCode) {
-          $message = (string)$xml->returnString;
-        }
-        $xml = null;
-
-        // the local update
-        db_query("UPDATE {newsletter_signups} SET status = 'u', unsubscribe_date = ? WHERE mail = ?", array(time(), $email));
-        $success = 1;
-
-        // update our opt in field, ugh
-        user_save($user, array('field_registration_email_opt_in' => 0));
-         
-      }
-      else {
-        $message = t('No response from pPluris');
-      }
-    }
-    catch(Exception $ex) {
-      $message = t('Problem connecting to pluris');
-      watchdog('newsletter service', 'Error connecting to Pluris. Error: %error for email: %email, campaign id: %campaign',
-      array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign)
-      );
-    }
-  }
-  $response['status'] = $success;
-  $response['message'] = $message;
-
-  //return array('status' => $success, 'message' => $message);
-
-
-  // i think this is only called to get the response nad update locally?
-  // this was for the case of only one campaign
-  //return _save_campaign_signup($email, $campaign_id, 'u');
-
-
-  // if there is a message, that means there was a problem
-  if (!$response['status']) {
+    // if there is a message, that means there was a problem
+  if ($message) {
     drupal_set_message($response['message'], 'error', FALSE);
-    //drupal_goto(variable_get('takepart_newsletter_signup_unsubscribe_problem_page', 'newsletter-unsubscribe-problem'));
   }
   else {
     drupal_goto(
@@ -339,10 +279,11 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
          'query' => array(
            'email' => $email,
            'campaign' => $campaign_id,
-    ),
-    )
+        ),
+      )
     );
   }
+  
 }
 
 /*
