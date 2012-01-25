@@ -70,7 +70,7 @@ function _newsletter_signup_form_submit_from_ajax() {
 function _save_campaign_signup($email, $campaign_id, $action = 's', $source = '', $send_welcome = 'y', $signup_form_id) {
   $success = 0;
   try {
-    $message = _newsletter_signup_alert_bsd($record->mail, $record->campaign_id, $record->status, $record->source, $send_welcome, $signup_form_id);
+    $message = _newsletter_signup_alert_bsd($email, $campaign_id, $action, $source, $send_welcome, $signup_form_id);
     if ((!$message) || (strlen($message)==0)) {
       $success = 1;
     } else {
@@ -98,6 +98,7 @@ function _save_campaign_signup($email, $campaign_id, $action = 's', $source = ''
  * 
  */
 function _newsletter_signup_alert_bsd($email, $campaign_id, $action = 's',$source = '', $send_welcome = 'y', $signup_form_id) {
+  
   $message = '';  
   if($action = 's') {
     $bsdresponse = _takepart_bsd_signup($email, $signup_form_id);
