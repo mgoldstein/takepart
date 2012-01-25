@@ -81,6 +81,7 @@ class BSD_API {
         //Curl:
         } else {
           $req = $this->_curl_post($url, $data);
+          $req = $req['body'];
         }
       } catch(Exception $ex) {
           $message = t('Problem connecting to pluris');
