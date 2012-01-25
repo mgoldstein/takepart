@@ -142,11 +142,9 @@ function takepart_user_form_user_profile_form_alter(&$form, &$form_state, $form_
   } else {
     unset($form['field_account_dateofbirth']);
   }
-  
 }
 
 function _takepart_user_validate(&$form, &$form_state) {
-  
   $values = $form_state['values'];
   if (isset($values['field_account_dateofbirth'])) {
     $language = $form['field_account_dateofbirth']['#language'];
