@@ -67,12 +67,15 @@ function _newsletter_signup_form_submit_from_ajax() {
  *
  * @return string - empty if success, message if error
  */
+
 function _save_campaign_signup($email, $campaign_id, $action = 's', $source = '', $send_welcome = 'y', $signup_form_id) {
+  
   $record = new stdClass();
   $record->mail = $email;
   $record->campaign_id = $campaign_id;
   $record->status = $action;
   $record->source = $source;
+  
   switch ($action) {
     case 's' : $record->subscribe_date = time(); break;
     case 'u' : $record->unsubscribe_date = time(); break;
@@ -82,10 +85,12 @@ function _save_campaign_signup($email, $campaign_id, $action = 's', $source = ''
 
   try {
 
-    // contact Pluris first, since it is the 'master'
+    // contact BSD first, since it is the 'master'
     $message = _newsletter_signup_alert_bsd($record->mail, $record->campaign_id, $record->status, $record->source, $send_welcome, $signup_form_id);
-    $message = '';
+
     if (!$message) {
+      $success = 1;
+      
       $record->uid = _is_signee_drupal_user($record->mail);
       if (!$record->uid) {
         $record->uid = 0;
@@ -97,18 +102,14 @@ function _save_campaign_signup($email, $campaign_id, $action = 's', $source = ''
       if ($status) {
         if ($status != $record->status) {
           drupal_write_record("newsletter_signups", $record, array('mail', 'campaign_id'));
-          $success = 1;
-        }
-        else {
-          $message = $status == 's' ? t('You are already subscribed.') : t('You are already unsubscribed.');
         }
       }
       // does not exist
       else {
         drupal_write_record("newsletter_signups", $record);
-        $message = 'success';
-        $success = 1;
       }
+    } else {
+      $success = 0;
     }
 
     return array('status' => $success, 'message' => $message);
