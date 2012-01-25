@@ -15,7 +15,6 @@ function _newsletter_signup_email_check(&$form) {
   $form['campaign_id'] = check_plain($form['campaign_id']);
   $form['signup_form_id'] = check_plain($form['signup_form_id']);
 
-
   return '';
 }
 
