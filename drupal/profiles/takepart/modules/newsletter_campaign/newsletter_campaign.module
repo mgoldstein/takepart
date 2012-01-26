@@ -420,8 +420,7 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $sig
           var data = jQuery("#wrapper-form-'.$campaign_id.' form").serialize();
               
           jQuery("#takepart-newsletter-'.$campaign_id.'-body").hide();
-          var spinner = "<div style=\'margin:1em; text-align:center;\'><img src=\'/profiles/takepart/themes/takepart3/images/spinn
-er.gif\' /></div>";
+          var spinner = "<div style=\"margin:1em; text-align:center;\"><img src=\"/profiles/takepart/themes/takepart3/images/spinner.gif\" /></div>";
           jQuery("#takepart-newsletter-'.$campaign_id.'-results").prepend(spinner);
           
           jQuery.post("/newsletter-campaign/submit-campaign", data, 
