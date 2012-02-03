@@ -1,0 +1,16 @@
+/* news gothic web font
+@see: http://www.bitstream.com/fonts/index.html */
+
+@font-face {
+ font-family: NewsGothicBoldCondensed;
+ src: url("news-2-webfont.eot") /* EOT file for IE */
+}
+
+@font-face {
+    font-family: 'NewsGothicBoldCondensed';
+    src: url('news-2-webfont.woff') format('woff'),
+         url('news-2-webfont.ttf') format('truetype'),
+         url('news-2-webfont.svg#NewsGothicBoldCondensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
