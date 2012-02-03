@@ -1,5 +1,43 @@
 <?php
 
+/**
+ * Implement hook_menu().
+ */
+function takepart_calendar_menu() {
+  $items = array();
+  $items['30ways30days/rss'] = array(
+      'title' => 'BSD Test Page',
+      'page callback' => '_takepart_calendar_rss',
+      'access callback' => true,
+      'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+
+/*
+ * Menu callback for RSS:
+ */
+function _takepart_calendar_rss($node) {
+  //Example:
+  $content = node_load('20673');
+  $json = $content->field_calendar['und'][0]['takepart_calendar'];
+  preg_match("/\[([^\]]+)\]/", $json, $match);
+  if($match[1]) {
+    $json = $match[1];
+    //rem last comma:
+    //@todo, find position:
+    if(substr($json, strlen($json)-2, strlen($json)) ==', ') {
+      $json = substr($json, 0, strlen($json)-2); 
+    } 
+    //@todo, find out why load fails:
+    $jdata = json_decode($json);
+    $xml = new SimpleXMLElement('<rss/>');
+    array_walk_recursive($jdata, array ($xml, 'addChild'));
+    echo $xml->asXML();
+  }
+  exit();
+}
 
 
 /**
@@ -154,10 +192,7 @@ function takepart_calendar_field_formatter_info() {
  */
 function takepart_calendar_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
 
-
-
- 
-
+ //@todo: build admin interface :)
   $element = array();
 
   switch ($display['type']) {
