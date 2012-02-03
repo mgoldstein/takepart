@@ -10,6 +10,72 @@
 function takepart_rotator_slide_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-takepart_slide-field_description'
+  $fields['node-takepart_slide-field_description'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_description',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_slide',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'This field is used only to make an internal about the slide.  This is not a required field and only here for reference.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '14',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_description',
+      'label' => 'Description',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '1',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '33',
+      ),
+    ),
+  );
+
   // Exported field: 'node-takepart_slide-field_display_tag'
   $fields['node-takepart_slide-field_display_tag'] = array(
     'field_config' => array(
@@ -35,8 +101,8 @@ function takepart_rotator_slide_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'blog',
+            'parent' => '0',
           ),
           1 => array(
             'parent' => '0',
@@ -128,21 +194,23 @@ function takepart_rotator_slide_field_default_fields() {
           'action' => 'action',
           'audio' => 'audio',
           'blog_front' => 'blog_front',
+          'feed' => 0,
+          'feed_item' => 0,
           'openpublish_article' => 'openpublish_article',
           'openpublish_blog_post' => 'openpublish_blog_post',
           'openpublish_photo' => 'openpublish_photo',
           'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-          'openpublish_site_page' => 0,
-          'openpublish_video' => 0,
+          'openpublish_video' => 'openpublish_video',
           'profile' => 0,
           'section_front' => 'section_front',
           'takepart_campaign' => 'takepart_campaign',
           'takepart_group' => 'takepart_group',
-          'takepart_page' => 0,
+          'takepart_list' => 0,
+          'takepart_page' => 'takepart_page',
           'takepart_quick_study' => 0,
           'takepart_slide' => 0,
           'topic_front' => 'topic_front',
-          'video_series' => 'video_series',
+          'webform' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -352,7 +420,7 @@ function takepart_rotator_slide_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'takepart_slide',
       'deleted' => '0',
-      'description' => 'Upload an image to be used as the primary piece of content for each slide. Images should be 470px wide by 300px high.',
+      'description' => 'Upload an image to be used as the primary piece of content for each slide. Images should be 640px wide by 367px high.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -380,7 +448,10 @@ function takepart_rotator_slide_field_default_fields() {
         'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
+            'brightcove' => 0,
             'public' => 'public',
+            'vimeo' => 0,
+            'youtube' => 0,
           ),
           'allowed_types' => array(
             'audio' => 0,
@@ -399,6 +470,7 @@ function takepart_rotator_slide_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Description');
   t('Display Tag');
   t('Headline');
   t('Main Image');
@@ -406,8 +478,9 @@ function takepart_rotator_slide_field_default_fields() {
   t('Optional headline to serve as the main title of this slide.  If provided, the headline will appear in the transparent overlay and in the rollover preview.  Max limit of 35 characters. HTML is allowed, though not recommended.');
   t('Start typing the title of the story to feature.');
   t('Story Link');
+  t('This field is used only to make an internal about the slide.  This is not a required field and only here for reference.');
   t('This will override the regular headline.  This is required for campaigns.');
-  t('Upload an image to be used as the primary piece of content for each slide. Images should be 470px wide by 300px high.');
+  t('Upload an image to be used as the primary piece of content for each slide. Images should be 640px wide by 367px high.');
 
   return $fields;
 }
