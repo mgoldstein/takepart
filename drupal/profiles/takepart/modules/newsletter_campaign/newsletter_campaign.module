@@ -189,7 +189,7 @@ function newsletter_campaign_block_info() {
   
   try {
     $campaigns = entity_load('newsletter_campaign');
-  } catch (Exception $e) {
+  } catch (Exception $ex) {
     watchdog('newsletter_campaign_block', $ex->getMessage());
     return array();
   }
@@ -221,7 +221,14 @@ function newsletter_campaign_block_view($delta) {
   $content = '';
   
   if (is_numeric($delta)) {
-    $result = entity_load('newsletter_campaign', array($delta));
+    
+    try {
+      $result = entity_load('newsletter_campaign', array($delta));
+    } catch (Exception $ex) {
+      watchdog('newsletter_campaign_block_view', $ex->getMessage());
+      return array();
+    }    
+    
     $camp = $result[$delta];
     
     $allowed_tags = array('i', 'strong', 'u');
