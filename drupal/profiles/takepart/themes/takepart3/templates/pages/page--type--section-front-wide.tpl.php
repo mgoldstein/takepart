@@ -1,7 +1,5 @@
 <div id="page-wrapper">
 
-Template?
-
 <?php print $header ?>
  
   <?php if ($page['highlighted']): ?>
@@ -39,10 +37,6 @@ Template?
       <?php print render($page['content_bottom']); ?>
       
     </div>
-    
-    <?php if ($page['sidebar_second']): ?>
-      <div id='right-rail' class='clearfix'><?php print render($page['sidebar_second']) ?></div>
-    <?php endif; ?>
   
   </div>
   

@@ -87,14 +87,7 @@ img.photo, .gallery-item img {
   margin-top: 20px;
 }
 
-.main-content p a:hover {
-  border-bottom: 1px dotted #0099cc;
-  text-decoration: none;
-}
 
-.main-content p a {
-  color: #0099cc;
-}
 
 .dot-line-horizontal {
   background: url(../images/dot-line-h.gif) repeat-x;
@@ -103,77 +96,8 @@ img.photo, .gallery-item img {
 
 /***** Structure ******/
 
-#page-wrapper {
-	margin: 0 auto;
-	width: 1001px;
-}
 
-#header {
-	margin:0;
-	position: relative;
-}
 
-#header-wrapper {
-	margin: 0;
-	position: relative;
-}
-
-#page {background: #FFF; clear: both;}
-
-.page {
-	padding: 35px 20px;
-}
-
-.node-type-takepart-campaign #page.page-multipage {
-  padding-left: 20px;
-}
-#page.page-multipage {
-  /*padding:0px;*/
-  padding-right: 0;
-  /*padding-top: 0;*/
- padding-left: 0;
-}
-
-.main-content {
-	width: 619px;
-	float: left;
-}
-
-#footer {
-	border-top: 5px solid #000;
-	margin-bottom: 25px;
-	background: #FFF;
-}
-
-#right-rail {
-	width: 300px;
-	float: right;
-}
-
-.col-140 {
-  width: 140px;
-}
-
-.col-460 {
-  width: 460px;
-}
-
-body.two-sidebars #left-rail,
-body.sidebar-first #left-rail{
-  display: inline-block;
-  margin-top: 30px;
-  width: 145px;
-}
-
-body.two-sidebars #content,
-body.sidebar-first #content{
-  margin-right: -619px;
-  width: 460px;
-  margin-top: 30px;
-  margin-left: 160px;
-  display: inline-block;
-  vertical-align: top;
-}
 
 /***** Header ******/
 
@@ -211,15 +135,6 @@ body.sidebar-first #content{
 }
 
 
-.header-mid {
-	float: left;
-	width: 450px;
-}
-
-.header-mid .text {
-	margin: 17px 0;
-	line-height:12px;
-}
 
 /****** Hot Topics Nav *****/
 
@@ -302,11 +217,6 @@ body.sidebar-first #content{
 	margin-right:10px;
 }
 
-#join-login-top a, #slim-header.multipage-campaign #join-login-top #user-nav a {
-	color: #000;
-	font-weight: bold;
-	line-height:15px;
-}
 
 #join-login-top a.user-menu-register:after
 
@@ -2287,24 +2197,7 @@ body.node-type-topic-front .submitted-wrapper{
   display: none;
 }
 
-body.node-type-topic-front h1,
-body.node-type-topic-front h2.title,
-body.page-taxonomy-term h1,
-body.node-type-section-front h2.title {
-  background: #A0D332 url('../images/sprite-horizontal.gif') right -470px no-repeat;
-  color: white;
-  display: inline-block;
-  font-size: 35px;
-  height: 43px;
-  line-height: 43px;
-  padding-right: 85px;
-  padding-left: 17px;
-}
 
-body.node-type-section-front h2.title a,
-body.node-type-topic-front h2.title a {
-  color: white;
-}
 
 .block-box-primary,
 .block-box-secondary {
@@ -2591,19 +2484,7 @@ q p, q.pull-quote p{
   width: 300px;
 }
 
-.campaign-link {
-  background-image: url('../images/sprite.gif');
-  background-position: -377px -381px;
-  clear: both;
-  display: inline-block;
-  float: left;
-  font-weight: bold;
-  font-size: 12px;
-  height: 19px;
-  line-height: 19px;
-  text-align: center;
-  width: 23px;
-}
+
 
 .field-name-field-tp-campaign-4-things-link a {
   color: white;

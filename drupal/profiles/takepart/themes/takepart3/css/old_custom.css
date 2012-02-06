@@ -222,21 +222,14 @@ ul#top-nav li a:hover{
 
 /**** Campaign Page(s) ****/
 
-#slim-header ul#top-nav li a{
-    /*padding:0 28px;*/
-}
+
 
 .node-type-takepart-campaign #content,
 .node-type-takepart-campaign #left-rail{
     margin-top:0;
 }
 
-.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a{
-    font-size:14px;
-    margin: 6px 22px 7px 10px;
-    padding-right: 15px;
-    background: url("../images/white-arrow.png") no-repeat scroll right 4px;
-}
+
 .node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a:hover{
     text-decoration:none;
 }
@@ -1382,10 +1375,7 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
 .block-boxes-title-features .views-row {
     position: relative;
 }
-.block-boxes-title-features .views-field-field-display-tag {
-    position:absolute;
-    top: 117px;
-}
+
 .block-boxes-title-features .views-field-field-display-tag .field-content{
     margin-top:0;
 }
@@ -1424,12 +1414,6 @@ ul#global-links a{
 
 
 
-#slim-header #join-login-top{
-    width:110px;
-    float: left;
-    font-size: 11px;
-
-}
 
 .field-name-field-tp-campaign-alliances tbody{
     border-top:none;

@@ -1,6 +1,7 @@
 /**
 * Primary style sheet for TakePart.com
 * organized by section (===SECTION===).
+* @todo: seperate files?
 /* COLORS
     - primaries:
     - default body text  #000000
@@ -23,6 +24,7 @@
     - secondary default  "Century Gothic", sans-serif;
 */
 /* ===GLOBAL=== */
+/* ------------------------------------------------------------------------*/
 body
 {
   background:#eff3f5 url(../images/bg-page2.jpg) no-repeat top center;
@@ -31,6 +33,89 @@ body
   font-family:Helvetica, Arial, sans-serif;
   margin:0;
   padding:0;
+}
+
+/*page structure*/
+#page-wrapper
+{
+  margin:0 auto;
+  width:1001px;
+}
+
+#header
+{
+  margin:0;
+  position:relative;
+}
+
+#header-wrapper
+{
+  margin:0;
+  position:relative;
+}
+
+#page
+{
+  background:#FFF;
+  clear:both;
+}
+
+.page
+{
+  padding:35px 20px;
+}
+
+.node-type-takepart-campaign #page.page-multipage
+{
+  padding-left:20px;
+}
+
+#page.page-multipage
+{
+/*padding:0px;*/
+  padding-right:0;
+/*padding-top: 0;*/
+  padding-left:0;
+}
+
+.main-content
+{
+  width:619px;
+  float:left;
+}
+
+#footer
+{
+  border-top:5px solid #000;
+  margin-bottom:25px;
+  background:#FFF;
+}
+
+.col-140
+{
+  width:140px;
+}
+
+.col-460
+{
+  width:460px;
+}
+
+body.two-sidebars #left-rail,body.sidebar-first #left-rail
+{
+  display:inline-block;
+  margin-top:30px;
+  width:145px;
+}
+
+body.two-sidebars #content,body.sidebar-first #content
+{
+  margin-right:-619px;
+  width:460px;
+  margin-top:30px;
+  margin-left:160px;
+  display:inline-block;
+  vertical-align:top;
 }
 
 .header-right
@@ -45,6 +130,7 @@ body
   width:640px;
 }
 
+/* tag formatting */
 /* reset default padding and margin: */
 ul,ol,li,h1,h2,h3,h4,h5,p
 {
@@ -89,19 +175,6 @@ ul,ol
   outline:none;
 }
 
-#right-rail .block
-{
-  margin-bottom:15px;
-}
-
-#right-rail .field-name-field-blog-view a
-{
-  color:#000;
-  font-size:13px;
-  font-weight:700;
-  text-decoration:none;
-}
-
 /*slideshow rotator text block*/
 .views-field-field-slide-headline-override
 {
@@ -115,7 +188,7 @@ ul,ol
   padding:16px;
   text-decoration:none;
   height:69px;
-  background:url(/profiles/takepart/themes/takepart3/images/2012-02-08/white_transparency.png) transparent;
+  background:url(../images/2012-02-08/white_transparency.png) transparent;
   color:#1CA9e7;
   line-height:24px;
   font-size:24px;
@@ -174,12 +247,12 @@ ul,ol
 
 .views-field-field-slide-headline-override .field-content ul.dots li.active
 {
-  background:url(/profiles/takepart/themes/takepart3/images/2012-02-08/blue_dot.png) no-repeat scroll 0 0 transparent;
+  background:url(../images/2012-02-08/blue_dot.png) no-repeat scroll 0 0 transparent;
 }
 
 .views-field-field-slide-headline-override .field-content ul.dots li.inactive
 {
-  background:url(/profiles/takepart/themes/takepart3/images/2012-02-08/white_dot.png) no-repeat scroll 0 0 transparent;
+  background:url(../images/2012-02-08/white_dot.png) no-repeat scroll 0 0 transparent;
 }
 
 /*hide slide rotator, default in view*/
@@ -196,104 +269,81 @@ ul,ol
   text-decoration:none;
 }
 
-/* ===HEADER=== */
-/* ===FOOTER=== */
-/* ===RIGHT RAIL=== */
-/*default block formatting*/
-#right-rail .block
+.campaign-link
 {
-  margin-bottom:15px;
-  border:solid 4px #eff3f5;
-  padding:10px;
+  background:url(../images/2012-02-08/hash.png) no-repeat scroll 0 0 transparent;
+  clear:both;
+  color:#FFF;
+  display:inline-block;
+  float:left;
+  font-size:25px;
+  font-weight:700;
+  height:19px;
+  line-height:19px;
+  padding:1px 0 0 7px;
+  text-align:center;
+  width:23px;
 }
 
-/*override block formatting for ads*/
-#right-rail .block-boxes-ga_ad
+.main-content p a:hover
 {
-  border-width:0;
-  padding:0;
-  padding-top:12px;
-  background:url(/profiles/takepart/themes/takepart3/images/2012-02-08/right_title_advertisement.gif) no-repeat scroll 0 0 transparent;
+  border-bottom:1px dotted #09C;
+  text-decoration:none;
 }
 
-/*fir formating for 'our blogs' headers*/
-#right-rail .block-boxes-title-our-blogs h2
+.main-content p a
 {
-  background:url(/profiles/takepart/themes/takepart3/images/2012-02-08/right_title_our_blogs.gif) no-repeat scroll 7px 0 transparent;
-  display:block;
-  height:61px;
+  color:#09C;
+  text-decoration:none;
 }
 
-/*float images in blog box*/
-#right-rail .view-blog-posts .views-field
+.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a
+{
+  font-size:14px;
+  margin:6px 22px 7px 10px;
+  padding-right:15px;
+  background:url(../images/white-arrow.png) no-repeat scroll right 4px;
+}
+
+/* ===CONTENT TYPES=== */
+/* ------------------------------------------------------------------------*/
+.section_front_wide .main-content
+{
+  width:auto;
+}
+
+/* ===PAGE HEADER=== */
+/* ------------------------------------------------------------------------*/
+.header-mid
 {
   float:left;
+  width:450px;
 }
 
-#right-rail .block-boxes-title-our-blogs div.content h2
+.header-mid .text
 {
-  height:auto;
-  margin:16px 0;
+  margin:17px 0;
+  line-height:12px;
 }
 
-/*limit area to 260px*/
-#right-rail .block-boxes-title-our-blogs div.content
+#join-login-top a,#slim-header.multipage-campaign #join-login-top #user-nav a
 {
-  padding:0 4px;
+  color:#000;
+  font-weight:700;
+  line-height:15px;
 }
 
-/*fahrner image replacement:*/
-#right-rail .block-boxes-title-our-blogs h2 span
+#slim-header #join-login-top
 {
-  display:none;
+  width:110px;
+  float:left;
+  font-size:11px;
 }
 
-/*override block formatting for content inside 'our blogs'*/
-#right-rail .block-boxes-title-our-blogs .content h2
-{
-  background:url(/profiles/takepart/themes/takepart3/images/2012-02-08/45deg_lines.gif) repeat-x scroll 0 0 transparent;
-  line-height:11px;
-}
-
-/*block content header text*/
-#right-rail h2 a
-{
-  font-size:18px;
-  font-family:Helvetica, Arial, sans-serif;
-  color:#9BC;
-  text-decoration:none;
-  font-weight:400;
-  padding:0 9px 0 0;
-}
-
-/*override block formatting for content header text*/
-#right-rail .block-boxes-title-our-blogs .content h2 a
-{
-  background:none #FFF;
-}
-
-#right-rail .block-boxes-title-our-blogs .content h2
-{
-  line-height:11px;
-}
-
-#right-rail .view-blog-posts .views-field-title
-{
-  width:172px;
-}
-
-#right-rail .view-blog-posts .view-content
-{
-  width:256px;
-}
-
-#right-rail .views-field-field-thumbnail
-{
-  clear:left;
-  margin-right:14px;
-}
-
+/* ===PAGE FOOTER=== */
+/* ------------------------------------------------------------------------*/
 /* ===MAIN BODY=== */
+/* ------------------------------------------------------------------------*/
 /* headers in main body */
 .main-content h2
 {
@@ -312,7 +362,7 @@ ul,ol
   height:20px;
   margin:8px 0 2px;
   padding:8px 0;
-  background:url(/profiles/takepart/themes/takepart3/images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 8px transparent;
+  background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 8px transparent;
 }
 
 .main-content .block-boxes-title-features h2 span,.main-content .block-boxes h2 span
@@ -360,14 +410,15 @@ ul,ol
 
 .main-content .block-boxes-title-features .views-field-field-thumbnail-1 .field-content img
 {
-  width:188px;
+  width:200px;
 }
 
+/*hover state*/
 .main-content .block-boxes-title-features .views-row:hover .views-field-field-thumbnail-1 .field-content
 {
   border:5px solid #1ca9e7;
-  height:128px;
-  width:182px;
+  height:150px;
+  width:200px;
 }
 
 .main-content .block-boxes-title-features .views-row:hover .views-field-field-thumbnail-1 .field-content img
@@ -389,6 +440,8 @@ ul,ol
   overflow:visible;
   position:relative;
   z-index:100;
+  position:absolute;
+  top:131px;
 }
 
 .main-content .block-boxes-title-features .views-field-field-display-tag .field-content
@@ -400,4 +453,118 @@ ul,ol
   font-weight:700;
   line-height:18px;
   text-transform:uppercase;
+}
+
+/* ===RIGHT RAIL=== */
+/* ------------------------------------------------------------------------*/
+#right-rail .block
+{
+  margin-bottom:15px;
+}
+
+#right-rail .field-name-field-blog-view a
+{
+  color:#000;
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+#right-rail
+{
+  width:300px;
+  float:right;
+}
+
+#right-rail .block
+{
+  margin-bottom:15px;
+  border:solid 4px #eff3f5;
+  padding:10px;
+}
+
+/*override block formatting for ads*/
+#right-rail .block-boxes-ga_ad
+{
+  border-width:0;
+  padding:0;
+  padding-top:12px;
+  background:url(../images/2012-02-08/right_title_advertisement.gif) no-repeat scroll 0 0 transparent;
+}
+
+/*fir formating for 'our blogs' headers*/
+#right-rail .block-boxes-title-our-blogs h2
+{
+  background:url(../images/2012-02-08/right_title_our_blogs.gif) no-repeat scroll 7px 0 transparent;
+  display:block;
+  height:61px;
+}
+
+/*float images in blog box*/
+#right-rail .view-blog-posts .views-field
+{
+  float:left;
+}
+
+#right-rail .block-boxes-title-our-blogs div.content h2
+{
+  height:auto;
+  margin:16px 0;
+}
+
+/*limit area to 260px*/
+#right-rail .block-boxes-title-our-blogs div.content
+{
+  padding:0 4px;
+}
+
+/*fahrner image replacement:*/
+#right-rail .block-boxes-title-our-blogs h2 span
+{
+  display:none;
+}
+
+/*override block formatting for content inside 'our blogs'*/
+#right-rail .block-boxes-title-our-blogs .content h2
+{
+  background:url(../images/2012-02-08/45deg_lines.gif) repeat-x scroll 0 0 transparent;
+  line-height:11px;
+}
+
+/*block content header text*/
+#right-rail h2 a
+{
+  font-size:18px;
+  font-family:Helvetica, Arial, sans-serif;
+  color:#9BC;
+  text-decoration:none;
+  font-weight:400;
+  padding:0 9px 0 0;
+}
+
+/*override block formatting for content header text*/
+#right-rail .block-boxes-title-our-blogs .content h2 a
+{
+  background:none #FFF;
+}
+
+#right-rail .block-boxes-title-our-blogs .content h2
+{
+  line-height:11px;
+}
+
+#right-rail .view-blog-posts .views-field-title
+{
+  width:172px;
+}
+
+#right-rail .view-blog-posts .view-content
+{
+  width:256px;
+}
+
+#right-rail .views-field-field-thumbnail
+{
+  clear:left;
+  margin-right:14px;
 }
