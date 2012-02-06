@@ -186,7 +186,14 @@ function newsletter_campaign_load_multiple($ids = array(), $conditions = array()
  * Implementation of hook_block_info()
  */
 function newsletter_campaign_block_info() {
-  $campaigns = entity_load('newsletter_campaign'); 
+  
+  try {
+    $campaigns = entity_load('newsletter_campaign');
+  } catch (Exception $e) {
+    watchdog('newsletter_campaign_block', $ex->getMessage());
+    return array();
+  }
+  
   $blocks = array();
   
   if (!empty($campaigns)) {
