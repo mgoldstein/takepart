@@ -23,9 +23,12 @@ function takepart_ads_context_default_contexts() {
         'openpublish_article' => 'openpublish_article',
         'openpublish_blog_post' => 'openpublish_blog_post',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-        'openpublish_video' => 'openpublish_video',
         'takepart_campaign' => 'takepart_campaign',
         'takepart_group' => 'takepart_group',
+        'takepart_list' => 'takepart_list',
+        'takepart_quick_study' => 'takepart_quick_study',
+        'takepart_slide' => 'takepart_slide',
+        'webform' => 'webform',
       ),
       'options' => array(
         'node_form' => '1',
@@ -33,8 +36,9 @@ function takepart_ads_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'video' => 'video',
-        'photos' => 'photos',
+        'home' => 'home',
+        'free-tag*' => 'free-tag*',
+        'topic*' => 'topic*',
         'afinefrenzy' => 'afinefrenzy',
         'thepeoplespeak' => 'thepeoplespeak',
         'wavesofaction' => 'wavesofaction',
@@ -52,7 +56,18 @@ function takepart_ads_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array();
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-box-4f9af2b4' => array(
+          'module' => 'boxes',
+          'delta' => 'box-4f9af2b4',
+          'region' => 'header',
+          'weight' => 0,
+        ),
+      ),
+    ),
+  );
   $context->condition_mode = 0;
 
   // Translatables
@@ -65,7 +80,7 @@ function takepart_ads_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'general_ad';
-  $context->description = 'Place Basic add on most Pages';
+  $context->description = 'Place basic ad on most pages';
   $context->tag = 'Ads';
   $context->conditions = array(
     'context' => array(
@@ -73,10 +88,18 @@ function takepart_ads_context_default_contexts() {
         '~ad_exclude_campaign' => '~ad_exclude_campaign',
       ),
     ),
+    'node' => array(
+      'values' => array(
+        'action' => 'action',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
     'path' => array(
       'values' => array(
         '~user*' => '~user*',
-        '~<front>' => '~<front>',
+        'series*' => 'series*',
       ),
     ),
   );
@@ -87,13 +110,13 @@ function takepart_ads_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-66c05d6f',
           'region' => 'sidebar_second',
-          'weight' => 1,
+          'weight' => '0',
         ),
         'boxes-box-1104adce' => array(
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar_second',
-          'weight' => 4,
+          'weight' => '3',
         ),
       ),
     ),
@@ -103,7 +126,7 @@ function takepart_ads_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Ads');
-  t('Place Basic add on most Pages');
+  t('Place basic ad on most pages');
   $export['general_ad'] = $context;
 
   return $export;

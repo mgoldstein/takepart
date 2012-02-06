@@ -1,11 +1,11 @@
 <?php
 /**
- * @file 
+ * @file
  * takepart_promo.views_default.inc
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function takepart_promo_views_default_views() {
   $export = array();
@@ -19,7 +19,7 @@ function takepart_promo_views_default_views() {
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-  
+
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'My Take';
@@ -62,7 +62,7 @@ function takepart_promo_views_default_views() {
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_tp_campaign_cover_image']['field_api_classes'] = 0;
-  /* Field: Content: Main Image */
+  /* Field: Content: Article Image */
   $handler->display->display_options['fields']['field_action_main_image']['id'] = 'field_action_main_image';
   $handler->display->display_options['fields']['field_action_main_image']['table'] = 'field_data_field_action_main_image';
   $handler->display->display_options['fields']['field_action_main_image']['field'] = 'field_action_main_image';
@@ -233,7 +233,7 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  
+
   /* Display: News to Know */
   $handler = $view->new_display('block', 'News to Know', 'block');
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -308,34 +308,10 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_headline']['field_api_classes'] = 0;
-  
+
   /* Display: Features */
   $handler = $view->new_display('block', 'Features', 'block_1');
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['nid']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nid']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['nid']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['nid']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['nid']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['nid']['link_to_node'] = 0;
   /* Field: Content: Display Tag */
   $handler->display->display_options['fields']['field_display_tag']['id'] = 'field_display_tag';
   $handler->display->display_options['fields']['field_display_tag']['table'] = 'field_data_field_display_tag';
@@ -387,31 +363,23 @@ function takepart_promo_views_default_views() {
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_thumbnail_1']['field_api_classes'] = 0;
-  /* Field: Content: Promo Headline */
-  $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
-  $handler->display->display_options['fields']['field_promo_headline']['table'] = 'field_data_field_promo_headline';
-  $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
-  $handler->display->display_options['fields']['field_promo_headline']['label'] = '';
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['make_link'] = 1;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['path'] = 'node/[nid]';
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_promo_headline']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_promo_headline']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['field_promo_headline']['field_api_classes'] = 0;
-  
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+
   /* Display: My Take */
   $handler = $view->new_display('block', 'My Take', 'block_2');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -539,10 +507,9 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['field_promo_text']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_promo_text']['field_api_classes'] = 0;
-  
+
   /* Display: Get Involved */
   $handler = $view->new_display('block', 'Get Involved', 'block_3');
-
   $export['promo'] = $view;
 
   return $export;

@@ -66,36 +66,6 @@ s.prop6 = [node:nid]',
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'omniture_article';
-  $context->description = 'Omniture article context';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'openpublish_article' => 'openpublish_article',
-      ),
-      'options' => array(
-        'node_form' => '0',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.prop5 = [tp_omniture:str_decode:{node:title}]
-s.prop3 = [current-page:url-arg:0]:[tp_omniture:date:{node:created:raw}]:[tp_omniture:str_decode:{node:title}]',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Omniture article context');
-  $export['omniture_article'] = $context;
-
-  $context = new stdClass;
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'omniture_blog';
   $context->description = 'Variables to set on blog pages.';
   $context->tag = 'Omniture';
@@ -152,33 +122,6 @@ s.eVar11 = Logged_In
   t('Omniture');
   t('Omniture registration page load variables');
   $export['omniture_registration'] = $context;
-
-  $context = new stdClass;
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'omniture_search';
-  $context->description = 'omniture search';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'search/*' => 'search/*',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.prop7 = [tp_omniture:urldecode:{current-page:url-arg:1}]
-',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('omniture search');
-  $export['omniture_search'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */

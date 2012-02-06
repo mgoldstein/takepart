@@ -14,7 +14,7 @@ function takepart_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_openpublish_blog_post';
-  $strongarm->value = '';
+  $strongarm->value = 'edit-comment';
   $export['additional_settings__active_tab_openpublish_blog_post'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -98,7 +98,7 @@ function takepart_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_openpublish_blog_post';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['comment_preview_openpublish_blog_post'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -135,7 +135,9 @@ function takepart_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_openpublish_blog_post';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
   $export['menu_options_openpublish_blog_post'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -151,6 +153,20 @@ function takepart_blog_strongarm() {
   $strongarm->name = 'menu_parent_openpublish_blog_post';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_openpublish_blog_post'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'nodeblock_blog_front';
+  $strongarm->value = '0';
+  $export['nodeblock_blog_front'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'nodeblock_openpublish_blog_post';
+  $strongarm->value = '0';
+  $export['nodeblock_openpublish_blog_post'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -191,22 +207,8 @@ function takepart_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_openpublish_blog_post';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['node_submitted_openpublish_blog_post'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'nodeblock_blog_front';
-  $strongarm->value = '0';
-  $export['nodeblock_blog_front'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'nodeblock_openpublish_blog_post';
-  $strongarm->value = '0';
-  $export['nodeblock_openpublish_blog_post'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -219,14 +221,14 @@ function takepart_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_blog_front_pattern';
-  $strongarm->value = '[node:title]';
+  $strongarm->value = 'blog/[node:title]/[node:field-blogpost-blog:term:url:relative]';
   $export['pathauto_node_blog_front_pattern'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_openpublish_blog_post_pattern';
-  $strongarm->value = '/blog/[node:field-blogpost-blog:term:name]/[node:created:custom:Y]/[node:created:custom:m]/[node:created:custom:d]/[node:title]';
+  $strongarm->value = '[node:field-blogpost-blog:term:url:relative]/[node:created:custom:Y]/[node:created:custom:m]/[node:created:custom:d]/[node:title]';
   $export['pathauto_node_openpublish_blog_post_pattern'] = $strongarm;
 
   $strongarm = new stdClass;

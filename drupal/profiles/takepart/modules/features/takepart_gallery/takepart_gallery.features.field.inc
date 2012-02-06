@@ -514,8 +514,8 @@ function takepart_gallery_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'blog',
+            'parent' => '0',
           ),
           1 => array(
             'parent' => '0',

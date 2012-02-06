@@ -26,6 +26,7 @@ function takepart_gallery_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['slave'] = TRUE;
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -197,9 +198,17 @@ function takepart_gallery_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
   );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
 
   /* Display: Currated */
   $handler = $view->new_display('block', 'Currated', 'block');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
 
   /* Display: Photo Page List */
   $handler = $view->new_display('block', 'Photo Page List', 'block_1');
@@ -355,6 +364,9 @@ function takepart_gallery_views_default_views() {
 
   /* Display: Curated Vertical   */
   $handler = $view->new_display('block', 'Curated Vertical  ', 'block_2');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -514,10 +526,11 @@ function takepart_gallery_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['slave'] = TRUE;
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'slideshow';
   $handler->display->display_options['style_options']['slideshow_type'] = 'views_slideshow_cycle';
@@ -554,15 +567,16 @@ function takepart_gallery_views_default_views() {
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['weight'] = '1';
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['type'] = 'views_slideshow_controls_text';
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_slide_counter']['weight'] = '1';
-  $handler->display->display_options['style_options']['views_slideshow_cycle']['timeout'] = '5000';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['transition_advanced'] = 1;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['timeout'] = '0';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['speed'] = '700';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['delay'] = '0';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['pause'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['action_advanced'] = 1;
-  $handler->display->display_options['style_options']['views_slideshow_cycle']['start_paused'] = 0;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['start_paused'] = 1;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['remember_slide_days'] = '1';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['fixed_height'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['items_per_slide'] = '1';
-  $handler->display->display_options['style_options']['views_slideshow_cycle']['wait_for_image_load'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartype'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartypenobg'] = 0;
   $handler->display->display_options['row_plugin'] = 'fields';

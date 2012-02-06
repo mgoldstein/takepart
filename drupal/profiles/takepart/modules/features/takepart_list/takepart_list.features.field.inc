@@ -77,7 +77,7 @@ function takepart_list_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -152,7 +152,7 @@ function takepart_list_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -246,7 +246,7 @@ function takepart_list_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -317,7 +317,7 @@ function takepart_list_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );

@@ -55,7 +55,8 @@ function takepart_blog_field_group_info() {
       1 => 'field_author',
       2 => 'field_blogpost_blog',
       3 => 'field_blogpost_subhead',
-      4 => 'title',
+      4 => 'field_tp_campaign_show_title',
+      5 => 'title',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -136,7 +137,7 @@ function takepart_blog_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '15',
+    'weight' => '2',
     'children' => array(
       0 => 'group_blogpost_main',
     ),

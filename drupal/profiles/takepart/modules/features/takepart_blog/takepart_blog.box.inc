@@ -18,7 +18,7 @@ function takepart_blog_default_box() {
   $box->title = '';
   $box->description = 'GA: Bottom Right';
   $box->options = array(
-    'ga_ad_slot' => 'TP3_Home_RR_BTF_300x600',
+    'ga_ad_slot' => 'TP3_ROS_RR_BTF_300x600',
   );
   $export['box-1104adce'] = $box;
 
@@ -107,9 +107,28 @@ function takepart_blog_default_box() {
   $box->title = '';
   $box->description = 'GA: Top Right';
   $box->options = array(
-    'ga_ad_slot' => 'TP3_Home_RR_ATF_300x250',
+    'ga_ad_slot' => 'TP3_ROS_RR_ATF_300x250',
   );
   $export['box-66c05d6f'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'box-7fa6e22c';
+  $box->plugin_key = 'view';
+  $box->title = 'Popular Galleries';
+  $box->description = 'News + Issues - Gallery Right Rail';
+  $box->options = array(
+    'view' => 'photo_galleries--block_2',
+    'settings' => array(
+      'nid' => '20908+21091+19625',
+    ),
+    'view_object' => NULL,
+    'view_more_text' => '',
+    'view_more_link' => '',
+    'additional_classes' => '',
+  );
+  $export['box-7fa6e22c'] = $box;
 
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
@@ -142,6 +161,7 @@ function takepart_blog_default_box() {
       'field_related_campaigns' => 0,
       'field_suggest_actions' => 0,
       'field_multi_page_campaign' => 0,
+      'field_tp_campaign_show_title' => 0,
     ),
     'use_page' => 1,
     'exclude_from_content' => 0,

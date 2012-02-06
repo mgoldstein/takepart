@@ -47,6 +47,12 @@ function takepart_video_context_default_contexts() {
           'region' => 'content_bottom',
           'weight' => 2,
         ),
+        'comment_block_simple-comment_block' => array(
+          'module' => 'comment_block_simple',
+          'delta' => 'comment_block',
+          'region' => 'content_bottom',
+          'weight' => 3,
+        ),
         'boxes-box-66c05d6f' => array(
           'module' => 'boxes',
           'delta' => 'box-66c05d6f',

@@ -15,13 +15,12 @@ function takepart_custom_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'free_tags_default_context';
   $context->description = 'Default Context for free_tags';
-  $context->tag = 'Context Field Default';
+  $context->tag = 'Context Field';
   $context->conditions = array(
     'context_field' => array(
       'values' => array(
         'context_field' => 'context_field',
         1 => 1,
-        2 => 2,
       ),
     ),
   );
@@ -40,6 +39,24 @@ function takepart_custom_context_default_contexts() {
           'region' => 'content',
           'weight' => 0,
         ),
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar_second',
+          'weight' => 0,
+        ),
+        'boxes-box-7fa6e22c' => array(
+          'module' => 'boxes',
+          'delta' => 'box-7fa6e22c',
+          'region' => 'sidebar_second',
+          'weight' => 1,
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar_second',
+          'weight' => 2,
+        ),
       ),
     ),
   );
@@ -47,7 +64,7 @@ function takepart_custom_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Context Field Default');
+  t('Context Field');
   t('Default Context for free_tags');
   $export['free_tags_default_context'] = $context;
 

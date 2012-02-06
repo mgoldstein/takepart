@@ -44,7 +44,7 @@ function takepart_action_default_box() {
   $box->options = array(
     'view' => 'photo_galleries--block_2',
     'settings' => array(
-      'nid' => '19625+20914+20888',
+      'nid' => '20908+21091+19625',
     ),
     'view_object' => NULL,
     'view_more_text' => '',

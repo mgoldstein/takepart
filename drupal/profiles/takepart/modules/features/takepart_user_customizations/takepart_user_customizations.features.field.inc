@@ -171,7 +171,7 @@ function takepart_user_customizations_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Date of Birth');
-  t('Get TakePart Today emails&mdash;one great story a day, direct to your inbox.');
+  t('Get an email from us every now and then with our favorite news, alerts, events and stories.');
   t('You must be 18 years of age.');
 
   return $fields;
