@@ -3,3 +3,4 @@ description = Provides Entity for saving newsletter campaigns.  Also provides fr
 package = Take Part
 version = VERSION
 core = 7.x
+dependencies[] = "takepart_bsd"

@@ -2,15 +2,9 @@
 
 include(drupal_get_path('module', 'takepart_bsd').'/include/bsd_api/bsd_api.class.inc');
 
-/**
- * Implements hook_init().
- */
-function takepart_bsd_init() {
-
-}
 
 /**
- * Implement hook_menu().
+ * Implements hook_menu().
  */
 function takepart_bsd_menu() {
   $items = array();
@@ -23,34 +17,280 @@ function takepart_bsd_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
   $items['admin/config/development/takepart_bsd/test'] = array(
-      'title' => 'BSD Test Page',
-      'page callback' => '_ctakepart_bsd_test_page',
-      'access arguments' => array('administer users'),
-      'type' => MENU_CALLBACK,
+    'title' => 'BSD Test Page',
+    'page callback' => '_takepart_bsd_test_page',
+    'access arguments' => array('administer users'),
+    'type' => MENU_CALLBACK,
   );
   return $items;
 }
 
-function _ctakepart_bsd_test_page($node) {
-  
-  $bsd = new BSD_API(variable_get('takepart_bsd_api_id', 'takepart-com'),variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'));
-  
-  //$req = $bsd->callApi("cons/get_constituents", array("filter"=>"primary_state_cd=CA"));
-  $req = $bsd->callApi("cons/get_constituents_by_id", array("cons_ids"=>"2"));
-  
-  
-  
-  print "<hr>";
-  print "<pre>";
-  print_r($req);
-  print "</pre>";
-  exit();
-  
-  return "";
+/**
+* Get constituent group ID.
+* @param $name
+*   String representing the name of the
+*   constituent group.
+* @see http://tkprt.bluestatedigital.com/modules/constituent/admin/group_list.php
+* @return
+* A string containing the numeric ID of the 
+* constituent group.
+**/
+function _takepart_bsd_getconsgroupbyname($name) {
+  $ret = -1;
+  $groups = _takepart_bsd_apiquery("cons_group/list_constituent_groups", array());
+  $cgxml = simplexml_load_string($groups);
+  if ($cgxml) {
+    $cons_groups = $cgxml->xpath('/api/cons_group');
+    if($cons_groups) {
+      foreach ($cons_groups as $child) {
+        if((string) $child->name == $name) {
+          $ret = (int) $child->attributes()->id;
+        }
+      }
+    }
+  }
+  return $ret;
 }
 
+
 /**
- * Admin Form
+* Get constituent ID for a given constituent
+* email address.
+* @param $email
+*   The email address of the user / constituent.
+* @return
+* A string containing the numeric ID of the 
+* constituent.
+**/
+function _takepart_bsd_getconsbyemail($email) {
+  $ret = -1;
+  $cons = _takepart_bsd_apiquery("cons/get_constituents", array("filter"=>"email=" . $email));
+  $cxml = simplexml_load_string($cons);
+  if ($cxml) {
+    $ret = $cxml->cons->attributes()->id;
+  }
+  return $ret;
+}
+
+
+/**
+* Get newsletter name for a given form id.
+* @param $id
+*   The id of the form.
+* @return
+* A string containing the form name;
+**/
+function _takepart_bsd_getformname($id) {
+  $newslettername = '';
+  $formsxml = _takepart_bsd_apiquery("signup/list_forms");
+  $forms = simplexml_load_string($formsxml);
+  foreach ($forms as $child) {
+    if((int) $child->attributes()->id == $id) {
+      $newslettername = (string) $child->signup_form_name;
+    }
+  }
+  return $newslettername;
+}
+
+
+/**
+* Unsubscribe user from a given campaign.
+* @param $email
+*   The email address of the user.
+* @param $campaign
+*   The name of the BSD constituent group.
+* @see http://tkprt.bluestatedigital.com/modules/constituent/admin/group_list.php
+* @return
+* A string containing the REST response from BSD.
+**/
+function _takepart_bsd_usubscribe($email, $campaign) {
+
+  $cons_group_id = _takepart_bsd_getconsgroupbyname($campaign);
+  $cons_ids = _takepart_bsd_getconsbyemail($email);
+
+  $r = _takepart_bsd_apiquery("cons_group/remove_cons_ids_from_group", array("cons_group_id"=>$cons_group_id, "cons_ids"=>$cons_ids));
+
+  return $r;
+
+}
+
+
+/**
+* Unsubscribe / subscribe user from all campaigns.
+* @param $email
+*   The email address of the user.
+* @param $value
+*   The subscription state
+*   0 = unsubscribed
+*   1 = subscribed
+* @see http://tkprt.bluestatedigital.com/modules/constituent/admin/group_list.php
+* @return
+* A string containing the REST response from BSD.
+**/
+function _takepart_bsd_set_subscription_state($email, $value) {
+  $cons_ids = _takepart_bsd_getconsbyemail($email);
+  $r = '';
+  if($cons_ids) {
+    $cons_xml = array (
+    'cons' => array (
+      '@attributes' => array (
+        'is_new' => 0, 
+        'id' => $cons_ids),
+        'cons_email' => array (
+          'email' => $email,
+    		'is_subscribed' => $value,
+    		)
+        ),
+     );
+    $r = _takepart_bsd_apipost("cons/set_constituent_data", $cons_xml);
+  }
+  return $r;
+}
+
+
+/**
+* Signup user through specified form ID.
+* @param $email
+*   The email address of the user.
+* @param $form_id
+*   The ID or name (form slug) of the BSD form.
+* @see http://tkprt.bluestatedigital.com/ctl/Signup/FormList
+* @return
+* A string containing the REST response from BSD.
+**/
+function _takepart_bsd_signup($email, $form_id) {
+  
+  $id = $form_id;
+  
+  if(!is_numeric($id)) {
+    $formsxml = _takepart_bsd_apiquery("signup/list_forms");
+    $forms = simplexml_load_string($formsxml);
+    foreach ($forms as $child) {
+      if((string) $child->signup_form_slug == $id) {
+        $id = (int) $child->attributes()->id;
+      }
+    }
+  }
+  
+  $fieldsxml = _takepart_bsd_apiquery("signup/list_form_fields", array('signup_form_id' => $id));
+  
+  //find email field id:
+  $fields = simplexml_load_string($fieldsxml);
+  foreach ($fields as $child) {
+    if(strtolower((string) $child->label) == 'email') {
+      $field_id = (int) $child->attributes()->id;
+    }
+  }
+  
+  $constituent = array (
+        'signup_form' => array (
+          '@attributes' => array (
+          	'id' => $id, ),
+          'signup_form_field' => array (
+          	'@attributes' => array (
+          		'id' => $field_id,),
+          	'@value' => $email,),
+      ),
+  );
+  
+  $resp = _takepart_bsd_apipost("signup/process_signup", $constituent);
+  
+  return $resp;
+
+}
+
+
+/**
+* Query BSD API.
+* @param $url
+*  The path of the API call.
+* @param $query
+*  An array with the names and values
+*  of parameters used in the API call.
+* @see 
+*  http://tkprt.bluestatedigital.com/page/api/doc
+* @return
+*  A string containing REST response from 
+*  the BSD API.
+**/
+function _takepart_bsd_apiquery($url, $query) {
+  $bsd = new BSD_API(variable_get('takepart_bsd_api_id', 'takepart-com'),variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'));
+  $req = $bsd->callApi($url, $query);
+  return $req;
+}
+
+
+/**
+* Apply array to SimpleXML.
+* A function to convert an array to XML.
+* @param $array
+*  The array to convert.
+* @param $root
+*  The SimpleXML object to apply the array
+*  values to.
+**/
+function _takepart_bsd_array_to_xml($array, &$root) {
+  foreach($array as $key => $value) {
+    if(strrpos($key, 'signup_form_field') > -1) {
+      $key = preg_replace('/[0-9]/i', '', $key);
+    }
+    if(is_array($value)) {
+      if($key == "@attributes") {
+        if(is_array($value)) {
+          foreach($value as $subkey => $subvalue) {
+            $subnode = $root->addAttribute("$subkey", "$subvalue");
+          }
+        }
+      } else if(!is_numeric($key)) {
+        $subnode = $root->addChild("$key");
+        _takepart_bsd_array_to_xml($value, $subnode);
+      }
+
+      if(!is_numeric($key)) {
+      } else{
+        _takepart_bsd_array_to_xml($value, $root);
+      }
+    }
+    else {
+      if($key == "@value") {
+        $root[0] = $value;
+      } else {
+        $root->addChild("$key","$value");
+      }
+    }
+  }
+}
+
+
+/**
+* Post to BSD API.
+* @param $url
+*  The path of the API call.
+* @param $data
+*  An array hierarchy representing the 
+*  XML used in the API call.
+* @see
+*  http://tkprt.bluestatedigital.com/page/api/doc#set_constituent_data
+* @return
+*  A string containing REST response from
+*  the BSD API.
+**/
+function _takepart_bsd_apipost($url, $data) {
+   
+  $xml = new SimpleXMLElement("<?xml version=\"1.0\" encoding=\"utf-8\"?><api></api>");
+
+  _takepart_bsd_array_to_xml($data, $xml);
+   
+  $bsd = new BSD_API(variable_get('takepart_bsd_api_id', 'takepart-com'), variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'));
+  $req = $bsd->callApi($url, null, $xml->asXML());
+
+  return $req;
+
+}
+
+
+/**
+ * Admin Form; implements hook_form
  */
 function takepart_bsd_form($form, &$form_state) {
   $form['takepart_bsd_api_id'] = array(
@@ -69,6 +309,13 @@ function takepart_bsd_form($form, &$form_state) {
       '#maxlength' => 64,
       '#default_value' => variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8')
   );
+  $form['takepart_bsd_api_restmethod'] = array(
+      '#type' => 'select',
+      '#title' => t('REST Method'),
+      '#default_value' => variable_get('takepart_bsd_api_restmethod', 0),
+      '#options' => array(0 => t('Stream Wrappers'), 1 => t('Curl'),),
+      '#required' => TRUE,
+  );
   $form['submit'] = array(
   	'#type' => 'submit',
   	'#value' => t('Save settings'),
@@ -76,7 +323,17 @@ function takepart_bsd_form($form, &$form_state) {
   return $form;
 }
 
+//Menu callback for test page:
+function _takepart_bsd_test_page() {
+  return "";
+}
 
-
-
-
+/**
+* Save Configuration:
+*/
+function takepart_bsd_form_submit($form, &$form_state) {
+  variable_set('takepart_bsd_api_id', $form_state['values']['takepart_bsd_api_id']);
+  variable_set('takepart_bsd_api_secret', $form_state['values']['takepart_bsd_api_secret']);
+  variable_set('takepart_bsd_api_restmethod', $form_state['values']['takepart_bsd_api_restmethod']);
+  drupal_set_message(t('The settings have been saved'));
+}

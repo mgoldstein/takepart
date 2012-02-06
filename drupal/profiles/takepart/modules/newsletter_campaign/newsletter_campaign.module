@@ -74,7 +74,7 @@ function newsletter_campaign_menu() {
     'access arguments' => array('view newsletter campaign'),
     'type' => MENU_DEFAULT_LOCAL_TASK,
   );
-  
+  /*
   $items['admin/structure/newsletter-campaign/signups'] = array(
     'title' => 'Signups',
     'description' => 'List all signups',
@@ -82,10 +82,10 @@ function newsletter_campaign_menu() {
     'access arguments' => array('view newsletter campaign'),
     'type' => MENU_LOCAL_TASK
   );
-
+  */
   $items['admin/structure/newsletter-campaign/settings'] = array(
     'title' => 'Settings',
-    'description' => 'List all signups',
+    'description' => 'Global newsletter settings',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('_newsletter_campaign_settings'),
     'access arguments' => array('view newsletter campaign'),
@@ -126,7 +126,7 @@ function newsletter_campaign_menu() {
     'title' => t('Newsletter Form Submission'),
     'access arguments' => array('access content'),
     'page callback' => '_newsletter_signup_form_submit_from_ajax',
-    'file' => 'signup.ajax.inc',
+    'file' => 'signup.ajax.bsd.inc',
     'type' => MENU_CALLBACK,    
   );
   
@@ -134,7 +134,7 @@ function newsletter_campaign_menu() {
     'title' => t('Newsletter Form Submission'),
     'access arguments' => array('access content'),
     'page callback' => '_newsletter_unsubscribe_all',
-    'file' => 'signup.ajax.inc',
+    'file' => 'signup.ajax.bsd.inc',
     'type' => MENU_NORMAL_ITEM,    
   );
 
@@ -142,14 +142,14 @@ function newsletter_campaign_menu() {
     'title' => t('Newsletter Form Submission'),
     'access arguments' => array('access content'),
     'page callback' => '_newsletter_unsubscribe',
-    'file' => 'signup.ajax.inc',
+    'file' => 'signup.ajax.bsd.inc',
     'type' => MENU_NORMAL_ITEM,    
   );
   $items['newsletter-unsubscribe/success'] = array(
     'title' => t('Newsletter Unsubscribe'),
     'access arguments' => array('access content'),
     'page callback' => '_newsletter_unsubscribe_success',
-    'file' => 'signup.ajax.inc',
+    'file' => 'signup.ajax.bsd.inc',
     'type' => MENU_NORMAL_ITEM,    
   );
   
@@ -223,7 +223,7 @@ function newsletter_campaign_block_view($delta) {
       'form_id' => check_plain($camp->campaign_id),
       'promo_text' => filter_xss($camp->promo_message, $allowed_tags),
       'header_text' => filter_xss($camp->header, $allowed_tags),
-      'signup_form' => drupal_get_form('newsletter_campaign_signup_form', $camp->campaign_id)
+      'signup_form' => drupal_get_form('newsletter_campaign_signup_form', $camp->campaign_id, $camp->signup_form_id)
     );
     
     $content = theme('newsletter_signup_block', $form_vars);
@@ -290,18 +290,19 @@ function newsletter_campaign_form_user_register_form_alter(&$form, &$form_state,
 function _newsletter_campaign_list() {
 
   $campaigns = newsletter_campaign_load_multiple(FALSE); // load them all
-  $h = array(t('Name'), t('Campaign ID'), t("Header"), t("Promo Msg"), t("Thank You Msg"), '');
+  $h = array(t('Name'), t('Campaign ID'), t('Signup Form ID'), t("Header"), t("Promo Msg"), t("Thank You Msg"), '');
   $t = array();
   foreach($campaigns as $camp) {
     $row = array();
     $row[] = l($camp->title, 'admin/structure/newsletter-campaign/'. $camp->ncid .'/edit');
     $row[] = check_plain($camp->campaign_id);
+    $row[] = check_plain($camp->signup_form_id);
     $row[] = filter_xss_admin($camp->header);
     $row[] = filter_xss_admin($camp->promo_message);
     $row[] = filter_xss_admin($camp->thankyou_message);
     $edit   = l('Edit', 'admin/structure/newsletter-campaign/' . $camp->ncid ."/edit");
     $delete = l('X', 'admin/structure/newsletter-campaign/'. $camp->ncid .'/delete', array('attributes' => array('title' => 'Delete')));
-    $row[] = $edit ." | ". $delete; 
+    $row[] = "<div style='width:4em'>" .$edit ." | ". $delete . "</div>"; 
     $t[] = $row;
   }
 
@@ -371,7 +372,7 @@ function _newsletter_signups_list() {
  *
  * @return array - raw form array
  */
-function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
+function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $signup_form_id) {
   
   $form = array();
   
@@ -405,24 +406,31 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
   );
 
   // takepart_newsletter_isValidEmailAddress(jQuery("#wrapper-form-'.$campaign_id.' [name=email]").val(), "'.$campaign_id.'")
-  drupal_add_js('jQuery(document).ready(function(context){
+  drupal_add_js('var takepart_newsletter_callcount = 0; jQuery(document).ready(function(context) {
+  if(takepart_newsletter_callcount == 0) {
+  takepart_newsletter_callcount++;
     jQuery("#wrapper-form-'.$campaign_id.' .form-submit").
       click(function(e) {
+      
         e.preventDefault();
         
         var isvalid = takepart_newsletter_isValidEmailAddress(jQuery("#wrapper-form-'.$campaign_id.' [name=email]").val(), "'.$campaign_id.'");
         
         if (isvalid) {
           var data = jQuery("#wrapper-form-'.$campaign_id.' form").serialize();
+              
+          jQuery("#takepart-newsletter-'.$campaign_id.'-body").hide();
+          var spinner = "<div style=\"margin:1em; text-align:center;\"><img src=\"/profiles/takepart/themes/takepart3/images/spinner.gif\" /></div>";
+          jQuery("#takepart-newsletter-'.$campaign_id.'-results").prepend(spinner);
           
           jQuery.post("/newsletter-campaign/submit-campaign", data, 
              function(result) {
-               jQuery("#takepart-newsletter-'.$campaign_id.'-body").hide();
                jQuery("#takepart-newsletter-'.$campaign_id.'-results").text(result.message);
               }, "json");
         }
         return false;
       });
+      }
     });', 'inline'
   );
 
@@ -439,6 +447,11 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
   $form['campaign_id'] = array(
     '#type' => 'hidden',
     '#value' => $campaign_id,
+  );
+  
+  $form['signup_form_id'] = array(
+      '#type' => 'hidden',
+      '#value' => $signup_form_id,
   );
   
   // d7 ajax submit handler is bugged.
@@ -466,28 +479,48 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id) {
  */
 
 function _newsletter_campaign_registration_opt_in_submit($form, &$form_state) {
-  $tp_campaign_id = variable_get('newsletter_campaign_tp_opt_in_code', '54');
+  //$tp_campaign_id = variable_get('newsletter_campaign_tp_opt_in_code', '54');
   $email = $form_state['values']['mail'];
   $lang = $form_state['complete form']['field_registration_email_opt_in']['#language'];
   $opt_in = $form_state['values']['field_registration_email_opt_in'][$lang][0]['value'];
   
   if ($opt_in === 1) {
-    module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
-    $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
- //   drupal_set_message($result['message'], 'status', FALSE);
-  } 
+    /* Pluris legacy code
+     * module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
+     * $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
+     */
+
+    /* 
+     * BSD call to process signup form for TakePart newsletter
+     * TODO: Pull signup form ID from variable set in CMS interface for campaigns 
+     */
+    module_load_include('inc', 'newsletter_campaign', 'signup.ajax.bsd');
+    $result = _takepart_bsd_signup($email, 5);
+    
+    // drupal_set_message($result['message'], 'status', FALSE);
+  }
 } 
 
 function _newsletter_campaign_profile_opt_in_submit($form, &$form_state) {
-  $tp_campaign_id = variable_get('newsletter_campaign_tp_opt_in_code', '54');
+  //$tp_campaign_id = variable_get('newsletter_campaign_tp_opt_in_code', '54');
+  $tp_signup_id = variable_get('newsletter_campaign_tp_signup_code', 5);
   $email = $form_state['values']['mail'];
   $lang = $form_state['complete form']['field_registration_email_opt_in']['#language'];
   $opt_in = $form_state['values']['field_registration_email_opt_in'][$lang][0]['value'];
   
   if ($opt_in === 1) {
-    module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
-    $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
-//    drupal_set_message($result['message'], 'status', FALSE);
+    /* Pluris legacy code
+     * module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
+     * $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
+     */
+    
+    /* 
+     * BSD call to process signup form for TakePart newsletter
+     */
+    module_load_include('inc', 'newsletter_campaign', 'signup.ajax.bsd');
+    $result = _takepart_bsd_signup($email, $tp_signup_id);
+    
+    // drupal_set_message($result['message'], 'status', FALSE);
   } 
 } 
 
@@ -526,6 +559,7 @@ function _newsletter_campaign_default() {
   $campaign->header = NULL;
   $campaign->promo_message = NULL;
   $campaign->campaign_id = NULL;
+  $campaign->signup_form_id = NULL;
   $campaign->thankyou_message = NULL;
   
   return $campaign;
