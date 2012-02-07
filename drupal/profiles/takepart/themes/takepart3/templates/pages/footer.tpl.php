@@ -68,5 +68,5 @@
 			TakePart, LLC
 		</div>
 	</div>
-
+	
 </div>

@@ -224,7 +224,7 @@ function openpublish_media_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'openpublish_photo_gallery',
       'deleted' => '0',
-      'description' => 'Recommend size is 620x467',
+      'description' => 'Recommend size is 640x426',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -642,7 +642,7 @@ function openpublish_media_field_default_fields() {
   t('Embedded Video');
   t('Gallery Images');
   t('Main Image');
-  t('Recommend size is 620x467');
+  t('Recommend size is 640x426');
 
   return $fields;
 }

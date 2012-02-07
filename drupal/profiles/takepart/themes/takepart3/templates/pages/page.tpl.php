@@ -2,6 +2,7 @@
 
 Template?
 
+
 <?php print $header ?>
  
   <?php if ($page['highlighted']): ?>
