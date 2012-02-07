@@ -36,11 +36,11 @@
         <?php print render($content['body']); ?>
         <?php print render($content['field_topic']); ?>
       <?php endif; ?>
-      
+   
     </div>
     
   <?php endif; ?>
-  
+
   <?php if (!empty($links)): ?>
     <div class='links clearfix'>
       <?php // print render($links) ?>
