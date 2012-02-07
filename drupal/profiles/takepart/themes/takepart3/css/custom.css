@@ -1422,9 +1422,12 @@ div.takepart_addthis_rightrail .button_container a.addthis_button_google_plusone
 }
 
 div.takepart_addthis_footer span#addthis_footer_sharethis {
-    color: #999999;
+    color: #000;
     font-size: 14px;
     padding-top: 5px;
+    font-weight: bold;
+    text-transform: capitalize;
+    
 }
 .takepart_addthis_footer a.at300b{
     padding:0;

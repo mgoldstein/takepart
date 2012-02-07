@@ -27,7 +27,7 @@ function takepart_custom_block_view($delta='page_title') {
 
     break;
     default :
-      $block['content'] = '<h1>' . drupal_get_title(). '</h1>';
+      $block['content'] = '<h1 class="title">' . drupal_get_title(). '</h1>';
   }
   return $block;
 }
