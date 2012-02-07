@@ -98,7 +98,7 @@
           'views_slideshow_cycle_div_photo_gallery-');
         
         var title = $('#'+ focusBlockId +' .views-field-field-image-title h4').text();
-        console.debug(title);
+        // console.debug(title);
         
         s.linkTrackVars="eVar15,events";
         s.linkTrackEvents="event2, event15";
