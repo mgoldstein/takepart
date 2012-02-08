@@ -1,8 +1,5 @@
 <div id="page-wrapper">
 
-Template?
-
-
 <?php print $header ?>
  
   <?php if ($page['highlighted']): ?>
