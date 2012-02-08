@@ -635,6 +635,15 @@ h1.title a
   margin-right:14px;
 }
 
+#right-rail h2
+{
+  color:#9BC;
+  font-family:Helvetica,Arial,sans-serif;
+  font-size:18px;
+  font-weight:400;
+  line-height:18px;
+}
+
 /** Topics **/
 .node-topics
 {
