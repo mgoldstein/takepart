@@ -647,14 +647,12 @@ div[class*='block-boxes-delta-video-block'] h2 span{
 .view-video .views-field-field-promo-headline {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin: 10px 0 0 0;
 }
 .view-display-id-block_8 .jcarousel-item {
     margin: 0 16px 0 0;
     width: 196px !important;
 }
-
 
 .drupal-embed .node-openpublish-photo-gallery,
 .drupal-embed .node-openpublish-video{
@@ -1860,4 +1858,8 @@ in take-part feature */
     line-height: 120%;
     margin: 0 0 12px 0;
     text-transform: uppercase;
+}
+
+#right-rail .view-video .views-field-field-promo-headline h3{
+    font-size:16px;
 }
