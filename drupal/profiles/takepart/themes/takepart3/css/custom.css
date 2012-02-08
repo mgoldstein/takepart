@@ -1863,3 +1863,9 @@ in take-part feature */
 #right-rail .view-video .views-field-field-promo-headline h3{
     font-size:16px;
 }
+
+ul#global-links a {
+    display:block;
+    float:left;
+    color:#1CA9E7;
+}
