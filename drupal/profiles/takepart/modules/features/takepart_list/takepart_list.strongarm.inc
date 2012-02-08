@@ -85,6 +85,13 @@ function takepart_list_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_takepart_list';
+  $strongarm->value = '1';
+  $export['node_preview_takepart_list'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_takepart_list';
   $strongarm->value = 1;
   $export['node_submitted_takepart_list'] = $strongarm;

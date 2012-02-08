@@ -13,7 +13,7 @@ function takepart_video_taxonomy_default_vocabularies() {
       'name' => 'Video Series',
       'machine_name' => 'video_series',
       'description' => '',
-      'hierarchy' => '0',
+      'hierarchy' => '1',
       'module' => 'taxonomy',
       'weight' => '0',
       'rdf_mapping' => array(

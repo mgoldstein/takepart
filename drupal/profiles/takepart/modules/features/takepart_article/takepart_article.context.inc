@@ -65,9 +65,9 @@ function takepart_article_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => 0,
         ),
-        'views-related_actions-block' => array(
-          'module' => 'views',
-          'delta' => 'related_actions-block',
+        'boxes-box-7fa6e22c' => array(
+          'module' => 'boxes',
+          'delta' => 'box-7fa6e22c',
           'region' => 'sidebar_second',
           'weight' => 1,
         ),
@@ -111,6 +111,9 @@ function takepart_article_context_default_contexts() {
         1 => 1,
         2 => 2,
       ),
+      'options' => array(
+        'context_field_category' => '',
+      ),
     ),
   );
   $context->reactions = array(
@@ -127,6 +130,24 @@ function takepart_article_context_default_contexts() {
           'delta' => 'taxonomy_search_list-block_2',
           'region' => 'content_bottom',
           'weight' => 0,
+        ),
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar_second',
+          'weight' => 0,
+        ),
+        'boxes-box-7fa6e22c' => array(
+          'module' => 'boxes',
+          'delta' => 'box-7fa6e22c',
+          'region' => 'sidebar_second',
+          'weight' => 1,
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar_second',
+          'weight' => 2,
         ),
       ),
     ),

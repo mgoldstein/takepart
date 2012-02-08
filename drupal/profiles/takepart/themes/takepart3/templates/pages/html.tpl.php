@@ -61,6 +61,10 @@
   <?php print $page; ?>
   <?php print $custom; ?>
   <?php print $page_bottom; ?>
-  <?php print $tp_sysinfo_comment_tags; ?>
+  <?php 
+  if(isset($tp_sysinfo_comment_tags)):
+    echo $tp_sysinfo_comment_tags;
+  endif;  
+  ?>
 </body>
 </html>

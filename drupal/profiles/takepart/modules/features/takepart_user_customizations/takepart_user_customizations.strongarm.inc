@@ -83,13 +83,6 @@ function takepart_user_customizations_strongarm() {
       'key' => 'submit',
       'weight' => NULL,
     ),
-    'comment_node_openpublish_blog_post_form' => array(
-      'path' => array(
-        0 => 'actions',
-      ),
-      'key' => 'submit',
-      'weight' => 19,
-    ),
     'comment_node_openpublish_article_form' => array(
       'path' => array(
         0 => 'actions',
@@ -112,6 +105,13 @@ function takepart_user_customizations_strongarm() {
       'weight' => 19,
     ),
     'comment_node_action_form' => array(
+      'path' => array(
+        0 => 'actions',
+      ),
+      'key' => 'submit',
+      'weight' => 19,
+    ),
+    'comment_node_openpublish_blog_post_form' => array(
       'path' => array(
         0 => 'actions',
       ),
@@ -146,7 +146,7 @@ function takepart_user_customizations_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'captcha_wrong_response_counter';
-  $strongarm->value = 44;
+  $strongarm->value = 15866;
   $export['captcha_wrong_response_counter'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -229,6 +229,13 @@ function takepart_user_customizations_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'username_check_delay';
+  $strongarm->value = '1';
+  $export['username_check_delay'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'user_admin_role';
   $strongarm->value = '7';
   $export['user_admin_role'] = $strongarm;
@@ -237,7 +244,7 @@ function takepart_user_customizations_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_cancel_method';
-  $strongarm->value = 'user_cancel_block';
+  $strongarm->value = 'user_cancel_block_unpublish';
   $export['user_cancel_method'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -465,6 +472,13 @@ Your account on [site:name] has been canceled.
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'user_pictures';
+  $strongarm->value = 1;
+  $export['user_pictures'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'user_picture_default';
   $strongarm->value = '';
   $export['user_picture_default'] = $strongarm;
@@ -507,13 +521,6 @@ Your account on [site:name] has been canceled.
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'user_pictures';
-  $strongarm->value = 1;
-  $export['user_pictures'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'user_register';
   $strongarm->value = '1';
   $export['user_register'] = $strongarm;
@@ -524,13 +531,6 @@ Your account on [site:name] has been canceled.
   $strongarm->name = 'user_signatures';
   $strongarm->value = 0;
   $export['user_signatures'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'username_check_delay';
-  $strongarm->value = '1';
-  $export['username_check_delay'] = $strongarm;
 
   return $export;
 }

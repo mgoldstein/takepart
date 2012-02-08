@@ -5,8 +5,10 @@ core = 7.x
 engine = phptemplate
 
 ; Stylsheets
+stylesheets[all][] = css/old_style.css
+stylesheets[all][] = css/old_custom.css
 stylesheets[all][] = css/style.css
-stylesheets[all][] = css/custom.css
+stylesheets[all][] = css/webfonts.css
 stylesheets-conditional[lte IE 7][all][] = css/ie7.css
 
 ; Javascript

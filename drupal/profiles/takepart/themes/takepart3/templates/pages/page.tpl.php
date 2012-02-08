@@ -1,6 +1,5 @@
 <div id="page-wrapper">
 
-
 <?php print $header ?>
  
   <?php if ($page['highlighted']): ?>
@@ -9,7 +8,7 @@
     </div>
   <?php endif; ?>
   
-  <div id='page' class='page clearfix <?php print $multipage_class; ?>'>
+  <div id='page' class='page clearfix <?php print $multipage_class; ?> <?php print render($node->type); ?>'>
   
     <div class='main-content'>
       <?php  /* if ($title): ?><h1 class='page-title'><?php print $title ?></h1><?php endif; */ ?>

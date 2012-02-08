@@ -165,6 +165,7 @@ function takepart_campaign_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['slave'] = TRUE;
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
@@ -234,6 +235,14 @@ function takepart_campaign_views_default_views() {
 
   /* Display: List of Campaigns */
   $handler = $view->new_display('block', 'List of Campaigns', 'block');
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '6';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '1';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Featured Campaigns (Excluded) */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
@@ -336,7 +345,7 @@ function takepart_campaign_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Similar Campaigns';
+  $handler->display->display_options['title'] = 'Movies That Matter';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -551,6 +560,9 @@ return TRUE;';
   $handler->display->display_options['arguments']['nid_1']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid_1']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid_1']['specify_validation'] = 1;
+  $handler->display->display_options['arguments']['nid_1']['validate']['type'] = 'php';
+  $handler->display->display_options['arguments']['nid_1']['validate_options']['code'] = 'return TRUE;';
   $handler->display->display_options['arguments']['nid_1']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['nid_1']['not'] = 1;
   /* Filter criterion: Content: Published */

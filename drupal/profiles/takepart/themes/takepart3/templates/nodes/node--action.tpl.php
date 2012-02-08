@@ -17,7 +17,7 @@ if($field_actionheaderimg_path) {
 
 
 <?php if (!empty($title) && !($remove_title)): ?>
-<h2 <?php if (!empty($title_attributes)) print $title_attributes ?>
+<h1 <?php if (!empty($title_attributes)) print $title_attributes ?>
 class='title'>
 
 <?php if (!empty($new)): ?>
@@ -25,7 +25,7 @@ class='title'>
 </span>
 <?php endif; ?>
 <a href="<?php print $node_url ?>"><?php print $title ?></a>
-</h2>
+</h1>
 <?php endif; ?>
 
 <?php if (!empty($title_suffix)) print render($title_suffix); ?>

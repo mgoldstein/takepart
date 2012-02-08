@@ -74,19 +74,19 @@ function takepart_campaign_context_default_contexts() {
           'module' => 'takepart_custom',
           'delta' => 'page_title_h1',
           'region' => 'highlighted',
-          'weight' => '0',
+          'weight' => '-10',
         ),
-        'boxes-box-b68f20b9' => array(
-          'module' => 'boxes',
-          'delta' => 'box-b68f20b9',
+        'takepart_addthis-addthis_simple' => array(
+          'module' => 'takepart_addthis',
+          'delta' => 'addthis_simple',
           'region' => 'highlighted',
-          'weight' => '1',
+          'weight' => '-8',
         ),
         'boxes-box-2988d8fb' => array(
           'module' => 'boxes',
           'delta' => 'box-2988d8fb',
           'region' => 'highlighted',
-          'weight' => '2',
+          'weight' => '-7',
         ),
         'boxes-box-9ececd73' => array(
           'module' => 'boxes',

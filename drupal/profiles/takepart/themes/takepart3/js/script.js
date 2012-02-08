@@ -182,3 +182,83 @@ jQuery(document).ready(function () {
      * takepart.analytics.omn_clickTrack('.take_action_button'); 
      */ 
 });
+
+/* fix the height in the featured galleries */
+jQuery(document).ready(function () {
+    var target = '.main-content .block-boxes-title-features .views-row';
+    var tallestofthemall = 0;
+    jQuery(target).each(function () {
+    	if (jQuery(this).height() > tallestofthemall) {
+    	  tallestofthemall = jQuery(this).height();
+    	}
+    });
+    jQuery(target).each(function () {
+    	jQuery(this).height(tallestofthemall);
+    });  
+});
+
+/* place dots on image rotator */
+jQuery(document).ready(function () {
+    var slideshows = Drupal.settings.viewsSlideshowCycle;
+    var slidecount = 0;
+    if (slideshows) {
+        for (slideshow in slideshows) {
+            var ss_obj = slideshows[slideshow];
+            var slidecount = ss_obj['totalImages'];
+            var ss_block_id = ss_obj['targetId'];
+            var x = 0;
+            jQuery(ss_block_id).children('div').each(function () {
+                var dotdiv = '<ul class="dots">';
+                for (i = 0; i < slidecount; i++) {
+                    if (i == x) {
+                        dotdiv = dotdiv + '<li class="active"></li>';
+                    } else {
+                        dotdiv = dotdiv + '<li class="inactive"></li>';
+                    }
+                }
+                dotdiv = dotdiv + '</ul>';
+                jQuery(this).find(".views-field-field-slide-headline-override div.field-content").append(dotdiv);
+                x++;
+            });
+        }
+    }
+});
+
+
+/*
+ * 
+ * 
+targetId : #views_slideshow_cycle_teaser_section_slide_rotator-block
+slideshowId : slide_rotator-block
+
+for(test in ss_obj) {
+	alert(test + ' : ' + ss_obj[test]);
+}
+
+	jQuery('.viewsSlideshowCycle-processed').each(function () {
+    	//alert(jQuery(this).id);
+    	
+    	
+    });
+
+num_divs
+totalImages
+loadedImages
+*/
+
+
+/*
+$.fn.equalHeights = function(px) {
+	$(this).each(function(){
+	var currentTallest = 0;
+	$(this).children().each(function(i){
+	    if ($(this).height() > currentTallest) { currentTallest = $(this).height(); }
+	        });
+	    if (!px || !Number.prototype.pxToEm) currentTallest = currentTallest.pxToEm(); //use ems unless px is specified
+	        // for ie6, set height since min-height isn't supported
+	    if ($.browser.msie && $.browser.version == 6.0) { $(this).children().css({'height': currentTallest}); }
+	        $(this).children().css({'min-height': currentTallest}); 
+	    });
+	    return this;
+	};
+*/

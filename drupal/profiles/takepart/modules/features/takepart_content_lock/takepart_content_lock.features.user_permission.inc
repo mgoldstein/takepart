@@ -15,6 +15,8 @@ function takepart_content_lock_user_default_permissions() {
     'name' => 'administer checked out documents',
     'roles' => array(
       0 => 'administrator',
+      1 => 'editor',
+      2 => 'layout editor',
     ),
     'module' => 'content_lock',
   );
@@ -24,10 +26,9 @@ function takepart_content_lock_user_default_permissions() {
     'name' => 'check out documents',
     'roles' => array(
       0 => 'administrator',
-      1 => 'author',
-      2 => 'contributor',
-      3 => 'editor',
-      4 => 'layout editor',
+      1 => 'contributor',
+      2 => 'editor',
+      3 => 'layout editor',
     ),
     'module' => 'content_lock',
   );

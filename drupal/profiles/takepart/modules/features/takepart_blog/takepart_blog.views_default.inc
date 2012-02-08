@@ -26,13 +26,42 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['slave'] = TRUE;
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '2';
+  $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: Thumbnail Image */
+  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
+  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
+    'image_style' => 'square_thumb_70',
+    'image_link' => 'content',
+  );
+  $handler->display->display_options['fields']['field_thumbnail']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -150,6 +179,7 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['slave'] = TRUE;
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
