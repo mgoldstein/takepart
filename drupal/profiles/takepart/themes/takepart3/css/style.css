@@ -344,6 +344,13 @@ ul,ol
     text-decoration:none;
 }
 
+.block-boxes-title-features .views-field-title
+{
+  font-size:15px;
+  margin-top:145px;
+  padding:6px;
+}
+
 .campaign-link
 {
     background:url(../images/2012-02-08/hash.png) no-repeat scroll 0 0 transparent;
@@ -509,18 +516,17 @@ h1.title a:hover {
 /*featured blocks, img gallery styles */
 .main-content .block-boxes-title-features .views-row
 {
-    display:table;
-    background-color:#fff;
-    margin-bottom:15px;
-    margin-right:14px;
-    vertical-align:top;
-    width:200px;
-    float:left;
+  display:table;
+  background-color:#fff;
+  margin:5px;
+  vertical-align:top;
+  width:200px;
+  float:left;
 }
 
 .main-content .block-boxes-title-features .view-content
 {
-    padding:15px;
+  padding:5px;
 }
 
 .main-content .block-boxes-title-features .views-field-field-thumbnail-1
@@ -544,18 +550,15 @@ h1.title a:hover {
 }
 
 /*hover state*/
-.main-content .block-boxes-title-features .views-row:hover .views-field-field-thumbnail-1 .field-content
+.main-content .block-boxes-title-features .views-row:hover
 {
-    border:5px solid #1ca9e7;
-    height:150px;
-    width:200px;
+  border:3px solid #14ade7;
+  margin:2px;
 }
 
 .main-content .block-boxes-title-features .views-row:hover .views-field-field-thumbnail-1 .field-content img
 {
-    left:-4px;
     position:relative;
-    top:-4px;
 }
 
 .main-content .block-boxes-title-features .views-row:hover .views-field-title a
@@ -566,23 +569,23 @@ h1.title a:hover {
 
 .main-content .block-boxes-title-features .views-field-field-display-tag
 {
-    height:0;
-    overflow:visible;
-    position:relative;
-    z-index:100;
-    position:absolute;
-    top:131px;
+  height:0;
+  overflow:visible;
+  position:relative;
+  z-index:100;
+  position:absolute;
 }
 
 .main-content .block-boxes-title-features .views-field-field-display-tag .field-content
 {
-    background-color:#9BC;
-    color:#FFF;
-    display:inline-block;
-    font-size:11px;
-    font-weight:700;
-    line-height:18px;
-    text-transform:uppercase;
+  background-color:#9BC;
+  color:#FFF;
+  display:inline-block;
+  font-size:11px;
+  font-weight:700;
+  line-height:18px;
+  text-transform:uppercase;
+  margin-top:131px;
 }
 
 /* ===RIGHT RAIL=== */
