@@ -34,8 +34,17 @@ jQuery(document).ready(function () {
         }
     }
 }); */
-
-
+/*
 jQuery(document).ready(function () {
-	jQuery(this).find(".views-field-field-slide-headline-override div.field-content").append(dotdiv);
+	var arrows = '<ul class="gallery_nav"><li class="left"></li><li class="right"></li></ul>';
+	jQuery("#views_slideshow_cycle_div_photo_gallery-block_0").append(arrows);
+	
+	jQuery('#views_slideshow_cycle_div_photo_gallery-block_0 .gallery_nav .left').click(function() {
+		  alert('left');
+	});
+	
+	jQuery('#views_slideshow_cycle_div_photo_gallery-block_0 .gallery_nav .right').click(function() {
+		  alert('right');
+	});
 });
+*/	
