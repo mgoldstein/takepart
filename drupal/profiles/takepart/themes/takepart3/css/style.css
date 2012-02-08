@@ -420,6 +420,28 @@ ul,ol
 /* ===MAIN BODY=== */
 /* ------------------------------------------------------------------------*/
 /* headers in main body */
+
+.node-type-openpublish-video .main-content h1.title,
+.node-type-openpublish-article .main-content h1.title {
+    font-size:42px;
+    font-family:Helvetica, Arial, sans-serif;
+    line-height:44px;
+    font-weight:bold;
+    color:#000;
+    margin-bottom:10px;
+}
+
+.node-type-takepart-page .main-content h1.title,
+.node-type-action .main-content h1.title,
+.node-type-takepart-campaign h1.title {
+    font-size:36px;
+    font-family:Helvetica, Arial, sans-serif;
+    line-height:38px;
+    font-weight:bold;
+    color:#000;
+    margin-bottom:10px;
+}
+
 h1.title a
 {
   color:#000;
@@ -436,16 +458,6 @@ h1.title a:hover {
     line-height:18px;
     font-weight:400;
     color:#9BC;
-}
-
-.node-type-openpublish-video .main-content h1.title,
-.node-type-openpublish-article .main-content h1.title {
-    font-size:42px;
-    font-family:Helvetica, Arial, sans-serif;
-    line-height:44px;
-    font-weight:bold;
-    color:#000;
-    margin-bottom:10px;
 }
 
 .main-content h2
