@@ -334,12 +334,7 @@ body.node-type-topic-front h2.title a {
     background: none repeat scroll 0 0 #CCCCCC;
     margin: 25px 0 7px;
 }
-.block-boxes-current-photo_galleries h2 span {
-    background: url("../images/photo-icon.jpg") no-repeat scroll right center #FFFFFF;
-    border-right: 5px solid #FFFFFF;
-    padding: 2px 35px 2px 0;
-    text-transform: uppercase;
-}
+
 .block-boxes-current-photo_galleries .content{
     padding-top: 10px;
     border-top: 1px dotted #000000;

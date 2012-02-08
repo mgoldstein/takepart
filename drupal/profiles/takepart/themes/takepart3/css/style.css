@@ -213,6 +213,67 @@ ul,ol
     right:0;
 }
 
+.views-field-field-slide-headline-override .field-content ul.dots li
+{
+  text-align:left;
+  float:left;
+  list-style:none;
+  padding:3px 8px;
+  margin:5px;
+  height:16px;
+}
+
+.views-field-field-slide-headline-override .field-content ul.dots li.active
+{
+  background:url(../images/2012-02-08/blue_dot.png) no-repeat scroll 0 0 transparent;
+}
+
+.views-field-field-slide-headline-override .field-content ul.dots li.inactive
+{
+  background:url(../images/2012-02-08/white_dot.png) no-repeat scroll 0 0 transparent;
+}
+
+/*image rotator gallery arrow styles*/
+#views_slideshow_controls_text_photo_gallery-block
+{
+  width:640px;
+  left:0;
+  height:68px;
+  top:180px;
+  position:absolute;
+  z-index:10;
+}
+
+#views_slideshow_slide_counter_photo_gallery-block
+{
+  display:none;
+}
+
+#views_slideshow_controls_text_next_photo_gallery-block,#views_slideshow_controls_text_previous_photo_gallery-block
+{
+  cursor:pointer;
+  width:40px;
+  display:block;
+  height:68px;
+}
+
+#views_slideshow_controls_text_next_photo_gallery-block a,#views_slideshow_controls_text_previous_photo_gallery-block a
+{
+  display:none;
+}
+
+#views_slideshow_controls_text_previous_photo_gallery-block
+{
+  background:url(../images/2012-02-08/gallery_left_arrow.png) no-repeat scroll 0 0 transparent;
+  float:left;
+}
+
+#views_slideshow_controls_text_next_photo_gallery-block
+{
+  background:url(../images/2012-02-08/gallery_right_arrow.png) no-repeat scroll 0 0 transparent;
+  float:right;
+}
+
 /*top menu fonts*/
 #block-menu-block-1 li
 {
@@ -352,9 +413,10 @@ ul,ol
 /* ===MAIN BODY=== */
 /* ------------------------------------------------------------------------*/
 /* headers in main body */
-h1.title a {
-    color: #000;
-    text-decoration: none;
+h1.title a
+{
+  color:#000;
+  text-decoration:none;
 }
 
 .main-content h1 {
@@ -599,19 +661,30 @@ h1.title a {
     margin-right:14px;
 }
 
-/** Topics **/
-.node-topics {
-    border-top: 1px dotted #555;
-    border-bottom: 1px dotted #555;
-    clear: both;
-    padding: 14px 25px 14px 70px;
-    margin-top:14px;
+#right-rail h2
+{
+  color:#9BC;
+  font-family:Helvetica,Arial,sans-serif;
+  font-size:18px;
+  font-weight:400;
+  line-height:18px;
 }
 
-.node-topics a {
-    text-decoration: none;
-    font-size: 14px;
-    color: #1ca9e7;
+/** Topics **/
+.node-topics
+{
+  border-top:1px dotted #555;
+  border-bottom:1px dotted #555;
+  clear:both;
+  padding:14px 25px 14px 70px;
+  margin-top:14px;
+}
+
+.node-topics a
+{
+  text-decoration:none;
+  font-size:14px;
+  color:#1ca9e7;
 }
 
 .node-topics-label {
