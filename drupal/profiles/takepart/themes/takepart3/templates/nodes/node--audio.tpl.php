@@ -3,10 +3,10 @@
   <?php if (!empty($title_prefix)) print render($title_prefix); ?>
   
   <?php if (!empty($title) && !($remove_title)): ?>
-    <h2 <?php if (!empty($title_attributes)) print $title_attributes ?> class='title'>
+    <h1 <?php if (!empty($title_attributes)) print $title_attributes ?> class='title'>
       <?php if (!empty($new)): ?><span class='new'><?php print $new ?></span><?php endif; ?>
       <a href="<?php print $node_url ?>"><?php print $title ?></a>
-    </h2>
+    </h1>
   <?php endif; ?>
 
   <?php if (!empty($title_suffix)) print render($title_suffix); ?>

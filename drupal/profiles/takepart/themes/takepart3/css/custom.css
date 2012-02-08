@@ -334,20 +334,15 @@ body.node-type-topic-front h2.title a {
     padding-left: 17px;
 }
 
-
-
 /* display terms */
 
 /* display tag */
 .field-name-field-display-tag{
-    font-family: 'GorriSansRegular', sans-serif;
-    margin-bottom:20px;
-    display:block;
-    background:none;
-    border:none;
-    padding-left:0;
-    padding-right:0;
-    height:30px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size:18px;
+    font-weight: lighter;
+    text-transform: uppercase;
+    margin-bottom:12px;
 }
 .field-name-field-display-tag:after {
     content:".";
@@ -357,21 +352,12 @@ body.node-type-topic-front h2.title a {
     visibility:hidden;
 }
 .field-name-field-display-tag a{
-    background: url("../images/sprite-horizontal.gif") no-repeat scroll 0 -430px #8DC547;
-    border-bottom: 2px solid black;
-    display: block;
-    float: left;
-    font-size: 14px;
-    height: 28px;
-    line-height: 34px;
-    margin: 0;
-    padding-left: 20px;
-    padding-right: 15px;
-    text-transform:capitalize;
+    color: #1ca9e7;
+    text-decoration: none;
 }
 
 .field-name-field-display-tag a:hover{
-    text-decoration:none;
+    text-decoration: underline;
 }
 .block-boxes-current-featured_items .view-dom-id-2 {
     overflow: hidden;
@@ -661,14 +647,12 @@ div[class*='block-boxes-delta-video-block'] h2 span{
 .view-video .views-field-field-promo-headline {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin: 10px 0 0 0;
 }
 .view-display-id-block_8 .jcarousel-item {
     margin: 0 16px 0 0;
     width: 196px !important;
 }
-
 
 .drupal-embed .node-openpublish-photo-gallery,
 .drupal-embed .node-openpublish-video{
@@ -1427,7 +1411,7 @@ div.takepart_addthis_footer span#addthis_footer_sharethis {
     padding-top: 5px;
     font-weight: bold;
     text-transform: capitalize;
-    
+
 }
 .takepart_addthis_footer a.at300b{
     padding:0;
@@ -1853,3 +1837,29 @@ in take-part feature */
     padding: 8px 10px;
 }
 #block-boxes-user-not-a-member-join .boxes-box-content p{margin:0;}
+
+#right-rail #block-boxes-box-e9e8814f h2,
+#right-rail #block-views-video-block h2,
+#right-rail .block-boxes-view-name-related_campaigns h2{
+    background: url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 2px transparent;
+    font-size: 18px;
+    font-weight: lighter;
+    color: #99bbcc;
+    line-height: 120%;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+}
+
+#left-rail #block-views-related-campaigns-block h2{
+    background: url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 2px transparent;
+    font-size: 18px;
+    font-weight: lighter;
+    color: #99bbcc;
+    line-height: 120%;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+}
+
+#right-rail .view-video .views-field-field-promo-headline h3{
+    font-size:16px;
+}
