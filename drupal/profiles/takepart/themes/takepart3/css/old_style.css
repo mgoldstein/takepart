@@ -3618,7 +3618,7 @@ a.take_action_button {
     display: block;
     float: left;
     height: 42px;
-    margin-right: 6px;
+    margin: 8px 6px 8px 0;
     padding-right: 18px; /* sliding doors padding */
 }
 

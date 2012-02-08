@@ -465,10 +465,16 @@ h1.title a:hover {
     font-family:Helvetica, Arial, sans-serif;
     font-size:18px;
     line-height:18px;
-    font-weight:400;
+    font-weight:bold;
     color:#9BC;
 }
 
+.node-type-takepart-page .main-content h2 {
+    font-size:22px;
+    color:#000;
+    line-height: 120%;
+    margin-bottom: 12px;
+}
 /* headers in blocks in main body */
 .main-content .block-boxes h2,.main-content .block-boxes-title-features h2
 {
