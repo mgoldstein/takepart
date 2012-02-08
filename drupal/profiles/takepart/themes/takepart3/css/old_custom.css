@@ -284,7 +284,8 @@ body.node-type-topic-front h2.title a {
 /* display terms */
 
 /* display tag */
-.field-name-field-display-tag{
+
+.field-name-field-display-tag {
     font-family: Helvetica, Arial, sans-serif;
     font-size:18px;
     font-weight: lighter;
@@ -298,18 +299,16 @@ body.node-type-topic-front h2.title a {
     clear:both;
     visibility:hidden;
 }
-.field-name-field-display-tag a{
-    /*
-    background: url("../images/sprite-horizontal.gif") no-repeat scroll 0 -430px #8DC547;
-    border-bottom: 2px solid black;
-    */
+
+.field-name-field-display-tag a {    
     color: #1ca9e7;
     text-decoration: none;
 }
 
-.field-name-field-display-tag a:hover{
-    text-decoration:none;
+.field-name-field-display-tag a:hover {
+    text-decoration: underline;
 }
+
 .block-boxes-current-featured_items .view-dom-id-2 {
     overflow: hidden;
 }
@@ -691,25 +690,23 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 #right-rail #block-boxes-box-e9e8814f h2,
 #right-rail #block-views-video-block h2,
 #right-rail .block-boxes-view-name-related_campaigns h2{
-    background: url("../images/sprite-box-ribbons.gif") no-repeat 0 -180px;
-    border-bottom: 2px solid black;
-    font-size: 15px;
-    font-weight: bold;
-    line-height: 16px;
-    margin-bottom: 15px;
-    padding: 10px 0 6px 35px;
-    text-transform: uppercase;	
-    margin-top: 0;
+    background: url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 2px transparent;
+    font-size: 18px;
+    font-weight: lighter;
+    color: #99bbcc;
+    line-height: 120%;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
 }
+
 #left-rail #block-views-related-campaigns-block h2{
-    background: url("../images/sprite-box-ribbons.gif") no-repeat 0 -360px;
-    border-bottom: 2px solid black;
-    font-size: 15px;
-    font-weight: bold;
-    line-height: 16px;
-    margin-bottom: 15px;
-    padding: 10px 0 6px 35px;
-    text-transform: uppercase;	
+    background: url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 2px transparent;
+    font-size: 18px;
+    font-weight: lighter;
+    color: #99bbcc;
+    line-height: 120%;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
 }
 
 #right-rail .block-boxes-title-take-action h2{
