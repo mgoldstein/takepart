@@ -35,6 +35,13 @@ body
     padding:0;
 }
 
+a {
+    text-decoration:none;
+}
+
+a:hover {
+    text-decoration:underline;
+}
 /*page structure*/
 #page-wrapper
 {
@@ -419,6 +426,10 @@ h1.title a
   text-decoration:none;
 }
 
+h1.title a:hover {
+    color:#1CA9E7;
+}
+
 .main-content h1 {
     font-family:Helvetica, Arial, sans-serif;
     font-size:18px;
@@ -699,11 +710,6 @@ h1.title a
 
 .submitted-wrapper a {
     color:#1CA9E7;
-    text-decoration: none;
-}
-
-.submitted-wrapper a:hover {
-    text-decoration: underline;
 }
 
 .views-field-field-promo-headline {
