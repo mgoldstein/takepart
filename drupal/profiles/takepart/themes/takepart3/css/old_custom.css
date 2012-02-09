@@ -546,13 +546,7 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     text-transform: uppercase;
 }
 
-.block-boxes-current-video .content,
-.block-boxes-view-name-video .content{
-    border-top: 1px dotted #000000;
-    padding-bottom: 20px;
-    padding-top: 10px;
-    border-bottom: 3px solid #666666;
-}
+
 #right-rail .block-boxes-view-name-video .content,
 #right-rail .block-boxes-current-video .content{
     border:none;
