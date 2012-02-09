@@ -428,6 +428,10 @@ ul,ol
 /* ------------------------------------------------------------------------*/
 /* headers in main body */
 
+.main-content .block-boxes-current-video .box-more-link {
+	border: solid 1px red;
+}
+
 .node-type-openpublish-video .main-content h1.title,
 .node-type-openpublish-article .main-content h1.title {
     font-size:42px;
