@@ -41,7 +41,7 @@ function _takepart_calendar_xml($node) {
       if(round((strtotime($itemdate) - time()) / 86400) == 1) {
       
         $xml .= '<action>';
-        $xml .= '<todays_date>'.time().'</todays_date>';
+        $xml .= '<todays_date>'.strtotime($itemdate).'</todays_date>';
         $xml .= '<topic_name>' . $calarray[$i]['subtext'] . '</topic_name>';
         $xml .= '<topic_icon></topic_icon>';
         $xml .= '<action_title>'. _takepart_calendar_xml_fixtring($calarray[$i]['title']) . '</action_title>';
@@ -125,55 +125,7 @@ function _takepart_calendar_array_parse($json) {
   return ($retarray);  
 }
 
-/*
- * 
- *     print "\n--------------------------------------------------------------------\n";
-    print_r($section);
-    print "\n--------------------------------------------------------------------\n";
-$ret = array();
-for ($i=0;$i<count($array);$i++)
-{
-if ($array[$i][$key]==$value)
-  $ret[] = $array[$i];
-}
-*/
 
-/*
-    for($i=0; $i<strlen($section); $i++) {
-      //$r[$i] = $s[$i];
-      
-      
-      for ($i=0;$i<count($array);$i++)
-      {
-      if ($array[$i][$key]==$value)
-        $ret[] = $array[$i];
-      }
-      
-      $test = "headerimg:";
-      if($test == substr($section, $i, strlen($test))) {
-        print "bingo\n";
-        $tknright = substr($section, $i, strlen($section));
-        print $tknright;
-      }
-      
-      
-      
-    }
-*/
-
-
-/*
-<takepart_action>
-<action>
-<todays_date>1327449712</todays_date>
-<topic_name>Environment</topic_name>
-<topic_icon><img src="http://www.takepart.com/sites/default/files/TakePartIcons_Environment.png" width="117" height="29" border="0" alt="Environment" /></topic_icon>
-<action_title>Carpool to Work or Take Public Transportation This Week</action_title>
-<action_page>http://www.takepart.com/actions/carpool-work-least-once-week</action_page>
-<calendar_page>http://www.takepart.com/30ways30days</calendar_page>
-</action>
-</takepart_action>
-*/
 
 function json_decode_b($json)
 {
