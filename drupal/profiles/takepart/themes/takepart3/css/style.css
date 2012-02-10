@@ -725,7 +725,7 @@ h1.title a:hover {
   line-height:18px;
 }
 
-#newsletter-campaign-signup-form label {
+.takepart-newsletter-form label {
     display: none;
 }
 /** Topics **/
