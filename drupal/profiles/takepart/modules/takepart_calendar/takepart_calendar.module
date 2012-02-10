@@ -5,9 +5,9 @@
  */
 function takepart_calendar_menu() {
   $items = array();
-  $items['30ways30days/rss'] = array(
+  $items['calendar/xml'] = array(
       'title' => 'BSD Test Page',
-      'page callback' => '_takepart_calendar_rss',
+      'page callback' => '_takepart_calendar_xml',
       'access callback' => true,
       'type' => MENU_CALLBACK,
   );
@@ -15,29 +15,206 @@ function takepart_calendar_menu() {
 }
 
 
+
+
+
 /*
  * Menu callback for RSS:
  */
-function _takepart_calendar_rss($node) {
-  //Example:
-  $content = node_load('20673');
+function _takepart_calendar_xml($node) {
+    
+  $xml = '<takepart_action>';
+  $uri = $_SERVER["REQUEST_URI"];
+  //$uriparts = explode('/', $uri);
+  $pagelink = $actual_link = 'http://'.$_SERVER['HTTP_HOST'] . "/" . drupal_lookup_path('alias',"node/".$node);
+  
+  if(preg_match("/\/(\d+)$/",$uri,$matches))
+  {
+    $nodeid=$matches[1];
+    $calarray = _takepart_calendar_array($nodeid);
+    
+    for ($i=1;$i<count($calarray);$i++) {
+      
+      $itemdate = $calarray[$i]['start'];
+      $itemdate =  _takepart_calendar_xml_parsedate($itemdate);
+
+      if(round((strtotime($itemdate) - time()) / 86400) == 1) {
+      
+        $xml .= '<action>';
+        $xml .= '<todays_date>'.time().'</todays_date>';
+        $xml .= '<topic_name>' . $calarray[$i]['subtext'] . '</topic_name>';
+        $xml .= '<topic_icon></topic_icon>';
+        $xml .= '<action_title>'. _takepart_calendar_xml_fixtring($calarray[$i]['title']) . '</action_title>';
+        $xml .= '<action_page>'. _takepart_calendar_xml_fixtring($calarray[$i]['url']) . '</action_page>';
+        $xml .= '<calendar_page>' . $pagelink . '</calendar_page>';
+        $xml .= '</action>';
+      
+      }
+        
+    }
+  } 
+  $xml .= '</takepart_action>';
+
+  header ("Content-Type:text/xml");
+  
+  echo $xml;
+  exit();
+  
+}
+
+
+function _takepart_calendar_xml_fixtring($str) {
+  if (preg_match('/"([^"]+)"/', $str, $m)) {
+    return $m[1];
+  } elseif (preg_match('~\'(.*?)\'~', $str, $m)) {
+    return $m[1];    
+  } else {
+    return $str;
+  }
+}
+
+function _takepart_calendar_xml_parsedate($str) {
+  if (preg_match('~\((.*?)\)~', $str, $m)) {
+    $parts = explode(",", $m[1]);
+    return ($parts[1]+1) . '/' . ($parts[2]+1) . '/' . $parts[0];
+  } else {
+    return $str;
+  }
+}
+
+
+function _takepart_calendar_array($nodeid) {
+  $content = node_load($nodeid);
   $json = $content->field_calendar['und'][0]['takepart_calendar'];
+  return _takepart_calendar_array_parse($json);
+}
+
+function _takepart_calendar_array_parse($json) {
+  //sorry, I wrote this at 3am.
   preg_match("/\[([^\]]+)\]/", $json, $match);
   if($match[1]) {
     $json = $match[1];
-    //rem last comma:
-    //@todo, find position:
-    if(substr($json, strlen($json)-2, strlen($json)) ==', ') {
-      $json = substr($json, 0, strlen($json)-2); 
-    } 
-    //@todo, find out why load fails:
-    $jdata = json_decode($json);
-    $xml = new SimpleXMLElement('<rss/>');
-    array_walk_recursive($jdata, array ($xml, 'addChild'));
-    echo $xml->asXML();
   }
-  exit();
+  
+  $retarray = array();
+
+  $tokens = array("title", 
+                  "start",
+                  "end",
+                  "url",
+                  "subtext");
+
+  $matches = array();
+  preg_match_all("/\{([^\}]+)\}/", $json, $matches);
+  
+  foreach ($matches[0] as $section) {
+    
+    $secarray = array();
+    
+    for ($i=0;$i<count($tokens);$i++) {
+        $test = $tokens[$i] . ":";
+        $tknright = substr($section, strpos($section, $test, 0), strlen($section));
+        $tknright = substr($tknright, 0, strpos($tknright, "\r", 0));
+        $secarray[$tokens[$i]] = $tknright;
+    }
+    
+    array_push($retarray, $secarray);
+
+  }
+    
+  return ($retarray);  
 }
+
+/*
+ * 
+ *     print "\n--------------------------------------------------------------------\n";
+    print_r($section);
+    print "\n--------------------------------------------------------------------\n";
+$ret = array();
+for ($i=0;$i<count($array);$i++)
+{
+if ($array[$i][$key]==$value)
+  $ret[] = $array[$i];
+}
+*/
+
+/*
+    for($i=0; $i<strlen($section); $i++) {
+      //$r[$i] = $s[$i];
+      
+      
+      for ($i=0;$i<count($array);$i++)
+      {
+      if ($array[$i][$key]==$value)
+        $ret[] = $array[$i];
+      }
+      
+      $test = "headerimg:";
+      if($test == substr($section, $i, strlen($test))) {
+        print "bingo\n";
+        $tknright = substr($section, $i, strlen($section));
+        print $tknright;
+      }
+      
+      
+      
+    }
+*/
+
+
+/*
+<takepart_action>
+<action>
+<todays_date>1327449712</todays_date>
+<topic_name>Environment</topic_name>
+<topic_icon><img src="http://www.takepart.com/sites/default/files/TakePartIcons_Environment.png" width="117" height="29" border="0" alt="Environment" /></topic_icon>
+<action_title>Carpool to Work or Take Public Transportation This Week</action_title>
+<action_page>http://www.takepart.com/actions/carpool-work-least-once-week</action_page>
+<calendar_page>http://www.takepart.com/30ways30days</calendar_page>
+</action>
+</takepart_action>
+*/
+
+function json_decode_b($json)
+{
+  $comment = false;
+  $out = '$x=';
+  for ($i=0; $i<strlen($json); $i++)
+  {
+    if (!$comment)
+    {
+      if (($json[$i] == '{') || ($json[$i] == '['))
+        $out .= ' array(';
+      else if (($json[$i] == '}') || ($json[$i] == ']'))
+        $out .= ')';
+      else if ($json[$i] == ':')
+        $out .= '=>';
+      else
+        $out .= $json[$i];
+    }
+    else
+      $out .= $json[$i];
+    if ($json[$i] == '"' && $json[($i-1)]!="\\")
+      $comment = !$comment;
+  }
+  print "----------------------" . "\n";
+  print $out . "\n";
+  print "----------------------" . "\n";
+  eval($out . ';');
+  return $x;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /**
