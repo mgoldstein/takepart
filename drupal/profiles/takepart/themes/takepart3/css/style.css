@@ -863,6 +863,13 @@ h1.title a:hover {
 	 font-size: 11px;
 }
 
-#footer-links {
-	
+.view-id-slide_rotator {
+    border-top: 1px dotted #000000;
+    overflow: hidden;
+    padding-top: 15px;
+}
+
+ul.dots li
+{
+  cursor:pointer;
 }

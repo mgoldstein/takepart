@@ -197,6 +197,8 @@ jQuery(document).ready(function () {
     });  
 });
 
+
+
 /* place dots on image rotator */
 jQuery(document).ready(function () {
     var slideshows = Drupal.settings.viewsSlideshowCycle;
@@ -209,17 +211,27 @@ jQuery(document).ready(function () {
             var x = 0;
             jQuery(ss_block_id).children('div').each(function () {
                 var dotdiv = '<ul class="dots">';
-                for (i = 0; i < slidecount; i++) {
+                for (var i = 0; i < slidecount; i++) {
                     if (i == x) {
-                        dotdiv = dotdiv + '<li class="active"></li>';
+                        dotdiv = dotdiv + '<li class="active dotnav'+i+'"></li>';
                     } else {
-                        dotdiv = dotdiv + '<li class="inactive"></li>';
+                        dotdiv = dotdiv + '<li class="inactive dotnav'+i+'"></li>';
                     }
                 }
                 dotdiv = dotdiv + '</ul>';
                 jQuery(this).find(".views-field-field-slide-headline-override div.field-content").append(dotdiv);
                 x++;
             });
+        }
+        if(slidecount > 0) {
+        	for (var i = 0; i < slidecount; i++) {
+            	jQuery('.dotnav'+i).click(function() {
+            		cssclass = (jQuery(this).attr('class'));
+            		slidenum = cssclass.substring(cssclass.indexOf('dotnav')+6, cssclass.length);
+    	    	    Drupal.viewsSlideshow.action({ "action": 'goToSlide', "slideshowID": 'slide_rotator-block', "slideNum": parseInt(slidenum) });
+            		return false;
+    	        });
+        	}
         }
     }
 });
