@@ -867,7 +867,7 @@ h1.title a:hover {
 
 }
 
-#block-menu-block-1 li.leaf {
+#block-menu-block-1 li.dhtml-menu > ul.menu li {
     padding:0;
     margin:0;
 }
