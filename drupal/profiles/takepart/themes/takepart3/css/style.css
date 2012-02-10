@@ -37,6 +37,7 @@ body
 
 a {
     text-decoration:none;
+    color:#1CA9E7;
 }
 
 a:hover {
@@ -396,6 +397,15 @@ ul,ol
 
 /* ===PAGE HEADER=== */
 /* ------------------------------------------------------------------------*/
+
+ul#top-follow li a {
+    display: block;
+    height: 18px;
+    width: 18px;
+    text-indent: -9000px;
+    margin-right: 8px;
+}
+
 .header-mid
 {
     float:left;
@@ -427,6 +437,10 @@ ul,ol
 /* ===MAIN BODY=== */
 /* ------------------------------------------------------------------------*/
 /* headers in main body */
+
+.main-content .block-boxes-current-video .box-more-link {
+	border: solid 1px red;
+}
 
 .node-type-openpublish-video .main-content h1.title,
 .node-type-openpublish-article .main-content h1.title {
@@ -711,6 +725,9 @@ h1.title a:hover {
   line-height:18px;
 }
 
+#newsletter-campaign-signup-form label {
+    display: none;
+}
 /** Topics **/
 .node-topics
 {
@@ -763,3 +780,14 @@ h1.title a:hover {
     background: url(../images/dot.png) no-repeat 0 4px;
     text-decoration: none;
 }
+
+#footer .title a {
+    color: #99BBCC;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0 9px 0 0;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
