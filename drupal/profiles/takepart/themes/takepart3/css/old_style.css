@@ -287,12 +287,7 @@ ul#top-follow li {
 	margin: 0 0 0 0;
 }
 
-ul#top-follow li a {
-	display: block;
-	height: 18px;
-	width: 18px;
-	text-indent: -9000px;
-	}
+
 
 ul#top-follow li.title {
 	margin-top: 8px;
@@ -952,31 +947,14 @@ h3.title a:hover{
   padding: 20px;
  }
  
-#footer .footer-column-wrapper .title {
-  text-indent: -9000px;
-  padding-right: 0;
-  width: 110px;
-}
+
 
 .footer-column-wrapper .title {
   display: block;
   width: 100px;
 }
 
-#our-film-campaigns .title {
-  height: 36px;
-  background: url(../images/footer-titles.gif) no-repeat 0 -5px;
-}
 
-#friends-of-takepart .title {
-  height: 36px;
-  background: url(../images/footer-titles.gif) no-repeat 0 -55px;
-}
-
-#footer-set-links .title {
-  background: url(../images/footer-titles.gif) no-repeat 0 -107px;
-  height: 21px;
-}
 
 .footer-column-wrapper li a {
   color: #000;

@@ -397,6 +397,15 @@ ul,ol
 
 /* ===PAGE HEADER=== */
 /* ------------------------------------------------------------------------*/
+
+ul#top-follow li a {
+    display: block;
+    height: 18px;
+    width: 18px;
+    text-indent: -9000px;
+    margin-right: 8px;
+}
+
 .header-mid
 {
     float:left;
@@ -771,3 +780,14 @@ h1.title a:hover {
     background: url(../images/dot.png) no-repeat 0 4px;
     text-decoration: none;
 }
+
+#footer .title a {
+    color: #99BBCC;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0 9px 0 0;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
