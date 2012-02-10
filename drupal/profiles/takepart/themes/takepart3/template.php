@@ -204,11 +204,11 @@ function _render_tp3_corporate_links_menu() {
 }
 
 function _render_tp3_film_campaign_menu() {
-  return _render_menu_columns("menu-takepart-film-campaigns", 6);
+  return _render_menu_columns("menu-takepart-film-campaigns", 100);
 }
 
 function _render_tp3_friends_takepart_menu() {
-  return _render_menu_columns('menu-takepart-friends', 6);
+  return _render_menu_columns('menu-takepart-friends', 100);
 }
 
 function _render_tp3_topics_takepart_menu() {
@@ -242,6 +242,23 @@ function _render_menu_columns($menu_key, $col_limit) {
   }
 
   $menu_cols = "";
+  /*
+$count=sizeof($columns);
+  for ($i=0; $i < $count; $i++) {
+      if ($i == 0) {
+          $menu_cols .= "<div class='column'><ul>".  implode($columns[$i]);
+       }
+       else if ($i = $col_limit) {
+           $menu_cols .= "</ul></div>\n<div class='column'><ul>" . implode($columns[$i]);
+       }
+       else {
+           implode($columns[$i]);
+       }
+       
+  }
+  $menu_cols .= "</ul></div>\n";
+  */
+  
   foreach ($columns as $col) {
     $menu_cols .= "<div class='column'><ul>".  implode($col) ."</ul></div>\n";
   }

@@ -337,7 +337,7 @@ body.node-type-topic-front h2.title a {
 
 .block-boxes-current-photo_galleries .content{
     padding-top: 10px;
-    border-top: 1px dotted #000000;
+    /* border-top: 1px dotted #000000; */
 }
 .node-type-openpublish-photo-gallery .region-highlighted .field-name-field-display-tag{
     margin-left:-10px;
@@ -427,7 +427,8 @@ body.node-type-topic-front h2.title a {
     margin:0;
 }
 .view-photo-galleries td .views-field-field-thumbnail img{
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border: none;
     display:block;
     margin:0
 }
