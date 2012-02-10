@@ -37,6 +37,7 @@ body
 
 a {
     text-decoration:none;
+    color:#1CA9E7;
 }
 
 a:hover {
@@ -715,6 +716,9 @@ h1.title a:hover {
   line-height:18px;
 }
 
+#newsletter-campaign-signup-form label {
+    display: none;
+}
 /** Topics **/
 .node-topics
 {

@@ -470,11 +470,13 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $sig
   
   // d7 ajax submit handler is bugged.
   $form['submit'] = array(
-    '#type' => 'submit',
+    '#type' => 'image_button',
+    '#src' => '/profiles/takepart/themes/takepart3/images/submit.png',
+    // '#src' => '/takepart/takepart-com/drupal/profiles/takepart/themes/takepart3/images/newsletter_icon.png',
     //'#ajax' => array(
-      //'callback' => 'ajax_newsletter_campaign_signup_form_submit',
-      //'wrapper' => 'result_box',
-      //'prevent' => 'click',
+    //'callback' => 'ajax_newsletter_campaign_signup_form_submit',
+    //'wrapper' => 'result_box',
+    //'prevent' => 'click',
     //),
     //'#submit' => array('ajax_newsletter_campaign_signup_form_submit'),
     '#value' => t('Submit'),
