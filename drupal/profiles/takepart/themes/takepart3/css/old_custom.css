@@ -373,7 +373,7 @@ body.node-type-topic-front h2.title a {
 }
 .submitted-wrapper{
     overflow:hidden;
-    padding-bottom: 10px;
+    padding-bottom:0;
     /*margin-bottom:0px;*/
 }
 .node-type-openpublish-photo-gallery .submitted-wrapper{
@@ -860,7 +860,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 .multipage-campaign #top-search .form-text,
 .multipage-campaign #top-search .form-text:focus,
 .multipage-campaign #top-search .form-text:active {
-    width: 200px;
+    width: 10em;
 }
 
 #top-search .tpform-submit {

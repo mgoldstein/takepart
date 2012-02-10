@@ -1911,7 +1911,7 @@ h2.title a{
   color: #666;
   font-size: 20px;
   line-height: 120%;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
 .node-openpublish-article .field-name-field-article-main-image {
@@ -1922,23 +1922,26 @@ h2.title a{
 }
 
 .embed-action-wrapper {
-  background: #FFEFD8 url(../images/featured-action.gif) left center no-repeat;
+  background: transparent url(../images/take-action-embed.png) left center no-repeat;
+  border:4px solid #FFE789;
   margin: 9px 0 25px 0;
   padding: 8px 10px;
 }
 
 .embed-action-wrapper .embed-action {
-  padding-left: 160px;
+  padding-left: 168px;
   /*width: 280px;*/
 }
 
 .embed-action-wrapper .embed-action a {
   color: #302009;
   font-size: 18px;
-  font-family: Georgia, serif;
   padding: 3px 0 0 0;
 }
-
+.embed-action-wrapper .embed-action a:hover {
+    text-decoration: none;
+    color: #1CA9E7;
+}
 /*
 .block-addthis {
   margin-bottom: 30px;
@@ -1988,11 +1991,10 @@ h2.title a{
 /* Submitted */
 
 .submitted-wrapper {
-  border-bottom: 2px solid black;
-  margin-bottom: 20px;
   padding-bottom: 15px;
-	background:url("../images/sprite.png") no-repeat scroll -383px 0 transparent;
-	padding-left:20px;
+  background:url("../images/sprite.png") no-repeat scroll -383px 0 transparent;
+  padding-left:20px;
+  padding-bottom: 0;
 }
 
 .submitted-wrapper .field {
@@ -3110,6 +3112,9 @@ padding: 0;
 background: none repeat scroll 0 0 transparent;
 }
 
+#slim-header {
+    background-color: #d9e8ef;
+}
 
 #slim-header ul#top-follow li.title {
   margin-top: 8px;
@@ -3177,9 +3182,9 @@ background: none repeat scroll 0 0 transparent;
    width: auto;
 }
 #slim-header.multipage-campaign #top-search {
-  margin: 4px 13px 0 20px;
+  margin: 4px 8px 0 10px;
   float: left;
-  width: 230px;
+  width: 13em;
 }
 
 

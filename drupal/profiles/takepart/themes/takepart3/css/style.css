@@ -35,6 +35,10 @@ body
     padding:0;
 }
 
+body.multipage-campaign {
+    
+}
+
 a {
     text-decoration:none;
     color:#1CA9E7;
@@ -140,10 +144,16 @@ body.two-sidebars #content,body.sidebar-first #content
 
 /* tag formatting */
 /* reset default padding and margin: */
-ul,ol,li,h1,h2,h3,h4,h5,p
+ul,ol,li,h1,h2,h3,h4,h5
 {
     margin:0;
     padding:0;
+}
+
+p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 1em;
 }
 
 h3 {
@@ -425,9 +435,13 @@ ul#top-follow li a {
     line-height:15px;
 }
 
+#slim-header {
+    background-color: #d9e8ef;
+}
+
 #slim-header #join-login-top
 {
-    width:110px;
+    width:160px;
     float:left;
     font-size:11px;
 }
@@ -723,6 +737,7 @@ h1.title a:hover {
     font-size:18px;
     font-weight:400;
     line-height:18px;
+    text-transform: uppercase;
 }
 
 .takepart-newsletter-form label {
