@@ -95,7 +95,7 @@ a:hover {
 #footer
 {
     border-top:5px solid #000;
-    margin-bottom:25px;
+    margin-bottom:0px;
     background:#FFF;
 }
 
@@ -438,9 +438,6 @@ ul#top-follow li a {
 /* ------------------------------------------------------------------------*/
 /* headers in main body */
 
-.main-content .block-boxes-current-video .box-more-link {
-	border: solid 1px red;
-}
 
 .node-type-openpublish-video .main-content h1.title,
 .node-type-openpublish-article .main-content h1.title {
@@ -791,3 +788,81 @@ h1.title a:hover {
     text-transform: uppercase;
 }
 
+.footer-column-wrapper {
+  float:left;
+  border-left: 1px solid #D9E7EE;
+  margin: 20px;
+  padding: 0px 10px;
+  width: 18%
+}
+
+.footer-column-wrapper .column li, ul#global-links li {
+  margin: 5px 0;
+}
+
+#footer ul#bottom-follow li {
+    float: left;
+    list-style-type: none;
+    margin: 0;
+}
+
+#footer ul#bottom-follow li a {
+    display: block;
+    height: 24px;
+    width: 24px;
+    text-indent: -9000px;
+    margin-right: 8px;
+}
+
+#footer ul#bottom-follow li.fb a {
+  background: url(../images/2012-02-08/facebook.jpg) no-repeat 0;
+}
+
+#footer ul#bottom-follow li.twitter a {
+  background: url(../images/2012-02-08/twitter.jpg) no-repeat 0;
+}
+
+#footer ul#bottom-follow li.youtube a {
+  background: url(../images/2012-02-08/youtube.jpg) no-repeat 0;
+}
+
+#footer ul#bottom-follow li.rss a {
+  background: url(../images/2012-02-08/rss.jpg) no-repeat 0;
+}
+
+#footer {
+	 overflow: auto;
+	 
+}
+
+.footer_rule {
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 8px #FFFFFF;
+    display: block;
+    height: 25px;
+}
+
+.main-content .block-boxes h2, .main-content .block-boxes-title-features h2 {
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 8px transparent;
+    border-top: 1px dotted #000000;
+    height: 20px;
+    margin: 8px 0 2px;
+    padding: 8px 0;
+}
+
+
+#footer-about p {
+    clear: both;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 0 0 4px;
+    line-height: 13px;
+    padding-top: 100px;
+}
+
+#footer-legal {
+	 font-size: 11px;
+}
+
+#footer-links {
+	
+}

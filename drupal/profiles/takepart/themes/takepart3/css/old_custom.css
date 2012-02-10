@@ -1118,9 +1118,7 @@ p.search-performance{
 }
 
 /* footer campaigns */
-.footer-column-wrapper {
-    clear: both;
-}
+
 #footer #campaign-links{
     border-bottom: 1px dotted silver;
     margin: 0 0 10px;
@@ -1384,11 +1382,7 @@ ul#global-links {
     overflow:hidden;
     width:auto;
 }
-ul#global-links a{
-    display:block;
-    float:left;
-    color:#1CA9E7;
-}
+
 
 
 

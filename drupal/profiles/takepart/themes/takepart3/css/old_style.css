@@ -936,23 +936,12 @@ h3.title a:hover{
   text-indent: -9000px;
 }
 
-#footer .column {
-  float: left;
-  width: 125px;
-  padding-right: 10px;
-}
-
-.footer-column-wrapper {
-  background: url(../images/dot-line-h.gif) repeat-x left bottom;
-  padding: 20px;
- }
- 
 
 
-.footer-column-wrapper .title {
-  display: block;
-  width: 100px;
-}
+
+
+
+
 
 
 
@@ -965,26 +954,15 @@ h3.title a:hover{
   text-decoration: underline;
 }
 
-.footer-column-wrapper .column li {
-  margin-bottom: 15px;
-}
+
 
 #footer-links li {
   float: left;
 }
 
-ul#global-links{
-  float: right;
-  margin-top: 17px;
-  text-align: right;
-  text-transform: uppercase;
-  width: auto;
-}
 
-ul#global-links li {
-  border-right: 1px solid #b3b3b3;
-  padding: 0 10px;
-}
+
+
 
 ul#global-links li.last {
   border: none;
@@ -1012,19 +990,6 @@ ul#soc-links li#twitter a {
    background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
 }
 
-#footer-about {
-  background: #000;
-  color: #FFF;
-  font-size: 12px;
-  padding: 10px 20px 95px 20px;
-}
-
-#footer-about p {
-  font-size: 12px;
-  margin: 0 0 4px 0;
-}
-
-#footer-about a {color: #fff;}
 
 /****** Boxes ******/
 

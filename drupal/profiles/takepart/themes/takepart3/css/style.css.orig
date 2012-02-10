@@ -1,0 +1,676 @@
+/**
+* Primary style sheet for TakePart.com
+* organized by section (===SECTION===).
+* @todo: seperate files?
+/* COLORS
+    - primaries:
+    - default body text  #000000
+    - #1ca9e7
+    - #ffffff
+    - secondary slates:
+    - #99bbcc
+    - #d9e7ee
+    - #eff3f5
+    - secondary grays:
+    - #666666
+    - #cccccc
+    - #ededed
+    -  accents:
+    - #ffca00
+    - #fdab30
+*/
+/* FONTS
+    - default body text  Arial, "Helvetica Neue", Helvetica, sans-serif
+    - secondary default  "Century Gothic", sans-serif;
+*/
+/* ===GLOBAL=== */
+/* ------------------------------------------------------------------------*/
+body
+{
+  background:#eff3f5 url(../images/bg-page2.jpg) no-repeat top center;
+  color:#333;
+  font-size:12px;
+  font-family:Helvetica, Arial, sans-serif;
+  margin:0;
+  padding:0;
+}
+
+/*page structure*/
+#page-wrapper
+{
+  margin:0 auto;
+  width:1001px;
+}
+
+#header
+{
+  margin:0;
+  position:relative;
+}
+
+#header-wrapper
+{
+  margin:0;
+  position:relative;
+}
+
+#page
+{
+  background:#FFF;
+  clear:both;
+}
+
+.page
+{
+  padding:35px 20px;
+}
+
+.node-type-takepart-campaign #page.page-multipage
+{
+  padding-left:20px;
+}
+
+#page.page-multipage
+{
+/*padding:0px;*/
+  padding-right:0;
+/*padding-top: 0;*/
+  padding-left:0;
+}
+
+.main-content
+{
+  width:619px;
+  float:left;
+}
+
+#footer
+{
+  border-top:5px solid #000;
+  margin-bottom:25px;
+  background:#FFF;
+}
+
+.col-140
+{
+  width:140px;
+}
+
+.col-460
+{
+  width:460px;
+}
+
+body.two-sidebars #left-rail,body.sidebar-first #left-rail
+{
+  display:inline-block;
+  margin-top:30px;
+  width:145px;
+}
+
+body.two-sidebars #content,body.sidebar-first #content
+{
+  margin-right:-619px;
+  width:460px;
+  margin-top:30px;
+  margin-left:160px;
+  display:inline-block;
+  vertical-align:top;
+}
+
+.header-right
+{
+  width:878px;
+  float:left;
+  margin-left:125px;
+}
+
+.main-content
+{
+  width:640px;
+}
+
+/* tag formatting */
+/* reset default padding and margin: */
+ul,ol,li,h1,h2,h3,h4,h5,p
+{
+  margin:0;
+  padding:0;
+}
+
+/* list-item markers should appear inside */
+ul,ol
+{
+  list-style:inside;
+}
+
+/* floating rules */
+.clear
+{
+  clear:both;
+}
+
+.clearfix:after
+{
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+}
+
+.clearfix
+{
+  display:inline-block;
+}
+
+.clearfix
+{
+  display:block;
+}
+
+/* remove link outlines on older versions of firefox */
+:-moz-any-link:focus
+{
+  outline:none;
+}
+
+/*slideshow rotator text block*/
+.views-field-field-slide-headline-override
+{
+  color:#000;
+  margin-top:-105px;
+}
+
+/*slideshow rotator text block href, height 85px*/
+.views-field-field-slide-headline-override .field-content a
+{
+  padding:16px;
+  text-decoration:none;
+  height:69px;
+  background:url(../images/2012-02-08/white_transparency.png) transparent;
+  color:#1CA9e7;
+  line-height:24px;
+  font-size:24px;
+  display:inline-block;
+  width:608px;
+}
+
+/*image rotator dot styles
+@todo: styles may need to be adjusted for IE:*/
+.views-field-field-slide-headline-override .field-content ul.dots
+{
+  margin:-100px 8px;
+  padding:0;
+  position:absolute;
+  right:0;
+}
+
+.views-field-field-slide-headline-override .field-content ul.dots li
+{
+  text-align:left;
+  float:left;
+  list-style:none;
+  padding:3px 8px;
+  margin:5px;
+  height:16px;
+}
+
+.views-field-field-slide-headline-override .field-content ul.dots li.active
+{
+  background:url(../images/2012-02-08/blue_dot.png) no-repeat scroll 0 0 transparent;
+}
+
+.views-field-field-slide-headline-override .field-content ul.dots li.inactive
+{
+  background:url(../images/2012-02-08/white_dot.png) no-repeat scroll 0 0 transparent;
+}
+
+/*image rotator gallery arrow styles*/
+#views_slideshow_controls_text_photo_gallery-block
+{
+  width:640px;
+  left:0;
+  height:68px;
+  top:180px;
+  position:absolute;
+  z-index:10;
+}
+
+#views_slideshow_slide_counter_photo_gallery-block
+{
+  display:none;
+}
+
+#views_slideshow_controls_text_next_photo_gallery-block,#views_slideshow_controls_text_previous_photo_gallery-block
+{
+  cursor:pointer;
+  width:40px;
+  display:block;
+  height:68px;
+}
+
+#views_slideshow_controls_text_next_photo_gallery-block a,#views_slideshow_controls_text_previous_photo_gallery-block a
+{
+  display:none;
+}
+
+#views_slideshow_controls_text_previous_photo_gallery-block
+{
+  background:url(../images/2012-02-08/gallery_left_arrow.png) no-repeat scroll 0 0 transparent;
+  float:left;
+}
+
+#views_slideshow_controls_text_next_photo_gallery-block
+{
+  background:url(../images/2012-02-08/gallery_right_arrow.png) no-repeat scroll 0 0 transparent;
+  float:right;
+}
+
+/*top menu fonts*/
+#block-menu-block-1 li
+{
+  float:left;
+  font-family:NewsGothicBoldCondensed;
+  list-style-type:none;
+  list-style-image:none;
+  letter-spacing:.05em;
+  text-align:left;
+  font-size:24px;
+  text-transform:uppercase;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  letter-spacing:2px;
+}
+
+/*Added for IE 7 */
+#block-menu-block-1 li a
+{
+  font-family:NewsGothicBoldCondensed;
+}
+
+/*spacing between menu items*/
+#block-menu-block-1 li.dhtml-menu
+{
+  margin-left:10px;
+}
+
+/*hide slide rotator, default in view*/
+#widget_pager_bottom_slide_rotator-block
+{
+  display:none;
+}
+
+.block-boxes-title-features .views-field-title a
+{
+  color:#000;
+  line-height:20px;
+  font-weight:bolder;
+  text-decoration:none;
+}
+
+.block-boxes-title-features .views-field-title
+{
+  font-size:15px;
+  margin-top:145px;
+  padding:6px;
+}
+
+.campaign-link
+{
+  background:url(../images/2012-02-08/hash.png) no-repeat scroll 0 0 transparent;
+  clear:both;
+  color:#FFF;
+  display:inline-block;
+  float:left;
+  font-size:25px;
+  font-weight:700;
+  height:19px;
+  line-height:19px;
+  padding:1px 0 0 7px;
+  text-align:center;
+  width:23px;
+}
+
+.main-content p a:hover
+{
+  border-bottom:1px dotted #09C;
+  text-decoration:none;
+}
+
+.main-content p a
+{
+  color:#09C;
+  text-decoration:none;
+}
+
+.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a
+{
+  font-size:14px;
+  margin:6px 22px 7px 10px;
+  padding-right:15px;
+  background:url(../images/white-arrow.png) no-repeat scroll right 4px;
+}
+
+/* ===CONTENT TYPES=== */
+/* ------------------------------------------------------------------------*/
+.section_front_wide .main-content
+{
+  width:auto;
+}
+
+/* ===PAGE HEADER=== */
+/* ------------------------------------------------------------------------*/
+.header-mid
+{
+  float:left;
+  width:450px;
+}
+
+.header-mid .text
+{
+  margin:17px 0;
+  line-height:12px;
+}
+
+#join-login-top a,#slim-header.multipage-campaign #join-login-top #user-nav a
+{
+  color:#000;
+  font-weight:700;
+  line-height:15px;
+}
+
+#slim-header #join-login-top
+{
+  width:110px;
+  float:left;
+  font-size:11px;
+}
+
+/* ===PAGE FOOTER=== */
+/* ------------------------------------------------------------------------*/
+/* ===MAIN BODY=== */
+/* ------------------------------------------------------------------------*/
+/* headers in main body */
+h1.title a
+{
+  color:#000;
+  text-decoration:none;
+}
+
+.main-content h1
+{
+  font-family:Helvetica, Arial, sans-serif;
+  font-size:18px;
+  line-height:18px;
+  font-weight:400;
+  color:#9BC;
+}
+
+.node-type-openpublish-video .main-content h1.title,.node-type-openpublish-article .main-content h1.title
+{
+  font-size:42px;
+  font-family:Helvetica, Arial, sans-serif;
+  line-height:44px;
+  font-weight:700;
+  color:#000;
+  margin-bottom:10px;
+}
+
+.main-content h2
+{
+  font-family:Helvetica, Arial, sans-serif;
+  font-size:18px;
+  line-height:18px;
+  font-weight:400;
+  color:#9BC;
+}
+
+/* headers in blocks in main body */
+.main-content .block-boxes h2,.main-content .block-boxes-title-features h2
+{
+  background-position:0 -143px;
+  border-top:1px dotted #000;
+  height:20px;
+  margin:8px 0 2px;
+  padding:8px 0;
+  background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 8px transparent;
+}
+
+.main-content .block-boxes-title-features h2 span,.main-content .block-boxes h2 span
+{
+  padding:0 9px 0 0;
+  background:none repeat scroll 0 0 #FFF;
+}
+
+.main-content .block-boxes-title-features .content
+{
+  background-color:#eff3f5;
+}
+
+/*featured blocks, img gallery styles */
+.main-content .block-boxes-title-features .views-row
+{
+  display:table;
+  background-color:#fff;
+  margin:5px;
+  vertical-align:top;
+  width:200px;
+  float:left;
+}
+
+.main-content .block-boxes-title-features .view-content
+{
+  padding:5px;
+}
+
+.main-content .block-boxes-title-features .views-field-field-thumbnail-1
+{
+  height:0;
+  overflow:visible;
+  position:relative;
+  width:0;
+}
+
+.main-content .block-boxes-title-features .views-field-field-thumbnail-1 .field-content
+{
+  height:150px;
+  width:200px;
+  overflow:hidden;
+}
+
+.main-content .block-boxes-title-features .views-field-field-thumbnail-1 .field-content img
+{
+  width:200px;
+}
+
+/*hover state*/
+.main-content .block-boxes-title-features .views-row:hover
+{
+  border:3px solid #14ade7;
+  margin:2px;
+}
+
+.main-content .block-boxes-title-features .views-row:hover .views-field-field-thumbnail-1 .field-content img
+{
+  position:relative;
+}
+
+.main-content .block-boxes-title-features .views-row:hover .views-field-title a
+{
+  color:#1ca9e7;
+  text-decoration:none;
+}
+
+.main-content .block-boxes-title-features .views-field-field-display-tag
+{
+  height:0;
+  overflow:visible;
+  position:relative;
+  z-index:100;
+  position:absolute;
+}
+
+.main-content .block-boxes-title-features .views-field-field-display-tag .field-content
+{
+  background-color:#9BC;
+  color:#FFF;
+  display:inline-block;
+  font-size:11px;
+  font-weight:700;
+  line-height:18px;
+  text-transform:uppercase;
+  margin-top:131px;
+}
+
+/* ===RIGHT RAIL=== */
+/* ------------------------------------------------------------------------*/
+#right-rail .block
+{
+  margin-bottom:15px;
+}
+
+#right-rail .field-name-field-blog-view a
+{
+  color:#000;
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+#right-rail
+{
+  width:300px;
+  float:right;
+}
+
+#right-rail .block
+{
+  margin-bottom:15px;
+  border:solid 4px #eff3f5;
+  padding:10px;
+}
+
+/*override block formatting for ads*/
+#right-rail .block-boxes-ga_ad
+{
+  border-width:0;
+  padding:0;
+  padding-top:12px;
+  background:url(../images/2012-02-08/right_title_advertisement.gif) no-repeat scroll 0 0 transparent;
+}
+
+/*fir formating for 'our blogs' headers*/
+#right-rail .block-boxes-title-our-blogs h2
+{
+  background:url(../images/2012-02-08/right_title_our_blogs.gif) no-repeat scroll 7px 0 transparent;
+  display:block;
+  height:61px;
+}
+
+/*float images in blog box*/
+#right-rail .view-blog-posts .views-field
+{
+  float:left;
+}
+
+#right-rail .block-boxes-title-our-blogs div.content h2
+{
+  height:auto;
+  margin:16px 0;
+}
+
+/*limit area to 260px*/
+#right-rail .block-boxes-title-our-blogs div.content
+{
+  padding:0 4px;
+}
+
+/*fahrner image replacement:*/
+#right-rail .block-boxes-title-our-blogs h2 span
+{
+  display:none;
+}
+
+/*override block formatting for content inside 'our blogs'*/
+#right-rail .block-boxes-title-our-blogs .content h2
+{
+  background:url(../images/2012-02-08/45deg_lines.gif) repeat-x scroll 0 0 transparent;
+  line-height:11px;
+}
+
+/*block content header text*/
+#right-rail h2 a
+{
+  font-size:18px;
+  font-family:Helvetica, Arial, sans-serif;
+  color:#9BC;
+  text-decoration:none;
+  font-weight:400;
+  padding:0 9px 0 0;
+}
+
+/*override block formatting for content header text*/
+#right-rail .block-boxes-title-our-blogs .content h2 a
+{
+  background:none #FFF;
+}
+
+#right-rail .block-boxes-title-our-blogs .content h2
+{
+  line-height:11px;
+}
+
+#right-rail .view-blog-posts .views-field-title
+{
+  width:172px;
+}
+
+#right-rail .view-blog-posts .view-content
+{
+  width:256px;
+}
+
+#right-rail .views-field-field-thumbnail
+{
+  clear:left;
+  margin-right:14px;
+}
+
+#right-rail h2
+{
+  color:#9BC;
+  font-family:Helvetica,Arial,sans-serif;
+  font-size:18px;
+  font-weight:400;
+  line-height:18px;
+}
+
+/** Topics **/
+.node-topics
+{
+  border-top:1px dotted #555;
+  border-bottom:1px dotted #555;
+  clear:both;
+  padding:14px 25px 14px 70px;
+  margin-top:14px;
+}
+
+.node-topics a
+{
+  text-decoration:none;
+  font-size:14px;
+  color:#1ca9e7;
+}
+
+.node-topics-label
+{
+  font-family:Helvetica, Arial, sans-serif;
+  font-size:14px;
+  font-weight:700;
+  height:0;
+  left:-55px;
+  overflow:visible;
+  position:relative;
+}
