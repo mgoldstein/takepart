@@ -789,7 +789,7 @@ function takepart_gallery_views_default_views() {
 
   /* Display: Embed gallery */
   $handler = $view->new_display('block', 'Embed gallery', 'block_2');
-  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['title'] = 'Related Gallery';
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['pager'] = FALSE;

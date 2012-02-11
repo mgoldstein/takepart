@@ -1209,31 +1209,30 @@ div.takepart_addthis_rightrail div.addthis_toolbox div.custom_images {
   padding-top: 10px;
   padding-left: 5px;
 }
- 
 
 div.takepart_addthis_rightrail div.custom_images a.addthis_button_digg,
 div.takepart_addthis_leftpanel div.custom_images a.addthis_button_digg
 {
-  background: url(../images/social_media_digg.gif) no-repeat;
+  background: url(../images/icon_digg.png) no-repeat;
 }
 
 div.takepart_addthis_rightrail div.custom_images a.addthis_button_stumbleupon,
 div.takepart_addthis_leftpanel div.custom_images a.addthis_button_stumbleupon
 {
-  background: url(../images/social_media_stumbleupon.gif) no-repeat;
+  background: url(../images/icon_stumble.png) no-repeat;
 }
 
 div.takepart_addthis_rightrail div.custom_images a.addthis_button_email,
 div.takepart_addthis_leftpanel div.custom_images a.addthis_button_email
 {
-  background: url(../images/social_media_email.gif) no-repeat;
+  background: url(../images/icon_email.png) no-repeat;
 }
 
 div.takepart_addthis_rightrail div.custom_images a,
 div.takepart_addthis_leftpanel div.custom_images a {
   display: block;
   float: left;
-  height: 30px;
+  height: 18px;
   padding: 8px 0 0 35px;
   color: #555;
   font-size: 0.8em;
@@ -1292,7 +1291,7 @@ div.takepart_addthis_leftpanel {
 div.takepart_addthis_leftpanel div.addthis_toolbox a {
   width: 100%;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox {
@@ -2951,7 +2950,7 @@ div.messages a:visited {
 	margin:25px 0 7px 0;
 }
 .block-boxes-title-popular-galleries h2 span {
-	background:#fff url(../images/photo-icon.jpg) no-repeat center right;
+	background:transparent url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 0;
 	text-transform:uppercase;
 	padding:2px 35px 2px 0;
 	border-right:5px solid #fff;

@@ -587,9 +587,10 @@ div[class*='block-boxes-delta-video-block'] h2 span{
 
 .drupal-embed .node-openpublish-photo-gallery,
 .drupal-embed .node-openpublish-video{
-    background:#eff3f5 url("../images/bg-take-tv.jpg") repeat-x scroll 0 0;	
-    margin:20px 0 20px 0;
-    padding: 40px 13px 20px;
+    /* background:#eff3f5 url("../images/bg-take-tv.jpg") repeat-x scroll 0 0; */
+    margin:1em 0;
+    padding: 1em;
+    border-top:1px dotted #000;
 }
 .drupal-embed .node-openpublish-photo-gallery .field-name-field-photo-gallery-slideshow{
     margin:10px 0 0 0;
@@ -1270,7 +1271,8 @@ div.takepart_addthis_rightrail .button_container a{
 
 div.takepart_addthis_rightrail div.custom_images a, 
 div.takepart_addthis_leftpanel div.custom_images a {
-    padding-left:32px;
+    padding-left:20px;
+    padding-top:4px;
 }
 
 div.takepart_addthis_rightrail .button_container a.addthis_button_google_plusone{
@@ -1302,10 +1304,10 @@ div.takepart_addthis_footer span#addthis_footer_sharethis {
     margin-left: 5px;
 }
 .takepart_addthis_footer a.addthis_button_facebook span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll 0 -5px transparent;
+    background: url("../images/icon_facebook.png") no-repeat scroll 0 0 transparent;
 } 
 .takepart_addthis_footer a.addthis_button_twitter span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
+    background: url("../images/icon_twitter.png") no-repeat scroll 0 0 transparent;
 }
 div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone.at300b div{
 
@@ -1315,13 +1317,13 @@ div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone.
     margin: 3px 0 0 !important;
 }
 .takepart_addthis_footer a.addthis_button_stumbleupon span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll -55px -5px transparent;
+    background: url("../images/icon_stumble.png") no-repeat scroll 0 0 transparent;
 }
 .takepart_addthis_footer a.addthis_button_digg span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll -83px -5px transparent;
+    background: url("../images/icon_digg.png") no-repeat scroll 0 0 transparent;
 }
 .takepart_addthis_footer a.addthis_button_email span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll -111px -5px transparent;
+    background: url("../images/icon_email.png") no-repeat scroll 0 0 transparent;
 }
 
 /* addthis simple */
