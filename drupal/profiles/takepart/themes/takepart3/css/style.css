@@ -492,7 +492,8 @@ h1.title a:hover {
     font-family:Helvetica, Arial, sans-serif;
     font-size:18px;
     line-height:18px;
-    font-weight:bold;
+    font-weight:normal;
+    text-transform:uppercase;
     color:#9BC;
 }
 
