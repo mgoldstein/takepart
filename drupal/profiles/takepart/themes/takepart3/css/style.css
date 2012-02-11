@@ -815,7 +815,7 @@ h1.title a:hover {
     text-decoration: none;
 }
 
-#footer .title a {
+#footer .title {
     color: #99BBCC;
     font-family: Helvetica,Arial,sans-serif;
     font-size: 16px;
