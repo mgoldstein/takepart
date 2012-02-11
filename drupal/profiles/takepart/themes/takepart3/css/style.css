@@ -754,7 +754,10 @@ h1.title a:hover {
     text-transform: uppercase;
 }
 
-
+#right-rail .block-boxes-title-popular-galleries .content {
+    	border:none;
+	padding:0;
+}
 
 .takepart-newsletter-form label {
     display: none;
