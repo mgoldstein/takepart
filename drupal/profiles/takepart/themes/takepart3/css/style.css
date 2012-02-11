@@ -194,7 +194,7 @@ ul,ol
 .views-field-field-slide-headline-override
 {
     color:#000;
-    margin-top:-105px;
+    margin-top:-88px;
 }
 
 /*slideshow rotator text block href, height 85px*/
@@ -202,7 +202,7 @@ ul,ol
 {
     padding:16px;
     text-decoration:none;
-    height:69px;
+    height:52px;
     background:url(../images/2012-02-08/white_transparency.png) transparent;
     color:#000;
     line-height:24px;
@@ -220,7 +220,7 @@ ul,ol
 @todo: styles may need to be adjusted for IE:*/
 .views-field-field-slide-headline-override .field-content ul.dots
 {
-    margin:-100px 8px;
+    margin:-79px 8px;
     padding:0;
     position:absolute;
     right:0;
