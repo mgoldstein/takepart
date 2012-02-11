@@ -204,11 +204,16 @@ ul,ol
     text-decoration:none;
     height:69px;
     background:url(../images/2012-02-08/white_transparency.png) transparent;
-    color:#1CA9e7;
+    color:#000;
     line-height:24px;
     font-size:24px;
     display:inline-block;
     width:608px;
+}
+
+.views-field-field-slide-headline-override .field-content a:hover
+{
+    color:#1CA9e7;
 }
 
 /*image rotator dot styles
