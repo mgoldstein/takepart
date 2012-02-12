@@ -554,7 +554,7 @@ h1.title a:hover {
 {
     border-top:1px dotted #000;
     height:20px;
-    margin:8px 0 2px;
+    margin:0;
     padding:8px 0;
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
 }
@@ -573,7 +573,8 @@ h1.title a:hover {
     
 }
 
-.main-content .block-boxes-title-features .content
+.main-content .block-boxes-title-features .content,
+.main-content .view-featured-items
 {
     background-color:#eff3f5;
 }
