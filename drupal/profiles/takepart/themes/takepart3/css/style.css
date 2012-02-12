@@ -505,21 +505,21 @@ h1.title a:hover {
 }
 
 .node-type-topic-front .main-content h1.title {
-    font-size:30px;
-    font-family:Helvetica, Arial, sans-serif;
-    line-height:32px;
+    font-size:26px;
+    font-family:NewsGothicBoldCondensed, sans-serif;
+    line-height:26px;
     font-weight:300;
     background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 8px transparent;
     border-top: 1px dotted #000000;
     margin: 8px 0 2px;
     padding: 8px 0;
+    width:100%;
+    text-transform: uppercase;
 }
 
 .node-type-topic-front .main-content h1.title a {
     background: none repeat scroll 0 0 #FFFFFF;
-    font-weight: 300;
     padding: 0 9px 0 0;
-    text-transform: uppercase;
 }
 
 .main-content h1 {
