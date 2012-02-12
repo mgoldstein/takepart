@@ -93,19 +93,21 @@
         if (activeElement == undefined) {
           activeElement = $('.views-slideshow-pager-field-item').first()[0];
         }
-        var activeId = activeElement.id;
-        var focusBlockId = activeId.replace('views_slideshow_pager_field_item_bottom_photo_gallery-', 
-          'views_slideshow_cycle_div_photo_gallery-');
-        
-        var title = $('#'+ focusBlockId +' .views-field-field-image-title h4').text();
-        // console.debug(title);
-        
-        s.linkTrackVars="eVar15,events";
-        s.linkTrackEvents="event2, event15";
-        s.eVar15=s.prop17 +":"+ title;
-        s.prop15=s.eVar15;
-        s.events="event2, event15";
-        s.tl(this.href, 'o', 'Gallery Photo View');
+        if(activeElement) { 
+		var activeId = activeElement.id;
+		var focusBlockId = activeId.replace('views_slideshow_pager_field_item_bottom_photo_gallery-', 
+		  'views_slideshow_cycle_div_photo_gallery-');
+		
+		var title = $('#'+ focusBlockId +' .views-field-field-image-title h4').text();
+		// console.debug(title);
+		
+		s.linkTrackVars="eVar15,events";
+		s.linkTrackEvents="event2, event15";
+		s.eVar15=s.prop17 +":"+ title;
+		s.prop15=s.eVar15;
+		s.events="event2, event15";
+		s.tl(this.href, 'o', 'Gallery Photo View');
+	}
       });
 
     }
@@ -118,18 +120,20 @@
         if (activeElement == undefined) {
           activeElement = $('.views-slideshow-pager-field-item').last()[0];
         }
-        var activeId = activeElement.id;
-        var focusBlockId = activeId.replace('views_slideshow_pager_field_item_bottom_photo_gallery-', 
-          'views_slideshow_cycle_div_photo_gallery-');
-        
-        var title = $('#'+ focusBlockId +' .views-field-field-image-title h4').text();
-        
-        s.linkTrackVars="eVar15,events";
-        s.linkTrackEvents="event2, event15";
-        s.eVar15=s.prop17 +":"+ title;
-        s.prop15=s.eVar15;
-        s.events="event2, event15";
-        s.tl(this.href, 'o', 'Gallery Photo View');        
+	if(activeElement) {
+		var activeId = activeElement.id;
+		var focusBlockId = activeId.replace('views_slideshow_pager_field_item_bottom_photo_gallery-', 
+		  'views_slideshow_cycle_div_photo_gallery-');
+		
+		var title = $('#'+ focusBlockId +' .views-field-field-image-title h4').text();
+		
+		s.linkTrackVars="eVar15,events";
+		s.linkTrackEvents="event2, event15";
+		s.eVar15=s.prop17 +":"+ title;
+		s.prop15=s.eVar15;
+		s.events="event2, event15";
+		s.tl(this.href, 'o', 'Gallery Photo View'); 
+	}       
       });
     }
   }
