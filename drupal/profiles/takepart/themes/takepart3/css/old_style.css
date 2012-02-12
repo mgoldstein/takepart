@@ -2161,8 +2161,8 @@ body.node-type-topic-front .submitted-wrapper{
 
 .block-box-secondary,
 .block-boxes-current-featured_items .view-dom-id-2 {
-    border-top: 1px dotted silver;
-    padding-top: 15px;
+    border-top: none;
+    padding-top: 0;
 }
 
 .block-box-secondary h2{
@@ -2231,7 +2231,7 @@ body.node-type-topic-front .submitted-wrapper{
     color: black;
 }
 
-.block-box-primary .view-featured-items .views-field-php .field-content a {
+.block-boxes-title-primary .view-featured-items .views-field-php .field-content a {
     display:block;
     padding-top:2em;
 }
