@@ -548,17 +548,20 @@ h1.title a:hover {
     margin-bottom: 12px;
 }
 /* headers in blocks in main body */
-.main-content .block-boxes h2,.main-content .block-boxes-title-features h2
+.main-content .node-topic-front h2,
+.main-content .block-boxes h2,
+.main-content .block-boxes-title-features h2
 {
-    background-position:0 -143px;
     border-top:1px dotted #000;
     height:20px;
     margin:8px 0 2px;
     padding:8px 0;
-    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 8px transparent;
+    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
 }
 
-.main-content .block-boxes-title-features h2 span,.main-content .block-boxes h2 span
+.main-content .node-topic-front h2 span,
+.main-content .block-boxes-title-features h2 span,
+.main-content .block-boxes h2 span
 {
     padding:0 9px 0 0;
     background:none repeat scroll 0 0 #FFF;

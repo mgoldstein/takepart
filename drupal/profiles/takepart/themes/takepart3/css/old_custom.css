@@ -241,43 +241,16 @@ ul#top-nav li a:hover{
     font-weight:bold;
 }
 
-
 /* these are ie7 fixes because ie7 doesn't recognize inline-block. */
-
-body.node-type-topic-front h2.title,
-body.node-type-section-front h2.title {
-    background:none;
-    color: white;
-    display: block;
-    font-size: 35px;
-    height: 43px;
-    line-height: 43px;
-    padding-right: 0;
-    padding-left: 0;
-}
 body.node-type-topic-front h1,
 body.page-taxonomy-term h1{
     display:block;
     float:left;
 }
-body.node-type-section-front h2.title a,
-body.node-type-topic-front h2.title a {
-    color: white;
-
-    background: #A0D332 url('../images/sprite-horizontal.gif') right -470px no-repeat;
-    display:block;
-    float:left;
-
-    padding-right: 85px;
-    padding-left: 17px;
-}
-
-
 
 /* display terms */
 
 /* display tag */
-
 .field-name-field-display-tag {
     font-family: Helvetica, Arial, sans-serif;
     font-size:18px;
