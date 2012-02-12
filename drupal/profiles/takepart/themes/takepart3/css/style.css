@@ -464,6 +464,15 @@ ul#top-follow li a {
 /* ------------------------------------------------------------------------*/
 /* headers in main body */
 
+h1.title a
+{
+    color:#000;
+    text-decoration:none;
+}
+
+h1.title a:hover {
+    color:#1CA9E7;
+}
 
 .node-type-openpublish-video .main-content h1.title,
 .node-type-openpublish-article .main-content h1.title {
@@ -492,17 +501,25 @@ ul#top-follow li a {
     line-height:32px;
     font-weight:bold;
     color:#000;
-    margin-bottom:10px; 
+    margin-bottom:10px;
 }
 
-h1.title a
-{
-    color:#000;
-    text-decoration:none;
+.node-type-topic-front .main-content h1.title {
+    font-size:30px;
+    font-family:Helvetica, Arial, sans-serif;
+    line-height:32px;
+    font-weight:300;
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 8px transparent;
+    border-top: 1px dotted #000000;
+    margin: 8px 0 2px;
+    padding: 8px 0;
 }
 
-h1.title a:hover {
-    color:#1CA9E7;
+.node-type-topic-front .main-content h1.title a {
+    background: none repeat scroll 0 0 #FFFFFF;
+    font-weight: 300;
+    padding: 0 9px 0 0;
+    text-transform: uppercase;
 }
 
 .main-content h1 {
