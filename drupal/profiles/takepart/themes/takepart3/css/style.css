@@ -574,13 +574,14 @@ h1.title a:hover {
 }
 
 .main-content .block-boxes-title-features .content,
-.main-content .view-featured-items
+.main-content .block-boxes-current-featured_items
 {
     background-color:#eff3f5;
 }
 
 /*featured blocks, img gallery styles */
-.main-content .block-boxes-title-features .views-row
+.main-content .block-boxes-title-features .views-row,
+.main-content .block-boxes-current-featured_items .views-row
 {
     display:table;
     background-color:#fff;
