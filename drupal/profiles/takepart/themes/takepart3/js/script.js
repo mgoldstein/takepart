@@ -201,13 +201,14 @@ jQuery(document).ready(function () {
 
 /* place dots on image rotator */
 jQuery(document).ready(function () {
+	//this object doesn't work on point:
     var slideshows = Drupal.settings.viewsSlideshowCycle;
     var slidecount = 0;
     if (slideshows) {
         for (slideshow in slideshows) {
             var ss_obj = slideshows[slideshow];
-            var slidecount = ss_obj['totalImages'];
-            var ss_block_id = ss_obj['targetId'];
+            var slidecount = ss_obj['totalImages'] ? ss_obj['totalImages'] : 3;
+            var ss_block_id = ss_obj['targetId'] ? ss_obj['targetId'] : '#views_slideshow_cycle_teaser_section_slide_rotator-block';
             var x = 0;
             jQuery(ss_block_id).children('div').each(function () {
                 var dotdiv = '<ul class="dots">';
@@ -235,6 +236,22 @@ jQuery(document).ready(function () {
         }
     }
 });
+
+
+/* fix the height in the featured galleries */
+jQuery(document).ready(function () {
+    var target = '.main-content .block-boxes-title-features .views-row';
+    var tallestofthemall = 0;
+    jQuery(target).each(function () {
+    	if (jQuery(this).height() > tallestofthemall) {
+    	  tallestofthemall = jQuery(this).height();
+    	}
+    });
+    jQuery(target).each(function () {
+    	jQuery(this).height(tallestofthemall);
+    });  
+});
+
 
 
 /*
