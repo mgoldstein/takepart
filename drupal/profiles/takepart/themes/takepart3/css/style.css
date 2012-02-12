@@ -209,6 +209,7 @@ ul,ol
     font-size:24px;
     display:inline-block;
     width:608px;
+    font-weight:bold;
 }
 
 .views-field-field-slide-headline-override .field-content a:hover
