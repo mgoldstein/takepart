@@ -15,6 +15,8 @@
             <div class="column-title">film campaigns</div>
             <!--/column-->
             <?php print $film_camp_nav ?>
+            
+            <div id="footer-more-campaigns"><a href="/film-campaigns">More Film Campaigns</a></div>
         </div>
     <?php endif; ?>
 
