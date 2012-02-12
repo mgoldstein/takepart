@@ -10,8 +10,6 @@
    * Implement the play hook for controls.
    */
   Drupal.viewsSlideshowControls.play = function (options) {
-	  
-
     // Route the control call to the correct control type.
     // Need to use try catch so we don't have to check to make sure every part
     // of the object is defined.
@@ -111,6 +109,8 @@
   Drupal.viewsSlideshowControlsText.pause = function (options) {
     var pauseText = Drupal.theme.prototype['viewsSlideshowControlsPause'] ? Drupal.theme('viewsSlideshowControlsPause') : '';
     $('#views_slideshow_controls_text_pause_' + options.slideshowID + ' a').text(pauseText);
+    $('#views_slideshow_controls_text_pause_' + options.slideshowID).removeClass('views-slideshow-controls-text-status-play');
+    $('#views_slideshow_controls_text_pause_' + options.slideshowID).addClass('views-slideshow-controls-text-status-pause');
   };
 
   /**
@@ -119,6 +119,8 @@
   Drupal.viewsSlideshowControlsText.play = function (options) {
     var playText = Drupal.theme.prototype['viewsSlideshowControlsPlay'] ? Drupal.theme('viewsSlideshowControlsPlay') : '';
     $('#views_slideshow_controls_text_pause_' + options.slideshowID + ' a').text(playText);
+    $('#views_slideshow_controls_text_pause_' + options.slideshowID).removeClass('views-slideshow-controls-text-status-pause');
+    $('#views_slideshow_controls_text_pause_' + options.slideshowID).addClass('views-slideshow-controls-text-status-play');
   };
 
   // Theme the resume control.
@@ -263,18 +265,18 @@
               Drupal.viewsSlideshow.action({ "action": 'goToSlide', "slideshowID": uniqueID, "slideNum": index });
               Drupal.viewsSlideshow.action({ "action": 'pause', "slideshowID": uniqueID });
             }
-            
+
             var mouseOut = function() {
               Drupal.viewsSlideshow.action({ "action": 'play', "slideshowID": uniqueID });
             }
-          
+
             if (jQuery.fn.hoverIntent) {
               $(pagerItem).hoverIntent(mouseIn, mouseOut);
             }
             else {
               $(pagerItem).hover(mouseIn, mouseOut);
             }
-            
+
           });
         }
         else {
