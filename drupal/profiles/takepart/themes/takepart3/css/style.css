@@ -505,21 +505,22 @@ h1.title a:hover {
 }
 
 .node-type-topic-front .main-content h1.title {
-    font-size:26px;
-    font-family:NewsGothicBoldCondensed, sans-serif;
-    line-height:26px;
-    font-weight:300;
-    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 8px transparent;
+    font-size: 26px;
+    font-family: NewsGothicBoldCondensed, sans-serif;
+    line-height: 26px;
+    font-weight: 300;
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll left center transparent;
     border-top: 1px dotted #000000;
     margin: 8px 0 2px;
     padding: 8px 0;
-    width:100%;
+    width: 100%;
     text-transform: uppercase;
 }
 
 .node-type-topic-front .main-content h1.title a {
     background: none repeat scroll 0 0 #FFFFFF;
     padding: 0 9px 0 0;
+    color: #99BBCC;
 }
 
 .main-content h1 {
@@ -563,6 +564,10 @@ h1.title a:hover {
     background:none repeat scroll 0 0 #FFF;
     text-transform: uppercase;
     font-weight: 300;
+}
+
+.block-boxes-title-primary {
+    
 }
 
 .main-content .block-boxes-title-features .content
