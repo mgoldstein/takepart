@@ -581,10 +581,9 @@ h1.title a:hover {
 
 /*featured blocks, img gallery styles */
 .main-content .block-boxes-title-features .views-row,
-.main-content .block-boxes-title-secondary-features .views-row
-{
+.main-content .block-boxes-title-secondary-features .views-row {
     display:table;
-    background-color:#fff;
+    background-color:#FFF;
     margin:5px;
     vertical-align:top;
     width:200px;
@@ -598,24 +597,25 @@ h1.title a:hover {
 }
 .main-content .block-boxes-title-secondary-features .views-field-field-thumbnail img {
     width:200px;
-    height:160px;
+    height:150px;
     border:none;
 }
 
-.main-content .block-boxes-title-features .view-content,
-.main-content .block-boxes-title-secondary-features .view-content
-{
+.main-content .block-boxes-title-features .view-content {
     padding:5px;
 }
 
-.main-content .block-boxes-title-secondary-features .views-field-php,
-.main-content .block-boxes-title-secondary-features .views-field-field-promo-text
-{
+.main-content .block-boxes-title-secondary-features .views-field-php {
+    font-size: 16px
     padding:0 5px;
+}
+.main-content .block-boxes-title-secondary-features .views-field-field-promo-text {
+    padding:0 5px;
+    font-size: 13px;
+    line-height: 15px;
 }
 .main-content .block-boxes-title-secondary-features .views-field-php {
     margin:10px 0 0 0;
-    
 }
 .main-content .block-boxes-title-features .views-field-field-thumbnail-1
 {
