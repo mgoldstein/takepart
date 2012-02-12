@@ -7,7 +7,7 @@
 }
 
 .jcarousel-skin-takepart .jcarousel-container-horizontal {
-    width: 570px;
+    width: 574px;
     padding: 20px 40px;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .jcarousel-skin-takepart .jcarousel-clip-horizontal {
-    width:  245px;
+    width:  567px;
     height: 75px;
 }
 
@@ -62,8 +62,8 @@
     position: absolute;
     top: 43px;
     right: 5px;
-    width: 32px;
-    height: 32px;
+    width: 14px;
+    height: 25px;
     cursor: pointer;
     background: transparent url(right_arrow.png) no-repeat 0 0;
 }
@@ -79,8 +79,8 @@
     position: absolute;
     top: 43px;
     left: 5px;
-    width: 32px;
-    height: 32px;
+    width: 14px;
+    height: 25px;
     cursor: pointer;
     background: transparent url(left_arrow.png) no-repeat 0 0;
 }
