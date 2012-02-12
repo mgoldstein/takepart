@@ -2157,6 +2157,7 @@ body.node-type-topic-front .submitted-wrapper{
 .block-boxes-current-featured_items .view-dom-id-1 .views-field-field-promo-text {
     font-size: 14px;
     line-height: 20px;
+    color:#D9E7EE;
 }
 
 .block-box-secondary,
@@ -2234,6 +2235,7 @@ body.node-type-topic-front .submitted-wrapper{
 .block-boxes-title-primary .view-featured-items .views-field-php .field-content a {
     display:block;
     padding-top:2em;
+    color:#d9e7ee;
 }
 
 /***** Taxonomy Search List *****/
