@@ -43,16 +43,13 @@ body.node-type-takepart-campaign #right-rail {
 
 
 body.node-type-openpublish-article #content,
-body.node-type-openpublish-article #left-rail{
+body.node-type-openpublish-article #left-rail {
     margin-top:20px;
 } 
 
 .contextual-links-region{
     margin-bottom:0;
 }
-
-
-
 
 /* base styles */
 @font-face {
@@ -66,7 +63,6 @@ body.node-type-openpublish-article #left-rail{
     font-style: normal;
 
 }
-
 
 h1{
     margin:0 0 20px 0;
@@ -106,7 +102,7 @@ hr {
     line-height:24px;
 }
 #content q{
-    margin:0 0 60px 0;
+   /* margin:0 0 60px 0; */
 }
 
 
@@ -568,7 +564,7 @@ div[class*='block-boxes-delta-video-block'] h2 span{
 }
 .view-video .views-field-field-thumbnail img{
     display:block;
-    border: 1px solid black;
+    border: none;
     height: 128px;
     width: 194px;
 }
@@ -610,7 +606,7 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     float:left;
 }
 .drupal-embed .node-openpublish-photo-gallery .views-row img{
-    border:solid 1px black;
+    border:none;
     display:block;
 }	
 .drupal-embed .node-openpublish-photo-gallery .views-field-view-node{
@@ -699,14 +695,6 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     text-transform: uppercase;
 }
 
-#right-rail .block-boxes-title-take-action h2{
-    background-position:0 -450px;
-}
-
-#right-rail .block-boxes-title-related-campaigns h2{
-    background-position:0 -360px; 
-}
-
 #right-rail .view-video .views-row{
     float: none;
     margin: 0 0 20px 0;
@@ -714,14 +702,14 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     width: 100%;
 }
 #right-rail .view-video .views-field-field-thumbnail{
-    width:	127px;
+    width: 127px;
     height:102px;
     float:left;
     margin:0 15px 0 0;
 }
 #right-rail .view-video .views-field-field-thumbnail img{
-    width:	125px;
-    height:100px;
+    width: 125px;
+    height: 100px;
 }
 #right-rail .view-video .views-field-field-promo-headline{
     margin-top:0;
@@ -1054,7 +1042,7 @@ p.search-performance{
     float:left;
 }
 #block-views-groups-block .view-groups img{
-    border:solid 1px black;
+    border:none;
 }
 #block-views-groups-block .view-groups .views-field-title{
     display:block;
@@ -1086,7 +1074,7 @@ p.search-performance{
     margin:0;
 }
 .node-profile .author-bio-photo img{
-    border:solid 1px black;
+    border:none;
 }
 .view-author-contributions{
     margin-top:15px;	
@@ -1107,7 +1095,7 @@ p.search-performance{
 }
 .view-author-contributions .views-field-field-thumbnail img{
     display:block;
-    border:solid 1px black;
+    border:none;
 }
 .view-author-contributions .views-field-field-promo-text {
     margin-top: 10px;

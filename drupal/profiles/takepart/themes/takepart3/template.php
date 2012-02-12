@@ -7,7 +7,6 @@
  * these are the normal results from a field.
  */
 function takepart3_dolinks($links_field) {
-  
   if(empty($links_field)) 
     return;
   
@@ -16,11 +15,8 @@ function takepart3_dolinks($links_field) {
   foreach($links_field as $link) {
     $links[] = l($link['title'], $link['url'], $opts);
   }
-  
   return implode("<span class='delimiter'>|</span>", $links);
-  
 }
-
 
 function takepart3_preprocess_html(&$vars){
   if (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage')){
@@ -186,8 +182,8 @@ function _render_tp3_hottopics_menu() {
   return "<ul class='clearfix'>" . implode($links) ."</ul>";
 }
 
-function _render_tp3_corporate_links_menu() {
-  $menu_data = menu_tree_page_data("menu-takepart-links");
+function _render_footer_links_menu($menu_key) {
+  $menu_data = _tp_menu_tree_data($menu_key);
 
   $links = array();
   
@@ -203,12 +199,15 @@ function _render_tp3_corporate_links_menu() {
   return "<ul class='clearfix' id='global-links'>" . implode($links) ."</ul>";
 }
 
+function _render_tp3_corporate_links_menu() {
+  return _render_footer_links_menu("menu-takepart-links");
+}
 function _render_tp3_film_campaign_menu() {
-  return _render_menu_columns("menu-takepart-film-campaigns", 100);
+  return _render_footer_links_menu("menu-takepart-film-campaigns");
 }
 
 function _render_tp3_friends_takepart_menu() {
-  return _render_menu_columns('menu-takepart-friends', 100);
+  return _render_footer_links_menu('menu-takepart-friends');
 }
 
 function _render_tp3_topics_takepart_menu() {
@@ -226,38 +225,24 @@ function _render_menu_columns($menu_key, $col_limit) {
   $remainder_row = $total_items % $col_limit;
    
   $column_idx = 0;
+
+  $half = count($menu_data)/2;
   
-  foreach($menu_data as $menu_item) {
+    foreach($menu_data as $menu_item) {
     $opts = array('attributes' => _default_menu_options($menu_item));
-    $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-    
-    $depth = _tp_col_depth($total_items, $col_limit, $remainder_row); 
+    $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts); 
     
     $columns[$column_idx][] = "<li>". $link ."</li>";
     
-    if (count($columns[$column_idx]) == $depth ) {
+    if (count($columns[$column_idx]) > $half) {
       $column_idx++;
-      $remainder_row = $remainder_row > 0 ? $remainder_row -1 : 0;
     }
   }
-
+  
   $menu_cols = "";
-  /*
-$count=sizeof($columns);
-  for ($i=0; $i < $count; $i++) {
-      if ($i == 0) {
-          $menu_cols .= "<div class='column'><ul>".  implode($columns[$i]);
-       }
-       else if ($i = $col_limit) {
-           $menu_cols .= "</ul></div>\n<div class='column'><ul>" . implode($columns[$i]);
-       }
-       else {
-           implode($columns[$i]);
-       }
-       
-  }
-  $menu_cols .= "</ul></div>\n";
-  */
+  
+  // add links to column 0 up to max #, then add the rest to second column
+
   
   foreach ($columns as $col) {
     $menu_cols .= "<div class='column'><ul>".  implode($col) ."</ul></div>\n";
