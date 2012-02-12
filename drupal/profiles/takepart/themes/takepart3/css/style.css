@@ -591,12 +591,32 @@ h1.title a:hover {
     float:left;
 }
 
+.main-content .block-boxes-title-secondary-features .views-row {
+    height:350px;
+    overflow: hidden;
+    margin:10px 5px;
+}
+.main-content .block-boxes-title-secondary-features .views-field-field-thumbnail img {
+    width:200px;
+    height:160px;
+    border:none;
+}
+
 .main-content .block-boxes-title-features .view-content,
 .main-content .block-boxes-title-secondary-features .view-content
 {
     padding:5px;
 }
 
+.main-content .block-boxes-title-secondary-features .views-field-php,
+.main-content .block-boxes-title-secondary-features .views-field-field-promo-text
+{
+    padding:0 5px;
+}
+.main-content .block-boxes-title-secondary-features .views-field-php {
+    margin:10px 0 0 0;
+    
+}
 .main-content .block-boxes-title-features .views-field-field-thumbnail-1
 {
     height:0;
