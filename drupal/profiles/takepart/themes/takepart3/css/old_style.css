@@ -2237,23 +2237,23 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 /***** Taxonomy Search List *****/
-
 .block-boxes-current-taxonomy_search_list h2 {
-    border-bottom: 3px solid black;
+    border-bottom: 1px solid #d9e7ee;
     font-size: 20px;
     margin-bottom: 18px;
     padding-bottom: 5px;
 }
 
 .view-taxonomy-search-list .views-field-type {
-    color: #8dc547;
+    color: #000;
     font-size: 12px;
     text-transform: uppercase;
+    font-weight: 300;
 }
 
 .view-taxonomy-search-list .views-field-url a{
     color: black;
-    display: inline-block;.
+    display: inline-block;
     font-size: 18px;
     font-weight: bold;
     padding-bottom: 5px;
@@ -3235,7 +3235,7 @@ div.messages a:visited {
 .item-list ul.pager .pager-first,
 .item-list ul.pager .pager-previous {
     padding: 2px 5px 1px;
-    color: #999;
+    color: #1ca9e7;
     display: inline-block;
     text-transform: capitalize;
 }
@@ -3245,7 +3245,7 @@ div.messages a:visited {
 .item-list ul.pager .pager-last a,
 .item-list ul.pager .pager-first a,
 .item-list ul.pager .pager-previous a{
-    color: #999;
+    color: #1ca9e7;
 }
 
 .item-list ul.pager .pager-current {

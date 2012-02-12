@@ -169,7 +169,6 @@ ul#top-nav li a:hover{
 
 
 /***** Taxonomy Search List *****/
-
 .view-taxonomy-search-list .views-field-url a{
     font-size:18px;
     line-height:22px;
@@ -177,18 +176,16 @@ ul#top-nav li a:hover{
 }
 
 .view-taxonomy-search-list .views-field-field-promo-text{
-    font-size: 12px !important;
+    font-size: 14px !important;
     line-height:18px !important;
     margin:0;
 }
 
-
 .view-taxonomy-search-list .views-row{
-    border-bottom: 1px dotted silver;
-    margin: 0 0 20px;
-    padding: 0 0 15px;	
+    border-bottom: 1px solid #D9E7EE;
+    margin: 0 0 8px;
+    padding: 0 0 6px;	
 }
-
 
 /* node list page */
 .node-takepart-list .field-name-body{
@@ -1217,7 +1214,7 @@ p.search-performance{
 .item-list ul.pager .pager-ellipsis,
 .item-list ul.pager .pager-first, 
 .item-list ul.pager .pager-previous {
-    color: #999999;
+    color: #1ca9e7;
     display: block;
     padding: 2px 5px 1px;
     text-transform: capitalize;
@@ -1225,9 +1222,9 @@ p.search-performance{
     margin:0 !important;
 }
 .item-list ul.pager .pager-current{
-    color:#fff;
+    color:#000;
+    background-color: transparent;
 }
-
 
 /* social media stuff */
 div.takepart_addthis_leftpanel div.custom_images a{
