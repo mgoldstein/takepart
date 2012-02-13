@@ -127,12 +127,12 @@ body.two-sidebars #left-rail,body.sidebar-first #left-rail
 
 body.two-sidebars #content, body.sidebar-first #content
 {
-    margin-right:-619px;
-    width:480px;
-    margin-top:30px;
-    margin-left:140px;
-    display:inline-block;
-    vertical-align:top;
+    display: inline-block;
+    margin-left: 155px;
+    margin-right: -621px;
+    margin-top: 30px;
+    vertical-align: top;
+    width: 467px;
 }
 
 .header-right
