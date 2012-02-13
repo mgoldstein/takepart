@@ -15,7 +15,7 @@
     $taicon = '<img src="/profiles/takepart/themes/takepart3/images/take-action-embed.png" />';
     print l($taicon, "node/{$node->nid}", array('html' => TRUE) );
     print l($node->title, "node/{$node->nid}");  
-    
     ?>
+
   </div>
 </div>

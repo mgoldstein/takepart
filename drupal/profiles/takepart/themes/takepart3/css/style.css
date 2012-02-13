@@ -606,7 +606,7 @@ h1.title a:hover {
 }
 
 .main-content .block-boxes-title-secondary-features .views-field-php {
-    font-size: 16px
+    font-size: 16px;
     padding:0 5px;
 }
 .main-content .block-boxes-title-secondary-features .views-field-field-promo-text {
