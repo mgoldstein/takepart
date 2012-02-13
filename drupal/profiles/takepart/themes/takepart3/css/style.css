@@ -997,6 +997,12 @@ h1.title a:hover {
 	border-bottom: medium none;
 }
 
+.node-type-takepart-campaign .field-name-field-tp-campaign-subheadline {
+    padding-bottom: 0px;
+}
+
+
+
 .node-type-takepart-campaign .main-content .field-items p {
 	margin: 0px;
 }
