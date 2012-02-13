@@ -2232,12 +2232,22 @@ body.node-type-topic-front .submitted-wrapper{
     color: black;
 }
 
+.block-boxes-title-primary-features .view-featured-items .views-field-php .field-content a,
 .block-boxes-title-primary .view-featured-items .views-field-php .field-content a {
     display:block;
     padding-top:1em;
     color:#d9e7ee;
 }
 
+.block-boxes-title-secondary-headlines a {
+    color:#000;
+    padding-top:0;
+}
+
+.block-boxes-title-secondary-headlines a:hover {
+    color: #1ca9e7;
+    text-decoration: underline;
+}
 /***** Taxonomy Search List *****/
 .block-boxes-current-taxonomy_search_list h2 {
     border-bottom: 1px solid #d9e7ee;

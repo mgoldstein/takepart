@@ -553,6 +553,7 @@ h1.title a:hover {
     line-height: 120%;
     margin-bottom: 12px;
 }
+
 /* headers in blocks in main body */
 #block-takepart-custom-page-title-h1 h1.title,
 .main-content .node-topic-front h2,
@@ -567,6 +568,9 @@ h1.title a:hover {
     width:100%;
 }
 
+#block-takepart-custom-page-title-h1 h1.title {
+    margin-bottom: 8px;
+}
 #block-takepart-custom-page-title-h1 span,
 .main-content .node-topic-front h2 span,
 .main-content .block-boxes-title-features h2 span,
@@ -986,14 +990,14 @@ h1.title a:hover {
     background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll left center transparent;
     border-top: 1px dotted #000000;
     margin: 8px 0;
-    padding: 12px 0 6px 0;
+    padding: 0;
 }
 
 .node-type-takepart-campaign .main-content .block-boxes h2 {
     background: none;
     border-top: none;
     text-transform: inherit;
-    margin 0px;
+    margin: 0;
     height: 14px;
 }
 
