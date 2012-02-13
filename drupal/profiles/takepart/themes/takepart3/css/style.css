@@ -35,6 +35,11 @@ body
     padding:0;
 }
 
+ul.dots li
+{
+  cursor:pointer;
+}
+
 body.multipage-campaign {
     
 }
@@ -980,6 +985,21 @@ h1.title a:hover {
     padding: 12px 0 6px 0;
 }
 
+.node-type-takepart-campaign .main-content .block-boxes h2 {
+    background: none;
+    border-top: none;
+    text-transform: inherit;
+    margin 0px;
+    height: 14px;
+}
+
+.node-type-takepart-campaign .main-content .field-name-field-tp-campaign-subheadline {
+	border-bottom: medium none;
+}
+
+.node-type-takepart-campaign .main-content .field-items p {
+	margin: 0px;
+}
 
 #footer-about p {
     clear: both;
@@ -1024,7 +1044,8 @@ h1.title a:hover {
     padding-top: 15px;
 }
 
-ul.dots li
-{
-  cursor:pointer;
+/* ===LEFT RAIL=== */
+/* ------------------------------------------------------------------------*/
+.node-type-takepart-campaign #left-rail {
+    padding-left: 20px;
 }
