@@ -35,6 +35,15 @@
     margin:0;
 }
 
+#right-rail .block-newsletter-campaign h2 {
+  color:#000;
+  font-family:NewsGothicBoldCondensed;
+  font-size:18px;
+  font-weight:400;
+  line-height:18px;
+  background: transparent url(/profiles/takepart/themes/takepart3/images/newsletter_icon.png) no-repeat top right;
+}
+
 .block-newsletter-campaign h2 {
   color:#000;
   font-family:NewsGothicBoldCondensed;

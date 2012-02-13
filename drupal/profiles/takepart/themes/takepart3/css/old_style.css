@@ -2234,7 +2234,7 @@ body.node-type-topic-front .submitted-wrapper{
 
 .block-boxes-title-primary .view-featured-items .views-field-php .field-content a {
     display:block;
-    padding-top:2em;
+    padding-top:1em;
     color:#d9e7ee;
 }
 
@@ -2966,7 +2966,7 @@ div.messages a:visited {
     margin:25px 0 7px 0;
 }
 .block-boxes-title-popular-galleries h2 span {
-    background:transparent url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 0;
+    background:transparent url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 0;
     text-transform:uppercase;
     padding:2px 35px 2px 0;
     border-right:5px solid #fff;
