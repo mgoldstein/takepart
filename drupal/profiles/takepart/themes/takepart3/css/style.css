@@ -35,6 +35,11 @@ body
     padding:0;
 }
 
+ul.dots li
+{
+  cursor:pointer;
+}
+
 body.multipage-campaign {
     
 }
@@ -122,12 +127,12 @@ body.two-sidebars #left-rail,body.sidebar-first #left-rail
 
 body.two-sidebars #content, body.sidebar-first #content
 {
-    margin-right:-619px;
-    width:480px;
-    margin-top:30px;
-    margin-left:140px;
-    display:inline-block;
-    vertical-align:top;
+    display: inline-block;
+    margin-left: 155px;
+    margin-right: -621px;
+    margin-top: 30px;
+    vertical-align: top;
+    width: 467px;
 }
 
 .header-right
@@ -678,6 +683,16 @@ h1.title a:hover {
 /* ===RIGHT RAIL=== */
 /* ------------------------------------------------------------------------*/
 
+#right-rail  .field-name-field-tp-campaign-sponsors {
+    border-top: 3px solid black;
+}
+
+#right-rail  .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors {
+    border-top:none;
+    padding:0 15px 15px;
+    overflow:hidden;
+}
+
 #right-rail .field-name-field-blog-view a
 {
     color:#000;
@@ -972,6 +987,27 @@ h1.title a:hover {
     padding: 12px 0 6px 0;
 }
 
+.node-type-takepart-campaign .main-content .block-boxes h2 {
+    background: none;
+    border-top: none;
+    text-transform: inherit;
+    margin 0px;
+    height: 14px;
+}
+
+.node-type-takepart-campaign .main-content .field-name-field-tp-campaign-subheadline {
+	border-bottom: medium none;
+}
+
+.node-type-takepart-campaign .field-name-field-tp-campaign-subheadline {
+    padding-bottom: 0px;
+}
+
+
+
+.node-type-takepart-campaign .main-content .field-items p {
+	margin: 0px;
+}
 
 #footer-about p {
     clear: both;
@@ -1016,7 +1052,8 @@ h1.title a:hover {
     padding-top: 15px;
 }
 
-ul.dots li
-{
-  cursor:pointer;
+/* ===LEFT RAIL=== */
+/* ------------------------------------------------------------------------*/
+.node-type-takepart-campaign #left-rail {
+    padding-left: 20px;
 }

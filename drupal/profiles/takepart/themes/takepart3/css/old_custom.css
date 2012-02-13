@@ -1399,11 +1399,7 @@ ul#global-links {
 }
 
 
-.block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors {
-    border-top:none;
-    padding:0 15px 15px;
-    overflow:hidden;
-}
+
 .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors .view-groups .views-field-field-group-logo,
 .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors .view-groups .views-field-title{
     display:block;
