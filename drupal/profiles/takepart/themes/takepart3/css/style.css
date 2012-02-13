@@ -408,12 +408,30 @@ ul,ol
     text-decoration:none;
 }
 
-.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a
-{
-    font-size:14px;
-    margin:6px 22px 7px 10px;
-    padding-right:15px;
-    background:url(../images/white-arrow.png) no-repeat scroll right 4px;
+
+
+
+
+.field-name-field-tp-campaign-cover-link .field-item {
+    background: url("/profiles/takepart/themes/takepart3/images/2012-02-08/takeparticons_films.png") no-repeat scroll left top transparent;
+    height: 40px;
+    padding-top: 3px;
+    width: 145px;
+}
+
+.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a {
+    font-size: 13px;
+    margin: 0 0 0 40px;
+    padding-right: 15px;
+}
+
+.field-name-field-tp-campaign-cover-link .field-item a {
+    background: url("/profiles/takepart/themes/takepart3/images/white-arrow.png") no-repeat scroll right 2px transparent;
+    color: #1CA9E7;
+    display: block;
+    font-weight: bolder;
+    margin: 14px 24px;
+    padding-right: 15px;
 }
 
 /* ===CONTENT TYPES=== */
