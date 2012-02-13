@@ -44,8 +44,8 @@ function takepart_addthis_preprocess(&$variables, $hook) {
   drupal_add_js('http://s7.addthis.com/js/250/addthis_widget.js#pubid=' . $ADD_THIS_PUB_ID, 'external');
 
   $takepart_blogpost_custom_btns =<<<EOS
-<a class="addthis_button_digg">Digg this</a>
 <a class="addthis_button_stumbleupon">Stumble this</a>
+<a class="addthis_button_digg">Digg this</a>
 <a class="addthis_button_email">E-mail this</a>
 EOS;
 /* To add a print friendly button, you need to the following line to the $takepart_blogpost_custom_btns:

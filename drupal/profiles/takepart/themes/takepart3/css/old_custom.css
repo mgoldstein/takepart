@@ -43,16 +43,13 @@ body.node-type-takepart-campaign #right-rail {
 
 
 body.node-type-openpublish-article #content,
-body.node-type-openpublish-article #left-rail{
+body.node-type-openpublish-article #left-rail {
     margin-top:20px;
 } 
 
 .contextual-links-region{
     margin-bottom:0;
 }
-
-
-
 
 /* base styles */
 @font-face {
@@ -66,7 +63,6 @@ body.node-type-openpublish-article #left-rail{
     font-style: normal;
 
 }
-
 
 h1{
     margin:0 0 20px 0;
@@ -106,7 +102,7 @@ hr {
     line-height:24px;
 }
 #content q{
-    margin:0 0 60px 0;
+   /* margin:0 0 60px 0; */
 }
 
 
@@ -173,7 +169,6 @@ ul#top-nav li a:hover{
 
 
 /***** Taxonomy Search List *****/
-
 .view-taxonomy-search-list .views-field-url a{
     font-size:18px;
     line-height:22px;
@@ -181,18 +176,16 @@ ul#top-nav li a:hover{
 }
 
 .view-taxonomy-search-list .views-field-field-promo-text{
-    font-size: 12px !important;
+    font-size: 14px !important;
     line-height:18px !important;
     margin:0;
 }
 
-
 .view-taxonomy-search-list .views-row{
-    border-bottom: 1px dotted silver;
-    margin: 0 0 20px;
-    padding: 0 0 15px;	
+    border-bottom: 1px solid #D9E7EE;
+    margin: 0 0 8px;
+    padding: 0 0 6px;	
 }
-
 
 /* node list page */
 .node-takepart-list .field-name-body{
@@ -248,43 +241,16 @@ ul#top-nav li a:hover{
     font-weight:bold;
 }
 
-
 /* these are ie7 fixes because ie7 doesn't recognize inline-block. */
-
-body.node-type-topic-front h2.title,
-body.node-type-section-front h2.title {
-    background:none;
-    color: white;
-    display: block;
-    font-size: 35px;
-    height: 43px;
-    line-height: 43px;
-    padding-right: 0;
-    padding-left: 0;
-}
 body.node-type-topic-front h1,
 body.page-taxonomy-term h1{
     display:block;
     float:left;
 }
-body.node-type-section-front h2.title a,
-body.node-type-topic-front h2.title a {
-    color: white;
-
-    background: #A0D332 url('../images/sprite-horizontal.gif') right -470px no-repeat;
-    display:block;
-    float:left;
-
-    padding-right: 85px;
-    padding-left: 17px;
-}
-
-
 
 /* display terms */
 
 /* display tag */
-
 .field-name-field-display-tag {
     font-family: Helvetica, Arial, sans-serif;
     font-size:18px;
@@ -322,7 +288,7 @@ body.node-type-topic-front h2.title a {
 }
 .block-box-secondary .view-featured-items .views-field-field-thumbnail img, 
 .block-boxes-current-featured_items .view-dom-id-2 .views-field-field-thumbnail img {
-    border: 1px solid black;
+    border: none;
     height: 160px;
     width: 194px;
 }
@@ -337,7 +303,7 @@ body.node-type-topic-front h2.title a {
 
 .block-boxes-current-photo_galleries .content{
     padding-top: 10px;
-    border-top: 1px dotted #000000;
+    /* border-top: 1px dotted #000000; */
 }
 .node-type-openpublish-photo-gallery .region-highlighted .field-name-field-display-tag{
     margin-left:-10px;
@@ -373,7 +339,7 @@ body.node-type-topic-front h2.title a {
 }
 .submitted-wrapper{
     overflow:hidden;
-    padding-bottom: 10px;
+    padding-bottom:0;
     /*margin-bottom:0px;*/
 }
 .node-type-openpublish-photo-gallery .submitted-wrapper{
@@ -427,7 +393,8 @@ body.node-type-topic-front h2.title a {
     margin:0;
 }
 .view-photo-galleries td .views-field-field-thumbnail img{
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border: none;
     display:block;
     margin:0
 }
@@ -446,17 +413,11 @@ body.node-type-topic-front h2.title a {
     text-decoration:none;
 }
 
-
-
-
 /* Video Page */
-
 #block-boxes-box-907abe5f .views-row{
     width:100%;
     float:none;
 }
-
-
 
 .block-boxes-title-must-see-video-of-the-day .views-field-view-node-1{
     position:relative;
@@ -567,7 +528,7 @@ div[class*='block-boxes-delta-video-block'] h2 span{
 }
 .view-video .views-field-field-thumbnail img{
     display:block;
-    border: 1px solid black;
+    border: none;
     height: 128px;
     width: 194px;
 }
@@ -586,9 +547,10 @@ div[class*='block-boxes-delta-video-block'] h2 span{
 
 .drupal-embed .node-openpublish-photo-gallery,
 .drupal-embed .node-openpublish-video{
-    background:#eff3f5 url("../images/bg-take-tv.jpg") repeat-x scroll 0 0;	
-    margin:20px 0 20px 0;
-    padding: 40px 13px 20px;
+    /* background:#eff3f5 url("../images/bg-take-tv.jpg") repeat-x scroll 0 0; */
+    margin:1em 0;
+    padding: 1em;
+    border-top:1px dotted #000;
 }
 .drupal-embed .node-openpublish-photo-gallery .field-name-field-photo-gallery-slideshow{
     margin:10px 0 0 0;
@@ -608,7 +570,7 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     float:left;
 }
 .drupal-embed .node-openpublish-photo-gallery .views-row img{
-    border:solid 1px black;
+    border:none;
     display:block;
 }	
 .drupal-embed .node-openpublish-photo-gallery .views-field-view-node{
@@ -697,14 +659,6 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     text-transform: uppercase;
 }
 
-#right-rail .block-boxes-title-take-action h2{
-    background-position:0 -450px;
-}
-
-#right-rail .block-boxes-title-related-campaigns h2{
-    background-position:0 -360px; 
-}
-
 #right-rail .view-video .views-row{
     float: none;
     margin: 0 0 20px 0;
@@ -712,14 +666,14 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     width: 100%;
 }
 #right-rail .view-video .views-field-field-thumbnail{
-    width:	127px;
+    width: 127px;
     height:102px;
     float:left;
     margin:0 15px 0 0;
 }
 #right-rail .view-video .views-field-field-thumbnail img{
-    width:	125px;
-    height:100px;
+    width: 125px;
+    height: 100px;
 }
 #right-rail .view-video .views-field-field-promo-headline{
     margin-top:0;
@@ -746,7 +700,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     padding:0 15px 0 0;
 }
 .view-campaigns td .views-field-field-tp-campaign-cover-image img{
-    border: 1px solid black;
+    border: none;
     display:block;
 }
 .view-campaigns td.col-last{
@@ -767,23 +721,17 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     text-decoration:none;
 }
 
-
 /* currated topic front page(s) */
 .block-boxes-title-primary-features .view-featured-items,
 .block-boxes-current-featured_items .view-featured-items{
     overflow:hidden;
-    padding-bottom:15px;
+    padding-bottom:0;
 }
 .block-box-primary .view-featured-items .views-field-field-blogpost-main-image, 
 .block-boxes-current-featured_items .view-dom-id-1 .views-field-field-blogpost-main-image {
     margin-bottom: 0;
 }
-/*
-.block-boxes-title-secondary-features .view-featured-items {
-     border-bottom: 3px solid #666666;
-         margin:0 0 25px 0;
-}
-*/
+
 /* quick study styling */
 .block-boxes-title-quick-study{
     background-color:#f7fcff;
@@ -826,9 +774,6 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 
 
 /* search box */
-#top-search{
-    /*overflow: hidden;*/
-}
 
 #top-search .form-type-textfield{
     border: none;
@@ -859,7 +804,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 .multipage-campaign #top-search .form-text,
 .multipage-campaign #top-search .form-text:focus,
 .multipage-campaign #top-search .form-text:active {
-    width: 200px;
+    width: 10em;
 }
 
 #top-search .tpform-submit {
@@ -1052,7 +997,7 @@ p.search-performance{
     float:left;
 }
 #block-views-groups-block .view-groups img{
-    border:solid 1px black;
+    border:none;
 }
 #block-views-groups-block .view-groups .views-field-title{
     display:block;
@@ -1084,7 +1029,7 @@ p.search-performance{
     margin:0;
 }
 .node-profile .author-bio-photo img{
-    border:solid 1px black;
+    border:none;
 }
 .view-author-contributions{
     margin-top:15px;	
@@ -1105,7 +1050,7 @@ p.search-performance{
 }
 .view-author-contributions .views-field-field-thumbnail img{
     display:block;
-    border:solid 1px black;
+    border:none;
 }
 .view-author-contributions .views-field-field-promo-text {
     margin-top: 10px;
@@ -1236,7 +1181,7 @@ p.search-performance{
 .item-list ul.pager .pager-ellipsis,
 .item-list ul.pager .pager-first, 
 .item-list ul.pager .pager-previous {
-    color: #999999;
+    color: #1ca9e7;
     display: block;
     padding: 2px 5px 1px;
     text-transform: capitalize;
@@ -1244,9 +1189,9 @@ p.search-performance{
     margin:0 !important;
 }
 .item-list ul.pager .pager-current{
-    color:#fff;
+    color:#000;
+    background-color: transparent;
 }
-
 
 /* social media stuff */
 div.takepart_addthis_leftpanel div.custom_images a{
@@ -1269,7 +1214,8 @@ div.takepart_addthis_rightrail .button_container a{
 
 div.takepart_addthis_rightrail div.custom_images a, 
 div.takepart_addthis_leftpanel div.custom_images a {
-    padding-left:32px;
+    padding-left:20px;
+    padding-top:4px;
 }
 
 div.takepart_addthis_rightrail .button_container a.addthis_button_google_plusone{
@@ -1301,10 +1247,10 @@ div.takepart_addthis_footer span#addthis_footer_sharethis {
     margin-left: 5px;
 }
 .takepart_addthis_footer a.addthis_button_facebook span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll 0 -5px transparent;
+    background: url("../images/icon_facebook.png") no-repeat scroll 0 0 transparent;
 } 
 .takepart_addthis_footer a.addthis_button_twitter span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
+    background: url("../images/icon_twitter.png") no-repeat scroll 0 0 transparent;
 }
 div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone.at300b div{
 
@@ -1314,13 +1260,13 @@ div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone.
     margin: 3px 0 0 !important;
 }
 .takepart_addthis_footer a.addthis_button_stumbleupon span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll -55px -5px transparent;
+    background: url("../images/icon_stumble.png") no-repeat scroll 0 0 transparent;
 }
 .takepart_addthis_footer a.addthis_button_digg span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll -83px -5px transparent;
+    background: url("../images/icon_digg.png") no-repeat scroll 0 0 transparent;
 }
 .takepart_addthis_footer a.addthis_button_email span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll -111px -5px transparent;
+    background: url("../images/icon_email.png") no-repeat scroll 0 0 transparent;
 }
 
 /* addthis simple */

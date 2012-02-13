@@ -22,7 +22,7 @@
 <div class="tp-twitter-feed">
 
   <?php if (!empty($title)): ?>
-    <h2><?php print $title; ?></h2>
+    <h2><span><?php print $title; ?></span></h2>
   <?php endif; ?>
 
   <?php if (is_array($tweets)): ?>

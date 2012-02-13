@@ -482,7 +482,7 @@ body.node-type-topic-front h2.title a {
     margin:0;
 }
 .view-photo-galleries td .views-field-field-thumbnail img{
-    border: 1px solid black;
+    border: none;;
     display:block;
     margin:0
 }
