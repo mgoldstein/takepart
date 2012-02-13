@@ -676,6 +676,10 @@ h1.title a:hover {
 /* ===RIGHT RAIL=== */
 /* ------------------------------------------------------------------------*/
 
+#right-rail  .field-name-field-tp-campaign-sponsors {
+    border-top: 3px solid black;
+}
+
 #right-rail .field-name-field-blog-view a
 {
     color:#000;
