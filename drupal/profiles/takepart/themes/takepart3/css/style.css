@@ -564,8 +564,10 @@ h1.title a:hover {
     margin:0;
     padding:8px 0;
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
+    width:100%;
 }
 
+#block-takepart-custom-page-title-h1 span,
 .main-content .node-topic-front h2 span,
 .main-content .block-boxes-title-features h2 span,
 .main-content .block-boxes h2 span
