@@ -367,10 +367,9 @@ ul,ol
     text-decoration:none;
 }
 
-.block-boxes-title-features .views-field-title, .block-boxes-title-features .views-field-field-article-subhead
+.block-boxes-title-features .views-field-title, .block-boxes-title-features .views-field-field-article-subhead,   .block-boxes-title-features .views-field-field-article-subhead  .views-field-field-page-subhead
 {
     font-size:15px;
-    margin-top:145px;
     padding:6px;
 }
 
@@ -643,7 +642,6 @@ h1.title a:hover {
 }
 .main-content .block-boxes-title-features .views-field-field-thumbnail-1
 {
-    height:0;
     overflow:visible;
     position:relative;
     width:0;
