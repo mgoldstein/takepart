@@ -432,18 +432,17 @@ body.page-taxonomy-term h1{
     zoom:1; *display: inline; _height: 121px;
 }
 
-
 /* Video Node */
 .node-type-openpublish-video .field-name-field-subhead {
     color: #666666;
     font-size: 20px;
-    font-weight: normal;
+    font-weight: 300;
     line-height: 24px;
     margin-bottom: 10px;
 }
 .node-type-openpublish-video .submitted-wrapper {
     border-bottom: medium none;
-    margin-bottom: 0;
+    margin-bottom: 8px;
 }
 .node-type-openpublish-video .field-name-field-video-embedded{
     margin:0 0 20px 0;
@@ -465,19 +464,21 @@ body.page-taxonomy-term h1{
 .block-boxes-view-name-video h2,
 div[class*='block-boxes-bid-views-video-block'] h2,
 div[class*='block-boxes-delta-video-block'] h2 {
-    background: none repeat scroll 0 0 #CCCCCC;
-    margin: 25px 0 7px;
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll right top transparent;
+    margin: 12px 0 8px 0;
+    color: #99BBCC;
+    font-size:18px;
+    font-weight:300;
+    line-height:100%;
+    text-transform: uppercase;
 }
 .block-boxes-current-video h2 span,
 .block-boxes-view-name-video h2 span,
 div[class*='block-boxes-bid-views-video-block'] h2 span,
 div[class*='block-boxes-delta-video-block'] h2 span{
-    background: none repeat scroll 0 0 #CCCCCC;
+    background: none repeat scroll 0 0 #FFFFFF;
     margin: 25px 0 7px;
-    background-color:#fff;
-    border-right: 5px solid #FFFFFF;
     padding: 2px 5px 2px 0;
-    text-transform: uppercase;
 }
 
 

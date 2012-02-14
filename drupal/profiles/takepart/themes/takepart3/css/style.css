@@ -555,7 +555,8 @@ h1.title a:hover {
 }
 
 /* headers in blocks in main body */
-#block-takepart-custom-page-title-h1 h1.title,
+.node-type-topic-front #block-takepart-custom-page-title-h1 h1.title,
+.page-taxonomy-term #block-takepart-custom-page-title-h1 h1.title,
 .main-content .node-topic-front h2,
 .main-content .block-boxes h2,
 .main-content .block-boxes-title-features h2
@@ -567,11 +568,12 @@ h1.title a:hover {
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
     width:100%;
 }
-
-#block-takepart-custom-page-title-h1 h1.title {
+.node-type-topic-front #block-takepart-custom-page-title-h1 span,
+.page-taxonomy-term #block-takepart-custom-page-title-h1 h1.title {
     margin-bottom: 8px;
 }
-#block-takepart-custom-page-title-h1 span,
+.node-type-topic-front #block-takepart-custom-page-title-h1 span,
+.page-taxonomy-term #block-takepart-custom-page-title-h1 span,
 .main-content .node-topic-front h2 span,
 .main-content .block-boxes-title-features h2 span,
 .main-content .block-boxes h2 span
@@ -819,7 +821,7 @@ h1.title a:hover {
     color:#9BC;
     font-family:Helvetica,Arial,sans-serif;
     font-size:18px;
-    font-weight:lighter;
+    font-weight:300;
     line-height:100%;
     text-transform: uppercase;
     background:  url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll top right transparent;
