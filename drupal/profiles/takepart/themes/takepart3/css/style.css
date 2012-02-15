@@ -668,6 +668,16 @@ h1.title a:hover {
     margin:2px;
 }
 
+.main-content .block-boxes-title-features .action:hover
+{
+    border:3px solid #f7c806 !important;
+    margin:2px;
+}
+
+.main-content .block-boxes-title-features .action .views-field-field-display-tag .field-content {
+    background-color: #f7c806 !important;
+}
+
 .main-content .block-boxes-title-features .views-row:hover .views-field-field-thumbnail-1 .field-content img
 {
     position:relative;

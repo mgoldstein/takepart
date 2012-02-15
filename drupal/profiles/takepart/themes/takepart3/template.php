@@ -829,6 +829,9 @@ function takepart3_preprocess_views_view_unformatted(&$vars) {
     $vars['extra_classes_array'] = array();
     foreach ($rows as $id => $row) {
       $vars['extra_classes_array'][$id] = $vars['view']->result[$id]->node_type;
+      //cheap fix for replacing empties:
+      $vars['rows'][$id] = str_replace("<div class=\"field-content\"></div>", "", $vars['rows'][$id]);
+      $vars['rows'][$id] = str_replace("<div class=\"views-field views-field-field-article-subhead\">          </div>", "", $vars['rows'][$id]);
     } 
   }
 }
