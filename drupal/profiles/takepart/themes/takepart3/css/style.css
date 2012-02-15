@@ -367,7 +367,9 @@ ul,ol
     text-decoration:none;
 }
 
-.block-boxes-title-features .views-field-title, .block-boxes-title-features .views-field-field-article-subhead,   .block-boxes-title-features .views-field-field-article-subhead  .views-field-field-page-subhead
+.block-boxes-title-features .views-field-title, 
+.block-boxes-title-features .views-field-field-article-subhead, 
+.block-boxes-title-features .views-field-field-page-subhead
 {
     font-size:15px;
     padding:6px;
