@@ -244,7 +244,7 @@ body.page-taxonomy-term h1{
 }
 
 .field-name-field-display-tag a {    
-    color: #1ca9e7;
+    color: #1CA9E7;
     text-decoration: none;
 }
 
@@ -356,8 +356,8 @@ body.page-taxonomy-term h1{
 
 .view-photo-galleries td {
     vertical-align:top;
-    padding:0 20px 0 0;
-    width:300px;
+    padding:0;
+    width:55%;
 }	
 .view-photo-galleries td.col-last{
     padding:0;
@@ -597,16 +597,20 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 
 .node-openpublish-video .field-name-field-promo-text,
 .node-openpublish-video a.embedded-video-link,
-.view-video .views-field-field-promo-text{
+.view-video .views-field-field-promo-text 
+{
     margin:0 0 10px 0;	
     color:#8E8E8E;
 }
-
+#right-rail .view-video .views-field-field-promo-text, 
+#right-rail .node-openpublish-video .field-name-field-promo-text {
+    margin: 0;
+    color: #000;
+}
 .node-openpublish-video .field-name-field-promo-text {
     padding-bottom: 5px; 
     margin-bottom: 10px;
     color:#8E8E8E;
-
 }
 
 
@@ -635,34 +639,45 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 
 #right-rail .view-video .views-row{
     float: none;
-    margin: 0 0 20px 0;
+    padding: 10px 0 0 0;
+    margin: 10px 0 0 0;
     overflow: hidden;
     width: 100%;
+    border-top: 1px solid #EFF3F5;
+}
+
+#right-rail .view-video .views-row-first {
+    margin:0;
 }
 #right-rail .view-video .views-field-field-thumbnail{
-    width: 127px;
-    height:102px;
-    float:left;
-    margin:0 15px 0 0;
+    width: 100px;
+    height: 75px;
+    float: left;
+    margin: 0 15px 0 0;
 }
-#right-rail .view-video .views-field-field-thumbnail img{
-    width: 125px;
-    height: 100px;
-}
+
 #right-rail .view-video .views-field-field-promo-headline{
     margin-top:0;
+}
+#right-rail .view-video .views-field-field-thumbnail img {
+    width: 100px;
+    height: 75px;
 }
 #right-rail .view-video .views-field-field-promo-headline h3{
     font-size:16px;
 }
-
-
 
 /* action + impact page */
 .view-campaigns{
     border-bottom: 3px solid #666666;
     padding-bottom: 20px;
 }
+
+.node-type-section-front-wide .view-campaigns {
+    border-bottom: none;
+    padding-bottom: 10px;
+}
+
 .view-campaigns tr{
     display:block;
     margin:0 0 25px 0;
@@ -1358,7 +1373,7 @@ ul#global-links {
 }
 .region-highlighted .block-context-related-menu ul.menu li a:hover, .region-highlighted .block-menu ul.menu li a:hover{
     text-decoration:none;
-    color:#1ca9e7;
+    color: #1CA9E7;
 }
 .region-highlighted .block-context-related-menu ul.menu li a.active, .region-highlighted .block-menu ul.menu li a.active{
     border-bottom: 1px solid #CCCFFF;

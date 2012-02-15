@@ -1179,6 +1179,7 @@ p.search-performance{
 }
 .block-boxes-title-takepart-tv .views-field-view-node a:hover {
     color:#1CA9E7;
+    text-decoration: none;
 }
 
 .block-boxes-title-takepart-tv .views-field-field-promo-headline h3{
@@ -1187,8 +1188,6 @@ p.search-performance{
 .block-boxes-title-takepart-tv .views-field-field-promo-text{
     margin:0 0 5px 0;
 }
-
-
 
 /* author page */
 #author_info {
