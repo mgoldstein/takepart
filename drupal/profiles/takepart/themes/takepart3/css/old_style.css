@@ -2220,7 +2220,7 @@ body.node-type-topic-front .submitted-wrapper{
 
 .block-box-secondary .view-featured-items .views-field-php a:hover,
 .block-boxes-current-featured_items .view-dom-id-2 .views-field-php a:hover {
-    color: #1ca9e7;
+    color: #1CA9E7;
     text-decoration: underline;
 }
 
@@ -2246,6 +2246,10 @@ body.node-type-topic-front .submitted-wrapper{
     padding-top:1em;
 }
 
+.block-boxes-title-primary-features .view-featured-items .views-field-php .field-content a:hover,
+.block-boxes-title-primary .view-featured-items .views-field-php .field-content a:hover {
+    color: #1CA9E7;
+}
 .block-boxes-title-secondary-headlines a {
     color:#000;
     padding-top:0;
