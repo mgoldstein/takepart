@@ -2556,20 +2556,8 @@ body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #lef
     margin: 30px 0;
 }
 
-.view-campaigns.view-dom-id-2 .view-content ul,
-.view-campaigns.view-dom-id-3 .view-content ul{  
-    margin: 0;
-    padding: 0;
-}
 
-.view-campaigns.view-dom-id-2 .view-content ul li,
-.view-campaigns.view-dom-id-3 .view-content ul li {
-    display: inline-block;
-    margin: 0 10px 30px 0;
-    padding: 0;
-    vertical-align: top;
-    width: 190px;
-}
+
 
 .view-campaigns.view-dom-id-2 .view-content ul li a,
 .view-campaigns.view-dom-id-3 .view-content ul li a {

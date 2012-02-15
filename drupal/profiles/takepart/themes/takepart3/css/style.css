@@ -169,6 +169,25 @@ h3 {
     margin-bottom: 4px;
 }
 
+.view-campaigns.view-dom-id-2 .view-content ul li,
+.view-campaigns.view-dom-id-3 .view-content ul li {
+    display: inline-block;
+    margin: 0 0 30px 7px;
+    padding: 0;
+    vertical-align: top;
+    width: 150px;
+}
+
+.view-campaigns.view-dom-id-2 .view-content ul,
+.view-campaigns.view-dom-id-3 .view-content ul{  
+    margin-bottom: 0;
+    margin-left: -12px;
+    margin-top: 0;
+    padding: 0;
+}
+
+
+
 /* list-item markers should appear inside */
 ul,ol
 {
@@ -409,10 +428,6 @@ ul,ol
     text-decoration:none;
 }
 
-
-
-
-
 .field-name-field-tp-campaign-cover-link .field-item {
     background: url("/profiles/takepart/themes/takepart3/images/2012-02-08/takeparticons_films.png") no-repeat scroll left top transparent;
     height: 40px;
@@ -425,6 +440,24 @@ ul,ol
     margin: 0 0 0 40px;
     padding-right: 15px;
 }
+
+.node-type-section-front-wide .main-content h2 {
+    color: #99BBCC;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.node-type-section-front-wide .view-campaigns {
+	 border-bottom: medium none;
+}
+
+.node-type-section-front-wide .view-campaigns.view-display-id-block_1 {
+	margin: 30px 0 0;
+}
+
 
 .field-name-field-tp-campaign-cover-link .field-item a {
     background: url("/profiles/takepart/themes/takepart3/images/white-arrow.png") no-repeat scroll right 2px transparent;
