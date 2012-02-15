@@ -1932,6 +1932,15 @@ h2.title a{
     /*width: 280px;*/
 }
 
+.embed-action-wrapper .embed-action table {
+    width:100%;
+    padding:0;
+    margin:0;
+    border:none;
+}
+.embed-action-wrapper .embed-action tbody {
+    border:none;
+}
 .embed-action-wrapper .embed-action a {
     color: #302009;
     font-size: 18px;

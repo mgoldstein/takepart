@@ -130,7 +130,7 @@ body.two-sidebars #content, body.sidebar-first #content
     display: inline-block;
     margin-left: 155px;
     margin-right: -621px;
-    margin-top: 30px;
+    margin-top:0px;
     vertical-align: top;
     width: 467px;
 }
