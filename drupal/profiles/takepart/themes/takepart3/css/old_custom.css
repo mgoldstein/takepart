@@ -1387,20 +1387,6 @@ ul#global-links {
 }
 
 
-.block-boxes-title-sponsored-by h2 {
-    background-image: url("../images/sprite-box-ribbons.gif");
-    background-repeat: no-repeat;
-    font-size: 15px;
-    font-weight: bold;
-    line-height: 16px;
-    margin-bottom: 15px;
-    padding: 10px 0 6px 35px;
-    text-transform: uppercase;
-    background-position:0 -180px;
-}
-
-
-
 .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors .view-groups .views-field-field-group-logo,
 .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors .view-groups .views-field-title{
     display:block;

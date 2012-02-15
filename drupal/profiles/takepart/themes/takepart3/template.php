@@ -805,7 +805,7 @@ function takepart3_theme() {
       'arguments' => array(
         'params' => NULL,
       ),
-    ),
+    ),  
     'takepart3_footer' => array(
       'template' => 'templates/pages/footer',
       'arguments' => array(
@@ -819,4 +819,19 @@ function takepart3_theme() {
     ),
   ),
   );
+}
+
+
+function takepart3_preprocess_views_view_unformatted(&$vars) {
+  //Add the node type to CSS classes for promos / block 1:
+  if ($vars['view']->name == 'promo' && $vars['view']->current_display == 'block_1') {
+    $rows = $vars['rows'];
+    $vars['extra_classes_array'] = array();
+    foreach ($rows as $id => $row) {
+      $vars['extra_classes_array'][$id] = $vars['view']->result[$id]->node_type;
+      //cheap fix for replacing empties:
+      $vars['rows'][$id] = str_replace("<div class=\"field-content\"></div>", "", $vars['rows'][$id]);
+      $vars['rows'][$id] = str_replace("<div class=\"views-field views-field-field-article-subhead\">          </div>", "", $vars['rows'][$id]);
+    } 
+  }
 }

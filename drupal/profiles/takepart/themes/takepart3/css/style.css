@@ -367,10 +367,11 @@ ul,ol
     text-decoration:none;
 }
 
-.block-boxes-title-features .views-field-title, .block-boxes-title-features .views-field-field-article-subhead
+.block-boxes-title-features .views-field-title, 
+.block-boxes-title-features .views-field-field-article-subhead, 
+.block-boxes-title-features .views-field-field-page-subhead
 {
     font-size:15px;
-    margin-top:145px;
     padding:6px;
 }
 
@@ -408,12 +409,30 @@ ul,ol
     text-decoration:none;
 }
 
-.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a
-{
-    font-size:14px;
-    margin:6px 22px 7px 10px;
-    padding-right:15px;
-    background:url(../images/white-arrow.png) no-repeat scroll right 4px;
+
+
+
+
+.field-name-field-tp-campaign-cover-link .field-item {
+    background: url("/profiles/takepart/themes/takepart3/images/2012-02-08/takeparticons_films.png") no-repeat scroll left top transparent;
+    height: 40px;
+    padding-top: 3px;
+    width: 145px;
+}
+
+.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a {
+    font-size: 13px;
+    margin: 0 0 0 40px;
+    padding-right: 15px;
+}
+
+.field-name-field-tp-campaign-cover-link .field-item a {
+    background: url("/profiles/takepart/themes/takepart3/images/white-arrow.png") no-repeat scroll right 2px transparent;
+    color: #1CA9E7;
+    display: block;
+    font-weight: bolder;
+    margin: 14px 24px;
+    padding-right: 15px;
 }
 
 /* ===CONTENT TYPES=== */
@@ -638,7 +657,6 @@ h1.title a:hover {
 }
 .main-content .block-boxes-title-features .views-field-field-thumbnail-1
 {
-    height:0;
     overflow:visible;
     position:relative;
     width:0;
@@ -661,6 +679,16 @@ h1.title a:hover {
 {
     border:3px solid #14ade7;
     margin:2px;
+}
+
+.main-content .block-boxes-title-features .action:hover
+{
+    border:3px solid #f7c806 !important;
+    margin:2px;
+}
+
+.main-content .block-boxes-title-features .action .views-field-field-display-tag .field-content {
+    background-color: #f7c806 !important;
 }
 
 .main-content .block-boxes-title-features .views-row:hover .views-field-field-thumbnail-1 .field-content img
