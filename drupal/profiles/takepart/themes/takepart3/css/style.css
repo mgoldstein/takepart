@@ -164,6 +164,25 @@ h3 {
     margin-bottom: 4px;
 }
 
+.view-campaigns.view-dom-id-2 .view-content ul li,
+.view-campaigns.view-dom-id-3 .view-content ul li {
+    display: inline-block;
+    margin: 0 0 30px 7px;
+    padding: 0;
+    vertical-align: top;
+    width: 150px;
+}
+
+.view-campaigns.view-dom-id-2 .view-content ul,
+.view-campaigns.view-dom-id-3 .view-content ul{  
+    margin-bottom: 0;
+    margin-left: -12px;
+    margin-top: 0;
+    padding: 0;
+}
+
+
+
 /* list-item markers should appear inside */
 ul,ol
 {
@@ -266,7 +285,7 @@ ul,ol
     height:68px;
     top:180px;
     position:absolute;
-    z-index:10;
+    z-index:12;
 }
 
 #views_slideshow_slide_counter_photo_gallery-block
@@ -404,8 +423,11 @@ ul,ol
     text-decoration:none;
 }
 
-
-
+.main-content .drupal-embed .node-openpublish-photo-gallery .field-name-field-promo-headline {
+    font-size:16px;
+    margin:0 0 10px 0;
+    font-weight:bold;
+}
 
 
 .field-name-field-tp-campaign-cover-link .field-item {
@@ -420,6 +442,29 @@ ul,ol
     margin: 0 0 0 40px;
     padding-right: 15px;
 }
+
+.node-type-section-front .main-content .block-boxes-current-promo .content {
+  background-color: #EFF3F5;
+  width: 640px;
+}
+
+.node-type-section-front-wide .main-content h2 {
+    color: #99BBCC;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.node-type-section-front-wide .view-campaigns {
+	 border-bottom: medium none;
+}
+
+.node-type-section-front-wide .view-campaigns.view-display-id-block_1 {
+	margin: 30px 0 0;
+}
+
 
 .field-name-field-tp-campaign-cover-link .field-item a {
     background: url("/profiles/takepart/themes/takepart3/images/white-arrow.png") no-repeat scroll right 2px transparent;
@@ -515,7 +560,8 @@ h1.title a:hover {
     margin-bottom:10px;
 }
 
-.node-type-section-front .main-content h1.title {
+.node-type-section-front .main-content h1.title, 
+.node-type-section-front-wide .main-content h1.title {
     font-size:30px;
     font-family:Helvetica, Arial, sans-serif;
     line-height:32px;
@@ -697,6 +743,17 @@ h1.title a:hover {
 {
     position:relative;
 }
+
+/*jcarousel overrides */
+.main-content .views-slideshow-controls-bottom .jcarousel-skin-takepart .jcarousel-container-horizontal {
+    padding: 20px 33px;
+    width: 574px;
+}
+
+.main-content .views-slideshow-controls-bottom .jcarousel-skin-takepart ul li {
+	margin: 0;
+}
+
 .main-content .block-boxes-title-features .views-field-field-display-tag
 {
     height:0;
@@ -1101,6 +1158,30 @@ h1.title a:hover {
     overflow: hidden;
     padding-top: 15px;
 }
+
+.main-content  .drupal-embed .node-openpublish-photo-gallery {
+   border: 3px solid #14ADE7 !important;
+   padding: 10px;
+}
+
+.main-content .drupal-embed .node-openpublish-photo-gallery .field-name-field-promo-headline {
+  color: #99BBCC;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 0 9px 0 0;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.main-content .drupal-embed .node-openpublish-photo-gallery .views-row a{
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 13px;
+    text-transform: none;
+}
+
+
 
 /* ===LEFT RAIL=== */
 /* ------------------------------------------------------------------------*/
