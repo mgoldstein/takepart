@@ -545,21 +545,10 @@ div[class*='block-boxes-delta-video-block'] h2 span{
 }
 
 
-.drupal-embed .node-openpublish-photo-gallery,
-.drupal-embed .node-openpublish-video{
-    /* background:#eff3f5 url("../images/bg-take-tv.jpg") repeat-x scroll 0 0; */
-    margin:1em 0;
-    padding: 1em;
-    border-top:1px dotted #000;
-}
 .drupal-embed .node-openpublish-photo-gallery .field-name-field-photo-gallery-slideshow{
     margin:10px 0 0 0;
 }	
-.drupal-embed .node-openpublish-photo-gallery .field-name-field-promo-headline{
-    font-size:16px;
-    margin:0 0 10px 0;
-    font-weight:bold;
-}
+
 .drupal-embed .node-openpublish-photo-gallery .views-field{
     margin:0;
     overflow: hidden;
@@ -579,6 +568,7 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     text-transform:uppercase;
     margin:0;
 }
+
 
 /* why was this needed? removed because generated fb#17246
 https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414

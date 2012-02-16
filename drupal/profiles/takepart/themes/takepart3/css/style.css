@@ -428,6 +428,13 @@ ul,ol
     text-decoration:none;
 }
 
+.main-content .drupal-embed .node-openpublish-photo-gallery .field-name-field-promo-headline {
+    font-size:16px;
+    margin:0 0 10px 0;
+    font-weight:bold;
+}
+
+
 .field-name-field-tp-campaign-cover-link .field-item {
     background: url("/profiles/takepart/themes/takepart3/images/2012-02-08/takeparticons_films.png") no-repeat scroll left top transparent;
     height: 40px;
@@ -439,6 +446,11 @@ ul,ol
     font-size: 13px;
     margin: 0 0 0 40px;
     padding-right: 15px;
+}
+
+.node-type-section-front .main-content .block-boxes-current-promo .content {
+  background-color: #EFF3F5;
+  width: 640px;
 }
 
 .node-type-section-front-wide .main-content h2 {
@@ -1119,6 +1131,30 @@ h1.title a:hover {
     overflow: hidden;
     padding-top: 15px;
 }
+
+.main-content  .drupal-embed .node-openpublish-photo-gallery {
+   border: 3px solid #14ADE7 !important;
+   padding: 10px;
+}
+
+.main-content .drupal-embed .node-openpublish-photo-gallery .field-name-field-promo-headline {
+  color: #99BBCC;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 0 9px 0 0;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.main-content .drupal-embed .node-openpublish-photo-gallery .views-row a{
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 13px;
+    text-transform: inherit;
+}
+
+
 
 /* ===LEFT RAIL=== */
 /* ------------------------------------------------------------------------*/
