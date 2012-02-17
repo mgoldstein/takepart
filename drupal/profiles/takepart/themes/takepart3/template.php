@@ -525,7 +525,6 @@ function takepart3_return_node_type($type) {
 }
 
 
-
 function takepart3_field__field_topic($vars){
   
   $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;

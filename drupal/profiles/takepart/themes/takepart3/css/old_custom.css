@@ -497,14 +497,14 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     margin-right: 0;
 }
 .view-video .views-field-field-thumbnail{
-    height: 130px;
-    width: 196px;
+    height: 154px;
+    width: 207px;
 }
 .view-video .views-field-field-thumbnail img{
     display:block;
     border: none;
-    height: 128px;
-    width: 194px;
+    height: 154px;
+    width: 207px;
 }
 
 .node-openpublish-video .field-name-field-promo-headline,
@@ -564,8 +564,8 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 .view-video td {
     vertical-align:top;
     padding:0;
-    width:196px;
-    padding:0 15px 0 0;
+    width:207px;
+    padding:0 9px 0 0;
 }
 .view-video td .views-field-field-thumbnail {
     margin:0;
@@ -586,11 +586,15 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 }
 
 .node-openpublish-video .field-name-field-promo-text,
-.node-openpublish-video a.embedded-video-link,
-.view-video .views-field-field-promo-text 
-{
+.node-openpublish-video a.embedded-video-link {
     margin:0 0 10px 0;	
     color:#8E8E8E;
+}
+.view-video .views-field-field-promo-text {
+    color:#000;
+    margin:0;
+    font-size:13px;
+    line-height: 15px;
 }
 #right-rail .view-video .views-field-field-promo-text, 
 #right-rail .node-openpublish-video .field-name-field-promo-text {
@@ -1268,12 +1272,11 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
     margin-left: 5px;
 }
 .takepart_addthis_simple a.addthis_button_facebook span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll 0 -5px transparent;
+    background: url("../images/icon_facebook.png") no-repeat scroll 0 0 transparent;
 } 
 .takepart_addthis_simple a.addthis_button_twitter span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
+    background: url("../images/icon_twitter.png") no-repeat scroll 0 0 transparent;
 }
-
 
 /* homepage promo box */
 .block-boxes-title-features .views-row {
@@ -1283,7 +1286,6 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
 .block-boxes-title-features .views-field-field-display-tag .field-content{
     margin-top:0;
 }
-
 
 /* media browser for wysiwyg */
 #overlay-container #media-tab-brightcove a.fake-ok,

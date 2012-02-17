@@ -6,11 +6,14 @@
 <?php
 //Action Header Image:
 //$field_actionheaderimg_path = file_create_url($content['body']['#object']->field_actionheaderimg['und'][0]['uri']);
+/*
 $field_actionheaderimg_path = ($content['body']['#object']->field_actionheaderimg['und'][0]['uri']);
 if($field_actionheaderimg_path) {
   $field_actionheaderimg_path = str_replace("public://", "/sites/default/files/styles/action_header_image/public/", $field_actionheaderimg_path);
   print '<a href="' . $content['body']['#object']->field_actionheaderimghref['und'][0]['display_url'] . '"><img src="' . $field_actionheaderimg_path . '" alt="' . $content['body']['#object']->field_actionheaderimghref['und'][0]['title'] . '"></a>';
 }
+ * 
+ */
 ?>
 
 <?php if (!empty($title_prefix)) print render($title_prefix); ?>
@@ -44,12 +47,14 @@ class='title'>
 <?php endif; ?>
 <div id="action_copy">
 <div id="article_image">
-<?php print render($content['field_action_main_image']); //Article Image?>
-          <br/>
-          <?php
-           $addthisblock = module_invoke("takepart_addthis", 'block_view', 'addthis_full');
-    print '<div id="action_addthisblock">'. $addthisblock['content'] .'</div>'; //AddThis Block
-    ?>
+<?php
+/*
+print render($content['field_action_main_image']); 
+$addthisblock = module_invoke("takepart_addthis", 'block_view', 'addthis_full');
+print '<div id="action_addthisblock">'. $addthisblock['content'] .'</div>';
+ * 
+ */
+?>
 </div>
 <?php
       if (function_exists('media_filter')) {
@@ -73,9 +78,9 @@ class='title'>
         <div id="action_alt_copy">
     <?php
       if (function_exists('media_filter')) { //Alternate Content
-      print media_filter($content['body']['#object']->field_altcontent['und'][0]['value']);
+        print media_filter($content['body']['#object']->field_altcontent['und'][0]['value']);
       } else {
-      print ($content['body']['#object']->field_altcontent['und'][0]['value']);
+        print ($content['body']['#object']->field_altcontent['und'][0]['value']);
       }
     ?>
 </div>
@@ -89,11 +94,10 @@ class='title'>
 <?php if (!empty($links)): ?>
 <div class='links clearfix'>
 <?php // print render($links) ?>
-    </div>
-  <?php endif; ?>
+</div>
+<?php endif; ?>
 </div>
 
 <hr />
-
 
 <?php if (!empty($post_object)) print render($post_object) ?>

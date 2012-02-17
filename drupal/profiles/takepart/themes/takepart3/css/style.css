@@ -129,10 +129,10 @@ body.two-sidebars #content, body.sidebar-first #content
 {
     display: inline-block;
     margin-left: 155px;
-    margin-right: -621px;
+    margin-right: -638px;
     margin-top:0px;
     vertical-align: top;
-    width: 467px;
+    width: 480px;
 }
 
 .header-right
@@ -942,9 +942,13 @@ h1.title a:hover {
 }
 
 #right-rail .views-field-field-promo-headline {
-    margin-bottom: 8px;
+/*    margin-bottom: 8px;
     padding: 8px 0;
     border-bottom: 1px solid #F2F2F2;
+*/
+     margin:0;
+    padding:0;
+    border:none; 
 }
 
 #right-rail .view-video .views-field-field-promo-headline {
