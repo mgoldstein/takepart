@@ -560,16 +560,6 @@ h1.title a:hover {
     margin-bottom:10px;
 }
 
-.node-type-section-front .main-content h1.title, 
-.node-type-section-front-wide .main-content h1.title {
-    font-size:30px;
-    font-family:Helvetica, Arial, sans-serif;
-    line-height:32px;
-    font-weight:bold;
-    color:#000;
-    margin-bottom:10px;
-}
-
 .node-type-topic-front .main-content h1.title {
     font-size: 26px;
     font-family: NewsGothicBoldCondensed, sans-serif;
@@ -625,8 +615,10 @@ h1.title a:hover {
     width:100%;
 }
 
-.node-type-topic-front #block-takepart-custom-page-title-h1 h1.title,
-.page-taxonomy-term #block-takepart-custom-page-title-h1 h1.title,
+.node-type-section-front h1.title, 
+.node-type-section-front-wide h1.title, 
+.node-type-topic-front h1.title,
+.page-taxonomy-term h1.title,
 .main-content .node-topic-front h2.title {
     border-top:1px dotted #000;
     margin:0;
@@ -638,16 +630,18 @@ h1.title a:hover {
     line-height: 26px;
 }
 
-.node-type-topic-front #block-takepart-custom-page-title-h1 span,
-.page-taxonomy-term #block-takepart-custom-page-title-h1 h1.title {
+.node-type-topic-front h1.title span,
+.page-taxonomy-term h1.title {
     margin-bottom: 8px;
 }
-.node-type-topic-front #block-takepart-custom-page-title-h1 span,
-.page-taxonomy-term #block-takepart-custom-page-title-h1 span,
+
+.node-type-section-front h1.title span, 
+.node-type-section-front-wide h1.title span, 
+.node-type-topic-front h1.title span,
+.page-taxonomy-term h1.title span,
 .main-content .node-topic-front h2 span,
 .main-content .block-boxes-title-features h2 span,
-.main-content .block-boxes h2 span
-{
+.main-content .block-boxes h2 span {
     padding:0 9px 0 0;
     background:none repeat scroll 0 0 #FFF;
     text-transform: uppercase;
@@ -656,8 +650,7 @@ h1.title a:hover {
 
 .main-content .block-boxes-title-secondary-headlines .content,
 .main-content .block-boxes-title-features .content,
-.main-content .block-boxes-title-secondary-features .content
-{
+.main-content .block-boxes-title-secondary-features .content {
     background-color:#eff3f5;
 }
 
