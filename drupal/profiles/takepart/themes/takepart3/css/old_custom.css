@@ -356,8 +356,7 @@ body.page-taxonomy-term h1{
 
 .view-photo-galleries td {
     vertical-align:top;
-    padding:0;
-    width:55%;
+    padding: 0 9px 0 0;
 }	
 .view-photo-galleries td.col-last{
     padding:0;
@@ -366,10 +365,11 @@ body.page-taxonomy-term h1{
     margin:0;
 }
 .view-photo-galleries td .views-field-field-thumbnail img{
-    /* border: 1px solid black; */
     border: none;
     display:block;
-    margin:0
+    margin:0;
+    width: 207px;
+    height:154px;
 }
 .view-photo-galleries td .views-field-field-promo-headline{
     font-size: 16px;
