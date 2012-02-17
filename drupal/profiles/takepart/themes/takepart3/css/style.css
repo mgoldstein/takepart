@@ -1199,3 +1199,7 @@ h1.title a:hover {
 .block-boxes-title-latest-in-galleries .view-photo-galleries td {
     width:55%;
 }
+
+.main-content .field-name-field-action-main-image img {
+    margin-bottom: 25px;
+}
