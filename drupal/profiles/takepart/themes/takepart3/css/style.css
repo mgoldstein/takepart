@@ -648,6 +648,10 @@ h1.title a:hover {
     font-weight: 300;
 }
 
+.page-node-182 #block-takepart-custom-page-title-h1 {
+    display: none;
+}
+ 
 .main-content .block-boxes-title-secondary-headlines .content,
 .main-content .block-boxes-title-features .content,
 .main-content .block-boxes-title-secondary-features .content {
