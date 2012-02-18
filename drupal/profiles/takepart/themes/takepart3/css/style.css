@@ -769,7 +769,8 @@ h1.title a:hover {
     font-weight:700;
     line-height:18px;
     text-transform:uppercase;
-    margin-top:131px;
+    margin-top:127px;
+    padding: 2px;
 }
 
 /* ===RIGHT RAIL=== */
