@@ -61,6 +61,20 @@ function takepart3_preprocess_page(&$variables) {
   $variables['header']  = _render_tp3_header($variables);
   $variables['footer']  = _render_tp3_footer($variables);
   
+  //if shares don't exists in the left sidebar, add them to the top:
+  if($variables['node']->type == 'takepart_campaign') {
+    if($variables['page']['sidebar_first']) {
+      if (!array_key_exists('takepart_addthis_addthis_full', $variables['page']['sidebar_first'])) {
+        if ((array_key_exists('highlighted', $variables['page'])) && (!array_key_exists('takepart_addthis_addthis_simple', $variables['page']['highlighted']))) {
+          $block = block_load('takepart_addthis', 'addthis_simple');
+          $addthisblock = array();
+          $addthisblock['takepart_addthis_addthis_simple'] = (_block_get_renderable_array(_block_render_blocks(array($block))));
+          array_unshift($variables['page']['highlighted'], $addthisblock);
+        }
+      }
+    }
+  }
+  
   return $variables;
 }
 
