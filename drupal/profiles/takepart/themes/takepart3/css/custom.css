@@ -1868,3 +1868,20 @@ ul#global-links a {
     float:left;
     color:#1CA9E7;
 }
+
+.field-name-field-media-caption{
+    border-bottom: 1px dotted #999999;
+    color: #999999;
+    font-size: 11px;
+    line-height:12px;
+    line-height: normal;
+    padding: 15px 0 10px;
+    clear: both;
+    text-align:left;
+    margin-bottom: 1.5em;
+}
+.field-name-field-media-caption p{
+    margin:0;
+    font-size: 11px;
+    line-height:12px;
+}

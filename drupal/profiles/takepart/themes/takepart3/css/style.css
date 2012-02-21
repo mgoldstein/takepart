@@ -539,6 +539,7 @@ h1.title a:hover {
     color:#1CA9E7;
 }
 
+.node-openpublish-blog-post .view-blog-posts h1.title,
 .node-type-openpublish-video .main-content h1.title,
 .node-type-openpublish-article .main-content h1.title {
     font-size:42px;
@@ -549,6 +550,9 @@ h1.title a:hover {
     margin-bottom:10px;
 }
 
+.node-type-section-front-wide h1.title, 
+.node-type-section-front h1.title,
+.node-type-webform .main-content h1.title,
 .node-type-takepart-page .main-content h1.title,
 .node-type-action .main-content h1.title,
 .node-type-takepart-campaign h1.title {
@@ -603,7 +607,16 @@ h1.title a:hover {
     margin-bottom: 12px;
 }
 
+.node-profile h2 {
+    color: #000;
+    font-size: 36px;
+    line-height: 100%;
+    font-weight: bold;
+    text-transform: none;
+}
+
 /* headers in blocks in main body */
+
 .main-content .node-topic-front h2,
 .main-content .block-boxes h2,
 .main-content .block-boxes-title-features h2
@@ -615,8 +628,7 @@ h1.title a:hover {
     width:100%;
 }
 
-.node-type-section-front h1.title, 
-.node-type-section-front-wide h1.title, 
+.node-type-takepart-campaign h2, 
 .node-type-topic-front h1.title,
 .page-taxonomy-term h1.title,
 .main-content .node-topic-front h2.title {
@@ -635,8 +647,7 @@ h1.title a:hover {
     margin-bottom: 8px;
 }
 
-.node-type-section-front h1.title span, 
-.node-type-section-front-wide h1.title span, 
+.node-type-takepart-campaign h2 span,
 .node-type-topic-front h1.title span,
 .page-taxonomy-term h1.title span,
 .main-content .node-topic-front h2 span,
@@ -982,6 +993,9 @@ h1.title a:hover {
     color:#1ca9e7;
 }
 
+.node-topics a:hover {
+    text-decoration:underline;
+}
 .node-topics-label {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -999,11 +1013,12 @@ h1.title a:hover {
 .views-field-field-promo-headline {
     font-size: 14px;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .views-field-field-promo-headline a {
     color: #000;
-    font-weight: normal;
+    font-weight: bold;
     text-decoration:none;
 }
 .views-field-field-promo-headline a:hover {
@@ -1096,14 +1111,6 @@ h1.title a:hover {
     padding: 8px 0;
 }
 
-.node-type-takepart-campaign .main-content .block-boxes h2 {
-    background: none;
-    border-top: none;
-    text-transform: inherit;
-    margin: 0;
-    height: 14px;
-}
-
 .node-type-takepart-campaign .main-content .field-name-field-tp-campaign-subheadline {
     border-bottom: medium none;
 }
@@ -1115,7 +1122,7 @@ h1.title a:hover {
 
 
 .node-type-takepart-campaign .main-content .field-items p {
-    margin: 0px;
+/*    margin: 0px; */
 }
 
 #footer-about p {
@@ -1200,4 +1207,11 @@ h1.title a:hover {
 
 .main-content .field-name-field-action-main-image img {
     margin-bottom: 25px;
+}
+
+.search-results .views-field-type {
+    color: #000;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 300;
 }

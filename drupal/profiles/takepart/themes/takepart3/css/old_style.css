@@ -2556,30 +2556,6 @@ body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #lef
     font-size: 16px;
 }
 
-/** Topics **/
-.node-topics {
-    border-top: 1px dotted #555;
-    border-bottom: 1px dotted #555;
-    clear: both;
-    padding: 14px 25px 14px 70px;
-    margin-top:14px;
-}
-
-.node-topics a {
-    text-decoration: none;
-    font-size: 14px;
-    color: #1ca9e7;
-}
-
-.node-topics-label {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    height: 0;
-    left: -55px;
-    overflow: visible;
-    position: relative;
-}
-
 body.node-type-takepart-campaign .node-takepart-campaign h2.title{
     display: none;
 }
