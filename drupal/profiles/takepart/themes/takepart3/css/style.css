@@ -152,16 +152,20 @@ a:hover {
 body.two-sidebars #left-rail,body.sidebar-first #left-rail
 {
     display:inline-block;
-    margin-top:30px;
     width:145px;
 }
+
+
+body.two-sidebars #content .block-boxes-delta-main {
+	display: none;
+}
+
 
 body.two-sidebars #content, body.sidebar-first #content
 {
     display: inline-block;
     margin-left: 155px;
     margin-right: -621px;
-    margin-top: 30px;
     vertical-align: top;
     width: 467px;
 }
@@ -171,6 +175,11 @@ body.two-sidebars #content, body.sidebar-first #content
     width:878px;
     float:left;
     margin-left:125px;
+}
+
+.field-name-field-tp-campaign-intro-media { 
+	display: block;
+	margin-bottom: 20px;
 }
 
 .main-content
@@ -1113,9 +1122,10 @@ h1.title a:hover {
 .node-type-takepart-campaign .main-content .block-boxes h2 {
     background: none;
     border-top: none;
-    text-transform: inherit;
+    text-transform: none;
     margin 0px;
     height: 14px;
+    font-weight: bold;
 }
 
 .node-type-takepart-campaign .main-content .field-name-field-tp-campaign-subheadline {
@@ -1204,6 +1214,15 @@ h1.title a:hover {
     font-weight: bold;
     line-height: 44px;
 }
+
+body.node-type-takepart-campaign .main-content #content,
+body.node-type-takepart-campaign .main-content #left-rail {
+    padding-bottom: 20px;
+    padding-left: 5px;
+    float: left;
+}
+
+
 
 /* ===LEFT RAIL=== */
 /* ------------------------------------------------------------------------*/
