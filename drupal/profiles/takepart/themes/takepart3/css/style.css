@@ -35,6 +35,11 @@ body
     padding:0;
 }
 
+#join-login-top a.user-menu-register {
+    display: inline-block;
+    white-space:nowrap;
+}
+
 ul.dots li
 {
   cursor:pointer;
