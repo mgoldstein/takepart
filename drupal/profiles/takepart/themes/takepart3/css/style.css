@@ -35,6 +35,37 @@ body
     padding:0;
 }
 
+body.node-type-takepart-campaign.multipage-campaign {
+    background: #eff3f5 url(../images/2012-02-08/bg-page-cv.png) repeat-x 0 0;
+}
+
+#join-login-top a.user-menu-register {
+    display: inline-block;
+    white-space:nowrap;
+}
+
+/*slim header navigation*/
+#slim-header ul.menu li {
+    float: none;
+    float: left;
+    font-family: 'NewsGothicBoldCondensed';
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    list-style-type: none;
+    text-align: center;
+    padding: 8px 0 0 0;
+} 
+
+#slim-header ul.menu li a {
+    background: none;
+    color: #000;
+    background: url(../images/dot.png) no-repeat 0 7px;
+    padding: 0 10px;
+    white-space:nowrap;
+}
+
 ul.dots li
 {
     cursor:pointer;
@@ -395,6 +426,10 @@ ul,ol
     text-decoration:none;
 }
 
+.main-content .block-boxes-title-features .views-row-4, .main-content .block-boxes-title-features .views-row-7, .main-content .block-boxes-title-features .views-row-10 {
+	clear:both;
+}
+
 .campaign-link
 {
     background:url(../images/2012-02-08/hash.png) no-repeat scroll 0 0 transparent;
@@ -518,9 +553,16 @@ ul#top-follow li a {
 
 #slim-header #join-login-top
 {
-    width:160px;
     float:left;
     font-size:11px;
+}
+
+/*slim header width*/
+#slim-header #nav-wrap {
+    background: none;
+    float: left;
+    min-width: 572px;
+    margin-left: 50px;
 }
 
 /* ===PAGE FOOTER=== */
@@ -1190,7 +1232,13 @@ h1.title a:hover {
     text-transform: none;
 }
 
-
+.main-content .block-boxes-bid-takepart_custom-page_title_h1 h1.title span {
+	color: #000000;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 42px;
+    font-weight: bold;
+    line-height: 44px;
+}
 
 /* ===LEFT RAIL=== */
 /* ------------------------------------------------------------------------*/
