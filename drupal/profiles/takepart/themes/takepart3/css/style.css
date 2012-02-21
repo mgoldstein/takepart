@@ -1215,6 +1215,10 @@ h1.title a:hover {
     line-height: 44px;
 }
 
+.main-content .views-slideshow-controls-top { 
+	z-index: 12;
+}
+
 body.node-type-takepart-campaign .main-content #content,
 body.node-type-takepart-campaign .main-content #left-rail {
     padding-bottom: 20px;
