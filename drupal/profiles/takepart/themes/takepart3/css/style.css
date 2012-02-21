@@ -400,6 +400,10 @@ ul,ol
     text-decoration:none;
 }
 
+.main-content .block-boxes-title-features .views-row-4 {
+	clear:both;
+}
+
 .campaign-link
 {
     background:url(../images/2012-02-08/hash.png) no-repeat scroll 0 0 transparent;
