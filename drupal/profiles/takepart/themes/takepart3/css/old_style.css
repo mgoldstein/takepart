@@ -3059,18 +3059,7 @@ div.messages a:visited {
     float: none;
 }
 
-#slim-header ul.menu li {
-    float: none;
-    float: left;
-    font-family: 'NewsGothicBoldCondensed';
-    font-size: 15px;
-    text-transform: uppercase;
-    font-weight: normal;
-    letter-spacing: 0.05em;
-    list-style-type: none;
-    text-align: center;
-    padding: 8px 0 0 0;
-} 
+
 
 
 /* changing the top navigation render through pae['header'] */
@@ -3154,12 +3143,7 @@ div.messages a:visited {
     margin-top: 9px;
 }
 
-#slim-header #nav-wrap {
-    background: none;
-    float: left;
-    width: 500px;
-    margin-left: 50px;
-}
+
 
 #slim-header #logo {top: 0;}
 
@@ -3173,12 +3157,7 @@ div.messages a:visited {
 }
 
 
-#slim-header ul.menu li a {
-    background: none;
-    color: #000;
-    background: url(../images/dot.png) no-repeat 0 7px;
-    padding: 0 10px;
-}
+
 
 #slim-header ul.menu li a:hover {
     text-decoration: none;
@@ -3477,9 +3456,7 @@ body.front #highlighted {background: none; padding: 0;}
 body.node-type-takepart-campaign {
     background: #eff3f5 url(../images/bg-page-cv.png) repeat-x 0 -5px;
 }
-body.node-type-takepart-campaign.multipage-campaign {
-    background: #eff3f5 url(../images/bg-page-cv.png) repeat-x 0 0;
-}
+
 
 
 .page-node-1204 #highlighted {
