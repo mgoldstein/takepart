@@ -84,6 +84,10 @@ a:hover {
     text-decoration:underline;
 }
 
+.front .page{
+    padding: 25px 20px 35px;
+}
+
 /*logo style*/
 #logo {
     float: left;
