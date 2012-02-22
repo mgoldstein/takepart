@@ -130,11 +130,7 @@ img.photo, .gallery-item img {
 
 /****** Hot Topics Nav *****/
 
-#hot-topics-nav {
-    width: 540px;
-    float: left;
-    padding: 15px 0 13px 0;
-}
+
 
 #hot-topics-nav li {
     list-style-type: none;
@@ -265,10 +261,7 @@ a.user-menu-register  {
 }
 
 /***** Top Follow Us Icons *****/
-ul#top-follow {
-    margin: 9px 0 0 0;
-    float: right;
-}
+
 ul#top-follow li {
     list-style-type: none;
     float: left;
@@ -443,12 +436,7 @@ ul#top-follow li.rss a {
 
 /**** Top Search ****/
 
-#top-search {
-    width:  230px;
-    float: right;
-    margin: 7px 0 0;
 
-}
 
 form#search-api-page-search-form-2 {
     margin: 4px 0 0 0;

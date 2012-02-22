@@ -569,6 +569,11 @@ ul#top-follow li a {
     margin-left: 8px;
 }
 
+ul#top-follow {
+    margin: 19px 0 0 0;
+    float: right;
+}
+
 .header-mid
 {
     float:left;
@@ -1265,6 +1270,12 @@ h1.title a:hover {
     padding-top:4px;
 }
 
+#hot-topics-nav {
+    width: 540px;
+    float: left;
+    padding: 19px 0 10px;
+}
+
 #hot-topics-nav li.title {
     text-transform: uppercase;
     font-weight: 300;
@@ -1273,6 +1284,33 @@ h1.title a:hover {
     padding-right: 10px;
     border: none;
     margin-left: 9px;
+}
+
+/*search box*/
+#top-search {
+    width:  219px;
+    float: right;
+    margin: 15px 0 0;
+}
+
+#top-search .form-text,
+#top-search .form-text:focus,
+#top-search .form-text:active {
+    border: medium none;
+    display: block;
+    width: 185px;
+    float: left;
+    font-size: 12px;
+    height: 16px;
+    line-height: 16px;
+    margin: 0;
+    padding: 2px 5px;
+    background: #FFF;
+}
+
+#search-api-page-search-form-2 div {
+	border: solid 1px #ccc;
+	display: inline-block;
 }
 
 .view-id-slide_rotator {
