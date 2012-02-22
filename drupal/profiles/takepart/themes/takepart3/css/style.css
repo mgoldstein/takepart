@@ -1182,6 +1182,26 @@ h1.title a:hover {
     font-weight: bold;
 }
 
+.node-type-takepart-campaign .main-content .block-boxes-current-taxonomy_search_list h2 {
+    border-top:1px dotted #000;
+    border-bottom: 1px solid #D9E7EE;
+    padding:8px 0 6px 0;
+    margin-bottom: 8px;
+    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
+    width:100%;
+    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-size: 26px;
+    line-height: 26px;
+    font-weight: normal;
+}
+
+.node-type-takepart-campaign .main-content .block-boxes-current-taxonomy_search_list h2 span {
+    padding:0 8px 0 0;
+    background:none repeat scroll 0 0 #FFF;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
 .node-type-takepart-campaign .main-content .field-name-field-tp-campaign-subheadline {
     border-bottom: medium none;
 }
