@@ -990,16 +990,17 @@ h1.title a:hover {
     padding: 2px 5px 2px 0;
     text-transform: uppercase;
 }
-
+#right-rail #block-views-related-actions-block h2,
 #right-rail .block-boxes-title-take-action h2 {
     height:19px;
     width: 100%;
     background: url(../images/rr_take_action.png) no-repeat scroll 0 0 transparent;
 }
-
+#right-rail #block-views-related-actions-block h2 span,
 #right-rail .block-boxes-title-take-action h2 span {
     display:none;
 }
+
 #right-rail .block-boxes-title-popular-galleries .content {
     border:none;
     padding:0;
