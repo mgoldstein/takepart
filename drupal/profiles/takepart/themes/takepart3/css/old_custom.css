@@ -35,7 +35,7 @@ body.node-type-takepart-campaign #right-rail {
 
 body.node-type-openpublish-article #content,
 body.node-type-openpublish-article #left-rail {
-    margin-top:20px;
+    margin-top:0;
 } 
 
 .contextual-links-region{
