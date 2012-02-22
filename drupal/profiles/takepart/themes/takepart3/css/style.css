@@ -1302,3 +1302,16 @@ body.node-type-takepart-campaign .main-content #left-rail {
     text-transform: uppercase;
     font-weight: 300;
 }
+
+#block-boxes-box-407084eb {
+    margin-bottom: 18px;
+}
+
+#block-boxes-box-407084eb #tptv-more-video {
+    float:right;
+    background-color: #FFF;
+    padding-left: 8px;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: bold;
+}
