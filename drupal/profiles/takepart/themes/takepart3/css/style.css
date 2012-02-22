@@ -418,17 +418,29 @@ ul,ol
     display:none;
 }
 
-.block-boxes-title-features .views-field-title a, .block-boxes-title-features .views-field-field-article-subhead a
+.block-boxes-title-features .views-field-title a, 
+.block-boxes-title-features .views-field-field-article-subhead a,
+.block-boxes-title-features .views-field-nid span a
 {
     color:#000;
     line-height:20px;
-    font-weight:bolder;
+    font-weight: bold;
     text-decoration:none;
 }
 
+.block-boxes-title-features .views-field-nid span a:hover
+{
+    color:#1CA9E7;
+    text-decoration:none;
+}
+
+
+
 .block-boxes-title-features .views-field-title, 
 .block-boxes-title-features .views-field-field-article-subhead, 
-.block-boxes-title-features .views-field-field-page-subhead
+.block-boxes-title-features .views-field-field-page-subhead,
+.block-boxes-title-features .views-field-nid,
+.block-boxes-title-features .views-field-field-promo-text
 {
     font-size:15px;
     padding:6px;
