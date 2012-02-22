@@ -66,6 +66,14 @@ body.node-type-takepart-campaign.multipage-campaign {
     white-space:nowrap;
 }
 
+/* homepage features block */
+.block-boxes-title-features,
+.block-boxes-title-popular-galleries{
+    margin:0 0 20px 0;
+    padding-bottom:10px;
+}
+
+
 ul.dots li
 {
     cursor:pointer;
@@ -861,15 +869,15 @@ h1.title a:hover {
 
 .main-content .block-boxes-title-features .views-field-field-display-tag .field-content
 {
-    background-color:#9BC;
-    color:#FFF;
-    display:inline-block;
-    font-size:11px;
-    font-weight:700;
-    line-height:18px;
-    text-transform:uppercase;
-    margin-top:127px;
-    padding: 2px;
+	background-color: #99BBCC;
+	color: #FFFFFF;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 18px;
+	margin-top: 123px;
+	padding: 4px 5px;
+	text-transform: uppercase;
 }
 
 /* ===RIGHT RAIL=== */
