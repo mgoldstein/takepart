@@ -929,6 +929,24 @@ h1.title a:hover {
     width:172px;
 }
 
+#right-rail .field-name-field-blog-view .more {
+    margin-left: -40px;
+    margin-top: -36px;
+    position: absolute;
+}
+
+#right-rail .field-name-field-blog-view .more a {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #1CA9E7;
+    display: block;
+    padding: 6px;
+    width: 44px;
+}
+
+#right-rail .field-name-field-blog-view .more a:hover {
+    text-decoration:underline;
+}
+
 #right-rail .view-blog-posts .view-content
 {
     width:256px;
