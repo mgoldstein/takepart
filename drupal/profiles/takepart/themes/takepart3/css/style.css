@@ -710,7 +710,7 @@ h1.title a:hover {
 .main-content .node-topic-front h2 span,
 .main-content .block-boxes-title-features h2 span,
 .main-content .block-boxes h2 span {
-    padding:0 9px 0 0;
+    padding:0;
     background:none repeat scroll 0 0 #FFF;
     text-transform: uppercase;
     font-weight: 300;
