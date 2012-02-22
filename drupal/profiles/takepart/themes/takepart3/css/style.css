@@ -1021,11 +1021,7 @@ h1.title a:hover {
     padding: 0;
     border-bottom: none;
 }
-#right-rail .views-row-last .views-field-field-promo-headline {
-    margin-bottom: 0;
-    padding: 8px 0 0 0;
-    border-bottom: none;
-}
+
 #right-rail .views-field-field-promo-text {
     margin:0;
 }
@@ -1041,8 +1037,15 @@ h1.title a:hover {
 }
 
 #right-rail .block-boxes-title-popular-galleries .views-field-field-promo-headline {
-    margin: .5em 0;
+    margin: 4px 0 8px 0;
 }
+
+#right-rail .views-row-last .views-field-field-promo-headline {
+    margin: 4px 0 0 0;
+    padding: 0;
+    border-bottom: none;
+}
+
 /** Topics **/
 .node-topics
 {
