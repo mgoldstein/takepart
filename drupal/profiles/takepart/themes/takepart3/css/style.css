@@ -840,11 +840,11 @@ h1.title a:hover {
 /* ===RIGHT RAIL=== */
 /* ------------------------------------------------------------------------*/
 
-#right-rail  .field-name-field-tp-campaign-sponsors {
+#right-rail .field-name-field-tp-campaign-sponsors {
     border-top: 3px solid black;
 }
 
-#right-rail  .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors {
+#right-rail .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors {
     border-top:none;
     padding:0 15px 15px;
     overflow:hidden;
@@ -1040,6 +1040,9 @@ h1.title a:hover {
     border-top: 1px solid #eff3f5;
 }
 
+#right-rail .block-boxes-title-popular-galleries .views-field-field-promo-headline {
+    margin: .5em 0;
+}
 /** Topics **/
 .node-topics
 {
