@@ -1031,7 +1031,8 @@ h1.title a:hover {
 .takepart-newsletter-form label {
     display: none;
 }
-
+#right-rail .block-boxes-title-sponsored-by .field-item,
+#right-rail .block-boxes-title-spotlight .field-item,
 #right-rail .field-name-field-tp-campaign-alliances .field-item {
     padding-top: .5em;
     margin-top: .5em;
