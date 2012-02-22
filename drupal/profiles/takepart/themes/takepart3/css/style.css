@@ -691,7 +691,7 @@ h1.title a:hover {
 .main-content .node-topic-front h2.title {
     border-top:1px dotted #000;
     margin:0;
-    padding:8px 0;
+    padding:8px 0 6px 0;
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
     width:100%;
     font-family: NewsGothicBoldCondensed, sans-serif;
@@ -1168,18 +1168,11 @@ h1.title a:hover {
     height: 25px;
 }
 
-.main-content .block-boxes h2 {
-    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll left center transparent;
-    border-top: 1px dotted #000000;
-    margin: 8px 0;
-    padding: 12px 0 6px 0;
-}
-
 .node-type-takepart-campaign .main-content .block-boxes h2 {
     background: none;
     border-top: none;
     text-transform: none;
-    margin 0px;
+    margin: 0;
     height: 14px;
     font-weight: bold;
 }
@@ -1191,8 +1184,6 @@ h1.title a:hover {
 .node-type-takepart-campaign .field-name-field-tp-campaign-subheadline {
     padding-bottom: 0px;
 }
-
-
 
 .node-type-takepart-campaign .main-content .field-items p {
     /*    margin: 0px; */
@@ -1282,8 +1273,6 @@ body.node-type-takepart-campaign .main-content #left-rail {
     float: left;
 }
 
-
-
 /* ===LEFT RAIL=== */
 /* ------------------------------------------------------------------------*/
 .node-type-takepart-campaign #left-rail {
@@ -1291,10 +1280,10 @@ body.node-type-takepart-campaign .main-content #left-rail {
 }
 
 .block-boxes-title-latest-in-galleries .view-photo-galleries table {
-    width:100%;
+    width:640px;
 }
 .block-boxes-title-latest-in-galleries .view-photo-galleries td {
-    width:55%;
+    width:300px;
 }
 
 .main-content .field-name-field-action-main-image img {
