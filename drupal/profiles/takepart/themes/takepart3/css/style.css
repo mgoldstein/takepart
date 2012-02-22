@@ -156,12 +156,17 @@ body.two-sidebars #left-rail,body.sidebar-first #left-rail
     width:145px;
 }
 
+
+body.two-sidebars #content .block-boxes-delta-main {
+	display: none;
+}
+
+
 body.two-sidebars #content, body.sidebar-first #content
 {
     display: inline-block;
     margin-left: 155px;
-    margin-right: -644px;
-    margin-top:0;
+    margin-right: -621px;
     vertical-align: top;
     width: 480px;
 }
@@ -171,6 +176,16 @@ body.two-sidebars #content, body.sidebar-first #content
     width:878px;
     float:left;
     margin-left:125px;
+}
+
+.field-name-field-tp-campaign-intro-media { 
+	display: block;
+	margin-bottom: 20px;
+}
+
+.main-content
+{
+    width:640px;
 }
 
 /* tag formatting */
@@ -561,7 +576,7 @@ ul#top-follow li a {
 #slim-header #nav-wrap {
     background: none;
     float: left;
-    min-width: 572px;
+    min-width: 566px;
     margin-left: 50px;
 }
 
@@ -1158,8 +1173,17 @@ h1.title a:hover {
 .main-content .block-boxes h2 {
     background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll left center transparent;
     border-top: 1px dotted #000000;
-    margin:8px 0;
-    padding: 8px 0;
+    margin: 8px 0;
+    padding: 12px 0 6px 0;
+}
+
+.node-type-takepart-campaign .main-content .block-boxes h2 {
+    background: none;
+    border-top: none;
+    text-transform: none;
+    margin 0px;
+    height: 14px;
+    font-weight: bold;
 }
 
 .node-type-takepart-campaign .main-content .field-name-field-tp-campaign-subheadline {
@@ -1248,6 +1272,19 @@ h1.title a:hover {
     font-weight: bold;
     line-height: 44px;
 }
+
+.main-content .views-slideshow-controls-top { 
+	z-index: 12;
+}
+
+body.node-type-takepart-campaign .main-content #content,
+body.node-type-takepart-campaign .main-content #left-rail {
+    padding-bottom: 20px;
+    padding-left: 5px;
+    float: left;
+}
+
+
 
 /* ===LEFT RAIL=== */
 /* ------------------------------------------------------------------------*/

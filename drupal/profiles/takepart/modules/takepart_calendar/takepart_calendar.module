@@ -39,20 +39,29 @@ function _takepart_calendar_xml($node) {
       $itemdate =  _takepart_calendar_xml_parsedate($itemdate);
 
       if(round((strtotime($itemdate) - time()) / 86400) == 1) {
-      
+        
+        $subtextimage = _takepart_calendar_xml_getimgs($calarray[$i]['subtext']);
+        
+        if($subtextimage == $calarray[$i]['subtext']) {
+          $subtext = $calarray[$i]['subtext'];
+          $subtextimage = "";
+        } else {
+          $subtext = _takepart_calendar_xml_getimgalts($subtextimage);
+        }
+
         $xml .= '<action>';
         $xml .= '<todays_date>'.strtotime($itemdate).'</todays_date>';
-        $xml .= '<topic_name>' . $calarray[$i]['subtext'] . '</topic_name>';
-        $xml .= '<topic_icon></topic_icon>';
+        $xml .= '<topic_name>' . $subtext . '</topic_name>';
+        $xml .= '<topic_icon>' . $subtextimage . '</topic_icon>';
         $xml .= '<action_title>'. _takepart_calendar_xml_fixtring($calarray[$i]['title']) . '</action_title>';
         $xml .= '<action_page>'. _takepart_calendar_xml_fixtring($calarray[$i]['url']) . '</action_page>';
         $xml .= '<calendar_page>' . $pagelink . '</calendar_page>';
         $xml .= '</action>';
       
       }
-        
     }
   } 
+  
   $xml .= '</takepart_action>';
 
   header ("Content-Type:text/xml");
@@ -70,6 +79,23 @@ function _takepart_calendar_xml_fixtring($str) {
     return $m[1];    
   } else {
     return $str;
+  }
+}
+
+
+function _takepart_calendar_xml_getimgs($str) {
+  if (preg_match('/<img[^>]+>/i', $str, $m)) {
+    return $m[0];
+  } else {
+    return $str;
+  }
+}
+
+function _takepart_calendar_xml_getimgalts($str) {
+  if (preg_match('/< *img[^>]*alt *= *["\']?([^"\']*)/i', $str, $m)) {
+    return $m[1  ];
+  } else {
+    return "";
   }
 }
 
@@ -110,18 +136,22 @@ function _takepart_calendar_array_parse($json) {
   foreach ($matches[0] as $section) {
     
     $secarray = array();
-    
+   
     for ($i=0;$i<count($tokens);$i++) {
         $test = $tokens[$i] . ":";
         $tknright = substr($section, strpos($section, $test, 0), strlen($section));
-        $tknright = substr($tknright, 0, strpos($tknright, "\r", 0));
+        if($tokens[$i] == 'subtext') {
+          $tknright = substr($tknright, 0, strpos($tknright, "}", 0));
+        } else {
+          $tknright = substr($tknright, 0, strpos($tknright, "\r", 0));
+        }
         $secarray[$tokens[$i]] = $tknright;
     }
-    
+        
     array_push($retarray, $secarray);
 
   }
-    
+
   return ($retarray);  
 }
 
