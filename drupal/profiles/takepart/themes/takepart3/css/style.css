@@ -83,10 +83,22 @@ a {
 a:hover {
     text-decoration:underline;
 }
+
+/*logo style*/
+#logo {
+    float: left;
+    width:  125px;
+    padding: 0 0 0px 0;
+    position: absolute;
+    top: 15px;
+    left: 0px;
+}
+
+
 /*page structure*/
 #page-wrapper
 {
-    margin:0 auto;
+    margin: 5px auto 0;
     width:1000px;
 }
 
