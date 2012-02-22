@@ -999,10 +999,9 @@ p.search-performance{
 .block-boxes-title-features,
 .block-boxes-title-popular-galleries{
     margin:0 0 20px 0;
-    padding-bottom:10px;
-    border-bottom:1px dotted silver;
+    padding-bottom:0;
+    border-bottom:none;
 }
-
 
 /* author page */
 #author_info {
