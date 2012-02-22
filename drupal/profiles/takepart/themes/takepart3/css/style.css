@@ -156,11 +156,11 @@ body.two-sidebars #left-rail,body.sidebar-first #left-rail
     width:145px;
 }
 
-
+/*
 body.two-sidebars #content .block-boxes-delta-main {
-	display: none;
+    display: none; 
 }
-
+*/
 
 body.two-sidebars #content, body.sidebar-first #content
 {
