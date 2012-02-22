@@ -68,11 +68,11 @@ body.node-type-takepart-campaign.multipage-campaign {
 
 ul.dots li
 {
-  cursor:pointer;
+    cursor:pointer;
 }
 
 body.multipage-campaign {
-    
+
 }
 
 a {
@@ -128,7 +128,7 @@ a:hover {
 
 .main-content
 {
-    width:619px;
+    width:640px;
     float:left;
 }
 
@@ -152,22 +152,23 @@ a:hover {
 body.two-sidebars #left-rail,body.sidebar-first #left-rail
 {
     display:inline-block;
+    margin:0;
     width:145px;
 }
 
-
+/*
 body.two-sidebars #content .block-boxes-delta-main {
-	display: none;
+    display: none; 
 }
-
+*/
 
 body.two-sidebars #content, body.sidebar-first #content
 {
     display: inline-block;
     margin-left: 155px;
-    margin-right: -621px;
+    margin-right: -644px;
     vertical-align: top;
-    width: 467px;
+    width: 480px;
 }
 
 .header-right
@@ -178,8 +179,8 @@ body.two-sidebars #content, body.sidebar-first #content
 }
 
 .field-name-field-tp-campaign-intro-media { 
-	display: block;
-	margin-bottom: 20px;
+    display: block;
+    margin-bottom: 20px;
 }
 
 .main-content
@@ -198,7 +199,7 @@ ul,ol,li,h1,h2,h3,h4,h5
 p {
     font-size: 14px;
     line-height: 24px;
-    margin-bottom: 1em;
+    margin: 0 0 1em 0;
     color:#000;
 }
 
@@ -455,7 +456,7 @@ ul,ol
 }
 
 .main-content .block-boxes-title-features .views-row-4, .main-content .block-boxes-title-features .views-row-7, .main-content .block-boxes-title-features .views-row-10 {
-	clear:both;
+    clear:both;
 }
 
 .campaign-link
@@ -507,8 +508,8 @@ ul,ol
 }
 
 .node-type-section-front .main-content .block-boxes-current-promo .content {
-  background-color: #EFF3F5;
-  width: 640px;
+    background-color: #EFF3F5;
+    width: 640px;
 }
 
 .node-type-section-front-wide .main-content h2 {
@@ -521,11 +522,11 @@ ul,ol
 }
 
 .node-type-section-front-wide .view-campaigns {
-	 border-bottom: medium none;
+    border-bottom: medium none;
 }
 
 .node-type-section-front-wide .view-campaigns.view-display-id-block_1 {
-	margin: 30px 0 0;
+    margin: 30px 0 0;
 }
 
 
@@ -609,6 +610,7 @@ h1.title a:hover {
     color:#1CA9E7;
 }
 
+.node-openpublish-blog-post .view-blog-posts h1.title,
 .node-type-openpublish-video .main-content h1.title,
 .node-type-openpublish-article .main-content h1.title {
     font-size:42px;
@@ -619,22 +621,15 @@ h1.title a:hover {
     margin-bottom:10px;
 }
 
+.node-type-section-front-wide h1.title, 
+.node-type-section-front h1.title,
+.node-type-webform .main-content h1.title,
 .node-type-takepart-page .main-content h1.title,
 .node-type-action .main-content h1.title,
 .node-type-takepart-campaign h1.title {
     font-size:36px;
     font-family:Helvetica, Arial, sans-serif;
     line-height:38px;
-    font-weight:bold;
-    color:#000;
-    margin-bottom:10px;
-}
-
-.node-type-section-front .main-content h1.title, 
-.node-type-section-front-wide .main-content h1.title {
-    font-size:30px;
-    font-family:Helvetica, Arial, sans-serif;
-    line-height:32px;
     font-weight:bold;
     color:#000;
     margin-bottom:10px;
@@ -669,10 +664,9 @@ h1.title a:hover {
 
 .main-content h2
 {
-    font-family:Helvetica, Arial, sans-serif;
     font-size:18px;
     line-height:18px;
-    font-weight:normal;
+    font-weight:300;
     text-transform:uppercase;
     color:#9BC;
 }
@@ -683,39 +677,67 @@ h1.title a:hover {
     line-height: 120%;
     margin-bottom: 12px;
 }
+
+.node-profile h2 {
+    color: #000;
+    font-size: 36px;
+    line-height: 100%;
+    font-weight: bold;
+    text-transform: none;
+}
+
 /* headers in blocks in main body */
+
 .main-content .node-topic-front h2,
 .main-content .block-boxes h2,
 .main-content .block-boxes-title-features h2
 {
     border-top:1px dotted #000;
-    height:20px;
     margin:0;
-    padding:8px 0;
+    padding:8px 0 6px 0;
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
+    width:100%;
 }
 
+.node-type-takepart-campaign h2, 
+.node-type-topic-front h1.title,
+.page-taxonomy-term h1.title,
+.main-content .node-topic-front h2.title {
+    border-top:1px dotted #000;
+    margin:0;
+    padding:8px 0 6px 0;
+    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
+    width:100%;
+    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-size: 26px;
+    line-height: 26px;
+}
+
+.node-type-topic-front h1.title span,
+.page-taxonomy-term h1.title {
+    margin-bottom: 8px;
+}
+
+.node-type-takepart-campaign h2 span,
+.node-type-topic-front h1.title span,
+.page-taxonomy-term h1.title span,
 .main-content .node-topic-front h2 span,
 .main-content .block-boxes-title-features h2 span,
-.main-content .block-boxes h2 span
-{
-    padding:0 9px 0 0;
+.main-content .block-boxes h2 span {
+    padding:0 8px 0 0;
     background:none repeat scroll 0 0 #FFF;
     text-transform: uppercase;
     font-weight: 300;
 }
 
-.block-boxes-title-primary {
-    
-}
-
+.main-content .block-boxes-title-secondary-headlines .content,
 .main-content .block-boxes-title-features .content,
-.main-content .block-boxes-title-secondary-features .content
-{
+.main-content .block-boxes-title-secondary-features .content {
     background-color:#eff3f5;
 }
 
 /*featured blocks, img gallery styles */
+.main-content .block-boxes-title-secondary-headlines .views-row,
 .main-content .block-boxes-title-features .views-row,
 .main-content .block-boxes-title-secondary-features .views-row {
     display:table;
@@ -725,12 +747,13 @@ h1.title a:hover {
     width:200px;
     float:left;
 }
-
+.main-content .block-boxes-title-secondary-headlines .views-row,
 .main-content .block-boxes-title-secondary-features .views-row {
-    height:350px;
-    overflow: hidden;
-    margin:10px 5px;
+    height:300px;
+    overflow:hidden;
+    margin:10px 0 10px 10px;
 }
+.main-content .block-boxes-title-secondary-headlines .views-field-field-thumbnail img,
 .main-content .block-boxes-title-secondary-features .views-field-field-thumbnail img {
     width:200px;
     height:150px;
@@ -740,16 +763,18 @@ h1.title a:hover {
 .main-content .block-boxes-title-features .view-content {
     padding:5px;
 }
-
+.main-content .block-boxes-title-secondary-headlines .views-field-php,
 .main-content .block-boxes-title-secondary-features .views-field-php {
     font-size: 16px;
     padding:0 5px;
 }
+.main-content .block-boxes-title-secondary-headlines .views-field-field-promo-text,
 .main-content .block-boxes-title-secondary-features .views-field-field-promo-text {
     padding:0 5px;
     font-size: 13px;
     line-height: 15px;
 }
+.main-content .block-boxes-title-secondary-headlines .views-field-php,
 .main-content .block-boxes-title-secondary-features .views-field-php {
     margin:10px 0 0 0;
 }
@@ -801,7 +826,7 @@ h1.title a:hover {
 }
 
 .main-content .views-slideshow-controls-bottom .jcarousel-skin-takepart ul li {
-	margin: 0;
+    margin: 0;
 }
 
 .main-content .block-boxes-title-features .views-field-field-display-tag
@@ -829,11 +854,11 @@ h1.title a:hover {
 /* ===RIGHT RAIL=== */
 /* ------------------------------------------------------------------------*/
 
-#right-rail  .field-name-field-tp-campaign-sponsors {
+#right-rail .field-name-field-tp-campaign-sponsors {
     border-top: 3px solid black;
 }
 
-#right-rail  .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors {
+#right-rail .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors {
     border-top:none;
     padding:0 15px 15px;
     overflow:hidden;
@@ -859,6 +884,7 @@ h1.title a:hover {
     border:solid 4px #eff3f5;
     padding:10px;
 }
+#right-rail .block-boxes-view-name-related_actions,
 #right-rail .block-boxes-title-take-action,
 #right-rail .block-boxes-current-related_actions 
 {
@@ -912,7 +938,7 @@ h1.title a:hover {
 /*override block formatting for content inside 'our blogs'*/
 #right-rail .block-boxes-title-our-blogs .content h2
 {
-    background:url(../images/2012-02-08/45deg_lines.gif) repeat-x scroll 0 0 transparent;
+    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 0 transparent;
     line-height:11px;
 }
 
@@ -977,11 +1003,12 @@ h1.title a:hover {
     color:#9BC;
     font-family:Helvetica,Arial,sans-serif;
     font-size:18px;
-    font-weight:lighter;
+    font-weight:300;
     line-height:100%;
     text-transform: uppercase;
-    background:  url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll top right transparent;
+    background:  url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll center right transparent;
     margin: 0;
+    border: none;
 }
 
 #right-rail .block-boxes-current-photo_galleries h2 {
@@ -995,23 +1022,36 @@ h1.title a:hover {
     padding: 2px 5px 2px 0;
     text-transform: uppercase;
 }
-
+#right-rail #block-views-related-actions-block h2,
 #right-rail .block-boxes-title-take-action h2 {
     height:19px;
     width: 100%;
     background: url(../images/rr_take_action.png) no-repeat scroll 0 0 transparent;
 }
-
+#right-rail #block-views-related-actions-block h2 span,
 #right-rail .block-boxes-title-take-action h2 span {
     display:none;
 }
+
 #right-rail .block-boxes-title-popular-galleries .content {
-    	border:none;
-	padding:0;
+    border:none;
+    padding:0;
 }
 
 #right-rail .views-field-field-promo-headline {
+    /*    margin-bottom: 8px;
+        padding: 8px 0;
+        border-bottom: 1px solid #F2F2F2;
+    */
     margin:0;
+    padding:0;
+    border:none; 
+}
+
+#right-rail .view-video .views-field-field-promo-headline {
+    margin-bottom: 0;
+    padding: 0;
+    border-bottom: none;
 }
 
 #right-rail .views-field-field-promo-text {
@@ -1020,6 +1060,24 @@ h1.title a:hover {
 .takepart-newsletter-form label {
     display: none;
 }
+#right-rail .block-boxes-title-sponsored-by .field-item,
+#right-rail .block-boxes-title-spotlight .field-item,
+#right-rail .field-name-field-tp-campaign-alliances .field-item {
+    padding-top: .5em;
+    margin-top: .5em;
+    border-top: 1px solid #eff3f5;
+}
+
+#right-rail .block-boxes-title-popular-galleries .views-field-field-promo-headline {
+    margin: 4px 0 8px 0;
+}
+
+#right-rail .views-row-last .views-field-field-promo-headline {
+    margin: 4px 0 0 0;
+    padding: 0;
+    border-bottom: none;
+}
+
 /** Topics **/
 .node-topics
 {
@@ -1037,6 +1095,9 @@ h1.title a:hover {
     color:#1ca9e7;
 }
 
+.node-topics a:hover {
+    text-decoration:underline;
+}
 .node-topics-label {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -1054,6 +1115,7 @@ h1.title a:hover {
 .views-field-field-promo-headline {
     font-size: 14px;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .views-field-field-promo-headline a {
@@ -1144,34 +1206,24 @@ h1.title a:hover {
     height: 25px;
 }
 
-.main-content .block-boxes h2, .main-content .block-boxes-title-features h2 {
-    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll left center transparent;
-    border-top: 1px dotted #000000;
-    margin: 8px 0;
-    padding: 12px 0 6px 0;
-}
-
 .node-type-takepart-campaign .main-content .block-boxes h2 {
     background: none;
     border-top: none;
     text-transform: none;
-    margin 0px;
-    height: 14px;
+    margin: 0;
     font-weight: bold;
 }
 
 .node-type-takepart-campaign .main-content .field-name-field-tp-campaign-subheadline {
-	border-bottom: medium none;
+    border-bottom: medium none;
 }
 
 .node-type-takepart-campaign .field-name-field-tp-campaign-subheadline {
     padding-bottom: 0px;
 }
 
-
-
 .node-type-takepart-campaign .main-content .field-items p {
-	margin: 0px;
+    /*    margin: 0px; */
 }
 
 #footer-about p {
@@ -1218,18 +1270,18 @@ h1.title a:hover {
 }
 
 .main-content  .drupal-embed .node-openpublish-photo-gallery {
-   border: 3px solid #14ADE7 !important;
-   padding: 10px;
+    border: 3px solid #14ADE7 !important;
+    padding: 10px;
 }
 
 .main-content .drupal-embed .node-openpublish-photo-gallery .field-name-field-promo-headline {
-  color: #99BBCC;
-  font-family: Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  padding: 0 9px 0 0;
-  text-decoration: none;
-  text-transform: uppercase;
+    color: #99BBCC;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 0 9px 0 0;
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
 .main-content .drupal-embed .node-openpublish-photo-gallery .views-row a{
@@ -1238,17 +1290,17 @@ h1.title a:hover {
     line-height: 13px;
     text-transform: none;
 }
-
+/*
 .main-content .block-boxes-bid-takepart_custom-page_title_h1 h1.title span {
-	color: #000000;
+    color: #000000;
     font-family: Helvetica,Arial,sans-serif;
     font-size: 42px;
     font-weight: bold;
     line-height: 44px;
 }
-
+*/
 .main-content .views-slideshow-controls-top { 
-	z-index: 12;
+    z-index: 12;
 }
 
 body.node-type-takepart-campaign .main-content #content,
@@ -1258,10 +1310,43 @@ body.node-type-takepart-campaign .main-content #left-rail {
     float: left;
 }
 
-
-
 /* ===LEFT RAIL=== */
 /* ------------------------------------------------------------------------*/
 .node-type-takepart-campaign #left-rail {
     padding-left: 20px;
+}
+
+.block-boxes-title-latest-in-galleries .view-photo-galleries table {
+    width:640px;
+}
+.block-boxes-title-latest-in-galleries .view-photo-galleries td {
+    width:300px;
+}
+
+.main-content .field-name-field-action-main-image img {
+    margin-bottom: 25px;
+}
+
+.search-results .views-field-type {
+    color: #000;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+#block-boxes-box-407084eb {
+    margin-bottom: 18px;
+}
+
+#block-boxes-box-407084eb #tptv-more-video {
+    float:right;
+    background-color: #FFF;
+    padding-left: 8px;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: bold;
+}
+
+#block-boxes-box-407084eb .full-video {
+    float: left;
 }

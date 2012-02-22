@@ -6,7 +6,7 @@
   <?php if (!empty($title) && !($remove_title)): ?>
     <h1 <?php if (!empty($title_attributes)) print $title_attributes ?> class='title'>
       <?php if (!empty($new)): ?><span class='new'><?php print $new ?></span><?php endif; ?>
-      <a href="<?php print $node_url ?>"><?php print $title ?></a>
+      <?php print $title ?>
     </h1>
   <?php endif; ?>
 

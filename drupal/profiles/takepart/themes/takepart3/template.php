@@ -354,9 +354,8 @@ function takepart3_preprocess_node(&$vars, $hook) {
       $vars['content']['body'][0]['#markup'] .= "<span class='blog-post-continue-reading-link'>" . $more_link . "</span>"; 
     }
   }
-  
+  /* add in out link to the title */
   if ($hook == 'node' && $vars['view_mode'] == 'embed' && $vars['type'] == 'openpublish_video') {
-    // add in out link to the title
     $vars['content']['embedded_video_link'] = array(
       '#weight' => 10,
       '#theme' => 'link',
@@ -364,7 +363,7 @@ function takepart3_preprocess_node(&$vars, $hook) {
       '#path' => "node/". $vars['nid'],
       '#options' => array('html' => FALSE, 'attributes' => array('class' => 'embedded-video-link')),
     );
-  }  
+  }
   /* see https://takepart1.fogbugz.com/default.asp?17143*/
     if (isset($vars['field_tp_campaign_show_title']) && !empty($vars['field_tp_campaign_show_title'][$vars['language']]['0']['value'])) {
   	unset($vars['title']);
@@ -537,7 +536,6 @@ function takepart3_return_node_type($type) {
   
   return '';
 }
-
 
 
 function takepart3_field__field_topic($vars){

@@ -14,7 +14,7 @@
 
   <?php // if (!empty($submitted)): ?>
     <?php //print $submitted ?>
-  <?php// endif; ?>
+  <?php // endif; ?>
 
   <?php if (!empty($content)): ?>
     

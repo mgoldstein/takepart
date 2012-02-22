@@ -22,7 +22,7 @@ class views_handler_addthis extends views_handler_field {
 
     $ret = <<<EOV
 <!-- AddThis Button BEGIN -->
-<div class="addthis_toolbox addthis_default_style "
+<div class="addthis_toolbox addthis_default_style" 
   addthis:url="$theURL"
   addthis:title="$curtitle"
 >

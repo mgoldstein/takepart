@@ -1,7 +1,4 @@
-
 /* layout styles */
-
-
 body.two-sidebars #left-rail, 
 body.sidebar-first #left-rail{
     width:140px;
@@ -25,7 +22,6 @@ body.sidebar-first #left-rail{
     padding: 20px 20px 35px;
 }
 
-
 body.node-type-takepart-group #content,
 body.node-type-takepart-group #left-rail{
     margin-top:0;
@@ -37,10 +33,9 @@ body.node-type-takepart-campaign #right-rail {
     margin-right: 10px;
 }
 
-
 body.node-type-openpublish-article #content,
 body.node-type-openpublish-article #left-rail {
-    margin-top:20px;
+    margin-top:0;
 } 
 
 .contextual-links-region{
@@ -65,10 +60,14 @@ h1{
 }
 
 hr {
-    background: url(../images/sprite.png) repeat-x 0 -159px;
+    border-top: 1px solid #D9E7EE;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
     clear: both;
     margin: 0 0 20px;
-    height:1px;
+    height: 1px;
+    color: #D9E7EE;
 }
 
 #content ul,
@@ -101,7 +100,6 @@ hr {
    /* margin:0 0 60px 0; */
 }
 
-
 /* Tabs */
 .not-logged-in .tabs{
     display:none;
@@ -111,8 +109,6 @@ hr {
 .block-boxes-headline h2#screaming-headline {
     height: 68px;
 }
-
-
 
 /* navigation */
 ul#top-nav li a:hover{
@@ -124,20 +120,12 @@ ul#top-nav li a:hover{
     overflow:hidden;
 }
 
-
-
-
-
-
-
 /* blog pages */
 .node-type-openpublish-blog-post .region-content-top .field-name-field-blogpost-main-image{
     margin:0;
 }
 
-
 /* group pages */
-
 .node-type-takepart-group h1 {
     margin: 0 0 5px;
 }
@@ -160,9 +148,6 @@ ul#top-nav li a:hover{
 .node-type-takepart-group .region-highlighted .field-name-field-group-main-image{
     clear:both;
 }
-
-
-
 
 /***** Taxonomy Search List *****/
 .view-taxonomy-search-list .views-field-url a{
@@ -210,14 +195,10 @@ ul#top-nav li a:hover{
 }
 
 /**** Campaign Page(s) ****/
-
-
-
 .node-type-takepart-campaign #content,
 .node-type-takepart-campaign #left-rail{
     margin-top:0;
 }
-
 
 .node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a:hover{
     text-decoration:none;
@@ -263,7 +244,7 @@ body.page-taxonomy-term h1{
 }
 
 .field-name-field-display-tag a {    
-    color: #1ca9e7;
+    color: #1CA9E7;
     text-decoration: none;
 }
 
@@ -290,8 +271,6 @@ body.page-taxonomy-term h1{
 }
 
 /* photo page */
-
-
 .block-boxes-current-photo_galleries h2 {
     background: none repeat scroll 0 0 #CCCCCC;
     margin: 25px 0 7px;
@@ -307,7 +286,6 @@ body.page-taxonomy-term h1{
 .node-type-openpublish-photo-gallery h1{
     margin:0 0 5px 0;
 }
-
 
 #views_slideshow_cycle_teaser_section_photo_gallery-block .views-field-field-gallery-images img{
     display:block;
@@ -326,7 +304,6 @@ body.page-taxonomy-term h1{
     background-color: #E6E6EA;	  
     color:#000;
 }
-
 
 /* photo and video submitted wrapper */
 .submitted-wrapper .field {
@@ -379,8 +356,7 @@ body.page-taxonomy-term h1{
 
 .view-photo-galleries td {
     vertical-align:top;
-    padding:0 20px 0 0;
-    width:300px;
+    padding: 0 9px 0 0;
 }	
 .view-photo-galleries td.col-last{
     padding:0;
@@ -389,10 +365,11 @@ body.page-taxonomy-term h1{
     margin:0;
 }
 .view-photo-galleries td .views-field-field-thumbnail img{
-    /* border: 1px solid black; */
     border: none;
     display:block;
-    margin:0
+    margin:0;
+    width: 207px;
+    height:154px;
 }
 .view-photo-galleries td .views-field-field-promo-headline{
     font-size: 16px;
@@ -455,18 +432,17 @@ body.page-taxonomy-term h1{
     zoom:1; *display: inline; _height: 121px;
 }
 
-
 /* Video Node */
 .node-type-openpublish-video .field-name-field-subhead {
     color: #666666;
     font-size: 20px;
-    font-weight: normal;
+    font-weight: 300;
     line-height: 24px;
     margin-bottom: 10px;
 }
 .node-type-openpublish-video .submitted-wrapper {
     border-bottom: medium none;
-    margin-bottom: 0;
+    margin-bottom: 8px;
 }
 .node-type-openpublish-video .field-name-field-video-embedded{
     margin:0 0 20px 0;
@@ -488,19 +464,21 @@ body.page-taxonomy-term h1{
 .block-boxes-view-name-video h2,
 div[class*='block-boxes-bid-views-video-block'] h2,
 div[class*='block-boxes-delta-video-block'] h2 {
-    background: none repeat scroll 0 0 #CCCCCC;
-    margin: 25px 0 7px;
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll right top transparent;
+    margin: 12px 0 8px 0;
+    color: #99BBCC;
+    font-size:18px;
+    font-weight:300;
+    line-height:100%;
+    text-transform: uppercase;
 }
 .block-boxes-current-video h2 span,
 .block-boxes-view-name-video h2 span,
 div[class*='block-boxes-bid-views-video-block'] h2 span,
 div[class*='block-boxes-delta-video-block'] h2 span{
-    background: none repeat scroll 0 0 #CCCCCC;
+    background: none repeat scroll 0 0 #FFFFFF;
     margin: 25px 0 7px;
-    background-color:#fff;
-    border-right: 5px solid #FFFFFF;
     padding: 2px 5px 2px 0;
-    text-transform: uppercase;
 }
 
 
@@ -519,14 +497,14 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     margin-right: 0;
 }
 .view-video .views-field-field-thumbnail{
-    height: 130px;
-    width: 196px;
+    height: 154px;
+    width: 207px;
 }
 .view-video .views-field-field-thumbnail img{
     display:block;
     border: none;
-    height: 128px;
-    width: 194px;
+    height: 154px;
+    width: 207px;
 }
 
 .node-openpublish-video .field-name-field-promo-headline,
@@ -586,8 +564,8 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 .view-video td {
     vertical-align:top;
     padding:0;
-    width:196px;
-    padding:0 15px 0 0;
+    width:207px;
+    padding:0 9px 0 0;
 }
 .view-video td .views-field-field-thumbnail {
     margin:0;
@@ -608,17 +586,25 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 }
 
 .node-openpublish-video .field-name-field-promo-text,
-.node-openpublish-video a.embedded-video-link,
-.view-video .views-field-field-promo-text{
+.node-openpublish-video a.embedded-video-link {
     margin:0 0 10px 0;	
     color:#8E8E8E;
 }
-
+.view-video .views-field-field-promo-text {
+    color:#000;
+    margin:0;
+    font-size:13px;
+    line-height: 15px;
+}
+#right-rail .view-video .views-field-field-promo-text, 
+#right-rail .node-openpublish-video .field-name-field-promo-text {
+    margin: 0;
+    color: #000;
+}
 .node-openpublish-video .field-name-field-promo-text {
     padding-bottom: 5px; 
     margin-bottom: 10px;
     color:#8E8E8E;
-
 }
 
 
@@ -626,7 +612,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 #right-rail #block-boxes-box-e9e8814f h2,
 #right-rail #block-views-video-block h2,
 #right-rail .block-boxes-view-name-related_campaigns h2{
-    background: url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 2px transparent;
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 2px transparent;
     font-size: 18px;
     font-weight: lighter;
     color: #99bbcc;
@@ -636,7 +622,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 }
 
 #left-rail #block-views-related-campaigns-block h2{
-    background: url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 2px transparent;
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 2px transparent;
     font-size: 18px;
     font-weight: lighter;
     color: #99bbcc;
@@ -647,34 +633,45 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 
 #right-rail .view-video .views-row{
     float: none;
-    margin: 0 0 20px 0;
+    padding: 10px 0 0 0;
+    margin: 10px 0 0 0;
     overflow: hidden;
     width: 100%;
+    border-top: 1px solid #EFF3F5;
+}
+
+#right-rail .view-video .views-row-first {
+    margin:0;
 }
 #right-rail .view-video .views-field-field-thumbnail{
-    width: 127px;
-    height:102px;
-    float:left;
-    margin:0 15px 0 0;
+    width: 100px;
+    height: 75px;
+    float: left;
+    margin: 0 15px 0 0;
 }
-#right-rail .view-video .views-field-field-thumbnail img{
-    width: 125px;
-    height: 100px;
-}
+
 #right-rail .view-video .views-field-field-promo-headline{
     margin-top:0;
 }
-#right-rail .view-video .views-field-field-promo-headline h3{
-    font-size:16px;
+#right-rail .view-video .views-field-field-thumbnail img {
+    width: 100px;
+    height: 75px;
 }
-
-
+#right-rail .view-video .views-field-field-promo-headline h3{
+    font-size:14px;
+}
 
 /* action + impact page */
 .view-campaigns{
     border-bottom: 3px solid #666666;
     padding-bottom: 20px;
 }
+
+.node-type-section-front-wide .view-campaigns {
+    border-bottom: none;
+    padding-bottom: 10px;
+}
+
 .view-campaigns tr{
     display:block;
     margin:0 0 25px 0;
@@ -1002,10 +999,9 @@ p.search-performance{
 .block-boxes-title-features,
 .block-boxes-title-popular-galleries{
     margin:0 0 20px 0;
-    padding-bottom:10px;
-    border-bottom:1px dotted silver;
+    padding-bottom:0;
+    border-bottom:none;
 }
-
 
 /* author page */
 #author_info {
@@ -1102,7 +1098,7 @@ p.search-performance{
 /* image captions */
 .field-name-field-article-main-image img{
     display:block;
-    border:1px solid #6a6a6a;
+    border:none;
     margin-top:10px;
 }
 .photo-wrapper{
@@ -1146,13 +1142,13 @@ p.search-performance{
     padding: 15px 0 10px;
     clear: both;
     text-align:left;
+    margin-bottom: 1.5em;
 }
 .field-name-field-media-caption p{
     margin:0;
     font-size: 11px;
     line-height:12px;
 }
-
 
 /* pagers */
 .item-list ul.pager{
@@ -1224,7 +1220,7 @@ div.takepart_addthis_rightrail .button_container a.addthis_button_google_plusone
 div.takepart_addthis_footer span#addthis_footer_sharethis {
     color: #000;
     font-size: 14px;
-    padding-top: 5px;
+    padding-top: 2px;
     font-weight: bold;
     text-transform: capitalize;
 }
@@ -1275,12 +1271,11 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
     margin-left: 5px;
 }
 .takepart_addthis_simple a.addthis_button_facebook span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll 0 -5px transparent;
+    background: url("../images/icon_facebook.png") no-repeat scroll 0 0 transparent;
 } 
 .takepart_addthis_simple a.addthis_button_twitter span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
+    background: url("../images/icon_twitter.png") no-repeat scroll 0 0 transparent;
 }
-
 
 /* homepage promo box */
 .block-boxes-title-features .views-row {
@@ -1290,7 +1285,6 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
 .block-boxes-title-features .views-field-field-display-tag .field-content{
     margin-top:0;
 }
-
 
 /* media browser for wysiwyg */
 #overlay-container #media-tab-brightcove a.fake-ok,
@@ -1370,7 +1364,7 @@ ul#global-links {
 }
 .region-highlighted .block-context-related-menu ul.menu li a:hover, .region-highlighted .block-menu ul.menu li a:hover{
     text-decoration:none;
-    color:#1ca9e7;
+    color: #1CA9E7;
 }
 .region-highlighted .block-context-related-menu ul.menu li a.active, .region-highlighted .block-menu ul.menu li a.active{
     border-bottom: 1px solid #CCCFFF;

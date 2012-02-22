@@ -268,27 +268,20 @@ a.user-menu-register  {
     padding:4px 0 1px 3px
 }
 
-#slim-header #join-login-top a:hover {text-decoration: none;}
+#slim-header #join-login-top a:hover {
+    text-decoration: none;
+}
 
-
-
-
-/****** Top Follow Us Icons *****/
-
+/***** Top Follow Us Icons *****/
 ul#top-follow {
     margin: 9px 0 0 0;
     float: right;
-
 }
-
 ul#top-follow li {
     list-style-type: none;
     float: left;
     margin: 0 0 0 0;
 }
-
-
-
 ul#top-follow li.title {
     margin-top: 8px;
 }
@@ -577,10 +570,8 @@ body.node-type-section-front .main-content .view-blogs .taxonomy-term .views-row
 }
 
 .entry h1 a:hover {
-    color:  #1ca9e7;
-    text-decoration: underline;
+    color:  #1CA9E7;
 }
-
 
 ul.author-date-comment {
     color: #666;
@@ -652,7 +643,6 @@ ul.author-date-comment li.comment {
     margin-bottom: 25px;
 }
 
-
 .action-callout span.title {
     color: #fff;
     text-transform: uppercase;
@@ -688,7 +678,6 @@ ul.author-date-comment li.comment {
     border: 11px solid #ffefd8;
     display: block;
 }
-
 
 .action-mega-detail a:hover {
     color: #fdab30;
@@ -827,6 +816,7 @@ h3.title a{
 
 h3.title a:hover{
     color: #1ca9e7;
+    text-decoration: none;
 }
 
 #right-rail h3.title {
@@ -936,33 +926,18 @@ h3.title a:hover{
     text-indent: -9000px;
 }
 
-
-
-
-
-
-
-
-
-
 .footer-column-wrapper li a {
     color: #000;
 }
 
 .footer-column-wrapper li a:hover {
-    color: #1ca9e7;
-    text-decoration: underline;
+    color: #1CA9E7;
+    text-decoration: none;
 }
-
-
 
 #footer-links li {
     float: left;
 }
-
-
-
-
 
 ul#global-links li.last {
     border: none;
@@ -1588,12 +1563,10 @@ form.comment-form {
 
 #comments .links a:hover {
     color: #1ca9e7;
+    text-decoration: none;
 }
 
-
-
 /***** Article ******/
-
 .quote {
     background: url(../images/bg-quote.gif) no-repeat 0 4px;
     color: #999;
@@ -1766,39 +1739,27 @@ Block Boxes (General)
     vertical-align: top;
     width: 295px;
 }
-
 .block-boxes-title-news-to-know .views-row a:hover {
     color: #1ca9e7;
+    text-decoration: none;
 }
-
 .block-boxes-title-news-to-know .views-row-1,
 .block-boxes-title-news-to-know .views-row-2 {
     border-top: 0;
 }
-
 .block-boxes-title-news-to-know .views-row.views-row-even {
     margin-right: 0;
 }
-
 .block-boxes-title-news-to-know .views-row a {
     color: black;
     display: inline-block;
     font-weight: bold;
 }
-
-
 .views-cycle-pager li.activeSlide {
     border: 5px solid red;
 }
 
-
-
-
-
-
 /* Blog section */
-
-
 .block-boxes-headline h2#screaming-headline { 
     height: 40px;
     line-height: 68px;
@@ -1932,6 +1893,15 @@ h2.title a{
     /*width: 280px;*/
 }
 
+.embed-action-wrapper .embed-action table {
+    width:100%;
+    padding:0;
+    margin:0;
+    border:none;
+}
+.embed-action-wrapper .embed-action tbody {
+    border:none;
+}
 .embed-action-wrapper .embed-action a {
     color: #302009;
     font-size: 18px;
@@ -2054,6 +2024,7 @@ h2.title a{
 
 .block-boxes-current-related_campaigns a:hover {
     color: #1CA9E7;
+    text-decoration: none;
 }
 
 .block-boxes-current-related_actions .views-row,
@@ -2157,7 +2128,6 @@ body.node-type-topic-front .submitted-wrapper{
 .block-boxes-current-featured_items .view-dom-id-1 .views-field-field-promo-text {
     font-size: 14px;
     line-height: 20px;
-    color:#D9E7EE;
 }
 
 .block-box-secondary,
@@ -2212,8 +2182,8 @@ body.node-type-topic-front .submitted-wrapper{
 
 .block-box-secondary .view-featured-items .views-field-php a:hover,
 .block-boxes-current-featured_items .view-dom-id-2 .views-field-php a:hover {
-    color: #1ca9e7;
-    text-decoration: underline;
+    color: #1CA9E7;
+    text-decoration: none;
 }
 
 .block-box-primary .view-featured-items .views-field-php,
@@ -2231,13 +2201,30 @@ body.node-type-topic-front .submitted-wrapper{
     font-weight: bold;
     color: black;
 }
-
+.block-box-primary .view-featured-items .views-field-php .field-content a:hover,
+.block-boxes-current-featured_items .view-dom-id-1 .field-content a:hover { 
+    color: #1CA9E7;
+    text-decoration: none;
+}
+.block-boxes-title-primary-features .view-featured-items .views-field-php .field-content a,
 .block-boxes-title-primary .view-featured-items .views-field-php .field-content a {
     display:block;
-    padding-top:2em;
-    color:#d9e7ee;
+    padding-top:1em;
 }
 
+.block-boxes-title-primary-features .view-featured-items .views-field-php .field-content a:hover,
+.block-boxes-title-primary .view-featured-items .views-field-php .field-content a:hover {
+    color: #1CA9E7;
+    text-decoration: none;
+}
+.block-boxes-title-secondary-headlines a {
+    color:#000;
+    padding-top:0;
+}
+
+.block-boxes-title-secondary-headlines a:hover {
+    color: #1CA9E7;
+}
 /***** Taxonomy Search List *****/
 .block-boxes-current-taxonomy_search_list h2 {
     border-bottom: 1px solid #d9e7ee;
@@ -2262,8 +2249,7 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 .view-taxonomy-search-list .views-field-url a:hover {
-    color: #1ca9e7;
-    text-decoration: underline;
+    color: #1CA9E7;
 }
 
 .view-taxonomy-search-list .views-field-field-promo-text {
@@ -2503,6 +2489,9 @@ body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #lef
     margin: 30px 0;
 }
 
+.node-type-section-front-wide .main-content .view-campaigns.view-display-id-block_1 {
+    margin: 10px 0;
+}
 .view-campaigns.view-display-id-block_1 .views-row {
     display: inline-block;
     margin: 0 5px 0 0;
@@ -2511,14 +2500,6 @@ body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #lef
     padding: 0;
     vertical-align: top;
     width: 199px;
-}
-
-.view-campaigns.view-display-id-block_1 .views-row .views-field-field-tp-campaign-cover-image {
-
-}
-
-.view-campaigns.view-display-id-block_1 .views-row .views-field-title {
-
 }
 
 .view-campaigns.view-display-id-block_1 .views-row .views-field-title a {  
@@ -2530,16 +2511,10 @@ body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #lef
 }
 
 .view-campaigns.view-display-id-block_1 .views-row .views-field-title a:hover {
-    color: #1ca9e7;
-    text-decoration: underline;
+    color: #1CA9E7;
 }
 
 .view-campaigns.view-display-id-block_1 .views-row .views-field-field-tp-campaign-subheadline {
-
-}
-
-.view-campaigns.view-display-id-block_1 .views-row .views-field-field-tp-campaign-subheadline {
-    color: #666;
     font-size: 14px;
 }
 
@@ -2556,36 +2531,29 @@ body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #lef
     margin: 30px 0;
 }
 
+.node-type-section-front-wide .view-campaigns.view-dom-id-2 .view-content,
+.node-type-section-front-wide .view-campaigns.view-dom-id-3 .view-content {
+    margin:0;
+}
 
+.view-campaigns.view-dom-id-2 .view-content ul,
+.view-campaigns.view-dom-id-3 .view-content ul{  
+    margin: 0;
+    padding: 0;
+}
 
+.view-campaigns.view-dom-id-2 .view-content ul li,
+.view-campaigns.view-dom-id-3 .view-content ul li {
+    display: inline-block;
+    margin: 0 5px 30px 0;
+    padding: 0;
+    vertical-align: top;
+    width: 150px;
+}
 
 .view-campaigns.view-dom-id-2 .view-content ul li a,
 .view-campaigns.view-dom-id-3 .view-content ul li a {
     font-size: 16px;
-}
-
-/** Topics **/
-.node-topics {
-    border-top: 1px dotted #555;
-    border-bottom: 1px dotted #555;
-    clear: both;
-    padding: 14px 25px 14px 70px;
-    margin-top:14px;
-}
-
-.node-topics a {
-    text-decoration: none;
-    font-size: 14px;
-    color: #1ca9e7;
-}
-
-.node-topics-label {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    height: 0;
-    left: -55px;
-    overflow: visible;
-    position: relative;
 }
 
 body.node-type-takepart-campaign .node-takepart-campaign h2.title{
@@ -2594,12 +2562,9 @@ body.node-type-takepart-campaign .node-takepart-campaign h2.title{
 
 
 body.node-type-takepart-campaign .region-sidebar-first {  
-    left: -24px;
+    left: -12px;
     position: relative;
 }
-
-
-
 
 .field-name-field-tp-campaign-seg-1-html,
 .field-name-field-tp-campaign-seg-2-html,
@@ -2936,7 +2901,7 @@ div.messages a:visited {
     margin:25px 0 7px 0;
 }
 .block-boxes-title-popular-galleries h2 span {
-    background:transparent url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 0;
+    background:transparent url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 0;
     text-transform:uppercase;
     padding:2px 35px 2px 0;
     border-right:5px solid #fff;
