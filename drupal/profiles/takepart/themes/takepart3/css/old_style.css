@@ -2562,12 +2562,9 @@ body.node-type-takepart-campaign .node-takepart-campaign h2.title{
 
 
 body.node-type-takepart-campaign .region-sidebar-first {  
-    left: -24px;
+    left: -12px;
     position: relative;
 }
-
-
-
 
 .field-name-field-tp-campaign-seg-1-html,
 .field-name-field-tp-campaign-seg-2-html,

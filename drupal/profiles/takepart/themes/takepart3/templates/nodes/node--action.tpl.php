@@ -98,6 +98,4 @@ print '<div id="action_addthisblock">'. $addthisblock['content'] .'</div>';
 <?php endif; ?>
 </div>
 
-<hr />
-
 <?php if (!empty($post_object)) print render($post_object) ?>

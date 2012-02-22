@@ -64,10 +64,14 @@ h1{
 }
 
 hr {
-    background: url(../images/sprite.png) repeat-x 0 -159px;
+    border-top: 1px solid #D9E7EE;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
     clear: both;
     margin: 0 0 20px;
-    height:1px;
+    height: 1px;
+    color: #D9E7EE;
 }
 
 #content ul,
@@ -658,7 +662,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     height: 75px;
 }
 #right-rail .view-video .views-field-field-promo-headline h3{
-    font-size:16px;
+    font-size:14px;
 }
 
 /* action + impact page */
@@ -1143,13 +1147,13 @@ p.search-performance{
     padding: 15px 0 10px;
     clear: both;
     text-align:left;
+    margin-bottom: 1.5em;
 }
 .field-name-field-media-caption p{
     margin:0;
     font-size: 11px;
     line-height:12px;
 }
-
 
 /* pagers */
 .item-list ul.pager{
