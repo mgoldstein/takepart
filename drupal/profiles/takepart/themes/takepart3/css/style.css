@@ -179,8 +179,8 @@ body.two-sidebars #content, body.sidebar-first #content
 }
 
 .field-name-field-tp-campaign-intro-media { 
-	display: block;
-	margin-bottom: 20px;
+    display: block;
+    margin-bottom: 20px;
 }
 
 .main-content
@@ -442,7 +442,7 @@ ul,ol
 }
 
 .main-content .block-boxes-title-features .views-row-4, .main-content .block-boxes-title-features .views-row-7, .main-content .block-boxes-title-features .views-row-10 {
-	clear:both;
+    clear:both;
 }
 
 .campaign-link
@@ -494,8 +494,8 @@ ul,ol
 }
 
 .node-type-section-front .main-content .block-boxes-current-promo .content {
-  background-color: #EFF3F5;
-  width: 640px;
+    background-color: #EFF3F5;
+    width: 640px;
 }
 
 .node-type-section-front-wide .main-content h2 {
@@ -508,11 +508,11 @@ ul,ol
 }
 
 .node-type-section-front-wide .view-campaigns {
-	 border-bottom: medium none;
+    border-bottom: medium none;
 }
 
 .node-type-section-front-wide .view-campaigns.view-display-id-block_1 {
-	margin: 30px 0 0;
+    margin: 30px 0 0;
 }
 
 
@@ -812,7 +812,7 @@ h1.title a:hover {
 }
 
 .main-content .views-slideshow-controls-bottom .jcarousel-skin-takepart ul li {
-	margin: 0;
+    margin: 0;
 }
 
 .main-content .block-boxes-title-features .views-field-field-display-tag
@@ -1006,11 +1006,11 @@ h1.title a:hover {
 }
 
 #right-rail .views-field-field-promo-headline {
-/*    margin-bottom: 8px;
-    padding: 8px 0;
-    border-bottom: 1px solid #F2F2F2;
-*/
-     margin:0;
+    /*    margin-bottom: 8px;
+        padding: 8px 0;
+        border-bottom: 1px solid #F2F2F2;
+    */
+    margin:0;
     padding:0;
     border:none; 
 }
@@ -1194,7 +1194,7 @@ h1.title a:hover {
 
 
 .node-type-takepart-campaign .main-content .field-items p {
-/*    margin: 0px; */
+    /*    margin: 0px; */
 }
 
 #footer-about p {
@@ -1241,18 +1241,18 @@ h1.title a:hover {
 }
 
 .main-content  .drupal-embed .node-openpublish-photo-gallery {
-   border: 3px solid #14ADE7 !important;
-   padding: 10px;
+    border: 3px solid #14ADE7 !important;
+    padding: 10px;
 }
 
 .main-content .drupal-embed .node-openpublish-photo-gallery .field-name-field-promo-headline {
-  color: #99BBCC;
-  font-family: Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  padding: 0 9px 0 0;
-  text-decoration: none;
-  text-transform: uppercase;
+    color: #99BBCC;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 0 9px 0 0;
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
 .main-content .drupal-embed .node-openpublish-photo-gallery .views-row a{
@@ -1261,17 +1261,17 @@ h1.title a:hover {
     line-height: 13px;
     text-transform: none;
 }
-
+/*
 .main-content .block-boxes-bid-takepart_custom-page_title_h1 h1.title span {
-	color: #000000;
+    color: #000000;
     font-family: Helvetica,Arial,sans-serif;
     font-size: 42px;
     font-weight: bold;
     line-height: 44px;
 }
-
+*/
 .main-content .views-slideshow-controls-top { 
-	z-index: 12;
+    z-index: 12;
 }
 
 body.node-type-takepart-campaign .main-content #content,
