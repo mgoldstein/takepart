@@ -622,7 +622,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 }
 
 #right-rail .view-video td {
-    padding: 0 0 12px 0;
+    padding-bottom: 12px;
 }
 
 #right-rail .view-video .views-row-last td {
@@ -632,7 +632,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     margin:0;
     width:135px;
     height:auto;
-    text-align: left;
+    padding-right:10px;
 }
 #right-rail .view-video .views-field-field-thumbnail img{
     width: 125px;
