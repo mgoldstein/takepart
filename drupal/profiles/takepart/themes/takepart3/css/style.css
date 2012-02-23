@@ -721,11 +721,11 @@ h1.title a:hover {
 .main-content .block-boxes h2,
 .main-content .block-boxes-title-features h2
 {
-    border-top:1px dotted #000;
-    margin:0;
-    padding:8px 0 6px 0;
-    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
-    width:100%;
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll left center transparent;
+    border-top: 1px dotted #000000;
+    margin: 0 0 1px;
+    padding: 8px 0 5px;
+    width: 100%;
 }
 
 .node-type-takepart-campaign h2, 
