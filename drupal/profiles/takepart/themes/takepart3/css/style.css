@@ -710,7 +710,7 @@ h1.title a:hover {
 }
 
 .node-openpublish-blog-post.node-teaser h1.title {
-    font-size: 18px;
+    font-size: 32px;
     font-weight: bold;
     line-height: 120%;
     color: #000;
@@ -1125,6 +1125,9 @@ h1.title a:hover {
     border-bottom: none;
 }
 
+#right-rail .block-boxes-current-related_actions .views-row-last .views-field-field-promo-headline {
+    margin: 0;
+}
 /** Topics **/
 .node-topics
 {
@@ -1469,13 +1472,12 @@ body.node-type-openpublish-blog-post h1.page-title {
 
 /***** Blog Front *****/
 body.node-type-blog-front .node-blog-front h1.title,
-body.node-type-blog-front .node-blog-front h2.title,
-body.node-type-blog-front .submitted-wrapper,
-.node-openpublish-blog-post.node-teaser .submitted-wrapper {
+body.node-type-blog-front .node-blog-front h2.title {
     display: none;
 }
 
 .node-openpublish-blog-post.node-teaser .field-name-field-blogpost-subhead {
-    color: #000;
-    font-size: 14px;
+    color: #666;
+    font-size: 18px;
+    line-height: normal;
 }
