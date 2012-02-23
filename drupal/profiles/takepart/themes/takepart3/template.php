@@ -377,8 +377,16 @@ function takepart3_form_comment_form_alter(&$form, &$form_state, $form_id) {
   unset($form['author']['_author']['#title']);
 }
 
-function takepart3_field__field_author(&$vars){
+function takepart3_field__field_actionheaderimghref(&$vars) {
+    $base = base_path() . 'sites/default/files/styles/action_header_image/public/';
+    $link = $vars['element']['#object']->field_actionheaderimghref['und'][0]['url'];
+    $uri = $vars['element']['#object']->field_actionheaderimg['und'][0]['filename'];
+    $url = $base . $uri;
+    
+    return sprintf('<a href="%s"><img src="%s" /></a>', $link, $url);
+}
 
+function takepart3_field__field_author(&$vars) {
   // Author
   $authors = array();
   foreach($vars['items'] as $key => $value){
