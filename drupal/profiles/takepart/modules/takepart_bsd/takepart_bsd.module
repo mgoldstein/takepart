@@ -92,6 +92,24 @@ function _takepart_bsd_getformname($id) {
   return $newslettername;
 }
 
+/**
+* Get newsletter public title for a given form id.
+* @param $id
+*   The id of the form.
+* @return
+* A string containing the public title;
+**/
+function _takepart_bsd_getpublictitle($id) {
+  $public_title = '';
+  $formsxml = _takepart_bsd_apiquery("signup/list_forms");
+  $forms = simplexml_load_string($formsxml);
+  foreach ($forms as $child) {
+    if((int) $child->attributes()->id == $id) {
+      $public_title = (string) $child->form_public_title;
+    }
+  }
+  return $public_title;
+}
 
 /**
 * Unsubscribe user from a given campaign.
@@ -231,7 +249,7 @@ function _takepart_bsd_apiquery($url, $query) {
 **/
 function _takepart_bsd_array_to_xml($array, &$root) {
   foreach($array as $key => $value) {
-    if(strrpos($key, 'signup_form_field') > -1) {
+    if(strrpos($key, 'signup_form') > -1) {
       $key = preg_replace('/[0-9]/i', '', $key);
     }
     if(is_array($value)) {
