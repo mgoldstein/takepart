@@ -265,52 +265,30 @@ jQuery(document).ready(function () {
     var target = '.main-content .block-boxes-title-features .views-row';
     var tallestofthemall = 0;
     jQuery(target).each(function () {
-    	if (jQuery(this).height() > tallestofthemall) {
-    	  tallestofthemall = jQuery(this).height();
-    	}
+    	index = parseInt(i/3);
+    	if ((!tallestofthemall[index]) || (jQuery(this).height() > tallestofthemall[index])) {
+    		tallestofthemall[index] = jQuery(this).height();
+    	} 
+    	i++;
     });
+    i = 0;
     jQuery(target).each(function () {
-    	jQuery(this).height(tallestofthemall);
+    	index = parseInt(i/3);
+    	jQuery(this).height(tallestofthemall[index]);
+    	i++;
     });  
 });
 
-*/
-
-
-/*
- * 
- * 
-targetId : #views_slideshow_cycle_teaser_section_slide_rotator-block
-slideshowId : slide_rotator-block
-
-for(test in ss_obj) {
-	alert(test + ' : ' + ss_obj[test]);
-}
-
-	jQuery('.viewsSlideshowCycle-processed').each(function () {
-    	//alert(jQuery(this).id);
-    	
+/*conditional padding for article imageas*/
+jQuery(document).ready(function () {
+	var target = '.field-type-text-with-summary img';
+    jQuery(target).each(function () {
+    	if(jQuery(this).css('float') == 'left') {
+    		jQuery(this).css('padding-right', '10px');
+    	}
+    	if(jQuery(this).css('float') == 'right') {
+    		jQuery(this).css('padding-left', '10px');
+    	}
     	
     });
-
-num_divs
-totalImages
-loadedImages
-*/
-
-
-/*
-$.fn.equalHeights = function(px) {
-	$(this).each(function(){
-	var currentTallest = 0;
-	$(this).children().each(function(i){
-	    if ($(this).height() > currentTallest) { currentTallest = $(this).height(); }
-	        });
-	    if (!px || !Number.prototype.pxToEm) currentTallest = currentTallest.pxToEm(); //use ems unless px is specified
-	        // for ie6, set height since min-height isn't supported
-	    if ($.browser.msie && $.browser.version == 6.0) { $(this).children().css({'height': currentTallest}); }
-	        $(this).children().css({'min-height': currentTallest}); 
-	    });
-	    return this;
-	};
-*/
+});
