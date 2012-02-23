@@ -81,7 +81,7 @@ h1{
     line-height:24px;
 }
 #content q{
-   /* margin:0 0 60px 0; */
+    /* margin:0 0 60px 0; */
 }
 
 
@@ -540,9 +540,11 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     padding-bottom: 20px;
     padding-top: 10px;
 }
-.view-video tr{
-    display:block;
-    margin:0 0 25px 0;
+#right-rail .view-video tr{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 .view-video td {
     vertical-align:top;
@@ -550,7 +552,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     width:196px;
     padding:0 15px 0 0;
 }
-.view-video td .views-field-field-thumbnail {
+.view-video td.views-field-field-thumbnail {
     margin:0;
 }
 .view-video td.col-last{
@@ -612,24 +614,43 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     overflow: hidden;
     width: 100%;
 }
-#right-rail .view-video .views-field-field-thumbnail{
-    width: 127px;
-    height:102px;
-    float:left;
-    margin:0 15px 0 0;
+#right-rail .view-video thead {
+    display: none;
+}
+#right-rail .view-video tbody {
+    border: none;
+}
+
+#right-rail .view-video td {
+    padding: 0 0 12px 0;
+}
+
+#right-rail .view-video .views-row-last td {
+    padding:0;
+}
+#right-rail .view-video td.views-field-field-thumbnail{
+    margin:0;
+    width:135px;
+    height:auto;
+    text-align: left;
 }
 #right-rail .view-video .views-field-field-thumbnail img{
     width: 125px;
     height: 100px;
 }
-#right-rail .view-video .views-field-field-promo-headline{
+#right-rail .view-video .views-field-field-promo-headline {
     margin-top:0;
 }
-#right-rail .view-video .views-field-field-promo-headline h3{
-    font-size:16px;
+
+#right-rail .view-video .views-field-field-promo-headline h3 {
+    font-size: 16px;
 }
 
-
+#right-rail .view-video .promo-text {
+    font-size: 12px;
+    font-weight: normal;
+    color: #8E8E8E;
+}
 
 /* action + impact page */
 .view-campaigns{

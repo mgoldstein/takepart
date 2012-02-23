@@ -1090,15 +1090,10 @@ h1.title a:hover {
         padding: 8px 0;
         border-bottom: 1px solid #F2F2F2;
     */
+    font-size: 16px;
     margin:0;
     padding:0;
     border:none; 
-}
-
-#right-rail .view-video .views-field-field-promo-headline {
-    margin-bottom: 0;
-    padding: 0;
-    border-bottom: none;
 }
 
 #right-rail .views-field-field-promo-text {
@@ -1116,11 +1111,11 @@ h1.title a:hover {
 }
 
 #right-rail .block-boxes-current-photo_galleries .views-field-field-promo-headline {
-    margin: 4px 0 8px 0;
+    margin: 10px 0 12px 0;
 }
 
 #right-rail .views-row-last .views-field-field-promo-headline {
-    margin: 4px 0 0 0;
+    margin: 10px 0 0 0;
     padding: 0;
     border-bottom: none;
 }
@@ -1474,4 +1469,18 @@ body.node-type-openpublish-blog-post h1.page-title {
 body.node-type-blog-front .node-blog-front h1.title,
 body.node-type-blog-front .node-blog-front h2.title {
     display: none;
+}
+
+.field-name-body img.media-image {
+    margin-bottom: 10px;
+    
+}
+.field-name-body img[style~="float: left"] {
+    margin-right: 10px;
+    
+}
+
+.field-name-body img[style~="float: right"] {
+    margin-left: 10px;
+    
 }
