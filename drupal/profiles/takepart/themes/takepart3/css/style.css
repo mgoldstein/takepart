@@ -700,10 +700,13 @@ h1.title a:hover {
     color: #99BBCC;
 }
 
-
-
-
-
+.node-openpublish-blog-post.node-teaser h1.title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 120%;
+    color: #000;
+    margin:0;
+}
 .node-type-takepart-page .main-content h2 {
     font-size:22px;
     color:#000;
@@ -975,17 +978,6 @@ h1.title a:hover {
     line-height:11px;
 }
 
-/*block content header text*/
-#right-rail h2 a
-{
-    font-size:18px;
-    font-family:Helvetica, Arial, sans-serif;
-    color:#9BC;
-    text-decoration:none;
-    font-weight:300;
-    padding:0 9px 0 0;
-}
-
 /*override block formatting for content header text*/
 #right-rail .block-boxes-title-our-blogs .content h2 a
 {
@@ -1042,6 +1034,18 @@ h1.title a:hover {
     background:  url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll center right transparent;
     margin: 0;
     border: none;
+    padding: 0;
+}
+
+/*block content header text*/
+#right-rail h2 a
+{
+    font-size:18px;
+    font-family:Helvetica, Arial, sans-serif;
+    color:#9BC;
+    text-decoration:none;
+    font-weight:300;
+    padding:0 9px 0 0;
 }
 
 #right-rail .block-boxes-current-photo_galleries h2 {
@@ -1101,7 +1105,7 @@ h1.title a:hover {
     border-top: 1px solid #eff3f5;
 }
 
-#right-rail .block-boxes-title-popular-galleries .views-field-field-promo-headline {
+#right-rail .block-boxes-current-photo_galleries .views-field-field-promo-headline {
     margin: 4px 0 8px 0;
 }
 
@@ -1409,8 +1413,10 @@ body.node-type-takepart-campaign .main-content #left-rail {
     width:300px;
 }
 
-.main-content .field-name-field-action-main-image img {
-    margin-bottom: 25px;
+.field-name-field-article-main-image,
+.field-name-field-blogpost-main-image,
+.field-name-field-action-main-image  {
+    margin-bottom: 2em;
 }
 
 .search-results .views-field-type {
@@ -1435,4 +1441,31 @@ body.node-type-takepart-campaign .main-content #left-rail {
 
 #block-boxes-box-407084eb .full-video {
     float: left;
+}
+
+/***** Blog Post *****/
+
+body.node-type-openpublish-blog-post h1.page-title {
+    display: none;
+}
+
+.field-name-field-blogpost-main-image {
+    margin-bottom: 2em;
+}
+
+.field-name-field-blogpost-main-image img {
+    border: none;
+}
+
+/***** Blog Front *****/
+body.node-type-blog-front .node-blog-front h1.title,
+body.node-type-blog-front .node-blog-front h2.title,
+body.node-type-blog-front .submitted-wrapper,
+.node-openpublish-blog-post.node-teaser .submitted-wrapper {
+    display: none;
+}
+
+.node-openpublish-blog-post.node-teaser .field-name-field-blogpost-subhead {
+    color: #000;
+    font-size: 14px;
 }

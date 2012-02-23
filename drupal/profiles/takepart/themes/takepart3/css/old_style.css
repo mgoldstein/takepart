@@ -2239,7 +2239,7 @@ body.node-type-topic-front .submitted-wrapper{
 /***** Teasers *****/
 
 .node.node-teaser {
-    margin-bottom: 50px;
+    margin-bottom: 3em;
 }
 
 .node-teaser .addthis_toolbox {
@@ -2250,27 +2250,6 @@ body.node-type-topic-front .submitted-wrapper{
 
 .node-teaser .field-name-body {
     margin-left: 160px;
-}
-
-/***** Blog Post *****/
-
-body.node-type-openpublish-blog-post h1.page-title {
-    display: none;
-}
-
-.field-name-field-blogpost-main-image {
-    margin-bottom: 30px;
-}
-
-.field-name-field-blogpost-main-image img{
-    border: none;
-}
-
-/***** Blog Front *****/
-
-.node-blog-front h2.title,
-.node-blog-front .submitted-wrapper {
-    display: none;
 }
 
 /***** WYSIWYG *****/

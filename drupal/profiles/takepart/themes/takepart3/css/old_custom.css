@@ -29,17 +29,9 @@ body.node-type-takepart-group #left-rail{
     margin-top:0;
 }
 
-
-
 body.node-type-takepart-campaign #right-rail {
     margin-right: 10px;
 }
-
-
-body.node-type-openpublish-article #content,
-body.node-type-openpublish-article #left-rail {
-    margin-top:20px;
-} 
 
 .contextual-links-region{
     margin-bottom:0;
@@ -121,18 +113,6 @@ ul#top-nav li a:hover{
 .view-id-slide_rotator {
     overflow:hidden;
 }
-
-
-
-
-
-
-
-/* blog pages */
-.node-type-openpublish-blog-post .region-content-top .field-name-field-blogpost-main-image{
-    margin:0;
-}
-
 
 /* group pages */
 
@@ -289,16 +269,11 @@ body.page-taxonomy-term h1{
 
 /* photo page */
 
-
 .block-boxes-current-photo_galleries h2 {
     background: none repeat scroll 0 0 #CCCCCC;
     margin: 25px 0 7px;
 }
 
-.block-boxes-current-photo_galleries .content{
-    padding-top: 10px;
-    /* border-top: 1px dotted #000000; */
-}
 .node-type-openpublish-photo-gallery .region-highlighted .field-name-field-display-tag{
     margin-left:-10px;
 }
