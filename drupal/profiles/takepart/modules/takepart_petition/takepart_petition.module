@@ -364,11 +364,30 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#default_value' => $signature->last_name,
   );
 
-  $form['zip_code'] = array(
+  $form['zip_code_5'] = array(
     '#type' => 'textfield',
     '#required' => TRUE,
     '#title' => t('ZIP Code'),
     '#default_value' => '',
+  );
+
+  $form['zip_code_4'] = array(
+    '#type' => 'textfield',
+    '#required' => FALSE,
+    '#title' => t('+ 4'),
+    '#default_value' => '',
+  );
+
+  $zip_lookup_markup = "<div>Don't know your full ZIP Code? Look it up <a href=\"http://www.usps.com/zip4/\">here</a>.</div>";
+  $form['zip_code_lookup'] = array(
+    '#type' => 'item',
+    '#markup' => $zip_lookup_markup,
+  );
+
+  $required_markup = "<div><span class=\"form-required\">*</span> Required Field</div>";
+  $form['required_fields'] = array(
+    '#type' => 'item',
+    '#markup' => $required_markup,
   );
 
   $form['comment'] = array(
@@ -401,20 +420,22 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#submit' => array('_takepart_petition_sign_petition_form_submit'),
   );
 
-  $tou_markup = "<div>By signing, you accept TakePart's Terms of Use</div>";
+  $tou_markup = "<div>By signing, you accept TakePart's <a href=\"/terms-of-use\">Terms of Use</a></div>";
   $form['terms_of_use'] = array(
     '#type' => 'item',
     '#markup' => $tou_markup,
     '#weight' => 105,
   );
 
+  /* 23 Feb 2012 disable per new comp
   $form['shown'] = array(
     '#type' => 'checkbox',
     '#default_value' => 1,
     '#title' => t('Display my signature publicly'),
     '#weight' => 110,
   );
-
+  */
+  
   $form['#validate'][] = '_takepart_petition_sign_petition_form_validate';
 
   return $form;
@@ -425,6 +446,24 @@ function _takepart_petition_sign_petition_form_validate($form, &$form_state) {
   $value = $form_state['values']['mail'];
   if (! valid_email_address($value)) {
     form_set_error('TakePart Petitions', t('Please enter a valid email address.'));
+  }
+  
+  $value = $form_state['values']['zip_code_5'];
+  if (strlen(trim($value)) == 5) {
+    if ((!is_numeric($value)) || ($value <= 0)) {
+      form_set_error('TakePart Petition Forms', t('Please enter a valid ZIP code.'));
+    }
+  } else {
+    form_set_error('TakePart Petition Forms', t('Please enter a valid ZIP code.'));
+  }
+  
+  $value = $form_state['values']['zip_code_4'];
+  if (strlen(trim($value)) == 4) {
+    if ((!is_numeric($value)) || ($value <= 0)) {
+      form_set_error('TakePart Petition Forms', t('Please enter a valid ZIP code.'));
+    }
+  } else if (strlen(trim($value)) != 0) {
+    form_set_error('TakePart Petition Forms', t('Please enter a valid ZIP code.'));
   }
 }
 
@@ -441,6 +480,13 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
   } else {
     $ngo_token = 'no_ngo';
     $ngo_opt_in = 0;
+  }
+  
+  // put together the zip code
+  if (strlen($form_state['values']['zip_code_4']) == 4) {
+    $zip_code = $form_state['values']['zip_code_5'] .'-'. $form_state['values']['zip_code_4'];
+  } else {
+    $zip_code = $form_state['values']['zip_code_5'];
   }
   
   // submit both forms at once
@@ -473,7 +519,7 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
       '@attributes' => array (
         'id' => $petition_form->zip_code_field_id,
       ),
-      '@value' => $form_state['values']['zip_code'],
+      '@value' => $zip_code,
     ),
     'signup_form_field5' => array (
       '@attributes' => array (
@@ -518,11 +564,11 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
   
   $resp = _takepart_bsd_apipost("signup/process_signup", $signup);
     
-  // only add the signature if it doesn't already exist and should be shown publicly
+  // only add the signature if it doesn't already exist
   $already_signed = db_query(
     "SELECT count(mail) FROM takepart_petition_signature WHERE mail = :mail", 
     array(':mail' => $mail))->fetchField();
-  if ((!$already_signed) && $form_state['values']['shown']) {
+  if (! $already_signed) {
 
     $signature = $form_state['signature'];
     $signature->petition_form = $petition_form->name;
@@ -530,7 +576,7 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
     $signature->last_name = $form_state['values']['last_name'];
     $signature->first_name = $form_state['values']['first_name'];
     $signature->comment = $form_state['values']['comment'];
-    $signature->shown = $form_state['values']['shown'];
+    $signature->shown = 1;
     $signature->created = REQUEST_TIME;
 
     takepart_petition_signature_save($signature);
