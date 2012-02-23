@@ -1045,7 +1045,8 @@ p.search-performance{
 
 
 /* image captions */
-.field-name-field-article-main-image img{
+.field-name-field-blogpost-main-image img,
+.field-name-field-article-main-image img {
     display:block;
     border:1px solid #6a6a6a;
     margin-top:10px;
