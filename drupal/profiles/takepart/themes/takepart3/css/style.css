@@ -1485,5 +1485,12 @@ body.node-type-blog-front .node-blog-front h2.title {
 
 .field-name-body img[style~="float: right"] {
     margin-left: 10px;
-    
+}
+
+/* overridden by javascript */
+.field-type-text-with-summary img {
+    /* margin left / right */
+}
+.main-content .block-boxes-title-features .views-row {
+	/* height */
 }
