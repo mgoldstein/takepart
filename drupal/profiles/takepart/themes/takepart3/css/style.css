@@ -1475,9 +1475,3 @@ body.node-type-blog-front .node-blog-front h1.title,
 body.node-type-blog-front .node-blog-front h2.title {
     display: none;
 }
-
-.node-openpublish-blog-post.node-teaser .field-name-field-blogpost-subhead {
-    color: #666;
-    font-size: 18px;
-    line-height: normal;
-}
