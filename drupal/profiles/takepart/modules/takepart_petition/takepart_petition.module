@@ -136,6 +136,8 @@ function takepart_petition_block_info() {
  * Implements hook_block_view().
  */
 function takepart_petition_block_view($delta = '') {
+  // Add the styling css
+  drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-form-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
   // Return the petition form
   $form = takepart_petition_forms($delta);
   return array(
