@@ -1948,6 +1948,8 @@ h2.title a{
     background:url("../images/sprite.png") no-repeat scroll -383px 0 transparent;
     padding-left:20px;
     padding-bottom: 0;
+    margin-bottom:1em;
+    overflow:hidden;
 }
 
 .submitted-wrapper .field {

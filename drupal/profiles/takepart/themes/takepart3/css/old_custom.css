@@ -299,11 +299,6 @@ body.page-taxonomy-term h1{
     display:block;
     float:left;
 }
-.submitted-wrapper{
-    overflow:hidden;
-    padding-bottom:0;
-    /*margin-bottom:0px;*/
-}
 .node-type-openpublish-photo-gallery .submitted-wrapper{
     border-bottom: medium none;
     margin: 10px 0 0;
@@ -1045,12 +1040,14 @@ p.search-performance{
 
 
 /* image captions */
+/*
 .field-name-field-blogpost-main-image img,
 .field-name-field-article-main-image img {
     display:block;
     border:1px solid #6a6a6a;
     margin-top:10px;
 }
+*/
 .photo-wrapper{
     margin: 0;   
     border-bottom: 1px dotted #999999;
