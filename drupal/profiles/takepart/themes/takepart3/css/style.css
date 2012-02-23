@@ -943,14 +943,22 @@ h1.title a:hover {
     padding: 10px 0;
 }
 
+#right-rail .block-boxes-title-movies-that-matter h2 {
+    margin-bottom:12px;
+}
+
 #right-rail .block-boxes-title-movies-that-matter .views-row {
     width:50%;
     float:left;
 }
 
+#right-rail .block-boxes-title-movies-that-matter .views-row-even {
+    text-align: right;
+}
 #right-rail .block-boxes-title-movies-that-matter img {
     width:145px;
 }
+
 /*override block formatting for ads*/
 #right-rail .block-boxes-ga_ad
 {
