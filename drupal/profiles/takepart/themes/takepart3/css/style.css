@@ -1119,7 +1119,7 @@ h1.title a:hover {
     padding: 0;
     border-bottom: none;
 }
-
+#right-rail .view-id-related_actions .views-row-last .views-field-field-promo-headline,
 #right-rail .block-boxes-delta-related_content-block .views-row-last .views-field-field-promo-headline {
     margin:0;
 }
