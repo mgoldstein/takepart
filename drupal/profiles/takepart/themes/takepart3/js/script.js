@@ -183,21 +183,6 @@ jQuery(document).ready(function () {
      */ 
 });
 
-/* fix the height in the featured galleries */
-jQuery(document).ready(function () {
-    var target = '.main-content .block-boxes-title-features .views-row';
-    var tallestofthemall = 0;
-    jQuery(target).each(function () {
-    	if (jQuery(this).height() > tallestofthemall) {
-    	  tallestofthemall = jQuery(this).height();
-    	}
-    });
-    jQuery(target).each(function () {
-    	jQuery(this).height(tallestofthemall);
-    });  
-});
-
-
 
 /* place dots on image rotator */
 jQuery(document).ready(function () {
@@ -241,6 +226,43 @@ jQuery(document).ready(function () {
 /* fix the height in the featured galleries */
 jQuery(document).ready(function () {
     var target = '.main-content .block-boxes-title-features .views-row';
+    var i = 0;
+    var index = 0;
+    var tallestofthemall=new Object();
+    jQuery(target).each(function () {
+    	index = parseInt(i/3);
+    	if ((!tallestofthemall[index]) || (jQuery(this).height() > tallestofthemall[index])) {
+    		tallestofthemall[index] = jQuery(this).height();
+    	} 
+    	i++;
+    });
+    i = 0;
+    jQuery(target).each(function () {
+    	index = parseInt(i/3);
+    	jQuery(this).height(tallestofthemall[index]);
+    	i++;
+    });  
+});
+
+
+
+/* center the blog headings vertically in the right rail 
+jQuery(document).ready(function () {
+    var target = '#right-rail .field-name-field-blog-view .views-field-title span.field-content';
+    jQuery(target).each(function () {
+    	var margin = parseInt(70-(jQuery(this).height()) / 2);
+    	alert(margin);
+    	if(margin > 0) {
+    		jQuery(this).children(":first").css("margin-top", margin + "px");
+    	}
+    });
+});
+*/
+
+
+/* fix the height in the featured galleries 
+jQuery(document).ready(function () {
+    var target = '.main-content .block-boxes-title-features .views-row';
     var tallestofthemall = 0;
     jQuery(target).each(function () {
     	if (jQuery(this).height() > tallestofthemall) {
@@ -252,6 +274,7 @@ jQuery(document).ready(function () {
     });  
 });
 
+*/
 
 
 /*

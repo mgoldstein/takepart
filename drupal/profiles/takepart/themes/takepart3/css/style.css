@@ -918,6 +918,12 @@ h1.title a:hover {
     text-decoration:none;
 }
 
+#right-rail .field-name-field-blog-view .views-field-title a
+{   
+	font-size:15px;
+    font-weight: bold;
+}
+
 #right-rail
 {
     width:300px;
@@ -1012,6 +1018,7 @@ h1.title a:hover {
 #right-rail .block-boxes-title-our-blogs .content h2 a
 {
     background:none #FFF;
+    font-size: 16px;
 }
 
 #right-rail .block-boxes-title-our-blogs .content h2
