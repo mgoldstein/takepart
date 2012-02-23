@@ -37,8 +37,10 @@ function takepart3_preprocess_html(&$vars){
     }
   }
   
-  $vars['head_title'] = $header_override['und'][0]['value'];
-    
+  if($header_override) {
+    $vars['head_title'] = $header_override['und'][0]['value'];
+  } 
+   
   _render_tp3_renderheaderfooterfeed($vars);
 }
 
