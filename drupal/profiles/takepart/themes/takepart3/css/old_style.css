@@ -1885,6 +1885,7 @@ h2.title a{
 .embed-action-wrapper .embed-action a {
     color: #302009;
     font-size: 18px;
+    font-weight: bold;
     padding: 3px 0 0 0;
 }
 .embed-action-wrapper .embed-action a:hover {

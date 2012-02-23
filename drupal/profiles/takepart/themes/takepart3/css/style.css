@@ -1120,6 +1120,9 @@ h1.title a:hover {
     border-bottom: none;
 }
 
+#right-rail .block-boxes-delta-related_content-block .views-row-last .views-field-field-promo-headline {
+    margin:0;
+}
 #right-rail .block-boxes-current-related_actions .views-row-last .views-field-field-promo-headline {
     margin: 0;
 }
