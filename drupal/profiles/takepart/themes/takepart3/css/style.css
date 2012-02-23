@@ -586,6 +586,14 @@ ul#top-follow li a {
 /* ------------------------------------------------------------------------*/
 /* headers in main body */
 
+.main-content h1 {
+    font-family:Helvetica, Arial, sans-serif;
+    font-size:18px;
+    line-height:18px;
+    font-weight:400;
+    color:#9BC;
+}
+
 h1.title a
 {
     color:#000;
@@ -596,7 +604,16 @@ h1.title a:hover {
     color:#1CA9E7;
 }
 
-.node-openpublish-blog-post .view-blog-posts h1.title,
+.main-content h2
+{
+    font-size:18px;
+    line-height:18px;
+    font-weight:300;
+    text-transform:uppercase;
+    color:#9BC;
+}
+
+.node-openpublish-blog-post .main-content h1.title,
 .node-type-openpublish-video .main-content h1.title,
 .node-type-openpublish-article .main-content h1.title {
     font-size:42px;
@@ -640,22 +657,9 @@ h1.title a:hover {
     color: #99BBCC;
 }
 
-.main-content h1 {
-    font-family:Helvetica, Arial, sans-serif;
-    font-size:18px;
-    line-height:18px;
-    font-weight:400;
-    color:#9BC;
-}
 
-.main-content h2
-{
-    font-size:18px;
-    line-height:18px;
-    font-weight:300;
-    text-transform:uppercase;
-    color:#9BC;
-}
+
+
 
 .node-type-takepart-page .main-content h2 {
     font-size:22px;

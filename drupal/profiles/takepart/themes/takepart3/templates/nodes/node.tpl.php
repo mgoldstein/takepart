@@ -4,10 +4,19 @@
   <?php if (!empty($title_prefix)) print render($title_prefix); ?>
   
   <?php if (!empty($title) && !($remove_title)): ?>
+    
+    <?php if($view_mode == 'teaser'): ?>
+    <h1 <?php if (!empty($title_attributes)) print $title_attributes ?> class='title'>
+        <a href="<?php print $node_url; ?>"><?php print $title ?></a>
+    </h1>
+    <?php endif; ?>
+    
+    <?php if($view_mode != 'teaser'): ?>
     <h1 <?php if (!empty($title_attributes)) print $title_attributes ?> class='title'>
       <?php if (!empty($new)): ?><span class='new'><?php print $new ?></span><?php endif; ?>
       <?php print $title ?>
     </h1>
+    <?php endif; ?>
   <?php endif; ?>
 
   <?php if (!empty($title_suffix)) print render($title_suffix); ?>
