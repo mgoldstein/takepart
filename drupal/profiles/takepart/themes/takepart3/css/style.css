@@ -66,6 +66,14 @@ body.node-type-takepart-campaign.multipage-campaign {
     white-space:nowrap;
 }
 
+/* homepage features block */
+.block-boxes-title-features,
+.block-boxes-title-popular-galleries{
+    margin:0 0 20px 0;
+    padding-bottom:10px;
+}
+
+
 ul.dots li
 {
     cursor:pointer;
@@ -83,11 +91,27 @@ a {
 a:hover {
     text-decoration:underline;
 }
+
+.front .page{
+    padding: 25px 20px 35px;
+}
+
+/*logo style*/
+#logo {
+    float: left;
+    width:  125px;
+    padding: 0 0 0px 0;
+    position: absolute;
+    top: 15px;
+    left: 0px;
+}
+
+
 /*page structure*/
 #page-wrapper
 {
-    margin:0 auto;
-    width:1001px;
+    margin: 5px auto 0;
+    width:1000px;
 }
 
 #header
@@ -419,23 +443,37 @@ ul,ol
     display:none;
 }
 
-.block-boxes-title-features .views-field-title a, .block-boxes-title-features .views-field-field-article-subhead a
+.block-boxes-title-features .views-field-title a, 
+.block-boxes-title-features .views-field-field-article-subhead a,
+.block-boxes-title-features .views-field-nid span a
 {
     color:#000;
     line-height:20px;
-    font-weight:bolder;
+    font-weight: bold;
     text-decoration:none;
 }
 
-.block-boxes-title-features .views-field-title, 
-.block-boxes-title-features .views-field-field-article-subhead, 
-.block-boxes-title-features .views-field-field-page-subhead
+.block-boxes-title-features .views-field-nid span a:hover
 {
-    font-size:15px;
-    padding:6px;
+    color:#1CA9E7;
+    text-decoration:none;
 }
 
-.main-content .block-boxes-title-features .views-row:hover .views-field-title a, .main-content .block-boxes-title-features .views-row:hover .views-field-field-article-subhead a
+
+
+.block-boxes-title-features .views-field-title, 
+.block-boxes-title-features .views-field-field-article-subhead, 
+.block-boxes-title-features .views-field-field-page-subhead,
+.block-boxes-title-features .views-field-nid,
+.block-boxes-title-features .views-field-field-promo-text
+{
+    font-size:15px;
+    padding:10px;
+}
+
+.main-content .block-boxes-title-features .views-row:hover .views-field-title a, 
+.main-content .block-boxes-title-features .views-row:hover .views-field-field-article-subhead a,
+.main-content .block-boxes-title-features .views-row:hover .views-field-nid a
 {
     color:#1ca9e7;
     text-decoration:none;
@@ -541,6 +579,11 @@ ul#top-follow li a {
     width: 18px;
     text-indent: -9000px;
     margin-left: 8px;
+}
+
+ul#top-follow {
+    margin: 20px 0 0;
+    float: right;
 }
 
 .header-mid
@@ -830,15 +873,15 @@ h1.title a:hover {
 
 .main-content .block-boxes-title-features .views-field-field-display-tag .field-content
 {
-    background-color:#9BC;
-    color:#FFF;
-    display:inline-block;
-    font-size:11px;
-    font-weight:700;
-    line-height:18px;
-    text-transform:uppercase;
-    margin-top:127px;
-    padding: 2px;
+	background-color: #99BBCC;
+	color: #FFFFFF;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 18px;
+	margin-top: 123px;
+	padding: 4px 5px;
+	text-transform: uppercase;
 }
 
 /* ===RIGHT RAIL=== */
@@ -957,6 +1000,24 @@ h1.title a:hover {
 #right-rail .view-blog-posts .views-field-title
 {
     width:172px;
+}
+
+#right-rail .field-name-field-blog-view .more {
+    margin-left: -46px;
+    margin-top: -36px;
+    position: absolute;
+}
+
+#right-rail .field-name-field-blog-view .more a {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #1CA9E7;
+    display: block;
+    padding: 6px;
+    width: 44px;
+}
+
+#right-rail .field-name-field-blog-view .more a:hover {
+    text-decoration:underline;
 }
 
 #right-rail .view-blog-posts .view-content
@@ -1245,6 +1306,12 @@ h1.title a:hover {
     padding-top:4px;
 }
 
+#hot-topics-nav {
+    width: 540px;
+    float: left;
+    padding: 19px 0 10px;
+}
+
 #hot-topics-nav li.title {
     text-transform: uppercase;
     font-weight: 300;
@@ -1252,7 +1319,34 @@ h1.title a:hover {
     padding-left: 0;
     padding-right: 10px;
     border: none;
-    margin-left: 15px;
+    margin-left: 9px;
+}
+
+/*search box*/
+#top-search {
+    width:  219px;
+    float: right;
+    margin: 15px 0 0;
+}
+
+#top-search .form-text,
+#top-search .form-text:focus,
+#top-search .form-text:active {
+    border: medium none;
+    display: block;
+    width: 185px;
+    float: left;
+    font-size: 12px;
+    height: 16px;
+    line-height: 16px;
+    margin: 0;
+    padding: 2px 5px;
+    background: #FFF;
+}
+
+#search-api-page-search-form-2 div {
+	border: solid 1px #ccc;
+	display: inline-block;
 }
 
 .view-id-slide_rotator {
