@@ -797,7 +797,8 @@ h1.title a:hover {
 }
 
 .main-content .block-boxes-title-features .view-content {
-    padding:5px;
+    display: inline-block;
+    padding: 5px 4px 1px;
 }
 .main-content .block-boxes-title-secondary-headlines .views-field-php,
 .main-content .block-boxes-title-secondary-features .views-field-php {
