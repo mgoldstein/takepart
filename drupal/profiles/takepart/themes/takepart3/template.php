@@ -22,6 +22,22 @@ function takepart3_preprocess_html(&$vars){
   if (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage')){
     $vars['classes_array'][]= 'multipage-campaign';
   }  
+  
+  //Override header if field exists:
+  $nodes = $vars['page']['content']['system_main']['nodes'];
+  $header_override = false;
+  while ((list($key, $value) = each($nodes)) && (!$header_override)) {
+    if(is_numeric($key)) {      
+      if (array_key_exists('field_html_title', $value['body']['#object'])) {
+        $header_override = $value['body']['#object']->field_html_title;
+      }
+    }
+  }
+  
+  if($header_override) {
+    $vars['head_title'] = $header_override['und'][0]['value'];
+  } 
+   
   _render_tp3_renderheaderfooterfeed($vars);
 }
 
