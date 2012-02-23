@@ -2,7 +2,6 @@ if (typeof takepart == "undefined" || !takepart) {
     var takepart = {};
 }
 
-
 jQuery.fn.DefaultValue = function(text){
     return this.each(function(){
         //Make sure we're dealing with text-based form fields
