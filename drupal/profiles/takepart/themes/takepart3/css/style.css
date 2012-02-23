@@ -902,6 +902,12 @@ h1.title a:hover {
     text-decoration:none;
 }
 
+#right-rail .field-name-field-blog-view .views-field-title a
+{   
+	font-size:15px;
+    font-weight: bold;
+}
+
 #right-rail
 {
     width:300px;
