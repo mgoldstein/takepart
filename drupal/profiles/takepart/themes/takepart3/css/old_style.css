@@ -2203,6 +2203,7 @@ body.node-type-topic-front .submitted-wrapper{
 
 .block-boxes-title-secondary-headlines a:hover {
     color: #1CA9E7;
+    text-decoration: none;
 }
 /***** Taxonomy Search List *****/
 .block-boxes-current-taxonomy_search_list h2 {
@@ -2219,7 +2220,7 @@ body.node-type-topic-front .submitted-wrapper{
     font-weight: 300;
 }
 
-.view-taxonomy-search-list .views-field-url a{
+.view-taxonomy-search-list .views-field-url a {
     color: black;
     display: inline-block;
     font-size: 18px;
@@ -2229,6 +2230,7 @@ body.node-type-topic-front .submitted-wrapper{
 
 .view-taxonomy-search-list .views-field-url a:hover {
     color: #1CA9E7;
+    text-decoration: none;
 }
 
 .view-taxonomy-search-list .views-field-field-promo-text {
@@ -2236,7 +2238,6 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 /***** Teasers *****/
-
 .node.node-teaser {
     margin-bottom: 3em;
 }
@@ -2252,7 +2253,6 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 /***** WYSIWYG *****/
-
 q, q.pull-quote {
     color: #99BBCC;
     font-size: 30px;
@@ -2268,7 +2268,6 @@ q, q.pull-quote {
 }
 
 /* Campaign */
-
 .region-highlighted .field-name-field-tp-campaign-intro-html {
     position: absolute;
     left: 0px;
