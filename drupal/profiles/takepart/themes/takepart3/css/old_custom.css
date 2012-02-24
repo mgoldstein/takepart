@@ -407,7 +407,7 @@ body.page-taxonomy-term h1{
 .featured-video .views-field-view-node-1 span{
     display:none;
 }
-.featured-video .views-field-view-node-1 a{
+.featured-video .views-field-view-node-1 a {
     display:inline-block;
     text-indent:-9999px;
     background:url('../images/videobutton.png') no-repeat 0 0;
@@ -415,7 +415,6 @@ body.page-taxonomy-term h1{
     height:121px;
     zoom:1; *display: inline; _height: 121px;
 }
-
 
 /* Video Node */
 .node-type-openpublish-video .field-name-field-subhead {
@@ -425,11 +424,8 @@ body.page-taxonomy-term h1{
     line-height: 24px;
     margin-bottom: 10px;
 }
-.node-type-openpublish-video .submitted-wrapper {
-    border-bottom: medium none;
-    margin-bottom: 0;
-}
-.node-type-openpublish-video .field-name-field-video-embedded{
+
+.node-type-openpublish-video .field-name-field-video-embedded {
     margin:0 0 20px 0;
 }
 

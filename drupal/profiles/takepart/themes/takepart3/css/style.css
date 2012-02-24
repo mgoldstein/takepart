@@ -774,8 +774,7 @@ h1.title a:hover {
     text-transform: uppercase;
     font-weight: 300;
 }
-
-.block-boxes-current-taxonomy_search_list h2 {
+.main-content .block-boxes-current-taxonomy_search_list h2 {
     margin-bottom: 15px;
 }
 
