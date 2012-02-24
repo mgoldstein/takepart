@@ -775,7 +775,7 @@ h1.title a:hover {
     font-weight: 300;
 }
 .main-content .block-boxes-current-taxonomy_search_list h2 {
-    margin-bottom: 15px;
+    margin: 15px 0;
 }
 
 .main-content .block-boxes-title-secondary-headlines .content,
