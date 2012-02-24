@@ -909,7 +909,7 @@ h1.title a:hover {
 
 #right-rail .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors {
     border-top:none;
-    padding:0 15px 15px;
+    padding:0;
     overflow:hidden;
 }
 
