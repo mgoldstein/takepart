@@ -757,9 +757,7 @@ h1.title a:hover {
     font-size: 26px;
     line-height: 26px;
 }
-.block-boxes-current-taxonomy_search_list h2 {
-    margin-bottom: 15px;
-}
+
 .node-type-topic-front h1.title span,
 .page-taxonomy-term h1.title {
     margin-bottom: 8px;
@@ -775,6 +773,10 @@ h1.title a:hover {
     background:none repeat scroll 0 0 #FFF;
     text-transform: uppercase;
     font-weight: 300;
+}
+
+.block-boxes-current-taxonomy_search_list h2 {
+    margin-bottom: 15px;
 }
 
 .main-content .block-boxes-title-secondary-headlines .content,
