@@ -150,8 +150,8 @@ ul#top-nav li a:hover{
 
 .view-taxonomy-search-list .views-row{
     border-bottom: 1px solid #D9E7EE;
-    margin: 0 0 8px;
-    padding: 0 0 6px;	
+    margin: 0 0 15px;
+    padding: 0 0 15px;	
 }
 
 /* node list page */
@@ -630,13 +630,13 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 }
 #right-rail .view-video td.views-field-field-thumbnail{
     margin:0;
-    width:135px;
+    width:100px;
     height:auto;
     padding-right:10px;
 }
 #right-rail .view-video .views-field-field-thumbnail img{
-    width: 125px;
-    height: 100px;
+    width: 100px;
+    height: 75px;
 }
 #right-rail .view-video .views-field-field-promo-headline {
     margin-top:0;

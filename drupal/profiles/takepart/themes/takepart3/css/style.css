@@ -757,7 +757,9 @@ h1.title a:hover {
     font-size: 26px;
     line-height: 26px;
 }
-
+.block-boxes-current-taxonomy_search_list h2 {
+    margin-bottom: 15px;
+}
 .node-type-topic-front h1.title span,
 .page-taxonomy-term h1.title {
     margin-bottom: 8px;
@@ -1403,7 +1405,7 @@ h1.title a:hover {
 }
 
 .main-content  .drupal-embed .node-openpublish-photo-gallery {
-    border: 3px solid #14ADE7 !important;
+    border: 4px solid #eff3f5 !important;
     padding: 10px;
 }
 
