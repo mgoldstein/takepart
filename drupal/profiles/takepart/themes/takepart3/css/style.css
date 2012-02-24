@@ -775,7 +775,7 @@ h1.title a:hover {
     font-weight: 300;
 }
 .main-content .block-boxes-current-taxonomy_search_list h2 {
-    margin-bottom: 15px;
+    margin: 15px 0;
 }
 
 .main-content .block-boxes-title-secondary-headlines .content,
@@ -959,6 +959,7 @@ h1.title a:hover {
     margin: 0;
     background: url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll center left transparent;
 }
+
 #right-rail #block-views-related-campaigns-block-2 .views-row,
 #right-rail .block-boxes-title-movies-that-matter .views-row {
     width:50%;
@@ -1032,6 +1033,10 @@ h1.title a:hover {
 #right-rail .block-boxes-title-our-blogs .content h2
 {
     line-height:11px;
+}
+
+#right-rail .block-boxes-title-featured-videos h2 {
+    margin-bottom: 10px;
 }
 
 #right-rail .view-blog-posts .views-field-title
@@ -1140,8 +1145,8 @@ h1.title a:hover {
 #right-rail .block-boxes-title-sponsored-by .field-item,
 #right-rail .block-boxes-title-spotlight .field-item,
 #right-rail .field-name-field-tp-campaign-alliances .field-item {
-    padding-top: .5em;
-    margin-top: .5em;
+    padding-top: 12px;
+    margin-top: 4px;
     border-top: 1px solid #eff3f5;
 }
 
