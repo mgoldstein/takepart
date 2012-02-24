@@ -1557,7 +1557,9 @@ body.node-type-blog-front .node-blog-front h2.title {
 }
 
 .block-boxes-bid-takepart_addthis-addthis_full, .field-name-field-tp-campaign-cover-image {
-
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+.node-openpublish-video .node-topics {
+    display: none;
 }
