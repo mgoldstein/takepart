@@ -1140,8 +1140,8 @@ h1.title a:hover {
 #right-rail .block-boxes-title-sponsored-by .field-item,
 #right-rail .block-boxes-title-spotlight .field-item,
 #right-rail .field-name-field-tp-campaign-alliances .field-item {
-    padding-top: .5em;
-    margin-top: .5em;
+    padding-top: 10px;
+    margin-top: 4px;
     border-top: 1px solid #eff3f5;
 }
 
