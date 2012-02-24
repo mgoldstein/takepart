@@ -60,12 +60,12 @@
  */
 .jcarousel-skin-takepart .jcarousel-next-horizontal {
     position: absolute;
-    top: 43px;
+    top: 0px;
     right: 5px;
-    width: 14px;
-    height: 25px;
+    width: 25px;
+    height: 66px;
     cursor: pointer;
-    background: transparent url(right_arrow.png) no-repeat 0 0;
+    background: transparent url(right_arrow.png) no-repeat scroll 4px 21px;
 }
 
 .jcarousel-skin-takepart .jcarousel-direction-rtl .jcarousel-next-horizontal {
@@ -75,20 +75,26 @@
 }
 
 
+
 .jcarousel-skin-takepart .jcarousel-prev-horizontal {
-    position: absolute;
-    top: 43px;
-    left: 5px;
-    width: 14px;
-    height: 25px;
+    background: url("left_arrow.png") no-repeat scroll 4px 21px;
     cursor: pointer;
-    background: transparent url(left_arrow.png) no-repeat 0 0;
+    height: 66px;
+    left: 5px;
+    position: absolute;
+    top: 0;
+    width: 25px;
 }
 
+.jcarousel-skin-takepart .jcarousel-prev-horizontal:hover {
+    background: url("../images/2012-02-08/left_arrow_white.png") no-repeat scroll 4px 21px #1ca9e7;
+}
+
+.jcarousel-skin-takepart .jcarousel-next-horizontal:hover {
+    background: url("../images/2012-02-08/right_arrow_white.png") no-repeat scroll 4px 21px #1ca9e7;
+}
 .jcarousel-skin-takepart .jcarousel-direction-rtl .jcarousel-prev-horizontal {
     left: auto;
     right: 5px;
     background-image: url(right_arrow.png);
 }
-
-
