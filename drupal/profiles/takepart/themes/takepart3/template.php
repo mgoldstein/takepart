@@ -32,11 +32,13 @@ function takepart3_preprocess_html(&$vars){
       try {
         if (array_key_exists('field_html_title', $value['body']['#object'])) {
           $header_override = $value['body']['#object']->field_html_title;
-          unset($value['body']['#object']['field_html_title']);
         }
         if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
           $header_override = $value['field_html_title']['#object']->field_html_title;
           unset($vars['page']['content']['system_main']['nodes'][$key]['field_html_title']);
+        }
+        if (array_key_exists('field_html_title', $value['#node'])) {
+          $header_override = $value['#node']->field_html_title;
         }
       } catch (Exception $e) {
         $header_override = false;
