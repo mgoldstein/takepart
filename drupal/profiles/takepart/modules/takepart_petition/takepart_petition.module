@@ -397,31 +397,43 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#markup' => $zip_lookup_markup,
   );
 
-  $required_markup = "<div style=\"clear:both\"><span class=\"form-required\">*</span> Required Field</div>";
+  $required_markup = "<div><span style=\"width:100%\" class=\"form-required\">*</span> Required Field</div>";
   $form['required_fields'] = array(
     '#type' => 'item',
     '#markup' => $required_markup,
   );
 
-  $form['comment'] = array(
-    '#type' => 'textarea',
-    '#default_value' => $signature->comment,
-    '#title' => t('Your reason for signing (optional)'),
+  $form[''] = array(
+    '#markup' => '<div style="clear:both"></div>',
   );
 
-  if ($ngo){
+  $form['comment'] = array(
+    '#type' => 'textarea',
+    '#resizable' => FALSE,
+    '#default_value' => $signature->comment,
+    '#title' => t('Your reason for signing (optional)'),
+    '#prefix' => '<div style="clear:both"></div>',
+  );
+  
+  //if ($ngo){
     $form['opt_in_ngo'] = array(
+      '#prefix' => '<div class="optin_ngo_wrapper">',
       '#type' => 'checkbox',
       '#default_value' => 1,
       '#title' => t('I would like to receive email updates from '. $ngo->label),
+      '#suffix' => '</div>',
     );
-  }
+  //}
   
   $form['opt_in_campaign'] = array(
     '#type' => 'checkbox',
     '#default_value' => 1,
     '#title' => t('I would like to receive email updates on '. $campaign_list_title),
   );
+  
+  $form[''] = array(
+    '#markup' => '</div>',
+  );  
 
   $form['actions'] = array(
     '#weight' => 100,
