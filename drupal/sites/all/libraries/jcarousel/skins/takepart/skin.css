@@ -22,7 +22,7 @@
 }
 
 .jcarousel-skin-takepart .jcarousel-clip-horizontal {
-    width:  567px;
+    width:  564px;
     height: 75px;
 }
 
@@ -61,11 +61,11 @@
 .jcarousel-skin-takepart .jcarousel-next-horizontal {
     position: absolute;
     top: 0px;
-    right: 5px;
+    right: 0px;
     width: 25px;
     height: 66px;
     cursor: pointer;
-    background: transparent url(right_arrow.png) no-repeat scroll 4px 21px;
+    background: transparent url(right_arrow.png) no-repeat scroll 6px 21px;
 }
 
 .jcarousel-skin-takepart .jcarousel-direction-rtl .jcarousel-next-horizontal {
@@ -80,7 +80,7 @@
     background: url("left_arrow.png") no-repeat scroll 4px 21px;
     cursor: pointer;
     height: 66px;
-    left: 5px;
+    left: 0px;
     position: absolute;
     top: 0;
     width: 25px;
