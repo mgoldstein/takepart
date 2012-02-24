@@ -1548,7 +1548,7 @@ body.node-type-blog-front .node-blog-front h2.title {
 
 .jcarousel-skin-takepart .jcarousel-prev-horizontal,
 .jcarousel-skin-takepart .jcarousel-next-horizontal {
-     top: 22px !important;	
+     top: 0px !important;	
 }
 
 /* for when our preprocess function gets ignored */
