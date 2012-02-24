@@ -944,25 +944,27 @@ h1.title a:hover {
     border:solid 4px #FFE789;
     padding:10px;
 }
+#right-rail #block-views-related-campaigns-block-2,
 #right-rail .block-boxes-title-movies-that-matter {
     border:none;
     padding: 0;
 }
-
+#right-rail #block-views-related-campaigns-block-2 h2,
 #right-rail .block-boxes-title-movies-that-matter h2 {
     border-top: 1px dotted #000000;
     padding: 10px 0 8px 0;
     margin: 0;
 }
-
+#right-rail #block-views-related-campaigns-block-2 .views-row,
 #right-rail .block-boxes-title-movies-that-matter .views-row {
     width:50%;
     float:left;
 }
-
+#right-rail #block-views-related-campaigns-block-2 .views-row-even,
 #right-rail .block-boxes-title-movies-that-matter .views-row-even {
     text-align: right;
 }
+#right-rail #block-views-related-campaigns-block-2 img,
 #right-rail .block-boxes-title-movies-that-matter img {
     width:145px;
 }
