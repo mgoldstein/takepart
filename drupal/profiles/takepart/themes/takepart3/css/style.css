@@ -954,6 +954,7 @@ h1.title a:hover {
     border-top: 1px dotted #000000;
     padding: 10px 0 8px 0;
     margin: 0;
+    background: url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll center left transparent;
 }
 #right-rail #block-views-related-campaigns-block-2 .views-row,
 #right-rail .block-boxes-title-movies-that-matter .views-row {
