@@ -3185,7 +3185,7 @@ body.node-type-takepart-group #page {
  *
 */
 div.jcarousel-container {
-    width: 620px;
+    width: 640px;
 }
 
 div.jcarousel-clip {
@@ -3198,11 +3198,14 @@ div#block-views-video-block-8 div.content {
 }
 
 div.view-display-id-block_8 div.rotator_nav_bar {
+    /*
     width: 100%;
     height: 20px;
     background-color: #000;
     position: relative;
     margin-bottom: 5px;
+    */
+    display: none;
 }
 
 /*
@@ -3217,24 +3220,25 @@ div.view-display-id-block_8 div.rotator_nav_bar a.rotator_forward_button {
 }
 */
 
-.view-display-id-block_8 .jcarousel-prev-horizontal {
+.view-display-id-block_8 a.jcarousel-prev-horizontal {
     position:absolute;
-    top:-25px;
+    top:46px;
     left:0;
     padding-left: 35px;
-    padding-top: 20px;
-    background: url(../images/arrow_back.png) no-repeat;
+    padding-top:0;
+    background: url("../images/2012-02-08/gallery_left_arrow.png") no-repeat scroll 0 0 transparent;
+    height:68px;
+    width:40px;
 }
-.view-display-id-block_8 .jcarousel-next-horizontal {
+.view-display-id-block_8 a.jcarousel-next-horizontal {
     position:absolute;
-    top:-25px;
-    right:0px;
-    padding-right: 30px;
-    padding-top: 20px;
-    background: url(../images/arrow_front.png) no-repeat;
-}
-.view-display-id-block_8 .jcarousel-item {
-    width:200px;
+    top:46px;
+    right:0;
+    padding-right:0;
+    padding-top:0;
+    background: url("../images/2012-02-08/gallery_right_arrow.png") no-repeat scroll 0 0 transparent;
+    height:68px;
+    width:40px;
 }
 
 /*

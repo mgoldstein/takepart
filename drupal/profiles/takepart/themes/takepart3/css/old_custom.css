@@ -445,21 +445,20 @@ body.page-taxonomy-term h1{
 .block-boxes-view-name-video h2,
 div[class*='block-boxes-bid-views-video-block'] h2,
 div[class*='block-boxes-delta-video-block'] h2 {
-    background: none repeat scroll 0 0 #CCCCCC;
-    margin: 25px 0 7px;
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 1px transparent;
+    margin: 12px 0;
+    color: #99BBCC;
 }
 .block-boxes-current-video h2 span,
 .block-boxes-view-name-video h2 span,
 div[class*='block-boxes-bid-views-video-block'] h2 span,
 div[class*='block-boxes-delta-video-block'] h2 span{
-    background: none repeat scroll 0 0 #CCCCCC;
-    margin: 25px 0 7px;
-    background-color:#fff;
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin: 0;
     border-right: 5px solid #FFFFFF;
     padding: 2px 5px 2px 0;
-    text-transform: uppercase;
-}
 
+}
 
 #right-rail .block-boxes-view-name-video .content,
 #right-rail .block-boxes-current-video .content{
@@ -476,14 +475,14 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     margin-right: 0;
 }
 .view-video .views-field-field-thumbnail{
-    height: 130px;
-    width: 196px;
+    height: 155px;
+    width: 207px;
 }
 .view-video .views-field-field-thumbnail img{
     display:block;
     border: none;
-    height: 128px;
-    width: 194px;
+    height: 155px;
+    width: 207px;
 }
 
 .node-openpublish-video .field-name-field-promo-headline,
@@ -493,8 +492,8 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     margin: 10px 0 0 0;
 }
 .view-display-id-block_8 .jcarousel-item {
-    margin: 0 16px 0 0;
-    width: 196px !important;
+    margin: 0 8px 0 0;
+    width: 207px !important;
 }
 
 
