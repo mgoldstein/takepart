@@ -429,17 +429,6 @@ body.page-taxonomy-term h1{
     margin:0 0 20px 0;
 }
 
-.node-topics-label {
-    font-family:Helvetica, Arial, sans-serif;
-    height: 0;
-    left: -55px;
-    overflow: visible;
-    position: relative;
-    font-weight:bold;
-    font-size: 14px;
-    color: #000;
-}
-
 /* videos in content-bottom */
 .block-boxes-current-video h2,
 .block-boxes-view-name-video h2,
@@ -1183,13 +1172,24 @@ div.takepart_addthis_rightrail .button_container a.addthis_button_google_plusone
 div.takepart_addthis_footer span#addthis_footer_sharethis {
     color: #000;
     font-size: 14px;
-    padding-top: 5px;
+    padding-top: 3px;
     font-weight: bold;
     text-transform: capitalize;
+    float: right;
+}
+
+#block-takepart-addthis-addthis-footer .addthis_button_linkedin {
+    position: relative;
+    top:1px;
+}
+
+#block-takepart-addthis-addthis-footer .addthis_button_google_plusone {
+    position: relative;
+    top: -2px;
 }
 .takepart_addthis_footer a.at300b{
-    padding:0;
-    margin-left: 5px;
+    padding: 0;
+    margin-left: 6px;
 }
 .takepart_addthis_footer a.addthis_button_facebook span{
     background: url("../images/icon_facebook.png") no-repeat scroll 0 0 transparent;
