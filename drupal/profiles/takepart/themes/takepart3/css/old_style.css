@@ -2796,9 +2796,7 @@ div.messages a:visited {
     font-family:Helvetica,Arial,sans-serif;
     font-weight:bolder;
 }
-#widget_pager_top_photo_gallery-block img {
-    border:2px solid #707070;
-}
+
 .view-photo-gallery div.views-slideshow-pager-field-item {
     height: 69px;
     margin-bottom: 10px;
