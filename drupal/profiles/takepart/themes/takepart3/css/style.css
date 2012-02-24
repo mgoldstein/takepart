@@ -1465,6 +1465,7 @@ body.node-type-takepart-campaign .main-content #left-rail {
     margin-bottom: 2em;
 }
 
+
 .search-results .views-field-type {
     color: #000;
     font-size: 12px;
@@ -1529,3 +1530,19 @@ body.node-type-blog-front .node-blog-front h2.title {
 .main-content .block-boxes-title-features .views-row {
 	/* height */
 }
+
+.view-photo-gallery #widget_pager_top_photo_gallery-block {
+    right: auto !important;
+    width: auto !important;
+    padding-top: 0px !important;
+}
+
+#views_slideshow_controls_text_photo_gallery-block {
+	 top: 270px !important;
+}
+
+.jcarousel-skin-takepart .jcarousel-prev-horizontal,
+.jcarousel-skin-takepart .jcarousel-next-horizontal {
+     top: 22px !important;	
+}
+
