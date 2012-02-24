@@ -1546,3 +1546,7 @@ body.node-type-blog-front .node-blog-front h2.title {
      top: 22px !important;	
 }
 
+/* for when our preprocess function gets ignored */
+.field-name-field-html-title {
+	display: none;
+}
