@@ -1563,3 +1563,7 @@ body.node-type-blog-front .node-blog-front h2.title {
 .node-openpublish-video .node-topics {
     display: none;
 }
+
+.main-content .block-boxes-title-takepart-pics h2 {
+	border-top: 0px;
+}
