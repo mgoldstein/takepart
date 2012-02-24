@@ -87,11 +87,11 @@
 }
 
 .jcarousel-skin-takepart .jcarousel-prev-horizontal:hover {
-    background: url("../images/2012-02-08/left_arrow_white.png") no-repeat scroll 4px 21px #1ca9e7;
+    background: url("left_arrow_white.png") no-repeat scroll 4px 21px #1ca9e7;
 }
 
 .jcarousel-skin-takepart .jcarousel-next-horizontal:hover {
-    background: url("../images/2012-02-08/right_arrow_white.png") no-repeat scroll 4px 21px #1ca9e7;
+    background: url("right_arrow_white.png") no-repeat scroll 4px 21px #1ca9e7;
 }
 .jcarousel-skin-takepart .jcarousel-direction-rtl .jcarousel-prev-horizontal {
     left: auto;
