@@ -339,7 +339,10 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
   $signature = entity_create('takepart_petition_signature', array());
   $form_state['signature'] = $signature;
 
-  $instructions_markup = '<div>Please fill out the information below to add you signature to the '. $petition_form->label .'</div>';
+  $instructions_markup = '<div class="signatureHeader">Add Your Signature</div>';
+  
+  $form['#attributes']['class'][] = 'petition-form'; 
+  
   $form['instructions'] = array(
     '#type' => 'item',
     '#markup' => $instructions_markup,
@@ -353,40 +356,48 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
   );
 
   $form['first_name'] = array(
+    '#prefix' => '<div class="pet-name-wrapper"><div class="pet-first-name">',
     '#type' => 'textfield',
     '#required' => TRUE,
     '#title' => t('First Name'),
     '#default_value' => $signature->first_name,
+    '#suffix' => '</div>',
   );
 
   $form['last_name'] = array(
+    '#prefix' => '<div class="pet-last-name">',
     '#type' => 'textfield',
     '#required' => TRUE,
     '#title' => t('Last Name'),
     '#default_value' => $signature->last_name,
+    '#suffix' => '</div></div>',
   );
-
+  
   $form['zip_code_5'] = array(
+    '#prefix' => '<div class="zips"><div class="zip5">',
     '#type' => 'textfield',
     '#required' => TRUE,
     '#title' => t('ZIP Code'),
     '#default_value' => '',
+    '#suffix' => '</div>',
   );
 
   $form['zip_code_4'] = array(
+    '#prefix' => '<div class="zip4">',
     '#type' => 'textfield',
     '#required' => FALSE,
     '#title' => t('+ 4'),
     '#default_value' => '',
+    '#suffix' => '</div>',    
   );
 
-  $zip_lookup_markup = "<div>Don't know your full ZIP Code? Look it up <a href=\"http://www.usps.com/zip4/\">here</a>.</div>";
+  $zip_lookup_markup = "<div class=\"zipHelp\">Don't know your full ZIP Code? Look it up <a href=\"http://www.usps.com/zip4/\">here</a>.</div></div>";
   $form['zip_code_lookup'] = array(
     '#type' => 'item',
     '#markup' => $zip_lookup_markup,
   );
 
-  $required_markup = "<div><span class=\"form-required\">*</span> Required Field</div>";
+  $required_markup = "<div style=\"clear:both\"><span class=\"form-required\">*</span> Required Field</div>";
   $form['required_fields'] = array(
     '#type' => 'item',
     '#markup' => $required_markup,
