@@ -153,8 +153,6 @@ function _takepart_petition_is_block_type($delta, $type) {
 }
 function takepart_petition_block_view($delta = '') {
 
-  ddl('In takepart_petition_block_view('. $delta .')');
-
   if (_takepart_petition_is_block_type($delta, '_form')) {
 
     // Add the css for the form
@@ -168,13 +166,9 @@ function takepart_petition_block_view($delta = '') {
 
   } else if (_takepart_petition_is_block_type($delta, '_progress')) {
   
-    ddl('Detected progress block type');
-
     // Add the css and javascript for the progress bar
     drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-progress-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
     drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-progress-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
-
-    ddl('Added CSS and JavaScript');
 
     $name = substr($delta, 0, -strlen('_progress'));
     $form = takepart_petition_forms($name);
@@ -459,19 +453,33 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
   );
   
   //if ($ngo){
+    $ngo_title = t('I would like to receive email updates from '. $ngo->label);
     $form['opt_in_ngo'] = array(
       '#prefix' => '<div class="optin_ngo_wrapper">',
       '#type' => 'checkbox',
       '#default_value' => 1,
-      '#title' => t('I would like to receive email updates from '. $ngo->label),
+      '#title' => $ngo_title,
+      '#title_display' => 'attribute',
       '#suffix' => '</div>',
+    );
+    $ngo_markup = '<div class="ngoOptInText">'. $ngo_title ."</div>";
+    $form['ngo_markup'] = array(
+      '#type' => 'item',
+      '#markup' => $ngo_markup,
     );
   //}
   
+  $campaign_opt_in_title = t('I would like to receive email updates on '. $campaign_list_title);
   $form['opt_in_campaign'] = array(
     '#type' => 'checkbox',
     '#default_value' => 1,
-    '#title' => t('I would like to receive email updates on '. $campaign_list_title),
+    '#title' => $campaign_opt_in_title,
+    '#title_display' => 'attribute',
+  );
+  $camp_opt_in_markup = '<div class="ngoOptInText">'. $campaign_opt_in_title ."</div>";
+  $form['camp_opt_in_markup'] = array(
+    '#type' => 'item',
+    '#markup' => $camp_opt_in_markup,
   );
   
   $form[''] = array(
@@ -653,8 +661,6 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
 }
 
 function _takepart_petition_progress_form($form, &$form_state, $petition_form) {
-
-  ddl('In _takepart_petition_progress_form');
 
   $progress_markup = "<div>Progress Markup Goes Here</div>";
   $form['markup'] = array(
