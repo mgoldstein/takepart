@@ -442,6 +442,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
   $form['actions']['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Sign'),
+    '#src' => 'profiles/takepart/modules/takepart_petition/images/petition-submit.png',
     '#submit' => array('_takepart_petition_sign_petition_form_submit'),
   );
 
