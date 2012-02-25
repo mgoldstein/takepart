@@ -1416,13 +1416,12 @@ h1.title a:hover {
 }
 
 .main-content .drupal-embed .node-openpublish-photo-gallery .field-name-field-promo-headline {
-    color: #99BBCC;
+    color: #000;
     font-family: Helvetica,Arial,sans-serif;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: bold;
     padding: 0 9px 0 0;
-    text-decoration: none;
-    text-transform: uppercase;
+    margin-bottom: 4px;
 }
 
 .main-content .drupal-embed .node-openpublish-photo-gallery .views-row a{
