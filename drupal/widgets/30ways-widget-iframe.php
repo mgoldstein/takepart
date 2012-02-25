@@ -5,7 +5,7 @@ $xmlFile = $_SERVER['HTTP_HOST']."/calendar/xml/20673";
 # xml file location
 try {
   $theXml = simplexml_load_file($xmlFile);
-} catch (MyException $e) {
+} catch (Exception $e) {
   $theXml = false;
 }
 
