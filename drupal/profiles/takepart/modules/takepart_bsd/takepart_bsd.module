@@ -92,6 +92,50 @@ function _takepart_bsd_getformname($id) {
   return $newslettername;
 }
 
+/**
+* Get newsletter public title for a given form id.
+* @param $id
+*   The id of the form.
+* @return
+* A string containing the public title;
+**/
+function _takepart_bsd_getpublictitle($id) {
+  $public_title = '';
+  $formsxml = _takepart_bsd_apiquery("signup/list_forms");
+  $forms = simplexml_load_string($formsxml);
+  foreach ($forms as $child) {
+    if((int) $child->attributes()->id == $id) {
+      $public_title = (string) $child->form_public_title;
+    }
+  }
+  return $public_title;
+}
+
+/**
+* Get a signup form's id given it's slug.
+* @param $slug
+*   The slug of the form.
+* @return
+*   The id of the form, or -1 if the slug is not found.
+**/
+function _takepart_bsd_get_form_id_from_slug($slug) {
+  $id = -1;
+  $form_list_xml = _takepart_bsd_apiquery("signup/list_forms");
+  $forms = simplexml_load_string($formsxml);
+  foreach ($forms as $child) {
+    if ((string)$child->signup_form_slug == $slug) {
+      $id = (int)$child->attributes()->id;
+    }
+  }
+  return $id;
+}
+
+function _takepart_bsd_request_signup_count($form_id) {
+  $fieldsxml = _takepart_bsd_apiquery("signup/signup_count", array('signup_form_id' => $form_id));
+}
+
+function _takepart_bsd_retrieve_signup_count($deferred_id) {
+}
 
 /**
 * Unsubscribe user from a given campaign.
@@ -213,9 +257,9 @@ function _takepart_bsd_signup($email, $form_id) {
 *  A string containing REST response from 
 *  the BSD API.
 **/
-function _takepart_bsd_apiquery($url, $query) {
+function _takepart_bsd_apiquery($url, $query, $block = true) {
   $bsd = new BSD_API(variable_get('takepart_bsd_api_id', 'takepart-com'),variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'));
-  $req = $bsd->callApi($url, $query);
+  $req = $bsd->callApi($url, $query, null, $block);
   return $req;
 }
 
@@ -231,7 +275,7 @@ function _takepart_bsd_apiquery($url, $query) {
 **/
 function _takepart_bsd_array_to_xml($array, &$root) {
   foreach($array as $key => $value) {
-    if(strrpos($key, 'signup_form_field') > -1) {
+    if(strrpos($key, 'signup_form') > -1) {
       $key = preg_replace('/[0-9]/i', '', $key);
     }
     if(is_array($value)) {
@@ -275,14 +319,14 @@ function _takepart_bsd_array_to_xml($array, &$root) {
 *  A string containing REST response from
 *  the BSD API.
 **/
-function _takepart_bsd_apipost($url, $data) {
+function _takepart_bsd_apipost($url, $data, $block = true) {
    
   $xml = new SimpleXMLElement("<?xml version=\"1.0\" encoding=\"utf-8\"?><api></api>");
 
   _takepart_bsd_array_to_xml($data, $xml);
    
   $bsd = new BSD_API(variable_get('takepart_bsd_api_id', 'takepart-com'), variable_get('takepart_bsd_api_secret', 'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8'));
-  $req = $bsd->callApi($url, null, $xml->asXML());
+  $req = $bsd->callApi($url, null, $xml->asXML(), $block);
 
   return $req;
 

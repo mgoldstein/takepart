@@ -1,0 +1,220 @@
+<?php
+
+
+/**
+ * Implementation of hook_install().
+ */
+function takepart_petition_install() {
+  drupal_set_message(st('The TakePart Petitions module has been installed.'));
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function takepart_petition_uninstall() {
+  drupal_set_message(st('The TakePart Petitions module has been uninstalled.'));
+}
+/**
+ * Implements hook_schema.
+ */
+function takepart_petition_schema() {
+  $schema = array();
+
+  $schema['takepart_petition_form'] = array(
+    'description' => 'A petition form.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'The name of the petition form.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'label' => array(
+        'description' => 'The label of the petition form.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'petition_form_id' => array(
+        'description' => 'The id of the BSD signup form for the petition.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'goal' => array(
+        'description' => 'The goal number of signatures.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'mail_field_id' => array(
+        'description' => 'The id of field in the petition form containing the email address.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'last_name_field_id' => array(
+        'description' => 'The id of field in the petition form containing the last name.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'first_name_field_id' => array(
+        'description' => 'The id of field in the petition form containing the first name.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'zip_code_field_id' => array(
+        'description' => 'The id of field in the petition form containing the zip code.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'comment_field_id' => array(
+        'description' => 'The id of field in the petition form containing the comment.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'source_ngo_field_id' => array(
+        'description' => 'The id of field in the petition form containing the source NGO.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'ngo_opt_in_field_id' => array(
+        'description' => 'The id of field in the petition form containing the NGO opt in value.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'campaign_opt_in_field_id' => array(
+        'description' => 'The id of field in the petition form containing the campaign opt in value.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'campaign_signup_form_id' => array(
+        'description' => 'The id of the BSD signup form for the campaign mailing list.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'campaign_mail_field_id' => array(
+        'description' => 'The id of field in the campaign form containing the email address.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+    ) + entity_exportable_schema_fields(),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'name' => array('name'),
+    ),
+  );
+
+  $schema['takepart_petition_signature'] = array(
+    'description' => 'A petition signature.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'petition_form' => array(
+        'description' => 'The petition form signed.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'mail' => array(
+        'description' => 'The email of the signee.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'last_name' => array(
+        'description' => 'The last name of the signee.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'first_name' => array(
+        'description' => 'The first name of the signee.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'comment' => array(
+        'description' => 'Comment on the signature.',
+        'type' => 'text',
+      ),
+      'shown' => array(
+        'description' => 'Option to show the signature publicly',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the petition was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'foreign keys' => array(
+      'petition_form' => array('takepart_petition_form' => 'name'),
+    ),
+    'unique keys' => array(
+      'mail' => array('mail'),
+    ),
+  );
+
+  $schema['takepart_petition_ngo'] = array(
+    'description' => 'A petition NGO.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'token' => array(
+        'description' => 'The token identifying the NGO.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'label' => array(
+        'description' => 'The name of the NGO.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ) + entity_exportable_schema_fields(),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'token' => array('token'),
+    ),
+  );
+
+  return $schema;
+}

@@ -1,0 +1,683 @@
+<?php
+
+/**
+ * Implements hook_entity_info()
+ */
+function takepart_petition_entity_info() {
+  $info = array(
+
+    'takepart_petition_form' => array(
+      'label' => t('Petition Form'),
+      'entity class' => 'TakePartPetitionForm',
+      'controller class' => 'TakePartPetitionFormController',
+      'base table' => 'takepart_petition_form',
+      'fieldable' => FALSE,
+      'exportable' => TRUE,
+      'entity keys' => array(
+        'id' => 'id',
+        'name' => 'name',
+        'label' => 'label',
+      ),
+      'module' => 'takepart_petition',
+      'admin ui' => array(
+        'path' => 'admin/structure/petitions/forms',
+        'file' => 'takepart_petition.admin.inc',
+        'controller class' => 'TakePartPetitionFormUIController',
+      ),
+      'access callback' => 'takepart_petition_form_access',
+    ),
+
+    'takepart_petition_signature' => array(
+      'label' => t('Petition Signature'),
+      'entity class' => 'TakePartPetitionSignature',
+      'controller class' => 'TakePartPetitionSignatureController',
+      'base table' => 'takepart_petition_signature',
+      'fieldable' => FALSE,
+      'entity keys' => array(
+        'id' => 'id',
+        'label' => 'mail',
+      ),
+      //'load hook' => 'takepart_petition_signature_load',
+      'view modes' => array(
+        'full' => array(
+          'label' => t('Default'),
+          'custom settings' => FALSE,
+        ),
+      ),
+      'module' => 'takepart_petition',
+      'access callback' => 'takepart_petition_signature_access',
+    ),
+
+    'takepart_petition_ngo' => array(
+      'label' => t('Petition NGO'),
+      'entity class' => 'TakePartPetitionNGO',
+      'controller class' => 'EntityAPIControllerExportable',
+      'base table' => 'takepart_petition_ngo',
+      'fieldable' => FALSE,
+      'exportable' => TRUE,
+      'entity keys' => array(
+        'id' => 'id',
+        'name' => 'token',
+        'label' => 'label',
+      ),
+      'module' => 'takepart_petition',
+      'admin ui' => array(
+        'path' => 'admin/structure/petitions/ngos',
+        'file' => 'takepart_petition.admin.inc',
+        'controller class' => 'TakePartPetitionNGOUIController',
+      ),
+      'access callback' => 'takepart_petition_ngo_access',
+    ),
+  );
+  
+  return $info;
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function takepart_petition_entity_property_info_alter(&$info) {
+  $properties = &$info['takepart_petition_signature']['properties'];
+  $properties['created'] = array(
+    'label' => t("Date created"),
+    'type' => 'date',
+    'description' => t("The date the signature was created."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'administer nodes',
+    'schema field' => 'created',
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function takepart_petition_permission() {
+  $permissions = array(
+    'administer takepart_petition petitions' => array(
+      'title' => t('Administer petitions'),
+      'description' => t('Allows users to configure petitions.'),
+      'restrict access' => TRUE,
+    ),
+    'create takepart_petition signatures' => array(
+      'title' => t('Create signatures'),
+      'description' => t('Allows users to create signatures.'),
+      'restrict access' => TRUE,
+    ),
+    'view takepart_petition signatures' => array(
+      'title' => t('View signatures'),
+      'description' => t('Allows users to view signatures.'),
+      'restrict access' => FALSE,
+    ),
+    'edit takepart_petition signatures' => array(
+      'title' => t('Edit any signatures'),
+      'description' => t('Allows users to edit any signatures.'),
+      'restrict access' => TRUE,
+    ),
+  );
+
+  return $permissions;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function takepart_petition_block_info() {
+
+  // Return a form block and a progress block for each petition form in the system
+  $blocks = array();
+  foreach (takepart_petition_forms() as $name => $petition_form) {
+
+    $form_name = $name .'_form';
+    $blocks[$form_name] = array(
+      'info' => $petition_form->label .' (Form)',
+    );
+
+    $progress_name = $name .'_progress';
+    $blocks[$progress_name] = array(
+      'info' => $petition_form->label .' (Progress)',
+    );
+  }
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function _takepart_petition_is_block_type($delta, $type) {
+  if (strlen($delta) > strlen($type)) {
+    if (substr_compare($delta, $type, -strlen($type)) === 0) {
+      return true;
+    }
+  }
+  return false;
+}
+function takepart_petition_block_view($delta = '') {
+
+  if (_takepart_petition_is_block_type($delta, '_form')) {
+
+    // Add the css for the form
+    drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-form-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+  
+    $name = substr($delta, 0, -strlen('_form'));
+    $form = takepart_petition_forms($name);
+
+    $subject = $form->label .' (Form)';
+    $content = drupal_get_form('_takepart_petition_sign_petition_form', $form);
+
+  } else if (_takepart_petition_is_block_type($delta, '_progress')) {
+  
+    // Add the css and javascript for the progress bar
+    drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-progress-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+    drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-progress-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
+
+    $name = substr($delta, 0, -strlen('_progress'));
+    $form = takepart_petition_forms($name);
+    
+    $subject = $form->label .' (Progress)';
+    $content = drupal_get_form('_takepart_petition_progress_form', $form);
+  }
+
+  return array(
+    'subject' => $subject,
+    'content' => $content,
+  );
+}
+
+/**
+  * Implements hook_views_api().
+  */
+function takepart_petition_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'takepart_petition'),
+  );
+}
+
+/*******************************************************************************
+ ******************************* Signature API's *******************************
+ ******************************************************************************/
+
+/**
+ * Access callback for signature.
+ */
+function takepart_petition_signature_access($op, $signature, $account = NULL, $entity_type = NULL) {
+  global $user;
+
+  if (!isset($account)) {
+    $account = $user;
+  }
+  switch ($op) {
+    case 'create':
+      return user_access('administer takepart_petition signatures', $account)
+          || user_access('create takepart_petition signatures', $account);
+    case 'view':
+      return user_access('administer takepart_petition signatures', $account)
+          || user_access('view takepart_petition signatures', $account);
+    case 'edit':
+      return user_access('administer takepart_petition signatures')
+          || user_access('edit takepart_petition signatures');
+  }
+}
+
+/**
+ * Load a signature.
+ */
+function takepart_petition_signature_load($sid, $reset = FALSE) {
+  $signatures = takepart_petition_signature_load_multiple(array($sid), array(), $reset);
+  return reset($signatures);
+}
+
+/**
+ * Load multiple signatures based on certain conditions.
+ */
+function takepart_petition_signature_load_multiple($sids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('takepart_petition_signature', $sids, $conditions, $reset);
+}
+
+/**
+ * Save signature.
+ */
+function takepart_petition_signature_save($signature) {
+  entity_save('takepart_petition_signature', $signature);
+}
+
+/**
+ * Delete single signature.
+ */
+function takepart_petition_signature_delete($signature) {
+  entity_delete('takepart_petition_signature', entity_id('takepart_petition_signature' ,$signature));
+}
+
+/**
+ * Delete multiple signatures.
+ */
+function takepart_petition_signature_delete_multiple($sids) {
+  entity_delete_multiple('takepart_petition_signature', $sids);
+}
+
+/*******************************************************************************
+ **************************** Petition Form API's ******************************
+ ******************************************************************************/
+
+/**
+ * Access callback for petition.
+ */
+function takepart_petition_form_access($op, $form = NULL) {
+  return user_access('administer takepart_petition petitions');
+}
+
+/**
+ * Load petition.
+ */
+function takepart_petition_form_load($name) {
+  return takepart_petition_forms($name);
+}
+
+/**
+ * List of petitions.
+ */
+function takepart_petition_forms($name = NULL) {
+  $forms = entity_load_multiple_by_name('takepart_petition_form', isset($name) ? array($name) : FALSE);
+  return isset($name) ? reset($forms) : $forms;
+}
+
+/**
+ * Save petition entity.
+ */
+function takepart_petition_form_save($form) {
+  entity_save('takepart_petition_form', $form);
+}
+
+/**
+ * Delete single petition.
+ */
+function takepart_petition_form_delete($name) {
+  entity_delete('takepart_petition_form', entity_id('takepart_petition_form' ,$name));
+}
+
+/**
+ * Delete multiple petitions.
+ */
+function takepart_petition_form_delete_multiple($ids) {
+  entity_delete_multiple('takepart_petition_form', $ids);
+}
+
+/*******************************************************************************
+ ***************************** Petition NGO API's ******************************
+ ******************************************************************************/
+
+/**
+ * Access callback for petition.
+ */
+function takepart_petition_ngo_access($op, $ngo = NULL) {
+  return user_access('administer takepart_petition petitions');
+}
+
+/**
+ * Load petition.
+ */
+function takepart_petition_ngo_load($ngo) {
+  return takepart_petition_ngos($ngo);
+}
+
+/**
+ * List of petitions.
+ */
+function takepart_petition_ngos($ngo_token = NULL) {
+  $ngos = entity_load_multiple_by_name('takepart_petition_ngo', isset($ngo_token) ? array($ngo_token) : FALSE);
+  return isset($ngo_token) ? reset($ngos) : $ngos;
+}
+
+/**
+ * Save petition entity.
+ */
+function takepart_petition_ngo_save($ngo) {
+  entity_save('takepart_petition_ngo', $ngo);
+}
+
+/**
+ * Delete single petition.
+ */
+function takepart_petition_ngo_delete($ngo) {
+  entity_delete('takepart_petition_ngo', entity_id('takepart_petition_ngo' ,$ngo));
+}
+
+/**
+ * Delete multiple petitions.
+ */
+function takepart_petition_ngo_delete_multiple($ids) {
+  entity_delete_multiple('takepart_petition_ngo', $ids);
+}
+
+
+/*******************************************************************************
+ ************************ Petition Form Block Function *************************
+ ******************************************************************************/
+function _takepart_petition_sign_petition_form($form, &$form_state, $petition_form) {
+
+  // get the petition being signed
+  $form_state['petition_form'] = $petition_form;
+  
+  // get the label for the associate campaign mailing list
+  $campaign_list_title = 'the campaign behind this petition';
+  $campaign_form_id = $petition_form->campaign_signup_form_id;
+  $campaign_list_title = _takepart_bsd_getpublictitle($campaign_form_id);
+
+  // get the source NGO (in the GET parameters)
+  $ngo_token = $_GET['ngo'];
+  if (isset($ngo_token) && strlen($ngo_token) > 0 && strlen($ngo_token) < 255) {
+    $ngo = takepart_petition_ngos($ngo_token);
+    if ($ngo) {
+      $form_state['ngo'] = $ngo;
+    }
+  }
+
+  // create a new signature  
+  $signature = entity_create('takepart_petition_signature', array());
+  $form_state['signature'] = $signature;
+
+  $instructions_markup = '<div class="signatureHeader">Add Your Signature</div>';
+  
+  $form['#attributes']['class'][] = 'petition-form'; 
+  
+  $form['instructions'] = array(
+    '#type' => 'item',
+    '#markup' => $instructions_markup,
+  );
+
+  $form['mail'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#title' => t('E-mail address'),
+    '#default_value' => $signature->mail,
+  );
+
+  $form['first_name'] = array(
+    '#prefix' => '<div class="pet-name-wrapper"><div class="pet-first-name">',
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#title' => t('First Name'),
+    '#default_value' => $signature->first_name,
+    '#suffix' => '</div>',
+  );
+
+  $form['last_name'] = array(
+    '#prefix' => '<div class="pet-last-name">',
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#title' => t('Last Name'),
+    '#default_value' => $signature->last_name,
+    '#suffix' => '</div></div>',
+  );
+  
+  $form['zip_code_5'] = array(
+    '#prefix' => '<div class="zips"><div class="zip5">',
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#title' => t('ZIP Code'),
+    '#default_value' => '',
+    '#suffix' => '</div>',
+  );
+
+  $form['zip_code_4'] = array(
+    '#prefix' => '<div class="zip4">',
+    '#type' => 'textfield',
+    '#required' => FALSE,
+    '#title' => t('+ 4'),
+    '#default_value' => '',
+    '#suffix' => '</div>',    
+  );
+
+  $zip_lookup_markup = "<div class=\"zipHelp\">Don't know your full ZIP Code? Look it up <a href=\"http://www.usps.com/zip4/\">here</a>.</div></div>";
+  $form['zip_code_lookup'] = array(
+    '#type' => 'item',
+    '#markup' => $zip_lookup_markup,
+  );
+
+  $required_markup = "<div><span style=\"width:100%\" class=\"form-required\">*</span> Required Field</div>";
+  $form['required_fields'] = array(
+    '#type' => 'item',
+    '#markup' => $required_markup,
+  );
+
+  $form[''] = array(
+    '#markup' => '<div style="clear:both"></div>',
+  );
+
+  $form['comment'] = array(
+    '#type' => 'textarea',
+    '#resizable' => FALSE,
+    '#default_value' => $signature->comment,
+    '#title' => t('Your reason for signing (optional)'),
+    '#prefix' => '<div style="clear:both"></div>',
+  );
+  
+  //if ($ngo){
+    $ngo_title = t('I would like to receive email updates from '. $ngo->label);
+    $form['opt_in_ngo'] = array(
+      '#prefix' => '<div class="optin_ngo_wrapper">',
+      '#type' => 'checkbox',
+      '#default_value' => 1,
+      '#title' => $ngo_title,
+      '#title_display' => 'attribute',
+      '#suffix' => '</div>',
+    );
+    $ngo_markup = '<div class="ngoOptInText">'. $ngo_title ."</div>";
+    $form['ngo_markup'] = array(
+      '#type' => 'item',
+      '#markup' => $ngo_markup,
+    );
+  //}
+  
+  $campaign_opt_in_title = t('I would like to receive email updates on '. $campaign_list_title);
+  $form['opt_in_campaign'] = array(
+    '#type' => 'checkbox',
+    '#default_value' => 1,
+    '#title' => $campaign_opt_in_title,
+    '#title_display' => 'attribute',
+  );
+  $camp_opt_in_markup = '<div class="ngoOptInText">'. $campaign_opt_in_title ."</div>";
+  $form['camp_opt_in_markup'] = array(
+    '#type' => 'item',
+    '#markup' => $camp_opt_in_markup,
+  );
+  
+  $form[''] = array(
+    '#markup' => '</div>',
+  );  
+
+  $form['actions'] = array(
+    '#weight' => 100,
+  );
+
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Sign'),
+    '#src' => 'profiles/takepart/modules/takepart_petition/images/petition-submit.png',
+    '#submit' => array('_takepart_petition_sign_petition_form_submit'),
+  );
+
+  $tou_markup = "<div>By signing, you accept TakePart's <a href=\"/terms-of-use\">Terms of Use</a></div>";
+  $form['terms_of_use'] = array(
+    '#type' => 'item',
+    '#markup' => $tou_markup,
+    '#weight' => 105,
+  );
+
+  /* 23 Feb 2012 disable per new comp
+  $form['shown'] = array(
+    '#type' => 'checkbox',
+    '#default_value' => 1,
+    '#title' => t('Display my signature publicly'),
+    '#weight' => 110,
+  );
+  */
+  
+  $form['#validate'][] = '_takepart_petition_sign_petition_form_validate';
+
+  return $form;
+}
+
+function _takepart_petition_sign_petition_form_validate($form, &$form_state) {
+
+  $value = $form_state['values']['mail'];
+  if (! valid_email_address($value)) {
+    form_set_error('TakePart Petitions', t('Please enter a valid email address.'));
+  }
+  
+  $value = $form_state['values']['zip_code_5'];
+  if (strlen(trim($value)) == 5) {
+    if ((!is_numeric($value)) || ($value <= 0)) {
+      form_set_error('TakePart Petition Forms', t('Please enter a valid ZIP code.'));
+    }
+  } else {
+    form_set_error('TakePart Petition Forms', t('Please enter a valid ZIP code.'));
+  }
+  
+  $value = $form_state['values']['zip_code_4'];
+  if (strlen(trim($value)) == 4) {
+    if ((!is_numeric($value)) || ($value <= 0)) {
+      form_set_error('TakePart Petition Forms', t('Please enter a valid ZIP code.'));
+    }
+  } else if (strlen(trim($value)) != 0) {
+    form_set_error('TakePart Petition Forms', t('Please enter a valid ZIP code.'));
+  }
+}
+
+function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
+
+  $petition_form = $form_state['petition_form'];
+  $ngo = $form_state['ngo'];
+  $mail = $form_state['values']['mail'];
+
+  // NGO mailing list subscriptions
+  if ($ngo) {
+    $ngo_token = $ngo->token;
+    $ngo_opt_in = $form_state['values']['opt_in_ngo'];
+  } else {
+    $ngo_token = 'no_ngo';
+    $ngo_opt_in = 0;
+  }
+  
+  // put together the zip code
+  if (strlen($form_state['values']['zip_code_4']) == 4) {
+    $zip_code = $form_state['values']['zip_code_5'] .'-'. $form_state['values']['zip_code_4'];
+  } else {
+    $zip_code = $form_state['values']['zip_code_5'];
+  }
+  
+  // submit both forms at once
+  
+  // petition signup form
+  $signup = array();
+  $signup['signup_form1'] = array(
+    '@attributes' => array (
+      'id' => $petition_form->petition_form_id,
+    ),
+    'signup_form_field1' => array (
+      '@attributes' => array (
+        'id' => $petition_form->mail_field_id,
+      ),
+      '@value' => $mail,
+    ),
+    'signup_form_field2' => array (
+      '@attributes' => array (
+        'id' => $petition_form->last_name_field_id,
+      ),
+      '@value' => $form_state['values']['last_name'],
+    ),
+    'signup_form_field3' => array (
+      '@attributes' => array (
+        'id' => $petition_form->first_name_field_id,
+      ),
+      '@value' => $form_state['values']['first_name'],
+    ),
+    'signup_form_field4' => array (
+      '@attributes' => array (
+        'id' => $petition_form->zip_code_field_id,
+      ),
+      '@value' => $zip_code,
+    ),
+    'signup_form_field5' => array (
+      '@attributes' => array (
+        'id' => $petition_form->comment_field_id,
+      ),
+      '@value' => $form_state['values']['comment'],
+    ),
+    'signup_form_field6' => array (
+      '@attributes' => array (
+        'id' => $petition_form->source_ngo_field_id,
+      ),
+      '@value' => $ngo_token,
+    ),
+    'signup_form_field7' => array (
+      '@attributes' => array (
+        'id' => $petition_form->ngo_opt_in_field_id,
+      ),
+      '@value' => $ngo_opt_in,
+    ),
+    'signup_form_field8' => array (
+      '@attributes' => array (
+        'id' => $petition_form->campaign_opt_in_field_id,
+      ),
+      '@value' => $form_state['values']['opt_in_campaign'],
+    ),
+  );
+  
+  // campaign signup form
+  if ($form_state['values']['opt_in_campaign']) {
+    $signup['signup_form2'] = array(
+      '@attributes' => array (
+        'id' => $petition_form->campaign_signup_form_id,
+      ),
+      'signup_form_field' => array (
+        '@attributes' => array (
+          'id' => $petition_form->campaign_mail_field_id,
+        ),
+        '@value' => $mail,
+      ),
+    );
+  }
+  
+  $resp = _takepart_bsd_apipost("signup/process_signup", $signup);
+    
+  // only add the signature if it doesn't already exist
+  $already_signed = db_query(
+    "SELECT count(mail) FROM takepart_petition_signature WHERE mail = :mail", 
+    array(':mail' => $mail))->fetchField();
+  if (! $already_signed) {
+
+    $signature = $form_state['signature'];
+    $signature->petition_form = $petition_form->name;
+    $signature->mail = $mail;
+    $signature->last_name = $form_state['values']['last_name'];
+    $signature->first_name = $form_state['values']['first_name'];
+    $signature->comment = $form_state['values']['comment'];
+    $signature->shown = 1;
+    $signature->created = REQUEST_TIME;
+
+    takepart_petition_signature_save($signature);
+  }
+}
+
+function _takepart_petition_progress_form($form, &$form_state, $petition_form) {
+
+  $progress_markup = "<div>Progress Markup Goes Here</div>";
+  $form['markup'] = array(
+    '#type' => 'item',
+    '#markup' => $progress_markup,
+  );
+
+  $form['total'] = array(
+    '#type' => 'hidden',
+    '#value' => $petition_form->goal,
+  );
+  
+  $deferred_id = _takepart_bsd_apiquery("signup/signup_count", array('signup_form_id' => $petition_form->petition_form_id), false);
+  $form['progress'] = array(
+    '#type' => 'hidden',
+    '#value' => $deferred_id,
+  );
+  
+  return $form;
+}

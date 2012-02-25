@@ -47,8 +47,7 @@ class BSD_API {
     );
   }
   
-
-  public function callApi($url, $query_params = array(), $data = null) {
+  public function callApi($url, $query_params = array(), $data = null, $block_on_deferred = true) {
     // prepend URL with base path for the API
     $url = $this->http_request_base . $url;
     
@@ -94,23 +93,25 @@ class BSD_API {
         if (!file_get_contents("data:,ok")) {
           watchdog('bsd', 'PHPs stream handlers are not functional.');
         }
-        if(stripos($http_response_header[0], '202 Accepted') !== false) {
-          $deferred_id = $req;
-          do {
-            $this->deferred_result_attempts++;
-            sleep($this->deferred_result_call_interval);
-            $req = $this->callApi("get_deferred_results", array("deferred_id"=>$deferred_id));
-          } while ((stripos($http_response_header[0], '503') !== false) && ($this->deferred_result_attempts <= $this->deferred_result_call_max_attempts));
+        if ($block_on_deferred) {
+          if(stripos($http_response_header[0], '202 Accepted') !== false) {
+            $deferred_id = $req;
+            do {
+              $this->deferred_result_attempts++;
+              sleep($this->deferred_result_call_interval);
+              $req = $this->callApi("get_deferred_results", array("deferred_id"=>$deferred_id), null, false);
+            } while ((stripos($http_response_header[0], '503') !== false) && ($this->deferred_result_attempts <= $this->deferred_result_call_max_attempts));
+          }
         }
       //Curl:
       } else {
         $reqarray = $this->_curl($url);
-        if($reqarray['http code'] != "200") {
+        if (($reqarray['http code'] != "200") && $block_on_deferred) {
           $deferred_id = $reqarray['body'];
           do {
             $this->deferred_result_attempts++;
             sleep($this->deferred_result_call_interval);
-            $req = $this->callApi("get_deferred_results", array("deferred_id"=>$deferred_id));
+            $req = $this->callApi("get_deferred_results", array("deferred_id"=>$deferred_id), null, false);
           } while (($reqarray['http code'] != "503") && ($this->deferred_result_attempts <= $this->deferred_result_call_max_attempts));
         } else {
           $req = $reqarray['body'];
