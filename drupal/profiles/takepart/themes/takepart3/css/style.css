@@ -1400,22 +1400,20 @@ h1.title a:hover {
 }
 
 #search-api-page-search-form-2 div {
-	border: solid 1px #ccc;
-	display: inline-block;
+    border: solid 1px #ccc;
+    display: inline-block;
 }
-
 .view-id-slide_rotator {
     border-top: 1px dotted #000000;
     overflow: hidden;
     padding-top: 15px;
 }
 
-.main-content  .drupal-embed .node-openpublish-photo-gallery {
-    border-top: 1px dotted #000 !important;
+.main-content .drupal-embed .node-openpublish-photo-gallery {
+    border: 4px solid #EFF3F5 !important;
     padding: 15px 10px;
-    
+    margin:15px 0;
 }
-
 .main-content .drupal-embed .node-openpublish-photo-gallery .field-name-field-promo-headline {
     color: #000;
     font-family: Helvetica,Arial,sans-serif;
