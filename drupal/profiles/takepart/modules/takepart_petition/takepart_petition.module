@@ -122,11 +122,19 @@ function takepart_petition_permission() {
  * Implements hook_block_info().
  */
 function takepart_petition_block_info() {
-  // Return a block for each petition form in the system
+
+  // Return a form block and a progress block for each petition form in the system
   $blocks = array();
   foreach (takepart_petition_forms() as $name => $petition_form) {
-    $blocks[$name] = array(
-      'info' => $petition_form->label,
+
+    $form_name = $name .'_form';
+    $blocks[$form_name] = array(
+      'info' => $petition_form->label .' (Form)',
+    );
+
+    $progress_name = $name .'_progress';
+    $blocks[$progress_name] = array(
+      'info' => $petition_form->label .' (Progress)',
     );
   }
   return $blocks;
@@ -135,14 +143,49 @@ function takepart_petition_block_info() {
 /**
  * Implements hook_block_view().
  */
+function _takepart_petition_is_block_type($delta, $type) {
+  if (strlen($delta) > strlen($type)) {
+    if (substr_compare($delta, $type, -strlen($type)) === 0) {
+      return true;
+    }
+  }
+  return false;
+}
 function takepart_petition_block_view($delta = '') {
-  // Add the styling css
-  drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-form-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
-  // Return the petition form
-  $form = takepart_petition_forms($delta);
+
+  ddl('In takepart_petition_block_view('. $delta .')');
+
+  if (_takepart_petition_is_block_type($delta, '_form')) {
+
+    // Add the css for the form
+    drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-form-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+  
+    $name = substr($delta, 0, -strlen('_form'));
+    $form = takepart_petition_forms($name);
+
+    $subject = $form->label .' (Form)';
+    $content = drupal_get_form('_takepart_petition_sign_petition_form', $form);
+
+  } else if (_takepart_petition_is_block_type($delta, '_progress')) {
+  
+    ddl('Detected progress block type');
+
+    // Add the css and javascript for the progress bar
+    drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-progress-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+    drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-progress-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
+
+    ddl('Added CSS and JavaScript');
+
+    $name = substr($delta, 0, -strlen('_progress'));
+    $form = takepart_petition_forms($name);
+    
+    $subject = $form->label .' (Progress)';
+    $content = drupal_get_form('_takepart_petition_progress_form', $form);
+  }
+
   return array(
-    'subject' => $form->label,
-    'content' => drupal_get_form('_takepart_petition_sign_petition_form', $form),
+    'subject' => $subject,
+    'content' => $content,
   );
 }
 
@@ -609,3 +652,26 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
   }
 }
 
+function _takepart_petition_progress_form($form, &$form_state, $petition_form) {
+
+  ddl('In _takepart_petition_progress_form');
+
+  $progress_markup = "<div>Progress Markup Goes Here</div>";
+  $form['markup'] = array(
+    '#type' => 'item',
+    '#markup' => $progress_markup,
+  );
+
+  $form['total'] = array(
+    '#type' => 'hidden',
+    '#value' => $petition_form->goal,
+  );
+  
+  $deferred_id = _takepart_bsd_apiquery("signup/signup_count", array('signup_form_id' => $petition_form->petition_form_id), false);
+  $form['progress'] = array(
+    '#type' => 'hidden',
+    '#value' => $deferred_id,
+  );
+  
+  return $form;
+}
