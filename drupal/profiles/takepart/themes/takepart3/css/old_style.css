@@ -101,14 +101,6 @@ img.photo, .gallery-item img {
 
 /***** Header ******/
 
-#logo {
-    float: left;
-    width:  125px;
-    padding: 0 0 0px 0;
-    position: absolute;
-    top: 11px;
-    left: 0px;
-}
 
 /*
  * TODO: remove this
@@ -138,11 +130,7 @@ img.photo, .gallery-item img {
 
 /****** Hot Topics Nav *****/
 
-#hot-topics-nav {
-    width: 540px;
-    float: left;
-    padding: 15px 0 13px 0;
-}
+
 
 #hot-topics-nav li {
     list-style-type: none;
@@ -273,10 +261,7 @@ a.user-menu-register  {
 }
 
 /***** Top Follow Us Icons *****/
-ul#top-follow {
-    margin: 9px 0 0 0;
-    float: right;
-}
+
 ul#top-follow li {
     list-style-type: none;
     float: left;
@@ -451,12 +436,7 @@ ul#top-follow li.rss a {
 
 /**** Top Search ****/
 
-#top-search {
-    width:  230px;
-    float: right;
-    margin: 7px 0 0;
 
-}
 
 form#search-api-page-search-form-2 {
     margin: 4px 0 0 0;
@@ -1266,7 +1246,7 @@ div.takepart_addthis_leftpanel {
 div.takepart_addthis_leftpanel div.addthis_toolbox a {
     width: 100%;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox {
@@ -1283,14 +1263,6 @@ div.takepart_addthis_footer {
 
 div.takepart_addthis_footer a {
     margin-left: 3px;
-}
-
-div.takepart_addthis_footer span#addthis_footer_sharethis {
-    padding-top: 6px;
-    margin-right: 10px;
-    color: #BBB;
-    float: right;
-    font-size: 1.2em;
 }
 
 div.takepart_addthis_footer div.buttons {
@@ -1775,18 +1747,14 @@ Block Boxes (General)
 
 
 
-.region-sidebar-second .block-boxes-title-our-blogs .content .field-content{
 
-}
 
 .region-sidebar-second .block-boxes-title-our-blogs .taxonomy-term-description {
     margin: 0;
 }
 
 
-.region-sidebar-second .block-boxes-title-our-blogs .field-name-field-blog-view .field-content:hover {
-    background: url('../images/sprite-vertical.gif') -1302px 0px no-repeat;
-}
+
 
 
 
@@ -1882,15 +1850,10 @@ h2.title a{
 }
 
 .embed-action-wrapper {
-    /* background: transparent url(../images/take-action-embed.png) left center no-repeat; */
     border:4px solid #FFE789;
     margin: 9px 0 25px 0;
     padding: 8px 10px;
-}
-
-.embed-action-wrapper .embed-action {
-    /* padding-left: 168px; */
-    /*width: 280px;*/
+    background-color: #FFF;
 }
 
 .embed-action-wrapper .embed-action table {
@@ -1905,6 +1868,7 @@ h2.title a{
 .embed-action-wrapper .embed-action a {
     color: #302009;
     font-size: 18px;
+    font-weight: bold;
     padding: 3px 0 0 0;
 }
 .embed-action-wrapper .embed-action a:hover {
@@ -1968,6 +1932,8 @@ h2.title a{
     background:url("../images/sprite.png") no-repeat scroll -383px 0 transparent;
     padding-left:20px;
     padding-bottom: 0;
+    margin-bottom:1em;
+    overflow:hidden;
 }
 
 .submitted-wrapper .field {
@@ -2047,7 +2013,7 @@ h2.title a{
 }
 
 .views-field-field-promo-text {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .views-field-field-promo-headline {
@@ -2224,6 +2190,7 @@ body.node-type-topic-front .submitted-wrapper{
 
 .block-boxes-title-secondary-headlines a:hover {
     color: #1CA9E7;
+    text-decoration: none;
 }
 /***** Taxonomy Search List *****/
 .block-boxes-current-taxonomy_search_list h2 {
@@ -2240,7 +2207,7 @@ body.node-type-topic-front .submitted-wrapper{
     font-weight: 300;
 }
 
-.view-taxonomy-search-list .views-field-url a{
+.view-taxonomy-search-list .views-field-url a {
     color: black;
     display: inline-block;
     font-size: 18px;
@@ -2250,6 +2217,7 @@ body.node-type-topic-front .submitted-wrapper{
 
 .view-taxonomy-search-list .views-field-url a:hover {
     color: #1CA9E7;
+    text-decoration: none;
 }
 
 .view-taxonomy-search-list .views-field-field-promo-text {
@@ -2257,9 +2225,8 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 /***** Teasers *****/
-
 .node.node-teaser {
-    margin-bottom: 50px;
+    margin-bottom: 3em;
 }
 
 .node-teaser .addthis_toolbox {
@@ -2272,29 +2239,7 @@ body.node-type-topic-front .submitted-wrapper{
     margin-left: 160px;
 }
 
-/***** Blog Post *****/
-
-body.node-type-openpublish-blog-post h1.page-title {
-    display: none;
-}
-
-.field-name-field-blogpost-main-image {
-    margin-bottom: 30px;
-}
-
-.field-name-field-blogpost-main-image img{
-    border: none;
-}
-
-/***** Blog Front *****/
-
-.node-blog-front h2.title,
-.node-blog-front .submitted-wrapper {
-    display: none;
-}
-
 /***** WYSIWYG *****/
-
 q, q.pull-quote {
     color: #99BBCC;
     font-size: 30px;
@@ -2310,7 +2255,6 @@ q, q.pull-quote {
 }
 
 /* Campaign */
-
 .region-highlighted .field-name-field-tp-campaign-intro-html {
     position: absolute;
     left: 0px;
@@ -2499,7 +2443,7 @@ body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #lef
     overflow: hidden;
     padding: 0;
     vertical-align: top;
-    width: 199px;
+    width: 150px;
 }
 
 .view-campaigns.view-display-id-block_1 .views-row .views-field-title a {  
@@ -2839,9 +2783,7 @@ div.messages a:visited {
     font-family:Helvetica,Arial,sans-serif;
     font-weight:bolder;
 }
-#widget_pager_top_photo_gallery-block img {
-    border:2px solid #707070;
-}
+
 .view-photo-gallery div.views-slideshow-pager-field-item {
     height: 69px;
     margin-bottom: 10px;
@@ -3230,7 +3172,7 @@ body.node-type-takepart-group #page {
  *
 */
 div.jcarousel-container {
-    width: 620px;
+    width: 640px;
 }
 
 div.jcarousel-clip {
@@ -3243,11 +3185,14 @@ div#block-views-video-block-8 div.content {
 }
 
 div.view-display-id-block_8 div.rotator_nav_bar {
+    /*
     width: 100%;
     height: 20px;
     background-color: #000;
     position: relative;
     margin-bottom: 5px;
+    */
+    display: none;
 }
 
 /*
@@ -3262,24 +3207,25 @@ div.view-display-id-block_8 div.rotator_nav_bar a.rotator_forward_button {
 }
 */
 
-.view-display-id-block_8 .jcarousel-prev-horizontal {
+.view-display-id-block_8 a.jcarousel-prev-horizontal {
     position:absolute;
-    top:-25px;
+    top:46px;
     left:0;
     padding-left: 35px;
-    padding-top: 20px;
-    background: url(../images/arrow_back.png) no-repeat;
+    padding-top:0;
+    background: url("../images/2012-02-08/gallery_left_arrow.png") no-repeat scroll 0 0 transparent;
+    height:68px;
+    width:40px;
 }
-.view-display-id-block_8 .jcarousel-next-horizontal {
+.view-display-id-block_8 a.jcarousel-next-horizontal {
     position:absolute;
-    top:-25px;
-    right:0px;
-    padding-right: 30px;
-    padding-top: 20px;
-    background: url(../images/arrow_front.png) no-repeat;
-}
-.view-display-id-block_8 .jcarousel-item {
-    width:200px;
+    top:46px;
+    right:0;
+    padding-right:0;
+    padding-top:0;
+    background: url("../images/2012-02-08/gallery_right_arrow.png") no-repeat scroll 0 0 transparent;
+    height:68px;
+    width:40px;
 }
 
 /*

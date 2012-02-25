@@ -2,7 +2,6 @@ if (typeof takepart == "undefined" || !takepart) {
     var takepart = {};
 }
 
-
 jQuery.fn.DefaultValue = function(text){
     return this.each(function(){
         //Make sure we're dealing with text-based form fields
@@ -183,21 +182,6 @@ jQuery(document).ready(function () {
      */ 
 });
 
-/* fix the height in the featured galleries */
-jQuery(document).ready(function () {
-    var target = '.main-content .block-boxes-title-features .views-row';
-    var tallestofthemall = 0;
-    jQuery(target).each(function () {
-    	if (jQuery(this).height() > tallestofthemall) {
-    	  tallestofthemall = jQuery(this).height();
-    	}
-    });
-    jQuery(target).each(function () {
-    	jQuery(this).height(tallestofthemall);
-    });  
-});
-
-
 
 /* place dots on image rotator */
 jQuery(document).ready(function () {
@@ -241,53 +225,69 @@ jQuery(document).ready(function () {
 /* fix the height in the featured galleries */
 jQuery(document).ready(function () {
     var target = '.main-content .block-boxes-title-features .views-row';
-    var tallestofthemall = 0;
+    var i = 0;
+    var index = 0;
+    var tallestofthemall=new Object();
     jQuery(target).each(function () {
-    	if (jQuery(this).height() > tallestofthemall) {
-    	  tallestofthemall = jQuery(this).height();
-    	}
+    	index = parseInt(i/3);
+    	if ((!tallestofthemall[index]) || (jQuery(this).height() > tallestofthemall[index])) {
+    		tallestofthemall[index] = jQuery(this).height();
+    	} 
+    	i++;
     });
+    i = 0;
     jQuery(target).each(function () {
-    	jQuery(this).height(tallestofthemall);
+    	index = parseInt(i/3);
+    	jQuery(this).height(tallestofthemall[index]);
+    	i++;
     });  
 });
 
 
 
-/*
- * 
- * 
-targetId : #views_slideshow_cycle_teaser_section_slide_rotator-block
-slideshowId : slide_rotator-block
+/* center the blog headings vertically in the right rail 
+jQuery(document).ready(function () {
+    var target = '#right-rail .field-name-field-blog-view .views-field-title span.field-content';
+    jQuery(target).each(function () {
+    	var margin = parseInt(70-(jQuery(this).height()) / 2);
+    	alert(margin);
+    	if(margin > 0) {
+    		jQuery(this).children(":first").css("margin-top", margin + "px");
+    	}
+    });
+});
+*/
 
-for(test in ss_obj) {
-	alert(test + ' : ' + ss_obj[test]);
-}
 
-	jQuery('.viewsSlideshowCycle-processed').each(function () {
-    	//alert(jQuery(this).id);
-    	
+/* fix the height in the featured galleries 
+jQuery(document).ready(function () {
+    var target = '.main-content .block-boxes-title-features .views-row';
+    var tallestofthemall = 0;
+    jQuery(target).each(function () {
+    	index = parseInt(i/3);
+    	if ((!tallestofthemall[index]) || (jQuery(this).height() > tallestofthemall[index])) {
+    		tallestofthemall[index] = jQuery(this).height();
+    	} 
+    	i++;
+    });
+    i = 0;
+    jQuery(target).each(function () {
+    	index = parseInt(i/3);
+    	jQuery(this).height(tallestofthemall[index]);
+    	i++;
+    });  
+});
+
+/*conditional padding for article imageas*/
+jQuery(document).ready(function () {
+	var target = '.field-type-text-with-summary img';
+    jQuery(target).each(function () {
+    	if(jQuery(this).css('float') == 'left') {
+    		jQuery(this).css('padding-right', '10px');
+    	}
+    	if(jQuery(this).css('float') == 'right') {
+    		jQuery(this).css('padding-left', '10px');
+    	}
     	
     });
-
-num_divs
-totalImages
-loadedImages
-*/
-
-
-/*
-$.fn.equalHeights = function(px) {
-	$(this).each(function(){
-	var currentTallest = 0;
-	$(this).children().each(function(i){
-	    if ($(this).height() > currentTallest) { currentTallest = $(this).height(); }
-	        });
-	    if (!px || !Number.prototype.pxToEm) currentTallest = currentTallest.pxToEm(); //use ems unless px is specified
-	        // for ie6, set height since min-height isn't supported
-	    if ($.browser.msie && $.browser.version == 6.0) { $(this).children().css({'height': currentTallest}); }
-	        $(this).children().css({'min-height': currentTallest}); 
-	    });
-	    return this;
-	};
-*/
+});

@@ -1,4 +1,7 @@
+
 /* layout styles */
+
+
 body.two-sidebars #left-rail, 
 body.sidebar-first #left-rail{
     width:140px;
@@ -18,25 +21,17 @@ body.sidebar-first #left-rail{
 .node-type-takepart-group .page {
     padding: 20px 20px 35px 0px !important;
 }
-.front .page{
-    padding: 20px 20px 35px;
-}
+
+
 
 body.node-type-takepart-group #content,
 body.node-type-takepart-group #left-rail{
     margin-top:0;
 }
 
-
-
 body.node-type-takepart-campaign #right-rail {
     margin-right: 10px;
 }
-
-body.node-type-openpublish-article #content,
-body.node-type-openpublish-article #left-rail {
-    margin-top:0;
-} 
 
 .contextual-links-region{
     margin-bottom:0;
@@ -57,17 +52,6 @@ body.node-type-openpublish-article #left-rail {
 
 h1{
     margin:0 0 20px 0;
-}
-
-hr {
-    border-top: 1px solid #D9E7EE;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-    clear: both;
-    margin: 0 0 20px;
-    height: 1px;
-    color: #D9E7EE;
 }
 
 #content ul,
@@ -97,8 +81,9 @@ hr {
     line-height:24px;
 }
 #content q{
-   /* margin:0 0 60px 0; */
+    /* margin:0 0 60px 0; */
 }
+
 
 /* Tabs */
 .not-logged-in .tabs{
@@ -110,6 +95,8 @@ hr {
     height: 68px;
 }
 
+
+
 /* navigation */
 ul#top-nav li a:hover{
     color:#1ca9e7;
@@ -120,12 +107,8 @@ ul#top-nav li a:hover{
     overflow:hidden;
 }
 
-/* blog pages */
-.node-type-openpublish-blog-post .region-content-top .field-name-field-blogpost-main-image{
-    margin:0;
-}
-
 /* group pages */
+
 .node-type-takepart-group h1 {
     margin: 0 0 5px;
 }
@@ -149,6 +132,9 @@ ul#top-nav li a:hover{
     clear:both;
 }
 
+
+
+
 /***** Taxonomy Search List *****/
 .view-taxonomy-search-list .views-field-url a{
     font-size:18px;
@@ -164,8 +150,8 @@ ul#top-nav li a:hover{
 
 .view-taxonomy-search-list .views-row{
     border-bottom: 1px solid #D9E7EE;
-    margin: 0 0 8px;
-    padding: 0 0 6px;	
+    margin: 0 0 15px;
+    padding: 0 0 15px;	
 }
 
 /* node list page */
@@ -196,24 +182,24 @@ ul#top-nav li a:hover{
 
 /**** Campaign Page(s) ****/
 .node-type-takepart-campaign #content,
-.node-type-takepart-campaign #left-rail{
+.node-type-takepart-campaign #left-rail {
     margin-top:0;
 }
 
-.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a:hover{
+.node-type-takepart-campaign .field-name-field-tp-campaign-cover-link .field-item a:hover {
     text-decoration:none;
 }
-.node-type-takepart-campaign .field-name-field-tp-campaign-subheadline{
+.node-type-takepart-campaign .field-name-field-tp-campaign-subheadline {
     font-size:30px;
     line-height:30px;
+    color:#000;
 }	
-.node-type-takepart-campaign #content h2{
+.node-type-takepart-campaign #content h2 {
     font-size:20px;
     line-height:24px;
-    color:#1ca9e7;
+    color:#99BBCC;
 }
-
-.node-type-takepart-campaign #content .block-boxes a{
+.node-type-takepart-campaign #content .block-boxes a {
     color:#1686b7;
     font-weight:bold;
 }
@@ -244,7 +230,7 @@ body.page-taxonomy-term h1{
 }
 
 .field-name-field-display-tag a {    
-    color: #1CA9E7;
+    color: #1ca9e7;
     text-decoration: none;
 }
 
@@ -271,21 +257,19 @@ body.page-taxonomy-term h1{
 }
 
 /* photo page */
+
 .block-boxes-current-photo_galleries h2 {
     background: none repeat scroll 0 0 #CCCCCC;
     margin: 25px 0 7px;
 }
 
-.block-boxes-current-photo_galleries .content{
-    padding-top: 10px;
-    /* border-top: 1px dotted #000000; */
-}
 .node-type-openpublish-photo-gallery .region-highlighted .field-name-field-display-tag{
     margin-left:-10px;
 }
 .node-type-openpublish-photo-gallery h1{
     margin:0 0 5px 0;
 }
+
 
 #views_slideshow_cycle_teaser_section_photo_gallery-block .views-field-field-gallery-images img{
     display:block;
@@ -305,15 +289,11 @@ body.page-taxonomy-term h1{
     color:#000;
 }
 
+
 /* photo and video submitted wrapper */
 .submitted-wrapper .field {
     display:block;
     float:left;
-}
-.submitted-wrapper{
-    overflow:hidden;
-    padding-bottom:0;
-    /*margin-bottom:0px;*/
 }
 .node-type-openpublish-photo-gallery .submitted-wrapper{
     border-bottom: medium none;
@@ -356,7 +336,8 @@ body.page-taxonomy-term h1{
 
 .view-photo-galleries td {
     vertical-align:top;
-    padding: 0 9px 0 0;
+    padding:0 20px 0 0;
+    width:300px;
 }	
 .view-photo-galleries td.col-last{
     padding:0;
@@ -365,11 +346,10 @@ body.page-taxonomy-term h1{
     margin:0;
 }
 .view-photo-galleries td .views-field-field-thumbnail img{
+    /* border: 1px solid black; */
     border: none;
     display:block;
-    margin:0;
-    width: 207px;
-    height:154px;
+    margin:0
 }
 .view-photo-galleries td .views-field-field-promo-headline{
     font-size: 16px;
@@ -423,7 +403,7 @@ body.page-taxonomy-term h1{
 .featured-video .views-field-view-node-1 span{
     display:none;
 }
-.featured-video .views-field-view-node-1 a{
+.featured-video .views-field-view-node-1 a {
     display:inline-block;
     text-indent:-9999px;
     background:url('../images/videobutton.png') no-repeat 0 0;
@@ -436,27 +416,13 @@ body.page-taxonomy-term h1{
 .node-type-openpublish-video .field-name-field-subhead {
     color: #666666;
     font-size: 20px;
-    font-weight: 300;
+    font-weight: normal;
     line-height: 24px;
     margin-bottom: 10px;
 }
-.node-type-openpublish-video .submitted-wrapper {
-    border-bottom: medium none;
-    margin-bottom: 8px;
-}
-.node-type-openpublish-video .field-name-field-video-embedded{
-    margin:0 0 20px 0;
-}
 
-.node-topics-label {
-    font-family:Helvetica, Arial, sans-serif;
-    height: 0;
-    left: -55px;
-    overflow: visible;
-    position: relative;
-    font-weight:bold;
-    font-size: 14px;
-    color: #000;
+.node-type-openpublish-video .field-name-field-video-embedded {
+    margin:0 0 20px 0;
 }
 
 /* videos in content-bottom */
@@ -464,23 +430,20 @@ body.page-taxonomy-term h1{
 .block-boxes-view-name-video h2,
 div[class*='block-boxes-bid-views-video-block'] h2,
 div[class*='block-boxes-delta-video-block'] h2 {
-    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll right top transparent;
-    margin: 12px 0 8px 0;
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 1px transparent;
+    margin: 12px 0;
     color: #99BBCC;
-    font-size:18px;
-    font-weight:300;
-    line-height:100%;
-    text-transform: uppercase;
 }
 .block-boxes-current-video h2 span,
 .block-boxes-view-name-video h2 span,
 div[class*='block-boxes-bid-views-video-block'] h2 span,
 div[class*='block-boxes-delta-video-block'] h2 span{
     background: none repeat scroll 0 0 #FFFFFF;
-    margin: 25px 0 7px;
+    margin: 0;
+    border-right: 5px solid #FFFFFF;
     padding: 2px 5px 2px 0;
-}
 
+}
 
 #right-rail .block-boxes-view-name-video .content,
 #right-rail .block-boxes-current-video .content{
@@ -497,13 +460,13 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     margin-right: 0;
 }
 .view-video .views-field-field-thumbnail{
-    height: 154px;
+    height: 155px;
     width: 207px;
 }
 .view-video .views-field-field-thumbnail img{
     display:block;
     border: none;
-    height: 154px;
+    height: 155px;
     width: 207px;
 }
 
@@ -514,8 +477,8 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     margin: 10px 0 0 0;
 }
 .view-display-id-block_8 .jcarousel-item {
-    margin: 0 16px 0 0;
-    width: 196px !important;
+    margin: 0 8px 0 0;
+    width: 207px !important;
 }
 
 
@@ -557,17 +520,19 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     padding-bottom: 20px;
     padding-top: 10px;
 }
-.view-video tr{
-    display:block;
-    margin:0 0 25px 0;
+#right-rail .view-video tr{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 .view-video td {
     vertical-align:top;
     padding:0;
-    width:207px;
-    padding:0 9px 0 0;
+    width:196px;
+    padding:0 15px 0 0;
 }
-.view-video td .views-field-field-thumbnail {
+.view-video td.views-field-field-thumbnail {
     margin:0;
 }
 .view-video td.col-last{
@@ -586,25 +551,17 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 }
 
 .node-openpublish-video .field-name-field-promo-text,
-.node-openpublish-video a.embedded-video-link {
+.node-openpublish-video a.embedded-video-link,
+.view-video .views-field-field-promo-text{
     margin:0 0 10px 0;	
     color:#8E8E8E;
 }
-.view-video .views-field-field-promo-text {
-    color:#000;
-    margin:0;
-    font-size:13px;
-    line-height: 15px;
-}
-#right-rail .view-video .views-field-field-promo-text, 
-#right-rail .node-openpublish-video .field-name-field-promo-text {
-    margin: 0;
-    color: #000;
-}
+
 .node-openpublish-video .field-name-field-promo-text {
     padding-bottom: 5px; 
     margin-bottom: 10px;
     color:#8E8E8E;
+
 }
 
 
@@ -612,7 +569,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 #right-rail #block-boxes-box-e9e8814f h2,
 #right-rail #block-views-video-block h2,
 #right-rail .block-boxes-view-name-related_campaigns h2{
-    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 2px transparent;
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 1px transparent;
     font-size: 18px;
     font-weight: lighter;
     color: #99bbcc;
@@ -622,7 +579,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 }
 
 #left-rail #block-views-related-campaigns-block h2{
-    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 2px transparent;
+    background: url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 2px transparent;
     font-size: 18px;
     font-weight: lighter;
     color: #99bbcc;
@@ -633,32 +590,46 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 
 #right-rail .view-video .views-row{
     float: none;
-    padding: 10px 0 0 0;
-    margin: 10px 0 0 0;
+    margin: 0 0 20px 0;
     overflow: hidden;
     width: 100%;
-    border-top: 1px solid #EFF3F5;
+}
+#right-rail .view-video thead {
+    display: none;
+}
+#right-rail .view-video tbody {
+    border: none;
 }
 
-#right-rail .view-video .views-row-first {
-    margin:0;
+#right-rail .view-video td {
+    padding-bottom: 12px;
 }
-#right-rail .view-video .views-field-field-thumbnail{
+
+#right-rail .view-video .views-row-last td {
+    padding:0;
+}
+#right-rail .view-video td.views-field-field-thumbnail{
+    margin:0;
+    width:100px;
+    height:auto;
+    padding-right:10px;
+}
+#right-rail .view-video .views-field-field-thumbnail img{
     width: 100px;
     height: 75px;
-    float: left;
-    margin: 0 15px 0 0;
 }
-
-#right-rail .view-video .views-field-field-promo-headline{
+#right-rail .view-video .views-field-field-promo-headline {
     margin-top:0;
 }
-#right-rail .view-video .views-field-field-thumbnail img {
-    width: 100px;
-    height: 75px;
+
+#right-rail .view-video .views-field-field-promo-headline h3 {
+    font-size: 16px;
 }
-#right-rail .view-video .views-field-field-promo-headline h3{
-    font-size:14px;
+
+#right-rail .view-video .promo-text {
+    font-size: 12px;
+    font-weight: normal;
+    color: #8E8E8E;
 }
 
 /* action + impact page */
@@ -666,12 +637,6 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     border-bottom: 3px solid #666666;
     padding-bottom: 20px;
 }
-
-.node-type-section-front-wide .view-campaigns {
-    border-bottom: none;
-    padding-bottom: 10px;
-}
-
 .view-campaigns tr{
     display:block;
     margin:0 0 25px 0;
@@ -768,21 +733,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     /*width:140px;*/
     float: left;
 }
-#top-search .form-text,
-#top-search .form-text:focus,
-#top-search .form-text:active {
-    border: medium none;
-    display: block;
-    width: 190px;
-    float: left;
-    font-size: 12px;
-    height: 16px;
-    line-height: 16px;
-    margin: 0;
-    padding: 2px 5px;
-    background: #FFF;
 
-}
 
 .multipage-campaign #top-search .form-text,
 .multipage-campaign #top-search .form-text:focus,
@@ -995,13 +946,6 @@ p.search-performance{
     text-decoration:none;
     color:#1ca9e7;
 }
-/* homepage features block */
-.block-boxes-title-features,
-.block-boxes-title-popular-galleries{
-    margin:0 0 20px 0;
-    padding-bottom:10px;
-    border-bottom:1px dotted silver;
-}
 
 
 /* author page */
@@ -1097,11 +1041,14 @@ p.search-performance{
 
 
 /* image captions */
-.field-name-field-article-main-image img{
+/*
+.field-name-field-blogpost-main-image img,
+.field-name-field-article-main-image img {
     display:block;
-    border:none;
+    border:1px solid #6a6a6a;
     margin-top:10px;
 }
+*/
 .photo-wrapper{
     margin: 0;   
     border-bottom: 1px dotted #999999;
@@ -1143,13 +1090,13 @@ p.search-performance{
     padding: 15px 0 10px;
     clear: both;
     text-align:left;
-    margin-bottom: 1.5em;
 }
 .field-name-field-media-caption p{
     margin:0;
     font-size: 11px;
     line-height:12px;
 }
+
 
 /* pagers */
 .item-list ul.pager{
@@ -1221,13 +1168,24 @@ div.takepart_addthis_rightrail .button_container a.addthis_button_google_plusone
 div.takepart_addthis_footer span#addthis_footer_sharethis {
     color: #000;
     font-size: 14px;
-    padding-top: 2px;
+    padding-top: 3px;
     font-weight: bold;
     text-transform: capitalize;
+    float: right;
+}
+
+#block-takepart-addthis-addthis-footer .addthis_button_linkedin {
+    position: relative;
+    top:1px;
+}
+
+#block-takepart-addthis-addthis-footer .addthis_button_google_plusone {
+    position: relative;
+    top: -2px;
 }
 .takepart_addthis_footer a.at300b{
-    padding:0;
-    margin-left: 5px;
+    padding: 0;
+    margin-left: 6px;
 }
 .takepart_addthis_footer a.addthis_button_facebook span{
     background: url("../images/icon_facebook.png") no-repeat scroll 0 0 transparent;
@@ -1272,11 +1230,12 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
     margin-left: 5px;
 }
 .takepart_addthis_simple a.addthis_button_facebook span{
-    background: url("../images/icon_facebook.png") no-repeat scroll 0 0 transparent;
+    background: url("../images/sprite-social-media.png") no-repeat scroll 0 -5px transparent;
 } 
 .takepart_addthis_simple a.addthis_button_twitter span{
-    background: url("../images/icon_twitter.png") no-repeat scroll 0 0 transparent;
+    background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
 }
+
 
 /* homepage promo box */
 .block-boxes-title-features .views-row {
@@ -1286,6 +1245,7 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
 .block-boxes-title-features .views-field-field-display-tag .field-content{
     margin-top:0;
 }
+
 
 /* media browser for wysiwyg */
 #overlay-container #media-tab-brightcove a.fake-ok,
@@ -1365,7 +1325,7 @@ ul#global-links {
 }
 .region-highlighted .block-context-related-menu ul.menu li a:hover, .region-highlighted .block-menu ul.menu li a:hover{
     text-decoration:none;
-    color: #1CA9E7;
+    color:#1ca9e7;
 }
 .region-highlighted .block-context-related-menu ul.menu li a.active, .region-highlighted .block-menu ul.menu li a.active{
     border-bottom: 1px solid #CCCFFF;
@@ -1499,10 +1459,7 @@ ul#global-links {
     border-top: 1px dotted silver;
 }
 
-.front .view-display-id-block_1 .views-field-field-promo-headline {
-    font-size: 14px;
-    margin-top: 142px;
-}
+
 /* this is needed because embeddable will display the node title, which we donot want sometimes
 right now is specific to node-openpublish-photo-gallery, but change as needed */
 .views-row .drupal-embed .node.node-openpublish-photo-gallery h2{display:none}

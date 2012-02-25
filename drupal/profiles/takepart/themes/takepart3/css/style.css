@@ -39,6 +39,15 @@ body.node-type-takepart-campaign.multipage-campaign {
     background: #eff3f5 url(../images/2012-02-08/bg-page-cv.png) repeat-x 0 0;
 }
 
+hr {
+    background-color: #EFF3F5;
+    color: #EFF3F5;
+    clear: both;
+    margin: 0 0 20px;
+    height:1px;
+    border: none;
+}
+
 #join-login-top a.user-menu-register {
     display: inline-block;
     white-space:nowrap;
@@ -66,6 +75,14 @@ body.node-type-takepart-campaign.multipage-campaign {
     white-space:nowrap;
 }
 
+/* homepage features block */
+.block-boxes-title-features,
+.block-boxes-title-popular-galleries{
+    margin:0 0 20px 0;
+    padding-bottom:10px;
+}
+
+
 ul.dots li
 {
     cursor:pointer;
@@ -83,11 +100,27 @@ a {
 a:hover {
     text-decoration:underline;
 }
+
+.front .page{
+    padding: 25px 20px 35px;
+}
+
+/*logo style*/
+#logo {
+    float: left;
+    width:  125px;
+    padding: 0 0 0px 0;
+    position: absolute;
+    top: 15px;
+    left: 0px;
+}
+
+
 /*page structure*/
 #page-wrapper
 {
-    margin:0 auto;
-    width:1001px;
+    margin: 5px auto 0;
+    width:1000px;
 }
 
 #header
@@ -419,23 +452,37 @@ ul,ol
     display:none;
 }
 
-.block-boxes-title-features .views-field-title a, .block-boxes-title-features .views-field-field-article-subhead a
+.block-boxes-title-features .views-field-title a, 
+.block-boxes-title-features .views-field-field-article-subhead a,
+.block-boxes-title-features .views-field-nid span a
 {
     color:#000;
     line-height:20px;
-    font-weight:bolder;
+    font-weight: bold;
     text-decoration:none;
 }
 
-.block-boxes-title-features .views-field-title, 
-.block-boxes-title-features .views-field-field-article-subhead, 
-.block-boxes-title-features .views-field-field-page-subhead
+.block-boxes-title-features .views-field-nid span a:hover
 {
-    font-size:15px;
-    padding:6px;
+    color:#1CA9E7;
+    text-decoration:none;
 }
 
-.main-content .block-boxes-title-features .views-row:hover .views-field-title a, .main-content .block-boxes-title-features .views-row:hover .views-field-field-article-subhead a
+
+
+.block-boxes-title-features .views-field-title, 
+.block-boxes-title-features .views-field-field-article-subhead, 
+.block-boxes-title-features .views-field-field-page-subhead,
+.block-boxes-title-features .views-field-nid,
+.block-boxes-title-features .views-field-field-promo-text
+{
+    font-size:15px;
+    padding:10px;
+}
+
+.main-content .block-boxes-title-features .views-row:hover .views-field-title a, 
+.main-content .block-boxes-title-features .views-row:hover .views-field-field-article-subhead a,
+.main-content .block-boxes-title-features .views-row:hover .views-field-nid a
 {
     color:#1ca9e7;
     text-decoration:none;
@@ -543,6 +590,11 @@ ul#top-follow li a {
     margin-left: 8px;
 }
 
+ul#top-follow {
+    margin: 20px 0 0;
+    float: right;
+}
+
 .header-mid
 {
     float:left;
@@ -586,6 +638,14 @@ ul#top-follow li a {
 /* ------------------------------------------------------------------------*/
 /* headers in main body */
 
+.main-content h1 {
+    font-family:Helvetica, Arial, sans-serif;
+    font-size:18px;
+    line-height:18px;
+    font-weight:400;
+    color:#9BC;
+}
+
 h1.title a
 {
     color:#000;
@@ -596,7 +656,16 @@ h1.title a:hover {
     color:#1CA9E7;
 }
 
-.node-openpublish-blog-post .view-blog-posts h1.title,
+.main-content h2
+{
+    font-size:18px;
+    line-height:18px;
+    font-weight:300;
+    text-transform:uppercase;
+    color:#9BC;
+}
+
+.node-type-openpublish-blog-post .main-content h1.title,
 .node-type-openpublish-video .main-content h1.title,
 .node-type-openpublish-article .main-content h1.title {
     font-size:42px;
@@ -640,23 +709,13 @@ h1.title a:hover {
     color: #99BBCC;
 }
 
-.main-content h1 {
-    font-family:Helvetica, Arial, sans-serif;
-    font-size:18px;
-    line-height:18px;
-    font-weight:400;
-    color:#9BC;
+.node-openpublish-blog-post.node-teaser h1.title {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 120%;
+    color: #000;
+    margin:0;
 }
-
-.main-content h2
-{
-    font-size:18px;
-    line-height:18px;
-    font-weight:300;
-    text-transform:uppercase;
-    color:#9BC;
-}
-
 .node-type-takepart-page .main-content h2 {
     font-size:22px;
     color:#000;
@@ -680,7 +739,7 @@ h1.title a:hover {
 {
     border-top:1px dotted #000;
     margin:0;
-    padding:8px 0;
+    padding:10px 0 6px 0;
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
     width:100%;
 }
@@ -691,7 +750,7 @@ h1.title a:hover {
 .main-content .node-topic-front h2.title {
     border-top:1px dotted #000;
     margin:0;
-    padding:8px 0;
+    padding:10px 0 6px 0;
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
     width:100%;
     font-family: NewsGothicBoldCondensed, sans-serif;
@@ -714,6 +773,9 @@ h1.title a:hover {
     background:none repeat scroll 0 0 #FFF;
     text-transform: uppercase;
     font-weight: 300;
+}
+.main-content .block-boxes-current-taxonomy_search_list h2 {
+    margin: 15px 0;
 }
 
 .main-content .block-boxes-title-secondary-headlines .content,
@@ -747,7 +809,8 @@ h1.title a:hover {
 }
 
 .main-content .block-boxes-title-features .view-content {
-    padding:5px;
+    display: inline-block;
+    padding: 5px 4px 1px;
 }
 .main-content .block-boxes-title-secondary-headlines .views-field-php,
 .main-content .block-boxes-title-secondary-features .views-field-php {
@@ -826,27 +889,27 @@ h1.title a:hover {
 
 .main-content .block-boxes-title-features .views-field-field-display-tag .field-content
 {
-    background-color:#9BC;
-    color:#FFF;
-    display:inline-block;
-    font-size:11px;
-    font-weight:700;
-    line-height:18px;
-    text-transform:uppercase;
-    margin-top:127px;
-    padding: 2px;
+	background-color: #99BBCC;
+	color: #FFFFFF;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 18px;
+	margin-top: 123px;
+	padding: 4px 5px;
+	text-transform: uppercase;
 }
 
 /* ===RIGHT RAIL=== */
 /* ------------------------------------------------------------------------*/
 
-#right-rail  .field-name-field-tp-campaign-sponsors {
+#right-rail .field-name-field-tp-campaign-sponsors {
     border-top: 3px solid black;
 }
 
-#right-rail  .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors {
+#right-rail .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors {
     border-top:none;
-    padding:0 15px 15px;
+    padding:0;
     overflow:hidden;
 }
 
@@ -856,6 +919,12 @@ h1.title a:hover {
     font-size:13px;
     font-weight:700;
     text-decoration:none;
+}
+
+#right-rail .field-name-field-blog-view .views-field-title a
+{   
+	font-size:15px;
+    font-weight: bold;
 }
 
 #right-rail
@@ -877,6 +946,32 @@ h1.title a:hover {
     margin-bottom:15px;
     border:solid 4px #FFE789;
     padding:10px;
+}
+#right-rail #block-views-related-campaigns-block-2,
+#right-rail .block-boxes-title-movies-that-matter {
+    border:none;
+    padding: 0;
+}
+#right-rail #block-views-related-campaigns-block-2 h2,
+#right-rail .block-boxes-title-movies-that-matter h2 {
+    border-top: 1px dotted #000000;
+    padding: 10px 0 8px 0;
+    margin: 0;
+    background: url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll center left transparent;
+}
+
+#right-rail #block-views-related-campaigns-block-2 .views-row,
+#right-rail .block-boxes-title-movies-that-matter .views-row {
+    width:50%;
+    float:left;
+}
+#right-rail #block-views-related-campaigns-block-2 .views-row-even,
+#right-rail .block-boxes-title-movies-that-matter .views-row-even {
+    text-align: right;
+}
+#right-rail #block-views-related-campaigns-block-2 img,
+#right-rail .block-boxes-title-movies-that-matter img {
+    width:145px;
 }
 
 /*override block formatting for ads*/
@@ -928,21 +1023,11 @@ h1.title a:hover {
     line-height:11px;
 }
 
-/*block content header text*/
-#right-rail h2 a
-{
-    font-size:18px;
-    font-family:Helvetica, Arial, sans-serif;
-    color:#9BC;
-    text-decoration:none;
-    font-weight:300;
-    padding:0 9px 0 0;
-}
-
 /*override block formatting for content header text*/
 #right-rail .block-boxes-title-our-blogs .content h2 a
 {
     background:none #FFF;
+    font-size: 16px;
 }
 
 #right-rail .block-boxes-title-our-blogs .content h2
@@ -950,9 +1035,31 @@ h1.title a:hover {
     line-height:11px;
 }
 
+#right-rail .block-boxes-title-featured-videos h2 {
+    margin-bottom: 10px;
+}
+
 #right-rail .view-blog-posts .views-field-title
 {
     width:172px;
+}
+
+#right-rail .field-name-field-blog-view .more {
+    margin-left: -46px;
+    margin-top: -36px;
+    position: absolute;
+}
+
+#right-rail .field-name-field-blog-view .more a {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #1CA9E7;
+    display: block;
+    padding: 6px;
+    width: 44px;
+}
+
+#right-rail .field-name-field-blog-view .more a:hover {
+    text-decoration:underline;
 }
 
 #right-rail .view-blog-posts .view-content
@@ -977,6 +1084,18 @@ h1.title a:hover {
     background:  url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll center right transparent;
     margin: 0;
     border: none;
+    padding: 0;
+}
+
+/*block content header text*/
+#right-rail h2 a
+{
+    font-size:18px;
+    font-family:Helvetica, Arial, sans-serif;
+    color:#9BC;
+    text-decoration:none;
+    font-weight:300;
+    padding:0 9px 0 0;
 }
 
 #right-rail .block-boxes-current-photo_galleries h2 {
@@ -1011,21 +1130,12 @@ h1.title a:hover {
         padding: 8px 0;
         border-bottom: 1px solid #F2F2F2;
     */
+    font-size: 16px;
     margin:0;
     padding:0;
     border:none; 
 }
 
-#right-rail .view-video .views-field-field-promo-headline {
-    margin-bottom: 0;
-    padding: 0;
-    border-bottom: none;
-}
-#right-rail .views-row-last .views-field-field-promo-headline {
-    margin-bottom: 0;
-    padding: 8px 0 0 0;
-    border-bottom: none;
-}
 #right-rail .views-field-field-promo-text {
     margin:0;
 }
@@ -1035,11 +1145,27 @@ h1.title a:hover {
 #right-rail .block-boxes-title-sponsored-by .field-item,
 #right-rail .block-boxes-title-spotlight .field-item,
 #right-rail .field-name-field-tp-campaign-alliances .field-item {
-    padding-top: .5em;
-    margin-top: .5em;
+    padding-top: 12px;
+    margin-top: 6px;
     border-top: 1px solid #eff3f5;
 }
 
+#right-rail .block-boxes-current-photo_galleries .views-field-field-promo-headline {
+    margin: 10px 0 12px 0;
+}
+
+#right-rail .views-row-last .views-field-field-promo-headline {
+    margin: 10px 0 0 0;
+    padding: 0;
+    border-bottom: none;
+}
+#right-rail .view-id-related_actions .views-row-last .views-field-field-promo-headline,
+#right-rail .block-boxes-delta-related_content-block .views-row-last .views-field-field-promo-headline {
+    margin:0;
+}
+#right-rail .block-boxes-current-related_actions .views-row-last .views-field-field-promo-headline {
+    margin: 0;
+}
 /** Topics **/
 .node-topics
 {
@@ -1065,7 +1191,7 @@ h1.title a:hover {
     font-size: 14px;
     font-weight: bold;
     height: 0;
-    left: -55px;
+    left: -68px;
     overflow: visible;
     position: relative;
 }
@@ -1168,20 +1294,32 @@ h1.title a:hover {
     height: 25px;
 }
 
-.main-content .block-boxes h2 {
-    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll left center transparent;
-    border-top: 1px dotted #000000;
-    margin: 8px 0;
-    padding: 12px 0 6px 0;
-}
-
 .node-type-takepart-campaign .main-content .block-boxes h2 {
     background: none;
     border-top: none;
     text-transform: none;
-    margin 0px;
-    height: 14px;
+    margin: 0;
     font-weight: bold;
+}
+
+.node-type-takepart-campaign .main-content .block-boxes-current-taxonomy_search_list h2 {
+    border-top:1px dotted #000;
+    border-bottom: 1px solid #D9E7EE;
+    padding:8px 0 6px 0;
+    margin-bottom: 8px;
+    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
+    width:100%;
+    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-size: 26px;
+    line-height: 26px;
+    font-weight: normal;
+}
+
+.node-type-takepart-campaign .main-content .block-boxes-current-taxonomy_search_list h2 span {
+    padding:0 8px 0 0;
+    background:none repeat scroll 0 0 #FFF;
+    text-transform: uppercase;
+    font-weight: 300;
 }
 
 .node-type-takepart-campaign .main-content .field-name-field-tp-campaign-subheadline {
@@ -1191,8 +1329,6 @@ h1.title a:hover {
 .node-type-takepart-campaign .field-name-field-tp-campaign-subheadline {
     padding-bottom: 0px;
 }
-
-
 
 .node-type-takepart-campaign .main-content .field-items p {
     /*    margin: 0px; */
@@ -1225,6 +1361,12 @@ h1.title a:hover {
     padding-top:4px;
 }
 
+#hot-topics-nav {
+    width: 540px;
+    float: left;
+    padding: 19px 0 10px;
+}
+
 #hot-topics-nav li.title {
     text-transform: uppercase;
     font-weight: 300;
@@ -1232,7 +1374,34 @@ h1.title a:hover {
     padding-left: 0;
     padding-right: 10px;
     border: none;
-    margin-left: 15px;
+    margin-left: 9px;
+}
+
+/*search box*/
+#top-search {
+    width:  219px;
+    float: right;
+    margin: 15px 0 0;
+}
+
+#top-search .form-text,
+#top-search .form-text:focus,
+#top-search .form-text:active {
+    border: medium none;
+    display: block;
+    width: 185px;
+    float: left;
+    font-size: 12px;
+    height: 16px;
+    line-height: 16px;
+    margin: 0;
+    padding: 2px 5px;
+    background: #FFF;
+}
+
+#search-api-page-search-form-2 div {
+	border: solid 1px #ccc;
+	display: inline-block;
 }
 
 .view-id-slide_rotator {
@@ -1242,7 +1411,7 @@ h1.title a:hover {
 }
 
 .main-content  .drupal-embed .node-openpublish-photo-gallery {
-    border: 3px solid #14ADE7 !important;
+    border: 4px solid #eff3f5 !important;
     padding: 10px;
 }
 
@@ -1282,8 +1451,6 @@ body.node-type-takepart-campaign .main-content #left-rail {
     float: left;
 }
 
-
-
 /* ===LEFT RAIL=== */
 /* ------------------------------------------------------------------------*/
 .node-type-takepart-campaign #left-rail {
@@ -1291,19 +1458,112 @@ body.node-type-takepart-campaign .main-content #left-rail {
 }
 
 .block-boxes-title-latest-in-galleries .view-photo-galleries table {
-    width:100%;
+    width:640px;
 }
 .block-boxes-title-latest-in-galleries .view-photo-galleries td {
-    width:55%;
+    width:300px;
 }
 
-.main-content .field-name-field-action-main-image img {
-    margin-bottom: 25px;
+.field-name-field-article-main-image,
+.field-name-field-blogpost-main-image,
+.field-name-field-action-main-image  {
+    margin-bottom: 2em;
 }
+
 
 .search-results .views-field-type {
     color: #000;
     font-size: 12px;
     text-transform: uppercase;
     font-weight: 300;
+}
+
+#block-boxes-box-407084eb {
+    margin-bottom: 18px;
+}
+
+#block-boxes-box-407084eb #tptv-more-video {
+    float:right;
+    background-color: #FFF;
+    padding-left: 8px;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: bold;
+}
+
+#block-boxes-box-407084eb .full-video {
+    float: left;
+}
+
+/***** Blog Post *****/
+
+body.node-type-openpublish-blog-post h1.page-title {
+    display: none;
+}
+
+.field-name-field-blogpost-main-image {
+    margin-bottom: 2em;
+}
+
+.field-name-field-blogpost-main-image img {
+    border: none;
+}
+
+/***** Blog Front *****/
+body.node-type-blog-front .node-blog-front h1.title,
+body.node-type-blog-front .node-blog-front h2.title {
+    display: none;
+}
+
+.field-name-body img.media-image {
+    margin-bottom: 10px;
+    
+}
+.field-name-body img[style~="float: left"] {
+    margin-right: 10px;
+    
+}
+
+.field-name-body img[style~="float: right"] {
+    margin-left: 10px;
+}
+
+/* overridden by javascript */
+.field-type-text-with-summary img {
+    /* margin left / right */
+}
+.main-content .block-boxes-title-features .views-row {
+	/* height */
+}
+
+.view-photo-gallery #widget_pager_top_photo_gallery-block {
+    right: auto !important;
+    width: auto !important;
+    padding-top: 0px !important;
+}
+
+#views_slideshow_controls_text_photo_gallery-block {
+	 top: 270px !important;
+}
+
+.jcarousel-skin-takepart .jcarousel-prev-horizontal,
+.jcarousel-skin-takepart .jcarousel-next-horizontal {
+     top: 0px !important;	
+}
+
+/* for when our preprocess function gets ignored */
+.field-name-field-html-title {
+	display: none;
+}
+
+.block-boxes-bid-takepart_addthis-addthis_full, .field-name-field-tp-campaign-cover-image {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.node-openpublish-video .node-topics {
+    display: none;
+}
+
+.main-content .block-boxes-title-takepart-pics h2 {
+	border-top: 0px;
 }

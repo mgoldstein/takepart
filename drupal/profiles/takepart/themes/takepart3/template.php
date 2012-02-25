@@ -18,13 +18,38 @@ function takepart3_dolinks($links_field) {
   return implode("<span class='delimiter'>|</span>", $links);
 }
 
-
-
-
 function takepart3_preprocess_html(&$vars){
   if (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage')){
     $vars['classes_array'][]= 'multipage-campaign';
   }  
+  
+  //Override header if field exists:
+  $nodes = $vars['page']['content']['system_main']['nodes'];
+  
+  $header_override = false;
+  while ((list($key, $value) = each($nodes)) && (!$header_override)) {
+    if(is_numeric($key)) {
+      try {
+        if (array_key_exists('field_html_title', $value['body']['#object'])) {
+          $header_override = $value['body']['#object']->field_html_title;
+        }
+        if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
+          $header_override = $value['field_html_title']['#object']->field_html_title;
+          unset($vars['page']['content']['system_main']['nodes'][$key]['field_html_title']);
+        }
+        if (array_key_exists('field_html_title', $value['#node'])) {
+          $header_override = $value['#node']->field_html_title;
+        }
+      } catch (Exception $e) {
+        $header_override = false;
+      }    
+    }
+  }
+    
+  if($header_override) {
+    $vars['head_title'] = $header_override['und'][0]['value'];
+  } 
+   
   _render_tp3_renderheaderfooterfeed($vars);
 }
 
@@ -377,8 +402,16 @@ function takepart3_form_comment_form_alter(&$form, &$form_state, $form_id) {
   unset($form['author']['_author']['#title']);
 }
 
-function takepart3_field__field_author(&$vars){
+function takepart3_field__field_actionheaderimghref(&$vars) {
+    $base = base_path() . 'sites/default/files/styles/action_header_image/public/';
+    $link = $vars['element']['#object']->field_actionheaderimghref['und'][0]['url'];
+    $uri = $vars['element']['#object']->field_actionheaderimg['und'][0]['filename'];
+    $url = $base . $uri;
+    
+    return sprintf('<a href="%s"><img src="%s" /></a>', $link, $url);
+}
 
+function takepart3_field__field_author(&$vars) {
   // Author
   $authors = array();
   foreach($vars['items'] as $key => $value){

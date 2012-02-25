@@ -183,12 +183,9 @@ ul#top-nav li a:hover{
     height:75px;
 }
 
-
-
-
 /* blog pages */
-.node-type-openpublish-blog-post .region-content-top .field-name-field-blogpost-main-image{
-    margin:0;
+.node-type-openpublish-blog-post .field-name-field-blogpost-main-image {
+    margin-bottom: 1em;
 }
 
 
