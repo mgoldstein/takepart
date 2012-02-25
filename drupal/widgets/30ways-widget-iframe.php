@@ -1,10 +1,30 @@
 <?php
 
-# xml file location
 $xmlFile = $_SERVER['HTTP_HOST']."/calendar/xml/20673";
 
+# xml file location
+try {
+  $theXml = simplexml_load_file($xmlFile);
+} catch (Exception $e) {
+  $theXml = false;
+}
+
+# if stream wrappers fail:
+if (!$theXml) {
+  if (!function_exists('curl_init')) {
+    throw new Exception('Curl is not installed.');
+  } else {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $xmlFile);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    $rawXml = curl_exec($ch);
+    curl_close($ch);
+    $theXml = simplexml_load_string($rawXml);
+  }
+}
+
 # parse xml
-$theXml = simplexml_load_file($xmlFile);
 $todays_date =  $theXml->action[0]->todays_date;
 $topic_icon = $theXml->action[0]->topic_icon;
 $action_title = $theXml->action[0]->action_title;
