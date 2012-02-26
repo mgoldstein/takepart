@@ -1,17 +1,10 @@
-
-
-
 /***** Cutup List ******/
-
 ul#cutuplist li {
     font-size: 18px;
     margin: 0 0 10px 25px;
 }
 
-
 /***** Extras ******/
-
-
 .float-left {
     float: left;
 }
@@ -21,9 +14,6 @@ ul#cutuplist li {
 }
 
 /***** HTML ******/
-
-
-
 img { 
     border: none;
 }
@@ -3211,11 +3201,14 @@ div.view-display-id-block_8 div.rotator_nav_bar a.rotator_forward_button {
     position:absolute;
     top:46px;
     left:0;
-    padding-left: 35px;
+    padding-left:35px;
     padding-top:0;
     background: url("../images/2012-02-08/gallery_left_arrow.png") no-repeat scroll 0 0 transparent;
     height:68px;
     width:40px;
+}
+.view-display-id-block_8 a.jcarousel-prev-horizontal:hover {
+    background: url("../images/gallery_left_rollover_arrow.png") no-repeat scroll 0 0 transparent;
 }
 .view-display-id-block_8 a.jcarousel-next-horizontal {
     position:absolute;
@@ -3227,10 +3220,13 @@ div.view-display-id-block_8 div.rotator_nav_bar a.rotator_forward_button {
     height:68px;
     width:40px;
 }
+.view-display-id-block_8 a.jcarousel-next-horizontal:hover {
+    background: url("../images/gallery_right_rollover_arrow.png") no-repeat scroll 0 0 transparent;
+}
 
 /*
  * Move tabs
-*/
+ */
 
 ul.links{
     position: fixed;

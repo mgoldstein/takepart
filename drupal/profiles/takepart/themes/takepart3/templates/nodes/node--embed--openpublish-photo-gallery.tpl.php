@@ -1,15 +1,13 @@
 <?php if (!empty($pre_object)) print render($pre_object) ?>
 <div class='<?php print $classes ?> clearfix node-embedded' <?php print ($attributes) ?>>
-  <?php if (!empty($title)): ?>
-    <h2 <?php if (!empty($title_attributes)) print $title_attributes ?>>
-      <a href="<?php print $node_url ?>"><?php print $title ?></a>
-    </h2>
-  <?php endif; ?>
+    <div class="embedded-gallery-header">Related Gallery</div>
   <?php
    print render($content['field_photo_gallery_slideshow']);
-   print render($content['field_promo_headline']);
+   // print render($content['field_promo_headline']);
+   $headline = l($field_promo_headline[0]['safe_value'], $uri['path'], array('attributes' => array('class' => array('gallery-headline'))) );
+   print render($headline);
    print render($content['field_promo_text']);
-  // print render($content); 
+   print l('See Full Gallery', $uri['path'], array('attributes' => array('class' => array('see-full-gallery'))) );
   ?>
 </div>
 <?php if (!empty($post_object)) print render($post_object) ?>

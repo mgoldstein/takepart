@@ -420,6 +420,10 @@ ul,ol
     font-family:NewsGothicBoldCondensed;
 }
 
+#block-menu-block-1 ul.menu ul.menu li a {
+    font-family:Helvetica,Arial,sans-serif;
+}
+
 /*spacing between menu items*/
 #block-menu-block-1 li.dhtml-menu
 {
@@ -1400,29 +1404,33 @@ h1.title a:hover {
 }
 
 #search-api-page-search-form-2 div {
-	border: solid 1px #ccc;
-	display: inline-block;
+    border: solid 1px #ccc;
+    display: inline-block;
 }
-
 .view-id-slide_rotator {
     border-top: 1px dotted #000000;
     overflow: hidden;
     padding-top: 15px;
 }
 
-.main-content  .drupal-embed .node-openpublish-photo-gallery {
-    border: 4px solid #eff3f5 !important;
+.main-content .drupal-embed .node-openpublish-photo-gallery {
+    border: 4px solid #EFF3F5 !important;
     padding: 10px;
+    margin:15px 0;
 }
-
-.main-content .drupal-embed .node-openpublish-photo-gallery .field-name-field-promo-headline {
-    color: #99BBCC;
+.main-content .drupal-embed .node-openpublish-photo-gallery a.gallery-headline {
+    display: block;
+    color: #000;
     font-family: Helvetica,Arial,sans-serif;
     font-size: 16px;
-    font-weight: 300;
-    padding: 0 9px 0 0;
+    font-weight: bold;
+    padding: 0;
+    margin-bottom: 4px;
+    line-height: 120%;
+}
+.main-content .drupal-embed .node-openpublish-photo-gallery a.gallery-headline:hover {
+    color: #1CA9E7;
     text-decoration: none;
-    text-transform: uppercase;
 }
 
 .main-content .drupal-embed .node-openpublish-photo-gallery .views-row a{
@@ -1430,6 +1438,27 @@ h1.title a:hover {
     font-weight: bold;
     line-height: 13px;
     text-transform: none;
+}
+
+.main-content .drupal-embed .node-openpublish-photo-gallery .field-name-field-promo-text {
+    font-size: 12px;
+    line-height: normal;
+    color:#000;
+}
+.main-content .drupal-embed .embedded-gallery-header {
+    font-size: 14px;
+    color: #99bbcc;
+    text-transform: uppercase;
+    font-weight: lighter;
+    line-height: 120%;
+}
+
+.drupal-embed a.see-full-gallery {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: normal;
+    margin-top:4px;
+    display: block;
 }
 /*
 .main-content .block-boxes-bid-takepart_custom-page_title_h1 h1.title span {
