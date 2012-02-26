@@ -3,7 +3,9 @@
     <div class="embedded-gallery-header">Related Gallery</div>
   <?php
    print render($content['field_photo_gallery_slideshow']);
-   print render($content['field_promo_headline']);
+   // print render($content['field_promo_headline']);
+   $headline = l($field_promo_headline[0]['safe_value'], $uri['path'], array('attributes' => array('class' => array('gallery-headline'))) );
+   print render($headline);
    print render($content['field_promo_text']);
    print l('See Full Gallery', $uri['path'], array('attributes' => array('class' => array('see-full-gallery'))) );
   ?>
