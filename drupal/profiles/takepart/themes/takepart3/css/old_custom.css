@@ -521,9 +521,12 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 }
 #right-rail .view-video tr{
     background-color: transparent;
-    border: none;
-    padding: 0;
+    border-top: 1px solid #F2F2F2;
+    border-bottom: 0 none;
+    padding: 10px 0 0 0;
     margin: 0;
+    display: block;
+    
 }
 .view-video td {
     vertical-align:top;

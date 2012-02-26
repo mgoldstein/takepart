@@ -3200,7 +3200,7 @@ div.view-display-id-block_8 div.rotator_nav_bar a.rotator_forward_button {
 .view-display-id-block_8 a.jcarousel-prev-horizontal {
     position:absolute;
     top:46px;
-    left:0;
+    left:-1px;
     padding-left:35px;
     padding-top:0;
     background: url("../images/2012-02-08/gallery_left_arrow.png") no-repeat scroll 0 0 transparent;
