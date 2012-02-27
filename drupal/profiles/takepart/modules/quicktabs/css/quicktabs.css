@@ -3,15 +3,33 @@
 }
 
 ul.quicktabs-tabs {
-  margin-top: 0;
+  margin-top: 12px;
 }
 ul.quicktabs-tabs li {
   display: inline;
-  background: none;
+  /*position: absolute;
+  top:0;
+  left:0;*/
+  /*background: none;*/
+  margin: 0;
+  background-color: #F3F8F8; 
   list-style-type: none;
-  padding: 2px;
+  font-size: 16px;
+  font-weight: bold;
+  -webkit-border-top-left-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
+  -moz-border-radius-topleft: 15px;
+  -moz-border-radius-topright: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding-bottom: 10px;
+  padding-top: 6px;
+  padding-right: 10px;
+  padding-left: 10px;
   white-space: nowrap;
 }
 ul.quicktabs-tabs li a:focus {
   outline: none;
 }
+
+
