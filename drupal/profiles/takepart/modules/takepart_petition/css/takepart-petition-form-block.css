@@ -68,6 +68,13 @@
   float: left;
 }
 
+.petition-form .terms-of-use-txt {
+  font-size: 10px;
+  display: block;
+  text-align: center;
+  padding-top: 15px;
+}
+
 .petition-form .form-type-checkbox {
   width: 25px;
   height: 30px;
