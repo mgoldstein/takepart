@@ -521,9 +521,12 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 }
 #right-rail .view-video tr{
     background-color: transparent;
-    border: none;
-    padding: 0;
+    border-top: 1px solid #F2F2F2;
+    border-bottom: 0 none;
+    padding: 10px 0 0 0;
     margin: 0;
+    display: block;
+    
 }
 .view-video td {
     vertical-align:top;
@@ -563,7 +566,6 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 
 }
 
-
 /* right rail video page(s) */
 #right-rail #block-boxes-box-e9e8814f h2,
 #right-rail #block-views-video-block h2,
@@ -572,7 +574,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     font-size: 18px;
     font-weight: lighter;
     color: #99bbcc;
-    line-height: 120%;
+    line-height: 100%;
     margin: 0 0 12px 0;
     text-transform: uppercase;
 }

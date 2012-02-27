@@ -170,6 +170,7 @@ a:hover {
     margin-bottom:0px;
     background:#FFF;
     overflow: auto;
+    width:1000px;
 }
 
 .col-140
@@ -1595,4 +1596,12 @@ body.node-type-blog-front .node-blog-front h2.title {
 
 .main-content .block-boxes-title-takepart-pics h2 {
 	border-top: 0px;
+}
+
+#views_slideshow_controls_text_previous_photo_gallery-block:hover {
+	background: url("../images/2012-02-08/gallery_left_arrow_solid.png") no-repeat scroll 0 0 transparent;
+}
+
+#views_slideshow_controls_text_next_photo_gallery-block:hover {
+	background: url("../images/2012-02-08/gallery_right_arrow_solid.png") no-repeat scroll 0 0 transparent;
 }
