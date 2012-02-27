@@ -57,3 +57,17 @@
   font-size: 10px;
   float: left;
 }
+
+.petition-form .form-type-checkbox {
+  width: 25px;
+  height: 30px;
+  float: left;
+}
+
+.petition-form .ngoOptInText {
+  padding-left: 10px; 
+}
+
+.petition-form .campaignOptInText {
+  padding-left: 10px;
+}
