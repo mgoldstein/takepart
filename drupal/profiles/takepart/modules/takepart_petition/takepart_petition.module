@@ -157,6 +157,7 @@ function takepart_petition_block_view($delta = '') {
 
     // Add the css for the form
     drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-form-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+    drupal_add_library('system','ui.dialog','#'. $delta . '_dialog');
   
     $name = substr($delta, 0, -strlen('_form'));
     $form = takepart_petition_forms($name);
@@ -191,6 +192,22 @@ function takepart_petition_views_api() {
     'api' => 3,
     'path' => drupal_get_path('module', 'takepart_petition'),
   );
+}
+
+function takepart_petition_init() {
+  if (arg(0) == 'node') {
+    if (arg(1) == 22161) {
+      if ($_COOKIE['water_bill_of_rights_signed']) {
+        // @TODO: Remove harcode progress page name
+        // redirect to the progress page
+        ddl('Is Set');
+        drupal_goto('water-bill-of-rights-progress');
+      } else {
+        ddl('Is Not Set');
+        drupal_add_js('jQuery(document).ready(function(){jQuery("#water_bill_of_rights_dialog").dialog({ modal: true });});', 'inline');
+      }
+    }
+  }
 }
 
 /*******************************************************************************
@@ -543,6 +560,12 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#weight' => 105,
   );
   
+  $dialog_name = $petition_form->name .'_dialog';
+  $form['reason_to_sign_dialog'] = array(
+      '#type' => 'item',
+      '#markup' => '<div id="'. $dialog_name .'">You should really sign this</div>',
+  );
+
   $form['#validate'][] = '_takepart_petition_sign_petition_form_validate';
 
   return $form;
@@ -688,6 +711,12 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
 
     takepart_petition_signature_save($signature);
   }
+  
+  // @TODO: Remove hardcoded thank you page
+  $cookie_name = $petition_form->name .'_signed';
+  ddl('Setting Cookie '. $cookie_name);
+  setcookie($cookie_name,1,time() + (86400 * 365));
+  drupal_goto('water-bill-of-rights-thank-you');
 }
 
 function _takepart_petition_progress_form($form, &$form_state, $petition_form) {
