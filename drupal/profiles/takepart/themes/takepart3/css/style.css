@@ -109,10 +109,10 @@ a:hover {
 #logo {
     float: left;
     width:  125px;
-    padding: 0 0 0px 0;
+    padding: 0;
     position: absolute;
-    top: 15px;
-    left: 0px;
+    top: 20px;
+    left: 0;
 }
 
 
@@ -210,6 +210,13 @@ body.two-sidebars #content, body.sidebar-first #content
     width:878px;
     float:left;
     margin-left:125px;
+}
+
+#nav-wrap{
+    margin: 0 0 5px 0;
+    float: left;
+    position: relative;
+    top: 10px;
 }
 
 .field-name-field-tp-campaign-intro-media { 
@@ -1222,8 +1229,8 @@ h1.title a:hover {
 
 #hot-topics-nav li a {
     color: #000;
-    padding-left: 15px;
-    padding-right: 12px;
+    padding-left: 12px;
+    padding-right: 8px;
     background: url(../images/dot.png) no-repeat 0 4px;
     text-decoration: none;
 }
@@ -1369,7 +1376,7 @@ h1.title a:hover {
 #hot-topics-nav {
     width: 540px;
     float: left;
-    padding: 19px 0 10px;
+    padding-top: 24px;
 }
 
 #hot-topics-nav li.title {
@@ -1377,9 +1384,9 @@ h1.title a:hover {
     font-weight: 300;
     color: #99BBCC;
     padding-left: 0;
-    padding-right: 10px;
+    padding-right: 0;
     border: none;
-    margin-left: 9px;
+    margin-left: 21px;
 }
 
 /*search box*/

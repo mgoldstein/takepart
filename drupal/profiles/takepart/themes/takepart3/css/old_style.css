@@ -176,10 +176,12 @@ img.photo, .gallery-item img {
 
 #join-login-top {
     font-size: 13px;
-    padding: 0 5px 0 0;
+    padding: 0;
     float: right;
     overflow: visible;
     margin-top:5px;
+    width:auto;
+    white-space: nowrap;
 }
 
 #join-login-top #user-nav {
@@ -192,7 +194,7 @@ img.photo, .gallery-item img {
     margin-top:3px;
 }
 .logged-in #user-nav li {
-    margin-right:10px;
+    margin-left:10px;
 }
 
 
@@ -282,11 +284,6 @@ ul#top-follow li.rss a {
 .header-right-top {
     float: right;
     width: 865px;
-}
-
-#nav-wrap{
-    margin: 0 0 5px 0;
-    float: left;
 }
 
 #nav-logo-arrow {
