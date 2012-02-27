@@ -15,9 +15,6 @@ function takepart_calendar_menu() {
 }
 
 
-
-
-
 /*
  * Menu callback for RSS:
  */
@@ -38,7 +35,7 @@ function _takepart_calendar_xml($node) {
       $itemdate = $calarray[$i]['start'];
       $itemdate =  _takepart_calendar_xml_parsedate($itemdate);
 
-      if(round((strtotime($itemdate) - time()) / 86400) == 1) {
+      if(round((strtotime($itemdate) - time()) / 28800) == 0) {
         
         $subtextimage = _takepart_calendar_xml_getimgs($calarray[$i]['subtext']);
         
