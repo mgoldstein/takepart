@@ -1232,16 +1232,6 @@ div.takepart_addthis_leftpanel {
     margin: 0 0 8px 6px;
 }
 
-div.takepart_addthis_leftpanel div.addthis_toolbox a {
-    width: 100%;
-    display: block;
-    margin-bottom: 8px;
-}
-
-div.takepart_addthis_leftpanel div.addthis_toolbox {
-    float: left;
-}
-
 div.takepart_addthis_footer {
     padding-top: 0;
     margin-bottom: 0;
