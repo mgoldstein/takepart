@@ -1384,11 +1384,6 @@ span.comment-num {
     width: 21px;
 }
 
-#comments .comments-header {
-    border-bottom: 1px solid #D9E7EE;
-    padding-bottom: 8px;
-    margin-bottom:12px;
-}
 
 #comments h2.comment-form {
     border-bottom: 3px solid black;

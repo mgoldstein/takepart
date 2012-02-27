@@ -1175,7 +1175,7 @@ h1.title a:hover {
 .node-topics
 {
     border-top:none;
-    border-bottom:1px dotted #555;
+    border-bottom:0px dotted #555;
     clear:both;
     padding:14px 25px 14px 70px;
     margin-top:0;
@@ -1595,7 +1595,7 @@ body.node-type-blog-front .node-blog-front h2.title {
 }
 
 .main-content .block-boxes-title-takepart-pics h2 {
-	border-top: 0px;
+	border-top: 1px dotted #555555;
 }
 
 #views_slideshow_controls_text_previous_photo_gallery-block:hover {
@@ -1646,9 +1646,14 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_digg {
 	margin-bottom: 4px;
 }
 
-
-
-
 div.takepart_addthis_leftpanel div.addthis_toolbox {
     float: left;
+}
+
+#comments .comments-header {
+	border-top: 1px dotted #555555;
+    border-bottom: 1px solid #D9E7EE;
+    padding-bottom: 8px;
+    margin-bottom:12px;
+    padding-top: 10px;
 }
