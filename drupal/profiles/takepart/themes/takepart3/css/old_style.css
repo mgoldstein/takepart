@@ -1168,8 +1168,7 @@ div.takepart_addthis_leftpanel div.custom_images a.addthis_button_stumbleupon
 }
 
 div.takepart_addthis_rightrail div.custom_images a.addthis_button_email,
-div.takepart_addthis_leftpanel div.custom_images a.addthis_button_email
-{
+div.takepart_addthis_leftpanel div.custom_images a.addthis_button_email {
     background: url(../images/icon_email.png) no-repeat;
 }
 
@@ -1185,7 +1184,7 @@ div.takepart_addthis_leftpanel div.custom_images a {
 }
 
 div.takepart_addthis_leftpanel div.custom_images a {
-    margin-left: 4px;
+    margin-left: 2px;
     padding-bottom: 0;
 }
 
@@ -1230,7 +1229,7 @@ div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone 
 }                                                       
 
 div.takepart_addthis_leftpanel {
-    margin-bottom: 8px;
+    margin: 0 0 8px 6px;
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a {
