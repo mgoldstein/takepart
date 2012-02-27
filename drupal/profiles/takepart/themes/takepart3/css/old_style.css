@@ -1218,7 +1218,6 @@ div.takepart_addthis_footer div.addthis_toolbox {
 div.takepart_addthis_leftpanel .addthis_toolbox .custom_images a img {
     float: left;
     margin-right: 15px;
-
 }
 
 div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone div {
@@ -1226,7 +1225,7 @@ div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone 
 }                                                       
 
 div.takepart_addthis_leftpanel {
-    margin: 0 0 8px 6px;
+    margin: 0 0 8px 4px;
 }
 
 div.takepart_addthis_footer {
