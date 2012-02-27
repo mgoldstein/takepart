@@ -1,6 +1,6 @@
 <?php
 try {
-  $trim = 3;
+  $trim = 4;
   //@todo, hacky, move this to a preprocess function:  
   preg_match('/src=[\'"]?([^\'" >]+)[\'" >]/', $output, $matches);
   $imgfile = urldecode(basename($matches[1]));
