@@ -1,6 +1,14 @@
+.block-takepart-petition {
+  background: url('/profiles/takepart/modules/takepart_petition/images/petition-bg.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-szie: cover;
+  background-size: cover;Ê
+}
+
 .petition-form {
   font-family: Helvetica;
-  font-size: 16px;
+  font-size: 16px;  
 }
 
 .petition-form .form-text {
