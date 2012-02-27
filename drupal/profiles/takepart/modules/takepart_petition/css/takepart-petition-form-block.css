@@ -1,5 +1,7 @@
+/** PETITION BLOCK STYLING **/
+
 .block-takepart-petition {
-  background: url('/profiles/takepart/modules/takepart_petition/images/petition-bg.png') no-repeat center center fixed;
+ background: url('/profiles/takepart/modules/takepart_petition/images/petition-bg.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-szie: cover;
@@ -78,4 +80,20 @@
 
 .petition-form .campaignOptInText {
   padding-left: 10px;
+}
+
+.petition-form #edit-submit {
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/** PETITION SIGNAGTURE STYLING **/
+
+.node-openpublish-blog-post .field-name-body {
+ background: url('/profiles/takepart/modules/takepart_petition/images/petition-bg.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-szie: cover;
+  background-size: cover; 
 }
