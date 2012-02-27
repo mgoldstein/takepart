@@ -1,6 +1,16 @@
+/** PETITION BLOCK STYLING **/
+
+.block-takepart-petition {
+ background: url('/profiles/takepart/modules/takepart_petition/images/petition-bg.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-szie: cover;
+  background-size: cover;Ê
+}
+
 .petition-form {
   font-family: Helvetica;
-  font-size: 16px;
+  font-size: 16px;  
 }
 
 .petition-form .form-text {
@@ -56,4 +66,41 @@
   font-style: italic;
   font-size: 10px;
   float: left;
+}
+
+.petition-form .terms-of-use-txt {
+  font-size: 10px;
+  display: block;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.petition-form .form-type-checkbox {
+  width: 25px;
+  height: 30px;
+  float: left;
+}
+
+.petition-form .ngoOptInText {
+  padding-left: 10px; 
+}
+
+.petition-form .campaignOptInText {
+  padding-left: 10px;
+}
+
+.petition-form #edit-submit {
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/** PETITION SIGNAGTURE STYLING **/
+
+.node-openpublish-blog-post .field-name-body {
+ background: url('/profiles/takepart/modules/takepart_petition/images/petition-bg.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-szie: cover;
+  background-size: cover; 
 }

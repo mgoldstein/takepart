@@ -176,6 +176,31 @@ function takepart_petition_form_form($form, &$form_state, $petition, $op = 'edit
     '#size' => 12,
   );
 
+  $form['water_bill_of_rights_thank_you'] = array(
+    '#title' => t('Thank You Page URL'),
+    '#type' => 'textfield',
+    '#description' => t('URL relative to http://takepart.com/ for the petition thank you page'),
+    '#required' => TRUE,
+    '#max_length' => 255,
+    '#default_value' => variable_get('water_bill_of_rights_thank_you'),
+  );
+
+  $form['water_bill_of_rights_progress'] = array(
+    '#title' => t('Progress Page URL'),
+    '#type' => 'textfield',
+    '#description' => t('URL relative to http://takepart.com/ for the petition progress page'),
+    '#required' => TRUE,
+    '#max_length' => 255,
+    '#default_value' => variable_get('water_bill_of_rights_progress'),
+  );
+  
+  $form['water_bill_of_rights_reason_to_sign'] = array(
+    '#title' => t('Markup for modal prompt'),
+    '#type' => 'textarea',
+    '#resizable' => TRUE,
+    '#default_value' => variable_get('water_bill_of_rights_reason_to_sign'),
+  );
+
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
     '#type' => 'submit',
@@ -203,6 +228,9 @@ function takepart_petition_form_form($form, &$form_state, $petition, $op = 'edit
  */
 function takepart_petition_form_form_submit(&$form, &$form_state) {
   $petition = entity_ui_form_submit_build_entity($form, $form_state);
+  variable_set('water_bill_of_rights_thank_you', $form_state['values']['water_bill_of_rights_thank_you']);
+  variable_set('water_bill_of_rights_progress', $form_state['values']['water_bill_of_rights_progress']);
+  variable_set('water_bill_of_rights_reason_to_sign', $form_state['values']['water_bill_of_rights_reason_to_sign']);
   // Save and go back.
   takepart_petition_form_save($petition);
   // Redirect user back to list of petitions.
