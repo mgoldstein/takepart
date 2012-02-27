@@ -19,7 +19,6 @@ if (!$theXml) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
     $rawXml = curl_exec($ch);
-    print "xml:" . $rawXml;
     curl_close($ch);
     $theXml = simplexml_load_string($rawXml);
   }
