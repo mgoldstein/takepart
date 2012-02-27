@@ -336,8 +336,8 @@ body.page-taxonomy-term h1{
 
 .view-photo-galleries td {
     vertical-align:top;
-    padding:0 20px 0 0;
-    width:300px;
+    padding:0 9px 0 0;
+    width:auto;
 }	
 .view-photo-galleries td.col-last{
     padding:0;
@@ -430,7 +430,7 @@ body.page-taxonomy-term h1{
 .block-boxes-view-name-video h2,
 div[class*='block-boxes-bid-views-video-block'] h2,
 div[class*='block-boxes-delta-video-block'] h2 {
-    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 1px transparent;
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 0 transparent;
     margin: 12px 0;
     color: #99BBCC;
 }
@@ -531,8 +531,8 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 .view-video td {
     vertical-align:top;
     padding:0;
-    width:196px;
-    padding:0 15px 0 0;
+    width: auto;
+    padding:0 9px 0 0;
 }
 .view-video td.views-field-field-thumbnail {
     margin:0;
@@ -570,7 +570,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 #right-rail #block-boxes-box-e9e8814f h2,
 #right-rail #block-views-video-block h2,
 #right-rail .block-boxes-view-name-related_campaigns h2{
-    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 1px transparent;
+    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 0 transparent;
     font-size: 18px;
     font-weight: lighter;
     color: #99bbcc;
@@ -580,7 +580,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 }
 
 #left-rail #block-views-related-campaigns-block h2{
-    background: url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 2px transparent;
+    background: url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 0 transparent;
     font-size: 18px;
     font-weight: lighter;
     color: #99bbcc;
@@ -630,7 +630,6 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 #right-rail .view-video .promo-text {
     font-size: 12px;
     font-weight: normal;
-    color: #8E8E8E;
 }
 
 /* action + impact page */
