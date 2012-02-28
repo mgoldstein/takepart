@@ -7,10 +7,6 @@ ul.quicktabs-tabs {
 }
 ul.quicktabs-tabs li {
   display: inline;
-  /*position: absolute;
-  top:0;
-  left:0;*/
-  /*background: none;*/
   margin: 0;
   background-color: #F3F8F8; 
   list-style-type: none;
