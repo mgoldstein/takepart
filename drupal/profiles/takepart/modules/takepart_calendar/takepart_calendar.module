@@ -35,8 +35,9 @@ function _takepart_calendar_xml($node) {
       $itemdate = $calarray[$i]['start'];
       $itemdate =  _takepart_calendar_xml_parsedate($itemdate);
 
-      if(round((strtotime($itemdate) - time()) / 28800) == 0) {
-        
+      
+      if((strtotime(date("Y-m-d")) - strtotime($itemdate)) / (60 * 60 * 24) == -1) {        
+
         $subtextimage = _takepart_calendar_xml_getimgs($calarray[$i]['subtext']);
         
         if($subtextimage == $calarray[$i]['subtext']) {
