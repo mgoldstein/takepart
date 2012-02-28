@@ -59,7 +59,7 @@ body {
 #dateBox {
 	position: absolute;
 	top: 54px;
-	right: 15px;
+	left: 225px;
 	padding: 5px 7px 4px 7px;
 	background-color: #99BBCC;
 	color: #FFFFFF; 
