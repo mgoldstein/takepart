@@ -310,7 +310,7 @@ ul,ol
 /*slideshow rotator text block href, height 85px*/
 .views-field-field-slide-headline-override .field-content a
 {
-    padding:16px;
+    padding: 16px 94px 16px 16px;
     text-decoration:none;
     height:52px;
     background:url(../images/2012-02-08/white_transparency.png) transparent;
@@ -318,7 +318,7 @@ ul,ol
     line-height:24px;
     font-size:24px;
     display:inline-block;
-    width:608px;
+    width: 530px;
     font-weight:bold;
 }
 
