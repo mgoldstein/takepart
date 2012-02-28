@@ -236,8 +236,6 @@ function takepart_petition_theme($existing, $type, $theme, $path) {
     $progress_name = $name .'_progress';
     $template_file = str_replace('_', '-', $progress_name);
 
-    ddl($template_file);
-
     $blocks[$progress_name] = array(
       'variables' => array(
         'goal' => NULL,
