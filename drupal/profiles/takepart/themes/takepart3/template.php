@@ -880,3 +880,11 @@ function takepart3_preprocess_views_view_unformatted(&$vars) {
     } 
   }
 }
+
+function takepart3_preprocess_views_view(&$vars) {
+  if (isset($vars['view']->name)) {
+    if ($vars['view']->name == 'water_bill_of_rights_signatures') {
+      drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-signatures-view.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+    }
+  }
+}

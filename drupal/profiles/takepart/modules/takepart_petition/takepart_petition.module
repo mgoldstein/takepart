@@ -547,7 +547,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
 
   $form['terms_of_use'] = array(
     '#type' => 'item',
-    '#markup' => '<div>By signing, you accept TakePart\'s <a href="/terms-of-use">Terms of Use</a></div>',
+    '#markup' => '<div class="terms-of-use-txt">By signing, you accept TakePart\'s <a href="/terms-of-use">Terms of Use</a></div>',
     '#weight' => 105,
   );
   
