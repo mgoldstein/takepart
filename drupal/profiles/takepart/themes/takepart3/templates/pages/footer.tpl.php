@@ -1,5 +1,5 @@
 <div id="footer" class='clear'>
-
+    <div id="footer-top-border" class="clear"></div>
     <?php print render($page['footer']) ?>
     
     <?php if (!(is_null($takepart_topics_nav) || empty($takepart_topics_nav))): ?>

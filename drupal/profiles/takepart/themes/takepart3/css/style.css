@@ -111,7 +111,7 @@ a:hover {
     width:  125px;
     padding: 0;
     position: absolute;
-    top: 10px;
+    top: 19px;
     left: 0;
 }
 
@@ -132,6 +132,7 @@ a:hover {
 {
     margin:0;
     position:relative;
+    height:120px;
 }
 
 #page
@@ -165,11 +166,11 @@ a:hover {
 }
 
 #footer {
-    border-top:1px dotted #000;
     margin-bottom:0px;
     background:#FFF;
     overflow: auto;
-    width:1000px;
+    width:960px;
+    padding:0 20px;
 }
 
 .col-140
@@ -306,6 +307,9 @@ ul,ol
     outline:none;
 }
 
+.block-boxes-current-slide_rotator {
+    margin-bottom: 20px;
+}
 /*slideshow rotator text block*/
 .views-field-field-slide-headline-override
 {
@@ -488,7 +492,7 @@ ul,ol
 .block-boxes-title-features .views-field-field-promo-text
 {
     font-size:15px;
-    padding:10px;
+    padding:0 10px;
 }
 
 .main-content .block-boxes-title-features .views-row:hover .views-field-title a, 
@@ -854,6 +858,7 @@ h1.title a:hover {
     height:150px;
     width:200px;
     overflow:hidden;
+    margin-bottom:10px;
 }
 
 .main-content .block-boxes-title-features .views-field-field-thumbnail-1 .field-content img
@@ -1238,6 +1243,10 @@ h1.title a:hover {
     text-decoration: none;
 }
 
+#footer-top-border {
+    border-top:1px dotted #000000;
+}
+
 #footer .column-title {
     color: #99BBCC;
     font-family: Helvetica,Arial,sans-serif;
@@ -1251,17 +1260,20 @@ h1.title a:hover {
 .footer-column-wrapper {
     float:left;
     border-left: 1px solid #D9E7EE;
-    margin: 20px;
+    margin: 20px 10px;
     padding: 0px 10px;
-    width: 160px;
+    width: 150px;
 }
 
 #footer-topic-links {
-    width:270px;
+    width:260px;
+    margin-right: 0;
+    padding-right: 0;
 }
 
 #footer-links-share {
     border-left:none;
+    width:240px;
 }
 
 .footer-column-wrapper .column li, ul#global-links li {
