@@ -208,7 +208,7 @@ body.two-sidebars #content, body.sidebar-first #content
 {
     width:878px;
     float:left;
-    margin-left:125px;
+    margin-left:122px;
 }
 
 #nav-wrap{
@@ -772,6 +772,10 @@ h1.title a:hover {
 .node-type-topic-front h1.title span,
 .page-taxonomy-term h1.title {
     margin-bottom: 8px;
+}
+
+.page-taxonomy-term h1.title {
+    border-bottom: 1px solid #D9E7EE;
 }
 
 .node-type-takepart-campaign h2 span,
