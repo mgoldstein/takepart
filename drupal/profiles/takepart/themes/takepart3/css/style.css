@@ -1707,7 +1707,8 @@ div.takepart_addthis_leftpanel div.addthis_toolbox {
     padding-top: 10px;
 }
 
-.node-type-openpublish-video #block-views-video-block-8 {
+.node-type-openpublish-video #block-views-video-block-8,
+.node-type-openpublish-video #block-views-video-block {
     padding-top:10px;
     border-top:1px dotted #000000;
     margin-top:10px;
