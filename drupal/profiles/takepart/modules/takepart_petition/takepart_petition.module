@@ -156,13 +156,34 @@ function takepart_petition_block_view($delta = '') {
   if (_takepart_petition_is_block_type($delta, '_form')) {
 
     $dialog = $delta .'_dialog';
-    $cookie = $delta .'_signed';
+    $submit_cookie = $delta .'_submitted';
+    $signed_cookie = $delta .'_signed';
     $prog_url = variable_get('water_bill_of_rights_progress');
+
+    $signed_check_js = <<<EOJ
+jQuery(document).ready(function(){
+  if (jQuery.cookie("{$signed_cookie}") != null) {
+    jQuery(location).attr("href","/{$prog_url}");
+  } else {
+    if (jQuery.cookie("{$submit_cookie}") == null) {
+      jQuery("#{$dialog}").dialog({
+        modal: true,
+        width: 600,
+        buttons: { 
+          OK: function() { 
+            jQuery( this ).dialog( "close" ); 
+          } 
+        }
+      });
+    }  
+  }
+});
+EOJ;
 
     // Add the css for the form
     drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-form-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
     drupal_add_library('system','ui.dialog','#'. $dialog);
-    drupal_add_js('jQuery(document).ready(function(){if (jQuery.cookie("'. $cookie .'") != null) {jQuery(location).attr("href","/'. $prog_url .'"); } else {jQuery("#' . $dialog . '").dialog({ modal: true, width: 600, buttons: { Ok: function() { jQuery( this ).dialog( "close" ); } } });}});', 'inline');
+    drupal_add_js($signed_check_js, 'inline');
   
     $name = substr($delta, 0, -strlen('_form'));
     $form = takepart_petition_forms($name);
@@ -497,7 +518,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#default_value' => $signature->comment,
   );
   
-  //if ($ngo){
+  if ($ngo){
 
     $form['ngo_opt_in_container'] = array(
       '#type' => 'container',
@@ -517,8 +538,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
       '#type' => 'item',
       '#markup' => '<div class="ngoOptInText">'. $ngo_title .'</div>',
     );
-
-  //}
+  }
   
   $campaign_opt_in_title = t('I would like to receive email updates on '. $campaign_list_title);
   $form['opt_in_campaign'] = array(
@@ -588,6 +608,10 @@ function _takepart_petition_sign_petition_form_validate($form, &$form_state) {
   } else if (strlen(trim($value)) != 0) {
     form_set_error('TakePart Petition Forms', t('Please enter a valid ZIP code.'));
   }
+  
+  $petition_form = $form_state['petition_form'];
+  $cookie_name = $petition_form->name .'_form_submitted';
+  setcookie($cookie_name,1,time() + (86400 * 365));
 }
 
 function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
