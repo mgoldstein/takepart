@@ -1,7 +1,7 @@
 <?php
 $node = menu_get_object(); 
 ?>
-<h2>Share This Petition</h2>
+<h2 class="tp_block_addthis_petition_header">Share This Petition</h2>
 <p>Every signature counts! Share this petition with friends and family to have an even greater impact!</p>
 <!-- AddThis Button BEGIN -->
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
