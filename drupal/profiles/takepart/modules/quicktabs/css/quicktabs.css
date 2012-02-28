@@ -5,6 +5,11 @@
 ul.quicktabs-tabs {
   margin-top: 12px;
 }
+
+ul.quicktabs-tabs li:nth-child(2) {
+  background-color: #CFE2E1; 
+}
+
 ul.quicktabs-tabs li {
   display: inline;
   margin: 0;
