@@ -365,6 +365,9 @@ function takepart_addthis_petition_block_view($delta = ''){
 
   //there is only one delta here, switch anyway
   if($delta == 'addthis_petition'){
+
+    drupal_add_css(drupal_get_path('module', 'takepart_addthis') . '/css/takepart-addthis-petition-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+
     //create the block
     $block['subject'] = t('');
     $block['content'] = theme(

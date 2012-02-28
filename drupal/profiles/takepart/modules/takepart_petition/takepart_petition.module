@@ -156,13 +156,34 @@ function takepart_petition_block_view($delta = '') {
   if (_takepart_petition_is_block_type($delta, '_form')) {
 
     $dialog = $delta .'_dialog';
-    $cookie = $delta .'_signed';
+    $submit_cookie = $delta .'_submitted';
+    $signed_cookie = $delta .'_signed';
     $prog_url = variable_get('water_bill_of_rights_progress');
+
+    $signed_check_js = <<<EOJ
+jQuery(document).ready(function(){
+  if (jQuery.cookie("{$signed_cookie}") != null) {
+    jQuery(location).attr("href","/{$prog_url}");
+  } else {
+    if (jQuery.cookie("{$submit_cookie}") == null) {
+      jQuery("#{$dialog}").dialog({
+        modal: true,
+        width: 600,
+        buttons: { 
+          OK: function() { 
+            jQuery( this ).dialog( "close" ); 
+          } 
+        }
+      });
+    }  
+  }
+});
+EOJ;
 
     // Add the css for the form
     drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-form-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
     drupal_add_library('system','ui.dialog','#'. $dialog);
-    drupal_add_js('jQuery(document).ready(function(){if (jQuery.cookie("'. $cookie .'") != null) {jQuery(location).attr("href","/'. $prog_url .'"); } else {jQuery("#' . $dialog . '").dialog({ modal: true, width: 600, buttons: { Ok: function() { jQuery( this ).dialog( "close" ); } } });}});', 'inline');
+    drupal_add_js($signed_check_js, 'inline');
   
     $name = substr($delta, 0, -strlen('_form'));
     $form = takepart_petition_forms($name);
@@ -171,16 +192,23 @@ function takepart_petition_block_view($delta = '') {
     $content = drupal_get_form('_takepart_petition_sign_petition_form', $form);
 
   } else if (_takepart_petition_is_block_type($delta, '_progress')) {
-  
-    // Add the css and javascript for the progress bar
-    drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-progress-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
-    drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-progress-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
 
     $name = substr($delta, 0, -strlen('_progress'));
     $form = takepart_petition_forms($name);
     
+    $deferred_id = _takepart_bsd_apiquery("signup/signup_count", array('signup_form_id' => $form->petition_form_id), false);    
+    $variables = array(
+      'goal' => $form->goal,
+      'deferred_id' => $deferred_id,
+    );
+  
+    // Add the css and javascript for the progress bar
+    drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-progress-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+    drupal_add_js('var tp_petition_signatures_deferred_id = "'. $deferred_id .'";', 'inline');
+    drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-progress-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
+  
     $subject = $form->label .' (Progress)';
-    $content = drupal_get_form('_takepart_petition_progress_form', $form);
+    $content = theme($delta, $variables);
   }
 
   return array(
@@ -196,6 +224,38 @@ function takepart_petition_views_api() {
   return array(
     'api' => 3,
     'path' => drupal_get_path('module', 'takepart_petition'),
+  );
+}
+
+function takepart_petition_theme($existing, $type, $theme, $path) {
+
+  // Return progress block theme info for each petition form in the system
+  $blocks = array();
+  foreach (takepart_petition_forms() as $name => $petition_form) {
+
+    $progress_name = $name .'_progress';
+    $template_file = str_replace('_', '-', $progress_name);
+
+    ddl($template_file);
+
+    $blocks[$progress_name] = array(
+      'variables' => array(
+        'goal' => NULL,
+        'deferred_id' => NULL,
+      ),
+      'template' => 'theme/'. $template_file,
+    );
+  }
+  return $blocks;
+}
+
+function takepart_petition_menu() {
+  return array(
+    'lastcall/ajax/signature-count' => array(
+      'page callback' => '_takepart_petition_signature_count',
+      'type' => MENU_CALLBACK,
+      'access arguments' => array('access content'),
+    ),
   );
 }
 
@@ -497,7 +557,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#default_value' => $signature->comment,
   );
   
-  //if ($ngo){
+  if ($ngo){
 
     $form['ngo_opt_in_container'] = array(
       '#type' => 'container',
@@ -517,8 +577,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
       '#type' => 'item',
       '#markup' => '<div class="ngoOptInText">'. $ngo_title .'</div>',
     );
-
-  //}
+  }
   
   $campaign_opt_in_title = t('I would like to receive email updates on '. $campaign_list_title);
   $form['opt_in_campaign'] = array(
@@ -588,6 +647,10 @@ function _takepart_petition_sign_petition_form_validate($form, &$form_state) {
   } else if (strlen(trim($value)) != 0) {
     form_set_error('TakePart Petition Forms', t('Please enter a valid ZIP code.'));
   }
+  
+  $petition_form = $form_state['petition_form'];
+  $cookie_name = $petition_form->name .'_form_submitted';
+  setcookie($cookie_name,1,time() + (86400 * 365));
 }
 
 function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
@@ -732,4 +795,29 @@ function _takepart_petition_progress_form($form, &$form_state, $petition_form) {
   );
   
   return $form;
+}
+
+function _takepart_petition_signature_count($deferred_id) {
+
+  $data = '';
+  if (strlen($deferred_id) == 32) {
+    $response = _takepart_bsd_apiquery("get_deferred_results", array('deferred_id' => $deferred_id), false);
+    if (strpos($response, 'The requested deferred result has already been delivered.') === false) {
+      if (strpos($reponse, 'The deferred_id') === false && strpos($response, 'cannot be found.') === false) {
+        $xml = simplexml_load_string($response);
+        $data = (string)$xml->count;
+        $status = 0;
+      } else {
+        // the deferred id was not found
+        $status = -1;
+      }
+    } else {
+      // request already delivered
+      $status = -2;
+    } 
+  } else {
+    // invalid deferred id
+    $status = -3;
+  }
+  return drupal_json_output(array('status' => $status, 'data' => $data));
 }

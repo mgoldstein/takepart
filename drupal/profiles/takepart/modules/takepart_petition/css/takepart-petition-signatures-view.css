@@ -1,0 +1,39 @@
+/** PETITION BlOG TAB STYLING **/
+
+.views-row {
+  height:40px;
+}
+
+.view-content .tp-sig-row {
+  font-family: Helvetica;
+  font-size: 12px;
+  background-color: #FFF;
+}
+
+span .tp-sig-first-name {
+  position: relative;
+  float: left;
+  top: 0;
+  left: 0;
+  font-weight: bold;
+}
+
+span .tp-sig-last-name {
+  position: relative;
+  float: left;
+  padding-left: 4px;
+  font-weight: bold;
+}
+
+span .tp-sig-signed {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.views-field-comment {
+  position: relative;
+  display: block;	
+  width: 100%;
+  padding-left: 120px;
+}
