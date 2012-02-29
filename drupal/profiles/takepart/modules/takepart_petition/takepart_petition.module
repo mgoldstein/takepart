@@ -449,7 +449,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
   
   $form['instructions'] = array(
     '#type' => 'item',
-    '#markup' => '<div class="signatureHeader">Add Your Signature</div>',
+    '#markup' => '<div class="signatureHeader">Add Your Signature</div><div class="residencyNote">U.S. Residents Only</div>',
   );
 
   $form['mail'] = array(
