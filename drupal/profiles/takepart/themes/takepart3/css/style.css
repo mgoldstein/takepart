@@ -1865,3 +1865,11 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
 #header-wrapper ul.menu {
     padding-top: 14px;
 }
+
+.node-type-openpublish-photo-gallery .page {
+    padding: 20px 20px 35px 10px !important;
+}
+
+.node-type-takepart-group .page {
+    padding: 20px 20px 35px 0px !important;
+}
