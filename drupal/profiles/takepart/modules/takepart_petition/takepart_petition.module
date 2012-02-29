@@ -165,7 +165,7 @@ jQuery(document).ready(function(){
   if (jQuery.cookie("{$signed_cookie}") != null) {
     jQuery(location).attr("href","/{$prog_url}");
   } else {
-    if (jQuery.cookie("{$submit_cookie}") == null) {
+    if (jQuery.cookie("petition_reason_shown_for_session") == null) {
       jQuery("#{$dialog}").dialog({
         modal: true,
         width: 600,
@@ -175,6 +175,7 @@ jQuery(document).ready(function(){
           } 
         }
       });
+      jQuery.cookie("petition_reason_shown_for_session", 1);
     }  
   }
 });
