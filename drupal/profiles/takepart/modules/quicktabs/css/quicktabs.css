@@ -1,5 +1,3 @@
-
-
 ul.quicktabs-tabs {
   margin-top: 12px;
 }
@@ -51,5 +49,15 @@ ul.quicktabs-tabs li#current {
 
 ul.quicktabs-tabs li#current a:hover {
   background: #39C;
+}
+
+ul.quicktabs-tabs li a:focus {
+  -webkit-border-top-left-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
+  -moz-border-radius-topleft: 15px;
+  -moz-border-radius-topright: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #CFE2E1;
 }
 
