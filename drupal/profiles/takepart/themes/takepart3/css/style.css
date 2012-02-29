@@ -166,11 +166,12 @@ a:hover {
 }
 
 #footer {
-    margin-bottom:0px;
-    background:#FFF;
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin-bottom: 0;
+    margin-left: -10px;
     overflow: auto;
-    width:960px;
-    padding:0 20px;
+    padding: 0 20px;
+    width: 960px;
 }
 
 .col-140
@@ -1521,7 +1522,7 @@ h1.title a:hover {
 }
 */
 .main-content .views-slideshow-controls-top { 
-    z-index: 12;
+    z-index: 100;
 }
 
 body.node-type-takepart-campaign .main-content #content,
