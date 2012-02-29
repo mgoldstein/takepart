@@ -211,13 +211,13 @@ body.two-sidebars #content, body.sidebar-first #content
     width:878px;
     float:left;
     margin-left:124px;
+    position: relative;
+    top:14px;
 }
 
 #nav-wrap{
     margin: 0 0 5px 0;
     float: left;
-    position: relative;
-    top: 10px;
 }
 
 .field-name-field-tp-campaign-intro-media { 
@@ -1863,7 +1863,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
 }
 
 #header-wrapper ul.menu {
-    padding-top: 14px;
+    padding:0;
 }
 
 .node-type-openpublish-photo-gallery .page {
