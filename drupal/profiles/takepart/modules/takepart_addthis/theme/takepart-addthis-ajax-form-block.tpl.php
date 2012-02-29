@@ -8,10 +8,10 @@
 <!-- AddThis Button BEGIN -->
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
 <a class="addthis_button_facebook">
-        <img src="/profiles/takepart/modules/takepart_petition/images/petition-status-bar.png"
+        <img src="/profiles/takepart/modules/takepart_addthis/images/fb_share.png"
           alt="Share on Facebook" /></a>
 <a class="addthis_button_twitter">
-        <img src="/profiles/takepart/modules/takepart_petition/images/petition-status-bar.png"
+        <img src="/profiles/takepart/modules/takepart_addthis/images/twitter_share.png"
           alt="Share on Twitter" /></a>
 </div>
 <div id="share_result"></div>
