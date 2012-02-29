@@ -30,12 +30,15 @@ $action_title = $theXml->action[0]->action_title;
 $action_page = $theXml->action[0]->action_page;
 $calendar_page = $theXml->action[0]->calendar_page;
 
-
-$topic_icon = "<img src=\"" . $theXml->action[0]->topic_icon->img->attributes()->src .
-"\" width=\"" . $theXml->action[0]->topic_icon->img->attributes()->width .
-"\" height=\"" . $theXml->action[0]->topic_icon->img->attributes()->height .
-"\" border=\"" . $theXml->action[0]->topic_icon->img->attributes()->border .
-"\" alt=\"" . $theXml->action[0]->topic_icon->img->attributes()->alt . "\"/>";
+try {
+  $topic_icon = "<img src=\"" . $theXml->action[0]->topic_icon->img->attributes()->src .
+  "\" width=\"" . $theXml->action[0]->topic_icon->img->attributes()->width .
+  "\" height=\"" . $theXml->action[0]->topic_icon->img->attributes()->height .
+  "\" border=\"" . $theXml->action[0]->topic_icon->img->attributes()->border .
+  "\" alt=\"" . $theXml->action[0]->topic_icon->img->attributes()->alt . "\"/>";
+} catch (Exception $e) {
+    $topic_icon = "";
+}
 
 # fix timestamp
 $today = strtoupper(date("M j",((int)($todays_date))));
