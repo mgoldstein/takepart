@@ -1658,3 +1658,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_digg {
 div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
     float: left !important;
 }
+
+#right-rail .field-name-field-blog-view .views-field-title a:hover {
+    color: #1CA9E7;	
+}
