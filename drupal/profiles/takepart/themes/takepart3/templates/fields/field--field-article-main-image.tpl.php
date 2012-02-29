@@ -56,7 +56,10 @@ HTML comment.
     <?php foreach ($items as $delta => $item) : ?>
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>>
         <?php 
-        $mediaalttag = $item['#file']->field_media_alt['und'][0]['value'];
+        $mediaalttag = $item['#file']->field_title['und'][0]['value'];
+        if(!$mediaalttag) {
+         $mediaalttag = $item['#file']->field_media_alt['und'][0]['value'];
+        }
         $imagetag = render($item);
         print str_replace('alt=""', 'alt="'.$mediaalttag.'"', $imagetag);
         ?>
