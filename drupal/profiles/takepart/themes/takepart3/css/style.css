@@ -1667,3 +1667,10 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
 #header-wrapper ul.menu {
     padding-top: 14px;
 }
+
+#block-menu-block-1 { 
+	padding-top:14px;
+}
+#header-wrapper ul.menu {
+    padding-top: 0px;
+}
