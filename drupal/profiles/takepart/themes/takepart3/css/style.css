@@ -1519,6 +1519,7 @@ body.node-type-takepart-campaign .main-content #left-rail {
     font-size: 12px;
     line-height: 18px;
     font-weight: bold;
+    display:none;
 }
 
 #block-boxes-box-407084eb .full-video {
