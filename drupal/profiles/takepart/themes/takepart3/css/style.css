@@ -1674,6 +1674,22 @@ body.node-type-blog-front .node-blog-front h2.title {
     background: url("../images/2012-02-08/gallery_right_arrow_solid.png") no-repeat scroll 0 0 transparent;
 }
 
+.region-highlighted div.takepart_addthis_leftpanel div.addthis_toolbox a {
+	margin-bottom: 4px;
+}
+
+div.takepart_addthis_leftpanel div.addthis_toolbox {
+    float: left;
+}
+
+#comments .comments-header {
+	border-top: 1px dotted #555555;
+    border-bottom: 1px solid #D9E7EE;
+    padding-bottom: 8px;
+    margin-bottom:12px;
+    padding-top: 10px;
+}
+
 div.takepart_addthis_leftpanel div.addthis_toolbox a {
     display: block;
     margin-bottom: 8px;
