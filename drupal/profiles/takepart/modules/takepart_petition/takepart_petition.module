@@ -447,113 +447,119 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
   // build the form  
 
   $form['#attributes']['class'][] = 'petition-form'; 
-  /*** This text should be outside of block **
+  
   $form['instructions'] = array(
     '#type' => 'item',
     '#markup' => '<div class="signatureHeader">Add Your Signature</div><div class="residencyNote">U.S. Residents Only</div>',
   );
-  **/
 
-  $form['mail'] = array(
+  $form['form_container'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('pet-form-wrapper',),
+    ),
+  );
+
+  $form['form_container']['mail'] = array(
     '#title' => t('E-mail address'),
     '#type' => 'textfield',
     '#required' => TRUE,
     '#default_value' => $signature->mail,
   );
 
-  $form['name_container'] = array(
+  $form['form_container']['name_container'] = array(
     '#type' => 'container',
     '#attributes' => array(
       'class' => array('pet-name-wrapper',),
     ),
   );
   
-  $form['name_container']['first_name_container'] = array(
+  $form['form_container']['name_container']['first_name_container'] = array(
     '#type' => 'container',
     '#attributes' => array(
       'class' => array('pet-first-name',),
     ),
   );
 
-  $form['name_container']['first_name_container']['first_name'] = array(
+  $form['form_container']['name_container']['first_name_container']['first_name'] = array(
     '#title' => t('First Name'),
     '#type' => 'textfield',
     '#required' => TRUE,
     '#default_value' => $signature->first_name,
   );
 
-  $form['name_container']['last_name_container'] = array(
+  $form['form_container']['name_container']['last_name_container'] = array(
     '#type' => 'container',
     '#attributes' => array(
       'class' => array('pet-last-name',),
     ),
   );
 
-  $form['name_container']['last_name_container']['last_name'] = array(
+  $form['form_container']['name_container']['last_name_container']['last_name'] = array(
     '#title' => t('Last Name'),
     '#type' => 'textfield',
     '#required' => TRUE,
     '#default_value' => $signature->last_name,
   );
 
-  $form['zips_container'] = array(
+  $form['form_container']['zips_container'] = array(
     '#type' => 'container',
     '#attributes' => array(
       'class' => array('zips',),
     ),
   );
 
-  $form['zips_container']['zip5_container'] = array(
+  $form['form_container']['zips_container']['zip5_container'] = array(
     '#type' => 'container',
     '#attributes' => array(
       'class' => array('zip5',),
     ),
   );
 
-  $form['zips_container']['zip5_container']['zip_code_5'] = array(
+  $form['form_container']['zips_container']['zip5_container']['zip_code_5'] = array(
     '#title' => t('ZIP Code'),
     '#type' => 'textfield',
     '#required' => TRUE,
     '#default_value' => '',
   );
 
-  $form['zips_container']['zip4_container'] = array(
+  $form['form_container']['zips_container']['zip4_container'] = array(
     '#type' => 'container',
     '#attributes' => array(
       'class' => array('zip4',),
     ),
   );
 
-  $form['zips_container']['zip4_container']['zip_code_4'] = array(
+  $form['form_container']['zips_container']['zip4_container']['zip_code_4'] = array(
     '#title' => t('+ 4'),
     '#type' => 'textfield',
     '#required' => FALSE,
     '#default_value' => '',
   );
 
-  $form['zips_container']['zip_help_container'] = array(
+  $form['form_container']['zips_container']['zip_help_container'] = array(
     '#type' => 'container',
     '#attributes' => array(
       'class' => array('zipHelp',),
     ),
   );
 
-  $form['zips_container']['zip_help_container']['zip_code_lookup'] = array(
+  $form['form_container']['zips_container']['zip_help_container']['zip_code_lookup'] = array(
     '#type' => 'item',
     '#markup' => 'Don\'t know your full ZIP Code? Look it up <a href="http://www.usps.com/zip4/">here</a>.',
   );
 
-  $form['required_fields'] = array(
+  $form['form_container']['required_fields'] = array(
     '#type' => 'item',
     '#markup' => '<div><span style="width:100%" class="form-required">*</span> Required Field</div>',
   );
 
-  $form['clear_both'] = array(
+  $form['form_container']['clear_both'] = array(
     '#type' => 'item',
     '#markup' => '<div style="clear:both"></div>',
   );
 
-  $form['comment'] = array(
+  $form['form_container']['comment'] = array(
     '#title' => t('Your reason for signing (optional)'),
     '#type' => 'textarea',
     '#resizable' => FALSE,
@@ -563,7 +569,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
   
   if ($ngo){
 
-    $form['ngo_opt_in_container'] = array(
+    $form['form_container']['ngo_opt_in_container'] = array(
       '#type' => 'container',
       '#attributes' => array(
         'class' => array('optin_ngo_wrapper',),
@@ -571,35 +577,35 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     );
 
     $ngo_title = t('I would like to receive email updates from '. $ngo->label);
-    $form['ngo_opt_in_container']['opt_in_ngo'] = array(
+    $form['form_container']['ngo_opt_in_container']['opt_in_ngo'] = array(
       '#title' => $ngo_title,
       '#type' => 'checkbox',
       '#default_value' => 1,
       '#title_display' => 'attribute',
     );
-    $form['ngo_markup'] = array(
+    $form['form_container']['ngo_markup'] = array(
       '#type' => 'item',
       '#markup' => '<div class="ngoOptInText">'. $ngo_title .'</div>',
     );
   }
   
   $campaign_opt_in_title = t('I would like to receive email updates on '. $campaign_list_title);
-  $form['opt_in_campaign'] = array(
+  $form['form_container']['opt_in_campaign'] = array(
     '#type' => 'checkbox',
     '#default_value' => 1,
     '#title' => $campaign_opt_in_title,
     '#title_display' => 'attribute',
   );
-  $form['camp_opt_in_markup'] = array(
+  $form['form_container']['camp_opt_in_markup'] = array(
     '#type' => 'item',
     '#markup' => '<div class="campaignOptInText">'. $campaign_opt_in_title .'</div>',
   );
   
-  $form['actions'] = array(
+  $form['form_container']['actions'] = array(
     '#weight' => 100,
   );
 
-  $form['actions']['submit'] = array(
+  $form['form_container']['actions']['submit'] = array(
     '#type' => 'image_button',
     '#src' => drupal_get_path('module', 'takepart_petition') . '/images/petition-submit.png',
     '#attributes' => array(
@@ -608,7 +614,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#submit' => array('_takepart_petition_sign_petition_form_submit'),
   );
 
-  $form['terms_of_use'] = array(
+  $form['form_container']['terms_of_use'] = array(
     '#type' => 'item',
     '#markup' => '<div class="terms-of-use-txt">By signing, you accept TakePart\'s <a href="/terms-of-use">Terms of Use</a></div>',
     '#weight' => 105,
@@ -617,7 +623,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
   $reason_to_sign = variable_get('water_bill_of_rights_reason_to_sign');
   $dialog_name = $petition_form->name .'_form_dialog';
   $dialog_title = $petition_form->label;
-  $form['reason_to_sign_dialog'] = array(
+  $form['form_container']['reason_to_sign_dialog'] = array(
       '#type' => 'item',
       '#markup' => '<div style="display: none;" id="'. $dialog_name .'"  title="'. $dialog_title .'">'. $reason_to_sign .'</div>',
   );
