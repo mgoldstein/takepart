@@ -19,4 +19,4 @@
   * the view is modified.
   */
 ?>
-<div class="tp-pet-first-name"><?php print $output; ?></div>
+<span class="tp-pet-first-name"><?php print $output; ?></span>
