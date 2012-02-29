@@ -14,6 +14,4 @@
         <img src="/profiles/takepart/modules/takepart_addthis/images/twitter_share.png"
           alt="Share on Twitter" /></a>
 </div>
-<div id="share_result"></div>
-<?php print drupal_render($variables['share_form']) ?>
 <!-- AddThis Button END -->
