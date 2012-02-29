@@ -1632,3 +1632,13 @@ body.node-type-blog-front .node-blog-front h2.title {
 #views_slideshow_controls_text_next_photo_gallery-block:hover {
 	background: url("../images/2012-02-08/gallery_right_arrow_solid.png") no-repeat scroll 0 0 transparent;
 }
+
+div.tp-pet-thank-you-heading {
+  font-size: 22px;
+  line-height: 24px;
+  margin-bottom: 6px;
+  color: #000;
+  font-weight: bold;
+  background: none;
+  clear: both;
+}
