@@ -556,6 +556,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#type' => 'textarea',
     '#resizable' => FALSE,
     '#default_value' => $signature->comment,
+    '#maxlength' => 420,
   );
   
   if ($ngo){
