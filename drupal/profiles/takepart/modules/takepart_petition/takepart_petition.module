@@ -185,6 +185,7 @@ EOJ;
     drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-form-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
     drupal_add_library('system','ui.dialog','#'. $dialog);
     drupal_add_js($signed_check_js, 'inline');
+    drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-form-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
   
     $name = substr($delta, 0, -strlen('_form'));
     $form = takepart_petition_forms($name);
@@ -197,7 +198,7 @@ EOJ;
     $name = substr($delta, 0, -strlen('_progress'));
     $form = takepart_petition_forms($name);
     
-    $deferred_id = _takepart_bsd_apiquery("signup/signup_count", array('signup_form_id' => $form->petition_form_id), false);    
+    $deferred_id = _takepart_bsd_apiquery("signup/signup_count", array('signup_form_id' => $form->petition_form_id), false);  
     $variables = array(
       'goal' => $form->goal,
       'deferred_id' => $deferred_id,
@@ -446,7 +447,8 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
 
   // build the form  
 
-  $form['#attributes']['class'][] = 'petition-form'; 
+  $form['#attributes']['class'][] = 'petition-form';
+  $form['#attributes']['title'] = $petition_form->label;
   
   $form['instructions'] = array(
     '#type' => 'item',
@@ -465,6 +467,9 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#type' => 'textfield',
     '#required' => TRUE,
     '#default_value' => $signature->mail,
+    '#attributes' => array(
+      'class' => array('pet-form-focus-event',),
+    ),
   );
 
   $form['form_container']['name_container'] = array(
@@ -486,6 +491,9 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#type' => 'textfield',
     '#required' => TRUE,
     '#default_value' => $signature->first_name,
+    '#attributes' => array(
+      'class' => array('pet-form-focus-event',),
+    ),
   );
 
   $form['form_container']['name_container']['last_name_container'] = array(
@@ -500,6 +508,9 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#type' => 'textfield',
     '#required' => TRUE,
     '#default_value' => $signature->last_name,
+    '#attributes' => array(
+      'class' => array('pet-form-focus-event',),
+    ),
   );
 
   $form['form_container']['zips_container'] = array(
@@ -521,6 +532,9 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#type' => 'textfield',
     '#required' => TRUE,
     '#default_value' => '',
+    '#attributes' => array(
+      'class' => array('pet-form-focus-event',),
+    ),
   );
 
   $form['form_container']['zips_container']['zip4_container'] = array(
@@ -535,6 +549,9 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#type' => 'textfield',
     '#required' => FALSE,
     '#default_value' => '',
+    '#attributes' => array(
+      'class' => array('pet-form-focus-event',),
+    ),
   );
 
   $form['form_container']['zips_container']['zip_help_container'] = array(
@@ -565,6 +582,9 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#resizable' => FALSE,
     '#default_value' => $signature->comment,
     '#maxlength' => 420,
+    '#attributes' => array(
+      'class' => array('pet-form-focus-event',),
+    ),
   );
   
   if ($ngo){
@@ -582,6 +602,9 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
       '#type' => 'checkbox',
       '#default_value' => 1,
       '#title_display' => 'attribute',
+      '#attributes' => array(
+        'class' => array('pet-form-click-event','pet-form-optin-event',),
+      ),
     );
     $form['form_container']['ngo_markup'] = array(
       '#type' => 'item',
@@ -595,6 +618,9 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#default_value' => 1,
     '#title' => $campaign_opt_in_title,
     '#title_display' => 'attribute',
+    '#attributes' => array(
+      'class' => array('pet-form-click-event','pet-form-optin-event',),
+    ),
   );
   $form['form_container']['camp_opt_in_markup'] = array(
     '#type' => 'item',
