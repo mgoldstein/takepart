@@ -431,7 +431,7 @@ body.page-taxonomy-term h1{
 div[class*='block-boxes-bid-views-video-block'] h2,
 div[class*='block-boxes-delta-video-block'] h2 {
     background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 0 transparent;
-    margin: 12px 0;
+    margin: 0 0 10px 0;
     color: #99BBCC;
 }
 .block-boxes-current-video h2 span,

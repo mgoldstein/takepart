@@ -496,6 +496,11 @@ ul,ol
     padding:0 10px;
 }
 
+.block-boxes-current-video .views-field-field-promo-text {
+    font-size: 14px;
+    color: #000;
+}
+
 .main-content .block-boxes-title-features .views-row:hover .views-field-title a, 
 .main-content .block-boxes-title-features .views-row:hover .views-field-field-article-subhead a,
 .main-content .block-boxes-title-features .views-row:hover .views-field-nid a
