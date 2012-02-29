@@ -201,10 +201,13 @@ EOJ;
       'goal' => $form->goal,
       'deferred_id' => $deferred_id,
     );
-  
+
+    $progress_js  = 'var tp_petition_signatures_deferred_id = "'. $deferred_id .'"; ';
+    $progress_js .= 'var  tp_petition_signatures_goal = '. $form->goal . ';';
+ 
     // Add the css and javascript for the progress bar
     drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-progress-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
-    drupal_add_js('var tp_petition_signatures_deferred_id = "'. $deferred_id .'";', 'inline');
+    drupal_add_js($progress_js, 'inline');
     drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-progress-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
   
     $subject = $form->label .' (Progress)';

@@ -17,8 +17,8 @@
  * @ingroup views_templates
  */
 ?>
-<h2>Signatures</h2>
-<h3>See Why People Are Signing</h3>
+<div class="tp-pet-signatures-heading">Signatures</div>
+<div class="tp-pet-signatures-sub-heading">See Why People Are Signing</div>
 <div class="tp-pet-signatures">
   <?php foreach ($rows as $count => $row): ?>
     <div class="tp-pet-signature-row">

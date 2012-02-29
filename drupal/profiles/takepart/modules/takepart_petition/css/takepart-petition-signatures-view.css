@@ -34,3 +34,20 @@
 .main-content h2 {
   margin: 10px 0;
 }
+
+div.tp-pet-signatures-heading {
+  font-size: 22px;
+  line-height: 24px;
+  color: #000;
+  font-weight: bold;
+  background: none;
+}
+
+div.tp-pet-signatures-sub-heading {
+  font-size: 16px;
+  line-height: 18px;
+  color: #000;
+  background: none;
+  border-bottom: 1px dotted #000000;
+  padding: 10px 0 6px;
+}

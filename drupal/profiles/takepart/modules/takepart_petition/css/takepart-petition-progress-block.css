@@ -1,0 +1,38 @@
+.tp-pet-progress-block {
+  background: #fff;
+  width: 640px;
+  height: 160px;
+}
+
+.tp-pet-progress-image {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 300px;
+  height: 160px;
+  position: relative;
+}
+
+.tp-pet-progress-info {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 300px;
+  height: 160px;
+}
+
+.tp-pet-progress-count {
+  width: 300px;
+  height: 40px;
+  text-align: center;
+}
+
+.tp-pet-progress-count span {
+  font-size: 16px;
+  line-height: 40px;
+  color: #000;
+  font-weight: bold;
+}
