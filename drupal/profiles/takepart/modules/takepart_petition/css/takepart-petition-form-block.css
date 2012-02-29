@@ -26,7 +26,7 @@
 
 .petition-form {
   font-family: Helvetica;
-  font-size: 16px;  
+  font-size: 14px;  
 }
 
 .petition-form .form-text {
@@ -75,7 +75,7 @@
   padding-top: 10px;
   width: 100%;
   font-style: italic;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .petition-form .form-textarea-wrapper textarea {
@@ -107,10 +107,12 @@
 
 .petition-form .ngoOptInText {
   padding-left: 10px; 
+  font-size: 12px;
 }
 
 .petition-form .campaignOptInText {
   padding-left: 10px;
+  font-size: 12px;
 }
 
 .petition-form #edit-submit {
