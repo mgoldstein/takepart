@@ -58,6 +58,9 @@ HTML comment.
         <?php 
         $mediaalttag = $item['#file']->field_title['und'][0]['value'];
         if(!$mediaalttag) {
+          $mediaalttag = $item['#file']->field_image_title['und'][0]['value'];
+        }
+        if(!$mediaalttag) {
          $mediaalttag = $item['#file']->field_media_alt['und'][0]['value'];
         }
         $imagetag = render($item);
