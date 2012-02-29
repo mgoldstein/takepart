@@ -118,7 +118,7 @@ a:hover {
 /*page structure*/
 #page-wrapper
 {
-    margin: 5px auto 0;
+    margin: 0px auto 0;
     width:1000px;
 }
 
@@ -683,8 +683,9 @@ ul#top-follow li a {
 }
 
 ul#top-follow {
-    margin: 20px 0 0;
+    margin: 10px 0 0;
     float: right;
+    width: 106px;
 }
 
 .header-mid
@@ -1500,7 +1501,7 @@ h1.title a:hover {
 #hot-topics-nav {
     width: 540px;
     float: left;
-    padding-top: 24px;
+    padding: 9px 0 10px;
 }
 
 #hot-topics-nav li.title {
@@ -1517,7 +1518,7 @@ h1.title a:hover {
 #top-search {
     width:  219px;
     float: right;
-    margin: 15px 0 0;
+    margin: 5px 0 0;
 }
 
 #top-search .form-text,
@@ -1847,4 +1848,8 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
 
 #right-rail .field-name-field-blog-view .views-field-title a:hover {
     color: #1CA9E7;	
+}
+
+#header-wrapper ul.menu {
+    padding-top: 14px;
 }
