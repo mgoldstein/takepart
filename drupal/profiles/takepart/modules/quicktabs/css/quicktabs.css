@@ -5,7 +5,7 @@ ul.quicktabs-tabs {
 }
 
 ul.quicktabs-tabs li {
-  margin: 0;
+  margin: 0 0.13em 0 0;
   background-color: #F3F8F8; 
   font-size: 16px;
   font-weight: bold;
@@ -15,11 +15,8 @@ ul.quicktabs-tabs li {
   -moz-border-radius-topright: 15px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  padding-bottom: 10px;
-  padding-top: 6px;
-  padding-right: 10px;
-  padding-left: 10px;
   white-space: nowrap;
+  float: left;
 }
 
 
@@ -29,11 +26,6 @@ ul.quicktabs-tabs {
   padding:0; 
   margin:0; 
   border: none;
-}
-
-ul.quicktabs-tabs li {
-  float:left; 
-  margin-right:0.13em; 
 }
 
 ul.quicktabs-tabs li a {
