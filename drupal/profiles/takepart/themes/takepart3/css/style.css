@@ -183,10 +183,11 @@ a:hover {
     width:460px;
 }
 
-body.two-sidebars #left-rail,body.sidebar-first #left-rail
+body.two-sidebars #left-rail,
+body.sidebar-first #left-rail
 {
     display:inline-block;
-    margin:0;
+    margin:0 0 0 6px;
     width:145px;
 }
 
@@ -1716,6 +1717,9 @@ div.takepart_addthis_leftpanel div.addthis_toolbox {
     float: left;
 }
 
+div.takepart_addthis_leftpanel {
+    margin: 0 0 8px 0;
+}
 #comments .comments-header {
     border-top: 1px dotted #555555;
     border-bottom: 1px solid #D9E7EE;
