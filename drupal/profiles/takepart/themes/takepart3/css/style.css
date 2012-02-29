@@ -1629,18 +1629,13 @@ div.takepart_addthis_leftpanel div.addthis_default_style a.addthis_button_linked
     width: 102px !important;
 }
 
-div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_stumbleupon {
-    float: none;
-    height: 13px;   
+div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_stumbleupon { 
 }
 
-div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
-    float: none;
-    height: 13px;   
+div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {  
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_digg {
-    float: none;  
 }
 
 .region-highlighted div.takepart_addthis_leftpanel div.addthis_toolbox a {

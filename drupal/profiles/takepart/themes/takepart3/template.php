@@ -87,6 +87,8 @@ function takepart3_preprocess_page(&$variables) {
   $variables['footer']  = _render_tp3_footer($variables);
   
   //if shares don't exists in the left sidebar, add them to the top:
+  //so much for consistent design ...
+  /*
   if($variables['node']->type == 'takepart_campaign') {
     if($variables['page']['sidebar_first']) {
       if (!array_key_exists('takepart_addthis_addthis_full', $variables['page']['sidebar_first'])) {
@@ -98,7 +100,7 @@ function takepart3_preprocess_page(&$variables) {
         }
       }
     }
-  }
+  } */
   
   return $variables;
 }
@@ -880,3 +882,5 @@ function takepart3_preprocess_views_view_unformatted(&$vars) {
     } 
   }
 }
+
+
