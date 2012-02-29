@@ -1,3 +1,9 @@
 #block-takepart-addthis-addthis-petition {
   border: 4px solid #ffea99;
 }
+
+.tp-pet-event-sharebar {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}

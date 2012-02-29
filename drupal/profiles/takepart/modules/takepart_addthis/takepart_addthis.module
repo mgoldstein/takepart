@@ -379,6 +379,8 @@ function takepart_addthis_petition_block_view($delta = ''){
 
     drupal_add_css(drupal_get_path('module', 'takepart_addthis') . '/css/takepart-addthis-petition-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
 
+    drupal_add_js(drupal_get_path('module', 'takepart_addthis') . '/js/takepart-addthis-petition-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
+
     //create the block
     $block['subject'] = t('');
     $block['content'] = theme(
