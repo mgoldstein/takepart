@@ -694,9 +694,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 /**   video blocks **/
 
 #block-views-video-block-6 .content {
-    border-top: 1px dotted #000000;
     padding-bottom: 20px;
-    padding-top: 10px;
 }
 .view-video tr{
     display:block;
