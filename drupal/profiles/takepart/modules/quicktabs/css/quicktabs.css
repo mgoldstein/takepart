@@ -1,20 +1,12 @@
-.quicktabs-hide {
-  display: none;
-}
+
 
 ul.quicktabs-tabs {
   margin-top: 12px;
 }
 
-ul.quicktabs-tabs li:nth-child(2) {
-  background-color: #CFE2E1; 
-}
-
 ul.quicktabs-tabs li {
-  display: inline;
-  margin: 0;
+  margin: 0 0.13em 0 0;
   background-color: #F3F8F8; 
-  list-style-type: none;
   font-size: 16px;
   font-weight: bold;
   -webkit-border-top-left-radius: 15px;
@@ -23,14 +15,41 @@ ul.quicktabs-tabs li {
   -moz-border-radius-topright: 15px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  padding-bottom: 10px;
-  padding-top: 6px;
-  padding-right: 10px;
-  padding-left: 10px;
   white-space: nowrap;
-}
-ul.quicktabs-tabs li a:focus {
-  outline: none;
+  float: left;
+  padding-bottom: 0;
 }
 
+
+ul.quicktabs-tabs {
+  list-style:none; 
+  height:2em;
+  padding:0; 
+  margin:0; 
+  border: none;
+}
+
+ul.quicktabs-tabs li a {
+  display:block;
+  padding:0 1em;
+  text-decoration:none;
+  border-bottom:0;
+  font:bold 0.88em/2em helvetica;
+  color:#000;
+}
+
+ul.quicktabs-tabs li:hover {
+  background:#CFE2E1; 
+  color:#fff;
+  text-decoration:none;
+}
+
+ul.quicktabs-tabs li#current {
+  background-color: #CFE2E1;
+  color: #fff;
+}
+
+ul.quicktabs-tabs li#current a:hover {
+  background: #39C;
+}
 
