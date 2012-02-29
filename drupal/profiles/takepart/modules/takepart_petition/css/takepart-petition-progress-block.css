@@ -2,6 +2,7 @@
   background: #fff;
   width: 640px;
   height: 180px;
+  position: relative;
 }
 
 .tp-pet-progress-image {
