@@ -2393,87 +2393,9 @@ body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #lef
     clear: both;
 }
 
-/** Campaign View **/
-
-.view-campaigns {
-
-}
-
-.view-campaigns.view-display-id-block_1 {
-    margin: 30px 0;
-}
-
-.node-type-section-front-wide .main-content .view-campaigns.view-display-id-block_1 {
-    margin: 10px 0;
-}
-.view-campaigns.view-display-id-block_1 .views-row {
-    display: inline-block;
-    margin: 0 5px 0 0;
-    margin-bottom: 30px;
-    overflow: hidden;
-    padding: 0;
-    vertical-align: top;
-    width: 150px;
-}
-
-.view-campaigns.view-display-id-block_1 .views-row .views-field-title a {  
-    color: black;
-    display: inline-block;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.view-campaigns.view-display-id-block_1 .views-row .views-field-title a:hover {
-    color: #1CA9E7;
-}
-
-.view-campaigns.view-display-id-block_1 .views-row .views-field-field-tp-campaign-subheadline {
-    font-size: 14px;
-}
-
-.view-campaigns.view-display-id-block_1 .views-row.views-row-odd {
-
-}
-
-.view-campaigns.view-display-id-block_1 .views-row.views-row-odd.views-row-first {
-
-}
-
-.view-campaigns.view-dom-id-2 .view-content,
-.view-campaigns.view-dom-id-3 .view-content {
-    margin: 30px 0;
-}
-
-.node-type-section-front-wide .view-campaigns.view-dom-id-2 .view-content,
-.node-type-section-front-wide .view-campaigns.view-dom-id-3 .view-content {
-    margin:0;
-}
-
-.view-campaigns.view-dom-id-2 .view-content ul,
-.view-campaigns.view-dom-id-3 .view-content ul{  
-    margin: 0;
-    padding: 0;
-}
-
-.view-campaigns.view-dom-id-2 .view-content ul li,
-.view-campaigns.view-dom-id-3 .view-content ul li {
-    display: inline-block;
-    margin: 0 5px 30px 0;
-    padding: 0;
-    vertical-align: top;
-    width: 150px;
-}
-
-.view-campaigns.view-dom-id-2 .view-content ul li a,
-.view-campaigns.view-dom-id-3 .view-content ul li a {
-    font-size: 16px;
-}
-
 body.node-type-takepart-campaign .node-takepart-campaign h2.title{
     display: none;
 }
-
 
 body.node-type-takepart-campaign .region-sidebar-first {  
     left: -12px;
