@@ -773,7 +773,7 @@ h1.title a:hover {
 .node-type-webform .main-content h1.title,
 .node-type-takepart-page .main-content h1.title,
 .node-type-action .main-content h1.title,
-.node-type-takepart-campaign h1.title {
+.node-type-takepart-campaign .main-content h1 {
     font-size:36px;
     font-family:Helvetica, Arial, sans-serif;
     line-height:38px;
@@ -835,7 +835,12 @@ h1.title a:hover {
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 10px transparent;
     width:100%;
 }
-
+.node-type-takepart-campaign .main-content h2 {
+    color:#99bbcc;
+    font-size: 22px;
+    line-height: 120%;
+    font-weight: bold;
+}
 .node-type-takepart-campaign h2, 
 .node-type-topic-front h1.title,
 .page-taxonomy-term h1.title,
@@ -1728,10 +1733,14 @@ body.node-type-blog-front .node-blog-front h2.title {
     display: none;
 }
 
-.block-boxes-bid-takepart_addthis-addthis_full, .field-name-field-tp-campaign-cover-image {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.block-boxes-bid-takepart_addthis-addthis_full {
+    margin: 10px 0;
 }
+
+.field-name-field-tp-campaign-cover-image {
+    margin: 0 0 10px 0;
+}
+
 .node-openpublish-video .node-topics {
     display: none;
 }
