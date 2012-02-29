@@ -1,39 +1,36 @@
-/** PETITION BlOG TAB STYLING **/
-
-.views-row {
-  height:40px;
-}
-
-.view-content .tp-sig-row {
+.tp-pet-signatures {
+  display: table;
   font-family: Helvetica;
   font-size: 12px;
-  background-color: #FFF;
 }
 
-span .tp-sig-first-name {
+.tp-pet-signature-row {
+  display: table-row;
+  height: 60px;
+}
+
+.tp-pet-name {
   position: relative;
-  float: left;
-  top: 0;
-  left: 0;
-  font-weight: bold;
+  display: table-cell;
+  width: 20%;
+  vertical-align: top;
 }
 
-span .tp-sig-last-name {
-  position: relative;
-  float: left;
-  padding-left: 4px;
-  font-weight: bold;
-}
-
-span .tp-sig-signed {
+.tp-pet-comment {
+  display: table-cell;	
   position: relative;
   float: left;
   width: 100%;
 }
 
-.views-field-comment {
-  position: relative;
-  display: block;	
-  width: 100%;
-  padding-left: 120px;
+.fname {
+  font-weight: bold;
+}
+
+.tp-pet-first-name, .tp-pet-last-name {
+  font-weight: bold;
+}
+
+.main-content h2 {
+  margin: 10px 0;
 }
