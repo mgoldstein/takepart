@@ -446,11 +446,12 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
   // build the form  
 
   $form['#attributes']['class'][] = 'petition-form'; 
-  
+  /*** This text should be outside of block **
   $form['instructions'] = array(
     '#type' => 'item',
     '#markup' => '<div class="signatureHeader">Add Your Signature</div><div class="residencyNote">U.S. Residents Only</div>',
   );
+  **/
 
   $form['mail'] = array(
     '#title' => t('E-mail address'),
