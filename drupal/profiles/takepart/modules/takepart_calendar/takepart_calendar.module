@@ -15,9 +15,6 @@ function takepart_calendar_menu() {
 }
 
 
-
-
-
 /*
  * Menu callback for RSS:
  */
@@ -38,8 +35,9 @@ function _takepart_calendar_xml($node) {
       $itemdate = $calarray[$i]['start'];
       $itemdate =  _takepart_calendar_xml_parsedate($itemdate);
 
-      if(round((strtotime($itemdate) - time()) / 86400) == 1) {
-        
+      
+      if((strtotime(date("Y-m-d")) - strtotime($itemdate)) / (60 * 60 * 24) == -1) {        
+
         $subtextimage = _takepart_calendar_xml_getimgs($calarray[$i]['subtext']);
         
         if($subtextimage == $calarray[$i]['subtext']) {
@@ -50,7 +48,7 @@ function _takepart_calendar_xml($node) {
         }
 
         $xml .= '<action>';
-        $xml .= '<todays_date>'.strtotime($itemdate).'</todays_date>';
+        $xml .= '<todays_date>'. strtotime(date("Y-m-d")) .'</todays_date>';
         $xml .= '<topic_name>' . $subtext . '</topic_name>';
         $xml .= '<topic_icon>' . $subtextimage . '</topic_icon>';
         $xml .= '<action_title>'. _takepart_calendar_xml_fixtring($calarray[$i]['title']) . '</action_title>';

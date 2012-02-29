@@ -176,10 +176,12 @@ img.photo, .gallery-item img {
 
 #join-login-top {
     font-size: 13px;
-    padding: 0 5px 0 0;
+    padding: 0;
     float: right;
     overflow: visible;
     margin-top:5px;
+    width:auto;
+    white-space: nowrap;
 }
 
 #join-login-top #user-nav {
@@ -192,7 +194,7 @@ img.photo, .gallery-item img {
     margin-top:3px;
 }
 .logged-in #user-nav li {
-    margin-right:10px;
+    margin-left:10px;
 }
 
 
@@ -220,7 +222,7 @@ a.user-menu-register  {
 }
 
 #join-login-top .join-login {
-    margin-right: 10px;
+    margin-left: 0;
 }
 
 #join-login-top span.fb {
@@ -282,11 +284,6 @@ ul#top-follow li.rss a {
 .header-right-top {
     float: right;
     width: 865px;
-}
-
-#nav-wrap{
-    margin: 0 0 5px 0;
-    float: left;
 }
 
 #nav-logo-arrow {
@@ -1221,7 +1218,6 @@ div.takepart_addthis_footer div.addthis_toolbox {
 div.takepart_addthis_leftpanel .addthis_toolbox .custom_images a img {
     float: left;
     margin-right: 15px;
-
 }
 
 div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone div {
@@ -1229,17 +1225,7 @@ div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone 
 }                                                       
 
 div.takepart_addthis_leftpanel {
-    margin: 0 0 8px 6px;
-}
-
-div.takepart_addthis_leftpanel div.addthis_toolbox a {
-    width: 100%;
-    display: block;
-    margin-bottom: 8px;
-}
-
-div.takepart_addthis_leftpanel div.addthis_toolbox {
-    float: left;
+    margin: 0 0 8px 0;
 }
 
 div.takepart_addthis_footer {
@@ -1324,7 +1310,7 @@ div.takepart_addthis_footer div.buttons {
 /***** Comments ******/
 
 #comments {
-    margin-bottom: 45px;
+    margin: 0 0 45px 0;
 }
 
 #comments h2 {
@@ -1394,11 +1380,6 @@ span.comment-num {
     width: 21px;
 }
 
-#comments .comments-header {
-    border-bottom: 1px solid #D9E7EE;
-    padding-bottom: 8px;
-    margin-bottom:12px;
-}
 
 #comments h2.comment-form {
     border-bottom: 3px solid black;
@@ -1855,7 +1836,7 @@ h2.title a{
     border:none;
 }
 .embed-action-wrapper .embed-action a {
-    color: #302009;
+    color: #000;
     font-size: 18px;
     font-weight: bold;
     padding: 3px 0 0 0;
@@ -2412,87 +2393,9 @@ body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #lef
     clear: both;
 }
 
-/** Campaign View **/
-
-.view-campaigns {
-
-}
-
-.view-campaigns.view-display-id-block_1 {
-    margin: 30px 0;
-}
-
-.node-type-section-front-wide .main-content .view-campaigns.view-display-id-block_1 {
-    margin: 10px 0;
-}
-.view-campaigns.view-display-id-block_1 .views-row {
-    display: inline-block;
-    margin: 0 5px 0 0;
-    margin-bottom: 30px;
-    overflow: hidden;
-    padding: 0;
-    vertical-align: top;
-    width: 150px;
-}
-
-.view-campaigns.view-display-id-block_1 .views-row .views-field-title a {  
-    color: black;
-    display: inline-block;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.view-campaigns.view-display-id-block_1 .views-row .views-field-title a:hover {
-    color: #1CA9E7;
-}
-
-.view-campaigns.view-display-id-block_1 .views-row .views-field-field-tp-campaign-subheadline {
-    font-size: 14px;
-}
-
-.view-campaigns.view-display-id-block_1 .views-row.views-row-odd {
-
-}
-
-.view-campaigns.view-display-id-block_1 .views-row.views-row-odd.views-row-first {
-
-}
-
-.view-campaigns.view-dom-id-2 .view-content,
-.view-campaigns.view-dom-id-3 .view-content {
-    margin: 30px 0;
-}
-
-.node-type-section-front-wide .view-campaigns.view-dom-id-2 .view-content,
-.node-type-section-front-wide .view-campaigns.view-dom-id-3 .view-content {
-    margin:0;
-}
-
-.view-campaigns.view-dom-id-2 .view-content ul,
-.view-campaigns.view-dom-id-3 .view-content ul{  
-    margin: 0;
-    padding: 0;
-}
-
-.view-campaigns.view-dom-id-2 .view-content ul li,
-.view-campaigns.view-dom-id-3 .view-content ul li {
-    display: inline-block;
-    margin: 0 5px 30px 0;
-    padding: 0;
-    vertical-align: top;
-    width: 150px;
-}
-
-.view-campaigns.view-dom-id-2 .view-content ul li a,
-.view-campaigns.view-dom-id-3 .view-content ul li a {
-    font-size: 16px;
-}
-
 body.node-type-takepart-campaign .node-takepart-campaign h2.title{
     display: none;
 }
-
 
 body.node-type-takepart-campaign .region-sidebar-first {  
     left: -12px;
@@ -2529,10 +2432,6 @@ body.node-type-takepart-campaign .region-sidebar-first {
 
 .field-name-field-tp-campaign-sponsors .field-items {
 
-}
-
-.field-name-field-tp-campaign-alliances {
-    margin-bottom: 30px;
 }
 
 .campaign-alliances-wrapper {

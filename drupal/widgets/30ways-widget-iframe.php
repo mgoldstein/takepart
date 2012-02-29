@@ -26,10 +26,19 @@ if (!$theXml) {
 
 # parse xml
 $todays_date =  $theXml->action[0]->todays_date;
-$topic_icon = $theXml->action[0]->topic_icon;
 $action_title = $theXml->action[0]->action_title;
 $action_page = $theXml->action[0]->action_page;
 $calendar_page = $theXml->action[0]->calendar_page;
+
+try {
+  $topic_icon = "<img src=\"" . $theXml->action[0]->topic_icon->img->attributes()->src .
+  "\" width=\"" . $theXml->action[0]->topic_icon->img->attributes()->width .
+  "\" height=\"" . $theXml->action[0]->topic_icon->img->attributes()->height .
+  "\" border=\"" . $theXml->action[0]->topic_icon->img->attributes()->border .
+  "\" alt=\"" . $theXml->action[0]->topic_icon->img->attributes()->alt . "\"/>";
+} catch (Exception $e) {
+    $topic_icon = "";
+}
 
 # fix timestamp
 $today = strtoupper(date("M j",((int)($todays_date))));
@@ -59,7 +68,7 @@ body {
 #dateBox {
 	position: absolute;
 	top: 54px;
-	right: 15px;
+	left: 225px;
 	padding: 5px 7px 4px 7px;
 	background-color: #99BBCC;
 	color: #FFFFFF; 
