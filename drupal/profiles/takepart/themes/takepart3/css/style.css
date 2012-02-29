@@ -836,13 +836,15 @@ h1.title a:hover {
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 10px transparent;
     width:100%;
 }
-.node-type-takepart-campaign .main-content h2 {
+.node-type-takepart-campaign .main-content h2,
+.node-type-takepart-campaign .region-highlighted h2{
     color:#99bbcc;
     font-size: 22px;
     line-height: 120%;
     font-weight: bold;
+    background: none transparent;
 }
-.node-type-takepart-campaign h2, 
+ 
 .node-type-topic-front h1.title,
 .page-taxonomy-term h1.title,
 .main-content .node-topic-front h2.title {
