@@ -1635,8 +1635,8 @@ body.node-type-takepart-campaign .main-content #left-rail {
 
 .field-name-field-article-main-image,
 .field-name-field-blogpost-main-image,
-.field-name-field-action-main-image  {
-    margin-bottom: 2em;
+.field-name-field-action-main-image {
+    margin: 6px 15px 24px 0;
 }
 
 

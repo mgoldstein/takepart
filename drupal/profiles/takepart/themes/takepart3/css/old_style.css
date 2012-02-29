@@ -3031,10 +3031,7 @@ body.node-type-takepart-group #page {
 /*
  * Actions content type
 */
-.field-name-field-action-main-image {
-    float:left;
-    margin-right:15px;
-}
+
 #take-action-btn {
     border:none;
     background:#FDAB30;
