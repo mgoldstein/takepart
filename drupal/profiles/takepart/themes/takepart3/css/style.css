@@ -166,11 +166,12 @@ a:hover {
 }
 
 #footer {
-    border-top:1px dotted #000;
-    margin-bottom:0px;
-    background:#FFF;
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin-bottom: 0;
+    margin-left: -10px;
     overflow: auto;
-    width:1000px;
+    padding: 0 20px;
+    width: 960px;
 }
 
 .col-140
