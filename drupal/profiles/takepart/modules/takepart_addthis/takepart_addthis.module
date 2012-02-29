@@ -72,6 +72,7 @@ function takepart_addthis_block_info(){
   takepart_addthis_rightrail_block_info($zeBlocks);
   takepart_addthis_simple_block_info($zeBlocks);
   takepart_addthis_petition_block_info($zeBlocks);
+  takepart_addthis_ajax_form_block_info($zeBlocks);
 
   return $zeBlocks;
 }
@@ -85,6 +86,7 @@ function takepart_addthis_theme(){
   takepart_addthis_rightrail_theme($ret_arr);
   takepart_addthis_simple_theme($ret_arr);
   takepart_addthis_petition_theme($ret_arr);
+  takepart_addthis_ajax_form_theme($ret_arr);
   return $ret_arr;
 }
 
@@ -107,6 +109,9 @@ function takepart_addthis_block_view($delta = ''){
       break;
     case 'addthis_petition':
       $ret_view = takepart_addthis_petition_block_view($delta);
+      break;
+    case 'addthis_ajax_form':
+      $ret_view = takepart_addthis_ajax_form_block_view($delta);
       break;
   }
   
@@ -133,6 +138,9 @@ function takepart_addthis_block_configure($delta = ''){
     case 'addthis_petition':
       $ret_form = takepart_addthis_petition_block_configure($delta);
       break;
+    case 'addthis_ajax_form':
+      $ret_form = takepart_addthis_ajax_form_block_configure($delta);
+      break;
   }
   
   return $ret_form;
@@ -155,6 +163,9 @@ function takepart_addthis_block_save($delta = '', $edits = array()){
       break;
     case 'addthis_petition':
       takepart_addthis_petition_block_save($delta, $edits);
+      break;
+    case 'addthis_ajax_form':
+      takepart_addthis_ajax_form_block_save($delta, $edits);
       break;
   }
 }
@@ -388,4 +399,164 @@ function takepart_addthis_petition_block_configure($delta){
 function takepart_addthis_petition_block_save($delta, $edits){
   if($delta == 'addthis_petition'){
   }
+}
+
+/******************
+ * addthis_ajax_form section
+ */
+ 
+function takepart_addthis_ajax_form_block_info(&$blocks){
+  $blocks['addthis_ajax_form'] = array(
+    'info' => t('AddThis - ajax form'),
+  );
+}
+
+function takepart_addthis_ajax_form_theme(&$theme_funcs){
+  $theme_funcs['takepart_addthis_ajax_form_block'] = array(
+    'variables' => array(
+      'share_form' => NULL,
+    ),
+    'template' => 'theme/takepart-addthis-ajax-form-block',
+  );
+}
+
+function takepart_addthis_ajax_form_block_view($delta = ''){
+  $block = array();
+  //there is only one delta here, switch anyway
+  if($delta == 'addthis_ajax_form'){
+    //create the block
+    $block['subject'] = t('');
+    $block['content'] = theme(
+      'takepart_addthis_ajax_form_block', 
+      array(
+        'share_form' => drupal_get_form('_takepart_addthis_ajax_form'),
+      )
+    );
+    return $block;
+  }
+}
+
+function takepart_addthis_ajax_form_block_configure($delta){
+  $form = array(); 
+  if($delta == 'addthis_ajax_form'){
+  }
+  return $form;
+}
+
+function takepart_addthis_ajax_form_block_save($delta, $edits){
+  if($delta == 'addthis_ajax_form'){
+  }
+}
+
+function _takepart_addthis_ajax_form($form, &$form_state, $default_email) {
+  
+  $mail = $_COOKIE['petition_signed_as'];
+  if (! valid_email_address($mail)) {
+    $mail = '';
+  }
+  
+  $form['share_result'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div id="share_result">',
+    '#suffix' => '</div>',
+    '#markup' => "",
+  );
+    
+  $form['share_with'] = array(
+    '#title' => t('Share via E-mail'),
+    '#type' => 'textarea',
+    '#resizable' => FALSE,
+    '#default_value' => '',
+  );
+
+  $form['your_email'] = array(
+    '#title' => t('Your E-mail'),
+    '#type' => 'textfield',
+    '#default_value' => $mail,
+    '#size' => 30,
+  );
+
+  $form['your_name'] = array(
+    '#title' => t('Your Name'),
+    '#type' => 'textfield',
+    '#default_value' => '',
+    '#size' => 30,
+  );
+
+  $form['box'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div id="box">',
+    '#suffix' => '</div>',
+    '#markup' => "Subject: Let's do this Amazing Cause Together!",
+  );
+    
+  $form['your_message'] = array(
+    '#title' => t('Your Message:'),
+    '#type' => 'textarea',
+    '#resizable' => FALSE,
+    '#default_value' => '',
+  );
+  
+  $form['actions'] = array(
+    '#weight' => 100,
+  );
+
+  $form['actions']['submit'] = array(
+    '#type' => 'image_button',
+    '#src' => drupal_get_path('module', 'takepart_petition') . '/images/petition-submit.png',
+    '#attributes' => array(
+      'alt' => t('Submit'),
+    ),
+    '#ajax' => array(
+      'callback' => '_takepart_addthis_ajax_form_callback',
+      'wrapper' => 'share_result',
+      'name' => 'submit1',
+    ),
+  );
+
+  return $form;
+}
+
+function _takepart_addthis_ajax_form_callback($form, $form_state) {
+
+  $errors = array();
+
+  $share_list = array();
+  $share_with = $form_state['values']['share_with'];
+  foreach (split(',', $share_with) as $share_email) {
+    if (valid_email_address(trim($share_email))) {
+      $share_list[] = trim($share_email);
+    } else {
+      $errors[] = 'Share via E-mail must be a comma separated list of email addresses.';
+      break;
+    }
+  }
+
+  $your_email = trim($form_state['values']['your_email']);
+  if (! valid_email_address($your_email)) {
+    $errors[] = 'Your E-Mail is required.';
+  }
+  
+  $your_name = trim($form_state['values']['your_name']);
+  if (strlen($your_name) == 0) {
+    $errors[] = 'Your Name is required.';
+  }
+
+  $element = $form['share_result'];
+  if (count($errors) == 0) {
+    $element['#markup'] = "shared";
+  } else {
+	$markup  = '<div id="console">';
+	$markup .= '<div class="limiter clearfix">';
+	$markup .= '<div class="messages error">';
+	$markup .= '<h2 class="element-invisible">Error message</h2>';
+	$markup .= '<ul>';
+	foreach ($errors as $error) {
+	  $markup .= '<li>'. $error .'</li>';
+	}
+	$markup .= '</ul></div></div></div>';
+    $element['#markup'] = $markup;
+  }
+
+  return $element;
 }

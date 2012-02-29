@@ -747,7 +747,7 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
   }
   
   $resp = _takepart_bsd_apipost("signup/process_signup", $signup);
-    
+
   // only add the signature if it doesn't already exist
   $already_signed = db_query(
     "SELECT count(mail) FROM takepart_petition_signature WHERE mail = :mail", 
@@ -768,6 +768,9 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
   
   $cookie_name = $petition_form->name .'_form_signed';
   setcookie($cookie_name,1,time() + (86400 * 365));
+  
+  // store the email from the signature for use in the thank you form
+  setcookie('petition_signed_as',$mail,time()+(86400 * 365));
 
   $thank_url = variable_get('water_bill_of_rights_thank_you');
   drupal_goto($thank_url);
