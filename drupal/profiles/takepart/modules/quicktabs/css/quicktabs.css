@@ -17,6 +17,7 @@ ul.quicktabs-tabs li {
   border-top-right-radius: 15px;
   white-space: nowrap;
   float: left;
+  padding-bottom: 0;
 }
 
 
