@@ -1654,3 +1654,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_digg {
 }
+
+div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
+    float: left !important;
+}
