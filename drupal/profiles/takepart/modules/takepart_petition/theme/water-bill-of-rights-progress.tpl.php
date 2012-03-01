@@ -1,5 +1,3 @@
-<div>
-  <div class="tp-pre-progress-heading">Water Bill of Rights</div>
   <div class="tp-pet-progress-block">
   <div class="tp-pet-progress-image">
     <img src="/profiles/takepart/modules/takepart_petition/images/Water_Logo_300x160.png" />
@@ -17,4 +15,3 @@
     </div>
   </div>
   </div>
-</div>

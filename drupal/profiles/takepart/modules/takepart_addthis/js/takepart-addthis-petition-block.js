@@ -3,7 +3,7 @@ jQuery(document).ready(function() {
   var shareattach = (function() {
   
     //Attach tracking to share icons
-    jQuery('.tp-pet-event-sharebar div a').click(function() { 
+    jQuery('.tp-pet-share-button-bar div a').click(function() { 
     
       var link_title = jQuery(this).attr('title');
       var title = convert_title(link_title);
@@ -19,3 +19,4 @@ jQuery(document).ready(function() {
   });
   shareattach();
 });
+	
