@@ -1941,3 +1941,6 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
 .node-type-topic-front .block-boxes-title-secondary-features .views-field-field-promo-text .field-content {
     padding:0 10px 10px 10px;
 }
+.block-boxes-view-name-video .views-field-field-promo-text {
+    font-size: 14px;
+}
