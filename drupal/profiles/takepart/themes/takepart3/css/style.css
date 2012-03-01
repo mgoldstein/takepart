@@ -211,8 +211,6 @@ body.two-sidebars #content, body.sidebar-first #content
     width:878px;
     float:left;
     margin-left:124px;
-    position: relative;
-    top:14px;
 }
 
 #nav-wrap{
