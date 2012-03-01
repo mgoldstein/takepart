@@ -1980,3 +1980,7 @@ div.views-content-field-gallery-images img {
 .block-boxes-title-features .views-field-field-promo-text .field-content {
 	padding-bottom: 4px;
 }
+
+#tptv-more-video {
+	text-transform: inherit;
+}
