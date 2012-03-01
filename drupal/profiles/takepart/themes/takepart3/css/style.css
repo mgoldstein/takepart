@@ -1714,3 +1714,6 @@ div.views-content-field-gallery-images img {
     padding: 20px 20px 35px !important;
 }
 
+.multipage-campaign #footer {
+    margin-left: 0px
+}
