@@ -455,7 +455,7 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $sig
     '#size' => 60,
     '#maxlength' => 128,
     //'#attributes' => array('onclick' => 'this.value="blah.'.mt_rand(100, 10000).'@blah.com"; takepart_input_box_tweak(this)'),
-    '#attributes' => array('onclick' => 'takepart_input_box_tweak(this)'),
+    //'#attributes' => array('onclick' => 'takepart_input_box_tweak(this)'),
   );
   
   $form['campaign_id'] = array(

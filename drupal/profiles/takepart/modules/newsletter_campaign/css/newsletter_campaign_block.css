@@ -9,7 +9,6 @@
   /* border: 1px solid #d3d3d3; */
   width: 180px;
   height: 25px;
-  color: #b3b3b3;
   margin-bottom: 0px;
   padding: 0 4px;
   font-size: 12px;
@@ -33,6 +32,10 @@
 .takepart-newsletter-form .form-item-email {
     float:left;
     margin:0;
+}
+
+.takepart-newsletter-empty {
+  color: #b3b3b3;
 }
 
 #right-rail .block-newsletter-campaign h2 {

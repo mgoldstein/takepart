@@ -12,9 +12,15 @@ function takepart_newsletter_isValidEmailAddress(emailAddress, formId) {
 }
 
 jQuery(document).ready(function() {
-    jQuery("input#edit-email").val("Your Email");
-    jQuery("input#edit-email").blur(function() {
-        jQuery("input#edit-email").val("Your Email");
-    })     
-}
-);
+  jQuery("input#edit-email").val("Your Email").addClass('takepart-newsletter-empty');
+  jQuery("input#edit-email").focus(function() {
+    if (jQuery(this).val() == 'Your Email') {
+      jQuery(this).val('').removeClass('takepart-newsletter-empty');
+    }
+  })
+  jQuery("input#edit-email").blur(function() {
+    if (jQuery(this).val() == '') {
+      jQuery(this).val('Your Email').addClass('takepart-newsletter-empty');
+    }
+  })     
+});
