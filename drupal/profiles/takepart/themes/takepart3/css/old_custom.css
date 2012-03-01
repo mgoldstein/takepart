@@ -954,7 +954,7 @@ p.search-performance{
 }
 .view-author-contributions .views-row{
     overflow:hidden;
-    border-bottom: 1px dotted silver;
+    border-bottom: 1px solid #D9E7EE;
     margin: 0 0 12px;
     padding: 0 0 12px;
 }
