@@ -967,11 +967,10 @@ p.search-performance{
     border:none;
 }
 .view-author-contributions .views-field-field-promo-text {
-    margin-top: 10px;
-    margin-bottom:0;
+    margin:0;
 }
 .view-author-contributions .views-field-type {
-    color: #8DC547;
+    color: #000;
     font-size: 12px;
     text-transform: uppercase;
 }

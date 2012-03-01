@@ -1919,7 +1919,7 @@ h2.title a{
     padding: 0 10px 0 20px;
 }
 
-.view-article-date,
+
 .submitted-wrapper .article-date {
     background: url('../images/sprite-horizontal.gif') no-repeat;
     background-position: 0 -395px;
@@ -1928,6 +1928,10 @@ h2.title a{
     padding: 0 10px 0 20px;
 }
 
+.profile .view-article-date {
+    background: none transparent;
+    padding: 0;
+}
 .submitted-wrapper .article-comment-count {
     background: url('../images/sprite-horizontal.gif') no-repeat;
     background-position: 0 -410px;
@@ -3198,7 +3202,7 @@ div.tabs ul.tabs.primary li a:hover, ul.links li a:hover {
     margin-left :0px;
 }
 .view-author-contributions .views-field {
-    /*  margin-left :110px; */
+    line-height: 18px;
 }
 .view-author-contributions .views-field-field-promo-text {
     margin-top:10px;
