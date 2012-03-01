@@ -30,15 +30,21 @@ function takepart3_preprocess_html(&$vars){
   while ((list($key, $value) = each($nodes)) && (!$header_override)) {
     if(is_numeric($key)) {
       try {
-        if (array_key_exists('field_html_title', $value['body']['#object'])) {
-          $header_override = $value['body']['#object']->field_html_title;
+        if(isset($value['body'])) {
+          if (array_key_exists('field_html_title', $value['body']['#object'])) {
+            $header_override = $value['body']['#object']->field_html_title;
+          }
         }
-        if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
-          $header_override = $value['field_html_title']['#object']->field_html_title;
-          unset($vars['page']['content']['system_main']['nodes'][$key]['field_html_title']);
+        if(isset($value['field_html_title'])) {
+          if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
+            $header_override = $value['field_html_title']['#object']->field_html_title;
+            unset($vars['page']['content']['system_main']['nodes'][$key]['field_html_title']);
+          }
         }
-        if (array_key_exists('field_html_title', $value['#node'])) {
-          $header_override = $value['#node']->field_html_title;
+        if(isset($value['#node'])) {
+          if (array_key_exists('field_html_title', $value['#node'])) {
+            $header_override = $value['#node']->field_html_title;
+          }
         }
       } catch (Exception $e) {
         $header_override = false;
@@ -802,17 +808,36 @@ function _get_author($nid) {
 * Helper functions for header / footer.
 */
 function _tp3_fill_template_vars(&$variables) {
-  if(!$variables['top_nav']) $variables['top_nav'] = _render_tp3_main_menu();
-  if(!$variables['hottopic_nav']) $variables['hottopic_nav'] = _render_tp3_hottopics_menu();
-  if(!$variables['film_camp_nav']) $variables['film_camp_nav'] = _render_tp3_film_campaign_menu();
-  if(!$variables['friends_takepart_nav']) $variables['friends_takepart_nav'] = _render_tp3_friends_takepart_menu();
-  if(!$variables['takepart_topics_nav']) $variables['takepart_topics_nav'] = _render_tp3_topics_takepart_menu();
-  if(!$variables['corporate_links_nav']) $variables['corporate_links_nav'] = _render_tp3_corporate_links_menu();
-  if(!$variables['user_nav']) $variables['user_nav'] = _render_tp3_user_menu();
-  if(!$variables['takepart_theme_path']) $variables['takepart_theme_path'] = drupal_get_path('theme', 'takepart3');
-  if(!$variables['search_takepart_form']) $variables['search_takepart_form'] = _render_tp3_header_search_form();
-  if(!$variables['follow_us_links']) $variables['follow_us_links'] = theme('takepart3_follow_us_links', $variables);
-
+  if((!isset($variables['top_nav'])) || (!$variables['top_nav'])){ 
+      $variables['top_nav'] = _render_tp3_main_menu();
+  }
+  if((!isset($variables['hottopic_nav'])) || (!$variables['hottopic_nav'])) {
+      $variables['hottopic_nav'] = _render_tp3_hottopics_menu();
+  }
+  if((!isset($variables['film_camp_nav'])) || (!$variables['film_camp_nav'])) {
+      $variables['film_camp_nav'] = _render_tp3_film_campaign_menu();
+  }
+  if((!isset($variables['friends_takepart_nav'])) || (!$variables['friends_takepart_nav'])) {
+      $variables['friends_takepart_nav'] = _render_tp3_friends_takepart_menu();
+  }
+  if((!isset($variables['takepart_topics_nav'])) || (!$variables['takepart_topics_nav'])) { 
+    $variables['takepart_topics_nav'] = _render_tp3_topics_takepart_menu();
+  }
+  if((!isset($variables['corporate_links_nav'])) || (!$variables['corporate_links_nav'])) {
+    $variables['corporate_links_nav'] = _render_tp3_corporate_links_menu();
+  }
+  if((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
+    $variables['user_nav'] = _render_tp3_user_menu();
+  }
+  if((!isset($variables['takepart_theme_path'])) || (!$variables['takepart_theme_path'])) {
+    $variables['takepart_theme_path'] = drupal_get_path('theme', 'takepart3');
+  }
+  if((!isset($variables['search_takepart_form'])) || (!$variables['search_takepart_form'])) {
+    $variables['search_takepart_form'] = _render_tp3_header_search_form();
+  }
+  if((!isset($variables['follow_us_links'])) || (!$variables['follow_us_links'])) {
+    $variables['follow_us_links'] = theme('takepart3_follow_us_links', $variables);
+  }
 }
 
 function _render_tp3_header(&$params) {
