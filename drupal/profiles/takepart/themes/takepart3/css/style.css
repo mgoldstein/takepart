@@ -1955,3 +1955,6 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
 .profile h2.element-invisible {
     display: none;
 }
+#right-rail .block-newsletter-campaign h2 span {
+    padding:0;
+}
