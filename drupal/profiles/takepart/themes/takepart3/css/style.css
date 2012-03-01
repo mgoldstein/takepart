@@ -1916,3 +1916,28 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
     font-weight: bold;
     line-height: 22px;
 }
+.main-content .block-boxes-current-video {
+    margin-bottom: 20px;
+}
+.node-type-topic-front .block-boxes-title-secondary-features {
+    background-color: #EFF3F5;
+    padding:5px;
+}
+
+.node-type-topic-front .block-boxes-title-secondary-features .views-row {
+    margin:5px;
+}
+
+.node-type-topic-front .block-boxes-title-secondary-features .views-field-field-promo-text,
+.node-type-topic-front .block-boxes-title-secondary-features .views-field-php,
+.node-type-topic-front .block-boxes-title-secondary-features .views-field-field-thumbnail {
+    background-color: #FFF;
+}
+
+.node-type-topic-front .block-boxes-title-secondary-features .views-field-php  .field-content {
+    padding:0 10px 2px 10px;
+    display: block;
+}
+.node-type-topic-front .block-boxes-title-secondary-features .views-field-field-promo-text .field-content {
+    padding:0 10px 10px 10px;
+}
