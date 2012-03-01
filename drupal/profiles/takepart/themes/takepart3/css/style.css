@@ -1280,6 +1280,7 @@ h1.title a:hover {
     font-size: 16px;
     line-height: 24px;
     color: #000;
+    font-family: "NewsGothicBoldCondensed";
     font-weight: bold;
     background: none;
 }
@@ -1292,6 +1293,7 @@ h1.title a:hover {
     font-size: 16px;
     line-height: 24px;
     color: #000;
+    font-family: "NewsGothicBoldCondensed";
     font-weight: bold;
     background: none;
 }
