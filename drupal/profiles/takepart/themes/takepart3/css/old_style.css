@@ -1231,7 +1231,6 @@ div.takepart_addthis_leftpanel {
 div.takepart_addthis_footer {
     padding-top: 0;
     margin-bottom: 0;
-    border-bottom: 1px solid #d9e7ee;
     width: 100%;
     float: right;
 }
@@ -3053,9 +3052,6 @@ body.node-type-takepart-group #page {
     cursor:pointer;
 }
 
-/*
- *
-*/
 div.jcarousel-container {
     width: 640px;
 }

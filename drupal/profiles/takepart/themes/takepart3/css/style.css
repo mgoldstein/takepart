@@ -1306,8 +1306,8 @@ h1.title a:hover {
 /** Topics **/
 .node-topics
 {
-    border-top:none;
-    border-bottom:0px dotted #555;
+    border-top:1px solid #D9E7EE;
+    border-bottom:0;
     clear:both;
     padding:14px 25px 14px 70px;
     margin-top:0;
