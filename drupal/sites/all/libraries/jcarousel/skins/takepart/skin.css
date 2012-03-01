@@ -3,7 +3,7 @@
 }
 
 .jcarousel-skin-takepart .jcarousel-direction-rtl {
-	direction: rtl;
+    direction: rtl;
 }
 
 .jcarousel-skin-takepart .jcarousel-container-horizontal {
@@ -37,12 +37,12 @@
 }
 
 .jcarousel-skin-takepart .jcarousel-item-horizontal {
-	margin-left: 0;
+    margin-left: 0;
     margin-right: 10px;
 }
 
 .jcarousel-skin-takepart .jcarousel-direction-rtl .jcarousel-item-horizontal {
-	margin-left: 10px;
+    margin-left: 10px;
     margin-right: 0;
 }
 

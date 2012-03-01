@@ -376,7 +376,7 @@ ul,ol
     height:68px;
     top:180px;
     position:absolute;
-    z-index:10000;
+    z-index:100000;
 }
 
 #views_slideshow_slide_counter_photo_gallery-block
@@ -1723,7 +1723,7 @@ body.node-type-blog-front .node-blog-front h2.title {
 
 .jcarousel-skin-takepart .jcarousel-prev-horizontal,
 .jcarousel-skin-takepart .jcarousel-next-horizontal {
-    top: 0px !important;	
+    top: 0px !important;    
 }
 /*
 .jcarousel-skin-takepart .jcarousel-prev-horizontal:hover {
@@ -1771,7 +1771,7 @@ body.node-type-blog-front .node-blog-front h2.title {
 }
 
 .region-highlighted div.takepart_addthis_leftpanel div.addthis_toolbox a {
-	margin-bottom: 4px;
+    margin-bottom: 4px;
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox {
@@ -1859,7 +1859,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
 }
 
 #right-rail .field-name-field-blog-view .views-field-title a:hover {
-    color: #1CA9E7;	
+    color: #1CA9E7; 
 }
 
 #header-wrapper ul.menu {
@@ -1880,7 +1880,8 @@ div.views-content-field-gallery-images:hover {
 div.views-content-field-gallery-images {
     padding-top: 3px;
     padding-left:3px;
-    padding-bottom:-1px
+    padding-bottom:-1px;
+    margin-top: -3px;
 }
 
 div.views-content-field-gallery-images:hover img {
@@ -1920,17 +1921,17 @@ div.views-content-field-gallery-images img {
 }
 
 .views-content-field-gallery-images img{
-	
+    
 }
 
 .views-content-field-gallery-images img:hover{
-	
+    
 }
 
 .block-boxes-delta-page_title_h1 h1.title span {
     color: #000000;
     font-size: 36px;
-    line-height: 100%;	
+    line-height: 100%;  
 }
 
 .field-name-field-subhead .field-item {
@@ -1982,9 +1983,9 @@ div.views-content-field-gallery-images img {
     padding:0;
 }
 .block-boxes-title-features .views-field-field-promo-text .field-content {
-	padding-bottom: 4px;
+    padding-bottom: 4px;
 }
 
 #tptv-more-video {
-	text-transform: inherit;
+    text-transform: inherit;
 }
