@@ -377,6 +377,36 @@ function takepart_addthis_petition_block_view($delta = ''){
   //there is only one delta here, switch anyway
   if($delta == 'addthis_petition'){
 
+    $meta_data = array(
+      '#tag' => 'meta',
+      '#type' => 'html_tag',
+      '#attributes' => array(
+        'property' => 'og:title',
+        'content' => 'Sign the WATER BILL OF RIGHTS',
+      ),
+    );
+    drupal_add_html_head($meta_data, 'takepart_addthis_petition_block:facebook-meta-title-tag');
+
+    $meta_data = array(
+      '#tag' => 'meta',
+      '#type' => 'html_tag',
+      '#attributes' => array(
+        'property' => 'og:description',
+        'content' => "Join TakePart.com and some of America's most prominent environmental nonprofits in demanding clean drinking water and upgraded infrastructure for everyone in the U.S.",
+      ),
+    );
+    drupal_add_html_head($meta_data, 'takepart_addthis_petition_block:facebook-meta-description-tag');
+
+    $meta_data = array(
+      '#tag' => 'meta',
+      '#type' => 'html_tag',
+      '#attributes' => array(
+        'property' => 'og:image',
+        'content' => url(drupal_get_path('module','takepart_addthis') . '/images/water_thumb.jpg', array('absolute' => TRUE)),
+      ),
+    );
+    drupal_add_html_head($meta_data, 'takepart_addthis_petition_block:facebook-meta-image-tag');
+
     drupal_add_css(drupal_get_path('module', 'takepart_addthis') . '/css/takepart-addthis-petition-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
 
     drupal_add_js(drupal_get_path('module', 'takepart_addthis') . '/js/takepart-addthis-petition-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
