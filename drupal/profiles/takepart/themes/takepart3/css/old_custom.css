@@ -17,12 +17,6 @@ body.sidebar-first #left-rail{
 .node-type-takepart-group .region-highlighted{
     padding:35px 0px 0;
 }
-.node-type-openpublish-photo-gallery .page,
-.node-type-takepart-group .page {
-    padding: 20px 20px 35px 0px !important;
-}
-
-
 
 body.node-type-takepart-group #content,
 body.node-type-takepart-group #left-rail{
@@ -245,7 +239,7 @@ body.page-taxonomy-term h1{
 .block-box-secondary .view-featured-items .views-row, 
 .block-boxes-current-featured_items .view-dom-id-2 .views-row {
     margin-right: 15px;
-    width: 196px;
+    width: 200px;
     float:left;
     display: block;
 }
@@ -253,11 +247,10 @@ body.page-taxonomy-term h1{
 .block-boxes-current-featured_items .view-dom-id-2 .views-field-field-thumbnail img {
     border: none;
     height: 160px;
-    width: 194px;
+    width: 200px;
 }
 
 /* photo page */
-
 .block-boxes-current-photo_galleries h2 {
     background: none repeat scroll 0 0 #CCCCCC;
     margin: 25px 0 7px;
@@ -431,7 +424,7 @@ body.page-taxonomy-term h1{
 div[class*='block-boxes-bid-views-video-block'] h2,
 div[class*='block-boxes-delta-video-block'] h2 {
     background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 0 transparent;
-    margin: 12px 0;
+    margin: 0 0 10px 0;
     color: #99BBCC;
 }
 .block-boxes-current-video h2 span,
@@ -459,17 +452,10 @@ div[class*='block-boxes-delta-video-block'] h2 span{
 .view-video .views-row-last{
     margin-right: 0;
 }
-.view-video .views-field-field-thumbnail{
-    height: 155px;
-    width: 207px;
-}
 .view-video .views-field-field-thumbnail img{
     display:block;
     border: none;
-    height: 155px;
-    width: 207px;
 }
-
 .node-openpublish-video .field-name-field-promo-headline,
 .view-video .views-field-field-promo-headline {
     font-size: 20px;
@@ -477,14 +463,12 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     margin: 10px 0 0 0;
 }
 .view-display-id-block_8 .jcarousel-item {
-    margin: 0 8px 0 0;
-    width: 207px !important;
+    margin: 0 9px 0 0;
+    width: 206px !important;
 }
-
 .drupal-embed .node-openpublish-photo-gallery .field-name-field-photo-gallery-slideshow{
     margin:8px 0 0 0;
 }	
-
 .drupal-embed .node-openpublish-photo-gallery .views-field{
     margin:0;
     overflow: hidden;
@@ -558,6 +542,9 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     margin:0 0 10px 0;	
 }
 
+.node-type-section-front .views-view-grid .views-field-field-promo-text {
+    margin:0;
+}
 .node-openpublish-video .field-name-field-promo-text {
     padding-bottom: 5px; 
     margin-bottom: 10px;
@@ -964,9 +951,9 @@ p.search-performance{
 }
 .view-author-contributions .views-row{
     overflow:hidden;
-    border-bottom: 1px dotted silver;
-    margin: 0 0 20px;
-    padding: 0 0 15px;
+    border-bottom: 1px solid #D9E7EE;
+    margin: 0 0 12px;
+    padding: 0 0 12px;
 }
 
 .view-author-contributions .views-field-field-thumbnail{	
@@ -977,11 +964,10 @@ p.search-performance{
     border:none;
 }
 .view-author-contributions .views-field-field-promo-text {
-    margin-top: 10px;
-    margin-bottom:0;
+    margin:0;
 }
 .view-author-contributions .views-field-type {
-    color: #8DC547;
+    color: #000;
     font-size: 12px;
     text-transform: uppercase;
 }
@@ -1165,7 +1151,7 @@ div.takepart_addthis_rightrail .button_container a.addthis_button_google_plusone
 div.takepart_addthis_footer span#addthis_footer_sharethis {
     color: #000;
     font-size: 14px;
-    padding-top: 3px;
+    padding-top: 2px;
     font-weight: bold;
     text-transform: capitalize;
     float: right;
@@ -1183,6 +1169,11 @@ div.takepart_addthis_footer span#addthis_footer_sharethis {
 .takepart_addthis_footer a.at300b{
     padding: 0;
     margin-left: 6px;
+}
+
+.takepart_addthis_footer a.addthis_button_email {
+    position: relative;
+    top:-1px;
 }
 .takepart_addthis_footer a.addthis_button_facebook span{
     background: url("../images/icon_facebook.png") no-repeat scroll 0 0 transparent;
@@ -1491,11 +1482,7 @@ in take-part feature */
 #join-login-box .join-login {
     margin-right: 10px;
 }
-#block-boxes-user-not-a-member-join{border: 5px solid #000000;padding: 0px 10px 10px 41px}
-#block-boxes-user-not-a-member-join h2 span {
-    background-color: #1CA9E7;
-    display: block;
-    margin:10px 10px 10px -46px;
-    padding: 8px 10px;
+
+#block-boxes-user-not-a-member-join .boxes-box-content p {
+    margin:0;
 }
-#block-boxes-user-not-a-member-join .boxes-box-content p{margin:0;}
