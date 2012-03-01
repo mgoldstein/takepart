@@ -376,7 +376,7 @@ ul,ol
     height:68px;
     top:180px;
     position:absolute;
-    z-index:1000;
+    z-index:10000;
 }
 
 #views_slideshow_slide_counter_photo_gallery-block
