@@ -455,17 +455,10 @@ div[class*='block-boxes-delta-video-block'] h2 span{
 .view-video .views-row-last{
     margin-right: 0;
 }
-.view-video .views-field-field-thumbnail{
-    height: 155px;
-    width: 207px;
-}
 .view-video .views-field-field-thumbnail img{
     display:block;
     border: none;
-    height: 155px;
-    width: 207px;
 }
-
 .node-openpublish-video .field-name-field-promo-headline,
 .view-video .views-field-field-promo-headline {
     font-size: 20px;
@@ -476,11 +469,9 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     margin: 0 9px 0 0;
     width: 206px !important;
 }
-
 .drupal-embed .node-openpublish-photo-gallery .field-name-field-photo-gallery-slideshow{
     margin:8px 0 0 0;
 }	
-
 .drupal-embed .node-openpublish-photo-gallery .views-field{
     margin:0;
     overflow: hidden;
