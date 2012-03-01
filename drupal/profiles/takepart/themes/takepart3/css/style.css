@@ -1717,3 +1717,24 @@ div.views-content-field-gallery-images img {
 .multipage-campaign #footer {
     margin-left: 0px
 }
+
+.views-content-field-gallery-images img{
+	
+}
+
+.views-content-field-gallery-images img:hover{
+	
+}
+
+.block-boxes-delta-page_title_h1 h1.title span {
+    color: #000000;
+    font-size: 36px;
+    line-height: 100%;	
+}
+
+.field-name-field-subhead .field-item {
+    color: #666666;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
+}
