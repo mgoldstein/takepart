@@ -7,9 +7,19 @@ $node = menu_get_object();
 <div class="tp-pet-share-button-bar">
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
 <a class="addthis_button_facebook"></a>
-<a class="addthis_button_twitter"></a>
+<a class="addthis_button_twitter" tw:via="TakePart"></a>
 <a class="addthis_button_email"></a>
 </div>
 </div>
+<script type="text/javascript">
+  var addthis_config = {
+    ui_email_note: 'SHARE THE BILL OF RIGHTS\nThe more names we have, the more powerful our message. Share the Water Bill of Rights with friends and family!'
+  };
+var addthis_share = {
+   templates: {
+      twitter: "Water is a right, not a privilege! Sign the Water Bill of Rights today. {{url}} #knowyourwater via @TakePart"
+   }
+};
+</script></script>
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8"></script>
 <!-- AddThis Button END -->
