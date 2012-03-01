@@ -1903,8 +1903,12 @@ div.views-content-field-gallery-images img {
 .field-name-field-subhead .field-item {
     color: #666666;
     font-size: 18px;
-    font-weight: normal;
+    font-weight: bold;
     line-height: 22px;
+}
+
+.openpublish_photo_gallery .field-name-field-subhead .field-item {
+    font-weight: normal;
 }
 
 .node-type-openpublish-photo-gallery .page {
