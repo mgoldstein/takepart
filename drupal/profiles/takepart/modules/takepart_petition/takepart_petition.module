@@ -844,19 +844,23 @@ function _takepart_petition_signature_count($deferred_id) {
     if (strpos($response, 'The requested deferred result has already been delivered.') === false) {
       if (strpos($reponse, 'The deferred_id') === false && strpos($response, 'cannot be found.') === false) {
         $xml = simplexml_load_string($response);
-        $data = (string)$xml->count;
-        $status = 0;
+        if ($xml) {
+          $data = (string)$xml->count;
+          $status = 0;
+        } else {
+          $status = -1;
+        }
       } else {
         // the deferred id was not found
-        $status = -1;
+        $status = -2;
       }
     } else {
       // request already delivered
-      $status = -2;
+      $status = -3;
     } 
   } else {
     // invalid deferred id
-    $status = -3;
+    $status = -4;
   }
   return drupal_json_output(array('status' => $status, 'data' => $data));
 }
