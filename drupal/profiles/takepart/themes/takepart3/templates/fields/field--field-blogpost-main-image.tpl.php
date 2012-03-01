@@ -43,7 +43,6 @@
  */
 $mediaalttag = false;
 ?>
-
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php if (!$label_hidden) : ?>
     <div class="field-label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
@@ -54,7 +53,10 @@ $mediaalttag = false;
         <?php
         if(!$mediaalttag) {
           $mediaalttag = $item['#file']->field_media_alt['und'][$delta]['value'];
-        }    
+        }
+        if(!$mediaalttag && $delta==0) {
+          $mediaalttag = ($element['#object']->title);
+        }        
         if(!$mediaalttag) {     
           $mediaalttag = $item['#file']->field_title['und'][$delta]['value'];
         }
@@ -62,7 +64,7 @@ $mediaalttag = false;
           $mediaalttag = $item['#file']->field_image_title['und'][$delta]['value'];
         }
         if(!$mediaalttag) {
-          $mediaalttag = $item['#file']->field_image_title['und'][$delta]['value'];
+          $mediaalttag = "";
         }
         $imagetag = render($item);
         print str_replace('alt=""', 'alt="'.$mediaalttag.'"', $imagetag);

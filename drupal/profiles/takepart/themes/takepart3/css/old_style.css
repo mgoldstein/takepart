@@ -1231,7 +1231,6 @@ div.takepart_addthis_leftpanel {
 div.takepart_addthis_footer {
     padding-top: 0;
     margin-bottom: 0;
-    border-bottom: 1px solid #d9e7ee;
     width: 100%;
     float: right;
 }
@@ -1920,7 +1919,7 @@ h2.title a{
     padding: 0 10px 0 20px;
 }
 
-.view-article-date,
+
 .submitted-wrapper .article-date {
     background: url('../images/sprite-horizontal.gif') no-repeat;
     background-position: 0 -395px;
@@ -1929,6 +1928,10 @@ h2.title a{
     padding: 0 10px 0 20px;
 }
 
+.profile .view-article-date {
+    background: none transparent;
+    padding: 0;
+}
 .submitted-wrapper .article-comment-count {
     background: url('../images/sprite-horizontal.gif') no-repeat;
     background-position: 0 -410px;
@@ -2147,7 +2150,10 @@ body.node-type-topic-front .submitted-wrapper{
     display:block;
     padding-top:1em;
 }
-
+.node-type-topic-front .view-featured-items .views-field-php .field-content a,
+.node-type-topic-front .block-boxes-title-primary .view-featured-items .views-field-php .field-content a {
+    padding-top: 0;
+}
 .block-boxes-title-primary-features .view-featured-items .views-field-php .field-content a:hover,
 .block-boxes-title-primary .view-featured-items .views-field-php .field-content a:hover {
     color: #1CA9E7;
@@ -2385,8 +2391,8 @@ body.node-type-takepart-campaign #content, body.node-type-takepart-campaign #lef
 
 #author_info {
     border-bottom: 1px dotted silver;
-    margin-bottom: 30px;
-    padding-bottom: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 #author-contributions {
@@ -2883,6 +2889,7 @@ div.messages a:visited {
 
 #slim-header {
     background-color: #d9e8ef;
+    height:36px;
 }
 
 #slim-header ul#top-follow li.title {
@@ -2938,21 +2945,18 @@ div.messages a:visited {
     margin-top: 9px;
 }
 
-
-
-#slim-header #logo {top: 0;}
+#slim-header #logo {
+    top: 0;
+}
 
 .campaign-multipage #slim-header #nav-wrap {
     width: auto;
 }
 #slim-header.multipage-campaign #top-search {
-    margin: 4px 8px 0 10px;
+    margin: 0 8px 4px 10px;
     float: left;
     width: 13em;
 }
-
-
-
 
 #slim-header ul.menu li a:hover {
     text-decoration: none;
@@ -3031,10 +3035,7 @@ body.node-type-takepart-group #page {
 /*
  * Actions content type
 */
-.field-name-field-action-main-image {
-    float:left;
-    margin-right:15px;
-}
+
 #take-action-btn {
     border:none;
     background:#FDAB30;
@@ -3056,9 +3057,6 @@ body.node-type-takepart-group #page {
     cursor:pointer;
 }
 
-/*
- *
-*/
 div.jcarousel-container {
     width: 640px;
 }
@@ -3066,10 +3064,6 @@ div.jcarousel-container {
 div.jcarousel-clip {
     width: 635px;
     overflow:hidden;
-}
-div#block-views-video-block-8 div.content {
-    position: relative;
-    padding-top: 3px;
 }
 
 div.view-display-id-block_8 div.rotator_nav_bar {
@@ -3211,7 +3205,7 @@ div.tabs ul.tabs.primary li a:hover, ul.links li a:hover {
     margin-left :0px;
 }
 .view-author-contributions .views-field {
-    /*  margin-left :110px; */
+    line-height: 18px;
 }
 .view-author-contributions .views-field-field-promo-text {
     margin-top:10px;
