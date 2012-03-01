@@ -1952,4 +1952,6 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
 .profile .views-field-field-promo-headline {
     margin-bottom: 0;
 }
-.view-author-contributions .views-field-field-promo-text
+.profile h2.element-invisible {
+    display: none;
+}
