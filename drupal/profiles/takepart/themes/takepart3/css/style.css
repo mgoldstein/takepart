@@ -726,7 +726,7 @@ ul#top-follow {
 #slim-header #nav-wrap {
     background: none;
     float: left;
-    min-width: 566px;
+    min-width: 500px;
     margin-left: 50px;
 }
 

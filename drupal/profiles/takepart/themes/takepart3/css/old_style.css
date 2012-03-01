@@ -2882,6 +2882,7 @@ div.messages a:visited {
 
 #slim-header {
     background-color: #d9e8ef;
+    height:36px;
 }
 
 #slim-header ul#top-follow li.title {
@@ -2937,21 +2938,18 @@ div.messages a:visited {
     margin-top: 9px;
 }
 
-
-
-#slim-header #logo {top: 0;}
+#slim-header #logo {
+    top: 0;
+}
 
 .campaign-multipage #slim-header #nav-wrap {
     width: auto;
 }
 #slim-header.multipage-campaign #top-search {
-    margin: 4px 8px 0 10px;
+    margin: 0 8px 4px 10px;
     float: left;
     width: 13em;
 }
-
-
-
 
 #slim-header ul.menu li a:hover {
     text-decoration: none;
