@@ -374,7 +374,6 @@ ul,ol
     height:68px;
     top:180px;
     position:absolute;
-    z-index:100000;
 }
 
 #views_slideshow_slide_counter_photo_gallery-block
@@ -1613,7 +1612,7 @@ h1.title a:hover {
 }
 */
 .main-content .views-slideshow-controls-top { 
-    z-index: 100;
+    z-index: 1000;
 }
 
 body.node-type-takepart-campaign .main-content #content,
