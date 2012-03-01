@@ -498,29 +498,11 @@ body.node-type-topic-front h2.title a {
     text-decoration:none;
 }
 
-/* popular galleries */
-.block-boxes-title-popular-galleries .content{
-    padding-bottom:0;
-}
-.block-boxes-title-popular-galleries .view-photo-galleries td {
-    vertical-align:top;
-    padding:0 16px 0 0;
-    width:196px;
-}	
-.block-boxes-title-popular-galleries .view-photo-galleries td.col-last{
-    padding:0;
-}
-
-
-
 /* Video Page */
-
 #block-boxes-box-907abe5f .views-row{
     width:100%;
     float:none;
 }
-
-
 
 .block-boxes-title-must-see-video-of-the-day .views-field-view-node-1{
     position:relative;
@@ -537,8 +519,6 @@ body.node-type-topic-front h2.title a {
     background:url('../images/videobutton.png') no-repeat 0 0;
     width:121px;
     height:121px;
-
-
     zoom:1; *display: inline; _height: 121px;
 }
 
@@ -1125,8 +1105,7 @@ p.search-performance{
     color:#1ca9e7;
 }
 /* homepage features block */
-.block-boxes-title-features,
-.block-boxes-title-popular-galleries{
+.block-boxes-title-features {
     margin:0 0 20px 0;
     padding-bottom:10px;
     border-bottom:1px dotted silver;

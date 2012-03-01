@@ -2725,28 +2725,6 @@ div.messages a:visited {
 
 }
 
-/*
- * Popular galleries block
-*/
-.block-boxes-title-popular-galleries {
-    border-bottom:3px solid #666;
-    margin-bottom:25px;
-}
-.block-boxes-title-popular-galleries h2 {
-    background:#ccc;
-    margin:25px 0 7px 0;
-}
-.block-boxes-title-popular-galleries h2 span {
-    background:transparent url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 0;
-    text-transform:uppercase;
-    padding:2px 35px 2px 0;
-    border-right:5px solid #fff;
-}
-.block-boxes-title-popular-galleries .content {
-    border-top:1px dotted #000;
-    padding-top:10px;
-    padding-bottom:20px;
-}
 .view-id-photo_galleries td {
     vertical-align:top;
 }

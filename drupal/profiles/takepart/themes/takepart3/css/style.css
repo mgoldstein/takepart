@@ -76,8 +76,7 @@ hr {
 }
 
 /* homepage features block */
-.block-boxes-title-features,
-.block-boxes-title-popular-galleries{
+.block-boxes-title-features {
     margin:0 0 20px 0;
     padding-bottom:15px;
 }
@@ -847,7 +846,7 @@ h1.title a:hover {
     font-weight: bold;
     background: none transparent;
 }
- 
+
 .node-type-topic-front h1.title,
 .page-taxonomy-term h1.title,
 .main-content .node-topic-front h2.title {
@@ -1756,10 +1755,6 @@ body.node-type-blog-front .node-blog-front h2.title {
     display: none;
 }
 
-.main-content .block-boxes-title-takepart-pics h2 {
-    border-top: 1px dotted #555555;
-}
-
 #views_slideshow_controls_text_previous_photo_gallery-block:hover {
     background: url("../images/2012-02-08/gallery_left_arrow_solid.png") no-repeat scroll 0 0 transparent;
 }
@@ -1844,13 +1839,13 @@ div.takepart_addthis_leftpanel {
 }
 
 div.tp-pet-thank-you-heading {
-  font-size: 22px;
-  line-height: 24px;
-  margin-bottom: 6px;
-  color: #000;
-  font-weight: bold;
-  background: none;
-  clear: both;
+    font-size: 22px;
+    line-height: 24px;
+    margin-bottom: 6px;
+    color: #000;
+    font-weight: bold;
+    background: none;
+    clear: both;
 }
 div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
     float: left !important;
@@ -1887,7 +1882,7 @@ div.views-content-field-gallery-images:hover img {
 }
 
 div.views-content-field-gallery-images img {
-   width: 88px;
+    width: 88px;
 }
 
 /* H1 Headers when in subhead field */
@@ -1899,15 +1894,13 @@ div.views-content-field-gallery-images img {
     font-weight: bold;
 }
 
+
+
 .field-name-field-subhead .field-item {
     color: #666666;
     font-size: 18px;
-    font-weight: bold;
-    line-height: 22px;
-}
-
-.openpublish_photo_gallery .field-name-field-subhead .field-item {
     font-weight: normal;
+    line-height: 22px;
 }
 
 .node-type-openpublish-photo-gallery .page {
@@ -1919,11 +1912,11 @@ div.views-content-field-gallery-images img {
 }
 
 .views-content-field-gallery-images img{
-    
+
 }
 
 .views-content-field-gallery-images img:hover{
-    
+
 }
 
 .block-boxes-delta-page_title_h1 h1.title span {
@@ -1932,12 +1925,6 @@ div.views-content-field-gallery-images img {
     line-height: 100%;  
 }
 
-.field-name-field-subhead .field-item {
-    color: #666666;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 22px;
-}
 .main-content .block-boxes-current-video {
     margin-bottom: 20px;
 }
@@ -1986,4 +1973,24 @@ div.views-content-field-gallery-images img {
 
 #tptv-more-video {
     text-transform: inherit;
+}
+.page-taxonomy-term #block-views-video-block-6 .content {
+    border:0 none;
+}
+.page-taxonomy-term #block-views-video-block-6 h2 {
+    display:none;
+}
+
+.page-taxonomy-term .block-boxes-delta-page_title_h1 h1.title {
+    font-family: NewsGothicBoldCondensed,sans-serif;
+    font-size:26px;
+    line-height: 26px;
+    color: #99BBCC;
+    font-weight: 300;
+}
+.page-taxonomy-term .block-boxes-delta-page_title_h1 h1.title span {
+    color: #99BBCC;
+    font-size:26px;
+    font-family: NewsGothicBoldCondensed,sans-serif;
+    font-weight: 300;
 }
