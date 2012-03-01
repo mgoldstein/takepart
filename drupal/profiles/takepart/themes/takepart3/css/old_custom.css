@@ -554,6 +554,9 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     margin:0 0 10px 0;	
 }
 
+.node-type-section-front .views-view-grid .views-field-field-promo-text {
+    margin:0;
+}
 .node-openpublish-video .field-name-field-promo-text {
     padding-bottom: 5px; 
     margin-bottom: 10px;

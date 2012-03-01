@@ -1779,11 +1779,10 @@ div.takepart_addthis_leftpanel div.addthis_toolbox {
 }
 
 #comments .comments-header {
-	border-top: 1px dotted #555555;
+    border-top: 1px dotted #555555;
     border-bottom: 1px solid #D9E7EE;
-    padding-bottom: 8px;
-    margin-bottom:12px;
-    padding-top: 10px;
+    padding:10px 0 8px;
+    margin:12px 0;
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a {
