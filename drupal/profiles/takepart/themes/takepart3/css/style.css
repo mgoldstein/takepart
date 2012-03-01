@@ -1709,3 +1709,8 @@ div.views-content-field-gallery-images img {
     font-weight: bold;
     line-height: 22px;
 }
+
+.node-type-openpublish-photo-gallery .page {
+    padding: 20px 20px 35px !important;
+}
+
