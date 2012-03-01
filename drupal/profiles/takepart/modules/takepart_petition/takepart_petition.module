@@ -463,7 +463,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
   );
 
   $form['form_container']['mail'] = array(
-    '#title' => t('E-mail address'),
+    '#title' => t('E-mail Address'),
     '#type' => 'textfield',
     '#required' => TRUE,
     '#default_value' => $signature->mail,
