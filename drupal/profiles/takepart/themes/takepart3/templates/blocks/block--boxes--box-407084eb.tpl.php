@@ -45,7 +45,7 @@
 
   <?php print render($title_prefix); ?>
 <?php if ($block->subject): ?>
-    <h2<?php print $title_attributes; ?>><span><?php print $block->subject ?></span> <div id="tptv-more-video"><a href="/video">&gt;&gt; More Video</a></div></h2>
+    <h2<?php print $title_attributes; ?>><span><?php print $block->subject ?></span> <div id="tptv-more-video"><a href="/video">&gt;&gt; More Videos</a></div></h2>
 <?php endif;?>
   <?php print render($title_suffix); ?>
 
