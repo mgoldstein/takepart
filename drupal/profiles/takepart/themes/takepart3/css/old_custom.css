@@ -242,7 +242,7 @@ body.page-taxonomy-term h1{
 .block-box-secondary .view-featured-items .views-row, 
 .block-boxes-current-featured_items .view-dom-id-2 .views-row {
     margin-right: 15px;
-    width: 196px;
+    width: 200px;
     float:left;
     display: block;
 }
@@ -254,7 +254,6 @@ body.page-taxonomy-term h1{
 }
 
 /* photo page */
-
 .block-boxes-current-photo_galleries h2 {
     background: none repeat scroll 0 0 #CCCCCC;
     margin: 25px 0 7px;

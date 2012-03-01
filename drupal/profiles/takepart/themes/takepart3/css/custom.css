@@ -363,7 +363,7 @@ body.node-type-topic-front h2.title a {
 .block-box-secondary .view-featured-items .views-row, 
 .block-boxes-current-featured_items .view-dom-id-2 .views-row {
     margin-right: 15px;
-    width: 196px;
+    width: 200px;
     float:left;
     display: block;
 }
@@ -371,7 +371,7 @@ body.node-type-topic-front h2.title a {
 .block-boxes-current-featured_items .view-dom-id-2 .views-field-field-thumbnail img {
     border: 1px solid black;
     height: 160px;
-    width: 194px;
+    width: 200px;
 }
 
 /* photo page */
