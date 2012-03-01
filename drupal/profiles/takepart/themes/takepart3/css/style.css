@@ -1726,18 +1726,18 @@ body.node-type-blog-front .node-blog-front h2.title {
     top: 0px !important;	
 }
 /*
-.jcarousel-skin-takepart .jcarousel-prev-horizontal {
+.jcarousel-skin-takepart .jcarousel-prev-horizontal:hover {
    background: url("left_arrow_white.png") no-repeat scroll 4px 21px transparent !important;
 }
 
-.jcarousel-skin-takepart .jcarousel-prev-horizontal:hover {
+.jcarousel-skin-takepart .jcarousel-prev-horizontal {
    background: url("left_arrow.png") no-repeat scroll 4px 21px transparent !important;
 }
 
-.jcarousel-skin-takepart .jcarousel-next-horizontal {
+.jcarousel-skin-takepart .jcarousel-next-horizontal:hover {
     background:url("right_arrow_white.png") no-repeat scroll 4px 21px transparent !important;
 }
-.jcarousel-skin-takepart .jcarousel-next-horizontal:hover {
+.jcarousel-skin-takepart .jcarousel-next-horizontal {
     background:url("right_arrow.png") no-repeat scroll 4px 21px transparent !important;
 }
 */
