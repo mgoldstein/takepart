@@ -43,7 +43,6 @@
  */
 $mediaalttag = false;
 ?>
-
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php if (!$label_hidden) : ?>
     <div class="field-label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
@@ -52,12 +51,12 @@ $mediaalttag = false;
     <?php foreach ($items as $delta => $item) : ?>
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>>
         <?php
+        if(!$mediaalttag) {
+          $mediaalttag = $item['#file']->field_media_alt['und'][$delta]['value'];
+        }
         if(!$mediaalttag && $delta==0) {
           $mediaalttag = ($element['#object']->title);
         }        
-        if(!$mediaalttag) {
-          $mediaalttag = $item['#file']->field_media_alt['und'][$delta]['value'];
-        }    
         if(!$mediaalttag) {     
           $mediaalttag = $item['#file']->field_title['und'][$delta]['value'];
         }
