@@ -1488,11 +1488,7 @@ in take-part feature */
 #join-login-box .join-login {
     margin-right: 10px;
 }
-#block-boxes-user-not-a-member-join{border: 5px solid #000000;padding: 0px 10px 10px 41px}
-#block-boxes-user-not-a-member-join h2 span {
-    background-color: #1CA9E7;
-    display: block;
-    margin:10px 10px 10px -46px;
-    padding: 8px 10px;
+
+#block-boxes-user-not-a-member-join .boxes-box-content p {
+    margin:0;
 }
-#block-boxes-user-not-a-member-join .boxes-box-content p{margin:0;}

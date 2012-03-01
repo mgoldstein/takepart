@@ -1873,3 +1873,6 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
 .node-type-takepart-group .page {
     padding: 20px 20px 35px 0px !important;
 }
+.main-content .block-boxes-current-video {
+    margin-bottom: 20px;
+}
