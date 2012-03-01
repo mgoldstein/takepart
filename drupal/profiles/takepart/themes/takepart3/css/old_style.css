@@ -2150,7 +2150,8 @@ body.node-type-topic-front .submitted-wrapper{
     display:block;
     padding-top:1em;
 }
-.node-type-topic-front .block-boxes-title-primary-features .view-featured-items .views-field-php .field-content a {
+.node-type-topic-front .view-featured-items .views-field-php .field-content a,
+.node-type-topic-front .block-boxes-title-primary .view-featured-items .views-field-php .field-content a {
     padding-top: 0;
 }
 .block-boxes-title-primary-features .view-featured-items .views-field-php .field-content a:hover,
