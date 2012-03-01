@@ -250,7 +250,7 @@ body.page-taxonomy-term h1{
 .block-boxes-current-featured_items .view-dom-id-2 .views-field-field-thumbnail img {
     border: none;
     height: 160px;
-    width: 194px;
+    width: 200px;
 }
 
 /* photo page */
@@ -1162,7 +1162,7 @@ div.takepart_addthis_rightrail .button_container a.addthis_button_google_plusone
 div.takepart_addthis_footer span#addthis_footer_sharethis {
     color: #000;
     font-size: 14px;
-    padding-top: 3px;
+    padding-top: 2px;
     font-weight: bold;
     text-transform: capitalize;
     float: right;
@@ -1180,6 +1180,11 @@ div.takepart_addthis_footer span#addthis_footer_sharethis {
 .takepart_addthis_footer a.at300b{
     padding: 0;
     margin-left: 6px;
+}
+
+.takepart_addthis_footer a.addthis_button_email {
+    position: relative;
+    top:-1px;
 }
 .takepart_addthis_footer a.addthis_button_facebook span{
     background: url("../images/icon_facebook.png") no-repeat scroll 0 0 transparent;
