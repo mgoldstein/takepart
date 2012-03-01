@@ -50,13 +50,13 @@ $mediaalttag = false;
   <div class="field-items"<?php print $content_attributes; ?>>
     <?php foreach ($items as $delta => $item) : ?>
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>>
-        <?php 
+        <?php
         if(!$mediaalttag) {
           $mediaalttag = $item['#file']->field_media_alt['und'][$delta]['value'];
         }
         if(!$mediaalttag && $delta==0) {
           $mediaalttag = ($element['#object']->title);
-        } 
+        }        
         if(!$mediaalttag) {     
           $mediaalttag = $item['#file']->field_title['und'][$delta]['value'];
         }
@@ -65,7 +65,7 @@ $mediaalttag = false;
         }
         if(!$mediaalttag) {
           $mediaalttag = "";
-        }        
+        }
         $imagetag = render($item);
         print str_replace('alt=""', 'alt="'.$mediaalttag.'"', $imagetag);
         ?>

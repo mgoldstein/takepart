@@ -367,7 +367,7 @@ ul,ol
     height:68px;
     top:180px;
     position:absolute;
-    z-index:12;
+    z-index:1000;
 }
 
 #views_slideshow_slide_counter_photo_gallery-block
@@ -1636,11 +1636,11 @@ div.takepart_addthis_leftpanel div.addthis_default_style a.addthis_button_google
 }
 
 div.takepart_addthis_leftpanel div.addthis_default_style a.addthis_button_facebook_like {
-    width: 90px !important;
+    width: 119px !important;
 }
 
 div.takepart_addthis_leftpanel div.addthis_default_style a.addthis_button_tweet {
-    width: 77px !important;
+    width: 87px !important;
 }
 
 div.takepart_addthis_leftpanel div.addthis_default_style a.addthis_button_linkedin_counter {
@@ -1668,10 +1668,54 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
     padding-top: 14px;
 }
 
+#block-menu-block-1 { 
+    padding-top:14px;
+}
+#header-wrapper ul.menu {
+    padding-top: 0px;
+}
+
 .node-type-openpublish-photo-gallery .page {
     padding: 20px 20px 35px 10px !important;
 }
 
 .node-type-takepart-group .page {
     padding: 20px 20px 35px 0px !important;
+}
+
+.views-content-field-gallery-images img{
+	
+}
+
+.views-content-field-gallery-images img:hover{
+	
+}
+
+.block-boxes-delta-page_title_h1 h1.title span {
+    color: #000000;
+    font-size: 36px;
+    line-height: 100%;	
+}
+
+.field-name-field-subhead .field-item {
+    color: #666666;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
+}
+
+
+.block-boxes-delta-page_title_h1 h1.title span {
+    color: #000000;
+    font-size: 36px;
+    line-height: 100%;
+    font-family: Helvetica,Arial,sans-serif;
+    font-weight: bold;
+}
+
+.field-name-field-subhead .field-item {
+    color: #666666;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
 }
