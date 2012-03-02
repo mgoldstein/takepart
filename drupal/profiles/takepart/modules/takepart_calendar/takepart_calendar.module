@@ -46,15 +46,19 @@ function _takepart_calendar_xml($node) {
         } else {
           $subtext = _takepart_calendar_xml_getimgalts($subtextimage);
         }
+        
+        if(strrpos($subtext, 'headerimg:') == 0) { 
 
-        $xml .= '<action>';
-        $xml .= '<todays_date>'. strtotime(date("Y-m-d")) .'</todays_date>';
-        $xml .= '<topic_name>' . $subtext . '</topic_name>';
-        $xml .= '<topic_icon>' . $subtextimage . '</topic_icon>';
-        $xml .= '<action_title>'. _takepart_calendar_xml_fixtring($calarray[$i]['title']) . '</action_title>';
-        $xml .= '<action_page>'. _takepart_calendar_xml_fixtring($calarray[$i]['url']) . '</action_page>';
-        $xml .= '<calendar_page>' . $pagelink . '</calendar_page>';
-        $xml .= '</action>';
+          $xml .= '<action>';
+          $xml .= '<todays_date>'. strtotime(date("Y-m-d")) .'</todays_date>';
+          $xml .= '<topic_name>' . $subtext . '</topic_name>';
+          $xml .= '<topic_icon>' . $subtextimage . '</topic_icon>';
+          $xml .= '<action_title>'. _takepart_calendar_xml_fixtring($calarray[$i]['title']) . '</action_title>';
+          $xml .= '<action_page>'. _takepart_calendar_xml_fixtring($calarray[$i]['url']) . '</action_page>';
+          $xml .= '<calendar_page>' . $pagelink . '</calendar_page>';
+          $xml .= '</action>';
+          
+        }
       
       }
     }
