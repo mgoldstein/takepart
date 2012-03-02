@@ -184,7 +184,8 @@ EOJ;
     // Add the css for the form
     drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-form-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
     drupal_add_library('system','ui.dialog','#'. $dialog);
-    drupal_add_library('system','cookie','#'. $dialog);
+    drupal_add_library('system','jquery.cookie');
+    drupal_add_library('system','jquery.ui.tabs');
     drupal_add_js($signed_check_js, 'inline');
     drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-form-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
   
@@ -209,6 +210,8 @@ EOJ;
     $progress_js .= 'var  tp_petition_signatures_goal = '. $form->goal . ';';
  
     // Add the css and javascript for the progress bar
+    drupal_add_library('system','jquery.cookie');
+    drupal_add_library('system','jquery.ui.tabs');
     drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-progress-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
     drupal_add_js($progress_js, 'inline');
     drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-progress-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
