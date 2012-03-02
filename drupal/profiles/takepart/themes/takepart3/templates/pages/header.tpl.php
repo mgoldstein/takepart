@@ -1,6 +1,6 @@
 <?php if ($is_multipage): ?>
   <div id="slim-header" class='clearfix multipage-campaign'>
-    <div id='logo'><?php print l("", "<front>")?></div>
+    <div id="logo"><?php print l("", "<front>", array('attributes' => array('title' => 'TakePart logo') ) ); ?></div>
     <div class="clear clearfix" id="nav-wrap">
       <?php print $top_nav ?> 
     </div>
@@ -22,7 +22,7 @@
       </div> 
     </div><!--/join-login-top-->
   	<div class="logo-wrapper">
-  		<div id='logo'><?php print l("", "<front>")?></div>
+  		<div id="logo"><?php print l("", "<front>", array('attributes' => array('title' => 'TakePart logo') ) )?></div>
 			<div class="header-right">
   			<div class="clear clearfix" id="nav-wrap">
       		<div id="block-menu-block-1">

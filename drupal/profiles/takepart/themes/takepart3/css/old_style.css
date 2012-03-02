@@ -100,28 +100,7 @@ img.photo, .gallery-item img {
     display:none;
 }
 
-#top-logo-wrapper {
-    width: 130px;
-    float: left;
-}
-
-#logo a {
-    text-indent: -9000px;
-    display: block;
-    width: 115px;
-    height: 115px;
-    z-index: 1;
-    position: absolute;
-    background: url(../images/logo.png) no-repeat 0 0;
-
-}
-
-
-
 /****** Hot Topics Nav *****/
-
-
-
 #hot-topics-nav li {
     list-style-type: none;
     display: inline;

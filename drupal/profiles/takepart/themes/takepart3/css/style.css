@@ -53,6 +53,22 @@ hr {
     white-space:nowrap;
 }
 
+#top-logo-wrapper {
+    width: 130px;
+    float: left;
+}
+
+#logo a {
+    text-indent: -9000px;
+    display: block;
+    width: 115px;
+    height: 115px;
+    z-index: 1;
+    position: absolute;
+    background: url(../images/TakePart-PM-LOGO.jpg) no-repeat 0 0;
+
+}
+
 /*slim header navigation*/
 #slim-header ul.menu li {
     float: none;
