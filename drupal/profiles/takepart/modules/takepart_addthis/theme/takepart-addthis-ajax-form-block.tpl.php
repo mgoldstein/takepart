@@ -10,6 +10,9 @@
   <a class="addthis_button_twitter" tw:via="TakePart">
     <img src="/profiles/takepart/modules/takepart_addthis/images/twitter_share.png" alt="Share on Twitter" />
   </a>
+  <a class="addthis_button_email">
+    <img src="/profiles/takepart/modules/takepart_addthis/images/share_email.png" alt="Share on Twitter" />
+  </a>
   </div>
 </div>
 <script type="text/javascript">
