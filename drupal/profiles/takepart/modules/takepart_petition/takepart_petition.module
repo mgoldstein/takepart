@@ -184,6 +184,8 @@ EOJ;
     // Add the css for the form
     drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-form-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
     drupal_add_library('system','ui.dialog','#'. $dialog);
+    drupal_add_library('system','jquery.cookie');
+    drupal_add_library('system','jquery.ui.tabs');
     drupal_add_js($signed_check_js, 'inline');
     drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-form-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
   
@@ -208,6 +210,8 @@ EOJ;
     $progress_js .= 'var  tp_petition_signatures_goal = '. $form->goal . ';';
  
     // Add the css and javascript for the progress bar
+    drupal_add_library('system','jquery.cookie');
+    drupal_add_library('system','jquery.ui.tabs');
     drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-progress-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
     drupal_add_js($progress_js, 'inline');
     drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-progress-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
@@ -642,7 +646,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
 
   $form['form_container']['terms_of_use'] = array(
     '#type' => 'item',
-    '#markup' => '<div class="terms-of-use-txt">By signing, you accept TakePart\'s <a href="/terms-of-use">Terms of Use</a></div>',
+    '#markup' => '<div class="terms-of-use-txt">By signing, you accept TakePart\'s <a href="/terms-of-use" target="_blank">Terms of Use</a></div>',
     '#weight' => 105,
   );
   
@@ -844,19 +848,23 @@ function _takepart_petition_signature_count($deferred_id) {
     if (strpos($response, 'The requested deferred result has already been delivered.') === false) {
       if (strpos($reponse, 'The deferred_id') === false && strpos($response, 'cannot be found.') === false) {
         $xml = simplexml_load_string($response);
-        $data = (string)$xml->count;
-        $status = 0;
+        if ($xml) {
+          $data = (string)$xml->count;
+          $status = 0;
+        } else {
+          $status = -1;
+        }
       } else {
         // the deferred id was not found
-        $status = -1;
+        $status = -2;
       }
     } else {
       // request already delivered
-      $status = -2;
+      $status = -3;
     } 
   } else {
     // invalid deferred id
-    $status = -3;
+    $status = -4;
   }
   return drupal_json_output(array('status' => $status, 'data' => $data));
 }
