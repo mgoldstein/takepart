@@ -1988,6 +1988,8 @@ div.views-content-field-gallery-images img {
 }
 
 #boxes-box-allfilms_campaigns_columns_block ul li {
+	 clear: left;
+     float: left;
      margin: 0 5px 7px 0;
 }
 
@@ -1995,6 +1997,11 @@ div.views-content-field-gallery-images img {
     color: black;
     font-size: 18px;
     font-weight: bold;
+}
+
+#boxes-box-allfilms_campaigns_columns_block ul div.col {
+    float: left;
+    width: 33%;
 }
 
 #boxes-box-allfilms_campaigns_columns_block ul li a:hover {
