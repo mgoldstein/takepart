@@ -1986,3 +1986,18 @@ div.views-content-field-gallery-images img {
 #tptv-more-video {
     text-transform: inherit;
 }
+
+#boxes-box-allfilms_campaigns_columns_block ul li {
+     margin: 0 5px 7px 0;
+}
+
+#boxes-box-allfilms_campaigns_columns_block ul li a {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#boxes-box-allfilms_campaigns_columns_block ul li a:hover {
+    color: #1CA9E7;
+    text-decoration: underline;
+}
