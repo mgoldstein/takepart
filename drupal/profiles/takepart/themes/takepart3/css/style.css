@@ -65,8 +65,8 @@ hr {
     height: 115px;
     z-index: 1;
     position: absolute;
-    background: url(../images/TakePart-PM-LOGO.jpg) no-repeat 0 0;
-
+    background: url("/profiles/takepart/themes/takepart3/images/logo.png") no-repeat scroll 0 0 transparent;
+    /* url(../images/TakePart-PM-LOGO.jpg) no-repeat 0 0; */
 }
 
 /*slim header navigation*/
