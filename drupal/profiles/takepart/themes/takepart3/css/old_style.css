@@ -2133,6 +2133,10 @@ body.node-type-topic-front .submitted-wrapper{
 .node-type-topic-front .block-boxes-title-primary .view-featured-items .views-field-php .field-content a {
     padding-top: 1em;
 }
+
+.block-boxes-title-secondary-features .views-field-php .field-content a {
+    padding-top:0;
+}
 .block-boxes-title-primary-features .view-featured-items .views-field-php .field-content a:hover,
 .block-boxes-title-primary .view-featured-items .views-field-php .field-content a:hover {
     color: #1CA9E7;
