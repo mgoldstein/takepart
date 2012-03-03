@@ -19,7 +19,7 @@ ul.quicktabs-tabs.quicktabs-style-takepart a{
   line-height: 24px;
   font-weight: bold;
   text-decoration:none;
-  color:#aaa;
+  color:#000;
 }
 ul.quicktabs-tabs.quicktabs-style-takepart a:hover{
   color:#555;
@@ -33,9 +33,6 @@ ul.quicktabs-tabs.quicktabs-style-takepart li{
   background-color: #cfe2e1;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-}
-ul.quicktabs-tabs.quicktabs-style-takepart li:hover{
-  border-bottom:none;
 }
 ul.quicktabs-tabs.quicktabs-style-takepart li.active{
   background-color: #f3f8f8;
