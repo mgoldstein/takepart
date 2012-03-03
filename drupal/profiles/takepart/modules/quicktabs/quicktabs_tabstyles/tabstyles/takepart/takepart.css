@@ -10,13 +10,14 @@
 
 ul.quicktabs-tabs.quicktabs-style-takepart{
   padding:0 5px 0 0;
-  font:bold 12px/19px Verdana !important;
-  font-weight:bold;
   height:19px;
   margin:0;
 }
 ul.quicktabs-tabs.quicktabs-style-takepart a{
-  font:bold 12px/19px Verdana !important;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: bold;
   text-decoration:none;
   color:#aaa;
 }
@@ -25,9 +26,10 @@ ul.quicktabs-tabs.quicktabs-style-takepart a:hover{
 }
 ul.quicktabs-tabs.quicktabs-style-takepart li{
   border-bottom:none;
-  padding:5px 8px 2px 8px;
+  padding:8px 8px 2px 8px;
   margin:0 10px 0 0;
   position:relative;
+  top: -3px;
   background-color: #cfe2e1;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
