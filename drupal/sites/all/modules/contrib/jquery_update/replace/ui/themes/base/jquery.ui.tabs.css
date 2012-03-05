@@ -7,43 +7,12 @@
  *
  * http://docs.jquery.com/UI/Tabs#theming
  */
- 
-/***** Petition tabs Override **/ 
-/*.ui-tabs { position: relative; padding: .2em; zoom: 1; } *//* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
-.ui-tabs { position: relative; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
-/*.ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; } */
-.ui-tabs .ui-tabs-nav { margin: 0}
-/***** End Petition tabs Override **/
-
-.ui-tabs .ui-tabs-nav li { font-weight:bold; font-family: helvetica; font-size: 14px; list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
+.ui-tabs { position: relative; padding: .2em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+.ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
+.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
 .ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; }
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; }
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { background-color: #F3F8F8; cursor: text; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
 .ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
-
-/***** Petition tabs Override **/
-/*.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }*/
-.ui-tabs .ui-tabs-panel { 
-  display: block; 
-  border-width: 0; 
-  background: none; 
-  /* IE10 */ 
-  background-image: -ms-linear-gradient(top, white 15%, #F3F8F8 15%, #CFE2E1 100%);
-  /* Mozilla Firefox */ 
-  background-image: -moz-linear-gradient(top, white 15%, #F3F8F8 15%, #CFE2E1 100%);
-  /* Opera */ 
-  background-image: -o-linear-gradient(top, white 15%, #F3F8F8 15%, #CFE2E1 100%);
-  /* Webkit (Safari/Chrome 10) */ 
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F3F8F8), color-stop(1, #CFE2E1));
-  /* Webkit (Chrome 11+) */ 
-  background-image: -webkit-linear-gradient(top, white 15%, #F3F8F8 15%, #CFE2E1 100%);
-  /* Proposed W3C Markup */ 
-  background-image: linear-gradient(top, white 15%, #F3F8F8 15%, #CFE2E1 100%);
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-szie: cover;
-  background-size: cover;
-}
-/***** END Petition tabs Override **/
-
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
 .ui-tabs .ui-tabs-hide { display: none !important; }

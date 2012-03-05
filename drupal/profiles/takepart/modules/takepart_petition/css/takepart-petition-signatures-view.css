@@ -12,7 +12,7 @@
 .tp-pet-name {
   position: relative;
   display: table-cell;
-  width: 20%;
+  width: 150px;
   vertical-align: top;
 }
 

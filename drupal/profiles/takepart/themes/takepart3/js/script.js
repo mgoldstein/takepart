@@ -291,3 +291,18 @@ jQuery(document).ready(function () {
     	
     });
 });
+
+
+jQuery(document).ready(function () {
+	jQuery("#views_slideshow_controls_text_previous_photo_gallery-block").click(function () {
+		void(s.t());
+	});
+	jQuery("#views_slideshow_controls_text_next_photo_gallery-block").click(function () {
+		void(s.t());
+	});
+	jQuery('.views-content-field-gallery-images img').click(function () {
+    	void(s.t());
+    });
+});
+
+
