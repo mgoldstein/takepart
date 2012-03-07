@@ -199,11 +199,27 @@ EOJ;
 
     $name = substr($delta, 0, -strlen('_progress'));
     $form = takepart_petition_forms($name);
+     
+    $signature_count = db_query(
+    "SELECT count(mail) FROM takepart_petition_signature WHERE petition_form = :petition_form", 
+    array(':petition_form' => $name))->fetchField();
+    
+    if ($form->goal > 0) {
+      $percent_to_goal = ($signature_count / $form->goal) * 100.0;
+      $progress_bar_num = (string)(floor($percent) - (floor($percent) % 10));
+      $progress_bar_url = url(drupal_get_path('module', 'takepart_petition') .'/images/petition-status-bar-'.$progress_bar_num .'.png');
+    } else {
+      $percent_to_goal = 0.0;
+      $progress_bar_url = url(drupal_get_path('module', 'takepart_petition') .'/images/petition-status-bar.png');
+    }
     
     $deferred_id = _takepart_bsd_apiquery("signup/signup_count", array('signup_form_id' => $form->petition_form_id), false);  
     $variables = array(
       'goal' => $form->goal,
+      'signature_count' => $signature_count,
+      'percent_to_goal' => $percent_to_goal,
       'deferred_id' => $deferred_id,
+      'progress_bar_url' => $progress_bar_url,
     );
 
     $progress_js  = 'var tp_petition_signatures_deferred_id = "'. $deferred_id .'"; ';
@@ -815,7 +831,7 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
   setcookie('petition_signed_as',$mail,time()+(86400 * 365));
 
   $thank_url = variable_get('water_bill_of_rights_thank_you');
-  drupal_goto($thank_url);
+  drupal_goto($thank_url, array('query'=>array('t'=>(string)time())));
 }
 
 function _takepart_petition_progress_form($form, &$form_state, $petition_form) {
@@ -843,6 +859,7 @@ function _takepart_petition_progress_form($form, &$form_state, $petition_form) {
 function _takepart_petition_signature_count($deferred_id) {
 
   $data = '';
+  $error = '';
   if (strlen($deferred_id) == 32) {
     $response = _takepart_bsd_apiquery("get_deferred_results", array('deferred_id' => $deferred_id), false);
     if (strpos($response, 'The requested deferred result has already been delivered.') === false) {
@@ -852,19 +869,24 @@ function _takepart_petition_signature_count($deferred_id) {
           $data = (string)$xml->count;
           $status = 0;
         } else {
+          $error = $response;
           $status = -1;
         }
       } else {
         // the deferred id was not found
+        $error = $response;
         $status = -2;
       }
     } else {
       // request already delivered
+      $error = $response;
       $status = -3;
     } 
   } else {
     // invalid deferred id
+    $error = $response;
     $status = -4;
   }
+  //return drupal_json_output(array('status' => $status, 'data' => $data, 'error' => $error));
   return drupal_json_output(array('status' => $status, 'data' => $data));
 }

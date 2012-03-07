@@ -22,19 +22,19 @@ function update_progress() {
         jQuery('#tp_signatures_bar').attr('src', bar_url);
       }
     } else if (response.status == -1) {
-      if (update_progress_retries) {
+      if (update_progress_retries > 0) {
         update_progress_retries -= 1;
-        setTimeout(update_progress, 500);
+        setTimeout(update_progress, 1000+(500*(6-update_progress_retries)));
       }
     }
   }).error(function() {
-    if (update_progress_retries) {
+    if (update_progress_retries > 0) {
       update_progress_retries -= 1;
-      setTimeout(update_progress, 500);
+      setTimeout(update_progress, 1000+(500*(6-update_progress_retries)));
     }
   })
 }
 
 jQuery(document).ready(function(){
-  setTimeout(update_progress, 500);
+  setTimeout(update_progress, 1000);
 });
