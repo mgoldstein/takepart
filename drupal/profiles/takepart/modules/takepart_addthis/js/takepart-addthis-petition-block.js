@@ -19,4 +19,3 @@ jQuery(document).ready(function() {
   });
   shareattach();
 });
-	
