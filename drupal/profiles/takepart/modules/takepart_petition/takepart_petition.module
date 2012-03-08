@@ -200,14 +200,10 @@ EOJ;
     $name = substr($delta, 0, -strlen('_progress'));
     $form = takepart_petition_forms($name);
   
-    // Get the signature count from BSD
-    $signature_count = _takepart_bsd_signup_count($form->petition_form_id);
-    if ($signature_count < 0) {
-      // Use the local count instead
-      $signature_count = db_query(
-        "SELECT count(mail) FROM takepart_petition_signature WHERE petition_form = :petition_form", 
-        array(':petition_form' => $name))->fetchField();  
-    }   
+    // Use the local signature count
+    $signature_count = db_query(
+      "SELECT count(mail) FROM takepart_petition_signature WHERE petition_form = :petition_form", 
+      array(':petition_form' => $name))->fetchField();  
     
     if ($form->goal > 0) {
       $percent_to_goal = ($signature_count / $form->goal) * 100.0;
@@ -222,11 +218,10 @@ EOJ;
       'goal' => $form->goal,
       'signature_count' => $signature_count,
       'percent_to_goal' => $percent_to_goal,
-      'form_id' => $form->petition_form_id,
       'progress_bar_url' => $progress_bar_url,
     );
 
-    $progress_js  = 'var tp_petition_signatures_form_id = "'. $form->petition_form_id .'";';
+    $progress_js  = 'var tp_petition_signatures_form_name = "'. $name .'";';
     $progress_js .= 'var  tp_petition_signatures_goal = "'. $form->goal . '";';
  
     // Add the css and javascript for the progress bar
@@ -838,34 +833,10 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
   drupal_goto($thank_url, array('query'=>array('t'=>(string)time())));
 }
 
-function _takepart_petition_progress_form($form, &$form_state, $petition_form) {
-
-  $progress_markup = "<div>Progress Markup Goes Here</div>";
-  $form['markup'] = array(
-    '#type' => 'item',
-    '#markup' => $progress_markup,
-  );
-
-  $form['total'] = array(
-    '#type' => 'hidden',
-    '#value' => $petition_form->goal,
-  );
-  
-  $deferred_id = _takepart_bsd_apiquery("signup/signup_count", array('signup_form_id' => $petition_form->petition_form_id), false);
-  $form['progress'] = array(
-    '#type' => 'hidden',
-    '#value' => $deferred_id,
-  );
-  
-  return $form;
-}
-
-function _takepart_petition_signature_count($form_id) {
-  $status = -1;
-  $data = -1;
-  if (is_numeric($form_id)) {
-    $status = 0;
-    $data = _takepart_bsd_signup_count($form_id);
-  } 
-  return drupal_json_output(array('status' => $status, 'data' => $data));
+function _takepart_petition_signature_count($form_name) {
+  // Use the local signature count
+  $data = db_query(
+    "SELECT count(mail) FROM takepart_petition_signature WHERE petition_form = :petition_form", 
+    array(':petition_form' => $form_name))->fetchField();  
+  return drupal_json_output(array('status' => 0, 'data' => $data));
 }
