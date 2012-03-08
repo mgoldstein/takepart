@@ -1,10 +1,12 @@
 var update_progress_retries = 5;
 
 function update_progress() {
-
-  var jqxhr = jQuery.getJSON('/lastcall/ajax/signature-count/'+tp_petition_signatures_deferred_id, function(response) {
+  var countURL  = '/lastcall/ajax/signature-count/' + tp_petition_signatures_form_id;
+  var d = new Date();
+  countURL += '?t=' + d.getTime();
+  var jqxhr = jQuery.getJSON(countURL, function(response) {
     if (response.status == 0) {
-      var goal = tp_petition_signatures_goal;
+      var goal = parseInt(tp_petition_signatures_goal);
       var count = parseInt(response.data);
       if ( (!isNaN(count)) && (!isNaN(goal)) && (goal>0) ) {
         var percent = (count / goal) * 100.0;
