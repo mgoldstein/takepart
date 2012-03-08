@@ -38,14 +38,9 @@
 <div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
   <div class='comments-header'>
-    <?php if (!user_is_logged_in()): ?>
-      <div class="comments-join-login">
-        <?php print t('To join the conversation'); ?>, <?php print l('log in', "user/", array("query"=>drupal_get_destination())); ?> <?php print t('or'); ?><fb:login-button ><?php print t('Connect'); ?></fb:login-button>
-      </div>
-    <?php endif; ?>
     <h2 class="title"><?php print t('Comments'); ?></h2>
     <?php if ($content['#fb_comments']['enabled']): ?>
-      <span class='comment-count'><fb:comments-count href=<?php print $content['#fb_comments']['url'] ?>></fb:comments-count></span>
+      <span class='comment-count'><fb:comments-count href="<?php print $content['#fb_comments']['url'] ?>"></fb:comments-count></span>
     <?php else: ?>
       <span class='comment-count'><?php print $content['#node']->comment_count; ?></span>
     <?php endif; ?>
@@ -72,9 +67,6 @@
 
   <?php else: ?>
 
-    <?php if ($content['comment_form']): ?>
-      <?php print render($content['comment_form']); ?>
-    <?php endif; ?>
     <?php 
       $comments = array_reverse($content['comments']);
       print render($comments);
