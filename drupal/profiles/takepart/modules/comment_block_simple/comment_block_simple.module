@@ -14,7 +14,7 @@ function comment_block_simple_block_view($delta= 1) {
 
   $content = comment_node_page_additions($node);
   
-  if ($node->comment_count == 0) {
+  if ($node->comment_count == 0 && module_exists('facebook_comments')) {
   
     // node has no drupal comments, can use facebook
     $fb_comments = db_select('facebook_comments', 'f')
