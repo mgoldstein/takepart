@@ -7,17 +7,64 @@ function comment_block_simple_block_info() {
   );
 }
 function comment_block_simple_block_view($delta= 1) {
-   $node = menu_get_object();
-
-  $block['content'] = comment_node_page_additions($node);
-  //if the comment count is 0 we still want to show the comment section 
-  //so we send an empty comment_wrapper throw
   global $user;
-  if(($node->comment_count == 0) && (!$user->uid)  ) {
-    $block['content'] = theme('comment_wrapper');
-    
+  global $base_url;
+
+  $node = menu_get_object();
+
+  $content = comment_node_page_additions($node);
+  
+  if ($node->comment_count == 0) {
+  
+    // node has no drupal comments, can use facebook
+    $fb_comments = db_select('facebook_comments', 'f')
+      ->fields('f', array('enabled', 'amount'))
+      ->condition('f.nid', $node->nid, '=')
+      ->execute()
+      ->fetchObject();
+
+    if (isset($fb_comments->enabled) && $fb_comments->enabled) {
+
+      // add the Facebook App ID if it exists
+      if ($appid = variable_get('facebook_comments_appid', '')) {    
+        $element = array(
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'fb:app_id',
+            'content' => $appid,
+          ),
+        );
+        drupal_add_html_head($element, 'facebook_comments');
+      }
+
+      // generate the URL
+      $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
+      $protocol = strtolower($_SERVER["SERVER_PROTOCOL"]);
+      $protocol = substr($protocol, 0, strpos($protocol, "/")) . $s; 
+      $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]); 
+      $url = $base_url .'/'. drupal_get_path_alias($_GET['q']);
+
+      // add user defined settings  
+      $width = variable_get('facebook_comments_width', '640');
+      $style = variable_get('facebook_comments_style', 'light');
+
+      $content['#fb_comments'] = array(
+        'enabled' => true,
+        'url' => $url,
+        'width' => $width,
+        'style' => $style,
+        'amount' => $fb_comments->amount,
+      );
+    }
   }
 
-  return $block;
-}
+  $content += array(
+    '#fb_comments' => array(
+      'enabled' => false,
+    ),
+  );
 
+  return array(
+    'content' => $content,
+  );
+}
