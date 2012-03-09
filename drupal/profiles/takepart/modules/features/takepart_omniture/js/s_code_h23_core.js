@@ -132,15 +132,6 @@ function s_doPlugins(s) {
     //s.eVar28=s.prop27?s.prop27:''; s.profp 27 Article Share clicked
 
     s.previousPage=s.getPreviousValue(s.pageName,'gpv_p5','');
-    if (s.events.indexOf('event26')>-1){
-        if(s.linkType=='o'||s.linkType=='d'||s.linkType=='e'){
-            s.prop11=s.eVar14=s.pageName;
-            s.linkTrackVars=s.linkTrackVars+",prop11,eVar14"
-        }else{
-            s.prop11=s.eVar14=s.previousPage;
-        }
-    }
-
 }
 s.doPlugins=s_doPlugins
 
