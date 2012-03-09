@@ -13,8 +13,6 @@ function comment_block_simple_block_view($delta= 1) {
   $node = menu_get_object();
   $content = comment_node_page_additions($node);
   
-//  ddl(ddebug_backtrace(TRUE));
-  
   // Requires the Facebook Comments module
   if (module_exists('facebook_comments')) {
   
@@ -69,6 +67,10 @@ function comment_block_simple_block_view($delta= 1) {
     '#fb_comments' => array(
       'enabled' => false,
     ),
+    '#theme' => 'comment_wrapper__node_' . $node->type, 
+    '#node' => $node, 
+    'comments' => array(), 
+    'comment_form' => array(),
   );
 
   return array(
