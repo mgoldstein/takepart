@@ -11,7 +11,7 @@
     <span>Signature Goal: <?php print number_format($variables['goal']) ?></span>
     </div>
     <div class="tp-pet-progress-count">
-    <span>PROGRESS: <span id="tp_signatures_percent"><?php print number_format($variables['percent_to_goal'], 1) ?></span></span>
+    <span>PROGRESS: <span id="tp_signatures_percent"><?php print number_format($variables['percent_to_goal'], 1) ?>%</span></span>
     </div>
   </div>
   </div>
