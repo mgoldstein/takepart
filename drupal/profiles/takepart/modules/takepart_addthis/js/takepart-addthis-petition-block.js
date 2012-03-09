@@ -13,8 +13,7 @@ jQuery(document).ready(function() {
       s.eVar27=title;
       s.linkTrackVars='eVar27,prop26,events';
       s.linkTrackEvents='event25';
-      s.tl(this.href, 'o', 'Content Share');
-
+      s.tl(this, 'o', 'Content Share');
     });
   });
   shareattach();

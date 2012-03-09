@@ -432,7 +432,16 @@ function takepart_addthis_ajax_form_theme(&$theme_funcs){
 
 function takepart_addthis_ajax_form_block_view($delta = ''){
   $block = array();
+
+  //there is only one delta here, switch anyway
   if($delta == 'addthis_ajax_form'){
+
+    drupal_add_js(
+      drupal_get_path('module', 'takepart_addthis') . '/js/takepart-addthis-petition-block.js',
+      array('group' => JS_DEFAULT, 'type' => 'file')
+    );
+
+    //create the block
     $block['subject'] = t('');
     $block['content'] = theme('takepart_addthis_ajax_form_block', array());
   }
