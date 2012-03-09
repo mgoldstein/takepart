@@ -18,11 +18,17 @@
 <script type="text/javascript">
   var addthis_config = {
     ui_email_note: 'SHARE THE BILL OF RIGHTS\nThe more names we have, the more powerful our message. Share the Water Bill of Rights with friends and family!',
-    ui_email_from: "<?php print $_COOKIE['petition_signed_as'] ?>"
+    ui_email_from: "<?php print $_COOKIE['petition_signed_as'] ?>",
   };
   var addthis_share = {
     templates: {
       twitter: "Water is a right, not a privilege! Sign the Water Bill of Rights today. {{url}} #knowyourwater via @TakePart"
-    }
+    },
   };
+  jQuery(document).ready(function() {
+    var petition_signed_as = "<?php print $_COOKIE['petition_signed_as'] ?>";
+    if (petition_signed_as.length > 0) {
+      jQuery("input#edit-email").val(petition_signed_as).removeClass('takepart-newsletter-empty');   
+    } 
+  });
 </script>

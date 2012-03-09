@@ -451,7 +451,7 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $sig
   $form['email'] = array(
     '#type' => 'textfield',
     '#title' => t('Email'),
-    '#default_value' => ' Enter email address',
+    '#default_value' => 'Your Email',
     '#size' => 60,
     '#maxlength' => 128,
     //'#attributes' => array('onclick' => 'this.value="blah.'.mt_rand(100, 10000).'@blah.com"; takepart_input_box_tweak(this)'),
