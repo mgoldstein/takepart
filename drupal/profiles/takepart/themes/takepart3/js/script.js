@@ -349,3 +349,6 @@ function gallery_swap_active(origin) {
 	return activeid;
 }
 
+jQuery(document).ready(function() {
+	jQuery('#widget_pager_top_photo_gallery-block .jcarousel-item-1 img').toggleClass('highlight');
+});
