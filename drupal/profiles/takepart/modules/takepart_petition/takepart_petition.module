@@ -199,15 +199,30 @@ EOJ;
 
     $name = substr($delta, 0, -strlen('_progress'));
     $form = takepart_petition_forms($name);
+  
+    // Use the local signature count
+    $signature_count = db_query(
+      "SELECT count(mail) FROM takepart_petition_signature WHERE petition_form = :petition_form", 
+      array(':petition_form' => $name))->fetchField();  
     
-    $deferred_id = _takepart_bsd_apiquery("signup/signup_count", array('signup_form_id' => $form->petition_form_id), false);  
+    if ($form->goal > 0) {
+      $percent_to_goal = ($signature_count / $form->goal) * 100.0;
+      $progress_bar_num = (string)(floor($percent) - (floor($percent) % 10));
+      $progress_bar_url = url(drupal_get_path('module', 'takepart_petition') .'/images/petition-status-bar-'.$progress_bar_num .'.png');
+    } else {
+      $percent_to_goal = 0.0;
+      $progress_bar_url = url(drupal_get_path('module', 'takepart_petition') .'/images/petition-status-bar.png');
+    }
+    
     $variables = array(
       'goal' => $form->goal,
-      'deferred_id' => $deferred_id,
+      'signature_count' => $signature_count,
+      'percent_to_goal' => $percent_to_goal,
+      'progress_bar_url' => $progress_bar_url,
     );
 
-    $progress_js  = 'var tp_petition_signatures_deferred_id = "'. $deferred_id .'"; ';
-    $progress_js .= 'var  tp_petition_signatures_goal = '. $form->goal . ';';
+    $progress_js  = 'var tp_petition_signatures_form_name = "'. $name .'";';
+    $progress_js .= 'var  tp_petition_signatures_goal = "'. $form->goal . '";';
  
     // Add the css and javascript for the progress bar
     drupal_add_library('system','jquery.cookie');
@@ -815,56 +830,13 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
   setcookie('petition_signed_as',$mail,time()+(86400 * 365));
 
   $thank_url = variable_get('water_bill_of_rights_thank_you');
-  drupal_goto($thank_url);
+  drupal_goto($thank_url, array('query'=>array('t'=>(string)time())));
 }
 
-function _takepart_petition_progress_form($form, &$form_state, $petition_form) {
-
-  $progress_markup = "<div>Progress Markup Goes Here</div>";
-  $form['markup'] = array(
-    '#type' => 'item',
-    '#markup' => $progress_markup,
-  );
-
-  $form['total'] = array(
-    '#type' => 'hidden',
-    '#value' => $petition_form->goal,
-  );
-  
-  $deferred_id = _takepart_bsd_apiquery("signup/signup_count", array('signup_form_id' => $petition_form->petition_form_id), false);
-  $form['progress'] = array(
-    '#type' => 'hidden',
-    '#value' => $deferred_id,
-  );
-  
-  return $form;
-}
-
-function _takepart_petition_signature_count($deferred_id) {
-
-  $data = '';
-  if (strlen($deferred_id) == 32) {
-    $response = _takepart_bsd_apiquery("get_deferred_results", array('deferred_id' => $deferred_id), false);
-    if (strpos($response, 'The requested deferred result has already been delivered.') === false) {
-      if (strpos($reponse, 'The deferred_id') === false && strpos($response, 'cannot be found.') === false) {
-        $xml = simplexml_load_string($response);
-        if ($xml) {
-          $data = (string)$xml->count;
-          $status = 0;
-        } else {
-          $status = -1;
-        }
-      } else {
-        // the deferred id was not found
-        $status = -2;
-      }
-    } else {
-      // request already delivered
-      $status = -3;
-    } 
-  } else {
-    // invalid deferred id
-    $status = -4;
-  }
-  return drupal_json_output(array('status' => $status, 'data' => $data));
+function _takepart_petition_signature_count($form_name) {
+  // Use the local signature count
+  $data = db_query(
+    "SELECT count(mail) FROM takepart_petition_signature WHERE petition_form = :petition_form", 
+    array(':petition_form' => $form_name))->fetchField();  
+  return drupal_json_output(array('status' => 0, 'data' => $data));
 }
