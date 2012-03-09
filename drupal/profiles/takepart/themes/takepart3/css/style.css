@@ -81,7 +81,7 @@ hr {
     list-style-type: none;
     text-align: center;
     padding: 8px 0 0 0;
-} 
+}
 
 #slim-header ul.menu li a {
     background: none;
@@ -208,7 +208,7 @@ body.sidebar-first #left-rail
 
 /*
 body.two-sidebars #content .block-boxes-delta-main {
-    display: none; 
+    display: none;
 }
 */
 
@@ -233,7 +233,7 @@ body.two-sidebars #content, body.sidebar-first #content
     float: left;
 }
 
-.field-name-field-tp-campaign-intro-media { 
+.field-name-field-tp-campaign-intro-media {
     display: block;
     margin-bottom: 20px;
 }
@@ -275,7 +275,7 @@ h3 {
 }
 
 .view-campaigns.view-dom-id-2 .view-content ul,
-.view-campaigns.view-dom-id-3 .view-content ul{  
+.view-campaigns.view-dom-id-3 .view-content ul{
     margin-bottom: 0;
     margin-left: -12px;
     margin-top: 0;
@@ -480,7 +480,7 @@ ul,ol
     display:none;
 }
 
-.block-boxes-title-features .views-field-title a, 
+.block-boxes-title-features .views-field-title a,
 .block-boxes-title-features .views-field-field-article-subhead a,
 .block-boxes-title-features .views-field-nid span a
 {
@@ -498,8 +498,8 @@ ul,ol
 
 
 
-.block-boxes-title-features .views-field-title, 
-.block-boxes-title-features .views-field-field-article-subhead, 
+.block-boxes-title-features .views-field-title,
+.block-boxes-title-features .views-field-field-article-subhead,
 .block-boxes-title-features .views-field-field-page-subhead,
 .block-boxes-title-features .views-field-nid,
 .block-boxes-title-features .views-field-field-promo-text
@@ -513,7 +513,7 @@ ul,ol
     color: #000;
 }
 
-.main-content .block-boxes-title-features .views-row:hover .views-field-title a, 
+.main-content .block-boxes-title-features .views-row:hover .views-field-title a,
 .main-content .block-boxes-title-features .views-row:hover .views-field-field-article-subhead a,
 .main-content .block-boxes-title-features .views-row:hover .views-field-nid a
 {
@@ -619,7 +619,7 @@ ul,ol
 .view-campaigns.view-display-id-block_1 .views-row-last {
     margin-right: 0;
 }
-.view-campaigns.view-display-id-block_1 .views-row .views-field-title a {  
+.view-campaigns.view-display-id-block_1 .views-row .views-field-title a {
     color: black;
     display: inline-block;
     font-size: 18px;
@@ -654,7 +654,7 @@ ul,ol
 }
 
 .view-campaigns.view-dom-id-2 .view-content ul,
-.view-campaigns.view-dom-id-3 .view-content ul{  
+.view-campaigns.view-dom-id-3 .view-content ul{
     margin: 0;
     padding: 0;
 }
@@ -786,7 +786,7 @@ h1.title a:hover {
     margin-bottom:10px;
 }
 
-.node-type-section-front-wide h1.title, 
+.node-type-section-front-wide h1.title,
 .node-type-section-front h1.title,
 .node-type-webform .main-content h1.title,
 .node-type-takepart-page .main-content h1.title,
@@ -1044,7 +1044,7 @@ h1.title a:hover {
 }
 
 #right-rail .field-name-field-blog-view .views-field-title a
-{   
+{
     font-size:15px;
     font-weight: bold;
 }
@@ -1063,7 +1063,7 @@ h1.title a:hover {
 }
 #right-rail .block-boxes-view-name-related_actions,
 #right-rail .block-boxes-title-take-action,
-#right-rail .block-boxes-current-related_actions 
+#right-rail .block-boxes-current-related_actions
 {
     margin-bottom:15px;
     border:solid 4px #FFE789;
@@ -1255,7 +1255,7 @@ h1.title a:hover {
     font-size: 16px;
     margin:0;
     padding:0;
-    border:none; 
+    border:none;
 }
 
 #right-rail .views-field-field-promo-text {
@@ -1626,7 +1626,7 @@ h1.title a:hover {
     line-height: 44px;
 }
 */
-.main-content .views-slideshow-controls-top { 
+.main-content .views-slideshow-controls-top {
     z-index: 1000;
 }
 
@@ -1735,7 +1735,7 @@ body.node-type-blog-front .node-blog-front h2.title {
 
 .jcarousel-skin-takepart .jcarousel-prev-horizontal,
 .jcarousel-skin-takepart .jcarousel-next-horizontal {
-    top: 0px !important;    
+    top: 0px !important;
 }
 /*
 .jcarousel-skin-takepart .jcarousel-prev-horizontal:hover {
@@ -1794,7 +1794,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox {
 }
 
 #comments .fb_comments_count_zero {
-  display: none;
+    display: none;
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a {
@@ -1804,12 +1804,12 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a {
 }
 
 .region-content-top .takepart_addthis_leftpanel {
-	width: 690px;
+    width: 690px;
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
     float: none;
-    height: 15px;   
+    height: 15px;
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_digg {
@@ -1855,14 +1855,14 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
 }
 
 #right-rail .field-name-field-blog-view .views-field-title a:hover {
-    color: #1CA9E7; 
+    color: #1CA9E7;
 }
 
 #header-wrapper ul.menu {
     padding:0;
 }
 
-#block-menu-block-1 { 
+#block-menu-block-1 {
     padding-top:14px;
 }
 #header-wrapper ul.menu {
@@ -1921,7 +1921,7 @@ div.views-content-field-gallery-images img {
 .block-boxes-delta-page_title_h1 h1.title span {
     color: #000000;
     font-size: 36px;
-    line-height: 100%;  
+    line-height: 100%;
 }
 
 .main-content .block-boxes-current-video {
@@ -1996,9 +1996,9 @@ div.views-content-field-gallery-images img {
 
 
 #boxes-box-allfilms_campaigns_columns_block ul li {
-	 clear: left;
-     float: left;
-     margin: 0 5px 7px 0;
+    clear: left;
+    float: left;
+    margin: 0 5px 7px 0;
 }
 
 #boxes-box-allfilms_campaigns_columns_block ul li a {
@@ -2018,7 +2018,7 @@ div.views-content-field-gallery-images img {
 }
 
 .field-name-field-tp-campaign-cover-link .field-item {
-	padding-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 #boxes-box-allfilms_campaigns_columns_block ul li {
@@ -2026,30 +2026,30 @@ div.views-content-field-gallery-images img {
 }
 
 .node-type-section-front-wide .view-campaigns.view-display-id-block_1 .views-row .views-field-title a {
-	font-size: 16px;
+    font-size: 16px;
 }
 
-.node-type-section-front-wide .view-campaigns.view-dom-id-2 .view-content ul li, 
+.node-type-section-front-wide .view-campaigns.view-dom-id-2 .view-content ul li,
 .node-type-section-front-wide .view-campaigns.view-dom-id-3 .view-content ul li {
-	margin: 0 7px 30px 0;
+    margin: 0 7px 30px 0;
 }
 
 .node-type-section-front-wide #block-boxes-allfilms-campaigns-columns-block h2 {
-	border-bottom: 1px solid #d9e7ee;
+    border-bottom: 1px solid #d9e7ee;
     margin-bottom: 10px;
 }
 
 .node-type-section-front-wide .region-content .field-type-text-with-summary p {
-	font-size: 18px;
-	color: #666666;
+    font-size: 18px;
+    color: #666666;
 }
 
 .node-type-takepart-campaign .block-boxes-bid-takepart_custom-page_title_h1 h1 {
-    padding-bottom: 4px;	
+    padding-bottom: 4px;
 }
 
 q:before, q:after {
-    content: ""; 
+    content: "";
 }
 
 .node-type-openpublish-video .node-openpublish-video .field-name-field-subhead {
@@ -2057,7 +2057,7 @@ q:before, q:after {
 }
 
 .node-type-takepart-campaign .page {
-	padding: 35px 0px;
+    padding: 35px 0px;
 }
 
 body.node-type-takepart-campaign .main-content #content {
@@ -2069,9 +2069,17 @@ body.node-type-takepart-campaign .main-content #content {
 }
 
 .node-type-section-front-wide .view-campaigns.view-display-id-block_1 .views-row {
-	margin: 0 8px 0 0;
+    margin: 0 8px 0 0;
 }
 
 .block-newsletter-campaign h2 {
-	width: 270px;
+    width: 270px;
+}
+
+.page-node-22525 .main-content h2 {
+    border-top:1px dotted #000;
+    margin:0;
+    padding:20px 0 10px;
+    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 20px transparent;
+    width:100%;
 }
