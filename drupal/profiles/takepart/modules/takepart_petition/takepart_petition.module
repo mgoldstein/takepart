@@ -623,6 +623,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
       '#title_display' => 'attribute',
       '#attributes' => array(
         'class' => array('pet-form-click-event','pet-form-optin-event',),
+        'title' => $ngo->label,
       ),
     );
     $form['form_container']['ngo_markup'] = array(
@@ -639,6 +640,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#title_display' => 'attribute',
     '#attributes' => array(
       'class' => array('pet-form-click-event','pet-form-optin-event',),
+      'title' => $campaign_list_title,
     ),
   );
   $form['form_container']['camp_opt_in_markup'] = array(
