@@ -420,12 +420,12 @@ function takepart3_field__field_actionheaderimghref(&$vars) {
 }
 
 function takepart3_field__field_author(&$vars) {
+
   // Author
   $authors = array();
   foreach($vars['items'] as $key => $value){
     $authors[] = render($value);
   }
-
   switch(count($authors)){
     case 1:
       $authors = $authors[0];
@@ -438,14 +438,31 @@ function takepart3_field__field_author(&$vars) {
       $authors = implode( ' & ', array(implode(', ', $authors), $last_author));
       break;
   }
+  $authors_field = sprintf("<div class='field field-author'>By %s</div>", $authors);
   
   // Date
   $date = format_date($vars['element']['#object']->created, 'medium', 'F j, Y');
+  $date_field = sprintf("<div class='field article-date'>%s</div>", $date);
   
   //Comments
-  $comments = $vars['element']['#object']->comment_count;
+  $node = $vars['element']['#object'];
+  if (($node->comment == COMMENT_NODE_OPEN) || (($node->comment == COMMENT_NODE_CLOSED) && (! empty($node->comment_count)) && ($node->comment_count != 0))) {
+    // Comments are either open, or there are existing closed comments
+    if ($node->comment_count == 0) {
+      // There is no comment count to show so use a generic phrase
+      $comments_field = "<div class='field article-comment-count'><a href='#comments'>See comments</a></div>";
+    } else {
+      // We have a comment count to show
+      $comments = $vars['element']['#object']->comment_count;
+      $comments_field = sprintf("<div class='field article-comment-count'><a href='#comments'>%s comments</a></div>", $comments);
+    }
+  } else {
+    // Comments are hidden, or are closed and there are none
+    $comments_field = '';
+  }
   
-  return sprintf("<div class='submitted-wrapper'><div class='submitted clearfix'><div class='field field-author'>By %s</div><div class='field article-date'>%s</div><div class='field article-comment-count'><a href='#comments'>%s comments</a></div></div></div>", $authors, $date, $comments);
+  return sprintf("<div class='submitted-wrapper'><div class='submitted clearfix'>%s%s%s</div></div>",
+                 $authors_field, $date_field, $comments_field);
 }
 
 // Rewrites 'field_tp_campaign_4_things_link' in Campaign content types
