@@ -76,12 +76,11 @@
 
                 var title = $('#'+ focusBlockId +' .views-field-field-image-title h4').text();
                 s.linkTrackVars="eVar15,events";
-                s.linkTrackEvents="event15";
+                s.linkTrackEvents="event2,event15";
                 s.eVar15=s.prop17 +": "+ title;
                 s.prop15=s.eVar15;
-                s.events="event15";
+                s.events="event2,event15";
                 s.tl(this.href, 'o', 'Gallery Photo View');
-                void(s.t());
             });
         }
     }
@@ -97,7 +96,6 @@
                 s.prop15=s.eVar15;
                 s.events="event2,event15";
                 s.tl(this.href, 'o', 'Gallery Photo View');
-                void(s.t());
             });
         }
     }
@@ -108,12 +106,11 @@
             	var activeID = gallery_swap_active(this);
                 var title = $('#views_slideshow_cycle_div_photo_gallery-block_' + activeID.toString() + ' .views-field-field-image-title h4').text();
                 s.linkTrackVars="eVar15,events";
-                s.linkTrackEvents="event15";
+                s.linkTrackEvents="event2,event15";
                 s.eVar15=s.prop17 + ":" + title;
                 s.prop15=s.eVar15;
-                s.events="event15";
-                s.tl(this.href, 'o', 'Gallery Photo View'); 
-                void(s.t()); 
+                s.events="event2,event15";
+                s.tl(this.href, 'o', 'Gallery Photo View');
             });
         }
     }
