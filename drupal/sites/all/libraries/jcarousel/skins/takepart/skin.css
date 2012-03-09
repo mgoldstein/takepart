@@ -23,7 +23,9 @@
 
 .jcarousel-skin-takepart .jcarousel-clip-horizontal {
     width:  564px;
-    height: 75px;
+    height: 70px;
+    padding-bottom: 10px;
+    margin-left: -15px;
 }
 
 .jcarousel-skin-takepart .jcarousel-clip-vertical {
@@ -63,7 +65,7 @@
     top: 0px;
     right: 0px;
     width: 25px;
-    height: 66px;
+    height: 70px;
     cursor: pointer;
     background: url("right_arrow_white.png") no-repeat scroll 4px 21px #1ca9e7;
     
@@ -80,11 +82,12 @@
 .jcarousel-skin-takepart .jcarousel-prev-horizontal {
     background: url("left_arrow_white.png") no-repeat scroll 4px 21px #1ca9e7;
     cursor: pointer;
-    height: 66px;
+    height: 70px;
     left: 0px;
     position: absolute;
     top: 0;
     width: 25px;
+    margin-top: 2px;
 }
 
 .jcarousel-skin-takepart .jcarousel-prev-horizontal:hover {
@@ -98,4 +101,51 @@
     left: auto;
     right: 5px;
     background-image: url(right_arrow.png);
+}
+
+
+div.views-field-field-gallery-images:hover {
+    
+}
+
+dev.views-field-field-gallery-images .views-content-field-gallery-images:hover {
+    
+}
+
+div.views-content-field-gallery-images {
+
+    border: none; 
+    overflow: hidden; 
+    float: left;
+    padding-left:2px;
+    padding-right:2px;
+}
+
+div.views-content-field-gallery-images:hover {
+	
+}
+
+div.views-content-field-gallery-images .highlight {
+    border: 3px solid #a4b8c3;
+    margin: -3px;
+}
+
+div.views-content-field-gallery-images .highlight img {
+	
+}
+
+#content .views_slideshow_jcarousel_pager ul li.jcarousel-item {
+	margin: 2px;
+}
+
+div.views-content-field-gallery-images:hover img {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin: -3px;
+    border: 3px solid #1CA9E7;
+}
+
+div.views-content-field-gallery-images img {
+    height: 70px;
+    width: 94px;
 }
