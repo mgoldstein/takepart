@@ -1,4 +1,5 @@
 var tp_pet_start_events_tracked = false;
+var tp_pet_submit_event_tracked = false;
 
 jQuery(document).ready(function() {
 
@@ -7,38 +8,48 @@ jQuery(document).ready(function() {
     // Attach tracking to submit button
     jQuery('.petition-form').submit(function() { 
     
-      var form_title = jQuery(this).attr('title');
-      var title = convert_title(form_title);
-    
-      // Action (event 19)
-      s.events='event19';
-      s.eVar28='Petition';
-      s.linkTrackVars='eVar28,events';
-      s.linkTrackEvents='event19';
-      s.tl(this, 'o', 'Action');
+      if (! tp_pet_submit_event_tracked) {
 
-      // Petition Complete (event 27)
-      s.events='event27';
-      s.eVar25=title;
-      s.prop25=title;
-      s.linkTrackVars='eVar25,prop25,events';
-      s.linkTrackEvents='event27';
-      s.tl(this, 'o', 'Petition Complete');
+        var form_title = jQuery(this).attr('title');
+        var title = convert_title(form_title);
+
+        // Action (event 19)
+        s.events='event19';
+        s.eVar28='Petition';
+        s.linkTrackVars='eVar28,events';
+        s.linkTrackEvents='event19';
+        s.tl(true, 'o', 'Action');
+
+        // Petition Complete (event 27)
+        s.events='event27';
+        s.eVar25=title;
+        s.prop25=title;
+        s.linkTrackVars='eVar25,prop25,events';
+        s.linkTrackEvents='event27';
+        s.tl(true, 'o', 'Petition Complete');
       
-      jQuery('input[type="checkbox"]').filter('.pet-form-optin-event').each(function(index,element) {
-        checkbox = jQuery(this);
-        if (checkbox.attr('checked')) {
-          var cb_title = checkbox.attr('title');
-          var nl_title = convert_title(cb_title);
-          // Newsletter Sign-up (event 39)
-          s.events='event39';
-          s.eVar23=nl_title;
-          s.prop32=nl_title;
-          s.linkTrackVars='eVar23,prop23,events';
-          s.linkTrackEvents='event39';
-          s.tl(this, 'o', 'Newsletter Sign-up');
-        }
-      });
+        jQuery('input[type="checkbox"]').filter('.pet-form-optin-event').each(function(index,element) {
+          checkbox = jQuery(this);
+          if (checkbox.attr('checked')) {
+            // Newsletter Sign-up (event 39)
+            s.events='event39';
+            s.eVar23=checkbox.attr('title');
+            s.prop23=checkbox.attr('title');
+            s.linkTrackVars='eVar23,prop23,events';
+            s.linkTrackEvents='event39';
+            s.tl(true, 'o', 'Newsletter Sign-up');
+          }
+        });
+        
+        // Submit events have been tracked
+        tp_pet_submit_event_tracked = true;
+        
+        // Don't immediately submit the form,
+        // give the events some time to complete
+        setTimeout( function() {jQuery('.petition-form').submit();}, 500);
+        return false;
+      }
+      return true;
     });
 
     // Attach tracking to the form fields
@@ -57,7 +68,7 @@ jQuery(document).ready(function() {
         s.prop25=title;
         s.linkTrackVars='eVar25,prop25,events';
         s.linkTrackEvents='event26';
-        s.tl(this.href, 'o', 'Petition Start');
+        s.tl(true, 'o', 'Petition Start');
       }
     });
     jQuery('.pet-form-click-event').click(function() { 
@@ -75,10 +86,10 @@ jQuery(document).ready(function() {
         s.prop25=title;
         s.linkTrackVars='eVar25,prop25,events';
         s.linkTrackEvents='event26';
-        s.tl(this.href, 'o', 'Petition Start');
+        s.tl(true, 'o', 'Petition Start');
       }
     });
-
   });
+  
   shareattach();
 });
