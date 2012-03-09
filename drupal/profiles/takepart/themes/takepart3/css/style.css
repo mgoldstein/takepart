@@ -1793,6 +1793,10 @@ div.takepart_addthis_leftpanel div.addthis_toolbox {
     margin:12px 0;
 }
 
+#comments .fb_comments_count_zero {
+  display: none;
+}
+
 div.takepart_addthis_leftpanel div.addthis_toolbox a {
     display: block;
     margin-bottom: 8px;

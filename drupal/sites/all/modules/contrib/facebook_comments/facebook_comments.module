@@ -209,6 +209,7 @@ function facebook_comments_node_delete($node) {
 /**
  * Implements hook_node_view().
  */
+/*
 function facebook_comments_node_view($node, $view_mode, $langcode) {
   // Only display the comments in 'full' view mode
   if ($view_mode != "full") return;
@@ -254,3 +255,4 @@ function facebook_comments_node_view($node, $view_mode, $langcode) {
     '#weight' => 1002, 
   );
 }
+*/

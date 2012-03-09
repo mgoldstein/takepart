@@ -36,24 +36,46 @@
  */
 ?>
 <div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-    <?php print render($title_prefix); ?>
+  <?php if ($content['#fb_comments']['enabled']): ?>
     
+    <?php print render($title_prefix); ?>
     <div class='comments-header'>
-      <?php if (!user_is_logged_in()): ?>
-      <div class="comments-join-login"><?php print t('To join the conversation'); ?>, <?php print l('log in', "user/", array("query"=>drupal_get_destination())); ?></a> <?php print t('or'); ?> <fb:login-button ><?php print t('Connect'); ?></fb:login-button></div>
-      <?php endif; ?>
+      <h2 class="title"><?php print t('Comments'); ?></h2>
+      <span class='comment-count'><fb:comments-count href="<?php print $content['#fb_comments']['url'] ?>"></fb:comments-count></span>
+    </div>
+    <?php print render($title_suffix); ?>
+
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, "script", "facebook-jssdk"));
+    </script>
+    <div class="fb-comments"
+         data-href="<?php print $content['#fb_comments']['url'] ?>"
+         data-num-posts="<?php print $content['#fb_comments']['amount'] ?>"
+         data-width="<?php print $content['#fb_comments']['width'] ?>"
+         data-colorscheme="<?php print $content['#fb_comments']['style'] ?>"></div>
+
+  <?php else: ?>
+  <?php if ($content['#node']->comment_count > 0): ?>
+
+    <?php print render($title_prefix); ?>
+    <div class='comments-header'>
       <h2 class="title"><?php print t('Comments'); ?></h2>
       <span class='comment-count'><?php print $content['#node']->comment_count; ?></span>
     </div>
-    
     <?php print render($title_suffix); ?>
 
-    <?php if ($content['comment_form']): ?>
-    <?php print render($content['comment_form']); ?>
-    <?php endif; ?>
-    
     <?php 
-    $comments = array_reverse($content['comments']);
-    print render($comments);
+      $comments = array_reverse($content['comments']);
+      print render($comments);
     ?>
+
+  <?php endif; ?>
+  <?php endif; ?>
 </div>
