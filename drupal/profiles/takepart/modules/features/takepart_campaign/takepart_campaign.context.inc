@@ -75,13 +75,13 @@ function takepart_campaign_context_default_contexts() {
           'delta' => 'page_title_h1',
           'region' => 'highlighted',
           'weight' => '-10',
-        ),
+        ), /*
         'takepart_addthis-addthis_simple' => array(
           'module' => 'takepart_addthis',
           'delta' => 'addthis_simple',
           'region' => 'highlighted',
           'weight' => '-8',
-        ),
+        ), */
         'boxes-box-2988d8fb' => array(
           'module' => 'boxes',
           'delta' => 'box-2988d8fb',
