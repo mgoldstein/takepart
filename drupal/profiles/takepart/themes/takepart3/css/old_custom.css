@@ -619,7 +619,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 /* action + impact page */
 .view-campaigns{
     border-bottom: 3px solid #666666;
-    padding-bottom: 20px;
+    padding-bottom: 12px;
 }
 .view-campaigns tr{
     display:block;
