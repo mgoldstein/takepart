@@ -18,7 +18,7 @@ function comment_block_simple_block_view($delta= 1) {
   
     // Facebook comments should be use for nodes with no existing comments
     // that are not hidden
-    if ($node->comment_count == 0 && $node->comment != COMMENT_NODE_HIDDEN) {
+    if ($node->comment_count == 0 && $node->comment == COMMENT_NODE_OPEN) {
   
       // node has no drupal comments, can use facebook
       $fb_comments = db_select('facebook_comments', 'f')
