@@ -4,14 +4,14 @@
   </div>
   <div class="tp-pet-progress-info">
     <div class="tp-pet-progress-count">
-    <span id="tp_signatures_to_date"></span>
+    <span>Signatures to Date: <span id="tp_signatures_to_date"><?php print number_format($variables['signature_count']) ?></span></span>
     </div>
-    <img id="tp_signatures_bar" src="/profiles/takepart/modules/takepart_petition/images/petition-status-bar.png" />
+    <img id="tp_signatures_bar" src="<?php print $variables['progress_bar_url'] ?>" />
     <div class="tp-pet-progress-count">
     <span>Signature Goal: <?php print number_format($variables['goal']) ?></span>
     </div>
     <div class="tp-pet-progress-count">
-    <span id="tp_signatures_percent"></span>
+    <span>PROGRESS: <span id="tp_signatures_percent"><?php print number_format($variables['percent_to_goal'], 1) ?></span></span>
     </div>
   </div>
   </div>

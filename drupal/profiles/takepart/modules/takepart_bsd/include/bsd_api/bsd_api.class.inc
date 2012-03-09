@@ -122,6 +122,31 @@ class BSD_API {
     return $req;
   }
   
+  public function callActionServer($url, $query_params = array()) {
+
+    // prepend URL with base path for the API
+    $url = 'http://action.takepart.com/' . $url;
+
+    // add query string to request URL
+    $url .= '?' . http_build_query($query_params);
+
+    $restmethod = variable_get('takepart_bsd_api_restmethod', 0);
+
+    // Stream Wrapper:
+    if($restmethod == 0) {
+      $req = file_get_contents($url);
+      if (!file_get_contents("data:,ok")) {
+        watchdog('bsd', 'PHPs stream handlers are not functional.');
+      }
+
+    // Curl:
+    } else {
+      $reqarray = $this->_curl($url);
+      $req = $reqarray['body'];
+    }
+    
+    return $req;
+  }
 
   private function _buildApiMac($url, $query) {
     // break URL into parts to get the path
