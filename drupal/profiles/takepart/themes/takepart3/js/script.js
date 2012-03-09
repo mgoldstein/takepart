@@ -292,17 +292,60 @@ jQuery(document).ready(function () {
     });
 });
 
-
-jQuery(document).ready(function () {
-	jQuery("#views_slideshow_controls_text_previous_photo_gallery-block").click(function () {
-		void(s.t());
-	});
-	jQuery("#views_slideshow_controls_text_next_photo_gallery-block").click(function () {
-		void(s.t());
-	});
-	jQuery('.views-content-field-gallery-images img').click(function () {
-    	void(s.t());
-    });
-});
-
+/* 
+ * Function for setting the active image in the jquery carousel, either from the left / right
+ * navigation arrow on the large image, or from the image in the carousel itself.
+ */
+function gallery_swap_active(origin) {
+	var activeid = 0;
+	//remove the highlight class from all the images in the carousel:
+	jQuery('#widget_pager_top_photo_gallery-block .highlight').removeClass('highlight');
+	if((jQuery(origin).attr('id') == "views_slideshow_controls_text_next_photo_gallery-block") ||
+	   (jQuery(origin).attr('id') == "views_slideshow_controls_text_previous_photo_gallery-block")) {
+		var imgstring = 0;
+		var firstimgstring = false;
+		//life clocks are a lie, carousel is a lie, there is no renewal
+	    jQuery('#views_slideshow_cycle_teaser_section_photo_gallery-block > div').each(function () {
+	    	if(jQuery(this).css('display') == 'block') {
+	    		imgstring = jQuery(this).attr('id');
+	    		imgstring = imgstring.match(/\d+$/);
+	    		imgstring = parseInt(imgstring);
+	    		if(!firstimgstring) firstimgstring = imgstring;
+	    	}
+	    });
+	    //logic for wrapping at the end of, or begining of the carousel
+	    postdirection = ((jQuery('#views_slideshow_cycle_teaser_section_photo_gallery-block > div').length-1 == imgstring));
+	    predirection = ((jQuery('#views_slideshow_cycle_teaser_section_photo_gallery-block > div').length-1 == firstimgstring));
+	    //forward button:
+	    if(jQuery(origin).attr('id') == "views_slideshow_controls_text_next_photo_gallery-block") {
+	    	if(postdirection && predirection) {
+	    		imgstring = 1;
+	    	} else {
+	    		imgstring = imgstring + 2;
+	    	}
+	    	activeid = imgstring - 1;
+	    }
+	    //reverse button:
+	    if(jQuery(origin).attr('id') == "views_slideshow_controls_text_previous_photo_gallery-block") {
+	    	if(postdirection && predirection) {
+	    		imgstring = imgstring + 1;
+	    	}
+	    	activeid = imgstring - 1;
+	    	if(activeid == -1) {
+	    		activeid = jQuery('#views_slideshow_cycle_teaser_section_photo_gallery-block > div').length - 1;
+	    		imgstring = imgstring - 1;
+	    	}
+	    }
+	    //Add highlight css class to this image:
+	    jQuery('#widget_pager_top_photo_gallery-block .jcarousel-item-' + imgstring + ' img').toggleClass('highlight');
+	} else {
+		//If the user clicked an image in the 
+		//carousel, add highlight css class to 
+		//the image they clicked:
+		jQuery(origin).toggleClass('highlight');
+		activeid = 0;
+	}
+	//alert(activeid);
+	return activeid;
+}
 

@@ -163,7 +163,7 @@ a:hover {
 
 .node-type-takepart-campaign #page.page-multipage
 {
-    padding-left:20px;
+    padding-left:0px;
 }
 
 #page.page-multipage
@@ -606,7 +606,7 @@ ul,ol
 }
 
 .node-type-section-front-wide .main-content .view-campaigns.view-display-id-block_1 {
-    margin: 10px 0;
+    margin: 0px 0;
 }
 .view-campaigns.view-display-id-block_1 .views-row {
     display: inline-block;
@@ -1865,10 +1865,6 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
     padding-top: 0px;
 }
 
-div.views-content-field-gallery-images:hover {
-    border: 3px solid #1CA9E7;
-}
-
 div.views-content-field-gallery-images {
     padding-top: 3px;
     padding-left:3px;
@@ -1980,7 +1976,7 @@ div.views-content-field-gallery-images img {
     display:none;
 }
 
-.page-taxonomy-term .block-boxes-delta-page_title_h1 h1.title {
+#page .page-taxonomy-term .block-boxes-delta-page_title_h1 h1.title {
     font-family: NewsGothicBoldCondensed,sans-serif;
     font-size:26px;
     line-height: 26px;
@@ -2003,7 +1999,7 @@ div.views-content-field-gallery-images img {
 
 #boxes-box-allfilms_campaigns_columns_block ul li a {
     color: black;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
 }
 
@@ -2015,4 +2011,63 @@ div.views-content-field-gallery-images img {
 #boxes-box-allfilms_campaigns_columns_block ul li a:hover {
     color: #1CA9E7;
     text-decoration: underline;
+}
+
+.field-name-field-tp-campaign-cover-link .field-item {
+	padding-bottom: 10px;
+}
+
+#boxes-box-allfilms_campaigns_columns_block ul li {
+    width:270px
+}
+
+.node-type-section-front-wide .view-campaigns.view-display-id-block_1 .views-row .views-field-title a {
+	font-size: 16px;
+}
+
+.node-type-section-front-wide .view-campaigns.view-dom-id-2 .view-content ul li, 
+.node-type-section-front-wide .view-campaigns.view-dom-id-3 .view-content ul li {
+	margin: 0 7px 30px 0;
+}
+
+.node-type-section-front-wide #block-boxes-allfilms-campaigns-columns-block h2 {
+	border-bottom: 1px solid #d9e7ee;
+    margin-bottom: 10px;
+}
+
+.node-type-section-front-wide .region-content .field-type-text-with-summary p {
+	font-size: 18px;
+	color: #666666;
+}
+
+.node-type-takepart-campaign .block-boxes-bid-takepart_custom-page_title_h1 h1 {
+    padding-bottom: 4px;	
+}
+
+q:before, q:after {
+    content: ""; 
+}
+
+.node-type-openpublish-video .node-openpublish-video .field-name-field-subhead {
+    font-weight: normal;
+}
+
+.node-type-takepart-campaign .page {
+	padding: 35px 0px;
+}
+
+body.node-type-takepart-campaign .main-content #content {
+    padding-left: 20px !important;
+}
+
+.node-type-section-front-wide .view-campaigns.view-dom-id-3 .view-content ul li {
+    margin: 0 7px 0px 0;
+}
+
+.node-type-section-front-wide .view-campaigns.view-display-id-block_1 .views-row {
+	margin: 0 8px 0 0;
+}
+
+.block-newsletter-campaign h2 {
+	width: 270px;
 }
