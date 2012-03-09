@@ -36,19 +36,15 @@
  */
 ?>
 <div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php print render($title_prefix); ?>
-  <div class='comments-header'>
-    <h2 class="title"><?php print t('Comments'); ?></h2>
-    <?php if ($content['#fb_comments']['enabled']): ?>
-      <span class='comment-count'><fb:comments-count href="<?php print $content['#fb_comments']['url'] ?>"></fb:comments-count></span>
-    <?php else: ?>
-      <span class='comment-count'><?php print $content['#node']->comment_count; ?></span>
-    <?php endif; ?>
-  </div>
-  <?php print render($title_suffix); ?>
-   
   <?php if ($content['#fb_comments']['enabled']): ?>
     
+    <?php print render($title_prefix); ?>
+    <div class='comments-header'>
+      <h2 class="title"><?php print t('Comments'); ?></h2>
+      <span class='comment-count'><fb:comments-count href="<?php print $content['#fb_comments']['url'] ?>"></fb:comments-count></span>
+    </div>
+    <?php print render($title_suffix); ?>
+
     <div id="fb-root"></div>
     <script>
       (function(d, s, id) {
@@ -66,11 +62,20 @@
          data-colorscheme="<?php print $content['#fb_comments']['style'] ?>"></div>
 
   <?php else: ?>
+  <?php if ($content['#node']->comment_count > 0): ?>
+
+    <?php print render($title_prefix); ?>
+    <div class='comments-header'>
+      <h2 class="title"><?php print t('Comments'); ?></h2>
+      <span class='comment-count'><?php print $content['#node']->comment_count; ?></span>
+    </div>
+    <?php print render($title_suffix); ?>
 
     <?php 
       $comments = array_reverse($content['comments']);
       print render($comments);
     ?>
 
+  <?php endif; ?>
   <?php endif; ?>
 </div>
