@@ -441,6 +441,15 @@ function takepart_addthis_ajax_form_block_view($delta = ''){
       array('group' => JS_DEFAULT, 'type' => 'file')
     );
 
+    drupal_add_library('system','jquery.cookie');
+    drupal_add_js(
+      drupal_get_path('module', 'takepart_addthis') .'/js/takepart-petition-metrics.js',
+      array(
+        'group' => JS_DEFAULT,
+        'type' => 'file'
+      )
+    );
+
     //create the block
     $block['subject'] = t('');
     $block['content'] = theme('takepart_addthis_ajax_form_block', array());
