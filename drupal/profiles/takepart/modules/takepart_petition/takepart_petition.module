@@ -830,6 +830,22 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
   
   // store the email from the signature for use in the thank you form
   setcookie('petition_signed_as',$mail,time()+(86400 * 365));
+  
+  // set the petition submitted analytics data cookie
+  // the events are fired by the thank you page when
+  // it is loaded after a successfully completed submission
+  $tracked_events = str_replace("|","",$petition_form->label);
+  if ($form_state['values']['opt_in_campaign']) {
+    $campaign_form_id = $petition_form->campaign_signup_form_id;
+    $campaign_list_title = _takepart_bsd_getpublictitle($campaign_form_id);
+    $tracked_events .= "|". str_replace("|","",$campaign_list_title);
+  }
+  if ($ngo) {
+    if ($ngo_opt_in) {
+      $tracked_events .= "|". str_replace("|","",$ngo->label);
+    }
+  }
+  setcookie('petition_submit_tracking', $tracked_events);
 
   $thank_url = variable_get('water_bill_of_rights_thank_you');
   drupal_goto($thank_url, array('query'=>array('t'=>(string)time())));
