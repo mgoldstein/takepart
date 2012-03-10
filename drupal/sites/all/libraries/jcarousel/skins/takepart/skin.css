@@ -22,10 +22,10 @@
 }
 
 .jcarousel-skin-takepart .jcarousel-clip-horizontal {
-    width:  564px;
+    width:  585px;
     height: 70px;
-    padding-bottom: 10px;
-    margin-left: -15px;
+    padding-bottom: 6px;
+    margin-left: -16px;
 }
 
 .jcarousel-skin-takepart .jcarousel-clip-vertical {
@@ -68,6 +68,7 @@
     height: 70px;
     cursor: pointer;
     background: url("right_arrow_white.png") no-repeat scroll 4px 21px #1ca9e7;
+    margin-top: 2px;
     
 }
 
@@ -148,4 +149,15 @@ div.views-content-field-gallery-images:hover img {
 div.views-content-field-gallery-images img {
     height: 70px;
     width: 94px;
+}
+
+div.views-content-field-gallery-images {
+    padding-top: 3px;
+    padding-left:3px;
+    padding-bottom:-1px;
+    margin-top: -3px;
+}
+
+#widget_pager_top_photo_gallery-block {
+    
 }
