@@ -70,12 +70,13 @@ function takepart_campaign_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+          /*
         'takepart_custom-page_title_h1' => array(
           'module' => 'takepart_custom',
           'delta' => 'page_title_h1',
           'region' => 'highlighted',
           'weight' => '-10',
-        ), /*
+        ), 
         'takepart_addthis-addthis_simple' => array(
           'module' => 'takepart_addthis',
           'delta' => 'addthis_simple',
