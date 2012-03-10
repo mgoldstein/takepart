@@ -2061,3 +2061,8 @@ body.node-type-takepart-campaign .main-content #content {
 .block-newsletter-campaign h2 {
 	width: 270px;
 }
+
+.region-content-top a.addthis_button_google_plusone {
+    margin-left: 5px;
+    margin-top: 1px;
+}
