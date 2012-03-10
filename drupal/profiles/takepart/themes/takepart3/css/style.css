@@ -1808,7 +1808,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a {
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
-    float: none;
+    float: left;
     height: 15px;
 }
 
@@ -1849,9 +1849,6 @@ div.tp-pet-thank-you-heading {
     font-weight: bold;
     background: none;
     clear: both;
-}
-div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
-    float: left !important;
 }
 
 #right-rail .field-name-field-blog-view .views-field-title a:hover {
@@ -2076,4 +2073,16 @@ body.node-type-takepart-campaign .main-content #content {
 
 .page-node-22525  .view-campaigns.view-dom-id-2 .view-content ul li {
     margin:0 7px 10px 0;
+}
+
+.node-type-openpublish-photo-gallery #block-takepart-addthis-addthis-full .fb_edge_widget_with_comment {
+    width:120px;
+}
+
+.node-type-openpublish-photo-gallery #block-takepart-addthis-addthis-full .addthis_button_tweet iframe {
+    width:80px !important;
+}
+
+.node-type-openpublish-photo-gallery #block-takepart-addthis-addthis-full a.addthis_button_email {
+    width:50px;
 }
