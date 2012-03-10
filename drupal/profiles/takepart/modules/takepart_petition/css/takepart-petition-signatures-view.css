@@ -2,6 +2,7 @@
   display: table;
   font-family: Helvetica;
   font-size: 12px;
+  margin: 0 20px;
 }
 
 .tp-pet-signature-row {
@@ -42,6 +43,7 @@ div.tp-pet-signatures-heading {
   font-weight: bold;
   background: none;
   clear: both;
+  margin: 0 20px;
 }
 
 div.tp-pet-signatures-sub-heading {
@@ -51,5 +53,5 @@ div.tp-pet-signatures-sub-heading {
   background: none;
   border-bottom: 1px dotted #000000;
   padding: 10px 0 6px;
-  margin-bottom: 20px;
+  margin: 0 20px 20px;
 }
