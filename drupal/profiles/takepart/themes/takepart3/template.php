@@ -450,7 +450,7 @@ function takepart3_field__field_author(&$vars) {
     // Comments are either open, or there are existing closed comments
     if ($node->comment_count == 0) {
       // There is no comment count to show so use a generic phrase
-      $comments_field = "<div class='field article-comment-count'><a href='#comments'>See comments</a></div>";
+      $comments_field = "<div class='field article-comment-count'><a href='#comments'>Comment</a></div>";
     } else {
       // We have a comment count to show
       $comments = $vars['element']['#object']->comment_count;
