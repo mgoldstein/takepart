@@ -1869,20 +1869,6 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
     padding-top: 0px;
 }
 
-div.views-content-field-gallery-images {
-    padding-top: 3px;
-    padding-left:3px;
-    padding-bottom:-1px;
-    margin-top: -3px;
-}
-
-div.views-content-field-gallery-images:hover img {
-    margin: -3px;
-}
-
-div.views-content-field-gallery-images img {
-    width: 88px;
-}
 
 /* H1 Headers when in subhead field */
 .block-boxes-delta-page_title_h1 h1.title span {
