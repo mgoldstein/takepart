@@ -25,6 +25,10 @@ Disallow: /modules/
 Disallow: /profiles/
 Disallow: /scripts/
 Disallow: /themes/
+Disallow: /innovation/
+Disallow: /arts-entertainment/
+Disallow: /users/
+Disallow: /news/
 # Files
 Disallow: /CHANGELOG.txt
 Disallow: /cron.php
