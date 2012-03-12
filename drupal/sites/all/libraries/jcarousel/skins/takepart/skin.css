@@ -24,7 +24,7 @@
 .jcarousel-skin-takepart .jcarousel-clip-horizontal {
     width:  585px;
     height: 70px;
-    padding-bottom: 6px;
+    padding-bottom: 9px;
     margin-left: -16px;
 }
 
@@ -68,7 +68,7 @@
     height: 70px;
     cursor: pointer;
     background: url("right_arrow_white.png") no-repeat scroll 4px 21px #1ca9e7;
-    margin-top: 2px;
+    margin-top: 3px;
     
 }
 
@@ -88,7 +88,7 @@
     position: absolute;
     top: 0;
     width: 25px;
-    margin-top: 2px;
+    margin-top: 3px;
 }
 
 .jcarousel-skin-takepart .jcarousel-prev-horizontal:hover {
@@ -152,7 +152,7 @@ div.views-content-field-gallery-images img {
 }
 
 div.views-content-field-gallery-images {
-    padding-top: 3px;
+    padding-top: 4px;
     padding-left:3px;
     padding-bottom:-1px;
     margin-top: -3px;
