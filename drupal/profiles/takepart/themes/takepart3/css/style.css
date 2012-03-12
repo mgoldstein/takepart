@@ -2074,3 +2074,8 @@ body.node-type-takepart-campaign .main-content #content {
 .page-node-22525  .view-campaigns.view-dom-id-2 .view-content ul li {
     margin:0 7px 10px 0;
 }
+
+.region-content-top a.addthis_button_google_plusone {
+    margin-left: 5px;
+    margin-top: 1px;
+}
