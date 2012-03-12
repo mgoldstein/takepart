@@ -6,7 +6,10 @@ jQuery(document).ready(function() {
     
       var events = jQuery.cookie("petition_submit_tracking");
       if (events.length > 0) {
-        
+
+        while (events.indexOf("+") != -1) {
+          events = events.replace("+"," ");
+        }
         pieces = events.split("|");
         
         // Action (event 19)
