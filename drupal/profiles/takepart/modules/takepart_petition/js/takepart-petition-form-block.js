@@ -4,6 +4,11 @@ jQuery(document).ready(function() {
 
   var shareattach = (function() {
   
+    if (jQuery.cookie("petition_start_tracking") != null) {
+      tp_pet_start_events_tracked = true;
+      return;
+    }
+
     // Attach tracking to the form fields
     jQuery('.pet-form-focus-event').focus(function() { 
     

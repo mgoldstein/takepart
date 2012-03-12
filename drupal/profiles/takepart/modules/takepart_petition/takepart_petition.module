@@ -708,6 +708,7 @@ function _takepart_petition_sign_petition_form_validate($form, &$form_state) {
   $petition_form = $form_state['petition_form'];
   $cookie_name = $petition_form->name .'_form_submitted';
   setcookie($cookie_name,1,time() + (86400 * 365));
+  setcookie("petition_start_tracking", 1);
 }
 
 function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
