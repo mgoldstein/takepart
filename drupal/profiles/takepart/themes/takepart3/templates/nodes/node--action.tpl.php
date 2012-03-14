@@ -64,6 +64,9 @@ print '<div id="action_addthisblock">'. $addthisblock['content'] .'</div>';
       }
    
     $takeactionurl = $content['body']['#object']->field_action_url['und'][0]['display_url'];
+    
+        print '<p>'.$takeactionurl.'</p>';
+ 
     $takeactionurl_parts = parse_url($takeactionurl);
    
 ?>
