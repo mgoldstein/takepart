@@ -163,7 +163,7 @@ a:hover {
 
 .node-type-takepart-campaign #page.page-multipage
 {
-    padding-left:0px;
+    padding-left:10px;
 }
 
 #page.page-multipage
@@ -202,7 +202,8 @@ body.two-sidebars #left-rail,
 body.sidebar-first #left-rail
 {
     display:inline-block;
-    margin:0 0 0 6px;
+    margin:0;
+    padding-left: 0;
     width:145px;
 }
 
@@ -1633,7 +1634,7 @@ h1.title a:hover {
 body.node-type-takepart-campaign .main-content #content,
 body.node-type-takepart-campaign .main-content #left-rail {
     padding-bottom: 20px;
-    padding-left: 5px;
+    padding-left: 0;
     float: left;
 }
 
