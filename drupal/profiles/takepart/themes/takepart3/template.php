@@ -470,11 +470,11 @@ function takepart3_field__field_author(&$vars) {
 function takepart3_field__field_action_url(&$vars) {
     $takeactionurl = $vars['element']['#object']->field_action_url['und'][0]['url'];
     $takeactionurl_parts = parse_url($takeactionurl);
-
+    $safe_url = url($takeactionurl);
     if ((array_key_exists('host', $takeactionurl_parts)) && ($takeactionurl_parts['host'] == $_SERVER['HTTP_HOST']) || ($takeactionurl_parts['host'] == '')) {
-        return '<a href="' . $takeactionurl . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
+        return '<a href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
     } else {
-        return '<a href="' . $takeactionurl . '" class="take_action_button" target="_blank" onclick="this.blur(); return false;"><span>Take Action</span></a>';
+        return '<a href="' . $safe_url . '" class="take_action_button" target="_blank" onclick="this.blur(); return false;"><span>Take Action</span></a>';
     }
 }
 
