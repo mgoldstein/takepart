@@ -2041,7 +2041,7 @@ q:before, q:after {
 }
 
 .node-type-takepart-campaign .page {
-    padding: 35px 0px;
+    padding: 35px 0 25px 10px;
 }
 
 body.node-type-takepart-campaign .main-content #content {
