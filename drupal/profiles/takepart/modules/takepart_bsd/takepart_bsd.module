@@ -2,6 +2,73 @@
 
 include(drupal_get_path('module', 'takepart_bsd').'/include/bsd_api/bsd_api.class.inc');
 
+function takepart_bsd_signup_list_forms() {
+
+  $forms = array();
+  
+  // get the list of bsd signup forms
+  $signup_forms_xml = _takepart_bsd_apiquery("signup/list_forms");
+  $signup_forms = simplexml_load_string($signup_forms_xml);
+
+  foreach ($signup_forms as $child) {
+    $key = (int)$child->attributes()->id;
+    $forms[$key] = array(
+      'id' => (int)$child->attributes()->id,
+      'slug' => (string)$child->signup_form_slug,
+      'name' => (string)$child->signup_form_name,
+      'title' => (string)$child->form_public_title,
+      'created' => (string)$child->create_dt,
+      'modified' => date('Y-m-d H:i:s', (int)$child->attributes()->modified_dt),
+    );
+  }  
+  
+  return $forms;
+}
+
+function takepart_bsd_signup_form($id) {
+  $forms = takepart_bsd_signup_list_forms();
+  if (array_key_exists($id, $forms)) {
+    return $forms[$id];
+  }
+  return FALSE;
+}
+
+function takepart_bsd_signup_list_form_fields($id) {
+
+  $fields = array();
+
+  $signup_fields_xml = _takepart_bsd_apiquery("signup/list_form_fields", array('signup_form_id' => $id));
+
+  $pos = strpos($signup_fields_xml, '<?xml');
+  if (! ($pos === FALSE)) {
+    $signup_fields_xml = substr($signup_fields_xml, $pos);
+  }
+
+  $signup_fields = simplexml_load_string($signup_fields_xml);
+  
+  foreach ($signup_fields as $child) {
+    $key = (int)$child->attributes()->id;
+    $fields[$key] = array(
+      'id' => (int)$child->attributes()->id,
+      'label' => (string)$child->label,
+      'description' => (string)$child->description,
+      'position' => (int)$child->display_order,
+      'shown' => (int)$child->is_shown,
+      'required' => (int)$child->is_required,
+      'custom' => (int)$child->is_custom_field,
+      'created' => (string)$child->create_dt,
+      'form_id' => (int)$id,
+      'constituent_field_id' => (int)$child->cons_field_id,
+    );
+  }
+  
+  return $fields;
+}
+
+function takepart_bsd_signup_process_signup($signup) {
+  return true;
+}
+
 
 /**
  * Implements hook_menu().
