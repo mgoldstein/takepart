@@ -1,0 +1,510 @@
+<?php
+/**
+ * @file
+ * Module for the TakePartContest Entity
+ */  
+
+include(drupal_get_path('module', 'takepart_contests').'/includes/marigold-hotel-contest/forms.inc');
+include(drupal_get_path('module', 'takepart_contests').'/includes/marigold-hotel-contest/themes.inc');
+include(drupal_get_path('module', 'takepart_contests').'/includes/marigold-hotel-contest/widgets.inc');
+
+
+/**
+ * Implements hook_entity_info()
+ */
+function takepart_contests_entity_info() {
+
+  $info = array();
+  
+  $info['takepart_contests_contest'] = array(
+    'label' => t('Contest'),
+    'entity class' => 'TakePartContest',
+    'controller class' => 'TakePartContestController',
+    'base table' => 'takepart_contests_contest',
+    'fieldable' => TRUE,
+    'entity keys' => array(
+      'id' => 'contest_id',
+      'bundle' => 'type',
+    ),
+    'bundles' => array(),
+    'bundle keys' => array(
+      'bundle' => 'type',
+    ),
+    'label callback' => 'entity_class_label',
+    'uri callback' => 'entity_class_uri',
+    'creation callback' => 'takepart_contests_contest_create',
+    'access callback' => '_takepart_contests_contest_access',
+    'module' => 'takepart_contests',
+    'admin ui' => array(
+      'path' => 'admin/content/contests',
+      'file' => 'contest.admin.inc',
+      'controller class' => 'TakePartContestUIController',
+      'menu wildcard' => '%',
+    ),
+  );
+  
+  $info['takepart_contests_contest_entry'] = array(
+    'label' => t('Contest Entry'),
+    'entity class' => 'TakePartContestEntry',
+    'controller class' => 'TakePartContestEntryController',
+    'base table' => 'takepart_contests_contest',
+    'fieldable' => TRUE,
+    'entity keys' => array(
+      'id' => 'entry_id',
+      'bundle' => 'type',
+    ),
+    'bundles' => array(),
+    'bundle keys' => array(
+      'bundle' => 'entry_type',
+    ),
+    'label callback' => 'entity_class_label',
+    'uri callback' => 'entity_class_uri',
+    'creation callback' => 'takepart_contests_contest_entry_create',
+    'access callback' => '_takepart_contests_contest_entry_access',
+    'module' => 'takepart_contests',
+    'static cache' => FALSE,
+    //'admin ui' => array(
+    //  'path' => 'admin/content/contests/%/entries',
+    //  'file' => 'contest_entry.admin.inc',
+    //  'controller class' => 'TakePartContestEntryUIController',
+    //),
+  );
+  
+  $info['takepart_contests_contest_type'] = array(
+    'label' => t('Contest Type'),
+    'entity class' => 'TakePartContestType',
+    'controller class' => 'TakePartContestTypeController',
+    'base table' => 'takepart_contests_contest_type',
+    'fieldable' => FALSE,
+    'bundle of' => 'takepart_contests_contest',
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'name' => 'type',
+      'label' => 'label',
+    ),
+    'access callback' => '_takepart_contests_contest_type_access',
+    'module' => 'takepart_contests',
+    'admin ui' => array(
+      'path' => 'admin/structure/contest_types',
+      'file' => 'contest_type.admin.inc',
+      'controller class' => 'TakePartContestTypeUIController',
+    ),
+  );
+  
+  return $info;
+}
+
+/**
+ * Implements hook_entity_info_alter()
+ */
+function takepart_contests_entity_info_alter(&$entity_info) {
+
+  foreach (takepart_contests_get_types() as $type => $info) {
+
+    $entity_info['takepart_contests_contest']['bundles'][$type] = array(
+      'label' => $info->label,
+      'admin' => array(
+        'path' => 'admin/structure/contest_types/manage/%takepart_contests_contest_type',
+        'bundle argument' => 4,
+        'real path' => 'admin/structure/contest_types/manage/' . $type,
+        'access arguments' => array('administer takepart contest types'),
+      ),
+    );
+
+    $entry_type = $type . '_entry';
+    $entity_info['takepart_contests_contest_entry']['bundles'][$entry_type] = array(
+      'label' => $info->label . ' Entry',
+      'admin' => array(
+        'path' => 'admin/structure/contest_types/manage/%takepart_contests_contest_entry_type/entry',
+        'bundle argument' => 4,
+        'real path' => 'admin/structure/contest_types/manage/' . $type . '/entry',
+        'access arguments' => array('administer takepart contest types'),
+      ),
+    );
+  }
+}
+
+/**
+ * Implements hook_menu_alter()
+ */
+function takepart_contests_menu_alter(&$items) {
+  $items['admin/structure/contest_types/manage/%takepart_contests_contest_entry_type/entry/fields']['title'] = 'Manage Entry fields';
+  $items['admin/structure/contest_types/manage/%takepart_contests_contest_entry_type/entry/fields']['weight'] = 3;
+  $items['admin/structure/contest_types/manage/%takepart_contests_contest_entry_type/entry/display']['title'] = 'Manage Entry display';
+  $items['admin/structure/contest_types/manage/%takepart_contests_contest_entry_type/entry/display']['weight'] = 4;
+}
+
+function takepart_contests_contest_entry_type_load($name) {
+  return $name . '_entry';
+}
+
+/**
+ * Implements hook_permission()
+ */
+function takepart_contests_permission() {
+
+  $permissions = array(
+    'administer takepart contest types' => array(
+      'title' => t('Administer contest types'),
+      'description' => t('Create and delete fields for contest types, and set their permissions.'),
+    ),
+    'administer takepart contests' => array(
+      'title' => t('Administer contests'),
+      'description' => t('Edit and delete all contests'),
+    ),
+    'edit takepart contests' => array(
+      'title' => t('Edit contests'),
+      'description' => t('Edit all contests'),
+    ),
+    'view takepart contests' => array(
+      'title' => t('View contests'),
+      'description' => t('View all contests'),
+    ),
+    'administer takepart contest entries' => array(
+      'title' => t('Administer contest entries'),
+      'description' => t('Edit and delete all contest entries'),
+    ),
+    'edit takepart contest entries' => array(
+      'title' => t('Edit contest entries'),
+      'description' => t('Edit all contest entries'),
+    ),
+    'view takepart contest entries' => array(
+      'title' => t('View contest entries'),
+      'description' => t('View all contest entries'),
+    ),
+  );
+  
+  return $permissions;
+}
+
+function _takepart_contests_contest_access($op, $contest = NULL, $account = NULL) {
+  $op = ($op == 'view') ? 'view' : 'edit';
+  if (user_access('administer takepart contests', $account) ||
+      user_access("$op takepart contests", $account)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+function _takepart_contests_contest_entry_access($op, $contest = NULL, $account = NULL) {
+  $op = ($op == 'view') ? 'view' : 'edit';
+  if (user_access('administer takepart contest entries', $account) ||
+      user_access("$op takepart contest entries", $account)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+function _takepart_contests_contest_type_access($op, $contest_type = NULL, $account = NULL) {
+  return user_access('administer takepart contest types', $account);
+}
+
+function takepart_contests_get_types($type_name = NULL) {
+  $types = entity_load_multiple_by_name('takepart_contests_contest_type', isset($type_name) ? array($type_name) : FALSE);
+  return isset($type_name) ? reset($types) : $types;
+}
+
+/**
+ * Implements hook_views_api()
+ */
+function takepart_contests_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'takepart_contests') . '/views',
+  );
+}
+
+/**
+ * Implements hook_theme()
+ */
+function takepart_contests_theme() {
+  return array(
+    'takepart_contests_contest_add_list' => array(
+      'variables' => array('content' => array()),
+      'file' => 'contest.admin.inc',
+    ),
+     'marigold_hotel_contest_form'  => array(
+          'render element' => 'form',
+      ),
+      'marigold_hotel_contest_form_button_next' => array(
+          'render element'  => 'element',
+      ),
+      'marigold_hotel_contest_form_button_prev' => array(
+          'render element'  => 'element',
+      ),
+      'marigold_hotel_email_share_block' => array(
+          'variables' => array(),
+          'template' => 'includes/marigold-hotel-contest/templates/email-share-block',
+      ),
+  );
+}
+
+/**
+ * Implements hook_info().
+ */
+function takepart_contests_block_info() {
+  $blocks = array();
+
+  $blocks['marigold-hotel-contest'] = array(
+      'info' => t('BSD Marigold Hotel Contest')
+  );
+
+  $blocks['marigold-hotel-email-share'] = array(
+      'info' => t('BSD Marigold Hotel Contest Email Share')
+  );
+
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_view().
+ */
+function takepart_contests_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'marigold-hotel-contest':
+      $block['subject'] = t('BSD Marigold Hotel Contest');
+      $block['content'] = drupal_get_form('marigold_hotel_contest_form');
+      return $block;
+      break;
+    case 'marigold-hotel-email-share':
+      $block['content'] = _marigold_hotel_contest_emailshare();
+      return $block;
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter()
+ */
+function takepart_contests_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  if ($root_path == 'admin/content/contests') {
+    $item = menu_get_item('admin/content/contests/add');
+    if ($item['access']) {
+      $data['actions']['output'][] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => $item,
+      );
+    }
+  }
+}
+
+/* TakePart Contest Type API
+ ******************************************************************************/
+
+class TakePartContestType extends Entity {
+
+  public $type;
+  public $label;
+  public $default_entry_period;
+  public $weight;
+  
+  public function __construct($values = array()) {
+    parent::__construct($values, 'takepart_contests_contest_type');
+  }
+}
+
+class TakePartContestTypeController extends EntityAPIControllerExportable {
+
+  public function __construct($entityType) {
+    parent::__construct($entityType);
+  }
+  
+  public function create(array $values = array()) {
+    
+    $values += array(
+      'id' => '',
+      'is_new' => TRUE,
+    );
+        
+    $contest_type = parent::create($values);
+    return $contest_type;
+  }
+}
+
+function takepart_contests_contest_type_create($values = array()) {
+  return entity_get_controller('takepart_contests_contest_type')->create($values);
+}
+
+function takepart_contests_contest_type_load($type_name) {
+  return takepart_contests_get_types($type_name);
+}
+
+function takepart_contests_contest_type_save(TakePartContestType $type) {
+  return $type->save();
+}
+
+function takepart_contests_contest_type_delete(TakePartContestType $type) {
+  $type->delete();
+}
+
+/* TakePart Contest API
+ ******************************************************************************/
+
+class TakePartContest extends Entity {
+
+  public function __construct($values = array()) {
+    parent::__construct($values, 'takepart_contests_contest');
+  }
+  
+  protected function defaultLabel() {
+    return $this->name;
+  }
+  
+  protected function defaultUri() {
+    return array('path' => 'admin/content/contests/manage/' . $this->contest_id);
+  }
+}
+
+class TakePartContestController extends EntityAPIController {
+
+  public function __construct($entityType) {
+    parent::__construct($entityType);
+  }
+  
+  public function create(array $values = array()) {
+  
+    $values += array(
+      'contest_id' => '',
+      'type' => '',
+      'language' => '',
+      'is_new' => TRUE,
+      'name' => '',
+      'created' => '',
+      'changed' => '',
+      'entry_period' => '',
+    );
+    
+    $contest = parent::create($values);
+    return $contest;
+  }
+
+  public function buildContent($entity, $view_mode = 'full', $langcode = NULL, $content = array()) {
+    $content = parent::buildContent($entity, $view_mode, $langcode, $content);
+    return $content;
+  }
+}
+
+function takepart_contests_contest_create($values = array()) {
+  return entity_get_controller('takepart_contests_contest')->create($values);
+}
+
+function takepart_contests_contest_load($contest_id, $reset = FALSE) {
+  $contests = takepart_contests_contest_load_multiple(array($contest_id), array(), $reset);
+  return reset($contests);
+}
+
+function takepart_contests_contest_load_multiple($contest_ids = array(), $conditions = array() , $reset = FALSE) {
+  return entity_load('takepart_contests_contest', $contest_ids, $conditions, $reset);
+}
+
+function takepart_contests_contest_save(TakePartContest $contest) {
+  return $contest->save();
+}
+
+function takepart_contests_contest_delete(TakePartContest $contest) {
+  $contest->delete();
+}
+
+function takepart_contests_contest_delete_multiple(array $contest_ids) {
+  entity_get_controller('takepart_contests_contest')->delete($contest_ids);
+}
+
+/* TakePart Contest Entry API
+ ******************************************************************************/
+
+class TakePartContestEntry extends Entity {
+
+  public $label;
+  public $entry_type;
+
+  public function __construct($values = array()) {
+    parent::__construct($values, 'takepart_contests_contest_entry');
+    $this->label = 'Contest entry';
+  }
+  
+  protected function defaultLabel() {
+    return $this->label;
+  }
+  
+  protected function defaulUri() {
+    return array('path', 'contest/' . $this->contest_id . '/entry/' . $this->entry_id);
+  }
+}
+
+class TakePartContestEntryController extends EntityAPIController {
+
+  public function __construct($entityType) {
+    parent::__construct($entityType);
+  }
+  
+  public function create(array $values = array()) {
+  
+    $values += array(
+      'entry_id' => '',
+      'contest_id' => '',
+      'language' => '',
+      'is_new' => TRUE,
+      'uid' => '',
+      'created' => '',
+      'changed' => '',
+    );
+    
+    $entry = parent::create($values);
+    return $entry;
+  }
+  
+  protected function buildQuery($ids, $conditions = array(), $revision_id = FALSE) {
+    $query = parent::buildQuery($ids, $conditions, $revision_id);
+    $query->innerJoin('takepart_contests_contest', 'c', 'base.contest_id = c.contest_id');
+    $query->addField('c', 'type', 'entry_type');
+    return $query;
+  }
+
+  protected function attachLoad(&$entries, $revision_id = FALSE) {
+    foreach ($entries as $key => $entry) {
+      $entry->entry_type = $entry->entry_type . '_entry';
+      $entries[$key] = $entry;
+    }
+    parent::attachLoad($entries, $revision_id);
+  }
+
+  public function buildContent($entity, $view_mode = 'full', $langcode = NULL, $content = array()) {
+    $content = parent::buildContent($entity, $view_mode, $langcode, $content);
+    return $content;
+  }
+}
+
+function takepart_contests_contest_entry_create($values = array()) {
+  return entity_get_controller('takepart_contests_contest_entry')->create($values);
+}
+
+function takepart_contests_contest_entry_load($entry_id, $reset = FALSE) {
+  $entries = takepart_contests_contest_load_multiple(array($entry_id), array(), $reset);
+  return reset($entries);
+}
+
+function takepart_contests_contest_entry_load_multiple($entry_ids = array(), $conditions = array() , $reset = FALSE) {
+  return entity_load('takepart_contests_contest_entry', $entry_ids, $conditions, $reset);
+}
+
+function takepart_contests_contest_entry_save(TakePartContestEntry $entry) {
+  return $entry->save();
+}
+
+function takepart_contests_contest_entry_delete(TakePartContestEntry $entry) {
+  $entry->delete();
+}
+
+function takepart_contests_contest_entry_delete_multiple(array $entry_ids) {
+  entity_get_controller('takepart_contests_contest_entry')->delete($entry_ids);
+}
+
+
+
+
+
