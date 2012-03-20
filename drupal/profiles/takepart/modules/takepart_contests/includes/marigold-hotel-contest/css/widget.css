@@ -1,0 +1,22 @@
+#mg-email-share-block .email-share-block-top {
+    background:url(../images/flower_prize.png) no-repeat scroll left top transparent;
+    height:242px;
+    width:278px;
+}
+
+#mg-email-share-block .email-share-block-emailto {
+    background:url("../images/button_contest_email.png") no-repeat scroll 15px top transparent;
+    width:278px;
+    height:70px
+}
+
+#mg-email-share-block .email-share-block-emailto span,
+#mg-email-share-block .email-share-block-top span{
+	display: none;
+}
+
+#mg-email-share-block .addthis_button_email {
+    display: block;
+    height: 70px;
+    width: 278px;
+}

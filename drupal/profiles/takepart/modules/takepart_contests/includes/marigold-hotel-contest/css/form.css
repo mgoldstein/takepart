@@ -1,0 +1,414 @@
+/* Fonts */
+@font-face {
+ font-family: calibri-webfont;
+ src: url("../fonts/calibri-webfont.eot") /* EOT file for IE */
+}
+
+@font-face {
+ font-family: calibrib-webfont;
+ src: url("../fonts/calibrib-webfont.eot") /* EOT file for IE */
+}
+
+@font-face {
+    font-family: 'calibri-webfont';
+    src: url('../fonts/calibri-webfont.woff') format('woff'),
+         url('../fonts/calibri-webfont.ttf') format('truetype'),
+         url('../fonts/calibri-webfont.svg#calibri-webfont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'calibrib-webfont';
+    src: url('../fonts/calibrib-webfont.woff') format('woff'),
+         url('../fonts/calibrib-webfont.ttf') format('truetype'),
+         url('../fonts/calibrib-webfont.svg#calibrib-webfont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* General Form Styles */
+#marigold-hotel-contest-form-wrapper .counter:before
+{
+  content:"Characters remaining: ";
+}
+
+#marigold-hotel-contest-form-wrapper .form-required
+{
+  color:#f37e3b;
+}
+
+#marigold-hotel-contest-form-wrapper #edit-step1-custom-269
+{
+  margin-left:17px;
+}
+
+#marigold-hotel-contest-form-wrapper .form-item
+{
+  margin-bottom:2em;
+  margin-top:1em;
+}
+
+#marigold-hotel-contest-form-wrapper label
+{
+  font-weight:400;
+}
+
+#marigold-hotel-contest-form-wrapper .counter
+{
+  font-size:11px;
+  font-style:italic;
+  font-weight:400;
+  width:200px;
+}
+
+#marigold-hotel-contest-form-wrapper input.aboutyou,#marigold-hotel-contest-form-wrapper input.finalinfo,#marigold-hotel-contest-form-wrapper input.reviewentry
+{
+  border:medium none;
+  height:35px;
+  padding:2px 8px;
+  text-indent:-300px;
+  text-transform:capitalize;
+  cursor:pointer;
+}
+
+#marigold-hotel-contest-form-wrapper input.aboutyou
+{
+  background:url(../images/about_you_button.png) no-repeat scroll left top transparent;
+  width:198px;
+}
+
+#marigold-hotel-contest-form-wrapper input.aboutyou:hover
+{
+  background:url(../images/about_you_button_rollover.png) no-repeat scroll left top transparent;
+}
+
+#marigold-hotel-contest-form-wrapper input.finalinfo
+{
+  background:url(../images/final_info_button.png) no-repeat scroll left top transparent;
+  width:209px;
+}
+
+#marigold-hotel-contest-form-wrapper input.finalinfo:hover
+{
+  background:url(../images/final_info_button_rollover.png) no-repeat scroll left top transparent;
+}
+
+#marigold-hotel-contest-form-wrapper input.reviewentry
+{
+  background:url(../images/review_button.png) no-repeat scroll left top transparent;
+  width:198px;
+}
+
+#marigold-hotel-contest-form-wrapper input.reviewentry:hover
+{
+  background:url(../images/review_button_rollover.png) no-repeat scroll left top transparent;
+}
+
+
+#marigold-hotel-contest-form-wrapper input.reviewentry
+{
+  background:url(../images/review_button.png) no-repeat scroll left top transparent;
+  width:209px;
+}
+
+#marigold-hotel-contest-form-wrapper input.reviewentry:hover
+{
+  background:url(../images/review_button_rollover.png) no-repeat scroll left top transparent;
+}
+
+#marigold-hotel-contest-form-wrapper input.backtostepone,
+#marigold-hotel-contest-form-wrapper input.backtosteptwo
+{
+  background:url(../images/back_step.png) no-repeat scroll left top transparent;
+    border: 0 none;
+    clear: none;
+    margin-top: 10px;
+    text-indent: -300px;
+    width: 121px;
+}
+
+#marigold-hotel-contest-form-wrapper input.backtostepone:hover
+{
+  background:url(../images/back_step_rollover.png) no-repeat scroll left top transparent;
+}
+
+#marigold-hotel-contest-form-wrapper .button
+{
+  display: block;
+  width: 420px;
+}
+
+#marigold-hotel-contest-form-wrapper div.aboutyou,
+#marigold-hotel-contest-form-wrapper div.finalinfo,
+#marigold-hotel-contest-form-wrapper div.reviewentry
+{
+  color:#770BCB;
+  float:left;
+  font-family:calibrib-webfont;
+  font-size:20px;
+  margin-top:4px;
+  padding-right:7px;
+  text-transform:uppercase;
+}
+
+#marigold-hotel-contest-form-wrapper span
+{
+  width:200px;
+}
+
+#marigold-hotel-contest-form-wrapper span.ui-checkbox
+{
+  width:18px;
+}
+
+#marigold-hotel-contest-form-wrapper textarea,#marigold-hotel-contest-form-wrapper input,#marigold-hotel-contest-form-wrapper .grippie
+{
+  width:625px;
+}
+
+#marigold-hotel-contest-form-wrapper .grippie
+{
+  display:none;
+}
+
+#marigold-hotel-contest-form-wrapper fieldset
+{
+  border:0 none;
+  padding:0;
+  margin-bottom:18px;
+}
+
+#marigold-hotel-contest-form-wrapper fieldset legend span
+{
+  display:none;
+}
+
+/* Throbber Styles */
+#marigold-hotel-contest-form-wrapper .ajax-progress-throbber
+{
+  position:fixed;
+  z-index:9999;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:transparent;
+}
+
+#marigold-hotel-contest-form-wrapper .ajax-progress-throbber .message
+{
+  display:none;
+}
+
+#marigold-hotel-contest-form-wrapper .ajax-progress-throbber .throbber
+{
+  position:fixed;
+  left:50%;
+  top:50%;
+  width:25px;
+  height:25px;
+  margin:-12px 0 0 -12px;
+  background-color:#fff;
+  background-position:6px -14px;
+  -khtml-box-shadow:0 0 5px 6px rgba(0,0,0,.1);
+  -moz-box-shadow:0 0 5px 6px rgba(0,0,0,.1);
+  -webkit-box-shadow:0 0 5px 6px rgba(0,0,0,.1);
+  box-shadow:0 0 5px 6px rgba(0,0,0,.1);
+  -khtml-border-radius:5px;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px;
+  -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  filter:alpha(opacity=80);
+  -moz-opacity:.8;
+  -khtml-opacity:.8;
+  opacity:.8;
+}
+
+#marigold-hotel-contest-form-wrapper .form-item
+{
+  margin-bottom:22px;
+  margin-top:8px;
+}
+
+#marigold-hotel-contest-form-wrapper .form-checkboxes .form-item
+{
+  margin-bottom:8px;
+  margin-top:8px;
+}
+
+/* Steps */
+#marigold-hotel-contest-form-wrapper fieldset#edit-step1 legend
+{
+  background:url(../images/submit_step1.png) no-repeat scroll left top transparent;
+  height:24px;
+  width:730px;
+}
+
+#marigold-hotel-contest-form-wrapper fieldset#edit-step2 legend
+{
+  background:url(../images/submit_step2.png) no-repeat scroll left top transparent;
+  height:24px;
+  width:730px;
+}
+
+#marigold-hotel-contest-form-wrapper fieldset#edit-step3 legend
+{
+  background:url(../images/submit_step3.png) no-repeat scroll left top transparent;
+  height:24px;
+  width:730px;
+}
+
+/* CheckBox Styles */
+#marigold-hotel-contest-form-wrapper .ui-radio-state-disabled,#marigold-hotel-contest-form-wrapper .ui-radio-state-checked-disabled,#marigold-hotel-contest-form-wrapper .ui-radio-state-disabled-hover,#marigold-hotel-contest-form-wrapper .ui-radio-state-checked-disabled-hover
+{
+  color:#999;
+}
+
+#marigold-hotel-contest-form-wrapper span.ui-checkbox,#marigold-hotel-contest-form-wrapper span.ui-radio
+{
+  display:block;
+  float:left;
+  width:16px;
+  height:16px;
+  background:url(../images/checkbox_off.png) 0 0 no-repeat;
+}
+
+#marigold-hotel-contest-form-wrapper span.ui-helper-hidden
+{
+  display:none;
+}
+
+#marigold-hotel-contest-form-wrapper span.ui-checkbox-state-checked
+{
+  background:url(../images/checkbox_on.png) 0 0 no-repeat;
+}
+
+#marigold-hotel-contest-form-wrapper span.ui-checkbox-state-checked-hover
+{
+  background:url(../images/checkbox_on.png) 0 0 no-repeat;
+}
+
+#marigold-hotel-contest-form-wrapper span.ui-radio-state-checked-disabled-hover,#marigold-hotel-contest-form-wrapper span.ui-radio-state-checked-disabled,#marigold-hotel-contest-form-wrapper span.ui-radio-state-checked
+{
+  background:url(../images/checkbox_on.png) 0 0 no-repeat;
+}
+
+#marigold-hotel-contest-form-wrapper span.ui-radio-state-checked-hover
+{
+  background:url(../images/checkbox_on.png) 0 0 no-repeat;
+}
+
+#marigold-hotel-contest-form-wrapper .ui-radio-disabled,#marigold-hotel-contest-form-wrapper .ui-checkbox-disabled
+{
+  opacity:.7;
+}
+
+/* Select Box Styles */
+#marigold-hotel-contest-form-wrapper .form-type-select span
+{
+  width:auto;
+}
+
+/* Select Box Styles */
+#marigold-hotel-contest-form-wrapper span.customStyleSelectBox
+{
+  background:url(../images/dropdown_gradient.png) repeat-x scroll left top transparent;
+  border:1px solid #b2b2b2;
+  color:#000;
+  font-size:11px;
+  height:19px;
+  padding:0 2px 1px 7px;
+}
+
+#marigold-hotel-contest-form-wrapper .customStyleSelectBoxInner
+{
+  background:url(../images/select_arrow_full.png) no-repeat scroll right center transparent;
+  height:20px;
+  line-height:20px;
+}
+
+#marigold-hotel-contest-form-wrapper .reqtext
+{
+  clear:both;
+}
+
+#marigold-hotel-contest-form-wrapper .form-type-select input
+{
+  width:auto;
+}
+
+#marigold-hotel-contest-form-wrapper div.selectbox-wrapper
+{
+  position:absolute;
+  width:400px;
+  background-color:#FFF;
+  border:1px solid #ccc;
+  margin:0;
+  margin-top:-10px;
+  padding:0;
+  font-size:.8em;
+  text-align:left;
+  height:100px;
+  overflow:auto;
+}
+
+#marigold-hotel-contest-form-wrapper div.selectbox-wrapper ul
+{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+#marigold-hotel-contest-form-wrapper div.selectbox-wrapper ul li.selected
+{
+  background-color:#EAF2FB;
+}
+
+#marigold-hotel-contest-form-wrapper div.selectbox-wrapper ul li.current
+{
+  background-color:#CDD8E4;
+}
+
+#marigold-hotel-contest-form-wrapper div.selectbox-wrapper ul li
+{
+  list-style-type:none;
+  display:block;
+  margin:0;
+  padding:2px;
+  cursor:pointer;
+}
+
+#marigold-hotel-contest-form-wrapper label
+{
+  display:block;
+}
+
+#marigold-hotel-contest-form-wrapper .selectbox /* look&fell of select box*/
+{
+  margin:0 5px 10px 0;
+  padding-left:2px;
+  font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+  font-size:.8em;
+  width:10em;
+  display:block;
+  text-align:left;
+  background:url(../images/bg_select.png) right;
+/*height:18px;*/
+  cursor:pointer;
+  border:1px solid #D1E4F6;
+  color:#333;
+}
+
+#marigold-hotel-contest-form-wrapper select
+{
+  background:url(../images/bg_select.png) right;
+}
+
+/* text fields */
+#marigold-hotel-contest-form-wrapper .form-type-textfield input.form-text,#marigold-hotel-contest-form-wrapper .form-type-textarea textarea.form-textarea
+{
+  background:#FFF url(../images/text_field_bg.gif) no-repeat left top;
+  border:1px solid #B3B2B0;
+}

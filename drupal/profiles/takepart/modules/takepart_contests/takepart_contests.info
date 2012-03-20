@@ -5,6 +5,7 @@ package = Take Part
 
 dependencies[] = entity
 dependencies[] = views
+dependencies[] = takepart_addthis
 
 files[] = contest_type.admin.inc
 files[] = contest.admin.inc

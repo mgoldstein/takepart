@@ -1,9 +1,13 @@
-		<?php
-
+<?php
 /**
  * @file
  * Module for the TakePartContest Entity
  */  
+
+include(drupal_get_path('module', 'takepart_contests').'/includes/marigold-hotel-contest/forms.inc');
+include(drupal_get_path('module', 'takepart_contests').'/includes/marigold-hotel-contest/themes.inc');
+include(drupal_get_path('module', 'takepart_contests').'/includes/marigold-hotel-contest/widgets.inc');
+
 
 /**
  * Implements hook_entity_info()
@@ -220,7 +224,58 @@ function takepart_contests_theme() {
       'variables' => array('content' => array()),
       'file' => 'contest.admin.inc',
     ),
+     'marigold_hotel_contest_form'  => array(
+          'render element' => 'form',
+      ),
+      'marigold_hotel_contest_form_button_next' => array(
+          'render element'  => 'element',
+      ),
+      'marigold_hotel_contest_form_button_prev' => array(
+          'render element'  => 'element',
+      ),
+      'marigold_hotel_email_share_block' => array(
+          'variables' => array(),
+          'template' => 'includes/marigold-hotel-contest/templates/email-share-block',
+      ),
   );
+}
+
+/**
+ * Implements hook_info().
+ */
+function takepart_contests_block_info() {
+  $blocks = array();
+
+  $blocks['marigold-hotel-contest'] = array(
+      'info' => t('BSD Marigold Hotel Contest')
+  );
+
+  $blocks['marigold-hotel-email-share'] = array(
+      'info' => t('BSD Marigold Hotel Contest Email Share')
+  );
+
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_view().
+ */
+function takepart_contests_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'marigold-hotel-contest':
+      $block['subject'] = t('BSD Marigold Hotel Contest');
+      $block['content'] = drupal_get_form('marigold_hotel_contest_form');
+      return $block;
+      break;
+    case 'marigold-hotel-email-share':
+      $block['content'] = _marigold_hotel_contest_emailshare();
+      return $block;
+      break;
+  }
+
+  return $block;
 }
 
 /**
