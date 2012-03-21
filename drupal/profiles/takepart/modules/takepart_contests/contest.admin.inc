@@ -152,7 +152,8 @@ function theme_takepart_contests_contest_add_list($variables) {
 
 function takepart_contests_contest_form_wrapper($contest) {
   takepart_contests_contest_set_breadcrumb();
-  drupal_set_title(t('Add Contest'), PASS_THROUGH);
+  $type = takepart_contests_get_types($contest->type);
+  drupal_set_title(t('Add %name', array('%name' => $type->label)), PASS_THROUGH);
   return drupal_get_form('takepart_contests_contest_edit_form', $contest);
 }
 
@@ -194,10 +195,18 @@ function takepart_contests_contest_edit_form($form, &$form_state, $contest, $op 
     '#size' => 30,
   );
 
+  if (isset($contest->is_new) && $contest->is_new) {
+    $type = takepart_contests_get_types($contest->type);
+    $default_value = isset($type->default_entry_period) ? $type->default_entry_period : '';
+  }
+  else {
+    $default_value = isset($contest->entry_period) ? $contest->entry_period : '';
+  }
+
   $form['entry_period'] = array(
     '#type' => 'textarea',
     '#title' => t('Entry Period'),
-    '#default_value' => isset($contest->entry_period) ? $contest->entry_period : '',
+    '#default_value' => $default_value,
   );
 
   field_attach_form('takepart_contests_contest', $contest, $form, $form_state);

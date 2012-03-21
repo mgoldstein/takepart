@@ -3,7 +3,6 @@
 class TakePartContestTypeUIController extends EntityDefaultUIController {
 
   public function hook_menu() {
-    xdebug_break();
     $items = parent::hook_menu();
     $items[$this->path]['description'] = 'Manage contest types, including adding and removing fields and the display of fields.';
     return $items;
