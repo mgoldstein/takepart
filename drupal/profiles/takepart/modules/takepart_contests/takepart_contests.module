@@ -559,6 +559,13 @@ function takepart_contests_contest_entry_form($form, &$form_state, $entry, $op) 
   return $form;  
 }
 
+function takepart_contests_form_takepart_contests_contest_entry_form_alter(&$form, &$form_state, $form_id) {
+
+  // remove the metatags part of the form
+  unset($form['metatags']);
+  $form['#submit'] = array_diff($form['#submit'], array('metatag_metatags_form_submit'));
+}
+
 function takepart_contests_contest_entry_form_validate($form, $form_state) {
 
   // validate the attached fields
