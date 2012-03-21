@@ -50,12 +50,9 @@ function takepart_contests_entity_info() {
     'fieldable' => TRUE,
     'entity keys' => array(
       'id' => 'entry_id',
-      'bundle' => 'type',
-    ),
-    'bundles' => array(),
-    'bundle keys' => array(
       'bundle' => 'entry_type',
     ),
+    'bundles' => array(),
     'label callback' => 'entity_class_label',
     'uri callback' => 'entity_class_uri',
     'access callback' => '_takepart_contests_contest_entry_access',
