@@ -9,7 +9,3 @@ dependencies[] = takepart_addthis
 
 files[] = contest_type.admin.inc
 files[] = contest.admin.inc
-files[] = contest_entry.admin.inc
-
-files[] = views/takepart_contests.views.inc
-files[] = views/field_handlers.inc

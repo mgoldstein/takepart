@@ -3,28 +3,12 @@
 class TakePartContestUIController extends EntityDefaultUIController {
 
   public function hook_menu() {
-    //return parent::hook_menu();
-    
-    $items = array();
-    $id_count = count(explode('/', $this->path));
-    if (isset($this->entityInfo['admin ui']['menu wildcard'])) {
-      $wildcard = $this->entityInfo['admin ui']['menu wildcard'];
-    }
-    else {
-      $wildcard = '%' . $this->entityType;
-    }
-  
-    // The main admin page for contests, show an overview of all contests
-    $items[$this->path] = array(
-      'title' => 'Contests',
-      'description' => 'Add edit and update contests',
-      'access arguments' => array('access administration pages'),
-      'page callback' => 'takepart_contests_contest_overview_page',
-      'file' => 'contest.admin.inc',
-      'file path' => drupal_get_path('module', $this->entityInfo['module']),
-      'type' => MENU_LOCAL_TASK,
-    );
-    
+
+    $items = parent::hook_menu();
+
+    // Make the Contests main page a subsection of the content section
+    $items[$this->path]['type'] = MENU_LOCAL_TASK;
+
     // Page for adding instances of existing contest types
     $items[$this->path . '/add'] = array(
       'title' => 'Add a contest',
@@ -44,7 +28,7 @@ class TakePartContestUIController extends EntityDefaultUIController {
       $items[$this->path . '/add/' . $type->type] = array(
         'title' => 'Add a ' . $type->label,
         'page callback' => 'takepart_contests_contest_form_wrapper',
-        'page arguments' => array(takepart_contests_contest_create(array('type' => $type->type))),
+        'page arguments' => array($type->type),
         'access callback' => '_takepart_contests_contest_access',
         'access arguments' => array('edit'),
         'file' => 'contest.admin.inc',
@@ -52,139 +36,41 @@ class TakePartContestUIController extends EntityDefaultUIController {
       );
     }
 
-    // Page for editting a contest instance
-    $items[$this->path . '/manage/%'] = array(
-      'title' => 'Edit',
-      'page callback' => 'takepart_contests_contest_edit_page',
-      'page arguments' => array($id_count + 1),
-      'access callback' => '_takepart_contests_contest_access',
-      'access arguments' => array('edit'),
-      'type' => MENU_LOCAL_TASK,
-      'weight' => 0,
-      'file' => 'contest.admin.inc',
-      'file path' => drupal_get_path('module', $this->entityInfo['module']),
-    );
-
-    // Page for cloning a contest instance
-    $items[$this->path . '/manage/%/clone'] = array(
-      'title' => 'Edit',
-      'page callback' => 'takepart_contests_contest_clone_page',
-      'page arguments' => array($id_count + 1),
-      'access callback' => '_takepart_contests_contest_access',
-      'access arguments' => array('edit'),
-      'type' => MENU_LOCAL_TASK,
-      'weight' => 0,
-      'file' => 'contest.admin.inc',
-      'file path' => drupal_get_path('module', $this->entityInfo['module']),
-    );
-    
-    // Page for deleting a contest instance
-    $items[$this->path . '/manage/%/delete'] = array(
-      'title' => 'Edit',
-      'page callback' => 'takepart_contests_contest_delete_page',
-      'page arguments' => array($id_count + 1),
-      'access callback' => '_takepart_contests_contest_access',
-      'access arguments' => array('edit'),
-      'type' => MENU_LOCAL_TASK,
-      'weight' => 0,
-      'file' => 'contest.admin.inc',
-      'file path' => drupal_get_path('module', $this->entityInfo['module']),
-    );
-
     return $items;
   }
 }
 
-function takepart_contests_contest_set_breadcrumb() {
-  $breadcrumb = array(
-    l(t('Home'), '<front>'),
-    l(t('Administration'), 'admin'),
-    l(t('Content'), 'admin/content'),
-    l(t('Contests'), 'admin/content/contests'),
-  );
-  drupal_set_breadcrumb($breadcrumb);
-}
-
-function takepart_contests_contest_overview_page() {
-  takepart_contests_contest_set_breadcrumb();
-  drupal_set_title(t('Contests'), PASS_THROUGH);
-  $controller = entity_ui_controller('takepart_contests_contest');
-  return $controller->overviewForm();
-}
-
 function takepart_contests_contest_add_page() {
-  takepart_contests_contest_set_breadcrumb();
-  drupal_set_title(t('Add Contest'), PASS_THROUGH);
+
   $item = menu_get_item();
   $content = system_admin_menu_block($item);
+
+  // go straight to add contest page if there is only 1 type
   if (count($content) == 1) {
     $item = array_shift($content);
     drupal_goto($item['href']);
   }
+
   return theme('takepart_contests_contest_add_list', array('content' => $content));
 }
 
-function theme_takepart_contests_contest_add_list($variables) {
-  takepart_contests_contest_set_breadcrumb();
-  drupal_set_title(t('Add Contest'), PASS_THROUGH);
-  $content = $variables['content'];
-  $output = '';
-  
-  if ($content) {
-    $output = '<dl class="contest-type-list">';
-    foreach ($content as $item) {
-      $output .= '<dt>' . l($item['title'], $item['href']) . '</dt>';
-      $output .= '<dd>' . filter_xss_admin($item['description']) . '</dd>';
-    }
-    $output .= '</dl>';
-  }
-  else {
-    if (user_access('administer takepart contest types')) {
-      $output = '<p>' . t('Contests cannot be added because you have not created any contest types yet. Go to the <a href="@create-contest-type">contest type creation page</a> to add a new contest type.', array('@create-contest-type' => url('admin/structure/contest_types/add'))) . '</p>';
-    }
-    else {
-      $output = '<p>' . t('No contest types have been created yet for you to use.') . '</p>';
-    }
-  }
-  
-  return $output;
+/**
+ * Contest Type entity form wrapper for adding a specific bundle
+ */
+function takepart_contests_contest_form_wrapper($type_name) {
+  $values = array('type' => $type_name);
+  $contest = entity_get_controller('takepart_contests_contest')->create($values);
+  return entity_ui_get_form('takepart_contests_contest', $contest, 'add');
 }
 
-function takepart_contests_contest_form_wrapper($contest) {
-  takepart_contests_contest_set_breadcrumb();
-  $type = takepart_contests_get_types($contest->type);
-  drupal_set_title(t('Add %name', array('%name' => $type->label)), PASS_THROUGH);
-  return drupal_get_form('takepart_contests_contest_edit_form', $contest);
-}
-
-function takepart_contests_contest_edit_page($contest_id) {
-  $contest = takepart_contests_contest_load($contest_id);
-  takepart_contests_contest_set_breadcrumb();
-  drupal_set_title(t('Edit contest %name', array('%name' => $contest->name)), PASS_THROUGH);
-  return drupal_get_form('takepart_contests_contest_edit_form', $contest);
-}
-
-function takepart_contests_contest_clone_page($contest_id) {
-  takepart_contests_contest_set_breadcrumb();
-  drupal_set_title(t('Clone contest %name', array('%name' => $contest->name)), PASS_THROUGH);
-  $contest = takepart_contests_contest_load($contest_id);
-  return drupal_get_form('takepart_contests_contest_clone_form', $contest, 'clone');
-}
-
-function takepart_contests_contest_delete_page($contest_id) {
-  $contest = takepart_contests_contest_load($contest_id);
-  takepart_contests_contest_set_breadcrumb();
-  drupal_set_title(t('Delete contest %name', array('%name' => $contest->name)), PASS_THROUGH);
-  return drupal_get_form('takepart_contests_contest_delete_form', $contest);
-}
-
-function takepart_contests_contest_edit_form($form, &$form_state, $contest, $op = 'edit') {
+/**
+ * Contest Type entity form
+ */
+function takepart_contests_contest_form($form, &$form_state, $contest, $op = 'edit') {
 
   if ($op == 'clone') {
     $contest->name .= ' (cloned)';
   }
-  
-  $form_state['takepart_contests_contest'] = $contest;
   
   $form['name'] = array(
     '#title' => t('Name'),
@@ -209,16 +95,15 @@ function takepart_contests_contest_edit_form($form, &$form_state, $contest, $op 
     '#default_value' => $default_value,
   );
 
+  $form_state['takepart_contests_contest'] = $contest;
   field_attach_form('takepart_contests_contest', $contest, $form, $form_state);
-
+  
   $form['actions'] = array(
     '#type' => 'container',
     '#attributes' => array('class' => array('form-actions')),
     '#weight' => 400,
   );
-  
   $submit = array();
-
   if (!empty($form['#submit'])) {
     $submit += $form['#submit'];
   }
@@ -226,72 +111,97 @@ function takepart_contests_contest_edit_form($form, &$form_state, $contest, $op 
   $form['actions']['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Save contest'),
-    '#submit' => $submit + array('takepart_contests_contest_edit_form_submit'),
+    '#weight' => 40,
+    '#submit' => $submit + array('takepart_contests_contest_form_submit'),
   );
-  
-  if (!empty($model->name)) {
+
+  // only add the delete button if we are editting an existing contest
+  if (! empty($contest->contest_id)) {
     $form['actions']['delete'] = array(
       '#type' => 'submit',
-      '#value' => t('Delete contest'),
-      '#suffix' => l(t('Cancel'), 'admin/content/contests'),
-      '#submit' => $submit + array('takepart_contests_contest_edit_form_submit_delete'),
+      '#value' => t('Delete contest '),
+      '#submit' => $submit + array('takepart_contests_contest_form_submit_delete'),
       '#weight' => 45,
     );
   }
   
-  $form['#validate'][] = 'takepart_contests_contest_edit_form_validate';
+  $form['actions']['cance'] = array(
+    '#type' => 'markup',
+    '#markup' => l(t('Cancel'), 'admin/content/contests'),
+    '#weight' => 50,
+  );
+
+  $form['#validate'][] = 'takepart_contests_contest_form_validate';
 
   return $form;
 }
 
-function takepart_contests_contest_edit_form_validate(&$form, &$form_state) {
+/**
+ * Contest entity form validation handler
+ */
+function takepart_contests_contest_form_validate(&$form, &$form_state) {
+
+  // validate the attached fields
   $contest = $form_state['takepart_contests_contest'];
   field_attach_form_validate('takepart_contests_contest', $contest, $form, $form_state);
 }
 
-function takepart_contests_contest_edit_form_submit(&$form, &$form_state) {
+/**
+ * Contest entity form save handler
+ */
+function takepart_contests_contest_form_submit(&$form, &$form_state) {
+
+  // build the contest entity from the form
   $controller = entity_ui_controller('takepart_contests_contest');
   $contest = $controller->entityFormSubmitBuildEntity($form, $form_state);
   
+  // set/update the created and changed timestamps
   if ($contest->is_new = isset($contest->is_new) ? $contest->is_new : 0) {
     $contest->created = time();
   }
-  $contest->modified = time();
+  $contest->changed = time();
+
+  // save the contest
   $contest->save();
   drupal_set_message(t('The contest %name has been saved.', array('%name' => $contest->name)));
+
+  // go back to the list of content types
   $form_state['redirect'] = 'admin/content/contests';
 }
 
-function takepart_contests_contest_edit_form_submit_delete(&$form, &$form_state) {
-  $form_state['redirect'] = 'admin/content/contests/manage/' . $form_state['takepart_contests_contest']->contest_id . '/delete';
+/**
+ * Contest entity form delete handler
+ */
+function takepart_contests_contest_form_submit_delete(&$form, &$form_state) {
+  
+  // go to the delete confirmation page
+  $id = $form_state['takepart_contests_contest']->contest_id;
+  $form_state['redirect'] = 'admin/content/contests/manage/' . $id . '/delete?destination=admin/content/contests';
 }
 
-function takepart_contests_contest_clone_form($form, &$form_state, $contest, $op = 'edit') {
-  $form['not_available'] = array(
-    '#type' => 'markup',
-    '#markup' => '<h1>Currently not available.</h1>',
-  );
-  return $form;
-}
+function theme_takepart_contests_contest_add_list($variables) {
 
-function takepart_contests_contest_delete_form($form, &$form_state, $contest) {
-  $form_state['takepart_contests_contest'] = $contest;
-  $form['#submit'][] = 'takepart_contests_contest_delete_form_submit';
+  $content = $variables['content'];
+  $output = '';
+  
+  if ($content) {
 
-  $form = confirm_form($form,
-    t('Are you sure you want to delete contest %name?', array('%name' => $contest->name)),
-    'admin/content/contests',
-    '<p>' . t('This action cannot be undone.') . '</p>',
-    t('Delete'),
-    t('Cancel'),
-    'confirm'
-  );
-  return $form;
-}
+    $output = '<dl class="contest-type-list">';
+    foreach ($content as $item) {
+      $output .= '<dt>' . l($item['title'], $item['href']) . '</dt>';
+      $output .= '<dd>' . filter_xss_admin($item['description']) . '</dd>';
+    }
+    $output .= '</dl>';
+  }
+  else {
 
-function takepart_contests_contest_delete_form_submit($form, &$form_state) {
-  $contest = $form_state['takepart_contests_contest'];
-  takepart_contests_contest_delete($contest);
-  drupal_set_message(t('The contest %name has been deleted.', array('%name' => $contest->name)));
-  $form_state['redirect'] = 'admin/content/contests';
+    if (user_access('administer takepart contest types')) {
+      $output = '<p>' . t('Contests cannot be added because you have not created any contest types yet. Go to the <a href="@create-contest-type">contest type creation page</a> to add a new contest type.', array('@create-contest-type' => url('admin/structure/contest_types/add'))) . '</p>';
+    }
+    else {
+      $output = '<p>' . t('No contest types have been created yet for you to use.') . '</p>';
+    }
+  }
+  
+  return $output;
 }
