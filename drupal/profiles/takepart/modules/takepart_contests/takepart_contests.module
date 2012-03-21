@@ -443,7 +443,7 @@ class TakePartContestEntryController extends EntityAPIController {
     $values += array(
       'entry_id' => '',
       'contest_id' => '',
-      'language' => '',
+      'language' => LANGUAGE_NONE,
       'is_new' => TRUE,
       'uid' => '',
       'created' => '',
@@ -476,7 +476,7 @@ class TakePartContestEntryController extends EntityAPIController {
 }
 
 function takepart_contests_contest_entry_load($entry_id, $reset = FALSE) {
-  $entries = takepart_contests_contest_load_multiple(array($entry_id), array(), $reset);
+  $entries = takepart_contests_contest_entry_load_multiple(array($entry_id), array(), $reset);
   return reset($entries);
 }
 
@@ -523,22 +523,73 @@ function _takepart_contests_test_page() {
 
   $status = 0;
 
-  $contest = takepart_contests_contest_load(4);
+  // pull a contest from the database, if this was the block_view hook
+  // the id could be the $delta, in this case I had a contest in MY system
+  // that had an id of 2, you will likely need to change this
+  $contest = takepart_contests_contest_load(2);
 
+  // entries should be created off of the contest entity so the
+  // contest_id is automatically set
   $entry = $contest->createEntry();
   
+  // get a form for entering the entry data
   return drupal_get_form('takepart_contests_contest_entry_form', $entry, 'entry');
 }
 
 function takepart_contests_contest_entry_form($form, &$form_state, $entry, $op) {
 
+  // Some extra markup on the form
   $form['testing'] = array(
     '#type' => 'markup',
     '#markup' => '<p>' . $op . '</p>'
   );
 
+  // add the entity fields to the form
+  // the entity itself needs to be stored in the form state with
+  // the name of the entity (the key used in the entity_info hook) as the key
   $form_state['takepart_contests_contest_entry'] = $entry;
   field_attach_form('takepart_contests_contest_entry', $entry, $form, $form_state);
 
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save contest'),
+    '#weight' => 40,
+  );
+  
   return $form;  
+}
+
+function takepart_contests_contest_entry_form_validate($form, $form_state) {
+
+  // validate the attached fields
+  $entry = $form_state['takepart_contests_contest_entry'];
+  field_attach_form_validate('takepart_contests_contest_entry', $entry, $form, $form_state);
+}
+
+function takepart_contests_contest_entry_form_submit(&$form, &$form_state) {
+
+  global $user;
+
+  // build the contest entry entity from the form
+  entity_form_submit_build_entity('takepart_contests_contest_entry', $form_state['takepart_contests_contest_entry'], $form, $form_state);
+  $entry = $form_state['takepart_contests_contest_entry'];
+  
+  // set/update the created and changed timestamps
+  if ($entry->is_new = isset($entry->is_new) ? $entry->is_new : 0) {
+    $entry->created = time();
+  }
+  $entry->changed = time();
+  
+  // set the associated user
+  $entry->uid = $user->uid;
+
+  // save the entry
+  $entry->save();
+  
+  $id_to_read_back = $entry->entry_id;
+  
+  // read back the entry to make sure that works
+  $entry = takepart_contests_contest_entry_load($id_to_read_back);
+
+  drupal_set_message(t('The contest entry %id has been saved and read back.', array('%id' => $entry->entry_id)));
 }
