@@ -12,17 +12,29 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
   field_attach_form('takepart_contests_contest_entry', $entry, $form, $form_state);
 
   $callback = 'takepart_contests_contest_entry_form_callback_1';
-  $wrapper = 'takepart_contests_wrapper_1';
+  $wrapper = 'takepart_contests_form_wrapper_1';
   $submit = 'takepart_contests_contest_entry_form_submit_1';
 
   $form['#tree'] = TRUE; // We want to deal with hierarchical form values.
 
   $step = empty($form_state['storage']['step']) ? 1 : $form_state['storage']['step'];
   $form_state['storage']['step'] = $step;
-
+  
+  $form['test'] = array(
+      '#markup' => '<div>'. t('Step:' . $step) . ' X ' . t('Time:' . time()) . '</div>',
+  );
+  
+  $form['debug'] = array(
+      '#type' => 'submit',
+      '#submit' => array($submit),
+      '#value' => t("Submit No Ajax"),
+      '#weight' => 1990,
+  );
+  
   if ($step == 4) {
     $form['submit'] = array(
         '#type' => 'submit',
+        '#submit' => array($submit),
         '#value' => t("Submit your information"),
         '#weight' => 2000,
     );
@@ -103,5 +115,7 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
     $step_name = 'step' . $form_state['storage']['step'];
     $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
   }
+  
+  
 
 }
