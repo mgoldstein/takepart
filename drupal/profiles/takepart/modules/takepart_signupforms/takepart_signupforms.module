@@ -1,0 +1,199 @@
+<?php
+
+/**
+ * Implements hook_permission()
+ */
+function takepart_signupforms_permission() {
+  return array(
+    'administer takepart_signupforms fields' => array(
+      'title' => t('Administer signup forms'),
+      'description' => t('Allow users to configure signup forms and fields on content types'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function takepart_signupforms_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_id) {
+
+  // alter the field ui edit form to include the bsd signup configuration
+  form_load_include($form_state, 'inc', 'takepart_signupforms', 'takepart_signupforms.admin');
+  return _takepart_signupforms_field_settings_form_alter($form, $form_state, $form_id);
+}
+
+/**
+ * Implements hook_menu()
+ */
+function takepart_signupforms_menu() {
+
+  $items = array();
+
+  // configuration page
+  $items['admin/config/content/signup-forms'] = array(
+    'title' => 'Blue State Digital Signup Form Settings',
+    'description' => 'Configure Blue State Digital Signup form settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_signupforms_admin'),
+    'access arguments' => array('administer takepart_signupforms fields'),
+    'file' => 'takepart_signupforms.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_entity_insert()
+ */
+function takepart_signupforms_entity_insert($entity, $type) {
+
+  $info = entity_get_info($type);
+
+  if ((!empty($info['entity keys'])) && (!empty($info['entity keys']['bundle']))) {
+
+    // get the field settings for the entity's bundle
+    $bundleProperty = $info['entity keys']['bundle'];
+    $settings = _takepart_signupforms_field_settings($type, $entity->{$bundleProperty});
+    
+    if ($settings) {
+    
+      $signup = array();
+      foreach ($settings['forms'] as $form_id => $fields) {
+      
+        // get the BSD fields for this form
+        $bsd_fields = takepart_bsd_signup_list_form_fields($form_id);
+
+        foreach ($fields as $field_id => $field) {
+
+          $property = $field['field_name'];
+          if ((!empty($bsd_fields[$field_id])) && isset($entity->{$property})) {
+            
+            $language = isset($entity->language) ? $entity->language : LANGUAGE_NONE;
+            
+            switch ($field['type']) {
+            
+            case 'text':
+              $bsd_fields[$field_id]['value'] = array(
+                'type' => 'value',
+                'value' => $entity->{$property}[$language][0]['value'],
+              );
+              break;
+              
+            case 'text_long':
+            
+            case 'text_with_summary':
+
+            default:
+            
+            }
+          }    
+        }
+        
+        // add the form to the signup
+        $signup[$form_id] = $bsd_fields;
+      }
+      
+      // send the signup to BSD
+      $errors = array();
+      takepart_bsd_signup_process_signup($signup, $errors);
+      if (count($errors) > 0) {
+        takepart_signupform_log_errors($errors);  
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_update()
+ */
+function takepart_signupforms_entity_update($entity, $type) {
+
+  $info = entity_get_info($type);
+
+  if ((!empty($info['entity keys'])) && (!empty($info['entity keys']['bundle']))) {
+
+    // get the field settings for the entity's bundle
+    $bundleProperty = $info['entity keys']['bundle'];
+    $settings = _takepart_signupforms_field_settings($type, $entity->{$bundleProperty});
+    
+    // also check if the bundles has any fields that send updates
+    if ($settings && ($settings['send_updates_count'] > 0)) {
+    
+      
+    }
+  }
+}
+
+function _takepart_signupforms_field_settings($entity_type, $bundle, $reset = FALSE) {
+
+  static $settings;
+  
+  // skip getting the settings if this call is within the same page load
+  if (!isset($settings) || $reset) {
+  
+    // try the cached settings first
+    if (!$reset && ($cache = cache_get('takepart_signupforms_field_settings')) && !empty($cache->data)) {
+      $settings = unserialize($cache->data);
+    }
+    else {
+      
+      $settings = array();
+      
+      // select all settings for all fields on enabled bundles
+      $query = db_select('takepart_signupforms_fields', 'f');
+      $query->join('takepart_signupforms_bundles', 'b', 'f.bundle_id = b.id');
+      $query->join('field_config', 'c', 'f.field_name = c.field_name');
+      $query->fields('f', array('field_name', 'form_id', 'field_id', 'send_updates'))
+        ->fields('b', array('entity_type', 'bundle'))
+        ->fields('c', array('type', 'cardinality'))
+        ->condition('b.enabled', 1, '=');
+      
+      $results = $query->execute();
+      while ($result = $results->fetchAssoc()) {
+
+        // build a composite key to flatten the array a bit
+        $key = $result['entity_type'] . ':' . $result['bundle'];
+
+        // create the initial bundle structure the first time a bundle is encountered
+        if (! isset($settings[$key])) {
+          $settings[$key] = array(
+            'forms' => array(),
+            'update_count' => 0,
+          );
+        }
+        
+        $form_id = $result['form_id'];
+        $field_id = $result['field_id'];
+        
+        // create the intial form structure the first time a form is encounter (per bundle)
+        if (! isset($settings[$key]['forms'][$form_id])) {
+          $settings[$key]['forms'][$form_id] = array();
+        }
+
+        // add the field settings
+        $settings[$key]['forms'][$form_id][$field_id] = array(
+          'field_name' => $result['field_name'],
+          'type' => $result['type'],
+          'cardinality' => $result['cardinality'],
+          'send_updates' => $result['send_updates'],
+        );
+        
+        // keep a count of the number of fields that should also be sent on update
+        if ($result['send_updates']) {
+          $settings[$key]['send_updates_count'] += 1;
+        }
+      }
+
+      // cache the settings for later use
+      cache_set('takepart_signupforms_field_settings', 'cache', serialize($settings), time() + 360);
+    }
+  }
+  
+  // return the settings for the field if there are any
+  $key = $entity_type . ':' . $bundle;
+  if (isset($settings[$key])) {
+    return $settings[$key];
+  }
+  return FALSE;
+}

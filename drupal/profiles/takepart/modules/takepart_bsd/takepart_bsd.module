@@ -59,6 +59,7 @@ function takepart_bsd_signup_list_form_fields($id) {
       'created' => (string)$child->create_dt,
       'form_id' => (int)$id,
       'constituent_field_id' => (int)$child->cons_field_id,
+      'value' => NULL,
     );
   }
   

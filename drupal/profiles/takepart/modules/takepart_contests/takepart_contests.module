@@ -541,7 +541,7 @@ function takepart_contests_contest_entry_form($form, &$form_state, $entry, $op) 
   // Some extra markup on the form
   $form['testing'] = array(
     '#type' => 'markup',
-    '#markup' => '<p>' . $op . '</p>'
+    '#markup' => '<p id="thing-to-replace">' . $op . '</p>'
   );
 
   // add the entity fields to the form
@@ -554,6 +554,18 @@ function takepart_contests_contest_entry_form($form, &$form_state, $entry, $op) 
     '#type' => 'submit',
     '#value' => t('Save contest'),
     '#weight' => 40,
+  );
+  
+  $form['actions']['ajax'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save via AJAX'),
+    '#weight' => 45,
+    '#ajax' => array(
+      'callback' => 'takepart_contests_contest_entry_form_callback',
+      'wrapper' => 'thing-to-replace',
+      'method' => 'replace',
+      'effect' => 'fade',
+    ),
   );
   
   return $form;  
@@ -573,6 +585,10 @@ function takepart_contests_contest_entry_form_validate($form, $form_state) {
   field_attach_form_validate('takepart_contests_contest_entry', $entry, $form, $form_state);
 }
 
+function takepart_contests_contest_entry_form_callback($form, $form_state) {
+  return 'This is a test';
+}
+
 function takepart_contests_contest_entry_form_submit(&$form, &$form_state) {
 
   global $user;
@@ -582,7 +598,8 @@ function takepart_contests_contest_entry_form_submit(&$form, &$form_state) {
   $entry = $form_state['takepart_contests_contest_entry'];
   
   // set/update the created and changed timestamps
-  if ($entry->is_new = isset($entry->is_new) ? $entry->is_new : 0) {
+  $entry->is_new = isset($entry->is_new) ? $entry->is_new : 0;
+  if ($entry->is_new) {
     $entry->created = time();
   }
   $entry->changed = time();

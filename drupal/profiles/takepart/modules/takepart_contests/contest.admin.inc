@@ -156,7 +156,8 @@ function takepart_contests_contest_form_submit(&$form, &$form_state) {
   $contest = $controller->entityFormSubmitBuildEntity($form, $form_state);
   
   // set/update the created and changed timestamps
-  if ($contest->is_new = isset($contest->is_new) ? $contest->is_new : 0) {
+  $contest->is_new = isset($contest->is_new) ? $contest->is_new : 0;
+  if ($contest->is_new) {
     $contest->created = time();
   }
   $contest->changed = time();

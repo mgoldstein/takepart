@@ -1,0 +1,12 @@
+name = TakePart Signup Forms
+core = 7.x
+description = Binds fields to Blue State Digital Signup forms fields for newsletters, petitions and contests.
+package = Take Part
+
+dependencies[] = entity
+dependencies[] = field
+dependencies[] = field_ui
+
+dependencies[] = takepart_bsd
+
+files[] = takepart_signupforms.controller.inc
