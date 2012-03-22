@@ -1,7 +1,7 @@
 name = TakePart Signup Forms
-core = 7.x
 description = Binds fields to Blue State Digital Signup forms fields for newsletters, petitions and contests.
-package = Take Part
+core = 7.x
+package = TakePart
 
 dependencies[] = entity
 dependencies[] = field

@@ -1,6 +1,25 @@
 <?php
 
-function _takepart_signupforms_bundle_field_settings($entity_type, $bundle, $field_name) {
+/**
+ * Get the settings for a field attached to a bundle
+ * 
+ * This function always returns an array of settings even if no settings
+ * previously existed.
+ * 
+ * @param string $entity_type
+ *   The entity type of the bundle 
+ * @param string $bundle
+ *   The bundle name
+ * @param string $field_name
+ *   The name of the field
+ * @return associative array
+ *   A associative array containing:
+ *   - form_id: The integer ID of the BSD form
+ *   - field_id: The integer ID of the BSD field
+ *   - send_updates: A boolean indicating if updates to the field should trigger
+ *     a submission to BSD
+ */
+function _takepart_signupforms_field_settings($entity_type, $bundle, $field_name) {
 
   // sub-query to get the BSD field settings
   $subquery = db_select('takepart_signupforms_fields', 'ff')
@@ -33,7 +52,7 @@ function _takepart_signupforms_field_settings_form_alter(&$form, $form_state, $f
     $bundle = $form['#instance']['bundle'];
     $field_name = $form['#instance']['field_name'];
 
-    $result = _takepart_signupforms_bundle_field_settings($entity_type, $bundle, $field_name);
+    $result = _takepart_signupforms_field_settings($entity_type, $bundle, $field_name);
  
     $form_id = isset($result['form_id']) ? $result['form_id'] : '';
     $field_id = isset($result['field_id']) ? $result['field_id'] : '';
@@ -69,7 +88,7 @@ function _takepart_signupforms_field_settings_form_alter(&$form, $form_state, $f
   }
 }
 
-function _takepart_signupforms_form_id_select($default_value) {
+function _takepart_signupforms_form_id_select($value) {
     
   // get the list of bsd signup forms
   $signups = takepart_bsd_signup_list_forms();
@@ -79,8 +98,8 @@ function _takepart_signupforms_form_id_select($default_value) {
     $options = array();
     
     // add in the current value if it is not in the signup list
-    if ((!empty($default_value)) && (!array_key_exists($default_value, $signups))) {
-      $options[$default_value] = t('Form ID: @id (not available)', array('@id' => $default_value));
+    if ((!empty($value)) && (!array_key_exists($value, $signups))) {
+      $options[$value] = t('Form ID: @id (not available)', array('@id' => $value));
     }
     
     // add in the option to have no form
@@ -95,7 +114,7 @@ function _takepart_signupforms_form_id_select($default_value) {
       '#type' => 'select',
       '#title' => 'Signup Form',
       '#options' => $options,
-      '#default_value' => $default_value,
+      '#default_value' => $value,
       '#ajax' => array(
         'event' => 'change',
         'callback' => 'takepart_signupforms_form_id_callback',
@@ -110,7 +129,7 @@ function _takepart_signupforms_form_id_select($default_value) {
       '#type' => 'textfield',
       '#title' => 'Signup Form ID',
       '#size' => 4,
-      '#default_value' => $default_value,
+      '#default_value' => $value,
       '#element_validate' => array('_takepart_signupforms_validate_integer_positive'),
     );
   }
@@ -118,7 +137,7 @@ function _takepart_signupforms_form_id_select($default_value) {
   return $element;
 }
 
-function _takepart_signupforms_field_id_select($form_id, $default_value) {
+function _takepart_signupforms_field_id_select($form_id, $value) {
 
   $element = NULL;
   $options = array();
@@ -129,8 +148,8 @@ function _takepart_signupforms_field_id_select($form_id, $default_value) {
     
     if (!empty($fields)) {
       
-      if ((!empty($default_value)) && (!array_key_exists($default_value, $fields))) {
-        $options[$default_value] = t('Field ID: @id (not available)', array('@id' => $default_value));
+      if ((!empty($value)) && (!array_key_exists($value, $fields))) {
+        $options[$value] = t('Field ID: @id (not available)', array('@id' => $value));
       }
       
       foreach ($fields as $id => $field) {
@@ -142,7 +161,7 @@ function _takepart_signupforms_field_id_select($form_id, $default_value) {
         '#type' => 'textfield',
         '#title' => 'Signup Field ID',
         '#size' => 4,
-        '#default_value' => $default_value,
+        '#default_value' => $value,
         '#element_validate' => array('_takepart_signupforms_validate_integer_positive'),
         '#prefix' => '<div id="takepart-signup-field-select">',
         '#suffix' => '</div>',
@@ -158,7 +177,7 @@ function _takepart_signupforms_field_id_select($form_id, $default_value) {
       '#type' => 'select',
       '#title' => 'Signup Field',
       '#options' => $options,
-      '#default_value' => $default_value,
+      '#default_value' => $value,
       '#prefix' => '<div id="takepart-signup-field-select">',
       '#suffix' => '</div>',
     );

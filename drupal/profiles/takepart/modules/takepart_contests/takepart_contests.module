@@ -125,6 +125,14 @@ function takepart_contests_menu_alter(&$items) {
   $items['admin/structure/contest_types/manage/%takepart_contests_contest_entry_type/entry/display']['weight'] = 4;
 }
 
+/**
+ * Placeholder callback for contest entry types
+ * 
+ * @param type $name
+ *   The contest bundle name
+ * @return
+ *   The corresponding contest entry bundle name
+ */
 function takepart_contests_contest_entry_type_load($name) {
   return $name . '_entry';
 }

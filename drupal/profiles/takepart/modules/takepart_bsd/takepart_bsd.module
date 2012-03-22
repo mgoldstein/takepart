@@ -66,7 +66,7 @@ function takepart_bsd_signup_list_form_fields($id) {
   return $fields;
 }
 
-function takepart_bsd_signup_process_signup($signup) {
+function takepart_bsd_signup_process_signup($signup, &$errors) {
   return true;
 }
 

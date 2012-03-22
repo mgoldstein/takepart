@@ -54,7 +54,7 @@ function takepart_signupforms_entity_insert($entity, $type) {
 
     // get the field settings for the entity's bundle
     $bundleProperty = $info['entity keys']['bundle'];
-    $settings = _takepart_signupforms_field_settings($type, $entity->{$bundleProperty});
+    $settings = _takepart_signupforms_bundle_settings($type, $entity->{$bundleProperty});
     
     if ($settings) {
     
@@ -98,7 +98,7 @@ function takepart_signupforms_entity_insert($entity, $type) {
       $errors = array();
       takepart_bsd_signup_process_signup($signup, $errors);
       if (count($errors) > 0) {
-        takepart_signupform_log_errors($errors);  
+        _takepart_signupforms_log_errors($errors);  
       }
     }
   }
@@ -115,17 +115,61 @@ function takepart_signupforms_entity_update($entity, $type) {
 
     // get the field settings for the entity's bundle
     $bundleProperty = $info['entity keys']['bundle'];
-    $settings = _takepart_signupforms_field_settings($type, $entity->{$bundleProperty});
+    $settings = _takepart_signupforms_bundle_settings($type, $entity->{$bundleProperty});
     
     // also check if the bundles has any fields that send updates
-    if ($settings && ($settings['send_updates_count'] > 0)) {
+    if ($settings && ($settings['total_update_count'] > 0)) {
     
+      $signup = array();
+      foreach ($settings['forms'] as $form_id => $fields) {
+        
+        if ($settings['update_counts'][$form_id] > 0) {
       
+          // get the BSD fields for this form
+          $bsd_fields = takepart_bsd_signup_list_form_fields($form_id);
+
+          foreach ($fields as $field_id => $field) {
+
+            $property = $field['field_name'];
+            if ((!empty($bsd_fields[$field_id])) && isset($entity->{$property})) {
+            
+              $language = isset($entity->language) ? $entity->language : LANGUAGE_NONE;
+            
+              switch ($field['type']) {
+            
+              case 'text':
+                $bsd_fields[$field_id]['value'] = array(
+                  'type' => 'value',
+                  'value' => $entity->{$property}[$language][0]['value'],
+                );
+                break;
+              
+              case 'text_long':
+            
+              case 'text_with_summary':
+
+              default:
+            
+              }
+            }    
+          }
+        
+          // add the form to the signup
+          $signup[$form_id] = $bsd_fields;
+        }
+      }
+      
+      // send the signup to BSD
+      $errors = array();
+      takepart_bsd_signup_process_signup($signup, $errors);
+      if (count($errors) > 0) {
+        _takepart_signupforms_log_errors($errors);  
+      }
     }
   }
 }
 
-function _takepart_signupforms_field_settings($entity_type, $bundle, $reset = FALSE) {
+function _takepart_signupforms_bundle_settings($entity_type, $bundle, $reset = FALSE) {
 
   static $settings;
   
@@ -133,7 +177,7 @@ function _takepart_signupforms_field_settings($entity_type, $bundle, $reset = FA
   if (!isset($settings) || $reset) {
   
     // try the cached settings first
-    if (!$reset && ($cache = cache_get('takepart_signupforms_field_settings')) && !empty($cache->data)) {
+    if (!$reset && ($cache = cache_get('takepart_signupforms_bundle_settings')) && !empty($cache->data)) {
       $settings = unserialize($cache->data);
     }
     else {
@@ -159,7 +203,8 @@ function _takepart_signupforms_field_settings($entity_type, $bundle, $reset = FA
         if (! isset($settings[$key])) {
           $settings[$key] = array(
             'forms' => array(),
-            'update_count' => 0,
+            'update_counts' => array(),
+            'total_update_count' => 0,
           );
         }
         
@@ -181,12 +226,13 @@ function _takepart_signupforms_field_settings($entity_type, $bundle, $reset = FA
         
         // keep a count of the number of fields that should also be sent on update
         if ($result['send_updates']) {
-          $settings[$key]['send_updates_count'] += 1;
+          $settings[$key]['update_counts'][$form_id] += 1;
+          $settings[$key]['total_updates_count'] += 1;
         }
       }
 
       // cache the settings for later use
-      cache_set('takepart_signupforms_field_settings', 'cache', serialize($settings), time() + 360);
+      cache_set('takepart_signupforms_bundle_settings', 'cache', serialize($settings));
     }
   }
   
@@ -196,4 +242,9 @@ function _takepart_signupforms_field_settings($entity_type, $bundle, $reset = FA
     return $settings[$key];
   }
   return FALSE;
+}
+
+function _takepart_signupforms_log_errors($errors) {
+  
+  // TODO: Log the errors
 }
