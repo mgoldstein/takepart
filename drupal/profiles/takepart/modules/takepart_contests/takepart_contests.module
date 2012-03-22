@@ -299,7 +299,7 @@ function takepart_contests_block_view($delta = '') {
       } else {
         $block['content'] = drupal_get_form('takepart_contests_contest_entry_form', $entry);
       }
-      $block['content']['#prefix'] = '<div id="takepart_contests_wrapper'.$row->contest_id.'">';
+      $block['content']['#prefix'] = '<div id="takepart_contests_wrapper_'.$row->contest_id.'">';
       $block['content']['#suffix'] = '</div>';
     } 
   }
