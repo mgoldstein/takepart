@@ -28,33 +28,33 @@
 }
 
 /* General Form Styles */
-#marigold-hotel-contest-form-wrapper .counter:before
+#takepart_contests_form_wrapper_1 .counter:before
 {
   content:"Characters remaining: ";
 }
 
-#marigold-hotel-contest-form-wrapper .form-required
+#takepart_contests_form_wrapper_1 .form-required
 {
   color:#f37e3b;
 }
 
-#marigold-hotel-contest-form-wrapper #edit-step1-custom-269
+#takepart_contests_form_wrapper_1 #edit-step1-custom-269
 {
   margin-left:17px;
 }
 
-#marigold-hotel-contest-form-wrapper .form-item
+#takepart_contests_form_wrapper_1 .form-item
 {
   margin-bottom:2em;
   margin-top:1em;
 }
 
-#marigold-hotel-contest-form-wrapper label
+#takepart_contests_form_wrapper_1 label
 {
   font-weight:400;
 }
 
-#marigold-hotel-contest-form-wrapper .counter
+#takepart_contests_form_wrapper_1 .counter
 {
   font-size:11px;
   font-style:italic;
@@ -62,7 +62,7 @@
   width:200px;
 }
 
-#marigold-hotel-contest-form-wrapper input.aboutyou,#marigold-hotel-contest-form-wrapper input.finalinfo,#marigold-hotel-contest-form-wrapper input.reviewentry
+#takepart_contests_form_wrapper_1 input.aboutyou,#takepart_contests_form_wrapper_1 input.finalinfo,#takepart_contests_form_wrapper_1 input.reviewentry
 {
   border:medium none;
   height:35px;
@@ -72,53 +72,53 @@
   cursor:pointer;
 }
 
-#marigold-hotel-contest-form-wrapper input.aboutyou
+#takepart_contests_form_wrapper_1 input.aboutyou
 {
   background:url(../images/about_you_button.png) no-repeat scroll left top transparent;
   width:198px;
 }
 
-#marigold-hotel-contest-form-wrapper input.aboutyou:hover
+#takepart_contests_form_wrapper_1 input.aboutyou:hover
 {
   background:url(../images/about_you_button_rollover.png) no-repeat scroll left top transparent;
 }
 
-#marigold-hotel-contest-form-wrapper input.finalinfo
+#takepart_contests_form_wrapper_1 input.finalinfo
 {
   background:url(../images/final_info_button.png) no-repeat scroll left top transparent;
   width:209px;
 }
 
-#marigold-hotel-contest-form-wrapper input.finalinfo:hover
+#takepart_contests_form_wrapper_1 input.finalinfo:hover
 {
   background:url(../images/final_info_button_rollover.png) no-repeat scroll left top transparent;
 }
 
-#marigold-hotel-contest-form-wrapper input.reviewentry
+#takepart_contests_form_wrapper_1 input.reviewentry
 {
   background:url(../images/review_button.png) no-repeat scroll left top transparent;
   width:198px;
 }
 
-#marigold-hotel-contest-form-wrapper input.reviewentry:hover
+#takepart_contests_form_wrapper_1 input.reviewentry:hover
 {
   background:url(../images/review_button_rollover.png) no-repeat scroll left top transparent;
 }
 
 
-#marigold-hotel-contest-form-wrapper input.reviewentry
+#takepart_contests_form_wrapper_1 input.reviewentry
 {
   background:url(../images/review_button.png) no-repeat scroll left top transparent;
   width:209px;
 }
 
-#marigold-hotel-contest-form-wrapper input.reviewentry:hover
+#takepart_contests_form_wrapper_1 input.reviewentry:hover
 {
   background:url(../images/review_button_rollover.png) no-repeat scroll left top transparent;
 }
 
-#marigold-hotel-contest-form-wrapper input.backtostepone,
-#marigold-hotel-contest-form-wrapper input.backtosteptwo
+#takepart_contests_form_wrapper_1 input.backtostepone,
+#takepart_contests_form_wrapper_1 input.backtosteptwo
 {
   background:url(../images/back_step.png) no-repeat scroll left top transparent;
     border: 0 none;
@@ -128,20 +128,20 @@
     width: 121px;
 }
 
-#marigold-hotel-contest-form-wrapper input.backtostepone:hover
+#takepart_contests_form_wrapper_1 input.backtostepone:hover
 {
   background:url(../images/back_step_rollover.png) no-repeat scroll left top transparent;
 }
 
-#marigold-hotel-contest-form-wrapper .button
+#takepart_contests_form_wrapper_1 .button
 {
   display: block;
   width: 420px;
 }
 
-#marigold-hotel-contest-form-wrapper div.aboutyou,
-#marigold-hotel-contest-form-wrapper div.finalinfo,
-#marigold-hotel-contest-form-wrapper div.reviewentry
+#takepart_contests_form_wrapper_1 div.aboutyou,
+#takepart_contests_form_wrapper_1 div.finalinfo,
+#takepart_contests_form_wrapper_1 div.reviewentry
 {
   color:#770BCB;
   float:left;
@@ -152,40 +152,40 @@
   text-transform:uppercase;
 }
 
-#marigold-hotel-contest-form-wrapper span
+#takepart_contests_form_wrapper_1 span
 {
   width:200px;
 }
 
-#marigold-hotel-contest-form-wrapper span.ui-checkbox
+#takepart_contests_form_wrapper_1 span.ui-checkbox
 {
   width:18px;
 }
 
-#marigold-hotel-contest-form-wrapper textarea,#marigold-hotel-contest-form-wrapper input,#marigold-hotel-contest-form-wrapper .grippie
+#takepart_contests_form_wrapper_1 textarea,#takepart_contests_form_wrapper_1 input,#takepart_contests_form_wrapper_1 .grippie
 {
   width:625px;
 }
 
-#marigold-hotel-contest-form-wrapper .grippie
+#takepart_contests_form_wrapper_1 .grippie
 {
   display:none;
 }
 
-#marigold-hotel-contest-form-wrapper fieldset
+#takepart_contests_form_wrapper_1 fieldset
 {
   border:0 none;
   padding:0;
   margin-bottom:18px;
 }
 
-#marigold-hotel-contest-form-wrapper fieldset legend span
+#takepart_contests_form_wrapper_1 fieldset legend span
 {
   display:none;
 }
 
 /* Throbber Styles */
-#marigold-hotel-contest-form-wrapper .ajax-progress-throbber
+#takepart_contests_form_wrapper_1 .ajax-progress-throbber
 {
   position:fixed;
   z-index:9999;
@@ -196,12 +196,12 @@
   background:transparent;
 }
 
-#marigold-hotel-contest-form-wrapper .ajax-progress-throbber .message
+#takepart_contests_form_wrapper_1 .ajax-progress-throbber .message
 {
   display:none;
 }
 
-#marigold-hotel-contest-form-wrapper .ajax-progress-throbber .throbber
+#takepart_contests_form_wrapper_1 .ajax-progress-throbber .throbber
 {
   position:fixed;
   left:50%;
@@ -226,34 +226,34 @@
   opacity:.8;
 }
 
-#marigold-hotel-contest-form-wrapper .form-item
+#takepart_contests_form_wrapper_1 .form-item
 {
   margin-bottom:22px;
   margin-top:8px;
 }
 
-#marigold-hotel-contest-form-wrapper .form-checkboxes .form-item
+#takepart_contests_form_wrapper_1 .form-checkboxes .form-item
 {
   margin-bottom:8px;
   margin-top:8px;
 }
 
 /* Steps */
-#marigold-hotel-contest-form-wrapper fieldset#edit-step1 legend
+#takepart_contests_form_wrapper_1 .group-step1 legend
 {
   background:url(../images/submit_step1.png) no-repeat scroll left top transparent;
   height:24px;
   width:730px;
 }
 
-#marigold-hotel-contest-form-wrapper fieldset#edit-step2 legend
+#takepart_contests_form_wrapper_1 .group-step2 legend
 {
   background:url(../images/submit_step2.png) no-repeat scroll left top transparent;
   height:24px;
   width:730px;
 }
 
-#marigold-hotel-contest-form-wrapper fieldset#edit-step3 legend
+#takepart_contests_form_wrapper_1 .group-step3 legend
 {
   background:url(../images/submit_step3.png) no-repeat scroll left top transparent;
   height:24px;
@@ -261,12 +261,12 @@
 }
 
 /* CheckBox Styles */
-#marigold-hotel-contest-form-wrapper .ui-radio-state-disabled,#marigold-hotel-contest-form-wrapper .ui-radio-state-checked-disabled,#marigold-hotel-contest-form-wrapper .ui-radio-state-disabled-hover,#marigold-hotel-contest-form-wrapper .ui-radio-state-checked-disabled-hover
+#takepart_contests_form_wrapper_1 .ui-radio-state-disabled,#takepart_contests_form_wrapper_1 .ui-radio-state-checked-disabled,#takepart_contests_form_wrapper_1 .ui-radio-state-disabled-hover,#takepart_contests_form_wrapper_1 .ui-radio-state-checked-disabled-hover
 {
   color:#999;
 }
 
-#marigold-hotel-contest-form-wrapper span.ui-checkbox,#marigold-hotel-contest-form-wrapper span.ui-radio
+#takepart_contests_form_wrapper_1 span.ui-checkbox,#takepart_contests_form_wrapper_1 span.ui-radio
 {
   display:block;
   float:left;
@@ -275,44 +275,44 @@
   background:url(../images/checkbox_off.png) 0 0 no-repeat;
 }
 
-#marigold-hotel-contest-form-wrapper span.ui-helper-hidden
+#takepart_contests_form_wrapper_1 span.ui-helper-hidden
 {
   display:none;
 }
 
-#marigold-hotel-contest-form-wrapper span.ui-checkbox-state-checked
+#takepart_contests_form_wrapper_1 span.ui-checkbox-state-checked
 {
   background:url(../images/checkbox_on.png) 0 0 no-repeat;
 }
 
-#marigold-hotel-contest-form-wrapper span.ui-checkbox-state-checked-hover
+#takepart_contests_form_wrapper_1 span.ui-checkbox-state-checked-hover
 {
   background:url(../images/checkbox_on.png) 0 0 no-repeat;
 }
 
-#marigold-hotel-contest-form-wrapper span.ui-radio-state-checked-disabled-hover,#marigold-hotel-contest-form-wrapper span.ui-radio-state-checked-disabled,#marigold-hotel-contest-form-wrapper span.ui-radio-state-checked
+#takepart_contests_form_wrapper_1 span.ui-radio-state-checked-disabled-hover,#takepart_contests_form_wrapper_1 span.ui-radio-state-checked-disabled,#takepart_contests_form_wrapper_1 span.ui-radio-state-checked
 {
   background:url(../images/checkbox_on.png) 0 0 no-repeat;
 }
 
-#marigold-hotel-contest-form-wrapper span.ui-radio-state-checked-hover
+#takepart_contests_form_wrapper_1 span.ui-radio-state-checked-hover
 {
   background:url(../images/checkbox_on.png) 0 0 no-repeat;
 }
 
-#marigold-hotel-contest-form-wrapper .ui-radio-disabled,#marigold-hotel-contest-form-wrapper .ui-checkbox-disabled
+#takepart_contests_form_wrapper_1 .ui-radio-disabled,#takepart_contests_form_wrapper_1 .ui-checkbox-disabled
 {
   opacity:.7;
 }
 
 /* Select Box Styles */
-#marigold-hotel-contest-form-wrapper .form-type-select span
+#takepart_contests_form_wrapper_1 .form-type-select span
 {
   width:auto;
 }
 
 /* Select Box Styles */
-#marigold-hotel-contest-form-wrapper span.customStyleSelectBox
+#takepart_contests_form_wrapper_1 span.customStyleSelectBox
 {
   background:url(../images/dropdown_gradient.png) repeat-x scroll left top transparent;
   border:1px solid #b2b2b2;
@@ -322,24 +322,24 @@
   padding:0 2px 1px 7px;
 }
 
-#marigold-hotel-contest-form-wrapper .customStyleSelectBoxInner
+#takepart_contests_form_wrapper_1 .customStyleSelectBoxInner
 {
   background:url(../images/select_arrow_full.png) no-repeat scroll right center transparent;
   height:20px;
   line-height:20px;
 }
 
-#marigold-hotel-contest-form-wrapper .reqtext
+#takepart_contests_form_wrapper_1 .reqtext
 {
   clear:both;
 }
 
-#marigold-hotel-contest-form-wrapper .form-type-select input
+#takepart_contests_form_wrapper_1 .form-type-select input
 {
   width:auto;
 }
 
-#marigold-hotel-contest-form-wrapper div.selectbox-wrapper
+#takepart_contests_form_wrapper_1 div.selectbox-wrapper
 {
   position:absolute;
   width:400px;
@@ -354,24 +354,24 @@
   overflow:auto;
 }
 
-#marigold-hotel-contest-form-wrapper div.selectbox-wrapper ul
+#takepart_contests_form_wrapper_1 div.selectbox-wrapper ul
 {
   list-style-type:none;
   margin:0;
   padding:0;
 }
 
-#marigold-hotel-contest-form-wrapper div.selectbox-wrapper ul li.selected
+#takepart_contests_form_wrapper_1 div.selectbox-wrapper ul li.selected
 {
   background-color:#EAF2FB;
 }
 
-#marigold-hotel-contest-form-wrapper div.selectbox-wrapper ul li.current
+#takepart_contests_form_wrapper_1 div.selectbox-wrapper ul li.current
 {
   background-color:#CDD8E4;
 }
 
-#marigold-hotel-contest-form-wrapper div.selectbox-wrapper ul li
+#takepart_contests_form_wrapper_1 div.selectbox-wrapper ul li
 {
   list-style-type:none;
   display:block;
@@ -380,12 +380,12 @@
   cursor:pointer;
 }
 
-#marigold-hotel-contest-form-wrapper label
+#takepart_contests_form_wrapper_1 label
 {
   display:block;
 }
 
-#marigold-hotel-contest-form-wrapper .selectbox /* look&fell of select box*/
+#takepart_contests_form_wrapper_1 .selectbox /* look&fell of select box*/
 {
   margin:0 5px 10px 0;
   padding-left:2px;
@@ -401,13 +401,13 @@
   color:#333;
 }
 
-#marigold-hotel-contest-form-wrapper select
+#takepart_contests_form_wrapper_1 select
 {
   background:url(../images/bg_select.png) right;
 }
 
 /* text fields */
-#marigold-hotel-contest-form-wrapper .form-type-textfield input.form-text,#marigold-hotel-contest-form-wrapper .form-type-textarea textarea.form-textarea
+#takepart_contests_form_wrapper_1 .form-type-textfield input.form-text,#takepart_contests_form_wrapper_1 .form-type-textarea textarea.form-textarea
 {
   background:#FFF url(../images/text_field_bg.gif) no-repeat left top;
   border:1px solid #B3B2B0;

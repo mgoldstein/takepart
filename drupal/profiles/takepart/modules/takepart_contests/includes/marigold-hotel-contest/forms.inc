@@ -24,22 +24,6 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
       '#markup' => '<div>'. t('Step:' . $step) . ' X ' . t('Time:' . time()) . '</div>',
   );
 
-  
- 
-  //$form['#fieldgroups']->group_step2['#access'] = FALSE;
-  
-  //$form['#fieldgroups']['group_step2']->{'access'} = 0;
-  
-  
-  
-  
-  $form['debug'] = array(
-      '#type' => 'submit',
-      '#submit' => array($submit),
-      '#value' => t("Submit No Ajax"),
-      '#weight' => 1990,
-  );
-  
   if ($step == 4) {
     $form['submit'] = array(
         '#type' => 'submit',

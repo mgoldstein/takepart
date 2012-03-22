@@ -40,15 +40,15 @@ marigold_hotel_contest.forms = {
         }
     },
     onformrender: function () {
-        marigold_hotel_contest.forms.remaining_chars(jQuery("#marigold-hotel-contest-form-wrapper form textarea#edit-step1-custom-265"));
-        marigold_hotel_contest.forms.remaining_chars(jQuery("#marigold-hotel-contest-form-wrapper form textarea#edit-step1-custom-266"));
-        marigold_hotel_contest.forms.remaining_chars(jQuery("#marigold-hotel-contest-form-wrapper form textarea#edit-step1-custom-267"));
-        marigold_hotel_contest.forms.remaining_chars(jQuery("#marigold-hotel-contest-form-wrapper form textarea#edit-step1-custom-270"));
-        marigold_hotel_contest.forms.remaining_chars(jQuery("#marigold-hotel-contest-form-wrapper form textarea#edit-step1-custom-271"));
+        marigold_hotel_contest.forms.remaining_chars(jQuery("#takepart_contests_form_wrapper_1 form textarea#edit-step1-custom-265"));
+        marigold_hotel_contest.forms.remaining_chars(jQuery("#takepart_contests_form_wrapper_1 form textarea#edit-step1-custom-266"));
+        marigold_hotel_contest.forms.remaining_chars(jQuery("#takepart_contests_form_wrapper_1 form textarea#edit-step1-custom-267"));
+        marigold_hotel_contest.forms.remaining_chars(jQuery("#takepart_contests_form_wrapper_1 form textarea#edit-step1-custom-270"));
+        marigold_hotel_contest.forms.remaining_chars(jQuery("#takepart_contests_form_wrapper_1 form textarea#edit-step1-custom-271"));
 
-        marigold_hotel_contest.forms.checkboxes(jQuery("#marigold-hotel-contest-form-wrapper form .form-checkboxes input"));
-        //marigold_hotel_contest.forms.selectboxes(jQuery("#marigold-hotel-contest-form-wrapper form .form-type-select select"));
-        marigold_hotel_contest.forms.selectboxes_alt(jQuery("#marigold-hotel-contest-form-wrapper form .form-type-select select"));
+        marigold_hotel_contest.forms.checkboxes(jQuery("#takepart_contests_form_wrapper_1 form .form-checkboxes input"));
+        //marigold_hotel_contest.forms.selectboxes(jQuery("#takepart_contests_form_wrapper_1 form .form-type-select select"));
+        marigold_hotel_contest.forms.selectboxes_alt(jQuery("#takepart_contests_form_wrapper_1 form .form-type-select select"));
     }
 }
 
