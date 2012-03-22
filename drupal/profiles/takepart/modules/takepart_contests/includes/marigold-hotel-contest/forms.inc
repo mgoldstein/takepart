@@ -23,6 +23,15 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
   $form['test'] = array(
       '#markup' => '<div>'. t('Step:' . $step) . ' X ' . t('Time:' . time()) . '</div>',
   );
+
+  
+ 
+  //$form['#fieldgroups']->group_step2['#access'] = FALSE;
+  
+  //$form['#fieldgroups']['group_step2']->{'access'} = 0;
+  
+  
+  
   
   $form['debug'] = array(
       '#type' => 'submit',
@@ -67,6 +76,8 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
         '#weight' => 2010,
     );
   }
+  
+  $form['#step'] = array('#type' => 'hidden', '#value' => $step);
 
   return $form;
 }
