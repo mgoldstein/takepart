@@ -19,6 +19,7 @@ function takepart_signupforms_permission() {
 function takepart_signupforms_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_id) {
 
   // alter the field ui edit form to include the bsd signup configuration
+  form_load_include($form_state, 'inc', 'date', 'date_admin');
   form_load_include($form_state, 'inc', 'takepart_signupforms', 'takepart_signupforms.admin');
   return _takepart_signupforms_field_settings_form_alter($form, $form_state, $form_id);
 }
@@ -63,7 +64,7 @@ function takepart_signupforms_entity_insert($entity, $type) {
       
         // add the form to the signup
         $signup[$form_id] = _takepart_signupforms_build_signup_form(
-          $entity, $fields);
+          $entity, $fields, $form_id);
       }
       
       // send the signup to BSD
@@ -95,7 +96,7 @@ function takepart_signupforms_entity_update($entity, $type) {
       
           // add the form to the signup
           $signup[$form_id] = _takepart_signupforms_build_signup_form(
-            $entity, $fields);
+            $entity, $fields, $form_id);
         }
       }
       
@@ -105,34 +106,95 @@ function takepart_signupforms_entity_update($entity, $type) {
   }
 }
 
-function _takepart_signupforms_build_signup_form($entity, $fields) {
+function _takepart_signupforms_build_signup_form($entity, $fields, $form_id) {
   
   // get the BSD fields for this form
   $bsd_fields = takepart_bsd_signup_list_form_fields($form_id);
 
-  foreach ($fields as $field_id => $field) {
+  foreach ($fields as $field_id => $field_list) {
 
-    $property = $field['field_name'];
-    if ((!empty($bsd_fields[$field_id])) && isset($entity->{$property})) {
+    foreach ($field_list as $field) {
+      
+      $property = $field['field_name'];
+      if ((!empty($bsd_fields[$field_id])) && isset($entity->{$property})) {
             
-      $language = isset($entity->language) ? $entity->language : LANGUAGE_NONE;
+        $language = isset($entity->language) ? $entity->language : LANGUAGE_NONE;
             
-      switch ($field['type']) {
+        switch ($field['type']) {
         
-        // TODO: map more field types to BSD fields
-        case 'text':
-          $bsd_fields[$field_id]['value'] = array(
-            'type' => 'value',
-            'value' => $entity->{$property}[$language][0]['value'],
-          );
-          break;
+          // TODO: map more field types to BSD fields
+          case 'text':
+          case 'text_long':
+          case 'text_with_summary':
+          case 'date':
+          case 'datetime':
+          case 'list_boolean':
+          case 'list_integer':
+          case 'list_text':
+            
+            if (! isset($bsd_fields[$field_id]['value'])) {
+            
+              // first time the field value is being set
+              if ($field['cardinality'] == 1) {
+                $bsd_fields[$field_id]['value'] = array(
+                  'type' => 'value',
+                  'value' => (string)$entity->{$property}[$language][0]['value'],
+                );
+              }
+              else {
+                $items = array();
+                foreach ($entity->{$property}[$language] as $index => $data) {
+                  $items[] = (string)$data['value'];
+                }
+                $bsd_fields[$field_id]['value'] = array(
+                  'type' => 'items',
+                  'items' => $items,
+                );
+              }
+            }
+            else {
               
-        case 'text_long':
-            
-        case 'text_with_summary':
+              // more than one Drupal field contributes to this value
+              if ($field['cardinality'] == 1) {
+                
+                // make sure the previous field(s) had the same cardinality
+                if ($bsd_fields[$field_id]['value']['type'] == 'value') {
+                  $current_value = $bsd_fields[$field_id]['value']['value'];
+                  $current_value .= "\n" . (string)$entity->{$property}[$language][0]['value'];
+                  $bsd_fields[$field_id]['value']['value'] = $current_value;
+                }
+                else {
+                  $message = 'Mismatched cardinality for property @property';
+                  $variables = array('@property' => $property);
+                  watchdog('takepart_signupforms', $message, $variables);
+                  break;     
+                }
+              }
+              else {
+                
+                // make sure the previous field(s) had the same cardinality
+                if ($bsd_fields[$field_id]['value']['type'] == 'items') {
+                  $items = array();
+                  foreach ($entity->{$property}[$language] as $index => $data) {
+                    $items[] = (string)$data['value'];
+                  }
+                  $bsd_fields[$field_id]['value']['items'] += $items;
+                }
+                else {
+                  $message = 'Mismatched cardinality for property @property';
+                  $variables = array('@property' => $property);
+                  watchdog('takepart_signupforms', $message, $variables);
+                  break;     
+                }
+              }
+            }
+            break;
 
-        default:
-            
+          default:
+            $message = 'Unmapped field type @type';
+            watchdog('takepart_signupforms', $message, array('@type' => $field['type']));
+            break;     
+        }
       }
     }    
   }
@@ -162,7 +224,9 @@ function _takepart_signupforms_bundle_settings($entity_type, $bundle, $reset = F
       $query->fields('f', array('field_name', 'form_id', 'field_id', 'send_updates'))
         ->fields('b', array('entity_type', 'bundle'))
         ->fields('c', array('type', 'cardinality'))
-        ->condition('b.enabled', 1, '=');
+        ->condition('b.enabled', 1, '=')
+        ->condition('f.form_id', 0, '!=')
+        ->condition('f.field_id', 0, '!=');
       
       $results = $query->execute();
       while ($result = $results->fetchAssoc()) {
@@ -182,13 +246,21 @@ function _takepart_signupforms_bundle_settings($entity_type, $bundle, $reset = F
         $form_id = $result['form_id'];
         $field_id = $result['field_id'];
         
-        // create the intial form structure the first time a form is encounter (per bundle)
+        // create the initial form structure the first time a form is encountered (per bundle)
         if (! isset($settings[$key]['forms'][$form_id])) {
           $settings[$key]['forms'][$form_id] = array();
         }
+        if (! isset($settings[$key]['update_counts'][$form_id])) {
+          $settings[$key]['update_counts'][$form_id] = 0;
+        }
+        
+        // create the initial field array the first time a field is encountered (per form)
+        if (! isset($settings[$key]['forms'][$form_id][$field_id])) {
+          $settings[$key]['forms'][$form_id][$field_id] = array();
+        }
 
         // add the field settings
-        $settings[$key]['forms'][$form_id][$field_id] = array(
+        $settings[$key]['forms'][$form_id][$field_id][] = array(
           'field_name' => $result['field_name'],
           'type' => $result['type'],
           'cardinality' => $result['cardinality'],
@@ -213,9 +285,4 @@ function _takepart_signupforms_bundle_settings($entity_type, $bundle, $reset = F
     return $settings[$key];
   }
   return FALSE;
-}
-
-function _takepart_signupforms_log_errors($errors) {
-  
-  // TODO: Log the errors
 }
