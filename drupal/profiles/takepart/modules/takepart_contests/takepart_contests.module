@@ -668,7 +668,7 @@ function takepart_contests_contest_entry_form_submit(&$form, &$form_state) {
  **/
 function _takepart_contests_getlist() {
   //@todo: add caching
-  if(!in_array("takepart_contests_list", $GLOBALS)) {
+  if(!array_key_exists("takepart_contests_list", $GLOBALS)) {
     $table = 'takepart_contests_contest';
     $result = db_query("SELECT * FROM {$table}");
     $GLOBALS["takepart_contests_list"] = $result;
