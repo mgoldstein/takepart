@@ -93,7 +93,7 @@ function takepart_user_user_insert(&$edit, $account, $category) {
      */
     $welcome_signup_code = variable_get('newsletter_campaign_welcome_signup_code', 7);
     module_load_include('inc', 'newsletter_campaign', 'signup.ajax.bsd');
-    $result = _takepart_bsd_signup($account->mail, $welcome_signup_code);
+    $result = takepart_bsd_email_signup($account->mail, $welcome_signup_code);
 
     /* Pluris   
      * $pluris_registration_code = variable_get('takepart_user_pluris_registration_code','regtp');

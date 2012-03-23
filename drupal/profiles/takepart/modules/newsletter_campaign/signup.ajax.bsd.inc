@@ -101,13 +101,16 @@ function _newsletter_signup_alert_bsd($email, $campaign_id, $action = 's',$sourc
   
   $message = '';  
   if($action = 's') {
-    $bsdresponse = _takepart_bsd_signup($email, $signup_form_id);
+    $bsdresponse = takepart_bsd_email_signup($email, $signup_form_id);
     if(!strlen($bsdresponse) == 0) {
       watchdog('bsd', $bsdresponse);
     }
-    $newslettername = _takepart_bsd_getformname($signup_form_id);
+    //$newsletter_signup_form = takepart_bsd_signup_form($signup_form_id);
+    //if ($newsletter_signup_form) {
+    //  $newslettername = $newsletter_signup_form['signup_form_name'];
+    //}
   }elseif($action = 'u') {
-    _takepart_bsd_set_subscription_state($email, 0);
+    takepart_bsd_email_set_subscription_state($email, 0);
   }
   //Note the the message is ignored if the 
   //caller is _save_campaign_signup:
@@ -265,7 +268,7 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
   $all_code = variable_get('takepart_newsletter_signup_unsubscribe_all_campaign_code', 'alltpnl');
   
   if ($campaign_id && $campaign_id == $all_code) {
-    $message = _takepart_bsd_set_subscription_state($email, 0);
+    $message = takepart_bsd_email_set_subscription_state($email, 0);
   }
     // if there is a message, that means there was a problem
   if ($message) {

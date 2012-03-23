@@ -61,45 +61,13 @@ function takepart_signupforms_entity_insert($entity, $type) {
       $signup = array();
       foreach ($settings['forms'] as $form_id => $fields) {
       
-        // get the BSD fields for this form
-        $bsd_fields = takepart_bsd_signup_list_form_fields($form_id);
-
-        foreach ($fields as $field_id => $field) {
-
-          $property = $field['field_name'];
-          if ((!empty($bsd_fields[$field_id])) && isset($entity->{$property})) {
-            
-            $language = isset($entity->language) ? $entity->language : LANGUAGE_NONE;
-            
-            switch ($field['type']) {
-            
-            case 'text':
-              $bsd_fields[$field_id]['value'] = array(
-                'type' => 'value',
-                'value' => $entity->{$property}[$language][0]['value'],
-              );
-              break;
-              
-            case 'text_long':
-            
-            case 'text_with_summary':
-
-            default:
-            
-            }
-          }    
-        }
-        
         // add the form to the signup
-        $signup[$form_id] = $bsd_fields;
+        $signup[$form_id] = _takepart_signupforms_build_signup_form(
+          $entity, $fields);
       }
       
       // send the signup to BSD
-      $errors = array();
-      takepart_bsd_signup_process_signup($signup, $errors);
-      if (count($errors) > 0) {
-        _takepart_signupforms_log_errors($errors);  
-      }
+      takepart_bsd_signup_process_signup($signup);
     }
   }
 }
@@ -125,48 +93,51 @@ function takepart_signupforms_entity_update($entity, $type) {
         
         if ($settings['update_counts'][$form_id] > 0) {
       
-          // get the BSD fields for this form
-          $bsd_fields = takepart_bsd_signup_list_form_fields($form_id);
-
-          foreach ($fields as $field_id => $field) {
-
-            $property = $field['field_name'];
-            if ((!empty($bsd_fields[$field_id])) && isset($entity->{$property})) {
-            
-              $language = isset($entity->language) ? $entity->language : LANGUAGE_NONE;
-            
-              switch ($field['type']) {
-            
-              case 'text':
-                $bsd_fields[$field_id]['value'] = array(
-                  'type' => 'value',
-                  'value' => $entity->{$property}[$language][0]['value'],
-                );
-                break;
-              
-              case 'text_long':
-            
-              case 'text_with_summary':
-
-              default:
-            
-              }
-            }    
-          }
-        
           // add the form to the signup
-          $signup[$form_id] = $bsd_fields;
+          $signup[$form_id] = _takepart_signupforms_build_signup_form(
+            $entity, $fields);
         }
       }
       
       // send the signup to BSD
-      $errors = array();
-      takepart_bsd_signup_process_signup($signup, $errors);
-      if (count($errors) > 0) {
-        _takepart_signupforms_log_errors($errors);  
-      }
+      takepart_bsd_signup_process_signup($signup);
     }
   }
+}
+
+function _takepart_signupforms_build_signup_form($entity, $fields) {
+  
+  // get the BSD fields for this form
+  $bsd_fields = takepart_bsd_signup_list_form_fields($form_id);
+
+  foreach ($fields as $field_id => $field) {
+
+    $property = $field['field_name'];
+    if ((!empty($bsd_fields[$field_id])) && isset($entity->{$property})) {
+            
+      $language = isset($entity->language) ? $entity->language : LANGUAGE_NONE;
+            
+      switch ($field['type']) {
+        
+        // TODO: map more field types to BSD fields
+        case 'text':
+          $bsd_fields[$field_id]['value'] = array(
+            'type' => 'value',
+            'value' => $entity->{$property}[$language][0]['value'],
+          );
+          break;
+              
+        case 'text_long':
+            
+        case 'text_with_summary':
+
+        default:
+            
+      }
+    }    
+  }
+        
+  return $bsd_fields;
 }
 
 function _takepart_signupforms_bundle_settings($entity_type, $bundle, $reset = FALSE) {
@@ -177,7 +148,7 @@ function _takepart_signupforms_bundle_settings($entity_type, $bundle, $reset = F
   if (!isset($settings) || $reset) {
   
     // try the cached settings first
-    if (!$reset && ($cache = cache_get('takepart_signupforms_bundle_settings')) && !empty($cache->data)) {
+    if (!$reset && ($cache = cache_get('takepart_signupforms:bundle_settings')) && !empty($cache->data)) {
       $settings = unserialize($cache->data);
     }
     else {
@@ -232,7 +203,7 @@ function _takepart_signupforms_bundle_settings($entity_type, $bundle, $reset = F
       }
 
       // cache the settings for later use
-      cache_set('takepart_signupforms_bundle_settings', 'cache', serialize($settings));
+      cache_set('takepart_signupforms:bundle_settings', serialize($settings));
     }
   }
   
