@@ -447,9 +447,13 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
   $form_state['petition_form'] = $petition_form;
   
   // get the label for the associate campaign mailing list
-  $campaign_list_title = 'the campaign behind this petition';
+  /* TODO: Remove hard coded campaign list title */
+  $campaign_list_title = 'Last Call at the Oasis';
   $campaign_form_id = $petition_form->campaign_signup_form_id;
-  $campaign_list_title = _takepart_bsd_getpublictitle($campaign_form_id);
+  $campaign_signup_form = takepart_bsd_signup_form($campaign_form_id);
+  if ($campaign_signup_form) {
+    $campaign_list_title = $campaign_signup_form['form_public_title'];
+  }
 
   // get the source NGO (in the GET parameters)
   $ngo_token = $_GET['ngo'];
@@ -711,6 +715,15 @@ function _takepart_petition_sign_petition_form_validate($form, &$form_state) {
   setcookie("petition_start_tracking", 1);
 }
 
+function _takepart_petition_set_signup_field(&$fields, $id, $value) {
+  if (isset($fields[id])) {
+    $fields[$id]['value'] = array(
+      'type' => 'value',
+      'value' => $value,
+    );
+  }
+}
+
 function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
 
   $petition_form = $form_state['petition_form'];
@@ -734,79 +747,44 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
   }
   
   // submit both forms at once
+  $petition_signup = takepart_bsd_signup_list_form_fields(
+    $petition_form->petition_form_id);
+
+  _takepart_petition_set_signup_field($petition_signup, 
+    $petition_form->mail_field_id, $mail);
+
+  _takepart_petition_set_signup_field($petition_signup, 
+    $petition_form->last_name_field_id, $form_state['values']['last_name']);
+
+  _takepart_petition_set_signup_field($petition_signup, 
+    $petition_form->first_name_field_id, $form_state['values']['first_name']);
+
+  _takepart_petition_set_signup_field($petition_signup, 
+    $petition_form->zip_code_field_id, $zip_code);
+
+  _takepart_petition_set_signup_field($petition_signup, 
+    $petition_form->comment_field_id, $form_state['values']['comment']);
+
+  _takepart_petition_set_signup_field($petition_signup, 
+    $petition_form->source_ngo_field_id, $ngo_token);
+
+  _takepart_petition_set_signup_field($petition_signup, 
+    $petition_form->ngo_opt_in_field_id, $ngo_opt_in);
+
+  _takepart_petition_set_signup_field($petition_signup, 
+    $petition_form->campaign_opt_in_field_id, $form_state['values']['opt_in_campaign']);
   
-  // petition signup form
-  $signup = array();
-  $signup['signup_form1'] = array(
-    '@attributes' => array (
-      'id' => $petition_form->petition_form_id,
-    ),
-    'signup_form_field1' => array (
-      '@attributes' => array (
-        'id' => $petition_form->mail_field_id,
-      ),
-      '@value' => $mail,
-    ),
-    'signup_form_field2' => array (
-      '@attributes' => array (
-        'id' => $petition_form->last_name_field_id,
-      ),
-      '@value' => $form_state['values']['last_name'],
-    ),
-    'signup_form_field3' => array (
-      '@attributes' => array (
-        'id' => $petition_form->first_name_field_id,
-      ),
-      '@value' => $form_state['values']['first_name'],
-    ),
-    'signup_form_field4' => array (
-      '@attributes' => array (
-        'id' => $petition_form->zip_code_field_id,
-      ),
-      '@value' => $zip_code,
-    ),
-    'signup_form_field5' => array (
-      '@attributes' => array (
-        'id' => $petition_form->comment_field_id,
-      ),
-      '@value' => $form_state['values']['comment'],
-    ),
-    'signup_form_field6' => array (
-      '@attributes' => array (
-        'id' => $petition_form->source_ngo_field_id,
-      ),
-      '@value' => $ngo_token,
-    ),
-    'signup_form_field7' => array (
-      '@attributes' => array (
-        'id' => $petition_form->ngo_opt_in_field_id,
-      ),
-      '@value' => $ngo_opt_in,
-    ),
-    'signup_form_field8' => array (
-      '@attributes' => array (
-        'id' => $petition_form->campaign_opt_in_field_id,
-      ),
-      '@value' => $form_state['values']['opt_in_campaign'],
-    ),
+  $campaign_signup = takepart_bsd_signup_list_form_fields(
+    $petition_form->campaign_signup_form_id);
+  
+  _takepart_petition_set_signup_field($campaign_signup,
+     $petition_form->campaign_mail_field_id, $mail);
+
+  $signup = array(
+     $petition_form->petition_form_id => $petition_signup,
+     $petition_form->campaign_signup_form_id => $campaign_signup,
   );
-  
-  // campaign signup form
-  if ($form_state['values']['opt_in_campaign']) {
-    $signup['signup_form2'] = array(
-      '@attributes' => array (
-        'id' => $petition_form->campaign_signup_form_id,
-      ),
-      'signup_form_field' => array (
-        '@attributes' => array (
-          'id' => $petition_form->campaign_mail_field_id,
-        ),
-        '@value' => $mail,
-      ),
-    );
-  }
-  
-  $resp = _takepart_bsd_apipost("signup/process_signup", $signup);
+  takepart_bsd_signup_process_signup($signup);
 
   // only add the signature if it doesn't already exist
   $already_signed = db_query(
@@ -838,7 +816,14 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
   $tracked_events = str_replace("|","",$petition_form->label);
   if ($form_state['values']['opt_in_campaign']) {
     $campaign_form_id = $petition_form->campaign_signup_form_id;
-    $campaign_list_title = _takepart_bsd_getpublictitle($campaign_form_id);
+    $campaign_signup_form = takepart_bsd_signup_form($campaign_form_id);
+    if ($campaign_signup_form) {
+      $campaign_list_title = $campaign_signup_form['form_public_title'];
+    }
+    else {
+      /* TODO: Remove this hard coded title */
+      $campaign_list_title = 'Last Call at the Oasis';     
+    }
     $tracked_events .= "|". str_replace("|","",$campaign_list_title);
   }
   if ($ngo) {

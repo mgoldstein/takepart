@@ -76,32 +76,8 @@ function newsletter_campaign_form($form, &$form_state, $campaign) {
       
   );
 
-  $formsxml = _takepart_bsd_apiquery("signup/list_forms");
-  $options = array(''=>'None');
-  
-  $forms = simplexml_load_string($formsxml);
-  foreach ($forms as $child) {
-    $options[((int) $child->attributes()->id)] = ((string) $child->signup_form_name);
-  }
-  
-  if(!empty($options) && (count($options) > 1)) {
-    $form['tpnc_signup_form_id'] = array(
-      '#type' => 'select',
-      '#title' => t('Signup Form'),
-      '#description' => t('ID Code for signup form that serves this campaign.'),
-      '#options' => $options,
-      '#default_value' => $campaign->signup_form_id,
-    );
-  } else {
-    $form['tpnc_signup_form_id'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Signup Form ID'),
-      '#description' => t('ID Code for signup form that serves this campaign.'),
-      '#max_length' => 40,
-      '#default_value' => $campaign->signup_form_id,
-        
-    );
-  }
+  $form['tpnc_signup_form_id'] = takepart_bsd_form_id_select_field($campaign->signup_form_id);
+  $form['tpnc_signup_form_id']['#description'] = t('ID Code for signup form that serves this campaign.');
   
   $form['tpnc_thankyou_message'] = array(
     '#type' => 'textarea',

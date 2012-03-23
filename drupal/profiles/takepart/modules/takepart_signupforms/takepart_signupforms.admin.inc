@@ -71,7 +71,14 @@ function _takepart_signupforms_field_settings_form_alter(&$form, $form_state, $f
       );
 
       $form['takepart_signupforms']['form_id'] = 
-        _takepart_signupforms_form_id_select($form_id);
+        takepart_bsd_form_id_select_field($form_id);
+      $form['takepart_signupforms']['form_id'] += array(
+        '#ajax' => array(
+          'event' => 'change',
+          'callback' => 'takepart_signupforms_form_id_callback',
+          'wrapper' => 'takepart-signup-field-select',
+        ),
+      );
 
       $form['takepart_signupforms']['field_id'] = 
         _takepart_signupforms_field_id_select($form_id, $field_id);
@@ -86,55 +93,6 @@ function _takepart_signupforms_field_settings_form_alter(&$form, $form_state, $f
       $form['#submit'][] = '_takepart_signupforms_settings_form_submit';
     }
   }
-}
-
-function _takepart_signupforms_form_id_select($value) {
-    
-  // get the list of bsd signup forms
-  $signups = takepart_bsd_signup_list_forms();
-  
-  if (!empty($signups)) {
-  
-    $options = array();
-    
-    // add in the current value if it is not in the signup list
-    if ((!empty($value)) && (!array_key_exists($value, $signups))) {
-      $options[$value] = t('Form ID: @id (not available)', array('@id' => $value));
-    }
-    
-    // add in the option to have no form
-    $options[''] = 'None';
-    
-    // add in the signup forms
-    foreach($signups as $id => $signup) {
-      $options[$id] = $signup['name'];
-    }
-    
-    $element = array(
-      '#type' => 'select',
-      '#title' => 'Signup Form',
-      '#options' => $options,
-      '#default_value' => $value,
-      '#ajax' => array(
-        'event' => 'change',
-        'callback' => 'takepart_signupforms_form_id_callback',
-        'wrapper' => 'takepart-signup-field-select',
-      ),
-    );
-  }
-  else {
-  
-    // no signup list could be retrieved, use a textfield instead
-    $element = array(
-      '#type' => 'textfield',
-      '#title' => 'Signup Form ID',
-      '#size' => 4,
-      '#default_value' => $value,
-      '#element_validate' => array('_takepart_signupforms_validate_integer_positive'),
-    );
-  }
-  
-  return $element;
 }
 
 function _takepart_signupforms_field_id_select($form_id, $value) {
@@ -189,7 +147,7 @@ function takepart_signupforms_form_id_callback($form, $form_state) {
 
   $values = $form_state['values']['takepart_signupforms'];
   $form_id = $values['form_id'];
-  $field_id = $values['field_id'];  
+  $field_id = $values['field_id'];
   return _takepart_signupforms_field_id_select($form_id, $field_id);
 }
 
@@ -244,7 +202,7 @@ function _takepart_signupforms_settings_form_submit($form, &$form_state) {
       ->execute();
   }
   
-  cache_clear_all('takepart_signupforms', 'cache', TRUE); 
+  cache_clear_all('takepart_signupforms:', 'cache', TRUE); 
 }
 
 function _takepart_signupforms_bundle_field_values() {
@@ -347,7 +305,7 @@ function takepart_signupforms_admin_submit($form, &$form_state) {
     }
   }
   
-  cache_clear_all('takepart_signupforms', 'cache', TRUE); 
+  cache_clear_all('takepart_signupforms:', 'cache', TRUE); 
   
   drupal_set_message(st('Blue State Digital Signup Forms configuration saved.'));
 }

@@ -44,33 +44,11 @@ function takepart_petition_form_form($form, &$form_state, $petition, $op = 'edit
   );
 
   // get the list of bsd signup forms
-  $signup_forms_xml = _takepart_bsd_apiquery("signup/list_forms");
-  $options = array(''=>'None');
-  $signup_forms = simplexml_load_string($signup_forms_xml);
-  foreach ($signup_forms as $child) {
-    $options[((int) $child->attributes()->id)] = ((string) $child->signup_form_name);
-  }
-  
-  if(!empty($options) && (count($options) > 1)) {
-    $form['petition_form_id'] = array(
-      '#type' => 'select',
-      '#title' => t('Petition Form'),
-      '#description' => t('ID Code for signup form that serves this petition.'),
-      '#options' => $options,
-      '#default_value' => $petition->petition_form_id,
-      '#required' => TRUE,
-    );
-  } else {
-    $form['petition_form_id'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Petition Form ID'),
-      '#description' => t('ID Code for signup form that serves this petition.'),
-      '#required' => TRUE,
-      '#max_length' => 12,
-      '#size' => 12,
-      '#default_value' => $petition->petition_form_id,
-    );
-  }
+  $form['petition_form_id'] = takepart_bsd_form_id_select_field($petition->petition_form_id);
+  $form['petition_form_id']['#description'] = t('ID Code for signup form that serves this petition.');
+  $form['petition_form_id']['#title'] = t('Petition Form');
+  $form['petition_form_id']['#required'] = TRUE;
+    
   $form['mail_field_id'] = array(
     '#title' => t('Email Field ID'),
     '#type' => 'textfield',
@@ -145,27 +123,11 @@ function takepart_petition_form_form($form, &$form_state, $petition, $op = 'edit
     '#size' => 12,
   );
 
+  $form['campaign_signup_form_id'] = takepart_bsd_form_id_select_field($petition->campaign_signup_form_id);
+  $form['campaign_signup_form_id']['#description'] = t('ID Code for signup form that serves campaign mailing list.');
+  $form['campaign_signup_form_id']['#title'] = t('Campaign Mailing List Form');
+  $form['campaign_signup_form_id']['#required'] = TRUE;
 
-  if(!empty($options) && (count($options) > 1)) {
-    $form['campaign_signup_form_id'] = array(
-      '#type' => 'select',
-      '#title' => t('Campaign Mailing List Form'),
-      '#description' => t('ID Code for signup form that serves campaign mailing list.'),
-      '#options' => $options,
-      '#default_value' => $petition->campaign_signup_form_id,
-      '#required' => TRUE,
-    );
-  } else {
-    $form['campaign_signup_form_id'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Campaign Mailing List Form ID'),
-      '#description' => t('ID Code for signup form that serves campaign mailing list.'),
-      '#required' => TRUE,
-      '#max_length' => 12,
-      '#size' => 12,
-      '#default_value' => $petition->campaign_signup_form_id,
-    );
-  }
   $form['campaign_mail_field_id'] = array(
     '#title' => t('Campaign Form Email Field ID'),
     '#type' => 'textfield',
