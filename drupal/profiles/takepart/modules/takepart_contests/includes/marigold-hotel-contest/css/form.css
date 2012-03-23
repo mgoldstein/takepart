@@ -276,6 +276,13 @@
   width:730px;
 }
 
+#takepart_contests_form_wrapper_1 .group-step4 legend
+{
+  background:url(../images/submit_step4.png) no-repeat scroll left top transparent;
+  height:24px;
+  width:730px;
+}
+
 /* CheckBox Styles */
 #takepart_contests_form_wrapper_1 .form-checkboxes .form-item
 {
