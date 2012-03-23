@@ -261,12 +261,21 @@
 }
 
 /* CheckBox Styles */
-#takepart_contests_form_wrapper_1 .ui-radio-state-disabled,#takepart_contests_form_wrapper_1 .ui-radio-state-checked-disabled,#takepart_contests_form_wrapper_1 .ui-radio-state-disabled-hover,#takepart_contests_form_wrapper_1 .ui-radio-state-checked-disabled-hover
+#takepart_contests_form_wrapper_1 .form-checkboxes .form-item
+{
+  margin-left: 18px;
+}
+
+#takepart_contests_form_wrapper_1 .ui-radio-state-disabled,
+#takepart_contests_form_wrapper_1 .ui-radio-state-checked-disabled,
+#takepart_contests_form_wrapper_1 .ui-radio-state-disabled-hover,
+#takepart_contests_form_wrapper_1 .ui-radio-state-checked-disabled-hover
 {
   color:#999;
 }
 
-#takepart_contests_form_wrapper_1 span.ui-checkbox,#takepart_contests_form_wrapper_1 span.ui-radio
+#takepart_contests_form_wrapper_1 span.ui-checkbox,
+#takepart_contests_form_wrapper_1 span.ui-radio
 {
   display:block;
   float:left;
@@ -312,6 +321,24 @@
 }
 
 /* Select Box Styles */
+
+#takepart_contests_form_wrapper_1 .container-inline-date .form-type-select label
+{
+  display:none;
+}
+
+#takepart_contests_form_wrapper_1 .container-inline-date label
+{
+  float:left;
+  margin-top: 12px;
+  padding-right: 20px;
+}
+
+#takepart_contests_form_wrapper_1 .container-inline-date .form-type-select div
+{
+  padding-right: 10px;
+}
+
 #takepart_contests_form_wrapper_1 span.customStyleSelectBox
 {
   background:url(../images/dropdown_gradient.png) repeat-x scroll left top transparent;

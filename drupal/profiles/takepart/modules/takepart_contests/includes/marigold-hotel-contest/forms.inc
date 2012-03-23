@@ -14,14 +14,94 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
   $callback = 'takepart_contests_contest_entry_form_callback_1';
   $wrapper = 'takepart_contests_form_wrapper_1';
   $submit = 'takepart_contests_contest_entry_form_submit_1';
+  $reqtext = '<span class="reqtext"><span class="form-required">*</span>Indicates required field</span>';
 
   $form['#tree'] = TRUE; // We want to deal with hierarchical form values.
 
   $step = empty($form_state['storage']['step']) ? 1 : $form_state['storage']['step'];
   $form_state['storage']['step'] = $step;
-  
+
+  //pull values from session:
+  foreach ($form_state['storage']['values']['step'.$step] as $key => $value) {
+    if (array_key_exists($key, $form)) {
+      if(is_array($form[$key]) && isset($form[$key]['und'][0]['value']) && isset($value['und'][0]['value'])) {
+        $form[$key]['und'][0]['value']['#default_value'] = $value['und'][0]['value'];
+      }
+    }
+  }
+
+  foreach ($form as $key => $value) {
+    if ((is_array($form[$key])) && (isset($form[$key]['und'][0]['value']['#description'])) && (!empty($form[$key]['und'][0]['value']['#description']))) {
+      $form[$key]['und'][0]['value']['#title'] = $form[$key]['und'][0]['value']['#description'];
+      $form[$key]['und'][0]['value']['#description'] = "";
+    }
+  }
+
+
+  if (array_key_exists('field_custom_265', $form)) {
+    if(isset($form['field_custom_265']['und'][0]['value'])) {
+     // $form['field_custom_265']['und'][0]['value']['#required'] = TRUE;
+      $form['field_custom_265']['und'][0]['value']['#columns'] = 40;
+      $form['field_custom_265']['und'][0]['value']['#rows'] = 2;
+      $form['field_custom_265']['und'][0]['value']['#attributes'] = array('maxlength' => "140");
+    }
+  }
+
+  if (array_key_exists('field_custom_266', $form)) {
+    if(isset($form['field_custom_266']['und'][0]['value'])) {
+      //$form['field_custom_266']['und'][0]['value']['#required'] = TRUE;
+      $form['field_custom_266']['und'][0]['value']['#columns'] = 40;
+      $form['field_custom_266']['und'][0]['value']['#rows'] = 8;
+      $form['field_custom_266']['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+    }
+  }
+
+  if (array_key_exists('field_custom_267', $form)) {
+    if(isset($form['field_custom_267']['und'][0]['value'])) {
+      //$form['field_custom_267']['und'][0]['value']['#required'] = TRUE;
+      $form['field_custom_267']['und'][0]['value']['#columns'] = 40;
+      $form['field_custom_267']['und'][0]['value']['#rows'] = 8;
+      $form['field_custom_267']['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+    }
+  }
+
+  if (array_key_exists('field_custom_270', $form)) {
+    if(isset($form['field_custom_270']['und'][0]['value'])) {
+      //$form['field_custom_270']['und'][0]['value']['#required'] = TRUE;
+      $form['field_custom_270']['und'][0]['value']['#columns'] = 40;
+      $form['field_custom_270']['und'][0]['value']['#rows'] = 8;
+      $form['field_custom_270']['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+    }
+  }
+
   $form['test'] = array(
-      '#markup' => '<div>'. t('Step:' . $step) . ' X ' . t('Time:' . time()) . '</div>',
+      '#markup' => '<div>'. t('Step:' . $step) . ' / ' . t('Time:' . time()) . '</div>',
+  );
+  
+
+
+  
+  if($step == 4) {
+    if(is_array($form['#groups']) && isset($form['#groups']['group_step4_idea'])) {
+      if(is_array($form['#groups']['group_step4_idea']->{'format_settings'}) && isset($form['#groups']['group_step4_idea']->{'format_settings'}['instance_settings']['description'])) {
+        //this should not be visible, see: themes.inc
+        $ideamarkup = ($form['#groups']['group_step4_idea']->{'format_settings'}['instance_settings']['description']);
+        $form['ideamarkup'] = array(
+            '#markup' => $ideamarkup,
+        );
+      }
+    }   
+  }
+
+  
+  print_r($form);
+  exit();
+   
+  $form['submit_test'] = array(
+      '#type' => 'submit',
+      '#submit' => array($submit),
+      '#value' => t("TEST SUBMIT"),
+      '#weight' => 3000,
   );
 
   if ($step == 4) {
@@ -33,6 +113,10 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     );
   }
   if ($step < 4) {
+    $form['reqtext'] = array(
+        '#markup' => $reqtext,
+        '#weight' => 1990,
+    );
     $form['next'] = array(
         '#type' => 'submit',
         '#value' => t('Next step'),
@@ -48,8 +132,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     $form['prev'] = array(
         '#type' => 'submit',
         '#value' => t("Previous step"),
-
-        // Since all info will be discarded, don't validate on 'prev'.
+        // Don't validate when going back:
         '#limit_validation_errors' => array(),
         // #submit is required to use #limit_validation_errors
         '#submit' => array($submit),
@@ -60,7 +143,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
         '#weight' => 2010,
     );
   }
-  
+
   $form['#step'] = array('#type' => 'hidden', '#value' => $step);
 
   return $form;
@@ -86,31 +169,32 @@ function takepart_contests_contest_entry_form_callback_1($form, $form_state) {
 
 function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
 
-  $form_state['rebuild'] = TRUE;
-
   // Save away the current information.
   $current_step = 'step' . $form_state['storage']['step'];
-  if (!empty($form_state['values'][$current_step])) {
-    $form_state['storage']['values'][$current_step] = $form_state['values'][$current_step];
+
+
+  if (!empty($form_state['values'])) {
+    $form_state['storage']['values'][$current_step] = $form_state['values'];
   }
 
   // Increment or decrement the step as needed. Recover values if they exist.
   if ($form_state['triggering_element']['#value'] == t('Next step')) {
     $form_state['storage']['step']++;
-    // If values have already been entered for this step, recover them from
-    // $form_state['storage'] to pre-populate them.
+    // Recover our values from $form_state['storage'] to pre-populate them.
     $step_name = 'step' . $form_state['storage']['step'];
     if (!empty($form_state['storage']['values'][$step_name])) {
       $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
     }
+    $form_state['rebuild'] = TRUE;
   }
   if ($form_state['triggering_element']['#value'] == t('Previous step')) {
     $form_state['storage']['step']--;
     // Recover our values from $form_state['storage'] to pre-populate them.
     $step_name = 'step' . $form_state['storage']['step'];
-    $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
+    if (!empty($form_state['storage']['values'][$step_name])) {
+      $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
+    }
+    $form_state['rebuild'] = TRUE;
   }
-  
-  
 
 }
