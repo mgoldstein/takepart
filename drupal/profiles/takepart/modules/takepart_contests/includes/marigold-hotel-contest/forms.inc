@@ -22,10 +22,12 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
   $form_state['storage']['step'] = $step;
 
   //pull values from session:
-  foreach ($form_state['storage']['values']['step'.$step] as $key => $value) {
-    if (array_key_exists($key, $form)) {
-      if(is_array($form[$key]) && isset($form[$key]['und'][0]['value']) && isset($value['und'][0]['value'])) {
-        $form[$key]['und'][0]['value']['#default_value'] = $value['und'][0]['value'];
+  for ($groups = 0; $groups <= 4; $groups++) {
+    foreach ($form_state['storage']['values']['step'.$groups] as $key => $value) {
+      if (array_key_exists($key, $form)) {
+        if(is_array($form[$key]) && isset($form[$key]['und'][0]['value']) && isset($value['und'][0]['value'])) {
+          $form[$key]['und'][0]['value']['#default_value'] = $value['und'][0]['value'];
+        }
       }
     }
   }
@@ -87,16 +89,26 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
               }
             }
           }
+          //How will your work and life experiance help you:
+          if('field_custom_271' == $value->{'children'}[$i]){
+            if (array_key_exists($value->{'children'}[$i], $form)) {
+              if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+              }
+            }
+          }
         }
       }
     }
   }
 
-  /*
+
   $form['test'] = array(
       '#markup' => '<div>'. t('Step:' . $step) . ' / ' . t('Time:' . time()) . '</div>',
   );
-  */
 
 
   if($step == 3) {
@@ -125,14 +137,14 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }
   }
 
-  /*
-   $form['submit_test'] = array(
-       '#type' => 'submit',
-       '#submit' => array($submit),
-       '#value' => t("TEST SUBMIT"),
-       '#weight' => 3000,
-   );
-  */
+
+  $form['submit_test'] = array(
+      '#type' => 'submit',
+      '#submit' => array($submit),
+      '#value' => t("Test Submit"),
+      '#weight' => 3000,
+  );
+
 
   if ($step < 4) {
     $form['reqtext'] = array(
@@ -155,7 +167,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
         '#type' => 'submit',
         '#value' => t("Previous step"),
         // Don't validate when going back:
-        '#limit_validation_errors' => array(),
+        //'#limit_validation_errors' => array(),
         // #submit is required to use #limit_validation_errors
         '#submit' => array($submit),
         '#ajax' => array(
@@ -199,9 +211,10 @@ function takepart_contests_contest_entry_form_callback_1($form, $form_state) {
 
 function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
 
+  global $user;
+  
   // Save away the current information.
   $current_step = 'step' . $form_state['storage']['step'];
-
 
   if (!empty($form_state['values'])) {
     $form_state['storage']['values'][$current_step] = $form_state['values'];
@@ -226,5 +239,39 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
     }
     $form_state['rebuild'] = TRUE;
   }
+
+  if ($form_state['triggering_element']['#value'] == t('Test Submit')) {
+    $form_state['storage']['step']++;
+    $form_state['rebuild'] = TRUE;
+  }
+
+  if (($form_state['triggering_element']['#value'] == t('Submit your information')) || ($form_state['triggering_element']['#value'] == t('Test Submit'))) {
+
+    // build the contest entry entity from the form
+    entity_form_submit_build_entity('takepart_contests_contest_entry', $form_state['takepart_contests_contest_entry'], $form, $form_state);
+    $entry = $form_state['takepart_contests_contest_entry'];
+    
+    // set/update the created and changed timestamps
+    $entry->is_new = isset($entry->is_new) ? $entry->is_new : 0;
+    if ($entry->is_new) {
+      $entry->created = time();
+    }
+    $entry->changed = time();
+    
+    // set the associated user
+    $entry->uid = $user->uid;
+    
+    // save the entry
+    $entry->save();
+    
+    $id_to_read_back = $entry->entry_id;
+    
+    // read back the entry to make sure that works
+    $entry = takepart_contests_contest_entry_load($id_to_read_back);
+    
+    drupal_set_message(t('The contest entry %id has been saved and read back.', array('%id' => $entry->entry_id)));
+    
+  }
+ 
 
 }
