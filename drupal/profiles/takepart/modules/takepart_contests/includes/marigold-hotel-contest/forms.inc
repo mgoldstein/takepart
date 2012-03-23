@@ -36,50 +36,66 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
       $form[$key]['und'][0]['value']['#description'] = "";
     }
   }
-
-
-  if (array_key_exists('field_custom_265', $form)) {
-    if(isset($form['field_custom_265']['und'][0]['value'])) {
-     // $form['field_custom_265']['und'][0]['value']['#required'] = TRUE;
-      $form['field_custom_265']['und'][0]['value']['#columns'] = 40;
-      $form['field_custom_265']['und'][0]['value']['#rows'] = 2;
-      $form['field_custom_265']['und'][0]['value']['#attributes'] = array('maxlength' => "140");
-    }
+  
+  //Itterate through field groups, if we're on a step that matches a group,
+  //assign field settings to the applicable fields in that group:
+  foreach ($form['#fieldgroups'] as $key => $value) {
+    if($value->{'group_name'} == 'group_step'.$step) {
+      if(is_array($value->{'children'})) {
+        for($i = 0; $i < count($value->{'children'}); $i++) {
+          //Describe your idea:
+          if('field_custom_265' == $value->{'children'}[$i]){
+            if (array_key_exists($value->{'children'}[$i], $form)) {
+              if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 2;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "140");
+              }
+            }
+          }
+          //How does your idea address a community:
+          if('field_custom_266' == $value->{'children'}[$i]){
+            if (array_key_exists($value->{'children'}[$i], $form)) {
+              if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+              }
+            }
+          }
+          //How would winning $5000:
+          if('field_custom_267' == $value->{'children'}[$i]){
+            if (array_key_exists($value->{'children'}[$i], $form)) {
+              if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+              }
+            }
+          }
+          //What inspires you about this idea:
+          if('field_custom_270' == $value->{'children'}[$i]){
+            if (array_key_exists($value->{'children'}[$i], $form)) {
+              if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+              }
+            }
+          }     
+        } 
+      }
+    }    
   }
-
-  if (array_key_exists('field_custom_266', $form)) {
-    if(isset($form['field_custom_266']['und'][0]['value'])) {
-      //$form['field_custom_266']['und'][0]['value']['#required'] = TRUE;
-      $form['field_custom_266']['und'][0]['value']['#columns'] = 40;
-      $form['field_custom_266']['und'][0]['value']['#rows'] = 8;
-      $form['field_custom_266']['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-    }
-  }
-
-  if (array_key_exists('field_custom_267', $form)) {
-    if(isset($form['field_custom_267']['und'][0]['value'])) {
-      //$form['field_custom_267']['und'][0]['value']['#required'] = TRUE;
-      $form['field_custom_267']['und'][0]['value']['#columns'] = 40;
-      $form['field_custom_267']['und'][0]['value']['#rows'] = 8;
-      $form['field_custom_267']['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-    }
-  }
-
-  if (array_key_exists('field_custom_270', $form)) {
-    if(isset($form['field_custom_270']['und'][0]['value'])) {
-      //$form['field_custom_270']['und'][0]['value']['#required'] = TRUE;
-      $form['field_custom_270']['und'][0]['value']['#columns'] = 40;
-      $form['field_custom_270']['und'][0]['value']['#rows'] = 8;
-      $form['field_custom_270']['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-    }
-  }
+  
 
   $form['test'] = array(
       '#markup' => '<div>'. t('Step:' . $step) . ' / ' . t('Time:' . time()) . '</div>',
   );
-  
-
-
   
   if($step == 4) {
     if(is_array($form['#groups']) && isset($form['#groups']['group_step4_idea'])) {
@@ -94,9 +110,6 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
   }
 
   
-  print_r($form);
-  exit();
-   
   $form['submit_test'] = array(
       '#type' => 'submit',
       '#submit' => array($submit),
