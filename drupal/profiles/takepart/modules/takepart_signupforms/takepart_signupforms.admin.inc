@@ -44,7 +44,8 @@ function _takepart_signupforms_field_settings($entity_type, $bundle, $field_name
  */
 function _takepart_signupforms_field_settings_form_alter(&$form, $form_state, $form_id) {
 
-  $supported_field_types = array('text', 'long_text', 'text_with_summary');
+  $supported_field_types = array('text', 'text_long', 'text_with_summary',
+    'list_integer', 'list_text', 'date');
   
   if (in_array($form['#field']['type'], $supported_field_types)) {
     
@@ -111,7 +112,7 @@ function _takepart_signupforms_field_id_select($form_id, $value) {
       }
       
       foreach ($fields as $id => $field) {
-        $options[$id] = $field['label'];        
+        $options[$id] = sprintf('[%d] %s', $id, $field['label']);        
       }
     }
     else {
