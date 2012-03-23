@@ -283,6 +283,36 @@
   width:730px;
 }
 
+
+/* Final Steps */
+#takepart_contests_form_wrapper_1 .step4wrapper .group-step1 legend
+{
+  background:url(../images/review_about_idea_headline.png) no-repeat scroll left top transparent;
+  height:24px;
+  width:730px;
+}
+
+#takepart_contests_form_wrapper_1 .step4wrapper .group-step2 legend
+{
+  background:url(../images/review_about_you_headline.png) no-repeat scroll left top transparent;
+  height:24px;
+  width:730px;
+}
+
+#takepart_contests_form_wrapper_1 .step4wrapper .group-step3 legend
+{
+  background:url(../images/review_final_info_headline.png) no-repeat scroll left top transparent;
+  height:24px;
+  width:730px;
+}
+
+#takepart_contests_form_wrapper_1 #step4legend
+{
+  background:url(../images/submit_step4.png) no-repeat scroll left top transparent;
+  height:24px;
+  width:730px;
+}
+
 /* CheckBox Styles */
 #takepart_contests_form_wrapper_1 .form-checkboxes .form-item
 {
@@ -458,6 +488,24 @@
   background:url(../images/bg_select.png) right;
 }
 
+#takepart_contests_form_wrapper_1 .step4wrapper .counter 
+{
+  display:none;
+}
+
+
+#takepart_contests_form_wrapper_1 .step4wrapper textarea 
+{
+	border:0px !important;
+	background: none repeat scroll 0 0 transparent !important;
+	margin-left:24px;
+}
+
+#takepart_contests_form_wrapper_1 .step4wrapper label 
+{
+    font-weight: bold;
+}
+
 /* text fields */
 #takepart_contests_form_wrapper_1 .form-type-textfield input.form-text,
 #takepart_contests_form_wrapper_1 .form-type-textarea textarea.form-textarea
@@ -520,4 +568,60 @@
 {
   width:80px;
   float:left;
+}
+
+
+#takepart_contests_form_wrapper_1 #edit-field-profile-email--2 input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-first-name--2 input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-last-name--2 input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr1--2 input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr2--2 input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-city--2 input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-zip--2 input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-phone--2 input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-state--2 .form-item
+{
+  width:200px;
+}
+
+#takepart_contests_form_wrapper_1 #edit-field-profile-email--2 .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-first-name--2 .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-last-name--2 .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr1--2 .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr2--2 .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-city--2 .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-zip--2 .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-phone--2 .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-state--2 .form-item
+{
+  margin-bottom: 5px;
+}
+
+#takepart_contests_form_wrapper_1 #edit-field-profile-email--2 label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-first-name--2 label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-last-name--2 label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr1--2 label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr2--2 label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-city--2 label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-zip--2 label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-phone--2 label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-state--2 label
+{
+  width:80px;
+  float:left;
+}
+
+#takepart_contests_form_wrapper_1 #edit-field-profile-email--2,
+#takepart_contests_form_wrapper_1 #edit-field-profile-first-name--2,
+#takepart_contests_form_wrapper_1 #edit-field-profile-last-name--2,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr1--2,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr2--2,
+#takepart_contests_form_wrapper_1 #edit-field-profile-city--2,
+#takepart_contests_form_wrapper_1 #edit-field-profile-zip--2,
+#takepart_contests_form_wrapper_1 #edit-field-profile-phone--2,
+#takepart_contests_form_wrapper_1 #edit-field-profile-state--2
+{
+  width:300px;
+  float:left;
+  padding-right: 48px;
 }

@@ -51,8 +51,12 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 2;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "140");
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 2;     
+                if($step == 4) {
+                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "140", 'readonly' => "readonly");
+                } else {
+                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "140");
+                }
               }
             }
           }
@@ -63,7 +67,11 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+                if($step == 4) {
+                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
+                } else {
+                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+                }
               }
             }
           }
@@ -74,7 +82,11 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+                if($step == 4) {
+                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
+                } else {
+                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+                }
               }
             }
           }
@@ -85,7 +97,11 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+                if($step == 4) {
+                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
+                } else {
+                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+                }
               }
             }
           }
@@ -96,7 +112,11 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+                if($step == 4) {
+                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
+                } else {
+                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
+                }
               }
             }
           }
@@ -105,10 +125,11 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }
   }
 
-
+  /*
   $form['test'] = array(
       '#markup' => '<div>'. t('Step:' . $step) . ' / ' . t('Time:' . time()) . '</div>',
   );
+  */
 
 
   if($step == 3) {
@@ -137,14 +158,14 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }
   }
 
-
+  /*
   $form['submit_test'] = array(
       '#type' => 'submit',
       '#submit' => array($submit),
       '#value' => t("Test Submit"),
       '#weight' => 3000,
   );
-
+  */
 
   if ($step < 4) {
     $form['reqtext'] = array(
@@ -265,6 +286,10 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
     $entry->save();
     
     $id_to_read_back = $entry->entry_id;
+    
+    if(isset($entry->entry_id)) {
+       //Where to trigger omniture? 
+    }
     
     // read back the entry to make sure that works
     $entry = takepart_contests_contest_entry_load($id_to_read_back);

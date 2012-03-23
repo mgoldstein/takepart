@@ -72,50 +72,54 @@ function theme_takepart_contests_contest_entry_form_1(&$variables) {
     $form['prev']['#attributes']['class'][] = 'backtostepthree';
     $form['prev']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_prev');
 
-
-
-
-
-
   }
 
-  foreach ($variables['form'] as $key => $value) {
+
+  if($form['#step']['#value'] == 4) {
+    foreach ($variables['form'] as $key => $value) {
+
+      //print "\n--------------------------------\n";
+      //print $key;
+      //print "\n--------------------------------\n";
+
+      //print_r($variables['form'][$key]);
 
 
-    // print "\n--------------------------------\n";
-    // print $key;
-    // print "\n--------------------------------\n";
+      if((strlen($key) > 10) && (substr($key, 0, 10) == 'group_step')) {
+        $groupstep = substr($key, 10, strlen($key));
+        if(is_numeric($groupstep)) {
 
-    // print_r($variables['form'][$key]);
+          if((int)$groupstep == 1) {
 
 
-    if((strlen($key) > 10) && (substr($key, 0, 10) == 'group_step')) {
-      $groupstep = substr($key, 10, strlen($key));
-      if(is_numeric($groupstep)) {
 
-        if((int)$groupstep == 1) {
+          }
+           
+          // print "\n--------------------------------\n";
+          // print $key;
+          // print "\n--------------------------------\n";
+          // print_r($variables['form'][$key]['field_custom_265']);
 
+          if(isset($variables['form'][$key]['field_custom_265']['und'][0]['value']['#title'])) {
+            $title = ($variables['form'][$key]['field_custom_265']['und'][0]['value']['#title']);
+          }
 
 
         }
-         
-        // print "\n--------------------------------\n";
-        // print $key;
-        // print "\n--------------------------------\n";
-        // print_r($variables['form'][$key]['field_custom_265']);
-
-        if(isset($variables['form'][$key]['field_custom_265']['und'][0]['value']['#title'])) {
-          $title = ($variables['form'][$key]['field_custom_265']['und'][0]['value']['#title']);
-        }
-
-
       }
-    }
 
+    }
   }
 
-
-  $output = '<div id="' . $wrapper . '">' . drupal_render_children($form) . '</div>';
+  if($form['#step']['#value'] == 4) {
+    $output = '<div id="' . $wrapper . '">' . 
+      '<div id="step4legend"></div><div class="step4wrapper">' .
+      drupal_render_children($form) . 
+    '</div></div>';
+  } else {
+    $output = '<div id="' . $wrapper . '">' . drupal_render_children($form) . '</div>';
+  }
+  
   return $output;
 }
 
