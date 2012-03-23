@@ -109,22 +109,15 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }   
   }
 
-  
+  /*
   $form['submit_test'] = array(
       '#type' => 'submit',
       '#submit' => array($submit),
       '#value' => t("TEST SUBMIT"),
       '#weight' => 3000,
   );
+  */
 
-  if ($step == 4) {
-    $form['submit'] = array(
-        '#type' => 'submit',
-        '#submit' => array($submit),
-        '#value' => t("Submit your information"),
-        '#weight' => 2000,
-    );
-  }
   if ($step < 4) {
     $form['reqtext'] = array(
         '#markup' => $reqtext,
@@ -154,6 +147,14 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
             'callback' => $callback,
         ),
         '#weight' => 2010,
+    );
+  }
+  if ($step == 4) {
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#submit' => array($submit),
+        '#value' => t("Submit your information"),
+        '#weight' => 2005,
     );
   }
 

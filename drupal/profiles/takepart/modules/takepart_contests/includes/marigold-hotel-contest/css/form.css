@@ -62,12 +62,15 @@
   width:200px;
 }
 
-#takepart_contests_form_wrapper_1 input.aboutyou,#takepart_contests_form_wrapper_1 input.finalinfo,#takepart_contests_form_wrapper_1 input.reviewentry
+#takepart_contests_form_wrapper_1 input.aboutyou,
+#takepart_contests_form_wrapper_1 input.finalinfo,
+#takepart_contests_form_wrapper_1 input.reviewentry,
+#takepart_contests_form_wrapper_1 input.submitentry
 {
   border:medium none;
   height:35px;
   padding:2px 8px;
-  text-indent:-300px;
+  text-indent:-500px;
   text-transform:capitalize;
   cursor:pointer;
 }
@@ -97,18 +100,6 @@
 #takepart_contests_form_wrapper_1 input.reviewentry
 {
   background:url(../images/review_button.png) no-repeat scroll left top transparent;
-  width:198px;
-}
-
-#takepart_contests_form_wrapper_1 input.reviewentry:hover
-{
-  background:url(../images/review_button_rollover.png) no-repeat scroll left top transparent;
-}
-
-
-#takepart_contests_form_wrapper_1 input.reviewentry
-{
-  background:url(../images/review_button.png) no-repeat scroll left top transparent;
   width:209px;
 }
 
@@ -117,8 +108,21 @@
   background:url(../images/review_button_rollover.png) no-repeat scroll left top transparent;
 }
 
+
+#takepart_contests_form_wrapper_1 input.submitentry
+{
+  background:url(../images/submit_button.png) no-repeat scroll left top transparent;
+  width:209px;
+}
+
+#takepart_contests_form_wrapper_1 input.submitentry:hover
+{
+  background:url(../images/submit_button_rollover.png) no-repeat scroll left top transparent;
+}
+
 #takepart_contests_form_wrapper_1 input.backtostepone,
-#takepart_contests_form_wrapper_1 input.backtosteptwo
+#takepart_contests_form_wrapper_1 input.backtosteptwo,
+#takepart_contests_form_wrapper_1 input.backtostepthree
 {
   background:url(../images/back_step.png) no-repeat scroll left top transparent;
     border: 0 none;
@@ -128,7 +132,9 @@
     width: 121px;
 }
 
-#takepart_contests_form_wrapper_1 input.backtostepone:hover
+#takepart_contests_form_wrapper_1 input.backtostepone:hover,
+#takepart_contests_form_wrapper_1 input.backtosteptwo:hover,
+#takepart_contests_form_wrapper_1 input.backtostepthree:hover
 {
   background:url(../images/back_step_rollover.png) no-repeat scroll left top transparent;
 }
@@ -136,7 +142,7 @@
 #takepart_contests_form_wrapper_1 .button
 {
   display: block;
-  width: 420px;
+  width: 620px;
 }
 
 #takepart_contests_form_wrapper_1 div.aboutyou,
@@ -150,6 +156,10 @@
   margin-top:4px;
   padding-right:7px;
   text-transform:uppercase;
+}
+
+#takepart_contests_form_wrapper_1 div.submitentry {
+  display:none;	
 }
 
 #takepart_contests_form_wrapper_1 span

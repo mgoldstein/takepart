@@ -51,11 +51,28 @@ function theme_takepart_contests_contest_entry_form_1(&$variables) {
   
     $form['prev']['#attributes']['class'][] = 'backtosteptwo';
     $form['prev']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_prev');
+   
+    /*foreach ($form['#fieldgroups'] as $key => $value) {
+      if($value->{'group_name'} == 'group_step3') {
+        $form['#fieldgroups'][$key]['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_columns');
+      }
+    }*/
+  }
+  
+  if($form['#step']['#value'] == 4) {
+    $form['submit']['#attributes']['class'][] = 'submitentry';
+    $form['submit']['#takepart_before'] = '';
+    $form['submit']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_next');
+  
+    $form['prev']['#attributes']['class'][] = 'backtostepthree';
+    $form['prev']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_prev');
   }
   
   $output = '<div id="' . $wrapper . '">' . drupal_render_children($form) . '</div>';
   return $output;
 }
+
+
 
 /**
  * Theme for form button submit.
@@ -66,4 +83,8 @@ function theme_takepart_contests_contest_entry_form_1_button_next($variables) {
 
 function theme_takepart_contests_contest_entry_form_1_button_prev($variables) {
   return '<span class="button">' . theme_button($variables) . '</span>';
+}
+
+function takepart_contests_contest_entry_form_1_columns($variables) {
+  return '<span>' . theme_form_elements($variables) . '</span>';
 }
