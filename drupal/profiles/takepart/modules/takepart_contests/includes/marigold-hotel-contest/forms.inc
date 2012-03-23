@@ -36,7 +36,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
       $form[$key]['und'][0]['value']['#description'] = "";
     }
   }
-  
+
   //Itterate through field groups, if we're on a step that matches a group,
   //assign field settings to the applicable fields in that group:
   foreach ($form['#fieldgroups'] as $key => $value) {
@@ -86,17 +86,32 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
               }
             }
-          }     
-        } 
+          }
+        }
       }
-    }    
+    }
   }
-  
+
 
   $form['test'] = array(
       '#markup' => '<div>'. t('Step:' . $step) . ' / ' . t('Time:' . time()) . '</div>',
   );
-  
+
+
+  if($step == 3) {
+    $form['confirm_msg'] = array(
+        '#markup' => "<div>Please confirm your information below to finalize your submission.</div>",
+    );
+    //Add confirm msg to field group:
+    foreach ($form['#fieldgroups'] as $key => $value) {
+      if($value->{'group_name'} == 'group_step3') {
+        if(is_array($value->{'children'})) {
+          $form['#fieldgroups']['$key']->{'children'} = array_merge(array('confirm_msg'),  $form['#fieldgroups']['$key']->{'children'});
+        }
+      }
+    }
+  }
+
   if($step == 4) {
     if(is_array($form['#groups']) && isset($form['#groups']['group_step4_idea'])) {
       if(is_array($form['#groups']['group_step4_idea']->{'format_settings'}) && isset($form['#groups']['group_step4_idea']->{'format_settings'}['instance_settings']['description'])) {
@@ -106,16 +121,16 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
             '#markup' => $ideamarkup,
         );
       }
-    }   
+    }
   }
 
   /*
-  $form['submit_test'] = array(
-      '#type' => 'submit',
-      '#submit' => array($submit),
-      '#value' => t("TEST SUBMIT"),
-      '#weight' => 3000,
-  );
+   $form['submit_test'] = array(
+       '#type' => 'submit',
+       '#submit' => array($submit),
+       '#value' => t("TEST SUBMIT"),
+       '#weight' => 3000,
+   );
   */
 
   if ($step < 4) {

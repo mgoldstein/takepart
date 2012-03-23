@@ -5,11 +5,14 @@
 function theme_takepart_contests_contest_entry_form_1(&$variables) {
   
   $modulename = 'takepart_contests';
-  drupal_add_js(drupal_get_path('module', $modulename) . '/includes/marigold-hotel-contest/js/ui.checkbox.js');
-  drupal_add_js(drupal_get_path('module', $modulename) . '/includes/marigold-hotel-contest/js/jquery.selectbox-0.5.js');
-  drupal_add_js(drupal_get_path('module', $modulename) . '/includes/marigold-hotel-contest/js/customSelect.jquery.js');
-  drupal_add_css(drupal_get_path('module', $modulename) . '/includes/marigold-hotel-contest/css/form.css');
-  drupal_add_js(drupal_get_path('module', $modulename) . '/includes/marigold-hotel-contest/js/form.js');
+  
+  if(!isset($form['#step']['#value'])) {
+    drupal_add_js(drupal_get_path('module', $modulename) . '/includes/marigold-hotel-contest/js/ui.checkbox.js');
+    drupal_add_js(drupal_get_path('module', $modulename) . '/includes/marigold-hotel-contest/js/jquery.selectbox-0.5.js');
+    drupal_add_js(drupal_get_path('module', $modulename) . '/includes/marigold-hotel-contest/js/customSelect.jquery.js');
+    drupal_add_css(drupal_get_path('module', $modulename) . '/includes/marigold-hotel-contest/css/form.css');
+    drupal_add_js(drupal_get_path('module', $modulename) . '/includes/marigold-hotel-contest/js/form.js');
+  }
   
   $wrapper = 'takepart_contests_form_wrapper_1';
   $form = $variables['form'];

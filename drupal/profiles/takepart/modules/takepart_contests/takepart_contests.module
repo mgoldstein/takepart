@@ -227,10 +227,13 @@ function takepart_contests_theme() {
     'takepart_contests_contest_entry_form'  => array(
         'render element' => 'form',
     ),
-    'takepart_contests_contest_entry_form_button_next' => array(
+    'takepart_contests_contest_entry_form_1_button_next' => array(
         'render element'  => 'element',
     ),
-    'takepart_contests_contest_entry_form_button_prev' => array(
+    'takepart_contests_contest_entry_form_1_button_prev' => array(
+        'render element'  => 'element',
+    ),
+    'takepart_contests_contest_entry_form_1_columns' => array(
         'render element'  => 'element',
     ),
     'marigold_hotel_email_share_block' => array(

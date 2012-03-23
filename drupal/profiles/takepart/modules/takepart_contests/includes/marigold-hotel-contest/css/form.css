@@ -1,30 +1,34 @@
 /* Fonts */
-@font-face {
- font-family: calibri-webfont;
- src: url("../fonts/calibri-webfont.eot") /* EOT file for IE */
+@font-face 
+{
+  font-family: calibri-webfont;
+  src: url("../fonts/calibri-webfont.eot") /* EOT file for IE */
 }
 
-@font-face {
- font-family: calibrib-webfont;
- src: url("../fonts/calibrib-webfont.eot") /* EOT file for IE */
+@font-face 
+{
+  font-family: calibrib-webfont;
+  src: url("../fonts/calibrib-webfont.eot") /* EOT file for IE */
 }
 
-@font-face {
-    font-family: 'calibri-webfont';
-    src: url('../fonts/calibri-webfont.woff') format('woff'),
-         url('../fonts/calibri-webfont.ttf') format('truetype'),
-         url('../fonts/calibri-webfont.svg#calibri-webfont') format('svg');
-    font-weight: normal;
-    font-style: normal;
+@font-face 
+{
+  font-family: 'calibri-webfont';
+  src: url('../fonts/calibri-webfont.woff') format('woff'),
+       url('../fonts/calibri-webfont.ttf') format('truetype'),
+       url('../fonts/calibri-webfont.svg#calibri-webfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
-@font-face {
-    font-family: 'calibrib-webfont';
-    src: url('../fonts/calibrib-webfont.woff') format('woff'),
-         url('../fonts/calibrib-webfont.ttf') format('truetype'),
-         url('../fonts/calibrib-webfont.svg#calibrib-webfont') format('svg');
-    font-weight: normal;
-    font-style: normal;
+@font-face 
+{
+  font-family: 'calibrib-webfont';
+  src: url('../fonts/calibrib-webfont.woff') format('woff'),
+       url('../fonts/calibrib-webfont.ttf') format('truetype'),
+       url('../fonts/calibrib-webfont.svg#calibrib-webfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* General Form Styles */
@@ -108,7 +112,6 @@
   background:url(../images/review_button_rollover.png) no-repeat scroll left top transparent;
 }
 
-
 #takepart_contests_form_wrapper_1 input.submitentry
 {
   background:url(../images/submit_button.png) no-repeat scroll left top transparent;
@@ -125,11 +128,11 @@
 #takepart_contests_form_wrapper_1 input.backtostepthree
 {
   background:url(../images/back_step.png) no-repeat scroll left top transparent;
-    border: 0 none;
-    clear: none;
-    margin-top: 10px;
-    text-indent: -300px;
-    width: 121px;
+  border:0 none;
+  clear:none;
+  margin-top:10px;
+  text-indent:-300px;
+  width:121px;
 }
 
 #takepart_contests_form_wrapper_1 input.backtostepone:hover,
@@ -141,8 +144,8 @@
 
 #takepart_contests_form_wrapper_1 .button
 {
-  display: block;
-  width: 620px;
+  display:block;
+  width:620px;
 }
 
 #takepart_contests_form_wrapper_1 div.aboutyou,
@@ -158,8 +161,9 @@
   text-transform:uppercase;
 }
 
-#takepart_contests_form_wrapper_1 div.submitentry {
-  display:none;	
+#takepart_contests_form_wrapper_1 div.submitentry
+{
+  display:none;
 }
 
 #takepart_contests_form_wrapper_1 span
@@ -172,7 +176,9 @@
   width:18px;
 }
 
-#takepart_contests_form_wrapper_1 textarea,#takepart_contests_form_wrapper_1 input,#takepart_contests_form_wrapper_1 .grippie
+#takepart_contests_form_wrapper_1 textarea,
+#takepart_contests_form_wrapper_1 input,
+#takepart_contests_form_wrapper_1 .grippie
 {
   width:625px;
 }
@@ -273,7 +279,7 @@
 /* CheckBox Styles */
 #takepart_contests_form_wrapper_1 .form-checkboxes .form-item
 {
-  margin-left: 18px;
+  margin-left:18px;
 }
 
 #takepart_contests_form_wrapper_1 .ui-radio-state-disabled,
@@ -309,7 +315,9 @@
   background:url(../images/checkbox_on.png) 0 0 no-repeat;
 }
 
-#takepart_contests_form_wrapper_1 span.ui-radio-state-checked-disabled-hover,#takepart_contests_form_wrapper_1 span.ui-radio-state-checked-disabled,#takepart_contests_form_wrapper_1 span.ui-radio-state-checked
+#takepart_contests_form_wrapper_1 span.ui-radio-state-checked-disabled-hover,
+#takepart_contests_form_wrapper_1 span.ui-radio-state-checked-disabled,
+#takepart_contests_form_wrapper_1 span.ui-radio-state-checked
 {
   background:url(../images/checkbox_on.png) 0 0 no-repeat;
 }
@@ -319,7 +327,8 @@
   background:url(../images/checkbox_on.png) 0 0 no-repeat;
 }
 
-#takepart_contests_form_wrapper_1 .ui-radio-disabled,#takepart_contests_form_wrapper_1 .ui-checkbox-disabled
+#takepart_contests_form_wrapper_1 .ui-radio-disabled,
+#takepart_contests_form_wrapper_1 .ui-checkbox-disabled
 {
   opacity:.7;
 }
@@ -331,7 +340,6 @@
 }
 
 /* Select Box Styles */
-
 #takepart_contests_form_wrapper_1 .container-inline-date .form-type-select label
 {
   display:none;
@@ -340,13 +348,13 @@
 #takepart_contests_form_wrapper_1 .container-inline-date label
 {
   float:left;
-  margin-top: 12px;
-  padding-right: 20px;
+  margin-top:12px;
+  padding-right:20px;
 }
 
 #takepart_contests_form_wrapper_1 .container-inline-date .form-type-select div
 {
-  padding-right: 10px;
+  padding-right:10px;
 }
 
 #takepart_contests_form_wrapper_1 span.customStyleSelectBox
@@ -426,7 +434,7 @@
 {
   margin:0 5px 10px 0;
   padding-left:2px;
-  font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+  font-family:Verdana,Geneva,Arial,Helvetica,sans-serif;
   font-size:.8em;
   width:10em;
   display:block;
@@ -444,8 +452,65 @@
 }
 
 /* text fields */
-#takepart_contests_form_wrapper_1 .form-type-textfield input.form-text,#takepart_contests_form_wrapper_1 .form-type-textarea textarea.form-textarea
+#takepart_contests_form_wrapper_1 .form-type-textfield input.form-text,
+#takepart_contests_form_wrapper_1 .form-type-textarea textarea.form-textarea
 {
   background:#FFF url(../images/text_field_bg.gif) no-repeat left top;
   border:1px solid #B3B2B0;
+}
+
+/* submit your idea page */
+#takepart_contests_form_wrapper_1 #edit-field-profile-email,
+#takepart_contests_form_wrapper_1 #edit-field-profile-first-name,
+#takepart_contests_form_wrapper_1 #edit-field-profile-last-name,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr1,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr2,
+#takepart_contests_form_wrapper_1 #edit-field-profile-city,
+#takepart_contests_form_wrapper_1 #edit-field-profile-zip,
+#takepart_contests_form_wrapper_1 #edit-field-profile-phone,
+#takepart_contests_form_wrapper_1 #edit-field-profile-state
+{
+  width:300px;
+  float:left;
+  padding-right: 48px;
+}
+
+#takepart_contests_form_wrapper_1 #edit-field-profile-email input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-first-name input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-last-name input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr1 input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr2 input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-city input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-zip input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-phone input,
+#takepart_contests_form_wrapper_1 #edit-field-profile-state .form-item
+{
+  width:200px;
+}
+
+#takepart_contests_form_wrapper_1 #edit-field-profile-email .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-first-name .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-last-name .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr1 .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr2 .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-city .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-zip .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-phone .form-item,
+#takepart_contests_form_wrapper_1 #edit-field-profile-state .form-item
+{
+  margin-bottom: 5px;
+}
+
+#takepart_contests_form_wrapper_1 #edit-field-profile-email label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-first-name label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-last-name label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr1 label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-addr2 label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-city label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-zip label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-phone label,
+#takepart_contests_form_wrapper_1 #edit-field-profile-state label
+{
+  width:80px;
+  float:left;
 }
