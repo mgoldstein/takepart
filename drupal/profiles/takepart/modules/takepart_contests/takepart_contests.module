@@ -677,7 +677,7 @@ function _takepart_contests_getlist() {
   if(!array_key_exists("takepart_contests_list", $GLOBALS)) {
     $table = 'takepart_contests_contest';
     $result = db_query("SELECT * FROM {$table}");
-    $GLOBALS["takepart_contests_list"] = $result;
+    //$GLOBALS["takepart_contests_list"] = $result;
   } else {
     $result = $GLOBALS["takepart_contests_list"];
   }
