@@ -125,11 +125,10 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }
   }
 
-  /*
+
   $form['test'] = array(
       '#markup' => '<div>'. t('Step:' . $step) . ' / ' . t('Time:' . time()) . '</div>',
   );
-  */
 
 
   if($step == 3) {
