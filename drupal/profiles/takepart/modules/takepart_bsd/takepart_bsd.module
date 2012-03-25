@@ -192,7 +192,7 @@ function takepart_bsd_signup_list_form_fields($id) {
   return $fields;
 }
 
-function takepart_bsd_signup_process_signup($signup) {
+function takepart_bsd_signup_process_signup($signup, &$errors = NULL) {
   
   $api = new SimpleXMLElement("<?xml version=\"1.0\" encoding=\"utf-8\"?><api></api>");
   
@@ -245,15 +245,27 @@ function takepart_bsd_signup_process_signup($signup) {
     $api = simplexml_load_string($response['body']);
     if ($api->count() > 0) {
       foreach ($api as $error) {
-        $message = sprintf('BSD Signup Error [%d,%d]: %s',
-          (int)$error->signup_form_id, (int)$error->signup_form_field_id,
-          (string)$error->description);
-        watchdog('takepart_bsd', $message);
+        if (isset($errors)) {
+          $errors[] = array(
+            'form_id' => (int)$error->signup_form_id,
+            'field_id' => (int)$error->signup_form_field_id,
+            'description' => (string)$error->description,
+          );
+        }
+        else {
+          $message = sprintf('BSD Signup Error [%d,%d]: %s',
+            (int)$error->signup_form_id, (int)$error->signup_form_field_id,
+            (string)$error->description);
+          watchdog('takepart_bsd', $message);
+        }
       }
     }
   }
   
-  return $response;
+  if ($response['http_code'] == BSD_API::HTTP_CODE_OK) {
+    return TRUE;
+  }
+  return FALSE;
 }
 
 /**
