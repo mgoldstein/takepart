@@ -21,12 +21,21 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
   $step = empty($form_state['storage']['step']) ? 1 : $form_state['storage']['step'];
   $form_state['storage']['step'] = $step;
 
-  //pull values from session:
-  for ($groups = 0; $groups <= 4; $groups++) {
-    foreach ($form_state['storage']['values']['step'.$groups] as $key => $value) {
-      if (array_key_exists($key, $form)) {
-        if(is_array($form[$key]) && isset($form[$key]['und'][0]['value']) && isset($value['und'][0]['value'])) {
-          $form[$key]['und'][0]['value']['#default_value'] = $value['und'][0]['value'];
+  //Fill form with 
+  foreach ($form_state['storage']['values'] as $fieldKey => $storagevalue) {
+
+    /*
+    print("<br/>---------------------------------------<br/>");
+    print $fieldKey;
+    print("<br/>---------------------------------------<br/>");
+    print_r($storagevalue);
+    print("<br/>END------------------------------------<br/>");
+    */
+    
+    if (array_key_exists($fieldKey, $form) && is_array($form[$fieldKey])) {
+      foreach ($storagevalue['und'] as $und_key => $und_value) {
+        if (array_key_exists($und_key, $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und'])) {
+          $form[$fieldKey]['und'][$und_key]['value']['#default_value'] = $und_value['value'];
         }
       }
     }
@@ -238,26 +247,26 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
   $current_step = 'step' . $form_state['storage']['step'];
 
   if (!empty($form_state['values'])) {
-    $form_state['storage']['values'][$current_step] = $form_state['values'];
+    $form_state['storage']['values'] = $form_state['values'];
   }
 
   // Increment or decrement the step as needed. Recover values if they exist.
   if ($form_state['triggering_element']['#value'] == t('Next step')) {
     $form_state['storage']['step']++;
     // Recover our values from $form_state['storage'] to pre-populate them.
-    $step_name = 'step' . $form_state['storage']['step'];
-    if (!empty($form_state['storage']['values'][$step_name])) {
-      $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
-    }
+    //$step_name = 'step' . $form_state['storage']['step'];
+    //if (!empty($form_state['storage']['values'][$step_name])) {
+    //  $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
+    //}
     $form_state['rebuild'] = TRUE;
   }
   if ($form_state['triggering_element']['#value'] == t('Previous step')) {
     $form_state['storage']['step']--;
     // Recover our values from $form_state['storage'] to pre-populate them.
-    $step_name = 'step' . $form_state['storage']['step'];
-    if (!empty($form_state['storage']['values'][$step_name])) {
-      $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
-    }
+    //$step_name = 'step' . $form_state['storage']['step'];
+    //if (!empty($form_state['storage']['values'][$step_name])) {
+    //  $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
+    //}
     $form_state['rebuild'] = TRUE;
   }
 

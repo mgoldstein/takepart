@@ -49,6 +49,11 @@ marigold_hotel_contest.forms = {
         marigold_hotel_contest.forms.checkboxes(jQuery("#takepart_contests_form_wrapper_1 .form-type-checkbox input"));
         //marigold_hotel_contest.forms.selectboxes(jQuery("#takepart_contests_form_wrapper_1 form .form-type-select select"));
         marigold_hotel_contest.forms.selectboxes_alt(jQuery("#takepart_contests_form_wrapper_1 .form-type-select select"));
+        if(jQuery('#takepart_contests_form_wrapper_1 .group-step1 legend').length != 0) {
+        	jQuery('.field-type-text-with-summary').show();
+        } else {
+        	jQuery('.field-type-text-with-summary').hide();
+        }
     }
 }
 
