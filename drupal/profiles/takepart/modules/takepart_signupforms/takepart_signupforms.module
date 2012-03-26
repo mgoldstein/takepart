@@ -48,7 +48,10 @@ function takepart_signupforms_menu() {
  * Implements hook_entity_insert()
  */
 function takepart_signupforms_entity_insert($entity, $type) {
+  takepart_signupforms_send_insert($entity, $type);
+}
 
+function takepart_signupforms_send_insert($entity, $type, &$errors = NULL) {
   $info = entity_get_info($type);
 
   if ((!empty($info['entity keys'])) && (!empty($info['entity keys']['bundle']))) {
@@ -68,15 +71,21 @@ function takepart_signupforms_entity_insert($entity, $type) {
       }
       
       // send the signup to BSD
-      takepart_bsd_signup_process_signup($signup);
+      return takepart_bsd_signup_process_signup($signup, $errors);
     }
   }
+  
+  return FALSE;
 }
 
 /**
  * Implements hook_entity_update()
  */
 function takepart_signupforms_entity_update($entity, $type) {
+  takepart_signupforms_send_update($entity, $type);
+}
+
+function takepart_signupforms_send_update($entity, $type, &$errors = NULL) {
 
   $info = entity_get_info($type);
 
@@ -101,9 +110,11 @@ function takepart_signupforms_entity_update($entity, $type) {
       }
       
       // send the signup to BSD
-      takepart_bsd_signup_process_signup($signup);
+      return takepart_bsd_signup_process_signup($signup, $errors);
     }
   }
+  
+  return FALSE;
 }
 
 function _takepart_signupforms_build_signup_form($entity, $fields, $form_id) {
