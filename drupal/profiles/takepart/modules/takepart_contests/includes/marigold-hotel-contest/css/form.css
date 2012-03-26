@@ -58,12 +58,19 @@
   font-weight:400;
 }
 
+#takepart_contests_form_wrapper_1 .container-inline-date
+{
+	margin-top: -8px;
+}
+
+
 #takepart_contests_form_wrapper_1 .counter
 {
   font-size:11px;
   font-style:italic;
   font-weight:400;
   width:200px;
+  padding-top:5px;
 }
 
 #takepart_contests_form_wrapper_1 input.aboutyou,
@@ -270,7 +277,7 @@
 {
   background:url(../images/submit_step1.png) no-repeat scroll left top transparent;
   height:24px;
-  width:730px;
+  width:761px;
 }
 
 #takepart_contests_form_wrapper_1 .group-step2 legend
@@ -476,6 +483,7 @@
 #takepart_contests_form_wrapper_1 label
 {
   display:block;
+  padding-top: 5px;
 }
 
 #takepart_contests_form_wrapper_1 .selectbox /* look&fell of select box*/
