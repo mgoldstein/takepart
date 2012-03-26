@@ -101,6 +101,7 @@ class boxes_headline extends boxes_box {
         'effect' => 'fade',
       ),
     );
+    
   return $form;
 }
 /**
