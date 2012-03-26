@@ -20,21 +20,16 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
 
   $step = empty($form_state['storage']['step']) ? 1 : $form_state['storage']['step'];
   $form_state['storage']['step'] = $step;
-
+  
   //Fill form with 
-  foreach ($form_state['storage']['values'] as $fieldKey => $storagevalue) {
-
-    /*
-    print("<br/>---------------------------------------<br/>");
-    print $fieldKey;
-    print("<br/>---------------------------------------<br/>");
-    print_r($storagevalue);
-    print("<br/>END------------------------------------<br/>");
-    */
-    
+  foreach ($form_state['storage']['values']['step' . $step] as $fieldKey => $storagevalue) {
     if (array_key_exists($fieldKey, $form) && is_array($form[$fieldKey])) {
       foreach ($storagevalue['und'] as $und_key => $und_value) {
-        if (array_key_exists($und_key, $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und'])) {
+        if(array_key_exists('#default_value', $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und']['#default_value'])) {
+          $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
+          $form['field_custom_269']['und'][$und_value['value']]['#attributes'] = array('checked' => 'checked');
+          
+        } else if (array_key_exists($und_key, $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und'])) {
           $form[$fieldKey]['und'][$und_key]['value']['#default_value'] = $und_value['value'];
         }
       }
@@ -58,7 +53,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_265' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 2;     
                 if($step == 4) {
@@ -73,7 +68,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_266' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
                 if($step == 4) {
@@ -88,7 +83,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_267' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
                 if($step == 4) {
@@ -103,7 +98,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_270' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
                 if($step == 4) {
@@ -118,7 +113,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_271' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
                 if($step == 4) {
@@ -133,12 +128,6 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
       }
     }
   }
-
-  /*
-  $form['test'] = array(
-      '#markup' => '<div>'. t('Step:' . $step) . ' / ' . t('Time:' . time()) . '</div>',
-  );
-  */
 
 
   if($step == 3) {
@@ -167,8 +156,8 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }
   }
 
-  /*
-  $form['submit_test'] = array(
+ /* 
+  $form['submit_test_2'] = array(
       '#type' => 'submit',
       '#submit' => array($submit),
       '#value' => t("Test Submit"),
@@ -247,26 +236,26 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
   $current_step = 'step' . $form_state['storage']['step'];
 
   if (!empty($form_state['values'])) {
-    $form_state['storage']['values'] = $form_state['values'];
+    $form_state['storage']['values'][$current_step] = $form_state['values'];
   }
 
   // Increment or decrement the step as needed. Recover values if they exist.
   if ($form_state['triggering_element']['#value'] == t('Next step')) {
     $form_state['storage']['step']++;
     // Recover our values from $form_state['storage'] to pre-populate them.
-    //$step_name = 'step' . $form_state['storage']['step'];
-    //if (!empty($form_state['storage']['values'][$step_name])) {
-    //  $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
-    //}
+    $step_name = 'step' . $form_state['storage']['step'];
+    if (!empty($form_state['storage']['values'][$step_name])) {
+      $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
+    }
     $form_state['rebuild'] = TRUE;
   }
   if ($form_state['triggering_element']['#value'] == t('Previous step')) {
     $form_state['storage']['step']--;
     // Recover our values from $form_state['storage'] to pre-populate them.
-    //$step_name = 'step' . $form_state['storage']['step'];
-    //if (!empty($form_state['storage']['values'][$step_name])) {
-    //  $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
-    //}
+    $step_name = 'step' . $form_state['storage']['step'];
+    if (!empty($form_state['storage']['values'][$step_name])) {
+      $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
+    }
     $form_state['rebuild'] = TRUE;
   }
 

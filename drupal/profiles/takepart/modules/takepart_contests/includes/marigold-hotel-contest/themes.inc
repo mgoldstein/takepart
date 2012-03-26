@@ -130,11 +130,11 @@ function theme_takepart_contests_contest_entry_form_1(&$variables) {
  * Theme for form button submit.
  */
 function theme_takepart_contests_contest_entry_form_1_button_next($variables) {
-  return '<span class="button"><div class=' . implode(" ", $variables['element']['#attributes']['class']) . '>' . $variables['element']['#takepart_before']  . '</div>' . theme_button($variables) . '</span>';
+  return '<span class="button next"><div class=' . implode(" ", $variables['element']['#attributes']['class']) . '>' . $variables['element']['#takepart_before']  . '</div>' . theme_button($variables) . '</span>';
 }
 
 function theme_takepart_contests_contest_entry_form_1_button_prev($variables) {
-  return '<span class="button">' . theme_button($variables) . '</span>';
+  return '<span class="button prev">' . theme_button($variables) . '</span>';
 }
 
 function takepart_contests_contest_entry_form_1_columns($variables) {

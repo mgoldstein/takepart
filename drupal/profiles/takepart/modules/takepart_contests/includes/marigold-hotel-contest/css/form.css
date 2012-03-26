@@ -167,6 +167,12 @@
   display:none;
 }
 
+#takepart_contests_form_wrapper_1 input.form-checkbox,
+#takepart_contests_form_wrapper_1 input.form-radio
+{
+  float: left;
+}
+
 #takepart_contests_form_wrapper_1 span
 {
   width:200px;
