@@ -34,7 +34,7 @@ function theme_takepart_contests_contest_entry_form_1(&$variables) {
       }
     }
   }
- 
+
 
 
   if($form['#step']['#value'] == 1) {
