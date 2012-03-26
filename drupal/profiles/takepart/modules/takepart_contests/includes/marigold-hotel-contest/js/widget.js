@@ -14,19 +14,72 @@ marigold_hotel_contest.widgets = {
             } else {
             	var title = link_title;
             }
-            s.events = 'event25,event19';
+            
+            s.events = 'event25';
             s.prop26 = title;
             s.eVar27 = title;
-            s.eVar28 = 'Content Share';
             s.linkTrackVars = 'eVar27,prop26,events';
             s.linkTrackEvents = 'event25';
             s.tl(this.href, 'o', 'Content Share');
+
+            s.events = 'event19';
+            s.eVar28 = 'Content Share';
+            s.linkTrackVars = 'eVar28,events';
+            s.linkTrackEvents = 'event19';
+            s.tl(this.href, 'o', 'Action Click');
         });
     },
+    addthis_email_submitted: function (elem) {
+      addthis.addEventListener('addthis.menu.share', addthisMenuShareEventHandler);
+    },
+    contest_entered: function () {
+
+      if (jQuery.cookie("contest_entered") != null) {
+        var name = jQuery.cookie("contest_entered");
+        if (name.length > 0) {
+          while (name.indexOf("+") != -1) {
+            name = name.replace("+"," ");
+          }
+          s.events = 'event29';
+          s.prop24 = name;
+          s.eVar24 = name;
+          s.linkTrackVars = 'eVar24,prop24,events';
+          s.linkTrackEvents = 'event29';
+          s.tl(this.href, 'o', 'Content Share');
+
+          s.events = 'event19';
+          s.eVar28 = 'Contest Entry';
+          s.linkTrackVars = 'eVar28,events';
+          s.linkTrackEvents = 'event19';
+          s.tl(this.href, 'o', 'Action Click');
+        }
+      }
+    }
 }
 
+function addthisMenuShareEventHandler(evt) {
+  // one of these two works, (I think email)
+  if (evt.data.service == 'toemail' || evt.data.service == 'email') {
+    s.events = 'event25';
+    s.prop26 = 'Email';
+    s.eVar27 = 'Email';
+    s.linkTrackVars = 'eVar27,prop26,events';
+    s.linkTrackEvents = 'event25';
+    s.tl(this.href, 'o', 'Content Share');
+
+    s.events = 'event19';
+    s.eVar28 = 'Content Share';
+    s.linkTrackVars = 'eVar28,events';
+    s.linkTrackEvents = 'event19';
+    s.tl(this.href, 'o', 'Action Click');
+  }
+}
 
 jQuery(document).ready(function () {
     marigold_hotel_contest.widgets.addthis_email(jQuery('#mg-email-share-block .addthis_button_email'));
     marigold_hotel_contest.widgets.analytics(jQuery('#mg-email-share-block .addthis_button_email'));
+    marigold_hotel_contest.widgets.analytics(jQuery('#mg-contest-addthis-block .addthis_button_facebook'));
+    marigold_hotel_contest.widgets.analytics(jQuery('#mg-contest-addthis-block .addthis_button_twitter'));
+    marigold_hotel_contest.widgets.addthis_email_submitted(jQuery('#mg-contest-addthis-block .addthis_button_twitter'));
+    marigold_hotel_contest.widgets.contest_entered();
 });
