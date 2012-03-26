@@ -52,9 +52,9 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
         } else if (array_key_exists($und_key, $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und'])) {
           $form[$fieldKey]['und'][$und_key]['value']['#default_value'] = $und_value['value'];
           
-          $form['confirm_msg'.$fieldKey] = array(
-              '#markup' => "<div>".$fieldKey." = ".$und_value['value'] ."</div>",
-          );
+          //$form['confirm_msg'.$fieldKey] = array(
+          //    '#markup' => "<div>".$fieldKey." = ".$und_value['value'] ."</div>",
+          //);
           
           
         }
@@ -182,14 +182,14 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }
   }
 
-  
+  /*
   $form['submit_test_2'] = array(
       '#type' => 'submit',
       '#submit' => array($submit),
       '#value' => t("Test Submit"),
       '#weight' => 3000,
   );
- 
+  */
 
   if ($step < 4) {
     $form['reqtext'] = array(

@@ -20,7 +20,7 @@ function theme_takepart_contests_contest_entry_form_1(&$variables) {
 
   //Code for rendering the steps:
   
-  /*
+
   if($form['#step']['#value'] != 4) {
     for ($groups = 0; $groups <= 5; $groups++) {
       if (array_key_exists('group_step' . $groups, $form) && array_key_exists('#step', $form)) {
@@ -34,7 +34,7 @@ function theme_takepart_contests_contest_entry_form_1(&$variables) {
       }
     }
   }
-  */
+ 
 
 
   if($form['#step']['#value'] == 1) {
