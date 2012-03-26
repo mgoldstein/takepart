@@ -20,3 +20,30 @@
     height: 70px;
     width: 278px;
 }
+
+#mg-contest-addthis-block {
+  clear: both;
+  padding-top: 40px;
+}
+
+.mg-contest-share-button-bar {
+  height: 27px;
+}
+
+.mg-contest-addthis-button {
+  padding: 0 4px;
+}
+
+.mg-contest-addthis-label {
+  height: 27px;
+  font-size: 14px;
+  padding-right: 40px;
+  margin-top: 6px;
+  float: left;
+}
+
+#mg-contest-saved-entry-block {
+  font-size: 14px;
+  line-height: 24px;
+}
+

@@ -2080,3 +2080,7 @@ body.node-type-takepart-campaign .main-content #content {
     margin-left: 5px;
     margin-top: 1px;
 }
+
+.main-content p a.mg-contest-link {
+  color: #770bcb;
+}
