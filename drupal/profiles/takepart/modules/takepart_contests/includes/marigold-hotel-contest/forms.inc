@@ -21,16 +21,42 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
   $step = empty($form_state['storage']['step']) ? 1 : $form_state['storage']['step'];
   $form_state['storage']['step'] = $step;
   
+  /*
+  print "<pre>";
+  print_r($form);
+  print "</pre>";
+ */
+  
   //Fill form with 
   foreach ($form_state['storage']['values']['step' . $step] as $fieldKey => $storagevalue) {
+    
+  
+  
+    if($fieldKey == 'field_custom_273') {
+      
+
+     
+      
+    }
+    
+    
+
+    
+    
+    
     if (array_key_exists($fieldKey, $form) && is_array($form[$fieldKey])) {
       foreach ($storagevalue['und'] as $und_key => $und_value) {
         if(array_key_exists('#default_value', $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und']['#default_value'])) {
           $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
-          $form['field_custom_269']['und'][$und_value['value']]['#attributes'] = array('checked' => 'checked');
-          
+          $form['field_custom_269']['und'][$und_value['value']]['#attributes'] = array('checked' => 'checked');          
         } else if (array_key_exists($und_key, $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und'])) {
           $form[$fieldKey]['und'][$und_key]['value']['#default_value'] = $und_value['value'];
+          
+          $form['confirm_msg'.$fieldKey] = array(
+              '#markup' => "<div>".$fieldKey." = ".$und_value['value'] ."</div>",
+          );
+          
+          
         }
       }
     }
@@ -53,7 +79,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_265' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 2;     
                 if($step == 4) {
@@ -156,14 +182,14 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }
   }
 
- /* 
+  
   $form['submit_test_2'] = array(
       '#type' => 'submit',
       '#submit' => array($submit),
       '#value' => t("Test Submit"),
       '#weight' => 3000,
   );
-  */
+ 
 
   if ($step < 4) {
     $form['reqtext'] = array(
