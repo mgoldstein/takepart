@@ -486,6 +486,11 @@
   padding-top: 5px;
 }
 
+#takepart_contests_form_wrapper_1 .form-type-checkboxes  label
+{
+  padding-top: 0px;
+}
+
 #takepart_contests_form_wrapper_1 .selectbox /* look&fell of select box*/
 {
   margin:0 5px 10px 0;

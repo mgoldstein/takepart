@@ -21,29 +21,10 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
   $step = empty($form_state['storage']['step']) ? 1 : $form_state['storage']['step'];
   $form_state['storage']['step'] = $step;
   
-
-  //print "<pre>";
-  //print_r($form);
-  //print "</pre>";
- 
   
   //Fill form with 
   foreach ($form_state['storage']['values']['step' . $step] as $fieldKey => $storagevalue) {
-    
-  
-  
-    if($fieldKey == 'field_custom_273') {
-      
-
-     
-      
-    }
-    
-    
-
-    
-    
-    
+       
     if (array_key_exists($fieldKey, $form) && is_array($form[$fieldKey])) {
       foreach ($storagevalue['und'] as $und_key => $und_value) {
         if(array_key_exists('#default_value', $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und']['#default_value'])) {
@@ -53,18 +34,17 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           }          
         } else if (array_key_exists($und_key, $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und'])) {
 
-          if(is_array($form[$fieldKey]['und'][$und_key]['value']['#default_value']) && array_key_exists('value', $form[$fieldKey]['und'][$und_key]['value']['#default_value'])) {
-            $form[$fieldKey]['und'][$und_key]['value']['#default_value']['value'] = $und_value['value'];
+            
+          if($form[$fieldKey]['und'][$und_key]['#type'] == 'date_combo') {
+            
+            if(is_array($form[$fieldKey]['und'][$und_key]['#default_value'])) {
+              $form[$fieldKey]['und'][$und_key]['#default_value']['value'] = date('Y-m-d H:i:s', strtotime($und_value['value']));
+            } 
+            
           } else {
             $form[$fieldKey]['und'][$und_key]['value']['#default_value'] = $und_value['value'];
+                        
           }
-          
-          
-          
-          //$form['confirm_msg'.$fieldKey] = array(
-          //    '#markup' => "<div>".$fieldKey." = " . $und_value['value'] ."</div>",
-          //);
-          
           
         }
       }
@@ -191,8 +171,8 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }
   }
 
- /*
-  $form['submit_test_2'] = array(
+  /*
+  $form['submit_test'] = array(
       '#type' => 'submit',
       '#submit' => array($submit),
       '#value' => t("Test Submit"),
@@ -301,6 +281,10 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
 
   if (($form_state['triggering_element']['#value'] == t('Submit your information')) || ($form_state['triggering_element']['#value'] == t('Test Submit'))) {
 
+    
+
+    
+    
     // build the contest entry entity from the form
     entity_form_submit_build_entity('takepart_contests_contest_entry', $form_state['takepart_contests_contest_entry'], $form, $form_state);
     $entry = $form_state['takepart_contests_contest_entry'];
@@ -327,7 +311,22 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
     // read back the entry to make sure that works
     $entry = takepart_contests_contest_entry_load($id_to_read_back);
     
-    drupal_set_message(t('The contest entry %id has been saved and read back.', array('%id' => $entry->entry_id)));
+    $contest_name = '';
+    
+    $result = _takepart_contests_getlist();
+    if(!is_null($result)) {
+      foreach ($result as $row) {
+        if(($row->contest_id) == 1) {
+          $contest_name = $row->name;
+        }
+      }
+    }
+    
+    if(!isnull($entry->entry_id)) {   
+      setcookie("contest_entered", $contest_name);
+    }
+      
+    //drupal_set_message(t('The contest entry %id has been saved and read back.', array('%id' => $entry->entry_id)));
     
   }
  
