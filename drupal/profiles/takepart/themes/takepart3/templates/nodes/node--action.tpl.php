@@ -31,6 +31,7 @@ class='title'>
 <?php hide($content['field_free_tag']); ?>
 <?php hide($content['field_topic']); ?>
 <?php hide($content['body']); ?>
+
 <?php endif; ?>
 <div id="action_copy">
 <?php
@@ -64,6 +65,9 @@ print render($content['field_action_url']);
 <?php // print render($links) ?>
 </div>
 <?php endif; ?>
+    
+<?php render($content); ?>
+    
 </div>
 
 <?php if (!empty($post_object)) print render($post_object) ?>
