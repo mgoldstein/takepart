@@ -23,7 +23,6 @@
 
 #mg-contest-addthis-block {
   clear: both;
-  padding-top: 40px;
 }
 
 .mg-contest-share-button-bar {
@@ -37,13 +36,31 @@
 .mg-contest-addthis-label {
   height: 27px;
   font-size: 14px;
-  padding-right: 40px;
+  padding-right: 28px;
   margin-top: 6px;
   float: left;
 }
 
 #mg-contest-saved-entry-block {
+  padding-top: 20px;
+}
+
+#mg-contest-saved-entry-block #mg-note {
   font-size: 14px;
   line-height: 24px;
 }
 
+#mg-contest-saved-entry-block #mg-hash-square {
+  background: url("../images/45deg_lines_large.gif") repeat scroll 0 8px #FFFFFF;
+  float: left;
+  height: 88px;
+  width: 88px;
+  margin: 0 10px 0 0;
+}
+
+#mg-contest-saved-entry-block #mg-join-us-button {
+  float: right;
+  height: 88px;
+  width: 71px;
+  padding-top: 63px;
+}
