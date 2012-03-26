@@ -27,6 +27,11 @@ marigold_hotel_contest.widgets = {
             s.linkTrackVars = 'eVar28,events';
             s.linkTrackEvents = 'event19';
             s.tl(this.href, 'o', 'Action Click');
+    
+            // clear the event tracking so that clicks from
+            // anchor tags do not repeat the event
+            s.events = '';
+            s.linkTrackVars = 'events';
         });
     },
     addthis_email_submitted: function (elem) {
@@ -72,6 +77,11 @@ function addthisMenuShareEventHandler(evt) {
     s.linkTrackVars = 'eVar28,events';
     s.linkTrackEvents = 'event19';
     s.tl(this.href, 'o', 'Action Click');
+    
+    // clear the event tracking so that clicking the
+    // 'X' on the share window does repeat the event
+    s.events = '';
+    s.linkTrackVars = 'events';
   }
 }
 
