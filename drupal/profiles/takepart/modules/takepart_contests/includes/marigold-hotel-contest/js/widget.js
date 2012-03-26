@@ -58,6 +58,9 @@ marigold_hotel_contest.widgets = {
           s.linkTrackEvents = 'event19';
           s.tl(this.href, 'o', 'Action Click');
         }
+      
+        // delete the cookie
+        jQuery.cookie("contest_entered", null);
       }
     }
 }
