@@ -51,18 +51,6 @@ class boxes_simple extends boxes_box {
         '#description' => t('The content of the block as shown to the user.'),
       );
     }
-    $form['view_advanced_settings'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Advanced Settings'),
-      '#collapsed' => TRUE,
-      '#collapsible' => TRUE
-    );
-    $form['view_advanced_settings']['additional_classes'] = array(
-      '#title' => t('Additional CSS classes'),
-      '#description' => t('Optional CSS classes that will be added to the top-level div container for this box. Separate them with spaces.'),
-      '#type' => 'textfield',
-      '#default_value' => $this->options['additional_classes'],
-    );
     return $form;
   }
 
