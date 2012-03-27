@@ -310,7 +310,7 @@
 
 /* Final Steps */
 #takepart_contests_form_wrapper_1 .step4wrapper legend {
-	padding-top: 5px;
+  padding-top: 5px;
 }
 
 #takepart_contests_form_wrapper_1 .step4wrapper .group-step1 legend
@@ -557,12 +557,16 @@
 
 #takepart_contests_form_wrapper_1 .step4wrapper .textarea_display 
 {
-	margin-left:24px;
+  margin-left:24px;
 }
 
 #takepart_contests_form_wrapper_1 .step4wrapper label 
 {
-    font-weight: bold;
+  font-weight: bold;
+}
+
+#takepart_contests_form_wrapper_1 .step4wrapper .container-inline-date .form-item {
+  clear: none;
 }
 
 /* text fields */
@@ -586,12 +590,12 @@
 
 #takepart_contests_form_wrapper_1 .group-step3 .form-wrapper .form-item,
 #takepart_contests_form_wrapper_1 .group-step3 .form-wrapper input {
-	width:200px;
+  width:200px;
 }
 
 #takepart_contests_form_wrapper_1 .group-step3 .form-wrapper .form-item {
-   margin-bottom: 5px;
-   width:300px;
+  margin-bottom: 5px;
+  width:300px;
 }
 
 #takepart_contests_form_wrapper_1 .group-step3 .form-wrapper label
