@@ -1,0 +1,94 @@
+diff --git a/drupal/profiles/takepart/themes/takepart3/css/style.css b/drupal/profiles/takepart/themes/takepart3/css/style.css
+index 74884c4..72dc9eb 100644
+--- a/drupal/profiles/takepart/themes/takepart3/css/style.css
++++ b/drupal/profiles/takepart/themes/takepart3/css/style.css
+@@ -1062,6 +1062,15 @@ h1.title a:hover {
+     border:solid 4px #eff3f5;
+     padding:10px;
+ }
++
++#right-rail .block.no-border,
++#right-rail .block.no_border
++{
++    margin-bottom:15px;
++    border:0;
++    padding:0;
++}
++
+ #right-rail .block-boxes-view-name-related_actions,
+ #right-rail .block-boxes-title-take-action,
+ #right-rail .block-boxes-current-related_actions
+diff --git a/drupal/sites/all/modules/contrib/boxes/boxes.module b/drupal/sites/all/modules/contrib/boxes/boxes.module
+index e94caf6..aa8f1d8 100644
+--- a/drupal/sites/all/modules/contrib/boxes/boxes.module
++++ b/drupal/sites/all/modules/contrib/boxes/boxes.module
+@@ -720,6 +720,16 @@ function boxes_create_hash($identifier) {
+  */
+ function boxes_preprocess_block(&$vars) {
+   if ($vars['block']->module === 'boxes' && isset($vars['block']->boxes_plugin)) {
+-    $vars['classes_array'][] = 'block-boxes-' . $vars['block']->boxes_plugin;
++      
++      if (empty($vars['block']->additional_classes)) {
++      return;
++    }
++    
++    $additional_classes = explode(' ', $vars['block']->additional_classes);
++    
++    foreach ($additional_classes as $class) {
++      $vars['classes_array'][] = $class;
++    } 
++    // $vars['classes_array'][] = 'block-boxes-' . $vars['block']->boxes_plugin;
+   }
+-}
++}
+\ No newline at end of file
+diff --git a/drupal/sites/all/modules/contrib/boxes/plugins/boxes_simple.inc b/drupal/sites/all/modules/contrib/boxes/plugins/boxes_simple.inc
+index 5f0a525..5317564 100644
+--- a/drupal/sites/all/modules/contrib/boxes/plugins/boxes_simple.inc
++++ b/drupal/sites/all/modules/contrib/boxes/plugins/boxes_simple.inc
+@@ -16,6 +16,7 @@ class boxes_simple extends boxes_box {
+         'value' => '',
+         'format' => filter_default_format(),
+       ),
++      'additional_classes' => '',
+     );
+   }
+ 
+@@ -51,6 +52,18 @@ class boxes_simple extends boxes_box {
+         '#description' => t('The content of the block as shown to the user.'),
+       );
+     }
++    $form['view_advanced_settings'] = array(
++      '#type' => 'fieldset',
++      '#title' => t('Advanced Settings'),
++      '#collapsed' => TRUE,
++      '#collapsible' => TRUE
++    );
++    $form['view_advanced_settings']['additional_classes'] = array(
++      '#title' => t('Additional CSS classes'),
++      '#description' => t('Optional CSS classes that will be added to the top-level div container for this box. Separate them with spaces.'),
++      '#type' => 'textfield',
++      '#default_value' => $this->options['additional_classes'],
++    );
+     return $form;
+   }
+ 
+@@ -70,11 +83,17 @@ class boxes_simple extends boxes_box {
+     }
+     
+     $title = isset($this->title) ? $this->title : NULL;
+-    return array(
++    $box = array(
+       'delta' => $this->delta, // Crucial.
+       'title' => $title,
+       'subject' => $title,
+       'content' => $content,
+     );
++    // Additional Classes
++    if (!empty($this->options['additional_classes'])) {
++      $box['additional_classes'] = $this->options['additional_classes'];
++    }
++    
++    return $box;
+   }
+ }
