@@ -486,7 +486,8 @@
   padding-top: 5px;
 }
 
-#takepart_contests_form_wrapper_1 .form-type-checkboxes  label
+#takepart_contests_form_wrapper_1 .form-type-checkboxes label,
+#takepart_contests_form_wrapper_1 .form-type-checkbox label,
 {
   padding-top: 0px;
 }
@@ -538,114 +539,27 @@
   border:1px solid #B3B2B0;
 }
 
+
 /* submit your idea page */
-#takepart_contests_form_wrapper_1 #edit-field-profile-email,
-#takepart_contests_form_wrapper_1 #edit-field-profile-first-name,
-#takepart_contests_form_wrapper_1 #edit-field-profile-last-name,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr1,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr2,
-#takepart_contests_form_wrapper_1 #edit-field-profile-city,
-#takepart_contests_form_wrapper_1 #edit-field-profile-zip,
-#takepart_contests_form_wrapper_1 #edit-field-profile-phone,
-#takepart_contests_form_wrapper_1 #edit-field-profile-state
+#takepart_contests_form_wrapper_1 .group-step3 .form-wrapper
 {
   width:300px;
   float:left;
   padding-right: 48px;
 }
 
-#takepart_contests_form_wrapper_1 #edit-field-profile-email input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-first-name input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-last-name input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr1 input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr2 input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-city input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-zip input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-phone input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-state .form-item
-{
-  width:200px;
+#takepart_contests_form_wrapper_1 .group-step3 .form-wrapper .form-item,
+#takepart_contests_form_wrapper_1 .group-step3 .form-wrapper input {
+	width:200px;
 }
 
-#takepart_contests_form_wrapper_1 #edit-field-profile-email .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-first-name .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-last-name .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr1 .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr2 .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-city .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-zip .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-phone .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-state .form-item
-{
-  margin-bottom: 5px;
+#takepart_contests_form_wrapper_1 .group-step3 .form-wrapper .form-item {
+   margin-bottom: 5px;
+   width:300px;
 }
 
-#takepart_contests_form_wrapper_1 #edit-field-profile-email label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-first-name label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-last-name label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr1 label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr2 label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-city label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-zip label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-phone label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-state label
+#takepart_contests_form_wrapper_1 .group-step3 .form-wrapper label
 {
   width:80px;
   float:left;
-}
-
-
-#takepart_contests_form_wrapper_1 #edit-field-profile-email--2 input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-first-name--2 input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-last-name--2 input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr1--2 input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr2--2 input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-city--2 input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-zip--2 input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-phone--2 input,
-#takepart_contests_form_wrapper_1 #edit-field-profile-state--2 .form-item
-{
-  width:200px;
-}
-
-#takepart_contests_form_wrapper_1 #edit-field-profile-email--2 .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-first-name--2 .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-last-name--2 .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr1--2 .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr2--2 .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-city--2 .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-zip--2 .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-phone--2 .form-item,
-#takepart_contests_form_wrapper_1 #edit-field-profile-state--2 .form-item
-{
-  margin-bottom: 5px;
-}
-
-#takepart_contests_form_wrapper_1 #edit-field-profile-email--2 label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-first-name--2 label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-last-name--2 label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr1--2 label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr2--2 label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-city--2 label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-zip--2 label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-phone--2 label,
-#takepart_contests_form_wrapper_1 #edit-field-profile-state--2 label
-{
-  width:80px;
-  float:left;
-}
-
-#takepart_contests_form_wrapper_1 #edit-field-profile-email--2,
-#takepart_contests_form_wrapper_1 #edit-field-profile-first-name--2,
-#takepart_contests_form_wrapper_1 #edit-field-profile-last-name--2,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr1--2,
-#takepart_contests_form_wrapper_1 #edit-field-profile-addr2--2,
-#takepart_contests_form_wrapper_1 #edit-field-profile-city--2,
-#takepart_contests_form_wrapper_1 #edit-field-profile-zip--2,
-#takepart_contests_form_wrapper_1 #edit-field-profile-phone--2,
-#takepart_contests_form_wrapper_1 #edit-field-profile-state--2
-{
-  width:300px;
-  float:left;
-  padding-right: 48px;
 }
