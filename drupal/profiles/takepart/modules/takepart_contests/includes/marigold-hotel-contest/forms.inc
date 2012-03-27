@@ -118,17 +118,19 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
       }
     }
   }
-
-
+  
   if($step == 3) {
     $form['confirm_msg'] = array(
-        '#markup' => "<div>Please confirm your information below to finalize your submission.</div>",
-    );
+        '#markup' => "<div class=\"confirm_msg\">Please confirm your information below to finalize your submission.</div>",
+    );    
     //Add confirm msg to field group:
     foreach ($form['#fieldgroups'] as $key => $value) {
       if($value->{'group_name'} == 'group_step3') {
         if(is_array($value->{'children'})) {
-          $form['#fieldgroups']['$key']->{'children'} = array_merge(array('confirm_msg'),  $form['#fieldgroups']['$key']->{'children'});
+          $form['#fieldgroups'][$key]->{'children'} = array_merge(array('confirm_msg'),  $form['#fieldgroups'][$key]->{'children'});
+          if(array_key_exists('#group_children', $form)) {
+            $form['#group_children']['confirm_msg'] = 'group_step3';
+          }        
         }
       }
     }

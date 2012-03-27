@@ -98,6 +98,10 @@
   width:209px;
 }
 
+#takepart_contests_form_wrapper_1 .confirm_msg {
+  padding-top: 10px;
+}
+
 #takepart_contests_form_wrapper_1 input.finalinfo:hover
 {
   background:url(../images/final_info_button_rollover.png) no-repeat scroll left top transparent;
