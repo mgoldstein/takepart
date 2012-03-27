@@ -23,33 +23,8 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
   
   
   //Fill form with 
-  foreach ($form_state['storage']['values']['step' . $step] as $fieldKey => $storagevalue) {
-       
-    if (array_key_exists($fieldKey, $form) && is_array($form[$fieldKey])) {
-      foreach ($storagevalue['und'] as $und_key => $und_value) {
-        if(array_key_exists('#default_value', $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und']['#default_value'])) {
-          $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
-          if($form[$fieldKey]['und']['#type'] = "checkboxes") {
-            $form[$fieldKey]['und'][$und_value['value']]['#attributes'] = array('checked' => 'checked');
-          }          
-        } else if (array_key_exists($und_key, $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und'])) {
+  _takepart_contests_refillfromstep($form, $form_state, $step);
 
-            
-          if($form[$fieldKey]['und'][$und_key]['#type'] == 'date_combo') {
-            
-            if(is_array($form[$fieldKey]['und'][$und_key]['#default_value'])) {
-              $form[$fieldKey]['und'][$und_key]['#default_value']['value'] = date('Y-m-d H:i:s', strtotime($und_value['value']));
-            } 
-            
-          } else {
-            $form[$fieldKey]['und'][$und_key]['value']['#default_value'] = $und_value['value'];
-                        
-          }
-          
-        }
-      }
-    }
-  }
 
   foreach ($form as $key => $value) {
     if ((is_array($form[$key])) && (isset($form[$key]['und'][0]['value']['#description'])) && (!empty($form[$key]['und'][0]['value']['#description']))) {
@@ -171,14 +146,14 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }
   }
 
-  /*
+ /*
   $form['submit_test'] = array(
       '#type' => 'submit',
       '#submit' => array($submit),
       '#value' => t("Test Submit"),
       '#weight' => 3000,
   );
-  */
+*/
 
   if ($step < 4) {
     $form['reqtext'] = array(
@@ -201,7 +176,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
         '#type' => 'submit',
         '#value' => t("Previous step"),
         // Don't validate when going back:
-        //'#limit_validation_errors' => array(),
+        '#limit_validation_errors' => array(),
         // #submit is required to use #limit_validation_errors
         '#submit' => array($submit),
         '#ajax' => array(
@@ -241,6 +216,53 @@ function takepart_contests_contest_entry_form_validate_1($form, $form_state) {
 
 function takepart_contests_contest_entry_form_callback_1($form, $form_state) {
   return $form;
+}
+
+
+
+function _takepart_contests_refillfromstep(&$form, &$form_state, $step) {
+  if(array_key_exists('#fieldgroups', $form)) {
+    //Itterate through groups and find the fields applicable to the groups:
+    foreach ($form['#fieldgroups'] as $gkey => $gvalue) {
+      if(strrpos($gkey, 'group_step') > -1) {
+        $groupstep = substr($gkey, strlen('group_step'), strlen($gkey));          
+        $fieldset = $gvalue->children;
+        //Itterate through the form state, and match up saved fields with their cooresponding groups:
+        foreach ($form_state['storage']['values']['step' . $groupstep] as $fieldKey => $storagevalue) {
+          //If we're on step 4, fill them all, otherwise fill the fields in the group/step we are on:
+          if (((!is_null(array_search($fieldKey, $fieldset))) || ($step ==4)) && array_key_exists($fieldKey, $form) && is_array($form[$fieldKey])) {
+            //Place the values from form state back into the form:
+            foreach ($storagevalue['und'] as $und_key => $und_value) {
+              if(array_key_exists('#default_value', $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und']['#default_value'])) {
+                //Fill Checkboxes:
+                if($form[$fieldKey]['und']['#type'] == "checkboxes") {
+                  $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
+                  $form[$fieldKey]['und'][$und_value['value']]['#attributes'] = array('checked' => 'checked');
+                }
+                //Fill Selects:
+                if($form[$fieldKey]['und']['#type'] == "select") {
+                  $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
+                }
+              } else if (array_key_exists($und_key, $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und'])) {
+                //Fill Date Combos:
+                if($form[$fieldKey]['und'][$und_key]['#type'] == 'date_combo') {
+                  if(is_array($form[$fieldKey]['und'][$und_key]['#default_value'])) {
+                    $form[$fieldKey]['und'][$und_key]['#default_value']['value'] = date('Y-m-d H:i:s', strtotime($und_value['value']));
+                  }
+                } else {
+                 //Fill Text Areas and Text Fields:
+                 if($form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textarea' || $form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textfield') { 
+                    $form[$fieldKey]['und'][$und_key]['value']['#default_value'] = $und_value['value'];
+                 }
+                }
+              }
+              
+            }
+          }
+        }
+      } 
+    }
+  }
 }
 
 function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
@@ -322,7 +344,7 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
       }
     }
     
-    if(!isnull($entry->entry_id)) {   
+    if(!is_null($entry->entry_id)) {   
       setcookie("contest_entered", $contest_name);
     }
       
