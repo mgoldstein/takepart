@@ -34,7 +34,7 @@
 /* General Form Styles */
 #takepart_contests_form_wrapper_1 .counter:before
 {
-  content:"Characters remaining: ";
+  content:"Characters remaining:";
 }
 
 #takepart_contests_form_wrapper_1 .form-required
@@ -315,8 +315,8 @@
 
 #takepart_contests_form_wrapper_1 .step4wrapper .group-step1 legend
 {
-  background:url(../images/review_about_idea_headline.png) no-repeat scroll left top transparent;
-  height:24px;
+  background:url(../images/review_about_idea_headline.png) no-repeat scroll left 20px transparent;
+  height:44px;
   width:761px;
 }
 
@@ -473,13 +473,6 @@
   padding:0;
 }
 
-#takepart_contests_form_wrapper_1 .textarea_edit {
-  cursor: pointer;
-  color: purple;
-  text-transform: uppercase;
-  float: right;
-}
-
 #takepart_contests_form_wrapper_1 div.selectbox-wrapper ul li.selected
 {
   background-color:#EAF2FB;
@@ -539,6 +532,28 @@
   display:none;
 }
 
+#takepart_contests_form_wrapper_1 .step4wrapper legend {
+  float: left;
+  width: 700px;
+}
+
+#takepart_contests_form_wrapper_1 .step4wrapper .field-widget-text-textarea .form-item {
+  float: left;
+  width: 700px;
+}
+
+#takepart_contests_form_wrapper_1 .step4wrapper .field-widget-text-textarea .textarea_edit {
+  cursor: pointer;
+  color: purple;
+  text-transform: uppercase;
+  float: right;
+  margin-top: 8px;
+  display: block;
+}
+
+#takepart_contests_form_wrapper_1 .step4wrapper .form-item {
+  clear: both;
+}
 
 #takepart_contests_form_wrapper_1 .step4wrapper textarea 
 {

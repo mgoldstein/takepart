@@ -11,7 +11,7 @@ marigold_hotel_contest.forms = {
                 var cur = 0;
                 if (val) cur = val.length;
                 var left = max - cur;
-                jQuery(this).after("<div class='counter'>" + left.toString() + "</div>");
+                jQuery(this).after("<div class='counter'>&nbsp;" + left.toString() + "</div>");
                 var c = jQuery(this).next(".counter");
                 jQuery(elem).keyup(function (i) {
                     var max = jQuery(elem).attr('maxlength');
