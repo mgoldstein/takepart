@@ -42,11 +42,11 @@ marigold_hotel_contest.forms = {
     textfield_edit: function (elem) {            
         if (elem) {
             jQuery(elem).each(function () {
-            	if(elem.is("textarea")) {
-            		text = elem.val();
-            	}      	
-                jQuery(this).parent().parent().after("<div class='textarea_edit'>Edit</div>");
-                jQuery(this).after("<div class='textarea_dispal'>" + text + "</div>");
+            	if(jQuery(this).is("textarea")) {
+            		text = jQuery(this).val();
+            		jQuery(this).parent().parent().after("<div class='textarea_edit'>Edit</div>");
+            		jQuery(this).after("<div class='textarea_display'>" + text + "</div>");
+            	}
             });
             jQuery('.textarea_edit').click(function() {
             	alert('test');
