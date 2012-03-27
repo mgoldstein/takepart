@@ -21,7 +21,7 @@ marigold_hotel_contest.forms = {
                     if (val) cur = val.length;
                     var left = max - cur;
                     //jQuery(elem).next(".counter").text(left.toString());
-                    jQuery(elem).parent().children(".counter").text('&nbsp;' + (left.toString()));
+                    jQuery(elem).parent().children(".counter").text(' ' + (left.toString()));
                 });
             });
         }
