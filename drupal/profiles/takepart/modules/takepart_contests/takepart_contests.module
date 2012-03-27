@@ -564,6 +564,15 @@ function takepart_contests_contest_entry_delete_multiple(array $entry_ids) {
   entity_get_controller('takepart_contests_contest_entry')->delete($entry_ids);
 }
 
+function takepart_contests_contest_entry_allowed($entry) {
+
+  $contest = takepart_contests_contest_load($entry->contest_id);
+
+  // get the entry period, default to unlimited
+  $period = isset($contest->entry_period) ? isset($contest->entry_period) : FALSE;
+    
+  return TRUE;
+}
 
 
 
