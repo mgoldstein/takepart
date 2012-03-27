@@ -80,6 +80,8 @@ marigold_hotel_contest.forms = {
             marigold_hotel_contest.forms.textfield_edit(jQuery("#takepart_contests_form_wrapper_1 textarea"));
         }
         
+        jQuery.preloadCssImages();
+        
     }
 }
 
