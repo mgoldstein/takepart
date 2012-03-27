@@ -5,9 +5,12 @@
       $('#newsletter-campaign-signup-form .form-submit', context).click(
         function(e) {
           
+          var form = $('#newsletter-campaign-signup-form');
+          var title = form.find('input[name="newsletter_title"]').attr('value');
+          
           s.linkTrackVars="eVar23,events";
           s.linkTrackEvents="event39";
-          s.eVar23='TakePart Newsletter';
+          s.eVar23=title;
           s.events='event39';
           s.tl(true, 'o', 'Newsletter Signup');
 
