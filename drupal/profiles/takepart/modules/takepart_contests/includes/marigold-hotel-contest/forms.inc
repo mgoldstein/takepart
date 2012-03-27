@@ -303,63 +303,47 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
     $form_state['rebuild'] = TRUE;
   }
 
-  if (($form_state['triggering_element']['#value'] == t('Submit your information')) || ($form_state['triggering_element']['#value'] == t('Test Submit'))) {
+  $submit_trigger = $form_state['triggering_element']['#value'];
+  $final_submit = ($submit_trigger == t('Submit your information'));
+  $test_submit = ($submit_trigger == t('Test Submit'));
+  if ($final_submit || $test_submit) {
 
-    
-
-    
-    
-    // build the contest entry entity from the form
-    entity_form_submit_build_entity('takepart_contests_contest_entry', $form_state['takepart_contests_contest_entry'], $form, $form_state);
+    // get the working entry
     $entry = $form_state['takepart_contests_contest_entry'];
     
-    // set/update the created and changed timestamps
-    $entry->is_new = isset($entry->is_new) ? $entry->is_new : 0;
-    if ($entry->is_new) {
-      $entry->created = time();
-    }
-    $entry->changed = time();
+    // check if the entry is allowed
+    if (takepart_contests_contest_entry_allowed($entry)) {
     
-    // set the associated user
-    $entry->uid = $user->uid;
+      // build the contest entry entity from the form
+      entity_form_submit_build_entity('takepart_contests_contest_entry', $entry,
+        $form, $form_state);
     
-    // save the entry
-    $entry->save();
-    
-    $id_to_read_back = $entry->entry_id;
-    
-    if(isset($entry->entry_id)) {
-       //Where to trigger omniture? 
-    }
-    
-    // read back the entry to make sure that works
-    $entry = takepart_contests_contest_entry_load($id_to_read_back);
-    
-    $contest_name = '';
-    
-    
-    if(isset($entry->entry_id)) {
-      $result = _takepart_contests_getlist();
-      if(!is_null($result)) {
-        foreach ($result as $row) {
-          if(($row->contest_id) == $entry->entry_id) {
-            $contest_name = $row->name;
-          }
-        }
+      // set/update the created and changed timestamps
+      $entry->is_new = isset($entry->is_new) ? $entry->is_new : 0;
+      if ($entry->is_new) {
+        $entry->created = time();
       }
-      if(!is_null($entry->entry_id)) {   
-        setcookie("contest_entered", $contest_name);
+      $entry->changed = time();
+     
+      // set the associated user
+      $entry->uid = $user->uid;
+    
+      // save the entry
+      if ($entry->save()) {
+      
+        // set the entered metric cookie
+        $contest = takepart_contests_contest_load($entry->contest_id);
+        setcookie('contest_entered', $contest->name);
+      
+        // redirect to the thank you page
         drupal_goto('marigold/thanks');
-      } else {
+      }
+      else {
         drupal_set_message( t('The contest entry could not be saved.'), 'error' );
       }
-    } else {
-      drupal_set_message( t('The contest entry could not be saved.'), 'error' ); 
     }
-      
-    //drupal_set_message(t('The contest entry %id has been saved and read back.', array('%id' => $entry->entry_id)));
-    
+    else {
+      drupal_set_message( t('Your entry for this contest has already been received.'), 'error' );
+    }
   }
- 
-
 }
