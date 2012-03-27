@@ -243,7 +243,7 @@ function takepart_bsd_signup_process_signup($signup, &$errors = NULL) {
   $xml_body = (substr($response['body'], 0, 5) == '<?xml');
   if (($ok_response || $conflict_response) && $xml_body) {
     $api = simplexml_load_string($response['body']);
-    if ($api->count() > 0) {
+    if (count($api->children()) > 0) {
       foreach ($api as $error) {
         if (isset($errors)) {
           $errors[] = array(
@@ -335,7 +335,7 @@ function takepart_bsd_email_set_subscription_state($email, $subscribed) {
     $api = simplexml_load_string($response['body']);
     
     // check if any matching constituent was found
-    if ($api->count() > 0) {
+    if (count($api->children()) > 0) {
 
       $cons_id = $api->cons->attributes()->id;
      

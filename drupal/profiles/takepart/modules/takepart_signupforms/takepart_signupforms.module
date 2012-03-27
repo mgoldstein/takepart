@@ -157,10 +157,12 @@ function _takepart_signupforms_build_signup_form($entity, $fields, $form_id) {
                 foreach ($entity->{$property}[$language] as $index => $data) {
                   $items[] = (string)$data['value'];
                 }
-                $bsd_fields[$field_id]['value'] = array(
-                  'type' => 'items',
-                  'items' => $items,
-                );
+                if (count($items) > 0) {
+                  $bsd_fields[$field_id]['value'] = array(
+                    'type' => 'items',
+                    'items' => $items,
+                  );
+                }
               }
             }
             else {
@@ -171,14 +173,13 @@ function _takepart_signupforms_build_signup_form($entity, $fields, $form_id) {
                 // make sure the previous field(s) had the same cardinality
                 if ($bsd_fields[$field_id]['value']['type'] == 'value') {
                   $current_value = $bsd_fields[$field_id]['value']['value'];
-                  $current_value .= "\n" . (string)$entity->{$property}[$language][0]['value'];
+                  $current_value .= " " . (string)$entity->{$property}[$language][0]['value'];
                   $bsd_fields[$field_id]['value']['value'] = $current_value;
                 }
                 else {
                   $message = 'Mismatched cardinality for property @property';
                   $variables = array('@property' => $property);
                   watchdog('takepart_signupforms', $message, $variables);
-                  break;     
                 }
               }
               else {
@@ -195,7 +196,6 @@ function _takepart_signupforms_build_signup_form($entity, $fields, $form_id) {
                   $message = 'Mismatched cardinality for property @property';
                   $variables = array('@property' => $property);
                   watchdog('takepart_signupforms', $message, $variables);
-                  break;     
                 }
               }
             }
