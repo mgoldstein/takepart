@@ -237,7 +237,7 @@ function newsletter_campaign_block_view($delta) {
       'form_id' => check_plain($camp->campaign_id),
       'promo_text' => filter_xss($camp->promo_message, $allowed_tags),
       'header_text' => filter_xss($camp->header, $allowed_tags),
-      'signup_form' => drupal_get_form('newsletter_campaign_signup_form', $camp->campaign_id, $camp->signup_form_id)
+      'signup_form' => drupal_get_form('newsletter_campaign_signup_form', $camp->campaign_id, $camp->signup_form_id, $camp->title)
     );
     
     $content = theme('newsletter_signup_block', $form_vars);
@@ -386,7 +386,7 @@ function _newsletter_signups_list() {
  *
  * @return array - raw form array
  */
-function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $signup_form_id) {
+function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $signup_form_id, $newsletter_title) {
   
   $form = array();
   
@@ -456,6 +456,11 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $sig
     '#maxlength' => 128,
     //'#attributes' => array('onclick' => 'this.value="blah.'.mt_rand(100, 10000).'@blah.com"; takepart_input_box_tweak(this)'),
     //'#attributes' => array('onclick' => 'takepart_input_box_tweak(this)'),
+  );
+  
+  $form['newsletter_title'] = array(
+    '#type' => 'hidden',
+    '#value' => $newsletter_title,
   );
   
   $form['campaign_id'] = array(
