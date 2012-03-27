@@ -1062,6 +1062,15 @@ h1.title a:hover {
     border:solid 4px #eff3f5;
     padding:10px;
 }
+
+#right-rail .block.no-border,
+#right-rail .block.no_border
+{
+    margin-bottom:15px;
+    border:0;
+    padding:0;
+}
+
 #right-rail .block-boxes-view-name-related_actions,
 #right-rail .block-boxes-title-take-action,
 #right-rail .block-boxes-current-related_actions
