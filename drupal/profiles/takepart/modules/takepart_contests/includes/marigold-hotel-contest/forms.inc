@@ -36,7 +36,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
   //Itterate through field groups, if we're on a step that matches a group,
   //assign field settings to the applicable fields in that group:
   foreach ($form['#fieldgroups'] as $key => $value) {
-    if($value->{'group_name'} == 'group_step'.$step) {
+    if(($value->{'group_name'} == 'group_step'.$step) || $step == 4) {
       if(is_array($value->{'children'})) {
         for($i = 0; $i < count($value->{'children'}); $i++) {
           //Describe your idea:
@@ -46,11 +46,11 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
                 //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 2;     
-                if($step == 4) {
-                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "140", 'readonly' => "readonly");
-                } else {
+                //if($step == 4) {
+                //  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "140", 'readonly' => "readonly");
+                //} else {
                   $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "140");
-                }
+                //}
               }
             }
           }
@@ -61,11 +61,11 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
                 //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                if($step == 4) {
-                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
-                } else {
+                //if($step == 4) {
+                //  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
+                //} else {
                   $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-                }
+                //}
               }
             }
           }
@@ -76,11 +76,11 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
                 //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                if($step == 4) {
-                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
-                } else {
+                //if($step == 4) {
+                //  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
+                //} else {
                   $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-                }
+                //}
               }
             }
           }
@@ -91,11 +91,11 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
                 //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                if($step == 4) {
-                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
-                } else {
+                //if($step == 4) {
+                //  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
+                //} else {
                   $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-                }
+                //}
               }
             }
           }
@@ -106,11 +106,11 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
                 //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                if($step == 4) {
-                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
-                } else {
+                //if($step == 4) {
+                //  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
+                //} else {
                   $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-                }
+                //}
               }
             }
           }

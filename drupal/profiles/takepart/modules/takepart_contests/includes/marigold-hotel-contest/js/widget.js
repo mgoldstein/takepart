@@ -4,7 +4,8 @@ if (typeof marigold_hotel_contest == "undefined" || !marigold_hotel_contest) {
 
 marigold_hotel_contest.widgets = {
     addthis_email: function (elem) {
-        jQuery(elem).attr("addthis:ui_email_note", "Marigold Campaign Email Text HERE.");
+    	//I don't know what they want here:
+        //jQuery(elem).attr("addthis:ui_email_note", "Marigold Campaign Email Text HERE.");
     },
     analytics: function (elem) {
         jQuery(elem).click(function () {

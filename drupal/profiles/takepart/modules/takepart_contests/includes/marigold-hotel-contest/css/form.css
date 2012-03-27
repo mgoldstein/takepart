@@ -529,7 +529,7 @@
 
 #takepart_contests_form_wrapper_1 .step4wrapper .counter 
 {
-  display:none;
+  /*display:none;*/
 }
 
 #takepart_contests_form_wrapper_1 .step4wrapper legend {
