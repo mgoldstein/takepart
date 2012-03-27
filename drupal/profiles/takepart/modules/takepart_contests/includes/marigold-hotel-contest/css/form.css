@@ -461,6 +461,13 @@
   padding:0;
 }
 
+#takepart_contests_form_wrapper_1 .textarea_edit {
+  cursor: pointer;
+  color: purple;
+  text-transform: uppercase;
+  float: right;
+}
+
 #takepart_contests_form_wrapper_1 div.selectbox-wrapper ul li.selected
 {
   background-color:#EAF2FB;

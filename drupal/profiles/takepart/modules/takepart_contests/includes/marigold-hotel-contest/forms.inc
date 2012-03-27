@@ -43,7 +43,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_265' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
+                //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 2;     
                 if($step == 4) {
@@ -58,7 +58,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_266' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
+                //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
                 if($step == 4) {
@@ -73,7 +73,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_267' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
+                //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
                 if($step == 4) {
@@ -88,7 +88,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_270' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
+                //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
                 if($step == 4) {
@@ -103,7 +103,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_271' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
+                //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
                 if($step == 4) {
@@ -228,35 +228,37 @@ function _takepart_contests_refillfromstep(&$form, &$form_state, $step) {
         $groupstep = substr($gkey, strlen('group_step'), strlen($gkey));          
         $fieldset = $gvalue->children;
         //Itterate through the form state, and match up saved fields with their cooresponding groups:
-        foreach ($form_state['storage']['values']['step' . $groupstep] as $fieldKey => $storagevalue) {
-          //If we're on step 4, fill them all, otherwise fill the fields in the group/step we are on:
-          if (((!is_null(array_search($fieldKey, $fieldset))) || ($step ==4)) && array_key_exists($fieldKey, $form) && is_array($form[$fieldKey])) {
-            //Place the values from form state back into the form:
-            foreach ($storagevalue['und'] as $und_key => $und_value) {
-              if(array_key_exists('#default_value', $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und']['#default_value'])) {
-                //Fill Checkboxes:
-                if($form[$fieldKey]['und']['#type'] == "checkboxes") {
-                  $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
-                  $form[$fieldKey]['und'][$und_value['value']]['#attributes'] = array('checked' => 'checked');
-                }
-                //Fill Selects:
-                if($form[$fieldKey]['und']['#type'] == "select") {
-                  $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
-                }
-              } else if (array_key_exists($und_key, $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und'])) {
-                //Fill Date Combos:
-                if($form[$fieldKey]['und'][$und_key]['#type'] == 'date_combo') {
-                  if(is_array($form[$fieldKey]['und'][$und_key]['#default_value'])) {
-                    $form[$fieldKey]['und'][$und_key]['#default_value']['value'] = date('Y-m-d H:i:s', strtotime($und_value['value']));
+        if(isset($form_state['storage']['values']['step' . $groupstep])) { 
+          foreach ($form_state['storage']['values']['step' . $groupstep] as $fieldKey => $storagevalue) {
+            //If we're on step 4, fill them all, otherwise fill the fields in the group/step we are on:
+            if (((!is_null(array_search($fieldKey, $fieldset))) || ($step ==4)) && array_key_exists($fieldKey, $form) && is_array($form[$fieldKey])) {
+              //Place the values from form state back into the form:
+              foreach ($storagevalue['und'] as $und_key => $und_value) {
+                if(array_key_exists('#default_value', $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und']['#default_value'])) {
+                  //Fill Checkboxes:
+                  if(array_key_exists('#type', $form[$fieldKey]['und']) && $form[$fieldKey]['und']['#type'] == "checkboxes") {
+                    $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
+                    $form[$fieldKey]['und'][$und_value['value']]['#attributes'] = array('checked' => 'checked');
                   }
-                } else {
-                 //Fill Text Areas and Text Fields:
-                 if($form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textarea' || $form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textfield') { 
-                    $form[$fieldKey]['und'][$und_key]['value']['#default_value'] = $und_value['value'];
-                 }
+                  //Fill Selects:
+                  if(array_key_exists('#type', $form[$fieldKey]['und']) && $form[$fieldKey]['und']['#type'] == "select") {
+                    $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
+                  }
+                } else if (array_key_exists($und_key, $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und'])) {
+                  //Fill Date Combos:
+                  if(array_key_exists('#type', $form[$fieldKey]['und'][$und_key]) && $form[$fieldKey]['und'][$und_key]['#type'] == 'date_combo') {
+                    if(is_array($form[$fieldKey]['und'][$und_key]['#default_value'])) {
+                      $form[$fieldKey]['und'][$und_key]['#default_value']['value'] = date('Y-m-d H:i:s', strtotime($und_value['value']));
+                    }
+                  } else {
+                   //Fill Text Areas and Text Fields:
+                   if(array_key_exists('#type', $form[$fieldKey]['und'][$und_key]['value']) && ($form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textarea' || $form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textfield')) { 
+                      $form[$fieldKey]['und'][$und_key]['value']['#default_value'] = $und_value['value'];
+                   }
+                  }
                 }
+                
               }
-              
             }
           }
         }
@@ -335,17 +337,24 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
     
     $contest_name = '';
     
-    $result = _takepart_contests_getlist();
-    if(!is_null($result)) {
-      foreach ($result as $row) {
-        if(($row->contest_id) == 1) {
-          $contest_name = $row->name;
+    
+    if(isset($entry->entry_id)) {
+      $result = _takepart_contests_getlist();
+      if(!is_null($result)) {
+        foreach ($result as $row) {
+          if(($row->contest_id) == $entry->entry_id) {
+            $contest_name = $row->name;
+          }
         }
       }
-    }
-    
-    if(!is_null($entry->entry_id)) {   
-      setcookie("contest_entered", $contest_name);
+      if(!is_null($entry->entry_id)) {   
+        setcookie("contest_entered", $contest_name);
+        drupal_goto('marigold/thanks');
+      } else {
+        drupal_set_message( t('The contest entry could not be saved.'), 'error' );
+      }
+    } else {
+      drupal_set_message( t('The contest entry could not be saved.'), 'error' ); 
     }
       
     //drupal_set_message(t('The contest entry %id has been saved and read back.', array('%id' => $entry->entry_id)));

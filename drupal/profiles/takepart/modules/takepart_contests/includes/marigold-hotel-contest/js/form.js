@@ -39,6 +39,20 @@ marigold_hotel_contest.forms = {
         	jQuery(elem).takepartStyle();
         }
     },
+    textfield_edit: function (elem) {            
+        if (elem) {
+            jQuery(elem).each(function () {
+            	if(elem.is("textarea")) {
+            		text = elem.val();
+            	}      	
+                jQuery(this).parent().parent().after("<div class='textarea_edit'>Edit</div>");
+                jQuery(this).after("<div class='textarea_dispal'>" + text + "</div>");
+            });
+            jQuery('.textarea_edit').click(function() {
+            	alert('test');
+            });
+        }
+    },
     onformrender: function () {
         marigold_hotel_contest.forms.remaining_chars(jQuery("#takepart_contests_form_wrapper_1 #edit-field-custom-265 textarea"));
         marigold_hotel_contest.forms.remaining_chars(jQuery("#takepart_contests_form_wrapper_1 #edit-field-custom-266 textarea"));
@@ -54,6 +68,11 @@ marigold_hotel_contest.forms = {
         } else {
         	jQuery('.field-type-text-with-summary').hide();
         }
+        
+        if(jQuery('#takepart_contests_form_wrapper_1 #step4legend').length != 0) {
+            marigold_hotel_contest.forms.textfield_edit(jQuery("#takepart_contests_form_wrapper_1 textarea"));
+        }
+        
     }
 }
 
