@@ -53,11 +53,6 @@
   margin-top:1em;
 }
 
-#takepart_contests_form_wrapper_1 label
-{
-  font-weight:400;
-}
-
 #takepart_contests_form_wrapper_1 .container-inline-date
 {
 	margin-top: -8px;
@@ -152,12 +147,18 @@
 #takepart_contests_form_wrapper_1 .button
 {
   display:block;
-  width:620px;
 }
 
 #takepart_contests_form_wrapper_1 .next
 {
   padding-top: 30px;
+  width:620px;
+}
+
+#takepart_contests_form_wrapper_1 .prev
+{
+  padding-top: 2px;
+  width:122px;
 }
 
 #takepart_contests_form_wrapper_1 div.aboutyou,
@@ -278,6 +279,7 @@
   background:url(../images/submit_step1.png) no-repeat scroll left top transparent;
   height:24px;
   width:761px;
+  padding-bottom: 5px;
 }
 
 #takepart_contests_form_wrapper_1 .group-step2 legend
@@ -303,6 +305,10 @@
 
 
 /* Final Steps */
+#takepart_contests_form_wrapper_1 .step4wrapper legend {
+	padding-top: 5px;
+}
+
 #takepart_contests_form_wrapper_1 .step4wrapper .group-step1 legend
 {
   background:url(../images/review_about_idea_headline.png) no-repeat scroll left top transparent;
@@ -432,6 +438,8 @@
 #takepart_contests_form_wrapper_1 .reqtext
 {
   clear:both;
+  font-size: 10px;
+  font-style: italic;
 }
 
 #takepart_contests_form_wrapper_1 .form-type-select input
@@ -491,6 +499,8 @@
 {
   display:block;
   padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight:400;
 }
 
 #takepart_contests_form_wrapper_1 .form-type-checkboxes label,
@@ -544,6 +554,8 @@
 {
   background:#FFF url(../images/text_field_bg.gif) no-repeat left top;
   border:1px solid #B3B2B0;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 12px;
 }
 
 
