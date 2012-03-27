@@ -44,12 +44,19 @@ marigold_hotel_contest.forms = {
             jQuery(elem).each(function () {
             	if(jQuery(this).is("textarea")) {
             		text = jQuery(this).val();
-            		jQuery(this).parent().parent().after("<div class='textarea_edit'>Edit</div>");
-            		jQuery(this).after("<div class='textarea_display'>" + text + "</div>");
+            		jQuery(this).toggle();
+            		jQuery(this).parent().parent().after("<div class='textarea_edit' id='" + jQuery(this).attr('id') + "_editlink'>Edit</div>");
+            		jQuery(this).after("<div class='textarea_display' id='" + jQuery(this).attr('id') + "_editdisplay'>" + text + "</div>");
+            		//jQuery(this).parent().parent().children("div.counter:first-child").attr("id", jQuery(this).attr('id') + "_counterdisplay');
+            		//jQuery(this).parent().parent().children("div.counter:first-child").toggle();
             	}
             });
             jQuery('.textarea_edit').click(function() {
-            	alert('test');
+            	textareaid = jQuery(this).attr('id').replace("_editlink", "");
+            	jQuery("#" + textareaid).toggle();
+            	jQuery("#" + textareaid + '_editdisplay').toggle();
+            	jQuery("#" + textareaid + '_editdisplay').html(jQuery("#" + textareaid).val().replace( /\n/g, '<br />\n'));
+            	//jQuery("#" + textareaid).parent().parent().children("div.counter:first-child").toggle();
             });
         }
     },
