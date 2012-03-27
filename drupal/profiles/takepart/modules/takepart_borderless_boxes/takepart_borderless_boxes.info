@@ -1,5 +1,0 @@
-name = Screaming Headline Box
-description = "Provides screaming headline box type"
-core = 7.x
-dependencies[] = "boxes"
-dependencies[] = "views_boxes"
