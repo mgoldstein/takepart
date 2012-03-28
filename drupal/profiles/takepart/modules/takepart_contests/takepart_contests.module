@@ -564,14 +564,173 @@ function takepart_contests_contest_entry_delete_multiple(array $entry_ids) {
   entity_get_controller('takepart_contests_contest_entry')->delete($entry_ids);
 }
 
+function takepart_contests_validate_entry_period($element) {
+
+  $period_xml = trim($element['#value']);
+  
+  if ($period_xml != '' && substr($period_xml, 0, 5) != '<?xml') {
+    form_set_error($element, t('Not valid XML.'));
+    return;
+  }
+
+  $root = simplexml_load_string($period_xml);
+  if (empty($root)) {
+    form_error($element, t('Parse error'));
+    return;
+  }
+  
+  $keys_found = FALSE;
+  foreach ($root->children() as $name => $child) {
+    switch ($name) {
+      case 'keys':
+        $keys_found = TRUE;
+        takepart_contests_validate_period_keys($element, $child);
+        break;
+      case 'duration':
+        takepart_contests_validate_period_duration($element, $child);
+        break;
+    }
+  }
+  if (!$keys_found) {
+    form_error($element, t('Missing period keys'));
+  }
+}
+
+function takepart_contests_validate_period_keys($element, $keys) {
+  foreach ($keys->children() as $name => $key) {
+    $invalid_name = ($name != 'key');
+    $invalid_structure = (count($key->children()) != 0);
+    $invalid_value = (strlen(trim((string)$key)) == 0);
+    if ($invalid_name || $invalid_structure || $invalid_value) {
+      form_error($element, t('Invalid period key'));
+      break;
+    }
+  }
+}
+
+function takepart_contests_validate_period_duration($element, $duration) {
+  $attrs = $duration->attributes();
+  if (isset($attrs->type)) {
+    switch ($attrs->type) {
+      case 'slot':
+        takepart_contests_validate_slot_duration($element, $duration);
+        break;
+      case 'span':
+        takepart_contests_validate_span_duration($element, $duration);
+        break;
+      case 'phase':
+        takepart_contests_validate_phases_duration($element, $duration);
+        break;
+      default:
+        form_error($element, t('Invalid duration type'));
+        break;
+    }
+  }
+  else {
+    form_error($element, t('Missing duration type'));
+  }
+}
+
+function takepart_contests_validate_slot_duration($element, $duration) {
+  $valid_units = array('hours','days','weeks','months','years','lifetime');
+  if (isset($duration->count)) {
+    $count = (string)$duration->count;
+    if ($count !== '' && (!is_numeric($count) || intval($count) != $count || $count <= 0)) {
+      form_error($element, t('Invalid slot count'));
+    }
+  }
+  if (isset($duration->units)) {
+    if (! in_array($duration->units, $valid_units)) {
+      form_error($element, t('Invalid slot units'));
+    }
+  }
+  else {
+    form_error($element, t('Missing slot units'));
+  }
+}
+
+function takepart_contests_validate_span_duration($element, $duration) {
+  $valid_units = array('hours','days','weeks','months','years');
+  if (isset($duration->count)) {
+    $count = (string)$duration->count;
+    if ($count !== '' && (!is_numeric($count) || intval($count) != $count || $count <= 0)) {
+      form_error($element, t('Invalid span count'));
+    }
+  }
+  if (isset($duration->units)) {
+    if (! in_array($duration->units, $valid_units)) {
+      form_error($element, t('Invalid span units'));
+    }
+  }
+  else {
+    form_error($element, t('Missing span units'));
+  }
+}
+
+function takepart_contests_validate_phases_duration($period) {
+ 
+}
+
 function takepart_contests_contest_entry_allowed($entry) {
 
+  // get the associated contest (and entry period)
   $contest = takepart_contests_contest_load($entry->contest_id);
+  $period_xml = isset($contest->entry_period) ? trim($contest->entry_period) : '';
 
-  // get the entry period, default to unlimited
-  $period = isset($contest->entry_period) ? isset($contest->entry_period) : FALSE;
+  // if no period is specified, then there are no restrictions
+  if ($period_xml === '') {
+    return TRUE;
+  }
+  
+  $period = simplexml_load_string($period_xml);
+  if (! empty($period)) {
+
+    // create an entity query
+    $query = new EntityFieldQuery();
     
-  return TRUE;
+    // limit that query to contest entries for this contest
+    $query->entityCondition('entity_type', 'takepart_contests_contest_entry');
+    $query->propertyCondition('contest_id', $entry->contest_id);
+    
+    $field_error = FALSE;
+    // TODO: removed hard coded check for profile_email field only
+    $value = $entry->field_profile_email[LANGUAGE_NONE][0]['value'];
+    $query->fieldCondition('field_profile_email', 'value', $value, '=');
+    /*
+    foreach ($period->keys->children() as $name => $node) {
+      $field_name = (string)$node;
+      $info = field_info_field($field_name);
+      if (isset($info) && isset($entry->{$field_name})) {
+        
+        $language = isset($entry->language) ? $entry->language : LANGUAGE_NONE;
+        foreach ($info['columns'] as $column => $data) {
+          $value = $entry->{$field_name}[$language][0][$column];
+          $query->fieldCondition($field_name, $column, $value, '=');
+        }
+      }
+      else {
+        // the specified field name is missing from the entry or the database
+        $field_error = TRUE;
+        break;
+      }
+    }
+    */
+    if (! $field_error) {
+      
+      // get the number of matching records
+      $query->count();
+      $count = $query->execute();
+
+      // only allow the entry if it would be unique according to the key
+      return ($count == 0);
+    }
+  }
+  
+  // getting down here is BAD, it means the period was not valid, so log the
+  // error and don't allow the entry
+  watchdog('takepart_contests', 'Invalid contest period [@period]',
+    array('@period' => $period_xml), WATCHDOG_ERROR);
+  return FALSE;
 }
 
 

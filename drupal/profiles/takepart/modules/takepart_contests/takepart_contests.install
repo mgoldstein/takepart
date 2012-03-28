@@ -112,7 +112,6 @@ function takepart_contests_schema() {
         'type' => 'text',
         'not null' => FALSE,
         'size' => 'big',
-        'serialize' => TRUE,
       ),
     ),
     'primary key' => array('contest_id'),
@@ -147,7 +146,6 @@ function takepart_contests_schema() {
         'type' => 'text',
         'not null' => FALSE,
         'size' => 'big',
-        'serialize' => TRUE,
       ),
       'weight' => array(
         'description' => 'The weight of this contest type in relation to others',

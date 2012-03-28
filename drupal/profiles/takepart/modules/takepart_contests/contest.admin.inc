@@ -93,6 +93,7 @@ function takepart_contests_contest_form($form, &$form_state, $contest, $op = 'ed
     '#type' => 'textarea',
     '#title' => t('Entry Period'),
     '#default_value' => $default_value,
+    '#element_validate' => array('takepart_contests_validate_entry_period',),
   );
 
   $form_state['takepart_contests_contest'] = $contest;
@@ -125,7 +126,7 @@ function takepart_contests_contest_form($form, &$form_state, $contest, $op = 'ed
     );
   }
   
-  $form['actions']['cance'] = array(
+  $form['actions']['cancel'] = array(
     '#type' => 'markup',
     '#markup' => l(t('Cancel'), 'admin/content/contests'),
     '#weight' => 50,

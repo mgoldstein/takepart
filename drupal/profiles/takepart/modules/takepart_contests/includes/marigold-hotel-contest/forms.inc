@@ -313,12 +313,12 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
     // get the working entry
     $entry = $form_state['takepart_contests_contest_entry'];
     
+    // build the contest entry entity from the form
+    entity_form_submit_build_entity('takepart_contests_contest_entry', $entry,
+      $form, $form_state);
+    
     // check if the entry is allowed
     if (takepart_contests_contest_entry_allowed($entry)) {
-    
-      // build the contest entry entity from the form
-      entity_form_submit_build_entity('takepart_contests_contest_entry', $entry,
-        $form, $form_state);
     
       // set/update the created and changed timestamps
       $entry->is_new = isset($entry->is_new) ? $entry->is_new : 0;
