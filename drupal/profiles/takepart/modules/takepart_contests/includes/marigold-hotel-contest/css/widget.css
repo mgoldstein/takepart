@@ -1,3 +1,20 @@
+#mg-email-share-block-2 {
+    background:url(../images/yourideaforgood/prize_pic.png) no-repeat scroll left top transparent;
+    height:309px;
+    width:280px;
+}
+
+#mg-email-share-block-2 .addthis_button_email {
+    background: none repeat scroll 0 0 transparent;
+    display: block;
+    height: 309px;
+    width: 280px;
+}
+
+#mg-email-share-block-2 .addthis_button_email .at15t_email {
+    background: none repeat scroll 0 0 transparent;
+}
+
 #mg-email-share-block .email-share-block-top {
     background:url(../images/flower_prize.png) no-repeat scroll left top transparent;
     height:242px;
