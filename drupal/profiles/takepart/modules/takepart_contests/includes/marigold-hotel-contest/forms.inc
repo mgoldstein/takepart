@@ -143,14 +143,6 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
                }
              }
            }
-           //State:
-           if('field_profile_state' == $value->{'children'}[$i]) {
-             if (array_key_exists($value->{'children'}[$i], $form)) {
-               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+6);
-               }
-             }
-           }
            //Zip:
            if('field_profile_zip' == $value->{'children'}[$i]) {
              if (array_key_exists($value->{'children'}[$i], $form)) {
@@ -171,6 +163,17 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
       }
     }
   }
+  
+  
+  //State:
+  if(array_key_exists('field_profile_state', $form)) {
+    if(array_key_exists('#attributes', $form['field_profile_state'])) {
+      $form['field_profile_state']['#attributes'] = array_merge(array('tabindex' => $tabindexstart+6), $form['field_profile_state']['#attributes']);
+    } else {
+      $form['field_profile_state']['#attributes'] = array('tabindex' => $tabindexstart+5);
+    }
+  }
+  
   
   if($step == 3) {
     $form['confirm_msg'] = array(
