@@ -57,8 +57,9 @@ function takepart_contests_contest_type_form($form, &$form_state, $contest_type,
     '#type' => 'textarea',
     '#title' => t('Default Entry Period'),
     '#default_value' => isset($contest_type->default_entry_period) ? $contest_type->default_entry_period : '',
-  );
-  
+    '#element_validate' => array('takepart_contests_validate_entry_period',),
+  ); 
+ 
   $form['actions'] = array('#type' => 'actions');
   $submit = array();
   if (! empty($form['#submit'])) {
@@ -82,12 +83,12 @@ function takepart_contests_contest_type_form($form, &$form_state, $contest_type,
     );
   }
   
-  $form['actions']['cance'] = array(
+  $form['actions']['cancel'] = array(
     '#type' => 'markup',
     '#markup' => l(t('Cancel'), 'admin/structure/contest_types'),
     '#weight' => 50,
   );
-
+  
   return $form;
 }
 

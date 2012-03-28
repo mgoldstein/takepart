@@ -118,17 +118,19 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
       }
     }
   }
-
-
+  
   if($step == 3) {
     $form['confirm_msg'] = array(
-        '#markup' => "<div>Please confirm your information below to finalize your submission.</div>",
-    );
+        '#markup' => "<div class=\"confirm_msg\">Please confirm your information below to finalize your submission.</div>",
+    );    
     //Add confirm msg to field group:
     foreach ($form['#fieldgroups'] as $key => $value) {
       if($value->{'group_name'} == 'group_step3') {
         if(is_array($value->{'children'})) {
-          $form['#fieldgroups']['$key']->{'children'} = array_merge(array('confirm_msg'),  $form['#fieldgroups']['$key']->{'children'});
+          $form['#fieldgroups'][$key]->{'children'} = array_merge(array('confirm_msg'),  $form['#fieldgroups'][$key]->{'children'});
+          if(array_key_exists('#group_children', $form)) {
+            $form['#group_children']['confirm_msg'] = 'group_step3';
+          }        
         }
       }
     }
@@ -311,12 +313,12 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
     // get the working entry
     $entry = $form_state['takepart_contests_contest_entry'];
     
+    // build the contest entry entity from the form
+    entity_form_submit_build_entity('takepart_contests_contest_entry', $entry,
+      $form, $form_state);
+    
     // check if the entry is allowed
     if (takepart_contests_contest_entry_allowed($entry)) {
-    
-      // build the contest entry entity from the form
-      entity_form_submit_build_entity('takepart_contests_contest_entry', $entry,
-        $form, $form_state);
     
       // set/update the created and changed timestamps
       $entry->is_new = isset($entry->is_new) ? $entry->is_new : 0;
