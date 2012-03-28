@@ -60,7 +60,7 @@ class boxes_simple extends boxes_box {
     );
     $form['view_advanced_settings']['additional_classes'] = array(
       '#title' => t('Additional CSS classes'),
-      '#description' => t('Optional CSS classes that will be added to the top-level div container for this box. Separate them with spaces.'),
+      '#description' => t('Optional CSS classes that will be added to the div container for this box. Separate them with spaces.'),
       '#type' => 'textfield',
       '#default_value' => $this->options['additional_classes'],
     );
