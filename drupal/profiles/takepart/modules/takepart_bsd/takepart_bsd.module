@@ -372,7 +372,7 @@ function takepart_bsd_email_set_subscription_state($email, $subscribed) {
  *   http_code: The HTTP response code of the request
  *   body: The body of the response 
  */
-function _takepart_bsd_api_query($url, $query, $block = TRUE) {
+function _takepart_bsd_api_query($url, $query = array(), $block = TRUE) {
   
   $bsd = new BSD_API(
     variable_get('takepart_bsd_api_id', 'takepart-com'),
