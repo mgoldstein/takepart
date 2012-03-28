@@ -95,10 +95,10 @@ marigold_hotel_contest.forms = {
         var marigolduser = marigold_hotel_contest.forms.getMGCookie("marigolduser");
         if (marigolduser == null || marigolduser == "") {
             //alert(Math.round(+new Date()/1000).toString());
-            s.eVar28 = 'Contest Begin';
             s.eVar24 = 'Marigold Ideas for Good Contest';
             s.prop24 = 'Marigold Ideas for Good Contest';
             s.events = 'event28';
+            s.tl(this, 'o', 'Marigold Ideas for Good Contest');
             marigold_hotel_contest.forms.setMGCookie("marigolduser", Math.round(+new Date() / 1000).toString(), 0);
         }
     },
@@ -132,6 +132,6 @@ jQuery(document).ajaxComplete(function (e, xhr, settings) {
 
 
 jQuery(document).ready(function () {
-    marigold_hotel_contest.forms.onformrender();
     marigold_hotel_contest.forms.track();
+    marigold_hotel_contest.forms.onformrender();
 });

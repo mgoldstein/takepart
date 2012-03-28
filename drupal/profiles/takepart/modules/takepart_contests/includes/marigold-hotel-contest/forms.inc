@@ -35,7 +35,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
 
   _takepart_contests_setrequired($form, $step);
   
-
+  $tabindexstart = 0;
   
   //Itterate through field groups, if we're on a step that matches a group,
   //assign field settings to the applicable fields in that group:
@@ -47,14 +47,9 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_265' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = TRUE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 2;     
-                //if($step == 4) {
-                //  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "140", 'readonly' => "readonly");
-                //} else {
-                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "140");
-                //}
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;     
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
               }
             }
           }
@@ -62,14 +57,9 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_266' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                //if($step == 4) {
-                //  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
-                //} else {
-                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-                //}
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
               }
             }
           }
@@ -77,14 +67,9 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_267' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                //if($step == 4) {
-                //  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
-                //} else {
-                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-                //}
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
               }
             }
           }
@@ -92,14 +77,9 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_270' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                //if($step == 4) {
-                //  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
-                //} else {
-                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-                //}
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
               }
             }
           }
@@ -107,17 +87,86 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
           if('field_custom_271' == $value->{'children'}[$i]){
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                //$form[$value->{'children'}[$i]]['und'][0]['value']['#required'] = FALSE;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                //if($step == 4) {
-                //  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700", 'readonly' => "readonly");
-                //} else {
-                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-                //}
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
               }
             }
           }
+          //Email:
+          if('field_profile_email' == $value->{'children'}[$i]) {
+            $tabindexstart = _takepart_contests_gettabindex($form, 'field_profile_email');
+            if (array_key_exists($value->{'children'}[$i], $form)) {
+              if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart);
+              }
+             }
+           }
+           //First Name:
+           if('field_profile_first_name' == $value->{'children'}[$i]) {
+             if (array_key_exists($value->{'children'}[$i], $form)) {
+               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+1);
+               }
+             }
+           }
+                 
+           //Last Name:
+           if('field_profile_last_name' == $value->{'children'}[$i]) {
+             if (array_key_exists($value->{'children'}[$i], $form)) {
+               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+2);
+               }
+             }
+           }
+           //Addr1:
+           if('field_profile_addr1' == $value->{'children'}[$i]) {
+             if (array_key_exists($value->{'children'}[$i], $form)) {
+               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+3);
+               }
+             }
+           }
+           //Addr2:
+           if('field_profile_addr2' == $value->{'children'}[$i]) {
+             if (array_key_exists($value->{'children'}[$i], $form)) {
+               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+4);
+               }
+             }
+           }
+           //City:
+           if('field_profile_city' == $value->{'children'}[$i]) {
+             if (array_key_exists($value->{'children'}[$i], $form)) {
+               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+5);
+               }
+             }
+           }
+           //State:
+           if('field_profile_state' == $value->{'children'}[$i]) {
+             if (array_key_exists($value->{'children'}[$i], $form)) {
+               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+6);
+               }
+             }
+           }
+           //Zip:
+           if('field_profile_zip' == $value->{'children'}[$i]) {
+             if (array_key_exists($value->{'children'}[$i], $form)) {
+               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+7);
+               }
+             }
+           }
+           //Phone:
+           if('field_profile_phone' == $value->{'children'}[$i]) {
+             if (array_key_exists($value->{'children'}[$i], $form)) {
+               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
+                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+8);
+               }
+             }
+           }                     
         }
       }
     }
@@ -301,6 +350,28 @@ function _takepart_contests_refillfromstep(&$form, &$form_state, $step) {
     }
   }
 }
+
+
+
+function _takepart_contests_gettabindex(&$form, $match) {
+  $x = 0;
+  if(array_key_exists('#fieldgroups', $form)) {
+    foreach ($form['#fieldgroups'] as $gkey => $gvalue) {
+      if(strrpos($gkey, 'group_step') > -1) {
+        $groupstep = substr($gkey, strlen('group_step'), strlen($gkey));
+        $fieldset = $gvalue->children;
+        $matchloc = array_search($match, $fieldset);
+        if(empty($matchloc)) {
+          $x = $x + count($fieldset);
+        } else {
+          $x = $x + $matchloc + 1;
+        }
+      }
+    }
+  }
+  return $x;
+}
+
 
 
 function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
