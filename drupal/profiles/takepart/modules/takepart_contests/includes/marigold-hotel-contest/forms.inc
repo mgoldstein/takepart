@@ -33,6 +33,10 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }
   }
 
+  _takepart_contests_setrequired($form, $step);
+  
+
+  
   //Itterate through field groups, if we're on a step that matches a group,
   //assign field settings to the applicable fields in that group:
   foreach ($form['#fieldgroups'] as $key => $value) {
@@ -221,16 +225,45 @@ function takepart_contests_contest_entry_form_callback_1($form, $form_state) {
 }
 
 
+function _takepart_contests_setrequired(&$form, $step) {
+  if($step != 4) {
+    foreach ($form['#fieldgroups'] as $key => $value) {
+      if(($value->{'group_name'} != 'group_step'.$step)) {
+        if(is_array($value->{'children'})) {
+          for($i = 0; $i < count($value->{'children'}); $i++) {
+              _takepart_contests_setrequired_finder(&$form[$value->{'children'}[$i]]);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+function _takepart_contests_setrequired_finder(&$haystack) {  
+  while (list($key, $value) = each($haystack)) {
+    if(($key == '#required') && (!is_array($value)) && ($haystack[$key] == 1)) {
+      $haystack[$key] = 0;
+    } 
+    if(($key == '#element_validate')) {
+      unset($haystack[$key]);
+    }
+    if(is_array($value)) {
+      _takepart_contests_setrequired_finder($haystack[$key]);
+    }
+  }
+}
+
 
 function _takepart_contests_refillfromstep(&$form, &$form_state, $step) {
   if(array_key_exists('#fieldgroups', $form)) {
     //Itterate through groups and find the fields applicable to the groups:
     foreach ($form['#fieldgroups'] as $gkey => $gvalue) {
       if(strrpos($gkey, 'group_step') > -1) {
-        $groupstep = substr($gkey, strlen('group_step'), strlen($gkey));          
+        $groupstep = substr($gkey, strlen('group_step'), strlen($gkey));
         $fieldset = $gvalue->children;
         //Itterate through the form state, and match up saved fields with their cooresponding groups:
-        if(isset($form_state['storage']['values']['step' . $groupstep])) { 
+        if(isset($form_state['storage']['values']['step' . $groupstep])) {
           foreach ($form_state['storage']['values']['step' . $groupstep] as $fieldKey => $storagevalue) {
             //If we're on step 4, fill them all, otherwise fill the fields in the group/step we are on:
             if (((!is_null(array_search($fieldKey, $fieldset))) || ($step ==4)) && array_key_exists($fieldKey, $form) && is_array($form[$fieldKey])) {
@@ -253,21 +286,22 @@ function _takepart_contests_refillfromstep(&$form, &$form_state, $step) {
                       $form[$fieldKey]['und'][$und_key]['#default_value']['value'] = date('Y-m-d H:i:s', strtotime($und_value['value']));
                     }
                   } else {
-                   //Fill Text Areas and Text Fields:
-                   if(array_key_exists('#type', $form[$fieldKey]['und'][$und_key]['value']) && ($form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textarea' || $form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textfield')) { 
+                    //Fill Text Areas and Text Fields:
+                    if(array_key_exists('#type', $form[$fieldKey]['und'][$und_key]['value']) && ($form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textarea' || $form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textfield')) {
                       $form[$fieldKey]['und'][$und_key]['value']['#default_value'] = $und_value['value'];
-                   }
+                    }
                   }
                 }
-                
+
               }
             }
           }
         }
-      } 
+      }
     }
   }
 }
+
 
 function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
 

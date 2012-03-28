@@ -96,9 +96,9 @@ marigold_hotel_contest.forms = {
         if (marigolduser == null || marigolduser == "") {
             //alert(Math.round(+new Date()/1000).toString());
             s.eVar28 = 'Contest Begin';
-            s.eVar24 = 'Best Exotic Marigold Hotel';
-            s.prop24 = 'Best Exotic Marigold Hotel';
-            s.events = 'event19';
+            s.eVar24 = 'Marigold Ideas for Good Contest';
+            s.prop24 = 'Marigold Ideas for Good Contest';
+            s.events = 'event28';
             marigold_hotel_contest.forms.setMGCookie("marigolduser", Math.round(+new Date() / 1000).toString(), 0);
         }
     },

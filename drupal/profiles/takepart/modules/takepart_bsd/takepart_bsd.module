@@ -469,10 +469,6 @@ function takepart_bsd_form($form, &$form_state) {
 
 //Menu callback for test page:
 function _takepart_bsd_test_page() {
-
-  takepart_bsd_email_signup('jp@takepart.com', 19);
-  
-  takepart_bsd_email_set_subscription_state('jp@takepart.com', 0);
 }
 
 /**
