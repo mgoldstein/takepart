@@ -64,6 +64,8 @@ marigold_hotel_contest.forms = {
     },
     onformrender: function () {
 
+    	jQuery(window).scrollTop(0);
+    	
         marigold_hotel_contest.forms.attachremainingchar(true);
 
         marigold_hotel_contest.forms.checkboxes(jQuery("#takepart_contests_form_wrapper_1 .form-type-checkbox input"));
