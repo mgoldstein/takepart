@@ -721,7 +721,9 @@ function boxes_create_hash($identifier) {
 function boxes_preprocess_block(&$vars) {
   if ($vars['block']->module === 'boxes' && isset($vars['block']->boxes_plugin)) {
       
-      if (empty($vars['block']->additional_classes)) {
+    $vars['classes_array'][] = 'block-boxes-' . $vars['block']->boxes_plugin;
+      
+    if (empty($vars['block']->additional_classes)) {
       return;
     }
     
@@ -729,7 +731,6 @@ function boxes_preprocess_block(&$vars) {
     
     foreach ($additional_classes as $class) {
       $vars['classes_array'][] = $class;
-    } 
-    // $vars['classes_array'][] = 'block-boxes-' . $vars['block']->boxes_plugin;
+    }
   }
 }
