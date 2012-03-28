@@ -20,8 +20,6 @@ function theme_takepart_contests_contest_entry_form_1(&$variables) {
   $form = $variables['form'];
 
   //Code for rendering the steps:
-  
-
   if($form['#step']['#value'] != 4) {
     for ($groups = 0; $groups <= 5; $groups++) {
       if (array_key_exists('group_step' . $groups, $form) && array_key_exists('#step', $form)) {
@@ -35,8 +33,6 @@ function theme_takepart_contests_contest_entry_form_1(&$variables) {
       }
     }
   }
-
-
 
   if($form['#step']['#value'] == 1) {
     $form['next']['#attributes']['class'][] = 'aboutyou';
@@ -58,73 +54,41 @@ function theme_takepart_contests_contest_entry_form_1(&$variables) {
     $form['next']['#attributes']['class'][] = 'reviewentry';
     $form['next']['#takepart_before'] = 'next: ';
     $form['next']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_next');
-
     $form['prev']['#attributes']['class'][] = 'backtosteptwo';
     $form['prev']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_prev');
-     
-    /*foreach ($form['#fieldgroups'] as $key => $value) {
-     if($value->{'group_name'} == 'group_step3') {
-    $form['#fieldgroups'][$key]['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_columns');
-    }
-    }*/
   }
 
   if($form['#step']['#value'] == 4) {
     $form['submit']['#attributes']['class'][] = 'submitentry';
     $form['submit']['#takepart_before'] = '';
     $form['submit']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_next');
-
     $form['prev']['#attributes']['class'][] = 'backtostepthree';
     $form['prev']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_prev');
-
   }
 
 
   if($form['#step']['#value'] == 4) {
     foreach ($variables['form'] as $key => $value) {
-
-      //print "\n--------------------------------\n";
-      //print $key;
-      //print "\n--------------------------------\n";
-
-      //print_r($variables['form'][$key]);
-
-
       if((strlen($key) > 10) && (substr($key, 0, 10) == 'group_step')) {
         $groupstep = substr($key, 10, strlen($key));
         if(is_numeric($groupstep)) {
-
-          if((int)$groupstep == 1) {
-
-
-
-          }
-           
-          // print "\n--------------------------------\n";
-          // print $key;
-          // print "\n--------------------------------\n";
-          // print_r($variables['form'][$key]['field_custom_265']);
-
           if(isset($variables['form'][$key]['field_custom_265']['und'][0]['value']['#title'])) {
             $title = ($variables['form'][$key]['field_custom_265']['und'][0]['value']['#title']);
           }
-
-
         }
       }
-
     }
   }
 
   if($form['#step']['#value'] == 4) {
-    $output = '<div id="' . $wrapper . '">' . 
-      '<div id="step4legend"></div><div class="step4wrapper">' .
-      drupal_render_children($form) . 
-    '</div></div>';
+    $output = '<div id="' . $wrapper . '">' .
+        '<div id="step4legend"></div><div class="step4wrapper">' .
+        drupal_render_children($form) .
+        '</div></div>';
   } else {
     $output = '<div id="' . $wrapper . '">' . drupal_render_children($form) . '</div>';
   }
-  
+
   return $output;
 }
 
