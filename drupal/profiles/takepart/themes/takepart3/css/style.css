@@ -1064,7 +1064,8 @@ h1.title a:hover {
 }
 
 #right-rail .block.no-border,
-#right-rail .block.no_border
+#right-rail .block.no_border,
+#right-rail .block.noborder
 {
     margin-bottom:15px;
     border:0;
