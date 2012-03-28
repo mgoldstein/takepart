@@ -240,6 +240,10 @@ function takepart_contests_theme() {
           'variables' => array(),
           'template' => 'includes/marigold-hotel-contest/templates/email-share-block',
       ),
+      'marigold_hotel_email_share_block_2' => array(
+          'variables' => array(),
+          'template' => 'includes/marigold-hotel-contest/templates/email-share-block-2',
+      ),
       'marigold_hotel_saved_entry_block' => array(
           'variables' => array(),
           'template' => 'includes/marigold-hotel-contest/templates/saved-entry-block',
@@ -281,6 +285,9 @@ function takepart_contests_block_info() {
   $blocks['marigold-hotel-email-share'] = array(
       'info' => t('Marigold Hotel Contest Email Share')
   );
+  $blocks['marigold-hotel-email-share-2'] = array(
+      'info' => t('Marigold Hotel Contest Email Share 2')
+  );
   $blocks['marigold-hotel-saved-entry-block'] = array(
       'info' => t('Marigold Hotel Saved Entry Join Us')
   );
@@ -304,6 +311,9 @@ function takepart_contests_block_view($delta = '') {
     break;*/
     case 'marigold-hotel-email-share':
       $block['content'] = _marigold_hotel_contest_emailshare();
+      break;
+    case 'marigold-hotel-email-share-2':
+      $block['content'] = _marigold_hotel_contest_emailshare_2();
       break;
     case 'marigold-hotel-saved-entry-block':
       $block['content'] = _marigold_hotel_saved_entry();
