@@ -92,6 +92,7 @@ function addthisMenuShareEventHandler(evt) {
 jQuery(document).ready(function () {
     marigold_hotel_contest.widgets.addthis_email(jQuery('#mg-email-share-block .addthis_button_email'));
     marigold_hotel_contest.widgets.analytics(jQuery('#mg-email-share-block .addthis_button_email'));
+    marigold_hotel_contest.widgets.analytics(jQuery('#mg-email-share-block-2 .addthis_button_email'));
     marigold_hotel_contest.widgets.analytics(jQuery('#mg-contest-addthis-block .addthis_button_facebook'));
     marigold_hotel_contest.widgets.analytics(jQuery('#mg-contest-addthis-block .addthis_button_twitter'));
     marigold_hotel_contest.widgets.addthis_email_submitted(jQuery('#mg-contest-addthis-block .addthis_button_twitter'));
