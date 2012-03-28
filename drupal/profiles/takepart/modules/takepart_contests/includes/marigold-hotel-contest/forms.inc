@@ -366,13 +366,21 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
     
       // save the entry
       if ($entry->save()) {
-      
+
+        // TODO: remove hardcoded referrence to profile email field
+        $language = isset($entry->language) ? $entry->language : LANGUAGE_NONE;
+        $email = $entry->field_profile_email[$language][0]['value'];
+        
         // set the entered metric cookie
         $contest = takepart_contests_contest_load($entry->contest_id);
         setcookie('contest_entered', $contest->name);
+        
+        // set the contest entered as cookie for use in pre-populating the
+        // share email
+        setcookie('contest_entered_as', $email);
       
         // redirect to the thank you page
-        drupal_goto('marigold/thanks');
+        drupal_goto('marigold/thankyou');
       }
       else {
         drupal_set_message( t('The contest entry could not be saved.'), 'error' );

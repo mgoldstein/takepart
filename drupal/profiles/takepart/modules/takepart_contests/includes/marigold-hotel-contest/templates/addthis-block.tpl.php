@@ -17,12 +17,13 @@
 <script type="text/javascript">
   var addthis_config = {
     ui_email_note: "",
-    ui_email_from: "<?php print $_COOKIE['contest_entered_as'] ?>"
+    ui_email_from: "<?php print $_COOKIE['contest_entered_as']; ?>"
   };
   var addthis_share = {
     templates: {
-      twitter: ""
-    }
+      twitter: "The Marigold Ideas for Good Contest - Submit Your Idea {{url}} via @TakePart"
+    },
+    url: "<?php print "http://" . $_SERVER['HTTP_HOST'] . "/marigold/contest"; ?>"
   };
   jQuery(document).ready(function() {
     var contest_entered_as = "<?php print $_COOKIE['contest_entered_as'] ?>";
