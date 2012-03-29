@@ -94,36 +94,16 @@ marigold_hotel_contest.forms = {
 
     },
     track: function () {
-        var marigolduser = marigold_hotel_contest.forms.getMGCookie("marigolduser");
-        if (marigolduser == null || marigolduser == "") {
-            //alert(Math.round(+new Date()/1000).toString());
-            s.eVar24 = 'Marigold Ideas for Good Contest';
-            s.prop24 = 'Marigold Ideas for Good Contest';
-            s.events = 'event28';
-            s.tl(this, 'o', 'Marigold Ideas for Good Contest');
-            marigold_hotel_contest.forms.setMGCookie("marigolduser", Math.round(+new Date() / 1000).toString(), 0);
-        }
-    },
-    getMGCookie: function (c_name) {
-        var i, x, y, ARRcookies = document.cookie.split(";");
-        for (i = 0; i < ARRcookies.length; i++) {
-            x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
-            y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
-            x = x.replace(/^\s+|\s+$/g, "");
-            if (x == c_name) {
-                return unescape(y);
-            }
-        }
-    },
-    setMGCookie: function (c_name, value, exdays) {
-        if (exdays > 0) {
-            var exdate = new Date();
-            exdate.setDate(exdate.getDate() + exdays);
-            var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
-        } else {
-            var c_value = escape(value) + ((exdays == null) ? "" : "; expires=0");
-        }
-        document.cookie = c_name + "=" + c_value;
+      if (jQuery.cookie("marigolduser") == null) {
+        s.events = 'event28';
+        s.prop24 = "Marigold Ideas For Good Contest";
+        s.eVar24 = "Marigold Ideas For Good Contest";
+        s.linkTrackVars = 'eVar24,prop24,events';
+        s.linkTrackEvents = 'event28';
+        s.tl(this.href, 'o', 'Contest Begin');
+        var timestamp = Math.round(new Date() / 1000).toString()
+        jQuery.cookie("marigolduser", timestamp);
+      }
     }
 }
 
