@@ -4,6 +4,7 @@
 
 function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op) {
 
+  drupal_add_library('system','jquery.cookie');
 
   // add the entity fields to the form
   // the entity itself needs to be stored in the form state with
