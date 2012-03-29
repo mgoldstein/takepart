@@ -236,7 +236,7 @@ body.two-sidebars #content, body.sidebar-first #content
 
 .field-name-field-tp-campaign-intro-media {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .main-content
