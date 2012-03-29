@@ -24,7 +24,7 @@ function takepart_og_image_thumbnail($nid) {
         return 'Not-A-Number';
     }
     $thisnode = node_load($nid);
-    if (isset($thisnode->field_thumbnail)) {
+    if (!empty($thisnode->field_thumbnail)) {
         $thisfile = $thisnode->field_thumbnail['und'][0]['fid'];
         $thumb = file_load($thisfile);
         global $base_url;
