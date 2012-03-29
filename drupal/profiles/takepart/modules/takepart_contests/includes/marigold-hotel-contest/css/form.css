@@ -218,6 +218,11 @@
   margin-bottom:18px;
 }
 
+#takepart_contests_form_wrapper_1  fieldset#takepart_contests_contest_entry_marigold_hotel_contest_entry_form_group_step1
+{
+  margin-bottom:0px;
+}
+
 #takepart_contests_form_wrapper_1 fieldset legend span
 {
   display:none;
@@ -534,12 +539,12 @@
 
 #takepart_contests_form_wrapper_1 .step4wrapper legend {
   float: left;
-  width: 700px;
+  width: 690px;
 }
 
 #takepart_contests_form_wrapper_1 .step4wrapper .field-widget-text-textarea .form-item {
   float: left;
-  width: 700px;
+  width: 690px;
 }
 
 #takepart_contests_form_wrapper_1 .step4wrapper .field-widget-text-textarea .textarea_edit {
