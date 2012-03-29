@@ -100,6 +100,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
             if (array_key_exists($value->{'children'}[$i], $form)) {
               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart);
+                $form[$value->{'children'}[$i]]['und'][0]['value']['#element_validate'] = array('_takepart_contests_form_validate_email');
               }
              }
            }
@@ -149,6 +150,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
              if (array_key_exists($value->{'children'}[$i], $form)) {
                if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+7);
+                 $form[$value->{'children'}[$i]]['und'][0]['value']['#element_validate'] = array('_takepart_contests_form_validate_zip');
                }
              }
            }
@@ -157,6 +159,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
              if (array_key_exists($value->{'children'}[$i], $form)) {
                if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+8);
+                 $form[$value->{'children'}[$i]]['und'][0]['value']['#element_validate'] = array('_takepart_contests_form_validate_phone');
                }
              }
            }                     
@@ -205,14 +208,14 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }
   }
 
- /*
-  $form['submit_test'] = array(
+ 
+  $form['submit_test_2'] = array(
       '#type' => 'submit',
       '#submit' => array($submit),
       '#value' => t("Test Submit"),
       '#weight' => 3000,
   );
-*/
+
 
   if ($step < 4) {
     $form['reqtext'] = array(
@@ -463,6 +466,37 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
     }
     else {
       drupal_set_message( t('Your entry for this contest has already been received.'), 'error' );
+    }
+  }
+}
+
+
+function _takepart_contests_form_validate_phone($form, &$form_state) {
+  $pattern = "/^([1]-)?[0-9]{3}-[0-9]{3}-[0-9]{4}$/i";
+  if(isset($form_state['values']['field_profile_phone']['und'][0]['value'])) {
+    $data=$form_state['values']['field_profile_phone']['und'][0]['value'];
+    if((preg_match($pattern, $data) ? false : true)) {
+      form_set_error('phone','Please correct the entry in the phone number field.');
+    }
+  }
+}
+
+function _takepart_contests_form_validate_email($form, &$form_state) {
+  $pattern = "/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$/i";
+  if(isset($form_state['values']['field_profile_email']['und'][0]['value'])) {
+    $data=$form_state['values']['field_profile_email']['und'][0]['value'];
+    if((preg_match($pattern, $data) ? false : true)) {
+      form_set_error('phone','Please correct the entry in the email field.');
+    }
+  }
+}
+
+function _takepart_contests_form_validate_zip($form, &$form_state) {
+  $pattern = "/^([0-9]{5})(-[0-9]{4})?$/i";
+  if(isset($form_state['values']['field_profile_zip']['und'][0]['value'])) {
+    $data=$form_state['values']['field_profile_zip']['und'][0]['value'];
+    if((preg_match($pattern, $data) ? false : true)) {
+      form_set_error('phone','Please correct the entry in the zip code field.');
     }
   }
 }
