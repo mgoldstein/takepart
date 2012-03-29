@@ -208,13 +208,14 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
     }
   }
 
- 
+  /* 
   $form['submit_test_2'] = array(
       '#type' => 'submit',
       '#submit' => array($submit),
       '#value' => t("Test Submit"),
       '#weight' => 3000,
   );
+  */
 
 
   if ($step < 4) {
