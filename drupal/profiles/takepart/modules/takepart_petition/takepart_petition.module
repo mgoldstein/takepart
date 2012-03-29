@@ -207,7 +207,7 @@ EOJ;
     
     if ($form->goal > 0) {
       $percent_to_goal = ($signature_count / $form->goal) * 100.0;
-      $progress_bar_num = (string)(floor($percent) - (floor($percent) % 10));
+      $progress_bar_num = (string)(floor($percent_to_goal) - (floor($percent_to_goal) % 10));
       $progress_bar_url = url(drupal_get_path('module', 'takepart_petition') .'/images/petition-status-bar-'.$progress_bar_num .'.png');
     } else {
       $percent_to_goal = 0.0;
@@ -716,7 +716,7 @@ function _takepart_petition_sign_petition_form_validate($form, &$form_state) {
 }
 
 function _takepart_petition_set_signup_field(&$fields, $id, $value) {
-  if (isset($fields[id])) {
+  if (isset($fields[$id])) {
     $fields[$id]['value'] = array(
       'type' => 'value',
       'value' => $value,
