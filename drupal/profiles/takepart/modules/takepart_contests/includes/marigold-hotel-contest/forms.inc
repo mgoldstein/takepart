@@ -171,10 +171,10 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
   
   //State:
   if(array_key_exists('field_profile_state', $form)) {
-    if(array_key_exists('#attributes', $form['field_profile_state'])) {
-      $form['field_profile_state']['#attributes'] = array_merge(array('tabindex' => $tabindexstart+6), $form['field_profile_state']['#attributes']);
+    if(array_key_exists('#attributes', $form['field_profile_state']['und'])) {
+      $form['field_profile_state']['und']['#attributes'] = array_merge(array('tabindex' => $tabindexstart+6), $form['field_profile_state']['#attributes']);
     } else {
-      $form['field_profile_state']['#attributes'] = array('tabindex' => $tabindexstart+5);
+      $form['field_profile_state']['und']['#attributes'] = array('tabindex' => $tabindexstart+5);
     }
   }
   
