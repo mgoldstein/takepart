@@ -3008,6 +3008,10 @@ body.node-type-takepart-campaign #highlighted {
     padding: 10px 0 0 0;
 }
 
+body.multipage-campaign #highlighted {
+    padding:0;
+}
+
 #block-context-related-menu-the-cove-campaign {
     padding-top: 40px;
 }
