@@ -1,7 +1,4 @@
-
 /* layout styles */
-
-
 body.two-sidebars #left-rail, 
 body.sidebar-first #left-rail{
     width:140px;
@@ -12,7 +9,7 @@ body.sidebar-first #left-rail{
 }
 .front .region-highlighted,
 .campaign-page .region-highlighted{
-    padding:0;
+    padding:10px;
 }
 .node-type-takepart-group .region-highlighted{
     padding:35px 0px 0;
@@ -78,7 +75,6 @@ h1{
     /* margin:0 0 60px 0; */
 }
 
-
 /* Tabs */
 .not-logged-in .tabs{
     display:none;
@@ -88,8 +84,6 @@ h1{
 .block-boxes-headline h2#screaming-headline {
     height: 68px;
 }
-
-
 
 /* navigation */
 ul#top-nav li a:hover{
@@ -125,9 +119,6 @@ ul#top-nav li a:hover{
 .node-type-takepart-group .region-highlighted .field-name-field-group-main-image{
     clear:both;
 }
-
-
-
 
 /***** Taxonomy Search List *****/
 .view-taxonomy-search-list .views-field-url a{
@@ -655,7 +646,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 
 /* currated topic front page(s) */
 .block-boxes-title-primary-features .view-featured-items,
-.block-boxes-current-featured_items .view-featured-items{
+.block-boxes-current-featured_items .view-featured-items {
     overflow:hidden;
     padding-bottom:0;
 }
@@ -665,28 +656,28 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 }
 
 /* quick study styling */
-.block-boxes-title-quick-study{
+.block-boxes-title-quick-study {
     background-color:#f7fcff;
     margin-bottom:25px;
 }
 
-.block-boxes-title-quick-study h2{
+.block-boxes-title-quick-study h2 {
     color:#676767;
     padding: 8px 0 5px 20px;
     border-bottom: 1px dotted silver;
     background:url('../images/bg-quick-study.png') no-repeat 150px 6px;
 }
-.block-boxes-title-quick-study .field-name-field-topic-featured-quick-study	{
+.block-boxes-title-quick-study .field-name-field-topic-featured-quick-study {
     padding:10px 15px 10px 20px;
 }
-.block-boxes-title-quick-study .field-name-field-topic-featured-quick-study h2{
+.block-boxes-title-quick-study .field-name-field-topic-featured-quick-study h2 {
     border:none;
     font-size:16px;
     margin-bottom:10px;
     padding:0;
     background:none;
 }
-.block-boxes-title-quick-study .field-name-field-topic-featured-quick-study h2 a{
+.block-boxes-title-quick-study .field-name-field-topic-featured-quick-study h2 a {
     color:black;
 }
 .block-boxes-title-quick-study .field-name-field-topic-featured-quick-study .field-name-field-quickstudy-main-image{
@@ -704,9 +695,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     margin:0;
 }
 
-
 /* search box */
-
 #top-search .form-type-textfield{
     border: none;
     color: #999999;
@@ -717,7 +706,6 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     /*width:140px;*/
     float: left;
 }
-
 
 .multipage-campaign #top-search .form-text,
 .multipage-campaign #top-search .form-text:focus,
@@ -739,7 +727,6 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     margin-top: -1px;
     padding:0;
 }
-
 
 /* search results */
 #search-api-page-search-form {
@@ -973,7 +960,6 @@ p.search-performance{
 }
 
 /* footer campaigns */
-
 #footer #campaign-links{
     border-bottom: 1px dotted silver;
     margin: 0 0 10px;
@@ -1022,16 +1008,6 @@ p.search-performance{
     background-position: -783px -59px;
 }
 
-
-/* image captions */
-/*
-.field-name-field-blogpost-main-image img,
-.field-name-field-article-main-image img {
-    display:block;
-    border:1px solid #6a6a6a;
-    margin-top:10px;
-}
-*/
 .photo-wrapper{
     margin: 0;   
     border-bottom: 1px dotted #999999;
@@ -1079,7 +1055,6 @@ p.search-performance{
     font-size: 11px;
     line-height:12px;
 }
-
 
 /* pagers */
 .item-list ul.pager{
@@ -1224,7 +1199,6 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
     background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
 }
 
-
 /* homepage promo box */
 .block-boxes-title-features .views-row {
     position: relative;
@@ -1233,7 +1207,6 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
 .block-boxes-title-features .views-field-field-display-tag .field-content{
     margin-top:0;
 }
-
 
 /* media browser for wysiwyg */
 #overlay-container #media-tab-brightcove a.fake-ok,
@@ -1249,8 +1222,6 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
     text-align: center;
 }
 
-
-
 /* global footer links */
 ul#global-links {
     text-align: left;
@@ -1258,14 +1229,7 @@ ul#global-links {
     width:auto;
 }
 
-
-
-
 /* campaign page */
-
-
-
-
 .field-name-field-tp-campaign-alliances tbody{
     border-top:none;
 }
@@ -1324,10 +1288,13 @@ ul#global-links {
     line-height:26px;
 }
 
+#block-menu-menu-thecove ul.menu li a.active { 
+    border: none;
+}
 
-#block-menu-menu-thecove ul.menu li a.active { border: none;}
-
-#block-menu-menu-thecove ul.menu  {top: 35px;}
+#block-menu-menu-thecove ul.menu  {
+    top: 35px;
+}
 
 .node-type-takepart-list .node-takepart-list{
     margin-bottom:20px;
@@ -1340,7 +1307,6 @@ ul#global-links {
     padding:0;
     margin:0;
 }
-
 
 .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors .view-groups .views-field-field-group-logo,
 .block-boxes-title-sponsored-by .field-name-field-tp-campaign-sponsors .view-groups .views-field-title{
@@ -1361,7 +1327,6 @@ ul#global-links {
     font-weight:bold;
 }
 
-
 /* audio page */
 .node-type-audio .field-name-field-audio-asset{
     margin:10px 0 0 0;	
@@ -1380,11 +1345,7 @@ ul#global-links {
     float:left;
 }
 
-
-
-
 /* unsubscribe page */
-
 #-newsletter-unsubscribe-all-form{
     color: #333333;
     font-size: 12px;
@@ -1440,13 +1401,11 @@ ul#global-links {
     display:block;
 }
 
-
 /* node topics */
 .node-topics {
     border-bottom: 1px dotted silver;
     border-top: 1px dotted silver;
 }
-
 
 /* this is needed because embeddable will display the node title, which we donot want sometimes
 right now is specific to node-openpublish-photo-gallery, but change as needed */
