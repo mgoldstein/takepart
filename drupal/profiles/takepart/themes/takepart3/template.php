@@ -420,6 +420,12 @@ function takepart3_field__field_actionheaderimghref(&$vars) {
     return sprintf('<a href="%s"><img src="%s" /></a>', $link, $url);
 }
 
+function takepart3_form_boxes_box_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_state['box']->options['view'] == 'campaigns--block_2') {
+    $form['options']['settings']['nid']['#maxlength'] = 255;
+  }
+}
+
 // Preprocess author field
 function takepart3_field__field_author(&$vars) {
 
