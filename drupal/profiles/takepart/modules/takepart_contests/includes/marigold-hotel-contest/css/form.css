@@ -620,3 +620,27 @@
   width:80px;
   float:left;
 }
+
+#edit-field-marigold-terms div.form-item-field-marigold-terms-und {
+  margin-top: 4px;
+  margin-left: 12px;
+  margin-bottom: 0;
+}
+
+#edit-field-marigold-terms div.description p
+{
+  display: none;
+}
+
+#edit-field-marigold-terms div.description p.mg-contest-terms-label
+{
+  display: inline;
+  font-size: 10px;
+  font-style: italic;
+  line-height: 16px;
+}
+
+#edit-field-marigold-terms div.description p a
+{
+  color: #770bcb;
+}

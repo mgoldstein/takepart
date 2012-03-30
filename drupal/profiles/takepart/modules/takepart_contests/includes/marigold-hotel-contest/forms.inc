@@ -55,6 +55,9 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
     'columns' => 40,
   );
   
+  $form['field_marigold_terms']['#weight'] = 2007;
+  $form['field_marigold_terms']['#access'] = ($step == 4);
+  
   // Set the tab order of the Final Information fields
   // TODO: Layout the form so that explicitly setting the tab order is not
   // required
@@ -98,7 +101,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
       }
     }
   }
-
+  
   // add the confirmation label to group 3
   if ($step == 3) {
     $form['confirm_msg'] = array(
@@ -237,7 +240,7 @@ function takepart_contests_contest_entry_form_1_validate($form, $form_state) {
       }
     }
   }
-  else if (($step == 3 || $step == 4) && ($submit_trigger != t('Previous step'))) {
+  if (($step == 3 || $step == 4) && ($submit_trigger != t('Previous step'))) {
    
     // TODO: replace this validation with fields of the appropriate type
     
@@ -270,6 +273,14 @@ function takepart_contests_contest_entry_form_1_validate($form, $form_state) {
       else {
         form_error($form['field_profile_phone'], 'Phone field is not valid.');
       }
+    }
+  }
+  if (($step == 4) && ($submit_trigger != t('Previous step'))) {
+    $language = $form['field_marigold_terms']['#language'];
+    $accept_terms = $form_state['values']['field_marigold_terms'][$language][0]['value'];
+    if ((string)$accept_terms !== '1') {
+      $message = t("Please confirm you have read and accept the official contest rules, TakePart's terms and conditions, and privacy policy");
+      form_error($form['field_marigold_terms'], $message);
     }
   }
 }
