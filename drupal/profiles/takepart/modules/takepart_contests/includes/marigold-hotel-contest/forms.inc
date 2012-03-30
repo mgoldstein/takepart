@@ -210,7 +210,24 @@ function takepart_contests_contest_entry_form_1_validate($form, $form_state) {
 
   $submit_trigger = $form_state['triggering_element']['#value'];
   $step = $form_state['storage']['step'];
-  if (($step == 3 || $step == 4) && ($submit_trigger != t('Previous step'))) {
+  if (($step == 2 || $step == 4) && ($submit_trigger != t('Previous step'))) {
+  
+    // TODO: replace this validation with a better field type selection
+    $language = $form['field_custom_272']['#language'];
+    $minimum_age = variable_get('marigold_minimum_age', 50);
+    if (! isset($form_state['values']['field_custom_272'][$language][0])) {
+      $message = t('Please confirm that you are @age years old or older.', array('@age' => $minimum_age));
+      form_error($form['field_custom_272'], $message);
+    }
+    else {
+      $age_confirmation = $form_state['values']['field_custom_272'][$language][0]['value'];
+      if ((string)$age_confirmation !== '0') {
+        $message = t('Please confirm that you are @age years old or older.', array('@age' => $minimum_age));
+        form_error($form['field_custom_272'], $message);
+      }
+    }
+  }
+  else if (($step == 3 || $step == 4) && ($submit_trigger != t('Previous step'))) {
    
     // TODO: replace this validation with fields of the appropriate type
     
