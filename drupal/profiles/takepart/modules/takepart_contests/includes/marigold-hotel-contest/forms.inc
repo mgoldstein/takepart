@@ -159,7 +159,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
              if (array_key_exists($value->{'children'}[$i], $form)) {
                if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
                  $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+8);
-                 $form[$value->{'children'}[$i]]['und'][0]['value']['#element_validate'] = array('_takepart_contests_form_validate_phone');
+                 //$form[$value->{'children'}[$i]]['und'][0]['value']['#element_validate'] = array('_takepart_contests_form_validate_phone');
                }
              }
            }                     
