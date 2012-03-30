@@ -11,7 +11,7 @@ function theme_takepart_contests_contest_entry_form_1(&$variables) {
   if(!isset($form['#step']['#value'])) {
     drupal_add_library('system', 'ui');
     drupal_add_js(drupal_get_path('module', $modulename)
-      . '/includes/marigold-hotel-contest/js/preloadcssimages.jquery.js');
+      . '/includes/marigold-hotel-contest/js/jquery.preloader.js');
     drupal_add_js(drupal_get_path('module', $modulename)
       . '/includes/marigold-hotel-contest/js/ui.checkbox.js');
     drupal_add_js(drupal_get_path('module', $modulename)
