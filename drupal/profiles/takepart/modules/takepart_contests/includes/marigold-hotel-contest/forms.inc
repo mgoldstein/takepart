@@ -66,12 +66,22 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
     $tabindex = 18;
     foreach ($final_information_fields as $field_name) {
       $language = $form[$field_name]['#language'];
-      if (! isset($form[$field_name][$language][0]['value']['#attributes'])) {
-        $form[$field_name][$language][0]['value']['#attributes'] = array();
+      if ($field_name == 'field_profile_state') {
+        if (! isset($form[$field_name][$language]['#attributes'])) {
+          $form[$field_name][$language]['#attributes'] = array();
+        }
+        $form[$field_name][$language]['#attributes'] += array(
+          'tabindex' => $tabindex,
+        );
       }
-      $form[$field_name][$language][0]['value']['#attributes'] += array(
-        'tabindex' => $tabindex,
-      );
+      else {
+        if (! isset($form[$field_name][$language][0]['value']['#attributes'])) {
+          $form[$field_name][$language][0]['value']['#attributes'] = array();
+        }
+        $form[$field_name][$language][0]['value']['#attributes'] += array(
+          'tabindex' => $tabindex,
+        );
+      }
       $tabindex += 1;
     }
   }
