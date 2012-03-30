@@ -148,6 +148,18 @@
   background:url(../images/back_step_rollover.png) no-repeat scroll left top transparent;
 }
 
+
+#takepart_contests_form_wrapper_1  .form-item-field-custom-272-und .form-required
+{
+	display:none;
+}
+
+#takepart_contests_form_wrapper_1  #edit-field-custom-272-und label:after
+{
+  content: "*";
+  color: #F37E3B;
+}
+
 #takepart_contests_form_wrapper_1 .button
 {
   display:block;
@@ -216,6 +228,11 @@
   border:0 none;
   padding:0;
   margin-bottom:18px;
+}
+
+#takepart_contests_form_wrapper_1  fieldset#takepart_contests_contest_entry_marigold_hotel_contest_entry_form_group_step1
+{
+  margin-bottom:0px;
 }
 
 #takepart_contests_form_wrapper_1 fieldset legend span
@@ -534,12 +551,12 @@
 
 #takepart_contests_form_wrapper_1 .step4wrapper legend {
   float: left;
-  width: 700px;
+  width: 690px;
 }
 
 #takepart_contests_form_wrapper_1 .step4wrapper .field-widget-text-textarea .form-item {
   float: left;
-  width: 700px;
+  width: 690px;
 }
 
 #takepart_contests_form_wrapper_1 .step4wrapper .field-widget-text-textarea .textarea_edit {

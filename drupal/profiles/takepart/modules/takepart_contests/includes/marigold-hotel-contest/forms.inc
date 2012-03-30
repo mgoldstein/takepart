@@ -56,12 +56,14 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
   );
   
   // Set the tab order of the Final Information fields
+  // TODO: Layout the form so that explicitly setting the tab order is not
+  // required
   if ($step == 3 || $step == 4) {
     $final_information_fields = array(
       'field_profile_email', 'field_profile_first_name', 'field_profile_last_name',
       'field_profile_addr1', 'field_profile_addr2', 'field_profile_city',
       'field_profile_state', 'field_profile_zip', 'field_profile_phone',);
-    $tabindex = _takepart_contests_gettabindex($form, 'field_profile_email');
+    $tabindex = 18;
     foreach ($final_information_fields as $field_name) {
       $language = $form[$field_name]['#language'];
       if (! isset($form[$field_name][$language][0]['value']['#attributes'])) {
@@ -97,7 +99,6 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
     $form['#group_children']['confirm_msg'] = 'group_step3'; 
   }
 
-  
   // show only those fields for the current step
   if($step != 4) {
     $current_group = 'group_step' . $step;
@@ -191,12 +192,6 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
     $form['field_custom_273'][$language][0]['#default_value']['value'] = $default_date;
   }
   
-  //Fill form with 
-  //_takepart_contests_refillfromstep($form, $form_state, $step);
-
-//  _takepart_contests_setrequired($form, $step);
-
-  
   return $form;
 }
 
@@ -212,79 +207,49 @@ function takepart_contests_contest_entry_form_1_validate($form, $form_state) {
   // validate the attached fields
   $entry = $form_state['takepart_contests_contest_entry'];
   field_attach_form_validate('takepart_contests_contest_entry', $entry, $form, $form_state);
+
+  $submit_trigger = $form_state['triggering_element']['#value'];
+  $step = $form_state['storage']['step'];
+  if (($step == 3 || $step == 4) && ($submit_trigger != t('Previous step'))) {
+   
+    // TODO: replace this validation with fields of the appropriate type
+    
+    $language = $form['field_profile_email']['#language'];
+    $mail = $form_state['values']['field_profile_email'][$language][0]['value'];
+    if (! empty($mail)) {
+      if (! valid_email_address($mail)) {
+        form_error($form['field_profile_email'], 'Email field is not valid.');
+      }
+    }
+    
+    $language = $form['field_profile_zip']['#language'];
+    $zip = $form_state['values']['field_profile_zip'][$language][0]['value'];
+    
+    $pattern = "/^([0-9]{5})(-[0-9]{4})?$/";
+    if ((!empty($zip)) && (!preg_match($pattern, $zip))) {
+      form_error($form['field_profile_zip'], 'Zip field is not valid.');
+    }
+    
+    $language = $form['field_profile_phone']['#language'];
+    $phone = $form_state['values']['field_profile_phone'][$language][0]['value'];
+
+    $pattern  = "/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/";
+    if (! empty($phone)) {
+      $matches = array();
+      if(preg_match($pattern, $phone, $matches)) {
+        $phone = sprintf("(%s) %s-%s", $matches[1], $matches[2], $matches[3]);
+        $form_state['values']['field_profile_phone'][$language][0]['value'] = $phone;
+      }
+      else {
+        form_error($form['field_profile_phone'], 'Phone field is not valid.');
+      }
+    }
+  }
 }
 
 function takepart_contests_contest_entry_form_callback_1($form, $form_state) {
   return $form;
 }
-
-function _takepart_contests_refillfromstep(&$form, &$form_state, $step) {
-  if(array_key_exists('#fieldgroups', $form)) {
-    //Itterate through groups and find the fields applicable to the groups:
-    foreach ($form['#fieldgroups'] as $gkey => $gvalue) {
-      if(strrpos($gkey, 'group_step') > -1) {
-        $groupstep = substr($gkey, strlen('group_step'), strlen($gkey));
-        $fieldset = $gvalue->children;
-        //Itterate through the form state, and match up saved fields with their cooresponding groups:
-        if(isset($form_state['storage']['values']['step' . $groupstep])) {
-          foreach ($form_state['storage']['values']['step' . $groupstep] as $fieldKey => $storagevalue) {
-            //If we're on step 4, fill them all, otherwise fill the fields in the group/step we are on:
-            if (((!is_null(array_search($fieldKey, $fieldset))) || ($step ==4)) && array_key_exists($fieldKey, $form) && is_array($form[$fieldKey])) {
-              //Place the values from form state back into the form:
-              foreach ($storagevalue['und'] as $und_key => $und_value) {
-                if(array_key_exists('#default_value', $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und']['#default_value'])) {
-                  //Fill Checkboxes:
-                  if(array_key_exists('#type', $form[$fieldKey]['und']) && $form[$fieldKey]['und']['#type'] == "checkboxes") {
-                    $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
-                    $form[$fieldKey]['und'][$und_value['value']]['#attributes'] = array('checked' => 'checked');
-                  }
-                  //Fill Selects:
-                  if(array_key_exists('#type', $form[$fieldKey]['und']) && $form[$fieldKey]['und']['#type'] == "select") {
-                    $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
-                  }
-                } else if (array_key_exists($und_key, $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und'])) {
-                  //Fill Date Combos:
-                  if(array_key_exists('#type', $form[$fieldKey]['und'][$und_key]) && $form[$fieldKey]['und'][$und_key]['#type'] == 'date_combo') {
-                    if(is_array($form[$fieldKey]['und'][$und_key]['#default_value'])) {
-                      $form[$fieldKey]['und'][$und_key]['#default_value']['value'] = date('Y-m-d H:i:s', strtotime($und_value['value']));
-                    }
-                  } else {
-                    //Fill Text Areas and Text Fields:
-                    if(array_key_exists('#type', $form[$fieldKey]['und'][$und_key]['value']) && ($form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textarea' || $form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textfield')) {
-                      $form[$fieldKey]['und'][$und_key]['value']['#default_value'] = $und_value['value'];
-                    }
-                  }
-                }
-
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-function _takepart_contests_gettabindex(&$form, $match) {
-  $x = 0;
-  if(array_key_exists('#fieldgroups', $form)) {
-    foreach ($form['#fieldgroups'] as $gkey => $gvalue) {
-      if(strrpos($gkey, 'group_step') > -1) {
-        $groupstep = substr($gkey, strlen('group_step'), strlen($gkey));
-        $fieldset = $gvalue->children;
-        $matchloc = array_search($match, $fieldset);
-        if(empty($matchloc)) {
-          $x = $x + count($fieldset);
-        } else {
-          $x = $x + $matchloc + 1;
-        }
-      }
-    }
-  }
-  return $x;
-}
-
-
 
 function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
 
@@ -391,6 +356,37 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
     }
     else {
       drupal_set_message( t('Your entry for this contest has already been received.'), 'error' );
+    }
+  }
+}
+
+
+function _takepart_contests_form_validate_phone($form, &$form_state) {
+  $pattern = "/^([1]-)?[0-9]{3}-[0-9]{3}-[0-9]{4}$/i";
+  if(isset($form_state['values']['field_profile_phone']['und'][0]['value'])) {
+    $data=$form_state['values']['field_profile_phone']['und'][0]['value'];
+    if((preg_match($pattern, $data) ? false : true)) {
+      form_set_error('phone','Please correct the entry in the phone number field.');
+    }
+  }
+}
+
+function _takepart_contests_form_validate_email($form, &$form_state) {
+  $pattern = "/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$/i";
+  if(isset($form_state['values']['field_profile_email']['und'][0]['value'])) {
+    $data=$form_state['values']['field_profile_email']['und'][0]['value'];
+    if((preg_match($pattern, $data) ? false : true)) {
+      form_set_error('phone','Please correct the entry in the email field.');
+    }
+  }
+}
+
+function _takepart_contests_form_validate_zip($form, &$form_state) {
+  $pattern = "/^([0-9]{5})(-[0-9]{4})?$/i";
+  if(isset($form_state['values']['field_profile_zip']['und'][0]['value'])) {
+    $data=$form_state['values']['field_profile_zip']['und'][0]['value'];
+    if((preg_match($pattern, $data) ? false : true)) {
+      form_set_error('phone','Please correct the entry in the zip code field.');
     }
   }
 }
