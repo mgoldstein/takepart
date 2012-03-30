@@ -148,6 +148,18 @@
   background:url(../images/back_step_rollover.png) no-repeat scroll left top transparent;
 }
 
+
+#takepart_contests_form_wrapper_1  .form-item-field-custom-272-und .form-required
+{
+	display:none;
+}
+
+#takepart_contests_form_wrapper_1  #edit-field-custom-272-und label:after
+{
+  content: "*";
+  color: #F37E3B;
+}
+
 #takepart_contests_form_wrapper_1 .button
 {
   display:block;
