@@ -128,7 +128,7 @@ function takepart_user_customizations_field_default_fields() {
       'bundle' => 'user',
       'default_value' => array(
         0 => array(
-          'value' => 0,
+          'value' => 1,
         ),
       ),
       'deleted' => '0',
