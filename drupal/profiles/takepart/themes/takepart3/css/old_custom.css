@@ -1200,10 +1200,11 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
 }
 
 /* homepage promo box */
+/*
 .block-boxes-title-features .views-row {
     position: relative;
 }
-
+*/
 .block-boxes-title-features .views-field-field-display-tag .field-content{
     margin-top:0;
 }
