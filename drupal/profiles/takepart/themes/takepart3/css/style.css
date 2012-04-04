@@ -92,11 +92,14 @@ hr {
 }
 
 /* homepage features block */
-.block-boxes-title-features {
+/* .block-boxes-title-features {
+    margin:0 0 20px 0;
+    padding-bottom:15px;
+} */
+body.front .main-content .block-boxes-current-promo {
     margin:0 0 20px 0;
     padding-bottom:15px;
 }
-
 
 ul.dots li
 {
@@ -483,7 +486,10 @@ ul,ol
 
 .block-boxes-title-features .views-field-title a,
 .block-boxes-title-features .views-field-field-article-subhead a,
-.block-boxes-title-features .views-field-nid span a
+.block-boxes-title-features .views-field-nid span a, 
+body.front .main-content .block-boxes-current-promo .views-field-title a,
+body.front .main-content .block-boxes-current-promo .views-field-field-article-subhead a,
+body.front .main-content .block-boxes-current-promo .views-field-nid span a
 {
     color:#000;
     line-height:20px;
@@ -491,7 +497,8 @@ ul,ol
     text-decoration:none;
 }
 
-.block-boxes-title-features .views-field-nid span a:hover
+.block-boxes-title-features .views-field-nid span a:hover,
+body.front .main-content .block-boxes-current-promo .views-field-nid span a:hover
 {
     color:#1CA9E7;
     text-decoration:none;
@@ -503,7 +510,12 @@ ul,ol
 .block-boxes-title-features .views-field-field-article-subhead,
 .block-boxes-title-features .views-field-field-page-subhead,
 .block-boxes-title-features .views-field-nid,
-.block-boxes-title-features .views-field-field-promo-text
+.block-boxes-title-features .views-field-field-promo-text,
+body.front .main-content .block-boxes-current-promo .views-field-title,
+body.front .main-content .block-boxes-current-promo .views-field-field-article-subhead,
+body.front .main-content .block-boxes-current-promo .views-field-field-page-subhead,
+body.front .main-content .block-boxes-current-promo .views-field-nid,
+body.front .main-content .block-boxes-current-promo .views-field-field-promo-text
 {
     font-size:15px;
     padding:0 10px;
@@ -516,13 +528,22 @@ ul,ol
 
 .main-content .block-boxes-title-features .views-row:hover .views-field-title a,
 .main-content .block-boxes-title-features .views-row:hover .views-field-field-article-subhead a,
-.main-content .block-boxes-title-features .views-row:hover .views-field-nid a
+.main-content .block-boxes-title-features .views-row:hover .views-field-nid a, 
+body.front .main-content .block-boxes-current-promo .views-row:hover .views-field-title a, 
+body.front .main-content .block-boxes-current-promo .views-row:hover .views-field-field-article-subhead a,
+body.front .main-content .block-boxes-current-promo .views-row:hover .views-field-nid a
 {
     color:#1ca9e7;
     text-decoration:none;
 }
 
-.main-content .block-boxes-title-features .views-row-4, .main-content .block-boxes-title-features .views-row-7, .main-content .block-boxes-title-features .views-row-10 {
+.main-content .block-boxes-title-features .views-row-4,
+.main-content .block-boxes-title-features .views-row-7,
+.main-content .block-boxes-title-features .views-row-10, 
+body.front .main-content .block-boxes-current-promo .views-row-4,
+body.front .main-content .block-boxes-current-promo .views-row-7,
+body.front .main-content .block-boxes-current-promo .views-row-10
+{
     clear:both;
 }
 
@@ -846,7 +867,8 @@ h1.title a:hover {
 
 .main-content .node-topic-front h2,
 .main-content .block-boxes h2,
-.main-content .block-boxes-title-features h2
+.main-content .block-boxes-title-features h2,
+body.front .main-content .block-boxes-current-promo h2
 {
     border-top:1px dotted #000;
     margin:0;
@@ -890,6 +912,7 @@ h1.title a:hover {
 .page-taxonomy-term h1.title span,
 .main-content .node-topic-front h2 span,
 .main-content .block-boxes-title-features h2 span,
+body.front .main-content .block-boxes-current-promo h2 span,
 .main-content .block-boxes h2 span {
     padding:0 8px 0 0;
     background:none repeat scroll 0 0 #FFF;
@@ -909,7 +932,9 @@ h1.title a:hover {
 /*featured blocks, img gallery styles */
 .main-content .block-boxes-title-secondary-headlines .views-row,
 .main-content .block-boxes-title-features .views-row,
-.main-content .block-boxes-title-secondary-features .views-row {
+.main-content .block-boxes-title-secondary-features .views-row, 
+body.front .main-content .block-boxes-current-promo .views-row
+{
     display:table;
     background-color:#FFF;
     margin:5px;
@@ -930,6 +955,7 @@ h1.title a:hover {
     border:none;
 }
 
+body.front .main-content .block-boxes-current-promo .view-content,
 .main-content .block-boxes-title-features .view-content {
     display: inline-block;
     padding: 5px 4px 1px;
@@ -949,14 +975,16 @@ h1.title a:hover {
 .main-content .block-boxes-title-secondary-features .views-field-php {
     margin:10px 0 0 0;
 }
-.main-content .block-boxes-title-features .views-field-field-thumbnail-1
+.main-content .block-boxes-title-features .views-field-field-thumbnail-1, 
+body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail-1
 {
     overflow:visible;
     position:relative;
     width:0;
 }
 
-.main-content .block-boxes-title-features .views-field-field-thumbnail-1 .field-content
+.main-content .block-boxes-title-features .views-field-field-thumbnail-1 .field-content, 
+body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail-1 .field-content
 {
     height:150px;
     width:200px;
@@ -964,29 +992,35 @@ h1.title a:hover {
     margin-bottom:10px;
 }
 
-.main-content .block-boxes-title-features .views-field-field-thumbnail-1 .field-content img
+.main-content .block-boxes-title-features .views-field-field-thumbnail-1 .field-content img,
+body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail-1 .field-content img
 {
     width:200px;
 }
 
 /*hover state*/
-.main-content .block-boxes-title-features .views-row:hover
+.main-content .block-boxes-title-features .views-row:hover, 
+body.front .main-content .block-boxes-current-promo .views-row:hover
 {
     border:3px solid #14ade7;
     margin:2px;
 }
 
-.main-content .block-boxes-title-features .action:hover
+.main-content .block-boxes-title-features .action:hover, 
+body.front .main-content .block-boxes-current-promo .action:hover
 {
     border:3px solid #f7c806 !important;
     margin:2px;
 }
 
-.main-content .block-boxes-title-features .action .views-field-field-display-tag .field-content {
+.main-content .block-boxes-title-features .action .views-field-field-display-tag .field-content,
+body.front .main-content .block-boxes-current-promo .action .views-field-field-display-tag .field-content
+{
     background-color: #f7c806 !important;
 }
 
-.main-content .block-boxes-title-features .views-row:hover .views-field-field-thumbnail-1 .field-content img
+.main-content .block-boxes-title-features .views-row:hover .views-field-field-thumbnail-1 .field-content img, 
+body.front .main-content .block-boxes-current-promo .views-row:hover .views-field-field-thumbnail-1 .field-content img
 {
     position:relative;
 }
@@ -1001,7 +1035,8 @@ h1.title a:hover {
     margin: 0;
 }
 
-.main-content .block-boxes-title-features .views-field-field-display-tag
+.main-content .block-boxes-title-features .views-field-field-display-tag,
+body.front .main-content .block-boxes-current-promo .views-field-field-display-tag
 {
     height:0;
     overflow:visible;
@@ -1010,7 +1045,8 @@ h1.title a:hover {
     position:absolute;
 }
 
-.main-content .block-boxes-title-features .views-field-field-display-tag .field-content
+.main-content .block-boxes-title-features .views-field-field-display-tag .field-content,
+body.front .main-content .block-boxes-current-promo .views-field-field-display-tag .field-content
 {
     background-color: #99BBCC;
     color: #FFFFFF;

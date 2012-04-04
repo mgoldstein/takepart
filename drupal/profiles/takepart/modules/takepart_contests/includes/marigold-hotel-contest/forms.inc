@@ -2,9 +2,18 @@
 
 //Marigold specific forms:
 
-function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op) {
+function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
 
+  // needed for the metrics begin contest tracking cookie
   drupal_add_library('system','jquery.cookie');
+  
+  if (! isset($form_state['storage'])) {
+    $form_state['storage'] = array(
+      'step' => 1,
+      'values' => array(),
+    );
+  }
+  $step = $form_state['storage']['step'];
 
   // add the entity fields to the form
   // the entity itself needs to be stored in the form state with
@@ -12,254 +21,190 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry, $op
   $form_state['takepart_contests_contest_entry'] = $entry;
   field_attach_form('takepart_contests_contest_entry', $entry, $form, $form_state);
 
-  $callback = 'takepart_contests_contest_entry_form_callback_1';
-  $wrapper = 'takepart_contests_form_wrapper_1';
-  $submit = 'takepart_contests_contest_entry_form_submit_1';
-  $reqtext = '<span class="reqtext"><span class="form-required">*</span>Indicates required field</span>';
-
-  $form['#tree'] = TRUE; // We want to deal with hierarchical form values.
-
-  $step = empty($form_state['storage']['step']) ? 1 : $form_state['storage']['step'];
-  $form_state['storage']['step'] = $step;
+  // set the maxlength property on the textarea fields
+  // TODO: Remove the hardcode field names once we have installed the maxlength
+  // module
+  $language = $form['field_custom_265']['#language'];
+  $form['field_custom_265'][$language][0]['value']['#rows'] = 8;
+  $form['field_custom_265'][$language][0]['value']['#attributes'] += array(
+    'maxlength' => 700,
+    'columns' => 40,
+  );
+  $language = $form['field_custom_266']['#language'];
+  $form['field_custom_266'][$language][0]['value']['#rows'] = 8;
+  $form['field_custom_266'][$language][0]['value']['#attributes'] += array(
+    'maxlength' => 700,
+    'columns' => 40,
+  );
+  $language = $form['field_custom_267']['#language'];
+  $form['field_custom_267'][$language][0]['value']['#rows'] = 8;
+  $form['field_custom_267'][$language][0]['value']['#attributes'] += array(
+    'maxlength' => 700,
+    'columns' => 40,
+  );
+  $language = $form['field_custom_270']['#language'];
+  $form['field_custom_270'][$language][0]['value']['#rows'] = 8;
+  $form['field_custom_270'][$language][0]['value']['#attributes'] += array(
+    'maxlength' => 700,
+    'columns' => 40,
+  );
+  $language = $form['field_custom_271']['#language'];
+  $form['field_custom_271'][$language][0]['value']['#rows'] = 8;
+  $form['field_custom_271'][$language][0]['value']['#attributes'] += array(
+    'maxlength' => 700,
+    'columns' => 40,
+  );
   
+  $form['field_marigold_terms']['#weight'] = 2007;
+  $form['field_marigold_terms']['#access'] = ($step == 4);
   
-  //Fill form with 
-  _takepart_contests_refillfromstep($form, $form_state, $step);
-
-
-  foreach ($form as $key => $value) {
-    if ((is_array($form[$key])) && (isset($form[$key]['und'][0]['value']['#description'])) && (!empty($form[$key]['und'][0]['value']['#description']))) {
-      $form[$key]['und'][0]['value']['#title'] = $form[$key]['und'][0]['value']['#description'];
-      $form[$key]['und'][0]['value']['#description'] = "";
-    }
-  }
-
-  _takepart_contests_setrequired($form, $step);
-  
-  $tabindexstart = 0;
-  
-  //Itterate through field groups, if we're on a step that matches a group,
-  //assign field settings to the applicable fields in that group:
-  foreach ($form['#fieldgroups'] as $key => $value) {
-    if(($value->{'group_name'} == 'group_step'.$step) || $step == 4) {
-      if(is_array($value->{'children'})) {
-        for($i = 0; $i < count($value->{'children'}); $i++) {
-          //Describe your idea:
-          if('field_custom_265' == $value->{'children'}[$i]){
-            if (array_key_exists($value->{'children'}[$i], $form)) {
-              if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;     
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-              }
-            }
-          }
-          //How does your idea address a community:
-          if('field_custom_266' == $value->{'children'}[$i]){
-            if (array_key_exists($value->{'children'}[$i], $form)) {
-              if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-              }
-            }
-          }
-          //How would winning $5000:
-          if('field_custom_267' == $value->{'children'}[$i]){
-            if (array_key_exists($value->{'children'}[$i], $form)) {
-              if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-              }
-            }
-          }
-          //What inspires you about this idea:
-          if('field_custom_270' == $value->{'children'}[$i]){
-            if (array_key_exists($value->{'children'}[$i], $form)) {
-              if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-              }
-            }
-          }
-          //How will your work and life experiance help you:
-          if('field_custom_271' == $value->{'children'}[$i]){
-            if (array_key_exists($value->{'children'}[$i], $form)) {
-              if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#columns'] = 40;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#rows'] = 8;
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('maxlength' => "700");
-              }
-            }
-          }
-          //Email:
-          if('field_profile_email' == $value->{'children'}[$i]) {
-            $tabindexstart = _takepart_contests_gettabindex($form, 'field_profile_email');
-            if (array_key_exists($value->{'children'}[$i], $form)) {
-              if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart);
-                $form[$value->{'children'}[$i]]['und'][0]['value']['#element_validate'] = array('_takepart_contests_form_validate_email');
-              }
-             }
-           }
-           //First Name:
-           if('field_profile_first_name' == $value->{'children'}[$i]) {
-             if (array_key_exists($value->{'children'}[$i], $form)) {
-               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+1);
-               }
-             }
-           }
-                 
-           //Last Name:
-           if('field_profile_last_name' == $value->{'children'}[$i]) {
-             if (array_key_exists($value->{'children'}[$i], $form)) {
-               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+2);
-               }
-             }
-           }
-           //Addr1:
-           if('field_profile_addr1' == $value->{'children'}[$i]) {
-             if (array_key_exists($value->{'children'}[$i], $form)) {
-               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+3);
-               }
-             }
-           }
-           //Addr2:
-           if('field_profile_addr2' == $value->{'children'}[$i]) {
-             if (array_key_exists($value->{'children'}[$i], $form)) {
-               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+4);
-               }
-             }
-           }
-           //City:
-           if('field_profile_city' == $value->{'children'}[$i]) {
-             if (array_key_exists($value->{'children'}[$i], $form)) {
-               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+5);
-               }
-             }
-           }
-           //Zip:
-           if('field_profile_zip' == $value->{'children'}[$i]) {
-             if (array_key_exists($value->{'children'}[$i], $form)) {
-               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+7);
-                 $form[$value->{'children'}[$i]]['und'][0]['value']['#element_validate'] = array('_takepart_contests_form_validate_zip');
-               }
-             }
-           }
-           //Phone:
-           if('field_profile_phone' == $value->{'children'}[$i]) {
-             if (array_key_exists($value->{'children'}[$i], $form)) {
-               if(isset($form[$value->{'children'}[$i]]['und'][0]['value'])) {
-                 $form[$value->{'children'}[$i]]['und'][0]['value']['#attributes'] = array('tabindex' => $tabindexstart+8);
-                 //$form[$value->{'children'}[$i]]['und'][0]['value']['#element_validate'] = array('_takepart_contests_form_validate_phone');
-               }
-             }
-           }                     
+  // Set the tab order of the Final Information fields
+  // TODO: Layout the form so that explicitly setting the tab order is not
+  // required
+  if ($step == 3 || $step == 4) {
+    $final_information_fields = array(
+      'field_profile_email', 'field_profile_first_name', 'field_profile_last_name',
+      'field_profile_addr1', 'field_profile_addr2', 'field_profile_city',
+      'field_profile_state', 'field_profile_zip', 'field_profile_phone',);
+    $tabindex = 18;
+    foreach ($final_information_fields as $field_name) {
+      $language = $form[$field_name]['#language'];
+      if ($field_name == 'field_profile_state') {
+        if (! isset($form[$field_name][$language]['#attributes'])) {
+          $form[$field_name][$language]['#attributes'] = array();
         }
-      }
-    }
-  }
-  
-  
-  //State:
-  if(array_key_exists('field_profile_state', $form)) {
-    if(array_key_exists('#attributes', $form['field_profile_state']['und'])) {
-      $form['field_profile_state']['und']['#attributes'] = array_merge(array('tabindex' => $tabindexstart+6), $form['field_profile_state']['#attributes']);
-    } else {
-      $form['field_profile_state']['und']['#attributes'] = array('tabindex' => $tabindexstart+5);
-    }
-  }
-  
-  
-  if($step == 3) {
-    $form['confirm_msg'] = array(
-        '#markup' => "<div class=\"confirm_msg\">Please confirm your information below to finalize your submission.</div>",
-    );    
-    //Add confirm msg to field group:
-    foreach ($form['#fieldgroups'] as $key => $value) {
-      if($value->{'group_name'} == 'group_step3') {
-        if(is_array($value->{'children'})) {
-          $form['#fieldgroups'][$key]->{'children'} = array_merge(array('confirm_msg'),  $form['#fieldgroups'][$key]->{'children'});
-          if(array_key_exists('#group_children', $form)) {
-            $form['#group_children']['confirm_msg'] = 'group_step3';
-          }        
-        }
-      }
-    }
-  }
-
-  if($step == 4) {
-    if(is_array($form['#groups']) && isset($form['#groups']['group_step4_idea'])) {
-      if(is_array($form['#groups']['group_step4_idea']->{'format_settings'}) && isset($form['#groups']['group_step4_idea']->{'format_settings'}['instance_settings']['description'])) {
-        //this should not be visible, see: themes.inc
-        $ideamarkup = ($form['#groups']['group_step4_idea']->{'format_settings'}['instance_settings']['description']);
-        $form['ideamarkup'] = array(
-            '#markup' => $ideamarkup,
+        $form[$field_name][$language]['#attributes'] += array(
+          'tabindex' => $tabindex,
         );
       }
+      else {
+        if (! isset($form[$field_name][$language][0]['value']['#attributes'])) {
+          $form[$field_name][$language][0]['value']['#attributes'] = array();
+        }
+        $form[$field_name][$language][0]['value']['#attributes'] += array(
+          'tabindex' => $tabindex,
+        );
+      }
+      $tabindex += 1;
     }
   }
+  
+  // update the titles of fields that need to use the help text to get around
+  // the length limitation of the title property
+  // TODO: Replace with the takepart_longlabels module
+  foreach ($form as $field_name => &$field) {
+    if (is_array($field)) {
+      if (! empty($field['und'][0]['value']['#description'])) {
+        $field['und'][0]['value']['#title'] = 
+          $field['und'][0]['value']['#description'];
+        $field['und'][0]['value']['#description'] = '';
+      }
+    }
+  }
+  
+  // add the confirmation label to group 3
+  if ($step == 3) {
+    $form['confirm_msg'] = array(
+      '#markup' => "<div class=\"confirm_msg\">Please confirm your information below to finalize your submission.</div>",
+    );
+    $form['#fieldgroups']['group_step3']->children = array_merge(
+      array('confirm_msg',), $form['#fieldgroups']['group_step3']->children);
+    $form['#group_children']['confirm_msg'] = 'group_step3'; 
+  }
 
-  /* 
-  $form['submit_test_2'] = array(
-      '#type' => 'submit',
-      '#submit' => array($submit),
-      '#value' => t("Test Submit"),
-      '#weight' => 3000,
-  );
-  */
-
-
+  // show only those fields for the current step
+  if($step != 4) {
+    $current_group = 'group_step' . $step;
+    foreach ($form['#group_children'] as $field_name => $group_name) {
+      $form[$field_name]['#access'] = ($group_name == $current_group);
+    }
+  }
+  
+  // create the appropriate navigation buttons
   if ($step < 4) {
     $form['reqtext'] = array(
-        '#markup' => $reqtext,
-        '#weight' => 1990,
+      '#markup' => '<span class="reqtext"><span class="form-required">*</span>Indicates required field</span>',
+      '#weight' => 1990,
     );
     $form['next'] = array(
-        '#type' => 'submit',
-        '#value' => t('Next step'),
-        '#submit' => array($submit),
-        '#ajax' => array(
-            'wrapper' => $wrapper,
-            'callback' => $callback,
-        ),
-        '#weight' => 2000,
+      '#type' => 'submit',
+      '#value' => t('Next step'),
+      '#submit' => array('takepart_contests_contest_entry_form_submit_1'),
+      '#ajax' => array(
+        'wrapper' => 'takepart_contests_form_wrapper_1',
+        'callback' => 'takepart_contests_contest_entry_form_callback_1',
+      ),
+      '#weight' => 2000,
     );
   }
   if ($step > 1) {
     $form['prev'] = array(
-        '#type' => 'submit',
-        '#value' => t("Previous step"),
-        // Don't validate when going back:
-        '#limit_validation_errors' => array(),
-        // #submit is required to use #limit_validation_errors
-        '#submit' => array($submit),
-        '#ajax' => array(
-            'wrapper' => $wrapper,
-            'callback' => $callback,
-        ),
-        '#weight' => 2010,
+      '#type' => 'submit',
+      '#value' => t("Previous step"),
+      // Don't validate when going back:
+      '#limit_validation_errors' => array(),
+      // #submit is required to use #limit_validation_errors
+      '#submit' => array('takepart_contests_contest_entry_form_submit_1'),
+      '#ajax' => array(
+        'wrapper' => 'takepart_contests_form_wrapper_1',
+        'callback' => 'takepart_contests_contest_entry_form_callback_1',
+      ),
+      '#weight' => 2010,
     );
   }
   if ($step == 4) {
     $form['submit'] = array(
-        '#type' => 'submit',
-        '#submit' => array($submit),
-        '#value' => t("Submit your information"),
-        '#weight' => 2005,
+      '#type' => 'submit',
+      '#submit' => array('takepart_contests_contest_entry_form_submit_1'),
+      '#value' => t("Submit your information"),
+      '#weight' => 2005,
     );
   }
 
-  $form['#step'] = array('#type' => 'hidden', '#value' => $step);
+  // style the navigation buttons for the current step
+  switch ($step) {
+  
+    case 1:
+      $form['next']['#attributes']['class'][] = 'aboutyou';
+      $form['next']['#takepart_before'] = 'next: ';
+      $form['next']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_next');
+      break;
+    case 2:
+      $form['next']['#attributes']['class'][] = 'finalinfo';
+      $form['next']['#takepart_before'] = 'next: ';
+      $form['next']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_next');
+      $form['prev']['#attributes']['class'][] = 'backtostepone';
+      $form['prev']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_prev');
+      break;
+    case 3:
+      $form['next']['#attributes']['class'][] = 'reviewentry';
+      $form['next']['#takepart_before'] = 'next: ';
+      $form['next']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_next');
+      $form['prev']['#attributes']['class'][] = 'backtosteptwo';
+      $form['prev']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_prev');
+      break; 
+    case 4:
+      $form['submit']['#attributes']['class'][] = 'submitentry';
+      $form['submit']['#takepart_before'] = '';
+      $form['submit']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_next');
+      $form['prev']['#attributes']['class'][] = 'backtostepthree';
+      $form['prev']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_prev');
+      break;
+  }
 
+  $form['#tree'] = TRUE; // We want to deal with hierarchical form values.
+
+  // step field used by theme template to adjust display of step 4
+  $form['#step'] = array('#type' => 'hidden', '#value' => $step);
+  
+  // the date field is a little finicky
+  if (($step == 2 || $step == 4) && isset($form_state['storage']['values']['field_custom_273'])) {
+    $language = $form['field_custom_273']['#language'];
+    $stored_date = $form_state['storage']['values']['field_custom_273'][$language][0]['value'];
+    $default_date = date('Y-m-d H:i:s', strtotime($stored_date));
+    $form['field_custom_273'][$language][0]['#default_value']['value'] = $default_date;
+  }
+  
   return $form;
 }
 
@@ -270,159 +215,141 @@ function takepart_contests_form_takepart_contests_contest_entry_form_1_alter(&$f
   $form['#submit'] = array_diff($form['#submit'], array('metatag_metatags_form_submit'));
 }
 
-function takepart_contests_contest_entry_form_validate_1($form, $form_state) {
+function takepart_contests_contest_entry_form_1_validate($form, $form_state) {
 
   // validate the attached fields
   $entry = $form_state['takepart_contests_contest_entry'];
   field_attach_form_validate('takepart_contests_contest_entry', $entry, $form, $form_state);
+
+  $submit_trigger = $form_state['triggering_element']['#value'];
+  $step = $form_state['storage']['step'];
+  if (($step == 2 || $step == 4) && ($submit_trigger != t('Previous step'))) {
+  
+    // TODO: replace this validation with a better field type selection
+    $language = $form['field_custom_272']['#language'];
+    $minimum_age = variable_get('marigold_minimum_age', 50);
+    if (! isset($form_state['values']['field_custom_272'][$language][0])) {
+      $message = t('Please confirm that you are @age years old or older.', array('@age' => $minimum_age));
+      form_error($form['field_custom_272'], $message);
+    }
+    else {
+      $age_confirmation = $form_state['values']['field_custom_272'][$language][0]['value'];
+      if ((string)$age_confirmation !== '0') {
+        $message = t('Please confirm that you are @age years old or older.', array('@age' => $minimum_age));
+        form_error($form['field_custom_272'], $message);
+      }
+    }
+  }
+  if (($step == 3 || $step == 4) && ($submit_trigger != t('Previous step'))) {
+   
+    // TODO: replace this validation with fields of the appropriate type
+    
+    $language = $form['field_profile_email']['#language'];
+    $mail = $form_state['values']['field_profile_email'][$language][0]['value'];
+    if (! empty($mail)) {
+      if (! valid_email_address($mail)) {
+        form_error($form['field_profile_email'], 'Email field is not valid.');
+      }
+    }
+    
+    $language = $form['field_profile_zip']['#language'];
+    $zip = $form_state['values']['field_profile_zip'][$language][0]['value'];
+    
+    $pattern = "/^([0-9]{5})(-[0-9]{4})?$/";
+    if ((!empty($zip)) && (!preg_match($pattern, $zip))) {
+      form_error($form['field_profile_zip'], 'Zip field is not valid.');
+    }
+    
+    $language = $form['field_profile_phone']['#language'];
+    $phone = $form_state['values']['field_profile_phone'][$language][0]['value'];
+
+    $pattern  = "/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/";
+    if (! empty($phone)) {
+      $matches = array();
+      if(preg_match($pattern, $phone, $matches)) {
+        $phone = sprintf("(%s) %s-%s", $matches[1], $matches[2], $matches[3]);
+        $form_state['values']['field_profile_phone'][$language][0]['value'] = $phone;
+      }
+      else {
+        form_error($form['field_profile_phone'], 'Phone field is not valid.');
+      }
+    }
+  }
+  if (($step == 4) && ($submit_trigger != t('Previous step'))) {
+    $language = $form['field_marigold_terms']['#language'];
+    $accept_terms = $form_state['values']['field_marigold_terms'][$language][0]['value'];
+    if ((string)$accept_terms !== '1') {
+      $message = t("Please confirm you have read and accept the official contest rules, TakePart's terms and conditions, and privacy policy");
+      form_error($form['field_marigold_terms'], $message);
+    }
+  }
 }
 
 function takepart_contests_contest_entry_form_callback_1($form, $form_state) {
   return $form;
 }
 
-
-function _takepart_contests_setrequired(&$form, $step) {
-  if($step != 4) {
-    foreach ($form['#fieldgroups'] as $key => $value) {
-      if(($value->{'group_name'} != 'group_step'.$step)) {
-        if(is_array($value->{'children'})) {
-          for($i = 0; $i < count($value->{'children'}); $i++) {
-              _takepart_contests_setrequired_finder(&$form[$value->{'children'}[$i]]);
-          }
-        }
-      }
-    }
-  }
-}
-
-
-function _takepart_contests_setrequired_finder(&$haystack) {  
-  while (list($key, $value) = each($haystack)) {
-    if(($key == '#required') && (!is_array($value)) && ($haystack[$key] == 1)) {
-      $haystack[$key] = 0;
-    } 
-    if(($key == '#element_validate')) {
-      unset($haystack[$key]);
-    }
-    if(is_array($value)) {
-      _takepart_contests_setrequired_finder($haystack[$key]);
-    }
-  }
-}
-
-
-function _takepart_contests_refillfromstep(&$form, &$form_state, $step) {
-  if(array_key_exists('#fieldgroups', $form)) {
-    //Itterate through groups and find the fields applicable to the groups:
-    foreach ($form['#fieldgroups'] as $gkey => $gvalue) {
-      if(strrpos($gkey, 'group_step') > -1) {
-        $groupstep = substr($gkey, strlen('group_step'), strlen($gkey));
-        $fieldset = $gvalue->children;
-        //Itterate through the form state, and match up saved fields with their cooresponding groups:
-        if(isset($form_state['storage']['values']['step' . $groupstep])) {
-          foreach ($form_state['storage']['values']['step' . $groupstep] as $fieldKey => $storagevalue) {
-            //If we're on step 4, fill them all, otherwise fill the fields in the group/step we are on:
-            if (((!is_null(array_search($fieldKey, $fieldset))) || ($step ==4)) && array_key_exists($fieldKey, $form) && is_array($form[$fieldKey])) {
-              //Place the values from form state back into the form:
-              foreach ($storagevalue['und'] as $und_key => $und_value) {
-                if(array_key_exists('#default_value', $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und']['#default_value'])) {
-                  //Fill Checkboxes:
-                  if(array_key_exists('#type', $form[$fieldKey]['und']) && $form[$fieldKey]['und']['#type'] == "checkboxes") {
-                    $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
-                    $form[$fieldKey]['und'][$und_value['value']]['#attributes'] = array('checked' => 'checked');
-                  }
-                  //Fill Selects:
-                  if(array_key_exists('#type', $form[$fieldKey]['und']) && $form[$fieldKey]['und']['#type'] == "select") {
-                    $form[$fieldKey]['und']['#default_value'][$und_key] = $und_value['value'];
-                  }
-                } else if (array_key_exists($und_key, $form[$fieldKey]['und']) && is_array($form[$fieldKey]['und'])) {
-                  //Fill Date Combos:
-                  if(array_key_exists('#type', $form[$fieldKey]['und'][$und_key]) && $form[$fieldKey]['und'][$und_key]['#type'] == 'date_combo') {
-                    if(is_array($form[$fieldKey]['und'][$und_key]['#default_value'])) {
-                      $form[$fieldKey]['und'][$und_key]['#default_value']['value'] = date('Y-m-d H:i:s', strtotime($und_value['value']));
-                    }
-                  } else {
-                    //Fill Text Areas and Text Fields:
-                    if(array_key_exists('#type', $form[$fieldKey]['und'][$und_key]['value']) && ($form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textarea' || $form[$fieldKey]['und'][$und_key]['value']['#type'] == 'textfield')) {
-                      $form[$fieldKey]['und'][$und_key]['value']['#default_value'] = $und_value['value'];
-                    }
-                  }
-                }
-
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-
-
-function _takepart_contests_gettabindex(&$form, $match) {
-  $x = 0;
-  if(array_key_exists('#fieldgroups', $form)) {
-    foreach ($form['#fieldgroups'] as $gkey => $gvalue) {
-      if(strrpos($gkey, 'group_step') > -1) {
-        $groupstep = substr($gkey, strlen('group_step'), strlen($gkey));
-        $fieldset = $gvalue->children;
-        $matchloc = array_search($match, $fieldset);
-        if(empty($matchloc)) {
-          $x = $x + count($fieldset);
-        } else {
-          $x = $x + $matchloc + 1;
-        }
-      }
-    }
-  }
-  return $x;
-}
-
-
-
 function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
 
   global $user;
   
-  // Save away the current information.
-  $current_step = 'step' . $form_state['storage']['step'];
-
-  if (!empty($form_state['values'])) {
-    $form_state['storage']['values'][$current_step] = $form_state['values'];
-  }
-
-  // Increment or decrement the step as needed. Recover values if they exist.
-  if ($form_state['triggering_element']['#value'] == t('Next step')) {
-    $form_state['storage']['step']++;
-    // Recover our values from $form_state['storage'] to pre-populate them.
-    $step_name = 'step' . $form_state['storage']['step'];
-    if (!empty($form_state['storage']['values'][$step_name])) {
-      $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
-    }
-    $form_state['rebuild'] = TRUE;
-  }
-  if ($form_state['triggering_element']['#value'] == t('Previous step')) {
-    $form_state['storage']['step']--;
-    // Recover our values from $form_state['storage'] to pre-populate them.
-    $step_name = 'step' . $form_state['storage']['step'];
-    if (!empty($form_state['storage']['values'][$step_name])) {
-      $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
-    }
-    $form_state['rebuild'] = TRUE;
-  }
-
-  if ($form_state['triggering_element']['#value'] == t('Test Submit')) {
-    $form_state['storage']['step']++;
-    $form_state['rebuild'] = TRUE;
-  }
+  $current_step = $form_state['storage']['step'];
 
   $submit_trigger = $form_state['triggering_element']['#value'];
-  $final_submit = ($submit_trigger == t('Submit your information'));
-  $test_submit = ($submit_trigger == t('Test Submit'));
-  if ($final_submit || $test_submit) {
+  if ($submit_trigger == t('Next step')) {
 
+    // going on to the next step so save values from this step
+    $current_group = 'group_step' . $current_step;
+    foreach ($form['#group_children'] as $field_name => $group_name) {
+      if ($group_name == $current_group) {
+        if (isset($form_state['values'][$field_name])) {
+          $form_state['storage']['values'][$field_name] =
+            $form_state['values'][$field_name];
+        }
+      }
+    }
+ 
+    // proceed to the next step
+    $form_state['storage']['step']++;
+    
+    // load any values we have for next group in case we have been going
+    // back and forth (step 4 gets all the values)
+    $current_group = 'group_step' . $current_step;
+    foreach ($form['#group_children'] as $field_name => $group_name) {
+      if ($group_name == $current_group || $current_step == 4) {
+        if (isset($form_state['storage']['values'][$field_name])) {
+          $form_state['values'][$field_name] =
+            $form_state['storage']['values'][$field_name];
+        }
+      }
+    }
+    
+    $form_state['rebuild'] = TRUE;
+  }
+  
+  else if ($submit_trigger == t('Previous step')) {
+    
+    // we have limit validation errors turned on so we don't have access to
+    // any partial data the user may have entered
+    
+    // proceed to the previous step
+    $form_state['storage']['step']--;
+
+    // load any values we have for the previous group
+    $current_group = 'group_step' . $current_step;
+    foreach ($form['#group_children'] as $field_name => $group_name) {
+      if ($group_name == $current_group) {
+        if (isset($form_state['storage']['values'][$field_name])) {
+          $form_state['values'][$field_name] =
+            $form_state['storage']['values'][$field_name];
+        }
+      }
+    }
+    
+    $form_state['rebuild'] = TRUE;
+  }
+  else if ($submit_trigger == t('Submit your information')) {
+    
     // get the working entry
     $entry = $form_state['takepart_contests_contest_entry'];
     

@@ -11,7 +11,8 @@
   <a class="addthis_button_twitter mg-contest-addthis-button" tw:via="TakePart">
     <img src="/profiles/takepart/modules/takepart_contests/includes/marigold-hotel-contest/images/share_twitter.png" alt="Share on Twitter" />
   </a>
-  <a class="addthis_button_email mg-contest-addthis-button">
+  <a class="addthis_button_email mg-contest-addthis-button"
+     addthis:title="I entered the Marigold Ideas For Good Contest!">
     <img src="/profiles/takepart/modules/takepart_contests/includes/marigold-hotel-contest/images/share_email.png" alt="Share through Email" />
   </a>
   </div>
@@ -19,7 +20,7 @@
 </div>
 <script type="text/javascript">
   var addthis_config = {
-    ui_email_note: "TakePart.com is giving away $5,000 grants to innovative people over 50 to make improvements in their community. Join me and see The Best Exotic Marigold Hotel in theaters May 4.",
+    ui_email_note: "Dear Friends,\n\nI just entered the Marigold Ideas For Good contest, in advance of the new film, The Best Exotic Marigold Hotel.\n\nDo you know someone whose ideas could improve the lives of others? Send them to takepart.com/marigold/contest today!",
     ui_email_from: "<?php print $_COOKIE['contest_entered_as']; ?>"
   };
   var addthis_share = {

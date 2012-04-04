@@ -256,7 +256,8 @@ function takepart_contests_theme() {
   $result = _takepart_contests_getlist();
   if(!is_null($result)) {
     foreach ($result as $row) {
-      $themes['takepart_contests_contest_entry_form_' . $row->contest_id] = array('render element' => 'form');
+      $contest_form = 'takepart_contests_contest_entry_form_' . $row->contest_id;
+      $themes[$contest_form] = array('render element' => 'form');
     }
   }
   return $themes;
@@ -779,7 +780,7 @@ function _takepart_contests_test_page() {
   $entry = $contest->createEntry();
 
   // get a form for entering the entry data
-  return drupal_get_form('takepart_contests_contest_entry_form', $entry, 'entry');
+  return drupal_get_form('takepart_contests_contest_entry_form', $entry);
 }
 
 function takepart_contests_contest_entry_form($form, &$form_state, $entry, $op) {
