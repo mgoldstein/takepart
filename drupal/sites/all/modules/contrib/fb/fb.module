@@ -275,7 +275,7 @@ function fb_init() {
       $fb_lang = variable_get('fb_language_' . $user_language->language, 'en_US');
     }
 
-    $js_sdk = fb_protocol() . "://connect.facebook.net/$fb_lang/all.js";
+    $js_sdk = fb_protocol() . "://connect.facebook.net/$fb_lang/all.js#". $_fb->getAppId() . "=&xfbml=1";
     fb_js_settings('js_sdk_url', variable_get(FB_VAR_JS_SDK, $js_sdk));
   }
 
