@@ -1951,11 +1951,6 @@ body.node-type-topic-front .submitted-wrapper{
     color: #1CA9E7;
     text-decoration: none;
 }
-.block-boxes-title-primary-features .view-featured-items .views-field-php .field-content a,
-.block-boxes-title-primary .view-featured-items .views-field-php .field-content a {
-    display:block;
-    padding-top:1em;
-}
 .node-type-topic-front .view-featured-items .views-field-php .field-content a,
 .node-type-topic-front .block-boxes-title-primary .view-featured-items .views-field-php .field-content a {
     padding-top: 1em;

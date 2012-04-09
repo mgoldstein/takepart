@@ -15,7 +15,7 @@
     - #666666
     - #cccccc
     - #ededed
-    -  accents:
+    -  accents: 
     - #ffca00
     - #fdab30
 */
@@ -2129,4 +2129,12 @@ body.node-type-takepart-campaign .main-content #content {
 
 .main-content p a.mg-contest-link {
   color: #770bcb;
+}
+
+.block-boxes-title-primary-features .view-featured-items .views-field-php .field-content a,
+.block-boxes-title-primary .view-featured-items .views-field-php .field-content a,
+.node-type-takepart-campaign .view-featured-items .views-field-php .field-content a
+{
+    display:block;
+    padding-top:1em;
 }
