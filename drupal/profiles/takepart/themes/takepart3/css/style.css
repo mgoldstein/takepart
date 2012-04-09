@@ -868,7 +868,8 @@ h1.title a:hover {
 .main-content .node-topic-front h2,
 .main-content .block-boxes h2,
 .main-content .block-boxes-title-features h2,
-body.front .main-content .block-boxes-current-promo h2
+body.front .main-content .block-boxes-current-promo h2, 
+.node-type-takepart-campaign .main-content .block-boxes-current-featured_items h2 
 {
     border-top:1px dotted #000;
     margin:0;
@@ -1497,6 +1498,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     height: 25px;
 }
 
+/*
 .node-type-takepart-campaign .main-content .block-boxes h2 {
     background: none;
     border-top: none;
@@ -1504,6 +1506,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     margin: 0;
     font-weight: bold;
 }
+*/
 
 .node-type-takepart-campaign .main-content .block-boxes-current-taxonomy_search_list h2 {
     border-top:1px dotted #000;
