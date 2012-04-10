@@ -8,8 +8,8 @@ function takepart_petition_entity_info() {
 
     'takepart_petition_form' => array(
       'label' => t('Petition Form'),
-      'entity class' => 'TakePartPetitionForm',
-      'controller class' => 'TakePartPetitionFormController',
+      'entity class' => 'TakePartLastCallPetitionForm',
+      'controller class' => 'TakePartLastCallPetitionFormController',
       'base table' => 'takepart_petition_form',
       'fieldable' => FALSE,
       'exportable' => TRUE,
@@ -22,15 +22,15 @@ function takepart_petition_entity_info() {
       'admin ui' => array(
         'path' => 'admin/structure/petitions/forms',
         'file' => 'takepart_petition.admin.inc',
-        'controller class' => 'TakePartPetitionFormUIController',
+        'controller class' => 'TakePartLastCallPetitionFormUIController',
       ),
       'access callback' => 'takepart_petition_form_access',
     ),
 
     'takepart_petition_signature' => array(
       'label' => t('Petition Signature'),
-      'entity class' => 'TakePartPetitionSignature',
-      'controller class' => 'TakePartPetitionSignatureController',
+      'entity class' => 'TakePartLastCallPetitionSignature',
+      'controller class' => 'TakePartLastCallPetitionSignatureController',
       'base table' => 'takepart_petition_signature',
       'fieldable' => FALSE,
       'entity keys' => array(
@@ -50,7 +50,7 @@ function takepart_petition_entity_info() {
 
     'takepart_petition_ngo' => array(
       'label' => t('Petition NGO'),
-      'entity class' => 'TakePartPetitionNGO',
+      'entity class' => 'TakePartLastCallPetitionNGO',
       'controller class' => 'EntityAPIControllerExportable',
       'base table' => 'takepart_petition_ngo',
       'fieldable' => FALSE,
@@ -64,12 +64,12 @@ function takepart_petition_entity_info() {
       'admin ui' => array(
         'path' => 'admin/structure/petitions/ngos',
         'file' => 'takepart_petition.admin.inc',
-        'controller class' => 'TakePartPetitionNGOUIController',
+        'controller class' => 'TakePartLastCallPetitionNGOUIController',
       ),
       'access callback' => 'takepart_petition_ngo_access',
     ),
   );
-  
+
   return $info;
 }
 
@@ -169,14 +169,14 @@ jQuery(document).ready(function(){
       jQuery("#{$dialog}").dialog({
         modal: true,
         width: 600,
-        buttons: { 
-          OK: function() { 
-            jQuery( this ).dialog( "close" ); 
-          } 
+        buttons: {
+          OK: function() {
+            jQuery( this ).dialog( "close" );
+          }
         }
       });
       jQuery.cookie("petition_reason_shown_for_session", 1);
-    }  
+    }
   }
 });
 EOJ;
@@ -188,7 +188,7 @@ EOJ;
     drupal_add_library('system','jquery.ui.tabs');
     drupal_add_js($signed_check_js, 'inline');
     drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-form-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
-  
+
     $name = substr($delta, 0, -strlen('_form'));
     $form = takepart_petition_forms($name);
 
@@ -199,12 +199,12 @@ EOJ;
 
     $name = substr($delta, 0, -strlen('_progress'));
     $form = takepart_petition_forms($name);
-  
+
     // Use the local signature count
     $signature_count = db_query(
-      "SELECT count(mail) FROM takepart_petition_signature WHERE petition_form = :petition_form", 
-      array(':petition_form' => $name))->fetchField();  
-    
+      "SELECT count(mail) FROM takepart_petition_signature WHERE petition_form = :petition_form",
+      array(':petition_form' => $name))->fetchField();
+
     if ($form->goal > 0) {
       $percent_to_goal = ($signature_count / $form->goal) * 100.0;
       $progress_bar_num = (string)(floor($percent_to_goal) - (floor($percent_to_goal) % 10));
@@ -213,7 +213,7 @@ EOJ;
       $percent_to_goal = 0.0;
       $progress_bar_url = url(drupal_get_path('module', 'takepart_petition') .'/images/petition-status-bar.png');
     }
-    
+
     $variables = array(
       'goal' => $form->goal,
       'signature_count' => $signature_count,
@@ -223,14 +223,14 @@ EOJ;
 
     $progress_js  = 'var tp_petition_signatures_form_name = "'. $name .'";';
     $progress_js .= 'var  tp_petition_signatures_goal = "'. $form->goal . '";';
- 
+
     // Add the css and javascript for the progress bar
     drupal_add_library('system','jquery.cookie');
     drupal_add_library('system','jquery.ui.tabs');
     drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-progress-block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
     drupal_add_js($progress_js, 'inline');
     drupal_add_js(drupal_get_path('module', 'takepart_petition') . '/js/takepart-petition-progress-block.js', array('group' => JS_DEFAULT, 'type' => 'file'));
-  
+
     $subject = $form->label .' (Progress)';
     $content = theme($delta, $variables);
   }
@@ -445,7 +445,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
 
   // get the petition being signed
   $form_state['petition_form'] = $petition_form;
-  
+
   // get the label for the associate campaign mailing list
   /* TODO: Remove hard coded campaign list title */
   $campaign_list_title = 'Last Call at the Oasis';
@@ -464,15 +464,15 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     }
   }
 
-  // create a new signature  
+  // create a new signature
   $signature = entity_create('takepart_petition_signature', array());
   $form_state['signature'] = $signature;
 
-  // build the form  
+  // build the form
 
   $form['#attributes']['class'][] = 'petition-form';
   $form['#attributes']['title'] = $petition_form->label;
-  
+
   $form['instructions'] = array(
     '#type' => 'item',
     '#markup' => '<div class="signatureHeader">Add Your Signature</div><div class="residencyNote">U.S. Residents Only</div>',
@@ -501,7 +501,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
       'class' => array('pet-name-wrapper',),
     ),
   );
-  
+
   $form['form_container']['name_container']['first_name_container'] = array(
     '#type' => 'container',
     '#attributes' => array(
@@ -609,7 +609,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
       'class' => array('pet-form-focus-event',),
     ),
   );
-  
+
   if ($ngo){
 
     $form['form_container']['ngo_opt_in_container'] = array(
@@ -635,7 +635,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
       '#markup' => '<div class="ngoOptInText">'. $ngo_title .'</div>',
     );
   }
-  
+
   $campaign_opt_in_title = t('I would like to receive email updates on '. $campaign_list_title);
   $form['form_container']['opt_in_campaign'] = array(
     '#type' => 'checkbox',
@@ -651,7 +651,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#type' => 'item',
     '#markup' => '<div class="campaignOptInText">'. $campaign_opt_in_title .'</div>',
   );
-  
+
   $form['form_container']['actions'] = array(
     '#weight' => 100,
   );
@@ -670,7 +670,7 @@ function _takepart_petition_sign_petition_form($form, &$form_state, $petition_fo
     '#markup' => '<div class="terms-of-use-txt">By signing, you accept TakePart\'s <a href="/terms-of-use" target="_blank">Terms of Use</a></div>',
     '#weight' => 105,
   );
-  
+
   $reason_to_sign = variable_get('water_bill_of_rights_reason_to_sign');
   $dialog_name = $petition_form->name .'_form_dialog';
   $dialog_title = $petition_form->label;
@@ -690,7 +690,7 @@ function _takepart_petition_sign_petition_form_validate($form, &$form_state) {
   if (! valid_email_address($value)) {
     form_set_error('TakePart Petitions', t('Please enter a valid email address.'));
   }
-  
+
   $value = $form_state['values']['zip_code_5'];
   if (strlen(trim($value)) == 5) {
     if ((!is_numeric($value)) || ($value <= 0)) {
@@ -699,7 +699,7 @@ function _takepart_petition_sign_petition_form_validate($form, &$form_state) {
   } else {
     form_set_error('TakePart Petition Forms', t('Please enter a valid ZIP code.'));
   }
-  
+
   $value = $form_state['values']['zip_code_4'];
   if (strlen(trim($value)) == 4) {
     if ((!is_numeric($value)) || ($value <= 0)) {
@@ -708,7 +708,7 @@ function _takepart_petition_sign_petition_form_validate($form, &$form_state) {
   } else if (strlen(trim($value)) != 0) {
     form_set_error('TakePart Petition Forms', t('Please enter a valid ZIP code.'));
   }
-  
+
   $petition_form = $form_state['petition_form'];
   $cookie_name = $petition_form->name .'_form_submitted';
   setcookie($cookie_name,1,time() + (86400 * 365));
@@ -738,45 +738,45 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
     $ngo_token = 'no_ngo';
     $ngo_opt_in = 0;
   }
-  
+
   // put together the zip code
   if (strlen($form_state['values']['zip_code_4']) == 4) {
     $zip_code = $form_state['values']['zip_code_5'] .'-'. $form_state['values']['zip_code_4'];
   } else {
     $zip_code = $form_state['values']['zip_code_5'];
   }
-  
+
   // submit both forms at once
   $petition_signup = takepart_bsd_signup_list_form_fields(
     $petition_form->petition_form_id);
 
-  _takepart_petition_set_signup_field($petition_signup, 
+  _takepart_petition_set_signup_field($petition_signup,
     $petition_form->mail_field_id, $mail);
 
-  _takepart_petition_set_signup_field($petition_signup, 
+  _takepart_petition_set_signup_field($petition_signup,
     $petition_form->last_name_field_id, $form_state['values']['last_name']);
 
-  _takepart_petition_set_signup_field($petition_signup, 
+  _takepart_petition_set_signup_field($petition_signup,
     $petition_form->first_name_field_id, $form_state['values']['first_name']);
 
-  _takepart_petition_set_signup_field($petition_signup, 
+  _takepart_petition_set_signup_field($petition_signup,
     $petition_form->zip_code_field_id, $zip_code);
 
-  _takepart_petition_set_signup_field($petition_signup, 
+  _takepart_petition_set_signup_field($petition_signup,
     $petition_form->comment_field_id, $form_state['values']['comment']);
 
-  _takepart_petition_set_signup_field($petition_signup, 
+  _takepart_petition_set_signup_field($petition_signup,
     $petition_form->source_ngo_field_id, $ngo_token);
 
-  _takepart_petition_set_signup_field($petition_signup, 
+  _takepart_petition_set_signup_field($petition_signup,
     $petition_form->ngo_opt_in_field_id, $ngo_opt_in);
 
-  _takepart_petition_set_signup_field($petition_signup, 
+  _takepart_petition_set_signup_field($petition_signup,
     $petition_form->campaign_opt_in_field_id, $form_state['values']['opt_in_campaign']);
-  
+
   $campaign_signup = takepart_bsd_signup_list_form_fields(
     $petition_form->campaign_signup_form_id);
-  
+
   _takepart_petition_set_signup_field($campaign_signup,
      $petition_form->campaign_mail_field_id, $mail);
 
@@ -788,7 +788,7 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
 
   // only add the signature if it doesn't already exist
   $already_signed = db_query(
-    "SELECT count(mail) FROM takepart_petition_signature WHERE mail = :mail", 
+    "SELECT count(mail) FROM takepart_petition_signature WHERE mail = :mail",
     array(':mail' => $mail))->fetchField();
   if (! $already_signed) {
 
@@ -803,13 +803,13 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
 
     takepart_petition_signature_save($signature);
   }
-  
+
   $cookie_name = $petition_form->name .'_form_signed';
   setcookie($cookie_name,1,time() + (86400 * 365));
-  
+
   // store the email from the signature for use in the thank you form
   setcookie('petition_signed_as',$mail,time()+(86400 * 365));
-  
+
   // set the petition submitted analytics data cookie
   // the events are fired by the thank you page when
   // it is loaded after a successfully completed submission
@@ -822,7 +822,7 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
     }
     else {
       /* TODO: Remove this hard coded title */
-      $campaign_list_title = 'Last Call at the Oasis';     
+      $campaign_list_title = 'Last Call at the Oasis';
     }
     $tracked_events .= "|". str_replace("|","",$campaign_list_title);
   }
@@ -840,7 +840,7 @@ function _takepart_petition_sign_petition_form_submit($form, &$form_state) {
 function _takepart_petition_signature_count($form_name) {
   // Use the local signature count
   $data = db_query(
-    "SELECT count(mail) FROM takepart_petition_signature WHERE petition_form = :petition_form", 
-    array(':petition_form' => $form_name))->fetchField();  
+    "SELECT count(mail) FROM takepart_petition_signature WHERE petition_form = :petition_form",
+    array(':petition_form' => $form_name))->fetchField();
   return drupal_json_output(array('status' => 0, 'data' => $data));
 }

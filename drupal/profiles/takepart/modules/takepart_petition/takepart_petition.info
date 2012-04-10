@@ -1,5 +1,5 @@
-name = TakePart Petitions
-description = Petitions using Blue State Digital SignUp Forms.
+name = TakePart LastCall Petition
+description = LastCall Petition using Blue State Digital SignUp Forms.
 package = Take Part
 version = VERSION
 core = 7.x

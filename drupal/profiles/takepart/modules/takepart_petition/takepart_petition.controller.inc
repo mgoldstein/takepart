@@ -3,7 +3,7 @@
 /**
  * Petition Form class.
  */
-class TakePartPetitionForm extends Entity {
+class TakePartLastCallPetitionForm extends Entity {
 
   public $name;
   public $label;
@@ -29,7 +29,7 @@ class TakePartPetitionForm extends Entity {
   }
 }
 
-class TakePartPetitionFormController extends EntityAPIControllerExportable {
+class TakePartLastCallPetitionFormController extends EntityAPIControllerExportable {
    public function create(array $values = array()) {
     $values += array(
       'name' => '',
@@ -54,7 +54,7 @@ class TakePartPetitionFormController extends EntityAPIControllerExportable {
 /**
  * UI controller for Petition forms.
  */
-class TakePartPetitionFormUIController extends EntityDefaultUIController {
+class TakePartLastCallPetitionFormUIController extends EntityDefaultUIController {
   /**
    * Overrides hook_menu() defaults.
    */
@@ -69,7 +69,7 @@ class TakePartPetitionFormUIController extends EntityDefaultUIController {
 /**
  * Petition signature class.
  */
-class TakePartPetitionSignature extends Entity {
+class TakePartLastCallPetitionSignature extends Entity {
 
   public $petition_form;
   public $mail;
@@ -84,7 +84,7 @@ class TakePartPetitionSignature extends Entity {
   }
 }
 
-class TakePartPetitionSignatureController extends EntityAPIController {
+class TakePartLastCallPetitionSignatureController extends EntityAPIController {
 
   public function create(array $values = array()) {
     global $user;
@@ -104,7 +104,7 @@ class TakePartPetitionSignatureController extends EntityAPIController {
 /**
  * Petition class.
  */
-class TakePartPetitionNGO extends Entity {
+class TakePartLastCallPetitionNGO extends Entity {
 
   public $label;
   public $token;
@@ -121,7 +121,7 @@ class TakePartPetitionNGO extends Entity {
 /**
  * UI controller for Petition.
  */
-class TakePartPetitionNGOUIController extends EntityDefaultUIController {
+class TakePartLastCallPetitionNGOUIController extends EntityDefaultUIController {
   /**
    * Overrides hook_menu() defaults.
    */
