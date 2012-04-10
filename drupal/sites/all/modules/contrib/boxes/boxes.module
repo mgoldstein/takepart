@@ -720,17 +720,20 @@ function boxes_create_hash($identifier) {
  */
 function boxes_preprocess_block(&$vars) {
   if ($vars['block']->module === 'boxes' && isset($vars['block']->boxes_plugin)) {
-      
+    
     $vars['classes_array'][] = 'block-boxes-' . $vars['block']->boxes_plugin;
-      
-    if (empty($vars['block']->additional_classes)) {
-      return;
+    
+    if (!empty($vars['block']->additional_classes)) {
+      $additional_classes = explode(' ', $vars['block']->additional_classes);
+      foreach ($additional_classes as $class) {
+        $vars['classes_array'][] = $class;
+      }
     }
     
-    $additional_classes = explode(' ', $vars['block']->additional_classes);
-    
-    foreach ($additional_classes as $class) {
-      $vars['classes_array'][] = $class;
+    if (!empty($vars['block']->selected_style)) {
+      $vars['classes_array'][] = 'boxes-selected-style-' . $vars['block']->selected_style;
     }
+        
   }
+  
 }

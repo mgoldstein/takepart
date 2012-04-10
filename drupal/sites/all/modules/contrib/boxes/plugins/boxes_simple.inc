@@ -17,6 +17,7 @@ class boxes_simple extends boxes_box {
         'format' => filter_default_format(),
       ),
       'additional_classes' => '',
+      'selected_style' => '',
     );
   }
 
@@ -64,6 +65,13 @@ class boxes_simple extends boxes_box {
       '#type' => 'textfield',
       '#default_value' => $this->options['additional_classes'],
     );
+    $form['view_advanced_settings']['selected_style'] = array(
+        '#title' => t('Style'),
+        '#description' => t('Optional Style Setting'),
+        '#type' => 'select',
+        '#default_value' => $this->options['selected_style'],
+        '#options' => array(0 => t('Default')),
+    );
     return $form;
   }
 
@@ -93,7 +101,9 @@ class boxes_simple extends boxes_box {
     if (!empty($this->options['additional_classes'])) {
       $box['additional_classes'] = $this->options['additional_classes'];
     }
-    
+    if (!empty($this->options['selected_style'])) {
+      $box['selected_style'] = $this->options['selected_style'];
+    }
     return $box;
   }
 }
