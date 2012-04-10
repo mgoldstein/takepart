@@ -337,7 +337,7 @@ class views_boxes_view extends boxes_box {
         '#description' => t('Optional Style Setting'),
         '#type' => 'select',
         '#default_value' => $this->options['selected_style'],
-        '#options' => array(0 => t('Default'), 1 => t('Featured Item'), 2 => t('Secondary Featured Item'), 3 => t('Secondary Featured Item Style II')),
+        '#options' => array(0 => t('Default'), 1 => t('Featured Item(s) Style I'), 2 => t('Secondary Featured Item(s) Style I'), 3 => t('Secondary Featured Item(s) Style II'), 4 => t('Primary Style I'), 5 => t('Featured Item(s) Style II')),
     );
     return $form;
   }
