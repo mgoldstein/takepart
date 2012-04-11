@@ -7,7 +7,7 @@ function takepart_petition_entity_info() {
   $info = array(
 
     'takepart_petition_form' => array(
-      'label' => t('Petition Form'),
+      'label' => t('LastCall Petition Form'),
       'entity class' => 'TakePartLastCallPetitionForm',
       'controller class' => 'TakePartLastCallPetitionFormController',
       'base table' => 'takepart_petition_form',
@@ -28,7 +28,7 @@ function takepart_petition_entity_info() {
     ),
 
     'takepart_petition_signature' => array(
-      'label' => t('Petition Signature'),
+      'label' => t('LastCall Petition Signature'),
       'entity class' => 'TakePartLastCallPetitionSignature',
       'controller class' => 'TakePartLastCallPetitionSignatureController',
       'base table' => 'takepart_petition_signature',
@@ -49,7 +49,7 @@ function takepart_petition_entity_info() {
     ),
 
     'takepart_petition_ngo' => array(
-      'label' => t('Petition NGO'),
+      'label' => t('LastCall Petition NGO'),
       'entity class' => 'TakePartLastCallPetitionNGO',
       'controller class' => 'EntityAPIControllerExportable',
       'base table' => 'takepart_petition_ngo',
