@@ -341,6 +341,7 @@ class views_boxes_view extends boxes_box {
                             4 => t('Primary Style I'),
                             1 => t('Featured Item(s) Style I'),
                             5 => t('Featured Item(s) Style II'),
+                            6 => t('Featured Item(s) Style III'),
                             2 => t('Secondary Featured Item(s) Style I'),
                             3 => t('Secondary Featured Item(s) Style II'), 
                            ),

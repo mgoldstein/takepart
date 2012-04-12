@@ -884,6 +884,20 @@ function fb_require_authorization($fb = NULL, $destination = NULL) {
     }
     else {
       header('Location: ' . $url);  // drupal_goto is for internal redirects only.
+      
+      //----DEBUG--- Remove when done
+      $dbg_time = time();
+      $dbg_trace = debug_backtrace();
+      if(isset($dbg_trace)){
+        try {
+          watchdog('fb_redir', "timestamp:" . $dbg_time . "|" . $url . "|" . preg_replace("/[\n\s\r]/"," ",print_r($dbg_trace, true)));
+          header('timestamp:' . $dbg_time);
+        } catch (Exception $ex) {
+          watchdog('drupal_goto', $ex->getMessage());
+        }
+      }
+      //----DEBUG---
+      
     }
   }
   else {

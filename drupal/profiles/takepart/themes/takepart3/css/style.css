@@ -877,6 +877,12 @@ body.front .main-content .block-boxes-current-promo h2,
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 10px transparent;
     width:100%;
 }
+
+.main-content .boxes-selected-style-5 h2
+{
+    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 13px transparent !important;
+}
+
 .node-type-takepart-campaign .main-content h2,
 .node-type-takepart-campaign .region-highlighted h2{
     color:#99bbcc;
@@ -920,6 +926,11 @@ body.front .main-content .block-boxes-current-promo h2 span,
     text-transform: uppercase;
     font-weight: 300;
 }
+
+.main-content .boxes-selected-style-5 h2 span {
+    padding:2px 8px 0 0 !important;
+}
+
 .main-content .block-boxes-current-taxonomy_search_list h2 {
     margin: 15px 0;
 }
@@ -2220,13 +2231,20 @@ body.node-type-takepart-campaign .main-content #content {
     margin-bottom: 0;
 }
 
-.boxes-selected-style-2 h2, .boxes-selected-style-5 h2
-{
+.main-content .boxes-selected-style-6 h2 {
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 13px transparent !important;
-    font-size: 18px !important;
+    font-size: 22px !important;
 }
 
-.boxes-selected-style-2 h2
-{
-    padding: 10px 0 0 !important;
+.main-content .boxes-selected-style-6 h2 span {
+    padding: 10px 8px 0 !important;
+}
+
+.main-content .boxes-selected-style-5 h2 {
+    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 13px transparent !important;
+    font-size: 22px !important;
+}
+
+.main-content .boxes-selected-style-5 h2 span {
+    padding: 10px 8px 0 !important;
 }
