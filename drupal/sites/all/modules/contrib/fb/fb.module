@@ -275,7 +275,7 @@ function fb_init() {
       $fb_lang = variable_get('fb_language_' . $user_language->language, 'en_US');
     }
 
-    $js_sdk = fb_protocol() . "://connect.facebook.net/$fb_lang/all.js";
+    $js_sdk = fb_protocol() . "://connect.facebook.net/$fb_lang/all.js#". $_fb->getAppId() . "=&xfbml=1";
     fb_js_settings('js_sdk_url', variable_get(FB_VAR_JS_SDK, $js_sdk));
   }
 
@@ -884,6 +884,20 @@ function fb_require_authorization($fb = NULL, $destination = NULL) {
     }
     else {
       header('Location: ' . $url);  // drupal_goto is for internal redirects only.
+      
+      //----DEBUG--- Remove when done
+      $dbg_time = time();
+      $dbg_trace = debug_backtrace();
+      if(isset($dbg_trace)){
+        try {
+          watchdog('fb_redir', "timestamp:" . $dbg_time . "|" . $url . "|" . preg_replace("/[\n\s\r]/"," ",print_r($dbg_trace, true)));
+          header('timestamp:' . $dbg_time);
+        } catch (Exception $ex) {
+          watchdog('drupal_goto', $ex->getMessage());
+        }
+      }
+      //----DEBUG---
+      
     }
   }
   else {

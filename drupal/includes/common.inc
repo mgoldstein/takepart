@@ -661,6 +661,18 @@ function drupal_encode_path($path) {
  * @see url()
  */
 function drupal_goto($path = '', array $options = array(), $http_response_code = 302) {
+  //----DEBUG--- Remove when done
+  $dbg_time = time();
+  $dbg_trace = debug_backtrace();
+  if(isset($dbg_trace)){
+    try {
+      watchdog('drupal_goto', "timestamp:" . $dbg_time . "|" . $path . "|" . preg_replace("/[\n\s\r]/"," ",print_r($dbg_trace, true)));
+      header('timestamp:' . $dbg_time);
+    } catch (Exception $ex) {
+      watchdog('drupal_goto', $ex->getMessage());
+    }
+  }
+  //----DEBUG---
   // A destination in $_GET always overrides the function arguments.
   // We do not allow absolute URLs to be passed via $_GET, as this can be an attack vector.
   if (isset($_GET['destination']) && !url_is_external($_GET['destination'])) {

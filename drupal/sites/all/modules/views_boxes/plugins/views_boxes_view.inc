@@ -18,6 +18,7 @@ class views_boxes_view extends boxes_box {
     'view_more_text' => '',
     'view_more_link' => '',
     'additional_classes' => '',
+    'selected_style' => '',
     );
   }
   /*
@@ -331,6 +332,20 @@ class views_boxes_view extends boxes_box {
       '#type' => 'textfield',
       '#default_value' => $this->options['additional_classes'],
     );
+    $form['view_advanced_settings']['selected_style'] = array(
+        '#title' => t('Style'),
+        '#description' => t('Optional Style Setting'),
+        '#type' => 'select',
+        '#default_value' => $this->options['selected_style'],
+        '#options' => array(0 => t('Default'),
+                            4 => t('Primary Style I'),
+                            1 => t('Featured Item(s) Style I'),
+                            5 => t('Featured Item(s) Style II'),
+                            6 => t('Featured Item(s) Style III'),
+                            2 => t('Secondary Featured Item(s) Style I'),
+                            3 => t('Secondary Featured Item(s) Style II'), 
+                           ),
+    );
     return $form;
   }
 
@@ -415,6 +430,9 @@ class views_boxes_view extends boxes_box {
     // Additional Classes
     if (!empty($this->options['additional_classes'])) {
       $box['additional_classes'] = $this->options['additional_classes'];
+    }
+    if (!empty($this->options['selected_style'])) {
+      $box['selected_style'] = $this->options['selected_style'];
     }
     
     if ($display_name) {
