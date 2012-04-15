@@ -12,7 +12,6 @@ function takepart_newsletter_isValidEmailAddress(emailAddress, formId) {
 }
 
 jQuery(document).ready(function() {
-  console.log(Drupal.settings);
   var value = 'Your Email';
   if (Drupal.settings.newsletters) {
     if ('preload_email' in Drupal.settings.newsletters) {
