@@ -1,0 +1,5 @@
+name = Partner Code Field
+description = Defines partner code field types.
+package = TakePart
+core = 7.x
+dependencies[] = field
