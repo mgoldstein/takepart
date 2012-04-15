@@ -15,7 +15,7 @@
     - #666666
     - #cccccc
     - #ededed
-    -  accents: 
+    -  accents:
     - #ffca00
     - #fdab30
 */
@@ -486,7 +486,7 @@ ul,ol
 
 .boxes-selected-style-5 .views-field-title a,
 .boxes-selected-style-5 .views-field-field-article-subhead a,
-.boxes-selected-style-5 .views-field-nid span a, 
+.boxes-selected-style-5 .views-field-nid span a,
 body.front .main-content .block-boxes-current-promo .views-field-title a,
 body.front .main-content .block-boxes-current-promo .views-field-field-article-subhead a,
 body.front .main-content .block-boxes-current-promo .views-field-nid span a
@@ -528,8 +528,8 @@ body.front .main-content .block-boxes-current-promo .views-field-field-promo-tex
 
 .main-content .boxes-selected-style-5 .views-row:hover .views-field-title a,
 .main-content .boxes-selected-style-5 .views-row:hover .views-field-field-article-subhead a,
-.main-content .boxes-selected-style-5 .views-row:hover .views-field-nid a, 
-body.front .main-content .block-boxes-current-promo .views-row:hover .views-field-title a, 
+.main-content .boxes-selected-style-5 .views-row:hover .views-field-nid a,
+body.front .main-content .block-boxes-current-promo .views-row:hover .views-field-title a,
 body.front .main-content .block-boxes-current-promo .views-row:hover .views-field-field-article-subhead a,
 body.front .main-content .block-boxes-current-promo .views-row:hover .views-field-nid a
 {
@@ -539,7 +539,7 @@ body.front .main-content .block-boxes-current-promo .views-row:hover .views-fiel
 
 .main-content .boxes-selected-style-5 .views-row-4,
 .main-content .boxes-selected-style-5 .views-row-7,
-.main-content .boxes-selected-style-5 .views-row-10, 
+.main-content .boxes-selected-style-5 .views-row-10,
 body.front .main-content .block-boxes-current-promo .views-row-4,
 body.front .main-content .block-boxes-current-promo .views-row-7,
 body.front .main-content .block-boxes-current-promo .views-row-10
@@ -868,8 +868,8 @@ h1.title a:hover {
 .main-content .node-topic-front h2,
 .main-content .block-boxes h2,
 .main-content .boxes-selected-style-5 h2,
-body.front .main-content .block-boxes-current-promo h2, 
-.node-type-takepart-campaign .main-content .block-boxes-current-featured_items h2 
+body.front .main-content .block-boxes-current-promo h2,
+.node-type-takepart-campaign .main-content .block-boxes-current-featured_items h2
 {
     border-top:1px dotted #000;
     margin:0;
@@ -933,7 +933,7 @@ body.front .main-content .block-boxes-current-promo h2 span,
 /*featured blocks, img gallery styles */
 .main-content .block-boxes-title-secondary-headlines .views-row,
 .main-content .boxes-selected-style-5 .views-row,
-.main-content .boxes-selected-style-3 .views-row, 
+.main-content .boxes-selected-style-3 .views-row,
 body.front .main-content .block-boxes-current-promo .views-row
 {
     display:table;
@@ -976,7 +976,7 @@ body.front .main-content .block-boxes-current-promo .view-content,
 .main-content .boxes-selected-style-3 .views-field-php {
     margin:10px 0 0 0;
 }
-.main-content .boxes-selected-style-5 .views-field-field-thumbnail-1, 
+.main-content .boxes-selected-style-5 .views-field-field-thumbnail-1,
 body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail-1
 {
     overflow:visible;
@@ -984,7 +984,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail
     width:0;
 }
 
-.main-content .boxes-selected-style-5 .views-field-field-thumbnail-1 .field-content, 
+.main-content .boxes-selected-style-5 .views-field-field-thumbnail-1 .field-content,
 body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail-1 .field-content
 {
     height:150px;
@@ -1000,14 +1000,14 @@ body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail
 }
 
 /*hover state*/
-.main-content .boxes-selected-style-5 .views-row:hover, 
+.main-content .boxes-selected-style-5 .views-row:hover,
 body.front .main-content .block-boxes-current-promo .views-row:hover
 {
     border:3px solid #14ade7;
     margin:2px;
 }
 
-.main-content .boxes-selected-style-5 .action:hover, 
+.main-content .boxes-selected-style-5 .action:hover,
 body.front .main-content .block-boxes-current-promo .action:hover
 {
     border:3px solid #f7c806 !important;
@@ -1020,7 +1020,7 @@ body.front .main-content .block-boxes-current-promo .action .views-field-field-d
     background-color: #f7c806 !important;
 }
 
-.main-content .boxes-selected-style-5 .views-row:hover .views-field-field-thumbnail-1 .field-content img, 
+.main-content .boxes-selected-style-5 .views-row:hover .views-field-field-thumbnail-1 .field-content img,
 body.front .main-content .block-boxes-current-promo .views-row:hover .views-field-field-thumbnail-1 .field-content img
 {
     position:relative;
@@ -2147,15 +2147,15 @@ body.node-type-takepart-campaign .main-content #content {
 }
 
 .node-type-topic-front .boxes-selected-style-3 h2 {
-    display: none;	
+    display: none;
 }
 
 .node-type-topic-front .boxes-selected-style-3 h2 {
-    display: none;  
+    display: none;
 }
 
 .node-type-topic-front .boxes-selected-style-4-features h2 {
-	display: none;  
+	display: none;
 }
 
 .node-type-takepart-campaign .boxes-selected-style-4 {
@@ -2229,4 +2229,8 @@ body.node-type-takepart-campaign .main-content #content {
 .boxes-selected-style-2 h2
 {
     padding: 10px 0 0 !important;
+}
+
+img.rollover-image-on {
+  display: none;
 }

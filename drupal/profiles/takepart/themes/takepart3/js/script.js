@@ -7,10 +7,10 @@ jQuery.fn.DefaultValue = function(text){
         //Make sure we're dealing with text-based form fields
         if(this.type != 'text' && this.type != 'password' && this.type != 'textarea')
             return;
-		
+
         //Store field reference
         var fld_current=this;
-		
+
         //Set value initially if none are specified
         if(this.value=='') {
             this.value=text;
@@ -18,19 +18,19 @@ jQuery.fn.DefaultValue = function(text){
             //Other value exists - ignore
             return;
         }
-		
+
         //Remove values on focus
         $(this).focus(function() {
             if(this.value==text || this.value=='')
                 this.value='';
         });
-		
+
         //Place values back on blur
         $(this).blur(function() {
             if(this.value==text || this.value=='')
                 this.value=text;
         });
-		
+
         //Capture parent form submission
         //Remove field values that are still default
         $(this).parents("form").each(function() {
@@ -45,25 +45,25 @@ jQuery.fn.DefaultValue = function(text){
 };
 
 var el = jQuery('.photo-wrapper img');
-	  
+
 function makeMargin(el, app){
-    var margin = ''; 
-    var dirs = ['top','right', 'bottom', 'left']; 
-    for(var t in dirs){ 
-        var t = dirs[t]; 
+    var margin = '';
+    var dirs = ['top','right', 'bottom', 'left'];
+    for(var t in dirs){
+        var t = dirs[t];
         var mar = jQuery(el).css('margin-'+t);
         var real = t.substring(0, 1).toUpperCase() + t.substring(1);
         if(mar && ( (t == 'top' || t == 'bottom') || (el.style['margin'+real] &&  jQuery(el).css('float') != 'none') ) ){
             jQuery(app).css('margin-'+t, mar);
-        } else {					
-            jQuery(app).css('margin-'+t, 'auto');	
+        } else {
+            jQuery(app).css('margin-'+t, 'auto');
         }
     }
 }
 
 
 jQuery(document).ready(function() {
-	
+
     //for eaach photo wrapper element presented:
     //store inline style value in 'floated'
     //traverse back to parent div and apply style value there
@@ -71,21 +71,21 @@ jQuery(document).ready(function() {
     jQuery.each( jQuery('.photo-wrapper img'), function(index, value){
 
         makeMargin(value, jQuery(value).parent());
-		
+
         var floated = jQuery(value).css('float');
         jQuery(value).closest('.photo-wrapper').css('float', floated);
-        jQuery(value).css('float','');			
+        jQuery(value).css('float','');
     //jQuery('.photo-wrapper img').css('margin','');
     })
-	  
-    jQuery('#top-search .form-text').DefaultValue('Search TakePart');		
+
+    jQuery('#top-search .form-text').DefaultValue('Search TakePart');
 });
 
 (function($) {
     Drupal.behaviors.takepart3 = {
         attach: function(context) {
             jQuery("a[href^='http']", context).attr('target','_blank');
-    
+
         }
     };
 })(jQuery);
@@ -102,7 +102,7 @@ jQuery(document).ready(function() {
                 $('.field-name-field-tp-campaign-intro-media .play').hide();
                 $('.campaign-video').show();
                 return false;
-            });    
+            });
         }
     };
 })(jQuery);
@@ -157,7 +157,7 @@ takepart.analytics.addThis_shareEventHandler = function (evt) {
 }
 
 takepart.analytics.omn_clickTrack = function (target) {
-    jQuery(target).click(function() { 
+    jQuery(target).click(function() {
         var link_title = jQuery(this).attr('title');
         var title = convert_title(link_title);
         s.events='event25';
@@ -165,7 +165,7 @@ takepart.analytics.omn_clickTrack = function (target) {
         s.eVar27=title;
         s.linkTrackVars='eVar27,prop26,events';
         s.linkTrackEvents='event25';
-        s.tl(this.href, 'o', 'Content Share');						
+        s.tl(this.href, 'o', 'Content Share');
     });
 }
 
@@ -178,8 +178,8 @@ jQuery(document).ready(function () {
         addthis.addEventListener('addthis.ready', takepart.analytics.addThis_ready);
     }
     /* Incorrectly attaches social sharing event to Take Action button
-     * takepart.analytics.omn_clickTrack('.take_action_button'); 
-     */ 
+     * takepart.analytics.omn_clickTrack('.take_action_button');
+     */
 });
 
 
@@ -232,7 +232,7 @@ jQuery(document).ready(function () {
     	index = parseInt(i/3);
     	if ((!tallestofthemall[index]) || (jQuery(this).height() > tallestofthemall[index])) {
     		tallestofthemall[index] = jQuery(this).height();
-    	} 
+    	}
     	i++;
     });
     i = 0;
@@ -240,7 +240,7 @@ jQuery(document).ready(function () {
     	index = parseInt(i/3);
     	jQuery(this).height(tallestofthemall[index]);
     	i++;
-    });  
+    });
 });
 
 jQuery(document).ready(function () {
@@ -252,7 +252,7 @@ jQuery(document).ready(function () {
     	index = parseInt(i/3);
     	if ((!tallestofthemall[index]) || (jQuery(this).height() > tallestofthemall[index])) {
     		tallestofthemall[index] = jQuery(this).height();
-    	} 
+    	}
     	i++;
     });
     i = 0;
@@ -260,10 +260,10 @@ jQuery(document).ready(function () {
     	index = parseInt(i/3);
     	jQuery(this).height(tallestofthemall[index]);
     	i++;
-    });  
+    });
 });
 
-/* center the blog headings vertically in the right rail 
+/* center the blog headings vertically in the right rail
 jQuery(document).ready(function () {
     var target = '#right-rail .field-name-field-blog-view .views-field-title span.field-content';
     jQuery(target).each(function () {
@@ -277,7 +277,7 @@ jQuery(document).ready(function () {
 */
 
 
-/* fix the height in the featured galleries 
+/* fix the height in the featured galleries
 jQuery(document).ready(function () {
     var target = '.main-content .block-boxes-title-features .views-row';
     var tallestofthemall = 0;
@@ -285,7 +285,7 @@ jQuery(document).ready(function () {
     	index = parseInt(i/3);
     	if ((!tallestofthemall[index]) || (jQuery(this).height() > tallestofthemall[index])) {
     		tallestofthemall[index] = jQuery(this).height();
-    	} 
+    	}
     	i++;
     });
     i = 0;
@@ -293,7 +293,7 @@ jQuery(document).ready(function () {
     	index = parseInt(i/3);
     	jQuery(this).height(tallestofthemall[index]);
     	i++;
-    });  
+    });
 });
 
 /*conditional padding for article imageas*/
@@ -306,11 +306,11 @@ jQuery(document).ready(function () {
     	if(jQuery(this).css('float') == 'right') {
     		jQuery(this).css('padding-left', '10px');
     	}
-    	
+
     });
 });
 
-/* 
+/*
  * Function for setting the active image in the jquery carousel, either from the left / right
  * navigation arrow on the large image, or from the image in the carousel itself.
  */
@@ -357,8 +357,8 @@ function gallery_swap_active(origin) {
 	    //Add highlight css class to this image:
 	    jQuery('#widget_pager_top_photo_gallery-block .jcarousel-item-' + imgstring + ' img').toggleClass('highlight');
 	} else {
-		//If the user clicked an image in the 
-		//carousel, add highlight css class to 
+		//If the user clicked an image in the
+		//carousel, add highlight css class to
 		//the image they clicked:
 		jQuery(origin).toggleClass('highlight');
 		activeid = 0;
@@ -370,4 +370,20 @@ function gallery_swap_active(origin) {
 jQuery(document).ready(function() {
 	jQuery('#widget_pager_top_photo_gallery-block .jcarousel-item-1 img').toggleClass('highlight');
 	//jQuery('#widget_pager_top_photo_gallery-block').css('display', 'block');
+});
+
+// enable rollover images and image input buttons
+jQuery(document).ready(function () {
+  jQuery("img.rollover-image-off").hover(
+    function () { this.src = this.src.replace("_off","_on");
+    },
+    function () { this.src = this.src.replace("_on","_off");
+    }
+  );
+  jQuery("input.rollover-image-off").hover(
+    function () { this.src = this.src.replace("_off","_on");
+    },
+    function () { this.src = this.src.replace("_on","_off");
+    }
+  );
 });
