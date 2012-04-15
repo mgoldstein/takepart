@@ -5,15 +5,9 @@
   <p>You can share the petition on Facebook or Twitter, or send an email using the form below.</p>
   <div class="tp-pet-share-button-bar">
   <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-  <a class="addthis_button_facebook">
-    <img src="/profiles/takepart/modules/takepart_addthis/images/fb_share.png" alt="Share on Facebook" />
-  </a>
-  <a class="addthis_button_twitter" tw:via="TakePart">
-    <img src="/profiles/takepart/modules/takepart_addthis/images/twitter_share.png" alt="Share on Twitter" />
-  </a>
-  <a class="addthis_button_email">
-    <img src="/profiles/takepart/modules/takepart_addthis/images/share_email.png" alt="Share on Twitter" />
-  </a>
+  <a class="addthis_button_facebook"><img src="/profiles/takepart/modules/takepart_addthis/images/fb_share.png" alt="Share on Facebook" /></a>
+  <a class="addthis_button_twitter" tw:via="TakePart"><img src="/profiles/takepart/modules/takepart_addthis/images/twitter_share.png" alt="Share on Twitter" /></a>
+  <a class="addthis_button_email"><img src="/profiles/takepart/modules/takepart_addthis/images/email_share.png" alt="Share by E-mail" /></a>
   </div>
   </div>
 </div>
@@ -30,7 +24,7 @@
   jQuery(document).ready(function() {
     var petition_signed_as = "<?php print $_COOKIE['petition_signed_as'] ?>";
     if (petition_signed_as.length > 0) {
-      jQuery("input#edit-email").val(petition_signed_as).removeClass('takepart-newsletter-empty');   
-    } 
+      jQuery("input#edit-email").val(petition_signed_as).removeClass('takepart-newsletter-empty');
+    }
   });
 </script>

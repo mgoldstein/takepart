@@ -7,3 +7,10 @@
   padding: 0;
   margin: 0;
 }
+
+
+.tp-pet-share-label {
+  float: left;
+  font-weight: bold;
+  padding-right: 6px;
+}
