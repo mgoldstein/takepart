@@ -23,10 +23,10 @@ jQuery(document).ready(function () {
   else if (jQuery.cookie(Drupal.settings.modalprompt['cookie']) == null) {
     prompt.dialog('open');
     if (Drupal.settings.modalprompt['shown'] == 'once') {
-      jQuery.cookie(Drupal.settings.modalprompt['cookie'], 1, {expires: 365*5});
+      jQuery.cookie(Drupal.settings.modalprompt['cookie'], 1, {path:'/', expires:365*5});
     }
     else {
-      jQuery.cookie(Drupal.settings.modalprompt['cookie'], 1);
+      jQuery.cookie(Drupal.settings.modalprompt['cookie'], 1, {path:'/'});
     }
   }
 });
