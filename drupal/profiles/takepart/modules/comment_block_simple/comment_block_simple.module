@@ -12,14 +12,14 @@ function comment_block_simple_block_view($delta= 1) {
 
   $node = menu_get_object();
   $content = comment_node_page_additions($node);
-
+  
   // Requires the Facebook Comments module
   if (module_exists('facebook_comments')) {
-
+  
     // Facebook comments should be use for published nodes with no existing
     // comments that are not hidden
     if ($node->comment_count == 0 && $node->comment == COMMENT_NODE_OPEN && $node->status == NODE_PUBLISHED) {
-
+  
       // node has no drupal comments, can use facebook
       $fb_comments = db_select('facebook_comments', 'f')
         ->fields('f', array('enabled', 'amount'))
@@ -28,9 +28,9 @@ function comment_block_simple_block_view($delta= 1) {
         ->fetchObject();
 
       if (isset($fb_comments->enabled) && $fb_comments->enabled) {
-
+  
         // add the Facebook App ID if it exists
-        if ($appid = variable_get('facebook_comments_appid', '')) {
+        if ($appid = variable_get('facebook_comments_appid', '')) {    
           $element = array(
             '#tag' => 'meta',
             '#attributes' => array(
@@ -44,11 +44,11 @@ function comment_block_simple_block_view($delta= 1) {
         // generate the URL
         $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
         $protocol = strtolower($_SERVER["SERVER_PROTOCOL"]);
-        $protocol = substr($protocol, 0, strpos($protocol, "/")) . $s;
-        $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
+        $protocol = substr($protocol, 0, strpos($protocol, "/")) . $s; 
+        $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]); 
         $url = $base_url .'/'. drupal_get_path_alias($_GET['q']);
 
-        // add user defined settings
+        // add user defined settings  
         $width = variable_get('facebook_comments_width', '640');
         $style = variable_get('facebook_comments_style', 'light');
 
@@ -67,9 +67,9 @@ function comment_block_simple_block_view($delta= 1) {
     '#fb_comments' => array(
       'enabled' => false,
     ),
-    '#theme' => 'comment_wrapper__node_' . $node->type,
-    '#node' => $node,
-    'comments' => array(),
+    '#theme' => 'comment_wrapper__node_' . $node->type, 
+    '#node' => $node, 
+    'comments' => array(), 
     'comment_form' => array(),
   );
 
