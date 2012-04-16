@@ -80,7 +80,7 @@ jQuery(document).ready(function() {
 	  
     jQuery('#top-search .form-text').DefaultValue('Search TakePart');		
 });
-
+/*
 (function($) {
     Drupal.behaviors.takepart3 = {
         attach: function(context) {
@@ -89,7 +89,7 @@ jQuery(document).ready(function() {
         }
     };
 })(jQuery);
-
+*/
 (function($) {
     Drupal.behaviors.campaignVideo = {
         attach: function(context) {
