@@ -23,8 +23,8 @@ function zipcode_field_info() {
     'zip_code' => array(
       'label' => t('ZIP Code'),
       'description' => t('A zip code with optional +4'),
-      'settings' => array(
-        'note' => '',
+      'instance_settings' => array(
+        'note' => "Don't know your full ZIP Code? Look it up <a href=\"http://www.usps.com/zip4/\" target=\"_blank\">here</a>.",
         'plus_four_label' => '+4',
       ),
       'default_widget' => 'two_fields_with_note',
