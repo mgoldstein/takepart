@@ -207,7 +207,7 @@ function partnercode_field_widget_form(&$form, &$form_state, $field, $instance, 
       $value = '';
     }
 
-    $element['value'] = array(
+    $element += array(
       '#type' => 'hidden',
       '#default_value' => $value,
     );
