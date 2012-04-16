@@ -1,0 +1,967 @@
+<?php
+/**
+ * @file
+ * Module for the Petition Entity
+ */
+
+/**
+ * Validates that a form element is a positive integer
+ *
+ * TODO: This should be replaced with element_validate_integer_positive once
+ *   we update to Drupal 7.8 or later
+ */
+function petition_validate_goal($element) {
+  $value = $element['#value'];
+  if ($value !== '' && (!is_numeric($value) || intval($value) != $value || $value < 0)) {
+    form_error($element, t('%name must be a positive integer.', array('%name' => $element['#title'])));
+  }
+}
+
+/**
+ * Implements hook_entity_info()
+ */
+function petition_entity_info() {
+
+  $info = array();
+
+  $info['petition'] = array(
+    'label' => t('Petition'),
+    'entity class' => 'Petition',
+    'controller class' => 'PetitionController',
+    'base table' => 'petition',
+    'fieldable' => TRUE,
+    'entity keys' => array(
+      'id' => 'petition_id',
+      'bundle' => 'type',
+    ),
+    'bundles' => array(),
+    'bundle keys' => array(
+        'bundle' => 'type',
+    ),
+    'view modes' => array(
+      'full' => array(
+        'label' => t('Default'),
+        'custom settings' => FALSE,
+      ),
+    ),
+    'label callback' => 'entity_class_label',
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'petition_access',
+    'module' => 'petition',
+    'admin ui' => array(
+      'path' => 'admin/content/petitions',
+      'file' => 'petition.admin.inc',
+      'controller class' => 'PetitionUIController',
+      'menu wildcard' => '%petition',
+    ),
+  );
+
+  $info['petition_signature'] = array(
+    'label' => t('Petition Signature'),
+    'entity class' => 'PetitionSignature',
+    'controller class' => 'PetitionSignatureController',
+    'base table' => 'petition_signature',
+    'fieldable' => TRUE,
+    'entity keys' => array(
+      'id' => 'signature_id',
+      'bundle' => 'type',
+    ),
+    'bundles' => array(),
+    'label callback' => 'entity_class_label',
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'petition_signature_access',
+    'module' => 'petition',
+    'static cache' => FALSE,
+  );
+
+  $info['petition_type'] = array(
+    'label' => t('Petition Type'),
+    'entity class' => 'PetitionType',
+    'controller class' => 'PetitionTypeController',
+    'base table' => 'petition_type',
+    'fieldable' => FALSE,
+    'bundle of' => 'petition',
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'name' => 'type',
+      'label' => 'label',
+    ),
+    'access callback' => 'petition_type_access',
+    'module' => 'petition',
+    'admin ui' => array(
+      'path' => 'admin/structure/petition_types',
+      'file' => 'petition_type.admin.inc',
+      'controller class' => 'PetitionTypeUIController',
+    ),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_entity_info_alter()
+ */
+function petition_entity_info_alter(&$entity_info) {
+
+  foreach (petition_get_types() as $type => $info) {
+
+    // add the petition type to the list of bundles for petitions
+    $entity_info['petition']['bundles'][$type] = array(
+      'label' => $info->label,
+      'admin' => array(
+        'path' => 'admin/structure/petition_types/manage/%petition_type',
+        'bundle argument' => 4,
+        'real path' => 'admin/structure/petition_types/manage/' . $type,
+        'access arguments' => array('administer petition types'),
+      ),
+    );
+
+    // add the corresponding petition signature type to the list of bundles for
+    // petition signatures
+    $signature_type = $type . '_signature';
+    $entity_info['petition_signature']['bundles'][$signature_type] = array(
+      'label' => $info->label . ' Signature',
+      'admin' => array(
+        'path' => 'admin/structure/petition_types/manage/%petition_signature_type/signature',
+        'bundle argument' => 4,
+        'real path' => 'admin/structure/petition_types/manage/' . $type . '/signature',
+        'access arguments' => array('administer petition types'),
+      ),
+    );
+  }
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function petition_entity_property_info_alter(&$info) {
+
+  $properties = &$info['petition_signature']['properties'];
+  $properties['created'] = array(
+    'label' => t("Date created"),
+    'type' => 'date',
+    'description' => t("The date the signature was created."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'administer petition signatures',
+    'schema field' => 'created',
+  );
+  $properties['changed'] = array(
+    'label' => t("Date changed"),
+    'type' => 'date',
+    'description' => t("The date the signature was last changed."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'administer petition signatures',
+    'schema field' => 'changed',
+  );
+
+  $properties = &$info['petition']['properties'];
+  $properties['created'] = array(
+    'label' => t("Date created"),
+    'type' => 'date',
+    'description' => t("The date the petition was created."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'administer petitions',
+    'schema field' => 'created',
+  );
+  $properties['changed'] = array(
+    'label' => t("Date changed"),
+    'type' => 'date',
+    'description' => t("The date the petition was last changed."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'administer petitions',
+    'schema field' => 'changed',
+  );
+}
+
+/**
+ * Implements hook_menu_alter()
+ */
+function petition_menu_alter(&$items) {
+  // Add submenus for managing the signature fields in addition to the main
+  // petition fields
+  $base = 'admin/structure/petition_types/manage/%petition_signature_type/';
+  $items[$base . 'signature/fields']['title'] = 'Manage Signature fields';
+  $items[$base . 'signature/fields']['weight'] = 3;
+  $items[$base . 'signature/display']['title'] = 'Manage Signature display';
+  $items[$base . 'signature/display']['weight'] = 4;
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter()
+ */
+function petition_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  if ($root_path == 'admin/content/petitions') {
+    $item = menu_get_item('admin/content/petitions/add');
+    if ($item['access']) {
+      $data['actions']['output'][] = array(
+          '#theme' => 'menu_local_action',
+          '#link' => $item,
+      );
+    }
+  }
+}
+
+/**
+ * Placeholder callback for petition signature types
+ *
+ * @param type $name
+ *   The petition bundle name
+ * @return
+ *   The corresponding petition signature bundle name
+ */
+function petition_signature_type_load($name) {
+  return $name . '_signature';
+}
+
+/**
+ * Implements hook_permission()
+ */
+function petition_permission() {
+
+  $permissions = array(
+      'administer petition types' => array(
+          'title' => t('Administer petition types'),
+          'description' => t('Create and delete fields for petition types, and set their permissions.'),
+      ),
+      'administer petitions' => array(
+          'title' => t('Administer petitions'),
+          'description' => t('Edit and delete all petitions'),
+      ),
+      'edit petitions' => array(
+          'title' => t('Edit petitions'),
+          'description' => t('Edit all petitions'),
+      ),
+      'view petitions' => array(
+          'title' => t('View petitions'),
+          'description' => t('View all petitions'),
+      ),
+      'administer petition signatures' => array(
+          'title' => t('Administer petition signatures'),
+          'description' => t('Edit and delete all petition signatures'),
+      ),
+      'edit petition signatures' => array(
+          'title' => t('Edit petition signatures'),
+          'description' => t('Edit all petition signatures'),
+      ),
+      'view petition signatures' => array(
+          'title' => t('View petition signatures'),
+          'description' => t('View all petition signatures'),
+      ),
+  );
+
+  return $permissions;
+}
+
+/**
+ * User access callback for petitions
+ */
+function petition_access($op, $petition = NULL, $account = NULL) {
+  $op = ($op == 'view') ? 'view' : 'edit';
+  if (user_access('administer petitions', $account) ||
+      user_access("$op petitions", $account)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * User access callback for petition signatures
+ */
+function petition_signature_access($op, $signature = NULL, $account = NULL) {
+  $op = ($op == 'view') ? 'view' : 'edit';
+  if (user_access('administer petition signatures', $account) ||
+      user_access("$op petition signatures", $account)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * User access callback for petition types
+ */
+function petition_type_access($op, $petition_type = NULL, $account = NULL) {
+  return user_access('administer petition types', $account);
+}
+
+/**
+ * Helper function for getting a full list of petition types, or a single one
+ */
+function petition_get_types($type_name = NULL) {
+  $types = entity_load_multiple_by_name('petition_type',
+    isset($type_name) ? array($type_name) : FALSE);
+  return isset($type_name) ? reset($types) : $types;
+}
+
+/**
+ * Implements hook_views_api()
+ */
+function petition_views_api() {
+  return array(
+      'api' => 3,
+  );
+}
+
+/**
+ * Implements hook_theme()
+ */
+function petition_theme() {
+  $info = array(
+    // List of petition types in the Admin ui
+    'petition_add_list' => array(
+      'variables' => array('content' => array()),
+      'file' => 'petition.admin.inc',
+    ),
+    // Petition body block
+    'petition' => array(
+      'render element' => 'content',
+    ),
+    // Petition signature theme
+    'petition_signature' => array(
+      'render element' => 'signature',
+    ),
+    // Petition progress block
+    'petition_progress' => array(
+      'variables' => array(
+        'bar' => NULL,
+        'count' => NULL,
+        'goal' => NULL,
+        'percent' => NULL,
+      ),
+      'template' => 'theme/progress-block',
+    ),
+  );
+  return $info;
+}
+
+/**
+ *Theme hook for for rendering the petition body block
+ */
+function theme_petition($variables) {
+  return drupal_render_children($variables['content']);
+}
+
+function theme_petition_signature($variables) {
+  return drupal_render_children($variables['content']);
+}
+
+/* Petition Blocks
+ ******************************************************************************/
+
+/**
+ *Implements hook_block_info()
+ */
+function petition_block_info() {
+
+  $blocks = array();
+
+  // get a list of the existing petitions
+  $query = db_select('petition', 'p')
+    ->fields('p', array('petition_id', 'name'));
+  $results = $query->execute();
+
+  // create blocks for all part of each petition
+  while ($result = $results->fetchAssoc()) {
+
+    // The main petition block
+    $petition = 'petition_' . $result['petition_id'];
+    $blocks[$petition] = array(
+      'info' => $result['name'] . '(Body)',
+    );
+
+    // The signup form block
+    $form = 'form_' . $result['petition_id'];
+    $blocks[$form] = array(
+      'info' => $result['name'] . ' (Signup Form)',
+    );
+
+    // The progress block
+    $progress = 'progress_' . $result['petition_id'];
+    $blocks[$progress] = array(
+      'info' => $result['name'] . ' (Progress)',
+    );
+  }
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view()
+ */
+function petition_block_view($delta) {
+
+  $block = array();
+  $css_files = array();
+  $js_files = array();
+
+  // extract the block type and petition id from the delta
+  $matches = array();
+  if (preg_match('/([a-z]+)_(\d+)/', $delta, $matches)) {
+
+    $type = $matches[1];
+    $id = $matches[2];
+
+    $petition = petition_load($id);
+
+    switch ($type) {
+      case 'petition':
+        $block['subject'] = $petition->name;
+        $block['content'] = $petition->view();
+        break;
+
+      case 'form':
+        $signature = $petition->createSignature();
+        $form_id = "{$signature->type}_form";
+        $form = drupal_get_form($form_id, $signature);
+        $block['subject'] = t('Add Your Signature');
+        $block['content'] = array(
+          '#type' => 'container',
+          '#attributes' => array(
+            'class' => array(
+              'petition-signature-form'
+            ),
+          ),
+          'content' => $form,
+        );
+        $css_files[] = 'form.css';
+        $js_files[] = 'form.js';
+        break;
+
+      case 'progress':
+        $progress = petition_progress($petition);
+        $block['subject'] = t('Petition Status');
+        $block['content'] = theme("petition_progress", $progress);
+        $css_files[] = 'progress.css';
+        break;
+    }
+  }
+
+  // add the css and js files for the block
+  $module_path = drupal_get_path('module', 'petition');
+  foreach ($css_files as $filename) {
+    $path = implode('/', array($module_path, 'css', $filename));
+    drupal_add_css($path, array('group' => CSS_DEFAULT, 'type' => 'file'));
+  }
+  foreach ($js_files as $filename) {
+    $path = implode('/', array($module_path, 'js', $filename));
+    drupal_add_js($path, array('group' => JS_DEFAULT, 'type' => 'file'));
+  }
+
+  return $block;
+}
+
+/**
+ * Determines the progress of a petition
+ *
+ * @param Entity $petition the petition for which progress is being displayed
+ * @return array an associative array containing the progress block template
+ *   variables
+ */
+function petition_progress($petition) {
+
+  $progress = array();
+
+  // get a count of the signatures on the petition
+  $progress['count'] = db_select('petition_signature', 's')
+    ->condition('s.petition_id', $petition->petition_id, '=')
+    ->countQuery()
+    ->execute()
+    ->fetchField();
+
+  // determine the progress towards the signature goal
+  $progress['goal'] = $petition->goal;
+  if ($petition->goal > 0) {
+    $progress['percent'] = ((float)$progress['count']/(float)($petition->goal)) * 100.0;
+    $path_pieces = array(
+      drupal_get_path('module', 'petition'),
+      'images/thermometer',
+      sprintf('progress_bar_%03d.png', floor($progress['percent'])),
+    );
+    $progress['bar'] = url(implode('/', $path_pieces));
+  }
+
+  // fill in the progress with defaults
+  $progress += array(
+    'bar' => NULL,
+    'percent' => 0.0,
+    'decimals' => 1,
+  );
+
+  return $progress;
+}
+
+/* Petition Signature Form
+ ******************************************************************************/
+
+/**
+ * Implements hook_field_extra_fields()
+ */
+function petition_field_extra_fields() {
+  $extra = array();
+  foreach (petition_get_types() as $type) {
+    $extra['petition'][$type->type] = array(
+      'form' => array(
+        'name' => array(
+          'label' => t('Name'),
+          'description' => t('The human-readable name of the petition type.'),
+          'weight' => -2,
+        ),
+        'goal' => array(
+          'label' => t('Goal'),
+          'description' => t('The target number of signatures for the petition.'),
+          'weight' => -1,
+        ),
+      ),
+    );
+    $extra['petition_signature'][$type->signatureType()] = array(
+      'form' => array(
+        'restrictions_note' => array(
+          'label' => t('Restrictions'),
+          'description' => t('Note indicating any restrictions on who may sign the petition.'),
+          'weight' => -10,
+        ),
+        'submit' => array(
+          'label' => t('Sign Petition'),
+          'description' => t('Sign petition button.'),
+          'weight' => 101,
+        ),
+        'terms_of_use' => array(
+          'label' => t('Terms of Use'),
+          'description' => t('Terms of use note'),
+          'weight' => 102,
+        ),
+      ),
+      'display' => array(
+        'created' => array(
+          'label' => t('Signature Date'),
+          'description' => t('Date the petition was signed'),
+          'weight' => 0,
+        ),
+      ),
+    );
+  }
+  return $extra;
+}
+
+/**
+ * Implements hook_forms()
+ */
+function petition_forms() {
+  $forms = array();
+  // build the forms for all petition types using the same base function
+  foreach (petition_get_types() as $type) {
+    $forms["{$type->type}_signature_form"] = array(
+      'callback' => 'petition_signature_form',
+    );
+  }
+  return $forms;
+}
+
+/**
+ * Signature form callback
+ */
+function petition_signature_form($form, &$form_state, $signature) {
+
+  // add the entity fields to the form
+  // the entity itself needs to be stored in the form state with
+  // the name of the entity (the key used in the entity_info hook) as the key
+  $form_state['petition_signature'] = $signature;
+  field_attach_form('petition_signature', $signature, $form, $form_state);
+
+  // determine the petition type from the signature type
+  $length = strlen($signature->type) - strlen('_signature');
+  $petition_type = substr($signature->type, 0, $length);
+
+  $form['#attributes'] = array(
+    'class' => array(
+      'petition-signature-form',
+    ),
+  );
+
+  // add the restrictions note
+  $variable = "petition:{$petition_type}:restrictions_note";
+  $restrictions_note = variable_get($variable, '');
+  if (!empty($restrictions_note)) {
+    $form['restrictions_note'] = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array(
+          'petition-restrictions-note',
+        ),
+      ),
+      'contents' => array(
+        '#type' => 'markup',
+        '#markup' => $restrictions_note,
+      ),
+    );
+  }
+
+  // add the sign petition submit button
+  $submit_src = drupal_get_path('module', 'petition')
+    . '/images/sign_petition_off.png';
+  $hover_src = drupal_get_path('module', 'petition')
+    . '/images/sign_button_on.png';
+  $form['submit'] = array(
+    '#type' => 'image_button',
+    '#src' => $submit_src,
+    '#attributes' => array(
+      'alt' => t('Sign Petition'),
+      'class' => array('rollover-image-off'),
+    ),
+    '#prefix' => '<img src="/' . $hover_src . '" class="rollover-image-on" />',
+  );
+
+  // add the terms of use note
+  $variable = "petition:{$petition_type}:terms_of_use_note";
+  $terms_of_use_note = variable_get($variable, '');
+  if (!empty($terms_of_use_note)) {
+    $form['terms_of_use'] = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array(
+          'petition-terms-of-use-note',
+        ),
+      ),
+      'contents' => array(
+        '#type' => 'markup',
+        '#markup' => $terms_of_use_note,
+      ),
+    );
+  }
+
+  // only add the signature display disclaimer if the signature public display
+  // field is still on the signature
+  if (isset($form['signature_public_display'])) {
+    $variable = "petition:{$petition_type}:signature_display_disclaimer";
+    $display_disclaimer = variable_get($variable, '');
+    if (!empty($display_disclaimer['value'])) {
+      $form['signature_public_display']['#suffix'] =
+        '<div id="petition-signature-display-disclaimer">'
+        . $display_disclaimer . '</div>';
+    }
+  }
+
+  return $form;
+}
+
+/**
+ * Signature form validation handler
+ */
+function petition_signature_form_validate($form, &$form_state) {
+  $signature = $form_state['petition_signature'];
+  field_attach_form_validate('petition_signature', $signature, $form, $form_state);
+}
+
+/**
+ * Signature form sign (submit) handler
+ */
+function petition_signature_form_submit($form, &$form_state) {
+  // build the signature entity from the form
+  $signature = $form_state['petition_signature'];
+  entity_form_submit_build_entity('petition_signature', $signature, $form, $form_state);
+  $signature = $form_state['petition_signature'];
+  // save the entry
+  $signature->save();
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter()
+ *
+ * TODO: See if we can just prevent the metatags module from altering the
+ * signature form
+ */
+function petition_form_petition_signature_form_alter(&$form, &$form_state) {
+  // remove the metatags part of the form
+  unset($form['metatags']);
+  $form['#submit'] = array_diff($form['#submit'], array('metatag_metatags_form_submit'));
+}
+
+/**
+ * Default value callback for the common fields automatically added to new
+ * petition signature types
+ *
+ * @global user $user the current user
+ * @param string $entity_type the type of the entity to which the field is attached
+ * @param Entity $entity the entity to which the fields is attached
+ * @param array $field associative array containing the global field information
+ * @param array $instance associative array containing the field instance information
+ *
+ * @return array an associate array containing the default value for the field
+ */
+function petition_signature_field_default_value($entity_type, $entity, $field, $instance) {
+  global $user;
+  $value = '';
+  switch ($field['field_name']) {
+    case 'signature_email':
+      $value = isset($user->mail) ? $user->mail : '';
+      break;
+/*
+ * TODO: Add in support for pre-populating first and last name. It is currently
+ *   not collected during user registration.
+ *
+    case 'signature_first_name':
+      $value = '';
+      break;
+    case 'signature_last_name':
+      $value = '';
+      break;
+*/
+  }
+  return array(array('value' => $value));
+}
+
+/* Petition Type API
+ ******************************************************************************/
+
+class PetitionType extends Entity {
+
+  public $type;
+  public $label;
+  public $weight;
+
+  public function __construct($values = array()) {
+    parent::__construct($values, 'petition_type');
+  }
+
+  public function signatureType() {
+    return $this->type . '_signature';
+  }
+}
+
+class PetitionTypeController extends EntityAPIControllerExportable {
+
+  public function __construct($entityType) {
+    parent::__construct($entityType);
+  }
+
+  public function create(array $values = array()) {
+    $values += array(
+        'id' => '',
+        'is_new' => TRUE,
+    );
+    return parent::create($values);
+  }
+
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+
+    $variable = "petition:{$entity->type}:restrictions_note";
+    $value = "U.S. Residents Only";
+    variable_set($variable, $value);
+
+    $variable = "petition:{$entity->type}:terms_of_use_note";
+    $value = "By signing, you accept TakePart's <a href=\"/terms-of-use\" target=\"_blank\">Terms of Use</a>.";
+    variable_set($variable, $value);
+
+    $variable = "petition:{$entity->type}:signature_display_disclaimer";
+    $value = "You may choose not to display your name on this website, but TakePart will include your name, e-mail address and zip code in the petition, which may be made public and presented to lawmakers.";
+    variable_set($variable, $value);
+
+    return parent::save($entity, $transaction);
+  }
+}
+
+function petition_type_create($values = array()) {
+  return entity_get_controller('petition_type')->create($values);
+}
+
+function petition_type_load($type_name) {
+  return petition_get_types($type_name);
+}
+
+function petition_type_save(PetitionType $type) {
+  return $type->save();
+}
+
+function petition_type_delete(PetitionType $type) {
+  $type->delete();
+}
+
+/* Petition API
+ ******************************************************************************/
+
+class Petition extends Entity {
+
+  public function __construct($values = array()) {
+    parent::__construct($values, 'petition');
+  }
+
+  protected function defaultLabel() {
+    return $this->name;
+  }
+
+  protected function defaultUri() {
+    return array('path' => 'admin/content/petitions/manage/' . $this->petition_id);
+  }
+
+  public function createSignature(array $values = array()) {
+    $values += array(
+        'petition_id' => $this->petition_id,
+        'type' => $this->type . '_signature',
+    );
+    return entity_get_controller('petition_signature')->create($values);
+  }
+}
+
+class PetitionController extends EntityAPIController {
+
+  public function __construct($entityType) {
+    parent::__construct($entityType);
+  }
+
+  public function create(array $values = array()) {
+    $values += array(
+        'petition_id' => '',
+        'type' => '',
+        'language' => LANGUAGE_NONE,
+        'is_new' => TRUE,
+        'name' => '',
+        'created' => 0,
+        'changed' => 0,
+        'goal' => 1000000,
+        'status' => 1,
+    );
+    return parent::create($values);
+  }
+
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+    // set/update the created and changed timestamps
+    $entity->is_new = isset($entity->is_new) ? $entity->is_new : 0;
+    if ($entity->is_new) {
+      $entity->created = time();
+    }
+    $entity->changed = time();
+    return parent::save($entity, $transaction);
+  }
+}
+
+function petition_load($id, $reset = FALSE) {
+  $petitions = petition_load_multiple(array($id),
+    array(), $reset);
+  return reset($petitions);
+}
+
+function petition_load_multiple($ids = array(), $conditions = array() , $reset = FALSE) {
+  return entity_load('petition', $ids, $conditions, $reset);
+}
+
+function petition_save(Petition $petition) {
+  return $petition->save();
+}
+
+function petition_delete(Petition $petition) {
+  $petition->delete();
+}
+
+function petition_delete_multiple(array $ids) {
+  entity_get_controller('petition')->delete($ids);
+}
+
+/* Petition Signature API
+ ******************************************************************************/
+
+class PetitionSignature extends Entity {
+
+  public $label;
+  public $type;
+
+  public function __construct($values = array()) {
+    parent::__construct($values, 'petition_signature');
+    $this->label = t('Petition signature');
+  }
+
+  protected function defaultLabel() {
+    return $this->label;
+  }
+
+  protected function defaulUri() {
+    $path = array(
+      'petition',
+      $this->petition_id,
+      'signature',
+      $this->signature_id
+    );
+    return array('path', implode('/', $path));
+  }
+}
+
+class PetitionSignatureController extends EntityAPIController {
+
+  public function __construct($entityType) {
+    parent::__construct($entityType);
+  }
+
+  public function create(array $values = array()) {
+    $values += array(
+        'signature_id' => '',
+        'petition_id' => '',
+        'language' => LANGUAGE_NONE,
+        'is_new' => TRUE,
+        'uid' => '',
+        'hostname' => '',
+        'status' => 1,
+        'created' => 0,
+        'changed' => 0,
+    );
+    return parent::create($values);
+  }
+
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+    global $user;
+    // set/update the created and changed timestamps
+    $entity->is_new = isset($entity->is_new) ? $entity->is_new : 0;
+    if ($entity->is_new) {
+      $entity->uid = $user->uid;
+      $entity->hostname = ip_address();
+      if ((!isset($entity->created)) || ($entity->created == 0)) {
+        $entity->created = time();
+      }
+    }
+    $entity->changed = time();
+    return parent::save($entity, $transaction);
+  }
+
+  public function buildContent($entity, $view_mode = 'full', $langcode = NULL, $content = array()) {
+    $content['created'] = array(
+      '#type' => 'markup',
+      '#markup' => date('j M Y', $entity->created),
+    );
+    return parent::buildContent($entity, $view_mode, $langcode, $content);
+  }
+
+  protected function buildQuery($ids, $conditions = array(), $revision_id = FALSE) {
+    $query = parent::buildQuery($ids, $conditions, $revision_id);
+    $query->innerJoin('petition', 'p',
+      'base.petition_id = p.petition_id');
+    $query->addField('p', 'type', 'type');
+    return $query;
+  }
+
+  protected function attachLoad(&$signatures, $revision_id = FALSE) {
+    foreach ($signatures as $key => $signature) {
+      $signature->type = $signature->type . '_signature';
+      $signatures[$key] = $signature;
+    }
+    parent::attachLoad($signatures, $revision_id);
+  }
+}
+
+function petition_signature_load($id, $reset = FALSE) {
+  $signatures = petition_signature_load_multiple(array($id), array(), $reset);
+  return reset($signatures);
+}
+
+function petition_signature_load_multiple($ids = array(), $conditions = array() , $reset = FALSE) {
+  return entity_load('petition_signature', $ids, $conditions, $reset);
+}
+
+function petition_signature_save(PetitionSignature $signature) {
+  return $signature->save();
+}
+
+function petition_signature_delete(PetitionSignature $signature) {
+  $signature->delete();
+}
+
+function petition_signature_delete_multiple(array $ids) {
+  entity_get_controller('petition_signature')->delete($ids);
+}

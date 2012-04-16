@@ -1,0 +1,6 @@
+name = TakePart Water Bill of Rights Petition
+description = The Water Bill of Rights Petition.
+package = TakePart
+core = 7.x
+
+dependencies[] = petition

@@ -1,0 +1,80 @@
+div.petition-signature-form {
+  margin-top: 16px;
+}
+
+form.petition-signature-form {
+  border-top: solid 1px #ededed;
+  padding-top: 8px;
+}
+
+form.petition-signature-form input.form-checkbox {
+  float: left;
+  margin-right: 6px;
+}
+
+form.petition-signature-form div.grippie {
+  display: none;
+}
+
+form.petition-signature-form span.form-required {
+  color: #1ca9e7;
+}
+
+form.petition-signature-form label {
+  font-weight: normal;
+}
+
+form.petition-signature-form .form-item input {
+  border: 1px solid #EFF3F5;
+}
+form.petition-signature-form .form-item textarea {
+  border: 1px solid #EFF3F5;
+}
+form.petition-signature-form .form-item input.error {
+  border: 1px solid #1ca9e7;
+}
+form.petition-signature-form .form-item textarea.error {
+  border: 1px solid #1ca9e7;
+}
+
+form.petition-signature-form div.petition-restrictions-note {
+  /*font-style: italic;*/
+  font-size: 10px;
+}
+
+form.petition-signature-form div.petition-terms-of-use-note {
+  font-size: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+#petition-signature-display-disclaimer {
+  display: none;
+  margin-left: 12px;
+  color: #1ca9e7;
+}
+
+form.petition-signature-form div.group_sign_petition_box {
+  margin: 0 5px;
+}
+
+div.group_two_field_box div.form-item {
+  margin-top: 0px;
+}
+
+div.group_two_field_box:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+div.group_two_field_box_left {
+  float: left;
+}
+
+div.group_two_field_box_right {
+  float: right;
+}
+

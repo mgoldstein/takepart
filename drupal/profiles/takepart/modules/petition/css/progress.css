@@ -1,0 +1,13 @@
+img.petition-progress-bar {
+  margin-left: -6px;
+  padding-top: 20px;
+}
+
+p.petition-progress-complete {
+  margin: 0;
+}
+
+span.petition-progress-percent {
+  font-size: 42px;
+  font-weight: bold;
+}

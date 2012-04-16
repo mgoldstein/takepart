@@ -1,0 +1,11 @@
+name = TakePart Petitions
+description = Provides basic petitions with signature goals.
+core = 7.x
+package = TakePart
+
+dependencies[] = entity
+dependencies[] = field
+dependencies[] = views
+
+files[] = petition_type.admin.inc
+files[] = petition.admin.inc
