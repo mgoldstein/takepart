@@ -663,10 +663,10 @@ function drupal_encode_path($path) {
 function drupal_goto($path = '', array $options = array(), $http_response_code = 302) {
   //----DEBUG--- Remove when done
   $dbg_time = time();
-  $dbg_trace = debug_backtrace();
+  $dbg_trace = debug_backtrace(false);
   if(isset($dbg_trace)){
     try {
-      watchdog('drupal_goto', "timestamp:" . $dbg_time . "|" . $path . "|" . preg_replace("/[\n\s\r]/"," ",print_r($dbg_trace, true)));
+      watchdog('drupal_goto', "timestamp:" . $dbg_time . "|" . $path . "|" . preg_replace("/[\n\s\r]/","",print_r($dbg_trace, true)));
       header('timestamp:' . $dbg_time);
     } catch (Exception $ex) {
       watchdog('drupal_goto', $ex->getMessage());
