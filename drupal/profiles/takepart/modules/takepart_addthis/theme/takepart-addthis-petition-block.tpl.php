@@ -1,5 +1,5 @@
 <h2 class="tp_block_addthis_petition_header">Spread the word!</h2>
-<p>Every signature counts! Share this petition with friends and family to have an even greater impact!</p>
+<p style="line-height:16px; margin-bottom:8px; margin-top:2px;">Every signature counts! Share this petition with friends and family to have an even greater impact!</p>
 <div class="tp-pet-share-button-bar">
   <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
     <span class="tp-pet-share-label">Share Petition</span>
