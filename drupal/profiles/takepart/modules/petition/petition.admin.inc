@@ -106,6 +106,24 @@ function petition_form($form, &$form_state, $petition, $op = 'edit') {
     '#default_value' => variable_get($variable, ''),
   );
 
+  $variable = "petition:{$petition->type}:{$petition->petition_id}:email_share_msg";
+  $form['email_share_msg'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Email Share Message'),
+    '#description' => t('The default message for AddThis email sharing.'),
+    '#maxlength' => 255,
+    '#default_value' => variable_get($variable, ''),
+  );
+
+  $variable = "petition:{$petition->type}:{$petition->petition_id}:twitter_share_msg";
+  $form['twitter_share_msg'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Twitter Share Message'),
+    '#description' => t('The default message for AddThis Twitter sharing.'),
+    '#maxlength' => 255,
+    '#default_value' => variable_get($variable, ''),
+  );
+
   $form_state['petition'] = $petition;
   field_attach_form('petition', $petition, $form, $form_state);
 
@@ -177,14 +195,18 @@ function petition_form_submit(&$form, &$form_state) {
       array('%name' => $petition->name)));
   }
 
-  // save the thank you and updates page paths
-  $variable = "petition:{$petition->type}:{$petition->petition_id}:thank_you_page";
-  $value = $form_state['values']['thank_you_page'];
-  variable_set($variable, $value);
-
-  $variable = "petition:{$petition->type}:{$petition->petition_id}:updates_page";
-  $value = $form_state['values']['updates_page'];
-  variable_set($variable, $value);
+  // save the additional settings
+  $settings = array(
+    'thank_you_page',
+    'updates_page',
+    'email_share_msg',
+    'twitter_share_msg',
+  );
+  foreach ($settings as $setting) {
+    $variable = "petition:{$petition->type}:{$petition->petition_id}:{$setting}";
+    $value = $form_state['values'][$setting];
+    variable_set($variable, $value);
+  }
 
   // go back to the list of petitions
   $form_state['redirect'] = 'admin/content/petitions';

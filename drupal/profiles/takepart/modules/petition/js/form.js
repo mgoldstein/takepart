@@ -29,7 +29,7 @@ jQuery(document).ready(function () {
     else {
       // fire off the petition view event
       var latch = Drupal.settings.petition['viewed_latch'];
-      if (jQuery.cookie(latch) != null) {
+      if (jQuery.cookie(latch) == null) {
         s.events='event26';
         s.eVar25=Drupal.settings.petition['name'];
         s.linkTrackVars='eVar25,events';
