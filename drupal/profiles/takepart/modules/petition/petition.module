@@ -408,6 +408,17 @@ function petition_block_view($delta) {
         $block['subject'] = $petition->name;
         $block['content'] = $petition->view();
         $css_files[] = 'body.css';
+
+        $email_share_msg_var = "petition:{$petition->type}:{$petition->petition_id}:email_share_msg";
+        $twitter_share_msg_var = "petition:{$petition->type}:{$petition->petition_id}:twitter_share_msg";
+
+        $settings = array(
+          'email' => isset($_COOKIE['petition_signed_as']) ? $_COOKIE['petition_signed_as'] : '',
+          'email_msg' =>  variable_get($email_share_msg_var, ''),
+          'twitter_msg' => variable_get($twitter_share_msg_var, ''),
+        );
+        drupal_add_js(array('sharing' => $settings), 'setting');
+
         break;
 
       case 'form':
@@ -691,21 +702,25 @@ function petition_signature_form_submit($form, &$form_state) {
   $cookie = $petition->type . '_signed';
   setcookie($cookie, 1, time() + (86400 * 365), '/');
 
-  // set the newsletter pre-load email to the signature email (if there is one)
-  $goto_options = array();
+  // set the track cookie to trigger metrics on the thank you page
+  $cookie = $petition->type . '_track';
+  setcookie($cookie, 1, 0, '/');
+
+  // if the email field is still on the signature, set the latest petition signed
+  // as cookie
   if (isset($form['signature_email']) && isset($form_state['values']['signature_email'])) {
     $lang = $form['signature_email']['#language'];
-    $goto_options['query'] = array(
-      'petition' => $petition->petition_id,
-      'email' => $form_state['values']['signature_email'][$lang][0]['value'],
-    );
+    $email = $form_state['values']['signature_email'][$lang][0]['value'];
+    setcookie('petition_signed_as', $email, 0, '/');
   }
 
   // and go to the thank you page
   $variable = "petition:{$petition->type}:{$petition->petition_id}:thank_you_page";
   $thank_you_page = variable_get($variable, '');
   if (!empty($thank_you_page)) {
-    drupal_goto($thank_you_page, $goto_options);
+    drupal_goto($thank_you_page, array(
+      'query' => array('signature' => $signature->signature_id),
+    ));
   }
 }
 
