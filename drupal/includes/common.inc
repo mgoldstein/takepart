@@ -663,7 +663,7 @@ function drupal_encode_path($path) {
 function drupal_goto($path = '', array $options = array(), $http_response_code = 302) {
   //----DEBUG--- Remove when done
   $dbg_time = time();
-  $dbg_trace = debug_backtrace(false);
+  $dbg_trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
   if(isset($dbg_trace)){
     try {
       watchdog('drupal_goto', "timestamp:" . $dbg_time . "|" . $path . "|" . preg_replace("/[\n\s\r]/","",print_r($dbg_trace, true)));
