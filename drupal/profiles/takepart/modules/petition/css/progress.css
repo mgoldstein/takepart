@@ -8,6 +8,7 @@ p.petition-progress-complete {
 }
 
 span.petition-progress-percent {
-  font-size: 42px;
+  font-size: 48px;
+  line-height: 48px;
   font-weight: bold;
 }
