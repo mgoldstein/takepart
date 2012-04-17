@@ -1,10 +1,11 @@
 div.petition-signature-form {
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 form.petition-signature-form {
   border-top: solid 1px #ededed;
   padding-top: 8px;
+  margin-top: 10px
 }
 
 form.petition-signature-form input.form-checkbox {

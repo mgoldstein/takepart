@@ -1,0 +1,35 @@
+div.horizontal-tabs {
+    border: 0 none;
+}
+
+div.horizontal-tabs-panes {
+    border:10px solid #D9E8EF;
+    padding:1em 0;
+    margin-top:-3px;
+}
+
+.horizontal-tabs ul.horizontal-tabs-list {
+    background-color: transparent;
+    border: 0 none;
+}
+
+.horizontal-tabs ul.horizontal-tabs-list li {
+    
+}
+.horizontal-tabs ul.horizontal-tabs-list li a {
+    font-weight:300;
+    text-transform: uppercase;
+    color: #000;
+}
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
+    border: 1px solid #D9E8EF;
+    background-color: #f0f4f7;
+    margin: 0 5px 0 0;
+}
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.first {
+    
+}
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected {
+    background-color: #D9E8EF;
+}
+
