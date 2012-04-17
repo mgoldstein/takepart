@@ -69,6 +69,14 @@ hr {
     /* url(../images/TakePart-PM-LOGO.jpg) no-repeat 0 0; */
 }
 
+div.dotted-rule {
+    border-top:1px dotted #000;
+    padding: 8px 0;
+}
+div.gray-rule {
+    border-top:1px solid #eff3f6;
+    margin: 8px 0;
+}
 /*slim header navigation*/
 #slim-header ul.menu li {
     float: none;

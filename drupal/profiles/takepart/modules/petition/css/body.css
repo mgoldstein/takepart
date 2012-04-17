@@ -14,7 +14,7 @@ div.horizontal-tabs-panes {
 }
 
 .horizontal-tabs ul.horizontal-tabs-list li {
-    
+
 }
 .horizontal-tabs ul.horizontal-tabs-list li a {
     font-weight:300;
@@ -27,9 +27,40 @@ div.horizontal-tabs-panes {
     margin: 0 5px 0 0;
 }
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.first {
-    
+
 }
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected {
     background-color: #D9E8EF;
 }
+.ui-widget-content {
+    border:8px solid #D9E8EF;
+}
+.ui-corner-all {
+    border-radius: 0;
+}
+.ui-widget-header {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+}
+.ui-widget-content h2 {
+    color: #9BC;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: lighter;
+    line-height: 100%;
+    text-transform: uppercase;
+    background: url(/profiles/takepart/themes/takepart3/images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 0 transparent;
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+.ui-widget-content h2 span {
+    background: none repeat scroll #FFF;
+    border-right: 5px solid #FFF;
+    padding: 2px 5px 2px 0;
+    text-transform: uppercase;
+}
 
+.ui-dialog .ui-dialog-buttonpane {
+    border:0 none;
+}
