@@ -407,6 +407,7 @@ function petition_block_view($delta) {
       case 'petition':
         $block['subject'] = $petition->name;
         $block['content'] = $petition->view();
+        $css_files[] = 'body.css';
         break;
 
       case 'form':
@@ -570,6 +571,16 @@ function petition_signature_form($form, &$form_state, $signature) {
     'name' => $petition->name,
     'viewed_latch' => $petition->type . '_viewed',
   );
+
+  // redirect to the updates page if the petition has already been signed
+  $cookie = $petition->type . '_signed';
+  if (isset($_COOKIE[$cookie])) {
+    $variable = "petition:{$petition->type}:{$petition->petition_id}:updates_page";
+    $settings += array(
+      'updates_redirect' => variable_get($variable, ''),
+    );
+  }
+
   drupal_add_js(array('petition' => $settings), 'setting');
 
   // add the entity fields to the form
@@ -666,12 +677,36 @@ function petition_signature_form_validate($form, &$form_state) {
  * Signature form sign (submit) handler
  */
 function petition_signature_form_submit($form, &$form_state) {
+
   // build the signature entity from the form
   $signature = $form_state['petition_signature'];
   entity_form_submit_build_entity('petition_signature', $signature, $form, $form_state);
   $signature = $form_state['petition_signature'];
-  // save the entry
+
+  // save the signature
   $signature->save();
+
+  // set the signed cookie
+  $petition = petition_load($signature->petition_id);
+  $cookie = $petition->type . '_signed';
+  setcookie($cookie, 1, time() + (86400 * 365), '/');
+
+  // set the newsletter pre-load email to the signature email (if there is one)
+  $goto_options = array();
+  if (isset($form['signature_email']) && isset($form_state['values']['signature_email'])) {
+    $lang = $form['signature_email']['#language'];
+    $goto_options['query'] = array(
+      'petition' => $petition->petition_id,
+      'email' => $form_state['values']['signature_email'][$lang][0]['value'],
+    );
+  }
+
+  // and go to the thank you page
+  $variable = "petition:{$petition->type}:{$petition->petition_id}:thank_you_page";
+  $thank_you_page = variable_get($variable, '');
+  if (!empty($thank_you_page)) {
+    drupal_goto($thank_you_page, $goto_options);
+  }
 }
 
 /**

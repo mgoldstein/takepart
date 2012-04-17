@@ -1,9 +1,12 @@
-#block-views-wbor-signatures-block div.view-header {
-  border-top: 1px solid black;
+#wbor-signature-list-header {
+  border-top: 1px solid #666666;
+  border-bottom: 1px solid #ededed;
+  height: 24px;
   padding-top: 12px;
+  position: relative;
 }
 
-#block-views-wbor-signatures-block h2 {
+#wbor-signature-list-header h2 {
   background: url("/profiles/takepart/themes/takepart3/images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 0 transparent;
   border: medium none;
   color: #99BBCC;
@@ -14,13 +17,18 @@
   margin: 0;
   padding: 0;
   text-transform: uppercase;
+  height: 18px;
+  width: 100%;
+  position: absolute;
 }
 
-#block-views-wbor-signatures-block h2 span {
+#wbor-signature-list-header h2 span {
   background: none repeat scroll 0 0 #FFFFFF;
   border-right: 5px solid #FFFFFF;
   padding: 2px 5px 2px 0;
   text-transform: uppercase;
+  height: 18px;
+  position: absolute;
 }
 
 .wbor-signature {

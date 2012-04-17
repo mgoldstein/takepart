@@ -26,9 +26,17 @@ form.petition-signature-form label {
 
 form.petition-signature-form .form-item input {
   border: 1px solid #EFF3F5;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
 }
 form.petition-signature-form .form-item textarea {
   border: 1px solid #EFF3F5;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
 }
 form.petition-signature-form .form-item input.error {
   border: 1px solid #1ca9e7;

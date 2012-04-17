@@ -90,6 +90,22 @@ function petition_form($form, &$form_state, $petition, $op = 'edit') {
     '#required' => TRUE,
   );
 
+  $variable = "petition:{$petition->type}:{$petition->petition_id}:thank_you_page";
+  $form['thank_you_page'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Thank You Page'),
+    '#description' => t('The path to the petition thank you page relative to the site root.'),
+    '#default_value' => variable_get($variable, ''),
+  );
+
+  $variable = "petition:{$petition->type}:{$petition->petition_id}:updates_page";
+  $form['updates_page'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Update Page'),
+    '#description' => t('The path to the petition updates page relative to the site root.'),
+    '#default_value' => variable_get($variable, ''),
+  );
+
   $form_state['petition'] = $petition;
   field_attach_form('petition', $petition, $form, $form_state);
 
@@ -160,6 +176,15 @@ function petition_form_submit(&$form, &$form_state) {
     drupal_set_message(t('The petition %name has been added.',
       array('%name' => $petition->name)));
   }
+
+  // save the thank you and updates page paths
+  $variable = "petition:{$petition->type}:{$petition->petition_id}:thank_you_page";
+  $value = $form_state['values']['thank_you_page'];
+  variable_set($variable, $value);
+
+  $variable = "petition:{$petition->type}:{$petition->petition_id}:updates_page";
+  $value = $form_state['values']['updates_page'];
+  variable_set($variable, $value);
 
   // go back to the list of petitions
   $form_state['redirect'] = 'admin/content/petitions';
