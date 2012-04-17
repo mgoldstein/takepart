@@ -1,5 +1,5 @@
 div.petition-signature-form {
-  margin-top: 16px;
+  margin-top: 10px;
 }
 
 form.petition-signature-form {
@@ -43,6 +43,7 @@ form.petition-signature-form div.petition-restrictions-note {
 }
 
 form.petition-signature-form div.petition-terms-of-use-note {
+  color: #666666;
   font-size: 10px;
   width: 100%;
   text-align: center;
@@ -51,7 +52,7 @@ form.petition-signature-form div.petition-terms-of-use-note {
 #petition-signature-display-disclaimer {
   display: none;
   margin-left: 12px;
-  color: #1ca9e7;
+  color: #666666;
 }
 
 form.petition-signature-form div.group_sign_petition_box {
@@ -77,4 +78,3 @@ div.group_two_field_box_left {
 div.group_two_field_box_right {
   float: right;
 }
-

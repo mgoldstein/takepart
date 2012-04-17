@@ -6,7 +6,7 @@
 function waterbillofrights_form_water_bill_of_rights_signature_form_alter(&$form, &$form_state) {
 
   $module_path = drupal_get_path('module', 'waterbillofrights');
-  $path = implode('/', array($module_path, 'css', 'form.css'));
+  $path = implode('/', array($module_path, 'css', 'wbor-form.css'));
   drupal_add_css($path, array('group' => CSS_DEFAULT, 'type' => 'file'));
 
   $ngo_title = '';
@@ -63,4 +63,44 @@ function waterbillofrights_email_validate($element, &$form_state) {
   if (!empty($mail) && !valid_email_address($mail)) {
     form_error($element, t('Invalid e-mail address.'));
   }
+}
+
+function waterbillofrights_theme() {
+  return array(
+    'petition_signature__water_bill_of_rights_signature' => array(
+      'render content' => 'elements',
+    ),
+    'waterbillofrights_signature' => array(
+      'render content' => 'elements',
+      'template' => 'theme/signature',
+    ),
+  );
+}
+
+function theme_petition_signature__water_bill_of_rights_signature($variables) {
+
+  $module_path = drupal_get_path('module', 'waterbillofrights');
+  $path = implode('/', array($module_path, 'css', 'signature.css'));
+  drupal_add_css($path, array('group' => CSS_DEFAULT, 'type' => 'file'));
+
+  $signature = $variables['petition_signature'];
+
+  $items = field_get_items('petition_signature', $signature, 'signature_comment');
+  $comment = $items[0]['safe_value'];
+
+  $items = field_get_items('petition_signature', $signature, 'signature_first_name');
+  $first_name = $items[0]['safe_value'];
+
+  $items = field_get_items('petition_signature', $signature, 'signature_last_name');
+  $last_name = $items[0]['safe_value'];
+  $last_name = strlen($last_name) ? substr($last_name, 0, 1) : '';
+
+  $quote_src = implode('/', array($module_path, 'images', 'comment_quote.png'));
+  $variables = array(
+    'comment' => $comment,
+    'quote_src' => '/' . $quote_src,
+    'name' => trim($first_name . ' ' . $last_name),
+    'created' => date('j M Y', $signature->created),
+  );
+  return theme('waterbillofrights_signature', $variables);
 }
