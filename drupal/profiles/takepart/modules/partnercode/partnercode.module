@@ -124,8 +124,8 @@ function partnercode_field_is_empty($item, $field) {
 function partnercode_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
   $allowed_values = $field['settings']['allowed_values'];
   foreach ($items as $delta => $item) {
-    if (!empty($item['value']) && !empty($allowed_values)) {
-      if (!isset($allowed_values[$item['value']])) {
+    if (!empty($item) && !empty($allowed_values)) {
+      if (!isset($allowed_values[$item])) {
         $errors[$field['field_name']][$langcode][$delta][] = array(
           'error' => 'partnercode_illegal_value',
           'message' => t('%name: illegal value.', array('%name' => $instance['label'])),
