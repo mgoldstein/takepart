@@ -144,7 +144,7 @@ function _takepart_signupforms_build_signup_form($entity, $fields, $form_id) {
           case 'list_text':
           case 'zip_code':
           case 'partner_code':
-            
+
             if (! isset($bsd_fields[$field_id]['value'])) {
 
               // first time the field value is being set
@@ -239,7 +239,9 @@ function _takepart_signupforms_bundle_settings($entity_type, $bundle, $reset = F
         ->fields('c', array('type', 'cardinality'))
         ->condition('b.enabled', 1, '=')
         ->condition('f.form_id', 0, '!=')
-        ->condition('f.field_id', 0, '!=');
+        ->condition('f.field_id', 0, '!=')
+        ->condition('c.active', 1, '=')
+        ->condition('c.deleted', 0, '=');
 
       $results = $query->execute();
       while ($result = $results->fetchAssoc()) {
