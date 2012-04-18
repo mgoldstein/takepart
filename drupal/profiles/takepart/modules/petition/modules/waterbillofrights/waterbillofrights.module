@@ -13,8 +13,8 @@ function waterbillofrights_form_water_bill_of_rights_signature_form_alter(&$form
   if (! empty($form['field_wbor_source_ngo'])) {
     // update the NGO opt-in checkbox to reflect the source NGO.
     $language = $form['field_wbor_source_ngo']['#language'];
-    if (! empty($form['field_wbor_source_ngo'][$language][0]['#default_value'])) {
-      $ngo_token = $form['field_wbor_source_ngo'][$language][0]['#default_value'];
+    if (! empty($form['field_wbor_source_ngo'][$language][0]['value']['#default_value'])) {
+      $ngo_token = $form['field_wbor_source_ngo'][$language][0]['value']['#default_value'];
       // get the NGO name from the list of allowed values
       $field = $form_state['field']['field_wbor_source_ngo'][$language]['field'];
       $ngo_title = isset($field['settings']['allowed_values'][$ngo_token]) ?
