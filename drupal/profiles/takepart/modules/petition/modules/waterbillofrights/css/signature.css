@@ -1,5 +1,5 @@
 #wbor-signature-list-header {
-  border-top: 1px solid #666666;
+  border-top: 1px dotted #000;
   border-bottom: 1px solid #ededed;
   height: 24px;
   padding-top: 12px;
@@ -52,4 +52,9 @@
   color: #666666;
   font-size: 10px;
   margin-left: 20px;
+}
+
+#right-rail .petition-progress-block {
+    border-top:1px solid #EDEDED; 
+    margin-top:6px
 }

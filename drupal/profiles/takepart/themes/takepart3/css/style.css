@@ -271,6 +271,9 @@ p {
     margin: 0 0 1em 0;
     color:#000;
 }
+p.last {
+    margin-bottom: 0;
+}
 
 h3 {
     color: #000;

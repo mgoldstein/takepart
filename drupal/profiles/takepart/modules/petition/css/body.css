@@ -104,3 +104,7 @@ button.ui-state-hover, .ui-widget-content button.ui-state-hover,
 .ui-dialog .ui-dialog-buttonpane button {
     margin-top: 0;
 }
+
+.horizontal-tabs fieldset.horizontal-tabs-pane {
+    margin-bottom: 0;
+}
