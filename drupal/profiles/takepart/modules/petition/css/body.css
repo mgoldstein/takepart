@@ -25,6 +25,11 @@ div.horizontal-tabs-panes {
     border: 1px solid #D9E8EF;
     background-color: #f0f4f7;
     margin: 0 5px 0 0;
+    padding-top: 3px;
+}
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
+    padding-bottom: 6px;
+    padding-top: 9px;
 }
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.first {
 

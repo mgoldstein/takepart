@@ -9,19 +9,27 @@
   </div>
 </div>
 <script type="text/javascript">
-  var sharing_email = '<?php print $_COOKIE['petition_signed_as'] ?>';
+  var email_from = "";
+  var email_note = "";
+  var twitter_template = "";
   if (Drupal.settings.sharing) {
     if ('email' in Drupal.settings.sharing) {
-      sharing_email = Drupal.settings.sharing['email'];
+      email_from = Drupal.settings.sharing['email'];
+    }
+    if ('email_msg' in Drupal.settings.sharing) {
+      email_note = Drupal.settings.sharing['email_msg'];
+    }
+    if ('twitter_msg' in Drupal.settings.sharing) {
+      twitter_template = Drupal.settings.sharing['twitter_msg'];
     }
   }
   var addthis_config = {
-    ui_email_note: 'SHARE THE BILL OF RIGHTS\nThe more names we have, the more powerful our message. Share the Water Bill of Rights with friends and family!',
-    ui_email_from: sharing_email
+    ui_email_from: email_from,
+    ui_email_note: email_note
   };
   var addthis_share = {
     templates: {
-      twitter: "Water is a right, not a privilege! Sign the Water Bill of Rights today. {{url}} #knowyourwater via @TakePart"
+      twitter: twitter_template
     }
   };
 </script>
