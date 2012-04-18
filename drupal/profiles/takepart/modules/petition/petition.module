@@ -578,7 +578,7 @@ function petition_signature_form($form, &$form_state, $signature) {
 
   // redirect to the updates page if the petition has already been signed
   $cookie = $petition->type . '_signed';
-  if (isset($_COOKIE[$cookie])) {
+  if (isset($_COOKIE[$cookie]) && empty($_GET['hold'])) {
     $variable = "petition:{$petition->type}:{$petition->petition_id}:updates_page";
     $updates_page = variable_get($variable, '');
     if (!empty($updates_page)) {
