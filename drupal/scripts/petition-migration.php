@@ -246,7 +246,7 @@ if (module_exists('takepart_petition')) {
   create_water_bill_of_rights_type($type);
   $petition = create_water_bill_of_rights_petition($type);
   $count = migrate_signatures($petition);
-  module_disable(array('takepart_petition'), FALSE);
+  //module_disable(array('takepart_petition'), FALSE);
   print "$count signature(s) migrated\n";
 }
 else {
