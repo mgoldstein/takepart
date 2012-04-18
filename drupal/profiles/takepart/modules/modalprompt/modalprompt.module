@@ -128,7 +128,7 @@ function modalprompt_field_formatter_view($entity_type, $entity, $field, $instan
     ),
     '#attached' => array(
       'css' => array(
-        drupal_get_path('module', 'modalprompt') . '/css/field.css' => array(
+        drupal_get_path('module', 'modalprompt') . '/css/dialog.css' => array(
           'group' => CSS_DEFAULT,
           'type' => 'file',
         ),
