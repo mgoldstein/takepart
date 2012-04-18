@@ -59,7 +59,7 @@ div.horizontal-tabs-panes {
     line-height: 100%;
     text-transform: uppercase;
     background: url(/profiles/takepart/themes/takepart3/images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 0 transparent;
-    margin: 0;
+    margin: 12px 0 0;
     border: 0 none;
     padding: 0;
 }
@@ -98,7 +98,7 @@ button.ui-state-hover, .ui-widget-content button.ui-state-hover,
 }
 
 .ui-widget-header .ui-icon {
-    background-image: url(/sites/all/modules/contrib/jquery_update/replace/ui/themes/base/images/ui-icons_222222_256x240.png);
+    background-image: url(/sites/all/modules/contrib/jquery_update/replace/ui/themes/base/images/ui-icons_2e83ff_256x240.png);
 }
 
 .ui-dialog .ui-dialog-buttonpane button {

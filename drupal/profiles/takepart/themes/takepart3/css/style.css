@@ -71,7 +71,7 @@ hr {
 
 div.dotted-rule {
     border-top:1px dotted #000;
-    padding: 8px 0;
+    margin: 8px 0;
     line-height: 1px;
 }
 div.gray-rule {
