@@ -20,6 +20,7 @@ div.horizontal-tabs-panes {
     font-weight:300;
     text-transform: uppercase;
     color: #000;
+    outline: none;
 }
 .horizontal-tabs ul.horizontal-tabs-list li a:hover {
     background-color: #dee8ea;
@@ -29,6 +30,7 @@ div.horizontal-tabs-panes {
     background-color: #f3f7f8;
     margin: 0 5px 0 0;
     padding: 0;
+    outline: none;
 }
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
     padding-bottom: 6px;
@@ -80,15 +82,20 @@ div.horizontal-tabs-panes {
     display: none;
 }
 
-button.ui-state-default, .ui-widget-content button.ui-state-default, .ui-widget-header button.ui-state-default {
+button.ui-state-default, 
+.ui-widget-content button.ui-state-default, 
+.ui-widget-header button.ui-state-default {
     background: transparent url(/profiles/takepart/modules/petition/images/modal_okay_button.png) no-repeat scroll 0 0;
     border: 0 none;
     width: 97px;
     height: 47px;
+    outline: none;
 }
 
-button.ui-state-hover, .ui-widget-content button.ui-state-hover,
-.ui-widget-header button.ui-state-hover, button.ui-state-focus,
+button.ui-state-hover, 
+.ui-widget-content button.ui-state-hover,
+.ui-widget-header button.ui-state-hover, 
+button.ui-state-focus,
 .ui-widget-content button.ui-state-focus,
 .ui-widget-header button.ui-state-focus {
     border: 0 none;
