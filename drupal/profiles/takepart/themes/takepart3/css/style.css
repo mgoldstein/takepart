@@ -72,10 +72,12 @@ hr {
 div.dotted-rule {
     border-top:1px dotted #000;
     padding: 8px 0;
+    line-height: 1px;
 }
 div.gray-rule {
     border-top:1px solid #eff3f6;
     margin: 8px 0;
+    line-height: 1px;
 }
 /*slim header navigation*/
 #slim-header ul.menu li {

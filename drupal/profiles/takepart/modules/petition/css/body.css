@@ -28,7 +28,7 @@ div.horizontal-tabs-panes {
     border: 1px solid #dfe6ea;
     background-color: #f3f7f8;
     margin: 0 5px 0 0;
-    padding-top: 3px;
+    padding: 0;
 }
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
     padding-bottom: 6px;
@@ -42,7 +42,7 @@ div.horizontal-tabs-panes {
     background-color: #dfe6ea;
 }
 .ui-widget-content {
-    border:8px solid #dfe6ea;
+    border: 10px solid #dfe6ea;
 }
 .ui-corner-all {
     border-radius: 0;
@@ -60,7 +60,7 @@ div.horizontal-tabs-panes {
     text-transform: uppercase;
     background: url(/profiles/takepart/themes/takepart3/images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 0 transparent;
     margin: 0;
-    border: none;
+    border: 0 none;
     padding: 0;
 }
 .ui-widget-content h2 span {
@@ -72,4 +72,35 @@ div.horizontal-tabs-panes {
 
 .ui-dialog .ui-dialog-buttonpane {
     border:0 none;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.ui-dialog .ui-button-text {
+    display: none;
+}
+
+button.ui-state-default, .ui-widget-content button.ui-state-default, .ui-widget-header button.ui-state-default {
+    background: transparent url(/profiles/takepart/modules/petition/images/modal_okay_button.png) no-repeat scroll 0 0;
+    border: 0 none;
+    width: 97px;
+    height: 47px;
+}
+
+button.ui-state-hover, .ui-widget-content button.ui-state-hover,
+.ui-widget-header button.ui-state-hover, button.ui-state-focus,
+.ui-widget-content button.ui-state-focus,
+.ui-widget-header button.ui-state-focus {
+    border: 0 none;
+    background: transparent url(/profiles/takepart/modules/petition/images/modal_okay_button_over.png) no-repeat scroll 0 0;
+    width: 97px;
+    height: 47px;
+}
+
+.ui-widget-header .ui-icon {
+    background-image: url(/sites/all/modules/contrib/jquery_update/replace/ui/themes/base/images/ui-icons_222222_256x240.png);
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+    margin-top: 0;
 }
