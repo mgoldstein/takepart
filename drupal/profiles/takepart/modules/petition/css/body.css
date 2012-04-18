@@ -3,7 +3,7 @@ div.horizontal-tabs {
 }
 
 div.horizontal-tabs-panes {
-    border:10px solid #D9E8EF;
+    border:10px solid #dfe6ea;
     padding:1em 0;
     margin-top:-3px;
 }
@@ -21,9 +21,12 @@ div.horizontal-tabs-panes {
     text-transform: uppercase;
     color: #000;
 }
+.horizontal-tabs ul.horizontal-tabs-list li a:hover {
+    background-color: #dee8ea;
+}
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
-    border: 1px solid #D9E8EF;
-    background-color: #f0f4f7;
+    border: 1px solid #dfe6ea;
+    background-color: #f3f7f8;
     margin: 0 5px 0 0;
     padding-top: 3px;
 }
@@ -31,14 +34,15 @@ div.horizontal-tabs-panes {
     padding-bottom: 6px;
     padding-top: 9px;
 }
+
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.first {
 
 }
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected {
-    background-color: #D9E8EF;
+    background-color: #dfe6ea;
 }
 .ui-widget-content {
-    border:8px solid #D9E8EF;
+    border:8px solid #dfe6ea;
 }
 .ui-corner-all {
     border-radius: 0;
