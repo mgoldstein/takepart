@@ -22,21 +22,15 @@ jQuery(document).ready(function () {
   );
 
   if (Drupal.settings.petition) {
-    if ('updates_redirect' in Drupal.settings.petition) {
-      // the petition is already signed, redirect to the updates page
-      jQuery(location).attr("href","/" + Drupal.settings.petition['updates_redirect']);
-    }
-    else {
-      // fire off the petition view event
-      var latch = Drupal.settings.petition['viewed_latch'];
-      if (jQuery.cookie(latch) == null) {
-        s.events='event26';
-        s.eVar25=Drupal.settings.petition['name'];
-        s.linkTrackVars='eVar25,events';
-        s.linkTrackEvents='event26';
-        s.tl(true, 'o', 'petition view');
-        jQuery.cookie(latch, 1, {path:'/'});
-      }
+    // fire off the petition view event
+    var latch = Drupal.settings.petition['viewed_latch'];
+    if (jQuery.cookie(latch) == null) {
+      s.events='event26';
+      s.eVar25=Drupal.settings.petition['name'];
+      s.linkTrackVars='eVar25,events';
+      s.linkTrackEvents='event26';
+      s.tl(true, 'o', 'petition view');
+      jQuery.cookie(latch, 1, {path:'/'});
     }
   }
 });
