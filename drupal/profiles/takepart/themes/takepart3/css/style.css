@@ -2459,3 +2459,12 @@ img.rollover-image-on {
   display: none;
 }
 
+.padbottom {
+  padding-bottom: 10px;
+}
+
+.margbottom {
+  margin-bottom: 10px;
+}
+
+
