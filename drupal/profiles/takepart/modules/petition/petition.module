@@ -700,10 +700,40 @@ function petition_signature_form_submit($form, &$form_state) {
   entity_form_submit_build_entity('petition_signature', $signature, $form, $form_state);
   $signature = $form_state['petition_signature'];
 
-  // save the signature
-  $signature->save();
+  if (isset($signature->signature_email)) {
 
-  // set the signed cookie
+    // get the email
+    $lang = $signature->language;
+    $email = $signature->signature_email[$lang][0]['value'];
+
+    // create an entity query
+    $query = new EntityFieldQuery();
+
+    // limit that query to signatures for this petition
+    $query->entityCondition('entity_type', 'petition_signature');
+    $query->propertyCondition('petition_id', $signature->petition_id);
+
+    // limit signing to once per email
+    $query->fieldCondition('signature_email', 'value', $email, '=');
+
+    $results = $query->execute();
+    if (! empty($results['petition_signature'])) {
+      $keys = array_keys($results['petition_signature']);
+      $signature_id = $keys[0];
+    }
+    else {
+      $signature->save();
+      $signature_id = $signature->signature_id;
+    }
+    setcookie('petition_signed_as', $email, 0, '/');
+  }
+  else {
+    // There is no email field so allow all signatures
+    $signature->save();
+    $signature_id = $signature->signature_id;
+  }
+
+  // set the petition signed cookie
   $petition = petition_load($signature->petition_id);
   $cookie = $petition->type . '_signed';
   setcookie($cookie, 1, time() + (86400 * 365), '/');
@@ -712,20 +742,12 @@ function petition_signature_form_submit($form, &$form_state) {
   $cookie = $petition->type . '_track';
   setcookie($cookie, 1, 0, '/');
 
-  // if the email field is still on the signature, set the latest petition signed
-  // as cookie
-  if (isset($form['signature_email']) && isset($form_state['values']['signature_email'])) {
-    $lang = $form['signature_email']['#language'];
-    $email = $form_state['values']['signature_email'][$lang][0]['value'];
-    setcookie('petition_signed_as', $email, 0, '/');
-  }
-
   // and go to the thank you page
   $variable = "petition:{$petition->type}:{$petition->petition_id}:thank_you_page";
   $thank_you_page = variable_get($variable, '');
   if (!empty($thank_you_page)) {
     drupal_goto($thank_you_page, array(
-      'query' => array('signature' => $signature->signature_id),
+      'query' => array('signature' => $signature_id),
     ));
   }
 }
