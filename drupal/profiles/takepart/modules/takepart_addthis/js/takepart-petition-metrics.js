@@ -20,13 +20,21 @@ jQuery(document).ready(function() {
         s.linkTrackEvents='event27';
         s.tl(true, 'o', 'petition submit');
 
-        // Newsletter Sign-up (event 39)
         for (var i=0; i<Drupal.settings.petition['newsletters'].length; i++) {
+
+          // Newsletter Sign-up (event 39)
           s.events='event39';
           s.eVar23=Drupal.settings.petition['newsletters'][i];
           s.linkTrackVars='eVar23,events';
           s.linkTrackEvents='event39';
           s.tl(true, 'o', 'Newsletter Sign-up');
+
+          // Action (event 19)
+          s.events='event19';
+          s.eVar28='Newsletter Signup';
+          s.linkTrackVars='eVar28,events';
+          s.linkTrackEvents='event19';
+          s.tl(true, 'o', 'Action');
         }
 
         // delete the cookie
