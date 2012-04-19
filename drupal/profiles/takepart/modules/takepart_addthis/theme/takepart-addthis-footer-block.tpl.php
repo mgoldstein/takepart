@@ -8,6 +8,7 @@ $node = menu_get_object();
       <a class="addthis_button_twitter" tw:via="<?php print $variables['takepart_addthis_tweet_via']; ?>" tw:text="<?php print $node->title; ?>" tw:url="<?php echo ((empty($_SERVER["HTTPS"])) ? 'http://' : 'https://') . $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]; ?>" tw:counturl="<?php echo ((empty($_SERVER["HTTPS"])) ? 'http://' : 'https://') . $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]; ?>"></a>
       <a class="addthis_button_google_plusone"></a>
       <a class="addthis_button_linkedin"></a>
+      <a class="addthis_button_pinterest" pi:pinit:url="<?php echo ((empty($_SERVER["HTTPS"])) ? 'http://' : 'https://') . $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]; ?>"></a> 
       <a class="addthis_button_stumbleupon"></a>
       <a class="addthis_button_digg"></a>
       <a class="addthis_button_email"></a>
