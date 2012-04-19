@@ -91,17 +91,7 @@ function ctools_node_terms_content_type_render($subtype, $conf, $panel_args, $co
 
     case 'inline-delimited':
       $delimiter = isset($conf['term_delimiter']) ? $conf['term_delimiter'] : ', ';
-      $processed_terms = array();
-      foreach ($terms as $key => $term) {
-        if (is_string($term)) {
-          $processed_terms[$key] = $term;
-        }
-        else {
-          $terms[$key] = l($term['title'], $term['href'], $term);
-        }
-      }
-
-      $formatted_terms = implode($delimiter, $processed_terms);
+      $formatted_terms = implode($delimiter, $terms);
       break;
   }
 

@@ -64,7 +64,6 @@ function ctools_plugin_api_info($owner, $api, $minimum_version, $current_version
     foreach (module_implements($hook) as $module) {
       $function = $module . '_' . $hook;
       $info = $function($owner, $api);
-      $version = NULL;
       // This is added to make hook_views_api() compatible with this, since
       // views used a different version key.
       if (isset($info['version'])) {
@@ -108,9 +107,6 @@ function ctools_plugin_api_info($owner, $api, $minimum_version, $current_version
         }
       }
     }
-
-    // Allow other modules to hook in.
-    drupal_alter($hook, $cache[$owner][$api]);
   }
 
   return $cache[$owner][$api];
@@ -147,10 +143,10 @@ function ctools_plugin_api_include($owner, $api, $minimum_version, $current_vers
   foreach ($info as $module => $plugin_info) {
     if (!isset($already_done[$owner][$api][$module])) {
       if (isset($plugin_info["$api file"])) {
-        $file = $plugin_info["$api file"];
+        $file = isset($plugin_info["$api file"]);
       }
       else if (isset($plugin_info['file'])) {
-        $file = $plugin_info['file'];
+        $file = isset($plugin_info['file']);
       }
       else {
         $file = "$module.$api.inc";
@@ -246,17 +242,10 @@ function ctools_get_plugins($module, $type, $id = NULL) {
     $cache = cache_get("plugins:$module:$type", $info[$module][$type]['cache table']);
 
     if (!empty($cache->data)) {
-      // Verify that the file exists as it may have been moved in a multisite environment
-      if (isset($cache->data['path'])) {
-        // Files to be registered may be in two locations. Check for both of them.
-        if ((is_array($cache->data['path']) && file_exists($cache->data['path']['file'])) ||
-           file_exists($cache->data['path'])) {
-          // Cache load succeeded so use the cached plugin list.
-          $plugins[$module][$type]   = $cache->data;
-          // Set $setup to true so we know things where loaded.
-          $setup[$module][$type]     = TRUE;
-        }
-      }
+      // Cache load succeeded so use the cached plugin list.
+      $plugins[$module][$type]   = $cache->data;
+      // Set $setup to true so we know things where loaded.
+      $setup[$module][$type]     = TRUE;
     }
     else {
       // Cache load failed so store that we need to build and write the cache.
@@ -282,9 +271,7 @@ function ctools_get_plugins($module, $type, $id = NULL) {
       // If a plugin supports children, go through each plugin and ask.
       $temp = array();
       foreach ($plugins[$module][$type] as $name => $plugin) {
-        // The strpos ensures that we don't try to find children for plugins
-        // that are already children.
-        if (!empty($plugin['get children']) && function_exists($plugin['get children']) && strpos($name, ':') === FALSE) {
+        if (!empty($plugin['get children']) && function_exists($plugin['get children'])) {
           $temp = array_merge($plugin['get children']($plugin, $name), $temp);
         }
         else {
@@ -401,7 +388,6 @@ function ctools_plugin_get_plugin_type_info($flush = FALSE) {
  * Reset all static caches that affect the result of ctools_get_plugins().
  */
 function ctools_get_plugins_reset() {
-  drupal_static_reset('ctools_plugins');
   drupal_static_reset('ctools_plugin_setup');
   drupal_static_reset('ctools_plugin_load_includes');
   drupal_static_reset('ctools_plugin_api_info');
