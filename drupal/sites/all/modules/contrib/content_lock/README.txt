@@ -44,18 +44,7 @@ For integrating modules with content_lock, see:
 
     Use javascript to detect leaving the node form - Automatically unlock nodes
       when users navigate away from a node edit page by clicking miscellaneous
-      links.
-
-      Confirm that the user really wants to leave the node form with a
-        Javascript popup - when the user navigates away from a node edit page
-        without having saved the node, ask the user to confirm that
-        choice. Disable this if you find the confirmation dialog box annoying.
-
-      Javascript popup message text - If the user is asked to confirm leaving
-        the node edit page, use this text in the dialog box. Note that most
-        browsers have taken to ignoring the Javascript-supplied text and will
-        merely ask the user if the user is sure the user intends to navigate
-        away.
+      links. Also prompts user when trying to navigate away from a node edit page.
 
     Show lock / unlock message - Make content_lock more verbose, informing a
       user when he locks a node and about his inconsideration when he visits
@@ -82,8 +71,8 @@ For integrating modules with content_lock, see:
 
 -- CREDITS --
 Current maintainers:
-Nathan Phillip Brink (ohnobinki) http://drupal.org/user/108406
 Eugen Mayer http://drupal.org/user/108406
+Nathan Phillip Brink (ohnobinki) http://drupal.org/user/108406
 
 This module is a fork/continuation of
 http://drupal.org/project/checkout which was written and maintained
