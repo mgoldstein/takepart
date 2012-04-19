@@ -2480,12 +2480,14 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
     width: 70px;
 }
 
-
-
 .block-boxes-current-featured_items h2 {
     display: none;
 }
 
 .showtitle h2 {
     display: block !important;
+}
+
+.block-boxes-current-taxonomy_search_list {
+	padding-top:10px;
 }
