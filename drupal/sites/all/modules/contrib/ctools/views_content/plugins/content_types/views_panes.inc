@@ -13,7 +13,6 @@ function views_content_views_panes_ctools_content_types() {
   return array(
     'title' => t('View panes'),
     'admin settings' => 'views_content_admin_form',
-    'all contexts' => TRUE,
   );
 }
 
@@ -148,7 +147,7 @@ function views_content_views_panes_content_type_render($subtype, $conf, $panel_a
   $args = array();
   $arguments = $view->display_handler->get_option('arguments');
 
-  $context_keys = isset($conf['context']) ? $conf['context'] : array();
+  $context_keys = array_keys($contexts);
   foreach ($view->display_handler->get_argument_input() as $id => $argument) {
     switch ($argument['type']) {
       case 'context':
@@ -256,7 +255,7 @@ function views_content_views_panes_content_type_render($subtype, $conf, $panel_a
       }
 
       if ($conf['use_pager']) {
-        if (!isset($pager['options']['id']) || (isset($conf['pager_id']) && $pager['options']['id'] != $conf['pager_id'])) {
+        if (!isset($pager['options']['id']) || $pager['options']['id'] != $conf['pager_id']) {
           $pager['options']['id'] = $conf['pager_id'];
         }
       }
@@ -275,7 +274,7 @@ function views_content_views_panes_content_type_render($subtype, $conf, $panel_a
   if ($allow['fields_override']) {
     if ($conf['fields_override']) {
       $fields = $view->get_items('field');
-      foreach ($fields as $field => $display) {
+      foreach ($conf['fields_override'] as $field => $display) {
         $fields[$field]['exclude'] = empty($conf['fields_override'][$field]);
       }
       $view->display_handler->set_option('fields', $fields);
@@ -537,9 +536,6 @@ function views_content_views_panes_content_type_edit_form($form, &$form_state) {
     }
   }
 
-  // Add the view object to the form to allow additional customization
-  $form_state['view'] = $view;
-
   return $form;
 }
 
@@ -600,10 +596,8 @@ function views_content_views_panes_content_type_admin_info($subtype, $conf, $con
     $argument_input = $view->display_handler->get_option('argument_input');
 
     foreach ($conf['arguments'] as $key => $value) {
-      if(!empty($value)){
-        $label = $argument_input[$key]['label'];
-        $info[] = $label . ': ' . $value;
-      }
+      $label = $argument_input[$key]['label'];
+      $info[] = $label . ': ' . $value;
     }
   }
 
@@ -612,7 +606,7 @@ function views_content_views_panes_content_type_admin_info($subtype, $conf, $con
     $block->title = array_shift($info);
 
     $info[] = $view->display_handler->get_option('pane_description');
-    $block->content = theme('item_list', array('items' => $info));
+    $block->content = theme('item_list', $info);
   }
   else {
     $block->title = $view->display_handler->get_option('pane_description');
