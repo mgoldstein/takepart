@@ -32,7 +32,7 @@ function takepart_contests_contest_type_form($form, &$form_state, $contest_type,
     $contest_type->label .= ' (cloned)';
     $contest_type->type = '';
   }
-  
+
   $form['label'] = array(
     '#title' => t('Label'),
     '#type' => 'textfield',
@@ -58,8 +58,8 @@ function takepart_contests_contest_type_form($form, &$form_state, $contest_type,
     '#title' => t('Default Entry Period'),
     '#default_value' => isset($contest_type->default_entry_period) ? $contest_type->default_entry_period : '',
     '#element_validate' => array('takepart_contests_validate_entry_period',),
-  ); 
- 
+  );
+
   $form['actions'] = array('#type' => 'actions');
   $submit = array();
   if (! empty($form['#submit'])) {
@@ -82,13 +82,13 @@ function takepart_contests_contest_type_form($form, &$form_state, $contest_type,
       '#weight' => 45,
     );
   }
-  
+
   $form['actions']['cancel'] = array(
     '#type' => 'markup',
     '#markup' => l(t('Cancel'), 'admin/structure/contest_types'),
     '#weight' => 50,
   );
-  
+
   return $form;
 }
 
@@ -101,9 +101,16 @@ function takepart_contests_contest_type_form_submit(&$form, &$form_state) {
   $contest_type = entity_ui_form_submit_build_entity($form, $form_state);
 
   // save the contest type
-  $contest_type->save();
-  drupal_set_message(t('The contest type %name has been saved.', array('%name' => $contest_type->label)));
-  
+  $status = $contest_type->save();
+  if ($status == SAVED_UPDATED) {
+    drupal_set_message(t('The contest type %name has been updated.',
+      array('%name' => $contest_type->label)));
+  }
+  else if ($status == SAVED_NEW) {
+    drupal_set_message(t('The contest type %name has been added.',
+      array('%name' => $contest_type->label)));
+  }
+
   // go back to the list of content types
   $form_state['redirect'] = 'admin/structure/contest_types';
 }
@@ -112,7 +119,7 @@ function takepart_contests_contest_type_form_submit(&$form, &$form_state) {
  * Contest Type entity form delete handler
  */
 function takepart_contests_contest_type_form_submit_delete(&$form, &$form_state) {
-  
+
   // go to the delete confirmation page
   $type = $form_state['contest_type']->type;
   $form_state['redirect'] = 'admin/structure/contest_types/manage/' . $type . '/delete?destination=admin/structure/contest_types';

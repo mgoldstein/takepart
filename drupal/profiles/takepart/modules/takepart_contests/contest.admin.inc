@@ -71,7 +71,7 @@ function takepart_contests_contest_form($form, &$form_state, $contest, $op = 'ed
   if ($op == 'clone') {
     $contest->name .= ' (cloned)';
   }
-  
+
   $form['name'] = array(
     '#title' => t('Name'),
     '#type' => 'textfield',
@@ -98,7 +98,7 @@ function takepart_contests_contest_form($form, &$form_state, $contest, $op = 'ed
 
   $form_state['takepart_contests_contest'] = $contest;
   field_attach_form('takepart_contests_contest', $contest, $form, $form_state);
-  
+
   $form['actions'] = array(
     '#type' => 'container',
     '#attributes' => array('class' => array('form-actions')),
@@ -125,7 +125,7 @@ function takepart_contests_contest_form($form, &$form_state, $contest, $op = 'ed
       '#weight' => 45,
     );
   }
-  
+
   $form['actions']['cancel'] = array(
     '#type' => 'markup',
     '#markup' => l(t('Cancel'), 'admin/content/contests'),
@@ -155,17 +155,17 @@ function takepart_contests_contest_form_submit(&$form, &$form_state) {
   // build the contest entity from the form
   $controller = entity_ui_controller('takepart_contests_contest');
   $contest = $controller->entityFormSubmitBuildEntity($form, $form_state);
-  
-  // set/update the created and changed timestamps
-  $contest->is_new = isset($contest->is_new) ? $contest->is_new : 0;
-  if ($contest->is_new) {
-    $contest->created = time();
-  }
-  $contest->changed = time();
 
   // save the contest
-  $contest->save();
-  drupal_set_message(t('The contest %name has been saved.', array('%name' => $contest->name)));
+  $status = $contest->save();
+  if ($status == SAVED_UPDATED) {
+    drupal_set_message(t('The contest %name has been updated.',
+      array('%name' => $contest->name)));
+  }
+  else if ($status == SAVED_NEW) {
+    drupal_set_message(t('The contest %name has been added.',
+      array('%name' => $contest->name)));
+  }
 
   // go back to the list of content types
   $form_state['redirect'] = 'admin/content/contests';
@@ -175,7 +175,7 @@ function takepart_contests_contest_form_submit(&$form, &$form_state) {
  * Contest entity form delete handler
  */
 function takepart_contests_contest_form_submit_delete(&$form, &$form_state) {
-  
+
   // go to the delete confirmation page
   $id = $form_state['takepart_contests_contest']->contest_id;
   $form_state['redirect'] = 'admin/content/contests/manage/' . $id . '/delete?destination=admin/content/contests';
@@ -185,7 +185,7 @@ function theme_takepart_contests_contest_add_list($variables) {
 
   $content = $variables['content'];
   $output = '';
-  
+
   if ($content) {
 
     $output = '<dl class="contest-type-list">';
@@ -204,6 +204,6 @@ function theme_takepart_contests_contest_add_list($variables) {
       $output = '<p>' . t('No contest types have been created yet for you to use.') . '</p>';
     }
   }
-  
+
   return $output;
 }
