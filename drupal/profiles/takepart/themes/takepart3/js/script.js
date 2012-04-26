@@ -387,3 +387,8 @@ jQuery(document).ready(function () {
     }
   );
 });
+
+// prevent vertical display of photo gallery; ticket #23275 pglatz 4/25/12
+jQuery(document).ready(function() {
+    jQuery('#block-boxes-box-3df7e268').show();
+});
