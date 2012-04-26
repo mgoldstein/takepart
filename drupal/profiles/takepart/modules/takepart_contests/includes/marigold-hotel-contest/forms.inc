@@ -3,9 +3,13 @@
 //Marigold specific forms:
 
 function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
+  global $user;
 
   // needed for the metrics begin contest tracking cookie
   drupal_add_library('system','jquery.cookie');
+  drupal_add_js(array('marigold' => array(
+    'show_prev_msg' => empty($user->uid),
+  )), 'setting');
 
   if (! isset($form_state['storage'])) {
     $original_dob = $entry->field_custom_273['und'][0]['value'];
