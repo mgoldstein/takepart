@@ -1,17 +1,17 @@
 /* Fonts */
-@font-face 
+@font-face
 {
   font-family: calibri-webfont;
   src: url("../fonts/calibri-webfont.eot") /* EOT file for IE */
 }
 
-@font-face 
+@font-face
 {
   font-family: calibrib-webfont;
   src: url("../fonts/calibrib-webfont.eot") /* EOT file for IE */
 }
 
-@font-face 
+@font-face
 {
   font-family: 'calibri-webfont';
   src: url('../fonts/calibri-webfont.woff') format('woff'),
@@ -21,7 +21,7 @@
   font-style: normal;
 }
 
-@font-face 
+@font-face
 {
   font-family: 'calibrib-webfont';
   src: url('../fonts/calibrib-webfont.woff') format('woff'),
@@ -544,7 +544,7 @@
   background:url(../images/bg_select.png) right;
 }
 
-#takepart_contests_form_wrapper_1 .step4wrapper .counter 
+#takepart_contests_form_wrapper_1 .step4wrapper .counter
 {
   /*display:none;*/
 }
@@ -572,12 +572,12 @@
   clear: both;
 }
 
-#takepart_contests_form_wrapper_1 .step4wrapper .textarea_display 
+#takepart_contests_form_wrapper_1 .step4wrapper .textarea_display
 {
   margin-left:24px;
 }
 
-#takepart_contests_form_wrapper_1 .step4wrapper label 
+#takepart_contests_form_wrapper_1 .step4wrapper label
 {
   font-weight: bold;
 }
@@ -643,4 +643,27 @@
 #edit-field-marigold-terms div.description p a
 {
   color: #770bcb;
+}
+
+p.mg-previous-entry-message span.hatch-box {
+  background: url("../images/45deg_lines_large.png") repeat scroll 0 8px #FFFFFF;
+  display: block;
+  float: left;
+  height: 36px;
+  margin: 7px 10px 0 0;
+  width: 44px;
+}
+
+p.mg-previous-entry-message span.message {
+  float: left;
+  padding-right: 7px;
+}
+
+p.mg-previous-entry-message img {
+  padding-top: 23px;
+}
+
+p.mg-previous-entry-message {
+  font-weight: bold;
+  margin-bottom: 36px;
 }

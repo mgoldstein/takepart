@@ -65,7 +65,7 @@ marigold_hotel_contest.forms = {
     onformrender: function () {
 
     	jQuery(window).scrollTop(0);
-    	
+
         marigold_hotel_contest.forms.attachremainingchar(true);
 
         marigold_hotel_contest.forms.checkboxes(jQuery("#takepart_contests_form_wrapper_1 .form-type-checkbox input"));
@@ -73,6 +73,12 @@ marigold_hotel_contest.forms = {
         marigold_hotel_contest.forms.selectboxes_alt(jQuery("#takepart_contests_form_wrapper_1 .form-type-select select"));
         if (jQuery('#takepart_contests_form_wrapper_1 .group-step1 legend').length != 0) {
             jQuery('.field-type-text-with-summary').show();
+            if (Drupal.settings.marigold.show_prev_msg) {
+              jQuery('.mg-previous-entry-message').show();
+            }
+            else {
+              jQuery('.mg-previous-entry-message').hide();
+            }
         } else {
             jQuery('.field-type-text-with-summary').hide();
         }
