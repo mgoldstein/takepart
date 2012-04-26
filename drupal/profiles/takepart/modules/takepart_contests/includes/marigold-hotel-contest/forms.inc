@@ -6,7 +6,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
 
   // needed for the metrics begin contest tracking cookie
   drupal_add_library('system','jquery.cookie');
-  
+
   if (! isset($form_state['storage'])) {
     $form_state['storage'] = array(
       'step' => 1,
@@ -54,10 +54,10 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
     'maxlength' => 700,
     'columns' => 40,
   );
-  
+
   $form['field_marigold_terms']['#weight'] = 2007;
   $form['field_marigold_terms']['#access'] = ($step == 4);
-  
+
   // Set the tab order of the Final Information fields
   // TODO: Layout the form so that explicitly setting the tab order is not
   // required
@@ -88,20 +88,20 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
       $tabindex += 1;
     }
   }
-  
+
   // update the titles of fields that need to use the help text to get around
   // the length limitation of the title property
   // TODO: Replace with the takepart_longlabels module
   foreach ($form as $field_name => &$field) {
     if (is_array($field)) {
       if (! empty($field['und'][0]['value']['#description'])) {
-        $field['und'][0]['value']['#title'] = 
+        $field['und'][0]['value']['#title'] =
           $field['und'][0]['value']['#description'];
         $field['und'][0]['value']['#description'] = '';
       }
     }
   }
-  
+
   // add the confirmation label to group 3
   if ($step == 3) {
     $form['confirm_msg'] = array(
@@ -109,7 +109,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
     );
     $form['#fieldgroups']['group_step3']->children = array_merge(
       array('confirm_msg',), $form['#fieldgroups']['group_step3']->children);
-    $form['#group_children']['confirm_msg'] = 'group_step3'; 
+    $form['#group_children']['confirm_msg'] = 'group_step3';
   }
 
   // show only those fields for the current step
@@ -119,7 +119,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
       $form[$field_name]['#access'] = ($group_name == $current_group);
     }
   }
-  
+
   // create the appropriate navigation buttons
   if ($step < 4) {
     $form['reqtext'] = array(
@@ -163,7 +163,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
 
   // style the navigation buttons for the current step
   switch ($step) {
-  
+
     case 1:
       $form['next']['#attributes']['class'][] = 'aboutyou';
       $form['next']['#takepart_before'] = 'next: ';
@@ -182,7 +182,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
       $form['next']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_next');
       $form['prev']['#attributes']['class'][] = 'backtosteptwo';
       $form['prev']['#theme_wrappers'] = array('takepart_contests_contest_entry_form_1_button_prev');
-      break; 
+      break;
     case 4:
       $form['submit']['#attributes']['class'][] = 'submitentry';
       $form['submit']['#takepart_before'] = '';
@@ -196,7 +196,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
 
   // step field used by theme template to adjust display of step 4
   $form['#step'] = array('#type' => 'hidden', '#value' => $step);
-  
+
   // the date field is a little finicky
   if (($step == 2 || $step == 4) && isset($form_state['storage']['values']['field_custom_273'])) {
     $language = $form['field_custom_273']['#language'];
@@ -204,7 +204,7 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
     $default_date = date('Y-m-d H:i:s', strtotime($stored_date));
     $form['field_custom_273'][$language][0]['#default_value']['value'] = $default_date;
   }
-  
+
   return $form;
 }
 
@@ -224,7 +224,7 @@ function takepart_contests_contest_entry_form_1_validate($form, $form_state) {
   $submit_trigger = $form_state['triggering_element']['#value'];
   $step = $form_state['storage']['step'];
   if (($step == 2 || $step == 4) && ($submit_trigger != t('Previous step'))) {
-  
+
     // TODO: replace this validation with a better field type selection
     $language = $form['field_custom_272']['#language'];
     $minimum_age = variable_get('marigold_minimum_age', 50);
@@ -241,9 +241,9 @@ function takepart_contests_contest_entry_form_1_validate($form, $form_state) {
     }
   }
   if (($step == 3 || $step == 4) && ($submit_trigger != t('Previous step'))) {
-   
+
     // TODO: replace this validation with fields of the appropriate type
-    
+
     $language = $form['field_profile_email']['#language'];
     $mail = $form_state['values']['field_profile_email'][$language][0]['value'];
     if (! empty($mail)) {
@@ -251,15 +251,15 @@ function takepart_contests_contest_entry_form_1_validate($form, $form_state) {
         form_error($form['field_profile_email'], 'Email field is not valid.');
       }
     }
-    
+
     $language = $form['field_profile_zip']['#language'];
     $zip = $form_state['values']['field_profile_zip'][$language][0]['value'];
-    
+
     $pattern = "/^([0-9]{5})(-[0-9]{4})?$/";
     if ((!empty($zip)) && (!preg_match($pattern, $zip))) {
       form_error($form['field_profile_zip'], 'Zip field is not valid.');
     }
-    
+
     $language = $form['field_profile_phone']['#language'];
     $phone = $form_state['values']['field_profile_phone'][$language][0]['value'];
 
@@ -292,7 +292,7 @@ function takepart_contests_contest_entry_form_callback_1($form, $form_state) {
 function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
 
   global $user;
-  
+
   $current_step = $form_state['storage']['step'];
 
   $submit_trigger = $form_state['triggering_element']['#value'];
@@ -308,10 +308,10 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
         }
       }
     }
- 
+
     // proceed to the next step
     $form_state['storage']['step']++;
-    
+
     // load any values we have for next group in case we have been going
     // back and forth (step 4 gets all the values)
     $current_group = 'group_step' . $current_step;
@@ -323,15 +323,15 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
         }
       }
     }
-    
+
     $form_state['rebuild'] = TRUE;
   }
-  
+
   else if ($submit_trigger == t('Previous step')) {
-    
+
     // we have limit validation errors turned on so we don't have access to
     // any partial data the user may have entered
-    
+
     // proceed to the previous step
     $form_state['storage']['step']--;
 
@@ -345,46 +345,36 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
         }
       }
     }
-    
+
     $form_state['rebuild'] = TRUE;
   }
   else if ($submit_trigger == t('Submit your information')) {
-    
+
     // get the working entry
     $entry = $form_state['takepart_contests_contest_entry'];
-    
+
     // build the contest entry entity from the form
     entity_form_submit_build_entity('takepart_contests_contest_entry', $entry,
       $form, $form_state);
-    
+
     // check if the entry is allowed
-    if (takepart_contests_contest_entry_allowed($entry)) {
-    
-      // set/update the created and changed timestamps
-      $entry->is_new = isset($entry->is_new) ? $entry->is_new : 0;
-      if ($entry->is_new) {
-        $entry->created = time();
-      }
-      $entry->changed = time();
-     
-      // set the associated user
-      $entry->uid = $user->uid;
-    
+    if ($entry->allowed()) {
+
       // save the entry
       if ($entry->save()) {
 
         // TODO: remove hardcoded referrence to profile email field
         $language = isset($entry->language) ? $entry->language : LANGUAGE_NONE;
         $email = $entry->field_profile_email[$language][0]['value'];
-        
+
         // set the entered metric cookie
         $contest = takepart_contests_contest_load($entry->contest_id);
         setcookie('contest_entered', $contest->name);
-        
+
         // set the contest entered as cookie for use in pre-populating the
         // share email
         setcookie('contest_entered_as', $email);
-      
+
         // redirect to the thank you page
         drupal_goto('marigold/thankyou');
       }
