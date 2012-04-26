@@ -8,9 +8,13 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
   drupal_add_library('system','jquery.cookie');
 
   if (! isset($form_state['storage'])) {
+    $original_dob = $entry->field_custom_273['und'][0]['value'];
+    $original_dob = str_replace('T',' ', $original_dob);
     $form_state['storage'] = array(
       'step' => 1,
       'values' => array(),
+      // TODO: determine why the date field loses its value in a multipart form
+      'original_dob' => $original_dob,
     );
   }
   $step = $form_state['storage']['step'];
@@ -198,11 +202,19 @@ function takepart_contests_contest_entry_form_1($form, &$form_state, $entry) {
   $form['#step'] = array('#type' => 'hidden', '#value' => $step);
 
   // the date field is a little finicky
-  if (($step == 2 || $step == 4) && isset($form_state['storage']['values']['field_custom_273'])) {
-    $language = $form['field_custom_273']['#language'];
-    $stored_date = $form_state['storage']['values']['field_custom_273'][$language][0]['value'];
-    $default_date = date('Y-m-d H:i:s', strtotime($stored_date));
-    $form['field_custom_273'][$language][0]['#default_value']['value'] = $default_date;
+  if (($step == 2 || $step == 4)) {
+    if (!empty($form_state['storage']['values']['field_custom_273'])) {
+      $language = $form['field_custom_273']['#language'];
+      $stored_date = $form_state['storage']['values']['field_custom_273'][$language][0]['value'];
+      $stored_date = str_replace('T', ' ', $stored_date);
+    }
+    else {
+      $stored_date = $form_state['storage']['original_dob'];
+    }
+    if (!empty($stored_date)) {
+      $default_date = date('Y-m-d H:i:s', strtotime($stored_date));
+      $form['field_custom_273'][$language][0]['#default_value']['value'] = $default_date;
+    }
   }
 
   return $form;
