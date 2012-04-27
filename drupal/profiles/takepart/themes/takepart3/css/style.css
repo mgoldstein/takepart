@@ -2491,3 +2491,9 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 .block-boxes-current-taxonomy_search_list {
 	padding-top:10px;
 }
+
+/* ticket #23275 pglatz 4/25/12 */
+#block-boxes-box-3df7e268 {
+    display: none;
+}
+

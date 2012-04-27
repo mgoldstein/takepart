@@ -4984,7 +4984,15 @@ function enableTextSelection(element) {
             for (i=0; i<segCnt; i++) {
                 seg = segs[i];
                 event = seg.event;
-                element = jQuery(elements[i]); // faster than .eq()
+               //Fix for IE 8 (19952):
+	    	var iever = cal_getInternetExplorerVersion();
+            	if ((iever != -1) && (iever <= 8.0)) {
+            		element = jQuery(elements[i*2]); // faster than .eq()
+            	} else { 
+            		element = jQuery(elements[i]); // faster than .eq()
+            	}
+
+
                 triggerRes = trigger('eventRender', event, event, element);
                 if (triggerRes === false) {
                     element.remove();
@@ -5121,7 +5129,9 @@ function enableTextSelection(element) {
             var tops = [];
             for (i=0; i<rowCnt; i++) {
                 //tops[i] = rowDivs[i][0].offsetTop; // !!?? but this means the element needs position:relative if in a table cell!!!!
-            	tops[i] = $(rowDivs[i][0]).position().top;
+            	//tops[i] = $(rowDivs[i][0]).position().top;
+		//Fix for IE 8 (19952):
+                tops[i] = jQuery(rowDivs[i][0]).position().top;
             }
             return tops;
         }
@@ -5496,5 +5506,17 @@ function enableTextSelection(element) {
 })(jQuery);
 
 
+function cal_getInternetExplorerVersion()
+//Returns the version of Internet Explorer or a -1
+//(indicating the use of another browser).
+{
+    var rv = -1; // Return value assumes failure.
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+        var ua = navigator.userAgent;
+        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+        if (re.exec(ua) != null) rv = parseFloat(RegExp.$1);
+    }
+    return rv;
+}
 
 	
