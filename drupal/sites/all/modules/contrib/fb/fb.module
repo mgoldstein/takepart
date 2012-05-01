@@ -275,6 +275,7 @@ function fb_init() {
       $fb_lang = variable_get('fb_language_' . $user_language->language, 'en_US');
     }
 
+    //Fix added for release:
     if(isset($_fb) && method_exists($_fb,'getAppId')) {
       $js_sdk = fb_protocol() . "://connect.facebook.net/$fb_lang/all.js#". $_fb->getAppId() . "=&xfbml=1";
     } else {

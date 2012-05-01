@@ -37,7 +37,7 @@
 ?>
 <div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php if ($content['#fb_comments']['enabled']): ?>
-    
+
     <?php print render($title_prefix); ?>
     <div class='comments-header'>
       <h2 class="title"><?php print t('Comments'); ?></h2>
@@ -45,6 +45,7 @@
     </div>
     <?php print render($title_suffix); ?>
 
+<!--
     <div id="fb-root"></div>
     <script>
       (function(d, s, id) {
@@ -55,6 +56,7 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, "script", "facebook-jssdk"));
     </script>
+-->
     <div class="fb-comments"
          data-href="<?php print $content['#fb_comments']['url'] ?>"
          data-num-posts="<?php print $content['#fb_comments']['amount'] ?>"
@@ -71,7 +73,7 @@
     </div>
     <?php print render($title_suffix); ?>
 
-    <?php 
+    <?php
       $comments = array_reverse($content['comments']);
       print render($comments);
     ?>

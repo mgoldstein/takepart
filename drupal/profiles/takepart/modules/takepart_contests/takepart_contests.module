@@ -52,7 +52,7 @@ function takepart_contests_entity_info() {
       'fieldable' => TRUE,
       'entity keys' => array(
           'id' => 'entry_id',
-          'bundle' => 'entry_type',
+          'bundle' => 'type',
       ),
       'bundles' => array(),
       'label callback' => 'entity_class_label',
@@ -211,7 +211,6 @@ function takepart_contests_get_types($type_name = NULL) {
 function takepart_contests_views_api() {
   return array(
       'api' => 3,
-      'path' => drupal_get_path('module', 'takepart_contests') . '/views',
   );
 }
 
@@ -306,10 +305,6 @@ function takepart_contests_block_info() {
 function takepart_contests_block_view($delta = '') {
   $block = array();
   switch ($delta) {
-    /*case 'marigold-hotel-contest':
-     $block['subject'] = t('BSD Marigold Hotel Contest');
-    $block['content'] = drupal_get_form('marigold_hotel_contest_form');
-    break;*/
     case 'marigold-hotel-email-share':
       $block['content'] = _marigold_hotel_contest_emailshare();
       break;
@@ -329,7 +324,7 @@ function takepart_contests_block_view($delta = '') {
     foreach ($result as $row) {
       if($delta == 'takepart_contests' . $row->contest_id) {
         $contest = takepart_contests_contest_load($row->contest_id);
-        $entry = $contest->createEntry();
+        $entry = _takepart_contests_load_previous_entry($contest);
         $block['subject'] = t($row->name);
         //@todo: change this to something more friendly:
         $function = 'takepart_contests_contest_entry_form_' . $row->contest_id;
@@ -345,6 +340,49 @@ function takepart_contests_block_view($delta = '') {
   }
 
   return $block;
+}
+
+function _takepart_contests_load_previous_entry($contest) {
+  global $user;
+
+  $entry = NULL;
+  if (!empty($user->uid) && !empty($user->mail)) {
+
+    // create an entity query
+    $query = new EntityFieldQuery();
+
+    // limit the query to contest entries for this contest
+    $query->entityCondition('entity_type', 'takepart_contests_contest_entry');
+    $query->propertyCondition('contest_id', $contest->contest_id);
+
+    // order the entries with the most recent first
+    $query->propertyOrderBy('created', 'DESC');
+
+    // TODO: removed hard coded check for profile_email field only
+    $query->fieldCondition('field_profile_email', 'value', $user->mail, '=');
+
+    // get the last entry if it exists
+    $query->range(0, 1);
+    $results = $query->execute();
+
+    if (! empty($results)) {
+      // load the previous entry
+      $entries = entity_load('takepart_contests_contest_entry',
+        array_keys($results['takepart_contests_contest_entry']));
+      $previous_entry = array_shift($entries);
+      // clone it
+      $entry = clone $previous_entry;
+      $entry->entry_id = FALSE;
+      $entry->is_new = TRUE;
+      $entry->created = 0;
+      $entry->changed = 0;
+    }
+  }
+  if (! isset($entry)) {
+    // no entry was retrieved so create a new one
+    $entry = $contest->createEntry();
+  }
+  return $entry;
 }
 
 /**
@@ -375,6 +413,10 @@ class TakePartContestType extends Entity {
   public function __construct($values = array()) {
     parent::__construct($values, 'takepart_contests_contest_type');
   }
+
+  public function entryType() {
+    return $this->type . '_entry';
+  }
 }
 
 class TakePartContestTypeController extends EntityAPIControllerExportable {
@@ -384,14 +426,12 @@ class TakePartContestTypeController extends EntityAPIControllerExportable {
   }
 
   public function create(array $values = array()) {
-
     $values += array(
-        'id' => '',
-        'is_new' => TRUE,
+      'id' => '',
+      'is_new' => TRUE,
+      'default_entry_period' => '',
     );
-
-    $contest_type = parent::create($values);
-    return $contest_type;
+    return parent::create($values);
   }
 }
 
@@ -416,6 +456,19 @@ function takepart_contests_contest_type_delete(TakePartContestType $type) {
 
 class TakePartContest extends Entity {
 
+  const DURATION_NONE  = 'none';
+  const DURATION_SLOT  = 'slot';
+  const DURATION_SPAN  = 'span';
+  const DURATION_PHASE = 'phase';
+
+  const UNITS_MINUTES  = 'minutes';
+  const UNITS_HOURS    = 'hours';
+  const UNITS_DAYS     = 'days';
+  const UNITS_WEEKS    = 'weeks';
+  const UNITS_MONTHS   = 'months';
+  const UNITS_YEARS    = 'years';
+  const UNITS_LIFETIME = 'lifetime';
+
   public function __construct($values = array()) {
     parent::__construct($values, 'takepart_contests_contest');
   }
@@ -431,11 +484,9 @@ class TakePartContest extends Entity {
   public function createEntry(array $values = array()) {
     $values += array(
         'contest_id' => $this->contest_id,
-        'entry_type' => $this->type . '_entry',
+        'type' => $this->type . '_entry',
     );
-    $entry = entity_get_controller('takepart_contests_contest_entry')->create($values);
-    $entry->contest_id = $this->contest_id;
-    return $entry;
+    return entity_get_controller('takepart_contests_contest_entry')->create($values);
   }
 }
 
@@ -446,25 +497,35 @@ class TakePartContestController extends EntityAPIController {
   }
 
   public function create(array $values = array()) {
-
     $values += array(
-        'contest_id' => '',
-        'type' => '',
-        'language' => '',
-        'is_new' => TRUE,
-        'name' => '',
-        'created' => '',
-        'changed' => '',
-        'entry_period' => '',
+      'contest_id' => '',
+      'type' => '',
+      'language' => '',
+      'is_new' => TRUE,
+      'name' => '',
+      'created' => 0,
+      'changed' => 0,
+      'entry_period' => array(
+        'key' => array(),
+        'duration' => array(
+          'type' => TakePartContest::DURATION_SLOT,
+          'count' => 1,
+          'units' => TakePartContest::UNITS_DAYS,
+          'start' => strftime('%H:%M %m/%d/%Y'),
+        )
+      ),
     );
-
-    $contest = parent::create($values);
-    return $contest;
+    return parent::create($values);
   }
 
-  public function buildContent($entity, $view_mode = 'full', $langcode = NULL, $content = array()) {
-    $content = parent::buildContent($entity, $view_mode, $langcode, $content);
-    return $content;
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+    // set/update the created and changed timestamps
+    $entity->is_new = isset($entity->is_new) ? $entity->is_new : 0;
+    if ($entity->is_new) {
+      $entity->created = time();
+    }
+    $entity->changed = time();
+    return parent::save($entity, $transaction);
   }
 }
 
@@ -495,7 +556,7 @@ function takepart_contests_contest_delete_multiple(array $contest_ids) {
 class TakePartContestEntry extends Entity {
 
   public $label;
-  public $entry_type;
+  public $type;
 
   public function __construct($values = array()) {
     parent::__construct($values, 'takepart_contests_contest_entry');
@@ -507,7 +568,157 @@ class TakePartContestEntry extends Entity {
   }
 
   protected function defaulUri() {
-    return array('path', 'contest/' . $this->contest_id . '/entry/' . $this->entry_id);
+    $path = array(
+      'contest',
+      $this->contest_id,
+      'entry',
+      $this->entry_id
+    );
+    return array('path', implode('/', $path));
+  }
+
+  private function inSlotEntryPeriod($slot, $entry, $units) {
+
+    $slot_date = getdate($slot);
+    $entry_date = getdate($entry);
+
+    $week_yday = $slot_date['yday'] - $slot_date['wday'];
+    if ($week_yday < 0) {
+      // date is in december of previous year
+      $slot_date['week-yday'] = 32 + $week_yday;
+      $slot_date['week-year'] = $slot_date['year'] - 1;
+    }
+    else {
+      $slot_date['week-yday'] = $week_yday;
+      $slot_date['week-year'] = $slot_date['year'];
+    }
+
+    $week_yday = $entry_date['yday'] - $entry_date['wday'];
+    if ($week_yday < 0) {
+      // date is in december of previous year
+      $entry_date['week-yday'] = 32 + $week_yday;
+      $entry_date['week-year'] = $entry_date['year'] - 1;
+    }
+    else {
+      $entry_date['week-yday'] = $week_yday;
+      $entry_date['week-year'] = $entry_date['year'];
+    }
+
+    // compare the two dates
+    $matches = array();
+    foreach ($slot_date as $key => $value) {
+      $matches[$key] = ($slot_date[$key] === $entry_date[$key]);
+    }
+
+      switch ($units) {
+      case TakePartContest::UNITS_HOURS:
+        // must match on hour, day of the year and year
+        return $matches['hours'] && $matches['yday'] && $matches['year'];
+      case TakePartContest::UNITS_DAYS:
+        // must match on day of the year and year
+        return $matches['yday'] && $matches['year'];
+      case TakePartContest::UNITS_WEEKS:
+        // must match on the day of the year and year for the start of the week
+        return $matches['week-yday'] && $matches['week-year'];
+      case TakePartContest::UNITS_MONTHS:
+        // must match on month and year
+        return $matches['mon'] && $matches['year'];
+      case TakePartContest::UNITS_YEARS:
+        // must match on year
+        return $matches['year'];
+      case TakePartContest::UNITS_LIFETIME:
+        // always in the lifetime slot
+        return TRUE;
+    }
+    return FALSE;
+  }
+
+  private function getFloatingEntryPeriodStart($count, $units) {
+    // start the period at epoch to cover unsupported units
+    $start = 0;
+    switch ($units) {
+      case TakePartContest::UNITS_MINUTES:
+        // go back count minutes
+        $start = time() - ($count * 60);
+        break;
+      case TakePartContest::UNITS_HOURS:
+        // go back count hours
+        $start = time() - ($count * 60 * 60);
+        break;
+      case TakePartContest::UNITS_DAYS:
+        // go back count days
+        $start = time() - ($count * 24 * 60 * 60);
+        break;
+      case TakePartContest::UNITS_WEEKS:
+        // go back count weeks
+        $start = time() - ($count * 7 * 24 * 60 * 60);
+        break;
+    }
+    return $start;
+  }
+
+  public function allowed() {
+
+    // get the associated contest (and entry period)
+    $contest = takepart_contests_contest_load($this->contest_id);
+
+    // check if the entries are even limited
+    $duration = $contest->entry_period['duration'];
+    $no_limit = ($duration['type'] === TakePartContest::DURATION_NONE);
+    $no_key = empty($contest->entry_period['key']);
+    $is_span = ($duration['type'] === TakePartContest::DURATION_SPAN);
+    $no_count = empty($duration['count']);
+    if ($no_limit || $no_key || ($is_span && $no_count)) {
+      return TRUE;
+    }
+
+    // create an entity query
+    $query = new EntityFieldQuery();
+
+    // limit the query to contest entries for this contest
+    $query->entityCondition('entity_type', 'takepart_contests_contest_entry');
+    $query->propertyCondition('contest_id', $this->contest_id);
+
+    // order the entries with the most recent first
+    $query->propertyOrderBy('created', 'DESC');
+
+    // TODO: removed hard coded check for profile_email field only
+    $value = $this->field_profile_email[$this->language][0]['value'];
+    $query->fieldCondition('field_profile_email', 'value', $value, '=');
+
+    // get the last entry if it exists
+    $query->range(0, 1);
+    $results = $query->execute();
+
+    // if there are none, then allow the current entry
+    if (empty($results)) {
+      return TRUE;
+    }
+
+    // completely load the last entry
+    $entries = entity_load('takepart_contests_contest_entry',
+      array_keys($results['takepart_contests_contest_entry']));
+    $last_entry = array_shift($entries);
+
+    // check the creation date against the entry period
+    if ($duration['type'] === TakePartContest::DURATION_SPAN) {
+      // the entry must be from before the start of the current
+      // floating entry period
+      $start_of_entry_period = $this->getFloatingEntryPeriodStart(
+        $duration['count'], $duration['units']);
+      return ($last_entry->created <= $start_of_entry_period);
+    }
+    else if ($duration['type'] === TakePartContest::DURATION_SLOT) {
+      // the entry must not be in the current entry period slot
+      return (! $this->inSlotEntryPeriod(time(), $last_entry->created,
+        $duration['units']));
+    }
+
+    // if we are here the system is misconfigured, don't allow the entry
+    // and send a note to the watchdog
+    watchdog('takepart_contests', 'Invalid contest period for contest !contest',
+      array('!period' => $this->contest_id), WATCHDOG_ERROR);
+    return FALSE;
   }
 }
 
@@ -518,39 +729,46 @@ class TakePartContestEntryController extends EntityAPIController {
   }
 
   public function create(array $values = array()) {
-
     $values += array(
         'entry_id' => '',
         'contest_id' => '',
         'language' => LANGUAGE_NONE,
         'is_new' => TRUE,
         'uid' => '',
-        'created' => '',
-        'changed' => '',
+        'created' => 0,
+        'changed' => 0,
     );
+    return parent::create($values);
+  }
 
-    $entry = parent::create($values);
-    return $entry;
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+    global $user;
+    // set/update the created and changed timestamps
+    $entity->is_new = isset($entity->is_new) ? $entity->is_new : 0;
+    if ($entity->is_new) {
+      $entity->uid = $user->uid;
+      if ((!isset($entity->created)) || ($entity->created == 0)) {
+        $entity->created = time();
+      }
+    }
+    $entity->changed = time();
+    return parent::save($entity, $transaction);
   }
 
   protected function buildQuery($ids, $conditions = array(), $revision_id = FALSE) {
     $query = parent::buildQuery($ids, $conditions, $revision_id);
-    $query->innerJoin('takepart_contests_contest', 'c', 'base.contest_id = c.contest_id');
-    $query->addField('c', 'type', 'entry_type');
+    $query->innerJoin('takepart_contests_contest', 'c',
+      'base.contest_id = c.contest_id');
+    $query->addField('c', 'type', 'type');
     return $query;
   }
 
   protected function attachLoad(&$entries, $revision_id = FALSE) {
     foreach ($entries as $key => $entry) {
-      $entry->entry_type = $entry->entry_type . '_entry';
+      $entry->type = $entry->type . '_entry';
       $entries[$key] = $entry;
     }
     parent::attachLoad($entries, $revision_id);
-  }
-
-  public function buildContent($entity, $view_mode = 'full', $langcode = NULL, $content = array()) {
-    $content = parent::buildContent($entity, $view_mode, $langcode, $content);
-    return $content;
   }
 }
 
@@ -574,177 +792,6 @@ function takepart_contests_contest_entry_delete(TakePartContestEntry $entry) {
 function takepart_contests_contest_entry_delete_multiple(array $entry_ids) {
   entity_get_controller('takepart_contests_contest_entry')->delete($entry_ids);
 }
-
-function takepart_contests_validate_entry_period($element) {
-
-  $period_xml = trim($element['#value']);
-  
-  if ($period_xml != '' && substr($period_xml, 0, 5) != '<?xml') {
-    form_set_error($element, t('Not valid XML.'));
-    return;
-  }
-
-  $root = simplexml_load_string($period_xml);
-  if (empty($root)) {
-    form_error($element, t('Parse error'));
-    return;
-  }
-  
-  $keys_found = FALSE;
-  foreach ($root->children() as $name => $child) {
-    switch ($name) {
-      case 'keys':
-        $keys_found = TRUE;
-        takepart_contests_validate_period_keys($element, $child);
-        break;
-      case 'duration':
-        takepart_contests_validate_period_duration($element, $child);
-        break;
-    }
-  }
-  if (!$keys_found) {
-    form_error($element, t('Missing period keys'));
-  }
-}
-
-function takepart_contests_validate_period_keys($element, $keys) {
-  foreach ($keys->children() as $name => $key) {
-    $invalid_name = ($name != 'key');
-    $invalid_structure = (count($key->children()) != 0);
-    $invalid_value = (strlen(trim((string)$key)) == 0);
-    if ($invalid_name || $invalid_structure || $invalid_value) {
-      form_error($element, t('Invalid period key'));
-      break;
-    }
-  }
-}
-
-function takepart_contests_validate_period_duration($element, $duration) {
-  $attrs = $duration->attributes();
-  if (isset($attrs->type)) {
-    switch ($attrs->type) {
-      case 'slot':
-        takepart_contests_validate_slot_duration($element, $duration);
-        break;
-      case 'span':
-        takepart_contests_validate_span_duration($element, $duration);
-        break;
-      case 'phase':
-        takepart_contests_validate_phases_duration($element, $duration);
-        break;
-      default:
-        form_error($element, t('Invalid duration type'));
-        break;
-    }
-  }
-  else {
-    form_error($element, t('Missing duration type'));
-  }
-}
-
-function takepart_contests_validate_slot_duration($element, $duration) {
-  $valid_units = array('hours','days','weeks','months','years','lifetime');
-  if (isset($duration->count)) {
-    $count = (string)$duration->count;
-    if ($count !== '' && (!is_numeric($count) || intval($count) != $count || $count <= 0)) {
-      form_error($element, t('Invalid slot count'));
-    }
-  }
-  if (isset($duration->units)) {
-    if (! in_array($duration->units, $valid_units)) {
-      form_error($element, t('Invalid slot units'));
-    }
-  }
-  else {
-    form_error($element, t('Missing slot units'));
-  }
-}
-
-function takepart_contests_validate_span_duration($element, $duration) {
-  $valid_units = array('hours','days','weeks','months','years');
-  if (isset($duration->count)) {
-    $count = (string)$duration->count;
-    if ($count !== '' && (!is_numeric($count) || intval($count) != $count || $count <= 0)) {
-      form_error($element, t('Invalid span count'));
-    }
-  }
-  if (isset($duration->units)) {
-    if (! in_array($duration->units, $valid_units)) {
-      form_error($element, t('Invalid span units'));
-    }
-  }
-  else {
-    form_error($element, t('Missing span units'));
-  }
-}
-
-function takepart_contests_validate_phases_duration($period) {
- 
-}
-
-function takepart_contests_contest_entry_allowed($entry) {
-
-  // get the associated contest (and entry period)
-  $contest = takepart_contests_contest_load($entry->contest_id);
-  $period_xml = isset($contest->entry_period) ? trim($contest->entry_period) : '';
-
-  // if no period is specified, then there are no restrictions
-  if ($period_xml === '') {
-    return TRUE;
-  }
-  
-  $period = simplexml_load_string($period_xml);
-  if (! empty($period)) {
-
-    // create an entity query
-    $query = new EntityFieldQuery();
-    
-    // limit that query to contest entries for this contest
-    $query->entityCondition('entity_type', 'takepart_contests_contest_entry');
-    $query->propertyCondition('contest_id', $entry->contest_id);
-    
-    $field_error = FALSE;
-    // TODO: removed hard coded check for profile_email field only
-    $value = $entry->field_profile_email[LANGUAGE_NONE][0]['value'];
-    $query->fieldCondition('field_profile_email', 'value', $value, '=');
-    /*
-    foreach ($period->keys->children() as $name => $node) {
-      $field_name = (string)$node;
-      $info = field_info_field($field_name);
-      if (isset($info) && isset($entry->{$field_name})) {
-        
-        $language = isset($entry->language) ? $entry->language : LANGUAGE_NONE;
-        foreach ($info['columns'] as $column => $data) {
-          $value = $entry->{$field_name}[$language][0][$column];
-          $query->fieldCondition($field_name, $column, $value, '=');
-        }
-      }
-      else {
-        // the specified field name is missing from the entry or the database
-        $field_error = TRUE;
-        break;
-      }
-    }
-    */
-    if (! $field_error) {
-      
-      // get the number of matching records
-      $query->count();
-      $count = $query->execute();
-
-      // only allow the entry if it would be unique according to the key
-      return ($count == 0);
-    }
-  }
-  
-  // getting down here is BAD, it means the period was not valid, so log the
-  // error and don't allow the entry
-  watchdog('takepart_contests', 'Invalid contest period [@period]',
-    array('@period' => $period_xml), WATCHDOG_ERROR);
-  return FALSE;
-}
-
-
 
 /**  TakePart Contest Test Pages
  **
@@ -773,7 +820,7 @@ function _takepart_contests_test_page() {
   // pull a contest from the database, if this was the block_view hook
   // the id could be the $delta, in this case I had a contest in MY system
   // that had an id of 2, you will likely need to change this
-  $contest = takepart_contests_contest_load(2);
+  $contest = takepart_contests_contest_load(1);
 
   // entries should be created off of the contest entity so the
   // contest_id is automatically set
@@ -838,21 +885,10 @@ function takepart_contests_contest_entry_form_callback($form, $form_state) {
 
 function takepart_contests_contest_entry_form_submit(&$form, &$form_state) {
 
-  global $user;
-
   // build the contest entry entity from the form
-  entity_form_submit_build_entity('takepart_contests_contest_entry', $form_state['takepart_contests_contest_entry'], $form, $form_state);
+  entity_form_submit_build_entity('takepart_contests_contest_entry',
+    $form_state['takepart_contests_contest_entry'], $form, $form_state);
   $entry = $form_state['takepart_contests_contest_entry'];
-
-  // set/update the created and changed timestamps
-  $entry->is_new = isset($entry->is_new) ? $entry->is_new : 0;
-  if ($entry->is_new) {
-    $entry->created = time();
-  }
-  $entry->changed = time();
-
-  // set the associated user
-  $entry->uid = $user->uid;
 
   // save the entry
   $entry->save();
@@ -862,7 +898,8 @@ function takepart_contests_contest_entry_form_submit(&$form, &$form_state) {
   // read back the entry to make sure that works
   $entry = takepart_contests_contest_entry_load($id_to_read_back);
 
-  drupal_set_message(t('The contest entry %id has been saved and read back.', array('%id' => $entry->entry_id)));
+  drupal_set_message(t('The contest entry %id has been saved and read back.',
+    array('%id' => $entry->entry_id)));
 }
 
 /**
