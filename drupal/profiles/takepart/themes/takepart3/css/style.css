@@ -2496,4 +2496,10 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 #block-boxes-box-3df7e268 {
     display: none;
 }
-
+/* ticket #23275 pglatz 5/2/12, inside pages */
+#widget_pager_top_photo_gallery-block li {
+    display: none;
+}
+.view-photo-gallery .views-slideshow-controls-top {
+    min-height:79px;
+}

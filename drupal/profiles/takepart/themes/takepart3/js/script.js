@@ -410,7 +410,8 @@ jQuery(document).ready(function () {
   );
 });
 
-// prevent vertical display of photo gallery; ticket #23275 pglatz 4/25/12
-jQuery(document).ready(function() {
-    jQuery('#block-boxes-box-3df7e268').show();
-});
+// prevent vertical display of photo gallery; ticket #23275 pglatz 4/25/12, 5/2/12 (inside pages)
+    jQuery(document).ready(function() {
+        jQuery('#block-boxes-box-3df7e268').show();
+        jQuery('#widget_pager_top_photo_gallery-block li').show();
+    });
