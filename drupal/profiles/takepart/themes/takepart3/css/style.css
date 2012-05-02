@@ -2501,5 +2501,5 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
     display: none;
 }
 .view-photo-gallery .views-slideshow-controls-top {
-    height:79px;
+    min-height:79px;
 }
