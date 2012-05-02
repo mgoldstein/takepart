@@ -12,7 +12,8 @@
     </div></div>
   <?php endif; ?>
   
-  
+  <?php print render($page['full_width_top']); ?>
+      
   <div id='page' class='clear page clearfix <?php print $multipage_class; ?> <?php print render($node->type); ?>'>
     <div class='main-content'>
       <?php  /* if ($title): ?><h1 class='page-title'><?php print $title ?></h1><?php endif; */ ?>
@@ -48,6 +49,8 @@
   
   </div>
   
+ <?php print render($page['full_width_bottom']); ?>
+      
  <?php print $footer ?>
  
  </div>
