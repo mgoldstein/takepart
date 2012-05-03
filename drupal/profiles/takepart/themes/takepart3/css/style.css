@@ -876,6 +876,20 @@ h1.title a:hover {
     text-transform: none;
 }
 
+/* Full Width Top Region */
+
+.region-full-width-top {
+    width:100%;
+    background-color: #FFF;
+}
+
+/* Full Width Bottom Region */
+
+.region-full-width-bottom {
+    width:100%;
+    background-color: #FFF;
+}
+
 /* headers in blocks in main body */
 
 .main-content .node-topic-front h2,
