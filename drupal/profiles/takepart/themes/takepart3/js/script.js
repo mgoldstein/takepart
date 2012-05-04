@@ -81,6 +81,7 @@ jQuery(document).ready(function() {
     jQuery('#top-search .form-text').DefaultValue('Search TakePart');
 });
 
+/* rewrites all absolute links to open in a new window
 (function($) {
     Drupal.behaviors.takepart3 = {
         attach: function(context) {
@@ -89,6 +90,7 @@ jQuery(document).ready(function() {
         }
     };
 })(jQuery);
+*/
 
 (function($) {
     Drupal.behaviors.campaignVideo = {
