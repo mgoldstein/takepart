@@ -37,7 +37,7 @@
     <?php endif; ?>
 
     <div id="footer-links-share" class="footer-column-wrapper">
-        <div class="column-title">Connect</a></div>
+        <div class="column-title">Connect</div>
         <ul id="bottom-follow">
             <li class="fb"><a href="http://www.facebook.com/takepart" target="_blank">facebook</a></li>
             <li class="twitter"><a href="http://www.twitter.com/takepart" target="_blank">twitter</a></li>
