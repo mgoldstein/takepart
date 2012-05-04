@@ -29,7 +29,7 @@ function ideasforgood_finalist_form_wrapper() {
 function ideasforgood_finalist_form($form, &$form_state, $finalist, $op = 'edit') {
 
   if ($op == 'clone') {
-    $finalist->token .= " (cloned)";
+    $finalist->name .= "'s clone";
   }
 
   $form['name'] = array(
@@ -42,14 +42,15 @@ function ideasforgood_finalist_form($form, &$form_state, $finalist, $op = 'edit'
     '#size' => 60,
   );
 
-  $form['tag'] = array(
+  $form['voting_group'] = array(
     '#type' => 'textfield',
-    '#title' => t('Group Tag'),
-    '#description' => t('The tag for the voting group to which the finalist belongs.'),
-    '#default_value' => isset($finalist->tag) ? $finalist->tag : '',
+    '#title' => t('Voting Group'),
+    '#description' => t('The voting group to which the finalist belongs.'),
+    '#default_value' => isset($finalist->voting_group) ? $finalist->voting_group : '',
     '#required' => TRUE,
     '#maxlength' => 32,
     '#size' => 24,
+    '#autocomplete_path' => 'admin/content/ideasforgood/groups/autocomplete',
   );
 
   $form_state['ideasforgood_finalist'] = $finalist;
