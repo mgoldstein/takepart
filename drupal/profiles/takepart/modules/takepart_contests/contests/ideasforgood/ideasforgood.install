@@ -1,0 +1,226 @@
+<?php
+
+/**
+ * @file
+ *
+ */
+
+/**
+ * Implements hook_schema()
+ */
+function ideasforgood_schema() {
+
+  $schema = array();
+
+  $schema['ideasforgood_finalist'] = array(
+    'description' => 'The base table for Marigold Ideas for Good contest finalists.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key identifier for the finalist',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'The name of the finalist',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'tag' => array(
+        'description' => 'The tag for the voting group to which the finalist belongs',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the finalist was created',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'changed' => array(
+        'description' => 'The Unix timestamp when the finalist was last modified',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'indexes' => array(
+      'tag' => array('tag'),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_enable()
+ */
+function ideasforgood_enable() {
+
+  // add the ideas for good finalist fields (if necessary)
+  ideasforgood_add_finalist_image();
+  ideasforgood_add_finalist_idea_title();
+  ideasforgood_add_finalist_idea_body();
+}
+
+/**
+ * Implements hook_uninstall()
+ */
+function ideasforgood_uninstall() {
+
+  // delete the ideas for good finalist fields
+  field_delete_field('ideasforgood_finalist_image');
+  field_delete_field('ideasforgood_finalist_idea_title');
+  field_delete_field('ideasforgood_finalist_idea_body');
+}
+
+function ideasforgood_add_field_instance($info) {
+  $field = field_info_field($info['field']['field_name']);
+  if (empty($field)) {
+    field_create_field($info['field']);
+    field_create_instance($info['instance']);
+  }
+}
+
+function ideasforgood_add_finalist_image() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_finalist_image',
+      'type' => 'image',
+      'entity_types' => array('ideasforgood_finalist'),
+      'settings' => array(
+      ),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_finalist_image',
+      'entity_type' => 'ideasforgood_finalist',
+      'bundle' => 'ideasforgood_finalist',
+      'label' => t('Image'),
+      'required' => TRUE,
+      'widget' => array(
+        'type' => 'image_image',
+        'settings' => array(
+          'progress_indicator' => 'bar',
+          'preview_image_style' => 'thumbnail',
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'image',
+          'settings' => array(
+            'image_style' => 'large',
+            'image_link' => '',
+          ),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}
+
+function ideasforgood_add_finalist_name() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_finalist_name',
+      'type' => 'text',
+      'entity_types' => array('ideasforgood_finalist'),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_finalist_name',
+      'entity_type' => 'ideasforgood_finalist',
+      'bundle' => 'ideasforgood_finalist',
+      'label' => t('Name'),
+      'required' => TRUE,
+      'settings' => array(
+        'text_processing' => 0,
+      ),
+      'widget' => array(
+        'type' => 'text_textfield',
+        'settings' => array(
+          'size' => 32,
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'text_default',
+          'settings' => array(),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}
+
+function ideasforgood_add_finalist_idea_title() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_finalist_idea_title',
+      'type' => 'text',
+      'entity_types' => array('ideasforgood_finalist'),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_finalist_idea_title',
+      'entity_type' => 'ideasforgood_finalist',
+      'bundle' => 'ideasforgood_finalist',
+      'label' => t('Idea Title'),
+      'required' => TRUE,
+      'settings' => array(
+        'text_processing' => 0,
+      ),
+      'widget' => array(
+        'type' => 'text_textfield',
+        'settings' => array(
+          'size' => 32,
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'text_default',
+          'settings' => array(),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}
+
+function ideasforgood_add_finalist_idea_body() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_finalist_idea_body',
+      'type' => 'text_long',
+      'entity_types' => array('ideasforgood_finalist'),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_finalist_idea_body',
+      'entity_type' => 'ideasforgood_finalist',
+      'bundle' => 'ideasforgood_finalist',
+      'label' => t('Idea Body'),
+      'settings' => array(
+        'text_processing' => 1,
+      ),
+      'widget' => array(
+        'type' => 'text_textarea',
+        'settings' => array(
+          'rows' => 5,
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'type' => 'text_default',
+          'settings' => array(),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}

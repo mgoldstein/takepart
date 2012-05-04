@@ -5,4 +5,5 @@ package = TakePart
 
 dependencies[] = takepart_contests
 
+files[] = finalist.admin.inc
 files[] = ideasforgood.test
