@@ -1465,7 +1465,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     width:240px;
 }
 
-.footer-column-wrapper .column li, ul#global-links li {
+.footer-column-wrapper .column li, ul.global-links li {
     margin: 5px 0;
 }
 

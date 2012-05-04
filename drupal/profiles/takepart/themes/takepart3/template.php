@@ -245,7 +245,7 @@ function _render_footer_links_menu($menu_key) {
         $links[] = "<li>" . $link . "</li>";
     }
 
-    return "<ul class='clearfix' id='global-links'>" . implode($links) . "</ul>";
+    return "<ul class='clearfix global-links'>" . implode($links) . "</ul>";
 }
 
 function _render_tp3_corporate_links_menu() {
