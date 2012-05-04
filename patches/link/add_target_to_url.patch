@@ -1,0 +1,47 @@
+diff --git a/drupal/sites/all/modules/contrib/link/link.module b/drupal/sites/all/modules/contrib/link/link.module
+index c7af1ff..d8eff08 100644
+--- a/drupal/sites/all/modules/contrib/link/link.module
++++ b/drupal/sites/all/modules/contrib/link/link.module
+@@ -501,7 +501,7 @@ function _link_sanitize(&$item, $delta, &$field, $instance, &$node) {
+   }
+ 
+   // Remove the target attribute if the default (no target) is selected.
+-  if (empty($item['attributes']) || $item['attributes']['target'] == LINK_TARGET_DEFAULT) {
++  if (empty($item['attributes']['target']) || $item['attributes']['target'] == LINK_TARGET_DEFAULT || $item['attributes']['target'] == LINK_TARGET_USER) {
+     unset($item['attributes']['target']);
+   }
+ 
+@@ -661,12 +661,32 @@ function link_field_process($element, $form_state, $complete_form) {
+   $settings['attributes'] += _link_default_attributes();
+   $attributes = isset($element['#value']['attributes']) ? $element['#value']['attributes'] : $settings['attributes'];
+   if (!empty($settings['attributes']['target']) && $settings['attributes']['target'] == LINK_TARGET_USER) {
++    /***
++     * HACK pglatz 5/2/2012 #22810
++     *
++     * change target from single checkbox to radios to allow selecting target for each node
++     */
++ /*
+     $element['attributes']['target'] = array(
+       '#type' => 'checkbox',
+       '#title' => t('Open URL in a New Window'),
+       '#return_value' => LINK_TARGET_NEW_WINDOW,
+-      '#default_value' => isset($attributes['target']) ? $attributes['target'] : FALSE,
++      '#default_value' => ($attributes['target'] === LINK_TARGET_NEW_WINDOW),
+     );
++*/
++    $link_targets = array(
++      '_blank' => '_blank',
++      '_self' => '_self',
++      '_parent' => '_parent',
++      '_top' => '_top',
++    );
++    $element['attributes']['target'] = array(
++      '#type' => 'radios',
++      '#title' => t('Select link target'),
++      '#description' => 'Select the destination window for this link,',
++      '#options' => $link_targets,
++      '#default_value' => isset($attributes['target']) ? $attributes['target'] : '_blank',
++     );
+   }
+   if (!empty($settings['attributes']['configurable_title']) && $settings['attributes']['configurable_title'] == 1) {
+     $element['attributes']['title'] = array(
