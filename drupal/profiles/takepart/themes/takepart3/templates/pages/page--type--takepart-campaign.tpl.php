@@ -1,11 +1,11 @@
 <?php if ($is_multipage): ?>
   <div id="page-wrapper" class="multipage-campaign">
-    <?php print $header ?>
 <?php else: ?>
   <div id="page-wrapper" class="campaign">
-    <?php print $header ?>
 <?php endif; ?>
   
+    <?php print $header ?>
+      
   <?php if ($page['highlighted']): ?>
     <div id='highlighted'><div class='clear limiter clearfix'>
       <?php print render($page['highlighted']); ?>
@@ -50,5 +50,4 @@
   
  <?php print $footer ?>
  
- </div>
 </div>
