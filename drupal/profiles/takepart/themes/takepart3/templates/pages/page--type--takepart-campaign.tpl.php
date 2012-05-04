@@ -38,7 +38,6 @@
         <div id='left-rail' class='clearfix'><?php print render($page['sidebar_first']) ?></div>
       <?php endif; ?>
       
-      
       <?php print render($page['content_bottom']); ?>
       
     </div>
