@@ -877,17 +877,15 @@ h1.title a:hover {
 }
 
 /* Full Width Top Region */
-
 .region-full-width-top {
-    width:100%;
+    width:auto;
     padding:0 10px;
     background-color: #FFF;
 }
 
 /* Full Width Bottom Region */
-
 .region-full-width-bottom {
-    width:100%;
+    width:auto;
     padding:0 10px;
     background-color: #FFF;
 }
