@@ -21,17 +21,6 @@ function ideasforgood_entity_info() {
     'entity keys' => array(
       'id' => 'id',
     ),
-    /*
-    'bundles' => array(
-      'ideasforgood_finalist' => array(
-        'label' => t('Marigold Ideas for Good Finalist'),
-        'admin' => array(
-          'path' => 'admin/structure/ideasforgood/finalists',
-          'access arguments' => array('administer ideasforgood finalists'),
-        ),
-      ),
-    ),
-     */
     'label callback' => 'entity_class_label',
     'uri callback' => 'entity_class_uri',
     'access callback' => 'ideasforgood_finalist_access',
@@ -40,6 +29,32 @@ function ideasforgood_entity_info() {
       'path' => 'admin/content/ideasforgood/finalists',
       'file' => 'finalist.admin.inc',
       'controller class' => 'IdeasForGoodFinalistUIController',
+    ),
+    'view modes' => array(
+      'voting' => array(
+        'label' => t('Voting'),
+        'custom settings' => FALSE,
+      ),
+    ),
+  );
+
+  $info['ideasforgood_voting_group'] = array(
+    'label' => t('Marigold Ideas for Good Voting Group'),
+    'entity class' => 'IdeasForGoodVotingGroup',
+    'controller class' => 'IdeasForGoodVotingGroupController',
+    'base table' => 'ideasforgood_voting_group',
+    'fieldable' => FALSE,
+    'entity keys' => array(
+       'id' => 'id',
+    ),
+    'label callback' => 'entity_class_label',
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'ideasforgood_finalist_access',
+    'module' => 'ideasforgood',
+    'admin ui' => array(
+      'path' => 'admin/content/ideasforgood/groups',
+      'file' => 'voting_group.admin.inc',
+      'controller class' => 'IdeasForGoodVotingGroupUIController',
     ),
   );
 
@@ -95,7 +110,7 @@ class IdeasForGoodFinalist extends Entity {
   }
 
   protected function defaultLabel() {
-    return "{$this->name} [{$this->tag}]";
+    return "{$this->name} [{$this->voting_group}]";
   }
 
   protected function defaultUri() {
@@ -123,7 +138,7 @@ class IdeasForGoodFinalistController extends EntityAPIController {
       'language' => '',
       'is_new' => TRUE,
       'name' => '',
-      'tag' => '',
+      'voting_group' => '',
       'created' => 0,
       'changed' => 0,
     );
@@ -160,4 +175,84 @@ function ideasforgood_finalist_delete(IdeasForGoodFinalist $finalist) {
 
 function ideasforgood_finalist_delete_multiple(array $ids) {
   entity_get_controller('ideasforgood_finalist')->delete($ids);
+}
+
+
+/* Ideas for Good Voting Group API
+ ******************************************************************************/
+
+class IdeasForGoodVotingGroup extends Entity {
+
+  public function __construct($values = array()) {
+    parent::__construct($values, 'ideasforgood_voting_group');
+  }
+
+  protected function defaultLabel() {
+    return $this->name;
+  }
+
+  protected function defaultUri() {
+    $path = implode('/', array(
+      'admin',
+      'content',
+      'ideasforgood',
+      'groups',
+      'manage',
+      $this->id,
+    ));
+    return array('path' => $path);
+  }
+}
+
+class IdeasForGoodVotingGroupController extends EntityAPIController {
+
+  public function __construct($entityType) {
+    parent::__construct($entityType);
+  }
+
+  public function create(array $values = array()) {
+    $values += array(
+      'id' => '',
+      'language' => '',
+      'is_new' => TRUE,
+      'name' => '',
+      'voting_form_id' => 0,
+      'email_field_id' => 0,
+      'vote_field_id' => 0,
+      'created' => 0,
+      'changed' => 0,
+    );
+    return parent::create($values);
+  }
+
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+    // set/update the created and changed timestamps
+    $entity->is_new = isset($entity->is_new) ? $entity->is_new : 0;
+    if ($entity->is_new) {
+      $entity->created = time();
+    }
+    $entity->changed = time();
+    return parent::save($entity, $transaction);
+  }
+}
+
+function ideasforgood_voting_group_load($id, $reset = FALSE) {
+  $groups = ideasforgood_voting_group_load_multiple(array($id), array(), $reset);
+  return reset($groups);
+}
+
+function ideasforgood_voting_group_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('ideasforgood_voting_group', $ids, $conditions, $reset);
+}
+
+function ideasforgood_voting_group_save(IdeasForGoodVotingGroup $group) {
+  return $group->save();
+}
+
+function ideasforgood_voting_group_delete(IdeasForGoodVotingGroup $group) {
+  $group->delete();
+}
+
+function ideasforgood_voting_group_delete_multiple(array $ids) {
+  entity_get_controller('ideasforgood_voting_group')->delete($ids);
 }

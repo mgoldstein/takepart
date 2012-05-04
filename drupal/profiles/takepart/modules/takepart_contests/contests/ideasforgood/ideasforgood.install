@@ -28,8 +28,8 @@ function ideasforgood_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
-      'tag' => array(
-        'description' => 'The tag for the voting group to which the finalist belongs',
+      'voting_group' => array(
+        'description' => 'The voting group to which the finalist belongs',
         'type' => 'varchar',
         'length' => 32,
         'not null' => TRUE,
@@ -50,8 +50,58 @@ function ideasforgood_schema() {
     ),
     'primary key' => array('id'),
     'indexes' => array(
-      'tag' => array('tag'),
+      'voting_group' => array('voting_group'),
     ),
+  );
+
+  $schema['ideasforgood_voting_group'] = array(
+    'description' => 'The base table for Marigold Ideas for Good contest voting groups.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key identifier for the group',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'The name of the group',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'voting_form_id' => array(
+        'description' => 'The id of the BSD signup form for voting.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'email_field_id' => array(
+        'description' => "The id of the BSD signup form field for the voter's email.",
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'vote_field_id' => array(
+        'description' => 'The id of the BSD signup form field for the vote.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the group was created',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'changed' => array(
+        'description' => 'The Unix timestamp when the group was last modified',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
   );
 
   return $schema;
@@ -102,6 +152,9 @@ function ideasforgood_add_finalist_image() {
       'bundle' => 'ideasforgood_finalist',
       'label' => t('Image'),
       'required' => TRUE,
+      'settings' => array(
+        'alt_field' => TRUE,
+      ),
       'widget' => array(
         'type' => 'image_image',
         'settings' => array(
@@ -117,40 +170,6 @@ function ideasforgood_add_finalist_image() {
             'image_style' => 'large',
             'image_link' => '',
           ),
-        ),
-      ),
-    ),
-  );
-  ideasforgood_add_field_instance($info);
-}
-
-function ideasforgood_add_finalist_name() {
-  $info = array(
-    'field' => array(
-      'field_name' => 'ideasforgood_finalist_name',
-      'type' => 'text',
-      'entity_types' => array('ideasforgood_finalist'),
-    ),
-    'instance' => array(
-      'field_name' => 'ideasforgood_finalist_name',
-      'entity_type' => 'ideasforgood_finalist',
-      'bundle' => 'ideasforgood_finalist',
-      'label' => t('Name'),
-      'required' => TRUE,
-      'settings' => array(
-        'text_processing' => 0,
-      ),
-      'widget' => array(
-        'type' => 'text_textfield',
-        'settings' => array(
-          'size' => 32,
-        ),
-      ),
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'type' => 'text_default',
-          'settings' => array(),
         ),
       ),
     ),
@@ -215,7 +234,7 @@ function ideasforgood_add_finalist_idea_body() {
       ),
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'type' => 'text_default',
           'settings' => array(),
         ),
