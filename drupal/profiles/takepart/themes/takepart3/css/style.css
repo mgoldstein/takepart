@@ -2491,3 +2491,141 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 .block-boxes-current-taxonomy_search_list {
 	padding-top:10px;
 }
+
+/* Campaign page fixes */
+
+#friends-of-takepart { 
+    display: none; 
+}
+
+#block-takepart-addthis-addthis-simple {
+    display: inline;
+}
+
+.node-type-takepart-campaign .main-content .block-boxes h2 {
+    border-top:1px dotted #000;
+}
+.node-type-takepart-campaign .main-content .block-boxes-current-taxonomy_search_list h2 {
+    font-family:Helvetica,Arial,sans-serif;
+    font-size:18px;
+    background:url("/profiles/takepart/themes/takepart3/images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 15px transparent;
+}
+.node-type-takepart-campaign .main-content .block-boxes-current-taxonomy_search_list h2 span {
+    background:none repeat scroll 0 0 #FFF;
+}
+.boxes-selected-style-6 .views-field-title a,.boxes-selected-style-6 .views-field-field-article-subhead a,.boxes-selected-style-6 .views-field-nid span a {
+    color:#000;
+    line-height:20px;
+    font-weight:700;
+    text-decoration:none;
+}
+.boxes-selected-style-6 .views-field-nid span a:hover {
+    color:#1CA9E7;
+    text-decoration:none;
+}
+.boxes-selected-style-6 .views-field-title,.boxes-selected-style-6 .views-field-field-article-subhead,.boxes-selected-style-6 .views-field-field-page-subhead,.boxes-selected-style-6 .views-field-nid,.boxes-selected-style-6 .views-field-field-promo-text {
+    font-size:15px;
+    padding:0 10px;
+}
+.main-content .boxes-selected-style-6 .views-row:hover .views-field-title a,.main-content .boxes-selected-style-6 .views-row:hover .views-field-field-article-subhead a,.main-content .boxes-selected-style-6 .views-row:hover .views-field-nid a {
+    color:#1ca9e7;
+    text-decoration:none;
+}
+.main-content .boxes-selected-style-6 .views-row-4,.main-content .boxes-selected-style-6 .views-row-7,.main-content .boxes-selected-style-6 .views-row-10 {
+    clear:both;
+}
+.main-content .boxes-selected-style-6 h2 {
+    border-top:1px dotted #000;
+    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 10px transparent;
+    width:100%;
+    margin:0;
+    padding:10px 0;
+}
+.main-content .boxes-selected-style-6 h2 span {
+    background:none repeat scroll 0 0 #FFF;
+    text-transform:uppercase;
+    font-weight:300;
+    padding:0 8px 0 0;
+}
+.main-content .boxes-selected-style-6 .content {
+    background-color:#eff3f5;
+}
+.main-content .boxes-selected-style-6 .views-row {
+    display:table;
+    background-color:#FFF;
+    vertical-align:top;
+    width:200px;
+    float:left;
+    margin:5px;
+}
+.main-content .boxes-selected-style-6 .view-content {
+    display:inline-block;
+    padding:5px 4px 1px;
+}
+.main-content .boxes-selected-style-6 .views-field-field-thumbnail-1 {
+    overflow:visible;
+    position:relative;
+    width:0;
+}
+.main-content .boxes-selected-style-6 .views-field-field-thumbnail-1 .field-content {
+    height:150px;
+    width:200px;
+    overflow:hidden;
+    margin-bottom:10px;
+}
+.main-content .boxes-selected-style-6 .views-field-field-thumbnail-1 .field-content img {
+    width:200px;
+}
+.main-content .boxes-selected-style-6 .views-row:hover {
+    border:3px solid #14ade7;
+    margin:2px;
+}
+.main-content .boxes-selected-style-6 .action:hover {
+    border:3px solid #f7c806 !important;
+    margin:2px;
+}
+.main-content .boxes-selected-style-6 .action .views-field-field-display-tag .field-content {
+    background-color:#f7c806 !important;
+}
+.main-content .boxes-selected-style-6 .views-field-field-display-tag {
+    height:0;
+    overflow:visible;
+    z-index:100;
+    position:absolute;
+}
+.main-content .boxes-selected-style-6 .views-field-field-display-tag .field-content {
+    background-color:#9BC;
+    color:#FFF;
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    line-height:18px;
+    margin-top:123px;
+    text-transform:uppercase;
+    padding:4px 5px;
+}
+.boxes-selected-style-6 .views-field-field-promo-text .field-content {
+    padding-bottom:4px;
+}
+.node-type-openpublish-photo-gallery div.takepart_addthis_leftpane
+l div.addthis_toolbox a.addthis_button_google_plusone,.node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_linkedin {
+    width:50px !important;
+}
+.node-type-topic-front .block-boxes-current-featured_items .view-dom-id-1 .views-field-php {
+    padding-top: 3em;
+}
+.node-type-takepart-campaign .block-boxes-current-featured_items .view-dom-id-1 .views-field-php {
+    padding-top: 3em;
+}
+.node-type-takepart-campaign .main-content .block-boxes h2 {
+    border-top: 0 none;
+}
+.node-type-takepart-campaign .main-content .block-boxes h2 {
+    border-top: 0 none;
+}
+.node-type-takepart-campaign .view .block-boxes h2 {
+    border-top: 1px dotted #000000;
+}
+.block-boxes-view .main-content h2 {
+    border-top: 1px dotted #000000 !important;
+} 
