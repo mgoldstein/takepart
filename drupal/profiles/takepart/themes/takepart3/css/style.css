@@ -826,7 +826,7 @@ h1.title a:hover {
 .node-type-webform .main-content h1.title,
 .node-type-takepart-page .main-content h1.title,
 .node-type-action .main-content h1.title,
-.node-type-takepart-campaign .main-content h1 {
+.node-type-takepart-campaign h1 {
     font-size:36px;
     font-family:Helvetica, Arial, sans-serif;
     line-height:38px;
@@ -877,19 +877,25 @@ h1.title a:hover {
 }
 
 /* Full Width Top Region */
-
 .region-full-width-top {
-    width:100%;
+    width:auto;
     padding:0 10px;
     background-color: #FFF;
 }
 
 /* Full Width Bottom Region */
-
 .region-full-width-bottom {
-    width:100%;
+    width:auto;
     padding:0 10px;
     background-color: #FFF;
+}
+
+.region-full-width-top ul, 
+.region-full-width-bottom ul {
+    font-size: 14px;
+    line-height: 24px;
+    list-style: disc outside none;
+    margin: 0 0 20px 20px;
 }
 
 /* headers in blocks in main body */
