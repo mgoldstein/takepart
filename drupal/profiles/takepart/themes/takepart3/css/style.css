@@ -891,7 +891,9 @@ h1.title a:hover {
 }
 
 .region-full-width-top ul, 
-.region-full-width-bottom ul {
+.region-full-width-bottom ul,
+.region-full-width-top ol, 
+.region-full-width-bottom ol {
     font-size: 14px;
     line-height: 24px;
     list-style: disc outside none;
