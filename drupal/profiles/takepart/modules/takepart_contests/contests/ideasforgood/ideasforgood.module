@@ -5,3 +5,159 @@
  * Marigold Ideas for Good Contest
  */
 
+/**
+ * Implements hook_entity_info()
+ */
+function ideasforgood_entity_info() {
+
+  $info = array();
+
+  $info['ideasforgood_finalist'] = array(
+    'label' => t('Marigold Ideas for Good Finalist'),
+    'entity class' => 'IdeasForGoodFinalist',
+    'controller class' => 'IdeasForGoodFinalistController',
+    'base table' => 'ideasforgood_finalist',
+    'fieldable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+    ),
+    /*
+    'bundles' => array(
+      'ideasforgood_finalist' => array(
+        'label' => t('Marigold Ideas for Good Finalist'),
+        'admin' => array(
+          'path' => 'admin/structure/ideasforgood/finalists',
+          'access arguments' => array('administer ideasforgood finalists'),
+        ),
+      ),
+    ),
+     */
+    'label callback' => 'entity_class_label',
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'ideasforgood_finalist_access',
+    'module' => 'ideasforgood',
+    'admin ui' => array(
+      'path' => 'admin/content/ideasforgood/finalists',
+      'file' => 'finalist.admin.inc',
+      'controller class' => 'IdeasForGoodFinalistUIController',
+    ),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_permission()
+ */
+function ideasforgood_permission() {
+  return array(
+    'administer ideasforgood finalists' => array(
+      'title' => t('Administer Ideas for Good finalists'),
+      'description' => t('Edit and delete all Ideas for Good Finalists'),
+    ),
+    'edit ideasforgood finalists' => array(
+      'title' => t('Edit Ideas for Good Finalists'),
+      'description' => t('Edit all Ideas for Good finalists'),
+    ),
+    'view ideasforgood finalists' => array(
+      'title' => t('View Ideas for Good Finalists'),
+      'description' => t('View all Ideas for Good finalists'),
+    ),
+  );
+}
+
+function ideasforgood_finalist_access($op, $finalist = NULL, $account = NULL) {
+  $op = ($op == 'view') ? 'view' : 'edit';
+  if (user_access('administer ideasforgood finalists', $account) ||
+      user_access("$op ideasforgood finalists", $account)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_views_api()
+ */
+function ideasforgood_views_api() {
+  return array(
+    'api' => 3,
+  );
+}
+
+
+/* Ideas for Good Finalist API
+ ******************************************************************************/
+
+class IdeasForGoodFinalist extends Entity {
+
+  public function __construct($values = array()) {
+    parent::__construct($values, 'ideasforgood_finalist');
+  }
+
+  protected function defaultLabel() {
+    return "{$this->name} [{$this->tag}]";
+  }
+
+  protected function defaultUri() {
+    $path = implode('/', array(
+      'admin',
+      'content',
+      'ideasforgood',
+      'finalists',
+      'manage',
+      $this->id,
+    ));
+    return array('path' => $path);
+  }
+}
+
+class IdeasForGoodFinalistController extends EntityAPIController {
+
+  public function __construct($entityType) {
+    parent::__construct($entityType);
+  }
+
+  public function create(array $values = array()) {
+    $values += array(
+      'id' => '',
+      'language' => '',
+      'is_new' => TRUE,
+      'name' => '',
+      'tag' => '',
+      'created' => 0,
+      'changed' => 0,
+    );
+    return parent::create($values);
+  }
+
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+    // set/update the created and changed timestamps
+    $entity->is_new = isset($entity->is_new) ? $entity->is_new : 0;
+    if ($entity->is_new) {
+      $entity->created = time();
+    }
+    $entity->changed = time();
+    return parent::save($entity, $transaction);
+  }
+}
+
+function ideasforgood_finalist_load($id, $reset = FALSE) {
+  $finalists = ideasforgood_finalist_load_multiple(array($id), array(), $reset);
+  return reset($finalists);
+}
+
+function ideasforgood_finalist_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('ideasforgood_finalist', $ids, $conditions, $reset);
+}
+
+function ideasforgood_finalist_save(IdeasForGoodFinalist $finalist) {
+  return $finalist->save();
+}
+
+function ideasforgood_finalist_delete(IdeasForGoodFinalist $finalist) {
+  $finalist->delete();
+}
+
+function ideasforgood_finalist_delete_multiple(array $ids) {
+  entity_get_controller('ideasforgood_finalist')->delete($ids);
+}
