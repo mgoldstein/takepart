@@ -41,6 +41,7 @@
         <ul id="bottom-follow">
             <li class="fb"><a href="http://www.facebook.com/takepart" target="_blank">facebook</a></li>
             <li class="twitter"><a href="http://www.twitter.com/takepart" target="_blank">twitter</a></li>
+            <li class="googleplus"><a href="https://plus.google.com/113369936500827860065?prsrc=3" rel="publisher" style="text-decoration:none;" target="_blank"><img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt="google plus" style="border:0;width:24px;height:24px;" /></a></li>
             <li class="youtube"><a href="http://www.youtube.com/takepart" target="_blank">youtube</a></li>
             <li class="rss"><a href="/rss">rss</a></li>
         </ul>

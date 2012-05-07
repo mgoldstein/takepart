@@ -1518,6 +1518,10 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     margin-right: 8px;
 }
 
+#footer ul#bottom-follow li.googleplus a {
+    text-indent: 0;
+}
+
 #footer ul#bottom-follow li.fb a {
     background: url(../images/2012-02-08/facebook.jpg) no-repeat 0;
 }
