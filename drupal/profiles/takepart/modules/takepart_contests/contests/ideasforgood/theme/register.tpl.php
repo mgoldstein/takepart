@@ -14,5 +14,5 @@
 <p>Or, if you already have an account with TakePart.com, click the Connect with
   Facebook button to log in.
 </p>
-<img src="/<?php print $content['connect_button']; ?>" alt="Connect with Facebook">
-<img src="/<?php print $content['cancel_button']; ?>" alt="Cancel" class="ideasforgood-cancel-button">
+<a href="/user?destination=<?php print $_GET['q']; ?>"><img src="/<?php print $content['connect_button']; ?>" alt="Connect with Facebook"></a>
+<a href="#" class="ideasforgood-cancel-button"><img src="/<?php print $content['cancel_button']; ?>" alt="Cancel"></a>

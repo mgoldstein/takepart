@@ -252,6 +252,12 @@ class IdeasForGoodFinalistController extends EntityAPIController {
           'vote_button_on.png',
         )),
       );
+      $path = implode('/', array(
+        drupal_get_path('module', 'ideasforgood'),
+        'js',
+        'finalist.js'
+      ));
+      drupal_add_js($path, array('group' => JS_DEFAULT, 'type' => 'file'));
     }
     else if ($view_mode == 'vote') {
       $content['vote_form'] = drupal_get_form('ideasforgood_vote_form', $entity);
