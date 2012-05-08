@@ -179,14 +179,6 @@ a:hover {
     padding-left:10px;
 }
 
-#page.page-multipage
-{
-    /*padding:0px;*/
-    padding-right:0;
-    /*padding-top: 0;*/
-    padding-left:0;
-}
-
 .main-content
 {
     width:640px;
@@ -2133,8 +2125,11 @@ q:before, q:after {
     font-weight: normal;
 }
 
-.node-type-takepart-campaign .page {
-    padding: 35px 0 25px 10px;
+.node-type-takepart-campaign #page {
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 25px;
+    padding-left: 10px;
 }
 
 body.node-type-takepart-campaign .main-content #content {
@@ -2673,4 +2668,17 @@ l div.addthis_toolbox a.addthis_button_google_plusone,.node-type-openpublish-pho
 }
 .view-photo-gallery .views-slideshow-controls-top {
     min-height:79px;
+}
+
+#highlighted {
+    background: #FFF;
+    padding: 0;
+}
+
+body.node-type-takepart-campaign #highlighted,
+body.multipage-campaign #highlighted {
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 25px;
+    padding-left: 0;
 }
