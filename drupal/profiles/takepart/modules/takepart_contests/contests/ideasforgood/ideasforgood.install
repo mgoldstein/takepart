@@ -21,10 +21,10 @@ function ideasforgood_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
-      'name' => array(
-        'description' => 'The name of the finalist',
+      'token' => array(
+        'description' => 'The voting token for the finalist',
         'type' => 'varchar',
-        'length' => 255,
+        'length' => 32,
         'not null' => TRUE,
         'default' => '',
       ),
@@ -114,6 +114,8 @@ function ideasforgood_enable() {
 
   // add the ideas for good finalist fields (if necessary)
   ideasforgood_add_finalist_image();
+  ideasforgood_add_finalist_first_name();
+  ideasforgood_add_finalist_last_name();
   ideasforgood_add_finalist_idea_title();
   ideasforgood_add_finalist_idea_body();
 }
@@ -170,6 +172,74 @@ function ideasforgood_add_finalist_image() {
             'image_style' => 'large',
             'image_link' => '',
           ),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}
+
+function ideasforgood_add_finalist_first_name() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_finalist_first_name',
+      'type' => 'text',
+      'entity_types' => array('ideasforgood_finalist'),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_finalist_first_name',
+      'entity_type' => 'ideasforgood_finalist',
+      'bundle' => 'ideasforgood_finalist',
+      'label' => t('First Name'),
+      'required' => TRUE,
+      'settings' => array(
+        'text_processing' => 0,
+      ),
+      'widget' => array(
+        'type' => 'text_textfield',
+        'settings' => array(
+          'size' => 32,
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'text_default',
+          'settings' => array(),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}
+
+function ideasforgood_add_finalist_last_name() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_finalist_last_name',
+      'type' => 'text',
+      'entity_types' => array('ideasforgood_finalist'),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_finalist_last_name',
+      'entity_type' => 'ideasforgood_finalist',
+      'bundle' => 'ideasforgood_finalist',
+      'label' => t('Last Name'),
+      'required' => TRUE,
+      'settings' => array(
+        'text_processing' => 0,
+      ),
+      'widget' => array(
+        'type' => 'text_textfield',
+        'settings' => array(
+          'size' => 32,
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'text_default',
+          'settings' => array(),
         ),
       ),
     ),

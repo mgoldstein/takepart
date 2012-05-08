@@ -29,16 +29,16 @@ function ideasforgood_finalist_form_wrapper() {
 function ideasforgood_finalist_form($form, &$form_state, $finalist, $op = 'edit') {
 
   if ($op == 'clone') {
-    $finalist->name .= "'s clone";
+    $finalist->token .= " (cloned)";
   }
 
-  $form['name'] = array(
+  $form['token'] = array(
     '#type' => 'textfield',
-    '#title' => t('Name'),
-    '#description' => t('The name of the finalist'),
-    '#default_value' => isset($finalist->name) ? $finalist->name : '',
+    '#title' => t('Token'),
+    '#description' => t('The voting token for the finalist'),
+    '#default_value' => isset($finalist->token) ? $finalist->token : '',
     '#required' => TRUE,
-    '#maxlength' => 255,
+    '#maxlength' => 32,
     '#size' => 60,
   );
 
@@ -110,12 +110,12 @@ function ideasforgood_finalist_form_submit(&$form, &$form_state) {
   // save the petition
   $status = $finalist->save();
   if ($status == SAVED_UPDATED) {
-    drupal_set_message(t('The finalist %name has been updated.',
-      array('%name' => $finalist->name)));
+    drupal_set_message(t('The finalist %token has been updated.',
+      array('%token' => $finalist->token)));
   }
   else if ($status == SAVED_NEW) {
-    drupal_set_message(t('The finalist %name has been added.',
-      array('%name' => $finalist->name)));
+    drupal_set_message(t('The finalist %token has been added.',
+      array('%token' => $finalist->token)));
   }
 
   // go back to the list of petitions
