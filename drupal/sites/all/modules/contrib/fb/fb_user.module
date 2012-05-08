@@ -244,6 +244,22 @@ function _fb_user_check_and_goto() {
     if ($uid != $GLOBALS['user']->uid) {
       // during user processing, we started a new session.
       if (!fb_controls(FB_USER_CONTROL_NO_REDIRECT)) {
+
+	  //----DEBUG--- Remove when done
+	  $dbg_time = time();
+	  $dbg_trace = debug_backtrace(false);
+	  if(isset($dbg_trace)){
+	    try {
+	      watchdog('_fb_user_check_and_goto', "timestamp:" . $dbg_time . "|" . $path . "|" . preg_replace("/[\n\s\r]/","",print_r($dbg_trace, true)));
+	      watchdog('_fb_user_check_and_goto_uid', "timestamp:" . $dbg_time . "|" . $path . "|" . preg_replace("/[\n\s\r]/","",print_r($uid, true)));
+              watchdog('_fb_user_check_and_goto_global', "timestamp:" . $dbg_time . "|" . $path . "|" . preg_replace("/[\n\s\r]/","",print_r($GLOBALS['user'], true)));
+	      header('fb_goto:' . $dbg_time);
+	    } catch (Exception $ex) {
+	      watchdog('drupal_goto', $ex->getMessage());
+	    }
+	  }
+	  //----DEBUG---
+
         // No longer passing _fb_user_fbu, because it causes problem when logging out of one frame then refreshing a frame with that parameter in the URL.
         drupal_goto(request_path(), array(
                       //'_fb_user_fbu' => $fbu, // Avoid refresh loop, disabled for now.  Still needed?
@@ -423,7 +439,7 @@ function _fb_user_process_authorized_user() {
   $fbu = fb_facebook_user();
   $mapped = FALSE;
   
-  //print "called0 ";
+  watchdog('fb_debugging', "called0");
 
   if ($fbu &&
       (!variable_get(FB_USER_VAR_CHECK_SESSION, FALSE) || _fb_user_check_session($fbu))) {
@@ -437,7 +453,7 @@ function _fb_user_process_authorized_user() {
           $config['map_account'][FB_USER_OPTION_MAP_ALWAYS]) {
         // Create map for logged in user.
         $mapped = _fb_user_create_map();
-        //print "called1 ";
+        watchdog('fb_debugging', "called1");
         
       }
 
@@ -445,10 +461,10 @@ function _fb_user_process_authorized_user() {
           $config['map_account'][FB_USER_OPTION_MAP_EMAIL]) {
         // Create map if email matches.
         $mapped = _fb_user_create_map_by_email();
-        //print "called2";
-        //print_r($mapped);
-        
-        
+        watchdog('fb_debugging', "called2");
+        watchdog('fb_debugging', "called2 " . preg_replace("/[\n\s\r]/","",print_r($mapped, true)));
+        //print_r();
+         
       }
 
       /*if (!$mapped &&
@@ -457,19 +473,19 @@ function _fb_user_process_authorized_user() {
       if (!$mapped) {  
         // Create new local account with map.
         $mapped = _fb_user_create_local_account();
-        //print "called3 ";
+        watchdog('fb_debugging', "called3");
         
       }
 
       if ($mapped) {
         $account = fb_user_get_local_user($fbu, $fb_app);
-        //print "called4 ";
+        watchdog('fb_debugging', "called4");
         
       }
     }
 
     if ($account) {
-      //print "called5 ";
+      watchdog('fb_debugging', "called5");
       
       // Ensure the user has any roles associated with this app.
       $rid = $config['new_user_rid'];
@@ -478,7 +494,7 @@ function _fb_user_process_authorized_user() {
       /*if ($account && $rid &&
           (!isset($account->roles[$rid]) || !$account->roles[$rid])) {*/
         // there should be an API for this...
-        //print "called6 "; 
+        watchdog('fb_debugging', "called6");
         $query = db_insert('users_roles')
           ->fields(array(
             'uid' => $account->uid,
@@ -492,7 +508,7 @@ function _fb_user_process_authorized_user() {
 
       // Login as facebook user, if not already.
       _fb_user_external_login($account);
-      //print "called7 ";
+      watchdog('fb_debugging', "called7");
     }
   }
 }
