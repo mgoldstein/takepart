@@ -9,8 +9,9 @@
  */
 ?>
 <p>Do you want to confirm your vote for
-  <?php print render($content['ideasforgood_finalist_first_name']); ?>
-  <?php print render($content['ideasforgood_finalist_last_name']); ?>
+  <?php print $ideasforgood_finalist_first_name[0]['safe_value']; ?>
+  <?php print $ideasforgood_finalist_last_name[0]['safe_value']; ?>
 </p>
 <?php print render($content['vote_form']); ?>
 <img src="/<?php print $content['cancel_button']; ?>" alt="Cancel" class="ideasforgood-cancel-button">
+<div style="clear: both"></div>

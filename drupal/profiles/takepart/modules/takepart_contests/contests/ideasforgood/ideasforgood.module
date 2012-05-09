@@ -162,7 +162,7 @@ function ideasforgood_vote_form($form, &$form_state, $finalist) {
     '#submit' => array('ideasforgood_vote_form_submit'),
     '#ajax' => array(
       'callback' => 'ideasforgood_vote_form_callback',
-      'wrapper' => $wrapper,
+      //'wrapper' => $wrapper,
       'progress' => array(
         'type' => 'throbber',
         'message' => NULL,
@@ -178,11 +178,32 @@ function ideasforgood_vote_form_submit(&$form, &$form_state) {
 }
 
 function ideasforgood_vote_form_callback(&$form, $form_state) {
+
   $finalist = $form_state['ideasforgood_finalist'];
+  $wrapper = "#ideasforgood-finalist-{$finalist->id}-dialog-body";
+
   $finalist->vote_accepted = isset($form_state['vote_accepted'])
     ? $form_state['vote_accepted'] : FALSE;
   $controller = entity_get_controller('ideasforgood_finalist');
-  return render($controller->view(array($finalist), 'thankyou'));
+  $content = render($controller->view(array($finalist), 'thankyou'));
+
+  $settings = array(
+    'ideasforgood' => array(
+      'email' => 'test@test.com',
+      'email_msg' => 'This is an email message',
+      'twitter_msg' => 'This is a twitter message',
+    ),
+  );
+
+  $commands = array();
+  $commands[] = ajax_command_replace($wrapper, $content);
+  $commands[] = ajax_command_settings($settings, TRUE);
+
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+  //return $content;
 }
 
 /* Ideas for Good Finalist API
@@ -252,12 +273,25 @@ class IdeasForGoodFinalistController extends EntityAPIController {
           'vote_button_on.png',
         )),
       );
+      drupal_add_library('system', 'ui.dialog');
+      $path = implode('/', array(
+        drupal_get_path('module', 'ideasforgood'),
+        'js',
+        'jquery.qtip.min.js'
+      ));
+      drupal_add_js($path, array('group' => JS_DEFAULT, 'type' => 'file'));
       $path = implode('/', array(
         drupal_get_path('module', 'ideasforgood'),
         'js',
         'finalist.js'
       ));
       drupal_add_js($path, array('group' => JS_DEFAULT, 'type' => 'file'));
+      $path = implode('/', array(
+        drupal_get_path('module', 'ideasforgood'),
+        'css',
+        'finalist.css'
+      ));
+      drupal_add_css($path, array('group' => CSS_DEFAULT, 'type' => 'file'));
     }
     else if ($view_mode == 'vote') {
       $content['vote_form'] = drupal_get_form('ideasforgood_vote_form', $entity);
