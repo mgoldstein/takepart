@@ -170,7 +170,7 @@ function ideasforgood_add_finalist_image() {
           'type' => 'image',
           'settings' => array(
             'image_style' => 'large',
-            'image_link' => '',
+            'image_link' => 'file',
           ),
         ),
       ),
@@ -204,7 +204,7 @@ function ideasforgood_add_finalist_first_name() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'settings' => array(),
         ),
       ),
@@ -238,7 +238,7 @@ function ideasforgood_add_finalist_last_name() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'settings' => array(),
         ),
       ),
@@ -272,7 +272,7 @@ function ideasforgood_add_finalist_idea_title() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'settings' => array(),
         ),
       ),
