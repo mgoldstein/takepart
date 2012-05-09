@@ -43,7 +43,7 @@ function takepart_rotator_slide_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '420',
+          'width' => '640',
           'height' => '370',
         ),
         'weight' => '1',
