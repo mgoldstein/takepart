@@ -18,6 +18,18 @@
         var email_note = Drupal.settings.ideasforgood['email_note'];
         addthis.update('config', 'ui_email_note', email_note);
       });
+      if (Drupal.settings.ideasforgood) {
+        if ('vote_accepted' in Drupal.settings.ideasforgood) {
+          var finalist_id = Drupal.settings.ideasforgood['finalist_id'];
+          var item_dialog = '#ideasforgood-finalist-' + finalist_id + '-dialog';
+          if (Drupal.settings.ideasforgood['vote_accepted']) {
+            $(item_dialog).dialog("option", "title", "Thank You for Voting!");
+          }
+          else {
+            $(item_dialog).dialog("option", "title", "Oops!");
+          }
+        }
+      }
     }
   };
 
@@ -60,8 +72,7 @@
         resizable: false,
         modal: true,
         title: $(this).attr('title'),
-        width: 400,
-        height: 300
+        width: 580,
       });
 
       // clicking a finalist should bring up the vote dialog

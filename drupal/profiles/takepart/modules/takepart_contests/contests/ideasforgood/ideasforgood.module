@@ -211,7 +211,46 @@ function ideasforgood_vote_form($form, &$form_state, $finalist) {
 }
 
 function ideasforgood_vote_form_submit(&$form, &$form_state) {
+  global $user;
 
+  $finalist = $form_state['ideasforgood_finalist'];
+
+  // get the voting group
+  $group = ideasforgood_finalist_group($finalist);
+  if ($group !== FALSE) {
+
+    // get the fields for the voting form
+    $fields = takepart_bsd_signup_list_form_fields($group->voting_form_id);
+    if (!empty($fields)) {
+
+      // make sure all of the required fields are present
+      $have_email = isset($fields[$group->email_field_id]);
+      $have_vote = isset($fields[$group->vote_field_id]);
+      $have_opt_in = isset($fields[$group->opt_in_field_id]);
+      if ($have_email && $have_vote && $have_opt_in) {
+
+        $fields[$group->email_field_id]['value'] = array(
+          'type' => 'value',
+          'value' => $user->mail,
+        );
+        $fields[$group->vote_field_id]['value'] = array(
+          'type' => 'value',
+          'value' => $form_state['values']['vote'],
+        );
+        $fields[$group->opt_in_field_id]['value'] = array(
+          'type' => 'value',
+          'value' => $form_state['values']['opt_in'],
+        );
+
+        $signup = array($group->voting_form_id => $fields);
+
+        $errors = array();
+        takepart_bsd_signup_process_signup($signup, $errors);
+
+        $form_state['vote_accepted'] = empty($errors);
+      }
+    }
+  }
 }
 
 function ideasforgood_vote_form_callback(&$form, $form_state) {
@@ -250,6 +289,8 @@ function ideasforgood_vote_form_callback(&$form, $form_state) {
 
   $settings = array(
     'ideasforgood' => array(
+      'vote_accepted' => $finalist->vote_accepted,
+      'finalist_id' => $finalist->id,
       'email_from' => empty($user->mail) ? '' : $user->mail,
       'email_note' => t($email_note, $values),
       'twitter_template' => t($twitter_template, $values),
@@ -264,7 +305,6 @@ function ideasforgood_vote_form_callback(&$form, $form_state) {
     '#type' => 'ajax',
     '#commands' => $commands,
   );
-  //return $content;
 }
 
 function ideasforgood_finalist_group($finalist) {
@@ -559,6 +599,7 @@ class IdeasForGoodVotingGroupController extends EntityAPIController {
       'voting_form_id' => 0,
       'email_field_id' => 0,
       'vote_field_id' => 0,
+      'opt_in_field_id' => 0,
       'created' => 0,
       'changed' => 0,
     );

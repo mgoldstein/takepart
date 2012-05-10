@@ -26,20 +26,120 @@ function ideasforgood_voting_group_form_wrapper() {
   return entity_ui_get_form('ideasforgood_voting_group', $group, 'add');
 }
 
+function ideasforgood_field_id_select($form_id, $value) {
+
+  $element = NULL;
+  $options = array();
+
+  if (! empty($form_id)) {
+
+    $fields = takepart_bsd_signup_list_form_fields($form_id);
+
+    if (!empty($fields)) {
+
+      if ((!empty($value)) && (!array_key_exists($value, $fields))) {
+        $options[$value] = t('Field ID: @id (not available)', array('@id' => $value));
+      }
+
+      foreach ($fields as $id => $field) {
+        $options[$id] = sprintf('[%d] %s', $id, $field['label']);
+      }
+    }
+    else {
+      $element = array(
+        '#type' => 'textfield',
+        '#size' => 4,
+        '#default_value' => $value,
+        '#element_validate' => array('_element_validate_integer_positive'),
+      );
+    }
+  }
+  else {
+    $options[''] = 'Select a Signup Form';
+  }
+
+  if (!isset($element)) {
+    $element = array(
+      '#type' => 'select',
+      '#options' => $options,
+      '#default_value' => $value,
+    );
+  }
+  return $element;
+}
+
 function ideasforgood_voting_group_form($form, &$form_state, $group, $op = 'edit') {
 
   if ($op == 'clone') {
     $group->name .= " (cloned)";
   }
 
+  $name = isset($form_state['values']['name'])
+    ? $form_state['values']['name'] : $group->name;
+  $voting_form_id = isset($form_state['values']['voting_form_id'])
+    ? $form_state['values']['voting_form_id'] : $group->voting_form_id;
+  $email_field_id = isset($form_state['values']['email_field_id'])
+    ? $form_state['values']['email_field_id'] : $group->email_field_id;
+  $vote_field_id = isset($form_state['values']['vote_field_id'])
+    ? $form_state['values']['vote_field_id'] : $group->vote_field_id;
+  $opt_in_field_id = isset($form_state['values']['opt_in_field_id'])
+    ? $form_state['values']['opt_in_field_id'] : $group->opt_in_field_id;
+
+
   $form['name'] = array(
     '#type' => 'textfield',
     '#title' => t('Name'),
     '#description' => t('The name of the voting group'),
-    '#default_value' => isset($group->name) ? $group->name : '',
+    '#default_value' => $name,
     '#required' => TRUE,
     '#maxlength' => 32,
     '#size' => 24,
+  );
+
+  $form['signupform'] = array(
+    '#title' => 'Blue State Digital Signup Tracking',
+    '#type' => 'fieldset',
+    '#description' => t('Select the Blue State Digital signup form and fields for this voting group.'),
+    '#tree' => FALSE,
+   );
+
+  $form['signupform']['voting_form_id'] =
+    takepart_bsd_form_id_select_field($voting_form_id);
+  $form['signupform']['voting_form_id'] += array(
+    '#ajax' => array(
+      'event' => 'change',
+      'callback' => 'ideasforgood_signup_form_id_callback',
+      'wrapper' => 'ideasforgood-signup-fields-wrapper',
+      'progress' => array(
+        'type' => 'throbber',
+        'message' => t('Loading fields ...'),
+      ),
+    ),
+  );
+
+  $form['signupform']['fields'] = array(
+    '#type' => 'container',
+    '#tree' => FALSE,
+    '#prefix' => '<div id="ideasforgood-signup-fields-wrapper">',
+    '#suffix' => '</div>',
+  );
+
+  $form['signupform']['fields']['email_field_id'] =
+    ideasforgood_field_id_select($voting_form_id, $email_field_id);
+  $form['signupform']['fields']['email_field_id'] += array(
+    '#title' => 'Email Field ID',
+  );
+
+  $form['signupform']['fields']['vote_field_id'] =
+    ideasforgood_field_id_select($voting_form_id, $vote_field_id);
+  $form['signupform']['fields']['vote_field_id'] += array(
+    '#title' => 'Vote Field ID',
+  );
+
+  $form['signupform']['fields']['opt_in_field_id'] =
+    ideasforgood_field_id_select($voting_form_id, $opt_in_field_id);
+  $form['signupform']['fields']['opt_in_field_id'] += array(
+    '#title' => 'Opt-In Field ID',
   );
 
   $form_state['ideasforgood_voting_group'] = $group;
@@ -83,8 +183,11 @@ function ideasforgood_voting_group_form($form, &$form_state, $group, $op = 'edit
   return $form;
 }
 
-function ideasforgood_voting_group_form_validate(&$form, &$form_state) {
+function ideasforgood_signup_form_id_callback(&$form, $form_state) {
+  return $form['signupform']['fields'];
+}
 
+function ideasforgood_voting_group_form_validate(&$form, &$form_state) {
   // validate the attached fields
   $group = $form_state['ideasforgood_voting_group'];
   field_attach_form_validate('ideasforgood_voting_group', $group, $form, $form_state);
