@@ -245,7 +245,7 @@ function _render_footer_links_menu($menu_key) {
         $links[] = "<li>" . $link . "</li>";
     }
 
-    return "<ul class='clearfix' id='global-links'>" . implode($links) . "</ul>";
+    return "<ul class='clearfix global-links'>" . implode($links) . "</ul>";
 }
 
 function _render_tp3_corporate_links_menu() {
@@ -477,10 +477,21 @@ function takepart3_field__field_action_url(&$vars) {
     $takeactionurl = $vars['element']['#object']->field_action_url['und'][0]['url'];
     $takeactionurl_parts = parse_url($takeactionurl);
     $safe_url = url($takeactionurl);
+
+    // we may have a target attribute set; of so, build a string to add to the tag
+    $target = $vars['element']['#items'][0]['attributes']['target'];
+    if (isset($target)) {
+      $target_str = 'target="' . $target . '" ';
+    }
+    else {
+      // no target specified
+      $target_str = '';
+    }
+
     if ((array_key_exists('host', $takeactionurl_parts)) && ($takeactionurl_parts['host'] == $_SERVER['HTTP_HOST']) || ($takeactionurl_parts['host'] == '')) {
-        return '<a href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
+      return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
     } else {
-        return '<a href="' . $safe_url . '" class="take_action_button" target="_blank" onclick="this.blur(); return false;"><span>Take Action</span></a>';
+      return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
     }
 }
 

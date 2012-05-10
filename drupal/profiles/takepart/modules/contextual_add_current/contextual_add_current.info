@@ -1,2 +1,5 @@
 name = Menu Block Contextual Links
-core 7.x
+description = Sets up inline editing of menu blocks.
+core = 7.x
+version = "7.x-1.0-beta"
+

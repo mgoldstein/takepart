@@ -16,7 +16,7 @@ s.trackDownloadLinks=true
 s.trackExternalLinks=true
 s.trackInlineStats=true
 s.linkDownloadFileTypes="exe,zip,wav,mp3,mov,mpg,avi,wmv,pdf,doc,docx,xls,xlsx,ppt,pptx"
-s.linkInternalFilters="javascript:,takepart.com"
+s.linkInternalFilters="javascript:,takepart.com,traffic.outbrain.com"
 s.linkLeaveQueryString=false
 s.linkTrackVars="prop33,prop34,prop35,prop36"
 s.linkTrackEvents="None"
@@ -37,7 +37,7 @@ s.useCommerce=false
 s.varUsed="prop28"
 s.eventList="" //Abandon,Success,Error
 
-s.channelDomain="Partner|americanexpress.com"; /*KN: Remove/update? */
+// s.channelDomain="Partner|americanexpress.com"; /*KN: Remove/update? */
 
 /* Plugin Config */
 s.usePlugins=true

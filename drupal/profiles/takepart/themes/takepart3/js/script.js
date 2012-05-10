@@ -81,6 +81,7 @@ jQuery(document).ready(function() {
     jQuery('#top-search .form-text').DefaultValue('Search TakePart');
 });
 
+/* rewrites all absolute links to open in a new window
 (function($) {
     Drupal.behaviors.takepart3 = {
         attach: function(context) {
@@ -89,6 +90,7 @@ jQuery(document).ready(function() {
         }
     };
 })(jQuery);
+*/
 
 (function($) {
     Drupal.behaviors.campaignVideo = {
@@ -410,7 +412,8 @@ jQuery(document).ready(function () {
   );
 });
 
-// prevent vertical display of photo gallery; ticket #23275 pglatz 4/25/12
-jQuery(document).ready(function() {
-    jQuery('#block-boxes-box-3df7e268').show();
-});
+// prevent vertical display of photo gallery; ticket #23275 pglatz 4/25/12, 5/2/12 (inside pages)
+    jQuery(document).ready(function() {
+        jQuery('#block-boxes-box-3df7e268').show();
+        jQuery('#widget_pager_top_photo_gallery-block li').show();
+    });
