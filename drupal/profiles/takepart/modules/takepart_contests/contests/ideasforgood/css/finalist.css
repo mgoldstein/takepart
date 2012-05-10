@@ -11,7 +11,7 @@ div.ideasforgood-finalist-item {
   position: relative;
   cursor: pointer;
   float: left;
-  margin: 4px;
+  margin: 4px 2px 0px 0px;
 }
 
 img.ideasforgood-cancel-button {

@@ -4,6 +4,7 @@ core = 7.x
 package = TakePart
 
 dependencies[] = takepart_contests
+dependencies[] = takepart_bsd
 
 files[] = finalist.admin.inc
 files[] = voting_group.admin.inc

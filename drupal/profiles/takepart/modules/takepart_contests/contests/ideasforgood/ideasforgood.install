@@ -88,6 +88,12 @@ function ideasforgood_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
+      'opt_in_field_id' => array(
+        'description' => 'The id of the BSD signup form field for the email opt in.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
       'created' => array(
         'description' => 'The Unix timestamp when the group was created',
         'type' => 'int',
