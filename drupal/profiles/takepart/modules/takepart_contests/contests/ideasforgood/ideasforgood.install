@@ -118,6 +118,12 @@ function ideasforgood_enable() {
   ideasforgood_add_finalist_last_name();
   ideasforgood_add_finalist_idea_title();
   ideasforgood_add_finalist_idea_body();
+
+  ideasforgood_add_group_register_message();
+  ideasforgood_add_group_thank_you_message();
+  ideasforgood_add_group_already_voted_message();
+  ideasforgood_add_group_twitter_message();
+  ideasforgood_add_group_email_message();
 }
 
 /**
@@ -127,8 +133,16 @@ function ideasforgood_uninstall() {
 
   // delete the ideas for good finalist fields
   field_delete_field('ideasforgood_finalist_image');
+  field_delete_field('ideasforgood_finalist_first_name');
+  field_delete_field('ideasforgood_finalist_last_name');
   field_delete_field('ideasforgood_finalist_idea_title');
   field_delete_field('ideasforgood_finalist_idea_body');
+
+  field_delete_field('ideasforgood_group_register');
+  field_delete_field('ideasforgood_group_thank_you');
+  field_delete_field('ideasforgood_group_already_voted');
+  field_delete_field('ideasforgood_group_twitter');
+  field_delete_field('ideasforgood_group_email');
 }
 
 function ideasforgood_add_field_instance($info) {
@@ -170,7 +184,7 @@ function ideasforgood_add_finalist_image() {
           'type' => 'image',
           'settings' => array(
             'image_style' => 'large',
-            'image_link' => 'file',
+            'image_link' => '',
           ),
         ),
       ),
@@ -295,6 +309,171 @@ function ideasforgood_add_finalist_idea_body() {
       'label' => t('Idea Body'),
       'settings' => array(
         'text_processing' => 1,
+      ),
+      'widget' => array(
+        'type' => 'text_textarea',
+        'settings' => array(
+          'rows' => 5,
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'text_default',
+          'settings' => array(),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}
+
+function ideasforgood_add_group_register_message() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_group_register',
+      'type' => 'text_long',
+      'entity_types' => array('ideasforgood_voting_group'),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_group_register',
+      'entity_type' => 'ideasforgood_voting_group',
+      'bundle' => 'ideasforgood_voting_group',
+      'label' => t('Register Message'),
+      'settings' => array(
+        'text_processing' => 1,
+      ),
+      'widget' => array(
+        'type' => 'text_textarea',
+        'settings' => array(
+          'rows' => 5,
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'text_default',
+          'settings' => array(),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}
+
+function ideasforgood_add_group_thank_you_message() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_group_thank_you',
+      'type' => 'text_long',
+      'entity_types' => array('ideasforgood_voting_group'),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_group_thank_you',
+      'entity_type' => 'ideasforgood_voting_group',
+      'bundle' => 'ideasforgood_voting_group',
+      'label' => t('Thank You Message'),
+      'settings' => array(
+        'text_processing' => 1,
+      ),
+      'widget' => array(
+        'type' => 'text_textarea',
+        'settings' => array(
+          'rows' => 5,
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'text_default',
+          'settings' => array(),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}
+
+function ideasforgood_add_group_already_voted_message() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_group_already_voted',
+      'type' => 'text_long',
+      'entity_types' => array('ideasforgood_voting_group'),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_group_already_voted',
+      'entity_type' => 'ideasforgood_voting_group',
+      'bundle' => 'ideasforgood_voting_group',
+      'label' => t('Already Voted Message'),
+      'settings' => array(
+        'text_processing' => 1,
+      ),
+      'widget' => array(
+        'type' => 'text_textarea',
+        'settings' => array(
+          'rows' => 5,
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'text_default',
+          'settings' => array(),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}
+
+function ideasforgood_add_group_twitter_message() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_group_twitter',
+      'type' => 'text_long',
+      'entity_types' => array('ideasforgood_voting_group'),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_group_twitter',
+      'entity_type' => 'ideasforgood_voting_group',
+      'bundle' => 'ideasforgood_voting_group',
+      'label' => t('Twitter Share Message'),
+      'settings' => array(
+        'text_processing' => 0,
+      ),
+      'widget' => array(
+        'type' => 'text_textarea',
+        'settings' => array(
+          'rows' => 5,
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'text_default',
+          'settings' => array(),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}
+
+function ideasforgood_add_group_email_message() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_group_email',
+      'type' => 'text_long',
+      'entity_types' => array('ideasforgood_voting_group'),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_group_email',
+      'entity_type' => 'ideasforgood_voting_group',
+      'bundle' => 'ideasforgood_voting_group',
+      'label' => t('Email Share Message'),
+      'settings' => array(
+        'text_processing' => 0,
       ),
       'widget' => array(
         'type' => 'text_textarea',

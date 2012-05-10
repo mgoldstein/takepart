@@ -39,7 +39,7 @@ function ideasforgood_finalist_form($form, &$form_state, $finalist, $op = 'edit'
     '#default_value' => isset($finalist->token) ? $finalist->token : '',
     '#required' => TRUE,
     '#maxlength' => 32,
-    '#size' => 60,
+    '#size' => 24,
   );
 
   $form['voting_group'] = array(
@@ -50,7 +50,6 @@ function ideasforgood_finalist_form($form, &$form_state, $finalist, $op = 'edit'
     '#required' => TRUE,
     '#maxlength' => 32,
     '#size' => 24,
-    '#autocomplete_path' => 'admin/content/ideasforgood/groups/autocomplete',
   );
 
   $form_state['ideasforgood_finalist'] = $finalist;

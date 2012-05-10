@@ -20,6 +20,7 @@ img.ideasforgood-cancel-button {
 
 img.ideasforgood-vote-button {
   float: right;
+  cursor: pointer;
 }
 
 div.ideasforgood-finalist-item img {

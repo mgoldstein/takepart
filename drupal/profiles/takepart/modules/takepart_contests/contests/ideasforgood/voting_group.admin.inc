@@ -17,14 +17,6 @@ class IdeasForGoodVotingGroupUIController extends EntityDefaultUIController {
       'type' => MENU_LOCAL_ACTION,
     );
 
-    $items[$this->path . '/autocomplete'] = array(
-      'title' => 'Marigold Ideas for Good voting group autocomplete',
-      'page callback' => 'ideasforgood_voting_group_autocomplete',
-      'access callback' => 'ideasforgood_finalist_access',
-      'access arguments' => array('view'),
-      'type' => MENU_CALLBACK,
-    );
-
     return $items;
   }
 }
@@ -49,6 +41,9 @@ function ideasforgood_voting_group_form($form, &$form_state, $group, $op = 'edit
     '#maxlength' => 32,
     '#size' => 24,
   );
+
+  $form_state['ideasforgood_voting_group'] = $group;
+  field_attach_form('ideasforgood_voting_group', $group, $form, $form_state);
 
   $form['actions'] = array(
     '#type' => 'container',
@@ -83,7 +78,16 @@ function ideasforgood_voting_group_form($form, &$form_state, $group, $op = 'edit
     '#weight' => 50,
   );
 
+  $form['#validate'][] = 'ideasforgood_voting_group_form_validate';
+
   return $form;
+}
+
+function ideasforgood_voting_group_form_validate(&$form, &$form_state) {
+
+  // validate the attached fields
+  $group = $form_state['ideasforgood_voting_group'];
+  field_attach_form_validate('ideasforgood_voting_group', $group, $form, $form_state);
 }
 
 function ideasforgood_voting_group_form_submit(&$form, &$form_state) {
@@ -114,20 +118,3 @@ function ideasforgood_voting_group_form_submit_delete(&$form, &$form_state) {
     . $form_state['ideasforgood_voting_group']->id
     . '/delete?destination=admin/content/ideasforgood/groups';
 }
-
-function ideasforgood_voting_group_autocomplete($string = '') {
-  $matches = array();
-  if ($string) {
-    $results = db_select('ideasforgood_voting_group', 'g')
-      ->fields('g', array('name'))
-      ->condition('name', db_like($string) . '%', 'LIKE')
-      ->range(0, 10)
-      ->execute();
-    foreach($results as $result) {
-      $group = $result['name'];
-      $matches[$group] = check_plain($group);
-    }
-  }
-  drupal_json_output($matches);
-}
-
