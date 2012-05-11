@@ -206,7 +206,7 @@ function _render_tp3_user_menu() {
 function _render_tp3_hottopics_menu() {
     $menu_data = menu_tree_page_data("menu-hot-topics");
 
-    $links = array(0 => "<li class='title'>hot topics</li>");
+    // $links = array(0 => "<li class='title'>hot topics</li>");
 
     $count = count($menu_data);
     $i = 0;
