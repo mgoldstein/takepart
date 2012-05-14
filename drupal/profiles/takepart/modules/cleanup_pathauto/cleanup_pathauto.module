@@ -34,6 +34,10 @@ function cleanup_pathauto_list() {
   // creates list of nodes with improper characters, source => string
   $improper = array();
 
+  // prepare for table-style output
+  $header = array('Source', 'Alias');
+  $rows = array();
+
   $aliases = array();
   $types = array();
 
@@ -58,14 +62,13 @@ EOT;
 
   $output = '<p>' . count($aliases) . ' nodes found</p>';
   $output .= '<p class="final">' . count($improper) . ' improper strings found:</p>';
-  $output .= '<div class="results">';
   foreach ($improper as $node => $alias) {
     // uncomment next line to show oroginal line
     //$output .= $alias . '<br />';
 
     // display aliases, highlighting improper characters
     $in_bogus = false;   // true if in a bogus char span - this allows us to not have to put a span around individual chars
-    $line = "";          // line bufer
+    $line = "";          // line buffer
     for ($i=0; $i < strlen($alias); $i++) {
       $char = $alias[$i];
       $bogus = preg_match($allowed,$char);
@@ -95,10 +98,10 @@ EOT;
     if ($in_bogus) {
       $line .= '</span>';
     }
-    $output .= $line . '<br />';
+    $rows[] = array(array('data' => $node, 'class' => 'source'), array('data' => $line, 'class' => 'alias'));
     $line = "";
   }
-  $output .= '</div>';
+  $output .= theme('table', array('header' => $header, 'rows' => $rows ));
 
   $module_path = drupal_get_path('module', 'cleanup_pathauto');
   drupal_add_css($module_path . '/cleanup_pathauto.css');

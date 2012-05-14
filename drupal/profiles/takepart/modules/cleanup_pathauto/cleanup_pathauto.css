@@ -10,9 +10,12 @@
   margin-bottom: 20px;
 }
 .cleanup-pathauto span.bogus {
-  color: orange;
+  color: orangered;
   font-weight: bold;
 }
-.cleanup-pathauto .results {
+.cleanup-pathauto th {
+  font-weight: bold;
+}
+.cleanup-pathauto td.alias {
   font-family: "Courier New", Courier, mono;
 }
