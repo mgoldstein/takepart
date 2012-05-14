@@ -2923,10 +2923,6 @@ body.page-node .article-campaign-blocks .article-campaign-blocks-block, body.nod
     padding: 20px;
 }
 
-#highlighted .region-highlighted {
-    padding: 0;
-}
-
 body.front #highlighted {
     background: none; 
     padding: 0;
