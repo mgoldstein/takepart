@@ -87,45 +87,7 @@ img.photo, .gallery-item img {
     display:none;
 }
 
-/****** Hot Topics Nav *****/
-#hot-topics-nav li {
-    list-style-type: none;
-    display: inline;
-    padding: 0 0;
-    font-size: 15px;
-}
-
-#hot-topics-nav li a {
-    color: #000;
-    padding-left: 15px;
-    padding-right: 12px;
-    background: url(../images/dot.png) no-repeat 0 4px;
-}
-
-#hot-topics-nav li a:hover {
-    color: #1ca9e7;
-}
-
-#hot-topics-nav li.last {
-    border: 0;
-}
-
-#hot-topics-nav li.first a {
-    background: none;
-}
-
-#hot-topics-nav li.title {
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #1ca9e7;
-    padding-left: 0;
-    padding-right: 10px;
-    border: none;
-    margin-left: 15px;
-}
-
 /*** Join / Login links ***/
-
 .main-content .links li{
     list-style: none;
 }
@@ -2034,7 +1996,7 @@ q, q.pull-quote {
 /* Campaign */
 .region-highlighted .field-name-field-tp-campaign-intro-html {
     position: absolute;
-    left: 0;
+    left: inherit;
 }
 
 .field-name-field-tp-campaign-5-things-head { 
@@ -2959,10 +2921,6 @@ body.page-node .article-campaign-blocks .article-campaign-blocks-block, body.nod
 .campaign-top {
     background: #FFF; 
     padding: 20px;
-}
-
-#highlighted .region-highlighted {
-    padding: 10px 10px 0 10px;
 }
 
 body.front #highlighted {

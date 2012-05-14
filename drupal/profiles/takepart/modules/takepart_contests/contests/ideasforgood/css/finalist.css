@@ -1,0 +1,62 @@
+.ideasforgood-finalist-idea {
+  display: none;
+}
+
+.ideasforgood-finalist-dialog {
+  display: none;
+}
+
+div.ideasforgood-finalist-item {
+  width: 192px;
+  position: relative;
+  cursor: pointer;
+  float: left;
+  margin: 4px 2px 0px 0px;
+}
+
+img.ideasforgood-cancel-button {
+  cursor: pointer;
+}
+
+img.ideasforgood-vote-button {
+  float: right;
+  cursor: pointer;
+}
+
+div.ideasforgood-finalist-item img {
+  z-index: 1;
+}
+
+div.ideasforgood-finalist-label-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  padding: 4px;
+  height: 32px;
+  text-align: left;
+  overflow: hidden;
+  z-index: 2;
+  background-color: #f90;
+  -ms-filter: "progid:DXImageTranform.Microsoft.Alpha(Opacity-50)";
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+div.ideasforgood-finalist-label-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  padding: 4px;
+  height: 32px;
+  text-align: left;
+  overflow: hidden;
+  z-index: 3;
+  color: white;
+}
+
+div.ideasforgood-finalist-label-text div.field-name-ideasforgood-finalist-first-name {
+  font-weight: bold;
+  text-transform: uppercase;
+}

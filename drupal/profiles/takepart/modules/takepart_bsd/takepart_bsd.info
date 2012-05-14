@@ -5,3 +5,4 @@ package = TakePart
 
 files[] = takepart_bsd.module
 files[] = takepart_bsd.install
+files[] = takepart_bsd.test
