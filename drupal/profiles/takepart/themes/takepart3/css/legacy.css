@@ -1996,7 +1996,7 @@ q, q.pull-quote {
 /* Campaign */
 .region-highlighted .field-name-field-tp-campaign-intro-html {
     position: absolute;
-    left: 0;
+    left: inherit;
 }
 
 .field-name-field-tp-campaign-5-things-head { 
