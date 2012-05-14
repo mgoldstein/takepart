@@ -1598,7 +1598,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
 #hot-topics-nav {
     width: 540px;
     float: left;
-    padding: 9px 0 10px 10px;
+    padding: 9px 0 6px 10px;
 }
 
 #hot-topics-nav ul {
@@ -1607,7 +1607,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
 
 #hot-topics-nav li {
     font-size: 20px;
-    font-family: NewsGothicBoldCondensed, "Arial Bold", sans-serif;
+    font-family: NewsGothicBoldCondensed, "Arial Narrow", sans-serif;
     list-style: none inside none;
     margin-right: 16px;
     display: inline;
