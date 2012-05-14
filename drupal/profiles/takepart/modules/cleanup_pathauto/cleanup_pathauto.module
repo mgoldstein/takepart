@@ -1,0 +1,121 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function cleanup_pathauto_menu() {
+  $items['admin/config/search/path_alias_cleanup'] = array(
+    'title' => 'Path Alias Cleanup',
+    'description' => 'List path aliases with improper characters.',
+    'page callback' => 'cleanup_pathauto_list',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer pathauto'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['admin/config/search/path_alias_cleanup/list'] = array(
+    'title' => 'List improper aliases',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+  );
+
+  return $items;
+}
+
+
+/***
+ * Report improper path aliases
+ *
+ */
+function cleanup_pathauto_list() {
+  // types of nodes to check
+  $check_these = array('article');
+  // allowed characters (regex)
+  $allowed = '/[^a-zA-Z0-9#\-$\/]/';
+
+  // creates list of nodes with improper characters, source => string
+  $improper = array();
+
+  $aliases = array();
+  $types = array();
+
+  $sql = <<<EOT
+SELECT source, alias FROM {url_alias} ua
+ORDER BY ua.source
+EOT;
+
+  $result = db_query($sql);
+  foreach ($result as $record) {
+    $status = preg_match("/([^\/]+)\/(.+)/", $record->alias, $res);
+    $path = $res[1];
+    $arg = $res[2];
+    $types[$path]++;
+    if (in_array($path, $check_these)) {
+      $aliases[$record->source] = $record->alias;
+      if (preg_match($allowed, $arg)) {
+        $improper[$record->source] = $arg;
+      }
+    }
+  }
+
+  $output = '<p>' . count($aliases) . ' nodes found</p>';
+  $output .= '<p class="final">' . count($improper) . ' improper strings found:</p>';
+  $output .= '<div class="results">';
+  foreach ($improper as $node => $alias) {
+    // uncomment next line to show oroginal line
+    //$output .= $alias . '<br />';
+
+    // display aliases, highlighting improper characters
+    $in_bogus = false;   // true if in a bogus char span - this allows us to not have to put a span around individual chars
+    $line = "";          // line bufer
+    for ($i=0; $i < strlen($alias); $i++) {
+      $char = $alias[$i];
+      $bogus = preg_match($allowed,$char);
+      if ($bogus) {
+        // an improper char
+        if (!$in_bogus) {
+          $line .= '<span class="bogus">';
+          $in_bogus = true;
+        }
+        $iv = intval($char);
+        if (ord($char) == 0) {
+          // zeroes don't show up on display - replace with ?
+          $char = '?';
+        }
+      }
+      else {
+        // not an improper char
+        if ($in_bogus) {
+          $line .= '</span>';
+          $in_bogus = false;
+        }
+      }
+      $line .= $char;
+    }
+
+    // end of line - check flag in case last char was bogus
+    if ($in_bogus) {
+      $line .= '</span>';
+    }
+    $output .= $line . '<br />';
+    $line = "";
+  }
+  $output .= '</div>';
+
+  $module_path = drupal_get_path('module', 'cleanup_pathauto');
+  drupal_add_css($module_path . '/cleanup_pathauto.css');
+  $output = '<div class="cleanup-pathauto">' . $output . '</div>';
+  return $output;
+}
+
+
+/**
+ * Implements hook_entity_presave($entity, $type)().
+ *
+ * This checks the path for non-standard characters and replaces them with hyphens
+ */
+function cleanup_pathauto_entity_presave($entity, $type) {
+  if ($type == 'node') {
+    $entity->path['alias'] = preg_replace("/\{\}/", "-", $entity->path['alias']);
+  }
+}
+
+

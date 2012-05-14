@@ -1,0 +1,18 @@
+/*
+* styles for cleanup_pathauto module
+*/
+
+.cleanup-pathauto p {
+  font-weight: bold;
+}
+.cleanup-pathauto p.final {
+  border-bottom: 1px solid #333;
+  margin-bottom: 20px;
+}
+.cleanup-pathauto span.bogus {
+  color: orange;
+  font-weight: bold;
+}
+.cleanup-pathauto .results {
+  font-family: "Courier New", Courier, mono;
+}

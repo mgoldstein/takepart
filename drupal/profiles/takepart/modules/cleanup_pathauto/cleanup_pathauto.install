@@ -1,0 +1,24 @@
+<?php
+// $Id$
+/**
+ * TakePart Pathauto Cleanup Module
+ * @file
+ * Install, update and uninstall functions for the pathauto cleanup module.
+ * @author pglatz
+ * @date 05/10/2012
+ * @company
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function cleanup_pathauto_install() {
+  drupal_set_message(st('The Pathauto Cleanup module has been installed.'));
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function cleanup_pathauto_uninstall() {
+  drupal_set_message(st('The Pathauto Cleanup module has been uninstalled.'));
+}
