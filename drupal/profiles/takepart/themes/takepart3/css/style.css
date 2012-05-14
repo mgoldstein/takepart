@@ -1606,8 +1606,8 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
 }
 
 #hot-topics-nav li {
-    font-size: 16pt;
-    font-family: NewsGothicBoldCondensed, Arial Bold, sans-serif;
+    font-size: 20px;
+    font-family: NewsGothicBoldCondensed, "Arial Bold", sans-serif;
     list-style: none inside none;
     margin-right: 16px;
     display: inline;
