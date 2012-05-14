@@ -1,0 +1,11 @@
+name = Marigold Ideas for Good Contest
+description = The Marigold Ideas for Good Contest specialization of generic TakePart contests.
+core = 7.x
+package = TakePart
+
+dependencies[] = takepart_contests
+dependencies[] = takepart_bsd
+
+files[] = finalist.admin.inc
+files[] = voting_group.admin.inc
+files[] = ideasforgood.test
