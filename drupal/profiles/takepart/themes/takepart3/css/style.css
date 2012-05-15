@@ -1446,14 +1446,6 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     color:#1ca9e7;
 }
 
-#hot-topics-nav li a {
-    color: #000;
-    padding-left: 12px;
-    padding-right: 8px;
-    background: url(../images/dot.png) no-repeat 0 4px;
-    text-decoration: none;
-}
-
 #footer-top-border {
     border-top:1px dotted #000000;
 }
@@ -1606,24 +1598,36 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
 #hot-topics-nav {
     width: 540px;
     float: left;
-    padding: 9px 0 10px;
+    padding: 9px 0 6px 10px;
 }
 
-#hot-topics-nav li.title {
+#hot-topics-nav ul {
+    margin-left: 10px;
+}
+
+#hot-topics-nav li {
+    font-size: 20px;
+    font-family: NewsGothicBoldCondensed, "Arial Narrow", sans-serif;
+    list-style: none inside none;
+    margin-right: 16px;
+    display: inline;
     text-transform: uppercase;
-    font-weight: 300;
-    color: #99BBCC;
-    padding-left: 0;
-    padding-right: 0;
-    border: none;
-    margin-left: 21px;
+}
+
+#hot-topics-nav li a {
+    color: #000;
+    text-decoration: none;
+}
+
+#hot-topics-nav li a:hover {
+    color: #1ca9e7;
 }
 
 /*search box*/
 #top-search {
-    width:  219px;
-    float: right;
-    margin: 5px 0 0;
+    width:219px;
+    float:right;
+    margin:5px 0 0;
 }
 
 #top-search .form-text,
@@ -2679,6 +2683,6 @@ body.node-type-takepart-campaign #highlighted {
     padding-bottom: 20px;
 }
 
-body.multipage-campaign #highlighted {
-    padding: 0 0 25px;
+#highlighted .region-highlighted {
+    padding: 10px;
 }
