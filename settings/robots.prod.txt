@@ -34,7 +34,6 @@ Disallow: /node/
 Disallow: /2008/
 Disallow: /2009/
 Disallow: /2010/
-Disallow: /Index.do
 Disallow: /flash/
 Disallow: /recent
 Disallow: /tag/
@@ -52,6 +51,7 @@ Disallow: /MAINTAINERS.txt
 Disallow: /update.php
 Disallow: /UPGRADE.txt
 Disallow: /xmlrpc.php
+Disallow: /Index.do
 # Paths (clean URLs)
 Disallow: /admin/
 Disallow: /comment/reply/
