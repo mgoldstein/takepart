@@ -29,7 +29,7 @@ function cleanup_pathauto_install() {
  * Implementation of hook_uninstall().
  */
 function cleanup_pathauto_uninstall() {
-  variable_del('cleanup_pathauto_check_nodes');variable_get('cleanup_pathauto_allowed_chars', 'q')
+  variable_del('cleanup_pathauto_check_nodes');
   variable_del('cleanup_pathauto_allowed_chars');
 
   drupal_set_message(st('The Pathauto Cleanup module has been uninstalled.'));

@@ -1,6 +1,6 @@
 <?php
 
-  /**
+/**
  * Implements hook_menu().
  */
 function cleanup_pathauto_menu() {
@@ -12,14 +12,14 @@ function cleanup_pathauto_menu() {
     'access arguments' => array('administer pathauto'),
   );
   $items['admin/config/search/path_alias_cleanup/list'] = array(
-    'title' => 'List improper aliases',
+    'title' => 'List Improper Aliases',
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'page callback' => 'cleanup_pathauto_list',
     'access callback' => 'user_access',
     'access arguments' => array('administer pathauto'),
   );
   $items['admin/config/search/path_alias_cleanup/repair'] = array(
-    'title' => 'Repair improper aliases',
+    'title' => 'Repair Improper Path Aliases',
     'type' => MENU_LOCAL_TASK,
     'page callback' => 'cleanup_pathauto_repair',
     'access callback' => 'user_access',
@@ -33,10 +33,20 @@ function cleanup_pathauto_menu() {
 /***
  * Report improper path aliases
  *
+ * @param $repair     // true = also make repairs
  */
-function cleanup_pathauto_list() {
-  // creates list of nodes with improper characters, source => string
+function cleanup_pathauto_list($repair = false) {
+  // the next two arrays contain info from the url_alias table;
+  // source is pid**node
+  // contains list of all aliases; source => alias
+  $aliases = array();
+
+  // contains list of nodes with improper characters, source => string
   $improper = array();
+
+  // count of repaired nodes
+  $repaired_nodes = 0;
+
 
   // allowed characters (regex)
   $cleanup_pathauto_allowed_chars = variable_get('cleanup_pathauto_allowed_chars', '');
@@ -46,24 +56,32 @@ function cleanup_pathauto_list() {
   $rows = array();
 
   // fetch list of aliases
-  $aliases = _cleanup_pathauto_get_improper_aliases();
-  $output = '<p>' . count($aliases) . ' nodes found</p>';
-  $output .= '<p class="final">' . count($improper) . ' improper strings found:</p>';
-  foreach ($improper as $node => $alias) {
-    // uncomment next line to show oroginal line
+  $alias_count = _cleanup_pathauto_get_improper_aliases($aliases, $improper);
+
+  foreach ($improper as $source => $alias) {
+    // extract pid and node from source
+    list($pid, $node) = preg_split('/\*\*/', $source);
+
+    // corrected strings are built as errors are detected
+    $corrected = "";
+
+    // uncomment next line to show original line
     //$output .= $alias . '<br />';
 
     // display aliases, highlighting improper characters
-    $in_bogus = false;   // true if in a bogus char span - this allows us to not have to put a span around individual chars
-    $line = "";          // line buffer
+    $in_bogus = false;      // true if in a bogus char span - this allows us to not have to put a span around individual chars
+    $needs_repair = false;  // true if alias needs repairing
+    $line = "";             // line buffer
     for ($i=0; $i < strlen($alias); $i++) {
       $char = $alias[$i];
       $bogus = preg_match($cleanup_pathauto_allowed_chars, $char);
       if ($bogus) {
         // an improper char
+        $corrected .= '-';
         if (!$in_bogus) {
           $line .= '<span class="bogus">';
           $in_bogus = true;
+          $needs_repair = true;
         }
         $iv = intval($char);
         if (ord($char) == 0) {
@@ -73,6 +91,7 @@ function cleanup_pathauto_list() {
       }
       else {
         // not an improper char
+        $corrected .= $char;
         if ($in_bogus) {
           $line .= '</span>';
           $in_bogus = false;
@@ -85,54 +104,81 @@ function cleanup_pathauto_list() {
     if ($in_bogus) {
       $line .= '</span>';
     }
+
+    if (($repair) && ($needs_repair)  && ($repaired_nodes < 1)) {
+      // repair the alias
+      $corrected = $corrected;
+      // see http://api.drupal.org/api/drupal/includes%21database%21database.inc/function/db_update/7
+      $status = db_update('url_alias')
+                  ->fields(array(
+                    'alias' => $corrected
+                ))
+                ->condition('pid', $pid, '=')
+                ->execute();
+
+      $repaired_nodes++;
+    }
+
     $rows[] = array(array('data' => $node, 'class' => 'source'), array('data' => $line, 'class' => 'alias'));
     $line = "";
   }
+
+
+  $output = '<p>' . $alias_count . ' nodes found</p>';
+  if ($repair) {
+    $output = '<p>' . format_plural($repaired_nodes, '1 node', '@count nodes') . ' repaired</p>';
+    drupal_set_title('Repair Improper Path Aliases');
+  }
+  $output .= '<p class="final">' . count($improper) . ' improper strings found</p>';
+
   $output .= theme('table', array('header' => $header, 'rows' => $rows ));
 
   $module_path = drupal_get_path('module', 'cleanup_pathauto');
   drupal_add_css($module_path . '/cleanup_pathauto.css');
   $output = '<div class="cleanup-pathauto">' . $output . '</div>';
+
   return $output;
 }
 
 
 /**
- * @returns: list of improper aliases
+ * @function: create lists of aliases and improper aliases found
  *
- * returns an array, source => alias
+ * @param $aliases    // reference to where to store list of all aliases
+ * @param $improper   // reference to where to store list of improper aliases
+ * @return count of aliases found
  */
-function _cleanup_pathauto_get_improper_aliases() {
-  $aliases = array();
-
+function _cleanup_pathauto_get_improper_aliases(&$aliases, &$improper) {
   // types of nodes to check
   $cleanup_pathauto_check_nodes = variable_get('cleanup_pathauto_check_nodes', '');
 
   // allowed characters (regex)
   $cleanup_pathauto_allowed_chars = variable_get('cleanup_pathauto_allowed_chars', '');
-  return;
 
 
   $sql = <<<EOT
-SELECT source, alias FROM {url_alias} ua
+SELECT pid, source, alias FROM {url_alias} ua
 ORDER BY ua.source
 EOT;
 
   $result = db_query($sql);
   foreach ($result as $record) {
     $status = preg_match("/([^\/]+)\/(.+)/", $record->alias, $res);
-    $path = $res[1];
-    $arg = $res[2];
+    if ($status) {
+      $path = $res[1];
+      $arg = $res[2];
 
-    if (in_array($path, $cleanup_pathauto_check_nodes)) {
-      $aliases[$record->source] = $record->alias;
-      if (preg_match($cleanup_pathauto_allowed_chars, $arg)) {
-        $improper[$record->source] = $arg;
+      if (in_array($path, $cleanup_pathauto_check_nodes)) {
+        $index = $record->pid . '**' . $record->source;
+        $aliases[$index] = $record->alias;
+        if (preg_match($cleanup_pathauto_allowed_chars, $arg)) {
+          $improper[$index] = $arg;
+        }
       }
     }
   }
 
-  return $aliases;
+  return count($aliases);
 }
 
 
@@ -152,9 +198,7 @@ function cleanup_pathauto_entity_presave($entity, $type) {
  * repair improper aliases
  */
 function cleanup_pathauto_repair() {
-  $output = "repair complete";
-
-  return $output;
+  return cleanup_pathauto_list(true);
 }
 
 
