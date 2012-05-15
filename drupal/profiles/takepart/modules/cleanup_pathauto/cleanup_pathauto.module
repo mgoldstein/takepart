@@ -1,6 +1,6 @@
 <?php
 
-/**
+  /**
  * Implements hook_menu().
  */
 function cleanup_pathauto_menu() {
@@ -10,11 +10,20 @@ function cleanup_pathauto_menu() {
     'page callback' => 'cleanup_pathauto_list',
     'access callback' => 'user_access',
     'access arguments' => array('administer pathauto'),
-    'type' => MENU_NORMAL_ITEM,
   );
   $items['admin/config/search/path_alias_cleanup/list'] = array(
     'title' => 'List improper aliases',
     'type' => MENU_DEFAULT_LOCAL_TASK,
+    'page callback' => 'cleanup_pathauto_list',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer pathauto'),
+  );
+  $items['admin/config/search/path_alias_cleanup/repair'] = array(
+    'title' => 'Repair improper aliases',
+    'type' => MENU_LOCAL_TASK,
+    'page callback' => 'cleanup_pathauto_repair',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer pathauto'),
   );
 
   return $items;
@@ -26,40 +35,18 @@ function cleanup_pathauto_menu() {
  *
  */
 function cleanup_pathauto_list() {
-  // types of nodes to check
-  $check_these = array('article');
-  // allowed characters (regex)
-  $allowed = '/[^a-zA-Z0-9#\-$\/]/';
-
   // creates list of nodes with improper characters, source => string
   $improper = array();
+
+  // allowed characters (regex)
+  $cleanup_pathauto_allowed_chars = variable_get('cleanup_pathauto_allowed_chars', '');
 
   // prepare for table-style output
   $header = array('Source', 'Alias');
   $rows = array();
 
-  $aliases = array();
-  $types = array();
-
-  $sql = <<<EOT
-SELECT source, alias FROM {url_alias} ua
-ORDER BY ua.source
-EOT;
-
-  $result = db_query($sql);
-  foreach ($result as $record) {
-    $status = preg_match("/([^\/]+)\/(.+)/", $record->alias, $res);
-    $path = $res[1];
-    $arg = $res[2];
-    $types[$path]++;
-    if (in_array($path, $check_these)) {
-      $aliases[$record->source] = $record->alias;
-      if (preg_match($allowed, $arg)) {
-        $improper[$record->source] = $arg;
-      }
-    }
-  }
-
+  // fetch list of aliases
+  $aliases = _cleanup_pathauto_get_improper_aliases();
   $output = '<p>' . count($aliases) . ' nodes found</p>';
   $output .= '<p class="final">' . count($improper) . ' improper strings found:</p>';
   foreach ($improper as $node => $alias) {
@@ -71,7 +58,7 @@ EOT;
     $line = "";          // line buffer
     for ($i=0; $i < strlen($alias); $i++) {
       $char = $alias[$i];
-      $bogus = preg_match($allowed,$char);
+      $bogus = preg_match($cleanup_pathauto_allowed_chars, $char);
       if ($bogus) {
         // an improper char
         if (!$in_bogus) {
@@ -111,6 +98,45 @@ EOT;
 
 
 /**
+ * @returns: list of improper aliases
+ *
+ * returns an array, source => alias
+ */
+function _cleanup_pathauto_get_improper_aliases() {
+  $aliases = array();
+
+  // types of nodes to check
+  $cleanup_pathauto_check_nodes = variable_get('cleanup_pathauto_check_nodes', '');
+
+  // allowed characters (regex)
+  $cleanup_pathauto_allowed_chars = variable_get('cleanup_pathauto_allowed_chars', '');
+  return;
+
+
+  $sql = <<<EOT
+SELECT source, alias FROM {url_alias} ua
+ORDER BY ua.source
+EOT;
+
+  $result = db_query($sql);
+  foreach ($result as $record) {
+    $status = preg_match("/([^\/]+)\/(.+)/", $record->alias, $res);
+    $path = $res[1];
+    $arg = $res[2];
+
+    if (in_array($path, $cleanup_pathauto_check_nodes)) {
+      $aliases[$record->source] = $record->alias;
+      if (preg_match($cleanup_pathauto_allowed_chars, $arg)) {
+        $improper[$record->source] = $arg;
+      }
+    }
+  }
+
+  return $aliases;
+}
+
+
+/**
  * Implements hook_entity_presave($entity, $type)().
  *
  * This checks the path for non-standard characters and replaces them with hyphens
@@ -119,6 +145,16 @@ function cleanup_pathauto_entity_presave($entity, $type) {
   if ($type == 'node') {
     $entity->path['alias'] = preg_replace("/\{\}/", "-", $entity->path['alias']);
   }
+}
+
+
+/***
+ * repair improper aliases
+ */
+function cleanup_pathauto_repair() {
+  $output = "repair complete";
+
+  return $output;
 }
 
 
