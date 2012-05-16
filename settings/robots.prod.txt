@@ -39,6 +39,8 @@ Disallow: /recent
 Disallow: /tag/
 Disallow: /articles/
 Disallow: /url/
+Disallow: /categories/
+Disallow: /blog/bloggers/
 # Files
 Disallow: /CHANGELOG.txt
 Disallow: /cron.php
