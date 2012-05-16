@@ -16,7 +16,7 @@ function cleanup_pathauto_install() {
   // set default values for alias checking
 
   // types of nodes to check
-  variable_set('cleanup_pathauto_check_nodes', array('article'));
+  variable_set('cleanup_pathauto_check_nodes', article);
 
   // allowed characters (regex)
   variable_set('cleanup_pathauto_allowed_chars', '/[^a-zA-Z0-9#\-$\/]/');

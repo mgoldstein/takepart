@@ -2,5 +2,7 @@ name = TakePart Pathauto Cleanup
 description = Report and clean up improper names in aliased paths
 package = TakePart
 core = 7.x
+dependencies[] = pathauto
 files[] = cleanup_pathauto.module
 files[] = cleanup_pathauto.install
+files[] = cleanup_pathauto.admin.inc
