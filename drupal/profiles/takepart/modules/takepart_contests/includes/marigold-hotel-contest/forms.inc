@@ -400,7 +400,11 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
         setcookie('contest_entered_as', $email);
 
         // redirect to the thank you page
-        drupal_goto('marigold/thankyou');
+        $thank_you_page = variable_get(
+          'takepart_contests:ideasforgood:thank_you_page',
+          'thebestexoticmarigoldhotel/thankyou'
+        );
+        drupal_goto($thank_you_page);
       }
       else {
         drupal_set_message( t('The contest entry could not be saved.'), 'error' );
