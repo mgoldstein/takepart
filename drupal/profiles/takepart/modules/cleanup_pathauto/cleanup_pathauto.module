@@ -114,7 +114,7 @@ function cleanup_pathauto_list($repair = false) {
       $line .= '</span>';
     }
 
-    if (($repair) && ($needs_repair)  && ($repaired_nodes < 1)) {
+    if (($repair) && ($needs_repair)) {
       // repair the alias
       $corrected = $corrected;
       // see http://api.drupal.org/api/drupal/includes%21database%21database.inc/function/db_update/7
@@ -163,29 +163,6 @@ function _cleanup_pathauto_get_improper_aliases(&$aliases, &$improper) {
 
   // allowed characters (regex)
   $cleanup_pathauto_allowed_chars = variable_get('cleanup_pathauto_allowed_chars', '');
-
-
-  $c2 = array('article', 'foo');
-  $nodes = variable_get('cleanup_pathauto_check_nodes', 'article');
-  $s = ''; $s2=ord('\n');
-  for ($i=0; $i < strlen($nodes); $i++) { $s .= ord($nodes[$i]) . ' ';}
-  //$c2 = preg_split("/\n/", $nodes);
-
-  //$cleanup_pathauto_check_nodes = $c2;
-  $path = 'article';
-
-  $a1 = in_array($path, $cleanup_pathauto_check_nodes);
-  $a2 = array_search($path, $cleanup_pathauto_check_nodes);
-
-  $a3 = in_array($path, $c2);
-  $a4 = array_search($path, $c2);
-
-  $a5 = in_array($path, array('article', 'foo'));
-  $a6 = array_search($path, array('article', 'foo'));
-
-  //return;
-
-
 
   $sql = <<<EOT
 SELECT pid, source, alias FROM {url_alias} ua
