@@ -440,6 +440,9 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign_id, $sig
           jQuery.post("/newsletter-campaign/submit-campaign", data,
              function(result) {
                jQuery("#takepart-newsletter-'.$campaign_id.'-results").text(result.message);
+               if (result.status == 1) {
+                 newsletter_campaign_track_signup(result.title);
+               }
               }, "json");
         }
         return false;
@@ -513,11 +516,6 @@ function _newsletter_campaign_registration_opt_in_submit($form, &$form_state) {
   $tp_signup_id = variable_get('newsletter_campaign_tp_signup_code', 5);
 
   if ($opt_in === 1) {
-    /* Pluris legacy code
-     * module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
-     * $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
-     */
-
     /*
      * BSD call to process signup form for TakePart newsletter
      * TODO: Pull signup form ID from variable set in CMS interface for campaigns
@@ -537,11 +535,6 @@ function _newsletter_campaign_profile_opt_in_submit($form, &$form_state) {
   $opt_in = $form_state['values']['field_registration_email_opt_in'][$lang][0]['value'];
 
   if ($opt_in === 1) {
-    /* Pluris legacy code
-     * module_load_include('inc', 'newsletter_campaign', 'signup.ajax');
-     * $result = _save_campaign_signup($email, $tp_campaign_id, $action = 's', $source = '', $send_welcome = 'y');
-     */
-
     /*
      * BSD call to process signup form for TakePart newsletter
      */
