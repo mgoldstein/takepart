@@ -2683,6 +2683,10 @@ body.node-type-takepart-campaign #highlighted {
     padding: 25px 0;
 }
 
+body.multipage-campaign #highlighted {
+    padding: 0;
+}
+
 #highlighted .region-highlighted {
     padding: 10px;
 }
