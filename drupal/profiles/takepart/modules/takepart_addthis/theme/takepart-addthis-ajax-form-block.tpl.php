@@ -33,6 +33,11 @@
       twitter: twitter_template
     }
   };
+  if (Drupal.settings.sharing) {
+    if ('share_url' in Drupal.settings.sharing) {
+      addthis_share['url'] = Drupal.settings.sharing['share_url'];
+    }
+  }
   jQuery(document).ready(function() {
     if (email_from.length > 0) {
       jQuery("input#edit-email").val(email_from).removeClass('takepart-newsletter-empty');

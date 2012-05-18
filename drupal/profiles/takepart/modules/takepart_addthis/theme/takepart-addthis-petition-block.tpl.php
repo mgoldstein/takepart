@@ -32,4 +32,9 @@
       twitter: twitter_template
     }
   };
+  if (Drupal.settings.sharing) {
+    if ('share_url' in Drupal.settings.sharing) {
+      addthis_share['url'] = Drupal.settings.sharing['share_url'];
+    }
+  }
 </script>
