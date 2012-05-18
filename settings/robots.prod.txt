@@ -17,8 +17,6 @@
 # http://www.sxw.org.uk/computing/robots/check.html
 
 User-agent: *
-
-# Directories
 Disallow: /includes/
 Disallow: /misc/
 Disallow: /modules/
@@ -41,7 +39,6 @@ Disallow: /articles/
 Disallow: /url/
 Disallow: /categories/
 Disallow: /blog/bloggers/
-# Files
 Disallow: /CHANGELOG.txt
 Disallow: /cron.php
 Disallow: /INSTALL.mysql.txt
@@ -54,7 +51,6 @@ Disallow: /update.php
 Disallow: /UPGRADE.txt
 Disallow: /xmlrpc.php
 Disallow: /Index.do
-# Paths (clean URLs)
 Disallow: /admin/
 Disallow: /comment/reply/
 Disallow: /filter/tips/
@@ -64,7 +60,6 @@ Disallow: /user/register/
 Disallow: /user/password/
 Disallow: /user/login/
 Disallow: /user/logout/
-# Paths (no clean URLs)
 Disallow: /?q=admin/
 Disallow: /?q=comment/reply/
 Disallow: /?q=filter/tips/
