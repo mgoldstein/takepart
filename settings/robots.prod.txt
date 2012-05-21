@@ -3,7 +3,6 @@
 
 User-agent: Googlebot
 Sitemap: http://www.takepart.com/googlenews.xml
-Disallow: /*?
 
 User-agent: *
 Sitemap: http://www.takepart.com/sitemap.xml
@@ -12,13 +11,16 @@ Disallow: /2009/
 Disallow: /2010/
 Disallow: /admin/
 Disallow: /article/2007/
+Disallow: /article/2010/
 Disallow: /articles/
 Disallow: /arts-entertainment/
-Disallow: /blog/bloggers/
+Disallow: /arts-entertainment?
 Disallow: /blog/2007/
 Disallow: /blog/2008/
 Disallow: /blog/2009/
 Disallow: /blog/2010/
+Disallow: /blog/bloggers/
+Disallow: /blog/tag/
 Disallow: /categories/
 Disallow: /comment/reply/
 Disallow: /files/
@@ -26,6 +28,7 @@ Disallow: /filter/tips/
 Disallow: /flash/
 Disallow: /includes/
 Disallow: /innovation/
+Disallow: /innovation?
 Disallow: /lists/
 Disallow: /misc/
 Disallow: /modules/
@@ -35,6 +38,7 @@ Disallow: /profiles/
 Disallow: /recent/
 Disallow: /scripts/
 Disallow: /search/
+Disallow: /sites/
 Disallow: /tag/
 Disallow: /themes/
 Disallow: /url/
