@@ -24,7 +24,7 @@ function ideasforgood_schema() {
       'token' => array(
         'description' => 'The voting token for the finalist',
         'type' => 'varchar',
-        'length' => 32,
+        'length' => 255,
         'not null' => TRUE,
         'default' => '',
       ),
@@ -66,7 +66,14 @@ function ideasforgood_schema() {
       'name' => array(
         'description' => 'The name of the group',
         'type' => 'varchar',
-        'length' => 32,
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'contest' => array(
+        'description' => 'The name of the contest the finalists are from',
+        'type' => 'varchar',
+        'length' => 255,
         'not null' => TRUE,
         'default' => '',
       ),
@@ -111,6 +118,37 @@ function ideasforgood_schema() {
   );
 
   return $schema;
+}
+
+/**
+ * Increase the size of the group name and add a field for the contest
+ * associated with a group
+ */
+function ideasforgood_update_7100(&$sandbox) {
+
+  db_change_field('ideasforgood_finalist', 'voting_group', 'voting_group', array(
+    'description' => 'The voting group to which the finalist belongs',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
+
+  db_change_field('ideasforgood_voting_group', 'name', 'name', array(
+    'description' => 'The name of the group',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
+
+  db_add_field('ideasforgood_voting_group', 'contest', array(
+    'description' => 'The name of the contest for which votes are submitted',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
 }
 
 /**

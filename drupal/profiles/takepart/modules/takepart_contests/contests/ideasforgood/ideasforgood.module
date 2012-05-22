@@ -278,6 +278,7 @@ function ideasforgood_vote_form_callback(&$form, $form_state) {
 
   $group = ideasforgood_finalist_group($finalist);
   if ($group !== FALSE) {
+    $contest_name = $group->contest;
     $items = field_get_items('ideasforgood_voting_group', $group,
       'ideasforgood_group_destination');
     $destination = $items[0]['safe_value'];
@@ -289,6 +290,7 @@ function ideasforgood_vote_form_callback(&$form, $form_state) {
     $twitter_template = $items[0]['safe_value'];
   }
   else {
+    $contest_name = '';
     $destination = '';
     $email_note = '';
     $twitter_template = '';
@@ -305,6 +307,7 @@ function ideasforgood_vote_form_callback(&$form, $form_state) {
 
   $settings = array(
     'ideasforgood' => array(
+      'contest_name' => $contest_name,
       'destination' => $destination,
       'vote_accepted' => $finalist->vote_accepted,
       'finalist_id' => $finalist->id,
@@ -401,7 +404,7 @@ class IdeasForGoodFinalist extends Entity {
   }
 
   protected function defaultLabel() {
-    return "{$this->token} [{$this->voting_group}]";
+    return "[{$this->voting_group}] {$this->token}";
   }
 
   protected function defaultUri() {
@@ -616,6 +619,7 @@ class IdeasForGoodVotingGroupController extends EntityAPIController {
       'language' => '',
       'is_new' => TRUE,
       'name' => '',
+      'contest' => '',
       'voting_form_id' => 0,
       'email_field_id' => 0,
       'vote_field_id' => 0,

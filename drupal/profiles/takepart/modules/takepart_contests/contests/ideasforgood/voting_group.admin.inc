@@ -76,6 +76,8 @@ function ideasforgood_voting_group_form($form, &$form_state, $group, $op = 'edit
 
   $name = isset($form_state['values']['name'])
     ? $form_state['values']['name'] : $group->name;
+  $contest = isset($form_state['values']['contest'])
+    ? $form_state['values']['name'] : $group->contest;
   $voting_form_id = isset($form_state['values']['voting_form_id'])
     ? $form_state['values']['voting_form_id'] : $group->voting_form_id;
   $email_field_id = isset($form_state['values']['email_field_id'])
@@ -92,8 +94,18 @@ function ideasforgood_voting_group_form($form, &$form_state, $group, $op = 'edit
     '#description' => t('The name of the voting group'),
     '#default_value' => $name,
     '#required' => TRUE,
-    '#maxlength' => 32,
-    '#size' => 24,
+    '#maxlength' => 255,
+    '#size' => 64,
+  );
+
+  $form['contest'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Contest'),
+    '#description' => t('The name of the contest for which votes are being submitted'),
+    '#default_value' => $contest,
+    '#required' => TRUE,
+    '#maxlength' => 255,
+    '#size' => 64,
   );
 
   $form['signupform'] = array(
