@@ -58,9 +58,9 @@ div.ideasforgood-finalist-label-bg {
   overflow: hidden;
   z-index: 2;
   background-color: #f58d34;
-  -ms-filter: "progid:DXImageTranform.Microsoft.Alpha(Opacity-50)";
-  filter: alpha(opacity=50);
-  opacity: 0.5;
+  -ms-filter: "progid:DXImageTranform.Microsoft.Alpha(Opacity-90)";
+  filter: alpha(opacity=90);
+  opacity: 0.9;
 }
 
 div.ideasforgood-finalist-label-text {
@@ -158,4 +158,8 @@ div.ajax-progress-throbber div.throbber {
 
 input.progress-disabled {
   float: none;
+}
+
+.ideasforgood-button-link {
+  outline: 0;
 }

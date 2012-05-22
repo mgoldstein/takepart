@@ -182,6 +182,9 @@ function ideasforgood_vote_form($form, &$form_state, $finalist) {
     '#src' => $submit_src,
     '#attributes' => array(
       'alt' => t('Confirm'),
+      'class' => array(
+        'ideasforgood-button-link',
+      ),
     ),
     '#submit' => array('ideasforgood_vote_form_submit'),
     '#ajax' => array(
