@@ -122,6 +122,7 @@ div.ui-dialog div.ui-dialog-content {
 div.ideasforgood-centered-content {
   text-align: center;
   padding-top: 1em;
+  position: relative;
 }
 
 div.ideasforgood-centered-content img {
@@ -146,11 +147,13 @@ div.form-item-opt-in label {
 }
 
 div.ajax-progress-throbber {
-  display: none;
+  display: inline;
+  margin: 0 4px;
+  position: absolute;
 }
 
 div.ajax-progress-throbber div.throbber {
-  display: none;
+  display: inline;
 }
 
 input.progress-disabled {
