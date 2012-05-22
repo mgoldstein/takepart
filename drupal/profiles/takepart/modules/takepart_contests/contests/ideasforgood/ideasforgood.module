@@ -162,13 +162,22 @@ function ideasforgood_vote_form($form, &$form_state, $finalist) {
     '#default_value' => $finalist->token,
   );
 
+  $form['centered_content'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array(
+        'ideasforgood-centered-content'
+      ),
+    ),
+  );
+
   // use a pretty button for submitting the vote
   $submit_src = implode('/', array(
     drupal_get_path('module', 'ideasforgood'),
     'images',
     'confirm_button.png',
   ));
-  $form['submit'] = array(
+  $form['centered_content']['submit'] = array(
     '#type' => 'image_button',
     '#src' => $submit_src,
     '#attributes' => array(
@@ -196,12 +205,12 @@ function ideasforgood_vote_form($form, &$form_state, $finalist) {
   $markup .= ' class="ideasforgood-cancel-button"';
   $markup .= '>';
   $markup .= '</div>';
-  $form['cancel'] = array(
+  $form['centered_content']['cancel'] = array(
     '#type' => 'markup',
     '#markup' => $markup,
   );
 
-  $form['opt_in'] = array(
+  $form['centered_content']['opt_in'] = array(
     '#type' => 'checkbox',
     '#title' => t('Keep this box checked if you would like us to email you about who won.'),
     '#default_value' => TRUE,
@@ -267,6 +276,9 @@ function ideasforgood_vote_form_callback(&$form, $form_state) {
   $group = ideasforgood_finalist_group($finalist);
   if ($group !== FALSE) {
     $items = field_get_items('ideasforgood_voting_group', $group,
+      'ideasforgood_group_destination');
+    $destination = $items[0]['safe_value'];
+    $items = field_get_items('ideasforgood_voting_group', $group,
       'ideasforgood_group_email');
     $email_note = $items[0]['safe_value'];
     $items = field_get_items('ideasforgood_voting_group', $group,
@@ -274,6 +286,7 @@ function ideasforgood_vote_form_callback(&$form, $form_state) {
     $twitter_template = $items[0]['safe_value'];
   }
   else {
+    $destination = '';
     $email_note = '';
     $twitter_template = '';
   }
@@ -289,6 +302,7 @@ function ideasforgood_vote_form_callback(&$form, $form_state) {
 
   $settings = array(
     'ideasforgood' => array(
+      'destination' => $destination,
       'vote_accepted' => $finalist->vote_accepted,
       'finalist_id' => $finalist->id,
       'email_from' => empty($user->mail) ? '' : $user->mail,
