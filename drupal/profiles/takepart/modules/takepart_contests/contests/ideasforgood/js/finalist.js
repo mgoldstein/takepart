@@ -17,6 +17,8 @@
         addthis.update('config', 'ui_email_from', email_from);
         var email_note = Drupal.settings.ideasforgood['email_note'];
         addthis.update('config', 'ui_email_note', email_note);
+
+        addthis.addEventListener('addthis.menu.share', addthisMenuShareEventHandler);
       });
       if (Drupal.settings.ideasforgood) {
         if ('vote_accepted' in Drupal.settings.ideasforgood) {
@@ -24,6 +26,20 @@
           var item_dialog = '#ideasforgood-finalist-' + finalist_id + '-dialog';
           if (Drupal.settings.ideasforgood['vote_accepted']) {
             $(item_dialog).dialog("option", "title", "Thank You for Voting!");
+
+            // Action (event 19)
+            s.events='event19';
+            s.eVar28='Contest Vote';
+            s.linkTrackVars='eVar28,events';
+            s.linkTrackEvents='event19';
+            s.tl(true, 'o', 'action');
+
+            // Contest Vote (event 30)
+            s.events='event30';
+            s.eVar24=Drupal.settings.ideasforgood['contest_name'];
+            s.linkTrackVars='eVar24,events';
+            s.linkTrackEvents='event30';
+            s.tl(true, 'o', 'contest vote');
           }
           else {
             $(item_dialog).dialog("option", "title", "Oops!");
@@ -88,10 +104,22 @@
       var dlg = $(item_dialog).dialog({
         autoOpen: false,
         resizable: false,
-        modal: true,
+        modal: false,
         title: $(this).attr('title'),
         width: 520,
-        overlay: 'background-color: black; opacity: 0.8'
+        open: function() {
+          $('body').append(
+            '<div' +
+            ' class="ui-widget-overlay"' +
+            ' style="' +
+            '  width:' + $(document).width() + 'px;' +
+            '  height:' + $(document).height() + 'px;' +
+            '  z-index:500;"' +
+            '></div>');
+        },
+        close: function() {
+          $('body .ui-widget-overlay').remove();
+        }
       });
 
       // clicking a finalist should bring up the vote dialog
@@ -113,3 +141,25 @@
     });
   });
 })(jQuery);
+
+function addthisMenuShareEventHandler(evt) {
+
+  // Action (event 19)
+  s.events = 'event19';
+  s.eVar28 = 'Share';
+  s.linkTrackVars = 'eVar28,events';
+  s.linkTrackEvents = 'event19';
+  s.tl(true, 'o', 'action');
+
+  // Share (event 25)
+  var share_type = evt.data.service;
+  if (evt.data.service == 'email') { share_type = 'Email'; }
+  else if (evt.data.service == 'twitter') { share_type = 'Twitter'; }
+  else if (evt.data.service == 'facebook') { share_type = 'Facebook'; }
+  s.events = 'event25';
+  s.eVar26 = document.title;
+  s.eVar27 = share_type;
+  s.linkTrackVars = 'eVar26,eVar27,events';
+  s.linkTrackEvents = 'event25';
+  s.tl(true, 'o', 'share');
+}
