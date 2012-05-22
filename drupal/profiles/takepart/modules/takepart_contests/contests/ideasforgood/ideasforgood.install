@@ -128,6 +128,7 @@ function ideasforgood_enable() {
   ideasforgood_add_group_register_message();
   ideasforgood_add_group_thank_you_message();
   ideasforgood_add_group_already_voted_message();
+  ideasforgood_add_group_destination();
   ideasforgood_add_group_twitter_message();
   ideasforgood_add_group_email_message();
 }
@@ -147,6 +148,7 @@ function ideasforgood_uninstall() {
   field_delete_field('ideasforgood_group_register');
   field_delete_field('ideasforgood_group_thank_you');
   field_delete_field('ideasforgood_group_already_voted');
+  field_delete_field('ideasforgood_group_destination');
   field_delete_field('ideasforgood_group_twitter');
   field_delete_field('ideasforgood_group_email');
 }
@@ -419,6 +421,39 @@ function ideasforgood_add_group_already_voted_message() {
         'type' => 'text_textarea',
         'settings' => array(
           'rows' => 5,
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'text_default',
+          'settings' => array(),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}
+
+function ideasforgood_add_group_destination() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_group_destination',
+      'type' => 'text',
+      'entity_types' => array('ideasforgood_voting_group'),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_group_destination',
+      'entity_type' => 'ideasforgood_voting_group',
+      'bundle' => 'ideasforgood_voting_group',
+      'label' => t('Voted Destination URL'),
+      'settings' => array(
+        'text_processing' => 0,
+      ),
+      'widget' => array(
+        'type' => 'text_textfield',
+        'settings' => array(
+          'size' => 64,
         ),
       ),
       'display' => array(

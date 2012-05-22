@@ -28,6 +28,12 @@
           else {
             $(item_dialog).dialog("option", "title", "Oops!");
           }
+          $(item_dialog).bind("dialogclose", function(event, ui) {
+            var destination = Drupal.settings.ideasforgood['destination'];
+            if (destination.length > 0) {
+              window.location = destination;
+            }
+          });
         }
       }
     }
@@ -36,14 +42,23 @@
   $(document).ready(function() {
     $('.ideasforgood-finalist-item').each(function() {
 
+      var tooltip_width = 376;
+      var target_corner = 'bottomLeft';
+      var tooltip_corner = 'topLeft';
+
+      if (($(document).width() - $(this).offset().left) < tooltip_width) {
+        target_corner = 'bottomRight';
+        tooltip_corner = 'topRight';
+      }
+
       // create the idea tooltip
       var item_idea = '#' + $(this).attr('id') + '-idea';
       var tip = $(this).qtip({
         content: $(item_idea),
         position: {
           corner: {
-            target: 'bottomLeft',
-            tooltip: 'topLeft'
+            target: target_corner,
+            tooltip: tooltip_corner
           }
         },
         hide: {
@@ -51,17 +66,20 @@
           delay: 200
         },
         style: {
-          width: 480,
+          width: tooltip_width,
           padding: 10,
           background: '#ffffff',
           color: '#000000',
           textAlign: 'left',
           border: {
-            width: 1,
+            width: 2,
             radius: 0,
-            color: '#ff9900'
+            color: '#f58d34'
           },
-          name: 'light'
+          name: 'light',
+          classes: {
+            tooltip: 'ideasforgood-shadow'
+          }
         }
       });
 
@@ -72,7 +90,8 @@
         resizable: false,
         modal: true,
         title: $(this).attr('title'),
-        width: 580,
+        width: 520,
+        overlay: 'background-color: black; opacity: 0.8'
       });
 
       // clicking a finalist should bring up the vote dialog
