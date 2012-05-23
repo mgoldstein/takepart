@@ -31,7 +31,7 @@ function ideasforgood_schema() {
       'voting_group' => array(
         'description' => 'The voting group to which the finalist belongs',
         'type' => 'varchar',
-        'length' => 32,
+        'length' => 255,
         'not null' => TRUE,
         'default' => '',
       ),
@@ -144,6 +144,20 @@ function ideasforgood_update_7100(&$sandbox) {
 
   db_add_field('ideasforgood_voting_group', 'contest', array(
     'description' => 'The name of the contest for which votes are submitted',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
+}
+
+/**
+ * Increase the size of the finalist token
+ */
+function ideasforgood_update_7101(&$sandbox) {
+
+  db_change_field('ideasforgood_finalist', 'token', 'token', array(
+    'description' => 'The voting token for the finalist',
     'type' => 'varchar',
     'length' => 255,
     'not null' => TRUE,
