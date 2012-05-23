@@ -1,0 +1,174 @@
+<?php
+
+include("includes/fieldmappings.inc");
+
+if (!function_exists('fboauth_action_invoke')) {
+  include(drupal_get_path('module', 'fboauth').'/includes/fboauth.fboauth.inc');
+}
+
+/**
+ * Implement hook_menu().
+ */
+function fbregistration_menu() {
+  $items = array();
+  $items['admin/config/people/fbregistration'] = array(
+      'title' => 'Facebook Registration',
+      'description' => 'Configure required settings for Facebook registration',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('fbregistration_form'),
+      'access arguments' => array('administer site configuration'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'includes/fbregistration.admin.inc',
+  );
+  // Test page
+  $items['admin/config/people/fbregistration/test'] = array(
+      'title' => 'BSD Test Page',
+      'page callback' => '_fbregistration_test_page',
+      'access arguments' => array('administer users'),
+      'type' => MENU_CALLBACK,
+  );
+  $items['fbregistration'] = array(
+      'title' => 'Facebook Registration',
+      'page callback' => '_tfbregistration_auth',
+      'page arguments' => array(1),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function _tfbregistration_auth() {
+    
+  $app_id = variable_get('fboauth_id', '');
+  $app_secret = variable_get('fboauth_secret', '');
+  
+  if (($_REQUEST) && isset($_REQUEST['signed_request'])) {
+    
+    $response = _takepart_facebookapis_parse_signed_request($_REQUEST['signed_request'],$app_secret);
+    
+    $destination = fboauth_action_invoke('connect', $app_id, $response['oauth_token']);
+    if (empty($destination)) {
+      $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
+    }
+   
+    $drupalid = fboauth_uid_load($response['user_id']);    
+    $account = user_load(array('uid' => $drupalid));
+    
+    foreach ($account as $key => $val) {
+      if(isset($response['registration'][$key])) {
+        if(is_array($val)) {
+          _fbregistration_set_userval($account->{$key}, $response['registration'][$key]);
+        } else {
+          $account->{$key} = $response['registration'][$key];
+        }
+       }
+     }
+    user_save($account);
+    
+    drupal_goto($destination);
+    
+  } else {
+    //echo '$_REQUEST is empty';
+  }
+  
+}
+
+
+function _fbregistration_set_userval(&$item, $value) {  
+  foreach ($item as $key => $val) {
+    if(is_array($item[$key])) {
+      _fbregistration_set_userval($item[$key], $value);
+    } elseif($key == 'value' || $key == 'safe_value') {
+      $item[$key] = $value;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function fbregistration_form_alter(&$form, $form_state, $form_id) {
+  
+  if((!_fbregistration_checkpath()) || 
+    (variable_get('fbregistration_state', '1') != '1') || 
+    ($form_id != "user_register_form")) {
+    return;
+  }
+ 
+  $fieldmappings = array();
+  $jsondata = array();
+
+  _fbregistration_admin_form_load($form, $fieldmappings);
+  
+  foreach ($fieldmappings as $name => $field) {
+    
+    if(isset($field['#foreign']['#title'])) {
+      $title = $field['#foreign']['#title'];
+    } else {
+      $title = substr($field['#title'], 0, strrpos($field['#title'], ":"));
+      $title = rtrim($title);
+    }
+    
+    if ((strrpos($field['#default_value'], 'custom') !== 0) && ($field['#default_value'] != 'not_mapped')) {
+      array_push($jsondata, (object)array('name' => $field['#default_value']));
+    }
+    
+    if ((strrpos($field['#default_value'], 'custom') === 0) && ($field['#default_value'] != 'not_mapped')) {
+      
+      if($field['#default_value'] == 'custom_text') {
+        array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'text'));
+      }
+      
+      if($field['#default_value'] == 'custom_select') {
+        array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'select', 'options' => $field['#foreign']['#options']));
+      }
+      
+      if($field['#default_value'] == 'custom_checkbox') {
+        array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'checkbox', 'options' => $field['#foreign']['#options'], 'default' => ((isset($field['#foreign']['#default_value']) && $field['#foreign']['#default_value'] = 1) ? 'checked' : 'unchecked')));
+      }
+
+      if($field['#default_value'] == 'custom_typeahead') {
+        array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'typeahead', 'categories' => array_keys($field['#foreign']['#options'])));
+      }
+      
+      if($field['#default_value'] == 'custom_date') {
+        array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'date'));
+      }
+      
+      if($field['#default_value'] == 'custom_hidden') {
+        array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'hidden'));
+      }  
+      
+    }
+       
+  }
+  
+  $json = json_encode($jsondata);
+  
+  $json = str_replace('"',"'",$json);
+  
+  
+  //wipe out existing form:
+  $form = array();
+
+  if(($form_id == 'user_register_form') || ($form_id == 'fbconnect_register_page')) {
+    
+    $form['test'] = array(
+         '#type' => 'item',
+         '#title' => t(' '),
+         '#markup' => '<fb:registration fb_register="true" fb_only="false" fields="'.$json.'" redirect-uri="http://' . $_SERVER['HTTP_HOST'] . '/fbregistration" width="530"></fb:registration>',
+     );
+   
+   }
+}
+
+function _fbregistration_checkpath() {
+  $uri = drupal_get_path_alias($_GET['q']);
+  $uri = substr($uri, 0, 24);
+  $admgruri = substr($uri, 0, 19);
+  if ($uri == variable_get('fbregistration_path', 'user/register')) {
+    return true;
+  } else {
+    return false;
+  }
+}

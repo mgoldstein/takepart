@@ -1,0 +1,237 @@
+<?php
+
+include("includes/facebook_graphi.inc");
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
+
+  if(variable_get('fblogin_state', '1') != '1') {
+    return;
+  }
+  
+  if(($form_id == 'user_login') && (variable_get('fblogin_backdoor_url', 'backdoor') != current_path()) && (variable_get('fblogin_state', 'No') != 'No')) {
+    
+    $form = array();
+    
+    $block_rendered = drupal_render($build);
+    $block_rendered = fboauth_action_display('connect');
+    $link = fboauth_action_link_properties('connect');
+    
+    if (!user_is_logged_in()) {
+      //$output .= "<span class='s'>
+      //<fb:login-button>Connect</fb:login-button>
+      //</span>";
+    }
+        
+    
+    if(isset($_GET['destination']) && (variable_get('fbregistration_path', 'user/register') != $_GET['destination'])) {
+      $regpath = (variable_get('fbregistration_path', 'user/register') . "?destination=" . $_GET['destination']);
+    } else {
+      $regpath = (variable_get('fbregistration_path', 'user/register'));
+    }
+    
+    $fblogintag = '<fb:login-button onlogin="takepart_facebookapi_check_login_session()" data-scope="email,user_checkins,user_birthday" redirect_uri="http://' . $_SERVER['HTTP_HOST'] . '/fboauth/connect?destination=' . ($_GET['destination']) . '" registration-url="http://' . $_SERVER['HTTP_HOST'] . '/' . $regpath . '">Log in</fb:login-button>';
+    
+    $form['fblogin'] = array(
+        '#type' => 'item',
+        '#title' => t(' '),
+        '#markup' => $fblogintag
+      );
+    
+    drupal_add_js('function takepart_facebookapi_check_login_session() {
+           //alert(\'test\');
+           window.location = \'http://' . $_SERVER['HTTP_HOST'] . '/tpfboauth/connect?destination=' . urlencode($_GET['destination']) . '\';
+        }',
+        array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
+    );
+    
+    
+    $form['#validate'][] = '_takepart_facebookapis_login_form_validate';
+    
+  }
+  
+}
+
+
+function _takepart_facebookapis_auth($action) {
+  $action_name = $action['name'];
+  
+  $app_id = variable_get('fboauth_id', '');
+  $app_secret = variable_get('fboauth_secret', '');
+  $cookie = _takepart_facebookapis_get_facebook_cookie($app_id, $app_secret);
+  if (isset($cookie['access_token'])) {
+          
+    if(fboauth_uid_load($cookie['user_id']) != null) {
+      
+      $destination = fboauth_action_invoke($action_name, $app_id, $cookie['access_token']);
+      if (empty($destination)) {
+        $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
+      }
+      drupal_goto($destination);
+    } else { 
+      
+      
+      if(isset($_GET['destination']) && (variable_get('fbregistration_path', 'user/register') != $_GET['destination'])) {
+        $redir = (variable_get('fbregistration_path', 'user/register') . "?destination=" . $_GET['destination']);
+      } else {
+        $redir = (variable_get('fbregistration_path', 'user/register'));
+      }
+      
+      header("Location: /$redir");
+      exit();
+      
+      
+    }
+  }
+}
+
+/**
+* Implements hook_rdf_namespaces().
+*/
+function takepart_facebookapis_rdf_namespaces() {
+  return array(
+    'fb' => 'http://www.facebook.com/2008/fbml',
+  );
+}
+
+
+/**
+ *  Checks for extra permissions:
+ */
+function _takepart_facebookapis_login_form_validate($form, &$form_state) {
+  if(isset($form['name']['#value'])) {
+    $role = db_query("SELECT r.name AS role FROM {users_roles} AS ur
+        LEFT JOIN {role} AS r ON r.rid = ur.rid
+        LEFT JOIN {users} AS us ON us.uid = ur.uid
+        WHERE us.name=:n
+        LIMIT 1",array(':n'=>$form['name']['#value']))->fetchField();
+    if (empty($role)) {
+      form_set_error('Login', t('Please enter a valid login.'));
+    }
+  } else {
+    form_set_error('Login', t('Could not retrieve user.'));
+  }
+}
+
+
+/**
+ * Implement hook_menu().
+ */
+function takepart_facebookapis_menu() {
+  $items = array();
+  $items['admin/config/people/takepartfb'] = array(
+      'title' => 'TakePart Specific Facebook Configurations',
+      'description' => 'Configure settings for Facebook as they apply to the TakePart site.',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('takepart_facebookapis_form'),
+      'access arguments' => array('administer site configuration'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'includes/takepart_facebookapis.admin.inc',
+  );
+  $items[variable_get('fblogin_backdoor_url', 'backdoor')] = array(
+      'title' => 'Drupal Login',
+      'page callback' => '_takepart_facebookapis_backdoor',
+      'access arguments' => array('access content'),
+      'type' => MENU_CALLBACK,
+  );
+  $items['facebook/channel'] = array(
+      'title' => 'Channel File',
+      'page callback' => '_takepart_facebookapis_channelfile',
+      'access arguments' => array('access content'),
+      'type' => MENU_CALLBACK,
+  );
+  $items['tpfboauth/%fboauth_action'] = array(
+      'title' => 'Facebook connect',
+      'page callback' => '_takepart_facebookapis_auth',
+      'page arguments' => array(1),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+
+function _takepart_facebookapis_channelfile() {
+ $cache_expire = 60*60*24*365;
+ header("Pragma: public");
+ header("Cache-Control: max-age=".$cache_expire);
+ header('Expires: ' . gmdate('D, d M Y H:i:s', time()+$cache_expire) . ' GMT');
+ echo '<script src="//connect.facebook.net/en_US/all.js"></script>';
+ exit();
+}
+
+
+//Menu callback for test page:
+function _takepart_facebookapis_backdoor() {
+  return drupal_render(drupal_get_form('user_login'));
+}
+
+
+/**
+ * Implement hook_requirements().
+ */
+// facebook 
+//facebook connect
+//facebook user mgmt
+//Facebook Apps
+//	Facebook API
+
+function takepart_facebookapis_requirements($phase) {
+  $requirements = array();
+  if ($phase == 'install') {
+    if (module_exists('fb')) {
+      $requirements['takepart_facebookapis'] = array(
+          'title' => $t('TakePart Facebook Site-wide Integration'),
+          'value' => $t('This module is not known to be compatible with Drupal for Facebook.'),
+          'severity' => REQUIREMENT_ERROR,
+      );
+    }
+    if (module_exists('takepart_facebook')) {
+      $requirements['takepart_facebookapis'] = array(
+          'title' => $t('TakePart Facebook Site-wide Integration'),
+          'value' => $t('This module is not known to be compatible with TakePart Facebook.'),
+          'severity' => REQUIREMENT_ERROR,
+      );
+    }
+  }
+  return $requirements;
+}
+
+
+
+/**
+ * Implements hook_page_alter().
+ */
+function takepart_facebookapis_page_alter(&$page) {
+    $channel_uri = preg_replace("@'@msi", "\'", "http://" . $_SERVER['HTTP_HOST'] . "/facebook_channel");
+    $page['page_bottom']['fb-init-code'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div id="fb-root"></div>
+        <script type="text/javascript">
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : \'' . variable_get('fboauth_id', '') . '\', // App ID
+            channelUrl : \'//localhost/facebook/channel\', // Channel File
+            status     : true, // check login status
+            cookie     : true, // enable cookies to allow the server to access the session
+            xfbml      : true  // parse XFBML
+          });
+          // Additional initialization code here
+        };
+        (function(d){
+          var js, id = \'facebook-jssdk\'; if (d.getElementById(id)) {return;}
+          js = d.createElement(\'script\'); js.id = id; js.async = true;
+          js.src = "//connect.facebook.net/en_US/all.js";
+          d.getElementsByTagName(\'head\')[0].appendChild(js);
+        }(document));
+      </script>'
+    );
+}
+
+
+
+
+

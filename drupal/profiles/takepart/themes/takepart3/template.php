@@ -189,12 +189,6 @@ function _render_tp3_user_menu() {
     }
     $output = "<ul id='user-nav'>" . implode($links) . "</ul>";
 
-    if (!user_is_logged_in()) {
-        $output .= "<span class='fb'>  			 
-  				  <fb:login-button>Connect</fb:login-button>
-  				</span>";
-    }
-
     return $output;
 }
 
