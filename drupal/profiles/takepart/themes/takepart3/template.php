@@ -616,21 +616,30 @@ function takepart3_return_node_type($type) {
 }
 
 function takepart3_field__field_topic($vars) {
+  // do we have any free tags?
+  $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
 
-    $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
-    if (count($vars['items']) || count($field_free_tag)) {
-        $links = array();
-        foreach ($vars['items'] as $key => $value) {
-            if (isset($value['#href'])) {
-                $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
-            }
-        }
+  // how about tags from series?
+  $field_series_tag = isset($vars['element']['#object']->field_series['und']) ? $vars['element']['#object']->field_series['und'] : $vars['element']['#object']->field_series;
 
-        foreach ($field_free_tag as $key => $value) {
-            $term = taxonomy_term_load($value['tid']);
-            $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
+  if (count($vars['items']) || count($field_free_tag) || count($field_free_series)) {
+    $links = array();
+    foreach ($field_series_tag as $key => $value) {
+      $term = taxonomy_term_load($value['tid']);
+      $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
+    }
+
+    foreach ($vars['items'] as $key => $value) {
+        if (isset($value['#href'])) {
+            $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
         }
-        return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
+    }
+
+    foreach ($field_free_tag as $key => $value) {
+      $term = taxonomy_term_load($value['tid']);
+      $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
+    }
+    return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
     }
 }
 

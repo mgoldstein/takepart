@@ -24,7 +24,7 @@ function ideasforgood_schema() {
       'token' => array(
         'description' => 'The voting token for the finalist',
         'type' => 'varchar',
-        'length' => 32,
+        'length' => 255,
         'not null' => TRUE,
         'default' => '',
       ),
@@ -66,7 +66,14 @@ function ideasforgood_schema() {
       'name' => array(
         'description' => 'The name of the group',
         'type' => 'varchar',
-        'length' => 32,
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'contest' => array(
+        'description' => 'The name of the contest the finalists are from',
+        'type' => 'varchar',
+        'length' => 255,
         'not null' => TRUE,
         'default' => '',
       ),
@@ -114,6 +121,37 @@ function ideasforgood_schema() {
 }
 
 /**
+ * Increase the size of the group name and add a field for the contest
+ * associated with a group
+ */
+function ideasforgood_update_7100(&$sandbox) {
+
+  db_change_field('ideasforgood_finalist', 'voting_group', 'voting_group', array(
+    'description' => 'The voting group to which the finalist belongs',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
+
+  db_change_field('ideasforgood_voting_group', 'name', 'name', array(
+    'description' => 'The name of the group',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
+
+  db_add_field('ideasforgood_voting_group', 'contest', array(
+    'description' => 'The name of the contest for which votes are submitted',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
+}
+
+/**
  * Implements hook_enable()
  */
 function ideasforgood_enable() {
@@ -128,6 +166,7 @@ function ideasforgood_enable() {
   ideasforgood_add_group_register_message();
   ideasforgood_add_group_thank_you_message();
   ideasforgood_add_group_already_voted_message();
+  ideasforgood_add_group_destination();
   ideasforgood_add_group_twitter_message();
   ideasforgood_add_group_email_message();
 }
@@ -147,6 +186,7 @@ function ideasforgood_uninstall() {
   field_delete_field('ideasforgood_group_register');
   field_delete_field('ideasforgood_group_thank_you');
   field_delete_field('ideasforgood_group_already_voted');
+  field_delete_field('ideasforgood_group_destination');
   field_delete_field('ideasforgood_group_twitter');
   field_delete_field('ideasforgood_group_email');
 }
@@ -419,6 +459,39 @@ function ideasforgood_add_group_already_voted_message() {
         'type' => 'text_textarea',
         'settings' => array(
           'rows' => 5,
+        ),
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'text_default',
+          'settings' => array(),
+        ),
+      ),
+    ),
+  );
+  ideasforgood_add_field_instance($info);
+}
+
+function ideasforgood_add_group_destination() {
+  $info = array(
+    'field' => array(
+      'field_name' => 'ideasforgood_group_destination',
+      'type' => 'text',
+      'entity_types' => array('ideasforgood_voting_group'),
+    ),
+    'instance' => array(
+      'field_name' => 'ideasforgood_group_destination',
+      'entity_type' => 'ideasforgood_voting_group',
+      'bundle' => 'ideasforgood_voting_group',
+      'label' => t('Voted Destination URL'),
+      'settings' => array(
+        'text_processing' => 0,
+      ),
+      'widget' => array(
+        'type' => 'text_textfield',
+        'settings' => array(
+          'size' => 64,
         ),
       ),
       'display' => array(
