@@ -2698,3 +2698,7 @@ body.multipage-campaign #highlighted {
 #highlighted .region-highlighted {
     padding: 10px;
 }
+
+#edit-terms-of-use {
+	display: none;
+}
