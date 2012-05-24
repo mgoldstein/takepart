@@ -9,6 +9,7 @@ Sitemap: http://www.takepart.com/sitemap.xml
 Disallow: /2008/
 Disallow: /2009/
 Disallow: /2010/
+Disallow: /add/
 Disallow: /admin/
 Disallow: /article/2007/
 Disallow: /article/2010/
@@ -22,7 +23,9 @@ Disallow: /blog/2010/
 Disallow: /blog/bloggers/
 Disallow: /blog/tag/
 Disallow: /categories/
+Disallow: /classic-music/
 Disallow: /comment/reply/
+Disallow: /downloads/
 Disallow: /files/
 Disallow: /filter/tips/
 Disallow: /flash/
@@ -38,6 +41,7 @@ Disallow: /profiles/
 Disallow: /recent/
 Disallow: /scripts/
 Disallow: /search/
+Disallow: /searchforcommonground/
 Disallow: /sites/
 Disallow: /tag/
 Disallow: /themes/
@@ -56,6 +60,7 @@ Disallow: /update.php
 Disallow: /UPGRADE.txt
 Disallow: /xmlrpc.php
 Disallow: /Index.do
+Disallow: /sitemap-2.xml
 Disallow: /?q=admin/
 Disallow: /?q=comment/reply/
 Disallow: /?q=filter/tips/

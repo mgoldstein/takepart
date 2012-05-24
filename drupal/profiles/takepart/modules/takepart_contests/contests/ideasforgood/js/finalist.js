@@ -26,20 +26,21 @@
           var item_dialog = '#ideasforgood-finalist-' + finalist_id + '-dialog';
           if (Drupal.settings.ideasforgood['vote_accepted']) {
             $(item_dialog).dialog("option", "title", "Thank You for Voting!");
+            $(item_dialog).once('events-tracked', function() {
+              // Action (event 19)
+              s.events='event19';
+              s.eVar28='Contest Vote';
+              s.linkTrackVars='eVar28,events';
+              s.linkTrackEvents='event19';
+              s.tl(true, 'o', 'action');
 
-            // Action (event 19)
-            s.events='event19';
-            s.eVar28='Contest Vote';
-            s.linkTrackVars='eVar28,events';
-            s.linkTrackEvents='event19';
-            s.tl(true, 'o', 'action');
-
-            // Contest Vote (event 30)
-            s.events='event30';
-            s.eVar24=Drupal.settings.ideasforgood['contest_name'];
-            s.linkTrackVars='eVar24,events';
-            s.linkTrackEvents='event30';
-            s.tl(true, 'o', 'contest vote');
+              // Contest Vote (event 30)
+              s.events='event30';
+              s.eVar24=Drupal.settings.ideasforgood['contest_name'];
+              s.linkTrackVars='eVar24,events';
+              s.linkTrackEvents='event30';
+              s.tl(true, 'o', 'contest vote');
+            });
           }
           else {
             $(item_dialog).dialog("option", "title", "Oops!");
@@ -145,10 +146,10 @@
 function addthisMenuShareEventHandler(evt) {
 
   // Action (event 19)
-  s.events = 'event19';
-  s.eVar28 = 'Share';
   s.linkTrackVars = 'eVar28,events';
   s.linkTrackEvents = 'event19';
+  s.events = 'event19';
+  s.eVar28 = 'Share';
   s.tl(true, 'o', 'action');
 
   // Share (event 25)
@@ -159,6 +160,7 @@ function addthisMenuShareEventHandler(evt) {
   s.events = 'event25';
   s.eVar26 = document.title;
   s.eVar27 = share_type;
+  s.prop26 = share_type;
   s.linkTrackVars = 'eVar26,eVar27,events';
   s.linkTrackEvents = 'event25';
   s.tl(true, 'o', 'share');

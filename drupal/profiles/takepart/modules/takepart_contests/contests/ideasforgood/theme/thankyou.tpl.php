@@ -32,6 +32,7 @@
     print render($content['voting_group']['ideasforgood_group_already_voted']);
   }
 ?>
+<?php if ($ideasforgood_finalist->vote_accepted): ?>
 <div class="ideasforgood-centered-content">
 <div id="ideasforgood-share-facebook"
      class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -46,3 +47,5 @@
   <a class="addthis_button_email"><img src="/<?php print $content['email_button']; ?>" alt="Share by E-mail" /></a>
 </div>
 </div>
+<?php endif ?>
+
