@@ -511,20 +511,33 @@ class IdeasForGoodFinalistController extends EntityAPIController {
   }
 
   protected function registerViewContent($entity, $view_mode, $langcode) {
-    $pos = strpos($_GET['q'], '?');
-    $destination = ($pos === FALSE) ? $_GET['q'] : substr($_GET['q'], 0, $pos);
-    return array(
-      'destination' => $destination,
-      'connect_button' => implode('/', array(
+
+    if (function_exists('_takepart_facebookapis_getfblogin')) {
+      $connect_button = _takepart_facebookapis_getfblogin($_GET['q']);
+    }
+    else {
+      $connect_src = implode('/', array(
         drupal_get_path('module', 'ideasforgood'),
         'images',
         'connect_button.png',
-      )),
-      'cancel_button' => implode('/', array(
-        drupal_get_path('module', 'ideasforgood'),
-        'images',
-        'cancel_button.png',
-      )),
+      ));
+      $connect_button = '<a class="ideasforgood-button-link"'
+        . ' href="/user?destination=' . $_GET['q'] . '">'
+        . '<img src="/' . $connect_src . '" alt="Connect with Facebook">'
+        . '</a>';
+    }
+
+    $cancel_src = implode('/', array(
+      drupal_get_path('module', 'ideasforgood'),
+      'images',
+      'cancel_button.png',
+    ));
+    $cancel_button = '<img src="/' . $cancel_src . '" alt="Cancel"'
+      . 'class="ideasforgood-cancel-button">';
+
+    return array(
+      'connect_button' => $connect_button,
+      'cancel_button' => $cancel_button,
     );
   }
 
