@@ -8,6 +8,10 @@
     </div>
   <?php endif; ?>
   
+  <?php if ($page['full_width_top']): ?>
+      <?php print render($page['full_width_top']); ?>
+  <?php endif; ?>
+  
   <div id='page' class='page clearfix <?php print $multipage_class; ?> <?php print render($node->type); ?>'>
   
     <div class='main-content'>

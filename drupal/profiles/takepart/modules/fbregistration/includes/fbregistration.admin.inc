@@ -16,6 +16,14 @@ function fbregistration_form($form, &$form_state) {
       '#required' => TRUE,
   );
   
+  $form['settings']['fbregistration_tag'] = array(
+      '#type' => 'textarea',
+      '#rows' => 2,
+      '#title' => t('Facebook Registration Tag'),
+      '#required' => TRUE,
+      '#default_value' => variable_get('fbregistration_tag_b', '<fb:registration fb_register="true" fb_only="false" width="530"></fb:registration>'),
+  );
+  
   $form['settings']['fbregistration_path'] = array(
       '#type' => 'textfield',
       '#title' => t('Registration path to apply FB reg plugin:'),
@@ -72,8 +80,11 @@ function fbregistration_form_submit($form, &$form_state) {
     variable_set('fbregistration_form_mapping_' . $key, $value);
   }
   
-  $state = $form_state['values']['settings']['fbregistration_state'];
-  variable_set('fbregistration_state', $state);
+  $fbregistration_tag = $form_state['values']['settings']['fbregistration_tag'];
+  variable_set('fbregistration_tag_b', $fbregistration_tag);
+  
+  $path = $form_state['values']['settings']['fbregistration_path'];
+  variable_set('fbregistration_path', $path);
   
   drupal_set_message(t('The settings have been saved.'));
   

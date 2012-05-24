@@ -54,7 +54,7 @@ function takepart_facebookapis_form($form, &$form_state) {
       '#rows' => 2,
       '#title' => t('Facebook Login Tag'),
       '#required' => TRUE,
-      '#default_value' => variable_get('fblogin_login_tag_html', '<fb:login-button data-scope="email,user_checkins,user_birthday" fb_register="true" fb_only="false" width="530">Log In</fb:login-button>'),
+      '#default_value' => variable_get('fblogin_login_tag_html_a', '<fb:login-button data-scope="email,user_checkins,user_birthday" fb_register="true" fb_only="false" width="530">Log In</fb:login-button>'),
       '#description'=> 'XFBML <a href="http://developers.facebook.com/docs/reference/plugins/login/">login</a> tag with <a href="http://developers.facebook.com/docs/authentication/permissions/">permissions</a> to be collected in addtion to the user\'s basic information.',
   );
   
@@ -76,7 +76,7 @@ function takepart_facebookapis_form_submit($form, &$form_state) {
   variable_set('fblogin_state', $state);
 
   $fblogin_login_tag = $form_state['values']['settings']['fblogin_login_tag'];
-  variable_set('fblogin_login_tag_html', $fblogin_login_tag);
+  variable_set('fblogin_login_tag_html_a', $fblogin_login_tag);
   
   $fblogin_backdoor_url = $form_state['values']['settings']['fblogin_backdoor_url'];
   if(variable_get('fblogin_backdoor_url', 'backdoor') != $fblogin_backdoor_url) {

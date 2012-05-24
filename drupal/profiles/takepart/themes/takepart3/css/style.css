@@ -2702,3 +2702,15 @@ body.multipage-campaign #highlighted {
 #edit-terms-of-use {
 	display: none;
 }
+
+.page-user-register .region-full-width-top {
+	padding: 35px 20px 0;
+}
+
+.page-user-register .region-full-width-top h2 {
+    color: #99BBCC;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 18px;
+    text-transform: uppercase;
+}

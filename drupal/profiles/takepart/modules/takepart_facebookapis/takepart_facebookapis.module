@@ -46,11 +46,17 @@ function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
 }
 
 
-function _takepart_facebookapis_getfblogin() {
-  $fblogintag = variable_get('fblogin_login_tag_html', '<fb:login-button data-scope="email,user_checkins,user_birthday" fb_register="true" fb_only="false" width="530">Log In</fb:login-button>');
-  $fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session()"  redirect_uri="http://' . $_SERVER['HTTP_HOST'] . '/fboauth/connect?destination=' . ($_GET['destination']) . '" registration-url="http://' . $_SERVER['HTTP_HOST'] . '/' . $regpath . '" ', $fblogintag);
+function _takepart_facebookapis_getfblogin($dest = null) {
+  if($dest = null) {
+    $dest = urlencode($_GET['destination']);
+  } else {
+    $dest = urlencode($dest);
+  }
+  $fblogintag = variable_get('fblogin_login_tag_html_a', '<fb:login-button data-scope="email,user_checkins,user_birthday" fb_register="true" fb_only="false" width="530">Log In</fb:login-button>');
+  $fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session()"  redirect_uri="http://' . $_SERVER['HTTP_HOST'] . '/fboauth/connect?destination=' . ($dest) . '" registration-url="http://' . $_SERVER['HTTP_HOST'] . '/' . $regpath . '" ', $fblogintag);
   drupal_add_js('function takepart_facebookapi_check_login_session() {
-        window.location = \'http://' . $_SERVER['HTTP_HOST'] . '/tpfboauth/connect?destination=' . urlencode($_GET['destination']) . '\';
+        //*Shouldn\'t need this, but the redirect_uri param is sketchy ...
+        //window.location = \'http://' . $_SERVER['HTTP_HOST'] . '/tpfboauth/connect?destination=' . $dest . '\';
       }',
       array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
   );

@@ -94,72 +94,87 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
     ($form_id != "user_register_form")) {
     return;
   }
- 
+  
+  $mrkup = _fbregistration_getfbreg($form);
+  
+  //wipe out existing form:
+  $form = array();
+
+  if(($form_id == 'user_register_form') || ($form_id == 'fbconnect_register_page')) {
+   
+    $form['test'] = array(
+         '#type' => 'item',
+         '#title' => t(' '),
+         '#markup' => $mrkup,
+     );
+   
+   }
+}
+
+
+function _fbregistration_getfbreg(&$form = null) {
+  
+  if(form == null) {
+    $form = drupal_get_form('user_register_form');
+  }
+  
   $fieldmappings = array();
   $jsondata = array();
-
+  
   _fbregistration_admin_form_load($form, $fieldmappings);
   
   foreach ($fieldmappings as $name => $field) {
-    
+  
     if(isset($field['#foreign']['#title'])) {
       $title = $field['#foreign']['#title'];
     } else {
       $title = substr($field['#title'], 0, strrpos($field['#title'], ":"));
       $title = rtrim($title);
     }
-    
+  
     if ((strrpos($field['#default_value'], 'custom') !== 0) && ($field['#default_value'] != 'not_mapped')) {
       array_push($jsondata, (object)array('name' => $field['#default_value']));
     }
-    
+  
     if ((strrpos($field['#default_value'], 'custom') === 0) && ($field['#default_value'] != 'not_mapped')) {
-      
+  
       if($field['#default_value'] == 'custom_text') {
         array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'text'));
       }
-      
+  
       if($field['#default_value'] == 'custom_select') {
         array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'select', 'options' => $field['#foreign']['#options']));
       }
-      
+  
       if($field['#default_value'] == 'custom_checkbox') {
         array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'checkbox', 'options' => $field['#foreign']['#options'], 'default' => ((isset($field['#foreign']['#default_value']) && $field['#foreign']['#default_value'] = 1) ? 'checked' : 'unchecked')));
       }
-
+  
       if($field['#default_value'] == 'custom_typeahead') {
         array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'typeahead', 'categories' => array_keys($field['#foreign']['#options'])));
       }
-      
+  
       if($field['#default_value'] == 'custom_date') {
         array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'date'));
       }
-      
+  
       if($field['#default_value'] == 'custom_hidden') {
         array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'hidden'));
-      }  
-      
+      }
+  
     }
-       
+     
   }
   
   $json = json_encode($jsondata);
   
   $json = str_replace('"',"'",$json);
-  
-  
-  //wipe out existing form:
-  $form = array();
 
-  if(($form_id == 'user_register_form') || ($form_id == 'fbconnect_register_page')) {
-    
-    $form['test'] = array(
-         '#type' => 'item',
-         '#title' => t(' '),
-         '#markup' => '<fb:registration fb_register="true" fb_only="false" fields="'.$json.'" redirect-uri="http://' . $_SERVER['HTTP_HOST'] . '/fbregistration" width="530"></fb:registration>',
-     );
-   
-   }
+  $fbregtag = variable_get('fbregistration_tag_b', '<fb:registration fb_register="true" fb_only="false" width="530"></fb:registration>');
+  $fbregtag = str_replace('<fb:registration','<fb:registration fields="'.$json.'" redirect-uri="http://' . $_SERVER['HTTP_HOST'] . '/fbregistration"', $fbregtag);
+  
+  return $fbregtag;
+  
 }
 
 function _fbregistration_checkpath() {
