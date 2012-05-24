@@ -25,9 +25,9 @@
  */
 ?>
 <?php print render($content['voting_group']['ideasforgood_group_register']); ?>
-<div class="ideasforgood-register-buttons">
+<div class="ideasforgood-centered-content">
   <div>
-    <a href="/user?destination=<?php print $content['destination']; ?>"><img src="/<?php print $content['connect_button']; ?>" alt="Connect with Facebook"></a>
+    <a class="ideasforgood-button-link" href="/user?destination=<?php print $content['destination']; ?>"><img src="/<?php print $content['connect_button']; ?>" alt="Connect with Facebook"></a>
   </div>
   <div>
     <img src="/<?php print $content['cancel_button']; ?>" alt="Cancel" class="ideasforgood-cancel-button">

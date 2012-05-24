@@ -1,0 +1,10 @@
+name = Fbregistration
+description = Allows users to register with Facebook registration plugin.
+package = Authentication
+version = VERSION
+core = 7.x
+
+dependencies[] = takepart_facebookapis
+dependencies[] = fboauth
+files[] = fbregistration.module
+files[] = tests/fbregistration.test
