@@ -40,22 +40,26 @@ function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
 
 
 function _takepart_facebookapis_getfblogin($dest = null) {
-  if($dest = null) {
-    $dest = urlencode($_GET['destination']);
-  } else {
+  
+  if(($dest == null) && (isset($_GET['destination']))) {
+    $dest = $_GET['destination'];
+  }
+  
+  if(variable_get('fbregistration_path', 'user/register') != $dest) {
     $dest = urlencode($dest);
-  }
-  
-  if(isset($_GET['destination']) && (variable_get('fbregistration_path', 'user/register') != $_GET['destination'])) {
-    $regpath = (variable_get('fbregistration_path', 'user/register') . "?destination=" . $_GET['destination']);
+    $regpath = 'http://' . $_SERVER['HTTP_HOST'] . (variable_get('fbregistration_path', 'user/register') . "?destination=" . $dest);
+    $authpath = 'http://' . $_SERVER['HTTP_HOST'] . ('/tpfboauth/connect?destination=' . $dest);
   } else {
-    $regpath = (variable_get('fbregistration_path', 'user/register'));
+    $regpath = 'http://' . $_SERVER['HTTP_HOST'] . (variable_get('fbregistration_path', 'user/register'));
+    $authpath = 'http://' . $_SERVER['HTTP_HOST'] . ('/tpfboauth/connect');
   }
-  
+
   $fblogintag = variable_get('fblogin_login_tag_html_a', '<fb:login-button data-scope="email,user_checkins,user_birthday" fb_register="true" fb_only="false" width="530">Log In</fb:login-button>');
-  $fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session()"  redirect_uri="http://' . $_SERVER['HTTP_HOST'] . '/fboauth/connect?destination=' . ($dest) . '" registration-url="http://' . $_SERVER['HTTP_HOST'] . '/' . $regpath . '" ', $fblogintag);
+  $fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session()"  redirect_uri="' . $authpath . '" registration-url="' . $regpath . '"', $fblogintag);
   drupal_add_js('function takepart_facebookapi_check_login_session() {
-        window.location = \'http://' . $_SERVER['HTTP_HOST'] . '/tpfboauth/connect?destination=' . $dest . '\';
+        path = \'' . $authpath . '\';
+        //alert(path);
+        window.location = path;
       }',
       array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
   );
@@ -64,7 +68,6 @@ function _takepart_facebookapis_getfblogin($dest = null) {
 
 function _takepart_facebookapis_auth($action) {
   $action_name = $action['name'];
-  
   $app_id = variable_get('fboauth_id', '');
   $app_secret = variable_get('fboauth_secret', '');
   $cookie = _takepart_facebookapis_get_facebook_cookie($app_id, $app_secret);
