@@ -46,12 +46,20 @@ function _tfbregistration_auth() {
     
     $response = _takepart_facebookapis_parse_signed_request($_REQUEST['signed_request'],$app_secret);
     
-    $destination = fboauth_action_invoke('connect', $app_id, $response['oauth_token']);
-    if (empty($destination)) {
-      $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
+    $drupalid = fboauth_uid_load($response['user_id']);
+    
+    if(!$drupalid) {
+    
+      $destination = fboauth_action_invoke('connect', $app_id, $response['oauth_token']);
+      if (empty($destination)) {
+        $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
+      }
+     
+      $drupalid = fboauth_uid_load($response['user_id']);
+        
     }
-   
-    $drupalid = fboauth_uid_load($response['user_id']);    
+    
+    
     $account = user_load(array('uid' => $drupalid));
     
     foreach ($account as $key => $val) {
