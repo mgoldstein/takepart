@@ -38,8 +38,8 @@ function ideasforgood_finalist_form($form, &$form_state, $finalist, $op = 'edit'
     '#description' => t('The voting token for the finalist'),
     '#default_value' => isset($finalist->token) ? $finalist->token : '',
     '#required' => TRUE,
-    '#maxlength' => 32,
-    '#size' => 24,
+    '#maxlength' => 255,
+    '#size' => 64,
   );
 
   $form['voting_group'] = array(
@@ -48,8 +48,8 @@ function ideasforgood_finalist_form($form, &$form_state, $finalist, $op = 'edit'
     '#description' => t('The voting group to which the finalist belongs.'),
     '#default_value' => isset($finalist->voting_group) ? $finalist->voting_group : '',
     '#required' => TRUE,
-    '#maxlength' => 32,
-    '#size' => 24,
+    '#maxlength' => 255,
+    '#size' => 64,
   );
 
   $form_state['ideasforgood_finalist'] = $finalist;
