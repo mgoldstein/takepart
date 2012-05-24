@@ -58,6 +58,7 @@ function takepart3_preprocess_html(&$vars) {
     }
 
     _render_tp3_renderheaderfooterfeed($vars);
+    _render_tp3_bsd_wrapper($vars);
 }
 
 function takepart3_preprocess_page(&$variables) {
@@ -910,6 +911,20 @@ function _render_tp3_renderheaderfooterfeed(&$vars) {
         if ($uri == 'iframes/header') {
             $vars['custom'] = _render_tp3_header($vars);
         } elseif ($uri == 'iframes/footer') {
+            $vars['custom'] = _render_tp3_footer($vars);
+        }
+    }
+}
+
+function _render_tp3_bsd_wrapper(&$vars) {
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
+    if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+        // dpm($vars);
+        _tp3_fill_template_vars($vars);
+        if ($uri == 'bsd/header') {
+            $vars['custom'] = _render_tp3_header($vars);
+        } elseif ($uri == 'bsd/footer') {
             $vars['custom'] = _render_tp3_footer($vars);
         }
     }
