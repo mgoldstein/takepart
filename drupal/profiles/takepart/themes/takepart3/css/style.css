@@ -2714,3 +2714,8 @@ body.multipage-campaign #highlighted {
     line-height: 18px;
     text-transform: uppercase;
 }
+
+.page-user-register .form-item {
+    margin-bottom: 1em;
+    margin-top: 0;
+}
