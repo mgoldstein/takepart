@@ -33,21 +33,11 @@ function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
       $regpath = (variable_get('fbregistration_path', 'user/register'));
     }
     
-    $fblogintag = '<fb:login-button onlogin="takepart_facebookapi_check_login_session()" data-scope="email,user_checkins,user_birthday" redirect_uri="http://' . $_SERVER['HTTP_HOST'] . '/fboauth/connect?destination=' . ($_GET['destination']) . '" registration-url="http://' . $_SERVER['HTTP_HOST'] . '/' . $regpath . '">Log in</fb:login-button>';
-    
     $form['fblogin'] = array(
         '#type' => 'item',
         '#title' => t(' '),
-        '#markup' => $fblogintag
+        '#markup' => _takepart_facebookapis_getfblogin(),
       );
-    
-    drupal_add_js('function takepart_facebookapi_check_login_session() {
-           //alert(\'test\');
-           window.location = \'http://' . $_SERVER['HTTP_HOST'] . '/tpfboauth/connect?destination=' . urlencode($_GET['destination']) . '\';
-        }',
-        array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
-    );
-    
     
     $form['#validate'][] = '_takepart_facebookapis_login_form_validate';
     
@@ -55,6 +45,17 @@ function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
   
 }
 
+
+function _takepart_facebookapis_getfblogin() {
+  $fblogintag = variable_get('fblogin_login_tag_html', '<fb:login-button data-scope="email,user_checkins,user_birthday" fb_register="true" fb_only="false" width="530">Log In</fb:login-button>');
+  $fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session()"  redirect_uri="http://' . $_SERVER['HTTP_HOST'] . '/fboauth/connect?destination=' . ($_GET['destination']) . '" registration-url="http://' . $_SERVER['HTTP_HOST'] . '/' . $regpath . '" ', $fblogintag);
+  drupal_add_js('function takepart_facebookapi_check_login_session() {
+        window.location = \'http://' . $_SERVER['HTTP_HOST'] . '/tpfboauth/connect?destination=' . urlencode($_GET['destination']) . '\';
+      }',
+      array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
+  );
+  return $fblogintag;
+}
 
 function _takepart_facebookapis_auth($action) {
   $action_name = $action['name'];
