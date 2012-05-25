@@ -45,12 +45,12 @@ function _takepart_facebookapis_getfblogin($dest = null) {
     $dest = $_GET['destination'];
   }
   
-  if(variable_get('fbregistration_path', 'user/register') != $dest) {
+  if(variable_get('fbregistration_path', '/user/register') != "/" . $dest) {
     $dest = urlencode($dest);
-    $regpath = 'http://' . $_SERVER['HTTP_HOST'] . (variable_get('fbregistration_path', 'user/register') . "?destination=" . $dest);
+    $regpath = 'http://' . $_SERVER['HTTP_HOST'] . (variable_get('fbregistration_path', '/user/register') . "?destination=" . $dest);
     $authpath = 'http://' . $_SERVER['HTTP_HOST'] . ('/tpfboauth/connect?destination=' . $dest);
   } else {
-    $regpath = 'http://' . $_SERVER['HTTP_HOST'] . (variable_get('fbregistration_path', 'user/register'));
+    $regpath = 'http://' . $_SERVER['HTTP_HOST'] . (variable_get('fbregistration_path', '/user/register'));
     $authpath = 'http://' . $_SERVER['HTTP_HOST'] . ('/tpfboauth/connect');
   }
 
@@ -83,13 +83,13 @@ function _takepart_facebookapis_auth($action) {
     } else { 
       
       
-      if(isset($_GET['destination']) && (variable_get('fbregistration_path', 'user/register') != $_GET['destination'])) {
-        $redir = (variable_get('fbregistration_path', 'user/register') . "?destination=" . $_GET['destination']);
+      if(isset($_GET['destination']) && (variable_get('fbregistration_path', '/user/register') != "/" . $_GET['destination'])) {
+        $redir = (variable_get('fbregistration_path', '/user/register') . "?destination=" . $_GET['destination']);
       } else {
-        $redir = (variable_get('fbregistration_path', 'user/register'));
+        $redir = (variable_get('fbregistration_path', '/user/register'));
       }
       
-      header("Location: /$redir");
+      header("Location: $redir");
       exit();
       
       
