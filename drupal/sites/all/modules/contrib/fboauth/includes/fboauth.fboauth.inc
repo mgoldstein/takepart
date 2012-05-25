@@ -160,8 +160,8 @@ function fboauth_create_user($fbuser, $options = array()) {
   else {
     $username = $fbuser->name;
   }
-  $query = "SELECT uid FROM {users} WHERE name = :name";
-  $uid = db_query($query, array(':name' => $username))->fetchField();
+  $query = "SELECT uid FROM {users} WHERE name = ':name'";
+  $uid = db_query("SELECT uid FROM {users} WHERE name = :name", array(':name' => $username))->fetchField();
   $i = 0;
   while ($uid) {
     $i++;
