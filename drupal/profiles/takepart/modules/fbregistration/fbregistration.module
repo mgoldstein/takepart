@@ -189,7 +189,7 @@ function _fbregistration_checkpath() {
   $uri = drupal_get_path_alias($_GET['q']);
   $uri = substr($uri, 0, 24);
   $admgruri = substr($uri, 0, 19);
-  if ($uri == variable_get('fbregistration_path', 'user/register')) {
+  if ("/" . $uri == variable_get('fbregistration_path', '/user/register')) {
     return true;
   } else {
     return false;

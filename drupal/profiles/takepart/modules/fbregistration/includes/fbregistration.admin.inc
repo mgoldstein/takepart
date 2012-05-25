@@ -27,7 +27,7 @@ function fbregistration_form($form, &$form_state) {
   $form['settings']['fbregistration_path'] = array(
       '#type' => 'textfield',
       '#title' => t('Registration path to apply FB reg plugin:'),
-      '#default_value' => variable_get('fbregistration_path', 'user/register'),
+      '#default_value' => variable_get('fbregistration_path', '/user/register'),
       '#size' => 50,
       '#maxlength' => 255,
       '#required' => TRUE,
