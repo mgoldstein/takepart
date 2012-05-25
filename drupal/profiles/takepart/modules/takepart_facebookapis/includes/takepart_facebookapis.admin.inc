@@ -25,6 +25,14 @@ function takepart_facebookapis_form($form, &$form_state) {
       '#required' => TRUE,
   );
   
+  $form['settings']['fblogin_textoverbutton'] = array(
+      '#type' => 'textarea',
+      '#rows' => 2,
+      '#title' => t('Text in login box'),
+      '#required' => TRUE,
+      '#default_value' => variable_get('fblogin_textoverbutton', 'If you have a <strong>Facebook Account</strong>'),
+  );
+  
   if(function_exists('fbconnect_get_config')) {
       
     $conf = fbconnect_get_config();
@@ -77,6 +85,9 @@ function takepart_facebookapis_form_submit($form, &$form_state) {
 
   $fblogin_login_tag = $form_state['values']['settings']['fblogin_login_tag'];
   variable_set('fblogin_login_tag_html_a', $fblogin_login_tag);
+  
+  $fblogin_textoverbutton = $form_state['values']['settings']['fblogin_textoverbutton'];
+  variable_set('fblogin_textoverbutton', $fblogin_textoverbutton);
   
   $fblogin_backdoor_url = $form_state['values']['settings']['fblogin_backdoor_url'];
   if(variable_get('fblogin_backdoor_url', 'backdoor') != $fblogin_backdoor_url) {

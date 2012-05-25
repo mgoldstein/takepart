@@ -29,7 +29,7 @@ function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
     $form['fblogin'] = array(
         '#type' => 'item',
         '#title' => t(' '),
-        '#markup' => _takepart_facebookapis_getfblogin(),
+        '#markup' => "<div id=\"fbloginbox\"><p id=\"fblogin_textoverbutton\">" . variable_get('fblogin_textoverbutton', 'If you have a <strong>Facebook Account</strong>') . "</p><div id=\"fb_buttonwrapper\">" . _takepart_facebookapis_getfblogin() . "</div></div>",
       );
     
     $form['#validate'][] = '_takepart_facebookapis_login_form_validate';
