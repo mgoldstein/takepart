@@ -44,6 +44,7 @@ Disallow: /search/
 Disallow: /searchforcommonground/
 Disallow: /sites/
 Disallow: /tag/
+Disallow: /taxonomy/
 Disallow: /themes/
 Disallow: /url/
 Disallow: /user/
