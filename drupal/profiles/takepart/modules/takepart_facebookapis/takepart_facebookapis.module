@@ -89,8 +89,9 @@ function _takepart_facebookapis_auth($action) {
         $redir = (variable_get('fbregistration_path', '/user/register'));
       }
       
-      header("Location: $redir");
-      exit();
+      //header("Location: $redir");
+      drupal_goto($redir);
+      //exit();
       
       
     }
