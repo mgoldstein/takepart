@@ -46,19 +46,12 @@ function _tfbregistration_auth() {
     
     $response = _takepart_facebookapis_parse_signed_request($_REQUEST['signed_request'],$app_secret);
     
-    $drupalid = fboauth_uid_load($response['user_id']);
-    
-    if(!$drupalid) {
-    
-      $destination = fboauth_action_invoke('connect', $app_id, $response['oauth_token']);
-      if (empty($destination)) {
-        $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
-      }
-     
-      $drupalid = fboauth_uid_load($response['user_id']);
-        
+    $destination = fboauth_action_invoke('connect', $app_id, $response['oauth_token']);
+    if (empty($destination)) {
+      $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
     }
-    
+   
+    $drupalid = fboauth_uid_load($response['user_id']);
     
     $account = user_load(array('uid' => $drupalid));
     
@@ -76,7 +69,9 @@ function _tfbregistration_auth() {
     drupal_goto($destination);
     
   } else {
-    //echo '$_REQUEST is empty';
+    drupal_set_message( t('There was an issue communicating with facebook.'), 'error' );
+    $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
+    drupal_goto($destination);
   }
   
 }
