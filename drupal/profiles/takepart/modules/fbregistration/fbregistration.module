@@ -98,7 +98,7 @@ function _fbregistration_set_userval(&$item, $value) {
 function fbregistration_form_alter(&$form, $form_state, $form_id) {
   
   if((!_fbregistration_checkpath()) || 
-    (variable_get('fbregistration_state', '1') != '1') || 
+    (variable_get('fbregistration_state', '0') != '1') || 
     ($form_id != "user_register_form")) {
     return;
   }
@@ -180,14 +180,21 @@ function _fbregistration_getfbreg(&$form = null) {
   
   
   if(isset($_GET['destination'])) {
-    $dest = "/fbregistration" . "?destination=" . $_GET['destination'];
+    $dest = "/fbregistration" . "?destination=" . urlencode($_GET['destination']);
   } else {
     $dest = "/fbregistration";
   }
   
-
-  $fbregtag = variable_get('fbregistration_tag_b', '<fb:registration fb_register="true" fb_only="false" width="530"></fb:registration>');
-  $fbregtag = str_replace('<fb:registration','<fb:registration fields="'.$json.'" redirect-uri="http://' . $_SERVER['HTTP_HOST'] . $dest . '"', $fbregtag);
+  
+  
+  if(variable_get('fbregistration_type', 0) == 1)  {
+    $app_id = variable_get('fboauth_id', '');
+    $fbregtag = variable_get('fbregistration_tag_iframe', '<iframe scrolling="auto" frameborder="no" style="border:none" allowTransparency="true" width="100%" height="530"></iframe>');
+    $fbregtag = str_replace('<iframe','<iframe src="http://www.facebook.com/plugins/registration.php?fb_register=true&fb_only=false&client_id='.$app_id.'&redirect_uri=' . 'http://' . $_SERVER['HTTP_HOST'] . $dest . '&fields=' .$json . '"', $fbregtag);
+  } else {
+    $fbregtag = variable_get('fbregistration_tag_b', '<fb:registration fb_register="true" fb_only="false" width="530"></fb:registration>');    
+    $fbregtag = str_replace('<fb:registration','<fb:registration fields="'.$json.'" client_id="'.$app_id.'" redirect-uri="http://' . $_SERVER['HTTP_HOST'] . $dest . '"', $fbregtag);
+  }
   
   return $fbregtag;
   

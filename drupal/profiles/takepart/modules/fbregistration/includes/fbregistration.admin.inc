@@ -16,13 +16,30 @@ function fbregistration_form($form, &$form_state) {
       '#required' => TRUE,
   );
   
+  $form['settings']['fbregistration_type'] = array(
+      '#type' => 'select',
+      '#title' => t('Plugin Type'),
+      '#default_value' => variable_get('fbregistration_type', 0),
+      '#options' => array(0 => t('XFBML'), 1 => t('Iframe'),),
+      '#required' => TRUE,
+  );
+  
   $form['settings']['fbregistration_tag'] = array(
       '#type' => 'textarea',
       '#rows' => 2,
-      '#title' => t('Facebook Registration Tag'),
+      '#title' => t('Facebook Registration Tag (XFBML)'),
       '#required' => TRUE,
       '#default_value' => variable_get('fbregistration_tag_b', '<fb:registration fb_register="true" fb_only="false" width="530"></fb:registration>'),
   );
+  
+  $form['settings']['fbregistration_tag_iframe'] = array(
+      '#type' => 'textarea',
+      '#rows' => 2,
+      '#title' => t('Facebook Registration Tag (Iframe)'),
+      '#required' => TRUE,
+      '#default_value' => variable_get('fbregistration_tag_iframe', '<iframe scrolling="auto" frameborder="no" style="border:none" allowTransparency="true" width="100%" height="530"></iframe>'),
+  );
+  
   
   $form['settings']['fbregistration_path'] = array(
       '#type' => 'textfield',
@@ -83,8 +100,17 @@ function fbregistration_form_submit($form, &$form_state) {
   $fbregistration_tag = $form_state['values']['settings']['fbregistration_tag'];
   variable_set('fbregistration_tag_b', $fbregistration_tag);
   
+  $fbregistration_tag_iframe = $form_state['values']['settings']['fbregistration_tag_iframe'];
+  variable_set('fbregistration_tag_iframe', $fbregistration_tag_iframe);
+  
   $path = $form_state['values']['settings']['fbregistration_path'];
   variable_set('fbregistration_path', $path);
+  
+  $fbregistration_state = $form_state['values']['settings']['fbregistration_state'];
+  variable_set('fbregistration_state', $fbregistration_state);
+  
+  $fbregistration_type = $form_state['values']['settings']['fbregistration_type'];
+  variable_set('fbregistration_type', $fbregistration_type);
   
   drupal_set_message(t('The settings have been saved.'));
   
