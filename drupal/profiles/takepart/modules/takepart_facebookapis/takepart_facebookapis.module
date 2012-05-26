@@ -89,12 +89,14 @@ function _takepart_facebookapis_auth($action) {
         $redir = (variable_get('fbregistration_path', '/user/register'));
       }
       
-      //header("Location: $redir");
-      drupal_goto($redir);
-      //exit();
-      
+      header("Location: $redir");
+      die();
       
     }
+  } else {
+    drupal_set_message( t('There was an issue communicating with facebook.'), 'error' );
+    $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
+    drupal_goto($destination);
   }
 }
 

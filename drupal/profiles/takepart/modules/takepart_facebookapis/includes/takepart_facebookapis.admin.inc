@@ -25,6 +25,15 @@ function takepart_facebookapis_form($form, &$form_state) {
       '#required' => TRUE,
   );
   
+  $form['settings']['fblogin_curl_timeout'] = array(
+      '#type' => 'textfield',
+      '#size' => 6,
+      '#maxlength' => 6,
+      '#title' => t('Curl Timeout'),
+      '#default_value' => variable_get('fblogin_curl_timeout', '10'),
+      '#required' => TRUE,
+  );
+  
   $form['settings']['fblogin_textoverbutton'] = array(
       '#type' => 'textarea',
       '#rows' => 2,
@@ -85,6 +94,9 @@ function takepart_facebookapis_form_submit($form, &$form_state) {
 
   $fblogin_login_tag = $form_state['values']['settings']['fblogin_login_tag'];
   variable_set('fblogin_login_tag_html_a', $fblogin_login_tag);
+  
+  $fblogin_curl_timeout = $form_state['values']['settings']['fblogin_curl_timeout'];
+  variable_set('fblogin_curl_timeout', $fblogin_curl_timeout);
   
   $fblogin_textoverbutton = $form_state['values']['settings']['fblogin_textoverbutton'];
   variable_set('fblogin_textoverbutton', $fblogin_textoverbutton);

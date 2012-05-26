@@ -31,7 +31,7 @@ function _takepart_facebookapis_get_new_facebook_cookie($app_id, $app_secret) {
   if (!is_null($signed_request)) {
     // the cookie is valid/signed correctly
     // lets change "code" into an "access_token"
-    $access_token_response = file_get_contents("https://graph.facebook.com/oauth/access_token?client_id=$app_id&redirect_uri=&client_secret=$app_secret&code=$signed_request[code]");
+    $access_token_response = _takepart_facebookapis_curl("https://graph.facebook.com/oauth/access_token?client_id=$app_id&redirect_uri=&client_secret=$app_secret&code=$signed_request[code]");
     parse_str($access_token_response);
     $signed_request[access_token] = $access_token;
     $signed_request[expires] = time() + $expires;
@@ -41,6 +41,16 @@ function _takepart_facebookapis_get_new_facebook_cookie($app_id, $app_secret) {
   
   return $signed_request;
 }
+
+function _takepart_facebookapis_curl($url) {
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_TIMEOUT, variable_get('fblogin_curl_timeout', '10'));
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_HEADER, 0);
+  return curl_exec($ch);
+}
+
 
 function _takepart_facebookapis_parse_signed_request($signed_request, $secret) {
   list($encoded_sig, $payload) = explode('.', $signed_request, 2);
