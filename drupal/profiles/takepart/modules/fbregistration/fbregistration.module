@@ -177,9 +177,17 @@ function _fbregistration_getfbreg(&$form = null) {
   $json = json_encode($jsondata);
   
   $json = str_replace('"',"'",$json);
+  
+  
+  if(isset($_GET['destination'])) {
+    $dest = "/fbregistration" . "?destination=" . $_GET['destination'];
+  } else {
+    $dest = "/fbregistration";
+  }
+  
 
   $fbregtag = variable_get('fbregistration_tag_b', '<fb:registration fb_register="true" fb_only="false" width="530"></fb:registration>');
-  $fbregtag = str_replace('<fb:registration','<fb:registration fields="'.$json.'" redirect-uri="http://' . $_SERVER['HTTP_HOST'] . '/fbregistration"', $fbregtag);
+  $fbregtag = str_replace('<fb:registration','<fb:registration fields="'.$json.'" redirect-uri="http://' . $_SERVER['HTTP_HOST'] . $dest . '"', $fbregtag);
   
   return $fbregtag;
   
