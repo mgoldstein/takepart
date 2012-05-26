@@ -140,6 +140,25 @@
         dlg.dialog('close');
       });
     });
+
+    // automatically open the preselected dialog
+    if (window.location.search.length > 0) {
+      var search = window.location.search.substring(1);
+      var params = search.split('&');
+      var finalist_id = null;
+      for (var i=0; i<params.length; i++) {
+        var pair = params[i].split('=');
+        if (pair[0] == 'selected') {
+          finalist_id = pair[1];
+        }
+      }
+      if (finalist_id != null) {
+        item_dialog = '#ideasforgood-finalist-' + finalist_id + '-dialog';
+        if ($(item_dialog).length == 1) {
+          $(item_dialog).dialog('open');
+        }
+      }
+    }
   });
 })(jQuery);
 
