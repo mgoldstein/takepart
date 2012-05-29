@@ -56,9 +56,7 @@ function fbregistration_form($form, &$form_state) {
   unset($regform['metatags']); 
   $regform['#submit'] = array_diff($regform['#submit'], array('metatag_metatags_form_submit'));
   
-  
   $form['fieldmappings'] = array('#type' => 'fieldset', '#title' => t('Field Mappings'), '#tree' => TRUE);
-  
   
   $form['fieldmappings']['link'] = array(
       '#type' => 'item',
@@ -66,15 +64,10 @@ function fbregistration_form($form, &$form_state) {
       '#markup' => '<a href="/admin/config/people/accounts/fields">Manage Fields</a>',
   );
   
-  
-
-  
   _fbregistration_admin_form_load($regform, $form['fieldmappings']);
   
-
-  //print_r($regform);
-  //print_r($form['fieldmappings']);
-  
+  $form['bsdmappings'] = array('#type' => 'fieldset', '#title' => t('BSD Mappings'), '#tree' => TRUE);
+  _fbregistration_bsd_form_load($regform, $form['bsdmappings']);  
   
   $form['submit'] = array(
       '#type' => 'submit',
@@ -95,6 +88,10 @@ function fbregistration_form_submit($form, &$form_state) {
   //@todo: check indexes:
   foreach ($form_state['values']['fieldmappings'] as $key => $value) {
     variable_set('fbregistration_form_mapping_' . $key, $value);
+  }
+  
+  foreach ($form_state['values']['bsdmappings'] as $key => $value) {
+    variable_set('fbregistration_bsd_mapping_' . $key, $value);
   }
   
   $fbregistration_tag = $form_state['values']['settings']['fbregistration_tag'];
