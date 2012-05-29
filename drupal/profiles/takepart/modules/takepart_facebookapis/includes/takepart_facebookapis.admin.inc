@@ -14,7 +14,6 @@ function takepart_facebookapis_form($form, &$form_state) {
       '#options' => array(0 => t('No'), 1 => t('Yes'),),
       '#required' => TRUE,
   );
-      
   
   $form['settings']['fblogin_backdoor_url'] = array(
       '#type' => 'textfield',

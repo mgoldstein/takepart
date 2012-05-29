@@ -170,7 +170,26 @@ function _render_tp3_user_menu() {
         if ($menu_item['link']['href'] == 'user') {
             if (user_is_logged_in()) {
                 global $user;
-                $menu_item['link']['title'] = $user->name;
+                
+                if(function_exists('_takepart_facebookapis_get_facebook_cookie')) {
+                  if (!isset($_SESSION['facebook'])) {
+                    $app_id = variable_get('fboauth_id', '');
+                    $app_secret = variable_get('fboauth_secret', '');
+                    $cookie = _takepart_facebookapis_get_facebook_cookie($app_id, $app_secret);
+                    if (isset($cookie['access_token'])) {
+                      $result = fboauth_graph_query('/me', $cookie['access_token']);
+                      $username = $result->name;
+                      $_SESSION['facebook'] = $result;
+                    }
+                    
+                  } else {
+                    $username = $_SESSION['facebook']->name;
+                  }
+                } else {
+                  $username = $user->name;
+                }
+                                
+                $menu_item['link']['title'] = $username;
                 $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
             } else {
                 $opts['attributes']['class'][] = 'join-login';
