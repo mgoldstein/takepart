@@ -7,7 +7,6 @@
 
 <div id="page-wrapper">
 <?php print $styles; ?>
-<?php print $scripts; ?>
 <style type="text/css">
 @font-face {
     font-family: 'NewsGothicBoldCondensed';
@@ -20,6 +19,7 @@
     font-style: normal;
 }    
 </style>
+<?php print $scripts; ?>
 <?php print $custom; ?>
 
 <div id='page' class='page clearfix'>
