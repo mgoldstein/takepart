@@ -1,11 +1,11 @@
 # For more information about the robots.txt standard, see:
 # http://www.robotstxt.org/orig.html
 
-User-agent: Googlebot
-Sitemap: http://www.takepart.com/googlenews.xml
+# User-agent: Googlebot
+# Sitemap: http://www.takepart.com/googlenews.xml
 
 User-agent: *
-Sitemap: http://www.takepart.com/sitemap.xml
+# Sitemap: http://www.takepart.com/sitemap.xml
 Disallow: /2008/
 Disallow: /2009/
 Disallow: /2010/
