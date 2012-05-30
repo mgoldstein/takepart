@@ -11,3 +11,11 @@
     display: block;
     width: 200px;
 }
+
+#header-wrapper ul {
+    list-style: none inside none;
+}
+#user-nav li {
+    display: inline;
+    margin: 3px 0 0 10px; 
+}
