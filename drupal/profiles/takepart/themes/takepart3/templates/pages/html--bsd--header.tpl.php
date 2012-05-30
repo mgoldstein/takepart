@@ -7,14 +7,12 @@
 
 <?php print $styles; ?>
 <?php print $scripts; ?>
+
+
 <!--[if IE]>
-<style type="test/css" media="all">
-#join-login-top {
-text-align: right;
-display: block;
-width: 200px;
-}
-</style>
+<?php
+drupal_add_css(drupal_get_path('theme', 'takepart3') . '/css/bsd_wrappers_ie.css');
+?>
 <![endif]-->
 
 <div id="page-wrapper">
