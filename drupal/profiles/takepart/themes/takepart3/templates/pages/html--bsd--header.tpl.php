@@ -4,14 +4,9 @@
  * Render TakePart header for inclusion in BSD wrappers.
  */
 ?>
-
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9">
 <?php print $styles; ?>
 <?php print $scripts; ?>
-
-
-<!--[if IE]>
-<style type="text/css" media="all">@import url("http://alpha.takepart.com/profiles/takepart/themes/takepart3/css/bsd_wrappers_ie.css");</style>
-<![endif]-->
 
 <div id="page-wrapper">
 <?php print $custom; ?>
