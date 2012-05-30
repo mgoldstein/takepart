@@ -50,12 +50,22 @@ function _tfbregistration_auth() {
     foreach ($response['registration'] as $key => $val) {
       if((substr($key, 0, 4) == 'bsd_') && ($val == 1)) {
         $bsd_keys = (explode('_', $key, 3));
-        //takepart_bsd_email_signup($response['registration']['email'], $bsd_keys[1]);
+        takepart_bsd_email_signup($response['registration']['email'], $bsd_keys[1]);
         $response['registration'][$bsd_keys[2]] = $response['registration'][$key];
+        if(isset($_SESSION['facebook_bsd_trigger'])) {
+          $_SESSION['facebook_bsd_trigger'] = $bsd_keys[1];
+        } else {
+          $_SESSION['facebook_bsd_trigger'] = $bsd_keys[1];
+        }
       }
     }
     
+    if (isset($_SESSION['facebook'])) {
+      unset($_SESSION['facebook']);
+    }
+    
     $destination = fboauth_action_invoke('connect', $app_id, $response['oauth_token']);
+    $_SESSION['facebook_register_trigger'] = true;
     
     if (empty($destination)) {
       $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
@@ -207,8 +217,9 @@ function _fbregistration_getfbreg(&$form = null) {
   
   $dest = "/fbregistration";
   
+  $app_id = variable_get('fboauth_id', '');
+  
   if(variable_get('fbregistration_type', 0) == 1)  {
-    $app_id = variable_get('fboauth_id', '');
     $fbregtag = variable_get('fbregistration_tag_iframe', '<iframe scrolling="auto" frameborder="no" style="border:none" allowTransparency="true" width="100%" height="530"></iframe>');
     $fbregtag = str_replace('<iframe','<iframe src="http://www.facebook.com/plugins/registration.php?fb_register=true&fb_only=false&client_id='.$app_id.'&redirect_uri=' . 'http://' . $_SERVER['HTTP_HOST'] . $dest . '&fields=' .$json . '"', $fbregtag);
   } else {
@@ -228,5 +239,17 @@ function _fbregistration_checkpath() {
     return true;
   } else {
     return false;
+  }
+}
+
+
+/**
+ * Implements hook_init().
+ */
+function fbregistration_init() {
+  //registration:
+  if (isset($_SESSION['facebook_register_trigger'])) {
+    unset($_SESSION['facebook_register_trigger']);
+    drupal_add_js(variable_get('fblogin_login_on_register', 'alert("on register");'), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
   }
 }
