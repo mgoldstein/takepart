@@ -47,7 +47,7 @@
         <?php print $head; ?>
         <meta property="fb:admins" content="1327833247" />
         <meta property="fb:app_id" content="247137505296280" />
-        <title>News &amp; Lifestyle Coverage on Important Topics Like Food, Environment, Social Justice, Animal Rights, Education &amp; Health | TakePart </title>
+        <title><?php print $head_title; ?></title>
         <?php print $styles; ?>
         <?php print $scripts; ?>
     </head>
