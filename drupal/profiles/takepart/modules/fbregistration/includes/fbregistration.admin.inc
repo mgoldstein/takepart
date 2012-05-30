@@ -16,6 +16,15 @@ function fbregistration_form($form, &$form_state) {
       '#required' => TRUE,
   );
   
+  $form['settings']['fbregistration_page_title'] = array(
+      '#type' => 'textfield',
+      '#size' => 60,
+      '#maxlength' => 128,
+      '#title' => t('Register Page Title'),
+      '#default_value' => variable_get('fbregistration_page_title', 'Register'),
+      '#required' => TRUE,
+  );
+  
   $form['settings']['fbregistration_type'] = array(
       '#type' => 'select',
       '#title' => t('Plugin Type'),
@@ -108,6 +117,9 @@ function fbregistration_form_submit($form, &$form_state) {
   
   $fbregistration_type = $form_state['values']['settings']['fbregistration_type'];
   variable_set('fbregistration_type', $fbregistration_type);
+  
+  $fbregistration_page_title = $form_state['values']['settings']['fbregistration_page_title'];
+  variable_set('fbregistration_page_title', $fbregistration_page_title);
   
   drupal_set_message(t('The settings have been saved.'));
   

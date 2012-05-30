@@ -24,33 +24,38 @@ function takepart3_preprocess_html(&$vars) {
         $vars['classes_array'][] = 'multipage-campaign';
     }
 
-    //Override header if field exists:
-    $nodes = $vars['page']['content']['system_main']['nodes'];
-
-    $header_override = false;
-    while ((list($key, $value) = each($nodes)) && (!$header_override)) {
-        if (is_numeric($key)) {
-            try {
-                if (isset($value['body'])) {
-                    if (array_key_exists('field_html_title', $value['body']['#object'])) {
-                        $header_override = $value['body']['#object']->field_html_title;
+    if(!isset($vars['page']['content']['system_main']['nodes'])) {
+      
+      //Override header if field exists:
+      $nodes = $vars['page']['content']['system_main']['nodes'];
+  
+      $header_override = false;
+      if(!empty($nodes)) {
+        while ((list($key, $value) = each($nodes)) && (!$header_override)) {
+            if (is_numeric($key)) {
+                try {
+                    if (isset($value['body'])) {
+                        if (array_key_exists('field_html_title', $value['body']['#object'])) {
+                            $header_override = $value['body']['#object']->field_html_title;
+                        }
                     }
-                }
-                if (isset($value['field_html_title'])) {
-                    if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
-                        $header_override = $value['field_html_title']['#object']->field_html_title;
-                        unset($vars['page']['content']['system_main']['nodes'][$key]['field_html_title']);
+                    if (isset($value['field_html_title'])) {
+                        if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
+                            $header_override = $value['field_html_title']['#object']->field_html_title;
+                            unset($vars['page']['content']['system_main']['nodes'][$key]['field_html_title']);
+                        }
                     }
-                }
-                if (isset($value['#node'])) {
-                    if (array_key_exists('field_html_title', $value['#node'])) {
-                        $header_override = $value['#node']->field_html_title;
+                    if (isset($value['#node'])) {
+                        if (array_key_exists('field_html_title', $value['#node'])) {
+                            $header_override = $value['#node']->field_html_title;
+                        }
                     }
+                } catch (Exception $e) {
+                    $header_override = false;
                 }
-            } catch (Exception $e) {
-                $header_override = false;
             }
         }
+      }
     }
 
     if ($header_override) {
