@@ -76,9 +76,13 @@ div.ideasforgood-finalist-label-text {
   color: white;
 }
 
-div.ideasforgood-finalist-label-text div.field-name-ideasforgood-finalist-first-name {
+div.ideasforgood-finalist-label-text div.ideasforgood-finalist-full-name {
   font-weight: bold;
   text-transform: uppercase;
+}
+
+div.ideasforgood-finalist-label-text div.ideasforgood-finalist-full-name div {
+  display: inline;
 }
 
 body div.ui-widget-overlay {
