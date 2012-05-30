@@ -20,6 +20,8 @@ function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
     $block_rendered = fboauth_action_display('connect');
     $link = fboauth_action_link_properties('connect');
     
+    drupal_set_title(t(variable_get('fblogin_page_title', 'Login')));
+    
     if (!user_is_logged_in()) {
       //$output .= "<span class='s'>
       //<fb:login-button>Connect</fb:login-button>

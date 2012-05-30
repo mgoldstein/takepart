@@ -15,6 +15,15 @@ function takepart_facebookapis_form($form, &$form_state) {
       '#required' => TRUE,
   );
   
+  $form['settings']['fblogin_page_title'] = array(
+      '#type' => 'textfield',
+      '#size' => 60,
+      '#maxlength' => 128,
+      '#title' => t('Login Page Title'),
+      '#default_value' => variable_get('fblogin_page_title', 'Login'),
+      '#required' => TRUE,
+  );
+  
   $form['settings']['fblogin_backdoor_url'] = array(
       '#type' => 'textfield',
       '#size' => 60,
@@ -155,6 +164,9 @@ function takepart_facebookapis_form_submit($form, &$form_state) {
 
   $facebookapi_on_register = $form_state['values']['analytics']['facebookapi_on_register'];
   variable_set('facebookapi_on_register', $facebookapi_on_register);
+  
+  $fblogin_page_title = $form_state['values']['settings']['fblogin_page_title'];
+  variable_set('fblogin_page_title', $fblogin_page_title);
   
   $fblogin_backdoor_url = $form_state['values']['settings']['fblogin_backdoor_url'];
   if(variable_get('fblogin_backdoor_url', 'backdoor') != $fblogin_backdoor_url) {
