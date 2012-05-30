@@ -252,6 +252,6 @@ function fbregistration_init() {
   //registration:
   if (isset($_SESSION['facebook_register_trigger'])) {
     unset($_SESSION['facebook_register_trigger']);
-    drupal_add_js(variable_get('fblogin_login_on_register', 'alert("on register");'), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+    drupal_add_js(variable_get('facebookapi_on_register', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
   }
 }
