@@ -48,7 +48,12 @@ function _takepart_facebookapis_curl($url) {
   curl_setopt($ch, CURLOPT_TIMEOUT, variable_get('fblogin_curl_timeout', '10'));
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_HEADER, 0);
-  return curl_exec($ch);
+  $return = curl_exec($ch);
+  if(curl_errno($ch)){
+     watchdog('takepart_facebookapis', 'Curl error: ' . curl_error($tuCurl));
+  }
+  curl_close($ch);
+  return $return;
 }
 
 

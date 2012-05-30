@@ -144,7 +144,7 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
 
 function _fbregistration_getfbreg(&$form = null) {
   
-  if(form == null) {
+  if($form == null) {
     $form = drupal_get_form('user_register_form');
   }
   
@@ -252,6 +252,8 @@ function fbregistration_init() {
   //registration:
   if (isset($_SESSION['facebook_register_trigger'])) {
     unset($_SESSION['facebook_register_trigger']);
-    drupal_add_js(variable_get('facebookapi_on_register', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+    if((variable_get('facebookapi_on_register', '')) != '') {
+      drupal_add_js(variable_get('facebookapi_on_register', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+    }
   }
 }
