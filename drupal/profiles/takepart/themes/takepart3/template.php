@@ -24,7 +24,7 @@ function takepart3_preprocess_html(&$vars) {
         $vars['classes_array'][] = 'multipage-campaign';
     }
 
-    if(!isset($vars['page']['content']['system_main']['nodes'])) {
+    if(isset($vars['page']['content']['system_main']['nodes'])) {
       
       //Override header if field exists:
       $nodes = $vars['page']['content']['system_main']['nodes'];
@@ -58,8 +58,12 @@ function takepart3_preprocess_html(&$vars) {
       }
     }
 
-    if ($header_override) {
-        $vars['head_title'] = $header_override['und'][0]['value'];
+    
+    
+    if(isset($header_override)) {
+      if ($header_override) {
+          $vars['head_title'] = $header_override['und'][0]['value'];
+      }
     }
 
     _render_tp3_renderheaderfooterfeed($vars);

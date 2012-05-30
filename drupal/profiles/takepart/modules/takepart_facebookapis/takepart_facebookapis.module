@@ -58,13 +58,15 @@ function _takepart_facebookapis_getfblogin($dest = null) {
   }
 
   $fblogintag = variable_get('fblogin_login_tag_html_a', '<fb:login-button data-scope="email,user_checkins,user_birthday" fb_register="true" fb_only="false" width="530">Log In</fb:login-button>');
-  $fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session()"  redirect_uri="' . $authpath . '" registration-url="' . $regpath . '"', $fblogintag);
+
+  //$fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session()"  redirect_uri="' . $authpath . '" registration-url="' . $regpath . '"', $fblogintag);
+  $fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session()" registration-url="' . $regpath . '"', $fblogintag);
+  
   drupal_add_js('function takepart_facebookapi_check_login_session() {
         path = \'' . $authpath . '\';
-        //alert(path);
         window.location = path;
       }',
-      array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
+      array('type' => 'inline', 'scope' => 'header', 'weight' => 5)
   );
   return $fblogintag;
 }
@@ -265,26 +267,36 @@ function takepart_facebookapis_init() { }
 function takepart_facebookapis_omniture_variables() {
     $return = array();
     //page hit:
-    drupal_add_js(variable_get('facebookapi_on_init', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+    if((variable_get('facebookapi_on_init', '')) != '') {
+      drupal_add_js(variable_get('facebookapi_on_init', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+    }
     //login:
     if (isset($_SESSION['facebook_register_user_login'])) {
       unset($_SESSION['facebook_register_user_login']);
-      drupal_add_js(variable_get('facebookapi_on_login', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+      if((variable_get('facebookapi_on_login', '')) != '') {
+        drupal_add_js(variable_get('facebookapi_on_login', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+      }
     }
     //logout:
     if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
-      drupal_add_js(variable_get('facebookapi_on_logout', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+      if((variable_get('facebookapi_on_logout', '')) != '') {
+        drupal_add_js(variable_get('facebookapi_on_logout', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+      }
     }
     //email signup:
     if (isset($_SESSION['facebook_bsd_trigger'])) {
       unset($_SESSION['facebook_bsd_trigger']);
-      drupal_add_js(variable_get('facebookapi_on_bsd_signup', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+      if((variable_get('facebookapi_on_bsd_signup', '')) != '') {
+        drupal_add_js(variable_get('facebookapi_on_bsd_signup', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+      }
       $return = $return + (array('s.linkTrackEvents'=>'event39','s.events'=>'event39', 's.eVar23'=>'TakePart Newsletter'));
     }
     //register:
     if (isset($_SESSION['facebook_register_trigger'])) {
       unset($_SESSION['facebook_register_trigger']);
-      drupal_add_js(variable_get('facebookapi_on_register', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+      if((variable_get('facebookapi_on_register', '')) != '') {
+        drupal_add_js(variable_get('facebookapi_on_register', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+      }
       $return = $return + (array('s.linkTrackEvents'=>'event21','s.events'=>'event12'));
     }
     return array("variables" => $return);
