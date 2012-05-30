@@ -74,6 +74,47 @@ function takepart_facebookapis_form($form, &$form_state) {
       '#description'=> 'XFBML <a href="http://developers.facebook.com/docs/reference/plugins/login/">login</a> tag with <a href="http://developers.facebook.com/docs/authentication/permissions/">permissions</a> to be collected in addtion to the user\'s basic information.',
   );
   
+  $form['analytics'] = array('#type' => 'fieldset', '#title' => t('Analytics'), '#tree' => TRUE);
+  
+  $form['analytics']['facebookapi_on_init'] = array(
+      '#type' => 'textarea',
+      '#rows' => 2,
+      '#title' => t('Javascript triggered on every page'),
+      '#required' => FALSE,
+      '#default_value' => variable_get('facebookapi_on_init', ''),
+  );
+  
+  $form['analytics']['facebookapi_on_login'] = array(
+      '#type' => 'textarea',
+      '#rows' => 2,
+      '#title' => t('Javascript triggered on login'),
+      '#required' => FALSE,
+      '#default_value' => variable_get('facebookapi_on_login', ''),
+  );
+  
+  $form['analytics']['facebookapi_on_logout'] = array(
+      '#type' => 'textarea',
+      '#rows' => 2,
+      '#title' => t('Javascript triggered on logout'),
+      '#required' => FALSE,
+      '#default_value' => variable_get('facebookapi_on_logout', ''),
+  );
+  
+  $form['analytics']['facebookapi_on_bsd_signup'] = array(
+      '#type' => 'textarea',
+      '#rows' => 2,
+      '#title' => t('Javascript triggered on BSD newsletter signups'),
+      '#required' => FALSE,
+      '#default_value' => variable_get('facebookapi_on_bsd_signup', ''),
+  );
+  
+  $form['analytics']['facebookapi_on_register'] = array(
+      '#type' => 'textarea',
+      '#rows' => 2,
+      '#title' => t('Javascript triggered on register'),
+      '#required' => FALSE,
+      '#default_value' => variable_get('facebookapi_on_register', ''),
+  );
   
   $form['submit'] = array(
       '#type' => 'submit',
@@ -99,6 +140,21 @@ function takepart_facebookapis_form_submit($form, &$form_state) {
   
   $fblogin_textoverbutton = $form_state['values']['settings']['fblogin_textoverbutton'];
   variable_set('fblogin_textoverbutton', $fblogin_textoverbutton);
+  
+  $facebookapi_on_init = $form_state['values']['analytics']['facebookapi_on_init'];
+  variable_set('facebookapi_on_init', $facebookapi_on_init);
+  
+  $facebookapi_on_login = $form_state['values']['analytics']['facebookapi_on_login'];
+  variable_set('facebookapi_on_login', $facebookapi_on_login);
+  
+  $facebookapi_on_logout = $form_state['values']['analytics']['facebookapi_on_logout'];
+  variable_set('facebookapi_on_logout', $facebookapi_on_logout);
+
+  $facebookapi_on_bsd_signup = $form_state['values']['analytics']['facebookapi_on_bsd_signup'];
+  variable_set('facebookapi_on_bsd_signup', $facebookapi_on_bsd_signup);
+
+  $facebookapi_on_register = $form_state['values']['analytics']['facebookapi_on_register'];
+  variable_set('facebookapi_on_register', $facebookapi_on_register);
   
   $fblogin_backdoor_url = $form_state['values']['settings']['fblogin_backdoor_url'];
   if(variable_get('fblogin_backdoor_url', 'backdoor') != $fblogin_backdoor_url) {
