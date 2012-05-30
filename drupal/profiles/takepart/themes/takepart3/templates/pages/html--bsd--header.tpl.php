@@ -10,9 +10,7 @@
 
 
 <!--[if IE]>
-<?php
-drupal_add_css(drupal_get_path('theme', 'takepart3') . '/css/bsd_wrappers_ie.css');
-?>
+<style type="text/css" media="all">@import url("http://alpha.takepart.com/profiles/takepart/themes/takepart3/css/bsd_wrappers_ie.css");</style>
 <![endif]-->
 
 <div id="page-wrapper">
