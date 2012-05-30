@@ -895,6 +895,14 @@ function _render_tp3_footer(&$params) {
     return theme('takepart3_footer', $params);
 }
 
+function _render_tp3_wrapper_header(&$params) {
+    return theme('takepart3_wrapper_header', $params);
+}
+
+function _render_tp3_wrapper_footer(&$params) {
+    return theme('takepart3_wrapper_footer', $params);
+}
+
 /*
  * Clears page, page bottom and top, fills custom section
  * with the header or footer depending on the path.
@@ -923,9 +931,11 @@ function _render_tp3_bsd_wrapper(&$vars) {
         // dpm($vars);
         _tp3_fill_template_vars($vars);
         if ($uri == 'bsd/header') {
-            $vars['custom'] = _render_tp3_header($vars);
+            $vars['custom'] = _render_tp3_wrapper_header($vars);
+            // $vars['custom'] = _render_tp3_header($vars);
         } elseif ($uri == 'bsd/footer') {
-            $vars['custom'] = _render_tp3_footer($vars);
+            $vars['custom'] = _render_tp3_wrapper_footer($vars);
+            // $vars['custom'] = _render_tp3_footer($vars);
         }
     }
 }
@@ -943,6 +953,18 @@ function takepart3_theme() {
         ),
         'takepart3_footer' => array(
             'template' => 'templates/pages/footer',
+            'arguments' => array(
+                'params' => NULL,
+            ),
+        ),
+        'takepart3_wrapper_header' => array(
+            'template' => 'templates/pages/header-bsd',
+            'arguments' => array(
+                'params' => NULL,
+            ),
+        ),
+        'takepart3_wrapper_footer' => array(
+            'template' => 'templates/pages/footer-bsd',
             'arguments' => array(
                 'params' => NULL,
             ),
