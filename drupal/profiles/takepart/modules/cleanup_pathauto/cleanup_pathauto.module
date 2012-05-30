@@ -86,7 +86,15 @@ function cleanup_pathauto_list($repair = false) {
       $bogus = preg_match($cleanup_pathauto_allowed_chars, $char);
       if ($bogus) {
         // an improper char
-        $corrected .= '-';
+        if (cleanup_pathauto_is_dash($char)) {
+          // replace em or endash with hyphen
+          $corrected .= '-';
+        }
+        else {
+          // ignore all other improper chars
+          $corrected .= '';
+        }
+
         if (!$in_bogus) {
           $line .= '<span class="bogus">';
           $in_bogus = true;
@@ -211,7 +219,14 @@ function cleanup_pathauto_pathauto_alias_alter(&$alias, array &$context) {
       $bogus = preg_match($cleanup_pathauto_allowed_chars, $char);
       if ($bogus) {
         // an improper char
-        $corrected .= '-';
+        if (cleanup_pathauto_is_dash($char)) {
+          // replace em or endash with hyphen
+          $corrected .= '-';
+        }
+        else {
+          // ignore all other improper chars
+          $corrected .= '';
+        }
         $improper_chars++;
       }
       else {
@@ -227,6 +242,19 @@ function cleanup_pathauto_pathauto_alias_alter(&$alias, array &$context) {
   }
  }
 
+
+/***
+ * returns true if $char is an endash oremdash
+ * @param $char
+ * @return bool
+ */
+function cleanup_pathauto_is_dash($char) {
+  if(($char == chr(226)) || ($char == chr(1281))) {
+    return true;
+  }
+
+  return false;
+}
 
 /**
  * Update the URL aliases for an individual node.
