@@ -29,7 +29,10 @@
   <?php print render($content['ideasforgood_finalist_image']); ?>
   <div class="ideasforgood-finalist-label-bg"></div>
   <div class="ideasforgood-finalist-label-text">
+    <div class="ideasforgood-finalist-full-name">
     <?php print render($content['ideasforgood_finalist_first_name']); ?>
+    <?php print render($content['ideasforgood_finalist_last_name']); ?>
+    </div>
     <?php print render($content['ideasforgood_finalist_idea_title']); ?>
   </div>
   <div id="ideasforgood-finalist-<?php print $ideasforgood_finalist->id; ?>-idea"
