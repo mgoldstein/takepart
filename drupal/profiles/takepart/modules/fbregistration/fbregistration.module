@@ -123,6 +123,8 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
     return;
   }
   
+  drupal_set_title(t(variable_get('fbregistration_page_title', 'Login')));
+  
   $mrkup = _fbregistration_getfbreg($form);
   
   //wipe out existing form:
@@ -153,7 +155,7 @@ function _fbregistration_getfbreg(&$form = null) {
   _fbregistration_admin_form_load($form, $fieldmappings);
   _fbregistration_bsd_form_load($form, $bsdmappings);
   
-    
+  
   foreach ($fieldmappings as $name => $field) {
   
     if(isset($field['#foreign']['#title'])) {
@@ -181,7 +183,7 @@ function _fbregistration_getfbreg(&$form = null) {
       if($field['#default_value'] == 'custom_checkbox') {
         
         if((isset($bsdmappings[$name]['#default_value']))) {
-          array_push($jsondata, array('name' => 'bsd_' . $bsdmappings[$name]['#default_value'] . "_" .$name, 'description' => $title, 'type' => 'checkbox', 'options' => $field['#foreign']['#options'], 'default' => ((isset($field['#foreign']['#default_value']) && $field['#foreign']['#default_value'] = 1) ? 'checked' : 'unchecked')));
+          array_push($jsondata, array('name' => 'bsd_' . $bsdmappings[$name]['#default_value'] . "_" .$name, 'description' => $title, 'type' => 'checkbox', 'options' => $field['#foreign']['#options'], 'default' => ((isset($field['#foreign']['#default_value']) && $field['#foreign']['#default_value'] == 1) ? 'checked' : 'unchecked')));
         } else {
           array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'checkbox', 'options' => $field['#foreign']['#options'], 'default' => ((isset($field['#foreign']['#default_value']) && $field['#foreign']['#default_value'] = 1) ? 'checked' : 'unchecked')));
         }
@@ -250,6 +252,6 @@ function fbregistration_init() {
   //registration:
   if (isset($_SESSION['facebook_register_trigger'])) {
     unset($_SESSION['facebook_register_trigger']);
-    drupal_add_js(variable_get('fblogin_login_on_register', 'alert("on register");'), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
+    drupal_add_js(variable_get('facebookapi_on_register', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
   }
 }
