@@ -18,7 +18,7 @@
             <?php print $follow_us_links; ?><!--/top follow-->
             <div id="top-search">
                 <div class="tpform-item">
-                    <form accept-charset="UTF-8" id="search-api-page-search-form-2" method="post" action="/">
+                    <form accept-charset="UTF-8" id="search-api-page-search-form-2" method="post" action="<?php print 'http://' . $_SERVER['HTTP_HOST']; ?>/">
                         <div>
                             <div class="form-item form-type-textfield form-item-keys-2">
                                 <input type="text" class="form-text" maxlength="128" size="15" value="Search TakePart" name="keys_2" id="edit-keys-2" onfocus="if(this.value=='Search TakePart'){this.value=''};" />
