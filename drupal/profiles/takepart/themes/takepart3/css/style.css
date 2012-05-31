@@ -2756,3 +2756,6 @@ body.multipage-campaign #highlighted {
 #fb_buttonwrapper {
     text-align:center;
 }
+#user-nav li {
+    font-weight: bold;
+}

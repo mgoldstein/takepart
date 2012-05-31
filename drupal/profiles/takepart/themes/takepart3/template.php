@@ -187,15 +187,15 @@ function _render_tp3_user_menu() {
                 if (function_exists('_takepart_facebookapis_get_user_session')) {
                     $fbsession = _takepart_facebookapis_get_user_session();
                     $username = $fbsession->name;
-                    if($username == '') {
-                      $username = $user->name;
+                    if ($username == '') {
+                        $username = $user->name;
                     }
                 } else {
                     $username = $user->name;
                 }
 
                 $menu_item['link']['title'] = $username;
-                $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
+                // $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
                 $menu_item['link']['href'] = null;
             } else {
                 $opts['attributes']['class'][] = 'join-login';
@@ -210,7 +210,11 @@ function _render_tp3_user_menu() {
             }
         }
 
-        $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+        if ($menu_item['link']['title'] == $username) {
+            $link = $menu_item['link']['title'];
+        } else {
+            $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+        }
         $links[] = "<li>" . $link . "</li>";
     }
     $output = "<ul id='user-nav'>" . implode($links) . "</ul>";
