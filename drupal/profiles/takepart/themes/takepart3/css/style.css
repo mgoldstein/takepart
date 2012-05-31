@@ -2745,10 +2745,14 @@ body.multipage-campaign #highlighted {
 }
 
 .block-boxes-bid-3068, .block-boxes-bid-3073 {
-    padding: 35px 20px 0;
+    padding: 35px 10px 0;
     margin-bottom: -35px;
 }
 
 .block-boxes-bid-3065, .block-boxes-bid-3067 {
 	margin-bottom: -35px;
+}
+
+#fb_buttonwrapper {
+    text-align:center;
 }
