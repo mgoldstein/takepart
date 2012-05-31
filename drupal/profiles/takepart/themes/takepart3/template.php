@@ -134,7 +134,8 @@ function _render_tp3_main_menu() {
 
 function _render_tp3_main_menu_341() {
     $menu_data = menu_tree_page_data("main-menu");
-
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
     $links = array();
     $count = count($menu_data);
     $i = 0;
@@ -143,6 +144,10 @@ function _render_tp3_main_menu_341() {
             'attributes' => _default_menu_options($menu_item),
         );
 
+    if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+        $opts['absolute'] = TRUE;
+    }
+        
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
         if ($i == 0) {
             $li = '<li class="first">';
@@ -961,6 +966,12 @@ function _render_tp3_bsd_wrapper(&$vars) {
         }
     }
 }
+/* nuclear option
+function takepart3_url_outbound_alter(&$path, &$options, $original_path) {
+  $options['absolute'] = TRUE;
+}
+ * 
+ */
 
 /**
  * Implementation of hook_theme().
