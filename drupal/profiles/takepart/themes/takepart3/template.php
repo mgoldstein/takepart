@@ -141,7 +141,7 @@ function _render_tp3_main_menu_341() {
     $i = 0;
     foreach ($menu_data as $menu_item) {
         $opts = array(
-            'attributes' => _default_menu_options($menu_item),
+            'attributes' => _default_menu_options($menu_item)
         );
 
     if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
@@ -168,13 +168,17 @@ function _render_tp3_main_menu_341() {
  */
 function _render_tp3_user_menu() {
     $menu_data = menu_tree_page_data("user-menu");
-
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
     $links = array();
     foreach ($menu_data as $menu_item) {
         $opts = array(
             'attributes' => _default_menu_options($menu_item),
         );
-
+    if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+        $opts['absolute'] = TRUE;
+    }
+    
         $opts['attributes']['class'][] = 'user-menu-' . strtolower($menu_item['link']['title']);
 
         if (empty($opts['attributes']['title'])) {
@@ -223,7 +227,8 @@ function _render_tp3_user_menu() {
 function _render_tp3_hottopics_menu() {
     $menu_data = menu_tree_page_data("menu-hot-topics");
 
-    // $links = array(0 => "<li class='title'>hot topics</li>");
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
 
     $count = count($menu_data);
     $i = 0;
@@ -233,6 +238,10 @@ function _render_tp3_hottopics_menu() {
             'attributes' => _default_menu_options($menu_item),
         );
 
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
+    
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
         if ($i == 0) {
             $li = '<li class="first">';
@@ -250,14 +259,17 @@ function _render_tp3_hottopics_menu() {
 
 function _render_footer_links_menu($menu_key) {
     $menu_data = _tp_menu_tree_data($menu_key);
-
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
     $links = array();
 
     foreach ($menu_data as $menu_item) {
         $opts = array(
             'attributes' => _default_menu_options($menu_item),
         );
-
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
         $links[] = "<li>" . $link . "</li>";
     }
@@ -287,16 +299,19 @@ function _render_tp3_topics_takepart_menu() {
 function _render_menu_columns($menu_key, $col_limit) {
     $menu_data = _tp_menu_tree_data($menu_key);
     $columns = array();
-
     $total_items = count($menu_data);
     $remainder_row = $total_items % $col_limit;
-
     $column_idx = 0;
-
     $half = count($menu_data) / 2;
-
+    
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
     foreach ($menu_data as $menu_item) {
         $opts = array('attributes' => _default_menu_options($menu_item));
+        
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
 
         $columns[$column_idx][] = "<li>" . $link . "</li>";
