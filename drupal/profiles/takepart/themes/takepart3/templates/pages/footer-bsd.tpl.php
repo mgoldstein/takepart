@@ -6,7 +6,7 @@
         <div id="footer-topic-links" class="footer-column-wrapper">
             <div class="column-title">Topics</div>
             <!--/column-->
-            <?php print $takepart_topics_nav ?>
+            <?php print $takepart_topics_nav; ?>
         </div>
     <?php endif; ?>
 
@@ -14,10 +14,10 @@
         <div id="our-film-campaigns" class="footer-column-wrapper">
             <div class="column-title">film campaigns</div>
             <!--/column-->
-            <?php print $film_camp_nav ?>
+            <?php print $film_camp_nav; ?>
             
             <div id="footer-more-campaigns">
-                <?php print l("More Film Campaigns", "node/22525", array('attributes' => array('title' => 'TakePart logo'), 'absolute' => TRUE ) )?>
+                <?php print l("More Film Campaigns", "node/22525", array('attributes' => array('title' => 'TakePart logo'), 'absolute' => TRUE ) ); ?>
             </div>
         </div>
     <?php endif; ?>
@@ -37,7 +37,7 @@
             <li class="twitter"><a href="http://www.twitter.com/takepart" target="_blank" name="&lpos=footer">twitter</a></li>
             <li class="googleplus"><a href="https://plus.google.com/113369936500827860065?prsrc=3" name="&lpos=footer" rel="publisher" style="text-decoration:none;" target="_blank" title="google plus"><img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt="google plus" style="border:0;width:24px;height:24px;" /></a></li>
             <li class="youtube"><a href="http://www.youtube.com/takepart" target="_blank" name="&lpos=footer">youtube</a></li>
-            <li class="rss"><a href="/rss">rss</a></li>
+            <li class="rss"><?php print l("rss", "node/19814", array('attributes' => array('title' => 'RSS'), 'absolute' => TRUE ) ); ?></li>
         </ul>
         
         <div id="footer-about">

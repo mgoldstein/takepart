@@ -9,11 +9,11 @@
 			<div class="header-right">
   			<div class="clear clearfix" id="nav-wrap">
       		<div id="block-menu-block-1">
-        		<?php print $top_nav ?>
+        		<?php print $top_nav; ?>
       		</div>
     		</div>
         <div id="hot-topics-nav">
-   	      <?php print $hottopic_nav ?>
+   	      <?php print $hottopic_nav; ?>
         </div><!--/hot topics nav-->
         <?php print $follow_us_links; ?><!--/top follow-->
         <div id="top-search">
