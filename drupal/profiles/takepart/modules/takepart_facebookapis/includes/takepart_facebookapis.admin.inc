@@ -87,7 +87,7 @@ function takepart_facebookapis_form($form, &$form_state) {
   
   $form['analytics']['facebookapi_on_init'] = array(
       '#type' => 'textarea',
-      '#rows' => 2,
+      '#rows' => 4,
       '#title' => t('Javascript triggered on every page'),
       '#required' => FALSE,
       '#default_value' => variable_get('facebookapi_on_init', ''),

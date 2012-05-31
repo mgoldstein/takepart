@@ -326,3 +326,19 @@ function takepart_facebookapis_drupal_goto_alter(&$path, &$options, &$http_respo
     drupal_goto('<front>', $query);
   }
 }
+
+
+function _takepart_facebookapis_get_user_session($account) {
+  if (!isset($_SESSION['facebook'])) {
+    $app_id = variable_get('fboauth_id', '');
+    $app_secret = variable_get('fboauth_secret', '');
+    $cookie = _takepart_facebookapis_get_facebook_cookie($app_id, $app_secret);
+    if (isset($cookie['access_token'])) {
+      $result = fboauth_graph_query('/me', $cookie['access_token']);
+      $_SESSION['facebook'] = $result;
+    }
+    return $_SESSION['facebook'];
+  } else {
+    return $_SESSION['facebook'];
+  }
+}

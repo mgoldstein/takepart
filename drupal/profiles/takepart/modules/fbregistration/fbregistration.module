@@ -123,7 +123,7 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
     return;
   }
   
-  drupal_set_title(t(variable_get('fbregistration_page_title', 'Login')));
+  drupal_set_title(t(variable_get('fbregistration_page_title', 'Register')));
   
   $mrkup = _fbregistration_getfbreg($form);
   
@@ -151,10 +151,11 @@ function _fbregistration_getfbreg(&$form = null) {
   $fieldmappings = array();
   $bsdmappings = array();
   $jsondata = array();
+  $jsonsorter = array();
   
   _fbregistration_admin_form_load($form, $fieldmappings);
   _fbregistration_bsd_form_load($form, $bsdmappings);
-  
+ 
   
   foreach ($fieldmappings as $name => $field) {
   
@@ -202,8 +203,24 @@ function _fbregistration_getfbreg(&$form = null) {
       }
   
     }
+    
+    if(isset($field['#foreign']['#weight'])) {
+      array_push($jsonsorter, $field['#foreign']['#weight']);
+    } else {
+      array_push($jsonsorter, count($jsondata));
+    }
       
   }
+
+  /*
+  print "<pre>";
+  print_r($jsonsorter);
+  print "</pre>";
+  
+  print "<pre>";
+  print_r($jsonsorter);
+  print "</pre>";
+  */
   
   $json = json_encode($jsondata);
   

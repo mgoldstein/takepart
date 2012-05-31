@@ -10,7 +10,7 @@ function _takepart_facebookapis_get_facebook_cookie($app_id, $app_secret) {
 
 function _takepart_facebookapis_get_old_facebook_cookie($app_id, $app_secret) {
   $args = array();
-  parse_str(trim($_COOKIE['fbsr_' . $app_id], '\\"'), $args);
+  parse_str(trim($_COOKIE['fbs_' . $app_id], '\\"'), $args);
   ksort($args);
   $payload = '';
   foreach ($args as $key => $value) {
@@ -50,7 +50,7 @@ function _takepart_facebookapis_curl($url) {
   curl_setopt($ch, CURLOPT_HEADER, 0);
   $return = curl_exec($ch);
   if(curl_errno($ch)){
-     watchdog('takepart_facebookapis', 'Curl error: ' . curl_error($tuCurl));
+     watchdog('takepart_facebookapis', 'Curl error: ' . curl_error($ch));
   }
   curl_close($ch);
   return $return;
