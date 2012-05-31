@@ -232,8 +232,6 @@ function _fbregistration_getfbreg(&$form = null) {
     $dest = "/fbregistration";
   }
   
-  $dest = "/fbregistration";
-  
   $app_id = variable_get('fboauth_id', '');
   
   if(variable_get('fbregistration_type', 0) == 1)  {
