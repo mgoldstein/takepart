@@ -60,11 +60,11 @@
     $('.ideasforgood-finalist-item').each(function() {
 
       var tooltip_width = 376;
-      var target_corner = 'bottomLeft';
+      var target_corner = 'topRight';
       var tooltip_corner = 'topLeft';
 
-      if (($(document).width() - $(this).offset().left) < tooltip_width) {
-        target_corner = 'bottomRight';
+      if (($(document).width() - $(this).offset().left) < (tooltip_width + 150)) {
+        target_corner = 'topLeft';
         tooltip_corner = 'topRight';
       }
 
