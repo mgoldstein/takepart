@@ -24,37 +24,46 @@ function takepart3_preprocess_html(&$vars) {
         $vars['classes_array'][] = 'multipage-campaign';
     }
 
-    //Override header if field exists:
-    $nodes = $vars['page']['content']['system_main']['nodes'];
-
-    $header_override = false;
-    while ((list($key, $value) = each($nodes)) && (!$header_override)) {
-        if (is_numeric($key)) {
-            try {
-                if (isset($value['body'])) {
-                    if (array_key_exists('field_html_title', $value['body']['#object'])) {
-                        $header_override = $value['body']['#object']->field_html_title;
+    if(isset($vars['page']['content']['system_main']['nodes'])) {
+      
+      //Override header if field exists:
+      $nodes = $vars['page']['content']['system_main']['nodes'];
+  
+      $header_override = false;
+      if(!empty($nodes)) {
+        while ((list($key, $value) = each($nodes)) && (!$header_override)) {
+            if (is_numeric($key)) {
+                try {
+                    if (isset($value['body'])) {
+                        if (array_key_exists('field_html_title', $value['body']['#object'])) {
+                            $header_override = $value['body']['#object']->field_html_title;
+                        }
                     }
-                }
-                if (isset($value['field_html_title'])) {
-                    if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
-                        $header_override = $value['field_html_title']['#object']->field_html_title;
-                        unset($vars['page']['content']['system_main']['nodes'][$key]['field_html_title']);
+                    if (isset($value['field_html_title'])) {
+                        if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
+                            $header_override = $value['field_html_title']['#object']->field_html_title;
+                            unset($vars['page']['content']['system_main']['nodes'][$key]['field_html_title']);
+                        }
                     }
-                }
-                if (isset($value['#node'])) {
-                    if (array_key_exists('field_html_title', $value['#node'])) {
-                        $header_override = $value['#node']->field_html_title;
+                    if (isset($value['#node'])) {
+                        if (array_key_exists('field_html_title', $value['#node'])) {
+                            $header_override = $value['#node']->field_html_title;
+                        }
                     }
+                } catch (Exception $e) {
+                    $header_override = false;
                 }
-            } catch (Exception $e) {
-                $header_override = false;
             }
         }
+      }
     }
 
-    if ($header_override) {
-        $vars['head_title'] = $header_override['und'][0]['value'];
+    
+    
+    if(isset($header_override)) {
+      if ($header_override) {
+          $vars['head_title'] = $header_override['und'][0]['value'];
+      }
     }
 
     _render_tp3_renderheaderfooterfeed($vars);
@@ -125,7 +134,8 @@ function _render_tp3_main_menu() {
 
 function _render_tp3_main_menu_341() {
     $menu_data = menu_tree_page_data("main-menu");
-
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
     $links = array();
     $count = count($menu_data);
     $i = 0;
@@ -134,6 +144,10 @@ function _render_tp3_main_menu_341() {
             'attributes' => _default_menu_options($menu_item),
         );
 
+    if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+        $opts['absolute'] = TRUE;
+    }
+        
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
         if ($i == 0) {
             $li = '<li class="first">';
@@ -170,7 +184,26 @@ function _render_tp3_user_menu() {
         if ($menu_item['link']['href'] == 'user') {
             if (user_is_logged_in()) {
                 global $user;
-                $menu_item['link']['title'] = $user->name;
+                
+                if(function_exists('_takepart_facebookapis_get_facebook_cookie')) {
+                  if (!isset($_SESSION['facebook'])) {
+                    $app_id = variable_get('fboauth_id', '');
+                    $app_secret = variable_get('fboauth_secret', '');
+                    $cookie = _takepart_facebookapis_get_facebook_cookie($app_id, $app_secret);
+                    if (isset($cookie['access_token'])) {
+                      $result = fboauth_graph_query('/me', $cookie['access_token']);
+                      $username = $result->name;
+                      $_SESSION['facebook'] = $result;
+                    }
+                    
+                  } else {
+                    $username = $_SESSION['facebook']->name;
+                  }
+                } else {
+                  $username = $user->name;
+                }
+                                
+                $menu_item['link']['title'] = $username;
                 $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
             } else {
                 $opts['attributes']['class'][] = 'join-login';
@@ -189,12 +222,6 @@ function _render_tp3_user_menu() {
         $links[] = "<li>" . $link . "</li>";
     }
     $output = "<ul id='user-nav'>" . implode($links) . "</ul>";
-
-    if (!user_is_logged_in()) {
-        $output .= "<span class='fb'>  			 
-  				  <fb:login-button>Connect</fb:login-button>
-  				</span>";
-    }
 
     return $output;
 }
@@ -939,6 +966,12 @@ function _render_tp3_bsd_wrapper(&$vars) {
         }
     }
 }
+/* nuclear option
+function takepart3_url_outbound_alter(&$path, &$options, $original_path) {
+  $options['absolute'] = TRUE;
+}
+ * 
+ */
 
 /**
  * Implementation of hook_theme().
