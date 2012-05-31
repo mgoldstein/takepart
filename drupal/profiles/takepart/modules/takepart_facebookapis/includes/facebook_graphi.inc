@@ -32,9 +32,15 @@ function _takepart_facebookapis_get_new_facebook_cookie($app_id, $app_secret) {
     // the cookie is valid/signed correctly
     // lets change "code" into an "access_token"
     $access_token_response = _takepart_facebookapis_curl("https://graph.facebook.com/oauth/access_token?client_id=$app_id&redirect_uri=&client_secret=$app_secret&code=$signed_request[code]");
-    parse_str($access_token_response);
-    $signed_request['access_token'] = $access_token;
-    $signed_request['expires'] = time() + $expires;
+    if (!is_null($access_token_response)) {
+      parse_str($access_token_response);
+      $signed_request['access_token'] = $access_token;
+      $signed_request['expires'] = time() + $expires;
+    } else {
+      watchdog('takepart_facebookapis', 'access token was null');
+    }
+  } else {
+    watchdog('takepart_facebookapis', 'no signed request');
   }
   
 //  print "Key/Access Token:". $signed_request[access_token] . "<br/>";

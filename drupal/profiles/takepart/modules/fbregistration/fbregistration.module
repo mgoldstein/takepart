@@ -92,6 +92,7 @@ function _tfbregistration_auth() {
     
   } else {
     drupal_set_message( t('There was an issue communicating with facebook.'), 'error' );
+    watchdog('takepart_facebookapis', 'no signed request', $_REQUEST);
     $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
     drupal_goto($destination);
   }

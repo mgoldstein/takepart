@@ -105,6 +105,7 @@ function _takepart_facebookapis_auth($action) {
     }
   } else {
     drupal_set_message( t('There was an issue communicating with facebook.'), 'error' );
+    watchdog('takepart_facebookapis', 'no access token', $cookie);
     $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
     drupal_goto($destination);
   }
