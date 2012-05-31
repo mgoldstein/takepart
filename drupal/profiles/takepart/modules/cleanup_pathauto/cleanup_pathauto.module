@@ -86,7 +86,15 @@ function cleanup_pathauto_list($repair = false) {
       $bogus = preg_match($cleanup_pathauto_allowed_chars, $char);
       if ($bogus) {
         // an improper char
-        $corrected .= '-';
+        if (cleanup_pathauto_is_dash($char)) {
+          // replace em or endash with hyphen
+          $corrected .= '-';
+        }
+        else {
+          // ignore all other improper chars
+          $corrected .= '';
+        }
+
         if (!$in_bogus) {
           $line .= '<span class="bogus">';
           $in_bogus = true;
@@ -190,17 +198,18 @@ EOT;
 }
 
 
-/**
- * Implements hook_entity_presave($entity, $type)().
+/***
+ * @param $alias
+ * @param array $context
  *
- * This checks the path for non-standard characters and replaces them with hyphens
+ * implementation of hook_pathauto_alias_alter
+ *
+ * remove improper characters from aliases
  */
-function cleanup_pathauto_entity_presave($entity, $type) {
-  if ($type == 'node') {
+function cleanup_pathauto_pathauto_alias_alter(&$alias, array &$context) {
+  if (strlen($alias) > 0) {
     // allowed characters (regex)
     $cleanup_pathauto_allowed_chars = variable_get('cleanup_pathauto_allowed_chars', '');
-
-    $alias = $entity->path['alias'];
     $improper_chars = 0;    // # of improper chars found
     $corrected = '';
 
@@ -210,7 +219,14 @@ function cleanup_pathauto_entity_presave($entity, $type) {
       $bogus = preg_match($cleanup_pathauto_allowed_chars, $char);
       if ($bogus) {
         // an improper char
-        $corrected .= '-';
+        if (cleanup_pathauto_is_dash($char)) {
+          // replace em or endash with hyphen
+          $corrected .= '-';
+        }
+        else {
+          // ignore all other improper chars
+          $corrected .= '';
+        }
         $improper_chars++;
       }
       else {
@@ -220,10 +236,54 @@ function cleanup_pathauto_entity_presave($entity, $type) {
     }
 
     if ($improper_chars > 0) {
-      $entity->path['alias'] = $corrected;
+      $alias = $corrected;
       watchdog('cleanup_pathauto', ':improper_chars characters replaced while creating node alias %alias', array(':improper_chars' => $improper_chars, '%alias' => $corrected), WATCHDOG_NOTICE);
     }
   }
+ }
+
+
+/***
+ * returns true if $char is an endash oremdash
+ * @param $char
+ * @return bool
+ */
+function cleanup_pathauto_is_dash($char) {
+  if(($char == chr(226)) || ($char == chr(1281))) {
+    return true;
+  }
+
+  return false;
+}
+
+/**
+ * Update the URL aliases for an individual node.
+ *
+ * @param $node
+ *   A node object.
+ * @param $op
+ *   Operation being performed on the node ('insert', 'update' or 'bulkupdate').
+ * @param $options
+ *   An optional array of additional options.
+ */
+function cleanup_pathauto_pathauto_node_update_alias(stdClass $node, $op, array $options = array()) {
+  // Skip processing if the user has disabled pathauto for the node.
+  if (isset($node->path['pathauto']) && empty($node->path['pathauto'])) {
+    return;
+  }
+
+  $options += array(
+    'language' => isset($node->language) ? $node->language : LANGUAGE_NONE,
+  );
+
+  // Skip processing if the node has no pattern.
+  if (!pathauto_pattern_load_by_entity('node', $node->type, $options['language'])) {
+    return;
+  }
+
+  module_load_include('inc', 'pathauto');
+  $uri = entity_uri('node', $node);
+  pathauto_create_alias('node', $op, $uri['path'], array('node' => $node), $node->type, $options['language']);
 }
 
 

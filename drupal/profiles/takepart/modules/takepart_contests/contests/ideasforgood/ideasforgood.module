@@ -512,8 +512,17 @@ class IdeasForGoodFinalistController extends EntityAPIController {
 
   protected function registerViewContent($entity, $view_mode, $langcode) {
 
+    $pos = strpos($_GET['q'], '?');
+    if ($pos === FALSE) {
+      $destination = $_GET['q'] . "?selected={$entity->id}";
+    }
+    else {
+      $pieces = explode('?', $_GET['q'], 2);
+      $destination = $pieces[0] . "?selected={$entity->id}" . "&" . $pieces[1];
+    }
+
     if (function_exists('_takepart_facebookapis_getfblogin')) {
-      $connect_button = _takepart_facebookapis_getfblogin($_GET['q']);
+      $connect_button = _takepart_facebookapis_getfblogin($destination);
     }
     else {
       $connect_src = implode('/', array(
@@ -522,7 +531,7 @@ class IdeasForGoodFinalistController extends EntityAPIController {
         'connect_button.png',
       ));
       $connect_button = '<a class="ideasforgood-button-link"'
-        . ' href="/user?destination=' . $_GET['q'] . '">'
+        . ' href="/user?destination=' . urlencode($destination) . '">'
         . '<img src="/' . $connect_src . '" alt="Connect with Facebook">'
         . '</a>';
     }
