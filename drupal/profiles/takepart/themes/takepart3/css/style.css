@@ -2703,11 +2703,15 @@ body.multipage-campaign #highlighted {
 	display: none;
 }
 
-.page-user-register .region-full-width-top {
+.page-user-register .region-full-width-top, .page-user-register .region-full-width-bottom, .not-logged-in .region-full-width-bottom {
 	padding: 35px 20px 0;
 }
 
-.page-user-register .region-full-width-top h2 {
+.page-user-register .region-full-width-bottom, .not-logged-in .region-full-width-bottom {
+    padding-top:0px;
+}
+
+.page-user-register .region-full-width-top h2, .block-boxes-bid-3068 h2, .block-boxes-bid-3073 h2 {
     color: #99BBCC;
     font-size: 18px;
     font-weight: 300;
@@ -2740,7 +2744,11 @@ body.multipage-campaign #highlighted {
   text-align: center;
 }
 
-.block-boxes-bid-3068 {
+.block-boxes-bid-3068, .block-boxes-bid-3073 {
     padding: 35px 20px 0;
     margin-bottom: -35px;
+}
+
+.block-boxes-bid-3065, .block-boxes-bid-3067 {
+	margin-bottom: -35px;
 }

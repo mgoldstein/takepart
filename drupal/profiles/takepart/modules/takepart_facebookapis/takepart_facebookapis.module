@@ -328,7 +328,7 @@ function takepart_facebookapis_drupal_goto_alter(&$path, &$options, &$http_respo
 }
 
 
-function _takepart_facebookapis_get_user_session($account) {
+function _takepart_facebookapis_get_user_session() {
   if (!isset($_SESSION['facebook'])) {
     $app_id = variable_get('fboauth_id', '');
     $app_secret = variable_get('fboauth_secret', '');
