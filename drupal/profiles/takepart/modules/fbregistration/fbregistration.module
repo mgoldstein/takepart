@@ -151,7 +151,6 @@ function _fbregistration_getfbreg(&$form = null) {
   $fieldmappings = array();
   $bsdmappings = array();
   $jsondata = array();
-  $jsonsorter = array();
   
   _fbregistration_admin_form_load($form, $fieldmappings);
   _fbregistration_bsd_form_load($form, $bsdmappings);
@@ -167,7 +166,7 @@ function _fbregistration_getfbreg(&$form = null) {
     }
   
     if ((strrpos($field['#default_value'], 'custom') !== 0) && ($field['#default_value'] != 'not_mapped')) {
-      array_push($jsondata, (object)array('name' => $field['#default_value']));
+      array_push($jsondata, array('name' => $field['#default_value']));
     }
   
     if ((strrpos($field['#default_value'], 'custom') === 0) && ($field['#default_value'] != 'not_mapped')) {
@@ -205,34 +204,32 @@ function _fbregistration_getfbreg(&$form = null) {
     }
     
     if(isset($field['#foreign']['#weight'])) {
-      array_push($jsonsorter, $field['#foreign']['#weight']);
-    } else {
-      array_push($jsonsorter, count($jsondata));
+      $jsondata[count($jsondata)-1]['weight'] = $field['#foreign']['#weight'];
     }
       
   }
-
-  /*
-  print "<pre>";
-  print_r($jsonsorter);
-  print "</pre>";
   
-  print "<pre>";
-  print_r($jsonsorter);
-  print "</pre>";
-  */
+  //Sort fields by weight:
+  for($c=0;$c<sizeof($jsondata);$c++){
+    if(!isset($jsondata[$c]['weight'])) {
+      $jsondata[$c]['weight'] = $c;
+    }
+  }  
+  usort($jsondata, '_fbregistration_sort_json_cmp');
+  for($c=0;$c<sizeof($jsondata);$c++){
+    if(isset($jsondata[$c]['weight'])) {
+      unset($jsondata[$c]['weight']);
+    }
+  }
   
-  $json = json_encode($jsondata);
-  
+  $json = json_encode($jsondata);  
   $json = str_replace('"',"'",$json);
-  
   
   if(isset($_GET['destination'])) {
     $dest = "/fbregistration" . "?destination=" . urlencode($_GET['destination']);
   } else {
     $dest = "/fbregistration";
   }
-  
   
   $dest = "/fbregistration";
   
@@ -258,6 +255,14 @@ function _fbregistration_checkpath() {
     return true;
   } else {
     return false;
+  }
+}
+
+function _fbregistration_sort_json_cmp($a, $b) {
+  if ($a['weight'] == $b['weight']) {
+    return 0;
+  } else {
+    return $a['weight'] > $b['weight'] ? 1 : -1;
   }
 }
 

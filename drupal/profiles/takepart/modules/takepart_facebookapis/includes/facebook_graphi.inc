@@ -51,6 +51,7 @@ function _takepart_facebookapis_curl($url) {
   $return = curl_exec($ch);
   if(curl_errno($ch)){
      watchdog('takepart_facebookapis', 'Curl error: ' . curl_error($ch));
+     drupal_set_message( t('There was an issue connecting to facebook.'), 'error' );
   }
   curl_close($ch);
   return $return;

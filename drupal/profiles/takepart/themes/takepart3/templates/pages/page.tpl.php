@@ -47,6 +47,10 @@
   
   </div>
   
+   <?php if ($page['full_width_bottom']): ?>
+      <?php print render($page['full_width_bottom']); ?>
+   <?php endif; ?>
+  
 <?php print $footer ?>
 
 </div>

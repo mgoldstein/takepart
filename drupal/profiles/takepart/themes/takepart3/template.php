@@ -193,6 +193,7 @@ function _render_tp3_user_menu() {
 
                 $menu_item['link']['title'] = $username;
                 $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
+                $menu_item['link']['href'] = null;
             } else {
                 $opts['attributes']['class'][] = 'join-login';
                 $opts['query'] = array("destination" => current_path());
