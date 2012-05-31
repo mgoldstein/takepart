@@ -187,6 +187,9 @@ function _render_tp3_user_menu() {
                 if (function_exists('_takepart_facebookapis_get_user_session')) {
                     $fbsession = _takepart_facebookapis_get_user_session();
                     $username = $fbsession->name;
+                    if($username == '') {
+                      $username = $user->name;
+                    }
                 } else {
                     $username = $user->name;
                 }
