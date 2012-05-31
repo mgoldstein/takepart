@@ -52,7 +52,7 @@ function _takepart_facebookapis_getfblogin($dest = null) {
     $authpath = 'http://' . $_SERVER['HTTP_HOST'] . ('/tpfboauth/connect');
   }
 
-  $fblogintag = variable_get('fblogin_login_tag_html_a', '<fb:login-button data-scope="email,user_checkins,user_birthday" fb_register="true" fb_only="false" width="530">Log In</fb:login-button>');
+  $fblogintag = variable_get('fblogin_login_tag_html_a', '<fb:login-button data-scope="email,user_checkins,user_birthday" fb_register="true" fb_only="false">Log In</fb:login-button>');
 
   //$fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session()"  redirect_uri="' . $authpath . '" registration-url="' . $regpath . '"', $fblogintag);
 
