@@ -213,10 +213,13 @@ function cleanup_pathauto_pathauto_alias_alter(&$alias, array &$context) {
     $improper_chars = 0;    // # of improper chars found
     $corrected = '';
 
+    // split string into chars; some could be multibyte
+    $split = cleanup_pathauto_unistr_to_ords($alias);
+
     // walk alias string, looking for improper characters
-    for ($i=0; $i < strlen($alias); $i++) {
-      $char = $alias[$i];
-      $bogus = preg_match($cleanup_pathauto_allowed_chars, $char);
+    for ($i=0; $i < count($split); $i++) {
+      $char = $split[$i];
+      $bogus = (preg_match($cleanup_pathauto_allowed_chars, $char) || ($char > 255));
       if ($bogus) {
         // an improper char
         if (cleanup_pathauto_is_dash($char)) {
@@ -231,7 +234,7 @@ function cleanup_pathauto_pathauto_alias_alter(&$alias, array &$context) {
       }
       else {
         // not an improper char
-        $corrected .= $char;
+        $corrected .= chr($char);
       }
     }
 
@@ -244,12 +247,40 @@ function cleanup_pathauto_pathauto_alias_alter(&$alias, array &$context) {
 
 
 /***
+ * split string into array of chars; may be unicode
+ *
+ * see comment at http://www.php.net/manual/en/function.ord.php
+ *
+ *
+ * @param $str
+ * @param string $encoding
+ * @return array
+ */
+function cleanup_pathauto_unistr_to_ords($str, $encoding = 'UTF-8'){
+  // Turns a string of unicode characters into an array of ordinal values,
+  // Even if some of those characters are multibyte.
+  $str = mb_convert_encoding($str,"UCS-4BE",$encoding);
+  $ords = array();
+
+  // Visit each unicode character
+  for($i = 0; $i < mb_strlen($str,"UCS-4BE"); $i++){
+    // Now we have 4 bytes. Find their total
+    // numeric value.
+    $s2 = mb_substr($str,$i,1,"UCS-4BE");
+    $val = unpack("N",$s2);
+    $ords[] = $val[1];
+  }
+  return($ords);
+}
+
+
+/***
  * returns true if $char is an endash oremdash
  * @param $char
  * @return bool
  */
 function cleanup_pathauto_is_dash($char) {
-  if(($char == chr(226)) || ($char == chr(1281))) {
+  if(($char == 8211) || ($char == 8212)) {
     return true;
   }
 
