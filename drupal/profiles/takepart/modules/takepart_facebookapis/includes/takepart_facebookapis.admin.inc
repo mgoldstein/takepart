@@ -10,8 +10,24 @@ function takepart_facebookapis_form($form, &$form_state) {
   $form['settings']['fblogin_state'] = array(
       '#type' => 'select',
       '#title' => t('Replace standard login form with the Facebook login plugin?'),
-      '#default_value' => variable_get('fblogin_state', 'No'),
+      '#default_value' => variable_get('fblogin_state', 0),
       '#options' => array(0 => t('No'), 1 => t('Yes'),),
+      '#required' => TRUE,
+  );
+  
+  $form['settings']['fblogin_method'] = array(
+      '#type' => 'select',
+      '#title' => t('Facebook Login Method'),
+      '#default_value' => variable_get('fblogin_method', 0),
+      '#options' => array(0 => t('Standard'), 1 => t('Backup'),),
+      '#required' => TRUE,
+  );
+  
+  $form['settings']['fblogin_method_regredir'] = array(
+      '#type' => 'select',
+      '#title' => t('Facebook Registration Redirect Method'),
+      '#default_value' => variable_get('fblogin_method_regredir', 0),
+      '#options' => array(0 => t('Standard'), 1 => t('Backup'),),
       '#required' => TRUE,
   );
   
@@ -140,6 +156,12 @@ function takepart_facebookapis_form_submit($form, &$form_state) {
     
   $state = $form_state['values']['settings']['fblogin_state'];
   variable_set('fblogin_state', $state);
+  
+  $fblogin_method = $form_state['values']['settings']['fblogin_method'];
+  variable_set('fblogin_method', $fblogin_method);
+
+  $fblogin_method_regredir = $form_state['values']['settings']['fblogin_method_regredir'];
+  variable_set('fblogin_method_regredir', $fblogin_method_regredir);
 
   $fblogin_login_tag = $form_state['values']['settings']['fblogin_login_tag'];
   variable_set('fblogin_login_tag_html_a', $fblogin_login_tag);
