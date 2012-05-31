@@ -50,10 +50,10 @@ function _takepart_facebookapis_getfblogin($dest = null) {
   
   if(variable_get('fbregistration_path', '/user/register') != "/" . $dest) {
     $dest = urlencode($dest);
-    $regpath = 'http://' . $_SERVER['HTTP_HOST'] . (variable_get('fbregistration_path', '/user/register') . "?destination=" . $dest);
+    $regpath = 'http://' . $_SERVER['HTTP_HOST'] . (variable_get('fbregistration_path', '/user/register') . "?fbreg=true&destination=" . $dest);
     $authpath = 'http://' . $_SERVER['HTTP_HOST'] . ('/tpfboauth/connect?destination=' . $dest);
   } else {
-    $regpath = 'http://' . $_SERVER['HTTP_HOST'] . (variable_get('fbregistration_path', '/user/register'));
+    $regpath = 'http://' . $_SERVER['HTTP_HOST'] . (variable_get('fbregistration_path', '/user/register?fbreg=true'));
     $authpath = 'http://' . $_SERVER['HTTP_HOST'] . ('/tpfboauth/connect');
   }
 
@@ -337,8 +337,10 @@ function _takepart_facebookapis_get_user_session() {
     if (isset($cookie['access_token'])) {
       $result = fboauth_graph_query('/me', $cookie['access_token']);
       $_SESSION['facebook'] = $result;
+      return $result;
+    } else {
+      return array();
     }
-    return $_SESSION['facebook'];
   } else {
     return $_SESSION['facebook'];
   }
