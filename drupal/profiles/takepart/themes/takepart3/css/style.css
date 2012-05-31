@@ -2752,3 +2752,7 @@ body.multipage-campaign #highlighted {
 .block-boxes-bid-3065, .block-boxes-bid-3067 {
 	margin-bottom: -35px;
 }
+
+#fb_buttonwrapper {
+    text-align:center;
+}
