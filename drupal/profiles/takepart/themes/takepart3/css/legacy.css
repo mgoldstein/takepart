@@ -115,15 +115,6 @@ img.photo, .gallery-item img {
     height: 26px; 
 }
 
-#user-nav li{
-    display: inline-block;
-    vertical-align: top;
-    margin-top:3px;
-}
-.logged-in #user-nav li {
-    margin-left:10px;
-}
-
 #join-login-top a.user-menu-register:after {
     content:"       or";
     font-weight: normal;

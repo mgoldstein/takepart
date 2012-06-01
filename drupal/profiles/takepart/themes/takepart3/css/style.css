@@ -2756,3 +2756,13 @@ body.multipage-campaign #highlighted {
 #fb_buttonwrapper {
     text-align:center;
 }
+
+#user-nav li{
+    display: inline-block;
+    font-weight: bold;
+    margin-top:3px;
+}
+
+.logged-in #user-nav li {
+    margin-left:10px;
+}
