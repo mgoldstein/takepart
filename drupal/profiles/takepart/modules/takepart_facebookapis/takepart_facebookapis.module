@@ -277,7 +277,7 @@ function takepart_facebookapis_page_alter(&$page) {
 function takepart_facebookapis_init() { 
   if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
     $app_id = variable_get('fboauth_id', '');
-    unset($_COOKIE['fbsr_' . $app_id]);  
+    setcookie('fbsr_' . $app_id,'',time()-3600);
   }
 }
 
