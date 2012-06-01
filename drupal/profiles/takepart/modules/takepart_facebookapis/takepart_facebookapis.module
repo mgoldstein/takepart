@@ -24,8 +24,6 @@ function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
         '#markup' => "<div id=\"fbloginbox\"><p id=\"fblogin_textoverbutton\">" . variable_get('fblogin_textoverbutton', 'If you have a <strong>Facebook Account</strong>') . "</p><div id=\"fb_buttonwrapper\">" . _takepart_facebookapis_getfblogin() . "</div></div>",
       );
     
-    $form['#validate'][] = '_takepart_facebookapis_login_form_validate';
-    
   }
   
 }
@@ -203,7 +201,9 @@ function _takepart_facebookapis_channelfile() {
 
 //Menu callback for test page:
 function _takepart_facebookapis_backdoor() {
-  return drupal_render(drupal_get_form('user_login'));
+  $form = drupal_get_form('user_login');
+  $form['#validate'][] = '_takepart_facebookapis_login_form_validate';
+  return drupal_render($form);
 }
 
 
@@ -270,10 +270,16 @@ function takepart_facebookapis_page_alter(&$page) {
 
 
 
+
 /**
  * Implements hook_init().
  */
-function takepart_facebookapis_init() { }
+function takepart_facebookapis_init() { 
+  if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
+    $app_id = variable_get('fboauth_id', '');
+    unset($_COOKIE['fbsr_' . $app_id]);  
+  }
+}
 
 
 /**
