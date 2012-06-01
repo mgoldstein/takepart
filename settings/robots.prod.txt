@@ -8,6 +8,8 @@ Disallow: /2010/
 Disallow: /add/
 Disallow: /admin/
 Disallow: /article/2007/
+Disallow: /article/2008/
+Disallow: /article/2009/
 Disallow: /article/2010/
 Disallow: /articles/
 Disallow: /arts-entertainment/
