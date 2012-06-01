@@ -25,6 +25,7 @@
  */
 ?>
 <?php print render($content['voting_group']['ideasforgood_group_register']); ?>
+<p class="">Or, if you already have an account with TakePart.com, <a class="ideasforgood-link" href="<?php print $content['sign_in_url']; ?>">sign in</a>.</p>
 <div class="ideasforgood-centered-content">
   <div>
     <?php print render($content['connect_button']); ?>
