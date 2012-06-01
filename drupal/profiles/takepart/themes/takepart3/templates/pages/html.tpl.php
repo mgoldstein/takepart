@@ -55,10 +55,26 @@
         <div id="skip-link">
             <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
         </div>
-        <?php print $page_top; ?>
-        <?php print $page; ?>
-        <?php print $custom; ?>
-        <?php print $page_bottom; ?>
+        <?php
+        if (isset($page_top)):
+            echo $page_top;
+        endif;
+        ?>        
+        <?php
+        if (isset($page)):
+            echo $page;
+        endif;
+        ?>      
+        <?php
+        if (isset($custom)):
+            echo $custom;
+        endif;
+        ?>        
+        <?php
+        if (isset($page_bottom)):
+            echo $page_bottom;
+        endif;
+        ?>
         <?php
         if (isset($tp_sysinfo_comment_tags)):
             echo $tp_sysinfo_comment_tags;

@@ -16,6 +16,7 @@ Disallow: /article/2010/
 Disallow: /articles/
 Disallow: /arts-entertainment/
 Disallow: /arts-entertainment?
+Disallow: /backdoor/
 Disallow: /blog/2007/
 Disallow: /blog/2008/
 Disallow: /blog/2009/
@@ -49,6 +50,7 @@ Disallow: /themes/
 Disallow: /url/
 Disallow: /user/
 Disallow: /users/
+Disallow: /googlenews.xml
 Disallow: /CHANGELOG.txt
 Disallow: /cron.php
 Disallow: /INSTALL.mysql.txt

@@ -24,40 +24,50 @@ function takepart3_preprocess_html(&$vars) {
         $vars['classes_array'][] = 'multipage-campaign';
     }
 
-    //Override header if field exists:
-    $nodes = $vars['page']['content']['system_main']['nodes'];
+    if (isset($vars['page']['content']['system_main']['nodes'])) {
 
-    $header_override = false;
-    while ((list($key, $value) = each($nodes)) && (!$header_override)) {
-        if (is_numeric($key)) {
-            try {
-                if (isset($value['body'])) {
-                    if (array_key_exists('field_html_title', $value['body']['#object'])) {
-                        $header_override = $value['body']['#object']->field_html_title;
+        //Override header if field exists:
+        $nodes = $vars['page']['content']['system_main']['nodes'];
+
+        $header_override = false;
+        if (!empty($nodes)) {
+            while ((list($key, $value) = each($nodes)) && (!$header_override)) {
+                if (is_numeric($key)) {
+                    try {
+                        if (isset($value['body'])) {
+                            if (array_key_exists('field_html_title', $value['body']['#object'])) {
+                                $header_override = $value['body']['#object']->field_html_title;
+                            }
+                        }
+                        if (isset($value['field_html_title'])) {
+                            if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
+                                $header_override = $value['field_html_title']['#object']->field_html_title;
+                                unset($vars['page']['content']['system_main']['nodes'][$key]['field_html_title']);
+                            }
+                        }
+                        if (isset($value['#node'])) {
+                            if (array_key_exists('field_html_title', $value['#node'])) {
+                                $header_override = $value['#node']->field_html_title;
+                            }
+                        }
+                    } catch (Exception $e) {
+                        $header_override = false;
                     }
                 }
-                if (isset($value['field_html_title'])) {
-                    if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
-                        $header_override = $value['field_html_title']['#object']->field_html_title;
-                        unset($vars['page']['content']['system_main']['nodes'][$key]['field_html_title']);
-                    }
-                }
-                if (isset($value['#node'])) {
-                    if (array_key_exists('field_html_title', $value['#node'])) {
-                        $header_override = $value['#node']->field_html_title;
-                    }
-                }
-            } catch (Exception $e) {
-                $header_override = false;
             }
         }
     }
 
-    if ($header_override) {
-        $vars['head_title'] = $header_override['und'][0]['value'];
+
+
+    if (isset($header_override)) {
+        if ($header_override) {
+            $vars['head_title'] = $header_override['und'][0]['value'];
+        }
     }
 
     _render_tp3_renderheaderfooterfeed($vars);
+    _render_tp3_bsd_wrapper($vars);
 }
 
 function takepart3_preprocess_page(&$variables) {
@@ -122,30 +132,30 @@ function _render_tp3_main_menu() {
     return drupal_render($tree);
 }
 
-function _render_tp3_main_menu_341() {
+function _render_tp3_main_menu_bsd() {
     $menu_data = menu_tree_page_data("main-menu");
-
     $links = array();
     $count = count($menu_data);
     $i = 0;
     foreach ($menu_data as $menu_item) {
         $opts = array(
             'attributes' => _default_menu_options($menu_item),
+            'absolute' => TRUE
         );
 
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
         if ($i == 0) {
-            $li = '<li class="first">';
+            $li = '<li class="first dhtml-menu collapsed">';
         } elseif ($i == ($count - 1)) {
-            $li = '<li class="last">';
+            $li = '<li class="last dhtml-menu collapsed">';
         } else {
-            $li = '<li>';
+            $li = '<li class="dhtml-menu collapsed">';
         }
         $links[] = $li . $link . "</li>";
         $i++;
     }
 
-    return "<ul id='top-nav'>" . implode($links) . "</ul>";
+    return "<ul class='menu'>" . implode($links) . "</ul>";
 }
 
 /**
@@ -153,12 +163,16 @@ function _render_tp3_main_menu_341() {
  */
 function _render_tp3_user_menu() {
     $menu_data = menu_tree_page_data("user-menu");
-
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
     $links = array();
     foreach ($menu_data as $menu_item) {
         $opts = array(
             'attributes' => _default_menu_options($menu_item),
         );
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
 
         $opts['attributes']['class'][] = 'user-menu-' . strtolower($menu_item['link']['title']);
 
@@ -169,8 +183,20 @@ function _render_tp3_user_menu() {
         if ($menu_item['link']['href'] == 'user') {
             if (user_is_logged_in()) {
                 global $user;
-                $menu_item['link']['title'] = $user->name;
-                $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
+
+                if (function_exists('_takepart_facebookapis_get_user_session')) {
+                    $fbsession = _takepart_facebookapis_get_user_session();
+                    $username = $fbsession->name;
+                    if ($username == '') {
+                        $username = $user->name;
+                    }
+                } else {
+                    $username = $user->name;
+                }
+
+                $menu_item['link']['title'] = $username;
+                // $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
+                $menu_item['link']['href'] = null;
             } else {
                 $opts['attributes']['class'][] = 'join-login';
                 $opts['query'] = array("destination" => current_path());
@@ -184,16 +210,14 @@ function _render_tp3_user_menu() {
             }
         }
 
-        $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+        if ($menu_item['link']['title'] == $username) {
+            $link = $menu_item['link']['title'];
+        } else {
+            $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+        }
         $links[] = "<li>" . $link . "</li>";
     }
     $output = "<ul id='user-nav'>" . implode($links) . "</ul>";
-
-    if (!user_is_logged_in()) {
-        $output .= "<span class='fb'>  			 
-  				  <fb:login-button>Connect</fb:login-button>
-  				</span>";
-    }
 
     return $output;
 }
@@ -206,7 +230,8 @@ function _render_tp3_user_menu() {
 function _render_tp3_hottopics_menu() {
     $menu_data = menu_tree_page_data("menu-hot-topics");
 
-    // $links = array(0 => "<li class='title'>hot topics</li>");
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
 
     $count = count($menu_data);
     $i = 0;
@@ -215,6 +240,10 @@ function _render_tp3_hottopics_menu() {
         $opts = array(
             'attributes' => _default_menu_options($menu_item),
         );
+
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
 
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
         if ($i == 0) {
@@ -233,14 +262,17 @@ function _render_tp3_hottopics_menu() {
 
 function _render_footer_links_menu($menu_key) {
     $menu_data = _tp_menu_tree_data($menu_key);
-
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
     $links = array();
 
     foreach ($menu_data as $menu_item) {
         $opts = array(
             'attributes' => _default_menu_options($menu_item),
         );
-
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
         $links[] = "<li>" . $link . "</li>";
     }
@@ -270,16 +302,19 @@ function _render_tp3_topics_takepart_menu() {
 function _render_menu_columns($menu_key, $col_limit) {
     $menu_data = _tp_menu_tree_data($menu_key);
     $columns = array();
-
     $total_items = count($menu_data);
     $remainder_row = $total_items % $col_limit;
-
     $column_idx = 0;
-
     $half = count($menu_data) / 2;
 
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
     foreach ($menu_data as $menu_item) {
         $opts = array('attributes' => _default_menu_options($menu_item));
+
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
 
         $columns[$column_idx][] = "<li>" . $link . "</li>";
@@ -421,9 +456,9 @@ function takepart3_field__field_actionheaderimghref(&$vars) {
 }
 
 function takepart3_form_boxes_box_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_state['box']->options['view'] == 'campaigns--block_2') {
-    $form['options']['settings']['nid']['#maxlength'] = 255;
-  }
+    if ($form_state['box']->options['view'] == 'campaigns--block_2') {
+        $form['options']['settings']['nid']['#maxlength'] = 255;
+    }
 }
 
 // Preprocess author field
@@ -481,17 +516,16 @@ function takepart3_field__field_action_url(&$vars) {
     // we may have a target attribute set; of so, build a string to add to the tag
     $target = $vars['element']['#items'][0]['attributes']['target'];
     if (isset($target)) {
-      $target_str = 'target="' . $target . '" ';
-    }
-    else {
-      // no target specified
-      $target_str = '';
+        $target_str = 'target="' . $target . '" ';
+    } else {
+        // no target specified
+        $target_str = '';
     }
 
     if ((array_key_exists('host', $takeactionurl_parts)) && ($takeactionurl_parts['host'] == $_SERVER['HTTP_HOST']) || ($takeactionurl_parts['host'] == '')) {
-      return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
+        return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
     } else {
-      return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
+        return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
     }
 }
 
@@ -622,30 +656,30 @@ function takepart3_return_node_type($type) {
 }
 
 function takepart3_field__field_topic($vars) {
-  // do we have any free tags?
-  $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
+    // do we have any free tags?
+    $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
 
-  // how about tags from series?
-  $field_series_tag = isset($vars['element']['#object']->field_series['und']) ? $vars['element']['#object']->field_series['und'] : $vars['element']['#object']->field_series;
+    // how about tags from series?
+    $field_series_tag = isset($vars['element']['#object']->field_series['und']) ? $vars['element']['#object']->field_series['und'] : $vars['element']['#object']->field_series;
 
-  if (count($vars['items']) || count($field_free_tag) || count($field_free_series)) {
-    $links = array();
-    foreach ($field_series_tag as $key => $value) {
-      $term = taxonomy_term_load($value['tid']);
-      $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
-    }
-
-    foreach ($vars['items'] as $key => $value) {
-        if (isset($value['#href'])) {
-            $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+    if (count($vars['items']) || count($field_free_tag) || count($field_free_series)) {
+        $links = array();
+        foreach ($field_series_tag as $key => $value) {
+            $term = taxonomy_term_load($value['tid']);
+            $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
         }
-    }
 
-    foreach ($field_free_tag as $key => $value) {
-      $term = taxonomy_term_load($value['tid']);
-      $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
-    }
-    return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
+        foreach ($vars['items'] as $key => $value) {
+            if (isset($value['#href'])) {
+                $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+            }
+        }
+
+        foreach ($field_free_tag as $key => $value) {
+            $term = taxonomy_term_load($value['tid']);
+            $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
+        }
+        return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
     }
 }
 
@@ -855,7 +889,13 @@ function _get_author($nid) {
  */
 function _tp3_fill_template_vars(&$variables) {
     if ((!isset($variables['top_nav'])) || (!$variables['top_nav'])) {
-        $variables['top_nav'] = _render_tp3_main_menu();
+        $uri = drupal_get_path_alias($_GET['q']);
+        $uri = substr($uri, 0, 14);
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $variables['top_nav'] = _render_tp3_main_menu_bsd();
+        } else {
+            $variables['top_nav'] = _render_tp3_main_menu();
+        }
     }
     if ((!isset($variables['hottopic_nav'])) || (!$variables['hottopic_nav'])) {
         $variables['hottopic_nav'] = _render_tp3_hottopics_menu();
@@ -894,6 +934,14 @@ function _render_tp3_footer(&$params) {
     return theme('takepart3_footer', $params);
 }
 
+function _render_tp3_wrapper_header(&$params) {
+    return theme('takepart3_wrapper_header', $params);
+}
+
+function _render_tp3_wrapper_footer(&$params) {
+    return theme('takepart3_wrapper_footer', $params);
+}
+
 /*
  * Clears page, page bottom and top, fills custom section
  * with the header or footer depending on the path.
@@ -915,6 +963,29 @@ function _render_tp3_renderheaderfooterfeed(&$vars) {
     }
 }
 
+function _render_tp3_bsd_wrapper(&$vars) {
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
+    if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+        // dpm($vars);
+        _tp3_fill_template_vars($vars);
+        if ($uri == 'bsd/header') {
+            $vars['custom'] = _render_tp3_wrapper_header($vars);
+            // $vars['custom'] = _render_tp3_header($vars);
+        } elseif ($uri == 'bsd/footer') {
+            $vars['custom'] = _render_tp3_wrapper_footer($vars);
+            // $vars['custom'] = _render_tp3_footer($vars);
+        }
+    }
+}
+
+/* nuclear option
+  function takepart3_url_outbound_alter(&$path, &$options, $original_path) {
+  $options['absolute'] = TRUE;
+  }
+ * 
+ */
+
 /**
  * Implementation of hook_theme().
  */
@@ -928,6 +999,18 @@ function takepart3_theme() {
         ),
         'takepart3_footer' => array(
             'template' => 'templates/pages/footer',
+            'arguments' => array(
+                'params' => NULL,
+            ),
+        ),
+        'takepart3_wrapper_header' => array(
+            'template' => 'templates/pages/header-bsd',
+            'arguments' => array(
+                'params' => NULL,
+            ),
+        ),
+        'takepart3_wrapper_footer' => array(
+            'template' => 'templates/pages/footer-bsd',
             'arguments' => array(
                 'params' => NULL,
             ),
