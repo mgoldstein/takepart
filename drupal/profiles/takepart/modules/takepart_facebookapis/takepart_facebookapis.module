@@ -12,6 +12,14 @@ function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
     return;
   }
   
+  if(($form_id == 'user_login') && (variable_get('fblogin_backdoor_url', 'backdoor') == current_path()))  {
+    if(isset($form['#validate'])) {
+      array_unshift($form['#validate'], "_takepart_facebookapis_login_form_validate");
+    } else {
+      $form['#validate'] = "_takepart_facebookapis_login_form_validate";
+    }
+  }
+  
   if(($form_id == 'user_login') && (variable_get('fblogin_backdoor_url', 'backdoor') != current_path()) && (variable_get('fblogin_state', 'No') != 'No')) {
     
     $form = array();
@@ -137,17 +145,17 @@ function takepart_facebookapis_rdf_namespaces() {
  *  Checks for extra permissions:
  */
 function _takepart_facebookapis_login_form_validate($form, &$form_state) {
-  if(isset($form['name']['#value'])) {
+  if(isset($form_state['values']['name'])) {
     $role = db_query("SELECT r.name AS role FROM {users_roles} AS ur
         LEFT JOIN {role} AS r ON r.rid = ur.rid
         LEFT JOIN {users} AS us ON us.uid = ur.uid
         WHERE us.name=:n
-        LIMIT 1",array(':n'=>$form['name']['#value']))->fetchField();
+        LIMIT 1",array(':n'=>$form_state['values']['name']))->fetchField();
     if (empty($role)) {
-      form_set_error('Login', t('Please enter a valid login.'));
+      form_set_error('name', t('%name is not a valid login.', array('%name' => $form_state['values']['name'])));
     }
   } else {
-    form_set_error('Login', t('Could not retrieve user.'));
+    form_set_error('name', t('Could not retrieve user.'));
   }
 }
 
@@ -202,7 +210,6 @@ function _takepart_facebookapis_channelfile() {
 //Menu callback for test page:
 function _takepart_facebookapis_backdoor() {
   $form = drupal_get_form('user_login');
-  $form['#validate'][] = '_takepart_facebookapis_login_form_validate';
   return drupal_render($form);
 }
 
