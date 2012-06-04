@@ -204,8 +204,8 @@ function _fbregistration_getfbreg(&$form = null) {
   
     }
     
-    if(isset($field['#foreign']['#weight'])) {
-      $jsondata[count($jsondata)-1]['weight'] = $field['#foreign']['#weight'];
+    if(isset($form[$name]['#weight'])) {
+      $jsondata[count($jsondata)-1]['weight'] = $form[$name]['#weight'];
     }
       
   }
