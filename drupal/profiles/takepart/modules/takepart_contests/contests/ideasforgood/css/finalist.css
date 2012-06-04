@@ -123,6 +123,14 @@ div.ui-dialog div.ui-dialog-content {
   padding: 2em 0.8em;
 }
 
+a.ideasforgood-link {
+  color: #770bcb;
+  outline: 0;
+}
+a.ideasforgood-link:visited {
+  color: #a445ee;
+}
+
 div.ideasforgood-centered-content {
   text-align: center;
   padding-top: 1em;
