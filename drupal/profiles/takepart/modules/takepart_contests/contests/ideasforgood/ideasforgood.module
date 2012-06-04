@@ -528,11 +528,11 @@ class IdeasForGoodFinalistController extends EntityAPIController {
       $connect_src = implode('/', array(
         drupal_get_path('module', 'ideasforgood'),
         'images',
-        'connect_button.png',
+        'sign_up_backup.png',
       ));
       $connect_button = '<a class="ideasforgood-button-link"'
-        . ' href="/user?destination=' . urlencode($destination) . '">'
-        . '<img src="/' . $connect_src . '" alt="Connect with Facebook">'
+        . ' href="/user/register?destination=' . urlencode($destination) . '">'
+        . '<img src="/' . $connect_src . '" alt="Sign Up for Takepart">'
         . '</a>';
     }
 
@@ -547,6 +547,7 @@ class IdeasForGoodFinalistController extends EntityAPIController {
     return array(
       'connect_button' => $connect_button,
       'cancel_button' => $cancel_button,
+      'sign_in_url' => '/user?destination=' . urlencode($destination),
     );
   }
 
