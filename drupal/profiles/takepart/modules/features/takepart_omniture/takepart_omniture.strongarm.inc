@@ -1491,7 +1491,7 @@ function takepart_omniture_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'omniture_js_file_location';
-  $strongarm->value = '/profiles/takepart/modules/features/takepart_omniture/js/s_code_h23_core.js';
+  $strongarm->value = '/profiles/takepart/modules/features/takepart_omniture/js/s_code_for_popunders.js';
   $export['omniture_js_file_location'] = $strongarm;
 
   $strongarm = new stdClass;
