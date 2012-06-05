@@ -32,6 +32,10 @@ div.ideasforgood-finalist-item {
   border: 1px solid #f58d34;
 }
 
+div.ideasforgood-finalist-item.voting-locked {
+  cursor: auto;
+}
+
 img.ideasforgood-cancel-button {
   cursor: pointer;
 }
