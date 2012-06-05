@@ -18,6 +18,7 @@
  * - $ideasforgood_finalist_idea_body: the idea body field values
  *
  * Additional $content values
+ *   voting_locked: flag for disabling voting for a finalist
  *   vote_for_me_buttton: the src attribute for both the on and off 'Vote for
  *     Me' button images, keyed by image state
  *   voting_dialog_title: the title of the voting dialog
@@ -25,7 +26,7 @@
  */
 ?>
 <div id="ideasforgood-finalist-<?php print $ideasforgood_finalist->id; ?>"
-     class="ideasforgood-finalist-item">
+     class="ideasforgood-finalist-item<?php print ($content['voting_locked']) ? ' voting-locked' : '' ?>">
   <?php print render($content['ideasforgood_finalist_image']); ?>
   <div class="ideasforgood-finalist-label-bg"></div>
   <div class="ideasforgood-finalist-label-text">
@@ -38,11 +39,13 @@
   <div id="ideasforgood-finalist-<?php print $ideasforgood_finalist->id; ?>-idea"
        class="ideasforgood-finalist-idea">
     <?php print render($content['ideasforgood_finalist_idea_body']); ?>
+    <?php if (! $content['voting_locked']): ?>
     <img src="/<?php print $content['vote_for_me_button']['off']; ?>"
          class="ideasforgood-vote-button rollover-image-off" alt="Vote for Me!">
     <img src="/<?php print $content['vote_for_me_button']['on']; ?>"
          class="rollover-image-on">
     <div style="clear: both"></div>
+    <?php endif ?>
   </div>
   <div id="ideasforgood-finalist-<?php print $ideasforgood_finalist->id; ?>-dialog"
        class="ideasforgood-finalist-dialog"

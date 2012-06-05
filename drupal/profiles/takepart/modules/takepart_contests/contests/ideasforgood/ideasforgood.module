@@ -35,6 +35,10 @@ function ideasforgood_entity_info() {
         'label' => t('Default'),
         'custom settings' => FALSE,
       ),
+      'locked' => array(
+        'label' => t('Locked'),
+        'custom settings' => FALSE,
+      ),
       'register' => array(
         'label' => t('Register'),
         'custom settings' => FALSE,
@@ -108,6 +112,10 @@ function ideasforgood_finalist_access($op, $finalist = NULL, $account = NULL) {
 function ideasforgood_theme($existing, $type, $theme, $path) {
   return array(
     'ideasforgood_finalist__ideasforgood_finalist__full' => array(
+      'render element' => 'elements',
+      'template' => 'theme/finalist',
+    ),
+    'ideasforgood_finalist__ideasforgood_finalist__locked' => array(
       'render element' => 'elements',
       'template' => 'theme/finalist',
     ),
@@ -445,7 +453,10 @@ class IdeasForGoodFinalistController extends EntityAPIController {
     $content['voting_group'] = ideasforgood_group_content($entity);
 
     if ($view_mode == 'full') {
-      $content += $this->fullViewContent($entity, $view_mode, $langcode);
+      $content += $this->fullViewContent($entity, $view_mode, $langcode, FALSE);
+    }
+    else if ($view_mode == 'locked') {
+      $content += $this->fullViewContent($entity, $view_mode, $langcode, TRUE);
     }
     else if ($view_mode == 'vote') {
       $content += $this->voteViewContent($entity, $view_mode, $langcode);
@@ -459,9 +470,11 @@ class IdeasForGoodFinalistController extends EntityAPIController {
     return parent::buildContent($entity, $view_mode, $langcode, $content);
   }
 
-  protected function fullViewContent($entity, $view_mode, $langcode) {
+  protected function fullViewContent($entity, $view_mode, $langcode, $locked) {
     global $user;
-    $content = array();
+    $content = array(
+      'voting_locked' => $locked,
+    );
     if (!empty($user->uid)) {
       $content['voting_dialog'] = $this->view(array($entity), 'vote');
       $content['voting_dialog_title'] = t('Please Confirm Your Vote');
