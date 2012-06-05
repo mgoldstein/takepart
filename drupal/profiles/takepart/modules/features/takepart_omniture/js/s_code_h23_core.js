@@ -43,6 +43,9 @@ s.eventList="" //Abandon,Success,Error
 s.usePlugins=true
 function s_doPlugins(s) {
 
+    /* Record page URL in prop12 */
+    s.prop12=document.URL;
+    
     /*Channel Manager*/
     //s.referrer="www.americanexpress.com"; //use this to change the referrer for testing
     s.channelManager('cmpid','','','1');
