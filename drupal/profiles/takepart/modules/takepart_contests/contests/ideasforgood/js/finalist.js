@@ -101,44 +101,46 @@
       });
 
       // create the vote dialog
-      var item_dialog = '#' + $(this).attr('id') + '-dialog';
-      var dlg = $(item_dialog).dialog({
-        autoOpen: false,
-        resizable: false,
-        modal: false,
-        title: $(this).attr('title'),
-        width: 520,
-        open: function() {
-          $('body').append(
-            '<div' +
-            ' class="ui-widget-overlay"' +
-            ' style="' +
-            '  width:' + $(document).width() + 'px;' +
-            '  height:' + $(document).height() + 'px;' +
-            '  z-index:500;"' +
-            '></div>');
-        },
-        close: function() {
-          $('body .ui-widget-overlay').remove();
-        }
-      });
+      if (! $(this).is('.voting-locked')) {
+        var item_dialog = '#' + $(this).attr('id') + '-dialog';
+        var dlg = $(item_dialog).dialog({
+          autoOpen: false,
+          resizable: false,
+          modal: false,
+          title: $(this).attr('title'),
+          width: 520,
+          open: function() {
+            $('body').append(
+              '<div' +
+              ' class="ui-widget-overlay"' +
+              ' style="' +
+              '  width:' + $(document).width() + 'px;' +
+              '  height:' + $(document).height() + 'px;' +
+              '  z-index:500;"' +
+              '></div>');
+          },
+          close: function() {
+            $('body .ui-widget-overlay').remove();
+          }
+        });
 
-      // clicking a finalist should bring up the vote dialog
-      $(this).click(function() {
-        tip.qtip('hide');
-        dlg.dialog('open');
-      });
+        // clicking a finalist should bring up the vote dialog
+        $(this).click(function() {
+          tip.qtip('hide');
+          dlg.dialog('open');
+        });
 
-      // connect the vote for me button
-      $(item_idea).find('.ideasforgood-vote-button').click(function() {
-        tip.qtip('hide');
-        dlg.dialog('open');
-      });
+        // connect the vote for me button
+        $(item_idea).find('.ideasforgood-vote-button').click(function() {
+          tip.qtip('hide');
+          dlg.dialog('open');
+        });
 
-      // connect the cancel button
-      $(item_dialog).find('.ideasforgood-cancel-button').click(function() {
-        dlg.dialog('close');
-      });
+        // connect the cancel button
+        $(item_dialog).find('.ideasforgood-cancel-button').click(function() {
+          dlg.dialog('close');
+        });
+      }
     });
 
     // automatically open the preselected dialog
