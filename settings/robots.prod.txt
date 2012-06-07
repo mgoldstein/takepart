@@ -1,18 +1,15 @@
 # For more information about the robots.txt standard, see:
 # http://www.robotstxt.org/orig.html
 
-# User-agent: Googlebot
-# Sitemap: http://www.takepart.com/googlenews.xml
-
 User-agent: *
-# Sitemap: http://www.takepart.com/sitemap.xml
 Disallow: /2008/
 Disallow: /2009/
 Disallow: /2010/
 Disallow: /add/
 Disallow: /admin/
 Disallow: /article/2007/
-Disallow: /article/2010/
+Disallow: /article/2008/
+Disallow: /article/2009/
 Disallow: /articles/
 Disallow: /arts-entertainment/
 Disallow: /arts-entertainment?
@@ -29,6 +26,7 @@ Disallow: /downloads/
 Disallow: /files/
 Disallow: /filter/tips/
 Disallow: /flash/
+Disallow: /free-tags/
 Disallow: /includes/
 Disallow: /innovation/
 Disallow: /innovation?
@@ -49,6 +47,7 @@ Disallow: /themes/
 Disallow: /url/
 Disallow: /user/
 Disallow: /users/
+Disallow: /googlenews.xml
 Disallow: /CHANGELOG.txt
 Disallow: /cron.php
 Disallow: /INSTALL.mysql.txt
