@@ -186,6 +186,10 @@ function _render_tp3_user_menu() {
 
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
         $links[] = "<li>" . $link . "</li>";
+        if ((!user_is_logged_in()) && (count($links) == 1)) {
+          // add "or" as a separate li
+          $links[] = '<li class="or"> or </li>';
+        }
     }
     $output = "<ul id='user-nav'>" . implode($links) . "</ul>";
 

@@ -162,10 +162,8 @@ img.photo, .gallery-item img {
     margin-left:10px;
 }
 
-#join-login-top a.user-menu-register:after {
-    content:"       or";
-    font-weight: normal;
-    text-decoration: none;
+#join-login-top li.or {
+    margin-right: 3px;
 } 
 
 #join-login-top a {
