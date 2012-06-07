@@ -46,14 +46,14 @@ function takepart_omniture_context_default_contexts() {
     $context->reactions = array(
         'omniture_reaction' => array(
             'variables' => 's.prop19 = [tp_omniture:date:{node:created:raw}]
-s.eVar21 = [tp_omniture:value_or_empty:{node:field-display-tag:term:name}]
-s.prop20 = [tp_omniture:value_or_empty:{node:field-display-tag:term:name}]
-s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
-s.eVar18 = [tp_omniture:str_decode:{node:title}]
-s.prop17 = [tp_omniture:str_decode:{node:title}]
-s.eVar17 = [tp_omniture:get_author:{node:nid}]
-s.prop16 = [tp_omniture:get_author:{node:nid}]
-s.prop6 = [node:nid]',
+            s.eVar21 = [tp_omniture:value_or_empty:{node:field_display_tag}]
+            s.prop20 = [tp_omniture:value_or_empty:{node:field_display_tag}]
+            s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
+            s.eVar18 = [tp_omniture:str_decode:{node:title}]
+            s.prop17 = [tp_omniture:str_decode:{node:title}]
+            s.eVar17 = [tp_omniture:get_author:{node:nid}]
+            s.prop16 = [tp_omniture:get_author:{node:nid}]
+            s.prop6 = [node:nid]',
         ),
     );
     $context->condition_mode = 0;
@@ -98,7 +98,6 @@ s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]',
     t('Variables to set on gallery pages.');
     $export['omniture_gallery'] = $context;
 // end gallery
-
     // Begin blog
     $context = new stdClass;
     $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
