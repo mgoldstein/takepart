@@ -25,11 +25,12 @@
  */
 ?>
 <?php print render($content['voting_group']['ideasforgood_group_register']); ?>
-<div class="ideasforgood-register-buttons">
+<p class="">Or, if you already have an account with TakePart.com, <a class="ideasforgood-link" href="<?php print $content['sign_in_url']; ?>">sign in</a>.</p>
+<div class="ideasforgood-centered-content">
   <div>
-    <a href="/user?destination=<?php print $content['destination']; ?>"><img src="/<?php print $content['connect_button']; ?>" alt="Connect with Facebook"></a>
+    <?php print render($content['connect_button']); ?>
   </div>
   <div>
-    <img src="/<?php print $content['cancel_button']; ?>" alt="Cancel" class="ideasforgood-cancel-button">
+    <?php print render($content['cancel_button']); ?>
   </div>
 </div>

@@ -35,6 +35,10 @@ function ideasforgood_entity_info() {
         'label' => t('Default'),
         'custom settings' => FALSE,
       ),
+      'locked' => array(
+        'label' => t('Locked'),
+        'custom settings' => FALSE,
+      ),
       'register' => array(
         'label' => t('Register'),
         'custom settings' => FALSE,
@@ -111,6 +115,10 @@ function ideasforgood_theme($existing, $type, $theme, $path) {
       'render element' => 'elements',
       'template' => 'theme/finalist',
     ),
+    'ideasforgood_finalist__ideasforgood_finalist__locked' => array(
+      'render element' => 'elements',
+      'template' => 'theme/finalist',
+    ),
     'ideasforgood_finalist__ideasforgood_finalist__register' => array(
       'render element' => 'elements',
       'template' => 'theme/register',
@@ -162,17 +170,29 @@ function ideasforgood_vote_form($form, &$form_state, $finalist) {
     '#default_value' => $finalist->token,
   );
 
+  $form['centered_content'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array(
+        'ideasforgood-centered-content'
+      ),
+    ),
+  );
+
   // use a pretty button for submitting the vote
   $submit_src = implode('/', array(
     drupal_get_path('module', 'ideasforgood'),
     'images',
     'confirm_button.png',
   ));
-  $form['submit'] = array(
+  $form['centered_content']['submit'] = array(
     '#type' => 'image_button',
     '#src' => $submit_src,
     '#attributes' => array(
       'alt' => t('Confirm'),
+      'class' => array(
+        'ideasforgood-button-link',
+      ),
     ),
     '#submit' => array('ideasforgood_vote_form_submit'),
     '#ajax' => array(
@@ -196,12 +216,12 @@ function ideasforgood_vote_form($form, &$form_state, $finalist) {
   $markup .= ' class="ideasforgood-cancel-button"';
   $markup .= '>';
   $markup .= '</div>';
-  $form['cancel'] = array(
+  $form['centered_content']['cancel'] = array(
     '#type' => 'markup',
     '#markup' => $markup,
   );
 
-  $form['opt_in'] = array(
+  $form['centered_content']['opt_in'] = array(
     '#type' => 'checkbox',
     '#title' => t('Keep this box checked if you would like us to email you about who won.'),
     '#default_value' => TRUE,
@@ -266,6 +286,10 @@ function ideasforgood_vote_form_callback(&$form, $form_state) {
 
   $group = ideasforgood_finalist_group($finalist);
   if ($group !== FALSE) {
+    $contest_name = $group->contest;
+    $items = field_get_items('ideasforgood_voting_group', $group,
+      'ideasforgood_group_destination');
+    $destination = $items[0]['safe_value'];
     $items = field_get_items('ideasforgood_voting_group', $group,
       'ideasforgood_group_email');
     $email_note = $items[0]['safe_value'];
@@ -274,6 +298,8 @@ function ideasforgood_vote_form_callback(&$form, $form_state) {
     $twitter_template = $items[0]['safe_value'];
   }
   else {
+    $contest_name = '';
+    $destination = '';
     $email_note = '';
     $twitter_template = '';
   }
@@ -289,6 +315,8 @@ function ideasforgood_vote_form_callback(&$form, $form_state) {
 
   $settings = array(
     'ideasforgood' => array(
+      'contest_name' => $contest_name,
+      'destination' => $destination,
       'vote_accepted' => $finalist->vote_accepted,
       'finalist_id' => $finalist->id,
       'email_from' => empty($user->mail) ? '' : $user->mail,
@@ -384,7 +412,7 @@ class IdeasForGoodFinalist extends Entity {
   }
 
   protected function defaultLabel() {
-    return "{$this->token} [{$this->voting_group}]";
+    return "[{$this->voting_group}] {$this->token}";
   }
 
   protected function defaultUri() {
@@ -425,7 +453,10 @@ class IdeasForGoodFinalistController extends EntityAPIController {
     $content['voting_group'] = ideasforgood_group_content($entity);
 
     if ($view_mode == 'full') {
-      $content += $this->fullViewContent($entity, $view_mode, $langcode);
+      $content += $this->fullViewContent($entity, $view_mode, $langcode, FALSE);
+    }
+    else if ($view_mode == 'locked') {
+      $content += $this->fullViewContent($entity, $view_mode, $langcode, TRUE);
     }
     else if ($view_mode == 'vote') {
       $content += $this->voteViewContent($entity, $view_mode, $langcode);
@@ -439,9 +470,11 @@ class IdeasForGoodFinalistController extends EntityAPIController {
     return parent::buildContent($entity, $view_mode, $langcode, $content);
   }
 
-  protected function fullViewContent($entity, $view_mode, $langcode) {
+  protected function fullViewContent($entity, $view_mode, $langcode, $locked) {
     global $user;
-    $content = array();
+    $content = array(
+      'voting_locked' => $locked,
+    );
     if (!empty($user->uid)) {
       $content['voting_dialog'] = $this->view(array($entity), 'vote');
       $content['voting_dialog_title'] = t('Please Confirm Your Vote');
@@ -491,20 +524,43 @@ class IdeasForGoodFinalistController extends EntityAPIController {
   }
 
   protected function registerViewContent($entity, $view_mode, $langcode) {
+
     $pos = strpos($_GET['q'], '?');
-    $destination = ($pos === FALSE) ? $_GET['q'] : substr($_GET['q'], 0, $pos);
+    if ($pos === FALSE) {
+      $destination = $_GET['q'] . "?selected={$entity->id}";
+    }
+    else {
+      $pieces = explode('?', $_GET['q'], 2);
+      $destination = $pieces[0] . "?selected={$entity->id}" . "&" . $pieces[1];
+    }
+
+    if (function_exists('_takepart_facebookapis_getfblogin')) {
+      $connect_button = _takepart_facebookapis_getfblogin($destination);
+    }
+    else {
+      $connect_src = implode('/', array(
+        drupal_get_path('module', 'ideasforgood'),
+        'images',
+        'sign_up_backup.png',
+      ));
+      $connect_button = '<a class="ideasforgood-button-link"'
+        . ' href="/user/register?destination=' . urlencode($destination) . '">'
+        . '<img src="/' . $connect_src . '" alt="Sign Up for Takepart">'
+        . '</a>';
+    }
+
+    $cancel_src = implode('/', array(
+      drupal_get_path('module', 'ideasforgood'),
+      'images',
+      'cancel_button.png',
+    ));
+    $cancel_button = '<img src="/' . $cancel_src . '" alt="Cancel"'
+      . 'class="ideasforgood-cancel-button">';
+
     return array(
-      'destination' => $destination,
-      'connect_button' => implode('/', array(
-        drupal_get_path('module', 'ideasforgood'),
-        'images',
-        'connect_button.png',
-      )),
-      'cancel_button' => implode('/', array(
-        drupal_get_path('module', 'ideasforgood'),
-        'images',
-        'cancel_button.png',
-      )),
+      'connect_button' => $connect_button,
+      'cancel_button' => $cancel_button,
+      'sign_in_url' => '/user?destination=' . urlencode($destination),
     );
   }
 
@@ -599,6 +655,7 @@ class IdeasForGoodVotingGroupController extends EntityAPIController {
       'language' => '',
       'is_new' => TRUE,
       'name' => '',
+      'contest' => '',
       'voting_form_id' => 0,
       'email_field_id' => 0,
       'vote_field_id' => 0,
