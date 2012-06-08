@@ -26,8 +26,8 @@ Disallow: /comment/reply/
 Disallow: /downloads/
 Disallow: /files/
 Disallow: /filter/tips/
-Disallow: /free-tags/
 Disallow: /flash/
+Disallow: /free-tags/
 Disallow: /includes/
 Disallow: /innovation/
 Disallow: /innovation?
