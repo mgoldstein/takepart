@@ -1514,6 +1514,9 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     margin-right: 8px;
 }
 
+#footer ul#bottom-follow li.pinterest a {
+    text-indent: 0;
+}
 #footer ul#bottom-follow li.googleplus a {
     text-indent: 0;
 }
