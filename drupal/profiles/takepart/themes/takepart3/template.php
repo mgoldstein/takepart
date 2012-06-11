@@ -1016,7 +1016,6 @@ function takepart3_pager_link($variables) {
     drupal_add_html_head_link(array(
       'rel' => 'prev',
       //'type' => 'application/rss+xml',
-      'title' => 'abc',
       'href' => url($_GET['q'], array('query' => $query)),
     ));
   }
@@ -1025,7 +1024,6 @@ function takepart3_pager_link($variables) {
     drupal_add_html_head_link(array(
       'rel' => 'next',
       //'type' => 'application/rss+xml',
-      'title' => 'xyz',
       'href' => url($_GET['q'], array('query' => $query)),
     ));
   }
