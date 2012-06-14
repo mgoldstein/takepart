@@ -34,6 +34,10 @@ function takepart_feed_views_pre_render(&$vars) {
 function takepart_feed_preprocess_page(&$variables) {
   if (context_isset('test_feed_feature', 'page_feed')){
     $feed_url = context_get('test_feed_feature', 'page_feed');
+    // If $feed_url is an array, get the value of the first element
+    if (is_array($feed_url)) {
+        $feed_url = reset($feed_url);
+    }
     $feed_icons  = drupal_add_feed($feed_url);
   }
   // nothing to do with the rss_feed icon injection. this is needed to theme the icons in the list
