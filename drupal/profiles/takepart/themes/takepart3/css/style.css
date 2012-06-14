@@ -1649,6 +1649,30 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     color: #1ca9e7;
 }
 
+#hot-topics-nav {
+    width: 540px;
+    float: left;
+    padding: 9px 0 6px 10px;
+}
+
+#hot-topics-nav ul {
+    margin-left: 10px;
+}
+
+#hot-topics-nav li {
+    font-size: 20px;
+    font-family: NewsGothicBoldCondensed, "Arial Narrow", sans-serif;
+    list-style: none inside none;
+    margin-right: 16px;
+    display: inline;
+    text-transform: uppercase;
+}
+
+#hot-topics-nav li a {
+    color: #000;
+    text-decoration: none;
+}
+
 /*search box*/
 #top-search {
     width:189px;
