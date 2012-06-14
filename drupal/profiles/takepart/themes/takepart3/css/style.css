@@ -1605,6 +1605,17 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     margin:0;
 }
 
+body.multipage-campaign li.dhtml-menu > ul.menu {
+    position: absolute;
+    z-index:1000;
+}
+
+body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
+    float: none;
+    border-right: 0;
+    border-bottom: 1px dotted #4C4C4C;
+}
+
 #bottom-follow {
     display: block;
     padding-top:4px;
