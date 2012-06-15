@@ -71,8 +71,9 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
         $termid = $vars['view']->args[0];
         //find titles based on the parent field and id argument when the arg is taxonomy:
         $terms = _takepart_rss_get_taxonomy_title($fieldname, $termid);
+
         foreach ($terms as $term) {
-          $title .= $term->name;
+          $title[] = $term->name;
           $description .= $term->description;
         }
       }
@@ -80,9 +81,9 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
     
     //@todo: add check for $options['escape_as_CDATA'] == 'yes')
     if($options['title']) {
-      $xml .= "\t<title><![CDATA[" . $options['title'] . $title . "]]></title>\n";
+      $xml .= "\t<title><![CDATA[" . $options['title'] . $title[0] . "]]></title>\n";
     } else {
-      $xml .= "\t<title><![CDATA[" . $title . "]]></title>\n";
+      $xml .= "\t<title><![CDATA[" . $title[0] . "]]></title>\n";
     }
     $xml .= "\t<link>" . _takepart_rss_selfURL() . "</link>\n";
     $xml .= "\t<description><![CDATA[" . $description . "]]></description>\n";
