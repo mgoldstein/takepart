@@ -38,6 +38,11 @@ function takepart_feed_preprocess_page(&$variables) {
     if (is_array($feed_url)) {
         $feed_url = reset($feed_url);
     }
+    // Remove starting / from URL path
+    if (strpos($feed_url, '/') == 0 && strlen($feed_url) > 1) {
+        $feed_url = substr($feed_url, 1);
+    }
+    dpm($feed_url);
     $feed_icons  = drupal_add_feed($feed_url);
   }
   // nothing to do with the rss_feed icon injection. this is needed to theme the icons in the list
