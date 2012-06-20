@@ -730,6 +730,10 @@ ul#top-follow li.pinterest a {
     text-indent: 0;
 }
 
+ul#top-follow li.pinterest img {
+    padding-top: 1px;
+}
+
 ul#top-follow {
     margin: 10px 0 0;
     float: right;
