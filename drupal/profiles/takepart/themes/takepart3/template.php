@@ -501,7 +501,7 @@ function takepart3_field__field_author(&$vars) {
 
 // Preprocess action URL
 function takepart3_field__field_action_url(&$vars) {
-    $takeactionurl = $vars['element']['#object']->field_action_url['und'][0]['url'];
+    $takeactionurl = $vars['element']['#object']->field_action_url['und'][0]['display_url'];
     $takeactionurl_parts = parse_url($takeactionurl);
     $safe_url = url($takeactionurl);
 
