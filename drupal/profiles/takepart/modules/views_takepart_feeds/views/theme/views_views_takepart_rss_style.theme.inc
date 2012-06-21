@@ -30,22 +30,19 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
   
     $rows = $vars["rows"];
     $options = $vars["options"];
-    //$xml = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?" . ">";
-    //$xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?" . ">";
-    //$xml .= "<rss version=\"2.0\">";
-    //use the dublin core style:
-    //$xml .= "<rss version=\"2.0\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:wfw=\"http://wellformedweb.org/CommentAPI/\">\n";
+    // use the dublin core style:
+    // $xml .= "<rss version=\"2.0\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:wfw=\"http://wellformedweb.org/CommentAPI/\">\n";
     
     $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?". ">\n";
     
     $u_agent = $_SERVER['HTTP_USER_AGENT'];
   
-    /*Styles for browsers without their own RSS themes:
+    /* Styles for browsers without their own RSS themes:
     if(preg_match('/Chrome/i',$u_agent)) {
       $xml .= "<?xml-stylesheet href=\"" . "/" . (drupal_get_path('module', 'views_takepart_rss') . '/rss.xsl') . "\" type=\"text/xsl\" media=\"screen\"?". ">";
     } elseif(preg_match('/Safari/i',$u_agent)) {
       $xml .= "<?xml-stylesheet href=\"" . "/" . (drupal_get_path('module', 'views_takepart_rss') . '/rss.xsl') . "\" type=\"text/xsl\" media=\"screen\"?". ">";
-    }*/  
+    } */  
     
     $xml .= "<rss version=\"2.0\"";
     $xml .= "  xmlns:dc=\"http://purl.org/dc/elements/1.1/\"";
@@ -55,21 +52,21 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
     
     $xml .= "\t<channel>\n";
     $table_queue = ($vars['view']->query->table_queue);
-    //Titles will change depending on the type of content selected:
-    //print "----------------";
-   // print_r($table_queue);
+    // Titles will change depending on the type of content selected:
+    // print "----------------";
+    // print_r($table_queue);
     foreach ($table_queue as $titles) {
       if($titles['alias'] == 'node') {
-        //@todo: what should the title / desc be if the view is being joined to a node?
-        //$node = node_load($termid);
-        //$title .= $node->title;
+        // @todo: what should the title / desc be if the view is being joined to a node?
+        // $node = node_load($termid);
+        // $title .= $node->title;
       }
       if(substr($titles['alias'], 0, 16) == 'field_data_field') {
-        //if we're joining against taxonomy, pull the title out:
+        // if we're joining against taxonomy, pull the title out:
         $fieldname = substr($titles['alias'], 17, strlen($titles['alias']));
-        //@todo: null check this:
+        // @todo: null check this:
         $termid = $vars['view']->args[0];
-        //find titles based on the parent field and id argument when the arg is taxonomy:
+        // find titles based on the parent field and id argument when the arg is taxonomy:
         $terms = _takepart_rss_get_taxonomy_title($fieldname, $termid);
 
         foreach ($terms as $term) {
@@ -79,7 +76,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
       }
     }
     
-    //@todo: add check for $options['escape_as_CDATA'] == 'yes')
+    // @todo: add check for $options['escape_as_CDATA'] == 'yes')
     if($options['title']) {
       $xml .= "\t<title><![CDATA[" . $options['title'] . $title[0] . "]]></title>\n";
     } else {
@@ -93,23 +90,28 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
       $description = '';
       $content = '';
       foreach ($row as $id => $object) {
-          //print_r($object);
-          //print "$id-------------------------";
-          if($id == 'created') {
+          // print_r($object);
+          // print "$id-------------------------";
+          if ($id == 'created') {
             $xml .= "\t\t\t<pubDate><![CDATA[" . $object->content . "]]></pubDate>\n";
-          } else if($id == 'title') {
+          } 
+          else if ($id == 'title') {
             $xml .= "\t\t\t<title><![CDATA[" . $object->raw . "]]></title>\n";
             $poslink = _takepart_rss_parseHref($object->content);
-            if($poslink) {
+            if ($poslink) {
               $xml .= "\t\t\t<link><![CDATA[" . $poslink . "]]></link>\n";
             }
-          } else {
+          }
+          else if ($id == 'field_display_tag') {
+              $xml .= "\t\t\t<category><![CDATA[" . $object->content . "]]></category>\n";
+          }
+          else {
             $description .= ($object->raw);
             $content .= ($object->content);
           }
       }
       $xml .= "\t\t\t<description><![CDATA[" . $content . "]]></description>\n";
-      //$xml .= "\t\t\t<content:encoded><![CDATA[" . $content . "]]></content:encoded>\n";
+      // $xml .= "\t\t\t<content:encoded><![CDATA[" . $content . "]]></content:encoded>\n";
       $xml .= "\t\t</item>\n";
     }
     
