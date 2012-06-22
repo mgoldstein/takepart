@@ -1,0 +1,26 @@
+/***
+ * file: CSS support for takepart_vidpop
+*/
+
+div.vidpop-preview {
+  width: 420px;
+  height: 315px;
+  position: relative;
+}
+div.vidpop-preview-overlay {
+  width: 420px;
+  height: 315px;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+div.vidpop-preview a img {
+  width: 420px;
+  height: 315px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+

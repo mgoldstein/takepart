@@ -1,0 +1,67 @@
+<?php
+
+/***
+ * implentation of hook_init()
+ */
+function takepart_vidpop_init() {
+  $path = drupal_get_path('module', 'takepart');
+  drupal_add_css($path . '/modules/takepart_vidpop/css/takepart_vidpop.css', array('every_page' => TRUE));
+  drupal_add_js($path . '/modules/takepart_vidpop/js/takepart_vidpop.js', 'file');
+  if (module_exists('libraries')) {
+    // Load jQuery Cycle
+    $tools_path = libraries_get_path('jquery.tools');
+
+    if (!empty($tools_path)) {
+      // Attempt to use minified version of jQuery cycle plugin.
+      if (file_exists($tools_path . '/jquery.tools.min.js')) {
+        $tools_path .= '/jquery.tools.min.js';
+        drupal_add_js($tools_path);
+      }
+    }
+  }
+}
+
+
+/**
+ * Implements hook_menu().
+ */
+function takepart_vidpop_menu() {
+  $items['admin/config/media/vidpop/settings'] = array(
+    'title' => 'Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_vidpop_settings_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'takepart_vidpop.admin.inc',
+  );
+
+  return $items;
+}
+
+
+/***
+ * format image to look like a youtube video preview
+ *
+ * @param $uri    uri of image
+ * @param $link   link to jump to on click
+ *
+ * uses image style tp_embed_video_thumb to create a 420x315 image
+ *
+ */
+function takepart_vidpop_format_preview($uri, $link) {
+  $vidpop_path = drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop';
+  $preview_image = theme('image_style', array('style_name' => 'tp_embed_video_thumb', 'path' => $uri));
+  $overlay_image = theme('image_style', array('style_name' => 'tp_embed_video_thumb', 'path' => $vidpop_path . '/images/youtube-overlay.png'));
+  $overlay_image = theme('image', array('path' => $vidpop_path . '/images/youtube-overlay.png'));
+
+  $linked_overlay = l($overlay_image, $link, array('html' => true));
+
+  $formatted = <<<EOT
+<div class="vidpop-preview">
+  $preview_image
+  <div class="vidpop-preview-overlay">$linked_overlay</div>
+</div>
+EOT;
+
+  return $formatted;
+}
