@@ -91,7 +91,6 @@ jQuery(document).ready(function () {
 });
 
 
-
 function fastmatch_historyapi() {
 	var y = 0;
 	jQuery('#widget_pager_top_photo_gallery-block img').each(function () {
@@ -116,6 +115,11 @@ function fastmatch_historyapi() {
 function fastmatch_refreshstuff(y) {
 
 	document.title = _galleryFastMatch_titles[y];
+	
+	omniture = s.prop15.split(':');
+	s.prop15 = omniture[0] + ':' + omniture[1] + ':' + _galleryFastMatch_titles[y];
+	s.eVar15 = s.prop15;
+	s.t();
 	
 	//Refresh Facebook comments:
 	fbchtml = '<div class="fb-comments" ' +
