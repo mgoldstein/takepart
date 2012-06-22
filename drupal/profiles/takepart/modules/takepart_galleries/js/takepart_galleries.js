@@ -102,19 +102,33 @@ function fastmatch_historyapi() {
 			document.title = _galleryFastMatch_titles[y];
 			
 			//Refresh Facebook comments:
-			FB.XFBML.parse(document.getElementById("comments"));
+			//jQuery('div.fb-comments').attr('data-href', window.location.href);
+			//FB.XFBML.parse(document.getElementById('fb-comments'));
+		
+			
+			fbchtml = '<div class="fb-comments" ' +
+	         		  'data-href="' + window.location.href + '" ' +
+	         	      'data-num-posts="15" ' +
+	                  'data-width="640" ' +
+	                  'data-colorscheme="light"></div>';
+			
+			jQuery('.fb-comments').html(fbchtml);
+			
+			FB.XFBML.parse(jQuery('#comments').get(0));
 			
 			//Refresh Google Plus:
 		    if((typeof gapi != 'undefined') && (gapi)) {
 				gapi.plusone.go();
 		    }
-		    
+		    		    
 		    //Refresh addthis:
-			var script = 'http://s7.addthis.com/js/250/addthis_widget.js#domready=1';
-			if (window.addthis){
+		    jQuery('script[src*="addthis_widget"]').each(function(i){
+		    	atscript = (this.src);
+		    });
+		    if (window.addthis){
 				window.addthis = null;
 			}
-			jQuery.getScript( script );			
+			jQuery.getScript(atscript);			
 			
 		}
 	    y++;
