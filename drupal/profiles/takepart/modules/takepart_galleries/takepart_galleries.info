@@ -1,0 +1,5 @@
+name = TakePart Galleries
+description = Registers menu hooks for galleries, provides JSON for Ajax.
+core = 7.x
+files[] = takepart_galleries.module
+files[] = takepart_galleries.install
