@@ -27,6 +27,7 @@ jQuery(document).ready(function () {
                     if (obj) {
                         x = 0;
                         jQuery(target + ' img').each(function () {
+                        	
                             imgsrc = (jQuery(this).attr('src'));
                             filename_a = imgsrc.substr(imgsrc.lastIndexOf("/") + 1);
                             filename_a = filename_a.substr(0, filename_a.lastIndexOf("_"));
@@ -35,8 +36,10 @@ jQuery(document).ready(function () {
                             pageurl = window.location.href;
                             pageurl = pageurl.substr(pageurl.lastIndexOf("/") + 1);
                             
-                            if ((obj['url'] == pageurl) && (filename_a == filename_b) && filename_a && filename_b) {
+                            //if ((obj['url'] == pageurl) && (filename_a == filename_b) && filename_a && filename_b) {
+                            if ((obj['url'] == pageurl) && (x == i)) {
                                 
+                         
                             	Drupal.viewsSlideshow.action({
                                     action: "goToSlide",
                                     slideshowID: ssid,
@@ -52,6 +55,8 @@ jQuery(document).ready(function () {
                             	    }
                             	    y++;
                             	});
+                            	
+                            	fastmatch_refreshstuff(x);
                             	
                             }
                             
@@ -99,36 +104,7 @@ function fastmatch_historyapi() {
 				history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4] + '/' + _galleryFastMatch[y]);	
 			}
 			
-			document.title = _galleryFastMatch_titles[y];
-			
-			//Refresh Facebook comments:
-			//jQuery('div.fb-comments').attr('data-href', window.location.href);
-			//FB.XFBML.parse(document.getElementById('fb-comments'));
-		
-			
-			fbchtml = '<div class="fb-comments" ' +
-	         		  'data-href="' + window.location.href + '" ' +
-	         	      'data-num-posts="15" ' +
-	                  'data-width="640" ' +
-	                  'data-colorscheme="light"></div>';
-			
-			jQuery('.fb-comments').html(fbchtml);
-			
-			FB.XFBML.parse(jQuery('#comments').get(0));
-			
-			//Refresh Google Plus:
-		    if((typeof gapi != 'undefined') && (gapi)) {
-				gapi.plusone.go();
-		    }
-		    		    
-		    //Refresh addthis:
-		    jQuery('script[src*="addthis_widget"]').each(function(i){
-		    	atscript = (this.src);
-		    });
-		    if (window.addthis){
-				window.addthis = null;
-			}
-			jQuery.getScript(atscript);			
+			fastmatch_refreshstuff(y);
 			
 		}
 	    y++;
@@ -136,3 +112,32 @@ function fastmatch_historyapi() {
 }
 
 
+
+function fastmatch_refreshstuff(y) {
+
+	document.title = _galleryFastMatch_titles[y];
+	
+	//Refresh Facebook comments:
+	fbchtml = '<div class="fb-comments" ' +
+     		  'data-href="' + window.location.href + '" ' +
+     	      'data-num-posts="15" ' +
+              'data-width="640" ' +
+              'data-colorscheme="light"></div>';
+	
+	jQuery('.fb-comments').html(fbchtml);	
+	FB.XFBML.parse(jQuery('#comments').get(0));
+	
+	//Refresh Google Plus:
+    if((typeof gapi != 'undefined') && (gapi)) {
+		gapi.plusone.go();
+    }
+    		    
+    //Refresh addthis:
+    jQuery('script[src*="addthis_widget"]').each(function(i){
+    	atscript = (this.src);
+    });
+    if (window.addthis){
+		window.addthis = null;
+	}
+	jQuery.getScript(atscript);	
+}
