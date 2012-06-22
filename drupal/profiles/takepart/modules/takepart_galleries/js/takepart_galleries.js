@@ -94,7 +94,19 @@ function fastmatch_historyapi() {
 			document.title = _galleryFastMatch_titles[y];
 			
 			//Refresh Facebook comments:
-			FB.XFBML.parse(document.getElementById("container-id"));
+			FB.XFBML.parse(document.getElementById("comments"));
+			
+			//Refresh Google Plus:
+		    if((typeof gapi != 'undefined') && (gapi)) {
+				gapi.plusone.go();
+		    }
+		    
+		    //Refresh addthis:
+			var script = 'http://s7.addthis.com/js/250/addthis_widget.js#domready=1';
+			if (window.addthis){
+				window.addthis = null;
+			}
+			jQuery.getScript( script );			
 			
 		}
 	    y++;

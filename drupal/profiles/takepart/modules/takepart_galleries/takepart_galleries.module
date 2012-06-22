@@ -110,7 +110,7 @@ function _takepart_galleries_fix_urls(&$item, $key) {
      if(isset($item['filename'])) {
        $filename = strtok($item['filename'], ".");
        if($filename) {
-         $item['url'] = $filename;
+         $item['url'] = strtolower($filename);
        }
      }
    }
