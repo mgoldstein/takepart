@@ -1,5 +1,6 @@
 
 var _galleryFastMatch = new Array();
+var _galleryFastMatch_titles = new Array();
 
 jQuery(document).ready(function () {
 
@@ -73,7 +74,14 @@ jQuery(document).ready(function () {
 	    	fastmatch_historyapi();
 	    }); 	
 	});
-  
+  	
+    jQuery('#views_slideshow_controls_text_previous_photo_gallery-block').click(function() {
+    	fastmatch_historyapi();
+    });
+	
+    jQuery('#views_slideshow_controls_text_next_photo_gallery-block').click(function() {
+    	fastmatch_historyapi();
+    });
     
 });
 
@@ -88,7 +96,7 @@ function fastmatch_historyapi() {
 			urlar = window.location.href.split('/');
 			
 			if(urlar[3] == 'photos') {
-				history.pushState(null, null, '/' + urlar[3] + '/' + _galleryFastMatch[y]);	
+				history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4] + '/' + _galleryFastMatch[y]);	
 			}
 			
 			document.title = _galleryFastMatch_titles[y];
