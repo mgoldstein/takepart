@@ -21,6 +21,7 @@ jQuery(document).ready(function () {
                     var obj = data[i];
 
                     _galleryFastMatch[i] = obj['url'];
+                    _galleryFastMatch_titles[i] = obj['title'];
                     
                     if (obj) {
                         x = 0;
@@ -89,6 +90,11 @@ function fastmatch_historyapi() {
 			if(urlar[3] == 'photos') {
 				history.pushState(null, null, '/' + urlar[3] + '/' + _galleryFastMatch[y]);	
 			}
+			
+			document.title = _galleryFastMatch_titles[y];
+			
+			//Refresh Facebook comments:
+			FB.XFBML.parse(document.getElementById("container-id"));
 			
 		}
 	    y++;

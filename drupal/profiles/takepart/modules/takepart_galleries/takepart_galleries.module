@@ -37,19 +37,19 @@ function takepart_galleries_entity_update($entity, $type) {
   
   if($type=='file') {
 
-    if(isset($entity->{'field_page_url_name'})) {
+    if(isset($entity->{'field_page_name'})) {
         
         $sql = 'SELECT
         file_managed.filename as filename,
         field_data_field_gallery_images.entity_id as entity_id,
-        field_data_field_page_url_name.field_page_url_name_value as url
+        field_data_field_page_name.field_page_name_value as url
         FROM
         {file_managed}
         RIGHT OUTER JOIN field_data_field_gallery_images ON file_managed.fid = field_data_field_gallery_images.field_gallery_images_fid
-        LEFT JOIN field_data_field_page_url_name ON file_managed.fid = field_data_field_page_url_name.entity_id
+        LEFT JOIN field_data_field_page_name ON file_managed.fid = field_data_field_page_name.entity_id
         where fid = :fid';
          
-        $fid = $entity->field_page_url_name['fid'];
+        $fid = $entity->field_page_name['fid'];
         
         $result = db_query($sql, array(':fid' => $fid), array('target' => 'slave'))->fetchAll(PDO::FETCH_ASSOC);
         
@@ -58,7 +58,7 @@ function takepart_galleries_entity_update($entity, $type) {
           $links = array(
               'id' => $entity->fid,
               'type' => 'takepart_galleries',
-              'loc' => $entity->field_page_url_name['und'] . '/' . $row['url'],
+              'loc' => $entity->field_page_name['und'] . '/' . $row['url'],
               'language' => 'und',
               'access' => 1,
               'status' => 1,
@@ -127,12 +127,12 @@ function _takepart_galleries_mappings_json($nid) {
     $sql = 'SELECT
             file_managed.filename AS filename,
             field_data_field_gallery_images.entity_id AS entity_id,
-            field_data_field_page_url_name.field_page_url_name_value AS url,
+            field_data_field_page_name.field_page_name_value AS url,
             field_data_field_image_title.field_image_title_value as title
             FROM
             {file_managed}
             RIGHT OUTER JOIN field_data_field_gallery_images ON file_managed.fid = field_data_field_gallery_images.field_gallery_images_fid
-            LEFT JOIN field_data_field_page_url_name ON file_managed.fid = field_data_field_page_url_name.entity_id
+            LEFT JOIN field_data_field_page_name ON file_managed.fid = field_data_field_page_name.entity_id
             LEFT JOIN field_data_field_image_title ON field_data_field_image_title.entity_id = file_managed.fid
             where field_data_field_gallery_images.entity_id = :nid';
    
