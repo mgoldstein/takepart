@@ -475,23 +475,30 @@ function takepart3_field__field_author(&$vars) {
 // Preprocess action URL
 function takepart3_field__field_action_url(&$vars) {
     $takeactionurl = $vars['element']['#object']->field_action_url['und'][0]['display_url'];
-    $takeactionurl_parts = parse_url($takeactionurl);
-    $safe_url = url($takeactionurl);
-
+    if (strlen($takeactionurl) <= 80) {
+        $takeactionurl_parts = parse_url($takeactionurl);
+        $safe_url = url($takeactionurl);
+    } else {
+        $extracturl = $vars['items'][0]['#markup'];
+        preg_match('/href="([^\s"]+)/', $extracturl, $match);
+        if (isset($match[1])) {
+            $takeactionurl_parts = parse_url($match[1]);
+            $safe_url = url($match[1]);
+        }
+    }
     // we may have a target attribute set; of so, build a string to add to the tag
     $target = $vars['element']['#items'][0]['attributes']['target'];
     if (isset($target)) {
-      $target_str = 'target="' . $target . '" ';
-    }
-    else {
-      // no target specified
-      $target_str = '';
+        $target_str = 'target="' . $target . '" ';
+    } else {
+        // no target specified
+        $target_str = '';
     }
 
     if ((array_key_exists('host', $takeactionurl_parts)) && ($takeactionurl_parts['host'] == $_SERVER['HTTP_HOST']) || ($takeactionurl_parts['host'] == '')) {
-      return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
+        return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
     } else {
-      return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
+        return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
     }
 }
 
