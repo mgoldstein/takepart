@@ -82,7 +82,7 @@ function federatedmedia_admin_settings() {
         '#type' => 'fieldset',
         '#title' => t('User role tracking'),
         '#collapsible' => TRUE,
-        '#description' => t('Define which user roles should be excluded from Federated Media tracking.'),
+        '#description' => t('Define which user roles should be tracked by Federated Media'),
         '#weight' => '-6',
     );
 

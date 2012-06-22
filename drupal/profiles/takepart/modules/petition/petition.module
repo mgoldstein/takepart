@@ -411,12 +411,19 @@ function petition_block_view($delta) {
 
         $email_share_msg_var = "petition:{$petition->type}:{$petition->petition_id}:email_share_msg";
         $twitter_share_msg_var = "petition:{$petition->type}:{$petition->petition_id}:twitter_share_msg";
+        $share_url_var = "petition:{$petition->type}:{$petition->petition_id}:share_url";
 
         $settings = array(
           'email' => isset($_COOKIE['petition_signed_as']) ? $_COOKIE['petition_signed_as'] : '',
           'email_msg' =>  variable_get($email_share_msg_var, ''),
           'twitter_msg' => variable_get($twitter_share_msg_var, ''),
         );
+
+        $share_url = variable_get($share_url_var, '');
+        if (! empty($share_url)) {
+          $settings['share_url'] = $share_url;
+        }
+
         drupal_add_js(array('sharing' => $settings), 'setting');
 
         break;

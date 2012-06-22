@@ -7,12 +7,10 @@ Disallow: /2009/
 Disallow: /2010/
 Disallow: /add/
 Disallow: /admin/
-Disallow: /article/2007/
-Disallow: /article/2008/
-Disallow: /article/2009/
 Disallow: /articles/
 Disallow: /arts-entertainment/
 Disallow: /arts-entertainment?
+Disallow: /backdoor/
 Disallow: /blog/2007/
 Disallow: /blog/2008/
 Disallow: /blog/2009/
@@ -21,6 +19,7 @@ Disallow: /blog/bloggers/
 Disallow: /blog/tag/
 Disallow: /categories/
 Disallow: /classic-music/
+Disallow: /comment/
 Disallow: /comment/reply/
 Disallow: /downloads/
 Disallow: /files/
@@ -35,8 +34,10 @@ Disallow: /misc/
 Disallow: /modules/
 Disallow: /news/
 Disallow: /node/
+Disallow: /node
 Disallow: /profiles/
 Disallow: /recent/
+Disallow: /rg/
 Disallow: /scripts/
 Disallow: /search/
 Disallow: /searchforcommonground/
