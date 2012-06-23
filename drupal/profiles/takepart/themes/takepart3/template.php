@@ -376,6 +376,10 @@ function takepart3_preprocess_node(&$vars, $hook) {
       $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), 'tuesday');
     }
 
+    // prepare the popup
+    $vars['popup_data'] = "";
+
+
     $vars['classes_array'][] = 'sluggo';
   }
 
