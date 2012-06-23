@@ -335,15 +335,59 @@ function takepart3_views_pre_render(&$vars) {
  * Preprocessor for theme('block').
  */
 function takepart3_preprocess_node(&$vars, $hook) {
+  // under certain conditions, we want to change the link of the embedded video to
+  // create a popup:
+  // 		-view_mode is "embed"
+  //    -field_video_display_mode is 2 (modal popup)
+  //
+  // 		or if
+  //
+  //    -view_mode is "full"
+  //    -field_video_display_mode is 3 (contextual)
+  //    -page type is video (permalink)
 
-    // Suggests a custom template for embedded node content through the WYSIWYG
-    // We suggest a theme for a general embed as well as for each content type
-    //
-  if ($vars['view_mode'] == 'embed') {
-        $vars['theme_hook_suggestions'][] = "node__embed";
-        $vars['theme_hook_suggestions'][] = "node__embed__{$vars['type']}";
+  $use_popup = false;
+  if ($vars['type'] == 'openpublish_video' && isset($vars['field_video_display_mode']['und'])) {
+    if (isset($vars['field_video_display_mode']['und'][0]['value'])) {
+      // this video node has a display mode has a value set; change
+      // the link to create a popup
+      switch ($vars['field_video_display_mode']['und'][0]['value']) {
+        case 1:   // embedded
+          break;
+        case 2:   // modal popup
+          if ($vars['view_mode'] == 'embed') {
+            $use_popup = true;
+          }
+          break;
+        case 3:   // contextual (embedded on permalink page, modal elsewhere)
+          if ($vars['view_mode'] == 'full') {
+            $use_popup = true;
+          }
+          break;
+      }
     }
-    // Provides a method for printing regions within node templates
+  }
+
+  if ($use_popup) {
+    $vars['theme_hook_suggestions'][] = "node__video_embed";
+    $template_path = drupal_get_path('module', 'takepart') . '/takepart_vidpop/theme/';
+    if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
+      $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), 'tuesday');
+    }
+
+    $vars['classes_array'][] = 'sluggo';
+  }
+
+  // Suggests a custom template for embedded node content through the WYSIWYG
+  // We suggest a theme for a general embed as well as for each content type
+  //
+  if ($vars['view_mode'] == 'embed' && !$use_popup) {
+    $vars['theme_hook_suggestions'][] = "node__embed";
+    $vars['theme_hook_suggestions'][] = "node__embed__{$vars['type']}";
+  }
+
+
+  // Provides a method for printing regions within node templates
     if ($blocks = block_get_blocks_by_region('sidebar_first')) {
         $vars['sidebar_first'] = $blocks;
         $vars['sidebar_first']['#theme_wrappers'] = array('region');
@@ -932,19 +976,6 @@ function takepart3_theme() {
     );
 }
 
-function takepart3_preprocess_views_view_unformatted(&$vars) {
-    //Add the node type to CSS classes for promos / block 1:
-    if ($vars['view']->name == 'promo' && $vars['view']->current_display == 'block_1') {
-        $rows = $vars['rows'];
-        $vars['extra_classes_array'] = array();
-        foreach ($rows as $id => $row) {
-            $vars['extra_classes_array'][$id] = $vars['view']->result[$id]->node_type;
-            //cheap fix for replacing empties:
-            $vars['rows'][$id] = str_replace("<div class=\"field-content\"></div>", "", $vars['rows'][$id]);
-            $vars['rows'][$id] = str_replace("<div class=\"views-field views-field-field-article-subhead\">          </div>", "", $vars['rows'][$id]);
-        }
-    }
-}
 
 function takepart3_preprocess_views_view(&$vars) {
     if (isset($vars['view']->name)) {
@@ -952,4 +983,106 @@ function takepart3_preprocess_views_view(&$vars) {
             drupal_add_css(drupal_get_path('module', 'takepart_petition') . '/css/takepart-petition-signatures-view.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
         }
     }
+}
+
+
+/**
+ * Preprocess function for theme('media_youtube_video').
+ */
+function takepart3_youtube_preprocess_media_youtube_video2(&$variables) {
+  // Build the URL for display.
+  $uri = $variables['uri'];
+  $wrapper = file_stream_wrapper_get_instance_by_uri($uri);
+  $parts = $wrapper->get_parameters();
+  $variables['video_id'] = check_plain($parts['v']);
+  $variables['query'] = array();
+
+  // @see http://code.google.com/apis/youtube/player_parameters.html
+  foreach (array('width', 'height', 'autoplay', 'related', 'hd', 'showsearch', 'modestbranding', 'showinfo', 'version', 'theme', 'fullscreen', 'wmode', 'chromeless') as $option) {
+    // Set the option, either from the options array, or from the default value.
+    $variables[$option] = isset($variables[$option]) ? $variables[$option] : (isset($variables['options'][$option]) ? $variables['options'][$option] : media_youtube_variable_get($option));
+  }
+
+  // We have to set fullscreen in the url query and as a parameter to the flash.
+  $variables['fs'] = $variables['fullscreen'];
+  $variables['fullscreen'] = $variables['fullscreen'] ? 'true' : 'false';
+
+  $variables['wrapper_id'] = 'media_youtube_' . $variables['video_id'] . '_' . $variables['id'];
+
+  // Pass the settings to replace the object tag with an iframe.
+  $settings = array(
+    'media_youtube' => array(
+      $variables['wrapper_id'] => array(
+        'width' => $variables['width'],
+        'height' => $variables['height'],
+        'video_id' => $variables['video_id'],
+        'fullscreen' => $variables['fullscreen'],
+        'id' => $variables['wrapper_id'] .'_iframe',
+      ),
+    ),
+  );
+
+  // Set the version of the youtube api player.
+  if ($variables['version']) {
+    $variables['query']['version'] = $variables['version'];
+    // Note that the fs variable defaults to 1 with the AS3 player.
+    if (!$variables['fs']) {
+      $variables['query']['fs'] = 0;
+    }
+  }
+  else if ($variables['fs']) {
+    // Note that the fs variable defaults to 0 with the AS2 player.
+    $variables['query']['fs'] = 1;
+  }
+
+  // These options default to 0.
+  foreach (array('modestbranding', 'autoplay', 'hd') as $variable) {
+    if ($variables[$variable]) {
+      $variables['query'][$variable] = 1;
+    }
+  }
+  // These options default to 1.
+  foreach (array('showsearch', 'showinfo') as $variable) {
+    if (!$variables[$variable]) {
+      $variables['query'][$variable] = 0;
+    }
+  }
+  if (!$variables['related']) {
+    $variables['query']['rel'] = 0;
+  }
+  if ($variables['theme'] != 'dark') {
+    $variables['query']['theme'] = $variables['theme'];
+  }
+
+  // Ensure that we pass the required query variables to the Iframe settings.
+  if (!empty($variables['query'])) {
+    $settings['media_youtube'][$variables['wrapper_id']]['options'] = $variables['query'];
+  }
+
+  drupal_add_js($settings, 'setting');
+  drupal_add_js(drupal_get_path('module', 'media_youtube') . '/js/media_youtube.js');
+  drupal_add_css(drupal_get_path('module', 'media_youtube') . '/css/media_youtube.css');
+  drupal_add_js(drupal_get_path('module', 'media_youtube') . '/js/flash_detect_min.js');
+
+  // The chromeless player requires a different url.
+  if ($variables['chromeless']) {
+    $variables['url_api'] = 'apiplayer';
+    $variables['query']['video_id'] = $variables['video_id'];
+  }
+  else {
+    $variables['url_api'] = 'v/' . $variables['video_id'];
+  }
+
+  $variables['url'] = url('http://www.youtube.com/' . $variables['url_api'], array('query' => $variables['query'], 'external' => TRUE, 'https' => TRUE));
+
+  // For users with JavaScript, these object and embed tags will be replaced
+  // by an iframe, so that we can support users without Flash.
+  $variables['output'] = <<<OUTPUT
+    <object width="{$variables['width']}" height="{$variables['height']}">
+      <param name="movie" value="{$variables['url']}"></param>
+      <param name="allowFullScreen" value="{$variables['fullscreen']}"></param>
+      <param name="wmode" value="{$variables['wmode']}" />
+      <embed src="{$variables['url']}" type="application/x-shockwave-flash" width="{$variables['width']}" height="{$variables['height']}" allowfullscreen="{$variables['fullscreen']}" wmode="{$variables['wmode']}"></embed>
+    </object>
+OUTPUT;
 }

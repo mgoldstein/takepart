@@ -51,16 +51,26 @@ function takepart_vidpop_menu() {
 function takepart_vidpop_format_preview($uri, $link) {
   $vidpop_path = drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop';
   $preview_image = theme('image_style', array('style_name' => 'tp_embed_video_thumb', 'path' => $uri));
-  $overlay_image = theme('image_style', array('style_name' => 'tp_embed_video_thumb', 'path' => $vidpop_path . '/images/youtube-overlay.png'));
-  $overlay_image = theme('image', array('path' => $vidpop_path . '/images/youtube-overlay.png'));
+  $overlay_image = theme('image', array('path' => $vidpop_path . '/images/youtube-overlay.png', 'attributes' => array('rel' => 'details')));
 
-  $linked_overlay = l($overlay_image, $link, array('html' => true));
+  $preview_image = theme('image_style', array('style_name' => 'tp_embed_video_thumb', 'path' => $uri));
+  $overlay_image = theme('image', array('path' => $vidpop_path . '/images/youtube-overlay.png', 'attributes' => array('rel' => '#details', 'class' => 'vidpop-trigger')));
 
   $formatted = <<<EOT
 <div class="vidpop-preview">
   $preview_image
-  <div class="vidpop-preview-overlay">$linked_overlay</div>
+  <div class="vidpop-preview-overlay">$overlay_image</div>
 </div>
+
+<div class="simple_overlay" id="details">
+  <!-- image details -->
+  <div class="details">
+    <h3>The Barcelona Pavilion</h3>
+    <h4>Barcelona, Spain</h4>
+    <p>The content ...</p>
+  </div>
+</div>
+
 EOT;
 
   return $formatted;
