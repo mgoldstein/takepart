@@ -369,8 +369,9 @@ function takepart3_preprocess_node(&$vars, $hook) {
   }
 
   if ($use_popup) {
+    //$vars['theme_hook_suggestions'] = array("node__video_embed");
     $vars['theme_hook_suggestions'][] = "node__video_embed";
-    $template_path = drupal_get_path('module', 'takepart') . '/takepart_vidpop/theme/';
+    //array_unshift($vars['theme_hook_suggestions'], "node__video_embed");
     if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
       $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), 'tuesday');
     }

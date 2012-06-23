@@ -1,3 +1,7 @@
+<?php
+// node template to create video popup
+?>
+
 <?php if (!empty($pre_object)) print render($pre_object) ?>
 <div class='<?php print $classes ?> clearfix node-embedded' <?php print ($attributes) ?>>
   <?php if (!empty($content['field_video_banner_large'])): ?>

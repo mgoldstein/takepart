@@ -23,6 +23,29 @@ function takepart_vidpop_init() {
 
 
 /**
+ * Implement hook_theme().
+ *
+ * This one is used as the base to reduce errors when updating.
+ */
+function takepart_vidpop_theme() {
+  $template_path = drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop/theme';
+
+  return array(
+    'node__video_embed' => array(
+      'path'      => $template_path,
+      'template'  => 'node--video-embed',
+      'variables' => array('node' => NULL),
+    ),
+    'node__video_popup' => array(
+      'path'      => $template_path,
+      'template'  => 'node--video-popup',
+      'variables' => array('node' => NULL),
+    ),
+  );
+}
+
+
+/**
  * Implements hook_menu().
  */
 function takepart_vidpop_menu() {
@@ -54,7 +77,7 @@ function takepart_vidpop_format_preview($uri, $link) {
   $overlay_image = theme('image', array('path' => $vidpop_path . '/images/youtube-overlay.png', 'attributes' => array('rel' => 'details')));
 
   $preview_image = theme('image_style', array('style_name' => 'tp_embed_video_thumb', 'path' => $uri));
-  $overlay_image = theme('image', array('path' => $vidpop_path . '/images/youtube-overlay.png', 'attributes' => array('rel' => '#details', 'class' => 'vidpop-trigger')));
+  $overlay_image = theme('image', array('path' => $vidpop_path . '/css/images/youtube-overlay.png', 'attributes' => array('rel' => '#details', 'class' => 'vidpop-trigger')));
 
   $formatted = <<<EOT
 <div class="vidpop-preview">
