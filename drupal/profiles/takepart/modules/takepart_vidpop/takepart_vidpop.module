@@ -6,19 +6,7 @@
 function takepart_vidpop_init() {
   $path = drupal_get_path('module', 'takepart');
   drupal_add_css($path . '/modules/takepart_vidpop/css/takepart_vidpop.css', array('every_page' => TRUE));
-  drupal_add_js($path . '/modules/takepart_vidpop/js/takepart_vidpop.js', 'file');
-  if (module_exists('libraries')) {
-    // Load jQuery Cycle
-    $tools_path = libraries_get_path('jquery.tools');
-
-    if (!empty($tools_path)) {
-      // Attempt to use minified version of jQuery cycle plugin.
-      if (file_exists($tools_path . '/jquery.tools.min.js')) {
-        $tools_path .= '/jquery.tools.min.js';
-        drupal_add_js($tools_path);
-      }
-    }
-  }
+  //drupal_add_js($path . '/modules/takepart_vidpop/js/takepart_vidpop.js', 'file');
 }
 
 
@@ -36,9 +24,9 @@ function takepart_vidpop_theme() {
       'template'  => 'node--video-embed',
       'variables' => array('node' => NULL),
     ),
-    'node__video_popup' => array(
+    'vidpop_popup' => array(
       'path'      => $template_path,
-      'template'  => 'node--video-popup',
+      'template'  => 'vidpop-popup',
       'variables' => array('node' => NULL),
     ),
   );
@@ -66,12 +54,12 @@ function takepart_vidpop_menu() {
  * format image to look like a youtube video preview
  *
  * @param $uri    uri of image
- * @param $link   link to jump to on click
+ * @param $vars   variables from node preprocessing
  *
  * uses image style tp_embed_video_thumb to create a 420x315 image
  *
  */
-function takepart_vidpop_format_preview($uri, $link) {
+function takepart_vidpop_format_preview($uri, $vars) {
   $vidpop_path = drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop';
   $preview_image = theme('image_style', array('style_name' => 'tp_embed_video_thumb', 'path' => $uri));
   $overlay_image = theme('image', array('path' => $vidpop_path . '/images/youtube-overlay.png', 'attributes' => array('rel' => 'details')));
@@ -79,22 +67,35 @@ function takepart_vidpop_format_preview($uri, $link) {
   $preview_image = theme('image_style', array('style_name' => 'tp_embed_video_thumb', 'path' => $uri));
   $overlay_image = theme('image', array('path' => $vidpop_path . '/css/images/youtube-overlay.png', 'attributes' => array('rel' => '#details', 'class' => 'vidpop-trigger')));
 
+  // theme the popup contents
+  $formatted_popup = theme('vidpop_popup', $vars);
+
+  //$preview_image = 'linkk';
+  //$formatted_popup = '<div>woowee</div>';
+
   $formatted = <<<EOT
-<div class="vidpop-preview">
-  $preview_image
-  <div class="vidpop-preview-overlay">$overlay_image</div>
+<div class="vidpop-preview">$preview_image
+  <a class="colorbox-inline" href="?width=900&amp;height=525&amp;inline=true#vidpop-details"><div class="vidpop-preview-overlay">$overlay_image</div></a>
 </div>
 
-<div class="simple_overlay" id="details">
-  <!-- image details -->
-  <div class="details">
-    <h3>The Barcelona Pavilion</h3>
-    <h4>Barcelona, Spain</h4>
-    <p>The content ...</p>
-  </div>
+<div class="vidpop-overlay">
+  <div id="vidpop-details">$formatted_popup</div>
 </div>
-
 EOT;
 
   return $formatted;
 }
+
+
+/***
+ * @returns formatted banner
+ * @param $box_id   id of box (delta, from box table)
+ */
+function takepart_vidpop_get_banner($box_id) {
+  // get the ad box
+  $block = block_load('boxes', $box_id);
+  $banner =  render(_block_get_renderable_array( _block_render_blocks( array($block) )));
+
+  return $banner;
+}
+

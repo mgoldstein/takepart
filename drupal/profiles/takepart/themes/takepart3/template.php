@@ -369,17 +369,13 @@ function takepart3_preprocess_node(&$vars, $hook) {
   }
 
   if ($use_popup) {
-    //$vars['theme_hook_suggestions'] = array("node__video_embed");
+    // suggest a theme
     $vars['theme_hook_suggestions'][] = "node__video_embed";
-    //array_unshift($vars['theme_hook_suggestions'], "node__video_embed");
+
     if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
-      $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), 'tuesday');
+      $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
     }
-
-    // prepare the popup
-    $vars['popup_data'] = "";
-
-
+    // add identifying class
     $vars['classes_array'][] = 'sluggo';
   }
 

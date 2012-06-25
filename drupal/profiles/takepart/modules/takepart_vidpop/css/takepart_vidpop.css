@@ -2,6 +2,9 @@
  * file: CSS support for takepart_vidpop
 */
 
+/*
+* this is the embedded preview pane
+*/
 div.vidpop-preview {
   width: 420px;
   height: 315px;
@@ -25,33 +28,67 @@ div.vidpop-preview a img {
   left: 0;
 }
 
-.simple_overlay {
-
-  /* must be initially hidden */
-  display:none;
-
-  /* place overlay on top of other elements */
-  z-index:10000;
-
-  /* styling */
-  background-color:#333;
-
-  width:675px;
-  min-height:200px;
-  border:1px solid #666;
-
-  /* CSS3 styling for latest browsers */
-  -moz-box-shadow:0 0 90px 5px #000;
-  -webkit-box-shadow: 0 0 90px #000;
+/*
+* the overlay sits on top of the preview, with borders and arrow button
+*/
+.vidpop-overlay {
+  display:none;     /* must be initially hidden */
+  background-color: white;
+  width: 900px;
+  min-height: 415px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+.vidpop-popup .inner-wrapper {
+  padding: 20px;
+}
+.vidpop-popup .video-banner-larger {
+  padding: 20px 0;
+}
+.vidpop-popup .lower-wrapper {
+  padding: 20px 0;
+  clear: both;
+  
+}
+.vidpop-popup .lower-wrapper .leftside {
+  float: left;
+  width: 640px;
+}
+.vidpop-popup .lower-wrapper .rightside {
+  float: right;
+  width: 200px;
 }
 
 /* close button positioned on upper right corner */
-.simple_overlay .close {
-  background-image:url(images/close.png);
+#cboxClose {
+  background: url(images/close_popup.png) no-repeat !important;
   position:absolute;
-  right:-15px;
-  top:-15px;
+  right: 5px !important;
+  top: 5px !important;
   cursor:pointer;
-  height:35px;
-  width:35px;
+  height:13px !important;
+  width:13px !important;
 }
+
+
+
+/*
+* the popup window
+*/
+.vidpop-popup .field-name-field-promo-headline {
+  color: black;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 24px;
+  padding-bottom: 10px;
+}
+.vidpop-popup .field-name-field-promo-text {
+  color: black;
+  font-size: 13px;
+  line-height: 15px;
+  padding-bottom: 10px;
+}
+
+
