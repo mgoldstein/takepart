@@ -372,9 +372,14 @@ function takepart3_preprocess_node(&$vars, $hook) {
     // suggest a theme
     $vars['theme_hook_suggestions'][] = "node__video_embed";
 
+    // render the video as large size for the popup
+    $render_large = node_view(node_load($vars['nid']), 'large');
+    $vars['large_video'] =  drupal_render($render_large['field_video_embedded']);
+
     if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
       $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
     }
+
     // add identifying class
     $vars['classes_array'][] = 'sluggo';
   }

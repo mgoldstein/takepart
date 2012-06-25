@@ -18,9 +18,9 @@
     <?php hide($content['body']); ?>
     <?php endif; ?>
 
-    <?php hide($content['field_video_embedded']);  // hide because we're replacing it with the thumbnail ?>
+    <?php //hide($content['field_video_embedded']);  // hide because we're replacing it with the thumbnail ?>
     <?php print $content['thumbnail_image'] ?>
-    <?php print render($content); ?>
+    <?php //print render($content); ?>
 
     <?php if($view_mode == 'teaser'): ?>
     <?php show($content['field_topic']); ?>
