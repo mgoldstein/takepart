@@ -9,28 +9,84 @@ include_once('takepart_ads.features.inc');
 function takepart_ads_preprocess_page(&$vars) {
   $ad_slots = array();
   $ad_slots = takepart_ads();
+  
+  $gptad_slots = takepart_gpt_ads();
+  
   $ad_html = '';
+  $gptad_html = '';
+  
   foreach ($ad_slots as $ad) {
-    $ad_html .= 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad . '");';
+    
+    $gptad = '';
+    
+    foreach ($gptad_slots as $gptads) {
+      //GPT:
+      if(isset($gptads[$ad])) {
+        $gptad = $gptads[$ad];
+        break;
+      }
+    }
+   
+    
+    if(!empty($gptad)) {
+      //GPT:
+      $adsize = substr( strrchr( $ad, '_' ), 1);
+      $lr = explode("x", $adsize);
+      $gptad_html .= 'googletag.defineSlot(\'/'.variable_get('takepart_ads_dfp_property_code_gpt', '4355895').'/' . $ad . '\', ['.$lr[0].', '.$lr[1].'], \''.$gptad.'\').addService(googletag.pubads());' . "\n";     
+    } else {
+      //GAM:
+      $ad_html .= 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad . '");';
+    }
+
   }
 
+  //GAM:
   $header1 = 'GS_googleAddAdSenseService("' . variable_get('takepart_ads_dfp_property_code', '') . '");
 GS_googleEnableAllServices();';
   $header2 = $ad_html;
   $header3 = 'GA_googleFetchAds();';
   
+  //GAM:
   if (!empty($ad_html)) {
     drupal_add_js('http://partner.googleadservices.com/gampad/google_service.js', 'external');
     drupal_add_js($header1, 'inline');
     drupal_add_js($header2, 'inline');
     drupal_add_js($header3, 'inline');
   }
+  
+  //GPT:
+  if (!empty($gptad_html)) {
+    drupal_add_js("(function() {
+        var useSSL = 'https:' == document.location.protocol;
+        var src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+        document.write('<scr' + 'ipt src=\"' + src + '\"></scr' + 'ipt>');
+        })();",
+        array('type' => 'inline', 'scope' => 'header'));
+    drupal_add_js($gptad_html . "\n" .
+        'googletag.pubads().enableSyncRendering();' . "\n" .
+        'googletag.pubads().enableSingleRequest();' . "\n" .
+        'googletag.enableServices();', array('type' => 'inline', 'scope' => 'header'));
+  }
+    
 }
 
 /*
  * keep a static list of all adds
  */
 function takepart_ads($slot = FALSE) {
+  $slots = &drupal_static(__FUNCTION__);
+  $slots = isset($slots) ? $slots : array();
+  if($slot) {
+    $slots[] = $slot;
+  }
+  return $slots;
+}
+
+/*
+ * keep a static list of all adds
+*/
+function takepart_gpt_ads($slot = FALSE) {
   $slots = &drupal_static(__FUNCTION__);
   $slots = isset($slots) ? $slots : array();
   if($slot) {
