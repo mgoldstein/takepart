@@ -78,6 +78,13 @@ function _takepart_facebookapis_getfblogin($dest = null) {
 }
 
 function _takepart_facebookapis_auth($action) {
+  
+  header('Expires: Thu, 01-Jan-70 00:00:01 GMT');
+  header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' );
+  header('Cache-Control: no-store, no-cache, must-revalidate' );
+  header('Cache-Control: post-check=0, pre-check=0', false );
+  header('Pragma: no-cache' );
+  
   $action_name = $action['name'];
   $app_id = variable_get('fboauth_id', '');
   $app_secret = variable_get('fboauth_secret', '');
