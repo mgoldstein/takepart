@@ -20,13 +20,6 @@ function fbregistration_menu() {
       'type' => MENU_NORMAL_ITEM,
       'file' => 'includes/fbregistration.admin.inc',
   );
-  // Test page
-  $items['admin/config/people/fbregistration/test'] = array(
-      'title' => 'BSD Test Page',
-      'page callback' => '_fbregistration_test_page',
-      'access arguments' => array('administer users'),
-      'type' => MENU_CALLBACK,
-  );
   $items['fbregistration'] = array(
       'title' => 'Facebook Registration',
       'page callback' => '_tfbregistration_auth',
@@ -155,7 +148,7 @@ function _fbregistration_getfbreg(&$form = null) {
   
   _fbregistration_admin_form_load($form, $fieldmappings);
   _fbregistration_bsd_form_load($form, $bsdmappings);
- 
+
   
   foreach ($fieldmappings as $name => $field) {
   
@@ -183,7 +176,7 @@ function _fbregistration_getfbreg(&$form = null) {
 
       if($field['#default_value'] == 'custom_checkbox') {
         
-        if((isset($bsdmappings[$name]['#default_value']))) {
+        if((isset($bsdmappings[$name]['#default_value'])) && ($bsdmappings[$name]['#default_value'] != null)) {
           array_push($jsondata, array('name' => 'bsd_' . $bsdmappings[$name]['#default_value'] . "_" .$name, 'description' => $title, 'type' => 'checkbox', 'options' => $field['#foreign']['#options'], 'default' => ((isset($field['#foreign']['#default_value']) && $field['#foreign']['#default_value'] == 1) ? 'checked' : 'unchecked')));
         } else {
           array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'checkbox', 'options' => $field['#foreign']['#options'], 'default' => ((isset($field['#foreign']['#default_value']) && $field['#foreign']['#default_value'] = 1) ? 'checked' : 'unchecked')));
