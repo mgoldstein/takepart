@@ -100,7 +100,11 @@ function fastmatch_historyapi() {
 			urlar = window.location.href.split('/');
 			
 			if(urlar[3] == 'photos') {
-				history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4] + '/' + _galleryFastMatch[y]);	
+				if(y==0) {
+					history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4]);
+				} else {
+					history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4] + '/' + _galleryFastMatch[y]);
+				}
 			}
 			
 			fastmatch_refreshstuff(y);
