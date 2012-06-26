@@ -318,18 +318,6 @@ function _default_menu_options($menu_item) {
     return $menu_opts;
 }
 
-function takepart3_views_pre_render(&$vars) {
-    if ($vars->name == 'featured_items' && $vars->current_display == 'block') {
-        for ($i = 0; $i < sizeof($vars->result); $i++) {
-            if (!empty($vars->result[$i]->field_field_thumbnail)) {
-                $vars->result[$i]->field_field_gallery_main_image = array();
-                $vars->result[$i]->field_field_article_main_image = array();
-                $vars->result[$i]->field_field_page_main_image = array();
-                $vars->result[$i]->field_field_blogpost_main_image = array();
-            }
-        }
-    }
-}
 
 /**
  * Preprocessor for theme('block').
@@ -1000,4 +988,113 @@ function takepart3_preprocess_views_view(&$vars) {
     }
 }
 
+
+/***
+ * @function override for theme_pager_link
+ *
+ * rewrites link so first page has page=0 argument, and adds rel prev/next links to head
+ *
+ * @param $variables
+ * @return string
+ *
+ */
+function takepart3_pager_link($variables) {
+  global $base_root;
+
+  $text = $variables['text'];
+  $page_new = $variables['page_new'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  $attributes = $variables['attributes'];
+
+  $page = isset($_GET['page']) ? $_GET['page'] : '';
+  if ($new_page = implode(',', pager_load_array($page_new[$element], $element, explode(',', $page)))) {
+    $parameters['page'] = $new_page;
+  }
+
+  $query = array();
+  if (count($parameters)) {
+    $query = drupal_get_query_parameters($parameters, array());
+  }
+  if ($query_pager = pager_get_query_parameters()) {
+    $query = array_merge($query, $query_pager);
+  }
+
+  // Set each pager link title
+  if (!isset($attributes['title'])) {
+    static $titles = NULL;
+    if (!isset($titles)) {
+      $titles = array(
+        t('« first') => t('Go to first page'),
+        t('‹ previous') => t('Go to previous page'),
+        t('next ›') => t('Go to next page'),
+        t('last »') => t('Go to last page'),
+      );
+
+      drupal_add_html_head_link(array(
+        'rel' => 'canonical',
+        //'type' => 'application/rss+xml',
+        'href' => url($base_root . request_uri(), array()),
+      ));
+    }
+  }
+
+
+    // additional code for prev/next
+  if (count($query) == 0) {
+    // fix for page 0
+    $query['page'] = 0;
+  }
+
+  // Pagination with rel=“next” and rel=“prev”. Does not support well multiple
+  // pagers on the same page - it will create relnext and relprev links
+  // in header for that case only for the first pager that is rendered.
+  static $rel_prev = FALSE, $rel_next = FALSE;
+  if (!$rel_prev && $text == t('‹ previous')) {
+    $rel_prev = TRUE;
+    drupal_add_html_head_link(array(
+      'rel' => 'prev',
+      //'type' => 'application/rss+xml',
+      'href' => url($base_root . '/' . drupal_get_path_alias($_GET['q']), array('query' => $query)),
+    ));
+  }
+  if (!$rel_next && $text == t('next ›')) {
+    $rel_next = TRUE;
+    drupal_add_html_head_link(array(
+      'rel' => 'next',
+      //'type' => 'application/rss+xml',
+      'href' => url($base_root . '/' . drupal_get_path_alias($_GET['q']), array('query' => $query)),
+    ));
+  }
+
+  return l($text, $_GET['q'], array('attributes' => $attributes, 'query' => $query));
+}
+
+
+/***
+ * implementation of hook_html_head_alter()
+ *
+ * @param $head_elements
+ */
+function takepart3_html_head_alter(&$head_elements) {
+  // check for duplicate canonical links - if found,
+  // use the one from takepart3_pager_link()
+  $remove = array(); // list of elements to remove
+  foreach ($head_elements as $key => $data) {
+    if ($data['#tag'] == 'link') {
+       if ($data['#attributes']['rel'] == 'canonical') {
+         if (strpos($data['#attributes']['href'], 'http') !== 0) {
+           // add to remove list; the ones added from pager_link will
+           // all have a full URL, starting with protocol
+         $remove[] = $key;
+         }
+       }
+    }
+  }
+
+  // remove any duplicate canonical links (those not coming from pager link)
+  foreach ($remove as $junk => $key) {
+    unset($head_elements[$key]);
+  }
+}
 
