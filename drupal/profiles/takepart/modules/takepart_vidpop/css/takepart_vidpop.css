@@ -110,6 +110,10 @@ div.vidpop-preview a img {
 .vidpop-popup .subscribe {
   margin: 10px 0 10px 20px;  
 }
+.vidpop-popup .comment-link {
+  margin-bottom: 20px;
+  text-align: center;  
+}
 .vidpop-popup .tp-vidpop-share-button-bar {
   margin: 10px 0 10px 60px;  
 }
