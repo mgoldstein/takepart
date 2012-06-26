@@ -362,15 +362,65 @@ function _default_menu_options($menu_item) {
  * Preprocessor for theme('block').
  */
 function takepart3_preprocess_node(&$vars, $hook) {
+  // under certain conditions, we want to change the link of the embedded video to
+  // create a popup:
+  // 		-view_mode is "embed"
+  //    -field_video_display_mode is 2 (modal popup)
+  //
+  // 		or if
+  //
+  //    -view_mode is "full"
+  //    -field_video_display_mode is 3 (contextual)
+  //    -page type is video (permalink)
 
-    // Suggests a custom template for embedded node content through the WYSIWYG
-    // We suggest a theme for a general embed as well as for each content type
-    //
-  if ($vars['view_mode'] == 'embed') {
-        $vars['theme_hook_suggestions'][] = "node__embed";
-        $vars['theme_hook_suggestions'][] = "node__embed__{$vars['type']}";
+  $use_popup = false;
+  if ($vars['type'] == 'openpublish_video' && isset($vars['field_video_display_mode']['und'])) {
+    if (isset($vars['field_video_display_mode']['und'][0]['value'])) {
+      // this video node has a display mode has a value set; change
+      // the link to create a popup
+      switch ($vars['field_video_display_mode']['und'][0]['value']) {
+        case 1:   // embedded
+          break;
+        case 2:   // modal popup
+          if ($vars['view_mode'] == 'embed') {
+            $use_popup = true;
+          }
+          break;
+        case 3:   // contextual (embedded on permalink page, modal elsewhere)
+          if ($vars['view_mode'] == 'full') {
+            $use_popup = true;
+          }
+          break;
+      }
     }
-    // Provides a method for printing regions within node templates
+  }
+
+  if ($use_popup) {
+    // suggest a theme
+    $vars['theme_hook_suggestions'][] = "node__video_embed";
+
+    // render the video as large size for the popup
+    $render_large = node_view(node_load($vars['nid']), 'large');
+    $vars['large_video'] =  drupal_render($render_large['field_video_embedded']);
+
+    if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
+      $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
+    }
+
+    // add identifying class
+    $vars['classes_array'][] = 'sluggo';
+  }
+
+  // Suggests a custom template for embedded node content through the WYSIWYG
+  // We suggest a theme for a general embed as well as for each content type
+  //
+  if ($vars['view_mode'] == 'embed' && !$use_popup) {
+    $vars['theme_hook_suggestions'][] = "node__embed";
+    $vars['theme_hook_suggestions'][] = "node__embed__{$vars['type']}";
+  }
+
+
+  // Provides a method for printing regions within node templates
     if ($blocks = block_get_blocks_by_region('sidebar_first')) {
         $vars['sidebar_first'] = $blocks;
         $vars['sidebar_first']['#theme_wrappers'] = array('region');
@@ -1024,19 +1074,6 @@ function takepart3_theme() {
     );
 }
 
-function takepart3_preprocess_views_view_unformatted(&$vars) {
-    //Add the node type to CSS classes for promos / block 1:
-    if ($vars['view']->name == 'promo' && $vars['view']->current_display == 'block_1') {
-        $rows = $vars['rows'];
-        $vars['extra_classes_array'] = array();
-        foreach ($rows as $id => $row) {
-            $vars['extra_classes_array'][$id] = $vars['view']->result[$id]->node_type;
-            //cheap fix for replacing empties:
-            $vars['rows'][$id] = str_replace("<div class=\"field-content\"></div>", "", $vars['rows'][$id]);
-            $vars['rows'][$id] = str_replace("<div class=\"views-field views-field-field-article-subhead\">          </div>", "", $vars['rows'][$id]);
-        }
-    }
-}
 
 function takepart3_preprocess_views_view(&$vars) {
     if (isset($vars['view']->name)) {

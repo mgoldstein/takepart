@@ -1,0 +1,9 @@
+name = TakePart Video Popup Support
+description = Mechanism to display rich video popups
+package = TakePart
+version = 7.x-1.00
+core = 7.x
+; dependencies[] = pathauto
+files[] = takepart_vidpop.module
+files[] = takepart_vidpop.install
+files[] = takepart_vidpop.admin.inc
