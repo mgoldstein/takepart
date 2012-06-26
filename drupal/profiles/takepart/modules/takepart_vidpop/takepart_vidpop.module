@@ -33,6 +33,13 @@ function takepart_vidpop_theme() {
 }
 
 
+
+function takepart_vidpop_preprocess_vidpop_popup(&$vars) {
+  // hmmm... why isn't this getting passed to the template?
+  $vars['sluggo'] = 1;
+}
+
+
 /**
  * Implements hook_menu().
  */
@@ -97,5 +104,16 @@ function takepart_vidpop_get_banner($box_id) {
   $banner =  render(_block_get_renderable_array( _block_render_blocks( array($block) )));
 
   return $banner;
+}
+
+
+/***
+ * get the social links
+ */
+function takepart_vidpop_get_social_links() {
+  $block = block_load('takepart_addthis', 'addthis_vidpop');
+  $social_links =  render(_block_get_renderable_array( _block_render_blocks( array($block) )));
+
+  return $social_links;
 }
 

@@ -97,8 +97,10 @@ div.vidpop-preview a img {
   padding-bottom: 10px;
 }
 .vidpop-popup .subscribe {
-  margin: 10px 0 10px 20px;
-  
+  margin: 10px 0 10px 20px;  
+}
+.vidpop-popup .tp-vidpop-share-button-bar {
+  margin: 10px 0 10px 60px;  
 }
 
 
