@@ -143,10 +143,35 @@ function fastmatch_refreshstuff(y) {
     if (window.addthis){
 		window.addthis = null;
 	}
-	jQuery.getScript(atscript);	
-	
+    jQuery.getScript(atscript);
+    
+    
+    //Force the damn FB shares to refresh ... rebuild iFrames:
+    jQuery(".addthis_toolbox .addthis_button_facebook_like iframe").each(function() {
+    	var src = jQuery(this).attr('src');
+    	src = fastmatch_fb_iframe_refresh(src);
+    	jQuery(this).attr('src', src);
+    });
+ 	
 	//Refresh DFP Ads:
 	if(typeof googletag != 'undefined') {
 		googletag.pubads().refresh();
 	}
 }
+
+
+function fastmatch_fb_iframe_refresh(q) {
+	nq = q.substr(0,q.lastIndexOf("?"));
+	oq = q.substr(q.lastIndexOf("?"));
+	var qs = oq.split("&");
+	for (var i=0;i<qs.length;i++) {
+		var pair = qs[i].split("=");
+		if(pair[0] == 'href') {
+			nq = nq + "&" + pair[0] + '=' + encodeURIComponent(window.location.href);
+		} else {
+			nq = nq + "&" + pair[0] + '=' + pair[1];
+		}
+	}
+	return nq;
+}
+
