@@ -1,0 +1,699 @@
+<?php
+
+/**
+ * @file
+ * Marigold Ideas for Good Contest
+ */
+
+/**
+ * Implements hook_entity_info()
+ */
+function ideasforgood_entity_info() {
+
+  $info = array();
+
+  $info['ideasforgood_finalist'] = array(
+    'label' => t('Marigold Ideas for Good Finalist'),
+    'entity class' => 'IdeasForGoodFinalist',
+    'controller class' => 'IdeasForGoodFinalistController',
+    'base table' => 'ideasforgood_finalist',
+    'fieldable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+    ),
+    'label callback' => 'entity_class_label',
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'ideasforgood_finalist_access',
+    'module' => 'ideasforgood',
+    'admin ui' => array(
+      'path' => 'admin/content/ideasforgood/finalists',
+      'file' => 'finalist.admin.inc',
+      'controller class' => 'IdeasForGoodFinalistUIController',
+    ),
+    'view modes' => array(
+      'full' => array(
+        'label' => t('Default'),
+        'custom settings' => FALSE,
+      ),
+      'locked' => array(
+        'label' => t('Locked'),
+        'custom settings' => FALSE,
+      ),
+      'register' => array(
+        'label' => t('Register'),
+        'custom settings' => FALSE,
+      ),
+      'vote' => array(
+        'label' => t('Vote'),
+        'custom settings' => FALSE,
+      ),
+      'thankyou' => array(
+        'label' => t('Thank You'),
+        'custom settings' => FALSE,
+      ),
+    ),
+  );
+
+  $info['ideasforgood_voting_group'] = array(
+    'label' => t('Marigold Ideas for Good Voting Group'),
+    'entity class' => 'IdeasForGoodVotingGroup',
+    'controller class' => 'IdeasForGoodVotingGroupController',
+    'base table' => 'ideasforgood_voting_group',
+    'fieldable' => TRUE,
+    'entity keys' => array(
+       'id' => 'id',
+    ),
+    'label callback' => 'entity_class_label',
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'ideasforgood_finalist_access',
+    'module' => 'ideasforgood',
+    'admin ui' => array(
+      'path' => 'admin/content/ideasforgood/groups',
+      'file' => 'voting_group.admin.inc',
+      'controller class' => 'IdeasForGoodVotingGroupUIController',
+    ),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_permission()
+ */
+function ideasforgood_permission() {
+  return array(
+    'administer ideasforgood finalists' => array(
+      'title' => t('Administer Ideas for Good finalists'),
+      'description' => t('Edit and delete all Ideas for Good Finalists'),
+    ),
+    'edit ideasforgood finalists' => array(
+      'title' => t('Edit Ideas for Good Finalists'),
+      'description' => t('Edit all Ideas for Good finalists'),
+    ),
+    'view ideasforgood finalists' => array(
+      'title' => t('View Ideas for Good Finalists'),
+      'description' => t('View all Ideas for Good finalists'),
+    ),
+  );
+}
+
+function ideasforgood_finalist_access($op, $finalist = NULL, $account = NULL) {
+  $op = ($op == 'view') ? 'view' : 'edit';
+  if (user_access('administer ideasforgood finalists', $account) ||
+      user_access("$op ideasforgood finalists", $account)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function ideasforgood_theme($existing, $type, $theme, $path) {
+  return array(
+    'ideasforgood_finalist__ideasforgood_finalist__full' => array(
+      'render element' => 'elements',
+      'template' => 'theme/finalist',
+    ),
+    'ideasforgood_finalist__ideasforgood_finalist__locked' => array(
+      'render element' => 'elements',
+      'template' => 'theme/finalist',
+    ),
+    'ideasforgood_finalist__ideasforgood_finalist__register' => array(
+      'render element' => 'elements',
+      'template' => 'theme/register',
+    ),
+    'ideasforgood_finalist__ideasforgood_finalist__vote' => array(
+      'render element' => 'elements',
+      'template' => 'theme/vote',
+    ),
+    'ideasforgood_finalist__ideasforgood_finalist__thankyou' => array(
+      'render element' => 'elements',
+      'template' => 'theme/thankyou',
+    ),
+  );
+}
+
+/**
+ * Implements hook_views_api()
+ */
+function ideasforgood_views_api() {
+  return array(
+    'api' => 3,
+  );
+}
+
+function ideasforgood_vote_form($form, &$form_state, $finalist) {
+
+  $form_state['ideasforgood_finalist'] = $finalist;
+
+  $items = field_get_items('ideasforgood_finalist', $finalist,
+    'ideasforgood_finalist_first_name');
+  $first_name = $items[0]['safe_value'];
+
+  $items = field_get_items('ideasforgood_finalist', $finalist,
+    'ideasforgood_finalist_last_name');
+  $last_name = $items[0]['safe_value'];
+
+  $markup  = '<p>';
+  $markup .= 'Please confirm your vote for ';
+  $markup .= "{$first_name} {$last_name}.";
+  $markup .= '</p>';
+  $form['message'] = array(
+    '#type' => 'markup',
+    '#markup' => $markup,
+  );
+
+  // need to know who the vote is for
+  $form['vote'] = array(
+    '#type' => 'hidden',
+    '#default_value' => $finalist->token,
+  );
+
+  $form['centered_content'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array(
+        'ideasforgood-centered-content'
+      ),
+    ),
+  );
+
+  // use a pretty button for submitting the vote
+  $submit_src = implode('/', array(
+    drupal_get_path('module', 'ideasforgood'),
+    'images',
+    'confirm_button.png',
+  ));
+  $form['centered_content']['submit'] = array(
+    '#type' => 'image_button',
+    '#src' => $submit_src,
+    '#attributes' => array(
+      'alt' => t('Confirm'),
+      'class' => array(
+        'ideasforgood-button-link',
+      ),
+    ),
+    '#submit' => array('ideasforgood_vote_form_submit'),
+    '#ajax' => array(
+      'callback' => 'ideasforgood_vote_form_callback',
+      'progress' => array(
+        'type' => 'throbber',
+        'message' => NULL,
+      ),
+    ),
+  );
+
+  $cancel_src = implode('/', array(
+    drupal_get_path('module', 'ideasforgood'),
+    'images',
+    'cancel_button.png',
+  ));
+  $markup  = '<div>';
+  $markup .= '<img';
+  $markup .= ' src="/'. $cancel_src . '"';
+  $markup .= ' alt="Cancel"';
+  $markup .= ' class="ideasforgood-cancel-button"';
+  $markup .= '>';
+  $markup .= '</div>';
+  $form['centered_content']['cancel'] = array(
+    '#type' => 'markup',
+    '#markup' => $markup,
+  );
+
+  $form['centered_content']['opt_in'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Keep this box checked if you would like us to email you about who won.'),
+    '#default_value' => TRUE,
+  );
+
+  return $form;
+}
+
+function ideasforgood_vote_form_submit(&$form, &$form_state) {
+  global $user;
+
+  $finalist = $form_state['ideasforgood_finalist'];
+
+  // get the voting group
+  $group = ideasforgood_finalist_group($finalist);
+  if ($group !== FALSE) {
+
+    // get the fields for the voting form
+    $fields = takepart_bsd_signup_list_form_fields($group->voting_form_id);
+    if (!empty($fields)) {
+
+      // make sure all of the required fields are present
+      $have_email = isset($fields[$group->email_field_id]);
+      $have_vote = isset($fields[$group->vote_field_id]);
+      $have_opt_in = isset($fields[$group->opt_in_field_id]);
+      if ($have_email && $have_vote && $have_opt_in) {
+
+        $fields[$group->email_field_id]['value'] = array(
+          'type' => 'value',
+          'value' => $user->mail,
+        );
+        $fields[$group->vote_field_id]['value'] = array(
+          'type' => 'value',
+          'value' => $form_state['values']['vote'],
+        );
+        $fields[$group->opt_in_field_id]['value'] = array(
+          'type' => 'value',
+          'value' => $form_state['values']['opt_in'],
+        );
+
+        $signup = array($group->voting_form_id => $fields);
+
+        $errors = array();
+        takepart_bsd_signup_process_signup($signup, $errors);
+
+        $form_state['vote_accepted'] = empty($errors);
+      }
+    }
+  }
+}
+
+function ideasforgood_vote_form_callback(&$form, $form_state) {
+  global $user;
+
+  $finalist = $form_state['ideasforgood_finalist'];
+  $wrapper = "#ideasforgood-finalist-{$finalist->id}-dialog-body";
+
+  $finalist->vote_accepted = isset($form_state['vote_accepted'])
+    ? $form_state['vote_accepted'] : FALSE;
+  $controller = entity_get_controller('ideasforgood_finalist');
+  $content = render($controller->view(array($finalist), 'thankyou'));
+
+  $group = ideasforgood_finalist_group($finalist);
+  if ($group !== FALSE) {
+    $contest_name = $group->contest;
+    $items = field_get_items('ideasforgood_voting_group', $group,
+      'ideasforgood_group_destination');
+    $destination = $items[0]['safe_value'];
+    $items = field_get_items('ideasforgood_voting_group', $group,
+      'ideasforgood_group_email');
+    $email_note = $items[0]['safe_value'];
+    $items = field_get_items('ideasforgood_voting_group', $group,
+      'ideasforgood_group_twitter');
+    $twitter_template = $items[0]['safe_value'];
+  }
+  else {
+    $contest_name = '';
+    $destination = '';
+    $email_note = '';
+    $twitter_template = '';
+  }
+
+  $first_name = field_get_items('ideasforgood_finalist', $finalist,
+    'ideasforgood_finalist_first_name');
+  $last_name = field_get_items('ideasforgood_finalist', $finalist,
+    'ideasforgood_finalist_last_name');
+  $values = array(
+    '@firstname' => $first_name[0]['safe_value'],
+    '@lastname' => $last_name[0]['safe_value'],
+  );
+
+  $settings = array(
+    'ideasforgood' => array(
+      'contest_name' => $contest_name,
+      'destination' => $destination,
+      'vote_accepted' => $finalist->vote_accepted,
+      'finalist_id' => $finalist->id,
+      'email_from' => empty($user->mail) ? '' : $user->mail,
+      'email_note' => t($email_note, $values),
+      'twitter_template' => t($twitter_template, $values),
+    ),
+  );
+
+  $commands = array();
+  $commands[] = ajax_command_settings($settings, TRUE);
+  $commands[] = ajax_command_replace($wrapper, $content);
+
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+}
+
+function ideasforgood_finalist_group($finalist) {
+
+  // create an entity query
+  $query = new EntityFieldQuery();
+
+  // limit the query to the ideas for good voting group for the finalist
+  $query->entityCondition('entity_type', 'ideasforgood_voting_group');
+  $query->propertyCondition('name', $finalist->voting_group);
+
+  // order the entries with the most recently updated first
+  $query->propertyOrderBy('changed', 'DESC');
+
+  // get the last entry if it exists
+  $query->range(0, 1);
+  $results = $query->execute();
+
+  if (! empty($results)) {
+    // load the voting group
+    $groups = entity_load('ideasforgood_voting_group',
+      array_keys($results['ideasforgood_voting_group']));
+    return array_shift($groups);
+  }
+  return FALSE;
+}
+
+function ideasforgood_group_content($finalist, $reset = FALSE) {
+
+  static $content;
+
+  if (!isset($content) || $reset) {
+    $content = array();
+    if (!isset($content[$finalist->voting_group])) {
+
+      // create an entity query
+      $query = new EntityFieldQuery();
+
+      // limit the query to the ideas for good voting group for the finalist
+      $query->entityCondition('entity_type', 'ideasforgood_voting_group');
+      $query->propertyCondition('name', $finalist->voting_group);
+
+      // order the entries with the most recently updated first
+      $query->propertyOrderBy('changed', 'DESC');
+
+      // get the last entry if it exists
+      $query->range(0, 1);
+      $results = $query->execute();
+
+      if (! empty($results)) {
+        // load the voting group
+        $groups = entity_load('ideasforgood_voting_group',
+          array_keys($results['ideasforgood_voting_group']));
+        $group = array_shift($groups);
+
+        $content[$finalist->voting_group] = entity_build_content(
+          'ideasforgood_voting_group', $group);
+      }
+    }
+  }
+
+  if (isset($content[$finalist->voting_group])) {
+    return $content[$finalist->voting_group];
+  }
+  return array();
+}
+
+/* Ideas for Good Finalist API
+ ******************************************************************************/
+
+class IdeasForGoodFinalist extends Entity {
+
+  public $vote_accepted = TRUE;
+
+  public function __construct($values = array()) {
+    parent::__construct($values, 'ideasforgood_finalist');
+  }
+
+  protected function defaultLabel() {
+    return "[{$this->voting_group}] {$this->token}";
+  }
+
+  protected function defaultUri() {
+    $path = implode('/', array(
+      'admin',
+      'content',
+      'ideasforgood',
+      'finalists',
+      'manage',
+      $this->id,
+    ));
+    return array('path' => $path);
+  }
+}
+
+class IdeasForGoodFinalistController extends EntityAPIController {
+
+  public function __construct($entityType) {
+    parent::__construct($entityType);
+  }
+
+  public function create(array $values = array()) {
+    $values += array(
+      'id' => '',
+      'language' => '',
+      'is_new' => TRUE,
+      'token' => '',
+      'voting_group' => '',
+      'created' => 0,
+      'changed' => 0,
+    );
+    return parent::create($values);
+  }
+
+  public function buildContent($entity, $view_mode = 'full', $langcode = NULL, $content = array()) {
+
+    // add in the voting group content
+    $content['voting_group'] = ideasforgood_group_content($entity);
+
+    if ($view_mode == 'full') {
+      $content += $this->fullViewContent($entity, $view_mode, $langcode, FALSE);
+    }
+    else if ($view_mode == 'locked') {
+      $content += $this->fullViewContent($entity, $view_mode, $langcode, TRUE);
+    }
+    else if ($view_mode == 'vote') {
+      $content += $this->voteViewContent($entity, $view_mode, $langcode);
+    }
+    else if ($view_mode == 'register') {
+      $content += $this->registerViewContent($entity, $view_mode, $langcode);
+    }
+    else if ($view_mode == 'thankyou') {
+      $content += $this->thankYouViewContent($entity, $view_mode, $langcode);
+    }
+    return parent::buildContent($entity, $view_mode, $langcode, $content);
+  }
+
+  protected function fullViewContent($entity, $view_mode, $langcode, $locked) {
+    global $user;
+    $content = array(
+      'voting_locked' => $locked,
+    );
+    if (!empty($user->uid)) {
+      $content['voting_dialog'] = $this->view(array($entity), 'vote');
+      $content['voting_dialog_title'] = t('Please Confirm Your Vote');
+    }
+    else {
+      $content['voting_dialog'] = $this->view(array($entity), 'register');
+      $content['voting_dialog_title'] = t('Registration Required');
+    }
+    $content['vote_for_me_button'] = array(
+      'off' =>  implode('/', array(
+        drupal_get_path('module', 'ideasforgood'),
+        'images',
+        'vote_button_off.png',
+      )),
+      'on' => implode('/', array(
+        drupal_get_path('module', 'ideasforgood'),
+        'images',
+        'vote_button_on.png',
+      )),
+    );
+    drupal_add_library('system', 'ui.dialog');
+    $path = implode('/', array(
+      drupal_get_path('module', 'ideasforgood'),
+      'js',
+      'jquery.qtip.min.js'
+    ));
+    drupal_add_js($path, array('group' => JS_DEFAULT, 'type' => 'file'));
+    $path = implode('/', array(
+      drupal_get_path('module', 'ideasforgood'),
+      'js',
+      'finalist.js'
+    ));
+    drupal_add_js($path, array('group' => JS_DEFAULT, 'type' => 'file'));
+    $path = implode('/', array(
+      drupal_get_path('module', 'ideasforgood'),
+      'css',
+      'finalist.css'
+    ));
+    drupal_add_css($path, array('group' => CSS_DEFAULT, 'type' => 'file'));
+    return $content;
+  }
+
+  protected function voteViewContent($entity, $view_mode, $langcode) {
+    return array(
+      'vote_form' => drupal_get_form('ideasforgood_vote_form', $entity),
+    );
+  }
+
+  protected function registerViewContent($entity, $view_mode, $langcode) {
+
+    $pos = strpos($_GET['q'], '?');
+    if ($pos === FALSE) {
+      $destination = $_GET['q'] . "?selected={$entity->id}";
+    }
+    else {
+      $pieces = explode('?', $_GET['q'], 2);
+      $destination = $pieces[0] . "?selected={$entity->id}" . "&" . $pieces[1];
+    }
+
+    if (function_exists('_takepart_facebookapis_getfblogin')) {
+      $connect_button = _takepart_facebookapis_getfblogin($destination);
+    }
+    else {
+      $connect_src = implode('/', array(
+        drupal_get_path('module', 'ideasforgood'),
+        'images',
+        'sign_up_backup.png',
+      ));
+      $connect_button = '<a class="ideasforgood-button-link"'
+        . ' href="/user/register?destination=' . urlencode($destination) . '">'
+        . '<img src="/' . $connect_src . '" alt="Sign Up for Takepart">'
+        . '</a>';
+    }
+
+    $cancel_src = implode('/', array(
+      drupal_get_path('module', 'ideasforgood'),
+      'images',
+      'cancel_button.png',
+    ));
+    $cancel_button = '<img src="/' . $cancel_src . '" alt="Cancel"'
+      . 'class="ideasforgood-cancel-button">';
+
+    return array(
+      'connect_button' => $connect_button,
+      'cancel_button' => $cancel_button,
+      'sign_in_url' => '/user?destination=' . urlencode($destination),
+    );
+  }
+
+  protected function thankYouViewContent($entity, $view_mode, $langcode) {
+    return array(
+      'facebook_button' => implode('/', array(
+        drupal_get_path('module', 'ideasforgood'),
+        'images',
+        'facebook_share.png',
+      )),
+      'twitter_button' => implode('/', array(
+        drupal_get_path('module', 'ideasforgood'),
+        'images',
+        'twitter_share.png',
+      )),
+      'email_button' => implode('/', array(
+        drupal_get_path('module', 'ideasforgood'),
+        'images',
+        'email_share.png',
+      )),
+    );
+  }
+
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+    // set/update the created and changed timestamps
+    $entity->is_new = isset($entity->is_new) ? $entity->is_new : 0;
+    if ($entity->is_new) {
+      $entity->created = time();
+    }
+    $entity->changed = time();
+    return parent::save($entity, $transaction);
+  }
+}
+
+function ideasforgood_finalist_load($id, $reset = FALSE) {
+  $finalists = ideasforgood_finalist_load_multiple(array($id), array(), $reset);
+  return reset($finalists);
+}
+
+function ideasforgood_finalist_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('ideasforgood_finalist', $ids, $conditions, $reset);
+}
+
+function ideasforgood_finalist_save(IdeasForGoodFinalist $finalist) {
+  return $finalist->save();
+}
+
+function ideasforgood_finalist_delete(IdeasForGoodFinalist $finalist) {
+  $finalist->delete();
+}
+
+function ideasforgood_finalist_delete_multiple(array $ids) {
+  entity_get_controller('ideasforgood_finalist')->delete($ids);
+}
+
+
+/* Ideas for Good Voting Group API
+ ******************************************************************************/
+
+class IdeasForGoodVotingGroup extends Entity {
+
+  public function __construct($values = array()) {
+    parent::__construct($values, 'ideasforgood_voting_group');
+  }
+
+  protected function defaultLabel() {
+    return $this->name;
+  }
+
+  protected function defaultUri() {
+    $path = implode('/', array(
+      'admin',
+      'content',
+      'ideasforgood',
+      'groups',
+      'manage',
+      $this->id,
+    ));
+    return array('path' => $path);
+  }
+}
+
+class IdeasForGoodVotingGroupController extends EntityAPIController {
+
+  public function __construct($entityType) {
+    parent::__construct($entityType);
+  }
+
+  public function create(array $values = array()) {
+    $values += array(
+      'id' => '',
+      'language' => '',
+      'is_new' => TRUE,
+      'name' => '',
+      'contest' => '',
+      'voting_form_id' => 0,
+      'email_field_id' => 0,
+      'vote_field_id' => 0,
+      'opt_in_field_id' => 0,
+      'created' => 0,
+      'changed' => 0,
+    );
+    return parent::create($values);
+  }
+
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+    // set/update the created and changed timestamps
+    $entity->is_new = isset($entity->is_new) ? $entity->is_new : 0;
+    if ($entity->is_new) {
+      $entity->created = time();
+    }
+    $entity->changed = time();
+    return parent::save($entity, $transaction);
+  }
+}
+
+function ideasforgood_voting_group_load($id, $reset = FALSE) {
+  $groups = ideasforgood_voting_group_load_multiple(array($id), array(), $reset);
+  return reset($groups);
+}
+
+function ideasforgood_voting_group_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('ideasforgood_voting_group', $ids, $conditions, $reset);
+}
+
+function ideasforgood_voting_group_save(IdeasForGoodVotingGroup $group) {
+  return $group->save();
+}
+
+function ideasforgood_voting_group_delete(IdeasForGoodVotingGroup $group) {
+  $group->delete();
+}
+
+function ideasforgood_voting_group_delete_multiple(array $ids) {
+  entity_get_controller('ideasforgood_voting_group')->delete($ids);
+}

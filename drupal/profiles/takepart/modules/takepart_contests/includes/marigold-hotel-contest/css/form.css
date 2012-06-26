@@ -622,9 +622,11 @@
 }
 
 #edit-field-marigold-terms div.form-item-field-marigold-terms-und {
-  margin-top: 4px;
+  margin: 0px;
+/*  margin-top: 4px;
   margin-left: 12px;
   margin-bottom: 0;
+*/
 }
 
 #edit-field-marigold-terms div.description p
@@ -643,6 +645,32 @@
 #edit-field-marigold-terms div.description p a
 {
   color: #770bcb;
+}
+
+#edit-field-marigold-rs-opt-in div.form-item-field-marigold-rs-opt-in-und {
+  margin: 0px;
+}
+
+#edit-field-marigold-rs-opt-in div.form-item-field-marigold-rs-opt-in-und label.ui-checkbox {
+  color: #000;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: normal;
+  line-height: 16px;
+  margin-left: 2.4em;
+}
+
+#edit-field-marigold-encore-opt-in div.form-item-field-marigold-encore-opt-in-und {
+  margin: 0px;
+}
+
+#edit-field-marigold-encore-opt-in div.form-item-field-marigold-encore-opt-in-und label.ui-checkbox {
+  color: #000;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: normal;
+  line-height: 16px;
+  margin-left: 2.4em;
 }
 
 p.mg-previous-entry-message span.hatch-box {
