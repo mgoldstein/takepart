@@ -30,6 +30,17 @@ div.vidpop-preview a img {
   left: 0;
 }
 
+.vidpop-embed-promo-headline {
+  font-weight: bolder;
+  font-size: 16px;
+  color: #8E8E8E;  
+}
+.vidpop-embed-promo-text {
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+
 /*
 * the overlay sits on top of the preview, with borders and arrow button
 */
@@ -97,8 +108,12 @@ div.vidpop-preview a img {
   padding-bottom: 10px;
 }
 .vidpop-popup .subscribe {
-  margin: 10px 0 10px 20px;
-  
+  margin: 10px 0 10px 20px;  
+}
+.vidpop-popup .tp-vidpop-share-button-bar {
+  margin: 10px 0 10px 60px;  
+}
+.vidpop-popup .tp-vidpop-share-button-bar {
 }
 
 

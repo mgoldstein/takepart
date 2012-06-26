@@ -33,6 +33,13 @@ function takepart_vidpop_theme() {
 }
 
 
+
+function takepart_vidpop_preprocess_vidpop_popup(&$vars) {
+  // hmmm... why isn't this getting passed to the template?
+  $vars['sluggo'] = 1;
+}
+
+
 /**
  * Implements hook_menu().
  */
@@ -68,6 +75,9 @@ function takepart_vidpop_format_preview($uri, $vars) {
   // this is a mask on top of the overlay, with top/bottom bars and arrow button
   $overlay_image = theme('image', array('path' => $vidpop_path . '/css/images/youtube-overlay.png', 'attributes' => array('rel' => '#details', 'class' => 'vidpop-trigger')));
 
+  $promo_headline = $vars['field_promo_headline'][0]['safe_value'];
+  $promo_text = $vars['field_promo_text'][0]['safe_value'];
+
   // theme the popup contents
   $formatted_popup = theme('vidpop_popup', $vars);
 
@@ -76,6 +86,12 @@ function takepart_vidpop_format_preview($uri, $vars) {
   $formatted = <<<EOT
 <div class="vidpop-preview">$preview_image
   <a class="colorbox-inline" href="?width=870&amp;height=525&amp;inline=true#vidpop-details"><div class="vidpop-preview-overlay">$overlay_image</div></a>
+</div>
+<div class="vidpop-embed-promo-headline">
+$promo_headline
+</div>
+<div class="vidpop-embed-promo-text">
+$promo_text
 </div>
 
 <div class="vidpop-overlay">
@@ -97,5 +113,16 @@ function takepart_vidpop_get_banner($box_id) {
   $banner =  render(_block_get_renderable_array( _block_render_blocks( array($block) )));
 
   return $banner;
+}
+
+
+/***
+ * get the social links
+ */
+function takepart_vidpop_get_social_links() {
+  $block = block_load('takepart_addthis', 'addthis_vidpop');
+  $social_links =  render(_block_get_renderable_array( _block_render_blocks( array($block) )));
+
+  return $social_links;
 }
 
