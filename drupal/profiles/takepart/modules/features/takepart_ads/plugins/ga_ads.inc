@@ -5,6 +5,7 @@ class boxes_ga_ad extends boxes_box {
   public function options_defaults() {
     return array(
       'ga_ad_slot' => '',
+      'ga_ad_gpt_id' => '',
     );
 
   }
@@ -31,7 +32,12 @@ class boxes_ga_ad extends boxes_box {
       '#title' => 'Ad Slot',
       '#default_value' => $this->options['ga_ad_slot'],
     );  
-
+    $form['ga_ad_gpt_id'] = array(
+        '#type' => 'textfield',
+        '#title' => 'GPT ID',
+        '#default_value' => $this->options['ga_ad_gpt_id'],
+    );
+    
     return $form; 
   }  
 
@@ -39,13 +45,37 @@ class boxes_ga_ad extends boxes_box {
     if(($slot = $this->options['ga_ad_slot']) &&
        ($dpf = variable_get('takepart_ads_dfp_property_code', ''))
       ) {
+      
+      $gptid = false;
+      if($this->options['ga_ad_gpt_id']) {
+        $gptid = array($slot => $this->options['ga_ad_gpt_id']);
+        takepart_gpt_ads($gptid);
+      }
+      
      //register the slot
      takepart_ads($slot);
+     
+     if($gptid) {
+       
+       $adsize = substr( strrchr( $slot, '_' ), 1);
+       $lr = explode("x", $adsize);
+       
+       $content = <<<HTM
+<!-- $slot -->
+<div id='$gptid[$slot]' style='width:$lr[0]px; height:$lr[1]px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('$gptid[$slot]'); });
+</script>
+</div>
+HTM;
+     } else {
       $content = <<<HTM
 <script type='text/javascript'>
   GA_googleFillSlot('$slot');
 </script> 
 HTM;
+     }
+     
     return array(
       'delta' => $this->delta, // Crucial.
       'title' => $this->title,
