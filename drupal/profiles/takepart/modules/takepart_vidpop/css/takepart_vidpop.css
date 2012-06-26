@@ -9,6 +9,8 @@ div.vidpop-preview {
   width: 420px;
   height: 315px;
   position: relative;
+  margin-bottom: 20px;
+  
 }
 div.vidpop-preview-overlay {
   width: 420px;
