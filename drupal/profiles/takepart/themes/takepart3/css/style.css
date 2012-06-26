@@ -2698,3 +2698,46 @@ body.multipage-campaign #highlighted {
 #highlighted .region-highlighted {
     padding: 10px;
 }
+
+#fbloginbox {
+  width: 330px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:#eef2f5;
+  border:solid 1px #9bb7c5;
+  min-height: 93px;
+}
+
+#fbloginbox #fb_buttonwrapper .fb_button {
+    margin-left: 130px;
+}
+
+#fbloginbox #fblogin_textoverbutton {
+  text-align:center;
+  margin-bottom: 5px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.block-boxes-bid-3068, .block-boxes-bid-3073 {
+    padding: 35px 10px 0;
+    margin-bottom: -35px;
+}
+
+.block-boxes-bid-3065, .block-boxes-bid-3067 {
+	margin-bottom: -35px;
+}
+
+#fb_buttonwrapper {
+    text-align:center;
+}
+
+#user-nav li{
+    display: inline-block;
+    font-weight: bold;
+    margin-top:3px;
+}
+
+.logged-in #user-nav li {
+    margin-left:10px;
+}

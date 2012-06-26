@@ -169,8 +169,20 @@ function _render_tp3_user_menu() {
         if ($menu_item['link']['href'] == 'user') {
             if (user_is_logged_in()) {
                 global $user;
-                $menu_item['link']['title'] = $user->name;
-                $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
+
+                if (function_exists('_takepart_facebookapis_get_user_session')) {
+                    $fbsession = _takepart_facebookapis_get_user_session();
+                    $username = $fbsession->name;
+                    if ($username == '') {
+                        $username = $user->name;
+                    }
+                } else {
+                    $username = $user->name;
+                }
+
+                $menu_item['link']['title'] = $username;
+                // $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
+                $menu_item['link']['href'] = null;
             } else {
                 $opts['attributes']['class'][] = 'join-login';
                 $opts['query'] = array("destination" => current_path());
@@ -184,16 +196,18 @@ function _render_tp3_user_menu() {
             }
         }
 
-        $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+        if ($menu_item['link']['title'] == $username) {
+            $link = $menu_item['link']['title'];
+        } else {
+            $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+        }
         $links[] = "<li>" . $link . "</li>";
+        if ((!user_is_logged_in()) && (count($links) == 1)) {
+          // add "or" as a separate li
+          $links[] = '<li class="or"> or </li>';
+        }
     }
     $output = "<ul id='user-nav'>" . implode($links) . "</ul>";
-
-    if (!user_is_logged_in()) {
-        $output .= "<span class='fb'>  			 
-  				  <fb:login-button>Connect</fb:login-button>
-  				</span>";
-    }
 
     return $output;
 }
