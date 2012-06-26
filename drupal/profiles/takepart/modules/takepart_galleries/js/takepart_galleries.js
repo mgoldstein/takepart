@@ -144,4 +144,9 @@ function fastmatch_refreshstuff(y) {
 		window.addthis = null;
 	}
 	jQuery.getScript(atscript);	
+	
+	//Refresh DFP Ads:
+	if(typeof googletag != 'undefined') {
+		googletag.pubads().refresh();
+	}
 }

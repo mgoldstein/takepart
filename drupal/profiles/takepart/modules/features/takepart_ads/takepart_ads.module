@@ -56,20 +56,28 @@ GS_googleEnableAllServices();';
   
   //GPT:
   if (!empty($gptad_html)) {
-    drupal_add_js("(function() {
-        var useSSL = 'https:' == document.location.protocol;
-        var src = (useSSL ? 'https:' : 'http:') +
-        '//www.googletagservices.com/tag/js/gpt.js';
-        document.write('<scr' + 'ipt src=\"' + src + '\"></scr' + 'ipt>');
-        })();",
+    drupal_add_js("var googletag = googletag || {};
+                  googletag.cmd = googletag.cmd || [];
+                  (function() {
+                  var gads = document.createElement('script');
+                  gads.async = true;
+                  gads.type = 'text/javascript';
+                  var useSSL = 'https:' == document.location.protocol;
+                  gads.src = (useSSL ? 'https:' : 'http:') + 
+                  '//www.googletagservices.com/tag/js/gpt.js';
+                  var node = document.getElementsByTagName('script')[0];
+                  node.parentNode.insertBefore(gads, node);
+                  })();",
         array('type' => 'inline', 'scope' => 'header'));
-    drupal_add_js($gptad_html . "\n" .
-        'googletag.pubads().enableSyncRendering();' . "\n" .
+    drupal_add_js('googletag.cmd.push(function() {' . "\n" .
+         $gptad_html . "\n" .
         'googletag.pubads().enableSingleRequest();' . "\n" .
-        'googletag.enableServices();', array('type' => 'inline', 'scope' => 'header'));
+        'googletag.enableServices();' . "\n" . '});' . "\n" .
+        'var gpt_ad_tags = new Array();', array('type' => 'inline', 'scope' => 'header'));
   }
     
 }
+
 
 /*
  * keep a static list of all adds
