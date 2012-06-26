@@ -1,0 +1,102 @@
+/***
+ * file: CSS support for takepart_vidpop
+*/
+
+/*
+* this is the embedded preview pane
+*/
+div.vidpop-preview {
+  width: 420px;
+  height: 315px;
+  position: relative;
+}
+div.vidpop-preview-overlay {
+  width: 420px;
+  height: 315px;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+div.vidpop-preview a img {
+  width: 420px;
+  height: 315px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*
+* the overlay sits on top of the preview, with borders and arrow button
+*/
+.vidpop-overlay {
+  display:none;     /* must be initially hidden */
+  background-color: white;
+  width: 900px;
+  min-height: 415px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+
+/* close button positioned on upper right corner */
+#cboxClose {
+  background: url(images/close_popup.png) no-repeat !important;
+  position:absolute;
+  right: 5px !important;
+  top: 5px !important;
+  cursor:pointer;
+  height:13px !important;
+  width:13px !important;
+}
+
+
+
+/*
+* the popup window
+*/
+.vidpop-popup .inner-wrapper {
+  padding: 5px;
+}
+.vidpop-popup .video-banner-large {
+  height: 90px;
+  
+  margin-bottom: 20px;
+}
+.vidpop-popup .lower-wrapper {
+  padding: 20px 0;
+  clear: both;
+  }
+.vidpop-popup .contents {
+  clear: both;
+}
+.vidpop-popup .contents .leftside {
+  float: left;
+  width: 640px;
+}
+.vidpop-popup .contents .rightside {
+  float: right;
+  width: 200px;
+}
+.vidpop-popup .field-name-field-promo-headline {
+  color: black;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 24px;
+  padding-bottom: 10px;
+}
+.vidpop-popup .field-name-field-promo-text {
+  color: black;
+  font-size: 13px;
+  line-height: 15px;
+  padding-bottom: 10px;
+}
+.vidpop-popup .subscribe {
+  margin: 10px 0 10px 20px;
+  
+}
+
+
