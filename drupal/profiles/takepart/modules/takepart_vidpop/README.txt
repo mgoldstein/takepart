@@ -30,8 +30,9 @@ edit, set default to modal popup
 
 
 4) enable module colorbox
-
 		in colorbox config, click "enable colorbox inline"
+		click "Custom" under styles and options, and set the opacity. to 0.8
+
 
 ================================================
 
