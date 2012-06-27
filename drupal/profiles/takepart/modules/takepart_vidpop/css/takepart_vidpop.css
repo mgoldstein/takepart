@@ -88,10 +88,13 @@ div.vidpop-preview a img {
 .vidpop-popup .contents .leftside {
   float: left;
   width: 640px;
+  padding-top: 15px;
 }
 .vidpop-popup .contents .rightside {
   float: right;
   width: 200px;
+  padding-top: 15px;
+  padding-right: 15px;
 }
 .vidpop-popup .field-name-field-promo-headline {
   color: black;
@@ -127,6 +130,19 @@ div.vidpop-preview a img {
 #cboxLoadedContent {
   margin-bottom: 0 !important;
 }
+#cboxContent {
+  top: -10px;
+  right: -10px;
+}
+#cboxLoadedContent2, #cboxContent2 {
+  height: 390px !important;
+}
+#colorbox, #cboxWrapper, #cboxContent, #cboxLoadedContent {
+  overflow: hidden !important;
+}
+
+
+
 
 /*
 Internet Explorer 8 will have problems with showing images in the Colorbox.
