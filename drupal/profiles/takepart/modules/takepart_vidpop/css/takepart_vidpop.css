@@ -28,6 +28,14 @@ div.vidpop-preview a img {
   top: 0;
   left: 0;
 }
+div.vidpop-preview-overlay-headline {
+  width: 400px;
+  z-index: 9;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+}
 
 .vidpop-embed-promo-headline {
   font-weight: bolder;
