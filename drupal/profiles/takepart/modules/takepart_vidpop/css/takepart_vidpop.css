@@ -10,7 +10,6 @@ div.vidpop-preview {
   height: 315px;
   position: relative;
   margin-bottom: 20px;
-  
 }
 div.vidpop-preview-overlay {
   width: 420px;
@@ -112,7 +111,8 @@ div.vidpop-preview a img {
 }
 .vidpop-popup .comment-link {
   margin-bottom: 20px;
-  text-align: center;  
+  text-align: center;
+    
 }
 .vidpop-popup .tp-vidpop-share-button-bar {
   margin: 10px 0 10px 60px;  
@@ -120,4 +120,13 @@ div.vidpop-preview a img {
 .vidpop-popup .tp-vidpop-share-button-bar {
 }
 
+
+/*
+Internet Explorer 8 will have problems with showing images in the Colorbox.
+The fix is to add this to the theme CSS:
+*/
+#cboxLoadedContent img {
+  max-width: none;
+}
+ 
 
