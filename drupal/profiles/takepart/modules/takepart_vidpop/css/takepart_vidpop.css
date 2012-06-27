@@ -10,7 +10,6 @@ div.vidpop-preview {
   height: 315px;
   position: relative;
   margin-bottom: 20px;
-  
 }
 div.vidpop-preview-overlay {
   width: 420px;
@@ -48,7 +47,7 @@ div.vidpop-preview a img {
   display:none;     /* must be initially hidden */
   background-color: white;
   width: 900px;
-  min-height: 415px;
+  min-height: 315px;
   border: 1px solid #fff;
   border-radius: 8px;
   -moz-border-radius: 8px;
@@ -72,7 +71,7 @@ div.vidpop-preview a img {
 * the popup window
 */
 .vidpop-popup .inner-wrapper {
-  padding: 5px;
+  padding: 0px;
 }
 .vidpop-popup .video-banner-large {
   height: 90px;
@@ -112,7 +111,10 @@ div.vidpop-preview a img {
 }
 .vidpop-popup .comment-link {
   margin-bottom: 20px;
-  text-align: center;  
+  text-align: center;
+  font-family: arial !important;
+  font-weight: bold;
+  
 }
 .vidpop-popup .tp-vidpop-share-button-bar {
   margin: 10px 0 10px 60px;  
@@ -120,4 +122,18 @@ div.vidpop-preview a img {
 .vidpop-popup .tp-vidpop-share-button-bar {
 }
 
+
+/* cbox adjustments */
+#cboxLoadedContent {
+  margin-bottom: 0 !important;
+}
+
+/*
+Internet Explorer 8 will have problems with showing images in the Colorbox.
+The fix is to add this to the theme CSS:
+*/
+#cboxLoadedContent img {
+  max-width: none;
+}
+ 
 

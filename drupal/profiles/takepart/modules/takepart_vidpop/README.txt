@@ -33,6 +33,9 @@ edit, set default to modal popup
 		in colorbox config, click "enable colorbox inline"
 		click "Custom" under styles and options, and set the opacity. to 0.8
 
+5) Create box (block) for top banner
+
+
 
 ================================================
 
