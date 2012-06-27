@@ -2,11 +2,14 @@
 
 
 (function ($) {
-  Drupal.behaviors.takepart_vidpop = {
+  Drupal.behaviors.scVidpopClick = {
     attach: function (context, settings) {
-      $(".vidpop-trigger").click(function(){
-        alert(2);
+      $('.vidpop-preview', context).click(function(){
+        s.linkTrackVars="events";
+        s.linkTrackEvents="event41";
+        s.events='event41';
+        s.tl(true, 'o', 'Video Popup Click');
       });
     }
-  };
+  }
 })(jQuery);
