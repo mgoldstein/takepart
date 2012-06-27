@@ -56,7 +56,7 @@ jQuery(document).ready(function () {
                             	    y++;
                             	});
                             	
-                            	fastmatch_refreshstuff(x);
+                            	fastmatch_refreshstuff(x, true);
                             	
                             }
                             
@@ -107,7 +107,7 @@ function fastmatch_historyapi() {
 				}
 			}
 			
-			fastmatch_refreshstuff(y);
+			fastmatch_refreshstuff(y, false);
 			
 		}
 	    y++;
@@ -116,10 +116,27 @@ function fastmatch_historyapi() {
 
 
 
-function fastmatch_refreshstuff(y) {
+function fastmatch_refreshstuff(y, first) {
 
 	document.title = _galleryFastMatch_titles[y];
 	
+	//not the first hit to the gallery, don't track event15
+	if(!first) {
+		if (s.linkTrackEvents.indexOf(",") != -1) {
+			arlte = s.linkTrackEvents.split(',');
+			s.linkTrackEvents = "";
+			for (var i=0;i<arlte.length;i++) {
+				if(arlte[i] != 'event15') {
+					if(i != 0) {
+						s.linkTrackEvents = s.linkTrackEvents + "," + arlte[i];
+					} else {
+						s.linkTrackEvents = arlte[i]; 
+					}
+				}
+			}
+		} else if(s.linkTrackEvents == 'event15') { s.linkTrackEvents = ""; }
+	}
+			
 	omniture = s.prop15.split(':');
 	s.prop15 = omniture[0] + ':' + omniture[1] + ':' + _galleryFastMatch_titles[y];
 	s.eVar15 = s.prop15;

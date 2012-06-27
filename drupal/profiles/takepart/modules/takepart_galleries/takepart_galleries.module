@@ -78,7 +78,6 @@ function takepart_galleries_entity_update($entity, $type) {
   }
 }
 
-
 /**
  * Implementation of hook_menu().
  */
@@ -95,7 +94,6 @@ function takepart_galleries_menu() {
 
   return $items;
 }
-
 
 /**
  * Fixes URLs
@@ -115,7 +113,6 @@ function _takepart_galleries_fix_urls(&$item, $key) {
      }
    }
 }
-
 
 /**
  * Return JSON for specified gallery
@@ -142,7 +139,17 @@ function _takepart_galleries_mappings_json($nid) {
             
     return drupal_json_output($result);
   
-  }
-  
+  } 
 }
 
+/**
+ * Implements hook_omniture_variables().
+ */
+function takepart_galleries_omniture_variables() {
+  $return = array();
+  $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
+  if($first_folder == 'photos') {
+    $return = $return + (array('s.linkTrackEvents'=>'event15','s.events'=>'event15'));
+    return array("variables" => $return);
+  }
+}
