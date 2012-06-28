@@ -78,7 +78,8 @@ function takepart_vidpop_format_preview($uri, $vars) {
   $promo_headline = $vars['field_promo_headline'][0]['safe_value'];
   $promo_text = $vars['field_promo_text'][0]['safe_value'];
 
-  // pass headline so we can title it in js
+  // pass headline so we can title it in js; force it to wrap
+  // debug: use this to test wrap $promo_headline = 'qqqqqqqqqqqqqq www ww wwww wwww wwww eeee eeee eeee eeeeee eeee dddddddddddddddd ssssss sssssss aaaaa dddd ffff ggg hhhh';
   drupal_add_js(array('vidpop' => array('promo_headline' => wordwrap($promo_headline, 60))), 'setting');
 
   // theme the popup contents
