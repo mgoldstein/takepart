@@ -195,7 +195,7 @@ function fastmatch_fb_iframe_refresh(q) {
 			token = "";
 		}
 		if((pair[0] == 'href') && (pair[0] == '?href')) {
-			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location.href);
+			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location);
 		} else {
 			nq = nq + token + pair[0] + '=' + pair[1];
 		}
