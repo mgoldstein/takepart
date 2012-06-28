@@ -84,6 +84,7 @@ div.vidpop-preview-overlay-headline {
 }
 .vidpop-popup .video-banner-large {
   height: 90px;
+  margin-top: 15px;
   
   margin-bottom: 20px;
 }
@@ -97,13 +98,11 @@ div.vidpop-preview-overlay-headline {
 .vidpop-popup .contents .leftside {
   float: left;
   width: 640px;
-  padding-top: 15px;
 }
 .vidpop-popup .contents .rightside {
   float: right;
   width: 200px;
   padding-top: 15px;
-  padding-right: 15px;
 }
 .vidpop-popup .field-name-field-promo-headline {
   color: black;

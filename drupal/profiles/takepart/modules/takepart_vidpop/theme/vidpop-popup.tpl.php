@@ -14,7 +14,7 @@ $content['field_video_embedded'][0]['file']['#options']['height'] = 360;
 <?php if (!empty($pre_object)) print render($pre_object) ?>
 <div class='<?php print $classes ?> clearfix node-embedded' <?php print ($attributes) ?>>
   <div class="inner-wrapper">
-    <?php if (!empty($top_banner) && false): // setting false for now, since we don't havebanners ?>
+    <?php if (!empty($top_banner) && true): // setting false for now, since we don't havebanners ?>
     <div class="video-banner-large"><?php print $top_banner ?></div>
     <?php endif; ?>
     <div class="contents">
