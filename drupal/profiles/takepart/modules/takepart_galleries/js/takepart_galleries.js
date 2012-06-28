@@ -143,14 +143,16 @@ function fastmatch_refreshstuff(y, first) {
 	s.t();
 	
 	//Refresh Facebook comments:
-	fbchtml = '<div class="fb-comments" ' +
-     		  'data-href="' + window.location.href + '" ' +
-     	      'data-num-posts="15" ' +
-              'data-width="640" ' +
-              'data-colorscheme="light"></div>';
-	
-	jQuery('.fb-comments').html(fbchtml);	
-	FB.XFBML.parse(jQuery('#comments').get(0));
+	if(typeof FB != 'undefined') {
+		fbchtml = '<div class="fb-comments" ' +
+	     		  'data-href="' + window.location.href + '" ' +
+	     	      'data-num-posts="15" ' +
+	              'data-width="640" ' +
+	              'data-colorscheme="light"></div>';
+		
+		jQuery('.fb-comments').html(fbchtml);	
+		FB.XFBML.parse(jQuery('#comments').get(0));
+	}
 	
 	//Refresh Google Plus:
     if((typeof gapi != 'undefined') && (gapi)) {
@@ -187,10 +189,15 @@ function fastmatch_fb_iframe_refresh(q) {
 	var qs = oq.split("&");
 	for (var i=0;i<qs.length;i++) {
 		var pair = qs[i].split("=");
-		if(pair[0] == 'href') {
-			nq = nq + "&" + pair[0] + '=' + encodeURIComponent(window.location.href);
+		if(i != 0) {
+			token = "&";
 		} else {
-			nq = nq + "&" + pair[0] + '=' + pair[1];
+			token = "";
+		}
+		if((pair[0] == 'href') && (pair[0] == '?href')) {
+			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location.href);
+		} else {
+			nq = nq + token + pair[0] + '=' + pair[1];
 		}
 	}
 	return nq;
