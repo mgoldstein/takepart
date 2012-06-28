@@ -69,6 +69,8 @@ function _tfbregistration_auth() {
       }
     }
     
+    takepart_bsd_email_signup($response['registration']['email'], 7);
+    
     if (isset($_SESSION['facebook'])) {
       unset($_SESSION['facebook']);
     }    
