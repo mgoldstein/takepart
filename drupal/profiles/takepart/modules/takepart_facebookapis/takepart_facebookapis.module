@@ -77,13 +77,17 @@ function _takepart_facebookapis_getfblogin($dest = null) {
   return $fblogintag;
 }
 
-function _takepart_facebookapis_auth($action) {
-  
+function _takepart_facebookapis_clearcache() {
   header('Expires: Thu, 01-Jan-70 00:00:01 GMT');
   header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' );
   header('Cache-Control: no-store, no-cache, must-revalidate' );
   header('Cache-Control: post-check=0, pre-check=0', false );
   header('Pragma: no-cache' );
+}
+
+function _takepart_facebookapis_auth($action) {
+  
+  _takepart_facebookapis_clearcache();
   
   $action_name = $action['name'];
   $app_id = variable_get('fboauth_id', '');
@@ -300,6 +304,7 @@ function takepart_facebookapis_init() {
  * Implements hook_omniture_variables().
  */
 function takepart_facebookapis_omniture_variables() {
+  
     $return = array();
     //page hit:
     if((variable_get('facebookapi_on_init', '')) != '') {
@@ -332,7 +337,8 @@ function takepart_facebookapis_omniture_variables() {
       if((variable_get('facebookapi_on_register', '')) != '') {
         drupal_add_js(variable_get('facebookapi_on_register', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
       }
-      $return = $return + (array('s.linkTrackEvents'=>'event21','s.events'=>'event12'));
+      _takepart_facebookapis_clearcache();
+      $return = $return + (array('s.linkTrackEvents'=>'event21','s.events'=>'event21'));
     }
     return array("variables" => $return);
 }
