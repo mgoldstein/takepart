@@ -2,12 +2,6 @@
 
 
 (function ($) {
-  Drupal.behaviors.vidpopLoad = {
-    attach: function (context, settings) {
-      $(".vidpop-preview-overlay-headline").html(Drupal.settings.vidpop.promo_headline);
-    }
-  }
-
   Drupal.behaviors.scVidpopClick = {
     attach: function (context, settings) {
       for( x in Drupal.settings.media_youtube) {
