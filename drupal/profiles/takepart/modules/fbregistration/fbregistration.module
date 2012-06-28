@@ -39,6 +39,22 @@ function _tfbregistration_auth() {
     
     $response = _takepart_facebookapis_parse_signed_request($_REQUEST['signed_request'],$app_secret);
     
+   /* 
+   foreach ($response['registration'] as $key => $val) {
+      if(isset($response['registration'][$key])) {
+        if($key == 'field_userfood') {
+          if($response['registration'][$key] != 1) {
+            drupal_set_message(t('Error: Please except the terms of service'), 'error');
+            $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
+            drupal_goto($destination);
+            exit();
+          }
+        }
+      }
+    }
+    */
+    
+    
     //bsd:
     foreach ($response['registration'] as $key => $val) {
       if((substr($key, 0, 4) == 'bsd_') && ($val == 1)) {
@@ -55,10 +71,10 @@ function _tfbregistration_auth() {
     
     if (isset($_SESSION['facebook'])) {
       unset($_SESSION['facebook']);
-    }
+    }    
     
     $destination = fboauth_action_invoke('connect', $app_id, $response['oauth_token']);
-    $_SESSION['facebook_register_trigger'] = true;
+    $_SESSION['facebook_register_trigger'] = $response['oauth_token'];
     
     if (empty($destination)) {
       $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
@@ -78,6 +94,7 @@ function _tfbregistration_auth() {
         }
        }
      }
+
     
     user_save($account);
     
@@ -263,6 +280,7 @@ function _fbregistration_sort_json_cmp($a, $b) {
  * Implements hook_init().
  */
 function fbregistration_init() {
+  /*
   //registration:
   if (isset($_SESSION['facebook_register_trigger'])) {
     unset($_SESSION['facebook_register_trigger']);
@@ -270,4 +288,5 @@ function fbregistration_init() {
       drupal_add_js(variable_get('facebookapi_on_register', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
     }
   }
+  */
 }
