@@ -362,53 +362,56 @@ function _default_menu_options($menu_item) {
  * Preprocessor for theme('block').
  */
 function takepart3_preprocess_node(&$vars, $hook) {
-  // under certain conditions, we want to change the link of the embedded video to
-  // create a popup:
-  // 		-view_mode is "embed"
-  //    -field_video_display_mode is 2 (modal popup)
-  //
-  // 		or if
-  //
-  //    -view_mode is "full"
-  //    -field_video_display_mode is 3 (contextual)
-  //    -page type is video (permalink)
+  $use_popup = false;   // set true if video popup are enabled and this node specifies using one
 
-  $use_popup = false;
-  if ($vars['type'] == 'openpublish_video' && isset($vars['field_video_display_mode']['und'])) {
-    if (isset($vars['field_video_display_mode']['und'][0]['value'])) {
-      // this video node has a display mode has a value set; change
-      // the link to create a popup
-      switch ($vars['field_video_display_mode']['und'][0]['value']) {
-        case 1:   // embedded
-          break;
-        case 2:   // modal popup
-          if ($vars['view_mode'] == 'embed') {
-            $use_popup = true;
-          }
-          break;
-        case 3:   // contextual (embedded on permalink page, modal elsewhere)
-          if ($vars['view_mode'] == 'full') {
-            $use_popup = true;
-          }
-          break;
+  if (module_exists('takepart_vidpop')) {
+    // under certain conditions, we want to change the link of the embedded video to
+    // create a popup:
+    // 		-view_mode is "embed"
+    //    -field_video_display_mode is 2 (modal popup)
+    //
+    // 		or if
+    //
+    //    -view_mode is "full"
+    //    -field_video_display_mode is 3 (contextual)
+    //    -page type is video (permalink)
+
+    if ($vars['type'] == 'openpublish_video' && isset($vars['field_video_display_mode']['und'])) {
+      if (isset($vars['field_video_display_mode']['und'][0]['value'])) {
+        // this video node has a display mode has a value set; change
+        // the link to create a popup
+        switch ($vars['field_video_display_mode']['und'][0]['value']) {
+          case 1:   // embedded
+            break;
+          case 2:   // modal popup
+            if ($vars['view_mode'] == 'embed') {
+              $use_popup = true;
+            }
+            break;
+          case 3:   // contextual (embedded on permalink page, modal elsewhere)
+            if ($vars['view_mode'] == 'full') {
+              $use_popup = true;
+            }
+            break;
+        }
       }
     }
-  }
 
-  if ($use_popup) {
-    // suggest a theme
-    $vars['theme_hook_suggestions'][] = "node__video_embed";
+    if ($use_popup) {
+      // suggest a theme
+      $vars['theme_hook_suggestions'][] = "node__video_embed";
 
-    // render the video as large size for the popup
-    $render_large = node_view(node_load($vars['nid']), 'large');
-    $vars['large_video'] =  drupal_render($render_large['field_video_embedded']);
+      // render the video as large size for the popup
+      $render_large = node_view(node_load($vars['nid']), 'large');
+      $vars['large_video'] =  drupal_render($render_large['field_video_embedded']);
 
-    if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
-      $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
+      if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
+        $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
+      }
+
+      // add identifying class
+      $vars['classes_array'][] = 'sluggo';
     }
-
-    // add identifying class
-    $vars['classes_array'][] = 'sluggo';
   }
 
   // Suggests a custom template for embedded node content through the WYSIWYG
