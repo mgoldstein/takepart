@@ -86,7 +86,7 @@ function takepart_vidpop_format_preview($uri, $vars) {
   // theme the popup contents
   $formatted_popup = theme('vidpop_popup', $vars);
 
-  // note we set the colorbox width to 870; it has padding that will pull it out
+  // NOTE: we set the colorbox width to 870; it has padding that will pull it out
   // to our desired 900
   $formatted = <<<EOT
 <div class="vidpop-preview">$preview_image
@@ -114,9 +114,38 @@ EOT;
  * @param $box_id   id of box (delta, from box table)
  */
 function takepart_vidpop_get_banner($box_id) {
-  // get the ad box
-  $block = block_load('boxes', $box_id);
-  $banner =  render(_block_get_renderable_array( _block_render_blocks( array($block) )));
+  // have we called the ad emitter?
+  $js = drupal_add_js();
+  $have_ads = false;
+  foreach ($js as $key => $val) {
+    if (strpos($key, 'google_service.js')> 0) {
+      // we have it
+      $have_ads = true;
+      break;
+    }
+  }
+
+  if (!$have_ads) {
+    // no other ads on the page, so we need to output some javascript
+    $header1 = 'GS_googleAddAdSenseService("' . variable_get('takepart_ads_dfp_property_code', '') . '");
+GS_googleEnableAllServices();';
+    $header2 = 'GA_googleFetchAds();';
+
+    drupal_add_js('http://partner.googleadservices.com/gampad/google_service.js', 'external');
+    drupal_add_js($header1, 'inline');
+    drupal_add_js($header2, 'inline');
+  }
+
+  //register the slot
+  $ad_id = 'TP3_ROS_Leaderboard_728x90';
+  $ad_html .= 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad_id . '");';
+  drupal_add_js($ad_html, 'inline');
+  $banner = <<<HTM
+<script type='text/javascript'>
+  GA_googleFillSlot('$ad_id');
+</script>
+HTM;
+
 
   return $banner;
 }
@@ -131,4 +160,6 @@ function takepart_vidpop_get_social_links() {
 
   return $social_links;
 }
+
+
 
