@@ -172,10 +172,15 @@ function fastmatch_refreshstuff(y, first) {
     //Force the damn FB shares to refresh ... rebuild iFrames:
     jQuery(".addthis_toolbox .addthis_button_facebook_like iframe").each(function() {
     	var src = jQuery(this).attr('src');
-    	src = fastmatch_fb_iframe_refresh(src);
-    	jQuery(this).attr('src', src);
+    	newsrc = fastmatch_fb_iframe_refresh(src);
+    	jQuery(this).attr('src', newsrc);
     });
- 	
+    
+    //twitter refresh:
+	if(typeof twttr != 'undefined') {
+		twttr.widgets.load();
+	}
+	
 	//Refresh DFP Ads:
 	if(typeof googletag != 'undefined') {
 		googletag.pubads().refresh();
@@ -194,7 +199,8 @@ function fastmatch_fb_iframe_refresh(q) {
 		} else {
 			token = "";
 		}
-		if((pair[0] == 'href') || (pair[0] == '?href')) {
+		if((pair[0] == 'href') || 
+		   (pair[0] == '?href')) {
 			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location.href);
 		} else {
 			nq = nq + token + pair[0] + '=' + pair[1];
