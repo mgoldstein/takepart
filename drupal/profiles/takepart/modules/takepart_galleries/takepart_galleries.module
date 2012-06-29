@@ -194,8 +194,6 @@ function _takepart_galleries_metatags($nid) {
 
   $dirs = explode('/', $path);
   if(($dirs[0] == 'photos') && (count($dirs) > 1)) {
-
-    echo "OK";
     
     $last_folder = substr(substr($_SERVER["REQUEST_URI"],1), strrpos(substr($_SERVER["REQUEST_URI"],0), "/"), strlen($_SERVER["REQUEST_URI"]));
     $gallery = _takepart_galleries_mappings($nid);
