@@ -1940,7 +1940,7 @@ body.node-type-blog-front .node-blog-front h2.title {
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox {
-    float: none;
+    float: left;
 }
 .region-content-top .takepart_addthis_leftpanel {
     width: 690px;
@@ -1949,7 +1949,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox {
 div.takepart_addthis_leftpanel div.addthis_toolbox a {
     display: block;
     margin-bottom: 8px;
-    float: none;
+    float: left;
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
@@ -1966,7 +1966,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_digg {
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a span {
-    float:none;
+    float:left;
 }
 
 div.takepart_addthis_leftpanel {
