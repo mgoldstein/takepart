@@ -88,7 +88,7 @@ function takepart_vidpop_format_preview($uri, $vars) {
   $formatted = <<<EOT
 <div class="vidpop-embed-promo-headline">$promo_headline</div>
 <div class="vidpop-preview">$preview_image
-  <a class="colorbox-inline" href="?width=870&amp;height=375&amp;inline=true#vidpop-details"><div class="vidpop-preview-overlay">$overlay_image</div></a>
+  <a class="colorbox-inline" href="?width=870&amp;height=520&amp;inline=true#vidpop-details"><div class="vidpop-preview-overlay">$overlay_image</div></a>
 </div>
 <div class="vidpop-embed-promo-text">
 $promo_text
