@@ -127,7 +127,7 @@ div.vidpop-preview-overlay-headline {
   margin: 10px 0 10px 20px;  
 }
 .vidpop-popup .comment-link {
-  margin-bottom: 20px;
+  margin: 20px 0;
   text-align: center;
   font-family: arial !important;
   font-weight: bold;
