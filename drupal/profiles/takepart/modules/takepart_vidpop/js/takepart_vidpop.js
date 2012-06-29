@@ -9,6 +9,13 @@
         //Drupal.settings.media_youtube[x]['options']['autoplay'] = 1;
       }
 
+      share = {
+        templates: { twitter: "{{title}} {{url}} via @TakePart" }
+      };
+      $('.social-links .addthis_toolbox').each(function() {
+        window.addthis.toolbox($(this), addthis_config, share);
+      });
+
       // add click tracker for banner ad
       $('.vidpop-preview', context).click(function(){
         s.linkTrackVars="events";
