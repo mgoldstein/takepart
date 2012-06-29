@@ -1942,6 +1942,11 @@ body.node-type-blog-front .node-blog-front h2.title {
 div.takepart_addthis_leftpanel div.addthis_toolbox {
     float: left;
 }
+
+.region-sidebar-first div.takepart_addthis_leftpanel div.addthis_toolbox {
+    float: none;
+}
+
 .region-content-top .takepart_addthis_leftpanel {
     width: 690px;
 }
@@ -1952,26 +1957,31 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a {
     float: left;
 }
 
+.region-sidebar-first div.takepart_addthis_leftpanel div.addthis_toolbox a {
+    float: none;
+}
+
 div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
     float: left;
     height: 15px;
 }
 
-div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_digg {
-    
+.region-sidebar-first div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
+    float: none;
 }
 
 .region-highlighted div.takepart_addthis_leftpanel div.addthis_toolbox a {
     margin-bottom: 4px;
 }
 
-div.takepart_addthis_leftpanel div.addthis_toolbox a span {
-    float:left;
+.region-sidebar-first div.takepart_addthis_leftpanel div.addthis_toolbox a span {
+    float:none;
 }
 
 div.takepart_addthis_leftpanel {
     margin: 0 0 8px 0;
 }
+
 #comments .comments-header {
     border-top: 1px dotted #555555;
     border-bottom: 1px solid #D9E7EE;
