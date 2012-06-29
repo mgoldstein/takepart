@@ -9,7 +9,7 @@ div.vidpop-preview {
   width: 420px;
   height: 315px;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 div.vidpop-preview-overlay {
   width: 420px;
@@ -41,7 +41,8 @@ div.vidpop-preview-overlay-headline {
 .vidpop-embed-promo-headline {
   font-weight: bolder;
   font-size: 16px;
-  color: #8E8E8E;  
+  color: #99bbcc;  
+  margin-bottom: 10px;
 }
 .vidpop-embed-promo-text {
   padding-bottom: 5px;
