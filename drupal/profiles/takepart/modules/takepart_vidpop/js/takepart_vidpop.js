@@ -9,11 +9,10 @@
         //Drupal.settings.media_youtube[x]['options']['autoplay'] = 1;
       }
 
-      share = {
-        templates: { twitter: "{{title}} {{url}} via @TakePart" }
-      };
-      $('.social-links .addthis_toolbox').each(function() {
-        window.addthis.toolbox($(this), addthis_config, share);
+      var config = { data_track_clickback: true };
+      var share = { templates: { twitter: "{{title}} {{url}} bob @TakePart" } };
+      $('.social-links').find('.addthis_toolbox').once('addthis-init', function() {
+        window.addthis.toolbox(this, config, share);
       });
 
       // add click tracker for banner ad
