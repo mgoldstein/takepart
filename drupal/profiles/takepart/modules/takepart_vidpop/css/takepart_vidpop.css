@@ -89,6 +89,11 @@ div.vidpop-preview-overlay-headline {
   
   margin-bottom: 20px;
 }
+.vidpop-popup .media-youtube-preview-wrapper object,
+.vidpop-popup .media-youtube-preview-wrapper iframe {
+  height: 390px !important;
+}
+
 .vidpop-popup .lower-wrapper {
   padding: 20px 0;
   clear: both;
