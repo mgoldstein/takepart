@@ -171,13 +171,13 @@ function takepart_galleries_omniture_variables() {
 
 
 function takepart_galleries_html_head_alter(&$head_elements) {
-  $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
-  if($first_folder == 'photos') { 
+  $dirs = explode('/', $path);
+  if(($dirs[0] == 'photos') && (count($dirs) > 1)) {
     foreach ($head_elements as $key => $element) {
-      if (isset($element['#id']) && 
-          (($element['#id'] == 'metatag_og:url') || 
-          ($element['#id'] == 'metatag_og:image') ||
-          ($element['#id'] == 'metatag_og:title'))) {
+      if (isset($element['#id']) &&
+          (($element['#id'] == 'metatag_og:url') ||
+              ($element['#id'] == 'metatag_og:image') ||
+              ($element['#id'] == 'metatag_og:title'))) {
         unset($head_elements[$key]);
       }
     }
@@ -192,47 +192,52 @@ function takepart_galleries_html_head_alter(&$head_elements) {
  */
 function _takepart_galleries_metatags($nid) {
 
-  $last_folder = substr(substr($_SERVER["REQUEST_URI"],1), strrpos(substr($_SERVER["REQUEST_URI"],0), "/"), strlen($_SERVER["REQUEST_URI"]));
-  $gallery = _takepart_galleries_mappings($nid);
+  $dirs = explode('/', $path);
+  if(($dirs[0] == 'photos') && (count($dirs) > 1)) {
 
-  for ($i = 0; $i < count($gallery); ++$i) {
-    if($last_folder == $gallery[$i]['url']) {
-      $phototitle = $gallery[$i]['title'];
-      $photopath = $gallery[$i]['filename'];
+    echo "OK";
+    
+    $last_folder = substr(substr($_SERVER["REQUEST_URI"],1), strrpos(substr($_SERVER["REQUEST_URI"],0), "/"), strlen($_SERVER["REQUEST_URI"]));
+    $gallery = _takepart_galleries_mappings($nid);
+
+    for ($i = 0; $i < count($gallery); ++$i) {
+      if($last_folder == $gallery[$i]['url']) {
+        $phototitle = $gallery[$i]['title'];
+        $photopath = $gallery[$i]['filename'];
+      }
+    }
+
+    $photopath = url('sites/default/files/'.$photopath, array('absolute'=>true));
+
+    $extra_meta_tags = array(
+        'takepart_galleries_og_url' => array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+                'property' => 'og:url',
+                'content' => 'http://' . $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]
+            ),
+        ),
+        'takepart_galleries_og_title' => array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+                'property' => 'og:title',
+                'content' =>  $phototitle
+            ),
+        ),
+        'takepart_galleries_og_image' => array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+                'property' => 'og:image',
+                'content' => $photopath
+            ),
+        ),
+    );
+
+    foreach($extra_meta_tags as $key=>$metatag) {
+      drupal_add_html_head( $metatag, $key);
     }
   }
-  
-  $photopath = url('sites/default/files/'.$photopath, array('absolute'=>true));
-  
-  $extra_meta_tags = array(
-      'takepart_galleries_og_url' => array(
-          '#type' => 'html_tag',
-          '#tag' => 'meta',
-          '#attributes' => array(
-              'property' => 'og:url',
-              'content' => 'http://' . $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]
-          ),
-      ),
-      'takepart_galleries_og_title' => array(
-          '#type' => 'html_tag',
-          '#tag' => 'meta',
-          '#attributes' => array(
-              'property' => 'og:title',
-              'content' =>  $phototitle
-          ),
-      ),
-      'takepart_galleries_og_image' => array(
-          '#type' => 'html_tag',
-          '#tag' => 'meta',
-          '#attributes' => array(
-              'property' => 'og:image',
-              'content' => $photopath
-          ),
-      ),
-  );
-  
-  foreach($extra_meta_tags as $key=>$metatag) {
-    drupal_add_html_head( $metatag, $key);
-  }
-
 }
