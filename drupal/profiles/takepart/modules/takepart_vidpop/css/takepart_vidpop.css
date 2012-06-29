@@ -139,7 +139,7 @@ div.vidpop-preview-overlay-headline {
 .vidpop-popup .tp-vidpop-share-button-bar {
 }
 
-.vidpop-popup addthis_button_tweet {
+.vidpop-popup .addthis_button_tweet {
     width: 75px;
     overflow: hidden;
 }
