@@ -1880,10 +1880,6 @@ body.node-type-blog-front .node-blog-front h2.title {
     margin-bottom: 4px;
 }
 
-div.takepart_addthis_leftpanel div.addthis_toolbox {
-    float: left;
-}
-
 #comments .comments-header {
     border-top: 1px dotted #555555;
     border-bottom: 1px solid #D9E7EE;
@@ -1895,14 +1891,17 @@ div.takepart_addthis_leftpanel div.addthis_toolbox {
     display: none;
 }
 
+div.takepart_addthis_leftpanel div.addthis_toolbox {
+    float: none;
+}
+.region-content-top .takepart_addthis_leftpanel {
+    width: 690px;
+}
+
 div.takepart_addthis_leftpanel div.addthis_toolbox a {
     display: block;
     margin-bottom: 8px;
-    float: left;
-}
-
-.region-content-top .takepart_addthis_leftpanel {
-    width: 690px;
+    float: none;
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
@@ -1911,14 +1910,15 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_digg {
+    
 }
 
 .region-highlighted div.takepart_addthis_leftpanel div.addthis_toolbox a {
     margin-bottom: 4px;
 }
 
-div.takepart_addthis_leftpanel div.addthis_toolbox {
-    float: left;
+div.takepart_addthis_leftpanel div.addthis_toolbox a span {
+    float:none;
 }
 
 div.takepart_addthis_leftpanel {
