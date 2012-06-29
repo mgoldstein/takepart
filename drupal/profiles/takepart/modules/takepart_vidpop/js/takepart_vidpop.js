@@ -5,7 +5,8 @@
   Drupal.behaviors.scVidpopClick = {
     attach: function (context, settings) {
       for( x in Drupal.settings.media_youtube) {
-        Drupal.settings.media_youtube[x]['options']['autoplay'] = 1;
+        //alert(x);
+        //Drupal.settings.media_youtube[x]['options']['autoplay'] = 1;
       }
 
       // add click tracker for banner ad
