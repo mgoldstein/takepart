@@ -330,7 +330,7 @@ function takepart_facebookapis_omniture_variables() {
       if((variable_get('facebookapi_on_bsd_signup', '')) != '') {
         drupal_add_js(variable_get('facebookapi_on_bsd_signup', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
       }
-      if($linkTrackEvents == "") {
+      if(strlen($linkTrackEvents) < 1) {
         $linkTrackEvents = 'event39';
       } else {
         $linkTrackEvents = $linkTrackEvents . ',event39';
@@ -344,7 +344,7 @@ function takepart_facebookapis_omniture_variables() {
         drupal_add_js(variable_get('facebookapi_on_register', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
       }
       _takepart_facebookapis_clearcache();
-      if($linkTrackEvents == "") {
+      if(strlen($linkTrackEvents) < 1) {
         $linkTrackEvents = 'event21';
       } else {
         $linkTrackEvents = $linkTrackEvents . ',event21';
