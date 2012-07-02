@@ -330,12 +330,12 @@ function takepart_facebookapis_omniture_variables() {
       if((variable_get('facebookapi_on_bsd_signup', '')) != '') {
         drupal_add_js(variable_get('facebookapi_on_bsd_signup', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
       }
-      if($linkTrackEvents == "") {
+      if(strlen($linkTrackEvents) < 1) {
         $linkTrackEvents = 'event39';
       } else {
         $linkTrackEvents = $linkTrackEvents . ',event39';
       }
-      $return = $return + (array('s.linkTrackEvents'=>$linkTrackEvents,'s.events'=>'event39', 's.eVar23'=>'TakePart Newsletter'));
+      $return = array_merge($return, (array('s.linkTrackEvents'=>$linkTrackEvents,'s.events'=>$linkTrackEvents, 's.eVar23'=>'TakePart Newsletter')));
     }
     //register:
     if (isset($_SESSION['facebook_register_trigger'])) {
@@ -344,13 +344,14 @@ function takepart_facebookapis_omniture_variables() {
         drupal_add_js(variable_get('facebookapi_on_register', ''), array('type' => 'inline', 'scope' => 'header', 'weight' => 5));
       }
       _takepart_facebookapis_clearcache();
-      if($linkTrackEvents == "") {
+      if(strlen($linkTrackEvents) < 1) {
         $linkTrackEvents = 'event21';
       } else {
         $linkTrackEvents = $linkTrackEvents . ',event21';
       }
-      $return = $return + (array('s.linkTrackEvents'=>$linkTrackEvents,'s.events'=>'event21'));
+      $return = array_merge($return, (array('s.linkTrackEvents'=>$linkTrackEvents,'s.events'=>$linkTrackEvents)));
     }
+    
     return array("variables" => $return);
 }
 
