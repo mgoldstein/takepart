@@ -15,10 +15,6 @@
         s.events='event41';
         s.tl(true, 'o', 'Video Popup Click');
       });
-      
-      $('.addthis_button_facebook_like', context).click(function(){
-          $('#colorbox').css('overflow','visible');
-      });
     }
   }
 })(jQuery);

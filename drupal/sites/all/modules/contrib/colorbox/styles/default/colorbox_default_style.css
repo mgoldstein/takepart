@@ -21,7 +21,7 @@
   position: relative;
 }
 #cboxLoadedContent {
-  overflow: auto;
+  overflow: hidden;
 }
 #cboxTitle {
   margin: 0;

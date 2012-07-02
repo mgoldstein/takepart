@@ -161,8 +161,9 @@ div.vidpop-preview-overlay-headline {
 #cboxLoadedContent2, #cboxContent2 {
   height: 390px !important;
 }
+
 #colorbox, #cboxWrapper, #cboxContent, #cboxLoadedContent {
-  overflow: hidden;
+    overflow: hidden !important;
 }
 
 /*
@@ -171,4 +172,8 @@ The fix is to add this to the theme CSS:
 */
 #cboxLoadedContent img {
   max-width: none;
+}
+
+.vidpop-popup .fb_edge_comment_widget {
+    left:-190px !important;
 }
