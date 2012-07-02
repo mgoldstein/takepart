@@ -152,7 +152,22 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
      );
    
    }
+   
+   //Validation:
+   drupal_add_js('function fbregistration_validate(form) {
+        errors = {};' . 
+         variable_get('fbregistration_validation', 'if (!form.fbregistration_validation) {
+            errors.fbregistration_validation = "Please accept the terms of service.";
+          }') . 
+        'return errors;
+        }'
+       ,
+       array('type' => 'inline', 'scope' => 'header', 'weight' => 5)
+   );
+   
 }
+
+
 
 
 function _fbregistration_getfbreg(&$form = null) {
@@ -251,7 +266,7 @@ function _fbregistration_getfbreg(&$form = null) {
     $fbregtag = str_replace('<iframe','<iframe src="http://www.facebook.com/plugins/registration.php?fb_register=true&fb_only=false&client_id='.$app_id.'&redirect_uri=' . 'http://' . $_SERVER['HTTP_HOST'] . $dest . '&fields=' .$json . '"', $fbregtag);
   } else {
     $fbregtag = variable_get('fbregistration_tag_b', '<fb:registration fb_register="true" fb_only="false" width="530"></fb:registration>');    
-    $fbregtag = str_replace('<fb:registration','<fb:registration fields="'.$json.'" client_id="'.$app_id.'" redirect-uri="http://' . $_SERVER['HTTP_HOST'] . $dest . '"', $fbregtag);
+    $fbregtag = str_replace('<fb:registration','<fb:registration onvalidate="fbregistration_validate" fields="'.$json.'" client_id="'.$app_id.'" redirect-uri="http://' . $_SERVER['HTTP_HOST'] . $dest . '"', $fbregtag);
   }
   
   return $fbregtag;
