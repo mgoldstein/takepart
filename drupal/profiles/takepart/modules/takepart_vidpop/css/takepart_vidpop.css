@@ -75,8 +75,6 @@ div.vidpop-preview-overlay-headline {
   width:13px !important;
 }
 
-
-
 /*
 * the popup window
 */
@@ -179,5 +177,8 @@ The fix is to add this to the theme CSS:
 .vidpop-popup .fb_edge_comment_widget {
     left:-400px !important;
     top:-20px !important;
-    
+}
+
+.vidpop-popup .addthis_button_email {
+    padding-top: 2px;
 }
