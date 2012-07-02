@@ -49,6 +49,16 @@ function fbregistration_form($form, &$form_state) {
       '#default_value' => variable_get('fbregistration_tag_iframe', '<iframe scrolling="auto" frameborder="no" style="border:none" allowTransparency="true" width="100%" height="530"></iframe>'),
   );
   
+  $form['settings']['fbregistration_validation'] = array(
+      '#type' => 'textarea',
+      '#rows' => 2,
+      '#title' => t('Facebook Registration Tag (Iframe)'),
+      '#required' => TRUE,
+      '#default_value' => variable_get('fbregistration_validation', 'if (!form.fbregistration_validation) {
+            errors.fbregistration_validation = "Please accept the terms of service.";
+          }'),
+  );
+  
   
   $form['settings']['fbregistration_path'] = array(
       '#type' => 'textfield',
@@ -108,6 +118,9 @@ function fbregistration_form_submit($form, &$form_state) {
   
   $fbregistration_tag_iframe = $form_state['values']['settings']['fbregistration_tag_iframe'];
   variable_set('fbregistration_tag_iframe', $fbregistration_tag_iframe);
+  
+  $fbregistration_validation = $form_state['values']['settings']['fbregistration_validation'];
+  variable_set('fbregistration_validation', $fbregistration_validation);
   
   $path = $form_state['values']['settings']['fbregistration_path'];
   variable_set('fbregistration_path', $path);
