@@ -73,6 +73,7 @@ function takepart_addthis_block_info(){
   takepart_addthis_rightrail_block_info($zeBlocks);
   takepart_addthis_simple_block_info($zeBlocks);
   takepart_addthis_petition_block_info($zeBlocks);
+  takepart_addthis_vidpop_block_info($zeBlocks);
   takepart_addthis_ajax_form_block_info($zeBlocks);
 
   return $zeBlocks;
@@ -87,6 +88,7 @@ function takepart_addthis_theme(){
   takepart_addthis_rightrail_theme($ret_arr);
   takepart_addthis_simple_theme($ret_arr);
   takepart_addthis_petition_theme($ret_arr);
+  takepart_addthis_vidpop_theme($ret_arr);
   takepart_addthis_ajax_form_theme($ret_arr);
   return $ret_arr;
 }
@@ -110,6 +112,9 @@ function takepart_addthis_block_view($delta = ''){
       break;
     case 'addthis_petition':
       $ret_view = takepart_addthis_petition_block_view($delta);
+      break;
+    case 'addthis_vidpop':
+      $ret_view = takepart_addthis_vidpop_block_view($delta);
       break;
     case 'addthis_ajax_form':
       $ret_view = takepart_addthis_ajax_form_block_view($delta);
@@ -139,6 +144,9 @@ function takepart_addthis_block_configure($delta = ''){
     case 'addthis_petition':
       $ret_form = takepart_addthis_petition_block_configure($delta);
       break;
+    case 'addthis_vidpop':
+      $ret_form = takepart_addthis_vidpop_block_configure($delta);
+      break;
     case 'addthis_ajax_form':
       $ret_form = takepart_addthis_ajax_form_block_configure($delta);
       break;
@@ -164,6 +172,9 @@ function takepart_addthis_block_save($delta = '', $edits = array()){
       break;
     case 'addthis_petition':
       takepart_addthis_petition_block_save($delta, $edits);
+      break;
+    case 'addthis_vidpop':
+      takepart_addthis_vidpop_block_save($delta, $edits);
       break;
     case 'addthis_ajax_form':
       takepart_addthis_ajax_form_block_save($delta, $edits);
@@ -356,6 +367,52 @@ function takepart_addthis_simple_block_save($delta, $edits){
 }
 
 /******************
+ * addthis_vidpop section
+ */
+
+function takepart_addthis_vidpop_block_info(&$blocks){
+  $blocks['addthis_vidpop'] = array(
+    'info' => t('AddThis - Embedded Video Popup'),
+  );
+}
+
+function takepart_addthis_vidpop_theme(&$theme_funcs){
+  $theme_funcs['takepart_addthis_vidpop_block'] = array(
+    'variables' => array(),
+    'template' => 'theme/takepart-addthis-vidpop-block',
+  );
+}
+
+function takepart_addthis_vidpop_block_view($delta = ''){
+  $block = array();
+
+  //there is only one delta here, switch anyway
+  if($delta == 'addthis_vidpop'){
+    //create the block
+    $block['subject'] = t('');
+    $block['content'] = theme(
+      'takepart_addthis_vidpop_block', array()
+    );
+
+    return $block;
+  }
+}
+
+function takepart_addthis_vidpop_block_configure($delta){
+  $form = array();
+
+  if($delta == 'addthis_vidpop'){
+  }
+
+  return $form;
+}
+
+function takepart_addthis_vidpop_block_save($delta, $edits){
+  if($delta == 'addthis_vidpop'){
+  }
+}
+
+/******************
  * addthis_petition section
  */
 
@@ -464,6 +521,7 @@ function takepart_addthis_ajax_form_block_view($delta = ''){
       $petition = petition_load($signature->petition_id);
       $email_share_msg_var = "petition:{$petition->type}:{$petition->petition_id}:email_share_msg";
       $twitter_share_msg_var = "petition:{$petition->type}:{$petition->petition_id}:twitter_share_msg";
+      $share_url_var = "petition:{$petition->type}:{$petition->petition_id}:share_url";
 
       // TODO: Remove this when generic petitions have been implemented
       $newsletters = array();
@@ -481,12 +539,16 @@ function takepart_addthis_ajax_form_block_view($delta = ''){
           'email_msg' =>  variable_get($email_share_msg_var, ''),
           'twitter_msg' => variable_get($twitter_share_msg_var, ''),
         ),
-          'petition' => array(
+        'petition' => array(
           'name' => $petition->name,
           'track_latch' => $petition->type . '_track',
           'newsletters' => $newsletters,
-        )
+        ),
       );
+      $share_url = variable_get($share_url_var, '');
+      if (! empty($share_url)) {
+        $settings['sharing']['share_url'] = $share_url;
+      }
       drupal_add_js($settings, 'setting');
     }
 

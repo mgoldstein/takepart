@@ -24,36 +24,28 @@ function _newsletter_signup_email_check(&$form) {
  * returns a JSON string
  */
 function _newsletter_signup_form_submit_from_ajax() {
-  $form = $_POST;
 
-  $email = $form['email'];
-  $campaign_id = $form['campaign_id'];
-  $signup_form_id = $form['signup_form_id'];
+  $email = $_POST['email'];
+  $campaign_id = $_POST['campaign_id'];
+  $signup_form_id = $_POST['signup_form_id'];
 
-  //$message = _newsletter_signup_email_check($form);
-
-  // if email is BAD
-  if ($message) {
-    print drupal_json_output(array(0, $message));
-    exit();
-  }
-
-  $result = _save_campaign_signup($email, $campaign_id, 's', null, null, $signup_form_id);
-  //$result = _save_campaign_signup($test_email, $test_camp, 's');
+  $result = _save_campaign_signup($email, $campaign_id, $signup_form_id);
 
   if ($result['status'] == 1 ) {
-    // lookup entity by campaign id
     $query = new EntityFieldQuery();
-    $db_result = $query->entityCondition('entity_type', 'newsletter_campaign')
-    ->propertyCondition('campaign_id', $campaign_id, '=')
-    ->execute();
+    $db_result = $query
+      ->entityCondition('entity_type', 'newsletter_campaign')
+      ->propertyCondition('campaign_id', $campaign_id, '=')
+      ->execute();
     $ncids = array_keys($db_result['newsletter_campaign']);
     $camps = entity_load('newsletter_campaign', $ncids);
-    // i hate this.
     $camp = $camps[$ncids[0]];
-    $result = array('status' => $result['status'], 'message' => $camp->thankyou_message);
+    $result = array(
+      'status' => $result['status'],
+      'message' => $camp->thankyou_message,
+      'title' => $camp->title
+    );
   }
-
   print drupal_json_output($result);
   exit();
 }
@@ -68,54 +60,29 @@ function _newsletter_signup_form_submit_from_ajax() {
  * @return string - empty if success, message if error
  */
 
-function _save_campaign_signup($email, $campaign_id, $action = 's', $source = '', $send_welcome = 'y', $signup_form_id) {
-  $success = 0;
+function _save_campaign_signup($email, $campaign_id, $signup_form_id) {
+  $status = 0;
+  $message = '';
   try {
-    $message = _newsletter_signup_alert_bsd($email, $campaign_id, $action, $source, $send_welcome, $signup_form_id);
-    if ((!$message) || (strlen($message)==0)) {
-      $success = 1;
-    } else {
-      $success = 0;
+    $response = takepart_bsd_email_signup($email, $signup_form_id);
+    if(strlen($response) == 0) {
+      $status = 1;
     }
-    return array('status' => $success, 'message' => $message);
+    else {
+      $message = 'We were unable to process your subscription at this time, please try again later.';
+      watchdog('newsletter_campaign', $response);
+    }
   }
   catch(Exception $ex) {
-    watchdog('newsletter service', 'General error: %error for email: %email, campaign id: %campaign',
-    array('%error' => $ex->getMessage(), '%email' => $email, '%campaign' => $campaign));
-    $message = $action == 's' ? t('Problem saving email, please try again later.') : t('There was a problem unsubscribing. Please try again later.');
-    return array('status' => 0, 'message' => $message);
+    $error = 'General error: %error for email: %email, campaign id: %campaign';
+    watchdog('newsletter_campaign', $error, array(
+      '%error' => $ex->getMessage(),
+      '%email' => $email,
+      '%campaign' => $campaign_id
+    ));
+    $message = 'We were unable to process your subscription at this time, please try again later.';
   }
-}
-
-
-/**
- * Send a 'subscribe' or 'unsubscribe' message to BSD
- *
- * @param $email string - email address of the user to lookup
- * @param $campaign_id string - pluris campaign id
- * @param $action string - 's' for subscribe, 'u' for unsubscribe
- *
- * @return string - empty if no problems, otherwise error message
- * 
- */
-function _newsletter_signup_alert_bsd($email, $campaign_id, $action = 's',$source = '', $send_welcome = 'y', $signup_form_id) {
-  
-  $message = '';  
-  if($action = 's') {
-    $bsdresponse = takepart_bsd_email_signup($email, $signup_form_id);
-    if(!strlen($bsdresponse) == 0) {
-      watchdog('bsd', $bsdresponse);
-    }
-    //$newsletter_signup_form = takepart_bsd_signup_form($signup_form_id);
-    //if ($newsletter_signup_form) {
-    //  $newslettername = $newsletter_signup_form['signup_form_name'];
-    //}
-  }elseif($action = 'u') {
-    takepart_bsd_email_set_subscription_state($email, 0);
-  }
-  //Note the the message is ignored if the 
-  //caller is _save_campaign_signup:
-  return $message;
+  return array('status' => $status, 'message' => $message);
 }
 
 /**
@@ -262,12 +229,12 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
 
   global $user;
   $message = '';
-  
+
   $email = $form_state['values']['email'];
   $campaign_id = $form_state['values']['campaign_id'];
   $signup_form_id = $form_state['values']['signup_form_id'];
   $all_code = variable_get('takepart_newsletter_signup_unsubscribe_all_campaign_code', 'alltpnl');
-  
+
   if ($campaign_id && $campaign_id == $all_code) {
     $message = takepart_bsd_email_set_subscription_state($email, 0);
   }
@@ -277,7 +244,7 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
   }
   else {
     drupal_goto(
-       'newsletter-unsubscribe/success', 
+       'newsletter-unsubscribe/success',
     array(
          'query' => array(
            'email' => $email,
@@ -286,7 +253,7 @@ function _newsletter_unsubscribe_all_form_submit($form, &$form_state) {
       )
     );
   }
-  
+
 }
 
 /*

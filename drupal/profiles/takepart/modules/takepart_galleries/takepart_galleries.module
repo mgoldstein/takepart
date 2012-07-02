@@ -1,0 +1,244 @@
+<?php
+
+/**
+ * Implements hook_url_inbound_alter().
+ */
+function takepart_galleries_url_inbound_alter(&$path, $original_path, $path_language) {
+  $dirs = explode('/', $path);
+  if($dirs[0] == 'photos') {
+    $nodeurl = drupal_lookup_path('source', dirname($path));
+    $path = $nodeurl;
+  }
+}
+
+/**
+ * Implements hook_init().
+ */
+function takepart_galleries_init() {
+  $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
+  $last_folder = substr(substr($_SERVER["REQUEST_URI"],1), strrpos(substr($_SERVER["REQUEST_URI"],0), "/"), strlen($_SERVER["REQUEST_URI"]));
+  if($first_folder == 'photos') {
+    $js_path = drupal_get_path('module', 'takepart_galleries') . '/js/takepart_galleries.js';
+    drupal_add_css(
+        '.addthis_button_facebook_like:hover{opacity:1 !important;}',
+        array(
+            'group' => CSS_THEME,
+            'type' => 'inline',
+        )
+    );
+    drupal_add_js($js_path);
+    if ( arg(0) == 'node' && is_numeric(arg(1)) ) {
+      $nid = arg(1);
+      _takepart_galleries_metatags($nid);
+    }
+    $settings['gallery'] = array(
+        'nid' => $nid,
+    );
+    drupal_add_js($settings, 'setting');
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function takepart_galleries_entity_update($entity, $type) {
+
+  if($type=='file') {
+
+    if(isset($entity->{'field_page_name'})) {
+
+      $sql = 'SELECT
+      file_managed.filename as filename,
+      field_data_field_gallery_images.entity_id as entity_id,
+      field_data_field_page_name.field_page_name_value as url
+      FROM
+      {file_managed}
+      RIGHT OUTER JOIN field_data_field_gallery_images ON file_managed.fid = field_data_field_gallery_images.field_gallery_images_fid
+      LEFT JOIN field_data_field_page_name ON file_managed.fid = field_data_field_page_name.entity_id
+      where fid = :fid';
+       
+      $fid = $entity->field_page_name['fid'];
+
+      $result = db_query($sql, array(':fid' => $fid), array('target' => 'slave'))->fetchAll(PDO::FETCH_ASSOC);
+
+      foreach ($result as $row) {
+         
+        $links = array(
+            'id' => $entity->fid,
+            'type' => 'takepart_galleries',
+            'loc' => $entity->field_page_name['und'] . '/' . $row['url'],
+            'language' => 'und',
+            'access' => 1,
+            'status' => 1,
+            'status_override' => 0,
+            'lastmod' => time(),
+            'priority' => 0.5,
+            'priority_override' => 0,
+            'priority_default' => 0.5,
+            'changefreq' => 4600,
+            'priority' => 0.5,
+        );
+
+        xmlsitemap_link_save($links);
+      }
+
+    }
+  }
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function takepart_galleries_menu() {
+
+  $items = array();
+
+  $items['galleries_json_nid/%'] = array(
+      'type' => MENU_CALLBACK,
+      'access arguments' => array('access content'),
+      'page callback' => '_takepart_galleries_mappings_json',
+      'page arguments' => array(1),
+  );
+
+  return $items;
+}
+
+/**
+ * Fixes URLs
+ */
+function _takepart_galleries_fix_urls(&$item, $key) {
+  if(isset($item['title'])) {
+    if(!isset($item['url'])) {
+      $item['url'] = strtolower(ereg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", $item['title'])));
+    }
+  }
+  if(!isset($item['url'])) {
+    if(isset($item['filename'])) {
+      $filename = strtok($item['filename'], ".");
+      if($filename) {
+        $item['url'] = strtolower($filename);
+      }
+    }
+  }
+}
+
+/**
+ * Return JSON for specified gallery
+ */
+function _takepart_galleries_mappings_json($nid) {
+  return drupal_json_output(_takepart_galleries_mappings($nid));
+}
+
+/**
+ * Return JSON for specified gallery
+ */
+function _takepart_galleries_mappings($nid) {
+
+  if($nid) {
+
+    $sql = 'SELECT
+    file_managed.filename AS filename,
+    field_data_field_gallery_images.entity_id AS entity_id,
+    field_data_field_page_name.field_page_name_value AS url,
+    field_data_field_image_title.field_image_title_value as title
+    FROM
+    {file_managed}
+    RIGHT OUTER JOIN field_data_field_gallery_images ON file_managed.fid = field_data_field_gallery_images.field_gallery_images_fid
+    LEFT JOIN field_data_field_page_name ON file_managed.fid = field_data_field_page_name.entity_id
+    LEFT JOIN field_data_field_image_title ON field_data_field_image_title.entity_id = file_managed.fid
+    where field_data_field_gallery_images.entity_id = :nid';
+     
+    $result = db_query($sql, array(':nid' => $nid), array('target' => 'slave'))->fetchAll(PDO::FETCH_ASSOC);
+
+    array_walk($result, '_takepart_galleries_fix_urls');
+
+    return $result;
+
+  }
+}
+
+/**
+ * Implements hook_omniture_variables().
+ */
+function takepart_galleries_omniture_variables() {
+  $return = array();
+  $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
+  if($first_folder == 'photos') {
+    $return = $return + (array('s.linkTrackEvents'=>'event15','s.events'=>'event15'));
+    return array("variables" => $return);
+  }
+}
+
+
+function takepart_galleries_html_head_alter(&$head_elements) {
+  
+  $path = $_SERVER["REQUEST_URI"];
+  $dirs = explode('/', $path);
+  if(($dirs[1] == 'photos') && (count($dirs) > 3)) {
+    foreach ($head_elements as $key => $element) {
+      if (isset($element['#id']) &&
+          (($element['#id'] == 'metatag_og:url') ||
+              ($element['#id'] == 'metatag_og:image') ||
+              ($element['#id'] == 'metatag_og:title'))) {
+        unset($head_elements[$key]);
+      }
+    }
+  }
+}
+
+
+
+
+/**
+ * Implements hook_init().
+ */
+function _takepart_galleries_metatags($nid) {
+
+  $path = $_SERVER["REQUEST_URI"];
+  $dirs = explode('/', $path);
+  if(($dirs[1] == 'photos') && (count($dirs) > 3)) {
+    
+    $last_folder = substr(substr($_SERVER["REQUEST_URI"],1), strrpos(substr($_SERVER["REQUEST_URI"],0), "/"), strlen($_SERVER["REQUEST_URI"]));
+    $gallery = _takepart_galleries_mappings($nid);
+
+    for ($i = 0; $i < count($gallery); ++$i) {
+      if($last_folder == $gallery[$i]['url']) {
+        $phototitle = $gallery[$i]['title'];
+        $photopath = $gallery[$i]['filename'];
+      }
+    }
+
+    $photopath = url('sites/default/files/'.$photopath, array('absolute'=>true));
+
+    $extra_meta_tags = array(
+        'takepart_galleries_og_url' => array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+                'property' => 'og:url',
+                'content' => 'http://' . $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]
+            ),
+        ),
+        'takepart_galleries_og_title' => array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+                'property' => 'og:title',
+                'content' =>  $phototitle
+            ),
+        ),
+        'takepart_galleries_og_image' => array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+                'property' => 'og:image',
+                'content' => $photopath
+            ),
+        ),
+    );
+
+    foreach($extra_meta_tags as $key=>$metatag) {
+      drupal_add_html_head( $metatag, $key);
+    }
+  }
+}

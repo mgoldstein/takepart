@@ -1,3 +1,7 @@
+# Development site version of robots.txt blocks access for all
+# spiders. We don't want our development sites indexed by public
+# web crawlers!
+#
 # For more information about the robots.txt standard, see:
 # http://www.robotstxt.org/orig.html
 

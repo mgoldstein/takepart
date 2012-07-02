@@ -726,10 +726,18 @@ ul#top-follow li a {
     margin-left: 8px;
 }
 
+ul#top-follow li.pinterest a {
+    text-indent: 0;
+}
+
+ul#top-follow li.pinterest img {
+    padding-top: 1px;
+}
+
 ul#top-follow {
     margin: 10px 0 0;
     float: right;
-    width: 106px;
+    width: 132px;
 }
 
 .header-mid
@@ -1510,6 +1518,9 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     margin-right: 8px;
 }
 
+#footer ul#bottom-follow li.pinterest a {
+    text-indent: 0;
+}
 #footer ul#bottom-follow li.googleplus a {
     text-indent: 0;
 }
@@ -1598,6 +1609,19 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     margin:0;
 }
 
+body.multipage-campaign li.dhtml-menu > ul.menu {
+    position: absolute;
+    z-index: 1000;
+    margin-left: -25px;
+}
+
+body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
+    float: none;
+    border-right: 0;
+    border-bottom: 1px dotted #4C4C4C;
+    padding: 3px 25px;
+}
+
 #bottom-follow {
     display: block;
     padding-top:4px;
@@ -1631,9 +1655,33 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     color: #1ca9e7;
 }
 
+#hot-topics-nav {
+    width: 540px;
+    float: left;
+    padding: 9px 0 6px 10px;
+}
+
+#hot-topics-nav ul {
+    margin-left: 10px;
+}
+
+#hot-topics-nav li {
+    font-size: 20px;
+    font-family: NewsGothicBoldCondensed, "Arial Narrow", sans-serif;
+    list-style: none inside none;
+    margin-right: 16px;
+    display: inline;
+    text-transform: uppercase;
+}
+
+#hot-topics-nav li a {
+    color: #000;
+    text-decoration: none;
+}
+
 /*search box*/
 #top-search {
-    width:219px;
+    width:189px;
     float:right;
     margin:5px 0 0;
 }
@@ -1643,7 +1691,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
 #top-search .form-text:active {
     border: medium none;
     display: block;
-    width: 185px;
+    width: 154px;
     float: left;
     font-size: 12px;
     height: 16px;
@@ -1880,10 +1928,6 @@ body.node-type-blog-front .node-blog-front h2.title {
     margin-bottom: 4px;
 }
 
-div.takepart_addthis_leftpanel div.addthis_toolbox {
-    float: left;
-}
-
 #comments .comments-header {
     border-top: 1px dotted #555555;
     border-bottom: 1px solid #D9E7EE;
@@ -1895,14 +1939,26 @@ div.takepart_addthis_leftpanel div.addthis_toolbox {
     display: none;
 }
 
+div.takepart_addthis_leftpanel div.addthis_toolbox {
+    float: left;
+}
+
+.region-sidebar-first div.takepart_addthis_leftpanel div.addthis_toolbox {
+    float: none;
+}
+
+.region-content-top .takepart_addthis_leftpanel {
+    width: 690px;
+}
+
 div.takepart_addthis_leftpanel div.addthis_toolbox a {
     display: block;
     margin-bottom: 8px;
     float: left;
 }
 
-.region-content-top .takepart_addthis_leftpanel {
-    width: 690px;
+.region-sidebar-first div.takepart_addthis_leftpanel div.addthis_toolbox a {
+    float: none;
 }
 
 div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
@@ -1910,20 +1966,22 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
     height: 15px;
 }
 
-div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_digg {
+.region-sidebar-first div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_email {
+    float: none;
 }
 
 .region-highlighted div.takepart_addthis_leftpanel div.addthis_toolbox a {
     margin-bottom: 4px;
 }
 
-div.takepart_addthis_leftpanel div.addthis_toolbox {
-    float: left;
+.region-sidebar-first div.takepart_addthis_leftpanel div.addthis_toolbox a span {
+    float:none;
 }
 
 div.takepart_addthis_leftpanel {
     margin: 0 0 8px 0;
 }
+
 #comments .comments-header {
     border-top: 1px dotted #555555;
     border-bottom: 1px solid #D9E7EE;
@@ -2697,6 +2755,31 @@ body.multipage-campaign #highlighted {
 
 #highlighted .region-highlighted {
     padding: 10px;
+}
+
+#edit-terms-of-use {
+	display: none;
+}
+
+.page-user-register .region-full-width-top, .page-user-register .region-full-width-bottom, .not-logged-in .region-full-width-bottom {
+	padding: 35px 20px 0;
+}
+
+.page-user-register .region-full-width-bottom, .not-logged-in .region-full-width-bottom {
+    padding-top:0px;
+}
+
+.page-user-register .region-full-width-top h2, .block-boxes-bid-3068 h2, .block-boxes-bid-3073 h2 {
+    color: #99BBCC;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.page-user-register .form-item {
+    margin-bottom: 1em;
+    margin-top: 0;
 }
 
 #fbloginbox {

@@ -80,7 +80,7 @@
                 s.eVar15=s.prop17 +": "+ title;
                 s.prop15=s.eVar15;
                 s.events="event2,event15";
-                s.tl(this.href, 'o', 'Gallery Photo View');
+                //s.tl(this.href, 'o', 'Gallery Photo View');
             });
         }
     }
@@ -95,7 +95,7 @@
                 s.eVar15=s.prop17 + ": " + title;
                 s.prop15=s.eVar15;
                 s.events="event2,event15";
-                s.tl(this.href, 'o', 'Gallery Photo View');
+                //s.tl(this.href, 'o', 'Gallery Photo View');
             });
         }
     }
@@ -110,7 +110,7 @@
                 s.eVar15=s.prop17 + ":" + title;
                 s.prop15=s.eVar15;
                 s.events="event2,event15";
-                s.tl(this.href, 'o', 'Gallery Photo View');
+                //s.tl(this.href, 'o', 'Gallery Photo View');
             });
         }
     }

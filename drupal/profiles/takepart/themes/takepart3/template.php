@@ -24,40 +24,50 @@ function takepart3_preprocess_html(&$vars) {
         $vars['classes_array'][] = 'multipage-campaign';
     }
 
-    //Override header if field exists:
-    $nodes = $vars['page']['content']['system_main']['nodes'];
+    if (isset($vars['page']['content']['system_main']['nodes'])) {
 
-    $header_override = false;
-    while ((list($key, $value) = each($nodes)) && (!$header_override)) {
-        if (is_numeric($key)) {
-            try {
-                if (isset($value['body'])) {
-                    if (array_key_exists('field_html_title', $value['body']['#object'])) {
-                        $header_override = $value['body']['#object']->field_html_title;
+        //Override header if field exists:
+        $nodes = $vars['page']['content']['system_main']['nodes'];
+
+        $header_override = false;
+        if (!empty($nodes)) {
+            while ((list($key, $value) = each($nodes)) && (!$header_override)) {
+                if (is_numeric($key)) {
+                    try {
+                        if (isset($value['body'])) {
+                            if (array_key_exists('field_html_title', $value['body']['#object'])) {
+                                $header_override = $value['body']['#object']->field_html_title;
+                            }
+                        }
+                        if (isset($value['field_html_title'])) {
+                            if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
+                                $header_override = $value['field_html_title']['#object']->field_html_title;
+                                unset($vars['page']['content']['system_main']['nodes'][$key]['field_html_title']);
+                            }
+                        }
+                        if (isset($value['#node'])) {
+                            if (array_key_exists('field_html_title', $value['#node'])) {
+                                $header_override = $value['#node']->field_html_title;
+                            }
+                        }
+                    } catch (Exception $e) {
+                        $header_override = false;
                     }
                 }
-                if (isset($value['field_html_title'])) {
-                    if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
-                        $header_override = $value['field_html_title']['#object']->field_html_title;
-                        unset($vars['page']['content']['system_main']['nodes'][$key]['field_html_title']);
-                    }
-                }
-                if (isset($value['#node'])) {
-                    if (array_key_exists('field_html_title', $value['#node'])) {
-                        $header_override = $value['#node']->field_html_title;
-                    }
-                }
-            } catch (Exception $e) {
-                $header_override = false;
             }
         }
     }
 
-    if ($header_override) {
-        $vars['head_title'] = $header_override['und'][0]['value'];
+
+
+    if (isset($header_override)) {
+        if ($header_override) {
+            $vars['head_title'] = $header_override['und'][0]['value'];
+        }
     }
 
     _render_tp3_renderheaderfooterfeed($vars);
+    _render_tp3_bsd_wrapper($vars);
 }
 
 function takepart3_preprocess_page(&$variables) {
@@ -122,30 +132,30 @@ function _render_tp3_main_menu() {
     return drupal_render($tree);
 }
 
-function _render_tp3_main_menu_341() {
+function _render_tp3_main_menu_bsd() {
     $menu_data = menu_tree_page_data("main-menu");
-
     $links = array();
     $count = count($menu_data);
     $i = 0;
     foreach ($menu_data as $menu_item) {
         $opts = array(
             'attributes' => _default_menu_options($menu_item),
+            'absolute' => TRUE
         );
 
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
         if ($i == 0) {
-            $li = '<li class="first">';
+            $li = '<li class="first dhtml-menu collapsed">';
         } elseif ($i == ($count - 1)) {
-            $li = '<li class="last">';
+            $li = '<li class="last dhtml-menu collapsed">';
         } else {
-            $li = '<li>';
+            $li = '<li class="dhtml-menu collapsed">';
         }
         $links[] = $li . $link . "</li>";
         $i++;
     }
 
-    return "<ul id='top-nav'>" . implode($links) . "</ul>";
+    return "<ul class='menu'>" . implode($links) . "</ul>";
 }
 
 /**
@@ -153,12 +163,16 @@ function _render_tp3_main_menu_341() {
  */
 function _render_tp3_user_menu() {
     $menu_data = menu_tree_page_data("user-menu");
-
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
     $links = array();
     foreach ($menu_data as $menu_item) {
         $opts = array(
             'attributes' => _default_menu_options($menu_item),
         );
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
 
         $opts['attributes']['class'][] = 'user-menu-' . strtolower($menu_item['link']['title']);
 
@@ -220,7 +234,8 @@ function _render_tp3_user_menu() {
 function _render_tp3_hottopics_menu() {
     $menu_data = menu_tree_page_data("menu-hot-topics");
 
-    // $links = array(0 => "<li class='title'>hot topics</li>");
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
 
     $count = count($menu_data);
     $i = 0;
@@ -229,6 +244,10 @@ function _render_tp3_hottopics_menu() {
         $opts = array(
             'attributes' => _default_menu_options($menu_item),
         );
+
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
 
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
         if ($i == 0) {
@@ -247,14 +266,17 @@ function _render_tp3_hottopics_menu() {
 
 function _render_footer_links_menu($menu_key) {
     $menu_data = _tp_menu_tree_data($menu_key);
-
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
     $links = array();
 
     foreach ($menu_data as $menu_item) {
         $opts = array(
             'attributes' => _default_menu_options($menu_item),
         );
-
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
         $links[] = "<li>" . $link . "</li>";
     }
@@ -284,16 +306,19 @@ function _render_tp3_topics_takepart_menu() {
 function _render_menu_columns($menu_key, $col_limit) {
     $menu_data = _tp_menu_tree_data($menu_key);
     $columns = array();
-
     $total_items = count($menu_data);
     $remainder_row = $total_items % $col_limit;
-
     $column_idx = 0;
-
     $half = count($menu_data) / 2;
 
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
     foreach ($menu_data as $menu_item) {
         $opts = array('attributes' => _default_menu_options($menu_item));
+
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
         $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
 
         $columns[$column_idx][] = "<li>" . $link . "</li>";
@@ -332,32 +357,73 @@ function _default_menu_options($menu_item) {
     return $menu_opts;
 }
 
-function takepart3_views_pre_render(&$vars) {
-    if ($vars->name == 'featured_items' && $vars->current_display == 'block') {
-        for ($i = 0; $i < sizeof($vars->result); $i++) {
-            if (!empty($vars->result[$i]->field_field_thumbnail)) {
-                $vars->result[$i]->field_field_gallery_main_image = array();
-                $vars->result[$i]->field_field_article_main_image = array();
-                $vars->result[$i]->field_field_page_main_image = array();
-                $vars->result[$i]->field_field_blogpost_main_image = array();
-            }
-        }
-    }
-}
 
 /**
  * Preprocessor for theme('block').
  */
 function takepart3_preprocess_node(&$vars, $hook) {
+  $use_popup = false;   // set true if video popup are enabled and this node specifies using one
 
-    // Suggests a custom template for embedded node content through the WYSIWYG
-    // We suggest a theme for a general embed as well as for each content type
+  if (module_exists('takepart_vidpop')) {
+    // under certain conditions, we want to change the link of the embedded video to
+    // create a popup:
+    // 		-view_mode is "embed"
+    //    -field_video_display_mode is 2 (modal popup)
     //
-  if ($vars['view_mode'] == 'embed') {
-        $vars['theme_hook_suggestions'][] = "node__embed";
-        $vars['theme_hook_suggestions'][] = "node__embed__{$vars['type']}";
+    // 		or if
+    //
+    //    -view_mode is "full"
+    //    -field_video_display_mode is 3 (contextual)
+    //    -page type is video (permalink)
+
+    if ($vars['type'] == 'openpublish_video' && isset($vars['field_video_display_mode']['und'])) {
+      if (isset($vars['field_video_display_mode']['und'][0]['value'])) {
+        // this video node has a display mode has a value set; change
+        // the link to create a popup
+        switch ($vars['field_video_display_mode']['und'][0]['value']) {
+          case 1:   // embedded
+            break;
+          case 2:   // modal popup
+            if ($vars['view_mode'] == 'embed') {
+              $use_popup = true;
+            }
+            break;
+          case 3:   // contextual (embedded on permalink page, modal elsewhere)
+            if ($vars['view_mode'] == 'full') {
+              $use_popup = true;
+            }
+            break;
+        }
+      }
     }
-    // Provides a method for printing regions within node templates
+
+    if ($use_popup) {
+      // suggest a theme
+      $vars['theme_hook_suggestions'][] = "node__video_embed";
+
+      // render the video as large size for the popup
+      $render_large = node_view(node_load($vars['nid']), 'large');
+      $vars['large_video'] =  drupal_render($render_large['field_video_embedded']);
+
+      if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
+        $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
+      }
+
+      // add identifying class
+      $vars['classes_array'][] = 'sluggo';
+    }
+  }
+
+  // Suggests a custom template for embedded node content through the WYSIWYG
+  // We suggest a theme for a general embed as well as for each content type
+  //
+  if ($vars['view_mode'] == 'embed' && !$use_popup) {
+    $vars['theme_hook_suggestions'][] = "node__embed";
+    $vars['theme_hook_suggestions'][] = "node__embed__{$vars['type']}";
+  }
+
+
+  // Provides a method for printing regions within node templates
     if ($blocks = block_get_blocks_by_region('sidebar_first')) {
         $vars['sidebar_first'] = $blocks;
         $vars['sidebar_first']['#theme_wrappers'] = array('region');
@@ -435,9 +501,9 @@ function takepart3_field__field_actionheaderimghref(&$vars) {
 }
 
 function takepart3_form_boxes_box_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_state['box']->options['view'] == 'campaigns--block_2') {
-    $form['options']['settings']['nid']['#maxlength'] = 255;
-  }
+    if ($form_state['box']->options['view'] == 'campaigns--block_2') {
+        $form['options']['settings']['nid']['#maxlength'] = 255;
+    }
 }
 
 // Preprocess author field
@@ -488,24 +554,31 @@ function takepart3_field__field_author(&$vars) {
 
 // Preprocess action URL
 function takepart3_field__field_action_url(&$vars) {
-    $takeactionurl = $vars['element']['#object']->field_action_url['und'][0]['url'];
-    $takeactionurl_parts = parse_url($takeactionurl);
-    $safe_url = url($takeactionurl);
-
+    $takeactionurl = $vars['element']['#object']->field_action_url['und'][0]['display_url'];
+    if (strlen($takeactionurl) <= 80) {
+        $takeactionurl_parts = parse_url($takeactionurl);
+        $safe_url = url($takeactionurl);
+    } else {
+        $extracturl = $vars['items'][0]['#markup'];
+        preg_match('/href="([^\s"]+)/', $extracturl, $match);
+        if (isset($match[1])) {
+            $takeactionurl_parts = parse_url($match[1]);
+            $safe_url = url($match[1]);
+        }
+    }
     // we may have a target attribute set; of so, build a string to add to the tag
     $target = $vars['element']['#items'][0]['attributes']['target'];
     if (isset($target)) {
-      $target_str = 'target="' . $target . '" ';
-    }
-    else {
-      // no target specified
-      $target_str = '';
+        $target_str = 'target="' . $target . '" ';
+    } else {
+        // no target specified
+        $target_str = '';
     }
 
     if ((array_key_exists('host', $takeactionurl_parts)) && ($takeactionurl_parts['host'] == $_SERVER['HTTP_HOST']) || ($takeactionurl_parts['host'] == '')) {
-      return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
+        return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
     } else {
-      return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
+        return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
     }
 }
 
@@ -636,30 +709,30 @@ function takepart3_return_node_type($type) {
 }
 
 function takepart3_field__field_topic($vars) {
-  // do we have any free tags?
-  $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
+    // do we have any free tags?
+    $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
 
-  // how about tags from series?
-  $field_series_tag = isset($vars['element']['#object']->field_series['und']) ? $vars['element']['#object']->field_series['und'] : $vars['element']['#object']->field_series;
+    // how about tags from series?
+    $field_series_tag = isset($vars['element']['#object']->field_series['und']) ? $vars['element']['#object']->field_series['und'] : $vars['element']['#object']->field_series;
 
-  if (count($vars['items']) || count($field_free_tag) || count($field_free_series)) {
-    $links = array();
-    foreach ($field_series_tag as $key => $value) {
-      $term = taxonomy_term_load($value['tid']);
-      $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
-    }
-
-    foreach ($vars['items'] as $key => $value) {
-        if (isset($value['#href'])) {
-            $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+    if (count($vars['items']) || count($field_free_tag) || count($field_free_series)) {
+        $links = array();
+        foreach ($field_series_tag as $key => $value) {
+            $term = taxonomy_term_load($value['tid']);
+            $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
         }
-    }
 
-    foreach ($field_free_tag as $key => $value) {
-      $term = taxonomy_term_load($value['tid']);
-      $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
-    }
-    return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
+        foreach ($vars['items'] as $key => $value) {
+            if (isset($value['#href'])) {
+                $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+            }
+        }
+
+        foreach ($field_free_tag as $key => $value) {
+            $term = taxonomy_term_load($value['tid']);
+            $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
+        }
+        return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
     }
 }
 
@@ -869,7 +942,13 @@ function _get_author($nid) {
  */
 function _tp3_fill_template_vars(&$variables) {
     if ((!isset($variables['top_nav'])) || (!$variables['top_nav'])) {
-        $variables['top_nav'] = _render_tp3_main_menu();
+        $uri = drupal_get_path_alias($_GET['q']);
+        $uri = substr($uri, 0, 14);
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $variables['top_nav'] = _render_tp3_main_menu_bsd();
+        } else {
+            $variables['top_nav'] = _render_tp3_main_menu();
+        }
     }
     if ((!isset($variables['hottopic_nav'])) || (!$variables['hottopic_nav'])) {
         $variables['hottopic_nav'] = _render_tp3_hottopics_menu();
@@ -908,6 +987,14 @@ function _render_tp3_footer(&$params) {
     return theme('takepart3_footer', $params);
 }
 
+function _render_tp3_wrapper_header(&$params) {
+    return theme('takepart3_wrapper_header', $params);
+}
+
+function _render_tp3_wrapper_footer(&$params) {
+    return theme('takepart3_wrapper_footer', $params);
+}
+
 /*
  * Clears page, page bottom and top, fills custom section
  * with the header or footer depending on the path.
@@ -929,6 +1016,29 @@ function _render_tp3_renderheaderfooterfeed(&$vars) {
     }
 }
 
+function _render_tp3_bsd_wrapper(&$vars) {
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
+    if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+        // dpm($vars);
+        _tp3_fill_template_vars($vars);
+        if ($uri == 'bsd/header') {
+            $vars['custom'] = _render_tp3_wrapper_header($vars);
+            // $vars['custom'] = _render_tp3_header($vars);
+        } elseif ($uri == 'bsd/footer') {
+            $vars['custom'] = _render_tp3_wrapper_footer($vars);
+            // $vars['custom'] = _render_tp3_footer($vars);
+        }
+    }
+}
+
+/* nuclear option
+  function takepart3_url_outbound_alter(&$path, &$options, $original_path) {
+  $options['absolute'] = TRUE;
+  }
+ * 
+ */
+
 /**
  * Implementation of hook_theme().
  */
@@ -946,6 +1056,18 @@ function takepart3_theme() {
                 'params' => NULL,
             ),
         ),
+        'takepart3_wrapper_header' => array(
+            'template' => 'templates/pages/header-bsd',
+            'arguments' => array(
+                'params' => NULL,
+            ),
+        ),
+        'takepart3_wrapper_footer' => array(
+            'template' => 'templates/pages/footer-bsd',
+            'arguments' => array(
+                'params' => NULL,
+            ),
+        ),
         'takepart3_follow_us_links' => array(
             'template' => 'templates/pages/follow_us_links',
             'arguments' => array(
@@ -955,19 +1077,6 @@ function takepart3_theme() {
     );
 }
 
-function takepart3_preprocess_views_view_unformatted(&$vars) {
-    //Add the node type to CSS classes for promos / block 1:
-    if ($vars['view']->name == 'promo' && $vars['view']->current_display == 'block_1') {
-        $rows = $vars['rows'];
-        $vars['extra_classes_array'] = array();
-        foreach ($rows as $id => $row) {
-            $vars['extra_classes_array'][$id] = $vars['view']->result[$id]->node_type;
-            //cheap fix for replacing empties:
-            $vars['rows'][$id] = str_replace("<div class=\"field-content\"></div>", "", $vars['rows'][$id]);
-            $vars['rows'][$id] = str_replace("<div class=\"views-field views-field-field-article-subhead\">          </div>", "", $vars['rows'][$id]);
-        }
-    }
-}
 
 function takepart3_preprocess_views_view(&$vars) {
     if (isset($vars['view']->name)) {
@@ -976,3 +1085,114 @@ function takepart3_preprocess_views_view(&$vars) {
         }
     }
 }
+
+
+/***
+ * @function override for theme_pager_link
+ *
+ * rewrites link so first page has page=0 argument, and adds rel prev/next links to head
+ *
+ * @param $variables
+ * @return string
+ *
+ */
+function takepart3_pager_link($variables) {
+  global $base_root;
+
+  $text = $variables['text'];
+  $page_new = $variables['page_new'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  $attributes = $variables['attributes'];
+
+  $page = isset($_GET['page']) ? $_GET['page'] : '';
+  if ($new_page = implode(',', pager_load_array($page_new[$element], $element, explode(',', $page)))) {
+    $parameters['page'] = $new_page;
+  }
+
+  $query = array();
+  if (count($parameters)) {
+    $query = drupal_get_query_parameters($parameters, array());
+  }
+  if ($query_pager = pager_get_query_parameters()) {
+    $query = array_merge($query, $query_pager);
+  }
+
+  // Set each pager link title
+  if (!isset($attributes['title'])) {
+    static $titles = NULL;
+    if (!isset($titles)) {
+      $titles = array(
+        t('« first') => t('Go to first page'),
+        t('‹ previous') => t('Go to previous page'),
+        t('next ›') => t('Go to next page'),
+        t('last »') => t('Go to last page'),
+      );
+
+      drupal_add_html_head_link(array(
+        'rel' => 'canonical',
+        //'type' => 'application/rss+xml',
+        'href' => url($base_root . request_uri(), array()),
+      ));
+    }
+  }
+
+
+    // additional code for prev/next
+  if (count($query) == 0) {
+    // fix for page 0
+    $query['page'] = 0;
+  }
+
+  // Pagination with rel=“next” and rel=“prev”. Does not support well multiple
+  // pagers on the same page - it will create relnext and relprev links
+  // in header for that case only for the first pager that is rendered.
+  static $rel_prev = FALSE, $rel_next = FALSE;
+  if (!$rel_prev && $text == t('‹ previous')) {
+    $rel_prev = TRUE;
+    drupal_add_html_head_link(array(
+      'rel' => 'prev',
+      //'type' => 'application/rss+xml',
+      'href' => url($base_root . '/' . drupal_get_path_alias($_GET['q']), array('query' => $query)),
+    ));
+  }
+  if (!$rel_next && $text == t('next ›')) {
+    $rel_next = TRUE;
+    drupal_add_html_head_link(array(
+      'rel' => 'next',
+      //'type' => 'application/rss+xml',
+      'href' => url($base_root . '/' . drupal_get_path_alias($_GET['q']), array('query' => $query)),
+    ));
+  }
+
+  return l($text, $_GET['q'], array('attributes' => $attributes, 'query' => $query));
+}
+
+
+/***
+ * implementation of hook_html_head_alter()
+ *
+ * @param $head_elements
+ */
+function takepart3_html_head_alter(&$head_elements) {
+  // check for duplicate canonical links - if found,
+  // use the one from takepart3_pager_link()
+  $remove = array(); // list of elements to remove
+  foreach ($head_elements as $key => $data) {
+    if ($data['#tag'] == 'link') {
+       if ($data['#attributes']['rel'] == 'canonical') {
+         if (strpos($data['#attributes']['href'], 'http') !== 0) {
+           // add to remove list; the ones added from pager_link will
+           // all have a full URL, starting with protocol
+         $remove[] = $key;
+         }
+       }
+    }
+  }
+
+  // remove any duplicate canonical links (those not coming from pager link)
+  foreach ($remove as $junk => $key) {
+    unset($head_elements[$key]);
+  }
+}
+

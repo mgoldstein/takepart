@@ -1,0 +1,174 @@
+/***
+ * file: CSS support for takepart_vidpop
+*/
+
+/*
+* this is the embedded preview pane
+*/
+div.vidpop-preview {
+  width: 420px;
+  height: 315px;
+  position: relative;
+  margin-bottom: 15px;
+}
+div.vidpop-preview-overlay {
+  width: 420px;
+  height: 315px;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+div.vidpop-preview a img {
+  width: 420px;
+  height: 315px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+div.vidpop-preview-overlay-headline {
+  width: 400px;
+  z-index: 9;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-size: 14px;
+}
+
+.vidpop-embed-promo-headline {
+  font-weight: bolder;
+  font-size: 16px;
+  color: #99bbcc;  
+  margin-bottom: 10px;
+}
+.vidpop-embed-promo-text {
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+
+/*
+* the overlay sits on top of the preview, with borders and arrow button
+*/
+.vidpop-overlay {
+  display:none;     /* must be initially hidden */
+  background-color: white;
+  width: 900px;
+  min-height: 315px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+
+/* close button positioned on upper right corner */
+#cboxClose {
+  background: url(images/close_popup.png) no-repeat !important;
+  position:absolute;
+  right: 5px !important;
+  top: 5px !important;
+  cursor:pointer;
+  height:13px !important;
+  width:13px !important;
+}
+
+
+
+/*
+* the popup window
+*/
+.vidpop-popup .inner-wrapper {
+  padding: 0px;
+}
+.vidpop-popup .video-banner-large {
+  height: 90px;
+  margin-top: 15px;
+  
+  margin-bottom: 20px;
+}
+.vidpop-popup .media-youtube-preview-wrapper object,
+.vidpop-popup .media-youtube-preview-wrapper iframe {
+  height: 390px !important;
+}
+
+.vidpop-popup .lower-wrapper {
+  padding: 20px 0;
+  clear: both;
+  }
+.vidpop-popup .contents {
+  clear: both;
+}
+.vidpop-popup .contents .leftside {
+  float: left;
+  width: 640px;
+}
+.vidpop-popup .contents .rightside {
+  float: right;
+  width: 200px;
+  padding-top: 15px;
+  margin-right: 10px;
+}
+.vidpop-popup .field-name-field-promo-headline {
+  color: black;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 24px;
+  padding-bottom: 10px;
+}
+.vidpop-popup .field-name-field-promo-text {
+  color: black;
+  font-size: 13px;
+  line-height: 15px;
+  padding-bottom: 10px;
+}
+.vidpop-popup .subscribe {
+  margin: 10px 0 10px 10px;
+}
+.vidpop-popup .comment-link {
+  margin: 20px 0;
+  text-align: center;
+  font-family: arial !important;
+  font-weight: bold;
+  
+}
+.vidpop-popup .tp-vidpop-share-button-bar {
+  margin: 10px 0 10px 60px;  
+}
+.vidpop-popup .tp-vidpop-share-button-bar {
+}
+
+.vidpop-popup .addthis_button_tweet {
+    width: 75px;
+    overflow: hidden;
+}
+
+.vidpop-popup .addthis_button_facebook_like {
+    width: 75px;
+    overflow: visible;
+}
+
+/* cbox adjustments */
+#cboxLoadedContent {
+  margin-bottom: 0 !important;
+}
+#cboxContent {
+  top: -10px;
+  right: -10px;
+}
+#cboxLoadedContent2, #cboxContent2 {
+  height: 390px !important;
+}
+#colorbox, #cboxWrapper, #cboxContent, #cboxLoadedContent {
+  overflow: visible !important;
+}
+
+/*
+Internet Explorer 8 will have problems with showing images in the Colorbox.
+The fix is to add this to the theme CSS:
+*/
+#cboxLoadedContent img {
+  max-width: none;
+}

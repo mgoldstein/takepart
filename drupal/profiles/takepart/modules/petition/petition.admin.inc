@@ -106,6 +106,14 @@ function petition_form($form, &$form_state, $petition, $op = 'edit') {
     '#default_value' => variable_get($variable, ''),
   );
 
+  $variable = "petition:{$petition->type}:{$petition->petition_id}:share_url";
+  $form['share_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Share URL'),
+    '#description' => t('The URL to share through AddThis.'),
+    '#default_value' => variable_get($variable, ''),
+  );
+
   $variable = "petition:{$petition->type}:{$petition->petition_id}:email_share_msg";
   $form['email_share_msg'] = array(
     '#type' => 'textarea',
@@ -199,6 +207,7 @@ function petition_form_submit(&$form, &$form_state) {
   $settings = array(
     'thank_you_page',
     'updates_page',
+    'share_url',
     'email_share_msg',
     'twitter_share_msg',
   );
