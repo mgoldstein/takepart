@@ -155,8 +155,8 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
    
    //Validation:
    drupal_add_js('function fbregistration_validate(form) {
-        errors = {};' . "\n" .
-         variable_get('fbregistration_validation', _fbregistration_default_validation()) . 
+        var errors = {};' . "\n" .
+         variable_get('fbregistration_validation', _fbregistration_default_validation())  . "\n" .
         'return errors;
         }'
        ,
