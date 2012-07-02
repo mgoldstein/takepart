@@ -9,7 +9,7 @@ div.vidpop-preview {
   width: 420px;
   height: 315px;
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 1px;
 }
 div.vidpop-preview-overlay {
   width: 420px;
@@ -36,6 +36,40 @@ div.vidpop-preview-overlay-headline {
   left: 10px;
   color: white;
   font-size: 14px;
+}
+
+div.vidpop-preview-overlay-text {
+  width: 420px;
+  height: 315px;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  line-height: 120%;
+}
+div.vidpop-preview-overlay-text .line1 {
+  position: relative;
+  top: 245px;
+  left: 50px;;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  width: 350px;
+}
+div.vidpop-preview-overlay-text .line1 .watch {
+  font-size: 12px;
+  font-weight: bold;
+  color: #99bbcb;
+  padding-right: 10px;
+}
+div.vidpop-preview-overlay-text .line2 {
+  position: relative;
+  top: 255px;
+  left: 15px;;
+  font-size: 12px;
+  color: #d9e7ed;
+  width: 380px;
 }
 
 .vidpop-embed-promo-headline {

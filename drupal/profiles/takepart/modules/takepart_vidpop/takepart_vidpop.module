@@ -86,12 +86,17 @@ function takepart_vidpop_format_preview($uri, $vars) {
   // NOTE: we set the colorbox width to 870; it has padding that will pull it out
   // to our desired 900
   $formatted = <<<EOT
-<div class="vidpop-embed-promo-headline">$promo_headline</div>
+<div class="vidpop-embed-promo-headline">$promo_headline999</div>
 <div class="vidpop-preview">$preview_image
-  <a class="colorbox-inline" href="?width=870&amp;height=520&amp;inline=true#vidpop-details"><div class="vidpop-preview-overlay">$overlay_image</div></a>
+  <a class="colorbox-inline" href="?width=870&amp;height=520&amp;inline=true#vidpop-details"><div class="vidpop-preview-overlay">$overlay_image
+  <div class="vidpop-preview-overlay-text">
+    <div class="line1"><span class="watch">WATCH</span>$promo_headline</div>
+    <div class="line2">$promo_text</div>
+  </div>
+  </div></a>
 </div>
 <div class="vidpop-embed-promo-text">
-$promo_text
+$promo_text999
 </div>
 
 <div class="vidpop-overlay">
