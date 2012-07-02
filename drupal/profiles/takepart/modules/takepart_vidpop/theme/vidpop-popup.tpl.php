@@ -7,7 +7,10 @@ $social_links = takepart_vidpop_get_social_links();
 $comment_link = l('COMMENT', 'node/' . $content['field_video_embedded']['#object']->nid, array('fragment' => 'comments', 'attributes' => array('target' => '_blank')));
 
 $embed_nid = $content['field_video_embedded']['#object']->nid;
+$embed_node = node_load($embed_nid);
+
 $share_node_url = url('node/' . $embed_nid, array('absolute' => TRUE));
+$share_node_title = $embed_node->title;
 
 // override options to make large for popup
 $content['field_video_embedded'][0]['file']['#options']['width'] = 640;
@@ -37,7 +40,9 @@ $content['field_video_embedded'][0]['file']['#options']['height'] = 360;
              fb:like:layout="button_count"></a>
           <a class="addthis_button_tweet"
              tw:counturl="<?php print $share_node_url; ?>"
+             tw:count="horizontal"
              tw:url="<?php print $share_node_url; ?>"
+             tw:text="<?php print $share_node_title; ?>"
              tw:via="TakePart"
              tw:title="Tweet"></a>
           <a class="addthis_button_email"
