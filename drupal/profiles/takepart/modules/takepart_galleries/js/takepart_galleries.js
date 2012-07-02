@@ -33,7 +33,8 @@ jQuery(document).ready(function () {
                             filename_a = filename_a.substr(0, filename_a.lastIndexOf("_"));
                             filename_b = obj['filename'];
                             filename_b = filename_b.substr(0, filename_a.length);
-                            pageurl = window.location.href;
+                            
+                            pageurl = window.location.href.split("?")[0];
                             pageurl = pageurl.substr(pageurl.lastIndexOf("/") + 1);
                             
                             //if ((obj['url'] == pageurl) && (filename_a == filename_b) && filename_a && filename_b) {
@@ -201,7 +202,7 @@ function fastmatch_fb_iframe_refresh(q) {
 		}
 		if((pair[0] == 'href') || 
 		   (pair[0] == '?href')) {
-			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location.href);
+			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location.href.split("?")[0]);
 		} else {
 			nq = nq + token + pair[0] + '=' + pair[1];
 		}
