@@ -155,10 +155,8 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
    
    //Validation:
    drupal_add_js('function fbregistration_validate(form) {
-        errors = {};' . 
-         variable_get('fbregistration_validation', 'if (!form.fbregistration_validation) {
-            errors.fbregistration_validation = "Please accept the terms of service.";
-          }') . 
+        errors = {};' . "\n" .
+         variable_get('fbregistration_validation', _fbregistration_default_validation()) . 
         'return errors;
         }'
        ,
@@ -168,6 +166,14 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
 }
 
 
+function _fbregistration_default_validation() {
+  $v = <<<HTM
+  if (form['field_usertermsofservice'] != true) {
+    errors['field_usertermsofservice'] = "Please accept the terms of service.";
+  }
+HTM;
+  return $v;
+}
 
 
 function _fbregistration_getfbreg(&$form = null) {

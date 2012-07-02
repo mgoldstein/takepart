@@ -51,12 +51,10 @@ function fbregistration_form($form, &$form_state) {
   
   $form['settings']['fbregistration_validation'] = array(
       '#type' => 'textarea',
-      '#rows' => 2,
+      '#rows' => 4,
       '#title' => t('Facebook Registration Tag (Iframe)'),
       '#required' => TRUE,
-      '#default_value' => variable_get('fbregistration_validation', 'if (!form.fbregistration_validation) {
-            errors.fbregistration_validation = "Please accept the terms of service.";
-          }'),
+      '#default_value' => variable_get('fbregistration_validation', _fbregistration_default_validation()),
   );
   
   
