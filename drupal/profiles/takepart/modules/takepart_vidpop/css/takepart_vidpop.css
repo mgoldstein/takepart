@@ -180,5 +180,5 @@ The fix is to add this to the theme CSS:
 }
 
 .vidpop-popup .addthis_button_email {
-    padding: 2px 0 0 2px;
+    padding: 2px 0 0 6px;
 }
