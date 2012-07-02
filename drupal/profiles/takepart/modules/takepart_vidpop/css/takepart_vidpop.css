@@ -162,7 +162,7 @@ div.vidpop-preview-overlay-headline {
   height: 390px !important;
 }
 #colorbox, #cboxWrapper, #cboxContent, #cboxLoadedContent {
-  overflow: visible !important;
+  overflow: hidden;
 }
 
 /*
