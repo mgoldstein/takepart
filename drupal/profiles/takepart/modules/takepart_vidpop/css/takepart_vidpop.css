@@ -175,5 +175,6 @@ The fix is to add this to the theme CSS:
 }
 
 .vidpop-popup .fb_edge_comment_widget {
-    left:-190px !important;
+    left:-400px !important;
+    top:-20px !important;
 }
