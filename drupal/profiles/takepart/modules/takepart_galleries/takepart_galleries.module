@@ -171,8 +171,10 @@ function takepart_galleries_omniture_variables() {
 
 
 function takepart_galleries_html_head_alter(&$head_elements) {
+  
+  $path = $_SERVER["REQUEST_URI"];
   $dirs = explode('/', $path);
-  if(($dirs[0] == 'photos') && (count($dirs) > 1)) {
+  if(($dirs[1] == 'photos') && (count($dirs) > 3)) {
     foreach ($head_elements as $key => $element) {
       if (isset($element['#id']) &&
           (($element['#id'] == 'metatag_og:url') ||
@@ -192,8 +194,9 @@ function takepart_galleries_html_head_alter(&$head_elements) {
  */
 function _takepart_galleries_metatags($nid) {
 
+  $path = $_SERVER["REQUEST_URI"];
   $dirs = explode('/', $path);
-  if(($dirs[0] == 'photos') && (count($dirs) > 1)) {
+  if(($dirs[1] == 'photos') && (count($dirs) > 3)) {
     
     $last_folder = substr(substr($_SERVER["REQUEST_URI"],1), strrpos(substr($_SERVER["REQUEST_URI"],0), "/"), strlen($_SERVER["REQUEST_URI"]));
     $gallery = _takepart_galleries_mappings($nid);
