@@ -34,6 +34,11 @@
  * @see template_preprocess_comment_wrapper()
  * @see theme_comment_wrapper()
  */
+
+$fb_comments_url = $_SERVER["REQUEST_URI"];
+$fb_comments_url = preg_replace('/\?.*/', '', $fb_comments_url);
+$content['#fb_comments']['url'] = 'http://' . $_SERVER["SERVER_NAME"] . $fb_comments_url;
+
 ?>
 <div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php if ($content['#fb_comments']['enabled']): ?>
@@ -57,11 +62,20 @@
     }(document, "script", "facebook-jssdk"));
     </script>
 -->
+  <?php 
+  /*
     <div class="fb-comments"
          data-href="<?php print $content['#fb_comments']['url'] ?>"
          data-num-posts="<?php print $content['#fb_comments']['amount'] ?>"
          data-width="<?php print $content['#fb_comments']['width'] ?>"
          data-colorscheme="<?php print $content['#fb_comments']['style'] ?>"></div>
+     */   
+      
+      //css="http://www.yourwebsite.com/css/comments.css?1234"
+  
+      ?>
+      
+      <fb:comments href="<?php print $content['#fb_comments']['url'] ?>" numposts="<?php print $content['#fb_comments']['amount'] ?>" width="<?php print $content['#fb_comments']['width'] ?>" title="TakePart Comments" simple="1"></fb:comments>
 
   <?php else: ?>
   <?php if ($content['#node']->comment_count > 0): ?>
