@@ -40,6 +40,13 @@ function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
 
 function _takepart_facebookapis_getfblogin($dest = null) {
   
+ 
+  if(isset($GLOBALS["_takepart_facebookapis_getfblogin"])) { 
+    $GLOBALS["_takepart_facebookapis_getfblogin"]++;
+  } else {
+    $GLOBALS["_takepart_facebookapis_getfblogin"] = 0;
+  }
+  
   if(($dest == null) && (isset($_GET['destination']))) {
     $dest = $_GET['destination'];
   }
@@ -63,12 +70,12 @@ function _takepart_facebookapis_getfblogin($dest = null) {
   //$fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session()"  redirect_uri="' . $authpath . '" registration-url="' . $regpath . '"', $fblogintag);
 
   if(variable_get('fblogin_method_regredir', 0) == 0) {
-    $fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session()" registration-url="' . $regpath . '"', $fblogintag);
+    $fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session'.$GLOBALS["_takepart_facebookapis_getfblogin"].'()" registration-url="' . $regpath . '"', $fblogintag);
   } else {
-    $fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session()"', $fblogintag);
+    $fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session'.$GLOBALS["_takepart_facebookapis_getfblogin"].'()"', $fblogintag);
   }
   
-  drupal_add_js('function takepart_facebookapi_check_login_session() {
+  drupal_add_js('function takepart_facebookapi_check_login_session'.$GLOBALS["_takepart_facebookapis_getfblogin"].'() {
         path = \'' . $authpath . '\';
         window.location = path;
       }',
