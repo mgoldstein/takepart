@@ -158,7 +158,7 @@ function fastmatch_refreshstuff(y, first) {
 	*/
 	
 	if(typeof FB != 'undefined') {
-		jQuery('fb:comments').attr('src', window.location.href);
+		jQuery('fb:comments').attr('href', window.location.href);
 		FB.XFBML.parse();
 	}
 	
