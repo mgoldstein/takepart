@@ -6,36 +6,75 @@
 * this is the embedded preview pane
 */
 div.vidpop-preview {
-  width: 420px;
-  height: 315px;
+  width: 480px;
+  height: 360px;
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 1px;
 }
 div.vidpop-preview-overlay {
-  width: 420px;
-  height: 315px;
+  width: 480px;
+  height: 360px;
   z-index: 5;
   position: absolute;
   top: 0;
   left: 0;
   cursor: pointer;
 }
+div.vidpop-preview a {
+  text-decoration: none;
+}
 div.vidpop-preview a img {
-  width: 420px;
-  height: 315px;
+  width: 480px;
+  height: 360px;
   z-index: 2;
   position: absolute;
   top: 0;
   left: 0;
 }
 div.vidpop-preview-overlay-headline {
-  width: 400px;
+  width: 450px;
   z-index: 9;
   position: absolute;
   top: 10px;
   left: 10px;
   color: white;
   font-size: 14px;
+}
+
+div.vidpop-preview-overlay-text {
+  width: 480px;
+  height: 360px;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+div.vidpop-preview-overlay-text .line1 {
+  position: relative;
+  top: 289px;
+  left: 50px;;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 140%;
+  color: #fff;
+  width: 420px;
+}
+div.vidpop-preview-overlay-text .line1 .watch {
+  font-size: 13px;
+  font-weight: bold;
+  color: #99bbcb;
+  padding-right: 10px;
+}
+div.vidpop-preview-overlay-text .line2 {
+  position: relative;
+  top: 298px;
+  left: 15px;;
+  font-size: 13px;
+  line-height: 120%;
+  color: #d9e7ed;
+  width: 440px;
+  font-weight: normal;
 }
 
 .vidpop-embed-promo-headline {
@@ -57,7 +96,7 @@ div.vidpop-preview-overlay-headline {
   display:none;     /* must be initially hidden */
   background-color: white;
   width: 900px;
-  min-height: 315px;
+  min-height: 360px;
   border: 1px solid #fff;
   border-radius: 8px;
   -moz-border-radius: 8px;
