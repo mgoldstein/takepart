@@ -69,12 +69,11 @@ $content['#fb_comments']['url'] = 'http://' . $_SERVER["SERVER_NAME"] . $fb_comm
          data-num-posts="<?php print $content['#fb_comments']['amount'] ?>"
          data-width="<?php print $content['#fb_comments']['width'] ?>"
          data-colorscheme="<?php print $content['#fb_comments']['style'] ?>"></div>
-     */   
+   */   
+   //@todo: css="http://www.yourwebsite.com/css/comments.css?1234"
+   ?>
       
-      //css="http://www.yourwebsite.com/css/comments.css?1234"
-  
-      ?>
-      
+   <fb:comments href="<?php print $content['#fb_comments']['url'] ?>" numposts="<?php print $content['#fb_comments']['amount'] ?>" width="<?php print $content['#fb_comments']['width'] ?>" title="TakePart Comments" simple="1"></fb:comments>
 
   <?php else: ?>
   <?php if ($content['#node']->comment_count > 0): ?>
