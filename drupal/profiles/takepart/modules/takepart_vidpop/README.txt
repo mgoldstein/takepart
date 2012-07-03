@@ -23,7 +23,7 @@ move to after field_video_embedded
 edit, set default to modal popup
 
 2) Create image style tp_embed_video_thumb
-		add effect: scale and crop to 420x315
+		add effect: scale and crop to 480x360
 
 
 3) enable module TakePart Video Popup Support
