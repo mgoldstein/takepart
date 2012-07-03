@@ -192,11 +192,8 @@ div.vidpop-preview-overlay-text .line2 {
   height: 390px !important;
 }
 #colorbox, #cboxWrapper, #cboxContent, #cboxLoadedContent {
-  overflow: hidden !important;
+  overflow: visible !important;
 }
-
-
-
 
 /*
 Internet Explorer 8 will have problems with showing images in the Colorbox.
@@ -205,5 +202,3 @@ The fix is to add this to the theme CSS:
 #cboxLoadedContent img {
   max-width: none;
 }
- 
-
