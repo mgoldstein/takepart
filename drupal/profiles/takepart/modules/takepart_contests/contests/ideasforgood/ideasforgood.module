@@ -214,7 +214,7 @@ function ideasforgood_vote_form($form, &$form_state, $finalist) {
   $markup .= ' src="/'. $cancel_src . '"';
   $markup .= ' alt="Cancel"';
   $markup .= ' class="ideasforgood-cancel-button"';
-  $markup .= '>';
+  $markup .= ' />';
   $markup .= '</div>';
   $form['centered_content']['cancel'] = array(
     '#type' => 'markup',
@@ -545,7 +545,7 @@ class IdeasForGoodFinalistController extends EntityAPIController {
       ));
       $connect_button = '<a class="ideasforgood-button-link"'
         . ' href="/user/register?destination=' . urlencode($destination) . '">'
-        . '<img src="/' . $connect_src . '" alt="Sign Up for Takepart">'
+        . '<img src="/' . $connect_src . '" alt="Sign Up for Takepart" />'
         . '</a>';
     }
 
@@ -555,7 +555,7 @@ class IdeasForGoodFinalistController extends EntityAPIController {
       'cancel_button.png',
     ));
     $cancel_button = '<img src="/' . $cancel_src . '" alt="Cancel"'
-      . 'class="ideasforgood-cancel-button">';
+      . 'class="ideasforgood-cancel-button" />';
 
     return array(
       'connect_button' => $connect_button,

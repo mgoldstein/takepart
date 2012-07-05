@@ -41,9 +41,9 @@
     <?php print render($content['ideasforgood_finalist_idea_body']); ?>
     <?php if (! $content['voting_locked']): ?>
     <img src="/<?php print $content['vote_for_me_button']['off']; ?>"
-         class="ideasforgood-vote-button rollover-image-off" alt="Vote for Me!">
+         class="ideasforgood-vote-button rollover-image-off" alt="Vote for Me!" />
     <img src="/<?php print $content['vote_for_me_button']['on']; ?>"
-         class="rollover-image-on">
+         class="rollover-image-on" />
     <div style="clear: both"></div>
     <?php endif ?>
   </div>
