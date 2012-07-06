@@ -144,6 +144,7 @@ function fastmatch_refreshstuff(y, first) {
 	s.t();
 	
 	//Refresh Facebook comments:
+	//OLD WAY:
 	if(typeof FB != 'undefined') {
 		fbchtml = '<div class="fb-comments" ' +
 	     		  'data-href="' + window.location.href + '" ' +
@@ -154,6 +155,14 @@ function fastmatch_refreshstuff(y, first) {
 		jQuery('.fb-comments').html(fbchtml);	
 		FB.XFBML.parse(jQuery('#comments').get(0));
 	}
+	
+	//NEW WAY:
+	/*
+	if(typeof FB != 'undefined') {
+		jQuery('fb:comments').attr('href', window.location.href);
+		FB.XFBML.parse();
+	}
+	*/
 	
 	//Refresh Google Plus:
     if((typeof gapi != 'undefined') && (gapi)) {
