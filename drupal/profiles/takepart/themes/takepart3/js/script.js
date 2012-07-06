@@ -176,7 +176,7 @@ takepart.analytics.addThis_ready = function (evt) {
 }
 
 jQuery(document).ready(function () {
-    if (typeof addthis != "undefined" || addthis) {
+    if (typeof addthis != "undefined") {
         addthis.addEventListener('addthis.ready', takepart.analytics.addThis_ready);
     }
     /* Incorrectly attaches social sharing event to Take Action button

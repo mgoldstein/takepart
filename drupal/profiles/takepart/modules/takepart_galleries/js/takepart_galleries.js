@@ -20,7 +20,7 @@ jQuery(document).ready(function () {
             jQuery.getJSON(path, function (data) {
                 for (var i = 0; i < data.length; i++) {
                     var obj = data[i];
-
+                    
                     _galleryFastMatch[i] = obj['url'];
                     _galleryFastMatch_titles[i] = obj['title'];
                     
@@ -102,9 +102,17 @@ function fastmatch_historyapi() {
 			
 			if(urlar[3] == 'photos') {
 				if(y==0) {
-					history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4]);
+					if (history.pushState) {
+						history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4]);
+					} else {
+						window.location.hash = "";
+					}
 				} else {
-					history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4] + '/' + _galleryFastMatch[y]);
+					if (history.pushState) {
+						history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4] + '/' + _galleryFastMatch[y]);
+					} else {
+						window.location.hash = "#" + _galleryFastMatch[y];
+					}
 				}
 			}
 			
@@ -211,7 +219,7 @@ function fastmatch_fb_iframe_refresh(q) {
 		}
 		if((pair[0] == 'href') || 
 		   (pair[0] == '?href')) {
-			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location.href.split("?")[0]);
+			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location.href.split("?")[0]).replace("#","/");;
 		} else {
 			nq = nq + token + pair[0] + '=' + pair[1];
 		}
