@@ -68,7 +68,9 @@ hr {
     background: url("/profiles/takepart/themes/takepart3/images/logo.png") no-repeat scroll 0 0 transparent;
     /* url(../images/TakePart-PM-LOGO.jpg) no-repeat 0 0; */
 }
-
+body.page-bsd #logo a {
+    background: url(http://www.takepart.com/profiles/takepart/themes/takepart3/images/logo.png) no-repeat scroll 0 0 transparent;
+}
 div.dotted-rule {
     border-top:1px dotted #000;
     margin: 8px 0;
