@@ -331,7 +331,7 @@ form#search-api-page-search-form-2 {
 }
 
 #top-search .form-text {
-    border:1px solid #CCC;
+    border:1px soid #CCC;
     font-family: Arial, sans-serif;
     color:#999999;
     float:left;
@@ -353,9 +353,6 @@ form#search-api-page-search-form-2 {
     float: left;
 }
 
-body.page-bsd #top-search .tpform-submit {
-    background: url(http://www.takepart.com/profiles/takepart/themes/takepart3/images/sprite.png) no-repeat 0 -115px;
-}
 /****** Blog Landing Page *****/
 
 body.node-type-section-front .main-content .view-blogs .taxonomy-term {
@@ -1351,36 +1348,20 @@ span.comment-num {
     background: url(../images/sprite.png) no-repeat -208px -115px;
 }
 
-body.page-bsd .share-this-strip li.fb a {
-    background: url(http://www.takepart.com/profiles/takepart/themes/takepart3/images/sprite.png) no-repeat -208px -115px;
-}
-
 .share-this-strip li.tweet a {
     background: url(../images/sprite.png) no-repeat -236px -115px;
-}
-body.page-bsd .share-this-strip li.tweet a {
-    background: url(http://www.takepart.com/profiles/takepart/themes/takepart3/images/sprite.png) no-repeat -236px -115px;
 }
 
 .share-this-strip li.stumble a {
     background: url(../images/sprite.png) no-repeat -264px -115px;
 }
-body.page-bsd .share-this-strip li.stumble a {
-    background: url(http://www.takepart.com/profiles/takepart/themes/takepart3/images/sprite.png) no-repeat -264px -115px;
-}
 
 .share-this-strip li.digg a {
     background: url(../images/sprite.png) no-repeat -293px -115px;
 }
-body.page-bsd .share-this-strip li.digg a {
-    background: url(http://www.takepart.com/profiles/takepart/themes/takepart3/images/sprite.png) no-repeat -293px -115px;
-}
 
 .share-this-strip li.email a {
     background: url(../images/sprite.png) no-repeat -320px -115px;
-}
-body.page-bsd .share-this-strip li.email a {
-    background: url(http://www.takepart.com/profiles/takepart/themes/takepart3/images/sprite.png) no-repeat -320px -115px;
 }
 
 .share-this-strip li.email {margin-right: 0;}
@@ -3756,10 +3737,6 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
     display:block;
     margin-top: -1px;
     padding:0;
-}
-
-body.page-bsd #top-search .tpform-submit {
-        background: url("../images/sprite.png") no-repeat scroll 0 -115px transparent; 
 }
 
 /* search results */
