@@ -18,6 +18,7 @@ jQuery(document).ready(function () {
 
             path = '/galleries_json_nid/' + Drupal.settings.gallery.nid;
             jQuery.getJSON(path, function (data) {
+            	//var data = takepart_galleries_json;
                 for (var i = 0; i < data.length; i++) {
                     var obj = data[i];
                     
@@ -34,7 +35,7 @@ jQuery(document).ready(function () {
                             filename_b = obj['filename'];
                             filename_b = filename_b.substr(0, filename_a.length);
                             
-                            pageurl = window.location.href.split("?")[0];
+                            pageurl = (window.location.href.split("?")[0]).replace("#","/");
                             pageurl = pageurl.substr(pageurl.lastIndexOf("/") + 1);
                             
                             //if ((obj['url'] == pageurl) && (filename_a == filename_b) && filename_a && filename_b) {
@@ -98,7 +99,7 @@ function fastmatch_historyapi() {
 		
 		if(jQuery(this).hasClass('highlight')) {
 			
-			urlar = window.location.href.split('/');
+			urlar = ((window.location.href).replace("#","/")).split('/');
 			
 			if(urlar[3] == 'photos') {
 				if(y==0) {
@@ -155,7 +156,7 @@ function fastmatch_refreshstuff(y, first) {
 	//OLD WAY:
 	if(typeof FB != 'undefined') {
 		fbchtml = '<div class="fb-comments" ' +
-	     		  'data-href="' + window.location.href + '" ' +
+	     		  'data-href="' + (window.location.href).replace("#","/") + '" ' +
 	     	      'data-num-posts="15" ' +
 	              'data-width="640" ' +
 	              'data-colorscheme="light"></div>';
@@ -219,7 +220,7 @@ function fastmatch_fb_iframe_refresh(q) {
 		}
 		if((pair[0] == 'href') || 
 		   (pair[0] == '?href')) {
-			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location.href.split("?")[0]).replace("#","/");;
+			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location.href.split("?")[0]).replace("#","/");
 		} else {
 			nq = nq + token + pair[0] + '=' + pair[1];
 		}

@@ -15,6 +15,7 @@ function takepart_galleries_url_inbound_alter(&$path, $original_path, $path_lang
  * Implements hook_init().
  */
 function takepart_galleries_init() {
+  
   $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
   $last_folder = substr(substr($_SERVER["REQUEST_URI"],1), strrpos(substr($_SERVER["REQUEST_URI"],0), "/"), strlen($_SERVER["REQUEST_URI"]));
   if($first_folder == 'photos') {
@@ -30,6 +31,8 @@ function takepart_galleries_init() {
     if ( arg(0) == 'node' && is_numeric(arg(1)) ) {
       $nid = arg(1);
       _takepart_galleries_metatags($nid);
+      $jsonjs = "var takepart_galleries_json = " . drupal_json_encode(_takepart_galleries_mappings($nid)) . ";";
+      drupal_add_js($jsonjs, array('type' => 'inline', 'scope' => 'header', 'weight' => 0));
     }
     $settings['gallery'] = array(
         'nid' => $nid,
@@ -134,26 +137,33 @@ function _takepart_galleries_mappings_json($nid) {
  */
 function _takepart_galleries_mappings($nid) {
 
-  if($nid) {
+  
+  if(!isset($GLOBALS["_takepart_galleries_mappings_return"])) {
+  
+    if($nid) {
+  
+      $sql = 'SELECT
+      file_managed.filename AS filename,
+      field_data_field_gallery_images.entity_id AS entity_id,
+      field_data_field_page_name.field_page_name_value AS url,
+      field_data_field_image_title.field_image_title_value as title
+      FROM
+      {file_managed}
+      RIGHT OUTER JOIN field_data_field_gallery_images ON file_managed.fid = field_data_field_gallery_images.field_gallery_images_fid
+      LEFT JOIN field_data_field_page_name ON file_managed.fid = field_data_field_page_name.entity_id
+      LEFT JOIN field_data_field_image_title ON field_data_field_image_title.entity_id = file_managed.fid
+      where field_data_field_gallery_images.entity_id = :nid';
+       
+      $result = db_query($sql, array(':nid' => $nid), array('target' => 'slave'))->fetchAll(PDO::FETCH_ASSOC);
+  
+      array_walk($result, '_takepart_galleries_fix_urls');
 
-    $sql = 'SELECT
-    file_managed.filename AS filename,
-    field_data_field_gallery_images.entity_id AS entity_id,
-    field_data_field_page_name.field_page_name_value AS url,
-    field_data_field_image_title.field_image_title_value as title
-    FROM
-    {file_managed}
-    RIGHT OUTER JOIN field_data_field_gallery_images ON file_managed.fid = field_data_field_gallery_images.field_gallery_images_fid
-    LEFT JOIN field_data_field_page_name ON file_managed.fid = field_data_field_page_name.entity_id
-    LEFT JOIN field_data_field_image_title ON field_data_field_image_title.entity_id = file_managed.fid
-    where field_data_field_gallery_images.entity_id = :nid';
-     
-    $result = db_query($sql, array(':nid' => $nid), array('target' => 'slave'))->fetchAll(PDO::FETCH_ASSOC);
-
-    array_walk($result, '_takepart_galleries_fix_urls');
-
-    return $result;
-
+      $GLOBALS["_takepart_galleries_mappings_return"] = $result;
+      return $result;
+    }
+    
+  } else {
+       return $GLOBALS["_takepart_galleries_mappings_return"];
   }
 }
 
