@@ -1,31 +1,36 @@
+/* -*- indent-tabs-mode: nil; js-indent-level: 2; -*- */
 /**
  * @file
  *   Initialize onUnload scripts.
  */
 
-(function($) {
+Drupal.behaviors.content_lock = {
+  attach: function(context) {
   window.content_lock_onleave = function  () {
     var nid = Drupal.settings.content_lock.nid;
     var ajax_key = Drupal.settings.content_lock.ajax_key;
-    var protocol = $(location).attr('protocol');
-    var host  = $(location).attr('host');
-    var aurl = protocol+host+Drupal.settings.basePath + 'index.php?q=ajax/content_lock/'+nid+'/canceledit&k='+ajax_key;
-    $.ajax({
-      url:   aurl,
+    jQuery.ajax({
+      url: Drupal.settings.basePath + 'ajax/content_lock/'+nid+'/canceledit',
+      data: {k: ajax_key, token: Drupal.settings.content_lock.token},
       async: false,
       cache: false
     });
   }
 
   window.content_lock_confirm = function () {
-    return Drupal.t(Drupal.settings.content_lock.unload_js_message);
+    if (Drupal.settings.content_lock.unload_js_message_enable)
+      return Drupal.t(Drupal.settings.content_lock.unload_js_message);
   }
 
-  $(document).ready(function() {
-    $().onUserExit( {
+  /* Prevent submitting the node form from being interpreted as "leaving the page" */
+  jQuery(Drupal.settings.content_lock.internal_forms).submit(function () {
+    userMovingWithinSite();
+  });
+
+    jQuery().onUserExit( {
       execute: content_lock_onleave,
       executeConfirm: content_lock_confirm,
-      internalURLs: 'canceledit|trash/confirm|edit'
+      internalURLs: Drupal.settings.content_lock.internal_urls
     });
-  });
-})(jQuery);
+  }
+};
