@@ -411,6 +411,9 @@ function takepart3_preprocess_node(&$vars, $hook) {
 
       // add identifying class
       $vars['classes_array'][] = 'vidpop-embedded';
+
+      // add ad click call
+      drupal_add_js('jQuery(document).ready(function () { vidpop_loaded(); });', 'inline');
     }
   }
 
