@@ -1,7 +1,7 @@
 /**
 * Primary style sheet for TakePart.com
 * organized by section (===SECTION===).
-* @todo: seperate files?
+* @todo: separate files?
 /* COLORS
     - primaries:
     - default body text  #000000
@@ -754,9 +754,13 @@ ul#top-follow {
 
 #join-login-top a,#slim-header.multipage-campaign #join-login-top #user-nav a
 {
-    color:#000;
-    font-weight:700;
-    line-height:15px;
+  color:#000;
+  font-weight:700;
+  line-height:15px;
+}
+#join-login-top a
+{
+  line-height: 14px;     /* #28114  pglatz 7/10/2012 */
 }
 
 #slim-header {
