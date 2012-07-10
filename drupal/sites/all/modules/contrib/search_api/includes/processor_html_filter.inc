@@ -60,8 +60,6 @@ class SearchApiHtmlFilter extends SearchApiAbstractProcessor {
   }
 
   public function configurationFormValidate(array $form, array &$values, array &$form_state) {
-    parent::configurationFormValidate($form, $values, $form_state);
-
     if (empty($values['tags'])) {
       return;
     }

@@ -55,30 +55,13 @@ class SearchApiViewsHandlerArgument extends views_handler_argument {
     );
 
     if ($which) {
-      return isset($defaults[$which]) ? $defaults[$which] : NULL;
+      if (!empty($defaults[$which])) {
+        return $defaults[$which];
+      }
     }
-    return $defaults;
-  }
-
-  public function option_definition() {
-    $options = parent::option_definition();
-
-    $options['break_phrase'] = array('default' => FALSE);
-
-    return $options;
-  }
-
-  public function options_form(&$form, &$form_state) {
-    parent::options_form($form, $form_state);
-
-    // Allow passing multiple values.
-    $form['break_phrase'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Allow multiple values'),
-      '#description' => t('If selected, users can enter multiple values in the form of 1+2+3 (for OR) or 1,2,3 (for AND).'),
-      '#default_value' => $this->options['break_phrase'],
-      '#fieldset' => 'more',
-    );
+    else {
+      return $defaults;
+    }
   }
 
   /**
@@ -88,26 +71,7 @@ class SearchApiViewsHandlerArgument extends views_handler_argument {
    */
   // @todo Provide options to select the operator, instead of always using '='?
   public function query($group_by = FALSE) {
-    if (!empty($this->options['break_phrase'])) {
-      views_break_phrase($this->argument, $this);
-    }
-    else {
-      $this->value = array($this->argument);
-    }
-
-    if (count($this->value) > 1) {
-      $filter = $this->query->createFilter(drupal_strtoupper($this->operator));
-      // $filter will be NULL if there were errors in the query.
-      if ($filter) {
-        foreach ($this->value as $value) {
-          $filter->condition($this->real_field, $value, '=');
-        }
-        $this->query->filter($filter);
-      }
-    }
-    else {
-      $this->query->condition($this->real_field, reset($this->value));
-    }
+    $this->query->condition($this->real_field, $this->argument);
   }
 
   /**

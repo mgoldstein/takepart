@@ -47,7 +47,7 @@ function search_api_drush_command() {
     ),
     'arguments' => array(
       'index_id' => dt('The numeric ID or machine name of an index.'),
-      'limit' => dt("The number of items to index. Use 0 to index all items. Defaults to the index's cron batch size."),
+      'limit' => dt("The number of items to index. Use 0 to index all items. Defaults to the index's cron limit."),
     ),
     'aliases' => array('sapi-i'),
   );
@@ -103,21 +103,17 @@ function drush_search_api_list() {
     dt('Index'),
     dt('Server'),
     dt('Type'),
-    dt('Status'),
+    dt('Enabled'),
     dt('Limit'),
   );
   foreach ($indexes as $index) {
-    $type = search_api_get_item_type_info($index->item_type);
-    $type = isset($type['name']) ? $type['name'] : $index->item_type;
-    $server = $index->server();
-    $server = $server ? $server->name : '(' . t('none') . ')';
     $row = array(
       $index->id,
       $index->name,
       $index->machine_name,
-      $server,
-      $type,
-      $index->enabled ? t('enabled') : t('disabled'),
+      $index->server,
+      $index->entity_type,
+      $index->enabled,
       $index->options['cron_limit'],
     );
     $rows[] = $row;
@@ -146,11 +142,10 @@ function drush_search_api_status($index_id = NULL) {
   ));
   foreach ($indexes as $index) {
     $status = search_api_index_status($index);
-    $complete = ($status['total'] > 0) ? 100 * round($status['indexed'] / $status['total'], 3) . '%' : '-';
     $row = array(
       $index->id,
       $index->name,
-      $complete,
+      100 * round($status['indexed'] / $status['total'], 3) . '%',
       $status['indexed'],
       $status['total'],
     );

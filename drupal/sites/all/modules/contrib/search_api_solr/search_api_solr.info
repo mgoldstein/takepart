@@ -1,3 +1,4 @@
+
 name = Solr search
 description = Offers an implementation of the Search API that uses an Apache Solr server for indexing content.
 dependencies[] = search_api
@@ -7,12 +8,14 @@ package = Search
 files[] = service.inc
 files[] = solr_connection.inc
 files[] = solr_field.inc
-files[] = includes/solr_httptransport.inc
-files[] = includes/spellcheck.inc
+files[] = includes/SearchApiSpellcheckSolr.inc
+files[] = SolrPhpClient/Apache/Solr/Document.php
+files[] = SolrPhpClient/Apache/Solr/Response.php
+files[] = SolrPhpClient/Apache/Solr/Service.php
 
-; Information added by drupal.org packaging script on 2012-05-23
-version = "7.x-1.0-rc2"
+; Information added by drupal.org packaging script on 2011-06-06
+version = "7.x-1.0-beta3"
 core = "7.x"
 project = "search_api_solr"
-datestamp = "1337791294"
+datestamp = "1307399520"
 

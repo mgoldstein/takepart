@@ -20,10 +20,3 @@ class SearchApiException extends Exception {
   }
 
 }
-
-/**
- * Represents an exception that occurred in a data source controller.
- */
-class SearchApiDataSourceException extends SearchApiException {
-
-}

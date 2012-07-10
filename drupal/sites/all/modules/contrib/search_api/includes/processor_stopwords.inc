@@ -6,9 +6,7 @@
 class SearchApiStopWords extends SearchApiAbstractProcessor {
 
   public function configurationForm() {
-    $form = parent::configurationForm();
-
-    $form += array(
+    $form = array(
       'help' => array(
         '#markup' => '<p>' . t('Provide a stopwords file or enter the words in this form. If you do both, both will be used. Read about !stopwords.', array('!stopwords' => l(t('stop words'), "http://en.wikipedia.org/wiki/Stop_words"))) . '</p>',
       ),
@@ -34,8 +32,6 @@ class SearchApiStopWords extends SearchApiAbstractProcessor {
   }
 
   public function configurationFormValidate(array $form, array &$values, array &$form_state) {
-    parent::configurationFormValidate($form, $values, $form_state);
-
     $stopwords = trim($values['stopwords']);
     $uri = $values['file'];
     if (empty($stopwords) && empty($uri)) {
