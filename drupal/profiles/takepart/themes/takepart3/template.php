@@ -410,7 +410,7 @@ function takepart3_preprocess_node(&$vars, $hook) {
       }
 
       // add identifying class
-      $vars['classes_array'][] = 'sluggo';
+      $vars['classes_array'][] = 'vidpop-embedded';
     }
   }
 
