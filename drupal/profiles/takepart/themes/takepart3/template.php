@@ -71,7 +71,11 @@ function takepart3_preprocess_html(&$vars) {
 }
 
 function takepart3_preprocess_page(&$variables) {
-
+  if ($variables['node']->title == "Contact Us") {
+    // save referrer URL to track in webform
+    // it is saved as $_COOKIE['Drupal_visitor_webform_referrer']
+    user_cookie_save(array ('webform_referrer' => $_SERVER['HTTP_REFERER']));
+  }
     _tp3_fill_template_vars($variables);
 
     $variables['is_multipage'] = FALSE;
@@ -482,6 +486,8 @@ function takepart3_preprocess_node(&$vars, $hook) {
         unset($vars['title']);
     }
 }
+
+
 
 /* Comment form */
 
