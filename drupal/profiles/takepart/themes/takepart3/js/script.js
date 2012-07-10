@@ -176,8 +176,10 @@ takepart.analytics.addThis_ready = function (evt) {
 }
 
 jQuery(document).ready(function () {
-    if (typeof addthis != "undefined" || addthis) {
-        addthis.addEventListener('addthis.ready', takepart.analytics.addThis_ready);
+    if (typeof addthis != "undefined") {
+    	if(addthis) {
+    		addthis.addEventListener('addthis.ready', takepart.analytics.addThis_ready);
+    	}
     }
     /* Incorrectly attaches social sharing event to Take Action button
      * takepart.analytics.omn_clickTrack('.take_action_button');
