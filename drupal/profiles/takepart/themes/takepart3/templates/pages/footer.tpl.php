@@ -48,7 +48,7 @@
         </ul>
         
         <div id="footer-about">
-            <p>TakePart is the Social Action Network&trade; of <a target="_blank" href="http://www.participantmedia.com/">Participant Media</a></p>
+            <p>TakePart is the digital division of <a target="_blank" href="http://www.participantmedia.com/">Participant Media</a></p>
             <div id="footer-legal">
                 &copy; 2008-<?php echo date('Y'); ?>
                 TakePart, LLC
