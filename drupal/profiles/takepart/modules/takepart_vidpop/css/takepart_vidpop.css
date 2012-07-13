@@ -120,12 +120,23 @@ div.vidpop-preview-overlay-text .line2 {
 .vidpop-popup .inner-wrapper {
   padding: 0px;
 }
-.vidpop-popup .video-banner-large {
-  height: 90px;
+.vidpop-popup .top-banner {
+  clear: both;
   margin-top: 15px;
-  
   margin-bottom: 20px;
 }
+.vidpop-popup .top-banner .tp-logo {
+  float: left;
+  width: 75px;
+  margin-left: 10px;
+  padding-top: 17px;
+}
+.vidpop-popup .top-banner .video-banner-large {
+  float: left;
+  width: 728px;
+  height: 90px;
+}
+
 .vidpop-popup .media-youtube-preview-wrapper object,
 .vidpop-popup .media-youtube-preview-wrapper iframe {
   height: 390px !important;

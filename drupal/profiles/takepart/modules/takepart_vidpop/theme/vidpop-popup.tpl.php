@@ -1,6 +1,15 @@
 <?php
 // node template to create video popup
 
+// logo to left of the ad banner
+$banner_tp_logo = theme('image', array(
+    'path' => drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop/css/images/TP_modal_icon.png',
+    'width' => '58px',
+    'height' => '58px',
+    'title' => 'Takepart'
+  )
+);
+
 // get the ad banner and social links - yeah, should be done a little before this, but we're in crunch mode today
 $top_banner = takepart_vidpop_get_banner('ga_leaderboard_ros');
 $social_links = takepart_vidpop_get_social_links();
@@ -20,11 +29,14 @@ $content['field_video_embedded'][0]['file']['#options']['height'] = 360;
 <?php if (!empty($pre_object)) print render($pre_object) ?>
 <div class='<?php print $classes ?> clearfix node-embedded' <?php print ($attributes) ?>>
   <div class="inner-wrapper">
-    <?php if (!empty($top_banner) && true): // setting false for now, since we don't havebanners ?>
-    <div class="video-banner-large"><?php print $top_banner ?></div>
-    <?php endif; ?>
+    <div class="top-banner clearfix">
+      <div class="tp-logo"><?php print $banner_tp_logo; ?></div>
+      <?php if (!empty($top_banner)): ?>
+      <div class="video-banner-large"><?php print $top_banner ?></div>
+      <?php endif; ?>
+    </div>
     <div class="contents">
-      <div class="leftside">
+s    <div class="leftside">
       <?php print render($content['field_video_embedded']) ?>
       </div>
       <div class="rightside">
