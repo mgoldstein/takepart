@@ -1,13 +1,14 @@
 // file: javascript support for takepart_vidpop
 
 // On page view of a page with an embedded video
+//
 // triggered by call in template.php, preprocess node
 // doesn't work here as a behavior, like the others
 function vidpop_loaded() {
   // debug: alert('trap 40 c');
   s.linkTrackVars="eVar40, prop40, eVar41, prop41, events";
   s.linkTrackEvents="event40";
-  s.events='event41';
+  s.events='event40';
   s.prop40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
   s.eVar40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
   s.prop41=Drupal.settings.takepart_vidpop.hostpagetitle;
@@ -70,7 +71,7 @@ function vidpop_loaded() {
               vp_43_triggered = 1;
               s.linkTrackVars="eVar40, prop40, eVar41, prop41, events";
               s.linkTrackEvents="event43";
-              s.events='event41';
+              s.events='event43';
               s.prop40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
               s.eVar40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
               s.prop41=Drupal.settings.takepart_vidpop.hostpagetitle;
