@@ -77,6 +77,7 @@ function entity_autocomplete_by_bundle($type, $bundles_in, $string = '') {
     $query = db_select($table, 'n');
     $query->addField('n', $id_field, 'id');
     $query->addField('n', $label_field, 'label');
+    $query->addField('n', 'status', 'status');
     $query->condition('n.'.$label_field, '%' . $string . '%', 'LIKE');
     $query->where("n.$bundle_field in ($bundle_string)");
 
@@ -85,6 +86,9 @@ function entity_autocomplete_by_bundle($type, $bundles_in, $string = '') {
     foreach ($result->fetchAll() as $entity) {
       $label = check_plain($entity->label);
       $label .= ' [id:' . $entity->id . ']';
+      if ($entity->status == 0) {
+        $label .= ' <span style="color:red">(unpublished)</span>';
+      }
       $matches[$label] = $label;
     }
   }
