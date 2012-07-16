@@ -1134,7 +1134,9 @@ function takepart3_pager_link($variables) {
       drupal_add_html_head_link(array(
         'rel' => 'canonical',
         //'type' => 'application/rss+xml',
-        'href' => url($base_root . request_uri(), array()),
+        //'href' => url($base_root . request_uri(), array()),
+        // remove query string from "canonical" link; pglatz #27654
+        'href' => url($base_root . '/' . drupal_lookup_path('alias', $_GET['q']), array()),
       ));
     }
   }
@@ -1146,12 +1148,21 @@ function takepart3_pager_link($variables) {
     $query['page'] = 0;
   }
 
+  // remove "first" link, page 1 link
+  if (($text == 1) || $text == '« first') {
+    $query = NULL;
+  }
+
   // Pagination with rel=“next” and rel=“prev”. Does not support well multiple
   // pagers on the same page - it will create relnext and relprev links
   // in header for that case only for the first pager that is rendered.
   static $rel_prev = FALSE, $rel_next = FALSE;
   if (!$rel_prev && $text == t('‹ previous')) {
     $rel_prev = TRUE;
+    if ($page == 1) {
+      // remove  "previous" link on page 2
+      $query = NULL;
+    }
     drupal_add_html_head_link(array(
       'rel' => 'prev',
       //'type' => 'application/rss+xml',
