@@ -38,7 +38,13 @@ function node_wysiwyg_submit(&$form, &$form_state) {
 function node_wysiwyg_title($data) {
   $nid = entity_autocomplete_get_id($data['nid']);
   $node = node_load($nid);
-  return "CONTENT: " . $node->title . " (". $node->type . ")";
+  $ret = "CONTENT: ";
+  if ($node->status == 0) {
+    // add "unpublished" string
+    $ret .= '<span class="embed-unpublished" style="color:red">[Not published]</span> ';
+  }
+  $ret .= $node->title . " (". $node->type . ")";
 
+  return $ret;
 }
 
