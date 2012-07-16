@@ -489,6 +489,8 @@ function takepart3_preprocess_node(&$vars, $hook) {
     }
 }
 
+
+
 /* Comment form */
 
 function takepart3_form_comment_form_alter(&$form, &$form_state, $form_id) {
