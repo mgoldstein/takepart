@@ -5,29 +5,8 @@
  * Provides export interface for Menu block.
  */
 
-/**
- * Implements hook_menu().
- */
+// Off-load the following infrequently called hooks to another file.
 function menu_block_export_menu() {
-  $items['admin/config/user-interface/menu-block/config'] = array(
-    'title' => 'Configure',
-    'type' => MENU_DEFAULT_LOCAL_TASK,
-  );
-  $items['admin/config/user-interface/menu-block/export'] = array(
-    'title' => 'export',
-    'description' => 'Export menu blocks.',
-    'access arguments' => array('administer blocks'),
-    'page callback' => 'menu_block_export_export',
-    'type' => MENU_LOCAL_TASK,
-    'file' => 'menu_block_export.admin.inc',
-  );
-  $items['admin/config/user-interface/menu-block/export/results'] = array(
-    'title' => 'Menu block bulk export results',
-    'description' => 'Exported menu blocks.',
-    'access arguments' => array('administer blocks'),
-    'page callback' => 'menu_block_export_export',
-    'type' => MENU_CALLBACK,
-    'file' => 'menu_block_export.admin.inc',
-  );
-  return $items;
+  module_load_include('inc', 'menu_block_export', 'menu_block_export.admin');
+  return _menu_block_export_menu();
 }
