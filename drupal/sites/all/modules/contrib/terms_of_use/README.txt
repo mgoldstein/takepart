@@ -1,4 +1,3 @@
-; $Id: README.txt,v 1.1.2.2.2.1 2011/01/16 23:52:41 karst Exp $
 Module Terms Of Use
 Author:
 chill35 from http://drupal.org

@@ -23,7 +23,7 @@ function terms_of_use_admin_settings() {
     '#title' => t('Title of the post where your Terms of Use are published'),
     '#default_value' => variable_get('terms_of_use_node_title', ''),
     '#description' => t('Node <em>title</em> of the page or story (or blog entry or book page) where your Terms of Use are published.'),
-    '#autocomplete_path' => 'node/autocomplete',
+    '#autocomplete_path' => 'terms_of_use/autocomplete',
   );
   $form['terms_of_use_text']['terms_of_use_pick_node_id'] = array(
     '#type' => 'button',
@@ -77,13 +77,13 @@ function terms_of_use_admin_settings_validate($form, &$form_state) {
   }
   elseif (!empty($form_state['values']['terms_of_use_node_title'])) {
     $nid = db_select('node', 'n')
-        ->fields('n', array('nid'))
-        ->condition('n.title', db_like($form_state['values']['terms_of_use_node_title']), 'LIKE')
-        ->condition('n.status', 1)
-        ->range(0, 1)
-        ->addTag('node_access')
-        ->execute()
-        ->fetchField();
+      ->fields('n', array('nid'))
+      ->condition('n.title', db_like($form_state['values']['terms_of_use_node_title']), 'LIKE')
+      ->condition('n.status', 1)
+      ->range(0, 1)
+      ->addTag('node_access')
+      ->execute()
+      ->fetchField();
 
     if (!$nid) {
       form_set_error('terms_of_use_node_title', t('No post was published with this title.'));
@@ -104,12 +104,12 @@ function terms_of_use_autocomplete($string = '') {
   $matches = array();
   if ($string != '') {
     $result = db_select('node', 'n')
-        ->fields('n', array('nid', 'title'))
-        ->condition('n.title', '%' . db_like($string) . '%', 'LIKE')
-        ->condition('n.status', 1)
-        ->range(0, 10)
-        ->addTag('node_access')
-        ->execute();
+      ->fields('n', array('nid', 'title'))
+      ->condition('n.title', '%' . db_like($string) . '%', 'LIKE')
+      ->condition('n.status', 1)
+      ->range(0, 10)
+      ->addTag('node_access')
+      ->execute();
 
     foreach ($result as $node) {
       $matches[$node->title] = $node->title;
@@ -127,7 +127,7 @@ function terms_of_use_js($form, &$form_state) {
   $form_build_id = $_POST['form_build_id'];
 
   if (isset($form['terms_of_use_text']['terms_of_use_node_title'])) {
-    // Create the extra field
+    // Create the extra field.
     $form['terms_of_use_text']['terms_of_use_node_id'] = array(
       '#type' => 'textfield',
       '#title' => t('Node id where your Terms of Use are published'),
@@ -138,13 +138,13 @@ function terms_of_use_js($form, &$form_state) {
     $form['terms_of_use_text']['terms_of_use_pick_node_id']['#value'] = t('I prefer to provide the title of the post');
   }
   else {
-    // Create the extra field
+    // Create the extra field.
     $form['terms_of_use_text']['terms_of_use_node_title'] = array(
       '#type' => 'textfield',
       '#title' => t('Title of the post where your Terms of Use are published'),
       '#default_value' => variable_get('terms_of_use_node_title', ''),
       '#description' => t('Node <em>title</em> of the page or story (or blog entry or book page) where your Terms of Use are published.'),
-      '#autocomplete_path' => 'node/autocomplete',
+      '#autocomplete_path' => 'terms_of_use/autocomplete',
     );
     unset($form['terms_of_use_text']['terms_of_use_node_id']);
     $form['terms_of_use_text']['terms_of_use_pick_node_id']['#value'] = t('I prefer to specify the node id');
