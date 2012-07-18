@@ -37,7 +37,12 @@ function takepart_vidpop_theme() {
 function takepart_vidpop_preprocess_vidpop_popup(&$vars) {
   // save values for ad click js
   drupal_add_js(array('takepart_vidpop'=> array('embeddedvideotitle' => $vars['field_promo_headline'][0]['value'])),'setting');
-  drupal_add_js(array('takepart_vidpop'=> array('hostpagetitle' => $vars['elements']['#node']->title)),'setting');
+}
+
+
+function takepart_vidpop_preprocess_page(&$vars) {
+  // save values for ad click js
+  drupal_add_js(array('takepart_vidpop'=> array('hostpagetitle' => $vars['node']->title)),'setting');
 }
 
 
