@@ -36,7 +36,7 @@ $content['field_video_embedded'][0]['file']['#options']['height'] = 360;
       <?php endif; ?>
     </div>
     <div class="contents">
-s    <div class="leftside">
+     <div class="leftside">
       <?php print render($content['field_video_embedded']) ?>
       </div>
       <div class="rightside">
