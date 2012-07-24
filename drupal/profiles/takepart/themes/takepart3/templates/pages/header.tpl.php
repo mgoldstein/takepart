@@ -21,7 +21,8 @@
       	<?php print $user_nav; ?>       
       </div> 
     </div><!--/join-login-top-->
-  	<div class="logo-wrapper">
+    <?php print $follow_us_links; ?><!--/top follow-->
+    <div class="logo-wrapper">
   		<div id="logo"><?php print l("", "<front>", array('attributes' => array('title' => 'TakePart logo', 'absolute' => TRUE) ) )?></div>
 			<div class="header-right">
   			<div class="clear clearfix" id="nav-wrap">
@@ -30,9 +31,8 @@
       		</div>
     		</div>
         <div id="hot-topics-nav">
-   	      <?php print $hottopic_nav ?>
+          <?php print $hottopic_nav ?>
         </div><!--/hot topics nav-->
-        <?php print $follow_us_links; ?><!--/top follow-->
         <div id="top-search">
    	      <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
         </div><!--/top search-->
