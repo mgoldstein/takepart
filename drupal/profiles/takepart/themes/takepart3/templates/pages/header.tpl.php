@@ -25,17 +25,21 @@
     <div class="logo-wrapper">
   		<div id="logo"><?php print l("", "<front>", array('attributes' => array('title' => 'TakePart logo', 'absolute' => TRUE) ) )?></div>
 			<div class="header-right">
-  			<div class="clear clearfix" id="nav-wrap">
-      		<div id="block-menu-block-1">
-        		<?php print $top_nav ?>
-      		</div>
-    		</div>
-        <div id="hot-topics-nav">
-          <?php print $hottopic_nav ?>
-        </div><!--/hot topics nav-->
-        <div id="top-search">
-   	      <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
-        </div><!--/top search-->
+        <div id="nav-wrap" class="clear clearfix">
+          <div id="block-menu-block-1">
+            <?php print $top_nav ?>
+          </div>
+        </div>
+        <div id="participant-pulldown">
+        </div>
+        <div class="row2">
+          <div id="hot-topics-nav">
+            <?php print $hottopic_nav ?>
+          </div><!--/hot topics nav-->
+          <div id="top-search">
+            <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
+          </div><!--/top search-->
+        </div>
       </div>
     </div>
   </div>
