@@ -106,7 +106,7 @@ img.photo, .gallery-item img {
     padding: 0;
     float: right;
     overflow: visible;
-    margin-top:5px;
+    margin-top: 9px;
     width:auto;
     white-space: nowrap;
 }
@@ -120,25 +120,24 @@ img.photo, .gallery-item img {
     vertical-align: top;
     margin-top:3px;
 }
+#user-nav li.login-1{
+    padding-left: 5px;
+    margin-left: 5px;
+  background: url(images/login_top_bar.png) no-repeat left top;
+}
 .logged-in #user-nav li {
     margin-left:10px;
 }
-
-#join-login-top li.or {
-    margin-right: 3px;
-} 
 
 #join-login-top a {
     font-size:13px;
 }
 
 #join-login-top .join-takepart {
-    margin-right: 3px;
+    margin-right: 0;
 }
 
 a.user-menu-register  {
-    background: url(../images/arrows-blk.png) no-repeat 0 3px;
-    padding-left: 16px;
 }
 
 #join-login-top .join-login {
@@ -226,7 +225,7 @@ ul#top-follow li.rss a {
 
 #block-menu-block-1 li.dhtml-menu a {
     display: block;
-    padding: 0px 10px;
+    padding: 0px 8px;
     text-decoration: none;
     background: #FFF;
     color: #000;

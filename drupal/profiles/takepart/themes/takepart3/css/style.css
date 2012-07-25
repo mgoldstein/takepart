@@ -238,6 +238,10 @@ body.two-sidebars #content, body.sidebar-first #content
     margin: 0 0 5px 0;
     float: left;
 }
+.header-right #nav-wrap {
+    margin: 0 0 10px 0;
+    float: left;
+}
 
 .field-name-field-tp-campaign-intro-media {
     display: block;
@@ -439,7 +443,7 @@ ul,ol
     list-style-image:none;
     letter-spacing:.05em;
     text-align:left;
-    font-size:24px;
+    font-size:21px;
     text-transform:uppercase;
     font-weight:400;
     margin:0;
@@ -460,7 +464,7 @@ ul,ol
 /*spacing between menu items*/
 #block-menu-block-1 li.dhtml-menu
 {
-    margin-left:10px;
+    margin-right:3px;
 }
 
 .views-field-field-slide-headline-override .field-content ul.dots li
@@ -727,7 +731,9 @@ body.front .main-content .block-boxes-current-promo .views-row-10
 #top-follow-wrapper .top-follow-label {
     float: left;
     display: inline;
-    font-style: italic;padding-top: 2px;
+    font-style: italic;
+    font-size:  11px;
+    padding-top: 3px;
   text-transform: uppercase;
 }
 ul#top-follow {
@@ -1639,25 +1645,21 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     padding-top:4px;
 }
 
-#hot-topics-nav {
-    width: 540px;
-    float: left;
-    padding: 9px 0 6px 10px;
-}
-
-#hot-topics-nav ul {
-    margin-left: 10px;
-}
-
 #hot-topics-nav li {
     font-size: 20px;
     font-family: NewsGothicBoldCondensed, "Arial Narrow", sans-serif;
     list-style: none inside none;
-    margin-right: 16px;
+    margin-right: 8px;
+    padding-right: 8px;
+    
     display: inline;
     text-transform: uppercase;
+  background: url(images/menu2_bar.png) no-repeat right;
 }
-
+#hot-topics-nav li.last {
+    color: #000;
+    text-decoration: none;
+}
 #hot-topics-nav li a {
     color: #000;
     text-decoration: none;
@@ -1668,17 +1670,18 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 }
 
 #hot-topics-nav {
-    width: 540px;
     float: left;
-    padding: 9px 0 6px 10px;
+    padding: 3px 0 3px 8px;
+    width: 540px;
+    background-color: white;
 }
 
 #hot-topics-nav ul {
-    margin-left: 10px;
+    margin-left: 0;
 }
 
 #hot-topics-nav li {
-    font-size: 20px;
+    font-size: 15px;
     font-family: NewsGothicBoldCondensed, "Arial Narrow", sans-serif;
     list-style: none inside none;
     margin-right: 16px;
