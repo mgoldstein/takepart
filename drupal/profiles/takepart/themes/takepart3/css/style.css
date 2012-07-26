@@ -1701,7 +1701,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     list-style: none inside none;
     margin-right: 8px;
     padding-right: 13px;
-    background: url(../images/dot-blue.png) no-repeat right -1px;
+    background: url(../images/dot-blue.png) no-repeat right;
 }
 #dontmiss-nav li.last {
     margin-right: 0;
