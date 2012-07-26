@@ -31,13 +31,18 @@
           </div>
         </div>
         <div id="participant-pulldown">
+          <div class="pp-button"></div>
+          <div class="inner">
+            <?php print $participant_pulldown ?>
+          </div>
         </div>
         <div class="row2 clear clearfix">
           <div id="hot-topics-nav">
             <?php print $hottopic_nav ?>
           </div><!--/hot topics nav-->
-          <div id="reel-impact-nav">
-            <?php print $reelimpact_nav ?>
+          <div id="dontmiss-nav">
+            <div class="dont">Don't Miss:</div>
+            <?php print $dontmiss_nav ?>
           </div><!--/hot topics nav-->
           <div id="top-search">
             <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>

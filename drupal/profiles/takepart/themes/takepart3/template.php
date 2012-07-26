@@ -261,10 +261,10 @@ function _render_tp3_hottopics_menu() {
 }
 
 /**
- * Helper to output the custom HTML for our reel impact menu in header nav.
+ * Helper to output the custom HTML for our don't miss menu in header nav.
  */
-function _render_tp3_reelimpact_menu() {
-  $menu_data = menu_tree_page_data("menu-reel-impact");
+function _render_tp3_dontmiss_menu() {
+  $menu_data = menu_tree_page_data("menu-don-t-miss");
 
   $uri = drupal_get_path_alias($_GET['q']);
   $uri = substr($uri, 0, 14);
@@ -272,7 +272,6 @@ function _render_tp3_reelimpact_menu() {
   $count = count($menu_data);
   $i = 0;
   foreach ($menu_data as $menu_item) {
-
     $opts = array(
       'attributes' => _default_menu_options($menu_item),
     );
@@ -294,6 +293,38 @@ function _render_tp3_reelimpact_menu() {
   }
 
   return "<ul class='clearfix'>" . implode($links) . "</ul>";
+}
+
+function _render_tp3_participant_pulldown() {
+  $menu_data = menu_tree_page_data("menu-reel-impact");
+
+  $uri = drupal_get_path_alias($_GET['q']);
+  $uri = substr($uri, 0, 14);
+
+  $count = count($menu_data);
+  $i = 0;
+  foreach ($menu_data as $menu_item) {
+    $opts = array(
+      'attributes' => _default_menu_options($menu_item),
+    );
+
+    if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+      $opts['absolute'] = TRUE;
+    }
+
+    $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+    if ($i == 0) {
+      $li = '<li class="first">';
+    } elseif ($i == ($count - 1)) {
+      $li = '<li class="last">';
+    } else {
+      $li = '<li>';
+    }
+    $links[] = $li . $link . "</li>";
+    $i++;
+  }
+
+  return '<ul class="clearfix">' . implode($links) . "</ul>";
 }
 
 function _render_footer_links_menu($menu_key) {
@@ -985,9 +1016,11 @@ function _tp3_fill_template_vars(&$variables) {
   if ((!isset($variables['hottopic_nav'])) || (!$variables['hottopic_nav'])) {
     $variables['hottopic_nav'] = _render_tp3_hottopics_menu();
   }
-  if ((!isset($variables['reelimpact_nav'])) || (!$variables['reelimpact_nav'])) {
-    $variables['reelimpact_nav'] = _render_tp3_reelimpact_menu();
-    $variables['reelimpact_nav'] = 'reeel';
+  if ((!isset($variables['dontmiss_nav'])) || (!$variables['dontmiss_nav'])) {
+    $variables['dontmiss_nav'] = _render_tp3_dontmiss_menu();
+  }
+  if ((!isset($variables['participant_pulldown'])) || (!$variables['participant_pulldown'])) {
+    $variables['participant_pulldown'] = _render_tp3_participant_pulldown();
   }
   if ((!isset($variables['film_camp_nav'])) || (!$variables['film_camp_nav'])) {
     $variables['film_camp_nav'] = _render_tp3_film_campaign_menu();
