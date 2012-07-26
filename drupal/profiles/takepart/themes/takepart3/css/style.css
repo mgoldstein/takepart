@@ -83,7 +83,7 @@ div.gray-rule {
 #slim-header ul.menu li {
     float: none;
     float: left;
-    font-family: 'NewsGothicBoldCondensed';
+    font-family: 'TradeGothicLTStdCnBold';
     font-size: 15px;
     text-transform: uppercase;
     font-weight: normal;
@@ -233,9 +233,16 @@ body.two-sidebars #content, body.sidebar-first #content
     float:left;
     margin-left:124px;
 }
+.header-right .row2 {
+  clear:  both;
+}
 
 #nav-wrap{
     margin: 0 0 5px 0;
+    float: left;
+}
+.header-right #nav-wrap {
+    margin: 0 0 10px 0;
     float: left;
 }
 
@@ -434,23 +441,22 @@ ul,ol
 #block-menu-block-1 li
 {
     float:left;
-    font-family:NewsGothicBoldCondensed;
+    font-family:TradeGothicLTStdCnBold;
     list-style-type:none;
     list-style-image:none;
     letter-spacing:.05em;
     text-align:left;
-    font-size:24px;
+    font-size:22px;
     text-transform:uppercase;
     font-weight:400;
     margin:0;
     padding:0;
-    letter-spacing:2px;
 }
 
 /*Added for IE 7 */
 #block-menu-block-1 li a
 {
-    font-family:NewsGothicBoldCondensed;
+    font-family:TradeGothicLTStdCnBold;
 }
 
 #block-menu-block-1 ul.menu ul.menu li a {
@@ -460,7 +466,7 @@ ul,ol
 /*spacing between menu items*/
 #block-menu-block-1 li.dhtml-menu
 {
-    margin-left:10px;
+    margin-right:3px;
 }
 
 .views-field-field-slide-headline-override .field-content ul.dots li
@@ -718,6 +724,25 @@ body.front .main-content .block-boxes-current-promo .views-row-10
 /* ===PAGE HEADER=== */
 /* ------------------------------------------------------------------------*/
 
+#top-follow-wrapper {
+	padding-top: 12px;
+    float: right;
+    margin-right: 20px;
+    position: relative;
+}
+#top-follow-wrapper .top-follow-label {
+    float: left;
+    display: inline;
+    font-style: italic;
+    font-size:  11px;
+    padding-top: 3px;
+  text-transform: uppercase;
+}
+ul#top-follow {
+    float: right;
+    margin: 0 0 0;
+    width: 132px;
+}
 ul#top-follow li a {
     display: block;
     height: 18px;
@@ -734,11 +759,6 @@ ul#top-follow li.pinterest img {
     padding-top: 1px;
 }
 
-ul#top-follow {
-    margin: 10px 0 0;
-    float: right;
-    width: 132px;
-}
 
 .header-mid
 {
@@ -841,7 +861,7 @@ h1.title a:hover {
 
 .node-type-topic-front .main-content h1.title {
     font-size: 26px;
-    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
     line-height: 26px;
     font-weight: 300;
     background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 10px transparent;
@@ -940,7 +960,7 @@ body.front .main-content .block-boxes-current-promo h2
     padding:8px 0;
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
     width:100%;
-    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
     font-size: 26px;
     line-height: 26px;
 }
@@ -1399,7 +1419,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     font-size: 18px;
     line-height: 110%;
     color: #000;
-    font-family: "NewsGothicBoldCondensed";
+    font-family: "TradeGothicLTStdCnBold";
     font-weight: 300;
     background: none;
 }
@@ -1412,7 +1432,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     font-size: 18px;
     line-height: 110%;
     color: #000;
-    font-family: "NewsGothicBoldCondensed";
+    font-family: "TradeGothicLTStdCnBold";
     font-weight: 300;
     background: none;
 }
@@ -1566,7 +1586,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     margin-bottom: 8px;
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 10px transparent;
     width:100%;
-    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
     font-size: 26px;
     line-height: 26px;
     font-weight: normal;
@@ -1631,63 +1651,118 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     padding-top:4px;
 }
 
+/* secondary menus */
 #hot-topics-nav {
-    width: 540px;
     float: left;
-    padding: 9px 0 6px 10px;
+    padding: 3px 0 3px 15px;
+    background-color: white;
 }
-
 #hot-topics-nav ul {
-    margin-left: 10px;
+    margin-left: 0;
 }
-
 #hot-topics-nav li {
-    font-size: 20px;
-    font-family: NewsGothicBoldCondensed, "Arial Narrow", sans-serif;
-    list-style: none inside none;
-    margin-right: 16px;
     display: inline;
     text-transform: uppercase;
+    font-size: 15px;
+    font-family: TradeGothicLTStdCnBold, "Arial Narrow", sans-serif;
+    list-style: none inside none;
+    margin-right: 10px;
+    padding-right: 10px;
+    background: url(images/menu2_bar.png) no-repeat right;
 }
-
+#hot-topics-nav li.last {
+    margin-right: 0;
+    background: none;
+}
 #hot-topics-nav li a {
     color: #000;
     text-decoration: none;
 }
-
 #hot-topics-nav li a:hover {
     color: #1ca9e7;
 }
 
-#hot-topics-nav {
-    width: 540px;
+#dontmiss-nav {
     float: left;
-    padding: 9px 0 6px 10px;
-}
-
-#hot-topics-nav ul {
+    padding: 6px 0 0;
     margin-left: 10px;
 }
-
-#hot-topics-nav li {
-    font-size: 20px;
-    font-family: NewsGothicBoldCondensed, "Arial Narrow", sans-serif;
-    list-style: none inside none;
-    margin-right: 16px;
+#dontmiss-nav div.dont {
+    font-style: italic;
+    font-size:  11px;
+    padding-top: 1px;
+  text-transform: uppercase;
+  margin-right: 10px;
+  float: left;
+}
+#dontmiss-nav ul {
+    margin-left: 0;
+    float:  right;
+}
+#dontmiss-nav li {
     display: inline;
-    text-transform: uppercase;
+    font-size: 12px;
+    list-style: none inside none;
+    margin-right: 8px;
+    padding-right: 13px;
+    background: url(../images/dot-blue.png) no-repeat right;
+}
+#dontmiss-nav li.last {
+    margin-right: 0;
+    padding-right: 0;
+    background: none;
+}
+#dontmiss-nav li a {
+    color: #179be2;
+    text-decoration: none;
+}
+#dontmiss-nav li a:hover {
+    color: #0c648b;
 }
 
-#hot-topics-nav li a {
-    color: #000;
-    text-decoration: none;
+/* pulldown button */
+#participant-pulldown {
+  float:  right;
+  margin-top: 10px;
+  position: relative;
+  z-index: 10 !important;
+  width: 206px;
+  height: 36px;
+}
+#participant-pulldown .pp-button {
+  position: relative;
+  z-index: 10 !important;
+  width: 206px;
+  height: 36px;
+  background: url(images/participant_dropdown.png) no-repeat;
+}
+#participant-pulldown .inner {
+  position: relative;
+  z-index: 5 !important;
+  background-color: white;
+  margin: -2px 3px 0;
+  display: none;
+}
+#participant-pulldown ul {
+  list-style-type: none;
+  border-color: #ededed;
+  border-left: 2px solid #ededed;
+  border-right: 2px solid #ededed;
+  border-bottom: 2px solid #ededed;
+  -moz-box-shadow: 1px 1px 2px #ccc;
+  -webkit-box-shadow: 1px 1px 2px #ccc;
+  box-shadow: 1px 1px 2px #ccc;
+}
+#participant-pulldown ul li {
+  list-style-type: none;
+  padding: 6px 8px;
 }
 
 /*search box*/
 #top-search {
     width:189px;
     float:right;
-    margin:5px 0 0;
+    margin:0;
 }
 
 #top-search .form-text,
@@ -1706,7 +1781,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 }
 
 #search-api-page-search-form-2 div {
-    border: solid 1px #ccc;
+    border: 1px solid #ececec;
     display: inline-block;
 }
 .view-id-slide_rotator {
@@ -2021,6 +2096,7 @@ div.tp-pet-thank-you-heading {
 
 #block-menu-block-1 {
     padding-top:14px;
+    float:  left;
 }
 #header-wrapper ul.menu {
     padding-top: 0px;
@@ -2124,7 +2200,7 @@ div.tp-pet-thank-you-heading {
 }
 
 #page .page-taxonomy-term .block-boxes-delta-page_title_h1 h1.title {
-    font-family: NewsGothicBoldCondensed,sans-serif;
+    font-family: TradeGothicLTStdCnBold,sans-serif;
     font-size:26px;
     line-height: 26px;
     color: #99BBCC;
@@ -2133,7 +2209,7 @@ div.tp-pet-thank-you-heading {
 .page-taxonomy-term .block-boxes-delta-page_title_h1 h1.title span {
     color: #99BBCC;
     font-size:26px;
-    font-family: NewsGothicBoldCondensed,sans-serif;
+    font-family: TradeGothicLTStdCnBold,sans-serif;
     font-weight: 300;
 }
 

@@ -78,7 +78,7 @@ jQuery(document).ready(function() {
     //jQuery('.photo-wrapper img').css('margin','');
     })
 
-    jQuery('#top-search .form-text').DefaultValue('Search TakePart');
+    jQuery('#top-search .form-text').DefaultValue('Search');
 });
 
 /* rewrites all absolute links to open in a new window
@@ -93,21 +93,22 @@ jQuery(document).ready(function() {
 */
 
 (function($) {
-    Drupal.behaviors.campaignVideo = {
-        attach: function(context) {
-            $('.field-name-field-tp-campaign-intro-media .close').click(function() {
-                $('.campaign-video').hide();
-                $('.field-name-field-tp-campaign-intro-media .play').show();
-                return false;
-            });
-            $('.field-name-field-tp-campaign-intro-media .play').click(function() {
-                $('.field-name-field-tp-campaign-intro-media .play').hide();
-                $('.campaign-video').show();
-                return false;
-            });
-        }
-    };
+  Drupal.behaviors.campaignVideo = {
+    attach: function(context) {
+      $('.field-name-field-tp-campaign-intro-media .close').click(function() {
+        $('.campaign-video').hide();
+        $('.field-name-field-tp-campaign-intro-media .play').show();
+        return false;
+      });
+      $('.field-name-field-tp-campaign-intro-media .play').click(function() {
+        $('.field-name-field-tp-campaign-intro-media .play').hide();
+        $('.campaign-video').show();
+        return false;
+      });
+    }
+  };
 })(jQuery);
+
 
 //Fix for dhtml menus:
 jQuery(document).ready(function() {
@@ -419,3 +420,17 @@ jQuery(document).ready(function () {
         jQuery('#block-boxes-box-3df7e268').show();
         jQuery('#widget_pager_top_photo_gallery-block li').show();
     });
+
+// click on "participant films" button to right of main menu in header
+// ticket #29546
+(function($) {
+  Drupal.behaviors.participantPulldown = {
+    attach: function(context) {
+      $('#participant-pulldown .pp-button').click(function() {
+        $('#participant-pulldown .inner').toggle();
+        return false;
+      });
+    }
+  };
+})(jQuery);
+

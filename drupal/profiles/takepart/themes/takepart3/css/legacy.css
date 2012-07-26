@@ -106,7 +106,7 @@ img.photo, .gallery-item img {
     padding: 0;
     float: right;
     overflow: visible;
-    margin-top:5px;
+    margin-top: 9px;
     width:auto;
     white-space: nowrap;
 }
@@ -120,25 +120,24 @@ img.photo, .gallery-item img {
     vertical-align: top;
     margin-top:3px;
 }
+#user-nav li.login-1{
+    padding-left: 5px;
+    margin-left: 5px;
+  background: url(images/login_top_bar.png) no-repeat left top;
+}
 .logged-in #user-nav li {
     margin-left:10px;
 }
-
-#join-login-top li.or {
-    margin-right: 3px;
-} 
 
 #join-login-top a {
     font-size:13px;
 }
 
 #join-login-top .join-takepart {
-    margin-right: 3px;
+    margin-right: 0;
 }
 
 a.user-menu-register  {
-    background: url(../images/arrows-blk.png) no-repeat 0 3px;
-    padding-left: 16px;
 }
 
 #join-login-top .join-login {
@@ -226,7 +225,7 @@ ul#top-follow li.rss a {
 
 #block-menu-block-1 li.dhtml-menu a {
     display: block;
-    padding: 0px 10px;
+    padding: 1px 8px;
     text-decoration: none;
     background: #FFF;
     color: #000;
@@ -323,7 +322,7 @@ ul#top-follow li.rss a {
 
 /**** Top Search ****/
 form#search-api-page-search-form-2 {
-    margin: 4px 0 0 0;
+    margin: 3px 0 0 0;
 }
 
 #top-search .form-item {
@@ -1981,7 +1980,7 @@ q, q.pull-quote {
     color: #99BBCC;
     font-size: 30px;
     line-height: 100%;
-    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
     font-weight: normal;
     margin: 0;
     padding: 0 10px 10px 10px;
@@ -2593,7 +2592,7 @@ div.messages a:visited {
 .campaign-multipage #slim-header ul.menu li {
     float: none;
     float: left;
-    font-family: 'NewsGothicBoldCondensed';
+    font-family: 'TradeGothicLTStdCnBold';
     font-size: 15px;
     text-transform: uppercase;
     font-weight: normal;
@@ -2999,7 +2998,7 @@ a.take_action_button:active span, a.take_action_button:hover span {
 } 
 
 a.take_action_button {
-    font-family: 'NewsGothicBoldCondensed';
+    font-family: 'TradeGothicLTStdCnBold';
     font-size: 24px;
     font-weight: normal;
     letter-spacing: 2px;
@@ -4271,7 +4270,7 @@ ul#global-links {
 .region-highlighted .block-context-related-menu ul.menu li, .region-highlighted .block-menu ul.menu li{
     display: block;
     float: left;
-    font-family: 'NewsGothicBoldCondensed';
+    font-family: 'TradeGothicLTStdCnBold';
     list-style: none outside none;
     margin: 0;
     padding: 0 25px;
