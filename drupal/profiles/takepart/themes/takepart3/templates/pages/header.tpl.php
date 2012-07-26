@@ -32,9 +32,12 @@
         </div>
         <div id="participant-pulldown">
         </div>
-        <div class="row2">
+        <div class="row2 clear clearfix">
           <div id="hot-topics-nav">
             <?php print $hottopic_nav ?>
+          </div><!--/hot topics nav-->
+          <div id="reel-impact-nav">
+            <?php print $reelimpact_nav ?>
           </div><!--/hot topics nav-->
           <div id="top-search">
             <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>

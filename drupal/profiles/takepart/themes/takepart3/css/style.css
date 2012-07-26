@@ -83,7 +83,7 @@ div.gray-rule {
 #slim-header ul.menu li {
     float: none;
     float: left;
-    font-family: 'NewsGothicBoldCondensed';
+    font-family: 'TradeGothicLTStdCnBold';
     font-size: 15px;
     text-transform: uppercase;
     font-weight: normal;
@@ -232,6 +232,9 @@ body.two-sidebars #content, body.sidebar-first #content
     width:878px;
     float:left;
     margin-left:124px;
+}
+.header-right .row2 {
+  clear:  both;
 }
 
 #nav-wrap{
@@ -438,23 +441,22 @@ ul,ol
 #block-menu-block-1 li
 {
     float:left;
-    font-family:NewsGothicBoldCondensed;
+    font-family:TradeGothicLTStdCnBold;
     list-style-type:none;
     list-style-image:none;
     letter-spacing:.05em;
     text-align:left;
-    font-size:21px;
+    font-size:22px;
     text-transform:uppercase;
     font-weight:400;
     margin:0;
     padding:0;
-    letter-spacing:2px;
 }
 
 /*Added for IE 7 */
 #block-menu-block-1 li a
 {
-    font-family:NewsGothicBoldCondensed;
+    font-family:TradeGothicLTStdCnBold;
 }
 
 #block-menu-block-1 ul.menu ul.menu li a {
@@ -855,7 +857,7 @@ h1.title a:hover {
 
 .node-type-topic-front .main-content h1.title {
     font-size: 26px;
-    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
     line-height: 26px;
     font-weight: 300;
     background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 10px transparent;
@@ -954,7 +956,7 @@ body.front .main-content .block-boxes-current-promo h2
     padding:8px 0;
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
     width:100%;
-    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
     font-size: 26px;
     line-height: 26px;
 }
@@ -1413,7 +1415,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     font-size: 18px;
     line-height: 110%;
     color: #000;
-    font-family: "NewsGothicBoldCondensed";
+    font-family: "TradeGothicLTStdCnBold";
     font-weight: 300;
     background: none;
 }
@@ -1426,7 +1428,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     font-size: 18px;
     line-height: 110%;
     color: #000;
-    font-family: "NewsGothicBoldCondensed";
+    font-family: "TradeGothicLTStdCnBold";
     font-weight: 300;
     background: none;
 }
@@ -1580,7 +1582,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     margin-bottom: 8px;
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 10px transparent;
     width:100%;
-    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
     font-size: 26px;
     line-height: 26px;
     font-weight: normal;
@@ -1645,10 +1647,10 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     padding-top:4px;
 }
 
+/* secondary menus */
 #hot-topics-nav {
     float: left;
-    padding: 3px 0 3px 8px;
-    width: 540px;
+    padding: 3px 0 3px 15px;
     background-color: white;
 }
 #hot-topics-nav ul {
@@ -1658,23 +1660,53 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     display: inline;
     text-transform: uppercase;
     font-size: 15px;
-    font-family: NewsGothicBoldCondensed, "Arial Narrow", sans-serif;
+    font-family: TradeGothicLTStdCnBold, "Arial Narrow", sans-serif;
     list-style: none inside none;
-    margin-right: 8px;
-    padding-right: 8px;
+    margin-right: 10px;
+    padding-right: 10px;
     background: url(images/menu2_bar.png) no-repeat right;
 }
 #hot-topics-nav li.last {
     margin-right: 0;
-    padding-right: 0;
     background: none;
 }
 #hot-topics-nav li a {
     color: #000;
     text-decoration: none;
 }
-
 #hot-topics-nav li a:hover {
+    color: #1ca9e7;
+}
+
+#reel-impact-nav {
+    float: left;
+    padding: 3px 0 3px 8px;
+    background-color: white;
+    margin-left: 10px;
+}
+#reel-impact-nav ul {
+    margin-left: 0;
+}
+#reel-impact-nav li {
+    display: inline;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: TradeGothicLTStdCnBold, "Arial Narrow", sans-serif;
+    list-style: none inside none;
+    margin-right: 8px;
+    padding-right: 8px;
+    background: url(images/menu2_bar.png) no-repeat right;
+}
+#reel-impact-nav li.last {
+    margin-right: 0;
+    padding-right: 0;
+    background: none;
+}
+#reel-impact-nav li a {
+    color: #000;
+    text-decoration: none;
+}
+#reel-impact-nav li a:hover {
     color: #1ca9e7;
 }
 
@@ -2129,7 +2161,7 @@ div.tp-pet-thank-you-heading {
 }
 
 #page .page-taxonomy-term .block-boxes-delta-page_title_h1 h1.title {
-    font-family: NewsGothicBoldCondensed,sans-serif;
+    font-family: TradeGothicLTStdCnBold,sans-serif;
     font-size:26px;
     line-height: 26px;
     color: #99BBCC;
@@ -2138,7 +2170,7 @@ div.tp-pet-thank-you-heading {
 .page-taxonomy-term .block-boxes-delta-page_title_h1 h1.title span {
     color: #99BBCC;
     font-size:26px;
-    font-family: NewsGothicBoldCondensed,sans-serif;
+    font-family: TradeGothicLTStdCnBold,sans-serif;
     font-weight: 300;
 }
 
