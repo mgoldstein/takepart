@@ -8,6 +8,7 @@ engine = phptemplate
 stylesheets[all][] = css/legacy.css
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/typeface.css
+stylesheets[all][] = css/style2.css.less
 stylesheets-conditional[lte IE 7][all][] = css/ie7.css
 
 ; Javascript
