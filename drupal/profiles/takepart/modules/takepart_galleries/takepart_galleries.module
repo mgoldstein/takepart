@@ -137,26 +137,27 @@ function _takepart_galleries_mappings_json($nid) {
  */
 function _takepart_galleries_mappings($nid) {
 
-  
-  if(!isset($GLOBALS["_takepart_galleries_mappings_return"])) {
-  
-    if($nid) {
-  
-      $sql = 'SELECT
-      file_managed.filename AS filename,
-      field_data_field_gallery_images.entity_id AS entity_id,
-      field_data_field_page_name.field_page_name_value AS url,
-      field_data_field_image_title.field_image_title_value as title
-      FROM
-      {file_managed}
-      RIGHT OUTER JOIN field_data_field_gallery_images ON file_managed.fid = field_data_field_gallery_images.field_gallery_images_fid
-      LEFT JOIN field_data_field_page_name ON file_managed.fid = field_data_field_page_name.entity_id
-      LEFT JOIN field_data_field_image_title ON field_data_field_image_title.entity_id = file_managed.fid
-      where field_data_field_gallery_images.entity_id = :nid';
-       
-      $result = db_query($sql, array(':nid' => $nid), array('target' => 'slave'))->fetchAll(PDO::FETCH_ASSOC);
-  
-      array_walk($result, '_takepart_galleries_fix_urls');
+  if($nid) {
+
+    $sql = 'SELECT
+    file_managed.uri AS filename,
+    field_data_field_gallery_images.entity_id AS entity_id,
+    field_data_field_page_name.field_page_name_value AS url,
+    field_data_field_image_title.field_image_title_value as title,
+    field_data_field_media_caption.field_media_caption_value as caption
+    FROM
+    {file_managed}
+    RIGHT OUTER JOIN field_data_field_gallery_images ON file_managed.fid = field_data_field_gallery_images.field_gallery_images_fid
+    LEFT JOIN field_data_field_page_name ON file_managed.fid = field_data_field_page_name.entity_id
+    LEFT JOIN field_data_field_media_caption ON file_managed.fid = field_data_field_media_caption.entity_id
+    LEFT JOIN field_data_field_image_title ON field_data_field_image_title.entity_id = file_managed.fid
+    where field_data_field_gallery_images.entity_id = :nid';
+     
+    $result = db_query($sql, array(':nid' => $nid), array('target' => 'slave'))->fetchAll(PDO::FETCH_ASSOC);
+
+    array_walk($result, '_takepart_galleries_fix_urls');
+
+    return $result;
 
       $GLOBALS["_takepart_galleries_mappings_return"] = $result;
       return $result;
@@ -190,6 +191,7 @@ function takepart_galleries_html_head_alter(&$head_elements) {
       if (isset($element['#id']) &&
           (($element['#id'] == 'metatag_og:url') ||
               ($element['#id'] == 'metatag_og:image') ||
+              ($element['#id'] == 'metatag_og:description') ||
               ($element['#id'] == 'metatag_og:title'))) {
         unset($head_elements[$key]);
       }
@@ -216,12 +218,13 @@ function _takepart_galleries_metatags($nid) {
     for ($i = 0; $i < count($gallery); ++$i) {
       if($last_folder == $gallery[$i]['url']) {
         $phototitle = $gallery[$i]['title'];
-        $photopath = $gallery[$i]['filename'];
+        $photocaption = $gallery[$i]['caption'];
+        $photopath = file_create_url($gallery[$i]['filename']);
       }
     }
 
-    $photopath = url('sites/default/files/'.$photopath, array('absolute'=>true));
-
+    //$photopath = url('sites/default/files/'.$photopath, array('absolute'=>true));
+ 
     $extra_meta_tags = array(
         'takepart_galleries_og_url' => array(
             '#type' => 'html_tag',
@@ -237,6 +240,14 @@ function _takepart_galleries_metatags($nid) {
             '#attributes' => array(
                 'property' => 'og:title',
                 'content' =>  $phototitle
+            ),
+        ),
+        'takepart_galleries_og_caption' => array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+                'property' => 'og:description',
+                'content' =>  strip_tags($photocaption)
             ),
         ),
         'takepart_galleries_og_image' => array(
