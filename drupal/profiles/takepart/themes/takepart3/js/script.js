@@ -421,16 +421,3 @@ jQuery(document).ready(function () {
         jQuery('#widget_pager_top_photo_gallery-block li').show();
     });
 
-// click on "participant films" button to right of main menu in header
-// ticket #29546
-(function($) {
-  Drupal.behaviors.participantPulldown = {
-    attach: function(context) {
-      $('#participant-pulldown .pp-button').click(function() {
-        $('#participant-pulldown .inner').toggle();
-        return false;
-      });
-    }
-  };
-})(jQuery);
-

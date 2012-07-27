@@ -1,0 +1,174 @@
+<?php
+// $Id$
+/**
+ * TakePart Video Popup Module
+ * @file
+ * Install, update and uninstall functions for the TakePart Video Popup module.
+ * @author pglatz
+ * @date 06/14/2012
+ * @company TakePart, LLC
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function takepart_globalnav_install() {
+  _takepart_globalnav_create_menus();
+  drupal_set_message(st('The TakePart Global Navigation module has been installed.'));
+}
+
+function _takepart_globalnav_create_menus() {
+  // add "Don't Miss" menu
+  $menu = array(
+    'menu_name' => "menu-don-t-miss",
+    'title' => "Don't Miss",
+    'description' => "Don't Miss menu on global header top nav"
+  );
+  menu_save($menu);
+
+  $item = array(
+    'link_path' => 'node/20029',
+    'link_title' => 'Election 2012',
+    'menu_name' => "menu-don-t-miss",
+    'mlid' => 0,
+    'router_path' => 'node/%',
+    'weight' => 1,
+  );
+  menu_link_save($item);
+
+  $item = array(
+    'link_path' => 'node/23917',
+    'link_title' => 'Water Crisis',
+    'menu_name' => "menu-don-t-miss",
+    'mlid' => 0,
+    'router_path' => 'node/%',
+    'weight' => 2,
+  );
+  menu_link_save($item);
+
+  $item = array(
+    'link_path' => 'node/23917',
+    'link_title' => 'Batman Shooting',
+    'menu_name' => "menu-don-t-miss",
+    'mlid' => 0,
+    'router_path' => 'node/%',
+    'weight' => 3,
+  );
+  menu_link_save($item);
+
+
+  // add "Reel Impact" menu
+  $menu = array(
+    'menu_name' => "menu-reel-impact",
+    'title' => "Reel Impact",
+    'description' => "Reel Impact menu on global header top nav"
+  );
+
+  $item = array(
+    'link_path' => 'node/19279',
+    'link_title' => 'Last Call at the Oasis',
+    'menu_name' => "menu-reel-impact",
+    'mlid' => 0,
+    'router_path' => 'node/%',
+    'weight' => 1,
+  );
+  menu_link_save($item);
+
+  $item = array(
+    'link_path' => 'node/21202',
+    'link_title' => 'The Help',
+    'menu_name' => "menu-reel-impact",
+    'mlid' => 0,
+    'router_path' => 'node/%',
+    'weight' => 2,
+  );
+  menu_link_save($item);
+
+  $item = array(
+    'link_path' => 'node/21267',
+    'link_title' => 'Food, Inc.',
+    'menu_name' => "menu-reel-impact",
+    'mlid' => 0,
+    'router_path' => 'node/%',
+    'weight' => 3,
+  );
+  menu_link_save($item);
+
+  $item = array(
+    'link_path' => 'node/1204',
+    'link_title' => 'The Cove',
+    'menu_name' => "menu-reel-impact",
+    'mlid' => 0,
+    'router_path' => 'node/%',
+    'weight' => 4,
+  );
+  menu_link_save($item);
+
+  $item = array(
+    'link_path' => 'node/20114',
+    'link_title' => 'The Best Exotic Marigold Hotel',
+    'menu_name' => "menu-reel-impact",
+    'mlid' => 0,
+    'router_path' => 'node/%',
+    'weight' => 5,
+  );
+  menu_link_save($item);
+
+  $item = array(
+    'link_path' => 'node/25123',
+    'link_title' => 'Contagion',
+    'menu_name' => "menu-reel-impact",
+    'mlid' => 0,
+    'router_path' => 'node/%',
+    'weight' => 6,
+  );
+  menu_link_save($item);
+
+  $item = array(
+    'link_path' => 'node/22525',
+    'link_title' => 'More Film Campaigns',
+    'menu_name' => "menu-reel-impact",
+    'mlid' => 0,
+    'router_path' => 'node/%',
+    'weight' => 7,
+  );
+  menu_link_save($item);
+
+
+
+  // rename main menu 'video" link to "videos"
+  db_update('menu_links')
+      ->fields(array('link_title' => 'Videos'))
+      ->condition('link_title', 'Video')
+      ->condition('menu_name', 'menu-hot-topics')
+      ->execute();
+}
+
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function takepart_globalnav_uninstall() {
+  // delete our added menus
+  $menu = array (
+    'menu_name' => "menu-don-t-miss",
+    'title' => "Don't Miss",
+    'description' => "Don't Miss menu on global header top nav"
+  );
+  menu_delete($menu);
+  $menu = array (
+    'menu_name' => "menu-reel-impact",
+    'title' => "Reel Impact",
+    'description' => "Reel Impact menu on global header top nav"
+  );
+  menu_delete($menu);
+
+  // rename videos back to video
+  db_update('menu_links')
+      ->fields(array('link_title' => 'Video'))
+      ->condition('link_title', 'Videos')
+      ->condition('menu_name', 'menu-hot-topics')
+      ->execute();
+
+  drupal_set_message(st('The TakePart Global Navigation module has been uninstalled.'));
+}
