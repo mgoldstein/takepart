@@ -1,0 +1,8 @@
+name = TakePart Global Navigation Support
+description = Installation of global navigation features
+package = TakePart
+version = 7.x-1.00
+core = 7.x
+
+files[] = takepart_globalnav.module
+files[] = takepart_globalnav.install

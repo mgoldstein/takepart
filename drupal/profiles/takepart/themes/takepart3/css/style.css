@@ -1731,6 +1731,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
   width: 206px;
   height: 36px;
   background: url(images/participant_dropdown.png) no-repeat;
+  cursor: pointer;
 }
 #participant-pulldown .inner {
   position: relative;

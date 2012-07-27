@@ -1,0 +1,10 @@
+<?php
+
+/***
+ * implentation of hook_init()
+ */
+function takepart_globalnav_init() {
+  $path = drupal_get_path('module', 'takepart');
+  drupal_add_js($path . '/modules/takepart_globalnav/js/takepart_globalnav.js', 'file');
+}
+
