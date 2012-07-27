@@ -137,27 +137,28 @@ function _takepart_galleries_mappings_json($nid) {
  */
 function _takepart_galleries_mappings($nid) {
 
-  if($nid) {
-
-    $sql = 'SELECT
+  
+  if(!isset($GLOBALS["_takepart_galleries_mappings_return"])) {
+  
+    if($nid) {
+  
+      $sql = 'SELECT
     file_managed.uri AS filename,
-    field_data_field_gallery_images.entity_id AS entity_id,
-    field_data_field_page_name.field_page_name_value AS url,
+      field_data_field_gallery_images.entity_id AS entity_id,
+      field_data_field_page_name.field_page_name_value AS url,
     field_data_field_image_title.field_image_title_value as title,
     field_data_field_media_caption.field_media_caption_value as caption
-    FROM
-    {file_managed}
-    RIGHT OUTER JOIN field_data_field_gallery_images ON file_managed.fid = field_data_field_gallery_images.field_gallery_images_fid
-    LEFT JOIN field_data_field_page_name ON file_managed.fid = field_data_field_page_name.entity_id
+      FROM
+      {file_managed}
+      RIGHT OUTER JOIN field_data_field_gallery_images ON file_managed.fid = field_data_field_gallery_images.field_gallery_images_fid
+      LEFT JOIN field_data_field_page_name ON file_managed.fid = field_data_field_page_name.entity_id
     LEFT JOIN field_data_field_media_caption ON file_managed.fid = field_data_field_media_caption.entity_id
-    LEFT JOIN field_data_field_image_title ON field_data_field_image_title.entity_id = file_managed.fid
-    where field_data_field_gallery_images.entity_id = :nid';
-     
-    $result = db_query($sql, array(':nid' => $nid), array('target' => 'slave'))->fetchAll(PDO::FETCH_ASSOC);
-
-    array_walk($result, '_takepart_galleries_fix_urls');
-
-    return $result;
+      LEFT JOIN field_data_field_image_title ON field_data_field_image_title.entity_id = file_managed.fid
+      where field_data_field_gallery_images.entity_id = :nid';
+       
+      $result = db_query($sql, array(':nid' => $nid), array('target' => 'slave'))->fetchAll(PDO::FETCH_ASSOC);
+  
+      array_walk($result, '_takepart_galleries_fix_urls');
 
       $GLOBALS["_takepart_galleries_mappings_return"] = $result;
       return $result;

@@ -20,6 +20,7 @@ function takepart3_dolinks($links_field) {
 }
 
 function takepart3_preprocess_html(&$vars) {
+  drupal_add_library('system', 'jquery.cookie');
   if (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage')) {
     $vars['classes_array'][] = 'multipage-campaign';
   }
@@ -57,8 +58,6 @@ function takepart3_preprocess_html(&$vars) {
       }
     }
   }
-
-
 
   if (isset($header_override)) {
     if ($header_override) {
