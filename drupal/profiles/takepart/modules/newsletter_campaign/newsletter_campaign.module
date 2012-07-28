@@ -222,7 +222,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign,
   );
 
   $form['bluestatedigital']['bsd_form_id']
-    = bluestatedigital_signup_form_id_field($values['bsd_form_id']);
+    = bluestatedigital_forms_signup_form_id($values['bsd_form_id']);
   $form['bluestatedigital']['bsd_form_id'] += array(
     '#ajax' => array(
       'event' => 'change',
@@ -236,7 +236,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign,
   );
 
   $form['bluestatedigital']['bsd_field_id']
-    = bluestatedigital_signup_field_id_field($values['bsd_form_id'], 
+    = bluestatedigital_forms_signup_field_id($values['bsd_form_id'], 
       $values['bsd_field_id']);
   $form['bluestatedigital']['bsd_field_id'] += array(
     '#prefix' => '<div id="newsletter-campaign-form-email-field-wrapper">',
