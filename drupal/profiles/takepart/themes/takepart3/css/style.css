@@ -1702,7 +1702,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     list-style: none inside none;
     margin-right: 8px;
     padding-right: 13px;
-    background: url(../images/dot-blue.png) no-repeat right;
+    background: url(../images/dot.png) no-repeat right;
 }
 #dontmiss-nav li.last {
     margin-right: 0;
@@ -1714,7 +1714,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     text-decoration: none;
 }
 #dontmiss-nav li a:hover {
-    color: #0c648b;
+    text-decoration: underline;
 }
 
 /* pulldown button */
@@ -1754,6 +1754,11 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #participant-pulldown ul li {
   list-style-type: none;
   padding: 6px 8px;
+}
+#participant-pulldown ul li:hover,
+#participant-pulldown ul li:hover a {
+	background-color: #fff3cc;
+	color: black;
 }
 
 /*search box*/
