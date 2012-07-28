@@ -1,147 +1,104 @@
 <?php
+/**
+ * @file
+ * Administrative interface for Petitions.
+ */
 
+/**
+ * Petition Admin UI Controller.
+ */
 class PetitionUIController extends EntityDefaultUIController {
 
-  public function hook_menu() {
-
+  public function hook_menu() {  
     $items = parent::hook_menu();
 
-    // Make the Petitions main page a subsection of the content section
-    $items[$this->path]['type'] = MENU_LOCAL_TASK;
+    // Update the description for the main admin page.
+    $items[$this->path]['description'] = implode(' ', array(
+      'Manage the LastCall Water Bill of Rights petition, including the',
+      'signature goal, sharing copy and alternate view pages.',
+    ));
 
-    // Page for adding instances of existing petition types
-    $items[$this->path . '/add'] = array(
-      'title' => t('Add a petition'),
-      'description' => t('Add a new petition'),
-      'page callback' => 'petition_add_page',
-      'access callback' => 'petition_access',
-      'access arguments' => array('edit'),
-      'type' => MENU_NORMAL_ITEM,
-      'weight' => 0,
-      'file' => 'petition.admin.inc',
-      'file path' => drupal_get_path('module', $this->entityInfo['module']),
-    );
-
-    // Page(s) for the adding an instance of a specific petition type
-    // these menu entries are used to generate the list on the global add page
-    foreach (petition_get_types() as $type) {
-      $items[$this->path . '/add/' . $type->type] = array(
-        'title' => t('Add a !petition_type', array('!petition_type' => $type->label)),
-        'page callback' => 'petition_form_wrapper',
-        'page arguments' => array($type->type),
-        'access callback' => 'petition_access',
-        'access arguments' => array('edit'),
-        'file' => 'petition.admin.inc',
-        'file path' => drupal_get_path('module', $this->entityInfo['module']),
-      );
-    }
+    // Don't allow any new petitions to be added. They have been re-worked to be
+    // node based signatures.
+    unset($items[$this->path . '/add']);
 
     return $items;
   }
 }
 
-function petition_add_page() {
-
-  $item = menu_get_item();
-  $content = system_admin_menu_block($item);
-
-  // go straight to add petition page if there is only 1 type
-  if (count($content) == 1) {
-    $item = array_shift($content);
-    drupal_goto($item['href']);
-  }
-
-  return theme('petition_add_list', array('content' => $content));
-}
-
-/**
- * Petition entity form wrapper for adding a specific bundle
- */
-function petition_form_wrapper($type_name) {
-  $values = array('type' => $type_name);
-  $petition = entity_get_controller('petition')->create($values);
-  return entity_ui_get_form('petition', $petition, 'add');
-}
-
 /**
  * Petition entity form
  */
-function petition_form($form, &$form_state, $petition, $op = 'edit') {
+function petition_form($form, &$form_state, $entity, $op = 'edit') {
+
+  $form_state['petition'] = $entity;
 
   if ($op == 'clone') {
-    $petition->name .= ' (cloned)';
+    $entity->petition_id = '';
+    $entity->name .= ' (cloned)';
+    $entity->is_new = TRUE;
   }
 
   $form['name'] = array(
     '#title' => t('Name'),
-    '#type' => 'textfield',
-    '#default_value' => isset($petition->name) ? $petition->name : '',
     '#description' => t('The human-readable name of the petition'),
+    '#type' => 'textfield',
     '#required' => TRUE,
     '#size' => 30,
+    '#default_value' => $entity->name,
   );
 
   $form['goal'] = array(
-    '#type' => 'textfield',
     '#title' => t('Goal'),
     '#description' => t('The target number of signatures for the petition.'),
-    '#default_value' => isset($petition->goal) ? $petition->goal : 1000000,
-    '#element_validate' => array('petition_validate_goal',),
+    '#type' => 'textfield',
     '#required' => TRUE,
+    '#element_validate' => array('_element_validate_integer_positive',),
+    '#default_value' => $entity->goal,
   );
 
-  $variable = "petition:{$petition->type}:{$petition->petition_id}:thank_you_page";
   $form['thank_you_page'] = array(
-    '#type' => 'textfield',
     '#title' => t('Thank You Page'),
     '#description' => t('The path to the petition thank you page relative to the site root.'),
-    '#default_value' => variable_get($variable, ''),
+    '#type' => 'textfield',
+    '#default_value' => $entity->thank_you_page,
   );
 
-  $variable = "petition:{$petition->type}:{$petition->petition_id}:updates_page";
   $form['updates_page'] = array(
-    '#type' => 'textfield',
     '#title' => t('Update Page'),
     '#description' => t('The path to the petition updates page relative to the site root.'),
-    '#default_value' => variable_get($variable, ''),
+    '#type' => 'textfield',
+    '#default_value' => $entity->updates_page,
   );
 
-  $variable = "petition:{$petition->type}:{$petition->petition_id}:share_url";
   $form['share_url'] = array(
-    '#type' => 'textfield',
     '#title' => t('Share URL'),
     '#description' => t('The URL to share through AddThis.'),
-    '#default_value' => variable_get($variable, ''),
+    '#type' => 'textfield',
+    '#default_value' => $entity->share_url,
   );
 
-  $variable = "petition:{$petition->type}:{$petition->petition_id}:email_share_msg";
   $form['email_share_msg'] = array(
-    '#type' => 'textarea',
     '#title' => t('Email Share Message'),
     '#description' => t('The default message for AddThis email sharing.'),
+    '#type' => 'textarea',
     '#maxlength' => 255,
-    '#default_value' => variable_get($variable, ''),
+    '#default_value' => $entity->email_share_msg,
   );
 
-  $variable = "petition:{$petition->type}:{$petition->petition_id}:twitter_share_msg";
   $form['twitter_share_msg'] = array(
-    '#type' => 'textfield',
     '#title' => t('Twitter Share Message'),
     '#description' => t('The default message for AddThis Twitter sharing.'),
+    '#type' => 'textfield',
     '#maxlength' => 255,
-    '#default_value' => variable_get($variable, ''),
+    '#default_value' => $entity->twitter_share_msg,
   );
 
-  $form_state['petition'] = $petition;
-  field_attach_form('petition', $petition, $form, $form_state);
+  field_attach_form('petition', $form_state['petition'], $form, $form_state);
 
-  $form['actions'] = array(
-    '#type' => 'container',
-    '#attributes' => array('class' => array('form-actions')),
-    '#weight' => 400,
-  );
+  $form['actions'] = array('#type' => 'actions');
   $submit = array();
-  if (!empty($form['#submit'])) {
+  if (! empty($form['#submit'])) {
     $submit += $form['#submit'];
   }
 
@@ -153,18 +110,19 @@ function petition_form($form, &$form_state, $petition, $op = 'edit') {
   );
 
   // only add the delete button if we are editting an existing petition
-  if (! empty($petition->petition_id)) {
+  $id = $entity->identifier();
+  if (! empty($id)) {
     $form['actions']['delete'] = array(
+      '#value' => t('Delete petition'),
       '#type' => 'submit',
-      '#value' => t('Delete petition '),
-      '#submit' => $submit + array('petition_form_submit_delete'),
       '#weight' => 45,
+      '#submit' => array('petition_form_submit_delete'),
     );
   }
 
   $form['actions']['cancel'] = array(
     '#type' => 'markup',
-    '#markup' => l(t('Cancel'), 'admin/content/petitions'),
+    '#markup' => l(t('Cancel'), 'admin/config/water-bill-of-rights/petitions'),
     '#weight' => 50,
   );
 
@@ -177,10 +135,9 @@ function petition_form($form, &$form_state, $petition, $op = 'edit') {
  * Petition entity form validation handler
  */
 function petition_form_validate(&$form, &$form_state) {
-
-  // validate the attached fields
-  $petition = $form_state['petition'];
-  field_attach_form_validate('petition', $petition, $form, $form_state);
+  // Validate the attached fields.
+  field_attach_form_validate('petition', $form_state['petition'], $form,
+    $form_state);
 }
 
 /**
@@ -188,76 +145,36 @@ function petition_form_validate(&$form, &$form_state) {
  */
 function petition_form_submit(&$form, &$form_state) {
 
-  // build the petition entity from the form
-  $controller = entity_ui_controller('petition');
-  $petition = $controller->entityFormSubmitBuildEntity($form, $form_state);
+  // Build entity from the form.
+  $entity = entity_ui_form_submit_build_entity($form, $form_state);
 
-  // save the petition
-  $status = $petition->save();
+  // Save the entity.
+  $status = $entity->save();
   if ($status == SAVED_UPDATED) {
     drupal_set_message(t('The petition %name has been updated.',
-      array('%name' => $petition->name)));
+      array('%name' => $entity->name)));
   }
   else if ($status == SAVED_NEW) {
     drupal_set_message(t('The petition %name has been added.',
-      array('%name' => $petition->name)));
+      array('%name' => $entity->name)));
   }
 
-  // save the additional settings
-  $settings = array(
-    'thank_you_page',
-    'updates_page',
-    'share_url',
-    'email_share_msg',
-    'twitter_share_msg',
-  );
-  foreach ($settings as $setting) {
-    $variable = "petition:{$petition->type}:{$petition->petition_id}:{$setting}";
-    $value = $form_state['values'][$setting];
-    variable_set($variable, $value);
-  }
-
-  // go back to the list of petitions
-  $form_state['redirect'] = 'admin/content/petitions';
+  // Go back to the list of entities.
+  $form_state['redirect'] = 'admin/config/water-bill-of-rights/petitions';
 }
 
 /**
  * Petition entity form delete (submit) handler
  */
 function petition_form_submit_delete(&$form, &$form_state) {
-
-  // go to the delete confirmation page
-  $form_state['redirect'] = 'admin/content/petitions/manage/'
-    . $form_state['petition']->petition_id
-    . '/delete?destination=admin/content/petitions';
-}
-
-/**
- * Petition type 'Add' list theme handler
- */
-function theme_petition_add_list($variables) {
-
-  $content = $variables['content'];
-  $output = '';
-
-  if ($content) {
-
-    $output = '<dl class="petition-type-list">';
-    foreach ($content as $item) {
-      $output .= '<dt>' . l($item['title'], $item['href']) . '</dt>';
-      $output .= '<dd>' . filter_xss_admin($item['description']) . '</dd>';
-    }
-    $output .= '</dl>';
-  }
-  else {
-
-    if (user_access('administer petition types')) {
-      $output = '<p>' . t('Petitions cannot be added because you have not created any petition types yet. Go to the <a href="@create-href">petition type creation page</a> to add a new petition type.', array('@create-href' => url('admin/structure/petition_types/add'))) . '</p>';
-    }
-    else {
-      $output = '<p>' . t('No petition types have been created yet for you to use.') . '</p>';
-    }
-  }
-
-  return $output;
+  // Go to the delete confirmation page.
+  $form_state['redirect'] = array(
+    'admin/config/water-bill-of-rights/petitions/manage/'
+      . (string) $form_state['petition']->identifier() . '/delete',
+    array(
+      'query' => array(
+        'destination' => 'admin/config/water-bill-of-rights/petitions',
+      ),
+    ),
+  );
 }
