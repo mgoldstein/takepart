@@ -56,7 +56,8 @@ function _fbregistration_bsd_form_load(&$elements, &$form = array(), &$i = 0) {
     if (isset($elements[$key]) && $elements[$key]) {
       if ((array_key_exists('#type', $elements[$key])) && ($elements[$key]['#type'] == 'checkbox')) {
         $uid = isset($elements[$key]['#field_name']) ? $elements[$key]['#field_name'] : $key;
-        $form[$uid] = takepart_bsd_form_id_select_field(variable_get('fbregistration_bsd_mapping_' . $uid, '0'));
+        $form[$uid] = bluestatedigital_forms_signup_form_id(
+          variable_get('fbregistration_bsd_mapping_' . $uid, '0'));
         $form[$uid]['#title'] = $form[$uid]['#title'] . " : " . $elements[$key]['#title'];
       } else {
         _fbregistration_bsd_form_load($elements[$key], $form, $i);

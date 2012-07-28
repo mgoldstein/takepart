@@ -31,15 +31,15 @@ function fbregistration_menu() {
 }
 
 function _tfbregistration_auth() {
-      
+
   $app_id = variable_get('fboauth_id', '');
   $app_secret = variable_get('fboauth_secret', '');
-  
+
   if (($_REQUEST) && isset($_REQUEST['signed_request'])) {
-    
+
     $response = _takepart_facebookapis_parse_signed_request($_REQUEST['signed_request'],$app_secret);
-    
-   /* 
+
+   /*
    foreach ($response['registration'] as $key => $val) {
       if(isset($response['registration'][$key])) {
         if($key == 'field_userfood') {
@@ -53,13 +53,28 @@ function _tfbregistration_auth() {
       }
     }
     */
-    
-    
+
+    // The registration data uses the BSD signup form id for newsletter opt-ins.
+    // Get a list of Newsletter Campaigns keyed by BSD signup form id so we can
+    // process each opt-in.
+    $campaigns = entity_load('newsletter_campaign');
+    $campaigns_by_bsd_form_id = entity_key_array_by_property($campaigns,
+      'bsd_form_id');
+
     //bsd:
     foreach ($response['registration'] as $key => $val) {
       if((substr($key, 0, 4) == 'bsd_') && ($val == 1)) {
+
+        // Get the signup form id.
         $bsd_keys = (explode('_', $key, 3));
-        takepart_bsd_email_signup($response['registration']['email'], $bsd_keys[1]);
+        $signup_id = $bsd_keys[1];
+
+        // Process the newsletter signup
+        if (isset($campaigns_by_bsd_form_id[$signup_id])) {
+          $campaign = $campaigns_by_bsd_form_id[$signup_id];
+          $campaign->signup($response['registration']['email']);
+        }
+
         $response['registration'][$bsd_keys[2]] = $response['registration'][$key];
         if(isset($_SESSION['facebook_bsd_trigger'])) {
           $_SESSION['facebook_bsd_trigger'] = $bsd_keys[1];
@@ -68,25 +83,28 @@ function _tfbregistration_auth() {
         }
       }
     }
-    
-    takepart_bsd_email_signup($response['registration']['email'], 7);
-    
+
+    if (isset($campaigns_by_bsd_form_id[7])) {
+      $campaign = $campaigns_by_bsd_form_id[7];
+      $campaign->signup($response['registration']['email']);
+    }
+
     if (isset($_SESSION['facebook'])) {
       unset($_SESSION['facebook']);
-    }    
-    
+    }
+
     $destination = fboauth_action_invoke('connect', $app_id, $response['oauth_token']);
     $_SESSION['facebook_register_trigger'] = $response['oauth_token'];
-    
+
     if (empty($destination)) {
       $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
     }
-   
-    
+
+
     $drupalid = fboauth_uid_load($response['user_id']);
-    
+
     $account = user_load(array('uid' => $drupalid));
-    
+
     foreach ($account as $key => $val) {
       if(isset($response['registration'][$key])) {
         if(is_array($val)) {
@@ -97,25 +115,25 @@ function _tfbregistration_auth() {
        }
      }
 
-    
+
     user_save($account);
-    
+
     drupal_goto($destination);
-    
+
   } else {
     drupal_set_message( t('There was an issue communicating with facebook.'), 'error' );
     watchdog('takepart_facebookapis', 'no signed request', $_REQUEST);
     $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
     drupal_goto($destination);
   }
-  
-  
+
+
   exit();
-  
+
 }
 
 
-function _fbregistration_set_userval(&$item, $value) {  
+function _fbregistration_set_userval(&$item, $value) {
   foreach ($item as $key => $val) {
     if(is_array($item[$key])) {
       _fbregistration_set_userval($item[$key], $value);
@@ -129,30 +147,30 @@ function _fbregistration_set_userval(&$item, $value) {
  * Implements hook_form_alter().
  */
 function fbregistration_form_alter(&$form, $form_state, $form_id) {
-  
-  if((!_fbregistration_checkpath()) || 
-    (variable_get('fbregistration_state', '0') != '1') || 
+
+  if((!_fbregistration_checkpath()) ||
+    (variable_get('fbregistration_state', '0') != '1') ||
     ($form_id != "user_register_form")) {
     return;
   }
-  
+
   drupal_set_title(t(variable_get('fbregistration_page_title', 'Register')));
-  
+
   $mrkup = _fbregistration_getfbreg($form);
-  
+
   //wipe out existing form:
   $form = array();
 
   if(($form_id == 'user_register_form') || ($form_id == 'fbconnect_register_page')) {
-   
+
     $form['test'] = array(
          '#type' => 'item',
          '#title' => t(' '),
          '#markup' => $mrkup,
      );
-   
+
    }
-   
+
    //Validation:
    drupal_add_js('function fbregistration_validate(form) {
         var errors = {};' . "\n" .
@@ -162,7 +180,7 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
        ,
        array('type' => 'inline', 'scope' => 'header', 'weight' => 5)
    );
-   
+
 }
 
 
@@ -177,106 +195,106 @@ HTM;
 
 
 function _fbregistration_getfbreg(&$form = null) {
-  
+
   if($form == null) {
     $form = drupal_get_form('user_register_form');
   }
-  
+
   $fieldmappings = array();
   $bsdmappings = array();
   $jsondata = array();
-  
+
   _fbregistration_admin_form_load($form, $fieldmappings);
   _fbregistration_bsd_form_load($form, $bsdmappings);
 
-  
+
   foreach ($fieldmappings as $name => $field) {
-  
+
     if(isset($field['#foreign']['#title'])) {
       $title = $field['#foreign']['#title'];
     } else {
       $title = substr($field['#title'], 0, strrpos($field['#title'], ":"));
       $title = rtrim($title);
     }
-  
+
     if ((strrpos($field['#default_value'], 'custom') !== 0) && ($field['#default_value'] != 'not_mapped')) {
       array_push($jsondata, array('name' => $field['#default_value']));
     }
-  
+
     if ((strrpos($field['#default_value'], 'custom') === 0) && ($field['#default_value'] != 'not_mapped')) {
-  
+
       if($field['#default_value'] == 'custom_text') {
         array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'text'));
       }
-  
+
       if($field['#default_value'] == 'custom_select') {
         array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'select', 'options' => $field['#foreign']['#options']));
       }
-  
+
 
       if($field['#default_value'] == 'custom_checkbox') {
-        
+
         if((isset($bsdmappings[$name]['#default_value'])) && ($bsdmappings[$name]['#default_value'] != null)) {
           array_push($jsondata, array('name' => 'bsd_' . $bsdmappings[$name]['#default_value'] . "_" .$name, 'description' => $title, 'type' => 'checkbox', 'options' => $field['#foreign']['#options'], 'default' => ((isset($field['#foreign']['#default_value']) && $field['#foreign']['#default_value'] == 1) ? 'checked' : 'unchecked')));
         } else {
           array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'checkbox', 'options' => $field['#foreign']['#options'], 'default' => ((isset($field['#foreign']['#default_value']) && $field['#foreign']['#default_value'] = 1) ? 'checked' : 'unchecked')));
         }
       }
-  
+
       if($field['#default_value'] == 'custom_typeahead') {
         array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'typeahead', 'categories' => array_keys($field['#foreign']['#options'])));
       }
-  
+
       if($field['#default_value'] == 'custom_date') {
         array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'date'));
       }
-  
+
       if($field['#default_value'] == 'custom_hidden') {
         array_push($jsondata, array('name' => $name, 'description' => $title, 'type' => 'hidden'));
       }
-  
+
     }
-    
+
     if(isset($form[$name]['#weight'])) {
       $jsondata[count($jsondata)-1]['weight'] = $form[$name]['#weight'];
     }
-      
+
   }
-  
+
   //Sort fields by weight:
   for($c=0;$c<sizeof($jsondata);$c++){
     if(!isset($jsondata[$c]['weight'])) {
       $jsondata[$c]['weight'] = $c;
     }
-  }  
+  }
   usort($jsondata, '_fbregistration_sort_json_cmp');
   for($c=0;$c<sizeof($jsondata);$c++){
     if(isset($jsondata[$c]['weight'])) {
       unset($jsondata[$c]['weight']);
     }
   }
-  
-  $json = json_encode($jsondata);  
+
+  $json = json_encode($jsondata);
   $json = str_replace('"',"'",$json);
-  
+
   if(isset($_GET['destination'])) {
     $dest = "/fbregistration" . "?destination=" . urlencode($_GET['destination']);
   } else {
     $dest = "/fbregistration";
   }
-  
+
   $app_id = variable_get('fboauth_id', '');
-  
+
   if(variable_get('fbregistration_type', 0) == 1)  {
     $fbregtag = variable_get('fbregistration_tag_iframe', '<iframe scrolling="auto" frameborder="no" style="border:none" allowTransparency="true" width="100%" height="530"></iframe>');
     $fbregtag = str_replace('<iframe','<iframe src="http://www.facebook.com/plugins/registration.php?fb_register=true&fb_only=false&client_id='.$app_id.'&redirect_uri=' . 'http://' . $_SERVER['HTTP_HOST'] . $dest . '&fields=' .$json . '"', $fbregtag);
   } else {
-    $fbregtag = variable_get('fbregistration_tag_b', '<fb:registration fb_register="true" fb_only="false" width="530"></fb:registration>');    
+    $fbregtag = variable_get('fbregistration_tag_b', '<fb:registration fb_register="true" fb_only="false" width="530"></fb:registration>');
     $fbregtag = str_replace('<fb:registration','<fb:registration onvalidate="fbregistration_validate" fields="'.$json.'" client_id="'.$app_id.'" redirect-uri="http://' . $_SERVER['HTTP_HOST'] . $dest . '"', $fbregtag);
   }
-  
+
   return $fbregtag;
-  
+
 }
 
 function _fbregistration_checkpath() {
