@@ -28,19 +28,16 @@ function takepart_signupforms_form_field_ui_field_edit_form_alter(&$form, &$form
  * Implements hook_menu()
  */
 function takepart_signupforms_menu() {
-
   $items = array();
-
   // configuration page
-  $items['admin/config/content/signup-forms'] = array(
-    'title' => 'Blue State Digital Signup Form Settings',
-    'description' => 'Configure Blue State Digital Signup form settings',
+  $items['admin/config/bluestatedigital/signup-forms'] = array(
+    'title' => 'Signup Form Settings',
+    'description' => 'Configure Blue State Digital signup form settings.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('takepart_signupforms_admin'),
     'access arguments' => array('administer takepart_signupforms fields'),
     'file' => 'takepart_signupforms.admin.inc',
   );
-
   return $items;
 }
 
@@ -61,20 +58,27 @@ function takepart_signupforms_send_insert($entity, $type, &$errors = NULL) {
     $settings = _takepart_signupforms_bundle_settings($type, $entity->{$bundleProperty});
 
     if ($settings) {
-
       $signup = array();
       foreach ($settings['forms'] as $form_id => $fields) {
-
         // add the form to the signup
         $signup[$form_id] = _takepart_signupforms_build_signup_form(
           $entity, $fields, $form_id);
       }
-
       // send the signup to BSD
-      return takepart_bsd_signup_process_signup($signup, $errors);
+      try {
+        $api = bluestatedigital_get_api('signup');
+        $api->processSignup($signup);
+        return TRUE;
+      }
+      catch (BlueStateDigitalApiException $ex) {
+        $message = 'Error sending entity signup [@code] @body';
+        wathdog('takepart_signupforms', $message, array(
+          '@code' => $ex->getResponseCode(),
+          '@body' => $ex->getResponseBody(),
+        ));
+      }
     }
   }
-
   return FALSE;
 }
 
@@ -97,37 +101,46 @@ function takepart_signupforms_send_update($entity, $type, &$errors = NULL) {
 
     // also check if the bundles has any fields that send updates
     if ($settings && ($settings['total_update_count'] > 0)) {
-
       $signup = array();
       foreach ($settings['forms'] as $form_id => $fields) {
-
         if ($settings['update_counts'][$form_id] > 0) {
-
           // add the form to the signup
           $signup[$form_id] = _takepart_signupforms_build_signup_form(
             $entity, $fields, $form_id);
         }
       }
-
       // send the signup to BSD
-      return takepart_bsd_signup_process_signup($signup, $errors);
+      try {
+        $api = bluestatedigital_get_api('signup');
+        $api->processSignup($signup);
+        return TRUE;
+      }
+      catch (BlueStateDigitalApiException $ex) {
+        $message = 'Error sending entity signup [@code] @body';
+        wathdog('takepart_signupforms', $message, array(
+          '@code' => $ex->getResponseCode(),
+          '@body' => $ex->getResponseBody(),
+        ));
+      }
     }
   }
-
   return FALSE;
 }
 
 function _takepart_signupforms_build_signup_form($entity, $fields, $form_id) {
 
-  // get the BSD fields for this form
-  $bsd_fields = takepart_bsd_signup_list_form_fields($form_id);
+  // initialize the list of BSD fields for the signup.
+  $bsd_fields = array();
+  foreach ($fields as $field_id => $field_list) {
+    $bsd_fields[$field_id] = array();
+  }
 
   foreach ($fields as $field_id => $field_list) {
 
     foreach ($field_list as $field) {
 
       $property = $field['field_name'];
-      if ((!empty($bsd_fields[$field_id])) && isset($entity->{$property})) {
+      if (isset($entity->{$property})) {
 
         $language = isset($entity->language) ? $entity->language : LANGUAGE_NONE;
 
