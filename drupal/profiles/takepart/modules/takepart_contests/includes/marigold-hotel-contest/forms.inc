@@ -382,7 +382,7 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
       $form, $form_state);
 
     // check if the entry is allowed
-    if ($entry->allowed()) {
+    if (takepart_contests_contest_entry_allowed($entry)) {
 
       // save the entry
       if ($entry->save()) {
@@ -392,7 +392,8 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
         $email = $entry->field_profile_email[$language][0]['value'];
 
         // set the entered metric cookie
-        $contest = takepart_contests_contest_load($entry->contest_id);
+        $contest = entity_load_single('takepart_contests_contest',
+          $entry->contest_id);
         setcookie('contest_entered', $contest->name);
 
         // set the contest entered as cookie for use in pre-populating the
