@@ -1,62 +1,67 @@
 <?php
 /**
  * @file
- * Install module for takepart newsletter 
+ *
+ * Module schema, update and uninstall handlers.
+ *
+ * Removes variables used by the module. 
  */
 
 /**
- * Implementation of hook_schema.
- * building the tpnewsletter entity type
+ * Implements hook_schema().
  */
 function newsletter_campaign_schema() {
+
   $schema['newsletter_campaign'] = array(
-    'description' => 'Encapsulate campaign newsletter data.',
+    'description' => 'The base table for newsletter campaign entities.',
     'fields' => array(
       'ncid' => array(
-        'description' => 'Primary key for newsletter campaigns',
+        'description' => 'Primary key identifier for the newsletter campaign.',
         'type' => 'serial',
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
       'title' => array(
         'type' => 'varchar',
-        'length' => 100,
+        'length' => 255,
         'not null' => TRUE,
-        'description' => 'The main title of this campaign.',
+        'description' => 'The main title of the newsletter campaign.',
       ),
       'header' => array(
         'type' => 'varchar',
-        'length' => 125,
+        'length' => 255,
         'not null' => FALSE,
-        'description' => 'This text will appear as the header of the block.',
+        'description' => 'Block header.',
       ),
       'promo_message' => array(
         'type' => 'text',
         'not null' => FALSE,
-        'description' => 'This text will appear above the email input box.',
+        'description' => 'Message to display before a user submits their email .',
+      ),
+      'thankyou_message' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'Message to display after a user submits their email.',
       ),
       'campaign_id' => array(
         'type' => 'varchar',
         'length' => 60,
   	    'not null' => TRUE, 
   	    'default' =>  '',
-        'description' => 'Campaign Code generated from the BSD system.',
+        'description' => 'Campaign code generated from the BSD system.',
       ),
-        'signup_form_id' => array(
-        'type' => 'varchar',
-        'length' => 60,
+      'bsd_form_id' => array(
+        'type' => 'int',
   	    'not null' => TRUE, 
-  	    'default' =>  '',
+  	    'default' =>  0,
         'description' => 'ID code for BSD signup form serving this campaign.',
       ),
-      'thankyou_message' => array(
-        'type' => 'text',
-        'not null' => FALSE,
-        'description' => 'Text to display in signup block after a user has successfully submitted their email.',
-      ),      
-      
-      // add file field with entity CRUD functions
-      
+      'bsd_field_id' => array(
+        'type' => 'int',
+  	    'not null' => TRUE, 
+  	    'default' =>  0,
+        'description' => 'ID code for BSD signup form field serving this campaign.',
+      ),
     ),
     'primary key' => array('ncid'),
   );
@@ -96,23 +101,23 @@ function newsletter_campaign_schema() {
   	    'description' => "Status of Subscription (s or u)",
   	  ),
   	  'uid' => array(
-          'type' => 'int',
-          'not null' => TRUE,
-          'default' => 0,
-          'description' => "Reference to {users}.uid",
-        ),
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "Reference to {users}.uid",
+      ),
       'subscribe_date' => array(
-          'description' => 'The Unix timestamp when the email was subscribed.',
-          'type' => 'int',
-          'not null' => TRUE,
-          'default' => 0
-        ),
+        'description' => 'The Unix timestamp when the email was subscribed.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0
+      ),
       'unsubscribe_date' => array(
-          'description' => 'The Unix timestamp when the email was unsubscribed.',
-          'type' => 'int',
-          'not null' => TRUE,
-          'default' => 0
-        ),
+        'description' => 'The Unix timestamp when the email was unsubscribed.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0
+      ),
     ),
     'indexes' => array(
       'mail' => array('mail'),
@@ -121,13 +126,12 @@ function newsletter_campaign_schema() {
     ),
     'primary key' => array('tns_id'), 
   );
-
   
   return $schema;  
 }
 
 /**
- * Implementation of hook_uninstall().
+ * Implements hook_uninstall().
  */
 function newsletter_campaign_uninstall() {
   variable_del('takepart_newsletter_signup_pluris_requester');
@@ -186,5 +190,49 @@ function newsletter_campaign_update_7101(&$sandbox) {
 }
 
 function newsletter_campaign_update_7102(&$sandbox) {
-    db_add_field('newsletter_campaign', 'signup_form_id', array('type' => 'varchar', 'length' => 60, 'not null' => TRUE, 'default' =>  '', 'description' => "Signup form ID from BSD"));
+  db_add_field('newsletter_campaign', 'signup_form_id', array(
+    'type' => 'varchar',
+    'length' => 60, 
+    'not null' => TRUE, 
+    'default' => '', 
+    'description' => "Signup form ID from BSD"
+  ));
+}
+
+/**
+ * Increase the size of the title and header fields. Replace the signup form id
+ * field with a form id field and a field id field using an appropriate data
+ * type.
+ */
+function newsletter_campaign_update_7200(&$sandbox) {
+
+  db_change_field('newsletter_campaign', 'title', 'title', array(
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'description' => 'The main title of the newsletter campaign.',
+  ));
+
+  db_change_field('newsletter_campaign', 'header', 'header', array(
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+    'description' => 'Block header.',
+  ));
+
+  db_add_field('newsletter_campaign', 'bsd_form_id', array(
+    'type' => 'int',
+    'not null' => TRUE, 
+    'default' =>  0,
+    'description' => 'ID code for BSD signup form serving this campaign.',
+  ));
+
+  db_add_field('newsletter_campaign', 'bsd_field_id', array(
+    'type' => 'int',
+    'not null' => TRUE, 
+    'default' =>  0,
+    'description' => 'ID code for BSD signup form field serving this campaign.',
+  ));
+
+  db_drop_field('newsletter_campaign', 'signup_form_id');
 }

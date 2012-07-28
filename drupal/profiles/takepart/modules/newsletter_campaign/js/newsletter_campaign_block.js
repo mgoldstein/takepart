@@ -1,41 +1,42 @@
+(function ($) {
 
-function takepart_newsletter_isValidEmailAddress(emailAddress, formId) {
-    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-    var isValid = pattern.test(emailAddress);
+  $(document).ready(function() {
+    // Newsletter signup event
+    $("div.takepart-newsletter-wrapper > div.takepart-newsletter-message").bind(
+      'newsletter_signup', function(e, title) {
+        s.linkTrackVars = "eVar23,events";
+        s.linkTrackEvents = "event39";
+        s.eVar23 = title;
+        s.events = 'event39';
+        s.tl(true, 'o', 'Newsletter Signup');
 
-    if (!isValid) {
-        jQuery("#takepart-newsletter-"+formId+"-body .form-messages").text("Email address is invalid.");
+        s.linkTrackVars = "eVar28,events";
+        s.linkTrackEvents = "event19";
+        s.eVar28 = 'Newsletter Signup';
+        s.events = 'event19';
+        s.tl(true, 'o', 'Action Click');
+      }
+    );
+    $("div.takepart-newsletter-wrapper").each(function() {
+      // setup the email input field to have a placeholder message
+      $(this).find("div.form-item-email > input").focus(function() {
+        // when the email field receives the focus remove the placeholder
+        // message if it is present
+        if ($(this).val() == 'Your Email') {
+          $(this).val('').removeClass('takepart-newsletter-empty');
+        }
+      }).blur(function() {
+        // when the email field loses the focus restore the placeholder message
+        // if the field is empty
+        if ($(this).val() == '') {
+          $(this).val('Your Email').addClass('takepart-newsletter-empty');
+        }
+      }).each(function() {
+        if ($(this).val() == "Your Email") {
+          $(this).addClass("takepart-newsletter-empty");
+        }
+      });
+    });
+  });
 
-    }
-
-    return isValid;
-}
-
-jQuery(document).ready(function() {
-  var value = 'Your Email';
-  if (Drupal.settings.newsletters) {
-    if ('preload_email' in Drupal.settings.newsletters) {
-      value = Drupal.settings.newsletters['preload_email'];
-    }
-  }
-  jQuery("input#edit-email").val(value);
-  if (jQuery("input#edit-email").val() == "Your Email") {
-    jQuery("input#edit-email").addClass("takepart-newsletter-empty");
-  }
-
-  // when the email field receives the focus remove the placeholder message if
-  // it is present
-  jQuery("input#edit-email").focus(function() {
-    if (jQuery(this).val() == 'Your Email') {
-      jQuery(this).val('').removeClass('takepart-newsletter-empty');
-    }
-  })
-
-  // when the email field loses the focus restore the placeholder message if the
-  // field is empty
-  jQuery("input#edit-email").blur(function() {
-    if (jQuery(this).val() == '') {
-      jQuery(this).val('Your Email').addClass('takepart-newsletter-empty');
-    }
-  })
-});
+})(jQuery);

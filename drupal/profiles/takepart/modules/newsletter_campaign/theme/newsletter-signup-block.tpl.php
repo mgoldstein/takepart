@@ -20,6 +20,6 @@
       <?php print l(t("Terms & Conditions"), "terms-of-use", array('attributes'=>array('target'=>'_blank'))); ?>
     </div>
   </div>
-  <div id="takepart-newsletter-<?php print $form_id; ?>-results"></div>
+  <div id="takepart-newsletter-<?php print $form_id; ?>-results" class="takepart-newsletter-message"></div>
 </div>
 
