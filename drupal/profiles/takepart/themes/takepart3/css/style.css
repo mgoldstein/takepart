@@ -1664,7 +1664,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     list-style: none inside none;
     margin-right: 10px;
     padding-right: 10px;
-    background: url(images/menu2_bar.png) no-repeat right;
+    background: url(images/menu2_bar.png) no-repeat right 1px;
 }
 #hot-topics-nav li.last {
     margin-right: 0;
@@ -1684,12 +1684,12 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     margin-left: 10px;
 }
 #dontmiss-nav div.dont {
-    font-style: italic;
-    font-size:  11px;
+	font-size: 11px;
     padding-top: 1px;
   text-transform: uppercase;
-  margin-right: 10px;
+  margin-right: 8px;
   float: left;
+  font-style: italic;
 }
 #dontmiss-nav ul {
     margin-left: 0;
@@ -1698,6 +1698,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #dontmiss-nav li {
     display: inline;
     font-size: 12px;
+  font-weight: bold;
     list-style: none inside none;
     margin-right: 8px;
     padding-right: 13px;
