@@ -235,6 +235,7 @@ body.two-sidebars #content, body.sidebar-first #content
 }
 .header-right .row2 {
   clear:  both;
+  padding-top: 2px;
 }
 
 #nav-wrap{
@@ -1720,7 +1721,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 /* pulldown button */
 #participant-pulldown {
   float:  right;
-  margin-top: 10px;
+  margin-top: -1px;
   position: relative;
   z-index: 10 !important;
   width: 206px;
@@ -2098,7 +2099,7 @@ div.tp-pet-thank-you-heading {
 }
 
 #block-menu-block-1 {
-    padding-top:14px;
+    padding-top:2px;
     float:  left;
 }
 #header-wrapper ul.menu {
