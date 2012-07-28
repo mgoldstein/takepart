@@ -7,3 +7,4 @@ dependencies[] = entity
 dependencies[] = field
 dependencies[] = field_ui
 dependencies[] = bluestatedigital
+dependencies[] = bluestatedigital_forms
