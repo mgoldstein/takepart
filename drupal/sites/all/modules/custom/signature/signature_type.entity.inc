@@ -24,8 +24,6 @@ class SignatureTypeController extends EntityAPIControllerExportable {
       'id' => '',
       'type' => '',
       'label' => '',
-      'display_opt_in' => '',
-      'newsletter_opt_in' => '',
       'bsd_form' => 0,
       'status' => ENTITY_CUSTOM,
       'module' => 'signature',

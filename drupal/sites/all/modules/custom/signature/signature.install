@@ -155,20 +155,6 @@ function signature_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
-      'display_opt_in' => array(
-        'description' => 'The field used as the display opt-in.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'newsletter_opt_in' => array(
-        'description' => 'The field used as the newsletter opt-in.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
       'bsd_form' => array(
         'description' => 'The signup form to use for setting field mappings.',
         'type' => 'int',
