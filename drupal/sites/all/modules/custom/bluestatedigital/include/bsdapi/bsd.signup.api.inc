@@ -207,8 +207,10 @@ class BlueStateDigitalSignupApi extends BlueStateDigitalApi {
     $required = array_map('strval', $required_field_ids);
 
     // Add *'s to all the excluded form field IDs.
-    $callback = function ($field_id) {return  "{$field_id}*";};
-    $excluded = array_map($callback, $excluded_field_ids);
+    $excluded = array();
+    foreach ($excluded_field_ids as $field_id) {
+      $excluded[] = "{$field_id}*";
+    }
 
     // Build the request.
     $params = array('signup_form_id' => $signup_form_id);
