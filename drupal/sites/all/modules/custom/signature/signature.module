@@ -1,0 +1,1165 @@
+<?php
+/**
+ * @file
+ * Module for Signatures
+ */
+
+/* Entity
+ ******************************************************************************/
+/**
+ * Implements hook_entity_info()
+ */
+function signature_entity_info() {
+
+  $info = array();
+
+  $info['signature'] = array(
+    'label' => t('Signature'),
+    'entity class' => 'Signature',
+    'controller class' => 'SignatureController',
+    'base table' => 'signature',
+    'fieldable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'bundle' => 'type',
+      'label' => 'email',
+    ),
+    'bundle keys' => array(
+      'bundle' => 'type',
+    ),
+    'bundles' => array(),
+    'view modes' => array(
+      'full' => array(
+        'label' => t('Full page'),
+        'custom settings' => FALSE,
+      ),
+      'embedded' => array(
+        'label' => t('Embedded'),
+        'custom settings' => FALSE,
+      ),
+    ),
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'signature_access',
+    'module' => 'signature',
+    'admin ui' => array(
+      'path' => 'admin/content/signature',
+      'file' => 'signature.admin.inc',
+      'controller class' => 'SignatureUIController',
+    ),
+  );
+
+  $info['signature_type'] = array(
+    'label' => t('Signature Type'),
+    'entity class' => 'SignatureType',
+    'controller class' => 'SignatureTypeController',
+    'base table' => 'signature_type',
+    'fieldable' => FALSE,
+    'bundle of' => 'signature',
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'name' => 'type',
+      'label' => 'label',
+      'status' => 'status',
+      'module' => 'module',
+    ),
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'signature_access',
+    'module' => 'signature',
+    'admin ui' => array(
+      'path' => 'admin/structure/signature_types',
+      'file' => 'signature_type.admin.inc',
+      'controller class' => 'SignatureTypeUIController',
+    ),
+  );
+
+  $info['signature_node'] = array(
+    'label' => t('Signature Node Settings'),
+    'entity class' => 'SignatureNode',
+    'controller class' => 'SignatureNodeController',
+    'base table' => 'signature_node',
+    'fieldable' => FALSE,
+    'entity keys' => array(
+      'id' => 'nid',
+    ),
+    'label callback' => 'entity_class_label',
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'signature_access',
+    'module' => 'signature',
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_entity_info_alter()
+ */
+function signature_entity_info_alter(&$entity_info) {
+
+  // Add an embedded view mode for nodes
+  $entity_info['node']['view modes']['embed'] = array(
+    'label' => t('Embedded'),
+    'custom settings' => FALSE,
+  );
+
+  // Add the signature types to the list of bundles for signatures
+  foreach (signature_type_load() as $type => $info) { 
+    $entity_info['signature']['bundles'][$type] = array(
+      'label' => $info->label,
+      'admin' => array(
+        'path' => 'admin/structure/signature_types/manage/%signature_type',
+        'bundle argument' => 4,
+        'real path' => 'admin/structure/signature_types/manage/' . $type,
+        'access arguments' => array('administer signature signature_type'),
+      ),
+    );
+  }
+}
+
+function signature_type_load($type_name) {
+  $types = entity_load_multiple_by_name('signature_type',
+    isset($type_name) ? array($type_name) : FALSE);
+  return isset($type_name) ? reset($types) : $types;
+}
+
+
+/* Access Control
+ ******************************************************************************/
+/**
+ * Implements hook_permission()
+ */
+function signature_permission() {
+  // Return permissions for the standard API entity operations.
+  return array(
+    'administer signature signature' => array(
+      'title' => t('Administer Signatures'),
+      'restrict access' => TRUE,
+    ),
+    'view signature signature' => array(
+      'title' => t('View Signatures'),
+      'restrict access' => TRUE,
+    ),
+    'update signature signature' => array(
+      'title' => t('Update Signatures'),
+      'restrict access' => TRUE,
+    ),
+    'create signature signature' => array(
+      'title' => t('Create Signatures'),
+      'restrict access' => TRUE,
+    ),
+    'delete signature signature' => array(
+      'title' => t('Delete Signatures'),
+      'restrict access' => TRUE,
+    ),
+    'administer signature signature_type' => array(
+      'title' => t('Administer Signature Types'),
+      'restrict access' => TRUE,
+    ),
+    'view signature signature_type' => array(
+      'title' => t('View Signature Types'),
+      'restrict access' => TRUE,
+    ),
+    'update signature signature_type' => array(
+      'title' => t('Update Signature Types'),
+      'restrict access' => TRUE,
+    ),
+    'create signature signature_type' => array(
+      'title' => t('Create Signature Types'),
+      'restrict access' => TRUE,
+    ),
+    'delete signature signature_type' => array(
+      'title' => t('Delete Signature Types'),
+      'restrict access' => TRUE,
+    ),
+    'administer signature signature_node' => array(
+      'title' => t('Administer Signature Node Settings'),
+      'restrict access' => TRUE,
+    ),
+    'view signature signature_node' => array(
+      'title' => t('View Signature Node Settings'),
+      'restrict access' => TRUE,
+    ),
+    'update signature signature_node' => array(
+      'title' => t('Update Signature Node Settings'),
+      'restrict access' => TRUE,
+    ),
+    'create signature signature_node' => array(
+      'title' => t('Create Signature Node Settings'),
+      'restrict access' => TRUE,
+    ),
+    'delete signature signature_node' => array(
+      'title' => t('Delete Signature Node Settings'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Access callback for signatures
+ */
+function signature_access($op, $entity, $account, $entity_type) {
+  // Block unknown operations.
+  $allowed_ops = array('administer', 'view', 'update', 'create', 'delete');
+  if (in_array($op, $allowed_ops)) {
+    return user_access("$op signature $entity_type", $account)
+      || user_access("administer signature $entity_type", $account);
+  }
+  return FALSE;
+}
+
+
+/* Node Type Configuration
+ ******************************************************************************/
+/**
+ * Implements hook_menu()
+ */
+function signature_menu() {
+  return array(
+    'admin/config/content/signature' => array(
+      'title' => t('Node signature settings'),
+      'description' => t('Configure which content types are allowed to collect signatures'),
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('signature_node_admin_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('administer signature signature_type'),
+    ),
+    'ajax/signature/node' => array(
+      'page callback' => 'signature_node_state_callback',
+      'type' => MENU_CALLBACK,
+      'access arguments' => array('access content'),
+    ),
+  );
+}
+
+/**
+ * Node type configuration form
+ */
+function signature_node_admin_form($form, &$form_state) {
+  $options = array();
+  $types = node_type_get_types();
+  foreach ($types as $name => $type) {
+    $options[$name] = $type->name;
+  }
+  $form['signature_node_types'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Signature content types'),
+    '#options' => $options,
+    '#default_value' => variable_get('signature_node_types', array()),
+    '#description' => t('Check the content types for which signatures should be enabled'),
+  );
+  $form['#submit'][] = 'signature_node_admin_form_submit';
+  return system_settings_form($form);
+}
+
+/**
+ * Node type configuration form submit hander
+ */
+function signature_node_admin_form_submit(&$form, &$form_state) {
+  // clear all caches so the extra fields will be re-read
+  drupal_flush_all_caches();
+}
+
+
+/* Node Configuration
+ ******************************************************************************/
+/**
+ * Implements hook_form_BASE_FORM_ID_alter()
+ */
+function signature_form_node_form_alter(&$form, &$form_state) {
+
+  $node = $form['#node'];
+  $types = variable_get('signature_node_types', array());
+
+  if (isset($types[$node->type]) && $types[$node->type]) {
+
+    // get the field values from the appropriate source
+    $values = signature_node_form_values($form, $form_state);
+
+    $js_path = drupal_get_path('module', 'signature')
+      . '/js/signature-vertical-tabs.js';
+    $form['signature'] = array(
+      '#title' => t('Signature settings'),
+      '#type' => 'fieldset',
+      '#group' => 'additional_settings',
+      '#attributes' => array('class' => array('edit-signature')),
+      '#attached' => array('js' => array('vertical-tabs' => $js_path)),
+    );
+
+    $form['signature']['signature_bsd_form']
+      = bluestatedigital_forms_signup_form_id($values->bsd_form);
+
+    $options = array('' => t('<No Signatures>'));
+    foreach (signature_type_load() as $name => $type) {
+      $options[$name] = $type->label;
+    }
+    $form['signature']['signature_type'] = array(
+      '#title' => t('Signature Type'),
+      '#type' => 'select',
+      '#options' => $options,
+      '#default_value' => $values->type,
+    );
+
+    $form['signature']['signature_goal'] = array(
+      '#title' => t('Signature Goal'),
+      '#description' => t('The target number of signatures.'),
+      '#type' => 'textfield',
+      '#element_validate' => array('_element_validate_integer_positive',),
+      '#required' => TRUE,
+      '#default_value' => $values->goal,
+    );
+
+    $form['signature']['signature_limit_to_dates'] = array(
+      '#title' => t('Limit signatures to the following date range.'),
+      '#type' => 'checkbox',
+      '#default_value' => $values->limit_to_dates,
+    );
+
+    $form['signature']['limit_range'] = array(
+      '#title' => t('Date Range'),
+      '#type' => 'fieldset',
+    );
+
+    $form['signature']['limit_range']['signature_start_date'] = array(
+      '#title' => t('Start Date'),
+      '#description' => t('The start date of the range.'),
+      '#type' => 'date',
+      '#default_value' => signature_timestamp_to_date($values->start_date),
+    );
+
+    $form['signature']['limit_range']['signature_end_date'] = array(
+      '#title' => t('End Date'),
+      '#description' => t('The end date of the range.'),
+      '#type' => 'date',
+      '#default_value' => signature_timestamp_to_date($values->end_date),
+    );
+
+    $form['signature']['signature_sign_label'] = array(
+      '#title' => t('Sign Button Label'),
+      '#description' => t('The label to use on the sign button.'),
+      '#type' => 'textfield',
+      '#default_value' => $values->sign_label,
+    );
+
+    $form['signature']['signature_newsletter_label'] = array(
+      '#title' => t('Newsletter Opt-In Label'),
+      '#description' => t('The label to use for the newsletter opt-in. If this field is left empty, no newsletter opt-in field will be shown.'),
+      '#type' => 'textfield',
+      '#default_value' => $values->newsletter_label,
+    );
+
+    $form['signature']['signature_restrictions'] = array(
+      '#title' => t('Restrictions note'),
+      '#description' => t('Text of note indicating any restrictions on who can sign. If this field is left empty, no note will be shown.'),
+      '#type' => 'textfield',
+      '#maxlength' => 255,
+      '#default_value' => $values->restrictions,
+    );
+
+    $form['signature']['signature_terms_of_use'] = array(
+      '#title' => t('Terms of use note'),
+      '#description' => t("Text of note indicating that the user accepts the TakePart Terms of use by signing."),
+      '#type' => 'textfield',
+      '#maxlength' => 255,
+      '#default_value' => $values->terms_of_use,
+    );
+
+    $form['signature']['signature_display_disclaimer'] = array(
+      '#title' => t('Signature display disclaimer'),
+      '#description' => t("Text of disclaimer regarding the public sharing of the user's signature."),
+      '#type' => 'textfield',
+      '#maxlength' => 255,
+      '#default_value' => $values->display_disclaimer,
+    );
+  }
+}
+
+/**
+ * Helper function for getting node configuration values
+ */
+function signature_node_form_values($form, $form_state) {
+
+  $node = $form['#node'];
+  $settings = FALSE;
+
+  if (isset($form_state['values']['op']) && $form_state['values']['op'] == t('Preview')) {
+    // the node is being previewed, use the form values
+    $start_date = signature_date_to_timestamp($form_state['values']['signature_start_date']);
+    $end_date = signature_date_to_timestamp($form_state['values']['signature_end_date']);
+    $values = array(
+      'nid' => $node->nid,
+      'type' => $form_state['values']['signature_type'],
+      'goal' => $form_state['values']['signature_goal'],
+      'bsd_form' => $form_state['values']['signature_bsd_form'],
+      'limit_to_dates' => $form_state['values']['signature_limit_to_dates'],
+      'start_date' => $start_date,
+      'end_date' => $end_date,
+      'sign_label' => $form_state['values']['signature_sign_label'],
+      'newsletter_label' => $form_state['values']['signature_newsletter_label'],
+      'restrictions' => $form_state['values']['signature_restrictions'],
+      'terms_of_use' => $form_state['values']['signature_terms_of_use'],
+      'display_disclaimer' => $form_state['values']['signature_display_disclaimer'],
+    );
+    $settings = entity_create('signature_node', $values);
+  }
+  else if (isset($node->nid) && $node->nid > 0) {
+    // load the values from the database
+    $settings = entity_load_single('signature_node', $node->nid);
+    if ($settings === FALSE) {
+      // or create them they are not found
+      $settings = entity_create('signature_node', array('nid' => $node->nid));
+    }
+  }
+
+  if (!$settings) {
+    // new node or the node was created before the module was installed, use
+    // default values
+    $settings = entity_create('signature_node', array('nid' => $node->nid));
+  }
+
+  return $settings;
+}
+
+/**
+ * Helper function for converting a UNIX timestamp into a value that can be used
+ * by a date type form field.
+ */
+function signature_timestamp_to_date($timestamp) {
+  $date = getdate($timestamp);
+  return array(
+    'day' => $date['mday'],
+    'month' => $date['mon'],
+    'year' => $date['year'],
+  );
+}
+
+/**
+ * Helper function for converting a value from a date type form field into a
+ * UNIX timestamp.
+ */
+function signature_date_to_timestamp($date) {
+  return mktime(0, 0, 0, $date['month'], $date['day'], $date['year']);
+}
+
+/**
+ * Implements hook_field_extra_fields_alter()
+ */
+function signature_field_extra_fields_alter(&$info) {
+
+  // Add signature progress and signature form extra fields to all of the
+  // selected node types
+  $types = variable_get('signature_node_types', array());
+  foreach ($types as $type => $enabled) {
+    if ($enabled) {
+      $info['node'][$type]['display']['signature_progress'] = array(
+        'label' => t('Signature Progress'),
+        'description' => t('Signature progress summary.'),
+        'weight' => 0,
+      );
+      $info['node'][$type]['display']['signature_form'] = array(
+        'label' => t('Signature Form'),
+        'description' => t('Form for adding a signature.'),
+        'weight' => 0,
+      );
+    }
+  }
+}
+
+/**
+ * Helper function for saving node signature settings when a node is added or
+ * updated. 
+ */
+function signature_save_node_settings($node) {    
+  $types = variable_get('signature_node_types', array());
+  if (isset($types[$node->type]) && $types[$node->type]) {
+      
+    // Get any existing settings for the node.
+    $settings = entity_load_single('signature_node', $node->nid);
+    if ($settings === FALSE) {
+      $settings = entity_create('signature_node', array('nid' => $node->nid));
+    }
+
+    // Update the settins for the node.
+    $settings->type = $node->signature_type;
+    $settings->goal = $node->signature_goal;
+    $settings->bsd_form = $node->signature_bsd_form;
+    $settings->limit_to_dates = $node->signature_limit_to_dates;
+    $settings->start_date = signature_date_to_timestamp($node->signature_start_date);
+    $settings->end_date = signature_date_to_timestamp($node->signature_end_date);
+    $settings->sign_label = $node->signature_sign_label;
+    $settings->newsletter_label = $node->signature_newsletter_label;
+    $settings->restrictions = $node->signature_restrictions;
+    $settings->terms_of_use = $node->signature_terms_of_use;
+    $settings->display_disclaimer = $node->signature_display_disclaimer;
+    
+    // Save the settings for the node.
+    entity_save('signature_node', $settings);
+    
+    // Calculate and save the signature field mapping.
+    signature_save_node_field_mapping($node);
+  }
+}
+/**
+ * Implements hook_node_insert()
+ */
+function signature_node_insert($node) {
+  signature_save_node_settings($node);
+}
+
+/**
+ * Implements hook_node_update()
+ */
+function signature_node_update($node) {
+  signature_save_node_settings($node);
+}
+
+/**
+ * Implements hook_node_delete()
+ */
+function signature_node_delete($node) {
+  // Delete any existing node settings and field mapping.
+  entity_delete('signature_node', $node->nid);
+  variable_del("signature_mapping_node_{$node->nid}");
+}
+
+/**
+ * Helper function to get a list of Blue State Digital form fields. 
+ */
+function signture_signup_list_form_fields($form_id) {
+  try {
+    $api = bluestatedigital_get_api('signup');
+    return $api->listFormFields($form_id);
+  }
+  catch (BlueStateDigitalApiException $ex) {
+    $message = 'Error retrieving sign form field list [@code] @body';
+    watchdog('signature', $message, array(
+      '@code' => $ex->getResponseCode(),
+      '@body' => $ex->getResponseBody(),
+    ));
+  }
+  return FALSE;
+}
+
+/**
+ * Helper function for saving the signature field mapping
+ */
+function signature_save_node_field_mapping($node) {
+
+  if (! empty($node->signature_bsd_form)) {
+
+    // get the node's signature type
+    $signature_type = signature_type_load($node->signature_type);
+
+    // get the list of fields on both the type's template signup form, and the
+    // node's signup form
+    $type_fields = signture_signup_list_form_fields($signature_type->bsd_form);
+    $node_fields = signture_signup_list_form_fields($node->signature_bsd_form);
+    
+    // If we didn't get both lists let the user know and proceed without mapping
+    // the signup form fields.
+    if (empty($type_fields) || empty($node_fields)) {
+      drupal_set_message('Blue State Digital signup form fields not mapped.'
+      . ' Unable to communicate with Blue State Digital servers.', 'warning');
+      return;
+    }
+
+    // invert the node field list to be keyed by label for quick lookup when
+    // translating from the type's field id to the node's field id
+    $node_by_labels = array();
+    foreach ($node_fields as $id => $field) {
+      $node_by_labels[$field['label']] = $id;
+    }
+
+    // get the signature type's mapping
+    $variable = "signature_mapping_type_{$signature_type->type}";
+    $type_mapping = variable_get($variable, array());
+
+    // translate the type's mapping to the node's mapping by matching the
+    // labels of the fields
+    $node_mapping = array();
+    foreach ($type_mapping as $field_name => $id) {
+      if (isset($type_fields[$id])) {
+        $label = $type_fields[$id]['label'];
+        if (isset($node_by_labels[$label])) {
+          $node_mapping[$field_name] = $node_by_labels[$label];
+        }
+        else {
+          $format = 'Field mapping error [!type_form => !node_form] type:!type node:!node label:!label';
+          watchdog('signature', $format, array(
+            '!type_form' => $signature_type->bsd_form,
+            '!node_form' => $node->signature_bsd_form,
+            '!type' => $signature_type->type, 
+            '!node' => $node->nid,
+            '!label' => $label,
+          ));
+        }
+      }
+      else {
+        $format = 'Field mapping error [!type_form => !node_form] type:!type node:!node';
+        watchdog('signature', $format, array(
+          '!type_form' => $signature_type->bsd_form,
+          '!node_form' => $node->signature_bsd_form,
+          '!type' => $signature_type->type, 
+          '!node' => $node->nid,
+        ));
+      }
+    }
+
+    // save the node's field mapping
+    $variable = "signature_mapping_node_{$node->nid}";
+    variable_set($variable, $node_mapping);
+  }
+  else {
+    // delete any existing node field mapping
+    variable_del("signature_mapping_node_{$node->nid}");
+  }
+}
+
+/**
+ * Implements hook_preprocess_node()
+ */
+function signature_preprocess_node(&$vars) {
+  $node = $vars['node'];
+  $types = variable_get('signature_node_types', array());
+  if (isset($types[$node->type]) && $types[$node->type]) {
+
+    // add CSS classes to the node indicating that it has signature collection
+    // enabled, default to the unsigned state so the node page can be cached
+    $vars['classes_array'] = array_merge($vars['classes_array'], array(
+      'signature-list', "signature-node-unsigned",
+    ));
+  }
+}
+
+/**
+ * Implements hook_node_view_alter()
+ */
+function signature_node_view_alter(&$build) {
+
+  $node = $build['#node'];
+
+  $types = variable_get('signature_node_types', array());
+  if (isset($types[$node->type]) && $types[$node->type]) {
+
+    $css_path = drupal_get_path('module', 'signature')
+      . '/css/signature-states.css';
+    drupal_add_css($css_path, array('type' => 'file'));
+
+    $js_path = drupal_get_path('module', 'signature')
+      . '/js/signature-states.js';
+    drupal_add_js($js_path, array('type' => 'file'));
+
+    $settings = entity_load_single('signature_node', $node->nid);
+    if ($settings !== FALSE && !empty($settings->type)) {
+
+      $signature = signature_create(array(
+        'type' => $settings->type,
+        'nid' => $node->nid, 
+      )); 
+      $build['signature_form'] = drupal_get_form(
+        "signature_{$settings->type}_form", $signature, $node);
+
+      $variables = signature_node_progress_variables($settings);
+      $build['signature_progress'] = array(
+        '#type' => 'markup',
+        '#markup' => theme('signature_progress', $variables),
+      );    
+    }
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter()
+ */
+function signature_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'node_view_alter') {
+    // move this module to the end of the list
+    $group = $implementations['signature'];
+    unset($implementations['signature']);
+    $implementations['signature'] = $group;
+  }
+}
+
+function signature_node_state_callback($nids) {
+  $variables = array();
+  foreach (explode(',', $nids) as $nid) {
+    if (preg_match('/^[0-9]+$/', $nid)) {
+      $settings = entity_load_single('signature_node', $node->nid);
+      if ($settings != FALSE && !empty($settings->type)) {
+        $variables[$nid] = signature_node_progress_variables($settings);
+      }
+    }
+  }
+  return drupal_json_output($variables);
+}
+
+
+/* Signature Form
+ ******************************************************************************/
+/**
+ * Implements hook_forms()
+ */
+function signature_forms() {
+  $forms = array();
+  // build the forms for all signature types using the same base function
+  foreach (signature_type_load() as $type) {
+    $forms["signature_{$type->type}_form"] = array(
+      'callback' => 'signature_base_form',
+    );
+  }
+  return $forms;
+}
+
+/**
+ * Implements hook_field_extra_fields()
+ */
+function signature_field_extra_fields() {
+
+  $extra = array();
+
+  // Extra fields for the signature form
+  foreach (signature_type_load() as $type) {
+    $extra['signature'][$type->type] = array(
+      'form' => array(
+        'restrictions' => array(
+          'label' => t('Restrictions'),
+          'description' => t('Note indicating any restrictions on who may sign.'),
+          'weight' => -10,
+        ),
+        'email' => array(
+          'label' => t('Email'),
+          'description' => t('Email address field.'),
+          'weight' => -5,
+        ),
+        'display' => array(
+          'label' => t('Public Display Opt-In'),
+          'description' => t('Public display opt-in checkbox'),
+          'weight' => 101,
+        ),
+        'signature_display_disclaimer' => array(
+          'label' => t('Public Display Disclaimer'),
+          'description' => t('Collapsible disclaimer regarding the sharing of signature data.'),
+          'weight' => 102,
+        ),
+        'newsletter' => array(
+          'label' => t('Newsletter Opt-In'),
+          'description' => t('Newsletter opt-in checkbox'),
+          'weight' => 103,
+        ),
+        'actions' => array(
+          'label' => t('Sign Button'),
+          'description' => t('The button for submitting the signature form.'),
+          'weight' => 104,
+        ),
+        'terms_of_use' => array(
+          'label' => t('Terms of Use'),
+          'description' => t('Terms of use note.'),
+          'weight' => 105,
+        ),
+      ),
+    );
+  }
+  return $extra;
+}
+
+/**
+ * Signature form callback
+ */
+function signature_base_form($form, &$form_state, $signature, $node) {
+
+  $form['#signature_node'] = $node;
+
+  $form_state['signature'] = $signature;
+
+  // get the node specific settings
+  $settings = entity_load_single('signature_node', $node->nid);
+
+  // attach the fields
+  field_attach_form('signature', $signature, $form, $form_state);
+
+  // translate the signature type to a CSS class name prefix
+  $css_prefix = str_replace('_', '-', $signature->type);
+
+  // add the signature heading
+  $form['heading'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<h1>',
+    '#markup' => t('Sign This Petition'),
+    '#suffix' => '</h1>',
+    '#weight' => -20,
+  );
+
+  // add the email field
+  $form['email'] = array(
+    '#title' => t('Email'),
+    '#type' => 'textfield',
+    '#maxlength' => 254, // the mail field in the user table is 254 characters
+    '#required' => TRUE,
+    '#attributes' => array(
+      'class' => array(
+        "{$css_prefix}-email-field",
+        "signature-email-field",
+      ),
+    ),
+    '#default_value' => $signature->email,
+  );
+
+  // add the restrictions note
+  if (! empty($settings->restrictions)) {
+    $form['restrictions'] = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array(
+          "{$css_prefix}-restrictions",
+          "signature-restrictions",
+        ),
+      ),
+      'contents' => array(
+        '#type' => 'markup',
+        '#markup' => $settings->restrictions,
+      ),
+    );
+  }
+
+  // add the terms of use note
+  if (! empty($settings->terms_of_use_note)) {
+    $form['terms_of_use'] = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array(
+          "{$css_prefix}-terms-of-use-note",
+          "signature-terms-of-use-note",
+        ),
+      ),
+      'contents' => array(
+        '#type' => 'markup',
+        '#markup' => $settings->terms_of_use_note,
+      ),
+    );
+  }
+
+  // add the public display disclaimer
+  if (! empty($settings->display_disclaimer)) {
+    $js_path = drupal_get_path('module', 'signature')
+      . '/js/signature-display-disclaimer.js';
+    $form['signature_display_disclaimer'] = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array(
+          "{$css_prefix}-display-disclaimer",
+          "signature-display-disclaimer",
+        ),
+      ),
+      'contents' => array(
+        '#type' => 'markup',
+        '#markup' => $settings->display_disclaimer,
+      ),
+      '#attached' => array('js' => array('display-disclaimer' => $js_path)),
+    );
+  }
+
+  $form['display'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Display my signature.'),
+    '#default_value' => $signature->display,
+    '#required' => FALSE,
+    '#attributes' => array(
+      'class' => array(
+        "{$css_prefix}-display-opt-in-field",
+        "signature-display-opt-in-field",
+      ),
+    ),
+  );
+
+  if (! empty($settings->newsletter_label)) {
+    $form['newsletter'] = array(
+      '#type' => 'checkbox',
+      '#title' => check_plain($settings->newsletter_label),
+      '#default_value' => $signature->newsletter,
+      '#required' => FALSE,
+      '#attributes' => array(
+        'class' => array(
+          "{$css_prefix}-newsletter-opt-in-field",
+          "signature-newsletter-opt-in-field",
+        ),
+      ),
+    );
+  }
+
+  $wrapper = "signature-form-{$node->nid}";
+  $form['#prefix'] = '<div id="' . $wrapper . '">';
+  $form['#suffix'] = '</div>';
+
+  // add the sign submit button
+  $form['actions'] = array(
+    '#type' => 'actions',
+  );
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => $settings->sign_label,
+    '#attributes' => array(
+      'class' => array('signature-sign-button'),
+    ),
+    '#ajax' => array(
+      'callback' => 'signature_base_form_callback',
+      'wrapper' => $wrapper,
+    ),
+  );
+
+  return $form;
+}
+
+function signature_base_form_callback($form, $form_state) {
+
+  $commands = array();
+  $commands[] = ajax_command_insert(NULL, drupal_render($form));
+  $commands[] = ajax_command_prepend(NULL, theme('status_messages'));
+
+  $errors = form_get_errors();
+  if (empty($errors)) {
+
+    $node = $form['#signature_node'];
+    $settings = entity_load_single('signature_node', $node->nid);
+    $variables = signature_node_progress_variables($settings);
+    $variables['state'] = 'thank-you';
+
+    $commands[] = ajax_command_settings(array(
+      'signature' => array('progress' => array($node->nid => $variables)),
+    ), TRUE);
+  }
+ 
+  return array('#type' => 'ajax', '#commands' => $commands);
+}
+
+/**
+ * Signature form validation handler
+ */
+function signature_base_form_validate($form, &$form_state) {
+
+  // valiate the email
+  $email = $form_state['values']['email'];
+  if ((! empty($email)) && (! valid_email_address($email))) {
+    form_set_error('email', t('!name must be a valid email address', array(
+      '!name' => 'Email')));
+  }
+
+  // validate the attached fields
+  $signature = $form_state['signature'];
+  field_attach_form_validate('signature', $signature, $form, $form_state);
+}
+
+/**
+ * Signature form sign (submit) handler
+ */
+function signature_base_form_submit($form, &$form_state) {
+
+  // build the signature entity from the form
+  $signature = $form_state['signature'];
+  entity_form_submit_build_entity('signature', $signature, $form, $form_state);
+
+  // create an entity query
+  $query = new EntityFieldQuery();
+
+  // limit that query to signatures for the associated node
+  $query->entityCondition('entity_type', 'signature');
+  $query->propertyCondition('nid', $signature->nid);
+
+  // limit signing to once per email
+  $query->propertyCondition('email', $signature->email);
+
+  $results = $query->execute();
+  if (empty($results['signature'])) {
+    $signature->save();
+    signature_send_signup($signature);
+  }
+
+  // set the node signed cookie
+  $cookie = "{$signature->type}_{$signature->nid}_signed";
+  setcookie($cookie, 1, time() + (86400 * 365), '/');
+}
+
+function signature_send_signup($signature) {
+
+  // get the node specific settings
+  $settings = entity_load_single('signature_node', $signature->nid);
+  if ($settings !== FALSE && !empty($settings->bsd_form)) {
+
+    // get the signature field mapping
+    $variable = "signature_mapping_node_{$signature->nid}";
+    $mapping = variable_get($variable, FALSE);
+    if ($mapping !== FALSE && !empty($mapping)) {
+
+      $fields = array();
+      $lang = isset($signature->language) ? $signature->language : LANGUAGE_NONE;
+
+      foreach ($mapping as $field_name => $id) {
+
+        // get the value of the field        
+        if ($field_name == 'email') {
+          $value = $signature->email;
+        }
+        else if ($field_name == 'display') {
+          $value = $signature->display;
+        }
+        else if ($field_name == 'newsletter') {
+          $value = $signature->newsletter;
+        }
+        else {
+          // the field is attached, make sure it is still attached, then
+          // implode any values it has to a single string
+          if (isset($signature->{$field_name})) {
+            $values = array();
+            foreach ($signature->{$field_name}[$lang] as $delta => $item) {
+              $values[] = (string)$item['value'];
+            }
+            $value = implode(' ', $values);
+          }
+        }
+
+        if (isset($fields[$id])) {
+          // use the last non-empty value
+          if (! empty($value)) {
+            $fields[$id] = array(
+              'value' => array(
+                'type' => 'value',
+                'value' => $value,
+              ),
+            );
+          }
+        }
+        else {
+          // first time encountering the field
+          $fields[$id] = array(
+            'value' => array(
+              'type' => 'value',
+              'value' => $value,
+            ),
+          );
+        }
+      }
+
+      // send the signup to Blue State Digital
+      $signup = array($settings->bsd_form => $fields);
+      try {
+        $api = bluestatedigital_get_api('signup');
+        $api->processSignup($signup);
+      }
+      catch (BlueStateDigitalApiException $ex) {
+        $message = 'Error sending signature signup [@code] @body';
+        watchdog('signature', $message, array(
+          '@code' => $ex->getResponseCode(),
+          '@body' => $ex->getResponseBody(),
+        ));
+      }
+    }
+  }
+}
+
+
+/* Signature Form
+ ******************************************************************************/
+/**
+ * Implements hook_theme()
+ */
+function signature_theme() {
+  return array(
+    'signature_progress' => array(
+      'variables' => array(
+        'id' => NULL,
+        'bar' => NULL,
+        'complete_classes' => NULL,
+        'percent' => NULL,
+        'count_classes' => NULL,
+        'progress' => NULL,
+        'count' => NULL,
+        'goal' => NULL,
+        'days_left' => NULL,
+        'state' => NULL,
+      ),
+      'template' => 'theme/progress',
+    ),
+  );
+}
+
+/**
+ * Helper function for calculating the signature progress, returning the data as
+ * an array of values for using in a theme template and the ajax callback
+ */
+function signature_node_progress_variables($settings) {
+
+  if ($settings->goal > 0) {
+    $percent = ((float)$settings->count/(float)($settings->goal)) * 100.0;
+  }
+  else {
+    $percent = 0.0;
+  }
+
+  $progress_bar_filename = sprintf('progress_bar_%03d.png',
+    floor($percent > 100 ? 100 : $percent));
+
+  $percent_as_unit = floor($percent);
+  $percent_as_tenth = floor($percent / 10.0);
+  $percent_as_half = $percent < 50.0 ? 'first-half' : 'second-half';
+  $complete_classes = array(
+    "signature-progress-complete-{$percent_as_unit}",
+    "signature-progress-complete-tenth-{$percent_as_tenth}",
+    "signature-progress-complete-{$percent_as_half}",
+  );
+  if ($settings->count >= $settings->goal) {
+    $complete_classes[] = 'signature-progress-complete-goal';
+  }
+
+  $count_classes = array(
+    "signature-progress-count-{$settings->count}",
+  );
+  if ($settings->count >= $settings->goal) {
+    $count_classes[] = 'signature-progress-count-goal';
+  }
+
+  $days_left = 0;
+  $now = getdate();
+  $now_seconds = mktime(0, 0, 0, $now['mon'], $now['mday'], $now['year']);
+  $seconds_left = $settings->end_date - $now_seconds;
+  if ($seconds_left >= 0) {
+    $days_left = floor((float)$seconds_left / (float)(24 * 60 * 60)) + 1;
+  }
+
+  if ($days_left > 0 && $settings->limit_to_dates != 0) {
+    $progress = t('!goal Goal, !days left', array(
+      '!goal' => number_format($settings->goal),
+      '!days' => format_plural($days_left, '1 day', '@count days'),
+    ));
+  }
+  else {
+    $progress = t('!count of !goal signatures', array(
+      '!count' => number_format($settings->count),
+      '!goal' => number_format($settings->goal),
+    ));
+  }
+
+  // the signature collection state is determined by the presence
+  // of a signed cookie, unless signature collection is closed
+  $cookie = "{$settings->type}_{$settings->nid}_signed";
+  $state = isset($_COOKIE[$cookie]) ? 'signed' : 'unsigned';
+  if ($days_left == 0 && $settings->limit_to_dates != 0) {
+    $state = 'closed';
+  }
+
+  return array(
+    'summary_id' => "signature-progress-summary-{$settings->nid}",
+    'bar' => '/' . implode('/', array(
+      drupal_get_path('module', 'signature'),
+      'images',
+      'progress',
+      'takepart',
+      $progress_bar_filename,
+    )),
+    'complete_classes' => implode(' ', $complete_classes),
+    'percent' => number_format($percent, 1),
+    'count_classes' => implode(' ', $count_classes),
+    'progress' => $progress,
+    'count' => $settings->count,
+    'goal' => $settings->goal,
+    'days_left' => $days_left,
+    'state' => $state,
+  );
+}

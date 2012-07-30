@@ -1,0 +1,14 @@
+name = Content Signatures
+description = Provides support for collecting signatures on a piece of content.
+core = 7.x
+version = 7.x-1.0-dev
+package = TakePart
+
+dependencies[] = entity
+dependencies[] = bluestatedigital
+
+files[] = signature_node.entity.inc
+files[] = signature_type.admin.inc
+files[] = signature_type.entity.inc
+files[] = signature.admin.inc
+files[] = signature.entity.inc
