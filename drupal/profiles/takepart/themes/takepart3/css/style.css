@@ -235,6 +235,7 @@ body.two-sidebars #content, body.sidebar-first #content
 }
 .header-right .row2 {
   clear:  both;
+  padding-top: 2px;
 }
 
 #nav-wrap{
@@ -1668,7 +1669,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     list-style: none inside none;
     margin-right: 10px;
     padding-right: 10px;
-    background: url(images/menu2_bar.png) no-repeat right;
+    background: url(images/menu2_bar.png) no-repeat right 1px;
 }
 #hot-topics-nav li.last {
     margin-right: 0;
@@ -1688,12 +1689,12 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     margin-left: 10px;
 }
 #dontmiss-nav div.dont {
-    font-style: italic;
-    font-size:  11px;
+	font-size: 11px;
     padding-top: 1px;
   text-transform: uppercase;
-  margin-right: 10px;
+  margin-right: 8px;
   float: left;
+  font-style: italic;
 }
 #dontmiss-nav ul {
     margin-left: 0;
@@ -1702,10 +1703,11 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #dontmiss-nav li {
     display: inline;
     font-size: 12px;
+  font-weight: bold;
     list-style: none inside none;
     margin-right: 8px;
     padding-right: 13px;
-    background: url(../images/dot-blue.png) no-repeat right;
+    background: url(../images/dot.png) no-repeat right;
 }
 #dontmiss-nav li.last {
     margin-right: 0;
@@ -1717,13 +1719,13 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     text-decoration: none;
 }
 #dontmiss-nav li a:hover {
-    color: #0c648b;
+    text-decoration: underline;
 }
 
 /* pulldown button */
 #participant-pulldown {
   float:  right;
-  margin-top: 10px;
+  margin-top: -1px;
   position: relative;
   z-index: 10 !important;
   width: 206px;
@@ -1757,6 +1759,11 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #participant-pulldown ul li {
   list-style-type: none;
   padding: 6px 8px;
+}
+#participant-pulldown ul li:hover,
+#participant-pulldown ul li:hover a {
+	background-color: #fff3cc;
+	color: black;
 }
 
 /*search box*/
@@ -2096,7 +2103,7 @@ div.tp-pet-thank-you-heading {
 }
 
 #block-menu-block-1 {
-    padding-top:14px;
+    padding-top:2px;
     float:  left;
 }
 #header-wrapper ul.menu {

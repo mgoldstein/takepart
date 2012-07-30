@@ -3,8 +3,12 @@
 (function($) {
   Drupal.behaviors.participantPulldown = {
     attach: function(context) {
-      $('#participant-pulldown .pp-button').click(function() {
-        $('#participant-pulldown .inner').toggle();
+      $('#participant-pulldown').mouseover(function() {
+        $('#participant-pulldown .inner').show();
+        return false;
+      });
+      $('#participant-pulldown').mouseout(function() {
+        $('#participant-pulldown .inner').hide();
         return false;
       });
     }
