@@ -1,20 +1,24 @@
 <?php
-
 /**
  * @file
- * Administrative interface for Petition Types
+ * Administrative interface for Petition Types.
  */
 
 /**
- * Petition Type Admin UI Controller
+ * Petition Type Admin UI Controller.
  */
 class PetitionTypeUIController extends EntityDefaultUIController {
 
   public function hook_menu() {
-
-    // add a link to the Structure admin page
     $items = parent::hook_menu();
-    $items[$this->path]['description'] = t('Manage petition types, including adding and removing fields and the display of fields.');
+    
+    // Update the description for the main admin page.
+    $items[$this->path]['description'] = t('Manage the LastCall Water Bill of Rights petition type, including mapping fields to BSD signup fields.');
+
+    // Don't allow any new petitions to be added. They have been re-worked to be
+    // node based signatures.
+    unset($items[$this->path . '/add']);
+    unset($items[$this->path . '/import']);
     return $items;
   }
 }
@@ -22,61 +26,60 @@ class PetitionTypeUIController extends EntityDefaultUIController {
 /**
  * Petition Type entity form
  */
-function petition_type_form($form, &$form_state, $petition_type, $op = 'edit') {
+function petition_type_form($form, &$form_state, $entity, $op = 'edit') {
 
-  $form_state['petition_type'] = $petition_type;
+  $form_state['petition_type'] = $entity;
 
   // update the label and reset the type if we are cloning the type
   if ($op == 'clone') {
-    $petition_type->label .= ' (cloned)';
-    $petition_type->type = '';
+    $entity->id = '';
+    $entity->type = '';
+    $entity->label .= ' (cloned)';
+    $entity->is_new = TRUE;
   }
 
   $form['label'] = array(
     '#title' => t('Label'),
-    '#type' => 'textfield',
-    '#default_value' => isset($petition_type->label) ? $petition_type->label : '',
     '#description' => t('The human-readable name of the petition type'),
+    '#type' => 'textfield',
     '#required' => TRUE,
     '#size' => 30,
+    '#default_value' => $entity->label,
   );
 
   $form['type'] = array(
+    '#description' => t('A unqiue machine-readable name for this petition type. It must only contain lowercase letters, numbers and underscores.'),
     '#type' => 'machine_name',
-    '#default_value' => isset($petition_type->type) ? $petition_type->type : '',
     '#maxlength' => 32,
     '#machine_name' => array(
-      'exists' => 'petition_get_types',
+      'exists' => 'petition_type_load',
       'source' => array('label'),
     ),
-    '#description' => t('A unqiue machine-readable name for this petition type. It must only contain lowercase letters, numbers and underscores.'),
+    '#default_value' => $entity->type,
   );
 
-  $variable = "petition:{$petition_type->type}:restrictions_note";
   $form['restrictions_note'] = array(
-    '#type' => 'textfield',
-    '#maxlength' => 255,
     '#title' => t('Restrictions note'),
     '#description' => t('Note indicating any restrictions on who can sign the petition.'),
-    '#default_value' => variable_get($variable, ''),
-  );
-
-  $variable = "petition:{$petition_type->type}:terms_of_use_note";
-  $form['terms_of_use_note'] = array(
     '#type' => 'textfield',
     '#maxlength' => 255,
+    '#default_value' => $entity->restrictions_note,
+  );
+
+  $form['terms_of_use_note'] = array(
     '#title' => t('Terms of use note'),
     '#description' => t('Note indicating that the user accepts the TakePart Terms of use by signing the petition.'),
-    '#default_value' => variable_get($variable, ''),
-  );
-
-  $variable = "petition:{$petition_type->type}:signature_display_disclaimer";
-  $form['signature_display_disclaimer'] = array(
     '#type' => 'textfield',
     '#maxlength' => 255,
+    '#default_value' => $entity->terms_of_use_note,
+  );
+
+  $form['signature_display_disclaimer'] = array(
     '#title' => t('Signature display disclaimer'),
     '#description' => t("Text of disclaimer regarding the public sharing of the user's signature."),
-    '#default_value' => variable_get($variable, ''),
+    '#type' => 'textfield',
+    '#maxlength' => 255,
+    '#default_value' => $entity->signature_display_disclaimer,
   );
 
   $form['actions'] = array('#type' => 'actions');
@@ -86,25 +89,27 @@ function petition_type_form($form, &$form_state, $petition_type, $op = 'edit') {
   }
 
   $form['actions']['submit'] = array(
-    '#type' => 'submit',
     '#value' => t('Save petition type'),
+    '#type' => 'submit',
     '#weight' => 40,
     '#submit' => $submit + array('petition_type_form_submit'),
   );
 
   // only add the delete button if we are editting an existing petition type
-  if (! empty($petition_type->id)) {
+  $id = $entity->identifier();
+  if (! empty($id)) {
     $form['actions']['delete'] = array(
-      '#type' => 'submit',
       '#value' => t('Delete petition type'),
-      '#submit' => $submit + array('petition_type_form_submit_delete'),
+      '#type' => 'submit',
       '#weight' => 45,
+      '#submit' => array('petition_type_form_submit_delete'),
     );
   }
 
   $form['actions']['cancel'] = array(
     '#type' => 'markup',
-    '#markup' => l(t('Cancel'), 'admin/structure/petition_types'),
+    '#markup' => l(t('Cancel'),
+      'admin/config/water-bill-of-rights/petition_types'),
     '#weight' => 50,
   );
 
@@ -116,52 +121,50 @@ function petition_type_form($form, &$form_state, $petition_type, $op = 'edit') {
  */
 function petition_type_form_submit(&$form, &$form_state) {
 
-  // build the petition type entity from the form
-  $petition_type = entity_ui_form_submit_build_entity($form, $form_state);
+  // Build entity from the form.
+  $entity = entity_ui_form_submit_build_entity($form, $form_state);
 
-  // save the petition type variables
-  $variable = "petition:{$petition_type->type}:restrictions_note";
-  variable_set($variable, $form_state['values']['restrictions_note']);
-
-  $variable = "petition:{$petition_type->type}:terms_of_use_note";
-  variable_set($variable, $form_state['values']['terms_of_use_note']);
-
-  $variable = "petition:{$petition_type->type}:signature_display_disclaimer";
-  variable_set($variable, $form_state['values']['signature_display_disclaimer']);
-
-  // save the petition type
-  $status = $petition_type->save();
+  // Save the entity.
+  $status = $entity->save();
   if ($status == SAVED_UPDATED) {
-    drupal_set_message(t('The petition type %name has been updated.',
-      array('%name' => $petition_type->label)));
-  }
-  else if ($status == SAVED_NEW) {
 
     // Add the common fields for a petition signature
-    petition_add_signature_email($petition_type->signatureType());
-    petition_add_signature_first_name($petition_type->signatureType());
-    petition_add_signature_last_name($petition_type->signatureType());
-    petition_add_signature_public_display($petition_type->signatureType());
+    petition_add_signature_email($entity->signatureType());
+    petition_add_signature_first_name($entity->signatureType());
+    petition_add_signature_last_name($entity->signatureType());
+    petition_add_signature_public_display($entity->signatureType());
 
+    drupal_set_message(t('The petition type %name has been updated.',
+      array('%name' => $entity->label)));
+  }
+  else if ($status == SAVED_NEW) {
     drupal_set_message(t('The petition type %name has been added.',
-      array('%name' => $petition_type->label)));
+      array('%name' => $entity->label)));
   }
 
-  // go back to the list of petition types
-  $form_state['redirect'] = 'admin/structure/petition_types';
+  // Go back to the list of entities.
+  $form_state['redirect'] = 'admin/config/water-bill-of-rights/petition_types';
 }
 
 /**
  * Petition Type entity form delete (submit) handler
  */
 function petition_type_form_submit_delete(&$form, &$form_state) {
-
-  // go to the delete confirmation page
-  $form_state['redirect'] = 'admin/structure/petition_types/manage/'
-    . $form_state['petition_type']->type
-    . '/delete?destination=admin/structure/petition_types';
+  // Go to the delete confirmation page.
+  $form_state['redirect'] = array(
+    'admin/config/water-bill-of-rights/petition_types/manage/'
+      . (string) $form_state['petition_type']->identifier() . '/delete',
+    array(
+      'query' => array(
+        'destination' => 'admin/config/water-bill-of-rights/petition_types',
+      ),
+    ),
+  );
 }
 
+/**
+ * Functions for adding commonly used petition fields.
+ */
 function petition_add_field_instance($info) {
   $field = field_info_field($info['instance']['field_name']);
   if (empty($field)) {
@@ -222,7 +225,6 @@ function petition_add_signature_first_name($bundle) {
       'bundle' => $bundle,
       'label' => t('First Name'),
       'required' => TRUE,
-      //'default_value_function' => 'petition_signature_field_default_value',
       'settings' => array(
         'text_processing' => 0,
       ),
@@ -256,7 +258,6 @@ function petition_add_signature_last_name($bundle) {
       'entity_type' => 'petition_signature',
       'bundle' => $bundle,
       'label' => t('Last Name'),
-      //'default_value_function' => 'petition_signature_field_default_value',
       'required' => TRUE,
       'settings' => array(
         'text_processing' => 0,
