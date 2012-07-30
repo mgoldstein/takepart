@@ -4,12 +4,18 @@
  * Module for the TakePartContest Entity
  */
 
-//Marigold Specific Files:
-include(drupal_get_path('module', 'takepart_contests').'/includes/marigold-hotel-contest/forms.inc');
-include(drupal_get_path('module', 'takepart_contests').'/includes/marigold-hotel-contest/themes.inc');
-//Other Includes:
-include(drupal_get_path('module', 'takepart_contests').'/includes/marigold-hotel-contest/widgets.inc');
+include_once dirname(__FILE__) . '/contest.admin.inc';
+include_once dirname(__FILE__) . '/contest.entity.inc';
+include_once dirname(__FILE__) . '/contest_entry.admin.inc';
+include_once dirname(__FILE__) . '/contest_entry.entity.inc';
+include_once dirname(__FILE__) . '/contest_type.admin.inc';
+include_once dirname(__FILE__) . '/contest_type.entity.inc';
 
+//Marigold Specific Files:
+include_once dirname(__FILE__) . '/includes/marigold-hotel-contest/forms.inc';
+include_once dirname(__FILE__) . '/includes/marigold-hotel-contest/themes.inc';
+//Other Includes:
+include_once dirname(__FILE__) . '/includes/marigold-hotel-contest/widgets.inc';
 
 /**
  * Implements hook_entity_info()
@@ -17,73 +23,82 @@ include(drupal_get_path('module', 'takepart_contests').'/includes/marigold-hotel
 function takepart_contests_entity_info() {
 
   $info = array();
-
+  
   $info['takepart_contests_contest'] = array(
-      'label' => t('Contest'),
-      'entity class' => 'TakePartContest',
-      'controller class' => 'TakePartContestController',
-      'base table' => 'takepart_contests_contest',
-      'fieldable' => TRUE,
-      'entity keys' => array(
-          'id' => 'contest_id',
-          'bundle' => 'type',
-      ),
-      'bundles' => array(),
-      'bundle keys' => array(
-          'bundle' => 'type',
-      ),
-      'label callback' => 'entity_class_label',
-      'uri callback' => 'entity_class_uri',
-      'access callback' => '_takepart_contests_contest_access',
-      'module' => 'takepart_contests',
-      'admin ui' => array(
-          'path' => 'admin/content/contests',
-          'file' => 'contest.admin.inc',
-          'controller class' => 'TakePartContestUIController',
-          'menu wildcard' => '%takepart_contests_contest',
-      ),
+    'label' => t('Contest'),
+    'entity class' => 'TakePartContest',
+    'controller class' => 'TakePartContestController',
+    'base table' => 'takepart_contests_contest',
+    'fieldable' => TRUE,
+    'entity keys' => array(
+      'id' => 'contest_id',
+      'bundle' => 'type',
+      'label' => 'name',
+    ),
+    'bundle keys' => array(
+      'bundle' => 'type',
+    ),
+    'bundles' => array(),
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'takepart_contests_access',
+    'module' => 'takepart_contests',
+    'admin ui' => array(
+      'path' => 'admin/config/marigold-ideasforgood/contests',
+      'file' => 'contest.admin.inc',
+      'controller class' => 'TakePartContestUIController',
+    ),
   );
-
+  
   $info['takepart_contests_contest_entry'] = array(
-      'label' => t('Contest Entry'),
-      'entity class' => 'TakePartContestEntry',
-      'controller class' => 'TakePartContestEntryController',
-      'base table' => 'takepart_contests_contest_entry',
-      'fieldable' => TRUE,
-      'entity keys' => array(
-          'id' => 'entry_id',
-          'bundle' => 'type',
-      ),
-      'bundles' => array(),
-      'label callback' => 'entity_class_label',
-      'uri callback' => 'entity_class_uri',
-      'access callback' => '_takepart_contests_contest_entry_access',
-      'module' => 'takepart_contests',
-      'static cache' => FALSE,
+    'label' => t('Contest Entry'),
+    'entity class' => 'TakePartContestEntry',
+    'controller class' => 'TakePartContestEntryController',
+    'base table' => 'takepart_contests_contest_entry',
+    'fieldable' => TRUE,
+    'entity keys' => array(
+      'id' => 'entry_id',
+      'bundle' => 'type',
+      'label' => 'name',
+    ),
+    'bundle keys' => array(
+      'bundle' => 'type',
+    ),
+    'bundles' => array(),
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'takepart_contests_access',
+    'module' => 'takepart_contests',
+    'static cache' => FALSE,
+    'admin ui' => array(
+      'path' => 'admin/config/marigold-ideasforgood/contest_entries',
+      'file' => 'contest_entry.admin.inc',
+      'controller class' => 'TakePartContestEntryUIController',
+    ),
   );
-
+  
   $info['takepart_contests_contest_type'] = array(
-      'label' => t('Contest Type'),
-      'entity class' => 'TakePartContestType',
-      'controller class' => 'TakePartContestTypeController',
-      'base table' => 'takepart_contests_contest_type',
-      'fieldable' => FALSE,
-      'bundle of' => 'takepart_contests_contest',
-      'exportable' => TRUE,
-      'entity keys' => array(
-          'id' => 'id',
-          'name' => 'type',
-          'label' => 'label',
-      ),
-      'access callback' => '_takepart_contests_contest_type_access',
-      'module' => 'takepart_contests',
-      'admin ui' => array(
-          'path' => 'admin/structure/contest_types',
-          'file' => 'contest_type.admin.inc',
-          'controller class' => 'TakePartContestTypeUIController',
-      ),
+    'label' => t('Contest Type'),
+    'entity class' => 'TakePartContestType',
+    'controller class' => 'TakePartContestTypeController',
+    'base table' => 'takepart_contests_contest_type',
+    'fieldable' => TRUE,
+    'bundle of' => 'takepart_contests_contest',
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'name' => 'type',
+      'label' => 'label',
+      'status' => 'status',
+      'module' => 'module',
+    ),
+    'access callback' => 'takepart_contests_access',
+    'module' => 'takepart_contests',
+    'admin ui' => array(
+      'path' => 'admin/config/marigold-ideasforgood/contest_types',
+      'file' => 'contest_type.admin.inc',
+      'controller class' => 'TakePartContestTypeUIController',
+    ),
   );
-
+  
   return $info;
 }
 
@@ -91,28 +106,31 @@ function takepart_contests_entity_info() {
  * Implements hook_entity_info_alter()
  */
 function takepart_contests_entity_info_alter(&$entity_info) {
-
-  foreach (takepart_contests_get_types() as $type => $info) {
-
+  $base = 'admin/config/marigold-ideasforgood/contest_types/manage/';
+  foreach (takepart_contests_contest_type_load() as $type => $info) {
     $entity_info['takepart_contests_contest']['bundles'][$type] = array(
-        'label' => $info->label,
-        'admin' => array(
-            'path' => 'admin/structure/contest_types/manage/%takepart_contests_contest_type',
-            'bundle argument' => 4,
-            'real path' => 'admin/structure/contest_types/manage/' . $type,
-            'access arguments' => array('administer takepart contest types'),
+      'label' => $info->label,
+      'admin' => array(
+        'path' => $base . '%takepart_contests_contest_type',
+        'bundle argument' => 5,
+        'real path' => $base . $type,
+        'access arguments' => array(
+          'update takepart_contests takepart_contests_contest_type',
         ),
+      ),
     );
-
     $entry_type = $type . '_entry';
-    $entity_info['takepart_contests_contest_entry']['bundles'][$entry_type] = array(
-        'label' => $info->label . ' Entry',
-        'admin' => array(
-            'path' => 'admin/structure/contest_types/manage/%takepart_contests_contest_entry_type/entry',
-            'bundle argument' => 4,
-            'real path' => 'admin/structure/contest_types/manage/' . $type . '/entry',
-            'access arguments' => array('administer takepart contest types'),
+    $entity_info['takepart_contests_contest_entry']['bundles'][$entry_type]
+      = array(
+      'label' => $info->label . ' Entry',
+      'admin' => array(
+        'path' => $base . '%takepart_contests_contest_entry_type/entry',
+        'bundle argument' => 5,
+        'real path' => $base . $type . '/entry',
+        'access arguments' => array(
+          'update takepart_contests takepart_contests_contest_entry',
         ),
+      ),
     );
   }
 }
@@ -121,10 +139,30 @@ function takepart_contests_entity_info_alter(&$entity_info) {
  * Implements hook_menu_alter()
  */
 function takepart_contests_menu_alter(&$items) {
-  $items['admin/structure/contest_types/manage/%takepart_contests_contest_entry_type/entry/fields']['title'] = 'Manage Entry fields';
-  $items['admin/structure/contest_types/manage/%takepart_contests_contest_entry_type/entry/fields']['weight'] = 3;
-  $items['admin/structure/contest_types/manage/%takepart_contests_contest_entry_type/entry/display']['title'] = 'Manage Entry display';
-  $items['admin/structure/contest_types/manage/%takepart_contests_contest_entry_type/entry/display']['weight'] = 4;
+  $base = 'admin/config/marigold-ideasforgood/contest_types/manage/'
+    . '%takepart_contests_contest_entry_type/entry/';
+  $items[$base . 'fields']['title'] = 'Manage Entry fields';
+  $items[$base . 'fields']['weight'] = 3;
+  $items[$base . 'display']['title'] = 'Manage Entry display';
+  $items[$base . 'display']['weight'] = 4;
+}
+
+/**
+ * Implements hook_menu()
+ */
+function takepart_contests_menu() {
+  return array(
+    'admin/config/marigold-ideasforgood' => array(
+      'title' => 'Marigold Ideas for Good Contest',
+      'description' => 'Configuration of the Marigold Ideas for Good contest entry and voting.',
+      'position' => 'right',
+      'weight' => 0,
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    ),
+  );
 }
 
 /**
@@ -139,79 +177,88 @@ function takepart_contests_contest_entry_type_load($name) {
   return $name . '_entry';
 }
 
-/**
- * Implements hook_permission()
- */
-function takepart_contests_permission() {
-
-  $permissions = array(
-      'administer takepart contest types' => array(
-          'title' => t('Administer contest types'),
-          'description' => t('Create and delete fields for contest types, and set their permissions.'),
-      ),
-      'administer takepart contests' => array(
-          'title' => t('Administer contests'),
-          'description' => t('Edit and delete all contests'),
-      ),
-      'edit takepart contests' => array(
-          'title' => t('Edit contests'),
-          'description' => t('Edit all contests'),
-      ),
-      'view takepart contests' => array(
-          'title' => t('View contests'),
-          'description' => t('View all contests'),
-      ),
-      'administer takepart contest entries' => array(
-          'title' => t('Administer contest entries'),
-          'description' => t('Edit and delete all contest entries'),
-      ),
-      'edit takepart contest entries' => array(
-          'title' => t('Edit contest entries'),
-          'description' => t('Edit all contest entries'),
-      ),
-      'view takepart contest entries' => array(
-          'title' => t('View contest entries'),
-          'description' => t('View all contest entries'),
-      ),
-  );
-
-  return $permissions;
-}
-
-function _takepart_contests_contest_access($op, $contest = NULL, $account = NULL) {
-  $op = ($op == 'view') ? 'view' : 'edit';
-  if (user_access('administer takepart contests', $account) ||
-      user_access("$op takepart contests", $account)) {
-    return TRUE;
-  }
-  return FALSE;
-}
-
-function _takepart_contests_contest_entry_access($op, $contest = NULL, $account = NULL) {
-  $op = ($op == 'view') ? 'view' : 'edit';
-  if (user_access('administer takepart contest entries', $account) ||
-      user_access("$op takepart contest entries", $account)) {
-    return TRUE;
-  }
-  return FALSE;
-}
-
-function _takepart_contests_contest_type_access($op, $contest_type = NULL, $account = NULL) {
-  return user_access('administer takepart contest types', $account);
-}
-
-function takepart_contests_get_types($type_name = NULL) {
-  $types = entity_load_multiple_by_name('takepart_contests_contest_type', isset($type_name) ? array($type_name) : FALSE);
+function takepart_contests_contest_type_load($type_name = NULL) {
+  $types = entity_load_multiple_by_name('takepart_contests_contest_type',
+    isset($type_name) ? array($type_name) : FALSE);
   return isset($type_name) ? reset($types) : $types;
 }
 
 /**
- * Implements hook_views_api()
+ * Implements hook_permission()
  */
-function takepart_contests_views_api() {
+function takepart_contests_permission() {
+  // Return permissions for the standard API entity operations.
   return array(
-      'api' => 3,
+    'administer takepart_contests takepart_contests_contest' => array(
+      'title' => t('Administer Contests'),
+      'restrict access' => TRUE,
+    ),
+    'view takepart_contests takepart_contests_contest' => array(
+      'title' => t('View Contests'),
+    ),
+    'update takepart_contests takepart_contests_contest' => array(
+      'title' => t('Update Contests'),
+      'restrict access' => TRUE,
+    ),
+    'create takepart_contests takepart_contests_contest' => array(
+      'title' => t('Create Contests'),
+      'restrict access' => TRUE,
+    ),
+    'delete takepart_contests takepart_contests_contest' => array(
+      'title' => t('Delete Contests'),
+      'restrict access' => TRUE,
+    ),
+    'administer takepart_contests takepart_contests_contest_entry' => array(
+      'title' => t('Administer Contest Entries'),
+      'restrict access' => TRUE,
+    ),
+    'view takepart_contests takepart_contests_contest_entry' => array(
+      'title' => t('View Contest Entries'),
+    ),
+    'update takepart_contests takepart_contests_contest_entry' => array(
+      'title' => t('Update Contest Entries'),
+      'restrict access' => TRUE,
+    ),
+    'create takepart_contests takepart_contests_contest_entry' => array(
+      'title' => t('Create Contest Entries'),
+      'restrict access' => TRUE,
+    ),
+    'delete takepart_contests takepart_contests_contest_entry' => array(
+      'title' => t('Delete Contest Entries'),
+      'restrict access' => TRUE,
+    ),
+    'administer takepart_contests takepart_contests_contest_type' => array(
+      'title' => t('Administer Contest Types'),
+      'restrict access' => TRUE,
+    ),
+    'view takepart_contests takepart_contests_contest_type' => array(
+      'title' => t('View Contest Types'),
+    ),
+    'update takepart_contests takepart_contests_contest_type' => array(
+      'title' => t('Update Contest Types'),
+      'restrict access' => TRUE,
+    ),
+    'create takepart_contests takepart_contests_contest_type' => array(
+      'title' => t('Create Contest Types'),
+      'restrict access' => TRUE,
+    ),
+    'delete takepart_contests takepart_contests_contest_type' => array(
+      'title' => t('Delete Contest Types'),
+      'restrict access' => TRUE,
+    ),
   );
+}
+
+/**
+ * User access callback for contests
+ */
+function takepart_contests_access($op, $entity, $account, $entity_type) {
+  // Block unknown operations.
+  if (in_array($op, array('administer', 'view', 'update', 'create', 'delete'))) {
+    return user_access("$op takepart_contests $entity_type", $account) ||
+      user_access("administer takepart_contests $entity_type", $account);
+  }
+  return FALSE;
 }
 
 /**
@@ -219,45 +266,38 @@ function takepart_contests_views_api() {
  */
 function takepart_contests_theme() {
   $themes = array(
-      'takepart_contests_contest_add_list' => array(
-          'variables' => array('content' => array()),
-          'file' => 'contest.admin.inc',
-      ),
-      'takepart_contests_contest_entry_form'  => array(
-          'render element' => 'form',
-      ),
-      'takepart_contests_contest_entry_form_1_button_next' => array(
-          'render element'  => 'element',
-      ),
-      'takepart_contests_contest_entry_form_1_button_prev' => array(
-          'render element'  => 'element',
-      ),
-      'takepart_contests_contest_entry_form_1_columns' => array(
-          'render element'  => 'element',
-      ),
-      'marigold_hotel_email_share_block' => array(
-          'variables' => array(),
-          'template' => 'includes/marigold-hotel-contest/templates/email-share-block',
-      ),
-      'marigold_hotel_email_share_block_2' => array(
-          'variables' => array(),
-          'template' => 'includes/marigold-hotel-contest/templates/email-share-block-2',
-      ),
-      'marigold_hotel_saved_entry_block' => array(
-          'variables' => array(),
-          'template' => 'includes/marigold-hotel-contest/templates/saved-entry-block',
-      ),
-      'marigold_hotel_addthis_block' => array(
-          'variables' => array(),
-          'template' => 'includes/marigold-hotel-contest/templates/addthis-block',
-      ),
+    'takepart_contests_contest_entry_form'  => array(
+      'render element' => 'form',
+    ),
+    'takepart_contests_contest_entry_form_1_button_next' => array(
+      'render element'  => 'element',
+    ),
+    'takepart_contests_contest_entry_form_1_button_prev' => array(
+      'render element'  => 'element',
+    ),
+    'takepart_contests_contest_entry_form_1_columns' => array(
+      'render element'  => 'element',
+    ),
+    'marigold_hotel_email_share_block' => array(
+      'variables' => array(),
+      'template' => 'includes/marigold-hotel-contest/templates/email-share-block',
+    ),
+    'marigold_hotel_email_share_block_2' => array(
+      'variables' => array(),
+      'template' => 'includes/marigold-hotel-contest/templates/email-share-block-2',
+    ),
+    'marigold_hotel_saved_entry_block' => array(
+      'variables' => array(),
+      'template' => 'includes/marigold-hotel-contest/templates/saved-entry-block',
+    ),
+    'marigold_hotel_addthis_block' => array(
+      'variables' => array(),
+      'template' => 'includes/marigold-hotel-contest/templates/addthis-block',
+    ),
   );
-  $result = _takepart_contests_getlist();
-  if(!is_null($result)) {
-    foreach ($result as $row) {
-      $contest_form = 'takepart_contests_contest_entry_form_' . $row->contest_id;
-      $themes[$contest_form] = array('render element' => 'form');
-    }
+  foreach (entity_load('takepart_contests_contest') as $id => $contest) {
+    $contest_form = 'takepart_contests_contest_entry_form_' . $id;
+    $themes[$contest_form] = array('render element' => 'form');
   }
   return $themes;
 }
@@ -268,36 +308,31 @@ function takepart_contests_theme() {
 function takepart_contests_block_info() {
   $blocks = array();
 
-  $result = _takepart_contests_getlist();
-  if(!is_null($result)) {
-    foreach ($result as $row) {
-      $blocks['takepart_contests' . $row->contest_id] = array(
-          'info' => t($row->name)
-      );
-    }
+  foreach (entity_load('takepart_contests_contest') as $id => $contest) {
+    $blocks['takepart_contests' . $id] = array(
+      'info' => t($contest->name),
+    );
   }
 
   //@todo: remove this:
   $blocks['marigold-hotel-contest'] = array(
-      'info' => t('Prototype BSD Marigold Hotel Contest')
+    'info' => t('Prototype BSD Marigold Hotel Contest')
   );
-
   $blocks['marigold-hotel-email-share'] = array(
-      'info' => t('Marigold Hotel Contest Email Share')
+    'info' => t('Marigold Hotel Contest Email Share')
   );
   $blocks['marigold-hotel-email-share-2'] = array(
-      'info' => t('Marigold Hotel Contest Email Share 2')
+    'info' => t('Marigold Hotel Contest Email Share 2')
   );
   $blocks['marigold-hotel-saved-entry-block'] = array(
-      'info' => t('Marigold Hotel Saved Entry Join Us')
+    'info' => t('Marigold Hotel Saved Entry Join Us')
   );
   $blocks['marigold-hotel-addthis-block'] = array(
-      'info' => t('Marigold Hotel Contest AddThis')
+    'info' => t('Marigold Hotel Contest AddThis')
   );
 
   return $blocks;
 }
-
 
 /**
  * Implements hook_view().
@@ -319,23 +354,19 @@ function takepart_contests_block_view($delta = '') {
       break;
   }
 
-  $result = _takepart_contests_getlist();
-  if(!is_null($result)) {
-    foreach ($result as $row) {
-      if($delta == 'takepart_contests' . $row->contest_id) {
-        $contest = takepart_contests_contest_load($row->contest_id);
-        $entry = _takepart_contests_load_previous_entry($contest);
-        $block['subject'] = t($row->name);
-        //@todo: change this to something more friendly:
-        $function = 'takepart_contests_contest_entry_form_' . $row->contest_id;
-        if (function_exists($function)) {
-          $block['content'] = drupal_get_form($function, $entry);
-        } else {
-          $block['content'] = drupal_get_form('takepart_contests_contest_entry_form', $entry);
-        }
-        $block['content']['#prefix'] = '<div id="takepart_contests_wrapper_'.$row->contest_id.'">';
-        $block['content']['#suffix'] = '</div>';
+  foreach (entity_load('takepart_contests_contest') as $id => $contest) {
+    if ($delta == 'takepart_contests' . $id) {
+      $entry = _takepart_contests_load_previous_entry($contest);
+      $block['subject'] = t($contest->name);
+      //@todo: change this to something more friendly:
+      $function = 'takepart_contests_contest_entry_form_' . $id;
+      if (function_exists($function)) {
+        $block['content'] = drupal_get_form($function, $entry);
+      } else {
+        $block['content'] = drupal_get_form('takepart_contests_contest_entry_blank_form', $entry);
       }
+      $block['content']['#prefix'] = '<div id="takepart_contests_wrapper_' . $id . '">';
+      $block['content']['#suffix'] = '</div>';
     }
   }
 
@@ -351,9 +382,10 @@ function _takepart_contests_load_previous_entry($contest) {
     // create an entity query
     $query = new EntityFieldQuery();
 
-    // limit the query to contest entries for this contest
+    // limit the query to contest published entries for this contest
     $query->entityCondition('entity_type', 'takepart_contests_contest_entry');
     $query->propertyCondition('contest_id', $contest->contest_id);
+    $query->propertyCondition('status', 1);
 
     // order the entries with the most recent first
     $query->propertyOrderBy('created', 'DESC');
@@ -385,537 +417,155 @@ function _takepart_contests_load_previous_entry($contest) {
   return $entry;
 }
 
-/**
- * Implements hook_menu_local_tasks_alter()
- */
-function takepart_contests_menu_local_tasks_alter(&$data, $router_item, $root_path) {
-  if ($root_path == 'admin/content/contests') {
-    $item = menu_get_item('admin/content/contests/add');
-    if ($item['access']) {
-      $data['actions']['output'][] = array(
-          '#theme' => 'menu_local_action',
-          '#link' => $item,
-      );
-    }
-  }
-}
+function takepart_contests_contest_entry_blank_form($form, &$form_state, $entry, $op) {
 
-/* TakePart Contest Type API
- ******************************************************************************/
-
-class TakePartContestType extends Entity {
-
-  public $type;
-  public $label;
-  public $default_entry_period;
-  public $weight;
-
-  public function __construct($values = array()) {
-    parent::__construct($values, 'takepart_contests_contest_type');
-  }
-
-  public function entryType() {
-    return $this->type . '_entry';
-  }
-}
-
-class TakePartContestTypeController extends EntityAPIControllerExportable {
-
-  public function __construct($entityType) {
-    parent::__construct($entityType);
-  }
-
-  public function create(array $values = array()) {
-    $values += array(
-      'id' => '',
-      'is_new' => TRUE,
-      'default_entry_period' => '',
-    );
-    return parent::create($values);
-  }
-}
-
-function takepart_contests_contest_type_create($values = array()) {
-  return entity_get_controller('takepart_contests_contest_type')->create($values);
-}
-
-function takepart_contests_contest_type_load($type_name) {
-  return takepart_contests_get_types($type_name);
-}
-
-function takepart_contests_contest_type_save(TakePartContestType $type) {
-  return $type->save();
-}
-
-function takepart_contests_contest_type_delete(TakePartContestType $type) {
-  $type->delete();
-}
-
-/* TakePart Contest API
- ******************************************************************************/
-
-class TakePartContest extends Entity {
-
-  const DURATION_NONE  = 'none';
-  const DURATION_SLOT  = 'slot';
-  const DURATION_SPAN  = 'span';
-  const DURATION_PHASE = 'phase';
-
-  const UNITS_MINUTES  = 'minutes';
-  const UNITS_HOURS    = 'hours';
-  const UNITS_DAYS     = 'days';
-  const UNITS_WEEKS    = 'weeks';
-  const UNITS_MONTHS   = 'months';
-  const UNITS_YEARS    = 'years';
-  const UNITS_LIFETIME = 'lifetime';
-
-  public function __construct($values = array()) {
-    parent::__construct($values, 'takepart_contests_contest');
-  }
-
-  protected function defaultLabel() {
-    return $this->name;
-  }
-
-  protected function defaultUri() {
-    return array('path' => 'admin/content/contests/manage/' . $this->contest_id);
-  }
-
-  public function createEntry(array $values = array()) {
-    $values += array(
-        'contest_id' => $this->contest_id,
-        'type' => $this->type . '_entry',
-    );
-    return entity_get_controller('takepart_contests_contest_entry')->create($values);
-  }
-}
-
-class TakePartContestController extends EntityAPIController {
-
-  public function __construct($entityType) {
-    parent::__construct($entityType);
-  }
-
-  public function create(array $values = array()) {
-    $values += array(
-      'contest_id' => '',
-      'type' => '',
-      'language' => '',
-      'is_new' => TRUE,
-      'name' => '',
-      'created' => 0,
-      'changed' => 0,
-      'entry_period' => array(
-        'key' => array(),
-        'duration' => array(
-          'type' => TakePartContest::DURATION_SLOT,
-          'count' => 1,
-          'units' => TakePartContest::UNITS_DAYS,
-          'start' => strftime('%H:%M %m/%d/%Y'),
-        )
-      ),
-    );
-    return parent::create($values);
-  }
-
-  public function save($entity, DatabaseTransaction $transaction = NULL) {
-    // set/update the created and changed timestamps
-    $entity->is_new = isset($entity->is_new) ? $entity->is_new : 0;
-    if ($entity->is_new) {
-      $entity->created = time();
-    }
-    $entity->changed = time();
-    return parent::save($entity, $transaction);
-  }
-}
-
-function takepart_contests_contest_load($contest_id, $reset = FALSE) {
-  $contests = takepart_contests_contest_load_multiple(array($contest_id), array(), $reset);
-  return reset($contests);
-}
-
-function takepart_contests_contest_load_multiple($contest_ids = array(), $conditions = array() , $reset = FALSE) {
-  return entity_load('takepart_contests_contest', $contest_ids, $conditions, $reset);
-}
-
-function takepart_contests_contest_save(TakePartContest $contest) {
-  return $contest->save();
-}
-
-function takepart_contests_contest_delete(TakePartContest $contest) {
-  $contest->delete();
-}
-
-function takepart_contests_contest_delete_multiple(array $contest_ids) {
-  entity_get_controller('takepart_contests_contest')->delete($contest_ids);
-}
-
-/* TakePart Contest Entry API
- ******************************************************************************/
-
-class TakePartContestEntry extends Entity {
-
-  public $label;
-  public $type;
-
-  public function __construct($values = array()) {
-    parent::__construct($values, 'takepart_contests_contest_entry');
-    $this->label = 'Contest entry';
-  }
-
-  protected function defaultLabel() {
-    return $this->label;
-  }
-
-  protected function defaulUri() {
-    $path = array(
-      'contest',
-      $this->contest_id,
-      'entry',
-      $this->entry_id
-    );
-    return array('path', implode('/', $path));
-  }
-
-  private function inSlotEntryPeriod($slot, $entry, $units) {
-
-    $slot_date = getdate($slot);
-    $entry_date = getdate($entry);
-
-    $week_yday = $slot_date['yday'] - $slot_date['wday'];
-    if ($week_yday < 0) {
-      // date is in december of previous year
-      $slot_date['week-yday'] = 32 + $week_yday;
-      $slot_date['week-year'] = $slot_date['year'] - 1;
-    }
-    else {
-      $slot_date['week-yday'] = $week_yday;
-      $slot_date['week-year'] = $slot_date['year'];
-    }
-
-    $week_yday = $entry_date['yday'] - $entry_date['wday'];
-    if ($week_yday < 0) {
-      // date is in december of previous year
-      $entry_date['week-yday'] = 32 + $week_yday;
-      $entry_date['week-year'] = $entry_date['year'] - 1;
-    }
-    else {
-      $entry_date['week-yday'] = $week_yday;
-      $entry_date['week-year'] = $entry_date['year'];
-    }
-
-    // compare the two dates
-    $matches = array();
-    foreach ($slot_date as $key => $value) {
-      $matches[$key] = ($slot_date[$key] === $entry_date[$key]);
-    }
-
-      switch ($units) {
-      case TakePartContest::UNITS_HOURS:
-        // must match on hour, day of the year and year
-        return $matches['hours'] && $matches['yday'] && $matches['year'];
-      case TakePartContest::UNITS_DAYS:
-        // must match on day of the year and year
-        return $matches['yday'] && $matches['year'];
-      case TakePartContest::UNITS_WEEKS:
-        // must match on the day of the year and year for the start of the week
-        return $matches['week-yday'] && $matches['week-year'];
-      case TakePartContest::UNITS_MONTHS:
-        // must match on month and year
-        return $matches['mon'] && $matches['year'];
-      case TakePartContest::UNITS_YEARS:
-        // must match on year
-        return $matches['year'];
-      case TakePartContest::UNITS_LIFETIME:
-        // always in the lifetime slot
-        return TRUE;
-    }
-    return FALSE;
-  }
-
-  private function getFloatingEntryPeriodStart($count, $units) {
-    // start the period at epoch to cover unsupported units
-    $start = 0;
-    switch ($units) {
-      case TakePartContest::UNITS_MINUTES:
-        // go back count minutes
-        $start = time() - ($count * 60);
-        break;
-      case TakePartContest::UNITS_HOURS:
-        // go back count hours
-        $start = time() - ($count * 60 * 60);
-        break;
-      case TakePartContest::UNITS_DAYS:
-        // go back count days
-        $start = time() - ($count * 24 * 60 * 60);
-        break;
-      case TakePartContest::UNITS_WEEKS:
-        // go back count weeks
-        $start = time() - ($count * 7 * 24 * 60 * 60);
-        break;
-    }
-    return $start;
-  }
-
-  public function allowed() {
-
-    // get the associated contest (and entry period)
-    $contest = takepart_contests_contest_load($this->contest_id);
-
-    // check if the entries are even limited
-    $duration = $contest->entry_period['duration'];
-    $no_limit = ($duration['type'] === TakePartContest::DURATION_NONE);
-    $no_key = empty($contest->entry_period['key']);
-    $is_span = ($duration['type'] === TakePartContest::DURATION_SPAN);
-    $no_count = empty($duration['count']);
-    if ($no_limit || $no_key || ($is_span && $no_count)) {
-      return TRUE;
-    }
-
-    // create an entity query
-    $query = new EntityFieldQuery();
-
-    // limit the query to contest entries for this contest
-    $query->entityCondition('entity_type', 'takepart_contests_contest_entry');
-    $query->propertyCondition('contest_id', $this->contest_id);
-
-    // order the entries with the most recent first
-    $query->propertyOrderBy('created', 'DESC');
-
-    // TODO: removed hard coded check for profile_email field only
-    $value = $this->field_profile_email[$this->language][0]['value'];
-    $query->fieldCondition('field_profile_email', 'value', $value, '=');
-
-    // get the last entry if it exists
-    $query->range(0, 1);
-    $results = $query->execute();
-
-    // if there are none, then allow the current entry
-    if (empty($results)) {
-      return TRUE;
-    }
-
-    // completely load the last entry
-    $entries = entity_load('takepart_contests_contest_entry',
-      array_keys($results['takepart_contests_contest_entry']));
-    $last_entry = array_shift($entries);
-
-    // check the creation date against the entry period
-    if ($duration['type'] === TakePartContest::DURATION_SPAN) {
-      // the entry must be from before the start of the current
-      // floating entry period
-      $start_of_entry_period = $this->getFloatingEntryPeriodStart(
-        $duration['count'], $duration['units']);
-      return ($last_entry->created <= $start_of_entry_period);
-    }
-    else if ($duration['type'] === TakePartContest::DURATION_SLOT) {
-      // the entry must not be in the current entry period slot
-      return (! $this->inSlotEntryPeriod(time(), $last_entry->created,
-        $duration['units']));
-    }
-
-    // if we are here the system is misconfigured, don't allow the entry
-    // and send a note to the watchdog
-    watchdog('takepart_contests', 'Invalid contest period for contest !contest',
-      array('!period' => $this->contest_id), WATCHDOG_ERROR);
-    return FALSE;
-  }
-}
-
-class TakePartContestEntryController extends EntityAPIController {
-
-  public function __construct($entityType) {
-    parent::__construct($entityType);
-  }
-
-  public function create(array $values = array()) {
-    $values += array(
-        'entry_id' => '',
-        'contest_id' => '',
-        'language' => LANGUAGE_NONE,
-        'is_new' => TRUE,
-        'uid' => '',
-        'created' => 0,
-        'changed' => 0,
-    );
-    return parent::create($values);
-  }
-
-  public function save($entity, DatabaseTransaction $transaction = NULL) {
-    global $user;
-    // set/update the created and changed timestamps
-    $entity->is_new = isset($entity->is_new) ? $entity->is_new : 0;
-    if ($entity->is_new) {
-      $entity->uid = $user->uid;
-      if ((!isset($entity->created)) || ($entity->created == 0)) {
-        $entity->created = time();
-      }
-    }
-    $entity->changed = time();
-    return parent::save($entity, $transaction);
-  }
-
-  protected function buildQuery($ids, $conditions = array(), $revision_id = FALSE) {
-    $query = parent::buildQuery($ids, $conditions, $revision_id);
-    $query->innerJoin('takepart_contests_contest', 'c',
-      'base.contest_id = c.contest_id');
-    $query->addField('c', 'type', 'type');
-    return $query;
-  }
-
-  protected function attachLoad(&$entries, $revision_id = FALSE) {
-    foreach ($entries as $key => $entry) {
-      $entry->type = $entry->type . '_entry';
-      $entries[$key] = $entry;
-    }
-    parent::attachLoad($entries, $revision_id);
-  }
-}
-
-function takepart_contests_contest_entry_load($entry_id, $reset = FALSE) {
-  $entries = takepart_contests_contest_entry_load_multiple(array($entry_id), array(), $reset);
-  return reset($entries);
-}
-
-function takepart_contests_contest_entry_load_multiple($entry_ids = array(), $conditions = array() , $reset = FALSE) {
-  return entity_load('takepart_contests_contest_entry', $entry_ids, $conditions, $reset);
-}
-
-function takepart_contests_contest_entry_save(TakePartContestEntry $entry) {
-  return $entry->save();
-}
-
-function takepart_contests_contest_entry_delete(TakePartContestEntry $entry) {
-  $entry->delete();
-}
-
-function takepart_contests_contest_entry_delete_multiple(array $entry_ids) {
-  entity_get_controller('takepart_contests_contest_entry')->delete($entry_ids);
-}
-
-/**  TakePart Contest Test Pages
- **
- ******************************************************************************
- ******************************************************************************/
-function takepart_contests_menu() {
-
-
-  $items = array();
-
-  $items['admin/config/development/takepart_contests/test'] = array(
-      'title' => 'TakePart Contests Test Page',
-      'page callback' => '_takepart_contests_test_page',
-      'access arguments' => array('administer users'),
-      'type' => MENU_CALLBACK,
-  );
-
-
-  return $items;
-}
-
-function _takepart_contests_test_page() {
-
-  $status = 0;
-
-  // pull a contest from the database, if this was the block_view hook
-  // the id could be the $delta, in this case I had a contest in MY system
-  // that had an id of 2, you will likely need to change this
-  $contest = takepart_contests_contest_load(1);
-
-  // entries should be created off of the contest entity so the
-  // contest_id is automatically set
-  $entry = $contest->createEntry();
-
-  // get a form for entering the entry data
-  return drupal_get_form('takepart_contests_contest_entry_form', $entry);
-}
-
-function takepart_contests_contest_entry_form($form, &$form_state, $entry, $op) {
-
-  // Some extra markup on the form
-  $form['testing'] = array(
+  // Some extra markup to let people know there is tech work to do.
+  $form['data'] = array(
       '#type' => 'markup',
-      '#markup' => '<p id="thing-to-replace">' . $op . '</p>'
+      '#markup' => '<p></p>'
   );
-
-  // add the entity fields to the form
-  // the entity itself needs to be stored in the form state with
-  // the name of the entity (the key used in the entity_info hook) as the key
-  $form_state['takepart_contests_contest_entry'] = $entry;
-  field_attach_form('takepart_contests_contest_entry', $entry, $form, $form_state);
-
-  $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save contest'),
-      '#weight' => 40,
-  );
-
-  $form['actions']['ajax'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save via AJAX'),
-      '#weight' => 45,
-      '#ajax' => array(
-          'callback' => 'takepart_contests_contest_entry_form_callback',
-          'wrapper' => 'thing-to-replace',
-          'method' => 'replace',
-          'effect' => 'fade',
-      ),
-  );
-
   return $form;
 }
 
-function takepart_contests_form_takepart_contests_contest_entry_form_alter(&$form, &$form_state, $form_id) {
-
-  // remove the metatags part of the form
-  unset($form['metatags']);
-  $form['#submit'] = array_diff($form['#submit'], array('metatag_metatags_form_submit'));
+function takepart_contests_get_floating_entry_period_start($count, $units) {
+  // start the period at epoch to cover unsupported units
+  $start = 0;
+  switch ($units) {
+    case TakePartContest::UNITS_MINUTES:
+      // go back count minutes
+      $start = time() - ($count * 60);
+      break;
+    case TakePartContest::UNITS_HOURS:
+      // go back count hours
+      $start = time() - ($count * 60 * 60);
+      break;
+    case TakePartContest::UNITS_DAYS:
+      // go back count days
+      $start = time() - ($count * 24 * 60 * 60);
+      break;
+    case TakePartContest::UNITS_WEEKS:
+      // go back count weeks
+      $start = time() - ($count * 7 * 24 * 60 * 60);
+      break;
+  }
+  return $start;    
 }
 
-function takepart_contests_contest_entry_form_validate($form, $form_state) {
+function takepart_contests_in_slot_entry_period($slot, $entry, $units) {
+    
+  $slot_date = getdate($slot);
+  $entry_date = getdate($entry);
 
-  // validate the attached fields
-  $entry = $form_state['takepart_contests_contest_entry'];
-  field_attach_form_validate('takepart_contests_contest_entry', $entry, $form, $form_state);
+  $week_yday = $slot_date['yday'] - $slot_date['wday'];
+  if ($week_yday < 0) {
+    // date is in december of previous year
+    $slot_date['week-yday'] = 32 + $week_yday;
+    $slot_date['week-year'] = $slot_date['year'] - 1;
+  }
+  else {
+    $slot_date['week-yday'] = $week_yday;
+    $slot_date['week-year'] = $slot_date['year'];
+  }
+
+  $week_yday = $entry_date['yday'] - $entry_date['wday'];
+  if ($week_yday < 0) {
+    // date is in december of previous year
+    $entry_date['week-yday'] = 32 + $week_yday;
+    $entry_date['week-year'] = $entry_date['year'] - 1;
+  }
+  else {
+    $entry_date['week-yday'] = $week_yday;
+    $entry_date['week-year'] = $entry_date['year'];
+  }
+
+  // compare the two dates
+  $matches = array();
+  foreach ($slot_date as $key => $value) {
+    $matches[$key] = ($slot_date[$key] === $entry_date[$key]);
+  }
+
+  switch ($units) {
+    case TakePartContest::UNITS_HOURS:
+      // must match on hour, day of the year and year
+      return $matches['hours'] && $matches['yday'] && $matches['year'];
+    case TakePartContest::UNITS_DAYS:
+      // must match on day of the year and year
+      return $matches['yday'] && $matches['year'];
+    case TakePartContest::UNITS_WEEKS:
+      // must match on the day of the year and year for the start of the week
+      return $matches['week-yday'] && $matches['week-year'];
+    case TakePartContest::UNITS_MONTHS:
+      // must match on month and year
+      return $matches['mon'] && $matches['year'];
+    case TakePartContest::UNITS_YEARS:
+      // must match on year
+      return $matches['year'];
+    case TakePartContest::UNITS_LIFETIME:
+      // always in the lifetime slot
+      return TRUE;
+  }
+  return FALSE;
 }
 
-function takepart_contests_contest_entry_form_callback($form, $form_state) {
-  return 'This is a test';
-}
+function takepart_contests_contest_entry_allowed($entry) {
+    
+  // get the associated contest (and entry period)
+  $contest = entity_load_single('takepart_contests_contest', $entry->contest_id);
 
-function takepart_contests_contest_entry_form_submit(&$form, &$form_state) {
+  // check if the entries are even limited
+  $duration = $contest->entry_period['duration'];
+  $no_limit = ($duration['type'] === TakePartContest::DURATION_NONE);
+  $is_span = ($duration['type'] === TakePartContest::DURATION_SPAN);
+  $no_count = empty($duration['count']);
+  if ($no_limit || ($is_span && $no_count)) {
+    return TRUE;
+  }
 
-  // build the contest entry entity from the form
-  entity_form_submit_build_entity('takepart_contests_contest_entry',
-    $form_state['takepart_contests_contest_entry'], $form, $form_state);
-  $entry = $form_state['takepart_contests_contest_entry'];
+  // create an entity query
+  $query = new EntityFieldQuery();
 
-  // save the entry
-  $entry->save();
+  // limit the query to contest entries for this contest
+  $query->entityCondition('entity_type', 'takepart_contests_contest_entry');
+  $query->propertyCondition('contest_id', $entry->contest_id);
 
-  $id_to_read_back = $entry->entry_id;
+  // order the entries with the most recent first
+  $query->propertyOrderBy('created', 'DESC');
 
-  // read back the entry to make sure that works
-  $entry = takepart_contests_contest_entry_load($id_to_read_back);
+  // TODO: removed hard coded check for profile_email field only
+  $value = $entry->field_profile_email[$entry->language][0]['value'];
+  $query->fieldCondition('field_profile_email', 'value', $value, '=');
 
-  drupal_set_message(t('The contest entry %id has been saved and read back.',
-    array('%id' => $entry->entry_id)));
-}
+  // get the last entry if it exists
+  $query->range(0, 1);
+  $results = $query->execute();
 
-/**
- * Get a list of Contests.
- * @return
- * An array of contests;
- * contest_id, type, language, name, created, changed, entry_period
- **/
-function _takepart_contests_getlist() {
-  //@todo: add caching
-  //if(!array_key_exists("takepart_contests_list", $GLOBALS)) {
-    $table = 'takepart_contests_contest';
-    $result = db_query("SELECT * FROM {$table}");
-    //$GLOBALS["takepart_contests_list"] = $result;
- // } else {
- //   $result = $GLOBALS["takepart_contests_list"];
- // }
-  return $result;
+  // if there are none, then allow the current entry
+  if (empty($results)) {
+    return TRUE;
+  }
+
+  // completely load the last entry
+  $entries = entity_load('takepart_contests_contest_entry',
+    array_keys($results['takepart_contests_contest_entry']));
+  $last_entry = array_shift($entries);
+
+  // check the creation date against the entry period
+  if ($duration['type'] === TakePartContest::DURATION_SPAN) {
+    // the entry must be from before the start of the current
+    // floating entry period
+    $start_of_entry_period = takepart_contests_get_floating_entry_period_start(
+      $duration['count'], $duration['units']);
+    return ($last_entry->created <= $start_of_entry_period);
+  }
+  else if ($duration['type'] === TakePartContest::DURATION_SLOT) {
+    // the entry must not be in the current entry period slot
+    return (! takepart_contests_in_slot_entry_period(time(),
+      $last_entry->created, $duration['units']));
+  }
+
+  // if we are here the system is misconfigured, don't allow the entry
+  // and send a note to the watchdog
+  watchdog('takepart_contests', 'Invalid contest period for contest !contest',
+    array('!period' => $entry->contest_id), WATCHDOG_ERROR);
+  return FALSE;
 }

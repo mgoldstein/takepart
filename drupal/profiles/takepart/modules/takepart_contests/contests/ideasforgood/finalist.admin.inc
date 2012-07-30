@@ -1,67 +1,64 @@
 <?php
+/**
+ * @file
+ * Administrative interface for Ideas for Good Finalists.
+ */
 
+/**
+ * Ideas for Good Finalist Admin UI Controller
+ */
 class IdeasForGoodFinalistUIController extends EntityDefaultUIController {
 
   public function hook_menu() {
-
     $items = parent::hook_menu();
-
-    // page for adding finalists
-    $items[$this->path . '/add'] = array(
-      'title' => t('Add a finalist'),
-      'page callback' => 'ideasforgood_finalist_form_wrapper',
-      'access callback' => 'ideasforgood_finalist_access',
-      'access arguments' => array('edit'),
-      'file' => 'finalist.admin.inc',
-      'file path' => drupal_get_path('module', $this->entityInfo['module']),
-      'type' => MENU_LOCAL_ACTION,
-    );
+    
+    // Update the description for the main admin page.
+    $items[$this->path]['description'] = 'Add a Marigold Ideas for Good voting finalist.';
 
     return $items;
   }
 }
 
-function ideasforgood_finalist_form_wrapper() {
-  $finalist = entity_get_controller('ideasforgood_finalist')->create();
-  return entity_ui_get_form('ideasforgood_finalist', $finalist, 'add');
-}
+/**
+ * Finalist entity form
+ */
+function ideasforgood_finalist_form($form, &$form_state, $entity, $op = 'edit') {
 
-function ideasforgood_finalist_form($form, &$form_state, $finalist, $op = 'edit') {
+  $form_state['ideasforgood_finalist'] = $entity;
 
   if ($op == 'clone') {
-    $finalist->token .= " (cloned)";
+    $entity->id = '';
+    $entity->token .= " (cloned)";
+    $entity->is_new = TRUE;
   }
 
   $form['token'] = array(
-    '#type' => 'textfield',
     '#title' => t('Token'),
     '#description' => t('The voting token for the finalist'),
-    '#default_value' => isset($finalist->token) ? $finalist->token : '',
+    '#type' => 'textfield',
     '#required' => TRUE,
     '#maxlength' => 255,
     '#size' => 64,
+    '#default_value' => $entity->token,
   );
 
   $form['voting_group'] = array(
-    '#type' => 'textfield',
     '#title' => t('Voting Group'),
     '#description' => t('The voting group to which the finalist belongs.'),
-    '#default_value' => isset($finalist->voting_group) ? $finalist->voting_group : '',
+    '#type' => 'textfield',
     '#required' => TRUE,
     '#maxlength' => 255,
     '#size' => 64,
+    //'#autocomplete_path' => 'admin/config/marigold-ideas-for-good/groups/autocomplete',
+    '#default_value' => $entity->voting_group,
   );
 
-  $form_state['ideasforgood_finalist'] = $finalist;
-  field_attach_form('ideasforgood_finalist', $finalist, $form, $form_state);
+  field_attach_form('ideasforgood_finalist',
+    $form_state['ideasforgood_finalist'], $form, $form_state);
 
-  $form['actions'] = array(
-    '#type' => 'container',
-    '#attributes' => array('class' => array('form-actions')),
-    '#weight' => 400,
-  );
+  $form['actions'] = array('#type' => 'actions');
   $submit = array();
-  if (!empty($form['#submit'])) {
+  if (! empty($form['#submit'])) {
     $submit += $form['#submit'];
   }
 
@@ -72,19 +69,20 @@ function ideasforgood_finalist_form($form, &$form_state, $finalist, $op = 'edit'
     '#submit' => $submit + array('ideasforgood_finalist_form_submit'),
   );
 
-  // only add the delete button if we are editting an existing petition
-  if (! empty($finalist->id)) {
+  // only add the delete button if we are editting an existing entity
+  $id = $entity->identifier();
+  if (! empty($id)) {
     $form['actions']['delete'] = array(
+      '#value' => t('Delete finalist'),
       '#type' => 'submit',
-      '#value' => t('Delete finalist '),
-      '#submit' => $submit + array('ideasforgood_finalist_form_submit_delete'),
       '#weight' => 45,
+      '#submit' => array('ideasforgood_finalist_form_submit_delete'),
     );
   }
 
   $form['actions']['cancel'] = array(
     '#type' => 'markup',
-    '#markup' => l(t('Cancel'), 'admin/content/ideasforgood/finalists'),
+    '#markup' => l(t('Cancel'), 'admin/config/marigold-ideasforgood/finalists'),
     '#weight' => 50,
   );
 
@@ -93,39 +91,51 @@ function ideasforgood_finalist_form($form, &$form_state, $finalist, $op = 'edit'
   return $form;
 }
 
+/**
+ * Finalist entity form validation handler
+ */
 function ideasforgood_finalist_form_validate(&$form, &$form_state) {
-
-  // validate the attached fields
-  $finalist = $form_state['ideasforgood_finalist'];
-  field_attach_form_validate('ideasforgood_finalist', $finalist, $form, $form_state);
+  // Validate the attached fields.
+  field_attach_form_validate('ideasforgood_finalist',
+    $form_state['ideasforgood_finalist'], $form, $form_state);
 }
 
+/**
+ * Finalist entity form save handler
+ */
 function ideasforgood_finalist_form_submit(&$form, &$form_state) {
 
-  // build the petition entity from the form
-  $controller = entity_ui_controller('ideasforgood_finalist');
-  $finalist = $controller->entityFormSubmitBuildEntity($form, $form_state);
+  // build the contest entity from the form
+  $entity = entity_ui_form_submit_build_entity($form, $form_state);
 
-  // save the petition
-  $status = $finalist->save();
+  // Save the entity.
+  $status = $entity->save();
   if ($status == SAVED_UPDATED) {
-    drupal_set_message(t('The finalist %token has been updated.',
-      array('%token' => $finalist->token)));
+    drupal_set_message(t('The finalist %name has been updated.',
+      array('%name' => $entity->token)));
   }
   else if ($status == SAVED_NEW) {
-    drupal_set_message(t('The finalist %token has been added.',
-      array('%token' => $finalist->token)));
+    drupal_set_message(t('The finalist %name has been added.',
+      array('%name' => $entity->token)));
   }
 
-  // go back to the list of petitions
-  $form_state['redirect'] = 'admin/content/ideasforgood/finalists';
+  // Go back to the list of entities.
+  $form_state['redirect'] = 'admin/config/marigold-ideasforgood/finalists';
 }
 
+/**
+ * Finalist entity form delete handler
+ */
 function ideasforgood_finalist_form_submit_delete(&$form, &$form_state) {
-
-  // go to the delete confirmation page
-  $form_state['redirect'] = 'admin/content/ideasforgood/finalists/manage/'
-    . $form_state['ideasforgood_finalist']->id
-    . '/delete?destination=admin/content/ideasforgood/finalists';
+  // Go to the delete confirmation page.
+  $form_state['redirect'] = array(
+    'admin/config/marigold-ideasforgood/finalists/manage/'
+      . (string) $form_state['ideasforgood_finalist']->identifier()
+      . '/delete',
+    array(
+      'query' => array(
+        'destination' => 'admin/config/marigold-ideasforgood/finalists',
+      ),
+    ),
+  );
 }
-
