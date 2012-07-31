@@ -27,7 +27,7 @@ class IdeasForGoodVotingGroupController extends EntityAPIController {
     $values += array(
       'id' => '',
       'name' => '',
-      'contest' => '',
+      'contest' => 'Marigold Ideas for Good Contest',
       'voting_form_id' => 0,
       'email_field_id' => 0,
       'vote_field_id' => 0,

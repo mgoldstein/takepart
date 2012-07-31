@@ -89,13 +89,19 @@ function ideasforgood_voting_group_form($form, &$form_state, $entity,
     '#default_value' => $values['name'],
   );
 
+  $contest_names = array(
+   $values['contest'] => $values['contest'],
+  );
+  foreach (entity_load('takepart_contests_contest') $id => $contest) {
+    $contest_names[$contest->name] = $contest->name;
+  }
+  $contest_names[''] = t('(None)');
   $form['contest'] = array(
     '#title' => t('Contest'),
     '#description' => t('The name of the contest for which votes are being submitted'),
-    '#type' => 'textfield',
+    '#type' => 'select',
     '#required' => TRUE,
-    '#maxlength' => 255,
-    '#size' => 64,
+    '#options' => $contest_names,
     '#default_value' => $values['contest'],
   );
 
