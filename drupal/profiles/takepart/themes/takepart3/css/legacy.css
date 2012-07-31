@@ -182,19 +182,19 @@ ul#top-follow li.title {
 }
 
 ul#top-follow li.fb a {
-    background: url(../images/sprite2.png) no-repeat -153px -678px;
+    background: url(../images/sprite_global_nav_social.png) no-repeat 0 0;
 }
-
 ul#top-follow li.twitter a {
-    background: url(../images/sprite2.png) no-repeat -177px -678px;
+    background: url(../images/sprite_global_nav_social.png) no-repeat -20px 0;
 }
-
+ul#top-follow li.pinterest a {
+    background: url(../images/sprite_global_nav_social.png) no-repeat -40px 0;
+}
 ul#top-follow li.youtube a {
-    background: url(../images/sprite2.png) no-repeat -201px -678px;
+    background: url(../images/sprite_global_nav_social.png) no-repeat -60px 0;
 }
-
 ul#top-follow li.rss a {
-    background: url(../images/sprite2.png) no-repeat -226px -678px;
+    background: url(../images/sprite_global_nav_social.png) no-repeat -80px 0;
 }
 
 /**** Top Navigation ***/
@@ -2560,7 +2560,7 @@ div.messages a:visited {
 }
 #slim-header ul#top-follow {
     clear: none;
-    margin: 9px 0 0 0;
+    margin: -2px 0 0 0;
     float: right;
 }
 
@@ -2667,9 +2667,12 @@ div.messages a:visited {
     width: auto;
 }
 #slim-header.multipage-campaign #top-search {
-    margin: 0 8px 4px 10px;
+    margin: 4px 1px 4px 1px;
     float: left;
-    width: 13em;
+    width: 156px;
+}
+body.logged-in #slim-header.multipage-campaign #top-search {
+    width: 136px;
 }
 
 #slim-header ul.menu li a:hover {
@@ -3720,7 +3723,12 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 .multipage-campaign #top-search .form-text,
 .multipage-campaign #top-search .form-text:focus,
 .multipage-campaign #top-search .form-text:active {
-    width: 10em;
+    width: 115px;
+}
+body.logged-in .multipage-campaign #top-search .form-text,
+body.logged-in .multipage-campaign #top-search .form-text:focus,
+body.logged-in .multipage-campaign #top-search .form-text:active {
+    width: 90px;
 }
 
 #top-search .tpform-submit {

@@ -142,7 +142,6 @@ function s_doPlugins(s) {
     // s.eVar26=s.prop25?s.prop25:''; Retire -- was previously "Article saved"
     s.eVar27=s.prop26?s.prop26:''; // Share method/channel
     //s.eVar28=s.prop27?s.prop27:''; s.profp 27 Article Share clicked
-
     s.previousPage=s.getPreviousValue(s.pageName,'gpv_p5','');
 }
 s.doPlugins=s_doPlugins

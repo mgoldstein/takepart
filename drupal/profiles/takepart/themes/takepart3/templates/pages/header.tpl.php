@@ -4,6 +4,7 @@
     <div class="clear clearfix" id="nav-wrap">
       <?php print $top_nav ?> 
     </div>
+    <?php print $follow_us_links; ?><!--/top follow-->
     <div id="top-search">
       <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
     </div><!--/top search-->
@@ -12,7 +13,6 @@
         <?php print $user_nav; ?>       
       </div> 
     </div><!--/join-login-top-->
-    <?php print $follow_us_links; ?><!--/top follow-->
   </div>
 <?php else: ?>
   <div id="header-wrapper" class='clearfix regular-content'>
