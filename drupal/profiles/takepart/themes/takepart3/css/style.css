@@ -753,18 +753,17 @@ body.front .main-content .block-boxes-current-promo .views-row-10
 ul#top-follow {
     float: right;
     margin: 0 0 0;
-    width: 132px;
+    width: 115px;
 }
 ul#top-follow li a {
     display: block;
-    height: 18px;
-    width: 18px;
+    height: 15px;
+    width: 15px;
     text-indent: -9000px;
-    margin-left: 8px;
+    margin-left: 6px;
 }
 
 ul#top-follow li.pinterest a {
-    text-indent: 0;
 }
 
 ul#top-follow li.pinterest img {
