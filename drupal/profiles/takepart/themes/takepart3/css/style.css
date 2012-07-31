@@ -92,13 +92,16 @@ div.gray-rule {
     text-align: center;
     padding: 8px 0 0 0;
 }
-
 #slim-header ul.menu li a {
     background: none;
     color: #000;
-    background: url(../images/dot.png) no-repeat 0 7px;
+    background: url(../images/dot-bbg.png) no-repeat 0 7px;
     padding: 0 10px;
     white-space:nowrap;
+}
+#slim-header ul.menu li.first a {
+	background-image: none;
+	padding-left: 0;
 }
 
 /* homepage features block */
@@ -729,9 +732,13 @@ body.front .main-content .block-boxes-current-promo .views-row-10
 #top-follow-wrapper {
 	padding-top: 10px;
     float: right;
-    margin-right: 20px;
+    margin-right: 10px;
     position: relative;
 }
+#slim-header #top-follow-wrapper {
+    float: left;
+}
+/* My Comment */
 #top-follow-wrapper .top-follow-label {
     float: left;
     display: inline;
@@ -790,7 +797,7 @@ ul#top-follow li.pinterest img {
 
 #slim-header #join-login-top
 {
-    float:left;
+    float:right;
     font-size:11px;
 }
 
@@ -1728,8 +1735,8 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
   margin-top: 4px;
   position: relative;
   z-index: 10 !important;
-  width: 206px;
-  height: 36px;
+  width: 200px;
+  height: 30px;
 }
 #participant-pulldown .pp-button {
   position: relative;
@@ -1773,7 +1780,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 
 /*search box*/
 #top-search {
-    width:208px;
+    width:202px;
     float:right;
     margin:0;
 }
@@ -1783,7 +1790,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #top-search .form-text:active {
     border: medium none;
     display: block;
-    width: 175px;
+    width: 169px;
     float: left;
     font-size: 12px;
     height: 16px;
@@ -2921,6 +2928,13 @@ body.multipage-campaign #highlighted {
     margin-left:10px;
     font-weight: normal;
     font-size: 10px;
+}
+.logged-in #user-nav li.login-0 {
+    padding-top: 1px;
+    margin-left:5px;
+}
+.logged-in #user-nav li.login-1 {
+    margin-left:5px;
 }
 
 
