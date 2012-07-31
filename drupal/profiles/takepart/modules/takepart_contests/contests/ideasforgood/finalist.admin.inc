@@ -42,14 +42,19 @@ function ideasforgood_finalist_form($form, &$form_state, $entity, $op = 'edit') 
     '#default_value' => $entity->token,
   );
 
+  $group_names = array(
+    $entity->voting_group => $entity->voting_group,
+  );
+  foreach (entity_load('ideasforgood_voting_group') $id => $group) {
+    $group_names[$group->name] = $group->name;
+  }
+  $group_names[''] = t('(None)');
   $form['voting_group'] = array(
     '#title' => t('Voting Group'),
     '#description' => t('The voting group to which the finalist belongs.'),
-    '#type' => 'textfield',
+    '#type' => 'select',
     '#required' => TRUE,
-    '#maxlength' => 255,
-    '#size' => 64,
-    //'#autocomplete_path' => 'admin/config/marigold-ideas-for-good/groups/autocomplete',
+    '#options' => $group_names,
     '#default_value' => $entity->voting_group,
   );
 
