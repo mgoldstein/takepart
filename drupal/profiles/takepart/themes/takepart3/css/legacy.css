@@ -182,19 +182,19 @@ ul#top-follow li.title {
 }
 
 ul#top-follow li.fb a {
-    background: url(../images/sprite2.png) no-repeat -153px -678px;
+    background: url(../images/sprite_global_nav_social.png) no-repeat 0 0;
 }
-
 ul#top-follow li.twitter a {
-    background: url(../images/sprite2.png) no-repeat -177px -678px;
+    background: url(../images/sprite_global_nav_social.png) no-repeat -20px 0;
 }
-
+ul#top-follow li.pinterest a {
+    background: url(../images/sprite_global_nav_social.png) no-repeat -40px 0;
+}
 ul#top-follow li.youtube a {
-    background: url(../images/sprite2.png) no-repeat -201px -678px;
+    background: url(../images/sprite_global_nav_social.png) no-repeat -60px 0;
 }
-
 ul#top-follow li.rss a {
-    background: url(../images/sprite2.png) no-repeat -226px -678px;
+    background: url(../images/sprite_global_nav_social.png) no-repeat -80px 0;
 }
 
 /**** Top Navigation ***/
