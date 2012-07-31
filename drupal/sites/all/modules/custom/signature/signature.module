@@ -333,6 +333,13 @@ function signature_form_node_form_alter(&$form, &$form_state) {
       '#default_value' => signature_timestamp_to_date($values->end_date),
     );
 
+    $form['signature']['signature_heading'] = array(
+      '#title' => t('Form Heading'),
+      '#description' => t('The label to use for the heading of the form.'),
+      '#type' => 'textfield',
+      '#default_value' => $values->heading,
+    );
+
     $form['signature']['signature_sign_label'] = array(
       '#title' => t('Sign Button Label'),
       '#description' => t('The label to use on the sign button.'),
@@ -381,10 +388,16 @@ function signature_node_form_values($form, $form_state) {
   $node = $form['#node'];
   $settings = FALSE;
 
-  if (isset($form_state['values']['op']) && $form_state['values']['op'] == t('Preview')) {
+  $op_present = isset($form_state['values']['op']);
+  $is_preview = $form_state['values']['op'] == t('Preview');
+  if ($op_present && $is_preview) {
     // the node is being previewed, use the form values
-    $start_date = signature_date_to_timestamp($form_state['values']['signature_start_date']);
-    $end_date = signature_date_to_timestamp($form_state['values']['signature_end_date']);
+    $start_date = signature_date_to_timestamp(
+      $form_state['values']['signature_start_date']
+    );
+    $end_date = signature_date_to_timestamp(
+      $form_state['values']['signature_end_date']
+    );
     $values = array(
       'nid' => $node->nid,
       'type' => $form_state['values']['signature_type'],
@@ -393,6 +406,7 @@ function signature_node_form_values($form, $form_state) {
       'limit_to_dates' => $form_state['values']['signature_limit_to_dates'],
       'start_date' => $start_date,
       'end_date' => $end_date,
+      'heading' => $form_state['values']['signature_heading'],
       'sign_label' => $form_state['values']['signature_sign_label'],
       'newsletter_label' => $form_state['values']['signature_newsletter_label'],
       'restrictions' => $form_state['values']['signature_restrictions'],
@@ -404,10 +418,6 @@ function signature_node_form_values($form, $form_state) {
   else if (isset($node->nid) && $node->nid > 0) {
     // load the values from the database
     $settings = entity_load_single('signature_node', $node->nid);
-    if ($settings === FALSE) {
-      // or create them they are not found
-      $settings = entity_create('signature_node', array('nid' => $node->nid));
-    }
   }
 
   if (!$settings) {
@@ -468,7 +478,8 @@ function signature_field_extra_fields_alter(&$info) {
  * Helper function for saving node signature settings when a node is added or
  * updated. 
  */
-function signature_save_node_settings($node) {    
+function signature_save_node_settings($node) {
+
   $types = variable_get('signature_node_types', array());
   if (isset($types[$node->type]) && $types[$node->type]) {
       
@@ -485,6 +496,7 @@ function signature_save_node_settings($node) {
     $settings->limit_to_dates = $node->signature_limit_to_dates;
     $settings->start_date = signature_date_to_timestamp($node->signature_start_date);
     $settings->end_date = signature_date_to_timestamp($node->signature_end_date);
+    $settings->heading = $node->signature_heading;
     $settings->sign_label = $node->signature_sign_label;
     $settings->newsletter_label = $node->signature_newsletter_label;
     $settings->restrictions = $node->signature_restrictions;
@@ -621,7 +633,6 @@ function signature_preprocess_node(&$vars) {
   $node = $vars['node'];
   $types = variable_get('signature_node_types', array());
   if (isset($types[$node->type]) && $types[$node->type]) {
-
     // add CSS classes to the node indicating that it has signature collection
     // enabled, default to the unsigned state so the node page can be cached
     $vars['classes_array'] = array_merge($vars['classes_array'], array(
@@ -651,7 +662,7 @@ function signature_node_view_alter(&$build) {
     $settings = entity_load_single('signature_node', $node->nid);
     if ($settings !== FALSE && !empty($settings->type)) {
 
-      $signature = signature_create(array(
+      $signature = entity_create('signature', array(
         'type' => $settings->type,
         'nid' => $node->nid, 
       )); 
@@ -782,8 +793,8 @@ function signature_base_form($form, &$form_state, $signature, $node) {
   // add the signature heading
   $form['heading'] = array(
     '#type' => 'markup',
-    '#prefix' => '<h1>',
-    '#markup' => t('Sign This Petition'),
+    '#prefix' => '<h1 class="' . $css_prefix . '-heading signature-heading">',
+    '#markup' => $settings->heading,
     '#suffix' => '</h1>',
     '#weight' => -20,
   );
@@ -908,10 +919,22 @@ function signature_base_form($form, &$form_state, $signature, $node) {
   return $form;
 }
 
+/**
+ * Implements hook_form_BASE_FORM_ID_alter()
+ *
+ * TODO: See if we can just prevent the metatags module from altering the
+ * signature form in the first place
+ */
+function signature_form_signature_base_form_alter(&$form, &$form_state) {
+  // remove the metatags part of the form
+  unset($form['metatags']);
+  $form['#submit'] = array_diff($form['#submit'], array('metatag_metatags_form_submit'));
+}
+
 function signature_base_form_callback($form, $form_state) {
 
   $commands = array();
-  $commands[] = ajax_command_insert(NULL, drupal_render($form));
+  $commands[] = ajax_command_replace(NULL, drupal_render($form));
   $commands[] = ajax_command_prepend(NULL, theme('status_messages'));
 
   $errors = form_get_errors();
@@ -939,12 +962,13 @@ function signature_base_form_validate($form, &$form_state) {
   $email = $form_state['values']['email'];
   if ((! empty($email)) && (! valid_email_address($email))) {
     form_set_error('email', t('!name must be a valid email address', array(
-      '!name' => 'Email')));
+      '!name' => 'Email',
+    )));
   }
 
   // validate the attached fields
-  $signature = $form_state['signature'];
-  field_attach_form_validate('signature', $signature, $form, $form_state);
+  field_attach_form_validate('signature', $form_state['signature'], $form,
+    $form_state);
 }
 
 /**
@@ -989,7 +1013,8 @@ function signature_send_signup($signature) {
     if ($mapping !== FALSE && !empty($mapping)) {
 
       $fields = array();
-      $lang = isset($signature->language) ? $signature->language : LANGUAGE_NONE;
+      $lang = isset($signature->language) ? $signature->language
+        : LANGUAGE_NONE;
 
       foreach ($mapping as $field_name => $id) {
 
@@ -1008,7 +1033,7 @@ function signature_send_signup($signature) {
           // implode any values it has to a single string
           if (isset($signature->{$field_name})) {
             $values = array();
-            foreach ($signature->{$field_name}[$lang] as $delta => $item) {
+            foreach ($signature->{$field_name}[$lang] as $item) {
               $values[] = (string)$item['value'];
             }
             $value = implode(' ', $values);

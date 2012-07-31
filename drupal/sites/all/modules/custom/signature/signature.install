@@ -231,6 +231,13 @@ function signature_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
+      'heading' => array(
+        'description' => 'The label used the heading of the signature form.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
       'sign_label' => array(
         'description' => 'The label used on the submit button of the signature form.',
         'type' => 'varchar',

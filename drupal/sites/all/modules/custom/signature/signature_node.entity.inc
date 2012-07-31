@@ -33,6 +33,7 @@ class SignatureNodeController extends EntityAPIController {
       'limit_to_dates' => FALSE,
       'start_date' => time(),
       'end_date' => time() + 365*24*60*60,
+      'heading' => 'Sign This Petition',
       'sign_label' => 'Sign Petition',
       'newsletter_label' => '',
       'restrictions' => '',
