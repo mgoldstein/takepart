@@ -95,7 +95,6 @@ function ideasforgood_voting_group_form($form, &$form_state, $entity,
   foreach (entity_load('takepart_contests_contest') as $id => $contest) {
     $contest_names[$contest->name] = $contest->name;
   }
-  $contest_names[''] = t('(None)');
   $form['contest'] = array(
     '#title' => t('Contest'),
     '#description' => t('The name of the contest for which votes are being submitted'),
@@ -113,7 +112,7 @@ function ideasforgood_voting_group_form($form, &$form_state, $entity,
    );
 
   $form['signupform']['voting_form_id'] =
-    bluestatedigital_signup_form_id_field($values['voting_form_id']);
+    bluestatedigital_forms_signup_form_id($values['voting_form_id']);
   $form['signupform']['voting_form_id']['#title'] = t('Voting Signup Form');
   $form['signupform']['voting_form_id'] += array(
     '#ajax' => array(
@@ -135,17 +134,17 @@ function ideasforgood_voting_group_form($form, &$form_state, $entity,
   );
 
   $form['signupform']['fields']['email_field_id'] =
-    bluestatedigital_signup_field_id_field($values['voting_form_id'],
+    bluestatedigital_forms_signup_field_id($values['voting_form_id'],
       $values['email_field_id']);
   $form['signupform']['fields']['email_field_id']['#title'] = 'Email Field ID';
 
   $form['signupform']['fields']['vote_field_id'] =
-    bluestatedigital_signup_field_id_field($values['voting_form_id'],
+    bluestatedigital_forms_signup_field_id($values['voting_form_id'],
       $values['vote_field_id']);
   $form['signupform']['fields']['vote_field_id']['#title'] = 'Vote Field ID';
 
   $form['signupform']['fields']['opt_in_field_id'] =
-    bluestatedigital_signup_field_id_field($values['voting_form_id'],
+    bluestatedigital_forms_signup_field_id($values['voting_form_id'],
       $values['opt_in_field_id']);
   $form['signupform']['fields']['opt_in_field_id']['#title'] = 'Opt-In Field ID';
 
