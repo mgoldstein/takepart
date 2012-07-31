@@ -1,7 +1,5 @@
 <div id="top-follow-wrapper">
-<!--
   <div class="top-follow-label">Follow Us:</div>
--->
   <ul id="top-follow">
         <li class="fb"><a target="_blank" href="http://www.facebook.com/takepart">facebook</a></li>
         <li class="twitter"><a target="_blank" href="http://www.twitter.com/takepart">twitter</a></li>

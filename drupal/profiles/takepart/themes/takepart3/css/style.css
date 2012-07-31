@@ -747,6 +747,9 @@ body.front .main-content .block-boxes-current-promo .views-row-10
     padding-top: 3px;
   text-transform: uppercase;
 }
+#slim-header #top-follow-wrapper .top-follow-label {
+  display: none;
+}
 ul#top-follow {
     float: right;
     margin: 0 0 0;

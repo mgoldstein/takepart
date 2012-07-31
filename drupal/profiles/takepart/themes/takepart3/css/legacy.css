@@ -225,7 +225,7 @@ ul#top-follow li.rss a {
 
 #block-menu-block-1 li.dhtml-menu a {
     display: block;
-    padding: 0px;
+    padding: 0 7px;
     text-decoration: none;
     background: #FFF;
     color: #000;
@@ -3723,7 +3723,7 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 .multipage-campaign #top-search .form-text,
 .multipage-campaign #top-search .form-text:focus,
 .multipage-campaign #top-search .form-text:active {
-    width: 15px;
+    width: 115px;
 }
 body.logged-in .multipage-campaign #top-search .form-text,
 body.logged-in .multipage-campaign #top-search .form-text:focus,
