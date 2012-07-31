@@ -92,7 +92,7 @@ function ideasforgood_voting_group_form($form, &$form_state, $entity,
   $contest_names = array(
    $values['contest'] => $values['contest'],
   );
-  foreach (entity_load('takepart_contests_contest') $id => $contest) {
+  foreach (entity_load('takepart_contests_contest') as $id => $contest) {
     $contest_names[$contest->name] = $contest->name;
   }
   $contest_names[''] = t('(None)');

@@ -45,7 +45,7 @@ function ideasforgood_finalist_form($form, &$form_state, $entity, $op = 'edit') 
   $group_names = array(
     $entity->voting_group => $entity->voting_group,
   );
-  foreach (entity_load('ideasforgood_voting_group') $id => $group) {
+  foreach (entity_load('ideasforgood_voting_group') as $id => $group) {
     $group_names[$group->name] = $group->name;
   }
   $group_names[''] = t('(None)');
