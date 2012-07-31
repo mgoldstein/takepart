@@ -1,0 +1,51 @@
+div.signature-node-unsigned div.signature-fields-unsigned {
+  display: block;
+}
+div.signature-node-unsigned .signature-fields-thank-you {
+  display: none;
+}
+div.signature-node-unsigned .signature-fields-signed {
+  display: none;
+}
+div.signature-node-unsigned .signature-fields-closed {
+  display: none;
+}
+
+div.signature-node-thank-you .signature-fields-unsigned {
+  display: none;
+}
+div.signature-node-thank-you div.signature-fields-thank-you {
+  display: block;
+}
+div.signature-node-thank-you .signature-fields-signed {
+  display: none;
+}
+div.signature-node-thank-you .signature-fields-closed {
+  display: none;
+}
+
+div.signature-node-signed .signature-fields-unsigned {
+  display: none
+}
+div.signature-node-signed .signature-fields-thank-you {
+  display: none;
+}
+div.signature-node-signed div.signature-fields-signed {
+  display: block;
+}
+div.signature-node-signed .signature-fields-closed {
+  display: none;
+}
+
+div.signature-node-closed .signature-fields-unsigned {
+  display: none;
+}
+div.signature-node-closed .signature-fields-thank-you {
+  display: none;
+}
+div.signature-node-closed .signature-fields-signed {
+  display: none;
+}
+div.signature-node-closed div.signature-fields-closed {
+  display: block;
+}
