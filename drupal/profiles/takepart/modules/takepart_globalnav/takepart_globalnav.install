@@ -25,6 +25,7 @@ function _takepart_globalnav_create_menus() {
     'description' => "Don't Miss menu on global header top nav"
   );
   menu_save($menu);
+  drupal_set_message(st('menu-don-t-miss was installed.'));
 
   $item = array(
     'link_path' => 'node/20029',
@@ -55,6 +56,8 @@ function _takepart_globalnav_create_menus() {
     'weight' => 3,
   );
   menu_link_save($item);
+  drupal_set_message(st('menu-don-t-miss links were installed.'));
+
 
 
   // add "Reel Impact" menu
@@ -63,6 +66,8 @@ function _takepart_globalnav_create_menus() {
     'title' => "Reel Impact",
     'description' => "Reel Impact menu on global header top nav"
   );
+  menu_save($menu);
+  drupal_set_message(st('menu-reel-impact was installed.'));
 
   $item = array(
     'link_path' => 'node/19279',
@@ -133,6 +138,7 @@ function _takepart_globalnav_create_menus() {
     'weight' => 7,
   );
   menu_link_save($item);
+  drupal_set_message(st('menu-reel-impact links were installed.'));
 
 
 

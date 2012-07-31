@@ -130,7 +130,7 @@ img.photo, .gallery-item img {
 }
 
 #join-login-top a {
-    font-size:13px;
+    font-size:10px;
 }
 
 #join-login-top .join-takepart {
@@ -225,7 +225,7 @@ ul#top-follow li.rss a {
 
 #block-menu-block-1 li.dhtml-menu a {
     display: block;
-    padding: 1px 8px;
+    padding: 0 7px;
     text-decoration: none;
     background: #FFF;
     color: #000;

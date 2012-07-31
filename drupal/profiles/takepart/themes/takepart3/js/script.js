@@ -78,7 +78,11 @@ jQuery(document).ready(function() {
     //jQuery('.photo-wrapper img').css('margin','');
     })
 
-    jQuery('#top-search .form-text').DefaultValue('Search');
+  jQuery('#top-search .form-text').DefaultValue('Search');
+  jQuery('#top-search .form-text').click(function() {
+    jQuery('#top-search .form-text').css("font-style", "normal");
+    return false;
+  });
 });
 
 /* rewrites all absolute links to open in a new window

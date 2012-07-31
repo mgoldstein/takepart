@@ -1,0 +1,28 @@
+To install updated headers:
+
+1) Pull phil-29546 from git
+
+2) Install the module takepart_globalnav
+
+This will create new menus:
+
+	"Reel Impact", with links to these campaigns:
+		Last Call at the Oasis
+		The Help
+		Food, Inc.
+		The Cove
+		The Best Exotic Marigold Hotel
+		Contagion
+		More Film Campaigns
+
+	"Don't Miss", with links to:
+		Election 2012
+		Water Crisis
+
+These menus provide the two new lists of items in the header.
+
+It will also edit menu "Hot Topics":
+		- change "Video" to "Videos"
+		- the display order should be "Videos", "Photos", "Take Action";
+
+3) Flush all caches
