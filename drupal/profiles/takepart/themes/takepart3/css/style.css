@@ -467,7 +467,8 @@ ul,ol
 /*spacing between menu items*/
 #block-menu-block-1 li.dhtml-menu
 {
-    margin-right:3px;
+    margin-right:5px;
+    height: 30px;
 }
 
 .views-field-field-slide-headline-override .field-content ul.dots li
@@ -726,7 +727,7 @@ body.front .main-content .block-boxes-current-promo .views-row-10
 /* ------------------------------------------------------------------------*/
 
 #top-follow-wrapper {
-	padding-top: 12px;
+	padding-top: 10px;
     float: right;
     margin-right: 20px;
     position: relative;
@@ -735,7 +736,7 @@ body.front .main-content .block-boxes-current-promo .views-row-10
     float: left;
     display: inline;
     font-style: italic;
-    font-size:  11px;
+    font-size:  10px;
     padding-top: 3px;
   text-transform: uppercase;
 }
@@ -782,6 +783,9 @@ ul#top-follow li.pinterest img {
 #join-login-top a
 {
   line-height: 14px;     /* #28114  pglatz 7/10/2012 */
+}
+#join-login-top a {
+    font-size:10px;
 }
 
 #slim-header {
@@ -1686,7 +1690,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #dontmiss-nav {
     float: left;
     padding: 6px 0 0;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 #dontmiss-nav div.dont {
 	font-size: 11px;
@@ -1725,7 +1729,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 /* pulldown button */
 #participant-pulldown {
   float:  right;
-  margin-top: -1px;
+  margin-top: 4px;
   position: relative;
   z-index: 10 !important;
   width: 206px;
@@ -1734,8 +1738,8 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #participant-pulldown .pp-button {
   position: relative;
   z-index: 10 !important;
-  width: 206px;
-  height: 36px;
+  width: 200px;
+  height: 30px;
   background: url(images/participant_dropdown.png) no-repeat;
   cursor: pointer;
 }
@@ -1759,16 +1763,21 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #participant-pulldown ul li {
   list-style-type: none;
   padding: 6px 8px;
+  border-bottom: 1px solid #ededed;
+}
+#participant-pulldown ul li.last {
+  border-bottom: none;
 }
 #participant-pulldown ul li:hover,
 #participant-pulldown ul li:hover a {
 	background-color: #fff3cc;
 	color: black;
+	text-decoration: underline;
 }
 
 /*search box*/
 #top-search {
-    width:189px;
+    width:208px;
     float:right;
     margin:0;
 }
@@ -1778,7 +1787,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #top-search .form-text:active {
     border: medium none;
     display: block;
-    width: 154px;
+    width: 175px;
     float: left;
     font-size: 12px;
     height: 16px;
@@ -1786,6 +1795,9 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     margin: 0;
     padding: 2px 5px;
     background: #FFF;
+}
+#top-search .form-text {
+  font-style: italic;
 }
 
 #search-api-page-search-form-2 div {
@@ -2103,7 +2115,7 @@ div.tp-pet-thank-you-heading {
 }
 
 #block-menu-block-1 {
-    padding-top:2px;
+    padding-top:4px;
     float:  left;
 }
 #header-wrapper ul.menu {
@@ -2905,12 +2917,14 @@ body.multipage-campaign #highlighted {
 
 #user-nav li {
     display: inline-block;
-    font-weight: bold;
+    font-weight: normal;
     margin-top:3px;
 }
 
 .logged-in #user-nav li {
     margin-left:10px;
+    font-weight: normal;
+    font-size: 10px;
 }
 
 
