@@ -4,19 +4,30 @@
             <?php print $user_nav; ?>       
         </div> 
     </div><!--/join-login-top-->
+    <?php print $follow_us_links; ?><!--/top follow-->
     <div class="logo-wrapper">
         <div id="logo"><?php print l("", "<front>", array('attributes' => array('title' => 'TakePart logo'), 'absolute' => TRUE)) ?></div>
         <div class="header-right">
-            <div class="clear clearfix" id="nav-wrap">
-                <div id="block-menu-block-1">
-                    <?php print $top_nav; ?>
-                </div>
+          <div class="clear clearfix" id="nav-wrap">
+              <div id="block-menu-block-1">
+                  <?php print $top_nav; ?>
+              </div>
+          </div>
+          <div id="participant-pulldown">
+            <div class="pp-button"></div>
+            <div class="inner">
+              <?php print $participant_pulldown ?>
             </div>
-            <div id="hot-topics-nav">
-                <?php print $hottopic_nav; ?>
-            </div><!--/hot topics nav-->
-            <?php print $follow_us_links; ?><!--/top follow-->
-            <div id="top-search">
+          </div>
+          <div class="row2 clear clearfix">
+          <div id="hot-topics-nav">
+              <?php print $hottopic_nav; ?>
+          </div><!--/hot topics nav-->
+          <div id="dontmiss-nav">
+            <div class="dont">Don't Miss:</div>
+            <?php print $dontmiss_nav ?>
+          </div><!--/hot topics nav-->
+          <div id="top-search">
                 <div class="tpform-item">
                     <form accept-charset="UTF-8" id="search-api-page-search-form-2" method="post" action="<?php print 'http://' . $_SERVER['HTTP_HOST']; ?>/">
                         <div>
@@ -32,6 +43,7 @@
                     </form>
                 </div>
             </div><!--/top search-->
+          </div>
         </div>
     </div>
 </div>
