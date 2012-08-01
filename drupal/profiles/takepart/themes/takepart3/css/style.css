@@ -3129,17 +3129,29 @@ p.fb-login-text {
 /**
  * Embedded Action Styles
  */
+ div.drupal-embed {
+     margin-bottom: 1em;
+ }
  div.embedaction-wrapper {
   background-color: #ffffff;
   border: 4px solid #ffe789;
   padding: 0 8px;
 }
 
-div.embedaction-header {
+div.embedaction-wrapper tbody { 
+     border:0;
+}
+
+.embedaction-header {
+}
+
+.embedaction-header td {
+    padding: 0 5px;
+    vertical-align: middle;
 }
 
 div.embedaction-button {
-  background: url("/profiles/takepart/themes/takepart3/images/take-action-embed.png") no-repeat scroll right top transparent;
+  background: url(/profiles/takepart/themes/takepart3/images/take-action-embed.png) no-repeat scroll right top transparent;
   float: left;
   height: 29px;
   margin: 12px 0;
@@ -3150,16 +3162,13 @@ div.embedaction-wrapper div.field-name-field-promo-headline {
   color: #000000;
   font-size: 16px;
   font-weight: bold;
-  margin-left: 176px;
   cursor: pointer;
 }
 
 div.embedaction-wrapper div.field-name-field-promo-headline div.field-items {
-    
 }
 
 div.embedaction-wrapper div.field-name-field-promo-headline div.field-item {
-    padding-top: 19px;
 }
 
 div.embedaction-wrapper div.field-name-field-promo-headline div.field-item:hover {
