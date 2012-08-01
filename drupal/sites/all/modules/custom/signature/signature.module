@@ -122,6 +122,29 @@ function signature_type_load($type_name) {
   return isset($type_name) ? reset($types) : $types;
 }
 
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function signature_entity_property_info_alter(&$info) {
+  $properties = &$info['signature']['properties'];
+  $properties['created'] = array(
+    'label' => t("Date created"),
+    'type' => 'date',
+    'description' => t("The date the signature was created."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'update signature signature',
+    'schema field' => 'created',
+  );
+  $properties['changed'] = array(
+    'label' => t("Date changed"),
+    'type' => 'date',
+    'description' => t("The date the signature was last changed."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'update signature signature',
+    'schema field' => 'changed',
+  );
+}
+
 
 /* Access Control
  ******************************************************************************/
@@ -765,7 +788,7 @@ function signature_field_extra_fields() {
           'description' => t('The button for submitting the signature form.'),
           'weight' => 104,
         ),
-        'terms_of_use' => array(
+        'terms_of_use_note' => array(
           'label' => t('Terms of Use'),
           'description' => t('Terms of use note.'),
           'weight' => 105,
@@ -836,18 +859,18 @@ function signature_base_form($form, &$form_state, $signature, $node) {
   }
 
   // add the terms of use note
-  if (! empty($settings->terms_of_use_note)) {
-    $form['terms_of_use'] = array(
+  if (! empty($settings->terms_of_use)) {
+    $form['terms_of_use_note'] = array(
       '#type' => 'container',
       '#attributes' => array(
         'class' => array(
-          "{$css_prefix}-terms-of-use-note",
-          "signature-terms-of-use-note",
+          "{$css_prefix}-terms-of-use",
+          "signature-terms-of-use",
         ),
       ),
       'contents' => array(
         '#type' => 'markup',
-        '#markup' => $settings->terms_of_use_note,
+        '#markup' => $settings->terms_of_use,
       ),
     );
   }
