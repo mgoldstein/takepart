@@ -1,7 +1,7 @@
 (function ($) {
   Drupal.behaviors.embedactionInit = {
     attach: function (context, settings) {
-      $('div.embedaction-wrapper').each(function () {
+      $('div.embedaction-wrapper').once('embedaction-processed', function () {
         // Connect the 'Take Action' button and field promo headline
         $('div.embedaction-button', this).click({wrapper: this}, function (event) {
           var wrapper = event.data['wrapper'];
