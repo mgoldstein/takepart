@@ -19,7 +19,8 @@
                     }
                     s.linkTrackVars="eVar28,events";
                     s.linkTrackEvents="event37, event19";
-                    s.eVar28='tpaction'
+                    s.eVar28='tpaction';
+                    s.eVar28=s.pageName;
                     s.events='event37, event19';
                     s.tl(this.href, 'o', 'Take Action Button Click');
                     $(this).addClass('action-taken');
