@@ -37,7 +37,7 @@
       else {
         var nodes = Array();
         $('div.node.signature-list').once('signature-init', function (index) {
-          nodes[index] = $(this).attr('id').replace('node-', '');
+          nodes[index] = $(this).attr('nid');
         });
         if (nodes.length > 0) {
           $.get('/ajax/signature/node/' + nodes.join(','), null,

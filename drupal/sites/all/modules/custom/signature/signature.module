@@ -638,6 +638,10 @@ function signature_preprocess_node(&$vars) {
     $vars['classes_array'] = array_merge($vars['classes_array'], array(
       'signature-list', "signature-node-unsigned",
     ));
+    $vars['attributes_array'] += array(
+      'nid' => $node->nid,
+      'id' => 'node-' . (string) $node->nid,
+    );
   }
 }
 
