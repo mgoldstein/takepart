@@ -1,0 +1,7 @@
+name = Optimizely
+description = Adds Optimizely javascript to TakePart for A/B testing
+package = Statistics
+core = 7.x
+version = "7.x-1.0"
+files[] = takepart_optimizely.module
+files[] = takepart_optimizely.install
