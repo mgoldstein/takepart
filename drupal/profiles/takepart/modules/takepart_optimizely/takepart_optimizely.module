@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * Implements hook_permission().
+ */
+function takepart_optimizely_permission() {
+    return array(
+        'administer Optimizely configuration' => array(
+            'title' => t('Administer Optimizely configuration'),
+        )
+    );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function takepart_optimizely_menu() {
+    $items['admin/config/system/optimizely'] = array(
+        'title' => 'Optimizely',
+        'description' => "Configure the settings used to integrate Optimizely A/B testing.",
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('optimizely_admin_settings'),
+        'access arguments' => array('administer Optimizely configuration'),
+        'type' => MENU_NORMAL_ITEM,
+    );
+
+    return $items;
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function takepart_optimizely_page_alter(&$page) {
+    global $user;
+
+    // Check if we should track the currently active user's role.
+    $track = 0;
+    if (is_array($user->roles)) {
+        foreach ($user->roles as $role) {
+            $role = str_replace(' ', '_', $role);
+            $track += variable_get("optimizely_track_{$role}", FALSE);
+        }
+    }
+
+    // Don't track page views in the admin sections, or for certain roles.
+    if (arg(0) == 'admin' || $track <= 0) {
+        return;
+    }
+
+    $fmscripturl = check_plain(variable_get("optimizely_js_file_location", '//cdn.optimizely.com/js/77413453.js'));
+
+    drupal_add_js($fmscripturl, 'external');    
+}
+
+/**
+ * Menu callback for Optimizely settings.
+ */
+function optimizely_admin_settings() {
+
+    $form['general'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('General settings'),
+        '#collapsible' => TRUE,
+        '#weight' => '-10',
+    );
+
+    $form['general']['optimizely_js_file_location'] = array(
+        '#type' => 'textfield',
+        '#title' => t("Complete path to Optimizely Javascript file"),
+        '#default_value' => check_plain(variable_get("optimizely_js_file_location", '//cdn.optimizely.com/js/77413453.js')),
+    );
+    return system_settings_form($form);
+}
+
+/**
+ * Used to replace the value of optimizely variables. The variables need to be
+ * defined with hook_optimizely_variables().
+ *
+ * @param string $name
+ *  The property.
+ * @param string $value
+ *  The value for the property.
+ */
+function optimizely_set_variable($name = NULL, $value = NULL) {
+  $variables = &drupal_static(__FUNCTION__, array());
+  if (empty($name)) {
+    return $variables;
+  }
+  else {
+    $variables[$name] = $value;
+  }
+}
+
+function optimizely_get_variables() {
+  return optimizely_set_variable();
+}
