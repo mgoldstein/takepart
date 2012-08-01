@@ -31,24 +31,7 @@ function takepart_optimizely_menu() {
  * Implements hook_page_alter().
  */
 function takepart_optimizely_page_alter(&$page) {
-    global $user;
-
-    // Check if we should track the currently active user's role.
-    $track = 0;
-    if (is_array($user->roles)) {
-        foreach ($user->roles as $role) {
-            $role = str_replace(' ', '_', $role);
-            $track += variable_get("optimizely_track_{$role}", FALSE);
-        }
-    }
-
-    // Don't track page views in the admin sections, or for certain roles.
-    if (arg(0) == 'admin' || $track <= 0) {
-        return;
-    }
-
     $fmscripturl = check_plain(variable_get("optimizely_js_file_location", '//cdn.optimizely.com/js/77413453.js'));
-
     drupal_add_js($fmscripturl, 'external');    
 }
 
