@@ -3150,7 +3150,7 @@ div.embedaction-wrapper div.field-name-field-promo-headline {
   color: #000000;
   font-size: 16px;
   font-weight: bold;
-  margin-left: 168px;
+  margin-left: 176px;
   cursor: pointer;
 }
 
@@ -3159,7 +3159,7 @@ div.embedaction-wrapper div.field-name-field-promo-headline div.field-items {
 }
 
 div.embedaction-wrapper div.field-name-field-promo-headline div.field-item {
-    
+    padding-top: 19px;
 }
 
 div.embedaction-wrapper div.field-name-field-promo-headline div.field-item:hover {
