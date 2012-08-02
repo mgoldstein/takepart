@@ -65,3 +65,19 @@ div.horizontal-tabs-panes {
 .embedaction-content .node-petition-action input.text-full {
     
 }
+
+.form-actions {
+    text-align: center;
+}
+
+.signature-sign-button {
+    width: 312px;
+    height: 52px;
+    background-color: #ffc500;
+    border: 2px ridge #fcaf3b;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #FFF;
+    color: #000;
+}
