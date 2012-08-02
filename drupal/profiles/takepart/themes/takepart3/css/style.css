@@ -1160,12 +1160,12 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     padding:10px;
 }
 #right-rail #block-views-related-campaigns-block-2,
-#right-rail .block-boxes-title-movies-that-matter {
+#right-rail .block-boxes-current-related_campaigns {
     border:none;
     padding: 0;
 }
 #right-rail #block-views-related-campaigns-block-2 h2,
-#right-rail .block-boxes-title-movies-that-matter h2 {
+#right-rail .block-boxes-current-related_campaigns h2 {
     border-top: 1px dotted #000000;
     padding: 10px 0;
     margin: 0;
@@ -1173,16 +1173,16 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
 }
 
 #right-rail #block-views-related-campaigns-block-2 .views-row,
-#right-rail .block-boxes-title-movies-that-matter .views-row {
+#right-rail .block-boxes-current-related_campaigns .views-row {
     width:50%;
     float:left;
 }
 #right-rail #block-views-related-campaigns-block-2 .views-row-even,
-#right-rail .block-boxes-title-movies-that-matter .views-row-even {
+#right-rail .block-boxes-current-related_campaigns .views-row-even  {
     text-align: right;
 }
 #right-rail #block-views-related-campaigns-block-2 img,
-#right-rail .block-boxes-title-movies-that-matter img {
+#right-rail .block-boxes-current-related_campaigns img {
     width:145px;
 }
 
