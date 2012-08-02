@@ -84,6 +84,7 @@ div.horizontal-tabs-panes {
 .embedaction-content .signature-progress {
     clear: both;
     margin: 1em 0;
+    text-align: center;
 }
 .embedaction-content p.signature-progress-complete {
     width: 100px;
@@ -122,4 +123,16 @@ div.horizontal-tabs-panes {
     text-shadow: 1px 1px 1px #FFF;
     color: #000;
     text-transform: uppercase;
+}
+
+.embedaction-content .address-selection-tabs {
+    padding: 0;
+}
+
+.embedaction-content .address-selection-tabs .horizontal-tabs-panes {
+    padding: 0;
+}
+
+.embedaction-content .address-selection-tabs .horizontal-tabs-panes fieldset {
+    margin: 0;
 }
