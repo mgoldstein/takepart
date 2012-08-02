@@ -58,6 +58,22 @@ div.horizontal-tabs-panes {
 #content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected {
     background-color: #dfe6ea;
 }
+
+.embedaction-content .node-petition-action {
+    padding: 0 5px;
+}
+
+.embedaction-content .field-name-field-petition-page-title {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1.5em;
+}
+
+.embedaction-content .field-type-text-with-summary {
+    line-height: 1.2em;
+    margin-bottom: 1em;
+}
+
 .embedaction-content .node-petition-action label {
     float: left;
     width: 100px;
@@ -65,12 +81,30 @@ div.horizontal-tabs-panes {
 .embedaction-content .node-petition-action input.text-full {
     
 }
+.embedaction-content .signature-progress {
+    clear: both;
+    margin: 1em 0;
+}
+.embedaction-content p.signature-progress-complete {
+    width: 100px;
+    float: left;
+    text-transform: uppercase;
+    color: #666;
+    margin:0 10px 0 0;
+    font-size: 11px;
+}
 
-.form-actions {
+.embedaction-content p.signature-progress-complete span.signature-progress-percent {
+    color: #000; 
+    font-size: 34px; 
+    font-weight: bold; 
+    display: block;
+}
+.embedaction-content .form-actions {
     text-align: center;
 }
 
-.signature-sign-button {
+.embedaction-content .signature-sign-button {
     width: 312px;
     height: 52px;
     background-color: #ffc500;
@@ -80,4 +114,5 @@ div.horizontal-tabs-panes {
     font-weight: bold;
     text-shadow: 1px 1px 1px #FFF;
     color: #000;
+    text-transform: uppercase;
 }
