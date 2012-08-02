@@ -700,11 +700,29 @@ function signature_node_view_alter(&$build) {
     drupal_add_js($js_path, array('type' => 'file'));
 
     $js_path = drupal_get_path('module', 'signature')
+      . '/js/signature-metrics.js';
+    drupal_add_js($js_path, array('type' => 'file'));
+
+    $js_path = drupal_get_path('module', 'signature')
       . '/js/signature-read-more.js';
     drupal_add_js($js_path, array('type' => 'file'));
 
     $settings = entity_load_single('signature_node', $node->nid);
     if ($settings !== FALSE && !empty($settings->type)) {
+
+      // add the cookie library for the tracking event latch
+      drupal_add_library('system', 'jquery.cookie');
+
+      $js_settings = array(
+        'signature' => array(
+          'metrics' => array(
+            'nodeTitle' => $node->title,
+            'newsletterGroup' => $settings->newsletter_group,
+            'viewedLatch' => 'signature_form_viewed_' . $node->nid,
+          ),
+        ),
+      );
+      drupal_add_js($js_settings, 'setting');
 
       $signature = entity_create('signature', array(
         'type' => $settings->type,
@@ -972,7 +990,8 @@ function signature_base_form($form, &$form_state, $signature, $node) {
 function signature_form_signature_base_form_alter(&$form, &$form_state) {
   // remove the metatags part of the form
   unset($form['metatags']);
-  $form['#submit'] = array_diff($form['#submit'], array('metatag_metatags_form_submit'));
+  $form['#submit'] = array_diff($form['#submit'],
+    array('metatag_metatags_form_submit'));
 }
 
 function signature_base_form_callback($form, $form_state) {
@@ -989,9 +1008,17 @@ function signature_base_form_callback($form, $form_state) {
     $variables = signature_node_progress_variables($settings);
     $variables['state'] = 'thank-you';
 
-    $commands[] = ajax_command_settings(array(
-      'signature' => array('progress' => array($node->nid => $variables)),
-    ), TRUE);
+    $js_settings = array(
+      'signature' => array(
+        'progress' => array($node->nid => $variables),
+        'metrics' => array(
+          'newsletterSignup' => !empty($form_state['values']['newsletter']),
+          'signatureAdded' => 1,
+        ),
+      ),
+    );
+
+    $commands[] = ajax_command_settings($js_settings, TRUE);
   }
  
   return array('#type' => 'ajax', '#commands' => $commands);

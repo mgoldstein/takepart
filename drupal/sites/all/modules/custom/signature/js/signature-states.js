@@ -9,11 +9,14 @@
       'signature-node-inactive'
     ].join(' ');
     for (var nid in response) {
-      var div_id = '#node-' + nid;
       var node = response[nid];
+
+      // Adjust the visibility state of the petition
+      var div_id = '#node-' + nid;
       var state_class = 'signature-node-' + node.state;
       $(div_id).removeClass(all_classes).addClass(state_class);
     
+      // Adjust the selected tab state of the petition
       var tab = '.signature-tab-' + node.state;
       $(tab).each(function () {
         $(this).data('horizontalTab').tabShow();
@@ -21,10 +24,10 @@
 
       var summary = '#' + node.summary_id;
       $(summary).each(function () {
-        $(this).find('span.signature-progress-percent').text(node.percent + '%');
-        $(this).find('img.signature-progress-bar').attr('src', node.bar).attr(
-          'alt', node.percent + '% Complete');
-        $(this).find('p.signature-progress-count').text(node.progress);
+        $('.signature-progress-percent', this).text(node.percent + '%');
+        $('.signature-progress-bar', this).attr('src', node.bar).attr('alt',
+          node.percent + '% Complete');
+        $('.signature-progress-count', this).text(node.progress);
       });
     }
   };
@@ -35,8 +38,9 @@
         updateSignatureState(settings.signature.progress);
       }
       else {
+        // Update all the progress blocks on the page
         var nodes = Array();
-        $('div.node.signature-list').once('signature-init', function (index) {
+        $('.node.signature-list').once('signature-init', function (index) {
           nodes[index] = $(this).attr('nid');
         });
         if (nodes.length > 0) {
