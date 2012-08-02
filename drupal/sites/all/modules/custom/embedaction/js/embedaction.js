@@ -1,7 +1,7 @@
 (function ($) {
   Drupal.behaviors.embedactionInit = {
     attach: function (context, settings) {
-      $('div.embedaction-wrapper').once('embedaction-processed', function () {
+      $('div.embedaction-wrapper').once('embedaction-init', function () {
         // Connect the 'Take Action' button and field promo headline
         $('div.embedaction-button', this).click({wrapper: this}, function (event) {
           var wrapper = event.data['wrapper'];
@@ -18,9 +18,9 @@
           });
         });
         $('div.embedaction-button', this).hover(function () {
-          $(this).siblings('div.field-name-field-promo-headline').css('color', '#1ca9e7');
+          $(this).closest('table').find('div.field-name-field-promo-headline').css('color', '#1ca9e7');
         }, function () {
-          $(this).siblings('div.field-name-field-promo-headline').css('color', '#000000');
+          $(this).closest('table').find('div.field-name-field-promo-headline').css('color', '#000000');
         });
         // Connect the 'CLOSE' link
         $('h2.embedaction-divider > a', this).click({wrapper: this}, function (event) {
