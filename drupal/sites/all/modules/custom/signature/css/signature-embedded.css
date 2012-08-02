@@ -103,7 +103,14 @@ div.horizontal-tabs-panes {
 .embedaction-content .form-actions {
     text-align: center;
 }
-
+.embedaction-content .form-item-display {
+    margin-left: 100px;
+}
+.embedaction-content .node-petition-action .form-item-display label {
+    float: none;
+    width: auto;
+    padding-left: 6px;
+}
 .embedaction-content .signature-sign-button {
     width: 312px;
     height: 52px;
