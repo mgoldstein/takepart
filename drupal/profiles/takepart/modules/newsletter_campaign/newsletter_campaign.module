@@ -224,7 +224,6 @@ function newsletter_campaign_form($form, &$form_state, $campaign,
     '#type' => 'textarea',
     '#default_value' => $values['promo_message'],
     '#description' => t('Message to display before a user submits their email.'),
-    '#required' => TRUE,
     '#rows' => 4,
   );
 
@@ -394,9 +393,11 @@ function newsletter_campaign_block_view($delta) {
       drupal_add_css($path . '/css/newsletter_campaign_block.css');
 
       $allowed_tags = array('i', 'strong', 'u');
+      $promo_message = isset($campaign->promo_message)
+        : $campaign->promo_message ? '';
       $variables = array(
-        'form_id' => check_plain($campaign->campaign_id),
-        'promo_text' => filter_xss($campaign->promo_message, $allowed_tags),
+        'form_id' => (string ) $campaign->ncid,
+        'promo_text' => filter_xss($promo_message, $allowed_tags),
         'signup_form' => drupal_get_form('newsletter_campaign_signup_form',
           $campaign),
       );
@@ -464,7 +465,7 @@ function newsletter_campaign_signup_form_submit($form, &$form_state) {
 function newsletter_campaign_signup_form_callback($form, $form_state) {
 
   $campaign = $form_state['newsletter_campaign'];
-  $form_id = check_plain($campaign->campaign_id);
+  $form_id = (string) $campaign->ncid;
   $message_selector = "#takepart-newsletter-{$form_id}-results";
   $content_selector = "#takepart-newsletter-{$form_id}-body";
   $commands = array();
