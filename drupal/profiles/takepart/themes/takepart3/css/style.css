@@ -745,7 +745,6 @@ body.front .main-content .block-boxes-current-promo .views-row-10
     font-style: italic;
     font-size:  10px;
     padding-top: 3px;
-  text-transform: uppercase;
 }
 #slim-header #top-follow-wrapper .top-follow-label {
   display: none;
@@ -1700,7 +1699,6 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #dontmiss-nav div.dont {
 	font-size: 11px;
     padding-top: 1px;
-  text-transform: uppercase;
   margin-right: 8px;
   float: left;
   font-style: italic;
@@ -1748,6 +1746,9 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
   background: url(images/participant_dropdown.png) no-repeat;
   cursor: pointer;
 }
+.pp-button-hover {
+  background: url(images/participant_dropdown_hover.png) no-repeat !important;
+}
 #participant-pulldown .inner {
   position: relative;
   z-index: 5 !important;
@@ -1777,7 +1778,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #participant-pulldown ul li:hover a {
 	background-color: #fff3cc;
 	color: black;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 /*search box*/

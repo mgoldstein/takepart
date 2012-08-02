@@ -5,10 +5,12 @@
     attach: function(context) {
       $('#participant-pulldown').mouseover(function() {
         $('#participant-pulldown .inner').show();
+        $('#participant-pulldown .pp-button').addClass('pp-button-hover');
         return false;
       });
       $('#participant-pulldown').mouseout(function() {
         $('#participant-pulldown .inner').hide();
+        $('#participant-pulldown .pp-button').removeClass('pp-button-hover');
         return false;
       });
     }
