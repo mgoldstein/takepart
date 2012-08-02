@@ -58,3 +58,10 @@ div.horizontal-tabs-panes {
 #content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected {
     background-color: #dfe6ea;
 }
+.embedaction-content .node-petition-action label {
+    float: left;
+    width: 100px;
+}
+.embedaction-content .node-petition-action input.text-full {
+    
+}

@@ -847,6 +847,7 @@ function signature_base_form($form, &$form_state, $signature, $node) {
   $form['email'] = array(
     '#title' => t('Email'),
     '#type' => 'textfield',
+    '#size' => 40,
     '#maxlength' => 254, // the mail field in the user table is 254 characters
     '#required' => TRUE,
     '#attributes' => array(
