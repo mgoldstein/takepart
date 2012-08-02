@@ -10,7 +10,7 @@ div.horizontal-tabs {
 }
 
 div.horizontal-tabs-panes {
-    border:10px solid #dfe6ea;
+    border:0;
     padding:1em 0;
     margin-top:-3px;
 }
