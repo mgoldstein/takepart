@@ -1,7 +1,7 @@
 <?php
 
 /***
- * implentation of hook_init()
+ * implementation of hook_init()
  */
 function takepart_globalnav_init() {
   $path = drupal_get_path('module', 'takepart');

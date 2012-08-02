@@ -131,7 +131,7 @@ function _takepart_globalnav_create_menus() {
 
   $item = array(
     'link_path' => 'node/22525',
-    'link_title' => 'More Film Campaigns',
+    'link_title' => '> More Film Campaigns',
     'menu_name' => "menu-reel-impact",
     'mlid' => 0,
     'router_path' => 'node/%',
