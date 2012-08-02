@@ -17,10 +17,10 @@
                             window.location = jQuery(this).attr('href');
                         }
                     }
-                    s.linkTrackVars="eVar28,events";
+                    s.linkTrackVars="eVar28,eVar30,events";
                     s.linkTrackEvents="event37, event19";
                     s.eVar28='tpaction';
-                    s.eVar28=s.pageName;
+                    s.eVar30=$('h1.title').text();
                     s.events='event37, event19';
                     s.tl(this.href, 'o', 'Take Action Button Click');
                     $(this).addClass('action-taken');
