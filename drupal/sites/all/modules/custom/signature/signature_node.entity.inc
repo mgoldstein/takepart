@@ -35,6 +35,7 @@ class SignatureNodeController extends EntityAPIController {
       'end_date' => time() + 365*24*60*60,
       'heading' => 'Sign This Petition',
       'sign_label' => 'Sign Petition',
+      'newsletter_group' => '',
       'newsletter_label' => '',
       'restrictions' => '',
       'terms_of_use' => "By signing, you accept TakePart's "

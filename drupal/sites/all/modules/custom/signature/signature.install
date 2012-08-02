@@ -245,6 +245,13 @@ function signature_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
+      'newsletter_group' => array(
+        'description' => 'The constituent group used for newsletter analytics.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
       'newsletter_label' => array(
         'description' => 'The label used on the newsletter opt-in field.',
         'type' => 'varchar',
@@ -278,4 +285,17 @@ function signature_schema() {
   );
 
   return $schema;
+}
+
+/**
+ * Add the newsletter constituent group field for metrics
+ */
+function signature_update_7100(&$sandbox) {
+  db_add_field('signature_node', 'newsletter_group', array(
+    'description' => 'The constituent group used for newsletter analytics.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
 }

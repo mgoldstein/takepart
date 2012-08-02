@@ -331,15 +331,15 @@ function signature_form_node_form_alter(&$form, &$form_state) {
       '#default_value' => $values->goal,
     );
 
-    $form['signature']['signature_limit_to_dates'] = array(
-      '#title' => t('Limit signatures to the following date range.'),
-      '#type' => 'checkbox',
-      '#default_value' => $values->limit_to_dates,
-    );
-
     $form['signature']['limit_range'] = array(
       '#title' => t('Date Range'),
       '#type' => 'fieldset',
+    );
+
+    $form['signature']['limit_range']['signature_limit_to_dates'] = array(
+      '#title' => t('Limit signatures to the following date range.'),
+      '#type' => 'checkbox',
+      '#default_value' => $values->limit_to_dates,
     );
 
     $form['signature']['limit_range']['signature_start_date'] = array(
@@ -369,6 +369,13 @@ function signature_form_node_form_alter(&$form, &$form_state) {
       '#type' => 'textfield',
       '#default_value' => $values->sign_label,
     );
+
+    $form['signature']['signature_newsletter_group']
+      = bluestatedigital_forms_constituent_group($values->newsletter_group);
+    $form['signature']['signature_newsletter_group']['#title']
+      = t('Newsletter Constituent Group');
+    $form['signature']['signature_newsletter_group']['#description']
+      = t('The Blue State Digital constituent group to which users are added when opt-ing in to the newsletter.');
 
     $form['signature']['signature_newsletter_label'] = array(
       '#title' => t('Newsletter Opt-In Label'),
@@ -431,6 +438,7 @@ function signature_node_form_values($form, $form_state) {
       'end_date' => $end_date,
       'heading' => $form_state['values']['signature_heading'],
       'sign_label' => $form_state['values']['signature_sign_label'],
+      'newsletter_group' => $form_state['values']['signature_newsletter_group'],
       'newsletter_label' => $form_state['values']['signature_newsletter_label'],
       'restrictions' => $form_state['values']['signature_restrictions'],
       'terms_of_use' => $form_state['values']['signature_terms_of_use'],
@@ -521,6 +529,7 @@ function signature_save_node_settings($node) {
     $settings->end_date = signature_date_to_timestamp($node->signature_end_date);
     $settings->heading = $node->signature_heading;
     $settings->sign_label = $node->signature_sign_label;
+    $settings->newsletter_group = $node->signature_newsletter_group;
     $settings->newsletter_label = $node->signature_newsletter_label;
     $settings->restrictions = $node->signature_restrictions;
     $settings->terms_of_use = $node->signature_terms_of_use;
