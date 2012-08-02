@@ -15,39 +15,46 @@ div.horizontal-tabs-panes {
     margin-top:-3px;
 }
 
-.horizontal-tabs ul.horizontal-tabs-list {
+#content .horizontal-tabs ul.horizontal-tabs-list {
     background-color: transparent;
     border: 0 none;
     list-style: none;
+    margin:0;
 }
 
-.horizontal-tabs ul.horizontal-tabs-list li {
-
+#content .horizontal-tabs ul.horizontal-tabs-list li {
+    margin:0 4px 0 0;
+    font-size: 12px;
 }
-.horizontal-tabs ul.horizontal-tabs-list li a {
+
+#content .horizontal-tabs ul.horizontal-tabs-list li a {
     font-weight:300;
     text-transform: uppercase;
     color: #000;
     outline: none;
 }
-.horizontal-tabs ul.horizontal-tabs-list li a:hover {
+
+#content .horizontal-tabs ul.horizontal-tabs-list li a:hover {
     background-color: #dee8ea;
 }
-.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
+
+#content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
     border: 1px solid #dfe6ea;
     background-color: #f3f7f8;
     margin: 0 5px 0 0;
     padding: 0;
     outline: none;
 }
-.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
+
+#content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
     padding-bottom: 6px;
     padding-top: 9px;
 }
 
-.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.first {
+#content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.first {
 
 }
-.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected {
+
+#content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected {
     background-color: #dfe6ea;
 }
