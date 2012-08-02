@@ -394,7 +394,7 @@ function newsletter_campaign_block_view($delta) {
 
       $allowed_tags = array('i', 'strong', 'u');
       $promo_message = isset($campaign->promo_message)
-        : $campaign->promo_message ? '';
+        ? $campaign->promo_message : '';
       $variables = array(
         'form_id' => (string ) $campaign->ncid,
         'promo_text' => filter_xss($promo_message, $allowed_tags),
