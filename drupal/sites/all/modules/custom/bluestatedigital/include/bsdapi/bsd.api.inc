@@ -15,4 +15,5 @@ include_once dirname(__FILE__) . '/bsd.core.api.inc';
 /**
  * Include the specific API classes.
  */
+include_once dirname(__FILE__) . '/bsd.group.api.inc';
 include_once dirname(__FILE__) . '/bsd.signup.api.inc';

@@ -18,8 +18,9 @@ function bluestatedigital_forms_help($path, $arg) {
     $output .= '<h3>' . t('Uses') . '</h3>';
     $output .= '<dl>';
     $output .= '<dt>' . t('Form API fields') . '</dt>';
-    $output .= '<dd>' . t('Provides builder functions for form field that allow
-      the selection of a signup form or a signup form field.') . '</dd>';
+    $output .= '<dd>' . t('Provides builder functions for form fields that allow
+      the selection of a signup form, a signup form field or a constituent
+      group.') . '</dd>';
     $output .= '</dl>';
   }
   return $output;
@@ -71,7 +72,7 @@ function bluestatedigital_forms_signup_form_id($form_id, $add_none = TRUE) {
 
     // Add in the current form id if it is not in the list of forms.
     if ((!empty($form_id)) && (!array_key_exists($form_id, $forms))) {
-      $options[$value] = t('Form ID: @id (not available)', array(
+      $options[$form_id] = t('Form ID: @id (not available)', array(
         '@id' => $form_id,
       ));
     }
@@ -192,6 +193,75 @@ function bluestatedigital_forms_signup_field_id($form_id, $field_id,
       '#size' => 4,
       '#default_value' => $field_id,
       '#element_validate' => array('_element_validate_integer_positive'),
+    );
+  }
+
+  return $field;
+}
+
+function bluestatedigital_forms_constituent_group($default_value, $key = 'name',
+  $add_none = TRUE) {
+  $values = &drupal_static(__FUNCTION__, array());
+
+  // Get the list of constituent groups only once.
+  if (!isset($values['groups'])) {
+    $api = bluestatedigital_get_api('group');
+    try {
+      $values['groups'] = $api->listConstituentGroups();
+    }
+    catch (BlueStateDigitalApiException $ex) {
+      $message = 'list_constituent_groups [@code] @body';
+      watchdog('bluestatedigital', $message, array(
+        '@code' => $ex->getResponseCode(),
+        '@body' => $ex->getResponseBody(),
+      ));
+      $values['groups'] = FALSE;
+    }
+  }
+
+  $groups = $values['groups'];
+  if ($groups !== FALSE) {
+
+    $options = array();
+    if ($add_none) {
+      $options[''] = t('None');
+    }
+
+    // Add in the groups.
+    $key_found = FALSE;
+    foreach ($groups as $group) {
+      if (!empty($group[$key])) {
+        $options[$group[$key]] = $group['name'];
+        if ($group[$key] == $default_value) {
+          $key_found = TRUE;
+        }
+      }
+    }
+    // Add in the current group if it is not in the list of groups.
+    if (!empty($default_value) && !$key_found) {
+      $options[$default_value] = t('@key (not available)', array(
+        '@key' => $default_value,
+      ));
+    }
+
+    // Create the field as a select list.
+    $field = array(
+      '#type' => 'select',
+      '#title' => t('Constituent Group'),
+      '#description' => t('Blue State Digital Constituent Group.'),
+      '#options' => $options,
+      '#default_value' => $default_value,
+    );
+  }
+  else {
+
+    // Create the field as a text field.
+    $field = array(
+      '#type' => 'textfield',
+      '#title' => t('Constituent Group Name'),
+      '#description' => t('Blue State Digital Constituent Group Name.'),
+      '#size' => 60,
+      '#default_value' => $default_value,
     );
   }
 

@@ -166,6 +166,7 @@ function bluestatedigital_validate_url($element, &$form_state) {
  *
  * @param string $api
  *   The name of the API to create, must be one of the following
+ *   - group: the Constituent Group API
  *   - signup: the Signup API
  *
  * @return object|boolean
@@ -187,7 +188,11 @@ function bluestatedigital_get_api($api) {
     $request_timeout = variable_get('bluestatedigital_curl_request_timeout',
       10);
 
-    if ($api == 'signup') {
+    if ($api == 'group') {
+      $values[$api] = new BlueStateDigitalConstituentGroupApi($api_id,
+        $api_secret, $rest_method, $request_base, $request_timeout);
+    }
+    elseif ($api == 'signup') {
       $values[$api] = new BlueStateDigitalSignupApi($api_id, $api_secret,
         $rest_method, $request_base, $request_timeout);
     }
