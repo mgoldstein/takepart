@@ -690,6 +690,10 @@ function signature_node_view_alter(&$build) {
     $css_path = drupal_get_path('module', 'signature')
       . '/css/signature-states.css';
     drupal_add_css($css_path, array('type' => 'file'));
+    
+    $css_path = drupal_get_path('module', 'signature')
+      . '/css/signature-embedded.css';
+    drupal_add_css($css_path, array('type' => 'file'));
 
     $js_path = drupal_get_path('module', 'signature')
       . '/js/signature-states.js';

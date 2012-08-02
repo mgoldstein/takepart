@@ -1,0 +1,53 @@
+/* 
+    Document   : signature-embedded
+    Created on : Aug 2, 2012, 10:44:43 AM
+    Author     : marcgoldstein
+    Description:
+        Styling for embedded petitions.
+*/
+div.horizontal-tabs {
+    border: 0 none;
+}
+
+div.horizontal-tabs-panes {
+    border:10px solid #dfe6ea;
+    padding:1em 0;
+    margin-top:-3px;
+}
+
+.horizontal-tabs ul.horizontal-tabs-list {
+    background-color: transparent;
+    border: 0 none;
+    list-style: none;
+}
+
+.horizontal-tabs ul.horizontal-tabs-list li {
+
+}
+.horizontal-tabs ul.horizontal-tabs-list li a {
+    font-weight:300;
+    text-transform: uppercase;
+    color: #000;
+    outline: none;
+}
+.horizontal-tabs ul.horizontal-tabs-list li a:hover {
+    background-color: #dee8ea;
+}
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
+    border: 1px solid #dfe6ea;
+    background-color: #f3f7f8;
+    margin: 0 5px 0 0;
+    padding: 0;
+    outline: none;
+}
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
+    padding-bottom: 6px;
+    padding-top: 9px;
+}
+
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.first {
+
+}
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected {
+    background-color: #dfe6ea;
+}
