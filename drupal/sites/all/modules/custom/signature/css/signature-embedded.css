@@ -96,7 +96,8 @@ div.horizontal-tabs-panes {
     font-weight: bold;
 }
 
-.embedaction-content p.signature-progress-complete {
+.embedaction-content p.signature-progress-complete,
+.node-petition-action p.signature-progress-complete {
     width: 100px;
     float: left;
     text-transform: uppercase;
@@ -105,7 +106,8 @@ div.horizontal-tabs-panes {
     font-size: 11px;
 }
 
-.embedaction-content p.signature-progress-complete span.signature-progress-percent {
+.embedaction-content p.signature-progress-complete span.signature-progress-percent,
+.node-petition-action p.signature-progress-complete span.signature-progress-percent {
     color: #000; 
     font-size: 34px; 
     font-weight: bold; 
