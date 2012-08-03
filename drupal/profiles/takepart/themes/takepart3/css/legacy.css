@@ -190,6 +190,9 @@ ul#top-follow li.twitter a {
 ul#top-follow li.pinterest a {
     background: url(../images/sprite_global_nav_social.png) no-repeat -40px 0;
 }
+ul#top-follow li.googleplus a {
+    background: url(../images/sprite_global_nav_social.png) no-repeat -100px 0;
+}
 ul#top-follow li.youtube a {
     background: url(../images/sprite_global_nav_social.png) no-repeat -60px 0;
 }
