@@ -81,8 +81,8 @@ function signature_entity_info() {
     'fieldable' => FALSE,
     'entity keys' => array(
       'id' => 'nid',
+      'label' => 'title',
     ),
-    'label callback' => 'entity_class_label',
     'uri callback' => 'entity_class_uri',
     'access callback' => 'signature_access',
     'module' => 'signature',
@@ -707,22 +707,11 @@ function signature_node_view_alter(&$build) {
       . '/js/signature-read-more.js';
     drupal_add_js($js_path, array('type' => 'file'));
 
+    // add the cookie library for the tracking event latch
+    drupal_add_library('system', 'jquery.cookie');
+
     $settings = entity_load_single('signature_node', $node->nid);
     if ($settings !== FALSE && !empty($settings->type)) {
-
-      // add the cookie library for the tracking event latch
-      drupal_add_library('system', 'jquery.cookie');
-
-      $js_settings = array(
-        'signature' => array(
-          'metrics' => array(
-            'nodeTitle' => $node->title,
-            'newsletterGroup' => $settings->newsletter_group,
-            'viewedLatch' => 'signature_form_viewed_' . $node->nid,
-          ),
-        ),
-      );
-      drupal_add_js($js_settings, 'setting');
 
       $signature = entity_create('signature', array(
         'type' => $settings->type,
@@ -1005,21 +994,21 @@ function signature_base_form_callback($form, $form_state) {
   if (empty($errors)) {
 
     $node = $form['#signature_node'];
+    $node_selector = "#node-" . $node->nid;
     $settings = entity_load_single('signature_node', $node->nid);
     $variables = signature_node_progress_variables($settings);
     $variables['state'] = 'thank-you';
 
-    $js_settings = array(
-      'signature' => array(
-        'progress' => array($node->nid => $variables),
-        'metrics' => array(
-          'newsletterSignup' => !empty($form_state['values']['newsletter']),
-          'signatureAdded' => 1,
-        ),
-      ),
-    );
-
-    $commands[] = ajax_command_settings($js_settings, TRUE);
+    $commands[] = ajax_command_invoke($node_selector, 'trigger', array(
+      'signature_form_submit', array(check_plain($node->title)),
+    ));
+    if (!empty($form_state['values']['newsletter'])) {
+      $commands[] = ajax_command_invoke($node_selector, 'trigger', array(
+        'newsletter_signup', array(check_plain($settings->newsletter_group)),
+      ));
+    }
+    $commands[] = ajax_command_settings(array('signature' => array(
+      'progress' => array($node->nid => $variables))), TRUE);
   }
  
   return array('#type' => 'ajax', '#commands' => $commands);
@@ -1242,6 +1231,8 @@ function signature_node_progress_variables($settings) {
   }
 
   return array(
+    'title' => $settings->title,
+    'view_latch' => "signature_form_viewed_{$settings->nid}",
     'summary_id' => "signature-progress-summary-{$settings->nid}",
     'bar' => '/' . implode('/', array(
       drupal_get_path('module', 'signature'),
@@ -1260,3 +1251,48 @@ function signature_node_progress_variables($settings) {
     'state' => $state,
   );
 }
+
+/**
+ * Implements hook_block_info().
+ */
+function signature_block_info() {
+  return array(
+    'headers' => array(
+      'info' => 'Standard Petition Header Files',
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function signature_block_view($delta = '') {
+  $css_path = drupal_get_path('module', 'signature')
+    . '/css/signature-states.css';
+  drupal_add_css($css_path, array('type' => 'file'));
+    
+  $css_path = drupal_get_path('module', 'signature')
+    . '/css/signature-embedded.css';
+  drupal_add_css($css_path, array('type' => 'file'));
+
+  $js_path = drupal_get_path('module', 'signature')
+    . '/js/signature-states.js';
+  drupal_add_js($js_path, array('type' => 'file'));
+
+  $js_path = drupal_get_path('module', 'signature')
+    . '/js/signature-metrics.js';
+  drupal_add_js($js_path, array('type' => 'file'));
+
+  $js_path = drupal_get_path('module', 'signature')
+    . '/js/signature-read-more.js';
+  drupal_add_js($js_path, array('type' => 'file'));
+
+  // add the cookie library for the tracking event latch
+  drupal_add_library('system', 'jquery.cookie');
+
+  return array(
+    'subject' => 'Standard Petition Header Files',
+    'content' => '<p style="display:none;">This block adds the JS and CSS files needed for generic petitions.</p>',
+  );
+}
+

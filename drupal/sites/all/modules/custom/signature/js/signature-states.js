@@ -16,6 +16,12 @@
       var state_class = 'signature-node-' + node.state;
       $(div_id).removeClass(all_classes).addClass(state_class);
     
+      // Trigger the viewed event
+      if (jQuery.cookie(node.view_latch) == null) {
+        $(div_id).trigger('signature_form_view', [node.title]);
+        jQuery.cookie(node.view_latch, 1, {path:'/'});
+      }
+
       // Adjust the selected tab state of the petition
       var tab = '.signature-tab-' + node.state;
       $(tab).each(function () {

@@ -7,16 +7,11 @@ class SignatureNode extends Entity {
     parent::__construct($values, $entity_type);
   }
   
-  protected function defaultLabel() {
-    if (!empty($this->nid)) {
-      return entity_label('node', $this->nid);  
-    }
-    return t('Settings for node @nid', array('@nid' => $this->nid));
-  }
-  
   protected function defaultUri() {
     if (!empty($this->nid)) {
-      return entity_uri('node', $this->nid);  
+      return array(
+        'path' => 'node/' . $this->nid,
+      );
     }
     return NULL;
   }
@@ -56,6 +51,8 @@ class SignatureNodeController extends EntityAPIController {
     $countQuery->addExpression('COUNT(sc.nid)', 'count');
     $countQuery->groupBy('sc.nid');
     $query = parent::buildQuery($ids, $conditions, $revision_id);
+    $query->leftJoin('node', 'n', 'base.nid = n.nid');
+    $query->addField('n', 'title', 'title');
     $query->leftJoin($countQuery, 'c', 'base.nid = c.nid');
     $query->addField('c', 'count', 'count');
     return $query;
@@ -65,6 +62,11 @@ class SignatureNodeController extends EntityAPIController {
     foreach ($queried_entities as $key => $entity) {
       if (!isset($entity->count)) {
         $entity->count = 0;
+      }
+      if (!isset($entity->title)) {
+        $entity->title = t('Settings for node @nid', array(
+          '@nid' => $entity->nid,
+        ));
       }
       $queried_entities[$key] = $entity;
     }
