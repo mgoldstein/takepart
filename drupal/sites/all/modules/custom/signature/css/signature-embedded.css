@@ -59,6 +59,9 @@ div.horizontal-tabs-panes {
     background-color: #dfe6ea;
 }
 
+.embedaction-content .form-wrapper {
+    clear: both;
+}
 .embedaction-content .node-petition-action {
     padding: 0 5px;
 }
@@ -77,6 +80,8 @@ div.horizontal-tabs-panes {
 .embedaction-content .node-petition-action label {
     float: left;
     width: 100px;
+    text-align: right;
+    padding-right: 6px;
 }
 .embedaction-content .node-petition-action input.text-full {
     
@@ -86,12 +91,17 @@ div.horizontal-tabs-panes {
     margin: 2em 0 1em 0;
     text-align: center;
 }
+
+.embedaction-content .signature-progress-count {
+    font-weight: bold;
+}
+
 .embedaction-content p.signature-progress-complete {
     width: 100px;
     float: left;
     text-transform: uppercase;
     color: #666;
-    margin:0 10px 0 0;
+    margin: 0 10px 0 0;
     font-size: 11px;
 }
 
@@ -149,4 +159,12 @@ div.horizontal-tabs-panes {
 
 .embedaction-content .address-selection-tabs .horizontal-tabs-panes fieldset {
     margin: 0;
+}
+
+.embedaction-content #edit-signature-display-disclaimer {
+    margin-top: 8px;
+}
+
+.embedaction-content #edit-terms-of-use-note {
+    text-align: center;
 }
