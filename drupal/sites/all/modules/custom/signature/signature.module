@@ -752,7 +752,7 @@ function signature_node_state_callback($nids) {
   $variables = array();
   foreach (explode(',', $nids) as $nid) {
     if (preg_match('/^[0-9]+$/', $nid)) {
-      $settings = entity_load_single('signature_node', $node->nid);
+      $settings = entity_load_single('signature_node', $nid);
       if ($settings != FALSE && !empty($settings->type)) {
         $variables[$nid] = signature_node_progress_variables($settings);
       }
