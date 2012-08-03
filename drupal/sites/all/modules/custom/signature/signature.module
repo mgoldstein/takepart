@@ -1284,6 +1284,7 @@ function signature_block_view($delta = '') {
 
   // add the cookie library for the tracking event latch
   drupal_add_library('system', 'jquery.cookie');
+  drupal_add_library('system', 'ui.tabs');
 
   return array(
     'subject' => 'Standard Petition Header Files',
