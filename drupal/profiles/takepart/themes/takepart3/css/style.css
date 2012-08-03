@@ -2929,6 +2929,7 @@ body.multipage-campaign #highlighted {
     display: inline-block;
     font-weight: normal;
     margin-top:3px;
+    vertical-align: bottom;
 }
 
 .logged-in #user-nav li {
