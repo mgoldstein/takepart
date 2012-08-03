@@ -96,8 +96,7 @@ div.horizontal-tabs-panes {
     font-weight: bold;
 }
 
-.embedaction-content p.signature-progress-complete,
-.node-petition-action p.signature-progress-complete {
+.embedaction-content p.signature-progress-complete {
     width: 100px;
     float: left;
     text-transform: uppercase;
@@ -106,26 +105,29 @@ div.horizontal-tabs-panes {
     font-size: 11px;
 }
 
-.embedaction-content p.signature-progress-complete span.signature-progress-percent,
-.node-petition-action p.signature-progress-complete span.signature-progress-percent {
+.embedaction-content p.signature-progress-complete span.signature-progress-percent {
     color: #000; 
     font-size: 34px; 
     font-weight: bold; 
     display: block;
 }
+
 .embedaction-content .form-actions {
     text-align: center;
-} 
+}
+
 .embedaction-content .form-item-display,
 .embedaction-content .form-item-newsletter {
     margin: 0 0 0 100px;
 }
+
 .embedaction-content .form-item-display label,
 .embedaction-content .form-item-newsletter label {
     float: none;
     width: auto;
     padding-left: 6px;
 }
+
 .embedaction-content input.signature-sign-button {
     width: 312px;
     height: 52px;
@@ -137,7 +139,6 @@ div.horizontal-tabs-panes {
     text-shadow: 1px 1px 1px #FFF;
     color: #000;
     text-transform: uppercase;
-    
 }
 
 .embedaction-content input.signature-sign-button:hover {
