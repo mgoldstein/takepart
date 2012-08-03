@@ -210,7 +210,7 @@ function petition_signature_type_load($name) {
   return $name . '_signature';
 }
 
-function petition_type_load($type_name) {
+function petition_type_load($type_name = NULL) {
   $types = entity_load_multiple_by_name('petition_type',
     isset($type_name) ? array($type_name) : FALSE);
   return isset($type_name) ? reset($types) : $types;
