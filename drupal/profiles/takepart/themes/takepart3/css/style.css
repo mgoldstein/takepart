@@ -826,10 +826,10 @@ ul#top-follow li.pinterest img {
     line-height:18px;
     font-weight:400;
     color:#9BC;
+    clear: both;
 }
 
-h1.title a
-{
+h1.title a {
     color:#000;
     text-decoration:none;
 }
@@ -3205,4 +3205,20 @@ div.embedaction-content h2.embedaction-divider a {
 
 .node-petition-action .field-type-text-with-summary {
     line-height: 1.5em;
+}
+
+.node-petition-action .field-label-inline .field-label, 
+.node-petition-action .field-label-inline .field-items,
+.node-petition-action .field-label-inline .field-items .field-item {
+    float: none;
+    display: inline;
+    clear: none;
+}
+
+.node-petition-action .field-label-inline .field-label:after, 
+.node-petition-action .field-label-inline .field-items:after,
+.node-petition-action .field-label-inline .field-items .field-item:after {
+    float: none;
+    display: inline;
+    clear: none;
 }
