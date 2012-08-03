@@ -116,7 +116,7 @@ function signature_entity_info_alter(&$entity_info) {
   }
 }
 
-function signature_type_load($type_name) {
+function signature_type_load($type_name = NULL) {
   $types = entity_load_multiple_by_name('signature_type',
     isset($type_name) ? array($type_name) : FALSE);
   return isset($type_name) ? reset($types) : $types;
@@ -756,7 +756,7 @@ function signature_node_state_callback($nids) {
   $variables = array();
   foreach (explode(',', $nids) as $nid) {
     if (preg_match('/^[0-9]+$/', $nid)) {
-      $settings = entity_load_single('signature_node', $node->nid);
+      $settings = entity_load_single('signature_node', $nid);
       if ($settings != FALSE && !empty($settings->type)) {
         $variables[$nid] = signature_node_progress_variables($settings);
       }
