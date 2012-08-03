@@ -441,7 +441,7 @@ class BlueStateDigitalSignupApi extends BlueStateDigitalApi {
             case 'items':
               $signup_field = $signup_form->addChild('signup_form_field');
               $signup_field->addAttribute('id', $field_id);
-              $items = $sign_field->addChild('items');
+              $items = $signup_field->addChild('items');
               foreach ($value['items'] as $item) {
                 $items->addChild('item', $item);
               }

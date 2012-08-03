@@ -385,7 +385,7 @@ function takepart_contests_contest_entry_form_submit_1(&$form, &$form_state) {
     if (takepart_contests_contest_entry_allowed($entry)) {
 
       // save the entry
-      if ($entry->save()) {
+      if (entity_save('takepart_contests_contest_entry', $entry)) {
 
         // TODO: remove hardcoded referrence to profile email field
         $language = isset($entry->language) ? $entry->language : LANGUAGE_NONE;
