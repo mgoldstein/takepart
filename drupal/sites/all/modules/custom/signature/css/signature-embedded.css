@@ -83,7 +83,7 @@ div.horizontal-tabs-panes {
 }
 .embedaction-content .signature-progress {
     clear: both;
-    margin: 1em 0;
+    margin: 2em 0 1em 0;
     text-align: center;
 }
 .embedaction-content p.signature-progress-complete {
@@ -103,16 +103,18 @@ div.horizontal-tabs-panes {
 }
 .embedaction-content .form-actions {
     text-align: center;
+} 
+.embedaction-content .form-item-display,
+.embedaction-content .form-item-newsletter {
+    margin: 0 0 0 100px;
 }
-.embedaction-content .form-item-display {
-    margin-left: 100px;
-}
-.embedaction-content .node-petition-action .form-item-display label {
+.embedaction-content .form-item-display label,
+.embedaction-content .form-item-newsletter label {
     float: none;
     width: auto;
     padding-left: 6px;
 }
-.embedaction-content .signature-sign-button {
+.embedaction-content input.signature-sign-button {
     width: 312px;
     height: 52px;
     background-color: #ffc500;
@@ -123,6 +125,18 @@ div.horizontal-tabs-panes {
     text-shadow: 1px 1px 1px #FFF;
     color: #000;
     text-transform: uppercase;
+    
+}
+
+.embedaction-content input.signature-sign-button:hover {
+    /*Gradient*/ 
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+    box-shadow: 3px 3px 5px #888888;
+    border: 2px ridge #ffdf97;
 }
 
 .embedaction-content .address-selection-tabs {
