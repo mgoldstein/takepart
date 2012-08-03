@@ -2819,6 +2819,7 @@ body.multipage-campaign #highlighted {
     display: inline-block;
     font-weight: bold;
     margin-top:3px;
+    vertical-align: bottom;
 }
 
 .logged-in #user-nav li {
