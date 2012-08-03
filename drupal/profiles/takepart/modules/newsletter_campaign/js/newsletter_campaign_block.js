@@ -1,32 +1,26 @@
 (function ($) {
-
   $(document).ready(function() {
     // Newsletter signup event
-    $("div.takepart-newsletter-wrapper > div.takepart-newsletter-message").bind(
+    $(".takepart-newsletter-wrapper > .takepart-newsletter-message").bind(
       'newsletter_signup', function(e, title) {
-        s.linkTrackVars = "eVar23,events";
+        s.linkTrackVars = "eVar23,eVar30,events";
         s.linkTrackEvents = "event39";
         s.eVar23 = title;
+        s.eVar30 = s.pageName;
         s.events = 'event39';
         s.tl(true, 'o', 'Newsletter Signup');
-
-        s.linkTrackVars = "eVar28,events";
-        s.linkTrackEvents = "event19";
-        s.eVar28 = 'Newsletter Signup';
-        s.events = 'event19';
-        s.tl(true, 'o', 'Action Click');
       }
     );
-    $("div.takepart-newsletter-wrapper").each(function() {
+    $(".takepart-newsletter-wrapper").each(function() {
       // setup the email input field to have a placeholder message
-      $(this).find("div.form-item-email > input").focus(function() {
+      $(".form-item-email > input", this).focus(function() {
         // when the email field receives the focus remove the placeholder
-        // message if it is present
+        // if it is present
         if ($(this).val() == 'Your Email') {
           $(this).val('').removeClass('takepart-newsletter-empty');
         }
       }).blur(function() {
-        // when the email field loses the focus restore the placeholder message
+        // when the email field loses the focus restore the placeholder
         // if the field is empty
         if ($(this).val() == '') {
           $(this).val('Your Email').addClass('takepart-newsletter-empty');
@@ -38,5 +32,4 @@
       });
     });
   });
-
 })(jQuery);
