@@ -3211,7 +3211,7 @@ div.embedaction-content h2.embedaction-divider a {
 
 .node-petition-action .group-heading-split-right {
     float: left;
-    width: 350px;
+    width: 375px;
 }
 
 .node-petition-action .group-heading-split-right .field-type-text-with-summary {
@@ -3246,7 +3246,7 @@ div.embedaction-content h2.embedaction-divider a {
 }
 
 .node-petition-action .group-heading-split-right p.signature-progress-complete {
-    width: 100px;
+    width: 70px;
     float: left;
     text-transform: uppercase;
     color: #666;
@@ -3268,6 +3268,15 @@ div.embedaction-content h2.embedaction-divider a {
 .node-petition-action .form-item-display,
 .node-petition-action .form-item-newsletter {
     margin: 0 0 0 100px;
+}
+.node-petition-action h1.signature-heading {
+    background: url(/profiles/takepart/themes/takepart3/images/sign_petition_banner_600x47.png) no-repeat scroll 0 0 transparent;
+    height: 47px;
+    color: transparent;
+}
+
+.node-petition-action .form-wrapper {
+    clear: both;
 }
 
 .node-petition-action label {
