@@ -3199,26 +3199,118 @@ div.embedaction-content h2.embedaction-divider a {
   padding: 0 0 0 6px;
 }
 
-.node-petition-action .field-name-field-action-main-image {
+.node-petition-action .group-heading-split-left {
+    float: left;
+    width: auto;
+}
+
+.node-petition-action .group-heading-split-left .field-name-field-action-main-image {
     float: left;
 }
 
-.node-petition-action .field-type-text-with-summary {
+.node-petition-action .group-heading-split-right {
+    float: left;
+    width: 350px;
+}
+
+.node-petition-action .group-heading-split-right .field-type-text-with-summary {
+    line-height: 1.5em;
+    margin-bottom: 1em;
+}
+
+.node-petition-action .group-heading-split-right .field-label-inline {
     line-height: 1.5em;
 }
 
-.node-petition-action .field-label-inline .field-label, 
-.node-petition-action .field-label-inline .field-items,
-.node-petition-action .field-label-inline .field-items .field-item {
+.node-petition-action .group-heading-split-right .field-label-inline .field-label, 
+.node-petition-action .group-heading-split-right .field-label-inline .field-items,
+.node-petition-action .group-heading-split-right .field-label-inline .field-items .field-item {
     float: none;
     display: inline;
     clear: none;
 }
 
-.node-petition-action .field-label-inline .field-label:after, 
-.node-petition-action .field-label-inline .field-items:after,
-.node-petition-action .field-label-inline .field-items .field-item:after {
+.node-petition-action .group-heading-split-right .field-label-inline .field-label:after, 
+.node-petition-action .group-heading-split-right .field-label-inline .field-items:after,
+.node-petition-action .group-heading-split-right .field-label-inline .field-items .field-item:after {
     float: none;
     display: inline;
     clear: none;
+}
+
+.node-petition-action .group-heading-split-right .signature-progress {
+    clear: both;
+    margin: 2em 0 1em 0;
+    text-align: center;
+}
+
+.node-petition-action .group-heading-split-right p.signature-progress-complete {
+    width: 100px;
+    float: left;
+    text-transform: uppercase;
+    color: #666;
+    margin: 0 10px 0 0;
+    font-size: 11px;
+}
+
+.node-petition-action .group-heading-split-right p.signature-progress-complete span.signature-progress-percent {
+    color: #000; 
+    font-size: 34px; 
+    font-weight: bold; 
+    display: block;
+}
+
+.embedaction-content .group-heading-split-right .signature-progress-count {
+    font-weight: bold;
+}
+
+.node-petition-action .form-item-display,
+.node-petition-action .form-item-newsletter {
+    margin: 0 0 0 100px;
+}
+
+.node-petition-action label {
+    float: left;
+    width: 100px;
+    text-align: right;
+    padding-right: 6px;
+}
+
+.node-petition-action .form-item-display label,
+.node-petition-action .form-item-newsletter label {
+    float: none;
+    width: auto;
+    padding-left: 6px;
+}
+
+.node-petition-action #edit-signature-display-disclaimer {
+    margin-top: 8px;
+}
+
+.node-petition-action input.signature-sign-button {
+    width: 312px;
+    height: 52px;
+    background-color: #ffc500;
+    border: 2px ridge #fcaf3b;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #FFF;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.node-petition-action input.signature-sign-button:hover {
+    /*Gradient*/ 
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+    box-shadow: 3px 3px 5px #888888;
+    border: 2px ridge #ffdf97;
+}
+
+.node-petition-action #edit-terms-of-use-note {
+    text-align: center;
 }
