@@ -1298,6 +1298,10 @@ function signature_block_view($delta = '') {
   drupal_add_library('system', 'jquery.cookie');
   drupal_add_library('field_group', 'horizontal-tabs');
 
+  $js_path = drupal_get_path('module', 'embedaction')
+    . '/js/embedaction.js';
+  drupal_add_js($js_path, array('group' => JS_DEFAULT, 'type' => 'file'));
+
   return array(
     'subject' => 'Standard Petition Header Files',
     'content' => '<p style="display:none;">This block adds the JS and CSS files needed for generic petitions.</p>',
