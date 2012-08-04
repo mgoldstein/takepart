@@ -1166,6 +1166,7 @@ function signature_theme() {
  * an array of values for using in a theme template and the ajax callback
  */
 function signature_node_progress_variables($settings) {
+  global $user;
 
   if ($settings->goal > 0) {
     $percent = ((float)$settings->count/(float)($settings->goal)) * 100.0;
@@ -1217,10 +1218,21 @@ function signature_node_progress_variables($settings) {
     ));
   }
 
-  // the signature collection state is determined by the presence
-  // of a signed cookie, unless signature collection is closed
-  $cookie = "{$settings->type}_{$settings->nid}_signed";
-  $state = isset($_COOKIE[$cookie]) ? 'signed' : 'unsigned';
+  // the signature collection state is determined by wether the user is logged
+  // in and has an existing signature, unless signature collection is closed
+  //$cookie = "{$settings->type}_{$settings->nid}_signed";
+  //$state = isset($_COOKIE[$cookie]) ? 'signed' : 'unsigned';
+  $state = 'unsigned';
+  if (!empty($user->uid)) {
+    $result = db_select('signature', 's')
+      ->fields('s')
+      ->condition('uid', $user->uid, '=')
+      ->condition('nid', $settings->nid, '=')
+      ->execute();
+    if ($result->rowCount() > 0) {
+      $state = 'signed';
+    }
+  } 
   if ($days_left == 0 && $settings->limit_to_dates != 0) {
     $state = 'closed';
   }
@@ -1284,11 +1296,10 @@ function signature_block_view($delta = '') {
 
   // add the cookie library for the tracking event latch
   drupal_add_library('system', 'jquery.cookie');
-  drupal_add_library('system', 'ui.tabs');
+  drupal_add_library('field_group', 'horizontal-tabs');
 
   return array(
     'subject' => 'Standard Petition Header Files',
     'content' => '<p style="display:none;">This block adds the JS and CSS files needed for generic petitions.</p>',
   );
 }
-
