@@ -1211,13 +1211,14 @@ function signature_node_progress_variables($settings) {
   }
 
   if ($days_left > 0 && $settings->limit_to_dates != 0) {
-    $progress = t('!goal Goal, !days left', array(
+    $progress = t('<span class="number">!goal</span> Goal, !days left', array(
       '!goal' => number_format($settings->goal),
-      '!days' => format_plural($days_left, '1 day', '@count days'),
+      '!days' => format_plural($days_left, '<span class="number">1</span> day',
+      '<span class="number">@count</span> days'),
     ));
   }
   else {
-    $progress = t('!count of !goal signatures', array(
+    $progress = t('<span class="number">!count</span> of <span class="number">!goal</span> signatures', array(
       '!count' => number_format($settings->count),
       '!goal' => number_format($settings->goal),
     ));
