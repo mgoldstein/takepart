@@ -703,6 +703,10 @@ function signature_node_view_alter(&$build) {
       . '/js/signature-read-more.js';
     drupal_add_js($js_path, array('type' => 'file'));
 
+    $js_path = drupal_get_path('module', 'signature')
+      . '/js/jquery.qtip.min.js';
+    drupal_add_js($js_path, array('type' => 'file'));
+
     // add the cookie library for the tracking event latch
     drupal_add_library('system', 'jquery.cookie');
 
