@@ -166,7 +166,7 @@ div.horizontal-tabs-panes {
 }
 
 .embedaction-content #edit-signature-display-disclaimer {
-    margin-top: 8px;
+    margin: 8px 0 8px 100px;
 }
 
 .embedaction-content #edit-terms-of-use-note {
