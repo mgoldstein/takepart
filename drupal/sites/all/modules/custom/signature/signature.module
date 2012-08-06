@@ -1288,12 +1288,9 @@ function signature_block_info() {
  * Implements hook_block_view().
  */
 function signature_block_view($delta = '') {
+
   $css_path = drupal_get_path('module', 'signature')
     . '/css/signature-states.css';
-  drupal_add_css($css_path, array('type' => 'file'));
-    
-  $css_path = drupal_get_path('module', 'signature')
-    . '/css/signature-embedded.css';
   drupal_add_css($css_path, array('type' => 'file'));
 
   $js_path = drupal_get_path('module', 'signature')
@@ -1307,14 +1304,36 @@ function signature_block_view($delta = '') {
   $js_path = drupal_get_path('module', 'signature')
     . '/js/signature-read-more.js';
   drupal_add_js($js_path, array('type' => 'file'));
+    
+  $css_path = drupal_get_path('module', 'signature')
+    . '/css/signature-embedded.css';
+  drupal_add_css($css_path, array('type' => 'file'));
 
   // add the cookie library for the tracking event latch
   drupal_add_library('system', 'jquery.cookie');
+  drupal_add_library('system', 'jquery.once');
+  drupal_add_library('system', 'drupal.ajax');
+  drupal_add_library('system', 'drupal.collapse');
+  drupal_add_library('system', 'drupal.form');
+
   drupal_add_library('field_group', 'horizontal-tabs');
+  $js_path = drupal_get_path('module', 'field_group')
+    . '/field_group.js';
+  drupal_add_js($js_path, array('group' => JS_DEFAULT, 'type' => 'file'));
+  $css_path = drupal_get_path('module', 'field_group')
+    . '/css/field_group.css';
+  drupal_add_css($css_path, array('type' => 'file'));
+  $css_path = drupal_get_path('module', 'field_group')
+    . '/css/field_group.field_ui.css';
+  drupal_add_css($css_path, array('type' => 'file'));
 
   $js_path = drupal_get_path('module', 'embedaction')
     . '/js/embedaction.js';
-  drupal_add_js($js_path, array('group' => JS_DEFAULT, 'type' => 'file'));
+  drupal_add_js($js_path, array('type' => 'file'));
+
+  $js_path = drupal_get_path('module', 'takepart_addthis')
+    . '/js/share-bar-field.js';
+  drupal_add_js($js_path, array('type' => 'file'));
 
   return array(
     'subject' => 'Standard Petition Header Files',
