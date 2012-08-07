@@ -1,13 +1,19 @@
 (function ($) {
-
   var addthisShareListener = function (evt) {
-    alert('here');
+    var title = 'Unknown';
+    if (evt.data.service == 'email') { title = 'Email'; }
+    else if (evt.data.service == 'facebook') { title = 'Facebook'; }
+    else if (evt.data.service == 'twitter') { title = 'Twitter'; }
+    s.linkTrackVars = "eVar27,eVar30,events";
+    s.linkTrackEvents = "event25";
+    s.eVar27 = title;
+    s.eVar30 = s.pageName;
+    s.events = 'event25';
+    s.tl(true, 'o', 'Content Share');
   };
-
   Drupal.behaviors.addthisField = {
     attach: function (context, settings) {
-
-      // configure the individual share bars
+      // Configure the individual share bars.
       $('div.share-bar-field').once('addthis-init', function () {
         var id = $(this).attr('id');
         var configuration = {
@@ -21,12 +27,11 @@
         if (settings.addthis.fields[id].alternate_url.length > 0) {
           sharing['url'] = settings.addthis.fields[id].alternate_url;
         }
-        $(this).find('.addthis_toolbox').each(function () {
+        $('.addthis_toolbox', this).each(function () {
           addthis.toolbox(this, configuration, sharing);
         });
       });
-
-      // setup the share event listener
+      // Setup the share event listener.
       $('body').once('addthis-init', function () {
         addthis.addEventListener('addthis.menu.share', addthisShareListener);
       });

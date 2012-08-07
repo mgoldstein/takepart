@@ -1007,7 +1007,9 @@ function signature_base_form_callback($form, $form_state) {
       ));
     }
     $commands[] = ajax_command_settings(array('signature' => array(
-      'progress' => array($node->nid => $variables))), TRUE);
+      'progress' => array($node->nid => $variables),
+      'submitted_by' => $form_state['values']['email'],
+     )), TRUE);
   }
  
   return array('#type' => 'ajax', '#commands' => $commands);
