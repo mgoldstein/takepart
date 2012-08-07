@@ -14,12 +14,21 @@ div.horizontal-tabs-panes {
     padding:1em 0;
     margin-top:-3px;
 }
+#content .node-petition-action .group-petition-tabs div.horizontal-tabs-panes {
+    margin-top:-4px;
+}
 
 #content .horizontal-tabs ul.horizontal-tabs-list {
     background-color: transparent;
     border: 0 none;
     list-style: none;
     margin:0;
+}
+#content .embedaction-content .horizontal-tabs ul.horizontal-tabs-list {
+    background-color: transparent;
+    border: 0 none;
+    list-style: none;
+    margin:0 20px 10px;
 }
 
 #content .horizontal-tabs ul.horizontal-tabs-list li {
@@ -45,7 +54,17 @@ div.horizontal-tabs-panes {
     padding: 0;
     outline: none;
 }
-
+#content .node-petition-action .group-petition-tabs .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
+  border-bottom:  none;
+  width: auto;
+}
+#content .embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
+  border-bottom:  none;
+  width: auto;
+}
+#content .embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.last {
+  margin-right: 0;
+}
 #content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
     padding-bottom: 6px;
     padding-top: 9px;
@@ -98,8 +117,8 @@ div.horizontal-tabs-panes {
     text-align: right;
     padding-right: 6px;
 }
-.embedaction-content .node-petition-action input.text-full {
-    
+.embedaction-content .node-petition-action input.form-text {
+   width: 300px;   
 }
 .embedaction-content .signature-progress {
     clear: both;
