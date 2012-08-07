@@ -20,6 +20,7 @@
 	border: 0 none;
 	width: 318px;
 	height: 58px;
+	margin-left: 106px;
 }
 
 .node-petition-action input.signature-sign-button:hover {
@@ -29,5 +30,14 @@
 
 .node-petition-action label {
     line-height: 40px;    
+}
+
+.node-petition-action .form-item, .node-petition-action .form-actions {
+    margin-left: 60px;
+}
+
+
+.node-petition-action h1.signature-heading {
+	background: url(../images/2012-08-07/sign_petition_banner_600x47.png) no-repeat scroll 0 0 transparent
 }
 
