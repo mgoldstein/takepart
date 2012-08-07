@@ -1,7 +1,6 @@
 (function ($) {
   $(document).ready(function() {
     // Signature form view
-    console.log($(".node.signature-list"));
     $(".node.signature-list").bind(
       'signature_form_view', function(e, title) {
         s.linkTrackVars = "eVar25,eVar30,events";
@@ -15,9 +14,9 @@
     // Signature form submit
     $(".node.signature-list").bind(
       'signature_form_submit', function(e, title) {
-        s.linkTrackVars = "eVar23,eVar30,events";
+        s.linkTrackVars = "eVar25,eVar30,events";
         s.linkTrackEvents = "event27";
-        s.eVar23 = title;
+        s.eVar25 = title;
         s.eVar30 = s.pageName;
         s.events = 'event27';
         s.tl(true, 'o', 'petition submit');

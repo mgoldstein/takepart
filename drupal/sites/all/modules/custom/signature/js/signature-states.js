@@ -40,6 +40,12 @@
 
   Drupal.behaviors.signatureStates = {
     attach: function (context, settings) {
+      if ('signature' in settings && 'submitted_by' in settings.signature) {
+        if (addthis) {
+          addthis.update('config', 'ui_email_from',
+            settings.signature.submitted_by);
+        }
+      }
       if ('signature' in settings && 'progress' in settings.signature) {
         updateSignatureState(settings.signature.progress);
       }
