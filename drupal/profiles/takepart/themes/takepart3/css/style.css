@@ -3199,6 +3199,9 @@ div.embedaction-content h2.embedaction-divider a {
   float: right;
   padding: 0 0 0 6px;
 }
+div.embedaction-content h2.embedaction-divider a span {
+  color: #1CA9E7;
+}
 
 .node-petition-action .group-heading-split-left {
     float: left;
@@ -3294,7 +3297,7 @@ div.embedaction-content h2.embedaction-divider a {
 }
 
 .node-petition-action #edit-signature-display-disclaimer {
-    margin-top: 8px;
+    margin: 8px 0 8px 100px;
 }
 
 .node-petition-action input.signature-sign-button {
@@ -3303,12 +3306,11 @@ div.embedaction-content h2.embedaction-divider a {
     background-color: #ffc500;
     border: 2px ridge #fcaf3b;
     border-radius: 5px;
-    font-size: 24px;
-    font-weight: bold;
     text-shadow: 1px 1px 1px #FFF;
     color: #000;
     text-transform: uppercase;
     margin-left: 100px;
+  font: bold 24px Helvetica,Arial,sans-serif;
 }
 
 .node-petition-action input.signature-sign-button:hover {
@@ -3330,3 +3332,60 @@ div.embedaction-content h2.embedaction-divider a {
 .node-petition-action .group-address-tabs div.horizontal-tabs {
     margin-bottom: 0;
 }
+
+.node-petition-action .field-name-field-thank-you-share-bar {
+  margin-bottom: 30px;
+}
+
+body.node-type-petition-action h1.title {
+  margin-bottom: 10px;
+}
+.node-petition-action .field-name-body {
+  font-size: 13px;
+  line-height: 20px;
+}
+.node-petition-action p.signature-progress-count {
+  font-weight: bold;
+}
+.node-petition-action #signature-international-signature-form {
+  margin-left: 04;
+}
+#node_petition_action_embedaction_group_sign_the_petition #signature-international-signature-form h1 {
+  display: none;
+}
+.node-petition-action .field-group-htabs-wrapper {
+  margin-left: -13px;
+  position: relative;
+}
+.node-petition-action .group-petition-tabs .horizontal-tabs-panes {
+  padding:  10px;
+  background-color: #DFE6EA;
+  margin-top: -5px;  
+}
+.embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs-panes {
+  padding:  none;
+  background-color: transparent;
+  padding-top: 0;
+  }
+.node-petition-action .group-petition-tabs .horizontal-tabs-panes fieldset {
+  background-color: #FFF;  
+  padding: 10px;
+}
+.embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs-panes fieldset {
+  padding: 0;
+}
+.node-petition-action .address-selection-tabs ul.horizontal-tabs-list li {
+  position: absolute;
+  top:  20px;
+  left: 300px;
+}
+.node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.first {
+  top:  20px;
+  left: 465px;
+}
+.node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.selected {
+  display:  none;
+}
+
+
+
