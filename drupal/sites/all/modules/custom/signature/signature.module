@@ -1326,9 +1326,9 @@ function signature_block_view($delta = '') {
     . '/js/embedaction.js';
   drupal_add_js($js_path, array('type' => 'file'));
 
-  $js_path = drupal_get_path('module', 'takepart_addthis')
-    . '/js/share-bar-field.js';
-  drupal_add_js($js_path, array('type' => 'file'));
+  //$js_path = drupal_get_path('module', 'takepart_addthis')
+  //  . '/js/share-bar-field.js';
+  //drupal_add_js($js_path, array('type' => 'file'));
 
   return array(
     'subject' => 'Standard Petition Header Files',
