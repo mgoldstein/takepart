@@ -3270,7 +3270,7 @@ div.embedaction-content h2.embedaction-divider a span {
 
 .node-petition-action .form-item-display,
 .node-petition-action .form-item-newsletter {
-    margin: 0 0 0 100px;
+    margin: 0 0 0 102px;
 }
 .node-petition-action h1.signature-heading {
     background: url(/profiles/takepart/themes/takepart3/images/sign_petition_banner_600x47.png) no-repeat scroll 0 0 transparent;
@@ -3303,6 +3303,7 @@ div.embedaction-content h2.embedaction-divider a span {
 }
 .embedaction-content .node-petition-action #edit-signature-display-disclaimer {
   margin-right: 0;
+  margin-left: 104px !important;
 }
 
 .node-petition-action input.signature-sign-button {
@@ -3357,7 +3358,9 @@ body.node-type-petition-action h1.title {
   font-weight: bold;
 }
 .node-petition-action #signature-international-signature-form {
-  margin-left: 04;
+}
+.node-petition-action #signature-international-signature-form .field-group-htabs-wrapper h2 {
+  height:  0;
 }
 #node_petition_action_embedaction_group_sign_the_petition #signature-international-signature-form h1 {
   display: none;
@@ -3366,6 +3369,27 @@ body.node-type-petition-action h1.title {
   margin-left: -13px;
   position: relative;
 }
+.embedaction-content .node-petition-action .field-group-htabs-wrapper {
+  margin-left: 0;
+}
+.node-petition-action .field-group-htabs-wrapper.address-selection-tabs .horizontal-tabs-panes {
+  padding: 0;
+  margin-top: 0;
+}
+fieldset#signature_international_signature_form_group_outside_us, fieldset#signature_international_signature_form_group_inside_us {
+  margin-bottom: 0;
+}
+#signature-international-signature-form #edit-field-sig-city .form-item {
+  margin-bottom: 0;
+}
+fieldset#signature_international_signature_form_group_outside_us #edit-field-sig-country .form-item, fieldset#signature_international_signature_form_group_inside_us #edit-field-sig-state .form-item {
+  margin-top: 0;
+}
+#signature-international-signature-form select#edit-field-sig-state-und,
+#signature-international-signature-form select#edit-field-sig-country-und {
+  width: 200px;
+}
+
 .node-petition-action .group-petition-tabs .horizontal-tabs-panes {
   padding:  10px;
   background-color: #DFE6EA;
@@ -3389,19 +3413,50 @@ body.node-type-petition-action h1.title {
 }
 .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li {
   position: absolute;
-  top:  20px;
-  left: 275px;
+  top:  0;
+  left: 335px;
 }
-.node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.first {
-  top:  20px;
-  left: 465px;
-}
-.embedaction-content .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.first {
-  left: 350px;
+.embedaction-content .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li {
+  left: 305px;
+  top: 6px;
 }
 .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.selected {
   display:  none;
 }
 
+/* to indent the form on non-embedded pages */
+body.node-type-petition-action .node-petition-action #edit-field-sig-first-name,
+body.node-type-petition-action .node-petition-action #edit-field-sig-last-name,
+body.node-type-petition-action .node-petition-action #edit-field-sig-address,
+body.node-type-petition-action .node-petition-action #edit-field-sig-city,
+body.node-type-petition-action .node-petition-action .group-address-tabs,
+body.node-type-petition-action #signature-international-signature-form .form-item-email {
+  margin-left: 50px;
+}
+body.node-type-petition-action .node-petition-action input.signature-sign-button {
+  margin-left: 156px;
+}
 
+body.node-type-petition-action .node-petition-action .form-item-display,
+body.node-type-petition-action .node-petition-action .form-item-newsletter {
+  margin-left: 152px;
+}
+body.node-type-petition-action .node-petition-action #edit-signature-display-disclaimer {
+  margin-left: 154px;
+}
+body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper {
+  margin-left: 37px;
+}
+body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
+    margin-left: 180px;
+}
+#edit-field-sig-zip-code-und-0-value {
+  width: 408px;
+}
+.embedaction-content #edit-field-sig-zip-code-und-0-value {
+  width: 300px;
+}
+.embedaction-content .field-name-field-petition-recipient {
+  margin-bottom: 5px;
+}
 
