@@ -2,7 +2,16 @@
     font-family: Helvetica,arial;
 }
 
-.node-petition-action #signature-international-signature-form .field-widget-text-textfield input {
+.node-petition-action #signature-international-signature-form input {
+	width: 312px;
+	height: 30px;
+}
+
+.embedaction-content .node-petition-action label {
+    padding-right: 8px;
+}
+
+.node-petition-action input.signature-sign-button {
 	
 	
 }
