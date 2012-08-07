@@ -1,0 +1,73 @@
+.node-petition-action input.signature-sign-button {
+    font-family: Helvetica,arial;
+}
+
+.node-petition-action input.form-text {
+	width: 308px;
+	height: 30px;
+}
+
+.node-petition-action select {
+    height: 30px;
+}
+
+.node-petition-action label {
+    padding-right: 8px;
+}
+
+.node-petition-action input.signature-sign-button {
+	background: url(../images/2012-08-07/petition_sign_button.png) repeat-x scroll 0 0 transparent;
+	border: 0 none;
+	width: 318px;
+	height: 58px;
+	margin-left: 106px;
+}
+
+.node-petition-action input.signature-sign-button:hover {
+    background: url(../images/2012-08-07/petition_sign_button_over.png) repeat-x scroll 0 0 transparent;
+    border: 0 none;
+}
+
+.node-petition-action label {
+    line-height: 40px;    
+}
+
+.node-petition-action .form-item, .node-petition-action .form-actions {
+    margin-left: 54px;
+}
+
+
+.node-petition-action h1.signature-heading {
+	background: url(../images/2012-08-07/sign_petition_banner_600x47.png) no-repeat scroll 0 0 transparent
+}
+
+.node-petition-action .view-petition-signature-list tbody tr.even, tr.odd {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #e1e5e6;
+    padding: 0.1em 0.6em;
+    height: 32px;
+}
+
+.node-petition-action .view-petition-signature-list thead th {
+    border-bottom: 0 none;
+}
+
+.node-petition-action .view-petition-signature-list tbody {
+    border-top: 0 none;
+}
+
+.node-petition-action .view-petition-signature-list table {
+    width: 100%;
+}
+
+.node-petition-action .view-petition-signature-list .views-field-field-sig-first-name {
+    font-weight: bold;
+}
+
+.node-petition-action input.form-checkbox, .node-petition-action input.form-radio {
+    margin-left: 110px;
+}
+
+.node-petition-action #edit-terms-of-use-note {
+    margin-left: 188px;
+}
