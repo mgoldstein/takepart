@@ -3,7 +3,7 @@
 }
 
 .node-petition-action input.form-text {
-	width: 312px;
+	width: 308px;
 	height: 30px;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .node-petition-action .form-item, .node-petition-action .form-actions {
-    margin-left: 60px;
+    margin-left: 54px;
 }
 
 
@@ -62,4 +62,12 @@
 
 .node-petition-action .view-petition-signature-list .views-field-field-sig-first-name {
     font-weight: bold;
+}
+
+.node-petition-action input.form-checkbox, .node-petition-action input.form-radio {
+    margin-left: 110px;
+}
+
+.node-petition-action #edit-terms-of-use-note {
+    margin-left: 188px;
 }
