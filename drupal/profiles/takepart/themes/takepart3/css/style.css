@@ -3331,7 +3331,42 @@ div.embedaction-content h2.embedaction-divider a {
     margin-bottom: 0;
 }
 
-.node-petition-action ..field-name-field-thank-you-share-bar {
+.node-petition-action .field-name-field-thank-you-share-bar {
   margin-bottom: 30px;
 }
+
+body.node-type-petition-action h1.title {
+  margin-bottom: 10px;
+}
+.node-petition-action .field-name-body {
+  font-size: 13px;
+  line-height: 20px;
+}
+.node-petition-action p.signature-progress-count {
+  font-weight: bold;
+}
+.node-petition-action #signature-international-signature-form {
+  margin-left: 30px;
+}
+.node-petition-action #signature-international-signature-form h1 {
+  margin-left: -30px;
+}
+.node-petition-action .field-group-htabs-wrapper {
+  margin-left: -15px;
+  position: relative;
+}
+.node-petition-action .address-selection-tabs ul.horizontal-tabs-list li {
+  position: absolute;
+  top:  20px;
+  left: 300px;
+}
+.node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.first {
+  top:  20px;
+  left: 465px;
+}
+.node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.selected {
+  display:  none;
+}
+
+
 

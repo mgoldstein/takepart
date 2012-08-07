@@ -50,6 +50,13 @@ div.horizontal-tabs-panes {
     padding-bottom: 6px;
     padding-top: 9px;
 }
+#content .node-petition-action .horizontal-tabs ul.address-selection-tabs li.horizontal-tab-button a {
+    color: #777;
+    text-decoration: underline;
+}
+#content .node-petition-action .horizontal-tabs ul.horizontal-tabs-list li a:hover {
+    background-color: white;
+}
 
 #content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.first {
 
@@ -57,6 +64,13 @@ div.horizontal-tabs-panes {
 
 #content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected {
     background-color: #dfe6ea;
+}
+#content .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
+    border: none;
+    background-color: white;
+    margin: 0
+    padding: 0;
+    outline: none;
 }
 
 .embedaction-content .form-wrapper {
