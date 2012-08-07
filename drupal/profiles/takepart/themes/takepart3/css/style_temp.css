@@ -1,3 +1,8 @@
 .node-petition-action input.signature-sign-button {
     font-family: Helvetica,arial;
 }
+
+.node-petition-action #signature-international-signature-form .field-widget-text-textfield input {
+	
+	
+}
