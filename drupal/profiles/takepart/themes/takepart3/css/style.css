@@ -3297,7 +3297,12 @@ div.embedaction-content h2.embedaction-divider a span {
 }
 
 .node-petition-action #edit-signature-display-disclaimer {
-    margin: 8px 0 8px 100px;
+  margin: 8px 115px 8px 100px;
+  font-size:  11px;
+  color: #666;
+}
+.embedaction-content .node-petition-action #edit-signature-display-disclaimer {
+  margin-right: 0;
 }
 
 .node-petition-action input.signature-sign-button {
@@ -3324,6 +3329,10 @@ div.embedaction-content h2.embedaction-divider a span {
     border: 2px ridge #ffdf97;
 }
 
+.embedaction-content .node-petition-action #edit-terms-of-use-note {
+    margin-left: 110px;
+    margin-bottom: 0;
+}
 .node-petition-action #edit-terms-of-use-note {
     margin-left: 130px;
     margin-bottom: 2em;
@@ -3373,15 +3382,22 @@ body.node-type-petition-action h1.title {
 }
 .embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs-panes fieldset {
   padding: 0;
+  margin-bottom: 0;
+}
+.embedaction-content .node-petition-action .form-item-field-sig-country-und select {
+  width: 250px;
 }
 .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li {
   position: absolute;
   top:  20px;
-  left: 300px;
+  left: 275px;
 }
 .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.first {
   top:  20px;
   left: 465px;
+}
+.embedaction-content .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.first {
+  left: 350px;
 }
 .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.selected {
   display:  none;
