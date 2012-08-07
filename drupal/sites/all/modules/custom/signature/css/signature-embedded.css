@@ -17,6 +17,9 @@ div.horizontal-tabs-panes {
 #content .node-petition-action .group-petition-tabs div.horizontal-tabs-panes {
     margin-top:-4px;
 }
+#content .embedaction-content .node-petition-action .group-petition-tabs div.horizontal-tabs {
+    margin-bottom: 0;
+}
 
 #content .horizontal-tabs ul.horizontal-tabs-list {
     background-color: transparent;
