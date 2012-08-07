@@ -1,8 +1,7 @@
 <?php
-
 /**
  * @file
- * Administrative interface for Contest Types
+ * Administrative interface for Contest Types.
  */
 
 /**
@@ -11,11 +10,15 @@
 class TakePartContestTypeUIController extends EntityDefaultUIController {
 
   public function hook_menu() {
-
-    // add a link to the Structure admin page
     $items = parent::hook_menu();
-    $items[$this->path]['description'] = 'Manage contest types, including adding and removing fields and the display of fields.';
+    
+    // Update the description for the main admin page.
+    $items[$this->path]['description'] = 'Manage the Ideas for Good contest type, including mapping fields to BSD signup fields.';
 
+    // Don't allow any new contests to be added. They need to be re-worked to be
+    // node based.
+    unset($items[$this->path . '/add']);
+    unset($items[$this->path . '/import']);
     return $items;
   }
 }
@@ -23,34 +26,36 @@ class TakePartContestTypeUIController extends EntityDefaultUIController {
 /**
  * Contest Type entity form
  */
-function takepart_contests_contest_type_form($form, &$form_state, $contest_type, $op = 'edit') {
+function takepart_contests_contest_type_form($form, &$form_state, $entity, $op = 'edit') {
 
-  $form_state['contest_type'] = $contest_type;
+  $form_state['takepart_contests_contest_type'] = $entity;
 
   // update the label and reset the type if we are cloning the type
   if ($op == 'clone') {
-    $contest_type->label .= ' (cloned)';
-    $contest_type->type = '';
+    $entity->id = '';
+    $entity->type = '';
+    $entity->label .= ' (cloned)';
+    $entity->is_new = TRUE;
   }
 
   $form['label'] = array(
     '#title' => t('Label'),
-    '#type' => 'textfield',
-    '#default_value' => isset($contest_type->label) ? $contest_type->label : '',
     '#description' => t('The human-readable name of the contest type'),
+    '#type' => 'textfield',
     '#required' => TRUE,
     '#size' => 30,
+    '#default_value' => $entity->label,
   );
 
   $form['type'] = array(
+    '#description' => t('A unqiue machine-readable name for this contest type. It must only contain lowercase letters, numbers and underscores.'),
     '#type' => 'machine_name',
-    '#default_value' => isset($contest_type->type) ? $contest_type->type : '',
     '#maxlength' => 32,
     '#machine_name' => array(
-      'exists' => 'takepart_contests_get_types',
+      'exists' => 'takepart_contests_contest_type_load',
       'source' => array('label'),
     ),
-    '#description' => t('A unqiue machine-readable name for this contest type. It must only contain lowercase letters, numbers and underscores.'),
+    '#default_value' => $entity->type,
   );
 
   $form['actions'] = array('#type' => 'actions');
@@ -60,25 +65,27 @@ function takepart_contests_contest_type_form($form, &$form_state, $contest_type,
   }
 
   $form['actions']['submit'] = array(
-    '#type' => 'submit',
     '#value' => t('Save contest type'),
+    '#type' => 'submit',
     '#weight' => 40,
     '#submit' => $submit + array('takepart_contests_contest_type_form_submit'),
   );
 
-  // only add the delete button if we are editting an existing contest type
-  if (! empty($contest_type->id)) {
+  // only add the delete button if we are editting an existing entity
+  $id = $entity->identifier();
+  if (! empty($id)) {
     $form['actions']['delete'] = array(
-      '#type' => 'submit',
       '#value' => t('Delete contest type'),
-      '#submit' => $submit + array('takepart_contests_contest_type_form_submit_delete'),
+      '#type' => 'submit',
       '#weight' => 45,
+      '#submit' => array('takepart_contests_contest_type_form_submit_delete'),
     );
   }
 
   $form['actions']['cancel'] = array(
     '#type' => 'markup',
-    '#markup' => l(t('Cancel'), 'admin/structure/contest_types'),
+    '#markup' => l(t('Cancel'),
+      'admin/config/marigold-ideasforgood/contest_types'),
     '#weight' => 50,
   );
 
@@ -90,30 +97,36 @@ function takepart_contests_contest_type_form($form, &$form_state, $contest_type,
  */
 function takepart_contests_contest_type_form_submit(&$form, &$form_state) {
 
-  // build the contest type entity from the form
-  $contest_type = entity_ui_form_submit_build_entity($form, $form_state);
+  // Build entity from the form.
+  $entity = entity_ui_form_submit_build_entity($form, $form_state);
 
-  // save the contest type
-  $status = $contest_type->save();
+  // Save the entity.
+  $status = $entity->save();
   if ($status == SAVED_UPDATED) {
     drupal_set_message(t('The contest type %name has been updated.',
-      array('%name' => $contest_type->label)));
+      array('%name' => $entity->label)));
   }
   else if ($status == SAVED_NEW) {
     drupal_set_message(t('The contest type %name has been added.',
-      array('%name' => $contest_type->label)));
+      array('%name' => $entity->label)));
   }
 
-  // go back to the list of content types
-  $form_state['redirect'] = 'admin/structure/contest_types';
+  // Go back to the list of entities.
+  $form_state['redirect'] = 'admin/config/marigold-ideasforgood/contest_types';
 }
 
 /**
  * Contest Type entity form delete handler
  */
 function takepart_contests_contest_type_form_submit_delete(&$form, &$form_state) {
-
-  // go to the delete confirmation page
-  $type = $form_state['contest_type']->type;
-  $form_state['redirect'] = 'admin/structure/contest_types/manage/' . $type . '/delete?destination=admin/structure/contest_types';
+  // Go to the delete confirmation page.
+  $form_state['redirect'] = array(
+    'admin/config/marigold-ideasforgood/contest_types/manage/'
+      . (string) $form_state['contest_type']->identifier() . '/delete',
+    array(
+      'query' => array(
+        'destination' => 'admin/config/marigold-ideasforgood/contest_types',
+      ),
+    ),
+  );
 }

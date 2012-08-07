@@ -106,7 +106,7 @@ img.photo, .gallery-item img {
     padding: 0;
     float: right;
     overflow: visible;
-    margin-top:5px;
+    margin-top: 7px;
     width:auto;
     white-space: nowrap;
 }
@@ -120,25 +120,24 @@ img.photo, .gallery-item img {
     vertical-align: top;
     margin-top:3px;
 }
+#user-nav li.login-1{
+    padding-left: 5px;
+    margin-left: 5px;
+  background: url(images/login_top_bar.png) no-repeat left top;
+}
 .logged-in #user-nav li {
     margin-left:10px;
 }
 
-#join-login-top li.or {
-    margin-right: 3px;
-} 
-
 #join-login-top a {
-    font-size:13px;
+    font-size:10px;
 }
 
 #join-login-top .join-takepart {
-    margin-right: 3px;
+    margin-right: 0;
 }
 
 a.user-menu-register  {
-    background: url(../images/arrows-blk.png) no-repeat 0 3px;
-    padding-left: 16px;
 }
 
 #join-login-top .join-login {
@@ -183,19 +182,22 @@ ul#top-follow li.title {
 }
 
 ul#top-follow li.fb a {
-    background: url(../images/sprite2.png) no-repeat -153px -678px;
+    background: url(../images/sprite_global_nav_social.png) no-repeat 0 0;
 }
-
 ul#top-follow li.twitter a {
-    background: url(../images/sprite2.png) no-repeat -177px -678px;
+    background: url(../images/sprite_global_nav_social.png) no-repeat -20px 0;
 }
-
+ul#top-follow li.pinterest a {
+    background: url(../images/sprite_global_nav_social.png) no-repeat -40px 0;
+}
+ul#top-follow li.googleplus a {
+    background: url(../images/sprite_global_nav_social.png) no-repeat -100px 0;
+}
 ul#top-follow li.youtube a {
-    background: url(../images/sprite2.png) no-repeat -201px -678px;
+    background: url(../images/sprite_global_nav_social.png) no-repeat -60px 0;
 }
-
 ul#top-follow li.rss a {
-    background: url(../images/sprite2.png) no-repeat -226px -678px;
+    background: url(../images/sprite_global_nav_social.png) no-repeat -80px 0;
 }
 
 /**** Top Navigation ***/
@@ -226,7 +228,7 @@ ul#top-follow li.rss a {
 
 #block-menu-block-1 li.dhtml-menu a {
     display: block;
-    padding: 0px 10px;
+    padding: 0 7px;
     text-decoration: none;
     background: #FFF;
     color: #000;
@@ -323,7 +325,7 @@ ul#top-follow li.rss a {
 
 /**** Top Search ****/
 form#search-api-page-search-form-2 {
-    margin: 4px 0 0 0;
+    margin: 3px 0 0 0;
 }
 
 #top-search .form-item {
@@ -1981,7 +1983,7 @@ q, q.pull-quote {
     color: #99BBCC;
     font-size: 30px;
     line-height: 100%;
-    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
     font-weight: normal;
     margin: 0;
     padding: 0 10px 10px 10px;
@@ -2561,7 +2563,7 @@ div.messages a:visited {
 }
 #slim-header ul#top-follow {
     clear: none;
-    margin: 9px 0 0 0;
+    margin: -2px 0 0 0;
     float: right;
 }
 
@@ -2593,7 +2595,7 @@ div.messages a:visited {
 .campaign-multipage #slim-header ul.menu li {
     float: none;
     float: left;
-    font-family: 'NewsGothicBoldCondensed';
+    font-family: 'TradeGothicLTStdCnBold';
     font-size: 15px;
     text-transform: uppercase;
     font-weight: normal;
@@ -2668,9 +2670,12 @@ div.messages a:visited {
     width: auto;
 }
 #slim-header.multipage-campaign #top-search {
-    margin: 0 8px 4px 10px;
+    margin: 4px 1px 4px 1px;
     float: left;
-    width: 13em;
+    width: 156px;
+}
+body.logged-in #slim-header.multipage-campaign #top-search {
+    width: 136px;
 }
 
 #slim-header ul.menu li a:hover {
@@ -2999,7 +3004,7 @@ a.take_action_button:active span, a.take_action_button:hover span {
 } 
 
 a.take_action_button {
-    font-family: 'NewsGothicBoldCondensed';
+    font-family: 'TradeGothicLTStdCnBold';
     font-size: 24px;
     font-weight: normal;
     letter-spacing: 2px;
@@ -3721,7 +3726,12 @@ https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
 .multipage-campaign #top-search .form-text,
 .multipage-campaign #top-search .form-text:focus,
 .multipage-campaign #top-search .form-text:active {
-    width: 10em;
+    width: 115px;
+}
+body.logged-in .multipage-campaign #top-search .form-text,
+body.logged-in .multipage-campaign #top-search .form-text:focus,
+body.logged-in .multipage-campaign #top-search .form-text:active {
+    width: 90px;
 }
 
 #top-search .tpform-submit {
@@ -4271,7 +4281,7 @@ ul#global-links {
 .region-highlighted .block-context-related-menu ul.menu li, .region-highlighted .block-menu ul.menu li{
     display: block;
     float: left;
-    font-family: 'NewsGothicBoldCondensed';
+    font-family: 'TradeGothicLTStdCnBold';
     list-style: none outside none;
     margin: 0;
     padding: 0 25px;

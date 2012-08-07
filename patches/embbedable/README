@@ -1,0 +1,16 @@
+see https://takepart1.fogbugz.com/default.asp?28123#168493
+
+Show warning message when producers embed unpublished nodes with WYSIWYG
+
+
+pglatz 7/16/2012
+
+Since this is a contrib module, which we don't want to overwrite, I did this:
+
+1) create profiles/takepart/modules/embeddable
+2) create a patch file
+3) delete sites/all/modules/contrib/embedable
+
+
+See embbedable-28123.patch
+

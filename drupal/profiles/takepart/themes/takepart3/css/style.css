@@ -1,7 +1,7 @@
 /**
 * Primary style sheet for TakePart.com
 * organized by section (===SECTION===).
-* @todo: seperate files?
+* @todo: separate files?
 /* COLORS
     - primaries:
     - default body text  #000000
@@ -83,7 +83,7 @@ div.gray-rule {
 #slim-header ul.menu li {
     float: none;
     float: left;
-    font-family: 'NewsGothicBoldCondensed';
+    font-family: 'TradeGothicLTStdCnBold';
     font-size: 15px;
     text-transform: uppercase;
     font-weight: normal;
@@ -92,13 +92,16 @@ div.gray-rule {
     text-align: center;
     padding: 8px 0 0 0;
 }
-
 #slim-header ul.menu li a {
     background: none;
     color: #000;
-    background: url(../images/dot.png) no-repeat 0 7px;
+    background: url(../images/dot-bbg.png) no-repeat 0 7px;
     padding: 0 10px;
     white-space:nowrap;
+}
+#slim-header ul.menu li.first a {
+	background-image: none;
+	padding-left: 0;
 }
 
 /* homepage features block */
@@ -233,9 +236,17 @@ body.two-sidebars #content, body.sidebar-first #content
     float:left;
     margin-left:124px;
 }
+.header-right .row2 {
+  clear:  both;
+  padding-top: 2px;
+}
 
 #nav-wrap{
     margin: 0 0 5px 0;
+    float: left;
+}
+.header-right #nav-wrap {
+    margin: 0 0 10px 0;
     float: left;
 }
 
@@ -434,23 +445,22 @@ ul,ol
 #block-menu-block-1 li
 {
     float:left;
-    font-family:NewsGothicBoldCondensed;
+    font-family:TradeGothicLTStdCnBold;
     list-style-type:none;
     list-style-image:none;
     letter-spacing:.05em;
     text-align:left;
-    font-size:24px;
+    font-size:22px;
     text-transform:uppercase;
     font-weight:400;
     margin:0;
     padding:0;
-    letter-spacing:2px;
 }
 
 /*Added for IE 7 */
 #block-menu-block-1 li a
 {
-    font-family:NewsGothicBoldCondensed;
+    font-family:TradeGothicLTStdCnBold;
 }
 
 #block-menu-block-1 ul.menu ul.menu li a {
@@ -460,7 +470,8 @@ ul,ol
 /*spacing between menu items*/
 #block-menu-block-1 li.dhtml-menu
 {
-    margin-left:10px;
+    margin-right:5px;
+    height: 30px;
 }
 
 .views-field-field-slide-headline-override .field-content ul.dots li
@@ -718,27 +729,46 @@ body.front .main-content .block-boxes-current-promo .views-row-10
 /* ===PAGE HEADER=== */
 /* ------------------------------------------------------------------------*/
 
+#top-follow-wrapper {
+	padding-top: 10px;
+    float: right;
+    margin-right: 10px;
+    position: relative;
+}
+#slim-header #top-follow-wrapper {
+    float: left;
+}
+/* My Comment */
+#top-follow-wrapper .top-follow-label {
+    float: left;
+    display: inline;
+    font-style: italic;
+    font-size:  10px;
+    padding-top: 3px;
+}
+#slim-header #top-follow-wrapper .top-follow-label {
+  display: none;
+}
+ul#top-follow {
+    float: right;
+    margin: 0 0 0;
+    width: 135px;
+}
 ul#top-follow li a {
     display: block;
-    height: 18px;
-    width: 18px;
+    height: 15px;
+    width: 15px;
     text-indent: -9000px;
-    margin-left: 8px;
+    margin-left: 6px;
 }
 
 ul#top-follow li.pinterest a {
-    text-indent: 0;
 }
 
 ul#top-follow li.pinterest img {
     padding-top: 1px;
 }
 
-ul#top-follow {
-    margin: 10px 0 0;
-    float: right;
-    width: 132px;
-}
 
 .header-mid
 {
@@ -754,9 +784,16 @@ ul#top-follow {
 
 #join-login-top a,#slim-header.multipage-campaign #join-login-top #user-nav a
 {
-    color:#000;
-    font-weight:700;
-    line-height:15px;
+  color:#000;
+  font-weight:700;
+  line-height:15px;
+}
+#join-login-top a
+{
+  line-height: 14px;     /* #28114  pglatz 7/10/2012 */
+}
+#join-login-top a {
+    font-size:10px;
 }
 
 #slim-header {
@@ -765,7 +802,7 @@ ul#top-follow {
 
 #slim-header #join-login-top
 {
-    float:left;
+    float:right;
     font-size:11px;
 }
 
@@ -789,10 +826,10 @@ ul#top-follow {
     line-height:18px;
     font-weight:400;
     color:#9BC;
+    clear: both;
 }
 
-h1.title a
-{
+h1.title a {
     color:#000;
     text-decoration:none;
 }
@@ -837,7 +874,7 @@ h1.title a:hover {
 
 .node-type-topic-front .main-content h1.title {
     font-size: 26px;
-    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
     line-height: 26px;
     font-weight: 300;
     background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 10px transparent;
@@ -936,7 +973,7 @@ body.front .main-content .block-boxes-current-promo h2
     padding:8px 0;
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll left center transparent;
     width:100%;
-    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
     font-size: 26px;
     line-height: 26px;
 }
@@ -1160,12 +1197,12 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     padding:10px;
 }
 #right-rail #block-views-related-campaigns-block-2,
-#right-rail .block-boxes-title-movies-that-matter {
+#right-rail .block-boxes-current-related_campaigns {
     border:none;
     padding: 0;
 }
 #right-rail #block-views-related-campaigns-block-2 h2,
-#right-rail .block-boxes-title-movies-that-matter h2 {
+#right-rail .block-boxes-current-related_campaigns h2 {
     border-top: 1px dotted #000000;
     padding: 10px 0;
     margin: 0;
@@ -1173,16 +1210,16 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
 }
 
 #right-rail #block-views-related-campaigns-block-2 .views-row,
-#right-rail .block-boxes-title-movies-that-matter .views-row {
+#right-rail .block-boxes-current-related_campaigns .views-row {
     width:50%;
     float:left;
 }
 #right-rail #block-views-related-campaigns-block-2 .views-row-even,
-#right-rail .block-boxes-title-movies-that-matter .views-row-even {
+#right-rail .block-boxes-current-related_campaigns .views-row-even  {
     text-align: right;
 }
 #right-rail #block-views-related-campaigns-block-2 img,
-#right-rail .block-boxes-title-movies-that-matter img {
+#right-rail .block-boxes-current-related_campaigns img {
     width:145px;
 }
 
@@ -1395,7 +1432,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     font-size: 18px;
     line-height: 110%;
     color: #000;
-    font-family: "NewsGothicBoldCondensed";
+    font-family: "TradeGothicLTStdCnBold";
     font-weight: 300;
     background: none;
 }
@@ -1408,7 +1445,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     font-size: 18px;
     line-height: 110%;
     color: #000;
-    font-family: "NewsGothicBoldCondensed";
+    font-family: "TradeGothicLTStdCnBold";
     font-weight: 300;
     background: none;
 }
@@ -1562,7 +1599,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     margin-bottom: 8px;
     background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 10px transparent;
     width:100%;
-    font-family: NewsGothicBoldCondensed, sans-serif;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
     font-size: 26px;
     line-height: 26px;
     font-weight: normal;
@@ -1627,63 +1664,132 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     padding-top:4px;
 }
 
+/* secondary menus */
 #hot-topics-nav {
-    width: 540px;
     float: left;
-    padding: 9px 0 6px 10px;
+    padding: 3px 0 3px 15px;
+    background-color: white;
 }
-
 #hot-topics-nav ul {
-    margin-left: 10px;
+    margin-left: 0;
 }
-
 #hot-topics-nav li {
-    font-size: 20px;
-    font-family: NewsGothicBoldCondensed, "Arial Narrow", sans-serif;
-    list-style: none inside none;
-    margin-right: 16px;
     display: inline;
     text-transform: uppercase;
+    font-size: 15px;
+    font-family: TradeGothicLTStdCnBold, "Arial Narrow", sans-serif;
+    list-style: none inside none;
+    margin-right: 10px;
+    padding-right: 10px;
+    background: url(images/menu2_bar.png) no-repeat right 1px;
 }
-
+#hot-topics-nav li.last {
+    margin-right: 0;
+    background: none;
+}
 #hot-topics-nav li a {
     color: #000;
     text-decoration: none;
 }
-
 #hot-topics-nav li a:hover {
     color: #1ca9e7;
 }
 
-#hot-topics-nav {
-    width: 540px;
+#dontmiss-nav {
     float: left;
-    padding: 9px 0 6px 10px;
+    padding: 6px 0 0;
+    margin-left: 20px;
 }
-
-#hot-topics-nav ul {
-    margin-left: 10px;
+#dontmiss-nav div.dont {
+	font-size: 11px;
+    padding-top: 1px;
+  margin-right: 8px;
+  float: left;
+  font-style: italic;
 }
-
-#hot-topics-nav li {
-    font-size: 20px;
-    font-family: NewsGothicBoldCondensed, "Arial Narrow", sans-serif;
-    list-style: none inside none;
-    margin-right: 16px;
+#dontmiss-nav ul {
+    margin-left: 0;
+    float:  right;
+}
+#dontmiss-nav li {
     display: inline;
-    text-transform: uppercase;
+    font-size: 12px;
+  font-weight: bold;
+    list-style: none inside none;
+    margin-right: 8px;
+    padding-right: 13px;
+    background: url(../images/dot.png) no-repeat right;
+}
+#dontmiss-nav li.last {
+    margin-right: 0;
+    padding-right: 0;
+    background: none;
+}
+#dontmiss-nav li a {
+    color: #179be2;
+    text-decoration: none;
+}
+#dontmiss-nav li a:hover {
+    text-decoration: underline;
 }
 
-#hot-topics-nav li a {
-    color: #000;
-    text-decoration: none;
+/* pulldown button */
+#participant-pulldown {
+  float:  right;
+  margin-top: 4px;
+  position: relative;
+  z-index: 10 !important;
+  width: 200px;
+  height: 30px;
+}
+#participant-pulldown .pp-button {
+  position: relative;
+  z-index: 10 !important;
+  width: 200px;
+  height: 30px;
+  background: url(images/participant_dropdown.png) no-repeat;
+  cursor: pointer;
+}
+.pp-button-hover {
+  background: url(images/participant_dropdown_hover.png) no-repeat !important;
+}
+#participant-pulldown .inner {
+  position: relative;
+  z-index: 5 !important;
+  background-color: white;
+  margin: -2px 3px 0;
+  display: none;
+}
+#participant-pulldown ul {
+  list-style-type: none;
+  border-color: #ededed;
+  border-left: 2px solid #ededed;
+  border-right: 2px solid #ededed;
+  border-bottom: 2px solid #ededed;
+  -moz-box-shadow: 1px 1px 2px #ccc;
+  -webkit-box-shadow: 1px 1px 2px #ccc;
+  box-shadow: 1px 1px 2px #ccc;
+}
+#participant-pulldown ul li {
+  list-style-type: none;
+  padding: 6px 8px;
+  border-bottom: 1px solid #ededed;
+}
+#participant-pulldown ul li.last {
+  border-bottom: none;
+}
+#participant-pulldown ul li:hover,
+#participant-pulldown ul li:hover a {
+	background-color: #fff3cc;
+	color: black;
+	text-decoration: none;
 }
 
 /*search box*/
 #top-search {
-    width:189px;
+    width:202px;
     float:right;
-    margin:5px 0 0;
+    margin:0;
 }
 
 #top-search .form-text,
@@ -1691,7 +1797,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #top-search .form-text:active {
     border: medium none;
     display: block;
-    width: 154px;
+    width: 169px;
     float: left;
     font-size: 12px;
     height: 16px;
@@ -1700,9 +1806,12 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     padding: 2px 5px;
     background: #FFF;
 }
+#top-search .form-text {
+  font-style: italic;
+}
 
 #search-api-page-search-form-2 div {
-    border: solid 1px #ccc;
+    border: 1px solid #ececec;
     display: inline-block;
 }
 .view-id-slide_rotator {
@@ -2016,7 +2125,8 @@ div.tp-pet-thank-you-heading {
 }
 
 #block-menu-block-1 {
-    padding-top:14px;
+    padding-top:4px;
+    float:  left;
 }
 #header-wrapper ul.menu {
     padding-top: 0px;
@@ -2120,7 +2230,7 @@ div.tp-pet-thank-you-heading {
 }
 
 #page .page-taxonomy-term .block-boxes-delta-page_title_h1 h1.title {
-    font-family: NewsGothicBoldCondensed,sans-serif;
+    font-family: TradeGothicLTStdCnBold,sans-serif;
     font-size:26px;
     line-height: 26px;
     color: #99BBCC;
@@ -2129,7 +2239,7 @@ div.tp-pet-thank-you-heading {
 .page-taxonomy-term .block-boxes-delta-page_title_h1 h1.title span {
     color: #99BBCC;
     font-size:26px;
-    font-family: NewsGothicBoldCondensed,sans-serif;
+    font-family: TradeGothicLTStdCnBold,sans-serif;
     font-weight: 300;
 }
 
@@ -2815,14 +2925,24 @@ body.multipage-campaign #highlighted {
     text-align:center;
 }
 
-#user-nav li{
+#user-nav li {
     display: inline-block;
-    font-weight: bold;
+    font-weight: normal;
     margin-top:3px;
+    vertical-align: bottom;
 }
 
 .logged-in #user-nav li {
     margin-left:10px;
+    font-weight: normal;
+    font-size: 10px;
+}
+.logged-in #user-nav li.login-0 {
+    padding-top: 1px;
+    margin-left:5px;
+}
+.logged-in #user-nav li.login-1 {
+    margin-left:5px;
 }
 
 
@@ -3007,3 +3127,265 @@ border-top: 1px dotted #000000 !important;
 p.fb-login-text {
   display: none;
 }
+
+/**
+ * Embedded Action Styles
+ */
+ div.drupal-embed {
+     margin-bottom: 1em;
+ }
+ div.embedaction-wrapper {
+  background-color: #ffffff;
+  border: 4px solid #ffe789;
+  padding: 0 8px;
+}
+
+div.embedaction-wrapper tbody { 
+     border:0;
+}
+
+.embedaction-header {
+}
+
+.embedaction-header td {
+    padding: 0 5px;
+    vertical-align: middle;
+}
+
+div.embedaction-button {
+  background: url(/profiles/takepart/themes/takepart3/images/take-action-embed.png) no-repeat scroll right top transparent;
+  float: left;
+  height: 29px;
+  margin: 12px 0;
+  width: 168px;   
+}
+
+div.embedaction-wrapper div.field-name-field-promo-headline {
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+div.embedaction-wrapper div.field-name-field-promo-headline div.field-items {
+}
+
+div.embedaction-wrapper div.field-name-field-promo-headline div.field-item {
+}
+
+div.embedaction-wrapper div.field-name-field-promo-headline div.field-item:hover {
+  color: #1ca9e7; 
+}
+
+div.embedaction-content {
+  
+}
+
+div.embedaction-content h2.embedaction-divider {
+  background: url("/profiles/takepart/themes/takepart3/images/45deg_lines_yellow.png") repeat-x scroll 0 0 transparent;
+  border: medium none;
+  color: #ffe789;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  height: 18px;
+  line-height: 100%;
+  margin: 0;
+  padding: 0 0 6px;
+}
+
+div.embedaction-content h2.embedaction-divider a {
+  background: none repeat scroll 0 0 #FFFFFF;
+  color: #000000;
+  float: right;
+  padding: 0 0 0 6px;
+}
+div.embedaction-content h2.embedaction-divider a span {
+  color: #1CA9E7;
+}
+
+.node-petition-action .group-heading-split-left {
+    float: left;
+    width: auto;
+}
+
+.node-petition-action .group-heading-split-left .field-name-field-action-main-image {
+    float: left;
+}
+
+.node-petition-action .group-heading-split-right {
+    float: left;
+    width: 375px;
+}
+
+.node-petition-action .group-heading-split-right .field-type-text-with-summary {
+    line-height: 1.5em;
+    margin-bottom: 1em;
+}
+
+.node-petition-action .group-heading-split-right .field-label-inline {
+    line-height: 1.5em;
+}
+
+.node-petition-action .group-heading-split-right .field-label-inline .field-label, 
+.node-petition-action .group-heading-split-right .field-label-inline .field-items,
+.node-petition-action .group-heading-split-right .field-label-inline .field-items .field-item {
+    float: none;
+    display: inline;
+    clear: none;
+}
+
+.node-petition-action .group-heading-split-right .field-label-inline .field-label:after, 
+.node-petition-action .group-heading-split-right .field-label-inline .field-items:after,
+.node-petition-action .group-heading-split-right .field-label-inline .field-items .field-item:after {
+    float: none;
+    display: inline;
+    clear: none;
+}
+
+.node-petition-action .group-heading-split-right .signature-progress {
+    clear: both;
+    margin: 2em 0 1em 0;
+    text-align: center;
+}
+
+.node-petition-action .group-heading-split-right p.signature-progress-complete {
+    width: 70px;
+    float: left;
+    text-transform: uppercase;
+    color: #666;
+    margin: 0 10px 0 0;
+    font-size: 11px;
+}
+
+.node-petition-action .group-heading-split-right p.signature-progress-complete span.signature-progress-percent {
+    color: #000; 
+    font-size: 34px; 
+    font-weight: bold; 
+    display: block;
+}
+
+.embedaction-content .group-heading-split-right .signature-progress-count {
+    font-weight: bold;
+}
+
+.node-petition-action .form-item-display,
+.node-petition-action .form-item-newsletter {
+    margin: 0 0 0 100px;
+}
+.node-petition-action h1.signature-heading {
+    background: url(/profiles/takepart/themes/takepart3/images/sign_petition_banner_600x47.png) no-repeat scroll 0 0 transparent;
+    height: 47px;
+    color: transparent;
+}
+
+.node-petition-action .form-wrapper {
+    clear: both;
+}
+
+.node-petition-action label {
+    float: left;
+    width: 100px;
+    text-align: right;
+    padding-right: 6px;
+}
+
+.node-petition-action .form-item-display label,
+.node-petition-action .form-item-newsletter label {
+    float: none;
+    width: auto;
+    padding-left: 6px;
+}
+
+.node-petition-action #edit-signature-display-disclaimer {
+    margin: 8px 0 8px 100px;
+}
+
+.node-petition-action input.signature-sign-button {
+    width: 312px;
+    height: 52px;
+    background-color: #ffc500;
+    border: 2px ridge #fcaf3b;
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px #FFF;
+    color: #000;
+    text-transform: uppercase;
+    margin-left: 100px;
+  font: bold 24px Helvetica,Arial,sans-serif;
+}
+
+.node-petition-action input.signature-sign-button:hover {
+    /*Gradient*/ 
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+    box-shadow: 3px 3px 5px #888888;
+    border: 2px ridge #ffdf97;
+}
+
+.node-petition-action #edit-terms-of-use-note {
+    margin-left: 130px;
+    margin-bottom: 2em;
+}
+
+.node-petition-action .group-address-tabs div.horizontal-tabs {
+    margin-bottom: 0;
+}
+
+.node-petition-action .field-name-field-thank-you-share-bar {
+  margin-bottom: 30px;
+}
+
+body.node-type-petition-action h1.title {
+  margin-bottom: 10px;
+}
+.node-petition-action .field-name-body {
+  font-size: 13px;
+  line-height: 20px;
+}
+.node-petition-action p.signature-progress-count {
+  font-weight: bold;
+}
+.node-petition-action #signature-international-signature-form {
+  margin-left: 04;
+}
+#node_petition_action_embedaction_group_sign_the_petition #signature-international-signature-form h1 {
+  display: none;
+}
+.node-petition-action .field-group-htabs-wrapper {
+  margin-left: -13px;
+  position: relative;
+}
+.node-petition-action .group-petition-tabs .horizontal-tabs-panes {
+  padding:  10px;
+  background-color: #DFE6EA;
+  margin-top: -5px;  
+}
+.embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs-panes {
+  padding:  none;
+  background-color: transparent;
+  padding-top: 0;
+  }
+.node-petition-action .group-petition-tabs .horizontal-tabs-panes fieldset {
+  background-color: #FFF;  
+  padding: 10px;
+}
+.embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs-panes fieldset {
+  padding: 0;
+}
+.node-petition-action .address-selection-tabs ul.horizontal-tabs-list li {
+  position: absolute;
+  top:  20px;
+  left: 300px;
+}
+.node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.first {
+  top:  20px;
+  left: 465px;
+}
+.node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.selected {
+  display:  none;
+}
+
+
+

@@ -1,74 +1,94 @@
 
 var _galleryFastMatch = new Array();
 var _galleryFastMatch_titles = new Array();
+var _galleryFastMatch_switchslide = (function (ssid,x) {
+	   	Drupal.viewsSlideshow.action({
+	        action: "goToSlide",
+	        slideshowID: ssid,
+	        slideNum: x
+	    });
+});
+
 
 jQuery(document).ready(function () {
+	
+	/*
+	setTimeout("Drupal.viewsSlideshow.action({" +
+            "action: 'goToSlide'," +
+            "slideshowID: " + ssid + "," +
+            "slideNum: " + x +
+        "});", 10);
+	*/
 
-    var historyapi = (function () {
-        if (Drupal.settings.gallery.nid) {
+	
+	var buildformjson = (function (data) {
+    	
+        var slideshows = Drupal.settings.viewsSlideshowCycle;
 
-            var slideshows = Drupal.settings.viewsSlideshowCycle;
+        if (slideshows) {
+            for (slideshow in slideshows) {
+                ssid = slideshows[slideshow]['slideshowId'];
+                target = slideshows[slideshow]['targetId'];
+            }
+        }
 
-            if (slideshows) {
-                for (slideshow in slideshows) {
-                    ssid = slideshows[slideshow]['slideshowId'];
-                    target = slideshows[slideshow]['targetId'];
-                }
+		
+        for (var i = 0; i < data.length; i++) {
+            var obj = data[i];
+            
+            _galleryFastMatch[i] = obj['url'];
+            _galleryFastMatch_titles[i] = obj['title'];
+            
+            if (obj) {
+                x = 0;
+                jQuery(target + ' img').each(function () {
+                	
+                    imgsrc = (jQuery(this).attr('src'));
+                    filename_a = imgsrc.substr(imgsrc.lastIndexOf("/") + 1);
+                    filename_a = filename_a.substr(0, filename_a.lastIndexOf("_"));
+                    filename_b = obj['filename'];
+                    filename_b = filename_b.substr(0, filename_a.length);
+                    
+                    pageurl = (window.location.href.split("?")[0]).replace("#","/");
+                    pageurl = pageurl.substr(pageurl.lastIndexOf("/") + 1);
+                    
+                    //if ((obj['url'] == pageurl) && (filename_a == filename_b) && filename_a && filename_b) {
+                    if ((obj['url'] == pageurl) && (x == i)) {
+                        
+                    	_galleryFastMatch_switchslide(ssid,x);
+                        
+                    	var y = 0;
+                    	jQuery('#widget_pager_top_photo_gallery-block img').each(function () {
+                    	    if(y == x) {
+                    	    	jQuery(this).addClass('highlight');
+                    	    } else {
+                    	    	jQuery(this).removeClass('highlight');
+                    	    }
+                    	    y++;
+                    	});
+                    	
+                    	fastmatch_refreshstuff(x, true);
+                    	
+                    }
+                    
+                    x++;
+
+                });
             }
 
-            path = '/galleries_json_nid/' + Drupal.settings.gallery.nid;
-            jQuery.getJSON(path, function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    var obj = data[i];
+        }
 
-                    _galleryFastMatch[i] = obj['url'];
-                    _galleryFastMatch_titles[i] = obj['title'];
-                    
-                    if (obj) {
-                        x = 0;
-                        jQuery(target + ' img').each(function () {
-                        	
-                            imgsrc = (jQuery(this).attr('src'));
-                            filename_a = imgsrc.substr(imgsrc.lastIndexOf("/") + 1);
-                            filename_a = filename_a.substr(0, filename_a.lastIndexOf("_"));
-                            filename_b = obj['filename'];
-                            filename_b = filename_b.substr(0, filename_a.length);
-                            
-                            pageurl = window.location.href.split("?")[0];
-                            pageurl = pageurl.substr(pageurl.lastIndexOf("/") + 1);
-                            
-                            //if ((obj['url'] == pageurl) && (filename_a == filename_b) && filename_a && filename_b) {
-                            if ((obj['url'] == pageurl) && (x == i)) {
-                                
-                         
-                            	Drupal.viewsSlideshow.action({
-                                    action: "goToSlide",
-                                    slideshowID: ssid,
-                                    slideNum: x
-                                });
-                                
-                            	var y = 0;
-                            	jQuery('#widget_pager_top_photo_gallery-block img').each(function () {
-                            	    if(y == x) {
-                            	    	jQuery(this).addClass('highlight');
-                            	    } else {
-                            	    	jQuery(this).removeClass('highlight');
-                            	    }
-                            	    y++;
-                            	});
-                            	
-                            	fastmatch_refreshstuff(x, true);
-                            	
-                            }
-                            
-                            x++;
-
-                        });
-                    }
-
-                }
-
-            });
+    });
+	
+	
+    var historyapi = (function () {
+        if (Drupal.settings.gallery.nid) {    
+        	path = '/galleries_json_nid/' + Drupal.settings.gallery.nid;
+             //if(typeof takepart_galleries_json != 'undefined') {
+            // 	buildformjson(takepart_galleries_json);
+            // } else {
+            	jQuery.getJSON(path, buildformjson);
+            //}
         }
         // history.pushState(null, null, '/test');
     });
@@ -98,13 +118,21 @@ function fastmatch_historyapi() {
 		
 		if(jQuery(this).hasClass('highlight')) {
 			
-			urlar = window.location.href.split('/');
+			urlar = (window.location.href.split("?")[0]).replace("#","/").split('/');
 			
 			if(urlar[3] == 'photos') {
 				if(y==0) {
-					history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4]);
+					if (history.pushState) {
+						history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4]);
+					} else {
+						window.location.hash = "";
+					}
 				} else {
-					history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4] + '/' + _galleryFastMatch[y]);
+					if (history.pushState) {
+						history.pushState(null, null, '/' + urlar[3] + '/' + urlar[4] + '/' + _galleryFastMatch[y]);
+					} else {
+						window.location.hash = "#" + _galleryFastMatch[y];
+					}
 				}
 			}
 			
@@ -147,7 +175,7 @@ function fastmatch_refreshstuff(y, first) {
 	//OLD WAY:
 	if(typeof FB != 'undefined') {
 		fbchtml = '<div class="fb-comments" ' +
-	     		  'data-href="' + window.location.href + '" ' +
+	     		  'data-href="' + (window.location.href).replace("#","/") + '" ' +
 	     	      'data-num-posts="15" ' +
 	              'data-width="640" ' +
 	              'data-colorscheme="light"></div>';
@@ -211,7 +239,7 @@ function fastmatch_fb_iframe_refresh(q) {
 		}
 		if((pair[0] == 'href') || 
 		   (pair[0] == '?href')) {
-			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location.href.split("?")[0]);
+			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location.href.split("?")[0].replace("#","/"));
 		} else {
 			nq = nq + token + pair[0] + '=' + pair[1];
 		}

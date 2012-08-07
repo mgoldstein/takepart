@@ -6,6 +6,7 @@ core = 7.x
 
 dependencies[] = takepart_facebookapis
 dependencies[] = fboauth
-dependencies[] = takepart_bsd
+dependencies[] = bluestatedigital
+dependencies[] = newsletter_campaign
 files[] = fbregistration.module
 files[] = tests/fbregistration.test

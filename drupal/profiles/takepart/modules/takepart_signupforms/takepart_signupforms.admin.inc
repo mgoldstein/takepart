@@ -79,7 +79,7 @@ function _takepart_signupforms_field_settings_form_alter(&$form, $form_state, $f
       );
 
       $form['takepart_signupforms']['form_id'] =
-        takepart_bsd_form_id_select_field($form_id);
+        bluestatedigital_forms_signup_form_id($form_id);
       $form['takepart_signupforms']['form_id'] += array(
         '#ajax' => array(
           'event' => 'change',
@@ -89,7 +89,11 @@ function _takepart_signupforms_field_settings_form_alter(&$form, $form_state, $f
       );
 
       $form['takepart_signupforms']['field_id'] =
-        _takepart_signupforms_field_id_select($form_id, $field_id);
+        bluestatedigital_forms_signup_field_id($form_id, $field_id);
+      $form['takepart_signupforms']['field_id'] += array(
+        '#prefix' => '<div id="takepart-signup-field-select">',
+        '#suffix' => '</div>',
+      );
 
       $form['takepart_signupforms']['send_updates'] = array(
         '#title' => 'Resubmit signup when field is updated',
@@ -103,69 +107,8 @@ function _takepart_signupforms_field_settings_form_alter(&$form, $form_state, $f
   }
 }
 
-function _takepart_signupforms_field_id_select($form_id, $value) {
-
-  $element = NULL;
-  $options = array();
-
-  if (! empty($form_id)) {
-
-    $fields = takepart_bsd_signup_list_form_fields($form_id);
-
-    if (!empty($fields)) {
-
-      if ((!empty($value)) && (!array_key_exists($value, $fields))) {
-        $options[$value] = t('Field ID: @id (not available)', array('@id' => $value));
-      }
-
-      foreach ($fields as $id => $field) {
-        $options[$id] = sprintf('[%d] %s', $id, $field['label']);
-      }
-    }
-    else {
-      $element = array(
-        '#type' => 'textfield',
-        '#title' => 'Signup Field ID',
-        '#size' => 4,
-        '#default_value' => $value,
-        '#element_validate' => array('_takepart_signupforms_validate_integer_positive'),
-        '#prefix' => '<div id="takepart-signup-field-select">',
-        '#suffix' => '</div>',
-      );
-    }
-  }
-  else {
-    $options[''] = 'Select a Signup Form';
-  }
-
-  if (!isset($element)) {
-    $element = array(
-      '#type' => 'select',
-      '#title' => 'Signup Field',
-      '#options' => $options,
-      '#default_value' => $value,
-      '#prefix' => '<div id="takepart-signup-field-select">',
-      '#suffix' => '</div>',
-    );
-  }
-  return $element;
-}
-
 function takepart_signupforms_form_id_callback(&$form, $form_state) {
   return $form['takepart_signupforms']['field_id'];
-}
-
-/**
- * Validates that a form element is a positive integer
- *
- * TODO: This should be replaced with element_validate_integer_positive once
- *   we update to Drupal 7.8 or later
- */
-function _takepart_signupforms_validate_integer_positive($element, &$form_state) {
-  $value = $element['#value'];
-  if ($value !== '' && (!is_numeric($value) || intval($value) != $value || $value <= 0)) {
-    form_error($element, t('%name must be a positive integer.', array('%name' => $element['#title'])));
-  }
 }
 
 /**

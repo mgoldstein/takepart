@@ -3,7 +3,9 @@
  * @file
  * This is the TakePart AddThis Blocks module.
  */
- /**
+
+
+/**
  * Implement hook_permission().
  */
 function takepart_addthis_permission() {
@@ -515,13 +517,10 @@ function takepart_addthis_ajax_form_block_view($delta = ''){
     // get the signature from the url
     $id = isset($_GET['signature']) ? $_GET['signature'] : '';
     if ($id !== '' && (!is_numeric($id) || intval($id) != $id || $id < 0)) { $id = ''; }
-    if (!empty($id)) { $signature = petition_signature_load($id); }
+    if (!empty($id)) { $signature = entity_load_single('petition_signature', $id); }
     if (!empty($signature)) {
 
-      $petition = petition_load($signature->petition_id);
-      $email_share_msg_var = "petition:{$petition->type}:{$petition->petition_id}:email_share_msg";
-      $twitter_share_msg_var = "petition:{$petition->type}:{$petition->petition_id}:twitter_share_msg";
-      $share_url_var = "petition:{$petition->type}:{$petition->petition_id}:share_url";
+      $petition = entity_load_single('petition', $signature->petition_id);
 
       // TODO: Remove this when generic petitions have been implemented
       $newsletters = array();
@@ -536,8 +535,8 @@ function takepart_addthis_ajax_form_block_view($delta = ''){
       $settings = array(
         'sharing' => array(
           'email' => isset($_COOKIE['petition_signed_as']) ? $_COOKIE['petition_signed_as'] : '',
-          'email_msg' =>  variable_get($email_share_msg_var, ''),
-          'twitter_msg' => variable_get($twitter_share_msg_var, ''),
+          'email_msg' =>  $petition->email_share_msg,
+          'twitter_msg' => $petition->twitter_share_msg,
         ),
         'petition' => array(
           'name' => $petition->name,
@@ -545,9 +544,8 @@ function takepart_addthis_ajax_form_block_view($delta = ''){
           'newsletters' => $newsletters,
         ),
       );
-      $share_url = variable_get($share_url_var, '');
-      if (! empty($share_url)) {
-        $settings['sharing']['share_url'] = $share_url;
+      if (! empty($petition->share_url)) {
+        $settings['sharing']['share_url'] = $petition->share_url;
       }
       drupal_add_js($settings, 'setting');
     }
@@ -558,7 +556,7 @@ function takepart_addthis_ajax_form_block_view($delta = ''){
 
     $block['subject'] = t('');
     $block['content'] = theme('takepart_addthis_ajax_form_block', array(
-      'thank_you_message' => $thank_you_message,s
+      'thank_you_message' => $thank_you_message,
     ));
   }
   return $block;
@@ -574,4 +572,235 @@ function takepart_addthis_ajax_form_block_configure($delta){
 function takepart_addthis_ajax_form_block_save($delta, $edits){
   if($delta == 'addthis_ajax_form'){
   }
+}
+
+/**
+ * Implements hook_field_info()
+ */
+function takepart_addthis_field_info() {
+  return array(
+    'share_bar' => array(
+      'label' => t('Share Bar'),
+      'description' => t('Share button bar for Facebook, Twitter and email'),
+      'instance_settings' => array(),
+      'default_widget' => 'addthis_config',
+      'default_formatter' => 'button_bar',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_is_empty()
+ */
+function takepart_addthis_field_is_empty($item, $field) {
+  return (empty($item['twitter_message']) || empty($item['email_message'])); 
+}
+
+/**
+ * Implements hook_field_validate()
+ */
+function takepart_addthis_field_validate($entity_type, $entity, $field, $instance,
+  $langcode, $items, &$errors) {
+
+  foreach ($items as $delta => $item) {
+    if (!empty($item['alternate_url']) && !valid_url($item['alternate_url'])) {
+      $errors[$field['field_name']][$langcode][$delta][] = array(
+        'error' => 'invalid_alternate_url',
+        'message' => t('Alternate URL is not valid.'),
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_error()
+ */
+function takepart_addthis_field_widget_error($element, $error, $form, &$form_state) {
+  if ($error['error'] == 'invalid_alternate_url') {
+    form_error($element, $error['message']);
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info()
+ */
+function takepart_addthis_field_formatter_info() {
+  return array(
+    'button_bar' => array(
+      'label' => t('Button Bar'),
+      'field types' => array('share_bar'),
+      'settings' => array(
+        'orientation' => 'horizontal',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form()
+ */
+function takepart_addthis_field_formatter_settings_form($field, $instance, $view_mode,
+  $form, &$form_state) {
+
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  return array(
+    'orientation' => array(
+      '#type' => 'select',
+      '#title' => t('Orientation'),
+      '#default_value' => $settings['orientation'],
+      '#options' => array(
+        'horizontal' => t('Horizontal'),
+        'vertical' => t('Vertical'),
+      ),
+      '#description' => t('The layout orientation of the share bar.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary()
+ */
+function takepart_addthis_field_formatter_settings_summary($field, $instance,
+  $view_mode) {
+
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  return "Orientation: {$settings['orientation']}";
+}
+
+/**
+ * Implements hook_field_formatter_view()
+ */
+function takepart_addthis_field_formatter_view($entity_type, $entity, $field, $instance,
+  $langcode, $items, $display) {
+
+  $settings = $display['settings'];
+  $name = str_replace('_', '-', $field['field_name']);
+  $configs = array();
+  
+  $fb_src = drupal_get_path('module', 'takepart_addthis')
+    . '/images/fb_share.png';
+  $tw_src = drupal_get_path('module', 'takepart_addthis')
+    . '/images/twitter_share.png';
+  $em_src = drupal_get_path('module', 'takepart_addthis')
+    . '/images/email_share.png';
+
+  $elements = array();
+  foreach ($items as $delta => $item) {
+
+    $id = "share-bar-{$name}-{$delta}";
+
+    // transfer the AddThis configurations to JavaScript settings
+    $configs[$id] = array(
+      'alternate_url' => $item['alternate_url'],
+      'twitter_message' => $item['twitter_message'],
+      'email_message' => $item['email_message'],
+    );
+
+    // build the share bar
+    $orientation_class = $settings['orientation'] == 'vertical'
+      ? 'share-bar-vertical' : 'share-bar-horizontal';
+
+    $elements[$delta] = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array('share-bar-field', $orientation_class, ),
+        'id' => $id,
+      ),
+      'toolbox' => array(
+        '#type' => 'container',
+        '#attributes' => array(
+          'class' => array('addthis_toolbox','addthis_default_style', 
+            'addthis_32x32_style'
+          ),
+        ),
+        'facebook' => array(
+          '#type' => 'markup',
+          '#prefix' => '<a class="addthis_button_facebook">',
+          '#markup' => '<img src="/' . $fb_src . '" alt="Share on Facebook" />',
+          '#suffix' => '</a>',
+        ),
+        'twitter' => array(
+          '#type' => 'markup',
+          '#prefix' => '<a class="addthis_button_twitter">',
+          '#markup' => '<img src="/' . $tw_src . '" alt="Share on Twitter" />',
+          '#suffix' => '</a>',
+        ),
+        'email' => array(
+          '#type' => 'markup',
+          '#prefix' => '<a class="addthis_button_email">',
+          '#markup' => '<img src="/' . $em_src . '" alt="Share by Email" />',
+          '#suffix' => '</a>',
+        ),
+      )
+    );
+  }
+  drupal_add_js(array('addthis' => array('fields' => $configs)),
+    array('type' => 'setting'));
+  $js_path = drupal_get_path('module', 'takepart_addthis')
+    . '/js/share-bar-field.js';
+  drupal_add_js($js_path, array('type' => 'file'));
+
+  return $elements;
+}
+
+/**
+ * Implements hook_field_widget_info()
+ */
+function takepart_addthis_field_widget_info() {
+  return array(
+    'addthis_config' => array(
+      'label' => t('Share Configuration'),
+      'field types' => array('share_bar'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_form()
+ */
+function takepart_addthis_field_widget_form(&$form, &$form_state, $field, $instance,
+  $langcode, $items, $delta, $element) {
+
+  $alternate_url = isset($items[$delta]['alternate_url'])
+    ? $items[$delta]['alternate_url'] : '';
+  $twitter_message = isset($items[$delta]['twitter_message'])
+    ? $items[$delta]['twitter_message'] : '';
+  $email_message = isset($items[$delta]['email_message'])
+    ? $items[$delta]['email_message'] : '';
+
+  $element['alternate_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Alternate URL'),
+    '#description' => t('An alternate URL to share, rather than the current page. %note.', array(
+      '%note' => t('This must be a FULL URL'),
+    )),
+    '#default_value' => $alternate_url,
+  );
+
+  $element['twitter_message'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Twitter Message'),
+    '#description' => t('The default message to use when sharing this page through Twitter. The following AddThis tokens may be used: %url - shortened URL, %lurl - full length URL, %title - title of page.', array('%url' => '{{url}}', '%lurl' => '{{lurl}}', '%title' => '{{title}}')),
+    '#default_value' => $twitter_message,
+    '#required' => TRUE,
+  );
+
+  $element['email_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Email Message'),
+    '#description' => t('The default message to use when sharing this page through email.'),
+    '#default_value' => $email_message,
+    '#required' => TRUE,
+  );
+
+  $element['facebook_note'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<strong>',
+    '#suffix' => '</strong>',
+    '#markup' => t('Facebook sharing is configured at the page leve through the Open Graph meta tags'),
+  );
+
+  return $element;
 }

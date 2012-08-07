@@ -1,20 +1,84 @@
 // file: javascript support for takepart_vidpop
 
+// On page view of a page with an embedded video
+//
+// triggered by call in template.php, preprocess node
+// doesn't work here as a behavior, like the others
+function vidpop_loaded() {
+  // debug: alert('trap 40 c');
+  s.linkTrackVars="eVar40, prop40, eVar41, prop41, events";
+  s.linkTrackEvents="event40";
+  s.events='event40';
+  s.prop40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
+  s.eVar40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
+  s.prop41=Drupal.settings.takepart_vidpop.hostpagetitle;
+  s.eVar41=Drupal.settings.takepart_vidpop.hostpagetitle;
+  s.tl(true, 'o', 'Video Popup Click');
+};
 
+
+// add click trackers for banner ads
 (function ($) {
   Drupal.behaviors.scVidpopClick = {
-    attach: function (context, settings) {
-      for( x in Drupal.settings.media_youtube) {
-        //alert(x);
-        //Drupal.settings.media_youtube[x]['options']['autoplay'] = 1;
-      }
-      // add click tracker for banner ad
-      $('.vidpop-preview', context).click(function(){
-        s.linkTrackVars="events";
-        s.linkTrackEvents="event41";
-        s.events='event41';
-        s.tl(true, 'o', 'Video Popup Click');
-      });
-    }
+        attach: function (context, settings) {
+          // On click on embedded video to launch and play modal
+          $('.vidpop-preview', context).click(function(){
+            // debug: alert('trap 41 ');
+            s.linkTrackVars="eVar40, prop40, eVar41, prop41, events";
+            s.linkTrackEvents="event41";
+            s.events='event41';
+            s.prop40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
+            s.eVar40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
+            s.prop41=Drupal.settings.takepart_vidpop.hostpagetitle;
+            s.eVar41=Drupal.settings.takepart_vidpop.hostpagetitle;
+            s.tl(true, 'o', 'Video Popup Click');
+          });
+
+          /*
+           * not supported, because addthis is ona different omain
+           * revisit when we replace addthis
+           *
+           // On click of any of the share icons in the modal, pls fire (once per session per button)
+           $('#vidpop-details #vidpop-social', context).click(function(){
+           // debug: alert('trap 42t');
+           s.linkTrackVars="eVar40, prop40, eVar41, prop41, events";
+           s.linkTrackEvents="event42";
+           s.events='event41';
+           s.prop40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
+           s.eVar40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
+           s.prop41=Drupal.settings.takepart_vidpop.hostpagetitle;
+           s.eVar41=Drupal.settings.takepart_vidpop.hostpagetitle;
+           s.tl(true, 'o', 'Video Popup Click');
+           });
+           $('#vidpop-details .addthis_button_email span', context).click(function(){
+           // debug: alert('trap 42e');
+           s.linkTrackVars="eVar40, prop40, eVar41, prop41, events";
+           s.linkTrackEvents="event42";
+           s.events='event41';
+           s.prop40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
+           s.eVar40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
+           s.prop41=Drupal.settings.takepart_vidpop.hostpagetitle;
+           s.eVar41=Drupal.settings.takepart_vidpop.hostpagetitle;
+           s.tl(true, 'o', 'Video Popup Click');
+           });
+           */
+
+          // On-click of the subscribe button, pls fire (only once per session)
+          $('.vidpop-popup .subscribe', context).click(function(){
+            if( typeof vp_43_triggered == 'undefined' ) {
+              // block multiple calls
+              // debug: alert('trap 43');
+              vp_43_triggered = 1;
+              s.linkTrackVars="eVar40, prop40, eVar41, prop41, events";
+              s.linkTrackEvents="event43";
+              s.events='event43';
+              s.prop40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
+              s.eVar40=Drupal.settings.takepart_vidpop.embeddedvideotitle;
+              s.prop41=Drupal.settings.takepart_vidpop.hostpagetitle;
+              s.eVar41=Drupal.settings.takepart_vidpop.hostpagetitle;
+              s.tl(true, 'o', 'Video Popup Click');
+            }
+          });
+        }
   }
 })(jQuery);

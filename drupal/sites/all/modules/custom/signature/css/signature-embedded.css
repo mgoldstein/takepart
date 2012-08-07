@@ -1,0 +1,207 @@
+/* 
+    Document   : signature-embedded
+    Created on : Aug 2, 2012, 10:44:43 AM
+    Author     : marcgoldstein
+    Description:
+        Styling for embedded petitions.
+*/
+div.horizontal-tabs {
+    border: 0 none;
+}
+
+div.horizontal-tabs-panes {
+    border:0;
+    padding:1em 0;
+    margin-top:-3px;
+}
+#content .node-petition-action .group-petition-tabs div.horizontal-tabs-panes {
+    margin-top:-4px;
+}
+
+#content .horizontal-tabs ul.horizontal-tabs-list {
+    background-color: transparent;
+    border: 0 none;
+    list-style: none;
+    margin:0;
+}
+#content .embedaction-content .horizontal-tabs ul.horizontal-tabs-list {
+    background-color: transparent;
+    border: 0 none;
+    list-style: none;
+    margin:0 20px 10px;
+}
+
+#content .horizontal-tabs ul.horizontal-tabs-list li {
+    margin:0 4px 0 0;
+    font-size: 12px;
+}
+
+#content .horizontal-tabs ul.horizontal-tabs-list li a {
+    font-weight:300;
+    text-transform: uppercase;
+    color: #000;
+    outline: none;
+}
+
+#content .horizontal-tabs ul.horizontal-tabs-list li a:hover {
+    background-color: #dee8ea;
+}
+
+#content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
+    border: 1px solid #dfe6ea;
+    background-color: #f3f7f8;
+    margin: 0 5px 0 0;
+    padding: 0;
+    outline: none;
+}
+#content .node-petition-action .group-petition-tabs .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
+  border-bottom:  none;
+  width: auto;
+}
+#content .embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
+  border-bottom:  none;
+  width: auto;
+}
+#content .embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.last {
+  margin-right: 0;
+}
+#content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
+    padding-bottom: 6px;
+    padding-top: 9px;
+}
+#content .node-petition-action .horizontal-tabs ul.address-selection-tabs li.horizontal-tab-button a {
+    color: #777;
+    text-decoration: underline;
+}
+#content .node-petition-action .horizontal-tabs ul.horizontal-tabs-list li a:hover {
+    background-color: white;
+}
+
+#content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.first {
+
+}
+
+#content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected {
+    background-color: #dfe6ea;
+}
+#content .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
+    border: none;
+    background-color: white;
+    margin: 0
+    padding: 0;
+    outline: none;
+}
+
+.embedaction-content .form-wrapper {
+    clear: both;
+}
+
+.embedaction-content .node-petition-action {
+    padding: 0 5px;
+}
+
+.embedaction-content .field-name-field-petition-page-title {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1.5em;
+}
+
+.embedaction-content .field-type-text-with-summary {
+    line-height: 1.2em;
+    margin-bottom: 1em;
+}
+
+.embedaction-content .node-petition-action label {
+    float: left;
+    width: 100px;
+    text-align: right;
+    padding-right: 6px;
+}
+.embedaction-content .node-petition-action input.form-text {
+   width: 300px;   
+}
+.embedaction-content .signature-progress {
+    clear: both;
+    margin: 2em 0 1em 0;
+    text-align: center;
+}
+
+.embedaction-content .signature-progress-count {
+    font-weight: bold;
+}
+
+.embedaction-content p.signature-progress-complete {
+    width: 100px;
+    float: left;
+    text-transform: uppercase;
+    color: #666;
+    margin: 0 10px 0 0;
+    font-size: 11px;
+}
+
+.embedaction-content p.signature-progress-complete span.signature-progress-percent {
+    color: #000; 
+    font-size: 34px; 
+    font-weight: bold; 
+    display: block;
+}
+
+.embedaction-content .form-actions {
+    text-align: center;
+}
+
+.embedaction-content .form-item-display,
+.embedaction-content .form-item-newsletter {
+    margin: 0 0 0 100px;
+}
+
+.embedaction-content .form-item-display label,
+.embedaction-content .form-item-newsletter label {
+    float: none;
+    width: auto;
+    padding-left: 6px;
+}
+
+.embedaction-content input.signature-sign-button {
+    width: 312px;
+    height: 52px;
+    background-color: #ffc500;
+    border: 2px ridge #fcaf3b;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #FFF;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.embedaction-content input.signature-sign-button:hover {
+    /*Gradient*/ 
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+    box-shadow: 3px 3px 5px #888888;
+    border: 2px ridge #ffdf97;
+}
+
+.embedaction-content .address-selection-tabs {
+    padding: 0;
+}
+
+.embedaction-content .address-selection-tabs .horizontal-tabs-panes {
+    padding: 0;
+}
+
+.embedaction-content .address-selection-tabs .horizontal-tabs-panes fieldset {
+    margin: 0;
+}
+
+.embedaction-content #edit-signature-display-disclaimer {
+    margin: 8px 0 8px 100px;
+}
+
+.embedaction-content #edit-terms-of-use-note {
+    text-align: center;
+}

@@ -78,7 +78,11 @@ jQuery(document).ready(function() {
     //jQuery('.photo-wrapper img').css('margin','');
     })
 
-    jQuery('#top-search .form-text').DefaultValue('Search TakePart');
+  jQuery('#top-search .form-text').DefaultValue('Search');
+  jQuery('#top-search .form-text').click(function() {
+    jQuery('#top-search .form-text').css("font-style", "normal");
+    return false;
+  });
 });
 
 /* rewrites all absolute links to open in a new window
@@ -93,21 +97,22 @@ jQuery(document).ready(function() {
 */
 
 (function($) {
-    Drupal.behaviors.campaignVideo = {
-        attach: function(context) {
-            $('.field-name-field-tp-campaign-intro-media .close').click(function() {
-                $('.campaign-video').hide();
-                $('.field-name-field-tp-campaign-intro-media .play').show();
-                return false;
-            });
-            $('.field-name-field-tp-campaign-intro-media .play').click(function() {
-                $('.field-name-field-tp-campaign-intro-media .play').hide();
-                $('.campaign-video').show();
-                return false;
-            });
-        }
-    };
+  Drupal.behaviors.campaignVideo = {
+    attach: function(context) {
+      $('.field-name-field-tp-campaign-intro-media .close').click(function() {
+        $('.campaign-video').hide();
+        $('.field-name-field-tp-campaign-intro-media .play').show();
+        return false;
+      });
+      $('.field-name-field-tp-campaign-intro-media .play').click(function() {
+        $('.field-name-field-tp-campaign-intro-media .play').hide();
+        $('.campaign-video').show();
+        return false;
+      });
+    }
+  };
 })(jQuery);
+
 
 //Fix for dhtml menus:
 jQuery(document).ready(function() {
@@ -176,8 +181,10 @@ takepart.analytics.addThis_ready = function (evt) {
 }
 
 jQuery(document).ready(function () {
-    if (typeof addthis != "undefined" || addthis) {
-        addthis.addEventListener('addthis.ready', takepart.analytics.addThis_ready);
+    if (typeof addthis != "undefined") {
+    	if(addthis) {
+    		addthis.addEventListener('addthis.ready', takepart.analytics.addThis_ready);
+    	}
     }
     /* Incorrectly attaches social sharing event to Take Action button
      * takepart.analytics.omn_clickTrack('.take_action_button');
@@ -417,3 +424,4 @@ jQuery(document).ready(function () {
         jQuery('#block-boxes-box-3df7e268').show();
         jQuery('#widget_pager_top_photo_gallery-block li').show();
     });
+
