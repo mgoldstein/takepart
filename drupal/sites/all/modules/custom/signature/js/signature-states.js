@@ -1,5 +1,17 @@
 (function ($) {
 
+  var extractClassValue = function (classes, startsWith) {
+    for (var i=0; i<classes.length; i++) {
+      var value = classes[i]
+      if (value.length > startsWith.length) {
+        if (value.substr(0, startsWith.length) == startsWith) {
+          return value.substring(startsWith.length);
+        }
+      }
+    }
+    return '';
+  };
+
   var updateSignatureState = function (response) {
     var all_classes = [
       'signature-node-unsigned',
@@ -21,6 +33,36 @@
         $(div_id).trigger('signature_form_view', [node.title]);
         jQuery.cookie(node.view_latch, 1, {path:'/'});
       }
+
+      // Reload any signature lists
+      var lists = Array();
+      $('.view.view-petition-signature-list').each(function (index) {
+        var classes = $(this).attr('class').split(/\s+/);
+        var dom_id = extractClassValue(classes, 'view-dom-id-');
+        var display_id = extractClassValue(classes, 'view-display-id-');
+        $.ajax({
+          type: "POST",
+          url: "/views/ajax",
+          data: {
+            page: 1,
+            pager_element: 0,
+            view_args: nid,
+            view_base_path: "node/" + nid,
+            view_display_id: display_id,
+            view_dom_id: dom_id,
+            view_name: "petition_signature_list",
+            view_path: "node/" + nid, 
+          }
+        }).done(function (response) {
+          for (var i=0; i<response.length; i++) {
+            var chunk = response[i];
+            console.log(chunk);
+            if (chunk.command == 'insert' && chunk.method == 'replaceWith') {
+              $(chunk.selector).replaceWith(chunk.data);
+            }
+          }
+        });
+      });
 
       // Adjust the selected tab state of the petition
       var tab = '.signature-tab-' + node.state;
