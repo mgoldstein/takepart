@@ -56,7 +56,6 @@
         }).done(function (response) {
           for (var i=0; i<response.length; i++) {
             var chunk = response[i];
-            console.log(chunk);
             if (chunk.command == 'insert' && chunk.method == 'replaceWith') {
               $(chunk.selector).replaceWith(chunk.data);
             }
@@ -75,7 +74,7 @@
         $('.signature-progress-percent', this).text(node.percent + '%');
         $('.signature-progress-bar', this).attr('src', node.bar).attr('alt',
           node.percent + '% Complete');
-        $('.signature-progress-count', this).text(node.progress);
+        $('.signature-progress-count', this).html(node.progress);
       });
     }
   };

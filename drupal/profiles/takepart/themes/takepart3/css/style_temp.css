@@ -4,7 +4,7 @@
 
 .node-petition-action input.form-text {
 	width: 308px;
-	height: 30px;
+	/*height: 30px; per comp */
 }
 
 .node-petition-action select {
@@ -30,11 +30,7 @@
 }
 
 .node-petition-action label {
-    line-height: 40px;    
-}
-
-.node-petition-action .form-item, .node-petition-action .form-actions {
-    margin-left: 54px;
+    /* line-height: 40px; per comp */
 }
 
 
@@ -66,22 +62,33 @@
 }
 
 .node-petition-action input.form-checkbox, .node-petition-action input.form-radio {
-    margin-left: 110px;
+    margin-left: 7px;
 }
 
 .node-petition-action #edit-terms-of-use-note {
     margin-left: 188px;
 }
 
-
-
-
-
-
-
-
 .node-petition-action #node_petition_action_embedaction_group_sign_the_petition .form-item, .node-petition-action .form-actions {
     margin-left: 0px;
 }
 
+.node-petition-action .group-petition-tabs .horizontal-tabs-panes {
+	padding-bottom: 1px;
+}
 
+body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper {
+	margin-left: 0px;
+}
+
+#edit-field-sig-zip-code-und-0-value {
+    width: 308px;
+}
+
+body.node-type-petition-action .node-petition-action #edit-signature-display-disclaimer {
+	margin-left: 160px;
+}
+
+.node-petition-action .group-petition-tabs .horizontal-tabs-panes {
+	padding: 11px 10px 1px;
+}
