@@ -77,8 +77,8 @@ function embedaction_wrap_node($markup, $element) {
   $pieces = array(
     '<div id="embeddaction-wrapper-' . $node->nid . '" class="embedaction-wrapper clearfix">',
         '<table class="embedaction-header clearfix"><tbody><tr>',
-            '<td><div class="embedaction-button"></div></td>',
-            '<td>'.$title.'</td>',
+            '<td class="graphic"><div class="embedaction-button"></div></td>',
+            '<td class="title">'.$title.'</td>',
         '</tr></tbody></table>',
     '<div class="embedaction-content clearfix">',
     '<h2 class="embedaction-divider">',
