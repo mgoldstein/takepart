@@ -10,6 +10,9 @@ stylesheets[all][] = css/style.css
 stylesheets[all][] = css/typeface.css
 stylesheets-conditional[lte IE 7][all][] = css/ie7.css
 
+
+stylesheets[all][] = css/sharebar.css
+
 ; Javascript
 scripts[] = js/script.js
 
