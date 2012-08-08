@@ -10,11 +10,13 @@ class Signature extends Entity {
 class SignatureController extends EntityAPIController {
 
   public function create(array $values = array()) {
+    global $user;
+    $email = !empty($user->uid) ? $user->mail : '';
     $values += array(
       'id' => '',
       'type' => '',
       'nid' => '',
-      'email' => '',
+      'email' => $email,
       'display' => 1,
       'newsletter' => 1,
       'language' => LANGUAGE_NONE,
