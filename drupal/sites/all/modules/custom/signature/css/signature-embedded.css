@@ -31,19 +31,28 @@ div.horizontal-tabs-panes {
     background-color: transparent;
     border: 0 none;
     list-style: none;
-    margin:0 20px 10px 10px;
+    margin:0 20px 10px 0;
 }
 
 #content .horizontal-tabs ul.horizontal-tabs-list li {
     margin:0 4px 0 0;
     font-size: 12px;
+    text-align: center;
 }
-
 #content .horizontal-tabs ul.horizontal-tabs-list li a {
     font-weight:300;
     text-transform: uppercase;
     color: #000;
     outline: none;
+}
+#content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button-0 {
+  width:  140px !important;
+}
+#content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button-1 {
+  width:  140px !important;
+}
+#content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button-2 {
+  width:  148px !important;
 }
 
 #content .horizontal-tabs ul.horizontal-tabs-list li a:hover {
@@ -63,7 +72,6 @@ div.horizontal-tabs-panes {
 }
 #content .embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
   border-bottom:  none;
-  width: auto;
 }
 #content .embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.last {
   margin-right: 0;
@@ -151,6 +159,9 @@ div.horizontal-tabs-panes {
 
 .embedaction-content .form-actions {
     text-align: center;
+}
+.embedaction-content .form-actions {
+    width: 425px;
 }
 
 .embedaction-content .form-item-display,
