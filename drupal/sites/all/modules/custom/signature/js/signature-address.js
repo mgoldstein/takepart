@@ -4,7 +4,7 @@
       var inside = $('.selectable-address-inside-us', this);
       var outside = $('.selectable-address-outside-us', this);
       $('#edit-field-sig-state > div.form-item', this).each(function () {
-        var label = $('h3 > span', inside).text()
+        var label = $('h3 > span', outside).text()
         var link = $('<span class="selectable-address-link">'
           + '<a href="#">' + label + '</a></span>');
         $(this).append(link);
