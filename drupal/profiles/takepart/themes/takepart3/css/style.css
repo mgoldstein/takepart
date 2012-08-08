@@ -3291,6 +3291,7 @@ div.embedaction-content h2.embedaction-divider a span {
     background: url(/profiles/takepart/themes/takepart3/images/sign_petition_banner_600x47.png) no-repeat scroll 0 0 transparent;
     height: 47px;
     color: transparent;
+    clear: both;
 }
 
 .node-petition-action .form-wrapper {
@@ -3301,7 +3302,7 @@ div.embedaction-content h2.embedaction-divider a span {
     float: left;
     width: 100px;
     text-align: right;
-    padding-right: 6px;
+    padding-right: 8px;
 }
 
 .node-petition-action .form-item-display label,
