@@ -92,3 +92,8 @@ body.node-type-petition-action .node-petition-action #edit-signature-display-dis
 .node-petition-action .group-petition-tabs .horizontal-tabs-panes {
 	padding: 11px 10px 1px;
 }
+
+.node-petition-action .form-item, .node-petition-action .form-actions {
+	margin-left: 0;
+}
+
