@@ -3302,6 +3302,13 @@ div.embedaction-content h2.embedaction-divider a span {
     color: transparent;
     clear: both;
 }
+.embedaction-content .node-petition-action h1.signature-heading {
+    color: #000;
+    background: none;
+    height: auto;
+    font-size: 20px;
+    line-height: 1.2em;
+}
 
 .node-petition-action .form-wrapper {
     clear: both;
