@@ -3212,6 +3212,9 @@ div.embedaction-content h2.embedaction-divider a {
   float: right;
   padding: 0 0 0 6px;
 }
+div.embedaction-content h2.embedaction-divider a span {
+  color: #1CA9E7;
+}
 
 .node-petition-action .group-heading-split-left {
     float: left;
@@ -3280,7 +3283,7 @@ div.embedaction-content h2.embedaction-divider a {
 
 .node-petition-action .form-item-display,
 .node-petition-action .form-item-newsletter {
-    margin: 0 0 0 100px;
+    margin: 0 0 0 102px;
 }
 .node-petition-action h1.signature-heading {
     background: url(/profiles/takepart/themes/takepart3/images/sign_petition_banner_600x47.png) no-repeat scroll 0 0 transparent;
@@ -3307,7 +3310,13 @@ div.embedaction-content h2.embedaction-divider a {
 }
 
 .node-petition-action #edit-signature-display-disclaimer {
-    margin-top: 8px;
+  margin: 8px 115px 8px 100px;
+  font-size:  11px;
+  color: #666;
+}
+.embedaction-content .node-petition-action #edit-signature-display-disclaimer {
+  margin-right: 0;
+  margin-left: 104px !important;
 }
 
 .node-petition-action input.signature-sign-button {
@@ -3316,12 +3325,11 @@ div.embedaction-content h2.embedaction-divider a {
     background-color: #ffc500;
     border: 2px ridge #fcaf3b;
     border-radius: 5px;
-    font-size: 24px;
-    font-weight: bold;
     text-shadow: 1px 1px 1px #FFF;
     color: #000;
     text-transform: uppercase;
     margin-left: 100px;
+  font: bold 24px Helvetica,Arial,sans-serif;
 }
 
 .node-petition-action input.signature-sign-button:hover {
@@ -3335,6 +3343,10 @@ div.embedaction-content h2.embedaction-divider a {
     border: 2px ridge #ffdf97;
 }
 
+.embedaction-content .node-petition-action #edit-terms-of-use-note {
+    margin-left: 110px;
+    margin-bottom: 0;
+}
 .node-petition-action #edit-terms-of-use-note {
     margin-left: 130px;
     margin-bottom: 2em;
@@ -3343,3 +3355,124 @@ div.embedaction-content h2.embedaction-divider a {
 .node-petition-action .group-address-tabs div.horizontal-tabs {
     margin-bottom: 0;
 }
+
+.node-petition-action .field-name-field-thank-you-share-bar {
+  margin-bottom: 30px;
+}
+
+body.node-type-petition-action h1.title {
+  margin-bottom: 10px;
+}
+.node-petition-action .field-name-body {
+  font-size: 13px;
+  line-height: 20px;
+}
+.node-petition-action p.signature-progress-count {
+  font-weight: bold;
+}
+.node-petition-action #signature-international-signature-form {
+}
+.node-petition-action #signature-international-signature-form .field-group-htabs-wrapper h2 {
+  height:  0;
+}
+#node_petition_action_embedaction_group_sign_the_petition #signature-international-signature-form h1 {
+  display: none;
+}
+.node-petition-action .field-group-htabs-wrapper {
+  margin-left: -13px;
+  position: relative;
+}
+.embedaction-content .node-petition-action .field-group-htabs-wrapper {
+  margin-left: 0;
+}
+.node-petition-action .field-group-htabs-wrapper.address-selection-tabs .horizontal-tabs-panes {
+  padding: 0;
+  margin-top: 0;
+}
+fieldset#signature_international_signature_form_group_outside_us, fieldset#signature_international_signature_form_group_inside_us {
+  margin-bottom: 0;
+}
+#signature-international-signature-form #edit-field-sig-city .form-item {
+  margin-bottom: 0;
+}
+fieldset#signature_international_signature_form_group_outside_us #edit-field-sig-country .form-item, fieldset#signature_international_signature_form_group_inside_us #edit-field-sig-state .form-item {
+  margin-top: 0;
+}
+#signature-international-signature-form select#edit-field-sig-state-und,
+#signature-international-signature-form select#edit-field-sig-country-und {
+  width: 200px;
+}
+
+.node-petition-action .group-petition-tabs .horizontal-tabs-panes {
+  padding:  10px;
+  background-color: #DFE6EA;
+  margin-top: -5px;  
+}
+.embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs-panes {
+  padding:  none;
+  background-color: transparent;
+  padding-top: 0;
+  }
+.node-petition-action .group-petition-tabs .horizontal-tabs-panes fieldset {
+  background-color: #FFF;  
+  padding: 10px;
+}
+.embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs-panes fieldset {
+  padding: 0;
+  margin-bottom: 0;
+}
+.embedaction-content .node-petition-action .form-item-field-sig-country-und select {
+  width: 250px;
+}
+.node-petition-action .address-selection-tabs ul.horizontal-tabs-list li {
+  position: absolute;
+  top:  0;
+  left: 335px;
+}
+.embedaction-content .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li {
+  left: 305px;
+  top: 6px;
+}
+.node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.selected {
+  display:  none;
+}
+
+/* to indent the form on non-embedded pages */
+body.node-type-petition-action .node-petition-action #edit-field-sig-first-name,
+body.node-type-petition-action .node-petition-action #edit-field-sig-last-name,
+body.node-type-petition-action .node-petition-action #edit-field-sig-address,
+body.node-type-petition-action .node-petition-action #edit-field-sig-city,
+body.node-type-petition-action .node-petition-action .group-address-tabs,
+body.node-type-petition-action #signature-international-signature-form .form-item-email {
+  margin-left: 50px;
+}
+body.node-type-petition-action .node-petition-action input.signature-sign-button {
+  margin-left: 156px;
+}
+
+body.node-type-petition-action .node-petition-action .form-item-display,
+body.node-type-petition-action .node-petition-action .form-item-newsletter {
+  margin-left: 152px;
+}
+body.node-type-petition-action .node-petition-action #edit-signature-display-disclaimer {
+  margin-left: 154px;
+}
+body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper {
+  margin-left: 37px;
+}
+body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
+    margin-left: 180px;
+}
+#edit-field-sig-zip-code-und-0-value {
+  width: 408px;
+}
+.embedaction-content #edit-field-sig-zip-code-und-0-value {
+  width: 300px;
+}
+.embedaction-content .field-name-field-petition-recipient {
+  margin-bottom: 5px;
+}
+#block-boxes-action-header-image {
+  margin-bottom: 10px;
+}
+
