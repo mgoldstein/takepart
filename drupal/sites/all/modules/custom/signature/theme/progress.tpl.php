@@ -19,5 +19,5 @@
   </p>
   <img class="signature-progress-bar" src="<?php print $bar; ?>"
        alt="<?php print $percent; ?>% Complete"/>
-  <p class="signature-progress-count <?php print $count_classes?>"><?php print render($progress); ?></p>
+  <p class="signature-progress-count <?php print $count_classes?>"><?php print $progress; ?></p>
 </div>

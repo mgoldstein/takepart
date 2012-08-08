@@ -3459,4 +3459,7 @@ body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
 .embedaction-content .field-name-field-petition-recipient {
   margin-bottom: 5px;
 }
+#block-boxes-action-header-image {
+  margin-bottom: 10px;
+}
 
