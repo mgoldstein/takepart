@@ -9,7 +9,7 @@
       // Adjust the other tabs to that height
       if (height > 0) {
         $('fieldset.same-height-adjust > .fieldset-wrapper', this).each(function (index) {
-          if (($this).height() > height) {
+          if ($(this).height() > height) {
             $(this).height(height);
             $(this).css('overflow-y', 'scroll');
           }
