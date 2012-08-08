@@ -35,8 +35,9 @@
       }
 
       // Reload any signature lists
+/*
       var lists = Array();
-      $('.view.view-petition-signature-list').each(function (index) {
+       $('.view.view-petition-signature-list').each(function (index) {
         var classes = $(this).attr('class').split(/\s+/);
         var dom_id = extractClassValue(classes, 'view-dom-id-');
         var display_id = extractClassValue(classes, 'view-display-id-');
@@ -62,7 +63,7 @@
           }
         });
       });
-
+*/
       // Adjust the selected tab state of the petition
       var tab = '.signature-tab-' + node.state;
       $(tab).each(function () {
