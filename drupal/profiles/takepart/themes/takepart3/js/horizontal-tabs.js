@@ -9,15 +9,12 @@
       // Adjust the other tabs to that height
       if (height > 0) {
         $('fieldset.same-height-adjust > .fieldset-wrapper', this).each(function (index) {
-          $(this).height(height);
-          $(this).css('overflow-y', 'scroll');
+          if (($this).height() > height) {
+            $(this).height(height);
+            $(this).css('overflow-y', 'scroll');
+          }
         });
       }
     });
-  };
-  Drupal.behaviors.sameSizeHorzontalTabs = {
-    attach: function (context, settings) {
-      $('.horizontal-tabs').sameSizeTabs();
-    }
   };
 })(jQuery);
