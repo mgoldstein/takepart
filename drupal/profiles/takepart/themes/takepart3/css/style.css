@@ -3191,19 +3191,21 @@ div.embedaction-wrapper div.field-name-field-promo-headline div.field-item:hover
 div.embedaction-content {
   
 }
-
+.node-type-takepart-campaign #content h2.embedaction-divider, 
 div.embedaction-content h2.embedaction-divider {
   background: url("/profiles/takepart/themes/takepart3/images/45deg_lines_yellow.png") repeat-x scroll 0 0 transparent;
   border: medium none;
   color: #ffe789;
   font-family: Helvetica,Arial,sans-serif;
   font-size: 14px;
+  font-weight: normal;
   height: 18px;
   line-height: 100%;
   margin: 0;
   padding: 0 0 6px;
 }
 
+.node-type-takepart-campaign #content h2.embedaction-divider a,
 div.embedaction-content h2.embedaction-divider a {
   background: none repeat scroll 0 0 #FFFFFF;
   color: #000000;

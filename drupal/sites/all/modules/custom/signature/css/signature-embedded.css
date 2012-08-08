@@ -70,7 +70,12 @@ div.horizontal-tabs-panes {
 .embedaction-content .field-name-field-petition-page-title {
     font-size: 22px;
     font-weight: bold;
-    line-height: 1.5em;
+    line-height: 1.2em;
+}
+
+.node-type-takepart-campaign #content .embedaction-content a {
+    font-weight: normal;
+    color: #1CA9E7;
 }
 
 .embedaction-content .field-type-text-with-summary {
