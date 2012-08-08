@@ -1262,6 +1262,7 @@ function signature_node_progress_variables($settings) {
     $state = 'closed';
   }
 
+  $decimals = $percent < 10.0 ? 1 : 0;
   return array(
     'title' => $settings->title,
     'view_latch' => "signature_form_viewed_{$settings->nid}",
@@ -1274,7 +1275,7 @@ function signature_node_progress_variables($settings) {
       $progress_bar_filename,
     )),
     'complete_classes' => implode(' ', $complete_classes),
-    'percent' => number_format($percent, 1),
+    'percent' => number_format($percent, $decimals),
     'count_classes' => implode(' ', $count_classes),
     'progress' => $progress,
     'count' => $settings->count,
