@@ -707,6 +707,10 @@ function signature_node_view_alter(&$build) {
       . '/js/signature-address.js';
     drupal_add_js($js_path, array('type' => 'file'));
 
+    $css_path = drupal_get_path('module', 'signature')
+      . '/css/signature-address.css';
+    drupal_add_css($css_path, array('type' => 'file'));
+
     $js_path = drupal_get_path('module', 'signature')
       . '/js/jquery.qtip.min.js';
     drupal_add_js($js_path, array('type' => 'file'));
@@ -1239,10 +1243,10 @@ function signature_node_progress_variables($settings) {
   //$cookie = "{$settings->type}_{$settings->nid}_signed";
   //$state = isset($_COOKIE[$cookie]) ? 'signed' : 'unsigned';
   $state = 'unsigned';
-  if (!empty($user->uid)) {
+  if (!empty($user->mail)) {
     $result = db_select('signature', 's')
       ->fields('s')
-      ->condition('uid', $user->uid, '=')
+      ->condition('email', $user->mail, '=')
       ->condition('nid', $settings->nid, '=')
       ->execute();
     if ($result->rowCount() > 0) {
