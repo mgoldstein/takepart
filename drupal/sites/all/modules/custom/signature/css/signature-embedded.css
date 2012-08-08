@@ -35,7 +35,7 @@ div.horizontal-tabs-panes {
     background-color: transparent;
     border: 0 none;
     list-style: none;
-    margin:0 20px 10px;
+    margin:0 20px 10px 10px;
 }
 
 #content .horizontal-tabs ul.horizontal-tabs-list li {
