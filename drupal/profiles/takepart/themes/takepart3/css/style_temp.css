@@ -91,3 +91,6 @@ body.node-type-petition-action .node-petition-action #edit-signature-display-dis
 	margin-left: 0;
 }
 
+.node-petition-action .embedaction-content h1.signature-heading {
+    display: none;
+}
