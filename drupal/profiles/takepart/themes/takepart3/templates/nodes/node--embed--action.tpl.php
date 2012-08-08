@@ -9,17 +9,21 @@
  */
 ?>
 <div class="embed-action-wrapper">
-  <div class="embed-action">
-      <table><tr><td>
-    <?php 
-    $taicon = '<img src="/profiles/takepart/themes/takepart3/images/take-action-embed.png" />';
-    print l($taicon, "node/{$node->nid}", array('html' => TRUE) );
-    ?>
-              </td>
-              <td>
-    <?php   
-    print l($node->title, "node/{$node->nid}");  
-    ?>
-              </td></tr></table>
-  </div>
+    <div class="embed-action">
+        <table>
+            <tr>
+                <td class="graphic">
+                    <?php
+                    $taicon = '<img src="/profiles/takepart/themes/takepart3/images/take-action-embed.png" />';
+                    print l($taicon, "node/{$node->nid}", array('html' => TRUE));
+                    ?>
+                </td>
+                <td class="title">
+                    <?php
+                    print l($node->title, "node/{$node->nid}");
+                    ?>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
