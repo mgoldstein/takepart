@@ -3362,9 +3362,9 @@ div.embedaction-content h2.embedaction-divider a span {
     border: 2px ridge #ffdf97;
 }
 
-.embedaction-content .node-petition-action #edit-terms-of-use-note {
+.embedaction-content .node-petition-action .signature-terms-of-use {
     margin-left: 110px;
-    margin-bottom: 0;
+    margin-bottom: 4px;
 }
 .node-petition-action #edit-terms-of-use-note {
     margin-left: 130px;
