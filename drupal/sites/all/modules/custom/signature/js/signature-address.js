@@ -26,6 +26,10 @@
         });
       });
       outside.hide();
+      $('.selectable-address-required .form-item > label').once('address-required', function () {
+        var requiredStar = $('<span class="form-required" title="This field is required.">*</span>');
+        $(this).append(requiredStar);
+      });
     });
   });
 })(jQuery);
