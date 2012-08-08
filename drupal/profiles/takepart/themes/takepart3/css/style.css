@@ -3446,7 +3446,9 @@ body.node-type-petition-action .node-petition-action #edit-field-sig-last-name,
 body.node-type-petition-action .node-petition-action #edit-field-sig-address,
 body.node-type-petition-action .node-petition-action #edit-field-sig-city,
 body.node-type-petition-action .node-petition-action .group-address-tabs,
-body.node-type-petition-action .node-petition-action  .form-item-email {
+body.node-type-petition-action .node-petition-action .form-item-email,
+body.node-type-petition-action .node-petition-action .form-item-field-sig-state-und,
+body.node-type-petition-action .node-petition-action .form-item-field-sig-zip-code-und-0-value {
   margin-left: 50px;
 }
 body.node-type-petition-action .node-petition-action input.signature-sign-button {
