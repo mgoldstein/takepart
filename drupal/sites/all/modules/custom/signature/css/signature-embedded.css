@@ -94,7 +94,7 @@ div.horizontal-tabs-panes {
 #content .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
     border: none;
     background-color: white;
-    margin: 0 0 0 50px;;
+    margin: 0;
     padding: 0;
     outline: none;
 }

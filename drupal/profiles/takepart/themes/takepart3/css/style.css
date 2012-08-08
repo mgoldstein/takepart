@@ -3447,12 +3447,14 @@ body.node-type-petition-action .node-petition-action #edit-field-sig-address,
 body.node-type-petition-action .node-petition-action #edit-field-sig-city,
 body.node-type-petition-action .node-petition-action .group-address-tabs,
 body.node-type-petition-action .node-petition-action .form-item-email,
-body.node-type-petition-action .node-petition-action .form-item-field-sig-state-und,
-body.node-type-petition-action .node-petition-action .form-item-field-sig-zip-code-und-0-value, 
-body.node-type-petition-action .node-petition-action #edit-field-sig-country,
-body.node-type-petition-action .node-petition-action #edit-field-sig-postal-code {
+body.node-type-petition-action .node-petition-action .group-address-tabs {
   margin-left: 50px;
 }
+
+body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper.group-address-tabs {
+    margin-left: 50px;
+}
+
 body.node-type-petition-action .node-petition-action input.signature-sign-button {
   margin-left: 156px;
 }
