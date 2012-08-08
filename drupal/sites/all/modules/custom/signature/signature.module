@@ -1221,22 +1221,23 @@ function signature_node_progress_variables($settings) {
   }
 
   if ($days_left > 0 && $settings->limit_to_dates != 0) {
-    $progress_markup = t('<span class="number">!goal</span> Goal, !days left', array(
+    $format = variable_get('signature_progress_dates_format',
+      '<span class="number">!count</span> signatures of <span class="number">!goal</span> goal, !days left');
+    $progress = t($format, array(
+      '!count' => number_format($settings->count),
       '!goal' => number_format($settings->goal),
       '!days' => format_plural($days_left, '<span class="number">1</span> day',
-      '<span class="number">@count</span> days'),
+        '<span class="number">@count</span> days'),
     ));
   }
   else {
-    $progress_markup = t('<span class="number">!count</span> of <span class="number">!goal</span> signatures', array(
+    $format = variable_get('signature_progress_no_dates_format',
+      '<span class="number">!count</span> signatures of <span class="number">!goal</span> goal');
+    $progress = t($format, array(
       '!count' => number_format($settings->count),
       '!goal' => number_format($settings->goal),
     ));
   }
-  $progress = array(
-    '#type' => 'markup',
-    '#markup' => $progress_markup,
-  );
 
   // the signature collection state is determined by wether the user is logged
   // in and has an existing signature, unless signature collection is closed

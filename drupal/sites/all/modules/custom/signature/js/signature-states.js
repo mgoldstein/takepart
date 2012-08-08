@@ -74,7 +74,7 @@
         $('.signature-progress-percent', this).text(node.percent + '%');
         $('.signature-progress-bar', this).attr('src', node.bar).attr('alt',
           node.percent + '% Complete');
-        $('.signature-progress-count', this).text(node.progress);
+        $('.signature-progress-count', this).html(node.progress);
       });
     }
   };
