@@ -3423,7 +3423,7 @@ fieldset#signature_international_signature_form_group_outside_us #edit-field-sig
 }
 
 .node-petition-action .group-petition-tabs .horizontal-tabs-panes {
-  padding:  10px;
+  padding:  10px 0;
   background-color: #DFE6EA;
   margin-top: -5px;  
 }
