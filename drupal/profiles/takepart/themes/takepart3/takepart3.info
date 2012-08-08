@@ -18,6 +18,8 @@ stylesheets[all][] = css/sharebar.css
 ; Javascript
 scripts[] = js/script.js
 
+scripts[] = js/horizontal-tabs.js
+
 features[] = favicon
 
 ; Defaults
