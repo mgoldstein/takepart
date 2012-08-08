@@ -15,7 +15,7 @@ div.horizontal-tabs-panes {
     margin-top:-3px;
 }
 
-.drupal-embed .horizontal-tabs ul.horizontal-tabs-list .selected strong {
+.drupal-embed .horizontal-tabs ul.horizontal-tabs-list strong {
    font-weight: 300; 
 }
 #content .node-petition-action .group-petition-tabs div.horizontal-tabs-panes {
