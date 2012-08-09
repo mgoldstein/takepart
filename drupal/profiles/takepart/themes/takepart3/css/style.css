@@ -3463,7 +3463,8 @@ body.node-type-petition-action .node-petition-action #edit-field-sig-address,
 body.node-type-petition-action .node-petition-action #edit-field-sig-city,
 body.node-type-petition-action .node-petition-action .group-address-tabs,
 body.node-type-petition-action .node-petition-action .form-item-email,
-body.node-type-petition-action .node-petition-action .group-address-tabs {
+body.node-type-petition-action .node-petition-action #edit-field-sig-state, 
+body.node-type-petition-action .node-petition-action #edit-field-sig-zip-code {
   margin-left: 50px;
 }
 

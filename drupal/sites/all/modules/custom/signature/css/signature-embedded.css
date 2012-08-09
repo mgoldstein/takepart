@@ -88,9 +88,11 @@ div.horizontal-tabs-panes {
     color: #777;
     text-decoration: underline;
 }
+#content .node-petition-action .horizontal-tabs ul.horizontal-tabs-list li a {
+    white-space: nowrap;
+}
 #content .node-petition-action .horizontal-tabs ul.horizontal-tabs-list li a:hover {
     background-color: white;
-    white-space: nowrap;
 }
 
 #content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.first {
