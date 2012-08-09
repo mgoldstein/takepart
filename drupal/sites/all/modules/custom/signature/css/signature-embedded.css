@@ -180,8 +180,15 @@ div.horizontal-tabs-panes {
     width: 425px;
 }
 
-.embedaction-content .form-item-display,
-.embedaction-content .form-item-newsletter {
+.node-petition-action .group-sign-the-petition .form-item-display,
+.node-petition-action .group-sign-the-petition .form-item-newsletter,
+.node-petition-action .group-sign-the-petition .form-type-checkbox,
+.embedaction-content .node-petition-action .form-item-display,
+.embedaction-content .node-petition-action .form-item-newsletter,
+.embedaction-content .node-petition-action .form-type-checkbox,
+.node-petition-action .group-sign-the-petition .form-item-display,
+.node-petition-action .form-actions .form-type-checkbox,
+.node-petition-action .group-sign-the-petition .form-item-newsletter {
     margin: 0 0 0 100px;
 }
 
