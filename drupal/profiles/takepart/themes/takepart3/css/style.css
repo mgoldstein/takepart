@@ -2936,13 +2936,14 @@ body.multipage-campaign #highlighted {
     margin-left:10px;
     font-weight: normal;
     font-size: 10px;
+    height:  14px;
+    line-height:  14px;
 }
 .logged-in #user-nav li.login-0 {
-    padding-top: 1px;
     margin-left:5px;
 }
 .logged-in #user-nav li.login-1 {
-    margin-left:5px;
+  margin-left:5px;
 }
 
 
