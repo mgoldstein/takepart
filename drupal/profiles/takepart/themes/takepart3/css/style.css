@@ -3455,13 +3455,15 @@ fieldset#signature_international_signature_form_group_outside_us #edit-field-sig
 }
 
 /* to indent the form on non-embedded pages */
-body.node-type-petition-action .node-petition-action #edit-field-sig-first-name,
-body.node-type-petition-action .node-petition-action #edit-field-sig-last-name,
-body.node-type-petition-action .node-petition-action #edit-field-sig-address,
-body.node-type-petition-action .node-petition-action #edit-field-sig-city,
+body.node-type-petition-action .node-petition-action .field-name-field-sig-first-name,
+body.node-type-petition-action .node-petition-action .field-name-field-sig-last-name,
+body.node-type-petition-action .node-petition-action .field-name-field-sig-address,
+body.node-type-petition-action .node-petition-action .field-name-field-sig-city,
 body.node-type-petition-action .node-petition-action .form-item-email,
-body.node-type-petition-action .node-petition-action #edit-field-sig-state, 
-body.node-type-petition-action .node-petition-action #edit-field-sig-zip-code {
+body.node-type-petition-action .node-petition-action .field-name-field-sig-state,
+body.node-type-petition-action .node-petition-action .field-name-field-sig-zip-code,
+body.node-type-petition-action .node-petition-action .field-name-field-sig-country,
+body.node-type-petition-action .node-petition-action .field-name-field-sig-postal-code {
   margin-left: 50px;
 }
 

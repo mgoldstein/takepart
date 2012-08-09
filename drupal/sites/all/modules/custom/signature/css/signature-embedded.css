@@ -228,10 +228,10 @@ div.horizontal-tabs-panes {
     margin: 0;
 }
 
-.embedaction-content #edit-signature-display-disclaimer {
+.embedaction-content .signature-display-disclaimer {
     margin: 8px 0 8px 100px;
 }
 
-.node-petition-action #node_petition_action_embedaction_group_sign_the_petition .form-item.form-type-checkbox {
+.node-petition-action .form-type-checkbox {
     margin-left: 100px;
 }
