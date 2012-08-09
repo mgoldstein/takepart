@@ -90,6 +90,7 @@ div.horizontal-tabs-panes {
 }
 #content .node-petition-action .horizontal-tabs ul.horizontal-tabs-list li a:hover {
     background-color: white;
+    white-space: nowrap;
 }
 
 #content .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.first {
