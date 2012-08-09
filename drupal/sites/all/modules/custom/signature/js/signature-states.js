@@ -1,5 +1,60 @@
 (function ($) {
 
+  Drupal.behaviors.signatureRefreshList = {};
+  Drupal.behaviors.signatureRefreshList.attach = function() {
+    if (Drupal.settings && Drupal.settings.views && Drupal.settings.views.ajaxViews) {
+      // Retrieve the path to use for views' ajax.
+      var ajax_path = Drupal.settings.views.ajax_path;
+
+      // If there are multiple views this might've ended up showing up multiple times.
+      if (ajax_path.constructor.toString().indexOf("Array") != -1) {
+        ajax_path = ajax_path[0];
+      }
+      
+      $.each(Drupal.settings.views.ajaxViews, function(i, settings) {
+        if (settings.view_name == 'petition_signature_list') {
+          var view = '.view-dom-id-' + settings.view_dom_id;
+
+          var element_settings = {
+            url: ajax_path,
+            submit: settings,
+            event: 'refresh_signature_list',
+            selector: view,
+            progress: { type: 'throbber' }
+          };
+
+          $(view).filter(':not(.signature-list-refresh-processed)')
+            // Don't attach to nested views. Doing so would attach multiple behaviors
+            // to a given element.
+            .filter(function() {
+              // If there is at least one parent with a view class, this view
+              // is nested (e.g., an attachment). Bail.
+              return !$(this).parents('.view').size();
+            })
+            .each(function() {
+              // Set a reference that will work in subsequent calls.
+              var target = this;
+              $(this)
+                .addClass('signature-list-refresh-processed')
+                // Process pager, tablesort, and attachment summary links.
+                .closest('.field-name-field-signatures')
+                .each(function () {
+                  var viewData = {};
+                  // Construct an object using the settings defaults and then overriding
+                  // with data specific to the link.
+                  $.extend(
+                    viewData,
+                    settings
+                  );
+                  element_settings.submit = viewData;
+                  var ajax = new Drupal.ajax(false, this, element_settings);
+                }); // .each function () {
+          }); // $view.filter().each
+        } // if view_name == 'petition_signature_list'
+      }); // .each Drupal.settings.views.ajaxViews
+    } // if
+  };
+  
   var extractClassValue = function (classes, startsWith) {
     for (var i=0; i<classes.length; i++) {
       var value = classes[i]
@@ -35,35 +90,13 @@
       }
 
       // Reload any signature lists
-/*
-      var lists = Array();
-       $('.view.view-petition-signature-list').each(function (index) {
-        var classes = $(this).attr('class').split(/\s+/);
-        var dom_id = extractClassValue(classes, 'view-dom-id-');
-        var display_id = extractClassValue(classes, 'view-display-id-');
-        $.ajax({
-          type: "POST",
-          url: "/views/ajax",
-          data: {
-            page: 1,
-            pager_element: 0,
-            view_args: nid,
-            view_base_path: "node/" + nid,
-            view_display_id: display_id,
-            view_dom_id: dom_id,
-            view_name: "petition_signature_list",
-            view_path: "node/" + nid, 
-          }
-        }).done(function (response) {
-          for (var i=0; i<response.length; i++) {
-            var chunk = response[i];
-            if (chunk.command == 'insert' && chunk.method == 'replaceWith') {
-              $(chunk.selector).replaceWith(chunk.data);
-            }
-          }
-        });
-      });
-*/
+      $('.field-name-field-signatures.initial-signature-refresh-processed', $(div_id))
+        .once('submit-signature-refresh')
+        .trigger('refresh_signature_list');
+      $('.field-name-field-signatures', $(div_id))
+        .once('initial-signature-refresh')
+        .trigger('refresh_signature_list');
+
       // Adjust the selected tab state of the petition
       var tab = '.signature-tab-' + node.state;
       $(tab).each(function () {
