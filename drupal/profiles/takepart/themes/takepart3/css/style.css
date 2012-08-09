@@ -2936,13 +2936,14 @@ body.multipage-campaign #highlighted {
     margin-left:10px;
     font-weight: normal;
     font-size: 10px;
+    height:  14px;
+    line-height:  14px;
 }
 .logged-in #user-nav li.login-0 {
-    padding-top: 1px;
     margin-left:5px;
 }
 .logged-in #user-nav li.login-1 {
-    margin-left:5px;
+  margin-left:5px;
 }
 
 
@@ -3362,13 +3363,9 @@ div.embedaction-content h2.embedaction-divider a span {
     border: 2px ridge #ffdf97;
 }
 
-.embedaction-content .node-petition-action #edit-terms-of-use-note {
+.embedaction-content .node-petition-action .signature-terms-of-use {
     margin-left: 110px;
-    margin-bottom: 0;
-}
-.node-petition-action #edit-terms-of-use-note {
-    margin-left: 130px;
-    margin-bottom: 2em;
+    margin-bottom: 4px;
 }
 
 .node-petition-action .group-address-tabs div.horizontal-tabs {
@@ -3463,7 +3460,8 @@ body.node-type-petition-action .node-petition-action #edit-field-sig-address,
 body.node-type-petition-action .node-petition-action #edit-field-sig-city,
 body.node-type-petition-action .node-petition-action .group-address-tabs,
 body.node-type-petition-action .node-petition-action .form-item-email,
-body.node-type-petition-action .node-petition-action .group-address-tabs {
+body.node-type-petition-action .node-petition-action #edit-field-sig-state, 
+body.node-type-petition-action .node-petition-action #edit-field-sig-zip-code {
   margin-left: 50px;
 }
 
@@ -3487,6 +3485,7 @@ body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper 
 }
 body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
     margin-left: 180px;
+    margin-bottom: 1em;
 }
 #edit-field-sig-zip-code-und-0-value {
   width: 408px;
