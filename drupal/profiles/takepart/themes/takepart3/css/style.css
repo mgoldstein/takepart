@@ -3367,10 +3367,6 @@ div.embedaction-content h2.embedaction-divider a span {
     margin-left: 110px;
     margin-bottom: 4px;
 }
-.node-petition-action #edit-terms-of-use-note {
-    margin-left: 130px;
-    margin-bottom: 2em;
-}
 
 .node-petition-action .group-address-tabs div.horizontal-tabs {
     margin-bottom: 0;
@@ -3489,6 +3485,7 @@ body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper 
 }
 body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
     margin-left: 180px;
+    margin-bottom: 1em;
 }
 #edit-field-sig-zip-code-und-0-value {
   width: 408px;
