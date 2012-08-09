@@ -849,6 +849,17 @@ function signature_base_form($form, &$form_state, $signature, $node) {
   // translate the signature type to a CSS class name prefix
   $css_prefix = str_replace('_', '-', $signature->type);
 
+  if (!isset($form['#attribues'])) {
+    $form['#attributes'] = array();
+  }
+  if (!isset($form['#attributes']['class'])) {
+    $form['#attributes']['class'] = array();
+  }
+  $form['#attributes']['class'] += array(
+    'signature-form',
+    $css_prefix . '-form',
+  );
+
   // add the signature heading
   $form['heading'] = array(
     '#type' => 'markup',
