@@ -4,8 +4,9 @@
       var inside = $('.selectable-address-inside-us', this);
       var outside = $('.selectable-address-outside-us', this);
       $('#edit-field-sig-state > div.form-item', this).each(function () {
+        var label = $('h3 > span', outside).text()
         var link = $('<span class="selectable-address-link">'
-          + '<a href="#">Outside U.S.</a></span>');
+          + '<a href="#">' + label + '</a></span>');
         $(this).append(link);
         $('a', link).click({ i: inside, o: outside }, function (event) {
           event.preventDefault();
@@ -14,8 +15,9 @@
         });
       });
       $('#edit-field-sig-country > div.form-item', this).each(function () {
+        var label = $('h3 > span', inside).text()
         var link = $('<span class="selectable-address-link">'
-          + '<a href="#">Inside U.S.</a></span>');
+          + '<a href="#">' + label + '</a></span>');
         $(this).append(link);
         $('a', link).click({ i: inside, o: outside }, function (event) {
           event.preventDefault();
@@ -24,6 +26,10 @@
         });
       });
       outside.hide();
+      $('.selectable-address-required .form-item > label').once('address-required', function () {
+        var requiredStar = $('<span class="form-required" title="This field is required.">*</span>');
+        $(this).append(requiredStar);
+      });
     });
   });
 })(jQuery);

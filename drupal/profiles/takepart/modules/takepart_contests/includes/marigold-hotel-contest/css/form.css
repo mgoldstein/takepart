@@ -695,3 +695,8 @@ p.mg-previous-entry-message {
   font-weight: bold;
   margin-bottom: 36px;
 }
+
+/*For IE only*/
+#takepart_contests_form_wrapper_1 {
+  width: 800px;
+}

@@ -6,6 +6,7 @@
     else if (evt.data.service == 'twitter') { title = 'Twitter'; }
     s.linkTrackVars = "eVar27,eVar30,events";
     s.linkTrackEvents = "event25";
+    s.prop26 = title;
     s.eVar27 = title;
     s.eVar30 = s.pageName;
     s.events = 'event25';

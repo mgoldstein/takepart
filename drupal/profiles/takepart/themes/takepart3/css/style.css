@@ -3131,20 +3131,31 @@ p.fb-login-text {
 /**
  * Embedded Action Styles
  */
+ 
  div.drupal-embed {
      margin-bottom: 1em;
  }
- div.embedaction-wrapper {
+.embedaction-wrapper, .embed-action-wrapper {
   background-color: #ffffff;
   border: 4px solid #ffe789;
-  padding: 0 8px;
+  padding: 8px;
 }
 
-div.embedaction-wrapper tbody { 
+.embedaction-wrapper tbody { 
      border:0;
 }
 
-.embedaction-header {
+.embedaction-wrapper .embed-action .graphic,
+.embed-action-wrapper .embed-action .graphic {
+    width: 176px;
+    height: auto;
+    padding-right: 8px;
+}
+
+.embedaction-wrapper .embed-action .graphic img,
+.embed-action-wrapper .embed-action .graphic img {
+    width: 168px;
+    height: 29px;
 }
 
 .embedaction-header td {
@@ -3156,7 +3167,7 @@ div.embedaction-button {
   background: url(/profiles/takepart/themes/takepart3/images/take-action-embed.png) no-repeat scroll right top transparent;
   float: left;
   height: 29px;
-  margin: 12px 0;
+  margin: 0;
   width: 168px;   
 }
 
@@ -3181,26 +3192,39 @@ div.embedaction-content {
   
 }
 
+.node-type-petition-action h2 {
+    color: #000;
+    text-transform: none;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5em;
+}
+
+.node-type-takepart-campaign #content h2.embedaction-divider, 
 div.embedaction-content h2.embedaction-divider {
   background: url("/profiles/takepart/themes/takepart3/images/45deg_lines_yellow.png") repeat-x scroll 0 0 transparent;
   border: medium none;
   color: #ffe789;
   font-family: Helvetica,Arial,sans-serif;
   font-size: 14px;
+  font-weight: normal;
   height: 18px;
   line-height: 100%;
-  margin: 0;
+  margin: 1em 0 0 0;
   padding: 0 0 6px;
 }
 
+.node-type-takepart-campaign #content h2.embedaction-divider a,
 div.embedaction-content h2.embedaction-divider a {
   background: none repeat scroll 0 0 #FFFFFF;
   color: #000000;
   float: right;
   padding: 0 0 0 6px;
 }
+
 div.embedaction-content h2.embedaction-divider a span {
   color: #1CA9E7;
+  padding: 0;
 }
 
 .node-petition-action .group-heading-split-left {
@@ -3276,6 +3300,14 @@ div.embedaction-content h2.embedaction-divider a span {
     background: url(/profiles/takepart/themes/takepart3/images/sign_petition_banner_600x47.png) no-repeat scroll 0 0 transparent;
     height: 47px;
     color: transparent;
+    clear: both;
+}
+.embedaction-content .node-petition-action h1.signature-heading {
+    color: #000;
+    background: none;
+    height: auto;
+    font-size: 20px;
+    line-height: 1.2em;
 }
 
 .node-petition-action .form-wrapper {
@@ -3286,7 +3318,7 @@ div.embedaction-content h2.embedaction-divider a span {
     float: left;
     width: 100px;
     text-align: right;
-    padding-right: 6px;
+    padding-right: 8px;
 }
 
 .node-petition-action .form-item-display label,
@@ -3330,9 +3362,9 @@ div.embedaction-content h2.embedaction-divider a span {
     border: 2px ridge #ffdf97;
 }
 
-.embedaction-content .node-petition-action #edit-terms-of-use-note {
+.embedaction-content .node-petition-action .signature-terms-of-use {
     margin-left: 110px;
-    margin-bottom: 0;
+    margin-bottom: 4px;
 }
 .node-petition-action #edit-terms-of-use-note {
     margin-left: 130px;
@@ -3391,7 +3423,7 @@ fieldset#signature_international_signature_form_group_outside_us #edit-field-sig
 }
 
 .node-petition-action .group-petition-tabs .horizontal-tabs-panes {
-  padding:  10px;
+  padding:  10px 0;
   background-color: #DFE6EA;
   margin-top: -5px;  
 }
@@ -3430,9 +3462,15 @@ body.node-type-petition-action .node-petition-action #edit-field-sig-last-name,
 body.node-type-petition-action .node-petition-action #edit-field-sig-address,
 body.node-type-petition-action .node-petition-action #edit-field-sig-city,
 body.node-type-petition-action .node-petition-action .group-address-tabs,
-body.node-type-petition-action #signature-international-signature-form .form-item-email {
+body.node-type-petition-action .node-petition-action .form-item-email,
+body.node-type-petition-action .node-petition-action .group-address-tabs {
   margin-left: 50px;
 }
+
+body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper.group-address-tabs {
+    margin-left: 50px;
+}
+
 body.node-type-petition-action .node-petition-action input.signature-sign-button {
   margin-left: 156px;
 }
