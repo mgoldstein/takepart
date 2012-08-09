@@ -59,11 +59,11 @@
     margin-left: 7px;
 }
 
-.node-petition-action #edit-terms-of-use-note {
+.node-petition-action .signature-terms-of-use {
     margin-left: 188px;
 }
 
-.node-petition-action #node_petition_action_embedaction_group_sign_the_petition .form-item, .node-petition-action .form-actions {
+.node-petition-action .group-sign-the-petition .form-item, .node-petition-action .form-actions {
     margin-left: 0px;
 }
 
@@ -75,7 +75,7 @@
 	margin-left: 0px;
 }
 
-#edit-field-sig-zip-code-und-0-value {
+.node-petition-action .field-name-field-sig-state input {
     width: 308px;
 }
 
@@ -95,7 +95,7 @@
     display: none;
 }
 
-.node-petition-action select#edit-field-sig-state-und, 
-.node-petition-action select#edit-field-sig-country-und {
+.node-petition-action .field-name-field-sig-state select,
+.node-petition-action .field-name-field-sig-country select {
     width: 200px;
 }
