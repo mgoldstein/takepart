@@ -3309,6 +3309,7 @@ div.embedaction-content h2.embedaction-divider a span {
     height: auto;
     font-size: 20px;
     line-height: 1.2em;
+    display: none;
 }
 
 .node-petition-action .form-wrapper {
@@ -3458,7 +3459,6 @@ body.node-type-petition-action .node-petition-action #edit-field-sig-first-name,
 body.node-type-petition-action .node-petition-action #edit-field-sig-last-name,
 body.node-type-petition-action .node-petition-action #edit-field-sig-address,
 body.node-type-petition-action .node-petition-action #edit-field-sig-city,
-body.node-type-petition-action .node-petition-action .group-address-tabs,
 body.node-type-petition-action .node-petition-action .form-item-email,
 body.node-type-petition-action .node-petition-action #edit-field-sig-state, 
 body.node-type-petition-action .node-petition-action #edit-field-sig-zip-code {
@@ -3485,7 +3485,7 @@ body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper 
 }
 body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
     margin-left: 180px;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
 }
 #edit-field-sig-zip-code-und-0-value {
   width: 408px;
