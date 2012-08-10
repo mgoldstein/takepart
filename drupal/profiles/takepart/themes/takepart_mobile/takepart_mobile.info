@@ -1,0 +1,39 @@
+name = Takepart Mobile
+description = A mobile sub-theme.
+
+base theme = takepart3
+core = 7.x
+engine = phptemplate
+
+; Stylsheets
+stylesheets[all][] = css/legacy.css
+stylesheets[all][] = css/style.css
+stylesheets[all][] = css/style2.css.less
+stylesheets[all and (max-width: 320px)][] = css/reset.css
+stylesheets[all and (max-width: 320px)][] = css/iphone.css.less
+stylesheets[all and (min-width: 320px)][] = ../takepart3/css/legacy.css
+stylesheets[all and (min-width: 320px)][] = ../takepart3/css/style.css
+
+;Some other methods ...
+;stylesheets[only screen and (max-device-width: 320px)][] = css/iphone.css
+;stylesheets[only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait)][] 
+;stylesheets[only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape)][]
+
+; Defaults
+regions[header] = Header
+regions[top_nav] = Top Navigation
+regions[highlighted] = Highlighted
+regions[full_width_top] = Full Width Top
+regions[help] = Help
+regions[content] = Content
+regions[sidebar_first] = Left sidebar
+regions[sidebar_second] = Right sidebar
+regions[full_width_bottom] = Full Width Bottom
+regions[footer] = Footer
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+
+; Custom regions
+regions[content_top]  = Content top
+regions[content_bottom]  = Content bottom
+regions[content_footer]  = Content footer
