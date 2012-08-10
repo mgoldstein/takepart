@@ -426,7 +426,7 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign) {
 
   $submit_src = drupal_get_path('theme', 'takepart3') . '/images/submit_off.png';
   $hover_src = drupal_get_path('theme', 'takepart3') . '/images/submit_on.png';
-  $form['submit'] = array(
+  $form['newsletter_campaign_signup'] = array(
     '#type' => 'image_button',
     '#src' => $submit_src,
     '#attributes' => array(
