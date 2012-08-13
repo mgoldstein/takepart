@@ -1,0 +1,184 @@
+@body-text-color: #000000;
+@body-font-size: 12px;
+@body-family: Helvetica,Arial,sans-serif;
+@nav-family: NewsGothicBoldCondensed, 'Arial Narrow', sans-serif;
+@nav-family-size: 17px;
+@nav-margin-top: 3px;
+
+@primary-color-1: #1ca937;
+@primary-color-2: #000000;
+@primary-color-3: #ffffff;
+
+@secondary-color-slates-1: #99bbcc;
+@secondary-color-slates-2: #d9e7ee;
+@secondary-color-slates-3: #eff3f5;
+
+@secondary-color-grays-1: #666666;
+@secondary-color-grays-2: #cccccc;
+@secondary-color-grays-3: #ededed;
+
+@accents-color-1: #ffca00;
+@accents-color-2: #fdab30;
+
+
+body {
+    background-color: #ffffff;
+    color: @body-text-color;
+    font-size: @body-font-size;
+    font-family: @body-family;
+    margin:0;
+    padding:0;
+    width: 320px;
+    border: solid 1px red;
+}
+
+/* scale images */
+img {
+    border: 0 none;
+    height: auto;
+    max-width: 100%;
+}
+
+
+/* top header styles */
+#header-wrapper {
+
+    height: 36px;
+    background-color: @secondary-color-slates-2;
+    
+    #join-login-top {
+        display:none;
+    }
+
+     #logo {
+        float: left;
+        left: 0;
+        padding: 0;
+        position: absolute;
+        top: 0px;
+        width: 42px;
+    }
+    
+    #logo a {
+        background: url(/profiles/takepart/themes/takepart3/images/2012-08-01/logo-sm-slim.png) no-repeat scroll 0 0 transparent;
+        display: block;
+        height: 41px;
+        position: absolute;
+        text-indent: -9000px;
+        width: 42px;
+        z-index: 1;
+    }
+    
+    #user-nav {
+      padding: 0px;
+      margin: 0px;
+    }
+    
+    .logo-wrapper {
+        float:left;
+    }
+    
+    #join-login-top {
+        float:left;
+    }
+    
+    .header-right {
+        padding-top: 0px;
+        margin-left: 41px;
+    }
+    
+    #nav-wrap {
+       /* margin-left:41px; */
+        float:left;
+    }
+    
+    /* navigation container for topics */
+     #nav-wrap {
+    
+       ul.menu {
+          display: block;
+          height: 37px;
+          width: 77px;
+          background:url(/profiles/takepart/themes/takepart3/images/2012-08-01/small-menu-arrow.png) no-repeat scroll 56px 11px transparent;
+         /* padding: 0px; */
+          font-family: @nav-family;
+          font-size: @nav-family-size;
+          text-transform: uppercase;
+          text-align: center;
+          text-decoration:none;
+        }
+        
+        ul.menu:before {
+            content: "Test";
+        }
+        
+        ul.menu li.leaf {
+            display:none;
+            text-align: left;
+            margin-top: @nav-margin-top;
+            height: 30px;
+        }
+        
+        ul.menu:hover li.leaf {
+            display:block;
+        }
+        
+        ul.menu li.first {
+            padding-top:30px;
+        }
+        
+        li.leaf a {
+            padding-top:1px;
+            float:none;
+            color:#fff;
+            background:#333;
+        }
+        
+        li.leaf a {
+           /* padding-top:0px; */
+        }
+        
+    }
+    
+    #hot-topics-nav {
+      
+        height: 36px;
+        width: 45px;
+        overflow: hidden;
+        display: block;
+        border: solid 1px black;
+        height: 34px;
+        width: 134px;
+    
+        ul {
+            font-family: @nav-family;
+            font-size: @nav-family-size;
+            text-transform: uppercase;
+            text-decoration:none;
+        }
+        
+        ul li {
+            display:block;
+            float:left;
+            padding-left: 3px;
+            padding-right: 3px;
+            margin-top: @nav-margin-top;
+            height: 30px;
+        }
+    
+    }
+
+}
+
+
+/* content body styles */
+#page {
+
+    .main-content {
+      padding: 10px;
+    }
+}
+
+
+
+
