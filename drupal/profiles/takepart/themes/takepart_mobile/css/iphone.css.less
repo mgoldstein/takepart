@@ -14,6 +14,7 @@
 @secondary-color-grays-3: #ededed;
 @accents-color-1: #ffca00;
 @accents-color-2: #fdab30;
+@accents-color-3: #ffe789;
 
 
 /* markup styling ---------------------------------------------------------- */
@@ -43,6 +44,9 @@ img {
     border: 0 none;
     height: auto;
     max-width: 100%;
+}
+p {
+    margin: 0 0 1em;
 }
 
 /* general, universal styling ---------------------------------------------------------- */
@@ -74,6 +78,10 @@ img {
 .field-name-field-media-caption {
     color:@secondary-color-grays-1;
     font-size: 11px;
+    margin-bottom: 18px;
+}
+.embed-action-wrapper {
+    border: solid 3px @accents-color-3;
 }
 
 /* content body styles ---------------------------------------------------------- */
@@ -81,6 +89,10 @@ img {
     .main-content {
         padding: 10px;
     }
+    p {
+        line-height: 24px;
+        font-size: 14px;
+    }    
 }
 
 
