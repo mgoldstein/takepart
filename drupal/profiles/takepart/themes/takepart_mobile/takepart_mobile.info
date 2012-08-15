@@ -9,8 +9,8 @@ engine = phptemplate
 stylesheets[all][] = css/legacy.css
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/style2.css.less
-stylesheets[all and (max-width: 320px)][] = css/reset.css
-stylesheets[all and (max-width: 320px)][] = css/iphone.css.less
+stylesheets[all and (max-width: 320px) and (max-device-width: 640px)][] = css/reset.css
+stylesheets[all and (max-width: 320px) and (max-device-width: 640px)][] = css/iphone.css.less
 stylesheets[all and (min-width: 320px)][] = ../takepart3/css/legacy.css
 stylesheets[all and (min-width: 320px)][] = ../takepart3/css/style.css
 
