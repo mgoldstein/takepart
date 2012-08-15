@@ -10,8 +10,8 @@ stylesheets[all][] = css/legacy.css
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/style2.css.less
 ; Responsive:
-stylesheets[all and (max-width: 320px)][] = css/reset.css
-stylesheets[all and (max-width: 320px)][] = css/iphone.css.less
+;stylesheets[all and (max-width: 320px)][] = css/reset.css
+;stylesheets[all and (max-width: 320px)][] = css/iphone.css.less
 ; iPhone:
 stylesheets[only screen and (max-device-width: 480px)][] = css/reset.css
 stylesheets[only screen and (max-device-width: 480px)][] = css/iphone.css.less
@@ -19,8 +19,8 @@ stylesheets[only screen and (max-device-width: 480px)][] = css/iphone.css.less
 stylesheets[only screen and (min-device-width: 768px) and (max-device-width: 1024px)][] = css/reset.css
 stylesheets[only screen and (min-device-width: 768px) and (max-device-width: 1024px)][] = css/iphone.css.less
 ; Standard:
-stylesheets[all and (min-device-width: 768px)][] = ../takepart3/css/legacy.css
-stylesheets[all and (min-device-width: 768px)][] = ../takepart3/css/style.css
+stylesheets[all and (min-device-width: 1024px)][] = ../takepart3/css/legacy.css
+stylesheets[all and (min-device-width: 1024px)][] = ../takepart3/css/style.css
 
 
 
