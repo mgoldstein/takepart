@@ -575,7 +575,6 @@ function takepart3_field__field_actionheaderimghref(&$vars) {
     $link = $vars['element']['#object']->field_actionheaderimghref['und'][0]['url'];
     $uri = $vars['element']['#object']->field_actionheaderimg['und'][0]['filename'];
     $url = $base . $uri;
-
     return sprintf('<a href="%s"><img src="%s" /></a>', $link, $url);
 }
 
