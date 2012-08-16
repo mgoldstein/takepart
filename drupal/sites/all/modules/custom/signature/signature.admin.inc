@@ -169,7 +169,7 @@ function signature_admin_overview($form, &$form_state, $arg) {
         'data' => array(
           '#type' => 'link',
           '#title' => t('edit'),
-          '#href' => 'signature/' . $signature->id . '/edit',
+          '#href' => 'admin/content/signature/manage/' . $signature->id,
           '#options' => array('query' => $destination),
         ),
       ),
@@ -308,16 +308,23 @@ function signature_form($form, &$form_state, $entity, $op = 'edit') {
     '#title' => t('Summary'),
     '#type' => 'fieldset',
   );
-  
+
+  if (!empty($entity->nid)) {
+    $node = entity_load_single('node', $entity->nid);
+    $node_label = entity_label('node', $node);
+  }
+  else {
+    $node_label = '(None)';
+  }
   $form['summary']['node'] = array(
     '#prefix' => '<p><strong>Node: </strong>',
-    '#markup' => entity_label('node', $entity->nid),
-    '#suffix' => '</p>',      
+    '#markup' => $node_label,
+    '#suffix' => '</p>',
   );
-  
+
   if (!empty($entity->type)) {
     $signature_type = entity_load_single('signature_type', $entity->type);
-    $type_label = $signature_type->type;
+    $type_label = entity_label('signature_type', $signature_type);
   }
   else {
     $type_label = '(None)';
@@ -325,7 +332,7 @@ function signature_form($form, &$form_state, $entity, $op = 'edit') {
   $form['summary']['type'] = array(
     '#prefix' => '<p><strong>Signature Type: </strong>',
     '#markup' => $type_label,
-    '#suffix' => '</p>',      
+    '#suffix' => '</p>',
   );
   
   $form['status'] = array(
