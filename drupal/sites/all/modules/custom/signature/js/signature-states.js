@@ -55,18 +55,6 @@
     } // if
   };
   
-  var extractClassValue = function (classes, startsWith) {
-    for (var i=0; i<classes.length; i++) {
-      var value = classes[i]
-      if (value.length > startsWith.length) {
-        if (value.substr(0, startsWith.length) == startsWith) {
-          return value.substring(startsWith.length);
-        }
-      }
-    }
-    return '';
-  };
-
   var updateSignatureState = function (response) {
     var all_classes = [
       'signature-node-unsigned',
@@ -78,7 +66,7 @@
     for (var nid in response) {
       var node = response[nid];
 
-      // Adjust the visibility state of the petition
+      // Adjust the visibility state of the node.
       var div_id = '#node-' + nid;
       var state_class = 'signature-node-' + node.state;
       $(div_id).removeClass(all_classes).addClass(state_class);
@@ -99,7 +87,7 @@
 
       // Adjust the selected tab state of the petition
       var tab = '.signature-tab-' + node.state;
-      $(tab).each(function () {
+      $(tab, $(div_id)).each(function () {
         $(this).data('horizontalTab').tabShow();
       });
 
