@@ -109,7 +109,7 @@ function bluestatedigital_user_admin_form($form, &$form_state) {
     '#tree' => FALSE,
   );
 
-  $form_id_field = bluestatedigital_signup_form_id_field(
+  $form_id_field = bluestatedigital_forms_signup_form_id(
     $values['bluestatedigital_user_welcome_email_form_id']);
   $form_id_field += array(
     '#ajax' => array(
@@ -125,7 +125,7 @@ function bluestatedigital_user_admin_form($form, &$form_state) {
   $form['welcome_email']['bluestatedigital_user_welcome_email_form_id']
     = $form_id_field;
 
-  $field_id_field = bluestatedigital_signup_field_id_field(
+  $field_id_field = bluestatedigital_forms_signup_field_id(
     $values['bluestatedigital_user_welcome_email_form_id'],
     $values['bluestatedigital_user_welcome_email_field_id']);
   $field_id_field += array(
@@ -139,7 +139,7 @@ function bluestatedigital_user_admin_form($form, &$form_state) {
 }
 
 /**
- * Admin form AJAX callback
+ * Admin form AJAX callback.
  */
 function bluestatedigital_user_admin_form_callback($form, $form_state) {
   return $form['welcome_email']['bluestatedigital_user_welcome_email_field_id'];
