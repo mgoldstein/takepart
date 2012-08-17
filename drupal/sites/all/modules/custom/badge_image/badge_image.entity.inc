@@ -9,6 +9,18 @@ class BadgeImage extends Entity {
   public function __construct($values = array(), $entity_type = 'badge_image') {
     parent::__construct($values, $entity_type);
   }
+
+  protected function defaultUri() {
+    if (!empty($this->fid)) {
+      $path = badge_image_create_alias($this, 'return');
+    }
+    else {
+      $info = $this->entityInfo();
+      $base = $info['admin ui']['path'];
+      $path = $base . '/manage/' . (string) $this->identifier();
+    }
+    return array('path' => $path);
+  }
 }
 
 class BadgeImageController extends EntityAPIController {

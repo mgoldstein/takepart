@@ -288,7 +288,7 @@ function badge_image_pathauto($op) {
 
 function badge_image_create_alias($badge, $op) {
   module_load_include('inc', 'pathauto');
-  pathauto_create_alias('badge_image', $op, 'media/' . $badge->fid,
+  return pathauto_create_alias('badge_image', $op, 'media/' . $badge->fid,
     array('badge_image' => $badge), 'badge_image');
 }
 
