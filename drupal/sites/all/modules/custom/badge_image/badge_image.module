@@ -189,3 +189,114 @@ function badge_image_entity_delete($entity, $type) {
     }
   }
 }
+
+
+/* Tokens
+ ******************************************************************************/
+/**
+ * Implements hook_token_info().
+ */
+function badge_image_token_info() {
+  $type = array(
+    'name' => t('Badge Images'),
+    'description' => t('Tokens related to badge images'),
+    'needs-data' => 'badge_image',
+  );
+  $badge['id'] = array(
+    'name' => t('Badge ID'),
+    'description' => t('The numeric id of the badge.'),
+  );
+  $badge['fid'] = array(
+    'name' => t('Badge Image File ID'),
+    'description' => t('The numeric id of the badge image file.'),
+  );
+  $badge['type-name'] = array(
+    'name' => t('Badge Type Name'),
+    'description' => t('The machine name of the badge type.'),
+  );
+  $badge['type-label'] = array(
+    'name' => t('Badge Type Label'),
+    'description' => t('The label of the badge type.'),
+  );
+  $badge['text'] = array(
+    'name' => t('Badge Text'),
+    'description' => t('The user entered text of the badge.'),
+  );
+  return array(
+    'types' => array('badge_image' => $type),
+    'tokens' => array('badge_image' => $badge),
+  );
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function badge_image_tokens($type, $tokens, array $data = array(),
+  array $options = array()) {
+  $sanitize = !empty($options['sanitize']);
+  $replacements = array();
+  if ($type == 'badge_image' && !empty($data['badge_image'])) {
+    $badge = $data['badge_image'];
+    $type = badge_image_type_load($badge->type);
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'id':
+          $replacements[$original] = $badge->id;
+          break;
+        case 'fid':
+          $replacements[$original] = $badge->fid;
+          break;
+        case 'type-name':
+          $replacements[$original] = $type->type;
+          break;
+        case 'type-label':
+          $replacements[$original] = $type->label;
+          break;
+        case 'text':
+          $replacements[$original] = $sanitize ? check_plain($badge->text)
+            : $badge->text;
+          break;
+      }
+    }
+  }
+  return $replacements;
+}
+
+/* PathAuto
+ ******************************************************************************/
+/**
+ * Implements hook_pathauto().
+ */
+function badge_image_pathauto($op) {
+
+  $settings = new stdClass();
+  $settings->module = 'badge_image';
+  $settings->groupheader = t('Badge Image Paths');
+  $settings->patterndescr = t('Default path pattern');
+  $settings->patterndefault
+    = 'badges/[badge_image:type-label]/[badge_image:id]/[badge_image:text]';
+  $settings->token_type = 'badge_image';
+  $settings->batch_update_callback = 'badge_image_pathauto_bulkupdate';
+
+  $settings->patternitems = array();
+  foreach (badge_image_type_load() as $type => $info) {
+    $settings->patternitems[$type] = $info->label;
+  }
+
+  return $settings;
+}
+
+function badge_image_create_alias($badge, $op) {
+  module_load_include('inc', 'pathauto');
+  pathauto_create_alias('badge_image', $op, 'media/' . $badge->fid,
+    array('badge_image' => $badge), 'badge_image');
+}
+
+function badge_image_pathauto_bulkupdate() {
+  $count = 0;
+  foreach (entity_load('badge_image') as $id => $badge) {
+    badge_image_create_alias($badge, 'bulkupdate');
+    $count++;
+  }
+  drupal_set_message($count . ' badges were updated.');
+}

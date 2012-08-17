@@ -30,6 +30,7 @@ class BadgeImageUIController extends EntityDefaultUIController {
 function badge_image_form($form, &$form_state, $entity, $op = 'edit') {
 
   $form_state['badge_image'] = $entity;
+  $entity->type = 'no_mas_badge';
 
   // Reset the type if we are cloning the badge.
   if (!isset($form_state['values']) && $op == 'clone') {
