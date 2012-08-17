@@ -1,0 +1,191 @@
+<?php
+/**
+ * @file
+ * Module for Badge Images
+ */
+
+/* Entity
+ ******************************************************************************/
+/**
+ * Implements hook_entity_info().
+ */
+function badge_image_entity_info() {
+
+  $info = array();
+
+  $info['badge_image'] = array(
+    'label' => t('Badge Image'),
+    'entity class' => 'BadgeImage',
+    'controller class' => 'BadgeImageController',
+    'base table' => 'badge_image',
+    'fieldable' => FALSE,
+    'entity keys' => array(
+      'id' => 'id',
+      'label' => 'text',
+    ),
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'badge_image_access',
+    'module' => 'badge_image',
+    'admin ui' => array(
+      'path' => 'admin/content/badge',
+      'file' => 'badge_image.admin.inc',
+      'controller class' => 'BadgeImageUIController',
+    ),
+  );
+
+  $info['badge_image_type'] = array(
+    'label' => t('Badge Image Type'),
+    'entity class' => 'BadgeImageType',
+    'controller class' => 'BadgeImageTypeController',
+    'base table' => 'badge_image_type',
+    'fieldable' => FALSE,
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'name' => 'type',
+      'label' => 'label',
+      'status' => 'status',
+      'module' => 'module',
+    ),
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'badge_image_access',
+    'module' => 'badge_image',
+    'admin ui' => array(
+      'path' => 'admin/structure/badge_types',
+      'file' => 'badge_image_type.admin.inc',
+      'controller class' => 'BadgeImageTypeUIController',
+    ),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+/*
+function badge_image_entity_info_alter(&$entity_info) {
+
+  // Add the badge image types to the list of bundles for badge images.
+  foreach (badge_image_type_load() as $type => $info) {
+    $entity_info['badge_image']['bundles'][$type] = array(
+      'label' => $info->label,
+      'admin' => array(
+        'path' => 'admin/structure/badge_types/manage/%badge_image_type',
+        'bundle argument' => 4,
+        'real path' => 'admin/structure/badge_types/manage/' . $type,
+        'access arguments' => array('administer badge_image badge_image_type'),
+      ),
+    );
+  }
+}
+ */
+function badge_image_type_load($type_name = NULL) {
+  $types = entity_load_multiple_by_name('badge_image_type',
+    isset($type_name) ? array($type_name) : FALSE);
+  return isset($type_name) ? reset($types) : $types;
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function badge_image_entity_property_info_alter(&$info) {
+  $properties = &$info['badge_image']['properties'];
+  $properties['created'] = array(
+    'label' => t("Date created"),
+    'type' => 'date',
+    'description' => t("The date the badge was created."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'update badge_image badge_image',
+    'schema field' => 'created',
+  );
+  $properties['changed'] = array(
+    'label' => t("Date changed"),
+    'type' => 'date',
+    'description' => t("The date the badge was last changed."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'update badge_image badge_image',
+    'schema field' => 'changed',
+  );
+}
+
+
+/* Access Control
+ ******************************************************************************/
+/**
+ * Implements hook_permission().
+ */
+function badge_image_permission() {
+  // Return permissions for the standard API entity operations.
+  return array(
+    'administer badge_image badge_image' => array(
+      'title' => t('Administer Badges'),
+      'restrict access' => TRUE,
+    ),
+    'view badge_image badge_image' => array(
+      'title' => t('View Badges'),
+      'restrict access' => TRUE,
+    ),
+    'update badge_image badge_image' => array(
+      'title' => t('Update Badges'),
+      'restrict access' => TRUE,
+    ),
+    'create badge_image badge_image' => array(
+      'title' => t('Create Badges'),
+      'restrict access' => TRUE,
+    ),
+    'delete badge_image badge_image' => array(
+      'title' => t('Delete Badges'),
+      'restrict access' => TRUE,
+    ),
+    'administer badge_image badge_image_type' => array(
+      'title' => t('Administer Badge Types'),
+      'restrict access' => TRUE,
+    ),
+    'view badge_image badge_image_type' => array(
+      'title' => t('View Badge Types'),
+      'restrict access' => TRUE,
+    ),
+    'update badge_image badge_image_type' => array(
+      'title' => t('Update Badge Types'),
+      'restrict access' => TRUE,
+    ),
+    'create badge_image badge_image_type' => array(
+      'title' => t('Create Badge Types'),
+      'restrict access' => TRUE,
+    ),
+    'delete badge_image badge_image_type' => array(
+      'title' => t('Delete Badge Types'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Access callback for badges.
+ */
+function badge_image_access($op, $entity, $account, $entity_type) {
+  // Block unknown operations.
+  $allowed_ops = array('administer', 'view', 'update', 'create', 'delete');
+  if (in_array($op, $allowed_ops)) {
+    return user_access("$op badge_image $entity_type", $account)
+      || user_access("administer badge_image $entity_type", $account);
+  }
+  return FALSE;
+}
+
+function badge_image_generate_image($entity) {
+  // Generate the flattened badge image file.
+  return entity_get_controller('badge_image')->generateImage($entity);
+}
+
+function badge_image_entity_delete($entity, $type) {
+  if ($type == 'badge_image') {
+    if (!empty($entity->fid)) {
+      // Remove the generated badge image.
+      $file = file_load($entity->fid);
+      file_usage_delete($file, 'badge_image', 'badge_image_type', $entity->id);
+      file_delete($file);
+    }
+  }
+}
