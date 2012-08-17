@@ -57,13 +57,6 @@ class BadgeImageController extends EntityAPIController {
     // Make a note of the current image file id.
     $prev_fid = $entity->fid;
 
-    // Delete any previous image.
-    if (!empty($entity->fid)) {
-      $prev = file_load($entity->fid);
-      file_usage_delete($prev, 'badge_image', 'badge_image_type', $entity->id);
-      file_delete($prev);
-    }
-
     // Get the blank badge.
     $type = badge_image_type_load($entity->type);
     $blank = file_load($type->fid);
