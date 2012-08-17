@@ -14,7 +14,6 @@ class BadgeImage extends Entity {
 class BadgeImageController extends EntityAPIController {
 
   public function create(array $values = array()) {
-    global $user;
     $values += array(
       'id' => '',
       'type' => '',
@@ -43,6 +42,9 @@ class BadgeImageController extends EntityAPIController {
 
   public function generateImage($entity) {
 
+    // Make a note of the current image file id.
+    $prev_fid = $entity->fid;
+
     // Delete any previous image.
     if (!empty($entity->fid)) {
       $prev = file_load($entity->fid);
@@ -64,6 +66,14 @@ class BadgeImageController extends EntityAPIController {
     // Tie the image to the badge entity.
     $entity->fid = $file->fid;
     entity_save('badge_image', $entity);
+
+    // Update the media page url alias.
+    if ($entity->fid != $prev_fid) {
+      badge_image_create_alias($entity, 'insert');
+    }
+    else {
+      badge_image_create_alias($entity, 'update');
+    }
 
     // Add the text to the badge.
     $badge = image_load($file->uri);
