@@ -567,7 +567,8 @@ function takepart3_field__field_series(&$vars) {
     $filename = $vars['element']['#object']->field_series['und'][0]['taxonomy_term']->field_series_graphic_header['und'][0]['filename'];
     $url = $base . $filename;
     $link = url($vars['items'][0]['#href']);
-    return sprintf('<a href="%s"><img src="%s" /></a>', $link, $url);
+    $altText = $filename = $vars['element']['#object']->field_series['und'][0]['taxonomy_term']->field_series_graphic_header['und'][0]['alt'];
+    return sprintf('<a href="%s"><img class="field-name-field-series-graphic-header" src="%s" alt="%s" /></a>', $link, $url, $altText);
 }
 
 function takepart3_field__field_actionheaderimghref(&$vars) {
