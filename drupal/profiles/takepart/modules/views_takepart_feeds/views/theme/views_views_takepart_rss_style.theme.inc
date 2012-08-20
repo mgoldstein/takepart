@@ -107,6 +107,10 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                 $content .= ($object->content);
             }
         }
+        $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
+        $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
+        $urlprefix = $protocol."://".$_SERVER['SERVER_NAME'].$port;
+        $content=preg_replace('#(href|src)="([^:"]*)(?:")#', '$1=$urlprefix."/$2"', $content);
         $xml .= "\t\t\t<content:encoded><![CDATA[" . $content . "]]></content:encoded>\n";
         $xml .= "\t\t</item>\n";
     }
