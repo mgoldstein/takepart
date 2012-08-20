@@ -6,6 +6,9 @@
 
 class BadgeImageUIController extends EntityDefaultUIController {
 
+  /**
+   * Entity UI hook_menu implementation.
+   */
   public function hook_menu() {
     $items = parent::hook_menu();
     $items[$this->path] = array(
@@ -36,10 +39,11 @@ function badge_image_form($form, &$form_state, $entity, $op = 'edit') {
   if (!isset($form_state['values']) && $op == 'clone') {
     $entity->id = '';
     $entity->is_new = TRUE;
+    $entity->image_fid = 0;
   }
 
-  if (!empty($entity->fid)) {
-    $file = file_load($entity->fid);
+  if (!empty($entity->image_fid)) {
+    $file = file_load($entity->image_fid);
     $form['preview'] = array(
       '#title' => t('Preview'),
       '#type' => 'fieldset',
@@ -107,9 +111,6 @@ function badge_image_form_submit(&$form, &$form_state) {
 
   // Save the entity.
   $status = $entity->save();
-  if ($status !== FALSE) {
-    badge_image_generate_image($entity);
-  }
   if ($status == SAVED_UPDATED) {
     drupal_set_message(t('The @text badge has been updated.',
       array('@text' => $entity->text)));

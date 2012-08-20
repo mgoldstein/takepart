@@ -11,7 +11,7 @@ class BadgeImage extends Entity {
   }
 
   protected function defaultUri() {
-    if (!empty($this->fid)) {
+    if (!empty($this->image_fid)) {
       $path = badge_image_create_alias($this, 'return');
     }
     else {
@@ -30,7 +30,7 @@ class BadgeImageController extends EntityAPIController {
       'id' => '',
       'type' => '',
       'text' => '',
-      'fid' => '',
+      'image_fid' => 0,
       'uid' => 0,
       'hostname' => '',
       'created' => 0,
@@ -52,14 +52,17 @@ class BadgeImageController extends EntityAPIController {
     return parent::save($entity, $transaction);
   }
 
+  /**
+   * Badge Image creation function.
+   */
   public function generateImage($entity) {
 
-    // Make a note of the current image file id.
-    $prev_fid = $entity->fid;
+    // Make a note of the original image file id.
+    $original_fid = $entity->image_fid;
 
     // Get the blank badge.
     $type = badge_image_type_load($entity->type);
-    $blank = file_load($type->fid);
+    $blank = file_load($type->blank_fid);
 
     // Create the new badge as a copy.
     $directory = "public://badge_image/badges/" . $type->type;
@@ -69,11 +72,11 @@ class BadgeImageController extends EntityAPIController {
     file_usage_add($file, 'badge_image', 'badge_image_type', $entity->id);
 
     // Tie the image to the badge entity.
-    $entity->fid = $file->fid;
+    $entity->image_fid = $file->fid;
     entity_save('badge_image', $entity);
 
     // Update the media page url alias.
-    if ($entity->fid != $prev_fid) {
+    if (empty($original_fid)) {
       badge_image_create_alias($entity, 'insert');
     }
     else {
@@ -89,20 +92,21 @@ class BadgeImageController extends EntityAPIController {
 
       $text = strtoupper(check_plain($entity->text));
 
+      // Calculate the position of the text.
       $textbox = imagettfbbox($type->font_size, $type->font_angle, $font_file,
         $text);
       $width = abs($textbox[2] - $textbox[0]);
-
       $x = ($badge->info['width'] - $width) / 2;
       $y = $type->offset_y;
 
+      // Draw the text on the blank.
       $black = imagecolorallocate($badge->resource, 0, 0, 0);
       imagettftext($badge->resource, $type->font_size, $type->font_angle, $x,
         $y, $black, $font_file, $text);
 
+      // Save the updated image.
       return image_gd_save($badge, $destination);
     }
-
     return FALSE;
   }
 }
