@@ -114,11 +114,12 @@ function badge_image_type_form($form, &$form_state, $type, $op = 'edit') {
   );
 
   $form['redirect_url'] = array(
-    '#title' => t('Redirect URL'),
-    '#description' => t('The URL to redirect to after a badge is submitted'),
+    '#title' => t('Redirect URL/Path'),
+    '#description' => t('The URL or site path to redirect to after a badge is submitted'),
     '#type' => 'textfield',
     '#size' => 60,
-    '#default_value' => $type->heading,
+    '#element_validate' => array('badge_image_validate_redirect_url'),
+    '#default_value' => $type->redirect_url,
   );
 
   $form['actions'] = array('#type' => 'actions');
@@ -158,6 +159,13 @@ function badge_image_validate_integer_non_negative($element, &$form_state) {
   $value = $element['#value'];
   if ($value !== '' && (!is_numeric($value) || intval($value) != $value || $value < 0)) {
     form_error($element, t('%name must be a non-negative integer.', array('%name' => $element['#title'])));
+  }
+}
+
+function badge_image_validate_redirect_url($element, &$form_state) {
+  $value = $element['#value'];
+  if ($value !== '' && !valid_url($value)) {
+    form_error($element, t('%name must be a valid URL or site path.', array('%name' => $element['#title'])));
   }
 }
 

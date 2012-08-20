@@ -338,14 +338,17 @@ function badge_image_block_view($delta = '') {
   $type = badge_image_type_load($delta);
   if ($type !== FALSE) {
     $file = file_load($type->blank_fid);
+    $image = image_load($file->uri);
     $block['subject'] = $type->label;
     $block['content'] = theme('badge_image_block', array(
       'heading' => check_plain($type->heading),
       'instructions' => check_markup($type->instructions_text,
         $type->instructions_format),
       'form' => drupal_get_form('badge_image_generation_form', $type),
-      'image_src' => file_create_url($file->uri),
       'css_prefix' => str_replace('_', '-', $type->type),
+      'preview_bg_src' => file_create_url($file->uri),
+      'preview_height' => $image->info['height'],
+      'preview_width' => $image->info['width'],
     ));
   }
   else {
@@ -358,6 +361,8 @@ function badge_image_block_view($delta = '') {
  * User badge generation form.
  */
 function badge_image_generation_form($form, &$form_state, $type) {
+
+  $form_state['badge_image_type'] = $type;
 
   // Translate the type machine name to a CSS class name prefix.
   $css_prefix = str_replace('_', '-', $type->type);
@@ -396,8 +401,24 @@ function badge_image_generation_form($form, &$form_state, $type) {
   return $form;
 }
 
+/**
+ * User badge generation form submit handler.
+ */
 function badge_image_generation_form_submit($form, $form_state) {
-
+  $type = $form_state['badge_image_type'];
+  $badge = entity_create('badge_image', array(
+    'type' => $type->type,
+    'text' => check_plain($form_state['values']['text']),
+  ));
+  $params = array();
+  if ($badge->save() !== FALSE) {
+    $params['query'] = array(
+      'badge' => $badge->id,
+    );
+  }
+  if (!empty($type->redirect_url)) {
+    drupal_goto($type->redirect_url, $params);
+  }
 }
 
 /**
