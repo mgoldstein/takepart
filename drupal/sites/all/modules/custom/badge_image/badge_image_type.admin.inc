@@ -25,6 +25,7 @@ function badge_image_type_form($form, &$form_state, $type, $op = 'edit') {
     $type->id = '';
     $type->type = '';
     $type->label .= ' (cloned)';
+    $type->blank_fid = 0;
   }
 
   $form['label'] = array(
@@ -47,11 +48,28 @@ function badge_image_type_form($form, &$form_state, $type, $op = 'edit') {
     '#default_value' => $type->type,
   );
 
-  $form['fid'] = array(
+  $form['heading'] = array(
+    '#title' => t('User Generation Form Heading'),
+    '#description' => t('The heading for the user generation form'),
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#size' => 60,
+    '#default_value' => $type->heading,
+  );
+
+  $form['instructions'] = array(
+    '#title' => t('User Generation Form Instructions'),
+    '#description' => t('The instructions for the user generation form'),
+    '#type' => 'text_format',
+    '#default_value' => $type->instructions_text,
+    '#format' => $type->instructions_format,
+  );
+
+  $form['blank_fid'] = array(
     '#title' => t('Blank'),
     '#description' => t('The badge blank image'),
     '#type' => 'managed_file',
-    '#default_value' => $type->fid,
+    '#default_value' => $type->blank_fid,
     '#upload_location' => 'public://badge_image/blanks/',
   );
 
@@ -94,7 +112,15 @@ function badge_image_type_form($form, &$form_state, $type, $op = 'edit') {
     '#element_validate' => array('badge_image_validate_integer_non_negative'),
     '#default_value' => $type->offset_y,
   );
-  
+
+  $form['redirect_url'] = array(
+    '#title' => t('Redirect URL'),
+    '#description' => t('The URL to redirect to after a badge is submitted'),
+    '#type' => 'textfield',
+    '#size' => 60,
+    '#default_value' => $type->heading,
+  );
+
   $form['actions'] = array('#type' => 'actions');
   $submit = array();
   if (!empty($form['#submit'])) {
@@ -140,11 +166,13 @@ function badge_image_validate_integer_non_negative($element, &$form_state) {
  */
 function badge_image_type_form_submit(&$form, &$form_state) {
 
-  // Make a note of the original blank fid
-  $prev_fid = $form_state['badge_image_type']->fid;
-    
+  // Make a note of the original blank fid.
+  $original_fid = $form_state['badge_image_type']->blank_fid;
+
   // Build the type entity from the form.
   $type = entity_ui_form_submit_build_entity($form, $form_state);
+  $type->instructions_text = $form_state['values']['instructions']['value'];
+  $type->instructions_format = $form_state['values']['instructions']['format'];
 
   // Save the type.
   $status = $type->save();
@@ -157,14 +185,14 @@ function badge_image_type_form_submit(&$form, &$form_state) {
       array('@name' => $type->label)));
   }
 
-  if ($prev_fid != $type->fid) {
-    if (!empty($prev_fid)) {
-      $file = file_load($prev_fid);
+  if ($original_fid != $type->blank_fid) {
+    if (!empty($original_fid)) {
+      $file = file_load($original_fid);
       file_usage_delete($file, 'badge_image', 'badge_image_type', $type->id);
       file_delete($file);
     }
-    if (!empty($type->fid)) {
-      $file = file_load($type->fid);
+    if (!empty($type->blank_fid)) {
+      $file = file_load($type->blank_fid);
       $file->status = FILE_STATUS_PERMANENT;
       file_save($file);
       file_usage_add($file, 'badge_image', 'badge_image_type', $type->id);
