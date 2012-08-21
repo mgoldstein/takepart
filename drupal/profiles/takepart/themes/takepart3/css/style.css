@@ -96,7 +96,7 @@ div.gray-rule {
     background: none;
     color: #000;
     background: url(../images/dot-bbg.png) no-repeat 0 7px;
-    padding: 0 10px;
+    padding: 0 5px 0 12px;
     white-space:nowrap;
 }
 #slim-header ul.menu li.first a {
