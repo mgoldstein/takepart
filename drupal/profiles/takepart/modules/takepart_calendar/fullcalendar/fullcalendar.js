@@ -4821,7 +4821,19 @@ function enableTextSelection(element) {
                 " class='fc-event-inner fc-event-skin'" +
                 (skinCss ? " style='" + skinCss + "'" : '') +
                 ">";
-			
+
+                
+                if(event.donorschoose_id) {
+                	if(event.donorschoose_id == 'Needs Funding') {
+                		html += '<img src="/profiles/takepart/modules/takepart_calendar/themes/takepart/images/TakePart_ICONSv2-NeedsFunding.png" />';
+                	} 
+                	if(event.donorschoose_id == 'Funded') {
+                		html += '<img src="/profiles/takepart/modules/takepart_calendar/themes/takepart/images/TakePart_ICONSv2-Funded.png" />';
+                	} 
+                	
+                	//html += 'Funded!';
+                }
+                
                 /*
                     html += column;
                     html += "\n";
@@ -4887,7 +4899,7 @@ function enableTextSelection(element) {
                     "</div>";
                 }
 
-			
+                
                 if (seg.isEnd && isEventResizable(event)) {
                     html +=
                     "<div class='ui-resizable-handle ui-resizable-" + (rtl ? 'w' : 'e') + "'>" +
@@ -4947,7 +4959,9 @@ function enableTextSelection(element) {
                 //	"</" + (url ? "a" : "div" ) + ">";
                 html +=
                 "</div>";
-			
+
+
+                
                 seg.left = left;
                 seg.outerWidth = right - left;
                 seg.startCol = leftCol;

@@ -364,6 +364,26 @@ function takepart_calendar_field_formatter_view($entity_type, $entity, $field, $
         if ($item['takepart_calendar']) {
           
           $json = $item['takepart_calendar'];
+                    
+          preg_match_all('/(donorschoose_id:)+(.*)/', $json, $matches, PREG_SET_ORDER);
+          
+          foreach ($matches as $val) {
+          
+            if(isset($val[2])) {
+              $url = 'http://w.takepart.com/donorschoose/dcdata/dc-' . trim(str_replace("'", '', $val[2]))  . '.inc';
+              $inc = takepart_calendar_curl($url);
+            }
+            
+            preg_match('/(\'fundingStatus\')+(.*)/', $inc, $incmatches);
+            
+            if (strpos($incmatches[0],'Needs Funding') !== false) {
+              $json = str_replace($val[0], $val[1] . '\'Needs Funding\'' , $json);
+            } else {
+              $json = str_replace($val[0], $val[1] . '\'Funded\'' , $json);
+            }
+           
+          }
+          
           //@todo: turn this into an ajax feed:
           //$element[$delta]['#markup'] = '<span><script type=\'text/javascript\'>var calendar_events = ' . $json .';</script><div id=\'calendar\'></div></span>';
           if(!empty($json)) {
@@ -508,3 +528,39 @@ $block['content'] = "TakePart Calendar Content";
 return $block;
 }
 */
+
+
+
+
+
+
+
+
+function takepart_calendar_curl($url) {
+
+  // make sure curl is installed
+  if (! function_exists('curl_init')) {
+    watchdog('takepart_calendar', 'Curl is not installed.');
+    return '';
+  }
+
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_TIMEOUT, 200);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  // Include header in result:
+  curl_setopt($ch, CURLOPT_HEADER, 0);
+
+  $response = curl_exec($ch);
+  $header_length = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+  //$content_length = curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
+  $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  $body = trim(substr($response, $header_length));
+  curl_close($ch);
+
+  return $body;
+}
+
+
+
+
