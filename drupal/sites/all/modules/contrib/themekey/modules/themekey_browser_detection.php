@@ -21,7 +21,7 @@
  * > Best Regards,
  * > Dragan
  *
- * @author Markus Kalkbrenner | bio.logis GmbH
+ * @author Markus Kalkbrenner | Cocomore AG
  *   @see http://drupal.org/user/124705
  */
 
@@ -50,7 +50,7 @@ class ThemekeyBrowserDetection {
    * @static
    * @access public
    */
-  static function getBrowser($useragent) {
+  function getBrowser($useragent) {
     // check for most popular browsers first
     // unfortunately, that's IE. We also ignore Opera and Netscape 8
     // because they sometimes send msie agent
@@ -60,13 +60,8 @@ class ThemekeyBrowserDetection {
         return 'Blazer ' . $matches[1];
       }
       //deal with IE
-      if (preg_match("/MSIE ([0-9]{1,2}\.[0-9]{1,2})/", $useragent, $matches)) {
+      if (preg_match("/MSIE ([0-9]{1}\.[0-9]{1,2})/", $useragent, $matches)) {
         return 'Internet Explorer ' . $matches[1];
-      }
-    }
-    elseif (strpos($useragent, 'IEMobile') !== FALSE) {
-      if (preg_match("/IEMobile\/([0-9]{1,2}\.[0-9]{1,2})/", $useragent, $matches)) {
-        return 'Internet Explorer Mobile ' . $matches[1];
       }
     }
     elseif (strpos($useragent, 'Gecko')) {
@@ -147,7 +142,7 @@ class ThemekeyBrowserDetection {
    * @static
    * @access public
    */
-  static function getBrowserSimplified($browser) {
+  function getBrowserSimplified($browser) {
     return trim(preg_replace('/[0-9.]/', '', $browser));
   }
 
@@ -158,7 +153,7 @@ class ThemekeyBrowserDetection {
    * @static
    * @access public
    */
-  static function getOs($useragent) {
+  function getOs($useragent) {
     $useragent = drupal_strtolower($useragent);
 
     //check for (aaargh) most popular first
@@ -192,9 +187,6 @@ class ThemekeyBrowserDetection {
     }
     elseif (strpos($useragent, 'win 9x 4.90') !== FALSE) {
       return 'Windows ME';
-    }
-    elseif (strpos($useragent, 'windows phone') !== FALSE) {
-      return 'Windows Phone';
     }
     elseif (strpos($useragent, 'iphone') !== FALSE) {
       return 'iPhone';
@@ -242,11 +234,8 @@ class ThemekeyBrowserDetection {
    * @static
    * @access public
    */
-  static function getOsSimplified($os) {
-    if (strpos($os, 'Windows Phone') !== FALSE) {
-      return 'Windows Phone';
-    }
-    elseif (strpos($os, 'Windows') !== FALSE) {
+  function getOsSimplified($os) {
+    if (strpos($os, 'Windows') !== FALSE) {
       return 'Windows';
     }
     else {

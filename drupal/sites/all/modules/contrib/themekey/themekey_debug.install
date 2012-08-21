@@ -5,7 +5,7 @@
  * Cleans up variables when uninstalling
  * @see themekey_debug.module
  *
- * @author Markus Kalkbrenner | bio.logis GmbH
+ * @author Markus Kalkbrenner | Cocomore AG
  *   @see http://drupal.org/user/124705
  */
 

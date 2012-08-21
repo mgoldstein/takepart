@@ -8,7 +8,7 @@
  * @see themekey_ui.module
  * @see themekey_ui_admin.inc
  *
- * @author Markus Kalkbrenner | bio.logis GmbH
+ * @author Markus Kalkbrenner | Cocomore AG
  *   @see http://drupal.org/user/124705
  *
  * @author profix898

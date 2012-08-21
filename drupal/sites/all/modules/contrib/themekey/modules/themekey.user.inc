@@ -4,7 +4,7 @@
  * @file
  * Provides some user attributes as ThemeKey properties.
  *
- * @author Markus Kalkbrenner | bio.logis GmbH
+ * @author Markus Kalkbrenner | Cocomore AG
  *   @see http://drupal.org/user/124705
  *
  * @author profix898

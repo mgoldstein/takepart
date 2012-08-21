@@ -4,7 +4,7 @@
  * @file
  * Provides everything that ThemeKey has to do when cron runs
  *
- * @author Markus Kalkbrenner | bio.logis GmbH
+ * @author Markus Kalkbrenner | Cocomore AG
  *   @see http://drupal.org/user/124705
  */
 

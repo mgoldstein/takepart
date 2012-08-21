@@ -5,7 +5,7 @@
  * provides a debug mode for module ThemeKey.
  * @see themekey.module
  *
- * @author Markus Kalkbrenner | bio.logis GmbH
+ * @author Markus Kalkbrenner | Cocomore AG
  *   @see http://drupal.org/user/124705
  */
 
