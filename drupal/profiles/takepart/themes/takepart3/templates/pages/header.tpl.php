@@ -4,15 +4,17 @@
     <div class="clear clearfix" id="nav-wrap">
       <?php print $top_nav ?> 
     </div>
-    <?php print $follow_us_links; ?><!--/top follow-->
-    <div id="top-search">
-      <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
-    </div><!--/top search-->
-    <div id="join-login-top">
-      <div class="login-fb clearfix">
-        <?php print $user_nav; ?>       
-      </div> 
-    </div><!--/join-login-top-->
+    <div class="topnav-right">
+      <div id="join-login-top">
+        <div class="login-fb clearfix">
+          <?php print $user_nav; ?>
+        </div>
+      </div><!--/join-login-top-->
+      <div id="top-search">
+        <div class="tpform-item"><?php print drupal_render($search_takepart_form); ?></div>
+      </div><!--/top search-->
+        <?php print $follow_us_links; ?><!--/top follow-->
+    </div>
   </div>
 <?php else: ?>
   <div id="header-wrapper" class='clearfix regular-content'>

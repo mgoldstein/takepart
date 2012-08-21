@@ -2671,7 +2671,7 @@ div.messages a:visited {
 }
 #slim-header.multipage-campaign #top-search {
     margin: 4px 1px 4px 1px;
-    float: left;
+    float: right;
     width: 156px;
 }
 body.logged-in #slim-header.multipage-campaign #top-search {

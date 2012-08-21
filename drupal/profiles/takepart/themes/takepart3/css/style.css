@@ -728,7 +728,9 @@ body.front .main-content .block-boxes-current-promo .views-row-10
 
 /* ===PAGE HEADER=== */
 /* ------------------------------------------------------------------------*/
-
+#topnav-right {
+  position: relative;
+}
 #top-follow-wrapper {
 	padding-top: 10px;
     float: right;
@@ -736,7 +738,7 @@ body.front .main-content .block-boxes-current-promo .views-row-10
     position: relative;
 }
 #slim-header #top-follow-wrapper {
-    float: left;
+    float: right;
 }
 /* My Comment */
 #top-follow-wrapper .top-follow-label {
