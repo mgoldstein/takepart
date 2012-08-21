@@ -93,30 +93,6 @@ function badge_image_entity_property_info_alter(&$info) {
 }
 
 /**
- * Implements hook_entity_insert().
- */
-function badge_image_entity_insert($entity, $type) {
-  if ($type == 'badge_image') {
-    if (!empty($entity->image_fid)) {
-      // Generate the flattened badge image file.
-      return entity_get_controller('badge_image')->generateImage($entity);
-    }
-  }
-}
-
-/**
- * Implements hook_entity_update().
- */
-function badge_image_entity_update($entity, $type) {
-  if ($type == 'badge_image') {
-    if (!empty($entity->image_fid)) {
-      // Generate the flattened badge image file.
-      return entity_get_controller('badge_image')->generateImage($entity);
-    }
-  }
-}
-
-/**
  * Implements hook_entity_delete().
  */
 function badge_image_entity_delete($entity, $type) {
@@ -412,6 +388,7 @@ function badge_image_generation_form_submit($form, $form_state) {
   ));
   $params = array();
   if ($badge->save() !== FALSE) {
+    entity_get_controller('badge_image')->generateImage($badge);
     $params['query'] = array(
       'badge' => $badge->id,
     );
