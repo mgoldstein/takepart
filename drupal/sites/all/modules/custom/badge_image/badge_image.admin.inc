@@ -119,6 +119,9 @@ function badge_image_form_submit(&$form, &$form_state) {
     drupal_set_message(t('The @text badge has been added.',
       array('@text' => $entity->text)));
   }
+  if ($status !== FALSE) {
+    entity_get_controller('badge_image')->generateImage($entity);
+  }
 
   // Go back to the list of entities.
   $form_state['redirect'] = 'admin/content/badge';
