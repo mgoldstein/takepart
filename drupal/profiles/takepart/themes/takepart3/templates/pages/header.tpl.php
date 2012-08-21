@@ -4,7 +4,7 @@
     <div class="clear clearfix" id="nav-wrap">
       <?php print $top_nav ?> 
     </div>
-    <div class="topnav-right">
+    <div id="topnav-right">
       <div id="join-login-top">
         <div class="login-fb clearfix">
           <?php print $user_nav; ?>

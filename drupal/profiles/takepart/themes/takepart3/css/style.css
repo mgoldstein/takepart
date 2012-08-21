@@ -730,6 +730,7 @@ body.front .main-content .block-boxes-current-promo .views-row-10
 /* ------------------------------------------------------------------------*/
 #topnav-right {
   position: relative;
+  padding-top: 2px;
 }
 #top-follow-wrapper {
 	padding-top: 10px;

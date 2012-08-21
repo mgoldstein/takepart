@@ -2670,7 +2670,7 @@ div.messages a:visited {
     width: auto;
 }
 #slim-header.multipage-campaign #top-search {
-    margin: 4px 1px 4px 1px;
+    margin: 2px 1px 4px 1px;
     float: right;
     width: 156px;
 }
@@ -2934,7 +2934,7 @@ body.front #highlighted {
 #boxes-box-box-2988d8fb {/*margin-top: 22px;*/}
 
 #slim-header.multipage-campaign #join-login-top #user-nav {
-    margin: 9px 0 0 0;
+    margin: 6px 0 0 0;
 }
 #slim-header.multipage-campaign #join-login-top #user-nav a {
     background: none; 
