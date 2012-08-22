@@ -482,7 +482,7 @@ function newsletter_campaign_signup_form_callback($form, $form_state) {
       ));
       // Thank the user for their signup.
       $message .= filter_xss($campaign->thankyou_message,
-        array('i', 'strong', 'u'));
+        array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol', 'li', 'dl', 'dt', 'dd'));
     }
     else {
       // Inform the user that email signup failed.
