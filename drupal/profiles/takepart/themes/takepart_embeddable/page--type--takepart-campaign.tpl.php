@@ -1,12 +1,17 @@
 <div id="page-wrapper" class="campaign">
 
   
-  <?php if ($page['highlighted']): ?>
-    <div id='highlighted'><div class='clear limiter clearfix'>
-      <?php print render($page['highlighted']); ?>
-    </div></div>
-  <?php endif; ?>
+        <?php if ($page['highlighted']): ?>
+            <div id='highlighted'>
+                <div class='clear limiter clearfix'>
+                    <?php print render($page['highlighted']); ?>
+                </div>
+            </div>
+        <?php endif; ?>
   
+        <?php if ($page['full_width_top']): ?>
+          <?php print render($page['full_width_top']); ?>
+        <?php endif; ?>
   
   <div id='page' class='clear page clearfix <?php print $multipage_class; ?>'>
     <div class='main-content'>
@@ -17,10 +22,13 @@
       <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
         
   <?php if ($page['help'] || ($show_messages && $messages)): ?>
-    <div id='console'><div class='limiter clearfix'>
-      <?php print render($page['help']); ?>
-      <?php if ($show_messages && $messages): print $messages; endif; ?>
-    </div></div>
+                    <div id='console'>
+                        <div class='limiter clearfix'>
+                            <?php print render($page['help']); ?>
+                            <?php if ($show_messages && $messages): print $messages;
+                            endif; ?>
+                        </div>
+                    </div>
   <?php endif; ?>
       <?php print render($page['content_top']); ?>
       
@@ -43,4 +51,7 @@
   
   </div>
   
+        <?php if ($page['full_width_bottom']): ?>
+          <?php print render($page['full_width_bottom']); ?>
+        <?php endif; ?>
 </div>
