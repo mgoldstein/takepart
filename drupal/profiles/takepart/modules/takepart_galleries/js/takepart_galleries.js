@@ -210,14 +210,26 @@ function fastmatch_refreshstuff(y, first) {
     //Force the damn FB shares to refresh ... rebuild iFrames:
     jQuery(".addthis_toolbox .addthis_button_facebook_like iframe").each(function() {
     	var src = jQuery(this).attr('src');
-    	newsrc = fastmatch_fb_iframe_refresh(src);
+    	newsrc = fastmatch_fb_iframe_refresh(src, '?');
     	jQuery(this).attr('src', newsrc);
     });
     
     //twitter refresh:
-	if(typeof twttr != 'undefined') {
-		twttr.widgets.load();
-	}
+	//if(typeof twttr != 'undefined') {
+	//	twttr.widgets.load();
+	//}
+	//jQuery('#page').find('a.addthis_button_tweet').each(function(){
+	//	var tweet_button = new twttr.TweetButton( jQuery( this ).get( 0 ) );
+	//	tweet_button.render();
+	//});
+    
+    jQuery(".addthis_toolbox .addthis_button_tweet iframe").each(function() {
+    	var src = jQuery(this).attr('src');
+    	newsrc = fastmatch_fb_iframe_refresh(src, '#');
+    	jQuery(this).parent().attr('tw:url', (window.location.href.split("?")[0].replace("#","/")));
+    	jQuery(this).parent().attr('tw:counturl', (window.location.href.split("?")[0].replace("#","/")));
+    	jQuery(this).attr('src', newsrc);
+    });
 	
 	//Refresh DFP Ads:
 	if(typeof googletag != 'undefined') {
@@ -226,9 +238,9 @@ function fastmatch_refreshstuff(y, first) {
 }
 
 
-function fastmatch_fb_iframe_refresh(q) {
-	nq = q.substr(0,q.lastIndexOf("?"));
-	oq = q.substr(q.lastIndexOf("?"));
+function fastmatch_fb_iframe_refresh(q,d) {
+	nq = q.substr(0,q.lastIndexOf(d));
+	oq = q.substr(q.lastIndexOf(d));
 	var qs = oq.split("&");
 	for (var i=0;i<qs.length;i++) {
 		var pair = qs[i].split("=");
@@ -238,7 +250,11 @@ function fastmatch_fb_iframe_refresh(q) {
 			token = "";
 		}
 		if((pair[0] == 'href') || 
-		   (pair[0] == '?href')) {
+		   (pair[0] == '?href') ||
+		   (pair[0] == 'counturl') ||
+		   (pair[0] == 'data-url') ||
+		   (pair[0] == 'original_referer') ||
+		   (pair[0] == 'url')) {
 			nq = nq + token + pair[0] + '=' + encodeURIComponent(window.location.href.split("?")[0].replace("#","/"));
 		} else {
 			nq = nq + token + pair[0] + '=' + pair[1];

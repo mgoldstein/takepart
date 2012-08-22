@@ -29,9 +29,6 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
 
     $rows = $vars["rows"];
     $options = $vars["options"];
-    // use the dublin core style:
-    // $xml .= "<rss version=\"2.0\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:wfw=\"http://wellformedweb.org/CommentAPI/\">\n";
-
     $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?" . ">\n";
 
     $u_agent = $_SERVER['HTTP_USER_AGENT'];
@@ -41,7 +38,8 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
       $xml .= "<?xml-stylesheet href=\"" . "/" . (drupal_get_path('module', 'views_takepart_rss') . '/rss.xsl') . "\" type=\"text/xsl\" media=\"screen\"?". ">";
       } elseif(preg_match('/Safari/i',$u_agent)) {
       $xml .= "<?xml-stylesheet href=\"" . "/" . (drupal_get_path('module', 'views_takepart_rss') . '/rss.xsl') . "\" type=\"text/xsl\" media=\"screen\"?". ">";
-      } */
+      } 
+     */
 
     $xml .= "<rss version=\"2.0\"";
     $xml .= "  xmlns:dc=\"http://purl.org/dc/elements/1.1/\"";
@@ -110,7 +108,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
         $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
         $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
         $urlprefix = $protocol."://".$_SERVER['SERVER_NAME'].$port;
-        $content=preg_replace('#(href|src)="([^:"]*)(?:")#', '$1=$urlprefix."/$2"', $content);
+        $content=preg_replace('#(href|src)="([^:"]*)(?:")#', '$1="'.$urlprefix.'$2"', $content);
         $xml .= "\t\t\t<content:encoded><![CDATA[" . $content . "]]></content:encoded>\n";
         $xml .= "\t\t</item>\n";
     }

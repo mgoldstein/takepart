@@ -2,7 +2,6 @@
 
 include("includes/facebook_graphi.inc");
 
-
 /**
  * Implements hook_form_alter().
  */
@@ -293,13 +292,20 @@ function takepart_facebookapis_page_alter(&$page) {
     );
 }
 
-
-
+/**
+ * Implements hook_menu_site_status_alter().
+ */
+function takepart_facebookapis_menu_site_status_alter(&$menu_site_status, $path) {
+  if (variable_get('fblogin_backdoor_url', 'backdoor') == current_path()) {
+    $menu_site_status = MENU_SITE_ONLINE;
+  }
+}
 
 /**
  * Implements hook_init().
  */
 function takepart_facebookapis_init() { 
+    
   if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
     $app_id = variable_get('fboauth_id', '');
     setcookie('fbsr_' . $app_id,'',time()-3600);

@@ -1,0 +1,417 @@
+<?php
+/**
+ * @file
+ * Module for Badge Images
+ */
+
+/* Entity
+ ******************************************************************************/
+/**
+ * Implements hook_entity_info().
+ */
+function badge_image_entity_info() {
+
+  $info = array();
+
+  $info['badge_image'] = array(
+    'label' => t('Badge Image'),
+    'entity class' => 'BadgeImage',
+    'controller class' => 'BadgeImageController',
+    'base table' => 'badge_image',
+    'fieldable' => FALSE,
+    'entity keys' => array(
+      'id' => 'id',
+      'label' => 'text',
+    ),
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'badge_image_access',
+    'module' => 'badge_image',
+    'admin ui' => array(
+      'path' => 'admin/content/badge',
+      'file' => 'badge_image.admin.inc',
+      'controller class' => 'BadgeImageUIController',
+    ),
+  );
+
+  $info['badge_image_type'] = array(
+    'label' => t('Badge Image Type'),
+    'entity class' => 'BadgeImageType',
+    'controller class' => 'BadgeImageTypeController',
+    'base table' => 'badge_image_type',
+    'fieldable' => FALSE,
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'name' => 'type',
+      'label' => 'label',
+      'status' => 'status',
+      'module' => 'module',
+    ),
+    'uri callback' => 'entity_class_uri',
+    'access callback' => 'badge_image_access',
+    'module' => 'badge_image',
+    'admin ui' => array(
+      'path' => 'admin/structure/badge_types',
+      'file' => 'badge_image_type.admin.inc',
+      'controller class' => 'BadgeImageTypeUIController',
+    ),
+  );
+
+  return $info;
+}
+
+/**
+ * Badge Image Type menu placeholder callback.
+ */
+function badge_image_type_load($type_name = NULL) {
+  $types = entity_load_multiple_by_name('badge_image_type',
+    isset($type_name) ? array($type_name) : FALSE);
+  return isset($type_name) ? reset($types) : $types;
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function badge_image_entity_property_info_alter(&$info) {
+  $properties = &$info['badge_image']['properties'];
+  $properties['created'] = array(
+    'label' => t("Date created"),
+    'type' => 'date',
+    'description' => t("The date the badge was created."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'update badge_image badge_image',
+    'schema field' => 'created',
+  );
+  $properties['changed'] = array(
+    'label' => t("Date changed"),
+    'type' => 'date',
+    'description' => t("The date the badge was last changed."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'update badge_image badge_image',
+    'schema field' => 'changed',
+  );
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function badge_image_entity_delete($entity, $type) {
+  if ($type == 'badge_image') {
+    if (!empty($entity->image_fid)) {
+      // Remove the generated badge image.
+      $file = file_load($entity->image_fid);
+      file_usage_delete($file, 'badge_image', 'badge_image_type', $entity->id);
+      file_delete($file);
+    }
+  }
+}
+
+
+/* Access Control
+ ******************************************************************************/
+/**
+ * Implements hook_permission().
+ */
+function badge_image_permission() {
+  // Return permissions for the standard API entity operations.
+  return array(
+    'administer badge_image badge_image' => array(
+      'title' => t('Administer Badges'),
+      'restrict access' => TRUE,
+    ),
+    'view badge_image badge_image' => array(
+      'title' => t('View Badges'),
+      'restrict access' => TRUE,
+    ),
+    'update badge_image badge_image' => array(
+      'title' => t('Update Badges'),
+      'restrict access' => TRUE,
+    ),
+    'create badge_image badge_image' => array(
+      'title' => t('Create Badges'),
+      'restrict access' => TRUE,
+    ),
+    'delete badge_image badge_image' => array(
+      'title' => t('Delete Badges'),
+      'restrict access' => TRUE,
+    ),
+    'administer badge_image badge_image_type' => array(
+      'title' => t('Administer Badge Types'),
+      'restrict access' => TRUE,
+    ),
+    'view badge_image badge_image_type' => array(
+      'title' => t('View Badge Types'),
+      'restrict access' => TRUE,
+    ),
+    'update badge_image badge_image_type' => array(
+      'title' => t('Update Badge Types'),
+      'restrict access' => TRUE,
+    ),
+    'create badge_image badge_image_type' => array(
+      'title' => t('Create Badge Types'),
+      'restrict access' => TRUE,
+    ),
+    'delete badge_image badge_image_type' => array(
+      'title' => t('Delete Badge Types'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Access callback for badges.
+ */
+function badge_image_access($op, $entity, $account, $entity_type) {
+  // Block unknown operations.
+  $allowed_ops = array('administer', 'view', 'update', 'create', 'delete');
+  if (in_array($op, $allowed_ops)) {
+    return user_access("$op badge_image $entity_type", $account)
+      || user_access("administer badge_image $entity_type", $account);
+  }
+  return FALSE;
+}
+
+
+/* Tokens
+ ******************************************************************************/
+/**
+ * Implements hook_token_info().
+ */
+function badge_image_token_info() {
+  $type = array(
+    'name' => t('Badge Images'),
+    'description' => t('Tokens related to badge images'),
+    'needs-data' => 'badge_image',
+  );
+  $badge['id'] = array(
+    'name' => t('Badge ID'),
+    'description' => t('The numeric id of the badge.'),
+  );
+  $badge['image-fid'] = array(
+    'name' => t('Badge Image File ID'),
+    'description' => t('The numeric id of the badge image file.'),
+  );
+  $badge['type-name'] = array(
+    'name' => t('Badge Type Name'),
+    'description' => t('The machine name of the badge type.'),
+  );
+  $badge['type-label'] = array(
+    'name' => t('Badge Type Label'),
+    'description' => t('The label of the badge type.'),
+  );
+  $badge['text'] = array(
+    'name' => t('Badge Text'),
+    'description' => t('The user entered text of the badge.'),
+  );
+  return array(
+    'types' => array('badge_image' => $type),
+    'tokens' => array('badge_image' => $badge),
+  );
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function badge_image_tokens($type, $tokens, array $data = array(),
+  array $options = array()) {
+  $sanitize = !empty($options['sanitize']);
+  $replacements = array();
+  if ($type == 'badge_image' && !empty($data['badge_image'])) {
+    $badge = $data['badge_image'];
+    $type = badge_image_type_load($badge->type);
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'id':
+          $replacements[$original] = $badge->id;
+          break;
+
+        case 'image-fid':
+          $replacements[$original] = $badge->image_fid;
+          break;
+
+        case 'type-name':
+          $replacements[$original] = $type->type;
+          break;
+
+        case 'type-label':
+          $replacements[$original] = $type->label;
+          break;
+
+        case 'text':
+          $replacements[$original] = $sanitize ? check_plain($badge->text)
+            : $badge->text;
+          break;
+      }
+    }
+  }
+  return $replacements;
+}
+
+
+/* PathAuto
+ ******************************************************************************/
+/**
+ * Implements hook_pathauto().
+ */
+function badge_image_pathauto($op) {
+
+  $settings = new stdClass();
+  $settings->module = 'badge_image';
+  $settings->groupheader = t('Badge Image Paths');
+  $settings->patterndescr = t('Default path pattern');
+  $settings->patterndefault
+    = 'badges/[badge_image:type-label]/[badge_image:id]/[badge_image:text]';
+  $settings->token_type = 'badge_image';
+  $settings->batch_update_callback = 'badge_image_pathauto_bulkupdate';
+
+  $settings->patternitems = array();
+  foreach (badge_image_type_load() as $type => $info) {
+    $settings->patternitems[$type] = $info->label;
+  }
+
+  return $settings;
+}
+
+/**
+ * Badge Image pathauto_create_alias helper function.
+ */
+function badge_image_create_alias($badge, $op) {
+  module_load_include('inc', 'pathauto');
+  return pathauto_create_alias('badge_image', $op, 'media/' . $badge->image_fid,
+    array('badge_image' => $badge), 'badge_image');
+}
+
+/**
+ * Badge Image PathAuto batch update callback function.
+ */
+function badge_image_pathauto_bulkupdate() {
+  $count = 0;
+  foreach (entity_load('badge_image') as $id => $badge) {
+    badge_image_create_alias($badge, 'bulkupdate');
+    $count++;
+  }
+  drupal_set_message($count . ' badges were updated.');
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function badge_image_block_info() {
+  $blocks = array();
+  foreach (badge_image_type_load() as $type => $info) {
+    $blocks[$type] = array(
+      'info' => $info->label,
+    );
+  }
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function badge_image_block_view($delta = '') {
+  $block = array();
+  $type = badge_image_type_load($delta);
+  if ($type !== FALSE) {
+    $file = file_load($type->blank_fid);
+    $image = image_load($file->uri);
+    $block['subject'] = $type->label;
+    $block['content'] = theme('badge_image_block', array(
+      'heading' => check_plain($type->heading),
+      'instructions' => check_markup($type->instructions_text,
+        $type->instructions_format),
+      'form' => drupal_get_form('badge_image_generation_form', $type),
+      'css_prefix' => str_replace('_', '-', $type->type),
+      'preview_bg_src' => file_create_url($file->uri),
+      'preview_height' => $image->info['height'],
+      'preview_width' => $image->info['width'],
+    ));
+  }
+  else {
+    $block['content'] = t('No content available.');
+  }
+  return $block;
+}
+
+/**
+ * User badge generation form.
+ */
+function badge_image_generation_form($form, &$form_state, $type) {
+
+  $form_state['badge_image_type'] = $type;
+
+  // Translate the type machine name to a CSS class name prefix.
+  $css_prefix = str_replace('_', '-', $type->type);
+
+  if (!isset($form['#attribues'])) {
+    $form['#attributes'] = array();
+  }
+  if (!isset($form['#attributes']['class'])) {
+    $form['#attributes']['class'] = array();
+  }
+  $form['#attributes']['class'] += array(
+    'badge-image-form',
+    $css_prefix . '-form',
+  );
+
+  $form['text'] = array(
+    '#title' => t(''),
+    '#type' => 'textfield',
+    '#size' => 20,
+    '#maxlength' => $type->max_length,
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $submit = array();
+  if (!empty($form['#submit'])) {
+    $submit += $form['#submit'];
+  }
+
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+    '#weight' => 40,
+    '#submit' => $submit + array('badge_image_generation_form_submit'),
+  );
+
+  return $form;
+}
+
+/**
+ * User badge generation form submit handler.
+ */
+function badge_image_generation_form_submit($form, $form_state) {
+  $type = $form_state['badge_image_type'];
+  $badge = entity_create('badge_image', array(
+    'type' => $type->type,
+    'text' => check_plain($form_state['values']['text']),
+  ));
+  $params = array();
+  if ($badge->save() !== FALSE) {
+    entity_get_controller('badge_image')->generateImage($badge);
+    $params['query'] = array(
+      'badge' => $badge->id,
+    );
+  }
+  if (!empty($type->redirect_url)) {
+    drupal_goto($type->redirect_url, $params);
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function badge_image_theme($existing, $type, $theme, $path) {
+  return array(
+    'badge_image_block' => array(
+      'template' => 'theme/badge-image-block',
+      'variables' => array(
+        'heading' => NULL,
+        'instructions' => NULL,
+        'form' => NULL,
+        'image_src' => NULL,
+        'css_prefix' => NULL,
+      ),
+    ),
+  );
+}

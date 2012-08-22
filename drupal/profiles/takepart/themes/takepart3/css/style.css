@@ -96,7 +96,7 @@ div.gray-rule {
     background: none;
     color: #000;
     background: url(../images/dot-bbg.png) no-repeat 0 7px;
-    padding: 0 10px;
+    padding: 0 5px 0 12px;
     white-space:nowrap;
 }
 #slim-header ul.menu li.first a {
@@ -728,7 +728,10 @@ body.front .main-content .block-boxes-current-promo .views-row-10
 
 /* ===PAGE HEADER=== */
 /* ------------------------------------------------------------------------*/
-
+#topnav-right {
+  position: relative;
+  padding-top: 2px;
+}
 #top-follow-wrapper {
 	padding-top: 10px;
     float: right;
@@ -736,7 +739,7 @@ body.front .main-content .block-boxes-current-promo .views-row-10
     position: relative;
 }
 #slim-header #top-follow-wrapper {
-    float: left;
+    float: right;
 }
 /* My Comment */
 #top-follow-wrapper .top-follow-label {
@@ -3498,4 +3501,6 @@ body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
 #block-boxes-action-header-image {
   margin-bottom: 10px;
 }
-
+.field-name-field-series-graphic-header {
+    margin-bottom: 1em;
+}

@@ -8,7 +8,11 @@
     </div>
   <?php endif; ?>
   
-  <div id='page' class='page clearfix <?php print $multipage_class; ?>'>
+  <?php if ($page['full_width_top']): ?>
+      <?php print render($page['full_width_top']); ?>
+  <?php endif; ?>
+  
+  <div id='page' class='page clearfix <?php print $multipage_class; ?> <?php print render($node->type); ?>'>
   
     <div class='main-content'>
       <?php  /* if ($title): ?><h1 class='page-title'><?php print $title ?></h1><?php endif; */ ?>
@@ -44,6 +48,8 @@
   
   </div>
   
-<!-- Footer -->
+   <?php if ($page['full_width_bottom']): ?>
+      <?php print render($page['full_width_bottom']); ?>
+   <?php endif; ?>
 
 </div>
