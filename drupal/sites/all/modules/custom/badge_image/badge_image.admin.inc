@@ -33,7 +33,6 @@ class BadgeImageUIController extends EntityDefaultUIController {
 function badge_image_form($form, &$form_state, $entity, $op = 'edit') {
 
   $form_state['badge_image'] = $entity;
-  $entity->type = 'no_mas_badge';
 
   // Reset the type if we are cloning the badge.
   if (!isset($form_state['values']) && $op == 'clone') {
@@ -55,6 +54,19 @@ function badge_image_form($form, &$form_state, $entity, $op = 'edit') {
       '#suffix' => '</p>',
     );
   }
+
+  $options = array();
+  foreach (badge_image_type_load() as $name => $info) {
+    $options[$name] = $info->label;
+  }
+  $form['type'] = array(
+    '#title' => t('Type'),
+    '#decription' => t('The type of badge'),
+    '#type' => 'select',
+    '#required' => TRUE,
+    '#options' => $options,
+    '#default_value' => $entity->type,
+  );
 
   $type = badge_image_type_load($entity->type);
   $form['text'] = array(
@@ -107,7 +119,6 @@ function badge_image_form_submit(&$form, &$form_state) {
 
   // Build the entity from the form.
   $entity = entity_ui_form_submit_build_entity($form, $form_state);
-  $entity->type = 'no_mas_badge';
 
   // Save the entity.
   $status = $entity->save();

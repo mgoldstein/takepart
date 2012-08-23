@@ -5,6 +5,9 @@ version = 7.x-1.0-dev
 package = Media
 
 dependencies[] = entity
+dependencies[] = file
+dependencies[] = pathauto
+dependencies[] = token
 
 files[] = badge_image_type.entity.inc
 files[] = badge_image_type.admin.inc

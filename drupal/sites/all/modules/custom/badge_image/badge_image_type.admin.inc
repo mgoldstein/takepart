@@ -48,31 +48,6 @@ function badge_image_type_form($form, &$form_state, $type, $op = 'edit') {
     '#default_value' => $type->type,
   );
 
-  $form['heading'] = array(
-    '#title' => t('User Generation Form Heading'),
-    '#description' => t('The heading for the user generation form'),
-    '#type' => 'textfield',
-    '#required' => TRUE,
-    '#size' => 60,
-    '#default_value' => $type->heading,
-  );
-
-  $form['instructions'] = array(
-    '#title' => t('User Generation Form Instructions'),
-    '#description' => t('The instructions for the user generation form'),
-    '#type' => 'text_format',
-    '#default_value' => $type->instructions_text,
-    '#format' => $type->instructions_format,
-  );
-
-  $form['blank_fid'] = array(
-    '#title' => t('Blank'),
-    '#description' => t('The badge blank image'),
-    '#type' => 'managed_file',
-    '#default_value' => $type->blank_fid,
-    '#upload_location' => 'public://badge_image/blanks/',
-  );
-
   $form['max_length'] = array(
     '#title' => t('Maximum Length'),
     '#description' => t('The maximum length of the dynamic text.'),
@@ -83,36 +58,6 @@ function badge_image_type_form($form, &$form_state, $type, $op = 'edit') {
     '#default_value' => $type->max_length,
   );
 
-  $form['font_size'] = array(
-    '#title' => t('Font Size'),
-    '#description' => t('The font size to use for the dynamic text.'),
-    '#size' => 20,
-    '#type' => 'textfield',
-    '#required' => TRUE,
-    '#element_validate' => array('_element_validate_integer_positive'),
-    '#default_value' => $type->font_size,
-  );
-
-  $form['font_angle'] = array(
-    '#title' => t('Font Angle'),
-    '#description' => t('The font size to use for the dynamic text.'),
-    '#size' => 20,
-    '#type' => 'textfield',
-    '#required' => TRUE,
-    '#element_validate' => array('badge_image_validate_integer_non_negative'),
-    '#default_value' => $type->font_angle,
-  );
-
-  $form['offset_y'] = array(
-    '#title' => t('Vertical Offset'),
-    '#description' => t('The number of pixels from the top of the image.'),
-    '#size' => 20,
-    '#type' => 'textfield',
-    '#required' => TRUE,
-    '#element_validate' => array('badge_image_validate_integer_non_negative'),
-    '#default_value' => $type->offset_y,
-  );
-
   $form['redirect_url'] = array(
     '#title' => t('Redirect URL/Path'),
     '#description' => t('The URL or site path to redirect to after a badge is submitted'),
@@ -120,6 +65,160 @@ function badge_image_type_form($form, &$form_state, $type, $op = 'edit') {
     '#size' => 60,
     '#element_validate' => array('badge_image_validate_redirect_url'),
     '#default_value' => $type->redirect_url,
+  );
+
+  $form['share_url'] = array(
+    '#title' => t('Common Share Path'),
+    '#description' => t('The common site path for sharing all badges'),
+    '#type' => 'textfield',
+    '#size' => 60,
+    '#element_validate' => array('badge_image_validate_share_url'),
+    '#default_value' => $type->share_url,
+  );
+
+  $form['generator'] = array(
+    '#title' => t('Generated Badge'),
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+  );
+
+  $form['generator']['blank_fid'] = array(
+    '#title' => t('Blank'),
+    '#description' => t('The badge blank image'),
+    '#type' => 'managed_file',
+    '#default_value' => $type->blank_fid,
+    '#upload_location' => 'public://badge_image/blanks/',
+  );
+
+  $form['generator']['image_font_size'] = array(
+    '#title' => t('Font Size'),
+    '#description' => t('The font size to use for the dynamic text.'),
+    '#size' => 20,
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#element_validate' => array('_element_validate_integer_positive'),
+    '#default_value' => $type->image_font_size,
+  );
+
+  $form['generator']['image_font_angle'] = array(
+    '#title' => t('Font Angle'),
+    '#description' => t('The font size to use for the dynamic text.'),
+    '#size' => 20,
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#element_validate' => array('badge_image_validate_integer_non_negative'),
+    '#default_value' => $type->image_font_angle,
+  );
+
+  $form['generator']['image_offset_y'] = array(
+    '#title' => t('Vertical Offset'),
+    '#description' => t('The number of pixels from the top of the image.'),
+    '#size' => 20,
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#element_validate' => array('badge_image_validate_integer_non_negative'),
+    '#default_value' => $type->image_offset_y,
+  );
+
+  $form['preview'] = array(
+    '#title' => t('Badge Preview'),
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+  );
+
+  $form['preview']['preview_fid'] = array(
+    '#title' => t('Blank'),
+    '#description' => t('The badge blank image for the generator preview'),
+    '#type' => 'managed_file',
+    '#default_value' => $type->preview_fid,
+    '#upload_location' => 'public://badge_image/blanks/',
+  );
+
+  $form['preview']['preview_font_size'] = array(
+    '#title' => t('Font Size'),
+    '#description' => t('The font size to use for the dynamic text in the generator preview.'),
+    '#size' => 20,
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#element_validate' => array('_element_validate_integer_positive'),
+    '#default_value' => $type->preview_font_size,
+  );
+
+  $form['preview']['preview_font_angle'] = array(
+    '#title' => t('Font Angle'),
+    '#description' => t('The font size to use for the dynamic text in the generator preview.'),
+    '#size' => 20,
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#element_validate' => array('badge_image_validate_integer_non_negative'),
+    '#default_value' => $type->preview_font_angle,
+  );
+
+  $form['preview']['preview_offset_y'] = array(
+    '#title' => t('Vertical Offset'),
+    '#description' => t('The number of pixels from the top of the image in the generator preview.'),
+    '#size' => 20,
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#element_validate' => array('badge_image_validate_integer_non_negative'),
+    '#default_value' => $type->preview_offset_y,
+  );
+
+  $form['copy'] = array(
+    '#title' => t('Heading and Instructions'),
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+  );
+
+  $form['copy']['heading'] = array(
+    '#title' => t('User Generation Form Heading'),
+    '#description' => t('The heading for the user generation form'),
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#size' => 60,
+    '#default_value' => $type->heading,
+  );
+
+  $form['copy']['instructions'] = array(
+    '#title' => t('User Generation Form Instructions'),
+    '#description' => t('The instructions for the user generation form'),
+    '#type' => 'text_format',
+    '#default_value' => $type->instructions_text,
+    '#format' => $type->instructions_format,
+  );
+
+  $form['sharing'] = array(
+    '#title' => t('Social Sharing'),
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+  );
+
+  $form['sharing']['twitter_message'] = array(
+    '#title' => t('Twitter Message'),
+    '#description' => t('The default message to use when sharing the badge on Twitter.'),
+    '#type' => 'textfield',
+    '#size' => 60,
+    '#default_value' => $type->twitter_message,
+  );
+
+  $form['sharing']['email_message'] = array(
+    '#title' => t('Email Message'),
+    '#description' => t('The default message to use when sharing the badge through email.'),
+    '#type' => 'textarea',
+    '#element_validate' => array('badge_image_validate_textarea_maxlength'),
+    '#default_value' => $type->email_message,
+  );
+  
+  $form['sharing']['token_help'] = array(
+    '#title' => t('Replacement patterns'),
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['sharing']['token_help']['help'] = array(
+    '#theme' => 'token_tree',
+    '#token_types' => array('badge_image'),
   );
 
   $form['actions'] = array('#type' => 'actions');
@@ -157,15 +256,39 @@ function badge_image_type_form($form, &$form_state, $type, $op = 'edit') {
 
 function badge_image_validate_integer_non_negative($element, &$form_state) {
   $value = $element['#value'];
-  if ($value !== '' && (!is_numeric($value) || intval($value) != $value || $value < 0)) {
-    form_error($element, t('%name must be a non-negative integer.', array('%name' => $element['#title'])));
+  if ($value !== '' && (!is_numeric($value) || intval($value) != $value 
+  || $value < 0)) {
+    form_error($element, t('%name must be a non-negative integer.',
+      array('%name' => $element['#title'])));
+  }
+}
+
+function badge_image_validate_textarea_maxlength($element, &$form_state) {
+  $value = $element['#value'];
+  $maxlength = isset($element['#maxlength']) ? $element['#maxlength'] : 255;
+  if ($value !== '' && strlen($value) > $maxlength) {
+    form_error($element, t('%name must be no more than %maxlength characters.',
+      array('%name' => $element['#title'], '%maxlength' => $maxlength)));
   }
 }
 
 function badge_image_validate_redirect_url($element, &$form_state) {
   $value = $element['#value'];
   if ($value !== '' && !valid_url($value)) {
-    form_error($element, t('%name must be a valid URL or site path.', array('%name' => $element['#title'])));
+    form_error($element, t('%name must be a valid URL or site path.',
+      array('%name' => $element['#title'])));
+  }
+}
+
+function badge_image_validate_share_url($element, &$form_state) {
+  $value = $element['#value'];
+  if ($value !== '' && !valid_url($value)) {
+    form_error($element, t('%name must be a valid site path.',
+      array('%name' => $element['#title'])));
+  }
+  elseif (valid_url($value, TRUE)) {
+    form_error($element, t('%name must be a valid path internal to the site.',
+      array('%name' => $element['#title'])));
   }
 }
 
@@ -175,7 +298,8 @@ function badge_image_validate_redirect_url($element, &$form_state) {
 function badge_image_type_form_submit(&$form, &$form_state) {
 
   // Make a note of the original blank fid.
-  $original_fid = $form_state['badge_image_type']->blank_fid;
+  $original_blank_fid = $form_state['badge_image_type']->blank_fid;
+  $original_preview_fid = $form_state['badge_image_type']->preview_fid;
 
   // Build the type entity from the form.
   $type = entity_ui_form_submit_build_entity($form, $form_state);
@@ -193,9 +317,9 @@ function badge_image_type_form_submit(&$form, &$form_state) {
       array('@name' => $type->label)));
   }
 
-  if ($original_fid != $type->blank_fid) {
-    if (!empty($original_fid)) {
-      $file = file_load($original_fid);
+  if ($original_blank_fid != $type->blank_fid) {
+    if (!empty($original_blank_fid)) {
+      $file = file_load($original_blank_fid);
       file_usage_delete($file, 'badge_image', 'badge_image_type', $type->id);
       file_delete($file);
     }
@@ -206,7 +330,21 @@ function badge_image_type_form_submit(&$form, &$form_state) {
       file_usage_add($file, 'badge_image', 'badge_image_type', $type->id);
     }
   }
-  
+
+  if ($original_preview_fid != $type->preview_fid) {
+    if (!empty($original_preview_fid)) {
+      $file = file_load($original_preview_fid);
+      file_usage_delete($file, 'badge_image', 'badge_image_type', $type->id);
+      file_delete($file);
+    }
+    if (!empty($type->preview_fid)) {
+      $file = file_load($type->preview_fid);
+      $file->status = FILE_STATUS_PERMANENT;
+      file_save($file);
+      file_usage_add($file, 'badge_image', 'badge_image_type', $type->id);
+    }
+  }
+
   // Go back to the list of types.
   $form_state['redirect'] = 'admin/structure/badge_types';
 }

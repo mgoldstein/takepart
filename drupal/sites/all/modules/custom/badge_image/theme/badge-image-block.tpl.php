@@ -6,15 +6,18 @@
  * $heading
  * $instructions
  * $form
+ * $styles
  * $css_prefix
  */
 ?>
 <style type="text/css">
-.<?php print $css_prefix; ?>-preview {
-  background: url(<?php print $preview_bg_src; ?>) no-repeat top left;
-  height: <?php print $preview_height; ?>px;
-  width: <?php print $preview_width; ?>px;
-}
+<?php
+  print ".{$css_prefix}-preview {\n";
+  foreach ($styles as $prop => $value) {
+     print "  $prop: $value;\n";
+  }
+  print "}";
+?>
 </style>
 <div class="badge-image-generator <?php print $css_prefix; ?>-generator">
 <h2 class="badge-image-heading <?php print $css_prefix; ?>-heading"><?php print $heading; ?></h2>
