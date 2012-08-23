@@ -593,18 +593,18 @@ function badge_image_page_alter(&$page) {
       $badge = entity_load_single('badge_image', $badge_id);
       $type = badge_image_type_load($badge->type);
       if ($badge !== FALSE && !empty($badge->image_fid)) {
-        // Set the page's canonical URL
-        $options = array(
+        // Set the page's canonical URL.
+        $url_options = array(
           'absolute' => TRUE,
           'external' => FALSE,
           'alias' => TRUE,
         );
         $canonical = array(
           'rel' => 'canonical',
-          'href' => url($type->share_url, $options),
+          'href' => url($type->share_url, $url_options),
         );
-        drupal_add_html_head_link($canonical, TRUE); 
-        // Set the open graph image meta tag
+        drupal_add_html_head_link($canonical, TRUE);
+        // Set the open graph image meta tag.
         $file = file_load($badge->image_fid);
         $og_image = array(
           '#tag' => 'meta',
@@ -614,6 +614,23 @@ function badge_image_page_alter(&$page) {
           ),
         );
         drupal_add_html_head($og_image, 'og_image');
+        $share_url = badge_image_create_speakup_alias($badge, 'return');
+        $og_url = array(
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:url',
+            'value' => url($share_url, $url_options),
+          ),
+        );
+        drupal_add_html_head($og_url, 'og_url');
+        $og_title = array(
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:title',
+            'value' => drupal_get_title(),
+          ),
+        );
+        drupal_add_html_head($og_title, 'og_title');
       }
     }
   }
