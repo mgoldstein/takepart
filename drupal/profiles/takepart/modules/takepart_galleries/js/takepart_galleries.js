@@ -196,17 +196,7 @@ function fastmatch_refreshstuff(y, first) {
     if((typeof gapi != 'undefined') && (gapi)) {
 		gapi.plusone.go();
     }
-    		    
-    //Refresh addthis:
-    jQuery('script[src*="addthis_widget"]').each(function(i){
-    	atscript = (this.src);
-    });
-    if (window.addthis){
-		window.addthis = null;
-	}
-    jQuery.getScript(atscript);
-    
-    
+       
     //Force the damn FB shares to refresh ... rebuild iFrames:
     jQuery(".addthis_toolbox .addthis_button_facebook_like iframe").each(function() {
     	var src = jQuery(this).attr('src');
@@ -229,12 +219,32 @@ function fastmatch_refreshstuff(y, first) {
     	jQuery(this).parent().attr('tw:url', (window.location.href.split("?")[0].replace("#","/")));
     	jQuery(this).parent().attr('tw:counturl', (window.location.href.split("?")[0].replace("#","/")));
     	jQuery(this).attr('src', newsrc);
+    	jQuery(this).clone().appendTo(jQuery(this).parent());
+    	jQuery(this).remove();
+    	
+    	//jQuery(this).replaceWith(jQuery(this).get());
+    	//document.getElementById(jQuery(this).attr('id')).contentDocument.location.reload(true);
+    	//jQuery(this).attr('src', jQuery(this).attr('src'));
+
+
     });
 	
 	//Refresh DFP Ads:
 	if(typeof googletag != 'undefined') {
 		googletag.pubads().refresh();
 	}
+	
+    
+    //Refresh addthis:
+    jQuery('script[src*="addthis_widget"]').each(function(i){
+    	atscript = (this.src);
+    });
+    if (window.addthis){
+		window.addthis = null;
+	}
+    jQuery.getScript(atscript);
+
+	
 }
 
 
