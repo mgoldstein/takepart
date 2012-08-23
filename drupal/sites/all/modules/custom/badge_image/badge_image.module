@@ -610,7 +610,7 @@ function badge_image_page_alter(&$page) {
           '#tag' => 'meta',
           '#attributes' => array(
             'property' => 'og:image',
-            'value' => file_create_url($file->uri),
+            'content' => file_create_url($file->uri),
           ),
         );
         drupal_add_html_head($og_image, 'og_image');
@@ -619,7 +619,7 @@ function badge_image_page_alter(&$page) {
           '#tag' => 'meta',
           '#attributes' => array(
             'property' => 'og:url',
-            'value' => url($share_url, $url_options),
+            'content' => url($share_url, $url_options),
           ),
         );
         drupal_add_html_head($og_url, 'og_url');
@@ -627,7 +627,7 @@ function badge_image_page_alter(&$page) {
           '#tag' => 'meta',
           '#attributes' => array(
             'property' => 'og:title',
-            'value' => drupal_get_title(),
+            'content' => drupal_get_title(),
           ),
         );
         drupal_add_html_head($og_title, 'og_title');
