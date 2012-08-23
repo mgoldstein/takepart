@@ -223,7 +223,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign,
     '#title' => t('Promo message'),
     '#type' => 'textarea',
     '#default_value' => $values['promo_message'],
-    '#description' => t('Message to display before a user submits their email.'),
+    '#description' => t('Message to display before a user submits their email. Supports HTML tags a, i, strong, u, em, b, ul, ol, li, dl, dt, dd, p, br, div, and span.'),
     '#rows' => 4,
   );
 
