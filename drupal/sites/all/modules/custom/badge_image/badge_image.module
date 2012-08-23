@@ -254,7 +254,6 @@ function badge_image_tokens($type, $tokens, array $data = array(),
  * Implements hook_pathauto().
  */
 function badge_image_pathauto($op) {
-
   $settings = new stdClass();
   $settings->module = 'badge_image';
   $settings->groupheader = t('Badge Image Paths');
@@ -263,22 +262,32 @@ function badge_image_pathauto($op) {
     = 'badges/[badge_image:type-label]/[badge_image:id]/[badge_image:text]';
   $settings->token_type = 'badge_image';
   $settings->batch_update_callback = 'badge_image_pathauto_bulkupdate';
-
   $settings->patternitems = array();
   foreach (badge_image_type_load() as $type => $info) {
-    $settings->patternitems[$type] = $info->label;
+    $settings->patternitems[$type . ':image'] = $info->label . ' Image';
+    $settings->patternitems[$type . ':speakup'] = $info->label . ' SpeakUp';
   }
-
   return $settings;
 }
 
 /**
  * Badge Image pathauto_create_alias helper function.
  */
-function badge_image_create_alias($badge, $op) {
+function badge_image_create_image_alias($badge, $op) {
   module_load_include('inc', 'pathauto');
   return pathauto_create_alias('badge_image', $op, 'media/' . $badge->image_fid,
-    array('badge_image' => $badge), 'badge_image');
+    array('badge_image' => $badge), $badge->type . ':image');
+}
+
+function badge_image_create_speakup_alias($badge, $op) {
+  module_load_include('inc', 'pathauto');
+  $type = badge_image_type_load($badge->type);
+  if (!empty($type->share_url)) {
+    $source = drupal_lookup_path('source', $type->share_url);
+    return pathauto_create_alias('badge_image', $op, $source,
+      array('badge_image' => $badge), $badge->type . ':speakup');
+  }
+  return FALSE;
 }
 
 /**
@@ -287,12 +296,16 @@ function badge_image_create_alias($badge, $op) {
 function badge_image_pathauto_bulkupdate() {
   $count = 0;
   foreach (entity_load('badge_image') as $id => $badge) {
-    badge_image_create_alias($badge, 'bulkupdate');
+    badge_image_create_image_alias($badge, 'bulkupdate');
+    badge_image_create_speakup_alias($badge, 'bulkupdate');
     $count++;
   }
   drupal_set_message($count . ' badges were updated.');
 }
 
+
+/* Blocks
+ ******************************************************************************/
 /**
  * Implements hook_block_info().
  */
@@ -300,36 +313,160 @@ function badge_image_block_info() {
   $blocks = array();
   foreach (badge_image_type_load() as $type => $info) {
     $blocks[$type] = array(
-      'info' => $info->label,
+      'info' => $info->label . ' (Entry Block)',
+    );
+    $blocks['display:' . $type] = array(
+      'info' => $info->label . ' (Display Block)',
     );
   }
   return $blocks;
+}
+
+function badge_image_generate_block_view($type) {
+
+  $file = file_load($type->preview_fid);
+
+  $image = image_load($file->uri);
+  $bg_src = file_create_url($file->uri);
+  $styles = array(
+    'background' => "url({$bg_src}) no-repeat top left",
+    'height' => "{$image->info['height']}px",
+    'width' => "{$image->info['width']}px",
+  );
+
+  $content = theme('badge_image_block', array(
+    'heading' => check_plain($type->heading),
+    'instructions' => check_markup($type->instructions_text,
+      $type->instructions_format),
+    'form' => drupal_get_form('badge_image_generation_form', $type),
+    'styles' => $styles,
+    'css_prefix' => str_replace('_', '-', $type->type),
+  ));
+
+  $setting = array(
+    'badge_image' => array(
+      'preview' => array(
+        'font_size' => $type->preview_font_size,
+        'font_angle' => $type->preview_font_angle,
+        'offset_y' => $type->preview_offset_y,
+        'height' => "{$image->info['height']}px",
+        'width' => "{$image->info['width']}px",
+      ),
+    ),
+  );
+
+  return array(
+    'content' => $content,
+    'setting' => $setting,
+  );
+}
+
+function badge_image_display_block_view($type, $badge = NULL) {
+
+  if (!empty($badge)) {
+    $file = file_load($badge->image_fid);
+    $text = check_plain($badge->text);
+    $share_url = badge_image_create_speakup_alias($badge, 'return');
+  }
+  else {
+    $file = file_load($type->blank_fid);
+    $text = $type->label;
+    $share_url = $type->share_url;
+  }
+
+  $content = theme('image', array(
+    'path' => $file->uri,
+    'alt' => $text,
+    'title' => $text,
+    'attributes' => array('class' => 'badge-image-display'),
+  ));
+
+  $options = array(
+    'absolute' => TRUE,
+    'external' => FALSE,
+    'alias' => TRUE,
+  );
+
+  $data = array(
+    'badge_image' => $badge,
+  );
+  $setting = array(
+    'badge_image' => array(
+      'display' => array(
+        'type' => $type->type,
+        'sharing' => array(
+          'url' => url($share_url, $options),
+          'pinterest' => file_create_url($file->uri),
+          'twitter' => token_replace($type->twitter_message, $data),
+          'email' => token_replace($type->email_message, $data),
+        ),
+      ),
+    ),
+  );
+
+  return array(
+    'content' => $content,
+    'setting' => $setting,
+  );
 }
 
 /**
  * Implements hook_block_view().
  */
 function badge_image_block_view($delta = '') {
-  $block = array();
-  $type = badge_image_type_load($delta);
-  if ($type !== FALSE) {
-    $file = file_load($type->blank_fid);
-    $image = image_load($file->uri);
-    $block['subject'] = $type->label;
-    $block['content'] = theme('badge_image_block', array(
-      'heading' => check_plain($type->heading),
-      'instructions' => check_markup($type->instructions_text,
-        $type->instructions_format),
-      'form' => drupal_get_form('badge_image_generation_form', $type),
-      'css_prefix' => str_replace('_', '-', $type->type),
-      'preview_bg_src' => file_create_url($file->uri),
-      'preview_height' => $image->info['height'],
-      'preview_width' => $image->info['width'],
-    ));
+  $block = array(
+    'subject' => NULL,
+    'content' => t('No content available.'),
+  );
+
+  if (strpos($delta, ':') === FALSE) {
+    $action = 'generate';
+    $type_name = $delta;
   }
   else {
-    $block['content'] = t('No content available.');
+    list ($action, $type_name) = explode(':', $delta, 2);
   }
+
+  $type = badge_image_type_load($type_name);
+  if ($type !== FALSE) {
+
+    switch ($action) {
+
+      case 'generate':
+        $data = badge_image_generate_block_view($type);
+
+        $block['content'] = $data['content'];
+        drupal_add_js($data['setting'], array('type' => 'setting'));
+
+        $js_path = drupal_get_path('module', 'badge_image')
+          . '/js/badge-image-generator.js';
+        drupal_add_js($js_path, array('type' => 'file'));
+        break;
+
+      case 'display':
+        $badge_id = isset($_GET['badge']) ? $_GET['badge'] : '';
+        if (preg_match('/^[0-9]+$/', $badge_id)) {
+          $badge = entity_load_single('badge_image', $badge_id);
+          if ($badge !== FALSE && !empty($badge->image_fid)) {
+            if ($badge->type == $type->type) {
+              $data = badge_image_display_block_view($type, $badge);
+            }
+          }
+        }
+        if (!isset($data)) {
+          $data = badge_image_display_block_view($type);
+        }
+
+        $block['content'] = $data['content'];
+        $ret = drupal_add_js($data['setting'], array('type' => 'setting'));
+
+        $js_path = drupal_get_path('module', 'badge_image')
+          . '/js/badge-image-display.js';
+        drupal_add_js($js_path, array('type' => 'file'));
+        break;
+    }
+  }
+
   return $block;
 }
 
@@ -359,6 +496,9 @@ function badge_image_generation_form($form, &$form_state, $type) {
     '#type' => 'textfield',
     '#size' => 20,
     '#maxlength' => $type->max_length,
+    '#attributes' => array(
+      'class' => array('badge-image-text-input', $css_prefix . '-text-input'),
+    ),
   );
 
   $form['actions'] = array('#type' => 'actions');
@@ -409,9 +549,72 @@ function badge_image_theme($existing, $type, $theme, $path) {
         'heading' => NULL,
         'instructions' => NULL,
         'form' => NULL,
-        'image_src' => NULL,
+        'styles' => NULL,
         'css_prefix' => NULL,
       ),
     ),
   );
+}
+
+function badge_image_common_share_paths($reset = FALSE) {
+  $paths = &drupal_static(__FUNCTION__, array());
+  if (empty($paths) || $reset) {
+    if (!$reset) {
+      $cache = cache_get('badge_image:common_share_paths');
+      if (!empty($cache->data)) {
+        $paths = unserialize($cache->data);
+      }
+    }
+    if (empty($paths)) {
+      $types = db_select('badge_image_type', 't')
+        ->fields('t', array('type', 'share_url'))
+        ->execute()
+        ->fetchAllKeyed();
+      foreach ($types as $type => $share_url) {
+        $source = drupal_lookup_path('source', $share_url);
+        $paths[$source] = $type;
+      }
+      cache_set('badge_image:common_share_paths', serialize($paths));
+    }
+  }
+  return $paths;
+}
+
+function badge_image_page_alter(&$page) {
+  $q = $_GET['q'];
+  $paths = badge_image_common_share_paths();
+  if (isset($paths[$q])) {
+    $badge_id = db_select('badge_image_share', 's')
+      ->fields('s', array('id'))
+      ->condition('s.share_url', request_path(), '=')
+      ->execute()
+      ->fetchField();
+    if ($badge_id !== FALSE) {
+      $badge = entity_load_single('badge_image', $badge_id);
+      $type = badge_image_type_load($badge->type);
+      if ($badge !== FALSE && !empty($badge->image_fid)) {
+        // Set the page's canonical URL
+        $options = array(
+          'absolute' => TRUE,
+          'external' => FALSE,
+          'alias' => TRUE,
+        );
+        $canonical = array(
+          'rel' => 'canonical',
+          'href' => url($type->share_url, $options),
+        );
+        drupal_add_html_head_link($canonical, TRUE); 
+        // Set the open graph image meta tag
+        $file = file_load($badge->image_fid);
+        $og_image = array(
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'value' => file_create_url($file->uri),
+          ),
+        );
+        drupal_add_html_head($og_image, 'og_image');
+      }
+    }
+  }
 }

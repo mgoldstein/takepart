@@ -12,7 +12,7 @@ class BadgeImage extends Entity {
 
   protected function defaultUri() {
     if (!empty($this->image_fid)) {
-      $path = badge_image_create_alias($this, 'return');
+      $path = badge_image_create_image_alias($this, 'return');
     }
     else {
       $info = $this->entityInfo();
@@ -77,11 +77,20 @@ class BadgeImageController extends EntityAPIController {
 
     // Update the media page url alias.
     if (empty($original_fid)) {
-      badge_image_create_alias($entity, 'insert');
+      badge_image_create_image_alias($entity, 'insert');
+      $share_url = badge_image_create_speakup_alias($entity, 'insert');
     }
     else {
-      badge_image_create_alias($entity, 'update');
+      badge_image_create_image_alias($entity, 'update');
+      $share_url = badge_image_create_speakup_alias($entity, 'update');
     }
+
+    $query = db_merge('badge_image_share')
+      ->key(array('id' => $entity->id))
+      ->fields(array(
+        'share_url' => $share_url['alias'],
+      ));
+      $query->execute();
 
     // Add the text to the badge.
     $badge = image_load($file->uri);
@@ -93,16 +102,16 @@ class BadgeImageController extends EntityAPIController {
       $text = strtoupper(check_plain($entity->text));
 
       // Calculate the position of the text.
-      $textbox = imagettfbbox($type->font_size, $type->font_angle, $font_file,
-        $text);
+      $textbox = imagettfbbox($type->image_font_size, $type->image_font_angle,
+        $font_file, $text);
       $width = abs($textbox[2] - $textbox[0]);
       $x = ($badge->info['width'] - $width) / 2;
-      $y = $type->offset_y;
+      $y = $type->image_offset_y;
 
       // Draw the text on the blank.
       $black = imagecolorallocate($badge->resource, 0, 0, 0);
-      imagettftext($badge->resource, $type->font_size, $type->font_angle, $x,
-        $y, $black, $font_file, $text);
+      imagettftext($badge->resource, $type->image_font_size,
+        $type->image_font_angle, $x, $y, $black, $font_file, $text);
 
       // Save the updated image.
       return image_gd_save($badge, $destination);

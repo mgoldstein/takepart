@@ -71,7 +71,6 @@ function badge_image_schema() {
     'indexes' => array(
       'type' => array('type'),
     ),
-
   );
 
   $schema['badge_image_type'] = array(
@@ -115,6 +114,27 @@ function badge_image_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
+      'max_length' => array(
+        'description' => 'The maximum length of the user entered text.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'redirect_url' => array(
+        'description' => 'The URL to redirect to after submitting a badge.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'share_url' => array(
+        'description' => 'The base URL for sharing badges.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
       'blank_fid' => array(
         'description' => 'The {file_managed}.fid of the blank badge image.',
         'type' => 'int',
@@ -122,39 +142,64 @@ function badge_image_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
-      'font_fid' => array(
-        'description' => 'The {file_managed}.fid of the text font.',
+      'image_font_size' => array(
+        'description' => 'The size of the font for user entered text in the generated image.',
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
         'default' => 0,
       ),
-      'font_size' => array(
-        'description' => 'The size of the font for user entered text.',
+      'image_font_angle' => array(
+        'description' => 'The angle of the font for the user entered text in the generated image.',
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
+        'default' => 0,
       ),
-      'font_angle' => array(
-        'description' => 'The angle of the font for the user entered text.',
+      'image_offset_y' => array(
+        'description' => 'The vertical offset of the user entered text in the generated image.',
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
+        'default' => 0,
       ),
-      'offset_y' => array(
-        'description' => 'The vertical offset of the user entered text.',
+      'preview_fid' => array(
+        'description' => 'The {file_managed}.fid of the preview badge image.',
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
+        'default' => 0,
       ),
-      'max_length' => array(
-        'description' => 'The maximum length of the user entered text.',
+      'preview_font_size' => array(
+        'description' => 'The size of the font for user entered text in the preview.',
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
+        'default' => 0,
       ),
-      'redirect_url' => array(
-        'description' => 'The URL to redirect to after submitting a badge.',
+      'preview_font_angle' => array(
+        'description' => 'The angle of the font for the user entered text in the preview.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'preview_offset_y' => array(
+        'description' => 'The vertical offset of the user entered text in the preview.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'twitter_message' => array(
+        'description' => 'The default message when sharing over Twitter.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'email_message' => array(
+        'description' => 'The default message when sharing through email.',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
@@ -178,6 +223,29 @@ function badge_image_schema() {
     'primary key' => array('id'),
     'unique keys' => array(
       'type' => array('type'),
+    ),
+  );
+
+  $schema['badge_image_share'] = array(
+    'description' => 'The base table for badge image entities.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key identifier for the entity.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'share_url' => array(
+        'description' => 'The URL for sharing the badge.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('id'),
+    'indexes' => array(
+      'share_url' => array('share_url'),
     ),
   );
 
@@ -242,4 +310,101 @@ function badge_image_update_7101(&$sandbox) {
     'not null' => TRUE,
     'default' => '',
   ));
+}
+
+/**
+ * Add separate configuration for the preview version of badge.
+ */
+function badge_image_update_7102(&$sandbox) {
+  db_drop_field('badge_image_type', 'font_fid');
+  db_change_field('badge_image_type', 'font_size', 'image_font_size', array(
+    'description' => 'The size of the font for user entered text in the generated image.',
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 0,
+  ));
+  db_change_field('badge_image_type', 'font_angle', 'image_font_angle', array(
+    'description' => 'The angle of the font for the user entered text in the generated image.',
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 0,
+  ));
+  db_change_field('badge_image_type', 'offset_y', 'image_offset_y', array(
+    'description' => 'The vertical offset of the user entered text in the generated image.',
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 0,
+  ));
+  db_add_field('badge_image_type', 'preview_fid', array(
+    'description' => 'The {file_managed}.fid of the preview badge image.',
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 0,
+  ));
+  db_add_field('badge_image_type', 'preview_font_size', array(
+    'description' => 'The size of the font for user entered text in the preview.',
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 0,
+  ));
+  db_add_field('badge_image_type', 'preview_font_angle', array(
+    'description' => 'The angle of the font for the user entered text in the preview.',
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 0,
+  ));
+  db_add_field('badge_image_type', 'preview_offset_y', array(
+    'description' => 'The vertical offset of the user entered text in the preview.',
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 0,
+  ));
+}
+
+/**
+ * Add social sharing messages.
+ */
+function badge_image_update_7103(&$sandbox) {
+  db_add_field('badge_image_type', 'twitter_message', array(
+    'description' => 'The default message when sharing over Twitter.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
+  db_add_field('badge_image_type', 'email_message', array(
+    'description' => 'The default message when sharing through email.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
+}
+
+/**
+ * Add base social sharing URL.
+ */
+function badge_image_update_7104(&$sandbox) {
+  db_add_field('badge_image_type', 'share_url', array(
+    'description' => 'The base URL for sharing badges.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));  
+}
+
+/**
+ * Add the social sharing alias table.
+ */
+function badge_image_update_7105(&$sandbox) {
+  $schema = badge_image_schema();
+  db_create_table('badge_image_share', $schema['badge_image_share']);
 }
