@@ -345,6 +345,9 @@ function badge_image_type_form_submit(&$form, &$form_state) {
     }
   }
 
+  // Clear the cached share path lookups
+  cache_set('badge_image:common_share_paths', serialize(FALSE));
+  
   // Go back to the list of types.
   $form_state['redirect'] = 'admin/structure/badge_types';
 }
