@@ -590,31 +590,50 @@ function badge_image_page_alter(&$page) {
       ->execute()
       ->fetchField();
     if ($badge_id !== FALSE) {
-      $badge = entity_load_single('badge_image', $badge_id);
-      $type = badge_image_type_load($badge->type);
-      if ($badge !== FALSE && !empty($badge->image_fid)) {
-        // Set the page's canonical URL
-        $options = array(
-          'absolute' => TRUE,
-          'external' => FALSE,
-          'alias' => TRUE,
-        );
-        $canonical = array(
-          'rel' => 'canonical',
-          'href' => url($type->share_url, $options),
-        );
-        drupal_add_html_head_link($canonical, TRUE); 
-        // Set the open graph image meta tag
-        $file = file_load($badge->image_fid);
-        $og_image = array(
-          '#tag' => 'meta',
-          '#attributes' => array(
-            'property' => 'og:image',
-            'value' => file_create_url($file->uri),
-          ),
-        );
-        drupal_add_html_head($og_image, 'og_image');
-      }
+      $tag = array(
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'badge' => $badge_id,
+        ),
+      );
+      drupal_add_html_head($tag, 'badge_image:badge_id');
     }
+  }
+}
+
+function badge_image_html_head_alter(&$head_elements) {
+  if (isset($head_elements['badge_image:badge_id'])) {
+    $badge_id = $head_elements['badge_image:badge_id']['#attributes']['badge'];
+    $badge = entity_load_single('badge_image', $badge_id);
+    if ($badge !== FALSE && !empty($badge->image_fid)) {
+      $file = file_load($badge->image_fid);
+      $url_options = array(
+        'absolute' => TRUE,
+        'external' => FALSE,
+        'alias' => TRUE,
+      );
+      $share_path = badge_image_create_speakup_alias($badge, 'return');
+      if (!isset($head_elements['metatag_og:url'])) {
+        $head_elements['metatag_og:url'] = array(
+          '#theme' => 'metatag_opengraph',
+          '#tag' => 'meta',
+          '#id' => 'metatag_og:url',
+          '#name' => 'og:url',
+          '#type' => 'html_tag',
+        );
+      }
+      $head_elements['metatag_og:url']['#value'] = url($share_path, $url_options);
+      if (!isset($head_elements['metatag_og:image'])) {
+        $head_elements['metatag_og:image'] = array(
+          '#theme' => 'metatag_opengraph',
+          '#tag' => 'meta',
+          '#id' => 'metatag_og:image',
+          '#name' => 'og:image',
+          '#type' => 'html_tag',
+        );
+      }
+      $head_elements['metatag_og:image']['#value'] = file_create_url($file->uri);
+    }
+    unset($head_elements['badge_image:badge_id']);
   }
 }
