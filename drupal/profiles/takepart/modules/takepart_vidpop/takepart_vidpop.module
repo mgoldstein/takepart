@@ -1,5 +1,10 @@
 <?php
 
+// contant: default ad id for vidpop
+define('TAKEPART_VIDPOP_DEFAULT_AD_ID', 'TP3_ROS_Leaderboard_728x90');
+
+
+
 /***
  * implentation of hook_init()
  */
@@ -51,10 +56,8 @@ function takepart_vidpop_preprocess_page(&$vars) {
  * Implements hook_menu().
  */
 function takepart_vidpop_menu() {
-  return NULL;    // not using admin right now
-
   $items['admin/config/media/vidpop/settings'] = array(
-    'title' => 'Settings',
+    'title' => 'Videop popup settings',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('takepart_vidpop_settings_form'),
     'access arguments' => array('access administration pages'),
@@ -117,9 +120,8 @@ EOT;
 
 /***
  * @returns formatted banner
- * @param $box_id   id of box (delta, from box table)
  */
-function takepart_vidpop_get_banner($box_id) {
+function takepart_vidpop_get_banner() {
   // have we called the ad emitter?
   $js = drupal_add_js();
   $have_ads = false;
@@ -131,6 +133,8 @@ function takepart_vidpop_get_banner($box_id) {
     }
   }
 
+  // get id of ad to use
+  $ad_id = variable_get('takepart_vidpop_ad_id', TAKEPART_VIDPOP_DEFAULT_AD_ID);
   if (!$have_ads) {
     // no other ads on the page, so we need to output some javascript
     $header1 = 'GS_googleAddAdSenseService("' . variable_get('takepart_ads_dfp_property_code', '') . '");
@@ -143,7 +147,6 @@ GS_googleEnableAllServices();';
   }
 
   //register the slot
-  $ad_id = 'TP3_ROS_Leaderboard_728x90';
   $ad_html .= 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad_id . '");';
   drupal_add_js($ad_html, 'inline');
   $banner = <<<HTM

@@ -11,7 +11,7 @@ $banner_tp_logo = theme('image', array(
 );
 
 // get the ad banner and social links - yeah, should be done a little before this, but we're in crunch mode today
-$top_banner = takepart_vidpop_get_banner('ga_leaderboard_ros');
+$top_banner = takepart_vidpop_get_banner();
 $social_links = takepart_vidpop_get_social_links();
 $comment_link = l('COMMENT', 'node/' . $content['field_video_embedded']['#object']->nid, array('fragment' => 'comments', 'attributes' => array('target' => '_blank')));
 
