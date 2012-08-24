@@ -20,7 +20,7 @@
 </div>
 <script type="text/javascript">
   var addthis_config = {
-    ui_email_note: "Dear Friends,\n\nI just entered the Marigold Ideas For Good contest, in advance of the new film, The Best Exotic Marigold Hotel.\n\nDo you know someone whose ideas could improve the lives of others? Send them to takepart.com/marigold/contest today!",
+    ui_email_note: "Dear Friends,\n\nI just entered the Marigold Ideas For Good contest and have a chance to win $5,000 and the trip of a lifetime.\n\nDo you know someone whose ideas could improve the lives of others? Send them to takepart.com/marigold/contest today!",
     ui_email_from: "<?php print $_COOKIE['contest_entered_as']; ?>"
   };
   var addthis_share = {
