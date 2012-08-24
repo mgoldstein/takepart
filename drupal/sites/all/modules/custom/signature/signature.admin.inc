@@ -88,7 +88,7 @@ function signature_admin_overview($form, &$form_state, $arg) {
     $options['publish'] = t('Publish the selected signatures');
   }
   else {
-    $options['unpublish'] = t('Unplublish the selected signatures');
+    $options['unpublish'] = t('Unpublish the selected signatures');
   }
   $options['delete'] = t('Delete the selected signatures');
 
