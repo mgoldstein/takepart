@@ -3504,3 +3504,10 @@ body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
 .field-name-field-series-graphic-header {
     margin-bottom: 1em;
 }
+/* Chrome specific positioning for social media icons */
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+div.addthis_toolbox, div.takepart_addthis_default_style {
+float: right;
+display:inline;
+width:37.5%;
+}}
