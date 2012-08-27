@@ -14,23 +14,17 @@
  * @see system_settings_form()
  */
 function takepart_vidpop_settings_form($form) {
-  $form['takepart_vidpop_patterns'] = array(
+  $form['takepart_vidpop_ads'] = array(
     '#type'          => 'fieldset',
-    '#title'         => t('Patterns'),
+    '#title'         => t('Ads'),
     '#collapsible'   => TRUE,
     '#collapsed'     => FALSE,
   );
-  $form['takepart_vidpop_patterns']['takepart_vidpop_check_nodes'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Types of nodes to check'),
-    '#default_value' => variable_get('takepart_vidpop_check_nodes', 'article'),
-    '#description' => t('Enter a list of node types to check, one per line.'),
-  );
-  $form['takepart_vidpop_patterns']['takepart_vidpop_allowed_chars'] = array(
+  $form['takepart_vidpop_ads']['takepart_vidpop_ad_id'] = array(
     '#type' => 'textfield',
-    '#title' => t('Allowed characters in aliases'),
-    '#default_value' => variable_get('takepart_vidpop_allowed_chars', '/[^a-zA-Z0-9#\-$\/]/'),
-    '#description' => t('Display alias changes (except during bulk updates).'),
+    '#title' => t('Ad slot ID for vidpop'),
+    '#default_value' => variable_get('takepart_vidpop_ad_id', TAKEPART_VIDPOP_DEFAULT_AD_ID),
+    '#description' => t('ID of ad to use for vidpop.'),
   );
 
   return system_settings_form($form);
