@@ -100,8 +100,8 @@ div.gray-rule {
     white-space:nowrap;
 }
 #slim-header ul.menu li.first a {
-	background-image: none;
-	padding-left: 0;
+    background-image: none;
+    padding-left: 0;
 }
 
 /* homepage features block */
@@ -237,8 +237,8 @@ body.two-sidebars #content, body.sidebar-first #content
     margin-left:124px;
 }
 .header-right .row2 {
-  clear:  both;
-  padding-top: 2px;
+    clear:  both;
+    padding-top: 2px;
 }
 
 #nav-wrap{
@@ -729,11 +729,11 @@ body.front .main-content .block-boxes-current-promo .views-row-10
 /* ===PAGE HEADER=== */
 /* ------------------------------------------------------------------------*/
 #topnav-right {
-  position: relative;
-  padding-top: 2px;
+    position: relative;
+    padding-top: 2px;
 }
 #top-follow-wrapper {
-	padding-top: 10px;
+    padding-top: 10px;
     float: right;
     margin-right: 10px;
     position: relative;
@@ -750,7 +750,7 @@ body.front .main-content .block-boxes-current-promo .views-row-10
     padding-top: 3px;
 }
 #slim-header #top-follow-wrapper .top-follow-label {
-  display: none;
+    display: none;
 }
 ul#top-follow {
     float: right;
@@ -787,13 +787,13 @@ ul#top-follow li.pinterest img {
 
 #join-login-top a,#slim-header.multipage-campaign #join-login-top #user-nav a
 {
-  color:#000;
-  font-weight:700;
-  line-height:15px;
+    color:#000;
+    font-weight:700;
+    line-height:15px;
 }
 #join-login-top a
 {
-  line-height: 14px;     /* #28114  pglatz 7/10/2012 */
+    line-height: 14px;     /* #28114  pglatz 7/10/2012 */
 }
 #join-login-top a {
     font-size:10px;
@@ -1420,11 +1420,11 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
 }
 
 .page-node-22547 #right-rail #block-petition-form-1 {
-  border: 4px solid #ffea99;
+    border: 4px solid #ffea99;
 }
 
 .page-node-22547 #right-rail #block-takepart-addthis-addthis-petition {
-  border: 4px solid #eff3f5;
+    border: 4px solid #eff3f5;
 }
 
 #right-rail .block-boxes-bid-takepart_addthis-addthis_petition {
@@ -1704,11 +1704,11 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     margin-left: 20px;
 }
 #dontmiss-nav div.dont {
-	font-size: 11px;
+    font-size: 11px;
     padding-top: 1px;
-  margin-right: 8px;
-  float: left;
-  font-style: italic;
+    margin-right: 8px;
+    float: left;
+    font-style: italic;
 }
 #dontmiss-nav ul {
     margin-left: 0;
@@ -1717,7 +1717,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 #dontmiss-nav li {
     display: inline;
     font-size: 12px;
-  font-weight: bold;
+    font-weight: bold;
     list-style: none inside none;
     margin-right: 8px;
     padding-right: 13px;
@@ -1738,54 +1738,54 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
 
 /* pulldown button */
 #participant-pulldown {
-  float:  right;
-  margin-top: 4px;
-  position: relative;
-  z-index: 10 !important;
-  width: 200px;
-  height: 30px;
+    float:  right;
+    margin-top: 4px;
+    position: relative;
+    z-index: 10 !important;
+    width: 200px;
+    height: 30px;
 }
 #participant-pulldown .pp-button {
-  position: relative;
-  z-index: 10 !important;
-  width: 200px;
-  height: 30px;
-  background: url(images/participant_dropdown.png) no-repeat;
-  cursor: pointer;
+    position: relative;
+    z-index: 10 !important;
+    width: 200px;
+    height: 30px;
+    background: url(images/participant_dropdown.png) no-repeat;
+    cursor: pointer;
 }
 .pp-button-hover {
-  background: url(images/participant_dropdown_hover.png) no-repeat !important;
+    background: url(images/participant_dropdown_hover.png) no-repeat !important;
 }
 #participant-pulldown .inner {
-  position: relative;
-  z-index: 5 !important;
-  background-color: white;
-  margin: -2px 3px 0;
-  display: none;
+    position: relative;
+    z-index: 5 !important;
+    background-color: white;
+    margin: -2px 3px 0;
+    display: none;
 }
 #participant-pulldown ul {
-  list-style-type: none;
-  border-color: #ededed;
-  border-left: 2px solid #ededed;
-  border-right: 2px solid #ededed;
-  border-bottom: 2px solid #ededed;
-  -moz-box-shadow: 1px 1px 2px #ccc;
-  -webkit-box-shadow: 1px 1px 2px #ccc;
-  box-shadow: 1px 1px 2px #ccc;
+    list-style-type: none;
+    border-color: #ededed;
+    border-left: 2px solid #ededed;
+    border-right: 2px solid #ededed;
+    border-bottom: 2px solid #ededed;
+    -moz-box-shadow: 1px 1px 2px #ccc;
+    -webkit-box-shadow: 1px 1px 2px #ccc;
+    box-shadow: 1px 1px 2px #ccc;
 }
 #participant-pulldown ul li {
-  list-style-type: none;
-  padding: 6px 8px;
-  border-bottom: 1px solid #ededed;
+    list-style-type: none;
+    padding: 6px 8px;
+    border-bottom: 1px solid #ededed;
 }
 #participant-pulldown ul li.last {
-  border-bottom: none;
+    border-bottom: none;
 }
 #participant-pulldown ul li:hover,
 #participant-pulldown ul li:hover a {
-	background-color: #fff3cc;
-	color: black;
-	text-decoration: none;
+    background-color: #fff3cc;
+    color: black;
+    text-decoration: none;
 }
 
 /*search box*/
@@ -1810,7 +1810,7 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     background: #FFF;
 }
 #top-search .form-text {
-  font-style: italic;
+    font-style: italic;
 }
 
 #search-api-page-search-form-2 div {
@@ -2356,54 +2356,43 @@ body.node-type-takepart-campaign .main-content #content {
     color: #770bcb;
 }
 
-
-
 /* Box Style Group 2 */
-
-.boxes-selected-style-2 .views-field-field-promo-text
-{
+.boxes-selected-style-2 .views-field-field-promo-text {
     line-height: 15px !important;
     margin-bottom: 0 !important;
     padding: 0 12px !important;
 }
-.boxes-selected-style-2 .views-field-field-promo-text
-{
+.boxes-selected-style-2 .views-field-field-promo-text {
     font-size: 13px !important;
     line-height: 15px !important;
 }
-.boxes-selected-style-2 h2
-{
+.boxes-selected-style-2 h2 {
     background: url("/profiles/takepart/themes/takepart3/images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 10px transparent !important;
     border-top: 1px dotted #000000 !important;
     margin: 0 !important;
     padding: 10px 0 !important;
     width: 100% !important;
 }
-.boxes-selected-style-2 h2
-{
+.boxes-selected-style-2 h2 {
     background: url("/profiles/takepart/themes/takepart3/images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 10px transparent !important;
     border-top: 1px dotted #000000 !important;
     margin: 0 !important;
     padding: 10px 0 !important;
     width: 100% !important;
 }
-.boxes-selected-style-2 .content
-{
+.boxes-selected-style-2 .content {
     background-color: #EFF3F5 !important;
 }
-.boxes-selected-style-2 .views-field-php
-{
+.boxes-selected-style-2 .views-field-php {
     font-size: 16px !important;
     font-weight: bold !important;
     margin: 10px 0 0 !important;
     padding: 0 12px !important;
 }
-.boxes-selected-style-2 .views-field-php a
-{
+.boxes-selected-style-2 .views-field-php a {
     padding-top: 0 !important;
 }
-.boxes-selected-style-2 .views-row
-{
+.boxes-selected-style-2 .views-row {
     background-color: #FFFFFF !important;
     height: 300px !important;
 }
@@ -2871,11 +2860,11 @@ body.multipage-campaign #highlighted {
 }
 
 #edit-terms-of-use {
-	display: none;
+    display: none;
 }
 
 .page-user-register .region-full-width-top, .page-user-register .region-full-width-bottom, .not-logged-in .region-full-width-bottom {
-	padding: 35px 20px 0;
+    padding: 35px 20px 0;
 }
 
 .page-user-register .region-full-width-bottom, .not-logged-in .region-full-width-bottom {
@@ -2896,12 +2885,12 @@ body.multipage-campaign #highlighted {
 }
 
 #fbloginbox {
-  width: 330px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color:#eef2f5;
-  border:solid 1px #9bb7c5;
-  min-height: 93px;
+    width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:#eef2f5;
+    border:solid 1px #9bb7c5;
+    min-height: 93px;
 }
 
 #fbloginbox #fb_buttonwrapper .fb_button {
@@ -2909,10 +2898,10 @@ body.multipage-campaign #highlighted {
 }
 
 #fbloginbox #fblogin_textoverbutton {
-  text-align:center;
-  margin-bottom: 5px;
-  margin-top: 25px;
-  text-align: center;
+    text-align:center;
+    margin-bottom: 5px;
+    margin-top: 25px;
+    text-align: center;
 }
 
 .block-boxes-bid-3068, .block-boxes-bid-3073 {
@@ -2921,7 +2910,7 @@ body.multipage-campaign #highlighted {
 }
 
 .block-boxes-bid-3065, .block-boxes-bid-3067 {
-	margin-bottom: -35px;
+    margin-bottom: -35px;
 }
 
 #fb_buttonwrapper {
@@ -2946,7 +2935,7 @@ body.multipage-campaign #highlighted {
     margin-left:5px;
 }
 .logged-in #user-nav li.login-1 {
-  margin-left:5px;
+    margin-left:5px;
 }
 
 
@@ -2954,7 +2943,7 @@ body.multipage-campaign #highlighted {
 
 
 #field-custom-273-add-more-wrapper legend {
-  display: none;
+    display: none;
 }
 
 #fb_buttonwrapper {
@@ -2965,139 +2954,139 @@ body.multipage-campaign #highlighted {
 }
 
 .addthis_button_facebook_like:hover{
-   opacity:1 !important;
+    opacity:1 !important;
 }
 
 .node-type-takepart-campaign .main-content .block-boxes h2 {
-border-top:1px dotted #000;
+    border-top:1px dotted #000;
 }
 
 .node-type-takepart-campaign .main-content .block-boxes-current-taxonomy_search_list h2 {
-font-family:Helvetica,Arial,sans-serif;
-font-size:18px;
-background:url("/profiles/takepart/themes/takepart3/images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 15px transparent;
+    font-family:Helvetica,Arial,sans-serif;
+    font-size:18px;
+    background:url("/profiles/takepart/themes/takepart3/images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 15px transparent;
 }
 
 .node-type-takepart-campaign .main-content .block-boxes-current-taxonomy_search_list h2 span {
-background:none repeat scroll 0 0 #FFF;
+    background:none repeat scroll 0 0 #FFF;
 }
 
 .boxes-selected-style-6 .views-field-title a,.boxes-selected-style-6 .views-field-field-article-subhead a,.boxes-selected-style-6 .views-field-nid span a {
-color:#000;
-line-height:20px;
-font-weight:700;
-text-decoration:none;
+    color:#000;
+    line-height:20px;
+    font-weight:700;
+    text-decoration:none;
 }
 
 .boxes-selected-style-6 .views-field-nid span a:hover {
-color:#1CA9E7;
-text-decoration:none;
+    color:#1CA9E7;
+    text-decoration:none;
 }
 
 .boxes-selected-style-6 .views-field-title,.boxes-selected-style-6 .views-field-field-article-subhead,.boxes-selected-style-6 .views-field-field-page-subhead,.boxes-selected-style-6 .views-field-nid,.boxes-selected-style-6 .views-field-field-promo-text {
-font-size:15px;
-padding:0 10px;
+    font-size:15px;
+    padding:0 10px;
 }
 
 .main-content .boxes-selected-style-6 .views-row:hover .views-field-title a,.main-content .boxes-selected-style-6 .views-row:hover .views-field-field-article-subhead a,.main-content .boxes-selected-style-6 .views-row:hover .views-field-nid a {
-color:#1ca9e7;
-text-decoration:none;
+    color:#1ca9e7;
+    text-decoration:none;
 }
 
 .main-content .boxes-selected-style-6 .views-row-4,.main-content .boxes-selected-style-6 .views-row-7,.main-content .boxes-selected-style-6 .views-row-10 {
-clear:both;
+    clear:both;
 }
 
 .main-content .boxes-selected-style-6 h2 {
-border-top:1px dotted #000;
-background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 10px transparent;
-width:100%;
-margin:0;
-padding:10px 0;
+    border-top:1px dotted #000;
+    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 10px transparent;
+    width:100%;
+    margin:0;
+    padding:10px 0;
 }
 
 .main-content .boxes-selected-style-6 h2 span {
-background:none repeat scroll 0 0 #FFF;
-text-transform:uppercase;
-font-weight:300;
-padding:0 8px 0 0;
+    background:none repeat scroll 0 0 #FFF;
+    text-transform:uppercase;
+    font-weight:300;
+    padding:0 8px 0 0;
 }
 
 .main-content .boxes-selected-style-6 .content {
-background-color:#eff3f5;
+    background-color:#eff3f5;
 }
 
 .main-content .boxes-selected-style-6 .views-row {
-display:table;
-background-color:#FFF;
-vertical-align:top;
-width:200px;
-float:left;
-margin:5px;
+    display:table;
+    background-color:#FFF;
+    vertical-align:top;
+    width:200px;
+    float:left;
+    margin:5px;
 }
 
 .main-content .boxes-selected-style-6 .view-content {
-display:inline-block;
-padding:5px 4px 1px;
+    display:inline-block;
+    padding:5px 4px 1px;
 }
 
 .main-content .boxes-selected-style-6 .views-field-field-thumbnail-1 {
-overflow:visible;
-position:relative;
-width:0;
+    overflow:visible;
+    position:relative;
+    width:0;
 }
 
 .main-content .boxes-selected-style-6 .views-field-field-thumbnail-1 .field-content {
-height:150px;
-width:200px;
-overflow:hidden;
-margin-bottom:10px;
+    height:150px;
+    width:200px;
+    overflow:hidden;
+    margin-bottom:10px;
 }
 
 .main-content .boxes-selected-style-6 .views-field-field-thumbnail-1 .field-content img {
-width:200px;
+    width:200px;
 }
 
 .main-content .boxes-selected-style-6 .views-row:hover {
-border:3px solid #14ade7;
-margin:2px;
+    border:3px solid #14ade7;
+    margin:2px;
 }
 
 .main-content .boxes-selected-style-6 .action:hover {
-border:3px solid #f7c806 !important;
-margin:2px;
+    border:3px solid #f7c806 !important;
+    margin:2px;
 }
 
 .main-content .boxes-selected-style-6 .action .views-field-field-display-tag .field-content {
-background-color:#f7c806 !important;
+    background-color:#f7c806 !important;
 }
 
 .main-content .boxes-selected-style-6 .views-field-field-display-tag {
-height:0;
-overflow:visible;
-z-index:100;
-position:absolute;
+    height:0;
+    overflow:visible;
+    z-index:100;
+    position:absolute;
 }
 
 .main-content .boxes-selected-style-6 .views-field-field-display-tag .field-content {
-background-color:#9BC;
-color:#FFF;
-display:inline-block;
-font-size:11px;
-font-weight:700;
-line-height:18px;
-margin-top:123px;
-text-transform:uppercase;
-padding:4px 5px;
+    background-color:#9BC;
+    color:#FFF;
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    line-height:18px;
+    margin-top:123px;
+    text-transform:uppercase;
+    padding:4px 5px;
 }
 
 .boxes-selected-style-6 .views-field-field-promo-text .field-content {
-padding-bottom:4px;
+    padding-bottom:4px;
 }
 
 .node-type-openpublish-photo-gallery div.takepart_addthis_leftpane
 l div.addthis_toolbox a.addthis_button_google_plusone,.node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_linkedin {
-width:50px !important;
+    width:50px !important;
 }
 
 .node-type-topic-front .block-boxes-current-featured_items .view-dom-id-1 .views-field-php {
@@ -3109,44 +3098,44 @@ width:50px !important;
 }
 
 .node-type-takepart-campaign .main-content .block-boxes h2 {
-       border-top: 0 none;
+    border-top: 0 none;
 }
 
 .node-type-takepart-campaign .main-content .block-boxes h2 {
-       border-top: 0 none;
+    border-top: 0 none;
 }
 
 .node-type-takepart-campaign .view .block-boxes h2 {
-       border-top: 1px dotted #000000;
+    border-top: 1px dotted #000000;
 }
 
- .block-boxes-view .main-content h2 {
-border-top: 1px dotted #000000 !important;
+.block-boxes-view .main-content h2 {
+    border-top: 1px dotted #000000 !important;
 }
 
 
 #block-boxes-user-not-a-member-join {
-  display: none;
+    display: none;
 }
 p.fb-login-text {
-  display: none;
+    display: none;
 }
 
 /**
  * Embedded Action Styles
- */
- 
- div.drupal-embed {
-     margin-bottom: 1em;
- }
+*/
+
+div.drupal-embed {
+    margin-bottom: 1em;
+}
 .embedaction-wrapper, .embed-action-wrapper {
-  background-color: #ffffff;
-  border: 4px solid #ffe789;
-  padding: 8px;
+    background-color: #ffffff;
+    border: 4px solid #ffe789;
+    padding: 8px;
 }
 
 .embedaction-wrapper tbody { 
-     border:0;
+    border:0;
 }
 
 .embedaction-wrapper .embed-action .graphic,
@@ -3168,18 +3157,18 @@ p.fb-login-text {
 }
 
 div.embedaction-button {
-  background: url(/profiles/takepart/themes/takepart3/images/take-action-embed.png) no-repeat scroll right top transparent;
-  float: left;
-  height: 29px;
-  margin: 0;
-  width: 168px;   
+    background: url(/profiles/takepart/themes/takepart3/images/take-action-embed.png) no-repeat scroll right top transparent;
+    float: left;
+    height: 29px;
+    margin: 0;
+    width: 168px;   
 }
 
 div.embedaction-wrapper div.field-name-field-promo-headline {
-  color: #000000;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 div.embedaction-wrapper div.field-name-field-promo-headline div.field-items {
@@ -3189,11 +3178,11 @@ div.embedaction-wrapper div.field-name-field-promo-headline div.field-item {
 }
 
 div.embedaction-wrapper div.field-name-field-promo-headline div.field-item:hover {
-  color: #1ca9e7; 
+    color: #1ca9e7; 
 }
 
 div.embedaction-content {
-  
+
 }
 
 .node-type-petition-action h2 {
@@ -3206,29 +3195,29 @@ div.embedaction-content {
 
 .node-type-takepart-campaign #content h2.embedaction-divider, 
 div.embedaction-content h2.embedaction-divider {
-  background: url("/profiles/takepart/themes/takepart3/images/45deg_lines_yellow.png") repeat-x scroll 0 0 transparent;
-  border: medium none;
-  color: #ffe789;
-  font-family: Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  font-weight: normal;
-  height: 18px;
-  line-height: 100%;
-  margin: 1em 0 0 0;
-  padding: 0 0 6px;
+    background: url("/profiles/takepart/themes/takepart3/images/45deg_lines_yellow.png") repeat-x scroll 0 0 transparent;
+    border: medium none;
+    color: #ffe789;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    height: 18px;
+    line-height: 100%;
+    margin: 1em 0 0 0;
+    padding: 0 0 6px;
 }
 
 .node-type-takepart-campaign #content h2.embedaction-divider a,
 div.embedaction-content h2.embedaction-divider a {
-  background: none repeat scroll 0 0 #FFFFFF;
-  color: #000000;
-  float: right;
-  padding: 0 0 0 6px;
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #000000;
+    float: right;
+    padding: 0 0 0 6px;
 }
 
 div.embedaction-content h2.embedaction-divider a span {
-  color: #1CA9E7;
-  padding: 0;
+    color: #1CA9E7;
+    padding: 0;
 }
 
 .node-petition-action .group-heading-split-left {
@@ -3334,13 +3323,13 @@ div.embedaction-content h2.embedaction-divider a span {
 }
 
 .node-petition-action #edit-signature-display-disclaimer {
-  margin: 8px 115px 8px 100px;
-  font-size:  11px;
-  color: #666;
+    margin: 8px 115px 8px 100px;
+    font-size:  11px;
+    color: #666;
 }
 .embedaction-content .node-petition-action #edit-signature-display-disclaimer {
-  margin-right: 0;
-  margin-left: 104px !important;
+    margin-right: 0;
+    margin-left: 104px !important;
 }
 
 .node-petition-action input.signature-sign-button {
@@ -3353,7 +3342,7 @@ div.embedaction-content h2.embedaction-divider a span {
     color: #000;
     text-transform: uppercase;
     margin-left: 100px;
-  font: bold 24px Helvetica,Arial,sans-serif;
+    font: bold 24px Helvetica,Arial,sans-serif;
 }
 
 .node-petition-action input.signature-sign-button:hover {
@@ -3377,84 +3366,84 @@ div.embedaction-content h2.embedaction-divider a span {
 }
 
 .node-petition-action .field-name-field-thank-you-share-bar {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 body.node-type-petition-action h1.title {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .node-petition-action .field-name-body {
-  font-size: 13px;
-  line-height: 20px;
+    font-size: 13px;
+    line-height: 20px;
 }
 .node-petition-action p.signature-progress-count {
-  font-weight: bold;
+    font-weight: bold;
 }
 .node-petition-action #signature-international-signature-form {
 }
 .node-petition-action #signature-international-signature-form .field-group-htabs-wrapper h2 {
-  height:  0;
+    height:  0;
 }
 #node_petition_action_embedaction_group_sign_the_petition #signature-international-signature-form h1 {
-  display: none;
+    display: none;
 }
 .node-petition-action .field-group-htabs-wrapper {
-  margin-left: -13px;
-  position: relative;
+    margin-left: -13px;
+    position: relative;
 }
 .embedaction-content .node-petition-action .field-group-htabs-wrapper {
-  margin-left: 0;
+    margin-left: 0;
 }
 .node-petition-action .field-group-htabs-wrapper.address-selection-tabs .horizontal-tabs-panes {
-  padding: 0;
-  margin-top: 0;
+    padding: 0;
+    margin-top: 0;
 }
 fieldset#signature_international_signature_form_group_outside_us, fieldset#signature_international_signature_form_group_inside_us {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 #signature-international-signature-form #edit-field-sig-city .form-item {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 fieldset#signature_international_signature_form_group_outside_us #edit-field-sig-country .form-item, fieldset#signature_international_signature_form_group_inside_us #edit-field-sig-state .form-item {
-  margin-top: 0;
+    margin-top: 0;
 }
 #signature-international-signature-form select#edit-field-sig-state-und,
 #signature-international-signature-form select#edit-field-sig-country-und {
-  width: 200px;
+    width: 200px;
 }
 
 .node-petition-action .group-petition-tabs .horizontal-tabs-panes {
-  padding:  10px 0;
-  background-color: #DFE6EA;
-  margin-top: -5px;  
+    padding:  10px 0;
+    background-color: #DFE6EA;
+    margin-top: -5px;  
 }
 .embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs-panes {
-  padding:  none;
-  background-color: transparent;
-  padding-top: 0;
-  }
+    padding:  none;
+    background-color: transparent;
+    padding-top: 0;
+}
 .node-petition-action .group-petition-tabs .horizontal-tabs-panes fieldset {
-  background-color: #FFF;  
-  padding: 10px;
+    background-color: #FFF;  
+    padding: 10px;
 }
 .embedaction-content .node-petition-action .group-petition-tabs .horizontal-tabs-panes fieldset {
-  padding: 0;
-  margin-bottom: 0;
+    padding: 0;
+    margin-bottom: 0;
 }
 .embedaction-content .node-petition-action .form-item-field-sig-country-und select {
-  width: 250px;
+    width: 250px;
 }
 .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li {
-  position: absolute;
-  top:  0;
-  left: 335px;
+    position: absolute;
+    top:  0;
+    left: 335px;
 }
 .embedaction-content .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li {
-  left: 305px;
-  top: 6px;
+    left: 305px;
+    top: 6px;
 }
 .node-petition-action .address-selection-tabs ul.horizontal-tabs-list li.selected {
-  display:  none;
+    display:  none;
 }
 
 /* to indent the form on non-embedded pages */
@@ -3467,7 +3456,7 @@ body.node-type-petition-action .node-petition-action .field-name-field-sig-state
 body.node-type-petition-action .node-petition-action .field-name-field-sig-zip-code,
 body.node-type-petition-action .node-petition-action .field-name-field-sig-country,
 body.node-type-petition-action .node-petition-action .field-name-field-sig-postal-code {
-  margin-left: 50px;
+    margin-left: 50px;
 }
 
 body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper.group-address-tabs {
@@ -3475,39 +3464,48 @@ body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper.
 }
 
 body.node-type-petition-action .node-petition-action input.signature-sign-button {
-  margin-left: 156px;
+    margin-left: 156px;
 }
 
 body.node-type-petition-action .node-petition-action .form-item-display,
 body.node-type-petition-action .node-petition-action .form-item-newsletter {
-  margin-left: 152px;
+    margin-left: 152px;
 }
 body.node-type-petition-action .node-petition-action #edit-signature-display-disclaimer {
-  margin-left: 154px;
+    margin-left: 154px;
 }
 body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper {
-  margin-left: 37px;
+    margin-left: 37px;
 }
 body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
     margin-left: 180px;
     margin-bottom: 2em;
 }
 .embedaction-content #edit-field-sig-zip-code-und-0-value {
-  width: 300px;
+    width: 300px;
 }
 .embedaction-content .field-name-field-petition-recipient {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 #block-boxes-action-header-image {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .field-name-field-series-graphic-header {
     margin-bottom: 1em;
 }
 /* Chrome specific positioning for social media icons */
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
-div.addthis_toolbox, div.takepart_addthis_default_style {
-float: right;
-display:inline;
-width:37.5%;
-}}
+    div.addthis_toolbox, div.takepart_addthis_default_style {
+        float: right;
+        display: inline;
+        width: 37.5%;
+    }
+
+    .signature-fields-thank-you div.addthis_toolbox, 
+    .signature-fields-thank-you div.takepart_addthis_default_style {
+        float: none;
+        display: block;
+        width:auto;
+    }
+}
+
