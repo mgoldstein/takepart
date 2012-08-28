@@ -373,6 +373,7 @@ function badge_image_display_block_view($type, $badge = NULL) {
     $text = $type->label;
     $share_url = $type->share_url;
   }
+  $image = image_load($file->uri);
 
   $content = theme('image', array(
     'path' => $file->uri,
@@ -392,14 +393,33 @@ function badge_image_display_block_view($type, $badge = NULL) {
   );
   $setting = array(
     'badge_image' => array(
-      'display' => array(
-        'type' => $type->type,
-        'sharing' => array(
+      'type' => $type->type,
+      'sharing' => array(
+        'facebook' => array(
           'url' => url($share_url, $options),
-          'pinterest' => file_create_url($file->uri),
-          'twitter' => token_replace($type->twitter_message, $data),
-          'email' => token_replace($type->email_message, $data),
         ),
+        'twitter' => array(
+          'url' => url($share_url, $options),
+          'message' => token_replace($type->twitter_message, $data),
+        ),
+        'pinterest' => array(
+          'url' => url($share_url, $options),
+          'media' => file_create_url($file->uri),
+        ),
+        'email' => array(
+          'url' => url($share_url, $options),
+          'message' => token_replace($type->email_message, $data),
+        ),
+      ),
+      'download' => array(
+        'href' => file_create_url($file->uri),
+      ),
+      'print' => array(
+        'height' => $image->info['height'],
+        'width' => $image->info['width'],
+      ),
+      'metrics' => array(
+        'latch' => $cookie = "badge_image_created_{$badge->id}",
       ),
     ),
   );
@@ -462,6 +482,9 @@ function badge_image_block_view($delta = '') {
 
         $js_path = drupal_get_path('module', 'badge_image')
           . '/js/badge-image-display.js';
+        drupal_add_js($js_path, array('type' => 'file'));
+        $js_path = drupal_get_path('module', 'badge_image')
+          . '/js/badge-image-metrics.js';
         drupal_add_js($js_path, array('type' => 'file'));
         break;
     }
@@ -533,6 +556,8 @@ function badge_image_generation_form_submit($form, $form_state) {
       'badge' => $badge->id,
     );
   }
+  $cookie = "badge_image_created_{$badge->id}";
+  setcookie($cookie, 1, 0, '/');
   if (!empty($type->redirect_url)) {
     drupal_goto($type->redirect_url, $params);
   }
