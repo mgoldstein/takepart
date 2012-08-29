@@ -198,6 +198,13 @@ function badge_image_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
+      'pinterest_message' => array(
+        'description' => 'The default message when sharing on Pinterest.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
       'email_message' => array(
         'description' => 'The default message when sharing through email.',
         'type' => 'varchar',
@@ -398,7 +405,7 @@ function badge_image_update_7104(&$sandbox) {
     'length' => 255,
     'not null' => TRUE,
     'default' => '',
-  ));  
+  ));
 }
 
 /**
@@ -407,4 +414,17 @@ function badge_image_update_7104(&$sandbox) {
 function badge_image_update_7105(&$sandbox) {
   $schema = badge_image_schema();
   db_create_table('badge_image_share', $schema['badge_image_share']);
+}
+
+/**
+ * Add Pinterest sharing message.
+ */
+function badge_image_update_7106(&$sandbox) {
+  db_add_field('badge_image_type', 'pinterest_message', array(
+    'description' => 'The default message when sharing on Pinterest.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
 }
