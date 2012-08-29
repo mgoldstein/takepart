@@ -47,10 +47,17 @@ var addthis_share = {};
             var w = settings.badge_image.print.width + 100;
             var h = settings.badge_image.print.height + 60;
             var attr = "menubar=0,location=0,height=" + h + ",width=" + w;
-            var popup = window.open('','Print Badge', attr);
-            var img = $('.badge-image-display')[0];
-            $(img).clone().appendTo(popup.document.body);
-            popup.print();
+            if ($.browser['msie']) {
+              var imgPopup = window.open(settings.badge_image.download.href,
+                'PrintBadge', attr, false);
+              imgPopup.print();
+            }
+            else {
+              var clonePopup = window.open('', 'PrintBadge', attr, false);
+              var img = $('.badge-image-display')[0];
+              $(img).clone().appendTo(clonePopup.document.body);
+              clonePopup.print();
+            }
           });
         });
         addthis.toolbox('.addthis_toolbox');
