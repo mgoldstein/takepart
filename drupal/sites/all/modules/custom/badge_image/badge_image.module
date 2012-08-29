@@ -399,15 +399,16 @@ function badge_image_display_block_view($type, $badge = NULL) {
           'url' => url($share_url, $options),
         ),
         'twitter' => array(
-          'url' => url($share_url, $options),
+          'url' => url($type->share_url, $options),
           'message' => token_replace($type->twitter_message, $data),
         ),
         'pinterest' => array(
           'url' => url($share_url, $options),
           'media' => file_create_url($file->uri),
+          'message' => token_replace($type->pinterest_message, $data),
         ),
         'email' => array(
-          'url' => url($share_url, $options),
+          'url' => url($type->share_url, $options),
           'message' => token_replace($type->email_message, $data),
         ),
       ),
@@ -485,7 +486,9 @@ function badge_image_block_view($delta = '') {
         drupal_add_js($js_path, array('type' => 'file'));
         $js_path = drupal_get_path('module', 'badge_image')
           . '/js/badge-image-metrics.js';
-        drupal_add_js($js_path, array('type' => 'file'));
+        $js_path = "//assets.pinterest.com/js/pinit.js";
+        drupal_add_js($js_path, array('type' => 'external', 'scope' => 'footer'));
+
         break;
     }
   }

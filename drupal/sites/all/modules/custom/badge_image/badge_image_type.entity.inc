@@ -43,6 +43,7 @@ class BadgeImageTypeController extends EntityAPIControllerExportable {
       'preview_font_angle' => 0,
       'preview_offset_y' => 300,
       'twitter_message' => '',
+      'pinterest_message' => '',
       'email_message' => '',
       'status' => ENTITY_CUSTOM,
       'module' => 'badge_image',

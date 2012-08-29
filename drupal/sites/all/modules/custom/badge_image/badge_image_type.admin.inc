@@ -201,6 +201,14 @@ function badge_image_type_form($form, &$form_state, $type, $op = 'edit') {
     '#default_value' => $type->twitter_message,
   );
 
+  $form['sharing']['pinterest_message'] = array(
+    '#title' => t('Pinterest Message'),
+    '#description' => t('The default message to use when sharing the badge on Pinterest.'),
+    '#type' => 'textfield',
+    '#size' => 60,
+    '#default_value' => $type->pinterest_message,
+  );
+
   $form['sharing']['email_message'] = array(
     '#title' => t('Email Message'),
     '#description' => t('The default message to use when sharing the badge through email.'),
