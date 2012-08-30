@@ -1,13 +1,5 @@
 <?php
-/**
- * @file
- */
 
-/**
- * Implements hook_views_data().
- * 
- * Describes the two custom handlers to Views.
- */
 function views_boxes_views_data() {
   $data['views_boxes']['table']['group']  = t('Boxes');
   $data['views_boxes']['table']['join'] = array(
@@ -27,6 +19,21 @@ function views_boxes_views_data() {
       'handler' => 'views_boxes_handler_filter_sort',
     ),
   );
-  
+  /*
+  $data['views_sort_by_arg_order']['table']['group']  = t('Arguments');
+  $data['views_sort_by_arg_order']['table']['join']  = array(
+      '#global' => array(),
+
+  );
+  $data['views_sort_by_arg_order']['weight'] = array(
+    'title' => t('Multi-item Argument Order'),
+    'help' => t('Sort by the order of items in an multi-item argument'),
+    'sort' => array(
+      'handler' => 'views_sort_by_arg_order_handler_sort',
+    ),
+  );
+*/
   return $data;
 }
+
+

@@ -1,5 +1,7 @@
 <?php
 
+
+
 /**
  * Implements hook_ctools_plugin_api().
  */
@@ -40,18 +42,38 @@ function views_boxes_view_settings_callback($form, $form_state) {
     '#prefix' => '<div id="view_settings">',
     '#suffix' => '</div>',
     'reload' => array(
-    '#markup' => t('Please save and edit again to select settings'),
+    '#markup' => "Please save and edit again to select settings",
     ),
   ); 
   $return['settings'] = $form['options']['settings'];
   return $return;
 }
 
-/**
- * Implements hook_views_api().
- */
 function views_boxes_views_api() {
   return array(
     'api' => views_api_version(), //should not be using this
   );
+}
+
+function views_boxes_init() {
+}
+
+
+/**
+ * Preprocessor for theme('block').
+ * 
+ * Allows you to add box-specific custom classes to the top-level block container.
+ */
+function views_boxes_preprocess_block(&$vars) {
+  if ($vars['block']->module === 'boxes' && isset($vars['block']->additional_classes)) {
+    if (!empty($vars['block']->additional_classes)) {
+      $additional_classes = explode(' ', $vars['block']->additional_classes);
+      foreach ($additional_classes as $class) {
+        $vars['classes_array'][] = $class;
+      }
+    }
+    if (!empty($vars['block']->selected_style)) {
+      $vars['classes_array'][] = 'views-boxes-selected-style-' . $vars['block']->selected_style;
+    }   
+  }
 }

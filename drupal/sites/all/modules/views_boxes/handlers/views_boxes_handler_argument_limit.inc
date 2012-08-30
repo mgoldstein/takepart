@@ -1,9 +1,4 @@
 <?php
-
-/**
- * @file
- */
-
 // $Id: views_handler_argument_count.inc,v 1.1 2008/09/03 19:21:28 merlinofchaos Exp $
 /**
  * Argument handler that ignores the argument.
@@ -25,7 +20,7 @@ class views_boxes_handler_argument_limit extends views_handler_argument {
   /**
    * Override default_actions() to remove actions that don't
    * make sense for a count argument.
-   * @todo need to see if this is necessary
+   * @todo need to see if this is nessesary
    */
   function default_actions($which = NULL) {
     if ($which) {
@@ -44,20 +39,20 @@ class views_boxes_handler_argument_limit extends views_handler_argument {
    * Override the behavior of query() to prevent the query
    * from being changed in any way.
    */
-  function query( $group_by = FALSE ) {
+  function query() {
   }
-  
-  /**
-   * Override pre_query()
+  /*
+   * override pre_query()
    *
    * We set the limit on the queue if we have a non wildcard value
    */
   function pre_query() {
-    if (isset($this->view->args[$this->position])) {
+    if(isset($this->view->args[$this->position])) {
       $limit = $this->view->args[$this->position];
-      if ($limit != $this->options['exception']['value']) {
+      if($limit != $this->options['exception']['value']) {
         $this->view->query->set_limit($limit);
       }
     }
+
   }
 }
