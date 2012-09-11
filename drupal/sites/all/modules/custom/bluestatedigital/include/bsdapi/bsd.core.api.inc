@@ -80,7 +80,7 @@ class BlueStateDigitalApiException extends Exception {
    */
   public function __construct($message, $code, $response_code = NULL,
     $response_body = NULL, Exception $previous = NULL) {
-    parent::__construct($message, $code, $previous);
+    parent::__construct($message, $code);
     $this->responseCode = $response_code;
     $this->responseBody = $response_body;
   }
