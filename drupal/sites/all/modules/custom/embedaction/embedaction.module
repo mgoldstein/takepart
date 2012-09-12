@@ -1,42 +1,14 @@
 <?php
-
 /**
- * Implements hook_menu()
+ * @file
+ * Module for embedding nodes a inline collapsible actions.
  */
-function embedaction_menu() {
-  return array(
-    'admin/config/content/embedaction' => array(
-      'title' => t('Collapsible Embedded Actions'),
-      'description' => t('Configure collapsible embedded actions.'),
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('embedaction_admin_form'),
-      'access callback' => 'user_access',
-      'access arguments' => array('administer users'),
-    ),
-  );
-}
-
-function embedaction_admin_form($form, &$form_state) {
-  $options = array();
-  $types = node_type_get_types();
-  foreach ($types as $name => $type) {
-    $options[$name] = $type->name;
-  }
-  $form['embedaction_node_types'] = array(
-    '#type' => 'checkboxes',
-    '#title' => t('Embedded action content types'),
-    '#options' => $options,
-    '#default_value' => variable_get('embedaction_node_types', array()),
-    '#description' => t("Check the content types that can be wrapped in a collapsible 'Take Action' block when embedded."),
-  );
-  return system_settings_form($form);
-}
 
 /**
- * Implements hook_entity_info_alter()
+ * Implements hook_entity_info_alter().
  */
 function embedaction_entity_info_alter(&$entity_info) {
- // Add an embedded view mode for nodes
+  // Add an embedded view mode for nodes.
   $entity_info['node']['view modes']['embedaction'] = array(
     'label' => t('Embedded Action'),
     'custom settings' => FALSE,
@@ -44,42 +16,41 @@ function embedaction_entity_info_alter(&$entity_info) {
 }
 
 /**
- * Implements hook_node_view_alter()
+ * Implements hook_node_view_alter().
  */
 function embedaction_node_view_alter(&$build) {
   // Only the view mode provided by this module should be altered.
   if ($build['#view_mode'] == 'embedaction') {
     $node = $build['#node'];
-    $types = variable_get('embedaction_node_types', array());
-    if (isset($types[$node->type]) && $types[$node->type]) {
-      // The node needs to be wrapped in a collapsible container
-      if ($build['#view_mode'] == 'embedaction') {
-        if (! isset($build['#post_render'])) {
-          $build['#post_render'] = array();
-        }
-        $build['#post_render'][] = 'embedaction_wrap_node';
+    // The node needs to be wrapped in a collapsible container.
+    if ($build['#view_mode'] == 'embedaction') {
+      if (!isset($build['#post_render'])) {
+        $build['#post_render'] = array();
       }
+      $build['#post_render'][] = 'embedaction_wrap_node';
     }
   }
 }
 
+/**
+ * Post render callback to wrap a node in a collapsible action wrapper.
+ */
 function embedaction_wrap_node($markup, $element) {
   $node = $element['#node'];
 
-  $js_path = drupal_get_path('module', 'embedaction')
-    . '/js/embedaction.js';
+  $js_path = drupal_get_path('module', 'embedaction') . '/js/embedaction.js';
   drupal_add_js($js_path, array('group' => JS_DEFAULT, 'type' => 'file'));
 
   $display = array('label' => 'hidden');
   $content = field_view_field('node', $node, 'field_promo_headline', $display);
   $title = render($content);
-  
+
   $pieces = array(
     '<div id="embeddaction-wrapper-' . $node->nid . '" class="embedaction-wrapper clearfix">',
-        '<table class="embedaction-header clearfix"><tbody><tr>',
-            '<td class="graphic"><div class="embedaction-button"></div></td>',
-            '<td class="title">'.$title.'</td>',
-        '</tr></tbody></table>',
+    '<table class="embedaction-header clearfix"><tbody><tr>',
+    '<td class="graphic"><div class="embedaction-button"></div></td>',
+    '<td class="title">' . $title . '</td>',
+    '</tr></tbody></table>',
     '<div class="embedaction-content clearfix">',
     '<h2 class="embedaction-divider">',
     '<a href="#" style="display: none;">',

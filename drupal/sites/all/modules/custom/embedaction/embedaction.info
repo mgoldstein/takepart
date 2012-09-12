@@ -1,6 +1,6 @@
 name = Collapsible Embedded Actions
 description = Embed actions in a collapsible block with the 'Take Action' button
 core = 7.x
-version = 7.x-1.0-dev
+version = 7.x-1.1
 package = TakePart
 
