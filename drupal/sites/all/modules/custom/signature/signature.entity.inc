@@ -18,7 +18,7 @@ class SignatureController extends EntityAPIController {
       'nid' => '',
       'email' => $email,
       'display' => 1,
-      'newsletter' => 1,
+      'newsletter' => 0x1f,
       'language' => LANGUAGE_NONE,
       'uid' => 0,
       'hostname' => '',

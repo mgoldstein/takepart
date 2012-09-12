@@ -11,11 +11,11 @@ class SignatureTypeUIController extends EntityDefaultUIController {
 
   public function hook_menu() {
 
-    // add a link to the Structure admin page
+    // Add a link to the Structure admin page.
     $items = parent::hook_menu();
     $items[$this->path]['description'] = t('Manage signature types, including adding and removing fields and the display of fields.');
 
-    // add a local task for mapping the signature type's fields to BSD fields
+    // Add a local task for mapping the signature type's fields to BSD fields.
     $id_count = count(explode('/', $this->path));
     $items[$this->path . '/manage/%entity_object/signup'] = array(
       'title' => t('Manage Mapping'),
@@ -36,15 +36,15 @@ class SignatureTypeUIController extends EntityDefaultUIController {
 }
 
 /**
- * Signature Type field mapping form
+ * Signature Type field mapping form.
  */
 function signature_mapping_form($form, &$form_state, $signature_type) {
 
-  // store the signature type for use in the submit handler
+  // Store the signature type for use in the submit handler.
   $form_state['signature_type'] = $signature_type;
 
-  // this is an AJAX form, so pull the field values from the form state first
-  // then from the signature type itself
+  // This is an AJAX form, so pull the field values from the form state first
+  // then from the signature type itself.
   $bsd_form = isset($form_state['values']['bsd_form'])
     ? $form_state['values']['bsd_form'] : $signature_type->bsd_form;
 
@@ -61,7 +61,7 @@ function signature_mapping_form($form, &$form_state, $signature_type) {
     ),
   );
 
-  // get the current mappings for the signature type
+  // Get the current mappings for the signature type.
   $variable = "signature_mapping_type_{$signature_type->type}";
   $mapping = variable_get($variable, array());
   $form['mapping'] = array(
@@ -71,8 +71,8 @@ function signature_mapping_form($form, &$form_state, $signature_type) {
     '#tree' => TRUE,
   );
 
-  // the mappings are separated into two groups, first are the properties
-  // on every signature
+  // The mappings are separated into two groups, first are the properties
+  // on every signature.
   $form['mapping']['base'] = array(
     '#type' => 'fieldset',
     '#title' => t('Base Field Mapping'),
@@ -82,19 +82,23 @@ function signature_mapping_form($form, &$form_state, $signature_type) {
   $defaults = array(
     'email' => 0,
     'display' => 0,
-    'newsletter' => 0,
+    'newsletter_0' => 0,
+    'newsletter_1' => 0,
+    'newsletter_2' => 0,
+    'newsletter_3' => 0,
+    'newsletter_4' => 0,
   );
   $values = array();
   foreach ($defaults as $name => $default) {
-    // Use the value in the working form state first
+    // Use the value in the working form state first.
     if (isset($form_state['values']['mapping']['base'][$name])) {
       $values[$name] = $form_state['values']['mapping']['base'][$name];
     }
-    // then check for a stored values
+    // Then check for a stored values.
     elseif (isset($mapping[$name])) {
       $values[$name] = $mapping[$name];
     }
-    // fallback on the default value
+    // Fallback on the default value.
     else {
       $values[$name] = $default;
     }
@@ -108,12 +112,16 @@ function signature_mapping_form($form, &$form_state, $signature_type) {
     $bsd_form, $values['display'], TRUE);
   $form['mapping']['base']['display']['#title'] = t('Signature Display Opt-In');
 
-  $form['mapping']['base']['newsletter']
-    = bluestatedigital_forms_signup_field_id($bsd_form, $values['newsletter'], 
-      TRUE);
-  $form['mapping']['base']['newsletter']['#title'] = t('Newsletter Opt-In');
+  // Create a mapping field for each newsletter opt-in.
+  for ($num = 0; $num < 5; $num += 1) {
+    $name = "newsletter_{$num}";
+    $form['mapping']['base'][$name]
+      = bluestatedigital_forms_signup_field_id($bsd_form, $values[$name], TRUE);
+    $form['mapping']['base'][$name]['#title']
+      = t('Newsletter Opt-In @num', array('@num' => $num + 1));
+  }
 
-  // the second group of mappings are the fields attached to the signature
+  // The second group of mappings are the fields attached to the signature.
   $form['mapping']['attached'] = array(
     '#type' => 'fieldset',
     '#title' => t('Attached Field Mapping'),
@@ -122,26 +130,25 @@ function signature_mapping_form($form, &$form_state, $signature_type) {
 
   $instances = field_info_instances('signature', $signature_type->type);
   if (empty($instances)) {
-    drupal_set_message(t('There are no fields yet added. You can add new fields'
-      . ' on the <a href="@link">Manage fields</a> page.', 
+    drupal_set_message(t('There are no fields yet added. You can add new fields on the <a href="@link">Manage fields</a> page.',
       array('@link' => '../fields')), 'warning');
   }
   foreach ($instances as $instance) {
     $name = $instance['field_name'];
-    // Use the value in the working form state first
+    // Use the value in the working form state first.
     if (isset($form_state['values']['mapping']['attached'][$name])) {
       $value = $form_state['values']['mapping']['attached'][$name];
     }
-    // then check for a stored values
+    // Then check for a stored values.
     elseif (isset($mapping[$name])) {
       $value = $mapping[$name];
     }
-    // fallback on the default value
+    // Fallback on the default value.
     else {
       $value = 0;
     }
     $field = bluestatedigital_forms_signup_field_id($bsd_form, $value, TRUE);
-    $form['mapping']['attached'][$name] = $field; 
+    $form['mapping']['attached'][$name] = $field;
     $form['mapping']['attached'][$name]['#title'] = $instance['label'];
   }
 
@@ -159,47 +166,50 @@ function signature_mapping_form_callback($form, $form_state) {
 
 function signature_mapping_form_submit($form, $form_state) {
 
-  // save the signup form id
+  // Save the signup form id.
   $signature_type = $form_state['signature_type'];
   $signature_type->bsd_form = $form_state['values']['bsd_form'];
   $signature_type->save();
 
-  // build the field mapping
+  // Build the field mapping.
   $mapping = array();
-  if (! empty($form_state['values']['mapping']['base']['email'])) {
+  if (!empty($form_state['values']['mapping']['base']['email'])) {
     $mapping['email'] = $form_state['values']['mapping']['base']['email'];
   }
-  if (! empty($form_state['values']['mapping']['base']['display'])) {
+  if (!empty($form_state['values']['mapping']['base']['display'])) {
     $mapping['display'] = $form_state['values']['mapping']['base']['display'];
   }
-  if (! empty($form_state['values']['mapping']['base']['newsletter'])) {
-    $mapping['newsletter'] = $form_state['values']['mapping']['base']['newsletter'];
+  for ($num = 0; $num < 5; $num += 1) {
+    $name = "newsletter_{$num}";
+    if (!empty($form_state['values']['mapping']['base'][$name])) {
+      $mapping[$name] = $form_state['values']['mapping']['base'][$name];
+    }
   }
 
   $instances = field_info_instances('signature', $signature_type->type);
   foreach ($instances as $instance) {
     $name = $instance['field_name'];
-    if (! empty($form_state['values']['mapping']['attached'][$name])) {
+    if (!empty($form_state['values']['mapping']['attached'][$name])) {
       $mapping[$name] = $form_state['values']['mapping']['attached'][$name];
     }
   }
 
-  // save the field mapping
+  // Save the field mapping.
   variable_set("signature_mapping_type_{$signature_type->type}", $mapping);
 
-  // reassure the user that all is not in fact lost
+  // Reassure the user that all is not in fact lost.
   $format = 'The field mapping for signature type %name has been saved.';
   drupal_set_message(t($format, array('%name' => $signature_type->label)));
 }
 
 /**
- * Signature Type entity form
+ * Signature Type entity form.
  */
 function signature_type_form($form, &$form_state, $signature_type, $op = 'edit') {
 
   $form_state['signature_type'] = $signature_type;
 
-  // update the label and reset the type if we are cloning the type
+  // Update the label and reset the type if we are cloning the type.
   if ($op == 'clone') {
     $signature_type->id = '';
     $signature_type->type = '';
@@ -228,7 +238,7 @@ function signature_type_form($form, &$form_state, $signature_type, $op = 'edit')
 
   $form['actions'] = array('#type' => 'actions');
   $submit = array();
-  if (! empty($form['#submit'])) {
+  if (!empty($form['#submit'])) {
     $submit += $form['#submit'];
   }
 
@@ -239,9 +249,9 @@ function signature_type_form($form, &$form_state, $signature_type, $op = 'edit')
     '#submit' => $submit + array('signature_type_form_submit'),
   );
 
-  // only add the delete button if we are editting an existing signature type
+  // Only add the delete button if we are editting an existing signature type.
   $id = $signature_type->identifier();
-  if (! empty($id)) {
+  if (!empty($id)) {
     $form['actions']['delete'] = array(
       '#value' => t('Delete signature type'),
       '#type' => 'submit',
@@ -260,37 +270,37 @@ function signature_type_form($form, &$form_state, $signature_type, $op = 'edit')
 }
 
 /**
- * Signature Type entity form save (submit) handler
+ * Signature Type entity form save (submit) handler.
  */
 function signature_type_form_submit(&$form, &$form_state) {
 
-  // build the signature type entity from the form
+  // Build the signature type entity from the form.
   $signature_type = entity_ui_form_submit_build_entity($form, $form_state);
 
-  // save the signature type
+  // Save the signature type.
   $status = $signature_type->save();
   if ($status == SAVED_UPDATED) {
     drupal_set_message(t('The signature type %name has been updated.',
       array('%name' => $signature_type->label)));
   }
-  else if ($status == SAVED_NEW) {
+  elseif ($status == SAVED_NEW) {
     drupal_set_message(t('The signature type %name has been added.',
       array('%name' => $signature_type->label)));
   }
 
-  // go back to the list of signature types
+  // Go back to the list of signature types.
   $form_state['redirect'] = 'admin/structure/signature_types';
 }
 
 /**
- * Signature Type entity form delete (submit) handler
+ * Signature Type entity form delete (submit) handler.
  */
 function signature_type_form_submit_delete(&$form, &$form_state) {
 
-  // go to the delete confirmation page
+  // Go to the delete confirmation page.
   $form_state['redirect'] = array(
     'admin/structure/signature_types/manage/'
-      . $form_state['signature_type']->identifier() . '/delete',
+    . $form_state['signature_type']->identifier() . '/delete',
     array(
       'query' => array(
         'destination' => 'admin/structure/signature_types',

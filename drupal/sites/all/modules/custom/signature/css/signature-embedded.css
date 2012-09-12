@@ -188,12 +188,14 @@ div.horizontal-tabs-panes {
 .embedaction-content .node-petition-action .form-type-checkbox,
 .node-petition-action .group-sign-the-petition .form-item-display,
 .node-petition-action .form-actions .form-type-checkbox,
+.node-petition-action .group-sign-the-petition .signature-form .form-type-checkbox,
 .node-petition-action .group-sign-the-petition .form-item-newsletter {
     margin: 0 0 0 100px;
 }
 
 .embedaction-content .form-item-display label,
-.embedaction-content .form-item-newsletter label {
+.embedaction-content .form-item-newsletter label
+.embedaction-content .signature-form .form-type-checkbox label {
     float: none;
     width: auto;
     padding-left: 6px;
@@ -241,4 +243,21 @@ div.horizontal-tabs-panes {
 
 .node-petition-action .form-type-checkbox {
     margin-left: 100px;
+}
+
+.node-type-petition-action .signature-form .form-type-checkbox {
+  margin: 0 0 0 152px;
+}
+
+.node-type-petition-action .signature-form .form-type-checkbox label {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  color: #333333;
+  text-align: right;
+  width: auto;
+  padding-right: 8px;
+  padding-left: 6px;
+  display: inline;
+  float: none;
 }

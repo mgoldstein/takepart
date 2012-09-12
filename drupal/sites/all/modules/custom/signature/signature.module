@@ -7,7 +7,7 @@
 /* Entity
  ******************************************************************************/
 /**
- * Implements hook_entity_info()
+ * Implements hook_entity_info().
  */
 function signature_entity_info() {
 
@@ -92,18 +92,18 @@ function signature_entity_info() {
 }
 
 /**
- * Implements hook_entity_info_alter()
+ * Implements hook_entity_info_alter().
  */
 function signature_entity_info_alter(&$entity_info) {
 
-  // Add an embedded view mode for nodes
+  // Add an embedded view mode for nodes.
   $entity_info['node']['view modes']['embed'] = array(
     'label' => t('Embedded'),
     'custom settings' => FALSE,
   );
 
-  // Add the signature types to the list of bundles for signatures
-  foreach (signature_type_load() as $type => $info) { 
+  // Add the signature types to the list of bundles for signatures.
+  foreach (signature_type_load() as $type => $info) {
     $entity_info['signature']['bundles'][$type] = array(
       'label' => $info->label,
       'admin' => array(
@@ -116,6 +116,9 @@ function signature_entity_info_alter(&$entity_info) {
   }
 }
 
+/**
+ * Signature type place holder loader.
+ */
 function signature_type_load($type_name = NULL) {
   $types = entity_load_multiple_by_name('signature_type',
     isset($type_name) ? array($type_name) : FALSE);
@@ -149,7 +152,7 @@ function signature_entity_property_info_alter(&$info) {
 /* Access Control
  ******************************************************************************/
 /**
- * Implements hook_permission()
+ * Implements hook_permission().
  */
 function signature_permission() {
   // Return permissions for the standard API entity operations.
@@ -218,7 +221,7 @@ function signature_permission() {
 }
 
 /**
- * Access callback for signatures
+ * Access callback for signatures.
  */
 function signature_access($op, $entity, $account, $entity_type) {
   // Block unknown operations.
@@ -234,13 +237,13 @@ function signature_access($op, $entity, $account, $entity_type) {
 /* Node Type Configuration
  ******************************************************************************/
 /**
- * Implements hook_menu()
+ * Implements hook_menu().
  */
 function signature_menu() {
   return array(
     'admin/config/content/signature' => array(
-      'title' => t('Node signature settings'),
-      'description' => t('Configure which content types are allowed to collect signatures'),
+      'title' => 'Node signature settings',
+      'description' => 'Configure which content types are allowed to collect signatures',
       'page callback' => 'drupal_get_form',
       'page arguments' => array('signature_node_admin_form'),
       'access callback' => 'user_access',
@@ -255,7 +258,7 @@ function signature_menu() {
 }
 
 /**
- * Node type configuration form
+ * Node type configuration form.
  */
 function signature_node_admin_form($form, &$form_state) {
   $options = array();
@@ -275,10 +278,10 @@ function signature_node_admin_form($form, &$form_state) {
 }
 
 /**
- * Node type configuration form submit hander
+ * Node type configuration form submit hander.
  */
 function signature_node_admin_form_submit(&$form, &$form_state) {
-  // clear all caches so the extra fields will be re-read
+  // Clear all caches so the extra fields will be re-read.
   drupal_flush_all_caches();
 }
 
@@ -286,7 +289,7 @@ function signature_node_admin_form_submit(&$form, &$form_state) {
 /* Node Configuration
  ******************************************************************************/
 /**
- * Implements hook_form_BASE_FORM_ID_alter()
+ * Implements hook_form_BASE_FORM_ID_alter().
  */
 function signature_form_node_form_alter(&$form, &$form_state) {
 
@@ -295,7 +298,7 @@ function signature_form_node_form_alter(&$form, &$form_state) {
 
   if (isset($types[$node->type]) && $types[$node->type]) {
 
-    // get the field values from the appropriate source
+    // Get the field values from the appropriate source.
     $values = signature_node_form_values($form, $form_state);
 
     $js_path = drupal_get_path('module', 'signature')
@@ -326,7 +329,7 @@ function signature_form_node_form_alter(&$form, &$form_state) {
       '#title' => t('Signature Goal'),
       '#description' => t('The target number of signatures.'),
       '#type' => 'textfield',
-      '#element_validate' => array('_element_validate_integer_positive',),
+      '#element_validate' => array('_element_validate_integer_positive'),
       '#required' => TRUE,
       '#default_value' => $values->goal,
     );
@@ -363,27 +366,6 @@ function signature_form_node_form_alter(&$form, &$form_state) {
       '#default_value' => $values->heading,
     );
 
-    $form['signature']['signature_sign_label'] = array(
-      '#title' => t('Sign Button Label'),
-      '#description' => t('The label to use on the sign button.'),
-      '#type' => 'textfield',
-      '#default_value' => $values->sign_label,
-    );
-
-    $form['signature']['signature_newsletter_group']
-      = bluestatedigital_forms_constituent_group($values->newsletter_group);
-    $form['signature']['signature_newsletter_group']['#title']
-      = t('Newsletter Constituent Group');
-    $form['signature']['signature_newsletter_group']['#description']
-      = t('The Blue State Digital constituent group to which users are added when opt-ing in to the newsletter.');
-
-    $form['signature']['signature_newsletter_label'] = array(
-      '#title' => t('Newsletter Opt-In Label'),
-      '#description' => t('The label to use for the newsletter opt-in. If this field is left empty, no newsletter opt-in field will be shown.'),
-      '#type' => 'textfield',
-      '#default_value' => $values->newsletter_label,
-    );
-
     $form['signature']['signature_restrictions'] = array(
       '#title' => t('Restrictions note'),
       '#description' => t('Text of note indicating any restrictions on who can sign. If this field is left empty, no note will be shown.'),
@@ -407,11 +389,70 @@ function signature_form_node_form_alter(&$form, &$form_state) {
       '#maxlength' => 255,
       '#default_value' => $values->display_disclaimer,
     );
+
+    $form['signature']['signature_sign_label'] = array(
+      '#title' => t('Sign Button Label'),
+      '#description' => t('The label to use on the sign button.'),
+      '#type' => 'textfield',
+      '#default_value' => $values->sign_label,
+    );
+
+    $form['signature_newsletters'] = array(
+      '#title' => t('Newsletter opt-ins'),
+      '#type' => 'fieldset',
+      '#group' => 'additional_settings',
+      '#attributes' => array('class' => array('edit-signature-newsletters')),
+    );
+
+    $form['signature_newsletters']['notice'] = array(
+      '#type' => 'markup',
+      '#markup' => t("<strong>In order to collect email opt-ins, the newsletter must be set on the signup form in BSD (Step 2: Edit Form Fields in the manage signup form admin). The fields below only control the opt-in copy and the analytics newsletter name (for reporting purposes).</strong>"),
+    );
+
+    $ordinals = array('first', 'second', 'third', 'fourth', 'fifth');
+    foreach ($ordinals as $num => $ord) {
+
+      $label_name = sprintf('signature_newsletter_label_%d', $num);
+      $group_name = sprintf('signature_newsletter_group_%d', $num);
+
+      if (!empty($values->newsletter_opt_ins[$num])) {
+        $label_value = $values->newsletter_opt_ins[$num]['label'];
+        $group_value = $values->newsletter_opt_ins[$num]['group'];
+      }
+      else {
+        $label_value = '';
+        $group_value = '';
+      }
+
+      $form['signature_newsletters'][$ord] = array(
+        '#title' => t('Newsletter @num', array('@num' => $num + 1)),
+        '#type' => 'fieldset',
+        '#collapsible' => TRUE,
+        '#collapsed' => ($num != 0) && empty($label_value),
+      );
+
+      $form['signature_newsletters'][$ord][$label_name] = array(
+        '#title' => t('Newsletter Opt-In Label'),
+        '#description' => t('The label to use for the newsletter opt-in. If this field is left empty, no newsletter opt-in field will be shown.'),
+        '#type' => 'textfield',
+        '#attributes' => array(
+          'class' => array('signature-newsletter-label'),
+        ),
+        '#default_value' => $values->newsletter_opt_ins[$num]['label'],
+      );
+
+      $form['signature_newsletters'][$ord][$group_name]
+        = bluestatedigital_forms_constituent_group($group_value);
+      $form['signature_newsletters'][$ord][$group_name]['#title']
+        = t('Analytics Newsletter Name');
+      $form['signature_newsletters'][$ord][$group_name]['#description']
+        = t('The title used by the analytics system to track user newsletter opt-ins. This value should correspond to the Blue State Digital constituent group configured on the @ord newsletter opt-in field of the signup form.', array('@ord' => $ord));
+    }
   }
 }
 
 /**
- * Helper function for getting node configuration values
+ * Helper function for getting node configuration values.
  */
 function signature_node_form_values($form, $form_state) {
 
@@ -421,13 +462,24 @@ function signature_node_form_values($form, $form_state) {
   $op_present = isset($form_state['values']['op']);
   $is_preview = $form_state['values']['op'] == t('Preview');
   if ($op_present && $is_preview) {
-    // the node is being previewed, use the form values
+    // The node is being previewed, use the form values.
     $start_date = signature_date_to_timestamp(
       $form_state['values']['signature_start_date']
     );
     $end_date = signature_date_to_timestamp(
       $form_state['values']['signature_end_date']
     );
+    $opt_ins = array();
+    for ($num = 0; $num < 5; $num += 1) {
+      $label_name = sprintf('signature_newsletter_label_%d', $num);
+      $group_name = sprintf('signature_newsletter_group_%d', $num);
+      $opt_ins[] = array(
+        'label' => isset($form_state['values'][$label_name])
+        ? $form_state['values'][$label_name] : '',
+        'group' => isset($form_state['values'][$group_name])
+        ? $form_state['values'][$group_name] : '',
+      );
+    }
     $values = array(
       'nid' => $node->nid,
       'type' => $form_state['values']['signature_type'],
@@ -438,22 +490,21 @@ function signature_node_form_values($form, $form_state) {
       'end_date' => $end_date,
       'heading' => $form_state['values']['signature_heading'],
       'sign_label' => $form_state['values']['signature_sign_label'],
-      'newsletter_group' => $form_state['values']['signature_newsletter_group'],
-      'newsletter_label' => $form_state['values']['signature_newsletter_label'],
+      'newsletter_opt_ins' => $opt_ins,
       'restrictions' => $form_state['values']['signature_restrictions'],
       'terms_of_use' => $form_state['values']['signature_terms_of_use'],
       'display_disclaimer' => $form_state['values']['signature_display_disclaimer'],
     );
     $settings = entity_create('signature_node', $values);
   }
-  else if (isset($node->nid) && $node->nid > 0) {
-    // load the values from the database
+  elseif (isset($node->nid) && $node->nid > 0) {
+    // Load the values from the database.
     $settings = entity_load_single('signature_node', $node->nid);
   }
 
   if (!$settings) {
-    // new node or the node was created before the module was installed, use
-    // default values
+    // New node or the node was created before the module was installed, use
+    // default values.
     $settings = entity_create('signature_node', array('nid' => $node->nid));
   }
 
@@ -461,8 +512,7 @@ function signature_node_form_values($form, $form_state) {
 }
 
 /**
- * Helper function for converting a UNIX timestamp into a value that can be used
- * by a date type form field.
+ * Helper function for converting UNIX timestamps to a date field value.
  */
 function signature_timestamp_to_date($timestamp) {
   $date = getdate($timestamp);
@@ -474,20 +524,19 @@ function signature_timestamp_to_date($timestamp) {
 }
 
 /**
- * Helper function for converting a value from a date type form field into a
- * UNIX timestamp.
+ * Helper function for converting a date field value to a UNIX timestamp.
  */
 function signature_date_to_timestamp($date) {
   return mktime(0, 0, 0, $date['month'], $date['day'], $date['year']);
 }
 
 /**
- * Implements hook_field_extra_fields_alter()
+ * Implements hook_field_extra_fields_alter().
  */
 function signature_field_extra_fields_alter(&$info) {
 
   // Add signature progress and signature form extra fields to all of the
-  // selected node types
+  // selected node types.
   $types = variable_get('signature_node_types', array());
   foreach ($types as $type => $enabled) {
     if ($enabled) {
@@ -506,18 +555,27 @@ function signature_field_extra_fields_alter(&$info) {
 }
 
 /**
- * Helper function for saving node signature settings when a node is added or
- * updated. 
+ * Helper function for saving signature settings associated with a node.
  */
 function signature_save_node_settings($node) {
 
   $types = variable_get('signature_node_types', array());
   if (isset($types[$node->type]) && $types[$node->type]) {
-      
+
     // Get any existing settings for the node.
     $settings = entity_load_single('signature_node', $node->nid);
     if ($settings === FALSE) {
       $settings = entity_create('signature_node', array('nid' => $node->nid));
+    }
+
+    $opt_ins = array();
+    for ($num = 0; $num < 5; $num += 1) {
+      $label_name = sprintf('signature_newsletter_label_%d', $num);
+      $group_name = sprintf('signature_newsletter_group_%d', $num);
+      $opt_ins[] = array(
+        'label' => isset($node->{$label_name}) ? $node->{$label_name} : '',
+        'group' => isset($node->{$group_name}) ? $node->{$group_name} : '',
+      );
     }
 
     // Update the settins for the node.
@@ -529,35 +587,34 @@ function signature_save_node_settings($node) {
     $settings->end_date = signature_date_to_timestamp($node->signature_end_date);
     $settings->heading = $node->signature_heading;
     $settings->sign_label = $node->signature_sign_label;
-    $settings->newsletter_group = $node->signature_newsletter_group;
-    $settings->newsletter_label = $node->signature_newsletter_label;
+    $settings->newsletter_opt_ins = $opt_ins;
     $settings->restrictions = $node->signature_restrictions;
     $settings->terms_of_use = $node->signature_terms_of_use;
     $settings->display_disclaimer = $node->signature_display_disclaimer;
-    
+
     // Save the settings for the node.
     entity_save('signature_node', $settings);
-    
+
     // Calculate and save the signature field mapping.
     signature_save_node_field_mapping($node);
   }
 }
 /**
- * Implements hook_node_insert()
+ * Implements hook_node_insert().
  */
 function signature_node_insert($node) {
   signature_save_node_settings($node);
 }
 
 /**
- * Implements hook_node_update()
+ * Implements hook_node_update().
  */
 function signature_node_update($node) {
   signature_save_node_settings($node);
 }
 
 /**
- * Implements hook_node_delete()
+ * Implements hook_node_delete().
  */
 function signature_node_delete($node) {
   // Delete any existing node settings and field mapping.
@@ -566,7 +623,7 @@ function signature_node_delete($node) {
 }
 
 /**
- * Helper function to get a list of Blue State Digital form fields. 
+ * Helper function to get a list of Blue State Digital form fields.
  */
 function signture_signup_list_form_fields($form_id) {
   try {
@@ -584,20 +641,20 @@ function signture_signup_list_form_fields($form_id) {
 }
 
 /**
- * Helper function for saving the signature field mapping
+ * Helper function for saving the signature field mapping.
  */
 function signature_save_node_field_mapping($node) {
 
-  if (! empty($node->signature_bsd_form)) {
+  if (!empty($node->signature_bsd_form)) {
 
-    // get the node's signature type
+    // Get the node's signature type.
     $signature_type = signature_type_load($node->signature_type);
 
-    // get the list of fields on both the type's template signup form, and the
-    // node's signup form
+    // Get the list of fields on both the type's template signup form, and the
+    // node's signup form.
     $type_fields = signture_signup_list_form_fields($signature_type->bsd_form);
     $node_fields = signture_signup_list_form_fields($node->signature_bsd_form);
-    
+
     // If we didn't get both lists let the user know and proceed without mapping
     // the signup form fields.
     if (empty($type_fields) || empty($node_fields)) {
@@ -606,19 +663,19 @@ function signature_save_node_field_mapping($node) {
       return;
     }
 
-    // invert the node field list to be keyed by label for quick lookup when
-    // translating from the type's field id to the node's field id
+    // Invert the node field list to be keyed by label for quick lookup when
+    // translating from the type's field id to the node's field id.
     $node_by_labels = array();
     foreach ($node_fields as $id => $field) {
       $node_by_labels[$field['label']] = $id;
     }
 
-    // get the signature type's mapping
+    // Get the signature type's mapping.
     $variable = "signature_mapping_type_{$signature_type->type}";
     $type_mapping = variable_get($variable, array());
 
-    // translate the type's mapping to the node's mapping by matching the
-    // labels of the fields
+    // Translate the type's mapping to the node's mapping by matching the
+    // labels of the fields.
     $node_mapping = array();
     foreach ($type_mapping as $field_name => $id) {
       if (isset($type_fields[$id])) {
@@ -631,7 +688,7 @@ function signature_save_node_field_mapping($node) {
           watchdog('signature', $format, array(
             '!type_form' => $signature_type->bsd_form,
             '!node_form' => $node->signature_bsd_form,
-            '!type' => $signature_type->type, 
+            '!type' => $signature_type->type,
             '!node' => $node->nid,
             '!label' => $label,
           ));
@@ -642,31 +699,31 @@ function signature_save_node_field_mapping($node) {
         watchdog('signature', $format, array(
           '!type_form' => $signature_type->bsd_form,
           '!node_form' => $node->signature_bsd_form,
-          '!type' => $signature_type->type, 
+          '!type' => $signature_type->type,
           '!node' => $node->nid,
         ));
       }
     }
 
-    // save the node's field mapping
+    // Save the node's field mapping.
     $variable = "signature_mapping_node_{$node->nid}";
     variable_set($variable, $node_mapping);
   }
   else {
-    // delete any existing node field mapping
+    // Delete any existing node field mapping.
     variable_del("signature_mapping_node_{$node->nid}");
   }
 }
 
 /**
- * Implements hook_preprocess_node()
+ * Implements hook_preprocess_node().
  */
 function signature_preprocess_node(&$vars) {
   $node = $vars['node'];
   $types = variable_get('signature_node_types', array());
   if (isset($types[$node->type]) && $types[$node->type]) {
-    // add CSS classes to the node indicating that it has signature collection
-    // enabled, default to the unsigned state so the node page can be cached
+    // Add CSS classes to the node indicating that it has signature collection
+    // enabled, default to the unsigned state so the node page can be cached.
     $vars['classes_array'] = array_merge($vars['classes_array'], array(
       'signature-list', "signature-node-unsigned",
     ));
@@ -678,7 +735,7 @@ function signature_preprocess_node(&$vars) {
 }
 
 /**
- * Implements hook_node_view_alter()
+ * Implements hook_node_view_alter().
  */
 function signature_node_view_alter(&$build) {
 
@@ -690,7 +747,7 @@ function signature_node_view_alter(&$build) {
     $css_path = drupal_get_path('module', 'signature')
       . '/css/signature-states.css';
     drupal_add_css($css_path, array('type' => 'file'));
-    
+
     $css_path = drupal_get_path('module', 'signature')
       . '/css/signature-embedded.css';
     drupal_add_css($css_path, array('type' => 'file'));
@@ -719,7 +776,7 @@ function signature_node_view_alter(&$build) {
       . '/js/jquery.qtip.min.js';
     drupal_add_js($js_path, array('type' => 'file'));
 
-    // add the cookie library for the tracking event latch
+    // Add the cookie library for the tracking event latch.
     drupal_add_library('system', 'jquery.cookie');
 
     $settings = entity_load_single('signature_node', $node->nid);
@@ -727,8 +784,8 @@ function signature_node_view_alter(&$build) {
 
       $signature = entity_create('signature', array(
         'type' => $settings->type,
-        'nid' => $node->nid, 
-      )); 
+        'nid' => $node->nid,
+      ));
       $build['signature_form'] = drupal_get_form(
         "signature_{$settings->type}_form", $signature, $node);
 
@@ -736,17 +793,17 @@ function signature_node_view_alter(&$build) {
       $build['signature_progress'] = array(
         '#type' => 'markup',
         '#markup' => theme('signature_progress', $variables),
-      );    
+      );   
     }
   }
 }
 
 /**
- * Implements hook_module_implements_alter()
+ * Implements hook_module_implements_alter().
  */
 function signature_module_implements_alter(&$implementations, $hook) {
   if ($hook == 'node_view_alter') {
-    // move this module to the end of the list
+    // Move this module to the end of the list.
     $group = $implementations['signature'];
     unset($implementations['signature']);
     $implementations['signature'] = $group;
@@ -770,11 +827,11 @@ function signature_node_state_callback($nids) {
 /* Signature Form
  ******************************************************************************/
 /**
- * Implements hook_forms()
+ * Implements hook_forms().
  */
 function signature_forms() {
   $forms = array();
-  // build the forms for all signature types using the same base function
+  // Build the forms for all signature types using the same base function.
   foreach (signature_type_load() as $type) {
     $forms["signature_{$type->type}_form"] = array(
       'callback' => 'signature_base_form',
@@ -784,13 +841,13 @@ function signature_forms() {
 }
 
 /**
- * Implements hook_field_extra_fields()
+ * Implements hook_field_extra_fields().
  */
 function signature_field_extra_fields() {
 
   $extra = array();
 
-  // Extra fields for the signature form
+  // Extra fields for the signature form.
   foreach (signature_type_load() as $type) {
     $extra['signature'][$type->type] = array(
       'form' => array(
@@ -814,20 +871,40 @@ function signature_field_extra_fields() {
           'description' => t('Collapsible disclaimer regarding the sharing of signature data.'),
           'weight' => 102,
         ),
-        'newsletter' => array(
-          'label' => t('Newsletter Opt-In'),
+        'newsletter_0' => array(
+          'label' => t('Newsletter Opt-In 1'),
           'description' => t('Newsletter opt-in checkbox'),
           'weight' => 103,
+        ),
+        'newsletter_1' => array(
+          'label' => t('Newsletter Opt-In 2'),
+          'description' => t('Newsletter opt-in checkbox'),
+          'weight' => 104,
+        ),
+        'newsletter_2' => array(
+          'label' => t('Newsletter Opt-In 3'),
+          'description' => t('Newsletter opt-in checkbox'),
+          'weight' => 105,
+        ),
+        'newsletter_3' => array(
+          'label' => t('Newsletter Opt-In 4'),
+          'description' => t('Newsletter opt-in checkbox'),
+          'weight' => 106,
+        ),
+        'newsletter_4' => array(
+          'label' => t('Newsletter Opt-In 5'),
+          'description' => t('Newsletter opt-in checkbox'),
+          'weight' => 107,
         ),
         'actions' => array(
           'label' => t('Sign Button'),
           'description' => t('The button for submitting the signature form.'),
-          'weight' => 104,
+          'weight' => 108,
         ),
         'terms_of_use_note' => array(
           'label' => t('Terms of Use'),
           'description' => t('Terms of use note.'),
-          'weight' => 105,
+          'weight' => 109,
         ),
       ),
     );
@@ -836,7 +913,7 @@ function signature_field_extra_fields() {
 }
 
 /**
- * Signature form callback
+ * Signature form callback.
  */
 function signature_base_form($form, &$form_state, $signature, $node) {
 
@@ -844,13 +921,13 @@ function signature_base_form($form, &$form_state, $signature, $node) {
 
   $form_state['signature'] = $signature;
 
-  // get the node specific settings
+  // Get the node specific settings.
   $settings = entity_load_single('signature_node', $node->nid);
 
-  // attach the fields
+  // Attach the fields.
   field_attach_form('signature', $signature, $form, $form_state);
 
-  // translate the signature type to a CSS class name prefix
+  // Translate the signature type to a CSS class name prefix.
   $css_prefix = str_replace('_', '-', $signature->type);
 
   if (!isset($form['#attribues'])) {
@@ -864,7 +941,7 @@ function signature_base_form($form, &$form_state, $signature, $node) {
     $css_prefix . '-form',
   );
 
-  // add the signature heading
+  // Add the signature heading.
   $form['heading'] = array(
     '#type' => 'markup',
     '#prefix' => '<h1 class="' . $css_prefix . '-heading signature-heading">',
@@ -873,12 +950,12 @@ function signature_base_form($form, &$form_state, $signature, $node) {
     '#weight' => -20,
   );
 
-  // add the email field
+  // Add the email field.
   $form['email'] = array(
     '#title' => t('Email'),
     '#type' => 'textfield',
     '#size' => 40,
-    '#maxlength' => 254, // the mail field in the user table is 254 characters
+    '#maxlength' => 254, // The mail field in the user table is 254 characters.
     '#required' => TRUE,
     '#attributes' => array(
       'class' => array(
@@ -889,8 +966,8 @@ function signature_base_form($form, &$form_state, $signature, $node) {
     '#default_value' => $signature->email,
   );
 
-  // add the restrictions note
-  if (! empty($settings->restrictions)) {
+  // Add the restrictions note.
+  if (!empty($settings->restrictions)) {
     $form['restrictions'] = array(
       '#type' => 'container',
       '#attributes' => array(
@@ -906,8 +983,8 @@ function signature_base_form($form, &$form_state, $signature, $node) {
     );
   }
 
-  // add the terms of use note
-  if (! empty($settings->terms_of_use)) {
+  // Add the terms of use note.
+  if (!empty($settings->terms_of_use)) {
     $form['terms_of_use_note'] = array(
       '#type' => 'container',
       '#attributes' => array(
@@ -923,8 +1000,8 @@ function signature_base_form($form, &$form_state, $signature, $node) {
     );
   }
 
-  // add the public display disclaimer
-  if (! empty($settings->display_disclaimer)) {
+  // Add the public display disclaimer.
+  if (!empty($settings->display_disclaimer)) {
     $js_path = drupal_get_path('module', 'signature')
       . '/js/signature-display-disclaimer.js';
     $form['signature_display_disclaimer'] = array(
@@ -956,26 +1033,28 @@ function signature_base_form($form, &$form_state, $signature, $node) {
     ),
   );
 
-  if (! empty($settings->newsletter_label)) {
-    $form['newsletter'] = array(
-      '#type' => 'checkbox',
-      '#title' => check_plain($settings->newsletter_label),
-      '#default_value' => $signature->newsletter,
-      '#required' => FALSE,
-      '#attributes' => array(
-        'class' => array(
-          "{$css_prefix}-newsletter-opt-in-field",
-          "signature-newsletter-opt-in-field",
+  for ($num = 0; $num < 5; $num += 1) {
+    if (!empty($settings->newsletter_opt_ins[$num]['label'])) {
+      $form["newsletter_{$num}"] = array(
+        '#type' => 'checkbox',
+        '#title' => check_plain($settings->newsletter_opt_ins[$num]['label']),
+        '#default_value' => $signature->newsletter & (1 << $num) ? 1 : 0,
+        '#required' => FALSE,
+        '#attributes' => array(
+          'class' => array(
+            "{$css_prefix}-newsletter-opt-in-field",
+            "signature-newsletter-opt-in-field",
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   $wrapper = "signature-form-{$node->nid}";
   $form['#prefix'] = '<div id="' . $wrapper . '">';
   $form['#suffix'] = '</div>';
 
-  // add the sign submit button
+  // Add the sign submit button.
   $form['actions'] = array(
     '#type' => 'actions',
   );
@@ -995,13 +1074,13 @@ function signature_base_form($form, &$form_state, $signature, $node) {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter()
+ * Implements hook_form_BASE_FORM_ID_alter().
  *
  * TODO: See if we can just prevent the metatags module from altering the
- * signature form in the first place
+ * signature form in the first place.
  */
 function signature_form_signature_base_form_alter(&$form, &$form_state) {
-  // remove the metatags part of the form
+  // Remove the metatags part of the form.
   unset($form['metatags']);
   $form['#submit'] = array_diff($form['#submit'],
     array('metatag_metatags_form_submit'));
@@ -1025,55 +1104,67 @@ function signature_base_form_callback($form, $form_state) {
     $commands[] = ajax_command_invoke($node_selector, 'trigger', array(
       'signature_form_submit', array(check_plain($node->title)),
     ));
-    if (!empty($form_state['values']['newsletter'])) {
-      $commands[] = ajax_command_invoke($node_selector, 'trigger', array(
-        'newsletter_signup', array(check_plain($settings->newsletter_group)),
-      ));
+    $newsletter_signups = array();
+    for ($num = 0; $num < 5; $num += 1) {
+      if (!empty($form_state['values']["newsletter_{$num}"])) {
+        $commands[] = ajax_command_invoke($node_selector, 'trigger', array(
+          'newsletter_signup',
+          check_plain($settings->newsletter_opt_ins[$num]['group']),
+        ));
+      }
     }
-    $commands[] = ajax_command_settings(array('signature' => array(
-      'progress' => array($node->nid => $variables),
-      'submitted_by' => $form_state['values']['email'],
-     )), TRUE);
+    $commands[] = ajax_command_settings(array(
+      'signature' => array(
+        'progress' => array($node->nid => $variables),
+        'submitted_by' => $form_state['values']['email'],
+      ),
+    ), TRUE);
   }
- 
+
   return array('#type' => 'ajax', '#commands' => $commands);
 }
 
 /**
- * Signature form validation handler
+ * Signature form validation handler.
  */
 function signature_base_form_validate($form, &$form_state) {
 
-  // valiate the email
+  // Valiate the email.
   $email = $form_state['values']['email'];
-  if ((! empty($email)) && (! valid_email_address($email))) {
+  if ((!empty($email)) && (!valid_email_address($email))) {
     form_set_error('email', t('!name must be a valid email address', array(
       '!name' => 'Email',
     )));
   }
 
-  // validate the attached fields
+  // Validate the attached fields.
   field_attach_form_validate('signature', $form_state['signature'], $form,
     $form_state);
 }
 
 /**
- * Signature form sign (submit) handler
+ * Signature form sign (submit) handler.
  */
 function signature_base_form_submit($form, &$form_state) {
 
-  // build the signature entity from the form
+  // Build the signature entity from the form.
   $signature = $form_state['signature'];
   entity_form_submit_build_entity('signature', $signature, $form, $form_state);
+  $signature->newsletter = 0;
+  for ($num = 0; $num < 5; $num += 1) {
+    if (!empty($form_state['values']["newsletter_{$num}"])) {
+      $signature->newsletter |= (1 << $num);
+    }
+  }
 
-  // create an entity query
+  // Create an entity query.
   $query = new EntityFieldQuery();
 
-  // limit that query to signatures for the associated node
+  // Limit that query to signatures for the associated node.
   $query->entityCondition('entity_type', 'signature');
   $query->propertyCondition('nid', $signature->nid);
 
-  // limit signing to once per email
+  // Limit signing to once per email.
   $query->propertyCondition('email', $signature->email);
 
   $results = $query->execute();
@@ -1082,18 +1173,18 @@ function signature_base_form_submit($form, &$form_state) {
     signature_send_signup($signature);
   }
 
-  // set the node signed cookie
+  // Set the node signed cookie.
   $cookie = "{$signature->type}_{$signature->nid}_signed";
   setcookie($cookie, 1, time() + (86400 * 365), '/');
 }
 
 function signature_send_signup($signature) {
 
-  // get the node specific settings
+  // Get the node specific settings.
   $settings = entity_load_single('signature_node', $signature->nid);
   if ($settings !== FALSE && !empty($settings->bsd_form)) {
 
-    // get the signature field mapping
+    // Get the signature field mapping.
     $variable = "signature_mapping_node_{$signature->nid}";
     $mapping = variable_get($variable, FALSE);
     if ($mapping !== FALSE && !empty($mapping)) {
@@ -1104,31 +1195,43 @@ function signature_send_signup($signature) {
 
       foreach ($mapping as $field_name => $id) {
 
-        // get the value of the field        
+        // Get the value of the field.
         if ($field_name == 'email') {
           $value = $signature->email;
         }
-        else if ($field_name == 'display') {
+        elseif ($field_name == 'display') {
           $value = $signature->display;
         }
-        else if ($field_name == 'newsletter') {
-          $value = $signature->newsletter;
+        elseif ($field_name == 'newsletter_0' || $field_name == 'newsletter') {
+          $value = $signature->newsletter & 0x01;
+        }
+        elseif ($field_name == 'newsletter_1') {
+          $value = $signature->newsletter & 0x02;
+        }
+        elseif ($field_name == 'newsletter_2') {
+          $value = $signature->newsletter & 0x04;
+        }
+        elseif ($field_name == 'newsletter_3') {
+          $value = $signature->newsletter & 0x08;
+        }
+        elseif ($field_name == 'newsletter_4') {
+          $value = $signature->newsletter & 0x10;
         }
         else {
-          // the field is attached, make sure it is still attached, then
-          // implode any values it has to a single string
+          // The field is attached, make sure it is still attached, then
+          // implode any values it has to a single string.
           if (isset($signature->{$field_name})) {
             $values = array();
             foreach ($signature->{$field_name}[$lang] as $item) {
-              $values[] = (string)$item['value'];
+              $values[] = (string) $item['value'];
             }
             $value = implode(' ', $values);
           }
         }
 
         if (isset($fields[$id])) {
-          // use the last non-empty value
-          if (! empty($value)) {
+          // Use the last non-empty value.
+          if (!empty($value)) {
             $fields[$id] = array(
               'value' => array(
                 'type' => 'value',
@@ -1138,7 +1241,7 @@ function signature_send_signup($signature) {
           }
         }
         else {
-          // first time encountering the field
+          // First time encountering the field.
           $fields[$id] = array(
             'value' => array(
               'type' => 'value',
@@ -1148,7 +1251,7 @@ function signature_send_signup($signature) {
         }
       }
 
-      // send the signup to Blue State Digital
+      // Send the signup to Blue State Digital.
       $signup = array($settings->bsd_form => $fields);
       try {
         $api = bluestatedigital_get_api('signup');
@@ -1169,7 +1272,7 @@ function signature_send_signup($signature) {
 /* Signature Form
  ******************************************************************************/
 /**
- * Implements hook_theme()
+ * Implements hook_theme().
  */
 function signature_theme() {
   return array(
@@ -1192,14 +1295,17 @@ function signature_theme() {
 }
 
 /**
- * Helper function for calculating the signature progress, returning the data as
- * an array of values for using in a theme template and the ajax callback
+ * Helper function for calculating the signature progress.
+ *
+ * @return array
+ *   the progress as an array of values for using in a theme template and the
+ *   ajax callback.
  */
 function signature_node_progress_variables($settings) {
   global $user;
 
   if ($settings->goal > 0) {
-    $percent = ((float)$settings->count/(float)($settings->goal)) * 100.0;
+    $percent = ((float) $settings->count / (float) ($settings->goal)) * 100.0;
   }
   else {
     $percent = 0.0;
@@ -1232,7 +1338,7 @@ function signature_node_progress_variables($settings) {
   $now_seconds = mktime(0, 0, 0, $now['mon'], $now['mday'], $now['year']);
   $seconds_left = $settings->end_date - $now_seconds;
   if ($seconds_left >= 0) {
-    $days_left = floor((float)$seconds_left / (float)(24 * 60 * 60)) + 1;
+    $days_left = floor((float) $seconds_left / (float) (24 * 60 * 60)) + 1;
   }
 
   if ($days_left > 0 && $settings->limit_to_dates != 0) {
@@ -1254,10 +1360,10 @@ function signature_node_progress_variables($settings) {
     ));
   }
 
-  // the signature collection state is determined by wether the user is logged
-  // in and has an existing signature, unless signature collection is closed
-  //$cookie = "{$settings->type}_{$settings->nid}_signed";
-  //$state = isset($_COOKIE[$cookie]) ? 'signed' : 'unsigned';
+  // The signature collection state is determined by wether the user is logged
+  // in and has an existing signature, unless signature collection is closed.
+  // $cookie = "{$settings->type}_{$settings->nid}_signed";
+  // $state = isset($_COOKIE[$cookie]) ? 'signed' : 'unsigned';
   $state = 'unsigned';
   if (!empty($user->mail)) {
     $result = db_select('signature', 's')
@@ -1268,7 +1374,7 @@ function signature_node_progress_variables($settings) {
     if ($result->rowCount() > 0) {
       $state = 'signed';
     }
-  } 
+  }
   if ($days_left == 0 && $settings->limit_to_dates != 0) {
     $state = 'closed';
   }
@@ -1327,12 +1433,12 @@ function signature_block_view($delta = '') {
   $js_path = drupal_get_path('module', 'signature')
     . '/js/signature-read-more.js';
   drupal_add_js($js_path, array('type' => 'file'));
-    
+
   $css_path = drupal_get_path('module', 'signature')
     . '/css/signature-embedded.css';
   drupal_add_css($css_path, array('type' => 'file'));
 
-  // add the cookie library for the tracking event latch
+  // Add the cookie library for the tracking event latch.
   drupal_add_library('system', 'jquery.cookie');
   drupal_add_library('system', 'jquery.once');
   drupal_add_library('system', 'drupal.ajax');
@@ -1354,10 +1460,9 @@ function signature_block_view($delta = '') {
     . '/js/embedaction.js';
   drupal_add_js($js_path, array('type' => 'file'));
 
-  //$js_path = drupal_get_path('module', 'takepart_addthis')
-  //  . '/js/share-bar-field.js';
-  //drupal_add_js($js_path, array('type' => 'file'));
-
+  // $js_path = drupal_get_path('module', 'takepart_addthis')
+  // . '/js/share-bar-field.js';
+  // drupal_add_js($js_path, array('type' => 'file'));
   return array(
     'subject' => 'Standard Petition Header Files',
     'content' => '<p style="display:none;">This block adds the JS and CSS files needed for generic petitions.</p>',
