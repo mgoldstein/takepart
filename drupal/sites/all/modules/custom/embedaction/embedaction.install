@@ -3,16 +3,16 @@
 /**
  * @file
  * Module install and uninstall handlers
- *
- * Removes variables used by the module.
  */
 
 /**
- * Implements hook_uninstall()
+ * Remove the embedaction_node table and all variables created by this module.
  */
-function embedaction_uninstall() {
+function embedaction_update_7100(&$sandbox) {
 
-  // delete the variables used by this module
+  db_drop_table('embedaction_node');
+
+  // Delete the variables used by this module.
   $variables = db_select('variable', 'v')
     ->fields('v', array('name'))
     ->condition('name', db_like('embedaction_') . '%', 'LIKE')
@@ -21,40 +21,3 @@ function embedaction_uninstall() {
     variable_del($variable['name']);
   }
 }
-
-/**
- * Implements hook_schema()
- */
-function embedaction_schema() {
-  $schema = array();
-
-  $schema['embedaction_node'] = array(
-    'description' => 'The table for per node configurations.',
-    'fields' => array(
-      'nid' => array(
-        'description' => 'The {node}.nid to which the configuration belongs.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'title' => array(
-        'description' => 'The title of the collapsible block.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'collapsed' => array(
-        'description' => 'The initial state of the collapsible block.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-    ),
-    'primary key' => array('nid'),
-  );
-
-  return $schema;
-}
-
