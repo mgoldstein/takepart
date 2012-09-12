@@ -1,7 +1,7 @@
-name = TakePart Facebook Site-wide Integration 
+name = TakePart Facebook Site-wide Integration
 description = Facebook functionality for Takepart.
-package = Take Part
-version = VERSION
+package = TakePart
+version = 7.x-1.0
 core = 7.x
 
 dependencies[] = fboauth
@@ -9,4 +9,3 @@ dependencies[] = fbregistration
 dependencies[] = date
 files[] = takepart_facebookapis.module
 files[] = tests/takepart_facebookapis.test
-
