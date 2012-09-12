@@ -6,13 +6,13 @@
  */
 
 /**
- * Implements hook_uninstall()
+ * Implements hook_uninstall().
  */
 function signature_uninstall() {
-  // delete the content type settings variable
+  // Delete the content type settings variable.
   variable_del('signature_node_types');
 
-  // delete the variables used by this module
+  // Delete the variables used by this module.
   $variables = db_select('variable', 'v')
     ->fields('v', array('name'))
     ->condition('name', db_like('signature_mapping_') . '%', 'LIKE')
@@ -33,11 +33,11 @@ function signature_uninstall() {
     drupal_set_message(t('Deleted signature field !field on !bundle',
       array('!field' => $row['field_name'], '!bundle' => $row['bundle'])));
     field_delete_instance($instance);
-  } 
+  }
 }
 
 /**
- * Implements hook_schema()
+ * Implements hook_schema().
  */
 function signature_schema() {
   $schema = array();
@@ -162,7 +162,7 @@ function signature_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
-      // exportable entity fields
+      // Exportable entity fields.
       'status' => array(
         'description' => 'The exportable status of the entity.',
         'type' => 'int',
@@ -245,19 +245,10 @@ function signature_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
-      'newsletter_group' => array(
-        'description' => 'The constituent group used for newsletter analytics.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'newsletter_label' => array(
-        'description' => 'The label used on the newsletter opt-in field.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
+      'newsletter_opt_ins' => array(
+        'description' => 'Multiple newsletter opt-in label and group fields.',
+        'type' => 'text',
+        'serialize' => TRUE,
       ),
       'restrictions' => array(
         'description' => 'The text of the restrictions note.',
@@ -288,7 +279,7 @@ function signature_schema() {
 }
 
 /**
- * Add the newsletter constituent group field for metrics
+ * Add the newsletter constituent group field for metrics.
  */
 function signature_update_7100(&$sandbox) {
   db_add_field('signature_node', 'newsletter_group', array(
@@ -298,4 +289,42 @@ function signature_update_7100(&$sandbox) {
     'not null' => TRUE,
     'default' => '',
   ));
+}
+
+/**
+ * Add a field for storing additional newsletter opt-ins.
+ */
+function signature_update_7101(&$sandbox) {
+  // Add a new field to store multiple newsletter opt-ins.
+  db_add_field('signature_node', 'newsletter_opt_ins', array(
+    'description' => 'Additional newsletter opt-in fields.',
+    'type' => 'text',
+    'serialize' => TRUE,
+  ));
+  // Get a list of the existing nodes and their opt-ins.
+  $results = db_select('signature_node', 'n')
+    ->fields('n', array('nid', 'newsletter_label', 'newsletter_group'))
+    ->execute()
+    ->fetchAllAssoc('nid');
+  // Transfer each node's opt-in settings to the new field.
+  foreach ($results as $nid => $settings) {
+    $newsletters = array(
+      array(
+        'label' => $settings->newsletter_label,
+        'group' => $settings->newsletter_group,
+      ),
+    );
+    // It seems to be necessary to explicitly serialize the field value in
+    // the update hook. The field works as expected from the other locations
+    // where the newsletter_opt_ins are updated.
+    db_update('signature_node')
+      ->fields(array(
+        'newsletter_opt_ins' => serialize($newsletters),
+      ))
+      ->condition('nid', $nid, '=')
+      ->execute();
+  }
+  // Drop the old newsletter opt-in fields.
+  db_drop_field('signature_node', 'newsletter_label');
+  db_drop_field('signature_node', 'newsletter_group');
 }

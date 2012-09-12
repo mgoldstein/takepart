@@ -358,12 +358,19 @@ function signature_form($form, &$form_state, $entity, $op = 'edit') {
     '#default_value' => $entity->display,
   );
   
-  $form['newsletter'] = array(
-    '#title' => t('Newsletter Opt-In'),
-    '#description' => t('The newsletter opt-in value of the signature.'),
-    '#type' => 'checkbox',
-    '#default_value' => $entity->newsletter,
+  $form['newsletter_opt_ins'] = array(
+    '#title' => t('Newsletter Opt-Ins'),
+    '#description' => t('The newsletters opted-in with the signature.'),
+    '#type' => 'fieldset',
   );
+
+  for ($num = 0; $num < 5; $num += 1) {
+    $form['newsletter_opt_ins']["newsletter_{$num}"] = array(
+      '#title' => t('Newsletter @num', array('@num' => $num + 1)),
+      '#type' => 'checkbox',
+      '#default_value' => $entity->newsletter & (1 << $num) ? 1 : 0,
+    );
+  }
 
   field_attach_form('signature', $form_state['signature'], $form, $form_state);
 
@@ -418,6 +425,12 @@ function signature_form_submit(&$form, &$form_state) {
 
   // Build entity from the form.
   $entity = entity_ui_form_submit_build_entity($form, $form_state);
+  $entity->newsletter = 0;
+  for ($num = 0; $num < 5; $num += 1) {
+    if (!empty($form_state['values']["newsletter_{$num}"])) {
+      $entity->newsletter |= (1 << $num);
+    }
+  }
 
   // Save the entity.
   $status = $entity->save();
