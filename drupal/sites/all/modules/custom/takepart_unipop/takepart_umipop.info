@@ -1,0 +1,13 @@
+name = TakePart Universal Popup Support
+description = Mechanism to display blocks and node blocks  popups
+package = TakePart
+version = 7.x-1.00
+core = 7.x
+dependencies[] = nodeblock
+dependencies[] = entity_view_mode
+dependencies[] = embbedable
+
+
+files[] = takepart_unipop.module
+files[] = takepart_unipop.install
+files[] = takepart_unipop.admin.inc

@@ -494,6 +494,12 @@ function takepart3_preprocess_node(&$vars, $hook) {
         $vars['theme_hook_suggestions'][] = "node__embed__{$vars['type']}";
     }
 
+  if ($vars['view_mode'] == 'popup') {
+    //$vars['theme_hook_suggestions'][] = "node__popup";
+    //$vars['theme_hook_suggestions'][] = "node__popup__{$vars['type']}";
+    $break = 'here';
+  }
+
 
     // Provides a method for printing regions within node templates
     if ($blocks = block_get_blocks_by_region('sidebar_first')) {

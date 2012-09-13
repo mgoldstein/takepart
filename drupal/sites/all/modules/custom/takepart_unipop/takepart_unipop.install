@@ -1,0 +1,24 @@
+<?php
+// $Id$
+/**
+ * TakePart Video Popup Module
+ * @file
+ * Install, update and uninstall functions for the Takepart Universal Popup module.
+ * @author pglatz
+ * @date 09/12/2012
+ * @company TakePart, LLC
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function takepart_unipop_install() {
+  drupal_set_message(st('The TakePart Unipop module has been installed.'));
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function takepart_unipop_uninstall() {
+  drupal_set_message(st('The TakePart Unipop module has been uninstalled.'));
+}

@@ -1,0 +1,180 @@
+<?php
+/**
+ * @file
+ * Takepart Universal Popup module.
+ *
+ */
+
+
+// contant: default ad id for unipops
+define('TAKEPART_UNIPOP_DEFAULT_AD_ID', 'TP3_ROS_Leaderboard_728x90');
+
+
+
+/***
+ * implentation of hook_init()
+ */
+function takepart_unipop_init() {
+  $path = drupal_get_path('module', 'takepart');
+  drupal_add_css($path . '/modules/takepart_unipop/css/takepart_unipop.css', array('every_page' => TRUE));
+  drupal_add_js($path . '/modules/takepart_unipop/js/takepart_unipop.js', 'file');
+}
+
+
+/**
+ * Implement hook_theme().
+ *
+ * This one is used as the base to reduce errors when updating.
+ */
+function takepart_unipop_theme() {
+  $template_path = drupal_get_path('module', 'takepart') . '/modules/takepart_unipop/theme';
+
+  return array(
+    'node__video_embed' => array(
+      'path'      => $template_path,
+      'template'  => 'node--video-embed',
+      'variables' => array('node' => NULL),
+    ),
+    'unipop_popup' => array(
+      'path'      => $template_path,
+      'template'  => 'unipop-popup',
+      'variables' => array('node' => NULL),
+    ),
+  );
+}
+
+
+
+function takepart_unipop_preprocess_unipop_popup(&$vars) {
+  // save values for ad click js
+  drupal_add_js(array('takepart_unipop'=> array('embeddedvideotitle' => $vars['field_promo_headline'][0]['value'])),'setting');
+}
+
+
+function takepart_unipop_preprocess_page(&$vars) {
+  // save values for ad click js
+  drupal_add_js(array('takepart_unipop'=> array('hostpagetitle' => $vars['node']->title)),'setting');
+}
+
+
+
+/**
+ * Implements hook_menu().
+ */
+function takepart_unipop_menu() {
+  $items['admin/config/media/unipop/settings'] = array(
+    'title' => 'Videop popup settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_unipop_settings_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'takepart_unipop.admin.inc',
+  );
+
+  return $items;
+}
+
+
+/***
+ * format image to look like a youtube video preview
+ *
+ * @param $uri    uri of image
+ * @param $vars   variables from node preprocessing
+ *                $vars['field_video_embedded'] contains the embedded video
+ *
+ * uses image style tp_embed_video_thumb to create a 420x315 image
+ *
+ */
+function takepart_unipop_format_preview($uri, $vars) {
+  $unipop_path = drupal_get_path('module', 'takepart') . '/modules/takepart_unipop';
+
+  // this is the preview image to click on
+  $preview_image = theme('image_style', array('style_name' => 'tp_embed_video_thumb', 'path' => $uri));
+  // this is a mask on top of the overlay, with top/bottom bars and arrow button
+  $overlay_image = theme('image', array('path' => $unipop_path . '/css/images/youtube-overlay.png', 'attributes' => array('rel' => '#details', 'class' => 'unipop-trigger')));
+
+  $promo_headline = $vars['field_promo_headline'][0]['safe_value'];
+  $promo_text = $vars['field_promo_text'][0]['safe_value'];
+
+  // theme the popup contents
+  $formatted_popup = theme('unipop_popup', $vars);
+
+  // NOTE: we set the colorbox width to 870; it has padding that will pull it out
+  // to our desired 900
+  $formatted = <<<EOT
+<div class="unipop-embed-promo-headline">$promo_headline999</div>
+<div class="unipop-preview">$preview_image
+  <a class="colorbox-inline" href="?width=870&amp;height=520&amp;inline=true#unipop-details"><div class="unipop-preview-overlay">$overlay_image
+  <div class="unipop-preview-overlay-text">
+    <div class="line1"><span class="watch">WATCH</span>$promo_headline</div>
+    <div class="line2">$promo_text</div>
+  </div>
+  </div></a>
+</div>
+<div class="unipop-embed-promo-text">
+$promo_text999
+</div>
+
+<div class="unipop-overlay">
+  <div id="unipop-details">$formatted_popup</div>
+</div>
+EOT;
+
+  return $formatted;
+}
+
+
+/***
+ * @returns formatted banner
+ */
+function takepart_unipop_get_banner() {
+  // have we called the ad emitter?
+  $js = drupal_add_js();
+  $have_ads = false;
+  foreach ($js as $key => $val) {
+    if (strpos($key, 'google_service.js')> 0) {
+      // we have it
+      $have_ads = true;
+      break;
+    }
+  }
+
+  // get id of ad to use
+  $ad_id = variable_get('takepart_unipop_ad_id', TAKEPART_unipop_DEFAULT_AD_ID);
+  if (!$have_ads) {
+    // no other ads on the page, so we need to output some javascript
+    $header1 = 'GS_googleAddAdSenseService("' . variable_get('takepart_ads_dfp_property_code', '') . '");
+GS_googleEnableAllServices();';
+    $header2 = 'GA_googleFetchAds();';
+
+    drupal_add_js('http://partner.googleadservices.com/gampad/google_service.js', 'external');
+    drupal_add_js($header1, 'inline');
+    drupal_add_js($header2, 'inline');
+  }
+
+  //register the slot
+  $ad_html .= 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad_id . '");';
+  drupal_add_js($ad_html, 'inline');
+  $banner = <<<HTM
+<script type='text/javascript'>
+  GA_googleFillSlot('$ad_id');
+</script>
+HTM;
+
+
+  return $banner;
+}
+
+
+/***
+ * get the social links
+ */
+function takepart_unipop_get_social_links() {
+  $block = block_load('takepart_addthis', 'addthis_unipop');
+  $social_links =  render(_block_get_renderable_array( _block_render_blocks( array($block) )));
+
+  return $social_links;
+}
+
+
+
