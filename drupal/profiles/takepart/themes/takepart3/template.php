@@ -370,6 +370,15 @@ function _render_tp3_topics_takepart_menu() {
     return _render_menu_columns('menu-takepart-topics', 6);
 }
 
+function _render_tp3_topics_takepart_menu_piped() {
+  return _render_footer_links_menu_as_piped('menu-takepart-topics');
+}
+
+function _render_tp3_film_campaign_menu_piped() {
+  return _render_footer_links_menu_as_piped("menu-takepart-film-campaigns");
+}
+
+
 // so we need to render the menus as follows,
 // order from top to bottom, but distribute evenly from left 
 // to right.
@@ -409,6 +418,43 @@ function _render_menu_columns($menu_key, $col_limit) {
 
     return $menu_cols;
 }
+
+
+function _render_footer_links_menu_as_piped($menu_key) {
+  $menu_data = _tp_menu_tree_data($menu_key);
+  
+  $uri = drupal_get_path_alias($_GET['q']);
+  $uri = substr($uri, 0, 14);
+   
+  $total_items = count($menu_data);
+  $x = 0;
+  
+   foreach ($menu_data as $menu_item) {
+     
+     $x++;
+     
+     $opts = array('attributes' => _default_menu_options($menu_item));
+     if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+       $opts['absolute'] = TRUE;
+     }
+     
+     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+     if($x < $total_items) {
+      $columns[$column_idx][] =  $link . " | ";
+     } else {
+       $columns[$column_idx][] =  $link ;
+     }
+     
+  }
+
+  foreach ($columns as $col) {
+    $menu_cols .= "<div class='links'>" . implode($col) . "</div>\n";
+  }
+
+  return $menu_cols;
+}
+
+
 
 function _tp_col_depth($total, $col_limit, $remainder) {
     return floor($total / $col_limit) + ( $remainder === 0 ? 0 : 1);
@@ -1047,11 +1093,17 @@ function _tp3_fill_template_vars(&$variables) {
     if ((!isset($variables['film_camp_nav'])) || (!$variables['film_camp_nav'])) {
         $variables['film_camp_nav'] = _render_tp3_film_campaign_menu();
     }
+    if ((!isset($variables['film_camp_nav_piped'])) || (!$variables['film_camp_nav_piped'])) {
+      $variables['film_camp_nav_piped'] = _render_tp3_film_campaign_menu_piped();
+    }
     if ((!isset($variables['friends_takepart_nav'])) || (!$variables['friends_takepart_nav'])) {
         $variables['friends_takepart_nav'] = _render_tp3_friends_takepart_menu();
     }
     if ((!isset($variables['takepart_topics_nav'])) || (!$variables['takepart_topics_nav'])) {
         $variables['takepart_topics_nav'] = _render_tp3_topics_takepart_menu();
+    }
+    if ((!isset($variables['takepart_topics_nav_piped'])) || (!$variables['takepart_topics_nav_piped'])) {
+      $variables['takepart_topics_nav_piped'] = _render_tp3_topics_takepart_menu_piped();
     }
     if ((!isset($variables['corporate_links_nav'])) || (!$variables['corporate_links_nav'])) {
         $variables['corporate_links_nav'] = _render_tp3_corporate_links_menu();
