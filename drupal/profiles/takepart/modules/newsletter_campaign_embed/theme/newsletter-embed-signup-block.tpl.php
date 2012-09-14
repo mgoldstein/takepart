@@ -16,7 +16,6 @@
     <div class="takepart-newsletter-embed-form">
       <div id="wrapper-form-<?php print $form_id; ?>">
         <?php print drupal_render($signup_form); ?>
-        <div id="takepart-newsletter-embed-<?php print $form_id; ?>-results" class="takepart-newsletter-embed-message"></div>
       </div>
     </div>
   </div>
@@ -24,4 +23,5 @@
     print l(t("Terms & Conditions"), "terms-of-use",
       array('attributes'=>array('target'=>'_blank')));
     ?></div>
+  <div id="takepart-newsletter-embed-<?php print $form_id; ?>-results" class="takepart-newsletter-embed-message"></div>
 </div>

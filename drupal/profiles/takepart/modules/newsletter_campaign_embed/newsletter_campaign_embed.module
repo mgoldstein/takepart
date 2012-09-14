@@ -443,10 +443,13 @@ function newsletter_campaign_embed_signup_form_callback($form, $form_state) {
     if (!empty($form_state['newsletter_campaign_embed_signup_successful'])) {
       // Fire the analytics events.
       $commands[] = ajax_command_invoke($message_selector, 'trigger', array(
-        'newsletter_embed_signup', array(check_plain($campaign->title)),
+        'newsletter_signup', array(check_plain($campaign->title)),
       ));
       // Thank the user for their signup.
       $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
+      if (!isset($message)) {
+        $message = '';
+      }
       $message .= filter_xss($campaign->thankyou_message, $allowed_tags);
     }
     else {
