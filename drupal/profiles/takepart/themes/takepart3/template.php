@@ -72,14 +72,7 @@ function takepart3_preprocess_html(&$vars) {
 }
 
 function takepart3_preprocess_page(&$variables) {
-    _tp3_fill_template_vars($variables);
-
-    if ($variables['node']->title == "Contact Us") {
-        // #18868    pglatz 7/10/2012
-        // save referrer URL to track in webform
-        // it is saved as $_COOKIE['Drupal_visitor_webform_referrer']
-        user_cookie_save(array('webform_referrer' => $_SERVER['HTTP_REFERER']));
-    }
+  _tp3_fill_template_vars($variables);
 
     $variables['is_multipage'] = FALSE;
     $variables['multipage_class'] = '';
@@ -493,6 +486,12 @@ function takepart3_preprocess_node(&$vars, $hook) {
         $vars['theme_hook_suggestions'][] = "node__embed";
         $vars['theme_hook_suggestions'][] = "node__embed__{$vars['type']}";
     }
+
+  if ($vars['view_mode'] == 'popup') {
+    //$vars['theme_hook_suggestions'][] = "node__popup";
+    //$vars['theme_hook_suggestions'][] = "node__popup__{$vars['type']}";
+    $break = 'here';
+  }
 
 
     // Provides a method for printing regions within node templates

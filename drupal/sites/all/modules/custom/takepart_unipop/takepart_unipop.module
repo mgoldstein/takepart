@@ -1,0 +1,80 @@
+<?php
+/**
+ * @file
+ * Takepart Universal Popup module.
+ *
+ */
+
+
+// contant: default ad id for unipops
+define('TAKEPART_UNIPOP_DEFAULT_AD_ID', 'TP3_ROS_Leaderboard_728x90');
+
+
+
+/***
+ * implentation of hook_init()
+ */
+function takepart_unipop_init() {
+  $path = drupal_get_path('module', 'takepart');
+  drupal_add_css($path . '/modules/takepart_unipop/css/takepart_unipop.css', array('every_page' => TRUE));
+  drupal_add_js($path . '/modules/takepart_unipop/js/takepart_unipop.js', 'file');
+}
+
+
+/**
+ * Implement hook_theme().
+ *
+ * This one is used as the base to reduce errors when updating.
+ */
+function takepart_unipop_theme() {
+  $template_path = drupal_get_path('module', 'takepart') . '/modules/takepart_unipop/theme';
+
+  return array(
+    'node__video_embed' => array(
+      'path'      => $template_path,
+      'template'  => 'node--video-embed',
+      'variables' => array('node' => NULL),
+    ),
+    'unipop_popup' => array(
+      'path'      => $template_path,
+      'template'  => 'unipop-popup',
+      'variables' => array('node' => NULL),
+    ),
+  );
+}
+
+
+
+function takepart_unipop_preprocess_unipop_popup(&$vars) {
+  // save values for ad click js
+  drupal_add_js(array('takepart_unipop'=> array('embeddedvideotitle' => $vars['field_promo_headline'][0]['value'])),'setting');
+}
+
+
+function takepart_unipop_preprocess_page(&$vars) {
+  // save values for ad click js
+  drupal_add_js(array('takepart_unipop'=> array('hostpagetitle' => $vars['node']->title)),'setting');
+}
+
+
+
+/**
+ * Implements hook_menu().
+ */
+function takepart_unipop_menu() {
+  $items['admin/config/media/unipop/settings'] = array(
+    'title' => 'Universal Popup Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_unipop_settings_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'takepart_unipop.admin.inc',
+  );
+
+  return $items;
+}
+
+
+
+
+
