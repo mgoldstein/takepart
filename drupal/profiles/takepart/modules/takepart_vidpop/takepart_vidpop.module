@@ -46,16 +46,8 @@ function takepart_vidpop_preprocess_vidpop_popup(&$vars) {
 
 
 function takepart_vidpop_preprocess_page(&$vars) {
-  if (isset($variables['node'])) {
-    // save values for ad click js
-    drupal_add_js(array('takepart_vidpop'=> array('hostpagetitle' => $vars['node']->title)),'setting');
-    if ($variables['node']->title == "Contact Us") {
-      // #18868    pglatz 7/10/2012
-      // save referrer URL to track in webform
-      // it is saved as $_COOKIE['Drupal_visitor_webform_referrer']
-      user_cookie_save(array('webform_referrer' => $_SERVER['HTTP_REFERER']));
-    }
-  }
+  // save values for ad click js
+  drupal_add_js(array('takepart_vidpop'=> array('hostpagetitle' => $vars['node']->title)),'setting');
 }
 
 
