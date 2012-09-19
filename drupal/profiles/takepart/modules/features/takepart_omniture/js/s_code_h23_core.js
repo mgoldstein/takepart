@@ -2,40 +2,44 @@
 Copyright 1996-2011 Adobe, Inc. All Rights Reserved
 More info available at http://www.omniture.com */
 
-var s_account=Drupal.settings.omniture.s_account; // "takepartprod"
-var s=s_gi(s_account)
+// var s_account=Drupal.settings.omniture.s_account; // "takepartprod"
+if (typeof Drupal != 'undefined') {
+  var s_account=Drupal.settings.omniture.s_account;
+} else {
+  var s_account="takepartprod";
+}var s=s_gi(s_account);
 /************************** CONFIG SECTION **************************/
 /* You may add or alter any code config here. */
-s.charSet="UTF-8"
+s.charSet="UTF-8";
 
 /* Conversion Config */
-s.currencyCode="USD"
+s.currencyCode="USD";
 
 /* Link Tracking Config */
-s.trackDownloadLinks=true
-s.trackExternalLinks=true
-s.trackInlineStats=true
-s.linkDownloadFileTypes="exe,zip,wav,mp3,mov,mpg,avi,wmv,pdf,doc,docx,xls,xlsx,ppt,pptx"
-s.linkInternalFilters="javascript:,takepart.com,traffic.outbrain.com"
-s.linkLeaveQueryString=false
-s.linkTrackVars="prop33,prop34,prop35,prop36"
-s.linkTrackEvents="None"
+s.trackDownloadLinks=true;
+s.trackExternalLinks=true;
+s.trackInlineStats=true;
+s.linkDownloadFileTypes="exe,zip,wav,mp3,mov,mpg,avi,wmv,pdf,doc,docx,xls,xlsx,ppt,pptx";
+s.linkInternalFilters="javascript:,takepart.com,traffic.outbrain.com";
+s.linkLeaveQueryString=false;
+s.linkTrackVars="prop33,prop34,prop35,prop36";
+s.linkTrackEvents="None";
 
 /* Page Name Plugin Config */
-s.siteID="takepart"            // leftmost value in pagename
-s.defaultPage=""       // filename to add when none exists
-s.queryVarsList=""     // query parameters to keep
+s.siteID="takepart";            // leftmost value in pagename
+s.defaultPage="";       // filename to add when none exists
+s.queryVarsList="";     // query parameters to keep
 s.pathExcludeDelim=";" // portion of the path to exclude
 s.pathConcatDelim=":"   // page name component separator
 s.pathExcludeList="?"   // elements to exclude from the path
 
 /* Form Analysis Plugin Config */
-s.formList="user-login,user-register"
-s.trackFormList=true
-s.trackPageName=true
-s.useCommerce=false
-s.varUsed="prop28"
-s.eventList="" //Abandon,Success,Error
+s.formList="user-login,user-register";
+s.trackFormList=true;
+s.trackPageName=true;
+s.useCommerce=false;
+s.varUsed="prop28";
+s.eventList=""; //Abandon,Success,Error
 
 // s.channelDomain="Partner|americanexpress.com"; /*KN: Remove/update? */
 
