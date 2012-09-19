@@ -2,14 +2,14 @@
   $(document).ready(function() {
     // Newsletter signup event
     $(".takepart-newsletter-embed-wrapper > .takepart-newsletter-embed-message").bind(
-      'newsletter_signup', function(e, title) {
-        s.linkTrackVars = "eVar23,eVar30,events";
-        s.linkTrackEvents = "event39";
-        s.eVar23 = title;
-        s.eVar30 = s.pageName;
-        s.events = 'event39';
-        s.tl(true, 'o', 'Newsletter Signup');
-      }
+        'newsletter_signup', function(e, title) {
+          s.linkTrackVars = "eVar23,eVar30,events";
+          s.linkTrackEvents = "event39";
+          s.eVar23 = title;
+          s.eVar30 = s.pageName;
+          s.events = 'event39';
+          s.tl(true, 'o', 'Newsletter Signup');
+        }
     );
     $(".takepart-newsletter-embed-wrapper").each(function() {
       // setup the email input field to have a placeholder message
