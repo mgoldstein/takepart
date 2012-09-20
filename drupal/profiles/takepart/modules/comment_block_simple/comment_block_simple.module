@@ -1,4 +1,101 @@
 <?php
+/**
+ * @file
+ * Comment block module.
+ */
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function comment_block_simple_form_node_form_alter(&$form, &$form_state) {
+
+  $node = $form['#node'];
+
+  $values = comment_block_simple_node_form_values($form, $form_state);
+
+  $form['comment_settings']['comment_block_simple_block_title'] = array(
+    '#title' => t('Block Title'),
+    '#description' => t('The title to use for the comment block.'),
+    '#type' => 'textfield',
+    '#default_value' => $values->block_title,
+    '#required' => TRUE,
+  );
+}
+
+/**
+ * Helper function for getting the comment settings form values.
+ */
+function comment_block_simple_node_form_values($form, $form_state) {
+
+  $node = $form['#node'];
+  $settings = FALSE;
+
+  $op_present = isset($form_state['values']['op']);
+  $is_preview = $form_state['values']['op'] == t('Preview');
+  if ($op_present && $is_preview) {
+    $settings = new StdClass();
+    $settings->block_title
+      = $form_state['values']['comment_block_simple_block_title'];
+  }
+  elseif (isset($node->nid) && $node->nid > 0) {
+    // Load the values from the database.
+    $settings = db_select('comment_block_simple_settings', 's')
+      ->fields('s', array('block_title'))
+      ->condition('s.nid', $node->nid, '=')
+      ->execute()
+      ->fetchObject();
+  }
+
+  if (!$settings) {
+    // New node or the node was created before the module was installed, use
+    // default values.
+    $settings = new StdClass();
+    $settings->block_title = t('Comments');
+  }
+
+  return $settings;
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function comment_block_simple_node_insert($node) {
+  if (isset($node->comment_block_simple_block_title)) {
+    db_insert('comment_block_simple_settings')
+      ->fields(array(
+        'nid' => $node->nid,
+        'block_title' => $node->comment_block_simple_block_title,
+      ))
+      ->execute();
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function comment_block_simple_node_update($node) {
+  if (isset($node->comment_block_simple_block_title)) {
+    db_merge('comment_block_simple_settings')
+      ->key(array('nid' => $node->nid))
+      ->fields(array(
+        'block_title' => $node->comment_block_simple_block_title,
+      ))
+      ->execute();
+  }
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function comment_block_simple_node_delete($node) {
+  db_delete('comment_block_simple_settings')
+    ->condition('nid', $node->nid, '=')
+    ->execute();
+}
+
+/**
+ * Implements hook_block_info().
+ */
 function comment_block_simple_block_info() {
   return array(
     'comment_block' => array(
@@ -6,31 +103,36 @@ function comment_block_simple_block_info() {
     ),
   );
 }
-function comment_block_simple_block_view($delta= 1) {
-  global $user;
-  global $base_url;
+
+/**
+ * Implements hook_block_view().
+ */
+function comment_block_simple_block_view($delta = 1) {
 
   $node = menu_get_object();
   $content = comment_node_page_additions($node);
-  
-  // Requires the Facebook Comments module
+
+  // Requires the Facebook Comments module.
   if (module_exists('facebook_comments')) {
-  
+
     // Facebook comments should be use for published nodes with no existing
-    // comments that are not hidden
-    if ($node->comment_count == 0 && $node->comment == COMMENT_NODE_OPEN && $node->status == NODE_PUBLISHED) {
-  
-      // node has no drupal comments, can use facebook
+    // comments that are not hidden.
+    $no_comments = $node->comment_count == 0;
+    $comments_open = $node->comment == COMMENT_NODE_OPEN;
+    $node_published = $node->status == NODE_PUBLISHED;
+    if ($no_comments && $comments_open && $node_published) {
+
+      // Get the Facebook comments settings.
       $fb_comments = db_select('facebook_comments', 'f')
         ->fields('f', array('enabled', 'amount'))
         ->condition('f.nid', $node->nid, '=')
         ->execute()
         ->fetchObject();
 
-      if (isset($fb_comments->enabled) && $fb_comments->enabled) {
-  
-        // add the Facebook App ID if it exists
-        if ($appid = variable_get('facebook_comments_appid', '')) {    
+      if (!empty($fb_comments) && !empty($fb_comments->enabled)) {
+
+        // Add the Facebook App ID to the page header if it exists.
+        if ($appid = variable_get('facebook_comments_appid', '')) {
           $element = array(
             '#tag' => 'meta',
             '#attributes' => array(
@@ -41,36 +143,45 @@ function comment_block_simple_block_view($delta= 1) {
           drupal_add_html_head($element, 'facebook_comments');
         }
 
-        // generate the URL
-        $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
-        $protocol = strtolower($_SERVER["SERVER_PROTOCOL"]);
-        $protocol = substr($protocol, 0, strpos($protocol, "/")) . $s; 
-        $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]); 
-        $url = $base_url .'/'. drupal_get_path_alias($_GET['q']);
+        // Generate the page data-href.
+        $url = $_SERVER["REQUEST_URI"];
+        $url = preg_replace('/\?.*/', '', $url);
+        $url = 'http://' . $_SERVER["SERVER_NAME"] . $url;
 
-        // add user defined settings  
-        $width = variable_get('facebook_comments_width', '640');
-        $style = variable_get('facebook_comments_style', 'light');
-
+        // Set the template variables.
         $content['#fb_comments'] = array(
-          'enabled' => true,
+          'enabled' => TRUE,
           'url' => $url,
-          'width' => $width,
-          'style' => $style,
+          'width' => variable_get('facebook_comments_width', '640'),
+          'style' => variable_get('facebook_comments_style', 'light'),
           'amount' => $fb_comments->amount,
         );
       }
     }
   }
 
+  $settings = db_select('comment_block_simple_settings', 's')
+    ->fields('s', array('block_title'))
+    ->condition('s.nid', $node->nid, '=')
+    ->execute()
+    ->fetchObject();
+  if (!empty($settings) && !empty($settings->block_title)) {
+    $comments_title = check_plain($settings->block_title);
+  }
+  else {
+    $comments_title = t('Comments');
+  }
+
+  // Add in default template variables.
   $content += array(
     '#fb_comments' => array(
-      'enabled' => false,
+      'enabled' => FALSE,
     ),
-    '#theme' => 'comment_wrapper__node_' . $node->type, 
-    '#node' => $node, 
-    'comments' => array(), 
+    '#theme' => 'comment_wrapper__node_' . $node->type,
+    '#node' => $node,
+    'comments' => array(),
     'comment_form' => array(),
+    'comments_title' => $comments_title,
   );
 
   return array(

@@ -1,2 +1,5 @@
 name = Simple Comment Block
+description = Provides a block for placing comments on a page using Context.
 core = 7.x
+package = TakePart
+version = 7.x-1.0
