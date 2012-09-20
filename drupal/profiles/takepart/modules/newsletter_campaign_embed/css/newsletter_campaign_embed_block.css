@@ -9,7 +9,8 @@
 .takepart-newsletter-embed-form {
   position: relative;
 }
-.takepart-newsletter-embed-form-wrapper {
+.takepart-newsletter-embed-form-wrapper,
+.takepart-newsletter-embed-wrapper {
   position: relative;
 }
 .takepart-newsletter-embed-form .form-text {
