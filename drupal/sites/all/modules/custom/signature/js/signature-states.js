@@ -1,20 +1,41 @@
 (function ($) {
 
-  Drupal.behaviors.signatureRefreshList = {};
-  Drupal.behaviors.signatureRefreshList.attach = function() {
-    if (Drupal.settings && Drupal.settings.views && Drupal.settings.views.ajaxViews) {
-      // Retrieve the path to use for views' ajax.
-      var ajax_path = Drupal.settings.views.ajax_path;
-
-      // If there are multiple views this might've ended up showing up multiple times.
-      if (ajax_path.constructor.toString().indexOf("Array") != -1) {
-        ajax_path = ajax_path[0];
+  Drupal.behaviors.signaturesBlock = {
+    attach: function(context) {
+      // There must be AJAX enabled views on the page.
+      if (!Drupal.settings || !Drupal.settings.views && Drupal.settings.views.ajaxViews) {
+        return;
       }
       
-      $.each(Drupal.settings.views.ajaxViews, function(i, settings) {
-        if (settings.view_name == 'petition_signature_list') {
+      // onLoad and onAjax
+      var container = $('.field-name-field-signatures, .block-boxes-view-name-pledge_signature_block');
+      
+      container.once('signature-block-init', _init);
+      
+      // onLoad only
+      function _init(){
+        // variables
+        var element = $(this);
+        
+        // onLoad
+        $.each(Drupal.settings.views.ajaxViews, function(i, settings) {
+          if (settings.view_name !== 'petition_signature_list' && settings.view_name !== 'pledge_signature_block') {
+            return;
+          }
           var view = '.view-dom-id-' + settings.view_dom_id;
+          
+          // if a sub-view, exit
+          if ($(view).parents('.view').size()){
+            return;
+          }
+          
+          // Retrieve the path to use for views' ajax. (is this needed?)
+          var ajax_path = Drupal.settings.views.ajax_path;
 
+          // If there are multiple views this might've ended up showing up multiple times. (is this needed?)
+          if (ajax_path.constructor.toString().indexOf("Array") != -1) {
+            ajax_path = ajax_path[0];
+          }
           var element_settings = {
             url: ajax_path,
             submit: settings,
@@ -22,37 +43,10 @@
             selector: view,
             progress: { type: 'throbber' }
           };
-
-          $(view).filter(':not(.signature-list-refresh-processed)')
-            // Don't attach to nested views. Doing so would attach multiple behaviors
-            // to a given element.
-            .filter(function() {
-              // If there is at least one parent with a view class, this view
-              // is nested (e.g., an attachment). Bail.
-              return !$(this).parents('.view').size();
-            })
-            .each(function() {
-              // Set a reference that will work in subsequent calls.
-              var target = this;
-              $(this)
-                .addClass('signature-list-refresh-processed')
-                // Process pager, tablesort, and attachment summary links.
-                .closest('.field-name-field-signatures')
-                .each(function () {
-                  var viewData = {};
-                  // Construct an object using the settings defaults and then overriding
-                  // with data specific to the link.
-                  $.extend(
-                    viewData,
-                    settings
-                  );
-                  element_settings.submit = viewData;
-                  var ajax = new Drupal.ajax(false, this, element_settings);
-                }); // .each function () {
-          }); // $view.filter().each
-        } // if view_name == 'petition_signature_list'
-      }); // .each Drupal.settings.views.ajaxViews
-    } // if
+          var ajax = new Drupal.ajax(false, container, element_settings);
+        });
+      }
+    }
   };
   
   var updateSignatureState = function (response) {
@@ -77,13 +71,8 @@
         jQuery.cookie(node.view_latch, 1, {path:'/'});
       }
 
-      // Reload any signature lists
-      $('.field-name-field-signatures.initial-signature-refresh-processed', $(div_id))
-        .once('submit-signature-refresh')
-        .trigger('refresh_signature_list');
-      $('.field-name-field-signatures', $(div_id))
-        .once('initial-signature-refresh')
-        .trigger('refresh_signature_list');
+      // Refresh any signature lists
+      $('.field-name-field-signatures, .block-boxes-view-name-pledge_signature_block').trigger('refresh_signature_list');
 
       // Adjust the selected tab state of the petition
       var tab = '.signature-tab-' + node.state;
@@ -119,8 +108,7 @@
           nodes[index] = $(this).attr('nid');
         });
         if (nodes.length > 0) {
-          $.get('/ajax/signature/node/' + nodes.join(','), null,
-            updateSignatureState);
+          $.get('/ajax/signature/node/' + nodes.join(','), null, updateSignatureState);
         }
       }
     }
