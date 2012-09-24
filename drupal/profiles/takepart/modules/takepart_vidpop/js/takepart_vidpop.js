@@ -35,7 +35,7 @@ function vidpop_loaded() {
           });
 
           /*
-           * not supported, because addthis is ona different omain
+           * not supported, because addthis is on a different domain
            * revisit when we replace addthis
            *
            // On click of any of the share icons in the modal, pls fire (once per session per button)
