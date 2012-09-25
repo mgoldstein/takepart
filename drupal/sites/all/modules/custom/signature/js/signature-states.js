@@ -3,7 +3,7 @@
   Drupal.behaviors.signaturesBlock = {
     attach: function(context) {
       // There must be AJAX enabled views on the page.
-      if (!Drupal.settings || !Drupal.settings.views && Drupal.settings.views.ajaxViews) {
+      if (!Drupal.settings || !Drupal.settings.views || !Drupal.settings.views.ajaxViews) {
         return;
       }
       
