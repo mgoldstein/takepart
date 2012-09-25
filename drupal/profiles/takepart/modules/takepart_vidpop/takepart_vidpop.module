@@ -147,7 +147,7 @@ GS_googleEnableAllServices();';
   }
 
   //register the slot
-  $ad_html .= 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad_id . '");';
+  $ad_html = 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad_id . '");';
   drupal_add_js($ad_html, 'inline');
   $banner = <<<HTM
 <script type='text/javascript'>
