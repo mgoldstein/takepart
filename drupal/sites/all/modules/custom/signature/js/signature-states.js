@@ -70,7 +70,10 @@
         $(div_id).trigger('signature_form_view', [node.title]);
         jQuery.cookie(node.view_latch, 1, {path:'/'});
       }
-
+      
+      // Scroll to Thank You content
+      $('html,body').animate({scrollTop:$(div_id).offset().top}, 500);
+      
       // Refresh any signature lists
       $('.field-name-field-signatures, .block-boxes-view-name-pledge_signature_block').trigger('refresh_signature_list');
 

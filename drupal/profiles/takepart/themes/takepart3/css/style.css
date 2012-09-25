@@ -3473,9 +3473,7 @@ body.node-type-petition-action .node-petition-action .form-item-newsletter {
 }
 body.node-type-petition-action .node-petition-action #edit-signature-display-disclaimer {
     margin-left: 154px;
-}
-body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper {
-    margin-left: 37px;
+    width: 331px;
 }
 body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
     margin-left: 180px;

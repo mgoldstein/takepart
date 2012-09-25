@@ -26,7 +26,7 @@ padding-bottom: 1em;
   margin: 0 0 16px 16px;
 }
 #content .node-pledge-action ul li {
-  margin: 5px;
+  margin: 5px 5px 0px 5px;
   font-size: 12px;
 }
 #content .node-pledge-action .group-heading-split-right ul {
@@ -62,8 +62,6 @@ padding-bottom: 1em;
 }
 .view-pledge-signature-block .views-table .views-field-field-sig-first-name {
   font-weight: bold;
-  color: #1ca9e7;
-  padding-left: 5px;
 }
 .node-pledge-action .views-table {
   width: 100%;
@@ -72,9 +70,15 @@ padding-bottom: 1em;
     float: left;
 }
 
-.node-pledge-action .group-heading-split-right {
+.node-pledge-action .group-heading-split-right,
+.node-pledge-action .field-name-field-pledge-action-short,
+.node-pledge-action .field-name-field-petition-sponsor,
+.node-pledge-action .field-name-field-pledge-action-long,
+.node-pledge-action .field-name-field-pledge-issue {
     float: left;
     width: 375px;
+    font-size: 13px;
+    line-height: 1.5em;
 }
 
 .node-pledge-action .group-heading-split-right .field-type-text-with-summary {
@@ -82,7 +86,7 @@ padding-bottom: 1em;
     margin-bottom: 1em;
 }
 
-.node-pledge-action .group-heading-split-right .field-label-inline {
+.node-pledge-action .field-name-field-petition-sponsor .field-label-inline {
     line-height: 1.5em;
 }
 
@@ -158,6 +162,7 @@ padding-bottom: 1em;
 .embedaction-content .node-pledge-action #edit-signature-display-disclaimer {
     margin-right: 0;
     margin-left: 104px !important;
+    width: 322px;
 }
 
 .node-pledge-action .signature-sign-button {
@@ -187,8 +192,7 @@ padding-bottom: 1em;
 }
 
 .embedaction-content .node-pledge-action .signature-terms-of-use {
-    margin-left: 110px;
-    margin-bottom: 4px;
+  text-indent: 58px;
 }
 
 .node-pledge-action .group-address-tabs div.horizontal-tabs {
@@ -239,7 +243,7 @@ fieldset#signature_international_signature_form_group_outside_us #edit-field-sig
 }
 #signature-international-signature-form select#edit-field-sig-state-und,
 #signature-international-signature-form select#edit-field-sig-country-und {
-    width: 200px;
+    width: 241px;
 }
 
 .node-pledge-action .group-pledge-tabs .horizontal-tabs-panes {
@@ -289,6 +293,21 @@ fieldset#signature_international_signature_form_group_outside_us #edit-field-sig
     margin-left: 50px;
 }
 
+.embedaction-content #edit-field-sig-zip-code-und-0-value {
+  width: 308px;
+}
+.embedaction-content .node-pledge-action .field-name-field-sig-first-name,
+.embedaction-content .node-pledge-action .field-name-field-sig-last-name,
+.embedaction-content .node-pledge-action .field-name-field-sig-address,
+.embedaction-content .node-pledge-action .field-name-field-sig-city,
+.embedaction-content .node-pledge-action .form-item-email,
+.embedaction-content .node-pledge-action .field-name-field-sig-state,
+.embedaction-content .node-pledge-action .field-name-field-sig-zip-code,
+.embedaction-content .node-pledge-action .field-name-field-sig-country,
+.embedaction-content .node-pledge-action .field-name-field-sig-postal-code {
+    margin-left: 0;
+}
+
 body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper.group-address-tabs {
     margin-left: 50px;
 }
@@ -299,12 +318,88 @@ body.node-type-pledge-action .node-pledge-action .form-item-newsletter {
 }
 body.node-type-pledge-action .node-pledge-action #edit-signature-display-disclaimer {
     margin-left: 154px;
+    width: 331px;
 }
 body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
     margin-left: 37px;
 }
 .node-pledge-action .signature-terms-of-use {
-    /*margin-left: 180px;
-    margin-bottom: 2em;*/
     text-align: center;
+    text-indent:-16px;
+}
+
+.node-pledge-action input.signature-sign-button {
+  font-family: Helvetica, Arial, sans-serif;
+  background: url(../images/2012-08-07/petition_sign_button.png) repeat-x scroll 0 0 transparent;
+  border: 0 none;
+  width: 316px;
+  height: 58px;
+  margin-left: 157px;
+  padding: 0;
+}
+.embedaction-content .node-pledge-action input.signature-sign-button {
+  margin-left: 93px;
+}
+.node-pledge-action input.signature-sign-button:hover {
+  background: url(../images/2012-08-07/petition_sign_button_over.png) repeat-x scroll 0 0 transparent;
+  border: 0 none;
+  box-shadow: none;
+}
+
+.node-pledge-action input.form-text {
+    width: 308px;
+}
+
+.node-pledge-action  .field-name-field-petition-sponsor {
+  margin-bottom: 1em;
+}
+
+.node-type-pledge-action .takepart_addthis_footer {
+  padding: 10px 0;
+}
+
+.node-petition-action .view-petition-signature-list tbody tr.even, tr.odd {
+    background-color: transparent;
+    border-bottom: ;
+    height: 32px;
+    padding: 0.1em 0.6em;
+}
+.node-type-pledge-action .view-pledge-signature-block thead{
+  display: none;
+}
+.node-type-pledge-action .view-pledge-signature-block tr{
+  background-color: #fff;
+  border-bottom: 0px solid #CCCCCC;
+  height: 30px;
+}
+
+.node-type-pledge-action .block-boxes-view-name-pledge_signature_block h2 {
+  padding-bottom: 5px;
+}
+.node-type-pledge-action table {
+  border-bottom: 1px solid #ccc;
+}
+.node-type-pledge-action .pager {
+  padding-top: 3px;
+}
+.node-pledge-action .field-name-field-thank-you-message h2 {
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5em;
+    text-transform: none;
+}
+
+.node-pledge-action .ajax-progress {
+  float: right;
+  margin-top: 15px;
+  margin-right: 76px;
+}
+.embedaction-content .node-pledge-action .ajax-progress {
+  float: left;
+  margin-left: 8px;
+  margin-top: -46px;  
+}
+.node-pledge-action .progress-disabled {
+  float: none;
 }
