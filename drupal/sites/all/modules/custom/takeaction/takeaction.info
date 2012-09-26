@@ -1,0 +1,6 @@
+name = TakeAction Button Core
+description = Module for managing and configuring the TakeAction button
+core = 7.x
+package = TakeAction Button
+version = 7.x-1.0
+configure = admin/config/takeaction/settings
