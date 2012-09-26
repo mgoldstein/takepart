@@ -312,10 +312,6 @@ fieldset#signature_international_signature_form_group_outside_us #edit-field-sig
 .node-pledge-action .field-name-field-sig-postal-code {
     margin-left: 50px;
 }
-
-.embedaction-content #edit-field-sig-zip-code-und-0-value {
-  width: 308px;
-}
 .embedaction-content .node-pledge-action .field-name-field-sig-first-name,
 .embedaction-content .node-pledge-action .field-name-field-sig-last-name,
 .embedaction-content .node-pledge-action .field-name-field-sig-address,
