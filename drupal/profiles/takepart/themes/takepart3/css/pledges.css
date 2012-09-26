@@ -94,7 +94,13 @@ padding-bottom: 1em;
     *display: inline;
     /* end inline-block */
 }
-
+.embedaction-wrapper .node-pledge-action .group-heading-split-right,
+.embedaction-wrapper .node-pledge-action .field-name-field-pledge-action-short,
+.embedaction-wrapper .node-pledge-action .field-name-field-petition-sponsor,
+.embedaction-wrapper .node-pledge-action .field-name-field-pledge-action-long,
+.embedaction-wrapper .node-pledge-action .field-name-field-pledge-issue {
+    width: auto;
+}
 .node-pledge-action .group-heading-split-right .field-type-text-with-summary {
     line-height: 1.5em;
     margin-bottom: 1em;
@@ -164,8 +170,8 @@ padding-bottom: 1em;
 
 .node-pledge-action .form-type-checkbox label{
     float: none;
-    width: auto;
-    padding-left: 6px;
+    padding: 0;
+    vertical-align: middle;
 }
 
 .node-pledge-action #edit-signature-display-disclaimer {
@@ -420,6 +426,26 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
 .node-pledge-action .field-name-field-petition-sponsor {
   margin-bottom: 1em;
 }
-.node-pledge-action .field-name-field-pledge-action-long {
+.node-pledge-action .field-name-field-pledge-action-short {
   display: none;
+}
+.node-pledge-action .field-name-field-pledge-action-short.inactive,
+.node-pledge-action .field-name-field-pledge-action-long.inactive {
+  display: none;
+}
+.node-pledge-action .field-name-field-pledge-action-short.active,
+.node-pledge-action .field-name-field-pledge-action-long.active {
+  display: block;
+}
+
+.embedaction-wrapper .node-pledge-action .field-name-field-petition-sponsor .field-items {
+  width: 395px;
+}
+
+.embedaction-wrapper .node-pledge-action .field-name-field-petition-sponsor .field-item {
+  float: left;
+}
+
+.node-pledge-action .signature-form .form-type-checkbox label {
+  
 }

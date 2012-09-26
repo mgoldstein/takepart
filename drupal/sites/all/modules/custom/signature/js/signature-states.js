@@ -52,10 +52,10 @@
   var updateSignatureState = function (response) {
     var all_classes = [
       'signature-node-unsigned',
-      'signature-node-thank-you',
       'signature-node-signed',
       'signature-node-closed',
-      'signature-node-inactive'
+      'signature-node-inactive',
+      'signature-node-thank-you'
     ].join(' ');
     for (var nid in response) {
       var node = response[nid];
@@ -74,6 +74,11 @@
       // Refresh any signature lists
       $('.field-name-field-signatures, .block-boxes-view-name-pledge_signature_block').trigger('refresh_signature_list');
 
+      // Scroll to 'Thank you' section
+      var thankYouField = $('.field-name-field-thank-you-message:visible');
+      if (thankYouField.length > 0 && thankYouField.not('.embedaction-wrapper *').length > 0){
+        $('html,body').animate({scrollTop:thankYouField.offset().top - 10}, 500);
+      }
       // Adjust the selected tab state of the petition
       var tab = '.signature-tab-' + node.state;
       $(tab, $(div_id)).each(function () {
