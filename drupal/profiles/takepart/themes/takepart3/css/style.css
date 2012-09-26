@@ -3354,7 +3354,7 @@ div.embedaction-content h2.embedaction-divider a span {
 }
 .embedaction-content .node-petition-action #edit-signature-display-disclaimer {
     margin-right: 0;
-    margin-left: 104px !important;
+    margin-left: 100px !important;
 }
 
 .node-petition-action input.signature-sign-button {
@@ -3497,8 +3497,8 @@ body.node-type-petition-action .node-petition-action .form-item-newsletter {
     margin-left: 152px;
 }
 body.node-type-petition-action .node-petition-action #edit-signature-display-disclaimer {
-    margin-left: 154px;
-    width: 331px;
+  margin-left: 158px;
+  width: 323px;
 }
 body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
     margin-left: 180px;
