@@ -1,3 +1,15 @@
+.node-pledge-action .field-label-inline .field-label,
+.node-pledge-action .field-label-inline .field-items {
+    float: none;
+    /* inline-block */
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    /* end inline-block */
+    vertical-align: top;
+}
+
 .embedaction-content .node-pledge-action h1.signature-heading {
     color: #000;
     background: none;
@@ -11,9 +23,6 @@
   text-align: right;
   margin: 0px 0px 5px;
   font-weight: bold;
-}
-.node-pledge-action .field-name-field-pledge-action-long {
-  display: none;
 }
 .node-pledge-action .field-name-field-action-main-image {
   margin-top: 0;
@@ -75,10 +84,15 @@ padding-bottom: 1em;
 .node-pledge-action .field-name-field-petition-sponsor,
 .node-pledge-action .field-name-field-pledge-action-long,
 .node-pledge-action .field-name-field-pledge-issue {
-    float: left;
     width: 375px;
     font-size: 13px;
     line-height: 1.5em;
+    /* inline-block */
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    /* end inline-block */
 }
 
 .node-pledge-action .group-heading-split-right .field-type-text-with-summary {
@@ -98,9 +112,9 @@ padding-bottom: 1em;
     clear: none;
 }
 
-.node-pledge-action .group-heading-split-right .field-label-inline .field-label:after, 
-.node-pledge-action .group-heading-split-right .field-label-inline .field-items:after,
-.node-pledge-action .group-heading-split-right .field-label-inline .field-items .field-item:after {
+.node-pledge-action .field-label-inline .field-label:after, 
+.node-pledge-action .field-label-inline .field-items:after,
+.node-pledge-action .field-label-inline .field-items .field-item:after {
     float: none;
     display: inline;
     clear: none;
@@ -161,7 +175,7 @@ padding-bottom: 1em;
 }
 .embedaction-content .node-pledge-action #edit-signature-display-disclaimer {
     margin-right: 0;
-    margin-left: 104px !important;
+    margin-left: 105px !important;
     width: 322px;
 }
 
@@ -243,7 +257,7 @@ fieldset#signature_international_signature_form_group_outside_us #edit-field-sig
 }
 #signature-international-signature-form select#edit-field-sig-state-und,
 #signature-international-signature-form select#edit-field-sig-country-und {
-    width: 241px;
+    width: 237px;
 }
 
 .node-pledge-action .group-pledge-tabs .horizontal-tabs-panes {
@@ -317,7 +331,7 @@ body.node-type-pledge-action .node-pledge-action .form-item-newsletter {
     margin-left: 152px;
 }
 body.node-type-pledge-action .node-pledge-action #edit-signature-display-disclaimer {
-    margin-left: 154px;
+    margin-left: 155px;
     width: 331px;
 }
 body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
@@ -334,7 +348,7 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
   border: 0 none;
   width: 316px;
   height: 58px;
-  margin-left: 157px;
+  margin-left: 152px;
   padding: 0;
 }
 .embedaction-content .node-pledge-action input.signature-sign-button {
@@ -347,7 +361,7 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
 }
 
 .node-pledge-action input.form-text {
-    width: 308px;
+    width: 303px;
 }
 
 .node-pledge-action  .field-name-field-petition-sponsor {
@@ -402,4 +416,10 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
 }
 .node-pledge-action .progress-disabled {
   float: none;
+}
+.node-pledge-action .field-name-field-petition-sponsor {
+  margin-bottom: 1em;
+}
+.node-pledge-action .field-name-field-pledge-action-long {
+  display: none;
 }
