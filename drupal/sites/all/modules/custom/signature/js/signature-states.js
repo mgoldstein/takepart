@@ -67,7 +67,7 @@
     
       // Trigger the viewed event
       if (jQuery.cookie(node.view_latch) == null) {
-        $(div_id).trigger('signature_form_view', [node.title]);
+        $(div_id).trigger('signature_form_view', [node.title, node.type]);
         jQuery.cookie(node.view_latch, 1, {path:'/'});
       }
       
