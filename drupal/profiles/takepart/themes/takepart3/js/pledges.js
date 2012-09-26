@@ -39,6 +39,11 @@
             target = target.is(".wycdLink") ? target : target.parents(".wycdLink");
             wycdShortContainer.toggleClass('inactive').toggleClass('active');
             wycdLongContainter.toggleClass('inactive').toggleClass('active');
+            if (wycdShortContainer.hasClass('active')){
+              wycdLink.text(wycdMoreLabel);
+            } else {
+              wycdLink.text(wycdLessLabel);
+            }
           }
         };
         function _sigSubmission(event){
