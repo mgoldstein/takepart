@@ -37,6 +37,7 @@ function takeaction_feed_menu() {
 function takeaction_feed_actions_callback() {
   $actions = db_select('takeaction_feed_actions', 'a')
     ->fields('a', array('nid', 'data'))
+    ->condition('a.nid', 29605, '=')
     ->execute();
   $items = array();
   while ($action = $actions->fetchAssoc()) {
@@ -97,23 +98,50 @@ function takeaction_feed_node_delete($node) {
 }
 
 /**
- * Helper function for translating a text field.
+ * Helper function for translating a field with a 'value' into a single string.
  *
  * @param object $node
  *   The node to which the field is attached.
  * @param string $field
- *   The name of the field containing the text.
+ *   The name of the field containing the value.
+ * @param string $default
+ *   The default value to return if the field has not been set on the action.
  *
  * @return string
  *   The text of the field stripped of all HTML markup.
  */
-function _takeaction_feed_text_value($node, $field) {
+function _takeaction_feed_field_value($node, $field, $default = '') {
   $items = field_get_items('node', $node, $field);
   if ($items !== FALSE) {
     $first = reset($items);
     return strip_tags($first['value']);
   }
-  return '';
+  return $default;
+}
+
+/**
+ * Helper function for translating a field with a 'value' into a list of values.
+ *
+ * @param object $node
+ *   The node to which the field is attached.
+ * @param string $field
+ *   The name of the field containing the value.
+ *
+ * @return array
+ *   An array of the individual field values stripped of all HTML markup.
+ */
+function _takeaction_feed_field_list($node, $field) {
+  $items = field_get_items('node', $node, $field);
+  $values = array();
+  if ($items !== FALSE) {
+    foreach ($items as $delta => $item) {
+      $values[] = array(
+        'title' => strip_tags($item['value']),
+        'timestamp' => 0,
+      );
+    }
+  }
+  return $values;
 }
 
 /**
@@ -165,7 +193,7 @@ function _takeaction_feed_link_list($node, $field) {
     foreach ($items as $delta => $item) {
       $links[] = array(
         'title' => $item['title'],
-        'url' => $items['url'],
+        'url' => $item['url'],
       );
     }
   }
@@ -229,24 +257,56 @@ function takeaction_feed_action_item_data($node) {
   );
   if (in_array($node->type, $action_types)) {
 
+    // The promo headline is used if no internal title is available.
+    $promo_headline = _takeaction_feed_field_value($node,
+      'field_promo_headline');
+
+    // Get the optional internal title, use the promo headline if the internal
+    // title is empty.
+    $internal_title = _takeaction_feed_field_value($node,
+      'field_tab_internal_title');
+    if (strlen(trim($internal_title)) === 0) {
+      $internal_title = $promo_headline;
+    }
+
+    // Get the optional external title, use the internal title if the external
+    // title is empty.
+    $external_title = _takeaction_feed_field_value($node,
+      'field_tab_external_title');
+    if (strlen(trim($external_title)) === 0) {
+      $external_title = $internal_title;
+    }
+
+    // The actionCopy value is an aggregate of the fields that make up the
+    // 'body' of the action.
     if ($node->type === 'pledge_action') {
-      $aggregate_body = _takeaction_feed_text_value($node,
+      // For pledges uses the issue field, what you can do field and the
+      // pledge statement (body) field.
+      $aggregate_body = _takeaction_feed_field_value($node,
         'field_pledge_issue');
-      $aggregate_body .= _takeaction_feed_text_value($node,
+      $aggregate_body .= _takeaction_feed_field_value($node,
         'field_pledge_action_long');
-      $aggregate_body .= _takeaction_feed_text_value($node, 'body');
+      $aggregate_body .= _takeaction_feed_field_value($node, 'body');
     }
     elseif ($node->type === 'petition_action') {
-      $aggregate_body = _takeaction_feed_text_value($node, 'body');
-      $aggregate_body .= _takeaction_feed_text_value($node,
+      // For petitions use the short introduction (body) field and the about the
+      // petition field.
+      $aggregate_body = _takeaction_feed_field_value($node, 'body');
+      $aggregate_body .= _takeaction_feed_field_value($node,
         'field_petition_about');
     }
     else {
-      $aggregate_body = _takeaction_feed_text_value($node, 'body');
+      // For simple actions use the body field.
+      $aggregate_body = _takeaction_feed_field_value($node, 'body');
     }
 
+    // Get the action goal and date range (if available). Also get the action
+    // button text to use as a default if the TAB call to action field is empty.
     if ($node->type === 'pledge_action' || $node->type === 'petition_action') {
+      // For petitions and pledges the fields are stored in the signature
+      // settings.
       $settings = entity_load_single('signature_node', $node->nid);
+      $button_text = $settings->sign_label;
       $action_goal = $settings->goal;
       if ($settings->limit_to_dates) {
         $date_range = array(
@@ -256,7 +316,6 @@ function takeaction_feed_action_item_data($node) {
         );
       }
       else {
-        $action_goal = 0;
         $date_range = array(
           'limited' => 'false',
           'startDate' => 0,
@@ -264,27 +323,42 @@ function takeaction_feed_action_item_data($node) {
         );
       }
     }
+    else {
+      // For simple actions use empty defaults.
+      $button_text = '';
+      $action_goal = 0;
+      $date_range = array(
+        'limited' => 'false',
+        'startDate' => 0,
+        'endDate' => 0,
+      );
+    }
 
-    $external_tab = FALSE;
-    $priority = 0;
+    // Get the optional call to action, use the signature button text as a
+    // default if the call to action is empty.
+    $call_to_action = _takeaction_feed_field_value($node,
+      'field_tab_call_to_action');
+    if (strlen(trim($external_title)) === 0) {
+      $call_to_action = $button_text;
+    }
 
     return array(
       'id' => $node->nid,
-      'internalTitle' => _takeaction_feed_text_value($node,
-        'field_promo_headline'),
-      'externalTitle' => _takeaction_feed_text_value($node,
-        'field_promo_headline'),
+      'internalTitle' => $internal_title,
+      'externalTitle' => $external_title,
       'publishedDate' => $node->created,
       'updatedDate' => $node->changed,
-      'internalDescription' => $aggregate_body,
-      'externalDescription' => $aggregate_body,
-      'callToAction' => _takeaction_feed_text_value($node,
-        'field_action_button_text'),
+      'internalDescription' => _takeaction_feed_field_value($node,
+        'field_tab_internal_desc'),
+      'externalDescription' => _takeaction_feed_field_value($node,
+        'field_tab_external_desc'),
+      'callToAction' => $call_to_action,
       'pageUrl' => url('node/' . $node->nid, array('absolute' => TRUE)),
       'thumbnailUrl' => _takeaction_feed_media_url($node,
-        'field_action_main_image'),
+        'field_thumbnail'),
       'type' => _takeaction_feed_term_list($node, 'field_action_type'),
-      'externalTAB' => $external_tab,
+      'externalTAB' => _takeaction_feed_field_value($node,
+        'field_tab_takepart_only'),
       'sponsors' => _takeaction_feed_group_list($node, 'field_action_sponsors'),
       'organizations' => _takeaction_feed_group_list($node,
         'field_action_organization'),
@@ -292,11 +366,12 @@ function takeaction_feed_action_item_data($node) {
       'freeTag' => _takeaction_feed_term_list($node, 'field_free_tag'),
       'actionCopy' => $aggregate_body,
       'contentLinks' => _takeaction_feed_link_list($node,
-        'field_content_links'),
-      'updateText' => '',
+        'field_tab_content_link'),
+      'updateText' => _takeaction_feed_field_list($node,
+        'field_tab_update_text'),
       'actionGoal' => $action_goal,
       'dateRange' => $date_range,
-      'priority' => $priority,
+      'priority' => _takeaction_feed_field_value($node, 'field_priority'),
     );
   }
   return FALSE;
