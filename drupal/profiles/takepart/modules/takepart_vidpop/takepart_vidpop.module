@@ -95,7 +95,7 @@ function takepart_vidpop_format_preview($uri, $vars) {
 
   // this is the href string for colorbox
   $vidpop_id = 'vidpop-details-' . $vars['nid'];
-  $href_string = '?width=870&amp;height=520&amp;inline=true#' . $vidpop_id;
+  $href_string = '?width=870&amp;height=420&amp;inline=true#' . $vidpop_id;
 
   // NOTE: we set the colorbox width to 870; it has padding that will pull it out
   // to our desired 900
