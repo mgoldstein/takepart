@@ -1,0 +1,40 @@
+<?php
+/**
+ * @file
+ * Module install, update and uninstall hooks.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function comment_block_simple_schema() {
+  $schema = array();
+  $schema['comment_block_simple_settings'] = array(
+    'description' => 'The table for per node comment settings.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'The {node}.nid to which the settings belong.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'block_title' => array(
+        'description' => 'The title to use for the comment block.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+  );
+  return $schema;
+}
+
+/**
+ * Add a table for storing node comment settings.
+ */
+function comment_block_simple_update_7100(&$sandbox) {
+  $name = 'comment_block_simple_settings';
+  $schema = comment_block_simple_schema();
+  db_create_table($name, $schema[$name]);
+}
