@@ -37,7 +37,6 @@ function takeaction_feed_menu() {
 function takeaction_feed_actions_callback() {
   $actions = db_select('takeaction_feed_actions', 'a')
     ->fields('a', array('nid', 'data'))
-    ->condition('a.nid', 29605, '=')
     ->execute();
   $items = array();
   while ($action = $actions->fetchAssoc()) {
