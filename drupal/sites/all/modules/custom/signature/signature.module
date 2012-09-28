@@ -1102,7 +1102,10 @@ function signature_base_form_callback($form, $form_state) {
     $variables['state'] = 'thank-you';
 
     $commands[] = ajax_command_invoke($node_selector, 'trigger', array(
-      'signature_form_submit', array(check_plain($node->title)),
+      'signature_form_submit', array(
+        check_plain($node->title),
+        $node->type,
+      ),
     ));
     $newsletter_signups = array();
     for ($num = 0; $num < 5; $num += 1) {
@@ -1382,6 +1385,7 @@ function signature_node_progress_variables($settings) {
   $decimals = $percent < 10.0 ? 1 : 0;
   return array(
     'title' => $settings->title,
+    'type' => $settings->node_type,
     'view_latch' => "signature_form_viewed_{$settings->nid}",
     'summary_id' => "signature-progress-summary-{$settings->nid}",
     'bar' => '/' . implode('/', array(

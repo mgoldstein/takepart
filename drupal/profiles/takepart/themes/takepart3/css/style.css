@@ -1418,7 +1418,9 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
 #right-rail .block-boxes-current-related_actions .views-row-last .views-field-field-promo-headline {
     margin: 0;
 }
-
+.node-petition-action .field-name-field-petition-sponsor {
+  margin-bottom: 1em;
+}
 .page-node-22547 #right-rail #block-petition-form-1 {
     border: 4px solid #ffea99;
 }
@@ -3192,7 +3194,30 @@ div.embedaction-content {
     font-weight: bold;
     line-height: 1.5em;
 }
+.node-petition-action .form-type-checkbox input,
+.node-petition-action .form-type-checkbox label {
+  float: none;
+  /* inline-block */
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* end inline-block */
+  vertical-align: top;
+}
 
+.embedaction-wrapper .node-petition-action .field-name-field-petition-sponsor .field-items {
+  width: 383px;
+}
+
+.embedaction-wrapper .node-petition-action .field-name-field-petition-sponsor .field-item {
+  float: left;
+}
+
+.node-petition-action .form-type-checkbox label {
+  text-align: left;
+  width: 293px;
+}
 .node-type-takepart-campaign #content h2.embedaction-divider, 
 div.embedaction-content h2.embedaction-divider {
     background: url("/profiles/takepart/themes/takepart3/images/45deg_lines_yellow.png") repeat-x scroll 0 0 transparent;
@@ -3318,8 +3343,8 @@ div.embedaction-content h2.embedaction-divider a span {
 .node-petition-action .form-item-display label,
 .node-petition-action .form-item-newsletter label {
     float: none;
-    width: auto;
-    padding-left: 6px;
+    padding: 0;
+    vertical-align: middle;
 }
 
 .node-petition-action #edit-signature-display-disclaimer {
@@ -3329,7 +3354,7 @@ div.embedaction-content h2.embedaction-divider a span {
 }
 .embedaction-content .node-petition-action #edit-signature-display-disclaimer {
     margin-right: 0;
-    margin-left: 104px !important;
+    margin-left: 107px !important;
 }
 
 .node-petition-action input.signature-sign-button {
@@ -3472,17 +3497,12 @@ body.node-type-petition-action .node-petition-action .form-item-newsletter {
     margin-left: 152px;
 }
 body.node-type-petition-action .node-petition-action #edit-signature-display-disclaimer {
-    margin-left: 154px;
-}
-body.node-type-petition-action .node-petition-action .field-group-htabs-wrapper {
-    margin-left: 37px;
+  margin-left: 159px;
+  width: 323px;
 }
 body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
     margin-left: 180px;
     margin-bottom: 2em;
-}
-.embedaction-content #edit-field-sig-zip-code-und-0-value {
-    width: 300px;
 }
 .embedaction-content .field-name-field-petition-recipient {
     margin-bottom: 5px;

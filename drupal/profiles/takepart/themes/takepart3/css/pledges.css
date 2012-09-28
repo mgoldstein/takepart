@@ -1,0 +1,447 @@
+.node-pledge-action .field-label-inline .field-label,
+.node-pledge-action .field-label-inline .field-items {
+    float: none;
+    /* inline-block */
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    /* end inline-block */
+    vertical-align: top;
+}
+
+.embedaction-content .node-pledge-action h1.signature-heading {
+    color: #000;
+    background: none;
+    height: auto;
+    font-size: 20px;
+    line-height: 1.2em;
+    display: none;
+}
+.node-pledge-action .wycdLink {
+  display: block;
+  text-align: right;
+  margin: 0px 0px 5px;
+  font-weight: bold;
+}
+.node-pledge-action .field-name-field-action-main-image {
+  margin-top: 0;
+}
+.node-pledge-action .field-name-field-pledge-issue .field-item {
+padding-bottom: 1em;
+}
+
+#content .node-pledge-action ul {
+  margin: 0 0 16px 16px;
+}
+#content .node-pledge-action ul li {
+  margin: 5px 5px 0px 5px;
+  font-size: 12px;
+}
+#content .node-pledge-action .group-heading-split-right ul {
+  margin-bottom: 0;
+}
+.node-pledge-action .field-type-text-with-summary{
+  width: 532px;
+  margin: 18px auto 27px auto;
+}
+.embedaction-content .node-pledge-action .field-type-text-with-summary{
+  margin: 34px 0 28px 0;
+  width: 100%;
+}
+.node-pledge-action .group-signature-fields .field-name-field-action-form-title {
+  font-family: 'TradeGothicLTStdCnBold';
+  text-transform: uppercase;
+  font-size: 22px;
+  background: url(/profiles/takepart/themes/takepart3/images/header_banner_640x48.png) no-repeat scroll 0 0 transparent;
+  height: 47px;
+  display: block;
+  color: #000;
+}
+.node-pledge-action .group-signature-fields .field-name-field-action-form-title .field-item {
+  margin-left: 54px;
+  padding-top: 6px;
+}
+.node-pledge-action .group-heading-split-left {
+    float: left;
+    width: auto;
+}
+.view-pledge-signature-block .views-table {
+  width: 100%;
+}
+.view-pledge-signature-block .views-table .views-field-field-sig-first-name {
+  font-weight: bold;
+}
+.node-pledge-action .views-table {
+  width: 100%;
+}
+.node-pledge-action .group-heading-split-left .field-name-field-action-main-image {
+    float: left;
+}
+
+.node-pledge-action .group-heading-split-right,
+.node-pledge-action .field-name-field-pledge-action-short,
+.node-pledge-action .field-name-field-petition-sponsor,
+.node-pledge-action .field-name-field-pledge-action-long,
+.node-pledge-action .field-name-field-pledge-issue {
+    width: 375px;
+    font-size: 13px;
+    line-height: 1.5em;
+    /* inline-block */
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    /* end inline-block */
+}
+.embedaction-wrapper .node-pledge-action .group-heading-split-right,
+.embedaction-wrapper .node-pledge-action .field-name-field-pledge-action-short,
+.embedaction-wrapper .node-pledge-action .field-name-field-petition-sponsor,
+.embedaction-wrapper .node-pledge-action .field-name-field-pledge-action-long,
+.embedaction-wrapper .node-pledge-action .field-name-field-pledge-issue {
+    width: auto;
+}
+.node-pledge-action .group-heading-split-right .field-type-text-with-summary {
+    line-height: 1.5em;
+    margin-bottom: 1em;
+}
+
+.node-pledge-action .field-name-field-petition-sponsor .field-label-inline {
+    line-height: 1.5em;
+}
+
+.node-pledge-action .group-heading-split-right .field-label-inline .field-label, 
+.node-pledge-action .group-heading-split-right .field-label-inline .field-items,
+.node-pledge-action .group-heading-split-right .field-label-inline .field-items .field-item {
+    float: none;
+    display: inline;
+    clear: none;
+}
+
+.node-pledge-action .field-label-inline .field-label:after, 
+.node-pledge-action .field-label-inline .field-items:after,
+.node-pledge-action .field-label-inline .field-items .field-item:after {
+    float: none;
+    display: inline;
+    clear: none;
+}
+
+.node-pledge-action .group-heading-split-right .signature-progress {
+    clear: both;
+    margin: 2em 0 1em 0;
+    text-align: center;
+}
+
+.node-pledge-action .group-heading-split-right p.signature-progress-complete {
+    width: 70px;
+    float: left;
+    text-transform: uppercase;
+    color: #666;
+    margin: 0 10px 0 0;
+    font-size: 11px;
+}
+
+.node-pledge-action .group-heading-split-right p.signature-progress-complete span.signature-progress-percent {
+    color: #000; 
+    font-size: 34px; 
+    font-weight: bold; 
+    display: block;
+}
+
+.embedaction-content .group-heading-split-right .signature-progress-count {
+    font-weight: bold;
+}
+
+.node-pledge-action .form-type-checkbox,
+.node-pledge-action .form-item-newsletter {
+    margin: 0 0 0 102px;
+}
+
+.node-pledge-action .form-wrapper {
+    clear: both;
+}
+
+.node-pledge-action label {
+    float: left;
+    width: 100px;
+    text-align: right;
+    padding-right: 8px;
+}
+
+.node-pledge-action .form-type-checkbox label{
+    float: none;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.node-pledge-action #edit-signature-display-disclaimer {
+    margin: 8px 115px 8px 100px;
+    font-size:  11px;
+    color: #666;
+}
+.embedaction-content .node-pledge-action #edit-signature-display-disclaimer {
+    margin-right: 0;
+    margin-left: 105px !important;
+    width: 322px;
+}
+
+.node-pledge-action .signature-sign-button {
+    width: 312px;
+    height: 52px;
+    background-color: #ffc500;
+    border: 2px ridge #fcaf3b;
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px #FFF;
+    color: #000;
+    text-transform: uppercase;
+    margin-left: 100px;
+    font: bold 24px Helvetica,Arial,sans-serif;
+    cursor: pointer;
+    margin-left: 156px;
+}
+
+.node-pledge-action input.signature-sign-button:hover {
+    /*Gradient*/ 
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
+    background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+    box-shadow: 3px 3px 5px #888888 inset;
+    border: 2px ridge #ffdf97;
+}
+
+.embedaction-content .node-pledge-action .signature-terms-of-use {
+  text-indent: 58px;
+}
+
+.node-pledge-action .group-address-tabs div.horizontal-tabs {
+    margin-bottom: 0;
+}
+
+.node-pledge-action .field-name-field-thank-you-share-bar {
+    margin-bottom: 30px;
+}
+
+body.node-type-pledge-action h1.title {
+  margin-bottom: 16px;
+}
+.node-pledge-action .field-name-body p {
+    font-size: 14px;
+    line-height: 20px;
+}
+.node-pledge-action p.signature-progress-count {
+    font-weight: bold;
+}
+.node-pledge-action #signature-international-signature-form {
+}
+.node-pledge-action #signature-international-signature-form .field-group-htabs-wrapper h2 {
+    height:  0;
+}
+#node_petition_action_embedaction_group_sign_the_petition #signature-international-signature-form h1 {
+    display: none;
+}
+.node-pledge-action .field-group-htabs-wrapper {
+    margin-left: -13px;
+    position: relative;
+}
+.embedaction-content .node-pledge-action .field-group-htabs-wrapper {
+    margin-left: 0;
+}
+.node-pledge-action .field-group-htabs-wrapper.address-selection-tabs .horizontal-tabs-panes {
+    padding: 0;
+    margin-top: 0;
+}
+fieldset#signature_international_signature_form_group_outside_us, fieldset#signature_international_signature_form_group_inside_us {
+    margin-bottom: 0;
+}
+#signature-international-signature-form #edit-field-sig-city .form-item {
+    margin-bottom: 0;
+}
+fieldset#signature_international_signature_form_group_outside_us #edit-field-sig-country .form-item, fieldset#signature_international_signature_form_group_inside_us #edit-field-sig-state .form-item {
+    margin-top: 0;
+}
+#signature-international-signature-form select#edit-field-sig-state-und,
+#signature-international-signature-form select#edit-field-sig-country-und {
+    width: 237px;
+}
+
+.node-pledge-action .group-pledge-tabs .horizontal-tabs-panes {
+    padding:  10px 0;
+    background-color: #DFE6EA;
+    margin-top: -5px;  
+}
+.embedaction-content .node-pledge-action .group-pledge-tabs .horizontal-tabs-panes {
+    padding:  none;
+    background-color: transparent;
+    padding-top: 0;
+}
+.node-pledge-action .group-pledge-tabs .horizontal-tabs-panes fieldset {
+    background-color: #FFF;  
+    padding: 10px;
+}
+.embedaction-content .node-pledge-action .group-pledge-tabs .horizontal-tabs-panes fieldset {
+    padding: 0;
+    margin-bottom: 0;
+}
+.embedaction-content .node-pledge-action .form-item-field-sig-country-und select {
+    width: 250px;
+}
+.node-pledge-action .address-selection-tabs ul.horizontal-tabs-list li {
+    position: absolute;
+    top:  0;
+    left: 335px;
+}
+.embedaction-content .node-pledge-action .address-selection-tabs ul.horizontal-tabs-list li {
+    left: 305px;
+    top: 6px;
+}
+.node-pledge-action .address-selection-tabs ul.horizontal-tabs-list li.selected {
+    display:  none;
+}
+
+/* to indent the form on non-embedded pages */
+.node-pledge-action .field-name-field-sig-first-name,
+.node-pledge-action .field-name-field-sig-last-name,
+.node-pledge-action .field-name-field-sig-address,
+.node-pledge-action .field-name-field-sig-city,
+.node-pledge-action .form-item-email,
+.node-pledge-action .field-name-field-sig-state,
+.node-pledge-action .field-name-field-sig-zip-code,
+.node-pledge-action .field-name-field-sig-country,
+.node-pledge-action .field-name-field-sig-postal-code {
+    margin-left: 50px;
+}
+.embedaction-content .node-pledge-action .field-name-field-sig-first-name,
+.embedaction-content .node-pledge-action .field-name-field-sig-last-name,
+.embedaction-content .node-pledge-action .field-name-field-sig-address,
+.embedaction-content .node-pledge-action .field-name-field-sig-city,
+.embedaction-content .node-pledge-action .form-item-email,
+.embedaction-content .node-pledge-action .field-name-field-sig-state,
+.embedaction-content .node-pledge-action .field-name-field-sig-zip-code,
+.embedaction-content .node-pledge-action .field-name-field-sig-country,
+.embedaction-content .node-pledge-action .field-name-field-sig-postal-code {
+    margin-left: 0;
+}
+
+body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper.group-address-tabs {
+    margin-left: 50px;
+}
+
+body.node-type-pledge-action .node-pledge-action .form-type-checkbox,
+body.node-type-pledge-action .node-pledge-action .form-item-newsletter {
+    margin-left: 152px;
+}
+body.node-type-pledge-action .node-pledge-action #edit-signature-display-disclaimer {
+    margin-left: 155px;
+    width: 331px;
+}
+body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
+    margin-left: 37px;
+}
+.node-pledge-action .signature-terms-of-use {
+    text-align: center;
+    text-indent:-16px;
+}
+
+.node-pledge-action input.signature-sign-button {
+  font-family: Helvetica, Arial, sans-serif;
+  background: url(../images/2012-08-07/petition_sign_button.png) repeat-x scroll 0 0 transparent;
+  border: 0 none;
+  width: 316px;
+  height: 58px;
+  margin-left: 152px;
+  padding: 0;
+}
+.embedaction-content .node-pledge-action input.signature-sign-button {
+  margin-left: 93px;
+}
+.node-pledge-action input.signature-sign-button:hover {
+  background: url(../images/2012-08-07/petition_sign_button_over.png) repeat-x scroll 0 0 transparent;
+  border: 0 none;
+  box-shadow: none;
+}
+
+.node-pledge-action input.form-text {
+    width: 303px;
+}
+
+.node-pledge-action  .field-name-field-petition-sponsor {
+  margin-bottom: 1em;
+}
+
+.node-type-pledge-action .takepart_addthis_footer {
+  padding: 10px 0;
+}
+
+.node-petition-action .view-petition-signature-list tbody tr.even, tr.odd {
+    background-color: transparent;
+    border-bottom: ;
+    height: 32px;
+    padding: 0.1em 0.6em;
+}
+.node-type-pledge-action .view-pledge-signature-block thead{
+  display: none;
+}
+.node-type-pledge-action .view-pledge-signature-block tr{
+  background-color: #fff;
+  border-bottom: 0px solid #CCCCCC;
+  height: 30px;
+}
+
+.node-type-pledge-action .block-boxes-view-name-pledge_signature_block h2 {
+  padding-bottom: 5px;
+}
+.node-type-pledge-action table {
+  border-bottom: 1px solid #ccc;
+}
+.node-type-pledge-action .pager {
+  padding-top: 3px;
+}
+.node-pledge-action .field-name-field-thank-you-message h2 {
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5em;
+    text-transform: none;
+}
+
+.node-pledge-action .ajax-progress {
+  float: right;
+  margin-top: 15px;
+  margin-right: 76px;
+}
+.embedaction-content .node-pledge-action .ajax-progress {
+  float: left;
+  margin-left: 8px;
+  margin-top: -46px;  
+}
+.node-pledge-action .progress-disabled {
+  float: none;
+}
+.node-pledge-action .field-name-field-petition-sponsor {
+  margin-bottom: 1em;
+}
+.node-pledge-action .field-name-field-pledge-action-short {
+  display: none;
+}
+.node-pledge-action .field-name-field-pledge-action-short.inactive,
+.node-pledge-action .field-name-field-pledge-action-long.inactive {
+  display: none;
+}
+.node-pledge-action .field-name-field-pledge-action-short.active,
+.node-pledge-action .field-name-field-pledge-action-long.active {
+  display: block;
+}
+
+.embedaction-wrapper .node-pledge-action .field-name-field-petition-sponsor .field-items {
+  width: 395px;
+}
+
+.embedaction-wrapper .node-pledge-action .field-name-field-petition-sponsor .field-item {
+  float: left;
+}
+
+.node-pledge-action .signature-form .form-type-checkbox label {
+  
+}

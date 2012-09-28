@@ -55,6 +55,7 @@ class SignatureNodeController extends EntityAPIController {
     $query = parent::buildQuery($ids, $conditions, $revision_id);
     $query->leftJoin('node', 'n', 'base.nid = n.nid');
     $query->addField('n', 'title', 'title');
+    $query->addField('n', 'type', 'node_type');
     $query->leftJoin($count_query, 'c', 'base.nid = c.nid');
     $query->addField('c', 'count', 'count');
     return $query;
@@ -69,6 +70,9 @@ class SignatureNodeController extends EntityAPIController {
         $entity->title = t('Settings for node @nid', array(
           '@nid' => $entity->nid,
         ));
+      }
+      if (!isset($entity->node_type)) {
+        $entity->node_type = '';
       }
       $queried_entities[$key] = $entity;
     }

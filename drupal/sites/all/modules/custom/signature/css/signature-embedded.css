@@ -130,7 +130,6 @@ div.horizontal-tabs-panes {
 
 .node-type-takepart-campaign #content .block-boxes .embedaction-content a {
     font-weight: normal;
-    color: #1CA9E7;
 }
 
 .embedaction-content .field-type-text-with-summary {
@@ -145,7 +144,7 @@ div.horizontal-tabs-panes {
     padding-right: 6px;
 }
 .embedaction-content .node-petition-action input.form-text {
-   width: 300px;   
+   width: 308px;   
 }
 .embedaction-content .signature-progress {
     clear: both;
@@ -197,8 +196,6 @@ div.horizontal-tabs-panes {
 .embedaction-content .form-item-newsletter label
 .embedaction-content .signature-form .form-type-checkbox label {
     float: none;
-    width: auto;
-    padding-left: 6px;
 }
 
 .embedaction-content input.signature-sign-button {
@@ -260,4 +257,15 @@ div.horizontal-tabs-panes {
   padding-left: 6px;
   display: inline;
   float: none;
+  vertical-align: middle;
+  width: 292px;
+  /* inline-block */
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* end inline-block */
+  text-align: left;
+  padding: 0;
+  vertical-align: middle;
 }

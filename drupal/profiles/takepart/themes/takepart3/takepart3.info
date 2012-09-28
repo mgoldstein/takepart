@@ -15,10 +15,14 @@ stylesheets-conditional[lte IE 7][all][] = css/ie7.css
 
 stylesheets[all][] = css/sharebar.css
 
+stylesheets[all][] = css/pledges.css
+
 ; Javascript
 scripts[] = js/script.js
 
 scripts[] = js/horizontal-tabs.js
+
+scripts[] = js/pledges.js
 
 features[] = favicon
 
