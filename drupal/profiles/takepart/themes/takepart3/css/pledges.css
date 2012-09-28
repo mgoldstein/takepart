@@ -1,3 +1,10 @@
+.node-pledge-action h2 {
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5em;
+    text-transform: none;
+}
 .node-pledge-action .field-label-inline .field-label,
 .node-pledge-action .field-label-inline .field-items {
     float: none;
@@ -444,4 +451,15 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
 
 .node-pledge-action .signature-form .form-type-checkbox label {
   
+}
+.node-pledge-action .field-name-field-pledge-action-short p,
+.node-pledge-action .field-name-field-pledge-action-long p {
+  font-size: 13px;
+  line-height: 1.5em;
+  margin: 0;
+  color: #333;
+}
+
+.node-pledge-action .signature-heading {
+  display: none;
 }
