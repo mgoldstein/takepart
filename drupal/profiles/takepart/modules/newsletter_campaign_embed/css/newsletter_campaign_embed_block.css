@@ -1,3 +1,6 @@
+.block-newsletter-campaign-embed h2 {
+    margin-bottom: 5px;
+}
 .takepart-newsletter-embed-form .edit-email-wrapper label { display: none; }
 .takepart-newsletter-embed-form .edit-email-wrapper { display: inline; }
 .takepart-newsletter-embed-form .form-submit { display: inline; }
@@ -5,11 +8,14 @@
 .takepart-newsletter-embed-form label {
   display: none;
 }
-.takepart-newsletter-embed-promo-text { margin-bottom: 10px; }
+.takepart-newsletter-embed-promo-text { 
+    margin-bottom: 10px; 
+}
 .takepart-newsletter-embed-form {
   position: relative;
 }
-.takepart-newsletter-embed-form-wrapper {
+.takepart-newsletter-embed-form-wrapper,
+.takepart-newsletter-embed-wrapper {
   position: relative;
 }
 .takepart-newsletter-embed-form .form-text {
@@ -31,9 +37,7 @@
 }
 
 .takepart-newsletter-embed-terms {
-  position: absolute;
-  right: 10px;
-  bottom: 8px;
+  float:right;
   clear:both;
   font-size: 11px;
 }
