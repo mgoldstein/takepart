@@ -203,6 +203,7 @@ div.vidpop-preview-overlay-text .line2 {
 /* cbox adjustments */
 #cboxLoadedContent {
   margin-bottom: 0 !important;
+  padding-top: 12px;
 }
 #cboxContent {
   top: -10px;
