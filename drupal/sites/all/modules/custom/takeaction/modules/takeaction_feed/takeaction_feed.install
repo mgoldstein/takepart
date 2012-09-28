@@ -45,6 +45,20 @@ function takeaction_feed_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
+      'published' => array(
+        'description' => 'The published status of the item.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'takepart_only' => array(
+        'description' => 'The TakePart.com only status of the item.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
       'data' => array(
         'description' => 'The data fields of the item.',
         'type' => 'text',
@@ -55,4 +69,14 @@ function takeaction_feed_schema() {
   );
 
   return $schema;
+}
+
+/**
+ * Add the published status and TakePart.com only status fields.
+ */
+function takepart_feed_update_7100(&$sandbox) {
+  $schema = takeaction_feed_schema();
+  $table = 'takeaction_feed_actions';
+  db_add_field($table, $schema[$table]['published']);
+  db_add_field($table, $schema[$table]['takepart_only']);
 }
