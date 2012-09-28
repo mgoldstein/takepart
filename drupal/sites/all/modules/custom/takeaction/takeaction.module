@@ -1,0 +1,115 @@
+<?php
+/**
+ * @file
+ * The TakeAction Button Integeration Module
+ */
+
+/**
+ * Implements hook_help().
+ */
+function takeaction_help($path, $arg) {
+  $output = '';
+  if ($path == 'admin/help#takeaction') {
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t("The TakeAction Button Core module allows integration
+      with the TakePart TakeAction Button system.") . '</p>';
+    $output .= '<h3>' . t('Uses') . '</h3>';
+    $output .= '<dl>';
+    $output .= '<dt>' . t('Configure global settings') . '</dt>';
+    $output .= '<dd>';
+    $output .=  t('To configure the global settings visit the
+      <a href="@settings-config">Settings Configuration</a> page. On this page
+      you can configure the information used to share user authentication and
+      user state with the TakeAction Buttton system.',
+      array('@settings-config' => url('admin/config/takeaction/settings'))
+    );
+    $output .= '</dd>';
+    $output .= '</dl>';
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function takeaction_menu() {
+  return array(
+    'admin/config/takeaction' => array(
+      'title' => 'TakeAction Button',
+      'description' => 'Configuraion of the TakeAction Button integration',
+      'position' => 'right',
+      'weight' => 0,
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    ),
+    'admin/config/takeaction/settings' => array(
+      'title' => 'TakeAction Button Settings',
+      'description' => 'Global settings for TakeAction Button integration',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('takeaction_admin_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('takeaction configure settings'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function takeaction_permission() {
+  return array(
+    'takeaction configure settings' => array(
+      'title' => t('Configure global settings'),
+      'descriptions' => t('Configure the TakeAction Button global settings.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Admin form callback.
+ */
+function takeaction_admin_form($form, &$form_state) {
+
+  $form['takeaction_api_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('API ID'),
+    '#description' => t('API id for feed access protection'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_api_id', ''),
+  );
+
+  $form['takeaction_api_secret'] = array(
+    '#type' => 'textfield',
+    '#title' => t('API Secret'),
+    '#description' => t('API secret shared by both ends'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_api_secret', ''),
+  );
+
+  $form['takeaction_dashboard_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Dashboard URL'),
+    '#description' => t('The absolute URL to the user dashboard page.'),
+    '#required' => TRUE,
+    '#element_validate' => array('takeaction_validate_url'),
+    '#default_value' => variable_get('takeaction_dashboard_url', ''),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * URL form element validation callback.
+ */
+function takeaction_validate_url($element, &$form_state) {
+  if (!empty($element['#value'])) {
+    if (!valid_url($element['#value'], TRUE)) {
+      form_error($element, t('@title must be an absolute URL.', array(
+        '@title' => $element['#title'],
+      )));
+    }
+  }
+}
