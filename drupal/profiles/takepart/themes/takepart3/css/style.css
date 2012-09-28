@@ -3210,6 +3210,9 @@ div.embedaction-content {
   width: 383px;
 }
 
+.embedaction-wrapper .node-petition-action .field-name-field-petition-recipient .field-items {
+  width: 383px;
+}
 .embedaction-wrapper .node-petition-action .field-name-field-petition-sponsor .field-item {
   float: left;
 }
