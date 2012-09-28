@@ -28,6 +28,14 @@ function takeaction_feed_menu() {
       'type' => MENU_CALLBACK,
       'access arguments' => array('access content'),
     ),
+    'admin/config/takeaction/feeds' => array(
+      'title' => 'TakeAction Button Feed Settings',
+      'description' => 'Settings for TakeAction Button feeds',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('takeaction_feed_admin_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('takeaction configure settings'),
+    ),
   );
 }
 
@@ -35,14 +43,75 @@ function takeaction_feed_menu() {
  * Actions feed callback.
  */
 function takeaction_feed_actions_callback() {
-  $actions = db_select('takeaction_feed_actions', 'a')
-    ->fields('a', array('nid', 'data'))
-    ->execute();
+  $query = db_select('takeaction_feed_actions', 'a')
+    ->fields('a', array('nid', 'data'));
+  if (variable_get('takeaction_feed_filter_unpublished', 1)) {
+    $query = $query->condition('a.published', 0, '!=');
+  }
+  if (variable_get('takeaction_feed_filter_takepart_only', 1)) {
+    $query = $query->condition('a.takepart_only', 0, '=');
+  }
+  $actions = $query->execute();
   $items = array();
   while ($action = $actions->fetchAssoc()) {
     $items[] = unserialize($action['data']);
   }
   return drupal_json_output($items);
+}
+
+/**
+ * Admin form callback.
+ */
+function takeaction_feed_admin_form($form, &$form_state) {
+
+  $form['takeaction_feed_filter_unpublished'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Filter unpublished actions'),
+    '#description' => t('Exclude unpublised actions from the actions feed'),
+    '#default_value' => variable_get('takeaction_feed_filter_unpublished', 1),
+  );
+
+  $form['takeaction_feed_filter_takepart_only'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Filter TakePart.com only actions'),
+    '#description' => t('Exclude TakePart.com only actions from the actions feed'),
+    '#default_value' => variable_get('takeaction_feed_filter_takepart_only', 1),
+  );
+
+  $form['actions']['takeaction_feed_rebuild_actions'] = array(
+    '#type' => 'submit',
+    '#value' => t('Rebuild Actions Feed'),
+    '#submit' => array('takeaction_feed_admin_form_submit_rebuild'),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Admin form rebuild feed submit callback.
+ */
+function takeaction_feed_admin_form_submit_rebuild($form, $form_state) {
+  $counts = array(
+    'action' => 0,
+    'petition_action' => 0,
+    'pledge_action' => 0,
+  );
+  db_delete('takeaction_feed_actions');
+  $nodes = db_select('node', 'n')
+    ->fields('n', array('nid', 'type'))
+    ->condition('n.type', array_keys($counts), 'IN')
+    ->condition('n.status', 0, '!=')
+    ->execute()
+    ->fetchAllKeyed();
+  foreach ($nodes as $nid => $type) {
+    $node = node_load($nid);
+    takeaction_feed_node_update($node);
+    $counts[$type] += 1;
+  }
+  $message = t('!total action items rebuilt', array(
+    '!total' => array_sum($counts),
+  ));
+  drupal_set_message($message);
 }
 
 /**
@@ -56,30 +125,32 @@ function takeaction_feed_node_insert($node) {
  * Implements hook_node_update().
  */
 function takeaction_feed_node_update($node) {
-  if ($node->status) {
-    // Only published actions should be in the feed.
-    $data = takeaction_feed_action_item_data($node);
-    if ($data !== FALSE) {
-      $timestamp = time();
-      db_merge('takeaction_feed_actions')
-        ->key(array(
-          'nid' => $node->nid,
-        ))
-        ->insertFields(array(
-          'nid' => $node->nid,
-          'created' => $timestamp,
-          'changed' => $timestamp,
-          'data' => serialize($data),
-        ))
-        ->updateFields(array(
-          'changed' => $timestamp,
-          'data' => serialize($data),
-        ))
-        ->execute();
-    }
+  $data = takeaction_feed_action_item_data($node);
+  if ($data !== FALSE) {
+    $timestamp = time();
+    db_merge('takeaction_feed_actions')
+      ->key(array(
+        'nid' => $node->nid,
+      ))
+      ->insertFields(array(
+        'nid' => $node->nid,
+        'created' => $timestamp,
+        'changed' => $timestamp,
+        'published' => $node->status,
+        'takepart_only' => empty($data['externalTAB']) ? 0
+          : (int) $data['externalTAB'],
+        'data' => serialize($data),
+      ))
+      ->updateFields(array(
+        'changed' => $timestamp,
+        'published' => $node->status,
+        'takepart_only' => empty($data['externalTAB']) ? 0
+          : (int) $data['externalTAB'],
+        'data' => serialize($data),
+      ))
+      ->execute();
   }
   else {
-    // Remove unpublished actions from the feed.
     db_delete('takeaction_feed_actions')
       ->condition('nid', $node->nid, '=')
       ->execute();
@@ -288,8 +359,8 @@ function takeaction_feed_action_item_data($node) {
       $aggregate_body .= _takeaction_feed_field_value($node, 'body');
     }
     elseif ($node->type === 'petition_action') {
-      // For petitions use the short introduction (body) field and the about the
-      // petition field.
+      // For petitions use the short introduction (body) field and the about
+      // the petition field.
       $aggregate_body = _takeaction_feed_field_value($node, 'body');
       $aggregate_body .= _takeaction_feed_field_value($node,
         'field_petition_about');
@@ -300,7 +371,8 @@ function takeaction_feed_action_item_data($node) {
     }
 
     // Get the action goal and date range (if available). Also get the action
-    // button text to use as a default if the TAB call to action field is empty.
+    // button text to use as a default if the TAB call to action field is
+    // empty.
     if ($node->type === 'pledge_action' || $node->type === 'petition_action') {
       // For petitions and pledges the fields are stored in the signature
       // settings.
@@ -357,8 +429,9 @@ function takeaction_feed_action_item_data($node) {
         'field_thumbnail'),
       'type' => _takeaction_feed_term_list($node, 'field_action_type'),
       'externalTAB' => _takeaction_feed_field_value($node,
-        'field_tab_takepart_only'),
-      'sponsors' => _takeaction_feed_group_list($node, 'field_action_sponsors'),
+        'field_tab_takepart_only', '0'),
+      'sponsors' => _takeaction_feed_group_list($node,
+        'field_action_sponsors'),
       'organizations' => _takeaction_feed_group_list($node,
         'field_action_organization'),
       'topic' => _takeaction_feed_term_list($node, 'field_topic'),
