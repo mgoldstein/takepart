@@ -74,9 +74,11 @@ function takeaction_feed_schema() {
 /**
  * Add the published status and TakePart.com only status fields.
  */
-function takepart_feed_update_7100(&$sandbox) {
+function takeaction_feed_update_7100(&$sandbox) {
   $schema = takeaction_feed_schema();
   $table = 'takeaction_feed_actions';
-  db_add_field($table, $schema[$table]['published']);
-  db_add_field($table, $schema[$table]['takepart_only']);
+  $field = 'published';
+  db_add_field($table, $field, $schema[$table]['fields'][$field]);
+  $field = 'takepart_only';
+  db_add_field($table, $field, $schema[$table]['fields'][$field]);
 }
