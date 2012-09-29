@@ -11,16 +11,16 @@
 
 .node-petition-action input.signature-sign-button {
   font-family: Helvetica, Arial, sans-serif;
-	background: url(../images/2012-08-07/petition_sign_button.png) repeat-x scroll 0 0 transparent;
+	background: url(../images/2012-08-07/petition_sign_button_good.png) repeat-x scroll 0 0 transparent;
 	border: 0 none;
 	width: 318px;
-	height: 58px;
+	height: 56px;
   padding: 0;
   cursor: pointer;
 }
 
 .node-petition-action input.signature-sign-button:hover {
-    background: url(../images/2012-08-07/petition_sign_button_over.png) repeat-x scroll 0 0 transparent;
+    background: url(../images/2012-08-07/petition_sign_button_good.png) repeat-x scroll 0 -56px transparent;
     border: 0 none;
     box-shadow: none;
 }
