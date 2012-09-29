@@ -135,7 +135,7 @@ function wysiwyg_profile_form($form, &$form_state, $profile) {
           }
           $icon = file_exists($img_src) ? '<img src="' . base_path() . $img_src . '" title="' . $button . '" style="border: 1px solid grey; vertical-align: middle;" />' : '';
         }
-        $title = (isset($meta['url']) ? l($title, $meta['url'], array('target' => '_blank')) : check_plain($title));
+        $title = (isset($meta['url']) ? l($title, $meta['url'], array('target' => '_blank')) : $title);
         $title = (!empty($icon) ? $icon . ' ' . $title : $title);
         $form['buttons'][$name][$button] = array(
           '#type' => 'checkbox',
@@ -144,11 +144,11 @@ function wysiwyg_profile_form($form, &$form_state, $profile) {
         );
       }
     }
-    elseif (isset($meta['extensions']) && is_array($meta['extensions'])) {
+    else if (isset($meta['extensions']) && is_array($meta['extensions'])) {
       foreach ($meta['extensions'] as $extension => $title) {
         $form['buttons'][$name][$extension] = array(
           '#type' => 'checkbox',
-          '#title' => isset($meta['url']) ? l($title, $meta['url'], array('target' => '_blank')) : check_plain($title),
+          '#title' => isset($meta['url']) ? l($title, $meta['url'], array('target' => '_blank')) : $title,
           '#default_value' => !empty($profile->settings['buttons'][$name][$extension]) ? $profile->settings['buttons'][$name][$extension] : FALSE,
         );
       }
@@ -286,11 +286,7 @@ function wysiwyg_profile_form($form, &$form_state, $profile) {
     '#type' => 'textarea',
     '#title' => t('CSS classes'),
     '#default_value' => $profile->settings['css_classes'],
-    '#description' => t('Optionally define CSS classes for the "Font style" dropdown list.<br />Enter one class on each line in the format: !format. Example: !example<br />If left blank, CSS classes are automatically imported from all loaded stylesheet(s).',
-      $editor['title'] == 'CKEditor' && version_compare($editor['installed version'], '3.2.1', '>=')
-      ? array('!format' => '<code>[title]=[element].[class]</code>', '!example' => 'My heading=h1.header1')
-      : array('!format' => '<code>[title]=[class]</code>', '!example' => 'My heading=header1')
-    ),
+    '#description' => t('Optionally define CSS classes for the "Font style" dropdown list.<br />Enter one class on each line in the format: !format. Example: !example<br />If left blank, CSS classes are automatically imported from all loaded stylesheet(s).', array('!format' => '<code>[title]=[class]</code>', '!example' => 'My heading=header1')),
   );
 
   $form['submit'] = array(
@@ -367,11 +363,14 @@ function theme_wysiwyg_admin_button_table($variables) {
   // Split checkboxes into rows with 3 columns.
   $total = count($buttons);
   $rows = array();
-  for ($i = 0; $i < $total; $i += 3) {
+  for ($i = 0; $i < $total; $i++) {
     $row = array();
-    $row_buttons = array_slice($buttons, $i, 3) + array_fill(0, 3, array());
-    foreach ($row_buttons as $row_button) {
-      $row[] = array('data' => $row_button);
+    $row[] = array('data' => $buttons[$i]);
+    if (isset($buttons[++$i])) {
+      $row[] = array('data' => $buttons[$i]);
+    }
+    if (isset($buttons[++$i])) {
+      $row[] = array('data' => $buttons[$i]);
     }
     $rows[] = $row;
   }
@@ -496,7 +495,7 @@ function theme_wysiwyg_profile_overview($variables) {
     return;
   }
   $output = '';
-  $header = array(t('Text format'), t('Editor'), array('data' => t('Operations'), 'colspan' => 2));
+  $header = array(t('Input format'), t('Editor'), array('data' => t('Operations'), 'colspan' => 2));
   $rows = array();
   foreach (element_children($form['formats']) as $item) {
     $format = &$form['formats'][$item];
@@ -555,3 +554,4 @@ function wysiwyg_profile_delete_confirm_submit($form, &$form_state) {
   drupal_set_message(t('Wysiwyg profile for %name has been deleted.', array('%name' => $format->name)));
   $form_state['redirect'] = 'admin/config/content/wysiwyg';
 }
+
