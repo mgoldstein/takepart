@@ -194,7 +194,9 @@ function takepart_vidpop_get_map_video() {
   $node = node_load($nid);
   $output = 'error reading node';
   if ($node) {
-    $build = node_view($node, 'vidpop_popup');
+    //$build = node_view($node, 'vidpop_popup');
+    $build = node_view($node, 'full');
+    $build['#theme'] = 'vidpop_popup';
     $output = render($build);
   }
 
