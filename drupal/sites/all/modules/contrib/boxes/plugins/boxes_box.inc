@@ -28,7 +28,7 @@ abstract class boxes_box {
         self::$boxes[$delta]->new = FALSE;
       }
     }
-    return isset(self::$boxes[$delta]) ? self::$boxes[$delta] : NULL;
+    return isset(self::$boxes[$delta]) && get_class(self::$boxes[$delta]) != 'stdClass' ? self::$boxes[$delta] : NULL;
   }
 
   /**
@@ -131,6 +131,15 @@ abstract class boxes_box {
    */
   public function use_multistep_create() {
     return FALSE;
+  }
+
+  /**
+   * Returns the block cache settings for this box. Subclasses can override this
+   * to perform more intricate operations around deciding the cache settings of
+   * the specific box instance.
+   */
+  public function cache_setting() {
+    return DRUPAL_CACHE_CUSTOM;
   }
 
   /**
