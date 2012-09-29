@@ -1,6 +1,8 @@
 <?php
-/*
+
+/**
  * @file
+ * Provides a new box-type that provides Views as boxes.
  */
 
 /**
@@ -12,41 +14,62 @@ class views_boxes_view extends boxes_box {
    */
   public function options_defaults() {
     return array(
-    'view' => '',
-    'settings' => array(),
-    'view_object' => NULL,
-    'view_more_text' => '',
-    'view_more_link' => '',
-    'additional_classes' => '',
-    'selected_style' => '',
+      'view' => '',
+      'settings' => array(),
+      'view_object' => NULL,
+      'view_more_text' => '',
+      'view_more_link' => '',
+      'expose_filters' => FALSE,
     );
   }
-  /*
-   * implements boxes_box::option_submt()
+  /**
+   * implements boxes_box::option_submit()
    * This needs a boxes patch
    */
   public function options_submit($form, &$form_state) {
     
     //$settings_form = $form['options']['settings'];
     //views_exposed_form_submit($settings_form, $form_state);
-    foreach($form['options']['settings'] as $key => $element) {
-      if( isset($form_state['input'][$key])) {
+    foreach ($form['options']['settings'] as $key => $element) {
+      if (isset($form_state['input'][$key])) {
         $this->options['settings'][$key] = $form_state['input'][$key];
       }
     }
   }
 
 
-  /*
-   * we use fancy ajax on our options form and this brakes with the context ui
+  /**
+   * we use fancy ajax on our options form and this breaks with the context ui
    */
   function use_multistep_create() {
     return TRUE;
   }
+
+  /**
+   * Overrides boxes_box::cache_setting().
+   *
+   * This delegates each Views Box instance's cache setting to the value on the
+   * View's Block display 'Block cache' value.
+   */
+  public function cache_setting() {
+
+    $view_info = explode('--', $this->options['view']);
+    // We are getting this from the cached views
+    if ($view_info && count($view_info) == 2 && $view = views_get_view($view_info[0])) {
+      foreach ($view->display as $id => $display) {
+        if (($id == $view_info[1]) && (isset($display->display_options['block_caching']))) {
+          return $display->display_options['block_caching'];
+        }
+      }
+    }
+
+    return DRUPAL_CACHE_CUSTOM;
+  }
+
   /**
    * Implementation of boxes_box::options_form().
    *
-   * We are presenting a formelement for the view to use
+   * We are presenting a form element for the view to use
    * and then a field set of elements based on that views exposed form and arguments
    */
   public function options_form(&$form_state) {
@@ -56,12 +79,12 @@ class views_boxes_view extends boxes_box {
     $form = array();
     $view_options = array();
 
-    //find all view displays that are blocks
-    foreach(views_get_all_views() as $view) {
+    // Find all view displays that are blocks
+    foreach (views_get_enabled_views() as $view) {
       $name = $view->name;
-      foreach($view->display as $display_name => $display) {
-        // only show block displays
-        if($display->display_plugin == 'block')  {
+      foreach ($view->display as $display_name => $display) {
+        // Only show block displays
+        if ($display->display_plugin == 'block')  {
           $view_options[$view->human_name]["$name--$display_name"] = "{$view->human_name} - {$display->display_title}";
         }
       }
@@ -95,32 +118,31 @@ class views_boxes_view extends boxes_box {
     list($view_name, $display_name)  = (preg_match('/--/', $view_string)) ? explode('--', $view_string) : array('', '');
     if ($view_name) {
 
-      //here we are tring to make sure that we use values that have been set in the form
-      //on ajax calls
+      // Insure that we use values that have been set in the form
+      // on ajax calls
       $view = views_get_view($view_name, TRUE);
       $view->set_display($display_name);
       $view->set_exposed_input($this->options['settings']);
       $view->execute();
 
-      //we are going to get the exposed form and use it to build the settings_form
+      // Get the exposed form and use it to build the settings_form
       $exposed_form = $view->display_handler->get_plugin('exposed_form');
       $settings_form_state = array();
       list($settings_form, $settings_form_state) = $this->render_exposed_form($exposed_form, $settings_form_state);
       $form_state['settings_form_state'] = $settings_form_state;
       $temp_form_state = $form_state;
-      $this->options_submit(array("options"=> array("settings"=>$settings_form)), $temp_form_state);
+      $this->options_submit(array("options" => array("settings" => $settings_form)), $temp_form_state);
 
-      //We need to go though each item and make sure it has a title as well as add back
-      //our default values
+      // Iterate over each item and make sure it has a title and add back
+      // our default values
       foreach ($settings_form as $id => $element) {
-        if(isset($view->filter[$id])) {
+        if (isset($view->filter[$id])) {
           $handler = $view->filter[$id];
           $title = $handler->options['ui_name'] ? $handler->options['ui_name'] : $id;
           $title = $handler->options['expose']['label'] ? $handler->options['expose']['label'] : $title;
           $settings_form[$id]['#title'] = $title;
         }
-        if(isset($this->options['settings'][$id])) {
-
+        if (isset($this->options['settings'][$id])) {
           // if we have an options array we want to make sure our default value 
           // is in the options before we set it as the value
           $default_value = $this->options['settings'][$id];
@@ -131,11 +153,11 @@ class views_boxes_view extends boxes_box {
                   unset($default_value[$key]);
                 }
               }
-              if(empty($default_value)) {
+              if (empty($default_value)) {
                 unset($default_value);
               }
               else {
-                if(!($settings_form[$id]['#multiple'])) {
+                if (!($settings_form[$id]['#multiple'])) {
                   $default_value = $default_value[0];
                   unset($default_value);
                 }
@@ -154,9 +176,9 @@ class views_boxes_view extends boxes_box {
         /*
         // we want to reorder the options to the same order as our stored values
         // incase the order matters
-        if(is_array($this->options['settings'][$id])) {
+        if (is_array($this->options['settings'][$id])) {
           $options = array();
-          foreach($this->options['settings'][$id] as $key => $on) {
+          foreach ($this->options['settings'][$id] as $key => $on) {
             $options[$key] = $settings_form[$id]['#options'][$key];
           }
           $settings_form[$id]['#options'] = $options + $settings_form[$id]['#options'];
@@ -170,29 +192,39 @@ class views_boxes_view extends boxes_box {
       }
 
       // ARGUMENTS
-      // foreach argument lets make a element in the settings_form
-      foreach($view->argument as $key => $arg) {
+      // foreach argument let's make a element in the settings_form
+      foreach ($view->argument as $key => $arg) {
 
-        //We are doing some custom handling on the id argument type
-        //basicly we are hidding the field that holds all of the ids
-        //and making autocomplete fields fo selecting the nodes. but we are 
-        //using js to update the orginal field
+        // We are doing some custom handling on the id argument type
+        // basically we are hiding the field that holds all of the ids
+        // and making autocomplete fields for node selection.
+        // We then update the original field with JS.
         $re = "/\[(.*)\]/";
         $entity_type = FALSE;
+        unset($bundles);
 
-        // check for the following format of the admin title
+        // Check for the following format of the admin title
         // [entity type]
         // if we have it remove it from the name and set the entity type
-        if(preg_match($re, $arg->options['ui_name'], $matches)) {
+        if (preg_match($re, $arg->options['ui_name'], $matches)) {
           $entity_type = $matches[1];
           $arg->options['ui_name'] = preg_replace($re, '', $arg->options['ui_name']);
         }
-        if  ((get_class($arg) == 'views_handler_argument_null') ||
+        
+        // See if we're going to filters on specific bundles
+        $re = "/\{bundles:(.*)\}/";
+        if (preg_match($re, $arg->options['ui_name'], $matches)) {
+          $bundles = $matches[1];
+          $arg->options['ui_name'] = preg_replace($re, '', $arg->options['ui_name']);
+        }
+        
+        if ((get_class($arg) == 'views_handler_argument_null') ||
              ($arg->field == 'tid') ||
              ($arg->field == 'nid') ||
              $entity_type) {
-          // we need to get info about our entity for now we are only looking at nodes and taxonomy_terms
-          if(isset($form_state['values'][$key])) {
+          // we need to get info about our entity 
+          // for now we are only looking at nodes and taxonomy_terms
+          if (isset($form_state['values'][$key])) {
             $this->options['settings'][$key] = $form_state['values'][$key];
           }
 
@@ -202,12 +234,12 @@ class views_boxes_view extends boxes_box {
           );
           $entity_type = $entity_type ? $entity_type : (isset($entity_type_array[$arg->field]) ? $entity_type_array[$arg->field] : 'node');
           $entity_info = entity_get_info($entity_type);
-          // we grab thename of the label and id field so that we can build the 
+          // Grab the name of the label and id field so that we can build the 
           // autocomplete field values later
           $id_field = $entity_info['entity keys']['id'];
           $label_field = $entity_info['entity keys']['label'];
 
-          // build the field group to put all of our widgets in
+          // Build the field group to put all of our widgets in
           $title = $arg->options['ui_name'] ? $arg->options['ui_name'] : $key;
           $settings_form["{$key}_group"] = array(
             '#title' => $title,
@@ -216,33 +248,42 @@ class views_boxes_view extends boxes_box {
             '#suffix' => "</div>",
           );
 
-          // build the actual value field (this is what get sent to the view)
+          // Build the actual value field (this is what gets sent to the view)
           $settings_form[$key] = array(
             '#type' => 'textfield',
             '#default_value' => $this->options['settings'][$key],
-            '#attributes' => array('class' => array('id-value'), 'group'=> "$key-group", 'style' => 'display:none'),
+            '#attributes' => array('class' => array('id-value'), 'group' => "$key-group", 'style' => 'display:none'),
           );
 
-          // wrap the sortable items
+          // Wrap the sortable items
           $settings_form["{$key}_group"]["{$key}_container_start"] = array(
             '#markup' => "<div class='id-sortable' key='$key' id='$key-wrapper'>",
             '#weight' => -1,
           );
 
-          //fund the current values and build auto complete fields that are populated
-          $ids = explode("+",$this->options['settings'][$key]);
+          // Find the current values and build auto complete fields that are populated
+          $ids = explode("+", $this->options['settings'][$key]);
           $entities = entity_load($entity_type, $ids);
           $count = 0;
-          foreach ($entities as $index =>$entity) {
+          
+          // Restrict autocomplete to specific entity or bundle(s)
+          if (!isset($bundles)) {
+            $autocomplete_path = "entity-autocomplete/{$entity_type}";
+          }
+          else {
+            $autocomplete_path = "entity-autocomplete/bundle/{$entity_type}/" . $bundles;
+          }
+          
+          foreach ($entities as $index => $entity) {
             $id = $index;
 
-            //we are adding a rand to the key so the value does not get cached
-            $settings_form["{$key}_group"][$key . "_$id-". rand(0,10000)] = array(
+            // Adding a rand to the key so the value does not get cached
+            $settings_form["{$key}_group"][$key . "_$id-" . rand(0, 10000)] = array(
               '#type' => 'textfield',
               '#default_value' => "{$entity->{$label_field}} [id:$id]",
-              '#autocomplete_path' => "entity-autocomplete/{$entity_type}",
+              '#autocomplete_path' => $autocomplete_path,
               '#prefix' => '<div class = "id-item"><div class= handle></div>',
-              '#attributes' => array('class' => array('id-field'), 'key'=> $key),
+              '#attributes' => array('class' => array('id-field'), 'key' => $key),
               '#suffix' => '</div>',
               '#weight' => $count,
             );
@@ -250,29 +291,29 @@ class views_boxes_view extends boxes_box {
           }
 
           // if the use asked for a new field or we have no fields add a empty field
-          if($form_state['clicked_button']['#key'] == $key || ($count == 0)) {
-            $settings_form["{$key}_group"][$key . "new-". rand(0,10000)] = array(
+          if ($form_state['clicked_button']['#key'] == $key || ($count == 0)) {
+            $settings_form["{$key}_group"][$key . "new-" . rand(0, 10000)] = array(
               '#type' => 'textfield',
               '#default_value' => "",
-              '#autocomplete_path' => "entity-autocomplete/{$entity_type}",
+              '#autocomplete_path' => $autocomplete_path,
               '#prefix' => '<div class = "id-item"><div class= handle></div>',
-              '#attributes' => array('class' => array('id-field'), 'key'=> $key),
+              '#attributes' => array('class' => array('id-field'), 'key' => $key),
               '#suffix' => '</div>',
               '#weight' => 1000,
             );
           }
-          // end the sortable group
+          // End the sortable group
           $settings_form["{$key}_group"]["{$key}_container_end"] = array(
             '#markup' => '</div>',
             '#weight' => 1001,
           );
-          // add a button to add a new item
+          // Add a button to add a new item
           $settings_form["{$key}_group"]["{$key}_add"] = array(
             '#type' => 'button',
             '#value' => "Add New $title",
             '#key' => $key,
             '#weight' => 1002,
-              '#attributes' =>array( 'key'=> $key),
+              '#attributes' => array('key' => $key),
             '#ajax' => array(
               'callback' => 'views_boxes_view_id_callback',
               'wrapper' => "{$key}-group",
@@ -303,7 +344,7 @@ class views_boxes_view extends boxes_box {
 
     }
     else {
-        // leave the setting fieldset but make it clear that we do not yet have a view
+        // Leave the setting fieldset but make it clear that we do not yet have a view
         $form['settings']['empty'] = array(
           '#markup' => t('No view selected'),
         );
@@ -320,31 +361,11 @@ class views_boxes_view extends boxes_box {
       '#type' => 'textfield',
       '#default_value' => $this->options['view_more_link'],
     );
-    $form['view_advanced_settings'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Advanced Settings'),
-      '#collapsed' => TRUE,
-      '#collapsible' => TRUE
-    );
-    $form['view_advanced_settings']['additional_classes'] = array(
-      '#title' => t('Additional CSS classes'),
-      '#description' => t('Optional CSS classes that will be added to the top-level div container for this box. Separate them with spaces.'),
-      '#type' => 'textfield',
-      '#default_value' => $this->options['additional_classes'],
-    );
-    $form['view_advanced_settings']['selected_style'] = array(
-        '#title' => t('Style'),
-        '#description' => t('Optional Style Setting'),
-        '#type' => 'select',
-        '#default_value' => $this->options['selected_style'],
-        '#options' => array(0 => t('Default'),
-                            4 => t('Primary Style I'),
-                            1 => t('Featured Item(s) Style I'),
-                            5 => t('Featured Item(s) Style II'),
-                            6 => t('Featured Item(s) Style III'),
-                            2 => t('Secondary Featured Item(s) Style I'),
-                            3 => t('Secondary Featured Item(s) Style II'), 
-                           ),
+    $form['expose_filters'] = array(
+      '#title' => t('Expose filters in render'),
+      '#description' => t('By default in Views Boxes, exposed filters are meant to be used for editing the box settings for the view and are not rendered in the output. Checking this box will show them in the rendered view.'),
+      '#type' => 'checkbox',
+      '#default_value' => $this->options['expose_filters'],
     );
     return $form;
   }
@@ -354,8 +375,8 @@ class views_boxes_view extends boxes_box {
    */
   public function render() {
     $content = '';
-    //we only build a view if we have one
-    if(
+    // Only build a view if we have one
+    if (
       ($view_info = explode('--', $this->options['view'])) &&
       ($view = views_get_view($view_info[0], TRUE))
     ) {
@@ -364,15 +385,13 @@ class views_boxes_view extends boxes_box {
       $view->set_exposed_input($this->options['settings']);
       $view->exposed_data = $this->options['settings'];
       $view->set_display($display_name);
-      $view->load($display_name);
 
-      // set arguments
+      // Set arguments
       $args = array();
       $view->display_handler->get_handlers('argument');
       
       // Run though the arguments and set values if we have them, set wildcard otherwise
-      foreach($view->display_handler->handlers['argument'] as $key => $arg) {
-        //if we have a value for the arg use it else use the wildcard
+      foreach ($view->display_handler->handlers['argument'] as $key => $arg) {
         if (!empty($this->options['settings'][$key])) {
           $args[] = $this->options['settings'][$key];
         }
@@ -384,19 +403,24 @@ class views_boxes_view extends boxes_box {
         $view->set_arguments($args);
       }
 
-      // We want to remove the filters
-      // we need to exacute before we remove the  expoded widgets
-      // but this is not an issue becuase render will not reexecute
+      // we need to execute before we remove the exposed widgets
+      // but this is not an issue because render will not re-execute
+      $view->pre_execute($args);
       $view->execute($display_name);
-      unset($view->exposed_widgets);
+      $view->post_execute();
+
+      // We want to remove the filters by default
+      if (!isset($this->options['expose_filters']) || !$this->options['expose_filters']) {
+        unset($view->exposed_widgets);
+      }
 
       $content = $view->render($display_name);
 
-      // Lets use the box title first,
-      // if it is not set lets use the views
-      // if it is set to <none> lets not have a title
+      // Let's use the box title first,
+      // if it is not set, let's use the views
+      // if it is set to <none>, let's not have a title
       $title = $this->title;
-      if(!$title) {
+      if (!$title) {
         $options = $view->display_handler->options;
         if ($options['defaults']['title']) {
           $title = isset($view->display['default']->display_options['title']) ? check_plain($view->display['default']->display_options['title']) : NULL;
@@ -426,13 +450,13 @@ class views_boxes_view extends boxes_box {
       'title' => $title,
       'subject' => $title,
       'content' => $content,
+      'is_empty' => FALSE,
+      'view_more_text' => $this->options['view_more_text'],
+      'view_more_link' => $this->options['view_more_link'],
     );
-    // Additional Classes
-    if (!empty($this->options['additional_classes'])) {
-      $box['additional_classes'] = $this->options['additional_classes'];
-    }
-    if (!empty($this->options['selected_style'])) {
-      $box['selected_style'] = $this->options['selected_style'];
+    
+    if ((isset($view)) && (count($view->result) == 0) && !boxes_access_edit()) {
+      $box['is_empty'] = TRUE;
     }
     
     if ($display_name) {
@@ -449,7 +473,7 @@ class views_boxes_view extends boxes_box {
    *
    * But we do not do the render step and instead pass on the form and form_state
    */
-  function render_exposed_form($that,&$form_state, $block = FALSE) {
+  function render_exposed_form($that, &$form_state, $block = FALSE) {
     // Deal with any exposed filters we may have, before building.
       $e = $this->options['settings']['exposed_input'];
       //$_SESSION['views'][$that->view->name][] 
@@ -478,8 +502,8 @@ class views_boxes_view extends boxes_box {
 
     $form_state['exposed_form_plugin'] = $that;
     $form = drupal_build_form('views_exposed_form', $form_state);
-    foreach($form as $key => $item) {
-      if(preg_match("/(^#|^form|submit)/", $key)) {
+    foreach ($form as $key => $item) {
+      if (preg_match("/(^#|^form|submit)/", $key)) {
         unset($form[$key]);
       }
     }
@@ -497,5 +521,5 @@ class views_boxes_view extends boxes_box {
 
   }
 }
-    drupal_add_js(drupal_get_path('module', 'views_boxes') . '/plugins/views_boxes_view.js');
-    drupal_add_css(drupal_get_path('module', 'views_boxes') . '/plugins/views_boxes_view.css');
+drupal_add_js(drupal_get_path('module', 'views_boxes') . '/plugins/views_boxes_view.js');
+drupal_add_css(drupal_get_path('module', 'views_boxes') . '/plugins/views_boxes_view.css');

@@ -91,7 +91,7 @@ function token_function_tokens($type, $tokens, array $data = array(), array $opt
         $params = preg_split("/:(?![^{}]*})/", $param);
         foreach($params as $i => $param) {
           $param = str_replace(array("{","}"), array("[","]"), $param);
-          $params[$i] = token_replace($param, $data);
+          $params[$i] = token_replace($param, $data, array('clear'=>TRUE));
         }
         if(is_array($func)) {
           $path = DRUPAL_ROOT . "/" . $func['file'];
