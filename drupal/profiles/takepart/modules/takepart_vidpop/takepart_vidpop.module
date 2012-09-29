@@ -6,7 +6,7 @@ define('TAKEPART_VIDPOP_DEFAULT_AD_ID', 'TP3_ROS_Leaderboard_728x90');
 
 
 /***
- * implentation of hook_init()
+ * implementation of hook_init()
  */
 function takepart_vidpop_init() {
   $path = drupal_get_path('module', 'takepart');
@@ -40,14 +40,18 @@ function takepart_vidpop_theme() {
 
 
 function takepart_vidpop_preprocess_vidpop_popup(&$vars) {
-  // save values for ad click js
-  drupal_add_js(array('takepart_vidpop'=> array('embeddedvideotitle' => $vars['field_promo_headline'][0]['value'])),'setting');
+  if (isset($vars['field_promo_headline'])) {
+    // save values for ad click js
+    drupal_add_js(array('takepart_vidpop'=> array('embeddedvideotitle' => $vars['field_promo_headline'][0]['value'])),'setting');
+  };
 }
 
 
 function takepart_vidpop_preprocess_page(&$vars) {
   // save values for ad click js
-  drupal_add_js(array('takepart_vidpop'=> array('hostpagetitle' => $vars['node']->title)),'setting');
+  if (isset($vars['node'])) {
+    drupal_add_js(array('takepart_vidpop'=> array('hostpagetitle' => $vars['node']->title)),'setting');
+  };
 }
 
 
@@ -63,6 +67,13 @@ function takepart_vidpop_menu() {
     'access arguments' => array('access administration pages'),
     'type' => MENU_NORMAL_ITEM,
     'file' => 'takepart_vidpop.admin.inc',
+  );
+  $items['vidpop/mapembed/%'] = array(
+    'title' => 'Videop map callback',
+    'page callback' => 'takepart_vidpop_get_map_video',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -168,6 +179,27 @@ function takepart_vidpop_get_social_links() {
   $social_links =  render(_block_get_renderable_array( _block_render_blocks( array($block) )));
 
   return $social_links;
+}
+
+
+/***
+ * ajax callback to embed video in a map
+ *
+ * arg is the nid
+ *
+ * url is /vidpop/mapembed/NID
+ */
+function takepart_vidpop_get_map_video() {
+  $nid = arg(2);
+  $node = node_load($nid);
+  $output = 'error reading node';
+  if ($node) {
+    $build = node_view($node, 'vidpop_popup');
+    $output = render($build);
+  }
+
+  print $output;
+  drupal_exit();
 }
 
 

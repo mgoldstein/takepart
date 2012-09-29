@@ -1,0 +1,134 @@
+<!--
+Configuration and display code for map page, per ticket #35777
+
+The contents of this entire file is pasted into the body area.
+
+TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
+-->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10&sensor=false"></script>
+<script type="text/javascript" src="/sites/all/libraries/google/infobox_packed.js"></script>
+
+  <script type="text/javascript">
+    function showmeamap() {
+      geocoder = new google.maps.Geocoder();
+
+      var image = new google.maps.MarkerImage('http://www.manningvalley.info/images/map_icons/beachflag.png',
+          // This marker is 20 pixels wide by 32 pixels tall.
+          new google.maps.Size(64, 64),
+          // The origin for this image is 0,0.
+          new google.maps.Point(0,0),
+          // The anchor for this image is the base of the flagpole at 0,32.
+          new google.maps.Point(0, 32));
+
+
+      var shadow = new google.maps.MarkerImage('http://www.whereincuba.com/images/beachflag_shadow.png',
+          new google.maps.Size(128, 128),
+          new google.maps.Point(0,0),
+          new google.maps.Point(-8,24));
+
+      var shape = {
+        coord: [0, 0, 64, 0, 64, 64, 0, 64],
+        type: 'poly'
+      };
+
+      // these defaults may be used for state and details, but won't necessarily be the most current
+      var default_state = "STATE NAME";
+      var default_details = "Video will be available within one week after October 1, 2012";
+
+      var addresses=new Array();
+
+      //  **************************************************************************
+      //  *** Here is where we will add the address information
+      //  ***
+      //  *** Each line has 5 fields, separated by commas.
+      //  ***   1) the complete street address
+      //  ***   2) state name (if no video), or node id of the video
+      //  ***   3) details (if no video), or null (if video)
+      //  ***   4) ignore
+      //  ***   5) ignore
+      //  ***   2)
+      //  ***   3)
+      //  ***
+      //  ***
+      //  ***
+
+      //  *** is the complete street address. Ignore the next two. The last
+      //  *** field is the text to display in the popup when no video is
+      //  *** defined. Enter the node id of a video, enter an explicit text
+      //  *** in quotes, or leave it as html to use boilerplate text.
+      //  ***
+
+      addresses[0]=["331 Foothill Rd, Beverly Hills, CA 90210", 24857, null, image, shadow];
+      addresses[1]=["350 5th Avenue  New York, NY 10118", 'NEW YORK', "Video will be available within one week after October 1, 2012", image, shadow];
+      addresses[2]=["141 West Jackson Boulevard, Chicago 60604", 'Illinois', default_details, image, shadow];
+      addresses[3]=["1301 Administration Ave. Fargo, ND 58102", 'North Dakota', default_details, image, shadow];
+      addresses[4]=["3211 Providence Drive Anchorage, Alaska 99508", 'Alaska', default_details, image, shadow];
+      addresses[5]=["2350 Dole Street Honolulu, HI 96822", 'Hawaii', default_details, image, shadow];
+
+      //  **************************************************************************
+
+      var latlng      = new google.maps.LatLng(0, 0);
+      var myOptions   = {zoom: 20, center: latlng, mapTypeId: google.maps.MapTypeId.ROADMAP};
+      var map         = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      var bound       = new google.maps.LatLngBounds();
+
+      for (i = 0; i < addresses.length; i++) {
+        var ibOptions = {
+          boxClass: 'vidmap-popup',
+          maxWidth: '200px'
+        }
+
+        var infobox        = new InfoBox(ibOptions),
+            geocoder_map   = new google.maps.Geocoder(),
+            address        = addresses[i][0],
+            state_val      = addresses[i][1],
+            details_val    = addresses[i][2],
+            marker_img     = addresses[i][3],
+            marker_shadow  = addresses[i][4];
+
+          (function(addr, state_arg, details_arg, index, img, shadow) {  // <-- immediate function call
+          geocoder_map.geocode({'address': addr}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              var index2 = index + 1;
+              var pointTitle = 'Point ' + index2.toString();
+              var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location,
+                shadow: shadow,
+                icon: img,
+                shape: shape,
+                title: pointTitle
+              });
+
+              bound.extend(results[0].geometry.location);
+              map.fitBounds(bound);
+              map.setCenter(bound.getCenter());
+
+              google.maps.event.addListener(marker, 'click', function() {
+                if (typeof(state_arg) == 'number') {
+                  // numeric; grab the video node
+                  var nid = state_arg;
+                  //alert(rv);
+                  infobox.setContent(vidpop_get_map_video(nid));
+                }
+                else {
+                  html = '<div class="state-name">' + state_arg + '</div><div class="details">' + details_arg + '</div>';
+                  infobox.setContent(html);
+                }
+                infobox.open(map, marker);
+              });
+            } else {
+              alert("The requested address is not mappable !");
+            }
+          });
+        }(address, state_val, details_val, i, marker_img, marker_shadow)); // <-- immediate function call
+      }
+    }
+</script>
+
+<div id="map_canvas" style="width: 475px; height: 475px; border: solid 2px black;"></div>
+
+<script type="text/javascript">
+showmeamap();
+</script>

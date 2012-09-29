@@ -74,7 +74,7 @@ function takepart3_preprocess_html(&$vars) {
 function takepart3_preprocess_page(&$variables) {
     _tp3_fill_template_vars($variables);
 
-    if ($variables['node']->title == "Contact Us") {
+  if ($variables['node']->title == "Contact Us") {
         // #18868    pglatz 7/10/2012
         // save referrer URL to track in webform
         // it is saved as $_COOKIE['Drupal_visitor_webform_referrer']
@@ -477,9 +477,9 @@ function _default_menu_options($menu_item) {
  * Preprocessor for theme('block').
  */
 function takepart3_preprocess_node(&$vars, $hook) {
-    $use_popup = false;   // set true if video popup are enabled and this node specifies using one
+  $use_popup = false;   // set true if video popup are enabled and this node specifies using one
 
-    if (module_exists('takepart_vidpop')) {
+  if (module_exists('takepart_vidpop')) {
         // under certain conditions, we want to change the link of the embedded video to
         // create a popup:
         // 		-view_mode is "embed"

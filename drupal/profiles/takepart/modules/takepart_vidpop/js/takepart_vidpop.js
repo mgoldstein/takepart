@@ -82,3 +82,29 @@ function vidpop_loaded() {
         }
   }
 })(jQuery);
+
+
+// return video node contents for popup on map page
+// this is outside of our normal jquery space to avoid closure issues
+function vidpop_get_map_video(nid) {
+  var output = '?';
+
+  jQuery.ajax({
+    url: "/vidpop/mapembed/" + nid,
+    type: 'get',
+    async: false,
+    dataType: 'html',
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+      alert('vidpop_get_map_video: cannot fetch node ' + nid);
+      console.log(JSON.stringify(XMLHttpRequest));
+      console.log(JSON.stringify(textStatus));
+      console.log(JSON.stringify(errorThrown));
+    },
+    success: function (data) {
+      //alert('data: ' + data);
+      output = data;
+    }
+  });
+
+  return output;
+}
