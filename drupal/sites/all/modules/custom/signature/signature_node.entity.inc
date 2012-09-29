@@ -1,12 +1,22 @@
 <?php
+/**
+ * @file
+ * Signature node settings entity.
+ */
 
 class SignatureNode extends Entity {
 
+  /**
+   * Overrides Entity::__construct().
+   */
   public function __construct($values = array(),
     $entity_type = 'signature_node') {
     parent::__construct($values, $entity_type);
   }
-  
+
+  /**
+   * Overrides Entity::defaultUri().
+   */
   protected function defaultUri() {
     if (!empty($this->nid)) {
       return array(
@@ -19,6 +29,9 @@ class SignatureNode extends Entity {
 
 class SignatureNodeController extends EntityAPIController {
 
+  /**
+   * Implements EntityApiControllerInterface.
+   */
   public function create(array $values = array()) {
     $values += array(
       'nid' => '',
@@ -27,14 +40,13 @@ class SignatureNodeController extends EntityAPIController {
       'bsd_form' => 0,
       'limit_to_dates' => FALSE,
       'start_date' => time(),
-      'end_date' => time() + 365*24*60*60,
-      'heading' => 'Sign This Petition',
-      'sign_label' => 'Sign Petition',
-      'newsletter_group' => '',
-      'newsletter_label' => '',
+      'end_date' => time() + 365 * 24 * 60 * 60,
+      'heading' => '',
+      'sign_label' => '',
+      'newsletter_opt_ins' => array(),
       'restrictions' => '',
       'terms_of_use' => "By signing, you accept TakePart's "
-        . '<a href="/terms-of-use" target="_blank">Terms of Use</a>.',
+      . '<a href="/terms-of-use" target="_blank">Terms of Use</a>.',
       'display_disclaimer' => implode(' ', array(
         'You may choose not to display your name on this website,',
         'but TakePart will include your name,',
@@ -44,20 +56,27 @@ class SignatureNodeController extends EntityAPIController {
     );
     return parent::create($values);
   }
-  
-  protected function buildQuery($ids, $conditions = array(), $revision_id = FALSE) {
-    $countQuery = db_select('signature', 'sc');
-    $countQuery->addField('sc', 'nid', 'nid');
-    $countQuery->addExpression('COUNT(sc.nid)', 'count');
-    $countQuery->groupBy('sc.nid');
+
+  /**
+   * Implements EntityApiControllerInterface.
+   */
+  protected function buildQuery($ids, $conditions = array(),
+    $revision_id = FALSE) {
+    $count_query = db_select('signature', 'sc');
+    $count_query->addField('sc', 'nid', 'nid');
+    $count_query->addExpression('COUNT(sc.nid)', 'count');
+    $count_query->groupBy('sc.nid');
     $query = parent::buildQuery($ids, $conditions, $revision_id);
     $query->leftJoin('node', 'n', 'base.nid = n.nid');
     $query->addField('n', 'title', 'title');
-    $query->leftJoin($countQuery, 'c', 'base.nid = c.nid');
+    $query->leftJoin($count_query, 'c', 'base.nid = c.nid');
     $query->addField('c', 'count', 'count');
     return $query;
   }
-  
+
+  /**
+   * Implements EntityApiControllerInterface.
+   */
   protected function attachLoad(&$queried_entities, $revision_id = FALSE) {
     foreach ($queried_entities as $key => $entity) {
       if (!isset($entity->count)) {

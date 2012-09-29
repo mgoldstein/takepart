@@ -234,13 +234,23 @@ function signature_access($op, $entity, $account, $entity_type) {
 /* Node Type Configuration
  ******************************************************************************/
 /**
- * Implements hook_menu()
+ * Implements hook_menu().
  */
 function signature_menu() {
   return array(
-    'admin/config/content/signature' => array(
-      'title' => t('Node signature settings'),
-      'description' => t('Configure which content types are allowed to collect signatures'),
+    'admin/config/signature' => array(
+      'title' => 'Action Signatures',
+      'description' => 'Configuraion of signatures on actions (e.g. petitions, pledges)',
+      'position' => 'left',
+      'weight' => 0,
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    ),
+    'admin/config/signature/settings' => array(
+      'title' => 'Action signature settings',
+      'description' => 'Configure which content types are allowed to collect signatures',
       'page callback' => 'drupal_get_form',
       'page arguments' => array('signature_node_admin_form'),
       'access callback' => 'user_access',
@@ -356,12 +366,22 @@ function signature_form_node_form_alter(&$form, &$form_state) {
       '#default_value' => signature_timestamp_to_date($values->end_date),
     );
 
-    $form['signature']['signature_heading'] = array(
-      '#title' => t('Form Heading'),
-      '#description' => t('The label to use for the heading of the form.'),
-      '#type' => 'textfield',
-      '#default_value' => $values->heading,
-    );
+    // TODO: Move the signature form heading to the petition action content
+    // type.
+    if ($node->type === 'petition_action') {
+      $form['signature']['signature_heading'] = array(
+        '#title' => t('Form Heading'),
+        '#description' => t('The label to use for the heading of the form.'),
+        '#type' => 'textfield',
+        '#default_value' => $values->heading,
+      );
+    }
+    else {
+      $form['signature']['signature_heading'] = array(
+        '#type' => 'hidden',
+        '#default_value' => $values->heading,
+      );
+    }
 
     $form['signature']['signature_sign_label'] = array(
       '#title' => t('Sign Button Label'),
@@ -449,12 +469,31 @@ function signature_node_form_values($form, $form_state) {
   else if (isset($node->nid) && $node->nid > 0) {
     // load the values from the database
     $settings = entity_load_single('signature_node', $node->nid);
+    // TODO: Move the signature form heading to the content type.
+    if ($node->type !== 'petition_action') {
+      $settings->heading = '';
+    }
   }
 
   if (!$settings) {
-    // new node or the node was created before the module was installed, use
-    // default values
-    $settings = entity_create('signature_node', array('nid' => $node->nid));
+    // New node or the node was created before the module was installed, use
+    // default values.
+    $values = array('nid' => $node->id);
+    // TODO: Move the signature form heading to the content type, add sign
+    // label default value field to the signature content types admin page.
+    if ($node->type === 'petition_action') {
+      $values['heading'] = 'Sign This Petition';
+      $values['sign_label'] = 'Sign the Petition';
+    }
+    elseif ($node->type === 'pledge_action') {
+      $values['heading'] = '';
+      $values['sign_label'] = 'Sign the Pledge';
+    }
+    else {
+      $values['heading'] = '';
+      $values['sign_label'] = 'Take Action';
+    }
+    $settings = entity_create('signature_node', $values);
   }
 
   return $settings;
