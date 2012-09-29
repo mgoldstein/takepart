@@ -1,15 +1,25 @@
 <?php
+/**
+ * @file
+ * Signature node settings entity.
+ */
 
 /**
  * SignatureNode Entity.
  */
 class SignatureNode extends Entity {
 
+  /**
+   * Overrides Entity::__construct().
+   */
   public function __construct($values = array(),
     $entity_type = 'signature_node') {
     parent::__construct($values, $entity_type);
   }
 
+  /**
+   * Overrides Entity::defaultUri().
+   */
   protected function defaultUri() {
     if (!empty($this->nid)) {
       return array(
@@ -22,6 +32,9 @@ class SignatureNode extends Entity {
 
 class SignatureNodeController extends EntityAPIController {
 
+  /**
+   * Implements EntityApiControllerInterface.
+   */
   public function create(array $values = array()) {
     $values += array(
       'nid' => '',
@@ -31,8 +44,8 @@ class SignatureNodeController extends EntityAPIController {
       'limit_to_dates' => FALSE,
       'start_date' => time(),
       'end_date' => time() + 365 * 24 * 60 * 60,
-      'heading' => 'Sign This Petition',
-      'sign_label' => 'Sign Petition',
+      'heading' => '',
+      'sign_label' => '',
       'newsletter_opt_ins' => array(),
       'restrictions' => '',
       'terms_of_use' => "By signing, you accept TakePart's "
@@ -47,7 +60,11 @@ class SignatureNodeController extends EntityAPIController {
     return parent::create($values);
   }
 
-  protected function buildQuery($ids, $conditions = array(), $revision_id = FALSE) {
+  /**
+   * Implements EntityApiControllerInterface.
+   */
+  protected function buildQuery($ids, $conditions = array(),
+    $revision_id = FALSE) {
     $count_query = db_select('signature', 'sc');
     $count_query->addField('sc', 'nid', 'nid');
     $count_query->addExpression('COUNT(sc.nid)', 'count');
@@ -61,6 +78,9 @@ class SignatureNodeController extends EntityAPIController {
     return $query;
   }
 
+  /**
+   * Implements EntityApiControllerInterface.
+   */
   protected function attachLoad(&$queried_entities, $revision_id = FALSE) {
     foreach ($queried_entities as $key => $entity) {
       if (!isset($entity->count)) {
