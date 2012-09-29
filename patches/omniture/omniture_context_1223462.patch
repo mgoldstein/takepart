@@ -1,13 +1,13 @@
-diff --git omniture.module b/omniture.module
+diff --git a/omniture.module b/omniture.module
 index 0397168..961a429 100644
---- omniture.module
-+++ omniture.module
+--- a/omniture.module
++++ b/omniture.module
 @@ -135,14 +135,16 @@ function _omniture_format_variables(array $variables = array()) {
        // Use the last element.
        $value = end($value);
      }
 -
-+    
++
      if (isset($extra_variables[$key])) {
        $value = $extra_variables[$key];
      }
@@ -15,7 +15,7 @@ index 0397168..961a429 100644
 -    $key = check_plain($key);
 -    $value = check_plain($value);
 -    $variables_formatted .= "{$key}=\"{$value}\";\n";
-+    
++
 +    if (isset($value)) {
 +      $key = check_plain(trim($key));
 +      $value = check_plain(trim($value));
@@ -73,22 +73,22 @@ index 0397168..961a429 100644
 + * Implements hook_omniture_variables().
 + */
 +function omniture_omniture_variables() {
-+  
++
 +  //check if context is enabled
 +  if (function_exists('context_get_plugin') ){
-+    //get variables from context 
++    //get variables from context
 +    if ($plugin = context_get_plugin('reaction', 'omniture_reaction')) {
 +      $variables = $plugin->execute();
 +      return array("variables" => $variables);
-+    } 
++    }
 +  }
 +}
 +
-diff --git plugins/omniture_reaction.inc b/plugins/omniture_reaction.inc
+diff --git a/plugins/omniture_reaction.inc b/plugins/omniture_reaction.inc
 new file mode 100644
 index 0000000..8a777a9
 --- /dev/null
-+++ plugins/omniture_reaction.inc
++++ b/plugins/omniture_reaction.inc
 @@ -0,0 +1,56 @@
 +<?php
 +class omniture_reaction extends context_reaction {
@@ -121,11 +121,11 @@ index 0000000..8a777a9
 +  /*
 +   * implements context_reaction::execute()
 +   *
-+   * go through all active context and covert the 
++   * go through all active context and covert the
 +   * stored text in to variables. making sure we replace tokens
 +   * before for sending it out
 +   */
-+  function execute() {
++  function execute(&$vars) {
 +    $settings = array();
 +    //grab the node object so we can use node tokens
 +    $node = menu_get_object();
@@ -137,7 +137,7 @@ index 0000000..8a777a9
 +        foreach($lines as $line) {
 +          if(preg_match("/^ *(.*?) *= *(.*?) *$/", $line, $match)) {
 +            $variables[$match[1]] = $match[2];
-+            
++
 +          }
 +        }
 +      }

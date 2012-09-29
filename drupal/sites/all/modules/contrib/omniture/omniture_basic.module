@@ -10,6 +10,7 @@
  * Implements hook_omniture_variables().
  */
 function omniture_basic_omniture_variables() {
+  $variables = array();
   if ($variable_name = variable_get('omniture_var_pagename', FALSE)) {
     $variables[$variable_name] = strip_tags(drupal_get_title());
   }
