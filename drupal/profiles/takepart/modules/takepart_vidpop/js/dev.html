@@ -13,7 +13,7 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
     function showmeamap() {
       geocoder = new google.maps.Geocoder();
 
-      // marker image for points with vidoes
+      // marker and shadow images for points with vidoes
       var markerVideo = new google.maps.MarkerImage('/profiles/takepart/modules/takepart_vidpop/markers/beachflag.png',
         // This marker is 20 pixels wide by 32 pixels tall.
         new google.maps.Size(64, 64),
@@ -22,7 +22,12 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
         // The anchor for this image is the base of the flagpole at 0,32.
         new google.maps.Point(0, 32));
 
-      // marker image for points without vidoes
+      var shadowVideo = new google.maps.MarkerImage('/profiles/takepart/modules/takepart_vidpop/markers/beachflag_shadow.png',
+        new google.maps.Size(128, 128),
+        new google.maps.Point(0,0),
+        new google.maps.Point(-8,24));
+
+      // marker and shadow images for points without vidoes
       var markerNormal = new google.maps.MarkerImage('/profiles/takepart/modules/takepart_vidpop/markers/blue.png',
         // This marker is 20 pixels wide by 32 pixels tall.
         new google.maps.Size(64, 64),
@@ -31,11 +36,11 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
         // The anchor for this image is the base of the flagpole at 0,32.
         new google.maps.Point(0, 32));
 
+      var shadowNormal = new google.maps.MarkerImage('/profiles/takepart/modules/takepart_vidpop/markers/shadow_small.png',
+        new google.maps.Size(128, 128),
+        new google.maps.Point(0,0),
+        new google.maps.Point(-8,24));
 
-      var shadow = new google.maps.MarkerImage('http://www.whereincuba.com/images/beachflag_shadow.png',
-          new google.maps.Size(128, 128),
-          new google.maps.Point(0,0),
-          new google.maps.Point(-8,24));
 
       var shape = {
         coord: [0, 0, 64, 0, 64, 64, 0, 64],
@@ -52,12 +57,12 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
       //  *** Here is where we will add the address information
       //  ***
       //  *** Each line has 5 fields, separated by commas.
-      //  ***   1) the complete street address
-      //  ***   2) state name (if no video), or node id of the video
-      //  ***   3) details (if no video), or null (if video)
-      //  ***   4) ignore
-      //  ***   5) ignore
-      //  ***
+      //  ***   1) the node if of the video, null if no video
+      //  ***   2) the complete street address
+      //  ***   3) state name (if no video), or node id of the video
+      //  ***   4) details for tooltip (if no video), or null (if video)
+      //  ***   5) marker image
+      //  ***   6) shadow image
       //  ***
 
       //  *** is the complete street address. Ignore the next two. The last
@@ -66,12 +71,12 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
       //  *** in quotes, or leave it as html to use boilerplate text.
       //  ***
 
-      addresses[0]=["331 Foothill Rd, Beverly Hills, CA 90210", 24857, null, markerVideo, shadow];
-      addresses[1]=["350 5th Avenue  New York, NY 10118", 'NEW YORK', "Video will be available within one week after October 1, 2012", markerNormal, shadow];
-      addresses[2]=["141 West Jackson Boulevard, Chicago 60604", 'Illinois', default_details, markerNormal, shadow];
-      addresses[3]=["1301 Administration Ave. Fargo, ND 58102", 'North Dakota', default_details, markerNormal, shadow];
-      addresses[4]=["3211 Providence Drive Anchorage, Alaska 99508", 'Alaska', default_details, markerNormal, shadow];
-      addresses[5]=["2350 Dole Street Honolulu, HI 96822", 'Hawaii', default_details, markerNormal, shadow];
+      addresses[0]=[24857,"331 Foothill Rd, Beverly Hills, CA 90210" , "CALIFORNIA", null, markerVideo, shadowVideo];
+      addresses[1]=[null, "350 5th Avenue  New York, NY 10118", 'NEW YORK', "Video will be available within one week after October 1, 2012", markerNormal, shadowNormal];
+      addresses[2]=[null, "141 West Jackson Boulevard, Chicago 60604", 'ILLINOIS', default_details, markerNormal, shadowNormal];
+      addresses[3]=[null, "1301 Administration Ave. Fargo, ND 58102", 'North Dakota', default_details, markerNormal, shadowNormal];
+      addresses[4]=[null, "3211 Providence Drive Anchorage, Alaska 99508", 'Alaska', default_details, markerNormal, shadowNormal];
+      addresses[5]=[null, "2350 Dole Street Honolulu, HI 96822", 'Hawaii', default_details, markerNormal, shadowNormal];
 
       //  **************************************************************************
 
@@ -87,13 +92,14 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
 
         var infobox        = new InfoBox(ibOptions),
             geocoder_map   = new google.maps.Geocoder(),
-            address        = addresses[i][0],
-            state_val      = addresses[i][1],
-            details_val    = addresses[i][2],
-            marker_img     = addresses[i][3],
-            marker_shadow  = addresses[i][4];
+            video_id       = addresses[i][0],
+            address        = addresses[i][1],
+            state_val      = addresses[i][2],
+            details_val    = addresses[i][3],
+            marker_img     = addresses[i][4],
+            marker_shadow  = addresses[i][5];
 
-          (function(addr, state_arg, details_arg, index, img, shadow) {  // <-- immediate function call
+          (function(video, addr, state_arg, details_arg, index, img, shadow) {  // <-- immediate function call
           geocoder_map.geocode({'address': addr}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               var marker = new google.maps.Marker({
@@ -101,7 +107,8 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
                 position: results[0].geometry.location,
                 shadow: shadow,
                 icon: img,
-                shape: shape
+                shape: shape,
+                title: state_arg
               });
 
               bound.extend(results[0].geometry.location);
@@ -109,11 +116,10 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
               map.setCenter(bound.getCenter());
 
               google.maps.event.addListener(marker, 'click', function() {
-                if (typeof(state_arg) == 'number') {
+                if (typeof(video) == 'number') {
                   // numeric; grab the video node
-                  var nid = state_arg;
                   jQuery(".vidmap-popup").css("width", "350px");
-                  infobox.setContent(vidpop_get_map_video(nid));
+                  infobox.setContent(vidpop_get_map_video(video));
                 }
                 else {
                   html = '<div class="state-name">' + state_arg + '</div><div class="details">' + details_arg + '</div>';
@@ -125,7 +131,7 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
               alert("The requested address is not mappable !");
             }
           });
-        }(address, state_val, details_val, i, marker_img, marker_shadow)); // <-- immediate function call
+        }(video_id, address, state_val, details_val, i, marker_img, marker_shadow)); // <-- immediate function call
       }
     }
 </script>
