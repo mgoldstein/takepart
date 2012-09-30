@@ -240,7 +240,7 @@ The fix is to add this to the theme CSS:
   min-height: 75px;
   width: 200px;
   color: white;
-  padding: 20px;
+  padding: 15px;
 }
 .vidmap-popup .state-name {
   font-weight: bold;
