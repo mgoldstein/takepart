@@ -13,8 +13,8 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
     function showmeamap() {
       geocoder = new google.maps.Geocoder();
 
-      // marker and shadow images for points with vidoes
-      var markerVideo = new google.maps.MarkerImage('/profiles/takepart/modules/takepart_vidpop/markers/beachflag.png',
+      // marker and shadow images for points with videos
+      var markerVideo = new google.maps.MarkerImage('/profiles/takepart/modules/takepart_vidpop/markers/vm_video.png',
         // This marker is 20 pixels wide by 32 pixels tall.
         new google.maps.Size(64, 64),
         // The origin for this image is 0,0.
@@ -22,13 +22,13 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
         // The anchor for this image is the base of the flagpole at 0,32.
         new google.maps.Point(0, 32));
 
-      var shadowVideo = new google.maps.MarkerImage('/profiles/takepart/modules/takepart_vidpop/markers/beachflag_shadow.png',
+      var shadowVideo = new google.maps.MarkerImage('/profiles/takepart/modules/takepart_vidpop/markers/shadow_small.png',
         new google.maps.Size(128, 128),
         new google.maps.Point(0,0),
         new google.maps.Point(-8,24));
 
       // marker and shadow images for points without vidoes
-      var markerNormal = new google.maps.MarkerImage('/profiles/takepart/modules/takepart_vidpop/markers/blue.png',
+      var markerNormal = new google.maps.MarkerImage('/profiles/takepart/modules/takepart_vidpop/markers/vm_tooltip.png',
         // This marker is 20 pixels wide by 32 pixels tall.
         new google.maps.Size(64, 64),
         // The origin for this image is 0,0.
@@ -105,7 +105,7 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
               var marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location,
-                shadow: shadow,
+                //shadow: shadow,
                 icon: img,
                 shape: shape,
                 title: state_arg
