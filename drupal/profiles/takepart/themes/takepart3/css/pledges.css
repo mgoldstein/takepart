@@ -219,7 +219,7 @@ padding-bottom: 1em;
 }
 
 .embedaction-content .node-pledge-action .signature-terms-of-use {
-  text-indent: 58px;
+  text-indent: 71px;
 }
 
 .node-pledge-action .group-address-tabs div.horizontal-tabs {
@@ -348,7 +348,7 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
 }
 .node-pledge-action .signature-terms-of-use {
     text-align: center;
-    text-indent:-16px;
+    text-indent:-13px;
 }
 
 .node-pledge-action input.signature-sign-button {
