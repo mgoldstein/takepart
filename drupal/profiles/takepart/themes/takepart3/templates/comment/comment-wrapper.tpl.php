@@ -46,34 +46,14 @@ $content['#fb_comments']['url'] = 'http://' . $_SERVER["SERVER_NAME"] . $fb_comm
     <?php print render($title_prefix); ?>
     <div class='comments-header'>
       <h2 class="title"><?php print t('Comments'); ?></h2>
-      <span class='comment-count'><fb:comments-count href="<?php print $content['#fb_comments']['url'] ?>"></fb:comments-count></span>
+      <span class='comment-count'><fb:comments-count
+        href="<?php print $content['#fb_comments']['url'] ?>"></fb:comments-count></span>
     </div>
     <?php print render($title_suffix); ?>
-
-<!--
-    <div id="fb-root"></div>
-    <script>
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, "script", "facebook-jssdk"));
-    </script>
--->
-  
-    <div class="fb-comments"
-         data-href="<?php print $content['#fb_comments']['url'] ?>"
-         data-num-posts="<?php print $content['#fb_comments']['amount'] ?>"
-         data-width="<?php print $content['#fb_comments']['width'] ?>"
-         data-colorscheme="<?php print $content['#fb_comments']['style'] ?>"></div>
-      
-  <?php 
-  /*
-   <fb:comments href="<?php print $content['#fb_comments']['url'] ?>" numposts="<?php print $content['#fb_comments']['amount'] ?>" width="<?php print $content['#fb_comments']['width'] ?>" title="TakePart Comments" simple="1"></fb:comments>
-  */
-  ?>
+    <fb:comments href="<?php print $content['#fb_comments']['url'] ?>"
+      num_posts="<?php print $content['#fb_comments']['amount'] ?>"
+      width="<?php print $content['#fb_comments']['width'] ?>"
+      colorscheme="<?php print $content['#fb_comments']['style'] ?>"></fb:comments>
   <?php else: ?>
   <?php if ($content['#node']->comment_count > 0): ?>
 
