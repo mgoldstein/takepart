@@ -3177,21 +3177,12 @@ div.embedaction-wrapper div.field-name-field-promo-headline {
     cursor: pointer;
 }
 
-div.embedaction-wrapper div.field-name-field-promo-headline div.field-items {
-}
-
-div.embedaction-wrapper div.field-name-field-promo-headline div.field-item {
-}
-
 div.embedaction-wrapper div.field-name-field-promo-headline div.field-item:hover {
     color: #1ca9e7; 
 }
-
-div.embedaction-content {
-
-}
-
-.node-type-petition-action h2 {
+.node-petition-action h2,
+.node-petition-action .field-name-field-thank-you-message h2,
+.node-type-takepart-campaign #content .node-petition-action h2 {
     color: #000;
     text-transform: none;
     font-size: 20px;
@@ -3376,7 +3367,7 @@ div.embedaction-content h2.embedaction-divider a span {
     text-shadow: 1px 1px 1px #FFF;
     color: #000;
     text-transform: uppercase;
-    margin-left: 101px;
+    margin-left: 100px;
     font: bold 24px Helvetica,Arial,sans-serif;
 }
 

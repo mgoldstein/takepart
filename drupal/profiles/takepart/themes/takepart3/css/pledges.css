@@ -39,10 +39,10 @@ padding-bottom: 1em;
 }
 
 #content .node-pledge-action ul {
-  margin: 0 0 16px 16px;
+  margin: 0 0 0 16px;
 }
 #content .node-pledge-action ul li {
-  margin: 5px 5px 0px 5px;
+  margin: 0;
   font-size: 12px;
 }
 #content .node-pledge-action .group-heading-split-right ul {
