@@ -1203,19 +1203,19 @@ function signature_send_signup($signature) {
           $value = $signature->display;
         }
         elseif ($field_name == 'newsletter_0' || $field_name == 'newsletter') {
-          $value = $signature->newsletter & 0x01;
+          $value = $signature->newsletter & 0x01 ? 1 : 0;
         }
         elseif ($field_name == 'newsletter_1') {
-          $value = $signature->newsletter & 0x02;
+          $value = $signature->newsletter & 0x02 ? 1 : 0;
         }
         elseif ($field_name == 'newsletter_2') {
-          $value = $signature->newsletter & 0x04;
+          $value = $signature->newsletter & 0x04 ? 1 : 0;
         }
         elseif ($field_name == 'newsletter_3') {
-          $value = $signature->newsletter & 0x08;
+          $value = $signature->newsletter & 0x08 ? 1 : 0;
         }
         elseif ($field_name == 'newsletter_4') {
-          $value = $signature->newsletter & 0x10;
+          $value = $signature->newsletter & 0x10 ? 1 : 0;
         }
         else {
           // The field is attached, make sure it is still attached, then
