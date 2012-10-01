@@ -1423,7 +1423,7 @@ function signature_node_progress_variables($settings) {
 
   $decimals = $percent < 10.0 ? 1 : 0;
   return array(
-    'title' => $settings->title,
+    'title' => check_plain($settings->title),
     'type' => $settings->node_type,
     'view_latch' => "signature_form_viewed_{$settings->nid}",
     'summary_id' => "signature-progress-summary-{$settings->nid}",
