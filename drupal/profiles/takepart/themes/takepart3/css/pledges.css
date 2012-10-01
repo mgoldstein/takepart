@@ -447,8 +447,11 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
 
 .embedaction-wrapper .node-pledge-action .field-name-field-petition-sponsor .field-item {
   float: left;
+  padding-right: 3px;
 }
-
+.embedaction-wrapper .node-pledge-action .field-name-field-petition-sponsor .field-item:last-child {
+  padding-right: 0;
+}
 .node-pledge-action .signature-form .form-type-checkbox label {
   
 }
