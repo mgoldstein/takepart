@@ -3165,6 +3165,10 @@ div.embedaction-button {
     margin: 0;
     width: 168px;   
 }
+.embedaction-wrapper .embedaction-header .graphic,
+.embedaction-wrapper .embedaction-header .title {
+  cursor: pointer;
+}
 
 div.embedaction-wrapper div.field-name-field-promo-headline {
     color: #000000;
@@ -3215,8 +3219,11 @@ div.embedaction-content {
 }
 .embedaction-wrapper .node-petition-action .field-name-field-petition-sponsor .field-item {
   float: left;
+  padding-right: 3px;
 }
-
+.embedaction-wrapper .node-petition-action .field-name-field-petition-sponsor .field-item:last-child {
+  padding-right: 0;
+}
 .node-petition-action .form-type-checkbox label {
   text-align: left;
   width: 293px;
@@ -3369,7 +3376,7 @@ div.embedaction-content h2.embedaction-divider a span {
     text-shadow: 1px 1px 1px #FFF;
     color: #000;
     text-transform: uppercase;
-    margin-left: 100px;
+    margin-left: 101px;
     font: bold 24px Helvetica,Arial,sans-serif;
 }
 
