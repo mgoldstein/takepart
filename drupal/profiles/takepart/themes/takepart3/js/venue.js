@@ -13,23 +13,8 @@
         var element = $(this);
                       
         // on load
-        $('.horizontal-tabs', container).prepend($('.field-name-field-venue-name', container));
+        $('.horizontal-tabs', container).prepend($('.field-name-field-name', container));
         
-        // bind actions
-        element.bind('click', _click);
-        
-        // action handlers
-        function _click(event){
-          var element = this;
-          var target = $(event.target);
-          
-          // show more / show less link click
-          var firstSelectorAction = '.class';
-          if (target.is(firstSelectorAction) || target.parents(firstSelectorAction).length) {
-            target = target.is(firstSelectorAction) ? target : target.parents(firstSelectorAction);
-
-          }
-        };
       }
     }
   };

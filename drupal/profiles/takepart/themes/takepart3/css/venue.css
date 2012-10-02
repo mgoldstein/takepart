@@ -19,12 +19,6 @@
 .node-venue {
   position: relative;
 }
-.node-venue .field-name-field-super-title {
-  position: absolute;
-  top: 0;
-  font-size: 15px;
-  font-weight: bold;
-}
 .node-venue h1.title {
   font-family: serif;
   color: #000;
@@ -41,7 +35,7 @@
 
 /* #Tabs & Title
 ================================================== */
-.node-venue .field-name-field-venue-name {
+.node-venue .field-name-field-name {
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: middle;
   font-size: 18px;
@@ -76,9 +70,6 @@
   text-align: center;
   color: #969696;
   font-weight: normal;
-}
-#content .node-venue .horizontal-tabs-list li.selected a {
-  
 }
 #content .node-venue .horizontal-tabs-list li.selected a strong {
   color: #fff;
