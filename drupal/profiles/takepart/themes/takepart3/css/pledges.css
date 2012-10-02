@@ -227,9 +227,8 @@ padding-bottom: 1em;
 .node-pledge-action .group-address-tabs div.horizontal-tabs {
     margin-bottom: 0;
 }
-
-.node-pledge-action .field-name-field-thank-you-share-bar {
-    margin-bottom: 30px;
+.node-pledge-action .addthis_toolbox {
+  margin: 20px 0;
 }
 
 body.node-type-pledge-action h1.title {

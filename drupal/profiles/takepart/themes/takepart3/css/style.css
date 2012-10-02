@@ -3190,7 +3190,9 @@ div.embedaction-wrapper div.field-name-field-promo-headline div.field-item:hover
     line-height: 1.5em;
 }
 .node-petition-action .form-type-checkbox input,
-.node-petition-action .form-type-checkbox label {
+.node-petition-action .form-type-checkbox label,
+.node-pledge-action .form-type-checkbox input,
+.node-pledge-action .form-type-checkbox label {
   float: none;
   /* inline-block */
   display: -moz-inline-stack;
@@ -3215,7 +3217,8 @@ div.embedaction-wrapper div.field-name-field-promo-headline div.field-item:hover
 .embedaction-wrapper .node-petition-action .field-name-field-petition-sponsor .field-item:last-child {
   padding-right: 0;
 }
-.node-petition-action .form-type-checkbox label {
+.node-petition-action .form-type-checkbox label,
+.node-pledge-action .form-type-checkbox label {
   text-align: left;
   width: 293px;
 }
@@ -3391,8 +3394,8 @@ div.embedaction-content h2.embedaction-divider a span {
     margin-bottom: 0;
 }
 
-.node-petition-action .field-name-field-thank-you-share-bar {
-    margin-bottom: 30px;
+.node-petition-action .addthis_toolbox {
+  margin: 20px 0;
 }
 
 body.node-type-petition-action h1.title {
@@ -3400,7 +3403,7 @@ body.node-type-petition-action h1.title {
 }
 .node-petition-action .field-name-body {
     font-size: 13px;
-    line-height: 20px;
+    line-height: 1.5em;
 }
 .node-petition-action p.signature-progress-count {
     font-weight: bold;
@@ -3416,6 +3419,11 @@ body.node-type-petition-action h1.title {
 .node-petition-action .field-group-htabs-wrapper {
     margin-left: -13px;
     position: relative;
+}
+.node-petition-action .field-name-field-petition-sponsor,
+.node-pledge-action .field-name-field-petition-sponsor,
+.node-petition-action .field-name-field-petition-recipient {
+  line-height: 1.5em;
 }
 .embedaction-content .node-petition-action .field-group-htabs-wrapper {
     margin-left: 0;

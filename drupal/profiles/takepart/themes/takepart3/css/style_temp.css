@@ -52,8 +52,11 @@
     font-weight: bold;
 }
 
-.node-petition-action input.form-checkbox, .node-petition-action input.form-radio {
-    margin-left: 7px;
+.node-petition-action input.form-checkbox,
+.node-petition-action input.form-radio ,
+.node-pledge-action input.form-checkbox,
+.node-pledge-action input.form-radio{
+    margin: 1px 3px 0 0;
 }
 
 .node-petition-action .signature-terms-of-use {
