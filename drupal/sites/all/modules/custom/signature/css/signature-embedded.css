@@ -141,7 +141,7 @@ div.horizontal-tabs-panes {
     float: left;
     width: 100px;
     text-align: right;
-    padding-right: 6px;
+    padding-right: 0;
 }
 .embedaction-content .node-petition-action input.form-text {
    width: 308px;   
