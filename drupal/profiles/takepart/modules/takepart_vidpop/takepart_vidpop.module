@@ -201,12 +201,19 @@ function takepart_vidpop_get_map_video() {
     //$build = node_view($node, 'vidpop_popup');
     $build = node_view($node, 'full');
     $build['#theme'] = 'vidpop_popup';
-    $output = render($build);
+    $rendered = render($build);
+
+    // format like a colorbox
+    $id = 'vidpop-details-' . $nid;
+    $output = <<<EOT
+<div class="vidpop-overlay">
+  <div id="$id">
+    $rendered
+  </div>
+</div>
+EOT;
   }
 
   print $output;
   drupal_exit();
 }
-
-
-

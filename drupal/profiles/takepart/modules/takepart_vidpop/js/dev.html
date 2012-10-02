@@ -99,6 +99,11 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
             marker_img     = addresses[i][4],
             marker_shadow  = addresses[i][5];
 
+        if (typeof(video_id) == 'number') {
+          // video node - load and hide
+          document.write(vidpop_get_map_video(video_id));
+        }
+
           (function(video, addr, state_arg, details_arg, index, img, shadow) {  // <-- immediate function call
           geocoder_map.geocode({'address': addr}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -108,7 +113,7 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
                 //shadow: shadow,
                 icon: img,
                 shape: shape,
-                title: state_arg
+                title: state_arg,
               });
 
               bound.extend(results[0].geometry.location);
@@ -118,14 +123,14 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
               google.maps.event.addListener(marker, 'click', function() {
                 if (typeof(video) == 'number') {
                   // numeric; grab the video node
-                  jQuery(".vidmap-popup").css("width", "350px");
-                  infobox.setContent(vidpop_get_map_video(video));
+alert('b');
+                  jQuery.fn.colorbox({width:"50%", inline:true, href:"#vidpop-details-" + video});
                 }
                 else {
                   html = '<div class="state-name">' + state_arg + '</div><div class="details">' + details_arg + '</div>';
                   infobox.setContent(html);
+                  infobox.open(map, marker);
                 }
-                infobox.open(map, marker);
               });
             } else {
               alert("The requested address is not mappable !");
@@ -135,7 +140,6 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
       }
     }
 </script>
-
 <div id="map_canvas" style="width: 475px; height: 475px; border: solid 2px black;"></div>
 
 <script type="text/javascript">
