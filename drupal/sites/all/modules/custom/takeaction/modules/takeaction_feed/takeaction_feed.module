@@ -327,24 +327,33 @@ function takeaction_feed_action_item_data($node) {
   );
   if (in_array($node->type, $action_types)) {
 
-    // The promo headline is used if no internal title is available.
-    $promo_headline = _takeaction_feed_field_value($node,
-      'field_promo_headline');
-
-    // Get the optional internal title, use the promo headline if the internal
-    // title is empty.
+    // Get the internal title.
     $internal_title = _takeaction_feed_field_value($node,
       'field_tab_internal_title');
     if (strlen(trim($internal_title)) === 0) {
-      $internal_title = $promo_headline;
+      // Use the promo headline instead.
+      $internal_title = _takeaction_feed_field_value($node,
+        'field_promo_headline');
+      if (strlen(trim($internal_title)) === 0) {
+        // Use the internal Drupal title instead.
+        $internal_title = empty($node->title) ? '' : $node->title;
+      }
     }
 
-    // Get the optional external title, use the internal title if the external
-    // title is empty.
+    // Get the external title.
     $external_title = _takeaction_feed_field_value($node,
       'field_tab_external_title');
     if (strlen(trim($external_title)) === 0) {
+      // Use the internal title instead.
       $external_title = $internal_title;
+    }
+
+    $thumbnail_url = _takeaction_feed_media_url($node,
+      'field_action_main_image');
+    if (strlen(trim($thumbnail_url)) === 0) {
+      // Use the promo thumbnail instead.
+      $thumbnail_url = _takeaction_feed_media_url($node,
+        'field_thumbnail');
     }
 
     // The actionCopy value is an aggregate of the fields that make up the
@@ -425,8 +434,7 @@ function takeaction_feed_action_item_data($node) {
         'field_tab_external_desc'),
       'callToAction' => $call_to_action,
       'pageUrl' => url('node/' . $node->nid, array('absolute' => TRUE)),
-      'thumbnailUrl' => _takeaction_feed_media_url($node,
-        'field_thumbnail'),
+      'thumbnailUrl' => $thumbnail_url,
       'type' => _takeaction_feed_term_list($node, 'field_action_type'),
       'externalTAB' => _takeaction_feed_field_value($node,
         'field_tab_takepart_only', '0'),
