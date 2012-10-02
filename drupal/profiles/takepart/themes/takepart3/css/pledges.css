@@ -454,7 +454,7 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
   padding-right: 0;
 }
 .node-pledge-action .signature-form .form-type-checkbox label {
-  
+  line-height: 1.5em;
 }
 .node-pledge-action .field-name-field-pledge-action-short p,
 .node-pledge-action .field-name-field-pledge-action-long p {
