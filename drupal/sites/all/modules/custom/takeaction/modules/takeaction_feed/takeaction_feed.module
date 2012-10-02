@@ -66,15 +66,15 @@ function takeaction_feed_admin_form($form, &$form_state) {
 
   $form['takeaction_feed_filter_unpublished'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Filter unpublished actions'),
-    '#description' => t('Exclude unpublised actions from the actions feed'),
+    '#title' => t('Exclude unpublished actions'),
+    '#description' => t('Exclude unpublished actions from the actions feed'),
     '#default_value' => variable_get('takeaction_feed_filter_unpublished', 1),
   );
 
   $form['takeaction_feed_filter_takepart_only'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Filter TakePart.com only actions'),
-    '#description' => t('Exclude TakePart.com only actions from the actions feed'),
+    '#title' => t('Exclude TakePart.com only actions'),
+    '#description' => t('Exclude actions that are not marked as TAB actions from the actions feed'),
     '#default_value' => variable_get('takeaction_feed_filter_takepart_only', 1),
   );
 
@@ -100,7 +100,6 @@ function takeaction_feed_admin_form_submit_rebuild($form, $form_state) {
   $nodes = db_select('node', 'n')
     ->fields('n', array('nid', 'type'))
     ->condition('n.type', array_keys($counts), 'IN')
-    ->condition('n.status', 0, '!=')
     ->execute()
     ->fetchAllKeyed();
   foreach ($nodes as $nid => $type) {
@@ -128,6 +127,7 @@ function takeaction_feed_node_update($node) {
   $data = takeaction_feed_action_item_data($node);
   if ($data !== FALSE) {
     $timestamp = time();
+    $tab_action = _takeaction_feed_field_value($node, 'field_tab_action', '0');
     db_merge('takeaction_feed_actions')
       ->key(array(
         'nid' => $node->nid,
@@ -137,15 +137,13 @@ function takeaction_feed_node_update($node) {
         'created' => $timestamp,
         'changed' => $timestamp,
         'published' => $node->status,
-        'takepart_only' => empty($data['externalTAB']) ? 0
-          : (int) $data['externalTAB'],
+        'takepart_only' => empty($tab_action) ? 1 : 0,
         'data' => serialize($data),
       ))
       ->updateFields(array(
         'changed' => $timestamp,
         'published' => $node->status,
-        'takepart_only' => empty($data['externalTAB']) ? 0
-          : (int) $data['externalTAB'],
+        'takepart_only' => empty($tab_action) ? 1 : 0,
         'data' => serialize($data),
       ))
       ->execute();
@@ -206,7 +204,8 @@ function _takeaction_feed_field_list($node, $field) {
   if ($items !== FALSE) {
     foreach ($items as $delta => $item) {
       $values[] = array(
-        'title' => strip_tags($item['value']),
+        'title' => '',
+        'text' => strip_tags($item['value']),
         'timestamp' => 0,
       );
     }
@@ -264,6 +263,7 @@ function _takeaction_feed_link_list($node, $field) {
       $links[] = array(
         'title' => $item['title'],
         'url' => $item['url'],
+        'timestamp' => 0,
       );
     }
   }
@@ -436,8 +436,6 @@ function takeaction_feed_action_item_data($node) {
       'pageUrl' => url('node/' . $node->nid, array('absolute' => TRUE)),
       'thumbnailUrl' => $thumbnail_url,
       'type' => _takeaction_feed_term_list($node, 'field_action_type'),
-      'externalTAB' => _takeaction_feed_field_value($node,
-        'field_tab_takepart_only', '0'),
       'sponsors' => _takeaction_feed_group_list($node,
         'field_action_sponsors'),
       'organizations' => _takeaction_feed_group_list($node,
