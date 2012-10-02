@@ -14,11 +14,13 @@ stylesheets[all][] = css/style_temp.css
 stylesheets-conditional[lte IE 7][all][] = css/ie7.css
 
 stylesheets[all][] = css/sharebar.css
+stylesheets[all][] = css/venue.css
 
 ; Javascript
 scripts[] = js/script.js
 
 scripts[] = js/horizontal-tabs.js
+scripts[] = js/venue.js
 
 features[] = favicon
 
