@@ -292,9 +292,6 @@ fieldset#signature_international_signature_form_group_outside_us #edit-field-sig
     padding: 0;
     margin-bottom: 0;
 }
-.embedaction-content .node-pledge-action .form-item-field-sig-country-und select {
-    width: 250px;
-}
 .node-pledge-action .address-selection-tabs ul.horizontal-tabs-list li {
     position: absolute;
     top:  0;
