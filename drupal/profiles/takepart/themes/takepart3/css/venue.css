@@ -46,7 +46,6 @@
   border: 0;
 }
 #content .node-venue .horizontal-tabs-list {
-  display: inline-block; *display: inline; *zoom: 1;
   vertical-align: middle;
   background: transparent;
   width: 495px;
@@ -55,24 +54,30 @@
 #content .node-venue .horizontal-tabs-list li {
   background: transparent;
   border-color: #969696;
+  padding: 0 10px;
+  min-width: 0;
 }
 #content .node-venue .horizontal-tabs-list li a,
 #content .node-venue .horizontal-tabs-list li a:hover {
   background: transparent;
-  text-align: center;
   padding: 0;
 }
 #content .node-venue .horizontal-tabs-list li:last-child {
   border: 0;
 }
 #content .node-venue .horizontal-tabs-list li a strong {
-  padding: 0.2em 0.8em;
-  text-align: center;
   color: #969696;
   font-weight: normal;
 }
 #content .node-venue .horizontal-tabs-list li.selected a strong {
   color: #fff;
+}
+#content .node-venue .horizontal-tabs-list li a,
+#content .node-venue .horizontal-tabs-list li a:hover {
+  padding: 0.2em 0.4em;
+}
+#content .node-venue .horizontal-tabs-list li.selected a,
+#content .node-venue .horizontal-tabs-list li.selected a:hover {
   background: #EF5845;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
