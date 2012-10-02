@@ -104,6 +104,17 @@
     width: 312px;
 }
 .node-petition-action .selectable-address-group select,
-.node-petition-action .selectable-address-group select {
+.node-pledge-action .selectable-address-group select {
     width: 200px;
+}
+.node-petition-action .english-spanish-signature-form .selectable-address-group select,
+.node-pledge-action .english-spanish-signature-form .selectable-address-group select {
+    width: 312px;
+}
+.node-petition-action .english-spanish-signature-form .selectable-address-group .selectable-address-link,
+.node-pledge-action .english-spanish-signature-form .selectable-address-group .selectable-address-link {
+  display: block;
+  line-height: 1.5em;
+  padding: 3px 0 0 108px;
+  line-height: 1.5em;
 }
