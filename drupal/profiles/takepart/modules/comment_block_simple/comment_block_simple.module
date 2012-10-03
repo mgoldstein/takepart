@@ -51,12 +51,14 @@ function comment_block_simple_block_view($delta= 1) {
         // add user defined settings  
         $width = variable_get('facebook_comments_width', '640');
         $style = variable_get('facebook_comments_style', 'light');
+        $mobile = variable_get('facebook_comments_mobile', 'auto-detect');
 
         $content['#fb_comments'] = array(
           'enabled' => true,
           'url' => $url,
           'width' => $width,
           'style' => $style,
+          'mobile' => $mobile,
           'amount' => $fb_comments->amount,
         );
       }
