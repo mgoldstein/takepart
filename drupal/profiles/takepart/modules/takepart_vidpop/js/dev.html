@@ -60,8 +60,6 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
       //  ***   2) the complete street address
       //  ***   3) state name
       //  ***   4) details for tooltip (if no video), or null (if video)
-      //  ***   5) marker image
-      //  ***   6) shadow image
       //  ***
 
       //  *** is the complete street address. Ignore the next two. The last
@@ -70,12 +68,12 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
       //  *** in quotes, or leave it as html to use boilerplate text.
       //  ***
 
-      addresses[0]=[24857,"331 Foothill Rd, Beverly Hills, CA 90210" , "CALIFORNIA", null, markerVideo, shadowVideo];
-      addresses[1]=[23897, "350 5th Avenue  New York, NY 10118", 'NEW YORK', null, markerNormal, shadowNormal];
-      addresses[2]=[null, "141 West Jackson Boulevard, Chicago 60604", 'ILLINOIS', default_details, markerNormal, shadowNormal];
-      addresses[3]=[null, "1301 Administration Ave. Fargo, ND 58102", 'NORTH DAKOTA', default_details, markerNormal, shadowNormal];
-      addresses[4]=[null, "3211 Providence Drive Anchorage, Alaska 99508", 'ALASKA', default_details, markerNormal, shadowNormal];
-      addresses[5]=[null, "2350 Dole Street Honolulu, HI 96822", 'HAWAII', default_details, markerNormal, shadowNormal];
+      addresses[0]=[24857,"331 Foothill Rd, Beverly Hills, CA 90210" , "CALIFORNIA", null];
+      addresses[1]=[23897, "350 5th Avenue  New York, NY 10118", 'NEW YORK', null];
+      addresses[2]=[null, "141 West Jackson Boulevard, Chicago 60604", 'ILLINOIS', default_details];
+      addresses[3]=[null, "1301 Administration Ave. Fargo, ND 58102", 'NORTH DAKOTA', default_details];
+      addresses[4]=[null, "3211 Providence Drive Anchorage, Alaska 99508", 'ALASKA', default_details];
+      addresses[5]=[null, "2350 Dole Street Honolulu, HI 96822", 'HAWAII', default_details];
 
       //  **************************************************************************
 
@@ -94,23 +92,19 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
             video_id       = addresses[i][0],
             address        = addresses[i][1],
             state_val      = addresses[i][2],
-            details_val    = addresses[i][3],
-            marker_img     = addresses[i][4],
-            marker_shadow  = addresses[i][5];
+            details_val    = addresses[i][3]
 
         if (typeof(video_id) == 'number') {
           // video node - load and hide
           //document.write(vidpop_get_map_video(video_id));
         }
 
-          (function(video, addr, state_arg, details_arg, index, img, shadow) {  // <-- immediate function call
+          (function(video, addr, state_arg, details_arg) {  // <-- immediate function call
           geocoder_map.geocode({'address': addr}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               var marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location,
-                //shadow: shadow,
-                icon: img,
                 shape: shape,
                 title: state_arg
               });
@@ -118,9 +112,11 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
               // select appropriate marker image
               if (typeof(video) == 'number') {
                 marker.setIcon(markerVideo);
+                marker.setShadow(shadowVideo);
               }
               else {
                 marker.setIcon(markerNormal);
+                marker.setShadow(shadowNormal);
               }
 
               bound.extend(results[0].geometry.location);
@@ -142,7 +138,7 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
               alert("The requested address is not mappable !");
             }
           });
-        }(video_id, address, state_val, details_val, i, marker_img, marker_shadow)); // <-- immediate function call
+        }(video_id, address, state_val, details_val)); // <-- immediate function call
       }
     }
 </script>

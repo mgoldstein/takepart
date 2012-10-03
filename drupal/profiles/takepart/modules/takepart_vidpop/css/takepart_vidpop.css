@@ -237,7 +237,7 @@ The fix is to add this to the theme CSS:
 /* video popups in map */
 .vidmap-popup {
   background: #262626 url(images/vidmap-popup-bg.png) repeat-x !important;
-  min-height: 275px;
+  min-height:75px;
   width: 200px;
   color: white;
   padding: 15px;
@@ -251,29 +251,3 @@ The fix is to add this to the theme CSS:
   font-weight: bold;
   font-size: 12px;
 }
-
-
-
-.vidmap-popup {
-  position: absolute;
-  top: 0 !important;
-  left: 0 !important;
-  background: #262626 url(images/vidmap-popup-bg.png) repeat-x !important;
-  height: 100% !important;
-  width: 800px !important;
-  color: white;
-  padding: 0;
-  overflow: visible !important;
-  border: 2px solid green;
-  z-index: 20000002 !important;
-}
-.vmap {
-  border: 1px solid red;
-  width: 400px;
-  height: 400px;
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
-

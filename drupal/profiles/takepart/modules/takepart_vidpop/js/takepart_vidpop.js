@@ -109,31 +109,3 @@ function vidpop_get_map_video(nid) {
   return output;
 }
 
-function vmapResize() {
-  var height = getViewportHeight();
-
-  alert("This is what it looks like before the Javascript. Click OK to set the height.");
-
-  alert(height);
-  if (height > 0) {
-    jQuery(".vidmap-popup").height(height + "px");
-    jQuery(".vidmap-popup").width('555px');
-    jQuery(".vidmap-popup").attr('style', 'width: 555px !important');
-    jQuery(".vidmap-popup").attr('style', 'height: 555px !important');
-  }
-}
-
-
-function getViewportHeight() {
-  var h = 0;
-
-  if(self.innerHeight)
-    h = window.innerHeight;
-  else if(document.documentElement && document.documentElement.clientHeight)
-    h = document.documentElement.clientHeight;
-  else if(document.body)
-    h = document.body.clientHeight;
-
-  return h;
-}
-
