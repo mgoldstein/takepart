@@ -3,7 +3,7 @@
 .takepart-newsletter-form .form-submit { display: inline; }
 .takepart-newsletter-form .form-messages { height: 12px; color: red; }
 
-.takepart-newsletter-promo-text { margin-bottom: 10px; }
+.takepart-newsletter-promo-text { margin: 4px 0 10px; }
 
 .takepart-newsletter-form .form-text {
   /* border: 1px solid #d3d3d3; */
