@@ -3221,6 +3221,7 @@ div.embedaction-wrapper div.field-name-field-promo-headline div.field-item:hover
 .node-pledge-action .form-type-checkbox label {
   text-align: left;
   width: 293px;
+  line-height: 1.5em;
 }
 .node-type-takepart-campaign #content h2.embedaction-divider, 
 div.embedaction-content h2.embedaction-divider {
@@ -3372,17 +3373,6 @@ div.embedaction-content h2.embedaction-divider a span {
     text-transform: uppercase;
     margin-left: 100px;
     font: bold 24px Helvetica,Arial,sans-serif;
-}
-
-.node-petition-action input.signature-sign-button:hover {
-    /*Gradient*/ 
-    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
-    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
-    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
-    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
-    background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
-    box-shadow: 3px 3px 5px #888888;
-    border: 2px ridge #ffdf97;
 }
 
 .embedaction-content .node-petition-action .signature-terms-of-use {
