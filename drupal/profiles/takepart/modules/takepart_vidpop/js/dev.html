@@ -5,7 +5,6 @@ The contents of this entire file is pasted into the body area.
 
 TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
 -->
-
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10&sensor=false"></script>
 <script type="text/javascript" src="/sites/all/libraries/google/infobox_packed.js"></script>
 
@@ -59,7 +58,7 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
       //  *** Each line has 5 fields, separated by commas.
       //  ***   1) the node if of the video, null if no video
       //  ***   2) the complete street address
-      //  ***   3) state name (if no video), or node id of the video
+      //  ***   3) state name
       //  ***   4) details for tooltip (if no video), or null (if video)
       //  ***   5) marker image
       //  ***   6) shadow image
@@ -72,7 +71,7 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
       //  ***
 
       addresses[0]=[24857,"331 Foothill Rd, Beverly Hills, CA 90210" , "CALIFORNIA", null, markerVideo, shadowVideo];
-      addresses[1]=[null, "350 5th Avenue  New York, NY 10118", 'NEW YORK', "Video will be available within one week after October 1, 2012", markerNormal, shadowNormal];
+      addresses[1]=[23897, "350 5th Avenue  New York, NY 10118", 'NEW YORK', null, markerNormal, shadowNormal];
       addresses[2]=[null, "141 West Jackson Boulevard, Chicago 60604", 'ILLINOIS', default_details, markerNormal, shadowNormal];
       addresses[3]=[null, "1301 Administration Ave. Fargo, ND 58102", 'NORTH DAKOTA', default_details, markerNormal, shadowNormal];
       addresses[4]=[null, "3211 Providence Drive Anchorage, Alaska 99508", 'ALASKA', default_details, markerNormal, shadowNormal];
@@ -101,7 +100,7 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
 
         if (typeof(video_id) == 'number') {
           // video node - load and hide
-          document.write(vidpop_get_map_video(video_id));
+          //document.write(vidpop_get_map_video(video_id));
         }
 
           (function(video, addr, state_arg, details_arg, index, img, shadow) {  // <-- immediate function call
@@ -113,8 +112,16 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
                 //shadow: shadow,
                 icon: img,
                 shape: shape,
-                title: state_arg,
+                title: state_arg
               });
+
+              // select appropriate marker image
+              if (typeof(video) == 'number') {
+                marker.setIcon(markerVideo);
+              }
+              else {
+                marker.setIcon(markerNormal);
+              }
 
               bound.extend(results[0].geometry.location);
               map.fitBounds(bound);
@@ -123,8 +130,7 @@ TakePart's Key: AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10
               google.maps.event.addListener(marker, 'click', function() {
                 if (typeof(video) == 'number') {
                   // numeric; grab the video node
-alert('b');
-                  jQuery.fn.colorbox({width:"50%", inline:true, href:"#vidpop-details-" + video});
+                  jQuery.fn.colorbox({width:"900px", height:"535px", inline:true, href:"#vidpop-details-" + video});
                 }
                 else {
                   html = '<div class="state-name">' + state_arg + '</div><div class="details">' + details_arg + '</div>';

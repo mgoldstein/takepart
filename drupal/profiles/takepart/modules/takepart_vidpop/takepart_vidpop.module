@@ -55,6 +55,15 @@ function takepart_vidpop_preprocess_page(&$vars) {
 }
 
 
+function takepart_vidpop_preprocess_node(&$vars, $hook) {
+  // See if this is the Rollins map page - be sure to test for correct node id
+  $rollins_nid = 27693;
+  if ($vars['node']->nid  == $rollins_nid) {
+    // load the map popups
+    takepart_vidpop_process_map_popups($vars['node']->body['und'][0]['value']);
+  }
+}
+
 
 /**
  * Implements hook_menu().
@@ -217,3 +226,62 @@ EOT;
   print $output;
   drupal_exit();
 }
+
+
+/***
+ * function: preload popups for map page
+ *
+ * @param $text body text, containing embedded javascript
+ */
+function takepart_vidpop_process_map_popups($text) {
+  $data = explode("\n", $text);
+  foreach ($data as $junk => $line) {
+    if (preg_match("/^.+addresses\[\d+\]\=\[(\d+)\,/", $line, $res)) {
+      $node_id = $res[1];
+      $node = node_load($node_id);
+      if ($node) {
+        //$build = node_view($node, 'full');
+        //$build['#theme'] = 'vidpop_popup';
+        //$rendered = render($build);
+
+        $vnode = node_view(node_load($node_id),'vidpop_map');
+        $template_file = drupal_get_path('module', 'takepart_vidpop') . '/theme/vidpop-popup.tpl.php';
+        $content = array(
+          'field_video_embedded' => $vnode['field_video_embedded'],
+          'field_promo_headline' => $vnode['field_promo_headline'],
+          'field_promo_text'     => $vnode['field_promo_text']
+        );
+        $classes= "vidpop-popup";
+
+        //$rendered = theme_render_template($template_file, $node);
+        ob_start();                                   // Start output buffering
+        include DRUPAL_ROOT . '/' . $template_file;   // Include the template file
+        $rendered = ob_get_clean();                        // End buffering and return its contents
+
+        // format like a colorbox
+        $id = 'vidpop-details-' . $node_id;
+        $output = <<<EOT
+<div class="vidpop-overlay">
+  <div id="$id">
+    $rendered
+  </div>
+</div>
+EOT;
+
+        print $output;
+      }
+    }
+  }
+}
+
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function takepart_vidpop_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['vidpop_map'] = array(
+    'label' => t('Video popup for map page'),
+    'custom settings' => TRUE,
+  );
+}
+
