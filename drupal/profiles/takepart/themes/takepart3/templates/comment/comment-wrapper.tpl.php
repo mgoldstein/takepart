@@ -44,10 +44,11 @@
       ?>"></fb:comments-count></span>
     </div>
     <?php print render($title_suffix); ?>
-    <fb:comments href="<?php print $content['#fb_comments']['url'] ?>"
-      num_posts="<?php print $content['#fb_comments']['amount'] ?>"
-      width="<?php print $content['#fb_comments']['width'] ?>"
-      colorscheme="<?php print $content['#fb_comments']['style'] ?>"></fb:comments>
+    <fb:comments href="<?php print $content['#fb_comments']['url']; ?>"
+      num_posts="<?php print $content['#fb_comments']['amount']; ?>"
+      width="<?php print $content['#fb_comments']['width']; ?>"
+      mobile="<?php print $content['#fb_comments']['mobile']; ?>"
+      colorscheme="<?php print $content['#fb_comments']['style']; ?>"></fb:comments>
   <?php else: ?>
   <?php if ($content['#node']->comment_count > 0): ?>
     <?php print render($title_prefix); ?>
