@@ -6,7 +6,7 @@ define('TAKEPART_VIDPOP_DEFAULT_AD_ID', 'TP3_ROS_Leaderboard_728x90');
 
 
 /***
- * implentation of hook_init()
+ * implementation of hook_init()
  */
 function takepart_vidpop_init() {
   $path = drupal_get_path('module', 'takepart');
@@ -40,16 +40,29 @@ function takepart_vidpop_theme() {
 
 
 function takepart_vidpop_preprocess_vidpop_popup(&$vars) {
-  // save values for ad click js
-  drupal_add_js(array('takepart_vidpop'=> array('embeddedvideotitle' => $vars['field_promo_headline'][0]['value'])),'setting');
+  if (isset($vars['field_promo_headline'])) {
+    // save values for ad click js
+    drupal_add_js(array('takepart_vidpop'=> array('embeddedvideotitle' => $vars['field_promo_headline'][0]['value'])),'setting');
+  };
 }
 
 
 function takepart_vidpop_preprocess_page(&$vars) {
   // save values for ad click js
-  drupal_add_js(array('takepart_vidpop'=> array('hostpagetitle' => $vars['node']->title)),'setting');
+  if (isset($vars['node'])) {
+    drupal_add_js(array('takepart_vidpop'=> array('hostpagetitle' => $vars['node']->title)),'setting');
+  };
 }
 
+
+function takepart_vidpop_preprocess_node(&$vars, $hook) {
+  // See if this is the Rollins map page - be sure to test for correct node id
+  $rollins_nid = 27693;
+  if ($vars['node']->nid  == $rollins_nid) {
+    // load the map popups
+    takepart_vidpop_process_map_popups($vars['node']->body['und'][0]['value']);
+  }
+}
 
 
 /**
@@ -63,6 +76,13 @@ function takepart_vidpop_menu() {
     'access arguments' => array('access administration pages'),
     'type' => MENU_NORMAL_ITEM,
     'file' => 'takepart_vidpop.admin.inc',
+  );
+  $items['vidpop/mapembed/%'] = array(
+    'title' => 'Videop map callback',
+    'page callback' => 'takepart_vidpop_get_map_video',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -151,7 +171,7 @@ GS_googleEnableAllServices();';
   }
 
   //register the slot
-  $ad_html .= 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad_id . '");';
+  $ad_html = 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad_id . '");';
   drupal_add_js($ad_html, 'inline');
   $banner = <<<HTM
 <script type='text/javascript'>
@@ -175,4 +195,93 @@ function takepart_vidpop_get_social_links() {
 }
 
 
+/***
+ * ajax callback to embed video in a map
+ *
+ * arg is the nid
+ *
+ * url is /vidpop/mapembed/NID
+ */
+function takepart_vidpop_get_map_video() {
+  $nid = arg(2);
+  $node = node_load($nid);
+  $output = 'error reading node';
+  if ($node) {
+    //$build = node_view($node, 'vidpop_popup');
+    $build = node_view($node, 'full');
+    $build['#theme'] = 'vidpop_popup';
+    $rendered = render($build);
+
+    // format like a colorbox
+    $id = 'vidpop-details-' . $nid;
+    $output = <<<EOT
+<div class="vidpop-overlay">
+  <div id="$id">
+    $rendered
+  </div>
+</div>
+EOT;
+  }
+
+  print $output;
+  drupal_exit();
+}
+
+
+/***
+ * function: preload popups for map page
+ *
+ * @param $text body text, containing embedded javascript
+ */
+function takepart_vidpop_process_map_popups($text) {
+  $data = explode("\n", $text);
+  foreach ($data as $junk => $line) {
+    if (preg_match("/^.+addresses\[\d+\]\=\[(\d+)\,/", $line, $res)) {
+      $node_id = $res[1];
+      $node = node_load($node_id);
+      if ($node) {
+        //$build = node_view($node, 'full');
+        //$build['#theme'] = 'vidpop_popup';
+        //$rendered = render($build);
+
+        $vnode = node_view(node_load($node_id),'vidpop_map');
+        $template_file = drupal_get_path('module', 'takepart_vidpop') . '/theme/vidpop-popup.tpl.php';
+        $content = array(
+          'field_video_embedded' => $vnode['field_video_embedded'],
+          'field_promo_headline' => $vnode['field_promo_headline'],
+          'field_promo_text'     => $vnode['field_promo_text']
+        );
+        $classes= "vidpop-popup";
+
+        //$rendered = theme_render_template($template_file, $node);
+        ob_start();                                   // Start output buffering
+        include DRUPAL_ROOT . '/' . $template_file;   // Include the template file
+        $rendered = ob_get_clean();                        // End buffering and return its contents
+
+        // format like a colorbox
+        $id = 'vidpop-details-' . $node_id;
+        $output = <<<EOT
+<div class="vidpop-overlay">
+  <div id="$id">
+    $rendered
+  </div>
+</div>
+EOT;
+
+        print $output;
+      }
+    }
+  }
+}
+
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function takepart_vidpop_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['vidpop_map'] = array(
+    'label' => t('Video popup for map page'),
+    'custom settings' => TRUE,
+  );
+}
 

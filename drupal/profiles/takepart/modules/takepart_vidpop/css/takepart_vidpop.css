@@ -233,3 +233,22 @@ The fix is to add this to the theme CSS:
 .vidpop-popup .addthis_button_email {
     padding: 2px 0 0 6px;
 }
+
+
+/* video popups in map */
+.vidmap-popup {
+  background: #262626 url(images/vidmap-popup-bg.png) repeat-x !important;
+  min-height:75px;
+  width: 200px;
+  color: white;
+  padding: 15px;
+}
+.vidmap-popup .state-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+.vidmap-popup .details {
+  font-weight: bold;
+  font-size: 12px;
+}

@@ -7,6 +7,7 @@
             <div class="column-title">Topics</div>
             <!--/column-->
             <?php print $takepart_topics_nav ?>
+            <?php print $takepart_topics_nav_piped ?>
         </div>
     <?php endif; ?>
 
@@ -15,6 +16,7 @@
             <div class="column-title">film campaigns</div>
             <!--/column-->
             <?php print $film_camp_nav ?>
+            <?php print $film_camp_nav_piped ?>
             
             <div id="footer-more-campaigns"><a href="/film-campaigns">More Film Campaigns</a></div>
         </div>

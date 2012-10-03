@@ -25,7 +25,6 @@ $share_node_title = $embed_node->title;
 $content['field_video_embedded'][0]['file']['#options']['width'] = 640;
 $content['field_video_embedded'][0]['file']['#options']['height'] = 360;
 ?>
-
 <?php if (!empty($pre_object)) print render($pre_object) ?>
 <div class='<?php print $classes ?> clearfix node-embedded' <?php print ($attributes) ?>>
   <div class="inner-wrapper">
