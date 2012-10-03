@@ -62,6 +62,7 @@
 .node-petition-action .form-type-checkbox label,
 .node-pledge-action .form-type-checkbox label {
   padding: 0;
+  line-height: 1.5em;
 }
 .node-petition-action .signature-terms-of-use {
     margin-left: 188px;

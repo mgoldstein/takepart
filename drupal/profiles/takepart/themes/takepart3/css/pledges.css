@@ -181,6 +181,7 @@ padding-bottom: 1em;
     float: none;
     padding: 0;
     vertical-align: middle;
+    line-height: 1.5em;
 }
 
 .node-pledge-action #edit-signature-display-disclaimer {
@@ -449,9 +450,6 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
 }
 .embedaction-wrapper .node-pledge-action .field-name-field-petition-sponsor .field-item:last-child {
   padding-right: 0;
-}
-.node-pledge-action .signature-form .form-type-checkbox label {
-  line-height: 1.5em;
 }
 .node-pledge-action .field-name-field-pledge-action-short p,
 .node-pledge-action .field-name-field-pledge-action-long p {
