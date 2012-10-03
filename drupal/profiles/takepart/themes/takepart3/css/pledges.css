@@ -210,17 +210,6 @@ padding-bottom: 1em;
     margin-left: 156px;
 }
 
-.node-pledge-action input.signature-sign-button:hover {
-    /*Gradient*/ 
-    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
-    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
-    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
-    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)); 
-    background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
-    box-shadow: 3px 3px 5px #888888 inset;
-    border: 2px ridge #ffdf97;
-}
-
 .embedaction-content .node-pledge-action .signature-terms-of-use {
   text-indent: 71px;
 }
@@ -352,7 +341,7 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
 
 .node-pledge-action input.signature-sign-button {
   font-family: Helvetica, Arial, sans-serif;
-  background: url(../images/2012-08-07/petition_sign_button_good.png) repeat-x scroll 0 0 transparent;
+  background: url(../images/2012-08-07/petition_sign_button_good.png) no-repeat scroll 0 0 transparent;
   border: 0 none;
   width: 316px;
   height: 56px;
@@ -363,7 +352,7 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
   margin-left: 103px;
 }
 .node-pledge-action input.signature-sign-button:hover {
-  background: url(../images/2012-08-07/petition_sign_button_good.png) repeat-x scroll 0 -56px transparent;
+  background-position: 0 -56px;
   border: 0 none;
   box-shadow: none;
 }
