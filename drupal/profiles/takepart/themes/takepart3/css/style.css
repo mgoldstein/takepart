@@ -3511,3 +3511,7 @@ body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
     }
 }
 
+.drupal-embed .block-newsletter-campaign {
+    border: 4px solid #EFF3F5;
+    padding: 10px;
+}
