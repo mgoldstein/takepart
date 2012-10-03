@@ -196,6 +196,10 @@ a:hover {
     width: 960px;
 }
 
+.footer-column-wrapper div.links {
+    display:none;
+}
+
 .col-140
 {
     width:140px;
