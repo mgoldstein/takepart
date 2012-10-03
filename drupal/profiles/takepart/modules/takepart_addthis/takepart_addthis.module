@@ -51,10 +51,16 @@ function takepart_addthis_preprocess(&$variables, $hook) {
 <a class="addthis_button_stumbleupon">Stumble this</a>
 <a class="addthis_button_email">E-mail this</a>
 EOS;
+  
+  
+  $takepart_blogpost_custom_btns_noemail =<<<EOS
+<a class="addthis_button_stumbleupon">Stumble this</a>
+EOS;
 /* To add a print friendly button, you need to the following line to the $takepart_blogpost_custom_btns:
 <a class="addthis_button_print">Print</a>
 */
   $variables['addthis_custom_buttons']              = $takepart_blogpost_custom_btns;
+  $variables['addthis_custom_buttons_noemail']      = $takepart_blogpost_custom_btns_noemail;
   $variables['addthis_pubid']                       = $ADD_THIS_PUB_ID;
   $variables['takepart_addthis_tweet_via']          = variable_get('takepart_addthis_tweet_via','');
   $variables['takepart_addthis_facebook_like_text'] = variable_get('takepart_addthis_facebook_like_text','like');
@@ -72,6 +78,7 @@ function takepart_addthis_block_info(){
 
   takepart_addthis_footer_block_info($zeBlocks);
   takepart_addthis_full_block_info($zeBlocks);
+  takepart_addthis_full_noemail_block_info($zeBlocks);
   takepart_addthis_rightrail_block_info($zeBlocks);
   takepart_addthis_simple_block_info($zeBlocks);
   takepart_addthis_petition_block_info($zeBlocks);
@@ -87,6 +94,7 @@ function takepart_addthis_theme(){
 
   takepart_addthis_footer_theme($ret_arr);
   takepart_addthis_full_theme($ret_arr);
+  takepart_addthis_full_noemail_theme($ret_arr);
   takepart_addthis_rightrail_theme($ret_arr);
   takepart_addthis_simple_theme($ret_arr);
   takepart_addthis_petition_theme($ret_arr);
@@ -105,6 +113,9 @@ function takepart_addthis_block_view($delta = ''){
       break;
     case 'addthis_full':
       $ret_view = takepart_addthis_full_block_view($delta);
+      break;
+    case 'addthis_full_noemail':
+      $ret_view = takepart_addthis_full_noemail_block_view($delta);
       break;
     case 'addthis_rightrail':
       $ret_view = takepart_addthis_rightrail_block_view($delta);
@@ -127,7 +138,7 @@ function takepart_addthis_block_view($delta = ''){
 }
 
 //hook_block_configure() router
-function takepart_addthis_block_configure($delta = ''){
+function takepart_addthis_block_configure($delta = '') {
   $ret_form = array();
 
   switch($delta){
@@ -194,10 +205,23 @@ function takepart_addthis_full_block_info(&$blocks){
   );
 }
 
+function takepart_addthis_full_noemail_block_info(&$blocks){
+  $blocks['addthis_full_noemail'] = array(
+      'info' => t('AddThis - full (No Email)'),
+  );
+}
+
 function takepart_addthis_full_theme(&$theme_funcs){
   $theme_funcs['takepart_addthis_full_block'] = array(
     'variables' => array(),
     'template' => 'theme/takepart-addthis-full-block',
+  );
+}
+
+function takepart_addthis_full_noemail_theme(&$theme_funcs){
+  $theme_funcs['takepart_addthis_full_noemail_block'] = array(
+      'variables' => array(),
+      'template' => 'theme/takepart-addthis-full-noemail-block',
   );
 }
 
@@ -216,6 +240,21 @@ function takepart_addthis_full_block_view($delta = ''){
   }
 }
 
+function takepart_addthis_full_noemail_block_view($delta = ''){
+  $block = array();
+
+  //there is only one delta here, switch anyway
+  if($delta == 'addthis_full_noemail'){
+    //create the block
+    $block['subject'] = t('');
+    $block['content'] = theme(
+        'takepart_addthis_full_noemail_block', array()
+    );
+
+    return $block;
+  }
+}
+
 function takepart_addthis_full_block_configure($delta){
   $form = array();
 
@@ -225,8 +264,22 @@ function takepart_addthis_full_block_configure($delta){
   return $form;
 }
 
+function takepart_addthis_full_noemail_block_configure($delta){
+  $form = array();
+
+  if($delta == 'addthis_full_noemail'){
+  }
+
+  return $form;
+}
+
 function takepart_addthis_full_block_save($delta, $edits){
   if($delta == 'addthis_full'){
+  }
+}
+
+function takepart_addthis_full_noemail_block_save($delta, $edits){
+  if($delta == 'addthis_full_noemail'){
   }
 }
 
