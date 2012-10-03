@@ -8,7 +8,6 @@
           event.preventDefault();
           $('div.embedaction-content:hidden', wrapper).slideDown('fast', function () {
             $('h2.embedaction-divider > a', wrapper).show();
-            $('.horizontal-tabs', wrapper).sameSizeTabs();
           });
         });
         $('div.field-name-field-promo-headline', this).click({wrapper: this}, function (event) {
@@ -16,7 +15,6 @@
           event.preventDefault();
           $('div.embedaction-content:hidden', wrapper).slideDown('fast', function () {
             $('h2.embedaction-divider > a', wrapper).show();
-            $('.horizontal-tabs', wrapper).sameSizeTabs();
           });
         });
         $('div.embedaction-button', this).hover(function () {
