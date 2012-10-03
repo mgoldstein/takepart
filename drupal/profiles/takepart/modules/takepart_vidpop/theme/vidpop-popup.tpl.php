@@ -30,9 +30,7 @@ $content['field_video_embedded'][0]['file']['#options']['height'] = 360;
   <div class="inner-wrapper">
     <div class="top-banner clearfix">
       <div class="tp-logo"><?php print $banner_tp_logo; ?></div>
-      <?php if (!empty($top_banner)): ?>
       <div class="video-banner-large"><?php print $top_banner ?></div>
-      <?php endif; ?>
     </div>
     <div class="contents">
      <div class="leftside">

@@ -156,11 +156,12 @@ function takepart_vidpop_get_banner() {
       break;
     }
   }
-
-  // get id of ad to use
+  watchdog('vidmap', 'getting banner, have_ads=' . intval($have_ads));
+    // get id of ad to use
   $ad_id = variable_get('takepart_vidpop_ad_id', TAKEPART_VIDPOP_DEFAULT_AD_ID);
   if (!$have_ads) {
-    // no other ads on the page, so we need to output some javascript
+    watchdog('vidmap', 'adding gs');
+      // no other ads on the page, so we need to output some javascript
     $header1 = 'GS_googleAddAdSenseService("' . variable_get('takepart_ads_dfp_property_code', '') . '");
 GS_googleEnableAllServices();';
     $header2 = 'GA_googleFetchAds();';
@@ -171,7 +172,9 @@ GS_googleEnableAllServices();';
   }
 
   //register the slot
+  watchdog('vidmap', 'registering ' . $ad_id);
   $ad_html = 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad_id . '");';
+  watchdog('vidmap', 'ad_html: ' . $ad_html);
   drupal_add_js($ad_html, 'inline');
   $banner = <<<HTM
 <script type='text/javascript'>
@@ -179,6 +182,7 @@ GS_googleEnableAllServices();';
 </script>
 HTM;
 
+  watchdog('vidmap', 'banner: ' . strlen($banner));
 
   return $banner;
 }
@@ -236,12 +240,10 @@ EOT;
  */
 function takepart_vidpop_process_map_popups($text, $vars) {
   $data = explode("\n", $text);
-  watchdog('vidmap', 'data size: ' . count($data));
   foreach ($data as $junk => $line) {
     if (preg_match("/^.+addresses\[\d+\]\=\[(\d+)\,/", $line, $res)) {
       $node_id = $res[1];
       $node = node_load($node_id);
-      watchdog('vidmap', 'got node ' . $node_id . ' from line ' . $junk);
       if ($node) {
         //$build = node_view($node, 'full');
         //$build['#theme'] = 'vidpop_popup';
@@ -257,15 +259,12 @@ function takepart_vidpop_process_map_popups($text, $vars) {
         $classes= "vidpop-popup";
         $attributes = drupal_attributes($vars['attributes_array']);
 
-        watchdog('vidmap', 'template: ' . $template_file);
-
         //$rendered = theme_render_template($template_file, $node);
         ob_start();                                   // Start output buffering
         include DRUPAL_ROOT . '/' . $template_file;   // Include the template file
         $rendered = ob_get_clean();                        // End buffering and return its contents
 
         // format like a colorbox
-        watchdog('vidmap', 'rendering: ' . $rendered);
         $id = 'vidpop-details-' . $node_id;
         $output = <<<EOT
 <div class="vidpop-overlay">
