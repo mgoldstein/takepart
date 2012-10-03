@@ -154,6 +154,7 @@ function comment_block_simple_block_view($delta = 1) {
           'url' => $url,
           'width' => variable_get('facebook_comments_width', '640'),
           'style' => variable_get('facebook_comments_style', 'light'),
+          'mobile' => variable_get('facebook_comments_mobile', 'auto-detect'),
           'amount' => $fb_comments->amount,
         );
       }
