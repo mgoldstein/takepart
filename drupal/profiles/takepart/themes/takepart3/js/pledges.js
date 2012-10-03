@@ -23,8 +23,10 @@
         var wycdLessLabel = 'Read less.';
                       
         // on load
-        var wycdLink = $('<a href="javascript:void(0)">' + wycdMoreLabel + '</a>').addClass('wycdLink').insertAfter(wycdShortContainer); // add wycdLink
-        $('.field-name-field-petition-sponsor .field-item', container).not(':last').append(', '); // add commas to sponsors
+        var wycdLink = $('<a href="javascript:void(0)">' + wycdMoreLabel + '</a>').addClass('wycdLink').once('add-wycd-link').insertAfter(wycdShortContainer); // add wycdLink
+        $('.field-name-field-petition-sponsor', container).once('add-commas', function(){
+          $(this).find('.field-item').not(':last').append(', ');
+        }); // add commas to sponsors
         
         // bind actions
         element.bind('click', _click);
@@ -46,11 +48,6 @@
             }
           }
         };
-        function _sigSubmission(event){
-          var element = this;
-          var target = $(event.target);
-          
-        }
       }
     }
   };
