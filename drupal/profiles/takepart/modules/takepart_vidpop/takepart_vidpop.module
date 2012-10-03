@@ -60,7 +60,7 @@ function takepart_vidpop_preprocess_node(&$vars, $hook) {
   $rollins_nid = 27693;
   if ($vars['node']->nid  == $rollins_nid) {
     // load the map popups
-    takepart_vidpop_process_map_popups($vars['node']->body['und'][0]['value']);
+    takepart_vidpop_process_map_popups($vars['node']->body['und'][0]['value'], $vars);
   }
 }
 
@@ -232,13 +232,16 @@ EOT;
  * function: preload popups for map page
  *
  * @param $text body text, containing embedded javascript
+ * @param $vars variable data
  */
-function takepart_vidpop_process_map_popups($text) {
+function takepart_vidpop_process_map_popups($text, $vars) {
   $data = explode("\n", $text);
+  watchdog('vidmap', 'data size: ' . count($data));
   foreach ($data as $junk => $line) {
     if (preg_match("/^.+addresses\[\d+\]\=\[(\d+)\,/", $line, $res)) {
       $node_id = $res[1];
       $node = node_load($node_id);
+      watchdog('vidmap', 'got node ' . $node_id . ' from line ' . $junk);
       if ($node) {
         //$build = node_view($node, 'full');
         //$build['#theme'] = 'vidpop_popup';
@@ -252,6 +255,9 @@ function takepart_vidpop_process_map_popups($text) {
           'field_promo_text'     => $vnode['field_promo_text']
         );
         $classes= "vidpop-popup";
+        $attributes = drupal_attributes($vars['attributes_array']);
+
+        watchdog('vidmap', 'template: ' . $template_file);
 
         //$rendered = theme_render_template($template_file, $node);
         ob_start();                                   // Start output buffering
@@ -259,6 +265,7 @@ function takepart_vidpop_process_map_popups($text) {
         $rendered = ob_get_clean();                        // End buffering and return its contents
 
         // format like a colorbox
+        watchdog('vidmap', 'rendering: ' . $rendered);
         $id = 'vidpop-details-' . $node_id;
         $output = <<<EOT
 <div class="vidpop-overlay">
