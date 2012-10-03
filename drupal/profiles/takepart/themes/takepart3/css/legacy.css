@@ -1131,6 +1131,9 @@ div.takepart_addthis_footer div.buttons {
     display: inline;
     float: left;
     font-weight: 300;
+    color: #000;
+    text-transform: none;
+    margin-top: 2px;
 }
 
 #comments .header {
