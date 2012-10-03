@@ -16,24 +16,28 @@
       // $(document).ready only
       function _init(){
         // variables
-        var element = $(this);
+        var container = $(this);
         var wycdLongContainter = $('.field-name-field-pledge-action-long', container).addClass('inactive');
         var wycdShortContainer = $('.field-name-field-pledge-action-short', container).addClass('active');
         var wycdMoreLabel = 'Read more.';
         var wycdLessLabel = 'Read less.';
                       
         // on load
-        var wycdLink = $('<a href="javascript:void(0)">' + wycdMoreLabel + '</a>').addClass('wycdLink').once('add-wycd-link').insertAfter(wycdShortContainer); // add wycdLink
+        var wycdLink = $('.wycdLink', container);
+        console.log(container);
+        container.once('add-wycd-link', function(){
+          wycdLink = $('<a href="javascript:void(0)">' + wycdMoreLabel + '</a>').addClass('wycdLink').insertAfter(wycdShortContainer);
+        });// add wycdLink
+        
         $('.field-name-field-petition-sponsor', container).once('add-commas', function(){
           $(this).find('.field-item').not(':last').append(', ');
         }); // add commas to sponsors
         
         // bind actions
-        element.bind('click', _click);
+        container.bind('click', _click);
         
         // action handlers
         function _click(event){
-          var element = this;
           var target = $(event.target);
           
           // show more / show less link click
