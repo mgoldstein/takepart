@@ -3537,3 +3537,8 @@ body.node-type-petition-action .node-petition-action #edit-terms-of-use-note {
 .node-type-openpublish-photo-gallery .fb_iframe_widget_lift {
     z-index: 5000;
 }
+
+.drupal-embed .block-newsletter-campaign {
+    border: 4px solid #EFF3F5;
+    padding: 10px;
+}
