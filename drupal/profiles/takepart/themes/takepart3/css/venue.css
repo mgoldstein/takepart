@@ -1,9 +1,9 @@
 /* # Tastemaker Styling
 ================================================== */
-.block-boxes-bid-menu-menu-tastemakers ul.menu li {
+.block-menu.block-boxes-bid-menu-menu-tastemakers ul.menu li {
   padding: 0 14px;
 }
-.block-boxes-bid-menu-menu-tastemakers ul.menu li a:hover {
+.block-menu.block-boxes-bid-menu-menu-tastemakers ul.menu li a:hover {
   color: rgb(253, 96, 90);
 }
 
