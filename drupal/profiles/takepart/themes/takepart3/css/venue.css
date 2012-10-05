@@ -29,6 +29,26 @@
   padding: 0;
 }
 
+/* # Share Block
+================================================== */
+.node-type-venue .block-boxes-title-share {
+  padding: 0;
+  border: 0;
+}
+.node-type-venue .block-boxes-title-share h2 {
+  color: #000;
+  background: transparent;
+  font-size: 14px;
+  font-weight: bold;
+}
+.node-type-venue .block-boxes-title-share h2 span {
+  display: block;
+}
+.node-type-venue .block-boxes-title-share .content {
+  background: none repeat scroll 0 0 #F5E8D7;
+  padding: 10px;
+}
+
 /* #Pager
 ================================================== */
 .node-type-venue .block-boxes-view-name-venue_pagination,
