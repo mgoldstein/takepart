@@ -1,93 +1,184 @@
-/* #Node Resets
+/* #Node Resets/Overrides
 ================================================== */
-.node-venue .submitted-wrapper .field {
+.node-type-venue {
+  font-family: Helvetica, sans;
+}
+.node-type-venue p {
+  line-height: 1.5em;
+}
+.node-type-venue .submitted-wrapper .field {
   display: inline-block; *display: inline; *zoom: 1;
   float: none;
 }
-#content .node-venue .horizontal-tabs-list {
+.node-type-venue #content .horizontal-tabs-list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-#content .node-venue .horizontal-tabs-list li {
+.node-type-venue #content .horizontal-tabs-list li {
   margin: 0;
   padding: 0;
 }
 
+/* #Pager
+================================================== */
+.node-type-venue .block-boxes-view-name-venue_pagination,
+.node-type-venue .block-boxes-view-name-venue_pagination_bottom {
+  position: relative;
+  border-width: 1px 0;
+  border-color: #000;
+  border-style: dotted;
+  padding: 8px 0;
+  margin-bottom: 16px;
+}
+.node-type-venue .block-boxes-view-name-venue_pagination .title,
+.node-type-venue .block-boxes-view-name-venue_pagination_bottom .title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.node-type-venue .block-boxes-view-name-venue_pagination a,
+.node-type-venue .block-boxes-view-name-venue_pagination_bottom a {
+  color: #000;
+}
+.node-type-venue .freepager-previous a,
+.node-type-venue .freepager-next a {
+  position: relative;
+  z-index: 1;
+  display: inline-block; *display: inline; *zoom: 1;
+  height: 30px;
+  cursor: pointer;
+}
+.node-type-venue .freepager-previous a {
+  background: url('../images/venue/pager_prev.png') no-repeat 0 0;
+  padding-left: 35px;
+}
+.node-type-venue .freepager-next a {
+  background: url("../images/venue/pager_next.png") no-repeat right 0;
+  padding-right: 35px;
+  text-align: right;
+}
+.node-type-venue .freepager-previous a:hover{
+  background-position: 0 -70px;
+}
+.node-type-venue .freepager-next a:hover{
+  background-position: right -70px;
+}
+.node-type-venue .freepager-next a span,
+.node-type-venue .freepager-previous a span {
+  display: block;
+}
+.node-type-venue .freepager-next a:hover,
+.node-type-venue .freepager-previous a:hover {
+  color: rgb(253, 96, 90);
+  text-decoration: none;
+}
+.node-type-venue .freepager-current {
+  width: 100%;
+  position: absolute;
+  top: 16px;
+  color: rgb(122, 122, 122);
+}
+
 /* #Heading
 ================================================== */
-.node-venue {
+.node-type-venue {
   position: relative;
 }
-.node-venue h1.title {
-  font-family: serif;
+.node-type-venue h1.title {
+  padding: 0 0 13px;
+}
+.node-type-venue h1.title span {
+  font-family: Helvetica,Arial,sans;
   color: #000;
-  font-size: 24px;
+  font-size: 26px;
   line-height: auto;
-  padding: 13px 0;
+  font-weight: bold;
 }
 
 /* #Image Area
 ================================================== */
-.node-venue .field-name-field-main-image {
+.node-type-venue .field-name-field-main-image {
   padding-bottom: 20px;
 }
 
 /* #Tabs & Title
 ================================================== */
-.node-venue .field-name-field-name {
+.node-type-venue .field-name-field-name {
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: middle;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
-  margin-right: 10px;
+  margin-right: 20px;
+  color: #000000;
 }
-.node-venue .horizontal-tabs {
+.node-type-venue .horizontal-tabs {
   border: 0;
 }
-#content .node-venue .horizontal-tabs-list {
+.node-type-venue #content .horizontal-tabs-list {
   vertical-align: middle;
   background: transparent;
-  width: 495px;
+  width: auto;
   border: 0;
 }
-#content .node-venue .horizontal-tabs-list li {
+.node-type-venue #content .horizontal-tabs-list li {
   background: transparent;
-  border-color: #969696;
-  padding: 0 10px;
+  border: 0;
+  margin: 0 5px;
   min-width: 0;
+  outline: 0;
 }
-#content .node-venue .horizontal-tabs-list li a,
-#content .node-venue .horizontal-tabs-list li a:hover {
-  background: transparent;
+.node-type-venue #content .horizontal-tabs-list li a,
+.node-type-venue #content .horizontal-tabs-list li a:hover {
+  background: url('../images/venue/tab_button.png') no-repeat;
   padding: 0;
-}
-#content .node-venue .horizontal-tabs-list li:last-child {
-  border: 0;
-}
-#content .node-venue .horizontal-tabs-list li a strong {
-  color: #969696;
-  font-weight: normal;
-}
-#content .node-venue .horizontal-tabs-list li.selected a strong {
-  color: #fff;
-}
-#content .node-venue .horizontal-tabs-list li a,
-#content .node-venue .horizontal-tabs-list li a:hover {
-  padding: 0.2em 0.4em;
-}
-#content .node-venue .horizontal-tabs-list li.selected a,
-#content .node-venue .horizontal-tabs-list li.selected a:hover {
-  background: #EF5845;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
   -khtml-border-radius: 2px;
+  width: 59px;
 }
-.node-venue .horizontal-tabs-panes {
+.node-type-venue #content .horizontal-tabs-list li a:hover {
+  background: rgb(253, 96, 90);
+}
+.node-type-venue #content .horizontal-tabs-list li a strong {
+  color: #fff;
+  font-weight: bold;
+  display: block;
+  height: 100%;
+  text-align: center;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+}
+.node-type-venue #content .horizontal-tabs-list li.selected a strong {
+  color: rgb(253, 96, 90);
+}
+.node-type-venue #content .horizontal-tabs-list li a,
+.node-type-venue #content .horizontal-tabs-list li a:hover {
+
+}
+.node-type-venue #content .horizontal-tabs-list li.selected a,
+.node-type-venue #content .horizontal-tabs-list li.selected a:hover {
+  background: rgb(245, 232, 215);
+}
+.node-type-venue .horizontal-tabs-panes {
   padding-top: 20px;
 }
-.node-venue .horizontal-tabs-panes .field-group-htab {
+.node-type-venue .horizontal-tabs-panes .field-group-htab {
   padding: 0;
   margin: 0;
+}
+
+
+/* #Comments Section
+================================================== */
+.node-type-venue #comments {
+  margin-top: 40px;
+}
+.node-type-venue #comments h2 {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: #99BBCC;
 }
