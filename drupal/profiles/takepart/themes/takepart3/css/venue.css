@@ -48,6 +48,17 @@
   background: none repeat scroll 0 0 #F5E8D7;
   padding: 10px;
 }
+.node-type-venue #right-rail .block-boxes-title-share > a {
+  overflow: hidden;
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: middle;
+}
+.node-type-venue #right-rail .block-boxes-title-share .content .addthis_button_facebook_like {
+  width: 45px;
+}
+.node-type-venue #right-rail .block-boxes-title-share .content .addthis_button_tweet {
+  width: 58px;
+}
 
 /* #Pager
 ================================================== */
