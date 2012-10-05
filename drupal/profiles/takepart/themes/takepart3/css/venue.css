@@ -48,7 +48,7 @@
   background: none repeat scroll 0 0 #F5E8D7;
   padding: 10px;
 }
-.node-type-venue #right-rail .block-boxes-title-share > a {
+.node-type-venue #right-rail .block-boxes-title-share a {
   overflow: hidden;
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: middle;
