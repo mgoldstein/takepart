@@ -1,12 +1,3 @@
-/* # Tastemaker Styling
-================================================== */
-.block-menu.block-boxes-bid-menu-menu-tastemakers ul.menu li {
-  padding: 0 14px;
-}
-.block-menu.block-boxes-bid-menu-menu-tastemakers ul.menu li a:hover {
-  color: rgb(253, 96, 90);
-}
-
 /* #Node Resets/Overrides
 ================================================== */
 .node-type-venue {
@@ -52,6 +43,7 @@
   overflow: hidden;
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: middle;
+  padding: 0 3px;
 }
 .node-type-venue #right-rail .block-boxes-title-share .content .addthis_button_facebook_like {
   width: 45px;
