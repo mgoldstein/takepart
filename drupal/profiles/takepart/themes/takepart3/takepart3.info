@@ -14,7 +14,9 @@ stylesheets[all][] = css/style_temp.css
 stylesheets-conditional[lte IE 7][all][] = css/ie7.css
 
 stylesheets[all][] = css/sharebar.css
+stylesheets[all][] = css/tastemakers.css
 stylesheets[all][] = css/venue.css
+stylesheets[all][] = css/city.css
 
 stylesheets[all][] = css/pledges.css
 
