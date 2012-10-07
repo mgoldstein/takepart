@@ -37,15 +37,12 @@ function takepart_vidpop_theme() {
   );
 }
 
-
-
 function takepart_vidpop_preprocess_vidpop_popup(&$vars) {
   if (isset($vars['field_promo_headline'])) {
     // save values for ad click js
     drupal_add_js(array('takepart_vidpop'=> array('embeddedvideotitle' => $vars['field_promo_headline'][0]['value'])),'setting');
   };
 }
-
 
 function takepart_vidpop_preprocess_page(&$vars) {
   // save values for ad click js
@@ -54,18 +51,15 @@ function takepart_vidpop_preprocess_page(&$vars) {
   };
 }
 
-
 function takepart_vidpop_preprocess_node(&$vars, $hook) {
   // See if this is the Rollins map page - be sure to test for correct node id
-  $map_nid = variable_get('takepart_vidpop_map_nid', 27693);
-  $tour_nid = variable_get('takepart_vidpop_tour_nid', 27693);
+  $map_nid = variable_get('takepart_vidpop_map_nid', 29655);
+  $tour_nid = variable_get('takepart_vidpop_tour_nid', 29661);
   if (($vars['node']->nid  == $map_nid) || ($vars['node']->nid  == $tour_nid)) {
     // load the map popups
-      dpm($rollins_nid);
     takepart_vidpop_process_map_popups($vars['node']->body['und'][0]['value'], $vars);
   }
 }
-
 
 /**
  * Implements hook_menu().
