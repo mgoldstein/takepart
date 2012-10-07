@@ -57,9 +57,10 @@ function takepart_vidpop_preprocess_page(&$vars) {
 
 function takepart_vidpop_preprocess_node(&$vars, $hook) {
   // See if this is the Rollins map page - be sure to test for correct node id
-  $rollins_nid = variable_get('takepart_vidpop_map_nid', 27693);
+  $rollins_nid = variable_get('takepart_vidpop_map_nid', 29665);
   if ($vars['node']->nid  == $rollins_nid) {
     // load the map popups
+      dpm($rollins_nid);
     takepart_vidpop_process_map_popups($vars['node']->body['und'][0]['value'], $vars);
   }
 }
