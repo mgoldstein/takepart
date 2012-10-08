@@ -57,8 +57,9 @@ function takepart_vidpop_preprocess_page(&$vars) {
 
 function takepart_vidpop_preprocess_node(&$vars, $hook) {
   // See if this is the Rollins map page - be sure to test for correct node id
-  $rollins_nid = variable_get('takepart_vidpop_map_nid', 27693);
-  if ($vars['node']->nid  == $rollins_nid) {
+  $map_nid = variable_get('takepart_vidpop_map_nid', 27693);
+  $tour_nid = variable_get('takepart_vidpop_tour_nid', 27693);
+  if (($vars['node']->nid  == $map_nid) || ($vars['node']->nid  == $tour_nid)) {
     // load the map popups
     takepart_vidpop_process_map_popups($vars['node']->body['und'][0]['value'], $vars);
   }
@@ -252,14 +253,10 @@ EOT;
 function takepart_vidpop_process_map_popups($text, $vars) {
   $data = explode("\n", $text);
   foreach ($data as $junk => $line) {
-    if (preg_match("/^.+addresses\[\d+\]\=\[(\d+)\,/", $line, $res)) {
+    if (preg_match("/^.*addresses\[\d+\]\=\[(\d+)\,/", $line, $res)) {
       $node_id = $res[1];
       $node = node_load($node_id);
       if ($node) {
-        //$build = node_view($node, 'full');
-        //$build['#theme'] = 'vidpop_popup';
-        //$rendered = render($build);
-
         $vnode = node_view(node_load($node_id),'vidpop_map');
         $template_file = drupal_get_path('module', 'takepart_vidpop') . '/theme/vidpop-popup.tpl.php';
         $content = array(

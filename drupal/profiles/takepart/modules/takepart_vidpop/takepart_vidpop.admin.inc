@@ -35,9 +35,15 @@ function takepart_vidpop_settings_form($form) {
   );
   $form['takepart_vidpop_map']['takepart_vidpop_map_nid'] = array(
     '#type' => 'textfield',
-    '#title' => t('Node ID for vidpop map page'),
+    '#title' => t('Node ID for vidpop Rollins map page'),
     '#default_value' => variable_get('takepart_vidpop_map_nid', 27693),
     '#description' => t('Enter the nid of the page containing the map with video popups.'),
+  );
+  $form['takepart_vidpop_map']['takepart_vidpop_tour_nid'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Node ID for vidpop Rollins tour page'),
+    '#default_value' => variable_get('takepart_vidpop_tour_nid', 27693),
+    '#description' => t('Enter the nid of the page containing the tour schedule with video popups.'),
   );
 
   return system_settings_form($form);
