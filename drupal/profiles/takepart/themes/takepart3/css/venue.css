@@ -44,6 +44,7 @@
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: middle;
   padding: 0 3px;
+  line-height: 0.5em;
 }
 .node-type-venue #right-rail .block-boxes-title-share .content .addthis_button_facebook_like {
   width: 45px;
