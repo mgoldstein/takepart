@@ -56,7 +56,16 @@ function takepart_browsercaps_sniffer() {
  */
 function takepart_vidpop_mobile_browser() {
   $browsercaps = browscap_get_browser();
-  return preg_match("/^Mobile.+/", $browsercaps['parent']);
+  if (preg_match("/^Mobile.+/", $browsercaps['parent'])) {
+    // iOS
+    return true;
+  }
+  if (preg_match("/^Silk.+/", $browsercaps['parent'])) {
+    // Kindle Fire
+    return true;
+  }
+
+  return false;
 }
 
 
