@@ -21,11 +21,15 @@ function takepart_browsercaps_menu() {
  *
  */
 function takepart_browsercaps_sniffer() {
+  drupal_set_title("User Agent Sniffer");
+
   $browsercaps = browscap_get_browser();
-  print 'browser: ' . $browsercaps['parent'] . '<br />';
-  print "Mobile? ";
-  print takepart_vidpop_mobile_browser() ? 'yes' : 'no';
-  print '<pre>' . print_r($browsercaps, 1) . '</pre>';
+  $output = 'browser: ' . $browsercaps['parent'] . '<br />';
+  $output .= "Mobile? ";
+  $output .= takepart_vidpop_mobile_browser() ? 'yes' : 'no';
+  $output .= '<pre>' . print_r($browsercaps, 1) . '</pre>';
+
+  return $output;
 }
 
 
