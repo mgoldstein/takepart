@@ -1,0 +1,42 @@
+<?php
+
+
+/**
+ * Implements hook_menu().
+ */
+function takepart_browsercaps_menu() {
+  $items['test/sniffer'] = array(
+    'title' => 'User Agent Sniffer',
+    'page callback' => 'takepart_browsercaps_sniffer',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+
+/***
+ * Display browsercaps test page
+ *
+ */
+function takepart_browsercaps_sniffer() {
+  $browsercaps = browscap_get_browser();
+  print 'browser: ' . $browsercaps['parent'] . '<br />';
+  print "Mobile? ";
+  print takepart_vidpop_mobile_browser() ? 'yes' : 'no';
+  print '<pre>' . print_r($browsercaps, 1) . '</pre>';
+}
+
+
+/***
+ * @file return true if a mobile device was detected
+ *
+ * @return int
+ */
+function takepart_vidpop_mobile_browser() {
+  $browsercaps = browscap_get_browser();
+  return preg_match("/^Mobile.+/", $browsercaps['parent']);
+}
+
+

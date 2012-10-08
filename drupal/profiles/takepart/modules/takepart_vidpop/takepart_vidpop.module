@@ -112,17 +112,28 @@ function takepart_vidpop_format_preview($uri, $vars) {
 
   // theme the popup contents
   $formatted_popup = theme('vidpop_popup', $vars);
-
-  // this is the href string for colorbox
+  // id of the video popup division
   $vidpop_id = 'vidpop-details-' . $vars['nid'];
-  $href_string = '?width=870&amp;height=420&amp;inline=true#' . $vidpop_id;
 
-  // NOTE: we set the colorbox width to 870; it has padding that will pull it out
-  // to our desired 900
+  if (takepart_vidpop_mobile_browser()) {
+    // mobile browser, display the node
+    $href_string = '/node/' .  $vars['nid'];
+    $link_class = "normal";
+  }
+  else {
+    // regular browser, use popup
+    // this is the href string for colorbox
+    $href_string = '?width=870&amp;height=420&amp;inline=true#' . $vidpop_id;
+    $link_class = "colorbox-inline";
+
+    // NOTE: we set the colorbox width to 870; it has padding that will pull it out
+    // to our desired 900
+  }
+
   $formatted = <<<EOT
 <div class="vidpop-embed-promo-headline">$promo_headline999</div>
 <div class="vidpop-preview">$preview_image
-  <a class="colorbox-inline" href="$href_string"><div class="vidpop-preview-overlay">$overlay_image
+  <a class="$link_class" href="$href_string"><div class="vidpop-preview-overlay">$overlay_image
   <div class="vidpop-preview-overlay-text">
     <div class="line1"><span class="watch">WATCH</span>$promo_headline</div>
     <div class="line2">$promo_text</div>
