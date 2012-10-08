@@ -17,6 +17,22 @@ function takepart_browsercaps_menu() {
 
 
 /***
+ * Implementationof hook_init()
+ *
+ * creates global js var detected_mobile_browser
+ *
+ */
+function takepart_browsercaps_init() {
+  if (takepart_vidpop_mobile_browser()) {
+    drupal_add_js(array('takepart_browsercaps' => array('detected_mobile_browser' => 1)), 'setting');
+  }
+  else {
+    drupal_add_js(array('takepart_browsercaps' => array('detected_mobile_browser' => 0)), 'setting');
+  }
+}
+
+
+/***
  * Display browsercaps test page
  *
  */

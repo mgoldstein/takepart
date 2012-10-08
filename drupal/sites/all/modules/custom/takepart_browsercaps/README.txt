@@ -8,4 +8,4 @@ test page:
 /test/sniffer
 
 Installation:
-Enable the module, that's all.
+Enable the browscap module and this module, that's all.
