@@ -1,3 +1,9 @@
+/* # Header Banner
+================================================== */
+.region-highlighted .block-block .content {
+  font-size: 0;
+}
+
 /* # Header Navigation
 ================================================== */
 .block-menu.block-boxes-bid-menu-menu-tastemakers ul.menu li {
