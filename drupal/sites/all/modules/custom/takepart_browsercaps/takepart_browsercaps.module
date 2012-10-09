@@ -60,8 +60,12 @@ function takepart_vidpop_mobile_browser() {
     // iOS
     return true;
   }
-  if (preg_match("/^Silk.+/", $browsercaps['parent'])) {
+  if (preg_match("/^Silk.*/", $browsercaps['parent'])) {
     // Kindle Fire
+    return true;
+  }
+  if (preg_match("/^.*Mobile.*/", $browsercaps['useragent'])) {
+    // Droid
     return true;
   }
 
