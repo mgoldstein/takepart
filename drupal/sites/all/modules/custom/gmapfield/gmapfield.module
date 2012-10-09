@@ -63,12 +63,13 @@ function gmapfield_field_formatter_view($entity_type, $entity, $field, $instance
 
   $element = array();
   
- 
+  /*
   print "TEST";
   print "<pre>";
   print_r($display);
   print "</pre>";
   exit();
+ */
   
 
   switch ($display['type']) {
