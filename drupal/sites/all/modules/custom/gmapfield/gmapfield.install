@@ -23,9 +23,9 @@ function gmapfield_uninstall() {
  * Implementation of hook_field_schema().
  */
 function gmapfield_field_schema($field) {
-
   $columns = array(
-    'gmapfield' => array('type' => 'text', 'size' => 'big', 'not null' => FALSE),
+    'gmapfield_address' => array('type' => 'varchar', 'length' => '255', 'not null' => FALSE),
+    'gmapfield_popup' => array('type' => 'text', 'size' => 'big', 'not null' => FALSE),
   );
 
   return array(

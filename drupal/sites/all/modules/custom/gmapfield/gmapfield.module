@@ -7,12 +7,39 @@ function gmapfield_field_info() {
   return array(
     'gmapfield' => array(
       'label' => t('Google Maps Field'),
+      'fieldable' => TRUE,	   
       'description' => t('A field composed of an address.'),
       'default_widget' => 'gmapfield_widget',
       'default_formatter' => 'gmapfield_formatter',
     ),
   );
 }
+
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function gmapfield_field_widget_info() {
+  return array(
+    'gmapfield_formatter' => array(
+      'label' => t('Google Map Field'),
+      'field types' => array('gmapfield'),
+      'settings' => array(),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function gmapfield_field_is_empty($item, $field) {
+  if (!isset($item['gmapfield_address']) || $item['gmapfield_address'] === '') {
+    return TRUE;
+  }
+  return FALSE;
+}
+
 
 /**
  * Implements hook_field_formatter_info().
@@ -26,14 +53,6 @@ function gmapfield_field_formatter_info() {
   );
 }
 
-/**
- * Implements hook_field_is_empty().
- */
-function gmapfield_field_is_empty($item, $field) {
-  if (empty($item['gmapfield'])) {
-    return true;
-  }
-}
 
 
 
@@ -43,20 +62,23 @@ function gmapfield_field_is_empty($item, $field) {
 function gmapfield_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
 
   $element = array();
+  
+ 
+  print "TEST";
+  print "<pre>";
+  print_r($display);
+  print "</pre>";
+  exit();
+  
 
   switch ($display['type']) {
     case 'gmapfield_formatter':
 
-      foreach ($items as $delta => $item) {
-        if ($item['gmapfield_address']) {
-          
-          $gmapfield = $item['gmapfield'];
-                    
-          if(!empty($gmapfield)) {
-            $element[$delta] = array('#markup' => '<div>' . $gmapfield . '</div>');
-          }
-        }
-      }
+	  foreach ($items as $delta => $item) {
+	    $output = check_plain($item['gmapfield_address'] . '-'. $item['gmapfield_popup'] );
+	    $element[$delta] = array('#markup' => $output);
+	  }
+
       break;
   }
   return $element;
@@ -67,42 +89,31 @@ function gmapfield_field_formatter_view($entity_type, $entity, $field, $instance
  * Implements hook_field_widget_form().
  */
 function gmapfield_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
-  
-  $value = isset($items[$delta]['gmapfield_address']) ? $items[$delta]['gmapfield_address'] : '';
-
-  $widget = $element;
-  $widget['#delta'] = $delta;
-
-  switch ($instance['widget']['type']) {
-    case 'gmapfield':
-
-      $widget['gmapfield_address'] = array(
-          '#type' => 'textarea',
-          '#title' => $element['#title'],
-          '#description' => $element['#description'],
-          '#default_value' => $items[$delta]['gmapfield'],
-          '#required' => $element['#required'],
-          '#weight' => isset($element['#weight']) ? $element['#weight'] : 0,
-          '#delta' => $delta,
-          '#element_validate' => array('gmapfield_validation'),
-      );
-
-      $widget['gmapfield_popup'] = array(
-          '#type' => 'textarea',
-          '#title' => $element['#title'],
-          '#description' => $element['#description'],
-          '#default_value' => $items[$delta]['gmapfield'],
-          '#required' => $element['#required'],
-          '#weight' => isset($element['#weight']) ? $element['#weight'] : 0,
-          '#delta' => $delta,
-          '#element_validate' => array('gmapfield_validation'),
-      );
-
-      $element['gmapfield'] = $widget;
-
-      break;
-  }
-  return $element;
+	$element += array(
+	    '#type' => 'fieldset',
+	    '#delta' => $delta,
+	    '#attached' => array(
+	      'css' => array(drupal_get_path('module', 'gmapfield') . '/gmapfield_fieldset.css'),
+	    ),
+	    'gmapfield_address' => array(
+		'#title' => t('Address'),
+		'#type' => 'textfield',
+		'#default_value' => isset($items[$delta]['gmapfield_address']) ? $items[$delta]['gmapfield_address'] : '',
+		'#attributes' => array('class' => array('visits-entry', 'visits-year')),
+		'#weight' => isset($element['#weight']) ? $element['#weight'] : 0,
+		'#element_validate' => array('gmapfield_validation'),
+	    ),
+	    'gmapfield_popup' => array(
+		'#type' => 'textarea',
+		'#title' => t('Popup'),
+		'#description' => $element['#description'],
+		'#default_value' => isset($items[$delta]['gmapfield_popup']) ? $items[$delta]['gmapfield_popup'] : '',
+		'#required' => $element['#required'],
+		'#weight' => isset($element['#weight']) ? $element['#weight'] : 1,
+		'#element_validate' => array('gmapfield_validation'),
+	    ),
+	  );
+	  return $element;
 }
 
 /**
@@ -124,19 +135,6 @@ function gmapfield_widget_error($element, $error, $form, &$form_state) {
       form_error($element, $error['message']);
       break;
   }
-}
-
-
-/**
- * Implements hook_field_widget_info().
- */
-function gmapfield_field_widget_info() {
-  return array(
-    'gmapfield' => array(
-      'label' => t('Google Maps Widget'),
-      'field types' => array('gmapfield'),
-  ),
-  );
 }
 
 
