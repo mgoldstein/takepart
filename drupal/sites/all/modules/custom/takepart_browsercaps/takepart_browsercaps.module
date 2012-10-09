@@ -55,6 +55,8 @@ function takepart_browsercaps_sniffer() {
  * @return int
  */
 function takepart_vidpop_mobile_browser() {
+  //return true;
+
   $browsercaps = browscap_get_browser();
   if (preg_match("/^Mobile.+/", $browsercaps['parent'])) {
     // iOS

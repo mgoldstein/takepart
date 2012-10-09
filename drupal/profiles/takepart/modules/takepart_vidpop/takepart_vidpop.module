@@ -122,7 +122,9 @@ function takepart_vidpop_format_preview($uri, $vars) {
 
   if (takepart_vidpop_mobile_browser()) {
     // mobile browser, display the node
-    $href_string = '/node/' .  $vars['nid'];
+    //$youtube_uri = substr($vars['field_video_embedded'][0]['file']->uri, 10);
+    //$href_string = '/node/' .  $vars['nid'];
+    $href_string = url(drupal_get_path_alias('node/' .  $vars['nid']));
     $link_class = "normal";
   }
   else {
