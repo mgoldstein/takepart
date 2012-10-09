@@ -1,0 +1,62 @@
+<?php
+
+
+/**
+ * Implements hook_menu().
+ */
+function takepart_browsercaps_menu() {
+  $items['test/sniffer'] = array(
+    'title' => 'User Agent Sniffer',
+    'page callback' => 'takepart_browsercaps_sniffer',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+
+/***
+ * Implementationof hook_init()
+ *
+ * creates global js var detected_mobile_browser
+ *
+ */
+function takepart_browsercaps_init() {
+  if (takepart_vidpop_mobile_browser()) {
+    drupal_add_js(array('takepart_browsercaps' => array('detected_mobile_browser' => 1)), 'setting');
+  }
+  else {
+    drupal_add_js(array('takepart_browsercaps' => array('detected_mobile_browser' => 0)), 'setting');
+  }
+}
+
+
+/***
+ * Display browsercaps test page
+ *
+ */
+function takepart_browsercaps_sniffer() {
+  drupal_set_title("User Agent Sniffer");
+
+  $browsercaps = browscap_get_browser();
+  $output = 'browser: ' . $browsercaps['parent'] . '<br />';
+  $output .= "Mobile? ";
+  $output .= takepart_vidpop_mobile_browser() ? 'yes' : 'no';
+  $output .= '<pre>' . print_r($browsercaps, 1) . '</pre>';
+
+  return $output;
+}
+
+
+/***
+ * @file return true if a mobile device was detected
+ *
+ * @return int
+ */
+function takepart_vidpop_mobile_browser() {
+  $browsercaps = browscap_get_browser();
+  return preg_match("/^Mobile.+/", $browsercaps['parent']);
+}
+
+
