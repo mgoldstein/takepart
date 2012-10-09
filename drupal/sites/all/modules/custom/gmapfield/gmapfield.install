@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ * Install, update, and uninstall functions for the gmapfield module.
+ */
+
+
+/**
+ * Implementation of hook_install().
+ */
+function gmapfield_install() {
+  drupal_set_message(st('The Google map field module has been installed.'));
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function gmapfield_uninstall() {
+  drupal_set_message(st('The Google map field module has been uninstalled.'));
+}
+
+/**
+ * Implementation of hook_field_schema().
+ */
+function gmapfield_field_schema($field) {
+
+  $columns = array(
+    'gmapfield' => array('type' => 'text', 'size' => 'big', 'not null' => FALSE),
+  );
+
+  return array(
+    'columns' => $columns,
+  );
+
+}

@@ -1,0 +1,252 @@
+<?php
+
+/**
+ * Implements hook_field_info().
+ */
+function gmapfield_field_info() {
+  return array(
+    'gmapfield' => array(
+      'label' => t('Google Maps Field'),
+      'description' => t('A field composed of an address.'),
+      'default_widget' => 'gmapfield_widget',
+      'default_formatter' => 'gmapfield_formatter',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function gmapfield_field_formatter_info() {
+  return array(
+    'gmapfield_formatter' => array(
+      'label' => t('Google map display'),
+      'field types' => array('gmapfield'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function gmapfield_field_is_empty($item, $field) {
+  if (empty($item['gmapfield'])) {
+    return true;
+  }
+}
+
+
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function gmapfield_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+
+  $element = array();
+
+  switch ($display['type']) {
+    case 'gmapfield_formatter':
+
+      foreach ($items as $delta => $item) {
+        if ($item['gmapfield_address']) {
+          
+          $gmapfield = $item['gmapfield'];
+                    
+          if(!empty($gmapfield)) {
+            $element[$delta] = array('#markup' => '<div>' . $gmapfield . '</div>');
+          }
+        }
+      }
+      break;
+  }
+  return $element;
+}
+
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function gmapfield_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  
+  $value = isset($items[$delta]['gmapfield_address']) ? $items[$delta]['gmapfield_address'] : '';
+
+  $widget = $element;
+  $widget['#delta'] = $delta;
+
+  switch ($instance['widget']['type']) {
+    case 'gmapfield':
+
+      $widget['gmapfield_address'] = array(
+          '#type' => 'textarea',
+          '#title' => $element['#title'],
+          '#description' => $element['#description'],
+          '#default_value' => $items[$delta]['gmapfield'],
+          '#required' => $element['#required'],
+          '#weight' => isset($element['#weight']) ? $element['#weight'] : 0,
+          '#delta' => $delta,
+          '#element_validate' => array('gmapfield_validation'),
+      );
+
+      $widget['gmapfield_popup'] = array(
+          '#type' => 'textarea',
+          '#title' => $element['#title'],
+          '#description' => $element['#description'],
+          '#default_value' => $items[$delta]['gmapfield'],
+          '#required' => $element['#required'],
+          '#weight' => isset($element['#weight']) ? $element['#weight'] : 0,
+          '#delta' => $delta,
+          '#element_validate' => array('gmapfield_validation'),
+      );
+
+      $element['gmapfield'] = $widget;
+
+      break;
+  }
+  return $element;
+}
+
+/**
+ * Validation hook.
+ */
+function gmapfield_validation($element, &$form_state) {
+  if (isset($element['#value'])) {
+	//@todo: validation code
+  }
+}
+
+
+/**
+ * Implements hook_field_widget_error().
+ */
+function gmapfield_widget_error($element, $error, $form, &$form_state) {
+  switch ($error['error']) {
+    case 'gmapfield_invalid':
+      form_error($element, $error['message']);
+      break;
+  }
+}
+
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function gmapfield_field_widget_info() {
+  return array(
+    'gmapfield' => array(
+      'label' => t('Google Maps Widget'),
+      'field types' => array('gmapfield'),
+  ),
+  );
+}
+
+
+function _gmapfield_getjs() {
+       $content = <<<HTM
+var tpmaps = tpmaps || {};
+
+tpmaps.initialize = function() {
+
+       geocoder = new google.maps.Geocoder();
+        
+        var $ = jQuery;
+
+        var image = new google.maps.MarkerImage('http://maps.google.com/mapfiles/marker_green.png',
+            // This marker is 20 pixels wide by 32 pixels tall.
+            new google.maps.Size(20, 34),
+            // The origin for this image is 0,0.
+            new google.maps.Point(0,0),
+            // The anchor for this image is the base of the flagpole at 0,32.
+            new google.maps.Point(0, 32));
+
+
+        var shadow = new google.maps.MarkerImage('http://maps.google.com/mapfiles/shadow50.png',
+
+            new google.maps.Size(37, 34),
+            new google.maps.Point(0,0),
+            new google.maps.Point(0,34));
+    
+        var html;
+      
+        var addresses=new Array();
+        addresses[0]=["2880 Broadway, New York, NY 10025", image, shadow, html];     
+
+        var map;
+        var i_addr;
+
+
+        for (i_addr=0;i_addr<addresses.length;i_addr++) {  
+
+
+            geocoder.geocode( { 'address': addresses[i_addr][0]}, function(results, status) {
+
+                //Position map on first element:
+
+                if(i_addr == 1) { 
+                    
+                     var mapOptions = {
+                            center: results[0].geometry.location,
+                            zoom: 12,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                      };
+                  
+                      map = new google.maps.Map($('#map_canvas').get(0), mapOptions);
+                      //map = new google.maps.Map($('#page').get(0), mapOptions);
+
+
+                }
+
+                if (status == google.maps.GeocoderStatus.OK) {
+                    //map.setCenter(results[0].geometry.location);
+                    //addresses[i].push(results[0].geometry.location);
+
+                    var shape = {
+                        coord: [0, 0, 64, 0, 64, 64, 0, 64],
+                        type: 'poly'
+                    };
+
+                    var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location,
+                            shadow: shadow,
+                                icon: image,
+                                shape: shape
+                    });
+
+                    google.maps.event.addListener(marker, 'click', function() {
+                        var html_popup = ('Hello');
+
+                            var infowindow = new google.maps.InfoWindow(
+                                    { content: html_popup,
+                                      size: new google.maps.Size(50,50)
+                                    });
+                            infowindow.open(map,marker);
+                        map.setCenter(marker.getPosition());
+                    });
+                 } else {
+                            alert("Geocode was not successful for the following reason: " + status);
+                            //addresses.splice(i,1);
+                 }
+            });
+        }
+}
+
+
+tpmaps.loadScript = function() {
+    var key = 'AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10';
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'http://maps.googleapis.com/maps/api/js?key=' + key + '&sensor=false&' +
+        'callback=tpmaps.initialize';
+    document.body.appendChild(script);
+}
+
+jQuery(document).load(tpmaps.loadScript);
+jQuery('body').bind('click', function(event){
+  //google.maps.event.trigger(tpmaps, "resize");
+});
+HTM;
+
+return $content;
+}
+
+

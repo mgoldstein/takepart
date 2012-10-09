@@ -1,0 +1,3 @@
+name = Google Maps Field
+description = An implementation of a field to display addresses on a Google map.
+core = 7.x

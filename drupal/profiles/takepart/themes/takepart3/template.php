@@ -99,6 +99,11 @@ function takepart3_preprocess_page(&$variables) {
                 unset($variables['page']['highlighted']['takepart_custom_page_title_h1']);
             }
         }
+
+        if ($variables['node']->type == 'venue') {
+            $variables['is_multipage'] = TRUE;
+        }
+
     }
 
     $status = drupal_get_http_header('status');
