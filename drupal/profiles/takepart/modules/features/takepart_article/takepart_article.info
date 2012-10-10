@@ -19,7 +19,6 @@ dependencies[] = newsletter_campaign
 dependencies[] = node_reference
 dependencies[] = openpublish_article
 dependencies[] = openpublish_blog_post
-dependencies[] = search_api_facets
 dependencies[] = strongarm
 dependencies[] = takepart_blog
 dependencies[] = taxonomy
