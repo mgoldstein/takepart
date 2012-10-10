@@ -46,12 +46,18 @@ function gmapfield_field_is_empty($item, $field) {
  */
 function gmapfield_field_formatter_info() {
   return array(
-    'gmapfield_formatter' => array(
-      'label' => t('Google map display'),
+    'gmapfield_simple_text' => array(
+      'label' => t('Simple text-based formatter'),
+      'field types' => array('gmapfield'),
+    ),
+
+    'gmapfield_show_map' => array(
+      'label' => t('Google Map Display'),
       'field types' => array('gmapfield'),
     ),
   );
 }
+
 
 
 
@@ -63,17 +69,26 @@ function gmapfield_field_formatter_view($entity_type, $entity, $field, $instance
 
   $element = array();
   
-  /*
+  
   print "TEST";
   print "<pre>";
   print_r($display);
   print "</pre>";
   exit();
- */
+
   
 
   switch ($display['type']) {
-    case 'gmapfield_formatter':
+    case 'gmapfield_simple_text':
+
+	  foreach ($items as $delta => $item) {
+	    $output = check_plain($item['gmapfield_address'] . '-'. $item['gmapfield_popup'] );
+	    $element[$delta] = array('#markup' => $output);
+	  }
+
+      break;
+
+    case 'gmapfield_show_map':
 
 	  foreach ($items as $delta => $item) {
 	    $output = check_plain($item['gmapfield_address'] . '-'. $item['gmapfield_popup'] );
