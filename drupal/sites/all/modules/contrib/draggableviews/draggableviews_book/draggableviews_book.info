@@ -1,9 +1,10 @@
-name = Draggableviews Test
-description = Provides views for testing.
+name = Draggableviews Book
+description = Reorder books
 dependencies[] = draggableviews
 package = Views
 core = 7.x
-hidden = TRUE
+
+files[] = draggableviews_book_views_handler_argument.inc
 ; Information added by drupal.org packaging script on 2012-10-01
 version = "7.x-2.0+26-dev"
 core = "7.x"

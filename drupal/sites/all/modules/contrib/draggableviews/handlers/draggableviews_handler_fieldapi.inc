@@ -111,12 +111,15 @@ class draggableviews_handler_fieldapi extends draggableviews_handler {
     // Remove '_value' from column name to get field name.
     $field_name = drupal_substr($field_column, 0, drupal_strlen($field_column) - 6);
 
+    // Give other modules a chance to alter saved arguments.
+    drupal_alter('draggableviews_handler_fieldapi_arguments', $fv['draggableviews'], $view);
+
     // Save the values of the field.
     foreach ($fv['draggableviews'] as $item) {
       if (isset($item['id']) && isset($item['weight'])) {
-        $entity_wrapper = entity_metadata_wrapper($entity_type, $item['id']);
-        $entity_wrapper->{$field_name}->set($item['weight']);
-        $entity_wrapper->save();
+        $entity = reset(entity_load($entity_type, array($item['id'])));
+        $entity->{$field_name}[LANGUAGE_NONE][0]['value'] = $item['weight'];
+        entity_save($entity_type, $entity);
       }
     }
   }
