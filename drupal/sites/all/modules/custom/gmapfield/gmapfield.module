@@ -204,7 +204,7 @@ tpmaps.initialize = function() {
                       tpmaps.map = new google.maps.Map($('#$divid').get(0), mapOptions);
 
  	              google.maps.event.addListenerOnce(tpmaps.map, 'idle', function() {
-			    alert('test 2');
+			    //alert('test 2');
 			    google.maps.event.trigger(tpmaps.map, 'resize');
 			    tpmaps.map.setCenter(tpmaps.mapcenter); // be sure to reset the map center as well
 	              });
