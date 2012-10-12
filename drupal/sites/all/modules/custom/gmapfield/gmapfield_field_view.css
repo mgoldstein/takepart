@@ -1,0 +1,11 @@
+.map_canvas {
+	width:640px;
+	height:480px;
+        border: solid 1px black;
+        /*position: absolute;*/
+}
+
+.map_canvas_inactive {
+	display: none;
+}
+
