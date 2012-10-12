@@ -78,6 +78,8 @@ function gmapfield_field_formatter_view($entity_type, $entity, $field, $instance
 
   
 
+  $output = '';
+
   switch ($display['type']) {
     case 'gmapfield_simple_text':
 
@@ -91,12 +93,18 @@ function gmapfield_field_formatter_view($entity_type, $entity, $field, $instance
     case 'gmapfield_show_map':
 
 	  foreach ($items as $delta => $item) {
-	    $output = check_plain($item['gmapfield_address'] . '-'. $item['gmapfield_popup'] );
+	    //$output = check_plain($item['gmapfield_address'] . '-'. $item['gmapfield_popup'] );
+
+	    $output .= "addresses[$delta]=[" . $item['gmapfield_address'] . ", image, shadow, html];";
+
 	    $element[$delta] = array('#markup' => $output);
 	  }
 
       break;
   }
+
+  $element = array('#markup' => _gmapfield_getjs($output));
+
   return $element;
 }
 
@@ -154,7 +162,7 @@ function gmapfield_widget_error($element, $error, $form, &$form_state) {
 }
 
 
-function _gmapfield_getjs() {
+function _gmapfield_getjs($addresses) {
        $content = <<<HTM
 var tpmaps = tpmaps || {};
 
@@ -183,6 +191,8 @@ tpmaps.initialize = function() {
       
         var addresses=new Array();
         addresses[0]=["2880 Broadway, New York, NY 10025", image, shadow, html];     
+
+	$addresses
 
         var map;
         var i_addr;
