@@ -42,7 +42,7 @@ class boxes_ga_ad extends boxes_box {
   }  
 
   public function render() {
-    if(($slot = $this->options['ga_ad_slot']) &&
+    if( ($slot = $this->options['ga_ad_slot']) &&
        ($dpf = variable_get('takepart_ads_dfp_property_code', ''))
       ) {
       
