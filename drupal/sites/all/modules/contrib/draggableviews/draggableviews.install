@@ -53,13 +53,6 @@ function draggableviews_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
-      'parent' => array(
-        'description' => 'The order parent.',
-        'type' => 'int',
-        'unsigned' => FALSE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
     ),
     'unique keys' => array(
       'dvid' => array('dvid'),
@@ -73,7 +66,7 @@ function draggableviews_schema() {
  * Increase sizes of view_name and view_display fields of
  * draggableviews_strucutre table.
  */
-function draggableviews_update_7201() {
+function draggableviews_update_7001() {
   $new_field = array(
     'description' => 'Makes the order unique for each view.',
     'type' => 'varchar',
@@ -91,21 +84,4 @@ function draggableviews_update_7201() {
     'default' => '',
   );
   db_change_field('draggableviews_structure', 'view_display', 'view_display', $new_field);
-}
-
-/**
- * Add "parent" field to draggableviews_strucutre table.
- */
-function draggableviews_update_7202() {
-  // Commit 0fd7c9f create this as 7002().  This got rename to 7202().  Check if field exist.
-  if (!count(db_query("SHOW COLUMNS FROM `draggableviews_structure` WHERE Field = 'parent'")->fetchALL())) {
-    $spec = array(
-        'description' => 'The order parent.',
-        'type' => 'int',
-        'unsigned' => FALSE,
-        'not null' => TRUE,
-        'default' => 0,
-    );
-    db_add_field('draggableviews_structure', 'parent', $spec);
-  }
 }

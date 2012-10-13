@@ -12,23 +12,10 @@ function draggableviews_views_data_alter(&$data) {
 
   $data['draggableviews_structure']['weight'] = array(
     'title' => t('Weight'),
+    'help' => t('Sort entities by the draggableviews weight table field.'),
     'group' => t('Draggableviews'),
-    'field' => array(
-      'help' => t('Display the weight value.'),
-      'handler' => 'views_handler_field_numeric',
-      'click sortable' => TRUE,
-    ),
     'sort' => array(
-      'help' => t('Sort entities by the draggableviews weight table field.'),
       'handler' => 'draggableviews_handler_sort',
-    ),
-  );
-  $data['draggableviews_structure']['parent'] = array(
-    'title' => t('Parent'),
-    'help' => t('The parent entity id.'),
-    'group' => t('Draggableviews'),
-    'field' => array(
-      'handler' => 'views_handler_field_numeric',
     ),
   );
 
@@ -44,6 +31,7 @@ function draggableviews_views_data_alter(&$data) {
           'click sortable' => FALSE,
         ),
       );
+
       // Explain to every entity how to join with draggableviews structure table.
       $data['draggableviews_structure']['table']['join'][$info['base table']] = array(
         'handler' => 'draggableviews_join_handler',

@@ -13,11 +13,12 @@ class draggableviews_handler_sort extends views_handler_sort {
     $this->ensure_my_table();
     // If new items should be placed in the bottom.
     if ($this->options['draggableviews_setting_new_items_bottom_list']) {
+      // ORDER BY COALESCE(weight, 10000)
       // New items will get big default instead of NULL
-      $alias = $this->table_alias . '_' . $this->field . '_coalesce';
-      $this->query->add_field(NULL, "COALESCE($this->table_alias.$this->field, 10000)", $alias);
+      $as = $this->table_alias . '_' . $this->real_field;
+      $as = $this->query->add_field($this->table_alias, $this->real_field, $as, array());
       $this->query->orderby[] = array(
-        'field' => $alias,
+        'field' => 'COALESCE(' . $as . ', 10000)',
         'direction' => drupal_strtoupper($this->options['order'])
       );
     }
@@ -55,7 +56,33 @@ class draggableviews_handler_sort extends views_handler_sort {
     // Check whether current views display doesn't have draggableviews field.
     // If it has, it means that this is setting view so we should set
     // option draggableviews_setting_view to 'self'
-    $options = _draggableviews_get_views_options($this->view);
+    $view_clone = clone $this->view;
+    $view_clone->build($view_clone->current_display);
+    $options = 'self';
+    // Check whether field exists. If not it is displaying view so lets show
+    // all options of other setting views.
+    if (!isset($view_clone->field['draggableviews'])) {
+      // Get list of all enabled views.
+      $views_list = views_get_enabled_views();
+      $options = array();
+
+      // Convert list of objects to options for the form.
+      foreach ($views_list as $view_name => $view_object) {
+        foreach ($view_object->display as $display_name => $display) {
+          if ($display_name == 'default') {
+            continue;
+          }
+          // Clone view and build it so we can see all the fields.
+          $view_clone = clone $view_object;
+          $view_clone->build($display_name);
+
+          // If draggableviews field attached, show this view in options.
+          if (isset($view_clone->field['draggableviews'])) {
+            $options[$view_name . ':' . $display_name] = $view_object->human_name . ' (' . $display->display_title . ')';
+          }
+        }
+      }
+    }
 
     // If it is setting view.
     if (!is_array($options)) {
@@ -95,7 +122,6 @@ class draggableviews_handler_sort extends views_handler_sort {
       '#title' => t('PHP code to prepare arguments'),
       '#type' => 'textarea',
       '#default_value' => $this->options['draggableviews_setting_arguments_php'],
-      '#description' => t('Enter the php code to prepare the arguments. Do not enter <?php ?>. The following variables are available - $view (the view), $arguments (existing arguments - manipulate these to alter the arguments used to sort).'),
       '#states' => array(
         'visible' => array(
           'input[name="options[draggableviews_setting_arguments]"]' => array('value' => 'php'),
