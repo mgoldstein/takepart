@@ -69,7 +69,7 @@ function takepart_ads_preprocess_page(&$vars) {
     }
     
     if ($vars['node']->title != "") {
-        $pageTitle = 'GA_googleAddAttr("Title", "' . trim($vars['node']->title) . '");' . "\n";
+        $pageTitle = 'GA_googleAddAttr("PageTitle", "' . trim($vars['node']->title) . '");' . "\n";
     }
 
     //GAM:
