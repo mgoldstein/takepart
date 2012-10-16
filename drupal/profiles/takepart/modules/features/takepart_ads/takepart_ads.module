@@ -9,7 +9,7 @@ include_once('takepart_ads.features.inc');
 function takepart_ads_preprocess_page(&$vars) {
     // dpm($vars['node']);
 
-    $ad_slots = array();
+    // $ad_slots = array();
     $ad_slots = takepart_ads();
 
     $gptad_slots = takepart_gpt_ads();
@@ -48,7 +48,7 @@ function takepart_ads_preprocess_page(&$vars) {
         foreach ($field_topic as $key => $value) {
             if ($value['tid'] != 0) {
                 $term = taxonomy_term_load($value['tid']);
-                $topic .= 'GA_googleAddAttr("Topic", "' . $term->name . '");' . "\n";
+                $topic .= 'GA_googleAddAttr("Topic", "' . trim($term->name) . '");' . "\n";
             }
         }
     }
@@ -57,15 +57,19 @@ function takepart_ads_preprocess_page(&$vars) {
         $free_tags = "";
         foreach ($field_free_tag as $key => $value) {
             $term = taxonomy_term_load($value['tid']);
-            $free_tags .= 'GA_googleAddAttr("FreeTag", "' . $term->name . '");' . "\n";
+            $free_tags .= 'GA_googleAddAttr("FreeTag", "' . trim($term->name) . '");' . "\n";
         }
     }
 
     if (count($actionSponsor)) {
         $sponsor_tags = "";
         foreach ($actionSponsor as $key => $value) {
-            $sponsor_tags .= 'GA_googleAddAttr("Sponsors", "' . $value['node']->title . '");' . "\n";
+            $sponsor_tags .= 'GA_googleAddAttr("Sponsors", "' . trim($value['node']->title) . '");' . "\n";
         }
+    }
+    
+    if ($vars['node']->title != "") {
+        $pageTitle = 'GA_googleAddAttr("Title", "' . trim($vars['node']->title) . '");' . "\n";
     }
 
     //GAM:
@@ -86,6 +90,9 @@ GS_googleEnableAllServices();';
     }
     if ($sponsor_tags != "") {
         $targeting .= $sponsor_tags;
+    }
+    if ($pageTitle != "") {
+        $targeting .= $pageTitle;
     }
     drupal_add_js($targeting, array('type' => 'inline', 'scope' => 'footer'));
 
