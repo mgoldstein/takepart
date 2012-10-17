@@ -97,11 +97,11 @@ GS_googleEnableAllServices();';
     $gpt_targeting = "";
     if ($topic != "") {
         $targeting .= $topic;
-        $gpt_targeting = $gpt_topic;
+        $gpt_targeting .= $gpt_topic;
     }
     if ($contentType != "") {
         $targeting .= $contentType;
-        $gpt_targeting = $gpt_contentType;
+        $gpt_targeting .= $gpt_contentType;
     }
     if ($free_tags != "") {
         $targeting .= $free_tags;
