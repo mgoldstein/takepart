@@ -37,38 +37,46 @@ function takepart_ads_preprocess_page(&$vars) {
             $ad_html .= 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad . '");';
         }
     }
-    $field_topic = isset($vars['node']->field_topic['und']) ? $vars['node']->field_topic['und'] : array();
     $contentType = isset($vars['node']->type) ? 'GA_googleAddAttr("Type", "' . $vars['node']->type . '");' . "\n" : "";
+    $gpt_contentType = isset($vars['node']->type) ? 'googletag.pubads().setTargeting("Type", "' . $vars['node']->type . '");' . "\n" : "";
+    $field_topic = isset($vars['node']->field_topic['und']) ? $vars['node']->field_topic['und'] : array();
     $field_free_tag = isset($vars['node']->field_free_tag['und']) ? $vars['node']->field_free_tag['und'] : array();
     $actionSponsor = isset($vars['node']->field_action_sponsor['und']) ? $vars['node']->field_action_sponsor['und'] : array();
 
     if (count($field_topic)) {
         $topic = "";
+        $gpt_topic = "";
         foreach ($field_topic as $key => $value) {
             if ($value['tid'] != 0) {
                 $term = taxonomy_term_load($value['tid']);
                 $topic .= 'GA_googleAddAttr("Topic", "' . trim($term->name) . '");' . "\n";
+                $gpt_topic .= 'googletag.pubads().setTargeting("Topic", "' . trim($term->name) . '");' . "\n";
             }
         }
     }
 
     if (count($field_free_tag)) {
         $free_tags = "";
+        $gpt_free_tags = "";
         foreach ($field_free_tag as $key => $value) {
             $term = taxonomy_term_load($value['tid']);
             $free_tags .= 'GA_googleAddAttr("FreeTag", "' . trim($term->name) . '");' . "\n";
+            $gpt_free_tags .= 'googletag.pubads().setTargeting("FreeTag", "' . trim($term->name) . '");' . "\n";
         }
     }
 
     if (count($actionSponsor)) {
         $sponsor_tags = "";
+        $gpt_sponsor_tags = "";
         foreach ($actionSponsor as $key => $value) {
             $sponsor_tags .= 'GA_googleAddAttr("Sponsors", "' . trim($value['node']->title) . '");' . "\n";
+            $gpt_sponsor_tags .= 'googletag.pubads().setTargeting("Sponsors", "' . trim($value['node']->title) . '");' . "\n";
         }
     }
 
     if ($vars['node']->title != "") {
         $pageTitle = 'GA_googleAddAttr("PageTitle", "' . trim($vars['node']->title) . '");' . "\n";
+        $gpt_pageTitle = 'googletag.pubads().setTargeting("PageTitle", "' . trim($vars['node']->title) . '");' . "\n";
     }
 
     //GAM:
@@ -86,20 +94,26 @@ GS_googleEnableAllServices();';
     }
 
     $targeting = "";
+    $gpt_targeting = "";
     if ($topic != "") {
         $targeting .= $topic;
+        $gpt_targeting = $gpt_topic;
     }
     if ($contentType != "") {
         $targeting .= $contentType;
+        $gpt_targeting = $gpt_contentType;
     }
     if ($free_tags != "") {
         $targeting .= $free_tags;
+        $gpt_targeting .= $gpt_free_tags;
     }
     if ($sponsor_tags != "") {
         $targeting .= $sponsor_tags;
+        $gpt_targeting .= $gpt_sponsor_tags;
     }
     if ($pageTitle != "") {
         $targeting .= $pageTitle;
+        $gpt_targeting .= $gpt_pageTitle;
     }
     drupal_add_js($targeting, array('type' => 'inline', 'scope' => 'header'));
 
@@ -117,9 +131,11 @@ GS_googleEnableAllServices();';
                   var node = document.getElementsByTagName('script')[0];
                   node.parentNode.insertBefore(gads, node);
                   })();", array('type' => 'inline', 'scope' => 'header'));
+        // Insert custom targeting here
         drupal_add_js('googletag.cmd.push(function() {' . "\n" .
                 $gptad_html . "\n" .
                 'googletag.pubads().enableSingleRequest();' . "\n" .
+                $gpt_targeting .
                 'googletag.enableServices();' . "\n" . '});' . "\n" .
                 'var gpt_ad_tags = new Array();', array('type' => 'inline', 'scope' => 'header'));
     }
