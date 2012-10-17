@@ -8,7 +8,6 @@ include_once('takepart_ads.features.inc');
 
 function takepart_ads_preprocess_page(&$vars) {
     // dpm($vars['node']);
-
     // $ad_slots = array();
     $ad_slots = takepart_ads();
 
@@ -67,7 +66,7 @@ function takepart_ads_preprocess_page(&$vars) {
             $sponsor_tags .= 'GA_googleAddAttr("Sponsors", "' . trim($value['node']->title) . '");' . "\n";
         }
     }
-    
+
     if ($vars['node']->title != "") {
         $pageTitle = 'GA_googleAddAttr("PageTitle", "' . trim($vars['node']->title) . '");' . "\n";
     }
@@ -77,6 +76,14 @@ function takepart_ads_preprocess_page(&$vars) {
 GS_googleEnableAllServices();';
     $header2 = $ad_html;
     $header3 = 'GA_googleFetchAds();';
+
+    //GAM:
+    if (!empty($ad_html)) {
+        drupal_add_js('http://partner.googleadservices.com/gampad/google_service.js', 'external');
+        drupal_add_js($header1, 'inline');
+        drupal_add_js($header2, 'inline');
+        drupal_add_js($header3, 'inline');
+    }
 
     $targeting = "";
     if ($topic != "") {
@@ -95,14 +102,6 @@ GS_googleEnableAllServices();';
         $targeting .= $pageTitle;
     }
     drupal_add_js($targeting, array('type' => 'inline', 'scope' => 'header'));
-
-    //GAM:
-    if (!empty($ad_html)) {
-        drupal_add_js('http://partner.googleadservices.com/gampad/google_service.js', 'external');
-        drupal_add_js($header1, 'inline');
-        drupal_add_js($header2, 'inline');
-        drupal_add_js($header3, 'inline');
-    }
 
     //GPT:
     if (!empty($gptad_html)) {
