@@ -94,7 +94,7 @@ GS_googleEnableAllServices();';
     if ($pageTitle != "") {
         $targeting .= $pageTitle;
     }
-    drupal_add_js($targeting, array('type' => 'inline', 'scope' => 'footer'));
+    drupal_add_js($targeting, array('type' => 'inline', 'scope' => 'header'));
 
     //GAM:
     if (!empty($ad_html)) {
