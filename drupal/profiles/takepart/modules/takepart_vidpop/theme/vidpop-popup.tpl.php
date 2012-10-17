@@ -28,10 +28,10 @@ $content['field_video_embedded'][0]['file']['#options']['height'] = 360;
 <?php if (!empty($pre_object)) print render($pre_object) ?>
 <div class='<?php print $classes ?> clearfix node-embedded' <?php print ($attributes) ?>>
   <div class="inner-wrapper">
-    <!-- <div class="top-banner clearfix">
-      <div class="tp-logo"><?php // print $banner_tp_logo; ?></div>
-      <div class="video-banner-large"><?php // print $top_banner ?></div>
-    </div> -->
+    <div class="top-banner clearfix">
+      <div class="tp-logo"><?php print $banner_tp_logo; ?></div>
+      <div class="video-banner-large"><?php print $top_banner ?></div>
+    </div>
     <div class="contents">
      <div class="leftside">
       <?php print render($content['field_video_embedded']) ?>
