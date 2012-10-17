@@ -77,9 +77,9 @@ function gmapfield_field_formatter_view($entity_type, $entity, $field, $instance
             if(end($items) === $item) {
 		drupal_add_js(_gmapfield_getjs($jsoutput, 'map_canvas'.$delta), array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
 		//drupal_add_js(_gmapfield_getjs($jsoutput, 'page'), array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
-                $output = ('<div class="map_canvas" id="map_canvas'.$delta.'">');
+                $output = ('<div class="map_canvas" id="map_canvas'.$delta.'"></div>');
 	    } else {
-		$output = ('<div class="map_canvas_inactive" id="map_canvas'.$delta.'">');
+		$output = ('<div class="map_canvas_inactive" id="map_canvas'.$delta.'"></div>');
 	    	
 	    }
 	 
