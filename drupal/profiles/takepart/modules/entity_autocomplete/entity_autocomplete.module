@@ -99,6 +99,7 @@ function entity_autocomplete_by_bundle($type, $bundles_in, $string = '') {
     $query = db_select($table, 'n');
     $query->addField('n', $id_field, 'id');
     $query->addField('n', $label_field, 'label');
+    $query->addField('n', 'status', 'status');
     $query->condition('n.'.$label_field, '%' . $string . '%', 'LIKE');
     
     if ($bundle_string) {
@@ -126,7 +127,11 @@ function entity_autocomplete_get_label($label, $id){
   if (strlen($label) >= ( $max - $ref_id_length )) {
     $label = substr_replace($label, ' ...', ($max - $ref_id_length));
   }
-  return $label . $ref_id;
+  $label .= $ref_id;
+  if ($entity->status == 0) {
+    $label .= ' <span style="color:red">(unpublished)</span>';
+  }
+  return $label;
 }
 
 /*
