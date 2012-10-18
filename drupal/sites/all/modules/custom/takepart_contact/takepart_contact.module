@@ -1,0 +1,15 @@
+<?php
+
+
+/**
+ * Implements hook_menu().
+ */
+function takepart_contact_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'webform_client_form_170') {
+    //$form['submitted']['referring_page']['#value'] = $_SERVER['HTTP_REFERER'];
+    $form['submitted']['referring_page']['#default_value'] = $_SERVER['HTTP_REFERER'];
+    //$form['submitted']['referring_page']['#default_value'] = 'v default';
+    //$form['submitted']['referring_page']['#value'] = 'v value';
+  }
+}
+
