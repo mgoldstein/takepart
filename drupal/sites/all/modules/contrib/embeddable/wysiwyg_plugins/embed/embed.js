@@ -10,7 +10,8 @@ Drupal.behaviors.embed = {
     // be ajax and pull the first form using ajax.
     id = 'embeddable-embed-form'
     form = $("#" + id);
-    if (form.length > 0) {
+    
+    if (form.size() > 0) {
       form.show();
     }
     if(!form.hasClass('dialog')) {
@@ -24,13 +25,14 @@ Drupal.behaviors.embed = {
       form.addClass('dialog');
       $(form).dialog('close');
     }
-
-    // we need to define the same plugin for each of our embed types
-    $.each(Drupal.settings.embeddable_embeds, function(key, value) {
-      Drupal.wysiwyg.plugins[value] = Drupal.wysiwyg.plugins.embed;
-    });
     
-  },
+    if(Drupal.settings.embeddable_embeds){
+      // we need to define the same plugin for each of our embed types
+      $.each(Drupal.settings.embeddable_embeds, function(key, value) {
+        Drupal.wysiwyg.plugins[value] = Drupal.wysiwyg.plugins.embed;
+      });
+    }
+  }
 };
 
 Drupal.wysiwyg.plugins.embed = {
@@ -148,10 +150,8 @@ Drupal.wysiwyg.plugins.embed = {
   // @TODO: this should get a preview or atleast the title of the content
   _placeholder: function(elem, title) {
     title = typeof(title) != 'undefined' ? title : "EMBEDED CONTENT";
-    holder = $("<p>" + title + "</p>");
-    holder.prepend($("<div class = 'drupal-embed-icon'></div>"));
-    return holder.html();
-  },
+    return "<div class = 'drupal-embed-icon'></div>"+title+"<div>&nbsp;</div>";
+  }
 }
 
 $.fn.getAttributes = function() {

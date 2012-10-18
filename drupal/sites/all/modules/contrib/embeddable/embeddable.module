@@ -84,6 +84,7 @@ function embeddable_embed($type) {
  * RETURN : an array of plugin arrays
  */
 function embeddable_embeds() {
+	drupal_add_library('system', 'ui.dialog');
   ctools_include('plugins');
   return ctools_get_plugins('embeddable', 'embed');
 }
@@ -125,6 +126,17 @@ function embeddable_wysiwyg_include_directory($type) {
 }
 
 function embeddable_menu() {
+  //create an admin configuration screen
+  $items['admin/config/content/embeddables'] = array(
+    'title' => 'Embeddable Settings',
+    'description' => 'Specify rules for what can be embedded',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('embeddable_admin_form'),
+    'file' => 'embeddable.admin.inc',
+    'access arguments' => array('administer site configuration'),
+  );
+  
   $items['embeddable/title'] = array(
     'title' => 'embed-title',
     'page callback' => 'embeddable_embed_title',
