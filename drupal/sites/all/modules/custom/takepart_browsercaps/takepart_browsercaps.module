@@ -58,17 +58,19 @@ function takepart_vidpop_mobile_browser() {
   //return true;
 
   $browsercaps = browscap_get_browser();
-  if (preg_match("/^Mobile.+/", $browsercaps['parent'])) {
-    // iOS
-    return true;
-  }
-  if (preg_match("/^Silk.*/", $browsercaps['parent'])) {
-    // Kindle Fire
-    return true;
-  }
-  if (preg_match("/^.*Mobile.*/", $browsercaps['useragent'])) {
-    // Droid
-    return true;
+  if (isset($browsercaps['parent'])) {
+    if (preg_match("/^Mobile.+/", $browsercaps['parent'])) {
+      // iOS
+      return true;
+    }
+    if (preg_match("/^Silk.*/", $browsercaps['parent'])) {
+      // Kindle Fire
+      return true;
+    }
+    if (preg_match("/^.*Mobile.*/", $browsercaps['useragent'])) {
+      // Droid
+      return true;
+    }
   }
 
   return false;

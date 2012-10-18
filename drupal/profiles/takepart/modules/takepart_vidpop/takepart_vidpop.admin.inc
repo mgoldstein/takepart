@@ -16,9 +16,15 @@
 function takepart_vidpop_settings_form($form) {
   $form['takepart_vidpop_ads'] = array(
     '#type'          => 'fieldset',
-    '#title'         => t('Ads'),
+    '#title'         => t('Ad Banners'),
     '#collapsible'   => TRUE,
     '#collapsed'     => FALSE,
+  );
+  $form['takepart_vidpop_ads']['takepart_vidpop_banners_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Ad banners enabled on video popups'),
+    '#default_value' => variable_get('takepart_vidpop_banners_enabled', false),
+    '#description' => t('Display ad banners and logo on video popups as top row.'),
   );
   $form['takepart_vidpop_ads']['takepart_vidpop_ad_id'] = array(
     '#type' => 'textfield',

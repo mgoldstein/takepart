@@ -518,6 +518,7 @@ function takepart3_preprocess_node(&$vars, $hook) {
         }
 
         if ($use_popup) {
+          $GLOBALS['has_vidpop'] = 1;
             // suggest a theme
             $vars['theme_hook_suggestions'][] = "node__video_embed";
 

@@ -12,6 +12,8 @@ function takepart_vidpop_init() {
   $path = drupal_get_path('module', 'takepart');
   drupal_add_css($path . '/modules/takepart_vidpop/css/takepart_vidpop.css', array('every_page' => TRUE));
   drupal_add_js($path . '/modules/takepart_vidpop/js/takepart_vidpop.js', 'file');
+  $GLOBALS['has_vidpop'] = false;
+  $GLOBALS['vidpop-nobanner'] = false;
 }
 
 
@@ -50,6 +52,16 @@ function takepart_vidpop_preprocess_page(&$vars) {
     drupal_add_js(array('takepart_vidpop'=> array('hostpagetitle' => $vars['node']->title)),'setting');
   };
 }
+
+function takepart_vidpop_preprocess_html(&$vars) {
+  if ($GLOBALS['has_vidpop']) {
+    $vars['classes_array'][] = "has-video-popup";
+  }
+  if (!$GLOBALS['vidpop-nobanner']) {
+    $vars['classes_array'][] = "has-video-popup-banner";
+  }
+}
+
 
 function takepart_vidpop_preprocess_node(&$vars, $hook) {
   if (!takepart_vidpop_mobile_browser()) {
