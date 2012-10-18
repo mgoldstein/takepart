@@ -1,0 +1,40 @@
+From ac324ef7f891f6eb3f7a3130e59f5f4c93a0c71f Mon Sep 17 00:00:00 2001
+From: Fabian Franz <ffranz@trellon.com>
+Date: Thu, 18 Oct 2012 17:59:47 +0000
+Subject: [PATCH] Issue #11334: Patch entity_autocomplete / BugzID: #28123
+
+Conflicts:
+
+	drupal/profiles/takepart/modules/entity_autocomplete/entity_autocomplete.module
+---
+ .../entity_autocomplete/entity_autocomplete.module |    7 ++++++-
+ 1 files changed, 6 insertions(+), 1 deletions(-)
+
+diff --git a/drupal/profiles/takepart/modules/entity_autocomplete/entity_autocomplete.module b/drupal/profiles/takepart/modules/entity_autocomplete/entity_autocomplete.module
+index 10fd680..c63d36d 100644
+--- a/drupal/profiles/takepart/modules/entity_autocomplete/entity_autocomplete.module
++++ b/drupal/profiles/takepart/modules/entity_autocomplete/entity_autocomplete.module
+@@ -99,6 +99,7 @@ function entity_autocomplete_by_bundle($type, $bundles_in, $string = '') {
+     $query = db_select($table, 'n');
+     $query->addField('n', $id_field, 'id');
+     $query->addField('n', $label_field, 'label');
++    $query->addField('n', 'status', 'status');
+     $query->condition('n.'.$label_field, '%' . $string . '%', 'LIKE');
+     
+     if ($bundle_string) {
+@@ -126,7 +127,11 @@ function entity_autocomplete_get_label($label, $id){
+   if (strlen($label) >= ( $max - $ref_id_length )) {
+     $label = substr_replace($label, ' ...', ($max - $ref_id_length));
+   }
+-  return $label . $ref_id;
++  $label .= $ref_id;
++  if ($entity->status == 0) {
++    $label .= ' <span style="color:red">(unpublished)</span>';
++  }
++  return $label;
+ }
+ 
+ /*
+-- 
+1.7.0.4
+
