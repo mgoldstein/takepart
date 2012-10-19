@@ -2,7 +2,6 @@ This adds a way to capture the referring URL when submitting a contact us form.
 
 This adds a new text field, hides it, and sets the default value to the incoming referrer
 
-
 Installation:
 -------------
 
