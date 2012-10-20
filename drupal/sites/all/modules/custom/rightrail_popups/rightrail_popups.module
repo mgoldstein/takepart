@@ -1,0 +1,47 @@
+<?php
+
+
+/**
+ * Implements hook_menu().
+ */
+function takepart_rightrail_popups_menu() {
+  $items['admin/config/media/vidpop/settings'] = array(
+    'title' => 'Videop popup settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_vidpop_settings_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'takepart_vidpop.admin.inc',
+  );
+
+  return $items;
+}
+
+
+/***
+ * Implementationof hook_init()
+ *
+ * creates global js var detected_mobile_browser
+ *
+ */
+function takepart_rightrail_popups_init() {
+  return;
+
+  if (takepart_vidpop_mobile_browser()) {
+    drupal_add_js(array('takepart_rightrail_popups' => array('detected_mobile_browser' => 1)), 'setting');
+  }
+  else {
+    drupal_add_js(array('takepart_rightrail_popups' => array('detected_mobile_browser' => 0)), 'setting');
+  }
+}
+
+
+/***
+ * Implementationof hook_init()
+ *
+ */
+function takepart_rightrail_preprocess_block(&$variables) {
+
+  return;
+}
+
