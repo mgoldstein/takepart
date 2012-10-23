@@ -1,17 +1,7 @@
 <?php
 // node template to create video popup
 
-// logo to left of the ad banner
-$banner_tp_logo = theme('image', array(
-    'path' => drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop/css/images/TP_modal_icon.png',
-    'width' => '58px',
-    'height' => '58px',
-    'title' => 'Takepart'
-  )
-);
-
-// get the ad banner and social links - yeah, should be done a little before this, but we're in crunch mode today
-$top_banner = takepart_vidpop_get_banner();
+// get the social links
 $social_links = takepart_vidpop_get_social_links();
 $comment_link = l('COMMENT', 'node/' . $content['field_video_embedded']['#object']->nid, array('fragment' => 'comments', 'attributes' => array('target' => '_blank')));
 
@@ -28,10 +18,28 @@ $content['field_video_embedded'][0]['file']['#options']['height'] = 360;
 <?php if (!empty($pre_object)) print render($pre_object) ?>
 <div class='<?php print $classes ?> clearfix node-embedded' <?php print ($attributes) ?>>
   <div class="inner-wrapper">
-    <div class="top-banner clearfix">
-      <div class="tp-logo"><?php print $banner_tp_logo; ?></div>
-      <div class="video-banner-large"><?php print $top_banner ?></div>
-    </div>
+    <?php
+    if (variable_get('takepart_vidpop_banners_enabled', false)) {
+      // get the ad banner
+      $top_banner = takepart_vidpop_get_banner();
+      // get the logo to the left of the ad banner
+      $banner_tp_logo = theme('image', array(
+          'path' => drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop/css/images/TP_modal_icon.png',
+          'width' => '58px',
+          'height' => '58px',
+          'title' => 'Takepart'
+        )
+      );
+
+      if (!$top_banner) {
+        watchdog('vidpop', 'no banner retrieved for slot ' . variable_get('takepart_vidpop_ad_id', TAKEPART_VIDPOP_DEFAULT_AD_ID));
+      }
+      print '<div class="top-banner clearfix">';
+      print '  <div class="tp-logo">' . $banner_tp_logo . '</div>';
+      print '  <div class="video-banner-large">' . $top_banner . '</div>';
+      print '</div>';
+    }
+?>
     <div class="contents">
      <div class="leftside">
       <?php print render($content['field_video_embedded']) ?>

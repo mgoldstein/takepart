@@ -518,6 +518,7 @@ function takepart3_preprocess_node(&$vars, $hook) {
         }
 
         if ($use_popup) {
+          $GLOBALS['has_vidpop'] = 1;
             // suggest a theme
             $vars['theme_hook_suggestions'][] = "node__video_embed";
 
@@ -533,7 +534,11 @@ function takepart3_preprocess_node(&$vars, $hook) {
             $vars['classes_array'][] = 'vidpop-embedded';
 
             // add ad click call
-            drupal_add_js('jQuery(document).ready(function () { vidpop_loaded(); });', 'inline');
+            static $vp_js_added;
+            if (!isset($vp_js_added)) {
+              drupal_add_js('jQuery(document).ready(function () { vidpop_loaded(); });', 'inline');
+              $vp_js_added = 1;
+            }
         }
     }
 

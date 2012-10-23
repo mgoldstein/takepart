@@ -112,6 +112,7 @@ div.vidpop-preview-overlay-text .line2 {
   cursor:pointer;
   height:13px !important;
   width:13px !important;
+  z-index: 99999;
 }
 
 /*
@@ -148,6 +149,9 @@ div.vidpop-preview-overlay-text .line2 {
   }
 .vidpop-popup .contents {
   clear: both;
+}
+.vidpop-popup .nobanner {
+  margin-top: 10px;
 }
 .vidpop-popup .contents .leftside {
   float: left;
@@ -209,10 +213,6 @@ div.vidpop-preview-overlay-text .line2 {
   top: -10px;
   right: -10px;
 }
-#cboxLoadedContent2, #cboxContent2 {
-  height: 390px !important;
-}
-
 #colorbox, #cboxWrapper, #cboxContent, #cboxLoadedContent {
     overflow: hidden !important;
 }
@@ -234,6 +234,25 @@ The fix is to add this to the theme CSS:
     padding: 2px 0 0 6px;
 }
 
+/* adjust popup window, based on banners */
+body.has-video-popup-banner #colorbox {
+  height: 550px !important;
+}
+body.has-video-popup-banner #cboxWrapper {
+  height: 550px !important;
+}
+body.has-video-popup-banner #cboxMiddleLeft {
+  height: 500px !important;
+}
+body.has-video-popup-banner #cboxContent {
+  height: 540px !important;
+}
+body.has-video-popup-banner #cboxLoadedContent {
+  height: 540px !important;
+}
+body.has-video-popup {
+  position: relative;
+}
 
 /* video popups in map */
 .vidmap-popup {

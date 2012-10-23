@@ -13,12 +13,6 @@ function rightrail_popups_menu() {
     'type' => MENU_NORMAL_ITEM,
     'file' => 'takepart_vidpop.admin.inc',
   );
-  $items['test/rightrail'] = array(
-    'title' => 'Test rightrail preview image',
-    'page callback' => 'rightrail_popups_test',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
 
   return $items;
 }
@@ -55,10 +49,6 @@ function rightrail_popups_preprocess_block(&$variables) {
 }
 
 function rightrail_popups_boxes_box_load_alter(&$box, $delta) {
-  if ($delta == 'box-bedd1fbb') {
-    $a = 1;
-  }
-
   if ($box->options['additional_classes'] == 'video-popup') {
     // get the id of the video
     // pattern like www.youtube.com/embed/Mew33kt7D6c
@@ -70,6 +60,20 @@ function rightrail_popups_boxes_box_load_alter(&$box, $delta) {
     $box->options['body'] = $preview;
 
     $popup   = theme('rightrail_video_popup', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_body' => $body));
+
+    // prepare popup vars
+    if (variable_get('takepart_vidpop_banners_enabled', false)) {
+      // get the ad banner
+      $top_banner = takepart_vidpop_get_banner();
+      // get the logo to the left of the ad banner
+      $banner_tp_logo = theme('image', array(
+          'path' => drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop/css/images/TP_modal_icon.png',
+          'width' => '58px',
+          'height' => '58px',
+          'title' => 'Takepart'
+        )
+      );
+    }
   }
 }
 
@@ -93,9 +97,5 @@ function rightrail_popups_theme() {
       'variables' => array('p_title' => NULL, 'p_video_id' => NULL, 'p_body' => NULL),
     ),
   );
-}
-
-
-function rightrail_popups_test() {
 }
 
