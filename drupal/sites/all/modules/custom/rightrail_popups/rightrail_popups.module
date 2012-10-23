@@ -4,7 +4,7 @@
 /**
  * Implements hook_menu().
  */
-function takepart_rightrail_popups_menu() {
+function rightrail_popups_menu() {
   $items['admin/config/media/vidpop/settings'] = array(
     'title' => 'Videop popup settings',
     'page callback' => 'drupal_get_form',
@@ -12,6 +12,12 @@ function takepart_rightrail_popups_menu() {
     'access arguments' => array('access administration pages'),
     'type' => MENU_NORMAL_ITEM,
     'file' => 'takepart_vidpop.admin.inc',
+  );
+  $items['test/rightrail'] = array(
+    'title' => 'Test rightrail preview image',
+    'page callback' => 'rightrail_popups_test',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -24,24 +30,72 @@ function takepart_rightrail_popups_menu() {
  * creates global js var detected_mobile_browser
  *
  */
-function takepart_rightrail_popups_init() {
+function rightrail_popups_init() {
   return;
 
   if (takepart_vidpop_mobile_browser()) {
-    drupal_add_js(array('takepart_rightrail_popups' => array('detected_mobile_browser' => 1)), 'setting');
+    drupal_add_js(array('rightrail_popups' => array('detected_mobile_browser' => 1)), 'setting');
   }
   else {
-    drupal_add_js(array('takepart_rightrail_popups' => array('detected_mobile_browser' => 0)), 'setting');
+    drupal_add_js(array('rightrail_popups' => array('detected_mobile_browser' => 0)), 'setting');
   }
 }
 
 
 /***
- * Implementationof hook_init()
+ * Implementation of hook_init()
  *
  */
-function takepart_rightrail_preprocess_block(&$variables) {
+function rightrail_popups_preprocess_block(&$variables) {
+  if ($variables['block']->region == 'sidebar_second') {
+    $a = 1;
+  }
 
   return;
+}
+
+function rightrail_popups_boxes_box_load_alter(&$box, $delta) {
+  if ($delta == 'box-bedd1fbb') {
+    $a = 1;
+  }
+
+  if ($box->options['additional_classes'] == 'video-popup') {
+    // get the id of the video
+    // pattern like www.youtube.com/embed/Mew33kt7D6c
+    $body = $box->options['body'];
+    preg_match("/www.youtube.com\/embed\/([^\"]+)\"/", $body, $res);
+    $video_id = $res[1];
+
+    $preview = theme('rightrail_video_preview', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_body' => $body));
+    $box->options['body'] = $preview;
+
+    $popup   = theme('rightrail_video_popup', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_body' => $body));
+  }
+}
+
+/**
+ * Implement hook_theme().
+ *
+ * This one is used as the base to reduce errors when updating.
+ */
+function rightrail_popups_theme() {
+  $template_path = drupal_get_path('module', 'rightrail_popups') . '/theme';
+
+  return array(
+    'rightrail_video_preview' => array(
+      'path'      => $template_path,
+      'template'  => 'rightrail-video-preview',
+      'variables' => array('p_title' => NULL, 'p_video_id' => NULL, 'p_body' => NULL),
+    ),
+    'rightrail_video_popup' => array(
+      'path'      => $template_path,
+      'template'  => 'rightrail-video-popup',
+      'variables' => array('p_title' => NULL, 'p_video_id' => NULL, 'p_body' => NULL),
+    ),
+  );
+}
+
+
+function rightrail_popups_test() {
 }
 

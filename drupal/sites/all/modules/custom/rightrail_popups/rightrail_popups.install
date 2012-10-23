@@ -12,13 +12,13 @@
 /**
  * Implementation of hook_install().
  */
-function takepart_rightrail_popups_install() {
+function rightrail_popups_install() {
   drupal_set_message(st('The TakePart Right Rail Video Popups Support module has been installed.'));
 }
 
 /**
  * Implementation of hook_uninstall().
  */
-function takepart_rightrail_popups_uninstall() {
+function rightrail_popups_uninstall() {
   drupal_set_message(st('The TakePart Right Rail Video Popups Support module has been uninstalled.'));
 }
