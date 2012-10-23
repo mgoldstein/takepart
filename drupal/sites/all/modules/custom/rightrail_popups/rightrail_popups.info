@@ -4,6 +4,7 @@ package = TakePart
 version = 7.x-1.00
 core = 7.x
 dependencies[] = takepart_vidpop
+dependencies[] = takepart_browsercaps
 
 files[] = rightrail_popups.module
 files[] = rightrail_popups.install

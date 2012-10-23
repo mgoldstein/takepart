@@ -56,11 +56,6 @@ function rightrail_popups_boxes_box_load_alter(&$box, $delta) {
     preg_match("/www.youtube.com\/embed\/([^\"]+)\"/", $body, $res);
     $video_id = $res[1];
 
-    $preview = theme('rightrail_video_preview', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_body' => $body));
-    $box->options['body'] = $preview;
-
-    $popup   = theme('rightrail_video_popup', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_body' => $body));
-
     // prepare popup vars
     if (variable_get('takepart_vidpop_banners_enabled', false)) {
       // get the ad banner
@@ -70,10 +65,23 @@ function rightrail_popups_boxes_box_load_alter(&$box, $delta) {
           'path' => drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop/css/images/TP_modal_icon.png',
           'width' => '58px',
           'height' => '58px',
-          'title' => 'Takepart'
+          'title' => 'Takepart',
         )
       );
     }
+
+    // format the video for display in popup
+    $fmt_pop = <<<EOT
+<div class="vidpop-popup right-rail" style="height: 360px; width: 640px;">
+  <iframe width="640" height="360" frameborder="0" type="text/html" class="youtube-player" src="http://www.youtube.com/embed/$video_id?version=3&amp;wmode=opaque" style="height: 360px; width: 640px;"></iframe>
+</div>
+EOT;
+
+    $popup = theme('rightrail_video_popup', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_top_banner' => $top_banner, 'p_banner_tp_logo' => $banner_tp_logo, 'p_fmt_pop' => $fmt_pop));
+
+    // replace box contents with preview
+    $preview = theme('rightrail_video_preview', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_popup' => $popup));
+    $box->options['body'] = $preview;
   }
 }
 
@@ -94,7 +102,7 @@ function rightrail_popups_theme() {
     'rightrail_video_popup' => array(
       'path'      => $template_path,
       'template'  => 'rightrail-video-popup',
-      'variables' => array('p_title' => NULL, 'p_video_id' => NULL, 'p_body' => NULL),
+      'variables' => array('p_title' => NULL, 'p_video_id' => NULL, 'p_popup' => NULL, 'p_fmt_pop' => NULL),
     ),
   );
 }
