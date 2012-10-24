@@ -4,6 +4,7 @@
 //
 // triggered by call in template.php, preprocess node
 // doesn't work here as a behavior, like the others
+
 var vp_embeddedvideotitle;
 var vp_embeddedvideotype;
 
