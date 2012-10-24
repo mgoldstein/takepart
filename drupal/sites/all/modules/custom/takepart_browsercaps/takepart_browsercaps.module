@@ -67,6 +67,9 @@ function takepart_vidpop_mobile_browser() {
       // Kindle Fire
       return true;
     }
+  }
+
+  if (isset($browsercaps['useragent'])) {
     if (preg_match("/^.*Mobile.*/", $browsercaps['useragent'])) {
       // Droid
       return true;
