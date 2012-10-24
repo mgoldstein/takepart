@@ -1,81 +1,8 @@
 <?php
 
-// contant: default ad id for vidpop
+// constant: default ad id for vidpop
 define('TAKEPART_VIDPOP_DEFAULT_AD_ID', 'TP3_ROS_Leaderboard_728x90');
 
-
-
-/***
- * implementation of hook_init()
- */
-function takepart_vidpop_init() {
-  $path = drupal_get_path('module', 'takepart');
-  drupal_add_css($path . '/modules/takepart_vidpop/css/takepart_vidpop.css', array('every_page' => TRUE));
-  drupal_add_js($path . '/modules/takepart_vidpop/js/takepart_vidpop.js', 'file');
-  $GLOBALS['has_vidpop'] = false;
-  $GLOBALS['vidpop-nobanner'] = false;
-}
-
-
-/**
- * Implement hook_theme().
- *
- * This one is used as the base to reduce errors when updating.
- */
-function takepart_vidpop_theme() {
-  $template_path = drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop/theme';
-
-  return array(
-    'node__video_embed' => array(
-      'path'      => $template_path,
-      'template'  => 'node--video-embed',
-      'variables' => array('node' => NULL),
-    ),
-    'vidpop_popup' => array(
-      'path'      => $template_path,
-      'template'  => 'vidpop-popup',
-      'variables' => array('node' => NULL),
-    ),
-  );
-}
-
-function takepart_vidpop_preprocess_vidpop_popup(&$vars) {
-  if (isset($vars['field_promo_headline'])) {
-    // save values for ad click js
-    drupal_add_js(array('takepart_vidpop'=> array('embeddedvideotitle' => $vars['field_promo_headline'][0]['value'])),'setting');
-  };
-}
-
-function takepart_vidpop_preprocess_page(&$vars) {
-  // save values for ad click js
-  if (isset($vars['node'])) {
-    drupal_add_js(array('takepart_vidpop'=> array('hostpagetitle' => $vars['node']->title)),'setting');
-  };
-}
-
-function takepart_vidpop_preprocess_html(&$vars) {
-  if ($GLOBALS['has_vidpop']) {
-    $vars['classes_array'][] = "has-video-popup";
-  }
-  if (!$GLOBALS['vidpop-nobanner']) {
-    $vars['classes_array'][] = "has-video-popup-banner";
-  }
-}
-
-
-function takepart_vidpop_preprocess_node(&$vars, $hook) {
-  if (!takepart_vidpop_mobile_browser()) {
-    // we are on a non-mobile device; load hidden popups
-    //
-    // see if this is the Rollins map page - be sure to test for correct node id
-    $map_nid = variable_get('takepart_vidpop_map_nid', 29655);
-    $tour_nid = variable_get('takepart_vidpop_tour_nid', 29661);
-    if (($vars['node']->nid  == $map_nid) || ($vars['node']->nid  == $tour_nid)) {
-      // load the map popups
-      takepart_vidpop_process_map_popups($vars['node']->body['und'][0]['value'], $vars);
-    }
-  }
-}
 
 /**
  * Implements hook_menu().
@@ -101,6 +28,134 @@ function takepart_vidpop_menu() {
 }
 
 
+/**
+ * Implement hook_theme().
+ *
+ * This one is used as the base to reduce errors when updating.
+ */
+function takepart_vidpop_theme() {
+  $template_path = drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop/theme';
+
+  return array(
+    'node__video_embed' => array(
+      'path'      => $template_path,
+      'template'  => 'node--video-embed',
+      'variables' => array('node' => NULL),
+    ),
+    'vidpop_popup' => array(
+      'path'      => $template_path,
+      'template'  => 'vidpop-popup',
+      'variables' => array('node' => NULL),
+    ),
+  );
+}
+
+
+/***
+ * implementation of hook_init()
+ */
+function takepart_vidpop_init() {
+  $path = drupal_get_path('module', 'takepart');
+  drupal_add_css($path . '/modules/takepart_vidpop/css/takepart_vidpop.css', array('every_page' => TRUE));
+  drupal_add_js($path . '/modules/takepart_vidpop/js/takepart_vidpop.js', 'file');
+  $GLOBALS['has_vidpop'] = false;
+  $GLOBALS['vidpop-nobanner'] = false;
+}
+
+
+function takepart_vidpop_preprocess_vidpop_popup(&$vars) {
+}
+
+
+function takepart_vidpop_preprocess_page(&$vars) {
+  // save values for ad click js
+  if (isset($vars['node'])) {
+    drupal_add_js(array('takepart_vidpop'=> array('hostpagetitle' => $vars['node']->title)),'setting');
+  };
+}
+
+/***
+ * Implementation of hook_js_alter()
+ *
+ * @param $javascript
+ */
+function takepart_vidpop_js_alter(&$javascript) {
+  // we need to use only the final version of embeddedvideotitle, but it may have
+  // been added more than once
+  $remove_entries = array();
+  $data_index = 0;
+  foreach ($javascript['settings']['data'] as $idx => $data) {
+    if (isset($data['takepart_vidpop']['embeddedvideotitle'])) {
+      $remove_entries[] = $idx;
+      $data_index++;
+    }
+  }
+
+  if ($data_index > 1) {
+    // remove all but last entry
+    for ($i = ($data_index - 2); $i >= 0; $i--) {
+      $n = $remove_entries[$i];
+      unset($javascript['settings']['data'][$n]);
+    }
+  }
+
+
+  // do the same for embeddedvideotype
+  $remove_entries = array();
+  $data_index = 0;
+  foreach ($javascript['settings']['data'] as $idx => $data) {
+    if (isset($data['takepart_vidpop']['embeddedvideotype'])) {
+      $remove_entries[] = $idx;
+      $data_index++;
+    }
+  }
+
+  if ($data_index > 1) {
+    // remove all but last entry
+    for ($i = ($data_index - 2); $i >= 0; $i--) {
+      $n = $remove_entries[$i];
+      unset($javascript['settings']['data'][$n]);
+    }
+  }
+}
+
+
+function takepart_vidpop_preprocess_node(&$vars, $hook) {
+  if ($vars['node']->type == 'openpublish_video') {
+    if (isset($vars['field_promo_headline'])) {
+      $js_index = $vars['node']->nid;
+      //static $js_index = 0;
+      static $save_embeddedvideotitle = array();
+      static $save_embeddedvideotype = array();
+
+      // save values for ad click js
+      $embeddedvideotitle = $save_embeddedvideotitle;
+      $embeddedvideotitle[$js_index] = $vars['field_promo_headline'][0]['value'];
+      $save_embeddedvideotitle = $embeddedvideotitle;
+      drupal_add_js(array('takepart_vidpop' => array('embeddedvideotitle' => $embeddedvideotitle)), 'setting');
+
+      $embeddedvideotype = $save_embeddedvideotype;
+      $embeddedvideotype[$js_index] = $vars['node']->type;
+      $save_embeddedvideotype = $embeddedvideotype;
+      drupal_add_js(array('takepart_vidpop' => array('embeddedvideotype' => $embeddedvideotype)), 'setting');
+
+      $js_index++;
+    };
+
+    if (!takepart_vidpop_mobile_browser()) {
+      // we are on a non-mobile device; load hidden popups
+      //
+      // see if this is the Rollins map page - be sure to test for correct node id
+      $map_nid = variable_get('takepart_vidpop_map_nid', 29655);
+      $tour_nid = variable_get('takepart_vidpop_tour_nid', 29661);
+      if (($vars['node']->nid  == $map_nid) || ($vars['node']->nid  == $tour_nid)) {
+        // load the map popups
+        takepart_vidpop_process_map_popups($vars['node']->body['und'][0]['value'], $vars);
+      }
+    }
+  }
+}
+
 /***
  * format image to look like a youtube video preview
  *
@@ -120,25 +175,25 @@ function takepart_vidpop_format_preview($uri, $vars) {
   $overlay_image = theme('image', array('path' => $vidpop_path . '/css/images/youtube-overlay.png', 'attributes' => array('rel' => '#details', 'class' => 'vidpop-trigger')));
 
   $promo_headline = $vars['field_promo_headline'][0]['safe_value'];
-  $promo_text = $vars['field_promo_text'][0]['safe_value'];
-
+  if (isset($vars['field_promo_text'][0])) {
+    $promo_text = $vars['field_promo_text'][0]['safe_value'];
+  }
+  else {
+    // sometimes it isn't set
+    $promo_text = $vars['field_promo_text'][0]['safe_value'];
+  }
   // theme the popup contents
   $formatted_popup = theme('vidpop_popup', $vars);
   // id of the video popup division
   $vidpop_id = 'vidpop-details-' . $vars['nid'];
+  $vp_class = 'vp-' . $vars['nid'];
+  $node_title = $vars['node']->title;
 
   if (takepart_vidpop_mobile_browser()) {
     // mobile browser, display the node
-    $youtube_uri = substr($vars['field_video_embedded'][0]['file']->uri, 10);
+    //$youtube_uri = substr($vars['field_video_embedded'][0]['file']->uri, 10);
     //$href_string = '/node/' .  $vars['nid'];
-    //$href_string = url(drupal_get_path_alias('node/' .  $vars['nid']));
-    preg_match("/.+\/(.+)/", $vars['field_video_embedded'][0]['file']->uri, $res);
-    //$href_string = file_create_url('http://vnd.youtube/' . $res[1]);
-
-    //$href_string = "http://www.youtube.com/v/quuC9mfV2aY?autoplay=1&rel=0&enablejsapi=1&playerapiid=ytplayer";
-    //$href_string = "http://www.youtube.com/embed/quuC9mfV2aY?autoplay=1";
-    $href_string = "http://www.youtube.com/embed/" . $res[1] . "?autoplay=1";
-
+    $href_string = url(drupal_get_path_alias('node/' .  $vars['nid']));
     $link_class = "normal";
   }
   else {
@@ -152,9 +207,9 @@ function takepart_vidpop_format_preview($uri, $vars) {
   }
 
   $formatted = <<<EOT
-<div class="vidpop-embed-promo-headline">$promo_headline999</div>
-<div class="vidpop-preview">$preview_image
-  <a class="$link_class" href="$href_string"><div class="vidpop-preview-overlay">$overlay_image
+<div class="vidpop-embed-promo-headline"><!-- promo_headline999 --></div>
+<div class="vidpop-preview $vp_class">$preview_image
+  <a class="$link_class" href="$href_string" title="$node_title"><div class="vidpop-preview-overlay">$overlay_image
   <div class="vidpop-preview-overlay-text">
     <div class="line1"><span class="watch">WATCH</span>$promo_headline</div>
     <div class="line2">$promo_text</div>
@@ -162,7 +217,7 @@ function takepart_vidpop_format_preview($uri, $vars) {
   </div></a>
 </div>
 <div class="vidpop-embed-promo-text">
-$promo_text999
+<!-- promo_text999 -->
 </div>
 EOT;
 
@@ -193,11 +248,11 @@ function takepart_vidpop_get_banner() {
       break;
     }
   }
-  watchdog('vidmap', 'getting banner, have_ads=' . intval($have_ads));
+  //watchdog('vidmap', 'getting banner, have_ads=' . intval($have_ads));
     // get id of ad to use
   $ad_id = variable_get('takepart_vidpop_ad_id', TAKEPART_VIDPOP_DEFAULT_AD_ID);
   if (!$have_ads) {
-    watchdog('vidmap', 'adding gs');
+    //watchdog('vidmap', 'adding gs');
       // no other ads on the page, so we need to output some javascript
     $header1 = 'GS_googleAddAdSenseService("' . variable_get('takepart_ads_dfp_property_code', '') . '");
 GS_googleEnableAllServices();';
@@ -209,9 +264,9 @@ GS_googleEnableAllServices();';
   }
 
   //register the slot
-  watchdog('vidmap', 'registering ' . $ad_id);
+  //watchdog('vidmap', 'registering ' . $ad_id);
   $ad_html = 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad_id . '");';
-  watchdog('vidmap', 'ad_html: ' . $ad_html);
+  //watchdog('vidmap', 'ad_html: ' . $ad_html);
   drupal_add_js($ad_html, 'inline');
   $banner = <<<HTM
 <script type='text/javascript'>
@@ -219,7 +274,7 @@ GS_googleEnableAllServices();';
 </script>
 HTM;
 
-  watchdog('vidmap', 'banner: ' . strlen($banner));
+  //watchdog('vidmap', 'banner: ' . strlen($banner));
 
   return $banner;
 }

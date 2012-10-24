@@ -214,7 +214,7 @@ div.vidpop-preview-overlay-text .line2 {
   right: -10px;
 }
 #colorbox, #cboxWrapper, #cboxContent, #cboxLoadedContent {
-    overflow: hidden !important;
+  overflow: hidden !important;
 }
 
 /*
