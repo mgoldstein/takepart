@@ -46,18 +46,12 @@ function gmapfield_field_is_empty($item, $field) {
  */
 function gmapfield_field_formatter_info() {
   return array(
-    'gmapfield_simple_text' => array(
-      'label' => t('Simple text-based formatter'),
-      'field types' => array('gmapfield'),
-    ),
-
-    'gmapfield_show_map' => array(
-      'label' => t('Google Map Display'),
+    'gmapfield_formatter' => array(
+      'label' => t('Google map display'),
       'field types' => array('gmapfield'),
     ),
   );
 }
-
 
 
 
@@ -67,43 +61,37 @@ function gmapfield_field_formatter_info() {
  */
 function gmapfield_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
 
+  drupal_add_css(drupal_get_path('module', 'gmapfield') . '/gmapfield_field_view.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+
   $element = array();
-  
-  
-  print "TEST";
-  print "<pre>";
-  print_r($display);
-  print "</pre>";
-  exit();
 
-  
-
-  $output = '';
+  $jsoutput = '';
 
   switch ($display['type']) {
-    case 'gmapfield_simple_text':
+    case 'gmapfield_formatter':
 
 	  foreach ($items as $delta => $item) {
-	    $output = check_plain($item['gmapfield_address'] . '-'. $item['gmapfield_popup'] );
+
+   	    $gmapfield_popup = ereg_replace("/\n\r|\r\n/", "", $item['gmapfield_popup']);
+            $gmapfield_popup = str_replace("'","\\'", $gmapfield_popup);
+
+	    $jsoutput .= "addresses[$delta]=['" . $item['gmapfield_address'] . "', image, shadow, '" . $gmapfield_popup . "'];";
+
+            if(end($items) === $item) {
+		drupal_add_js(_gmapfield_getjs($jsoutput, 'map_canvas'.$delta), array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
+		//drupal_add_js(_gmapfield_getjs($jsoutput, 'page'), array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
+                $output = ('<div class="map_canvas" id="map_canvas'.$delta.'"></div>');
+	    } else {
+		$output = ('<div class="map_canvas_inactive" id="map_canvas'.$delta.'"></div>');
+	    	
+	    }
+	 
 	    $element[$delta] = array('#markup' => $output);
-	  }
 
-      break;
-
-    case 'gmapfield_show_map':
-
-	  foreach ($items as $delta => $item) {
-	    //$output = check_plain($item['gmapfield_address'] . '-'. $item['gmapfield_popup'] );
-
-	    $output .= "addresses[$delta]=[" . $item['gmapfield_address'] . ", image, shadow, html];";
-
-	    $element[$delta] = array('#markup' => $output);
 	  }
 
       break;
   }
-
-  $element = array('#markup' => _gmapfield_getjs($output));
 
   return $element;
 }
@@ -162,11 +150,14 @@ function gmapfield_widget_error($element, $error, $form, &$form_state) {
 }
 
 
-function _gmapfield_getjs($addresses) {
+function _gmapfield_getjs($addresses, $divid) {
+//@todo: move some of this into a js file
        $content = <<<HTM
 var tpmaps = tpmaps || {};
 
 tpmaps.initialize = function() {
+
+       //alert('ok');
 
        geocoder = new google.maps.Geocoder();
         
@@ -187,40 +178,44 @@ tpmaps.initialize = function() {
             new google.maps.Point(0,0),
             new google.maps.Point(0,34));
     
-        var html;
-      
         var addresses=new Array();
-        addresses[0]=["2880 Broadway, New York, NY 10025", image, shadow, html];     
 
 	$addresses
 
-        var map;
-        var i_addr;
+        tpmaps.builtfirst = false;
 
+        for (var i_addr=0;i_addr<addresses.length;i_addr++) {  
 
-        for (i_addr=0;i_addr<addresses.length;i_addr++) {  
-
+            tpmaps.html = addresses[i_addr][3];
 
             geocoder.geocode( { 'address': addresses[i_addr][0]}, function(results, status) {
 
                 //Position map on first element:
 
-                if(i_addr == 1) { 
-                    
+                if(tpmaps.builtfirst == false) { 
+
+		     tpmaps.builtfirst = true;
+
+		     tpmaps.mapcenter = results[0].geometry.location;
+
                      var mapOptions = {
-                            center: results[0].geometry.location,
+                            center:  tpmaps.mapcenter,
                             zoom: 12,
                             mapTypeId: google.maps.MapTypeId.ROADMAP
                       };
                   
-                      map = new google.maps.Map($('#map_canvas').get(0), mapOptions);
-                      //map = new google.maps.Map($('#page').get(0), mapOptions);
+                      tpmaps.map = new google.maps.Map($('#$divid').get(0), mapOptions);
 
-
+ 	              google.maps.event.addListenerOnce(tpmaps.map, 'idle', function() {
+			    //alert('test 2');
+			    google.maps.event.trigger(tpmaps.map, 'resize');
+			    tpmaps.map.setCenter(tpmaps.mapcenter); // be sure to reset the map center as well
+	              });
+	
                 }
 
                 if (status == google.maps.GeocoderStatus.OK) {
-                    //map.setCenter(results[0].geometry.location);
+                    //tpmaps.map.setCenter(results[0].geometry.location);
                     //addresses[i].push(results[0].geometry.location);
 
                     var shape = {
@@ -229,7 +224,7 @@ tpmaps.initialize = function() {
                     };
 
                     var marker = new google.maps.Marker({
-                            map: map,
+                            map: tpmaps.map,
                             position: results[0].geometry.location,
                             shadow: shadow,
                                 icon: image,
@@ -237,17 +232,22 @@ tpmaps.initialize = function() {
                     });
 
                     google.maps.event.addListener(marker, 'click', function() {
-                        var html_popup = ('Hello');
+                            var html_popup = tpmaps.html;
 
                             var infowindow = new google.maps.InfoWindow(
                                     { content: html_popup,
                                       size: new google.maps.Size(50,50)
                                     });
-                            infowindow.open(map,marker);
-                        map.setCenter(marker.getPosition());
+                            infowindow.open(tpmaps.map,marker);
+                        tpmaps.map.setCenter(marker.getPosition());
+
                     });
+
+                    
+		    //alert('geocode passed');
+
                  } else {
-                            alert("Geocode was not successful for the following reason: " + status);
+                            //alert("Geocode was not successful for the following reason: " + status);
                             //addresses.splice(i,1);
                  }
             });
@@ -256,6 +256,7 @@ tpmaps.initialize = function() {
 
 
 tpmaps.loadScript = function() {
+
     var key = 'AIzaSyCBqxSOBaiVARRKgOlOWIRm2lbhBeskn10';
     var script = document.createElement('script');
     script.type = 'text/javascript';
@@ -264,10 +265,21 @@ tpmaps.loadScript = function() {
     document.body.appendChild(script);
 }
 
-jQuery(document).load(tpmaps.loadScript);
-jQuery('body').bind('click', function(event){
-  //google.maps.event.trigger(tpmaps, "resize");
-});
+tpmaps.waitforcontainer = function() {
+    //@todo: add other conditions:
+    if((jQuery('#$divid').length > 0) && (jQuery('#$divid').offset().top > 0) && (jQuery('#$divid').offset().left > 0)) {
+      //alert('all clear');
+      tpmaps.loadScript();
+    } else {
+      setTimeout(function() {
+        tpmaps.waitforcontainer();
+      }, 500)
+    }
+}
+
+
+tpmaps.waitforcontainer();
+
 HTM;
 
 return $content;
