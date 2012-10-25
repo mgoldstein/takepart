@@ -2499,10 +2499,6 @@ div.messages a:visited {
 /*
  * Slim header on campaigns
 */
-#slim-header {
-    position:relative;
-    margin: 0 0 30px 0;
-}
 
 .campaign-multipage #slim-header {
     position:relative;
@@ -2614,11 +2610,6 @@ div.messages a:visited {
 
 .campaign-multipage #slim-header ul.menu li a {
     background: none repeat scroll 0 0 transparent;
-}
-
-#slim-header {
-    background-color: #d9e8ef;
-    height:36px;
 }
 
 #slim-header ul#top-follow li.title {
