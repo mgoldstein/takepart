@@ -371,7 +371,7 @@ function takepart_vidpop_process_map_popups($text, $vars) {
       $node = node_load($node_id);
       if ($node) {
         $vnode = node_view(node_load($node_id),'vidpop_map');
-        $template_file = drupal_get_path('module', 'takepart_vidpop') . '/theme/vidpop-popup.tpl.php';
+        $template_file = drupal_get_path('module', 'takepart_vidpop') . '/theme/vidpop-popup-map.tpl.php';
         $content = array(
           'field_video_embedded' => $vnode['field_video_embedded'],
           'field_promo_headline' => $vnode['field_promo_headline'],
