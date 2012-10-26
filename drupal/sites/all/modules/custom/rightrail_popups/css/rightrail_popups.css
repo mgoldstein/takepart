@@ -3,6 +3,9 @@
  *
  */
 
+.right-rail-vidpop-iframe {
+  height: 411px !important;
+}
 .rr-preview {
   position: relative;
 }
