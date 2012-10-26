@@ -25,14 +25,8 @@ function rightrail_popups_menu() {
  *
  */
 function rightrail_popups_init() {
-  return;
-
-  if (takepart_vidpop_mobile_browser()) {
-    drupal_add_js(array('rightrail_popups' => array('detected_mobile_browser' => 1)), 'setting');
-  }
-  else {
-    drupal_add_js(array('rightrail_popups' => array('detected_mobile_browser' => 0)), 'setting');
-  }
+  $path = drupal_get_path('module', 'rightrail_popups');
+  drupal_add_css($path . '/css/rightrail_popups.css', array('every_page' => TRUE));
 }
 
 
