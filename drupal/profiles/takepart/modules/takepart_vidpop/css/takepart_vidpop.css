@@ -216,6 +216,9 @@ div.vidpop-preview-overlay-text .line2 {
 #colorbox, #cboxWrapper, #cboxContent, #cboxLoadedContent {
   overflow: hidden !important;
 }
+body #cboxContent {
+  height: 445px !important;
+}
 
 /*
 Internet Explorer 8 will have problems with showing images in the Colorbox.

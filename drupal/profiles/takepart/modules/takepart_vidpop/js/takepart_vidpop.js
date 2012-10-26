@@ -92,6 +92,11 @@ function vidpop_loaded() {
           s.tl(true, 'o', 'Video Popup Click');
         }
       });
+
+      $('.vidpop-preview .colorbox-inline').live('click', (function(){
+        $('#cboxWrapper').css('height', '425px');
+        //alert(3);
+      }));
     }
   }
 })(jQuery);
