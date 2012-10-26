@@ -485,9 +485,22 @@ ul,ol
     height: 30px;
 }
 
+#block-menu-block-1 li.dhtml-menu a {
+    display: block;
+    padding: 2px 7px;
+    text-decoration: none;
+    background: #FFF;
+    color: #000;
+}
+
 #block-menu-block-1 li.dhtml-menu > ul.menu li {
     padding:0;
     margin:0;
+}
+
+#block-menu-block-1 li ul {
+    position: absolute;
+    z-index: 1000;
 }
 
 .views-field-field-slide-headline-override .field-content ul.dots li
@@ -1768,11 +1781,11 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     z-index: 10 !important;
     width: 200px;
     height: 30px;
-    background: url(images/participant_dropdown.png) no-repeat;
+    background: transparent url("images/participant_dropdown.png") repeat-y scroll 0 0;
     cursor: pointer;
 }
 .pp-button-hover {
-    background: url(images/participant_dropdown_hover.png) no-repeat !important;
+    background: transparent url("images/participant_dropdown_hover.png") repeat-y scroll 0 0 !important;
 }
 #participant-pulldown .inner {
     position: relative;

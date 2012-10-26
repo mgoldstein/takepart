@@ -226,18 +226,7 @@ ul#top-follow li.rss a {
     list-style-type: none;
 }
 
-#block-menu-block-1 li.dhtml-menu a {
-    display: block;
-    padding: 0 7px;
-    text-decoration: none;
-    background: #FFF;
-    color: #000;
-}
 
-#block-menu-block-1 li ul {
-    position: absolute;
-    z-index: 1000;
-}
 
 /* Slim header */
 #slim-header ul#top-nav {
@@ -260,6 +249,7 @@ ul#top-follow li.rss a {
 
 #block-menu-block-1 li.collapsed, #block-menu-block-1 li.collapsed a{
     display: block;
+    height: 30px;
 }
 
 #block-menu-block-1 li.expanded ul.menu li a {font-size:16px;font-weight:bold; padding:6px 12px;}
