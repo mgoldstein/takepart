@@ -47,6 +47,11 @@ function takepart_vidpop_theme() {
       'template'  => 'vidpop-popup',
       'variables' => array('node' => NULL),
     ),
+    'vidpop_popup_map' => array(
+      'path'      => $template_path,
+      'template'  => 'vidpop-popup-map',
+      'variables' => array('node' => NULL),
+    ),
   );
 }
 
