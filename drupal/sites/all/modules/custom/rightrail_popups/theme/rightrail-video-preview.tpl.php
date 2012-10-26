@@ -11,13 +11,14 @@
  */
 
 ?>
-<div id="youtube_block">
+<div id="youtube_block" class="rr-preview">
   <div style="line-height: 5px;">&nbsp;</div>
   <br>
   <div style="line-height: 5px;">&nbsp;</div>
-  <a class="colorbox-inline" href="?width=870&amp;height=420&amp;inline=true#<?php print $p_video_id; ?>"><img src="http://img.youtube.com/vi/<?php echo $p_video_id; ?>/0.jpg" width="275" height="155" /></a>
+  <img src="http://img.youtube.com/vi/<?php echo $p_video_id; ?>/mqdefault.jpg" width="275" height="155" />
   <div style="line-height: 5px;">&nbsp;</div>
   <strong><a href="http://www.youtube.com/embed/<?php echo $p_video_id; ?>">Read more and take action here.</a></strong>
+  <a class="colorbox-inline" href="?width=870&amp;height=420&amp;inline=true#<?php print $p_video_id; ?>"><div class="rr-preview-arrow"></div></a>
 </div>
 <?php
 if (!takepart_vidpop_mobile_browser()) {
