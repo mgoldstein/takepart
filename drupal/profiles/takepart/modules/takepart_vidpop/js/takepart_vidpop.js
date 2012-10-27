@@ -12,6 +12,9 @@ var vp_titles = new Array();   // list of titles
 var vp_types  = new Array();   // list of node types
 var vp_lookup = new Array();   // 0-based index lookup of title/types index
 
+var vidpopSource = 0;          // source of popup (node, rtrail)
+
+
 function vidpop_loaded() {
   vp_embeddedvideotitle = Drupal.settings.takepart_vidpop.embeddedvideotitle;
   vp_embeddedvideotype  = Drupal.settings.takepart_vidpop.embeddedvideotype;
@@ -92,14 +95,33 @@ function vidpop_loaded() {
           s.tl(true, 'o', 'Video Popup Click');
         }
       });
-
-      $('.vidpop-preview .colorbox-inline').live('click', (function(){
-        $('#cboxWrapper').css('height', '425px');
-        //alert(3);
-      }));
     }
   }
-})(jQuery);
+
+  Drupal.behaviors.vidpopPopups = {
+    attach: function (context, settings) {
+      $('.vidpop-preview .colorbox-inline').live('click', (function(){
+        //alert('wait');
+        $('#cboxWrapper').css('height', '425px');
+        //alert(4);
+        vidpopSource = 'node';
+      }));
+
+      // resize popup, based on source
+      $(document).bind('cbox_complete', function(){
+        //alert(vidpopSource);
+        switch(vidpopSource) {
+          case 'node':
+            $('#cboxWrapper').css('height', '425px');
+            break;
+          case 'rtrail':
+            $('#cboxWrapper').css('height', '445px');
+            break;
+        }
+      });
+    }
+  }
+  })(jQuery);
 
 
 // return video node contents for popup on map page

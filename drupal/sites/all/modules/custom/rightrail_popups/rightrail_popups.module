@@ -27,7 +27,7 @@ function rightrail_popups_menu() {
 function rightrail_popups_init() {
   $path = drupal_get_path('module', 'rightrail_popups');
   drupal_add_css($path . '/css/rightrail_popups.css', array('every_page' => TRUE));
-  drupal_add_js($path . '/modules/rightrail_popups/js/rightrail_popups.js', 'file');
+  drupal_add_js($path . '/js/rightrail_popups.js', 'file');
 }
 
 
