@@ -121,10 +121,14 @@ s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]',
     );
     $context->reactions = array(
         'omniture_reaction' => array(
-            'variables' => 's.prop14 = [tp_omniture:str_decode:{node:title}]
-            s.eVar14 = [tp_omniture:str_decode:{node:title}]
-            s.prop15 = [tp_omniture:get_first_photo_title:{node:nid}]
-            s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]',
+            'variables' => 's.events = event55
+            s.prop53 = [tp_omniture:str_decode:{node:title}]
+            s.eVar53 = [tp_omniture:str_decode:{node:title}]
+            s.prop55 = [tp_omniture:str_decode:{node:content-type}]
+            s.eVar55 = [tp_omniture:str_decode:{node:content-type}]
+            s.prop56 = [tp_omniture:value_or_empty:{node:field_display_tag}]
+            s.eVar56 = [tp_omniture:value_or_empty:{node:field_display_tag}]
+            ',
         ),
     );
     $context->condition_mode = 0;
@@ -134,7 +138,7 @@ s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]',
     t('Omniture');
     t('Variables to set on gallery pages.');
     $export['omniture_gallery'] = $context;
-// end gallery
+    // end action
 
     // Begin blog
     $context = new stdClass;
@@ -186,8 +190,7 @@ s.prop2 = [current-page:url-arg:1]',
     $context->reactions = array(
         'omniture_reaction' => array(
             'variables' => 's.events = event23,event33,event21
-s.eVar11 = Logged_In
-',
+s.eVar11 = Logged_In',
         ),
     );
     $context->condition_mode = 0;
