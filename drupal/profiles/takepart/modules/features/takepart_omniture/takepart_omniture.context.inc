@@ -98,6 +98,44 @@ s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]',
     t('Variables to set on gallery pages.');
     $export['omniture_gallery'] = $context;
 // end gallery
+
+    
+    // Begin action
+    $context = new stdClass;
+    $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+    $context->api_version = 3;
+    $context->name = 'omniture_gallery';
+    $context->description = 'Variables to set on gallery pages.';
+    $context->tag = 'Omniture';
+    $context->conditions = array(
+        'node' => array(
+            'values' => array(
+                'action' => 'action',
+                'pledge_action' => 'pledge_action',
+                'petition_action' => 'petition_action',
+            ),
+            'options' => array(
+                'node_form' => '0',
+            ),
+        ),
+    );
+    $context->reactions = array(
+        'omniture_reaction' => array(
+            'variables' => 's.prop14 = [tp_omniture:str_decode:{node:title}]
+            s.eVar14 = [tp_omniture:str_decode:{node:title}]
+            s.prop15 = [tp_omniture:get_first_photo_title:{node:nid}]
+            s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]',
+        ),
+    );
+    $context->condition_mode = 0;
+
+    // Translatables
+    // Included for use with string extractors like potx.
+    t('Omniture');
+    t('Variables to set on gallery pages.');
+    $export['omniture_gallery'] = $context;
+// end gallery
+
     // Begin blog
     $context = new stdClass;
     $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
