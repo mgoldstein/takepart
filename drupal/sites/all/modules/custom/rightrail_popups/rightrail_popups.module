@@ -27,6 +27,7 @@ function rightrail_popups_menu() {
 function rightrail_popups_init() {
   $path = drupal_get_path('module', 'rightrail_popups');
   drupal_add_css($path . '/css/rightrail_popups.css', array('every_page' => TRUE));
+  drupal_add_js($path . '/js/rightrail_popups.js', 'file');
 }
 
 
@@ -66,8 +67,8 @@ function rightrail_popups_boxes_box_load_alter(&$box, $delta) {
 
     // format the video for display in popup
     $fmt_pop = <<<EOT
-<div class="vidpop-popup right-rail" style="height: 360px; width: 640px;">
-  <iframe width="640" height="360" frameborder="0" type="text/html" class="youtube-player" src="http://www.youtube.com/embed/$video_id?version=3&amp;wmode=opaque" style="height: 360px; width: 640px;"></iframe>
+<div class="vidpop-popup right-rail-vidpop" style="height: 360px; width: 640px;">
+  <iframe width="640" height="411" frameborder="0" type="text/html" class="youtube-player right-rail-vidpop-iframe" src="http://www.youtube.com/embed/$video_id?version=3&amp;wmode=opaque" style="height: 360px; width: 640px;"></iframe>
 </div>
 EOT;
 
