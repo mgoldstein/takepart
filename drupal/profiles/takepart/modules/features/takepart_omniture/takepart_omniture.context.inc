@@ -122,8 +122,8 @@ s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]',
     $context->reactions = array(
         'omniture_reaction' => array(
             'variables' => 's.events = event55
-s.prop53 = [tp_omniture:str_decode:{node:title}]
-s.eVar53 = [tp_omniture:str_decode:{node:title}]
+s.prop53 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]
+s.eVar53 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]
 s.prop54 = [tp_omniture:str_decode:{node:url}]
 s.eVar54 = [tp_omniture:str_decode:{node:url}]
 s.prop55 = [tp_omniture:str_decode:{node:content-type}]
