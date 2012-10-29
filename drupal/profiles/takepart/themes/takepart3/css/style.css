@@ -493,6 +493,25 @@ ul,ol
     color: #000;
 }
 
+#block-menu-block-1 li a:hover,
+#block-menu-block-1 li.dhtml-menu a:hover {
+    color: #FFF;
+}
+
+#block-menu-block-1 li.dhtml-menu a:hover,
+#block-menu-block-1 li.expanded a { 
+    background: #4eade7; 
+    background: -moz-linear-gradient(left, #4eade7 0%, #82ccf1 50%, #4eade7 100%); 
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#4eade7), color-stop(50%,#82ccf1), color-	stop(100%,#4eade7)); 
+    background: -webkit-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+    background: -o-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+    background: -ms-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4eade7', endColorstr='#4eade7',GradientType=1 );
+    background: linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+    display: block;
+    z-index: 1;
+}
+
 #block-menu-block-1 li.dhtml-menu > ul.menu li {
     padding:0;
     margin:0;
