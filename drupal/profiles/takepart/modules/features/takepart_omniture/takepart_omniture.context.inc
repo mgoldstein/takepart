@@ -104,8 +104,8 @@ s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]',
     $context = new stdClass;
     $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
     $context->api_version = 3;
-    $context->name = 'omniture_gallery';
-    $context->description = 'Variables to set on gallery pages.';
+    $context->name = 'omniture_action';
+    $context->description = 'Variables to set on action pages.';
     $context->tag = 'Omniture';
     $context->conditions = array(
         'node' => array(
@@ -122,13 +122,14 @@ s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]',
     $context->reactions = array(
         'omniture_reaction' => array(
             'variables' => 's.events = event55
-            s.prop53 = [tp_omniture:str_decode:{node:title}]
-            s.eVar53 = [tp_omniture:str_decode:{node:title}]
-            s.prop55 = [tp_omniture:str_decode:{node:content-type}]
-            s.eVar55 = [tp_omniture:str_decode:{node:content-type}]
-            s.prop56 = [tp_omniture:value_or_empty:{node:field_display_tag}]
-            s.eVar56 = [tp_omniture:value_or_empty:{node:field_display_tag}]
-            ',
+s.prop53 = [tp_omniture:str_decode:{node:title}]
+s.eVar53 = [tp_omniture:str_decode:{node:title}]
+s.prop54 = [tp_omniture:str_decode:{node:url}]
+s.eVar54 = [tp_omniture:str_decode:{node:url}]
+s.prop55 = [tp_omniture:str_decode:{node:content-type}]
+s.eVar55 = [tp_omniture:str_decode:{node:content-type}]
+s.prop56 = [tp_omniture:value_or_empty:{node:field_display_tag}]
+s.eVar56 = [tp_omniture:value_or_empty:{node:field_display_tag}]',
         ),
     );
     $context->condition_mode = 0;
@@ -136,8 +137,8 @@ s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]',
     // Translatables
     // Included for use with string extractors like potx.
     t('Omniture');
-    t('Variables to set on gallery pages.');
-    $export['omniture_gallery'] = $context;
+    t('Variables to set on action pages.');
+    $export['omniture_action'] = $context;
     // end action
 
     // Begin blog

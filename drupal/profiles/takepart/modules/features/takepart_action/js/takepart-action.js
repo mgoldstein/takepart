@@ -18,10 +18,10 @@
                         }
                     }
                     s.linkTrackVars="eVar28,eVar30,events";
-                    s.linkTrackEvents="event37, event19";
+                    s.linkTrackEvents="event37, event19, event56";
                     s.eVar28='tpaction';
                     s.eVar30='takepart:actions:' + $('h1.title').text();
-                    s.events='event37, event19';
+                    s.events='event37, event19, event56';
                     s.tl(this.href, 'o', 'Take Action Button Click');
                     $(this).addClass('action-taken');
                     $(this).children(":first").text('Action Taken');
