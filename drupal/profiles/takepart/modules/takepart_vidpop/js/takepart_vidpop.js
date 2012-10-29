@@ -101,11 +101,18 @@ function vidpop_loaded() {
   Drupal.behaviors.vidpopPopups = {
     attach: function (context, settings) {
       $('.vidpop-preview .colorbox-inline').live('click', (function(){
-        //alert('wait');
         $('#cboxWrapper').css('height', '425px');
         //alert(4);
         vidpopSource = 'node';
       }));
+
+      $('#capitalismTour td a').live('click', (function(){
+        $('#cboxWrapper').css('height', '425px');
+        //alert(5);
+        vidpopSource = 'rollins';
+      }));
+
+
 
       // resize popup, based on source
       $(document).bind('cbox_complete', function(){
@@ -117,8 +124,22 @@ function vidpop_loaded() {
           case 'rtrail':
             $('#cboxWrapper').css('height', '445px');
             break;
+          case 'rollins':
+            $('#cboxWrapper').css('height', '400px');
+            break;
         }
       });
+
+      // stop video from playing when colorbox closes by removing element
+      if ($.colorbox.length  && $()) {
+        var originalClose = $.colorbox.close;
+        $.colorbox.close = function(){
+          $('.vidpop-popup .leftside .vidmap div').remove();
+          // redisplay flash screen msg
+          $('.vidpop-popup .leftside .vidmap').html('loading map...');
+          originalClose();
+         };
+      }
     }
   }
   })(jQuery);

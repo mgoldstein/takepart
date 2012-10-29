@@ -9,7 +9,7 @@ define('TAKEPART_VIDPOP_DEFAULT_AD_ID', 'TP3_ROS_Leaderboard_728x90');
  */
 function takepart_vidpop_menu() {
   $items['admin/config/media/vidpop/settings'] = array(
-    'title' => 'Videop popup settings',
+    'title' => 'Video popup settings',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('takepart_vidpop_settings_form'),
     'access arguments' => array('access administration pages'),
@@ -17,8 +17,15 @@ function takepart_vidpop_menu() {
     'file' => 'takepart_vidpop.admin.inc',
   );
   $items['vidpop/mapembed/%'] = array(
-    'title' => 'Videop map callback',
+    'title' => 'Video map callback',
     'page callback' => 'takepart_vidpop_get_map_video',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['vidpop/map_details/%'] = array(
+    'title' => 'Video map callback to get details',
+    'page callback' => 'takepart_vidpop_get_map_details',
     'page arguments' => array(2),
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -350,6 +357,27 @@ function takepart_vidpop_get_map_video() {
   </div>
 </div>
 EOT;
+  }
+
+  print $output;
+  drupal_exit();
+}
+
+
+/***
+ * ajax callback to get map details
+ *
+ * arg is the nid
+ *
+ * url is /vidpop/mapembed/NID
+ */
+function takepart_vidpop_get_map_details() {
+  $nid = arg(2);
+  $node = node_load($nid);
+  $output = 'error reading node';
+  if ($node) {
+    $vnode = node_view($node);
+    $output = drupal_render($vnode['field_video_embedded']);
   }
 
   print $output;
