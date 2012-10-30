@@ -186,10 +186,7 @@ function takepart_vidpop_preprocess_node(&$vars, $hook) {
   if (!takepart_vidpop_mobile_browser()) {
     // we are on a non-mobile device; load hidden popups
     //
-    // see if this is the Rollins map page - be sure to test for correct node id
-    $map_nid = variable_get('takepart_vidpop_map_nid', 29655);
-    $tour_nid = variable_get('takepart_vidpop_tour_nid', 29661);
-    if (($vars['node']->nid  == $map_nid) || ($vars['node']->nid  == $tour_nid)) {
+    if (strstr($vars['node']->body['und'][0]['value'], 'VIDPOP=YES')) {
       // load the map popups
       takepart_vidpop_process_map_popups($vars['node']->body['und'][0]['value'], $vars);
     }
@@ -373,13 +370,34 @@ EOT;
  */
 function takepart_vidpop_get_map_details() {
   $nid = arg(2);
-  $node = node_load($nid);
   $output = 'error reading node';
-  if ($node) {
-    $vnode = node_view($node);
-    $output = drupal_render($vnode['field_video_embedded']);
+  $cached_output = &drupal_static(__FUNCTION__);
+  if (!isset($cached_output)) {
+    if ($cache = cache_get('vidpop_map_data')) {
+      $cached_output = $cache->data;
+    }
+    else {
+      // create and save the cache
+      cache_set('vidpop_map_data', $cached_output, 'cache');
+    }
   }
 
+  // do we have the data from a previous request?
+  if (!isset($cached_output[$nid])) {
+    // no data, get it
+    $node = node_load($nid);
+    if ($node) {
+      $vnode = node_view($node);
+      $cached_output[$nid] = drupal_render($vnode['field_video_embedded']);
+      // update the cache
+      cache_set('vidpop_map_data', $cached_output, 'cache');
+    }
+    else {
+      $output = __FUNCTION__ . ': could not cache nid ' . $nid;
+    }
+  }
+
+  $output = $cached_output[$nid];
   print $output;
   drupal_exit();
 }
