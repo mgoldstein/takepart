@@ -96,15 +96,6 @@ function takepart_omniture_token_info() {
         ),
     );
 
-    $info['tokens']['tp_omniture']['get_tab_uid'] = array(
-        'name' => t('Get TAB user ID'),
-        'description' => t('Retrieve the user\'s TAB ID, if set'),
-        'function' => array(
-            'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
-            'function' => "takepart_omniture_tab_uid",
-        ),
-    );
-
     return $info;
 }
 
