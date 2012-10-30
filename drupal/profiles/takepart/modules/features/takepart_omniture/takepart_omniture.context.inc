@@ -130,8 +130,10 @@ s.prop55 = [tp_omniture:str_decode:{node:content-type}]
 s.eVar55 = [tp_omniture:str_decode:{node:content-type}]
 s.prop56 = [tp_omniture:value_or_empty:{node:field_display_tag}]
 s.eVar56 = [tp_omniture:value_or_empty:{node:field_display_tag}]
+s.eVar58 = [tp_omniture:get_tab_uid]
+s.prop58 = [tp_omniture:get_tab_uid]
 s.prop66 = Action Page View
-s.prop67 = akepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]',
+s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]',
         ),
     );
     $context->condition_mode = 0;

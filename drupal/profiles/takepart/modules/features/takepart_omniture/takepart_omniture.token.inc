@@ -5,15 +5,6 @@ function takepart_omniture_token_info() {
         'name' => t('TakePart Omniture'),
         'description' => t("Tokens used for setting omniture variables"),
     );
-    $info['tokens']['tp_omniture']['test'] = array(
-        'name' => t('Test'),
-        'description' => t("Returns the first part sub folder of the url"),
-        'dynamic' => TRUE,
-        'function' => array(
-            'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
-            'function' => "takepart_omniture_test",
-        ),
-    );
     $info['tokens']['tp_omniture']['value_or_empty'] = array(
         'name' => t('Value or Empty'),
         'description' => t("Returns the token or empty string"),
@@ -83,12 +74,28 @@ function takepart_omniture_token_info() {
         ),
     );
 
+    $info['tokens']['tp_omniture']['get_tab_uid'] = array(
+        'name' => t('Get TAB user ID'),
+        'description' => t('Retrieve the user\'s TAB ID, if set'),
+        'function' => array(
+            'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+            'function' => "takepart_omniture_tab_uid",
+        ),
+    );
+
     return $info;
 }
 
-function takepart_omniture_test($param) {
-    $test = $param;
-    return "$param -> baseball '$test' baseball";
+function takepart_omniture_tab_uid() {
+    // require_once(drupal_get_path("module", "takeaction") . "/takeaction_tracking/takeaction_tracking.module");
+    /*
+    $tab_uid = takeaction_tracking_get_guid();
+    if ($tab_uid) {
+        return $tab_uid;
+    } else {
+        return "";
+    }
+     */
 }
 
 function takepart_omniture_value_or_empty($param) {
