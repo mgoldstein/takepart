@@ -84,8 +84,28 @@ function takepart_vidpop_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['vidpop/path_alias/%'] = array(
+    'page callback' => 'takepart_vidpop_get_path_alias',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
 
   return $items;
+}
+
+
+/***
+ * @return: path alias of node, nid is arg2
+ *
+ * called from vidpop/path_alias/%
+ */
+function takepart_vidpop_get_path_alias() {
+  $nid = arg(2);
+  $data = base_path() . drupal_get_path_alias('node/' .  $nid);
+  drupal_json_output($data);
+
+  drupal_exit();
 }
 
 
@@ -96,7 +116,7 @@ function takepart_vidpop_menu() {
  * @param $vars   variables from node preprocessing
  *                $vars['field_video_embedded'] contains the embedded video
  *
- * uses image style tp_embed_video_thumb to create a 420x315 image
+ * uses image style tp_embed_video_thumb to create a 420x315drupal_get_path_alias('node/' .  $nid) image
  *
  */
 function takepart_vidpop_format_preview($uri, $vars) {
