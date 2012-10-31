@@ -131,6 +131,8 @@ function signature_schema() {
     'primary key' => array('id'),
     'indexes' => array(
       'type' => array('type'),
+      'email' => array('email'),
+      'email_and_nid' => array('email', 'nid'),
     ),
   );
 
@@ -327,4 +329,12 @@ function signature_update_7101(&$sandbox) {
   // Drop the old newsletter opt-in fields.
   db_drop_field('signature_node', 'newsletter_label');
   db_drop_field('signature_node', 'newsletter_group');
+}
+
+/**
+ * Add email and email + nid indices to the signature table.
+ */
+function signature_update_7102(&$sandbox) {
+  db_add_index('signature', 'email', array('email'));
+  db_add_index('signature', 'email_and_nid', array('email', 'nid'));
 }
