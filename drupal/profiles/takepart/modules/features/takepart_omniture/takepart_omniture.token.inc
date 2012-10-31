@@ -5,7 +5,7 @@ function takepart_omniture_token_info() {
         'name' => t('TakePart Omniture'),
         'description' => t("Tokens used for setting omniture variables"),
     );
-    
+
     $info['tokens']['tp_omniture']['value_or_empty'] = array(
         'name' => t('Value or Empty'),
         'description' => t("Returns the token or empty string"),
@@ -90,16 +90,71 @@ function takepart_omniture_token_info() {
 }
 
 function takepart_omniture_tab_uid($param) {
-    // require_once(drupal_get_path("module", "takeaction") . "/modules/takeaction_tracking/takeaction_tracking.module");
-    /*
-      $tab_uid = takeaction_tracking_get_guid();
-      if ($tab_uid) {
-      return $tab_uid;
-      } else {
-      return "";
-      }
-     */
-    return 'TAB UID';
+    $guid = FALSE;
+    $from_db = FALSE;
+
+    $cookie = variable_get('takeaction_action_cookie_name', 'TAKEACTIONGUID');
+    $lifespan = variable_get('takeaction_action_cookie_lifespan', 0);
+    $expire = empty($lifespan) ? 0 : time() + $lifespan;
+    $path = variable_get('takeaction_action_cookie_path', '/');
+    $domain = variable_get('takeaction_action_cookie_domain', '.takepart.com');
+
+    // Check for a GUID tied to a logged in user.
+    if (!empty($param)) {
+        try {
+            $result = db_select('takeaction_tracking_action_guid', 'g')
+                    ->fields('g', array('uid', 'guid'))
+                    ->condition('g.uid', $param, '=')
+                    ->execute()
+                    ->fetchAllKeyed();
+            if (!empty($result)) {
+                $guid = $result[$param];
+                $from_db = TRUE;
+                setcookie($cookie, $guid, $expire, $path, $domain);
+            }
+        } catch (Exception $e) {
+            watchdog('takepart_omniture', 'Message: ' . $e->getMessage());
+        }
+    }
+
+    // Check for an already set cookie.
+    if (empty($guid) && !empty($_COOKIE[$cookie])) {
+        $regex = '/^[0-9A-F]{8}(\-[0-9A-F]{4}){3}\-[0-9A-F]{12}$/';
+        if (preg_match($regex, $_COOKIE[$cookie])) {
+            $guid = $_COOKIE[$cookie];
+        }
+    }
+
+    // If we still don't have a GUID generate one and set it.
+    if (empty($guid)) {
+        mt_srand((double) microtime() * 10000);
+        $hash = strtoupper(md5(uniqid(rand(), TRUE)));
+        $guid = implode('-', array(
+            substr($hash, 0, 8),
+            substr($hash, 8, 4),
+            substr($hash, 12, 4),
+            substr($hash, 16, 4),
+            substr($hash, 20, 12),
+                ));
+        setcookie($cookie, $guid, $expire, $path, $domain);
+    }
+
+    // Tie the action GUID to the UID if it isn't already tied.
+    if (!empty($param) && !$from_db) {
+        try {
+            db_insert('takeaction_tracking_action_guid')
+                    ->fields(array(
+                        'uid' => $param,
+                        'guid' => $guid,
+                        'created' => time(),
+                    ))
+                    ->execute();
+        } catch (Exception $e) {
+            watchdog('takepart_omniture', 'Message: ' . $e->getMessage());
+        }
+    }
+
+    return $guid;
 }
 
 function takepart_omniture_value_or_empty($param) {
