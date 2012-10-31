@@ -1,0 +1,104 @@
+<?php
+
+
+/**
+ * Implements hook_menu().
+ */
+function rightrail_popups_menu() {
+  $items['admin/config/media/vidpop/settings'] = array(
+    'title' => 'Videop popup settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_vidpop_settings_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'takepart_vidpop.admin.inc',
+  );
+
+  return $items;
+}
+
+
+/***
+ * Implementationof hook_init()
+ *
+ * creates global js var detected_mobile_browser
+ *
+ */
+function rightrail_popups_init() {
+  $path = drupal_get_path('module', 'rightrail_popups');
+  drupal_add_css($path . '/css/rightrail_popups.css', array('every_page' => TRUE));
+  drupal_add_js($path . '/js/rightrail_popups.js', 'file');
+}
+
+
+/***
+ * Implementation of hook_init()
+ *
+ */
+function rightrail_popups_preprocess_block(&$variables) {
+  if ($variables['block']->region == 'sidebar_second') {
+    $a = 1;
+  }
+
+  return;
+}
+
+function rightrail_popups_boxes_box_load_alter(&$box, $delta) {
+  if ($box->options['additional_classes'] == 'video-popup') {
+    // get the id of the video
+    // pattern like www.youtube.com/embed/Mew33kt7D6c
+    $body = $box->options['body'];
+    preg_match("/www.youtube.com\/embed\/([^\"]+)\"/", $body, $res);
+    $video_id = $res[1];
+
+    // prepare popup vars
+    if (variable_get('takepart_vidpop_banners_enabled', false)) {
+      // get the ad banner
+      $top_banner = takepart_vidpop_get_banner();
+      // get the logo to the left of the ad banner
+      $banner_tp_logo = theme('image', array(
+          'path' => drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop/css/images/TP_modal_icon.png',
+          'width' => '58px',
+          'height' => '58px',
+          'title' => 'Takepart',
+        )
+      );
+    }
+
+    // format the video for display in popup
+    $fmt_pop = <<<EOT
+<div class="vidpop-popup right-rail-vidpop" style="height: 360px; width: 640px;">
+  <iframe width="640" height="411" frameborder="0" type="text/html" class="youtube-player right-rail-vidpop-iframe" src="http://www.youtube.com/embed/$video_id?version=3&amp;wmode=opaque" style="height: 360px; width: 640px;"></iframe>
+</div>
+EOT;
+
+    $popup = theme('rightrail_video_popup', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_top_banner' => $top_banner, 'p_banner_tp_logo' => $banner_tp_logo, 'p_fmt_pop' => $fmt_pop));
+
+    // replace box contents with preview
+    $preview = theme('rightrail_video_preview', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_popup' => $popup));
+    $box->options['body'] = $preview;
+  }
+}
+
+/**
+ * Implement hook_theme().
+ *
+ * This one is used as the base to reduce errors when updating.
+ */
+function rightrail_popups_theme() {
+  $template_path = drupal_get_path('module', 'rightrail_popups') . '/theme';
+
+  return array(
+    'rightrail_video_preview' => array(
+      'path'      => $template_path,
+      'template'  => 'rightrail-video-preview',
+      'variables' => array('p_title' => NULL, 'p_video_id' => NULL, 'p_body' => NULL),
+    ),
+    'rightrail_video_popup' => array(
+      'path'      => $template_path,
+      'template'  => 'rightrail-video-popup',
+      'variables' => array('p_title' => NULL, 'p_video_id' => NULL, 'p_popup' => NULL, 'p_fmt_pop' => NULL),
+    ),
+  );
+}
+

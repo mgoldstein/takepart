@@ -16,34 +16,21 @@
 function takepart_vidpop_settings_form($form) {
   $form['takepart_vidpop_ads'] = array(
     '#type'          => 'fieldset',
-    '#title'         => t('Ads'),
+    '#title'         => t('Ad Banners'),
     '#collapsible'   => TRUE,
     '#collapsed'     => FALSE,
+  );
+  $form['takepart_vidpop_ads']['takepart_vidpop_banners_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Ad banners enabled on video popups'),
+    '#default_value' => variable_get('takepart_vidpop_banners_enabled', false),
+    '#description' => t('Display ad banners and logo on video popups as top row.'),
   );
   $form['takepart_vidpop_ads']['takepart_vidpop_ad_id'] = array(
     '#type' => 'textfield',
     '#title' => t('Ad slot ID for vidpop'),
     '#default_value' => variable_get('takepart_vidpop_ad_id', TAKEPART_VIDPOP_DEFAULT_AD_ID),
     '#description' => t('ID of ad to use for vidpop.'),
-  );
-
-  $form['takepart_vidpop_map'] = array(
-    '#type'          => 'fieldset',
-    '#title'         => t('Map settings'),
-    '#collapsible'   => TRUE,
-    '#collapsed'     => FALSE,
-  );
-  $form['takepart_vidpop_map']['takepart_vidpop_map_nid'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Node ID for vidpop Rollins map page'),
-    '#default_value' => variable_get('takepart_vidpop_map_nid', 27693),
-    '#description' => t('Enter the nid of the page containing the map with video popups.'),
-  );
-  $form['takepart_vidpop_map']['takepart_vidpop_tour_nid'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Node ID for vidpop Rollins tour page'),
-    '#default_value' => variable_get('takepart_vidpop_tour_nid', 27693),
-    '#description' => t('Enter the nid of the page containing the tour schedule with video popups.'),
   );
 
   return system_settings_form($form);

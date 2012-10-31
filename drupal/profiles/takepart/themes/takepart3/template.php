@@ -72,66 +72,68 @@ function takepart3_preprocess_html(&$vars) {
 }
 
 function takepart3_preprocess_page(&$variables) {
-    _tp3_fill_template_vars($variables);
+  _tp3_fill_template_vars($variables);
 
-  if ($variables['node']->title == "Contact Us") {
-        // #18868    pglatz 7/10/2012
-        // save referrer URL to track in webform
-        // it is saved as $_COOKIE['Drupal_visitor_webform_referrer']
-        user_cookie_save(array('webform_referrer' => $_SERVER['HTTP_REFERER']));
+  if (isset($variables['node'])) {
+    if ($variables['node']->title == "Contact Us") {
+      // #18868    pglatz 7/10/2012
+      // save referrer URL to track in webform
+      // it is saved as $_COOKIE['Drupal_visitor_webform_referrer']
+      user_cookie_save(array('webform_referrer' => $_SERVER['HTTP_REFERER']));
+    }
+  }
+
+  $variables['is_multipage'] = FALSE;
+  $variables['multipage_class'] = '';
+
+  // Adds page template suggestions for specific content types
+  if (isset($variables['node'])) {
+    $variables['theme_hook_suggestions'][] = 'page__type__' . $variables['node']->type;
+
+    if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
+      $variables['is_multipage'] = TRUE;
+      context_set('takepart3_page', 'campaign_is_multipage', TRUE);
+      $variables['multipage_class'] = 'page-multipage'; // although this is not needed because the context set the body class itself
     }
 
-    $variables['is_multipage'] = FALSE;
-    $variables['multipage_class'] = '';
-
-    // Adds page template suggestions for specific content types
-    if (isset($variables['node'])) {
-        $variables['theme_hook_suggestions'][] = 'page__type__' . $variables['node']->type;
-
-        if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
-            $variables['is_multipage'] = TRUE;
-            context_set('takepart3_page', 'campaign_is_multipage', TRUE);
-            $variables['multipage_class'] = 'page-multipage'; // although this is not needed because the context set the body class itself
-        }
-
-        if ($variables['node']->type == 'takepart_campaign') {
-            if (!empty($variables['node']->field_tp_campaign_show_title[$variables['node']->language][0]['value'])) {
-                unset($variables['page']['highlighted']['takepart_custom_page_title_h1']);
-            }
-        }
-
-        if ($variables['node']->type == 'venue') {
-            $variables['is_multipage'] = TRUE;
-        }
-
+    if ($variables['node']->type == 'takepart_campaign') {
+      if (!empty($variables['node']->field_tp_campaign_show_title[$variables['node']->language][0]['value'])) {
+        unset($variables['page']['highlighted']['takepart_custom_page_title_h1']);
+      }
     }
 
-    $status = drupal_get_http_header('status');
-    $status_code = explode(' ', $status);
-    if ($status_code[0] == '403') {
-        unset($variables['page']['sidebar_second']);
+    if ($variables['node']->type == 'venue') {
+      $variables['is_multipage'] = TRUE;
     }
 
-    $variables['header'] = _render_tp3_header($variables);
-    $variables['footer'] = _render_tp3_footer($variables);
+  }
 
-    //if shares don't exists in the left sidebar, add them to the top:
-    //so much for consistent design ...
-    /*
-      if($variables['node']->type == 'takepart_campaign') {
-      if($variables['page']['sidebar_first']) {
-      if (!array_key_exists('takepart_addthis_addthis_full', $variables['page']['sidebar_first'])) {
-      if ((array_key_exists('highlighted', $variables['page'])) && (!array_key_exists('takepart_addthis_addthis_simple', $variables['page']['highlighted']))) {
-      $block = block_load('takepart_addthis', 'addthis_simple');
-      $addthisblock = array();
-      $addthisblock['takepart_addthis_addthis_simple'] = (_block_get_renderable_array(_block_render_blocks(array($block))));
-      array_unshift($variables['page']['highlighted'], $addthisblock);
-      }
-      }
-      }
-      } */
+  $status = drupal_get_http_header('status');
+  $status_code = explode(' ', $status);
+  if ($status_code[0] == '403') {
+    unset($variables['page']['sidebar_second']);
+  }
 
-    return $variables;
+  $variables['header'] = _render_tp3_header($variables);
+  $variables['footer'] = _render_tp3_footer($variables);
+
+  //if shares don't exists in the left sidebar, add them to the top:
+  //so much for consistent design ...
+  /*
+ if($variables['node']->type == 'takepart_campaign') {
+ if($variables['page']['sidebar_first']) {
+ if (!array_key_exists('takepart_addthis_addthis_full', $variables['page']['sidebar_first'])) {
+ if ((array_key_exists('highlighted', $variables['page'])) && (!array_key_exists('takepart_addthis_addthis_simple', $variables['page']['highlighted']))) {
+ $block = block_load('takepart_addthis', 'addthis_simple');
+ $addthisblock = array();
+ $addthisblock['takepart_addthis_addthis_simple'] = (_block_get_renderable_array(_block_render_blocks(array($block))));
+ array_unshift($variables['page']['highlighted'], $addthisblock);
+ }
+ }
+ }
+ } */
+
+  return $variables;
 }
 
 /**
@@ -518,6 +520,7 @@ function takepart3_preprocess_node(&$vars, $hook) {
         }
 
         if ($use_popup) {
+          $GLOBALS['has_vidpop'] = 1;
             // suggest a theme
             $vars['theme_hook_suggestions'][] = "node__video_embed";
 
@@ -533,7 +536,11 @@ function takepart3_preprocess_node(&$vars, $hook) {
             $vars['classes_array'][] = 'vidpop-embedded';
 
             // add ad click call
-            drupal_add_js('jQuery(document).ready(function () { vidpop_loaded(); });', 'inline');
+            static $vp_js_added;
+            if (!isset($vp_js_added)) {
+              drupal_add_js('jQuery(document).ready(function () { vidpop_loaded(); });', 'inline');
+              $vp_js_added = 1;
+            }
         }
     }
 
