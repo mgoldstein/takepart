@@ -81,13 +81,12 @@ div.gray-rule {
 }
 /*slim header navigation*/
 #slim-header ul.menu li {
-    float: none;
     float: left;
     font-family: 'TradeGothicLTStdCnBold';
     font-size: 15px;
     text-transform: uppercase;
     font-weight: normal;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
     list-style-type: none;
     text-align: center;
     padding: 8px 0 0 0;
@@ -95,8 +94,8 @@ div.gray-rule {
 #slim-header ul.menu li a {
     background: none;
     color: #000;
-    background: url(../images/dot-bbg.png) no-repeat 0 7px;
-    padding: 0 5px 0 12px;
+    background: url('../images/dot-bbg.png') no-repeat 0 7px;
+    padding: 0 7px 0 12px;
     white-space:nowrap;
 }
 #slim-header ul.menu li.first a {
@@ -445,6 +444,15 @@ ul,ol
     float:right;
 }
 
+#block-menu-block-1 {
+    padding: 4px 0 0;
+    float: left;
+    height: 30px;
+    width: 675px;
+    overflow: hidden;
+}
+
+
 /*top menu fonts*/
 #block-menu-block-1 li
 {
@@ -452,11 +460,10 @@ ul,ol
     font-family:TradeGothicLTStdCnBold;
     list-style-type:none;
     list-style-image:none;
-    letter-spacing:.05em;
+    letter-spacing:.02em;
     text-align:left;
-    font-size:22px;
+    font-size:20px;
     text-transform:uppercase;
-    font-weight:400;
     margin:0;
     padding:0;
 }
@@ -476,6 +483,43 @@ ul,ol
 {
     margin-right:5px;
     height: 30px;
+}
+
+#block-menu-block-1 li.dhtml-menu a {
+    display: block;
+    padding: 2px 7px;
+    text-decoration: none;
+    background: #FFF;
+    color: #000;
+}
+
+#block-menu-block-1 li a:hover,
+#block-menu-block-1 li.dhtml-menu a:hover {
+    color: #FFF;
+}
+
+#block-menu-block-1 li.dhtml-menu a:hover,
+#block-menu-block-1 li.expanded a { 
+    background: #4eade7; 
+    background: -moz-linear-gradient(left, #4eade7 0%, #82ccf1 50%, #4eade7 100%); 
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#4eade7), color-stop(50%,#82ccf1), color-	stop(100%,#4eade7)); 
+    background: -webkit-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+    background: -o-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+    background: -ms-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4eade7', endColorstr='#4eade7',GradientType=1 );
+    background: linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+    display: block;
+    z-index: 1;
+}
+
+#block-menu-block-1 li.dhtml-menu > ul.menu li {
+    padding:0;
+    margin:0;
+}
+
+#block-menu-block-1 li ul {
+    position: absolute;
+    z-index: 1000;
 }
 
 .views-field-field-slide-headline-override .field-content ul.dots li
@@ -805,6 +849,10 @@ ul#top-follow li.pinterest img {
 
 #slim-header {
     background-color: #d9e8ef;
+    height:36px;
+    position:relative;
+    margin: 0 0 30px 0;
+    padding-right: 5px;
 }
 
 #slim-header #join-login-top
@@ -817,8 +865,9 @@ ul#top-follow li.pinterest img {
 #slim-header #nav-wrap {
     background: none;
     float: left;
-    min-width: 500px;
+    width: 540px;
     margin-left: 50px;
+    overflow: hidden;
 }
 
 /* ===PAGE FOOTER=== */
@@ -1650,11 +1699,6 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
 
 }
 
-#block-menu-block-1 li.dhtml-menu > ul.menu li {
-    padding:0;
-    margin:0;
-}
-
 body.multipage-campaign li.dhtml-menu > ul.menu {
     position: absolute;
     z-index: 1000;
@@ -1756,11 +1800,11 @@ body.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
     z-index: 10 !important;
     width: 200px;
     height: 30px;
-    background: url(images/participant_dropdown.png) no-repeat;
+    background: transparent url("images/participant_dropdown.png") repeat-y scroll 0 0;
     cursor: pointer;
 }
 .pp-button-hover {
-    background: url(images/participant_dropdown_hover.png) no-repeat !important;
+    background: transparent url("images/participant_dropdown_hover.png") repeat-y scroll 0 0 !important;
 }
 #participant-pulldown .inner {
     position: relative;
@@ -2133,10 +2177,6 @@ div.tp-pet-thank-you-heading {
     padding:0;
 }
 
-#block-menu-block-1 {
-    padding-top:4px;
-    float:  left;
-}
 #header-wrapper ul.menu {
     padding-top: 0px;
 }

@@ -226,18 +226,7 @@ ul#top-follow li.rss a {
     list-style-type: none;
 }
 
-#block-menu-block-1 li.dhtml-menu a {
-    display: block;
-    padding: 0 7px;
-    text-decoration: none;
-    background: #FFF;
-    color: #000;
-}
 
-#block-menu-block-1 li ul {
-    position: absolute;
-    z-index: 1000;
-}
 
 /* Slim header */
 #slim-header ul#top-nav {
@@ -260,23 +249,7 @@ ul#top-follow li.rss a {
 
 #block-menu-block-1 li.collapsed, #block-menu-block-1 li.collapsed a{
     display: block;
-}
-
-#block-menu-block-1 li.expanded ul.menu li a {font-size:16px;font-weight:bold; padding:6px 12px;}
-#block-menu-block-1 li a:hover {color: #FFF;}
-#block-menu-block-1 li.dhtml-menu a:hover,
-#block-menu-block-1 li.expanded a
-{/*this should be enough */
-    background: #4eade7; 
-    background: -moz-linear-gradient(left, #4eade7 0%, #82ccf1 50%, #4eade7 100%); 
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#4eade7), color-stop(50%,#82ccf1), color-	stop(100%,#4eade7)); 
-    background: -webkit-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
-    sbackground: -o-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
-    background: -ms-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4eade7', endColorstr='#4eade7',GradientType=1 );
-    background: linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
-    display: block;
-    z-index: 1;
+    height: 30px;
 }
 
 #slim-header #nav-wrap li.expanded ul.menu li a {font-weight:bold}
@@ -288,7 +261,7 @@ ul#top-follow li.rss a {
     background: -moz-linear-gradient(left, #4eade7 0%, #82ccf1 50%, #4eade7 100%); 
     background: -webkit-gradient(linear, left top, right top, color-stop(0%,#4eade7), color-stop(50%,#82ccf1), color- stop(100%,#4eade7)); 
     background: -webkit-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
-    sbackground: -o-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+    background: -o-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
     background: -ms-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4eade7', endColorstr='#4eade7',GradientType=1 );
     background: linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
@@ -816,7 +789,7 @@ ul#soc-links li {
 ul#soc-links li#twitter a {
     background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
 }
-\
+
 /****** Boxes ******/
 .contextual-links-region {
     margin-bottom: 15px;
@@ -2499,10 +2472,6 @@ div.messages a:visited {
 /*
  * Slim header on campaigns
 */
-#slim-header {
-    position:relative;
-    margin: 0 0 30px 0;
-}
 
 .campaign-multipage #slim-header {
     position:relative;
@@ -2614,11 +2583,6 @@ div.messages a:visited {
 
 .campaign-multipage #slim-header ul.menu li a {
     background: none repeat scroll 0 0 transparent;
-}
-
-#slim-header {
-    background-color: #d9e8ef;
-    height:36px;
 }
 
 #slim-header ul#top-follow li.title {
@@ -3390,9 +3354,7 @@ body.page-taxonomy-term h1{
     background:url('../images/videobutton.png') no-repeat 0 0;
     width:121px;
     height:121px;
-
-
-    zoom:1; *display: inline; _height: 121px;
+    zoom:1; 
 }
 
 /* more generic featured video CSS: Added to the views display(featured); in Format >> format >> settings: custom class:'featured-video' 
@@ -3412,7 +3374,7 @@ body.page-taxonomy-term h1{
     background:url('../images/videobutton.png') no-repeat 0 0;
     width:121px;
     height:121px;
-    zoom:1; *display: inline; _height: 121px;
+    zoom:1;
 }
 
 /* Video Node */
@@ -3499,15 +3461,7 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     margin:0;
 }
 
-
-/* why was this needed? removed because generated fb#17246
-https://takepart1.fogbugz.com/default.asp?17246#bugeventBody_109414
-.drupal-embed .embed-action-wrapper{
-        width:420px;
-}*/
-
 /**   video blocks **/
-
 #block-views-video-block-6 .content {
     border-top: 1px dotted #000000;
     padding-bottom: 20px;
