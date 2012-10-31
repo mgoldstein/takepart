@@ -10,11 +10,11 @@
 function embedaction_entity_info_alter(&$entity_info) {
   // Add an embedded view mode for nodes.
   $entity_info['node']['view modes']['embedaction'] = array(
-    'label' => t('Embedded Action (Collapsed)'),
+    'label' => t('Embedded Petition/Pledge (Collapsed)'),
     'custom settings' => FALSE,
   );
   $entity_info['node']['view modes']['embedaction_expanded'] = array(
-    'label' => t('Embedded Action (Expanded)'),
+    'label' => t('Embedded Petition/Pledge (Expanded)'),
     'custom settings' => FALSE,
   );
 }
