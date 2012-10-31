@@ -387,7 +387,7 @@ function _render_tp3_film_campaign_menu_piped() {
 
 
 // so we need to render the menus as follows,
-// order from top to bottom, but distribute evenly from left 
+// order from top to bottom, but distribute evenly from left
 // to right.
 function _render_menu_columns($menu_key, $col_limit) {
     $menu_data = _tp_menu_tree_data($menu_key);
@@ -429,29 +429,29 @@ function _render_menu_columns($menu_key, $col_limit) {
 
 function _render_footer_links_menu_as_piped($menu_key) {
   $menu_data = _tp_menu_tree_data($menu_key);
-  
+
   $uri = drupal_get_path_alias($_GET['q']);
   $uri = substr($uri, 0, 14);
-   
+
   $total_items = count($menu_data);
   $x = 0;
-  
+
    foreach ($menu_data as $menu_item) {
-     
+
      $x++;
-     
+
      $opts = array('attributes' => _default_menu_options($menu_item));
      if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
        $opts['absolute'] = TRUE;
      }
-     
+
      $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
      if($x < $total_items) {
       $columns[$column_idx][] =  $link . " | ";
      } else {
        $columns[$column_idx][] =  $link ;
      }
-     
+
   }
 
   foreach ($columns as $col) {
@@ -1154,7 +1154,6 @@ function _render_tp3_wrapper_footer(&$params) {
  * Clears page, page bottom and top, fills custom section
  * with the header or footer depending on the path.
  */
-
 function _render_tp3_renderheaderfooterfeed(&$vars) {
     $uri = drupal_get_path_alias($_GET['q']);
     $uri = substr($uri, 0, 14);
@@ -1191,7 +1190,7 @@ function _render_tp3_bsd_wrapper(&$vars) {
   function takepart3_url_outbound_alter(&$path, &$options, $original_path) {
   $options['absolute'] = TRUE;
   }
- * 
+ *
  */
 
 /**
@@ -1249,7 +1248,6 @@ function takepart3_preprocess_views_view(&$vars) {
  * @return string
  *
  */
-
 function takepart3_pager_link($variables) {
     global $base_root;
 
@@ -1292,7 +1290,6 @@ function takepart3_pager_link($variables) {
             ));
         }
     }
-
 
     // additional code for prev/next
     if (count($query) == 0) {
@@ -1342,7 +1339,6 @@ function takepart3_pager_link($variables) {
  *
  * @param $head_elements
  */
-
 function takepart3_html_head_alter(&$head_elements) {
     // check for duplicate canonical links - if found,
     // use the one from takepart3_pager_link()
@@ -1364,4 +1360,3 @@ function takepart3_html_head_alter(&$head_elements) {
         unset($head_elements[$key]);
     }
 }
-
