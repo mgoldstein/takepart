@@ -193,50 +193,6 @@ function takepart_vidpop_preprocess_node(&$vars, $hook) {
   }
 }
 
-/**
- * Implements hook_menu().
- */
-function takepart_vidpop_menu() {
-  $items['admin/config/media/vidpop/settings'] = array(
-    'title' => 'Videop popup settings',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('takepart_vidpop_settings_form'),
-    'access arguments' => array('access administration pages'),
-    'type' => MENU_NORMAL_ITEM,
-    'file' => 'takepart_vidpop.admin.inc',
-  );
-  $items['vidpop/mapembed/%'] = array(
-    'title' => 'Videop map callback',
-    'page callback' => 'takepart_vidpop_get_map_video',
-    'page arguments' => array(2),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-  $items['vidpop/path_alias/%'] = array(
-    'page callback' => 'takepart_vidpop_get_path_alias',
-    'page arguments' => array(2),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-
-  return $items;
-}
-
-
-/***
- * @return: path alias of node, nid is arg2
- *
- * called from vidpop/path_alias/%
- */
-function takepart_vidpop_get_path_alias() {
-  $nid = arg(2);
-  $data = base_path() . drupal_get_path_alias('node/' .  $nid);
-  drupal_json_output($data);
-
-  drupal_exit();
-}
-
-
 /***
  * format image to look like a youtube video preview
  *
