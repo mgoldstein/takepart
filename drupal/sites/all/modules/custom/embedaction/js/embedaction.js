@@ -1,38 +1,103 @@
 (function ($) {
-  Drupal.behaviors.embedactionInit = {
+  var methods = {
+    // Set the default options and initialize the wrapper.
+    _create: function (options) {
+      this.options = $.extend({
+        'expanded': false
+      }, options);
+      if (methods.init) {
+        methods.init.apply(this);
+      }
+    },
+    // Bind the event handlers and set the initial state of the wrapper.
+    init: function () {
+      this.header = $('.embedaction-header', this.element);
+      this.header.bind('click.embedaction', {
+        container: this,
+        open: true
+      }, methods._click);
+      this.header.bind('mouseenter.embedaction', {
+        container: this,
+      }, methods._hover);
+      this.header.bind('mouseleave.embedaction', {
+        container: this,
+      }, methods._hover);
+      this.content = $('.embedaction-content', this.element);
+      $('.embedaction-divider > a', this.content).bind('click.embedaction', {
+        container: this,
+        open: false
+      }, methods._click);
+      this.options['expanded'] ? methods.expand.apply(this)
+        : methods.collapse.apply(this);
+    },
+    // Click handler (for expanding and collapsing the action).
+    _click: function(event) {
+      var container = event.data.container;
+      event.preventDefault();
+      event.data.open ?  methods.expand.apply(container)
+        : methods.collapse.apply(container);
+    },
+    // Hover handler for the action header.
+    _hover: function(event) {
+      var container = event.data.container;
+      var action = (event.type == "mouseenter" ? "add": "remove") + "Class";
+      container.header[action]("highlight");
+    },
+    // Expand and show the action.
+    expand: function () {
+      var self = this;
+      this.content.slideDown('fast', function() {
+        $('.embedaction-divider > a', self.content).show();
+      });
+    },
+    // Collapse and hide the action.
+    collapse: function () {
+      var self = this;
+      this.content.slideUp('fast', function() {
+        $('.embedaction-divider > a', self.content).hide();
+      });
+    },
+    // Destroy the wrapper and return the element back to its original state.
+    destroy: function() {
+      this.header.unbind('.embedaction');
+    }
+  };
+
+  $.fn.embedaction = function (method) {
+    if (methods[method]) {
+      // Cut off method name.
+      var args = Array.prototype.slice.call(arguments, 1);
+      // Call the method for each wrapper.
+      $(this).each(function () {
+        obj = $.data(this, 'embedaction');
+        methods[method].apply(obj, args);
+      });
+    }
+    else if (typeof method === 'object' || !method) {
+      // Create each wrapper.
+      var args = arguments;
+      $(this).each(function () {
+        obj = $(this);
+        obj.element = this;
+        $.data(this, 'embedaction', obj);
+        methods._create.apply(obj, args);
+      });
+    }
+    else {
+      $.error('Method ' + method + ' does not exist on embedaction objects.');
+    }
+    return this;
+  };
+})(jQuery);
+
+(function ($) {
+  Drupal.behaviors.embedaction = {
     attach: function (context, settings) {
-      $('div.embedaction-wrapper').once('embedaction-init', function () {
-        // Connect the 'Take Action' button and field promo headline
-        $('div.embedaction-button', this).click({wrapper: this}, function (event) {
-          var wrapper = event.data['wrapper'];
-          event.preventDefault();
-          $('div.embedaction-content:hidden', wrapper).slideDown('fast', function () {
-            $('h2.embedaction-divider > a', wrapper).show();
-          });
-        });
-        $('div.field-name-field-promo-headline', this).click({wrapper: this}, function (event) {
-          var wrapper = event.data['wrapper'];
-          event.preventDefault();
-          $('div.embedaction-content:hidden', wrapper).slideDown('fast', function () {
-            $('h2.embedaction-divider > a', wrapper).show();
-          });
-        });
-        $('div.embedaction-button', this).hover(function () {
-          $(this).closest('table').find('div.field-name-field-promo-headline').css('color', '#1ca9e7');
-        }, function () {
-          $(this).closest('table').find('div.field-name-field-promo-headline').css('color', '#000000');
-        });
-        // Connect the 'CLOSE' link
-        $('h2.embedaction-divider > a', this).click({wrapper: this}, function (event) {
-          var wrapper = event.data['wrapper'];
-          event.preventDefault();
-          $('div.embedaction-content', wrapper).slideUp('fast', function () {
-            $('h2.embedaction-divider > a', wrapper).hide();
-          });
-        });
-        // Set the initial state of the embedded action
-        $('h2.embedaction-divider > a', this).hide();
-        $('div.embedaction-content', this).hide();
+      $('.embedaction-wrapper.expanded').once('embedaction', function () {
+        $(this).embedaction({expanded: true});
+      });
+      $('.embedaction-wrapper.collapsed').once('embedaction', function () {
+        $(this).embedaction({expanded: false});
       });
     }
   }

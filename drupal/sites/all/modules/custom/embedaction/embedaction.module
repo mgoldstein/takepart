@@ -10,7 +10,11 @@
 function embedaction_entity_info_alter(&$entity_info) {
   // Add an embedded view mode for nodes.
   $entity_info['node']['view modes']['embedaction'] = array(
-    'label' => t('Embedded Action'),
+    'label' => t('Embedded Petition/Pledge (Collapsed)'),
+    'custom settings' => FALSE,
+  );
+  $entity_info['node']['view modes']['embedaction_expanded'] = array(
+    'label' => t('Embedded Petition/Pledge (Expanded)'),
     'custom settings' => FALSE,
   );
 }
@@ -20,15 +24,11 @@ function embedaction_entity_info_alter(&$entity_info) {
  */
 function embedaction_node_view_alter(&$build) {
   // Only the view mode provided by this module should be altered.
-  if ($build['#view_mode'] == 'embedaction') {
-    $node = $build['#node'];
-    // The node needs to be wrapped in a collapsible container.
-    if ($build['#view_mode'] == 'embedaction') {
-      if (!isset($build['#post_render'])) {
-        $build['#post_render'] = array();
-      }
-      $build['#post_render'][] = 'embedaction_wrap_node';
+  if ($build['#view_mode'] == 'embedaction' || $build['#view_mode'] == 'embedaction_expanded') {
+    if (!isset($build['#post_render'])) {
+      $build['#post_render'] = array();
     }
+    $build['#post_render'][] = 'embedaction_wrap_node';
   }
 }
 
@@ -45,17 +45,20 @@ function embedaction_wrap_node($markup, $element) {
   $content = field_view_field('node', $node, 'field_promo_headline', $display);
   $title = render($content);
 
+  $id = 'embedaction-wrapper-' . $node->nid;
+  $state = $element['#view_mode'] == 'embedaction_expanded'
+    ? 'expanded' : 'collapsed';
+  $classes = "{$state} embedaction-wrapper clearfix";
+
   $pieces = array(
-    '<div id="embeddaction-wrapper-' . $node->nid . '" class="embedaction-wrapper clearfix">',
+    '<div id="' . $id . '" class="' . $classes . '">',
     '<table class="embedaction-header clearfix"><tbody><tr>',
     '<td class="graphic"><div class="embedaction-button"></div></td>',
     '<td class="title">' . $title . '</td>',
     '</tr></tbody></table>',
     '<div class="embedaction-content clearfix">',
     '<h2 class="embedaction-divider">',
-    '<a href="#" style="display: none;">',
-    '<span>[x]</span>',
-    '</a>',
+    '<a href="#"><span>[x]</span></a>',
     '</h2>',
     $markup,
     '</div>',
