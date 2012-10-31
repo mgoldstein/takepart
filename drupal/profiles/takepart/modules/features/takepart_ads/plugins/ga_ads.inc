@@ -7,7 +7,6 @@ class boxes_ga_ad extends boxes_box {
       'ga_ad_slot' => '',
       'ga_ad_gpt_id' => '',
     );
-
   }
 
   public function options_form(&$form_state) {
@@ -37,12 +36,11 @@ class boxes_ga_ad extends boxes_box {
         '#title' => 'GPT ID',
         '#default_value' => $this->options['ga_ad_gpt_id'],
     );
-    
     return $form; 
   }  
 
   public function render() {
-    if(($slot = $this->options['ga_ad_slot']) &&
+    if( ($slot = $this->options['ga_ad_slot']) &&
        ($dpf = variable_get('takepart_ads_dfp_property_code', ''))
       ) {
       
@@ -55,8 +53,7 @@ class boxes_ga_ad extends boxes_box {
      //register the slot
      takepart_ads($slot);
      
-     if($gptid) {
-       
+     if ($gptid) {
        $adsize = substr( strrchr( $slot, '_' ), 1);
        $lr = explode("x", $adsize);
        
@@ -85,6 +82,5 @@ HTM;
       //'content' => $render_array,
     );
     }
-
   }
 }
