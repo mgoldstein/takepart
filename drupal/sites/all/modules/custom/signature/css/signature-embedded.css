@@ -25,19 +25,20 @@ div.horizontal-tabs-panes {
     margin-bottom: 0;
 }
 
-#content .embedaction-content a {
+.tastemakers.node-type-venue #content .embedaction-content a {
   color: #1686B7;
 }
-#content .embedaction-content .horizontal-tabs-list li.selected a,
-#content .embedaction-content .horizontal-tabs-list li.selected a:hover {
+.tastemakers.node-type-venue #content .embedaction-content .horizontal-tabs-list li.selected a,
+.tastemakers.node-type-venue #content .embedaction-content .horizontal-tabs-list li.selected a:hover {
   background: transparent;
 }
-#content .embedaction-content .horizontal-tabs-list li.selected a strong,
-#content .embedaction-content .horizontal-tabs-list li a strong {
+.tastemakers.node-type-venue #content .embedaction-content .horizontal-tabs-list li.selected a strong,
+.tastemakers.node-type-venue #content .embedaction-content .horizontal-tabs-list li a strong {
   color: #000;
   font-weight: normal;
 }
-#content .embedaction-content .horizontal-tabs-list li a {
+.tastemakers.node-type-venue #content .embedaction-content .horizontal-tabs-list li a,
+.tastemakers.node-type-venue #content .embedaction-content .horizontal-tabs-list li a:hover {
   -moz-box-shadow: 0 0 0; /* Firefox */
   -webkit-box-shadow: 0 0 0; /* Safari, Chrome */
   box-shadow: 0 0 0; /* CSS3 */
@@ -45,10 +46,10 @@ div.horizontal-tabs-panes {
   width: 100%;
   text-align: center;
 }
-#content .embedaction-content .horizontal-tabs-list li a:hover {
+.tastemakers.node-type-venue #content .embedaction-content .horizontal-tabs-list li a:hover {
   background: #fff;
 }
-#content .embedaction-content p {
+.tastemakers.node-type-venue #content .embedaction-content p {
   line-height: 24px;
 }
 
