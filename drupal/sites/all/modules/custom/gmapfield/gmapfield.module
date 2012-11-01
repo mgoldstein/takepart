@@ -242,6 +242,7 @@ tpmaps.initialize = function() {
 		           google.maps.event.addListener(marker, 'click', function() {
 		                    var infowindow = new google.maps.InfoWindow(
 		                            { content: html_popup,
+					       maxWidth: 420,
 		                              size: new google.maps.Size(50,50)
 		                            });
 		                    infowindow.open(tpmaps.map,marker);
