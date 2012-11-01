@@ -1,10 +1,10 @@
-Drupal.media_plupload = {};
-Drupal.media_plupload.popup = false;
-Drupal.media_plupload.fids = [];
+Drupal.media_views_widget_plupload = {};
+Drupal.media_views_widget_plupload.popup = false;
+Drupal.media_views_widget_plupload.fids = [];
 
 (function ($){
   Drupal.ajax.prototype.beforeSubmit = function (form_values, element, options) {
-    if (Drupal.media_plupload.popup) {
+    if (Drupal.media_views_widget_plupload.popup) {
       field_name = options.extraData._triggering_element_name.replace(/_add_more/, '');
       regex = new RegExp('^' + field_name + '\\[([a-z]+)\\]\\[(\\d+)\\]\\[fid\\]$');
       max = -1;
@@ -19,22 +19,22 @@ Drupal.media_plupload.fids = [];
          }
        }
       }
-      if (Drupal.media_plupload.fids.length > 0) {
-       form_values[max_id].value = Drupal.media_plupload.fids.pop();
+      if (Drupal.media_views_widget_plupload.fids.length > 0) {
+       form_values[max_id].value = Drupal.media_views_widget_plupload.fids.pop();
       }
-      for (i in Drupal.media_plupload.fids) {
+      for (i in Drupal.media_views_widget_plupload.fids) {
        max++;
-       form_values.push({name : field_name + '[' + lang + '][' + max + '][fid]', value : Drupal.media_plupload.fids[i]});
+       form_values.push({name : field_name + '[' + lang + '][' + max + '][fid]', value : Drupal.media_views_widget_plupload.fids[i]});
        form_values.push({name : field_name + '[' + lang + '][' + max + '][_weight]', value : max});
       }
-      Drupal.media_plupload.popup = false;
-      Drupal.media_plupload.fids = [];
+      Drupal.media_views_widget_plupload.popup = false;
+      Drupal.media_views_widget_plupload.fids = [];
     }
   }
 
-  Drupal.behaviors.media_plupload = {
+  Drupal.behaviors.media_views_widget_plupload = {
     attach : function (context, settings) {
-      $('.media_plupload_add_more', context).once('media_plupload', function () {
+      $('.media_views_widget_plupload_add_more', context).once('media_views_widget_plupload', function () {
         var addMoreButton = $(this).hide();
         var addMoreId = addMoreButton.attr('id');
         var id = addMoreId + '-plupload';
@@ -45,9 +45,9 @@ Drupal.media_plupload.fids = [];
         button.insertAfter(this).click(function () {
           Drupal.media.popups.mediaBrowser(function (mediaFiles) {
             for (i in mediaFiles) {
-              Drupal.media_plupload.fids.push(mediaFiles[i].fid);
+              Drupal.media_views_widget_plupload.fids.push(mediaFiles[i].fid);
             }
-            Drupal.media_plupload.popup = true;
+            Drupal.media_views_widget_plupload.popup = true;
             addMoreButton.trigger('mousedown');
           }, {multiselect : 'true'});
         });
