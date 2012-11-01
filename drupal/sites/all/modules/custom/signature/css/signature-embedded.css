@@ -25,6 +25,33 @@ div.horizontal-tabs-panes {
     margin-bottom: 0;
 }
 
+#content .embedaction-content a {
+  color: #1686B7;
+}
+#content .embedaction-content .horizontal-tabs-list li.selected a,
+#content .embedaction-content .horizontal-tabs-list li.selected a:hover {
+  background: transparent;
+}
+#content .embedaction-content .horizontal-tabs-list li.selected a strong,
+#content .embedaction-content .horizontal-tabs-list li a strong {
+  color: #000;
+  font-weight: normal;
+}
+#content .embedaction-content .horizontal-tabs-list li a {
+  -moz-box-shadow: 0 0 0; /* Firefox */
+  -webkit-box-shadow: 0 0 0; /* Safari, Chrome */
+  box-shadow: 0 0 0; /* CSS3 */
+  background: transparent;
+  width: 100%;
+  text-align: center;
+}
+#content .embedaction-content .horizontal-tabs-list li a:hover {
+  background: #fff;
+}
+#content .embedaction-content p {
+  line-height: 24px;
+}
+
 #content .horizontal-tabs ul.horizontal-tabs-list {
     background-color: transparent;
     border: 0 none;
@@ -90,6 +117,7 @@ div.horizontal-tabs-panes {
 }
 #content .node-petition-action .horizontal-tabs ul.horizontal-tabs-list li a {
     white-space: nowrap;
+    width: 100%;
 }
 #content .node-petition-action .horizontal-tabs ul.horizontal-tabs-list li a:hover {
     background-color: white;
