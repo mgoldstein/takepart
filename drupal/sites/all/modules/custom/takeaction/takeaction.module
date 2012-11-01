@@ -4,6 +4,8 @@
  * The TakeAction Button Integeration Module
  */
 
+include_once dirname(__FILE__) . '/include/takeaction.api.inc';
+
 /**
  * Implements hook_help().
  */
@@ -17,7 +19,7 @@ function takeaction_help($path, $arg) {
     $output .= '<dl>';
     $output .= '<dt>' . t('Configure global settings') . '</dt>';
     $output .= '<dd>';
-    $output .=  t('To configure the global settings visit the
+    $output .= t('To configure the global settings visit the
       <a href="@settings-config">Settings Configuration</a> page. On this page
       you can configure the information used to share user authentication and
       user state with the TakeAction Buttton system.',
@@ -62,7 +64,7 @@ function takeaction_permission() {
   return array(
     'takeaction configure settings' => array(
       'title' => t('Configure global settings'),
-      'descriptions' => t('Configure the TakeAction Button global settings.'),
+      'description' => t('Configure the TakeAction Button global settings.'),
       'restrict access' => TRUE,
     ),
   );
@@ -73,29 +75,192 @@ function takeaction_permission() {
  */
 function takeaction_admin_form($form, &$form_state) {
 
-  $form['takeaction_api_id'] = array(
-    '#type' => 'textfield',
-    '#title' => t('API ID'),
-    '#description' => t('API id for feed access protection'),
-    '#required' => TRUE,
-    '#default_value' => variable_get('takeaction_api_id', ''),
+  $form['session'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Session Sharing'),
+    '#description' => t('Settings for the session sharing cookie'),
+    '#tree' => FALSE,
   );
 
-  $form['takeaction_api_secret'] = array(
+  $form['session']['takeaction_session_cookie_name'] = array(
     '#type' => 'textfield',
-    '#title' => t('API Secret'),
-    '#description' => t('API secret shared by both ends'),
+    '#title' => t('Cookie Name'),
+    '#description' => t('The name of the session sharing cookie.'),
     '#required' => TRUE,
-    '#default_value' => variable_get('takeaction_api_secret', ''),
+    '#default_value' => variable_get('takeaction_session_cookie_name',
+      'TAKEACTIONSESSION'),
   );
 
-  $form['takeaction_dashboard_url'] = array(
+  $form['session']['takeaction_session_cookie_lifespan'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Cookie Lifespan'),
+    '#description' => t('The life span of the session sharing cookie in seconds.'),
+    '#required' => TRUE,
+    '#element_validate' => array('_element_validate_integer_positive'),
+    '#default_value' => variable_get('takeaction_session_cookie_lifespan',
+      60 * 60 * 24 * 30),
+  );
+
+  $form['session']['takeaction_session_cookie_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Cookie Path'),
+    '#description' => t('The access path of the session sharing cookie.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_session_cookie_path', '/'),
+  );
+
+  $form['session']['takeaction_session_cookie_domain'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Cookie Domain'),
+    '#description' => t('The domain of the session sharing cookie.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_session_cookie_domain',
+      '.takepart.com'),
+  );
+
+  $form['action_tracking'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Action Tracking'),
+    '#description' => t('Settings for the action tracking cookie'),
+    '#tree' => FALSE,
+  );
+
+  $form['action_tracking']['takeaction_action_cookie_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Cookie Name'),
+    '#description' => t('The name of the action tracking cookie.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_action_cookie_name',
+      'TAKEACTIONGUID'),
+  );
+
+  $form['action_tracking']['takeaction_action_cookie_lifespan'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Cookie Lifespan'),
+    '#description' => t('The life span of the action tracking cookie in seconds.'),
+    '#required' => TRUE,
+    '#element_validate' => array('_element_validate_integer'),
+    '#default_value' => variable_get('takeaction_action_cookie_lifespan', 0),
+  );
+
+  $form['action_tracking']['takeaction_action_cookie_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Cookie Path'),
+    '#description' => t('The access path of the action tracking cookie.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_action_cookie_path', '/'),
+  );
+
+  $form['action_tracking']['takeaction_action_cookie_domain'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Cookie Domain'),
+    '#description' => t('The domain of the action tracking cookie.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_action_cookie_domain',
+      '.takepart.com'),
+  );
+
+  $form['action_api'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Action API'),
+    '#description' => t('Settings for the action tracking API'),
+    '#tree' => FALSE,
+  );
+
+  $form['action_api']['takeaction_action_api_key'] = array(
+    '#type' => 'textfield',
+    '#title' => t('API Key'),
+    '#description' => t('API key for accessing the action tracking API.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_action_api_key', ''),
+  );
+
+  $form['action_api']['takeaction_action_api_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Base URL'),
+    '#description' => t('The base URL to use for all action tracking API requests.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_action_api_url',
+      'http://tabcode.dev.takepart.com/api/'),
+    '#element_validate' => array('takeaction_validate_url'),
+    '#secure_only' => FALSE,
+  );
+
+  $form['action_api']['takeaction_action_api_rest_method'] = array(
+    '#type' => 'select',
+    '#title' => t('REST Method'),
+    '#description' => t('The communication method to use for API requests.'),
+    '#required' => TRUE,
+    '#options' => array(
+      TakeActionApi::REST_METHOD_STREAM_WRAPPER => t('Stream Wrappers'),
+      TakeActionApi::REST_METHOD_CURL => t('cURL'),
+    ),
+    '#default_value' => variable_get('takeaction_action_api_rest_method',
+      TakeActionApi::REST_METHOD_CURL),
+  );
+
+  $form['action_api']['takeaction_action_api_curl_request_timeout'] = array(
+    '#type' => 'textfield',
+    '#title' => t('cURL Timeout'),
+    '#description' => t('The maximum number of seconds to allow cURL functions to execute'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_action_api_curl_request_timeout', 10),
+    '#element_validate' => array('_element_validate_integer'),
+  );
+
+  $form['urls'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Integration URLs and Pages'),
+    '#description' => t('Settings for integration URLs and pages.'),
+    '#tree' => FALSE,
+  );
+
+  $form['urls']['takeaction_button_js_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Button JavaScript URL'),
+    '#description' => t('The absolute URL to the TakeAction button JavaScript file.'),
+    '#required' => TRUE,
+    '#element_validate' => array('takeaction_validate_url'),
+    '#default_value' => variable_get('takeaction_button_js_url', ''),
+  );
+
+  $form['urls']['takeaction_more_actions_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('More Actions URL'),
+    '#description' => t('The absolute URL for the TakeAction More Action iframe.'),
+    '#required' => TRUE,
+    '#element_validate' => array('takeaction_validate_url'),
+    '#default_value' => variable_get('takeaction_more_actions_url', ''),
+  );
+
+  $form['urls']['takeaction_button_js_location'] = array(
+    '#type' => 'select',
+    '#title' => t('Button JavaScript Location'),
+    '#description' => t('The location of the TakeAction button JavaScript file script tag.'),
+    '#required' => TRUE,
+    '#options' => array(
+      'header' => t('Header'),
+      'footer' => t('Footer'),
+    ),
+    '#default_value' => variable_get('takeaction_button_js_location', 'footer'),
+  );
+
+  $form['urls']['takeaction_dashboard_url'] = array(
     '#type' => 'textfield',
     '#title' => t('Dashboard URL'),
     '#description' => t('The absolute URL to the user dashboard page.'),
     '#required' => TRUE,
     '#element_validate' => array('takeaction_validate_url'),
     '#default_value' => variable_get('takeaction_dashboard_url', ''),
+  );
+
+  $form['urls']['takeaction_thank_you_page'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Thank You Page'),
+    '#description' => t('The absolute path to the action thank you page.'),
+    '#required' => TRUE,
+    '#element_validate' => array('takeaction_validate_path'),
+    '#default_value' => variable_get('takeaction_thank_you_page', ''),
   );
 
   return system_settings_form($form);
@@ -112,4 +277,43 @@ function takeaction_validate_url($element, &$form_state) {
       )));
     }
   }
+}
+
+/**
+ * Path form element validation callback.
+ */
+function takeaction_validate_path($element, &$form_state) {
+  if (!empty($element['#value'])) {
+    $path = drupal_lookup_path($element['#value']);
+    if ($path !== FALSE) {
+      form_error($element, t('@title must be an existing absolute path.', array(
+        '@title' => $element['#title'],
+      )));
+    }
+  }
+}
+
+/**
+ * Create a pre-initialize instance of the TakeAction API.
+ *
+ * This function creates and initializes an instance of a TakeAction API using
+ * the settings defined on the Take Action Button configuration page.
+ *
+ * @return object
+ *   Instance of the TakeAction API.
+ */
+function takeaction_get_api() {
+  $values = &drupal_static(__FUNCTION__, array());
+  if (!isset($value['api'])) {
+    $api_key = variable_get('takeaction_action_api_key', '');
+    $rest_method = variable_get('takeaction_action_api_rest_method',
+      TakeActionApi::REST_METHOD_CURL);
+    $request_base = variable_get('takeaction_action_api_url',
+      'http://tabcode.dev.takepart.com/api/');
+    $request_timeout = variable_get(
+      'takeaction_action_api_curl_request_timeout', 10);
+    $values['api'] = new TakeActionApi($api_key, $rest_method, $request_base,
+      $request_timeout);
+  }
+  return $values['api'];
 }

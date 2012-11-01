@@ -18,10 +18,16 @@
                         }
                     }
                     s.linkTrackVars="eVar28,eVar30,events";
-                    s.linkTrackEvents="event37, event19";
+                    s.linkTrackEvents="event37, event19, event56";
                     s.eVar28='tpaction';
                     s.eVar30='takepart:actions:' + $('h1.title').text();
-                    s.events='event37, event19';
+                    s.events='event37, event19, event56';
+                    s.prop53=$('h1.title').text();
+                    s.eVar53=$('h1.title').text();
+                    s.prop55="Action";
+                    s.eVar55="Action";
+                    s.prop66="Click to Complete Action";
+                    s.prop67='takepart:actions:' + $('h1.title').text();
                     s.tl(this.href, 'o', 'Take Action Button Click');
                     $(this).addClass('action-taken');
                     $(this).children(":first").text('Action Taken');

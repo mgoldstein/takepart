@@ -1,0 +1,88 @@
+.block-takeaction-thankyou {
+  padding: 20px;
+}
+
+.block-takeaction-thankyou h2 {
+  font-family: TradeGothicLTStdCnBold;
+  background: none;
+  font-size: 32px;
+  color: #000;
+}
+
+#block-takeaction-thankyou-thank-you,
+#block-takeaction-thankyou-thank-you h2 span {
+  background-color: #fffaea;
+}
+
+.block-takeaction-thankyou .takeaction-thankyou-message span {
+  color: #333333;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 14px;
+}
+
+.block-takeaction-thankyou .signature-progress-percent {
+  background: url("/profiles/takepart/themes/takepart3/images/orange-cirlce.png") no-repeat scroll 0 0 transparent; */
+  clear: both;
+  display: block;
+  height: 34px;
+  padding: 12px 0;
+  text-align: center;
+  width: 60px;
+  float: left;
+  margin-top: -5px;
+}
+
+.block-takeaction-thankyou .signature-progress-needed {
+  float: none;
+}
+
+.block-takeaction-thankyou .signature-progress-percent span {
+  color: #FFFFFF;
+  display: block;
+  font-weight: bold;
+}
+
+.block-takeaction-thankyou .signature-progress-percent span.percentage {
+  text-align: center;
+  font-size: 16px;
+  height: 17px;
+  text-align: center;
+  float: none;
+}
+
+.block-takeaction-thankyou .signature-progress-percent span.complete {
+  font-size: 7px;
+  text-transform: uppercase;
+  height: 13px;
+}
+
+.block-takeaction-thankyou .message {
+  padding: 13px 0 16px;
+}
+
+.block-takeaction-thankyou .sharing {
+  clear:both;
+  padding-top: 20px;
+}
+
+.block-takeaction-thankyou .sharing h3 {
+  font-family: TradeGothicLTStdCnBold;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.block-takeaction-thankyou .signature-progress-needed {
+  background: url("/profiles/takepart/themes/takepart3/images/twodot58x58linework.png") repeat-x scroll 0 0 transparent;
+  height: 58px;
+  margin-bottom: -17px;
+  padding-top: 17px;
+}
+
+iframe.moreactions {
+  border-style: none;
+  height: 300px;
+  width: 100%;
+}
+
+

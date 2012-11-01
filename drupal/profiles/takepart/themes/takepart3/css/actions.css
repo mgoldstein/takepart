@@ -1,0 +1,601 @@
+.more-or-less-view.active {
+  display: block;
+}
+
+.more-or-less-view.inactive {
+  display: none;
+}
+
+.signature-state-fields {
+  display: block;
+}
+.signature-state-fields.inactive,
+.signature-state-fields.inactive.active {
+  display: none;
+}
+
+div.drupal-embed {
+	position: relative;
+	border: 2px solid #d8d8d8;
+	padding: 25px;
+	width: 480px;
+}
+
+div.drupal-embed .group-heading {
+	border-bottom: 1px solid #eaeaea;
+	margin: 0 0 15px;
+	padding: 0 0 15px;
+}
+
+div.drupal-embed .group-heading .signature-action-type-label h3 {
+	font-size: 12px;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #169be2;
+	float: left;
+}
+
+div.drupal-embed .group-heading .signature-progress-days-left span {
+	font: normal 12px/1 'TradeGothicLTStdCnBold', Helvetica, Arial, sans-serif;
+	float: right;
+	margin-right: 70px;
+}
+.view-mode-medium-preview .signature-progress-percent,
+div.drupal-embed .group-heading .signature-progress-percent {
+	background: url('../images/pie.png') no-repeat left top;
+	background-size: 100% auto;
+	position: absolute;
+	top: -24px;
+	right: 22px;
+	width: 66px;
+	height: 66px;
+	padding-top: 17px;
+}
+.view-mode-medium-preview .signature-progress-percent span,
+div.drupal-embed .group-heading .signature-progress-percent span {
+	display: block;
+	width: 66px;
+	text-align: center;
+	font: bold 15px/1 "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	color: #fff;
+	text-shadow: 0 2px 2px rgba(0,0,0,0.3);
+}
+div.drupal-embed .group-heading .signature-progress-percent .percentage {
+	font-size: 18px;
+}
+div.drupal-embed .group-heading .signature-progress-percent .complete {
+	font-size: 10px;
+}
+
+div.drupal-embed .group-summary div {
+	font-size: 14px;
+	float: left;
+	width: 299px;
+}
+
+div.drupal-embed .group-summary .signature-call-to-action {
+	clear: both;
+	background: #ffca00;
+	font-size: 14px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+	border: 1px solid #ffca00;
+	box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+	border-radius: 5px;
+	padding: 10px 0;
+	text-align: center;
+	max-width: 180px;
+}
+
+div.drupal-embed .group-summary .signature-call-to-action a {
+	color: #000;
+}
+
+div.drupal-embed .signature-progress-needed {
+	clear: both;
+}
+
+div.drupal-embed .signature-progress-needed .needed {
+	color: #666;
+}
+
+/* @group matt-37604 */
+.embedaction-content .signature-form .signature-display-disclaimer {
+	margin: 8px 0 8px 4px;
+}
+
+.embedaction-wrapper #node_petition_action_embedaction_group_sign_the_petition {
+	margin-left: -10px;
+}
+
+.embedaction-wrapper input.form-text { /*rest of style defined in form group*/
+	height: 20px;
+	width: 435px;
+	padding: 2px 5px;
+	font-size: 12px;
+}
+
+.embedaction-wrapper .form-select { /*rest of style defined in form group*/
+	display: inline-block;
+	width: 50%;
+}
+
+.embedaction-wrapper .group-heading-split-right .field-label-inline .field-items .field-item {
+	width: 360px;
+}
+
+.embedaction-wrapper .horizontal-tabs-list {
+	font-family: 'TradeGothicLTStdCnBold', Helvetica, Arial, sans-serif;
+}
+
+#content .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
+	background: none transparent;
+	border: none;
+}
+
+#content .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
+	color: #179BE2;
+}
+
+#content .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected {
+	background: #fff;
+	border: 1px solid #aaa;
+	border-bottom: none;
+	z-index: 2;
+}
+
+#content .embedaction-wrapper .node-petition-action .group-petition-tabs div.horizontal-tabs-panes {
+	margin-top: -4px;
+	border-top: 1px solid #aaa;
+	z-index: 1;
+}
+
+
+#content .embedaction-wrapper .english-spanish-signature-form .selectable-address-group .selectable-address-link {
+	display: inline-block;
+	padding: 0;
+	width: 50%;
+}
+
+.embedaction-wrapper .signature-form .form-type-checkbox {
+	margin-left: 0!important;
+}
+
+.embedaction-wrapper #edit-actions input.signature-sign-button {
+	font-size: 16px;
+	height: 40px;
+	width: 446px;
+	margin-left: 0;
+	background: none #fcc442;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+}
+
+.embedaction-button {
+	position: relative;
+	top: -46px;
+	left: -17px;
+	background: url('../images/embeded-sprite.png') no-repeat -88px 0;
+	float: left;
+	height: 130px;
+	margin: 0;
+	width: 481px;
+	overflow: hidden;
+	z-index: 1;
+}
+
+	
+	/* @group HEADER */
+		.embed {
+			background: url('../images/embeded-sprite.png') no-repeat -90px 0;
+			width: 478px;
+			height: 128px;
+			position: relative;
+			top: -10px;
+			left: -10px;
+			margin-bottom: 0px;
+		}
+		
+		.embed p {
+			display: none;
+		}
+		/* title is markedup in p tag but renendered in div stack (below) */
+		.embed .field-items .field-item {
+			font: bold 22px/1 "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif!important;
+			padding: 17px 0 0 134px;
+		}
+		
+		.embed .more {
+			background: url('../images/embeded-sprite.png') no-repeat -579px 0;
+			font: bold 12px/1 "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+			color: #fff;
+			width: 140px;
+			height: 123px;
+			position: absolute;
+			top: -23px;
+			right: -13px;
+			padding: 6px 0 0 14px;
+		}
+		
+		.embed .btn {
+			background: url('../images/embeded-sprite.png') no-repeat 0 0;
+			font: bold 12px/1 "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+			color: #fff;
+			width: 34px;
+			height: 36px;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+		
+		.embed .btn.up {
+			background: url('../images/embeded-sprite.png') no-repeat -44px 0;
+		}
+	/* @end */
+	
+	/* @group OVERRIDES */
+		.embedaction-wrapper .node-pledge-action .field-type-text-with-summary {
+			margin: 0;
+			width: 450px;
+		}
+		
+		.embedaction-wrapper .node-pledge-action .field-name-field-sig-first-name,
+		.embedaction-wrapper .node-pledge-action .field-name-field-sig-last-name,
+		.embedaction-wrapper .node-pledge-action .field-name-field-sig-address,
+		.embedaction-wrapper .node-pledge-action .field-name-field-sig-city,
+		.embedaction-wrapper .node-pledge-action .form-item-email,
+		.embedaction-wrapper .node-pledge-action .field-name-field-sig-state,
+		.embedaction-wrapper .node-pledge-action .field-name-field-sig-zip-code,
+		.embedaction-wrapper .node-pledge-action .field-name-field-sig-country,
+		.embedaction-wrapper .node-pledge-action .field-name-field-sig-postal-code,
+		.embedaction-wrapper .node-pledge-action input.signature-sign-button {
+			margin: 0;
+		}
+		
+		.embedaction-wrapper .node-pledge-action input.signature-sign-button { 
+			margin-left: 68px;
+		}
+		
+		.embedaction-wrapper .node-petition-action .group-petition-tabs .horizontal-tabs-panes fieldset {
+			margin: 0;
+			padding: 0;
+		}
+		
+		.embedaction-wrapper .node-petition-action .group-petition-tabs .horizontal-tabs-panes {
+			background: transparent;
+		}
+		
+		.embedaction-wrapper .node-petition-action label {
+			float: none;
+			display: block;
+		}
+		
+	/* @end */
+	
+/* @end */
+
+/* # Preview Page
+================================================== */
+.page-node-30110 .main-content .field-name-field-tp-campaign-subheadline {
+  font-family: 'TradeGothicLTStdCnBold', Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+/* # Preview Page Right Rail
+================================================== */
+#right-rail #block-boxes-take-action-join-now,
+#right-rail #block-boxes-what-is-takepart-take-action ,
+#right-rail #block-boxes-take-action-about-dashboard {
+  padding: 0;
+  border: none;
+}
+#right-rail #block-boxes-take-action-join-now p,
+#right-rail #block-boxes-what-is-takepart-take-action p,
+#right-rail #block-boxes-take-action-about-dashboard p {
+  color: #8c8c8c;
+  line-height: 1.3em;
+}
+#right-rail #block-boxes-take-action-join-now .facebook-login {
+  width: 212px;
+  height: 30px;
+  background: url('../images/tab/fb_button.png') no-repeat;
+  display: block;
+  margin: 0 auto;
+  text-indent: -999999px;
+}
+
+/* # Preview Page View Row
+================================================== */
+.view-mode-medium-preview {
+  border: 1px solid #d8d8d8;
+  padding: 25px;
+  margin-bottom: 46px;
+}
+div.drupal-embed .view-mode-medium-preview .group-heading, /* selector override for embedded styling */
+.view-mode-medium-preview .group_heading {
+  display: block;
+  position: relative;
+  height: 20px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 10px;
+  padding: 0; /* override for embedded styling */
+}
+.view-mode-medium-preview .signature-action-type-label,
+.view-mode-medium-preview .signature-progress-percent,
+.view-mode-medium-preview .signature-progress-days-left {
+  position: absolute;
+}
+.view-mode-medium-preview .signature-action-type-label {
+  left: 0;
+}
+div.drupal-embed .view-mode-medium-preview .signature-progress-days-left, /* selector override for embedded styling */
+.view-mode-medium-preview .signature-progress-days-left {
+  right: 75px;
+  font-family: 'TradeGothicLTStdCnBold', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+div.drupal-embed .view-mode-medium-preview .group-heading .signature-progress-percent, /* selector override for embedded styling */
+.view-mode-medium-preview .signature-progress-percent {
+  right: 0;
+  top: -49px;
+  background: url(../images/tab/sprite-pie-20-sm.png) no-repeat;
+  width: 76px;
+  height: 49px;
+  overflow: hidden;
+  padding-top: 23px;
+}
+.view-mode-medium-preview .signature-progress-complete-twentieth-0 { background-position: 0 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-1 { background-position: -86px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-2 { background-position: -172px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-3 { background-position: -258px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-4 { background-position: -344px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-5 { background-position: -430px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-6 { background-position: -516px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-7 { background-position: -602px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-8 { background-position: -688px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-9 { background-position: -774px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-10 { background-position: -860px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-11 { background-position: -946px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-12 { background-position: -1032px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-13 { background-position: -1118px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-14 { background-position: -1204px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-15 { background-position: -1290px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-16 { background-position: -1376px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-17 { background-position: -1462px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-18 { background-position: -1548px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-19 { background-position: -1634px 0; }
+.view-mode-medium-preview .signature-progress-complete-twentieth-20 { background-position: -1720px 0; }
+.view-mode-medium-preview .group_summary,
+.view-mode-medium-preview .field-name-field-action-main-image {
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
+  width: 50%;
+}
+div.drupal-embed .view-mode-medium-preview .signature-progress-percent .complete, /* selector override for embedded styling */
+div.drupal-embed .view-mode-medium-preview .signature-progress-percent .percentage, /* selector override for embedded styling */
+.view-mode-medium-preview .signature-progress-percent .complete,
+.view-mode-medium-preview .signature-progress-percent .percentage  {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  display: block;
+}
+div.drupal-embed .view-mode-medium-preview .signature-progress-percent .complete, /* selector override for embedded styling */
+.view-mode-medium-preview .signature-progress-percent .complete {
+  text-transform: uppercase;
+  font-size: 7px;
+  font-weight: normal;
+}
+div.drupal-embed .view-mode-medium-preview .signature-progress-percent .percentage, /* selector override for embedded styling */
+.view-mode-medium-preview .signature-progress-percent .percentage {
+  font-size: 16px;
+}
+.view-mode-medium-preview .field-name-field-action-main-image {
+  margin: 0;
+  text-align: right;
+}
+.view-mode-medium-preview .field-name-field-short-introduction {
+  color: #333;
+  padding-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.3em;
+}
+.view-mode-medium-preview .signature-progress-count-goal span {
+  color: #666;
+}
+div.drupal-embed .group-heading .signature-action-type-label h3, /* selector override for embedded styling */
+.view-mode-medium-preview h3 {
+  color: #1CA9E7;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold; /* override for embedded styling */
+}
+/* override for embedded styling */
+div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-action {
+  clear: both;
+  background: transparent;
+  text-shadow: 0 0 0;
+  border: none;
+  box-shadow: 0 0 0;
+  border-radius: 0;
+  padding: 0;
+  text-align: left;
+  max-width: auto;
+}
+/* override for embedded styling */
+.node-type-takepart-campaign #content .block-boxes .view-mode-medium-preview a {
+  color: #000;
+}
+.view-mode-medium-preview .signature-call-to-action a {
+  width: 175px;
+  height: 24px;
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
+  background: transparent url('../images/tab/button_175_32.png') top left no-repeat;
+  text-align: center;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  padding-top: 8px;
+}
+.view-mode-medium-preview .signature-call-to-action a:hover {
+  text-decoration: none;
+}
+.view-mode-medium-preview .signature-progress-needed,
+.view-mode-medium-preview .needed {
+  font-size: 10px;
+  color: #707070;
+  padding-top: 5px;
+  display: block;
+}
+.view-mode-medium-preview .group_summary {
+  width: 50%;
+}
+.view-mode-medium-preview .field-name-field-promo-headline {
+  font-size: 28px;
+  font-weight: bold;
+  color: #000;
+  line-height: 30px;
+  padding-bottom: 10px;
+}
+
+/* # Large Completed Pies
+================================================== */
+/* @group COMPLETED PIES */
+	.group_signature_progress .signature-progress-percent {
+		position: relative;
+		background-image: url(../images/sprite-pie.png);
+		background-repeat: no-repeat;
+		width: 78px;
+		height: 78px;
+		padding: 27px 0 0 14.9px;
+		overflow: hidden;
+		z-index: 2;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-0 {
+		 background-position: 0 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-1 {
+		 background-position: -99px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-2 {
+		 background-position: -195px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-3 {
+		 background-position: -292px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-4 {
+		 background-position: -390px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-5 {
+		 background-position: -488px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-6 {
+		 background-position: -584px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-7 {
+		 background-position: -681px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-8 {
+		 background-position: -779px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-9 {
+		 background-position: -877px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-10 {
+		 background-position: -974px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-11 {
+		 background-position: -1071px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-12 {
+		 background-position: -1168px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-13 {
+		 background-position: -1265px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-14 {
+		 background-position: -1363px 0;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-15 {
+		 background-position: 0 -100px;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-16 {
+		 background-position: -97px -100px;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-17 {
+		 background-position: -195px -100px;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-18 {
+		 background-position: -292px -100px;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-19 {
+		 background-position: -390px -100px;
+	}
+	.group_signature_progress .signature-progress-complete-twentieth-20 {
+		 background-position: -487px -100px;
+	}
+	
+/* @end */
+
+/* @group PIE TYPOGRAPHY */
+	.group_signature_progress .signature-progress-percent span {
+		font-family: Helvetica, Arial, sans-serif;
+		color: #fff;
+		display: block;
+	}
+	
+	.group_signature_progress .signature-progress-percent .percentage {
+		font-size: 28px;
+		font-weight: bold;
+	}
+	
+	.group_signature_progress .signature-progress-percent .complete {
+		font-family: 'TradeGothicLTStdCnBold', Arial, sans-serif;
+		font-size: 16.5px;
+		margin-top: -8px;
+		text-transform: uppercase;
+		color: pink;
+	}
+
+	.group_signature_progress .signature-progress-goal {
+		position: relative;
+		display: block;
+		margin: -101px 0 0 53px;
+		background: #ededed;
+		width: 183px;
+		height: 83px;
+		max-height: 83px;
+		overflow: hidden;
+		font: normal 24px/1 'TradeGothicLTStdCnBold', Arial, Helvetica, Geneva, sans-serif;
+		color: #333;
+		z-index: 1;
+		border-left: 2px solid #d2d2d2;
+		border-right: 2px solid #d2d2d2;
+		text-align: center;
+		text-transform: uppercase;
+		margin-bottom: 20px;
+	}
+	
+	.group_signature_progress .signature-progress-goal span {
+		display: block;
+		height: 83px;
+		width: 45%;
+		padding: 17px 23px;
+		margin-left: 50px;
+	}
+	
+	.group_signature_progress .signature-progress-goal .count {
+		border-left: 2px solid #d2d2d2;
+	}
+	
+/* @end */
+
+
+
+/*169be2*/

@@ -1,3 +1,7 @@
+body.node-pledge-action {
+	display: none;
+}
+
 .node-pledge-action h2,
 .node-pledge-action .field-name-field-thank-you-message h2,
 .node-type-takepart-campaign #content .node-pledge-action h2 {
@@ -7,6 +11,7 @@
     line-height: 1.5em;
     text-transform: none;
 }
+
 .node-pledge-action .field-label-inline .field-label,
 .node-pledge-action .field-label-inline .field-items {
     float: none;
@@ -41,7 +46,7 @@ padding-bottom: 1em;
 }
 
 #content .node-pledge-action ul {
-  margin: 0 0 0 16px;
+  margin: 0 0 13px 16px;
 }
 #content .node-pledge-action ul li {
   margin: 0;
@@ -58,7 +63,7 @@ padding-bottom: 1em;
   margin: 34px 0 28px 0;
   width: 100%;
 }
-.node-pledge-action .group-signature-fields .field-name-field-action-form-title {
+/*.node-pledge-action .group-signature-fields .field-name-field-action-form-title {
   font-family: 'TradeGothicLTStdCnBold';
   text-transform: uppercase;
   font-size: 22px;
@@ -66,7 +71,8 @@ padding-bottom: 1em;
   height: 47px;
   display: block;
   color: #000;
-}
+}*/
+
 .node-pledge-action .group-signature-fields .field-name-field-action-form-title .field-item {
   margin-left: 54px;
   padding-top: 6px;
@@ -89,9 +95,8 @@ padding-bottom: 1em;
 }
 
 .node-pledge-action .group-heading-split-right,
-.node-pledge-action .field-name-field-pledge-action-short,
+/*.node-pledge-action .field-name-field-pledge-action-short,*/
 .node-pledge-action .field-name-field-petition-sponsor,
-.node-pledge-action .field-name-field-pledge-action-long,
 .node-pledge-action .field-name-field-pledge-issue {
     width: 375px;
     font-size: 13px;
@@ -201,17 +206,13 @@ padding-bottom: 1em;
     background-color: #ffc500;
     border: 2px ridge #fcaf3b;
     border-radius: 5px;
-    text-shadow: 1px 1px 1px #FFF;
+    text-shadow: 0 3px 2px rgba(255, 255, 255, 0.36);
     color: #000;
     text-transform: uppercase;
     margin-left: 100px;
     font: bold 24px Helvetica,Arial,sans-serif;
     cursor: pointer;
     margin-left: 156px;
-}
-
-.embedaction-content .node-pledge-action .signature-terms-of-use {
-  text-indent: 71px;
 }
 
 .node-pledge-action .group-address-tabs div.horizontal-tabs {
@@ -339,7 +340,7 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
     text-indent:-13px;
 }
 
-.node-pledge-action input.signature-sign-button {
+/*.node-pledge-action input.signature-sign-button {
   font-family: Helvetica, Arial, sans-serif;
   background: url(../images/2012-08-07/petition_sign_button_good.png) no-repeat scroll 0 0 transparent;
   border: 0 none;
@@ -347,19 +348,21 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
   height: 56px;
   margin-left: 156px;
   padding: 0;
-}
+}*/
+
 .embedaction-content .node-pledge-action input.signature-sign-button {
-  margin-left: 103px;
+	margin-left: 33px;
 }
-.node-pledge-action input.signature-sign-button:hover {
+
+/*.node-pledge-action input.signature-sign-button:hover {
   background-position: 0 -56px;
   border: 0 none;
   box-shadow: none;
-}
+}*/
 
-.node-pledge-action input.form-text {
-    width: 306px;
-}
+/*.node-pledge-action input.form-text {
+    width: 427px;
+}*/
 
 .node-pledge-action  .field-name-field-petition-sponsor {
   margin-bottom: 1em;
@@ -417,17 +420,6 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
 .node-pledge-action .field-name-field-petition-sponsor {
   margin-bottom: 1em;
 }
-.node-pledge-action .field-name-field-pledge-action-short {
-  display: none;
-}
-.node-pledge-action .field-name-field-pledge-action-short.inactive,
-.node-pledge-action .field-name-field-pledge-action-long.inactive {
-  display: none;
-}
-.node-pledge-action .field-name-field-pledge-action-short.active,
-.node-pledge-action .field-name-field-pledge-action-long.active {
-  display: block;
-}
 
 .embedaction-wrapper .node-pledge-action .field-name-field-petition-sponsor .field-items {
   width: 395px;
@@ -440,14 +432,90 @@ body.node-type-pledge-action .node-pledge-action .field-group-htabs-wrapper {
 .embedaction-wrapper .node-pledge-action .field-name-field-petition-sponsor .field-item:last-child {
   padding-right: 0;
 }
-.node-pledge-action .field-name-field-pledge-action-short p,
+/*.node-pledge-action .field-name-field-pledge-action-short p,
 .node-pledge-action .field-name-field-pledge-action-long p {
   font-size: 13px;
   line-height: 1.5em;
   margin: 0;
   color: #333;
-}
+}*/
 
 .node-pledge-action .signature-heading {
   display: none;
 }
+
+/* @group matt-37604 */
+	body.node-type-pledge-action #boxes-box-action_topic_and_share .boxes-box-content {
+		border-top: 1px solid #e8e8e8;
+		border-bottom: 1px solid #e8e8e8;
+		/*padding: 7px 0;
+		margin: 0px 0 30px;*/
+		height: 52px;
+	}
+	
+	body.node-type-pledge-action #boxes-box-action_topic_and_share .boxes-box-content:after {
+		content:"";
+        display:table;
+        clear:both;
+	}
+	
+	body.node-type-pledge-action #boxes-box-action_topic_and_share .field-type-taxonomy-term-reference .field-item {
+		background: url('../images/pet-icon.png') no-repeat left top;
+		margin-top: 13px;
+		padding: 6px 0 /*17px*/ 0 40px;
+		height: 38px;
+		font-family: Helvetica, Arial, sans-serif;
+		text-transform: uppercase;
+		color: #1ca9e7;
+		float: left;
+	}
+
+	body.node-type-pledge-action #boxes-box-action_topic_and_share .field-type-share-bar {
+		float: right;
+		margin-top: 18px;
+	}
+
+	body.node-type-pledge-action .block-boxes-delta-page_title_h1 h1.title span {
+		font-size: 28px;
+	}
+
+	
+	body.node-pledge-action .field-name-field-pledge-action-long {
+		width: 100%;
+		font-size: 16px;
+		line-height: 24px;
+	}
+	
+	.node-pledge-action .group-signature-fields .field-name-field-action-form-title {
+	  font-family: 'TradeGothicLTStdCnBold';
+	  text-transform: uppercase;
+	  font-size: 22px;
+	  background: url(../images/pet-header-bg.png) no-repeat scroll 0 0 transparent;
+	  height: 47px;
+	  display: block;
+	  color: #fff;
+	  margin-top: 20px;
+	}
+	
+	/* @group FORMS */
+		body.node-type-pledge-action .node-pledge-action .form-item-display,
+		body.node-type-pledge-action .signature-form .form-type-checkbox {
+			margin: 0 0 0 48px;
+		}
+		
+		body.node-type-pledge-action .node-pledge-action input.signature-sign-button {
+			margin: 0 0 0 51px;
+		}
+		
+		body.node-type-pledge-action .node-pledge-action #edit-terms-of-use-note {
+			margin: 0 0 53px -196px;
+		}
+		
+		body.node-type-pledge-action .block-boxes-bid-views-pledge_signature_block-block,
+		body.node-type-pledge-action .block-boxes-bid-views-content_updates-block {
+			border: 10px solid #d9e7ee;
+			padding: 15px;
+			margin: 15px 0;
+		}
+	/* @end */
+/* @end */

@@ -1,5 +1,6 @@
 /nbproject/
 /drupal/sites/default/settings.local.inc
+/drupal/sites/default/settings.db.name.inc
 /drupal/sites/default/files
 .DS_Store
 DEADJOE

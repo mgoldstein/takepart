@@ -11,10 +11,9 @@
     },
     // Bind the event handlers and set the initial state of the wrapper.
     init: function () {
-      this.header = $('.embedaction-header', this.element);
+      this.header = $('.header', this.element);
       this.header.bind('click.embedaction', {
         container: this,
-        open: true
       }, methods._click);
       this.header.bind('mouseenter.embedaction', {
         container: this,
@@ -22,20 +21,28 @@
       this.header.bind('mouseleave.embedaction', {
         container: this,
       }, methods._hover);
-      this.content = $('.embedaction-content', this.element);
-      $('.embedaction-divider > a', this.content).bind('click.embedaction', {
+      this.toggle = $('.switch', this.element);
+      this.toggle.bind('click.embedaction', {
         container: this,
-        open: false
       }, methods._click);
-      this.options['expanded'] ? methods.expand.apply(this)
-        : methods.collapse.apply(this);
+      if (this.options['expanded']) {
+        methods.expand.apply(this);
+      }
+      else {
+        methods.collapse.apply(this);
+      }
     },
     // Click handler (for expanding and collapsing the action).
     _click: function(event) {
       var container = event.data.container;
+      var target = $(event.target);
       event.preventDefault();
-      event.data.open ?  methods.expand.apply(container)
-        : methods.collapse.apply(container);
+      if (container.hasClass('collapsed')) {
+        methods.expand.apply(container);
+      }
+      else if (target.hasClass('switch')) {
+        methods.collapse.apply(container);
+      }
     },
     // Hover handler for the action header.
     _hover: function(event) {
@@ -45,21 +52,16 @@
     },
     // Expand and show the action.
     expand: function () {
-      var self = this;
-      this.content.slideDown('fast', function() {
-        $('.embedaction-divider > a', self.content).show();
-      });
+      this.removeClass('collapsed').addClass('expanded');
     },
     // Collapse and hide the action.
     collapse: function () {
-      var self = this;
-      this.content.slideUp('fast', function() {
-        $('.embedaction-divider > a', self.content).hide();
-      });
+      this.removeClass('expanded').addClass('collapsed');
     },
     // Destroy the wrapper and return the element back to its original state.
     destroy: function() {
       this.header.unbind('.embedaction');
+      this.toggle.unbind('.embedaction');
     }
   };
 
@@ -93,11 +95,8 @@
 (function ($) {
   Drupal.behaviors.embedaction = {
     attach: function (context, settings) {
-      $('.embedaction-wrapper.expanded').once('embedaction', function () {
-        $(this).embedaction({expanded: true});
-      });
-      $('.embedaction-wrapper.collapsed').once('embedaction', function () {
-        $(this).embedaction({expanded: false});
+      $('.embedaction-wrapper').once('embedaction', function () {
+        $(this).embedaction({expanded: !$(this).hasClass('collapsed')});
       });
     }
   }

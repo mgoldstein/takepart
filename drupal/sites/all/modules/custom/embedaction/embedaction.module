@@ -10,11 +10,11 @@
 function embedaction_entity_info_alter(&$entity_info) {
   // Add an embedded view mode for nodes.
   $entity_info['node']['view modes']['embedaction'] = array(
-    'label' => t('Embedded Petition/Pledge (Collapsed)'),
+    'label' => t('Embedded Action (Collapsed)'),
     'custom settings' => FALSE,
   );
   $entity_info['node']['view modes']['embedaction_expanded'] = array(
-    'label' => t('Embedded Petition/Pledge (Expanded)'),
+    'label' => t('Embedded Action (Expanded)'),
     'custom settings' => FALSE,
   );
 }
@@ -52,14 +52,24 @@ function embedaction_wrap_node($markup, $element) {
 
   $pieces = array(
     '<div id="' . $id . '" class="' . $classes . '">',
-    '<table class="embedaction-header clearfix"><tbody><tr>',
-    '<td class="graphic"><div class="embedaction-button"></div></td>',
+    '<div class="more-actions">',
+    '<a class="button takepart-custom-take-action-button" href="javascript:void()">',
+    '<span>See More Actions</span>',
+    '</a>',
+    '</div>',
+    '<div class="header">',
+    '<table>',
+    '<tbody>',
+    '<tr>',
     '<td class="title">' . $title . '</td>',
-    '</tr></tbody></table>',
-    '<div class="embedaction-content clearfix">',
-    '<h2 class="embedaction-divider">',
-    '<a href="#"><span>[x]</span></a>',
-    '</h2>',
+    '</tr>',
+    '</tbody>',
+    '</table>',
+    '</div>',
+    '<div class="toggle">',
+    '<div class="switch"></div>',
+    '</div>',
+    '<div class="content clearfix">',
     $markup,
     '</div>',
     '</div>',

@@ -1,0 +1,7 @@
+name = TakeAction Button User Session
+description = Module for managing and integrating user session.
+core = 7.x
+package = TakeAction Button
+version = 7.x-1.0
+dependencies[] = takeaction
+dependencies[] = takeaction_tracking

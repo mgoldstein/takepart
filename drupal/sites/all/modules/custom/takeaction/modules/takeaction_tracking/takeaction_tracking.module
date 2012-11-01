@@ -1,0 +1,98 @@
+<?php
+/**
+ * @file
+ * TakeAction Button Action Tracking Module.
+ */
+
+/**
+ * Implements hook_entity_insert().
+ */
+function takeaction_tracking_entity_insert($entity, $type) {
+  if ($type === 'signature') {
+    takeaction_tracking_track_action($entity->nid);
+  }
+}
+
+/**
+ * Function to report a user action.
+ */
+function takeaction_tracking_track_action($nid) {
+  $guid = takeaction_tracking_get_guid();
+  try {
+    $api = takeaction_get_api();
+    $api->addUserAction($guid, $entity->nid);
+  }
+  catch (TakeActionApiException $ex) {
+    $message = 'Error adding user action [@code] @body';
+    watchdog('takeaction_tracking', $message, array(
+      '@code' => $ex->getResponseCode(),
+      '@body' => $ex->getResponseBody(),
+    ));
+    return;
+  }
+}
+
+/**
+ * GUID retrieval function.
+ */
+function takeaction_tracking_get_guid() {
+  global $user;
+
+  $guid = FALSE;
+  $from_db = FALSE;
+
+  $cookie = variable_get('takeaction_action_cookie_name', 'TAKEACTIONGUID');
+  $lifespan = variable_get('takeaction_action_cookie_lifespan', 0);
+  $expire = empty($lifespan) ? 0 : time() + $lifespan;
+  $path = variable_get('takeaction_action_cookie_path', '/');
+  $domain = variable_get('takeaction_action_cookie_domain', '.takepart.com');
+
+  // Check for a GUID tied to a logged in user.
+  if (!empty($user->uid)) {
+    $result = db_select('takeaction_tracking_action_guid', 'g')
+      ->fields('g', array('uid', 'guid'))
+      ->condition('g.uid', $user->uid, '=')
+      ->execute()
+      ->fetchAllKeyed();
+    if (!empty($result)) {
+      $guid = $result[$user->uid];
+      $from_db = TRUE;
+      setcookie($cookie, $guid, $expire, $path, $domain);
+    }
+  }
+
+  // Check for an already set cookie.
+  if (empty($guid) && !empty($_COOKIE[$cookie])) {
+    $regex = '/^[0-9A-F]{8}(\-[0-9A-F]{4}){3}\-[0-9A-F]{12}$/';
+    if (preg_match($regex, $_COOKIE[$cookie])) {
+      $guid = $_COOKIE[$cookie];
+    }
+  }
+
+  // If we still don't have a GUID generate one and set it.
+  if (empty($guid)) {
+    mt_srand((double) microtime() * 10000);
+    $hash = strtoupper(md5(uniqid(rand(), TRUE)));
+    $guid = implode('-', array(
+      substr($hash, 0, 8),
+      substr($hash, 8, 4),
+      substr($hash, 12, 4),
+      substr($hash, 16, 4),
+      substr($hash, 20, 12),
+    ));
+    setcookie($cookie, $guid, $expire, $path, $domain);
+  }
+
+  // Tie the action GUID to the UID if it isn't already tied.
+  if (!empty($user->uid) && !$from_db) {
+    db_insert('takeaction_tracking_action_guid')
+      ->fields(array(
+        'uid' => $user->uid,
+        'guid' => $guid,
+        'created' => time(),
+      ))
+      ->execute();
+  }
+
+  return $guid;
+}
