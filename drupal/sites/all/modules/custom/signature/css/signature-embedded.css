@@ -37,7 +37,8 @@ div.horizontal-tabs-panes {
   color: #000;
   font-weight: normal;
 }
-.tastemakers.node-type-venue #content .embedaction-content .horizontal-tabs-list li a {
+.tastemakers.node-type-venue #content .embedaction-content .horizontal-tabs-list li a,
+.tastemakers.node-type-venue #content .embedaction-content .horizontal-tabs-list li a:hover {
   -moz-box-shadow: 0 0 0; /* Firefox */
   -webkit-box-shadow: 0 0 0; /* Safari, Chrome */
   box-shadow: 0 0 0; /* CSS3 */
