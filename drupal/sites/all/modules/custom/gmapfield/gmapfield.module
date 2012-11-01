@@ -72,7 +72,15 @@ function gmapfield_field_formatter_view($entity_type, $entity, $field, $instance
 
 	  foreach ($items as $delta => $item) {
 
-	    $jsoutput .= "addresses[$delta]=['" . $item['gmapfield_address'] . "', image, shadow, '" . str_replace("'","\\'", $item['gmapfield_popup']) . "'];";
+            $gmapfield_popup = str_replace(array("\n", "\r"), '', $item['gmapfield_popup']);
+            $gmapfield_popup = str_replace("'","\\'", $gmapfield_popup);
+
+
+	    $geoloc = gmapfield_geocode($item['gmapfield_address']);
+
+            $coords = $geoloc['results'][0]['geometry']['location'];
+
+	    $jsoutput .= "addresses[$delta]=['" . $item['gmapfield_address'] . "', image, shadow, '" . $gmapfield_popup . "'," . $coords['lat'] . "," . $coords['lng'] . "];\n";
 
             if(end($items) === $item) {
 		drupal_add_js(_gmapfield_getjs($jsoutput, 'map_canvas'.$delta), array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
@@ -183,17 +191,18 @@ tpmaps.initialize = function() {
 
         for (var i_addr=0;i_addr<addresses.length;i_addr++) {  
 
-            tpmaps.html = addresses[i_addr][3];
+            tpmaps.cachecoord = new google.maps.LatLng(addresses[i_addr][4],addresses[i_addr][5]);
 
-            geocoder.geocode( { 'address': addresses[i_addr][0]}, function(results, status) {
+            //geocoder.geocode( { 'address': addresses[i_addr][0]}, function(results, status) {
 
                 //Position map on first element:
 
                 if(tpmaps.builtfirst == false) { 
 
 		     tpmaps.builtfirst = true;
-
-		     tpmaps.mapcenter = results[0].geometry.location;
+                     
+		     //tpmaps.mapcenter = results[0].geometry.location;
+                     tpmaps.mapcenter = tpmaps.cachecoord;
 
                      var mapOptions = {
                             center:  tpmaps.mapcenter,
@@ -211,7 +220,7 @@ tpmaps.initialize = function() {
 	
                 }
 
-                if (status == google.maps.GeocoderStatus.OK) {
+                //if (status == google.maps.GeocoderStatus.OK) {
                     //tpmaps.map.setCenter(results[0].geometry.location);
                     //addresses[i].push(results[0].geometry.location);
 
@@ -222,32 +231,33 @@ tpmaps.initialize = function() {
 
                     var marker = new google.maps.Marker({
                             map: tpmaps.map,
-                            position: results[0].geometry.location,
+                            position: tpmaps.cachecoord,
                             shadow: shadow,
-                                icon: image,
-                                shape: shape
+                            icon: image,
+                            shape: shape
                     });
 
-                    google.maps.event.addListener(marker, 'click', function() {
-                            var html_popup = tpmaps.html;
+                    
+                   (function(marker, html_popup) {
+		           google.maps.event.addListener(marker, 'click', function() {
+		                    var infowindow = new google.maps.InfoWindow(
+		                            { content: html_popup,
+		                              size: new google.maps.Size(50,50)
+		                            });
+		                    infowindow.open(tpmaps.map,marker);
+		                    tpmaps.map.setCenter(marker.getPosition());
 
-                            var infowindow = new google.maps.InfoWindow(
-                                    { content: html_popup,
-                                      size: new google.maps.Size(50,50)
-                                    });
-                            infowindow.open(tpmaps.map,marker);
-                        tpmaps.map.setCenter(marker.getPosition());
-
-                    });
+		            });
+                    })(marker, addresses[i_addr][3]);
 
                     
 		    //alert('geocode passed');
 
-                 } else {
+                 //} else {
                             //alert("Geocode was not successful for the following reason: " + status);
                             //addresses.splice(i,1);
-                 }
-            });
+                 //}
+            //});
         }
 }
 
@@ -282,4 +292,31 @@ HTM;
 return $content;
 }
 
+/**
+ * Server side geocode:
+ */
+function gmapfield_geocode($addr) {
+
+  // make sure curl is installed
+  if (! function_exists('curl_init')) {
+    watchdog('gmapfield', 'Curl is not installed.');
+    return '';
+  }
+
+  $geocachekey = "gmapfield:geocode:" . preg_replace("/[^a-zA-Z0-9]|\s/", "", $addr);
+
+  if (($cache = cache_get($geocachekey)) && isset($cache->data)) {
+   $geoloc = unserialize($cache->data);
+  } else {
+   $ch = curl_init();   
+   $url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($addr) . "&sensor=false";
+   $ch = curl_init();
+   curl_setopt($ch, CURLOPT_URL, $url);
+   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+   $geoloc = json_decode(curl_exec($ch), true);   
+   cache_set($geocachekey, serialize($geoloc));
+  }
+
+  return $geoloc;
+}
 
