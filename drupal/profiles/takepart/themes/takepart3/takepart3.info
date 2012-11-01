@@ -14,9 +14,11 @@ stylesheets[all][] = css/style_temp.css
 stylesheets-conditional[lte IE 7][all][] = css/ie7.css
 
 stylesheets[all][] = css/sharebar.css
-stylesheets[all][] = css/tastemakers.css
-stylesheets[all][] = css/venue.css
-stylesheets[all][] = css/city.css
+stylesheets[all][] = css/tastemakers/tastemakers.css
+stylesheets[all][] = css/tastemakers/venue.css
+stylesheets[all][] = css/tastemakers/city.css
+stylesheets[all][] = css/tastemakers/assets.css
+stylesheets[all][] = css/tastemakers/nationwide.css
 
 stylesheets[all][] = css/pledges.css
 
@@ -24,7 +26,9 @@ stylesheets[all][] = css/pledges.css
 scripts[] = js/script.js
 
 scripts[] = js/horizontal-tabs.js
-scripts[] = js/venue.js
+scripts[] = js/tastemakers/venue.js
+scripts[] = js/tastemakers/city.js
+scripts[] = js/tastemakers/nationwide.js
 
 scripts[] = js/pledges.js
 
