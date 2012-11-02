@@ -1,5 +1,4 @@
 // file: javascript support for takepart_vidpop
-
 // On page view of a page with an embedded video
 //
 // triggered by call in template.php, preprocess node
@@ -7,13 +6,10 @@
 
 var vp_embeddedvideotitle;
 var vp_embeddedvideotype;
-
 var vp_titles = new Array();   // list of titles
 var vp_types  = new Array();   // list of node types
 var vp_lookup = new Array();   // 0-based index lookup of title/types index
-
 var vidpopSource = 0;          // source of popup (node, rtrail)
-
 
 function vidpop_loaded() {
   vp_embeddedvideotitle = Drupal.settings.takepart_vidpop.embeddedvideotitle;
@@ -48,8 +44,7 @@ function vidpop_loaded() {
     s.eVar42=modaltype;
     s.tl(true, 'o', 'Video Popup Page Load');
   }
-};
-
+}
 
 // add click trackers for popups and banner ads
 (function ($) {
@@ -71,14 +66,12 @@ function vidpop_loaded() {
         s.prop42=modaltype;
         s.eVar42=modaltype;
         s.tl(true, 'o', 'Video Popup Click');
-        //alert('n:' + n);
       });
 
       // On-click of the subscribe button, pls fire (only once per session)
       $('.vidpop-popup .subscribe', context).click(function(){
         if( typeof vp_43_triggered == 'undefined' ) {
           // block multiple calls
-          //alert('trap 43');
           vp_43_triggered = 1;
 
           var n = $(this).attr('class').match(/ vp-(\d+)/);
@@ -102,21 +95,16 @@ function vidpop_loaded() {
     attach: function (context, settings) {
       $('.vidpop-preview .colorbox-inline').live('click', (function(){
         $('#cboxWrapper').css('height', '425px');
-        //alert(4);
         vidpopSource = 'node';
       }));
 
       $('#capitalismTour td a').live('click', (function(){
         $('#cboxWrapper').css('height', '425px');
-        //alert(5);
         vidpopSource = 'rollins';
       }));
 
-
-
       // resize popup, based on source
       $(document).bind('cbox_complete', function(){
-        //alert(vidpopSource);
         switch(vidpopSource) {
           case 'node':
             $('#cboxWrapper').css('height', '425px');
@@ -144,7 +132,6 @@ function vidpop_loaded() {
   }
   })(jQuery);
 
-
 // return video node contents for popup on map page
 // this is outside of our normal jquery space to avoid closure issues
 function vidpop_get_map_video(nid) {
@@ -169,4 +156,3 @@ function vidpop_get_map_video(nid) {
 
   return output;
 }
-
