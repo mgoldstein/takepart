@@ -17,6 +17,7 @@
       // Configure the individual share bars.
       $('div.share-bar-field').once('addthis-init', function () {
         var id = $(this).attr('id');
+        return;
         var configuration = {
           ui_email_note: settings.addthis.fields[id].email_message
         };
@@ -33,9 +34,12 @@
         });
       });
       // Setup the share event listener.
-      $('body').once('addthis-init', function () {
-        addthis.addEventListener('addthis.menu.share', addthisShareListener);
-      });
+      if (window.addthis) {
+        $('body').once('addthis-init', function () {
+          window.addthis.addEventListener('addthis.menu.share',
+            addthisShareListener);
+        });
+      }
     }
   };
 })(jQuery);

@@ -119,9 +119,7 @@ class FollowUpUIController extends EntityDefaultUIController {
  * Follow up add page callback.
  */
 function followup_add_page($node) {
-  drupal_set_title(t('Add update to %title', array(
-    '%title' => $node->title,
-  )), PASS_THROUGH);
+  drupal_set_title(t('Add update'), PASS_THROUGH);
   $types = followup_type_load();
   $base_url = 'node/' . $node->nid . '/updates';
   // Bypass the add listing if only one follow up type is available.
@@ -214,9 +212,7 @@ function followup_count_unpublished($node) {
  * Menu callback; present an administrative follow up listing.
  */
 function followup_list_page($node, $type = 'new') {
-  drupal_set_title(t('Updates for %title', array(
-    '%title' => $node->title,
-  )), PASS_THROUGH);
+  drupal_set_title(t('Updates'), PASS_THROUGH);
   $edit = $_POST;
   $is_delete = isset($edit['operation']) && ($edit['operation'] == 'delete');
   $have_followups = isset($edit['followups']) && $edit['followups'];

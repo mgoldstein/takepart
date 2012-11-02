@@ -46,14 +46,14 @@ function takepart_omniture_context_default_contexts() {
     $context->reactions = array(
         'omniture_reaction' => array(
             'variables' => 's.prop19 = [tp_omniture:date:{node:created:raw}]
-            s.eVar21 = [tp_omniture:value_or_empty:{node:field_display_tag}]
-            s.prop20 = [tp_omniture:value_or_empty:{node:field_display_tag}]
-            s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
-            s.eVar18 = [tp_omniture:str_decode:{node:title}]
-            s.prop17 = [tp_omniture:str_decode:{node:title}]
-            s.eVar17 = [tp_omniture:get_author:{node:nid}]
-            s.prop16 = [tp_omniture:get_author:{node:nid}]
-            s.prop6 = [node:nid]',
+s.eVar21 = [tp_omniture:value_or_empty:{node:field_display_tag}]
+s.prop20 = [tp_omniture:value_or_empty:{node:field_display_tag}]
+s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
+s.eVar18 = [tp_omniture:str_decode:{node:title}]
+s.prop17 = [tp_omniture:str_decode:{node:title}]
+s.eVar17 = [tp_omniture:get_author:{node:nid}]
+s.prop16 = [tp_omniture:get_author:{node:nid}]
+s.prop6 = [node:nid]',
         ),
     );
     $context->condition_mode = 0;
@@ -98,6 +98,53 @@ s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]',
     t('Variables to set on gallery pages.');
     $export['omniture_gallery'] = $context;
 // end gallery
+
+    
+    // Begin action
+    $context = new stdClass;
+    $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+    $context->api_version = 3;
+    $context->name = 'omniture_action';
+    $context->description = 'Variables to set on action pages.';
+    $context->tag = 'Omniture';
+    $context->conditions = array(
+        'node' => array(
+            'values' => array(
+                'action' => 'action',
+                'pledge_action' => 'pledge_action',
+                'petition_action' => 'petition_action',
+            ),
+            'options' => array(
+                'node_form' => '0',
+            ),
+        ),
+    );
+    $context->reactions = array(
+        'omniture_reaction' => array(
+            'variables' => 's.events = event55
+s.prop53 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]
+s.eVar53 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]
+s.prop54 = [tp_omniture:str_decode:{node:url}]
+s.eVar54 = [tp_omniture:str_decode:{node:url}]
+s.prop55 = [tp_omniture:first_word:{node:content-type}]
+s.eVar55 = [tp_omniture:first_word:{node:content-type}]
+s.prop56 = [tp_omniture:value_or_empty:{node:field_display_tag}]
+s.eVar56 = [tp_omniture:value_or_empty:{node:field_display_tag}]
+s.eVar58 = [tp_omniture:get_tab_uid:{current-user:uid}]
+s.prop58 = [tp_omniture:get_tab_uid:{current-user:uid}]
+s.prop66 = Action Page View
+s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]',
+        ),
+    );
+    $context->condition_mode = 0;
+
+    // Translatables
+    // Included for use with string extractors like potx.
+    t('Omniture');
+    t('Variables to set on action pages.');
+    $export['omniture_action'] = $context;
+    // end action
+
     // Begin blog
     $context = new stdClass;
     $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -148,8 +195,7 @@ s.prop2 = [current-page:url-arg:1]',
     $context->reactions = array(
         'omniture_reaction' => array(
             'variables' => 's.events = event23,event33,event21
-s.eVar11 = Logged_In
-',
+s.eVar11 = Logged_In',
         ),
     );
     $context->condition_mode = 0;

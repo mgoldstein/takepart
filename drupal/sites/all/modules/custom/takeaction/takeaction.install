@@ -17,3 +17,12 @@ function takeaction_uninstall() {
     variable_del($variable['name']);
   }
 }
+
+/**
+ * Delete the table for tracking user actions (moved to tracking module).
+ */
+function takeaction_update_7101(&$sandbox) {
+  if (db_table_exists('takeaction_action_guid')) {
+    db_drop_table('takeaction_action_guid');
+  }
+}

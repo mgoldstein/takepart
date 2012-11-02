@@ -46,6 +46,30 @@ class FollowUpController extends EntityAPIController {
   }
 
   /**
+   * Overrides EntityAPIController::buildContent().
+   */
+  public function buildContent($entity, $view_mode = 'full', $langcode = NULL,
+    $content = array()) {
+    $build = parent::buildContent($entity, $view_mode, $langcode, $content);
+    $build['title'] = array(
+      '#theme' => 'followup_title',
+      '#followup' => $entity,
+      '#view_mode' => $view_mode,
+    );
+    $build['rule'] = array(
+      '#theme' => 'followup_rule',
+      '#followup' => $entity,
+      '#view_mode' => $view_mode,
+    );
+    $build['date'] = array(
+      '#theme' => 'followup_date',
+      '#followup' => $entity,
+      '#view_mode' => $view_mode,
+    );
+    return $build;
+  }
+
+  /**
    * Overrides EntityAPIController::save().
    *
    * Sets the uid, created and changed fields.
