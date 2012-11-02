@@ -1,0 +1,7 @@
+name = TakeAction Button Action Tracking
+description = Module for reporting user actions.
+core = 7.x
+package = TakeAction Button
+version = 7.x-1.0
+dependencies[] = takeaction
+

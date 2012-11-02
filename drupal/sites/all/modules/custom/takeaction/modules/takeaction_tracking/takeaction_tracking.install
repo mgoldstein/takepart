@@ -1,0 +1,52 @@
+<?php
+/**
+ * @file
+ * Module install, update and uninstall hooks.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function takeaction_tracking_schema() {
+  $schema = array();
+
+  $schema['takeaction_tracking_action_guid'] = array(
+    'description' => 'The base table for signature entities.',
+    'fields' => array(
+      'uid' => array(
+        'description' => 'The {users}.id who took the action.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'guid' => array(
+        'description' => 'The tracking GUID of user.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the record was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('uid'),
+    'indexes' => array(
+      'guid' => array('guid'),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Add the action tracking GUID table.
+ */
+function takeaction_tracking_update_7100() {
+  $schema = takeaction_tracking_schema();
+  db_create_table('takeaction_tracking_action_guid',
+    $schema['takeaction_tracking_action_guid']);
+}

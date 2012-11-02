@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * TakeAction Button Action Feed Module
+ * TakeAction Button Action Feed Module.
  */
 
 /**
@@ -104,7 +104,7 @@ function takeaction_feed_admin_form_submit_rebuild($form, $form_state) {
     ->fetchAllKeyed();
   foreach ($nodes as $nid => $type) {
     $node = node_load($nid);
-    takeaction_feed_node_update($node);
+    takeaction_feed_entity_update($node, 'node');
     $counts[$type] += 1;
   }
   $message = t('!total action items rebuilt', array(
@@ -114,17 +114,32 @@ function takeaction_feed_admin_form_submit_rebuild($form, $form_state) {
 }
 
 /**
- * Implements hook_node_insert().
+ * Implements hook_entity_insert().
  */
-function takeaction_feed_node_insert($node) {
-  takeaction_feed_node_update($node);
+function takeaction_feed_entity_insert($entity, $type) {
+  takeaction_feed_entity_update($entity, $type);
 }
 
 /**
- * Implements hook_node_update().
+ * Implements hook_entity_update().
  */
-function takeaction_feed_node_update($node) {
-  $data = takeaction_feed_action_item_data($node);
+function takeaction_feed_entity_update($entity, $type) {
+
+  $data = FALSE;
+  if ($type === 'followup') {
+    $node = node_load($entity->nid);
+    if ($node !== FALSE) {
+      $data = takeaction_feed_action_item_data($node);
+    }
+  }
+  elseif ($type === 'node') {
+    $node = $entity;
+    $data = takeaction_feed_action_item_data($entity);
+  }
+  else {
+    return;
+  }
+
   if ($data !== FALSE) {
     $timestamp = time();
     $tab_action = _takeaction_feed_field_value($node, 'field_tab_action', '0');
@@ -156,13 +171,22 @@ function takeaction_feed_node_update($node) {
 }
 
 /**
- * Implements hook_node_delete().
+ * Implements hook_entity_delete().
  */
-function takeaction_feed_node_delete($node) {
-  // Delete the action item for the node.
-  db_delete('takeaction_feed_actions')
-    ->condition('nid', $node->nid, '=')
-    ->execute();
+function takeaction_feed_entity_delete($entity, $type) {
+  if ($type === 'followup') {
+    // Update the action item for the followup's node.
+    $node = node_load($entity->nid);
+    if ($node !== FALSE) {
+      takeaction_feed_entity_update('node', $node);
+    }
+  }
+  elseif ($type === 'node') {
+    // Delete the action item for the node.
+    db_delete('takeaction_feed_actions')
+      ->condition('nid', $node->nid, '=')
+      ->execute();
+  }
 }
 
 /**
@@ -188,26 +212,39 @@ function _takeaction_feed_field_value($node, $field, $default = '') {
 }
 
 /**
- * Helper function for translating a field with a 'value' into a list of values.
+ * Helper function for translating the update text into a list of values.
  *
  * @param object $node
- *   The node to which the field is attached.
- * @param string $field
- *   The name of the field containing the value.
+ *   The node to which the updates are connected.
  *
  * @return array
- *   An array of the individual field values stripped of all HTML markup.
+ *   An array of the update text values stripped of all HTML markup.
  */
-function _takeaction_feed_field_list($node, $field) {
-  $items = field_get_items('node', $node, $field);
+function _takeaction_feed_update_text_list($node) {
+
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'followup')
+    ->propertyCondition('type', 'update_text')
+    ->propertyCondition('nid', $node->nid)
+    ->execute();
+
   $values = array();
-  if ($items !== FALSE) {
-    foreach ($items as $delta => $item) {
-      $values[] = array(
-        'title' => '',
-        'text' => strip_tags($item['value']),
-        'timestamp' => 0,
-      );
+  if (!empty($result['followup'])) {
+    $updates = entity_load('followup', array_keys($result['followup']));
+    foreach ($updates as $id => $update) {
+
+      $text_item = reset(field_get_items('followup', $update,
+        'field_tab_update_text'));
+      $timestamp_item = reset(field_get_items('followup', $update,
+        'field_tab_update_timestamp'));
+
+      if ($text_item !== FALSE && $timestamp_item !== FALSE) {
+        $values[] = array(
+          'title' => $update->title,
+          'text' => strip_tags($text_item['value']),
+          'timestamp' => $timestamp_item['value'],
+        );
+      }
     }
   }
   return $values;
@@ -243,28 +280,42 @@ function _takeaction_feed_group_list($node, $field) {
 }
 
 /**
- * Helper function for translating a link field.
+ * Helper function for translating the content links into a list of links.
  *
  * @param object $node
- *   The node to which the field is attached.
- * @param string $field
- *   The name of the field containing the link.
+ *   The node to which the content links are attached.
  *
  * @return array
  *   An associative array containing the following
  *   title - The title of the link.
  *   url - The absolute URL of the link.
  */
-function _takeaction_feed_link_list($node, $field) {
-  $items = field_get_items('node', $node, $field);
+function _takeaction_feed_content_link_list($node) {
+
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'followup')
+    ->propertyCondition('type', 'content_link')
+    ->propertyCondition('nid', $node->nid)
+    ->execute();
+
   $links = array();
-  if ($items !== FALSE) {
-    foreach ($items as $delta => $item) {
-      $links[] = array(
-        'title' => $item['title'],
-        'url' => $item['url'],
-        'timestamp' => 0,
-      );
+  if (!empty($result['followup'])) {
+
+    $updates = entity_load('followup', array_keys($result['followup']));
+    foreach ($updates as $id => $update) {
+
+      $link_item = reset(field_get_items('followup', $update,
+        'field_tab_content_link'));
+      $timestamp_item = reset(field_get_items('followup', $update,
+        'field_tab_update_timestamp'));
+
+      if ($link_item !== FALSE && $timestamp_item !== FALSE) {
+        $links[] = array(
+          'title' => $link_item['title'],
+          'url' => $link_item['url'],
+          'timestamp' => $timestamp_item['value'],
+        );
+      }
     }
   }
   return $links;
@@ -314,6 +365,30 @@ function _takeaction_feed_term_list($node, $field) {
   // Load and implode the terms.
   $terms = taxonomy_term_load_multiple($tids);
   return taxonomy_implode_tags($terms);
+}
+
+/**
+ * Helper function for translating the action page URL.
+ *
+ * @param object $node
+ *   The action node.
+ *
+ * @return string
+ *   The URL of the action page.
+ */
+function _takeaction_feed_page_url($node) {
+  $page_url = url('node/' . $node->nid, array('absolute' => TRUE));
+  if ($node->type == 'action') {
+    $tab_action = reset(field_get_items('node', $node, 'field_tab_action'));
+    $link_only = reset(field_get_items('node', $node, 'field_tab_link_only'));
+    $action = reset(field_get_items('node', $node, 'field_action_url'));
+    if ($tab_action !== FALSE && $link_only !== FALSE && $action !== FALSE) {
+      if ($tab_action['value'] && $link_only['value']) {
+        $page_url = $action['url'];
+      }
+    }
+  }
+  return $page_url;
 }
 
 /**
@@ -424,6 +499,8 @@ function takeaction_feed_action_item_data($node) {
 
     return array(
       'id' => $node->nid,
+      'TABAction' => _takeaction_feed_field_value($node, 'field_tab_action',
+        '0'),
       'internalTitle' => $internal_title,
       'externalTitle' => $external_title,
       'publishedDate' => $node->created,
@@ -433,7 +510,7 @@ function takeaction_feed_action_item_data($node) {
       'externalDescription' => _takeaction_feed_field_value($node,
         'field_tab_external_desc'),
       'callToAction' => $call_to_action,
-      'pageUrl' => url('node/' . $node->nid, array('absolute' => TRUE)),
+      'pageUrl' => _takeaction_feed_page_url($node),
       'thumbnailUrl' => $thumbnail_url,
       'type' => _takeaction_feed_term_list($node, 'field_action_type'),
       'sponsors' => _takeaction_feed_group_list($node,
@@ -443,10 +520,8 @@ function takeaction_feed_action_item_data($node) {
       'topic' => _takeaction_feed_term_list($node, 'field_topic'),
       'freeTag' => _takeaction_feed_term_list($node, 'field_free_tag'),
       'actionCopy' => $aggregate_body,
-      'contentLinks' => _takeaction_feed_link_list($node,
-        'field_tab_content_link'),
-      'updateText' => _takeaction_feed_field_list($node,
-        'field_tab_update_text'),
+      'contentLinks' => _takeaction_feed_content_link_list($node),
+      'updateText' => _takeaction_feed_update_text_list($node),
       'actionGoal' => $action_goal,
       'dateRange' => $date_range,
       'priority' => _takeaction_feed_field_value($node, 'field_priority'),

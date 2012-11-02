@@ -4,26 +4,23 @@
  * THE CONTENT OF THE DISPLAY MODE SETTING.  This is an isolated case
  * of just action embeds so it might not be a problem.
  *
- * We are going to leave the embed display mode empty so it is 
+ * We are going to leave the embed display mode empty so it is
  * clear that we are not using those settings
  */
+$graphic_link = l(t('<span>Take Action!</span>'), "node/{$node->nid}", array('html' => TRUE));
+$title_link = l($node->title, "node/{$node->nid}");
 ?>
-<div class="embed-action-wrapper">
-    <div class="embed-action">
-        <table>
-            <tr>
-                <td class="graphic">
-                    <?php
-                    $taicon = '<img src="/profiles/takepart/themes/takepart3/images/take-action-embed.png" />';
-                    print l($taicon, "node/{$node->nid}", array('html' => TRUE));
-                    ?>
-                </td>
-                <td class="title">
-                    <?php
-                    print l($node->title, "node/{$node->nid}");
-                    ?>
-                </td>
-            </tr>
-        </table>
-    </div>
+<div class="embedaction-wrapper link clearfix">
+  <div class="more-actions">
+  <a class="button takepart-custom-take-action-button" href="javascript:void()"><span>See More Actions</span></a></div>
+  <div class="header">
+  <table>
+  <tbody>
+  <tr>
+  <td class="graphic"><?php print $graphic_link; ?></td>
+  <td class="title"><?php print $title_link; ?></td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
 </div>

@@ -165,6 +165,16 @@ function followup_field_extra_fields() {
           'description' => t('The title of the update'),
           'weight' => -10,
         ),
+        'rule' => array(
+          'label' => t('Rule'),
+          'description' => t('Horizontal rule'),
+          'weight' => -10,
+        ),
+        'date' => array(
+          'label' => t('Date + Title'),
+          'description' => t('Date and title of the update'),
+          'weight' => -10,
+        ),
       ),
     );
   }
@@ -251,7 +261,66 @@ function followup_theme() {
       ),
       'file' => 'followup.admin.inc',
     ),
+    'followup_title' => array(
+      'variables' => array(
+        'followup' => NULL,
+        'view_mode' => NULL,
+      ),
+    ),
+    'followup_rule' => array(
+      'variables' => array(
+        'followup' => NULL,
+        'view_mode' => NULL,
+      ),
+    ),
+    'followup_date' => array(
+      'variables' => array(
+        'followup' => NULL,
+        'view_mode' => NULL,
+      ),
+    ),
   );
+}
+
+/**
+ * Followup title theme function.
+ */
+function theme_followup_title($variables) {
+  $followup = $variables['followup'];
+  $output = '<div class="followup-title">';
+  $output .= '<h3>' . check_plain($followup->title) . '</h3>';
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Followup horizontal rule theme function.
+ */
+function theme_followup_rule($variables) {
+  return '<hr/><hr/>';
+}
+
+/**
+ * Followup date theme function.
+ */
+function theme_followup_date($variables) {
+  $followup = $variables['followup'];
+  $item = reset(field_get_items('followup', $followup,
+    'field_tab_update_timestamp'));
+  if ($item !== FALSE) {
+    $date = $item['value'];
+  }
+  else {
+    $date = $followup->created;
+  }
+  $output = '<div class="followup-date">';
+  $output .= '<h3>';
+  $output .= date('n/j', $date);
+  $output .= ' ';
+  $output .= check_plain($followup->title);
+  $output .= '</h3>';
+  $output .= '</div>';
+  return $output;
 }
 
 /**

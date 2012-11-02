@@ -1,0 +1,182 @@
+/* embedaction.scss */
+
+@mixin sprite-bg($sprite, $x, $y, $w, $h) {
+  background: $sprite no-repeat scroll $x $y transparent;
+  height: $h;
+  width: $w;
+}
+
+@mixin embedaction-wrapper($content-width) {
+
+  $sprite: url("../images/embedaction-sprite2.png");
+  $spriteOld: url("../images/embedaction-sprite.png");
+  
+  /* Sprite locations */
+  $more-x: -72px;
+  $more-y: -260px;
+  $more-w: 143px;
+  $more-h: 25px;
+
+  $header-expanded-x: 0;
+  $header-expanded-y: 0;
+  $header-collapsed-x: 0;
+  $header-collapsed-y: -117px;
+  $header-w: 480px;
+  $header-h: 117px;
+
+  $toggle-expanded-x: 0;
+  $toggle-collapsed-y: -234px;
+  $toggle-collapsed-x: 0;
+  $toggle-expanded-y: -247px;
+  $toggle-w: 480px;
+  $toggle-h: 13px;
+
+  $switch-expanded-x: 0;
+  $switch-expanded-y: -260px;
+  $switch-collapsed-x: -36px;
+  $switch-collapsed-y: -260px;
+  $switch-w: 36px;
+  $switch-h: 42px;
+
+  $link-x: 0;
+  $link-y: -206px;
+  $link-w: 480px;
+  $link-h: 132px;
+
+  $arrow-x: -215px;
+  $arrow-y: -264px;
+  $arrow-w: 13px;
+  $arrow-h: 21px;
+
+  background-color: #fff;
+  color: #000;
+  width: $content-width;
+
+  /* Position the button on the top right of the wrapper */
+  .more-actions {
+    display: none;
+    width: $content-width;
+    height: $more-h;
+    margin-bottom: -13px;
+    .button {
+      @include sprite-bg($sprite, $more-x, $more-y, $more-w, $more-h);
+      position: relative;
+      left: $content-width - $more-w;
+      display: block;
+      span {
+        display: none;
+      }
+    }
+    body.food-topic-content & {
+      display: block;
+    }
+  }
+
+  .header {
+    @include sprite-bg($sprite, $header-expanded-x, $header-expanded-y,
+      $header-w, $header-h);
+    font-size: 20px;
+    font-family: Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    line-height: 26px;
+    table {
+      border-collapse: collapse;
+      height: $header-h;
+      width: $content-width;
+      tbody {
+        border: none;
+      }
+      td.title {
+        padding: 14px 36px 0 175px;
+        vertical-align: middle;
+      }
+    }
+    .field-name-field-promo-headline {
+      font-size: 20px;
+    }
+  }
+
+  .toggle {
+    @include sprite-bg($sprite, $toggle-expanded-x, $toggle-expanded-y,
+      $toggle-w, $toggle-h);
+    clear: both;
+    .switch {
+      @include sprite-bg($sprite, $switch-expanded-x, $switch-expanded-y,
+        $switch-w, $switch-h);
+      position: relative;
+      top: -29px;
+      left: 436px;
+      cursor: pointer;
+    }
+  }
+
+  > .content {
+    border-left: 4px solid #FFCD33;
+    border-right: 4px solid #FFCD33;
+    border-bottom: 4px solid #FFCD33;
+    display: block;
+  }
+
+  &.collapsed {
+    .header {
+      @include sprite-bg($sprite, $header-collapsed-x, $header-collapsed-y,
+        $header-w, $header-h);
+      cursor: pointer;
+    }
+    .toggle {
+      @include sprite-bg($sprite, $toggle-collapsed-x, $toggle-collapsed-y,
+        $toggle-w, $toggle-h);
+      .switch {
+        @include sprite-bg($sprite, $switch-collapsed-x, $switch-collapsed-y,
+          $switch-w, $switch-h);
+      }
+    }
+    > .content {
+      display: none;
+    }
+  }
+
+  &.link {
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+    .more-actions {
+      margin-bottom: -15px;
+    }
+
+    .header {
+      @include sprite-bg($spriteOld, $link-x, $link-y, $link-w, $link-h);
+      cursor: default;
+
+      table {
+        height: $link-h;
+        td.title {
+          padding: 17px 30px 16px 15px;
+          height: 100px;
+          width: 290px;
+        }
+        td.graphic {
+          padding: 24px;
+          height: 84px;
+          width: 100px;
+          a {
+            cursor: pointer;
+            display: block;
+            height: 84px;
+            width: 100px;
+            span {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+#page #content .embedaction-wrapper {
+  @include embedaction-wrapper(480px);
+}

@@ -102,7 +102,8 @@ function takepart3_preprocess_page(&$variables) {
       }
     }
 
-    if ($variables['node']->type == 'venue') {
+    if ($variables['node']->type == 'venue' || $variables['node']->type == 'action'
+            || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action') {
       $variables['is_multipage'] = TRUE;
     }
 
@@ -1138,6 +1139,10 @@ function _render_tp3_header(&$params) {
     return theme('takepart3_header', $params);
 }
 
+function _render_tp3_slim_header(&$params) {
+    return theme('takepart3_slim_header', $params);
+}
+
 function _render_tp3_footer(&$params) {
     return theme('takepart3_footer', $params);
 }
@@ -1156,15 +1161,19 @@ function _render_tp3_wrapper_footer(&$params) {
  */
 function _render_tp3_renderheaderfooterfeed(&$vars) {
     $uri = drupal_get_path_alias($_GET['q']);
-    $uri = substr($uri, 0, 14);
-    if (($uri == 'iframes/header') || ($uri == 'iframes/footer')) {
+    // $uri = substr($uri, 0, 14);
+    if (($uri == 'iframes/header') || ($uri == 'iframes/footer') || ($uri == 'iframes/slim-header')) {
         $vars['page_top'] = null;
         $vars['page_bottom'] = null;
         $vars['page'] = null;
         _tp3_fill_template_vars($vars);
         if ($uri == 'iframes/header') {
             $vars['custom'] = _render_tp3_header($vars);
-        } elseif ($uri == 'iframes/footer') {
+        }
+        elseif ($uri == 'iframes/slim-header') {
+            $vars['custom'] = _render_tp3_slim_header($vars);
+        }
+        elseif ($uri == 'iframes/footer') {
             $vars['custom'] = _render_tp3_footer($vars);
         }
     }
@@ -1200,6 +1209,12 @@ function takepart3_theme() {
     return array(
         'takepart3_header' => array(
             'template' => 'templates/pages/header',
+            'arguments' => array(
+                'params' => NULL,
+            ),
+        ),
+        'takepart3_slim_header' => array(
+            'template' => 'templates/pages/header-slim',
             'arguments' => array(
                 'params' => NULL,
             ),
