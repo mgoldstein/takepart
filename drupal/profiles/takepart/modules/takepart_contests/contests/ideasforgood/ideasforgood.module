@@ -305,7 +305,7 @@ function ideasforgood_vote_form_submit(&$form, &$form_state) {
       if ($ex->getResponseCode() != 409 ||
           $ex->getResponseBody() != 'Email limiting check failed') {
         $message = 'Error sending vote signup [@code] @body';
-        wathdog('ideasforgood', $message, array(
+        watchdog('ideasforgood', $message, array(
           '@code' => $ex->getResponseCode(),
           '@body' => $ex->getResponseBody(),
         ));
