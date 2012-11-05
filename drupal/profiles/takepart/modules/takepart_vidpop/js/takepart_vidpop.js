@@ -131,7 +131,7 @@ function vidpop_loaded() {
                 }
             }
             catch (err) {
-                alert(err);
+                // alert(err);
             }
         }
     }
