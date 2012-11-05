@@ -13,7 +13,7 @@
 })(jQuery);
 
 // Separate the recipients of a petiion with commas.
-(function ($) {
+/*(function ($) {
   Drupal.behaviors.recipientlist = {
     attach: function (context, settings) {
       $('.field-name-field-petition-recipient').once('recipientlist', function () {
@@ -21,7 +21,7 @@
       });
     }
   }
-})(jQuery);
+})(jQuery);*/
 
 // Widgetize the read more / read less link.
 (function ($) {
@@ -126,3 +126,119 @@
     }
   };
 })(jQuery);
+
+// Not sure about all those redundant self-executing anonymous functions up there
+(function(window, $, undefined) {
+// Document ready
+$(function() {
+
+  // give pledge actions the same class as petition actions for styling
+  // TODO: fix in the html and remove this
+  $('.pledge_action, .petition_action').addClass('petition_pledge_action');
+
+  // Uses css3 to rotate stuff.
+  // TODO: put this in its own plugin file
+  $.fn.protate = function(deg) {
+    var rotate = 'rotate(' + deg + 'deg)';
+    /*var deg2radians = Math.PI * 2 / 360;
+    var rad = deg * deg2radians ;
+    var costheta = Math.cos(rad);
+    var sintheta = Math.sin(rad);
+
+    var m11 = costheta;
+    var m12 = -sintheta;
+    var m21 = sintheta;
+    var m22 = costheta;
+    var matrixValues = 'M11=' + m11 + ', M12='+ m12 +', M21='+ m21 +', M22='+ m22;*/
+
+    return this
+      .css({
+        '-webkit-transform': rotate,
+        '-moz-transform': rotate,
+        '-ms-transform': rotate,
+        'transform': rotate
+      });
+      //.css('filter', 'progid:DXImageTransform.Microsoft.Matrix(sizingMethod=\'auto expand\','+matrixValues+')')
+      //.css('-ms-filter', 'progid:DXImageTransform.Microsoft.Matrix(SizingMethod=\'auto expand\','+matrixValues+')');
+  };
+
+  // Add two elements to make a pie chart. ie9+
+  // TODO: put this in its own plugin file
+  $.fn.pie = function(params) {
+    if ( $.browser.msie && $.browser.version < 9 ) return this;
+
+    var settings = $.extend({
+      prepend: 'pie_'
+    }, params || {});
+
+    var prepend = settings.prepend;
+
+    return this.each(function() {
+      var $this = $(this)
+        .css({
+          position: 'relative'
+        })
+        .addClass(prepend + 'container')
+
+      var startp = settings.start || $this.data('pie-start') || 0;
+      var endp = settings.end || $this.data('pie-end') || 100;
+      var $pie = $('<div/>').addClass(prepend + 'slice_container').appendTo($this);
+      var $slice = $('<div/>');
+      var $slice_fill = $('<div/>');
+      var w = $pie.width();
+      var slice_css = {
+        clip: 'rect(0,' + w/2 + 'px,' + w + 'px,0)',
+        position: 'absolute',
+        height: '100%',
+        width: '100%'
+      };
+
+      startp = startp - (endp/2);
+
+      $pie
+        .css({
+          clip: 'rect(0,' + w + 'px,' + w + 'px,' + w/2 + 'px)',
+          position: 'absolute'
+        })
+        .protate(startp / 100 * 360)
+        ;
+
+
+      $slice
+        .addClass(prepend + 'slice ')
+        .protate(180)
+        .css(slice_css)
+        .hide()
+        ;
+
+      $slice_fill
+        .addClass(prepend + 'slice ' + prepend + 'fill')
+        .protate(endp / 100 * 360)
+        .css(slice_css)
+        ;
+
+      $this
+        .prepend(
+          $pie
+            .append($slice)
+            .append($slice_fill)
+        );
+
+      if ( endp > 50 ) {
+        $slice.show();
+        $pie
+          .css({
+            clip: 'rect(auto,auto,auto,auto)'
+          })
+          ;
+      }
+    });
+  };
+
+  $('.signature-progress-percent').each(function() {
+    var $this = $(this);
+    var end = parseInt($this.find('.percentage').html());
+    $this.pie({start: 25, end: 100 - end});
+  });
+});
+})(window, jQuery);
