@@ -434,13 +434,13 @@ ul,ol
 
 #views_slideshow_controls_text_previous_photo_gallery-block
 {
-    background:url(../images/2012-02-08/gallery_left_arrow.png) no-repeat scroll 0 0 transparent;
+    background:transparent url("../images/2012-02-08/gallery_left_arrow.png") no-repeat scroll 0 0;
     float:left;
 }
 
 #views_slideshow_controls_text_next_photo_gallery-block
 {
-    background:url(../images/2012-02-08/gallery_right_arrow.png) no-repeat scroll 0 0 transparent;
+    background:transparent url("../images/2012-02-08/gallery_right_arrow.png") no-repeat scroll 0 0;
     float:right;
 }
 
@@ -448,10 +448,9 @@ ul,ol
     padding: 4px 0 0;
     float: left;
     height: 30px;
-    width: 675px;
-    overflow: hidden;
+    width: 676px;
+    overflow: visible;
 }
-
 
 /*top menu fonts*/
 #block-menu-block-1 li
