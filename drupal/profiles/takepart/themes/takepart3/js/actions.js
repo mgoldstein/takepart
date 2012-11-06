@@ -134,7 +134,7 @@ $(function() {
 
   // give pledge actions the same class as petition actions for styling
   // TODO: fix in the html and remove this
-  $('.pledge_action, .petition_action').addClass('petition_pledge_action');
+  $('.pledge_action, .petition_action, .embedaction-wrapper').addClass('petition_pledge_action');
 
   // Uses css3 to rotate stuff.
   // TODO: put this in its own plugin file
@@ -183,7 +183,16 @@ $(function() {
         });
       }
       var startp = settings.start || $this.data('pie-start') || 0;
-      var endp = settings.end || $this.data('pie-end') || 100;
+
+      var endp = 100;
+      if ( settings.end != undefined ) {
+        endp = settings.end;
+      } else if ( $this.data('pie-end') != undefined ) {
+        endp = $this.data('pie-end');
+      }
+      endp = parseInt(endp);
+      if ( endp > 100 ) endp = 100;
+
       var $pie = $('<div/>').addClass(prepend + 'slice_container').appendTo($this);
       var $slice = $('<div/>');
       var $slice_fill = $('<div/>');
@@ -240,6 +249,9 @@ $(function() {
   $('.signature-progress-percent').each(function() {
     var $this = $(this);
     var end = parseInt($this.find('.percentage').html());
+    if (end > 100) {
+      end = 100;
+    }
     $this.pie({start: 25, end: 100 - end});
   });
 });
