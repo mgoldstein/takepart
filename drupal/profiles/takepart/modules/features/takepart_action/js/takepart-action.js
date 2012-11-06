@@ -17,7 +17,7 @@
                             window.location = jQuery(this).attr('href');
                         }
                     }
-                    s.linkTrackVars="eVar28,eVar30,events";
+                    s.linkTrackVars="eVar28,eVar30,prop53,eVar53,prop55,eVar55,prop66,prop67,events";
                     s.linkTrackEvents="event37, event19, event56";
                     s.eVar28='tpaction';
                     s.eVar30='takepart:actions:' + $('h1.title').text();
