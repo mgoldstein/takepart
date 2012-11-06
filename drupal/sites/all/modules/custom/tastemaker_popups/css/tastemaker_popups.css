@@ -1,0 +1,23 @@
+/*
+ *  @file styles for rightrail_popups
+ *
+ */
+
+.tastemaker-popup .title {
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 24px;
+  padding-bottom: 10px;
+}
+.tastemaker-popup .description {
+  color: black;
+  font-size: 13px;
+  line-height: 15px;
+  padding-bottom: 10px;
+}
+
+.video-thumb-table td .vid-arrow {
+  cursor: pointer;
+}
+
