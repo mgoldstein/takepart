@@ -1,9 +1,8 @@
 <?php
 /**
- * @file rightrail-video-preview.tpl.php
+ * @file tastemaker-video-preview.tpl.php
  * Display right rail block preview
  *
- * - $p_title     block title
  * - $p_video_id  id of video
  * - $p_popup     popup html
  *
