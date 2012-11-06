@@ -183,8 +183,16 @@ $(function() {
         });
       }
       var startp = settings.start || $this.data('pie-start') || 0;
-      var endp = settings.end || $this.data('pie-end') || 100;
+
+      var endp = 100;
+      if ( settings.end != undefined ) {
+        endp = settings.end;
+      } else if ( $this.data('pie-end') != undefined ) {
+        endp = $this.data('pie-end');
+      }
+      endp = parseInt(endp);
       if ( endp > 100 ) endp = 100;
+
       var $pie = $('<div/>').addClass(prepend + 'slice_container').appendTo($this);
       var $slice = $('<div/>');
       var $slice_fill = $('<div/>');
