@@ -182,6 +182,7 @@ $(function() {
 
       var startp = settings.start || $this.data('pie-start') || 0;
       var endp = settings.end || $this.data('pie-end') || 100;
+      if ( endp > 100 ) endp = 100;
       var $pie = $('<div/>').addClass(prepend + 'slice_container').appendTo($this);
       var $slice = $('<div/>');
       var $slice_fill = $('<div/>');
