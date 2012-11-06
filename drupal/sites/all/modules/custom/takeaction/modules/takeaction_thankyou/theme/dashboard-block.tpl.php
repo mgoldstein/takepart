@@ -9,8 +9,13 @@
   <a class="dashboard-link" href="<?php print $dashboard_url; ?>"><?php print $dashboard_link; ?></a> 
 <?php else: ?>
   <div class="content">
-  <img class="preview" src="" />
-  <p><?php print $text; ?></p>
-  <a class="facebook-login" href="<?php print $login_url; ?>"><?php print $login_link; ?></a>
+  <div class='inner_content_left'>
+    <img class="preview" src="/profiles/takepart/themes/takepart3/images/tab/imgPrev.jpg" />
+  </div>
+  <div class='inner_content_right'>
+    <p><?php print $text; ?></p>
+    <a class="facebook-login" href="<?php print $login_url; ?>"><?php print $login_link; ?></a>
+  </div>
   </div>
 <?php endif ?>
+</div>
