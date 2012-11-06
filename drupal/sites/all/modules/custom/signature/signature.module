@@ -1528,7 +1528,7 @@ function theme_signature_progress_percent($variables) {
   $output .= '<span class="percentage">';
   $output .= number_format($progress['percent'], $progress['decimals']) . '%';
   $output .= '</span>';
-  $output .= '<span class="complete">Complete</span>';
+  $output .= ' <span class="complete">Complete</span>';
   $output .= '</div>';
   return $output;
 }
@@ -1655,8 +1655,8 @@ function theme_signature_action_taken($variables) {
   $action_type = $variables['action_type'];
   $output = '<div class="signature-action-taken">';
   $output .= '<span class="salutation">' . t("You've") . '</span>';
-  $output .= '<span class="action">' . $action_type['action_taken'] . '</span>';
-  $output .= '<span class="title">' . check_plain($node->title) . '</span>';
+  $output .= ' <span class="action">' . $action_type['action_taken'] . '</span>';
+  $output .= ' <span class="title">' . check_plain($node->title) . '</span>';
   $output .= '</div>';
   return $output;
 }
