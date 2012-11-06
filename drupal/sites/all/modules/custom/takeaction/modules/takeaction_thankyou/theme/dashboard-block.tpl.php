@@ -14,3 +14,4 @@
   <a class="facebook-login" href="<?php print $login_url; ?>"><?php print $login_link; ?></a>
   </div>
 <?php endif ?>
+</div>
