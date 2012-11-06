@@ -151,6 +151,11 @@ div.drupal-embed .view-mode-medium-preview .signature-progress-percent .complete
   font-size: 7px;
   font-weight: normal;
 }
+div.drupal-embed .view-mode-medium-preview .signature-progress-percent span, /* selector override for embedded styling */
+.view-mode-medium-preview .signature-progress-percent span {
+  position: relative;
+  z-index: 2;
+}
 div.drupal-embed .view-mode-medium-preview .signature-progress-percent .percentage, /* selector override for embedded styling */
 .view-mode-medium-preview .signature-progress-percent .percentage {
   font-size: 16px;
@@ -553,6 +558,13 @@ div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-act
 .pie_container .pie_slice {
   background: #000;
   border-radius: 56px;
+}
+
+.view-mode-medium-preview .pie_container .pie_slice_container {
+  width: 53px;
+  height: 53px;
+  left: 12px;
+  top: 9px;
 }
 
 /*.field-name-field-petition-recipient .field-item:after {

@@ -175,11 +175,13 @@ $(function() {
 
     return this.each(function() {
       var $this = $(this)
-        .css({
-          position: 'relative'
-        })
         .addClass(prepend + 'container')
 
+      if ($this.css('position') != 'relative' && $this.css('position') != 'absolute'){
+        $this.css({
+          position: 'relative'
+        });
+      }
       var startp = settings.start || $this.data('pie-start') || 0;
       var endp = settings.end || $this.data('pie-end') || 100;
       var $pie = $('<div/>').addClass(prepend + 'slice_container').appendTo($this);
