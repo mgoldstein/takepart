@@ -5,7 +5,7 @@
   Drupal.behaviors.rrPopups = {
     attach: function (context, settings) {
       $('.rr-preview .colorbox-inline').live('click', (function(){
-      // click onrt rail popup
+      // click on rt rail popup
         vidpopSource = 'rtrail';
       }));
      }
