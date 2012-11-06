@@ -22,7 +22,6 @@ stylesheets[all][] = css/signatures.css
 stylesheets[all][] = css/petitions.css
 stylesheets[all][] = css/pledges.css
 stylesheets[all][] = css/actions.css
-stylesheets[all][] = css/actions_thankyou.css
 
 ; Javascript
 scripts[] = js/script.js
