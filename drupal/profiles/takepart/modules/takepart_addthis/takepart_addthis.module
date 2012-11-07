@@ -790,7 +790,6 @@ function takepart_addthis_field_formatter_view($entity_type, $entity, $field,
 
   drupal_add_js(array('addthis' => array(
     'fields' => $configurations,
-    'guid' => takeaction_tracking_get_guid(),
   )), 'setting');
 
   $js_path = drupal_get_path('module', 'takepart_addthis')

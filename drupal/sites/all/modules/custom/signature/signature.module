@@ -792,7 +792,6 @@ function signature_node_view($node, $view_mode, $langcode) {
     // Make the action title and type available for metrics.
     drupal_add_js(array(
       'signature' => array(
-        'guid' => takeaction_tracking_get_guid(),
         'nodes' => array(
           $view_mode => array(
             'node-' . (string) $node->nid => array(
@@ -911,12 +910,6 @@ function signature_node_view($node, $view_mode, $langcode) {
       '#action_type' => $action_type,
       '#view_mode' => $view_mode,
     );
-
-    drupal_add_js(array(
-      'signature' => array(
-        'guid' => takeaction_tracking_get_guid(),
-      ),
-    ), 'setting');
   }
 }
 
