@@ -7,5 +7,9 @@ Installation
 ============
 The vidpop module must be enabled.
 
-Enable the new module "Right Rail Video Popups Support"
+Enable the new module "Rightrail Popups Support"
 (sites/all/modules/custom/rightrail_popups)
+
+
+
+NOTE: a copy of the recent body field is in js/page.html

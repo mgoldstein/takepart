@@ -370,34 +370,15 @@ EOT;
  */
 function takepart_vidpop_get_map_details() {
   $nid = arg(2);
-  $output = 'error reading node';
-  $cached_output = &drupal_static(__FUNCTION__);
-  if (!isset($cached_output)) {
-    if ($cache = cache_get('vidpop_map_data')) {
-      $cached_output = $cache->data;
-    }
-    else {
-      // create and save the cache
-      cache_set('vidpop_map_data', $cached_output, 'cache');
-    }
+  $node = node_load($nid);
+  if ($node) {
+    $vnode = node_view($node);
+    $output = drupal_render($vnode['field_video_embedded']);
+  }
+  else {
+    $output = __FUNCTION__ . ': could not load nid ' . $nid;
   }
 
-  // do we have the data from a previous request?
-  if (!isset($cached_output[$nid])) {
-    // no data, get it
-    $node = node_load($nid);
-    if ($node) {
-      $vnode = node_view($node);
-      $cached_output[$nid] = drupal_render($vnode['field_video_embedded']);
-      // update the cache
-      cache_set('vidpop_map_data', $cached_output, 'cache');
-    }
-    else {
-      $output = __FUNCTION__ . ': could not cache nid ' . $nid;
-    }
-  }
-
-  $output = $cached_output[$nid];
   print $output;
   drupal_exit();
 }
@@ -458,3 +439,11 @@ function takepart_vidpop_entity_info_alter(&$entity_info) {
   );
 }
 
+
+/***
+ * function: returns "loading video" graphic as html
+ *
+ */
+function takepart_vidpop_loading_graphic() {
+  return '<div class="vidpop-loader"></div>';
+}

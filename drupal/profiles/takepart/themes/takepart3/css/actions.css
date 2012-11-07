@@ -1,3 +1,13 @@
+.petition_pledge_action .addthis_toolbox,
+.block-takeaction-thankyou .addthis_toolbox {
+  line-height: 0px;
+}
+.petition_pledge_action .addthis_toolbox>a,
+.block-takeaction-thankyou .addthis_toolbox>a {
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: middle;
+  float: none;
+}
 .more-or-less-view.active {
   display: block;
 }
@@ -37,11 +47,12 @@ div.drupal-embed .group-heading .signature-progress-percent span {
 
 /* # Preview Page
 ================================================== */
+.take-action-landing-page .main-content .field-name-field-tp-campaign-subheadline ,
 .page-node-30110 .main-content .field-name-field-tp-campaign-subheadline {
   font-family: 'TradeGothicLTStdCnBold', Helvetica, Arial, sans-serif;
   font-size: 28px;
-  border-bottom: 1px solid #cccccc;
   padding-bottom: 10px;
+  background: url('../images/tab/doubleLine.png') repeat-x bottom left;
   margin-bottom: 30px;
 }
 
@@ -52,6 +63,21 @@ div.drupal-embed .group-heading .signature-progress-percent span {
 #right-rail #block-boxes-take-action-about-dashboard {
   padding: 0;
   border: none;
+}
+#right-rail #block-boxes-take-action-join-now h2,
+#right-rail #block-boxes-what-is-takepart-take-action h2,
+#right-rail #block-boxes-take-action-about-dashboard h2 {
+  font-family: 'TradeGothicLTStdCnBold', Helvetica, Arial, sans-serif;
+  background: transparent;
+  color: #000;
+  padding-bottom: 10px;
+  background: url('../images/tab/doubleLine.png') repeat-x bottom left;
+  margin-bottom: 10px;
+}
+#right-rail #block-boxes-take-action-join-now h2 span,
+#right-rail #block-boxes-what-is-takepart-take-action h2 span,
+#right-rail #block-boxes-take-action-about-dashboard h2 span {
+  background: transparent;
 }
 #right-rail #block-boxes-take-action-join-now p,
 #right-rail #block-boxes-what-is-takepart-take-action p,
@@ -103,33 +129,12 @@ div.drupal-embed .view-mode-medium-preview .group-heading .signature-progress-pe
 .view-mode-medium-preview .signature-progress-percent {
   right: 0;
   top: -49px;
-  background: url(../images/tab/sprite-pie-20-sm.png) no-repeat;
+  background: url('../images/tab/orange-circle-wsh.png') no-repeat;
   width: 76px;
   height: 49px;
   overflow: hidden;
   padding-top: 23px;
 }
-.view-mode-medium-preview .signature-progress-complete-twentieth-0 { background-position: 0 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-1 { background-position: -86px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-2 { background-position: -172px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-3 { background-position: -258px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-4 { background-position: -344px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-5 { background-position: -430px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-6 { background-position: -516px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-7 { background-position: -602px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-8 { background-position: -688px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-9 { background-position: -774px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-10 { background-position: -860px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-11 { background-position: -946px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-12 { background-position: -1032px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-13 { background-position: -1118px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-14 { background-position: -1204px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-15 { background-position: -1290px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-16 { background-position: -1376px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-17 { background-position: -1462px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-18 { background-position: -1548px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-19 { background-position: -1634px 0; }
-.view-mode-medium-preview .signature-progress-complete-twentieth-20 { background-position: -1720px 0; }
 .view-mode-medium-preview .group_summary,
 .view-mode-medium-preview .field-name-field-action-main-image {
   display: inline-block; *display: inline; *zoom: 1;
@@ -290,7 +295,7 @@ margin-bottom: 15px;
   clear: both;
   display: block;
   height: 28px;
-  padding: 15px 0;
+  padding: 15px 7px 15px 0;
   text-align: center;
   width: 60px;
   float: left;
@@ -840,6 +845,10 @@ iframe.moreactions {
   z-index: 2;
 }
 
+.petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-goal {
+
+}
+
 .petition_pledge_action #block-signature-summary .group-signature-progress span {
   position: relative;
 }
@@ -910,8 +919,6 @@ iframe.moreactions {
   margin-top: 10px;
   padding-top: 10px;
 }
-
-/* pie stuff */
 
 .pie_container .pie_slice_container {
   opacity: 0.2;

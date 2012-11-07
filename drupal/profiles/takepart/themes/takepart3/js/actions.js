@@ -249,6 +249,9 @@ $(function() {
   $('.signature-progress-percent').each(function() {
     var $this = $(this);
     var end = parseInt($this.find('.percentage').html());
+    if (end > 100) {
+      end = 100;
+    }
     $this.pie({start: 25, end: 100 - end});
   });
 });
