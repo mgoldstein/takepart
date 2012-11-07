@@ -13,7 +13,7 @@
 })(jQuery);
 
 // Separate the recipients of a petiion with commas.
-/*(function ($) {
+(function ($) {
   Drupal.behaviors.recipientlist = {
     attach: function (context, settings) {
       $('.field-name-field-petition-recipient').once('recipientlist', function () {
@@ -21,7 +21,7 @@
       });
     }
   }
-})(jQuery);*/
+})(jQuery);
 
 // Widgetize the read more / read less link.
 (function ($) {
