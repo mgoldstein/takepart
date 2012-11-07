@@ -114,6 +114,10 @@ function takeaction_thankyou_block_view($delta = '') {
           )),
         ),
       );
+      drupal_add_js(drupal_get_path('module', 'takeaction_thankyou')
+        . '/js/sharing-metrics.js',
+        array('group' => JS_DEFAULT, 'type' => 'file')
+      );
     }
     else {
       $block['content'] = '';
@@ -121,6 +125,7 @@ function takeaction_thankyou_block_view($delta = '') {
   }
   elseif ($delta === 'dashboard') {
     global $user;
+    $dashboard_url = variable_get('takeaction_dashboard_url', '');
     $variables = array(
       'logged_in' => !empty($user->uid),
       'heading' => t('Track Your Impact'),
