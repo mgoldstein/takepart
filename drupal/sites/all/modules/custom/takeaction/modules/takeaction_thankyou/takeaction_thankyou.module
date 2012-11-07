@@ -133,10 +133,8 @@ function takeaction_thankyou_block_view($delta = '') {
       'dashboard_link' => t('>> View Your Dashboard'),
       'dashboard_url' => $dashboard_url,
       'login_link' => t('Continue with Facebook Login'),
-      'login_url' => url('/user', array(
-        'query' => array(
+      'login_url' => '/user?' . drupal_http_build_query(array(
           'destination' => $dashboard_url,
-        ),
       )),
     );
     $block['subject'] = t('Track your impact');
