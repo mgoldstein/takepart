@@ -70,7 +70,7 @@
     attach: function (context, settings) {
       $('.signature-form').once('signatureform', function () {
         $(this).displaydisclaimer();
-        $(this).infieldlabels();
+        //$(this).infieldlabels();
         $(this).selectableaddress();
       });
     }
