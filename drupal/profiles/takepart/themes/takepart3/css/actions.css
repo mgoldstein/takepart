@@ -628,8 +628,8 @@ iframe.moreactions {
   margin-bottom: 20px;
 }
 
-.petition_pledge_action {
-  padding: 10px 0 0 30px;
+#page.petition_pledge_action {
+  padding: 10px 20px 0 20px;
 }
 
 .petition_pledge_action #block-takepart-custom-page-title-h1 h1 span {
