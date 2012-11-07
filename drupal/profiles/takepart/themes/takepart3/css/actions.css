@@ -1,3 +1,13 @@
+.petition_pledge_action .addthis_toolbox,
+.block-takeaction-thankyou .addthis_toolbox {
+  line-height: 0px;
+}
+.petition_pledge_action .addthis_toolbox>a,
+.block-takeaction-thankyou .addthis_toolbox>a {
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: middle;
+  float: none;
+}
 .more-or-less-view.active {
   display: block;
 }
