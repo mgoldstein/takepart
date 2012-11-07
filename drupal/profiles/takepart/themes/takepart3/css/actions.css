@@ -223,6 +223,9 @@ div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-act
   padding-top: 8px;
 }
 .view-mode-medium-preview .signature-call-to-action a:hover {
+  background-position: 0 -32px;
+}
+.view-mode-medium-preview .signature-call-to-action a:hover {
   text-decoration: none;
 }
 .view-mode-medium-preview .signature-progress-needed,
