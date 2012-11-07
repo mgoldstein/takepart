@@ -8,6 +8,11 @@
   vertical-align: middle;
   float: none;
 }
+.petition_pledge_action .addthis_toolbox .addthis_button_google_plusone,
+.block-takeaction-thankyou .addthis_toolbox .addthis_button_google_plusone {
+  width: 51px;
+  overflow: hidden;
+}
 .more-or-less-view.active {
   display: block;
 }
@@ -58,6 +63,9 @@ div.drupal-embed .group-heading .signature-progress-percent span {
 
 /* # Preview Page Right Rail
 ================================================== */
+.logged-in #right-rail #block-boxes-take-action-join-now {
+  display: none;
+}
 #right-rail #block-boxes-take-action-join-now,
 #right-rail #block-boxes-what-is-takepart-take-action ,
 #right-rail #block-boxes-take-action-about-dashboard {
@@ -219,7 +227,7 @@ div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-act
 }
 .view-mode-medium-preview .signature-progress-needed,
 .view-mode-medium-preview .needed {
-  font-size: 10px;
+  font-size: 11px;
   color: #707070;
   padding-top: 5px;
   display: block;
@@ -239,13 +247,13 @@ div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-act
 ================================================== */
 #block-takeaction-thankyou-thank-you {
   border: 1px solid #e6dcbd;
-  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1), 1px -1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
   background: #fffaea;
   padding: 20px;
 }
 .main-content .block-takeaction-thankyou, /* selector override */
 .block-takeaction-thankyou {
-margin-bottom: 15px;
+margin-bottom: 25px;
 }
 .main-content .block-takeaction-thankyou h2, /* selector override */
 .block-takeaction-thankyou h2 {
@@ -260,6 +268,13 @@ margin-bottom: 15px;
   text-transform: uppercase;
   font-weight: normal;
   font-size: 24px;
+}
+#block-takeaction-thankyou-thank-you {
+  font-size: 13px;
+}
+#block-takeaction-thankyou-thank-you .content .count,
+#block-takeaction-thankyou-thank-you .content .title {
+  font-weight: bold;
 }
 .main-content #block-takeaction-thankyou-thank-you h2, /* selector override */
 #block-takeaction-thankyou-thank-you h2 {
@@ -349,7 +364,7 @@ margin-bottom: 15px;
   font-weight: normal!important;
   text-transform: uppercase;
   border: 1px solid #cb9900;
-  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2), 1px -1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
   text-shadow: 0 1px 2px rgba(100%,100%,100%,0.5);
   padding: 15px 20px;
 }
