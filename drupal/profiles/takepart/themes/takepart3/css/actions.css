@@ -837,7 +837,7 @@ iframe.moreactions {
 .petition_pledge_action #block-signature-summary > .content {
   border-top: 1px solid #ccc;
   margin-top: 3px;
-  padding: 10px;
+  padding: 10px 0 0 0;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress {
@@ -909,6 +909,7 @@ iframe.moreactions {
   text-transform: uppercase;
   font-size: 18px;
   margin-bottom: 10px;
+  font-weight: normal;
 }
 
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor .field-name-field-group-logo,
@@ -927,13 +928,14 @@ iframe.moreactions {
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor .field-name-field-short-introduction,
 .petition_pledge_action #block-signature-summary .field-name-field-action-organizer .field-name-field-short-introduction {
   font-size: 12px;
+  line-height: 1.5;
 }
 
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor,
 .petition_pledge_action #block-signature-summary .field-name-field-action-organizer {
   border-top: 1px solid #ccc;
   margin-top: 10px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .petition_pledge_action .block-boxes-view-name-content_updates h2 {
