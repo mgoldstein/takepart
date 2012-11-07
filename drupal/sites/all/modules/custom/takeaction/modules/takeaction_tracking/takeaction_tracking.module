@@ -20,7 +20,7 @@ function takeaction_tracking_track_action($nid) {
   $guid = takeaction_tracking_get_guid();
   try {
     $api = takeaction_get_api();
-    $api->addUserAction($guid, $entity->nid);
+    $api->addUserAction($guid, $nid);
   }
   catch (TakeActionApiException $ex) {
     $message = 'Error adding user action [@code] @body';
