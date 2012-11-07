@@ -41,7 +41,6 @@ Disallow: /rg/
 Disallow: /scripts/
 Disallow: /search/
 Disallow: /searchforcommonground/
-Disallow: /sites/
 Disallow: /tag/
 Disallow: /taxonomy/
 Disallow: /themes/
