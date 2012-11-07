@@ -606,6 +606,11 @@ iframe.moreactions {
   font-weight: bold;
   float: left;
   padding-left: 40px;
+  background: url(/profiles/takepart/themes/takepart3/css/images/action-pledge-icon.png) left top no-repeat;
+}
+
+.petition_action .block-boxes-bid-boxes-action_topic_and_share .field-type-taxonomy-term-reference {
+  background-image: url(/profiles/takepart/themes/takepart3/css/images/action-petition-icon.png);
 }
 
 .petition_pledge_action .block-boxes-bid-boxes-action_topic_and_share .field-type-share-bar {
@@ -726,6 +731,8 @@ iframe.moreactions {
   border: 1px solid #fdbc59;
   cursor: pointer;
   cursor: hand;
+  text-transform: uppercase;
+  font-weight: bold;
 
   background: #ffca00;
   background: -moz-linear-gradient(top,  #ffda4d 2%, #ffca00 6%);
@@ -933,6 +940,161 @@ iframe.moreactions {
   height: 53px;
   left: 12px;
   top: 9px;
+}
+
+/* embeded action */
+
+.embedaction-wrapper.petition_pledge_action {
+  padding: 0;
+}
+
+.embedaction-wrapper .content-bottom {
+  padding-top: 1px;
+}
+
+.embedaction-wrapper .signature-action-taken {
+  margin: 15px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.embedaction-wrapper .field-name-field-petition-recipient {
+  margin: 15px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.embedaction-wrapper .field-name-field-petition-recipient .field-label {
+  float: none;
+}
+
+.embedaction-wrapper .field-name-field-petition-recipient .field-items {
+  float: none;
+  display: inline;
+}
+
+/*.embedaction-wrapper .field-name-field-petition-recipient .field-items .field-item:after {
+  display: inline;
+  content: ', ';
+}
+
+.embedaction-wrapper .field-name-field-petition-recipient .field-items .field-item:last-child:after {
+  display: none;
+  content: '';
+}*/
+
+.embedaction-wrapper .group-signature-progress {
+  position: relative;
+  height: 82px;
+  padding-top: 1px;
+  padding-left: 78px;
+  background: #ECECEC;
+  margin: 35px 26px 35px 87px;
+}
+
+.embedaction-wrapper .group-signature-progress .signature-progress-percent {
+  background: url(/profiles/takepart/themes/takepart3/css/images/signature-progress-percent-bg.png) left top no-repeat;
+  height: 122px;
+  width: 122px;
+  color: #fff;
+  text-shadow: 0 1px 0 #f66201;
+  filter: dropshadow(color=#f66201, offx=0, offy=1);
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  z-index: 2;
+  position: absolute;
+  top: -15px;
+  left: -61px;
+}
+
+.embedaction-wrapper .group-signature-progress span {
+  position: relative;
+}
+
+.embedaction-wrapper .group-signature-progress .percentage {
+  display: block;
+  font-size: 38px;
+  padding-top: 32px;
+}
+
+.embedaction-wrapper .group-signature-progress .complete {
+  display: block;
+  font-size: 14px;
+  font-family: 'TradeGothicLTStdCnBold';
+  text-transform: uppercase;
+}
+
+.embedaction-wrapper .signature-progress-days-left,
+.embedaction-wrapper .signature-progress-goal {
+  font-size: 14px;
+  background: #ececec;
+  text-shadow: 0 1px 0 #fff;
+  filter: dropshadow(color=#ffffff, offx=0, offy=1);
+  font-family: 'TradeGothicLTStdCnBold';
+  text-transform: uppercase;
+  line-height: 1;
+  width: 139px;
+  border-left: 1px solid #d4d4d4;
+  height: 82px;
+  padding: 0;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.embedaction-wrapper .signature-progress-days-left,
+.embedaction-wrapper .signature-progress-goal .count {
+  font-size: 24px;
+}
+
+.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list {
+  margin: 15px 20px 0 20px !important;
+  list-style: none !important;
+  background: none !important;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  line-height: 32px;
+}
+
+.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li {
+  background: none;
+  border: none;
+  margin: 0 !important;
+  padding: 0;
+  font-size: 14px;
+  font-family: 'TradeGothicLTStdCnBold';
+  text-transform: uppercase;
+}
+
+.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li a,
+.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li.selected a {
+  padding: 0 20px;
+  outline: 0;
+}
+
+.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li.selected {
+  border: 1px solid #CCC;
+  border-bottom: none;
+  background: #fff;
+}
+
+.embedaction-wrapper .horizontal-tabs-panes {
+  border-top: 1px solid #CCC;
+  position: relative;
+  z-index: 1;
+  margin-top: -1px;
+}
+
+.embedaction-wrapper .horizontal-tabs-panes fieldset {
+  margin-top: 20px;
+}
+
+.embedaction-wrapper div.horizontal-tabs {
+  border: none;
 }
 
 /*.field-name-field-petition-recipient .field-item:after {
