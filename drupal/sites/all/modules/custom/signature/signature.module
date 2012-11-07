@@ -1613,9 +1613,10 @@ function theme_signature_progress_goal($variables) {
     '@units' => $action_type['units_plural'],
   );
   $count = format_plural($progress['count'],
-    '1 @unit', '@count @units', $units);
+    '<span class="count">1</span> <span class="units">@unit</span>',
+    '<span class="count">@count</span> <span class="units">@units</span>', $units);
   $output = '<div class="signature-progress-goal ' . $classes . '">';
-  $output .= '<span class="count">' . $count . '</span>';
+  $output .= $count;
   $output .= ' <span class="for-label">for</span>';
   $output .= ' <span class="goal">' . $progress['goal'] . '</span>';
   $output .= ' <span class="goal-label">goal</span>';
@@ -1641,8 +1642,10 @@ function theme_signature_call_to_action($variables) {
   $node = $variables['node'];
   $action_type = $variables['action_type'];
   $node_uri = entity_uri('node', $node);
+  $label = check_plain($action_type['call_to_action'])
+  . '<div class="arrow"></div>';
   $output = '<div class="signature-call-to-action">';
-  $output .= l($action_type['call_to_action'] . ' >', $node_uri['path']);
+  $output .= l($label, $node_uri['path'], array('html' => TRUE));
   $output .= '</div>';
   return $output;
 }
