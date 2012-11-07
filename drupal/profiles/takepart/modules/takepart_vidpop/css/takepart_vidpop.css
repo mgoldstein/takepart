@@ -275,3 +275,10 @@ body.vidpop-banners-enabled {
   font-weight: bold;
   font-size: 12px;
 }
+
+div.vidpop-loader {
+  width: 66px;
+  height: 66px;
+  background: url(images/loader_66x66.gif) no-repeat;
+}
+
