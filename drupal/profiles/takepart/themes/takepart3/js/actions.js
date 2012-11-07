@@ -251,6 +251,8 @@ $(function() {
     var end = parseInt($this.find('.percentage').html());
     if (end > 100) {
       end = 100;
+    } else if ( end > 1 && end < 5 ) {
+      end = 5;
     }
     $this.pie({start: 25, end: 100 - end});
   });
