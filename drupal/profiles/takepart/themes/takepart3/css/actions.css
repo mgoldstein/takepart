@@ -761,6 +761,7 @@ iframe.moreactions {
 .petition_pledge_action .signaturelist-processed {
   border: 12px solid #d9e8ef;
   padding: 10px;
+  margin: 20px 0;
 }
 
 .petition_pledge_action .signaturelist-processed h2 {
@@ -919,6 +920,30 @@ iframe.moreactions {
   margin-top: 10px;
   padding-top: 10px;
 }
+
+.petition_pledge_action .block-boxes-view-name-content_updates h2 {
+  font-size: 22px;
+  font-family: 'TradeGothicLTStdCnBold';
+  text-transform: uppercase;
+  color: #000;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 3px;
+}
+
+.petition_pledge_action .block-boxes-view-name-content_updates .view-content-updates {
+  border-top: 1px solid #ccc;
+  padding: 15px 0;
+  margin-top: 3px;
+  border-bottom: 1px dotted #ccc;
+}
+
+.petition_pledge_action .block-boxes-view-name-content_updates .followup-date h3 {
+  font-size: 12px;
+}
+
+
+/* pie stuff */
 
 .pie_container .pie_slice_container {
   opacity: 0.2;
