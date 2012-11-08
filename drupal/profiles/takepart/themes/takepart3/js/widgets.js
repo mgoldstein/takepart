@@ -487,7 +487,7 @@
     },
     init: function () {
       this._locked = false;
-      this.fields = $('.signature-state-fields', this.element);
+      this.groups = $('.signature-state-fields', this.element);
       methods.refresh.apply(this);
     },
     refresh: function () {
@@ -502,21 +502,39 @@
       if (response[this.options['nid']]) {
         var data = response[this.options['nid']];
         var progress = data['progress'];
-        this.fields.each(function (index) {
-          var field = $(this);
-          if (field.hasClass(progress['state'])) {
-            field.removeClass('inactive').addClass('active');
-            if (field.hasClass('complete')) {
+        console.log(progress);
+        this.groups.each(function (index) {
+          var group = $(this);
+          if (group.hasClass(progress['state'])) {
+            // Field(s) active for current signature collection state, check
+            // action completion state
+            if (group.hasClass('complete')) {
+              // Field(s) only shown when ation complete.
               if (progress['count'] >= progress['goal']) {
-                field.removeClass('inactive').addClass('active');
+                group.removeClass('inactive').addClass('active');
               }
               else {
-                field.removeClass('active').addClass('inactive');
+                group.removeClass('active').addClass('inactive');
               }
+            }
+            else if (group.hasClass('incomplete')) {
+              // Field(s) only shown when action not complete
+              if (progress['count'] >= progress['goal']) {
+                group.removeClass('active').addClass('inactive');
+              }
+              else {
+                group.removeClass('inactive').addClass('active');
+              }
+            }
+            else {
+              // Field(s) not marked with complete/incomplete class so only
+              // depend on colleciton state.
+              group.removeClass('inactive').addClass('active');
             }
           }
           else {
-            field.removeClass('active').addClass('inactive');
+            // Field(s) not shown for current signature collection state. 
+            group.removeClass('active').addClass('inactive');
           }
         });
         // Update the progress text and meters.
