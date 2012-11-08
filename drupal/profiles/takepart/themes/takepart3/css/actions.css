@@ -1066,6 +1066,24 @@ iframe.moreactions {
   background: #fffaea;
 }
 
+/* closed */
+
+.petition_pledge_action .field-name-field-closed-heading {
+  color: #333;
+  font-family: 'TradeGothicLTStdCnBold';
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #CCC;
+  margin-bottom: 3px;
+  font-size: 18px;
+}
+
+.petition_pledge_action .field-name-field-closed-message {
+  padding-top: 5px;
+  border-top: 1px solid #CCC;
+  margin-top: 3px;
+}
+
 /* pie stuff */
 
 .pie_container .pie_slice_container {
