@@ -71,7 +71,7 @@
       $('.signature-form').once('signatureform', function () {
         $(this).displaydisclaimer();
         //$(this).infieldlabels();
-        $(this).selectableaddress();
+        // $(this).selectableaddress();
       });
     }
   }

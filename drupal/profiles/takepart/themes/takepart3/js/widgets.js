@@ -317,9 +317,11 @@
       this.options = $.extend({
         'address_group': '.selectable-address-group',
         'inside_us': '.selectable-address-inside-us',
+        'inside_us_header': 'h3',
         'state_field': '.field-name-field-sig-state .form-item',
         'outside_us': '.selectable-address-outside-us',
-        'country_field': '.field-name-field-sig-country .form-item',
+        'outside_us_header': 'h3',
+        'country_field': '.field-name-field-sig-country .form-item'
       }, options);
       methods.init.apply(this);
     },
@@ -337,10 +339,10 @@
 
       // Add an outside US link to the inside US address
       this.inside_us.each(function () {
-        var label = $('h3 > span', self.outside_us).text();
+        var label = $('h3 > span:first-of-type', self.outside_us).text();
         this.outside_link = $('<span class="selectable-address-link">'
-          + '<a href="javascript:void(0)">' + label + '</a></span>');
-        $(self.options['state_field'], this).append(this.outside_link);
+          + ' (<a href="javascript:void(0)">' + label + '?</a>)</span>');
+        $(self.options['inside_us_header'], this).append(this.outside_link);
         this.outside_link.bind('click.selectableaddress', {
           form: self 
         }, methods._click);
@@ -348,10 +350,10 @@
 
       // Add an inside US link to the outside US address
       this.outside_us.each(function () {
-        var label = $('h3 > span', self.inside_us).text();
+        var label = $('h3 > span:first-of-type', self.inside_us).text();
         this.inside_link = $('<span class="selectable-address-link">'
-          + '<a href="javascript:void(0)">' + label + '</a></span>');
-        $(self.options['country_field'], this).append(this.inside_link);
+          + ' (<a href="javascript:void(0)">' + label + '?</a>)</span>');
+        $(self.options['outside_us_header'], this).append(this.inside_link);
         this.inside_link.bind('click.selectableaddress', {
           form: self 
         }, methods._click);
