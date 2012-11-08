@@ -1158,8 +1158,14 @@ iframe.moreactions {
 .embedaction-wrapper div.horizontal-tabs {
   border: none;
 }
+.embedaction-wrapper .thankyou,
 .embedaction-wrapper .closed {
   margin: 0 20px;
+}
+.embedaction-wrapper .thankyou .addthis_toolbox {
+  width: 240px;
+  margin: 0 auto;
+  padding-bottom: 20px;
 }
 #content .embedaction-wrapper .closed h2, /* selector override */
 .embedaction-wrapper .closed h2 {
