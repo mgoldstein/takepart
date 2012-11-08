@@ -114,9 +114,6 @@ function vidpop_loaded() {
           case 'node':
             $('#cboxWrapper').css('height', '425px');
             break;
-          case 'rtrail':
-            $('#cboxWrapper').css('height', '445px');
-            break;
         }
       });
     }

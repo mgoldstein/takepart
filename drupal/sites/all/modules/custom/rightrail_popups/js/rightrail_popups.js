@@ -8,8 +8,16 @@
       // click on rt rail popup
         vidpopSource = 'rtrail';
       }));
-     }
+
+      // resize popup, based on source
+      $(document).bind('cbox_complete', function(){
+        //alert(vidpopSource);
+        switch(vidpopSource) {
+          case 'rtrail':
+            $('#cboxWrapper').css('height', '445px');
+            break;
+        }
+      });
+    }
   }
 })(jQuery);
-
-
