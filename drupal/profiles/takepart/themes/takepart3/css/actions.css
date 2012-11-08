@@ -989,6 +989,68 @@ iframe.moreactions {
   font-size: 12px;
 }
 
+/* completed */
+
+.petition_pledge_action .group_complete_fields {
+  position: relative;
+}
+
+.petition_pledge_action .group_complete_fields .signature-progress-percent {
+  background: url(/profiles/takepart/themes/takepart3/css/images/signature-progress-percent-completed-bg.png) left top no-repeat;
+  height: 122px;
+  width: 122px;
+  color: #333;
+  text-shadow: 0 1px 0 #fff;
+  filter: dropshadow(color=#ffffff, offx=0, offy=1);
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  z-index: 2;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+.petition_pledge_action .group_complete_fields .signature-progress-percent span {
+  position: relative;
+}
+
+.petition_pledge_action .group_complete_fields .signature-progress-percent .percentage {
+  display: block;
+  font-size: 38px;
+  padding-top: 32px;
+}
+
+.petition_pledge_action .group_complete_fields .signature-progress-percent .complete {
+  display: block;
+  font-size: 14px;
+  font-family: 'TradeGothicLTStdCnBold';
+  text-transform: uppercase;
+}
+
+.petition_pledge_action .group_complete_fields .field-name-field-complete-heading {
+  font-size: 36px;
+  font-family: 'TradeGothicLTStdCnBold';
+  text-transform: uppercase;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e6dcbd;
+  line-height: .75em;
+  margin-bottom: 3px;
+}
+
+.petition_pledge_action .group_complete_fields .field-name-field-complete-message {
+  padding-top: 20px;
+  border-top: 1px solid #e6dcbd;
+  margin-top: 3px;
+  font-size: 13px;
+}
+
+.petition_pledge_action .group_complete_fields .group_complete_message {
+  border: 1px solid #e6dcbd;
+  padding: 28px 20px 7px 160px;
+  margin-bottom: 20px;
+  background: #fffaea;
+}
 
 /* pie stuff */
 
