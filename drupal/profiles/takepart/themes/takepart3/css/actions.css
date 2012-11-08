@@ -1032,7 +1032,10 @@ iframe.moreactions {
   float: none;
   display: inline;
 }
-
+.embedaction-wrapper .group_more_or_less,
+.embedaction-wrapper .more-or-less-link {
+  padding: 0 20px;
+}
 /*.embedaction-wrapper .field-name-field-petition-recipient .field-items .field-item:after {
   display: inline;
   content: ', ';
@@ -1161,6 +1164,10 @@ iframe.moreactions {
 .embedaction-wrapper .thankyou,
 .embedaction-wrapper .closed {
   margin: 0 20px;
+}
+.embedaction-wrapper .thankyou h2 {
+  color: #000;
+  padding-bottom: 10px;
 }
 .embedaction-wrapper .thankyou .addthis_toolbox {
   width: 240px;
