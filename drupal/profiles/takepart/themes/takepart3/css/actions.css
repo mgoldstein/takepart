@@ -779,9 +779,13 @@ iframe.moreactions {
   font-weight: bold;
   font-size: 14px;
 }
-
+.petition_pledge_action .signature-form .form-type-checkbox input {
+  float: left;
+  margin: 2px 0 0;
+}
 .petition_pledge_action .signature-form .form-type-checkbox label {
-  display: inline !important;
+  display: block;
+  margin: 0 0 0 20px;
 }
 
 .petition_pledge_action .signaturelist-processed {
@@ -1008,12 +1012,16 @@ iframe.moreactions {
   font-size: 15px;
   font-weight: bold;
   text-align: center;
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 10px;
 }
 
 .embedaction-wrapper .field-name-field-petition-recipient {
   margin: 15px;
   font-size: 13px;
   text-align: center;
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 10px;
 }
 
 .embedaction-wrapper .field-name-field-petition-recipient .field-label {
@@ -1099,9 +1107,12 @@ iframe.moreactions {
 .embedaction-wrapper .signature-progress-goal .count {
   font-size: 24px;
 }
-
+.embedaction-wrapper .signature-progress-goal .count {
+  display: block;
+}
+.embedaction-wrapper .signature-progress-goal .count,
 .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list {
-  margin: 15px 20px 0 20px !important;
+  margin: 0 20px 0 20px !important;
   list-style: none !important;
   background: none !important;
   display: block;
@@ -1147,7 +1158,25 @@ iframe.moreactions {
 .embedaction-wrapper div.horizontal-tabs {
   border: none;
 }
-
+.embedaction-wrapper .closed {
+  margin: 0 20px;
+}
+#content .embedaction-wrapper .closed h2, /* selector override */
+.embedaction-wrapper .closed h2 {
+  color: #000;
+}
+.embedaction-wrapper .signature-form {
+  padding: 0 20px 10px 20px;
+}
+.embedaction-wrapper .signature-sign-button {
+  width: 100%;
+}
+.embedaction-wrapper .signature-form .form-type-checkbox label.option {
+  font-weight: normal;
+}
+.embedaction-wrapper .signature-terms-of-use {
+  text-align: center;
+}
 /*.field-name-field-petition-recipient .field-item:after {
   content: ', ';
   display: inline;
