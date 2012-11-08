@@ -135,6 +135,15 @@ function features_conflict_resolver_strongarm_alter(&$cache) {
   features_conflict_resolver_update_ctools_export_cache($cache);
 }
 
+function features_conflict_resolver_field_group_info_alter(&$cache) {
+  features_conflict_resolver_update_ctools_export_cache($cache);
+}
+
+function features_conflict_resolver_default_box_alter(&$cache) {
+  features_conflict_resolver_update_ctools_export_cache($cache);
+}
+
+
 /**
  * @todo: Need to dynamically implement the strongarm, etc. hooks
  */
