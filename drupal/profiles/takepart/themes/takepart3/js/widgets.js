@@ -317,9 +317,11 @@
       this.options = $.extend({
         'address_group': '.selectable-address-group',
         'inside_us': '.selectable-address-inside-us',
+        'inside_us_header': 'h3',
         'state_field': '.field-name-field-sig-state .form-item',
         'outside_us': '.selectable-address-outside-us',
-        'country_field': '.field-name-field-sig-country .form-item',
+        'outside_us_header': 'h3',
+        'country_field': '.field-name-field-sig-country .form-item'
       }, options);
       methods.init.apply(this);
     },
@@ -337,10 +339,10 @@
 
       // Add an outside US link to the inside US address
       this.inside_us.each(function () {
-        var label = $('h3 > span', self.outside_us).text();
+        var label = $('h3 > span:first-of-type', self.outside_us).text();
         this.outside_link = $('<span class="selectable-address-link">'
-          + '<a href="javascript:void(0)">' + label + '</a></span>');
-        $(self.options['state_field'], this).append(this.outside_link);
+          + ' (<a href="javascript:void(0)">' + label + '?</a>)</span>');
+        $(self.options['inside_us_header'], this).append(this.outside_link);
         this.outside_link.bind('click.selectableaddress', {
           form: self 
         }, methods._click);
@@ -348,10 +350,10 @@
 
       // Add an inside US link to the outside US address
       this.outside_us.each(function () {
-        var label = $('h3 > span', self.inside_us).text();
+        var label = $('h3 > span:first-of-type', self.inside_us).text();
         this.inside_link = $('<span class="selectable-address-link">'
-          + '<a href="javascript:void(0)">' + label + '</a></span>');
-        $(self.options['country_field'], this).append(this.inside_link);
+          + ' (<a href="javascript:void(0)">' + label + '?</a>)</span>');
+        $(self.options['outside_us_header'], this).append(this.inside_link);
         this.inside_link.bind('click.selectableaddress', {
           form: self 
         }, methods._click);
@@ -485,7 +487,7 @@
     },
     init: function () {
       this._locked = false;
-      this.fields = $('.signature-state-fields', this.element);
+      this.groups = $('.signature-state-fields', this.element);
       methods.refresh.apply(this);
     },
     refresh: function () {
@@ -500,21 +502,39 @@
       if (response[this.options['nid']]) {
         var data = response[this.options['nid']];
         var progress = data['progress'];
-        this.fields.each(function (index) {
-          var field = $(this);
-          if (field.hasClass(progress['state'])) {
-            field.removeClass('inactive').addClass('active');
-            if (field.hasClass('complete')) {
+        console.log(progress);
+        this.groups.each(function (index) {
+          var group = $(this);
+          if (group.hasClass(progress['state'])) {
+            // Field(s) active for current signature collection state, check
+            // action completion state
+            if (group.hasClass('complete')) {
+              // Field(s) only shown when ation complete.
               if (progress['count'] >= progress['goal']) {
-                field.removeClass('inactive').addClass('active');
+                group.removeClass('inactive').addClass('active');
               }
               else {
-                field.removeClass('active').addClass('inactive');
+                group.removeClass('active').addClass('inactive');
               }
+            }
+            else if (group.hasClass('incomplete')) {
+              // Field(s) only shown when action not complete
+              if (progress['count'] >= progress['goal']) {
+                group.removeClass('active').addClass('inactive');
+              }
+              else {
+                group.removeClass('inactive').addClass('active');
+              }
+            }
+            else {
+              // Field(s) not marked with complete/incomplete class so only
+              // depend on colleciton state.
+              group.removeClass('inactive').addClass('active');
             }
           }
           else {
-            field.removeClass('active').addClass('inactive');
+            // Field(s) not shown for current signature collection state. 
+            group.removeClass('active').addClass('inactive');
           }
         });
         // Update the progress text and meters.

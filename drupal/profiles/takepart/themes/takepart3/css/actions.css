@@ -732,7 +732,6 @@ iframe.moreactions {
   margin-top: 30px;
 }
 
-.petition_pledge_action .signature-form .form-select,
 .petition_pledge_action .signature-form .form-text {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -743,6 +742,15 @@ iframe.moreactions {
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
   border-radius: 5px;
+}
+
+.petition_pledge_action .signature-form .form-select {
+  border: 1px solid #c0c0c0;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+  border-radius: 5px;
+  height: 38px;
+  padding-left: 10px;
 }
 
 .petition_pledge_action .signature-form .form-submit {
@@ -807,28 +815,34 @@ iframe.moreactions {
   border-bottom: none;
 }
 
+.petition_pledge_action .view-pledge-signature-block,
 .petition_pledge_action .view-petition-signature-block {
   padding-top: 5px;
   border-top: 1px solid #ccc;
   margin-top: 3px;
 }
 
+.petition_pledge_action .view-pledge-signature-block table,
 .petition_pledge_action .view-petition-signature-block table {
   width: 100%;
 }
 
+.petition_pledge_action .view-pledge-signature-block thead th,
 .petition_pledge_action .view-petition-signature-block thead th {
   border: none;
 }
 
+.petition_pledge_action .view-pledge-signature-block tbody,
 .petition_pledge_action .view-petition-signature-block tbody {
   border: none;
 }
 
+.petition_pledge_action .view-pledge-signature-block tr,
 .petition_pledge_action .view-petition-signature-block tr {
   background: none;
 }
 
+.petition_pledge_action .view-pledge-signature-block td,
 .petition_pledge_action .view-petition-signature-block td {
   padding: 10px;
 }
@@ -1050,6 +1064,24 @@ iframe.moreactions {
   padding: 28px 20px 7px 160px;
   margin-bottom: 20px;
   background: #fffaea;
+}
+
+/* closed */
+
+.petition_pledge_action .field-name-field-closed-heading {
+  color: #333;
+  font-family: 'TradeGothicLTStdCnBold';
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #CCC;
+  margin-bottom: 3px;
+  font-size: 18px;
+}
+
+.petition_pledge_action .field-name-field-closed-message {
+  padding-top: 5px;
+  border-top: 1px solid #CCC;
+  margin-top: 3px;
 }
 
 /* pie stuff */
