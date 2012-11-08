@@ -263,6 +263,21 @@ function takeaction_admin_form($form, &$form_state) {
     '#default_value' => variable_get('takeaction_thank_you_page', ''),
   );
 
+  $form['copy'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('TakeAction Copy'),
+    '#description' => t('Configurable copy used on the thank you page.'),
+    '#tree' => FALSE,
+  );
+
+  $form['copy']['takeaction_dashboard_description'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Dashboard Description'),
+    '#description' => t('A brief description of what the dashboard is.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_dashboard_description', ''),
+  );
+
   return system_settings_form($form);
 }
 
