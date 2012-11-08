@@ -24,6 +24,20 @@ function takeaction_thankyou_block_info() {
   );
 }
 
+function _takeaction_thankyou_term_list($node, $field) {
+  // Extract the term ids.
+  $tids = array();
+  $items = field_get_items('node', $node, $field);
+  if ($items !== FALSE) {
+    foreach ($items as $delta => $item) {
+      $tids[] = $item['tid'];
+    }
+  }
+  // Load and implode the terms.
+  $terms = taxonomy_term_load_multiple($tids);
+  return taxonomy_implode_tags($terms);
+}
+
 /**
  * Helper function for getting the action context from the URL parameter.
  */
@@ -41,6 +55,12 @@ function takeaction_thankyou_get_action_context() {
         'node_url' => url($uri['path'], array('absolute' => TRUE)),
         'action_type' => signature_node_action_type_variables($node),
         'progress' => signature_node_progress_variables($signature_node),
+        'thankyou' => array(
+          'action_title' => check_plain($node->title),
+          'action_url' => url($uri['path'], array('absolute' => TRUE)),
+          'action_type' => _takeaction_thankyou_term_list($node, 'field_action_type'),
+          'action_topic' => _takeaction_thankyou_term_list($node, 'field_display_tag'),
+        ),
       );
     }
   }
@@ -118,6 +138,9 @@ function takeaction_thankyou_block_view($delta = '') {
         . '/js/sharing-metrics.js',
         array('group' => JS_DEFAULT, 'type' => 'file')
       );
+      drupal_add_js(array('takeaction' => array(
+        'thankyou' => $context['thankyou'],
+      )), 'setting');
     }
     else {
       $block['content'] = '';

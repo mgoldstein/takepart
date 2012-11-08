@@ -214,7 +214,7 @@ function _render_tp3_user_menu() {
                 $menu_item['link']['href'] = null;
             } else {
                 $opts['attributes']['class'][] = 'join-login';
-                $opts['query'] = array("destination" => current_path());
+                $opts['query'] = drupal_get_destination();
                 $menu_item['link']['title'] = variable_get("takepart_user_login_link_name", "Login");
             }
         } else {

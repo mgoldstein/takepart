@@ -209,6 +209,14 @@ div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-act
 .node-type-takepart-campaign #content .block-boxes .view-mode-medium-preview a {
   color: #000;
 }
+.view-mode-medium-preview .signature-call-to-action a .arrow {
+  background: transparent url('../images/tab/arrow.png') 0 0 no-repeat;
+  width: 9px;
+  height: 13px;
+  margin-left: 7px;
+  display: inline-block;
+  margin-top: 2px;
+}
 .view-mode-medium-preview .signature-call-to-action a {
   width: 175px;
   height: 24px;
@@ -771,9 +779,13 @@ iframe.moreactions {
   font-weight: bold;
   font-size: 14px;
 }
-
+.petition_pledge_action .signature-form .form-type-checkbox input {
+  float: left;
+  margin: 2px 0 0;
+}
 .petition_pledge_action .signature-form .form-type-checkbox label {
-  display: inline !important;
+  display: block;
+  margin: 0 0 0 20px;
 }
 
 .petition_pledge_action .signaturelist-processed {
@@ -840,13 +852,14 @@ iframe.moreactions {
 .petition_pledge_action #block-signature-summary > .content {
   border-top: 1px solid #ccc;
   margin-top: 3px;
-  padding: 10px 0 0 0;
+  padding: 10px;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress {
   position: relative;
+  height: 122px;
   padding-top: 1px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-percent {
@@ -861,7 +874,6 @@ iframe.moreactions {
   line-height: 1;
   float: left;
   z-index: 2;
-  position: absolute;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-complete-goal {
@@ -893,16 +905,10 @@ iframe.moreactions {
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-days-left {
-  margin: 20px 0 20px 60px;
+  height: 122px;
+  margin-bottom: 10px;
   position: relative;
   z-index: 1;
-}
-
-.petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-needed {
-  clear: both;
-  font-size: 12px;
-  padding-top: 10px;
-  text-align: center;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-goal,
@@ -913,12 +919,10 @@ iframe.moreactions {
   filter: dropshadow(color=#ffffff, offx=0, offy=1);
   font-family: 'TradeGothicLTStdCnBold';
   text-transform: uppercase;
-  padding: 0 20px 0 90px;
+  padding: 20px 20px 20px 90px;
   margin: 20px 0 0 60px;
   line-height: 1;
-  display: table-cell;
-  vertical-align: middle;
-  height: 80px;
+  display: block;
 }
 
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor .field-label,
@@ -927,7 +931,6 @@ iframe.moreactions {
   text-transform: uppercase;
   font-size: 18px;
   margin-bottom: 10px;
-  font-weight: normal;
 }
 
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor .field-name-field-group-logo,
@@ -946,14 +949,13 @@ iframe.moreactions {
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor .field-name-field-short-introduction,
 .petition_pledge_action #block-signature-summary .field-name-field-action-organizer .field-name-field-short-introduction {
   font-size: 12px;
-  line-height: 1.5;
 }
 
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor,
 .petition_pledge_action #block-signature-summary .field-name-field-action-organizer {
   border-top: 1px solid #ccc;
   margin-top: 10px;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .petition_pledge_action .block-boxes-view-name-content_updates h2 {
@@ -1017,12 +1019,16 @@ iframe.moreactions {
   font-size: 15px;
   font-weight: bold;
   text-align: center;
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 10px;
 }
 
 .embedaction-wrapper .field-name-field-petition-recipient {
   margin: 15px;
   font-size: 13px;
   text-align: center;
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 10px;
 }
 
 .embedaction-wrapper .field-name-field-petition-recipient .field-label {
@@ -1033,7 +1039,10 @@ iframe.moreactions {
   float: none;
   display: inline;
 }
-
+.embedaction-wrapper .group_more_or_less,
+.embedaction-wrapper .more-or-less-link {
+  padding: 0 20px;
+}
 /*.embedaction-wrapper .field-name-field-petition-recipient .field-items .field-item:after {
   display: inline;
   content: ', ';
@@ -1108,9 +1117,12 @@ iframe.moreactions {
 .embedaction-wrapper .signature-progress-goal .count {
   font-size: 24px;
 }
-
+.embedaction-wrapper .signature-progress-goal .count {
+  display: block;
+}
+.embedaction-wrapper .signature-progress-goal .count,
 .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list {
-  margin: 15px 20px 0 20px !important;
+  margin: 0 20px 0 20px !important;
   list-style: none !important;
   background: none !important;
   display: block;
@@ -1156,7 +1168,35 @@ iframe.moreactions {
 .embedaction-wrapper div.horizontal-tabs {
   border: none;
 }
-
+.embedaction-wrapper .thankyou,
+.embedaction-wrapper .closed {
+  margin: 0 20px;
+}
+.embedaction-wrapper .thankyou h2 {
+  color: #000;
+  padding-bottom: 10px;
+}
+.embedaction-wrapper .thankyou .addthis_toolbox {
+  width: 240px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+#content .embedaction-wrapper .closed h2, /* selector override */
+.embedaction-wrapper .closed h2 {
+  color: #000;
+}
+.embedaction-wrapper .signature-form {
+  padding: 0 20px 10px 20px;
+}
+.embedaction-wrapper .signature-sign-button {
+  width: 100%;
+}
+.embedaction-wrapper .signature-form .form-type-checkbox label.option {
+  font-weight: normal;
+}
+.embedaction-wrapper .signature-terms-of-use {
+  text-align: center;
+}
 /*.field-name-field-petition-recipient .field-item:after {
   content: ', ';
   display: inline;
