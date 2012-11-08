@@ -864,6 +864,13 @@ iframe.moreactions {
   position: absolute;
 }
 
+.petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-complete-goal {
+  background-image: url(/profiles/takepart/themes/takepart3/css/images/signature-progress-percent-completed-bg.png);
+  color: #333;
+  text-shadow: 0 1px 0 #fff;
+  filter: dropshadow(color=#ffffff, offx=0, offy=1);
+}
+
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-goal {
 
 }
