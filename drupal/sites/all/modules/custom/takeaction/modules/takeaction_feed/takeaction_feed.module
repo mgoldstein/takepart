@@ -501,6 +501,8 @@ function takeaction_feed_action_item_data($node) {
       'id' => $node->nid,
       'TABAction' => _takeaction_feed_field_value($node, 'field_tab_action',
         '0'),
+      'exclude' => _takeaction_feed_field_value($node, 'field_tab_exclude',
+        '0'),
       'internalTitle' => $internal_title,
       'externalTitle' => $external_title,
       'publishedDate' => $node->created,
