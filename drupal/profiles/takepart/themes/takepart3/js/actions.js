@@ -246,6 +246,7 @@ $(function() {
     });
   };
 
+  // run the pie plugin with special params
   $('.signature-progress-percent').each(function() {
     var $this = $(this);
     var end = parseInt($this.find('.percentage').html());
@@ -256,5 +257,16 @@ $(function() {
     }
     $this.pie({start: 25, end: 100 - end});
   });
+
+  // inside/outside US switch
+  var address_check = function() {
+    var val = $('input[name="field_sig_address_toggle[und]"]:checked').val();
+    $('.group_address_tabs .field-group-format:not(.group_' + val + '_us)').hide();
+    $('.group_address_tabs .field-group-format.group_' + val + '_us').show();
+  };
+
+  $('input[name="field_sig_address_toggle[und]"]').bind('change', address_check);
+
+  address_check();
 });
 })(window, jQuery);
