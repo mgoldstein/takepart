@@ -129,6 +129,21 @@
 
 // Not sure about all those redundant self-executing anonymous functions up there
 (function(window, $, undefined) {
+
+// inside/outside US switch
+var address_check = function() {
+  var val = $('input[name="field_sig_address_toggle[und]"]:checked').val();
+  $('.group_address_tabs .field-group-format:not(.group_' + val + '_us)').hide();
+  $('.group_address_tabs .field-group-format.group_' + val + '_us').show();
+};
+
+Drupal.behaviors.addresscheck = {
+  attach: function (context, settings) {
+    $('input[name="field_sig_address_toggle[und]"]').bind('change', address_check);
+    address_check();
+  }
+};
+
 // Document ready
 $(function() {
 
@@ -257,16 +272,5 @@ $(function() {
     }
     $this.pie({start: 25, end: 100 - end});
   });
-
-  // inside/outside US switch
-  var address_check = function() {
-    var val = $('input[name="field_sig_address_toggle[und]"]:checked').val();
-    $('.group_address_tabs .field-group-format:not(.group_' + val + '_us)').hide();
-    $('.group_address_tabs .field-group-format.group_' + val + '_us').show();
-  };
-
-  $('input[name="field_sig_address_toggle[und]"]').bind('change', address_check);
-
-  address_check();
 });
 })(window, jQuery);
