@@ -3196,11 +3196,11 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'node_refereance_view_formatter',
+          'module' => 'node_reference_view_formatter',
           'settings' => array(
             'view' => 'groups block',
           ),
-          'type' => 'node_refereance_view',
+          'type' => 'node_reference_view',
           'weight' => '21',
         ),
         'full' => array(
