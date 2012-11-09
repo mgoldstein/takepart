@@ -45,7 +45,7 @@
     <head profile="<?php print $grddl_profile; ?>">
       <title><?php print $head_title; ?></title>
       <?php print $head; ?>
-      <base href="http://www.takepart.com" target="_parent" />
+      <base href="<?php print 'http://'.$_SERVER['HTTP_HOST']; ?>" target="_parent" />
         <meta name="viewport" content="width=320">
         <meta property="fb:admins" content="1327833247" />
         <meta property="fb:app_id" content="247137505296280" />
