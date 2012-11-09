@@ -7,14 +7,14 @@ $cmap = features_conflict_resolver_get_cmap();
 $cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
   'comment_anonymous_audio',
   'comment_audio',
-), TRUE);
+), TRUE, 'audio');
 
 // Imagery-related thingies.
 $cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
   'comment_anonymous_openpublish_photo',
   'comment_anonymous_openpublish_photo_gallery',
   'comment_anonymous_takepart_slide',
-), TRUE);
+), TRUE, 'imagery');
 
 // Wordy-content-related thingies.
 $cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
@@ -30,7 +30,7 @@ $cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
   'comment_anonymous_takepart_page',
   'comment_anonymous_topic_front',
   'comment_anonymous_webform',
-), TRUE);
+), TRUE, 'content_types');
 
 // Unidentifiable boxes.
 $cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
@@ -38,7 +38,7 @@ $cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
   'box-66c05d6f',
   'box-7fa6e22c',
   'box-bb0b625d',
-), TRUE);
+), TRUE, 'boxes');
 
 // field 'node-profile-field_profile_job_title' is in conflict as both
 // takepart_omniture and openpublish_author claim it. If we remove it

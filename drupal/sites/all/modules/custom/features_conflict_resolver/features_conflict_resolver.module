@@ -154,15 +154,18 @@ function features_conflict_resolver_module_implements_alter(&$implementations, $
  * @param $inherit
  *   Defaults to FALSE. If a passed component is part of a group with other
  *   components, those other entries will be merged into the new group also.
+ * @param $name
+ *   Defaults to NULL. By default, the new group will receive an identifying
+ *   hash key, similar to the rest of the conflict map. If you'd like to
+ *   specify the key instead, pass its value in $name.
  *
  * @return $merged_cmap
  */
-function features_conflict_resolver_cmap_component_merge($cmap, $merge_components, $inherit = FALSE) {
+function features_conflict_resolver_cmap_component_merge($cmap, $merge_components, $inherit = FALSE, $name = NULL) {
   $merged_group = array(
     'all-conflicts' => array(),
     'conflicts'     => array(),
     'modules'       => array(),
-    'hash'          => '',
   );
 
   foreach ($merge_components as $merge_component) {
@@ -204,10 +207,13 @@ function features_conflict_resolver_cmap_component_merge($cmap, $merge_component
 
   // We've got a merged group and a modified conflict map with old hashes.
   // Recreate the conflict map with the new group and proper rehashes.
-  $merged_group['hash'] = md5(serialize($merged_group['modules']));
+  $merged_group['hash'] = isset($name) ? $name : md5(serialize($merged_group['modules']));
   $merged_cmap = array($merged_group['hash'] => $merged_group);
-  foreach ($cmap as $group) {
-    $group['hash'] = md5(serialize($group['modules']));
+  foreach ($cmap as $hash => $group) {
+    if (strlen($hash) == 32) { // Regen only if md5ish.
+      $group['hash'] = md5(serialize($group['modules']));
+    }
+
     $merged_cmap[$group['hash']] = $group;
   }
 
