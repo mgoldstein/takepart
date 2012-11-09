@@ -210,8 +210,7 @@ function _render_tp3_user_menu() {
                 }
 
                 $menu_item['link']['title'] = $username;
-                // $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
-                $menu_item['link']['href'] = null;
+                $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');
             } else {
                 $opts['attributes']['class'][] = 'join-login';
                 $opts['query'] = drupal_get_destination();
@@ -225,7 +224,7 @@ function _render_tp3_user_menu() {
             }
         }
 
-        if ($menu_item['link']['title'] == $username) {
+        if (empty($menu_item['link']['href'])) {
             $link = $menu_item['link']['title'];
         } else {
             $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
