@@ -4,17 +4,17 @@
 (function ($) {
   Drupal.behaviors.tastemakerPopups = {
     attach: function (context, settings) {
-      $('.video-thumb-table .vid-arrow').live('click', (function(){
+      $('#video-popup-grid table.video-thumb-table .vid-arrow').live('click', (function(){
         vidpopSource = 'tastemaker';
       }));
 
       // resize popup, based on source
-      $(document).bind('cbox_complete', function(){
+      $(document).bind('cbox_complete', function() {
         switch(vidpopSource) {
           case 'tastemaker':
-            $('#colorbox').css('height', '440px');
-            $('#cboxWrapper').css('height', '440px');
-            $('.vidmap iframe body').css('height', '400px');
+            $('#colorbox').css('height', '445px');
+            $('#cboxWrapper').css('height', '445px');
+            $('#cboxLoadedContent').css('height', '420px');
             break;
         }
       });
