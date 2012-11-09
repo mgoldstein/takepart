@@ -9,7 +9,14 @@
 function tastemaker_popups_init() {
   $path = drupal_get_path('module', 'tastemaker_popups');
   drupal_add_css($path . '/css/tastemaker_popups.css', array('every_page' => TRUE));
-  drupal_add_js($path . '/js/tastemaker_popups.js', 'file');
+  if (variable_get('tastemaker_popups_enabled', true)) {
+    // we can disable js for testing
+    drupal_add_js($path . '/js/tastemaker_popups.js', 'file');
+    drupal_add_js(array('tastemaker_popups' => array('js_enabled' => true)), 'setting');
+  }
+  else {
+    drupal_add_js(array('tastemaker_popups' => array('js_enabled' => false)), 'setting');
+  }
 }
 
 
@@ -193,9 +200,19 @@ function tastemaker_popups_form_alter(&$form, &$form_state, $form_id) {
         '#default_value' => variable_get('tastemaker_popups_enabled', true),
         '#description' => t('Enable tastemakers popups javascript.'),
       );
+      $form['#submit'][] = 'tastemaker_popups_submit_function';
       break;
   }
 }
+
+
+/***
+ * updates var from alter on submit
+ */
+function tastemaker_popups_submit_function($delta = '', $edit = array()){
+  variable_set('tastemaker_popups_enabled', $edit['values']['tastemaker_popups_enabled']);
+}
+
 
 
 
