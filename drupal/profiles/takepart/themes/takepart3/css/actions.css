@@ -750,6 +750,7 @@ iframe.moreactions {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
   border-radius: 5px;
   height: 38px;
+  line-height: 38px;
   padding-left: 10px;
 }
 
@@ -1019,6 +1020,10 @@ iframe.moreactions {
 
 .petition_pledge_action .block-boxes-view-name-content_updates .view-content-updates {
   border-top: 1px solid #ccc;
+  font-size: 13px;
+}
+
+.petition_pledge_action .block-boxes-view-name-content_updates .view-content-updates .views-row {
   padding: 15px 0;
   margin-top: 3px;
   border-bottom: 1px dotted #ccc;
@@ -1341,6 +1346,7 @@ iframe.moreactions {
 .embedaction-wrapper .signature-terms-of-use {
   text-align: center;
 }
+
 /*.field-name-field-petition-recipient .field-item:after {
   content: ', ';
   display: inline;
