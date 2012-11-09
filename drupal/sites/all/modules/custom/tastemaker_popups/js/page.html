@@ -33,7 +33,7 @@
 // Avoid using double quotes; if you must, precede them with a backslash, i.e. my \"quoted\" text
 
 // first row
-videoData[0][0] = ["lvt4b_qwC_Q", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 1", "This is description 1"];
+videoData[0][0] = ["lvt4b_qwC_Q", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 1<br />Los Angeles Video #1", "This is description 1"];
 videoData[0][1] = ["I1583adUqSg", "http://www.takepart.com/sites/default/files/styles/tp_secondary_feature_thumbnail/public/10043476_0-1.jpg", "This is caption 2", "This is description 2"];
 videoData[0][2] = ["hu2WFQ9G5EE", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 3", "This is description 3"];
 videoData[0][3] = ["T7u0ghPuaEE", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 4", "This is description 4"];
@@ -55,7 +55,7 @@ var listeners = new Array();    // list of listeners for click events
 
 // build the table from the data
 $(window).load(function() {
-  var table = $('table.video-thumb-table');
+  var table = $('#video-popup-grid table.video-thumb-table');
 
   for (row = 0; row < numRows; row++) {
     var rc = 'r' + row;
@@ -87,6 +87,9 @@ $(window).load(function() {
       }
     }
   }
+  
+  // hide the spinner
+  $('#video-popup-grid .table-loading').hide();
 });
 
 // click handler for video thumb
@@ -103,71 +106,18 @@ function showTmVideo(r, c, val) {
 })(jQuery);
 </script>
 
-
+<!--
+You can apply css overrides in the section below.
+Main styles are in sites/all/modules/custom/tastemaker_popups/css/tastemaker_popups.css
+-->
 <style type="text/css">
-  <!--
-  .intro {
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    padding-left: 30px;
-    height: 70px;
-  }
-  table.video-thumb-table {
-    width:980px;
-    border-spacing: 0;
-  }
-  table.video-thumb-table tbody {
-    border-top: none;
-  }
-  table.video-thumb-table td {
-    width:180px;
-    padding: 0;
-  }
-  table.video-thumb-table td .inner {
-    position: relative;
-  }
-  table.video-thumb-table td.last {
-    width:180px;
-  }
-  table.video-thumb-table td.last .inner {
-    padding-right: 0px;
-  }
-  table.video-thumb-table td.spacer {
-    width: 15px !important;
-  }
+</style>
 
-  table.video-thumb-table .vid-thumbnail{
-    width:180px;
-    height:136px;
-    position: relative;
-  }
-  table.video-thumb-table .vid-thumbnail img{
-    z-index: 0;
-    width:180px;
-    height:136px;
-    position: relative;
-  }
-  table.video-thumb-table .vid-arrow{
-    z-index: 20;
-    background: url("/sites/all/modules/custom/rightrail_popups/css/images/yt-arrow3.png") no-repeat 50% 50%;
-    position: absolute;
-    top: 0;
-    bottom: 50%;
-    width: 180px;
-    height: 136px;
-  }
-  table.video-thumb-table .vid-caption{
-    height:50px;
-    text-align:left;
-    padding:10px;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:15px;
-    font-weight:bold;
-    color:#000;
-  }
-
-  --></style>
+<!--
+This is the main HTML section; the table of thumbnails gets attached by the above javascript
+-->
+<div id="video-popup-grid"></table>
 <div class="intro">Enjoy these videos below they're all from Los Angeles these videos are from Los Angeles which shouldn't keep you from enjoying them even if you're not from Los Angeles.</div>
-
-<table class="video-thumb-table">
-</table>
+<table class="video-thumb-table"></table>
+  <div class="table-loading"></div>
+</div>

@@ -792,6 +792,7 @@ body.front .main-content .block-boxes-current-promo .views-row-10
 }
 #slim-header #top-follow-wrapper {
     float: right;
+    overflow: hidden;
 }
 /* My Comment */
 #top-follow-wrapper .top-follow-label {
