@@ -32,6 +32,14 @@ $cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
   'comment_anonymous_webform',
 ), TRUE);
 
+// Unidentifiable boxes.
+$cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
+  'box-1104adce',
+  'box-66c05d6f',
+  'box-7fa6e22c',
+  'box-bb0b625d',
+), TRUE);
+
 // field 'node-profile-field_profile_job_title' is in conflict as both
 // takepart_omniture and openpublish_author claim it. If we remove it
 // from takepart_omniture, then openpublish_author will have no conflicts.
