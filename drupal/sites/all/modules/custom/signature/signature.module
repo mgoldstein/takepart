@@ -1569,10 +1569,11 @@ function theme_signature_progress_needed($variables) {
   $units = array(
     '@unit' => $action_type['units_single'],
     '@units' => $action_type['units_plural'],
+    '@commafied' => number_format($progress['needed']),
   );
   $needed = format_plural($progress['needed'],
     '<span class="count">1</span> <span class="units">more @unit needed to hit the goal!</span>',
-    '<span class="count">@count</span> <span class="units">more @units needed to hit the goal!</span>',
+    '<span class="count">@commafied</span> <span class="units">more @units needed to hit the goal!</span>',
     $units);
   $output = '<div class="signature-progress-needed ' . $classes . '">';
   $output .= $needed;
@@ -1590,10 +1591,11 @@ function theme_signature_progress_count($variables) {
   $units = array(
     '@unit' => $action_type['units_single'],
     '@units' => $action_type['units_plural'],
+    '@commafied' => number_format($progress['count']),
   );
   $count = format_plural($progress['count'],
     '<span class="count">1</span> <span class="units">@unit</span>',
-    '<span class="coutn">@count</span> <span class="units">@units</span>',
+    '<span class="coutn">@commafied</span> <span class="units">@units</span>',
     $units);
   $output = '<div class="signature-progress-count ' . $classes . '">';
   $output .= $count;
@@ -1611,14 +1613,15 @@ function theme_signature_progress_goal($variables) {
   $units = array(
     '@unit' => $action_type['units_single'],
     '@units' => $action_type['units_plural'],
+    '@commafied' => number_format($progress['count']),
   );
   $count = format_plural($progress['count'],
     '<span class="count">1</span> <span class="units">@unit</span>',
-    '<span class="count">@count</span> <span class="units">@units</span>', $units);
+    '<span class="count">@commafied</span> <span class="units">@units</span>', $units);
   $output = '<div class="signature-progress-goal ' . $classes . '">';
   $output .= $count;
   $output .= ' <span class="for-label">for</span>';
-  $output .= ' <span class="goal">' . $progress['goal'] . '</span>';
+  $output .= ' <span class="goal">' . number_format($progress['goal']) . '</span>';
   $output .= ' <span class="goal-label">goal</span>';
   $output .= '</div>';
   return $output;
