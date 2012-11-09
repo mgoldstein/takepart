@@ -897,7 +897,7 @@ iframe.moreactions {
 
 .petition_pledge_action #block-signature-summary .group-signature-progress {
   position: relative;
-  padding-top: 1px;
+  padding: 20px 0 0 60px;
   margin-bottom: 16px;
 }
 
@@ -914,6 +914,8 @@ iframe.moreactions {
   float: left;
   z-index: 2;
   position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-complete-goal {
@@ -948,29 +950,30 @@ iframe.moreactions {
   margin: 20px 0 20px 60px;
   position: relative;
   z-index: 1;
+  background: #ECECEC;
+  padding: 0 20px 0 90px;
+  display: table-cell;
+  height: 80px;
+  vertical-align: middle;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-goal,
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-days-left span {
   font-size: 25px;
-  background: #ECECEC;
   text-shadow: 0 1px 0 white;
   filter: dropshadow(color=#ffffff, offx=0, offy=1);
   font-family: 'TradeGothicLTStdCnBold';
   text-transform: uppercase;
-  padding: 0 20px 0 90px;
-  margin: 20px 0 0 60px;
   line-height: 1;
-  display: table-cell;
-  vertical-align: middle;
   height: 80px;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-needed {
   clear: both;
   font-size: 12px;
-  padding-top: 10px;
+  padding-top: 30px;
   text-align: center;
+  margin-left: -60px;
 }
 
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor .field-label,
