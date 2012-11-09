@@ -1046,7 +1046,6 @@ function signature_base_form($form, &$form_state, $signature, $node, $ajax) {
         "{$css_prefix}-email-field",
         "signature-email-field",
       ),
-      'placeholder' => t('Email *'),
     ),
     '#default_value' => $signature->email,
   );
