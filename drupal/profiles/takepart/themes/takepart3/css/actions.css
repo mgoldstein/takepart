@@ -1140,11 +1140,11 @@ iframe.moreactions {
 }
 
 .embedaction-wrapper .content-bottom {
-  padding-top: 1px;
+  padding: 1px 20px 0 20px;
 }
 
 .embedaction-wrapper .signature-action-taken {
-  margin: 15px;
+  margin: 15px 0;
   font-size: 15px;
   font-weight: bold;
   text-align: center;
@@ -1170,7 +1170,7 @@ iframe.moreactions {
 }
 .embedaction-wrapper .group_more_or_less,
 .embedaction-wrapper .more-or-less-link {
-  padding: 0 20px;
+  padding: 0;
 }
 /*.embedaction-wrapper .field-name-field-petition-recipient .field-items .field-item:after {
   display: inline;
@@ -1259,6 +1259,7 @@ iframe.moreactions {
   position: relative;
   z-index: 2;
   line-height: 32px;
+  border-right: none;
 }
 
 .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li {
@@ -1271,6 +1272,10 @@ iframe.moreactions {
   text-transform: uppercase;
 }
 
+.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li strong {
+  font-weight: normal;
+}
+
 .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li a,
 .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li.selected a {
   padding: 0 20px;
@@ -1281,6 +1286,10 @@ iframe.moreactions {
   border: 1px solid #CCC;
   border-bottom: none;
   background: #fff;
+}
+
+.embedaction-wrapper .horizontal-tabs fieldset.horizontal-tabs-pane {
+  padding: 0;
 }
 
 .embedaction-wrapper .horizontal-tabs-panes {
@@ -1299,7 +1308,7 @@ iframe.moreactions {
 }
 .embedaction-wrapper .thankyou,
 .embedaction-wrapper .closed {
-  margin: 0 20px;
+  margin: 0;
 }
 .embedaction-wrapper .thankyou h2 {
   color: #000;
@@ -1315,7 +1324,7 @@ iframe.moreactions {
   color: #000;
 }
 .embedaction-wrapper .signature-form {
-  padding: 0 20px 10px 20px;
+  padding: 0 0 10px 0;
 }
 .embedaction-wrapper .signature-sign-button {
   width: 100%;
@@ -1323,6 +1332,12 @@ iframe.moreactions {
 .embedaction-wrapper .signature-form .form-type-checkbox label.option {
   font-weight: normal;
 }
+
+.embedaction-wrapper .node-petition-action .form-item-display label,
+.embedaction-wrapper .node-petition-action .form-item-newsletter label {
+  padding-left: 0;
+}
+
 .embedaction-wrapper .signature-terms-of-use {
   text-align: center;
 }
