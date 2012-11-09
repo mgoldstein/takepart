@@ -769,13 +769,30 @@ iframe.moreactions {
   font-weight: bold;
 
   background: #ffca00;
-  background: -moz-linear-gradient(top,  #ffda4d 2%, #ffca00 6%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#ffda4d), color-stop(6%,#ffca00));
-  background: -webkit-linear-gradient(top,  #ffda4d 2%,#ffca00 6%);
-  background: -o-linear-gradient(top,  #ffda4d 2%,#ffca00 6%);
-  background: -ms-linear-gradient(top,  #ffda4d 2%,#ffca00 6%);
-  background: linear-gradient(to bottom,  #ffda4d 2%,#ffca00 6%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffda4d', endColorstr='#ffca00',GradientType=0 );
+  background: -moz-linear-gradient(top,  rgba(255,202,0,1) 0%, rgba(255,194,0,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,202,0,1)), color-stop(100%,rgba(255,194,0,1)));
+  background: -webkit-linear-gradient(top,  rgba(255,202,0,1) 0%,rgba(255,194,0,1) 100%);
+  background: -o-linear-gradient(top,  rgba(255,202,0,1) 0%,rgba(255,194,0,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(255,202,0,1) 0%,rgba(255,194,0,1) 100%);
+  background: linear-gradient(to bottom,  rgba(255,202,0,1) 0%,rgba(255,194,0,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffca00', endColorstr='#ffc200',GradientType=0 );
+
+  box-shadow: 0px 1px 5px #999,
+    inset 0 1px 1px #ffd97d,
+    inset 0 -1px 1px #ffd97d,
+    inset 1px 0 1px #ffd97d,
+    inset -1px 0 1px #ffd97d;
+}
+
+.petition_pledge_action .signature-form .form-submit:hover {
+  background: #ffb400;
+  background: -moz-linear-gradient(top,  rgba(255,180,0,1) 1%, rgba(255,172,0,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(255,180,0,1)), color-stop(100%,rgba(255,172,0,1)));
+  background: -webkit-linear-gradient(top,  rgba(255,180,0,1) 1%,rgba(255,172,0,1) 100%);
+  background: -o-linear-gradient(top,  rgba(255,180,0,1) 1%,rgba(255,172,0,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(255,180,0,1) 1%,rgba(255,172,0,1) 100%);
+  background: linear-gradient(to bottom,  rgba(255,180,0,1) 1%,rgba(255,172,0,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb400', endColorstr='#ffac00',GradientType=0 );
 }
 
 .petition_pledge_action .signature-form label {
@@ -790,6 +807,9 @@ iframe.moreactions {
 .petition_pledge_action .signature-form .form-type-checkbox input {
   float: left;
   margin: 2px 0 0;
+}
+.petition_pledge_action .signature-form .form-type-checkbox {
+  margin: .8em 0;
 }
 .petition_pledge_action .signature-form .form-type-radio label,
 .petition_pledge_action .signature-form .form-type-checkbox label {
