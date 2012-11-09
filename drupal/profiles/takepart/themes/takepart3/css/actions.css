@@ -1145,6 +1145,7 @@ iframe.moreactions {
 
 .embedaction-wrapper.petition_pledge_action {
   padding: 0;
+  margin-bottom: 20px;
 }
 
 .embedaction-wrapper .content-bottom {
