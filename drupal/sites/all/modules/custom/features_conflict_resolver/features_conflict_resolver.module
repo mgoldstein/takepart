@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Generates a features conflict map.
+ *
+ * @return array
+ *   The generated conflict map keyed by hash and grouped by groups of
+ *   conflicting feature modules.
+ */
 function features_conflict_resolver_get_cmap() {
   $conflicts = features_get_conflicts();
 
@@ -31,7 +38,18 @@ function features_conflict_resolver_get_cmap() {
 }
 
 /**
+ * Creates or updates a feature on the filesystem from the feature definition.
+ *
  * Most code copied from drush.inc
+ *
+ * @param $stub
+ *   Contains the feature information what is exported.
+ * @param $dependencies
+ *   Dependencies of this feature.
+ * @param $directory
+ *   The directory where the generated feature module is stored.
+ * @param $cmap_entry
+ *   The original entry in the conflicts map used to remove conflicting features from the exported list.
  */
 function _features_conflict_resolver_create_feature($stub, $dependencies, $module_name, $directory, $cmap_entry = NULL) {
   module_load_include('inc', 'features', 'features.export');
@@ -80,6 +98,9 @@ function _features_conflict_resolver_create_feature($stub, $dependencies, $modul
 
 /**
  * Create new feature that is holding the conflicting components.
+ *
+ * @param $cmap_entry
+ *   An entry in the conflicts map.
  */
 function features_conflict_resolver_create_feature($cmap_entry) {
 
@@ -107,6 +128,9 @@ function features_conflict_resolver_create_feature($cmap_entry) {
 /**
  * Remove the conflicting components from the older features,
  * but keep all others.
+ *
+ * @param $cmap_entry
+ *   An entry in the conflicts map.
  */
 function features_conflict_resolver_update_feature($cmap_entry) {
 
@@ -143,7 +167,17 @@ function features_conflict_resolver_update_feature($cmap_entry) {
   }
 }
 
-
+/**
+ * Helper used for altering the ctools export cache.
+ *
+ * This is used for altering which component belongs to
+ * which module.
+ *
+ * This allows to export a feature to a component,
+ * even though another feature already implements it.
+ *
+ * To then move this feature out of the other feature.
+ */
 function features_conflict_resolver_update_ctools_export_cache(&$cache, $update = FALSE) {
   $components = &drupal_static(__FUNCTION__);
   if (!isset($components)) {
@@ -168,6 +202,12 @@ function features_conflict_resolver_update_ctools_export_cache(&$cache, $update 
   }
 }
 
+/**
+ * Retrieves the default hooks registered, that can be used for altering components.
+ *
+ * @return $hooks
+ *   An array of default hook entries in the schema.
+ */
 function features_conflict_resolver_default_hooks_get() {
   ctools_include('export');
 
