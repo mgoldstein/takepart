@@ -1213,7 +1213,7 @@ iframe.moreactions {
   padding-top: 1px;
   padding-left: 78px;
   background: #ECECEC;
-  margin: 35px 26px 35px 87px;
+  margin: 35px 0 35px 61px;
 }
 
 .embedaction-wrapper .group-signature-progress .signature-progress-percent {
@@ -1258,7 +1258,7 @@ iframe.moreactions {
   font-family: 'TradeGothicLTStdCnBold';
   text-transform: uppercase;
   line-height: 1;
-  width: 139px;
+  width: 145px;
   border-left: 1px solid #d4d4d4;
   height: 82px;
   padding: 0;
