@@ -965,7 +965,6 @@ iframe.moreactions {
   font-family: 'TradeGothicLTStdCnBold';
   text-transform: uppercase;
   line-height: 1;
-  height: 80px;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-needed {
@@ -1145,7 +1144,6 @@ iframe.moreactions {
 
 .embedaction-wrapper.petition_pledge_action {
   padding: 0;
-  margin-bottom: 20px;
 }
 
 .embedaction-wrapper .content-bottom {
