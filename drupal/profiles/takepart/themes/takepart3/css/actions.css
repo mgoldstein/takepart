@@ -59,6 +59,7 @@ div.drupal-embed .group-heading .signature-progress-percent span {
   padding-bottom: 10px;
   background: url('../images/tab/doubleLine.png') repeat-x bottom left;
   margin-bottom: 30px;
+  font-weight: normal;
 }
 
 /* # Preview Page Right Rail
