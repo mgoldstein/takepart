@@ -471,7 +471,7 @@ class TakeActionApi {
   /**
    * Report a user action to the TakeAction Button system.
    *
-   * @param int $guid
+   * @param string $guid
    *   The guid of the user that took the action.
    * @param int $nid
    *   The id of the action taken.
@@ -487,6 +487,28 @@ class TakeActionApi {
       $data['transacted_amount'] = $transacted_amount;
     }
     $response = $this->callAPI('user_actions', array(), $data);
+    if ($response['http_code'] != self::HTTP_CODE_OK) {
+      throw new TakeActionApiException(
+        'Unexpected response status code.',
+        TakeActionApiException::FAILED_RESPONSE_CODE,
+        $response['http_code'], $response['body']);
+    }
+  }
+
+  /**
+   * Reassign tracking events from one user to another.
+   *
+   * @param string $src
+   *   The guid of the source user.
+   * @param string $dest
+   *   The guid of the destination user.
+   */
+  public function reassignTrackingEvents($src, $dest) {
+    $data = array(
+      'old_user_id' => $src,
+      'new_user_id' => $dest,
+    );
+    $response = $this->callAPI('user_actions/reassign', array(), $data);
     if ($response['http_code'] != self::HTTP_CODE_OK) {
       throw new TakeActionApiException(
         'Unexpected response status code.',
