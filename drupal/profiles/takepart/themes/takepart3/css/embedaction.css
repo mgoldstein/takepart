@@ -112,11 +112,11 @@
     display: block; }
 
   
-  #page #content .embedaction-wrapper.collapsed .toggle {
-    background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 -249px transparent;
-    height: 13px;
-    width: 480px;
-  }
+#page #content .embedaction-wrapper.collapsed .toggle {
+  background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 -250px transparent;
+  height: 13px;
+  width: 480px;
+}
 
   #page #content .embedaction-wrapper.collapsed > .content {
     display: none; }
