@@ -1,102 +1,181 @@
-/* embedaction.scss */
 #page #content .embedaction-wrapper {
-  /* Sprite locations */
   background-color: #fff;
   color: #000;
   width: 480px;
-  /* Position the button on the top right of the wrapper */ }
-  #page #content .embedaction-wrapper .more-actions {
-    display: none;
-    width: 480px;
-    height: 25px;
-    margin-bottom: -13px; }
-    #page #content .embedaction-wrapper .more-actions .button {
-      background: url("../images/embedaction-sprite2.png") no-repeat scroll -72px -260px transparent;
-      height: 25px;
-      width: 143px;
-      position: relative;
-      left: 337px;
-      display: block; }
-      #page #content .embedaction-wrapper .more-actions .button span {
-        display: none; }
+  position: relative;
+  margin: 20px 0;
+}
+
+#page #content .embedaction-wrapper .more-actions {
+  display: none;
+}
+
+#page #content .embedaction-wrapper .more-actions .button {
+  background: url("../images/embedaction-sprite2.png") no-repeat scroll -71px -218px transparent;
+  height: 20px;
+  line-height: 20px;
+  width: 127px;
+  display: block;
+  font-family: 'TradeGothicLTStdCnBold';
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 13px;
+}
+
+#page #content .embedaction-wrapper .more-actions .button span {
+  display: block;
+  padding-left: 9px;
+}
+
     body.food-topic-content #page #content .embedaction-wrapper .more-actions {
       display: block; }
-  #page #content .embedaction-wrapper .header {
-    background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 0 transparent;
-    height: 117px;
-    width: 480px;
-    font-size: 20px;
-    font-family: Helvetica,Arial,sans-serif;
-    font-weight: bold;
-    line-height: 26px; }
-    #page #content .embedaction-wrapper .header table {
-      border-collapse: collapse;
-      height: 117px;
-      width: 480px; }
+
+#page #content .embedaction-wrapper .header {
+  background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 0 transparent;
+  height: 95px;
+  width: 480px;
+  font-size: 20px;
+  font-family: Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  line-height: 1.2em;
+}
+
+#page #content .embedaction-wrapper.collapsed .header {
+  background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 -95px transparent;
+  cursor: pointer;
+  height: 107px;
+}
+
+#page #content .embedaction-wrapper .header table {
+  border-collapse: collapse;
+  height: 107px;
+  width: 480px;
+}
+
       #page #content .embedaction-wrapper .header table tbody {
         border: none; }
-      #page #content .embedaction-wrapper .header table td.title {
-        padding: 14px 36px 0 175px;
-        vertical-align: middle; }
+
+#page #content .embedaction-wrapper .header table td.title {
+  padding: 0 20px 0 130px;
+  vertical-align: middle;
+}
+
     #page #content .embedaction-wrapper .header .field-name-field-promo-headline {
       font-size: 20px; }
-  #page #content .embedaction-wrapper .toggle {
-    background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 -247px transparent;
-    height: 13px;
-    width: 480px;
-    clear: both; }
-    #page #content .embedaction-wrapper .toggle .switch {
-      background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 -260px transparent;
-      height: 42px;
-      width: 36px;
-      position: relative;
-      top: -29px;
-      left: 436px;
-      cursor: pointer; }
+
+#page #content .embedaction-wrapper .header .field-name-field-promo-headline:after {
+  content: 'take action!';
+  font-family: 'TradeGothicLTStdCnBold';
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 28px;
+  line-height: .9em;
+  font-weight: normal;
+  width: 94px;
+  display: block;
+  position: absolute;
+  top: 28px;
+  left: 6px;
+  text-align: center;
+}
+
+#page #content .embedaction-wrapper .toggle {
+  background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 -202px transparent;
+  height: 12px;
+  width: 480px;
+  clear: both;
+}
+
+#page #content .embedaction-wrapper .toggle .switch {
+  background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 -214px transparent;
+  width: 31px;
+  height: 37px;
+  position: absolute;
+  right: 10px;
+  top: 69px;
+  cursor: pointer;
+}
+
+#page #content .embedaction-wrapper.collapsed .toggle .switch {
+  background: #fff url("../images/embedaction-sprite2.png") no-repeat scroll -31px -214px;
+}
+
   #page #content .embedaction-wrapper > .content {
     border-left: 4px solid #FFCD33;
     border-right: 4px solid #FFCD33;
     border-bottom: 4px solid #FFCD33;
     display: block; }
-  #page #content .embedaction-wrapper.collapsed .header {
-    background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 -117px transparent;
-    height: 117px;
-    width: 480px;
-    cursor: pointer; }
+
+  
   #page #content .embedaction-wrapper.collapsed .toggle {
-    background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 -234px transparent;
+    background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 -249px transparent;
     height: 13px;
-    width: 480px; }
-    #page #content .embedaction-wrapper.collapsed .toggle .switch {
-      background: url("../images/embedaction-sprite2.png") no-repeat scroll -36px -260px transparent;
-      height: 42px;
-      width: 36px; }
+    width: 480px;
+  }
+
   #page #content .embedaction-wrapper.collapsed > .content {
     display: none; }
   #page #content .embedaction-wrapper.link a {
     color: #000;
     text-decoration: none; }
-  #page #content .embedaction-wrapper.link .more-actions {
-    margin-bottom: -15px; }
-  #page #content .embedaction-wrapper.link .header {
-    background: url("../images/embedaction-sprite.png") no-repeat scroll 0 -206px transparent;
-    height: 132px;
-    width: 480px;
-    cursor: default; }
-    #page #content .embedaction-wrapper.link .header table {
-      height: 132px; }
-      #page #content .embedaction-wrapper.link .header table td.title {
-        padding: 17px 30px 16px 15px;
-        height: 100px;
-        width: 290px; }
-      #page #content .embedaction-wrapper.link .header table td.graphic {
-        padding: 24px;
-        height: 84px;
-        width: 100px; }
-        #page #content .embedaction-wrapper.link .header table td.graphic a {
-          cursor: pointer;
-          display: block;
-          height: 84px;
-          width: 100px; }
-          #page #content .embedaction-wrapper.link .header table td.graphic a span {
-            display: none; }
+
+#page #content .embedaction-wrapper.link .more-actions {
+  position: absolute;
+  right: 10px;
+  top: -10px;
+}
+
+#page #content .embedaction-wrapper.link .header {
+  background: url("../images/embedaction-sprite2.png") no-repeat scroll 0 -95px transparent;
+  height: 107px;
+  width: 480px;
+  cursor: default;
+}
+
+#page #content .embedaction-wrapper.link .header table {
+  height: 100%;
+  width: 100%;
+}
+
+#page #content .embedaction-wrapper.link .header table td.title {
+  padding: 0;
+  text-shadow: 0 1px 0 #fff;
+  filter: dropshadow(color=#ffffff, offx=0, offy=1);
+}
+
+#page #content .embedaction-wrapper.link .header table td.title a {
+  display: table-cell;
+  height: 107px;
+  width: 310px;
+  vertical-align: middle;
+  padding: 0 50px 0 10px;
+}
+
+#page #content .embedaction-wrapper.link .header table td.title a:after {
+  content: ' ';
+  background: url("../images/embedaction-sprite2.png") no-repeat scroll -207px -218px transparent;
+  width: 13px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 45px;
+}
+
+#page #content .embedaction-wrapper.link .header table td.graphic a {
+  height: 107px;
+  width: 100px;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 15px 0 6px;
+  text-align: center;
+}
+
+#page #content .embedaction-wrapper.link .header table td.graphic a span {
+  font-family: 'TradeGothicLTStdCnBold';
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 28px;
+  line-height: .9em;
+  font-weight: normal;
+}
