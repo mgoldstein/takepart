@@ -177,10 +177,19 @@ div.drupal-embed .view-mode-medium-preview .signature-progress-percent .percenta
 .view-mode-medium-preview .signature-progress-percent .percentage {
   font-size: 16px;
 }
+
 .view-mode-medium-preview .field-name-field-action-main-image {
   margin: 0;
   text-align: right;
 }
+
+.view-mode-medium-preview .field-name-field-action-main-image .field-item {
+  width: 220px;
+  height: 150px;
+  overflow: hidden;
+  margin-left: 20px;
+}
+
 .view-mode-medium-preview .field-name-field-short-introduction {
   color: #333;
   padding-bottom: 10px;
@@ -667,6 +676,12 @@ iframe.moreactions {
   font-weight: bold;
   display: block;
   margin-bottom: 10px;
+}
+
+.petition_pledge_action .field-name-field-action-main-image {
+  width: 640px;
+  height: 333px;
+  overflow: hidden;
 }
 
 .petition_pledge_action .signature-action-taken {
