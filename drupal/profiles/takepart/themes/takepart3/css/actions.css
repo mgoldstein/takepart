@@ -668,6 +668,12 @@ iframe.moreactions {
   margin-bottom: 10px;
 }
 
+.petition_pledge_action .field-name-field-action-main-image {
+  width: 640px;
+  height: 333px;
+  overflow: hidden;
+}
+
 .petition_pledge_action .signature-action-taken {
   margin-bottom: 15px;
   font-size: 16px;
