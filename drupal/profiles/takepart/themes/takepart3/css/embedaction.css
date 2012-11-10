@@ -60,6 +60,11 @@
   vertical-align: middle;
 }
 
+#page #content .embedaction-wrapper.collapsed:hover td.title,
+#page #content .embedaction-wrapper:hover td.title a {
+  color: #1CA9E7;
+}
+
     #page #content .embedaction-wrapper .header .field-name-field-promo-headline {
       font-size: 20px; }
 
