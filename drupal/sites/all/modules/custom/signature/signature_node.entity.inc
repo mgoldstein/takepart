@@ -156,7 +156,7 @@ class SignatureNodeController extends EntityAPIController {
     $now = getdate();
     $now_seconds = mktime(0, 0, 0, $now['mon'], $now['mday'], $now['year']);
     $seconds_left = $entity->end_date - $now_seconds;
-    if ($seconds_left >= 0) {
+    if ($entity->limit_to_dates != 0 && $seconds_left >= 0) {
       $days_left = floor((float) $seconds_left / (float) (24 * 60 * 60)) + 1;
     }
 
