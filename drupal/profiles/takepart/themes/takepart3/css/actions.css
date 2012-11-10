@@ -133,6 +133,9 @@ div.drupal-embed .view-mode-medium-preview .signature-progress-days-left, /* sel
   font-size: 14px;
   text-transform: uppercase;
 }
+.view-mode-medium-preview .signature-progress-days-left.ongoing {
+  right:0;
+}
 div.drupal-embed .view-mode-medium-preview .group-heading .signature-progress-percent, /* selector override for embedded styling */
 .view-mode-medium-preview .signature-progress-percent {
   right: 0;
