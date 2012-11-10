@@ -181,6 +181,7 @@ function takeaction_thankyou_block_view($delta = '') {
           '#attributes' => array(
             'src' => $src,
             'class' => implode(' ', array('more-actions')),
+            'frameborder' => 0,
           ),
           '#value' => '',
         );
