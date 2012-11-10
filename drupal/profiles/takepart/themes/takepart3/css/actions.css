@@ -134,7 +134,7 @@ div.drupal-embed .view-mode-medium-preview .signature-progress-days-left, /* sel
   text-transform: uppercase;
 }
 .view-mode-medium-preview .signature-progress-days-left.ongoing {
-  right:0;
+  display: none;
 }
 div.drupal-embed .view-mode-medium-preview .group-heading .signature-progress-percent, /* selector override for embedded styling */
 .view-mode-medium-preview .signature-progress-percent {
