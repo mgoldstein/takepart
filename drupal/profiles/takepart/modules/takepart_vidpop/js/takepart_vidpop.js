@@ -78,11 +78,11 @@ function vidpop_loaded() {
       $('.vidpop-popup .subscribe', context).click(function(){
         if( typeof vp_43_triggered == 'undefined' ) {
           // block multiple calls
-          //alert('trap 43');
           vp_43_triggered = 1;
 
           var n = $(this).attr('class').match(/ vp-(\d+)/);
           n = n[1];
+          alert('trap 43: ' + n);
           var modaltitle = vp_titles[n];
           var modaltype  = vp_types[n];
           s.linkTrackVars="eVar40, prop40, eVar41, prop41, events";
@@ -103,7 +103,14 @@ function vidpop_loaded() {
       $('.vidpop-preview .colorbox-inline').live('click', (function(){
         //alert('wait');
         $('#cboxWrapper').css('height', '425px');
-        //alert(4);
+        alert(4);
+        vidpopSource = 'node';
+      }));
+
+      $('.vidpop-preview .colorbox-inline').live('click', (function(){
+        //alert('wait');
+        $('#cboxWrapper').css('height', '425px');
+        alert(4);
         vidpopSource = 'node';
       }));
 
