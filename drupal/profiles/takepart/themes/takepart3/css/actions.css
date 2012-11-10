@@ -1274,7 +1274,8 @@ iframe.moreactions {
 .embedaction-wrapper .signature-progress-goal .count {
   display: block;
 }
-.embedaction-wrapper .signature-progress-goal .count,
+
+/*.embedaction-wrapper .signature-progress-goal .count,*/
 .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list {
   margin: 0 20px 0 20px !important;
   list-style: none !important;
@@ -1304,7 +1305,22 @@ iframe.moreactions {
 .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li a,
 .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li.selected a {
   padding: 0 20px;
-  outline: 0;
+}
+
+.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list .selected strong {
+  color: #1CA9E7;
+}
+
+.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li a {
+  color: #000;
+}
+
+.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li a:hover {
+  background: transparent;
+}
+
+.embedaction-wrapper .horizontal-tabs-list li {
+  outline: none;
 }
 
 .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li.selected {
@@ -1314,7 +1330,7 @@ iframe.moreactions {
 }
 
 .embedaction-wrapper .horizontal-tabs fieldset.horizontal-tabs-pane {
-  padding: 0;
+  padding: 0 20px;
 }
 
 .embedaction-wrapper .horizontal-tabs-panes {
@@ -1330,7 +1346,9 @@ iframe.moreactions {
 
 .embedaction-wrapper div.horizontal-tabs {
   border: none;
+  margin: 0 -20px;
 }
+
 .embedaction-wrapper .thankyou,
 .embedaction-wrapper .closed {
   margin: 0;
