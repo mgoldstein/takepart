@@ -757,6 +757,21 @@ function signature_save_node_field_mapping($node) {
 }
 
 /**
+ * Implements hook_preprocess_field().
+ */
+function signature_preprocess_field(&$vars) {
+  $is_promo_headline = $vars['element']['#field_name'] == 'field_promo_headline';
+  $is_medium_preview = $vars['element']['#view_mode'] == 'medium_preview';
+  if ($is_promo_headline && $is_medium_preview) {
+    $node_uri = entity_uri('node', $vars['element']['#object']);
+    foreach ($vars['items'] as $delta => &$item) {
+      $vars['items'][$delta]['#markup']
+        = l($item['#markup'], $node_uri['path'], array('html' => TRUE));
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_node().
  */
 function signature_preprocess_node(&$vars) {
