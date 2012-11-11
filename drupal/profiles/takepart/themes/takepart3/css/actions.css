@@ -258,12 +258,22 @@ div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-act
 .view-mode-medium-preview .group_summary {
   width: 50%;
 }
+
 .view-mode-medium-preview .field-name-field-promo-headline {
   font-size: 28px;
   font-weight: bold;
   color: #000;
   line-height: 30px;
   padding-bottom: 10px;
+}
+
+.view-mode-medium-preview .field-name-field-promo-headline a {
+  color: #000;
+}
+
+.view-mode-medium-preview .field-name-field-promo-headline a:hover {
+  color: #1CA9E7;
+  text-decoration: none;
 }
 
 /* # Thank You Page
