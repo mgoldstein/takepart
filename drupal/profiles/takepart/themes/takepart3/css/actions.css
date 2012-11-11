@@ -1269,6 +1269,7 @@ iframe.moreactions {
   text-transform: uppercase;
 }
 
+.embedaction-wrapper .signature-progress-needed,
 .embedaction-wrapper .signature-progress-days-left,
 .embedaction-wrapper .signature-progress-goal {
   font-size: 14px;
@@ -1288,9 +1289,11 @@ iframe.moreactions {
 }
 
 .embedaction-wrapper .signature-progress-days-left,
+.embedaction-wrapper .signature-progress-needed .count,
 .embedaction-wrapper .signature-progress-goal .count {
   font-size: 24px;
 }
+.embedaction-wrapper .signature-progress-needed .count,
 .embedaction-wrapper .signature-progress-goal .count {
   display: block;
 }
