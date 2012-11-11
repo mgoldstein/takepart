@@ -146,12 +146,13 @@ div.drupal-embed .view-mode-medium-preview .group-heading .signature-progress-pe
   overflow: hidden;
   padding-top: 23px;
 }
+
 .view-mode-medium-preview .group_summary,
 .view-mode-medium-preview .field-name-field-action-main-image {
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
-  width: 50%;
 }
+
 div.drupal-embed .view-mode-medium-preview .signature-progress-percent .complete, /* selector override for embedded styling */
 div.drupal-embed .view-mode-medium-preview .signature-progress-percent .percentage, /* selector override for embedded styling */
 .view-mode-medium-preview .signature-progress-percent .complete,
@@ -186,7 +187,7 @@ div.drupal-embed .view-mode-medium-preview .signature-progress-percent .percenta
   width: 220px;
   height: 150px;
   overflow: hidden;
-  margin-left: 20px;
+  margin-left: 25px;
 }
 
 .view-mode-medium-preview .field-name-field-short-introduction {
@@ -255,8 +256,9 @@ div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-act
   padding-top: 5px;
   display: block;
 }
+
 .view-mode-medium-preview .group_summary {
-  width: 50%;
+  width: 343px;
 }
 
 .view-mode-medium-preview .field-name-field-promo-headline {
