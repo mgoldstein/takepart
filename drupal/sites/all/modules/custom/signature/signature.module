@@ -760,13 +760,27 @@ function signature_save_node_field_mapping($node) {
  * Implements hook_preprocess_field().
  */
 function signature_preprocess_field(&$vars) {
-  $is_promo_headline = $vars['element']['#field_name'] == 'field_promo_headline';
-  $is_medium_preview = $vars['element']['#view_mode'] == 'medium_preview';
-  if ($is_promo_headline && $is_medium_preview) {
+
+  $field_name = $vars['element']['#field_name'];
+  $view_mode = $vars['element']['#view_mode'];
+
+  if ($field_name == 'field_promo_headline' && $view_mode == 'medium_preview') {
     $node_uri = entity_uri('node', $vars['element']['#object']);
     foreach ($vars['items'] as $delta => &$item) {
       $vars['items'][$delta]['#markup']
         = l($item['#markup'], $node_uri['path'], array('html' => TRUE));
+    }
+  }
+  elseif ($field_name == 'field_group_logo' && $view_mode == 'action_summary') {
+    $node = $vars['element']['#object'];
+    $link = reset(field_get_items('node', $node, 'field_group_url'));
+    if ($link !== FALSE) {
+      foreach ($vars['items'] as $delta => &$item) {
+        $vars['items'][$delta]['#path'] = array(
+          'path' => $link['url'],
+          'options' => array('attributes' => $link['attributes']),
+        );
+      }
     }
   }
 }
@@ -1540,7 +1554,8 @@ function theme_signature_progress_percent($variables) {
   $classes = implode(' ', $progress['complete_classes']);
   $output = '<div class="signature-progress-percent ' . $classes . '">';
   $output .= '<span class="percentage">';
-  $output .= number_format($progress['percent'], $progress['decimals']) . '%';
+  $output .= number_format($progress['percent'], $progress['decimals']);
+  $output .= '<span class="sign">%</span>';
   $output .= '</span>';
   $output .= ' <span class="complete">Complete</span>';
   $output .= '</div>';
