@@ -123,18 +123,27 @@ class SignatureNodeController extends EntityAPIController {
     else {
       $percent = 0.0;
     }
+    $capped_percent = $percent > 100.0 ? 100.0 : $percent;
+
+    // Optionally cap the percentage to 100%
+    if (variable_get('signature_progress_capped', 0)) {
+      $percent = $capped_percent;
+    }
 
     // Calculate the progress classes.
-    $percent_as_unit = floor($percent);
-    $percent_as_tenth = floor($percent / 10.0);
-    $percent_as_twentieth = floor($percent / 5.0);
-    $percent_as_half = $percent < 50.0 ? 'first-half' : 'second-half';
+    $percent_as_unit = floor($capped_percent);
+    $percent_as_tenth = floor($capped_percent / 10.0);
+    $percent_as_twentieth = floor($capped_percent / 5.0);
+    $percent_as_half = $capped_percent < 50.0 ? 'first-half' : 'second-half';
     $complete_classes = array(
       "signature-progress-complete-{$percent_as_unit}",
       "signature-progress-complete-tenth-{$percent_as_tenth}",
       "signature-progress-complete-twentieth-{$percent_as_twentieth}",
       "signature-progress-complete-{$percent_as_half}",
     );
+    if ($percent > 100.0) {
+      $complete_classes[] = 'signature-progress-complete-over';
+    }
     if ($entity->count >= $entity->goal) {
       $complete_classes[] = 'signature-progress-complete-goal';
     }
