@@ -58,15 +58,16 @@
 #page #content .embedaction-wrapper .header table td.title {
   padding: 0 20px 0 130px;
   vertical-align: middle;
+  text-shadow: 0 1px 0 rgba(255,255,255,.6);
+  filter: dropshadow(color=#ffffff, offx=0, offy=1);
+  font-size: 18px;
+  line-height: 21px;
 }
 
 #page #content .embedaction-wrapper.collapsed:hover td.title,
 #page #content .embedaction-wrapper:hover td.title a {
   color: #1CA9E7;
 }
-
-    #page #content .embedaction-wrapper .header .field-name-field-promo-headline {
-      font-size: 20px; }
 
 #page #content .embedaction-wrapper .header .field-name-field-promo-headline:after {
   content: 'take action!';
@@ -144,8 +145,6 @@
 
 #page #content .embedaction-wrapper.link .header table td.title {
   padding: 0;
-  text-shadow: 0 1px 0 #fff;
-  filter: dropshadow(color=#ffffff, offx=0, offy=1);
 }
 
 #page #content .embedaction-wrapper.link .header table td.title a {
