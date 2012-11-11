@@ -973,6 +973,7 @@ iframe.moreactions {
   display: table-cell;
   height: 80px;
   vertical-align: middle;
+  text-align: center;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-goal,
@@ -983,6 +984,10 @@ iframe.moreactions {
   font-family: 'TradeGothicLTStdCnBold';
   text-transform: uppercase;
   line-height: 1;
+}
+
+.petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-days-left .count {
+  display: block;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-needed {
