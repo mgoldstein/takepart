@@ -1554,7 +1554,8 @@ function theme_signature_progress_percent($variables) {
   $classes = implode(' ', $progress['complete_classes']);
   $output = '<div class="signature-progress-percent ' . $classes . '">';
   $output .= '<span class="percentage">';
-  $output .= number_format($progress['percent'], $progress['decimals']) . '%';
+  $output .= number_format($progress['percent'], $progress['decimals']);
+  $output .= '<span class="sign">%</span>';
   $output .= '</span>';
   $output .= ' <span class="complete">Complete</span>';
   $output .= '</div>';
