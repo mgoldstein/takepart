@@ -9,6 +9,9 @@
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: middle;
   float: none;
+  width: 32px;
+  height: 32px;
+  margin-right: 7px;
 }
 .petition_pledge_action .addthis_toolbox .addthis_button_google_plusone,
 .block-takeaction-thankyou .addthis_toolbox .addthis_button_google_plusone {
@@ -719,27 +722,17 @@ iframe.moreactions {
 .petition_pledge_action .field-name-field-petition-recipient .field-label,
 .petition_pledge_action .field-name-field-petition-recipient .field-item {
   display: inline;
-  float: none;
-}
-
-.petition_pledge_action .field-name-field-short-introduction {
-  font-size: 16px;
-  margin: 1em 0;
 }
 
 .petition_pledge_action .field-name-field-petition-recipient {
   font-size: 16px;
-  margin: 1em 0;
+  margin: 0 0 1em 0;
 }
 
-.petition_pledge_action .field-name-field-petition-recipient .field-label {
+.petition_pledge_action .field-group-format .field-label {
+  text-transform: uppercase;
   font-size: 16px;
   margin: 2em 0 1em 0;
-}
-
-.petition_pledge_action .field-name-field-petition-recipient .field-items {
-  display: inline;
-  float: none;
 }
 
 .petition_pledge_action .more-or-less-link {
