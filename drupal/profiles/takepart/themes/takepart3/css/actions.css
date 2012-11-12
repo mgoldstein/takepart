@@ -1377,6 +1377,10 @@ iframe.moreactions {
 }
 
 .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li a:hover {
+  color: #1CA9E7;
+}
+
+.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li a:hover {
   background: transparent;
 }
 
