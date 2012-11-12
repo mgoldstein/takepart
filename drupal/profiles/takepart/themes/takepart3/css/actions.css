@@ -1210,7 +1210,6 @@ iframe.moreactions {
   border-bottom: 1px dotted #ccc;
   margin-bottom: 10px;
   text-align: center;
-  line-height: 2em;
 }
 
 .embedaction-wrapper .field-name-field-action-sponsor .field-label,
@@ -1219,14 +1218,14 @@ iframe.moreactions {
   display: inline;
   float: none;
   font-weight: normal;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .embedaction-wrapper .field-name-field-petition-recipient {
   margin: 10px;
   font-size: 13px;
   text-align: center;
-  line-height: 2em;
+  line-height: 1.5em;
 }
 
 .embedaction-wrapper .field-name-field-petition-recipient .field-label {
