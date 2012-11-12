@@ -143,12 +143,12 @@ div.drupal-embed .view-mode-medium-preview .signature-progress-days-left, /* sel
 div.drupal-embed .view-mode-medium-preview .group-heading .signature-progress-percent, /* selector override for embedded styling */
 .view-mode-medium-preview .signature-progress-percent {
   right: 0;
-  top: -49px;
-  background: url('../images/tab/orange-circle-wsh.png') no-repeat;
-  width: 76px;
-  height: 49px;
+  top: -41px;
+  background: url('../images/tab/orange-circle.png') no-repeat center center;
+  width: 60px;
+  height: 44px;
   overflow: hidden;
-  padding-top: 23px;
+  padding-top: 16px;
 }
 
 .view-mode-medium-preview .group_summary,
@@ -788,11 +788,12 @@ iframe.moreactions {
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
   border-radius: 5px;
-  height: 38px;
-  line-height: 38px;
+  height: auto;
   padding-left: 10px;
   font-size: 14px;
   width: 100%;
+  padding-top: 9px;
+  padding-bottom: 9px;
 }
 .petition_pledge_action .signature-form .field-name-field-sig-zip-code input {
   width: 110px;
@@ -1189,8 +1190,8 @@ iframe.moreactions {
 .view-mode-medium-preview .pie_container .pie_slice_container {
   width: 53px;
   height: 53px;
-  left: 12px;
-  top: 9px;
+  left: 4px;
+  top: 4px;
 }
 
 /* embeded action */
