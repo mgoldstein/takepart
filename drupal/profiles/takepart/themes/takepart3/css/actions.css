@@ -606,13 +606,16 @@ margin-top: 20px;
   font-size: 14px;
 }
 
+.block-takeaction-thankyou .takeaction-thankyou-message .sign {
+  font-size: .6em;
+}
+
 .block-takeaction-thankyou .signature-progress-needed {
   float: none;
 }
 
 .block-takeaction-thankyou .signature-progress-percent span {
   color: #FFFFFF;
-  display: block;
   font-weight: bold;
 }
 
@@ -628,6 +631,7 @@ margin-top: 20px;
   font-size: 7px;
   text-transform: uppercase;
   height: 13px;
+  display: block;
 }
 
 .block-takeaction-thankyou .sharing {
@@ -1175,6 +1179,10 @@ iframe.moreactions {
   height: 53px;
   left: 12px;
   top: 9px;
+}
+
+.pie_container .sign {
+  font-size: .6em;
 }
 
 /* embeded action */
