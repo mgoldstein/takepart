@@ -127,7 +127,8 @@ function takeaction_thankyou_block_view($delta = '') {
             ),
             '#value' => t('Spread The Word'),
           ),
-          'share_bar' => theme('takepart_addthis_full_page_button_bar', array(
+          'share_bar' => theme(
+            'takepart_addthis_takeaction_thank_you_button_bar', array(
             'orientation' => 'share-bar-horizontal',
             'id' => "takeaction-thankyou-share-bar-{$node->nid}",
             'share_url' => $context['node_url'],

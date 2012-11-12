@@ -110,6 +110,15 @@ function takepart_addthis_theme(){
       'email_message' => NULL,
     ),
   );
+  $ret_arr['takepart_addthis_takeaction_thank_you_button_bar'] = array(
+    'variables' => array(
+      'id' => NULL,
+      'orientation' => NULL,
+      'share_url' => NULL,
+      'twitter_message' => NULL,
+      'email_message' => NULL,
+    ),
+  );
   $ret_arr['takepart_addthis_thank_you_button_bar'] = array(
     'variables' => array(
       'id' => NULL,
@@ -850,6 +859,63 @@ function theme_takepart_addthis_full_page_button_bar($variables) {
       ),
     ),
   );
+}
+
+function theme_takepart_addthis_takeaction_thank_you_button_bar($variables) {
+
+  $ta_fb_src = drupal_get_path('module', 'takepart_addthis')
+    . '/images/ta_fb_share.png';
+  $ta_tw_src = drupal_get_path('module', 'takepart_addthis')
+    . '/images/ta_twitter_share.png';
+  $ta_po_src = drupal_get_path('module', 'takepart_addthis')
+    . '/images/ta_plusone_share.png';
+  $ta_pn_src = drupal_get_path('module', 'takepart_addthis')
+    . '/images/ta_pinterest_share.png';
+  $ta_em_src = drupal_get_path('module', 'takepart_addthis')
+    . '/images/ta_email_share.png';
+  
+  return array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('share-bar-field', $variables['orientation']),
+      'id' => $variables['id'],
+    ),
+    'toolbox' => array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array(
+          'addthis_toolbox',
+          'addthis_default_style',
+          'addthis_32x32_style',
+        ),
+      ),
+      'facebook' => array(
+        '#type' => 'markup',
+        '#prefix' => '<a class="addthis_button_facebook">',
+        '#markup' => '<img src="/' . $ta_fb_src . '" alt="Share on Facebook" />',
+        '#suffix' => '</a>',
+      ),
+      'twitter' => array(
+        '#type' => 'markup',
+        '#prefix' => '<a class="addthis_button_twitter">',
+        '#markup' => '<img src="/' . $ta_tw_src . '" alt="Share on Twitter" />',
+        '#suffix' => '</a>',
+      ),
+      'google_plusone' => array(
+        '#type' => 'markup',
+        '#prefix' => '<a class="addthis_button_google_plusone_badge">',
+        '#markup' => '', //<img src="/' . $ta_po_src . '" alt="Share on Google +1" />',
+        '#suffix' => '</a>',
+      ),
+      'email' => array(
+        '#type' => 'markup',
+        '#prefix' => '<a class="addthis_button_email">',
+        '#markup' => '<img src="/' . $ta_em_src . '" alt="Share by Email" />',
+        '#suffix' => '</a>',
+      ),
+    ),
+  );
+
 }
 
 function theme_takepart_addthis_thank_you_button_bar($variables) {

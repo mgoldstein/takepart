@@ -1,3 +1,5 @@
+/* # Share Block
+================================================== */
 .petition_pledge_action .addthis_toolbox,
 .block-takeaction-thankyou .addthis_toolbox {
   line-height: 0px;
@@ -13,6 +15,7 @@
   width: 51px;
   overflow: hidden;
 }
+
 .more-or-less-view.active {
   display: block;
 }
@@ -40,19 +43,14 @@ div.drupal-embed .group-heading .signature-progress-percent {
 	height: 66px;
 	padding-top: 17px;
 }
-
 .view-mode-medium-preview .signature-progress-percent span,
 div.drupal-embed .group-heading .signature-progress-percent span {
+	display: block;
 	width: 66px;
 	text-align: center;
 	font: bold 15px/1 "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	color: #fff;
 	text-shadow: 0 2px 2px rgba(0,0,0,0.3);
-}
-
-.view-mode-medium-preview .signature-progress-percent .complete,
-div.drupal-embed .group-heading .signature-progress-percent .complete {
-  display: block;
 }
 
 /* # Preview Page
@@ -210,7 +208,7 @@ div.drupal-embed .group-heading .signature-action-type-label h3, /* selector ove
   color: #1CA9E7;
   text-transform: uppercase;
   font-size: 12px;
-  font-weight: normal;
+  font-weight: bold; /* override for embedded styling */
 }
 /* override for embedded styling */
 div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-action {
@@ -320,6 +318,7 @@ margin-bottom: 40px;
 .main-content #block-takeaction-thankyou-thank-you h2, /* selector override */
 #block-takeaction-thankyou-thank-you h2 {
   font-size: 34px;
+  padding-bottom: 6px;
 }
 .main-content #block-takeaction-thankyou-dashboard h2, /* selector override */
 #block-takeaction-thankyou-dashboard h2 {
@@ -612,18 +611,16 @@ margin-top: 20px;
   font-size: 14px;
 }
 
-.block-takeaction-thankyou .takeaction-thankyou-message .sign {
-  font-size: .6em;
-}
-
 .block-takeaction-thankyou .signature-progress-needed {
   float: none;
 }
 
 .block-takeaction-thankyou .signature-progress-percent span {
   color: #FFFFFF;
+  display: block;
   font-weight: bold;
 }
+.view-mode-medium-preview .signature-progress-percent .sign,
 .block-takeaction-thankyou .signature-progress-percent .sign {
   display: inline;
 }
@@ -639,7 +636,6 @@ margin-top: 20px;
   font-size: 7px;
   text-transform: uppercase;
   height: 13px;
-  display: block;
 }
 
 .block-takeaction-thankyou .sharing {
@@ -796,6 +792,7 @@ iframe.moreactions {
   line-height: 38px;
   padding-left: 10px;
   font-size: 14px;
+  width: 100%;
 }
 
 .petition_pledge_action .signature-form .form-submit {
@@ -812,6 +809,7 @@ iframe.moreactions {
   cursor: hand;
   text-transform: uppercase;
   font-weight: bold;
+  font-family: Helvetica, Arial, sans-serif;
 
   background: #ffca00;
   background: -moz-linear-gradient(top,  rgba(255,202,0,1) 0%, rgba(255,194,0,1) 100%);
@@ -1041,6 +1039,11 @@ iframe.moreactions {
   padding: 10px 0;
 }
 
+#right-rail  .field-name-field-action-sponsor .field-name-field-group-logo,
+#right-rail  .field-name-field-action-organizer .field-name-field-group-logo {
+  padding: 0;
+}
+
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor .field-name-field-group-logo img,
 .petition_pledge_action #block-signature-summary .field-name-field-action-organizer .field-name-field-group-logo img {
   max-width: 250px;
@@ -1189,10 +1192,6 @@ iframe.moreactions {
   top: 9px;
 }
 
-.pie_container .sign {
-  font-size: .6em;
-}
-
 /* embeded action */
 
 .embedaction-wrapper.petition_pledge_action {
@@ -1287,7 +1286,7 @@ iframe.moreactions {
   line-height: 1;
   z-index: 2;
   position: absolute;
-  top: -15px;
+  top: -20px;
   left: -61px;
 }
 
@@ -1378,10 +1377,6 @@ iframe.moreactions {
 }
 
 .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li a:hover {
-  color: #1CA9E7;
-}
-
-.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li a:hover {
   background: transparent;
 }
 
@@ -1419,9 +1414,16 @@ iframe.moreactions {
 .embedaction-wrapper .closed {
   margin: 0;
 }
+.field-name-field-signed-heading,
 .embedaction-wrapper .thankyou h2 {
   color: #000;
   padding-bottom: 10px;
+  font-family: TradeGothicLTStdCnBold;
+}
+.field-name-field-signed-heading {
+  font-size: 25px;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 .embedaction-wrapper .thankyou .addthis_toolbox {
   width: 240px;
