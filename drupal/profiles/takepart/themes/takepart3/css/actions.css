@@ -1,3 +1,5 @@
+/* # Share Block
+================================================== */
 .petition_pledge_action .addthis_toolbox,
 .block-takeaction-thankyou .addthis_toolbox {
   line-height: 0px;
@@ -13,6 +15,7 @@
   width: 51px;
   overflow: hidden;
 }
+
 .more-or-less-view.active {
   display: block;
 }
@@ -40,19 +43,14 @@ div.drupal-embed .group-heading .signature-progress-percent {
 	height: 66px;
 	padding-top: 17px;
 }
-
 .view-mode-medium-preview .signature-progress-percent span,
 div.drupal-embed .group-heading .signature-progress-percent span {
+	display: block;
 	width: 66px;
 	text-align: center;
 	font: bold 15px/1 "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	color: #fff;
 	text-shadow: 0 2px 2px rgba(0,0,0,0.3);
-}
-
-.view-mode-medium-preview .signature-progress-percent .complete,
-div.drupal-embed .group-heading .signature-progress-percent .complete {
-  display: block;
 }
 
 /* # Preview Page
@@ -209,7 +207,7 @@ div.drupal-embed .group-heading .signature-action-type-label h3, /* selector ove
   color: #1CA9E7;
   text-transform: uppercase;
   font-size: 12px;
-  font-weight: normal;
+  font-weight: bold; /* override for embedded styling */
 }
 /* override for embedded styling */
 div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-action {
@@ -611,16 +609,13 @@ margin-top: 20px;
   font-size: 14px;
 }
 
-.block-takeaction-thankyou .takeaction-thankyou-message .sign {
-  font-size: .6em;
-}
-
 .block-takeaction-thankyou .signature-progress-needed {
   float: none;
 }
 
 .block-takeaction-thankyou .signature-progress-percent span {
   color: #FFFFFF;
+  display: block;
   font-weight: bold;
 }
 .block-takeaction-thankyou .signature-progress-percent .sign {
@@ -638,7 +633,6 @@ margin-top: 20px;
   font-size: 7px;
   text-transform: uppercase;
   height: 13px;
-  display: block;
 }
 
 .block-takeaction-thankyou .sharing {
@@ -1188,10 +1182,6 @@ iframe.moreactions {
   top: 9px;
 }
 
-.pie_container .sign {
-  font-size: .6em;
-}
-
 /* embeded action */
 
 .embedaction-wrapper.petition_pledge_action {
@@ -1377,10 +1367,6 @@ iframe.moreactions {
 }
 
 .embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li a:hover {
-  color: #1CA9E7;
-}
-
-.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li a:hover {
   background: transparent;
 }
 
@@ -1421,6 +1407,7 @@ iframe.moreactions {
 .embedaction-wrapper .thankyou h2 {
   color: #000;
   padding-bottom: 10px;
+  font-family: TradeGothicLTStdCnBold;
 }
 .embedaction-wrapper .thankyou .addthis_toolbox {
   width: 240px;
