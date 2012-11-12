@@ -618,6 +618,7 @@ margin-top: 20px;
   display: block;
   font-weight: bold;
 }
+.view-mode-medium-preview .signature-progress-percent .sign,
 .block-takeaction-thankyou .signature-progress-percent .sign {
   display: inline;
 }
