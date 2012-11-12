@@ -317,6 +317,7 @@ margin-bottom: 40px;
 .main-content #block-takeaction-thankyou-thank-you h2, /* selector override */
 #block-takeaction-thankyou-thank-you h2 {
   font-size: 34px;
+  padding-bottom: 6px;
 }
 .main-content #block-takeaction-thankyou-dashboard h2, /* selector override */
 #block-takeaction-thankyou-dashboard h2 {
