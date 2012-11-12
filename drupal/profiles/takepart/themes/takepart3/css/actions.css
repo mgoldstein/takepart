@@ -1431,11 +1431,14 @@ iframe.moreactions {
   padding-bottom: 10px;
   font-family: TradeGothicLTStdCnBold;
 }
+
 .field-name-field-signed-heading {
-  font-size: 25px;
-  font-weight: 300;
   text-transform: uppercase;
+  font-size: 20px;
+  line-height: 24px;
+  color: #9BC;
 }
+
 .embedaction-wrapper .thankyou .addthis_toolbox {
   width: 240px;
   margin: 0 auto;
