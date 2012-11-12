@@ -1,3 +1,5 @@
+/* # Share Block
+================================================== */
 .petition_pledge_action .addthis_toolbox,
 .block-takeaction-thankyou .addthis_toolbox {
   line-height: 0px;
@@ -13,6 +15,7 @@
   width: 51px;
   overflow: hidden;
 }
+
 .more-or-less-view.active {
   display: block;
 }
@@ -288,7 +291,7 @@ div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-act
 }
 .main-content .block-takeaction-thankyou, /* selector override */
 .block-takeaction-thankyou {
-margin-bottom: 25px;
+margin-bottom: 40px;
 }
 .main-content .block-takeaction-thankyou h2, /* selector override */
 .block-takeaction-thankyou h2 {
@@ -314,6 +317,7 @@ margin-bottom: 25px;
 .main-content #block-takeaction-thankyou-thank-you h2, /* selector override */
 #block-takeaction-thankyou-thank-you h2 {
   font-size: 34px;
+  padding-bottom: 6px;
 }
 .main-content #block-takeaction-thankyou-dashboard h2, /* selector override */
 #block-takeaction-thankyou-dashboard h2 {
@@ -615,8 +619,11 @@ margin-top: 20px;
   display: block;
   font-weight: bold;
 }
-
-.block-takeaction-thankyou .signature-progress-percent span.percentage {
+.view-mode-medium-preview .signature-progress-percent .sign,
+.block-takeaction-thankyou .signature-progress-percent .sign {
+  display: inline;
+}
+.block-takeaction-thankyou .signature-progress-percent .percentage {
   text-align: center;
   font-size: 16px;
   height: 17px;
@@ -784,6 +791,7 @@ iframe.moreactions {
   line-height: 38px;
   padding-left: 10px;
   font-size: 14px;
+  width: 100%;
 }
 
 .petition_pledge_action .signature-form .form-submit {
@@ -800,6 +808,7 @@ iframe.moreactions {
   cursor: hand;
   text-transform: uppercase;
   font-weight: bold;
+  font-family: Helvetica, Arial, sans-serif;
 
   background: #ffca00;
   background: -moz-linear-gradient(top,  rgba(255,202,0,1) 0%, rgba(255,194,0,1) 100%);
@@ -1029,6 +1038,11 @@ iframe.moreactions {
   padding: 10px 0;
 }
 
+#right-rail  .field-name-field-action-sponsor .field-name-field-group-logo,
+#right-rail  .field-name-field-action-organizer .field-name-field-group-logo {
+  padding: 0;
+}
+
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor .field-name-field-group-logo img,
 .petition_pledge_action #block-signature-summary .field-name-field-action-organizer .field-name-field-group-logo img {
   max-width: 250px;
@@ -1187,6 +1201,15 @@ iframe.moreactions {
   padding: 1px 20px 0 20px;
 }
 
+.embedaction-wrapper .field-name-field-short-introduction {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  border-bottom: 1px dotted #CCC;
+  padding-bottom: 20px;
+}
+
 .embedaction-wrapper .signature-action-taken {
   margin: 15px 0;
   font-size: 15px;
@@ -1196,12 +1219,27 @@ iframe.moreactions {
   padding-bottom: 10px;
 }
 
+.embedaction-wrapper .field-name-field-action-sponsor {
+  padding-bottom: 15px;
+  border-bottom: 1px dotted #ccc;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.embedaction-wrapper .field-name-field-action-sponsor .field-label,
+.embedaction-wrapper .field-name-field-action-sponsor .field-item,
+.embedaction-wrapper .field-name-field-action-sponsor .field-items {
+  display: inline;
+  float: none;
+  font-weight: normal;
+  font-size: 11px;
+}
+
 .embedaction-wrapper .field-name-field-petition-recipient {
-  margin: 15px;
+  margin: 10px;
   font-size: 13px;
   text-align: center;
-  border-bottom: 1px dotted #ccc;
-  padding-bottom: 10px;
+  line-height: 1.5em;
 }
 
 .embedaction-wrapper .field-name-field-petition-recipient .field-label {
@@ -1247,7 +1285,7 @@ iframe.moreactions {
   line-height: 1;
   z-index: 2;
   position: absolute;
-  top: -15px;
+  top: -20px;
   left: -61px;
 }
 
@@ -1268,6 +1306,7 @@ iframe.moreactions {
   text-transform: uppercase;
 }
 
+.embedaction-wrapper .signature-progress-needed,
 .embedaction-wrapper .signature-progress-days-left,
 .embedaction-wrapper .signature-progress-goal {
   font-size: 14px;
@@ -1287,9 +1326,11 @@ iframe.moreactions {
 }
 
 .embedaction-wrapper .signature-progress-days-left,
+.embedaction-wrapper .signature-progress-needed .count,
 .embedaction-wrapper .signature-progress-goal .count {
   font-size: 24px;
 }
+.embedaction-wrapper .signature-progress-needed .count,
 .embedaction-wrapper .signature-progress-goal .count {
   display: block;
 }
@@ -1372,9 +1413,16 @@ iframe.moreactions {
 .embedaction-wrapper .closed {
   margin: 0;
 }
+.field-name-field-signed-heading,
 .embedaction-wrapper .thankyou h2 {
   color: #000;
   padding-bottom: 10px;
+  font-family: TradeGothicLTStdCnBold;
+}
+.field-name-field-signed-heading {
+  font-size: 25px;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 .embedaction-wrapper .thankyou .addthis_toolbox {
   width: 240px;
