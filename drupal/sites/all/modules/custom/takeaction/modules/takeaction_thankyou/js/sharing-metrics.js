@@ -9,6 +9,7 @@
       'pinterest': 'Pinterest',
       'stumbleupon': 'StumbleUpon',
       'digg': 'Digg',
+      'google_plusone_badge': 'Google +1'
     }
     if (evt.data.service in services) {
       share_method = services[evt.data.service];

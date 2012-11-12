@@ -791,8 +791,11 @@ iframe.moreactions {
   line-height: 38px;
   padding-left: 10px;
   font-size: 14px;
+  width: 100%;
 }
-
+.petition_pledge_action .signature-form .field-name-field-sig-zip-code input {
+  width: 110px;
+}
 .petition_pledge_action .signature-form .form-submit {
   font-size: 24px;
   color: #000;
@@ -807,7 +810,6 @@ iframe.moreactions {
   cursor: hand;
   text-transform: uppercase;
   font-weight: bold;
-  font-family: Helvetica, Arial, sans-serif;
 
   background: #ffca00;
   background: -moz-linear-gradient(top,  rgba(255,202,0,1) 0%, rgba(255,194,0,1) 100%);
@@ -1284,7 +1286,7 @@ iframe.moreactions {
   line-height: 1;
   z-index: 2;
   position: absolute;
-  top: -20px;
+  top: -15px;
   left: -61px;
 }
 
