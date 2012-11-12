@@ -130,16 +130,28 @@
 // Not sure about all those redundant self-executing anonymous functions up there
 (function(window, $, undefined) {
 
+// Hook for observing inside/outside changes
+$('body')
+  .delegate('input[name="field_sig_address_toggle[und]"]', 'change', address_check);
+
 // inside/outside US switch
-var address_check = function() {
-  var val = $('input[name="field_sig_address_toggle[und]"]:checked').val();
-  $('.group_address_tabs .field-group-format:not(.group_' + val + '_us)').hide();
-  $('.group_address_tabs .field-group-format.group_' + val + '_us').show();
+var address_check = function(e) {
+  var $form;
+  if ( e != undefined ) {
+    $form = $(e.target).closest('form');
+  } else {
+    $form = $('form');
+  }
+
+  $form.each(function() {
+    var val = $('input[name="field_sig_address_toggle[und]"]:checked', this).val();
+    $('.group_address_tabs .field-group-format:not(.group_' + val + '_us)', this).hide();
+    $('.group_address_tabs .field-group-format.group_' + val + '_us', this).show();
+  });
 };
 
 Drupal.behaviors.addresscheck = {
   attach: function (context, settings) {
-    $('input[name="field_sig_address_toggle[und]"]').bind('change', address_check);
     address_check();
   }
 };

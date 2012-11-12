@@ -792,8 +792,11 @@ iframe.moreactions {
   line-height: 38px;
   padding-left: 10px;
   font-size: 14px;
+  width: 100%;
 }
-
+.petition_pledge_action .signature-form .field-name-field-sig-zip-code input {
+  width: 110px;
+}
 .petition_pledge_action .signature-form .form-submit {
   font-size: 24px;
   color: #000;
@@ -1035,6 +1038,11 @@ iframe.moreactions {
   text-align: center;
   margin-bottom: 10px;
   padding: 10px 0;
+}
+
+#right-rail  .field-name-field-action-sponsor .field-name-field-group-logo,
+#right-rail  .field-name-field-action-organizer .field-name-field-group-logo {
+  padding: 0;
 }
 
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor .field-name-field-group-logo img,
