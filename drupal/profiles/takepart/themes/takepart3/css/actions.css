@@ -40,14 +40,19 @@ div.drupal-embed .group-heading .signature-progress-percent {
 	height: 66px;
 	padding-top: 17px;
 }
+
 .view-mode-medium-preview .signature-progress-percent span,
 div.drupal-embed .group-heading .signature-progress-percent span {
-	display: block;
 	width: 66px;
 	text-align: center;
 	font: bold 15px/1 "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	color: #fff;
 	text-shadow: 0 2px 2px rgba(0,0,0,0.3);
+}
+
+.view-mode-medium-preview .signature-progress-percent .complete,
+div.drupal-embed .group-heading .signature-progress-percent .complete {
+  display: block;
 }
 
 /* # Preview Page
@@ -204,7 +209,7 @@ div.drupal-embed .group-heading .signature-action-type-label h3, /* selector ove
   color: #1CA9E7;
   text-transform: uppercase;
   font-size: 12px;
-  font-weight: bold; /* override for embedded styling */
+  font-weight: normal;
 }
 /* override for embedded styling */
 div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-action {
