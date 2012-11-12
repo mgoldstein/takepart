@@ -103,14 +103,12 @@ function vidpop_loaded() {
       $('.vidpop-preview .colorbox-inline').live('click', (function(){
         //alert('wait');
         $('#cboxWrapper').css('height', '425px');
-        alert(4);
         vidpopSource = 'node';
       }));
 
       $('.vidpop-preview .colorbox-inline').live('click', (function(){
         //alert('wait');
         $('#cboxWrapper').css('height', '425px');
-        alert(4);
         vidpopSource = 'node';
       }));
 
