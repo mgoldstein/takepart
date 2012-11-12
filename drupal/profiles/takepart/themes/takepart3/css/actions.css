@@ -791,6 +791,7 @@ iframe.moreactions {
   line-height: 38px;
   padding-left: 10px;
   font-size: 14px;
+  width: 100%;
 }
 
 .petition_pledge_action .signature-form .form-submit {
