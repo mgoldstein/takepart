@@ -719,17 +719,27 @@ iframe.moreactions {
 .petition_pledge_action .field-name-field-petition-recipient .field-label,
 .petition_pledge_action .field-name-field-petition-recipient .field-item {
   display: inline;
+  float: none;
+}
+
+.petition_pledge_action .field-name-field-short-introduction {
+  font-size: 16px;
+  margin: 1em 0;
 }
 
 .petition_pledge_action .field-name-field-petition-recipient {
   font-size: 16px;
-  margin: 0 0 1em 0;
+  margin: 1em 0;
 }
 
-.petition_pledge_action .field-group-format .field-label {
-  text-transform: uppercase;
+.petition_pledge_action .field-name-field-petition-recipient .field-label {
   font-size: 16px;
   margin: 2em 0 1em 0;
+}
+
+.petition_pledge_action .field-name-field-petition-recipient .field-items {
+  display: inline;
+  float: none;
 }
 
 .petition_pledge_action .more-or-less-link {
