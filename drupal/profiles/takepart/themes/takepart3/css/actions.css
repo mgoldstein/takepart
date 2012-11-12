@@ -288,7 +288,7 @@ div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-act
 }
 .main-content .block-takeaction-thankyou, /* selector override */
 .block-takeaction-thankyou {
-margin-bottom: 25px;
+margin-bottom: 40px;
 }
 .main-content .block-takeaction-thankyou h2, /* selector override */
 .block-takeaction-thankyou h2 {
@@ -618,8 +618,10 @@ margin-top: 20px;
   color: #FFFFFF;
   font-weight: bold;
 }
-
-.block-takeaction-thankyou .signature-progress-percent span.percentage {
+.block-takeaction-thankyou .signature-progress-percent .sign {
+  display: inline;
+}
+.block-takeaction-thankyou .signature-progress-percent .percentage {
   text-align: center;
   font-size: 16px;
   height: 17px;
