@@ -1086,6 +1086,7 @@ iframe.moreactions {
 .petition_pledge_action .block-boxes-view-name-content_updates .view-content-updates {
   border-top: 1px solid #ccc;
   font-size: 13px;
+  line-height: 1.5em;
 }
 
 .petition_pledge_action .block-boxes-view-name-content_updates .view-content-updates .views-row {
