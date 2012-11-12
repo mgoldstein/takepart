@@ -502,7 +502,6 @@
       if (response[this.options['nid']]) {
         var data = response[this.options['nid']];
         var progress = data['progress'];
-        console.log(progress);
         this.groups.each(function (index) {
           var group = $(this);
           if (group.hasClass(progress['state'])) {
