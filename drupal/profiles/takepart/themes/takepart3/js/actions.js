@@ -130,15 +130,11 @@
 // Not sure about all those redundant self-executing anonymous functions up there
 (function(window, $, undefined) {
 
-// Hook for observing inside/outside changes
-$('body')
-  .delegate('input[name="field_sig_address_toggle[und]"]', 'change', address_check);
-
 // inside/outside US switch
-var address_check = function(e) {
+var address_check = function(form) {
   var $form;
-  if ( e != undefined ) {
-    $form = $(e.target).closest('form');
+  if ( form != undefined ) {
+    $form = $(form);
   } else {
     $form = $('form');
   }
@@ -152,7 +148,16 @@ var address_check = function(e) {
 
 Drupal.behaviors.addresscheck = {
   attach: function (context, settings) {
-    address_check();
+    $('.signature-form').once('addresscheck', function() {
+      var form = this;
+      // Hook for observing inside/outside changes
+      $('input[name="field_sig_address_toggle[und]"]', this)
+        .bind('change', function() {
+          address_check(form)
+        });
+
+        address_check(form)
+    });
   }
 };
 
