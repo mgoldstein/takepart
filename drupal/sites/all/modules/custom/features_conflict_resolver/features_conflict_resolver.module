@@ -220,10 +220,6 @@ function features_conflict_resolver_cmap_component_merge($cmap, $merge_component
   return $merged_cmap;
 }
 
-
-
-
-
 /**
  * Merge the passed modules into a new group.
  *
