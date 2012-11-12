@@ -867,6 +867,10 @@ ul#top-follow li.pinterest img {
     font-size:11px;
 }
 
+#slim-header #join-login-top a:hover {
+  text-decoration: underline;
+}
+
 /*slim header width*/
 #slim-header #nav-wrap {
     background: none;

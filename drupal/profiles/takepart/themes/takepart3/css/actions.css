@@ -9,6 +9,9 @@
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: middle;
   float: none;
+  width: 32px;
+  height: 32px;
+  margin-right: 7px;
 }
 .petition_pledge_action .addthis_toolbox .addthis_button_google_plusone,
 .block-takeaction-thankyou .addthis_toolbox .addthis_button_google_plusone {
@@ -1077,6 +1080,7 @@ iframe.moreactions {
 .petition_pledge_action .block-boxes-view-name-content_updates .view-content-updates {
   border-top: 1px solid #ccc;
   font-size: 13px;
+  line-height: 1.5em;
 }
 
 .petition_pledge_action .block-boxes-view-name-content_updates .view-content-updates .views-row {
@@ -1422,11 +1426,14 @@ iframe.moreactions {
   padding-bottom: 10px;
   font-family: TradeGothicLTStdCnBold;
 }
+
 .field-name-field-signed-heading {
-  font-size: 25px;
-  font-weight: 300;
   text-transform: uppercase;
+  font-size: 20px;
+  line-height: 24px;
+  color: #9BC;
 }
+
 .embedaction-wrapper .thankyou .addthis_toolbox {
   width: 240px;
   margin: 0 auto;
