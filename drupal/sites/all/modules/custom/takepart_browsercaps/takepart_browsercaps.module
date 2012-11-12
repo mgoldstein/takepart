@@ -1,10 +1,28 @@
 <?php
 
+/**
+ * Modes for testing
+ */
+
+define('TAKEPART_BROWSERCAPS_MODE_NORMAL', 0);
+define('TAKEPART_BROWSERCAPS_MODE_FORCE_MOBILE', 1);
+define('TAKEPART_BROWSERCAPS_MODE_FORCE_DESKTOP', 2);
+
+
+
 
 /**
  * Implements hook_menu().
  */
 function takepart_browsercaps_menu() {
+  $items['admin/config/media/browsercaps/settings'] = array(
+    'title' => 'Browsercaps settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_browsercaps_settings_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'takepart_browsercaps.admin.inc',
+  );
   $items['test/sniffer'] = array(
     'title' => 'User Agent Sniffer',
     'page callback' => 'takepart_browsercaps_sniffer',
@@ -55,7 +73,17 @@ function takepart_browsercaps_sniffer() {
  * @return int
  */
 function takepart_vidpop_mobile_browser() {
-  // return true;    // for testing only!!!
+  $mode = variable_get('takepart_browsercaps_force', TAKEPART_BROWSERCAPS_MODE_NORMAL);
+  switch ($mode) {
+    case TAKEPART_BROWSERCAPS_MODE_FORCE_MOBILE:
+      return true;
+
+    case TAKEPART_BROWSERCAPS_MODE_FORCE_DESKTOP:
+      return false;
+
+    case TAKEPART_BROWSERCAPS_MODE_NORMAL:
+      break;  // normal mode; process below
+  }
 
   $browsercaps = browscap_get_browser();
   if (isset($browsercaps['parent'])) {
