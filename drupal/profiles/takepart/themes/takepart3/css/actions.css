@@ -1187,6 +1187,15 @@ iframe.moreactions {
   padding: 1px 20px 0 20px;
 }
 
+.embedaction-wrapper .field-name-field-short-introduction {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  border-bottom: 1px dotted #CCC;
+  padding-bottom: 20px;
+}
+
 .embedaction-wrapper .signature-action-taken {
   margin: 15px 0;
   font-size: 15px;
@@ -1196,12 +1205,28 @@ iframe.moreactions {
   padding-bottom: 10px;
 }
 
+.embedaction-wrapper .field-name-field-action-sponsor {
+  padding-bottom: 15px;
+  border-bottom: 1px dotted #ccc;
+  margin-bottom: 10px;
+  text-align: center;
+  line-height: 2em;
+}
+
+.embedaction-wrapper .field-name-field-action-sponsor .field-label,
+.embedaction-wrapper .field-name-field-action-sponsor .field-item,
+.embedaction-wrapper .field-name-field-action-sponsor .field-items {
+  display: inline;
+  float: none;
+  font-weight: normal;
+  font-size: 12px;
+}
+
 .embedaction-wrapper .field-name-field-petition-recipient {
-  margin: 15px;
+  margin: 10px;
   font-size: 13px;
   text-align: center;
-  border-bottom: 1px dotted #ccc;
-  padding-bottom: 10px;
+  line-height: 2em;
 }
 
 .embedaction-wrapper .field-name-field-petition-recipient .field-label {
