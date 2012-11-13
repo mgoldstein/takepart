@@ -9,6 +9,8 @@
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: middle;
   float: none;
+}
+.block-takeaction-thankyou .addthis_toolbox>a  {
   width: 32px;
   height: 32px;
   margin-right: 7px;
