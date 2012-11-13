@@ -729,9 +729,21 @@ iframe.moreactions {
   display: inline;
 }
 
+.petition_pledge_action .field-name-field-short-introduction {
+  font-size: 16px;
+  margin: 1em 0;
+}
+
 .petition_pledge_action .field-name-field-petition-recipient {
   font-size: 16px;
-  margin: 0 0 1em 0;
+  margin: 1em 0;
+}
+
+.petition_pledge_action .field-name-field-petition-recipient .field-items,
+.petition_pledge_action .field-name-field-petition-recipient .field-item,
+.petition_pledge_action .field-name-field-petition-recipient .field-label {
+  display: inline;
+  float: none;
 }
 
 .petition_pledge_action .field-group-format .field-label {
