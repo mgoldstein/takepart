@@ -72,7 +72,7 @@ function _spit_json() {
   $instances = $slurp['instances'];
 
   if(empty($entity_type) || empty($bundle_name) || empty($gettype) || empty($enviro)) {
-    echo "You're URL should look something like; http://" . $_SERVER['HTTP_HOST'] . "/spit?enviro=qa.takepart.com&entity=node&bundle=action&type=instances, where enviro is the server you are importing from, entity and action specifiy which to pull fields from and type should be either \"fields\" or \"instances\"";  
+    echo "Your URL should look something like; http://" . $_SERVER['HTTP_HOST'] . "/spit?enviro=qa.takepart.com&entity=node&bundle=action&type=instances, where enviro is the server you are importing from, entity and action specifiy which to pull fields from and type should be either \"fields\" or \"instances\"";  
     exit();
   }
 
@@ -95,14 +95,14 @@ function _spit_json() {
             try {
               field_create_field($field);
             } catch (Exception $e) {
-              echo "Create Error:<pre>";
-              print_r($e);
+              echo "Error: Create<pre>";
+              //print_r($e);
               echo "</pre>";
               try {
                 field_update_field($fields[$field_name]);
               } catch (Exception $e) {
-                echo "Update (Create Exception) Error:<pre>";
-                print_r($e);
+                echo "Error: Update (Create Exception)<pre>";
+                //print_r($e);
                 echo "</pre>";
               }
             } 
@@ -127,21 +127,22 @@ function _spit_json() {
       echo "<h3>" . $field_name . "</h3>";
       if (isset($fields[$field_name])) {
         $info = field_info_instance($entity_type, $field_name, $bundle_name);
+        $fieldinstance = field_read_field($instance);
         if (empty($info)) {
           print "Adding instance of {$field_name}<br/><br/>\n";
           unset($instance['id']);
           unset($instance['field_id']);
-          echo '<pre>Instance:';
-          print_r($instance);
-          echo '</pre>';
+          //echo '<pre>Instance:';
+          //print_r($instance);
+          //echo '</pre>';
           if(!empty($instance)) {
             field_create_instance($instance);
           }
-        } else {
+        } elseif (!emoty($fieldinstance)) {
           print "Updating instance of {$field_name}<br/><br/>\n";
-          echo '<pre>Instance:';
-          print_r($instance);
-          echo '</pre>';
+          //echo '<pre>Instance:';
+          //print_r($instance);
+          //echo '</pre>';
           if(!empty($instance)) {
             field_update_instance($instance);
           }
