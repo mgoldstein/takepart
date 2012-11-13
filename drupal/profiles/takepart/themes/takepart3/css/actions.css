@@ -715,6 +715,11 @@ iframe.moreactions {
   margin-bottom: 10px;
 }
 
+.petition_pledge_action .field-name-body {
+  font-size: 14px;
+  line-height: 24px;
+}
+
 .petition_pledge_action .field-name-field-action-main-image {
   width: 640px;
   height: 333px;
