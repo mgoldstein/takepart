@@ -799,7 +799,8 @@ iframe.moreactions {
   padding-top: 9px;
   padding-bottom: 9px;
 }
-.petition_pledge_action .signature-form .field-name-field-sig-zip-code input {
+.petition_pledge_action .signature-form .field-name-field-sig-zip-code input,
+.petition_pledge_action .signature-form .field-name-field-sig-postal-code input {
   width: 110px;
 }
 .petition_pledge_action .signature-form .form-submit {
