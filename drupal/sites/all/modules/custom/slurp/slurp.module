@@ -60,6 +60,10 @@ function _slurp_json() {
 function _spit_json() {
 
   drupal_set_time_limit(5*60);
+  field_purge_batch();
+  drupal_flush_all_caches();
+  field_cache_clear(TRUE);
+  flush();
 
   $entity_type = $_GET['entity'];
   $bundle_name = $_GET['bundle'];
@@ -72,7 +76,7 @@ function _spit_json() {
   $instances = $slurp['instances'];
 
   if(empty($entity_type) || empty($bundle_name) || empty($gettype) || empty($enviro)) {
-    echo "You're URL should look something like; http://" . $_SERVER['HTTP_HOST'] . "/spit?enviro=qa.takepart.com&entity=node&bundle=action&type=instances, where enviro is the server you are importing from, entity and action specifiy which to pull fields from and type should be either \"fields\" or \"instances\"";  
+    echo "Your URL should look something like; http://" . $_SERVER['HTTP_HOST'] . "/spit?enviro=qa.takepart.com&entity=node&bundle=action&type=instances, where enviro is the server you are importing from, entity and action specifiy which to pull fields from and type should be either \"fields\" or \"instances\"";  
     exit();
   }
 
@@ -92,10 +96,22 @@ function _spit_json() {
           $field = $fields[$field_name];
           if(!empty($field)) {
             unset($field['id']);
-            field_create_field($field);
+            try {
+              field_create_field($field);
+            } catch (Exception $e) {
+              echo "Error: Create<pre>";
+              print_r($e);
+              echo "</pre>";
+              try {
+                field_update_field($field);
+              } catch (Exception $e) {
+                echo "Error: Update (Create Exception)<pre>";
+                print_r($e);
+                echo "</pre>";
+              }
+            } 
           }
-        }
-        else {
+        } else {
           print "Updating field {$field_name}<br/><br/>\n";
           field_update_field($fields[$field_name]);
         }
@@ -105,6 +121,7 @@ function _spit_json() {
       } else {
         echo "Field <i>{$field_name}</i> not set.";
       }
+      flush();
     }
   }
   
@@ -115,30 +132,32 @@ function _spit_json() {
       echo "<h3>" . $field_name . "</h3>";
       if (isset($fields[$field_name])) {
         $info = field_info_instance($entity_type, $field_name, $bundle_name);
+        $fieldinstance = field_read_field($instance);
         if (empty($info)) {
           print "Adding instance of {$field_name}<br/><br/>\n";
           unset($instance['id']);
           unset($instance['field_id']);
-          echo '<pre>Instance:';
-          print_r($instance);
-          echo '</pre>';
+          //echo '<pre>Instance:';
+          //print_r($instance);
+          //echo '</pre>';
           if(!empty($instance)) {
             field_create_instance($instance);
           }
-        }
-        else {
+        } elseif (!empty($fieldinstance)) {
           print "Updating instance of {$field_name}<br/><br/>\n";
-          echo '<pre>Instance:';
-          print_r($instance);
-          echo '</pre>';
+          //echo '<pre>Instance:';
+          //print_r($instance);
+          //echo '</pre>';
           if(!empty($instance)) {
             field_update_instance($instance);
+          } else { 
+            print "Error: Need to create field first.<br/>";
           }
         }
-
       } else {
         echo "Field <i>{$field_name}</i> not set.";
       }
+      flush();
     }
   }
 
@@ -154,6 +173,9 @@ function _slurp_curl($enviro = 'qa.takepart.com', $entity, $bundle) {
 
    $ch = curl_init();   
    $url = "http://" . $enviro . "/slurp?entity=" . urlencode($entity) . "&bundle=" . urlencode($bundle);
+
+   print $url; 
+   print "<br/>";
 
    curl_setopt($ch, CURLOPT_URL, $url);
    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
