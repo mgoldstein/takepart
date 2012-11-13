@@ -60,6 +60,7 @@ function _slurp_json() {
 function _spit_json() {
 
   drupal_set_time_limit(5*60);
+  drupal_flush_all_caches();
 
   $entity_type = $_GET['entity'];
   $bundle_name = $_GET['bundle'];
@@ -96,13 +97,13 @@ function _spit_json() {
               field_create_field($field);
             } catch (Exception $e) {
               echo "Error: Create<pre>";
-              //print_r($e);
+              print_r($e);
               echo "</pre>";
               try {
                 field_update_field($fields[$field_name]);
               } catch (Exception $e) {
                 echo "Error: Update (Create Exception)<pre>";
-                //print_r($e);
+                print_r($e);
                 echo "</pre>";
               }
             } 
@@ -145,6 +146,8 @@ function _spit_json() {
           //echo '</pre>';
           if(!empty($instance)) {
             field_update_instance($instance);
+          } else { 
+            print "Error: Need to create field first.<br/>";
           }
         }
       } else {
