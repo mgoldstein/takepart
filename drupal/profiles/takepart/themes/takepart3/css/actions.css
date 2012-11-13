@@ -1483,6 +1483,7 @@ iframe.moreactions {
 .embedaction-wrapper .closed {
   margin: 0;
 }
+
 .field-name-field-signed-heading,
 .field-name-field-thank-you-heading,
 .embedaction-wrapper .thankyou h2 {
@@ -1491,6 +1492,8 @@ iframe.moreactions {
   font-family: 'TradeGothicLTStdCnBold',Helvetica,Arial,sans-serif;
   background: url(/profiles/takepart/themes/takepart3/images/tab/doubleLine.png) repeat-x bottom left;
   margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: normal;
 }
 
 .field-name-field-thank-you-heading,
