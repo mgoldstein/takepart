@@ -9,7 +9,7 @@
       'pinterest': 'Pinterest',
       'stumbleupon': 'StumbleUpon',
       'digg': 'Digg',
-      'google_plusone_badge': 'Google +1'
+      'google_plusone': 'Google +1'
     }
     if (evt.data.service in services) {
       share_method = services[evt.data.service];
@@ -49,11 +49,12 @@
 
     s.tl(true, 'o', 'Content Share');
   };
-  Drupal.behaviors.addthisField = {
+  Drupal.behaviors.takeactionAddThisField = {
     attach: function (context, settings) {
       // Setup the share event listener.
       if (window.addthis) {
-        $('body').once('addthis-init', function () {
+        console.log(window.addthis);
+        $('body').once('takeaction-addthis-init', function () {
           window.addthis.addEventListener('addthis.menu.share',
             takeactionThankYouShareListener);
         });
