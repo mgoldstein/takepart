@@ -90,8 +90,10 @@ function _spit_json() {
         if (empty($info)) {
           print "Adding field {$field_name}<br/><br/>\n";
           $field = $fields[$field_name];
-          unset($field['id']);
-          field_create_field($field);
+          if(!empty($field)) {
+            unset($field['id']);
+            field_create_field($field);
+          }
         }
         else {
           print "Updating field {$field_name}<br/><br/>\n";
