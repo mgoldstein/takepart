@@ -9,6 +9,8 @@
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: middle;
   float: none;
+}
+.block-takeaction-thankyou .addthis_toolbox>a  {
   width: 32px;
   height: 32px;
   margin-right: 7px;
@@ -1089,6 +1091,10 @@ iframe.moreactions {
   border-bottom: 1px dotted #ccc;
 }
 
+.petition_pledge_action .followup-content-link .field-name-field-tab-update-text {
+  margin-bottom: 10px;
+}
+
 .petition_pledge_action .block-boxes-view-name-content_updates .followup-date h3 {
   font-size: 12px;
 }
@@ -1421,19 +1427,19 @@ iframe.moreactions {
   margin: 0;
 }
 .field-name-field-signed-heading,
+.field-name-field-thank-you-heading,
 .embedaction-wrapper .thankyou h2 {
   color: #000;
   padding-bottom: 10px;
   font-family: TradeGothicLTStdCnBold;
 }
 
+.field-name-field-thank-you-heading,
 .field-name-field-signed-heading {
+  font-size: 25px;
+  font-weight: 300;
   text-transform: uppercase;
-  font-size: 20px;
-  line-height: 24px;
-  color: #9BC;
 }
-
 .embedaction-wrapper .thankyou .addthis_toolbox {
   width: 240px;
   margin: 0 auto;
