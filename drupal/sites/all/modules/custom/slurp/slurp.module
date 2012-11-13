@@ -92,10 +92,22 @@ function _spit_json() {
           $field = $fields[$field_name];
           if(!empty($field)) {
             unset($field['id']);
-            field_create_field($field);
+            try {
+              field_create_field($field);
+            } catch (Exception $e) {
+              echo "Create Error:<pre>";
+              print_r($e);
+              echo "</pre>";
+              try {
+                field_update_field($fields[$field_name]);
+              } catch (Exception $e) {
+                echo "Update (Create Exception) Error:<pre>";
+                print_r($e);
+                echo "</pre>";
+              }
+            } 
           }
-        }
-        else {
+        } else {
           print "Updating field {$field_name}<br/><br/>\n";
           field_update_field($fields[$field_name]);
         }
@@ -125,8 +137,7 @@ function _spit_json() {
           if(!empty($instance)) {
             field_create_instance($instance);
           }
-        }
-        else {
+        } else {
           print "Updating instance of {$field_name}<br/><br/>\n";
           echo '<pre>Instance:';
           print_r($instance);
@@ -135,7 +146,6 @@ function _spit_json() {
             field_update_instance($instance);
           }
         }
-
       } else {
         echo "Field <i>{$field_name}</i> not set.";
       }
