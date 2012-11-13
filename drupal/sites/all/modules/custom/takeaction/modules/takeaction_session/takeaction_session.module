@@ -12,10 +12,10 @@ function takeaction_session_user_login(&$edit, $account) {
   // Get the active tracking cookie.
   $active_guid = '';
   $guid_cookie = variable_get('takeaction_action_cookie_name', 'TAKEACTIONGUID');
-  if (!empty($_COOKIE[$cookie])) {
+  if (!empty($_COOKIE[$guid_cookie])) {
     $regex = '/^[0-9A-F]{8}(\-[0-9A-F]{4}){3}\-[0-9A-F]{12}$/';
-    if (preg_match($regex, $_COOKIE[$cookie])) {
-      $active_guid = $_COOKIE[$cookie];
+    if (preg_match($regex, $_COOKIE[$guid_cookie])) {
+      $active_guid = $_COOKIE[$guid_cookie];
     }
   }
 
