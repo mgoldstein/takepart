@@ -8,14 +8,20 @@
  * Implements hook_user_login().
  */
 function takeaction_session_user_login(&$edit, $account) {
-
+  
+  $release_guid = variable_get('takeaction_release_guid', '');
+  
   // Get the active tracking cookie.
   $active_guid = '';
   $guid_cookie = variable_get('takeaction_action_cookie_name', 'TAKEACTIONGUID');
   if (!empty($_COOKIE[$guid_cookie])) {
-    $regex = '/^[0-9A-F]{8}(\-[0-9A-F]{4}){3}\-[0-9A-F]{12}$/';
+    $guid_pattern = '[0-9A-F]{8}(\-[0-9A-F]{4}){3}\-[0-9A-F]{12}';
+    $regex = '/^' . $guid_pattern . ':' . $guid_pattern . '$/';
     if (preg_match($regex, $_COOKIE[$guid_cookie])) {
-      $active_guid = $_COOKIE[$guid_cookie];
+      list($release, $tracking) = explode(':', $_COOKIE[$guid_cookie], 2);
+      if ($release === $release_guid) {
+        $active_guid = $tracking;
+      }
     }
   }
 
@@ -47,17 +53,24 @@ function takeaction_session_user_login(&$edit, $account) {
 }
 
 /**
- * Implements hook_user_logout().
+ * Implements hook_init().
  */
-function takeaction_session_user_logout($account) {
-  // Delete the session cookie.
-  $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION');
-  $path = variable_get('takeaction_session_cookie_path', '/');
-  $domain = variable_get('takeaction_session_cookie_domain', '.takepart.com');
-  setcookie($session_cookie, FALSE, time() - (60 * 60 * 24), $path, $domain);
-  // Delete the tracking cookie.
-  $guid_cookie = variable_get('takeaction_action_cookie_name', 'TAKEACTIONGUID');
-  $path = variable_get('takeaction_action_cookie_path', '/');
-  $domain = variable_get('takeaction_action_cookie_domain', '.takepart.com');
-  setcookie($guid_cookie, FALSE, time() - (60 * 60 * 24), $path, $domain);
+function takeaction_session_init() {
+  global $user;
+  if (empty($user) || empty($user->uid)) {
+    $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION');
+    if (!empty($_COOKIE[$session_cookie])) {
+      // Delete the session cookie.
+      $path = variable_get('takeaction_session_cookie_path', '/');
+      $domain = variable_get('takeaction_session_cookie_domain', '.takepart.com');
+      setcookie($session_cookie, FALSE, time() - (60 * 60 * 24), $path, $domain);
+    }
+    $guid_cookie = variable_get('takeaction_action_cookie_name', 'TAKEACTIONGUID');
+    if (!empty($_COOKIE[$guid_cookie])) {
+      // Delete the tracking cookie.
+      $path = variable_get('takeaction_action_cookie_path', '/');
+      $domain = variable_get('takeaction_action_cookie_domain', '.takepart.com');
+      setcookie($guid_cookie, FALSE, time() - (60 * 60 * 24), $path, $domain);
+    }
+  }
 }
