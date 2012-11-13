@@ -783,6 +783,15 @@ function signature_preprocess_field(&$vars) {
       }
     }
   }
+  elseif ($field_name == 'field_action_type') {
+    $object = $vars['element']['#object'];
+    $type = $vars['element']['#entity_type'];
+    $item = reset(field_get_items($type, $object, 'field_action_type'));
+    if ($item !== FALSE && isset($item['taxonomy_term'])) {
+      $action_type_class = 'action-type ' . $item['taxonomy_term']->name;
+      $vars['classes_array'][] = drupal_html_class($action_type_class);
+    }
+  }
 }
 
 /**
@@ -1698,6 +1707,51 @@ function theme_signature_action_taken($variables) {
   $output .= ' <span class="title">' . check_plain($node->title) . '</span>';
   $output .= '</div>';
   return $output;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function signature_field_formatter_info() {
+  return array(
+    'signature_action_type_label' => array(
+      'label' => t('Action Type Label'),
+      'field types' => array('taxonomy_term_reference'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function signature_field_formatter_view($entity_type, $entity, $field,
+  $instance, $langcode, $items, $display) {
+  $mapping = array(
+    'Petition' => t('Petition'),
+    'Pledge' => t('Pledge'),
+    'Contribution' => t('Donation'),
+    'Donation' => t('Donation'),
+    'Awareness' => t('Awareness'),
+  );
+  $element = array();
+  if ($display['type'] === 'signature_action_type_label') {
+    foreach ($items as $delta => $item) {
+      $name = ($item['tid'] != 'autocreate' ? $item['taxonomy_term']->name : $item['name']);
+      // Remap the label
+      $label = check_plain($name);
+      $element[$delta] = array(
+        '#markup' => isset($mapping[$label]) ? $mapping[$label] : t('Awareness'),
+      );
+    }
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_prepare_view().
+ */
+function signature_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+  taxonomy_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays);
 }
 
 
