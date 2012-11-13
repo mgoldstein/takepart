@@ -1094,6 +1094,10 @@ iframe.moreactions {
   border-bottom: 1px dotted #ccc;
 }
 
+.petition_pledge_action .followup-content-link .field-name-field-tab-update-text {
+  margin-bottom: 10px;
+}
+
 .petition_pledge_action .block-boxes-view-name-content_updates .followup-date h3 {
   font-size: 12px;
 }

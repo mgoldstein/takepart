@@ -50,9 +50,14 @@ function takeaction_session_user_login(&$edit, $account) {
  * Implements hook_user_logout().
  */
 function takeaction_session_user_logout($account) {
-  // Delete the cookie.
-  $cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION');
+  // Delete the session cookie.
+  $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION');
   $path = variable_get('takeaction_session_cookie_path', '/');
   $domain = variable_get('takeaction_session_cookie_domain', '.takepart.com');
-  setcookie($cookie, FALSE, time() - (60 * 60 * 24), $path, $domain);
+  setcookie($session_cookie, FALSE, time() - (60 * 60 * 24), $path, $domain);
+  // Delete the tracking cookie.
+  $guid_cookie = variable_get('takeaction_action_cookie_name', 'TAKEACTIONGUID');
+  $path = variable_get('takeaction_action_cookie_path', '/');
+  $domain = variable_get('takeaction_action_cookie_domain', '.takepart.com');
+  setcookie($guid_cookie, FALSE, time() - (60 * 60 * 24), $path, $domain);
 }
