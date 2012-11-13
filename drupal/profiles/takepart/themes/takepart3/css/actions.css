@@ -1085,10 +1085,6 @@ iframe.moreactions {
   line-height: 1.5em;
 }
 
-.petition_pledge_action .field-name-field-tab-content-link {
-  margin-top: .5em;
-}
-
 .petition_pledge_action .block-boxes-view-name-content_updates .view-content-updates .views-row {
   padding: 15px 0;
   margin-top: 3px;
@@ -1435,7 +1431,9 @@ iframe.moreactions {
 .embedaction-wrapper .thankyou h2 {
   color: #000;
   padding-bottom: 10px;
-  font-family: TradeGothicLTStdCnBold;
+  font-family: 'TradeGothicLTStdCnBold',Helvetica,Arial,sans-serif;
+  background: url(/profiles/takepart/themes/takepart3/images/tab/doubleLine.png) repeat-x bottom left;
+  margin-bottom: 15px;
 }
 
 .field-name-field-thank-you-heading,
