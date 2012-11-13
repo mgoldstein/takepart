@@ -799,7 +799,8 @@ iframe.moreactions {
   padding-top: 9px;
   padding-bottom: 9px;
 }
-.petition_pledge_action .signature-form .field-name-field-sig-zip-code input {
+.petition_pledge_action .signature-form .field-name-field-sig-zip-code input,
+.petition_pledge_action .signature-form .field-name-field-sig-postal-code input {
   width: 110px;
 }
 .petition_pledge_action .signature-form .form-submit {
@@ -1082,6 +1083,10 @@ iframe.moreactions {
   border-top: 1px solid #ccc;
   font-size: 13px;
   line-height: 1.5em;
+}
+
+.petition_pledge_action .field-name-field-tab-content-link {
+  margin-top: .5em;
 }
 
 .petition_pledge_action .block-boxes-view-name-content_updates .view-content-updates .views-row {
