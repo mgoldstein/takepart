@@ -63,6 +63,7 @@ function _spit_json() {
   field_purge_batch();
   drupal_flush_all_caches();
   field_cache_clear(TRUE);
+  flush();
 
   $entity_type = $_GET['entity'];
   $bundle_name = $_GET['bundle'];
@@ -120,6 +121,7 @@ function _spit_json() {
       } else {
         echo "Field <i>{$field_name}</i> not set.";
       }
+      flush();
     }
   }
   
@@ -155,6 +157,7 @@ function _spit_json() {
       } else {
         echo "Field <i>{$field_name}</i> not set.";
       }
+      flush();
     }
   }
 
@@ -170,6 +173,9 @@ function _slurp_curl($enviro = 'qa.takepart.com', $entity, $bundle) {
 
    $ch = curl_init();   
    $url = "http://" . $enviro . "/slurp?entity=" . urlencode($entity) . "&bundle=" . urlencode($bundle);
+
+   print $url; 
+   print "<br/>";
 
    curl_setopt($ch, CURLOPT_URL, $url);
    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
