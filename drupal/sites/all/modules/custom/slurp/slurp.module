@@ -60,7 +60,9 @@ function _slurp_json() {
 function _spit_json() {
 
   drupal_set_time_limit(5*60);
+  field_purge_batch();
   drupal_flush_all_caches();
+  field_cache_clear(TRUE);
 
   $entity_type = $_GET['entity'];
   $bundle_name = $_GET['bundle'];
@@ -100,7 +102,7 @@ function _spit_json() {
               print_r($e);
               echo "</pre>";
               try {
-                field_update_field($fields[$field_name]);
+                field_update_field($field);
               } catch (Exception $e) {
                 echo "Error: Update (Create Exception)<pre>";
                 print_r($e);
