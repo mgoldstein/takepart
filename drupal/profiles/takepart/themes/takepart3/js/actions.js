@@ -166,7 +166,8 @@ $(function() {
 
   // give pledge actions the same class as petition actions for styling
   // TODO: fix in the html and remove this
-  $('.pledge_action, .petition_action, .embedaction-wrapper').addClass('petition_pledge_action');
+  $('#page.pledge_action, #page.action, #page.petition_action, .embedaction-wrapper')
+    .addClass('petition_pledge_action');
 
   // Uses css3 to rotate stuff.
   // TODO: put this in its own plugin file
