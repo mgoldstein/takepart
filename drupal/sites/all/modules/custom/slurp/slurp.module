@@ -1,0 +1,91 @@
+<?php
+  
+/**
+ * Implement hook_menu().
+ */
+function slurp_menu() {
+  $items = array();
+  $items['slurp'] = array(
+      'title' => 'Field Export',
+      'page callback' => '_slurp_json',
+      'access callback' => true,
+      'type' => MENU_CALLBACK,
+  );
+  $items['spit'] = array(
+      'title' => 'Field Export',
+      'page callback' => '_spit_json',
+      'access callback' => true,
+      'type' => MENU_CALLBACK,
+  );  
+  return $items;
+}
+
+
+/*
+ * Menu callback for JSON:
+ */
+function _slurp_json() {
+    
+  $json_instances = array();
+  $json_field_data = array();
+
+  $entity_type = $_GET['entity'];
+  $bundle_name = $_GET['bundle'];
+
+  $fields_info = field_info_instances($entity_type, $bundle_name);
+  foreach ($fields_info as $field_name => $value) {
+    $instance = field_info_instance($entity_type, $field_name, $bundle_name);
+    $field_data = field_info_field($field_name);
+    $json_instances[] = $instance;
+    $json_field_data[] = $field_data;
+  }
+
+  header ("Content-Type:application/json");
+  
+  echo drupal_json_encode($json_instances);
+  echo drupal_json_encode($json_field_data);
+
+  exit();
+  
+}
+
+
+/*
+ * Menu callback for JSON:
+ */
+function _spit_json() {
+    
+  $entity_type = $_GET['entity'];
+  $bundle_name = $_GET['bundle'];
+  $enviro = $_GET['enviro'];
+  
+  $fields = _slurp_curl($enviro, $entity, $bundle);
+
+  foreach ($fields as $field => $instance) {
+      echo "<h1>" . $field . "</h1>";
+      echo '<pre>';
+      print_r($instance);
+      echo '</pre>';
+  }
+
+  exit();
+  
+}
+
+
+/**
+ * Server side geocode:
+ */
+function _slurp_curl($enviro = 'qa.takepart.com', $entity, $bundle) {
+
+   $ch = curl_init();   
+   $url = "http://" . $enviro . "/slurp?entity=" . urlencode($entity) . "&bundle=" . urlencode($bundle);
+   curl_setopt($ch, CURLOPT_URL, $url);
+   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+   $stuff = drupal_json_decode(curl_exec($ch), true);   
+   return $stuff;
+}
+
+
+
+

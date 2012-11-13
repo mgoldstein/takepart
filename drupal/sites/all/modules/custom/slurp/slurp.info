@@ -1,0 +1,3 @@
+name = Slurp and Spit Field Info
+description = Exmport field info via menu hook
+core = 7.x
