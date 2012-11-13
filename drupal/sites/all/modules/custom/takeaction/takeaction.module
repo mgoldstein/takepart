@@ -125,6 +125,14 @@ function takeaction_admin_form($form, &$form_state) {
     '#tree' => FALSE,
   );
 
+  $form['action_tracking']['takeaction_release_guid'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Site GUID'),
+    '#description' => t('The GUID for identifying the site. Used to invalidate tracking cookies that span a code releases and development environments.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_release_guid', ''),
+  );
+
   $form['action_tracking']['takeaction_action_cookie_name'] = array(
     '#type' => 'textfield',
     '#title' => t('Cookie Name'),

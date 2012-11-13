@@ -35,8 +35,11 @@ function takeaction_tracking_track_action($nid) {
 /**
  * GUID retrieval function.
  */
-function takeaction_tracking_get_guid() {
+function takeaction_tracking_get_guid($uid = NULL) {
   global $user;
+  $uid = empty($uid) ? $user->uid : $uid;
+
+  $release_guid = variable_get('takeaction_release_guid', '');
 
   $guid = FALSE;
   $from_db = FALSE;
@@ -48,24 +51,28 @@ function takeaction_tracking_get_guid() {
   $domain = variable_get('takeaction_action_cookie_domain', '.takepart.com');
 
   // Check for a GUID tied to a logged in user.
-  if (!empty($user->uid)) {
+  if (!empty($uid)) {
     $result = db_select('takeaction_tracking_action_guid', 'g')
       ->fields('g', array('uid', 'guid'))
-      ->condition('g.uid', $user->uid, '=')
+      ->condition('g.uid', $uid, '=')
       ->execute()
       ->fetchAllKeyed();
     if (!empty($result)) {
-      $guid = $result[$user->uid];
+      $guid = $result[$uid];
       $from_db = TRUE;
-      setcookie($cookie, $guid, $expire, $path, $domain);
+      setcookie($cookie, "{$release_guid}:{$guid}", $expire, $path, $domain);
     }
   }
 
   // Check for an already set cookie.
   if (empty($guid) && !empty($_COOKIE[$cookie])) {
-    $regex = '/^[0-9A-F]{8}(\-[0-9A-F]{4}){3}\-[0-9A-F]{12}$/';
+    $guid_pattern = '[0-9A-F]{8}(\-[0-9A-F]{4}){3}\-[0-9A-F]{12}';
+    $regex = '/^' . $guid_pattern . ':' . $guid_pattern . '$/';
     if (preg_match($regex, $_COOKIE[$cookie])) {
-      $guid = $_COOKIE[$cookie];
+      list($release, $tracking) = explode(':', $_COOKIE[$cookie], 2);
+      if ($release === $release_guid) {
+        $guid = $tracking;
+      }
     }
   }
 
@@ -80,14 +87,14 @@ function takeaction_tracking_get_guid() {
       substr($hash, 16, 4),
       substr($hash, 20, 12),
     ));
-    setcookie($cookie, $guid, $expire, $path, $domain);
+    setcookie($cookie, "{$release_guid}:{$guid}", $expire, $path, $domain);
   }
 
   // Tie the action GUID to the UID if it isn't already tied.
-  if (!empty($user->uid) && !$from_db) {
+  if (!empty($uid) && !$from_db) {
     db_insert('takeaction_tracking_action_guid')
       ->fields(array(
-        'uid' => $user->uid,
+        'uid' => $uid,
         'guid' => $guid,
         'created' => time(),
       ))

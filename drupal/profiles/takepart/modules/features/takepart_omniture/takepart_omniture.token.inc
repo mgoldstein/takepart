@@ -22,7 +22,7 @@ function takepart_omniture_token_info() {
         'dynamic' => TRUE,
         'function' => array(
             'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
-            'function' => "takepart_omniture_tab_uid",
+            'function' => "takeaction_tracking_get_guid",
         ),
     );
 
