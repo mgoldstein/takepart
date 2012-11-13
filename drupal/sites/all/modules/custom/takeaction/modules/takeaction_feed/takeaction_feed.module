@@ -224,7 +224,7 @@ function _takeaction_feed_update_text_list($node) {
 
   $query = new EntityFieldQuery();
   $result = $query->entityCondition('entity_type', 'followup')
-    ->propertyCondition('type', 'update_text')
+    ->propertyCondition('type', 'content_link')
     ->propertyCondition('nid', $node->nid)
     ->execute();
 
@@ -235,15 +235,29 @@ function _takeaction_feed_update_text_list($node) {
 
       $text_item = reset(field_get_items('followup', $update,
         'field_tab_update_text'));
+      $link_items = field_get_items('followup', $update,
+        'field_tab_content_link');
       $timestamp_item = reset(field_get_items('followup', $update,
         'field_tab_update_timestamp'));
 
-      if ($text_item !== FALSE && $timestamp_item !== FALSE) {
-        $values[] = array(
+      if ($timestamp_item !== FALSE) {
+        $value = array(
           'title' => $update->title,
-          'text' => strip_tags($text_item['value']),
           'timestamp' => $timestamp_item['value'],
         );
+        if ($text_item !== FALSE) {
+          $value['text'] = strip_tags($text_item['value']);
+        }
+        if ($link_items !== FALSE) {
+          $value['contentLinks'] = array();
+          foreach ($link_items as $delta => $link_item) {
+            $value['contentLinks'][] = array(
+              'title' => $link_item['title'],
+              'url' => $link_item['url'],
+            );
+          }
+        }
+        $values[] = $value;
       }
     }
   }
@@ -522,7 +536,7 @@ function takeaction_feed_action_item_data($node) {
       'topic' => _takeaction_feed_term_list($node, 'field_topic'),
       'freeTag' => _takeaction_feed_term_list($node, 'field_free_tag'),
       'actionCopy' => $aggregate_body,
-      'contentLinks' => _takeaction_feed_content_link_list($node),
+      //'contentLinks' => _takeaction_feed_content_link_list($node),
       'updateText' => _takeaction_feed_update_text_list($node),
       'actionGoal' => $action_goal,
       'dateRange' => $date_range,
