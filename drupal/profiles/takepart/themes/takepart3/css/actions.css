@@ -833,6 +833,7 @@ iframe.moreactions {
   cursor: hand;
   text-transform: uppercase;
   font-weight: bold;
+  font-family: Helvetica, Arial, sans-serif;
 
   background: #ffca00;
   background: -moz-linear-gradient(top,  rgba(255,202,0,1) 0%, rgba(255,194,0,1) 100%);
