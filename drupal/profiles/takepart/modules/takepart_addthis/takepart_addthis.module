@@ -869,15 +869,13 @@ function theme_takepart_addthis_takeaction_thank_you_button_bar($variables) {
     . '/images/ta_twitter_share.png';
   $ta_po_src = drupal_get_path('module', 'takepart_addthis')
     . '/images/ta_plusone_share.png';
-  $ta_pn_src = drupal_get_path('module', 'takepart_addthis')
-    . '/images/ta_pinterest_share.png';
   $ta_em_src = drupal_get_path('module', 'takepart_addthis')
     . '/images/ta_email_share.png';
   
   return array(
     '#type' => 'container',
     '#attributes' => array(
-      'class' => array('share-bar-field', $variables['orientation']),
+      'class' => array('share-bar-field', $variables['orientation'], 'takeaction-thank-you'),
       'id' => $variables['id'],
     ),
     'toolbox' => array(
@@ -903,8 +901,8 @@ function theme_takepart_addthis_takeaction_thank_you_button_bar($variables) {
       ),
       'google_plusone' => array(
         '#type' => 'markup',
-        '#prefix' => '<a class="addthis_button_google_plusone_badge">',
-        '#markup' => '', //<img src="/' . $ta_po_src . '" alt="Share on Google +1" />',
+        '#prefix' => '<a class="addthis_button_google_plusone" g:plusone:size="standard" g:plusone:annotation="none" title="Share on Google+1">',
+        '#markup' => '', //<img src="/' . $ta_po_src . '" alt="Share on Google+1" />',
         '#suffix' => '</a>',
       ),
       'email' => array(

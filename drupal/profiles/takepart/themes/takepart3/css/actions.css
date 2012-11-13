@@ -94,11 +94,14 @@ div.drupal-embed .group-heading .signature-progress-percent span {
   background: url('../images/tab/doubleLine.png') repeat-x bottom left;
   margin-bottom: 10px;
 }
+
 #right-rail #block-boxes-take-action-join-now h2 span,
 #right-rail #block-boxes-what-is-takepart-take-action h2 span,
 #right-rail #block-boxes-take-action-about-dashboard h2 span {
   background: transparent;
+  border-right: none;
 }
+
 #right-rail #block-boxes-take-action-join-now p,
 #right-rail #block-boxes-what-is-takepart-take-action p,
 #right-rail #block-boxes-take-action-about-dashboard p {
@@ -216,7 +219,7 @@ div.drupal-embed .group-heading .signature-action-type-label h3, /* selector ove
   color: #1CA9E7;
   text-transform: uppercase;
   font-size: 12px;
-  font-weight: bold; /* override for embedded styling */
+  font-weight: normal;
 }
 /* override for embedded styling */
 div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-action {
@@ -1483,6 +1486,7 @@ iframe.moreactions {
 .embedaction-wrapper .closed {
   margin: 0;
 }
+
 .field-name-field-signed-heading,
 .field-name-field-thank-you-heading,
 .embedaction-wrapper .thankyou h2 {
@@ -1491,6 +1495,8 @@ iframe.moreactions {
   font-family: 'TradeGothicLTStdCnBold',Helvetica,Arial,sans-serif;
   background: url(/profiles/takepart/themes/takepart3/images/tab/doubleLine.png) repeat-x bottom left;
   margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: normal;
 }
 
 .field-name-field-thank-you-heading,
