@@ -138,7 +138,7 @@ function _spit_json() {
           if(!empty($instance)) {
             field_create_instance($instance);
           }
-        } elseif (!emoty($fieldinstance)) {
+        } elseif (!empty($fieldinstance)) {
           print "Updating instance of {$field_name}<br/><br/>\n";
           //echo '<pre>Instance:';
           //print_r($instance);
