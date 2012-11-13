@@ -1085,6 +1085,10 @@ iframe.moreactions {
   line-height: 1.5em;
 }
 
+.petition_pledge_action .field-name-field-tab-content-link {
+  margin-top: .5em;
+}
+
 .petition_pledge_action .block-boxes-view-name-content_updates .view-content-updates .views-row {
   padding: 15px 0;
   margin-top: 3px;
