@@ -1448,6 +1448,10 @@ iframe.moreactions {
   background: transparent;
 }
 
+.embedaction-wrapper .horizontal-tabs ul.horizontal-tabs-list li a:hover strong {
+  color: #1CA9E7;
+}
+
 .embedaction-wrapper .horizontal-tabs-list li {
   outline: none;
 }
