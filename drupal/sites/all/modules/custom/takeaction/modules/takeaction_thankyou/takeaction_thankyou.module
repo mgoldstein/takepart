@@ -77,6 +77,10 @@ function takeaction_thankyou_block_view($delta = '') {
     $block['subject'] = t('Thank you for taking action');
     $context = takeaction_thankyou_get_action_context();
     if ($context !== FALSE) {
+
+      $node = $context['node'];
+      $id = "takeaction-thankyou-share-bar-{$node->nid}";
+      
       $block['content'] = array(
         '#type' => 'container',
         '#attributes' => array(
@@ -135,13 +139,36 @@ function takeaction_thankyou_block_view($delta = '') {
           )),
         ),
       );
+
       drupal_add_js(drupal_get_path('module', 'takeaction_thankyou')
         . '/js/sharing-metrics.js',
         array('group' => JS_DEFAULT, 'type' => 'file')
       );
-      drupal_add_js(array('takeaction' => array(
-        'thankyou' => $context['thankyou'],
-      )), 'setting');
+
+      $configurations = array();
+      $item = reset(field_get_items('node', $node, 'field_social_share_bar'));
+      if ($item !== FALSE) {
+        $configurations[$id] = array(
+          'alternate_url' => empty($item['alternate_url'])
+            ? $context['node_url'] : $item['alternate_url'],
+          'twitter_message' => $item['twitter_message'],
+          'email_message' => $item['email_message'],
+        );
+      }
+    
+      drupal_add_js(drupal_get_path('module', 'takepart_addthis')
+        . '/js/share-bar-field.js',
+        array('type' => 'file')
+      );
+
+      drupal_add_js(array(
+        'takeaction' => array(
+          'thankyou' => $context['thankyou'],
+        ),
+        'addthis' => array(
+          'fields' => $configurations,
+        ),
+      ), 'setting');
     }
     else {
       $block['content'] = '';
