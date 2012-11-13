@@ -35,9 +35,21 @@ function takeaction_tracking_track_action($nid) {
 /**
  * GUID retrieval function.
  */
-function takeaction_tracking_get_guid($uid = NULL) {
+function takeaction_tracking_get_guid($param = NULL) {
   global $user;
-  $uid = empty($uid) ? $user->uid : $uid;
+
+  if (preg_match('/^[0-9]+$/', $param)) {
+    // Valid numeric uid provided as a parameter
+    $uid = (int) $param;
+  }
+  elseif (empty($param)) {
+    // No uid provided as a parameter
+    $uid = $user->uid;
+  }
+  else {
+    // Invalid uid provided as a parameter
+    $uid = 0;
+  }
 
   $release_guid = variable_get('takeaction_release_guid', '');
 
@@ -60,16 +72,16 @@ function takeaction_tracking_get_guid($uid = NULL) {
     if (!empty($result)) {
       $guid = $result[$uid];
       $from_db = TRUE;
-      setcookie($cookie, "{$release_guid}:{$guid}", $expire, $path, $domain);
+      setcookie($cookie, "{$release_guid}|{$guid}", $expire, $path, $domain);
     }
   }
 
   // Check for an already set cookie.
   if (empty($guid) && !empty($_COOKIE[$cookie])) {
     $guid_pattern = '[0-9A-F]{8}(\-[0-9A-F]{4}){3}\-[0-9A-F]{12}';
-    $regex = '/^' . $guid_pattern . ':' . $guid_pattern . '$/';
+    $regex = '/^' . $guid_pattern . '\|' . $guid_pattern . '$/';
     if (preg_match($regex, $_COOKIE[$cookie])) {
-      list($release, $tracking) = explode(':', $_COOKIE[$cookie], 2);
+      list($release, $tracking) = explode('|', $_COOKIE[$cookie], 2);
       if ($release === $release_guid) {
         $guid = $tracking;
       }
@@ -87,7 +99,7 @@ function takeaction_tracking_get_guid($uid = NULL) {
       substr($hash, 16, 4),
       substr($hash, 20, 12),
     ));
-    setcookie($cookie, "{$release_guid}:{$guid}", $expire, $path, $domain);
+    setcookie($cookie, "{$release_guid}|{$guid}", $expire, $path, $domain);
   }
 
   // Tie the action GUID to the UID if it isn't already tied.
