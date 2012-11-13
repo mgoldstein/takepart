@@ -1011,7 +1011,6 @@ iframe.moreactions {
   width: 122px;
   color: white;
   text-shadow: 0 1px 0 #F66201;
-  filter: dropshadow(color=#f66201, offx=0, offy=1);
   font-weight: bold;
   text-align: center;
   line-height: 1;
@@ -1026,7 +1025,6 @@ iframe.moreactions {
   background-image: url(/profiles/takepart/themes/takepart3/css/images/signature-progress-percent-completed-bg.png);
   color: #333;
   text-shadow: 0 1px 0 #fff;
-  filter: dropshadow(color=#ffffff, offx=0, offy=1);
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-goal {
@@ -1351,7 +1349,6 @@ iframe.moreactions {
   width: 122px;
   color: #fff;
   text-shadow: 0 1px 0 #f66201;
-  filter: dropshadow(color=#f66201, offx=0, offy=1);
   font-weight: bold;
   text-align: center;
   line-height: 1;
