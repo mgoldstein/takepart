@@ -93,11 +93,14 @@ div.drupal-embed .group-heading .signature-progress-percent span {
   background: url('../images/tab/doubleLine.png') repeat-x bottom left;
   margin-bottom: 10px;
 }
+
 #right-rail #block-boxes-take-action-join-now h2 span,
 #right-rail #block-boxes-what-is-takepart-take-action h2 span,
 #right-rail #block-boxes-take-action-about-dashboard h2 span {
   background: transparent;
+  border-right: none;
 }
+
 #right-rail #block-boxes-take-action-join-now p,
 #right-rail #block-boxes-what-is-takepart-take-action p,
 #right-rail #block-boxes-take-action-about-dashboard p {
@@ -215,7 +218,7 @@ div.drupal-embed .group-heading .signature-action-type-label h3, /* selector ove
   color: #1CA9E7;
   text-transform: uppercase;
   font-size: 12px;
-  font-weight: bold; /* override for embedded styling */
+  font-weight: normal;
 }
 /* override for embedded styling */
 div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-action {
@@ -671,11 +674,19 @@ iframe.moreactions {
   font-weight: bold;
   float: left;
   padding-left: 40px;
-  background: url(/profiles/takepart/themes/takepart3/css/images/action-pledge-icon.png) left top no-repeat;
+  background: url(/profiles/takepart/themes/takepart3/css/images/action-other-icon.png) left top no-repeat;
 }
 
-.petition_action .block-boxes-bid-boxes-action_topic_and_share .field-type-taxonomy-term-reference {
+.petition_action .block-boxes-bid-boxes-action_topic_and_share .action-type-pledge {
+  background-image: url(/profiles/takepart/themes/takepart3/css/images/action-pledge-icon.png);
+}
+
+.petition_action .block-boxes-bid-boxes-action_topic_and_share .action-type-petition {
   background-image: url(/profiles/takepart/themes/takepart3/css/images/action-petition-icon.png);
+}
+
+.petition_action .block-boxes-bid-boxes-action_topic_and_share .action-type-donation {
+  background-image: url(/profiles/takepart/themes/takepart3/css/images/action-donation-icon.png);
 }
 
 .petition_pledge_action .block-boxes-bid-boxes-action_topic_and_share .field-type-share-bar {
@@ -818,6 +829,8 @@ iframe.moreactions {
 .petition_pledge_action .signature-form .field-name-field-sig-postal-code input {
   width: 110px;
 }
+
+.petition_pledge_action .take_action_button,
 .petition_pledge_action .signature-form .form-submit {
   font-size: 24px;
   color: #000;
@@ -850,6 +863,32 @@ iframe.moreactions {
     inset -1px 0 1px #ffd97d;
 }
 
+.petition_pledge_action .take_action_button {
+  float: none;
+  display: inline-block;
+  margin: 1em 0;
+}
+
+.petition_pledge_action .take_action_button:active span,
+.petition_pledge_action .take_action_button:hover span {
+  padding: 0;
+}
+
+.petition_pledge_action .take_action_button:active,
+.petition_pledge_action .take_action_button:hover {
+  text-decoration: none;
+}
+
+.petition_pledge_action .take_action_button span {
+  letter-spacing: normal;
+  text-align: center;
+  background: transparent;
+  display: inline;
+  line-height: inherit;
+  padding: 0;
+}
+
+.petition_pledge_action .take_action_button:hover,
 .petition_pledge_action .signature-form .form-submit:hover {
   background: #ffb400;
   background: -moz-linear-gradient(top,  rgba(255,180,0,1) 1%, rgba(255,172,0,1) 100%);
@@ -1446,6 +1485,7 @@ iframe.moreactions {
 .embedaction-wrapper .closed {
   margin: 0;
 }
+
 .field-name-field-signed-heading,
 .field-name-field-thank-you-heading,
 .embedaction-wrapper .thankyou h2 {
@@ -1454,6 +1494,8 @@ iframe.moreactions {
   font-family: 'TradeGothicLTStdCnBold',Helvetica,Arial,sans-serif;
   background: url(/profiles/takepart/themes/takepart3/images/tab/doubleLine.png) repeat-x bottom left;
   margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: normal;
 }
 
 .field-name-field-thank-you-heading,
