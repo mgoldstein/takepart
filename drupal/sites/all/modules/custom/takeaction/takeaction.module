@@ -274,7 +274,7 @@ function takeaction_admin_form($form, &$form_state) {
   $form['copy'] = array(
     '#type' => 'fieldset',
     '#title' => t('TakeAction Copy'),
-    '#description' => t('Configurable copy used on the thank you page.'),
+    '#description' => t('Configurable copy and display options.'),
     '#tree' => FALSE,
   );
 
@@ -284,6 +284,31 @@ function takeaction_admin_form($form, &$form_state) {
     '#description' => t('A brief description of what the dashboard is.'),
     '#required' => TRUE,
     '#default_value' => variable_get('takeaction_dashboard_description', ''),
+  );
+
+  $form['copy']['signature_progress_decimals'] = array(
+    '#type' => 'select',
+    '#title' => t('Decimal Places'),
+    '#description' => t('The number of decimal places to show in the progress percentage.'),
+    '#required' => TRUE,
+    '#options' => array(
+      -1 => t('Auto'),
+      0 => t('Zero'),
+      1 => t('One'),
+    ),
+    '#default_value' => variable_get('signature_progress_decimals', 0),
+  );
+
+  $form['copy']['signature_progress_capped'] = array(
+    '#type' => 'select',
+    '#title' => t('Cap Progress'),
+    '#description' => t('Cap the progress percentage at 100%.'),
+    '#required' => TRUE,
+    '#options' => array(
+      0 => t('No'),
+      1 => t('Yes'),
+    ),
+    '#default_value' => variable_get('signature_progress_capped', 0),
   );
 
   return system_settings_form($form);
