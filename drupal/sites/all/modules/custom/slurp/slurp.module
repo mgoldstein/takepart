@@ -60,7 +60,7 @@ function _slurp_json() {
 function _spit_json() {
 
   drupal_set_time_limit(5*60);
-  field_purge_batch();
+  field_purge_batch(5000);
   drupal_flush_all_caches();
   field_cache_clear(TRUE);
   flush();
@@ -98,14 +98,14 @@ function _spit_json() {
             unset($field['id']);
             try {
               field_create_field($field);
-              field_cache_clear(TRUE);
+              //field_cache_clear(TRUE);
             } catch (Exception $e) {
               echo "Error: Create<pre>";
               print_r($e);
               echo "</pre>";
               try {
                 field_update_field($field);
-                field_cache_clear(TRUE);
+                //field_cache_clear(TRUE);
               } catch (Exception $e) {
                 echo "Error: Update (Create Exception)<pre>";
                 print_r($e);
@@ -145,7 +145,7 @@ function _spit_json() {
           if(!empty($instance)) {
             try {
               field_create_instance($instance);
-              field_cache_clear(TRUE);
+              //field_cache_clear(TRUE);
             } catch (Exception $e) {
               echo "Error: Create Instance<pre>";
               print_r($e);
@@ -160,7 +160,7 @@ function _spit_json() {
           if(!empty($instance)) {
             try {
               field_update_instance($instance);
-              field_cache_clear(TRUE);
+              //field_cache_clear(TRUE);
             } catch (Exception $e) {
               echo "Error: Update Instance<pre>";
               print_r($e);
@@ -169,6 +169,8 @@ function _spit_json() {
           } else { 
             print "Error: Need to create field first.<br/>";
           }
+        } else {
+          print "Error: Attempted to update deleted field.<br/>";
         }
       } else {
         echo "Field <i>{$field_name}</i> not set.";
