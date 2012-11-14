@@ -1,0 +1,85 @@
+<?php
+/**
+ * @file
+ * Universal Popups Support module.
+ *
+ */
+
+/*
+ * not needed yet...
+ *
+// bring in the rest of the code
+$path = drupal_get_path('module', 'unipop');
+require_once($path . '/unipop.nodeops.inc');
+require_once($path . '/unipop.blockops.inc');
+*/
+
+/***
+ * implentation of hook_init()
+ */
+function unipop_init() {
+  $path = drupal_get_path('module', 'unipop');
+  drupal_add_css($path . '/css/unipop.css', array('every_page' => TRUE));
+  drupal_add_js($path . '/js/unipop.js', 'file');
+}
+
+
+/**
+ * Implements hook_menu().
+ */
+function unipop_menu() {
+  $items['unipop/video_id_from_node/%'] = array(
+    'title' => 'Unipop callback to get the youtube id of a video from a video node id',
+    'page callback' => 'unipop_get_video_id_from_node',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  /*
+    $items['admin/config/system/unipop/settings'] = array(
+      'title' => 'Universal Popup Settings',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('unipop_settings_form'),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'unipop.admin.inc',
+    );
+  */
+  return $items;
+}
+
+
+/***
+ * function: Unipop callback to get the youtube id of a video from a video node id
+ *
+ * arg is the nid
+ *
+ * url is /unipop/video_id_from_node/VIDEO_ID
+ */
+function unipop_get_video_id_from_node() {
+  static $youtube_lookup;     // poor man's cache; lookup of youtube ids
+                              //   key=our video node id, data=youtube id
+
+  if (!isset($youtube_lookup)) {
+    $youtube_lookup = array();
+  }
+
+  $video_id = arg(2);
+  if (!isset($youtube_lookup[$video_id])) {
+    $node = node_load($video_id);
+    if (!$node) {
+      watchdog('unipop', 'cannot open video node ' . $video_id, WATCHDOG_ERROR);
+      return(0);
+    } else {
+      $file = file_load($node->field_video_embedded['und'][0]['fid']);
+      $uri = explode('/', $file->uri);
+      $youtube_lookup[$video_id] = $uri[3];
+    }
+  }
+
+  $output = $youtube_lookup[$video_id];
+
+  print $output;
+  drupal_exit();
+}

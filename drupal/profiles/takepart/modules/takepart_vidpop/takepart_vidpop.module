@@ -367,6 +367,8 @@ EOT;
  * arg is the nid
  *
  * url is /vidpop/mapembed/NID
+ *
+ * @returns rendered video for display
  */
 function takepart_vidpop_get_map_details() {
   $nid = arg(2);

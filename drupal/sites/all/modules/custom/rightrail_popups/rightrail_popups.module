@@ -67,7 +67,13 @@ EOT;
     $popup = theme('rightrail_video_popup', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_top_banner' => $top_banner, 'p_banner_tp_logo' => $banner_tp_logo, 'p_fmt_pop' => $fmt_pop));
 
     // replace box contents with preview
-    $preview = theme('rightrail_video_preview', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_popup' => $popup));
+    if (takepart_vidpop_mobile_browser()) {
+      $vid_link = "http://www.youtube.com/embed/" . $video_id;
+      $preview = theme('rightrail_video_preview_mobile', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_vid_link' => $vid_link));
+    }
+    else {
+      $preview = theme('rightrail_video_preview', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_popup' => $popup));
+    }
     $box->options['body'] = $preview;
   }
 }
@@ -84,13 +90,21 @@ function rightrail_popups_theme() {
     'rightrail_video_preview' => array(
       'path'      => $template_path,
       'template'  => 'rightrail-video-preview',
-      'variables' => array('p_title' => NULL, 'p_video_id' => NULL, 'p_body' => NULL),
+      'variables' => array('p_title' => NULL, 'p_video_id' => NULL, 'p_popup' => NULL),
+    ),
+    'rightrail_video_preview_mobile' => array(
+      'path'      => $template_path,
+      'template'  => 'rightrail-video-preview-mobile',
+      'variables' => array('p_title' => NULL, 'p_video_id' => NULL, 'p_vid_link' => NULL),
     ),
     'rightrail_video_popup' => array(
       'path'      => $template_path,
       'template'  => 'rightrail-video-popup',
-      'variables' => array('p_title' => NULL, 'p_video_id' => NULL, 'p_popup' => NULL, 'p_fmt_pop' => NULL),
-    ),
+      'variables' => array('p_title' => NULL, 'p_video_id' => NULL, 'p_body' => NULL, 'p_fmt_pop' => NULL),
+
+
+
+      ),
   );
 }
 
