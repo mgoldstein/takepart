@@ -294,7 +294,7 @@ class TakeActionApi {
    *   - http_code: the HTTP code returned by the API server.
    *   - body: the body of the resposne returned by the API server.
    */
-  public function callAPI($url, $params = array(), $data = NULL) {
+  public function callAPI($url, $params = array(), $data = NULL, $put = FALSE) {
 
     // Prepend URL with base path for the API.
     $url = $this->httpRequestBase . $url;
@@ -306,10 +306,10 @@ class TakeActionApi {
 
     // Send the request.
     if ($this->restMethod == self::REST_METHOD_STREAM_WRAPPER) {
-      $response = $this->streamWrapper($url, $data);
+      $response = $this->streamWrapper($url, $data, $put);
     }
     else /* self::REST_METHOD_CURL */ {
-      $response = $this->curl($url, $data);
+      $response = $this->curl($url, $data, $put);
     }
 
     return $response;
@@ -337,7 +337,7 @@ class TakeActionApi {
    * @throws
    *   TakeActionApiException
    */
-  protected function streamWrapper($url, $data = NULL) {
+  protected function streamWrapper($url, $data = NULL, $put = FALSE) {
 
     $header = "Authorization: Token token=\"{$this->apiKey}\"\r\n";
 
@@ -346,7 +346,7 @@ class TakeActionApi {
       $json = drupal_json_encode($data);
       $params = array(
         'http' => array(
-          'method' => 'POST',
+          'method' => $put ? 'PUT' : 'POST',
           'header' => $header,
           'content' => $json,
         ),
@@ -420,16 +420,25 @@ class TakeActionApi {
    * @throws
    *   TakeActionApiException
    */
-  protected function curl($url, $data = NULL) {
+  protected function curl($url, $data = NULL, $put = FALSE) {
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_TIMEOUT, $this->httpRequestTimeout);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-      "Content-Type: application/json",
-      "Authorization: Token token=\"{$this->apiKey}\"",
-    ));
+    if (!empty($data) && $put) {
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        "Content-Type: application/json",
+        "Authorization: Token token=\"{$this->apiKey}\"",
+        "X-HTTP-Method-Override: PUT",
+      ));
+    }
+    else {
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        "Content-Type: application/json",
+        "Authorization: Token token=\"{$this->apiKey}\"",
+      ));
+    }
 
     // Include the header in result.
     curl_setopt($ch, CURLOPT_HEADER, 1);
@@ -437,7 +446,7 @@ class TakeActionApi {
     // Add in the post data.
     if (!empty($data)) {
       $json = drupal_json_encode($data);
-      curl_setopt($ch, CURLOPT_POST, 1);
+      if (!$put) { curl_setopt($ch, CURLOPT_POST, 1); }
       curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
     }
 
@@ -508,7 +517,7 @@ class TakeActionApi {
       'old_user_id' => $src,
       'new_user_id' => $dest,
     );
-    $response = $this->callAPI('user_actions/reassign', array(), $data);
+    $response = $this->callAPI('user_actions/reassign', array(), $data, TRUE);
     if ($response['http_code'] != self::HTTP_CODE_OK) {
       throw new TakeActionApiException(
         'Unexpected response status code.',
