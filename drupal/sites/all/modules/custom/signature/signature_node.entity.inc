@@ -123,9 +123,19 @@ class SignatureNodeController extends EntityAPIController {
     else {
       $percent = 0.0;
     }
+
+    // Floor the percentage to the specified number of decimals
+    $decimals = variable_get('signature_progress_decimals', 0);
+    if ($decimals < 0) {
+      $decimals = $percent < 10.0 ? 1 : 0;
+    }
+    $places = pow(10.0, $decimals);
+    $percent = floor($percent * $places) / $places;
+
+    // Calculate the capped percent for using in the class names
     $capped_percent = $percent > 100.0 ? 100.0 : $percent;
 
-    // Optionally cap the percentage to 100%
+    // Optionally cap the displayed percentage to 100%
     if (variable_get('signature_progress_capped', 0)) {
       $percent = $capped_percent;
     }
@@ -174,11 +184,6 @@ class SignatureNodeController extends EntityAPIController {
     $state = empty($entity->signed) ? 'unsigned' : 'signed';
     if ($days_left == 0 && $entity->limit_to_dates != 0) {
       $state = 'closed';
-    }
-
-    $decimals = variable_get('signature_progress_decimals', 0);
-    if ($decimals == -1) {
-      $decimals = $percent < 10.0 ? 1 : 0;
     }
 
     return array(
