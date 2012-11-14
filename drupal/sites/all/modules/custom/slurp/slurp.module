@@ -96,6 +96,9 @@ function _spit_json() {
           $field = $fields[$field_name];
           if(!empty($field)) {
             unset($field['id']);
+            unset($field['storage']);
+            unset($field['foreign keys']);
+            unset($field['indexes']);
             try {
               field_create_field($field);
               //field_cache_clear(TRUE);
