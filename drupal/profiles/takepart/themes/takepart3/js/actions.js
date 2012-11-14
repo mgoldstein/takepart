@@ -184,15 +184,18 @@ $(function() {
     var m22 = costheta;
     var matrixValues = 'M11=' + m11 + ', M12='+ m12 +', M21='+ m21 +', M22='+ m22;*/
 
-    return this
+    this
       .css({
         '-webkit-transform': rotate,
         '-moz-transform': rotate,
-        '-ms-transform': rotate,
+        'msTransform': rotate,
         'transform': rotate
       });
+
       //.css('filter', 'progid:DXImageTransform.Microsoft.Matrix(sizingMethod=\'auto expand\','+matrixValues+')')
       //.css('-ms-filter', 'progid:DXImageTransform.Microsoft.Matrix(SizingMethod=\'auto expand\','+matrixValues+')');
+
+      return this;
   };
 
   // Add two elements to make a pie chart. ie9+
