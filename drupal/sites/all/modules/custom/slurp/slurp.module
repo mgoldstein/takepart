@@ -98,12 +98,14 @@ function _spit_json() {
             unset($field['id']);
             try {
               field_create_field($field);
+              field_cache_clear(TRUE);
             } catch (Exception $e) {
               echo "Error: Create<pre>";
               print_r($e);
               echo "</pre>";
               try {
                 field_update_field($field);
+                field_cache_clear(TRUE);
               } catch (Exception $e) {
                 echo "Error: Update (Create Exception)<pre>";
                 print_r($e);
@@ -141,7 +143,14 @@ function _spit_json() {
           //print_r($instance);
           //echo '</pre>';
           if(!empty($instance)) {
-            field_create_instance($instance);
+            try {
+              field_create_instance($instance);
+              field_cache_clear(TRUE);
+            } catch (Exception $e) {
+              echo "Error: Create Instance<pre>";
+              print_r($e);
+              echo "</pre>";
+            }
           }
         } elseif (!empty($fieldinstance)) {
           print "Updating instance of {$field_name}<br/><br/>\n";
@@ -149,7 +158,14 @@ function _spit_json() {
           //print_r($instance);
           //echo '</pre>';
           if(!empty($instance)) {
-            field_update_instance($instance);
+            try {
+              field_update_instance($instance);
+              field_cache_clear(TRUE);
+            } catch (Exception $e) {
+              echo "Error: Update Instance<pre>";
+              print_r($e);
+              echo "</pre>";
+            }
           } else { 
             print "Error: Need to create field first.<br/>";
           }
