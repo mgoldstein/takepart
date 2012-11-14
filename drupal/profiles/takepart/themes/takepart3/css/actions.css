@@ -801,14 +801,16 @@ iframe.moreactions {
   padding: 0 55px 45px 55px;
   margin-top: 30px;
 }
-
+.petition_pledge_action .signature-form .form-type-textfield label {
+  width: 380px;
+}
 .petition_pledge_action .signature-form .form-text {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: 100%;
+  width: 380px;
   border: 1px solid #c0c0c0;
-  padding: 10px;
+  padding: 8px;
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
   border-radius: 5px;
@@ -823,7 +825,7 @@ iframe.moreactions {
   height: auto;
   padding-left: 10px;
   font-size: 14px;
-  width: 100%;
+  width: 380px;
   padding-top: 9px;
   padding-bottom: 9px;
 }
@@ -836,20 +838,21 @@ iframe.moreactions {
 .petition_pledge_action .signature-form .form-submit {
   font-size: 24px;
   color: #000;
-  border-radius: 5px;
+  border-radius: 3px;
   line-height: 51px;
   height: 51px;
   padding: 0 80px;
   text-shadow: 1px 1px 1px #ffffff;
   filter: dropshadow(color=#ffffff, offx=1, offy=1);
-  border: 1px solid #fdbc59;
+  border: 2px solid #fff;
   cursor: pointer;
   cursor: hand;
   text-transform: uppercase;
   font-weight: bold;
   font-family: Helvetica, Arial, sans-serif;
+  width: 380px;
 
-  background: #ffca00;
+  background: #FFC429;
   background: -moz-linear-gradient(top,  rgba(255,202,0,1) 0%, rgba(255,194,0,1) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,202,0,1)), color-stop(100%,rgba(255,194,0,1)));
   background: -webkit-linear-gradient(top,  rgba(255,202,0,1) 0%,rgba(255,194,0,1) 100%);
@@ -858,7 +861,8 @@ iframe.moreactions {
   background: linear-gradient(to bottom,  rgba(255,202,0,1) 0%,rgba(255,194,0,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffca00', endColorstr='#ffc200',GradientType=0 );
 
-  box-shadow: 0px 1px 5px #999,
+  box-shadow: 0px 0px 1px #000,
+    0px 1px 3px #999,
     inset 0 1px 1px #ffd97d,
     inset 0 -1px 1px #ffd97d,
     inset 1px 0 1px #ffd97d,
@@ -892,7 +896,7 @@ iframe.moreactions {
 
 .petition_pledge_action .take_action_button:hover,
 .petition_pledge_action .signature-form .form-submit:hover {
-  background: #ffb400;
+  background: #FFAB29;
   background: -moz-linear-gradient(top,  rgba(255,180,0,1) 1%, rgba(255,172,0,1) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(255,180,0,1)), color-stop(100%,rgba(255,172,0,1)));
   background: -webkit-linear-gradient(top,  rgba(255,180,0,1) 1%,rgba(255,172,0,1) 100%);
@@ -922,6 +926,7 @@ iframe.moreactions {
 .petition_pledge_action .signature-form .form-type-checkbox label {
   display: block;
   margin: 0 0 0 20px;
+  width: 360px;
 }
 
 .petition_pledge_action .group_address_tabs h3 {
@@ -1492,7 +1497,7 @@ iframe.moreactions {
 .field-name-field-signed-heading,
 .field-name-field-thank-you-heading,
 .embedaction-wrapper .thankyou h2 {
-  color: #000;
+  color: #333;
   padding-bottom: 10px;
   font-family: 'TradeGothicLTStdCnBold',Helvetica,Arial,sans-serif;
   background: url(/profiles/takepart/themes/takepart3/images/tab/doubleLine.png) repeat-x bottom left;
@@ -1503,8 +1508,8 @@ iframe.moreactions {
 
 .field-name-field-thank-you-heading,
 .field-name-field-signed-heading {
-  font-size: 25px;
-  font-weight: 300;
+  font-size: 18px;
+  font-weight: normal;
   text-transform: uppercase;
 }
 .embedaction-wrapper .thankyou .addthis_toolbox {
@@ -1519,9 +1524,13 @@ iframe.moreactions {
 .embedaction-wrapper .signature-form {
   padding: 0 0 10px 0;
 }
-.embedaction-wrapper .signature-sign-button {
-  width: 100%;
+.embedaction-wrapper .signature-form .field-type-list-text,
+.embedaction-wrapper .signature-form .form-type-textfield,
+.embedaction-wrapper .signature-form .form-type-checkbox,
+.embedaction-wrapper .signature-form .form-actions {
+  padding-left: 27px;
 }
+
 .embedaction-wrapper .signature-form .form-type-checkbox label.option {
   font-weight: normal;
 }
