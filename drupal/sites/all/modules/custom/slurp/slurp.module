@@ -137,7 +137,7 @@ function _spit_json() {
       echo "<h3>" . $field_name . "</h3>";
       if (isset($fields[$field_name])) {
         $info = field_info_instance($entity_type, $field_name, $bundle_name);
-        $fieldinstance = field_read_field($instance);
+        //$fieldinstance = field_read_field($instance);
         if (empty($info)) {
           print "Adding instance of {$field_name}<br/><br/>\n";
           unset($instance['id']);
@@ -155,7 +155,7 @@ function _spit_json() {
               echo "</pre>";
             }
           }
-        } elseif (!empty($fieldinstance)) {
+        } else {
           print "Updating instance of {$field_name}<br/><br/>\n";
           //echo '<pre>Instance:';
           //print_r($instance);
@@ -172,9 +172,7 @@ function _spit_json() {
           } else { 
             print "Error: Need to create field first.<br/>";
           }
-        } else {
-          print "Error: Attempted to update deleted field.<br/>";
-        }
+        } 
       } else {
         echo "Field <i>{$field_name}</i> not set.";
       }
