@@ -21,6 +21,7 @@ $cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
   'comment_action',
   'comment_anonymous_blog_front',
   'comment_anonymous_openpublish_article',
+  'comment_anonymous_openpublish_video',
   'comment_anonymous_openpublish_blog_post',
   'comment_anonymous_section_front',
   'comment_anonymous_takepart_campaign',
@@ -40,6 +41,11 @@ $cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
   'box-bb0b625d',
 ), 'boxes', TRUE);
 
+$cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
+  'node-profile-field_profile_job_title',
+  'node-openpublish_article-field_tp_campaign_show_title',
+), 'node', TRUE);
+
 // field 'node-profile-field_profile_job_title' is in conflict as both
 // takepart_omniture and openpublish_author claim it. If we remove it
 // from takepart_omniture, then openpublish_author will have no conflicts.
@@ -49,3 +55,4 @@ $cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
 // be removed from takepart_ads.
 
 print_r($cmap);
+file_put_contents('conflicts.map.php', '<?php' . "\n\n" . '$cmap = ' . var_export($cmap, TRUE) . ';');
