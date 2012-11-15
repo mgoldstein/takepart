@@ -54,5 +54,5 @@ $cmap = features_conflict_resolver_cmap_component_merge($cmap, array(
 // as both takepart_ads and takepart_article claim it. It should probably
 // be removed from takepart_ads.
 
-print_r($cmap);
 file_put_contents('conflicts.map.php', '<?php' . "\n\n" . '$cmap = ' . var_export($cmap, TRUE) . ';');
+print implode(' ', array_keys($cmap));
