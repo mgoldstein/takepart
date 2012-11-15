@@ -83,3 +83,24 @@ function unipop_get_video_id_from_node() {
   print $output;
   drupal_exit();
 }
+
+
+/***
+ * @param $title    popup title
+ * @param $type     page type
+ *
+ * set page load metrics for the page
+ */
+function unipop_set_metric_page_load($title, $type) {
+  // we need to store page title and type info for every popup
+  static $metric_titles;
+  static $metric_types;
+
+  if (!isset($metric_titles)) {
+    $metric_titles = array();
+    $metric_types  = array();
+  }
+
+  $metric_titles[] = $title;
+  $metric_types[]  = $type;
+}

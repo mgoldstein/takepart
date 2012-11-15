@@ -24,7 +24,7 @@ function rightrail_preprocess_node(&$vars, $hook) {
 }
 
 
-/***
+  /***
  * Implementation of hook_boxes_box_load_alter()
  *
  * @param $box
@@ -42,6 +42,15 @@ function rightrail_popups_boxes_box_load_alter(&$box, $delta) {
     $body = $box->options['body'];
     preg_match("/www.youtube.com\/embed\/([^\"]+)\"/", $body, $res);
     $video_id = $res[1];
+
+    // look for title
+    // typical line: <div class="field-name-field-promo-headline">Catt Sadler 'Why I Vote'</div>
+
+    preg_match("/ield-name-field-promo-headline\"\>(.+)\<\/div\>/", $body, $res);
+    $title = $res[1];
+
+    // register title and id with universal popups
+
 
     // prepare popup vars
     if (variable_get('takepart_vidpop_banners_enabled', false)) {
@@ -107,4 +116,29 @@ function rightrail_popups_theme() {
       ),
   );
 }
+
+
+/***
+ * @param $vars
+ *
+ * Implementation of hook_preprocess_html
+ */
+function rightrail_popups_preprocess_html(&$vars) {
+  foreach ($vars['page']['sidebar_second'] as $id => $data) {
+    if (substr($id, 0, 6) == 'boxes_') {
+      if ($data['#block']->additional_classes == 'video-popup') {
+        // this one is a video popup block
+        // get the youtube ID, it will inin the rrpop-XXXX class tag somewhere
+        // in the content; i.e. rrpop-Mew33kt7D6c, from the line
+        //     <a class="colorbox-inline rrpop-Mew33kt7D6c" href="?width=870&amp;height=420&amp;inline=true#Mew33kt7D6c">
+        if (preg_match("/rrpop-([^\"]+)\"/", $data['content']['#markup'], $res))  {
+          unipop_set_metric_page_load($data['#block']->title, 'youtube video');
+        }
+
+      }
+    }
+  }
+}
+
+
 
