@@ -86,12 +86,17 @@ function unipop_get_video_id_from_node() {
 
 
 /***
+ * @param $op       operation
  * @param $title    popup title
  * @param $type     page type
  *
- * set page load metrics for the page
+ * set/load page load metrics for the page
+ *
+ * if $op us "set", the title and type info are added to the page list
+ *
+ * if $op is "load", the metrics javascript is generated for the page
  */
-function unipop_set_metric_page_load($title, $type) {
+function unipop_set_metric_page_load($op, $title = NULL, $type = NULL) {
   // we need to store page title and type info for every popup
   static $metric_titles;
   static $metric_types;
@@ -101,6 +106,48 @@ function unipop_set_metric_page_load($title, $type) {
     $metric_types  = array();
   }
 
-  $metric_titles[] = $title;
-  $metric_types[]  = $type;
+  switch ($op) {
+    case 'set':
+      // add metrics data
+      $metric_titles[] = $title;
+      $metric_types[]  = $type;
+      break;
+    case 'load':
+      if (count($metric_titles) > 0) {
+        // we have metrics data, create the page load javascript
+        $i = 0;
+        foreach ($metric_titles as $idx => $title) {
+          $js  = 'var modaltitle = "' . addslashes($title) . '";' . "\n";
+          $js .= 'var modaltype = "' . $metric_types[$idx] . '";' . "\n";
+
+          $js .= <<<EOT
+    s.linkTrackVars="eVar30, prop30, eVar40, prop40, eVar42, prop42, events";
+    s.linkTrackEvents="event40";
+    s.events='event40';
+    s.prop30=s.pageName;
+    s.eVar30=s.pageName;
+    s.prop40=modaltype+':'+modaltitle;
+    s.eVar40=modaltype+':'+modaltitle;
+    s.prop42=modaltype;
+    s.eVar42=modaltype;
+    s.tl(true, 'o', 'Video Popup Page Load');
+EOT;
+        }
+        drupal_add_js($js, 'inline');
+      }
+      break;
+  }
 }
+
+
+/***
+ * @param $page
+ *
+ * Implementation of hook_html_head_alter();
+ *
+ * outputs metrics javascript for popups
+ */
+function unipop_html_head_alter(&$head_elements) {
+  //unipop_set_metric_page_load('load');
+}
+
