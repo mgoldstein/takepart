@@ -1364,6 +1364,12 @@ iframe.moreactions {
   left: -61px;
 }
 
+.embedaction-wrapper .group-signature-progress .signature-progress-complete-goal {
+  color: #333;
+  background-image: url(/profiles/takepart/themes/takepart3/css/images/signature-progress-percent-completed-bg.png);
+  text-shadow: 0 1px 0 #fff;
+}
+
 .embedaction-wrapper .group-signature-progress span {
   position: relative;
 }
