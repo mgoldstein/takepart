@@ -22,6 +22,10 @@
   font-size: 13px;
 }
 
+#page #content .embedaction-wrapper .more-actions .button:hover {
+  text-decoration: underline;
+}
+
 #page #content .embedaction-wrapper .more-actions .button span {
   display: block;
   padding-left: 9px;
