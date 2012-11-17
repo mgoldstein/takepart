@@ -1103,7 +1103,6 @@ iframe.moreactions {
   border: 1px solid #ccc;
   text-align: center;
   margin-bottom: 10px;
-  padding: 10px 0;
 }
 
 #right-rail  .field-name-field-action-sponsor .field-name-field-group-logo,
@@ -1113,7 +1112,9 @@ iframe.moreactions {
 
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor .field-name-field-group-logo img,
 .petition_pledge_action #block-signature-summary .field-name-field-action-organizer .field-name-field-group-logo img {
-  max-width: 250px;
+  max-width: 100%;
+  display: block;
+  margin: auto;
 }
 
 .petition_pledge_action #block-signature-summary .field-name-field-action-sponsor .field-name-field-short-introduction,
