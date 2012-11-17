@@ -64,8 +64,8 @@
   line-height: 21px;
 }
 
-#page #content .embedaction-wrapper.collapsed:hover td.title,
-#page #content .embedaction-wrapper:hover td.title a {
+#page #content .embedaction-wrapper.collapsed table:hover td.title,
+#page #content .embedaction-wrapper table:hover td.title a {
   color: #1CA9E7;
 }
 
