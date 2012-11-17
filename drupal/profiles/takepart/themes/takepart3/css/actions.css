@@ -1052,6 +1052,7 @@ iframe.moreactions {
   font-size: 14px;
   font-family: 'TradeGothicLTStdCnBold';
   text-transform: uppercase;
+  font-weight: normal;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-days-left {
@@ -1265,6 +1266,7 @@ iframe.moreactions {
 
 .signature-progress-percent.pie_container .percentage .sign {
   font-size: .6em;
+  font-weight: normal;
 }
 
 /* embeded action */
