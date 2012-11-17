@@ -678,15 +678,15 @@ iframe.moreactions {
   background: url(/profiles/takepart/themes/takepart3/css/images/action-other-icon.png) left top no-repeat;
 }
 
-.petition_action .block-boxes-bid-boxes-action_topic_and_share .action-type-pledge {
+.petition_pledge_action .block-boxes-bid-boxes-action_topic_and_share .action-type-pledge {
   background-image: url(/profiles/takepart/themes/takepart3/css/images/action-pledge-icon.png);
 }
 
-.petition_action .block-boxes-bid-boxes-action_topic_and_share .action-type-petition {
+.petition_pledge_action .block-boxes-bid-boxes-action_topic_and_share .action-type-petition {
   background-image: url(/profiles/takepart/themes/takepart3/css/images/action-petition-icon.png);
 }
 
-.petition_action .block-boxes-bid-boxes-action_topic_and_share .action-type-donation {
+.petition_pledge_action .block-boxes-bid-boxes-action_topic_and_share .action-type-donation {
   background-image: url(/profiles/takepart/themes/takepart3/css/images/action-donation-icon.png);
 }
 
