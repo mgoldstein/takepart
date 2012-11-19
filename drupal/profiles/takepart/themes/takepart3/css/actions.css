@@ -217,7 +217,6 @@ div.drupal-embed .view-mode-medium-preview .signature-progress-percent .percenta
 }
 div.drupal-embed .group-heading .signature-action-type-label h3, /* selector override for embedded styling */
 .view-mode-medium-preview h3 {
-  color: #1CA9E7;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: normal;
