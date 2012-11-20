@@ -2406,11 +2406,16 @@ body.node-type-takepart-campaign .main-content #content {
 .node-type-section-front-wide .view-campaigns.view-dom-id-3 .view-content ul li {
     margin: 0 7px 0px 0;
 }
-
-.node-type-section-front-wide .view-campaigns.view-display-id-block_1 .views-row {
-    margin: 0 8px 0 0;
+.node-type-section-front-wide .view-campaigns.view-display-id-block_1 {
+    font-size: 0; /* display: inline-block; space fix */
 }
-
+.node-type-section-front-wide .view-campaigns.view-display-id-block_1 .views-row {
+    margin: 0 7px 0 0;
+    font-size: 12px;
+}
+.node-type-section-front-wide .view-campaigns.view-display-id-block_1 .views-row-last {
+    margin-right: 0px;
+}
 .block-newsletter-campaign h2 {
     width: 270px;
 }
