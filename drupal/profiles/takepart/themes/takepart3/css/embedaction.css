@@ -87,6 +87,7 @@
   top: 28px;
   left: 6px;
   text-align: center;
+  text-shadow: none;
 }
 
 #page #content .embedaction-wrapper .toggle {
