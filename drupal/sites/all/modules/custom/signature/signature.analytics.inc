@@ -32,12 +32,24 @@ class SignatureAnalyticsController extends TakeActionAnalyticsController {
   public function getSignedEvents($entity, $view_mode, $opt_ins) {
     $events = array();
 
+    $url = url('node/' . $entity->nid);
+    $args = explode("/", $url);
+    if (!$args[0]) {
+      array_shift($args);
+    }
+    $page_name = implode(':', array(
+      'takepart',
+      $args[0],
+      html_entity_decode($entity->title, ENT_QUOTES),
+    ));
+
     // Petition/pledge signed event.
     $events[] = tp_analytics_event(
       "{$entity->type}_submit",
       array(
         'title' => check_plain($entity->title),
         'view_mode' => $view_mode,
+        'page_name' => $page_name,
       ),
       'page',
       "action-submit-node-{$entity->nid}"
@@ -52,6 +64,7 @@ class SignatureAnalyticsController extends TakeActionAnalyticsController {
           array(
             'title' => check_plain($entity->title),
             'view_mode' => $view_mode,
+            'page_name' => $page_name,
             'group' => check_plain($settings->newsletter_opt_ins[$delta]['group']),
           ),
           'page',

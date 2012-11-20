@@ -33,7 +33,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
     s.linkTrackVars = 'eVar25,eVar30,eVar39,events';
     s.events = s.linkTrackEvents = 'event27';
     s.eVar25 = args.title;
-    s.eVar30 = s.pageName;
+    s.eVar30 = args.view_mode === 'full' ? args.page_name : s.pageName;
     s.eVar39 = view_modes[args.view_mode];
     s.tl(true, 'o', 'petition submit');
   };
@@ -41,7 +41,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
   tp.analytics.events['pledge_action_submit'] = function (args) {
     s.linkTrackVars = 'eVar30,eVar32,eVar39,events';
     s.events = s.linkTrackEvents = 'event32';
-    s.eVar30 = s.pageName;
+    s.eVar30 = args.view_mode === 'full' ? args.page_name : s.pageName;
     s.eVar32 = args.title;
     s.eVar39 = view_modes[args.view_mode];
     s.tl(true, 'o', 'pledge submit');
@@ -52,7 +52,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
     s.events = s.linkTrackEvents = 'event39';
     s.eVar23 = args.group;
     s.eVar25 = args.title;
-    s.eVar30 = s.pageName;
+    s.eVar30 = args.view_mode === 'full' ? args.page_name : s.pageName;
     s.eVar39 = view_modes[args.view_mode];
     s.tl(true, 'o', 'newsletter signup');
   };
@@ -61,7 +61,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
     s.linkTrackVars = 'eVar23,eVar30,eVar32,eVar39,events';
     s.events = s.linkTrackEvents = 'event39';
     s.eVar23 = args.group;
-    s.eVar30 = s.pageName;
+    s.eVar30 = args.view_mode === 'full' ? args.page_name : s.pageName;
     s.eVar32 = args.title;
     s.eVar39 = view_modes[args.view_mode];
     s.tl(true, 'o', 'newsletter signup');
