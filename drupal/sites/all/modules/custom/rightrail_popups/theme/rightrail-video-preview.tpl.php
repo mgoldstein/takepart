@@ -19,5 +19,5 @@
   <a class="colorbox-inline rrpop-<?php print $p_video_id; ?>" href="?width=870&amp;height=420&amp;inline=true#<?php print $p_video_id; ?>"><div class="rr-preview-arrow"></div></a>
 </div>
 <div class="vidpop-overlay">
-  <div id="$p_video_id"><?php print $p_popup; ?></div>
+  <div id="<?php echo $p_video_id; ?>"><?php print $p_popup; ?></div>
 </div>

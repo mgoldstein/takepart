@@ -12,8 +12,14 @@ $share_node_url = url('node/' . $embed_nid, array('absolute' => TRUE));
 $share_node_title = $embed_node->title;
 
 // override options to make large for popup
-$content['field_video_embedded'][0]['file']['#options']['width'] = 640;
-$content['field_video_embedded'][0]['file']['#options']['height'] = 360;
+if (takepart_vidpop_mobile_browser()) {
+  $content['field_video_embedded'][0]['file']['#options']['width'] = 320;
+  $content['field_video_embedded'][0]['file']['#options']['height'] = 180;
+}
+else {
+  $content['field_video_embedded'][0]['file']['#options']['width'] = 640;
+  $content['field_video_embedded'][0]['file']['#options']['height'] = 360;
+}
 ?>
 <?php if (!empty($pre_object)) print render($pre_object) ?>
 <div class='<?php print $classes ?> clearfix node-embedded' <?php print ($attributes) ?>>

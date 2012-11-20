@@ -5,11 +5,19 @@
 /*
 * this is the embedded preview pane
 */
+
+.mobile-vidpop {
+  position: relative;
+}
+
 div.vidpop-preview {
   width: 480px;
   height: 360px;
   position: relative;
-  margin-bottom: 1px;
+  background: url(images/loader_66x66.gif) 20px 20px no-repeat black;
+}
+div.vidpop-preview iframe body {
+  background-color: black;
 }
 div.vidpop-preview-overlay {
   width: 480px;
@@ -19,6 +27,11 @@ div.vidpop-preview-overlay {
   top: 0;
   left: 0;
   cursor: pointer;
+}
+.mobile-vidpop div.vidpop-preview-overlay {
+  height: 80px;
+  position: relative;
+  top: 0;
 }
 div.vidpop-preview a {
   text-decoration: none;
@@ -40,7 +53,6 @@ div.vidpop-preview-overlay-headline {
   color: white;
   font-size: 14px;
 }
-
 div.vidpop-preview-overlay-text {
   width: 480px;
   height: 360px;
@@ -50,15 +62,25 @@ div.vidpop-preview-overlay-text {
   left: 0;
   cursor: pointer;
 }
+.mobile-vidpop div.vidpop-preview-overlay-text {
+  height: 80px;
+  z-index: 5;
+  top: 0;
+  position: absolute;
+}
 div.vidpop-preview-overlay-text .line1 {
   position: relative;
-  top: 289px;
+  top: 5px;
   left: 50px;;
   font-size: 16px;
   font-weight: bold;
   line-height: 140%;
   color: #fff;
   width: 420px;
+}
+.mobile-vidpop div.vidpop-preview-overlay-text .line1 {
+  left: 15px;
+  width: 440px;
 }
 div.vidpop-preview-overlay-text .line1 .watch {
   font-size: 13px;
@@ -68,7 +90,7 @@ div.vidpop-preview-overlay-text .line1 .watch {
 }
 div.vidpop-preview-overlay-text .line2 {
   position: relative;
-  top: 298px;
+  top: 20px;
   left: 15px;;
   font-size: 13px;
   line-height: 120%;
@@ -163,6 +185,18 @@ div.vidpop-preview-overlay-text .line2 {
   padding-top: 15px;
   margin-right: 10px;
 }
+
+.map-mobile .vidpop-popup .contents .leftside {
+  float: none;
+  width: auto;
+}
+.map-mobile .vidpop-popup .contents .rightside {
+  float: none;
+  width: auto;
+  padding-top: 15px;
+  margin-right: 10px;
+}
+
 .vidpop-popup .field-name-field-promo-headline {
   color: black;
   font-weight: bold;

@@ -1,15 +1,25 @@
 <?php
 // node template to create video popup
+//
+// vars:
+//    p_video_embedded
+//    p_promo_headline
+//    p_promo_text
+
 
 // get the social links
 $social_links = takepart_vidpop_get_social_links();
 $comment_link = l('COMMENT', 'node/' . $p_content['field_video_embedded']['#object']->nid, array('fragment' => 'comments', 'attributes' => array('target' => '_blank')));
 
 $embed_nid = $p_content['field_video_embedded']['#object']->nid;
-$embed_node = node_load($embed_nid);
-
 $share_node_url = url('node/' . $embed_nid, array('absolute' => TRUE));
-$share_node_title = $embed_node->title;
+$share_node_title = $p_content['field_promo_headline']['#title'];
+
+// get url of embedded video
+$uri = $p_content['field_video_embedded'][0]['#file']->uri;
+$r = explode('/', $uri);
+$youtube_url = $r[3];
+
 
 // override options to make large for popup
 $p_content['field_video_embedded'][0]['file']['#options']['width'] = 640;
@@ -42,11 +52,11 @@ $p_content['field_video_embedded'][0]['file']['#options']['height'] = 360;
 ?>
     <div class="contents">
      <div class="leftside">
-      <?php print render($p_content['field_video_embedded']) ?>
-      </div>
+       <iframe width="480" height="315" src="http://www.youtube.com/embed/<?php print $youtube_url; ?>?rel=0" frameborder="0" allowfullscreen></iframe>
+     </div>
       <div class="rightside">
-        <?php print render($p_content['field_promo_headline']) ?>
-        <?php print render($p_content['field_promo_text']) ?>
+        <?php print render($content['field_promo_headline']) ?>
+        <?php print render($content['field_promo_text']) ?>
         <!-- subscribe button -->
         <div class="subscribe <?php print 'vp-' . $embed_nid; ?>"><a target="_blank" href="http://www.youtube.com/subscription_center?add_user_id=FYRWsIH2BivGa_-2LVTsBA&amp;feature=creators_cornier-http%3A//s.ytimg.com/yt/img/creators_corner/Subscribe_to_my_videos/YT_Subscribe_160x27_red.png"><img alt="Subscribe to me on YouTube" src="http://s.ytimg.com/yt/img/creators_corner/Subscribe_to_my_videos/YT_Subscribe_160x27_red.png" /></a></div>
 

@@ -128,13 +128,17 @@ function rightrail_popups_preprocess_html(&$vars) {
     if (substr($id, 0, 6) == 'boxes_') {
       if ($data['#block']->additional_classes == 'video-popup') {
         // this one is a video popup block
-        // get the youtube ID, it will inin the rrpop-XXXX class tag somewhere
+        // get the youtube ID, it will be in the rrpop-XXXX class tag somewhere
         // in the content; i.e. rrpop-Mew33kt7D6c, from the line
         //     <a class="colorbox-inline rrpop-Mew33kt7D6c" href="?width=870&amp;height=420&amp;inline=true#Mew33kt7D6c">
         if (preg_match("/rrpop-([^\"]+)\"/", $data['content']['#markup'], $res))  {
           //unipop_set_metric_page_load('set', $data['#block']->title, 'youtube video');
         }
 
+        if (takepart_vidpop_mobile_browser()) {
+          // we need the player loaded
+          unipop_load_jwplayer();
+        }
       }
     }
   }

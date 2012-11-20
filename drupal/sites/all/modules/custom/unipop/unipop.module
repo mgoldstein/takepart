@@ -24,6 +24,17 @@ function unipop_init() {
 }
 
 
+
+function unipop_load_jwplayer() {
+  static $jw_loaded = false;
+
+  if (!$jw_loaded) {
+    $jw_loaded = true;
+    drupal_add_js("/sites/all/libraries/jwplayer/jwplayer.js");
+  }
+}
+
+
 /**
  * Implements hook_menu().
  */
