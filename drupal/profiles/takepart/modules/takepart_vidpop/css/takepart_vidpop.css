@@ -58,7 +58,7 @@ div.vidpop-preview-overlay-text {
   height: 360px;
   z-index: 5;
   position: absolute;
-  top: 0;
+  top: 280px;
   left: 0;
   cursor: pointer;
 }
@@ -79,6 +79,7 @@ div.vidpop-preview-overlay-text .line1 {
   width: 420px;
 }
 .mobile-vidpop div.vidpop-preview-overlay-text .line1 {
+  top: 5px;
   left: 15px;
   width: 440px;
 }
@@ -97,6 +98,9 @@ div.vidpop-preview-overlay-text .line2 {
   color: #d9e7ed;
   width: 440px;
   font-weight: normal;
+}
+.mobile-vidpop div.vidpop-preview-overlay-text .line2 {
+  top: 20px;
 }
 
 .vidpop-embed-promo-headline {
