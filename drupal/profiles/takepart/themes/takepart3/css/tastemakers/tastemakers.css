@@ -169,7 +169,7 @@
   width: 235px;
   margin-right: 4px;
 }
-.tastemakers .one-col:last-child {
+.tastemakers .one-col.last {
   margin-right: 0;
 }
 .tastemakers .two-col {
@@ -224,6 +224,7 @@
 }
 .tastemakers.landing-page .intro-block,
 .tastemakers.landing-page .share-block {
+  background: #F7EDDD;
   background: rgba(255,255,255,.5);
 }
 .tastemakers.landing-page .sm-block-wrapper div,
