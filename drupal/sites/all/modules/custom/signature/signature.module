@@ -1741,7 +1741,7 @@ function signature_field_formatter_view($entity_type, $entity, $field,
  * Implements hook_field_formatter_prepare_view().
  */
 function signature_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
-  taxonomy_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays);
+  taxonomy_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, $items, $displays);
 }
 
 
