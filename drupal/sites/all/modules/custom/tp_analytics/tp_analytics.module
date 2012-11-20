@@ -1,0 +1,104 @@
+<?php
+/**
+ * @page
+ * Analytics tracking for the site.
+ */
+
+/**
+ * Builds an analytics event array.
+ */
+function tp_analytics_event($name, $args = array(), $scope = 'behavior',
+  $latch = FALSE) {
+  if ($scope === 'session') {
+    if ($latch === FALSE) { $latch = $name . ' fired'; } 
+  }
+  if ($scope === 'page') {
+    if ($latch === FALSE) { $latch = $name . ' fired'; } 
+  }
+  return array(
+    'name' => $name,
+    'scope' => $scope,
+    'latch' => drupal_html_class($latch),
+    'args' => $args,
+  );
+}
+
+/**
+ * Get the analytics info for a bundle
+ *
+ * @param string $entity_type
+ * @param string $bundle
+ *
+ * @return array
+ *   The bundle's analytics info as an associative array containing the
+ *   following
+ *   - controller class
+ *   - event file
+ */
+function tp_analytics_get_bundle_info($entity_type, $bundle) {
+  $info = entity_get_info($entity_type);
+  if (isset($info['analytics']) 
+  && isset($info['analytics']['bundles'])
+  && isset($info['analytics']['bundles'][$bundle])) {
+    return $info['analytics']['bundles'][$bundle];
+  }
+  return FALSE;
+}
+
+/**
+ * Adds the event script file for a given entity type.
+ *
+ * @param string $entity_type
+ * @param string $bundle
+ */
+function tp_analytics_add_event_file($entity_type, $bundle) {
+  $info = tp_analytics_get_bundle_info($entity_type, $bundle);
+  if ($info !== FALSE) {
+    drupal_add_js($info['event file'], 'file');
+  }
+}
+
+/**
+ * Get the analytics controller class for an entity type.
+ *
+ * @param string $entity_type
+ * @param string $bundle
+ *
+ * @return object
+ *   Instance of the analytics controller class, or FALSE if the entity type
+ *   does not have a controller.
+ */
+function tp_analytics_get_controller($entity_type, $bundle) {
+  $controllers = &drupal_static(__FUNCTION__, array());
+  $cache_key = "{$entity_type}:{$bundle}";
+  if (!isset($controllers[$cache_key])) {
+    $info = tp_analytics_get_bundle_info($entity_type, $bundle);
+    if ($info !== FALSE) {
+      $class = $info['controller class'];
+      $controllers[$cache_key] = new $class($entity_type, $bundle);
+    }
+    else {
+      $controllers[$cache_key] = FALSE;
+    }
+  }
+  return $controllers[$cache_key];
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function tp_analytics_entity_view($entity, $type, $view_mode, $langcode) {
+  $info = entity_get_info($type);
+  if (isset($info['entity keys']) && isset($info['entity keys']['bundle'])) {
+    if (!empty($info['entity keys']['bundle'])) {
+      $bundle = $entity->{$info['entity keys']['bundle']};
+    }
+    else {
+      $bundle = $type;
+    }
+    $controller = tp_analytics_get_controller($type, $bundle);
+    if ($controller !== FALSE) {
+      $controller->entityView($entity, $view_mode, $langcode);
+    }
+  }
+}

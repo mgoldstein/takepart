@@ -19,7 +19,8 @@
         var id = $(this).attr('id');
         if (id in settings.addthis.fields) {
           var configuration = {
-            ui_email_note: settings.addthis.fields[id].email_message
+            ui_email_note: settings.addthis.fields[id].email_message,
+            ui_email_from: settings.addthis.email
           };
           var sharing = {
             templates: {
@@ -36,10 +37,12 @@
       });
       // Setup the share event listener.
       if (window.addthis) {
-        $('body').once('addthis-init', function () {
-          window.addthis.addEventListener('addthis.menu.share',
-            addthisShareListener);
-        });
+        if ($('.share-bar-field.display-type-full-page').length > 0) {
+          $('body').once('addthis-init', function () {
+            window.addthis.addEventListener('addthis.menu.share',
+              addthisShareListener);
+          });
+        }
       }
     }
   };

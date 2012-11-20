@@ -4,3 +4,7 @@ core = 7.x
 package = TakeAction Button
 version = 7.x-1.0
 configure = admin/config/takeaction/settings
+
+files[] = takeaction.analytics.inc
+
+scripts[] = js/takeaction-events.js

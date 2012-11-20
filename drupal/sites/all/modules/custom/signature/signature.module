@@ -108,6 +108,14 @@ function signature_entity_info_alter(&$entity_info) {
     'custom settings' => FALSE,
   );
 
+  // Add the analytics controller to petition and pledge actions
+  $entity_info['node']['analytics']['bundles']['petition_action'] = array(
+    'controller class' => 'SignatureAnalyticsController',
+  );
+  $entity_info['node']['analytics']['bundles']['pledge_action'] = array(
+    'controller class' => 'SignatureAnalyticsController',
+  );
+ 
   // Add the signature types to the list of bundles for signatures.
   foreach (signature_type_load() as $type => $info) {
     $entity_info['signature']['bundles'][$type] = array(
@@ -827,24 +835,6 @@ function signature_node_view($node, $view_mode, $langcode) {
 
   if (signature_node_is_signature_action($node)) {
 
-    // Make the action title and type available for metrics.
-    drupal_add_js(array(
-      'signature' => array(
-        'nodes' => array(
-          $view_mode => array(
-            'node-' . (string) $node->nid => array(
-              'nid' => $node->nid,
-              'title' => check_plain($node->title),
-              'type' => $node->type,
-            ),
-          ),
-        ),
-      ),
-    ), 'setting');
-
-    // Add the cookie library for the tracking event latch.
-    drupal_add_library('system', 'jquery.cookie');
-
     $settings = entity_load_single('signature_node', $node->nid);
     if ($settings !== FALSE && !empty($settings->type)) {
 
@@ -1221,35 +1211,28 @@ function signature_base_form_callback($form, $form_state) {
   if (empty($errors)) {
 
     $node = $form['#signature_node'];
-    $node_selector = ".node-" . $node->nid . '.view-mode-full';
+    $analytics = tp_analytics_get_controller('node', $node->type);
 
-    // Add the signature form submit event.
-    $commands[] = ajax_command_invoke($node_selector, 'trigger', array(
-      'track_submit', array(
-        check_plain($node->title),
-        $node->type,
-      ),
-    ));
-
-    // Add the newsletter signup event(s)
-    $newsletter_signups = array();
+    // Add the signature form submit and action taken events.
+    $opt_ins = array();
     for ($num = 0; $num < 5; $num += 1) {
-      if (!empty($form_state['values']["newsletter_{$num}"])) {
-        $commands[] = ajax_command_invoke($node_selector, 'trigger', array(
-          'track_newsletter_signup',
-          check_plain($settings->newsletter_opt_ins[$num]['group']),
-        ));
-      }
+      $opt_ins[$num] = !empty($form_state['values']["newsletter_{$num}"]);
+    }
+    $events = $analytics->getSignedEvents($node, 'embedaction', $opt_ins);
+    foreach ($events as $event) {
+      $commands[] = $analytics->getFireEventCommand($event);
     }
 
     $data = signature_node_state_data($node);
     $data['progress']['state'] = 'thankyou';
     $commands[] = ajax_command_settings(array(
-      'signature' => array(
-        'submission' => array(
-          'result' => array($node->nid => $data),
-          'email' => $form_state['values']['email'],
+     'signature' => array(
+       'submission' => array(
+         'result' => array($node->nid => $data),
         ),
+      ),
+      'addthis' => array(
+        'email' => $form_state['values']['email'],
       ),
     ), TRUE);
   }
@@ -1548,12 +1531,19 @@ function signature_node_action_type_variables($node) {
     'units_single' => '',
     'units_plural' => '',
   );
-  $action_type = reset(field_get_items('node', $node, 'field_action_type'));
-  if ($action_type !== FALSE) {
+  $action_type_items = field_get_items('node', $node, 'field_action_type');
+  if (!empty($action_type_items)) {
+    $action_type = reset($action_type_items);
     $term = taxonomy_term_load($action_type['tid']);
     foreach ($defaults as $name => $default) {
-      $item = reset(field_get_items('taxonomy_term', $term, 'field_' . $name));
-      $variables[$name] = $item !== FALSE ? $item['safe_value'] : $default;
+      $field_items = field_get_items('taxonomy_term', $term, 'field_' . $name);
+      if (!empty($field_items)) {
+        $item = reset($field_items);
+        $variables[$name] = $item['safe_value'];
+      }
+      else {
+        $variables[$name] = $default;
+      }
     }
   }
   return $variables;
