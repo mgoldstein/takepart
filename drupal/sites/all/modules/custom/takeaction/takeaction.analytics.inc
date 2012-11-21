@@ -35,6 +35,12 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
       $event = tp_analytics_event('see_more_actions_click');
       $this->addFrontEndEventInstance('see_more_actions_click', $event);
     }
+    elseif ($view_mode === 'embed' && $entity->type === 'action') {
+
+      // TAB - See more actions button click
+      $event = tp_analytics_event('see_more_actions_click');
+      $this->addFrontEndEventInstance('see_more_actions_click', $event);
+    }
 
     parent::entityView($entity, $view_mode, $langcode);
   }
