@@ -137,7 +137,6 @@ function rightrail_popups_preprocess_html(&$vars) {
 
         if (takepart_vidpop_mobile_browser()) {
           // we need the player loaded
-          unipop_load_jwplayer();
         }
       }
     }
