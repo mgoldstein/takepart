@@ -94,10 +94,6 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
   $(document).ready(function () {
     // Setup the share event listener.
     if (window.addthis) {
-      // Prevent AddThis share buttons from firing Omniture events.
-      $('body').delegate('.addthis_toolbox a, .addthis_toolbox img', 'click', function (e) {
-        e.preventDefault();
-      });
       // Add a share listener to all share bar fields.
       if ($('.share-bar-field').length !== 0) {
         $('body').once('addthis-init', function () {
