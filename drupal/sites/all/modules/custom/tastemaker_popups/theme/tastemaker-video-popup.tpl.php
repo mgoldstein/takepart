@@ -13,6 +13,7 @@
  *   );
  */
 
+
 ?>
 <div class='<?php print $classes ?> clearfix node-embedded vidpop-popup tastemaker-popup' <?php print ($attributes) ?>>
   <div class="inner-wrapper">

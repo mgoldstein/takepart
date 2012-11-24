@@ -43,14 +43,14 @@ function tastemaker_popups_menu() {
  * @param $hook
  */
 function tastemaker_popups_preprocess_node(&$vars, $hook) {
-  if (!takepart_vidpop_mobile_browser()) {
+//  if (!takepart_vidpop_mobile_browser()) {
     // we are on a non-mobile device; load hidden popups
     //
     if (strstr($vars['node']->body['und'][0]['value'], 'TASTEMAKER')) {
       // load the tastemakers popups
       tastemaker_popups_process_tastemaker_popups($vars['node']->body['und'][0]['value'], $vars);
     }
-  }
+//  }
 }
 
 

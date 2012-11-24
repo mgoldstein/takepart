@@ -33,18 +33,19 @@
 // Avoid using double quotes; if you must, precede them with a backslash, i.e. my \"quoted\" text
 
 // first row
-    videoData[0][0] = ["lvt4b_qwC_Q", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 1<br />Los Angeles Video #1", "This is description 1"];
-    videoData[0][1] = ["I1583adUqSg", "http://www.takepart.com/sites/default/files/styles/tp_secondary_feature_thumbnail/public/10043476_0-1.jpg", "This is caption 2", "This is description 2"];
-    videoData[0][2] = ["hu2WFQ9G5EE", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 3", "This is description 3"];
-    videoData[0][3] = ["T7u0ghPuaEE", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 4", "This is description 4"];
-    videoData[0][4] = ["C6K_GZsZ7hE", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 5", "This is description 5"];
+      videoData[0][0] = ["oiY_UxZJMSM", "http://www.takepart.com/sites/default/files/lindy_grundy_180x136.jpeg", "L.A.'s hottest butchers: Lindy & Grundy<br />", "These two meat mavens prove that good meat comes from butchers who care about the animals they sell"];
+      videoData[0][1] = ["9lg-wCN3Pik", "http://www.takepart.com/sites/default/files/suck_it_sweets_180x136.jpeg", "Sin-Free Sweets at Suck It", "There's nothing sinful about these sweets"];
+      videoData[0][2] = ["iHDb9cTxNOY", "http://www.takepart.com/sites/default/files/golden_road_180x136.jpeg", "Fiercely Local Beer at Golden Road Brewing", "Why beer tastes better when it's brewed nearby"];
+      videoData[0][3] = ["KfCIWgvkZ18", "http://www.takepart.com/sites/default/files/vegenaise_180x136.jpeg", "Follow Your Heart to This Vegan Paradise", "Inside L.A.'s solar-powered vegan paradise"];
+      videoData[0][4] = ["LVSvA-g-Vf8", "http://www.takepart.com/sites/default/files/spices_180x136.jpeg", "Ditch the Factory Seasonings with Spice Station L.A.", "Ditch those factory spices to kick up the flavor of your holiday meal"];
 
 // second row
-    videoData[1][0] = ["9HPiBJBCOq8", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 6", "This is description 6"];
-    videoData[1][1] = ["LQOXrMA4K0E", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 7", "This is description 7"];
-    videoData[1][2] = ["9u07gqBqHc4", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 8", "This is description 8"];
-    videoData[1][3] = ["jT6JkceQ9FU", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 9", "This is description 9"];
-    videoData[1][4] = ["GlQ8dDJK0Ww", "http://www.takepart.com/sites/default/files/temp_video_thumb.png", "This is caption 10","This is description 10"];
+      videoData[1][0] = ["mJog8DlRk_4", "http://www.takepart.com/sites/default/files/tpduckrecipes_180x136.jpeg", "Sustainable Holiday Duck - Two Ways ", "Crispy Roasted Duck & Beer-Braised Duck Legs"];
+      videoData[1][1] = ["M_z0b0C7Sz8", "http://www.takepart.com/sites/default/files/tpsoy_180x136.jpeg", "Pumpkin (Soy) Cheesecake", "A great twist for your holiday dessert"];
+      videoData[1][2] = ["2VQ_5r1uwcg", "http://www.takepart.com/sites/default/files/tpsausagerecipes_180x136.jpeg", "Sausage and Cranberry Stuffing", "Making sausage from sustainably raised meat is a cheap way to eat right this holiday season"];
+      videoData[1][3] = ["x3e5t_7GqFQ", "http://www.takepart.com/sites/default/files/tpchard_180x136.jpeg", "Shredded Swiss Chard Salad", "Add some color to your holiday table with this bright and crisp salad"];
+      videoData[1][4] = ["_NMh5SGsaVQ", "http://www.takepart.com/sites/default/files/tpmeal_180x136.jpeg", "Our Perfect Sustainable Thanksgiving","Our ultimate sustainable holiday dinner"];
+
 
 //  ***********************************************************************
 
@@ -67,7 +68,8 @@
           (function(row_id, col_id, video_id) {  // <-- immediate function call
             if (Drupal.settings.takepart_browsercaps.detected_mobile_browser) {
               // using mobile; link directly to youtube
-              listeners[row_id + '-' + col_id] = function () { window.location = 'http://www.youtube.com/embed/' +  video_id};
+              // listeners[row_id + '-' + col_id] = function () { window.location = 'http://www.youtube.com/embed/' +  video_id};
+              listeners[row_id + '-' + col_id] = function () { jQuery.fn.colorbox({width:"900px", height:"430px", inline:true, href:"#taste-details-" + row_id + '-' + col_id}); };
             }
             else {
               // desktop browser; use colorbox
