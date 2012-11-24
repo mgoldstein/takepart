@@ -69,9 +69,7 @@
     (function(video, state_arg) {  // <-- immediate function call
       if (Drupal.settings.takepart_browsercaps.detected_mobile_browser) {
         // using mobile; link directly to youtube
-//        vidmapVideos[state_val] = video;
-        //vidmapListeners[state_val] = function () { jQuery.fn.colorbox({width:"900px", height:"430px", inline:true, href:"#vidpop-details-" + video}); };
-        vidmapListeners[state_val] = function () { jQuery.fn.colorbox({width:"520px", height:"630px", inline:true, href:"#vidpop-details-" + video}); };
+        vidmapListeners[state_val] = function () { jQuery.fn.colorbox({width:"900px", height:"430px", inline:true, href:"#vidpop-details-" + video}); };
       }
       else {
         // desktop browser; use colorbox

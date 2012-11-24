@@ -102,7 +102,7 @@ function vidpop_loaded() {
     attach: function (context, settings) {
       $('.vidpop-preview .colorbox-inline').live('click', (function(){
         //alert('wait');
-        $('#cboxWrapper').css('height', '725px');
+        $('#cboxWrapper').css('height', '425px');
         vidpopSource = 'node';
       }));
 
@@ -111,8 +111,8 @@ function vidpop_loaded() {
         //alert(vidpopSource);
         switch(vidpopSource) {
           case 'node':
-            $('#cboxWrapper').css('height', '725px');
-            $('#cboxContent').css('height', '725px');
+            $('#cboxWrapper').css('height', '425px');
+            $('#cboxContent').css('height', '425px');
             break;
         }
       });
