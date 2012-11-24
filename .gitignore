@@ -4,3 +4,9 @@
 .DS_Store
 DEADJOE
 
+.AppleDouble
+.gitignore
+settings/settings.local.inc
+settings/settings.local.pglatz.inc
+.idea
+
