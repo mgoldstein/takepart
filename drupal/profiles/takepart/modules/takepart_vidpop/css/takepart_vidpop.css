@@ -192,13 +192,15 @@ div.vidpop-preview-overlay-text .line2 {
 
 .map-mobile .vidpop-popup .contents .leftside {
   float: none;
-  width: auto;
+  width: 480px;
+  height: 365px;
 }
 .map-mobile .vidpop-popup .contents .rightside {
   float: none;
-  width: auto;
+  width: 480px;
   padding-top: 15px;
-  margin-right: 10px;
+  margin-top: 20px;
+  margin-right: 0;
 }
 
 .vidpop-popup .field-name-field-promo-headline {
@@ -255,7 +257,7 @@ div.vidpop-preview-overlay-text .line2 {
   overflow: hidden !important;
 }
 body #cboxContent {
-  height: 445px !important;
+  height: 595px !important;
 }
 
 /*

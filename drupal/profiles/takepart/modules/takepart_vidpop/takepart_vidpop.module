@@ -30,6 +30,13 @@ function takepart_vidpop_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['vidpop/map_details_mobile/%'] = array(
+    'title' => 'Video map callback to get details (mobile version)',
+    'page callback' => 'takepart_vidpop_get_map_details_mobile',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
 
   return $items;
 }
@@ -410,6 +417,31 @@ EOT;
  * @returns rendered video for display
  */
 function takepart_vidpop_get_map_details() {
+  $nid = arg(2);
+  $node = node_load($nid);
+  if ($node) {
+    $vnode = node_view($node);
+    $output = drupal_render($vnode['field_video_embedded']);
+  }
+  else {
+    $output = __FUNCTION__ . ': could not load nid ' . $nid;
+  }
+
+  print $output;
+  drupal_exit();
+}
+
+
+/***
+ * ajax callback to get map details, mobile version
+ *
+ * arg is the nid
+ *
+ * url is /vidpop/mapembed/NID
+ *
+ * @returns rendered video for display
+ */
+function takepart_vidpop_get_map_details_mobile() {
   $nid = arg(2);
   $node = node_load($nid);
   if ($node) {

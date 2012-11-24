@@ -36,6 +36,13 @@ function unipop_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['unipop/video_preview_from_node/%'] = array(
+    'title' => 'Unipop callback to get the youtube preview of a video from a video node id',
+    'page callback' => 'unipop_get_video_preview_from_node',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
 
   /*
     $items['admin/config/system/unipop/settings'] = array(
@@ -52,13 +59,12 @@ function unipop_menu() {
 
 
 /***
- * function: Unipop callback to get the youtube id of a video from a video node id
+ * @param $nid      nid of video node
  *
- * arg is the nid
+ * function: get the youtube id of a video from a video node id
  *
- * url is /unipop/video_id_from_node/VIDEO_ID
  */
-function unipop_get_video_id_from_node() {
+function unipop_get_youtube_id($nid) {
   static $youtube_lookup;     // poor man's cache; lookup of youtube ids
                               //   key=our video node id, data=youtube id
 
@@ -66,20 +72,50 @@ function unipop_get_video_id_from_node() {
     $youtube_lookup = array();
   }
 
-  $video_id = arg(2);
-  if (!isset($youtube_lookup[$video_id])) {
-    $node = node_load($video_id);
+  if (!isset($youtube_lookup[$nid])) {
+    $node = node_load($nid);
     if (!$node) {
-      watchdog('unipop', 'cannot open video node ' . $video_id, WATCHDOG_ERROR);
+      watchdog('unipop', 'cannot open video node ' . $nid, WATCHDOG_ERROR);
       return(0);
     } else {
       $file = file_load($node->field_video_embedded['und'][0]['fid']);
       $uri = explode('/', $file->uri);
-      $youtube_lookup[$video_id] = $uri[3];
+      $youtube_lookup[$nid] = $uri[3];
     }
   }
 
-  $output = $youtube_lookup[$video_id];
+  $youtube_id = $youtube_lookup[$nid];
+
+  return $youtube_id;
+}
+
+
+/***
+ * function: Unipop callback to get the youtube id of a video from a video node id
+ *
+ * arg is the nid
+ *
+ * url is /unipop/video_id_from_node/VIDEO_ID
+ */
+function unipop_get_video_id_from_node() {
+  $youtube_id = unipop_get_youtube_id(arg(2));
+
+  print $youtube_id;
+  drupal_exit();
+}
+
+
+/***
+ * function: Unipop callback to return youtube inline preview from a video node id
+ *
+ * arg is the nid
+ *
+ * url is /unipop/video_preview_from_node/VIDEO_ID
+ */
+function unipop_get_video_preview_from_node() {
+  $youtube_id = unipop_get_youtube_id(arg(2));
+
+  $output = '<iframe width="480" height="360" src="http://www.youtube.com/embed/' . $youtube_id . '?hl=en&fs=1&showinfo=0" frameborder="0" allowfullscreen></iframe>';
 
   print $output;
   drupal_exit();
