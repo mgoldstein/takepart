@@ -102,7 +102,8 @@ function takepart3_preprocess_page(&$variables) {
       }
     }
 
-    if ($variables['node']->type == 'venue') {
+    if ($variables['node']->type == 'venue' || $variables['node']->type == 'action'
+            || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action') {
       $variables['is_multipage'] = TRUE;
     }
 
@@ -209,11 +210,10 @@ function _render_tp3_user_menu() {
                 }
 
                 $menu_item['link']['title'] = $username;
-                // $menu_item['link']['href'] = 'user/' . $user->uid . '/edit';
-                $menu_item['link']['href'] = null;
+                $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');
             } else {
                 $opts['attributes']['class'][] = 'join-login';
-                $opts['query'] = array("destination" => current_path());
+                $opts['query'] = drupal_get_destination();
                 $menu_item['link']['title'] = variable_get("takepart_user_login_link_name", "Login");
             }
         } else {
@@ -224,7 +224,7 @@ function _render_tp3_user_menu() {
             }
         }
 
-        if ($menu_item['link']['title'] == $username) {
+        if (empty($menu_item['link']['href'])) {
             $link = $menu_item['link']['title'];
         } else {
             $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
@@ -487,58 +487,58 @@ function takepart3_preprocess_node(&$vars, $hook) {
   $use_popup = false;   // set true if video popup are enabled and this node specifies using one
 
   if (module_exists('takepart_vidpop')) {
-        // under certain conditions, we want to change the link of the embedded video to
-        // create a popup:
-        // 		-view_mode is "embed"
-        //    -field_video_display_mode is 2 (modal popup)
-        //
+    // under certain conditions, we want to change the link of the embedded video to
+    // create a popup:
+    // 		-view_mode is "embed"
+    //    -field_video_display_mode is 2 (modal popup)
+    //
     // 		or if
-        //
+    //
     //    -view_mode is "full"
-        //    -field_video_display_mode is 3 (contextual)
-        //    -page type is video (permalink)
+    //    -field_video_display_mode is 3 (contextual)
+    //    -page type is video (permalink)
 
-        if ($vars['type'] == 'openpublish_video') {
-          if (isset($vars['field_video_display_mode']['und'])) {
-            if (isset($vars['field_video_display_mode']['und'][0]['value'])) {
-              // this video node has a display mode has a value set; change
-              // the link to create a popup
-              switch ($vars['field_video_display_mode']['und'][0]['value']) {
-                case 1:   // embedded
-                  break;
-                case 2:   // modal popup
-                  if ($vars['view_mode'] == 'embed') {
-                    $use_popup = true;
-                  }
-                  break;
-                case 3:   // contextual (embedded on permalink page, modal elsewhere)
-                  if ($vars['view_mode'] == 'full') {
-                    $use_popup = true;
-                  }
-                  break;
+    if ($vars['type'] == 'openpublish_video') {
+      if (isset($vars['field_video_display_mode']['und'])) {
+        if (isset($vars['field_video_display_mode']['und'][0]['value'])) {
+          // this video node has a display mode has a value set; change
+          // the link to create a popup
+          switch ($vars['field_video_display_mode']['und'][0]['value']) {
+            case 1:   // embedded
+              break;
+            case 2:   // modal popup
+              if ($vars['view_mode'] == 'embed') {
+                $use_popup = true;
               }
-            }
-          }
-          else {
-            // mode is undefined - assume popup
-            $use_popup = true;
+              break;
+            case 3:   // contextual (embedded on permalink page, modal elsewhere)
+              if ($vars['view_mode'] == 'full') {
+                $use_popup = true;
+              }
+              break;
           }
         }
+      }
+      else {
+        // mode is undefined - assume popup
+        $use_popup = true;
+      }
+    }
 
-        if ($use_popup) {
-          $GLOBALS['has_vidpop'] = 1;
-            // suggest a theme
-            $vars['theme_hook_suggestions'][] = "node__video_embed";
+    if ($use_popup) {
+      $GLOBALS['has_vidpop'] = 1;
+      // suggest a theme
+      $vars['theme_hook_suggestions'][] = "node__video_embed";
 
-            // render the video as large size for the popup
-            $render_large = node_view(node_load($vars['nid']), 'large');
-            $vars['large_video'] = drupal_render($render_large['field_video_embedded']);
+      // render the video as large size for the popup
+      $render_large = node_view(node_load($vars['nid']), 'large');
+      $vars['large_video'] = drupal_render($render_large['field_video_embedded']);
 
-            if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
-                $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
-            }
+      if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
+        $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
+      }
 
-            // add identifying class
+      // add identifying class
             $vars['classes_array'][] = 'vidpop-embedded';
 
             // add ad click call
@@ -703,32 +703,40 @@ function takepart3_field__field_author(&$vars) {
 
 // Preprocess action URL
 function takepart3_field__field_action_url(&$vars) {
-    $takeactionurl = $vars['element']['#object']->field_action_url['und'][0]['display_url'];
-    if (strlen($takeactionurl) <= 80) {
-        $takeactionurl_parts = parse_url($takeactionurl);
-        $safe_url = url($takeactionurl);
-    } else {
-        $extracturl = $vars['items'][0]['#markup'];
-        preg_match('/href="([^\s"]+)/', $extracturl, $match);
-        if (isset($match[1])) {
-            $takeactionurl_parts = parse_url($match[1]);
-            $safe_url = url($match[1]);
-        }
+  $output = '';
+  if (!empty($vars['element']['#items'])) {
+
+    // There should be only one value for the field.
+    $item = reset($vars['element']['#items']);
+
+    $attributes = array(
+      'href' => 'javascript:void();',
+    );
+    if ($item['url'] !== 'local') {
+      $attributes['action-href'] = $item['url'];    
     }
-    // we may have a target attribute set; of so, build a string to add to the tag
-    $target = $vars['element']['#items'][0]['attributes']['target'];
-    if (isset($target)) {
-        $target_str = 'target="' . $target . '" ';
-    } else {
-        // no target specified
-        $target_str = '';
+    if (isset($item['attributes'])) {
+      if (isset($item['attributes']['target'])) {
+        $attributes['target'] = $item['attributes']['target'];
+      }
+      if (isset($item['attributes']['class'])) {
+        $attributes['class'] = explode(' ', $item['attributes']['class']);
+      }
+    }
+    if ($vars['element']['#entity_type'] === 'node') {
+      $attributes['nid'] = $vars['element']['#object']->nid;
     }
 
-    if ((array_key_exists('host', $takeactionurl_parts)) && ($takeactionurl_parts['host'] == $_SERVER['HTTP_HOST']) || ($takeactionurl_parts['host'] == '')) {
-        return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
-    } else {
-        return '<a ' . $target_str . ' href="' . $safe_url . '" class="take_action_button" onclick="this.blur(); return false;"><span>Take Action</span></a>';
-    }
+    $variables = array(
+      'element' => array(
+        '#tag' => 'a',
+        '#attributes' => $attributes,
+        '#value' => '<span>' . $item['title'] . '</span>',
+      ),
+    );
+    $output = theme('html_tag', $variables);
+  }
+  return $output;
 }
 
 // Rewrites 'field_tp_campaign_4_things_link' in Campaign content types
@@ -1144,6 +1152,10 @@ function _render_tp3_header(&$params) {
     return theme('takepart3_header', $params);
 }
 
+function _render_tp3_slim_header(&$params) {
+    return theme('takepart3_slim_header', $params);
+}
+
 function _render_tp3_footer(&$params) {
     return theme('takepart3_footer', $params);
 }
@@ -1162,15 +1174,19 @@ function _render_tp3_wrapper_footer(&$params) {
  */
 function _render_tp3_renderheaderfooterfeed(&$vars) {
     $uri = drupal_get_path_alias($_GET['q']);
-    $uri = substr($uri, 0, 14);
-    if (($uri == 'iframes/header') || ($uri == 'iframes/footer')) {
+    // $uri = substr($uri, 0, 14);
+    if (($uri == 'iframes/header') || ($uri == 'iframes/footer') || ($uri == 'iframes/slim-header')) {
         $vars['page_top'] = null;
         $vars['page_bottom'] = null;
         $vars['page'] = null;
         _tp3_fill_template_vars($vars);
         if ($uri == 'iframes/header') {
             $vars['custom'] = _render_tp3_header($vars);
-        } elseif ($uri == 'iframes/footer') {
+        }
+        elseif ($uri == 'iframes/slim-header') {
+            $vars['custom'] = _render_tp3_slim_header($vars);
+        }
+        elseif ($uri == 'iframes/footer') {
             $vars['custom'] = _render_tp3_footer($vars);
         }
     }
@@ -1206,6 +1222,12 @@ function takepart3_theme() {
     return array(
         'takepart3_header' => array(
             'template' => 'templates/pages/header',
+            'arguments' => array(
+                'params' => NULL,
+            ),
+        ),
+        'takepart3_slim_header' => array(
+            'template' => 'templates/pages/header-slim',
             'arguments' => array(
                 'params' => NULL,
             ),

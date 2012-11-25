@@ -5,15 +5,7 @@ function takepart_omniture_token_info() {
         'name' => t('TakePart Omniture'),
         'description' => t("Tokens used for setting omniture variables"),
     );
-    $info['tokens']['tp_omniture']['test'] = array(
-        'name' => t('Test'),
-        'description' => t("Returns the first part sub folder of the url"),
-        'dynamic' => TRUE,
-        'function' => array(
-            'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
-            'function' => "takepart_omniture_test",
-        ),
-    );
+
     $info['tokens']['tp_omniture']['value_or_empty'] = array(
         'name' => t('Value or Empty'),
         'description' => t("Returns the token or empty string"),
@@ -23,6 +15,17 @@ function takepart_omniture_token_info() {
             'function' => "takepart_omniture_value_or_empty",
         ),
     );
+
+    $info['tokens']['tp_omniture']['get_tab_uid'] = array(
+        'name' => t('Get TAB user ID'),
+        'description' => t('Retrieve the user\'s TAB ID, if set'),
+        'dynamic' => TRUE,
+        'function' => array(
+            'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+            'function' => "takeaction_tracking_get_guid",
+        ),
+    );
+
     $info['tokens']['tp_omniture']['get_author'] = array(
         'name' => t('Get Author'),
         'description' => t('Retrieve the node referenced authors for this node item'),
@@ -50,6 +53,16 @@ function takepart_omniture_token_info() {
         'function' => array(
             'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
             'function' => "takepart_omniture_str_decode",
+        ),
+    );
+    
+    $info['tokens']['tp_omniture']['first_word'] = array(
+        'name' => t('Grab the first word'),
+        'description' => t('Grab the first word with html_entity_decode function.'),
+        'dynamic' => TRUE,
+        'function' => array(
+            'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+            'function' => "takepart_omniture_first_word",
         ),
     );
 
@@ -86,9 +99,77 @@ function takepart_omniture_token_info() {
     return $info;
 }
 
-function takepart_omniture_test($param) {
-    $test = $param;
-    return "$param -> baseball '$test' baseball";
+function takepart_omniture_first_word($str) {
+    $content_type_array = explode(" ",$str);
+    return html_entity_decode($content_type_array[0], ENT_QUOTES);
+}
+
+function takepart_omniture_tab_uid($param) {
+    $guid = FALSE;
+    $from_db = FALSE;
+
+    $cookie = variable_get('takeaction_action_cookie_name', 'TAKEACTIONGUID');
+    $lifespan = variable_get('takeaction_action_cookie_lifespan', 0);
+    $expire = empty($lifespan) ? 0 : time() + $lifespan;
+    $path = variable_get('takeaction_action_cookie_path', '/');
+    $domain = variable_get('takeaction_action_cookie_domain', '.takepart.com');
+
+    // Check for a GUID tied to a logged in user.
+    if (!empty($param)) {
+        try {
+            $result = db_select('takeaction_tracking_action_guid', 'g')
+                    ->fields('g', array('uid', 'guid'))
+                    ->condition('g.uid', $param, '=')
+                    ->execute()
+                    ->fetchAllKeyed();
+            if (!empty($result)) {
+                $guid = $result[$param];
+                $from_db = TRUE;
+                setcookie($cookie, $guid, $expire, $path, $domain);
+            }
+        } catch (Exception $e) {
+            watchdog('takepart_omniture', 'Message: ' . $e->getMessage());
+        }
+    }
+
+    // Check for an already set cookie.
+    if (empty($guid) && !empty($_COOKIE[$cookie])) {
+        $regex = '/^[0-9A-F]{8}(\-[0-9A-F]{4}){3}\-[0-9A-F]{12}$/';
+        if (preg_match($regex, $_COOKIE[$cookie])) {
+            $guid = $_COOKIE[$cookie];
+        }
+    }
+
+    // If we still don't have a GUID generate one and set it.
+    if (empty($guid)) {
+        mt_srand((double) microtime() * 10000);
+        $hash = strtoupper(md5(uniqid(rand(), TRUE)));
+        $guid = implode('-', array(
+            substr($hash, 0, 8),
+            substr($hash, 8, 4),
+            substr($hash, 12, 4),
+            substr($hash, 16, 4),
+            substr($hash, 20, 12),
+                ));
+        setcookie($cookie, $guid, $expire, $path, $domain);
+    }
+
+    // Tie the action GUID to the UID if it isn't already tied.
+    if (!empty($param) && !$from_db) {
+        try {
+            db_insert('takeaction_tracking_action_guid')
+                    ->fields(array(
+                        'uid' => $param,
+                        'guid' => $guid,
+                        'created' => time(),
+                    ))
+                    ->execute();
+        } catch (Exception $e) {
+            watchdog('takepart_omniture', 'Message: ' . $e->getMessage());
+        }
+    }
+
+    return $guid;
 }
 
 function takepart_omniture_value_or_empty($param) {

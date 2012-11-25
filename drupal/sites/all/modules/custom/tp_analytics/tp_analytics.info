@@ -1,0 +1,7 @@
+name = Analytics
+description = Provides support for analytics reporting.
+core = 7.x
+version = 7.x-1.0
+package = TakePart
+scripts[] = js/tp-analytics.js
+files[] = tp_analytics.controller.inc

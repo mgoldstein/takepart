@@ -1,0 +1,105 @@
+<?php
+/**
+ * @file
+ * TakeAction Button User Session Module
+ */
+
+/**
+ * Implements hook_user_login().
+ */
+function takeaction_session_user_login(&$edit, $account) {
+  
+  $release_guid = variable_get('takeaction_release_guid', '');
+  
+  // Get the active tracking cookie.
+  $active_guid = '';
+  $guid_cookie = variable_get('takeaction_action_cookie_name', 'TAKEACTIONGUID');
+  if (!empty($_COOKIE[$guid_cookie])) {
+    $guid_pattern = '[0-9A-F]{8}(\-[0-9A-F]{4}){3}\-[0-9A-F]{12}';
+    $regex = '/^' . $guid_pattern . '\|' . $guid_pattern . '$/';
+    if (preg_match($regex, $_COOKIE[$guid_cookie])) {
+      list($release, $tracking) = explode('|', $_COOKIE[$guid_cookie], 2);
+      if ($release === $release_guid) {
+        $active_guid = $tracking;
+      }
+    }
+  }
+
+  // (Re)set the cookie to make sure it matches the user's guid.
+  $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION');
+  $lifespan = variable_get('takeaction_session_cookie_lifespan', 60 * 60 * 24 * 30);
+  $expire = empty($lifespan) ? 0 : time() + $lifespan;
+  $path = variable_get('takeaction_session_cookie_path', '/');
+  $domain = variable_get('takeaction_session_cookie_domain', '.takepart.com');
+  $user_guid = takeaction_tracking_get_guid();
+  setcookie($session_cookie, $user_guid, $expire, $path, $domain);
+
+  // Check if the tracking cookie changed (this works because the 
+  // cookie is a SESSION cookie
+  if (!empty($active_guid) && $user_guid != $active_guid) {
+    try {
+      $api = takeaction_get_api();
+      $api->reassignTrackingEvents($active_guid, $user_guid);
+    }
+    catch (TakeActionApiException $ex) {
+      $message = 'Error reassign tracking events [@code] @body';
+      watchdog('takeaction_tracking', $message, array(
+        '@code' => $ex->getResponseCode(),
+        '@body' => $ex->getResponseBody(),
+      ));
+      return;
+    }
+  }
+}
+
+/**
+ * Implements hook_user_logout().
+ */
+function takeaction_session_user_logout($account) {
+
+  $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION');
+  $path = variable_get('takeaction_session_cookie_path', '/');
+  $domain = variable_get('takeaction_session_cookie_domain', '.takepart.com');
+  setcookie($session_cookie, FALSE, time() - (60 * 60 * 24), $path, $domain);      
+
+  $guid_cookie = variable_get('takeaction_action_cookie_name', 'TAKEACTIONGUID');
+  $path = variable_get('takeaction_action_cookie_path', '/');
+  $domain = variable_get('takeaction_action_cookie_domain', '.takepart.com');
+  setcookie($guid_cookie, FALSE, time() - (60 * 60 * 24), $path, $domain);
+}
+
+/**
+ * Implements hook_init().
+ */
+function takeaction_session_init() {
+  global $user;
+  
+  if (empty($user) || empty($user->uid)) {
+
+    // The session cookie should not be set. 
+    $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION');
+    if (isset($_COOKIE[$session_cookie])) {
+        
+      $guid_cookie = variable_get('takeaction_action_cookie_name', 'TAKEACTIONGUID');
+      if (isset($_COOKIE[$guid_cookie])) {
+          
+        $release_guid = variable_get('takeaction_release_guid', '');
+        $session_tracking = "{$release_guid}|{$_COOKIE[$guid_cookie]}";
+        if ($_COOKIE[$guid_cookie] == $session_tracking) {
+
+          // The tracking cookie is tracking a user that is no longer logged in
+          // and should be replaced.
+          $path = variable_get('takeaction_action_cookie_path', '/');
+          $domain = variable_get('takeaction_action_cookie_domain', '.takepart.com');
+          setcookie($guid_cookie, FALSE, time() - (60 * 60 * 24), $path, $domain);
+          takeaction_tracking_get_guid();
+        }
+      }  
+      
+      // Delete the session cookie.
+      $path = variable_get('takeaction_session_cookie_path', '/');
+      $domain = variable_get('takeaction_session_cookie_domain', '.takepart.com');
+      setcookie($session_cookie, FALSE, time() - (60 * 60 * 24), $path, $domain);      
+    }
+  }
+}

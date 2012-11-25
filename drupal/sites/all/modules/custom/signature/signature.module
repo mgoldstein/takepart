@@ -33,8 +33,8 @@ function signature_entity_info() {
         'label' => t('Full page'),
         'custom settings' => FALSE,
       ),
-      'embedded' => array(
-        'label' => t('Embedded'),
+      'thankyou' => array(
+        'label' => t('Thank You'),
         'custom settings' => FALSE,
       ),
     ),
@@ -96,6 +96,26 @@ function signature_entity_info() {
  */
 function signature_entity_info_alter(&$entity_info) {
 
+  // Add an action summary view mode.
+  $entity_info['node']['view modes']['action_summary'] = array(
+    'label' => t('Action Summary'),
+    'custom settings' => FALSE,
+  );
+
+  // Add an action medium preview view mode.
+  $entity_info['node']['view modes']['medium_preview'] = array(
+    'label' => t('Action Medium Preview'),
+    'custom settings' => FALSE,
+  );
+
+  // Add the analytics controller to petition and pledge actions
+  $entity_info['node']['analytics']['bundles']['petition_action'] = array(
+    'controller class' => 'SignatureAnalyticsController',
+  );
+  $entity_info['node']['analytics']['bundles']['pledge_action'] = array(
+    'controller class' => 'SignatureAnalyticsController',
+  );
+ 
   // Add the signature types to the list of bundles for signatures.
   foreach (signature_type_load() as $type => $info) {
     $entity_info['signature']['bundles'][$type] = array(
@@ -235,24 +255,6 @@ function signature_access($op, $entity, $account, $entity_type) {
  */
 function signature_menu() {
   return array(
-    'admin/config/signature' => array(
-      'title' => 'Action Signatures',
-      'description' => 'Configuraion of signatures on actions (e.g. petitions, pledges)',
-      'position' => 'left',
-      'weight' => 0,
-      'page callback' => 'system_admin_menu_block_page',
-      'access arguments' => array('access administration pages'),
-      'file' => 'system.admin.inc',
-      'file path' => drupal_get_path('module', 'system'),
-    ),
-    'admin/config/signature/settings' => array(
-      'title' => 'Action signature settings',
-      'description' => 'Configure which content types are allowed to collect signatures',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('signature_node_admin_form'),
-      'access callback' => 'user_access',
-      'access arguments' => array('administer signature signature_type'),
-    ),
     'ajax/signature/node' => array(
       'page callback' => 'signature_node_state_callback',
       'type' => MENU_CALLBACK,
@@ -262,31 +264,10 @@ function signature_menu() {
 }
 
 /**
- * Node type configuration form.
+ * Helper function for determining if a node collects signatures.
  */
-function signature_node_admin_form($form, &$form_state) {
-  $options = array();
-  $types = node_type_get_types();
-  foreach ($types as $name => $type) {
-    $options[$name] = $type->name;
-  }
-  $form['signature_node_types'] = array(
-    '#type' => 'checkboxes',
-    '#title' => t('Signature content types'),
-    '#options' => $options,
-    '#default_value' => variable_get('signature_node_types', array()),
-    '#description' => t('Check the content types for which signatures should be enabled'),
-  );
-  $form['#submit'][] = 'signature_node_admin_form_submit';
-  return system_settings_form($form);
-}
-
-/**
- * Node type configuration form submit hander.
- */
-function signature_node_admin_form_submit(&$form, &$form_state) {
-  // Clear all caches so the extra fields will be re-read.
-  drupal_flush_all_caches();
+function signature_node_is_signature_action($node) {
+  return in_array($node->type, array('petition_action', 'pledge_action'));
 }
 
 
@@ -298,12 +279,11 @@ function signature_node_admin_form_submit(&$form, &$form_state) {
 function signature_form_node_form_alter(&$form, &$form_state) {
 
   $node = $form['#node'];
-  $types = variable_get('signature_node_types', array());
-
-  if (isset($types[$node->type]) && $types[$node->type]) {
+  if (signature_node_is_signature_action($node)) {
 
     // Get the field values from the appropriate source.
     $values = signature_node_form_values($form, $form_state);
+    $node->signature_settings_present = TRUE;
 
     $js_path = drupal_get_path('module', 'signature')
       . '/js/signature-vertical-tabs.js';
@@ -362,23 +342,6 @@ function signature_form_node_form_alter(&$form, &$form_state) {
       '#type' => 'date',
       '#default_value' => signature_timestamp_to_date($values->end_date),
     );
-
-    // TODO: Move the signature form heading to the petition action content
-    // type.
-    if ($node->type === 'petition_action') {
-      $form['signature']['signature_heading'] = array(
-        '#title' => t('Form Heading'),
-        '#description' => t('The label to use for the heading of the form.'),
-        '#type' => 'textfield',
-        '#default_value' => $values->heading,
-      );
-    }
-    else {
-      $form['signature']['signature_heading'] = array(
-        '#type' => 'hidden',
-        '#default_value' => $values->heading,
-      );
-    }
 
     $form['signature']['signature_restrictions'] = array(
       '#title' => t('Restrictions note'),
@@ -502,7 +465,6 @@ function signature_node_form_values($form, $form_state) {
       'limit_to_dates' => $form_state['values']['signature_limit_to_dates'],
       'start_date' => $start_date,
       'end_date' => $end_date,
-      'heading' => $form_state['values']['signature_heading'],
       'sign_label' => $form_state['values']['signature_sign_label'],
       'newsletter_opt_ins' => $opt_ins,
       'restrictions' => $form_state['values']['signature_restrictions'],
@@ -514,10 +476,6 @@ function signature_node_form_values($form, $form_state) {
   elseif (isset($node->nid) && $node->nid > 0) {
     // Load the values from the database.
     $settings = entity_load_single('signature_node', $node->nid);
-    // TODO: Move the signature form heading to the content type.
-    if ($node->type !== 'petition_action') {
-      $settings->heading = '';
-    }
   }
 
   if (!$settings) {
@@ -527,15 +485,12 @@ function signature_node_form_values($form, $form_state) {
     // TODO: Move the signature form heading to the content type, add sign
     // label default value field to the signature content types admin page.
     if ($node->type === 'petition_action') {
-      $values['heading'] = 'Sign This Petition';
-      $values['sign_label'] = 'Sign the Petition';
+      $values['sign_label'] = 'Sign Now';
     }
     elseif ($node->type === 'pledge_action') {
-      $values['heading'] = '';
-      $values['sign_label'] = 'Sign the Pledge';
+      $values['sign_label'] = 'Sign Now';
     }
     else {
-      $values['heading'] = '';
       $values['sign_label'] = 'Take Action';
     }
     $settings = entity_create('signature_node', $values);
@@ -568,23 +523,82 @@ function signature_date_to_timestamp($date) {
  */
 function signature_field_extra_fields_alter(&$info) {
 
-  // Add signature progress and signature form extra fields to all of the
-  // selected node types.
-  $types = variable_get('signature_node_types', array());
-  foreach ($types as $type => $enabled) {
-    if ($enabled) {
-      $info['node'][$type]['display']['signature_progress'] = array(
-        'label' => t('Signature Progress'),
-        'description' => t('Signature progress summary.'),
-        'weight' => 0,
-      );
-      $info['node'][$type]['display']['signature_form'] = array(
-        'label' => t('Signature Form'),
-        'description' => t('Form for adding a signature.'),
-        'weight' => 0,
-      );
-    }
+  // Add signature progress and signature form extra fields to node types that
+  // collect signatures.
+  foreach (array('petition_action', 'pledge_action') as $type) {
+    $info['node'][$type]['display']['signature_progress_percent'] = array(
+      'label' => t('Percentage to Goal'),
+      'description' => t('Signature progress as a percentage of the goal.'),
+      'weight' => 0,
+    );
+    $info['node'][$type]['display']['signature_progress_days_left'] = array(
+      'label' => t('Days Left'),
+      'description' => t('Number of days left before signature collection is closed.'),
+      'weight' => 0,
+    );
+    $info['node'][$type]['display']['signature_progress_needed'] = array(
+      'label' => t('Signatures Left'),
+      'description' => t('Number of signatures needed to meet goal.'),
+      'weight' => 0,
+    );
+    $info['node'][$type]['display']['signature_progress_count'] = array(
+      'label' => t('Signature Count'),
+      'description' => t('Number of signatures on the action.'),
+      'weight' => 0,
+    );
+    $info['node'][$type]['display']['signature_progress_goal'] = array(
+      'label' => t('Signature Goal'),
+      'description' => t('Number of signatures and the goal.'),
+      'weight' => 0,
+    );
+    $info['node'][$type]['display']['signature_action_label'] = array(
+      'label' => t('Action Type Label'),
+      'description' => t('Simple label based on the Action Type taxononmy term.'),
+      'weight' => 0,
+    );
+    $info['node'][$type]['display']['signature_call_to_action'] = array(
+      'label' => t('Call To Action'),
+      'description' => t('Call to action button linking to the full page action.'),
+      'weight' => 0,
+    );
+    $info['node'][$type]['display']['signature_action_taken'] = array(
+      'label' => t('Action Taken Message'),
+      'description' => t('Message specific to action type describing the action taken.'),
+      'weight' => 0,
+    );
+    $info['node'][$type]['display']['signature_form_ajax'] = array(
+      'label' => t('AJAX Signature Form'),
+      'description' => t('Form for adding a signature that uses AJAX for inline procressing.'),
+      'weight' => 0,
+    );
+    $info['node'][$type]['display']['signature_form_redirect'] = array(
+      'label' => t('Redirect Signature Form'),
+      'description' => t('Form for adding a signature that redirects to a thank you page.'),
+      'weight' => 0,
+    );
   }
+
+  // The old action type needs the days left and call to action extra fields.
+  $info['node']['action']['display']['signature_progress_days_left'] = array(
+    'label' => t('Days Left'),
+    'description' => t('Number of days left before the action is closed.'),
+    'weight' => 0,
+  );
+  $info['node']['action']['display']['signature_action_label'] = array(
+    'label' => t('Action Type Label'),
+    'description' => t('Simple label based on the Action Type taxononmy term.'),
+    'weight' => 0,
+  );
+  $info['node']['action']['display']['signature_call_to_action'] = array(
+    'label' => t('Call To Action'),
+    'description' => t('Call to action button linking to the full page action.'),
+    'weight' => 0,
+  );
+  $info['node']['action']['display']['signature_action_taken'] = array(
+    'label' => t('Action Taken Message'),
+    'description' => t('Message specific to action type describing the action taken.'),
+    'weight' => 0,
+  );
 }
 
 /**
@@ -592,58 +606,60 @@ function signature_field_extra_fields_alter(&$info) {
  */
 function signature_save_node_settings($node) {
 
-  $types = variable_get('signature_node_types', array());
-  if (isset($types[$node->type]) && $types[$node->type]) {
-
-    // Get any existing settings for the node.
-    $settings = entity_load_single('signature_node', $node->nid);
-    if ($settings === FALSE) {
-      $settings = entity_create('signature_node', array('nid' => $node->nid));
-    }
-
-    $opt_ins = array();
-    for ($num = 0; $num < 5; $num += 1) {
-      $label_name = sprintf('signature_newsletter_label_%d', $num);
-      $group_name = sprintf('signature_newsletter_group_%d', $num);
-      $opt_ins[] = array(
-        'label' => isset($node->{$label_name}) ? $node->{$label_name} : '',
-        'group' => isset($node->{$group_name}) ? $node->{$group_name} : '',
-      );
-    }
-
-    // Update the settins for the node.
-    $settings->type = $node->signature_type;
-    $settings->goal = $node->signature_goal;
-    $settings->bsd_form = $node->signature_bsd_form;
-    $settings->limit_to_dates = $node->signature_limit_to_dates;
-    $settings->start_date = signature_date_to_timestamp($node->signature_start_date);
-    $settings->end_date = signature_date_to_timestamp($node->signature_end_date);
-    $settings->heading = $node->signature_heading;
-    $settings->sign_label = $node->signature_sign_label;
-    $settings->newsletter_opt_ins = $opt_ins;
-    $settings->restrictions = $node->signature_restrictions;
-    $settings->terms_of_use = $node->signature_terms_of_use;
-    $settings->display_disclaimer = $node->signature_display_disclaimer;
-
-    // Save the settings for the node.
-    entity_save('signature_node', $settings);
-
-    // Calculate and save the signature field mapping.
-    signature_save_node_field_mapping($node);
+  // Get any existing settings for the node.
+  $settings = entity_load_single('signature_node', $node->nid);
+  if ($settings === FALSE) {
+    $settings = entity_create('signature_node', array('nid' => $node->nid));
   }
+
+  $opt_ins = array();
+  for ($num = 0; $num < 5; $num += 1) {
+    $label_name = sprintf('signature_newsletter_label_%d', $num);
+    $group_name = sprintf('signature_newsletter_group_%d', $num);
+    $opt_ins[] = array(
+      'label' => isset($node->{$label_name}) ? $node->{$label_name} : '',
+      'group' => isset($node->{$group_name}) ? $node->{$group_name} : '',
+    );
+  }
+
+  // Update the settins for the node.
+  $settings->type = $node->signature_type;
+  $settings->goal = $node->signature_goal;
+  $settings->bsd_form = $node->signature_bsd_form;
+  $settings->limit_to_dates = $node->signature_limit_to_dates;
+  $settings->start_date = signature_date_to_timestamp($node->signature_start_date);
+  $settings->end_date = signature_date_to_timestamp($node->signature_end_date);
+  $settings->sign_label = $node->signature_sign_label;
+  $settings->newsletter_opt_ins = $opt_ins;
+  $settings->restrictions = $node->signature_restrictions;
+  $settings->terms_of_use = $node->signature_terms_of_use;
+  $settings->display_disclaimer = $node->signature_display_disclaimer;
+
+  // Save the settings for the node.
+  entity_save('signature_node', $settings);
+
+  // Calculate and save the signature field mapping.
+  signature_save_node_field_mapping($node);
 }
+
 /**
  * Implements hook_node_insert().
  */
 function signature_node_insert($node) {
-  signature_save_node_settings($node);
+  if (signature_node_is_signature_action($node)
+  && $node->signature_settings_present) {
+    $node->signatures = signature_save_node_settings($node);
+  }
 }
 
 /**
  * Implements hook_node_update().
  */
 function signature_node_update($node) {
-  signature_save_node_settings($node);
+  if (signature_node_is_signature_action($node)
+  && $node->signature_settings_present) {
+    $node->signatures = signature_save_node_settings($node);
+  }
 }
 
 /**
@@ -749,68 +765,75 @@ function signature_save_node_field_mapping($node) {
 }
 
 /**
- * Implements hook_preprocess_node().
+ * Implements hook_preprocess_field().
  */
-function signature_preprocess_node(&$vars) {
-  $node = $vars['node'];
-  $types = variable_get('signature_node_types', array());
-  if (isset($types[$node->type]) && $types[$node->type]) {
-    // Add CSS classes to the node indicating that it has signature collection
-    // enabled, default to the unsigned state so the node page can be cached.
-    $vars['classes_array'] = array_merge($vars['classes_array'], array(
-      'signature-list', "signature-node-unsigned",
-    ));
-    $vars['attributes_array'] += array(
-      'nid' => $node->nid,
-      'id' => 'node-' . (string) $node->nid,
-    );
+function signature_preprocess_field(&$vars) {
+
+  $field_name = $vars['element']['#field_name'];
+  $view_mode = $vars['element']['#view_mode'];
+
+  if ($field_name == 'field_promo_headline' && $view_mode == 'medium_preview') {
+    $node_uri = entity_uri('node', $vars['element']['#object']);
+    foreach ($vars['items'] as $delta => &$item) {
+      $vars['items'][$delta]['#markup']
+        = l($item['#markup'], $node_uri['path'], array('html' => TRUE));
+    }
+  }
+  elseif ($field_name == 'field_group_logo' && $view_mode == 'action_summary') {
+    $node = $vars['element']['#object'];
+    $link = reset(field_get_items('node', $node, 'field_group_url'));
+    if ($link !== FALSE) {
+      foreach ($vars['items'] as $delta => &$item) {
+        $vars['items'][$delta]['#path'] = array(
+          'path' => $link['url'],
+          'options' => array('attributes' => $link['attributes']),
+        );
+      }
+    }
+  }
+  elseif ($field_name == 'field_action_type') {
+    $object = $vars['element']['#object'];
+    $type = $vars['element']['#entity_type'];
+    $item = reset(field_get_items($type, $object, 'field_action_type'));
+    if ($item !== FALSE && isset($item['taxonomy_term'])) {
+      $action_type_class = 'action-type ' . $item['taxonomy_term']->name;
+      $vars['classes_array'][] = drupal_html_class($action_type_class);
+    }
   }
 }
 
 /**
- * Implements hook_node_view_alter().
+ * Implements hook_preprocess_node().
  */
-function signature_node_view_alter(&$build) {
+function signature_preprocess_node(&$vars) {
+  $node = $vars['node'];
+  $view_mode = $vars['view_mode'];
+  $extra_classes = array(
+    drupal_html_class('view-mode-' . $view_mode),
+  );
+  if (signature_node_is_signature_action($node)) {
+    // Add CSS classes to the node indicating that it has signature collection
+    // enabled, default to the unsigned state so the node page can be cached.
+    $extra_classes[] = 'signature-list';
+    $extra_classes[] = 'signature-node-unsigned';
+  }
+  if (in_array($node->type, array('action', 'petition_action', 'pledge_action'))) {
+    $extra_classes[] = 'action-content-type';
+    $extra_classes[] = 'node-' . (string) $node->nid;
+    $vars['attributes_array'] += array('nid' => $node->nid);
+  }
+  $vars['classes_array'] = array_merge($vars['classes_array'], $extra_classes);
+  if ($view_mode === 'medium_preview' && $node->type === 'action') {
+    $vars['theme_hook_suggestions'][] = 'node__action__medium_preview';
+  }
+}
 
-  $node = $build['#node'];
+/**
+ * Implements hook_node_view().
+ */
+function signature_node_view($node, $view_mode, $langcode) {
 
-  $types = variable_get('signature_node_types', array());
-  if (isset($types[$node->type]) && $types[$node->type]) {
-
-    $css_path = drupal_get_path('module', 'signature')
-      . '/css/signature-states.css';
-    drupal_add_css($css_path, array('type' => 'file'));
-
-    $css_path = drupal_get_path('module', 'signature')
-      . '/css/signature-embedded.css';
-    drupal_add_css($css_path, array('type' => 'file'));
-
-    $js_path = drupal_get_path('module', 'signature')
-      . '/js/signature-states.js';
-    drupal_add_js($js_path, array('type' => 'file'));
-
-    $js_path = drupal_get_path('module', 'signature')
-      . '/js/signature-metrics.js';
-    drupal_add_js($js_path, array('type' => 'file'));
-
-    $js_path = drupal_get_path('module', 'signature')
-      . '/js/signature-read-more.js';
-    drupal_add_js($js_path, array('type' => 'file'));
-
-    $js_path = drupal_get_path('module', 'signature')
-      . '/js/signature-address.js';
-    drupal_add_js($js_path, array('type' => 'file'));
-
-    $css_path = drupal_get_path('module', 'signature')
-      . '/css/signature-address.css';
-    drupal_add_css($css_path, array('type' => 'file'));
-
-    $js_path = drupal_get_path('module', 'signature')
-      . '/js/jquery.qtip.min.js';
-    drupal_add_js($js_path, array('type' => 'file'));
-
-    // Add the cookie library for the tracking event latch.
-    drupal_add_library('system', 'jquery.cookie');
+  if (signature_node_is_signature_action($node)) {
 
     $settings = entity_load_single('signature_node', $node->nid);
     if ($settings !== FALSE && !empty($settings->type)) {
@@ -819,41 +842,103 @@ function signature_node_view_alter(&$build) {
         'type' => $settings->type,
         'nid' => $node->nid,
       ));
-      $build['signature_form'] = drupal_get_form(
-        "signature_{$settings->type}_form", $signature, $node);
+      $node->content['signature_form_redirect'] = drupal_get_form(
+        "signature_{$settings->type}_form", $signature, $node, FALSE);
+      $node->content['signature_form_ajax'] = drupal_get_form(
+        "signature_{$settings->type}_form", $signature, $node, TRUE);
 
-      $variables = signature_node_progress_variables($settings);
-      $build['signature_progress'] = array(
-        '#type' => 'markup',
-        '#markup' => theme('signature_progress', $variables),
-      );   
+      $action_type = signature_node_action_type_variables($node);
+      $progress = signature_node_progress_variables($settings);
+
+      $node->content['signature_action_label'] = array(
+        '#theme' => 'signature_action_label',
+        '#node' => $node,
+        '#action_type' => $action_type,
+        '#progress' => $progress,
+        '#view_mode' => $view_mode,
+      );
+      $node->content['signature_progress_percent'] = array(
+        '#theme' => 'signature_progress_percent',
+        '#node' => $node,
+        '#action_type' => $action_type,
+        '#progress' => $progress,
+        '#view_mode' => $view_mode,
+      );
+      $node->content['signature_progress_days_left'] = array(
+        '#theme' => 'signature_progress_days_left',
+        '#node' => $node,
+        '#action_type' => $action_type,
+        '#progress' => $progress,
+        '#view_mode' => $view_mode,
+      );
+      $node->content['signature_progress_needed'] = array(
+        '#theme' => 'signature_progress_needed',
+        '#node' => $node,
+        '#action_type' => $action_type,
+        '#progress' => $progress,
+        '#view_mode' => $view_mode,
+      );
+      $node->content['signature_progress_count'] = array(
+        '#theme' => 'signature_progress_count',
+        '#node' => $node,
+        '#action_type' => $action_type,
+        '#progress' => $progress,
+        '#view_mode' => $view_mode,
+      );
+      $node->content['signature_progress_goal'] = array(
+        '#theme' => 'signature_progress_goal',
+        '#node' => $node,
+        '#action_type' => $action_type,
+        '#progress' => $progress,
+        '#view_mode' => $view_mode,
+      );
+      $node->content['signature_call_to_action'] = array(
+        '#theme' => 'signature_call_to_action',
+        '#node' => $node,
+        '#action_type' => $action_type,
+        '#progress' => $progress,
+        '#view_mode' => $view_mode,
+      );
+      $node->content['signature_action_taken'] = array(
+        '#theme' => 'signature_action_taken',
+        '#node' => $node,
+        '#action_type' => $action_type,
+        '#view_mode' => $view_mode,
+      );
     }
   }
-}
-
-/**
- * Implements hook_module_implements_alter().
- */
-function signature_module_implements_alter(&$implementations, $hook) {
-  if ($hook == 'node_view_alter') {
-    // Move this module to the end of the list.
-    $group = $implementations['signature'];
-    unset($implementations['signature']);
-    $implementations['signature'] = $group;
+  elseif ($node->type === 'action') {
+    $action_type = signature_node_action_type_variables($node);
+    $node->content['signature_action_label'] = array(
+      '#theme' => 'signature_action_label',
+      '#node' => $node,
+      '#action_type' => $action_type,
+      '#progress' => $progress,
+      '#view_mode' => $view_mode,
+    );
+    $node->content['signature_progress_days_left'] = array(
+      '#theme' => 'signature_progress_days_left',
+      '#node' => $node,
+      '#action_type' => $action_type,
+      '#progress' => array(
+        'days_left' => 0,
+        'state' => 'unsigned',
+      ),
+      '#view_mode' => $view_mode,
+    );
+    $node->content['signature_call_to_action'] = array(
+      '#theme' => 'signature_call_to_action',
+      '#node' => $node,
+      '#action_type' => $action_type,
+      '#view_mode' => $view_mode,
+    );
+    $node->content['signature_action_taken'] = array(
+      '#theme' => 'signature_action_taken',
+      '#node' => $node,
+      '#action_type' => $action_type,
+      '#view_mode' => $view_mode,
+    );
   }
-}
-
-function signature_node_state_callback($nids) {
-  $variables = array();
-  foreach (explode(',', $nids) as $nid) {
-    if (preg_match('/^[0-9]+$/', $nid)) {
-      $settings = entity_load_single('signature_node', $nid);
-      if ($settings != FALSE && !empty($settings->type)) {
-        $variables[$nid] = signature_node_progress_variables($settings);
-      }
-    }
-  }
-  return drupal_json_output($variables);
 }
 
 
@@ -948,9 +1033,10 @@ function signature_field_extra_fields() {
 /**
  * Signature form callback.
  */
-function signature_base_form($form, &$form_state, $signature, $node) {
+function signature_base_form($form, &$form_state, $signature, $node, $ajax) {
 
   $form['#signature_node'] = $node;
+  $form['#use_ajax'] = $ajax;
 
   $form_state['signature'] = $signature;
 
@@ -962,6 +1048,7 @@ function signature_base_form($form, &$form_state, $signature, $node) {
 
   // Translate the signature type to a CSS class name prefix.
   $css_prefix = str_replace('_', '-', $signature->type);
+  $ajax_suffix = $ajax ? '-ajax' : '-redirect';
 
   if (!isset($form['#attribues'])) {
     $form['#attributes'] = array();
@@ -972,23 +1059,15 @@ function signature_base_form($form, &$form_state, $signature, $node) {
   $form['#attributes']['class'] += array(
     'signature-form',
     $css_prefix . '-form',
+    $css_prefix . '-form' . $ajax_suffix,
   );
 
-  // Add the signature heading.
-  $form['heading'] = array(
-    '#type' => 'markup',
-    '#prefix' => '<h1 class="' . $css_prefix . '-heading signature-heading">',
-    '#markup' => $settings->heading,
-    '#suffix' => '</h1>',
-    '#weight' => -20,
-  );
-
-  // Add the email field.
+  // Add the email field. The mail field in the user table is 254 characters.
   $form['email'] = array(
     '#title' => t('Email'),
     '#type' => 'textfield',
     '#size' => 40,
-    '#maxlength' => 254, // The mail field in the user table is 254 characters.
+    '#maxlength' => 254,
     '#required' => TRUE,
     '#attributes' => array(
       'class' => array(
@@ -1035,8 +1114,6 @@ function signature_base_form($form, &$form_state, $signature, $node) {
 
   // Add the public display disclaimer.
   if (!empty($settings->display_disclaimer)) {
-    $js_path = drupal_get_path('module', 'signature')
-      . '/js/signature-display-disclaimer.js';
     $form['signature_display_disclaimer'] = array(
       '#type' => 'container',
       '#attributes' => array(
@@ -1049,7 +1126,6 @@ function signature_base_form($form, &$form_state, $signature, $node) {
         '#type' => 'markup',
         '#markup' => $settings->display_disclaimer,
       ),
-      '#attached' => array('js' => array('display-disclaimer' => $js_path)),
     );
   }
 
@@ -1097,11 +1173,13 @@ function signature_base_form($form, &$form_state, $signature, $node) {
     '#attributes' => array(
       'class' => array('signature-sign-button'),
     ),
-    '#ajax' => array(
+  );
+  if ($ajax) {
+    $form['actions']['submit']['#ajax'] = array(
       'callback' => 'signature_base_form_callback',
       'wrapper' => $wrapper,
-    ),
-  );
+    );
+  }
 
   return $form;
 }
@@ -1119,8 +1197,12 @@ function signature_form_signature_base_form_alter(&$form, &$form_state) {
     array('metatag_metatags_form_submit'));
 }
 
+/**
+ * AJAX callback for signature forms on embedded actions.
+ */
 function signature_base_form_callback($form, $form_state) {
 
+  // Standard form submission stuff.
   $commands = array();
   $commands[] = ajax_command_replace(NULL, drupal_render($form));
   $commands[] = ajax_command_prepend(NULL, theme('status_messages'));
@@ -1129,30 +1211,28 @@ function signature_base_form_callback($form, $form_state) {
   if (empty($errors)) {
 
     $node = $form['#signature_node'];
-    $node_selector = "#node-" . $node->nid;
-    $settings = entity_load_single('signature_node', $node->nid);
-    $variables = signature_node_progress_variables($settings);
-    $variables['state'] = 'thank-you';
+    $analytics = tp_analytics_get_controller('node', $node->type);
 
-    $commands[] = ajax_command_invoke($node_selector, 'trigger', array(
-      'signature_form_submit', array(
-        check_plain($node->title),
-        $node->type,
-      ),
-    ));
-    $newsletter_signups = array();
+    // Add the signature form submit and action taken events.
+    $opt_ins = array();
     for ($num = 0; $num < 5; $num += 1) {
-      if (!empty($form_state['values']["newsletter_{$num}"])) {
-        $commands[] = ajax_command_invoke($node_selector, 'trigger', array(
-          'newsletter_signup',
-          check_plain($settings->newsletter_opt_ins[$num]['group']),
-        ));
-      }
+      $opt_ins[$num] = !empty($form_state['values']["newsletter_{$num}"]);
     }
+    $events = $analytics->getSignedEvents($node, 'embedaction', $opt_ins);
+    foreach ($events as $event) {
+      $commands[] = $analytics->getFireEventCommand($event);
+    }
+
+    $data = signature_node_state_data($node);
+    $data['progress']['state'] = 'thankyou';
     $commands[] = ajax_command_settings(array(
-      'signature' => array(
-        'progress' => array($node->nid => $variables),
-        'submitted_by' => $form_state['values']['email'],
+     'signature' => array(
+       'submission' => array(
+         'result' => array($node->nid => $data),
+        ),
+      ),
+      'addthis' => array(
+        'email' => $form_state['values']['email'],
       ),
     ), TRUE);
   }
@@ -1207,13 +1287,30 @@ function signature_base_form_submit($form, &$form_state) {
   if (empty($results['signature'])) {
     $signature->save();
     signature_send_signup($signature);
+    $action_id = $signature->id;
+  }
+  else {
+    $action_id = reset(array_keys($results['signature']));
   }
 
   // Set the node signed cookie.
   $cookie = "{$signature->type}_{$signature->nid}_signed";
   setcookie($cookie, 1, time() + (86400 * 365), '/');
+
+  // Redirect to the thank you page if no using AJAX.
+  if (!$form['#use_ajax']) {
+    $thank_you_page = variable_get('takeaction_thank_you_page', '');
+    if (!empty($thank_you_page)) {
+      drupal_goto($thank_you_page, array(
+        'query' => array('action' => $action_id),
+      ));
+    }
+  }
 }
 
+/**
+ * Sends a signature to BSD as a signup.
+ */
 function signature_send_signup($signature) {
 
   // Get the node specific settings.
@@ -1305,27 +1402,106 @@ function signature_send_signup($signature) {
 }
 
 
-/* Signature Form
+/* Signature Blocks
+ ******************************************************************************/
+/**
+ * Implements hook_block_info().
+ */
+function signature_block_info() {
+  return array(
+    'summary' => array(
+      'info' => 'Action Signature Summary',
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function signature_block_view($delta = '') {
+  $block = array();
+  if ($delta === 'summary') {
+    $node = menu_get_object();
+    if (!empty($node)) {
+      $block['subject'] = t('About This Action');
+      $block['content'] = node_view($node, 'action_summary');
+    }
+  }
+  return $block;
+}
+
+
+/* Signature Theming
  ******************************************************************************/
 /**
  * Implements hook_theme().
  */
 function signature_theme() {
   return array(
-    'signature_progress' => array(
+    'signature_progress_percent' => array(
       'variables' => array(
-        'id' => NULL,
-        'bar' => NULL,
-        'complete_classes' => NULL,
-        'percent' => NULL,
-        'count_classes' => NULL,
+        'node' => NULL,
+        'action_type' => NULL,
         'progress' => NULL,
-        'count' => NULL,
-        'goal' => NULL,
-        'days_left' => NULL,
-        'state' => NULL,
+        'view_mode' => NULL,
       ),
-      'template' => 'theme/progress',
+    ),
+    'signature_progress_days_left' => array(
+      'variables' => array(
+        'node' => NULL,
+        'action_type' => NULL,
+        'progress' => NULL,
+        'view_mode' => NULL,
+      ),
+    ),
+    'signature_progress_needed' => array(
+      'variables' => array(
+        'node' => NULL,
+        'action_type' => NULL,
+        'progress' => NULL,
+        'view_mode' => NULL,
+      ),
+    ),
+    'signature_progress_count' => array(
+      'variables' => array(
+        'node' => NULL,
+        'action_type' => NULL,
+        'progress' => NULL,
+        'view_mode' => NULL,
+      ),
+    ),
+    'signature_progress_goal' => array(
+      'variables' => array(
+        'node' => NULL,
+        'action_type' => NULL,
+        'progress' => NULL,
+        'view_mode' => NULL,
+      ),
+    ),
+    'signature_action_label' => array(
+      'variables' => array(
+        'node' => NULL,
+        'action_type' => NULL,
+        'progress' => NULL,
+        'view_mode' => NULL,
+      ),
+    ),
+    'signature_call_to_action' => array(
+      'variables' => array(
+        'node' => NULL,
+        'action_type' => NULL,
+        'progress' => NULL,
+        'view_mode' => NULL,
+      ),
+    ),
+    'signature_action_taken' => array(
+      'variables' => array(
+        'node' => NULL,
+        'action_type' => NULL,
+        'progress' => NULL,
+        'view_mode' => NULL,
+      ),
     ),
   );
 }
@@ -1337,171 +1513,289 @@ function signature_theme() {
  *   the progress as an array of values for using in a theme template and the
  *   ajax callback.
  */
-function signature_node_progress_variables($settings) {
-  global $user;
-
-  if ($settings->goal > 0) {
-    $percent = ((float) $settings->count / (float) ($settings->goal)) * 100.0;
-  }
-  else {
-    $percent = 0.0;
-  }
-
-  $progress_bar_filename = sprintf('progress_bar_%03d.png',
-    floor($percent > 100 ? 100 : $percent));
-
-  $percent_as_unit = floor($percent);
-  $percent_as_tenth = floor($percent / 10.0);
-  $percent_as_half = $percent < 50.0 ? 'first-half' : 'second-half';
-  $complete_classes = array(
-    "signature-progress-complete-{$percent_as_unit}",
-    "signature-progress-complete-tenth-{$percent_as_tenth}",
-    "signature-progress-complete-{$percent_as_half}",
-  );
-  if ($settings->count >= $settings->goal) {
-    $complete_classes[] = 'signature-progress-complete-goal';
-  }
-
-  $count_classes = array(
-    "signature-progress-count-{$settings->count}",
-  );
-  if ($settings->count >= $settings->goal) {
-    $count_classes[] = 'signature-progress-count-goal';
-  }
-
-  $days_left = 0;
-  $now = getdate();
-  $now_seconds = mktime(0, 0, 0, $now['mon'], $now['mday'], $now['year']);
-  $seconds_left = $settings->end_date - $now_seconds;
-  if ($seconds_left >= 0) {
-    $days_left = floor((float) $seconds_left / (float) (24 * 60 * 60)) + 1;
-  }
-
-  if ($days_left > 0 && $settings->limit_to_dates != 0) {
-    $format = variable_get('signature_progress_dates_format',
-      '<span class="number">!count</span> signatures of <span class="number">!goal</span> goal, !days left');
-    $progress = t($format, array(
-      '!count' => number_format($settings->count),
-      '!goal' => number_format($settings->goal),
-      '!days' => format_plural($days_left, '<span class="number">1</span> day',
-        '<span class="number">@count</span> days'),
-    ));
-  }
-  else {
-    $format = variable_get('signature_progress_no_dates_format',
-      '<span class="number">!count</span> signatures of <span class="number">!goal</span> goal');
-    $progress = t($format, array(
-      '!count' => number_format($settings->count),
-      '!goal' => number_format($settings->goal),
-    ));
-  }
-
-  // The signature collection state is determined by wether the user is logged
-  // in and has an existing signature, unless signature collection is closed.
-  // $cookie = "{$settings->type}_{$settings->nid}_signed";
-  // $state = isset($_COOKIE[$cookie]) ? 'signed' : 'unsigned';
-  $state = 'unsigned';
-  if (!empty($user->mail)) {
-    $result = db_select('signature', 's')
-      ->fields('s')
-      ->condition('email', $user->mail, '=')
-      ->condition('nid', $settings->nid, '=')
-      ->execute();
-    if ($result->rowCount() > 0) {
-      $state = 'signed';
-    }
-  }
-  if ($days_left == 0 && $settings->limit_to_dates != 0) {
-    $state = 'closed';
-  }
-
-  $decimals = $percent < 10.0 ? 1 : 0;
-  return array(
-    'title' => check_plain($settings->title),
-    'type' => $settings->node_type,
-    'view_latch' => "signature_form_viewed_{$settings->nid}",
-    'summary_id' => "signature-progress-summary-{$settings->nid}",
-    'bar' => '/' . implode('/', array(
-      drupal_get_path('module', 'signature'),
-      'images',
-      'progress',
-      'takepart',
-      $progress_bar_filename,
-    )),
-    'complete_classes' => implode(' ', $complete_classes),
-    'percent' => number_format($percent, $decimals),
-    'count_classes' => implode(' ', $count_classes),
-    'progress' => $progress,
-    'count' => $settings->count,
-    'goal' => $settings->goal,
-    'days_left' => $days_left,
-    'state' => $state,
-  );
+function signature_node_progress_variables($entity) {
+  $controller = entity_get_controller('signature_node');
+  return $controller->progressVariables($entity);
 }
 
 /**
- * Implements hook_block_info().
+ * Helper function for retrieving the action type specific labels.
  */
-function signature_block_info() {
+function signature_node_action_type_variables($node) {
+  $variables = array();
+  $defaults = array(
+    'action_type_label' => t('Action'),
+    'action_open_label' => '',
+    'call_to_action' => t('Take Action'),
+    'action_taken' => '',
+    'units_single' => '',
+    'units_plural' => '',
+  );
+  $action_type_items = field_get_items('node', $node, 'field_action_type');
+  if (!empty($action_type_items)) {
+    $action_type = reset($action_type_items);
+    $term = taxonomy_term_load($action_type['tid']);
+    foreach ($defaults as $name => $default) {
+      $field_items = field_get_items('taxonomy_term', $term, 'field_' . $name);
+      if (!empty($field_items)) {
+        $item = reset($field_items);
+        $variables[$name] = $item['safe_value'];
+      }
+      else {
+        $variables[$name] = $default;
+      }
+    }
+  }
+  return $variables;
+}
+
+/**
+ * Progress percent theme function.
+ */
+function theme_signature_progress_percent($variables) {
+  $progress = $variables['progress'];
+  $classes = implode(' ', $progress['complete_classes']);
+  $output = '<div class="signature-progress-percent ' . $classes . '">';
+  $output .= '<span class="percentage">';
+  $output .= number_format($progress['percent'], $progress['decimals']);
+  $output .= '<span class="sign">%</span>';
+  $output .= '</span>';
+  $output .= ' <span class="complete">Complete</span>';
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Progress days left theme function.
+ */
+function theme_signature_progress_days_left($variables) {
+  $action_type = $variables['action_type'];
+  $progress = $variables['progress'];
+  if ($progress['days_left']) {
+    $days_left = format_plural($progress['days_left'],
+      '<span class="count">1</span> <span class="units">Day Left</span>',
+      '<span class="count">@count</span> <span class="units">Days Left</span>');
+    $classes = 'limited';
+  }
+  elseif ($progress['state'] === 'closed') {
+    $days_left = '<span class="state">' . t('Closed') . '</span>';
+    $classes = 'closed';
+  }
+  else {
+    $days_left = '<span class="state">' . $action_type['action_open_label'] . '</span>';
+    $classes = 'ongoing';
+  }
+  $output = '<div class="signature-progress-days-left ' . $classes . '">';
+  $output .= $days_left;
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Progress signatures needed theme function.
+ */
+function theme_signature_progress_needed($variables) {
+  $action_type = $variables['action_type'];
+  $progress = $variables['progress'];
+  $classes = implode(' ', $progress['count_classes']);
+  $units = array(
+    '@unit' => $action_type['units_single'],
+    '@units' => $action_type['units_plural'],
+    '@commafied' => number_format($progress['needed']),
+  );
+  $needed = format_plural($progress['needed'],
+    '<span class="count">1</span> <span class="units">more @unit needed to hit the goal!</span>',
+    '<span class="count">@commafied</span> <span class="units">more @units needed to hit the goal!</span>',
+    $units);
+  $output = '<div class="signature-progress-needed ' . $classes . '">';
+  $output .= $needed;
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Progress signature count theme function.
+ */
+function theme_signature_progress_count($variables) {
+  $action_type = $variables['action_type'];
+  $progress = $variables['progress'];
+  $classes = implode(' ', $progress['count_classes']);
+  $units = array(
+    '@unit' => $action_type['units_single'],
+    '@units' => $action_type['units_plural'],
+    '@commafied' => number_format($progress['count']),
+  );
+  $count = format_plural($progress['count'],
+    '<span class="count">1</span> <span class="units">@unit</span>',
+    '<span class="coutn">@commafied</span> <span class="units">@units</span>',
+    $units);
+  $output = '<div class="signature-progress-count ' . $classes . '">';
+  $output .= $count;
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Progress count towards goal theme function.
+ */
+function theme_signature_progress_goal($variables) {
+  $action_type = $variables['action_type'];
+  $progress = $variables['progress'];
+  $classes = implode(' ', $progress['count_classes']);
+  $units = array(
+    '@unit' => $action_type['units_single'],
+    '@units' => $action_type['units_plural'],
+    '@commafied' => number_format($progress['count']),
+  );
+  $count = format_plural($progress['count'],
+    '<span class="count">1</span> <span class="units">@unit</span>',
+    '<span class="count">@commafied</span> <span class="units">@units</span>', $units);
+  $output = '<div class="signature-progress-goal ' . $classes . '">';
+  $output .= $count;
+  $output .= ' <span class="for-label">for</span>';
+  $output .= ' <span class="goal">' . number_format($progress['goal']) . '</span>';
+  $output .= ' <span class="goal-label">goal</span>';
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Action type label theme function.
+ */
+function theme_signature_action_label($variables) {
+  $action_type = $variables['action_type'];
+  $output = '<div class="signature-action-type-label">';
+  $output .= '<h3>' . $action_type['action_type_label'] . '</h3>';
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Call to action button theme function.
+ */
+function theme_signature_call_to_action($variables) {
+  $node = $variables['node'];
+  $action_type = $variables['action_type'];
+  $node_uri = entity_uri('node', $node);
+  $label = check_plain($action_type['call_to_action'])
+  . '<div class="arrow"></div>';
+  $output = '<div class="signature-call-to-action">';
+  $output .= l($label, $node_uri['path'], array('html' => TRUE));
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Action taken message theme function.
+ */
+function theme_signature_action_taken($variables) {
+  $node = $variables['node'];
+  $action_type = $variables['action_type'];
+  $output = '<div class="signature-action-taken">';
+  $output .= '<span class="salutation">' . t("You've") . '</span>';
+  $output .= ' <span class="action">' . $action_type['action_taken'] . '</span>';
+  $output .= ' <span class="title">' . check_plain($node->title) . '</span>';
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function signature_field_formatter_info() {
   return array(
-    'headers' => array(
-      'info' => 'Standard Petition Header Files',
+    'signature_action_type_label' => array(
+      'label' => t('Action Type Label'),
+      'field types' => array('taxonomy_term_reference'),
     ),
   );
 }
 
 /**
- * Implements hook_block_view().
+ * Implements hook_field_formatter_view().
  */
-function signature_block_view($delta = '') {
-
-  $css_path = drupal_get_path('module', 'signature')
-    . '/css/signature-states.css';
-  drupal_add_css($css_path, array('type' => 'file'));
-
-  $js_path = drupal_get_path('module', 'signature')
-    . '/js/signature-states.js';
-  drupal_add_js($js_path, array('type' => 'file'));
-
-  $js_path = drupal_get_path('module', 'signature')
-    . '/js/signature-metrics.js';
-  drupal_add_js($js_path, array('type' => 'file'));
-
-  $js_path = drupal_get_path('module', 'signature')
-    . '/js/signature-read-more.js';
-  drupal_add_js($js_path, array('type' => 'file'));
-
-  $css_path = drupal_get_path('module', 'signature')
-    . '/css/signature-embedded.css';
-  drupal_add_css($css_path, array('type' => 'file'));
-
-  // Add the cookie library for the tracking event latch.
-  drupal_add_library('system', 'jquery.cookie');
-  drupal_add_library('system', 'jquery.once');
-  drupal_add_library('system', 'drupal.ajax');
-  drupal_add_library('system', 'drupal.collapse');
-  drupal_add_library('system', 'drupal.form');
-
-  drupal_add_library('field_group', 'horizontal-tabs');
-  $js_path = drupal_get_path('module', 'field_group')
-    . '/field_group.js';
-  drupal_add_js($js_path, array('group' => JS_DEFAULT, 'type' => 'file'));
-  $css_path = drupal_get_path('module', 'field_group')
-    . '/css/field_group.css';
-  drupal_add_css($css_path, array('type' => 'file'));
-  $css_path = drupal_get_path('module', 'field_group')
-    . '/css/field_group.field_ui.css';
-  drupal_add_css($css_path, array('type' => 'file'));
-
-  $js_path = drupal_get_path('module', 'embedaction')
-    . '/js/embedaction.js';
-  drupal_add_js($js_path, array('type' => 'file'));
-
-  // $js_path = drupal_get_path('module', 'takepart_addthis')
-  // . '/js/share-bar-field.js';
-  // drupal_add_js($js_path, array('type' => 'file'));
-  return array(
-    'subject' => 'Standard Petition Header Files',
-    'content' => '<p style="display:none;">This block adds the JS and CSS files needed for generic petitions.</p>',
+function signature_field_formatter_view($entity_type, $entity, $field,
+  $instance, $langcode, $items, $display) {
+  $mapping = array(
+    'Petition' => t('Petition'),
+    'Pledge' => t('Pledge'),
+    'Contribution' => t('Donation'),
+    'Donation' => t('Donation'),
+    'Awareness' => t('Awareness'),
   );
+  $element = array();
+  if ($display['type'] === 'signature_action_type_label') {
+    foreach ($items as $delta => $item) {
+      $name = ($item['tid'] != 'autocreate' ? $item['taxonomy_term']->name : $item['name']);
+      // Remap the label
+      $label = check_plain($name);
+      $element[$delta] = array(
+        '#markup' => isset($mapping[$label]) ? $mapping[$label] : t('Awareness'),
+      );
+    }
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_prepare_view().
+ */
+function signature_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+  taxonomy_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, $items, $displays);
+}
+
+
+/* Signature AJAX based state management.
+ ******************************************************************************/
+/**
+ * Signature enabled node state callback.
+ */
+function signature_node_state_data($node) {
+
+  $data = array(
+    'nid' => $node->nid,
+    'type' => $node->type,
+    'title' => check_plain($node->title),
+    'progress' => array(),
+    'updates' => array(),
+  );
+  $settings = entity_load_single('signature_node', $node->nid);
+  if ($settings !== FALSE) {
+
+    $data['progress'] = signature_node_progress_variables($settings);
+
+    $fields = array(
+      '.signature-progress-percent' => 'signature_progress_percent',
+      '.signature-progress-days-left' => 'signature_progress_days_left',
+      '.signature-progress-needed' => 'signature_progress_needed',
+      '.signature-progress-count' => 'signature_progress_count',
+      '.signature-progress-goal' => 'signature_progress_goal',
+    );
+    $variables = array(
+      'node' => $node,
+      'action_type' => signature_node_action_type_variables($node),
+      'progress' => $data['progress'],
+    );
+    $data['updates'] = array();
+    foreach ($fields as $class => $hook) {
+      $data['updates'][$class] = theme($hook, $variables);
+    }
+  }
+  return $data;
+}
+
+/**
+ * Signature node progress and state AJAX callback.
+ */
+function signature_node_state_callback($nids) {
+  $state = array();
+  foreach (explode(',', $nids) as $nid) {
+    if (preg_match('/^[0-9]+$/', $nid)) {
+      $node = node_load($nid);
+      if ($node !== FALSE) {
+        $state[$nid] = signature_node_state_data($node);
+      }
+    }
+  }
+  return drupal_json_output($state);
 }

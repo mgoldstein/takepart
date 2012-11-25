@@ -44,7 +44,7 @@ function drush_takeaction_feed_tab_rebuild_feed($feed = NULL) {
       ->fetchAllKeyed();
     foreach ($nodes as $nid => $type) {
       $node = node_load($nid);
-      takeaction_feed_node_update($node);
+      takeaction_feed_entity_update($node, 'node');
       $counts[$type] += 1;
     }
     drush_log(dt('!total action items rebuilt', array(

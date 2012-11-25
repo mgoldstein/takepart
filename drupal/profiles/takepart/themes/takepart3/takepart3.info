@@ -1,4 +1,3 @@
-
 name = TakePart 3.0 Theme
 description = The TakePart theme
 core = 7.x
@@ -9,28 +8,30 @@ stylesheets[all][] = css/typeface.css
 stylesheets-conditional[IE][all][] = css/typeface_ie.css
 stylesheets[all][] = css/legacy.css
 stylesheets[all][] = css/style.css
-stylesheets[all][] = css/style_temp.css
 ; stylesheets[all][] = css/style2.css.less
 stylesheets-conditional[lte IE 7][all][] = css/ie7.css
 
-stylesheets[all][] = css/sharebar.css
 stylesheets[all][] = css/tastemakers/tastemakers.css
 stylesheets[all][] = css/tastemakers/venue.css
 stylesheets[all][] = css/tastemakers/city.css
 stylesheets[all][] = css/tastemakers/assets.css
 stylesheets[all][] = css/tastemakers/nationwide.css
 
+stylesheets[all][] = css/embedaction.css
+stylesheets[all][] = css/signatures.css
+stylesheets[all][] = css/petitions.css
 stylesheets[all][] = css/pledges.css
+stylesheets[all][] = css/actions.css
 
 ; Javascript
 scripts[] = js/script.js
+scripts[] = js/widgets.js
 
-scripts[] = js/horizontal-tabs.js
 scripts[] = js/tastemakers/venue.js
 scripts[] = js/tastemakers/city.js
 scripts[] = js/tastemakers/nationwide.js
 
-scripts[] = js/pledges.js
+scripts[] = js/actions.js
 
 features[] = favicon
 

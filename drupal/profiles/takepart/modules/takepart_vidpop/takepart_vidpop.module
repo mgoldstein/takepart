@@ -223,7 +223,7 @@ function takepart_vidpop_preprocess_node(&$vars, $hook) {
  * @param $vars   variables from node preprocessing
  *                $vars['field_video_embedded'] contains the embedded video
  *
- * uses image style tp_embed_video_thumb to create a 420x315drupal_get_path_alias('node/' .  $nid) image
+ * uses image style tp_embed_video_thumb to create a 420x315 image
  *
  */
 function takepart_vidpop_format_preview($uri, $vars) {

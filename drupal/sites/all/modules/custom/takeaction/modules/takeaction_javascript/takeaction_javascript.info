@@ -1,0 +1,6 @@
+name = TakeAction Button JavaScript
+description = Module for including and configuring the TakeAction Button JavaScript.
+core = 7.x
+package = TakeAction Button
+version = 7.x-1.0
+dependencies[] = takeaction
