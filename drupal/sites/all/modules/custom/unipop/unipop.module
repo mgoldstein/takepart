@@ -170,6 +170,7 @@ function unipop_set_metric_page_load($op, $title = NULL, $type = NULL) {
     s.tl(true, 'o', 'Video Popup Page Load');
 EOT;
         }
+        $js = 'function unipop_loaded() { ' . $js . '};';
         drupal_add_js($js, 'inline');
       }
       break;
@@ -185,6 +186,6 @@ EOT;
  * outputs metrics javascript for popups
  */
 function unipop_html_head_alter(&$head_elements) {
-  //unipop_set_metric_page_load('load');
+  unipop_set_metric_page_load('load');
 }
 

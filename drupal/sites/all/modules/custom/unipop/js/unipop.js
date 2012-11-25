@@ -24,7 +24,7 @@
     return output;
   }
 
-function unipop_loaded() {
+function unipop_loaded_XXX() {
   vp_embeddedvideotitle = Drupal.settings.takepart_vidpop.embeddedvideotitle;
   vp_embeddedvideotype  = Drupal.settings.takepart_vidpop.embeddedvideotype;
 

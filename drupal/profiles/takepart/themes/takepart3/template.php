@@ -539,16 +539,25 @@ function takepart3_preprocess_node(&$vars, $hook) {
       }
 
       // add identifying class
-            $vars['classes_array'][] = 'vidpop-embedded';
+      $vars['classes_array'][] = 'vidpop-embedded';
 
-            // add ad click call
-            static $vp_js_added;
-            if (!isset($vp_js_added)) {
-              drupal_add_js('jQuery(document).ready(function () { vidpop_loaded(); });', 'inline');
-              $vp_js_added = 1;
-            }
-        }
+      // add ad click call from vidpop
+      static $vp_js_added;
+      if (!isset($vp_js_added)) {
+        drupal_add_js('jQuery(document).ready(function () { vidpop_loaded(); });', 'inline');
+        $vp_js_added = 1;
+      }
     }
+  }
+
+  if (module_exists('unipop')) {
+    // add ad click call from unipop
+    static $unipop_js_added;
+    if (!isset($unipop_js_added)) {
+      drupal_add_js('jQuery(document).ready(function () { unipop_loaded(); });', 'inline');
+      $unipop_js_added = 1;
+    }
+  }
 
     // Suggests a custom template for embedded node content through the WYSIWYG
     // We suggest a theme for a general embed as well as for each content type
