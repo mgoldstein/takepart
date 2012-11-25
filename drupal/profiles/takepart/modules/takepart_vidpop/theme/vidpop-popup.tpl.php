@@ -1,6 +1,7 @@
 <?php
 // node template to create video popup
 
+
 // get the social links
 $social_links = takepart_vidpop_get_social_links();
 $comment_link = l('COMMENT', 'node/' . $p_content['field_video_embedded']['#object']->nid, array('fragment' => 'comments', 'attributes' => array('target' => '_blank')));

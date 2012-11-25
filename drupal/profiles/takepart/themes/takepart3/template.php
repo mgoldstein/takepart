@@ -498,25 +498,31 @@ function takepart3_preprocess_node(&$vars, $hook) {
         //    -field_video_display_mode is 3 (contextual)
         //    -page type is video (permalink)
 
-        if ($vars['type'] == 'openpublish_video' && isset($vars['field_video_display_mode']['und'])) {
+        if ($vars['type'] == 'openpublish_video') {
+          if (isset($vars['field_video_display_mode']['und'])) {
             if (isset($vars['field_video_display_mode']['und'][0]['value'])) {
-                // this video node has a display mode has a value set; change
-                // the link to create a popup
-                switch ($vars['field_video_display_mode']['und'][0]['value']) {
-                    case 1:   // embedded
-                        break;
-                    case 2:   // modal popup
-                        if ($vars['view_mode'] == 'embed') {
-                            $use_popup = true;
-                        }
-                        break;
-                    case 3:   // contextual (embedded on permalink page, modal elsewhere)
-                        if ($vars['view_mode'] == 'full') {
-                            $use_popup = true;
-                        }
-                        break;
-                }
+              // this video node has a display mode has a value set; change
+              // the link to create a popup
+              switch ($vars['field_video_display_mode']['und'][0]['value']) {
+                case 1:   // embedded
+                  break;
+                case 2:   // modal popup
+                  if ($vars['view_mode'] == 'embed') {
+                    $use_popup = true;
+                  }
+                  break;
+                case 3:   // contextual (embedded on permalink page, modal elsewhere)
+                  if ($vars['view_mode'] == 'full') {
+                    $use_popup = true;
+                  }
+                  break;
+              }
             }
+          }
+          else {
+            // mode is undefined - assume popup
+            $use_popup = true;
+          }
         }
 
         if ($use_popup) {

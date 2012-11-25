@@ -256,8 +256,9 @@ function takepart_vidpop_format_preview($uri, $vars) {
   }
   // theme the popup contents
   if (takepart_vidpop_mobile_browser()) {
-    $overlay_image = theme('image', array('path' => $vidpop_path . '/css/images/preview-mobile.png'));
-    $formatted_popup = theme('vidpop_popup_mobile', array(
+    //$overlay_image = theme('image', array('path' => $vidpop_path . '/css/images/preview-mobile.png'));
+    $overlay_image = theme('image', array('path' => $vidpop_path . '/css/images/youtube-overlay.png'));
+    $formatted_popup = theme('vidpop_popup', array(
       'p_content'        => $vars['content']
     ));
   }
@@ -273,7 +274,8 @@ function takepart_vidpop_format_preview($uri, $vars) {
   $vp_class = 'vp-' . $vars['nid'];
   $node_title = $vars['node']->title;
 
-  if (takepart_vidpop_mobile_browser()) {
+  if (false) {
+    //if (takepart_vidpop_mobile_browser()) {
     // mobile browser, display the node
     $formatted = theme('vidpop_preview_mobile', array(
       'p_youtube_id'      => $youtube_id,

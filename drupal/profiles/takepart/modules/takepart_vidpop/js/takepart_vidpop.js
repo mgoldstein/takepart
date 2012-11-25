@@ -111,8 +111,8 @@ function vidpop_loaded() {
         //alert(vidpopSource);
         switch(vidpopSource) {
           case 'node':
-            $('#cboxWrapper').css('height', '425px');
-            $('#cboxContent').css('height', '425px');
+            $('#cboxWrapper').css('height', '420px');
+            $('#cboxContent').css('height', '420px');
             break;
         }
       });

@@ -104,6 +104,7 @@ function tastemaker_popups_theme() {
  */
 function tastemaker_popups_process_tastemaker_popups($text, $vars) {
   $data = explode("\n", $text);
+
   foreach ($data as $junk => $line) {
     if (preg_match("/^.*videoData\[(\d+)\]\[(\d+)\].*\=.*\[([^\]]+)\]/", $line, $res)) {
       //  get the value of the config fields:
@@ -177,11 +178,20 @@ function tastemaker_popups_get_video_details() {
   $output = 'error fetching video ' . $video_id;
 
     // format the video for display in popup
+  if (takepart_vidpop_mobile_browser()) {
     $output = <<<EOT
 <div class="vidpop-popup tastemaker-vidpop" style="height: 360px; width: 640px;">
 <iframe width="640" height="411" frameborder="0" type="text/html" class="youtube-player tastemaker-vidpop-iframe" src="http://www.youtube.com/embed/$video_id?version=3&amp;wmode=opaque" style="height: 360px; width: 640px;"></iframe>
 </div>
 EOT;
+  }
+  else {
+    $output = <<<EOT
+<div class="vidpop-popup tastemaker-vidpop" style="height: 360px; width: 640px;">
+<iframe width="640" height="411" frameborder="0" type="text/html" class="youtube-player tastemaker-vidpop-iframe" src="http://www.youtube.com/embed/$video_id?version=3&amp;wmode=opaque" style="height: 360px; width: 640px;"></iframe>
+</div>
+EOT;
+  }
 
   print $output;
   drupal_exit();

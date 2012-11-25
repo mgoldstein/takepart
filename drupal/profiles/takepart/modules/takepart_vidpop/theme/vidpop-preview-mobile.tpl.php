@@ -8,7 +8,7 @@
 //    $p_promo_text         text of promo
 //    $vp_class             enclosing div class
 ?>
-<div class="mobile-vidpop">
+<div class="mobile-vidpop-notused">
   <div class="vidpop-preview <?print $vp_class;?>">
     <iframe width="480" height="360" src="http://www.youtube.com/embed/<?print $p_youtube_id;?>?rel=0" frameborder="0" allowfullscreen></iframe>
   </div>

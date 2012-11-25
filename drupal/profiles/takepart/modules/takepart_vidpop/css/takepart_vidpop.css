@@ -91,7 +91,7 @@ div.vidpop-preview-overlay-text .line1 .watch {
 }
 div.vidpop-preview-overlay-text .line2 {
   position: relative;
-  top: 20px;
+  top: 10px;
   left: 15px;;
   font-size: 13px;
   line-height: 120%;
@@ -140,6 +140,18 @@ div.vidpop-preview-overlay-text .line2 {
   width:13px !important;
   z-index: 99999;
 }
+/*
+#cboxClose {
+  background: url(images/close_popup_mobile.png) no-repeat !important;
+  position:absolute;
+  right: 5px !important;
+  top: 5px !important;
+  cursor:pointer;
+  height:20px !important;
+  width:50px !important;
+  z-index: 99999;
+}
+*/
 
 /*
 * the popup window
@@ -189,21 +201,6 @@ div.vidpop-preview-overlay-text .line2 {
   padding-top: 15px;
   margin-right: 10px;
 }
-
-/*
-.map-mobile .vidpop-popup .contents .leftside {
-  float: none;
-  width: 480px;
-  height: 365px;
-}
-.map-mobile .vidpop-popup .contents .rightside {
-  float: none;
-  width: 480px;
-  padding-top: 15px;
-  margin-top: 20px;
-  margin-right: 0;
-}
-*/
 
 .vidpop-popup .field-name-field-promo-headline {
   color: black;
@@ -270,10 +267,12 @@ The fix is to add this to the theme CSS:
   max-width: none;
 }
 
+/*
 .vidpop-popup .fb_edge_comment_widget {
     left:-400px !important;
     top:-20px !important;
 }
+*/
 
 .vidpop-popup .addthis_button_email {
     padding: 2px 0 0 6px;
@@ -323,4 +322,5 @@ div.vidpop-loader {
   height: 66px;
   background: url(images/loader_66x66.gif) no-repeat;
 }
+
 
