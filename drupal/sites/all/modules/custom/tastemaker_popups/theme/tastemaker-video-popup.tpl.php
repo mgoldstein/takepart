@@ -5,11 +5,13 @@
  *
  * vars:
  *   $content = array(
- *     'youtube_id'     // id of video
+ *     'video_id'         // id of video
  *     'preview_url'    // url of preview image
- *     'caption'        // caption
- *     'description'    // description
- *     'fmt_video'      // formatted video
+ *     'caption'          // caption
+ *     'description'      // description
+ *     'fmt_video'        // formatted video
+ *     'share_node_url'   // URL of shared node
+ *     'share_node_title' // titleL of shared node
  *   );
  */
 
