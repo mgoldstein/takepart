@@ -13,13 +13,14 @@
 .block-takeaction-thankyou .addthis_toolbox>a  {
   width: 32px;
   height: 32px;
-  margin-right: 7px;
+  margin-right: 11px;
+  padding: 0;
 }
 .petition_pledge_action .addthis_toolbox .addthis_button_google_plusone {
   width:51px;
 }
 .block-takeaction-thankyou .addthis_toolbox .addthis_button_google_plusone {
-  width: 37px;
+  width: 38px;
   height: 24px;
   overflow: hidden;
 }
