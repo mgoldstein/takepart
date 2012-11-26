@@ -19,6 +19,7 @@ function vidpop_loaded() {
   vp_embeddedvideotitle = Drupal.settings.takepart_vidpop.embeddedvideotitle;
   vp_embeddedvideotype  = Drupal.settings.takepart_vidpop.embeddedvideotype;
 
+
   // there may be more than one embedded video on a page; send codes for each one
   // collect passed titles and types
   // event40 is called first, and sets these for other events as globals
@@ -29,6 +30,7 @@ function vidpop_loaded() {
     vp_lookup[lookup_index] = i;
     lookup_index++;
   });
+
   jQuery.each(vp_embeddedvideotype, function(i, val){
     vp_types[i] = val;
   });
@@ -71,7 +73,7 @@ function vidpop_loaded() {
         s.prop42=modaltype;
         s.eVar42=modaltype;
         s.tl(true, 'o', 'Video Popup Click');
-        //alert('n:' + n);
+        //alert('vidpop-preview:' + n);
       });
 
       // On-click of the subscribe button, pls fire (only once per session)
@@ -82,7 +84,6 @@ function vidpop_loaded() {
 
           var n = $(this).attr('class').match(/ vp-(\d+)/);
           n = n[1];
-          alert('trap 43: ' + n);
           var modaltitle = vp_titles[n];
           var modaltype  = vp_types[n];
           s.linkTrackVars="eVar40, prop40, eVar41, prop41, events";
@@ -106,18 +107,13 @@ function vidpop_loaded() {
         vidpopSource = 'node';
       }));
 
-      $('.vidpop-preview .colorbox-inline').live('click', (function(){
-        //alert('wait');
-        $('#cboxWrapper').css('height', '425px');
-        vidpopSource = 'node';
-      }));
-
       // resize popup, based on source
       $(document).bind('cbox_complete', function(){
         //alert(vidpopSource);
         switch(vidpopSource) {
           case 'node':
-            $('#cboxWrapper').css('height', '425px');
+            $('#cboxWrapper').css('height', '420px');
+            $('#cboxContent').css('height', '420px');
             break;
         }
       });

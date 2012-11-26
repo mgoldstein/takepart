@@ -498,57 +498,66 @@ function takepart3_preprocess_node(&$vars, $hook) {
     //    -field_video_display_mode is 3 (contextual)
     //    -page type is video (permalink)
 
-    $video_display_mode = 'undefined';
     if ($vars['type'] == 'openpublish_video') {
       if (isset($vars['field_video_display_mode']['und'])) {
-        $video_display_mode = $vars['field_video_display_mode']['und'][0]['value'];
+        if (isset($vars['field_video_display_mode']['und'][0]['value'])) {
+          // this video node has a display mode has a value set; change
+          // the link to create a popup
+          switch ($vars['field_video_display_mode']['und'][0]['value']) {
+            case 1:   // embedded
+              break;
+            case 2:   // modal popup
+              if ($vars['view_mode'] == 'embed') {
+                $use_popup = true;
+              }
+              break;
+            case 3:   // contextual (embedded on permalink page, modal elsewhere)
+              if ($vars['view_mode'] == 'full') {
+                $use_popup = true;
+              }
+              break;
+          }
+        }
       }
       else {
-        $video_display_mode = 2;    // use embed as default
-      }
-
-      // this video node has a display mode has a value set; change
-      // the link to create a popup
-      switch ($video_display_mode) {
-        case 1:   // embedded
-          break;
-        case 2:   // modal popup
-          if ($vars['view_mode'] == 'embed') {
-            $use_popup = true;
-          }
-          break;
-        case 3:   // contextual (embedded on permalink page, modal elsewhere)
-          if ($vars['view_mode'] == 'full') {
-            $use_popup = true;
-          }
-          break;
+        // mode is undefined - assume popup
+        $use_popup = true;
       }
     }
 
     if ($use_popup) {
-          $GLOBALS['has_vidpop'] = 1;
-            // suggest a theme
-            $vars['theme_hook_suggestions'][] = "node__video_embed";
+      $GLOBALS['has_vidpop'] = 1;
+      // suggest a theme
+      $vars['theme_hook_suggestions'][] = "node__video_embed";
 
-            // render the video as large size for the popup
-            $render_large = node_view(node_load($vars['nid']), 'large');
-            $vars['large_video'] = drupal_render($render_large['field_video_embedded']);
+      // render the video as large size for the popup
+      $render_large = node_view(node_load($vars['nid']), 'large');
+      $vars['large_video'] = drupal_render($render_large['field_video_embedded']);
 
-            if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
-                $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
-            }
+      if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
+        $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
+      }
 
-            // add identifying class
-            $vars['classes_array'][] = 'vidpop-embedded';
+      // add identifying class
+      $vars['classes_array'][] = 'vidpop-embedded';
 
-            // add ad click call
-            static $vp_js_added;
-            if (!isset($vp_js_added)) {
-              drupal_add_js('jQuery(document).ready(function () { vidpop_loaded(); });', 'inline');
-              $vp_js_added = 1;
-            }
-        }
+      // add ad click call from vidpop
+      static $vp_js_added;
+      if (!isset($vp_js_added)) {
+        drupal_add_js('jQuery(document).ready(function () { vidpop_loaded(); });', 'inline');
+        $vp_js_added = 1;
+      }
     }
+  }
+
+  if (module_exists('unipop')) {
+    // add ad click call from unipop
+    static $unipop_js_added;
+    if (!isset($unipop_js_added)) {
+      drupal_add_js('jQuery(document).ready(function () { unipop_loaded(); });', 'inline');
+      $unipop_js_added = 1;
+    }
+  }
 
     // Suggests a custom template for embedded node content through the WYSIWYG
     // We suggest a theme for a general embed as well as for each content type

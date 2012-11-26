@@ -5,11 +5,19 @@
 /*
 * this is the embedded preview pane
 */
+
+.mobile-vidpop {
+  position: relative;
+}
+
 div.vidpop-preview {
   width: 480px;
   height: 360px;
   position: relative;
-  margin-bottom: 1px;
+  background: url(images/loader_66x66.gif) 20px 20px no-repeat black;
+}
+div.vidpop-preview iframe body {
+  background-color: black;
 }
 div.vidpop-preview-overlay {
   width: 480px;
@@ -19,6 +27,11 @@ div.vidpop-preview-overlay {
   top: 0;
   left: 0;
   cursor: pointer;
+}
+.mobile-vidpop div.vidpop-preview-overlay {
+  height: 80px;
+  position: relative;
+  top: 0;
 }
 div.vidpop-preview a {
   text-decoration: none;
@@ -40,25 +53,35 @@ div.vidpop-preview-overlay-headline {
   color: white;
   font-size: 14px;
 }
-
 div.vidpop-preview-overlay-text {
   width: 480px;
   height: 360px;
   z-index: 5;
   position: absolute;
-  top: 0;
+  top: 280px;
   left: 0;
   cursor: pointer;
 }
+.mobile-vidpop div.vidpop-preview-overlay-text {
+  height: 80px;
+  z-index: 5;
+  top: 0;
+  position: absolute;
+}
 div.vidpop-preview-overlay-text .line1 {
   position: relative;
-  top: 289px;
+  top: 5px;
   left: 50px;;
   font-size: 16px;
   font-weight: bold;
   line-height: 140%;
   color: #fff;
   width: 420px;
+}
+.mobile-vidpop div.vidpop-preview-overlay-text .line1 {
+  top: 5px;
+  left: 15px;
+  width: 440px;
 }
 div.vidpop-preview-overlay-text .line1 .watch {
   font-size: 13px;
@@ -68,13 +91,16 @@ div.vidpop-preview-overlay-text .line1 .watch {
 }
 div.vidpop-preview-overlay-text .line2 {
   position: relative;
-  top: 298px;
+  top: 10px;
   left: 15px;;
   font-size: 13px;
   line-height: 120%;
   color: #d9e7ed;
   width: 440px;
   font-weight: normal;
+}
+.mobile-vidpop div.vidpop-preview-overlay-text .line2 {
+  top: 20px;
 }
 
 .vidpop-embed-promo-headline {
@@ -114,6 +140,18 @@ div.vidpop-preview-overlay-text .line2 {
   width:13px !important;
   z-index: 99999;
 }
+/*
+#cboxClose {
+  background: url(images/close_popup_mobile.png) no-repeat !important;
+  position:absolute;
+  right: 5px !important;
+  top: 5px !important;
+  cursor:pointer;
+  height:20px !important;
+  width:50px !important;
+  z-index: 99999;
+}
+*/
 
 /*
 * the popup window
@@ -163,6 +201,7 @@ div.vidpop-preview-overlay-text .line2 {
   padding-top: 15px;
   margin-right: 10px;
 }
+
 .vidpop-popup .field-name-field-promo-headline {
   color: black;
   font-weight: bold;
@@ -217,7 +256,7 @@ div.vidpop-preview-overlay-text .line2 {
   overflow: hidden !important;
 }
 body #cboxContent {
-  height: 445px !important;
+  height: 595px !important;
 }
 
 /*
@@ -228,10 +267,12 @@ The fix is to add this to the theme CSS:
   max-width: none;
 }
 
+/*
 .vidpop-popup .fb_edge_comment_widget {
     left:-400px !important;
     top:-20px !important;
 }
+*/
 
 .vidpop-popup .addthis_button_email {
     padding: 2px 0 0 6px;
@@ -281,4 +322,5 @@ div.vidpop-loader {
   height: 66px;
   background: url(images/loader_66x66.gif) no-repeat;
 }
+
 

@@ -38,6 +38,7 @@ function takepart_browsercaps_menu() {
  * Implementationof hook_init()
  *
  * creates global js var detected_mobile_browser
+ * accessed as Drupal.settings.takepart_browsercaps.detected_mobile_browser
  *
  */
 function takepart_browsercaps_init() {
