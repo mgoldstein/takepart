@@ -6,12 +6,13 @@
  * - $p_title     block title
  * - $p_video_id  id of video
  * - $p_popup     popup html
+ *   $rr_class    enclosing div class
  *
  * @ingroup views_templates
  */
 
 ?>
-<div id="youtube_block" class="rr-preview">
+<div id="youtube_block" class="rr-preview <?print $rr_class; ?>">
   <div style="line-height: 12px;">&nbsp;</div>
   <img src="http://img.youtube.com/vi/<?php echo $p_video_id; ?>/mqdefault.jpg" width="275" height="155" />
   <div style="line-height: 5px;">&nbsp;</div>
