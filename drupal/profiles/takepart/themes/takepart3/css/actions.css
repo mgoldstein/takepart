@@ -15,9 +15,11 @@
   height: 32px;
   margin-right: 7px;
 }
-.petition_pledge_action .addthis_toolbox .addthis_button_google_plusone,
+.petition_pledge_action .addthis_toolbox .addthis_button_google_plusone {
+  width:51px;
+}
 .block-takeaction-thankyou .addthis_toolbox .addthis_button_google_plusone {
-  width: 38px;
+  width: 37px;
   height: 24px;
   overflow: hidden;
 }
