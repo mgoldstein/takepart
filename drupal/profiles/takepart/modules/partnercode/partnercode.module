@@ -181,6 +181,10 @@ function partnercode_field_widget_info() {
       'label' => t('Hidden input'),
       'field types' => array('partner_code'),
     ),
+    'opt_in_checkbox' => array(
+      'label' => t('Opt-in checkbox'),
+      'field types' => array('partner_code'),
+    ),
   );
 }
 
@@ -192,7 +196,7 @@ function partnercode_field_widget_form(&$form, &$form_state, $field, $instance, 
   $value = isset($items[$delta]['value']) ? $items[$delta]['value'] : '';
   $settings = $field['settings'];
 
-  if ($instance['widget']['type'] == 'hidden_input') {
+  if ($instance['widget']['type'] === 'hidden_input') {
 
     // start off with no partner code
     $value = '';
@@ -214,6 +218,34 @@ function partnercode_field_widget_form(&$form, &$form_state, $field, $instance, 
         '#default_value' => $value,
       ),
     );
+  }
+  elseif ($instance['widget']['type'] === 'opt_in_checkbox') {
+
+    // start off with no partner code
+    $value = '';
+
+    // get the partner code from the URL
+    if (!empty($settings['url_parameter'])) {
+      $value = isset($_GET[$settings['url_parameter']]) ? $_GET[$settings['url_parameter']] : '';
+    }
+
+    // discard the value if it is not in the list of allowed values
+    if (!empty($value) && !isset($settings['allowed_values'][$value])) {
+      $value = '';
+    }
+
+    // Only display the opt-in if the partner code is valid.
+    if (!empty($value)) {
+      $element += array(
+        '#type' => 'checkbox',
+        '#default_value' => $value,
+        '#return_value' => $value,
+      );
+
+      $element['#title'] = t($element['#title'], array(
+        '@partner' => $settings['allowed_values'][$value]
+      ));
+    }
   }
   return $element;
 }
