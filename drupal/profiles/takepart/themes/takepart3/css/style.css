@@ -2410,7 +2410,7 @@ body.node-type-takepart-campaign .main-content #content {
     font-size: 0; /* display: inline-block; space fix */
 }
 .node-type-section-front-wide .view-campaigns.view-display-id-block_1 .views-row {
-    margin: 0 7px 0 0;
+    margin: 0 0 0 12px;
     font-size: 12px;
 }
 .node-type-section-front-wide .view-campaigns.view-display-id-block_1 .views-row-last {
@@ -2433,10 +2433,13 @@ body.node-type-takepart-campaign .main-content #content {
 }
 
 .page-node-22525  .view-campaigns.view-dom-id-2 .view-content ul li {
-    margin:0 7px 10px 0;
+    margin:0 0 10px 12px;
 }
-
-.region-content-top a.addthis_button_google_plusone {
+.page-node-22525 .view-campaigns.view-dom-id-2 .view-content ul,
+.node-type-section-front-wide .view-campaigns.view-display-id-block_1 ul {
+    margin-left: -12px;
+}
+.region-content-top a.addthis_button_google_plusone {.node-type-section-front-wide .view-campaigns.view-display-id-block_1
     margin-left: 5px;
     margin-top: 1px;
 }

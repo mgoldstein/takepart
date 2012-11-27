@@ -132,10 +132,10 @@
 .tastemakers #right-rail .block-boxes-bid-block-37 a.nationwide,
 .tastemakers #right-rail .block-boxes-bid-block-39 a.mailorder {
   display: inline-block; *display: inline; *zoom: 1;
-  color: transparent;
   width: 273px;
   height: 98px;
   margin: 0 auto;
+  text-indent: -99999999px;
 }
 .tastemakers #right-rail .block-boxes-bid-block-37 a.nationwide {
   background: url('../../images/tastemakers/right_rail/tastemaker_ad/tastemaker_ad_nationwide.jpg') no-repeat;
@@ -169,7 +169,7 @@
   width: 235px;
   margin-right: 4px;
 }
-.tastemakers .one-col:last-child {
+.tastemakers .one-col.last {
   margin-right: 0;
 }
 .tastemakers .two-col {
@@ -224,6 +224,7 @@
 }
 .tastemakers.landing-page .intro-block,
 .tastemakers.landing-page .share-block {
+  background: #F7EDDD;
   background: rgba(255,255,255,.5);
 }
 .tastemakers.landing-page .sm-block-wrapper div,
