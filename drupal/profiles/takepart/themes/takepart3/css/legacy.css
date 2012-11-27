@@ -249,7 +249,6 @@ ul#top-follow li.rss a {
 
 #block-menu-block-1 li.collapsed, #block-menu-block-1 li.collapsed a{
     display: block;
-    height: 30px;
 }
 
 #slim-header #nav-wrap li.expanded ul.menu li a {font-weight:bold}
