@@ -12,17 +12,6 @@
   }
 })(jQuery);
 
-// Separate the recipients of a petiion with commas.
-(function ($) {
-  Drupal.behaviors.recipientlist = {
-    attach: function (context, settings) {
-      $('.field-name-field-petition-recipient').once('recipientlist', function () {
-        $('.field-item', this).not(':last').append(', ');
-      });
-    }
-  }
-})(jQuery);
-
 // Widgetize the read more / read less link.
 (function ($) {
   Drupal.behaviors.moreorless = {

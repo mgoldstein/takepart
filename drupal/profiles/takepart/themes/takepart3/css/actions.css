@@ -1559,12 +1559,14 @@ iframe.moreactions {
   width: 380px;
 }
 
-/*.field-name-field-petition-recipient .field-item:after {
+.field-name-field-action-sponsor .field-item:after,
+.field-name-field-petition-recipient .field-item:after {
   content: ', ';
   display: inline;
 }
 
+.field-name-field-action-sponsor  .field-item:last-child:after,
 .field-name-field-petition-recipient .field-item:last-child:after {
   content: '';
   display: none;
-}*/
+}
