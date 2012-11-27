@@ -54,7 +54,7 @@ videoData[1][4] = ["32069", "http://www.takepart.com/sites/default/files/tpmeal_
 
     var listeners = new Array();    // list of listeners for click events
 
-// build the table from the data
+    // build the table from the data
     $(window).load(function() {
       var table = $('#video-popup-grid table.video-thumb-table');
 
@@ -67,9 +67,7 @@ videoData[1][4] = ["32069", "http://www.takepart.com/sites/default/files/tpmeal_
           // add listener for click
           (function(row_id, col_id, video_id) {  // <-- immediate function call
             if (Drupal.settings.takepart_browsercaps.detected_mobile_browser) {
-              // using mobile; use colorbox
-              // listeners[row_id + '-' + col_id] = function () { window.location = 'http://www.youtube.com/embed/' +  video_id};
-              listeners[row_id + '-' + col_id] = function () { jQuery.fn.colorbox({width:"900px", height:"430px", inline:true, href:"#taste-details-" + row_id + '-' + col_id}); };
+              // using mobile; use native player
             }
             else {
               // desktop browser; use colorbox
@@ -80,16 +78,31 @@ videoData[1][4] = ["32069", "http://www.takepart.com/sites/default/files/tpmeal_
           var rid = 'table tr.' + rc;
           $(rid).append('<td class="' + cc + '"></td>');
 
-          (function(t_row, t_col, video_id, preview_img, caption, description) {  // <-- immediate function call
-            var preview_img = '<img width="180" height="135" class="rtt-preview-img" src="' + preview_img + '" />';
+          if (Drupal.settings.takepart_browsercaps.detected_mobile_browser) {
+            // mobile browser, just add the embedded video
+            (function(t_row, t_col, video_id, preview_img, caption, description) {  // <-- immediate function call
+              var youtube_id = unipop_video_id_from_node(video_id);
+              var preview_video = '<div class="vidpop-popup tastemaker-vidpop tmvp-mobile" style="height: 136px; width: 180px;">'
+                  + '<iframe width="180" height="136" frameborder="0" type="text/html" class="youtube-player tastemaker-vidpop-iframe" src="http://www.youtube.com/embed/' + youtube_id + '?version=3&amp;wmode=opaque&amp;controls=0&amp;showinfo=0" style="height: 136px; width: 180px;"></iframe>'
+                  + '</div>';
 
-            var cid = 'table tr.' + rc + ' td.' + cc;
-            $(cid).append('<div class="inner"><div class="vid-thumbnail">' + preview_img + '<div class="vid-arrow"></div></div><div class="vid-caption">' + caption + '</div></div>');
-            $(cid).click(function() {
-              // alert('cid: ' + cid + ' t_row:' + t_row +  ' t_col:' + t_col);
-              showTmVideo(t_row, t_col, video_id);
-            });
-          } (row, col, videoData[row][col][0], videoData[row][col][1], videoData[row][col][2], videoData[row][col][3])); // <-- immediate function call
+              var cid = 'table tr.' + rc + ' td.' + cc;
+              $(cid).append('<div class="inner"><div class="vid-thumbnail">' + preview_video + '</div><div class="vid-caption">' + caption + '</div></div>');
+            } (row, col, videoData[row][col][0], videoData[row][col][1], videoData[row][col][2], videoData[row][col][3])); // <-- immediate function call
+          }
+          else {
+            // desktop, we need to add a listener slot
+            (function(t_row, t_col, video_id, preview_img, caption, description) {  // <-- immediate function call
+              var preview_img = '<img width="180" height="135" class="rtt-preview-img" src="' + preview_img + '" />';
+
+              var cid = 'table tr.' + rc + ' td.' + cc;
+              $(cid).append('<div class="inner"><div class="vid-thumbnail">' + preview_img + '<div class="vid-arrow"></div></div><div class="vid-caption">' + caption + '</div></div>');
+              $(cid).click(function() {
+                // alert('cid: ' + cid + ' t_row:' + t_row +  ' t_col:' + t_col);
+                showTmVideo(t_row, t_col, video_id);
+              });
+            } (row, col, videoData[row][col][0], videoData[row][col][1], videoData[row][col][2], videoData[row][col][3])); // <-- immediate function call
+          }
 
           if (col < (numCols - 1)) {
             $(rid).append('<td class="spacer">&nbsp;</td>');
@@ -101,7 +114,7 @@ videoData[1][4] = ["32069", "http://www.takepart.com/sites/default/files/tpmeal_
       $('#video-popup-grid .table-loading').hide();
     });
 
-// click handler for video thumb
+    // click handler for video thumb, non-mobile version
     function showTmVideo(r, c, val) {
       if (val != 0) {
         //alert('show  ' + r + '-' + c + '  val: ' + val);
@@ -114,13 +127,6 @@ videoData[1][4] = ["32069", "http://www.takepart.com/sites/default/files/tpmeal_
     }
   })(jQuery);
 </script>
-
-<!--
-You can apply css overrides in the section below.
-Main styles are in sites/all/modules/custom/tastemaker_popups/css/tastemaker_popups.css
--->
-<style type="text/css">
-</style>
 
 <!--
 This is the main HTML section; the table of thumbnails gets attached by the above javascript

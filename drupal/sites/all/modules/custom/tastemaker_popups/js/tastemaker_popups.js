@@ -12,8 +12,8 @@
       $(document).bind('cbox_complete', function() {
         switch(vidpopSource) {
           case 'tastemaker':
-            $('#colorbox').css('height', '445px');
-            $('#cboxWrapper').css('height', '445px');
+            $('#colorbox').css('height', '395px');
+            $('#cboxWrapper').css('height', '395px');
             $('#cboxLoadedContent').css('height', '420px');
             break;
         }
