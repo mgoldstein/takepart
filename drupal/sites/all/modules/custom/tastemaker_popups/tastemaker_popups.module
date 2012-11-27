@@ -78,11 +78,6 @@ function tastemaker_popups_theme() {
   $template_path = drupal_get_path('module', 'tastemaker') . '/theme';
 
   return array(
-    'tastemaker_video_preview' => array(
-      'path'      => $template_path,
-      'template'  => 'tastemaker-video-preview',
-      'variables' => array('p_video_id' => NULL, 'p_popup' => NULL),
-    ),
     'tastemaker_video_popup' => array(
       'path'      => $template_path,
       'template'  => 'tastemaker-video-popup',
@@ -122,6 +117,11 @@ function tastemaker_popups_process_tastemaker_popups($text, $vars) {
       $col   = $res[2];
       $stuff = $res[3];
 
+      // get the youtube id of the video
+      $res2 = explode(',', $stuff);
+      $embed_nid = preg_replace("/\"/", "", $res2[0]);
+
+
       $fields = explode(',', $stuff);
       // remove extra quotes in field
       foreach ($fields as $idx => $data) {
@@ -133,34 +133,37 @@ function tastemaker_popups_process_tastemaker_popups($text, $vars) {
         // this will be the id of the hidden div
         $id = 'taste-details-' . $row . '-' . $col;
 
-        $res2 = explode(',', $stuff);
-        $embed_nid = preg_replace("/\"/", "", $res2[0]);
-        $embed_node = node_load($embed_nid);
-        $share_node_url = url('node/' . $embed_nid, array('absolute' => TRUE));
-        $share_node_title = $embed_node->title;
+        if (takepart_vidpop_mobile_browser()) {
+          // mobile, all we need is a link to the embedded video
+          // this is supplied by the javascript, so nothing needs to be done here
+        }
+        else {
+          // non-mobile needs a colorbox, a bit of formatting is required
+          $embed_node = node_load($embed_nid);
+          $share_node_url = url('node/' . $embed_nid, array('absolute' => TRUE));
+          $share_node_title = $embed_node->title;
 
+          $content = array(
+            'video_id'          => $fields[0],
+            'preview_url'       => $fields[1],
+            'caption'           => $fields[2],
+            'description'       => $fields[3],
+            'share_node_url'    => share_node_url,
+            'share_node_title'  => share_node_title,
+          );
 
-        $content = array(
-          'video_id'          => $fields[0],
-          'preview_url'       => $fields[1],
-          'caption'           => $fields[2],
-          'description'       => $fields[3],
-          'share_node_url'    => share_node_url,
-          'share_node_title'  => share_node_title,
-        );
+          $content['fmt_video'] = takepart_vidpop_loading_graphic();
 
-        $content['fmt_video'] = takepart_vidpop_loading_graphic();
+          $classes= "vidpop-popup";
+          $attributes = drupal_attributes($vars['attributes_array']);
 
-        $classes= "vidpop-popup";
-        $attributes = drupal_attributes($vars['attributes_array']);
+          $template_file = drupal_get_path('module', 'tastemaker_popups') . '/theme/tastemaker-video-popup.tpl.php';
+          ob_start();                                   // Start output buffering
+          include DRUPAL_ROOT . '/' . $template_file;   // Include the template file
+          $rendered = ob_get_clean();                   // End buffering and return its contents
 
-        $template_file = drupal_get_path('module', 'tastemaker_popups') . '/theme/tastemaker-video-popup.tpl.php';
-        ob_start();                                   // Start output buffering
-        include DRUPAL_ROOT . '/' . $template_file;   // Include the template file
-        $rendered = ob_get_clean();                   // End buffering and return its contents
-
-        // format as a colorbox
-        $output = <<<EOT
+          // format as a colorbox
+          $output = <<<EOT
 <div class="vidpop-overlay">
   <div id="$id">
     $rendered
@@ -168,7 +171,9 @@ function tastemaker_popups_process_tastemaker_popups($text, $vars) {
 </div>
 EOT;
 
-        print $output;
+          print $output;
+        }
+
       }
     }
   }
@@ -189,20 +194,11 @@ function tastemaker_popups_get_video_details() {
   }
   else {
     // format the video for display in popup
-    if (takepart_vidpop_mobile_browser()) {
-      $output = <<<EOT
+    $output = <<<EOT
 <div class="vidpop-popup tastemaker-vidpop" style="height: 360px; width: 640px;">
 <iframe width="640" height="411" frameborder="0" type="text/html" class="youtube-player tastemaker-vidpop-iframe" src="http://www.youtube.com/embed/$video_id?version=3&amp;wmode=opaque" style="height: 360px; width: 640px;"></iframe>
 </div>
 EOT;
-    }
-    else {
-      $output = <<<EOT
-<div class="vidpop-popup tastemaker-vidpop" style="height: 360px; width: 640px;">
-<iframe width="640" height="411" frameborder="0" type="text/html" class="youtube-player tastemaker-vidpop-iframe" src="http://www.youtube.com/embed/$video_id?version=3&amp;wmode=opaque" style="height: 360px; width: 640px;"></iframe>
-</div>
-EOT;
-    }
   }
 
 
