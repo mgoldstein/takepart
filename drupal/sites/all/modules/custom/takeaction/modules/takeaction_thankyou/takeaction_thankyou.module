@@ -223,6 +223,7 @@ function takeaction_thankyou_block_view($delta = '') {
             'src' => $src,
             'class' => implode(' ', array('more-actions')),
             'frameborder' => 0,
+            'scrolling' => 'no',
           ),
           '#value' => '',
         );
