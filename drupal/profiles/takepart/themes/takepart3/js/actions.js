@@ -75,7 +75,6 @@
         $(this).signatureprogress({ nid: $(this).attr('nid') });
       });
       if (settings.signature && settings.signature.submission) {
-        console.log(settings.signature.submission.result);
         $('.signature-list').signatureprogress('update',
           settings.signature.submission.result);
       }

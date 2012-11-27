@@ -53,6 +53,8 @@ function takeaction_thankyou_get_action_context() {
       $context = array(
         'node' => $node,
         'node_url' => url($uri['path'], array('absolute' => TRUE)),
+        'email' => $signature->email,
+        'newsletters' => (int) $signature->newsletter,
         'action_type' => signature_node_action_type_variables($node),
         'progress' => signature_node_progress_variables($signature_node),
         'thankyou' => array(
@@ -81,6 +83,19 @@ function takeaction_thankyou_block_view($delta = '') {
       $node = $context['node'];
       $id = "takeaction-thankyou-share-bar-{$node->nid}";
       
+      if ($node->type === 'petition_action' || $node->type === 'pledge_action') {
+        $opt_ins = array();
+        for ($num = 0, $check = 1; $num < 5; $num += 1, $check *= 2) {
+          $opt_ins[$num] = ($context['newsletters'] & $check) ? TRUE : FALSE;
+        }
+        $analytics = tp_analytics_get_controller('node', $node->type);
+        $events = $analytics->getSignedEvents($node, 'full', $opt_ins);
+        foreach ($events as $event) {
+          $analytics->addPageLoadEvent($event);
+        }
+        $analytics->addShareEventInstance($node, 'thank_you');
+      }
+
       $block['content'] = array(
         '#type' => 'container',
         '#attributes' => array(
@@ -109,8 +124,8 @@ function takeaction_thankyou_block_view($delta = '') {
             '#action_type' => $context['action_type'],
             '#progress' => $context['progress'],
           ),
-          'progress_needed' => array(
-            '#theme' => 'signature_progress_needed',
+          'progress_goal' => array(
+            '#theme' => 'signature_progress_goal',
             '#node' => $context['node'],
             '#action_type' => $context['action_type'],
             '#progress' => $context['progress'],
@@ -136,18 +151,15 @@ function takeaction_thankyou_block_view($delta = '') {
             'orientation' => 'share-bar-horizontal',
             'id' => "takeaction-thankyou-share-bar-{$node->nid}",
             'share_url' => $context['node_url'],
+            'nid' => $node->nid,
           )),
         ),
       );
 
-      drupal_add_js(drupal_get_path('module', 'takeaction_thankyou')
-        . '/js/sharing-metrics.js',
-        array('group' => JS_DEFAULT, 'type' => 'file')
-      );
-
       $configurations = array();
-      $item = reset(field_get_items('node', $node, 'field_social_share_bar'));
-      if ($item !== FALSE) {
+      $items = field_get_items('node', $node, 'field_thank_you_share_bar');
+      if (!empty($items)) {
+        $item = reset($items);
         $configurations[$id] = array(
           'alternate_url' => empty($item['alternate_url'])
             ? $context['node_url'] : $item['alternate_url'],
@@ -166,6 +178,7 @@ function takeaction_thankyou_block_view($delta = '') {
           'thankyou' => $context['thankyou'],
         ),
         'addthis' => array(
+          'email' => $context['email'],
           'fields' => $configurations,
         ),
       ), 'setting');

@@ -21,22 +21,16 @@ function takepart_action_form_action_node_form_alter(&$form, &$form_state, $form
  * JS makes sure that this link is not followed
  */
 function takepart_action_field_attach_load($entity_type, $entities, $age, $options) {
-
   if ($entity_type == 'node') {
     foreach($entities as $entity) {
-      if($entity->type == 'action') {
-        if (empty($entity->field_action_url)) {
-          $entity->field_action_url = Array(
-            $entity->language => array(
-              0 => Array(
-               'url' => 'local',
-               'title' => 'Take Action',
-               'attributes' => array(
-               ),
-              ),
-            ),
-          );
-        }
+      if($entity->type == 'action' && empty($entity->field_action_url)) {
+        $entity->field_action_url = array(
+          $entity->language => array(array(
+            'url' => 'local',
+            'title' => t('Take Action'),
+            'attributes' => array(),
+          )),
+        );
       }
     }
   }
@@ -48,30 +42,4 @@ function takepart_action_preprocess_node(&$variables) {
   if($variables['type'] == 'action') {
     $variables['submitted'] = NULL;
   }
-}
-
-function takepart_action_preprocess_page(&$variables) {
-   
-  if(!empty($variables['node']) && $variables['node']->type == 'action') {
-    
-    // add the action url as a variable
-    $node = $variables['node'];
-    $action_url = NULL;
-    
-    if (!empty($node->field_action_url)) {
-      $action_url = $node->field_action_url[$node->language][0]['url'];
-    }
-    $actionClick_vars = array();
-    
-    if (valid_url($action_url)) {
-      $variables['action_url'] = $node->field_action_url[$node->language][0]['url'];
-      $actionClick_vars = array('action_url' => $action_url);
-    }
-    
-    drupal_add_js(array('TPactionClick' => $actionClick_vars), 'setting');
-
-    $path = drupal_get_path('module', 'takepart_action');
-    drupal_add_js($path . '/js/takepart-action.js');
-  }
-  
 }

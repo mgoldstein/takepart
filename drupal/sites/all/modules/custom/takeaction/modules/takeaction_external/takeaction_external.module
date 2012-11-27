@@ -5,6 +5,16 @@
  */
 
 /**
+ * Implements hook_entity_info_alter().
+ */
+function takeaction_external_entity_info_alter(&$entity_info) {
+  // Add the analytics controller to external actions
+  $entity_info['node']['analytics']['bundles']['action'] = array(
+    'controller class' => 'ExternalActionAnalyticsController',
+  );
+}
+
+/**
  * Implements hook_menu().
  */
 function takeaction_external_menu() {
