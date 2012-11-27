@@ -124,8 +124,8 @@ function takeaction_thankyou_block_view($delta = '') {
             '#action_type' => $context['action_type'],
             '#progress' => $context['progress'],
           ),
-          'progress_needed' => array(
-            '#theme' => 'signature_progress_needed',
+          'progress_goal' => array(
+            '#theme' => 'signature_progress_goal',
             '#node' => $context['node'],
             '#action_type' => $context['action_type'],
             '#progress' => $context['progress'],
@@ -223,6 +223,7 @@ function takeaction_thankyou_block_view($delta = '') {
             'src' => $src,
             'class' => implode(' ', array('more-actions')),
             'frameborder' => 0,
+            'scrolling' => 'no',
           ),
           '#value' => '',
         );
