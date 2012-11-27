@@ -1652,7 +1652,7 @@ function theme_signature_progress_goal($variables) {
     '<span class="count">@commafied</span> <span class="units">@units</span>', $units);
   $output = '<div class="signature-progress-goal ' . $classes . '">';
   $output .= $count;
-  $output .= ' <span class="for-label">for</span>';
+  $output .= ' <span class="for-label">of</span>';
   $output .= ' <span class="goal">' . number_format($progress['goal']) . '</span>';
   $output .= ' <span class="goal-label">goal</span>';
   $output .= '</div>';
