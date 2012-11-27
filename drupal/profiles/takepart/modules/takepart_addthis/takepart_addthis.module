@@ -760,6 +760,7 @@ function takepart_addthis_field_formatter_settings_summary($field, $instance,
  */
 function takepart_addthis_field_formatter_view($entity_type, $entity, $field,
   $instance, $langcode, $items, $display) {
+  global $user;
 
   $element = array();
   $settings = $display['settings'];
@@ -771,6 +772,10 @@ function takepart_addthis_field_formatter_view($entity_type, $entity, $field,
     'orientation' => $settings['orientation'] == 'vertical'
     ? 'share-bar-vertical' : 'share-bar-horizontal',
   );
+
+  if ($entity_type === 'node') {
+    $variables['nid'] = $entity->nid;
+  }
 
   foreach ($items as $delta => $item) {
 
@@ -799,6 +804,7 @@ function takepart_addthis_field_formatter_view($entity_type, $entity, $field,
 
   drupal_add_js(array('addthis' => array(
     'fields' => $configurations,
+    'email' => empty($user) ? '' : $user->mail,
   )), 'setting');
 
   $js_path = drupal_get_path('module', 'takepart_addthis')
@@ -810,10 +816,10 @@ function takepart_addthis_field_formatter_view($entity_type, $entity, $field,
 
 function theme_takepart_addthis_full_page_button_bar($variables) {
 
-  return array(
+  $element = array(
     '#type' => 'container',
     '#attributes' => array(
-      'class' => array('share-bar-field', $variables['orientation']),
+      'class' => array('share-bar-field', $variables['orientation'], 'display-type-full-page'),
       'id' => $variables['id'],
     ),
     'toolbox' => array(
@@ -859,6 +865,10 @@ function theme_takepart_addthis_full_page_button_bar($variables) {
       ),
     ),
   );
+  if (!empty($variables['nid'])) {
+    $element['toolbox']['#attributes']['nid'] = $variables['nid'];
+  }
+  return $element;
 }
 
 function theme_takepart_addthis_takeaction_thank_you_button_bar($variables) {
@@ -872,7 +882,7 @@ function theme_takepart_addthis_takeaction_thank_you_button_bar($variables) {
   $ta_em_src = drupal_get_path('module', 'takepart_addthis')
     . '/images/ta_email_share.png';
   
-  return array(
+  $element = array(
     '#type' => 'container',
     '#attributes' => array(
       'class' => array('share-bar-field', $variables['orientation'], 'takeaction-thank-you'),
@@ -913,7 +923,10 @@ function theme_takepart_addthis_takeaction_thank_you_button_bar($variables) {
       ),
     ),
   );
-
+  if (!empty($variables['nid'])) {
+    $element['toolbox']['#attributes']['nid'] = $variables['nid'];
+  }
+  return $element;
 }
 
 function theme_takepart_addthis_thank_you_button_bar($variables) {
@@ -929,10 +942,10 @@ function theme_takepart_addthis_thank_you_button_bar($variables) {
   
   $dashboard_url = variable_get('takeaction_dashboard_url', '#');
 
-  return array(
+  $element = array(
     '#type' => 'container',
     '#attributes' => array(
-      'class' => array('share-bar-field', $variables['orientation']),
+      'class' => array('share-bar-field', $variables['orientation'], 'display-type-thank-you'),
       'id' => $variables['id'],
     ),
     'toolbox' => array(
@@ -970,6 +983,10 @@ function theme_takepart_addthis_thank_you_button_bar($variables) {
       ),
     ),
   );
+  if (!empty($variables['nid'])) {
+    $element['toolbox']['#attributes']['nid'] = $variables['nid'];
+  }
+  return $element;
 }
 
 /**

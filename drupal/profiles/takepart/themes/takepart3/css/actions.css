@@ -313,10 +313,13 @@ margin-bottom: 40px;
 #block-takeaction-thankyou-thank-you {
   font-size: 13px;
 }
+
+#block-takeaction-thankyou-thank-you .content .goal,
 #block-takeaction-thankyou-thank-you .content .count,
 #block-takeaction-thankyou-thank-you .content .title {
   font-weight: bold;
 }
+
 .main-content #block-takeaction-thankyou-thank-you h2, /* selector override */
 #block-takeaction-thankyou-thank-you h2 {
   font-size: 34px;
@@ -1058,7 +1061,6 @@ iframe.moreactions {
   text-align: center;
 }
 
-.petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-goal,
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-days-left span {
   font-size: 25px;
   text-shadow: 0 1px 0 white;
@@ -1066,6 +1068,20 @@ iframe.moreactions {
   font-family: 'TradeGothicLTStdCnBold';
   text-transform: uppercase;
   line-height: 1;
+}
+
+.view-takeaction-landing-page-recent-a .action-content-type .signature-progress-goal {
+  text-transform: uppercase;
+  font-family: 'TradeGothicLTStdCnBold', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  position: absolute;
+  top: 20px;
+  right: 95px;
+}
+
+.view-mode-action-summary .signature-progress-goal {
+  padding-top: 35px;
+  color: #666;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-days-left .count {
@@ -1400,6 +1416,11 @@ iframe.moreactions {
   vertical-align: middle;
 }
 
+.embedaction-wrapper .group-signature-progress .signature-progress-goal {
+  padding: 0 15px;
+  width: 115px;
+}
+
 .embedaction-wrapper .signature-progress-days-left,
 .embedaction-wrapper .signature-progress-needed .count,
 .embedaction-wrapper .signature-progress-goal .count {
@@ -1547,12 +1568,14 @@ iframe.moreactions {
   width: 380px;
 }
 
-/*.field-name-field-petition-recipient .field-item:after {
+.field-name-field-action-sponsor .field-item:after,
+.field-name-field-petition-recipient .field-item:after {
   content: ', ';
   display: inline;
 }
 
+.field-name-field-action-sponsor  .field-item:last-child:after,
 .field-name-field-petition-recipient .field-item:last-child:after {
   content: '';
   display: none;
-}*/
+}
