@@ -18,13 +18,14 @@ function takeaction_javascript_init() {
       $button_js = "
         window.TP = window.TP || {};
         TP.tabHost = '{$scheme}://{$host}';
-        (function() {
-          var po = document.createElement('script');
-          po.type = 'text/javascript';
-          po.async = true;
-          po.src = '{$button_js_url}';
+        (function() {         
+          var tabScript = document.createElement('script');
+          tabScript.type = 'text/javascript';
+          tabScript.async = true;
+          scriptLocation = TP.tabHost || 'http://takeaction.takepart.com';
+          tabScript.src = scriptLocation + '/assets/publisher.js';
           var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(po, s);
+          s.parentNode.insertBefore(tabScript, s);
         })();
       ";
       drupal_add_js($button_js, array(
