@@ -325,10 +325,13 @@ margin-bottom: 40px;
 #block-takeaction-thankyou-thank-you {
   font-size: 13px;
 }
+
+#block-takeaction-thankyou-thank-you .content .goal,
 #block-takeaction-thankyou-thank-you .content .count,
 #block-takeaction-thankyou-thank-you .content .title {
   font-weight: bold;
 }
+
 .main-content #block-takeaction-thankyou-thank-you h2, /* selector override */
 #block-takeaction-thankyou-thank-you h2 {
   font-size: 34px;
