@@ -44,7 +44,25 @@
     <div class="contents">
       <div class="leftside">
         <div class="vidmap">
-          <div class="vidmap"><?php print takepart_vidpop_loading_graphic(); ?></div>
+          <div id="vidpop-social" class="social-links">
+            <div class="addthis_toolbox addthis_default_style">
+              <a class="addthis_button_facebook_like"
+                 addthis:url="<?php print $share_node_url; ?>"
+                 fb:like:action="like"
+                 fb:like:layout="button_count"></a>
+              <a class="addthis_button_tweet"
+                 tw:counturl="<?php print $share_node_url; ?>"
+                 tw:count="horizontal"
+                 tw:url="<?php print $share_node_url; ?>"
+                 tw:text="<?php print $share_node_title; ?>"
+                 tw:via="TakePart"
+                 tw:title="Tweet"></a>
+              <a class="addthis_button_email"
+                 title="Email"
+                 addthis:url="<?php print $share_node_url; ?>"></a>
+            </div>
+          </div>
+          <div class="vidmap-inner"><?php print takepart_vidpop_loading_graphic(); ?></div>
         </div>
       </div>
       <div class="rightside">
@@ -53,24 +71,6 @@
         <!-- subscribe button -->
         <div class="subscribe"><a target="_blank" href="http://www.youtube.com/subscription_center?add_user_id=FYRWsIH2BivGa_-2LVTsBA&amp;feature=creators_cornier-http%3A//s.ytimg.com/yt/img/creators_corner/Subscribe_to_my_videos/YT_Subscribe_160x27_red.png"><img alt="Subscribe to me on YouTube" src="http://s.ytimg.com/yt/img/creators_corner/Subscribe_to_my_videos/YT_Subscribe_160x27_red.png" /></a></div>
 
-        <div id="vidpop-social" class="social-links">
-          <div class="addthis_toolbox addthis_default_style">
-            <a class="addthis_button_facebook_like"
-               addthis:url="<?php print $share_node_url; ?>"
-               fb:like:action="like"
-               fb:like:layout="button_count"></a>
-            <a class="addthis_button_tweet"
-               tw:counturl="<?php print $share_node_url; ?>"
-               tw:count="horizontal"
-               tw:url="<?php print $share_node_url; ?>"
-               tw:text="<?php print $share_node_title; ?>"
-               tw:via="TakePart"
-               tw:title="Tweet"></a>
-            <a class="addthis_button_email"
-               title="Email"
-               addthis:url="<?php print $share_node_url; ?>"></a>
-          </div>
-        </div>
         <div class="comment-link"><?php print $comment_link ?></div>
       </div>
     </div>

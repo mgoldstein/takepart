@@ -112,8 +112,9 @@ function vidpop_loaded() {
         //alert(vidpopSource);
         switch(vidpopSource) {
           case 'node':
-            $('#cboxWrapper').css('height', '420px');
-            $('#cboxContent').css('height', '420px');
+            $('#colorbox').css('height', '450px');
+            $('#cboxWrapper').css('height', '450px');
+            $('#cboxContent').css('height', '450px');
             break;
         }
       });

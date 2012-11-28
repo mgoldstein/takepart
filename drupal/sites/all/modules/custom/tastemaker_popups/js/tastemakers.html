@@ -121,7 +121,7 @@ videoData[1][4] = ["32069", "http://www.takepart.com/sites/default/files/tpmeal_
         listeners[r + "-" + c]();
         jQuery.get("/tastemaker/video_details/" + val, function(data, video_id) {
           //alert('getting  ' + r + '::' + c + ' data: ' + data);
-          jQuery("#taste-details-" + r + "-" + c + " .leftside .vidmap").html(data);
+          jQuery("#taste-details-" + r + "-" + c + " .leftside .vidmap-inner").html(data);
         });
       }
     }
