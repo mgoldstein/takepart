@@ -212,8 +212,8 @@ function _render_tp3_user_menu($variables) {
                 
                 if ($variables['node']->type == 'venue' || $variables['node']->type == 'action'
             || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action' || (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])))  {            
-                if (strlen($username)>6) {
-                    $username = substr($username,0,5) . "…";
+                if (strlen($username)>10) {
+                    $username = substr($username,0,10) . "…";
                 }
             }
                 $menu_item['link']['title'] = $username;
