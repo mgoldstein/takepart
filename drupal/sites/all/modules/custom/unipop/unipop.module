@@ -172,7 +172,7 @@ function unipop_set_metric_page_load($op, $id = NULL, $title = NULL, $type = NUL
 EOT;
         }
 
-        $js = 'function c() { ' . $js . '};';
+        $js = 'function unipop_loaded() { ' . $js . '};';
 
         // add our types and titles data as vars, accessible as:
         //   Drupal.settings.unipop.unipop_titles
