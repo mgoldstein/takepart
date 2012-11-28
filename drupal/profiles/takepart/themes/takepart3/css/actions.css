@@ -1028,10 +1028,6 @@ iframe.moreactions {
   text-shadow: 0 1px 0 #fff;
 }
 
-.petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-goal {
-
-}
-
 .petition_pledge_action #block-signature-summary .group-signature-progress span {
   position: relative;
 }
@@ -1083,6 +1079,8 @@ iframe.moreactions {
 .view-mode-action-summary .signature-progress-goal {
   padding-top: 35px;
   color: #666;
+  margin-left: -60px;
+  text-align: center;
 }
 
 .petition_pledge_action #block-signature-summary .group-signature-progress .signature-progress-days-left .count {
