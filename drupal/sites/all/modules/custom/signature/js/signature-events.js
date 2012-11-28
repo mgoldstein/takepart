@@ -53,6 +53,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
     s.eVar23 = args.group;
     s.eVar25 = args.title;
     s.eVar30 = args.view_mode === 'full' ? args.page_name : s.pageName;
+    s.eVar38 = 'Petition';
     s.eVar39 = view_modes[args.view_mode];
     s.tl(true, 'o', 'newsletter signup');
   };
@@ -63,6 +64,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
     s.eVar23 = args.group;
     s.eVar30 = args.view_mode === 'full' ? args.page_name : s.pageName;
     s.eVar32 = args.title;
+    s.eVar38 = 'Pledge';
     s.eVar39 = view_modes[args.view_mode];
     s.tl(true, 'o', 'newsletter signup');
   };
