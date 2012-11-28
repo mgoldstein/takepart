@@ -176,7 +176,8 @@ function _render_tp3_main_menu_bsd() {
 /**
  * Helper to output the custom HTML for out main menu.
  */
-function _render_tp3_user_menu() {
+function _render_tp3_user_menu($variables) {
+    // dpm($vars);
     $menu_data = menu_tree_page_data("user-menu");
     $uri = drupal_get_path_alias($_GET['q']);
     $uri = substr($uri, 0, 14);
@@ -208,7 +209,13 @@ function _render_tp3_user_menu() {
                 } else {
                     $username = $user->name;
                 }
-
+                
+                if ($variables['node']->type == 'venue' || $variables['node']->type == 'action'
+            || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action' || (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])))  {            
+                if (strlen($username)>10) {
+                    $username = substr($username,0,10) . "…";
+                }
+            }
                 $menu_item['link']['title'] = $username;
                 $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');
             } else {
@@ -1144,7 +1151,7 @@ function _tp3_fill_template_vars(&$variables) {
         $variables['corporate_links_nav'] = _render_tp3_corporate_links_menu();
     }
     if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
-        $variables['user_nav'] = _render_tp3_user_menu();
+        $variables['user_nav'] = _render_tp3_user_menu(&$variables);
     }
     if ((!isset($variables['takepart_theme_path'])) || (!$variables['takepart_theme_path'])) {
         $variables['takepart_theme_path'] = drupal_get_path('theme', 'takepart3');

@@ -2,6 +2,22 @@ if (typeof takepart == "undefined" || !takepart) {
     var takepart = {};
 }
 
+// TODO: Put all the document ready code in one document ready closure
+(function(window, $, undefined) {
+    // Document ready
+    $(function() {
+        // Delegates
+        $('body')
+            // Skip link tabbing fix for Webkit
+            .delegate('#skip-link a', 'click', function() {
+                $($(this).attr('href')).attr('tabIndex', '-1').focus();
+            })
+            ;
+    });
+})(window, jQuery);
+
+
+
 jQuery.fn.DefaultValue = function(text){
     return this.each(function(){
         //Make sure we're dealing with text-based form fields

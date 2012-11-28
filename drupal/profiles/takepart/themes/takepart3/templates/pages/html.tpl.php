@@ -54,7 +54,7 @@
     </head>
     <body class="<?php print $classes; ?>" <?php print $attributes; ?>>
         <div id="skip-link">
-            <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
+            <a href="#page" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
         </div>
         <?php
         if (isset($page_top)):
