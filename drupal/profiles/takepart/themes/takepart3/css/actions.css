@@ -260,7 +260,8 @@ div.drupal-embed .view-mode-medium-preview .group-summary .signature-call-to-act
   text-decoration: none;
 }
 .view-mode-medium-preview .signature-progress-needed,
-.view-mode-medium-preview .needed {
+.view-mode-medium-preview .needed,
+.view-mode-medium-preview .signature-progress-goal {
   font-size: 11px;
   color: #707070;
   padding-top: 5px;
@@ -1069,15 +1070,6 @@ iframe.moreactions {
   font-family: 'TradeGothicLTStdCnBold';
   text-transform: uppercase;
   line-height: 1;
-}
-
-.view-takeaction-landing-page-recent-a .action-content-type .signature-progress-goal {
-  text-transform: uppercase;
-  font-family: 'TradeGothicLTStdCnBold', Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  position: absolute;
-  top: 20px;
-  right: 95px;
 }
 
 .view-mode-action-summary .signature-progress-goal {
