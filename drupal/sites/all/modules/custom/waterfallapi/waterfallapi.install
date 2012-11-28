@@ -35,14 +35,14 @@ function waterfallapi_schema() {
       ),
       'msisdns' => array(
         'description' => 'Phone number or msisdns.',
-        'type' => 'int',
-        'unsigned' => TRUE,
+        'type' => 'char',
+        'length' => 12, 
         'not null' => TRUE,
       ),
       'zip' => array(
         'description' => 'The zip code.',
-        'type' => 'int',
-        'unsigned' => TRUE,
+        'type' => 'char',
+        'length' => 6, 
         'not null' => TRUE,
       ),
       'uid' => array(

@@ -203,8 +203,12 @@ function waterfallapi_form_submit($form, &$form_state) {
 			    							variable_get('waterfallsubscriptionSMS',  ''), 
 			    							variable_get('waterfallsubscriptionSMSConfirm',  ''));
 
-	$result = db_query("INSERT INTO {waterfallapi_signups} (msisdns, zip, uid, created) VALUES (%d, %d, %d, %d)", 
-		$areacode.$prefix.$line, $zip, $user->uid, time());
+	$result = db_insert('waterfallapi_signups')->fields(array(
+		  'msisdns' => $areacode.$prefix.$line,
+		  'zip' => $zip,
+		  'uid' => $user->uid,
+		  'created' => time(),
+		))->execute();
 
 	drupal_set_message(t(variable_get('waterfallsubscriptionSMSConfirm',  '')), 'status');
 
