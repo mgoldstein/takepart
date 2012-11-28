@@ -16,7 +16,9 @@
         //alert(vidpopSource);
         switch(vidpopSource) {
           case 'rtrail':
-            $('#cboxWrapper').css('height', '445px');
+            $('#colorbox').css('height', '455px');
+            $('#cboxWrapper').css('height', '455px');
+            $('#cboxContent').css('height', '455px');
             break;
         }
       });

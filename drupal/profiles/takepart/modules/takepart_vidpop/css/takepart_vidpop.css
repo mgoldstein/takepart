@@ -223,12 +223,15 @@ div.vidpop-preview-overlay-text .line2 {
   text-align: center;
   font-family: arial !important;
   font-weight: bold;
-  
 }
 .vidpop-popup .tp-vidpop-share-button-bar {
   margin: 10px 0 10px 60px;  
 }
 .vidpop-popup .tp-vidpop-share-button-bar {
+}
+
+.vidpop-popup #vidpop-social {
+  margin-bottom: 10px;
 }
 
 .vidpop-popup .addthis_button_tweet {
