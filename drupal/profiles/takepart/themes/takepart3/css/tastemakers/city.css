@@ -13,13 +13,18 @@
 ================================================== */
 .city-content .enter-guide-wrapper {
   text-align: right;
+  direction:rtl;
 }
 .city-content .enter-guide {
   background: url('../../images/tastemakers/city/enter_guide.jpg') no-repeat;
   width: 131px;
   height:67px;
   display: inline-block; *display: inline; *zoom: 1;
-  color: transparent !important;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  *text-indent: 0;
+  line-height: 1000px;
 }
 .city-content .enter-guide:hover {
   background-position: 0 -67px;
