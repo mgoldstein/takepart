@@ -160,11 +160,16 @@ function takeaction_thankyou_block_view($delta = '') {
       $items = field_get_items('node', $node, 'field_thank_you_share_bar');
       if (!empty($items)) {
         $item = reset($items);
+        $share_url = !empty($item['alternate_url']) ? $item['alternate_url']
+          : $context['node_url'];
+        $twitter = !empty($item['twitter_message']) ? $item['twitter_message']
+          : $context['thankyou']['action_title'] . ': {{url}}';
+        $email = !empty($item['email_message']) ? $item['email_message']
+          : $context['thankyou']['action_title'] . ': ' . $context['node_url'];
         $configurations[$id] = array(
-          'alternate_url' => empty($item['alternate_url'])
-            ? $context['node_url'] : $item['alternate_url'],
-          'twitter_message' => $item['twitter_message'],
-          'email_message' => $item['email_message'],
+          'alternate_url' => $share_url,
+          'twitter_message' => $twitter,
+          'email_message' => $email,
         );
       }
     
