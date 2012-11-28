@@ -37,7 +37,8 @@ class waterFallAPI {
                   $basictext, $optInMessage, $confirmMessage, 
                   $subscribedMessage);
 
-    $url = $this::BASEDOMAIN . "/api/v1/messaging/sendContent";
+    //$url = $this::BASEDOMAIN . "/api/v1/messaging/sendContent";
+    $url = "http://three.waterfallmobile.com" . "/api/v1/messaging/sendContent";
     $return = $this->curl_post($url, $payload);
     return $return;
   }
@@ -52,7 +53,8 @@ class waterFallAPI {
    */
   public function authenticate($user, $pass) {
     $payload = $this->buildLoginJSON($user, $pass);
-    $url = $this::BASEDOMAIN . "/api/v1/authenticate";
+    //$url = $this::BASEDOMAIN . "/api/v1/authenticate";
+    $url = "http://three.waterfallmobile.com" . "/api/v1/authenticate";
     $return = $this->curl_post($url, $payload);
     return $return;
   }
@@ -63,7 +65,8 @@ class waterFallAPI {
    *   Response from API.
    */
   public function logout() {
-    $url = $this::BASEDOMAIN . "/api/v1/authenticate/logout";
+    //$url = $this::BASEDOMAIN . "/api/v1/authenticate/logout";
+    $url = "http://three.waterfallmobile.com" . "/api/v1/authenticate/logout";
     $return = $this->curl_post($url);
     return $return;
   }
@@ -74,7 +77,8 @@ class waterFallAPI {
    *   XML Response from API.
    */
   public function whoami() {
-    $url = $this::BASEDOMAIN . "/api/v1/authenticate/whoami";
+    //$url = $this::BASEDOMAIN . "/api/v1/authenticate/whoami";
+    $url = "http://three.waterfallmobile.com" . "/api/v1/authenticate/whoami";
     $return = $this->curl_get($url);
     return $return;
   }
@@ -87,7 +91,8 @@ class waterFallAPI {
    *   XML response from API.
    */
   public function listInfoByID($id) {
-    $url = $this::BASEDOMAIN . "/api/v1/list/$id";
+    //$url = $this::BASEDOMAIN . "/api/v1/list/$id";
+    $url = "http://three.waterfallmobile.com" . "/api/v1/list/$id";
     $return = $this->curl_get($url);
     return $return;
   }
@@ -102,19 +107,22 @@ class waterFallAPI {
   public function listInfoByName($name) {
     $json = new stdClass();
     $json->{'name'} = $name;
-    $url = $this::BASEDOMAIN . "/api/v1/list";
+    //$url = $this::BASEDOMAIN . "/api/v1/list";
+    $url = "http://three.waterfallmobile.com" . "/api/v1/list";
     $return = $this->curl_post($url, json_encode($json));
     return $return;
   }
 
   public function setSessionShortCode($id) {
-    $url = $this::BASEDOMAIN . " /api/v1/shortcode/sessionshortcode/" . $id;
+    //$url = $this::BASEDOMAIN . " /api/v1/shortcode/sessionshortcode/" . $id;
+    $url = "http://three.waterfallmobile.com" . " /api/v1/shortcode/sessionshortcode/" . $id;
     $return = $this->curl_post($url);
     return $return;
   }
 
   public function metaDataInfo() {
-    $url = $this::BASEDOMAIN . "/api/v1/metadata";
+    //$url = $this::BASEDOMAIN . "/api/v1/metadata";
+    $url = "http://three.waterfallmobile.com" . "/api/v1/metadata";
     $return = $this->curl_get($url);
     return $return;
   } 
@@ -197,7 +205,7 @@ class waterFallAPI {
       curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
       curl_setopt($ch, CURLOPT_URL, $url);
       curl_setopt($ch, CURLOPT_POST, 1);
-      curl_setopt($ch, CURLOPT_TIMEOUT, $this::TIMEOUT);
+      //curl_setopt($ch, CURLOPT_TIMEOUT, $this::TIMEOUT);
       if(!is_null($payload)) {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
       } else {
@@ -228,7 +236,7 @@ class waterFallAPI {
     if (function_exists('curl_init')) {
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $url);
-      curl_setopt($ch, CURLOPT_TIMEOUT, $this::TIMEOUT);
+      //curl_setopt($ch, CURLOPT_TIMEOUT, $this::TIMEOUT);
       curl_setopt($ch, CURLOPT_COOKIEJAR, $this->getCookieTempPath()); 
       curl_setopt($ch, CURLOPT_COOKIEFILE, $this->getCookieTempPath());
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
