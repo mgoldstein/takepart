@@ -1,0 +1,56 @@
+  
+#block-waterfallapi-waterfallsubscription {
+    background-image: url("images/tastemakers_sms_sub_widget_bg_300x250.jpg");
+    color: #787878;
+    font-family: Helvetica,Arial,sans-serif;
+    height: 235px;
+    overflow: hidden;
+    padding: 10px 10px 5px;
+    text-align: left;
+    width: 280px;
+    border: 0 !important;
+ }
+
+
+#block-waterfallapi-waterfallsubscription h2 {
+	font-size: 16px !important;
+	font-weight: bold !important;
+	line-height: 20px !important;
+	margin-bottom: 2px !important;
+	text-transform: uppercase !important;
+	background: none !important;
+}
+
+#block-waterfallapi-waterfallsubscription h2 span {
+	background: none !important;
+	color: #787878 !important;
+	border-right: medium none !important;
+}
+
+#block-waterfallapi-waterfallsubscription #edit-cellphone .form-item {
+	float: left;
+	padding-right: 3px;
+}
+
+#block-waterfallapi-waterfallsubscription fieldset {
+	border: 0 none;
+    margin: 0;
+    padding: 0;
+}
+
+#block-waterfallapi-waterfallsubscription fieldset legend {
+	color: #787878 !important;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 11px;
+    line-height: 19px;
+}
+
+#block-waterfallapi-waterfallsubscription fieldset legend span {
+	color: #787878 !important;
+}
+
+#block-waterfallapi-waterfallsubscription .form-item {
+	margin-top: 0 !important;
+}
+
+

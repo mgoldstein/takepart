@@ -1,0 +1,3 @@
+name = Waterfall API and Block
+description = A library for the Waterfall API and a Signup block.
+core = 7.x

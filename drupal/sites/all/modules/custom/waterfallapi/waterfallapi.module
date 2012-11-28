@@ -1,0 +1,207 @@
+<?php
+
+include(drupal_get_path('module', 'waterfallapi') . '/includes/waterfallapi.inc');
+
+function waterfallapi_block_info() {
+  $blocks = array();
+
+  $blocks['waterfallsubscription'] = array(
+    'info' => t('Waterfall Subscription Block')
+  );
+
+  return $blocks;
+}
+
+function waterfallapi_block_configure($delta = '') {
+
+  $form = array();
+  if ($delta == 'waterfallsubscription') {
+    $form['waterfallsubscriptioncelltitle'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Cell Title'),
+		'#size' => 60,
+		'#description' => t('Title for cell field.'),
+		'#default_value' => variable_get('waterfallsubscriptioncelltitle',  ''),
+    );
+    $form['waterfallsubscriptionziptitle'] = array(
+		'#type' => 'textfield',
+		'#title' => t('ZIP Title'),
+		'#size' => 60,
+		'#description' => t('Title for ZIP field.'),
+		'#default_value' => variable_get('waterfallsubscriptionziptitle',  ''),
+    );
+     $form['waterfallsubscriptiontext'] = array(
+		'#type' => 'textarea',
+		'#title' => t('Block Contents'),
+		'#cols' => 60,
+		'#rows' => 5,
+		'#description' => t('This text will appear above the cellphone entry in the waterfall subscription block.'),
+		'#default_value' => variable_get('waterfallsubscriptiontext',  ''),
+    );
+    $form['waterfallsubscriptionsubtext'] = array(
+		'#type' => 'textarea',
+		'#title' => t('Block SubText Contents'),
+		'#cols' => 60,
+		'#rows' => 5,
+		'#description' => t('This text will appear below the zip entry in the waterfall subscription block.'),
+		'#default_value' => variable_get('waterfallsubscriptionsubtext',  ''),
+    );
+    $form['waterfallsubscriptionSMS'] = array(
+		'#type' => 'textarea',
+		'#title' => t('SMS Text'),
+		'#cols' => 60,
+		'#rows' => 5,
+		'#description' => t('Text to send in SMS message.'),
+		'#default_value' => variable_get('waterfallsubscriptionSMS',  ''),
+    );
+    $form['waterfallsubscriptionSMSConfirm'] = array(
+		'#type' => 'textarea',
+		'#title' => t('SMS Confirmation Message'),
+		'#cols' => 60,
+		'#rows' => 5,
+		'#description' => t('Confirmation message.'),
+		'#default_value' => variable_get('waterfallsubscriptionSMSConfirm',  ''),
+    );
+  }
+  return $form;
+}
+
+function waterfallapi_block_save($delta = '', $edit = array()) {
+  if ($delta == 'waterfallsubscription') {
+    variable_set('waterfallsubscriptiontext', $edit['waterfallsubscriptiontext']);
+    variable_set('waterfallsubscriptioncelltitle', $edit['waterfallsubscriptioncelltitle']);
+    variable_set('waterfallsubscriptionziptitle', $edit['waterfallsubscriptionziptitle']);
+    variable_set('waterfallsubscriptionsubtext', $edit['waterfallsubscriptionsubtext']);
+    variable_set('waterfallsubscriptionSMS', $edit['waterfallsubscriptionSMS']);
+    variable_set('waterfallsubscriptionSMSConfirm', $edit['waterfallsubscriptionSMSConfirm']);
+  }
+  return;
+}
+
+
+function waterfallapi_block_view($delta = '') {
+  switch ($delta) {
+    case 'waterfallsubscription':
+	  drupal_add_css (drupal_get_path('module', 'waterfallapi') . '/waterfallapi.css');
+	  $block['subject'] = t('Waterfall SMS Block');
+	  $block['content'] = waterfallapi_block_contents($delta);
+	  break;
+  }
+  return $block;
+}
+
+
+function waterfallapi_block_contents($which_block) {
+  switch ($which_block) {
+    case 'waterfallsubscription':
+      return array('waterfallsubscriptiontext' => array('#markup' => variable_get('waterfallsubscriptiontext', ''),),
+        	'form' => drupal_get_form('waterfallapi_form'),
+        	'waterfallsubscriptionsubtext' => array('#markup' => variable_get('waterfallsubscriptionsubtext', ''),),
+        	);
+
+  }
+}
+
+
+function waterfallapi_menu() {
+  $items['admin/waterfallapi'] = array(
+    'page callback' => 'waterfallapi_page',
+    'access callback' => TRUE,
+    'title' => 'Waterfall API',
+  );
+  return $items;
+}
+
+function waterfallapi_page() {
+  $page = array(
+    '#type' => 'markup',
+    '#markup' => t('Waterfall API Stats'),
+  );
+  return $page;
+}
+
+function waterfallapi_form($form, &$form_state) {
+    $form = array();
+
+	$form['cellphone'] = array(
+		'#type' => 'fieldset',
+		'#title' => variable_get('waterfallsubscriptioncelltitle', t('Enter Your Cell Phone Number:')),
+		'#collapsible' => FALSE,
+		'#collapsed' => FALSE,
+	);
+
+
+	$form['cellphone']['areacode'] = array(
+		'#type' => 'textfield',
+		'#size' => 3,
+		'#maxlength' => 3,
+	);
+
+	$form['cellphone']['phone1'] = array(
+		'#type' => 'textfield',
+		'#size' => 3,
+		'#maxlength' => 3,
+	);
+
+	$form['cellphone']['phone2'] = array(
+		'#type' => 'textfield',
+		'#size' => 4,
+		'#maxlength' => 4,
+	);
+
+	$form['zip'] = array(
+		'#type' => 'fieldset',
+		'#title' => variable_get('waterfallsubscriptionziptitle', t('Enter Your Zip Code to Get Local Tips:') . '<div>(Optional)</div>'),
+		'#collapsible' => FALSE,
+		'#collapsed' => FALSE,
+	);
+
+	$form['zip']['zipcode'] = array(
+		'#type' => 'textfield',
+		'#size' => 5,
+		'#maxlength' => 5,
+	);
+
+    $form['submit'] = array (
+        '#type' => 'submit',
+        '#value' => 'Subscribe',
+    );
+
+    return $form;
+}
+
+function waterfallapi_form_validate($form, &$form_state) {
+	if(!is_numeric($form['cellphone']['areacode']['#value'])) form_set_error('Phone Number', t('The area code must be numeric.'));
+	if(!is_numeric($form['cellphone']['phone1']['#value'])) form_set_error('Phone Number', t('The prefix code must be numeric.'));
+	if(!is_numeric($form['cellphone']['phone2']['#value'])) form_set_error('Phone Number', t('The line number must be numeric.'));
+	if(!is_numeric($form['zip']['zipcode']['#value'])) form_set_error('Zip Code', t('The Zip code must be numeric.'));
+}
+
+function waterfallapi_form_submit($form, &$form_state) {
+	$canadian = false;
+	$areacode = $form['cellphone']['areacode']['#value'];
+	$prefix = $form['cellphone']['phone1']['#value'];
+	$line = $form['cellphone']['phone2']['#value'];
+	$zip = $form['zip']['zipcode']['#value'];
+	$waterFallAPI = new waterFallAPI;
+	$getCanadianAreaCodes = $waterFallAPI->getCanadianAreaCodes();
+	$canadian = in_array($areacode, $getCanadianAreaCodes);
+	$waterFallAPI->authenticate('TakePart','sms4takepart');
+	if($canadian) { //Canada:
+		$waterFallAPI->setSessionShortCode('505b80e60364fb7d2e2f10e6');
+		$listid = '50b51ccd0cf2d5cf4a7e2982';
+	} else { //US:
+		$waterFallAPI->setSessionShortCode('50ac121203644bd985ef24d4');
+		$listid = '50b51d110cf2d5cf4a7e2991';
+	}
+
+	$subinfo = $waterFallAPI->addSubscriber($listid, $areacode.$prefix.$line, 
+											array(
+			    								'50b4fbf80cf2d5cf4a7e15e5'  => $zip
+			    							),  
+			    							variable_get('waterfallsubscriptionSMS',  ''), 
+			    							variable_get('waterfallsubscriptionSMSConfirm',  ''));
+
+	drupal_set_message(t(variable_get('waterfallsubscriptionSMSConfirm',  '')), 'status');
+
+}

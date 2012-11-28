@@ -1,0 +1,65 @@
+<?php
+/**
+ * @file
+ * Install, update, and uninstall functions for the waterfallapi module.
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function waterfallapi_install() {
+  drupal_set_message(st('The WaterFall API module has been installed.'));
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function waterfallapi_uninstall() {
+  drupal_set_message(st('The WaterFall API module has been uninstalled.'));
+}
+
+/**
+ * Implements hook_schema().
+ */
+function waterfallapi_schema() {
+  $schema = array();
+
+  $schema['waterfallapi_signups'] = array(
+    'description' => 'The base table for SMS signup entries.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key identifier for the signature.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'msisdns' => array(
+        'description' => 'Phone number or msisdns.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'zip' => array(
+        'description' => 'The zip code.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'The user ID who entered; 0 for anonymous users.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the entry was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+
+  return $schema;
+}
