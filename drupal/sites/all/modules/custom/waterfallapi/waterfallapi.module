@@ -83,6 +83,7 @@ function waterfallapi_block_view($delta = '') {
   switch ($delta) {
     case 'waterfallsubscription':
 	  drupal_add_css (drupal_get_path('module', 'waterfallapi') . '/waterfallapi.css');
+	  drupal_add_js (drupal_get_path('module', 'waterfallapi') .'/waterfallapi.js');
 	  $block['subject'] = t('Waterfall SMS Block');
 	  $block['content'] = waterfallapi_block_contents($delta);
 	  break;
@@ -94,9 +95,9 @@ function waterfallapi_block_view($delta = '') {
 function waterfallapi_block_contents($which_block) {
   switch ($which_block) {
     case 'waterfallsubscription':
-      return array('waterfallsubscriptiontext' => array('#markup' => variable_get('waterfallsubscriptiontext', ''),),
+      return array('waterfallsubscriptiontext' => array('#markup' => "<div class=\"waterfallsubscriptiontext\">" . variable_get('waterfallsubscriptiontext', '') . "</div>",),
         	'form' => drupal_get_form('waterfallapi_form'),
-        	'waterfallsubscriptionsubtext' => array('#markup' => variable_get('waterfallsubscriptionsubtext', ''),),
+        	'waterfallsubscriptionsubtext' => array('#markup' => "<div class=\"waterfallsubscriptionsubtext\">" . variable_get('waterfallsubscriptionsubtext', '') . "</div>",),
         	);
 
   }
@@ -190,6 +191,13 @@ function waterfallapi_form($form, &$form_state) {
         '#value' => 'Subscribe',
     );
 
+    $form['submit']['#ajax'] = array(
+      'callback' => 'waterfallapi_form_validate',
+      'wrapper' => 'waterfallapi-form',
+      'method' => 'replace',
+      'effect' => 'fade',
+    );
+
     return $form;
 }
 
@@ -197,7 +205,9 @@ function waterfallapi_form_validate($form, &$form_state) {
 	if(!is_numeric($form['cellphone']['areacode']['#value'])) form_set_error('Phone Number', t('The area code must be numeric.'));
 	if(!is_numeric($form['cellphone']['phone1']['#value'])) form_set_error('Phone Number', t('The prefix code must be numeric.'));
 	if(!is_numeric($form['cellphone']['phone2']['#value'])) form_set_error('Phone Number', t('The line number must be numeric.'));
-	if(!is_numeric($form['zip']['zipcode']['#value'])) form_set_error('Zip Code', t('The Zip code must be numeric.'));
+	if(($form['zip']['zipcode']['#value'] != '') && (!is_numeric($form['zip']['zipcode']['#value']))) {
+		form_set_error('Zip Code', t('The Zip code must be numeric.'));
+	}
 }
 
 function waterfallapi_form_submit($form, &$form_state) {
@@ -225,7 +235,7 @@ function waterfallapi_form_submit($form, &$form_state) {
 			    							),  
 			    							variable_get('waterfallsubscriptionSMS',  ''), 
 			    							variable_get('waterfallsubscriptionSMSConfirm',  ''));
-
+	
 	$result = db_insert('waterfallapi_signups')->fields(array(
 		  'msisdns' => $areacode.$prefix.$line,
 		  'zip' => $zip,
