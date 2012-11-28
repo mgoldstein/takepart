@@ -135,7 +135,8 @@
   width: 273px;
   height: 98px;
   margin: 0 auto;
-  text-indent: -99999999px;
+  text-indent: -9999px;
+  overflow: hidden;
 }
 .tastemakers #right-rail .block-boxes-bid-block-37 a.nationwide {
   background: url('../../images/tastemakers/right_rail/tastemaker_ad/tastemaker_ad_nationwide.jpg') no-repeat;
