@@ -178,6 +178,7 @@ function waterfallapi_form_validate($form, &$form_state) {
 }
 
 function waterfallapi_form_submit($form, &$form_state) {
+	global $user; 
 	$canadian = false;
 	$areacode = $form['cellphone']['areacode']['#value'];
 	$prefix = $form['cellphone']['phone1']['#value'];
@@ -201,6 +202,9 @@ function waterfallapi_form_submit($form, &$form_state) {
 			    							),  
 			    							variable_get('waterfallsubscriptionSMS',  ''), 
 			    							variable_get('waterfallsubscriptionSMSConfirm',  ''));
+
+	$result = db_query("INSERT INTO {waterfallapi_signups} (msisdns, zip, uid, created) VALUES (%d, %d, %d, %d)", 
+		$areacode.$prefix.$line, $zip, $user->uid, time());
 
 	drupal_set_message(t(variable_get('waterfallsubscriptionSMSConfirm',  '')), 'status');
 
