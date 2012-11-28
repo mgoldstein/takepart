@@ -1174,18 +1174,25 @@ body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail
 body.front .main-content .block-boxes-current-promo .views-row:hover
 {
     border:3px solid #14ade7;
-    margin:2px;
 }
 
 .main-content .block-boxes-title-features .action:hover,
-body.front .main-content .block-boxes-current-promo .action:hover
+body.front .main-content .block-boxes-current-promo .action:hover,
+.main-content .block-boxes-title-features .petition-action:hover,
+body.front .main-content .block-boxes-current-promo .petition-action:hover,
+.main-content .block-boxes-title-features .pledge-action:hover,
+body.front .main-content .block-boxes-current-promo .pledge-action:hover
 {
     border:3px solid #f7c806 !important;
     margin:2px;
 }
 
 .main-content .block-boxes-title-features .action .views-field-field-display-tag .field-content,
-body.front .main-content .block-boxes-current-promo .action .views-field-field-display-tag .field-content
+body.front .main-content .block-boxes-current-promo .action .views-field-field-display-tag .field-content,
+.main-content .block-boxes-title-features .petition-action .views-field-field-display-tag .field-content,
+body.front .main-content .block-boxes-current-promo .petition-action .views-field-field-display-tag .field-content,
+.main-content .block-boxes-title-features .pledge-action .views-field-field-display-tag .field-content,
+body.front .main-content .block-boxes-current-promo .pledge-action .views-field-field-display-tag .field-content
 {
     background-color: #f7c806 !important;
 }
