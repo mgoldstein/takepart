@@ -291,22 +291,13 @@ jQuery(document).ready(function () {
 });
 
 jQuery(document).ready(function () {
-    var target = 'body.front .main-content .block-boxes-current-promo .views-row';
-    var i = 0;
-    var index = 0;
-    var tallestofthemall=new Object();
-    jQuery(target).each(function () {
-    	index = parseInt(i/3);
-    	if ((!tallestofthemall[index]) || (jQuery(this).height() > tallestofthemall[index])) {
-    		tallestofthemall[index] = jQuery(this).height();
-    	}
-    	i++;
+    var targets = jQuery('.front .block-boxes-current-promo .views-row');
+    var gHeight = 0;
+    jQuery.each(targets, function (i, target) {
+        gHeight = Math.max(gHeight, jQuery(target).height());
     });
-    i = 0;
-    jQuery(target).each(function () {
-    	index = parseInt(i/3);
-    	jQuery(this).height(tallestofthemall[index]);
-    	i++;
+    jQuery.each(targets, function (i, target) {
+    	jQuery(target).height(gHeight);
     });
 });
 
