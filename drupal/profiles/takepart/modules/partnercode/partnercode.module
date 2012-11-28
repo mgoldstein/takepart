@@ -55,7 +55,7 @@ function partnercode_field_settings_form($field, $instance, $has_data) {
 }
 
 function partnercode_url_parameter_validate($element, &$form_state) {
-  if (!empty($element['#value']) && !preg_match('/[a-zA-Z0-9_]+/', $element['#value'])) {
+  if (!empty($element['#value']) && !preg_match('/^[a-zA-Z0-9\-_]+$/', $element['#value'])) {
     form_error($element, t('Invalid URL parameter'));
   }
 }
@@ -67,7 +67,7 @@ function partnercode_extract_allowed_values($string) {
   $list = array_filter($list, 'strlen');
   foreach ($list as $text) {
     $matches = array();
-    if (preg_match('/([a-z0-9_]+)\|(.+)/', $text, $matches)) {
+    if (preg_match('/([a-z0-9\-_]+)\|(.+)/', $text, $matches)) {
       $values[$matches[1]] = $matches[2];
     }
     else {
@@ -79,7 +79,7 @@ function partnercode_extract_allowed_values($string) {
 
 function partnercode_allowed_values_in_use($field, $values) {
   if ($values) {
-    $query = EntityFieldQuery();
+    $query = new EntityFieldQuery();
     $found = $query
       ->fieldCondition($field['field_name'], 'value', $values)
       ->range(0, 1)
