@@ -1174,6 +1174,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail
 body.front .main-content .block-boxes-current-promo .views-row:hover
 {
     border:3px solid #14ade7;
+    margin:2px;
 }
 
 .main-content .block-boxes-title-features .action:hover,
