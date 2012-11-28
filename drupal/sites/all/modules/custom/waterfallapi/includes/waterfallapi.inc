@@ -37,6 +37,8 @@ class waterFallAPI {
                   $basictext, $optInMessage, $confirmMessage, 
                   $subscribedMessage);
 
+    watchdog('waterFallAPI', 'addSubscriber', $payload, WATCHDOG_DEBUG);
+
     //$url = $this::BASEDOMAIN . "/api/v1/messaging/sendContent";
     $url = "http://three.waterfallmobile.com" . "/api/v1/messaging/sendContent";
     $return = $this->curl_post($url, $payload);
