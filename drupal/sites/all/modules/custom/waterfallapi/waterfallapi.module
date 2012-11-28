@@ -104,7 +104,7 @@ function waterfallapi_block_contents($which_block) {
 
 
 function waterfallapi_menu() {
-  $items['admin/waterfallapi'] = array(
+  $items['admin/reports/waterfallapi'] = array(
     'page callback' => 'waterfallapi_page',
     'access callback' => TRUE,
     'title' => 'Waterfall API',
@@ -113,11 +113,34 @@ function waterfallapi_menu() {
 }
 
 function waterfallapi_page() {
+
+  $nbr_records = db_query("SELECT count(msisdns) FROM {waterfallapi_signups}")->fetchField();
+  $title = "<h2>" . $nbr_records . " Records</h2>";
+
   $page = array(
     '#type' => 'markup',
-    '#markup' => t('Waterfall API Stats'),
+    '#markup' => $title . waterfallapi_generate_report(),
   );
   return $page;
+}
+
+function waterfallapi_generate_report() {
+  $query = db_select('waterfallapi_signups', 'entries')
+    ->extend('PagerDefault')
+    ->fields('entries', array('msisdns', 'zip', 'created'))
+    ->orderBy('created', 'DESC')
+    ->limit(20);
+
+  $result = $query->execute();
+  $output = '<table>';
+  foreach ($result as $row) {
+    $output .= '<tr><td>' . $row->msisdns .'</td><td>' . $row->zip .
+    '</td><td>' . date('Y-m-d h:i:s',$row->created) .'</td></tr>' ;
+  }
+  $output .= '</table>';
+
+  $output .= theme('pager');
+  return $output;
 }
 
 function waterfallapi_form($form, &$form_state) {
