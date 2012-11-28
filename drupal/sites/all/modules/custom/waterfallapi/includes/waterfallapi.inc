@@ -117,7 +117,7 @@ class waterFallAPI {
 
   public function setSessionShortCode($id) {
     //$url = $this::BASEDOMAIN . " /api/v1/shortcode/sessionshortcode/" . $id;
-    $url = "http://three.waterfallmobile.com" . " /api/v1/shortcode/sessionshortcode/" . $id;
+    $url = "http://three.waterfallmobile.com" . "/api/v1/shortcode/sessionshortcode/" . $id;
     $return = $this->curl_post($url);
     return $return;
   }
