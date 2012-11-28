@@ -192,13 +192,17 @@ function waterfallapi_form($form, &$form_state) {
     );
 
     $form['submit']['#ajax'] = array(
-      'callback' => 'waterfallapi_form_validate',
+      'callback' => 'waterfallapi_form_callback',
       'wrapper' => 'waterfallapi-form',
       'method' => 'replace',
       'effect' => 'fade',
     );
 
     return $form;
+}
+
+function waterfallapi_form_callback($form, &$form_state) {
+	return $form;
 }
 
 function waterfallapi_form_validate($form, &$form_state) {
