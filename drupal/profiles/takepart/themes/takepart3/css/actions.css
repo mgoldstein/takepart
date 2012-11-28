@@ -648,6 +648,7 @@ margin-top: 20px;
   padding-top: 20px;
 }
 
+.block-takeaction-thankyou .signature-progress-goal,
 .block-takeaction-thankyou .signature-progress-needed {
   background: url("/profiles/takepart/themes/takepart3/images/twodot58x58linework.png") repeat-x scroll 0 0 transparent;
   height: 58px;
@@ -1570,7 +1571,7 @@ iframe.moreactions {
 
 .field-name-field-action-sponsor .field-item:after,
 .field-name-field-petition-recipient .field-item:after {
-  content: ', ';
+  content: ',\00a0';
   display: inline;
 }
 
