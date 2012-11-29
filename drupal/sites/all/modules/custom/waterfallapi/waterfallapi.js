@@ -44,9 +44,13 @@ $.fn.autoTab = function(params) {
 			     * 145:    Scroll Lock
 			     */
                 var keys = [8, 9, 16, 17, 18, 19, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46, 144, 145];
-                if ( $.inArray(e.which, keys) != -1 ) return true;
-                var s = String.fromCharCode(e.which);
-                if ( !mask.exec(s) ) return false;
+
+                if ( $.inArray(e.keyCode, keys) != -1 ) return true;
+                var s = String.fromCharCode(e.charCode);
+                if ( !mask.exec(s) ) {
+                    e.preventDefault();
+                    return true;
+                }
                 var val = $(this).val();
                 var input = this;
 
@@ -54,18 +58,22 @@ $.fn.autoTab = function(params) {
                     $this.val(val.substring(0, limit));
                     setTimeout(function(){
                         val = $(input).val();
-                        if ( val.length > limit ) $(input).val(val.substring(0,limit));
-                        $(next).focus();
-                    },0);
+                        if ( val.length >= limit ) {
+                            $(input).val(val.substring(0,limit));
+                            $(next).focus();
+                        }
+                    }, 0);
                 }
 
                 if ( val.length >= limit - 1 ) {
 					setTimeout(function(){
-                        $(next).focus();
-                    },0);
+                        val = $(input).val();
+                        if ( val.length >= limit ) {
+                            $(input).val(val.substring(0,limit));
+                            $(next).focus();
+                        }
+                    }, 0);
                 }
-
-                return true;
             })
             ;
     });
