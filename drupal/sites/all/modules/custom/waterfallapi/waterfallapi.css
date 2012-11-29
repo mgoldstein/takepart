@@ -1,15 +1,10 @@
 #right-rail #block-waterfallapi-waterfallsubscription {
-    background-image: url("images/tastemakers_sms_sub_widget_bg_300x250.jpg");
+    background-image: url("/profiles/takepart/themes/takepart3/images/tastemakers/home/bgl.jpg");
     color: #787878;
     font-family: Helvetica,Arial,sans-serif;
-    height: 235px;
     overflow: hidden;
     padding: 10px 10px 5px;
     text-align: left;
-}
-
-#right-rail #block-waterfallapi-waterfallsubscription {
-    border: 0;
 }
 
 #right-rail #block-waterfallapi-waterfallsubscription h2 {
@@ -27,15 +22,20 @@
 	border-right: medium none;
 }
 
-#block-waterfallapi-waterfallsubscription #edit-cellphone .form-item {
+#block-waterfallapi-waterfallsubscription .cellphone.form-wrapper .form-item {
 	float: left;
 	padding-right: 3px;
 }
 
 #block-waterfallapi-waterfallsubscription fieldset {
 	border: 0 none;
-    margin: 0;
     padding: 0;
+	margin: 0 0 3px 0;
+}
+
+#block-waterfallapi-waterfallsubscription .form-type-textfield input {
+	font-size: 14px;
+	height: 18px;
 }
 
 #right-rail #block-waterfallapi-waterfallsubscription fieldset legend {
@@ -47,19 +47,22 @@
 
 #right-rail #block-waterfallapi-waterfallsubscription fieldset legend span {
 	color: #787878;
+    text-transform: none;
+    font-weight: normal;
 }
 
 #block-waterfallapi-waterfallsubscription .form-item {
 	margin: 0;
 }
 
-#block-waterfallapi-waterfallsubscription #edit-zip {
+#block-waterfallapi-waterfallsubscription .form-item-zipcode {
 	display: inline;
 }
 
 #block-waterfallapi-waterfallsubscription .waterfallsubscriptiontext {
 	font-size: 11px;
 	line-height: 14px;
+	margin-bottom: 3px;
 }
 
 #block-waterfallapi-waterfallsubscription .form-submit {
@@ -71,6 +74,9 @@
 	padding: 0 15px;
 	line-height: 20px;
 	font-size: 11px;
+	margin: 0 0 0 6px;
+	position: relative;
+	vertical-align: top;
 
 	background: #f1615d; /* Old browsers */
 	background: -moz-linear-gradient(top, #f58b80 5%, #f1615d 7%); /* FF3.6+ */
@@ -79,6 +85,33 @@
 	background: -o-linear-gradient(top, #f58b80 5%,#f1615d 7%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top, #f58b80 5%,#f1615d 7%); /* IE10+ */
 	background: linear-gradient(to bottom, #f58b80 5%,#f1615d 7%); /* W3C */
+}
+
+#block-waterfallapi-waterfallsubscription .messages.error {
+	text-transform: uppercase;
+	font-size: 11px;
+	line-height: 15px;
+	font-weight: bold;
+	color: #DA0D12;
+	margin-top: 5px;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+#block-waterfallapi-waterfallsubscription .messages.status {
+	text-transform: uppercase;
+	font-size: 11px;
+	line-height: 15px;
+	font-weight: bold;
+	color: #1CA9E7;
+	margin-top: 5px;
+
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
 }
 
 #block-waterfallapi-waterfallsubscription .form-submit:hover {

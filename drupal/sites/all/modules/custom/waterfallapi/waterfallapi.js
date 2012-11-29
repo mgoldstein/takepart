@@ -48,27 +48,42 @@ $.fn.autoTab = function(params) {
                 var s = String.fromCharCode(e.which);
                 if ( !mask.exec(s) ) return false;
                 var val = $(this).val();
+                var input = this;
+
                 if ( val.length >= limit ) {
                     $this.val(val.substring(0, limit));
-                    console.log(1);
-                    $(next).focus();
-                    return false;
+                    setTimeout(function(){
+                        val = $(input).val();
+                        if ( val.length > limit ) $(input).val(val.substring(0,limit));
+                        $(next).focus();
+                    },0);
                 }
 
                 if ( val.length >= limit - 1 ) {
-					setTimeout(function(){$(next).focus();},0);
+					setTimeout(function(){
+                        $(next).focus();
+                    },0);
                 }
+
+                return true;
             })
             ;
     });
 };
 
+Drupal.behaviors.waterfall_autoTab = {
+    attach: function (context, settings) {
+        $('#waterfallapi-form').once('autoTab', function () {
+            $('.form-item-areacode input').autoTab({next: '.form-item-phone1 input'});
+            $('.form-item-phone1 input').autoTab({next: '.form-item-phone2 input'});
+            $('.form-item-phone2 input').autoTab({next: '.form-item-zipcode input'});
+            $('.form-item-zipcode input').autoTab({next: '#block-waterfallapi-waterfallsubscription .form-submit'});
+        });
+    }
+}
+
 // Document Ready
-$(function() {
-	// TODO this should probably be in the Drupal behaviors thing
-    $('#edit-areacode').autoTab({next: '#edit-phone1'});
-    $('#edit-phone1').autoTab({next: '#edit-phone2'});
-    $('#edit-phone2').autoTab({next: '#edit-zipcode'});
-    $('#edit-zipcode').autoTab({next: '#edit-submit'});
-});
+// $(function() {
+
+// });
 })(window, jQuery);
