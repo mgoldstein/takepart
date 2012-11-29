@@ -31,13 +31,13 @@ class waterFallAPI {
    *   Response from API.
    */
   public function addSubscriber(  $list, $phone, $metadata, $basictext, 
-                  $confirmMessage = null, $optInMessage = null, 
+                  $confirmMessage = null, $flowid, $shortCode, $optInMessage = null, 
                   $subscribedMessage = null) {
     $payload = $this->buildSubscriberJSON($list, $phone, $metadata, 
-                  $basictext, $optInMessage, $confirmMessage, 
+                  $basictext, $flowid, $shortCode, $optInMessage, $confirmMessage, 
                   $subscribedMessage);
 
-    watchdog('waterFallAPI', 'addSubscriber', $payload, WATCHDOG_DEBUG);
+    watchdog('waterFallAPI_Payload', $payload);
 
     //$url = $this::BASEDOMAIN . "/api/v1/messaging/sendContent";
     $url = "http://three.waterfallmobile.com" . "/api/v1/messaging/sendContent";
@@ -117,7 +117,7 @@ class waterFallAPI {
 
   public function setSessionShortCode($id) {
     //$url = $this::BASEDOMAIN . " /api/v1/shortcode/sessionshortcode/" . $id;
-    $url = "http://three.waterfallmobile.com" . " /api/v1/shortcode/sessionshortcode/" . $id;
+    $url = "http://three.waterfallmobile.com" . "/api/v1/shortcode/sessionshortcode/" . $id;
     $return = $this->curl_post($url);
     return $return;
   }
@@ -154,7 +154,7 @@ class waterFallAPI {
   }
 
   private function buildSubscriberJSON( &$list, &$phone, &$metadata, 
-                      &$basictext, &$optInMessage, 
+                      &$basictext, &$flowid, &$shortCode, &$optInMessage, 
                       &$confirmMessage,  &$subscribedMessage) {
     $json = new stdClass();
     $json->{'modules'} = array();
@@ -182,6 +182,8 @@ class waterFallAPI {
     }
     $json->{'msisdns'} = array();
     $json->{'msisdns'}[0] = $phone;
+    $json->{'shortCode'} = $shortCode;
+    $json->{'mobileFlow'} = $flowid;
     return json_encode($json);
   }
 

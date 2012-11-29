@@ -62,6 +62,21 @@ function waterfallapi_block_configure($delta = '') {
 		'#description' => t('Confirmation message.'),
 		'#default_value' => variable_get('waterfallsubscriptionSMSConfirm',  ''),
     );
+    $form['waterfallsubscriptionHappyMsg'] = array(
+		'#type' => 'textarea',
+		'#title' => t('Success Message'),
+		'#cols' => 60,
+		'#rows' => 3,
+		'#default_value' => variable_get('waterfallsubscriptionHappyMsg', 'This cell phone number is now registered'),
+    );
+    $form['waterfallsubscriptionUnHappyMsg'] = array(
+		'#type' => 'textarea',
+		'#title' => t('Success Message'),
+		'#cols' => 60,
+		'#rows' => 3,
+		'#default_value' => variable_get('waterfallsubscriptionUnHappyMsg', 'Invalid phone number'),
+    );
+
   }
   return $form;
 }
@@ -74,6 +89,8 @@ function waterfallapi_block_save($delta = '', $edit = array()) {
     variable_set('waterfallsubscriptionsubtext', $edit['waterfallsubscriptionsubtext']);
     variable_set('waterfallsubscriptionSMS', $edit['waterfallsubscriptionSMS']);
     variable_set('waterfallsubscriptionSMSConfirm', $edit['waterfallsubscriptionSMSConfirm']);
+    variable_set('waterfallsubscriptionHappyMsg', $edit['waterfallsubscriptionHappyMsg']);
+    variable_set('waterfallsubscriptionUnHappyMsg', $edit['waterfallsubscriptionUnHappyMsg']);
   }
   return;
 }
@@ -152,6 +169,7 @@ function waterfallapi_form($form, &$form_state) {
 		'#title' => variable_get('waterfallsubscriptioncelltitle', t('Enter Your Cell Phone Number:')),
 		'#collapsible' => FALSE,
 		'#collapsed' => FALSE,
+		'#attributes' => array('class' => array('cellphone')),
 	);
 
 
@@ -159,18 +177,21 @@ function waterfallapi_form($form, &$form_state) {
 		'#type' => 'textfield',
 		'#size' => 3,
 		'#maxlength' => 3,
+		'#attributes' => array('class' => array('areacode')),
 	);
 
 	$form['cellphone']['phone1'] = array(
 		'#type' => 'textfield',
 		'#size' => 3,
 		'#maxlength' => 3,
+		'#attributes' => array('class' => array('phone1')),
 	);
 
 	$form['cellphone']['phone2'] = array(
 		'#type' => 'textfield',
 		'#size' => 4,
 		'#maxlength' => 4,
+		'#attributes' => array('class' => array('phone2')),
 	);
 
 	$form['zip'] = array(
@@ -178,21 +199,23 @@ function waterfallapi_form($form, &$form_state) {
 		'#title' => variable_get('waterfallsubscriptionziptitle', t('Enter Your Zip Code to Get Local Tips:') . '<div>(Optional)</div>'),
 		'#collapsible' => FALSE,
 		'#collapsed' => FALSE,
+		'#attributes' => array('class' => array('zip')),
 	);
 
 	$form['zip']['zipcode'] = array(
 		'#type' => 'textfield',
 		'#size' => 5,
 		'#maxlength' => 5,
+		'#attributes' => array('class' => array('zipcode')),
 	);
 
-    $form['submit'] = array (
+    $form['zip']['submit'] = array (
         '#type' => 'submit',
         '#value' => 'Subscribe',
     );
 
-    $form['submit']['#ajax'] = array(
-      'callback' => 'waterfallapi_form_validate',
+    $form['zip']['submit']['#ajax'] = array(
+      'callback' => 'waterfallapi_form_callback',
       'wrapper' => 'waterfallapi-form',
       'method' => 'replace',
       'effect' => 'fade',
@@ -201,10 +224,14 @@ function waterfallapi_form($form, &$form_state) {
     return $form;
 }
 
+function waterfallapi_form_callback($form, &$form_state) {
+	return $form;
+}
+
 function waterfallapi_form_validate($form, &$form_state) {
-	if(!is_numeric($form['cellphone']['areacode']['#value'])) form_set_error('Phone Number', t('The area code must be numeric.'));
-	if(!is_numeric($form['cellphone']['phone1']['#value'])) form_set_error('Phone Number', t('The prefix code must be numeric.'));
-	if(!is_numeric($form['cellphone']['phone2']['#value'])) form_set_error('Phone Number', t('The line number must be numeric.'));
+	if(!is_numeric($form['cellphone']['areacode']['#value'])) form_set_error('Phone Number', t(variable_get('waterfallsubscriptionUnHappyMsg', 'Invalid phone number')));
+	if(!is_numeric($form['cellphone']['phone1']['#value'])) form_set_error('Phone Number', t(variable_get('waterfallsubscriptionUnHappyMsg', 'Invalid phone number')));
+	if(!is_numeric($form['cellphone']['phone2']['#value'])) form_set_error('Phone Number', t(variable_get('waterfallsubscriptionUnHappyMsg', 'Invalid phone number')));
 	if(($form['zip']['zipcode']['#value'] != '') && (!is_numeric($form['zip']['zipcode']['#value']))) {
 		form_set_error('Zip Code', t('The Zip code must be numeric.'));
 	}
@@ -222,11 +249,15 @@ function waterfallapi_form_submit($form, &$form_state) {
 	$canadian = in_array($areacode, $getCanadianAreaCodes);
 	$waterFallAPI->authenticate('TakePart','sms4takepart');
 	if($canadian) { //Canada:
-		$waterFallAPI->setSessionShortCode('505b80e60364fb7d2e2f10e6');
+		$shortcode = '505b80e60364fb7d2e2f10e6';
+		$waterFallAPI->setSessionShortCode($shortcode);
 		$listid = '50b51ccd0cf2d5cf4a7e2982';
+		$flowid = '50b6b92d0cf2d5cf4a82042a';
 	} else { //US:
-		$waterFallAPI->setSessionShortCode('50ac121203644bd985ef24d4');
+		$shortcode = '50ac121203644bd985ef24d4';
+		$waterFallAPI->setSessionShortCode($shortcode);
 		$listid = '50b51d110cf2d5cf4a7e2991';
+		$flowid = '50b6ba030cf2d5cf4a820510';
 	}
 
 	$subinfo = $waterFallAPI->addSubscriber($listid, $areacode.$prefix.$line, 
@@ -234,7 +265,8 @@ function waterfallapi_form_submit($form, &$form_state) {
 			    								'50b4fbf80cf2d5cf4a7e15e5'  => $zip
 			    							),  
 			    							variable_get('waterfallsubscriptionSMS',  ''), 
-			    							variable_get('waterfallsubscriptionSMSConfirm',  ''));
+			    							variable_get('waterfallsubscriptionSMSConfirm',  ''),
+			    							$flowid, $shortcode);
 	
 	$result = db_insert('waterfallapi_signups')->fields(array(
 		  'msisdns' => $areacode.$prefix.$line,
@@ -243,6 +275,8 @@ function waterfallapi_form_submit($form, &$form_state) {
 		  'created' => time(),
 		))->execute();
 
-	drupal_set_message(t(variable_get('waterfallsubscriptionSMSConfirm',  '')), 'status');
+	drupal_set_message(t(variable_get('waterfallsubscriptionHappyMsg', 'This cell phone number is now registered')), 'status');
+
+	return $form;
 
 }
