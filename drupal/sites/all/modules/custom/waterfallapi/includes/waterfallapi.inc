@@ -31,10 +31,10 @@ class waterFallAPI {
    *   Response from API.
    */
   public function addSubscriber(  $list, $phone, $metadata, $basictext, 
-                  $confirmMessage = null, $optInMessage = null, 
+                  $confirmMessage = null, $flowid, $shortCode, $optInMessage = null, 
                   $subscribedMessage = null) {
     $payload = $this->buildSubscriberJSON($list, $phone, $metadata, 
-                  $basictext, $optInMessage, $confirmMessage, 
+                  $basictext, $flowid, $shortCode, $optInMessage, $confirmMessage, 
                   $subscribedMessage);
 
     watchdog('waterFallAPI_Payload', $payload);
@@ -154,7 +154,7 @@ class waterFallAPI {
   }
 
   private function buildSubscriberJSON( &$list, &$phone, &$metadata, 
-                      &$basictext, &$optInMessage, 
+                      &$basictext, &$flowid, &$shortCode, &$optInMessage, 
                       &$confirmMessage,  &$subscribedMessage) {
     $json = new stdClass();
     $json->{'modules'} = array();
@@ -182,6 +182,8 @@ class waterFallAPI {
     }
     $json->{'msisdns'} = array();
     $json->{'msisdns'}[0] = $phone;
+    $json->{'shortCode'} = $shortCode;
+    $json->{'mobileFlow'} = $flowid;
     return json_encode($json);
   }
 
