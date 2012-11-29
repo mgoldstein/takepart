@@ -169,6 +169,7 @@ function waterfallapi_form($form, &$form_state) {
 		'#title' => variable_get('waterfallsubscriptioncelltitle', t('Enter Your Cell Phone Number:')),
 		'#collapsible' => FALSE,
 		'#collapsed' => FALSE,
+		'#attributes' => array('class' => array('cellphone')),
 	);
 
 
@@ -176,18 +177,21 @@ function waterfallapi_form($form, &$form_state) {
 		'#type' => 'textfield',
 		'#size' => 3,
 		'#maxlength' => 3,
+		'#attributes' => array('class' => array('areacode')),
 	);
 
 	$form['cellphone']['phone1'] = array(
 		'#type' => 'textfield',
 		'#size' => 3,
 		'#maxlength' => 3,
+		'#attributes' => array('class' => array('phone1')),
 	);
 
 	$form['cellphone']['phone2'] = array(
 		'#type' => 'textfield',
 		'#size' => 4,
 		'#maxlength' => 4,
+		'#attributes' => array('class' => array('phone2')),
 	);
 
 	$form['zip'] = array(
@@ -195,15 +199,17 @@ function waterfallapi_form($form, &$form_state) {
 		'#title' => variable_get('waterfallsubscriptionziptitle', t('Enter Your Zip Code to Get Local Tips:') . '<div>(Optional)</div>'),
 		'#collapsible' => FALSE,
 		'#collapsed' => FALSE,
+		'#attributes' => array('class' => array('zip')),
 	);
 
 	$form['zip']['zipcode'] = array(
 		'#type' => 'textfield',
 		'#size' => 5,
 		'#maxlength' => 5,
+		'#attributes' => array('class' => array('zipcode')),
 	);
 
-    $form['submit'] = array (
+    $form['zip']['submit'] = array (
         '#type' => 'submit',
         '#value' => 'Subscribe',
     );
@@ -243,11 +249,15 @@ function waterfallapi_form_submit($form, &$form_state) {
 	$canadian = in_array($areacode, $getCanadianAreaCodes);
 	$waterFallAPI->authenticate('TakePart','sms4takepart');
 	if($canadian) { //Canada:
-		$waterFallAPI->setSessionShortCode('505b80e60364fb7d2e2f10e6');
+		$shortcode = '505b80e60364fb7d2e2f10e6';
+		$waterFallAPI->setSessionShortCode($shortcode);
 		$listid = '50b51ccd0cf2d5cf4a7e2982';
+		$flowid = '50b6b92d0cf2d5cf4a82042a';
 	} else { //US:
-		$waterFallAPI->setSessionShortCode('50ac121203644bd985ef24d4');
+		$shortcode = '50ac121203644bd985ef24d4';
+		$waterFallAPI->setSessionShortCode($shortcode);
 		$listid = '50b51d110cf2d5cf4a7e2991';
+		$flowid = '50b6ba030cf2d5cf4a820510';
 	}
 
 	$subinfo = $waterFallAPI->addSubscriber($listid, $areacode.$prefix.$line, 
@@ -255,7 +265,8 @@ function waterfallapi_form_submit($form, &$form_state) {
 			    								'50b4fbf80cf2d5cf4a7e15e5'  => $zip
 			    							),  
 			    							variable_get('waterfallsubscriptionSMS',  ''), 
-			    							variable_get('waterfallsubscriptionSMSConfirm',  ''));
+			    							variable_get('waterfallsubscriptionSMSConfirm',  ''),
+			    							$flowid, $shortcode);
 	
 	$result = db_insert('waterfallapi_signups')->fields(array(
 		  'msisdns' => $areacode.$prefix.$line,
