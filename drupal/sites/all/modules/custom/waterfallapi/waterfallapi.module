@@ -250,14 +250,14 @@ function waterfallapi_form_submit($form, &$form_state) {
 	$waterFallAPI->authenticate('TakePart','sms4takepart');
 	if($canadian) { //Canada:
 		$shortcode = '505b80e60364fb7d2e2f10e6';
-		$waterFallAPI->setSessionShortCode($shortcode);
-		$listid = '50b51ccd0cf2d5cf4a7e2982';
+		$listid = '50b6b8fb0cf2d5cf4a820402';
 		$flowid = '50b6b92d0cf2d5cf4a82042a';
+		$waterFallAPI->setSessionShortCode($shortcode);
 	} else { //US:
 		$shortcode = '50ac121203644bd985ef24d4';
-		$waterFallAPI->setSessionShortCode($shortcode);
-		$listid = '50b51d110cf2d5cf4a7e2991';
+		$listid = '50b6b8990cf2d5cf4a8203ad';
 		$flowid = '50b6ba030cf2d5cf4a820510';
+		$waterFallAPI->setSessionShortCode($shortcode);
 	}
 
 	$subinfo = $waterFallAPI->addSubscriber($listid, $areacode.$prefix.$line, 
