@@ -1,56 +1,129 @@
-  
-#block-waterfallapi-waterfallsubscription {
-    background-image: url("images/tastemakers_sms_sub_widget_bg_300x250.jpg");
+#right-rail #block-waterfallapi-waterfallsubscription {
+    background-image: url("/profiles/takepart/themes/takepart3/images/tastemakers/home/bgl.jpg");
     color: #787878;
     font-family: Helvetica,Arial,sans-serif;
-    height: 235px;
     overflow: hidden;
     padding: 10px 10px 5px;
     text-align: left;
-    width: 280px;
-    border: 0 !important;
- }
-
-
-#block-waterfallapi-waterfallsubscription h2 {
-	font-size: 16px !important;
-	font-weight: bold !important;
-	line-height: 20px !important;
-	margin-bottom: 2px !important;
-	text-transform: uppercase !important;
-	background: none !important;
 }
 
-#block-waterfallapi-waterfallsubscription h2 span {
-	background: none !important;
-	color: #787878 !important;
-	border-right: medium none !important;
+#right-rail #block-waterfallapi-waterfallsubscription h2 {
+	font-size: 16px;
+	font-weight: bold ;
+	line-height: 20px ;
+	margin-bottom: 2px;
+	text-transform: uppercase;
+	background: none;
 }
 
-#block-waterfallapi-waterfallsubscription #edit-cellphone .form-item {
+#right-rail #block-waterfallapi-waterfallsubscription h2 span {
+	background: none;
+	color: #787878;
+	border-right: medium none;
+}
+
+#block-waterfallapi-waterfallsubscription .cellphone.form-wrapper .form-item {
 	float: left;
 	padding-right: 3px;
 }
 
 #block-waterfallapi-waterfallsubscription fieldset {
 	border: 0 none;
-    margin: 0;
     padding: 0;
+	margin: 0 0 3px 0;
 }
 
-#block-waterfallapi-waterfallsubscription fieldset legend {
-	color: #787878 !important;
+#block-waterfallapi-waterfallsubscription .form-type-textfield input {
+	font-size: 14px;
+	height: 18px;
+}
+
+#right-rail #block-waterfallapi-waterfallsubscription fieldset legend {
+	color: #787878;
     font-family: Helvetica,Arial,sans-serif;
     font-size: 11px;
     line-height: 19px;
 }
 
-#block-waterfallapi-waterfallsubscription fieldset legend span {
-	color: #787878 !important;
+#right-rail #block-waterfallapi-waterfallsubscription fieldset legend span {
+	color: #787878;
+    text-transform: none;
+    font-weight: normal;
 }
 
 #block-waterfallapi-waterfallsubscription .form-item {
-	margin-top: 0 !important;
+	margin: 0;
 }
 
+#block-waterfallapi-waterfallsubscription .form-item-zipcode {
+	display: inline;
+}
 
+#block-waterfallapi-waterfallsubscription .waterfallsubscriptiontext {
+	font-size: 11px;
+	line-height: 14px;
+	margin-bottom: 3px;
+}
+
+#block-waterfallapi-waterfallsubscription .form-submit {
+	border: 1px solid #df6e8a;
+	border-radius: 2px;
+	font-weight: bold;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 0 15px;
+	line-height: 20px;
+	font-size: 11px;
+	margin: 0 0 0 6px;
+	position: relative;
+	vertical-align: top;
+
+	background: #f1615d; /* Old browsers */
+	background: -moz-linear-gradient(top, #f58b80 5%, #f1615d 7%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(5%,#f58b80), color-stop(7%,#f1615d)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #f58b80 5%,#f1615d 7%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #f58b80 5%,#f1615d 7%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #f58b80 5%,#f1615d 7%); /* IE10+ */
+	background: linear-gradient(to bottom, #f58b80 5%,#f1615d 7%); /* W3C */
+}
+
+#block-waterfallapi-waterfallsubscription .messages.error {
+	text-transform: uppercase;
+	font-size: 11px;
+	line-height: 15px;
+	font-weight: bold;
+	color: #DA0D12;
+	margin-top: 5px;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+#block-waterfallapi-waterfallsubscription .messages.status {
+	text-transform: uppercase;
+	font-size: 11px;
+	line-height: 15px;
+	font-weight: bold;
+	color: #1CA9E7;
+	margin-top: 5px;
+
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+#block-waterfallapi-waterfallsubscription .form-submit:hover {
+	background: #f15855;
+}
+
+#block-waterfallapi-waterfallsubscription .waterfallsubscriptionsubtext {
+	font-size: 9px;
+	line-height: 11px;
+}
+
+#block-waterfallapi-waterfallsubscription a {
+	color: #FD605A;
+	text-decoration: none;
+}
