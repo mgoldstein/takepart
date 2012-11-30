@@ -131,7 +131,7 @@ function waterfallapi_menu() {
 }
 
 function waterfallapi_page() {
-
+  global $user; 
   $nbr_records = db_query("SELECT count(msisdns) FROM {waterfallapi_signups}")->fetchField();
   $title = "<h2>" . $nbr_records . " Records</h2>";
 
@@ -139,7 +139,10 @@ function waterfallapi_page() {
     '#type' => 'markup',
     '#markup' => $title . waterfallapi_generate_report(),
   );
-  return $page;
+  //logged in only:
+  if($user->uid != 0) {
+  	return $page;
+  }
 }
 
 function waterfallapi_generate_report() {
@@ -269,7 +272,7 @@ function waterfallapi_form_submit($form, &$form_state) {
 			    							variable_get('waterfallsubscriptionSMSConfirm',  ''),
 			    							$flowid, $shortcode);
 
-    $waterFallAPI->addMetadata(array('50b4fbf80cf2d5cf4a7e15e5'  => $zip), $areacode.$prefix.$line);
+    $waterFallAPI->addMetadata(array('50b4fbf80cf2d5cf4a7e15e5'  => $zip), '1' . $areacode.$prefix.$line);
 	
 	$result = db_insert('waterfallapi_signups')->fields(array(
 		  'msisdns' => $areacode.$prefix.$line,
