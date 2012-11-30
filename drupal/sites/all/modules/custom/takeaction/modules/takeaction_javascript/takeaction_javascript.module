@@ -15,6 +15,15 @@ function takeaction_javascript_init() {
       $scheme = parse_url($button_js_url, PHP_URL_SCHEME);
       $host = parse_url($button_js_url, PHP_URL_HOST);
       $location = variable_get('takeaction_button_js_location', 'footer');
+      $publisher_js = parse_url($button_js_url, PHP_URL_PATH);
+      $args = parse_url($button_js_url, PHP_URL_QUERY);
+      if (!empty($args)) {
+        $publisher_js .= '?' . $args;
+      }
+      $anchor = parse_url($button_js_url, PHP_URL_FRAGMENT);
+      if (!empty($anchor)) {
+        $publisher_js .= '#' . $anchor;
+      }
       $button_js = "
         window.TP = window.TP || {};
         TP.tabHost = '{$scheme}://{$host}';
@@ -22,8 +31,8 @@ function takeaction_javascript_init() {
           var tabScript = document.createElement('script');
           tabScript.type = 'text/javascript';
           tabScript.async = true;
-          scriptLocation = TP.tabHost || 'http://takeaction.takepart.com';
-          tabScript.src = scriptLocation + '/assets/publisher.js';
+          var scriptLocation = TP.tabHost || 'http://takeaction.takepart.com';
+          tabScript.src = scriptLocation + '{$publisher_js}';
           var s = document.getElementsByTagName('script')[0];
           s.parentNode.insertBefore(tabScript, s);
         })();
