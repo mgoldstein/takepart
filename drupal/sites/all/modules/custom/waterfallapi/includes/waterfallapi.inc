@@ -37,10 +37,11 @@ class waterFallAPI {
                   $basictext, $flowid, $shortCode, $optInMessage, $confirmMessage, 
                   $subscribedMessage);
 
-    watchdog('waterFallAPI_Payload', $payload);
-
     //$url = $this::BASEDOMAIN . "/api/v1/messaging/sendContent";
     $url = "http://three.waterfallmobile.com" . "/api/v1/messaging/sendContent";
+
+    watchdog('waterFallAPI_Payload', $url . $payload);
+
     $return = $this->curl_post($url, $payload);
     return $return;
   }
@@ -119,12 +120,15 @@ class waterFallAPI {
     $json = new stdClass();
     if(!empty($metadata)) {   
       foreach ($metadata as $k => $v) {
-          $json->{$k} = $v;
+          $json->{'id'} = $k;
+          $json->{'value'} = $v;
       }
     }
     $url = "http://three.waterfallmobile.com" . "/api/v1/subscriber/addMetadata/" . $msisdn;
-    $return = $this->curl_post($url, json_encode($json));
-    watchdog('addMetadata', json_encode($json));
+    $json = json_encode($json);
+
+    $return = $this->curl_post($url, $json);
+    watchdog('addMetadata', $url . $json);
     return $return;
   }
 
