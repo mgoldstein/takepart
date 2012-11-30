@@ -260,6 +260,7 @@ function waterfallapi_form_submit($form, &$form_state) {
 		$waterFallAPI->setSessionShortCode($shortcode);
 	}
 
+    //@todo: some of these fields are no longer needed:
 	$subinfo = $waterFallAPI->addSubscriber($listid, $areacode.$prefix.$line, 
 											array(
 			    								'50b4fbf80cf2d5cf4a7e15e5'  => $zip
@@ -267,6 +268,8 @@ function waterfallapi_form_submit($form, &$form_state) {
 			    							variable_get('waterfallsubscriptionSMS',  ''), 
 			    							variable_get('waterfallsubscriptionSMSConfirm',  ''),
 			    							$flowid, $shortcode);
+
+    $waterFallAPI->addMetadata(array('50b4fbf80cf2d5cf4a7e15e5'  => $zip), $areacode.$prefix.$line);
 	
 	$result = db_insert('waterfallapi_signups')->fields(array(
 		  'msisdns' => $areacode.$prefix.$line,
