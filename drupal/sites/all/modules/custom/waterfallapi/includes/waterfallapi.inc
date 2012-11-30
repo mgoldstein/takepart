@@ -212,7 +212,7 @@ class waterFallAPI {
     return json_encode($json);
   }
 
-  private function curl_post(&$url, &$payload = null, &$customreq = null) {
+  private function curl_post(&$url, &$payload = null, $customreq = null) {
 
       //print "<pre>PAYLOAD:";
       //print_r($payload);
