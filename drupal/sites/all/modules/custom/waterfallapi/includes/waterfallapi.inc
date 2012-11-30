@@ -115,7 +115,7 @@ class waterFallAPI {
     return $return;
   }
 
-  public function addMetadata($metadata, $guid) {
+  public function addMetadata($metadata, $msisdn) {
     $json = new stdClass();
     if(!empty($metadata)) {   
       foreach ($metadata as $k => $v) {
@@ -124,6 +124,7 @@ class waterFallAPI {
     }
     $url = "http://three.waterfallmobile.com" . "/api/v1/subscriber/addMetadata/" . $msisdn;
     $return = $this->curl_post($url, json_encode($json));
+    watchdog('addMetadata', json_encode($json));
     return $return;
   }
 
