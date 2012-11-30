@@ -115,6 +115,18 @@ class waterFallAPI {
     return $return;
   }
 
+  public function addMetadata($metadata, $guid) {
+    $json = new stdClass();
+    if(!empty($metadata)) {   
+      foreach ($metadata as $k => $v) {
+          $json->{$k} = $v;
+      }
+    }
+    $url = "http://three.waterfallmobile.com" . "/api/v1/subscriber/addMetadata/" . $msisdn;
+    $return = $this->curl_post($url, json_encode($json));
+    return $return;
+  }
+
   public function setSessionShortCode($id) {
     //$url = $this::BASEDOMAIN . " /api/v1/shortcode/sessionshortcode/" . $id;
     $url = "http://three.waterfallmobile.com" . "/api/v1/shortcode/sessionshortcode/" . $id;
@@ -157,6 +169,7 @@ class waterFallAPI {
                       &$basictext, &$flowid, &$shortCode, &$optInMessage, 
                       &$confirmMessage,  &$subscribedMessage) {
     $json = new stdClass();
+    /*
     $json->{'modules'} = array();
     $json->{'modules'}[0] = new stdClass();
     $json->{'modules'}[0]->{'type'} = "SUBSCRIPTION";
@@ -179,7 +192,7 @@ class waterFallAPI {
       $json->{'modules'}[2]->{'type'} = "BASICTEXT";
       $json->{'modules'}[2]->{'params'} = new stdClass();
       $json->{'modules'}[2]->{'params'}->{"response"} = $basictext;
-    }
+    }*/
     $json->{'msisdns'} = array();
     $json->{'msisdns'}[0] = $phone;
     $json->{'shortCode'} = $shortCode;
