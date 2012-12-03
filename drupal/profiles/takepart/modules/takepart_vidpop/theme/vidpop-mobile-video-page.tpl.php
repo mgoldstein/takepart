@@ -36,7 +36,7 @@ $share_node_title = $p_video_title;
     <div class="contents">
       <div class="backto"><a href="<?print $p_referrer;?>">GO BACK</a></div>
       <div class="video">
-        <iframe width="640" height="360" src="http://www.youtube.com/embed/<?php print $p_youtube_id; ?>?rel=0" frameborder="0" allowfullscreen></iframe>
+        <iframe width="480" height="360" src="http://www.youtube.com/embed/<?php print $p_youtube_id; ?>?rel=0" frameborder="0" allowfullscreen></iframe>
       </div>
       <div class="leftside">
         <div class="vtitle"><?php print $p_video_title ?></div>
