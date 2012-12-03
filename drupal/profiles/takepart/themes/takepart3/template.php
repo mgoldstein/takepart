@@ -541,7 +541,9 @@ function takepart3_preprocess_node(&$vars, $hook) {
       $render_large = node_view(node_load($vars['nid']), 'large');
       $vars['large_video'] = drupal_render($render_large['field_video_embedded']);
 
-      if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
+      //if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
+      if (true) {
+        // build preview image
         $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
       }
 
