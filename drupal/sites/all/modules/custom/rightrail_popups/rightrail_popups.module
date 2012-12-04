@@ -78,7 +78,7 @@ EOT;
       $popup = theme('rightrail_video_popup', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_top_banner' => $top_banner, 'p_banner_tp_logo' => $banner_tp_logo, 'p_fmt_pop' => $fmt_pop));
 
       // replace box contents with preview
-      if (takepart_vidpop_mobile_browser()) {
+      if ((takepart_vidpop_mobile_browser()) || (takepart_vidpop_is_ipad())) {
         $vid_link = "http://www.youtube.com/embed/" . $video_id;
         $preview = theme('rightrail_video_preview_mobile', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_vid_link' => $vid_link, 'rr_class' => $rr_class));
       }
