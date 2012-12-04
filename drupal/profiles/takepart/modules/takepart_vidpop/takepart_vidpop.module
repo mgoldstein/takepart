@@ -290,38 +290,7 @@ function takepart_vidpop_format_preview($uri, $vars) {
   $vidpop_id = 'vidpop-details-' . $vars['nid'];
   $vp_class = 'vp-' . $vars['nid'];
 
-  if (!takepart_vidpop_mobile_browser()) {
-    // if mobile browser, display the node, no preview needed
-    // regular browser, use popup
-    // this is the href string for colorbox
-    $href_string = '?width=870&amp;height=420&amp;inline=true#' . $vidpop_id;
-    $link_class = "colorbox-inline";
-
-    // NOTE: we set the colorbox width to 870; it has padding that will pull it out
-    // to our desired 900
-    $formatted = theme('vidpop_preview', array(
-      'preview_image'   => $preview_image,
-      'overlay_image'   => $overlay_image,
-      'promo_headline'  => $promo_headline,
-      'promo_text'      => $promo_text,
-      'link_class'      => $link_class,
-      'href_string'     => $href_string,
-      'vp_class'        => $vp_class,
-    ));
-
-    // the formatted popup image
-    $formatted_popup = theme('vidpop_popup', array(
-      'p_content' => $vars['content']
-    ));
-
-    // add hidden popups if on non-mobile
-    $formatted .= <<<EOT
-<div class="vidpop-overlay">
-  <div id="$vidpop_id">$formatted_popup</div>
-</div>
-EOT;
-  }
-  else {
+  if ((takepart_vidpop_mobile_browser()) || (takepart_vidpop_is_ipad())) {
     // mobile version
     // get the id of the embedded video
     $uri = $vars['field_video_embedded'][0]['file']->uri;
@@ -353,6 +322,37 @@ EOT;
 EOT;
 
     }
+  }
+  else {
+    // if mobile browser, display the node, no preview needed
+    // regular browser, use popup
+    // this is the href string for colorbox
+    $href_string = '?width=870&amp;height=420&amp;inline=true#' . $vidpop_id;
+    $link_class = "colorbox-inline";
+
+    // NOTE: we set the colorbox width to 870; it has padding that will pull it out
+    // to our desired 900
+    $formatted = theme('vidpop_preview', array(
+      'preview_image'   => $preview_image,
+      'overlay_image'   => $overlay_image,
+      'promo_headline'  => $promo_headline,
+      'promo_text'      => $promo_text,
+      'link_class'      => $link_class,
+      'href_string'     => $href_string,
+      'vp_class'        => $vp_class,
+    ));
+
+    // the formatted popup image
+    $formatted_popup = theme('vidpop_popup', array(
+      'p_content' => $vars['content']
+    ));
+
+    // add hidden popups if on non-mobile
+    $formatted .= <<<EOT
+<div class="vidpop-overlay">
+  <div id="$vidpop_id">$formatted_popup</div>
+</div>
+EOT;
   }
 
   return $formatted;
