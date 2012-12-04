@@ -178,7 +178,14 @@
  *   );
  * @endcode
  */
-$databases = array();
+$databases['default']['default'] = array(
+  'driver' => 'mysql',
+  'database' => 'takepart_com_2',
+  'username' => 'org_admin',
+  'password' => 'pr0Ab2lu',
+  'host' => 'localhost',
+  'prefix' => '',
+);
 
 /**
  * Access control for update.php script.
@@ -459,4 +466,4 @@ if (file_exists(dirname(__FILE__) .'/settings.env.inc')) {
 if (file_exists(dirname(__FILE__) .'/settings.local.inc')) {
   include_once dirname(__FILE__) .'/settings.local.inc';
 }
- 
+
