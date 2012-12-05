@@ -23,31 +23,28 @@
 
   drupal_flush_all_caches();
 
-  $not_exists = array();
-
-  foreach ($cmap as $current) {
-    foreach ($current['modules'] as $module) {
-      if (!module_exists($module)) {
-        $not_exists[$module] = TRUE;
-      }
-    }
-  }
-
-/*  if (count($not_exists) > 0) {
-    $message = t('Error: The following modules are not enabled: @modules', array(
-      '@modules' => implode(',', array_keys($not_exists))));
-    trigger_error($message, E_USER_ERROR);
-    exit(1);
-  }*/
-
   $current = $cmap[$group];
   print_r($current);
 
+  $not_exists = array();
+
+  foreach ($current['modules'] as $module) {
+    if (!module_exists($module)) {
+      $not_exists[$module] = TRUE;
+    }
+  }
+
   features_conflict_resolver_create_feature($current);
-  module_enable(array_values($not_exists));
-  drupal_flush_all_caches();
+
+  if ($not_exists != NULL) {
+    module_enable(array_values($not_exists));
+    drupal_flush_all_caches();
+  }
 
   features_conflict_resolver_update_feature($current);
-  module_disable(array_values($not_exists));
+
+  if ($not_exists != NULL) {
+    module_disable(array_values($not_exists));
+  }
 
 ?>
