@@ -121,8 +121,8 @@ function features_conflict_resolver_create_feature($cmap_entry) {
   features_conflict_resolver_update_ctools_export_cache($dummy, $all_conflicts);
 
   _features_conflict_resolver_create_feature($cmap_entry['conflicts'], $dependencies, $module_name, $dirname);
-  module_enable(array($module_name));
   drupal_flush_all_caches();
+  module_enable(array($module_name));
 }
 
 /**
