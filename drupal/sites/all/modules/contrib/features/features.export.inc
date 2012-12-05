@@ -735,6 +735,7 @@ function features_get_default_map($component, $attribute = NULL, $callback = NUL
         }
       }
     }
+    drupal_alter('features_get_default_map', $map[$component], $component);
   }
   return isset($map[$component]) ? $map[$component] : FALSE;
 }
