@@ -21,7 +21,12 @@ function field_group_features_export_alter(&$export, $module_name) {
       foreach ($field_groups as $group_id => $group) {
         if ($group->entity_type == $entity_type && $group->bundle == $bundle
           && in_array($field_name, $group->data['children'])) {
-          $export['features']['field_group'][$group_id] = $group_id;
+          if (isset($group->export_module) && $group->export_module != $module_name) {
+            $export['dependencies'][$group->export_module] = $group->export_module;
+          }
+          else {
+            $export['features']['field_group'][$group_id] = $group_id;
+          }
         }
       }
     }
@@ -37,7 +42,12 @@ function field_group_features_export_alter(&$export, $module_name) {
         $parent_group = isset($field_groups[$parent_id]) ? $field_groups[$parent_id] : FALSE;
 
         if ($parent_group && !isset($export['features']['field_group'][$parent_id])) {
-          $export['features']['field_group'][$parent_id] = $parent_id;
+          if (isset($parent_group->export_module) && $parent_group->export_module != $module_name) {
+            $export['dependencies'][$parent_group->export_module] = $parent_group->export_module;
+          }
+          else {
+            $export['features']['field_group'][$parent_id] = $parent_id;
+          }
         }
       }
     }
