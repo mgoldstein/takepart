@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the fabian feature.
+ */
+
+include_once('fabian.features.inc');

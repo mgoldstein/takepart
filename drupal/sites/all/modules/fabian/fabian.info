@@ -1,0 +1,7 @@
+core = "7.x"
+dependencies[] = "strongarm"
+features[ctools][] = "strongarm:strongarm:1"
+features[variable][] = "comment_anonymous_audio"
+name = "fabian"
+package = "Features"
+php = "5.2.4"
