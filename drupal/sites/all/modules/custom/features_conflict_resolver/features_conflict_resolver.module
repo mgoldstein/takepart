@@ -120,11 +120,32 @@ function features_conflict_resolver_create_feature($cmap_entry) {
   }
 
   $dummy = array();
-  features_conflict_resolver_update_ctools_export_cache($dummy, $all_conflicts);
+  if (module_exists($module_name) && ($feature = feature_load($module_name, TRUE))) {
+    $features = $feature->info['features'];
+    $dependencies = $feature->info['dependencies'];
+    $all_conflicts_2 = $all_conflicts;
 
-  _features_conflict_resolver_create_feature($cmap_entry['conflicts'], $dependencies, $module_name, $dirname);
-  drupal_flush_all_caches();
-  module_enable(array($module_name));
+    foreach ($feature->info['features'] as $type) {
+      foreach ($type as $val) {
+        if (!isset($all_conflicts[$val])) {
+          $all_conflicts_2[$val] = $module;
+        }
+      }
+    }
+
+    $features = array_merge_recursive($features, $cmap_entry['conflicts']);
+
+    features_conflict_resolver_update_ctools_export_cache($dummy, $all_conflicts_2);
+    _features_conflict_resolver_create_feature($features, $dependencies, $feature->name, dirname($feature->filename), $cmap_entry);
+    drupal_flush_all_caches();
+  } else {
+
+    features_conflict_resolver_update_ctools_export_cache($dummy, $all_conflicts);
+    _features_conflict_resolver_create_feature($cmap_entry['conflicts'], $dependencies, $module_name, $dirname);
+
+    drupal_flush_all_caches();
+    module_enable(array($module_name));
+  }
 }
 
 /**
