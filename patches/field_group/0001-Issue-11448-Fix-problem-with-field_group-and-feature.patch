@@ -1,0 +1,45 @@
+From 1cbdad621572fb72975596a7f24ee61360dd5b9d Mon Sep 17 00:00:00 2001
+From: Fabian Franz <ffranz@trellon.com>
+Date: Wed, 5 Dec 2012 19:39:54 +0000
+Subject: [PATCH] Issue #11448: Fix problem with field_group and features.
+
+@see: http://drupal.org/node/1463094
+---
+ .../contrib/field_group/field_group.features.inc   |   14 ++++++++++++--
+ 1 files changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/drupal/sites/all/modules/contrib/field_group/field_group.features.inc b/drupal/sites/all/modules/contrib/field_group/field_group.features.inc
+index cea7833..1d4159d 100755
+--- a/drupal/sites/all/modules/contrib/field_group/field_group.features.inc
++++ b/drupal/sites/all/modules/contrib/field_group/field_group.features.inc
+@@ -21,7 +21,12 @@ function field_group_features_export_alter(&$export, $module_name) {
+       foreach ($field_groups as $group_id => $group) {
+         if ($group->entity_type == $entity_type && $group->bundle == $bundle
+           && in_array($field_name, $group->data['children'])) {
+-          $export['features']['field_group'][$group_id] = $group_id;
++          if (isset($group->export_module) && $group->export_module != $module_name) {
++            $export['dependencies'][$group->export_module] = $group->export_module;
++          }
++          else {
++            $export['features']['field_group'][$group_id] = $group_id;
++          }
+         }
+       }
+     }
+@@ -37,7 +42,12 @@ function field_group_features_export_alter(&$export, $module_name) {
+         $parent_group = isset($field_groups[$parent_id]) ? $field_groups[$parent_id] : FALSE;
+ 
+         if ($parent_group && !isset($export['features']['field_group'][$parent_id])) {
+-          $export['features']['field_group'][$parent_id] = $parent_id;
++          if (isset($parent_group->export_module) && $parent_group->export_module != $module_name) {
++            $export['dependencies'][$parent_group->export_module] = $parent_group->export_module;
++          }
++          else {
++            $export['features']['field_group'][$parent_id] = $parent_id;
++          }
+         }
+       }
+     }
+-- 
+1.7.2.5
+
