@@ -15,12 +15,6 @@ function unipop_get_unipop_types() {
   return unipop_types;
 }
 
-function unipop_showme(s) {
-  //var unipop_types  = new Array();   // list of node types
-  //unipop_types[0] = 33;
-  alert('('+s+') unipop_showme: ' + unipop_types.length)
-;}
-//unipop_showme('unipop.js');
 
 // return youtube id from video node id
 function unipop_video_id_from_node(nid) {
