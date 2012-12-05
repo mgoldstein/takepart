@@ -26,8 +26,7 @@
 /* ===GLOBAL=== */
 /* ------------------------------------------------------------------------*/
 body {
-    /* background:#eff3f5 url('../images/bg-page2.jpg') no-repeat top center; */
-    background-color: #000;
+    background:#eff3f5 url('../images/bg-page2.jpg') no-repeat top center;
     color:#333;
     font-size:12px;
     font-family:Helvetica, Arial, sans-serif;
