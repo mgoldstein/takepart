@@ -203,6 +203,20 @@ function features_conflict_resolver_update_ctools_export_cache(&$cache, $update 
 }
 
 /**
+ * Implements hook_features_get_default_map_alter().
+ */
+function features_conflict_resolver_features_get_default_map_alter(&$map, $component) {
+  $overrides = &drupal_static('features_conflict_resolver_update_ctools_export_cache');
+  foreach ($overrides as $component => $value) {
+    if ($value) {
+      $map[$component] = $value;
+    } else {
+      unset($map[$component]);
+    }
+  }
+}
+
+/**
  * Retrieves the default hooks registered, that can be used for altering components.
  *
  * @return $hooks
