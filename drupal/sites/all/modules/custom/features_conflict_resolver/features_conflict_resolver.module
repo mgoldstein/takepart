@@ -25,6 +25,7 @@ function features_conflict_resolver_get_cmap() {
 
   foreach ($rmap as $type => $var) {
     foreach ($var as $val => $var2) {
+      ksort($var2['modules']);
       $hash = md5(serialize($var2['modules']));
       $rmap[$type][$val]['hash'] = $hash;
       $cmap[$hash]['all-conflicts'][$val] = TRUE;
@@ -33,6 +34,7 @@ function features_conflict_resolver_get_cmap() {
       $cmap[$hash]['hash'] = $hash;
     }
   }
+  ksort($cmap);
 
   return $cmap;
 }
