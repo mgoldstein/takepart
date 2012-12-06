@@ -10,19 +10,7 @@
 function takepart_gallery_default_box() {
   $export = array();
 
-  $box = new stdClass;
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
-  $box->delta = 'box-1104adce';
-  $box->plugin_key = 'ga_ad';
-  $box->title = '';
-  $box->description = 'GA: Bottom Right';
-  $box->options = array(
-    'ga_ad_slot' => 'TP3_ROS_RR_BTF_300x600',
-  );
-  $export['box-1104adce'] = $box;
-
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-3981ef30';
@@ -36,19 +24,19 @@ GA_googleFillSlot("TP3_Home_RR_ATF_300x250");
   );
   $export['box-3981ef30'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'box-66c05d6f';
-  $box->plugin_key = 'ga_ad';
-  $box->title = '';
-  $box->description = 'GA: Top Right';
+  $box->delta = 'box-6ab3a933';
+  $box->plugin_key = 'simple';
+  $box->title = 'Must Reads';
+  $box->description = 'Right Rail Amazon General Reading List';
   $box->options = array(
-    'ga_ad_slot' => 'TP3_ROS_RR_ATF_300x250',
+    'body' => '<p>Editors\' choice books for a better world.</p><OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab" id="Player_6bd8aa4e-299a-40f5-b6d7-b0d927d5c1e0"  WIDTH="300px" HEIGHT="275px"> <param name="wmode" value="window"><PARAM NAME="movie" VALUE="http://ws.amazon.com/widgets/q?rt=tf_ssw&ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Fparticiproduc-20%2F8003%2F6bd8aa4e-299a-40f5-b6d7-b0d927d5c1e0&Operation=GetDisplayTemplate"><PARAM NAME="quality" VALUE="high"><PARAM NAME="bgcolor" VALUE="#FFFFFF"><PARAM NAME="allowscriptaccess" VALUE="always"><embed src="http://ws.amazon.com/widgets/q?rt=tf_ssw&ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Fparticiproduc-20%2F8003%2F6bd8aa4e-299a-40f5-b6d7-b0d927d5c1e0&Operation=GetDisplayTemplate" id="Player_6bd8aa4e-299a-40f5-b6d7-b0d927d5c1e0" quality="high" bgcolor="#ffffff" name="Player_6bd8aa4e-299a-40f5-b6d7-b0d927d5c1e0" allowscriptaccess="always"  type="application/x-shockwave-flash" align="middle" height="250px" width="275px"></embed></OBJECT> <NOSCRIPT><A HREF="http://ws.amazon.com/widgets/q?rt=tf_ssw&ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Fparticiproduc-20%2F8003%2F6bd8aa4e-299a-40f5-b6d7-b0d927d5c1e0&Operation=NoScript">Amazon.com Widgets</A></NOSCRIPT>',
   );
-  $export['box-66c05d6f'] = $box;
+  $export['box-6ab3a933'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-7d1ce087';
@@ -58,16 +46,17 @@ GA_googleFillSlot("TP3_Home_RR_ATF_300x250");
   $box->options = array(
     'view' => 'photo_galleries--block',
     'settings' => array(
-      'nid' => '20908+21097+19625+21035+20703+21060',
+      'nid' => '31365+31945+31363',
     ),
     'view_object' => NULL,
     'view_more_text' => '',
     'view_more_link' => '',
     'additional_classes' => '',
+    'selected_style' => '0',
   );
   $export['box-7d1ce087'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-7fdc48e2';
@@ -104,44 +93,23 @@ GA_googleFillSlot("TP3_Home_RR_ATF_300x250");
   );
   $export['box-7fdc48e2'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'box-bb0b625d';
-  $box->plugin_key = 'field';
+  $box->delta = 'box-944fcfe9';
+  $box->plugin_key = 'simple';
   $box->title = '';
-  $box->description = 'Article Display Tag';
+  $box->description = 'Fix Facebook modal z-index';
   $box->options = array(
-    'entity_type' => 'node',
-    'entity_id' => '',
-    'bundle' => 'openpublish_article',
-    'field' => array(
-      'field_display_tag' => 'field_display_tag',
-      'body' => 0,
-      'field_author' => 0,
-      'field_article_main_image' => 0,
-      'field_free_tag' => 0,
-      'field_thumbnail' => 0,
-      'field_topic' => 0,
-      'field_article_action' => 0,
-      'field_article_subhead' => 0,
-      'field_promo_headline' => 0,
-      'field_promo_text' => 0,
-      'field_series' => 0,
-      'field_related_content' => 0,
-      'field_related_actions' => 0,
-      'field_suggest_campaigns' => 0,
-      'field_suggest_content' => 0,
-      'field_related_campaigns' => 0,
-      'field_suggest_actions' => 0,
-      'field_multi_page_campaign' => 0,
-      'field_tp_campaign_show_title' => 0,
-    ),
-    'use_page' => 1,
-    'exclude_from_content' => 0,
-    'view_mode' => 'default',
+    'body' => '<style type="text/css">
+.fb_iframe_widget_lift {
+z-index:5000;
+}
+</style>',
+    'additional_classes' => '',
+    'selected_style' => '0',
   );
-  $export['box-bb0b625d'] = $box;
+  $export['box-944fcfe9'] = $box;
 
   return $export;
 }

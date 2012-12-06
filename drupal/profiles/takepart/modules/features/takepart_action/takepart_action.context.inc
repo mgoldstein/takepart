@@ -10,7 +10,7 @@
 function takepart_action_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'blocks_action';
@@ -29,9 +29,51 @@ function takepart_action_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-box-41040ece' => array(
+          'module' => 'boxes',
+          'delta' => 'box-41040ece',
+          'region' => 'highlighted',
+          'weight' => 0,
+        ),
+        'menu-menu-takeaction-button-menu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-takeaction-button-menu',
+          'region' => 'highlighted',
+          'weight' => 1,
+        ),
+        'boxes-box-6c13820e' => array(
+          'module' => 'boxes',
+          'delta' => 'box-6c13820e',
+          'region' => 'content_top',
+          'weight' => 0,
+        ),
+        'boxes-action_header_image' => array(
+          'module' => 'boxes',
+          'delta' => 'action_header_image',
+          'region' => 'content_top',
+          'weight' => 1,
+        ),
+        'boxes-action_topic_and_share' => array(
+          'module' => 'boxes',
+          'delta' => 'action_topic_and_share',
+          'region' => 'content_top',
+          'weight' => 2,
+        ),
+        'takepart_custom-page_title_h1' => array(
+          'module' => 'takepart_custom',
+          'delta' => 'page_title_h1',
+          'region' => 'content_top',
+          'weight' => 3,
+        ),
         'boxes-box-4eb62add' => array(
           'module' => 'boxes',
           'delta' => 'box-4eb62add',
+          'region' => 'content_bottom',
+          'weight' => 0,
+        ),
+        'views-content_updates-block' => array(
+          'module' => 'views',
+          'delta' => 'content_updates-block',
           'region' => 'content_bottom',
           'weight' => 1,
         ),
@@ -66,6 +108,10 @@ function takepart_action_context_default_contexts() {
           'weight' => 3,
         ),
       ),
+    ),
+    'title' => array(
+      'title_off' => 1,
+      'title_override' => '',
     ),
   );
   $context->condition_mode = 0;

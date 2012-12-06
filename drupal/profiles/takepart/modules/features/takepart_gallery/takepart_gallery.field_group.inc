@@ -10,7 +10,7 @@
 function takepart_gallery_field_group_info() {
   $export = array();
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_photo_gallery_main|node|openpublish_photo_gallery|form';
@@ -21,7 +21,7 @@ function takepart_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Main',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'body',
       1 => 'field_author',
@@ -39,7 +39,7 @@ function takepart_gallery_field_group_info() {
   );
   $export['group_photo_gallery_main|node|openpublish_photo_gallery|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_photo_gallery_photos|node|openpublish_photo_gallery|form';
@@ -50,7 +50,7 @@ function takepart_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Photos',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_gallery_images',
     ),
@@ -65,7 +65,7 @@ function takepart_gallery_field_group_info() {
   );
   $export['group_photo_gallery_photos|node|openpublish_photo_gallery|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_photo_gallery_promo|node|openpublish_photo_gallery|form';
@@ -76,7 +76,7 @@ function takepart_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_text',
@@ -93,7 +93,7 @@ function takepart_gallery_field_group_info() {
   );
   $export['group_photo_gallery_promo|node|openpublish_photo_gallery|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_photo_gallery_related|node|openpublish_photo_gallery|form';
@@ -104,7 +104,7 @@ function takepart_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_related_content',
       1 => 'field_suggest_actions',
@@ -122,7 +122,7 @@ function takepart_gallery_field_group_info() {
   );
   $export['group_photo_gallery_related|node|openpublish_photo_gallery|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_photo_gallery_tagging|node|openpublish_photo_gallery|form';
@@ -133,7 +133,7 @@ function takepart_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_series',
       1 => 'field_free_tag',

@@ -10,7 +10,7 @@
 function takepart_topic_front_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'comment-comment_node_topic_front-comment_body'
+  // Exported field: 'comment-comment_node_topic_front-comment_body'.
   $fields['comment-comment_node_topic_front-comment_body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function takepart_topic_front_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -71,7 +72,76 @@ function takepart_topic_front_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-topic_front-field_topic_front_context'
+  // Exported field: 'node-topic_front-field_html_title'.
+  $fields['node-topic_front-field_html_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_html_title',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'topic_front',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 1,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_html_title',
+      'label' => 'HTML title Tag',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-topic_front-field_topic_front_context'.
   $fields['node-topic_front-field_topic_front_context'] = array(
     'field_config' => array(
       'active' => '1',
@@ -81,6 +151,7 @@ function takepart_topic_front_field_default_fields() {
       'field_name' => 'field_topic_front_context',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'context_field',
       'settings' => array(
         'global_setting' => 255,
@@ -142,15 +213,18 @@ function takepart_topic_front_field_default_fields() {
         'active' => 0,
         'module' => 'context_field',
         'settings' => array(
+          'form_element' => array(
+            'user_toggle' => 0,
+          ),
           'widget_setting' => 'bob',
         ),
         'type' => 'context_field',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
 
-  // Exported field: 'taxonomy_term-topic-field_topic_context'
+  // Exported field: 'taxonomy_term-topic-field_topic_context'.
   $fields['taxonomy_term-topic-field_topic_context'] = array(
     'field_config' => array(
       'active' => '1',
@@ -160,6 +234,7 @@ function takepart_topic_front_field_default_fields() {
       'field_name' => 'field_topic_context',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'context_field',
       'settings' => array(
         'global_setting' => 255,
@@ -222,15 +297,18 @@ function takepart_topic_front_field_default_fields() {
         'active' => 0,
         'module' => 'context_field',
         'settings' => array(
+          'form_element' => array(
+            'user_toggle' => 0,
+          ),
           'widget_setting' => 'bob',
         ),
         'type' => 'context_field',
-        'weight' => '3',
+        'weight' => '5',
       ),
     ),
   );
 
-  // Exported field: 'taxonomy_term-topic-field_topic_override'
+  // Exported field: 'taxonomy_term-topic-field_topic_override'.
   $fields['taxonomy_term-topic-field_topic_override'] = array(
     'field_config' => array(
       'active' => '1',
@@ -251,6 +329,7 @@ function takepart_topic_front_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -293,11 +372,11 @@ function takepart_topic_front_field_default_fields() {
         ),
         'full' => array(
           'label' => 'above',
-          'module' => 'field_redirection',
+          'module' => 'node_reference',
           'settings' => array(
             'code' => '301',
           ),
-          'type' => 'field_redirection',
+          'type' => 'node_reference_default',
           'weight' => '1',
         ),
       ),
@@ -317,7 +396,7 @@ function takepart_topic_front_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '2',
+        'weight' => '4',
       ),
     ),
   );
@@ -326,6 +405,7 @@ function takepart_topic_front_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Comment');
   t('Context');
+  t('HTML title Tag');
   t('Override');
 
   return $fields;

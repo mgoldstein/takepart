@@ -10,7 +10,76 @@
 function openpublish_media_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-openpublish_photo_gallery-body'
+  // Exported field: 'node-openpublish_photo-field_html_title'.
+  $fields['node-openpublish_photo-field_html_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_html_title',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_photo',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_html_title',
+      'label' => 'HTML title Tag',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_photo_gallery-body'.
   $fields['node-openpublish_photo_gallery-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +102,7 @@ function openpublish_media_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -97,7 +167,7 @@ function openpublish_media_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_author'
+  // Exported field: 'node-openpublish_photo_gallery-field_author'.
   $fields['node-openpublish_photo_gallery-field_author'] = array(
     'field_config' => array(
       'active' => '1',
@@ -118,27 +188,34 @@ function openpublish_media_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
           'audio' => 0,
           'blog_front' => 0,
+          'feed' => 0,
+          'feed_item' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
-          'openpublish_site_page' => 0,
           'openpublish_video' => 0,
+          'petition_action' => 0,
+          'pledge_action' => 0,
           'profile' => 'profile',
           'section_front' => 0,
+          'section_front_wide' => 0,
           'takepart_campaign' => 0,
           'takepart_group' => 0,
+          'takepart_list' => 0,
           'takepart_page' => 0,
           'takepart_quick_study' => 0,
           'takepart_slide' => 0,
           'topic_front' => 0,
-          'video_series' => 0,
+          'venue' => 0,
+          'webform' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -202,7 +279,7 @@ function openpublish_media_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_gallery_images'
+  // Exported field: 'node-openpublish_photo_gallery-field_gallery_images'.
   $fields['node-openpublish_photo_gallery-field_gallery_images'] = array(
     'field_config' => array(
       'active' => '1',
@@ -216,6 +293,7 @@ function openpublish_media_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'media',
       'settings' => array(),
       'translatable' => '1',
@@ -224,7 +302,7 @@ function openpublish_media_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'openpublish_photo_gallery',
       'deleted' => '0',
-      'description' => 'Recommend size is 640x426',
+      'description' => 'Recommend size is 620x467',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -256,11 +334,12 @@ function openpublish_media_field_default_fields() {
       'label' => 'Gallery Images',
       'required' => 0,
       'settings' => array(
+        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media_views_widget',
+        'module' => 'media_views_widget_plupload',
         'settings' => array(
           'allowed_schemes' => array(
             'brightcove' => 0,
@@ -277,13 +356,13 @@ function openpublish_media_field_default_fields() {
           'progress_indicator' => 'throbber',
           'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic_alt',
+        'type' => 'media_views_widget_plupload',
         'weight' => '42',
       ),
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_gallery_main_image'
+  // Exported field: 'node-openpublish_photo_gallery-field_gallery_main_image'.
   $fields['node-openpublish_photo_gallery-field_gallery_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -297,6 +376,7 @@ function openpublish_media_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'media',
       'settings' => array(),
       'translatable' => '1',
@@ -337,6 +417,7 @@ function openpublish_media_field_default_fields() {
       'label' => 'Main Image',
       'required' => 0,
       'settings' => array(
+        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -360,7 +441,88 @@ function openpublish_media_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_video-body'
+  // Exported field: 'node-openpublish_photo_gallery-field_html_title'.
+  $fields['node-openpublish_photo_gallery-field_html_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_html_title',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_photo_gallery',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '22',
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_html_title',
+      'label' => 'HTML title Tag',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_video-body'.
   $fields['node-openpublish_video-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -383,6 +545,7 @@ function openpublish_media_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -420,6 +583,12 @@ function openpublish_media_field_default_fields() {
           'type' => 'hidden',
           'weight' => '5',
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'body',
@@ -443,7 +612,7 @@ function openpublish_media_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_video-field_author'
+  // Exported field: 'node-openpublish_video-field_author'.
   $fields['node-openpublish_video-field_author'] = array(
     'field_config' => array(
       'active' => '1',
@@ -464,27 +633,34 @@ function openpublish_media_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
           'audio' => 0,
           'blog_front' => 0,
+          'feed' => 0,
+          'feed_item' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
-          'openpublish_site_page' => 0,
           'openpublish_video' => 0,
+          'petition_action' => 0,
+          'pledge_action' => 0,
           'profile' => 'profile',
           'section_front' => 0,
+          'section_front_wide' => 0,
           'takepart_campaign' => 0,
           'takepart_group' => 0,
+          'takepart_list' => 0,
           'takepart_page' => 0,
           'takepart_quick_study' => 0,
           'takepart_slide' => 0,
           'topic_front' => 0,
-          'video_series' => 0,
+          'venue' => 0,
+          'webform' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -527,6 +703,12 @@ function openpublish_media_field_default_fields() {
           'type' => 'hidden',
           'weight' => '15',
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_author',
@@ -549,7 +731,180 @@ function openpublish_media_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_video-field_video_embedded'
+  // Exported field: 'node-openpublish_video-field_html_title'.
+  $fields['node-openpublish_video-field_html_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_html_title',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '19',
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_html_title',
+      'label' => 'HTML title Tag',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_video-field_video_display_mode'.
+  $fields['node-openpublish_video-field_video_display_mode'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_video_display_mode',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          1 => 'embedded',
+          2 => 'modal popup',
+          3 => 'contextual (embedded on permalink page, modal elsewhere)',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_video',
+      'default_value' => array(
+        0 => array(
+          'value' => '2',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'Display video as a modal popup, embedded within the page, or as embedded on the permalinked page and modal everywhere else it is used.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '20',
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_video_display_mode',
+      'label' => 'Embedded Video mode',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '6',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_video-field_video_embedded'.
   $fields['node-openpublish_video-field_video_embedded'] = array(
     'field_config' => array(
       'active' => '1',
@@ -563,6 +918,7 @@ function openpublish_media_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'media',
       'settings' => array(),
       'translatable' => '1',
@@ -606,12 +962,22 @@ function openpublish_media_field_default_fields() {
           'type' => 'hidden',
           'weight' => '3',
         ),
+        'vidpop_map' => array(
+          'label' => 'hidden',
+          'module' => 'media',
+          'settings' => array(
+            'file_view_mode' => 'media_large',
+          ),
+          'type' => 'media',
+          'weight' => '0',
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_video_embedded',
       'label' => 'Embedded Video',
       'required' => 0,
       'settings' => array(
+        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -639,10 +1005,13 @@ function openpublish_media_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Author(s)');
   t('Body');
+  t('Display video as a modal popup, embedded within the page, or as embedded on the permalinked page and modal everywhere else it is used.');
   t('Embedded Video');
+  t('Embedded Video mode');
   t('Gallery Images');
+  t('HTML title Tag');
   t('Main Image');
-  t('Recommend size is 640x426');
+  t('Recommend size is 620x467');
 
   return $fields;
 }

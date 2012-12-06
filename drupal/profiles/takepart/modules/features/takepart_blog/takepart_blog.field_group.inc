@@ -10,7 +10,7 @@
 function takepart_blog_field_group_info() {
   $export = array();
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_blogpost_actions|node|openpublish_blog_post|form';
@@ -38,7 +38,7 @@ function takepart_blog_field_group_info() {
   );
   $export['group_blogpost_actions|node|openpublish_blog_post|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_blogpost_body|node|openpublish_blog_post|form';
@@ -56,7 +56,8 @@ function takepart_blog_field_group_info() {
       2 => 'field_blogpost_blog',
       3 => 'field_blogpost_subhead',
       4 => 'field_tp_campaign_show_title',
-      5 => 'title',
+      5 => 'field_html_title',
+      6 => 'title',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -71,7 +72,7 @@ function takepart_blog_field_group_info() {
   );
   $export['group_blogpost_body|node|openpublish_blog_post|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_blogpost_campaigns|node|openpublish_blog_post|form';
@@ -99,7 +100,7 @@ function takepart_blog_field_group_info() {
   );
   $export['group_blogpost_campaigns|node|openpublish_blog_post|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_blogpost_content|node|openpublish_blog_post|form';
@@ -126,7 +127,7 @@ function takepart_blog_field_group_info() {
   );
   $export['group_blogpost_content|node|openpublish_blog_post|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_blogpost_htab1|node|openpublish_blog_post|form';
@@ -154,7 +155,7 @@ function takepart_blog_field_group_info() {
   );
   $export['group_blogpost_htab1|node|openpublish_blog_post|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_blogpost_main|node|openpublish_blog_post|form';
@@ -185,7 +186,7 @@ function takepart_blog_field_group_info() {
   );
   $export['group_blogpost_main|node|openpublish_blog_post|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_blogpost_media|node|openpublish_blog_post|form';
@@ -212,7 +213,7 @@ function takepart_blog_field_group_info() {
   );
   $export['group_blogpost_media|node|openpublish_blog_post|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_blogpost_promos|node|openpublish_blog_post|form';
@@ -239,7 +240,7 @@ function takepart_blog_field_group_info() {
   );
   $export['group_blogpost_promos|node|openpublish_blog_post|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_blogpost_terms|node|openpublish_blog_post|form';

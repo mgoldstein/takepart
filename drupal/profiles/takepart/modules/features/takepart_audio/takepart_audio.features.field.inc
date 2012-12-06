@@ -10,7 +10,7 @@
 function takepart_audio_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-audio-body'
+  // Exported field: 'node-audio-body'.
   $fields['node-audio-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function takepart_audio_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -77,13 +78,13 @@ function takepart_audio_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '3',
+        'weight' => '4',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
   );
 
-  // Exported field: 'node-audio-field_audio_asset'
+  // Exported field: 'node-audio-field_audio_asset'.
   $fields['node-audio-field_audio_asset'] = array(
     'field_config' => array(
       'active' => '1',
@@ -97,6 +98,7 @@ function takepart_audio_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'media',
       'settings' => array(),
       'translatable' => '1',
@@ -128,6 +130,7 @@ function takepart_audio_field_default_fields() {
       'label' => 'Audio Asset',
       'required' => 0,
       'settings' => array(
+        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -146,12 +149,12 @@ function takepart_audio_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
 
-  // Exported field: 'node-audio-field_author'
+  // Exported field: 'node-audio-field_author'.
   $fields['node-audio-field_author'] = array(
     'field_config' => array(
       'active' => '1',
@@ -172,27 +175,34 @@ function takepart_audio_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
           'audio' => 0,
           'blog_front' => 0,
+          'feed' => 0,
+          'feed_item' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
-          'openpublish_site_page' => 0,
           'openpublish_video' => 0,
+          'petition_action' => 0,
+          'pledge_action' => 0,
           'profile' => 'profile',
           'section_front' => 0,
+          'section_front_wide' => 0,
           'takepart_campaign' => 0,
           'takepart_group' => 0,
+          'takepart_list' => 0,
           'takepart_page' => 0,
           'takepart_quick_study' => 0,
           'takepart_slide' => 0,
           'topic_front' => 0,
-          'video_series' => 0,
+          'venue' => 0,
+          'webform' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -239,12 +249,12 @@ function takepart_audio_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
 
-  // Exported field: 'node-audio-field_free_tag'
+  // Exported field: 'node-audio-field_free_tag'.
   $fields['node-audio-field_free_tag'] = array(
     'field_config' => array(
       'active' => '1',
@@ -265,12 +275,13 @@ function takepart_audio_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'free_tags',
+            'parent' => '0',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -313,12 +324,81 @@ function takepart_audio_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
 
-  // Exported field: 'node-audio-field_promo_headline'
+  // Exported field: 'node-audio-field_html_title'.
+  $fields['node-audio-field_html_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_html_title',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'audio',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '10',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_html_title',
+      'label' => 'HTML Title Tag',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-audio-field_promo_headline'.
   $fields['node-audio-field_promo_headline'] = array(
     'field_config' => array(
       'active' => '1',
@@ -339,6 +419,7 @@ function takepart_audio_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -380,12 +461,12 @@ function takepart_audio_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
 
-  // Exported field: 'node-audio-field_promo_text'
+  // Exported field: 'node-audio-field_promo_text'.
   $fields['node-audio-field_promo_text'] = array(
     'field_config' => array(
       'active' => '1',
@@ -406,6 +487,7 @@ function takepart_audio_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -445,12 +527,12 @@ function takepart_audio_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
 
-  // Exported field: 'node-audio-field_series'
+  // Exported field: 'node-audio-field_series'.
   $fields['node-audio-field_series'] = array(
     'field_config' => array(
       'active' => '1',
@@ -471,12 +553,14 @@ function takepart_audio_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'series',
+            'parent' => '0',
+            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -491,9 +575,10 @@ function takepart_audio_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '8',
         ),
         'teaser' => array(
@@ -515,12 +600,12 @@ function takepart_audio_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
 
-  // Exported field: 'node-audio-field_subhead'
+  // Exported field: 'node-audio-field_subhead'.
   $fields['node-audio-field_subhead'] = array(
     'field_config' => array(
       'active' => '1',
@@ -541,6 +626,7 @@ function takepart_audio_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -582,12 +668,12 @@ function takepart_audio_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
 
-  // Exported field: 'node-audio-field_thumbnail'
+  // Exported field: 'node-audio-field_thumbnail'.
   $fields['node-audio-field_thumbnail'] = array(
     'field_config' => array(
       'active' => '1',
@@ -601,6 +687,7 @@ function takepart_audio_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'media',
       'settings' => array(),
       'translatable' => '1',
@@ -629,6 +716,7 @@ function takepart_audio_field_default_fields() {
       'label' => 'Thumbnail Image',
       'required' => 0,
       'settings' => array(
+        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -648,12 +736,12 @@ function takepart_audio_field_default_fields() {
           'view' => 'media_views_widget_default--default',
         ),
         'type' => 'media_generic_alt',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
 
-  // Exported field: 'node-audio-field_topic'
+  // Exported field: 'node-audio-field_topic'.
   $fields['node-audio-field_topic'] = array(
     'field_config' => array(
       'active' => '1',
@@ -674,12 +762,14 @@ function takepart_audio_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'topic',
+            'parent' => '0',
+            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -718,7 +808,7 @@ function takepart_audio_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -729,6 +819,7 @@ function takepart_audio_field_default_fields() {
   t('Author');
   t('Body');
   t('Free Tag');
+  t('HTML Title Tag');
   t('Promo Headline');
   t('Promo Text');
   t('Series');

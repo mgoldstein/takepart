@@ -10,7 +10,7 @@
 function takepart_list_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-takepart_list-body'
+  // Exported field: 'node-takepart_list-body'.
   $fields['node-takepart_list-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function takepart_list_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -77,12 +78,12 @@ function takepart_list_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_list-field_free_tag'
+  // Exported field: 'node-takepart_list-field_free_tag'.
   $fields['node-takepart_list-field_free_tag'] = array(
     'field_config' => array(
       'active' => '1',
@@ -103,12 +104,13 @@ function takepart_list_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'free_tags',
+            'parent' => '0',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -152,12 +154,81 @@ function takepart_list_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_list-field_list_items'
+  // Exported field: 'node-takepart_list-field_html_title'.
+  $fields['node-takepart_list-field_html_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_html_title',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_list',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 6,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_html_title',
+      'label' => 'HTML title tag',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_list-field_list_items'.
   $fields['node-takepart_list-field_list_items'] = array(
     'field_config' => array(
       'active' => '1',
@@ -178,6 +249,7 @@ function takepart_list_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -246,12 +318,12 @@ function takepart_list_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_list-field_topic'
+  // Exported field: 'node-takepart_list-field_topic'.
   $fields['node-takepart_list-field_topic'] = array(
     'field_config' => array(
       'active' => '1',
@@ -272,12 +344,14 @@ function takepart_list_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'topic',
+            'parent' => '0',
+            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -317,7 +391,7 @@ function takepart_list_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -326,6 +400,7 @@ function takepart_list_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Body');
   t('Free Tags');
+  t('HTML title tag');
   t('List Items');
   t('Topic');
 

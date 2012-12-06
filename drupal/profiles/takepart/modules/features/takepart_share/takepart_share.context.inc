@@ -10,7 +10,7 @@
 function takepart_share_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'addthis_blocks';
@@ -19,7 +19,6 @@ function takepart_share_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'action' => 'action',
         'openpublish_article' => 'openpublish_article',
         'openpublish_blog_post' => 'openpublish_blog_post',
         'openpublish_video' => 'openpublish_video',
@@ -37,7 +36,7 @@ function takepart_share_context_default_contexts() {
           'module' => 'takepart_addthis',
           'delta' => 'addthis_footer',
           'region' => 'content_bottom',
-          'weight' => 0,
+          'weight' => 3,
         ),
       ),
     ),
@@ -50,7 +49,7 @@ function takepart_share_context_default_contexts() {
   t('Blocks: AddThis');
   $export['addthis_blocks'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'addthis_leftpanel_blocks';
@@ -75,7 +74,7 @@ function takepart_share_context_default_contexts() {
           'module' => 'takepart_addthis',
           'delta' => 'addthis_full',
           'region' => 'sidebar_first',
-          'weight' => 0,
+          'weight' => 1,
         ),
       ),
     ),

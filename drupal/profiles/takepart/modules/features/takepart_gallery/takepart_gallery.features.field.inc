@@ -10,7 +10,7 @@
 function takepart_gallery_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'file-image-field_media_agency'
+  // Exported field: 'file-image-field_media_agency'.
   $fields['file-image-field_media_agency'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function takepart_gallery_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -109,7 +110,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_caption'
+  // Exported field: 'file-image-field_media_caption'.
   $fields['file-image-field_media_caption'] = array(
     'field_config' => array(
       'active' => '1',
@@ -130,6 +131,7 @@ function takepart_gallery_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -200,7 +202,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_credit'
+  // Exported field: 'file-image-field_media_credit'.
   $fields['file-image-field_media_credit'] = array(
     'field_config' => array(
       'active' => '1',
@@ -221,6 +223,7 @@ function takepart_gallery_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -299,103 +302,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  
-  
-  
-  
-  // Exported field: 'file-image-field_media_alt'
-  $fields['file-image-field_media_alt'] = array(
-      'field_config' => array(
-          'active' => '1',
-          'cardinality' => '1',
-          'deleted' => '0',
-          'entity_types' => array(),
-          'field_name' => 'field_media_alt',
-          'foreign keys' => array(
-              'format' => array(
-                  'columns' => array(
-                      'format' => 'format',
-                  ),
-                  'table' => 'filter_format',
-              ),
-          ),
-          'indexes' => array(
-              'format' => array(
-                  0 => 'format',
-              ),
-          ),
-          'module' => 'text',
-          'settings' => array(
-              'max_length' => '255',
-          ),
-          'translatable' => '1',
-          'type' => 'text',
-      ),
-      'field_instance' => array(
-          'bundle' => 'image',
-          'default_value' => NULL,
-          'deleted' => '0',
-          'description' => 'Alt Tag',
-          'display' => array(
-              'default' => array(
-                  'label' => 'above',
-                  'module' => 'text',
-                  'settings' => array(),
-                  'type' => 'text_default',
-                  'weight' => 1,
-              ),
-              'media_large' => array(
-                  'label' => 'above',
-                  'settings' => array(),
-                  'type' => 'hidden',
-                  'weight' => '6',
-              ),
-              'media_link' => array(
-                  'label' => 'above',
-                  'settings' => array(),
-                  'type' => 'hidden',
-                  'weight' => 0,
-              ),
-              'media_original' => array(
-                  'label' => 'above',
-                  'settings' => array(),
-                  'type' => 'hidden',
-                  'weight' => 0,
-              ),
-              'media_preview' => array(
-                  'label' => 'above',
-                  'settings' => array(),
-                  'type' => 'hidden',
-                  'weight' => 0,
-              ),
-              'media_small' => array(
-                  'label' => 'above',
-                  'settings' => array(),
-                  'type' => 'hidden',
-                  'weight' => 0,
-              ),
-          ),
-          'entity_type' => 'file',
-          'field_name' => 'field_media_alt',
-          'label' => 'Alt ',
-          'required' => 0,
-          'settings' => array(
-              'text_processing' => '0',
-              'user_register_form' => FALSE,
-          ),
-          'widget' => array(
-              'active' => 1,
-              'module' => 'text',
-              'settings' => array(
-                  'size' => '60',
-              ),
-              'type' => 'text_textfield',
-              'weight' => '6',
-          ),
-      ),
-  );
-  
-  // Exported field: 'file-image-field_media_rights'
+  // Exported field: 'file-image-field_media_rights'.
   $fields['file-image-field_media_rights'] = array(
     'field_config' => array(
       'active' => '1',
@@ -416,6 +323,7 @@ function takepart_gallery_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -487,7 +395,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_topic'
+  // Exported field: 'file-image-field_topic'.
   $fields['file-image-field_topic'] = array(
     'field_config' => array(
       'active' => '1',
@@ -508,12 +416,14 @@ function takepart_gallery_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'topic',
+            'parent' => '0',
+            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -585,7 +495,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_display_tag'
+  // Exported field: 'node-openpublish_photo_gallery-field_display_tag'.
   $fields['node-openpublish_photo_gallery-field_display_tag'] = array(
     'field_config' => array(
       'active' => '1',
@@ -606,6 +516,7 @@ function takepart_gallery_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -688,7 +599,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_free_tag'
+  // Exported field: 'node-openpublish_photo_gallery-field_free_tag'.
   $fields['node-openpublish_photo_gallery-field_free_tag'] = array(
     'field_config' => array(
       'active' => '1',
@@ -709,12 +620,13 @@ function takepart_gallery_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'free_tags',
+            'parent' => '0',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -774,7 +686,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_photo_gallery_slideshow'
+  // Exported field: 'node-openpublish_photo_gallery-field_photo_gallery_slideshow'.
   $fields['node-openpublish_photo_gallery-field_photo_gallery_slideshow'] = array(
     'field_config' => array(
       'active' => '1',
@@ -784,6 +696,7 @@ function takepart_gallery_field_default_fields() {
       'field_name' => 'field_photo_gallery_slideshow',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'views_field',
       'settings' => array(
         'global_setting' => 255,
@@ -846,12 +759,12 @@ function takepart_gallery_field_default_fields() {
           'widget_setting' => 'bob',
         ),
         'type' => 'views_field',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_promo_headline'
+  // Exported field: 'node-openpublish_photo_gallery-field_promo_headline'.
   $fields['node-openpublish_photo_gallery-field_promo_headline'] = array(
     'field_config' => array(
       'active' => '1',
@@ -872,6 +785,7 @@ function takepart_gallery_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -931,7 +845,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_promo_text'
+  // Exported field: 'node-openpublish_photo_gallery-field_promo_text'.
   $fields['node-openpublish_photo_gallery-field_promo_text'] = array(
     'field_config' => array(
       'active' => '1',
@@ -952,6 +866,7 @@ function takepart_gallery_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -1009,7 +924,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_related_actions'
+  // Exported field: 'node-openpublish_photo_gallery-field_related_actions'.
   $fields['node-openpublish_photo_gallery-field_related_actions'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1030,6 +945,7 @@ function takepart_gallery_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1114,7 +1030,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_related_content'
+  // Exported field: 'node-openpublish_photo_gallery-field_related_content'.
   $fields['node-openpublish_photo_gallery-field_related_content'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1135,26 +1051,33 @@ function takepart_gallery_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
           'audio' => 0,
           'blog_front' => 0,
+          'feed' => 0,
+          'feed_item' => 0,
           'openpublish_article' => 'openpublish_article',
           'openpublish_blog_post' => 'openpublish_blog_post',
           'openpublish_photo' => 'openpublish_photo',
           'openpublish_photo_gallery' => 'openpublish_photo_gallery',
           'openpublish_video' => 'openpublish_video',
+          'petition_action' => 0,
+          'pledge_action' => 0,
           'profile' => 0,
           'section_front' => 'section_front',
+          'section_front_wide' => 0,
           'takepart_campaign' => 0,
           'takepart_group' => 0,
+          'takepart_list' => 0,
           'takepart_page' => 0,
           'takepart_quick_study' => 0,
           'takepart_slide' => 0,
           'topic_front' => 0,
-          'video_series' => 0,
+          'webform' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -1217,7 +1140,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_series'
+  // Exported field: 'node-openpublish_photo_gallery-field_series'.
   $fields['node-openpublish_photo_gallery-field_series'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1238,12 +1161,14 @@ function takepart_gallery_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'series',
+            'parent' => '0',
+            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -1258,9 +1183,10 @@ function takepart_gallery_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '15',
         ),
         'embed' => array(
@@ -1299,7 +1225,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_subhead'
+  // Exported field: 'node-openpublish_photo_gallery-field_subhead'.
   $fields['node-openpublish_photo_gallery-field_subhead'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1320,6 +1246,7 @@ function takepart_gallery_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1379,7 +1306,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_suggest_actions'
+  // Exported field: 'node-openpublish_photo_gallery-field_suggest_actions'.
   $fields['node-openpublish_photo_gallery-field_suggest_actions'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1393,6 +1320,7 @@ function takepart_gallery_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -1459,7 +1387,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_suggest_content'
+  // Exported field: 'node-openpublish_photo_gallery-field_suggest_content'.
   $fields['node-openpublish_photo_gallery-field_suggest_content'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1473,6 +1401,7 @@ function takepart_gallery_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -1539,7 +1468,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_thumbnail'
+  // Exported field: 'node-openpublish_photo_gallery-field_thumbnail'.
   $fields['node-openpublish_photo_gallery-field_thumbnail'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1553,6 +1482,7 @@ function takepart_gallery_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'media',
       'settings' => array(),
       'translatable' => '1',
@@ -1593,6 +1523,7 @@ function takepart_gallery_field_default_fields() {
       'label' => 'Thumbnail',
       'required' => 0,
       'settings' => array(
+        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1618,7 +1549,7 @@ function takepart_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_topic'
+  // Exported field: 'node-openpublish_photo_gallery-field_topic'.
   $fields['node-openpublish_photo_gallery-field_topic'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1639,12 +1570,14 @@ function takepart_gallery_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'topic',
+            'parent' => '0',
+            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',

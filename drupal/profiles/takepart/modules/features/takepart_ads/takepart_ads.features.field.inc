@@ -10,81 +10,7 @@
 function takepart_ads_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-openpublish_article-field_tp_campaign_show_title'
-  $fields['node-openpublish_article-field_tp_campaign_show_title'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_tp_campaign_show_title',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => '0',
-          1 => '1',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'list_boolean',
-    ),
-    'field_instance' => array(
-      'bundle' => 'openpublish_article',
-      'default_value' => array(
-        0 => array(
-          'value' => 0,
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => 19,
-        ),
-        'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '3',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_tp_campaign_show_title',
-      'label' => 'Remove Headline from Display',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'display_label' => 1,
-        ),
-        'type' => 'options_onoff',
-        'weight' => '1',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-openpublish_blog_post-field_tp_campaign_show_title'
+  // Exported field: 'node-openpublish_blog_post-field_tp_campaign_show_title'.
   $fields['node-openpublish_blog_post-field_tp_campaign_show_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -98,6 +24,7 @@ function takepart_ads_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -153,12 +80,12 @@ function takepart_ads_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
 
-  // Exported field: 'node-openpublish_photo_gallery-field_tp_campaign_show_title'
+  // Exported field: 'node-openpublish_photo_gallery-field_tp_campaign_show_title'.
   $fields['node-openpublish_photo_gallery-field_tp_campaign_show_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -172,6 +99,7 @@ function takepart_ads_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -198,7 +126,7 @@ function takepart_ads_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 21,
+          'weight' => '21',
         ),
         'embed' => array(
           'label' => 'above',
@@ -233,12 +161,12 @@ function takepart_ads_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_campaign-field_calendar'
+  // Exported field: 'node-takepart_campaign-field_calendar'.
   $fields['node-takepart_campaign-field_calendar'] = array(
     'field_config' => array(
       'active' => '1',
@@ -248,6 +176,7 @@ function takepart_ads_field_default_fields() {
       'field_name' => 'field_calendar',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'takepart_calendar',
       'settings' => array(),
       'translatable' => '0',
@@ -264,15 +193,21 @@ function takepart_ads_field_default_fields() {
           'module' => 'takepart_calendar',
           'settings' => array(),
           'type' => 'takepart_calendar_formatter',
-          'weight' => 30,
+          'weight' => '30',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -291,12 +226,12 @@ function takepart_ads_field_default_fields() {
         'module' => 'takepart_calendar',
         'settings' => array(),
         'type' => 'takepart_calendar',
-        'weight' => '30',
+        'weight' => '19',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_list-field_multi_page_campaign'
+  // Exported field: 'node-takepart_list-field_multi_page_campaign'.
   $fields['node-takepart_list-field_multi_page_campaign'] = array(
     'field_config' => array(
       'active' => '1',
@@ -306,6 +241,7 @@ function takepart_ads_field_default_fields() {
       'field_name' => 'field_multi_page_campaign',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'context_field',
       'settings' => array(
         'global_setting' => 255,
@@ -383,12 +319,12 @@ function takepart_ads_field_default_fields() {
           ),
         ),
         'type' => 'context_field_select',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_list-field_tp_campaign_show_title'
+  // Exported field: 'node-takepart_list-field_tp_campaign_show_title'.
   $fields['node-takepart_list-field_tp_campaign_show_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -402,6 +338,7 @@ function takepart_ads_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -451,7 +388,7 @@ function takepart_ads_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );

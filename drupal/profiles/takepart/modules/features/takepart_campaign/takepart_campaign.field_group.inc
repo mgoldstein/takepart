@@ -10,7 +10,34 @@
 function takepart_campaign_field_group_info() {
   $export = array();
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_multi_page_campaign|node|takepart_campaign|form';
+  $field_group->group_name = 'group_multi_page_campaign';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'takepart_campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Multi Page Campaign',
+    'weight' => '16',
+    'children' => array(
+      0 => 'field_multi_page_campaign',
+      1 => 'field_tp_campaign_header',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_multi_page_campaign|node|takepart_campaign|form'] = $field_group;
+
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tp_campaign_cover|node|takepart_campaign|form';
@@ -21,7 +48,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Cover',
-    'weight' => '4',
+    'weight' => '7',
     'children' => array(
       0 => 'field_tp_campaign_cover_image',
       1 => 'field_tp_campaign_cover_intro',
@@ -38,7 +65,7 @@ function takepart_campaign_field_group_info() {
   );
   $export['group_tp_campaign_cover|node|takepart_campaign|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tp_campaign_groups|node|takepart_campaign|form';
@@ -49,7 +76,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Groups',
-    'weight' => '6',
+    'weight' => '9',
     'children' => array(
       0 => 'field_tp_campaign_sponsors',
       1 => 'field_tp_campaign_alliances',
@@ -65,7 +92,37 @@ function takepart_campaign_field_group_info() {
   );
   $export['group_tp_campaign_groups|node|takepart_campaign|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_tp_campaign_header|node|takepart_campaign|default';
+  $field_group->group_name = 'group_tp_campaign_header';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'takepart_campaign';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Header',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_tp_campaign_4_things_link',
+      1 => 'field_tp_campaign_5_things_head',
+      2 => 'field_tp_campaign_intro_html',
+      3 => 'field_tp_campaign_intro_media',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_tp_campaign_header|node|takepart_campaign|default'] = $field_group;
+
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tp_campaign_intro|node|takepart_campaign|form';
@@ -76,7 +133,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Intro',
-    'weight' => '3',
+    'weight' => '6',
     'children' => array(
       0 => 'field_tp_campaign_4_things_link',
       1 => 'field_tp_campaign_5_things_head',
@@ -94,7 +151,36 @@ function takepart_campaign_field_group_info() {
   );
   $export['group_tp_campaign_intro|node|takepart_campaign|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_tp_campaign_main|node|takepart_campaign|form';
+  $field_group->group_name = 'group_tp_campaign_main';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'takepart_campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Main',
+    'weight' => '2',
+    'children' => array(
+      0 => 'body',
+      1 => 'field_tp_campaign_subheadline',
+      2 => 'field_main_image',
+      3 => 'field_thumbnail',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_tp_campaign_main|node|takepart_campaign|form'] = $field_group;
+
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tp_campaign_rel|node|takepart_campaign|form';
@@ -105,7 +191,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related Actions',
-    'weight' => '5',
+    'weight' => '8',
     'children' => array(
       0 => 'field_related_actions',
       1 => 'field_suggest_actions',
@@ -123,7 +209,7 @@ function takepart_campaign_field_group_info() {
   );
   $export['group_tp_campaign_rel|node|takepart_campaign|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tp_campaign_seg_1|node|takepart_campaign|form';
@@ -134,7 +220,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Segment 1',
-    'weight' => '8',
+    'weight' => '11',
     'children' => array(
       0 => 'field_tp_campaign_seg_1_html',
       1 => 'field_tp_campaign_seg_1_label',
@@ -151,7 +237,7 @@ function takepart_campaign_field_group_info() {
   );
   $export['group_tp_campaign_seg_1|node|takepart_campaign|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tp_campaign_seg_2|node|takepart_campaign|form';
@@ -162,7 +248,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Segment 2',
-    'weight' => '10',
+    'weight' => '12',
     'children' => array(
       0 => 'field_tp_campaign_seg_2_html',
       1 => 'field_tp_campaign_seg_2_label',
@@ -179,7 +265,7 @@ function takepart_campaign_field_group_info() {
   );
   $export['group_tp_campaign_seg_2|node|takepart_campaign|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tp_campaign_seg_3|node|takepart_campaign|form';
@@ -190,7 +276,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Segment 3',
-    'weight' => '11',
+    'weight' => '14',
     'children' => array(
       0 => 'field_tp_campaign_seg_3_html',
       1 => 'field_tp_campaign_seg_3_label',
@@ -207,7 +293,7 @@ function takepart_campaign_field_group_info() {
   );
   $export['group_tp_campaign_seg_3|node|takepart_campaign|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tp_campaign_seg_4|node|takepart_campaign|form';
@@ -218,7 +304,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Segment 4',
-    'weight' => '12',
+    'weight' => '15',
     'children' => array(
       0 => 'field_tp_campaign_seg_4_html',
       1 => 'field_tp_campaign_seg_4_label',
@@ -235,7 +321,7 @@ function takepart_campaign_field_group_info() {
   );
   $export['group_tp_campaign_seg_4|node|takepart_campaign|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tp_campaign_sl|node|takepart_campaign|form';
@@ -246,7 +332,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Spotlight',
-    'weight' => '7',
+    'weight' => '10',
     'children' => array(
       0 => 'field_tp_campaign_sl_html',
       1 => 'field_tp_campaign_sl_image',
@@ -263,7 +349,33 @@ function takepart_campaign_field_group_info() {
   );
   $export['group_tp_campaign_sl|node|takepart_campaign|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_tp_campaign_tags|node|takepart_campaign|form';
+  $field_group->group_name = 'group_tp_campaign_tags';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'takepart_campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Tags',
+    'weight' => '18',
+    'children' => array(
+      0 => 'field_topic',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_tp_campaign_tags|node|takepart_campaign|form'] = $field_group;
+
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tp_campaign_vtab1|node|takepart_campaign|form';

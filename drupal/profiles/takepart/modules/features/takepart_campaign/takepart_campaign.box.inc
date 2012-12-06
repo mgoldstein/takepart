@@ -10,7 +10,7 @@
 function takepart_campaign_default_box() {
   $export = array();
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-1306f48f';
@@ -51,7 +51,6 @@ function takepart_campaign_default_box() {
       'field_free_tag' => 0,
       'field_thumbnail' => 0,
       'field_topic' => 0,
-      'field_free_tag' => 0,
       'field_article_action' => 0,
       'field_article_subhead' => 0,
       'field_display_tag' => 0,
@@ -133,7 +132,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-1306f48f'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-153f08e4';
@@ -182,7 +181,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-153f08e4'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-22165b1a';
@@ -227,7 +226,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-22165b1a'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-2988d8fb';
@@ -245,7 +244,6 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_intro_media' => 'field_tp_campaign_intro_media',
       'body' => 0,
       'field_topic' => 0,
-      'field_free_tag' => 0,
       'field_tp_campaign_cover_image' => 0,
       'field_tp_campaign_seg_1_html' => 0,
       'field_tp_campaign_seg_1_label' => 0,
@@ -273,6 +271,7 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_cover_link' => 0,
       'field_tp_campaign_alliances' => 0,
       'field_tp_campaign_show_title' => 0,
+      'field_calendar' => 0,
     ),
     'use_page' => 1,
     'exclude_from_content' => 0,
@@ -280,7 +279,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-2988d8fb'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-33756e58';
@@ -297,7 +296,6 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_sl_nodes' => 'field_tp_campaign_sl_nodes',
       'body' => 0,
       'field_topic' => 0,
-      'field_free_tag' => 0,
       'field_tp_campaign_4_things_link' => 0,
       'field_tp_campaign_5_things_head' => 0,
       'field_tp_campaign_cover_image' => 0,
@@ -326,6 +324,8 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_cover_link' => 0,
       'field_tp_campaign_alliances' => 0,
       'field_tp_campaign_show_title' => 0,
+      'field_calendar' => 0,
+      'field_html_title' => 0,
     ),
     'use_page' => 1,
     'exclude_from_content' => 0,
@@ -333,7 +333,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-33756e58'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-4abd00a3';
@@ -382,7 +382,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-4abd00a3'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-5cd7d5ce';
@@ -431,7 +431,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-5cd7d5ce'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-81a645d6';
@@ -482,7 +482,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-81a645d6'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-8a3f206b';
@@ -499,7 +499,6 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_seg_2_rel' => 'field_tp_campaign_seg_2_rel',
       'body' => 0,
       'field_topic' => 0,
-      'field_free_tag' => 0,
       'field_tp_campaign_4_things_link' => 0,
       'field_tp_campaign_5_things_head' => 0,
       'field_tp_campaign_cover_image' => 0,
@@ -535,7 +534,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-8a3f206b'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-907caa9b';
@@ -552,7 +551,6 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_seg_3_rel' => 'field_tp_campaign_seg_3_rel',
       'body' => 0,
       'field_topic' => 0,
-      'field_free_tag' => 0,
       'field_tp_campaign_4_things_link' => 0,
       'field_tp_campaign_5_things_head' => 0,
       'field_tp_campaign_cover_image' => 0,
@@ -588,7 +586,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-907caa9b'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-95b55e7';
@@ -602,8 +600,9 @@ function takepart_campaign_default_box() {
     'field' => array(
       'field_tp_campaign_sponsors' => 'field_tp_campaign_sponsors',
       'body' => 0,
+      'field_thumbnail' => 0,
       'field_topic' => 0,
-      'field_free_tag' => 0,
+      'field_main_image' => 0,
       'field_tp_campaign_4_things_link' => 0,
       'field_tp_campaign_5_things_head' => 0,
       'field_tp_campaign_cover_image' => 0,
@@ -634,6 +633,9 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_cover_link' => 0,
       'field_tp_campaign_alliances' => 0,
       'field_tp_campaign_show_title' => 0,
+      'field_calendar' => 0,
+      'field_html_title' => 0,
+      'field_google_map' => 0,
     ),
     'use_page' => 1,
     'exclude_from_content' => 0,
@@ -641,7 +643,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-95b55e7'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-97545db1';
@@ -658,7 +660,6 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_seg_4_rel' => 'field_tp_campaign_seg_4_rel',
       'body' => 0,
       'field_topic' => 0,
-      'field_free_tag' => 0,
       'field_tp_campaign_4_things_link' => 0,
       'field_tp_campaign_5_things_head' => 0,
       'field_tp_campaign_cover_image' => 0,
@@ -694,7 +695,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-97545db1'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-9ececd73';
@@ -709,7 +710,7 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_subheadline' => 'field_tp_campaign_subheadline',
       'body' => 'body',
       'field_topic' => 0,
-      'field_free_tag' => 0,
+      'field_main_image' => 0,
       'field_tp_campaign_4_things_link' => 0,
       'field_tp_campaign_5_things_head' => 0,
       'field_tp_campaign_cover_image' => 0,
@@ -740,6 +741,9 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_cover_link' => 0,
       'field_tp_campaign_alliances' => 0,
       'field_tp_campaign_show_title' => 0,
+      'field_calendar' => 0,
+      'field_html_title' => 0,
+      'field_google_map' => 0,
     ),
     'use_page' => 1,
     'exclude_from_content' => 0,
@@ -747,7 +751,7 @@ function takepart_campaign_default_box() {
   );
   $export['box-9ececd73'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-b68f20b9';

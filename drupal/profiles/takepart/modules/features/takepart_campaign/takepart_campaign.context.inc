@@ -10,7 +10,7 @@
 function takepart_campaign_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'multi_page_comapaign_default_context';
@@ -50,7 +50,7 @@ function takepart_campaign_context_default_contexts() {
   t('Default Context for Multi Page Campaign');
   $export['multi_page_comapaign_default_context'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'takepart_campaign_default';
@@ -70,19 +70,12 @@ function takepart_campaign_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-          /*
         'takepart_custom-page_title_h1' => array(
           'module' => 'takepart_custom',
           'delta' => 'page_title_h1',
           'region' => 'highlighted',
           'weight' => '-10',
-        ), 
-        'takepart_addthis-addthis_simple' => array(
-          'module' => 'takepart_addthis',
-          'delta' => 'addthis_simple',
-          'region' => 'highlighted',
-          'weight' => '-8',
-        ), */
+        ),
         'boxes-box-2988d8fb' => array(
           'module' => 'boxes',
           'delta' => 'box-2988d8fb',

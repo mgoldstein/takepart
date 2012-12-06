@@ -29,10 +29,33 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['query']['options']['slave'] = TRUE;
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '2';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Content: Taxonomy terms on node */
+  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
+  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['required'] = 0;
+  $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
+    'blog' => 'blog',
+    'action_type' => 0,
+    'agency' => 0,
+    'free_tags' => 0,
+    'group_type' => 0,
+    'photo_credit' => 0,
+    'series' => 0,
+    'topic' => 0,
+    'video_series' => 0,
+  );
+  /* Relationship: Taxonomy term: Content using Topic */
+  $handler->display->display_options['relationships']['reverse_field_group_topic_node']['id'] = 'reverse_field_group_topic_node';
+  $handler->display->display_options['relationships']['reverse_field_group_topic_node']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['relationships']['reverse_field_group_topic_node']['field'] = 'reverse_field_group_topic_node';
+  $handler->display->display_options['relationships']['reverse_field_group_topic_node']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['reverse_field_group_topic_node']['required'] = 0;
   /* Field: Content: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
@@ -58,7 +81,7 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
   $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-    'image_style' => 'square_thumb_70',
+    'image_style' => '70x70_thumbnail',
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_thumbnail']['field_api_classes'] = 0;
@@ -78,6 +101,33 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Taxonomy term: Override */
+  $handler->display->display_options['fields']['field_blog_override']['id'] = 'field_blog_override';
+  $handler->display->display_options['fields']['field_blog_override']['table'] = 'field_data_field_blog_override';
+  $handler->display->display_options['fields']['field_blog_override']['field'] = 'field_blog_override';
+  $handler->display->display_options['fields']['field_blog_override']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['field_blog_override']['label'] = '';
+  $handler->display->display_options['fields']['field_blog_override']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_blog_override']['alter']['text'] = '&raquo; More';
+  $handler->display->display_options['fields']['field_blog_override']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['field_blog_override']['alter']['path'] = 'node/[field_blog_override-nid]';
+  $handler->display->display_options['fields']['field_blog_override']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_blog_override']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_blog_override']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_blog_override']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_blog_override']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_blog_override']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_blog_override']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_blog_override']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_blog_override']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_blog_override']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_blog_override']['element_class'] = 'more';
+  $handler->display->display_options['fields']['field_blog_override']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_blog_override']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_blog_override']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_blog_override']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_blog_override']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_blog_override']['field_api_classes'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -142,7 +192,7 @@ function takepart_blog_views_default_views() {
   $handler = $view->new_display('block', 'Our Blogs Summary', 'block_2');
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '3';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Blog (field_blogpost_blog) */

@@ -261,7 +261,7 @@ return TRUE;';
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Sponsored Actions';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Action Sponsor (field_action_sponsor) */
+  /* Contextual filter: Content: Empowered By (field_action_sponsor) */
   $handler->display->display_options['arguments']['field_action_sponsor_nid']['id'] = 'field_action_sponsor_nid';
   $handler->display->display_options['arguments']['field_action_sponsor_nid']['table'] = 'field_data_field_action_sponsor';
   $handler->display->display_options['arguments']['field_action_sponsor_nid']['field'] = 'field_action_sponsor_nid';

@@ -10,7 +10,7 @@
 function takepart_video_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'blocks_video';
@@ -29,53 +29,71 @@ function takepart_video_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-box-bb0b625d' => array(
-          'module' => 'boxes',
-          'delta' => 'box-bb0b625d',
-          'region' => 'content_top',
-          'weight' => 0,
-        ),
-        'views-video-block_8' => array(
-          'module' => 'views',
-          'delta' => 'video-block_8',
-          'region' => 'content_bottom',
-          'weight' => 1,
-        ),
-        'views-video-block' => array(
-          'module' => 'views',
-          'delta' => 'video-block',
-          'region' => 'content_bottom',
-          'weight' => 2,
-        ),
-        'comment_block_simple-comment_block' => array(
-          'module' => 'comment_block_simple',
-          'delta' => 'comment_block',
-          'region' => 'content_bottom',
-          'weight' => 3,
-        ),
         'boxes-box-66c05d6f' => array(
           'module' => 'boxes',
           'delta' => 'box-66c05d6f',
           'region' => 'sidebar_second',
-          'weight' => 0,
+          'weight' => '0',
         ),
-        'boxes-box-e9e8814f' => array(
-          'module' => 'boxes',
-          'delta' => 'box-e9e8814f',
+        'newsletter_campaign-10' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => 10,
           'region' => 'sidebar_second',
-          'weight' => 1,
+          'weight' => '1',
         ),
         'views-related_actions-block' => array(
           'module' => 'views',
           'delta' => 'related_actions-block',
           'region' => 'sidebar_second',
-          'weight' => 2,
+          'weight' => '2',
         ),
         'boxes-box-1104adce' => array(
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar_second',
-          'weight' => 3,
+          'weight' => '3',
+        ),
+        'boxes-box-6c13820e' => array(
+          'module' => 'boxes',
+          'delta' => 'box-6c13820e',
+          'region' => 'content_top',
+          'weight' => '-10',
+        ),
+        'boxes-box-bb0b625d' => array(
+          'module' => 'boxes',
+          'delta' => 'box-bb0b625d',
+          'region' => 'content_top',
+          'weight' => '-9',
+        ),
+        'boxes-box-7afa6acd' => array(
+          'module' => 'boxes',
+          'delta' => 'box-7afa6acd',
+          'region' => 'content_bottom',
+          'weight' => '1',
+        ),
+        'views-video-block_8' => array(
+          'module' => 'views',
+          'delta' => 'video-block_8',
+          'region' => 'content_bottom',
+          'weight' => '2',
+        ),
+        'boxes-box-34ee1b08' => array(
+          'module' => 'boxes',
+          'delta' => 'box-34ee1b08',
+          'region' => 'content_bottom',
+          'weight' => '3',
+        ),
+        'views-video-block' => array(
+          'module' => 'views',
+          'delta' => 'video-block',
+          'region' => 'content_bottom',
+          'weight' => '4',
+        ),
+        'comment_block_simple-comment_block' => array(
+          'module' => 'comment_block_simple',
+          'delta' => 'comment_block',
+          'region' => 'content_bottom',
+          'weight' => '5',
         ),
       ),
     ),
@@ -88,7 +106,7 @@ function takepart_video_context_default_contexts() {
   t('Video Blocks');
   $export['blocks_video'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'blocks_video_series';

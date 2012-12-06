@@ -10,7 +10,7 @@
 function takepart_article_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'blocks_article';
@@ -29,27 +29,39 @@ function takepart_article_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-box-6c13820e' => array(
+          'module' => 'boxes',
+          'delta' => 'box-6c13820e',
+          'region' => 'content_top',
+          'weight' => 0,
+        ),
         'boxes-box-bb0b625d' => array(
           'module' => 'boxes',
           'delta' => 'box-bb0b625d',
           'region' => 'content_top',
-          'weight' => 0,
+          'weight' => 1,
         ),
         'takepart_custom-page_title_h1' => array(
           'module' => 'takepart_custom',
           'delta' => 'page_title_h1',
           'region' => 'content_top',
-          'weight' => 1,
+          'weight' => 2,
         ),
         'boxes-box-9753089b' => array(
           'module' => 'boxes',
           'delta' => 'box-9753089b',
           'region' => 'content_top',
-          'weight' => 2,
+          'weight' => 3,
         ),
         'boxes-box-4eb62add' => array(
           'module' => 'boxes',
           'delta' => 'box-4eb62add',
+          'region' => 'content_bottom',
+          'weight' => 0,
+        ),
+        'boxes-box-34ee1b08' => array(
+          'module' => 'boxes',
+          'delta' => 'box-34ee1b08',
           'region' => 'content_bottom',
           'weight' => 1,
         ),
@@ -65,23 +77,41 @@ function takepart_article_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => 0,
         ),
+        'boxes-box-bedd1fbb' => array(
+          'module' => 'boxes',
+          'delta' => 'box-bedd1fbb',
+          'region' => 'sidebar_second',
+          'weight' => 1,
+        ),
+        'newsletter_campaign-10' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '10',
+          'region' => 'sidebar_second',
+          'weight' => 2,
+        ),
         'boxes-box-7fa6e22c' => array(
           'module' => 'boxes',
           'delta' => 'box-7fa6e22c',
           'region' => 'sidebar_second',
-          'weight' => 1,
+          'weight' => 3,
         ),
         'views-related_content-block' => array(
           'module' => 'views',
           'delta' => 'related_content-block',
           'region' => 'sidebar_second',
-          'weight' => 2,
+          'weight' => 4,
+        ),
+        'boxes-box-c49bfd54' => array(
+          'module' => 'boxes',
+          'delta' => 'box-c49bfd54',
+          'region' => 'sidebar_second',
+          'weight' => 5,
         ),
         'boxes-box-1104adce' => array(
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar_second',
-          'weight' => 3,
+          'weight' => 6,
         ),
       ),
     ),
@@ -90,7 +120,7 @@ function takepart_article_context_default_contexts() {
       'title_override' => '',
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -98,7 +128,7 @@ function takepart_article_context_default_contexts() {
   t('Blocks: Content Type');
   $export['blocks_article'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'series_default_context';
@@ -119,11 +149,17 @@ function takepart_article_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-box-15362653' => array(
+          'module' => 'boxes',
+          'delta' => 'box-15362653',
+          'region' => 'content_top',
+          'weight' => 0,
+        ),
         'takepart_custom-page_title_h1' => array(
           'module' => 'takepart_custom',
           'delta' => 'page_title_h1',
           'region' => 'content_top',
-          'weight' => 0,
+          'weight' => 1,
         ),
         'views-taxonomy_search_list-block_2' => array(
           'module' => 'views',

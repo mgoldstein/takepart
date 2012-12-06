@@ -10,7 +10,7 @@
 function takepart_quick_study_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-takepart_quick_study-body'
+  // Exported field: 'node-takepart_quick_study-body'.
   $fields['node-takepart_quick_study-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function takepart_quick_study_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -91,13 +92,13 @@ function takepart_quick_study_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '-4',
+        'weight' => '2',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
   );
 
-  // Exported field: 'node-takepart_quick_study-field_display_tag'
+  // Exported field: 'node-takepart_quick_study-field_display_tag'.
   $fields['node-takepart_quick_study-field_display_tag'] = array(
     'field_config' => array(
       'active' => '1',
@@ -118,12 +119,13 @@ function takepart_quick_study_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'blog',
+            'parent' => '0',
           ),
           1 => array(
             'parent' => '0',
@@ -195,12 +197,12 @@ function takepart_quick_study_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '32',
+        'weight' => '8',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_quick_study-field_free_tag'
+  // Exported field: 'node-takepart_quick_study-field_free_tag'.
   $fields['node-takepart_quick_study-field_free_tag'] = array(
     'field_config' => array(
       'active' => '1',
@@ -221,12 +223,13 @@ function takepart_quick_study_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'free_tags',
+            'parent' => '0',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -281,12 +284,93 @@ function takepart_quick_study_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_quick_study-field_html_title'.
+  $fields['node-takepart_quick_study-field_html_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_html_title',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_quick_study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 5,
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_html_title',
+      'label' => 'HTML title Tag',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
         'weight' => '1',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_quick_study-field_quickstudy_main_image'
+  // Exported field: 'node-takepart_quick_study-field_quickstudy_main_image'.
   $fields['node-takepart_quick_study-field_quickstudy_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -300,6 +384,7 @@ function takepart_quick_study_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'media',
       'settings' => array(),
       'translatable' => '1',
@@ -356,6 +441,7 @@ function takepart_quick_study_field_default_fields() {
       'label' => 'Main',
       'required' => 0,
       'settings' => array(
+        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -375,12 +461,12 @@ function takepart_quick_study_field_default_fields() {
           'view' => 'media_views_widget_default--default',
         ),
         'type' => 'media_generic_alt',
-        'weight' => '-3',
+        'weight' => '3',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_quick_study-field_topic'
+  // Exported field: 'node-takepart_quick_study-field_topic'.
   $fields['node-takepart_quick_study-field_topic'] = array(
     'field_config' => array(
       'active' => '1',
@@ -401,12 +487,14 @@ function takepart_quick_study_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'topic',
+            'parent' => '0',
+            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -459,12 +547,12 @@ function takepart_quick_study_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '-1',
+        'weight' => '4',
       ),
     ),
   );
 
-  // Exported field: 'taxonomy_term-topic-field_topic_featured_quick_study'
+  // Exported field: 'taxonomy_term-topic-field_topic_featured_quick_study'.
   $fields['taxonomy_term-topic-field_topic_featured_quick_study'] = array(
     'field_config' => array(
       'active' => '1',
@@ -485,6 +573,7 @@ function takepart_quick_study_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -548,7 +637,7 @@ function takepart_quick_study_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '1',
+        'weight' => '3',
       ),
     ),
   );
@@ -559,6 +648,7 @@ function takepart_quick_study_field_default_fields() {
   t('Display Tag');
   t('Featured Quick Study');
   t('Free Tag');
+  t('HTML title Tag');
   t('Main');
   t('Topic');
 

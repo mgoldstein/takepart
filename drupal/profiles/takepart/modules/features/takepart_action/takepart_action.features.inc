@@ -30,10 +30,7 @@ function takepart_action_ctools_plugin_api() {
  * Implements hook_views_api().
  */
 function takepart_action_views_api() {
-  list($module, $api) = func_get_args();
-  if ($module == "views" && $api == "views_default") {
-    return array("version" => "3.0");
-  }
+  return array("version" => "3.0");
 }
 
 /**
@@ -46,7 +43,7 @@ function takepart_action_node_info() {
       'base' => 'node_content',
       'description' => t('Used to add actions to the site.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Page Title'),
       'help' => '',
     ),
   );

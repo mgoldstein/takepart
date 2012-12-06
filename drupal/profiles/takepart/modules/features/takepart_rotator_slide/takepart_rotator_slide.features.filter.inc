@@ -10,7 +10,7 @@
 function takepart_rotator_slide_filter_default_formats() {
   $formats = array();
 
-  // Exported format: Limited HTML
+  // Exported format: Limited HTML.
   $formats['limited_html'] = array(
     'format' => 'limited_html',
     'name' => 'Limited HTML',

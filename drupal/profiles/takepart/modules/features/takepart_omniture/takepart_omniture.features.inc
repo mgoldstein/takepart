@@ -13,6 +13,10 @@ function takepart_omniture_ctools_plugin_api() {
     return array("version" => "3");
   }
   list($module, $api) = func_get_args();
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -31,10 +35,10 @@ function takepart_omniture_node_info() {
       'title_label' => t('Full Name'),
       'help' => t('This is the name used as the title of this content. This may be comprised of the First and Last names, or of the Organization name, or any other name that you choose.'),
     ),
-    'section_front' => array(
-      'name' => t('Section Front'),
+    'venue' => array(
+      'name' => t('Venue'),
       'base' => 'node_content',
-      'description' => t('Default section front content type.'),
+      'description' => t('Content that applies to a physical location, such as a business or event place.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

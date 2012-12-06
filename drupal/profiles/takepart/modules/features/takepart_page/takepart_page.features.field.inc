@@ -10,7 +10,7 @@
 function takepart_page_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-takepart_page-body'
+  // Exported field: 'node-takepart_page-body'.
   $fields['node-takepart_page-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function takepart_page_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -77,13 +78,13 @@ function takepart_page_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '3',
+        'weight' => '4',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_author'
+  // Exported field: 'node-takepart_page-field_author'.
   $fields['node-takepart_page-field_author'] = array(
     'field_config' => array(
       'active' => '1',
@@ -104,27 +105,34 @@ function takepart_page_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
           'audio' => 0,
           'blog_front' => 0,
+          'feed' => 0,
+          'feed_item' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 0,
-          'openpublish_site_page' => 0,
           'openpublish_video' => 0,
+          'petition_action' => 0,
+          'pledge_action' => 0,
           'profile' => 'profile',
           'section_front' => 0,
+          'section_front_wide' => 0,
           'takepart_campaign' => 0,
           'takepart_group' => 0,
+          'takepart_list' => 0,
           'takepart_page' => 0,
           'takepart_quick_study' => 0,
           'takepart_slide' => 0,
           'topic_front' => 0,
-          'video_series' => 0,
+          'venue' => 0,
+          'webform' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -171,12 +179,12 @@ function takepart_page_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_display_tag'
+  // Exported field: 'node-takepart_page-field_display_tag'.
   $fields['node-takepart_page-field_display_tag'] = array(
     'field_config' => array(
       'active' => '1',
@@ -197,6 +205,7 @@ function takepart_page_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -262,12 +271,12 @@ function takepart_page_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_free_tag'
+  // Exported field: 'node-takepart_page-field_free_tag'.
   $fields['node-takepart_page-field_free_tag'] = array(
     'field_config' => array(
       'active' => '1',
@@ -288,12 +297,13 @@ function takepart_page_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'free_tags',
+            'parent' => '0',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -337,12 +347,81 @@ function takepart_page_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '18',
+        'weight' => '19',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_page_action'
+  // Exported field: 'node-takepart_page-field_html_title'.
+  $fields['node-takepart_page-field_html_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_html_title',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_page',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 18,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_html_title',
+      'label' => 'HTML title tag',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-takepart_page-field_page_action'.
   $fields['node-takepart_page-field_page_action'] = array(
     'field_config' => array(
       'active' => '1',
@@ -363,6 +442,7 @@ function takepart_page_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -424,12 +504,12 @@ function takepart_page_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_page_main_image'
+  // Exported field: 'node-takepart_page-field_page_main_image'.
   $fields['node-takepart_page-field_page_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -443,6 +523,7 @@ function takepart_page_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'media',
       'settings' => array(),
       'translatable' => '1',
@@ -474,6 +555,7 @@ function takepart_page_field_default_fields() {
       'label' => 'Main Image',
       'required' => 0,
       'settings' => array(
+        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -493,12 +575,12 @@ function takepart_page_field_default_fields() {
           'view' => 'media_views_widget_default--default',
         ),
         'type' => 'media_generic_alt',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_page_related_actions'
+  // Exported field: 'node-takepart_page-field_page_related_actions'.
   $fields['node-takepart_page-field_page_related_actions'] = array(
     'field_config' => array(
       'active' => '1',
@@ -519,6 +601,7 @@ function takepart_page_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -580,12 +663,12 @@ function takepart_page_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_page_related_content'
+  // Exported field: 'node-takepart_page-field_page_related_content'.
   $fields['node-takepart_page-field_page_related_content'] = array(
     'field_config' => array(
       'active' => '1',
@@ -606,6 +689,7 @@ function takepart_page_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -674,12 +758,12 @@ function takepart_page_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_page_subhead'
+  // Exported field: 'node-takepart_page-field_page_subhead'.
   $fields['node-takepart_page-field_page_subhead'] = array(
     'field_config' => array(
       'active' => '1',
@@ -700,6 +784,7 @@ function takepart_page_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -742,12 +827,12 @@ function takepart_page_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_page_suggest_campaigns'
+  // Exported field: 'node-takepart_page-field_page_suggest_campaigns'.
   $fields['node-takepart_page-field_page_suggest_campaigns'] = array(
     'field_config' => array(
       'active' => '1',
@@ -761,6 +846,7 @@ function takepart_page_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -810,12 +896,12 @@ function takepart_page_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_page_suggest_content'
+  // Exported field: 'node-takepart_page-field_page_suggest_content'.
   $fields['node-takepart_page-field_page_suggest_content'] = array(
     'field_config' => array(
       'active' => '1',
@@ -829,6 +915,7 @@ function takepart_page_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -878,12 +965,12 @@ function takepart_page_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_promo_headline'
+  // Exported field: 'node-takepart_page-field_promo_headline'.
   $fields['node-takepart_page-field_promo_headline'] = array(
     'field_config' => array(
       'active' => '1',
@@ -904,6 +991,7 @@ function takepart_page_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -946,12 +1034,12 @@ function takepart_page_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_promo_text'
+  // Exported field: 'node-takepart_page-field_promo_text'.
   $fields['node-takepart_page-field_promo_text'] = array(
     'field_config' => array(
       'active' => '1',
@@ -972,6 +1060,7 @@ function takepart_page_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -1012,12 +1101,12 @@ function takepart_page_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_series'
+  // Exported field: 'node-takepart_page-field_series'.
   $fields['node-takepart_page-field_series'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1038,12 +1127,14 @@ function takepart_page_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'series',
+            'parent' => '0',
+            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -1083,12 +1174,12 @@ function takepart_page_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '15',
+        'weight' => '16',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_thumbnail'
+  // Exported field: 'node-takepart_page-field_thumbnail'.
   $fields['node-takepart_page-field_thumbnail'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1102,6 +1193,7 @@ function takepart_page_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'media',
       'settings' => array(),
       'translatable' => '1',
@@ -1133,6 +1225,7 @@ function takepart_page_field_default_fields() {
       'label' => 'Thumbnail Image',
       'required' => 0,
       'settings' => array(
+        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1152,12 +1245,12 @@ function takepart_page_field_default_fields() {
           'view' => 'media_views_widget_default--default',
         ),
         'type' => 'media_generic_alt',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
 
-  // Exported field: 'node-takepart_page-field_topic'
+  // Exported field: 'node-takepart_page-field_topic'.
   $fields['node-takepart_page-field_topic'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1178,12 +1271,14 @@ function takepart_page_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'topic',
+            'parent' => '0',
+            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -1223,74 +1318,7 @@ function takepart_page_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '16',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-takepart_page-field_tp_campaign_show_title'
-  $fields['node-takepart_page-field_tp_campaign_show_title'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_tp_campaign_show_title',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => '0',
-          1 => '1',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'list_boolean',
-    ),
-    'field_instance' => array(
-      'bundle' => 'takepart_page',
-      'default_value' => array(
-        0 => array(
-          'value' => 0,
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '17',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_tp_campaign_show_title',
-      'label' => 'Remove Headline from Display',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'display_label' => 1,
-        ),
-        'type' => 'options_onoff',
-        'weight' => '1',
+        'weight' => '17',
       ),
     ),
   );
@@ -1302,12 +1330,12 @@ function takepart_page_field_default_fields() {
   t('Display Tag');
   t('Featured Action');
   t('Free Tag');
+  t('HTML title tag');
   t('Main Image');
   t('Promo Headline');
   t('Promo Text');
   t('Related Actions');
   t('Related Content');
-  t('Remove Headline from Display');
   t('Series');
   t('Subhead');
   t('Suggest Related Campaigns?');
