@@ -703,7 +703,10 @@ function features_get_default($component, $module_name = NULL, $alter = TRUE, $r
  * Get a map of components to their providing modules.
  */
 function features_get_default_map($component, $attribute = NULL, $callback = NULL, $reset = FALSE) {
-  static $map = array();
+  $map = &drupal_static(__FUNCTION__);
+  if (!isset($map)) {
+    $map = array();
+  }
   features_include();
   features_include_defaults($component);
   if ((!isset($map[$component]) || $reset) && $default_hook = features_get_default_hooks($component)) {
