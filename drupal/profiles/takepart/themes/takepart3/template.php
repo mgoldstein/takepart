@@ -441,6 +441,7 @@ function _render_footer_links_menu_as_piped($menu_key) {
   $uri = substr($uri, 0, 14);
 
   $total_items = count($menu_data);
+  $column_idx = 0;
   $x = 0;
 
    foreach ($menu_data as $menu_item) {
@@ -461,6 +462,7 @@ function _render_footer_links_menu_as_piped($menu_key) {
 
   }
 
+  $menu_cols = "";
   foreach ($columns as $col) {
     $menu_cols .= "<div class='links'>" . implode($col) . "</div>\n";
   }

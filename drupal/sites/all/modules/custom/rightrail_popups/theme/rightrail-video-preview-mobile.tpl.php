@@ -11,7 +11,6 @@
  * @ingroup views_templates
  */
 
-watchdog('bpad', 'mobile preview');
 ?>
 <div id="youtube_block" class="rr-preview <?print $rr_class; ?>">
   <div style="line-height: 12px;">&nbsp;</div>

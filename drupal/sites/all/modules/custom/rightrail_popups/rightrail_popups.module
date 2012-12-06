@@ -45,15 +45,6 @@ function rightrail_popups_boxes_box_load_alter(&$box, $delta) {
       $video_id = $res[1];
       $rr_class = 'rr-' . $video_id;
 
-      // look for title
-      // typical line: <div class="field-name-field-promo-headline">Catt Sadler 'Why I Vote'</div>
-
-      preg_match("/ield-name-field-promo-headline\"\>(.+)\<\/div\>/", $body, $res);
-      $title = $res[1];
-
-      // register title and id with universal popups
-
-
       // prepare popup vars
       if (variable_get('takepart_vidpop_banners_enabled', false)) {
         // get the ad banner
@@ -127,23 +118,27 @@ function rightrail_popups_theme() {
  * Implementation of hook_preprocess_html
  */
 function rightrail_popups_preprocess_html(&$vars) {
-  foreach ($vars['page']['sidebar_second'] as $box_id => $data) {
-    if (substr($box_id, 0, 6) == 'boxes_') {
-      if ($data['#block']->additional_classes == 'video-popup') {
-        // this one is a video popup block
-        // get the youtube ID, it will be in the rrpop-XXXX class tag somewhere
-        // in the content; i.e. rrpop-Mew33kt7D6c, from the line
-        //
-        // this is weird: different localtion for markup is user is logged in or not
-        if (user_is_logged_in()) {
-          if (preg_match("/rrpop-([^\"]+)\"/", $data['content']['#markup'], $res))  {
-            $youtube_id = $res[1];
-            unipop_set_metric_page_load('set', $youtube_id, $data['#block']->title, 'right railvideo');
-          }
-        } else {
-          if (preg_match("/rrpop-([^\"]+)\"/", $data['#markup'], $res))  {
-            $youtube_id = $res[1];
-            unipop_set_metric_page_load('set', $youtube_id, $data['#block']->title, 'right railvideo');
+  if (isset($vars['page']['sidebar_second'])) {
+    foreach ($vars['page']['sidebar_second'] as $box_id => $data) {
+      if (substr($box_id, 0, 6) == 'boxes_') {
+        if (isset($data['#block']->additional_classes)) {
+          if ($data['#block']->additional_classes == 'video-popup') {
+            // this one is a video popup block
+            // get the youtube ID, it will be in the rrpop-XXXX class tag somewhere
+            // in the content; i.e. rrpop-Mew33kt7D6c, from the line
+            //
+            // this is weird: different localtion for markup is user is logged in or not
+            if (user_is_logged_in()) {
+              if (preg_match("/rrpop-([^\"]+)\"/", $data['content']['#markup'], $res))  {
+                $youtube_id = $res[1];
+                unipop_set_metric_page_load('set', $youtube_id, $data['#block']->title, 'right railvideo');
+              }
+            } else {
+              if (preg_match("/rrpop-([^\"]+)\"/", $data['#markup'], $res))  {
+                $youtube_id = $res[1];
+                unipop_set_metric_page_load('set', $youtube_id, $data['#block']->title, 'right railvideo');
+              }
+            }
           }
         }
       }

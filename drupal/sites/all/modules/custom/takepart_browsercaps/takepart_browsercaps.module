@@ -126,12 +126,22 @@ function takepart_vidpop_mobile_browser() {
       // iOS
       if (preg_match("/^.*iPad.*/", $browsercaps['useragent'])) {
         // treat ipad as non-mobile
+        if (variable_get('takepart_log_requests', false)) {
+          watchdog('takepart_browsercaps', 'detected iPad device');
+        }
         return false;
+      }
+
+      if (variable_get('takepart_log_requests', false)) {
+        watchdog('takepart_browsercaps', 'detected iOS device');
       }
       return true;
     }
     if (preg_match("/^Silk.*/", $browsercaps['parent'])) {
       // Kindle Fire
+      if (variable_get('takepart_log_requests', false)) {
+        watchdog('takepart_browsercaps', 'detected Kindle Fire device');
+      }
       return true;
     }
   }
@@ -139,10 +149,16 @@ function takepart_vidpop_mobile_browser() {
   if (isset($browsercaps['useragent'])) {
     if (preg_match("/^.*Mobile.*/", $browsercaps['useragent'])) {
       // Droid
+      if (variable_get('takepart_log_requests', false)) {
+        watchdog('takepart_browsercaps', 'detected Droid device');
+      }
       return true;
     }
   }
 
+  if (variable_get('takepart_log_requests', false)) {
+    watchdog('takepart_browsercaps', 'detected desktop');
+  }
   return false;
 }
 
