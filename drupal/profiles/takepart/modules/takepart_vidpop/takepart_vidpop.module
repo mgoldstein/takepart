@@ -290,7 +290,7 @@ function takepart_vidpop_format_preview($uri, $vars) {
   $vidpop_id = 'vidpop-details-' . $vars['nid'];
   $vp_class = 'vp-' . $vars['nid'];
 
-  if ((takepart_vidpop_mobile_browser()) || (takepart_vidpop_is_ipad())) {
+  if ((takepart_vidpop_mobile_browser()) && (!takepart_vidpop_is_ipad())) {
     // mobile version
     // get the id of the embedded video
     $uri = $vars['field_video_embedded'][0]['file']->uri;
@@ -313,6 +313,10 @@ function takepart_vidpop_format_preview($uri, $vars) {
       ));
     }
 
+    if (variable_get('takepart_log_requests', false)) {
+      watchdog('takepart_browsercaps', 'vidpop_format_preview (mobile) ' . $promo_text);
+    }
+
     if (true) {
       // this version shows just the video, no popup data
       $formatted = <<<EOT
@@ -324,7 +328,7 @@ EOT;
     }
   }
   else {
-    // if mobile browser, display the node, no preview needed
+    // desktop, preview needed
     // regular browser, use popup
     // this is the href string for colorbox
     $href_string = '?width=870&amp;height=420&amp;inline=true#' . $vidpop_id;
@@ -346,6 +350,10 @@ EOT;
     $formatted_popup = theme('vidpop_popup', array(
       'p_content' => $vars['content']
     ));
+
+    if (variable_get('takepart_log_requests', false)) {
+      watchdog('takepart_browsercaps', 'vidpop_format_preview (desktop) ' . $promo_text);
+    }
 
     // add hidden popups if on non-mobile
     $formatted .= <<<EOT
@@ -461,6 +469,10 @@ EOT;
 function takepart_vidpop_get_map_details() {
   $nid = arg(2);
   $node = node_load($nid);
+  if (variable_get('takepart_log_requests', false)) {
+    watchdog('takepart_browsercaps', 'video map  details ' . $nid . ': ' . $node->title);
+  }
+
   if ($node) {
     $vnode = node_view($node);
 
@@ -594,6 +606,10 @@ function takepart_vidpop_mobile_video_page_from_node() {
   $nid = arg(2);
   $node = node_load($nid);
   $GLOBALS['vidpop_textlink'] = true;
+
+  if (variable_get('takepart_log_requests', false)) {
+    watchdog('takepart_browsercaps', 'video page from node ' . $nid . ': ' . $node->title);
+  }
 
   $modpath = drupal_get_path('module', 'takepart');
   drupal_add_css($modpath . '/modules/takepart_vidpop/css/takepart_vidpop_mobile.css', array('every_page' => TRUE));
