@@ -213,6 +213,7 @@ function features_conflict_resolver_update_ctools_export_cache(&$cache, $update 
     // Clear ctools cache
     module_load_include('inc', 'features', 'features.export');
     ctools_export_load_object_reset();
+    drupal_static_reset("features_get_default_map");
     return;
   }
 

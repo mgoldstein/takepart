@@ -11,7 +11,6 @@
     exit(1);
   }
   require_once $map_file;
-  unset($cmap['node']);
 
   if (!isset($cmap[$group])) {
     $message = t('Error: Component @group does not exist.', array(
