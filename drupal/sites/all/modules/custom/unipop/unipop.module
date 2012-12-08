@@ -91,7 +91,7 @@ function unipop_get_youtube_id($nid) {
 
 
 /***
- * function: Unipop callback to get the youtube id of a video from a video node id
+ * function: Ajax callback to get the youtube id of a video from a video node id
  *
  * arg is the nid
  *
@@ -106,7 +106,7 @@ function unipop_get_video_id_from_node() {
 
 
 /***
- * function: Unipop callback to return youtube inline preview from a video node id
+ * function: Ajax callback to return youtube inline preview from a video node id
  *
  * arg is the nid
  *
@@ -154,23 +154,19 @@ function unipop_set_metric_page_load($op, $id = NULL, $title = NULL, $type = NUL
       if (count($metric_titles) > 0) {
         // we have metrics data, create the page load javascript
         $i = 0;
+        $js = '';
         foreach ($metric_titles as $idx => $title) {
-          $js  = 'var modaltitle = "' . addslashes($title) . '";' . "\n";
-          $js .= 'var modaltype = "' . $metric_types[$idx] . '";' . "\n";
-
-          $js .= <<<EOT
-          //alert('mutt');
-    s.linkTrackVars="eVar30, prop30, eVar40, prop40, eVar42, prop42, events";
-    s.linkTrackEvents="event40";
-    s.events='event40';
-    s.prop30=s.pageName;
-    s.eVar30=s.pageName;
-    s.prop40=modaltype+':'+modaltitle;
-    s.eVar40=modaltype+':'+modaltitle;
-    s.prop42=modaltype;
-    s.eVar42=modaltype;
-    s.tl(true, 'o', 'Video Popup Page Load');
-EOT;
+          $js .= 's.linkTrackVars="eVar30, prop30, eVar40, prop40, eVar42, prop42, events";';
+          $js .= 's.linkTrackEvents="event40";';
+          $js .= 's.events="event40";';
+          $js .= 's.prop30=s.pageName;';
+          $js .= 's.prop30=s.pageName;';
+          $js .= 's.eVar30=s.pageName;';
+          $js .= 's.prop40="' . $metric_types[$idx] . ':' . addslashes($title) . '";';
+          $js .= 's.eVar40="' . $metric_types[$idx] . ':' . addslashes($title) . '";';
+          $js .= 's.prop42="' . $metric_types[$idx] . '";';
+          $js .= 's.eVar42="' . $metric_types[$idx] . '";';
+          $js .= 's.tl(true, "o", "Video Popup Page Load");';
         }
 
         $js = 'function unipop_loaded() { ' . $js . '};';

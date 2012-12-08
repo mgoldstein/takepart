@@ -56,7 +56,7 @@ function vidpop_loaded() {
 // add click trackers for popups and banner ads
 (function ($) {
   Drupal.behaviors.scVidpopClick = {
-    attach: function (context, settings) {
+     attach: function (context, settings) {
       // On click on embedded video to launch and play modal
       $('.vidpop-preview', context).click(function(){
         var n = $(this).attr('class').match(/ vp-(\d+)/);

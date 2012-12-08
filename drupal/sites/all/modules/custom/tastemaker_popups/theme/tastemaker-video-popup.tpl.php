@@ -15,10 +15,9 @@
  *   );
  */
 
-
 ?>
-<div class='<?php print $classes ?> clearfix node-embedded vidpop-popup tastemaker-popup' <?php print ($attributes) ?>>
-  <div class="inner-wrapper">
+<div class='<?php print $classes ?> clearfix node-embedded tastemaker-popup' <?php print ($attributes) ?>>
+  <div class="inner-wrapper <?php echo 'tastemaker-video-popup tvid-pop-' . $content['video_id'];?>">
     <?php
     if (variable_get('takepart_vidpop_banners_enabled', false)) {
       // get the ad banner
@@ -44,7 +43,7 @@
     <div class="contents">
       <div class="leftside">
         <div class="vidmap">
-          <div id="vidpop-social" class="social-links">
+          <div id="unipop-social" class="social-links">
             <div class="addthis_toolbox addthis_default_style">
               <a class="addthis_button_facebook_like"
                  addthis:url="<?php print $share_node_url; ?>"
@@ -69,8 +68,7 @@
         <div class="title"><?php print $content['caption']; ?></div>
         <div class="description"><?php print $content['description']; ?></div>
         <!-- subscribe button -->
-        <div class="subscribe"><a target="_blank" href="http://www.youtube.com/subscription_center?add_user_id=FYRWsIH2BivGa_-2LVTsBA&amp;feature=creators_cornier-http%3A//s.ytimg.com/yt/img/creators_corner/Subscribe_to_my_videos/YT_Subscribe_160x27_red.png"><img alt="Subscribe to me on YouTube" src="http://s.ytimg.com/yt/img/creators_corner/Subscribe_to_my_videos/YT_Subscribe_160x27_red.png" /></a></div>
-
+        <div class="subscribe"><a target="_blank" onclick="javascript:tastemakerPopupsSubscribe('<?php print $content['video_id']; ?>')" href="http://www.youtube.com/subscription_center?add_user_id=FYRWsIH2BivGa_-2LVTsBA&amp;feature=creators_cornier-http%3A//s.ytimg.com/yt/img/creators_corner/Subscribe_to_my_videos/YT_Subscribe_160x27_red.png"><img alt="Subscribe to me on YouTube" src="http://s.ytimg.com/yt/img/creators_corner/Subscribe_to_my_videos/YT_Subscribe_160x27_red.png" /></a></div>
         <div class="comment-link"><?php print $comment_link ?></div>
       </div>
     </div>

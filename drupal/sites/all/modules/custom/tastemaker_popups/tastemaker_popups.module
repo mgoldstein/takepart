@@ -133,13 +133,17 @@ function tastemaker_popups_process_tastemaker_popups($text, $vars) {
         // this will be the id of the hidden div
         $id = 'taste-details-' . $row . '-' . $col;
 
+        $embed_node = node_load($embed_nid);
+
+        // add to metrics queue
+        unipop_set_metric_page_load('set', $fields[0], $embed_node->title, 'tastemakers_video');
+
         if (takepart_vidpop_mobile_browser()) {
           // mobile, all we need is a link to the embedded video
           // this is supplied by the javascript, so nothing needs to be done here
         }
         else {
           // non-mobile needs a colorbox, a bit of formatting is required
-          $embed_node = node_load($embed_nid);
           $share_node_url = url('node/' . $embed_nid, array('absolute' => TRUE));
           $share_node_title = $embed_node->title;
 
@@ -154,7 +158,7 @@ function tastemaker_popups_process_tastemaker_popups($text, $vars) {
 
           $content['fmt_video'] = takepart_vidpop_loading_graphic();
 
-          $classes= "vidpop-popup";
+          $classes= "unipop-popup";
           $attributes = drupal_attributes($vars['attributes_array']);
 
           $template_file = drupal_get_path('module', 'tastemaker_popups') . '/theme/tastemaker-video-popup.tpl.php';
@@ -164,7 +168,7 @@ function tastemaker_popups_process_tastemaker_popups($text, $vars) {
 
           // format as a colorbox
           $output = <<<EOT
-<div class="vidpop-overlay">
+<div class="unipop-overlay">
   <div id="$id">
     $rendered
   </div>

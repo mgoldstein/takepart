@@ -1,7 +1,7 @@
 name = Takepart Universal Popups Support
 description = Mechanism to display node content as embedded content or blocks
 package = TakePart
-version = 7.x-1.00-12061115
+version = 7.x-1.00-12071742
 core = 7.x
 dependencies[] = entity_view_mode
 dependencies[] = colorbox
