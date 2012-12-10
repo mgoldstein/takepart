@@ -109,6 +109,9 @@ function entity_autocomplete_by_bundle($type, $bundles_in, $string = '') {
     $data = array();
     foreach ($result->fetchAll() as $entity) {
       $label = entity_autocomplete_get_label($entity->label, $entity->id);
+      if ($entity->status == 0) {
+        $label .= ' <span style="color:red">(unpublished)</span>';
+      }
       $matches[$label] = $label;
     }
   }
@@ -128,9 +131,6 @@ function entity_autocomplete_get_label($label, $id){
     $label = substr_replace($label, ' ...', ($max - $ref_id_length));
   }
   $label .= $ref_id;
-  if ($entity->status == 0) {
-    $label .= ' <span style="color:red">(unpublished)</span>';
-  }
   return $label;
 }
 
