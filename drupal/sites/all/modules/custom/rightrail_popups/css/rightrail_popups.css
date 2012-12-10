@@ -19,4 +19,231 @@
   height: 155px;
 }
 
+div.vidpop-preview-overlay {
+  width: 480px;
+  height: 360px;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+.mobile-vidpop div.vidpop-preview-overlay {
+  height: 80px;
+  position: relative;
+  top: 0;
+}
+div.vidpop-preview a {
+  text-decoration: none;
+}
+div.vidpop-preview a img {
+  width: 480px;
+  height: 360px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+div.vidpop-preview-overlay-headline {
+  width: 450px;
+  z-index: 9;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-size: 14px;
+}
+div.vidpop-preview-overlay-text {
+  width: 480px;
+  height: 360px;
+  z-index: 5;
+  position: absolute;
+  top: 280px;
+  left: 0;
+  cursor: pointer;
+}
+.mobile-vidpop div.vidpop-preview-overlay-text {
+  height: 80px;
+  z-index: 5;
+  top: 0;
+  position: absolute;
+}
+div.vidpop-preview-overlay-text .line1 {
+  position: relative;
+  top: 5px;
+  left: 50px;;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 140%;
+  color: #fff;
+  width: 420px;
+}
+.mobile-vidpop div.vidpop-preview-overlay-text .line1 {
+  top: 5px;
+  left: 15px;
+  width: 440px;
+}
+div.vidpop-preview-overlay-text .line1 .watch {
+  font-size: 13px;
+  font-weight: bold;
+  color: #99bbcb;
+  padding-right: 10px;
+}
+div.vidpop-preview-overlay-text .line2 {
+  position: relative;
+  top: 10px;
+  left: 15px;;
+  font-size: 13px;
+  line-height: 120%;
+  color: #d9e7ed;
+  width: 440px;
+  font-weight: normal;
+}
+.mobile-vidpop div.vidpop-preview-overlay-text .line2 {
+  top: 20px;
+}
 
+.vidpop-embed-promo-headline {
+  font-weight: bolder;
+  font-size: 16px;
+  color: #99bbcc;
+  margin-bottom: 10px;
+}
+.vidpop-embed-promo-text {
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+
+/*
+* the overlay sits on top of the preview, with borders and arrow button
+*/
+.vidpop-overlay {
+  display:none;     /* must be initially hidden */
+  background-color: white;
+  width: 900px;
+  min-height: 360px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+
+/* close button positioned on upper right corner */
+#cboxClose {
+  background: url(images/close_popup.png) no-repeat !important;
+  position:absolute;
+  right: 5px !important;
+  top: 5px !important;
+  cursor:pointer;
+  height:13px !important;
+  width:13px !important;
+  z-index: 99999;
+}
+/*
+#cboxClose {
+  background: url(images/close_popup_mobile.png) no-repeat !important;
+  position:absolute;
+  right: 5px !important;
+  top: 5px !important;
+  cursor:pointer;
+  height:20px !important;
+  width:50px !important;
+  z-index: 99999;
+}
+*/
+
+/*
+* the popup window
+*/
+.rightrail-video-popup .inner-wrapper {
+  padding: 0px;
+}
+.rightrail-video-popup .top-banner {
+  clear: both;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.rightrail-video-popup .top-banner .tp-logo {
+  float: left;
+  width: 75px;
+  margin-left: 10px;
+  padding-top: 17px;
+}
+.rightrail-video-popup .top-banner .video-banner-large {
+  float: left;
+  width: 728px;
+  height: 90px;
+}
+
+.rightrail-video-popup .media-youtube-preview-wrapper object,
+.rightrail-video-popup .media-youtube-preview-wrapper iframe {
+  height: 390px !important;
+}
+
+.rightrail-video-popup .lower-wrapper {
+  padding: 20px 0;
+  clear: both;
+}
+.rightrail-video-popup .contents {
+  clear: both;
+}
+.rightrail-video-popup .nobanner {
+  margin-top: 10px;
+}
+.rightrail-video-popup .contents .leftside {
+  float: left;
+  width: 640px;
+}
+.rightrail-video-popup .contents .rightside {
+  float: right;
+  width: 200px;
+  padding-top: 15px;
+  margin-right: 10px;
+}
+
+.rightrail-video-popup .field-name-field-promo-headline {
+  color: black;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 24px;
+  padding-bottom: 10px;
+}
+.rightrail-video-popup .field-name-field-promo-text {
+  color: black;
+  font-size: 13px;
+  line-height: 15px;
+  padding-bottom: 10px;
+}
+.rightrail-video-popup .subscribe {
+  margin: 10px 0 10px 10px;
+}
+.rightrail-video-popup .comment-link {
+  margin: 20px 0;
+  text-align: center;
+  font-family: arial !important;
+  font-weight: bold;
+}
+.rightrail-video-popup .tp-vidpop-share-button-bar {
+  margin: 10px 0 10px 60px;
+}
+.rightrail-video-popup .tp-vidpop-share-button-bar {
+}
+
+.rightrail-video-popup #vidpop-social {
+  margin-bottom: 10px;
+}
+
+.rightrail-video-popup .addthis_button_tweet {
+  width: 75px;
+  overflow: hidden;
+}
+
+.rightrail-video-popup .addthis_button_facebook_like {
+  width: 75px;
+  overflow: visible;
+  opacity: 1.0;
+  filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+
+s

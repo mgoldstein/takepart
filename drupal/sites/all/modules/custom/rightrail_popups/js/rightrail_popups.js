@@ -1,8 +1,5 @@
 // file: javascript support for rightrail_popups
 
-//alert('getting ready');
-//unipop_showme('rtrail 1');
-
 (function ($) {
   Drupal.behaviors.rrPopups = {
     attach: function (context, settings) {
@@ -35,7 +32,7 @@
 
         var modaltitle = Drupal.settings.unipop.unipop_titles[n];
         var modaltype  = Drupal.settings.unipop.unipop_types[n];
-        //alert('in rr ' + n + ' modaltitle:' + modaltitle + ' modaltype:' + modaltype);
+        //alert('in rr41 n:' + n + ' modaltitle:' + modaltitle + ' modaltype:' + modaltype);
 
         s.linkTrackVars="eVar30, prop30, eVar40, prop40, eVar42, prop42, events";
         s.linkTrackEvents="event41";
@@ -51,15 +48,17 @@
       });
 
       // On-click of the subscribe button, pls fire (only once per session)
-      $('.rr-popup .subscribe', context).click(function(){
+      $('.rightrail-video-popup .subscribe', context).click(function(){
         if( typeof rr_43_triggered == 'undefined' ) {
           // block multiple calls
           rr_43_triggered = 1;
 
-          var n = $(this).attr('class').match(/ vp-(\d+)/);
+          var n = $(this).attr('class').match(/ rr-(\w+)/);
           n = n[1];
-          var modaltitle = vp_titles[n];
-          var modaltype  = vp_types[n];
+          var modaltitle = Drupal.settings.unipop.unipop_titles[n];
+          var modaltype  = Drupal.settings.unipop.unipop_types[n];
+          //alert('in rr43 ' + n + ' modaltitle:' + modaltitle + ' modaltype:' + modaltype);
+
           s.linkTrackVars="eVar40, prop40, eVar41, prop41, events";
           s.linkTrackEvents="event43";
           s.events='event43';

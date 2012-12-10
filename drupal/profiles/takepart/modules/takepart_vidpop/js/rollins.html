@@ -69,7 +69,6 @@
     (function(video, state_arg) {  // <-- immediate function call
       if (Drupal.settings.takepart_browsercaps.detected_mobile_browser) {
         // using mobile; link directly to youtube
-        vidmapListeners[state_val] = function () { jQuery.fn.colorbox({width:"900px", height:"430px", inline:true, href:"#vidpop-details-" + video}); };
       }
       else {
         // desktop browser; use colorbox
@@ -84,13 +83,9 @@
   function showState(val) {
     if (val != 0) {
       if (Drupal.settings.takepart_browsercaps.detected_mobile_browser) {
-        // using mobile; use colorbox
-        vidmapListeners[val]();     // sets up the colorbox
         // the next part is to pass the video id to the fetcher, which will return
         // the inline embed code
-        jQuery.get("unipop/video_preview_from_node/" + vidmapStateLookup[val], function(data, video_id) {
-          jQuery("#vidpop-details-" + vidmapStateLookup[val] + " .leftside .vidmap").html(data);
-        });
+        window.location = '/vidpop/mobile-video/' + vidmapStateLookup[val];
       }
       else {
         // desktop, use colorbox

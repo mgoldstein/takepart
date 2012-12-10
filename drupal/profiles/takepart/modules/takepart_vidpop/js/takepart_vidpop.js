@@ -120,7 +120,23 @@ function vidpop_loaded() {
       });
     }
   }
-  })(jQuery);
+
+
+  Drupal.behaviors.popupClosed = {
+    // ensure video stopped when colorbox closes
+    attach: function (context, settings) {
+      $('#cboxClose').live('click', (function(){
+        //alert('wait 1');
+        //$("#player").stopVideo();
+        //$("#media-youtube-1").stopVideo();
+        //$("media_youtube_b4Iyl7DNUFI_1").stopVideo();
+
+        // remove the player; this ensures it will stop plaing
+        $("#colorbox .vidmap").remove();
+      }));
+    }
+  }
+ })(jQuery);
 
 
 // return video node contents for popup on map page

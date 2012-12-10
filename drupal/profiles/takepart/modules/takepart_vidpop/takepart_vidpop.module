@@ -37,6 +37,13 @@ function takepart_vidpop_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['vidpop/mobile-video/%'] = array(
+    'title' => 'Video map callback to display mobile page',
+    'page callback' => 'takepart_vidpop_mobile_video_page_from_node',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
 
   return $items;
 }
@@ -47,7 +54,7 @@ function takepart_vidpop_menu() {
  *
  * This one is used as the base to reduce errors when updating.
  */
-function takepart_vidpop_theme() {
+function  takepart_vidpop_theme() {
   $template_path = drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop/theme';
 
   return array(
@@ -59,12 +66,12 @@ function takepart_vidpop_theme() {
     'vidpop_preview' => array(
       'path'      => $template_path,
       'template'  => 'vidpop-preview',
-      'variables' => array('p_youtube_id' => NULL, 'p_overlay_image' => NULL, 'p_promo_headline' => NULL, 'p_promo_text' => NULL, 'vp_class' => NULL),
+      'variables' => array('preview_image' => NULL, 'p_overlay_image' => NULL, 'p_promo_headline' => NULL, 'p_promo_text' => NULL, 'link_class' => NULL, 'href_string' => NULL, 'vp_class' => NULL),
     ),
     'vidpop_preview_mobile' => array(
       'path'      => $template_path,
       'template'  => 'vidpop-preview-mobile',
-      'variables' => array('p_youtube_id' => NULL, 'p_overlay_image' => NULL, 'p_promo_headline' => NULL, 'p_promo_text' => NULL, 'vp_class' => NULL),
+      'variables' => array('p_youtube_id' => NULL, 'p_overlay_image' => NULL, 'p_promo_headline' => NULL, 'p_promo_text' => NULL, 'link_class' => NULL, 'href_string' => NULL, 'vp_class' => NULL),
     ),
     'vidpop_popup' => array(
       'path'      => $template_path,
@@ -76,12 +83,40 @@ function takepart_vidpop_theme() {
       'template'  => 'vidpop-popup-mobile',
       'variables' => array('p_content' => NULL),
     ),
-    'vidpop_popup_map' => array(
+    'vidpop_mobile_video_page' => array(
       'path'      => $template_path,
-      'template'  => 'vidpop-popup-map',
-      'variables' => array('node' => NULL),
+      'template'  => 'vidpop-mobile-video-page',
+      'variables' => array('p_video_nid' => NULL, 'p_video_title' => NULL, 'p_video_text' => NULL, 'p_youtube_id' => NULL, 'p_referrer' => NULL),
     ),
   );
+}
+
+
+// NOTE: these next two allow us to have a page template override that
+//       is in our module directory; see http://www.metachunk.com/blog/adding-module-path-drupal-7-theme-registry
+
+/**
+ * Implements hook_theme_registry_alter()
+ **/
+function takepart_vidpop_theme_registry_alter(&$theme_registry) {
+  $mod_path = drupal_get_path('module', 'takepart_vidpop');
+  $theme_registry_copy = $theme_registry;       // munge on a copy
+  _theme_process_registry($theme_registry_copy, 'phptemplate', 'theme_engine', 'pow', $mod_path);
+  $theme_registry += array_diff_key($theme_registry_copy, $theme_registry);
+  $hooks = array('page');
+  foreach ($hooks as $h) {
+    _takepart_vidpop_insert_after_first_element($theme_registry[$h]['theme paths'], $mod_path);
+  }
+}
+
+/**
+ * Helper function for re-ordering arrays (needed by theme_registry_alter)
+ */
+function _takepart_vidpop_insert_after_first_element(&$a, $element) {
+  if(is_array($a)) {
+    $first_element = array_shift($a);
+    array_unshift($a, $first_element, $element);
+  }
 }
 
 
@@ -94,6 +129,7 @@ function takepart_vidpop_init() {
   drupal_add_js($path . '/modules/takepart_vidpop/js/takepart_vidpop.js', 'file');
   $GLOBALS['has_vidpop'] = false;
   $GLOBALS['vidpop_nobanner'] = false;
+  $GLOBALS['vidpop_textlink'] = false;
 }
 
 
@@ -229,13 +265,6 @@ function takepart_vidpop_preprocess_node(&$vars, $hook) {
 function takepart_vidpop_format_preview($uri, $vars) {
   $vidpop_path = drupal_get_path('module', 'takepart') . '/modules/takepart_vidpop';
 
-
-  // get the id of the embedded video
-  $uri = $vars['field_video_embedded'][0]['file']->uri;
-  $u2 = explode('/', $uri);
-  $youtube_id = $u2[3];
-
-
   // this is the preview image to click on
   if (isset($vars['field_thumbnail']['und'][0])) {
     $preview_image = theme('image_style', array('style_name' => 'tp_embed_video_thumb', 'path' => $vars['field_thumbnail']['und'][0]['file']->uri));
@@ -252,40 +281,54 @@ function takepart_vidpop_format_preview($uri, $vars) {
   }
   else {
     // sometimes it isn't set
-    $promo_text = $vars['field_promo_text'][0]['safe_value'];
+    $promo_text = $vars['node']->title;
   }
   // theme the popup contents
-  if (takepart_vidpop_mobile_browser()) {
-    //$overlay_image = theme('image', array('path' => $vidpop_path . '/css/images/preview-mobile.png'));
-    $overlay_image = theme('image', array('path' => $vidpop_path . '/css/images/youtube-overlay.png'));
-    $formatted_popup = theme('vidpop_popup', array(
-      'p_content'        => $vars['content']
-    ));
-  }
-  else {
-    $overlay_image = theme('image', array('path' => $vidpop_path . '/css/images/youtube-overlay.png'));
-    $formatted_popup = theme('vidpop_popup', array(
-      'p_content'        => $vars['content']
-    ));
-  }
+  $overlay_image = theme('image', array('path' => $vidpop_path . '/css/images/youtube-overlay.png'));
 
   // id of the video popup division
   $vidpop_id = 'vidpop-details-' . $vars['nid'];
   $vp_class = 'vp-' . $vars['nid'];
-  $node_title = $vars['node']->title;
 
-  if (false) {
-    //if (takepart_vidpop_mobile_browser()) {
-    // mobile browser, display the node
-    $formatted = theme('vidpop_preview_mobile', array(
-      'p_youtube_id'      => $youtube_id,
-      'p_overlay_image'   => $overlay_image,
-      'p_promo_headline'  => $promo_headline,
-      'p_promo_text'      => $promo_text,
-      'vp_class'          => $vp_class,
-    ));
+  if ((takepart_vidpop_mobile_browser()) && (!takepart_vidpop_is_ipad())) {
+    // mobile version
+    // get the id of the embedded video
+    $uri = $vars['field_video_embedded'][0]['file']->uri;
+    $u2 = explode('/', $uri);
+    $youtube_id = $u2[3];
+
+    if (false) {
+      // this version replicates the details of the popups
+      $href_string = '/vidpop/mobile-video/' . $vars['node']->nid;
+      $link_class = "vidpop-mobile-preview";
+
+      $formatted = theme('vidpop_preview_mobile', array(
+        'p_youtube_id'    => $youtube_id,
+        'overlay_image'   => $overlay_image,
+        'promo_headline'  => $promo_headline,
+        'promo_text'      => $promo_text,
+        'link_class'      => $link_class,
+        'href_string'     => $href_string,
+        'vp_class'        => $vp_class,
+      ));
+    }
+
+    if (variable_get('takepart_log_requests', false)) {
+      watchdog('takepart_browsercaps', 'vidpop_format_preview (mobile) ' . $promo_text);
+    }
+
+    if (true) {
+      // this version shows just the video, no popup data
+      $formatted = <<<EOT
+      <div class="video-only">
+        <iframe width="480" height="360" src="http://www.youtube.com/embed/$youtube_id?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+EOT;
+
+    }
   }
   else {
+    // desktop, preview needed
     // regular browser, use popup
     // this is the href string for colorbox
     $href_string = '?width=870&amp;height=420&amp;inline=true#' . $vidpop_id;
@@ -302,11 +345,16 @@ function takepart_vidpop_format_preview($uri, $vars) {
       'href_string'     => $href_string,
       'vp_class'        => $vp_class,
     ));
-  }
 
+    // the formatted popup image
+    $formatted_popup = theme('vidpop_popup', array(
+      'p_content' => $vars['content']
+    ));
 
-  //if (!takepart_vidpop_mobile_browser()) {
-  if (true) {
+    if (variable_get('takepart_log_requests', false)) {
+      watchdog('takepart_browsercaps', 'vidpop_format_preview (desktop) ' . $promo_text);
+    }
+
     // add hidden popups if on non-mobile
     $formatted .= <<<EOT
 <div class="vidpop-overlay">
@@ -421,9 +469,23 @@ EOT;
 function takepart_vidpop_get_map_details() {
   $nid = arg(2);
   $node = node_load($nid);
+  if (variable_get('takepart_log_requests', false)) {
+    watchdog('takepart_browsercaps', 'video map  details ' . $nid . ': ' . $node->title);
+  }
+
   if ($node) {
     $vnode = node_view($node);
-    $output = drupal_render($vnode['field_video_embedded']);
+
+    // old way - this creates a non-embedded player, which is pretty much obsolete
+    //$output = drupal_render($vnode['field_video_embedded']);
+
+    // create embedded player
+    // get the id of the embedded video
+    $uri = $vnode['field_video_embedded'][0]['file']['#uri'];
+    $u2 = explode('/', $uri);
+    $youtube_id = $u2[3];
+    $output = '<iframe width="640" height="360" src="http://www.youtube.com/embed/' . $youtube_id . '?hl=en&fs=1&showinfo=1" frameborder="0" allowfullscreen></iframe>';
+
   }
   else {
     $output = __FUNCTION__ . ': could not load nid ' . $nid;
@@ -528,3 +590,51 @@ function takepart_vidpop_entity_info_alter(&$entity_info) {
 function takepart_vidpop_loading_graphic() {
   return '<div class="vidpop-loader"></div>';
 }
+
+
+/***
+ * ajax callback to display video node page, mobile version
+ * includes details from desktop video popup
+ *
+ * arg is the nid
+ *
+ * url is /vidpop/mobile_video_page_from_node/NID
+ *
+ * @returns rendered video for display
+ */
+function takepart_vidpop_mobile_video_page_from_node() {
+  $nid = arg(2);
+  $node = node_load($nid);
+  $GLOBALS['vidpop_textlink'] = true;
+
+  if (variable_get('takepart_log_requests', false)) {
+    watchdog('takepart_browsercaps', 'video page from node ' . $nid . ': ' . $node->title);
+  }
+
+  $modpath = drupal_get_path('module', 'takepart');
+  drupal_add_css($modpath . '/modules/takepart_vidpop/css/takepart_vidpop_mobile.css', array('every_page' => TRUE));
+
+  drupal_set_title("Takepart video: " . $node->title);
+
+  $file = file_load($node->field_video_embedded['und'][0]['fid']);
+  $uri = 0;
+  $u2 = explode('/', $file->uri);
+  $youtube_id = $u2[3];
+
+  $text = field_view_field('node', $node, 'field_promo_text');
+  $text['#label_display'] = 'hidden';
+  $rendered_text = render($text);
+
+  $formatted_page = theme('vidpop_mobile_video_page', array(
+    'p_video_nid'   => $nid,
+    'p_video_title' => $node->title,
+    'p_video_text'  => $rendered_text,
+    'p_youtube_id'  => $youtube_id,
+    'p_referrer'    => $_SERVER['HTTP_REFERER']
+
+  ));
+
+  return array('#markup' => $formatted_page);
+}
+
+
