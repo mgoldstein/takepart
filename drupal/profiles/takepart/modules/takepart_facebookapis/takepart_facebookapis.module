@@ -99,38 +99,9 @@ function _takepart_facebookapis_auth($action) {
   $app_id = variable_get('fboauth_id', '');
   $app_secret = variable_get('fboauth_secret', '');
   $cookie = _takepart_facebookapis_get_facebook_cookie($app_id, $app_secret);
-
-
-
-
-
-
   if (isset($cookie['access_token'])) {
     
-
-    // Get the shared secret phrase
-    $secret = variable_get('takeaction_api_secret', 'SWaW8s9K');
-
-    if (function_exists('mcrypt_encrypt')) {
-        // Encrypt the GUID
-        $encrypted = mcrypt_encrypt(
-          MCRYPT_RIJNDAEL_256,// The cipher to use
-          md5($secret),// The encryption key (it is recommended to use a hash of of the secret)  
-          $cookie['access_token'], // The value to encrypt 
-          MCRYPT_MODE_CBC,// Encryption mode one of ("ecb", "cbc", "cfb", "ofb", "nofb" or "stream")
-          md5(md5($secret))// Initialization vector used for CBC mode
-        );
-
-        // Base64 encode the encrypted GUID so it is a safe string
-        $cookie = base64_encode($encrypted);
-
-        $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION') + 'FB';
-        $path = variable_get('takeaction_session_cookie_path', '/');
-        $domain = variable_get('takeaction_session_cookie_domain', '.takepart.com');
-        setcookie($session_cookie, $cookie, time() - (60 * 60 * 24), $path, $domain);   
-    } else {
-        watchdog('takepart_facebookapis', 'mcrypt_encrypt is not installed, failed to set cookie', $session_cookie);
-    }
+  _takepart_set_takeaction_cookie($cookie);
 
     if(fboauth_uid_load($cookie['user_id']) != null) {
       
@@ -206,7 +177,6 @@ function _takepart_facebookapis_login_form_validate($form, &$form_state) {
     form_set_error('name', t('Could not retrieve user.'));
   }
 }
-
 
 /**
  * Implement hook_menu().
@@ -440,4 +410,27 @@ function _takepart_facebookapis_get_user_session() {
   } else {
     return $_SESSION['facebook'];
   }
+}
+
+function _takepart_set_takeaction_cookie($cookie) {
+    if (function_exists('mcrypt_encrypt')) {
+        // Encrypt the GUID
+        $encrypted = mcrypt_encrypt(
+          MCRYPT_RIJNDAEL_256,// The cipher to use
+          md5($secret),// The encryption key (it is recommended to use a hash of of the secret)  
+          $cookie['access_token'], // The value to encrypt 
+          MCRYPT_MODE_CBC,// Encryption mode one of ("ecb", "cbc", "cfb", "ofb", "nofb" or "stream")
+          md5(md5($secret))// Initialization vector used for CBC mode
+        );
+
+        // Base64 encode the encrypted GUID so it is a safe string
+        $cookie = base64_encode($encrypted);
+
+        $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION') + 'FB';
+        $path = variable_get('takeaction_session_cookie_path', '/');
+        $domain = variable_get('takeaction_session_cookie_domain', '.takepart.com');
+        setcookie($session_cookie, $cookie, time() - (60 * 60 * 24), $path, $domain);   
+    } else {
+        watchdog('takepart_facebookapis', 'mcrypt_encrypt is not installed, failed to set cookie', $session_cookie);
+    }
 }
