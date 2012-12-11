@@ -34,28 +34,6 @@ function takeaction_session_user_login(&$edit, $account) {
   $user_guid = takeaction_tracking_get_guid();
   setcookie($session_cookie, $user_guid, $expire, $path, $domain);
 
-//----TEST-------------------
-
-      // Get the shared secret phrase
-      $secret = variable_get('takeaction_api_secret');
-
-      echo "<br/>Secret: " . $secret;
-      echo "<br/>Token: " . $_SESSION['facebook_oauth_token'];
-
-      // Encrypt the GUID
-      $encrypted = mcrypt_encrypt(
-         MCRYPT_RIJNDAEL_256,// The cipher to use
-      md5($secret),// The encryption key (it is recommended to use a hash of of the secret)  
-      $_SESSION['facebook_register_trigger'], // The value to encrypt 
-      MCRYPT_MODE_CBC,// Encryption mode one of ("ecb", "cbc", "cfb", "ofb", "nofb" or "stream")
-      md5(md5($secret))// Initialization vector used for CBC mode
-      );
-
-      // Base64 encode the encrypted GUID so it is a safe string
-      $cookie = base64_encode($encrypted);
-      
-//-----TEST------------------
-
 
   // Check if the tracking cookie changed (this works because the 
   // cookie is a SESSION cookie
