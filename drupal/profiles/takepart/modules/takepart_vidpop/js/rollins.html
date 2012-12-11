@@ -82,6 +82,7 @@
   // click handler for selected state
   function showState(val) {
     if (val != 0) {
+      vidpopTextGridPopupClick(vidmapStateLookup[val]);
       if (Drupal.settings.takepart_browsercaps.detected_mobile_browser) {
         // the next part is to pass the video id to the fetcher, which will return
         // the inline embed code
@@ -139,7 +140,7 @@
   -->
 </style>
 
-<div id="capitalismTour" align="center">
+<div id="capitalismTour" class="vidpop-text-grid" align="center">
 
 <p><b>Henry Rollins</b> is taking the country by storm (and by bus) as he visits all 50 state capitals, ending on election eve in Washington, DC! Click on the locations below to see the video for each tour stop and get informed about voting issues across the country. Then <a href="http://www.takepart.com/elections/take-action">visit our elections center</a> to register to vote and get involved!</p>
 <p>Embark on a trip through the territory, <a href="javascript: showState('INTRO');">watch the introduction video</a> for Henry Rollins' Capitalism.</p>

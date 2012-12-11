@@ -56,7 +56,7 @@ function vidpop_loaded() {
 // add click trackers for popups and banner ads
 (function ($) {
   Drupal.behaviors.scVidpopClick = {
-     attach: function (context, settings) {
+    attach: function (context, settings) {
       // On click on embedded video to launch and play modal
       $('.vidpop-preview', context).click(function(){
         var n = $(this).attr('class').match(/ vp-(\d+)/);
@@ -98,6 +98,7 @@ function vidpop_loaded() {
       });
     }
   }
+
 
   Drupal.behaviors.vidpopPopups = {
     attach: function (context, settings) {
@@ -163,3 +164,31 @@ function vidpop_get_map_video(nid) {
 
   return output;
 }
+
+
+// click handlers for grids of text links, i.e. Rollins page
+//
+//    n = nid of video
+function vidpopTextGridPopupClick(n) {
+  alert('folger:' + n);
+
+  jQuery.ajax({
+    url: "/vidpop/get_video_details/" + nid,
+    type: 'get',
+    async: false,
+    dataType: 'html',
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+      alert('vidpop_get_map_video: cannot fetch node ' + nid);
+      console.log(JSON.stringify(XMLHttpRequest));
+      console.log(JSON.stringify(textStatus));
+      console.log(JSON.stringify(errorThrown));
+    },
+    success: function (data) {
+      //alert('data: ' + data);
+      output = data;
+
+      return output;
+    }
+  });
+}
+
