@@ -413,6 +413,7 @@ function _takepart_facebookapis_get_user_session() {
 }
 
 function _takepart_set_takeaction_cookie($cookie) {
+    $secret = variable_get('takeaction_api_secret', 'SWaW8s9K');
     if (function_exists('mcrypt_encrypt')) {
         // Encrypt the GUID
         $encrypted = mcrypt_encrypt(
