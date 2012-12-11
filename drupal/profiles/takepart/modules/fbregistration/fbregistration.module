@@ -39,6 +39,10 @@ function _tfbregistration_auth() {
 
     $response = _takepart_facebookapis_parse_signed_request($_REQUEST['signed_request'],$app_secret);
 
+    if(isset($response['oauth_token'])) {
+      $_SESSION['facebook_oauth_token'] = $response['oauth_token'];
+    }
+
    /*
    foreach ($response['registration'] as $key => $val) {
       if(isset($response['registration'][$key])) {
