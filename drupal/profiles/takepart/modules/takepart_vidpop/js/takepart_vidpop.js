@@ -59,6 +59,7 @@ function vidpop_loaded() {
     attach: function (context, settings) {
       // On click on embedded video to launch and play modal
       $('.vidpop-preview', context).click(function(){
+        //alert('vp 41');
         var n = $(this).attr('class').match(/ vp-(\d+)/);
         n = n[1];
         var modaltitle = vp_titles[n];
@@ -72,13 +73,14 @@ function vidpop_loaded() {
         s.eVar40=modaltype+':'+modaltitle;
         s.prop42=modaltype;
         s.eVar42=modaltype;
-        s.tl(true, 'o', 'Video Popup Click');
+        s.tl(true, 'o', 'Video Popup Click2');
         //alert('vidpop-preview:' + n);
       });
 
       // On-click of the subscribe button, pls fire (only once per session)
-      $('.vidpop-popup .subscribe', context).click(function(){
+      $('.vidpop-popup .subscribe.standard', context).click(function(){
         if( typeof vp_43_triggered == 'undefined' ) {
+          //alert('vp 43 standard');
           // block multiple calls
           vp_43_triggered = 1;
 
@@ -93,7 +95,26 @@ function vidpop_loaded() {
           s.eVar40=modaltype+':'+modaltitle;
           s.prop41=s.pageName;
           s.eVar41=s.pageName;
-          s.tl(true, 'o', 'Video Popup Click');
+          s.tl(true, 'o', 'Video Subscribe Click');
+        }
+      });
+
+      // On-click of the subscribe button, text grid page, pls fire (only once per session)
+      $('.vidpop-popup .subscribe.textgridpopup', context).click(function(){
+        if( typeof vp_43_triggered == 'undefined' ) {
+          //alert('vp 43 textgridpopup');
+          //alert('vp_embeddedvideotitle: ' + vp_embeddedvideotitle);
+          // block multiple calls
+          vp_43_triggered = 1;
+
+          s.linkTrackVars="eVar40, prop40, eVar41, prop41, events";
+          s.linkTrackEvents="event43";
+          s.events='event43';
+          s.prop40=modaltype+':'+vp_embeddedvideotitle;
+          s.eVar40=modaltype+':'+vp_embeddedvideotitle;
+          s.prop41=s.pageName;
+          s.eVar41=s.pageName;
+          s.tl(true, 'o', 'Video Subscribe Click');
         }
       });
     }
@@ -157,8 +178,6 @@ function vidpop_get_map_video(nid) {
       console.log(JSON.stringify(errorThrown));
     },
     success: function (data) {
-      //alert('data: ' + data);
-      output = data;
     }
   });
 
@@ -169,14 +188,12 @@ function vidpop_get_map_video(nid) {
 // click handlers for grids of text links, i.e. Rollins page
 //
 //    n = nid of video
-function vidpopTextGridPopupClick(n) {
-  alert('folger:' + n);
-
+function vidpopTextGridPopupClick(nid) {
   jQuery.ajax({
     url: "/vidpop/get_video_details/" + nid,
     type: 'get',
     async: false,
-    dataType: 'html',
+    dataType: 'json',
     error: function(XMLHttpRequest, textStatus, errorThrown) {
       alert('vidpop_get_map_video: cannot fetch node ' + nid);
       console.log(JSON.stringify(XMLHttpRequest));
@@ -184,11 +201,31 @@ function vidpopTextGridPopupClick(n) {
       console.log(JSON.stringify(errorThrown));
     },
     success: function (data) {
-      //alert('data: ' + data);
-      output = data;
+      //alert('rl 41');
+      // add class to identify subscribe button
+      jQuery('.vidpop-popup .subscribe').addClass('textgridpopup');
+      jQuery('.vidpop-popup .subscribe').removeClass('standard');
 
-      return output;
+      var modaltitle = data.title;
+      var modaltype  = data.type;
+      s.linkTrackVars="eVar30, prop30, eVar40, prop40, eVar42, prop42, events";
+      s.linkTrackEvents="event41";
+      s.events='event41';
+      s.prop30=s.pageName;
+      s.eVar30=s.pageName;
+      s.prop40=modaltype+':'+modaltitle;
+      s.eVar40=modaltype+':'+modaltitle;
+      s.prop42=modaltype;
+      s.eVar42=modaltype;
+      s.tl(true, 'o', 'Video Popup Click');
+
+      // save title/type for event43
+      vp_embeddedvideotitle = data.title;
+      vp_embeddedvideotype  = data.type;
     }
   });
 }
+
+
+
 

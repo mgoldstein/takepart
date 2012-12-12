@@ -35,6 +35,7 @@ function tastemakerPopupsClick(n) {
   var modaltype  = Drupal.settings.unipop.unipop_types[n];
   //alert('in rr41-tpt n:' + n + ' modaltitle:' + modaltitle + ' modaltype:' + modaltype);
 
+  //alert('tm 41');
   s.linkTrackVars="eVar30, prop30, eVar40, prop40, eVar42, prop42, events";
   s.linkTrackEvents="event41";
   s.events='event41';
@@ -55,6 +56,7 @@ function tastemakerPopupsSubscribe(n) {
   if( typeof tmp_43_triggered == 'undefined' ) {
     // block multiple calls
     tmp_43_triggered = 1;
+    //alert('tm 43');
 
     var modaltitle = Drupal.settings.unipop.unipop_titles[n];
     var modaltype  = Drupal.settings.unipop.unipop_types[n];

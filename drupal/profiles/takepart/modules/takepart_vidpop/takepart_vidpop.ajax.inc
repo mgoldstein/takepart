@@ -158,13 +158,14 @@ function takepart_vidpop_get_video_details() {
   $nid = arg(2);
   $node = node_load($nid);
   if ($node) {
-    $vnode = node_view($node);
-    $output = drupal_render($vnode['field_video_embedded']);
+    $output = array(
+      'title' => $node->title,
+      'type' => $node->type,
+    );
   }
   else {
     $output = __FUNCTION__ . ': could not load nid ' . $nid;
   }
 
-  print $output;
-  drupal_exit();
+  drupal_json_output($output);
 }
