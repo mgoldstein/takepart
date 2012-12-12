@@ -220,7 +220,7 @@ function _takeaction_feed_field_value($node, $field, $default = '') {
  * @return array
  *   An array of the update text values stripped of all HTML markup.
  */
-function _takeaction_feed_update_text_list($node) {
+function _takeaction_feed_update_text_list($node, &$last_updated) {
 
   $query = new EntityFieldQuery();
   $result = $query->entityCondition('entity_type', 'followup')
@@ -232,6 +232,10 @@ function _takeaction_feed_update_text_list($node) {
   if (!empty($result['followup'])) {
     $updates = entity_load('followup', array_keys($result['followup']));
     foreach ($updates as $id => $update) {
+
+      if ($update->changed > $last_updated) {
+        $last_updated = $update->changed;
+      }
 
       $text_item = reset(field_get_items('followup', $update,
         'field_tab_update_text'));
@@ -511,6 +515,9 @@ function takeaction_feed_action_item_data($node) {
       $call_to_action = $button_text;
     }
 
+    $last_updated = $node->changed;
+    $update_text = _takeaction_feed_update_text_list($node, $last_updated);
+
     return array(
       'id' => $node->nid,
       'TABAction' => _takeaction_feed_field_value($node, 'field_tab_action',
@@ -520,7 +527,7 @@ function takeaction_feed_action_item_data($node) {
       'internalTitle' => $internal_title,
       'externalTitle' => $external_title,
       'publishedDate' => $node->created,
-      'updatedDate' => $node->changed,
+      'updatedDate' => $last_updated,
       'internalDescription' => _takeaction_feed_field_value($node,
         'field_tab_internal_desc'),
       'externalDescription' => _takeaction_feed_field_value($node,
@@ -536,8 +543,7 @@ function takeaction_feed_action_item_data($node) {
       'topic' => _takeaction_feed_term_list($node, 'field_topic'),
       'freeTag' => _takeaction_feed_term_list($node, 'field_free_tag'),
       'actionCopy' => $aggregate_body,
-      //'contentLinks' => _takeaction_feed_content_link_list($node),
-      'updateText' => _takeaction_feed_update_text_list($node),
+      'updateText' => $update_text,
       'actionGoal' => $action_goal,
       'dateRange' => $date_range,
       'priority' => _takeaction_feed_field_value($node, 'field_priority'),
