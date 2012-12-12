@@ -48,7 +48,8 @@ function feature_boxes_default_box() {
   $box->options = array(
     'view' => 'photo_galleries--block_2',
     'settings' => array(
-      'nid' => '20908+21091+19625', /* '22831+29841', */
+      'nid' => '20908+21091+19625', 
+        /* 'nid' => '22831+29841', */
     ),
     'view_object' => NULL,
     'view_more_text' => '',
