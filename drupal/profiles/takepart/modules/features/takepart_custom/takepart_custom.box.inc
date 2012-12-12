@@ -16,9 +16,11 @@ function takepart_custom_default_box() {
   $box->delta = 'box-1104adce';
   $box->plugin_key = 'ga_ad';
   $box->title = '';
-  $box->description = 'GA: Bottom Right';
+  $box->description = 'GA: ROS Bottom Right';
   $box->options = array(
     'ga_ad_slot' => 'TP3_ROS_RR_BTF_300x600',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1345512885535-0',
+    'additional_classes' => 'block-boxes-ga_ad',
   );
   $export['box-1104adce'] = $box;
 
@@ -28,9 +30,11 @@ function takepart_custom_default_box() {
   $box->delta = 'box-66c05d6f';
   $box->plugin_key = 'ga_ad';
   $box->title = '';
-  $box->description = 'GA: Top Right';
+  $box->description = 'GA: ROS Top Right';
   $box->options = array(
     'ga_ad_slot' => 'TP3_ROS_RR_ATF_300x250',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1340672916662-0',
+    'additional_classes' => 'block-boxes-ga_ad',
   );
   $export['box-66c05d6f'] = $box;
 
