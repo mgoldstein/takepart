@@ -20,7 +20,6 @@ function feature_boxes_default_box() {
   $box->options = array(
     'ga_ad_slot' => 'TP3_ROS_RR_BTF_300x600',
     'ga_ad_gpt_id' => 'div-gpt-ad-1345512885535-0',
-    'additional_classes' => 'block-boxes-ga_ad',
   );
   $export['box-1104adce'] = $box;
 
@@ -34,7 +33,6 @@ function feature_boxes_default_box() {
   $box->options = array(
     'ga_ad_slot' => 'TP3_ROS_RR_ATF_300x250',
     'ga_ad_gpt_id' => 'div-gpt-ad-1340672916662-0',
-    'additional_classes' => 'block-boxes-ga_ad',
   );
   $export['box-66c05d6f'] = $box;
 
@@ -48,14 +46,13 @@ function feature_boxes_default_box() {
   $box->options = array(
     'view' => 'photo_galleries--block_2',
     'settings' => array(
-      /* 'nid' => '22831+29841', */
-      'nid' => '20908+21091+19625',
+      'nid' => '22831+29841',
     ),
     'view_object' => NULL,
     'view_more_text' => '',
     'view_more_link' => '',
     'additional_classes' => '',
-    /* 'selected_style' => '0', */
+    'selected_style' => '0',
   );
   $export['box-7fa6e22c'] = $box;
 
