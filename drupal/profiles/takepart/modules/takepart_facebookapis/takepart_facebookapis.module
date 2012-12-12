@@ -427,7 +427,7 @@ function _takepart_set_takeaction_cookie($cookie) {
         // Base64 encode the encrypted GUID so it is a safe string
         $cookie = base64_encode($encrypted);
 
-        $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION') + 'FB';
+        $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION') . 'FB';
         $path = variable_get('takeaction_session_cookie_path', '/');
         $domain = variable_get('takeaction_session_cookie_domain', '.takepart.com');
         setcookie($session_cookie, $cookie, time() - (60 * 60 * 24), $path, $domain);   
