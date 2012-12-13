@@ -34,6 +34,7 @@ function takeaction_session_user_login(&$edit, $account) {
   $user_guid = takeaction_tracking_get_guid();
   setcookie($session_cookie, $user_guid, $expire, $path, $domain);
 
+
   // Check if the tracking cookie changed (this works because the 
   // cookie is a SESSION cookie
   if (!empty($active_guid) && $user_guid != $active_guid) {
@@ -79,7 +80,7 @@ function takeaction_session_init() {
     // The session cookie should not be set. 
     $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION');
     if (isset($_COOKIE[$session_cookie])) {
-        
+
       $guid_cookie = variable_get('takeaction_action_cookie_name', 'TAKEACTIONGUID');
       if (isset($_COOKIE[$guid_cookie])) {
           

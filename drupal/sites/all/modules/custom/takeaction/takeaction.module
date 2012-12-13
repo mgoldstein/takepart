@@ -118,6 +118,14 @@ function takeaction_admin_form($form, &$form_state) {
       '.takepart.com'),
   );
 
+  $form['session']['takeaction_api_secret'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Shared Secret'),
+    '#description' => t('The Shared Secret used for encrypting / decrypting cookie.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_api_secret', 'SWaW8s9K'),
+  );
+
   $form['action_tracking'] = array(
     '#type' => 'fieldset',
     '#title' => t('Action Tracking'),
