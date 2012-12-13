@@ -1234,6 +1234,8 @@ iframe.moreactions {
   padding: 28px 20px 7px 160px;
   margin-bottom: 20px;
   background: #fffaea;
+  min-height: 125px;
+  _height: 125px;
 }
 
 /* closed */
