@@ -359,7 +359,7 @@ function takepart_promo_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail_1']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_thumbnail_1']['type'] = 'image';
   $handler->display->display_options['fields']['field_thumbnail_1']['settings'] = array(
-    'image_style' => 'tp_promo_feature_thumbnail',
+    'image_style' => 'tp_secondary_feature_thumbnail',
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_thumbnail_1']['field_api_classes'] = 0;

@@ -30,7 +30,7 @@
         var n = $(this).attr('class').match(/ rr-(\w+)/);
         n = n[1];
 
-        alert('rr 41');
+        // alert('rr 41');
         var modaltitle = Drupal.settings.unipop.unipop_titles[n];
         var modaltype  = Drupal.settings.unipop.unipop_types[n];
         //alert('in rr41 n:' + n + ' modaltitle:' + modaltitle + ' modaltype:' + modaltype);
@@ -54,7 +54,7 @@
           // block multiple calls
           rr_43_triggered = 1;
 
-          alert('rr 43');
+          // alert('rr 43');
           var n = $(this).attr('class').match(/ rr-(\w+)/);
           n = n[1];
           var modaltitle = Drupal.settings.unipop.unipop_titles[n];
