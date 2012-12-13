@@ -1143,6 +1143,13 @@ iframe.moreactions {
   padding-top: 20px;
 }
 
+.petition_pledge_action .region-content-bottom .block-boxes .content:after,
+.petition_pledge_action #content:after,
+.petition_pledge_action #content .content:after,
+.petition_pledge_action #content .action-content-type:after {
+  display: none;
+}
+
 .petition_pledge_action .block-boxes-view-name-content_updates h2 {
   font-size: 22px;
   font-family: 'TradeGothicLTStdCnBold';
@@ -1151,6 +1158,12 @@ iframe.moreactions {
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
   margin-bottom: 3px;
+  margin-top: 55px;
+}
+
+.petition_pledge_action .node-topics {
+  padding-bottom: 0;
+  margin-bottom: 12px;
 }
 
 .petition_pledge_action .block-boxes-view-name-content_updates .view-content-updates {
