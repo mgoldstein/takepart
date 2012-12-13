@@ -101,7 +101,7 @@ function _takepart_facebookapis_auth($action) {
   $cookie = _takepart_facebookapis_get_facebook_cookie($app_id, $app_secret);
   if (isset($cookie['access_token'])) {
     
-  _takepart_set_takeaction_cookie($cookie);
+  $_SESSION['_takepart_set_takeaction_cookie'] = $cookie;
 
     if(fboauth_uid_load($cookie['user_id']) != null) {
       
@@ -305,14 +305,20 @@ function takepart_facebookapis_menu_site_status_alter(&$menu_site_status, $path)
 /**
  * Implements hook_init().
  */
-function takepart_facebookapis_init() { 
-    
+function takepart_facebookapis_init() {  
   if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
     $app_id = variable_get('fboauth_id', '');
     setcookie('fbsr_' . $app_id,'',time()-3600);
   }
+  if (isset($_SESSION['_takepart_set_takeaction_cookie'])) {
+    $cookie = $_SESSION['_takepart_set_takeaction_cookie'];
+    unset($_SESSION['_takepart_set_takeaction_cookie']);
+    _takepart_set_takeaction_cookie($cookie);
+  }
+  if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
+    _takepart_delete_takeaction_cookie();
+  }
 }
-
 
 /**
  * Implements hook_omniture_variables().
@@ -435,3 +441,9 @@ function _takepart_set_takeaction_cookie($cookie) {
         watchdog('takepart_facebookapis', 'mcrypt_encrypt is not installed, failed to set cookie', $session_cookie);
     }
 }
+
+function _takepart_delete_takeaction_cookie() {
+  $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION') . 'FB';
+  setcookie($session_cookie,'',time()-10);
+}
+
