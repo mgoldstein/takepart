@@ -122,14 +122,28 @@ function partnercode_field_is_empty($item, $field) {
  * Implements hook_field_validate()
  */
 function partnercode_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
-  $allowed_values = $field['settings']['allowed_values'];
-  foreach ($items as $delta => $item) {
-    if (!empty($item['value']) && !empty($allowed_values)) {
-      if (!isset($allowed_values[$item['value']])) {
-        $errors[$field['field_name']][$langcode][$delta][] = array(
-          'error' => 'partnercode_illegal_value',
-          'message' => t('%name: illegal value.', array('%name' => $instance['label'])),
-        );
+  if ($instance['widget']['type'] === 'hidden_input') {
+    $allowed_values = $field['settings']['allowed_values'];
+    foreach ($items as $delta => $item) {
+      if (!empty($item['value']) && !empty($allowed_values)) {
+        if (!isset($allowed_values[$item['value']])) {
+          $errors[$field['field_name']][$langcode][$delta][] = array(
+            'error' => 'partnercode_illegal_value',
+            'message' => t('%name: illegal value.', array('%name' => $instance['label'])),
+          );
+        }
+      }
+    }
+  }
+  elseif ($instance['widget']['type'] === 'opt_in_checkbox') {
+    foreach ($items as $delta => $item) {
+      if (!empty($item['value'])) {
+        if ($item['value'] != '1') {
+          $errors[$field['field_name']][$langcode][$delta][] = array(
+            'error' => 'partnercode_illegal_value',
+            'message' => t('%name: illegal value.', array('%name' => $instance['label'])),
+          );
+        }
       }
     }
   }
@@ -207,7 +221,9 @@ function partnercode_field_widget_form(&$form, &$form_state, $field, $instance, 
     }
 
     // discard the value if it is not in the list of allowed values
-    if (!empty($value) && !isset($settings['allowed_values'][$value])) {
+    if (!empty($value)
+    &&  !empty($settings['allowed_values'])
+    &&  !isset($settings['allowed_values'][$value])) {
       $value = '';
     }
 
@@ -230,21 +246,25 @@ function partnercode_field_widget_form(&$form, &$form_state, $field, $instance, 
     }
 
     // discard the value if it is not in the list of allowed values
-    if (!empty($value) && !isset($settings['allowed_values'][$value])) {
+    if (!empty($value)
+    &&  !empty($settings['allowed_values'])
+    &&  !isset($settings['allowed_values'][$value])) {
       $value = '';
     }
 
     // Only display the opt-in if the partner code is valid.
     if (!empty($value)) {
       $element += array(
-        '#type' => 'checkbox',
-        '#default_value' => $value,
-        '#return_value' => $value,
+        '#type' => 'container',
+        '#default_value' => 1,
+        'value' => array(
+          '#type' => 'checkbox',
+          '#default_value' => 1,
+          '#title' => t($element['#title'], array(
+            '@partner' => $settings['allowed_values'][$value]
+          )),
+        ),
       );
-
-      $element['#title'] = t($element['#title'], array(
-        '@partner' => $settings['allowed_values'][$value]
-      ));
     }
   }
   return $element;
