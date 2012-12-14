@@ -311,13 +311,12 @@ function takepart_facebookapis_init() {
     $app_id = variable_get('fboauth_id', '');
     setcookie('fbsr_' . $app_id,'',time()-3600);
   }
-  if (isset($_SESSION['_takepart_set_takeaction_cookie'])) {
+  if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
+    _takepart_delete_takeaction_cookie();
+  } elseif (isset($_SESSION['_takepart_set_takeaction_cookie'])) {
     $cookie = $_SESSION['_takepart_set_takeaction_cookie'];
     unset($_SESSION['_takepart_set_takeaction_cookie']);
     _takepart_set_takeaction_cookie($cookie);
-  }
-  if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
-    _takepart_delete_takeaction_cookie();
   }
 }
 
