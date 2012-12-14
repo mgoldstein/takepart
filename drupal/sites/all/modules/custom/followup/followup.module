@@ -315,8 +315,8 @@ function theme_followup_date($variables) {
   }
   $output = '<div class="followup-date">';
   $output .= '<h3>';
-  $output .= date('n/j', $date);
-  $output .= ' ';
+  $output .= date('F j', $date);
+  $output .= ': ';
   $output .= check_plain($followup->title);
   $output .= '</h3>';
   $output .= '</div>';
