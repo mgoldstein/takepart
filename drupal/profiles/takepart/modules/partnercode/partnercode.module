@@ -135,7 +135,7 @@ function partnercode_field_validate($entity_type, $entity, $field, $instance, $l
       }
     }
   }
-  elseif ($instance['widget']['type'] === 'hidden_input') {
+  elseif ($instance['widget']['type'] === 'opt_in_checkbox') {
     foreach ($items as $delta => $item) {
       if (!empty($item['value'])) {
         if ($item['value'] != '1') {
