@@ -159,6 +159,7 @@ function unipop_set_metric_page_load($op, $id = NULL, $title = NULL, $type = NUL
           $js .= 'var modaltype = "' . $metric_types[$idx] . '";' . "\n";
 
           $js .= <<<EOT
+          //alert('mutt');
     s.linkTrackVars="eVar30, prop30, eVar40, prop40, eVar42, prop42, events";
     s.linkTrackEvents="event40";
     s.events='event40';
@@ -173,13 +174,6 @@ EOT;
         }
 
         $js = 'function unipop_loaded() { ' . $js . '};';
-
-        // add our types and titles data as vars, accessible as:
-        //   Drupal.settings.unipop.unipop_titles
-        //   Drupal.settings.unipop.unipop_types
-
-        drupal_add_js(array('unipop' => array('unipop_titles' => $metric_titles)), 'setting');
-        drupal_add_js(array('unipop' => array('unipop_types' => $metric_types)), 'setting');
       }
       else {
         // no titles found; put up a stub function anyway, to prevent js errors
@@ -189,8 +183,14 @@ function unipop_loaded() {
   //alert('no metrics calls');
 };
 EOT;
-
+        drupal_add_js(array('unipop' => array('unipop_setup' => 'no setup')), 'setting');
       }
+      // add our types and titles data as vars, accessible as:
+      //   Drupal.settings.unipop.unipop_titles
+      //   Drupal.settings.unipop.unipop_types
+
+      drupal_add_js(array('unipop' => array('unipop_titles' => $metric_titles)), 'setting');
+      drupal_add_js(array('unipop' => array('unipop_types' => $metric_types)), 'setting');
 
       drupal_add_js($js, 'inline');
       break;

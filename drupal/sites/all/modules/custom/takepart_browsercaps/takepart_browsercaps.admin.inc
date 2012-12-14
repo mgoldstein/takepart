@@ -35,6 +35,12 @@ function takepart_browsercaps_settings_form($form) {
     '#options' => $options,
     '#description' => t('Force a device mode for testing.'),
   );
+  $form['takepart_browsercaps_testing']['takepart_log_requests'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Log requests'),
+    '#default_value' => variable_get('takepart_log_requests', false),
+    '#description' => t('This will create a watchdog entry for each browser detect request. Needless to say, this could result in a very large log file, so do not forget to turn it off!'),
+  );
 
   return system_settings_form($form);
 }

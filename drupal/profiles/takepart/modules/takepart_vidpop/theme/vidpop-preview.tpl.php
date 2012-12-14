@@ -12,7 +12,7 @@
 ?>
 <div class="vidpop-embed-promo-headline"><!-- promo_headline999 --></div>
 <div class="vidpop-preview <?print $vp_class; ?>"><?php print $preview_image;?>
-  <a class="<?php print $link_class;?>" href="<?php print $href_string;?>" title="<?php print $node_title;?>"><div class="vidpop-preview-overlay"><?php print $overlay_image;?>
+  <a class="<?php print $link_class;?>" href="<?php print $href_string;?>" title="<?php print $promo_headline;?>"><div class="vidpop-preview-overlay"><?php print $overlay_image;?>
     <div class="vidpop-preview-overlay-text">
       <div class="line1"><span class="watch">WATCH</span><?php print $promo_headline;?></div>
       <div class="line2"><?php print $promo_text;?></div>

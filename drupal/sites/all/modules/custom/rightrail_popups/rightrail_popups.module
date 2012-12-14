@@ -45,15 +45,6 @@ function rightrail_popups_boxes_box_load_alter(&$box, $delta) {
       $video_id = $res[1];
       $rr_class = 'rr-' . $video_id;
 
-      // look for title
-      // typical line: <div class="field-name-field-promo-headline">Catt Sadler 'Why I Vote'</div>
-
-      preg_match("/ield-name-field-promo-headline\"\>(.+)\<\/div\>/", $body, $res);
-      $title = $res[1];
-
-      // register title and id with universal popups
-
-
       // prepare popup vars
       if (variable_get('takepart_vidpop_banners_enabled', false)) {
         // get the ad banner
@@ -70,7 +61,7 @@ function rightrail_popups_boxes_box_load_alter(&$box, $delta) {
 
       // format the video for display in popup; this will become the left side of the video
       $fmt_pop = <<<EOT
-  <div class="vidpop-popup right-rail-vidpop" style="height: 360px; width: 640px;">
+  <div class="right-rail-vidpop" style="height: 360px; width: 640px;">
     <iframe width="640" height="411" frameborder="0" type="text/html" class="youtube-player right-rail-vidpop-iframe" src="http://www.youtube.com/embed/$video_id?version=3&amp;wmode=opaque" style="height: 360px; width: 640px;"></iframe>
   </div>
 EOT;
@@ -78,7 +69,7 @@ EOT;
       $popup = theme('rightrail_video_popup', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_top_banner' => $top_banner, 'p_banner_tp_logo' => $banner_tp_logo, 'p_fmt_pop' => $fmt_pop));
 
       // replace box contents with preview
-      if (takepart_vidpop_mobile_browser()) {
+      if ((takepart_vidpop_mobile_browser()) || (takepart_vidpop_is_ipad())) {
         $vid_link = "http://www.youtube.com/embed/" . $video_id;
         $preview = theme('rightrail_video_preview_mobile', array('p_title' => $box->title, 'p_video_id' => $video_id, 'p_vid_link' => $vid_link, 'rr_class' => $rr_class));
       }
@@ -127,16 +118,28 @@ function rightrail_popups_theme() {
  * Implementation of hook_preprocess_html
  */
 function rightrail_popups_preprocess_html(&$vars) {
-  foreach ($vars['page']['sidebar_second'] as $box_id => $data) {
-    if (substr($box_id, 0, 6) == 'boxes_') {
-      if ($data['#block']->additional_classes == 'video-popup') {
-        // this one is a video popup block
-        // get the youtube ID, it will be in the rrpop-XXXX class tag somewhere
-        // in the content; i.e. rrpop-Mew33kt7D6c, from the line
-        //     <a class="colorbox-inline rrpop-Mew33kt7D6c" href="?width=870&amp;height=420&amp;inline=true#Mew33kt7D6c">
-        if (preg_match("/rrpop-([^\"]+)\"/", $data['#markup'], $res))  {
-          $youtube_id = $res[1];
-          unipop_set_metric_page_load('set', $youtube_id, $data['#block']->title, 'right railvideo');
+  if (isset($vars['page']['sidebar_second'])) {
+    foreach ($vars['page']['sidebar_second'] as $box_id => $data) {
+      if (substr($box_id, 0, 6) == 'boxes_') {
+        if (isset($data['#block']->additional_classes)) {
+          if ($data['#block']->additional_classes == 'video-popup') {
+            // this one is a video popup block
+            // get the youtube ID, it will be in the rrpop-XXXX class tag somewhere
+            // in the content; i.e. rrpop-Mew33kt7D6c, from the line
+            //
+            // this is weird: different localtion for markup is user is logged in or not
+            if (user_is_logged_in()) {
+              if (preg_match("/rrpop-([^\"]+)\"/", $data['content']['#markup'], $res))  {
+                $youtube_id = $res[1];
+                unipop_set_metric_page_load('set', $youtube_id, $data['#block']->title, 'right railvideo');
+              }
+            } else {
+              if (preg_match("/rrpop-([^\"]+)\"/", $data['#markup'], $res))  {
+                $youtube_id = $res[1];
+                unipop_set_metric_page_load('set', $youtube_id, $data['#block']->title, 'right railvideo');
+              }
+            }
+          }
         }
       }
     }

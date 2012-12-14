@@ -441,6 +441,7 @@ function _render_footer_links_menu_as_piped($menu_key) {
   $uri = substr($uri, 0, 14);
 
   $total_items = count($menu_data);
+  $column_idx = 0;
   $x = 0;
 
    foreach ($menu_data as $menu_item) {
@@ -461,6 +462,7 @@ function _render_footer_links_menu_as_piped($menu_key) {
 
   }
 
+  $menu_cols = "";
   foreach ($columns as $col) {
     $menu_cols .= "<div class='links'>" . implode($col) . "</div>\n";
   }
@@ -541,7 +543,9 @@ function takepart3_preprocess_node(&$vars, $hook) {
       $render_large = node_view(node_load($vars['nid']), 'large');
       $vars['large_video'] = drupal_render($render_large['field_video_embedded']);
 
-      if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
+      //if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
+      if (true) {
+        // build preview image
         $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
       }
 
