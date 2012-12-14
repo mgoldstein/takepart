@@ -1155,7 +1155,7 @@ function _tp3_fill_template_vars(&$variables) {
         $variables['corporate_links_nav'] = _render_tp3_corporate_links_menu();
     }
     if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
-        $variables['user_nav'] = _render_tp3_user_menu(&$variables);
+        $variables['user_nav'] = _render_tp3_user_menu($variables);
     }
     if ((!isset($variables['takepart_theme_path'])) || (!$variables['takepart_theme_path'])) {
         $variables['takepart_theme_path'] = drupal_get_path('theme', 'takepart3');
