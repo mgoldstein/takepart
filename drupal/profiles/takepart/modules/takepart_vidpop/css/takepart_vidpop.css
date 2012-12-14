@@ -55,7 +55,7 @@ div.vidpop-preview-overlay-headline {
 }
 div.vidpop-preview-overlay-text {
   width: 480px;
-  height: 360px;
+  height: 80px;
   z-index: 5;
   position: absolute;
   top: 280px;
