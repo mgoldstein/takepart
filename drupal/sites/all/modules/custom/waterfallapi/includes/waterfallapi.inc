@@ -40,7 +40,7 @@ class waterFallAPI {
     //$url = $this::BASEDOMAIN . "/api/v1/messaging/sendContent";
     $url = "http://three.waterfallmobile.com" . "/api/v1/messaging/sendContent";
 
-    watchdog('waterFallAPI_Payload', $url . $payload);
+    watchdog('waterFallAPI_Payload', $url . '|' . $payload);
 
     $return = $this->curl_post($url, $payload);
     return $return;
@@ -127,8 +127,8 @@ class waterFallAPI {
     $url = "http://three.waterfallmobile.com" . "/api/v1/subscriber/addMetadata/" . $msisdn;
     $json = json_encode($json);
 
-    $return = $this->curl_post($url, $json);
-    watchdog('addMetadata', $url . $json);
+    $return = $this->curl_post($url, $json, "PUT");
+    watchdog('addMetadata', $url . '|' . $json . '|' . $return);
     return $return;
   }
 
@@ -212,7 +212,7 @@ class waterFallAPI {
     return json_encode($json);
   }
 
-  private function curl_post(&$url, &$payload = null) {
+  private function curl_post(&$url, &$payload = null, $customreq = null) {
 
       //print "<pre>PAYLOAD:";
       //print_r($payload);
@@ -223,6 +223,10 @@ class waterFallAPI {
 
       $headers = array("Accept-Encoding: gzip",
                      "Content-Type: application/json");
+
+      if(!is_null($customreq)) {
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $customreq);
+      }
 
       curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
       curl_setopt($ch, CURLOPT_URL, $url);
