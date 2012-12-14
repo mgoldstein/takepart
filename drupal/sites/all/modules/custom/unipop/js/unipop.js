@@ -25,7 +25,7 @@ function unipop_video_id_from_node(nid) {
     async: false,
     dataType: 'html',
     error: function(XMLHttpRequest, textStatus, errorThrown) {
-      alert('unipop_video_id_from_node: cannot fetch node ' + nid);
+      // alert('unipop_video_id_from_node: cannot fetch node ' + nid);
       console.log(JSON.stringify(XMLHttpRequest));
       console.log(JSON.stringify(textStatus));
       console.log(JSON.stringify(errorThrown));
