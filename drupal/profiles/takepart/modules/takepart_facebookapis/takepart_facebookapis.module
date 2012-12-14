@@ -102,6 +102,7 @@ function _takepart_facebookapis_auth($action) {
   if (isset($cookie['access_token'])) {
     
   $_SESSION['_takepart_set_takeaction_cookie'] = $cookie;
+  _takepart_set_takeaction_cookie($cookie);
 
     if(fboauth_uid_load($cookie['user_id']) != null) {
       
@@ -436,7 +437,7 @@ function _takepart_set_takeaction_cookie($cookie) {
         $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION') . 'FB';
         $path = variable_get('takeaction_session_cookie_path', '/');
         $domain = variable_get('takeaction_session_cookie_domain', '.takepart.com');
-        setcookie($session_cookie, $cookie, time() - (60 * 60 * 24), $path, $domain);   
+        setcookie($session_cookie, $cookie, 0, $path, $domain);   
     } else {
         watchdog('takepart_facebookapis', 'mcrypt_encrypt is not installed, failed to set cookie', $session_cookie);
     }
