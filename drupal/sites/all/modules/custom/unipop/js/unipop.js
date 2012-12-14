@@ -11,7 +11,6 @@ var unipop_titles = new Array();   // list of titles
 var unipop_types  = new Array();   // list of node types
 
 function unipop_get_unipop_types() {
-  alert(unipop_types.length);
   return unipop_types;
 }
 
@@ -26,13 +25,12 @@ function unipop_video_id_from_node(nid) {
     async: false,
     dataType: 'html',
     error: function(XMLHttpRequest, textStatus, errorThrown) {
-      alert('unipop_video_id_from_node: cannot fetch node ' + nid);
+      // alert('unipop_video_id_from_node: cannot fetch node ' + nid);
       console.log(JSON.stringify(XMLHttpRequest));
       console.log(JSON.stringify(textStatus));
       console.log(JSON.stringify(errorThrown));
     },
     success: function (data) {
-      //alert('data: ' + data);
       output = data;
     }
   });
