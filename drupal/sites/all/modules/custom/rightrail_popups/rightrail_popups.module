@@ -127,7 +127,7 @@ function rightrail_popups_preprocess_html(&$vars) {
             // get the youtube ID, it will be in the rrpop-XXXX class tag somewhere
             // in the content; i.e. rrpop-Mew33kt7D6c, from the line
             //
-            // this is weird: different localtion for markup is user is logged in or not
+            // this is weird: different location for markup is user is logged in or not
             if (user_is_logged_in()) {
               if (preg_match("/rrpop-([^\"]+)\"/", $data['content']['#markup'], $res))  {
                 $youtube_id = $res[1];

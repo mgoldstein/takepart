@@ -1,4 +1,13 @@
 <!-- VIDPOP=TASTEMAKER -->
+<!--
+This is the main HTML section; the table of thumbnails gets attached by the above javascript
+-->
+<div id="video-popup-grid">
+  <div class="intro">Enjoy these videos below they're all from Los Angeles these videos are from Los Angeles which shouldn't keep you from enjoying them even if you're not from Los Angeles.</div>
+  <table class="video-thumb-table"></table>
+  <div class="table-loading"></div>
+</div>
+
 <script type="text/javascript">
   // Custom script for tastemakers video page
 
@@ -87,7 +96,7 @@ videoData[1][4] = ["32069", "http://www.takepart.com/sites/default/files/tpmeal_
                   + '</div>';
 
               var cid = 'table tr.' + rc + ' td.' + cc;
-              $(cid).append('<div class="inner"><div class="vid-thumbnail">' + preview_video + '</div><div class="vid-caption">' + caption + '</div></div>');
+              $(cid).append('<div class="inner tpt-' + video_id + '"><div class="vid-thumbnail">' + preview_video + '</div><div class="vid-caption">' + caption + '</div></div>');
             } (row, col, videoData[row][col][0], videoData[row][col][1], videoData[row][col][2], videoData[row][col][3])); // <-- immediate function call
           }
           else {
@@ -96,10 +105,11 @@ videoData[1][4] = ["32069", "http://www.takepart.com/sites/default/files/tpmeal_
               var preview_img = '<img width="180" height="135" class="rtt-preview-img" src="' + preview_img + '" />';
 
               var cid = 'table tr.' + rc + ' td.' + cc;
-              $(cid).append('<div class="inner"><div class="vid-thumbnail">' + preview_img + '<div class="vid-arrow"></div></div><div class="vid-caption">' + caption + '</div></div>');
+              $(cid).append('<div class="inner tpt-video-contents tpt-' + video_id + '"><div class="vid-thumbnail">' + preview_img + '<div class="vid-arrow"></div></div><div class="vid-caption">' + caption + '</div></div>');
               $(cid).click(function() {
                 // alert('cid: ' + cid + ' t_row:' + t_row +  ' t_col:' + t_col);
                 showTmVideo(t_row, t_col, video_id);
+                tastemakerPopupsClick(video_id);
               });
             } (row, col, videoData[row][col][0], videoData[row][col][1], videoData[row][col][2], videoData[row][col][3])); // <-- immediate function call
           }
@@ -109,6 +119,8 @@ videoData[1][4] = ["32069", "http://www.takepart.com/sites/default/files/tpmeal_
           }
         }
       }
+
+      Drupal.attachBehaviors($(this));
 
       // hide the spinner
       $('#video-popup-grid .table-loading').hide();
@@ -127,12 +139,3 @@ videoData[1][4] = ["32069", "http://www.takepart.com/sites/default/files/tpmeal_
     }
   })(jQuery);
 </script>
-
-<!--
-This is the main HTML section; the table of thumbnails gets attached by the above javascript
--->
-<div id="video-popup-grid"></table>
-  <div class="intro">Enjoy these videos below they're all from Los Angeles these videos are from Los Angeles which shouldn't keep you from enjoying them even if you're not from Los Angeles.</div>
-  <table class="video-thumb-table"></table>
-  <div class="table-loading"></div>
-</div>

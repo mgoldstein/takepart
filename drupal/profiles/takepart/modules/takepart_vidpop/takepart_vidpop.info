@@ -10,3 +10,4 @@ dependencies[] = takepart_browsercaps
 files[] = takepart_vidpop.module
 files[] = takepart_vidpop.install
 files[] = takepart_vidpop.admin.inc
+files[] = takepart_vidpop.ajax.inc
