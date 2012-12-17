@@ -38,7 +38,6 @@ function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
 
 
 function _takepart_facebookapis_getfblogin($dest = null) {
-  
  
   if(isset($GLOBALS["_takepart_facebookapis_getfblogin"])) { 
     $GLOBALS["_takepart_facebookapis_getfblogin"]++;
@@ -50,6 +49,10 @@ function _takepart_facebookapis_getfblogin($dest = null) {
     $dest = $_GET['destination'];
   }
   
+  if(strrpos($dest, "fb=logout") > -1) {
+    $dest = str_replace("fb=logout", "", $dest);
+  }
+
   if(variable_get('fblogin_method', 0) != 0) {
     //nuclear option:
     return $block_rendered = fboauth_action_display('connect');
@@ -102,6 +105,7 @@ function _takepart_facebookapis_auth($action) {
   if (isset($cookie['access_token'])) {
     
   $_SESSION['_takepart_set_takeaction_cookie'] = $cookie;
+  _takepart_set_takeaction_cookie($cookie);
 
     if(fboauth_uid_load($cookie['user_id']) != null) {
       
@@ -311,13 +315,12 @@ function takepart_facebookapis_init() {
     $app_id = variable_get('fboauth_id', '');
     setcookie('fbsr_' . $app_id,'',time()-3600);
   }
-  if (isset($_SESSION['_takepart_set_takeaction_cookie'])) {
+  if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
+    _takepart_delete_takeaction_cookie();
+  } elseif (isset($_SESSION['_takepart_set_takeaction_cookie'])) {
     $cookie = $_SESSION['_takepart_set_takeaction_cookie'];
     unset($_SESSION['_takepart_set_takeaction_cookie']);
     _takepart_set_takeaction_cookie($cookie);
-  }
-  if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
-    _takepart_delete_takeaction_cookie();
   }
 }
 
@@ -439,7 +442,7 @@ function _takepart_set_takeaction_cookie($cookie) {
         $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION') . 'FB';
         $path = variable_get('takeaction_session_cookie_path', '/');
         $domain = variable_get('takeaction_session_cookie_domain', '.takepart.com');
-        setcookie($session_cookie, $cookie, time() - (60 * 60 * 24), $path, $domain);   
+        setcookie($session_cookie, $cookie, 0, $path, $domain);   
     } else {
         watchdog('takepart_facebookapis', 'mcrypt_encrypt is not installed, failed to set cookie', $session_cookie);
     }
@@ -447,6 +450,6 @@ function _takepart_set_takeaction_cookie($cookie) {
 
 function _takepart_delete_takeaction_cookie() {
   $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION') . 'FB';
-  setcookie($session_cookie,'',time()-10);
+  setcookie($session_cookie,'',time()-3600);
 }
 
