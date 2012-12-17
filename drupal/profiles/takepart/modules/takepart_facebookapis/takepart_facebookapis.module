@@ -310,7 +310,7 @@ function takepart_facebookapis_menu_site_status_alter(&$menu_site_status, $path)
  * Implements hook_init().
  */
 function takepart_facebookapis_init() {  
-  echo "FBCOOKIE:" . $_SESSION['fbaccesstoken'];
+  //echo "FBCOOKIE:" . $_SESSION['fbaccesstoken'];
   if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
     $app_id = variable_get('fboauth_id', '');
     setcookie('fbsr_' . $app_id,'',time()-3600);
