@@ -434,7 +434,7 @@ function _takepart_set_takeaction_cookie($cookie) {
           md5(md5($secret))// Initialization vector used for CBC mode
         );
 
-        $_SESSION['fbaccesstoken'] = $cookie['access_token'];
+        //$_SESSION['fbaccesstoken'] = $cookie['access_token'];
 
         // Base64 encode the encrypted GUID so it is a safe string
         $cookie = base64_encode($encrypted);
