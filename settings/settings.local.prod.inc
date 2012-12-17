@@ -12,6 +12,7 @@ $databases = array (
           'driver' => 'mysql',
           'prefix' => '',
         ),
+/*
       'slave' =>
         array (
           'database' => 'takepart',
@@ -22,6 +23,7 @@ $databases = array (
           'driver' => 'mysql',
           'prefix' => '',
         ),
+*/
     ),
 );
 
