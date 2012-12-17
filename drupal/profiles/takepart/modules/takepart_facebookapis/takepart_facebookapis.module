@@ -306,6 +306,7 @@ function takepart_facebookapis_menu_site_status_alter(&$menu_site_status, $path)
  * Implements hook_init().
  */
 function takepart_facebookapis_init() {  
+  echo "FBCOOKIE" . $_SESSION['fbaccesstoken'];
   if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
     $app_id = variable_get('fboauth_id', '');
     setcookie('fbsr_' . $app_id,'',time()-3600);
@@ -429,6 +430,8 @@ function _takepart_set_takeaction_cookie($cookie) {
           MCRYPT_MODE_CBC,// Encryption mode one of ("ecb", "cbc", "cfb", "ofb", "nofb" or "stream")
           md5(md5($secret))// Initialization vector used for CBC mode
         );
+
+        $_SESSION['fbaccesstoken'] = $cookie['access_token'];
 
         // Base64 encode the encrypted GUID so it is a safe string
         $cookie = base64_encode($encrypted);
