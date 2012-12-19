@@ -2,12 +2,7 @@
 Copyright 1996-2011 Adobe, Inc. All Rights Reserved
 More info available at http://www.omniture.com */
 
-// var s_account=Drupal.settings.omniture.s_account; // "takepartprod"
-if (typeof Drupal != 'undefined') {
-  var s_account=Drupal.settings.omniture.s_account;
-} else {
-  var s_account="takeparttakepartdev2";
-}
+var s_account="takeparttab-stg";
 var s=s_gi(s_account);
 /************************** CONFIG SECTION **************************/
 /* You may add or alter any code config here. */
