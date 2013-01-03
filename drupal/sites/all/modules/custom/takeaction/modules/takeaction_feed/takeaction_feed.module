@@ -184,9 +184,27 @@ function takeaction_feed_entity_delete($entity, $type) {
   elseif ($type === 'node') {
     // Delete the action item for the node.
     db_delete('takeaction_feed_actions')
-      ->condition('nid', $node->nid, '=')
+      ->condition('nid', $$entity->nid, '=')
       ->execute();
   }
+}
+
+/**
+ * Helper function for getting the first value of a field.
+ *
+ * @param string $entity_type
+ *   The type of entity.
+ * @param object $entity
+ *   The entity to which the field is attached.
+ * @param string $field
+ *   The name of the field.
+ */
+function _takeaction_feed_field_get_item($entity_type, $entity, $field) {
+  $items = field_get_items($entity_type, $entity, $field);
+  if ($items !== FALSE) {
+    return reset($items);
+  }
+  return FALSE;
 }
 
 /**
@@ -237,12 +255,12 @@ function _takeaction_feed_update_text_list($node, &$last_updated) {
         $last_updated = $update->changed;
       }
 
-      $text_item = reset(field_get_items('followup', $update,
-        'field_tab_update_text'));
+      $text_item = _takeaction_feed_field_get_item('followup', $update,
+        'field_tab_update_text');
       $link_items = field_get_items('followup', $update,
         'field_tab_content_link');
-      $timestamp_item = reset(field_get_items('followup', $update,
-        'field_tab_update_timestamp'));
+      $timestamp_item = _takeaction_feed_field_get_item('followup', $update,
+        'field_tab_update_timestamp');
 
       if ($timestamp_item !== FALSE) {
         $value = array(
@@ -322,10 +340,10 @@ function _takeaction_feed_content_link_list($node) {
     $updates = entity_load('followup', array_keys($result['followup']));
     foreach ($updates as $id => $update) {
 
-      $link_item = reset(field_get_items('followup', $update,
-        'field_tab_content_link'));
-      $timestamp_item = reset(field_get_items('followup', $update,
-        'field_tab_update_timestamp'));
+      $link_item = _takeaction_feed_field_get_item('followup', $update,
+        'field_tab_content_link');
+      $timestamp_item = _takeaction_feed_field_get_item('followup', $update,
+        'field_tab_update_timestamp');
 
       if ($link_item !== FALSE && $timestamp_item !== FALSE) {
         $links[] = array(
@@ -397,9 +415,9 @@ function _takeaction_feed_term_list($node, $field) {
 function _takeaction_feed_page_url($node) {
   $page_url = url('node/' . $node->nid, array('absolute' => TRUE));
   if ($node->type == 'action') {
-    $tab_action = reset(field_get_items('node', $node, 'field_tab_action'));
-    $link_only = reset(field_get_items('node', $node, 'field_tab_link_only'));
-    $action = reset(field_get_items('node', $node, 'field_action_url'));
+    $tab_action = _takeaction_feed_field_get_item('node', $node, 'field_tab_action');
+    $link_only = _takeaction_feed_field_get_item('node', $node, 'field_tab_link_only');
+    $action = _takeaction_feed_field_get_item('node', $node, 'field_action_url');
     if ($tab_action !== FALSE && $link_only !== FALSE && $action !== FALSE) {
       if ($tab_action['value'] && $link_only['value']) {
         $page_url = $action['url'];
