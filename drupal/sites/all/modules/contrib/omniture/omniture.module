@@ -140,9 +140,11 @@ function _omniture_format_variables(array $variables = array()) {
       $value = $extra_variables[$key];
     }
 
-    $key = check_plain($key);
-    $value = check_plain($value);
-    $variables_formatted .= "{$key}=\"{$value}\";\n";
+    if (isset($value)) {
+      $key = check_plain(trim($key));
+      $value = check_plain(trim($value));
+      $variables_formatted .= "{$key}=\"{$value}\";\n";
+    }
   }
   return $variables_formatted;
 }
@@ -232,7 +234,6 @@ function omniture_admin_settings() {
  */
 function omniture_set_variable($name = NULL, $value = NULL) {
   $variables = &drupal_static(__FUNCTION__, array());
-
   if (empty($name)) {
     return $variables;
   }
@@ -244,3 +245,51 @@ function omniture_set_variable($name = NULL, $value = NULL) {
 function omniture_get_variables() {
   return omniture_set_variable();
 }
+
+
+/**
+ * Implements hook_context_plugins().
+ */
+function omniture_context_plugins() {
+  $plugins = array();
+  $plugins['omniture_reaction'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'omniture') .'/plugins',
+      'file' => 'omniture_reaction.inc',
+      'class' => 'omniture_reaction',
+      'parent' => 'context_reaction',
+    ),
+  );
+  return $plugins;
+}
+
+/**
+ * Implements hook_context_registry().
+ */
+function omniture_context_registry() {
+  $reg = array(
+    'reactions' => array(
+      'omniture_reaction' => array(
+        'title' => t('Omniture'),
+        'plugin' => 'omniture_reaction',
+      ),
+    ),
+  );
+  return $reg;
+}
+
+/**
+ * Implements hook_omniture_variables().
+ */
+function omniture_omniture_variables() {
+
+  //check if context is enabled
+  if (function_exists('context_get_plugin') ){
+    //get variables from context
+    if ($plugin = context_get_plugin('reaction', 'omniture_reaction')) {
+      $variables = $plugin->execute();
+      return array("variables" => $variables);
+    }
+  }
+}
+
