@@ -21,7 +21,13 @@ function takepart3_dolinks($links_field) {
 
 function takepart3_preprocess_html(&$vars) {
     // Optimizely
-    drupal_add_js('//cdn.optimizely.com/js/77413453.js', 'external');
+    drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
+  'type' => 'external',
+  'scope' => 'footer',
+  'group' => JS_DEFAULT,
+  'every_page' => TRUE,
+  'weight' => -1,
+));
     drupal_add_library('system', 'jquery.cookie');
     if (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage')) {
         $vars['classes_array'][] = 'multipage-campaign';
