@@ -4257,12 +4257,9 @@ ul#global-links {
     color:#1ca9e7;
 }
 .region-highlighted .block-context-related-menu ul.menu li a.active, .region-highlighted .block-menu ul.menu li a.active{
-    border-bottom: 1px solid #CCCFFF;
-    border-top: 1px solid #CCCFFF;
     color: #1CA9E7;
     display: block;
     padding: 0;
-    line-height:26px;
 }
 
 #block-menu-menu-thecove ul.menu li a.active { 
