@@ -984,7 +984,7 @@ function takepart3_search_api_page_results(array $variables) {
 
     $index = $variables['index'];
     $results = $variables['results'];
-    $entities = $variables['entities'];
+    $entities = $variables['items'];
     $keys = $variables['keys'];
 
     $output = '<p class="search-performance">' . format_plural($results['result count'], 'Current search found 1 result for ' . check_plain($keys), 'Current search found @count results for ' . check_plain($keys), array('@sec' => round($results['performance']['complete'], 3))) . '</p>';
@@ -1030,10 +1030,10 @@ function takepart3_search_api_page_result(array $variables) {
     $id = $variables['result']['id'];
     $entity = $variables['entity'];
 
-    $wrapper = entity_metadata_wrapper($index->entity_type, $entity);
+    $wrapper = entity_metadata_wrapper($index->item_type, $entity);
 
-    $url = entity_uri($index->entity_type, $entity);
-    $name = entity_label($index->entity_type, $entity);
+    $url = entity_uri($index->item_type, $entity);
+    $name = entity_label($index->item_type, $entity);
 
     if ($index->entity_type == 'file') {
         $url = array(

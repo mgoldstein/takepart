@@ -296,7 +296,7 @@ ul#top-follow li.rss a {
 #slim-header li.dhtml-menu li a:hover {}
 
 /**** Top Search ****/
-form#search-api-page-search-form-2 {
+form#search-api-page-search-form-site-search {
     margin: 3px 0 0 0;
 }
 
@@ -315,7 +315,7 @@ form#search-api-page-search-form-2 {
     margin-top: 1px;
 }
 
-#top-search .tpform-submit {
+#top-search .form-submit {
     background: url(../images/sprite.png) no-repeat 0 -115px;
     border: none;
     cursor: pointer;
@@ -3689,7 +3689,7 @@ body.logged-in .multipage-campaign #top-search .form-text:active {
     width: 90px;
 }
 
-#top-search .tpform-submit {
+#top-search .form-submit {
     background: url("../images/sprite.png") no-repeat scroll 0 -115px transparent;
     border: medium none;
     cursor: pointer;
@@ -3832,27 +3832,27 @@ p.search-performance{
     color:#1ca9e7;
 }
 /* search facets */
-.block-search-api-facets{
+.block-facetapi{
     padding:0 0 0 10px;
     margin:0 0 30px 0;
 }
-.block-search-api-facets .search-api-facets{
+.block-facetapi .facetapi-facetapi-links{
     list-style:none;
     margin:0;
     padding:0;
     list-style-position:outside;
 }
-.block-search-api-facets h2{
+.block-facetapi h2{
     font-size:16px;
     line-height:24px;
     font-weight:bold;
     color:#000;
 }
-.block-search-api-facets .search-api-facets li{
+.block-facetapi .search-api-facets li{
     margin:0 0 8px 0;
     padding:0;
 }
-.block-search-api-facets .search-api-facets li a{
+.block-facetapi .search-api-facets li a{
     color:#333;
     font-size:14px;
 }

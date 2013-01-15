@@ -6,7 +6,7 @@
 
 include_once('takepart_search.features.inc');
 
-function takepart_search_form_search_api_page_search_form_2_alter(&$form, &$form_state, $form_id) {
+function takepart_search_form_search_api_page_search_form_site_search_alter(&$form, &$form_state, $form_id) {
   $form['keys_2']['#default_value'] = 'Search';
   $form['keys_2']['#attributes'] = array('onfocus' => array("if(this.value=='" . t('Search') . "'){this.value=''};"));
   $form['submit_2']['#attributes'] = array('class' => array('tpform-submit'));
