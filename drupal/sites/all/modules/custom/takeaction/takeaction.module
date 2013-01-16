@@ -237,7 +237,15 @@ function takeaction_admin_form($form, &$form_state) {
     '#description' => t('The absolute URL to the TakeAction button JavaScript file.'),
     '#required' => TRUE,
     '#element_validate' => array('takeaction_validate_url'),
-    '#default_value' => variable_get('takeaction_button_js_url', ''),
+    '#default_value' => variable_get('takeaction_button_js_url', 'd84909c52edcceb20c7bba62052b1b01'),
+  );
+  
+  $form['urls']['takeaction_button_pub_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Publisher ID'),
+    '#description' => t('The publisher ID passed through the button JS'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('takeaction_button_pub_id', ''),
   );
 
   $form['urls']['takeaction_more_actions_url'] = array(
