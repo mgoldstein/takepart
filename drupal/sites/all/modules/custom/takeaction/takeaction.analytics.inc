@@ -97,10 +97,22 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
     $tags = taxonomy_term_load_multiple($tids);
     $topic = taxonomy_implode_tags($tags);
 
+    // Extract the sponsor
+    $sponsor = '';
+    $items = field_get_items('node', $entity, 'field_action_sponsor');
+    if (!empty($items)) {
+      $first = reset($items);
+      $sponsor_node = node_load($first['nid']);
+      if ($sponsor_node !== FALSE) {
+        $sponsor = check_plain($sponsor_node->title);
+      }
+    }
+
     return array(
       'title' => check_plain($entity->title),
       'action_type' => $action_type,
       'topic' => $topic,
+      'empowered_by' => $sponsor,
     );
   }
 }
