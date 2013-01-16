@@ -64,6 +64,14 @@ function takeaction_feed_actions_callback() {
  */
 function takeaction_feed_admin_form($form, &$form_state) {
 
+  $form['takeaction_feed_content_domain'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Content domain'),
+    '#description' => t('The domain to use in all action URLs'),
+    '#default_value' => variable_get('takeaction_feed_content_domain', ''),
+    '#required' => TRUE,
+  );
+
   $form['takeaction_feed_filter_unpublished'] = array(
     '#type' => 'checkbox',
     '#title' => t('Exclude unpublished actions'),
@@ -357,6 +365,51 @@ function _takeaction_feed_content_link_list($node) {
   return $links;
 }
 
+function _takeaction_feed_build_url($pieces) {
+  $url = '';
+  if ($pieces['scheme']) {
+    $url = $pieces['scheme'] . ':';
+  }
+  $url .= '//';
+  if (isset($pieces['user'])) {
+    $url .= $pieces['user'];
+    if (isset($pieces['pass'])) {
+      $url .= ':' . $pieces['pass'];
+    }
+    $url .= '@';
+  }
+  if (isset($pieces['host'])) {
+    $url .= $pieces['host'];
+  }
+  if (isset($pieces['path'])) {
+    $url .= $pieces['path'];
+  }
+  if (isset($pieces['query'])) {
+    $url .= '?' . $pieces['query'];
+  }
+  if (isset($pieces['fragment'])) {
+    $url .= '#' . $pieces['fragment'];
+  }
+  return $url;
+}
+
+/**
+ * Rebuild a URL for the configurable TakePart content domain.
+ */
+function _takeaction_feed_update_domain($url, $force = FALSE) {
+  $new_domain = variable_get('takeaction_feed_content_domain', NULL);
+  if (!empty($new_domain)) {
+    $pieces = parse_url($url);
+    $is_domain = strpos($pieces['host'], '.');
+    $is_takepart = substr_compare($pieces['host'], 'takepart.com', -12, 12);
+    if ($force || $is_domain === FALSE || $is_takepart === 0) {
+      $pieces['host'] = $new_domain;
+      $url = _takeaction_feed_build_url($pieces);
+    }
+  }
+  return $url;
+}
+
 /**
  * Helper function for translating a media asset field to a URL.
  *
@@ -373,7 +426,8 @@ function _takeaction_feed_media_url($node, $field) {
   if ($items !== FALSE) {
     $first = reset($items);
     $file = file_load($first['fid']);
-    return file_create_url($file->uri);
+    $url = file_create_url($file->uri);
+    return _takeaction_feed_update_domain($url);
   }
   return '';
 }
@@ -424,7 +478,7 @@ function _takeaction_feed_page_url($node) {
       }
     }
   }
-  return $page_url;
+  return _takeaction_feed_update_domain($page_url);
 }
 
 /**
