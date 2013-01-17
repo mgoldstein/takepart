@@ -2401,7 +2401,7 @@ q:before, q:after {
 }
 
 .node-type-takepart-campaign #page {
-    padding-top: 0;
+    padding-top: 25px;
     padding-right: 0;
     padding-bottom: 25px;
     padding-left: 10px;
