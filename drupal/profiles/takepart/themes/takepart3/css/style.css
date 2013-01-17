@@ -2431,9 +2431,9 @@ body.node-type-takepart-campaign .main-content #content {
 .page-node-22525 .main-content h2 {
     border-top:1px dotted #000;
     margin:0;
-    padding:20px 0 10px;
-    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 20px transparent;
+    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 12px transparent;
     width:100%;
+    padding-top: 12px;
 }
 
 .page-node-22525 .page {
