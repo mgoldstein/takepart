@@ -15,6 +15,7 @@ function takeaction_javascript_init() {
       $scheme = parse_url($button_js_url, PHP_URL_SCHEME);
       $host = parse_url($button_js_url, PHP_URL_HOST);
       $location = variable_get('takeaction_button_js_location', 'footer');
+      $pub_id = variable_get('takeaction_button_pub_id', '');
       $publisher_js = parse_url($button_js_url, PHP_URL_PATH);
       $args = parse_url($button_js_url, PHP_URL_QUERY);
       if (!empty($args)) {
@@ -27,6 +28,7 @@ function takeaction_javascript_init() {
       $button_js = "
         window.TP = window.TP || {};
         TP.tabHost = '{$scheme}://{$host}';
+        TP.publisherId = '{$pub_id}';
         (function() {         
           var tabScript = document.createElement('script');
           tabScript.type = 'text/javascript';
