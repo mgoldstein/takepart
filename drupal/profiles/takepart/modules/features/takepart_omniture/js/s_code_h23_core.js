@@ -76,13 +76,13 @@ function s_doPlugins(s) {
     /*Exits*/
     s.xtlnk=s.exitLinkHandler();
     if(s.xtlnk.indexOf('amex.justgive.org')>-1) {     /*KN: Remove since there are no longer just give exit links (except for Give150)? */
-        s.events=s.apl(s.events,'event31',',',2);	
+        s.events=s.apl(s.events,'event31',',',2);
     }
 
     /* Page Name */
     if(!s.pageType && !s.pageName)
         s.pageName=getPathFromUrl(s.getPageName());
-		
+
     /* campaign ID tracking */
     if(!s.campaign){
         s.campaign=s.getQueryParam('cmpid').toLowerCase();
@@ -91,8 +91,8 @@ function s_doPlugins(s) {
     else {
         s.campaign=s.campaign.toLowerCase();
     }
-	
-    s.setupFormAnalysis();  
+
+    s.setupFormAnalysis();
 
     /* Site Search */
     if(s.prop7){
@@ -122,9 +122,9 @@ function s_doPlugins(s) {
     s.events=s.apl(s.events,'event2',',',2)
 
     /* Set Time Parting Variables - SAMPLE EST */
-    if(!s.prop8&&!s.eVar8) s.prop8=s.eVar8=s.getTimeParting('h','-8'); // Set hour 
-    if(!s.prop9&&!s.eVar9) s.prop9=s.eVar9=s.getTimeParting('d','-8'); // Set day 
-    if(!s.prop10&&!s.eVar10) s.prop10=s.eVar10=s.getTimeParting('w','-8'); // Set weekday 
+    if(!s.prop8&&!s.eVar8) s.prop8=s.eVar8=s.getTimeParting('h','-8'); // Set hour
+    if(!s.prop9&&!s.eVar9) s.prop9=s.eVar9=s.getTimeParting('d','-8'); // Set day
+    if(!s.prop10&&!s.eVar10) s.prop10=s.eVar10=s.getTimeParting('w','-8'); // Set weekday
 
     /* Copy props to eVars */
     s.eVar46=s.pageName?s.pageName:'';
@@ -195,7 +195,7 @@ s.p_gh=new Function(""
     +"o=o.parentElement?o.parentElement:o.parentNode;if(!o)return '';y=s."
     +"ot(o);n=s.oid(o);x=o.s_oidt}}return o.href?o.href:'';");
 /*
- * Plugin: getTimeParting 2.0 
+ * Plugin: getTimeParting 2.0
  */
 s.getTimeParting=new Function("t","z","y","l",""
     +"var s=this,d,A,U,X,Z,W,B,C,D,Y;d=new Date();A=d.getFullYear();Y=U=S"
@@ -257,7 +257,7 @@ s.apl=new Function("L","v","d","u",""
     +"length;i++){n=a[i];m=m||(u==1?(n==v):(n.toLowerCase()==v.toLowerCas"
     +"e()));}}if(!m)L=L?L+d+v:v;return L");
 /*
- * Plugin: setupLinkTrack 2.0 - return links for HBX-based link 
+ * Plugin: setupLinkTrack 2.0 - return links for HBX-based link
  *         tracking in SiteCatalyst (requires s.split and s.apl)
  */
 s.setupLinkTrack=new Function("vl","c",""
@@ -457,7 +457,7 @@ s.channelManager=new Function("a","b","c","d","e","f",""
     +"ign=u;s._keywords=M;s._channel=P");
 /* Top 130 - Grouped */
 s.seList="search.about`|terms|About.com>alltheweb`|query,q|All The Web>altavista.co|q,r|AltaVista>ca.altavista`|q|AltaVista#Canada>no.altavista`|q|AltaVista#Norway>uk.altavista`|q,r|AltaVista#United Kingdom>aol.co.uk,search.aol.co.uk|query|AOL#United Kingdom>search.aol`,search.aol.ca|query,q|AOL.com Search>ask`,ask.co.uk|ask,q|Ask Jeeves>www.baidu`|wd|Baidu>daum.net,search.daum.net|q|Daum>eniro.se|search_word|Eniro#Sweden>g%.co,g%syndication`|q,*|G%>g%`.af|q,*|G%#Afghanistan>g%`.ag|q,*|G%#Antigua and Barbuda>g%`.ar|q,*|G%#Argentina>g%.am|q,*|G%#Armenia>g%`.au|q,*|G%#Australia>g%.at|q,*|G%#Austria>g%.az|q,*|G%#Azerbaijan>g%`.bh|q,*|G%#Bahrain>g%`.bd|q,*|G%#Bangladesh>g%`.by|q,*|G%#Belarus>g%.be|q,*|G%#Belgium>g%`.bz|q,*|G%#Belize>g%`.bo|q,*|G%#Bolivia>g%.ba|q,*|G%#Bosnia-Hercegovina>g%.co.bw|q,*|G%#Botswana>g%`.br|q,*|G%#Brasil>g%`.bn|q,*|G%#Brunei>g%.bg|q,*|G%#Bulgaria>g%`.kh|q,*|G%#Cambodia>g%.ca|q,*|G%#Canada>g%.cl|q,*|G%#Chile>g%.cn|q,*|G%#China>g%`.co|q,*|G%#Colombia>g%.co.cr|q,*|G%#Costa Rica>g%.ci|q,*|G%#Cote D\'Ivoire>g%.hr|q,*|G%#Croatia>g%.cz|q,*|G%#Czech Republic>g%.dk|q,*|G%#Denmark>g%.dm|q,*|G%#Dominica>g%`.do|q,*|G%#Dominican Republic>g%`.ec|q,*|G%#Ecuador>g%`.eg|q,*|G%#Egypt>g%`.sv|q,*|G%#El Salvador>g%.ee|q,*|G%#Estonia>g%`.et|q,*|G%#Ethiopia>g%`.fj|q,*|G%#Fiji>g%.fi|q,*|G%#Finland>g%.fr|q,*|G%#France>g%.de|q,*|G%#Germany>g%.gr|q,*|G%#Greece>g%.gl|q,*|G%#Greenland>g%`.gt|q,*|G%#Guatemala>g%.hn|q,*|G%#Honduras>g%`.hk|q,*|G%#Hong Kong>g%.hu|q,*|G%#Hungary>g%.co.in|q,*|G%#India>g%.co.id|q,*|G%#Indonesia>g%.ie|q,*|G%#Ireland>g%.is|q,*|G%#Island>g%`.gi|q,*|G%#Isle of Gibraltar>g%.im|q,*|G%#Isle of Man>g%.co.il|q,*|G%#Israel>g%.it|q,*|G%#Italy>g%`.jm|q,*|G%#Jamaica>g%.co.jp|q,*|G%#Japan>g%.jo|q,*|G%#Jordan>g%.kz|q,*|G%#Kazakhstan>g%.co.ke|q,*|G%#Kenya>g%.ki|q,*|G%#Kiribati>g%.co.kr|q,*|G%#Korea>g%.kg|q,*|G%#Kyrgyzstan>g%.lv|q,*|G%#Latvia>g%.co.ls|q,*|G%#Lesotho>g%`.ly|q,*|G%#Libya>g%.lt|q,*|G%#Lithuania>g%.lu|q,*|G%#Luxembourg>g%`.my|q,*|G%#Malaysia>g%.mv|q,*|G%#Maldives>g%`.mt|q,*|G%#Malta>g%.mu|q,*|G%#Mauritius>g%`.mx|q,*|G%#Mexico>g%.fm|q,*|G%#Micronesia>g%.md|q,*|G%#Moldova>g%.co.ma|q,*|G%#Morocco>g%`.na|q,*|G%#Namibia>g%`.np|q,*|G%#Nepal>g%.nl|q,*|G%#Netherlands>g%.co.nz|q,*|G%#New Zealand>g%`.ni|q,*|G%#Nicaragua>g%`.ng|q,*|G%#Nigeria>g%.nu|q,*|G%#Niue>g%.no|q,*|G%#Norway>g%`.om|q,*|G%#Oman>g%`.pk|q,*|G%#Pakistan>g%`.pa|q,*|G%#Panama>g%`.py|q,*|G%#Paraguay>g%`.pe|q,*|G%#Peru>g%`.ph|q,*|G%#Philippines>g%.pl|q,*|G%#Poland>g%.pt|q,*|G%#Portugal>g%`.pr|q,*|G%#Puerto Rico>g%`.qa|q,*|G%#Qatar>g%.cd|q,*|G%#Rep. Dem. du Congo>g%.ge|q,*|G%#Repulic of Georgia>g%.ro|q,*|G%#Romania>g%.ru|q,*|G%#Russia>g%.rw|q,*|G%#Rwanda>g%`.vc|q,*|G%#Saint Vincent and the Grenadine>g%.ws|q,*|G%#Samoa>g%.st|q,*|G%#Sao Tome and Principe>g%`.sa|q,*|G%#Saudi Arabia>g%.sn|q,*|G%#Senegal>g%.sc|q,*|G%#Seychelles>g%`.sg|q,*|G%#Singapore>g%.sk|q,*|G%#Slovakia>g%.si|q,*|G%#Slovenia>g%.co.za|q,*|G%#South Africa>g%.es|q,*|G%#Spain>g%.lk|q,*|G%#Sri Lanka>g%.se|q,*|G%#Sweden>g%.ch|q,*|G%#Switzerland>g%`.tw|q,*|G%#Taiwan>g%.co.th|q,*|G%#Thailand>g%.bs|q,*|G%#The Bahamas>g%.gm|q,*|G%#The Gambia>g%.to|q,*|G%#Tonga>g%.tt|q,*|G%#Trinidad and Tobago>g%`.tr|q,*|G%#Turkey>g%.co.ug|q,*|G%#Uganda>g%`.ua|q,*|G%#Ukraine>g%.ae|q,*|G%#United Arab Emirates>g%.co.uk|q,*|G%#United Kingdom>g%`.uy|q,*|G%#Uruguay>g%.co.uz|q,*|G%#Uzbekiston>g%.co.ve|q,*|G%#Venezuela>g%`.vn|q,*|G%#Viet Nam>g%.co.vi|q,*|G%#Virgin Islands>g%.co.zm|q,*|G%#Zambia>g%.co.zw|q,*|G%#Zimbabwe>icqit`|q|icq>ixquick`|query|ixquick>kvasir.no|q,searchExpr|Kvasir>www.lycos`,search.lycos`|query|Lycos>bing`|q|Microsoft Bing>myway`|searchfor|MyWay.com>naver`,search.naver`|query|Naver>netscape`|query,search|Netscape Search>dmoz.org|search|Open Directory Project>reference`|q|Reference.com>searchalot`|query,q|Searchalot>seznam|w|Seznam.cz>abcsok.no|q|Startsiden>virgilio.it|qs|Virgilio>web.de|su|Web.de>y^`,search.y^`|p|Y^!>ar.y^`,ar.search.y^`|p|Y^!#Argentina>asia.y^`,asia.search.y^`|p|Y^!#Asia>au.y^`,au.search.y^`|p|Y^!#Australia>at.search.y^`|p|Y^!#Austria>ca.y^`,ca.search.y^`|p|Y^!#Canada>de.y^`,de.search.y^`|p|Y^!#Germany>hk.y^`,hk.search.y^`|p|Y^!#Hong Kong>in.y^`,in.search.y^`|p|Y^!#India>it.y^`,it.search.y^`|p|Y^!#Italy>y^.co.jp,search.y^.co.jp|p,va|Y^!#Japan>malaysia.y^`,malaysia.search.y^`|p|Y^!#Malaysia>mx.y^`,mx.search.y^`|p|Y^!#Mexico>ph.y^`,ph.search.y^`|p|Y^!#Philippines>sg.y^`,sg.search.y^`|p|Y^!#Singapore>es.y^`,es.search.y^`|p|Y^!#Spain>telemundo.y^`,espanol.search.y^`|p|Y^!#Spanish (US : Telemundo)>tw.y^`,tw.search.y^`|p|Y^!#Taiwan>uk.y^`,uk.search.y^`|p|Y^!#UK and Ireland>yandex|text|Yandex.ru>search.cnn.com|query|CNN Web Search>search.earthlink.net|q|Earthlink Search>search.comcast.net|q|Comcast Search>search.rr.com|qs|RoadRunner Search>optimum.net|q|Optimum Search";
-/*                                                                  
+/*
 * Plugin: clickPast - version 1.0
 */
 s.clickPast=new Function("scp","ct_ev","cp_ev","cpc",""
