@@ -22,10 +22,10 @@ s.linkTrackVars="prop33,prop34,prop35,prop36";
 s.linkTrackEvents="None";
 
 /* Page Name Plugin Config */
-s.siteID="takepart";            // leftmost value in pagename
+s.siteID="takepart";    // leftmost value in pagename
 s.defaultPage="";       // filename to add when none exists
 s.queryVarsList="";     // query parameters to keep
-s.pathExcludeDelim=";" // portion of the path to exclude
+s.pathExcludeDelim=";"  // portion of the path to exclude
 s.pathConcatDelim=":"   // page name component separator
 s.pathExcludeList="?"   // elements to exclude from the path
 
@@ -81,8 +81,8 @@ function s_doPlugins(s) {
 		
     /* campaign ID tracking */
     if(!s.campaign){
-        s.campaign=s.getQueryParam('cmpid')
-        s.campaign=s.getValOnce(s.campaign,'s_campaign',0)
+        s.campaign=s.getQueryParam('cmpid').toLowerCase();
+        s.campaign=s.getValOnce(s.campaign.toLowerCase(),'s_campaign',0)
     }
 		
     s.setupFormAnalysis();  

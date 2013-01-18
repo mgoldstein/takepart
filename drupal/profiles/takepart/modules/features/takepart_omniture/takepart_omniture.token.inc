@@ -56,6 +56,16 @@ function takepart_omniture_token_info() {
         ),
     );
     
+    $info['tokens']['tp_omniture']['lowercase'] = array(
+        'name' => t('Lowercase'),
+        'description' => t('Set the value to all lowercase.'),
+        'dynamic' => TRUE,
+        'function' => array(
+            'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+            'function' => "takepart_omniture_lowercase",
+        ),
+    );
+        
     $info['tokens']['tp_omniture']['first_word'] = array(
         'name' => t('Grab the first word'),
         'description' => t('Grab the first word with html_entity_decode function.'),
@@ -253,7 +263,11 @@ function takepart_omniture_url_after_arg($path, $index = 0) {
  *
  */
 function takepart_omniture_str_decode($str) {
-    return html_entity_decode($str, ENT_QUOTES);
+    return strtolower(html_entity_decode($str, ENT_QUOTES));
+}
+
+function takepart_omniture_lowercase($str) {
+    return strtolower($str);
 }
 
 /**

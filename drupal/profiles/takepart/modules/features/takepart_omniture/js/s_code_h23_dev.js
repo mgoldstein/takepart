@@ -86,8 +86,8 @@ function s_doPlugins(s) {
 		
     /* campaign ID tracking */
     if(!s.campaign){
-        s.campaign=s.getQueryParam('cmpid')
-        s.campaign=s.getValOnce(s.campaign,'s_campaign',0)
+        s.campaign=s.getQueryParam('cmpid').toLowerCase();
+        s.campaign=s.getValOnce(s.campaign.toLowerCase(),'s_campaign',0)
     }
 		
     s.setupFormAnalysis();  
