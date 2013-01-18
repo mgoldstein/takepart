@@ -26,10 +26,10 @@ s.linkTrackVars="prop33,prop34,prop35,prop36";
 s.linkTrackEvents="None";
 
 /* Page Name Plugin Config */
-s.siteID="takepart";            // leftmost value in pagename
+s.siteID="takepart";    // leftmost value in pagename
 s.defaultPage="";       // filename to add when none exists
 s.queryVarsList="";     // query parameters to keep
-s.pathExcludeDelim=";" // portion of the path to exclude
+s.pathExcludeDelim=";"  // portion of the path to exclude
 s.pathConcatDelim=":"   // page name component separator
 s.pathExcludeList="?"   // elements to exclude from the path
 
@@ -39,7 +39,7 @@ s.trackFormList=true;
 s.trackPageName=true;
 s.useCommerce=false;
 s.varUsed="prop28";
-s.eventList=""; //Abandon,Success,Error
+s.eventList="";         //Abandon,Success,Error
 
 // s.channelDomain="Partner|americanexpress.com"; /*KN: Remove/update? */
 
@@ -67,7 +67,7 @@ function s_doPlugins(s) {
     s.eVar47 = s._keywords; //Keywords
 
     /* Plugin Example: setupLinkTrack 0.1 */
-    s.hbx_lt = "auto" // manual, auto
+    s.hbx_lt = "auto"; // manual, auto
     s.setupLinkTrack("prop33,prop34,prop35,prop36","SC_LINKS");
         
     /*Bounce Rate*/
@@ -75,7 +75,7 @@ function s_doPlugins(s) {
 
     /*Exits*/
     s.xtlnk=s.exitLinkHandler();
-    if(s.xtlnk.indexOf('amex.justgive.org')>-1){     /*KN: Remove since there are no longer just give exit links (except for Give150)? */
+    if(s.xtlnk.indexOf('amex.justgive.org')>-1) {     /*KN: Remove since there are no longer just give exit links (except for Give150)? */
         s.events=s.apl(s.events,'event31',',',2);	
     }
 
@@ -85,8 +85,8 @@ function s_doPlugins(s) {
 		
     /* campaign ID tracking */
     if(!s.campaign){
-        s.campaign=s.getQueryParam('cmpid')
-        s.campaign=s.getValOnce(s.campaign,'s_campaign',0)
+        s.campaign=s.getQueryParam('cmpid').toLowerCase();
+        s.campaign=s.getValOnce(s.campaign.toLowerCase(),'s_campaign',0)
     }
 		
     s.setupFormAnalysis();  
@@ -125,27 +125,27 @@ function s_doPlugins(s) {
 
     /* Copy props to eVars */
     s.eVar46=s.pageName?s.pageName:'';
-    s.eVar1=s.prop1?s.prop1:'';    // Sub Section 1
-    s.eVar2=s.prop2?s.prop2:'';    // Sub Section 2
-    s.eVar3=s.prop3?s.prop3:'';    // Sub Section 3
-    s.eVar4=s.prop4?s.prop4:'';    // Type of Content
-    s.eVar5=s.prop5?s.prop5:'';    // Article Title
-    s.eVar6=s.prop6?s.prop6:'';    // Content ID
-    s.eVar7=s.prop7?s.prop7:'';    // Internal Search Terms
+    s.eVar1=s.prop1?s.prop1:'';         // Sub Section 1
+    s.eVar2=s.prop2?s.prop2:'';         // Sub Section 2
+    s.eVar3=s.prop3?s.prop3:'';         // Sub Section 3
+    s.eVar4=s.prop4?s.prop4:'';         // Type of Content
+    s.eVar5=s.prop5?s.prop5:'';         // Article Title
+    s.eVar6=s.prop6?s.prop6:'';         // Content ID
+    s.eVar7=s.prop7?s.prop7:'';         // Internal Search Terms
     s.eVar12=s.channel?s.channel:'';    // Site Sections
-    s.eVar13=s.prop13?s.prop13:'';  // 404 error page -- was previously "Featured Content ID"
+    s.eVar13=s.prop13?s.prop13:'';      // 404 error page -- was previously "Featured Content ID"
     //s.eVar15=s.prop14?s.prop14:'';  Retire -- was previuously "Article open click"
-    s.eVar17=s.prop16?s.prop16:''; // Author
-    s.eVar18=s.prop17?s.prop17:''; // Content Title
-    s.eVar19=s.prop18?s.prop18:''; // Blog Series
-    s.eVar20=s.prop19?s.prop19:''; // Content post date  CHECK
-    s.eVar21=s.prop20?s.prop20:''; // Display topic
-    s.eVar22=s.prop21?s.prop21:''; // Title of content commented on
-    //s.eVar23=s.prop22?s.prop22:'';  Retire -- Was previously "article type created"
-    //s.eVar24=s.prop23?s.prop23:'';  Retire -- was previously "Issue type"
-    // s.eVar26=s.prop25?s.prop25:''; Retire -- was previously "Article saved"
-    s.eVar27=s.prop26?s.prop26:''; // Share method/channel
-    //s.eVar28=s.prop27?s.prop27:''; s.profp 27 Article Share clicked
+    s.eVar17=s.prop16?s.prop16:'';      // Author
+    s.eVar18=s.prop17?s.prop17:'';      // Content Title
+    s.eVar19=s.prop18?s.prop18:'';      // Blog Series
+    s.eVar20=s.prop19?s.prop19:'';      // Content post date  CHECK
+    s.eVar21=s.prop20?s.prop20:'';      // Display topic
+    s.eVar22=s.prop21?s.prop21:'';      // Title of content commented on
+    // s.eVar23=s.prop22?s.prop22:'';   Retire -- Was previously "article type created"
+    // s.eVar24=s.prop23?s.prop23:'';   Retire -- was previously "Issue type"
+    // s.eVar26=s.prop25?s.prop25:'';   Retire -- was previously "Article saved"
+    s.eVar27=s.prop26?s.prop26:'';      // Share method/channel
+    // s.eVar28=s.prop27?s.prop27:''; s.profp 27 Article Share clicked
     s.previousPage=s.getPreviousValue(s.pageName,'gpv_p5','');
 }
 s.doPlugins=s_doPlugins
