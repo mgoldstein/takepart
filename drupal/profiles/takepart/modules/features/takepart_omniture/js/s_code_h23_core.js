@@ -58,7 +58,7 @@ function s_doPlugins(s) {
         cleanURL = pageURL.toLowerCase();
     }
     s.prop12=cleanURL;
-    
+
     /*Channel Manager*/
     //s.referrer="www.americanexpress.com"; //use this to change the referrer for testing
     s.channelManager('cmpid','','','1');
@@ -69,7 +69,7 @@ function s_doPlugins(s) {
     /* Plugin Example: setupLinkTrack 0.1 */
     s.hbx_lt = "auto"; // manual, auto
     s.setupLinkTrack("prop33,prop34,prop35,prop36","SC_LINKS");
-        
+
     /*Bounce Rate*/
     s.clickPast(s.eVar49,'event3','event4'); //eVar49 = Channel manager, event3 = Entry Page, event4 = Second Page View
 
@@ -88,7 +88,10 @@ function s_doPlugins(s) {
         s.campaign=s.getQueryParam('cmpid').toLowerCase();
         s.campaign=s.getValOnce(s.campaign.toLowerCase(),'s_campaign',0)
     }
-		
+    else {
+        s.campaign=s.campaign.toLowerCase();
+    }
+	
     s.setupFormAnalysis();  
 
     /* Site Search */
@@ -113,7 +116,7 @@ function s_doPlugins(s) {
     s.prop29 = s.eVar29;
     /* Call to New vs. Repeat Plugin */
     /* Removed per 11753 */
-    /*		s.eVar30= s.getNewRepeat();*/
+    /* s.eVar30= s.getNewRepeat();*/
 
     /* Set Page View Event */
     s.events=s.apl(s.events,'event2',',',2)
