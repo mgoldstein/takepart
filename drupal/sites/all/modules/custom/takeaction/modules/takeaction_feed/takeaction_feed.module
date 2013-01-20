@@ -536,6 +536,12 @@ function takeaction_feed_action_item_data($node) {
     $last_updated = $node->changed;
     $update_text = _takeaction_feed_update_text_list($node, $last_updated);
 
+
+    // Build a JSON object of the action
+    $action_json = takeaction_feed_build_node_json($node);
+    // Sanitize the data, because seriously man TMI!!!
+    $sanitized = takeaction_feed_sanitize_node_json($action_json);
+
     return array(
       'id' => $node->nid,
       'TABAction' => _takeaction_feed_field_value($node, 'field_tab_action',
@@ -565,7 +571,271 @@ function takeaction_feed_action_item_data($node) {
       'actionGoal' => $action_goal,
       'dateRange' => $date_range,
       'priority' => _takeaction_feed_field_value($node, 'field_priority'),
-    );
+    ) + $sanitized;
   }
   return FALSE;
+}
+
+function takeaction_feed_build_node_json($node) {
+  $json = array();
+
+  # Load the page data
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $json['page'] = array();
+  foreach ($wrapper->getIterator() as $name => $property) {
+    if ($name == 'field_social_share_bar') {
+      $name = 'field_social_share_bar';
+    }
+    $json['page'][$name] = $property->value();
+  }
+
+  # Load the form data
+  $settings = entity_load_single('signature_node', $node->nid);
+  if ($settings !== FALSE) {
+    $wrapper = entity_metadata_wrapper('signature_node', $settings);
+    $json['form'] = array();
+    foreach ($wrapper->getIterator() as $name => $property) {
+      $json['form'][$name] = $property->value();
+    }
+  }
+
+  # Load the updates data
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'followup')
+    ->propertyCondition('type', 'content_link')
+    ->propertyCondition('nid', $node->nid)
+    ->execute();
+  $json['updates'] = array();
+  if (!empty($result['followup'])) {
+    $updates = entity_load('followup', array_keys($result['followup']));
+    foreach ($updates as $id => $update) {  
+      $wrapper = entity_metadata_wrapper('followup', $update);
+      $data = array();
+      foreach ($wrapper->getIterator() as $name => $property) {
+        $data[$name] = $property->value();
+      }
+      $json['updates'][] = $data;
+    }
+  }
+
+  return $json;
+}
+
+function _takeaction_feed_replace_with_nid($data) {
+  return _takeaction_feed_replace_with_property($data, 'nid');
+}
+function _takeaction_feed_replace_with_name($data) {
+  return _takeaction_feed_replace_with_property($data, 'name');
+}
+function _takeaction_feed_replace_with_property($data, $property) {
+  if (is_object($data) && isset($data->{$property})) {
+    return array($property => $data->{$property});
+  }
+  elseif (is_array($data) && isset($data[$property])) {
+    return array($property => $data[$property]);
+  }
+  return NULL;
+}
+
+function _takeaction_feed_image($data) {
+  $file = file_load($data['fid']);
+  return file_create_url($file->uri);
+}
+
+function _takeaction_feed_update(&$data, $path, $callback = NULL) {
+
+  # Get the key being updated
+  $key = array_shift($path);
+
+  # The @ sign means 'for each delta'
+  if ($key === '@') {
+    foreach (array_keys($data) as $delta) {
+       array_unshift($path, $delta);
+       _takeaction_feed_update($data, $path, $callback);
+       array_shift($path);
+    }
+  }
+
+  # At the node to update
+  elseif (count($path) == 0) {
+    if (is_object($data)) {
+      if (empty($callback)) {
+        unset($data->{$key});
+      }
+      elseif (isset($data->{$key})) {
+        $data->{$key} = call_user_func($callback, $data->{$key});
+      }
+    }
+    elseif (is_array($data)) {
+      if (empty($callback)) {
+        unset($data[$key]);
+      }
+      elseif (isset($data[$key])) {
+        $data[$key] = call_user_func($callback, $data[$key]);
+      }
+    }
+  }
+
+  # Working down the path
+  else {
+    if (is_object($data) && isset($data->{$key})) {
+      _takeaction_feed_update($data->{$key}, $path, $callback);
+    }
+    elseif (is_array($data) && isset($data[$key])) {
+      _takeaction_feed_update($data[$key], $path, $callback);
+    }
+  }
+}
+
+function takeaction_feed_sanitize_node_json($json) {
+
+  $items = array(
+
+    # Node properties
+    'page:author' => '_takeaction_feed_replace_with_name',
+    'page:comment' => NULL,
+    'page:comment_count' => NULL,
+    'page:comment_count_new' => NULL,
+    'page:edit_url' => NULL,
+    'page:feed_nid' => NULL,
+    'page:log' => NULL,
+    'page:promote' => NULL,
+    'page:revision' => NULL,
+    'page:source' => NULL,
+    'page:sticky' => NULL,
+    'page:vid' => NULL,
+
+    # Action organizer
+    'page:field_action_organizer:@:cid' => NULL,
+    'page:field_action_organizer:@:comment' => NULL,
+    'page:field_action_organizer:@:comment_count' => NULL,
+    'page:field_action_organizer:@:data' => NULL,
+    'page:field_action_organizer:@:field_group_context' => NULL,
+    'page:field_action_organizer:@:field_group_logo' => '_takeaction_feed_image',
+    'page:field_action_organizer:@:field_group_main_image' => '_takeaction_feed_image',
+    'page:field_action_organizer:@:field_multi_page_campaign' => NULL,
+    'page:field_action_organizer:@:field_tp_campaign_show_title' => NULL,
+    'page:field_action_organizer:@:last_comment_name' => NULL,
+    'page:field_action_organizer:@:last_comment_timestamp' => NULL,
+    'page:field_action_organizer:@:last_comment_uid' => NULL,
+    'page:field_action_organizer:@:log' => NULL,
+    'page:field_action_organizer:@:machine_name' => NULL,
+    'page:field_action_organizer:@:metatags' => NULL,
+    'page:field_action_organizer:@:name' => NULL,
+    'page:field_action_organizer:@:picture' => NULL,
+    'page:field_action_organizer:@:promote' => NULL,
+    'page:field_action_organizer:@:rdf_mapping' => NULL,
+    'page:field_action_organizer:@:revision_timestamp' => NULL,
+    'page:field_action_organizer:@:revision_uid' => NULL,
+    'page:field_action_organizer:@:sticky' => NULL,
+    'page:field_action_organizer:@:tnid' => NULL,
+    'page:field_action_organizer:@:translate' => NULL,
+    'page:field_action_organizer:@:uid' => NULL,
+    'page:field_action_organizer:@:vid' => NULL,
+
+    # Action sponsor
+    'page:field_action_sponsor:@:cid' => NULL,
+    'page:field_action_sponsor:@:comment' => NULL,
+    'page:field_action_sponsor:@:comment_count' => NULL,
+    'page:field_action_sponsor:@:data' => NULL,
+    'page:field_action_sponsor:@:field_group_context' => NULL,
+    'page:field_action_sponsor:@:field_group_logo' => '_takeaction_feed_image',
+    'page:field_action_sponsor:@:field_group_main_image' => '_takeaction_feed_image',
+    'page:field_action_sponsor:@:field_multi_page_campaign' => NULL,
+    'page:field_action_sponsor:@:field_tp_campaign_show_title' => NULL,
+    'page:field_action_sponsor:@:last_comment_name' => NULL,
+    'page:field_action_sponsor:@:last_comment_timestamp' => NULL,
+    'page:field_action_sponsor:@:last_comment_uid' => NULL,
+    'page:field_action_sponsor:@:log' => NULL,
+    'page:field_action_sponsor:@:machine_name' => NULL,
+    'page:field_action_sponsor:@:metatags' => NULL,
+    'page:field_action_sponsor:@:name' => NULL,
+    'page:field_action_sponsor:@:picture' => NULL,
+    'page:field_action_sponsor:@:promote' => NULL,
+    'page:field_action_sponsor:@:rdf_mapping' => NULL,
+    'page:field_action_sponsor:@:revision_timestamp' => NULL,
+    'page:field_action_sponsor:@:revision_uid' => NULL,
+    'page:field_action_sponsor:@:sticky' => NULL,
+    'page:field_action_sponsor:@:tnid' => NULL,
+    'page:field_action_sponsor:@:translate' => NULL,
+    'page:field_action_sponsor:@:uid' => NULL,
+    'page:field_action_sponsor:@:vid' => NULL,
+
+    # Image fields
+    'page:field_actionheaderimg' => '_takeaction_feed_image',
+    'page:field_action_main_image' => '_takeaction_feed_image',
+    'page:field_thumbnail' => '_takeaction_feed_image',
+
+    # Related content node fields
+    'page:field_action_related:@' => '_takeaction_feed_replace_with_nid',
+    'page:field_related_campaigns:@' => '_takeaction_feed_replace_with_nid',
+    'page:field_related_content:@' => '_takeaction_feed_replace_with_nid',
+
+    # Taxonomy fields
+    'page:field_action_type:metatags' => NULL,
+    'page:field_action_type:rdf_mapping' => NULL,
+    'page:field_action_type:tid' => NULL,
+    'page:field_action_type:vid' => NULL,
+
+    'page:field_display_tag:field_series_context' => NULL,
+    'page:field_display_tag:metatags' => NULL,
+    'page:field_display_tag:rdf_mapping' => NULL,
+    
+    'page:field_free_tag:@:field_free_tag_context' => NULL,
+    'page:field_free_tag:@:metatags' => NULL,
+    'page:field_free_tag:@:rdf_mapping' => NULL,
+    'page:field_free_tag:@:tid' => NULL,
+    'page:field_free_tag:@:vid' => NULL,
+
+    'page:field_series:field_series_context' => NULL,
+    'page:field_series:metatags' => NULL,
+    'page:field_series:rdf_mapping' => NULL,
+    'page:field_series:tid' => NULL,
+    'page:field_series:vid' => NULL,
+
+    'page:field_topic:@:field_topic_context' => NULL,
+    'page:field_topic:@:field_topic_featured_quick_study' => NULL,
+    'page:field_topic:@:field_topic_override' => NULL,
+    'page:field_topic:@:metatags' => NULL,
+    'page:field_topic:@:rdf_mapping' => NULL,
+    'page:field_topic:@:tid' => NULL,
+    'page:field_topic:@:vid' => NULL,
+
+    # Fields removed from all action types    
+    'page:field_multi_page_campaign' => NULL,
+    'page:field_petition_sponsor' => NULL,
+    'page:field_petition_text' => NULL,
+    'page:field_pledge_issue' => NULL,
+    'page:field_signatures' => NULL,
+    'page:field_tab_content_link' => NULL,
+    'page:field_tab_update_text' => NULL,
+    'page:field_updates_message' => NULL,
+  );
+
+  # The alt content field is not used by the action types with a form
+  if (isset($json['form'])) {
+    $items['page:field_altcontent'] = NULL;    
+  }
+
+  # Sanatize the JSON data
+  foreach ($items as $item => $callback) {
+    $path = explode(':', $item);
+    _takeaction_feed_update($json, $path, $callback);
+  }
+
+  return $json;
+}
+
+function takeaction_feed_node_callback($nid) {
+  if (preg_match('/^[0-9]+$/', $nid)) {
+    $node = node_load($nid);
+    if ($node !== FALSE) {
+      // Build a JSON object of the action
+      $json = takeaction_feed_build_node_json($node);
+      // Sanitize the data, because seriously man TMI!!!
+      $sanitized = takeaction_feed_sanitize_node_json($json);
+      return drupal_json_output($sanitized);
+    }
+  }
+  return drupal_not_found();
 }
