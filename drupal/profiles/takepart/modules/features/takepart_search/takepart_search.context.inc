@@ -10,7 +10,7 @@
 function takepart_search_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'block_search';
@@ -26,35 +26,23 @@ function takepart_search_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'search_api_facets-site_node_index_field_topic' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'site_node_index_field_topic',
+        'facetapi-VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1' => array(
+          'module' => 'facetapi',
+          'delta' => 'VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
-        'search_api_facets-site_node_index_type' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'site_node_index_type',
+        'facetapi-p6j6uydvqzGOZ3pcNbwjsR5fzChT15JY' => array(
+          'module' => 'facetapi',
+          'delta' => 'p6j6uydvqzGOZ3pcNbwjsR5fzChT15JY',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
-        'search_api_facets-site_node_index_field_series' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'site_node_index_field_series',
+        'facetapi-jRFxoKf1ESPpk4Z9WOlWyZeObbMDdiy5' => array(
+          'module' => 'facetapi',
+          'delta' => 'jRFxoKf1ESPpk4Z9WOlWyZeObbMDdiy5',
           'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'search_api_facets-site_node_index_field_blogpost_b' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'site_node_index_field_blogpost_b',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'search_api_facets-site_node_index_field_free_tag' => array(
-          'module' => 'search_api_facets',
-          'delta' => 'site_node_index_field_free_tag',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-8',
         ),
       ),
     ),
