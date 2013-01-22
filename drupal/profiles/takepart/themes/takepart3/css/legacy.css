@@ -3842,17 +3842,21 @@ p.search-performance{
     padding:0;
     list-style-position:outside;
 }
+.block-facetapi .facetapi-facetapi-links li.leaf{
+    list-style:none;
+    list-style-position:outside;
+}
 .block-facetapi h2{
     font-size:16px;
     line-height:24px;
     font-weight:bold;
     color:#000;
 }
-.block-facetapi .search-api-facets li{
+.block-facetapi .facetapi-facetapi-links li{
     margin:0 0 8px 0;
     padding:0;
 }
-.block-facetapi .search-api-facets li a{
+.block-facetapi .facetapi-facetapi-links li a{
     color:#333;
     font-size:14px;
 }
