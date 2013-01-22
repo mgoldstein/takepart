@@ -1,0 +1,4 @@
+name = Takepart Context Taxonomy Filter
+description = Removes large taxonomy vocabularies from context screen to prevent out-of-memory error (needs patch)
+core = 7.x
+package = Takepart

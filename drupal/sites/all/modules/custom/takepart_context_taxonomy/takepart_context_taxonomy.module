@@ -1,0 +1,20 @@
+<?php
+
+define('MAX_TERMS_COUNT', 10000);
+
+/**
+ * Remove vocabulary from set returned by taxonomy_get_vocabularies() if it has more than 10k terms.
+ *
+ * @param $vocabularies
+ * Array of vocabulaies objects returned by taxonomy_get_vocabularies().
+ */
+function takepart_context_taxonomy_context_taxonomy_get_vocabularies_alter(&$vocabularies) {
+  foreach ($vocabularies as $v) {
+    $terms_count = db_select('taxonomy_term_data', 't')
+      ->fields('t', array('tid'))->condition('vid', $v->vid)
+      ->countQuery()->execute()->fetchField();
+    if ($terms_count > MAX_TERMS_COUNT) {
+      unset($vocabularies[$v->vid]);
+    }
+  }
+}
