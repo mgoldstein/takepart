@@ -890,7 +890,7 @@ function takepart3_return_node_type($type) {
 
     return '';
 }
-
+/*
 function takepart3_field__field_topic($vars) {
     // do we have any free tags?
     $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
@@ -918,7 +918,7 @@ function takepart3_field__field_topic($vars) {
         return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
     }
 }
-
+*/
 function takepart3_preprocess_comment(&$vars) {
     $vars['submitted'] = 'posted on ' . format_date($vars['elements']['#comment']->created, 'medium', 'M j, Y');
     //unlinking author name for logged in users
