@@ -192,7 +192,7 @@ function takeaction_feed_entity_delete($entity, $type) {
   elseif ($type === 'node') {
     // Delete the action item for the node.
     db_delete('takeaction_feed_actions')
-      ->condition('nid', $$entity->nid, '=')
+      ->condition('nid', $entity->nid, '=')
       ->execute();
   }
 }

@@ -1183,6 +1183,14 @@ function search_api_extract_fields(EntityMetadataWrapper $wrapper, array $fields
       $info['original_type'] = $info['type'];
       try {
         $info['value'] = $wrapper->$field->value($value_options);
+        try {
+          $info['value'] = $wrapper->$field->value($value_options);
+        }
+        catch (EntityMalformedException $e) {
+          if ($field != 'url') {
+            throw $e;
+          }
+        }
         // For fulltext fields with options, also include the option labels.
         if (search_api_is_text_type($info['type']) && $wrapper->$field->optionsList('view')) {
           _search_api_add_option_values($info['value'], $wrapper->$field->optionsList('view'));
