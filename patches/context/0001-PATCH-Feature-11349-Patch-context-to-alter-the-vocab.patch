@@ -1,0 +1,35 @@
+From b8fa614cd16df855eb8c963a3cd70d7a804f562d Mon Sep 17 00:00:00 2001
+From: Fabian Franz <ffranz@trellon.com>
+Date: Tue, 22 Jan 2013 20:58:18 +0000
+Subject: [PATCH] [PATCH] Feature #11349: Patch context to alter the vocabularies for taxonomy term conditions to prevent out of memory error.
+
+---
+ .../plugins/context_condition_node_taxonomy.inc    |    5 ++++-
+ 1 files changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/drupal/sites/all/modules/contrib/context/plugins/context_condition_node_taxonomy.inc b/drupal/sites/all/modules/contrib/context/plugins/context_condition_node_taxonomy.inc
+index cfb214f..53d834b 100644
+--- a/drupal/sites/all/modules/contrib/context/plugins/context_condition_node_taxonomy.inc
++++ b/drupal/sites/all/modules/contrib/context/plugins/context_condition_node_taxonomy.inc
+@@ -7,7 +7,9 @@ class context_condition_node_taxonomy extends context_condition_node {
+   function condition_values() {
+     $values = array();
+     if (module_exists('taxonomy')) {
+-      foreach (taxonomy_get_vocabularies() as $vocab) {
++      $vocabularies = taxonomy_get_vocabularies();
++      drupal_alter('context_taxonomy_get_vocabularies', $vocabularies);
++      foreach ($vocabularies as $vocab) {
+         if (empty($vocab->tags)) {
+           foreach (taxonomy_get_tree($vocab->vid) as $term) {
+             $values[$term->tid] = check_plain($term->name);
+@@ -24,6 +26,7 @@ class context_condition_node_taxonomy extends context_condition_node {
+     $form['#size'] = 12;
+     $form['#multiple'] = TRUE;
+     $vocabularies = taxonomy_get_vocabularies();
++    drupal_alter('context_taxonomy_get_vocabularies', $vocabularies);
+     $options = array();
+     foreach ($vocabularies as $vid => $vocabulary) {
+       $tree = taxonomy_get_tree($vid);
+-- 
+1.7.2.5
+
