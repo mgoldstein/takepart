@@ -30,6 +30,7 @@ function takepart_custom_form_node_form_alter(&$form, $form_state, $form_id) {
  * this causes an expected notice of 
  * Notice: Undefined index: name in taxonomy_field_formatter_view() (line 1391 of /opt/development/esummerfield/www.takepart.com/drupal/modules/taxonomy/taxonomy.module).
  */
+/*
 function takepart_custom_field_attach_load($entity_type, $entities, $age, $options) {
   if ($entity_type == 'node') {
     foreach($entities as $entity) {
@@ -39,6 +40,7 @@ function takepart_custom_field_attach_load($entity_type, $entities, $age, $optio
     }
   }
 }
+*/
 
 function takepart_custom_wysiwyg_editor_settings_alter(&$settings, &$context) {
   drupal_add_js(drupal_get_path("module", 'takepart_custom') ."/takepart_custom.js");
@@ -48,5 +50,5 @@ function takepart_custom_omniture_variables() {
   if (current_path() === variable_get('static_404', FALSE)) {
     $variables['s.pageType'] = 'errorPage';
     return array('variables' => $variables);
-  } 
+  }
 }
