@@ -95,6 +95,7 @@ function takepart3_preprocess_page(&$variables) {
   // Adds page template suggestions for specific content types
   if (isset($variables['node'])) {
     $variables['theme_hook_suggestions'][] = 'page__type__' . $variables['node']->type;
+    $variables['theme_hook_suggestions'][] = 'page__type__' . $variables['node']->type . '__node__' . $variables['node']->nid;
 
     if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
       $variables['is_multipage'] = TRUE;
