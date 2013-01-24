@@ -651,6 +651,10 @@ function takeaction_feed_build_node_json($node) {
     foreach ($wrapper->getIterator() as $name => $property) {
       $json['form'][$name] = $property->value();
     }
+    $signature_type = signature_type_load($settings->type);
+    if ($signature_type !== FALSE) {
+      $json['form']['bsd_template'] = "{$signature_type->bsd_form}";
+    }
   }
 
   # Load the updates data
@@ -692,8 +696,25 @@ function _takeaction_feed_replace_with_property($data, $property) {
 }
 
 function _takeaction_feed_image($data) {
-  $file = file_load($data['fid']);
-  return file_create_url($file->uri);
+  $url = NULL;
+  if (!empty($data)) {
+    if (isset($data['und']) && isset($data['und'][0])) {
+      $uri = $data['und'][0];
+    }
+    elseif (isset($data['fid'])) {
+      $uri = $data['fid'];
+    }
+    if (!empty($uri)) {
+      $file = file_load($data['fid']);
+      $original_url = file_create_url($file->uri);
+      $url = _takeaction_feed_update_domain($original_url);
+    }
+  }
+  return $url;
+}
+
+function _takeaction_feed_update_url_domain($data) {
+  return _takeaction_feed_update_domain($data);
 }
 
 function _takeaction_feed_update(&$data, $path, $callback = NULL) {
@@ -757,6 +778,7 @@ function takeaction_feed_sanitize_node_json($json) {
     'page:revision' => NULL,
     'page:source' => NULL,
     'page:sticky' => NULL,
+    'page:url' => '_takeaction_feed_update_url_domain',
     'page:vid' => NULL,
 
     # Action organizer
