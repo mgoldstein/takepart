@@ -3236,7 +3236,7 @@ p.fb-login-text {
 /* Title topics */
 
 .block-boxes-title-topics {
-  padding-left: 68px;
+  padding-left: 63px;
   position: relative;
   margin-bottom: 10px;
   border-top: 1px solid #D9E7EE;
@@ -3277,13 +3277,15 @@ p.fb-login-text {
 
 .region-content-bottom .block-boxes-title-topics .content a {
   font-size: 14px;
+  display: inline-block;
+  margin-left: 5px;
+  white-space: nowrap;
 }
 
 .region-content-bottom .block-boxes-title-topics .content .field-item:after {
-  content: ', ';
+  content: ',';
   display: inline;
   zoom: 1;
-  *padding-right: 10px;
 }
 
 .region-content-bottom .block-boxes-title-topics .content .field-label-hidden:last-child .field-item:last-child:after {
