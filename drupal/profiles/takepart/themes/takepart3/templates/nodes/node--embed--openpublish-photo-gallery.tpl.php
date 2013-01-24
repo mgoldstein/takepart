@@ -17,5 +17,4 @@
 if (!empty($post_object)) {
     print render($post_object);
 }
-dpm($node);
 ?>
