@@ -1,0 +1,91 @@
+<?php
+/**
+ * @file
+ * Sets up the base table for the wordlet entity.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function wordlet_schema() {
+  $schema = array();
+
+  $schema['wordlet'] = array(
+    'description' => 'The base table for wordlet entities.',
+    'fields' => array(
+
+      'id' => array(
+        'description' => 'Primary key identifier for the wordlet.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+
+      'type' => array(
+        'description' => 'The type of the wordlet.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'name' => array(
+        'description' => 'The machine name of the wordlet.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'title' => array(
+        'description' => 'The human readable title of the wordlet.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+
+      'integer_value' => array(
+        'description' => 'Integer value.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'string_value' => array(
+        'description' => 'Single line text value.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'text_value' => array(
+        'description' => 'Multiline text value.',
+        'type' => 'text',
+        'serialize' => TRUE,
+      ),
+
+      'status' => array(
+        'description' => 'The enabled status of the wordlet (0 = disabled, 1 = enabled).',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+
+      'created' => array(
+        'description' => 'The Unix timestamp when the wordlet was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'changed' => array(
+        'description' => 'The Unix timestamp when the wordlet was last changed.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    'primary key' => array('id'),
+    
+  );
+
+  return $schema;
+}

@@ -1,0 +1,217 @@
+<?php
+/**
+ * @file
+ * The Wordlet Module
+ */
+
+/*
+ * The configuration is stored in a separate file for easy edititing.
+ */
+include_once dirname(__FILE__) . 'wordlet.config.inc';
+
+/**
+ * Implements hook_permission().
+ */
+function wordlet_permission() {
+  return array(
+    'administer wordlet' => array(
+      'title' => t('Administer wordlets'),
+      'restrict access' => TRUE,
+    ),
+    'edit wordlet' => array(
+      'title' => t('Edit wordlets'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Access callback for wordlets.
+ */
+function wordlet_access($op, $name = NULL) {
+  // Block unknown operations.
+  $allowed_ops = array('administer', 'edit');
+  if (in_array($op, $allowed_ops)) {
+    return user_access("$op wordlet") || user_access("administer wordlet");
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function wordlet_menu() {
+  return array(
+    'admin/wordlet' => array(
+      'title' => 'Wordlets',
+      'description' => 'Find and manage wordlets.',
+      'page callback' => 'wordlet_page_admin_callback',
+      'access arguments' => array('access content overview'),
+      'file' => 'wordlet.admin.inc'
+      'weight' => -10,
+    ),
+    'wordlet/%wordlet_page' => array(
+      'title callback' => 'wordlet_page_title',
+      'title arguments' => array(1),
+      'page callback' => 'wordlet_page_view_callback',
+      'page arguments' => array(1),
+      'access arguments' => array('access content'),
+    ),
+    'wordlet/%wordlet_page/view' => array(
+      'title' => 'View',
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'weight' => -10,
+    ),
+    'wordlet/%wordlet_page/edit' => array(
+      'title' => 'Edit',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('wordlet_page_edit_form', 1), 
+      'access callback' => 'wordlet_access',
+      'access arguments' => array('edit'),
+      'file' => 'wordlet.edit.inc'
+      'weight' => 0,
+      'type' => MENU_LOCAL_TASK,
+    ),
+    'wordlet/%wordlet_page/configure' => array(
+      'title' => 'Configure',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('wordlet_page_configure_form', 1), 
+      'access callback' => 'wordlet_access',
+      'access arguments' => array('administer'),
+      'file' => 'wordlet.configure.inc'
+      'weight' => 0,
+      'type' => MENU_LOCAL_TASK,
+    ),
+  );
+}
+
+/**
+ * Implements hook_admin_paths().
+ */
+function wordlet_admin_paths() {
+  $paths = array(
+    'wordlet/*/edit' => TRUE,
+    'wordlet/*/configure' => TRUE,
+  );
+  return $paths;
+}
+
+/**
+ * Wordlet page title callback.
+ */
+function wordlet_page_title($wordlet_page) {
+  return $wordlet_page['title'];
+}
+
+/**
+ * Wordlet page menu placeholder loader.
+ */
+function wordlet_page_load($name) {
+  $info = wordlet_configuration();
+  if (isset($info[$name])) {
+    $info[$name]['name'] = $name;
+    return $info[$name];
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_url_outbound_alter().
+ */
+function wordlet_url_outbound_alter(&$path, &$options, $original_path) {
+  $matches = array();
+  if (preg_match('|^wordlet/([A-Za-z0-9_]+)$|', $path, $matches)) {
+    $wordlet = wordlet_page_load($matches[1]);
+    if ($wordlet !== FALSE && !empty($wordlet['path'])) {
+      $path = $wordlet['path'];
+    }
+  }
+}
+
+/**
+ * Implements hook_url_inbound_alter().
+ */
+function wordlet_url_inbound_alter(&$path, $original_path, $path_language) {
+  $paths = wordlet_page_paths();
+  if (isset($paths[$original_path])) {
+    $path = 'wordlet/' . $paths[$original_path];
+  }
+}
+
+/**
+ * Inverts the wordlet configuration array to be keyed by path.
+ */
+function wordlet_page_paths() {
+  $values = &drupal_static(__FUNCTION__, array());
+  if (!isset($values['paths'])) {
+    $paths = array();
+    foreach (wordlet_configuration() as $name => $info) {
+      if (!empty($info['path'])) {
+        $paths[$info['path']] = $name;
+      }
+    }
+    $values['paths'] = $paths;
+  }
+  return $values['paths'];
+}
+
+
+
+
+/**
+ * Implements hook_theme().
+ */
+function wordlet_theme() {
+  $items = array();
+  foreach (wordlet_configuration() as $name => $config) {
+    $items[$name] = array(
+      'variables' => array(
+        'config' => NULL, 
+        'wordlets' => NULL,
+      ),
+      'template' => 'templates/' . $config['templates']['page'],
+    );
+  }
+  return $items;
+}
+
+function wordlet_page_callback($wordlet) {
+  if ($wordlet === FALSE) {
+    return drupal_not_found();
+  }
+  return theme($wordlet['name'], array(
+    'config' => $wordlet, 
+  ));
+}
+
+function wordlet_admin_page_callback() {
+
+}
+
+function wordlet_admin_edit_form($form, &$form_state, $wordlet) {
+
+  $form['primary_title'] = array(
+    '#title' => t('Primary Title'),
+    '#description' => t(''),
+    '#type' => 'textfield',
+    '#maxlength' => 255,
+    '#required' => TRUE,
+    '#default_value' => '',
+  );
+
+  return $form;
+}
+
+function wordlet_admin_configure_form($form, &$form_state, $wordlet) {
+
+  $form['primary_title'] = array(
+    '#title' => t('Configure Title'),
+    '#description' => t(''),
+    '#type' => 'textfield',
+    '#maxlength' => 255,
+    '#required' => TRUE,
+    '#default_value' => '',
+  );
+
+  return $form;
+}

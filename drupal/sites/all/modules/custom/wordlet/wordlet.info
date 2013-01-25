@@ -1,0 +1,7 @@
+name = Wordlet
+description = Wordlet based pages.
+core = 7.x
+version = 7.x-1.0
+package = TakePart
+
+files[] = wordlet.admin.inc
