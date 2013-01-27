@@ -10,11 +10,7 @@ function wordlet_configuration() {
     'intel_girls_home' => array(
       'title' => 'Intel Girls Home',
       'path' => 'intelgirls',
-      'templates' => array(
-        'page' => 'intelgirls',
-        'header' => '',
-        'footer' => '',
-      ),
+      'template' =>  'intelgirls',
       'css' => array(
         'reset.css',
         'intelgirls.css',

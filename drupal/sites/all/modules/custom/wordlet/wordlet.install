@@ -13,14 +13,12 @@ function wordlet_schema() {
   $schema['wordlet'] = array(
     'description' => 'The base table for wordlet entities.',
     'fields' => array(
-
       'id' => array(
         'description' => 'Primary key identifier for the wordlet.',
         'type' => 'serial',
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
-
       'type' => array(
         'description' => 'The type of the wordlet.',
         'type' => 'varchar',
@@ -42,7 +40,6 @@ function wordlet_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
-
       'integer_value' => array(
         'description' => 'Integer value.',
         'type' => 'int',
@@ -61,16 +58,14 @@ function wordlet_schema() {
         'type' => 'text',
         'serialize' => TRUE,
       ),
-
-      'status' => array(
-        'description' => 'The enabled status of the wordlet (0 = disabled, 1 = enabled).',
+      'enabled' => array(
+        'description' => '0 = disabled, 1 = enabled.',
         'type' => 'int',
         'size' => 'tiny',
         'unsigned' => TRUE,
         'not null' => TRUE,
         'default' => 0,
       ),
-
       'created' => array(
         'description' => 'The Unix timestamp when the wordlet was created.',
         'type' => 'int',
@@ -83,8 +78,24 @@ function wordlet_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
+      'export_status' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0x01,
+        'size' => 'tiny',
+        'description' => 'The exportable status of the entity.',
+      ),
+      'module' => array(
+        'description' => 'The name of the providing module if the entity has been defined in code.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+    ),
     'primary key' => array('id'),
-    
+    'unique keys' => array(
+      'name' => array('type', 'name'),
+    ),
   );
 
   return $schema;
