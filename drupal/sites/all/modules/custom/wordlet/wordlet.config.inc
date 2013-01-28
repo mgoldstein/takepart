@@ -1,6 +1,6 @@
 <?php
 
-function wordlet_configuration() {
+function _wordlet_configuration() {
   return array(
 
     'site' => array(
@@ -10,7 +10,10 @@ function wordlet_configuration() {
     'intel_girls_home' => array(
       'title' => 'Intel Girls Home',
       'path' => 'intelgirls',
-      'template' =>  'intelgirls',
+      'templates' => array(
+        'wrapper' => 'html',
+        'content' => 'page__wordlet__intel_girls_home',
+      ),
       'css' => array(
         'reset.css',
         'intelgirls.css',

@@ -10,6 +10,94 @@
 include_once dirname(__FILE__) . '/wordlet.config.inc';
 
 /**
+ * Inverts the wordlet configuration array to be keyed by path.
+ */
+function wordlet_page_paths() {
+  $values = &drupal_static(__FUNCTION__, array());
+  if (!isset($values['paths'])) {
+    $paths = array();
+    foreach (_wordlet_configuration() as $name => $config) {
+      if (!empty($config['path'])) {
+        $paths[$config['path']] = $name;
+      }
+    }
+    $values['paths'] = $paths;
+  }
+  return $values['paths'];
+}
+
+/**
+ * Set or retrieve the active wordlet page configuration.
+ */
+function wordlet_active_page($page = NULL) {
+  $value = &drupal_static(__FUNCTION__, FALSE);
+  if (isset($page)) {
+    $value = $page;
+  }
+  return $value;
+}
+
+/**
+ * Fill out a wordlet page configuration with default values.
+ */
+function _wordlet_page_defaults(&$page, $name) {
+  
+  // All configurations should have a name and title
+  $page += array(
+    'name' => $name,
+    'title' => $name,
+  );
+
+  if (!empty($page['path'])) {
+    // Those configurations with a path should have content and wrapper
+    // templates, a list of JS files, and a list of CSS files.
+    $page += array(
+      'templates' => array(
+        'content' => 'page',
+        'wrapper' => 'html',
+      ),
+      'css' => array(),
+      'js' => array(),
+    );
+    $page['templates'] += array(
+      'content' => 'page',
+      'wrapper' => 'html',
+    ); 
+  }
+  return $page;
+}
+
+/**
+ * Wordlet page menu placeholder loader.
+ */
+function wordlet_page_load($name = NULL) {
+  $values = &drupal_static(__FUNCTION__, array());
+
+  if (!empty($name)) {
+    if (!isset($values[$name])) {
+      // Requesting a single wordlet page
+      $pages = _wordlet_configuration();
+      if (isset($pages[$name])) {
+        $values[$name] = _wordlet_page_defaults($pages[$name]);
+      }
+      else {
+        $values[$name] = FALSE;
+      }
+    }
+    return $values[$name];
+  }
+  else {
+    // Requesting all wordlet pages
+    foreach(_wordlet_configuration() as $name => $page) {
+      if (!isset($values[$name])) {
+        $values[$name] = _wordlet_page_defaults($page);
+      }
+    }
+    return $values;
+  }
+}
+
+/**
  * Implements hook_permission().
  */
 function wordlet_permission() {
@@ -93,18 +181,19 @@ function wordlet_menu() {
     'admin/wordlet/manage/%wordlet_page' => array(
       'title callback' => 'wordlet_page_title',
       'title arguments' => array(3),
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('wordlet_page_edit_form', 1), 
+      'page callback' => 'wordlet_page_list_callback',
+      'page arguments' => array(1), 
       'access callback' => 'wordlet_access',
       'access arguments' => array('administer'),
       'weight' => 10,
       'type' => MENU_NORMAL_ITEM,
     ),
-    'admin/wordlet/manage/%wordlet_page/edit' => array(
-      'title' => 'Edit',
+    'admin/wordlet/manage/%wordlet_page/list' => array(
+      'title' => 'List',
       'type' => MENU_DEFAULT_LOCAL_TASK,
       'weight' => -10,
     ),
+/*
     'admin/wordlet/manage/%wordlet_page/export' => array(
       'title' => 'Export',
       'page callback' => 'drupal_get_form',
@@ -123,6 +212,7 @@ function wordlet_menu() {
       'weight' => 20,
       'type' => MENU_LOCAL_TASK,
     ),
+*/
     'wordlet/%wordlet_page' => array(
       'title callback' => 'wordlet_page_title',
       'title arguments' => array(1),
@@ -136,20 +226,8 @@ function wordlet_menu() {
 /**
  * Wordlet page title callback.
  */
-function wordlet_page_title($wordlet_page) {
-  return $wordlet_page['title'];
-}
-
-/**
- * Wordlet page menu placeholder loader.
- */
-function wordlet_page_load($name) {
-  $info = wordlet_configuration();
-  if (isset($info[$name])) {
-    $info[$name]['name'] = $name;
-    return $info[$name];
-  }
-  return FALSE;
+function wordlet_page_title($page) {
+  return $page['title'];
 }
 
 /**
@@ -176,20 +254,14 @@ function wordlet_url_outbound_alter(&$path, &$options, $original_path) {
 }
 
 /**
- * Inverts the wordlet configuration array to be keyed by path.
+ * Implements hook_page_alter().
  */
-function wordlet_page_paths() {
-  $values = &drupal_static(__FUNCTION__, array());
-  if (!isset($values['paths'])) {
-    $paths = array();
-    foreach (wordlet_configuration() as $name => $info) {
-      if (!empty($info['path'])) {
-        $paths[$info['path']] = $name;
-      }
-    }
-    $values['paths'] = $paths;
+function wordlet_page_alter(&$page) {
+  $config = wordlet_active_page();
+  if ($config !== FALSE) {
+    $page['#theme'] = $config['templates']['content'];
+    $page['#theme_wrappers'] = array($config['templates']['wrapper']);
   }
-  return $values['paths'];
 }
 
 /**
@@ -204,16 +276,13 @@ function wordlet_page_overview_callback() {
     t('Values'),
     array(
       'data' => t('Operations'),
-      'colspan' => 3,
+      'colspan' => 2,
     ),
   );
   $orphan_header = array(
     t('Name'),
     t('Values'),
-    array(
-      'data' => t('Operations'),
-      'colspan' => 3,
-    ),
+    t('Operations'),
   );
 
   // Destination for operation links
@@ -226,11 +295,11 @@ function wordlet_page_overview_callback() {
   $query->groupBy('w.type');
   $counts = $query->execute()->fetchAllKeyed();
 
-  // Load the table
-  $configuration = wordlet_configuration();
+  // Load wordlet page configurations
+  $active_pages = wordlet_page_load();
 
   $active_rows = array();
-  foreach (wordlet_configuration() as $name => $page) {
+  foreach ($active_pages as $name => $page) {
 
     // Value count
     if (isset($counts[$name])) {
@@ -241,10 +310,10 @@ function wordlet_page_overview_callback() {
     }
 
     // Operations
-    $edit_operation = array(
+    $list_operation = array(
       'data' => array(
         '#type' => 'link',
-        '#title' => t('edit'),
+        '#title' => t('manage'),
         '#href' => 'admin/wordlet/manage/' . $name,
         '#options' => array('query' => $destination),
       ),
@@ -274,23 +343,23 @@ function wordlet_page_overview_callback() {
       $name,
       $count,
       $view_operation,
-      $edit_operation,
-      $export_operation,
+      $list_operation,
+      //$export_operation,
     );
   }
 
   // Merge and sort the two list of names
-  $pages = array_diff_key($counts, $configuration);
-  ksort($pages);
+  $orphan_pages = array_diff_key($counts, $configuration);
+  ksort($orphan_pages);
 
   $orphan_rows = array();
-  foreach ($pages as $name => $count) {
+  foreach ($orphan_pages as $name => $count) {
 
     // Operations
-    $edit_operation = array(
+    $list_operation = array(
       'data' => array(
         '#type' => 'link',
-        '#title' => t('edit'),
+        '#title' => t('manage'),
         '#href' => 'admin/wordlet/manage/' . $name,
         '#options' => array('query' => $destination),
       ),
@@ -320,9 +389,9 @@ function wordlet_page_overview_callback() {
     $orphan_rows[$name] = array(
       $name,
       $count,
-      $edit_operation,
-      $export_operation,
-      $delete_operation,
+      $list_operation,
+      //$export_operation,
+      //$delete_operation,
     );
   }
 
@@ -371,40 +440,209 @@ function wordlet_page_import_form($form, &$form_state, $page) {
 }
 
 /**
- * Wordlet page admin edit form.
+ * Wordlet page admin list form.
  */ 
-function wordlet_page_edit_form($form, &$form_state, $page) {
+function wordlet_page_list_callback($page, $action = 'list') {
+  $edit = $_POST;
+
+  $is_delete = isset($edit['operation']) && ($edit['operation'] == 'delete');
+  $is_export = isset($edit['operation']) && ($edit['operation'] == 'export');
+  $have_wordlets = isset($edit['wordlets']) && $edit['wordlets'];
+  if ($is_delete && $have_wordlets) {
+    return drupal_get_form('wordlet_page_multiple_delete_confirm', $page);
+  }
+  elseif ($is_export && $have_wordlets) {
+    return drupal_get_form('wordlet_page_export_download', $page);
+  }
+  else {
+    return drupal_get_form('wordlet_page_admin_overview', $page);
+  }
+}
+
+/**
+ * List the selected wordlets and verify that the admin wants to delete them.
+ *
+ * @param $form_state
+ *   An associative array containing the current state of the form.
+ * @return
+ *   TRUE if the wordlets should be deleted, FALSE otherwise.
+ * @ingroup forms
+ * @see wordlet_page_multiple_delete_confirm_submit()
+ */
+function wordlet_page_multiple_delete_confirm($form, &$form_state, $page) {
+  $edit = $form_state['input'];
+
+  $form_state['wordlet_page'] = $page;
+
+  $form['wordlets'] = array(
+    '#prefix' => '<ul>',
+    '#suffix' => '</ul>',
+    '#tree' => TRUE,
+  );
+
+  // array_filter() returns only elements with actual values.
+  $wordlet_counter = 0;
+  foreach (array_filter($edit['wordlets']) as $id => $value) {
+    $wordlet = entity_load_single('wordlet', $id);
+    if (is_object($wordlet) && is_numeric($wordlet->id)) {
+      $title = db_query('SELECT title FROM {wordlet} WHERE id = :id',
+        array(':id' => $id))->fetchField();
+      $form['wordlets'][$id] = array('#type' => 'hidden', '#value' => $id,
+        '#prefix' => '<li>', '#suffix' => check_plain($title) . '</li>');
+      $wordlet_counter++;
+    }
+  }
+  $form['operation'] = array(
+    '#type' => 'hidden', 
+    '#value' => 'delete'
+  );
+
+  if (!$wordlet_counter) {
+    drupal_set_message(t('There do not appear to be any wordlets to delete, or
+      your selected wordlet was deleted by another administrator.'));
+    drupal_goto('admin/wordlet/manage/' . $page['name']);
+  }
+  else {
+    return confirm_form($form,
+      t('Are you sure you want to delete these wordlets?'),
+      'admin/wordlet/manage/' . $page['name'],
+      t('This action cannot be undone.'),
+      t('Delete wordlets'), t('Cancel'));
+  }
+}
+
+/**
+ * Process wordlet_page_multiple_delete_confirm form submissions.
+ */
+function wordlet_page_multiple_delete_confirm_submit($form, &$form_state) {
+  $page = $form_state['wordlet_page'];
+  if ($form_state['values']['confirm']) {
+    entity_delete_multiple('wordlet', array_keys($form_state['values']['wordlets']));
+    cache_clear_all();
+    $count = count($form_state['values']['wordlets']);
+    watchdog('content', 'Deleted @count wordlets.', array('@count' => $count));
+    drupal_set_message(format_plural($count, 'Deleted 1 wordlet.',
+      'Deleted @count wordlets.'));
+  }
+  $form_state['redirect'] = 'admin/wordlet/manage/' . $page['name'];
+}
+
+/**
+ * List the selected wordlets and allow the admin to download them.
+ *
+ * @param $form_state
+ *   An associative array containing the current state of the form.
+ * @ingroup forms
+ * @see wordlet_page_export_download_submit()
+ */
+function wordlet_page_export_download($form, &$form_state, $page) {
+  $edit = $form_state['input'];
+
+  $form_state['wordlet_page'] = $page;
+
+  $form['wordlets'] = array(
+    '#prefix' => '<ul>',
+    '#suffix' => '</ul>',
+    '#tree' => TRUE,
+  );
+
+  // array_filter() returns only elements with actual values.
+  $wordlet_counter = 0;
+  foreach (array_filter($edit['wordlets']) as $id => $value) {
+    $wordlet = entity_load_single('wordlet', $id);
+    if (is_object($wordlet) && is_numeric($wordlet->id)) {
+      $title = db_query('SELECT title FROM {wordlet} WHERE id = :id',
+        array(':id' => $id))->fetchField();
+      $form['wordlets'][$id] = array('#type' => 'hidden', '#value' => $id,
+        '#prefix' => '<li>', '#suffix' => check_plain($title) . '</li>');
+      $wordlet_counter++;
+    }
+  }
+  $form['operation'] = array(
+    '#type' => 'hidden', 
+    '#value' => 'export'
+  );
+
+  if (!$wordlet_counter) {
+    drupal_set_message(t('There do not appear to be any wordlets to export, or
+      your selected wordlet(s) were deleted by another administrator.'));
+    drupal_goto('admin/wordlet/manage/' . $page['name']);
+  }
+  else {
+    return $form;
+  }
+}
+
+/**
+ * Process wordlet_page_export_download form submissions.
+ */
+function wordlet_page_export_download_submit($form, &$form_state) {
+  $page = $form_state['wordlet_page'];
+  $form_state['redirect'] = 'admin/wordlet/manage/' . $page['name'];
+}
+
+function wordlet_page_admin_overview($form, &$form_state, $page) {
+
+  $form_state['wordlet_page'] = $page;
+
+  // Build an 'Management Actions' form.
+  $form['options'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Bulk Wordlet Actions'),
+    '#attributes' => array('class' => array('container-inline')),
+  );
+
+  $options = array(
+    'export' => t('Export the selected wordlets'),
+    'delete' => t('Delete the selected wordlets'),
+  );
+
+  $form['options']['operation'] = array(
+    '#type' => 'select',
+    '#title' => t('Operation'),
+    '#title_display' => 'invisible',
+    '#options' => $options,
+    '#default_value' => 'publish',
+  );
+  $form['options']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+  );
+
   return $form;
 }
 
 /**
- * Wordlet page admin export form.
- */ 
-function wordlet_page_export_form($form, &$form_state, $page) {
-  return $form;
+ * Validate wordlet_page_admin_overview form submissions.
+ */
+function wordlet_page_admin_overview_validate($form, &$form_state) {
+  $form_state['values']['wordlets']
+    = array_diff($form_state['values']['wordlets'], array(0));
+  // We can't execute any 'bulk actions' if no wordlets were selected.
+  if (count($form_state['values']['wordlets']) == 0) {
+    form_set_error('', t('Select one or more wordlets to perform the operation on.'));
+  }
 }
 
+
+
 /**
- * Wordlet page admin view callback.
+ * Wordlet page view callback.
  */ 
 function wordlet_page_view_callback($page) {
   if ($page === FALSE) {
     return drupal_not_found();
   }
-  if (empty($page['page_template'])) {
+  if (empty($page['templates'])) {
     return drupal_not_found();
   }
-  $hook = "wordlet_page__" . $page['name'];
-  return theme($hook, array(
-    'config' => $page, 
-  ));
+  wordlet_active_page($page);
+  return '';
 }
-
 
 /**
  * Implements hook_entity_info().
  */
-/*
 function wordlet_entity_info() {
   $info = array();
   $info['wordlet'] = array(
@@ -425,35 +663,17 @@ function wordlet_entity_info() {
     'access callback' => 'wordlet_access',
     'module' => 'wordlet',
     'admin ui' => array(
-      'path' => 'admin/wordlet',
+      'path' => 'admin/wordlet/manage/%/wordlet/%wordlet',
       'file' => 'wordlet.admin.inc',
       'controller class' => 'WordletUIController',
     ),
   );
   return $info;
 }
-*/
 
 /**
  * Wordlet item menu placeholder loader.
  */
 function wordlet_load($name, $page) {
   return new StdClass();
-}
-
-/**
- * Implements hook_theme().
- */
-function wordlet_theme() {
-  $items = array();
-  foreach (wordlet_configuration() as $name => $config) {
-    $items[$name] = array(
-      'variables' => array(
-        'config' => NULL, 
-        'wordlets' => NULL,
-      ),
-      'template' => 'templates/' . $config['page_template'],
-    );
-  }
-  return $items;
 }
