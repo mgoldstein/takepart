@@ -7,9 +7,7 @@ class context_condition_node_taxonomy extends context_condition_node {
   function condition_values() {
     $values = array();
     if (module_exists('taxonomy')) {
-      $vocabularies = taxonomy_get_vocabularies();
-      drupal_alter('context_taxonomy_get_vocabularies', $vocabularies);
-      foreach ($vocabularies as $vocab) {
+      foreach (taxonomy_get_vocabularies() as $vocab) {
         if (empty($vocab->tags)) {
           foreach (taxonomy_get_tree($vocab->vid) as $term) {
             $values[$term->tid] = check_plain($term->name);
@@ -26,7 +24,6 @@ class context_condition_node_taxonomy extends context_condition_node {
     $form['#size'] = 12;
     $form['#multiple'] = TRUE;
     $vocabularies = taxonomy_get_vocabularies();
-    drupal_alter('context_taxonomy_get_vocabularies', $vocabularies);
     $options = array();
     foreach ($vocabularies as $vid => $vocabulary) {
       $tree = taxonomy_get_tree($vid);
