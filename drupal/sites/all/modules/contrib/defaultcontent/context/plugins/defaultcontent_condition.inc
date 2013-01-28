@@ -19,7 +19,7 @@ class defaultcontent_condition extends context_condition {
     $form['#default_value'] = implode("\n", $this->fetch_from_context($context, 'values'));
     return $form;
   }
-  
+
   /**
    * Condition form submit handler.
    */
@@ -36,7 +36,7 @@ class defaultcontent_condition extends context_condition {
     }
     return $parsed;
   }
-  
+
   /**
    * Execute.
    */
