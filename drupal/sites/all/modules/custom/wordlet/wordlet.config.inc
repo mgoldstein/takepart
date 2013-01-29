@@ -1,23 +1,46 @@
 <?php
 
+define('WORDLET_CSS_DIRECTORY', 'profiles/takepart/themes/takepart3/css/wordlets/');
+define('WORDLET_JS_DIRECTORY', 'profiles/takepart/themes/takepart3/js/wordlets/');
+
+/**
+ * Templates can be placed in any directory under
+ * 
+ *   profiles/takepart/themes/takepart3/templates
+ *
+ * Template names should use underscores (_) here, and dashes (-) in the actual
+ * filename. The reason for the difference is so templates can be have a 
+ * preprocess hook function (the name of which may not include dashes) 
+ */
 function _wordlet_configuration() {
   return array(
 
+    // Simple wordlet group.
     'site' => array(
       'title' => 'Site Wordlets',
     ),
 
+    // Wordlet page.
     'intel_girls_home' => array(
       'title' => 'Intel Girls Home',
+      // Path relative to site root (do NOT include the initial slash)
       'path' => 'intelgirls',
+      // Access control flag
+      'published' => TRUE,
+      // When rendering a page Drupal uses two templates, one for the content
+      // and second to wrap around the content.
       'templates' => array(
         'wrapper' => 'html',
         'content' => 'page__wordlet__intel_girls_home',
       ),
+      // CSS files to add when rendering the page, paths are relative to
+      // WORDLET_CSS_DIRECTORY defined at the top of this file.
       'css' => array(
         'reset.css',
         'intelgirls.css',
       ),
+      // JS files to add when rendering the page, paths are relative to
+      // WORDLET_JS_DIRECTORY defined at the top of this file.
       'js' => array(
         'plugin.js',
         'intelgirls.js',

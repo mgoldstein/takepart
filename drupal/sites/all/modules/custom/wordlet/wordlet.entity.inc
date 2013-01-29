@@ -8,13 +8,15 @@ class Wordlet extends Entity {
   }
   
   protected function defaultUri() {
-    return implode('/', array(
+    $path = implode('/', array(
+      'admin',
       'wordlet',
-      $this->type,
-      'word',
-      $this->name,
-      'edit'
+      'page',
+      $this->page,
+      'manage',
+      $this->id,
     ));
+    return array('path' => $path);
   }
 }
 
@@ -23,13 +25,17 @@ class WordletController extends EntityAPIControllerExportable {
   public function create(array $values = array()) {
     $values += array(
       'id' => '',
-      'type' => '',
-      'name' => '',
+      'page' => '',
       'title' => '',
+      'name' => '',
+      'description' => '',
+      'type' => '',
+      'allow_markup' => 0,
+      'enabled' => 1,
       'integer_value' => 0,
       'string_value' => '',
       'text_value' => '',
-      'enabled' => 1,
+      'markup' => 0,
       'created' => 0,
       'changed' => 0,
       'status' => ENTITY_CUSTOM,

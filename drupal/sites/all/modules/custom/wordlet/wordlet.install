@@ -13,21 +13,17 @@ function wordlet_schema() {
   $schema['wordlet'] = array(
     'description' => 'The base table for wordlet entities.',
     'fields' => array(
+      // Primary key
       'id' => array(
         'description' => 'Primary key identifier for the wordlet.',
         'type' => 'serial',
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
-      'type' => array(
-        'description' => 'The type of the wordlet.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'name' => array(
-        'description' => 'The machine name of the wordlet.',
+
+      // Configuration values
+      'page' => array(
+        'description' => 'The page to which the wordlet belongs.',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
@@ -40,11 +36,47 @@ function wordlet_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
+      'name' => array(
+        'description' => 'The machine name of the wordlet.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'description' => array(
+        'description' => 'Description of the wordlet purpose.',
+        'type' => 'text',
+      ),
+      'type' => array(
+        'description' => 'The type of the wordlet.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'allow_markup' => array(
+        'description' => '0 = disabled, 1 = enabled.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'enabled' => array(
+        'description' => '0 = disabled, 1 = enabled.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+
+      // Edit values
       'integer_value' => array(
         'description' => 'Integer value.',
         'type' => 'int',
         'unsigned' => TRUE,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'string_value' => array(
         'description' => 'Single line text value.',
@@ -56,9 +88,8 @@ function wordlet_schema() {
       'text_value' => array(
         'description' => 'Multiline text value.',
         'type' => 'text',
-        'serialize' => TRUE,
       ),
-      'enabled' => array(
+      'markup' => array(
         'description' => '0 = disabled, 1 = enabled.',
         'type' => 'int',
         'size' => 'tiny',
@@ -66,6 +97,8 @@ function wordlet_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
+
+      // Backend values
       'created' => array(
         'description' => 'The Unix timestamp when the wordlet was created.',
         'type' => 'int',
@@ -78,7 +111,7 @@ function wordlet_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
-      'export_status' => array(
+      'status' => array(
         'type' => 'int',
         'not null' => TRUE,
         'default' => 0x01,
@@ -93,8 +126,11 @@ function wordlet_schema() {
       ),
     ),
     'primary key' => array('id'),
+    'indexes' => array(
+      'page' => array('page'),
+    ),
     'unique keys' => array(
-      'name' => array('type', 'name'),
+      'name' => array('page', 'name'),
     ),
   );
 
