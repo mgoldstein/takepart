@@ -16,7 +16,7 @@ class WordletUIController extends EntityDefaultUIController {
     }
     return FALSE;
   }
-    
+
   public function hook_menu() {
 
     $id_count = count(explode('/', $this->path));
@@ -26,7 +26,7 @@ class WordletUIController extends EntityDefaultUIController {
       'title callback' => 'wordlet_get_overview_title',
       'title arguments' => array($id_count - 1),
       'page callback' => 'wordlet_overview_callback',
-      'page arguments' => array($id_count - 1), 
+      'page arguments' => array($id_count - 1),
       'access callback' => 'wordlet_access',
       'access arguments' => array('edit'),
       'type' => MENU_NORMAL_ITEM,
@@ -121,11 +121,12 @@ function wordlet_get_overview_title($page) {
 
 /**
  * New wordlet page title callback.
- */ 
+ */
 function wordlet_count_new($page) {
   $result = db_select('wordlet', 'w')
     ->fields('w')
-    ->condition('w.status', $page['name'])
+    ->condition('w.page', $page['name'])
+    ->condition('w.type', '')
     ->execute();
   $count = $result->rowCount();
   return t('New wordlets (@count)', array('@count' => $count));
@@ -144,7 +145,7 @@ function wordlet_type_labels() {
 
 /**
  * Wordlet overview page callback.
- */ 
+ */
 function wordlet_overview_callback($page, $configured = TRUE) {
   $edit = $_POST;
 
@@ -195,7 +196,7 @@ function wordlet_multiple_delete_confirm($form, &$form_state, $page) {
     }
   }
   $form['operation'] = array(
-    '#type' => 'hidden', 
+    '#type' => 'hidden',
     '#value' => 'delete'
   );
 
@@ -234,9 +235,17 @@ function wordlet_export_form($form, &$form_state, $page) {
 
   // array_filter() returns only elements with actual values.
   $wordlet_counter = 0;
+  $json = array();
   foreach (array_filter($edit['wordlets']) as $id => $value) {
     $wordlet = entity_load_single('wordlet', $id);
     if (is_object($wordlet) && is_numeric($wordlet->id)) {
+      $wrapper = entity_metadata_wrapper('wordlet', $wordlet);
+      $data = array();
+      foreach ($wrapper->getIterator() as $name => $property) {
+        $data[$name] = $property->value();
+      }
+      $json[] = $data;
+      $wordlet_counter += 1;
     }
   }
 
@@ -246,13 +255,12 @@ function wordlet_export_form($form, &$form_state, $page) {
     drupal_goto('admin/wordlet/page/' . $page['name']);
   }
   else {
-    $json = '[]';
     $form['json'] = array(
       '#title' => t('Exported wordlets'),
       '#description' => t('Exported wordlets as a JSON array suitable for using
         when importing wordlets'),
       '#type' => 'textarea',
-      '#default_value' => $json,
+      '#default_value' => drupal_json_encode($json),
     );
   }
   return $form;
@@ -308,8 +316,8 @@ function wordlet_overview_form($form, &$form_state, $page, $configured) {
       'field' => 'w.type',
     ),
     array(
-      'data' => t('Updated'), 
-      'field' => 'w.changed', 
+      'data' => t('Updated'),
+      'field' => 'w.changed',
       'sort' => 'desc'
     ),
     t(''),
@@ -324,6 +332,7 @@ function wordlet_overview_form($form, &$form_state, $page, $configured) {
   $result = $query
     ->fields('w', array('id', 'page' ,'title', 'name', 'type', 'changed'))
     ->condition('w.type', '', $configured_op)
+    ->condition('w.page', $page['name'], '=')
     ->limit(50)
     ->orderByHeader($header)
     ->execute();
@@ -375,7 +384,7 @@ function wordlet_overview_form($form, &$form_state, $page, $configured) {
       $row->title,
       $row->name,
       $type_labels[$row->type],
-      format_date($row->changed, 'short'),  
+      format_date($row->changed, 'short'),
       $edit_operation,
       $configure_operation,
       $delete_operation,
@@ -415,7 +424,7 @@ function wordlet_ui_get_form($page, $entity_type, $entity, $op = 'edit') {
     list(, , $bundle) = entity_extract_ids($entity_type, $entity);
   }
   $form_id = (!isset($bundle) || $bundle == $entity_type)
-    ? $entity_type . '_form' 
+    ? $entity_type . '_form'
     : $entity_type . '_edit_' . $bundle . '_form';
 
   if (!isset($entity) && $op == 'add') {
@@ -529,8 +538,8 @@ function wordlet_form($form, &$form_state, $entity, $op) {
           '#type' => 'select',
           '#options' => $allowed_options,
           '#default_value' => $entity->markup,
-        ); 
-      } 
+        );
+      }
     }
     elseif ($entity->type == 'multi-line') {
       $form['text_value'] = array(
@@ -553,8 +562,8 @@ function wordlet_form($form, &$form_state, $entity, $op) {
           '#type' => 'select',
           '#options' => $allowed_options,
           '#default_value' => $entity->markup,
-        ); 
-      } 
+        );
+      }
     }
     elseif ($entity->type == 'node-reference') {
       $form['integer_value'] = array(

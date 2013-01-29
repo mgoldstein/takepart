@@ -5,12 +5,12 @@ define('WORDLET_JS_DIRECTORY', 'profiles/takepart/themes/takepart3/js/wordlets/'
 
 /**
  * Templates can be placed in any directory under
- * 
+ *
  *   profiles/takepart/themes/takepart3/templates
  *
  * Template names should use underscores (_) here, and dashes (-) in the actual
- * filename. The reason for the difference is so templates can be have a 
- * preprocess hook function (the name of which may not include dashes) 
+ * filename. The reason for the difference is so templates can be have a
+ * preprocess hook function (the name of which may not include dashes)
  */
 function _wordlet_configuration() {
   return array(
@@ -45,6 +45,8 @@ function _wordlet_configuration() {
         'plugin.js',
         'intelgirls.js',
       ),
+      // Additional wordlet groups to load ordered by precedence (lower to higer)
+      'load' => array('site'),
     ),
-  );  
+  );
 }

@@ -41,12 +41,13 @@ function wordlet_active_page($page = NULL) {
  * Fill out a wordlet page configuration with default values.
  */
 function _wordlet_page_defaults(&$page, $name) {
-  
+
   // All configurations should have a name and title
   $page += array(
     'name' => $name,
     'title' => $name,
     'published' => FALSE,
+    'load' => array(),
   );
 
   if (!empty($page['path'])) {
@@ -63,7 +64,7 @@ function _wordlet_page_defaults(&$page, $name) {
     $page['templates'] += array(
       'content' => 'page',
       'wrapper' => 'html',
-    ); 
+    );
   }
   return $page;
 }
@@ -193,7 +194,7 @@ function wordlet_page_access($op, $page = NULL) {
 /**
  * Access callback for wordlets.
  */
-function wordlet_access($op, $wordlet = NULL, $account = NULL, 
+function wordlet_access($op, $wordlet = NULL, $account = NULL,
   $entity_type = NULL) {
   // Block unknown operations.
   $allowed_ops = array('administer', 'add', 'edit', 'delete');
@@ -285,7 +286,7 @@ function wordlet_page_alter(&$page) {
 
 /**
  * Wordlet page admin overview callback.
- */ 
+ */
 function wordlet_page_overview_callback() {
 
   // Table headers
@@ -427,7 +428,7 @@ function wordlet_page_overview_callback() {
 
 /**
  * Wordlet page admin import form.
- */ 
+ */
 function wordlet_page_import_form($form, &$form_state, $page) {
   $banner = drupal_get_path('module', 'wordlet') . '/images/banner.gif';
   $form['banner'] = array(
@@ -442,30 +443,127 @@ function wordlet_page_import_form($form, &$form_state, $page) {
   return $form;
 }
 
+function wordlet_load_for_page($page) {
+
+  $wordlets = array();
+
+  // Limit that query to wordlets for the page.
+  $load = array_merge($page['load'], array($page['name']));
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'wordlet');
+  $query->propertyCondition('page', $load, 'IN');
+
+  $result = $query->execute();
+  if (!empty($result['wordlet'])) {
+    $entities = entity_load('wordlet', array_keys($result['wordlet']));
+    foreach ($entities as $entity) {
+      if (isset($wordlets[$entity->name])) {
+        $existing = $wordlets[$entity->name]->page;
+        if (empty($existing->type) == empty($entity->type)) {
+          // They are both configured, or both not configured, the position
+          // in the load array determines which to use
+          $existing_pos = array_search($existing->page, $load);
+          $current_pos = array_search($entity->page, $load);
+          if ($existing_pos < $current_pos) {
+            $wordlets[$entity->name] = $entity;
+          }
+        }
+        elseif (!empty($entity->type)) {
+          // The current entity should be used regardless of position in the
+          // load array as it is the one that is configured
+          $wordlets[$entity->name] = $entity;
+        }
+      }
+      else {
+        // First time encountering this name
+        $wordlets[$entity->name] = $entity;
+      }
+    }
+  }
+
+  return $wordlets;
+}
+
 /**
  * Wordlet page view callback.
- */ 
+ */
 function wordlet_page_view_callback($page) {
+
+  // No such page.
   if ($page === FALSE) {
     return drupal_not_found();
   }
+
+  // No template for the page.
   if (empty($page['templates'])) {
     return drupal_not_found();
   }
+
+  // Load the wordlets that will be used on the page
+  $page['wordlets'] = wordlet_load_for_page($page);
+
+  // Set the active page configuration
   wordlet_active_page($page);
+
+  // Add the page CSS and JS.
   foreach ($page['css'] as $filename) {
     drupal_add_css(WORDLET_CSS_DIRECTORY . $filename);
   }
   foreach ($page['js'] as $filename) {
     drupal_add_js(WORDLET_JS_DIRECTORY . $filename);
   }
+
+  // Structure is in the template, content in the wordlets.
   return '';
 }
 
 function wordlet($name) {
   $page = wordlet_active_page();
+  if (isset($page['wordlets'][$name])) {
+    $wordlet = $page['wordlets'][$name];
+  }
+  else {
+    $values = array(
+      'page' => $page['name'],
+      'name' => $name,
+    );
+    $wordlet = entity_create('wordlet', $values);
+    $wordlet->save();
+    $page['wordlets'][$name] = $wordlet;
+    wordlet_active_page($page);
+  }
+
+  $controller = entity_get_controller('wordlet');
+  if (empty($_COOKIE['show_wordlets'])) {
+    // Not even trying to edit wordlets
+    return $controller->viewMarkup($wordlet);
+  }
+  else {
+    // Output the markup for the appropriate level of access
+    if (wordlet_access('administer', $wordlet)) {
+      return $controller->editMarkup($wordlet, TRUE);
+    }
+    elseif (wordlet_access('edit', $wordlet)) {
+      return $controller->editMarkup($wordlet);
+    }
+    else {
+      return $controller->viewMarkup($wordlet);
+    }
+  }
 }
 
 function w($name) {
   return wordlet($name);
+}
+
+function wordlet_edit_mode($configure = FALSE) {
+  if (!empty($_COOKIE['show_wordlets'])) {
+    if ($configure) {
+      return wordlet_access('administer');
+    }
+    else {
+      return wordlet_access('edit');
+    }
+  }
+  return FALSE;
 }

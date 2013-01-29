@@ -6,7 +6,7 @@ class Wordlet extends Entity {
     $entity_type = 'wordlet') {
     parent::__construct($values, $entity_type);
   }
-  
+
   protected function defaultUri() {
     $path = implode('/', array(
       'admin',
@@ -52,5 +52,85 @@ class WordletController extends EntityAPIControllerExportable {
     }
     $entity->changed = time();
     return parent::save($entity, $transaction);
+  }
+
+  public function viewMarkup($entity) {
+    if ($entity->type == 'single-line') {
+      switch ($entity->markup) {
+      case 2: // Full HTML
+        return $entity->string_value;
+      case 1: // Simple HTML
+        return strip_tags($entity->string_value,
+          '<b><i><strong><em><br><br/><img>');
+      default: // Plain Text
+        return check_plain($entity->string_value);
+      }
+    }
+    elseif ($entity->type == 'multiple-lines') {
+      switch ($entity->markup) {
+      case 2: // Full HTML
+        return $entity->text_value;
+      case 1: // Simple HTML
+        $value = strip_tags($entity->text_value,
+          '<b><i><strong><em><br><br/><img>');
+      default: // Plain Text
+        $value = check_plain($entity->text_value);
+      }
+      $value = str_replace(array("\r\n", "\r"), "\n", $value);
+      $value = str_replace("\n\n\n", '</p><p>', $value);
+      $value = str_replace("\n\n", '<br/>', $value);
+      return '<p>' . $value . '</p>';
+    }
+    elseif ($entity->type == 'node-reference') {
+      if (!empty($entity->integer_value) && !empty($entity->string_value)) {
+        $node = node_load($entity->integer_value);
+        if ($node !== FALSE) {
+          return drupal_render(node_view($node, $entity->string_value));
+        }
+      }
+    }
+    return '';
+  }
+
+  public function editMarkup($entity, $configure = FALSE) {
+
+    if (!empty($entity->type)) {
+      $edit_link = l(t('Edit @name', array('@name' => $entity->name)),
+        "admin/markup/page/{$entity->page}/manage/{$entity->id}/edit",
+        array('class' => array('wordlet_edit')));
+    }
+    else {
+      $edit_link = '';
+    }
+
+    if ($configure) {
+      $configure_link = l(t('Configure @name', array('@name' => $entity->name)),
+      "admin/markup/page/{$entity->page}/manage/{$entity->id}/configure",
+        array('class' => array('wordlet_configure')));
+    }
+    else {
+      $configure_link = '';
+    }
+
+    $value = $this->viewMarkup($entity);
+
+    if ($entity->type == 'multiple-lines' || $entity->markup) {
+      return implode('', array(
+        $edit_link,
+        $configure_link,
+        '<div class="wordlet">',
+        $value,
+        '</div>',
+      ));
+    }
+    else {
+      return implode('', array(
+        $edit_link,
+        $configure_link,
+        '<span class="wordlet">',
+        $value,
+        '</span>'
+      ));
+    }
   }
 }
