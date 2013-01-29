@@ -1,7 +1,7 @@
 <?php
 
-define('WORDLET_CSS_DIRECTORY', 'profiles/takepart/themes/takepart3/css/wordlets/');
-define('WORDLET_JS_DIRECTORY', 'profiles/takepart/themes/takepart3/js/wordlets/');
+define('WORDLET_CSS_DIRECTORY', 'profiles/takepart/themes/takepart3/');
+define('WORDLET_JS_DIRECTORY', 'profiles/takepart/themes/takepart3/');
 
 /**
  * Templates can be placed in any directory under
@@ -20,6 +20,20 @@ function _wordlet_configuration() {
       'title' => 'Site Wordlets',
     ),
 
+    // Intel Girls Campaign
+    'intel_girls_campaign' => array(
+      'title' => 'Intel Girls Campaign',
+      'path' => 'intelgirlscampaign',
+      'published' => TRUE,
+      'templates' => array(
+        'wrapper' => 'html',
+        'content' => 'page__wordlet__intel_girls_campaign',
+      ),
+      'css' => array(),
+      'js' => array(),
+      'load' => array(),
+    ),
+
     // Wordlet page.
     'intel_girls_home' => array(
       'title' => 'Intel Girls Home',
@@ -36,17 +50,17 @@ function _wordlet_configuration() {
       // CSS files to add when rendering the page, paths are relative to
       // WORDLET_CSS_DIRECTORY defined at the top of this file.
       'css' => array(
-        'reset.css',
-        'intelgirls.css',
+        //'reset.css',
+        'campaigns/intelchange/intelchange.css',
       ),
       // JS files to add when rendering the page, paths are relative to
       // WORDLET_JS_DIRECTORY defined at the top of this file.
       'js' => array(
-        'plugin.js',
-        'intelgirls.js',
+        //'plugin.js',
+        //'intelgirls.js',
       ),
       // Additional wordlet groups to load ordered by precedence (lower to higer)
-      'load' => array('site'),
+      'load' => array('site', 'intel_girls_campaign'),
     ),
   );
 }
