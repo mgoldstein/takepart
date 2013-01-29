@@ -664,8 +664,69 @@ function takepart_addthis_field_info() {
       'instance_settings' => array(),
       'default_widget' => 'addthis_config',
       'default_formatter' => 'button_bar',
+      'property_type' => 'share_bar',
+      'property_callbacks' => array('takepart_addthis_property_info_callback'),
     ),
   );
+}
+
+/**
+ * Callback to alter the property info of share bar fields.
+ *
+ * @see takepart_addthis_field_info().
+ */
+function takepart_addthis_property_info_callback(&$info, $entity_type, $field, $instance, $field_type) {
+  $name = $field['field_name'];
+  $property = &$info[$entity_type]['bundles'][$instance['bundle']]['properties'][$name];
+
+  $property['type'] = ($field['cardinality'] != 1) ? 'list<share_bar>' : 'share_bar';
+  $property['getter callback'] = 'entity_metadata_field_verbatim_get';
+  $property['setter callback'] = 'entity_metadata_field_verbatim_set';
+  $property['auto creation'] = 'takepart_addthis_default_values';
+  $property['property info'] = takepart_addthis_data_property_info();
+
+  unset($property['query callback']);
+}
+
+/**
+ * Returns an array of default values for the addressfield form elements.
+ */
+function takepart_addthis_default_values() {
+  return array(
+    'alternate_url' => '',
+    'twitter_message' => '',
+    'email_message' => '',
+  );
+}
+
+/**
+ * Defines info for the properties of the share bar field data structure.
+ */
+function takepart_addthis_data_property_info($name = NULL) {
+  // Build an array of basic property information for the share bar field.
+  $properties = array(
+    'alternate_url' => array(
+      'label' => t('Alternate URL'),
+    ),
+    'twitter_message' => array(
+      'label' => t('Twitter message'),
+    ),
+    'email_message' => array(
+      'label' => t('Email message'),
+    ),
+  );
+
+  // Add the default values for each of the share bar field properties.
+  foreach ($properties as $key => &$value) {
+    $value += array(
+      'description' => !empty($name) ? t('!label of field %name', array('!label' => $value['label'], '%name' => $name)) : '',
+      'type' => 'text',
+      'getter callback' => 'entity_property_verbatim_get',
+      'setter callback' => 'entity_property_verbatim_set',
+    );
+  }
+
+  return $properties;
 }
 
 /**

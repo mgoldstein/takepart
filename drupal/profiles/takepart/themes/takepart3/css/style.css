@@ -2401,7 +2401,7 @@ q:before, q:after {
 }
 
 .node-type-takepart-campaign #page {
-    padding-top: 0;
+    padding-top: 25px;
     padding-right: 0;
     padding-bottom: 25px;
     padding-left: 10px;
@@ -2431,9 +2431,9 @@ body.node-type-takepart-campaign .main-content #content {
 .page-node-22525 .main-content h2 {
     border-top:1px dotted #000;
     margin:0;
-    padding:20px 0 10px;
-    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 20px transparent;
+    background:url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 12px transparent;
     width:100%;
+    padding-top: 12px;
 }
 
 .page-node-22525 .page {
@@ -2744,7 +2744,7 @@ body.node-type-takepart-campaign .main-content #content {
 .main-content .boxes-selected-style-6 h2
 {
     background: url(../images/2012-02-08/45deg_lines_large.gif) repeat-x scroll 0 13px transparent !important;
-    font-size: 22px !important;
+    font-size: 18px;
 }
 .main-content .boxes-selected-style-6 h2 span
 {
@@ -2948,7 +2948,7 @@ l div.addthis_toolbox a.addthis_button_google_plusone,.node-type-openpublish-pho
 }
 
 body.node-type-takepart-campaign #highlighted {
-    padding: 25px 0;
+    padding: 25px 0 0 0;
 }
 
 .multipage-campaign #highlighted {
@@ -3231,4 +3231,64 @@ p.fb-login-text {
 }
 .map_canvas {
   border: 0;
+}
+
+/* Title topics */
+
+.block-boxes-title-topics {
+  padding-left: 63px;
+  position: relative;
+  margin-bottom: 10px;
+  border-top: 1px solid #D9E7EE;
+  padding-top: 10px;
+}
+
+.block-boxes-title-topics img {
+  display: none;
+}
+
+.region-content-bottom .block-boxes-title-topics h2 {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  left: 0;
+  top: 10px;
+  overflow: visible;
+  position: absolute;
+  background: none;
+  border: none;
+  color: #000;
+  padding: 0;
+  width: auto;
+}
+
+.region-content-bottom .block-boxes-title-topics h2 span {
+  text-transform: none;
+  font-weight: bold;
+}
+
+.region-content-bottom .block-boxes-title-topics .content {
+  line-height: 18px;
+}
+
+.region-content-bottom .block-boxes-title-topics .content div {
+  display: inline;
+}
+
+.region-content-bottom .block-boxes-title-topics .content a {
+  font-size: 14px;
+  display: inline-block;
+  margin-left: 5px;
+  white-space: nowrap;
+}
+
+.region-content-bottom .block-boxes-title-topics .content .field-item:after {
+  content: ',';
+  display: inline;
+  zoom: 1;
+}
+
+.region-content-bottom .block-boxes-title-topics .content .field-label-hidden:last-child .field-item:last-child:after {
+  content: '';
+  display: none;
 }

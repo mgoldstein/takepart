@@ -1259,7 +1259,8 @@ class TaxonomyTermController extends DrupalDefaultEntityController {
     $terms = parent::cacheGet($ids, $conditions);
     // Name matching is case insensitive, note that with some collations
     // LOWER() and drupal_strtolower() may return different results.
-    foreach ($terms as $term) {
+    foreach ($terms as $id => $term) {
+      $term->tid = $id;
       $term_values = (array) $term;
       if (isset($conditions['name']) && drupal_strtolower($conditions['name'] != drupal_strtolower($term_values['name']))) {
         unset($terms[$term->tid]);

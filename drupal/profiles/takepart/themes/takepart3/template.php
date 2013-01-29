@@ -22,12 +22,12 @@ function takepart3_dolinks($links_field) {
 function takepart3_preprocess_html(&$vars) {
     // Optimizely
     drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
-  'type' => 'external',
-  'scope' => 'footer',
-  'group' => JS_DEFAULT,
-  'every_page' => TRUE,
-  'weight' => -1,
-));
+        'type' => 'external',
+        'scope' => 'footer',
+        'group' => JS_DEFAULT,
+        'every_page' => TRUE,
+        'weight' => -1,
+    ));
     drupal_add_library('system', 'jquery.cookie');
     if (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage')) {
         $vars['classes_array'][] = 'multipage-campaign';
@@ -78,69 +78,69 @@ function takepart3_preprocess_html(&$vars) {
 }
 
 function takepart3_preprocess_page(&$variables) {
-  _tp3_fill_template_vars($variables);
+    _tp3_fill_template_vars($variables);
 
-  if (isset($variables['node'])) {
-    if ($variables['node']->title == "Contact Us") {
-      // #18868    pglatz 7/10/2012
-      // save referrer URL to track in webform
-      // it is saved as $_COOKIE['Drupal_visitor_webform_referrer']
-      user_cookie_save(array('webform_referrer' => $_SERVER['HTTP_REFERER']));
-    }
-  }
-
-  $variables['is_multipage'] = FALSE;
-  $variables['multipage_class'] = '';
-
-  // Adds page template suggestions for specific content types
-  if (isset($variables['node'])) {
-    $variables['theme_hook_suggestions'][] = 'page__type__' . $variables['node']->type;
-
-    if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
-      $variables['is_multipage'] = TRUE;
-      context_set('takepart3_page', 'campaign_is_multipage', TRUE);
-      $variables['multipage_class'] = 'page-multipage'; // although this is not needed because the context set the body class itself
+    if (isset($variables['node'])) {
+        if ($variables['node']->title == "Contact Us") {
+            // #18868    pglatz 7/10/2012
+            // save referrer URL to track in webform
+            // it is saved as $_COOKIE['Drupal_visitor_webform_referrer']
+            user_cookie_save(array('webform_referrer' => $_SERVER['HTTP_REFERER']));
+        }
     }
 
-    if ($variables['node']->type == 'takepart_campaign') {
-      if (!empty($variables['node']->field_tp_campaign_show_title[$variables['node']->language][0]['value'])) {
-        unset($variables['page']['highlighted']['takepart_custom_page_title_h1']);
+    $variables['is_multipage'] = FALSE;
+    $variables['multipage_class'] = '';
+
+    // Adds page template suggestions for specific content types
+    if (isset($variables['node'])) {
+        $variables['theme_hook_suggestions'][] = 'page__type__' . $variables['node']->type;
+        $variables['theme_hook_suggestions'][] = 'page__type__' . $variables['node']->type . '__node__' . $variables['node']->nid;
+
+        if (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])) {
+            $variables['is_multipage'] = TRUE;
+            context_set('takepart3_page', 'campaign_is_multipage', TRUE);
+            $variables['multipage_class'] = 'page-multipage'; // although this is not needed because the context set the body class itself
+        }
+
+        if ($variables['node']->type == 'takepart_campaign') {
+            if (!empty($variables['node']->field_tp_campaign_show_title[$variables['node']->language][0]['value'])) {
+                unset($variables['page']['highlighted']['takepart_custom_page_title_h1']);
+            }
+        }
+
+        if ($variables['node']->type == 'venue' || $variables['node']->type == 'action'
+                || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action') {
+            $variables['is_multipage'] = TRUE;
+        }
+    }
+
+    $status = drupal_get_http_header('status');
+    $status_code = explode(' ', $status);
+    if ($status_code[0] == '403') {
+        unset($variables['page']['sidebar_second']);
+    }
+
+    $variables['header'] = _render_tp3_header($variables);
+    $variables['footer'] = _render_tp3_footer($variables);
+
+    //if shares don't exists in the left sidebar, add them to the top:
+    //so much for consistent design ...
+    /*
+      if($variables['node']->type == 'takepart_campaign') {
+      if($variables['page']['sidebar_first']) {
+      if (!array_key_exists('takepart_addthis_addthis_full', $variables['page']['sidebar_first'])) {
+      if ((array_key_exists('highlighted', $variables['page'])) && (!array_key_exists('takepart_addthis_addthis_simple', $variables['page']['highlighted']))) {
+      $block = block_load('takepart_addthis', 'addthis_simple');
+      $addthisblock = array();
+      $addthisblock['takepart_addthis_addthis_simple'] = (_block_get_renderable_array(_block_render_blocks(array($block))));
+      array_unshift($variables['page']['highlighted'], $addthisblock);
       }
-    }
+      }
+      }
+      } */
 
-    if ($variables['node']->type == 'venue' || $variables['node']->type == 'action'
-            || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action') {
-      $variables['is_multipage'] = TRUE;
-    }
-
-  }
-
-  $status = drupal_get_http_header('status');
-  $status_code = explode(' ', $status);
-  if ($status_code[0] == '403') {
-    unset($variables['page']['sidebar_second']);
-  }
-
-  $variables['header'] = _render_tp3_header($variables);
-  $variables['footer'] = _render_tp3_footer($variables);
-
-  //if shares don't exists in the left sidebar, add them to the top:
-  //so much for consistent design ...
-  /*
- if($variables['node']->type == 'takepart_campaign') {
- if($variables['page']['sidebar_first']) {
- if (!array_key_exists('takepart_addthis_addthis_full', $variables['page']['sidebar_first'])) {
- if ((array_key_exists('highlighted', $variables['page'])) && (!array_key_exists('takepart_addthis_addthis_simple', $variables['page']['highlighted']))) {
- $block = block_load('takepart_addthis', 'addthis_simple');
- $addthisblock = array();
- $addthisblock['takepart_addthis_addthis_simple'] = (_block_get_renderable_array(_block_render_blocks(array($block))));
- array_unshift($variables['page']['highlighted'], $addthisblock);
- }
- }
- }
- } */
-
-  return $variables;
+    return $variables;
 }
 
 /**
@@ -215,13 +215,13 @@ function _render_tp3_user_menu($variables) {
                 } else {
                     $username = $user->name;
                 }
-                
+
                 if ($variables['node']->type == 'venue' || $variables['node']->type == 'action'
-            || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action' || (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])))  {            
-                if (strlen($username)>10) {
-                    $username = substr($username,0,10) . "…";
+                        || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action' || (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context']))) {
+                    if (strlen($username) > 10) {
+                        $username = substr($username, 0, 10) . "…";
+                    }
                 }
-            }
                 $menu_item['link']['title'] = $username;
                 $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');
             } else {
@@ -391,13 +391,12 @@ function _render_tp3_topics_takepart_menu() {
 }
 
 function _render_tp3_topics_takepart_menu_piped() {
-  return _render_footer_links_menu_as_piped('menu-takepart-topics');
+    return _render_footer_links_menu_as_piped('menu-takepart-topics');
 }
 
 function _render_tp3_film_campaign_menu_piped() {
-  return _render_footer_links_menu_as_piped("menu-takepart-film-campaigns");
+    return _render_footer_links_menu_as_piped("menu-takepart-film-campaigns");
 }
-
 
 // so we need to render the menus as follows,
 // order from top to bottom, but distribute evenly from left
@@ -439,44 +438,40 @@ function _render_menu_columns($menu_key, $col_limit) {
     return $menu_cols;
 }
 
-
 function _render_footer_links_menu_as_piped($menu_key) {
-  $menu_data = _tp_menu_tree_data($menu_key);
+    $menu_data = _tp_menu_tree_data($menu_key);
 
-  $uri = drupal_get_path_alias($_GET['q']);
-  $uri = substr($uri, 0, 14);
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri = substr($uri, 0, 14);
 
-  $total_items = count($menu_data);
-  $column_idx = 0;
-  $x = 0;
+    $total_items = count($menu_data);
+    $column_idx = 0;
+    $x = 0;
 
-   foreach ($menu_data as $menu_item) {
+    foreach ($menu_data as $menu_item) {
 
-     $x++;
+        $x++;
 
-     $opts = array('attributes' => _default_menu_options($menu_item));
-     if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
-       $opts['absolute'] = TRUE;
-     }
+        $opts = array('attributes' => _default_menu_options($menu_item));
+        if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
 
-     $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-     if($x < $total_items) {
-      $columns[$column_idx][] =  $link . " | ";
-     } else {
-       $columns[$column_idx][] =  $link ;
-     }
+        $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+        if ($x < $total_items) {
+            $columns[$column_idx][] = $link . " | ";
+        } else {
+            $columns[$column_idx][] = $link;
+        }
+    }
 
-  }
+    $menu_cols = "";
+    foreach ($columns as $col) {
+        $menu_cols .= "<div class='links'>" . implode($col) . "</div>\n";
+    }
 
-  $menu_cols = "";
-  foreach ($columns as $col) {
-    $menu_cols .= "<div class='links'>" . implode($col) . "</div>\n";
-  }
-
-  return $menu_cols;
+    return $menu_cols;
 }
-
-
 
 function _tp_col_depth($total, $col_limit, $remainder) {
     return floor($total / $col_limit) + ( $remainder === 0 ? 0 : 1);
@@ -499,82 +494,81 @@ function _default_menu_options($menu_item) {
  * Preprocessor for theme('block').
  */
 function takepart3_preprocess_node(&$vars, $hook) {
-  $use_popup = false;   // set true if video popup are enabled and this node specifies using one
+    $use_popup = false;   // set true if video popup are enabled and this node specifies using one
 
-  if (module_exists('takepart_vidpop')) {
-    // under certain conditions, we want to change the link of the embedded video to
-    // create a popup:
-    // 		-view_mode is "embed"
-    //    -field_video_display_mode is 2 (modal popup)
-    //
+    if (module_exists('takepart_vidpop')) {
+        // under certain conditions, we want to change the link of the embedded video to
+        // create a popup:
+        // 		-view_mode is "embed"
+        //    -field_video_display_mode is 2 (modal popup)
+        //
     // 		or if
-    //
+        //
     //    -view_mode is "full"
-    //    -field_video_display_mode is 3 (contextual)
-    //    -page type is video (permalink)
+        //    -field_video_display_mode is 3 (contextual)
+        //    -page type is video (permalink)
 
-    if ($vars['type'] == 'openpublish_video') {
-      if (isset($vars['field_video_display_mode']['und'])) {
-        if (isset($vars['field_video_display_mode']['und'][0]['value'])) {
-          // this video node has a display mode has a value set; change
-          // the link to create a popup
-          switch ($vars['field_video_display_mode']['und'][0]['value']) {
-            case 1:   // embedded
-              break;
-            case 2:   // modal popup
-              if ($vars['view_mode'] == 'embed') {
+        if ($vars['type'] == 'openpublish_video') {
+            if (isset($vars['field_video_display_mode']['und'])) {
+                if (isset($vars['field_video_display_mode']['und'][0]['value'])) {
+                    // this video node has a display mode has a value set; change
+                    // the link to create a popup
+                    switch ($vars['field_video_display_mode']['und'][0]['value']) {
+                        case 1:   // embedded
+                            break;
+                        case 2:   // modal popup
+                            if ($vars['view_mode'] == 'embed') {
+                                $use_popup = true;
+                            }
+                            break;
+                        case 3:   // contextual (embedded on permalink page, modal elsewhere)
+                            if ($vars['view_mode'] == 'full') {
+                                $use_popup = true;
+                            }
+                            break;
+                    }
+                }
+            } else {
+                // mode is undefined - assume popup
                 $use_popup = true;
-              }
-              break;
-            case 3:   // contextual (embedded on permalink page, modal elsewhere)
-              if ($vars['view_mode'] == 'full') {
-                $use_popup = true;
-              }
-              break;
-          }
+            }
         }
-      }
-      else {
-        // mode is undefined - assume popup
-        $use_popup = true;
-      }
+
+        if ($use_popup) {
+            $GLOBALS['has_vidpop'] = 1;
+            // suggest a theme
+            $vars['theme_hook_suggestions'][] = "node__video_embed";
+
+            // render the video as large size for the popup
+            $render_large = node_view(node_load($vars['nid']), 'large');
+            $vars['large_video'] = drupal_render($render_large['field_video_embedded']);
+
+            //if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
+            if (true) {
+                // build preview image
+                $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
+            }
+
+            // add identifying class
+            $vars['classes_array'][] = 'vidpop-embedded';
+
+            // add ad click call from vidpop
+            static $vp_js_added;
+            if (!isset($vp_js_added)) {
+                drupal_add_js('jQuery(document).ready(function () { vidpop_loaded(); });', 'inline');
+                $vp_js_added = 1;
+            }
+        }
     }
 
-    if ($use_popup) {
-      $GLOBALS['has_vidpop'] = 1;
-      // suggest a theme
-      $vars['theme_hook_suggestions'][] = "node__video_embed";
-
-      // render the video as large size for the popup
-      $render_large = node_view(node_load($vars['nid']), 'large');
-      $vars['large_video'] = drupal_render($render_large['field_video_embedded']);
-
-      //if (!empty($vars['field_thumbnail']['und'][0]['file'])) {
-      if (true) {
-        // build preview image
-        $vars['content']['thumbnail_image'] = takepart_vidpop_format_preview(file_build_uri($vars['field_thumbnail']['und'][0]['file']->filename), $vars);
-      }
-
-      // add identifying class
-      $vars['classes_array'][] = 'vidpop-embedded';
-
-      // add ad click call from vidpop
-      static $vp_js_added;
-      if (!isset($vp_js_added)) {
-        drupal_add_js('jQuery(document).ready(function () { vidpop_loaded(); });', 'inline');
-        $vp_js_added = 1;
-      }
+    if (module_exists('unipop')) {
+        // add ad click call from unipop
+        static $unipop_js_added;
+        if (!isset($unipop_js_added)) {
+            drupal_add_js('jQuery(document).ready(function () { unipop_loaded(); });', 'inline');
+            $unipop_js_added = 1;
+        }
     }
-  }
-
-  if (module_exists('unipop')) {
-    // add ad click call from unipop
-    static $unipop_js_added;
-    if (!isset($unipop_js_added)) {
-      drupal_add_js('jQuery(document).ready(function () { unipop_loaded(); });', 'inline');
-      $unipop_js_added = 1;
-    }
-  }
 
     // Suggests a custom template for embedded node content through the WYSIWYG
     // We suggest a theme for a general embed as well as for each content type
@@ -656,15 +650,17 @@ function takepart3_form_comment_form_alter(&$form, &$form_state, $form_id) {
 function takepart3_field__field_series(&$vars) {
     $base = base_path() . 'sites/default/files/styles/action_header_image/public/';
     $filename = $vars['element']['#object']->field_series['und'][0]['taxonomy_term']->field_series_graphic_header['und'][0]['filename'];
-    $url = $base . $filename;
-    $linkOverride = $filename = $vars['element']['#object']->field_series['und'][0]['taxonomy_term']->field_series_graphic_header_link;
-    if (!empty($linkOverride)) {
-        $link = $linkOverride['und'][0]['url'];
-    } else {
-        $link = url($vars['items'][0]['#href']);
+    if ($filename != "") {
+        $url = $base . $filename;
+        $linkOverride = $filename = $vars['element']['#object']->field_series['und'][0]['taxonomy_term']->field_series_graphic_header_link;
+        if (!empty($linkOverride)) {
+            $link = $linkOverride['und'][0]['url'];
+        } else {
+            $link = url($vars['items'][0]['#href']);
+        }
+        $altText = $filename = $vars['element']['#object']->field_series['und'][0]['taxonomy_term']->field_series_graphic_header['und'][0]['alt'];
+        return sprintf('<a href="%s"><img class="field-name-field-series-graphic-header" src="%s" alt="%s" /></a>', $link, $url, $altText);
     }
-    $altText = $filename = $vars['element']['#object']->field_series['und'][0]['taxonomy_term']->field_series_graphic_header['und'][0]['alt'];
-    return sprintf('<a href="%s"><img class="field-name-field-series-graphic-header" src="%s" alt="%s" /></a>', $link, $url, $altText);
 }
 
 function takepart3_field__field_actionheaderimghref(&$vars) {
@@ -729,40 +725,40 @@ function takepart3_field__field_author(&$vars) {
 
 // Preprocess action URL
 function takepart3_field__field_action_url(&$vars) {
-  $output = '';
-  if (!empty($vars['element']['#items'])) {
+    $output = '';
+    if (!empty($vars['element']['#items'])) {
 
-    // There should be only one value for the field.
-    $item = reset($vars['element']['#items']);
+        // There should be only one value for the field.
+        $item = reset($vars['element']['#items']);
 
-    $attributes = array(
-      'href' => 'javascript:void();',
-    );
-    if ($item['url'] !== 'local') {
-      $attributes['action-href'] = $item['url'];    
-    }
-    if (isset($item['attributes'])) {
-      if (isset($item['attributes']['target'])) {
-        $attributes['target'] = $item['attributes']['target'];
-      }
-      if (isset($item['attributes']['class'])) {
-        $attributes['class'] = explode(' ', $item['attributes']['class']);
-      }
-    }
-    if ($vars['element']['#entity_type'] === 'node') {
-      $attributes['nid'] = $vars['element']['#object']->nid;
-    }
+        $attributes = array(
+            'href' => 'javascript:void();',
+        );
+        if ($item['url'] !== 'local') {
+            $attributes['action-href'] = $item['url'];
+        }
+        if (isset($item['attributes'])) {
+            if (isset($item['attributes']['target'])) {
+                $attributes['target'] = $item['attributes']['target'];
+            }
+            if (isset($item['attributes']['class'])) {
+                $attributes['class'] = explode(' ', $item['attributes']['class']);
+            }
+        }
+        if ($vars['element']['#entity_type'] === 'node') {
+            $attributes['nid'] = $vars['element']['#object']->nid;
+        }
 
-    $variables = array(
-      'element' => array(
-        '#tag' => 'a',
-        '#attributes' => $attributes,
-        '#value' => '<span>' . $item['title'] . '</span>',
-      ),
-    );
-    $output = theme('html_tag', $variables);
-  }
-  return $output;
+        $variables = array(
+            'element' => array(
+                '#tag' => 'a',
+                '#attributes' => $attributes,
+                '#value' => '<span>' . $item['title'] . '</span>',
+            ),
+        );
+        $output = theme('html_tag', $variables);
+    }
+    return $output;
 }
 
 // Rewrites 'field_tp_campaign_4_things_link' in Campaign content types
@@ -891,33 +887,35 @@ function takepart3_return_node_type($type) {
     return '';
 }
 
-function takepart3_field__field_topic($vars) {
-    // do we have any free tags?
-    $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
+/*
+  function takepart3_field__field_topic($vars) {
+  // do we have any free tags?
+  $field_free_tag = isset($vars['element']['#object']->field_free_tag['und']) ? $vars['element']['#object']->field_free_tag['und'] : $vars['element']['#object']->field_free_tag;
 
-    // how about tags from series?
-    $field_series_tag = isset($vars['element']['#object']->field_series['und']) ? $vars['element']['#object']->field_series['und'] : $vars['element']['#object']->field_series;
+  // how about tags from series?
+  $field_series_tag = isset($vars['element']['#object']->field_series['und']) ? $vars['element']['#object']->field_series['und'] : $vars['element']['#object']->field_series;
 
-    if (count($vars['items']) || count($field_free_tag) || count($field_free_series)) {
-        $links = array();
-        foreach ($field_series_tag as $key => $value) {
-            $term = taxonomy_term_load($value['tid']);
-            $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
-        }
+  if (count($vars['items']) || count($field_free_tag) || count($field_free_series)) {
+  $links = array();
+  foreach ($field_series_tag as $key => $value) {
+  $term = taxonomy_term_load($value['tid']);
+  $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
+  }
 
-        foreach ($vars['items'] as $key => $value) {
-            if (isset($value['#href'])) {
-                $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
-            }
-        }
+  foreach ($vars['items'] as $key => $value) {
+  if (isset($value['#href'])) {
+  $links[] = "<a href='" . url($value['#href']) . "'>" . $value['#title'] . '</a>';
+  }
+  }
 
-        foreach ($field_free_tag as $key => $value) {
-            $term = taxonomy_term_load($value['tid']);
-            $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
-        }
-        return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
-    }
-}
+  foreach ($field_free_tag as $key => $value) {
+  $term = taxonomy_term_load($value['tid']);
+  $links[] = "<a href='" . url('taxonomy/term/' . $value['tid']) . "'>" . $term->name . '</a>';
+  }
+  return '<div class="node-topics"><div class="node-topics-label">Topics</div>' . implode(', ', $links) . '</div>';
+  }
+  }
+ */
 
 function takepart3_preprocess_comment(&$vars) {
     $vars['submitted'] = 'posted on ' . format_date($vars['elements']['#comment']->created, 'medium', 'M j, Y');
@@ -1146,7 +1144,7 @@ function _tp3_fill_template_vars(&$variables) {
         $variables['film_camp_nav'] = _render_tp3_film_campaign_menu();
     }
     if ((!isset($variables['film_camp_nav_piped'])) || (!$variables['film_camp_nav_piped'])) {
-      $variables['film_camp_nav_piped'] = _render_tp3_film_campaign_menu_piped();
+        $variables['film_camp_nav_piped'] = _render_tp3_film_campaign_menu_piped();
     }
     if ((!isset($variables['friends_takepart_nav'])) || (!$variables['friends_takepart_nav'])) {
         $variables['friends_takepart_nav'] = _render_tp3_friends_takepart_menu();
@@ -1155,7 +1153,7 @@ function _tp3_fill_template_vars(&$variables) {
         $variables['takepart_topics_nav'] = _render_tp3_topics_takepart_menu();
     }
     if ((!isset($variables['takepart_topics_nav_piped'])) || (!$variables['takepart_topics_nav_piped'])) {
-      $variables['takepart_topics_nav_piped'] = _render_tp3_topics_takepart_menu_piped();
+        $variables['takepart_topics_nav_piped'] = _render_tp3_topics_takepart_menu_piped();
     }
     if ((!isset($variables['corporate_links_nav'])) || (!$variables['corporate_links_nav'])) {
         $variables['corporate_links_nav'] = _render_tp3_corporate_links_menu();
@@ -1198,6 +1196,7 @@ function _render_tp3_wrapper_footer(&$params) {
  * Clears page, page bottom and top, fills custom section
  * with the header or footer depending on the path.
  */
+
 function _render_tp3_renderheaderfooterfeed(&$vars) {
     $uri = drupal_get_path_alias($_GET['q']);
     // $uri = substr($uri, 0, 14);
@@ -1208,11 +1207,9 @@ function _render_tp3_renderheaderfooterfeed(&$vars) {
         _tp3_fill_template_vars($vars);
         if ($uri == 'iframes/header') {
             $vars['custom'] = _render_tp3_header($vars);
-        }
-        elseif ($uri == 'iframes/slim-header') {
+        } elseif ($uri == 'iframes/slim-header') {
             $vars['custom'] = _render_tp3_slim_header($vars);
-        }
-        elseif ($uri == 'iframes/footer') {
+        } elseif ($uri == 'iframes/footer') {
             $vars['custom'] = _render_tp3_footer($vars);
         }
     }
@@ -1302,6 +1299,7 @@ function takepart3_preprocess_views_view(&$vars) {
  * @return string
  *
  */
+
 function takepart3_pager_link($variables) {
     global $base_root;
 
@@ -1393,6 +1391,7 @@ function takepart3_pager_link($variables) {
  *
  * @param $head_elements
  */
+
 function takepart3_html_head_alter(&$head_elements) {
     // check for duplicate canonical links - if found,
     // use the one from takepart3_pager_link()
