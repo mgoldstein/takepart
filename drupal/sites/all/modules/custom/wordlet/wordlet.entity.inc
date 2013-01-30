@@ -73,8 +73,10 @@ class WordletController extends EntityAPIControllerExportable {
       case 1: // Simple HTML
         $value = strip_tags($entity->text_value,
           '<b><i><strong><em><br><br/><img>');
+        break;
       default: // Plain Text
         $value = check_plain($entity->text_value);
+        break;
       }
       $value = str_replace(array("\r\n", "\r"), "\n", $value);
       $value = str_replace("\n\n\n", '</p><p>', $value);
