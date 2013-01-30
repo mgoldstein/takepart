@@ -1,5 +1,6 @@
 .wordlet {
     outline: 1px dashed green;
+    min-height: 1px;
 }
 
 .hide_wordlets .wordlet {
@@ -37,6 +38,11 @@
     color: red;
 }
 
-#wordlet_toggle_form {
-
+#wordlet_toggle {
+    background: rgba(255,255,255,.6);
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: relative;
+    z-index: 10000;
 }

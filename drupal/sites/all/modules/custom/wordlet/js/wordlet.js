@@ -31,7 +31,7 @@ var load_form = function(url, data) {
 				$div.html(responseText);
 
 				// Sniff for a success and close the modal
-				var $success = $div.find('#success');
+				var $success = $div.find('.messages.status');
 				if ( $success.length ) {
 					$.tpmodal.show({id: 'wordlets', html: $success});
 					setTimeout(function() {
@@ -42,7 +42,7 @@ var load_form = function(url, data) {
 				}
 
 				// Otherwise, condense html to just the form
-				$div.find('*:not(form,input,label):not(:has(input,label))').remove();
+				$div.find('*:not(form,input,label,select,textarea,option):not(:has(textarea,input,label,select,option))').remove();
 
 				// Submit hook
 				$div.find('form')

@@ -18,11 +18,13 @@
     </div>
     <div class="second-block">
         <div class="form-desc">
-            <h2>Will you help make the change?</h2>
-            <p class='form-blurb'>Three people will be selected to become an Intel for Changemaker. Along with a film crew, each Changemaker will be sent to one of three countries to spend two weeks volunteering, making a real difference on the ground. A web series will be produced featuring each Changemaker and their experience abroad. The Changemakers will become a voice for girls’ education, raising awareness and funds for this issue.</p>
+            <h2><?=w('secondary_title')?></h2>
+            <div class="form-blurb">
+                <?=w('form-blurb')?>
+            </div>
         </div>
         <div class="form-wrapper">
-            <h3>Excited? We are too.</h3>
+            <h3><?=w('form_title')?></h3>
             <p>Give us your email and/or mobile number and we’ll keep you in the know.</p>
             <form>
                 <div class="field-wrapper email">
