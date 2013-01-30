@@ -445,159 +445,266 @@ function wordlet_ui_get_form($page, $entity_type, $entity, $op = 'edit') {
   return drupal_build_form($form_id, $form_state);
 }
 
-function wordlet_form($form, &$form_state, $entity, $op) {
+function wordlet_configuration_form($form, &$form_state, $entity, $op) {
 
-  if ($op == 'add' || $op == 'configure') {
+  $form['page'] = array(
+    '#type' => 'value',
+    '#value' => $form_state['wordlet_page']['name'],
+  );
 
-    $form['page'] = array(
-      '#type' => 'value',
-      '#value' => $form_state['wordlet_page']['name'],
-    );
-    $form['title'] = array(
-      '#title' => t('Title'),
+  $form['configuration'] = array(
+    '#title' => t('Configuration'),
+    '#type' => 'fieldset',
+    '#tree' => FALSE,
+  );
+
+  $form['configuration']['title'] = array(
+    '#title' => t('Title'),
+    '#type' => 'textfield',
+    '#default_value' => $entity->title,
+    '#description' => t('The human-readable title of this wordlet'),
+    '#required' => TRUE,
+    '#size' => 30,
+  );
+
+  if ($op == 'add') {
+    $form['configuration']['name'] = array(
+      '#title' => t('Name'),
       '#type' => 'textfield',
-      '#default_value' => $entity->title,
-      '#description' => t('The human-readable title of this wordlet'),
+      '#default_value' => $entity->name,
+      '#description' => t('The machine-readable name of this wordlet'),
       '#required' => TRUE,
       '#size' => 30,
     );
-    if ($op == 'add') {
-      $form['name'] = array(
-        '#title' => t('Name'),
-        '#type' => 'textfield',
-        '#default_value' => $entity->name,
-        '#description' => t('The machine-readable name of this wordlet'),
-        '#required' => TRUE,
-        '#size' => 30,
-      );
+  }
+
+  $form['configuration']['description'] = array(
+    '#title' => t('Description'),
+    '#description' => t('Short description of the purpose/function of the wordlet'),
+    '#type' => 'textfield',
+    '#default_value' => $entity->description,
+  );
+
+  $form['configuration']['type'] = array(
+    '#title' => t('Type'),
+    '#description' => t('The type of wordlet'),
+    '#type' => 'select',
+    '#options' => wordlet_type_labels(),
+    '#required' => TRUE,
+    '#default_value' => $entity->type,
+  );
+
+  $form['configuration']['allow_markup'] = array(
+    '#title' => t('Format'),
+    '#description' => t('Format of the data value.'),
+    '#type' => 'select',
+    '#options' => array(
+      0 => t('Plain Text'),
+      1 => t('Simple HTML'),
+      2 => t('Full HTML'),
+    ),
+    '#default_value' => $entity->allow_markup,
+  );
+
+  $form['configuration']['enabled'] = array(
+    '#title' => t('Enabled'),
+    '#description' => t('The worldet enabled state.'),
+    '#type' => 'checkbox',
+    '#default_value' => $entity->enabled,
+  );
+
+  $form['data'] = array(
+    '#title' => t('Values'),
+    '#type' => 'fieldset',
+    '#tree' => FALSE,
+  );
+
+  $form['data']['string_value'] = array(
+    '#title' => t('Single Line'),
+    '#type' => 'textfield',
+    '#default_value' => $entity->string_value,
+  );
+
+  $form['data']['text_value'] = array(
+    '#title' => t('Multiple Lines'),
+    '#type' => 'textarea',
+    '#default_value' => $entity->text_value,
+  );
+
+  $form['data']['markup'] = array(
+    '#title' => t('Format'),
+    '#description' => t('Format of the value.'),
+    '#type' => 'select',
+    '#options' => array(
+      0 => t('Plain Text'),
+      1 => t('Simple HTML'),
+      2 => t('Full HTML'),
+    ),
+    '#default_value' => $entity->markup,
+  );
+
+  $form['data']['integer_value'] = array(
+    '#title' => t('Integer Value'),
+    '#type' => 'textfield',
+    '#default_value' => $entity->integer_value,
+    //'#element_validate' => array('element_validate_integer_positive'),
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $submit = array();
+  if (!empty($form['#submit'])) {
+    $submit += $form['#submit'];
+  }
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save wordlet'),
+    '#weight' => 40,
+  );
+
+  return $form;
+}
+
+function wordlet_single_line_form($form, &$form_state, $entity, $op) {
+
+  $form['string_value'] = array(
+    '#title' => $entity->title,
+    '#description' => $entity->description,
+    '#type' => 'textfield',
+    '#default_value' => $entity->string_value,
+  );
+  if ($entity->allow_markup) {
+    $allowed_options = array(
+      0 => t('Plain Text'),
+      1 => t('Simple HTML'),
+    );
+    if ($entity->allow_markup == 2) {
+      $allowed_options[2] = t('Full HTML');
     }
-
-    $form['description'] = array(
-      '#title' => t('Description'),
-      '#description' => t('Short description of the purpose/function of the wordlet'),
-      '#type' => 'textarea',
-      '#default_value' => $entity->description,
-    );
-
-    $form['type'] = array(
-      '#title' => t('Type'),
-      '#description' => t('The type of wordlet'),
-      '#type' => 'select',
-      '#options' => wordlet_type_labels(),
-      '#required' => TRUE,
-      '#default_value' => $entity->type,
-    );
-    $form['allow_markup'] = array(
+    $form['markup'] = array(
       '#title' => t('Format'),
-      '#description' => t('Format of the data value.'),
+      '#description' => t('Format of the value.'),
       '#type' => 'select',
-      '#options' => array(
-        0 => t('Plain Text'),
-        1 => t('Simple HTML'),
-        2 => t('Full HTML'),
-      ),
-      '#default_value' => $entity->allow_markup,
+      '#options' => $allowed_options,
+      '#default_value' => $entity->markup,
     );
-    $form['enabled'] = array(
-      '#title' => t('Enabled'),
-      '#description' => t('The worldet enabled state.'),
-      '#type' => 'checkbox',
-      '#default_value' => $entity->enabled,
-    );
+  }
 
-    $form['actions'] = array('#type' => 'actions');
-    $submit = array();
-    if (!empty($form['#submit'])) {
-      $submit += $form['#submit'];
-    }
-    $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save wordlet configuration'),
-      '#weight' => 40,
+  $form['description'] = array(
+    '#title' => t('Description'),
+    '#type' => 'markup',
+    '#markup' => '<p>' . $entity->description . '</p>',
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $submit = array();
+  if (!empty($form['#submit'])) {
+    $submit += $form['#submit'];
+  }
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save wordlet'),
+    '#weight' => 40,
+  );
+
+  return $form;
+}
+
+function wordlet_multiple_lines_form($form, &$form_state, $entity, $op) {
+
+  $form['text_value'] = array(
+    '#title' => $entity->title,
+    '#description' => $entity->description,
+    '#type' => 'textarea',
+    '#default_value' => $entity->text_value,
+  );
+  if ($entity->allow_markup) {
+    $allowed_options = array(
+      0 => t('Plain Text'),
+      1 => t('Simple HTML'),
     );
+    if ($entity->allow_markup == 2) {
+      $allowed_options[2] = t('Full HTML');
+    }
+    $form['markup'] = array(
+      '#title' => t('Format'),
+      '#description' => t('Format of the value.'),
+      '#type' => 'select',
+      '#options' => $allowed_options,
+      '#default_value' => $entity->markup,
+    );
+  }
+
+  $form['description'] = array(
+    '#title' => t('Description'),
+    '#type' => 'markup',
+    '#markup' => '<p>' . $entity->description . '</p>',
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $submit = array();
+  if (!empty($form['#submit'])) {
+    $submit += $form['#submit'];
+  }
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save wordlet'),
+    '#weight' => 40,
+  );
+
+  return $form;
+}
+
+function wordlet_node_reference_form($form, &$form_state, $entity, $op) {
+
+  $form['integer_value'] = array(
+    '#title' => $entity->title,
+    '#description' => $entity->description,
+    '#type' => 'textfield',
+    '#default_value' => $entity->integer_value,
+    //'#element_validate' => array('element_validate_integer_positive'),
+  );
+  $form['string_value'] = array(
+    '#title' => t('View Mode'),
+    '#description' => t('The view mode to display'),
+    '#type' => 'textfield',
+    '#default_value' => $entity->string_value,
+  );
+
+  $form['description'] = array(
+    '#title' => t('Description'),
+    '#type' => 'markup',
+    '#markup' => '<p>' . $entity->description . '</p>',
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $submit = array();
+  if (!empty($form['#submit'])) {
+    $submit += $form['#submit'];
+  }
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save wordlet'),
+    '#weight' => 40,
+  );
+
+  return $form;
+}
+
+function wordlet_form($form, &$form_state, $entity, $op) {
+  if ($op == 'add' || $op == 'configure') {
+    return wordlet_configuration_form($form, $form_state, $entity, $op);
   }
   elseif ($op == 'edit' && !empty($entity->type)) {
     if ($entity->type == 'single-line') {
-      $form['string_value'] = array(
-        '#title' => $entity->title,
-        '#description' => $entity->description,
-        '#type' => 'textfield',
-        '#default_value' => $entity->string_value,
-      );
-      if ($entity->allow_markup) {
-        $allowed_options = array(
-          0 => t('Plain Text'),
-          1 => t('Simple HTML'),
-        );
-        if ($entity->allow_markup == 2) {
-          $allowed_options[2] = t('Full HTML');
-        }
-        $form['markup'] = array(
-          '#title' => t('Format'),
-          '#description' => t('Format of the value.'),
-          '#type' => 'select',
-          '#options' => $allowed_options,
-          '#default_value' => $entity->markup,
-        );
-      }
+      return wordlet_single_line_form($form, $form_state, $entity, $op);
     }
     elseif ($entity->type == 'multiple-lines') {
-      $form['text_value'] = array(
-        '#title' => $entity->title,
-        '#description' => $entity->description,
-        '#type' => 'textarea',
-        '#default_value' => $entity->text_value,
-      );
-      if ($entity->allow_markup) {
-        $allowed_options = array(
-          0 => t('Plain Text'),
-          1 => t('Simple HTML'),
-        );
-        if ($entity->allow_markup == 2) {
-          $allowed_options[2] = t('Full HTML');
-        }
-        $form['markup'] = array(
-          '#title' => t('Format'),
-          '#description' => t('Format of the value.'),
-          '#type' => 'select',
-          '#options' => $allowed_options,
-          '#default_value' => $entity->markup,
-        );
-      }
+      return wordlet_multiple_lines_form($form, $form_state, $entity, $op);
     }
     elseif ($entity->type == 'node-reference') {
-      $form['integer_value'] = array(
-        '#title' => $entity->title,
-        '#description' => $entity->description,
-        '#type' => 'textfield',
-        '#default_value' => $entity->integer_value,
-        '#element_validate' => array('element_validate_integer_positive'),
-      );
-      $form['string_value'] = array(
-        '#title' => t('View Mode'),
-        '#description' => t('The view mode to display'),
-        '#type' => 'textfield',
-        '#default_value' => $entity->string_value,
-      );
+      return wordlet_node_reference_form($form, $form_state, $entity, $op);
     }
-    $form['description'] = array(
-      '#title' => t('Description'),
-      '#type' => 'markup',
-      '#markup' => '<p>' . $entity->description . '</p>',
-    );
-
-    $form['actions'] = array('#type' => 'actions');
-    $submit = array();
-    if (!empty($form['#submit'])) {
-      $submit += $form['#submit'];
-    }
-    $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save wordlet'),
-      '#weight' => 40,
-    );
   }
-
   return $form;
 }
 

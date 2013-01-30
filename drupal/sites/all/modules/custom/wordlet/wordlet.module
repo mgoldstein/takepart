@@ -513,7 +513,7 @@ function wordlet_page_view_callback($page) {
     drupal_add_js(WORDLET_JS_DIRECTORY . $filename);
   }
 
-  if (wordlet_edit_mode()) {
+  if (wordlet_access('edit')) {
     $path = drupal_get_path('module', 'wordlet');
     drupal_add_css($path . '/css/wordlet.css');
     drupal_add_js($path . '/js/wordlet.js');
