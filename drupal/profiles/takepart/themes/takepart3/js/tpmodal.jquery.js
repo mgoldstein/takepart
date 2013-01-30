@@ -241,7 +241,10 @@ var tpmodal = function(parameters) {
 		if ( css.top < $window.scrollTop() ) css.top = $window.scrollTop();
 
 		if ( animate ) {
-			$modal.animate(css, settings.speed);
+			$modal.animate(css, settings.speed, function() {
+				$modal.css({height: ''});
+				$modal_content.css({height: ''});
+			});
 		} else {
 			$modal.css(css);
 		}

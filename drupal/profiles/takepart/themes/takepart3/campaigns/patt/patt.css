@@ -18,25 +18,25 @@
 	padding: 0;
 }
 
-div.page-wrap {
+.page-wrap {
 	width:1000px;
 	margin:0 auto;
 }
 
-div.ribbon {
+.ribbon {
     width:1000px;
 	height:41px;
 	margin:0 auto;
 }
 
-div.ribbon img {
+.ribbon img {
 	width:1000px;
 	position:relative;
 	left:50%;
 	margin-left:-500px;
 }
 
-div.table {
+.table {
 	width:1000px;
 	/*background:url(images/table-bg.png) no-repeat;*/
 	background: rgba(0,0,0,.3);
@@ -44,9 +44,9 @@ div.table {
 	/*top:25px;*/
 }
 
-div.table img.logo {margin-top:15px;}
+.table .logo {margin-top:15px;}
 
-div.table img.tagline {
+.table .tagline {
 	position: absolute;
 	top: 45px;
 	left: 540px;
@@ -54,31 +54,31 @@ div.table img.tagline {
 
 
 
-div.table img.hide {display:none;}
+.table .hide {display:none;}
 
-/*div.table img.tag {opacity:0;}*/
+/*.table .tag {opacity:0;}*/
 
-div.table div.item a {display:block;}
+.table .item a {display:block;}
 
-div.table div.bread {
+.table .bread {
 	position:absolute;
 	top: 363px;
 	left: 695px;
 }
 
-div.table div.bread img.tag {
+.table .bread .tag {
 	position: absolute;
 	top: 23px;
 	left: 128px;
 }
 
-div.table div.dinner {
+.table .dinner {
 	position: absolute;
 	top: 288px;
 	left: 280px;
 }
 
-div.table div.dinner img.tag {
+.table .dinner .tag {
 	position: absolute;
 	top: 74px;
 	left: -46px;
@@ -86,49 +86,49 @@ div.table div.dinner img.tag {
 
 
 
-div.table div.salad {
+.table .salad {
 	position: absolute;
 	top: 520px;
 	left: 671px;
 }
 
-div.table div.salad img.tag {
+.table .salad .tag {
 	position: absolute;
 	top: 9px;
 	left: 150px;
 }
 
-div.table div.saltpepper {
+.table .saltpepper {
 	position: absolute;
 	top: 301px;
 	left: 159px;
 }
 
-div.table div.saltpepper img.tag {
+.table .saltpepper .tag {
 	position: absolute;
 	top: -63px;
 	left: -132px;
 }
 
-div.table div.butter {
+.table .butter {
 	position: absolute;
 	top: 216px;
 	left: 530px;
 }
 
-div.table div.butter img.tag {
+.table .butter .tag {
 	position: absolute;
 	top: -85px;
 	left: 85px;
 }
 
-div.table div.cola {
+.table .cola {
 	position: absolute;
 	top: 215px;
 	left: 303px;
 }
 
-div.table div.cola img.tag {
+.table .cola .tag {
 	position: absolute;
 	top: -63px;
 	left: 84px;
@@ -136,37 +136,37 @@ div.table div.cola img.tag {
 
 
 
-div.table div.utensils {
+.table .utensils {
 	position: absolute;
 	top: 435px;
 	left: 82px;
 }
 
-div.table div.utensils img.tag {
+.table .utensils .tag {
 	position:absolute;
 	top: 151px;
 	left: -68px;
 }
 
-div.table div.knife {
+.table .knife {
 	position: absolute;
 	top: 306px;
 	left: 713px;
 }
 
-div.table div.knife img.tag {
+.table .knife .tag {
 	position:absolute;
 	top: -95px;
 	left: 61px;
 }
 
-div.footer {
+.footer {
 	position: relative;
 	top: 25px;
 }
 
 
-div.table.int {
+.table.int {
 	width:1000px;
 	/*background:url(images/interior-page-bg.png) no-repeat;*/
 	position:relative;
@@ -175,7 +175,7 @@ div.table.int {
 	font-weight:700;
 }
 
-div.table.int div.header {
+.table.int .header {
 	background:url('images/interior-header-bg.png') no-repeat center top;
 	height:132px;
 	position:relative;
@@ -183,23 +183,23 @@ div.table.int div.header {
 	z-index:50;
 }
 
-div.table.int div.header div.logo {
-	position:relative;
+.table.int .header .logo {
+	position:absolute;
 	left:380px;
 	top:-35px;
 }
 
-div.table.int div.nav {
+.table.int .nav {
 	width: 900px;
 	margin: 0 auto;
 	margin-top:-6px;
 }
 
-div.table.int div.nav ul {
+.table.int .nav ul {
 	display:table-row;
 }
 
-div.table.int div.nav li {
+.table.int .nav li {
 	float:left;
 	width:125px;
 	height:86px;
@@ -216,22 +216,22 @@ div.table.int div.nav li {
 	margin-right:-15px;
 }
 
-div.table.int div.nav li.active, div.table.int div.nav li.hover {
+.table.int .nav .active, .table.int .nav .hover {
 	background:url('images/interior-nav-bg-blue.png') no-repeat;
 	color:#fff;
 }
 
-div.table.int div.nav li.active a, div.table.int div.nav li.hover a {
+.table.int .nav .active a, .table.int .nav .hover a {
 	color:#fff;
 }
 
-div.table.int div.nav li a {
+.table.int .nav li a {
 	text-decoration:none;
 	color:#000;
 	
 }
 
-div.table.int div.nav li span {
+.table.int .nav li span {
 	display: table-cell;
 	vertical-align: middle;
 	height: 86px;
@@ -239,14 +239,14 @@ div.table.int div.nav li span {
 	padding:0 20px 0 20px;
 }
 
-div.table.int div.nav-overlay {
+.table.int .nav-overlay {
 	z-index:100;
 	position: absolute;
 	top: 131px;
 	left: 22px;
 }
 
-div.table.int div.nav-overlay li {
+.table.int .nav-overlay li {
 	width:102px;
 	height:57px;
 	list-style:none;
@@ -256,37 +256,39 @@ div.table.int div.nav-overlay li {
 	/*border:1px dashed red;*/
 }
 
-div.table.int div.main {
+.table.int .main {
 	background:url('images/interior-main-bg.png') no-repeat;
 	background: rgba(0,0,0,.3);
 	width:982px;
-	margin:0 auto;
 	margin-top:25px;
 	display: inline-block; *display: inline; zoom: 1;
+	margin-left: 10px;
+	color: #fff;
 }
 
-div.table.int div.main div.column  {
+.table.int .main .column  {
 	margin-right:1px;
 }
 
-div.table.int div.main div.column-1,
-div.table.int div.main div.column-3 {
+.table.int .main .column-1,
+.table.int .main .column-3 {
 	width:170px;
+	height: 100%;
 	float:left;
-	background: rgba(0,0,0,.3);
+	background: rgba(0,0,0,.2);
 }
 
-div.table.int div.main div.column-2 {
+.table.int .main .column-2 {
 	width:638px;
 	float:left;
-	background: rgba(0,0,0,.3);
+	background: rgba(0,0,0,.2);
 }
 
-div.table.int div.main div.column-1 ol {
+.table.int .main .column-1 ol {
 	padding:30px 0 0 5px;
 }
 
-div.table.int div.main div.column-1 ol li {
+.table.int .main .column-1 ol li {
 	list-style:none;
 	min-height:22px;
 	width:92px;
@@ -295,7 +297,7 @@ div.table.int div.main div.column-1 ol li {
 	margin-bottom:30px;
 }
 
-div.table.int div.main div.column-1 ol li a {
+.table.int .main .column-1 ol li a {
 	text-decoration:none;
 	text-transform:uppercase;
 	color:#fff;
@@ -303,36 +305,36 @@ div.table.int div.main div.column-1 ol li a {
 	display:block;
 }
 
-div.table.int div.main div.column-1 ol li a:hover {
+.table.int .main .column-1 ol li a:hover {
 	color:#4f86ad;
 }
 
-div.table.int div.main div.column-1 div.social {
+.table.int .main .column-1 .social {
 	width:116px;
 	margin:170px auto 0 auto;
 }
 
-div.table.int div.main div.column-2 div.inner {
+.table.int .main .column-2 .inner {
 	padding:40px 15px 0 15px;
 }
 
-div.table.int div.main div.column-2 h3 {
+.table.int .main .column-2 h3 {
 	color:#fff;
 	font-size:15px;
 	font-weight:500;
 }
 
-div.table.int div.main div.column-2 div.inner div#scrollbar1 {
+.table.int .main .column-2 .inner div#scrollbar1 {
 	color:#fff;
 	font-size:14px;
 	font-weight:500;
 }
 
-div.table.int div.main div.column-3 div.email-signup {
+.table.int .main .column-3 .email-signup {
 	margin-top:40px;
 }
 
-div.table.int div.main div.column-3 form div.input {
+.table.int .main .column-3 form .input {
 	background:url('images/interior-form-bg.png') no-repeat;
 	width:149px;
 	height:28px;
@@ -340,7 +342,7 @@ div.table.int div.main div.column-3 form div.input {
 	margin-top:-12px;
 }
 
-div.table.int div.main div.column-3 form input[type="text"] {
+.table.int .main .column-3 form input[type="text"] {
 	width: 127px;
 	margin-left: 10px;
 	margin-top: 7px;
@@ -350,27 +352,27 @@ div.table.int div.main div.column-3 form input[type="text"] {
 	border-radius: 50px;
 }
 
-div.table.int div.main div.column-3 form h3 {
+.table.int .main .column-3 form h3 {
 	color: #fff;
 	text-transform: uppercase;
 	text-align: center;
 	font-weight:500;
 }
 
-div.table.int div.main div.column-3 form div.submit {
+.table.int .main .column-3 form .submit {
 	width:111px;
 	height:41px;
 	margin:0 auto;
 	margin-top:5px;
 }
 
-div.table.int div.main div.column-3 div.sponsored {
+.table.int .main .column-3 .sponsored {
 	width:151px;
 	margin:0 auto;
 	margin:35px auto 0 auto;
 }
 
-div.table.int div.main div.column-3 div.sponsored h4 {
+.table.int .main .column-3 .sponsored h4 {
 	color: #fff;
 	text-transform: uppercase;
 	font-weight: 500;

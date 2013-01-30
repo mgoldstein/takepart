@@ -44,32 +44,32 @@ var load_form = function(url, data) {
 				// Otherwise, condense html to just the form
 				$div.find('*:not(form,input,label,select,textarea,option):not(:has(textarea,input,label,select,option))').remove();
 
-				var $string = $div.find('.form-item-string-value');
-				var $text = $div.find('.form-item-text-value');
-				var $integer = $div.find('.form-item-integer-value');
-
 				var $type = $div.find('#edit-type');
 
-				var type_change = function(e) {
-					var val = $type.val();
-					if ( val == 'single-line' ) {
-						$string.show();
-						$text.hide();
-						$integer.hide();
-					} else if ( val == 'multiple-lines' ) {
-						$string.hide();
-						$text.show();
-						$integer.hide();
-					} else {
-						$string.hide();
-						$text.hide();
-						$integer.show();
-					}
-				};
+				if ( $type.length ) {
+					var $string = $div.find('.form-item-string-value');
+					var $text = $div.find('.form-item-text-value');
+					var $integer = $div.find('.form-item-integer-value');
 
-				$type.bind('change', type_change);
+					var type_change = function(e) {
+						var val = $type.val();
+						if ( val == 'single-line' ) {
+							$string.show();
+							$text.hide();
+							$integer.hide();
+						} else if ( val == 'multiple-lines' ) {
+							$string.hide();
+							$text.show();
+							$integer.hide();
+						} else {
+							$string.hide();
+							$text.hide();
+							$integer.show();
+						}
+					};
 
-				type_change();
+					$type.bind('change', type_change);
+				}
 
 				// Submit hook
 				$div.find('form')
@@ -84,6 +84,10 @@ var load_form = function(url, data) {
 					});
 
 				$.tpmodal.show({id: 'wordlets', html: $div});
+
+				if ( $type.length ) {
+					type_change();
+				}
 			}
 		}
 	});
