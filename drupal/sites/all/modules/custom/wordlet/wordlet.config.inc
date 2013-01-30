@@ -12,28 +12,8 @@ define('WORDLET_JS_DIRECTORY', 'profiles/takepart/themes/takepart3/');
  * filename. The reason for the difference is so templates can be have a
  * preprocess hook function (the name of which may not include dashes)
  */
-function _wordlet_configuration() {
-  return array(
 
-    // Simple wordlet group.
-    'site' => array(
-      'title' => 'Site Wordlets',
-    ),
-
-    // Intel Girls Campaign
-    'intel_girls_campaign' => array(
-      'title' => 'Intel Girls Campaign',
-      'path' => 'intelgirlscampaign',
-      'published' => TRUE,
-      'templates' => array(
-        'wrapper' => 'html',
-        'content' => 'page__wordlet__intel_girls_campaign',
-      ),
-      'css' => array(),
-      'js' => array(),
-      'load' => array(),
-    ),
-
+/*
     // Wordlet page.
     'intel_girls_home' => array(
       'title' => 'Intel Girls Home',
@@ -62,5 +42,59 @@ function _wordlet_configuration() {
       // Additional wordlet groups to load ordered by precedence (lower to higer)
       'load' => array('site', 'intel_girls_campaign'),
     ),
+*/
+
+function _wordlet_configuration() {
+  return array(
+
+    // Simple wordlet group.
+    'site' => array(
+      'title' => 'Site Wordlets',
+    ),
+
+    // Intel Girls Campaign
+    'intel_girls_campaign' => array(
+      'title' => 'Intel Girls Campaign',
+    ),
+
+    // Intel Girls Home
+    'intel_girls_home' => array(
+      'title' => 'Intel Girls Home',
+      'path' => 'intelgirls',
+      'published' => TRUE,
+      'templates' => array(
+        'wrapper' => 'html',
+        'content' => 'page__wordlet__intel_girls_home',
+      ),
+      'css' => array(
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(),
+      'load' => array('site', 'intel_girls_campaign'),
+    ),
+
+    // Place at the Table Campaign
+    'patt_campaign' => array(
+      'title' => 'Place at the Table Campaign',
+    ),
+
+    // Place at the Table Home
+    'patt_home' => array(
+      'title' => 'Place at the Table Home',
+      'path' => 'place-at-the-table',
+      'published' => TRUE,
+      'templates' => array(
+        'wrapper' => 'html',
+        'content' => 'page__wordlet__patt_home',
+      ),
+      'css' => array(
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
   );
 }

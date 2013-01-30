@@ -1,0 +1,528 @@
+#header-wrapper {
+	background: #fff;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:500,700,900);
+
+
+.page-wordlet-patt-home {
+	background: url('images/bg-wood.jpg') #EFF3F5 repeat;
+	color: #333;
+	font-size: 12px;
+	font-family: Helvetica,Arial,sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+div.page-wrap {
+	width:1000px;
+	margin:0 auto;
+}
+
+div.ribbon {
+    width:1000px;
+	height:41px;
+	margin:0 auto;
+}
+
+div.ribbon img {
+	width:1000px;
+	position:relative;
+	left:50%;
+	margin-left:-500px;
+}
+
+div.table {
+	width:1000px;
+	/*background:url(images/table-bg.png) no-repeat;*/
+	background: rgba(0,0,0,.3);
+	position:relative;
+	/*top:25px;*/
+}
+
+div.table img.logo {margin-top:15px;}
+
+div.table img.tagline {
+	position: absolute;
+	top: 45px;
+	left: 540px;
+}
+
+
+
+div.table img.hide {display:none;}
+
+/*div.table img.tag {opacity:0;}*/
+
+div.table div.item a {display:block;}
+
+div.table div.bread {
+	position:absolute;
+	top: 363px;
+	left: 695px;
+}
+
+div.table div.bread img.tag {
+	position: absolute;
+	top: 23px;
+	left: 128px;
+}
+
+div.table div.dinner {
+	position: absolute;
+	top: 288px;
+	left: 280px;
+}
+
+div.table div.dinner img.tag {
+	position: absolute;
+	top: 74px;
+	left: -46px;
+}
+
+
+
+div.table div.salad {
+	position: absolute;
+	top: 520px;
+	left: 671px;
+}
+
+div.table div.salad img.tag {
+	position: absolute;
+	top: 9px;
+	left: 150px;
+}
+
+div.table div.saltpepper {
+	position: absolute;
+	top: 301px;
+	left: 159px;
+}
+
+div.table div.saltpepper img.tag {
+	position: absolute;
+	top: -63px;
+	left: -132px;
+}
+
+div.table div.butter {
+	position: absolute;
+	top: 216px;
+	left: 530px;
+}
+
+div.table div.butter img.tag {
+	position: absolute;
+	top: -85px;
+	left: 85px;
+}
+
+div.table div.cola {
+	position: absolute;
+	top: 215px;
+	left: 303px;
+}
+
+div.table div.cola img.tag {
+	position: absolute;
+	top: -63px;
+	left: 84px;
+}
+
+
+
+div.table div.utensils {
+	position: absolute;
+	top: 435px;
+	left: 82px;
+}
+
+div.table div.utensils img.tag {
+	position:absolute;
+	top: 151px;
+	left: -68px;
+}
+
+div.table div.knife {
+	position: absolute;
+	top: 306px;
+	left: 713px;
+}
+
+div.table div.knife img.tag {
+	position:absolute;
+	top: -95px;
+	left: 61px;
+}
+
+div.footer {
+	position: relative;
+	top: 25px;
+}
+
+
+div.table.int {
+	width:1000px;
+	/*background:url(images/interior-page-bg.png) no-repeat;*/
+	position:relative;
+	/*top:25px;*/
+	font-family: 'Raleway', sans-serif;
+	font-weight:700;
+}
+
+div.table.int div.header {
+	background:url('images/interior-header-bg.png') no-repeat center top;
+	height:132px;
+	position:relative;
+	top:13px;
+	z-index:50;
+}
+
+div.table.int div.header div.logo {
+	position:relative;
+	left:380px;
+	top:-35px;
+}
+
+div.table.int div.nav {
+	width: 900px;
+	margin: 0 auto;
+	margin-top:-6px;
+}
+
+div.table.int div.nav ul {
+	display:table-row;
+}
+
+div.table.int div.nav li {
+	float:left;
+	width:125px;
+	height:86px;
+	background:url('images/interior-nav-bg-white.png') no-repeat;
+	list-style:none;
+	font-family: 'Raleway', sans-serif;
+	font-weight:700;
+	text-transform:uppercase;
+	font-size:13px;
+	line-height:13px;
+	text-align:center;
+	display: table-cell;
+	vertical-align: middle;
+	margin-right:-15px;
+}
+
+div.table.int div.nav li.active, div.table.int div.nav li.hover {
+	background:url('images/interior-nav-bg-blue.png') no-repeat;
+	color:#fff;
+}
+
+div.table.int div.nav li.active a, div.table.int div.nav li.hover a {
+	color:#fff;
+}
+
+div.table.int div.nav li a {
+	text-decoration:none;
+	color:#000;
+	
+}
+
+div.table.int div.nav li span {
+	display: table-cell;
+	vertical-align: middle;
+	height: 86px;
+	width:125px;
+	padding:0 20px 0 20px;
+}
+
+div.table.int div.nav-overlay {
+	z-index:100;
+	position: absolute;
+	top: 131px;
+	left: 22px;
+}
+
+div.table.int div.nav-overlay li {
+	width:102px;
+	height:57px;
+	list-style:none;
+	float:left;
+	margin-right:6px;
+	cursor:pointer;
+	/*border:1px dashed red;*/
+}
+
+div.table.int div.main {
+	background:url('images/interior-main-bg.png') no-repeat;
+	background: rgba(0,0,0,.3);
+	width:982px;
+	margin:0 auto;
+	margin-top:25px;
+	display: inline-block; *display: inline; zoom: 1;
+}
+
+div.table.int div.main div.column  {
+	margin-right:1px;
+}
+
+div.table.int div.main div.column-1,
+div.table.int div.main div.column-3 {
+	width:170px;
+	float:left;
+	background: rgba(0,0,0,.3);
+}
+
+div.table.int div.main div.column-2 {
+	width:638px;
+	float:left;
+	background: rgba(0,0,0,.3);
+}
+
+div.table.int div.main div.column-1 ol {
+	padding:30px 0 0 5px;
+}
+
+div.table.int div.main div.column-1 ol li {
+	list-style:none;
+	min-height:22px;
+	width:92px;
+	background:url('images/interior-chevron.png') no-repeat top left;
+	padding-left:35px;
+	margin-bottom:30px;
+}
+
+div.table.int div.main div.column-1 ol li a {
+	text-decoration:none;
+	text-transform:uppercase;
+	color:#fff;
+	font-size:14px;
+	display:block;
+}
+
+div.table.int div.main div.column-1 ol li a:hover {
+	color:#4f86ad;
+}
+
+div.table.int div.main div.column-1 div.social {
+	width:116px;
+	margin:170px auto 0 auto;
+}
+
+div.table.int div.main div.column-2 div.inner {
+	padding:40px 15px 0 15px;
+}
+
+div.table.int div.main div.column-2 h3 {
+	color:#fff;
+	font-size:15px;
+	font-weight:500;
+}
+
+div.table.int div.main div.column-2 div.inner div#scrollbar1 {
+	color:#fff;
+	font-size:14px;
+	font-weight:500;
+}
+
+div.table.int div.main div.column-3 div.email-signup {
+	margin-top:40px;
+}
+
+div.table.int div.main div.column-3 form div.input {
+	background:url('images/interior-form-bg.png') no-repeat;
+	width:149px;
+	height:28px;
+	margin:0 auto;
+	margin-top:-12px;
+}
+
+div.table.int div.main div.column-3 form input[type="text"] {
+	width: 127px;
+	margin-left: 10px;
+	margin-top: 7px;
+	border: none;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+}
+
+div.table.int div.main div.column-3 form h3 {
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight:500;
+}
+
+div.table.int div.main div.column-3 form div.submit {
+	width:111px;
+	height:41px;
+	margin:0 auto;
+	margin-top:5px;
+}
+
+div.table.int div.main div.column-3 div.sponsored {
+	width:151px;
+	margin:0 auto;
+	margin:35px auto 0 auto;
+}
+
+div.table.int div.main div.column-3 div.sponsored h4 {
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 500;
+	text-align: center;
+	font-size: 16px;
+	margin:0;
+}
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 144dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

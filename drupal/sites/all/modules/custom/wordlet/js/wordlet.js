@@ -44,6 +44,33 @@ var load_form = function(url, data) {
 				// Otherwise, condense html to just the form
 				$div.find('*:not(form,input,label,select,textarea,option):not(:has(textarea,input,label,select,option))').remove();
 
+				var $string = $div.find('.form-item-string-value');
+				var $text = $div.find('.form-item-text-value');
+				var $integer = $div.find('.form-item-integer-value');
+
+				var $type = $div.find('#edit-type');
+
+				var type_change = function(e) {
+					var val = $type.val();
+					if ( val == 'single-line' ) {
+						$string.show();
+						$text.hide();
+						$integer.hide();
+					} else if ( val == 'multiple-lines' ) {
+						$string.hide();
+						$text.show();
+						$integer.hide();
+					} else {
+						$string.hide();
+						$text.hide();
+						$integer.show();
+					}
+				};
+
+				$type.bind('change', type_change);
+
+				type_change();
+
 				// Submit hook
 				$div.find('form')
 					.each(function() {

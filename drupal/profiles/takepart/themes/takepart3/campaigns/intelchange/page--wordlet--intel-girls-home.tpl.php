@@ -28,7 +28,7 @@
             <p><?=w('form_subtitle')?></p>
             <form>
                 <div class="field-wrapper email">
-                    <label for="email">Email</label>
+                    <label for="email"><?=w('email_label')?></label>
                     <input name="email" type="email" />
                 </div>
                 <div class="field-wrapper phone">
