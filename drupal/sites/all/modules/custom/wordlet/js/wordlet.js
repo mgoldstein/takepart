@@ -92,7 +92,7 @@ $('body')
 		load_form($link.attr('href'));
 		e.preventDefault();
 	})
-	.delegate('.wordlet_add, .wordlet_edit', 'click', function(e) {
+	.delegate('.wordlet_configure, .wordlet_edit', 'click', function(e) {
 		load_form(this.href);
 		e.preventDefault();
 	})
