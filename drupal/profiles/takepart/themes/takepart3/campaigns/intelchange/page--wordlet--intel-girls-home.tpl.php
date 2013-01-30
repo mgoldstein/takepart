@@ -1,10 +1,6 @@
 <div id="page-wrapper" class="campaign">
 <?php print $header ?>
 
-<? if ( wordlet_edit_mode() ) ?>
-    suckaaaa
-<? endif ?>
-
 <div class="smartgirls">
     <div class="header-block">
         <img src="/profiles/takepart/themes/takepart3/campaigns/intelchange/images/intel_logo.png" alt="Intel For Change Logo" class="logo">
@@ -13,8 +9,7 @@
     <div class="first-block clearfix">
         <img src="/profiles/takepart/themes/takepart3/campaigns/intelchange/images/main_info.jpg" alt="77.6 million girls are currently not enrolled in either primary or secondary education" class="main-info">
         <div class="intro">
-            <p>Intel believes that education should be a fundamental right for everyone. In many parts of the world, girls and women are disproportionally denied access to education.</p>
-            <p>Join Intel to ensure that education is an opportunity for all.</p>
+            <?=w('intro')?>
             <div class="addThis">
                 <a class="addthis_button_facebook_like"></a> 
                 <a class="addthis_button_tweet"></a>

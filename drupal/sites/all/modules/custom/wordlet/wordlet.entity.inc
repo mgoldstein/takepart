@@ -96,17 +96,17 @@ class WordletController extends EntityAPIControllerExportable {
 
     if (!empty($entity->type)) {
       $edit_link = l(t('Edit @name', array('@name' => $entity->name)),
-        "admin/markup/page/{$entity->page}/manage/{$entity->id}/edit",
-        array('class' => array('wordlet_edit')));
+        "admin/wordlet/page/{$entity->page}/manage/{$entity->id}/edit",
+        array('attributes' => array( 'class' => array('wordlet_edit'))));
     }
     else {
       $edit_link = '';
     }
 
-    if ($configure) {
+    if ($configure && empty($entity->type) ) {
       $configure_link = l(t('Configure @name', array('@name' => $entity->name)),
-      "admin/markup/page/{$entity->page}/manage/{$entity->id}/configure",
-        array('class' => array('wordlet_configure')));
+      "admin/wordlet/page/{$entity->page}/manage/{$entity->id}/configure",
+        array('attributes' => array( 'class' => array('wordlet_configure'))));
     }
     else {
       $configure_link = '';
@@ -116,19 +116,19 @@ class WordletController extends EntityAPIControllerExportable {
 
     if ($entity->type == 'multiple-lines' || $entity->markup) {
       return implode('', array(
-        $edit_link,
-        $configure_link,
         '<div class="wordlet">',
         $value,
+        $edit_link,
+        $configure_link,
         '</div>',
       ));
     }
     else {
       return implode('', array(
-        $edit_link,
-        $configure_link,
         '<span class="wordlet">',
         $value,
+        $edit_link,
+        $configure_link,
         '</span>'
       ));
     }

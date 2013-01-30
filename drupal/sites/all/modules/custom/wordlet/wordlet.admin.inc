@@ -541,7 +541,7 @@ function wordlet_form($form, &$form_state, $entity, $op) {
         );
       }
     }
-    elseif ($entity->type == 'multi-line') {
+    elseif ($entity->type == 'multiple-lines') {
       $form['text_value'] = array(
         '#title' => $entity->title,
         '#description' => $entity->description,

@@ -23,6 +23,8 @@ stylesheets[all][] = css/petitions.css
 stylesheets[all][] = css/pledges.css
 stylesheets[all][] = css/actions.css
 
+stylesheets[all][] = css/tpmodal.css
+
 ; Javascript
 scripts[] = js/script.js
 scripts[] = js/widgets.js
@@ -30,6 +32,8 @@ scripts[] = js/tastemakers/venue.js
 scripts[] = js/tastemakers/city.js
 scripts[] = js/tastemakers/nationwide.js
 scripts[] = js/actions.js
+
+scripts[] = js/tpmodal.jquery.js
 
 features[] = favicon
 

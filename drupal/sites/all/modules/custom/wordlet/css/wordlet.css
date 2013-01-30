@@ -1,0 +1,42 @@
+.wordlet {
+    outline: 1px dashed green;
+}
+
+.hide_wordlets .wordlet {
+    display: none;
+}
+
+#wordlets_show {
+    display: none;
+}
+
+.hide_wordlets #wordlets_hide {
+    display: none;
+}
+
+.hide_wordlets #wordlets_show {
+    display: inline;
+}
+
+.wordlet_edit,
+.wordlet_add {
+    font-size: 10px;
+    display: none;
+    position: absolute;
+    background: #fff;
+}
+
+.wordlet_edit {
+    outline: 1px dashed blue;
+    color: blue;
+}
+
+.wordlet_configure,
+.wordlet_add {
+    outline: 1px dashed red;
+    color: red;
+}
+
+#wordlet_toggle_form {
+
+}
