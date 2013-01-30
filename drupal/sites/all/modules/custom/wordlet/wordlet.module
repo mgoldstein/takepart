@@ -458,7 +458,7 @@ function wordlet_load_for_page($page) {
     $entities = entity_load('wordlet', array_keys($result['wordlet']));
     foreach ($entities as $entity) {
       if (isset($wordlets[$entity->name])) {
-        $existing = $wordlets[$entity->name]->page;
+        $existing = $wordlets[$entity->name];
         if (empty($existing->type) == empty($entity->type)) {
           // They are both configured, or both not configured, the position
           // in the load array determines which to use

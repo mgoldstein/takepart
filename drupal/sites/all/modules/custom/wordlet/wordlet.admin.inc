@@ -602,6 +602,29 @@ function wordlet_form($form, &$form_state, $entity, $op) {
 }
 
 /**
+ * Wordlet entity form valdiate hander.
+ */
+function wordlet_form_validate($form, &$form_state) {
+  $page = $form_state['wordlet_page'];
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'wordlet');
+  $query->propertyCondition('page', $form_state['values']['page']);
+  $query->propertyCondition('name', $form_state['values']['name']);
+  $result = $query->execute();
+  if (!empty($result['wordlet'])) {
+    $entities = entity_load('wordlet', array_keys($result['wordlet']));
+    $existing = reset($entities);
+    if (empty($existing->type)) {
+      $args = array('!existing_link' => l('configure wordlet page.', "admin/wordlet/page/{$page['name']}/manage/{$existing->id}/configure"));
+      form_set_error('name', t('A wordlet with that name has already been added to the system, but has not yet been configured. The wordlet can be configured on the !existing_link', $args));
+    }
+    else {
+      form_set_error('name', t('A wordlet with that name already exists.'));
+    }
+  }
+}
+
+/**
  * Wordlet entity form save (submit) handler.
  */
 function wordlet_form_submit(&$form, &$form_state) {
