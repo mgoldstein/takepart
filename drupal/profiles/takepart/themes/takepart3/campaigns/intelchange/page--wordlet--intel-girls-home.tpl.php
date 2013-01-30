@@ -25,7 +25,7 @@
         </div>
         <div class="form-wrapper">
             <h3><?=w('form_title')?></h3>
-            <p>Give us your email and/or mobile number and we’ll keep you in the know.</p>
+            <p><?=w('form_subtitle')?></p>
             <form>
                 <div class="field-wrapper email">
                     <label for="email">Email</label>

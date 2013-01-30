@@ -83,7 +83,7 @@ var getCookie = function(c_name) {
 };
 
 // Wordlet toggle menu
-var $menu = $('<div id="wordlet_toggle"><a id="wordlets_show" href="">Show Wordlets</a><a id="wordlets_hide" href="">Hide Wordlets</a></div>');
+var $menu = $('<li id="wordlet_toggle"><a id="wordlets_show" href="">Show Wordlets</a><a id="wordlets_hide" href="">Hide Wordlets</a></li>');
 
 // Wordlet events & other setup
 $('body')
@@ -110,9 +110,10 @@ $('body')
 	.delegate('#wordlets_hide', 'click', function(e) {
 		setCookie('show_wordlets', '', -1);
 	})
-	.prepend($menu)
 	.addClass((getCookie('show_wordlets')?'':'hide_wordlets'))
 	;
 
+	$('#toolbar .toolbar-shortcuts .menu')
+		.append($menu);
 });
 })(window, jQuery);
