@@ -2,10 +2,11 @@
 $(function() {
 
 var rscript = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+var modal_id = 'wordlets_';
 
 var load_form = function(url, data) {
 	data = data || null;
-	$.tpmodal.show({id: 'wordlets'});
+	$.tpmodal.show({id: modal_id});
 
 	// Updated jQuery.load function, basically:
 	// Request the remote document
@@ -33,7 +34,7 @@ var load_form = function(url, data) {
 				// Sniff for a success and close the modal
 				var $success = $div.find('.messages.status');
 				if ( $success.length ) {
-					$.tpmodal.show({id: 'wordlets', html: $success});
+					$.tpmodal.show({id: modal_id, html: $success});
 					setTimeout(function() {
 						// $.tpmodal.hide({id: 'wordlets'});
 						location.reload(true);
@@ -83,7 +84,11 @@ var load_form = function(url, data) {
 						e.preventDefault();
 					});
 
-				$.tpmodal.show({id: 'wordlets', html: $div});
+				$.tpmodal.show({id: modal_id, html: $div, callback: function() {
+					setTimeout(function() {
+						$div.find('textarea').autosize();
+					}, 600);
+				}});
 
 				if ( $type.length ) {
 					type_change();
@@ -147,4 +152,195 @@ $('body')
 	$('#toolbar .toolbar-shortcuts .menu')
 		.append($menu);
 });
+
+/*
+
+Unobtrusive Accessible jQuery Auto Sizing Textarea
+
+Overview:
+	Makes textareas automatically expand when input nears the bottom.
+	If the textarea is resized, the new maxHeight is set to the textarea's
+	new height.
+
+	If you call the .autosize method on a textarea twice, the settings will
+	be set to the new method's parameters.
+
+Usage:
+	$('textarea').autosize();
+
+Parameters:
+	maxHeight: (Int) Maximum height textarea should resize to. null = no maximum
+		Default: null
+	expandAmount: (Int) Number of pixels to add to the height of the textarea
+		Default: 32
+	bufferHeight: (Int) How close in pixels to the bottom of the textarea
+						content should get
+		Default: 16
+	intervalTime: (Int) Time to wait to check for textarea change
+		Default: 400
+
+Authors:
+	http://james.padolsey.com, gburns
+
+TODO:
+
+*/
+
+$.fn.autosize = function(parameters) {
+	var settings = $.extend({
+		maxHeight: null,
+		expandAmount: 32,
+		bufferHeight: 16,
+		intervalTime: 400
+	}, parameters || {});
+
+	return this.each(function() {
+		var $this = $(this);
+		if ( !$this.is('textarea') ) $('textarea', this).autoexpand();
+
+		// Check to see if .autosize() has already been called on this textarea
+		if ( this.autosize_change_parameters ) {
+			this.autosize_change_parameters(settings);
+			return;
+		}
+
+		var $fauxbox;
+		var interval;
+		var keypressed = false;
+		var maxHeight = parseInt(settings.maxHeight);
+		var curHeight;
+		var ignorePropChange = false;
+		var expandAmount = parseInt(settings.expandAmount);
+		var bufferHeight = parseInt(settings.bufferHeight);
+		var intervalTime = parseInt(settings.intervalTime);
+
+		this.autosize_change_parameters = function(settings) {
+			maxHeight = parseInt(settings.maxHeight);
+			expandAmount = parseInt(settings.expandAmount);
+			bufferHeight = parseInt(settings.bufferHeight);
+			expand(true);
+		};
+
+		$this
+			.css({
+				overflowY: 'hidden',
+				resize: 'none'
+			})
+			.bind($.browser.msie ? 'propertychange' : 'DOMAttrModified', function() {
+				if ( !ignorePropChange && $this.css('height') != curHeight ) {
+					changeMaxHeight(parseInt($this.css('height')));
+				}
+			});
+
+		var changeMaxHeight = function(h) {
+			maxHeight = h;
+			if ( parseInt(curHeight) > maxHeight ) {
+				ignorePropChange = true;
+				$this.css({height: maxHeight});
+				$this.css({overflowY: 'auto'});
+				ignorePropChange = false;
+			}
+		};
+
+		// Only run expand if a key has been pressed
+		var checkExpand = function() {
+			if ( keypressed ) expand(true);
+		};
+
+		var expand = function(textchange) {
+			keypressed = false;
+
+			if ( textchange ) {
+				$fauxbox
+					.val($this.val());
+			}
+
+			$fauxbox
+				[0].scrollTop = 10000;
+
+			if ( $.browser.msie ) {
+				var rng = $fauxbox[0].createTextRange();
+				rng.collapse(false);
+				rng.select();
+			}
+
+			var fauxheight = $fauxbox.innerHeight() - parseInt($fauxbox.css('paddingTop')) - parseInt($fauxbox.css('paddingBottom'));
+			var thisheight = $this.innerHeight() - parseInt($this.css('paddingTop')) - parseInt($this.css('paddingBottom'));
+
+			var scrollTop = $fauxbox[0].scrollTop + fauxheight;
+
+			if ( maxHeight && scrollTop > maxHeight ) {
+				ignorePropChange = true;
+				$this.css({
+					overflowY: 'auto',
+					height: maxHeight
+				});
+				curHeight = $this.css('height');
+				ignorePropChange = false;
+			} else if ( scrollTop + bufferHeight > thisheight ) {
+				ignorePropChange = true;
+				$this.css({
+					height: scrollTop + expandAmount,
+					overflowY: 'hidden'
+				});
+				curHeight = $this.css('height');
+				ignorePropChange = false;
+			} else if ( scrollTop + bufferHeight < thisheight ) {
+				ignorePropChange = true;
+				$this.css({
+					height: scrollTop + expandAmount,
+					overflowY: 'hidden'
+				});
+				curHeight = $this.css('height');
+				ignorePropChange = false;
+			}
+		};
+
+		var makebox = function() {
+			if ( !$fauxbox ) $fauxbox = $this.clone().removeAttr('id').removeAttr('name').attr({tabIndex: -1});
+
+			$fauxbox.css({
+				position: 'absolute',
+				top: 0,
+				left: -10000,
+				resize: 'none',
+				width: $this.css('width'),
+				lineHeight: $this.css('lineHeight'),
+				textDecoration: $this.css('textDecoration'),
+				letterSpacing: $this.css('letterSpacing'),
+				fontSize: $this.css('fontSize'),
+				fontFamily: $this.css('fontFamily')
+			});
+
+			$fauxbox.appendTo('body');
+		};
+
+		var setKeyPressed = function() {
+			keypressed = true;
+		};
+
+		$this.bind('keyup', setKeyPressed);
+
+		$this.bind('focus', function() {
+			makebox();
+			interval = window.setInterval(checkExpand, intervalTime);
+		});
+
+		$this.bind('blur', function() {
+			clearInterval(interval);
+		});
+
+		makebox();
+
+		setTimeout(function() {
+			var val = $this.val();
+			$this.val('');
+			$this.val(val);
+			$fauxbox.val(val);
+			expand();
+		}, 0);
+	});
+};
+
+
 })(window, jQuery);

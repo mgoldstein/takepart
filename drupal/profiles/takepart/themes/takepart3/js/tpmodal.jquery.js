@@ -20,7 +20,8 @@ var defaults = {
 	urlSelector: '',
 	url: null,
 	node: null,
-	html: null
+	html: null,
+	callback: null
 };
 
 // Modal class
@@ -33,6 +34,7 @@ var tpmodal = function(parameters) {
 	settings.url = defaults.url;
 	settings.node = defaults.node;
 	settings.html = defaults.html;
+	settings.callback = defaults.callback;
 
 	this.settings = settings;
 	var $root = $(settings.root);
@@ -41,6 +43,7 @@ var tpmodal = function(parameters) {
 
 	var $overlay = $('<div/>')
 		.addClass(settings.prepend + 'overlay')
+		.addClass(settings.id + 'overlay')
 		.css({
 			position: 'fixed',
 			left: 0,
@@ -56,6 +59,7 @@ var tpmodal = function(parameters) {
 
 	var $modal = $('<div/>')
 		.addClass(settings.prepend + 'modal')
+		.addClass(settings.id + 'modal')
 		.css({
 			position: 'absolute',
 			// TODO: Find highest?
@@ -67,20 +71,25 @@ var tpmodal = function(parameters) {
 
 	var $modal_dummy = $modal.clone()
 		.addClass(settings.prepend + 'modal_dummy')
+		.addClass(settings.id + 'modal_dummy')
 		.attr({id: settings.id + 'modal_dummy'})
 		.hide();
 
 	var $modal_content = $('<div/>')
 		.addClass(settings.prepend + 'content')
+		.addClass(settings.id + 'content')
 		.css({
 			opacity: 0
 		});
 
 	var $modal_content_dummy = $modal_content.clone()
-		.addClass(settings.prepend + 'content_dummy');
+		.addClass(settings.prepend + 'content_dummy')
+		.addClass(settings.id + 'content_dummy')
+		;
 
 	var $close = $('<a href="#">Close</a>')
 		.addClass(settings.prepend + 'close')
+		.addClass(settings.id + 'close')
 		.css({
 			display: 'block',
 			position: 'absolute',
@@ -244,9 +253,11 @@ var tpmodal = function(parameters) {
 			$modal.animate(css, settings.speed, function() {
 				$modal.css({height: ''});
 				$modal_content.css({height: ''});
+				if ( settings.callback ) settings.callback();
 			});
 		} else {
 			$modal.css(css);
+			if ( settings.callback ) settings.callback();
 		}
 	};
 
