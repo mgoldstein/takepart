@@ -77,6 +77,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
       'eVar53', 'prop53',
       'eVar55', 'prop55',
       'eVar56', 'prop56',
+      'eVar60', 'prop60',
       'prop66',
       'prop67',
       'events'
@@ -89,6 +90,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
     s.eVar53 = s.prop53 = args.title;
     s.eVar55 = s.prop55 = args.action_type;
     s.eVar56 = s.prop56 = args.topic;
+    s.eVar60 = s.prop60 = args.empowered_by;
     s.prop66 = 'Share';
     s.prop67 = 'Share';
     s.tl(true, 'o', 'action thank you share');
