@@ -42,7 +42,7 @@
 			</div>
 
 			<div class="main">
-				<?=theme($content)?>
+				<?=$content?>
 			</div>
 			
 		</div><!-- /.table -->
