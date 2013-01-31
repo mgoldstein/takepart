@@ -263,7 +263,7 @@ function takepart_omniture_url_after_arg($path, $index = 0) {
  *
  */
 function takepart_omniture_str_decode($str) {
-    return strtolower(html_entity_decode($str, ENT_QUOTES));
+    return html_entity_decode($str, ENT_QUOTES);
 }
 
 function takepart_omniture_lowercase($str) {
