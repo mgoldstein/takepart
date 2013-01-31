@@ -22,11 +22,9 @@ define('WORDLET_JS_DIRECTORY', 'profiles/takepart/themes/takepart3/');
       // Access control flag
       'published' => TRUE,
       // When rendering a page Drupal uses two templates, one for the content
-      // and second to wrap around the content.
-      'templates' => array(
-        'wrapper' => 'html',
-        'content' => 'page__wordlet__intel_girls_home',
-      ),
+      // and second to wrap around the content. These are the wrapper templates
+      // if this key is left out it will be defaulted to a single 'html' wrapper
+      'wrappers' => array('html'),
       // CSS files to add when rendering the page, paths are relative to
       // WORDLET_CSS_DIRECTORY defined at the top of this file.
       'css' => array(
@@ -62,10 +60,6 @@ function _wordlet_configuration() {
       'title' => 'Intel Girls Home',
       'path' => 'intelgirls',
       'published' => TRUE,
-      'templates' => array(
-        'wrapper' => 'html',
-        'content' => 'page__wordlet__intel_girls_home',
-      ),
       'css' => array(
         'campaigns/intelchange/intelchange.css',
       ),
@@ -83,10 +77,6 @@ function _wordlet_configuration() {
       'title' => 'Place at the Table Home',
       'path' => 'place-at-the-table',
       'published' => TRUE,
-      'templates' => array(
-        'wrapper' => 'html',
-        'content' => 'page__wordlet__patt_home',
-      ),
       'css' => array(
         'css/slim-header.css',
         'campaigns/patt/patt.css',
@@ -96,6 +86,5 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'patt_campaign'),
     ),
-
   );
 }

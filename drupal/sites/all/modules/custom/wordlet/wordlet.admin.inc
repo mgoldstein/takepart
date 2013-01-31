@@ -464,7 +464,6 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
     '#default_value' => $entity->title,
     '#description' => t('The human-readable title of this wordlet'),
     '#required' => TRUE,
-    '#size' => 30,
   );
 
   if ($op == 'add') {
@@ -474,7 +473,6 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
       '#default_value' => $entity->name,
       '#description' => t('The machine-readable name of this wordlet'),
       '#required' => TRUE,
-      '#size' => 30,
     );
   }
 
@@ -496,7 +494,7 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
 
   $form['configuration']['allow_markup'] = array(
     '#title' => t('Format'),
-    '#description' => t('Format of the data value.'),
+    '#description' => t('Format of the value.'),
     '#type' => 'select',
     '#options' => array(
       0 => t('Plain Text'),
@@ -504,13 +502,6 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
       2 => t('Full HTML'),
     ),
     '#default_value' => $entity->allow_markup,
-  );
-
-  $form['configuration']['enabled'] = array(
-    '#title' => t('Enabled'),
-    '#description' => t('The worldet enabled state.'),
-    '#type' => 'checkbox',
-    '#default_value' => $entity->enabled,
   );
 
   $form['data'] = array(
@@ -531,23 +522,11 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
     '#default_value' => $entity->text_value,
   );
 
-  $form['data']['markup'] = array(
-    '#title' => t('Format'),
-    '#description' => t('Format of the value.'),
-    '#type' => 'select',
-    '#options' => array(
-      0 => t('Plain Text'),
-      1 => t('Simple HTML'),
-      2 => t('Full HTML'),
-    ),
-    '#default_value' => $entity->markup,
-  );
-
   $form['data']['integer_value'] = array(
     '#title' => t('Integer Value'),
     '#type' => 'textfield',
     '#default_value' => $entity->integer_value,
-    //'#element_validate' => array('element_validate_integer_positive'),
+    '#element_validate' => array('element_validate_integer'),
   );
 
   $form['actions'] = array('#type' => 'actions');
@@ -571,24 +550,8 @@ function wordlet_single_line_form($form, &$form_state, $entity, $op) {
     '#description' => $entity->description,
     '#type' => 'textfield',
     '#default_value' => $entity->string_value,
+    '#attributes' => array('class' => array('single-line-value')),
   );
-  if ($entity->allow_markup) {
-    $allowed_options = array(
-      0 => t('Plain Text'),
-      1 => t('Simple HTML'),
-    );
-    if ($entity->allow_markup == 2) {
-      $allowed_options[2] = t('Full HTML');
-    }
-    $form['markup'] = array(
-      '#title' => t('Format'),
-      '#description' => t('Format of the value.'),
-      '#type' => 'select',
-      '#options' => $allowed_options,
-      '#default_value' => $entity->markup,
-    );
-  }
-
   $form['description'] = array(
     '#title' => t('Description'),
     '#type' => 'markup',
@@ -616,24 +579,8 @@ function wordlet_multiple_lines_form($form, &$form_state, $entity, $op) {
     '#description' => $entity->description,
     '#type' => 'textarea',
     '#default_value' => $entity->text_value,
+    '#attributes' => array('class' => array('multiple-lines-value')),
   );
-  if ($entity->allow_markup) {
-    $allowed_options = array(
-      0 => t('Plain Text'),
-      1 => t('Simple HTML'),
-    );
-    if ($entity->allow_markup == 2) {
-      $allowed_options[2] = t('Full HTML');
-    }
-    $form['markup'] = array(
-      '#title' => t('Format'),
-      '#description' => t('Format of the value.'),
-      '#type' => 'select',
-      '#options' => $allowed_options,
-      '#default_value' => $entity->markup,
-    );
-  }
-
   $form['description'] = array(
     '#title' => t('Description'),
     '#type' => 'markup',
@@ -661,13 +608,15 @@ function wordlet_node_reference_form($form, &$form_state, $entity, $op) {
     '#description' => $entity->description,
     '#type' => 'textfield',
     '#default_value' => $entity->integer_value,
-    //'#element_validate' => array('element_validate_integer_positive'),
+    '#element_validate' => array('wordlet_validate_node_id'),
+    '#attributes' => array('class' => array('node-reference-nid')),
   );
   $form['string_value'] = array(
     '#title' => t('View Mode'),
     '#description' => t('The view mode to display'),
     '#type' => 'textfield',
     '#default_value' => $entity->string_value,
+    '#attributes' => array('class' => array('node-reference-view-mode')),
   );
 
   $form['description'] = array(
@@ -690,7 +639,15 @@ function wordlet_node_reference_form($form, &$form_state, $entity, $op) {
   return $form;
 }
 
+function wordlet_validate_node_id($element, &$form_state) {
+  $value = $element['#value'];
+  if ($value !== '' && (!is_numeric($value) || intval($value) != $value || $value < 0)) {
+    form_error($element, t('%name must be a positive integer.', array('%name' => $element['#title'])));
+  }
+}
+
 function wordlet_form($form, &$form_state, $entity, $op) {
+  $form_state['wordlet_op'] = $op;
   if ($op == 'add' || $op == 'configure') {
     return wordlet_configuration_form($form, $form_state, $entity, $op);
   }
@@ -740,6 +697,13 @@ function wordlet_form_submit(&$form, &$form_state) {
 
   // Build entity from the form.
   $entity = entity_ui_form_submit_build_entity($form, $form_state);
+
+  // When configuring a wordlet, the markup format will be set to
+  // the allowed markup format as that is the format most likely to
+  // be used.
+  if ($form_state['wordlet_op'] == 'confgure') {
+    $entity->markup = $entity->allow_markup;
+  }
 
   // Save the entity.
   $status = $entity->save();

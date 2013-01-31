@@ -54,16 +54,9 @@ function _wordlet_page_defaults(&$page, $name) {
     // Those configurations with a path should have content and wrapper
     // templates, a list of JS files, and a list of CSS files.
     $page += array(
-      'templates' => array(
-        'content' => 'page',
-        'wrapper' => 'html',
-      ),
+      'wrappers' => array('html'),
       'css' => array(),
       'js' => array(),
-    );
-    $page['templates'] += array(
-      'content' => 'page',
-      'wrapper' => 'html',
     );
   }
   return $page;
@@ -239,8 +232,81 @@ function wordlet_menu() {
       'page arguments' => array(1),
       'access callback' => 'wordlet_page_access',
       'access arguments' => array('view', 1),
+      //'type' => MENU_NORMAL_ITEM,
+    ),
+    'wordlet/%wordlet_page/view' => array(
+      'title' => 'View',
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'weight' => -10,
+    ),
+    'wordlet/%wordlet_page/edit' => array(
+      'title' => 'Edit',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('wordlet_page_edit_form', 1),
+      'access callback' => 'wordlet_access',
+      'access arguments' => array('edit'),
+      'weight' => 0,
+      'type' => MENU_LOCAL_TASK,
     ),
   );
+}
+
+/**
+ * Implements hook_admin_paths().
+ */
+function wordlet_admin_paths() {
+  return array(
+    'wordlet/*/edit' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function wordlet_theme() {
+  $hooks = array();
+
+  foreach (wordlet_page_load() as $name => $page) {
+
+    if (!empty($page['path'])) {
+
+      // content hook
+      $theme_name = str_replace('_', '-', $wrapper);
+      $hooks["wordlet_{$name}"] = array(
+        'variables' => array(),
+        'template' => "wordlet-{$theme_name}",
+        'preprocess functions' => array(
+          'wordlet_preprocess_page_template',
+        ),
+      );
+
+      // wrapper hooks
+      foreach ($page['wrappers'] as $wrapper) {
+        $theme_wrapper = str_replace('_', '-', $wrapper);
+        if (!isset($hooks["wordlet_wrapper_{$wrapper}"])) {
+          $hooks["wordlet_wrapper_{$wrapper}"] = array(
+            'variables' => array(),
+            'template' => "wordlet-wrapper-{$theme_wrapper}",
+            'preprocess functions' => array(
+              'wordlet_preprocess_wrapper_template',
+            ),
+            'override preprocess functions' => TRUE,
+          );
+        }
+      }
+    }
+  }
+  return $hooks;
+}
+
+function wordlet_preprocess_page_template(&$variables) {
+  _tp3_fill_template_vars($variables);
+  $variables['header'] = theme('takepart3_header', $variables);
+  $variables['footer'] = theme('takepart3_footer', $variables);
+}
+
+function wordlet_preprocess_wrapper_template(&$variables) {
+
 }
 
 /**
@@ -265,7 +331,7 @@ function wordlet_url_inbound_alter(&$path, $original_path, $path_language) {
  */
 function wordlet_url_outbound_alter(&$path, &$options, $original_path) {
   $matches = array();
-  if (preg_match('|^wordlet/([A-Za-z0-9_]+)$|', $path, $matches)) {
+  if (preg_match('|^wordlet/([A-Za-z0-9_]+)(/view)?$|', $path, $matches)) {
     $wordlet_page = wordlet_page_load($matches[1]);
     if ($wordlet_page !== FALSE && !empty($wordlet_page['path'])) {
       $path = $wordlet_page['path'];
@@ -279,8 +345,16 @@ function wordlet_url_outbound_alter(&$path, &$options, $original_path) {
 function wordlet_page_alter(&$page) {
   $config = wordlet_active_page();
   if ($config !== FALSE) {
-    $page['#theme'] = $config['templates']['content'];
-    $page['#theme_wrappers'] = array($config['templates']['wrapper']);
+    $page['#theme'] = "wordlet_{$config['name']}";
+    $page['#theme_wrappers'] = array();
+    foreach ($config['wrappers'] as $wrapper) {
+      if ($wrapper == 'html') {
+        $page['#theme_wrappers'][] = $wrapper;
+      }
+      else {
+        $page['#theme_wrappers'][] = "wordlet_wrapper_{$wrapper}";
+      }
+    }
   }
 }
 
@@ -443,6 +517,19 @@ function wordlet_page_import_form($form, &$form_state, $page) {
   return $form;
 }
 
+/**
+ * Wordlet page full page edit form
+ */
+function wordlet_page_edit_form($form, &$form_state, $page) {
+
+  $form['wordlets'] = array(
+    '#type' => 'fieldset',
+    '#title' => 'Wordlets',
+  );
+
+  return $form;
+}
+
 function wordlet_load_for_page($page) {
 
   $wordlets = array();
@@ -494,11 +581,6 @@ function wordlet_page_view_callback($page) {
     return drupal_not_found();
   }
 
-  // No template for the page.
-  if (empty($page['templates'])) {
-    return drupal_not_found();
-  }
-
   // Load the wordlets that will be used on the page
   $page['wordlets'] = wordlet_load_for_page($page);
 
@@ -515,8 +597,16 @@ function wordlet_page_view_callback($page) {
 
   if (wordlet_access('edit')) {
     $path = drupal_get_path('module', 'wordlet');
-    drupal_add_css($path . '/css/wordlet.css');
-    drupal_add_js($path . '/js/wordlet.js');
+    drupal_add_css($path . '/css/wordlet.css', array(
+      'type' => 'file',
+      'group' => CSS_THEME,
+      'weight' => 20,
+    ));
+    drupal_add_js($path . '/js/wordlet.js', array(
+      'type' => 'file',
+      'group' => JS_THEME,
+      'weight' => 20,
+    ));
   }
 
   // Structure is in the template, content in the wordlets.
@@ -525,6 +615,9 @@ function wordlet_page_view_callback($page) {
 
 function wordlet($name) {
   $page = wordlet_active_page();
+  if ($page === FALSE) {
+    return NULL;
+  }
   if (isset($page['wordlets'][$name])) {
     $wordlet = $page['wordlets'][$name];
   }
