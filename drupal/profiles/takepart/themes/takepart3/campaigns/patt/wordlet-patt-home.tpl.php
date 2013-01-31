@@ -34,7 +34,7 @@
 			<form name="email-form" action="" method="get">
 			<h3>email signup</h3>
 		    <div class="input"><input type="text"  name="email"></div>
-            <div class="submit"><input type="image" value="Submit" src="images/interior-form-btn.png"></div>
+            <div class="submit"><input type="image" value="Submit" src="/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-form-btn.png"></div>
 			</form>
 		</div>
 		<div class="sponsored">

@@ -35,6 +35,7 @@ scripts[] = js/actions.js
 
 scripts[] = js/tpmodal.jquery.js
 scripts[] = js/tpsticky.jquery.js
+scripts[] = js/autosize.jquery.js
 
 features[] = favicon
 
