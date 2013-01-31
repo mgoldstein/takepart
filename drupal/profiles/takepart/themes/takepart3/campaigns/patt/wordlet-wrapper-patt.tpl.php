@@ -17,7 +17,7 @@
 			
 			<div class="nav">
 				<ul>
-					<li class="active"><span>the film</span></li>
+					<li class="active"><a href="http://stage.bltdigital.com/apatt/film.html"><span>the film</span></a></li>
 					<li><a href="http://stage.bltdigital.com/apatt/take-action.html"><span>take action</span></a></li>
 					<li><a href="http://stage.bltdigital.com/apatt/gallery.html"><span>gallery: snap alum</span></a></li>
 					<li><a href="http://stage.bltdigital.com/apatt/book.html"><span>the book</span></a></li>
@@ -25,19 +25,6 @@
 					<li><a href="http://stage.bltdigital.com/apatt/news.html"><span>news</span></a></li>
 					<li><a href="http://stage.bltdigital.com/apatt/events.html"><span>events + resources</span></a></li>
 					<li><a href="http://stage.bltdigital.com/apatt/assistance.html"><span>i need food assistance</span></a></li>
-				</ul>
-			</div>
-			
-			<div class="nav-overlay">
-				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
 				</ul>
 			</div>
 

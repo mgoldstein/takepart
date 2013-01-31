@@ -192,32 +192,55 @@
 }
 
 .table.int .nav ul {
-	display:table-row;
 }
 
 .table.int .nav li {
 	float:left;
 	width:125px;
 	height:86px;
-	background:url('images/interior-nav-bg-white.png') no-repeat;
 	list-style:none;
+	margin-right:-15px;
+	position: relative;
+}
+
+.table.int .nav li a {
 	font-family: 'Raleway', sans-serif;
 	font-weight:700;
 	text-transform:uppercase;
 	font-size:13px;
 	line-height:13px;
 	text-align:center;
-	display: table-cell;
 	vertical-align: middle;
-	margin-right:-15px;
+	position: relative;
+	z-index: 51;
+	display: block;
+
 }
 
-.table.int .nav .active, .table.int .nav .hover {
+.table.int .nav li a:hover {
+	color:#fff;
+}
+
+.table.int .nav li:after {
+	background:url('images/interior-nav-bg-white.png') no-repeat;
+	z-index: 49;
+	position: absolute;
+	display: block;
+	width:125px;
+	height:86px;
+	top: 0;
+	left: 0;
+	content: " ";
+}
+
+.table.int .nav li:hover:after,
+.table.int .nav .hover {
 	background:url('images/interior-nav-bg-blue.png') no-repeat;
 	color:#fff;
 }
 
-.table.int .nav .active a, .table.int .nav .hover a {
+.table.int .nav .active a,
+.table.int .nav .hover a {
 	color:#fff;
 }
 
