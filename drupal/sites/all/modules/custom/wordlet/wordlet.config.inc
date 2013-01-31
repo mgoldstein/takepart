@@ -77,6 +77,7 @@ function _wordlet_configuration() {
       'title' => 'Place at the Table Home',
       'path' => 'place-at-the-table',
       'published' => TRUE,
+      'wrappers' => array('patt', 'html'),
       'css' => array(
         'css/slim-header.css',
         'campaigns/patt/patt.css',
