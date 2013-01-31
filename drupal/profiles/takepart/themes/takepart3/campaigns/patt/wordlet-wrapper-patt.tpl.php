@@ -1,3 +1,5 @@
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,700,900' rel='stylesheet' type='text/css'>
+
 <div id="page-wrapper" class="campaign">
 	<?php print $header ?>
 

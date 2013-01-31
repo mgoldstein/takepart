@@ -2,9 +2,6 @@
    Author's custom styles
    ========================================================================== */
 
-@import url(http://fonts.googleapis.com/css?family=Raleway:500,700,900);
-
-
 .page-wordlet-patt-home {
 	background: url('images/bg-wood.jpg') #EFF3F5 repeat;
 	color: #333;
@@ -35,7 +32,14 @@
 .table {
 	width:1000px;
 	/*background:url(images/table-bg.png) no-repeat;*/
-	background: rgba(0,0,0,.3);
+
+	background: -moz-linear-gradient(left,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.65)), color-stop(25%,rgba(0,0,0,0)), color-stop(75%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 75%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 75%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 75%,rgba(0,0,0,0.65) 100%); /* IE10+ */
+	background: linear-gradient(to right,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 75%,rgba(0,0,0,0.65) 100%); /* W3C */
+
 	position:relative;
 	/*top:25px;*/
 }
@@ -169,6 +173,7 @@
 	/*top:25px;*/
 	font-family: 'Raleway', sans-serif;
 	font-weight:700;
+	padding-bottom: 200px;
 }
 
 .table.int .header {
@@ -301,6 +306,7 @@
 	width:638px;
 	float:left;
 	background: rgba(0,0,0,.2);
+	height: 100%;
 }
 
 .table.int .main .column-1 ol {
@@ -341,12 +347,17 @@
 	color:#fff;
 	font-size:15px;
 	font-weight:500;
+	margin: 2em 0 1em 0;
 }
 
-.table.int .main .column-2 .inner div#scrollbar1 {
+.table.int .main .column-2 .inner {
 	color:#fff;
 	font-size:14px;
 	font-weight:500;
+}
+
+.table.int .main .column-2 .inner p {
+	color:#fff;
 }
 
 .table.int .main .column-3 .email-signup {
@@ -406,13 +417,27 @@
    Media Queries
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
+@media only screen and (max-width: 999px) {
+  #footer,
+  #page-wrapper {
+    width: auto;
+  }
 
-}
+  * {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 100% !important;
+  }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (min-resolution: 144dpi) {
+  img {
+    height: auto !important;
+  }
 
+  /* nav */
+  #top-follow-wrapper {
+  	display: none;
+  }
 }
 
 /* ==========================================================================
