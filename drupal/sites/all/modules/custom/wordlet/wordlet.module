@@ -285,7 +285,7 @@ function wordlet_theme() {
         $theme_wrapper = str_replace('_', '-', $wrapper);
         if (!isset($hooks["wordlet_wrapper_{$wrapper}"])) {
           $hooks["wordlet_wrapper_{$wrapper}"] = array(
-            'render element' => 'content',
+            'render element' => 'unprocessed_content',
             'template' => "wordlet-wrapper-{$theme_wrapper}",
             'preprocess functions' => array(
               'wordlet_preprocess_wrapper_template',
@@ -306,7 +306,8 @@ function wordlet_preprocess_page_template(&$variables) {
 }
 
 function wordlet_preprocess_wrapper_template(&$variables) {
-
+  $variables['content'] = theme($variables['unprocessed_content']);
+  unset($variables['unprocessed_content']);
 }
 
 /**
