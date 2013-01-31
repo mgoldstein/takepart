@@ -62,7 +62,7 @@ var load_form = function(url, data) {
 							$text.show();
 							$integer.hide();
 						} else {
-							$string.hide();
+							$string.show();
 							$text.hide();
 							$integer.show();
 						}
