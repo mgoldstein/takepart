@@ -116,9 +116,16 @@ class WordletController extends EntityAPIControllerExportable {
 
     $value = $this->viewMarkup($entity);
 
+    if (trim($value) == false) {
+      $classes = 'empty wordlet';
+    }
+    else {
+      $classes = 'wordlet';
+    }
+
     if ($entity->type == 'multiple-lines' || $entity->markup) {
       return implode('', array(
-        '<div class="wordlet">',
+        '<div class="' . $classes . '">',
         $value,
         $edit_link,
         $configure_link,
@@ -127,7 +134,7 @@ class WordletController extends EntityAPIControllerExportable {
     }
     else {
       return implode('', array(
-        '<span class="wordlet">',
+        '<span class="' . $classes . '">',
         $value,
         $edit_link,
         $configure_link,
