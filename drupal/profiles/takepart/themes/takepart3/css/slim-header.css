@@ -63,21 +63,21 @@
 #block-menu-block-1 li.dhtml-menu a {
 	background: none;
 	color: #000;
-	background: url(/profiles/takepart/themes/takepart3/images/dot-bbg.png) no-repeat 0 7px;
-	padding: 0 7px 0 12px;
+	background: url(/profiles/takepart/themes/takepart3/images/dot-bbg.png) no-repeat right 7px;
+	padding: 0 12px 0 7px;
 	white-space: nowrap;
 }
 
-#block-menu-block-1 li.first a {
+#block-menu-block-1 li.last a {
 	background-image: none;
 }
 
 #block-menu-block-1 li.dhtml-menu a:hover {
 	color: #000;
-	background: url(/profiles/takepart/themes/takepart3/images/dot-bbg.png) no-repeat 0 7px;
+	background: url(/profiles/takepart/themes/takepart3/images/dot-bbg.png) no-repeat right 7px;
 }
 
-#block-menu-block-1 li.dhtml-menu.first a:hover {
+#block-menu-block-1 li.dhtml-menu.last a:hover {
 	background-image: none;
 }
 

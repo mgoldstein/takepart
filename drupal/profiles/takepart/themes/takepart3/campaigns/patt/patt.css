@@ -417,27 +417,75 @@
    Media Queries
    ========================================================================== */
 
-@media only screen and (max-width: 999px) {
-  #footer,
-  #page-wrapper {
-    width: auto;
-  }
+@media only screen and (max-width: 499px) {
+	#footer,
+	#page-wrapper {
+		width: auto;
+	}
 
-  * {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    max-width: 100% !important;
-  }
+	* {
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		max-width: 100% !important;
+	}
 
-  img {
-    height: auto !important;
-  }
+	img {
+		height: auto !important;
+	}
 
-  /* nav */
-  #top-follow-wrapper {
-  	display: none;
-  }
+	/* nav */
+	#top-follow-wrapper {
+		display: none;
+	}
+
+	.header-right {
+		display: inline;
+		float: none;
+	}
+
+	.header-right #nav-wrap {
+		display: inline;
+		float: none;
+	}
+
+	.header-right #nav-wrap:after {
+		display: none;
+	}
+
+	#block-menu-block-1 {
+		display: inline;
+		float: none;
+	}
+
+	/* patt */
+	.table.int .main {
+		margin: 0;
+	}
+
+	.table.int .main,
+	.table.int .main .column-1,
+	.table.int .main .column-2,
+	.table.int .main .column-3 {
+		height: auto !important;
+		width: auto;
+		float: none;
+		margin: 0;
+	}
+
+	.table.int .main .column-1 {
+		display: none;
+	}
+
+	.table.int .main .column-3 .content {
+		margin-top: 0 !important;
+		position: static !important;
+	}
+
+	.table.int .nav li {
+		margin-right: 0;
+	}
+
 }
 
 /* ==========================================================================
