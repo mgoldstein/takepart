@@ -303,19 +303,23 @@ function wordlet_theme() {
 
 function wordlet_preprocess_page_template(&$variables) {
   _tp3_fill_template_vars($variables);
+  $variables['header'] = theme('takepart3_header', $variables);
   $tabs = menu_local_tabs();
-  $header = theme('takepart3_header', $variables);
   if ($tabs) {
-    $header .= render($tabs);
+    $variables['header'] .= render($tabs);
+
   }
-  $variables['header'] = $header;
   $variables['footer'] = theme('takepart3_footer', $variables);
 }
 
 function wordlet_preprocess_wrapper_template(&$variables) {
   _tp3_fill_template_vars($variables);
-  $variables['tabs'] = menu_local_tabs();
   $variables['header'] = theme('takepart3_header', $variables);
+  $tabs = menu_local_tabs();
+  if ($tabs) {
+    $variables['header'] .= render($tabs);
+
+  }
   $variables['footer'] = theme('takepart3_footer', $variables);
   $variables['content'] = theme($variables['unprocessed_content']);
   unset($variables['unprocessed_content']);
@@ -656,6 +660,7 @@ function wordlet_page_import_form_submit($form, &$form_state) {
 
       // Save.
       $entity->save();
+      $imported += 1;
     }
   }
 
