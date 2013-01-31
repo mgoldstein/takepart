@@ -589,10 +589,18 @@ function wordlet_page_view_callback($page) {
 
   // Add the page CSS and JS.
   foreach ($page['css'] as $filename) {
-    drupal_add_css(WORDLET_CSS_DIRECTORY . $filename);
+    drupal_add_css(WORDLET_CSS_DIRECTORY . $filename, array(
+      'type' => 'file',
+      'group' => CSS_THEME,
+      'weight' => 20,
+    ));
   }
   foreach ($page['js'] as $filename) {
-    drupal_add_js(WORDLET_JS_DIRECTORY . $filename);
+    drupal_add_js(WORDLET_JS_DIRECTORY . $filename, array(
+      'type' => 'file',
+      'group' => JS_THEME,
+      'weight' => 20,
+    ));
   }
 
   if (wordlet_access('edit')) {
