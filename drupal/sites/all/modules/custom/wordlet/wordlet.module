@@ -285,7 +285,7 @@ function wordlet_theme() {
         $theme_wrapper = str_replace('_', '-', $wrapper);
         if (!isset($hooks["wordlet_wrapper_{$wrapper}"])) {
           $hooks["wordlet_wrapper_{$wrapper}"] = array(
-            'variables' => array(),
+            'render element' => 'content',
             'template' => "wordlet-wrapper-{$theme_wrapper}",
             'preprocess functions' => array(
               'wordlet_preprocess_wrapper_template',
