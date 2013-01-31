@@ -13,3 +13,18 @@ body #dontmiss-nav {
 	display: none;
 }
 
+body .user-menu-my.account {
+	white-space: nowrap;
+	width: 63px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: inline-block;
+}
+
+body #logo a {
+	background: url(../images/logo-sm-slim.png) no-repeat;
+	display: block;
+	height: 42px;
+	text-indent: -9000px;
+	width: 42px;
+}
