@@ -306,6 +306,9 @@ function wordlet_preprocess_page_template(&$variables) {
 }
 
 function wordlet_preprocess_wrapper_template(&$variables) {
+  _tp3_fill_template_vars($variables);
+  $variables['header'] = theme('takepart3_header', $variables);
+  $variables['footer'] = theme('takepart3_footer', $variables);
   $variables['content'] = theme($variables['unprocessed_content']);
   unset($variables['unprocessed_content']);
 }
