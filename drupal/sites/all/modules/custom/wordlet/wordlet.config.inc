@@ -88,6 +88,7 @@ function _wordlet_configuration() {
         'content' => 'page__wordlet__patt_home',
       ),
       'css' => array(
+        'css/slim-header.css',
         'campaigns/patt/patt.css',
       ),
       'js' => array(
