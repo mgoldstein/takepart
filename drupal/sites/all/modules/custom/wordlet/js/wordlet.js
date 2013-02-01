@@ -150,7 +150,11 @@ $('body')
 	;
 
 	$('#toolbar .toolbar-shortcuts .menu')
-		.append($menu);
+		.append($menu)
+		.append($('.tabs.primary li'));
+
+
+
 });
 
 })(window, jQuery);

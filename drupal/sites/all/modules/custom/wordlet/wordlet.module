@@ -880,6 +880,24 @@ function w($name) {
   return wordlet($name);
 }
 
+// Return URL for requested wordlet page
+function wordlet_url($name) {
+  $config = _wordlet_configuration();
+  if ( isset($config[$name]) && isset($config[$name]['path']) ) {
+    return '/' . $config[$name]['path'];
+  }
+
+  return '';
+}
+
+function wu() {
+  try {
+    return call_user_func_array('wordlet_url', func_get_args());
+  } catch (Exception $e) {
+    return '';
+  }
+}
+
 function wordlet_edit_mode($configure = FALSE) {
   if (!empty($_COOKIE['show_wordlets'])) {
     if ($configure) {

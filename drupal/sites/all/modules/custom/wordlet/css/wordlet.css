@@ -41,3 +41,22 @@
 .wordlets_modal input[type="text"] {
     width: 300px;
 }
+
+/* Drupal admin bar */
+
+#toolbar {
+    position: static;
+    margin: 0;
+}
+
+div#toolbar div.toolbar-shortcuts ul {
+    height: auto;
+}
+
+ul.tabs.primary {
+    display: none;
+}
+
+body {
+    padding-top: 0 !important;
+}

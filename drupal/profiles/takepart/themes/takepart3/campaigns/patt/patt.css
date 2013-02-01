@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .page-wordlet-patt-home {
-	background: url('images/bg-wood.jpg') #EFF3F5 repeat;
+	background: url('/profiles/takepart/themes/takepart3/campaigns/patt/images/bg-wood.jpg') #EFF3F5 repeat;
 	color: #333;
 	font-size: 12px;
 	font-family: Helvetica,Arial,sans-serif;
@@ -31,7 +31,7 @@
 
 .table {
 	width:1000px;
-	/*background:url(images/table-bg.png) no-repeat;*/
+	/*background:url(/profiles/takepart/themes/takepart3/campaigns/patt/images/table-bg.png) no-repeat;*/
 
 	background: -moz-linear-gradient(left,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.65)), color-stop(25%,rgba(0,0,0,0)), color-stop(75%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
@@ -168,7 +168,7 @@
 
 .table.int {
 	width:1000px;
-	/*background:url(images/interior-page-bg.png) no-repeat;*/
+	/*background:url(/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-page-bg.png) no-repeat;*/
 	position:relative;
 	/*top:25px;*/
 	font-family: sans-serif;
@@ -177,7 +177,7 @@
 }
 
 .table.int .header {
-	background:url('images/interior-header-bg.png') no-repeat center top;
+	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-header-bg.png') no-repeat center top;
 	height:132px;
 	position:relative;
 	top:13px;
@@ -227,7 +227,7 @@
 }
 
 .table.int .nav li:after {
-	background:url('images/interior-nav-bg-white.png') no-repeat;
+	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-nav-bg-white.png') no-repeat;
 	z-index: 49;
 	position: absolute;
 	display: block;
@@ -240,7 +240,7 @@
 
 .table.int .nav li:hover:after,
 .table.int .nav .hover {
-	background:url('images/interior-nav-bg-blue.png') no-repeat;
+	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-nav-bg-blue.png') no-repeat;
 	color:#fff;
 }
 
@@ -281,7 +281,7 @@
 }
 
 .table.int .main {
-	background:url('images/interior-main-bg.png') no-repeat;
+	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-main-bg.png') no-repeat;
 	background: rgba(0,0,0,.3);
 	width:982px;
 	margin-top:25px;
@@ -317,7 +317,7 @@
 	list-style:none;
 	min-height:22px;
 	width:92px;
-	background:url('images/interior-chevron.png') no-repeat top left;
+	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-chevron.png') no-repeat top left;
 	padding-left:35px;
 	margin-bottom:30px;
 }
@@ -411,13 +411,27 @@
 	margin:0;
 }
 
+#mobile_back a {
+	display: block;
+	background: #000 url(/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-chevron-left.png) left center no-repeat;
+	background-color: rgba(0,0,0,.6);
+	padding: 10px;
+	padding-left: 25px;
+}
 
+.mobile {
+	display: none;
+}
 
 /* ==========================================================================
    Media Queries
    ========================================================================== */
 
 @media only screen and (max-width: 499px) {
+	.mobile {
+		display: block;
+	}
+
 	#footer,
 	#page-wrapper {
 		width: auto;
