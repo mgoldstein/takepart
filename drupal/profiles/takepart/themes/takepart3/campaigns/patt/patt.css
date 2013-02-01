@@ -458,6 +458,12 @@
 		float: none;
 	}
 
+	#header-wrapper {
+		margin: 0;
+		position: relative;
+		z-index: 2;
+	}
+
 	/* patt */
 	.table.int .main {
 		margin: 0;
@@ -473,6 +479,7 @@
 		margin: 0;
 	}
 
+	.table.int .nav,
 	.table.int .main .column-1 {
 		display: none;
 	}
@@ -484,6 +491,18 @@
 
 	.table.int .nav li {
 		margin-right: 0;
+	}
+
+	.table.int .header {
+		height: auto;
+		background: none;
+		top: 0;
+	}
+
+	.table.int .header .logo {
+		position: static;
+		text-align: center;
+		margin-top: 0;
 	}
 
 }

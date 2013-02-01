@@ -31,6 +31,8 @@ TODO:
 
 */
 
+(function(window, $, undefined) {
+
 $.fn.autosize = function(parameters) {
 	var settings = $.extend({
 		maxHeight: null,
@@ -187,3 +189,4 @@ $.fn.autosize = function(parameters) {
 	});
 };
 
+})(window, jQuery);
