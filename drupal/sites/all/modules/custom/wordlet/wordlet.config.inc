@@ -87,5 +87,21 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'patt_campaign'),
     ),
+
+    // Place at the Table Film
+    'patt_film' => array(
+      'title' => 'Place at the Table - Film',
+      'path' => 'place-at-the-table/film',
+      'published' => TRUE,
+      'wrappers' => array('patt', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
   );
 }

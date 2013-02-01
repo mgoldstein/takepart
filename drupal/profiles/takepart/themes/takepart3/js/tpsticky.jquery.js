@@ -56,7 +56,8 @@ $.fn.tpsticky = function(parameters) {
 					.removeClass('below').removeClass('inside').removeClass('above')
 					.css({
 						position: 'static',
-						marginTop: 0
+						marginTop: 0,
+						width: ''
 					})
 					.width($this.width())
 					;

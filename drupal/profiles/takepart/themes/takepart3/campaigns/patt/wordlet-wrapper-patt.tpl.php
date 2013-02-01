@@ -8,11 +8,9 @@
 		
 			<div class="header">
 				<div class="logo">
-					<img src="http://stage.bltdigital.com/apatt/images/interior-logo.png" width="357" height="206" alt="Interior Logo" usemap="#logo">
-					<map name="logo" id="logo">
-					  <area shape="poly" coords="13,87,59,16,343,57,344,132,254,153,232,177,200,176,175,158,58,174,61,122" href="index.html" />
-					</map>
+					<a href="<?=wu('patt_home')?>"><img src="http://stage.bltdigital.com/apatt/images/interior-logo.png" width="357" height="206" alt="Interior Logo" usemap="#logo"></a>
 				</div>
+				<a href="<?=wu('patt_home')?>">
 			</div>
 			
 			<div class="nav">

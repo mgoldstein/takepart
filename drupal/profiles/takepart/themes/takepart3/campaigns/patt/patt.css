@@ -472,9 +472,13 @@
 	}
 
 	/* patt */
+	.table.int {
+		padding: 0 1em;
+	}
+
 	.table.int .main {
 		margin: 0;
-		padding: 0 1em;
+		background: #000;
 	}
 
 	.table.int .main,
