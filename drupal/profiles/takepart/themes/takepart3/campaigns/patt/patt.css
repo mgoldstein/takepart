@@ -464,9 +464,17 @@
 		z-index: 2;
 	}
 
+	/* wrap */
+	.page-wrap {
+		top: -46px;
+		position: relative;
+		z-index: 1;
+	}
+
 	/* patt */
 	.table.int .main {
 		margin: 0;
+		padding: 0 1em;
 	}
 
 	.table.int .main,
