@@ -735,7 +735,7 @@ function takepart3_field__field_action_url(&$vars) {
             'href' => 'javascript:void();',
         );
         if ($item['url'] !== 'local') {
-            $attributes['action-href'] = $item['url'];
+            $attributes['action-href'] = $item['display_url'];
         }
         if (isset($item['attributes'])) {
             if (isset($item['attributes']['target'])) {
