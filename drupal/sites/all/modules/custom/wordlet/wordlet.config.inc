@@ -74,7 +74,7 @@ function _wordlet_configuration() {
 
     // Place at the Table Home
     'patt_home' => array(
-      'title' => 'Place at the Table Home',
+      'title' => 'A Place at the Table - Home',
       'path' => 'place-at-the-table',
       'published' => TRUE,
       'wrappers' => array('patt', 'html'),
@@ -88,10 +88,106 @@ function _wordlet_configuration() {
       'load' => array('site', 'patt_campaign'),
     ),
 
-    // Place at the Table Film
+    // Place at the Table - Film
     'patt_film' => array(
-      'title' => 'Place at the Table - Film',
+      'title' => 'A Place at the Table - Film',
       'path' => 'place-at-the-table/film',
+      'published' => TRUE,
+      'wrappers' => array('patt', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
+    // Place at the Table - Take Action
+    'patt_action' => array(
+      'title' => 'A Place at the Table - Take Action',
+      'path' => 'place-at-the-table/action',
+      'published' => TRUE,
+      'wrappers' => array('patt', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
+    // Place at the Table - Snap Alumni
+    'patt_snap' => array(
+      'title' => 'A Place at the Table - Gallery: SNAP Alumni',
+      'path' => 'place-at-the-table/snap-alumni',
+      'published' => TRUE,
+      'wrappers' => array('patt', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
+    // Place at the Table - The Book
+    'patt_book' => array(
+      'title' => 'A Place at the Table - The Book',
+      'path' => 'place-at-the-table/book',
+      'published' => TRUE,
+      'wrappers' => array('patt', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
+    // Place at the Table - Events & Resources
+    'patt_events' => array(
+      'title' => 'A Place at the Table - Events &amp; Resources',
+      'path' => 'place-at-the-table/events-resources',
+      'published' => TRUE,
+      'wrappers' => array('patt', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
+    // Place at the Table - Alliances
+    'patt_alliances' => array(
+      'title' => 'A Place at the Table - Alliances',
+      'path' => 'place-at-the-table/alliances',
+      'published' => TRUE,
+      'wrappers' => array('patt', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
+    // Place at the Table - I Need Food Assistance
+    'patt_assistance' => array(
+      'title' => 'A Place at the Table - I Need Food Assistance',
+      'path' => 'place-at-the-table/assistance',
       'published' => TRUE,
       'wrappers' => array('patt', 'html'),
       'css' => array(

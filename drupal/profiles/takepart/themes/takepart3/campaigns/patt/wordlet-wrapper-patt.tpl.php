@@ -8,9 +8,9 @@
 		
 			<div class="header">
 				<div class="logo">
-					<a href="<?=wu('patt_home')?>"><img src="http://stage.bltdigital.com/apatt/images/interior-logo.png" width="357" height="206" alt="Interior Logo" usemap="#logo"></a>
+					<a href="?=wu('patt_home')?"><img src="http://stage.bltdigital.com/apatt/images/interior-logo.png" width="357" height="206" alt="Interior Logo" usemap="#logo"></a>
 				</div>
-				<a href="<?=wu('patt_home')?>">
+				<a href="?=@wu('patt_home')?">
 			</div>
 			
 			<div class="nav">
