@@ -101,6 +101,7 @@ class WordletController extends EntityAPIControllerExportable {
         '<span ',
         'class="wordlet_edit" ',
         'data-href="/admin/wordlet/page/' . $entity->page . '/manage/' . $entity->id . '/edit"',
+        '>',
         t('Edit @name', array('@name' => $entity->name)),
         '</span>'
       ));
@@ -114,6 +115,7 @@ class WordletController extends EntityAPIControllerExportable {
         '<span ',
         'class="wordlet_configure" ',
         'data-href="/admin/wordlet/page/' . $entity->page . '/manage/' . $entity->id . '/configure"',
+        '>',
         t('Configure @name', array('@name' => $entity->name)),
         '</span>'
       ));
