@@ -2,7 +2,7 @@
    Author's custom styles
    ========================================================================== */
 
-.page-wordlet-patt-home {
+body {
 	background: url('/profiles/takepart/themes/takepart3/campaigns/patt/images/bg-wood.jpg') #EFF3F5 repeat;
 	color: #333;
 	font-size: 12px;
@@ -59,106 +59,6 @@
 /*.table .tag {opacity:0;}*/
 
 .table .item a {display:block;}
-
-.table .bread {
-	position:absolute;
-	top: 363px;
-	left: 695px;
-}
-
-.table .bread .tag {
-	position: absolute;
-	top: 23px;
-	left: 128px;
-}
-
-.table .dinner {
-	position: absolute;
-	top: 288px;
-	left: 280px;
-}
-
-.table .dinner .tag {
-	position: absolute;
-	top: 74px;
-	left: -46px;
-}
-
-
-
-.table .salad {
-	position: absolute;
-	top: 520px;
-	left: 671px;
-}
-
-.table .salad .tag {
-	position: absolute;
-	top: 9px;
-	left: 150px;
-}
-
-.table .saltpepper {
-	position: absolute;
-	top: 301px;
-	left: 159px;
-}
-
-.table .saltpepper .tag {
-	position: absolute;
-	top: -63px;
-	left: -132px;
-}
-
-.table .butter {
-	position: absolute;
-	top: 216px;
-	left: 530px;
-}
-
-.table .butter .tag {
-	position: absolute;
-	top: -85px;
-	left: 85px;
-}
-
-.table .cola {
-	position: absolute;
-	top: 215px;
-	left: 303px;
-}
-
-.table .cola .tag {
-	position: absolute;
-	top: -63px;
-	left: 84px;
-}
-
-
-
-.table .utensils {
-	position: absolute;
-	top: 435px;
-	left: 82px;
-}
-
-.table .utensils .tag {
-	position:absolute;
-	top: 151px;
-	left: -68px;
-}
-
-.table .knife {
-	position: absolute;
-	top: 306px;
-	left: 713px;
-}
-
-.table .knife .tag {
-	position:absolute;
-	top: -95px;
-	left: 61px;
-}
 
 .footer {
 	position: relative;
@@ -411,16 +311,141 @@
 	margin:0;
 }
 
+#mobile_back {
+	position: absolute;
+	top: 46px;
+	left: -1em;
+}
+
 #mobile_back a {
 	display: block;
 	background: #000 url(/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-chevron-left.png) left center no-repeat;
 	background-color: rgba(0,0,0,.6);
-	padding: 10px;
-	padding-left: 25px;
+	padding: 5px;
+	padding-left: 30px;
+	text-transform: uppercase;
+	color: #fff;
 }
 
 .mobile {
 	display: none;
+}
+
+
+/* --------------------------------------------------------------------
+   Page specific
+   ----------------------------------------------------------------- */
+
+.page-wordlet-patt-home .table {
+	height: 750px;
+	padding: 0;
+}
+
+.page-wordlet-patt-home .header,
+.page-wordlet-patt-home .table .nav {
+	display: none;
+}
+
+.page-wordlet-patt-home .table .main {
+	margin: 0;
+	width: auto;
+	display: block;
+}
+
+.table .bread {
+	position:absolute;
+	top: 363px;
+	left: 695px;
+}
+
+.table .bread .tag {
+	position: absolute;
+	top: 23px;
+	left: 128px;
+}
+
+.table .dinner {
+	position: absolute;
+	top: 288px;
+	left: 280px;
+}
+
+.table .dinner .tag {
+	position: absolute;
+	top: 74px;
+	left: -46px;
+}
+
+.table .salad {
+	position: absolute;
+	top: 520px;
+	left: 671px;
+}
+
+.table .salad .tag {
+	position: absolute;
+	top: 9px;
+	left: 150px;
+}
+
+.table .saltpepper {
+	position: absolute;
+	top: 301px;
+	left: 159px;
+}
+
+.table .saltpepper .tag {
+	position: absolute;
+	top: -63px;
+	left: -132px;
+}
+
+.table .butter {
+	position: absolute;
+	top: 216px;
+	left: 530px;
+}
+
+.table .butter .tag {
+	position: absolute;
+	top: -85px;
+	left: 85px;
+}
+
+.table .cola {
+	position: absolute;
+	top: 215px;
+	left: 303px;
+}
+
+.table .cola .tag {
+	position: absolute;
+	top: -63px;
+	left: 84px;
+}
+
+.table .utensils {
+	position: absolute;
+	top: 435px;
+	left: 82px;
+}
+
+.table .utensils .tag {
+	position:absolute;
+	top: 151px;
+	left: -68px;
+}
+
+.table .knife {
+	position: absolute;
+	top: 306px;
+	left: 713px;
+}
+
+.table .knife .tag {
+	position:absolute;
+	top: -95px;
+	left: 61px;
 }
 
 /* ==========================================================================
@@ -449,6 +474,8 @@
 	}
 
 	/* nav */
+	#top-search,
+	#join-login-top,
 	#top-follow-wrapper {
 		display: none;
 	}
@@ -492,7 +519,6 @@
 
 	.table.int .main {
 		margin: 0;
-		background: #000;
 	}
 
 	.table.int .main,
@@ -529,6 +555,89 @@
 		position: static;
 		text-align: center;
 		margin-top: 0;
+	}
+
+
+	/* Home */
+
+	.page-wordlet-patt-home .table {
+		height: auto;
+		padding: 0;
+	}
+
+	.page-wordlet-patt-home .header,
+	.page-wordlet-patt-home .table .nav {
+		display: block;
+	}
+
+	.page-wordlet-patt-home .table .nav {
+		display: inline-block; *display: inline; zoom: 1;
+	}
+
+	.page-wordlet-patt-home .page-wrap {
+		margin-bottom: -46px;
+	}
+
+	.page-wordlet-patt-home #mobile_back,
+	.page-wordlet-patt-home .table .main {
+		display: none;
+	}
+
+	.page-wordlet-patt-home .table.int .nav li {
+		width: 50%;
+		height: 172px;
+	}
+
+	.page-wordlet-patt-home .table.int .nav li:after {
+		display: none;
+	}
+
+	.page-wordlet-patt-home .table.int .nav li a {
+		overflow: hidden;
+		text-indent: 100%;
+		width: 100%;
+		white-space: nowrap;
+		height: 100%;
+	}
+
+	.page-wordlet-patt-home .table.int .nav li span {
+		display: inline;
+		padding: 0;
+		width: auto;
+		height: auto;
+
+	}
+
+	.page-wordlet-patt-home .news {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-news.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .film {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-film.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .book {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-book.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .alliances {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-alliances.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .events {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-events.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .snap {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-gallery.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .assistance {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-assistance.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .action {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-action.png) center top no-repeat;
 	}
 
 }

@@ -17,14 +17,14 @@
 			
 			<div class="nav">
 				<ul>
-					<li><a href="<?=wu('patt_film')?>"><span>the film</span></a></li>
-					<li><a href="<?=wu('patt_action')?>"><span>take action</span></a></li>
-					<li><a href="<?=wu('patt_snap')?>"><span>gallery: snap alum</span></a></li>
-					<li><a href="<?=wu('patt_book')?>"><span>the book</span></a></li>
-					<li><a href="<?=wu('patt_alliances')?>"><span>alliances</span></a></li>
-					<li><a href="/hunger"><span>news</span></a></li>
-					<li><a href="<?=wu('patt_events')?>"><span>events + resources</span></a></li>
-					<li><a href="<?=wu('patt_assistance')?>"><span>i need food assistance</span></a></li>
+					<li class="film"><a href="<?=wu('patt_film')?>"><span>the film</span></a></li>
+					<li class="action"><a href="<?=wu('patt_action')?>"><span>take action</span></a></li>
+					<li class="snap"><a href="<?=wu('patt_snap')?>"><span>gallery: snap alum</span></a></li>
+					<li class="book"><a href="<?=wu('patt_book')?>"><span>the book</span></a></li>
+					<li class="alliances"><a href="<?=wu('patt_alliances')?>"><span>alliances</span></a></li>
+					<li class="news"><a href="/hunger"><span>news</span></a></li>
+					<li class="events"><a href="<?=wu('patt_events')?>"><span>events + resources</span></a></li>
+					<li class="assistance"><a href="<?=wu('patt_assistance')?>"><span>i need food assistance</span></a></li>
 				</ul>
 			</div>
 
