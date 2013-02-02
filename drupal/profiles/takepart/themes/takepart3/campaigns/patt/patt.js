@@ -5,11 +5,15 @@
 // Document load
 $(function() {
 
-$('.column-1 .content, .column-3 .content').tpsticky({
-	offsetNode: '.page-wrap .main'
-});
+var $columns = $('.column-1 .content, .column-3 .content');
 
-$('.page-wrap .main').height($('.page-wrap .main').outerHeight());
+if ( $columns.length ) {
+	$columns.tpsticky({
+		offsetNode: '.page-wrap .main'
+	});
+
+	$('.page-wrap .main').height($('.page-wrap .main').outerHeight());
+}
 
 });
 })(window, jQuery);

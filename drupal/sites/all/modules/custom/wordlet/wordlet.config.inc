@@ -199,5 +199,13 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'patt_campaign'),
     ),
+
+    // Place at the Table - I Need Food Assistance
+    'patt_json' => array(
+      'title' => 'A Place at the Table - JSON',
+      'path' => 'place-at-the-table/json/snapgriddata.txt',
+      'published' => TRUE,
+      'wrappers' => array(),
+    ),
   );
 }
