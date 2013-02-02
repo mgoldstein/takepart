@@ -42,7 +42,7 @@
                 </div>
                 
             </form>
-            <span class="optional-info">*Message/data rates may apply. Text STOP to 77177 to unsubscribe and HELP for info. Max 5 msgs/month.</span>
+            <span class="optional-info"><?=w('form_disclaimer')?></span>
         </div>
     </div>
     <div class="footer-block"></div>
