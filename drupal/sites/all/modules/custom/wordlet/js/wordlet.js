@@ -45,7 +45,7 @@ var load_form = function(url, data) {
 				// Otherwise, condense html to just the form
 				$div.find('*:not(form,input,label,select,textarea,option):not(:has(textarea,input,label,select,option))').remove();
 
-				var $type = $div.find('#edit-type');
+				/*var $type = $div.find('#edit-type');
 
 				if ( $type.length ) {
 					var $string = $div.find('.form-item-string-value');
@@ -70,7 +70,7 @@ var load_form = function(url, data) {
 					};
 
 					$type.bind('change', type_change);
-				}
+				}*/
 
 				// Submit hook
 				$div.find('form')
@@ -90,9 +90,9 @@ var load_form = function(url, data) {
 					}, 600);
 				}});
 
-				if ( $type.length ) {
+				/*if ( $type.length ) {
 					type_change();
-				}
+				}*/
 			}
 		}
 	});
