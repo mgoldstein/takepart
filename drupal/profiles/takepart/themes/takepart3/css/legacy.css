@@ -1815,12 +1815,14 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 .block-box-secondary,
+.block-boxes-title-secondary,
 .block-boxes-current-featured_items .view-dom-id-2 {
     border-top: none;
     padding-top: 0;
 }
 
-.block-box-secondary h2{
+.block-box-secondary h2, 
+.block-boxes-title-secondary h2 {
     font-size: 18px;
 }
 
@@ -1832,6 +1834,7 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 .block-box-secondary .view-featured-items .views-row,
+.block-boxes-title-secondary .view-featured-items .views-row,
 .block-boxes-current-featured_items .view-dom-id-2 .views-row {
     display: inline-block;
     margin-right: 20px;
@@ -1840,11 +1843,13 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 .block-box-secondary .view-featured-items .views-row.views-row-last,
+.block-boxes-title-secondary .view-featured-items .views-row.views-row-last,
 .block-boxes-current-featured_items .view-dom-id-2 .views-row.views-row-last{
     margin-right: 0;
 }
 
 .block-box-secondary .view-featured-items .views-field-php,
+.block-boxes-title-secondary .view-featured-items .views-field-php,
 .block-boxes-current-featured_items .view-dom-id-2 .views-field-php {
     font-size: 20px;
     font-weight: bold;
@@ -1853,18 +1858,21 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 .block-box-secondary .view-featured-items .views-field-field-promo-text,
+.block-boxes-title-secondary .view-featured-items .views-field-field-promo-text,
 .block-boxes-current-featured_items .view-dom-id-2.views-field-field-promo-text {
     font-size: 12px;
     line-height: 20px;
 }
 
 .block-box-secondary .view-featured-items .views-field-php a,
+.block-boxes-title-secondary .view-featured-items .views-field-php a,
 .block-boxes-current-featured_items .view-dom-id-2 .views-field-php a {
     color: black;
     text-decoration: none;
 }
 
 .block-box-secondary .view-featured-items .views-field-php a:hover,
+.block-boxes-title-secondary .view-featured-items .views-field-php a:hover,
 .block-boxes-current-featured_items .view-dom-id-2 .views-field-php a:hover {
     color: #1CA9E7;
     text-decoration: none;
@@ -3241,14 +3249,16 @@ body.page-taxonomy-term h1{
     overflow: hidden;
 }
 
-.block-box-secondary .view-featured-items .views-row, 
+.block-box-secondary .view-featured-items .views-row,
+.block-boxes-title-secondary .view-featured-items .views-row,
 .block-boxes-current-featured_items .view-dom-id-2 .views-row {
     margin-right: 15px;
     width: 200px;
     float:left;
     display: block;
 }
-.block-box-secondary .view-featured-items .views-field-field-thumbnail img, 
+.block-box-secondary .view-featured-items .views-field-field-thumbnail img,
+.block-boxes-title-secondary .view-featured-items .views-field-field-thumbnail img,
 .block-boxes-current-featured_items .view-dom-id-2 .views-field-field-thumbnail img {
     border: none;
     height: 160px;
