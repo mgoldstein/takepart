@@ -1,3 +1,11 @@
+<? if ( wordlet_edit_mode() ): ?>
+	<div class="wordlet_edit_mode">
+		<p>
+			Page Title: <?=w('title')?>
+		</p>
+	</div>
+<? endif ?>
+
 <div id="page-wrapper" class="campaign">
 	<?php print $header ?>
 
