@@ -1753,7 +1753,9 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 .block-box-primary,
-.block-box-secondary {
+.block-box-secondary, 
+.block-boxes-title-primary
+{
     clear: both;
 }
 
@@ -1774,7 +1776,9 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 .block-box-primary h2,
-.block-box-secondary h2{
+.block-box-secondary h2, 
+.block-boxes-title-primary h2
+{
     display: none;
 }
 
@@ -1793,6 +1797,7 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 .block-box-primary .view-featured-items .views-field-field-thumbnail,
+.block-boxes-title-primary .view-featured-items .views-field-field-thumbnail,
 .block-boxes-current-featured_items .view-dom-id-1 .views-field-field-thumbnail img {
     border: none;
     float: left;
@@ -1803,6 +1808,7 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 .block-box-primary .view-featured-items .views-field-field-promo-text,
+.block-boxes-title-primary .view-featured-items .views-field-field-promo-text,
 .block-boxes-current-featured_items .view-dom-id-1 .views-field-field-promo-text {
     font-size: 14px;
     line-height: 20px;
@@ -1865,7 +1871,9 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 .block-box-primary .view-featured-items .views-field-php,
-.block-boxes-current-featured_items .view-dom-id-1 .views-field-php {
+.block-boxes-current-featured_items .view-dom-id-1 .views-field-php,
+.block-boxes-title-primary .view-featured-items .views-field-php
+{
     /* border-bottom: 1px dotted silver; */
     margin-bottom: 0;
     margin-left: 318px;
@@ -1873,14 +1881,18 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 .block-box-primary .view-featured-items .views-field-php .field-content a,
-.block-boxes-current-featured_items .view-dom-id-1 .field-content a { 
+.block-boxes-current-featured_items .view-dom-id-1 .field-content a,
+.block-boxes-title-primary .view-featured-items .views-field-php .field-content a 
+{ 
     font-size: 30px;
     line-height: 32px;
     font-weight: bold;
     color: black;
 }
 .block-box-primary .view-featured-items .views-field-php .field-content a:hover,
-.block-boxes-current-featured_items .view-dom-id-1 .field-content a:hover { 
+.block-boxes-current-featured_items .view-dom-id-1 .field-content a:hover,
+.block-boxes-title-primary .view-featured-items .views-field-php .field-content a:hover
+{ 
     color: #1CA9E7;
     text-decoration: none;
 }
@@ -3642,6 +3654,7 @@ div[class*='block-boxes-delta-video-block'] h2 span{
     overflow:hidden;
     padding-bottom:0;
 }
+
 .block-box-primary .view-featured-items .views-field-field-blogpost-main-image, 
 .block-boxes-current-featured_items .view-dom-id-1 .views-field-field-blogpost-main-image {
     margin-bottom: 0;
