@@ -43,7 +43,7 @@ var load_form = function(url, data) {
 				}
 
 				// Otherwise, condense html to just the form
-				$div.find('*:not(form,input,label,select,textarea,option):not(:has(textarea,input,label,select,option))').remove();
+				$div.find('*:not(form,input,label,legend,select,textarea,option):not(:has(textarea,input,label,select,option,legend))').remove();
 
 				/*var $type = $div.find('#edit-type');
 
@@ -124,7 +124,7 @@ var $menu = $('<li id="wordlet_toggle"><a id="wordlets_show" href="">Show Wordle
 // Wordlet events & other setup
 $('body')
 	.delegate('.wordlet', 'click', function(e) {
-		var $link = $(this).find('.wordlet_add, .wordlet_edit');
+		var $link = $(this).find('.wordlet_configure, .wordlet_edit');
 		load_form($link.data('href'));
 		e.preventDefault();
 	})
@@ -149,9 +149,57 @@ $('body')
 	.addClass((getCookie('show_wordlets')?'':'hide_wordlets'))
 	;
 
-	$('#toolbar .toolbar-shortcuts .menu')
-		.append($menu)
-		.append($('.tabs.primary li'));
+$('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
+	var $this = $(this);
+	var $a = $('<a href="' + this.href + '" class="wordlet_helper_link">Open Link</a>')
+		.css({
+			display: 'block',
+			position: 'absolute',
+			right: '100%',
+			top: 0,
+			zIndex: 10000
+		})
+		.appendTo('body')
+		;
+
+	var do_hide = true;
+	var hide = function() {
+		if ( do_hide ) $a.css({left: '', right: '100%', top: 0});
+	}
+
+	$this
+		.bind('mouseenter', function(e) {
+			do_hide = false;
+
+			if ( $a.css('right') != '100%' ) return true;
+
+			$a
+				.css({
+					right: '',
+					left: e.pageX,
+					top: e.pageY
+				});
+		})
+		.bind('mouseleave', function(e) {
+			do_hide = true;
+			setTimeout(hide, 0);
+		})
+		;
+
+	$a
+		.bind('mouseenter', function(e) {
+			do_hide = false;
+		})
+		.bind('mouseleave', function(e) {
+			do_hide = true;
+			setTimeout(hide, 0);
+		})
+		;
+});
+
+$('#toolbar .toolbar-shortcuts .menu')
+	.append($menu)
+	.append($('.tabs.primary li'));
 
 
 

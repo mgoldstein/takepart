@@ -42,6 +42,13 @@
     width: 300px;
 }
 
+.wordlet_helper_link {
+    outline: 1px dashed blue;
+    color: blue;
+    padding: 2px;
+    background: rgba(255,255,255,.8);
+}
+
 /* Drupal admin bar */
 
 #toolbar {
