@@ -97,18 +97,26 @@ class WordletController extends EntityAPIControllerExportable {
   public function editMarkup($entity, $configure = FALSE) {
 
     if (!empty($entity->type)) {
-      $edit_link = l(t('Edit @name', array('@name' => $entity->name)),
-        "admin/wordlet/page/{$entity->page}/manage/{$entity->id}/edit",
-        array('attributes' => array( 'class' => array('wordlet_edit'))));
+      $edit_link = implode('', array(
+        '<span ',
+        'class="wordlet_edit" ',
+        'data-href="/admin/wordlet/page/{$entity->page}/manage/{$entity->id}/edit"',
+        t('Edit @name', array('@name' => $entity->name)),
+        '</span>'
+      ));
     }
     else {
       $edit_link = '';
     }
 
     if ($configure && empty($entity->type) ) {
-      $configure_link = l(t('Configure @name', array('@name' => $entity->name)),
-      "admin/wordlet/page/{$entity->page}/manage/{$entity->id}/configure",
-        array('attributes' => array( 'class' => array('wordlet_configure'))));
+      $configure_link = implode('', array(
+        '<span ',
+        'class="wordlet_configure" ',
+        'data-href="/admin/wordlet/page/{$entity->page}/manage/{$entity->id}/configure"',
+        t('Configure @name', array('@name' => $entity->name)),
+        '</span>'
+      ));
     }
     else {
       $configure_link = '';

@@ -125,11 +125,11 @@ var $menu = $('<li id="wordlet_toggle"><a id="wordlets_show" href="">Show Wordle
 $('body')
 	.delegate('.wordlet', 'click', function(e) {
 		var $link = $(this).find('.wordlet_add, .wordlet_edit');
-		load_form($link.attr('href'));
+		load_form($link.data('href'));
 		e.preventDefault();
 	})
 	.delegate('.wordlet_configure, .wordlet_edit', 'click', function(e) {
-		load_form(this.href);
+		load_form($(this).data('href'));
 		e.preventDefault();
 	})
 	.delegate('#wordlet_toggle', 'change', function(e) {
