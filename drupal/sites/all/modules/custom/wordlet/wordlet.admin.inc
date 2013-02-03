@@ -688,7 +688,7 @@ function wordlet_validate_node_id($element, &$form_state) {
   }
 }
 
-function wordlet_simple_link_fields($entity, $form, $single = TRUE) {
+function wordlet_simple_link_fields($entity, $values) {
   return array(
     'text' => array(
       '#title' => t('Text'),

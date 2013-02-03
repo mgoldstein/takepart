@@ -999,6 +999,28 @@ function wl() {
   }
 }
 
+function wordlet_generator($name) {
+  $values = &drupal_static(__FUNCTION__, array());
+  if (!isset($values[$name])) {
+    $values[$name] = wordlet_list($name);
+  }
+  if ($values[$name]->valid()) {
+    $value = $values[$name]->current();
+    $values[$name]->next();
+    return $value;
+  }
+  return NULL;
+}
+
+function wg() {
+  try {
+    return call_user_func_array('wordlet_generator', func_get_args());
+  } catch (Exception $e) {
+    return '';
+  }
+}
+
+
 // Return URL for requested wordlet page
 function wordlet_url($name) {
   $config = _wordlet_configuration();
