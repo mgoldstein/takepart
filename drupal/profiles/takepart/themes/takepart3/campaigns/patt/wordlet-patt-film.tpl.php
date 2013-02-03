@@ -1,7 +1,10 @@
 <div class="column column-1">
 	<div class="content">
 		<ol>
+			var_dump wl('side_links'):
+			<? var_dump(wl('side_links')) ?>
 			<? foreach ( wl('side_links') as $w ): ?>
+				var_dump inside foreach:
 				<? var_dump($w) ?>
 			<? endforeach ?>
 			<li><a href="#">purchase tickets</a></li>
