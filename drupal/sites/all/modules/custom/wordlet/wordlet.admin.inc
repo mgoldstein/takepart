@@ -465,7 +465,7 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
     '#type' => 'fieldset',
     '#tree' => TRUE,
   );
-  
+
   $form['configuration']['page'] = array(
     '#type' => 'value',
     '#value' => $entity->page,
@@ -509,12 +509,12 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
     '#options' => wordlet_type_labels(),
     '#required' => TRUE,
     '#default_value' => $entity->type,
-    '#ajax' => array(
-      'callback' => 'wordlet_configuration_change_callback',
-      'wrapper' => 'wordlet-edit-form-data',
-      'method' => 'replace',
-      'effect' => 'fade',
-    ),
+    //'#ajax' => array(
+    //  'callback' => 'wordlet_configuration_change_callback',
+    //  'wrapper' => 'wordlet-edit-form-data',
+    //  'method' => 'replace',
+    //  'effect' => 'fade',
+    //),
   );
 
   $form['configuration']['format'] = array(
@@ -538,12 +538,12 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
       0 => t('Multiple Values'),
     ),
     '#default_value' => $entity->cardinality,
-    '#ajax' => array(
-      'callback' => 'wordlet_configuration_change_callback',
-      'wrapper' => 'wordlet-edit-form-data',
-      'method' => 'replace',
-      'effect' => 'fade',
-    ),
+    //'#ajax' => array(
+    //  'callback' => 'wordlet_configuration_change_callback',
+    //  'wrapper' => 'wordlet-edit-form-data',
+    //  'method' => 'replace',
+    //  'effect' => 'fade',
+    //),
   );
 
   $form['configuration']['weight'] = array(
@@ -756,7 +756,7 @@ function wordlet_form_validate($form, &$form_state) {
 
   $op = $form_state['wordlet_op'];
   if ($op == 'add') {
-      
+
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'wordlet');
     $query->propertyCondition('page', $form_state['values']['configuration']['page']);
@@ -777,7 +777,7 @@ function wordlet_form_validate($form, &$form_state) {
       }
     }
   }
-  
+
 }
 
 /**
@@ -805,7 +805,7 @@ function wordlet_form_submit(&$form, &$form_state) {
   if ($op == 'edit') {
     wordlet_update_items_from_fields($entity, $form_state['values']);
   }
-  
+
   // Save the entity.
   $status = $entity->save();
   if ($status == SAVED_UPDATED) {
