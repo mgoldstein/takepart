@@ -49,6 +49,39 @@
     background: rgba(255,255,255,.8);
 }
 
+.wordlet_edit_mode {
+    background: #fff;
+    padding: 0 5px;
+}
+
+.wordlet_edit_mode p {
+    margin: 0;
+}
+
+.wordlet_down,
+.wordlet_up {
+    text-indent: 100%;
+    width: 19px;
+    height: 15px;
+    display: inline-block;
+    overflow: hidden;
+    background: #fff url(/misc/arrow-desc.png) center -2px no-repeat;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    border-right: 1px solid #999;
+    border-bottom: 1px solid #999;
+    margin-left: 3px;
+}
+
+.repeater:first-child .wordlet_down {
+    margin-left: 25px;
+}
+
+.wordlet_down {
+    background-image: url(/misc/arrow-asc.png);
+    background-position: center -1px;
+}
+
 /* Drupal admin bar */
 
 #toolbar {
