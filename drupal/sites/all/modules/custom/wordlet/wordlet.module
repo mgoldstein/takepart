@@ -109,12 +109,12 @@ function wordlet_entity_info() {
       'label' => t('Wordlet'),
       'controller class' => 'WordletController',
       'base table' => 'wordlet',
+      'label callback' => 'entity_class_label',
       'uri callback' => 'entity_class_uri',
       'fieldable' => FALSE,
       'exportable' => TRUE,
       'entity keys' => array(
         'id' => 'id',
-        'label' => 'title',
         'status' => 'status',
         'module' => 'module',
       ),
@@ -232,7 +232,6 @@ function wordlet_menu() {
       'page arguments' => array(1),
       'access callback' => 'wordlet_page_access',
       'access arguments' => array('view', 1),
-      //'type' => MENU_NORMAL_ITEM,
     ),
     'wordlet/%wordlet_page/view' => array(
       'title' => 'View',
@@ -250,6 +249,16 @@ function wordlet_menu() {
       'file' => 'wordlet.admin.inc',
       'file path' => drupal_get_path('module', 'wordlet'),
     ),
+    'wordlet/%wordlet_page/override' => array(
+      'title' => 'Override',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('wordlet_page_override_form', 1),
+      'access callback' => 'wordlet_access',
+      'access arguments' => array('edit'),
+      'weight' => 1,
+      'file' => 'wordlet.admin.inc',
+      'file path' => drupal_get_path('module', 'wordlet'),
+    ),
   );
 }
 
@@ -259,6 +268,7 @@ function wordlet_menu() {
 function wordlet_admin_paths() {
   return array(
     'wordlet/*/edit' => TRUE,
+    'wordlet/*/override' => TRUE,
   );
 }
 
@@ -307,7 +317,6 @@ function wordlet_preprocess_page_template(&$variables) {
   $tabs = menu_local_tabs();
   if ($tabs) {
     $variables['header'] .= render($tabs);
-
   }
   $variables['footer'] = theme('takepart3_footer', $variables);
 }
@@ -318,7 +327,6 @@ function wordlet_preprocess_wrapper_template(&$variables) {
   $tabs = menu_local_tabs();
   if ($tabs) {
     $variables['header'] .= render($tabs);
-
   }
   $variables['footer'] = theme('takepart3_footer', $variables);
   $variables['content'] = theme($variables['unprocessed_content']);
@@ -628,12 +636,11 @@ function wordlet_page_import_form_submit($form, &$form_state) {
         'title' => '',
         'description' => '',
         'type' => '',
-        'allow_markup' => 0,
+        'format' => 0,
         'enabled' => 1,
-        'integer_value' => 0,
-        'string_value' => '',
-        'text_value' => '',
-        'markup' => 0,
+        'cardinality' => 1,
+        'weight' => 0,
+        'values' => '',
       );
 
       // Check for any existing wordlet, or create a new one
@@ -678,32 +685,42 @@ function wordlet_page_edit_form($form, &$form_state, $page) {
     return drupal_not_found();
   }
 
+  $form_state['wordlet_page'] = $page;
+  $form['title'] = array(
+    '#title' => t('Override Title'),
+    '#description' => t('Override the title for the page.'),
+    '#type' => 'textfield',
+    '#default_value' => variable_get("wordlet_{$page['name']}_title", ''),
+  );
+
+  $form['published'] = array(
+    '#title' => t('Published'),
+    '#description' => t('Override the published state for the page.'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get("wordlet_{$page['name']}_published", $page['published']),
+  );
+
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'wordlet');
   $query->propertyCondition('page', $page['name']);
   $query->propertyCondition('type', '', '!=');
+  $query->propertyOrderBy('weight');
   $result = $query->execute();
 
   if (!empty($result['wordlet'])) {
 
+    $form['fields'] = array(
+      '#type' => 'container',
+      '#tree' => TRUE,
+    );
+
     $entities = entity_load('wordlet', array_keys($result['wordlet']));
     foreach ($entities as $entity) {
-
-      if ($entity->type == 'single-line') {
-        $form[$entity->name] = wordlet_single_line_form(
-          array('#type' => 'container', '#tree' => TRUE),
-          $form_state, $entity, 'edit');
-      }
-      elseif ($entity->type == 'multiple-lines') {
-        $form[$entity->name] = wordlet_multiple_lines_form(
-          array('#type' => 'container', '#tree' => TRUE),
-          $form_state, $entity, 'edit');
-      }
-      elseif ($entity->type == 'node-reference') {
-        $form[$entity->name] = wordlet_node_reference_form(
-          array('#type' => 'container', '#tree' => TRUE),
-          $form_state, $entity, 'edit');
-      }
+      $form['fields'][$entity->name] = array(
+        '#type' => 'container',
+        '#tree' => TRUE,
+      );
+      $form['fields'][$entity->name] += wordlet_get_item_fields($entity);
     }
 
     $form['actions'] = array('#type' => 'actions');
@@ -718,11 +735,7 @@ function wordlet_page_edit_form($form, &$form_state, $page) {
     );
 
     // Save the wordlets for the submit handler.
-    $form_state['wordlet_page'] = $page;
     $form_state['wordlets'] = $entities;
-  }
-  else {
-
   }
 
   return $form;
@@ -730,21 +743,89 @@ function wordlet_page_edit_form($form, &$form_state, $page) {
 
 function wordlet_page_edit_form_submit($form, &$form_state) {
 
-  $wordlets = $form_state['wordlets'];
   $page = $form_state['wordlet_page'];
+  if (empty($form_state['values']['title'])) {
+    variable_del("wordlet_{$page['name']})title");
+  }
+  else {
+    variable_set("wordlet_{$page['name']}_title", $form_state['values']['title']);
+  }
 
+  if (empty($form_state['values']['published']) == empty($page['published'])) {
+    variable_del("wordlet_{$page['name']}_published");
+  }
+  else {
+    variable_set("wordlet_{$page['name']}_published", $form_state['values']['published']);
+  }
+
+  $wordlets = $form_state['wordlets'];
   foreach ($wordlets as $wordlet) {
-    if (isset($form_state['values'][$wordlet->name])) {
-      $values = $form_state['values'][$wordlet->name];
-      foreach ($values as $attribute => $value) {
-        $wordlet->{$attribute} = $value;
-      }
+    if (isset($form_state['values']['fields'][$wordlet->name])) {
+      $values = $form_state['values']['fields'][$wordlet->name];
+      wordlet_update_items_from_fields($wordlet, $values);
       $wordlet->save();
     }
   }
 
   drupal_set_message(t('The page @title has been updated.',
     array('@title' => $page['title'])));
+}
+
+/**
+ * Wordlet page full page override form
+ */
+function wordlet_page_override_form($form, &$form_state, $page) {
+
+  // No such page.
+  if ($page === FALSE) {
+    return drupal_not_found();
+  }
+
+  $form_state['wordlet_page'] = $page;
+  $form['title'] = array(
+    '#title' => t('Override Title'),
+    '#description' => t('Override the title for the page.'),
+    '#type' => 'textfield',
+    '#default_value' => variable_get("wordlet_{$page['name']}_title", ''),
+  );
+
+  $form['published'] = array(
+    '#title' => t('Published'),
+    '#description' => t('Override the published state for the page.'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get("wordlet_{$page['name']}_published", $page['published']),
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $submit = array();
+  if (!empty($form['#submit'])) {
+    $submit += $form['#submit'];
+  }
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save overrides'),
+    '#weight' => 40,
+  );
+
+  return $form;
+}
+
+function wordlet_page_override_form_submit($form, &$form_state) {
+
+  $page = $form_state['wordlet_page'];
+  if (empty($form_state['values']['title'])) {
+    variable_del("wordlet_{$page['name']})title");
+  }
+  else {
+    variable_set("wordlet_{$page['name']}_title", $form_state['values']['title']);
+  }
+
+  if (empty($form_state['values']['published']) == empty($page['published'])) {
+    variable_del("wordlet_{$page['name']}_published");
+  }
+  else {
+    variable_set("wordlet_{$page['name']}_published", $form_state['values']['published']);
+  }
 }
 
 function wordlet_load_for_page($page) {
@@ -804,6 +885,11 @@ function wordlet_page_view_callback($page) {
   // Set the active page configuration
   wordlet_active_page($page);
 
+  $title = variable_get("wordlet_{$page['name']}_title", "");
+  if (!empty($title)) {
+    drupal_set_title($title);
+  }
+
   // Add the page CSS and JS.
   foreach ($page['css'] as $filename) {
     drupal_add_css(WORDLET_CSS_DIRECTORY . $filename, array(
@@ -838,6 +924,18 @@ function wordlet_page_view_callback($page) {
   return '';
 }
 
+function wordlet_edit_mode($configure = FALSE) {
+  if (!empty($_COOKIE['show_wordlets'])) {
+    if ($configure) {
+      return wordlet_access('administer');
+    }
+    else {
+      return wordlet_access('edit');
+    }
+  }
+  return FALSE;
+}
+
 function wordlet($name) {
   $page = wordlet_active_page();
   if ($page === FALSE) {
@@ -858,35 +956,55 @@ function wordlet($name) {
   }
 
   $controller = entity_get_controller('wordlet');
-  if (empty($_COOKIE['show_wordlets'])) {
-    // Not even trying to edit wordlets
-    return $controller->viewMarkup($wordlet);
-  }
-  else {
-    // Output the markup for the appropriate level of access
-    if (wordlet_access('administer', $wordlet)) {
-      return $controller->editMarkup($wordlet, TRUE);
-    }
-    elseif (wordlet_access('edit', $wordlet)) {
-      return $controller->editMarkup($wordlet);
-    }
-    else {
-      return $controller->viewMarkup($wordlet);
-    }
-  }
+  return $controller->viewOne($wordlet);
 }
 
 function w($name) {
-  return wordlet($name);
+  try {
+    return call_user_func_array('wordlet', func_get_args());
+  } catch (Exception $e) {
+    return '';
+  }
+}
+
+function wordlet_list($name) {
+  $page = wordlet_active_page();
+  if ($page === FALSE) {
+    return NULL;
+  }
+  if (isset($page['wordlets'][$name])) {
+    $wordlet = $page['wordlets'][$name];
+  }
+  else {
+    $values = array(
+      'page' => $page['name'],
+      'name' => $name,
+      'cardinality' => 0,
+    );
+    $wordlet = entity_create('wordlet', $values);
+    $wordlet->save();
+    $page['wordlets'][$name] = $wordlet;
+    wordlet_active_page($page);
+  }
+
+  $controller = entity_get_controller('wordlet');
+  return $controller->viewList($wordlet);
+}
+
+function wl() {
+  try {
+    return call_user_func_array('wordlet_list', func_get_args());
+  } catch (Exception $e) {
+    return '';
+  }
 }
 
 // Return URL for requested wordlet page
 function wordlet_url($name) {
   $config = _wordlet_configuration();
-  if ( isset($config[$name]) && isset($config[$name]['path']) ) {
+  if (isset($config[$name]) && isset($config[$name]['path']) ) {
     return '/' . $config[$name]['path'];
   }
-
   return '';
 }
 
@@ -896,16 +1014,4 @@ function wu() {
   } catch (Exception $e) {
     return '';
   }
-}
-
-function wordlet_edit_mode($configure = FALSE) {
-  if (!empty($_COOKIE['show_wordlets'])) {
-    if ($configure) {
-      return wordlet_access('administer');
-    }
-    else {
-      return wordlet_access('edit');
-    }
-  }
-  return FALSE;
 }

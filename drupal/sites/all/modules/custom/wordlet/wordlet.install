@@ -29,15 +29,15 @@ function wordlet_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
-      'title' => array(
-        'description' => 'The human readable title of the wordlet.',
+      'name' => array(
+        'description' => 'The machine name of the wordlet.',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
         'default' => '',
       ),
-      'name' => array(
-        'description' => 'The machine name of the wordlet.',
+      'title' => array(
+        'description' => 'The human readable title of the wordlet.',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
@@ -54,8 +54,8 @@ function wordlet_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
-      'allow_markup' => array(
-        'description' => '0 = disabled, 1 = enabled.',
+      'format' => array(
+        'description' => '0 = plain text, 1 = limited HTML, 2 = full HTML.',
         'type' => 'int',
         'size' => 'tiny',
         'unsigned' => TRUE,
@@ -70,32 +70,26 @@ function wordlet_schema() {
         'not null' => TRUE,
         'default' => 1,
       ),
-
-      // Edit values
-      'integer_value' => array(
-        'description' => 'Integer value.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => FALSE,
-      ),
-      'string_value' => array(
-        'description' => 'Single line text value.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'text_value' => array(
-        'description' => 'Multiline text value.',
-        'type' => 'text',
-      ),
-      'markup' => array(
-        'description' => '0 = disabled, 1 = enabled.',
+      'cardinality' => array(
+        'description' => '0 = unlimited, else the number of values.',
         'type' => 'int',
         'size' => 'tiny',
         'unsigned' => TRUE,
         'not null' => TRUE,
+        'default' => 1,
+      ),
+      'weight' => array(
+        'description' => 'Display order on full page edit form.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
         'default' => 0,
+      ),
+
+      // Edit values
+      'items_data' => array(
+        'description' => 'Serialized item values.',
+        'type' => 'text',
       ),
 
       // Backend values
@@ -135,4 +129,98 @@ function wordlet_schema() {
   );
 
   return $schema;
+}
+
+/**
+ * Add columns to support wordlet lists and serialized values.
+ */
+function wordlet_update_7100(&$sandbox) {
+
+  db_add_field('wordlet', 'cardinality', array(
+    'description' => '0 = unlimited, else the number of values.',
+    'type' => 'int',
+    'size' => 'tiny',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 1,
+  ));
+
+  db_add_field('wordlet', 'weight', array(
+    'description' => 'Display weight.',
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => FALSE,
+    'default' => 0,
+  ));
+
+  db_add_field('wordlet', 'format', array(
+    'description' => '0 = plain text, 1 = limited HTML, 2 = full HTML.',
+    'type' => 'int',
+    'size' => 'tiny',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 0,
+  ));
+
+  db_add_field('wordlet', 'items_data', array(
+    'description' => 'Serialized item values.',
+    'type' => 'text',
+  ));
+}
+
+/**
+ * Update the existing wordlets to the serialized values.
+ */
+function wordlet_update_7101(&$sandbox) {
+
+  $query = db_select('wordlet', 'w')->fields('w', array(
+    'id', 'type', 'allow_markup', 'integer_value', 'string_value', 'text_value'));
+  $result = $query->execute();
+
+  $updates = array();
+  foreach ($result as $row) {
+
+    if ($row->type == 'single-line') {
+      $updates[$row->id] = array(
+        'cardinality' => 1,
+        'format' => $row->allow_markup,
+        'items_data' => serialize(array(array('text' => $row->string_value))),
+      );
+    }
+    elseif ($row->type == 'multiple-lines') {
+      $updates[$row->id] = array(
+        'cardinality' => 1,
+        'format' => $row->allow_markup,
+        'items_data' => serialize(array(array('text' => $row->string_value))),
+      );
+    }
+    elseif ($row->type == 'node-reference') {
+      $updates[$row->id] = array(
+        'cardinality' => 1,
+        'format' => 0,
+        'items_data' => serialize(array(array(
+          'nid' => $row->integer_value,
+          'view_mode' => $row->string_value
+        ))),
+      );
+    }
+  }
+
+  foreach ($updates as $id => $update) {
+    db_update('wordlet')
+      ->fields($update)
+      ->condition('id', $id)
+      ->execute();
+  }
+}
+
+/**
+ * Remove the unused fields after the conversion to serialized values.
+ */
+function wordlet_update_7102(&$sandbox) {
+  db_drop_field('wordlet', 'markup');
+  db_drop_field('wordlet', 'allow_markup');
+  db_drop_field('wordlet', 'integer_value');
+  db_drop_field('wordlet', 'string_value');
+  db_drop_field('wordlet', 'text_value');
 }
