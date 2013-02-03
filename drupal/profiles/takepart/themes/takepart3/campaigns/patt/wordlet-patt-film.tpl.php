@@ -1,7 +1,7 @@
 <div class="column column-1">
 	<div class="content">
 		<ol>
-			<? foreach ( w('side_links') as $w ): ?>
+			<? foreach ( wl('side_links') as $w ): ?>
 				<? /*<li><a href="<?=$w->href?>"><?=$w->text?></a></li>*/ ?>
 				<? var_dump($w) ?>
 			<? endwhile ?>
