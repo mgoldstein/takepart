@@ -988,7 +988,9 @@ function wordlet_list($name) {
   }
 
   $controller = entity_get_controller('wordlet');
-  return $controller->viewList($wordlet);
+  $wl = $controller->viewList($wordlet);
+  if ($wl->count() == 0) { echo wordlet($name); }
+  return $wl;
 }
 
 function wl() {
