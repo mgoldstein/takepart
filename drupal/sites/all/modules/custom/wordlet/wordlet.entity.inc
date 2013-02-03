@@ -123,10 +123,10 @@ class WordletController extends EntityAPIControllerExportable {
   }
 
   public function viewOne($entity) {
-    if ($entity->cardinality != 1) {
-      // The list object has a __toString method and can be printed directly
-      return $this->viewList($entity);
-    }
+    //if ($entity->cardinality != 1) {
+    //  // The list object has a __toString method and can be printed directly
+    //  return $this->viewList($entity);
+    //}
     $first = reset($entity->items);
     $item = $first !== FALSE ? $first : array();
     return $this->createViewItem($entity, $item);
