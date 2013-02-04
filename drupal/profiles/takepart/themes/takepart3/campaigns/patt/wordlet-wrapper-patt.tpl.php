@@ -3,10 +3,14 @@
 		<p>
 			Page Title: <?=w('title')?>
 		</p>
-		<? if ( wordlet_access('administer') ): ?>
-			<p>
-				<a href="/admin/wordlet/page/<?=wordlet_active_page()?>">Configure</a>
-			</p>
+		<? if ( ($wlinks = wordlet_configure_links()) ): ?>
+			<ul>
+				<? foreach ( $wlinks as $wlink ): ?>
+					<li>
+						<?=$wlink?>
+					</li>
+				<? endforeach ?>
+			</ul>
 		<? endif ?>
 	</div>
 <? endif ?>

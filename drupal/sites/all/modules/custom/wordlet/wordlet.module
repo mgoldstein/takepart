@@ -1027,7 +1027,6 @@ function wg() {
   }
 }
 
-
 // Return URL for requested wordlet page
 function wordlet_url($name) {
   $config = _wordlet_configuration();
@@ -1043,4 +1042,19 @@ function wu() {
   } catch (Exception $e) {
     return '';
   }
+}
+
+function wordlet_configure_links() {
+  if ( !wordlet_access('administer') ) return false;
+  $links = array();
+  $config = wordlet_active_page();
+  if ( isset($config['load']) && is_array($config['load']) ) {
+    foreach ( $config['load'] as $name ) {
+      $links[] = '<a href="/admin/wordlet/page/' . $name . '">' . $name . '</a>';
+    }
+  }
+
+  $links[] = '<a href="/admin/wordlet/page/' . $config['name'] . '">' . $config['name'] . '</a>';
+
+  return $links;
 }
