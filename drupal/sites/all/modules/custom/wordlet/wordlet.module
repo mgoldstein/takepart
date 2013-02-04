@@ -220,6 +220,15 @@ function wordlet_menu() {
       'type' => MENU_DEFAULT_LOCAL_TASK,
       'weight' => -10,
     ),
+    'admin/wordlet/export' => array(
+      'title' => 'Export',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('wordlet_page_export_form'),
+      'access callback' => 'wordlet_page_access',
+      'access arguments' => array('administer'),
+      'weight' => 0,
+      'type' => MENU_LOCAL_TASK,
+    ),
     'admin/wordlet/import' => array(
       'title' => 'Import',
       'page callback' => 'drupal_get_form',
@@ -532,6 +541,42 @@ function wordlet_page_overview_callback() {
       '#empty' => t('None (someone took Jonathan Swift seriously)'),
     ),
   );
+}
+
+/**
+ * Wordlet page admin export form.
+ */
+function wordlet_page_export_form($form, &$form_state) {
+
+  $json = array();
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'wordlet');
+  $result = $query->execute();
+
+  if (!empty($result['wordlet'])) {
+    $entities = entity_load('wordlet', array_keys($result['wordlet']));
+    foreach ($entities as $entity) {
+      $wrapper = entity_metadata_wrapper('wordlet', $entity);
+      $data = array();
+      foreach ($wrapper->getIterator() as $name => $property) {
+        $data[$name] = $property->value();
+      }
+      $json[] = $data;
+    }
+  }
+
+  $form['json'] = array(
+    '#title' => t('Exported wordlets'),
+    '#description' => t('Exported wordlets as a JSON array suitable for using
+      when importing wordlets'),
+    '#type' => 'textarea',
+    '#rows' => 20,
+    '#cols' => 80,
+    '#default_value' => drupal_json_encode($json),
+  );
+
+  return $form;
 }
 
 /**
