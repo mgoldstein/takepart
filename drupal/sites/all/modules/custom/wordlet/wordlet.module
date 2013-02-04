@@ -889,7 +889,14 @@ function wordlet_page_view_callback($page) {
   // Set the active page configuration
   wordlet_active_page($page);
 
-  $title = variable_get("wordlet_{$page['name']}_title", "");
+  $title = '';
+  if (isset($page['wordlets']['title'])) {
+    $tw = $page['wordlets']['title'];
+    if (count($tw->items)) {
+      $title = $tw->items[0]['single'];
+    }
+  }
+  $title = variable_get("wordlet_{$page['name']}_title", $title);
   if (!empty($title)) {
     drupal_set_title($title);
   }
