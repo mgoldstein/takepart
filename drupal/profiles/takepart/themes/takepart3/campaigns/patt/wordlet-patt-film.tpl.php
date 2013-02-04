@@ -2,12 +2,7 @@
 	<div class="content">
 		<ol>
 			<? foreach ( wl('side_links') as $w ): ?>
-				<li><a href="<?=$w->href?>">
-					<?=$w->text?>
-				</a></li>
-				<li>
-					<?=$w?>
-				</li>
+				<? var_dump($w) ?>
 			<? endforeach ?>
 			<li><a href="#">purchase tickets</a></li>
 			<li><a href="http://www.magpictures.com/dates.aspx?id=e016f484-4c9a-4401-8fbc-e19eb2119389">theaters</a></li>
