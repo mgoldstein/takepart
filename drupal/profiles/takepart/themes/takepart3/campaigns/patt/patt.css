@@ -1,0 +1,776 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+	background: url('/profiles/takepart/themes/takepart3/campaigns/patt/images/bg-wood.jpg') #EFF3F5 repeat;
+	color: #333;
+	font-size: 12px;
+	font-family: Helvetica,Arial,sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.page-wrap {
+	width:1000px;
+	margin:0 auto;
+}
+
+.ribbon {
+    width:1000px;
+	height:41px;
+	margin:0 auto;
+}
+
+.ribbon img {
+	width:1000px;
+	position:relative;
+	left:50%;
+	margin-left:-500px;
+}
+
+.table {
+	width:1000px;
+	/*background:url(/profiles/takepart/themes/takepart3/campaigns/patt/images/table-bg.png) no-repeat;*/
+
+	background: -moz-linear-gradient(left,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.65)), color-stop(25%,rgba(0,0,0,0)), color-stop(75%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 75%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 75%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 75%,rgba(0,0,0,0.65) 100%); /* IE10+ */
+	background: linear-gradient(to right,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 75%,rgba(0,0,0,0.65) 100%); /* W3C */
+
+	position:relative;
+	/*top:25px;*/
+}
+
+.table .logo {margin-top:15px;}
+
+.table .tagline {
+	position: absolute;
+	top: 45px;
+	left: 540px;
+}
+
+
+
+.table .hide {display:none;}
+
+/*.table .tag {opacity:0;}*/
+
+.table .item a {display:block;}
+
+.footer {
+	position: relative;
+	top: 25px;
+}
+
+
+.table.int {
+	width:1000px;
+	/*background:url(/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-page-bg.png) no-repeat;*/
+	position:relative;
+	/*top:25px;*/
+	font-family: sans-serif;
+	font-weight:700;
+	padding-bottom: 200px;
+}
+
+.table.int .header {
+	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-header-bg.png') no-repeat center top;
+	height:132px;
+	position:relative;
+	top:13px;
+	z-index:50;
+}
+
+.table.int .header .logo {
+	position:absolute;
+	left:380px;
+	top:-35px;
+}
+
+.table.int .nav {
+	width: 900px;
+	margin: 0 auto;
+	margin-top:-6px;
+}
+
+.table.int .nav ul {
+}
+
+.table.int .nav li {
+	float:left;
+	width:125px;
+	height:86px;
+	list-style:none;
+	margin-right:-15px;
+	position: relative;
+}
+
+.table.int .nav li a {
+	font-family: sans-serif;
+	font-weight:700;
+	text-transform:uppercase;
+	font-size:13px;
+	line-height:13px;
+	text-align:center;
+	vertical-align: middle;
+	position: relative;
+	z-index: 51;
+	display: block;
+
+}
+
+.table.int .nav li a:hover {
+	color:#fff;
+}
+
+.table.int .nav li:after {
+	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-nav-bg-white.png') no-repeat;
+	z-index: 49;
+	position: absolute;
+	display: block;
+	width:125px;
+	height:86px;
+	top: 0;
+	left: 0;
+	content: " ";
+}
+
+.table.int .nav li:hover:after,
+.table.int .nav .hover {
+	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-nav-bg-blue.png') no-repeat;
+	color:#fff;
+}
+
+.table.int .nav .active a,
+.table.int .nav .hover a {
+	color:#fff;
+}
+
+.table.int .nav li a {
+	text-decoration:none;
+	color:#000;
+	
+}
+
+.table.int .nav li span {
+	display: table-cell;
+	vertical-align: middle;
+	height: 86px;
+	width:125px;
+	padding:0 20px 0 20px;
+}
+
+.table.int .nav-overlay {
+	z-index:100;
+	position: absolute;
+	top: 131px;
+	left: 22px;
+}
+
+.table.int .nav-overlay li {
+	width:102px;
+	height:57px;
+	list-style:none;
+	float:left;
+	margin-right:6px;
+	cursor:pointer;
+	/*border:1px dashed red;*/
+}
+
+.table.int .main {
+	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-main-bg.png') no-repeat;
+	background: rgba(0,0,0,.3);
+	width:982px;
+	margin-top:25px;
+	display: inline-block; *display: inline; zoom: 1;
+	margin-left: 10px;
+	color: #fff;
+}
+
+.table.int .main .column  {
+	margin-right:1px;
+}
+
+.table.int .main .column-1,
+.table.int .main .column-3 {
+	width:170px;
+	height: 100%;
+	float:left;
+	background: rgba(0,0,0,.2);
+}
+
+.table.int .main .column-2 {
+	width:638px;
+	float:left;
+	background: rgba(0,0,0,.2);
+	height: 100%;
+}
+
+.table.int .main .column-1 ol {
+	padding:30px 0 0 5px;
+}
+
+.table.int .main .column-1 ol li {
+	list-style:none;
+	min-height:22px;
+	width:92px;
+	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-chevron.png') no-repeat top left;
+	padding-left:35px;
+	margin-bottom:30px;
+}
+
+.table.int .main .column-1 ol li a {
+	text-decoration:none;
+	text-transform:uppercase;
+	color:#fff;
+	font-size:14px;
+	display:block;
+}
+
+.table.int .main .column-1 ol li a:hover {
+	color:#4f86ad;
+}
+
+.table.int .main .column-1 .social {
+	width:116px;
+	margin:170px auto 0 auto;
+}
+
+.table.int .main .column-2 .inner {
+	padding:40px 15px 0 15px;
+}
+
+.table.int .main .column-2 h3 {
+	color:#fff;
+	font-size:15px;
+	font-weight:500;
+	margin: 2em 0 1em 0;
+}
+
+.table.int .main .column-2 .inner {
+	color:#fff;
+	font-size:14px;
+	font-weight:500;
+}
+
+.table.int .main .column-2 .inner p {
+	color:#fff;
+}
+
+.table.int .main .column-3 .email-signup {
+	margin-top:40px;
+}
+
+.table.int .main .column-3 form .input {
+	width:149px;
+	height:28px;
+	margin:0 auto;
+	margin-top:-12px;
+}
+
+.table.int .main .column-3 form input[type="text"] {
+	width: 127px;
+	margin-left: 10px;
+	margin-top: 7px;
+	border: none;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	padding: 3px;
+}
+
+.table.int .main .column-3 form h3 {
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight:500;
+}
+
+.table.int .main .column-3 form .submit {
+	width:111px;
+	height:41px;
+	margin:0 auto;
+	margin-top:5px;
+}
+
+.table.int .main .column-3 .sponsored {
+	width:151px;
+	margin:0 auto;
+	margin:35px auto 0 auto;
+}
+
+.table.int .main .column-3 .sponsored h4 {
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 500;
+	text-align: center;
+	font-size: 16px;
+	margin:0;
+}
+
+#mobile_back {
+	position: absolute;
+	top: 46px;
+	left: -1em;
+}
+
+#mobile_back a {
+	display: block;
+	background: #000 url(/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-chevron-left.png) left center no-repeat;
+	background-color: rgba(0,0,0,.6);
+	padding: 5px;
+	padding-left: 30px;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.mobile {
+	display: none;
+}
+
+
+/* --------------------------------------------------------------------
+   Page specific
+   ----------------------------------------------------------------- */
+
+.page-wordlet-patt-home .table {
+	height: 750px;
+	padding: 0;
+}
+
+.page-wordlet-patt-home .header,
+.page-wordlet-patt-home .table .nav {
+	display: none;
+}
+
+.page-wordlet-patt-home .table .main {
+	margin: 0;
+	width: auto;
+	display: block;
+}
+
+.table .bread {
+	position:absolute;
+	top: 363px;
+	left: 695px;
+}
+
+.table .bread .tag {
+	position: absolute;
+	top: 23px;
+	left: 128px;
+}
+
+.table .dinner {
+	position: absolute;
+	top: 288px;
+	left: 280px;
+}
+
+.table .dinner .tag {
+	position: absolute;
+	top: 74px;
+	left: -46px;
+}
+
+.table .salad {
+	position: absolute;
+	top: 520px;
+	left: 671px;
+}
+
+.table .salad .tag {
+	position: absolute;
+	top: 9px;
+	left: 150px;
+}
+
+.table .saltpepper {
+	position: absolute;
+	top: 301px;
+	left: 159px;
+}
+
+.table .saltpepper .tag {
+	position: absolute;
+	top: -63px;
+	left: -132px;
+}
+
+.table .butter {
+	position: absolute;
+	top: 216px;
+	left: 530px;
+}
+
+.table .butter .tag {
+	position: absolute;
+	top: -85px;
+	left: 85px;
+}
+
+.table .cola {
+	position: absolute;
+	top: 215px;
+	left: 303px;
+}
+
+.table .cola .tag {
+	position: absolute;
+	top: -63px;
+	left: 84px;
+}
+
+.table .utensils {
+	position: absolute;
+	top: 435px;
+	left: 82px;
+}
+
+.table .utensils .tag {
+	position:absolute;
+	top: 151px;
+	left: -68px;
+}
+
+.table .knife {
+	position: absolute;
+	top: 306px;
+	left: 713px;
+}
+
+.table .knife .tag {
+	position:absolute;
+	top: -95px;
+	left: 61px;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (max-width: 499px) {
+	.mobile {
+		display: block;
+	}
+
+	#footer,
+	#page-wrapper {
+		width: auto;
+	}
+
+	* {
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		max-width: 100% !important;
+	}
+
+	img {
+		height: auto !important;
+	}
+
+	/* nav */
+	#top-search,
+	#join-login-top,
+	#top-follow-wrapper {
+		display: none;
+	}
+
+	.header-right {
+		display: inline;
+		float: none;
+	}
+
+	.header-right #nav-wrap {
+		display: inline;
+		float: none;
+	}
+
+	.header-right #nav-wrap:after {
+		display: none;
+	}
+
+	#block-menu-block-1 {
+		display: inline;
+		float: none;
+	}
+
+	#header-wrapper {
+		margin: 0;
+		position: relative;
+		z-index: 2;
+	}
+
+	/* wrap */
+	.page-wrap {
+		top: -46px;
+		position: relative;
+		z-index: 1;
+	}
+
+	/* patt */
+	.table.int {
+		padding: 0 1em;
+	}
+
+	.table.int .main {
+		margin: 0;
+	}
+
+	.table.int .main,
+	.table.int .main .column-1,
+	.table.int .main .column-2,
+	.table.int .main .column-3 {
+		height: auto !important;
+		width: auto;
+		float: none;
+		margin: 0;
+	}
+
+	.table.int .nav,
+	.table.int .main .column-1 {
+		display: none;
+	}
+
+	.table.int .main .column-3 .content {
+		margin-top: 0 !important;
+		position: static !important;
+	}
+
+	.table.int .nav li {
+		margin-right: 0;
+	}
+
+	.table.int .header {
+		height: auto;
+		background: none;
+		top: 0;
+	}
+
+	.table.int .header .logo {
+		position: static;
+		text-align: center;
+		margin-top: 0;
+	}
+
+
+	/* Home */
+
+	.page-wordlet-patt-home .table {
+		height: auto;
+		padding: 0;
+	}
+
+	.page-wordlet-patt-home .header,
+	.page-wordlet-patt-home .table .nav {
+		display: block;
+	}
+
+	.page-wordlet-patt-home .table .nav {
+		display: inline-block; *display: inline; zoom: 1;
+	}
+
+	.page-wordlet-patt-home .page-wrap {
+		margin-bottom: -46px;
+	}
+
+	.page-wordlet-patt-home #mobile_back,
+	.page-wordlet-patt-home .table .main {
+		display: none;
+	}
+
+	.page-wordlet-patt-home .table.int .nav li {
+		width: 50%;
+		height: 172px;
+	}
+
+	.page-wordlet-patt-home .table.int .nav li:after {
+		display: none;
+	}
+
+	.page-wordlet-patt-home .table.int .nav li a {
+		overflow: hidden;
+		text-indent: 100%;
+		width: 100%;
+		white-space: nowrap;
+		height: 100%;
+	}
+
+	.page-wordlet-patt-home .table.int .nav li span {
+		display: inline;
+		padding: 0;
+		width: auto;
+		height: auto;
+
+	}
+
+	.page-wordlet-patt-home .news {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-news.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .film {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-film.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .book {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-book.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .alliances {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-alliances.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .events {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-events.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .snap {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-gallery.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .assistance {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-assistance.png) center top no-repeat;
+	}
+
+	.page-wordlet-patt-home .action {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-action.png) center top no-repeat;
+	}
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

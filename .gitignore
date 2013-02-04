@@ -10,3 +10,4 @@ settings/settings.local.inc
 settings/settings.local.pglatz.inc
 .idea
 
+sftp-config.json
