@@ -20,6 +20,7 @@
 	<div class="inner">
 		<img src="http://stage.bltdigital.com/apatt/images/interior-main-header.png" width="434" height="25" alt="One Nation. Underfed.">
 		<div class="overview">
+			<h3><?=w('header')?></h3>
 			<?=w('body')?>
 		</div>
 	</div><!-- /.inner -->
