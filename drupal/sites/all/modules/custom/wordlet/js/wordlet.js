@@ -127,10 +127,12 @@ $('body')
 		var $link = $(this).find('.wordlet_configure, .wordlet_edit');
 		load_form($link.data('href'));
 		e.preventDefault();
+		e.stopPropagation();
 	})
 	.delegate('.wordlet_configure, .wordlet_edit', 'click', function(e) {
 		load_form($(this).data('href'));
 		e.preventDefault();
+		e.stopPropagation();
 	})
 	.delegate('#wordlet_toggle', 'change', function(e) {
 		var $this = $(this);
