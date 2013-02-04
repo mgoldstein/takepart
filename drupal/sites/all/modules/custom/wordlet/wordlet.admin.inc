@@ -587,6 +587,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       $form['single']['enabled'] = array(
         '#type' => 'checkbox',
        '#title' => 'Enable Single Line',
+       '#attributes' => array('data-for' => array('single-input')),
        '#default_value' => in_array('single', $entity->item_keys),
       );
     }

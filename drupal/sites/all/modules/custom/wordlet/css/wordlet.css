@@ -56,6 +56,17 @@
 
 .wordlet_edit_mode p {
     margin: 0;
+    font-weight: bold;
+    display: inline;
+    padding-left: 10px;
+}
+
+.wordlet_edit_mode p:first-child {
+    padding-left: 0;
+}
+
+.wordlet_edit_mode span {
+    font-weight: normal;
 }
 
 .wordlet_edit_mode span:after {
@@ -96,14 +107,31 @@
     top: 25px;
 }
 
+.wordlets_modal .form-type-select label,
 .wordlets_modal .form-type-textfield label {
     display: inline-block;
 }
+
+/* modal */
 
 .wordlets_modal .repeating {
     position: relative;
     outline: 1px dashed #ccc;
     padding: 5px 28px 5px 5px;
+}
+
+.wordlets_modal h1 {
+    font-size: 2em;
+}
+
+.wordlets_modal fieldset {
+    border: none;
+    padding: 0;
+}
+
+.wordlets_modal fieldset fieldset {
+    border: 1px solid #000;
+    padding: 0 1em;
 }
 
 /* Drupal admin bar */

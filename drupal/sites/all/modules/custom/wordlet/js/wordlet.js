@@ -43,7 +43,7 @@ var load_form = function(url, data) {
 				}
 
 				// Otherwise, condense html to just the form
-				$div.find('*:not(form,input,label,legend,select,textarea,option):not(:has(textarea,input,label,select,option,legend))').remove();
+				$div.find('*:not(form,input,label,legend,select,textarea,option,h1):not(:has(textarea,input,label,select,option,legend,h1))').remove();
 
 				/*var $type = $div.find('#edit-type');
 
