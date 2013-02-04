@@ -309,7 +309,7 @@ class WordletController extends EntityAPIControllerExportable {
         }
 
         $configure_link = '';
-        if ($configurable && $is_empty) {
+        if ($configurable && $args['empty'][$attribute]) {
           $href = "/admin/wordlet/page/{$entity->page}/manage/{$entity->id}/configure";
           $configure_link = implode('', array(
             '<span class="wordlet_configure" data-href="' . $href . '">',
