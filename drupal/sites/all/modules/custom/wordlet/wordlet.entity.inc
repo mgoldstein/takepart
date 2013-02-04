@@ -50,6 +50,54 @@ class WordletItem {
   }
 }
 
+class WordletList implements Iterator {
+
+  private $position;
+  private $data;
+
+  public $ordered;
+
+  public function __construct($wordlets, $ordered = FALSE) {
+    $this->position = 0;
+    $this->data = $wordlets;
+    $this->ordered = $ordered;
+  }
+
+  public function rewind() {
+    $this->position = 0;
+  }
+
+  public function current() {
+    return $this->data[$this->position];
+  }
+
+  public function key() {
+    return $this->position;
+  }
+
+  public function next() {
+    $this->position += 1;
+  }
+
+  public function valid() {
+    return isset($this->data[$this->position]);
+  }
+
+  public function count() {
+    return count($this->data);
+  }
+
+  public function __toString() {
+    $markup = $this->ordered ? '<ol>' : '<ul>';
+    foreach ($this->data as $wordlet) {
+      $markup .= '<li>' . $wordlet . '</li>';
+    }
+    $markup .= $this->ordered ? '</ol>' : '</ul>';
+    return $markup;
+  }
+}
+
+
 class Wordlet extends Entity {
 
   public $items;
