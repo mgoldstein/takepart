@@ -771,8 +771,7 @@ iframe.moreactions {
   float: none;
 }
 
-.petition_pledge_action .field-group-format .field-label, 
-.petition_pledge_action .field-name-field-petition-about strong{
+.petition_pledge_action .field-group-format .field-label {
   text-transform: uppercase;
   font-size: 16px;
   margin: 2em 0 1em 0;
