@@ -6,19 +6,12 @@
 					<?=$w->single?>
 				</a></li>
 			<? endforeach ?>
-			<li><a href="#">purchase tickets</a></li>
-			<li><a href="http://www.magpictures.com/dates.aspx?id=e016f484-4c9a-4401-8fbc-e19eb2119389">theaters</a></li>
-			<li><a href="#">watch it on demand</a></li>
-			<li><a href="http://www.magpictures.com/presskit.aspx?id=e016f484-4c9a-4401-8fbc-e19eb2119389">press kit</a></li>
-			<li><a href="http://www.magpictures.com/presskit.aspx?id=e016f484-4c9a-4401-8fbc-e19eb2119389">photo gallery</a></li>
-			<li><a href="http://www.magpictures.com/profile.aspx?id=e016f484-4c9a-4401-8fbc-e19eb2119389">reviews</a></li>
 		</ol>
 		<div class="social"><img src="http://stage.bltdigital.com/apatt/images/interior-social-icons.png" width="116" height="60" alt="Social Icons"></div>
 	</div>
 </div><!-- /.column-1 -->
 <div class="column column-2">
 	<div class="inner">
-		<img src="http://stage.bltdigital.com/apatt/images/interior-main-header.png" width="434" height="25" alt="One Nation. Underfed.">
 		<div class="overview">
 			<h3><?=w('header')?></h3>
 			<?=w('body')?>

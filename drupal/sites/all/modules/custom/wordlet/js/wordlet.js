@@ -3,6 +3,7 @@ $(function() {
 
 var rscript = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
 var modal_id = 'wordlets_';
+var adding = false;
 
 var load_form = function(url, data) {
 	data = data || null;
@@ -34,46 +35,37 @@ var load_form = function(url, data) {
 				// Sniff for a success and close the modal
 				var $success = $div.find('.messages.status');
 				if ( $success.length ) {
-					$.tpmodal.show({id: modal_id, html: $success});
-					setTimeout(function() {
-						// $.tpmodal.hide({id: 'wordlets'});
-						location.reload(true);
-					}, 2000);
+					if ( adding ) {
+						adding = false;
+						load_form(url);
+					} else {
+						$.tpmodal.show({id: modal_id, html: $success});
+						//setTimeout(function() {
+							// $.tpmodal.hide({id: 'wordlets'});
+							location.reload(true);
+						//}, 2000);
+					}
 					return true;
 				}
 
 				// Otherwise, condense html to just the form
 				$div.find('*:not(form,input,label,legend,select,textarea,option,h1):not(:has(textarea,input,label,select,option,legend,h1))').remove();
 
-				/*var $type = $div.find('#edit-type');
-
-				if ( $type.length ) {
-					var $string = $div.find('.form-item-string-value');
-					var $text = $div.find('.form-item-text-value');
-					var $integer = $div.find('.form-item-integer-value');
-
-					var type_change = function(e) {
-						var val = $type.val();
-						if ( val == 'single-line' ) {
-							$string.show();
-							$text.hide();
-							$integer.hide();
-						} else if ( val == 'multiple-lines' ) {
-							$string.hide();
-							$text.show();
-							$integer.hide();
-						} else {
-							$string.show();
-							$text.hide();
-							$integer.show();
-						}
-					};
-
-					$type.bind('change', type_change);
-				}*/
-
 				var $repeaters = $div.find('.repeating');
 
+				// Add an extra submit button to refresh the form if "repeaters" are found
+				if ( $repeaters.length ) {
+					var $submit = $div.find('#edit-submit');
+					$submit.attr('value', $submit.attr('value') + ' and Close');
+					var $add = $submit.clone();
+					$add.attr('value', $add.attr('value') + ' and Add Another');
+					$add.insertAfter($submit);
+					$add.bind('click', function() {
+						adding = true;
+					});
+				}
+
+				// Move values up/down
 				$repeaters.each(function(i) {
 					var $repeater = $(this);
 					var $up = $('<a href="#" class="wordlet_up">Up</a>');
@@ -119,20 +111,24 @@ var load_form = function(url, data) {
 					if ( i != $repeaters.length - 1 ) $repeater.append($down);
 				});
 
+				// Enable/disable inputs based on "Enabled" checkboxes
 				var check_enabled = function() {
 					$div.find('#wordlet-edit-form-data input[type="checkbox"]').each(function() {
 						var $cb = $(this);
 						var f = $cb.data('for');
 						if ( f ) {
 							var $i = $div.find('.' + f);
+							var $p = ( $i.is('textarea') ) ? $i.parent().parent() : $i.parent();
 							if ( $cb.is(':checked') ) {
-								$i.parent().css({height: 'auto'});
+								$p.css({height: 'auto'});
 							} else {
-								$i.parent().css({height: 0});
+								$p.css({height: 0});
 							}
 						}
 					});
 				};
+
+				check_enabled();
 
 				$div.find('#wordlet-edit-form-data input[type="checkbox"]').bind('change', check_enabled);
 
@@ -158,10 +154,6 @@ var load_form = function(url, data) {
 						$div.find('textarea').autosize();
 					}, 600);
 				}});
-
-				/*if ( $type.length ) {
-					type_change();
-				}*/
 			}
 		}
 	});
