@@ -91,6 +91,13 @@ function wordlet_schema() {
         'description' => 'Serialized item values.',
         'type' => 'text',
       ),
+      'keys_data' => array(
+        'description' => 'Value keys used by the wordlet.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
 
       // Backend values
       'created' => array(
@@ -223,4 +230,17 @@ function wordlet_update_7102(&$sandbox) {
   db_drop_field('wordlet', 'integer_value');
   db_drop_field('wordlet', 'string_value');
   db_drop_field('wordlet', 'text_value');
+}
+
+/**
+ * Add column for selected item values.
+ */
+function wordlet_update_7103(&$sandbox) {
+  db_add_field('wordlet', 'keys_data', array(
+    'description' => 'Value keys used by the wordlet.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
 }

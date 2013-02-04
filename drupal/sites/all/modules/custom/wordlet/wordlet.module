@@ -411,7 +411,7 @@ function wordlet_page_overview_callback() {
   $query = db_select('wordlet', 'w');
   $query->fields('w', array('page'));
   $query->addExpression('COUNT(w.name)', 'count');
-  $query->condition('w.type', '', '!=');
+  $query->condition('w.keys_data', '', '!=');
   $query->groupBy('w.page');
   $configured_counts = $query->execute()->fetchAllKeyed();
 
@@ -419,7 +419,7 @@ function wordlet_page_overview_callback() {
   $query = db_select('wordlet', 'w');
   $query->fields('w', array('page'));
   $query->addExpression('COUNT(w.name)', 'count');
-  $query->condition('w.type', '', '=');
+  $query->condition('w.keys_data', '', '=');
   $query->groupBy('w.page');
   $pending_counts = $query->execute()->fetchAllKeyed();
 
@@ -635,12 +635,12 @@ function wordlet_page_import_form_submit($form, &$form_state) {
         'name' => '',
         'title' => '',
         'description' => '',
-        'type' => '',
         'format' => 0,
         'enabled' => 1,
         'cardinality' => 1,
         'weight' => 0,
-        'values' => '',
+        'items_data' => '',
+        'keys_data' => '',
       );
 
       // Check for any existing wordlet, or create a new one
@@ -703,7 +703,7 @@ function wordlet_page_edit_form($form, &$form_state, $page) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'wordlet');
   $query->propertyCondition('page', $page['name']);
-  $query->propertyCondition('type', '', '!=');
+  $query->propertyCondition('keys_data', '', '!=');
   $query->propertyOrderBy('weight');
   $result = $query->execute();
 
@@ -844,7 +844,7 @@ function wordlet_load_for_page($page) {
     foreach ($entities as $entity) {
       if (isset($wordlets[$entity->name])) {
         $existing = $wordlets[$entity->name];
-        if (empty($existing->type) == empty($entity->type)) {
+        if (empty($existing->keys_data) == empty($entity->keys_data)) {
           // They are both configured, or both not configured, the position
           // in the load array determines which to use
           $existing_pos = array_search($existing->page, $load);
@@ -853,7 +853,7 @@ function wordlet_load_for_page($page) {
             $wordlets[$entity->name] = $entity;
           }
         }
-        elseif (!empty($entity->type)) {
+        elseif (!empty($entity->keys_data)) {
           // The current entity should be used regardless of position in the
           // load array as it is the one that is configured
           $wordlets[$entity->name] = $entity;

@@ -1,8 +1,59 @@
 <?php
 
+class WordletItem {
+
+  public $page;
+  public $name;
+  public $format;
+
+  public $single;
+  public $multi;
+  public $href;
+  public $node;
+
+  public $empty;
+
+  public function __construct($args = array()) {
+    $args += array(
+      'page' => '',
+      'name' => '',
+      'format' => 0,
+      'single' => '',
+      'multi' => '',
+      'href' => '',
+      'node' => '',
+      'empty' => array(
+        'single' => TRUE,
+        'multi' => TRUE,
+        'href' => TRUE,
+        'node' => TRUE,
+      ),
+    );
+    foreach ($args as $attribute => $value) {
+      $this->{$attribute} = $value;
+    }
+  }
+
+  public function __toString() {
+    $priority = array('multi', 'single', 'href', 'node');
+    foreach ($priority as $attribute) {
+      if (!$this->empty[$attribute]) {
+        return $this->{$attribute};
+      }
+    }
+    foreach ($priority as $attribute) {
+      if (!empty($this->{$attribute})) {
+        return $this->{$attribute};
+      }
+    }
+    return '';
+  }
+}
+
 class Wordlet extends Entity {
 
   public $items;
+  public $item_keys;
 
   public function __construct($values = array(), $entity_type = 'wordlet') {
     $this->items = array();
@@ -35,12 +86,12 @@ class WordletController extends EntityAPIControllerExportable {
       'name' => '',
       'title' => '',
       'description' => '',
-      'type' => '',
       'format' => 0,
       'enabled' => 1,
       'cardinality' => 1,
       'weight' => 0,
       'items_data' => '',
+      'keys_data' => '',
       'created' => 0,
       'changed' => 0,
       'status' => ENTITY_CUSTOM,
@@ -60,6 +111,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     // serialize the field item values
     $entity->items_data = serialize($entity->items);
+    $entity->keys_data = implode(',', $entity->item_keys);
 
     return parent::save($entity, $transaction);
   }
@@ -72,13 +124,95 @@ class WordletController extends EntityAPIControllerExportable {
       if (!empty($items) && is_array($items)) {
         $entity->items = $items;
       }
+      $entity->item_keys = explode(',', $entity->keys_data);
       $queried_entities[$key] = $entity;
     }
 
     parent::attachLoad($queried_entities, $revision_id);
   }
 
-  private function createViewItem($entity, $item) {
+  protected function createViewItem($entity, $item) {
+
+    // Default attributes
+    $args = array(
+      'page' => $entity->page,
+      'name' => $entity->name,
+      'format' => $entity->format,
+      'single' => '',
+      'multi' => '',
+      'href' => '',
+      'node' => '',
+      'empty' => array(
+        'single' => TRUE,
+        'multi' => TRUE,
+        'href' => TRUE,
+        'node' => TRUE,
+      ),
+    );
+
+    // Single line text
+    if (in_array('single', $entity->item_keys)) {
+
+      // Preprocess the value
+      switch ($entity->format) {
+      case 2: // Full HTML
+        $value = $item['single'];
+        break;
+      case 1: // Simple HTML
+        $value = strip_tags($item['single'],
+          '<b><i><strong><em><br><br/><img>');
+        break;
+      default: // Plain Text
+        $value = check_plain($item['single']);
+        break;
+      }
+      $args['single'] = $value;
+    }
+
+    // Multi line text
+    if (in_array('multi', $entity->item_keys)) {
+
+      // Preprocess the value
+      switch ($this->format) {
+      case 2: // Full HTML
+        $value = $item['multi'];
+        break;
+      case 1: // Simple HTML
+        $value = strip_tags($item['multi'], '<b><i><strong><em><br><br/><img>');
+        break;
+      default: // Plain Text
+        $value = check_plain($item['multi']);
+        break;
+      }
+      // Plain text and simple HTML fields need to be converted to paragraphs
+      if ($this->format != 2) {
+        $value = str_replace(array("\r\n", "\r"), "\n", $value);
+        $value = str_replace("\n\n\n", '</p><p>', $value);
+        $value = str_replace("\n\n", '<br/>', $value);
+        $value = '<p>' . $value . '</p>';
+      }
+      $args['multi'] = $value;
+    }
+
+    // Link href
+    if (in_array('href', $entity->item_keys)) {
+      $args['href'] = $item['href'];
+      $args['empty']['href'] = empty($item['href']);
+    }
+
+    // Node requires a nid and a view mode
+    if (in_array('nid', $entity->item_keys)
+      && in_array('view_mode', $entity->item_keys)) {
+      $value = '';
+      if (!empty($item['nid']) && !empty($item['view_mode'])) {
+        $node = node_load($item['nid']);
+        if ($node !== FALSE) {
+          $value = drupal_render(node_view($node, $item['view_mode']));
+          $have_value = TRUE;
+        }
+      }
+      $args['node'] = $value;
+    }
 
     // Determine the access level for the wordlet.
     $editable = FALSE;
@@ -94,39 +228,55 @@ class WordletController extends EntityAPIControllerExportable {
       }
     }
 
-    $args = array(
-      'id' => $entity->id,
-      'page' => $entity->page,
-      'name' => $entity->name,
-      'type' => $entity->type,
-      'format' => $entity->format,
-      'editable' => $editable,
-      'configurable' => $configurable,
-    );
-    $args += $item;
+    if ($editable) {
 
-    if ($entity->type === 'single-line') {
-      return new SingleLineWordlet($args);
+      $displayed_attributes = array('single', 'multi', 'node');
+
+      foreach ($displayed_attributes as $attribute) {
+
+        $stripped = strip_tags($args[$attribute]);
+        $is_empty = trim($stripped) == FALSE;
+        $classes = $is_empty ? "empty wordlet" : "wordlet";
+
+        $tag = $args[$attribute] == $stripped ? 'span' : 'div';
+
+        $edit_link = '';
+        if (!$is_empty) {
+          $href = "/admin/wordlet/page/{$entity->page}/manage/{$entity->id}/edit";
+          $edit_link = implode('', array(
+            '<span class="wordlet_edit" data-href="' . $href . '">',
+            t('Edit @name', array('@name' => $entity->name)),
+            '</span>'
+          ));
+        }
+
+        $configure_link = '';
+        if ($configurable && $is_empty) {
+          $href = "/admin/wordlet/page/{$entity->page}/manage/{$entity->id}/configure";
+          $configure_link = implode('', array(
+            '<span class="wordlet_configure" data-href="' . $href . '">',
+            t('Configure @name', array('@name' => $entity->name)),
+            '</span>'
+          ));
+        }
+
+        $args[$attribute] = implode('', array(
+          "<{$tag} class=\"{$classes}\">",
+          $args[$attribute],
+          $edit_link,
+          $configure_link,
+          "</{$tag}>",
+        ));
+
+        $args['empty'][$attribute] = $is_empty;
+
+      }
     }
-    elseif ($entity->type === 'multiple-lines') {
-      return new MultipleLineWordlet($args);
-    }
-    elseif ($entity->type === 'node-reference') {
-      return new NodeReferenceWordlet($args);
-    }
-    elseif ($entity->type === 'simple-link') {
-      return new SimpleLinkWordlet($args);
-    }
-    else {
-      return new WordletItem($args);
-    }
+
+    return new WordletItem($args);
   }
 
   public function viewOne($entity) {
-    //if ($entity->cardinality != 1) {
-    //  // The list object has a __toString method and can be printed directly
-    //  return $this->viewList($entity);
-    //}
     $first = reset($entity->items);
     $item = $first !== FALSE ? $first : array();
     return $this->createViewItem($entity, $item);

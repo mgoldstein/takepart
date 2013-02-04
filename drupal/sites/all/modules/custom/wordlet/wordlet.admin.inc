@@ -126,22 +126,10 @@ function wordlet_count_new($page) {
   $result = db_select('wordlet', 'w')
     ->fields('w')
     ->condition('w.page', $page['name'])
-    ->condition('w.type', '')
+    ->condition('w.keys_data', '')
     ->execute();
   $count = $result->rowCount();
   return t('New wordlets (@count)', array('@count' => $count));
-}
-
-/**
- * Wordlet type labels.
- */
-function wordlet_type_labels() {
-  return array(
-    'single-line' => 'Single Line',
-    'multiple-lines' => 'Multi Line',
-    'node-reference' => 'Node Reference',
-    'simple-link' => 'Link',
-  );
 }
 
 /**
@@ -315,8 +303,8 @@ function wordlet_overview_form($form, &$form_state, $page, $configured) {
       'field' => 'w.name',
     ),
     array(
-      'data' => t('Type'),
-      'field' => 'w.type',
+      'data' => t('Keys'),
+      'field' => 'w.keys_data',
     ),
     array(
       'data' => t('Updated'),
@@ -333,15 +321,14 @@ function wordlet_overview_form($form, &$form_state, $page, $configured) {
     ->extend('PagerDefault')
     ->extend('TableSort');
   $result = $query
-    ->fields('w', array('id', 'page' ,'title', 'name', 'type', 'changed'))
-    ->condition('w.type', '', $configured_op)
+    ->fields('w', array('id', 'page' ,'title', 'name', 'keys_data', 'changed'))
+    ->condition('w.keys_data', '', $configured_op)
     ->condition('w.page', $page['name'], '=')
     ->limit(50)
     ->orderByHeader($header)
     ->execute();
 
   $destination = drupal_get_destination();
-  $type_labels = wordlet_type_labels();
 
   $options = array();
   foreach ($result as $row) {
@@ -386,7 +373,7 @@ function wordlet_overview_form($form, &$form_state, $page, $configured) {
     $options[$row->id] = array(
       $row->title,
       $row->name,
-      $type_labels[$row->type],
+      $row->keys_data,
       format_date($row->changed, 'short'),
       $edit_operation,
       $configure_operation,
@@ -433,7 +420,6 @@ function wordlet_ui_get_form($page, $entity_type, $entity, $op = 'edit') {
   if (!isset($entity) && $op == 'add') {
     $entity = entity_create($entity_type, array(
       'page' => $page['name'],
-      'type' => 'single-line',
     ));
   }
 
@@ -452,13 +438,6 @@ function wordlet_ui_get_form($page, $entity_type, $entity, $op = 'edit') {
 }
 
 function wordlet_configuration_form($form, &$form_state, $entity, $op) {
-
-  // Changing the type or cardinality, caused an AJAX based update to the form.
-  $type = isset($form_state['values']['configuration']['type'])
-    ? $form_state['values']['configuration']['type'] : $entity->type;
-
-  $cardinality = isset($form_state['values']['configuration']['cardinality'])
-    ? $form_state['values']['configuration']['cardinality'] : $entity->cardinality;
 
   $form['configuration'] = array(
     '#title' => t('Configuration'),
@@ -502,21 +481,6 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
     '#default_value' => $entity->description,
   );
 
-  $form['configuration']['type'] = array(
-    '#title' => t('Type'),
-    '#description' => t('The type of wordlet'),
-    '#type' => 'select',
-    '#options' => wordlet_type_labels(),
-    '#required' => TRUE,
-    '#default_value' => $entity->type,
-    //'#ajax' => array(
-    //  'callback' => 'wordlet_configuration_change_callback',
-    //  'wrapper' => 'wordlet-edit-form-data',
-    //  'method' => 'replace',
-    //  'effect' => 'fade',
-    //),
-  );
-
   $form['configuration']['format'] = array(
     '#title' => t('Format'),
     '#description' => t('Format of the value.'),
@@ -538,12 +502,6 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
       0 => t('Multiple Values'),
     ),
     '#default_value' => $entity->cardinality,
-    //'#ajax' => array(
-    //  'callback' => 'wordlet_configuration_change_callback',
-    //  'wrapper' => 'wordlet-edit-form-data',
-    //  'method' => 'replace',
-    //  'effect' => 'fade',
-    //),
   );
 
   $form['configuration']['weight'] = array(
@@ -561,13 +519,7 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
     '#prefix' => '<div id="wordlet-edit-form-data">',
     '#suffix' => '</div>'
   );
-  if (!empty($type)) {
-    $state = array(
-      'type' => $type,
-      'cardinality' => $cardinality,
-    );
-    $form['data'] += wordlet_get_item_fields($entity, $state);
-  }
+  $form['data'] += wordlet_get_item_fields($entity, TRUE);
 
   $form['actions'] = array('#type' => 'actions');
   $submit = array();
@@ -587,12 +539,7 @@ function wordlet_configuration_change_callback($form, $form_state) {
   return $form['data'];
 }
 
-function wordlet_get_item_fields($entity, $state = array()) {
-
-  $state += array(
-    'type' => $entity->type,
-    'cardinality' => $entity->cardinality,
-  );
+function wordlet_get_item_fields($entity, $configure = FALSE) {
 
   $form = array(
     'items' => array(
@@ -602,110 +549,129 @@ function wordlet_get_item_fields($entity, $state = array()) {
     ),
   );
 
-  $type = str_replace('-', '_', $state['type']);
-  $field_form = "wordlet_{$type}_fields";
-
-  if ($state['cardinality'] == 1) {
+  if ($entity->cardinality == 1) {
     $first = reset($entity->items);
     $item = $first !== FALSE ? $first : array();
-    if (function_exists($field_form)) {
-      $form['items'][] = call_user_func_array($field_form, array($entity, $item));
-    }
+    $form['items'][] = wordlet_get_single_item_fields($entity, $item, $configure);
   }
   else {
+    $form['items']['#attributes'] = array(
+      'class' => array('repeating-container'),
+    );
     foreach ($entity->items as $item) {
-      if (function_exists($field_form)) {
-        $form['items'][] = call_user_func_array($field_form, array($entity, $item));
-      }
+      $form['items'][] = wordlet_get_single_item_fields($entity, $item, $configure);
+      $configure = FALSE;
     }
     // Extra field for additional value
-    if (function_exists($field_form)) {
-      $form['items'][] = call_user_func_array($field_form, array($entity, array()));
-    }
+    $form['items'][] = wordlet_get_single_item_fields($entity, array(), $configure);
   }
 
   return $form;
 }
 
-function wordlet_single_line_fields($entity, $values) {
-  return array(
-    'text' => array(
-      '#title' => t('Text'),
-      '#description' => $entity->description,
-      '#type' => 'textfield',
-      '#default_value' => $values['text'],
-      '#attributes' => array('class' => array('single-line')),
-    ),
-  );
-}
+function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
 
-function wordlet_multiple_lines_fields($entity, $values) {
-  return array(
-    'text' => array(
-      '#title' => t('Text'),
-      '#description' => $entity->description,
-      '#type' => 'textarea',
-      '#default_value' => $values['text'],
-      '#attributes' => array('class' => array('multiple-lines')),
-    ),
+  $form = array(
+    '#type' => 'container',
+    '#tree' => TRUE,
   );
-}
-
-function wordlet_node_reference_fields($entity, $values) {
-  return array(
-    'nid' => array(
-      '#title' => t('Node'),
-      '#description' => $entity->description,
-      '#type' => 'textfield',
-      '#default_value' => $values['nid'],
-      '#element_validate' => array('wordlet_validate_node_id'),
-      '#attributes' => array('class' => array('node-reference')),
-    ),
-    'view_mode' => array(
-      '#title' => t('View Mode'),
-      '#description' => t('The view mode to display'),
-      '#type' => 'textfield',
-      '#default_value' => $values['view_mode'],
-      '#attributes' => array('class' => array('node-reference')),
-    ),
-  );
-}
-
-function wordlet_validate_node_id($element, &$form_state) {
-  $value = $element['#value'];
-  $not_empty = ($value !== '');
-  $not_numeric = (!is_numeric($value) || intval($value) != $value);
-  if ($not_empty && ($not_numeric || $value < 0)) {
-    form_error($element, t('%name must be a valid node id.',
-      array('%name' => $element['#title'])));
+  if ($entity->cardinality != 1) {
+    $form['#attributes'] = array('class' => array('repeating'));
   }
-  else {
-    $node = node_load($value);
-    if ($node === FALSE) {
-      form_error($element, t('%name must be a valid node id.',
-        array('%name' => $element['#title'])));
+
+  if ($configure || in_array('single', $entity->item_keys)) {
+    $form['single'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['single']['enabled'] = array(
+        '#type' => 'checkbox',
+       '#title' => 'Enable Single Line',
+       '#default_value' => in_array('single', $entity->item_keys),
+      );
     }
-  }
-}
-
-function wordlet_simple_link_fields($entity, $values) {
-  return array(
-    'text' => array(
+    $form['single']['value'] = array(
       '#title' => t('Text'),
-      '#description' => $entity->description,
       '#type' => 'textfield',
-      '#default_value' => $values['text'],
-      '#attributes' => array('class' => array('simple-link')),
-    ),
-    'href' => array(
+      '#default_value' => $values['single'],
+    );
+  }
+
+  if ($configure || in_array('multi', $entity->item_keys)) {
+    $form['multi'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['multi']['enabled'] = array(
+       '#type' => 'checkbox',
+       '#title' => 'Enable Multi Line',
+       '#default_value' => in_array('multi', $entity->item_keys),
+      );
+    }
+    $form['multi']['value'] = array(
+      '#title' => t('Text'),
+      '#type' => 'textarea',
+      '#default_value' => $values['multi'],
+    );
+  }
+
+  if ($configure || in_array('href', $entity->item_keys)) {
+    $form['href'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['href']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable HREF',
+        '#default_value' => in_array('href', $entity->item_keys),
+      );
+    }
+    $form['href']['value'] = array(
       '#title' => t('Link'),
-      '#description' => t('The view mode to display'),
       '#type' => 'textfield',
       '#default_value' => $values['href'],
       '#element_validate' => array('wordlet_validate_href'),
-      '#attributes' => array('class' => array('simple-link')),
-    ),
-  );
+    );
+  }
+
+  if ($configure || in_array('nid', $entity->item_keys)) {
+    $form['nid'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['nid']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Node ID',
+        '#default_value' => in_array('nid', $entity->item_keys),
+      );
+    }
+    $form['nid']['value'] = array(
+      '#title' => t('Node'),
+      '#type' => 'textfield',
+      '#default_value' => $values['nid'],
+      '#element_validate' => array('wordlet_validate_node_id'),
+    );
+  }
+
+  if ($configure || in_array('view_mode', $entity->item_keys)) {
+    $form['view_mode'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['view_mode']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable View Mode',
+        '#default_value' => in_array('view_mode', $entity->item_keys),
+      );
+    }
+    $form['view_mode']['value'] = array(
+      '#title' => t('View Mode'),
+      '#type' => 'textfield',
+      '#default_value' => $values['view_mode'],
+    );
+  }
+
+  return $form;
 }
 
 function wordlet_validate_href($element, &$form_state) {
@@ -719,17 +685,30 @@ function wordlet_validate_href($element, &$form_state) {
   }
 }
 
+function wordlet_validate_node_id($element, &$form_state) {
+  $value = $element['#value'];
+  $not_empty = ($value !== '');
+  $not_numeric = (!is_numeric($value) || intval($value) != $value);
+  if ($not_empty && ($not_numeric || $value < 0)) {
+    form_error($element, t('%name must be a valid node id.',
+      array('%name' => $element['#title'])));
+  }
+  elseif ($not_empty) {
+    $node = node_load($value);
+    if ($node === FALSE) {
+      form_error($element, t('%name must be a valid node id.',
+        array('%name' => $element['#title'])));
+    }
+  }
+}
+
 function wordlet_form($form, &$form_state, $entity, $op) {
 
   $form_state['wordlet_op'] = $op;
   if ($op == 'add' || $op == 'configure') {
-    // Make sure a type is pre-selected when adding or configuring a wordlet.
-    if (empty($entity->type)) {
-      $entity->type = 'single-line';
-    }
     $form = wordlet_configuration_form($form, $form_state, $entity, $op);
   }
-  elseif ($op == 'edit' && !empty($entity->type)) {
+  elseif ($op == 'edit') {
 
     $form += wordlet_get_item_fields($entity);
 
@@ -768,7 +747,7 @@ function wordlet_form_validate($form, &$form_state) {
       $entities = entity_load('wordlet', array_keys($result['wordlet']));
       $existing = reset($entities);
 
-      if (empty($existing->type)) {
+      if (empty($existing->keys_data)) {
         $args = array('!existing_link' => l('configure wordlet', "admin/wordlet/page/{$page['name']}/manage/{$existing->id}/configure"));
         form_set_error('name', t('A wordlet with that name has already been added to the system, but has not yet been configured. The wordlet can be configured on the !existing_link page.', $args));
       }
@@ -795,10 +774,20 @@ function wordlet_form_submit(&$form, &$form_state) {
       $entity->{$attribute} = $value;
     }
   }
+  if ($op == 'add' || $op == 'configure') {
 
-  // Set the initial values passed in by the configuration form.
-  if (isset($form_state['values']['data'])) {
-    wordlet_update_items_from_fields($entity, $form_state['values']['data']);
+    $entity->item_keys = array();
+    $enabled_states = reset($form_state['values']['data']['items']);
+    foreach ($enabled_states as $key => $values) {
+      if (!empty($values['enabled'])) {
+        $entity->item_keys[] = $key;
+      }
+    }
+
+    // Set the initial values passed in by the configuration form.
+    if (isset($form_state['values']['data'])) {
+      wordlet_update_items_from_fields($entity, $form_state['values']['data']);
+    }
   }
 
   // Set the values passed in by the edit form.
@@ -822,46 +811,24 @@ function wordlet_form_submit(&$form, &$form_state) {
 }
 
 function wordlet_update_items_from_fields($entity, $values) {
-
-  $items = $values['items'];
-
-  // Wipe out the existing items.
   $entity->items = array();
-
-  if ($entity->cardinality == 1) {
-    $values = reset($items);
-    if ($values != FALSE) {
-      $entity->items[] = $values;
+  foreach ($values['items'] as $fields) {
+    $item = array(
+      'single' => '',
+      'multi' => '',
+      'href' => '',
+      'nid' => '',
+      'view_mode' => '',
+    );
+    $is_empty = TRUE;
+    foreach (array_keys($item) as $key) {
+      if (isset($fields[$key]) && in_array($key, $entity->item_keys)) {
+        $item[$key] = $fields[$key]['value'];
+        $is_empty &= empty($item[$key]);
+      }
     }
-  }
-  else {
-    foreach ($items as $values) {
-      if ($entity->type == 'single-line') {
-        $text = trim($values['text']);
-        if (strlen($text) > 0) {
-          $entity->items[] = $values;
-        }
-      }
-      elseif ($entity->type == 'multiple-lines') {
-        $text = trim($values['text']);
-        if (strlen($text) > 0) {
-          $entity->items[] = $values;
-        }
-      }
-      elseif ($entity->type == 'node-reference') {
-        $nid = trim($values['nid']);
-        $view_mode = trim($values['view_mode']);
-        if (strlen($nid) > 0 && strlen($view_mode) > 0) {
-          $entity->items[] = $values;
-        }
-      }
-      elseif ($entity->type == 'simple-link') {
-        $text = trim($values['text']);
-        $href = trim($values['href']);
-        if (strlen($text) > 0 || strlen($href) > 0) {
-          $entity->items[] = $values;
-        }
-      }
+    if (!$is_empty) {
+      $entity->items[] = $item;
     }
   }
 }

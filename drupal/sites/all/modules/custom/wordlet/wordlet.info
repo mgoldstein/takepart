@@ -8,4 +8,3 @@ dependencies[] = entity
 
 files[] = wordlet.admin.inc
 files[] = wordlet.entity.inc
-files[] = wordlet.items.inc
