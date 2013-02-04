@@ -200,6 +200,7 @@ $('body')
 
 $('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
 	var $this = $(this);
+	var $wordlet = $this.find('.wordlet');
 	var $a = $('<a href="' + this.href + '" class="wordlet_helper_link">Open Link</a>')
 		.css({
 			display: 'block',
@@ -222,11 +223,14 @@ $('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
 
 			if ( $a.css('right') != '100%' ) return true;
 
+			var x = $wordlet.offset().left + $wordlet.width();
+			var y = $wordlet.offset().top;
+
 			$a
 				.css({
 					right: '',
-					left: e.pageX,
-					top: e.pageY
+					left: x,
+					top: y
 				});
 		})
 		.bind('mouseleave', function(e) {
