@@ -71,6 +71,9 @@
     border-right: 1px solid #999;
     border-bottom: 1px solid #999;
     margin-left: 3px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
 }
 
 .repeater:first-child .wordlet_down {
@@ -80,6 +83,17 @@
 .wordlet_down {
     background-image: url(/misc/arrow-asc.png);
     background-position: center -1px;
+    top: 25px;
+}
+
+.wordlets_modal .form-type-textfield label {
+    display: inline-block;
+}
+
+.wordlets_modal .repeating {
+    position: relative;
+    outline: 1px dashed #ccc;
+    padding: 5px 28px 5px 5px;
 }
 
 /* Drupal admin bar */

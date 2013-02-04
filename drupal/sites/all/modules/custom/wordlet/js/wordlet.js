@@ -72,6 +72,53 @@ var load_form = function(url, data) {
 					$type.bind('change', type_change);
 				}*/
 
+				var $repeaters = $div.find('.repeating');
+
+				$repeaters.each(function(i) {
+					var $repeater = $(this);
+					var $up = $('<a href="#" class="wordlet_up">Up</a>');
+					var $down = $('<a href="#" class="wordlet_down">Down</a>');
+					var $inputs = $repeater.find('input, textarea, select');
+
+					var up = function(e) {
+						e.preventDefault();
+						var $previnputs = $($repeaters.get(i - 1)).find('input, textarea, select');
+
+						$inputs.each(function(ii) {
+							var $input = $(this);
+							var $previnput = $($previnputs.get(ii));
+							var value = $input.val();
+							var prevvalue = $previnput.val();
+
+							$input.val(prevvalue);
+							$previnput.val(value);
+						});
+					};
+
+					var down = function(e) {
+						e.preventDefault();
+
+						var $nextinputs = $($repeaters.get(i + 1)).find('input, textarea, select');
+
+						$inputs.each(function(ii) {
+							var $input = $(this);
+							var $nextinput = $($nextinputs.get(ii));
+							var value = $input.val();
+							var nextvalue = $nextinput.val();
+
+							$input.val(nextvalue);
+							$nextinput.val(value);
+						});
+					};
+
+					$up.bind('click', up);
+					$down.bind('click', down);
+
+					if ( i != 0 ) $repeater.append($up);
+
+					if ( i != $repeaters.length - 1 ) $repeater.append($down);
+				});
+
 				// Submit hook
 				$div.find('form')
 					.each(function() {
@@ -202,66 +249,6 @@ $('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
 $('#toolbar .toolbar-shortcuts .menu')
 	.append($menu)
 	.append($('.tabs.primary li'));
-
-
-// temp
-
-var $html = $('<div class="repeating"><div class="repeater"><input name="name[]"/><input name="value[]"/></div><div class="repeater"><input name="name[]"/><input name="value[]"/></div><div class="repeater"><input name="name[]"/><input name="value[]"/></div><div class="repeater"><input name="name[]"/><input name="value[]"/></div><div class="repeater"><input name="name[]"/><input name="value[]"/></div></div>');
-
-// $html.prependTo('body');
-
-$('.repeating').each(function() {
-	var $this = $(this);
-	var $repeaters = $this.find('.repeater');
-
-	$repeaters.each(function(i) {
-		var $repeater = $(this);
-		var $up = $('<a href="#" class="wordlet_up">Up</a>');
-		var $down = $('<a href="#" class="wordlet_down">Down</a>');
-		var $inputs = $repeater.find('input, textarea, select');
-
-		var up = function(e) {
-			e.preventDefault();
-			var $previnputs = $($repeaters.get(i - 1)).find('input, textarea, select');
-
-			$inputs.each(function(ii) {
-				var $input = $(this);
-				var $previnput = $($previnputs.get(ii));
-				var value = $input.val();
-				var prevvalue = $previnput.val();
-
-				$input.val(prevvalue);
-				$previnput.val(value);
-			});
-		};
-
-		var down = function(e) {
-			e.preventDefault();
-
-			var $nextinputs = $($repeaters.get(i + 1)).find('input, textarea, select');
-
-			$inputs.each(function(ii) {
-				var $input = $(this);
-				var $nextinput = $($nextinputs.get(ii));
-				var value = $input.val();
-				var nextvalue = $nextinput.val();
-
-				$input.val(nextvalue);
-				$nextinput.val(value);
-			});
-		};
-
-		$up.bind('click', up);
-		$down.bind('click', down);
-
-		if ( i != 0 ) $repeater.append($up);
-
-		if ( i != $repeaters.length - 1 ) $repeater.append($down);
-	});
-});
-
-// / temp
-
 
 });
 
