@@ -3,6 +3,11 @@
 		<p>
 			Page Title: <?=w('title')?>
 		</p>
+		<? if ( wordlet_access('administer') ): ?>
+			<p>
+				<a href="/admin/wordlet/page/<?=wordlet_active_page()?>">Configure</a>
+			</p>
+		<? endif ?>
 	</div>
 <? endif ?>
 
