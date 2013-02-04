@@ -239,6 +239,7 @@ var tpmodal = function(parameters) {
 	};
 
 	this.position = function(parameters, css, animate) {
+		var ocss = css || null;
 		css = css || {};
 		var settings = get_settings(parameters);
 		css.width = css.width || $modal.width();
@@ -257,6 +258,10 @@ var tpmodal = function(parameters) {
 				if ( settings.callback ) settings.callback();
 			});
 		} else {
+			if ( !ocss ) {
+				css.height = '';
+			}
+
 			$modal.css(css);
 			if ( settings.callback ) settings.callback();
 		}
