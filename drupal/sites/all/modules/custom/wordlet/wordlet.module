@@ -948,6 +948,7 @@ function wordlet($name) {
     $values = array(
       'page' => $page['name'],
       'name' => $name,
+      'cardinality' => 1,
     );
     $wordlet = entity_create('wordlet', $values);
     $wordlet->save();
@@ -979,7 +980,7 @@ function wordlet_list($name) {
     $values = array(
       'page' => $page['name'],
       'name' => $name,
-      'cardinality' => 0,
+      'cardinality' => 1,
     );
     $wordlet = entity_create('wordlet', $values);
     $wordlet->save();
