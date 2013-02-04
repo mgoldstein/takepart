@@ -3,7 +3,7 @@
 		<ol>
 			<? foreach ( wl('side_links') as $w ): ?>
 				<li><a href="<?=$w->href?>">
-					<?=$w->text?>
+					<?=$w->single?>
 				</a></li>
 				<li>
 					<?=$w?>
