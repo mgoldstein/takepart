@@ -1,4 +1,4 @@
-<? var_dump(wordlet('side_links')) ?>
+<?=(wordlet('side_links')) ?>
 
 <div class="column column-1">
 	<div class="content">
