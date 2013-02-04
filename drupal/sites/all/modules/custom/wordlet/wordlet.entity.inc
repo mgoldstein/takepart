@@ -17,7 +17,7 @@ class WordletItem {
     $args += array(
       'page' => '',
       'name' => '',
-      'format' => 0,
+      'format' => WORDLET_PLAIN_TEXT,
       'single' => '',
       'multi' => '',
       'href' => '',
@@ -134,7 +134,7 @@ class WordletController extends EntityAPIControllerExportable {
       'name' => '',
       'title' => '',
       'description' => '',
-      'format' => 0,
+      'format' => WORDLET_PLAIN_TEXT,
       'enabled' => 1,
       'cardinality' => 1,
       'weight' => 0,
@@ -203,14 +203,15 @@ class WordletController extends EntityAPIControllerExportable {
 
       // Preprocess the value
       switch ($entity->format) {
-      case 2: // Full HTML
+      case WORDLET_FULL_HTML:
         $value = $item['single'];
         break;
-      case 1: // Simple HTML
+      case WORDLET_SIMPLE_HTML:
         $value = strip_tags($item['single'],
           '<b><i><strong><em><br><br/><img>');
         break;
-      default: // Plain Text
+      case WORDLET_PLAIN_TEXT:
+      default:
         $value = check_plain($item['single']);
         break;
       }
@@ -226,18 +227,19 @@ class WordletController extends EntityAPIControllerExportable {
 
       // Preprocess the value
       switch ($this->format) {
-      case 2: // Full HTML
+      case WORDLET_FULL_HTML:
         $value = $item['multi'];
         break;
-      case 1: // Simple HTML
+      case WORDLET_SIMPLE_HTML:
         $value = strip_tags($item['multi'], '<b><i><strong><em><br><br/><img>');
         break;
-      default: // Plain Text
+      case WORDLET_PLAIN_TEXT:
+      default:
         $value = check_plain($item['multi']);
         break;
       }
       // Plain text and simple HTML fields need to be converted to paragraphs
-      if ($this->format != 2) {
+      if ($this->format != WORDLET_FULL_HTML) {
         $value = str_replace(array("\r\n", "\r"), "\n", $value);
         $value = str_replace("\n\n\n", '</p><p>', $value);
         $value = str_replace("\n\n", '<br/>', $value);
@@ -296,7 +298,19 @@ class WordletController extends EntityAPIControllerExportable {
       foreach ($displayed_attributes as $attribute) {
 
         $classes = $args['empty'][$attribute] ? "empty wordlet" : "wordlet";
-        $tag = (($entity->format == 0 && $attribute == 'single') || ($configurable && $args['empty'][$attribute])) ? 'span' : 'div';
+
+        // Single line text that is not full HTML will not contain block elements.
+        if ($entity->format != WORDLET_FULL_HTML && $attribute == 'single') {
+          $tag = 'span';
+        }
+        // The configure link on empty wordlets does not contain block elements.
+        elseif ($configurable && $args['empty'][$attribute]) {
+          $tag = 'span';
+        }
+        // The content may contain block elements.
+        else {
+          $tag = 'div';
+        }
 
         $edit_link = '';
         if (!$is_empty) {

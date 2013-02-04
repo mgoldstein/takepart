@@ -486,9 +486,9 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
     '#description' => t('Format of the value.'),
     '#type' => 'select',
     '#options' => array(
-      0 => t('Plain Text'),
-      1 => t('Simple HTML'),
-      2 => t('Full HTML'),
+      WORDLET_PLAIN_TEXT => t('Plain Text'),
+      WORDLET_SIMPLE_HTML => t('Simple HTML'),
+      WORDLET_FULL_HTML => t('Full HTML'),
     ),
     '#default_value' => $entity->format,
   );

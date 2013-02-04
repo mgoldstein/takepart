@@ -9,6 +9,10 @@
  */
 include_once dirname(__FILE__) . '/wordlet.config.inc';
 
+define('WORDLET_PLAIN_TEXT', 0);
+define('WORDLET_SIMPLE_HTML', 1);
+define('WORDLET_FULL_HTML', 2);
+
 /**
  * Inverts the wordlet configuration array to be keyed by path.
  */
@@ -635,7 +639,7 @@ function wordlet_page_import_form_submit($form, &$form_state) {
         'name' => '',
         'title' => '',
         'description' => '',
-        'format' => 0,
+        'format' => WORDLET_PLAIN_TEXT,
         'enabled' => 1,
         'cardinality' => 1,
         'weight' => 0,
