@@ -214,7 +214,11 @@ class WordletController extends EntityAPIControllerExportable {
         $value = check_plain($item['single']);
         break;
       }
+
       $args['single'] = $value;
+
+      $stripped = strip_tags($value);
+      $args['empty']['single'] = empty($stripped);
     }
 
     // Multi line text
@@ -239,13 +243,18 @@ class WordletController extends EntityAPIControllerExportable {
         $value = str_replace("\n\n", '<br/>', $value);
         $value = '<p>' . $value . '</p>';
       }
+
       $args['multi'] = $value;
+
+      $stripped = strip_tags($value);
+      $args['empty']['multi'] = empty($stripped);
     }
 
     // Link href
     if (in_array('href', $entity->item_keys)) {
       $args['href'] = $item['href'];
-      $args['empty']['href'] = empty($item['href']);
+      $stripped = strip_tags($item['href']);
+      $args['empty']['href'] = empty($stripped);
     }
 
     // Node requires a nid and a view mode
@@ -259,7 +268,11 @@ class WordletController extends EntityAPIControllerExportable {
           $have_value = TRUE;
         }
       }
+
       $args['node'] = $value;
+
+      $stripped = strip_tags($value);
+      $args['empty']['node'] = empty($stripped);
     }
 
     // Determine the access level for the wordlet.
@@ -282,11 +295,8 @@ class WordletController extends EntityAPIControllerExportable {
 
       foreach ($displayed_attributes as $attribute) {
 
-        $stripped = strip_tags($args[$attribute]);
-        $is_empty = trim($stripped) == FALSE;
-        $classes = $is_empty ? "empty wordlet" : "wordlet";
-
-        $tag = $args[$attribute] == $stripped ? 'span' : 'div';
+        $classes = $args['empty'][$attribute] ? "empty wordlet" : "wordlet";
+        $tag = ($entity->format == 0 && $attribute == 'single') ? 'span' : 'div';
 
         $edit_link = '';
         if (!$is_empty) {
@@ -315,8 +325,6 @@ class WordletController extends EntityAPIControllerExportable {
           $configure_link,
           "</{$tag}>",
         ));
-
-        $args['empty'][$attribute] = $is_empty;
 
       }
     }
