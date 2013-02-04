@@ -592,8 +592,9 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       );
     }
     $form['single']['value'] = array(
-      '#title' => t('Text'),
+      '#title' => t('Sigle Line'),
       '#type' => 'textfield',
+      '#attributes' => array('class' => array('single-input')),
       '#default_value' => $values['single'],
     );
   }
@@ -606,12 +607,14 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       $form['multi']['enabled'] = array(
        '#type' => 'checkbox',
        '#title' => 'Enable Multi Line',
+       '#attributes' => array('data-for' => array('multi-input')),
        '#default_value' => in_array('multi', $entity->item_keys),
       );
     }
     $form['multi']['value'] = array(
-      '#title' => t('Text'),
+      '#title' => t('Multi Line'),
       '#type' => 'textarea',
+      '#attributes' => array('class' => array('multi-input')),
       '#default_value' => $values['multi'],
     );
   }
@@ -624,6 +627,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       $form['href']['enabled'] = array(
         '#type' => 'checkbox',
         '#title' => 'Enable HREF',
+        '#attributes' => array('data-for' => array('href-input')),
         '#default_value' => in_array('href', $entity->item_keys),
       );
     }
@@ -631,6 +635,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       '#title' => t('Link'),
       '#type' => 'textfield',
       '#default_value' => $values['href'],
+      '#attributes' => array('class' => array('href-input')),
       '#element_validate' => array('wordlet_validate_href'),
     );
   }
@@ -643,6 +648,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       $form['nid']['enabled'] = array(
         '#type' => 'checkbox',
         '#title' => 'Enable Node ID',
+        '#attributes' => array('data-for' => array('node-input')),
         '#default_value' => in_array('nid', $entity->item_keys),
       );
     }
@@ -650,6 +656,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       '#title' => t('Node'),
       '#type' => 'textfield',
       '#default_value' => $values['nid'],
+      '#attributes' => array('class' => array('node-input')),
       '#element_validate' => array('wordlet_validate_node_id'),
     );
   }
@@ -662,12 +669,14 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       $form['view_mode']['enabled'] = array(
         '#type' => 'checkbox',
         '#title' => 'Enable View Mode',
+        '#attributes' => array('data-for' => array('view_mode-input')),
         '#default_value' => in_array('view_mode', $entity->item_keys),
       );
     }
     $form['view_mode']['value'] = array(
       '#title' => t('View Mode'),
       '#type' => 'textfield',
+      '#attributes' => array('class' => array('view_mode-input')),
       '#default_value' => $values['view_mode'],
     );
   }

@@ -119,6 +119,28 @@ var load_form = function(url, data) {
 					if ( i != $repeaters.length - 1 ) $repeater.append($down);
 				});
 
+				var check_enabled = function() {
+					$div.find('#wordlet-edit-form-data input[type="checkbox"]').each(function() {
+						var $cb = $(this);
+						var f = $cb.data('for');
+						if ( f ) {
+							var $i = $div.find('.' + f);
+							if ( $cb.is(':checked') ) {
+								$i.parent().css({height: 'auto'});
+							} else {
+								$i.parent().css({height: 0});
+							}
+						}
+					});
+				};
+
+				$div.find('#wordlet-edit-form-data input[type="checkbox"]').bind('change', check_enabled);
+
+				$div.find('#wordlet-edit-form-data').find('.form-type-textfield, .form-type-textarea')
+					.css({
+						overflow: 'hidden'
+					});
+
 				// Submit hook
 				$div.find('form')
 					.each(function() {
