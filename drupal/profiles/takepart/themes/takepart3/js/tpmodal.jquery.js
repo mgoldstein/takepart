@@ -239,6 +239,7 @@ var tpmodal = function(parameters) {
 	};
 
 	this.position = function(parameters, css, animate) {
+		css = css || {};
 		var settings = get_settings(parameters);
 		css.width = css.width || $modal.width();
 		css.height = css.height || $modal.height();

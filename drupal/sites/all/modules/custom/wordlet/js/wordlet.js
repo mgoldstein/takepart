@@ -152,6 +152,9 @@ var load_form = function(url, data) {
 				$.tpmodal.show({id: modal_id, html: $div, callback: function() {
 					setTimeout(function() {
 						$div.find('textarea').autosize();
+						setTimeout(function() {
+							$.tpmodal.position({id: modal_id});
+						}, 100);
 					}, 600);
 				}});
 			}
