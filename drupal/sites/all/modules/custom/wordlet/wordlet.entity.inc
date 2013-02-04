@@ -296,7 +296,7 @@ class WordletController extends EntityAPIControllerExportable {
       foreach ($displayed_attributes as $attribute) {
 
         $classes = $args['empty'][$attribute] ? "empty wordlet" : "wordlet";
-        $tag = ($entity->format == 0 && $attribute == 'single') ? 'span' : 'div';
+        $tag = ($entity->format == 0 && $attribute == 'multi') ? 'div' : 'span';
 
         $edit_link = '';
         if (!$is_empty) {
