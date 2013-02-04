@@ -4,13 +4,13 @@
 			Page Title: <?=w('title')?>
 		</p>
 		<? if ( ($wlinks = wordlet_configure_links()) ): ?>
-			<ul>
+			<p>Configure:
 				<? foreach ( $wlinks as $wlink ): ?>
-					<li>
+					<span>
 						<?=$wlink?>
-					</li>
+					</span>
 				<? endforeach ?>
-			</ul>
+			</p>
 		<? endif ?>
 	</div>
 <? endif ?>

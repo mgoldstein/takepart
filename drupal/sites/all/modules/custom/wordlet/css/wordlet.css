@@ -58,6 +58,16 @@
     margin: 0;
 }
 
+.wordlet_edit_mode span:after {
+    display: inline;
+    content: ' - ';
+}
+
+.wordlet_edit_mode span:last-child:after {
+    display: none;
+    content: '';
+}
+
 .wordlet_down,
 .wordlet_up {
     text-indent: 100%;
