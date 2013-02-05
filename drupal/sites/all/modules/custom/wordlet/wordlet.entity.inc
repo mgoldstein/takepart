@@ -47,6 +47,10 @@ class WordletItem {
       }
     }
 
+    if ( method_exists($this, $attribute) ) {
+      return call_user_method_array($attribute, $this, func_get_args());
+    }
+
     return $retval;
   }
 
@@ -202,6 +206,7 @@ class WordletController extends EntityAPIControllerExportable {
       'page' => $entity->page,
       'name' => $entity->name,
       'format' => $entity->format,
+      'title' => $entity->title,
       'single' => '',
       'single_no_markup' => '',
       'multi' => '',
