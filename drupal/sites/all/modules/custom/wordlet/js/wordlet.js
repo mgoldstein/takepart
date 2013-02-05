@@ -49,16 +49,16 @@ var load_form = function(url, data) {
 				}
 
 				// Otherwise, condense html to just the form
-				$div.find('*:not(form,input,label,legend,select,textarea,option,h1):not(:has(textarea,input,label,select,option,legend,h1))').remove();
+				$div.find('*:not(form,input,label,legend,select,textarea,option,h1,.messages.error):not(:has(textarea,input,label,select,option,legend,h1,.messages.error))').remove();
 
 				var $repeaters = $div.find('.repeating');
 
 				// Add an extra submit button to refresh the form if "repeaters" are found
 				if ( $repeaters.length ) {
 					var $submit = $div.find('#edit-submit');
-					$submit.attr('value', $submit.attr('value') + ' and Close');
 					var $add = $submit.clone();
 					$add.attr('value', $add.attr('value') + ' and Add Another');
+					$submit.attr('value', $submit.attr('value') + ' and Close');
 					$add.insertAfter($submit);
 					$add.bind('click', function() {
 						adding = true;
@@ -193,8 +193,13 @@ $('body')
 		e.preventDefault();
 		e.stopPropagation();
 	})
-	.delegate('.wordlet_configure, .wordlet_edit', 'click', function(e) {
-		load_form($(this).data('href'));
+	.delegate('.wordlet_configure', 'click', function(e) {
+		load_form($(this).data('configure'));
+		e.preventDefault();
+		e.stopPropagation();
+	})
+	.delegate('.wordlet_edit', 'click', function(e) {
+		load_form($(this).data('edit'));
 		e.preventDefault();
 		e.stopPropagation();
 	})
@@ -238,7 +243,7 @@ $('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
 		.bind('mouseenter', function(e) {
 			do_hide = false;
 
-			if ( $a.css('right') != '100%' ) return true;
+			if ( $a[0].style.right != '100%' ) return true;
 
 			var x = $wordlet.offset().left + $wordlet.width();
 			var y = $wordlet.offset().top;

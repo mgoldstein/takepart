@@ -445,9 +445,18 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
     '#tree' => TRUE,
   );
 
+  $pages = wordlet_page_load();
+  $page_names = array();
+  foreach ($pages as $name => $info) {
+    $page_names[$name] = $info['title'];
+  }
+  asort($page_names);
   $form['configuration']['page'] = array(
-    '#type' => 'value',
-    '#value' => $entity->page,
+    '#title' => t('Page/Group'),
+    '#type' => 'select',
+    '#options' => $page_names,
+    '#default_value' => $entity->page,
+    '#required' => TRUE,
   );
 
   if ($op == 'add') {
@@ -592,7 +601,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       );
     }
     $form['single']['value'] = array(
-      '#title' => t('Sigle Line'),
+      '#title' => t('Single Line'),
       '#type' => 'textfield',
       '#attributes' => array('class' => array('single-input')),
       '#default_value' => $values['single'],
@@ -681,6 +690,27 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     );
   }
 
+  if ($configure || in_array('img_src', $entity->item_keys)) {
+    $form['img_src'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['img_src']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Image Source',
+        '#attributes' => array('data-for' => array('img-src-input')),
+        '#default_value' => in_array('img_src', $entity->item_keys),
+      );
+    }
+    $form['img_src']['value'] = array(
+      '#title' => t('Image Source'),
+      '#type' => 'textfield',
+      '#default_value' => $values['img_src'],
+      '#attributes' => array('class' => array('img-src-input')),
+      '#element_validate' => array('wordlet_validate_href'),
+    );
+  }
+
   return $form;
 }
 
@@ -744,7 +774,7 @@ function wordlet_form_validate($form, &$form_state) {
   $page = $form_state['wordlet_page'];
 
   $op = $form_state['wordlet_op'];
-  if ($op == 'add') {
+  if ($op == 'add' || $op == 'configure') {
 
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'wordlet');
@@ -753,17 +783,7 @@ function wordlet_form_validate($form, &$form_state) {
     $result = $query->execute();
 
     if (!empty($result['wordlet'])) {
-
-      $entities = entity_load('wordlet', array_keys($result['wordlet']));
-      $existing = reset($entities);
-
-      if (empty($existing->keys_data)) {
-        $args = array('!existing_link' => l('configure wordlet', "admin/wordlet/page/{$page['name']}/manage/{$existing->id}/configure"));
-        form_set_error('name', t('A wordlet with that name has already been added to the system, but has not yet been configured. The wordlet can be configured on the !existing_link page.', $args));
-      }
-      else {
-        form_set_error('name', t('A wordlet with that name already exists.'));
-      }
+      form_set_error('name', t('A wordlet with that page and name already exists.'));
     }
   }
 
@@ -829,6 +849,7 @@ function wordlet_update_items_from_fields($entity, $values) {
       'href' => '',
       'nid' => '',
       'view_mode' => '',
+      'img_src' => '',
     );
     $is_empty = TRUE;
     foreach (array_keys($item) as $key) {

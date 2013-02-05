@@ -62,7 +62,7 @@ $.fn.tpsticky = function(parameters) {
 					.width($this.width())
 					;
 				left = $this.offset().left;
-				check_sign_scroll();
+				check_scroll();
 			})
 			;
 

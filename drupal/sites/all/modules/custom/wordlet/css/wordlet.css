@@ -22,7 +22,7 @@
 .wordlet_edit,
 .wordlet_add {
     font-size: 10px;
-    display: none;
+    display: none !important;
     position: absolute;
     background: #fff;
 }

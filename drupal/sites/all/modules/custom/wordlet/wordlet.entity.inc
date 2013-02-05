@@ -9,7 +9,9 @@ class WordletItem {
   public $single;
   public $multi;
   public $href;
+  public $href_raw;
   public $node;
+  public $img_src;
 
   public $empty;
 
@@ -21,12 +23,16 @@ class WordletItem {
       'single' => '',
       'multi' => '',
       'href' => '',
+      'href_raw' => '',
       'node' => '',
+      'img_src' => '',
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
         'href' => TRUE,
+        'href_raw' => TRUE,
         'node' => TRUE,
+        'img_src' => TRUE,
       ),
     );
     foreach ($args as $attribute => $value) {
@@ -35,7 +41,7 @@ class WordletItem {
   }
 
   public function __toString() {
-    $priority = array('multi', 'single', 'href', 'node');
+    $priority = array('multi', 'single', 'node', 'href', 'href_raw', 'img_src');
     foreach ($priority as $attribute) {
       if (!$this->empty[$attribute]) {
         return $this->{$attribute};
@@ -189,12 +195,16 @@ class WordletController extends EntityAPIControllerExportable {
       'single' => '',
       'multi' => '',
       'href' => '',
+      'href_raw' => '',
       'node' => '',
+      'img_src' => '',
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
         'href' => TRUE,
+        'href_raw' => TRUE,
         'node' => TRUE,
+        'img_src' => TRUE,
       ),
     );
 
@@ -255,8 +265,20 @@ class WordletController extends EntityAPIControllerExportable {
     // Link href
     if (in_array('href', $entity->item_keys)) {
       $args['href'] = $item['href'];
+      $args['href_raw'] = $item['href'];
+
+      $paths = wordlet_page_paths();
+      $search = array();
+      $replace = array();
+      foreach ($paths as $path => $name) {
+        $search[] = '{' . $name . '_url}';
+        $replace[] = '/' . $path;
+      }
+      $args['href'] = str_replace($search, $replace, $args['href']);
+
       $stripped = strip_tags($item['href']);
       $args['empty']['href'] = empty($stripped);
+      $args['empty']['href_raw'] = $args['empty']['href'];
     }
 
     // Node requires a nid and a view mode
@@ -270,11 +292,18 @@ class WordletController extends EntityAPIControllerExportable {
           $have_value = TRUE;
         }
       }
-
       $args['node'] = $value;
 
       $stripped = strip_tags($value);
       $args['empty']['node'] = empty($stripped);
+    }
+
+    // Image src
+    if (in_array('img_src', $entity->item_keys)) {
+      $args['img_src'] = $item['img_src'];
+
+      $stripped = strip_tags($item['img_src']);
+      $args['empty']['img_src'] = empty($stripped);
     }
 
     // Determine the access level for the wordlet.
@@ -285,7 +314,7 @@ class WordletController extends EntityAPIControllerExportable {
         $editable = TRUE;
         $configurable = TRUE;
       }
-      elseif (wordlet_access('administer', $entity)) {
+      elseif (wordlet_access('edit', $entity)) {
         $editable = TRUE;
         $configurable = FALSE;
       }
@@ -314,9 +343,13 @@ class WordletController extends EntityAPIControllerExportable {
 
         $edit_link = '';
         if (!$is_empty) {
+          $data_configure = '';
+          if ( $configurable ) {
+            $data_configure = ' data-configure="/admin/wordlet/page/' . $entity->page . '/manage/' . $entity->id . '/configure"';
+          }
           $href = "/admin/wordlet/page/{$entity->page}/manage/{$entity->id}/edit";
           $edit_link = implode('', array(
-            '<span class="wordlet_edit" data-href="' . $href . '">',
+            '<span class="wordlet_edit" data-edit="' . $href . '"' . $data_configure . '>',
             t('Edit @name', array('@name' => $entity->name)),
             '</span>'
           ));
@@ -326,14 +359,16 @@ class WordletController extends EntityAPIControllerExportable {
         if ($configurable && $args['empty'][$attribute]) {
           $href = "/admin/wordlet/page/{$entity->page}/manage/{$entity->id}/configure";
           $configure_link = implode('', array(
-            '<span class="wordlet_configure" data-href="' . $href . '">',
+            '<span class="wordlet_configure" data-configure="' . $href . '">',
             t('Configure @name', array('@name' => $entity->name)),
             '</span>'
           ));
         }
 
+        $description = ( $entity->description ) ? ' title="' . htmlspecialchars($entity->description) . '"' : '';
+
         $args[$attribute] = implode('', array(
-          "<{$tag} class=\"{$classes}\">",
+          "<{$tag} class=\"{$classes}\" {$description}>",
           $args[$attribute],
           $edit_link,
           $configure_link,
