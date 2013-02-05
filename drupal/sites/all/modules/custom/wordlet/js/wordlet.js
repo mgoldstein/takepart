@@ -56,9 +56,9 @@ var load_form = function(url, data) {
 				// Add an extra submit button to refresh the form if "repeaters" are found
 				if ( $repeaters.length ) {
 					var $submit = $div.find('#edit-submit');
-					$submit.attr('value', $submit.attr('value') + ' and Close');
 					var $add = $submit.clone();
 					$add.attr('value', $add.attr('value') + ' and Add Another');
+					$submit.attr('value', $submit.attr('value') + ' and Close');
 					$add.insertAfter($submit);
 					$add.bind('click', function() {
 						adding = true;
