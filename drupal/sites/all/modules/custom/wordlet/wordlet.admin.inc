@@ -592,7 +592,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       );
     }
     $form['single']['value'] = array(
-      '#title' => t('Sigle Line'),
+      '#title' => t('Single Line'),
       '#type' => 'textfield',
       '#attributes' => array('class' => array('single-input')),
       '#default_value' => $values['single'],

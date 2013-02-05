@@ -262,16 +262,6 @@ function wordlet_menu() {
       'file' => 'wordlet.admin.inc',
       'file path' => drupal_get_path('module', 'wordlet'),
     ),
-    'wordlet/%wordlet_page/override' => array(
-      'title' => 'Override',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('wordlet_page_override_form', 1),
-      'access callback' => 'wordlet_access',
-      'access arguments' => array('edit'),
-      'weight' => 1,
-      'file' => 'wordlet.admin.inc',
-      'file path' => drupal_get_path('module', 'wordlet'),
-    ),
   );
 }
 
@@ -281,7 +271,6 @@ function wordlet_menu() {
 function wordlet_admin_paths() {
   return array(
     'wordlet/*/edit' => TRUE,
-    'wordlet/*/override' => TRUE,
   );
 }
 
@@ -735,12 +724,6 @@ function wordlet_page_edit_form($form, &$form_state, $page) {
   }
 
   $form_state['wordlet_page'] = $page;
-  $form['title'] = array(
-    '#title' => t('Override Title'),
-    '#description' => t('Override the title for the page.'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get("wordlet_{$page['name']}_title", ''),
-  );
 
   $form['published'] = array(
     '#title' => t('Published'),
@@ -818,63 +801,6 @@ function wordlet_page_edit_form_submit($form, &$form_state) {
 
   drupal_set_message(t('The page @title has been updated.',
     array('@title' => $page['title'])));
-}
-
-/**
- * Wordlet page full page override form
- */
-function wordlet_page_override_form($form, &$form_state, $page) {
-
-  // No such page.
-  if ($page === FALSE) {
-    return drupal_not_found();
-  }
-
-  $form_state['wordlet_page'] = $page;
-  $form['title'] = array(
-    '#title' => t('Override Title'),
-    '#description' => t('Override the title for the page.'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get("wordlet_{$page['name']}_title", ''),
-  );
-
-  $form['published'] = array(
-    '#title' => t('Published'),
-    '#description' => t('Override the published state for the page.'),
-    '#type' => 'checkbox',
-    '#default_value' => variable_get("wordlet_{$page['name']}_published", $page['published']),
-  );
-
-  $form['actions'] = array('#type' => 'actions');
-  $submit = array();
-  if (!empty($form['#submit'])) {
-    $submit += $form['#submit'];
-  }
-  $form['actions']['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Save overrides'),
-    '#weight' => 40,
-  );
-
-  return $form;
-}
-
-function wordlet_page_override_form_submit($form, &$form_state) {
-
-  $page = $form_state['wordlet_page'];
-  if (empty($form_state['values']['title'])) {
-    variable_del("wordlet_{$page['name']})title");
-  }
-  else {
-    variable_set("wordlet_{$page['name']}_title", $form_state['values']['title']);
-  }
-
-  if (empty($form_state['values']['published']) == empty($page['published'])) {
-    variable_del("wordlet_{$page['name']}_published");
-  }
-  else {
-    variable_set("wordlet_{$page['name']}_published", $form_state['values']['published']);
-  }
 }
 
 function wordlet_load_for_page($page) {
