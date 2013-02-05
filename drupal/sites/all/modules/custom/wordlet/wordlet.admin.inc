@@ -772,9 +772,12 @@ function wordlet_form($form, &$form_state, $entity, $op) {
 function wordlet_form_validate($form, &$form_state) {
 
   $page = $form_state['wordlet_page'];
-
+  $entity = $form_state['wordlet'];
   $op = $form_state['wordlet_op'];
-  if ($op == 'add' || $op == 'configure') {
+
+  $page_changed = $form_state['values']['configuration']['page'] != $entity->page;
+
+  if ($op == 'add' || ($op == 'configure' && $page_changed)) {
 
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'wordlet');
