@@ -271,7 +271,7 @@ class WordletController extends EntityAPIControllerExportable {
       $search = array();
       $replace = array();
       foreach ($paths as $path => $name) {
-        $search[] = '{' . $name . '}';
+        $search[] = '{' . $name . '_url}';
         $replace[] = '/' . $path;
       }
       $args['href'] = str_replace($search, $replace, $args['href']);
