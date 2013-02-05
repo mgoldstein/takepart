@@ -681,6 +681,27 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     );
   }
 
+  if ($configure || in_array('img_src', $entity->item_keys)) {
+    $form['img_src'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['img_src']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Image Source',
+        '#attributes' => array('data-for' => array('img-src-input')),
+        '#default_value' => in_array('img_src', $entity->item_keys),
+      );
+    }
+    $form['img_src']['value'] = array(
+      '#title' => t('Image Source'),
+      '#type' => 'textfield',
+      '#default_value' => $values['img_src'],
+      '#attributes' => array('class' => array('img-src-input')),
+      '#element_validate' => array('wordlet_validate_href'),
+    );
+  }
+
   return $form;
 }
 
@@ -829,6 +850,7 @@ function wordlet_update_items_from_fields($entity, $values) {
       'href' => '',
       'nid' => '',
       'view_mode' => '',
+      'img_src' => '',
     );
     $is_empty = TRUE;
     foreach (array_keys($item) as $key) {

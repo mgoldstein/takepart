@@ -11,6 +11,7 @@ class WordletItem {
   public $href;
   public $href_raw;
   public $node;
+  public $img_src;
 
   public $empty;
 
@@ -24,11 +25,14 @@ class WordletItem {
       'href' => '',
       'href_raw' => '',
       'node' => '',
+      'img_src' => '',
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
         'href' => TRUE,
+        'href_raw' => TRUE,
         'node' => TRUE,
+        'img_src' => TRUE,
       ),
     );
     foreach ($args as $attribute => $value) {
@@ -37,7 +41,7 @@ class WordletItem {
   }
 
   public function __toString() {
-    $priority = array('multi', 'single', 'href', 'node');
+    $priority = array('multi', 'single', 'node', 'href', 'href_raw', 'img_src');
     foreach ($priority as $attribute) {
       if (!$this->empty[$attribute]) {
         return $this->{$attribute};
@@ -193,11 +197,14 @@ class WordletController extends EntityAPIControllerExportable {
       'href' => '',
       'href_raw' => '',
       'node' => '',
+      'img_src' => '',
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
         'href' => TRUE,
+        'href_raw' => TRUE,
         'node' => TRUE,
+        'img_src' => TRUE,
       ),
     );
 
@@ -260,18 +267,18 @@ class WordletController extends EntityAPIControllerExportable {
       $args['href'] = $item['href'];
       $args['href_raw'] = $item['href'];
 
-      $config = _wordlet_configuration();
+      $paths = wordlet_page_paths();
       $search = array();
       $replace = array();
-      foreach ( $config as $k => $c ) {
-        $search[] = '{' . $k . '_url}';
-        $replace[] = '/' . $c['path'];
+      foreach ($paths as $path => $name) {
+        $search[] = '{' . $name . '}';
+        $replace[] = '/' . $path;
       }
-
       $args['href'] = str_replace($search, $replace, $args['href']);
 
       $stripped = strip_tags($item['href']);
       $args['empty']['href'] = empty($stripped);
+      $args['empty']['href_raw'] = $args['empty']['href'];
     }
 
     // Node requires a nid and a view mode
@@ -285,11 +292,18 @@ class WordletController extends EntityAPIControllerExportable {
           $have_value = TRUE;
         }
       }
-
       $args['node'] = $value;
 
       $stripped = strip_tags($value);
       $args['empty']['node'] = empty($stripped);
+    }
+
+    // Image src
+    if (in_array('img_src', $entity->item_keys)) {
+      $args['img_src'] = $item['img_src'];
+
+      $stripped = strip_tags($item['img_src']);
+      $args['empty']['img_src'] = empty($stripped);
     }
 
     // Determine the access level for the wordlet.
