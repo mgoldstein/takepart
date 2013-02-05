@@ -2338,6 +2338,9 @@ div.tp-pet-thank-you-heading {
     font-weight: 300;
 }
 
+#block-boxes-allfilms-campaigns-columns-block ul {
+    list-style: none;
+}
 
 #boxes-box-allfilms_campaigns_columns_block ul li {
     clear: left;
