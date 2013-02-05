@@ -331,7 +331,7 @@ function wordlet_preprocess_wrapper_template(&$variables) {
     $variables['header'] .= render($tabs);
   }
   $variables['footer'] = theme('takepart3_footer', $variables);
-  $variables['content'] = theme($variables['unprocessed_content']);
+  $variables['content'] = $variables['unprocessed_content']['#children'];
   unset($variables['unprocessed_content']);
 }
 
@@ -366,12 +366,21 @@ function wordlet_url_outbound_alter(&$path, &$options, $original_path) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ */
+function wordlet_preprocess_page(&$variables) {
+  $config = wordlet_active_page();
+  if ($config !== FALSE) {
+    $variables['theme_hook_suggestions'][] = "wordlet_{$config['name']}";
+  }
+}
+
+/**
  * Implements hook_page_alter().
  */
 function wordlet_page_alter(&$page) {
   $config = wordlet_active_page();
   if ($config !== FALSE) {
-    $page['#theme'] = "wordlet_{$config['name']}";
     $page['#theme_wrappers'] = array();
     foreach ($config['wrappers'] as $wrapper) {
       if ($wrapper == 'html') {
