@@ -445,9 +445,18 @@ function wordlet_configuration_form($form, &$form_state, $entity, $op) {
     '#tree' => TRUE,
   );
 
+  $pages = wordlet_page_load();
+  $page_names = array();
+  foreach ($pages as $name => $info) {
+    $page_names[$name] = $info['title'];
+  }
+  asort($page_names);
   $form['configuration']['page'] = array(
-    '#type' => 'value',
-    '#value' => $entity->page,
+    '#title' => t('Page/Group'),
+    '#type' => 'select',
+    '#options' => $page_names,
+    '#default_value' => $entity->page,
+    '#required' => TRUE,
   );
 
   if ($op == 'add') {
@@ -765,7 +774,7 @@ function wordlet_form_validate($form, &$form_state) {
   $page = $form_state['wordlet_page'];
 
   $op = $form_state['wordlet_op'];
-  if ($op == 'add') {
+  if ($op == 'add' || $op == 'configure') {
 
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'wordlet');
@@ -774,17 +783,7 @@ function wordlet_form_validate($form, &$form_state) {
     $result = $query->execute();
 
     if (!empty($result['wordlet'])) {
-
-      $entities = entity_load('wordlet', array_keys($result['wordlet']));
-      $existing = reset($entities);
-
-      if (empty($existing->keys_data)) {
-        $args = array('!existing_link' => l('configure wordlet', "admin/wordlet/page/{$page['name']}/manage/{$existing->id}/configure"));
-        form_set_error('name', t('A wordlet with that name has already been added to the system, but has not yet been configured. The wordlet can be configured on the !existing_link page.', $args));
-      }
-      else {
-        form_set_error('name', t('A wordlet with that name already exists.'));
-      }
+      form_set_error('name', t('A wordlet with that page and name already exists.'));
     }
   }
 
