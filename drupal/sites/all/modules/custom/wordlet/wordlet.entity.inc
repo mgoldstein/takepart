@@ -9,6 +9,7 @@ class WordletItem {
   public $single;
   public $multi;
   public $href;
+  public $href_raw;
   public $node;
 
   public $empty;
@@ -21,6 +22,7 @@ class WordletItem {
       'single' => '',
       'multi' => '',
       'href' => '',
+      'href_raw' => '',
       'node' => '',
       'empty' => array(
         'single' => TRUE,
@@ -189,6 +191,7 @@ class WordletController extends EntityAPIControllerExportable {
       'single' => '',
       'multi' => '',
       'href' => '',
+      'href_raw' => '',
       'node' => '',
       'empty' => array(
         'single' => TRUE,
@@ -255,6 +258,7 @@ class WordletController extends EntityAPIControllerExportable {
     // Link href
     if (in_array('href', $entity->item_keys)) {
       $args['href'] = $item['href'];
+      $args['href_raw'] = $item['href'];
 
       $config = _wordlet_configuration();
       $search = array();

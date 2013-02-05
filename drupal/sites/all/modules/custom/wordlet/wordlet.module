@@ -1110,3 +1110,20 @@ function wordlet_configure_links() {
 
   return $links;
 }
+
+function wordlet_classify($string) {
+  $string = preg_replace('/[^a-zA-Z0-9_]+/', '-', $string);
+  $string = trim($string, '-');
+  if ( !preg_match('/^[\-a-z_]/', $string) ) {
+    $string = '-' . $string;
+  }
+  return $string;
+}
+
+function wc() {
+  try {
+    return call_user_func_array('wordlet_classify', func_get_args());
+  } catch (Exception $e) {
+    return '';
+  }
+}

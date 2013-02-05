@@ -60,6 +60,7 @@ function _wordlet_configuration() {
       'title' => 'Intel Girls Home',
       'path' => 'intelgirls',
       'published' => TRUE,
+      'wrappers' => array('campaign', 'html'),
       'css' => array(
         'campaigns/intelchange/intelchange.css',
       ),
@@ -77,7 +78,7 @@ function _wordlet_configuration() {
       'title' => 'A Place at the Table - Home',
       'path' => 'place-at-the-table',
       'published' => TRUE,
-      'wrappers' => array('patt', 'html'),
+      'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
         'campaigns/patt/patt.css',
@@ -93,7 +94,7 @@ function _wordlet_configuration() {
       'title' => 'A Place at the Table - Film',
       'path' => 'place-at-the-table/film',
       'published' => TRUE,
-      'wrappers' => array('patt', 'html'),
+      'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
         'campaigns/patt/patt.css',
@@ -109,7 +110,7 @@ function _wordlet_configuration() {
       'title' => 'A Place at the Table - Take Action',
       'path' => 'place-at-the-table/action',
       'published' => TRUE,
-      'wrappers' => array('patt', 'html'),
+      'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
         'campaigns/patt/patt.css',
@@ -125,7 +126,7 @@ function _wordlet_configuration() {
       'title' => 'A Place at the Table - Gallery: SNAP Alumni',
       'path' => 'place-at-the-table/snap-alumni',
       'published' => TRUE,
-      'wrappers' => array('patt', 'html'),
+      'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
         'campaigns/patt/patt.css',
@@ -141,7 +142,7 @@ function _wordlet_configuration() {
       'title' => 'A Place at the Table - The Book',
       'path' => 'place-at-the-table/book',
       'published' => TRUE,
-      'wrappers' => array('patt', 'html'),
+      'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
         'campaigns/patt/patt.css',
@@ -157,7 +158,7 @@ function _wordlet_configuration() {
       'title' => 'A Place at the Table - Events &amp; Resources',
       'path' => 'place-at-the-table/events-resources',
       'published' => TRUE,
-      'wrappers' => array('patt', 'html'),
+      'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
         'campaigns/patt/patt.css',
@@ -173,7 +174,7 @@ function _wordlet_configuration() {
       'title' => 'A Place at the Table - Alliances',
       'path' => 'place-at-the-table/alliances',
       'published' => TRUE,
-      'wrappers' => array('patt', 'html'),
+      'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
         'campaigns/patt/patt.css',
@@ -189,7 +190,7 @@ function _wordlet_configuration() {
       'title' => 'A Place at the Table - I Need Food Assistance',
       'path' => 'place-at-the-table/assistance',
       'published' => TRUE,
-      'wrappers' => array('patt', 'html'),
+      'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
         'campaigns/patt/patt.css',
