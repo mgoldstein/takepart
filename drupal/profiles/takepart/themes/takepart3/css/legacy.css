@@ -3065,6 +3065,9 @@ h1{
     line-height: 24px;
     color: #000;
 }
+.field-group-htabs-wrapper ul.horizontal-tabs-list {
+    margin: 0;
+}
 .node-type-takepart-campaign .field-name-field-tp-campaign-cover-intro ol,
 .node-type-takepart-campaign .field-name-field-tp-campaign-cover-intro ul {
     font-size: 11px;
