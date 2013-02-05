@@ -49,7 +49,7 @@ var load_form = function(url, data) {
 				}
 
 				// Otherwise, condense html to just the form
-				$div.find('*:not(form,input,label,legend,select,textarea,option,h1):not(:has(textarea,input,label,select,option,legend,h1))').remove();
+				$div.find('*:not(form,input,label,legend,select,textarea,option,h1,.messages.error):not(:has(textarea,input,label,select,option,legend,h1,.messages.error))').remove();
 
 				var $repeaters = $div.find('.repeating');
 
@@ -193,8 +193,13 @@ $('body')
 		e.preventDefault();
 		e.stopPropagation();
 	})
-	.delegate('.wordlet_configure, .wordlet_edit', 'click', function(e) {
-		load_form($(this).data('href'));
+	.delegate('.wordlet_configure', 'click', function(e) {
+		load_form($(this).data('configure'));
+		e.preventDefault();
+		e.stopPropagation();
+	})
+	.delegate('.wordlet_edit', 'click', function(e) {
+		load_form($(this).data('edit'));
 		e.preventDefault();
 		e.stopPropagation();
 	})

@@ -343,9 +343,13 @@ class WordletController extends EntityAPIControllerExportable {
 
         $edit_link = '';
         if (!$is_empty) {
+          $data_configure = '';
+          if ( $configurable ) {
+            $data_configure = ' data-configure="/admin/wordlet/page/' . $entity->page . '/manage/' . $entity->id . '/configure"';
+          }
           $href = "/admin/wordlet/page/{$entity->page}/manage/{$entity->id}/edit";
           $edit_link = implode('', array(
-            '<span class="wordlet_edit" data-href="' . $href . '">',
+            '<span class="wordlet_edit" data-edit="' . $href . '"' . $data_configure . '>',
             t('Edit @name', array('@name' => $entity->name)),
             '</span>'
           ));
@@ -355,14 +359,16 @@ class WordletController extends EntityAPIControllerExportable {
         if ($configurable && $args['empty'][$attribute]) {
           $href = "/admin/wordlet/page/{$entity->page}/manage/{$entity->id}/configure";
           $configure_link = implode('', array(
-            '<span class="wordlet_configure" data-href="' . $href . '">',
+            '<span class="wordlet_configure" data-configure="' . $href . '">',
             t('Configure @name', array('@name' => $entity->name)),
             '</span>'
           ));
         }
 
+        $description = ( $entity->description ) ? ' title="' . htmlspecialchars($entity->description) . '"' : '';
+
         $args[$attribute] = implode('', array(
-          "<{$tag} class=\"{$classes}\">",
+          "<{$tag} class=\"{$classes}\" {$description}>",
           $args[$attribute],
           $edit_link,
           $configure_link,
