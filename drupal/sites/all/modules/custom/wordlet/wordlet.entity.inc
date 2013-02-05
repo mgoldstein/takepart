@@ -314,7 +314,7 @@ class WordletController extends EntityAPIControllerExportable {
         $editable = TRUE;
         $configurable = TRUE;
       }
-      elseif (wordlet_access('administer', $entity)) {
+      elseif (wordlet_access('edit', $entity)) {
         $editable = TRUE;
         $configurable = FALSE;
       }
