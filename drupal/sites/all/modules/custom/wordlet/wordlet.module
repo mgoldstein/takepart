@@ -948,7 +948,9 @@ function wordlet($name) {
   }
 
   $controller = entity_get_controller('wordlet');
-  return $controller->viewOne($wordlet);
+
+  $w = $controller->viewOne($wordlet);
+  return $w;
 }
 
 function w($name) {
@@ -982,6 +984,7 @@ function wordlet_list($name) {
   $controller = entity_get_controller('wordlet');
   $wl = $controller->viewList($wordlet);
   if ($wl->count() == 0) { echo wordlet($name); }
+
   return $wl;
 }
 
@@ -1046,6 +1049,7 @@ function wordlet_configure_links() {
   return $links;
 }
 
+// Make a html friendly class name of any string
 function wordlet_classify($string) {
   $string = preg_replace('/[^a-zA-Z0-9_]+/', '-', $string);
   $string = trim($string, '-');
@@ -1058,6 +1062,23 @@ function wordlet_classify($string) {
 function wc() {
   try {
     return call_user_func_array('wordlet_classify', func_get_args());
+  } catch (Exception $e) {
+    return '';
+  }
+}
+
+// Return wordlet markup
+function wordlet_edit($name) {
+  $w = wordlet($name);
+
+  $markup = $w . '';
+
+  return $markup;
+}
+
+function we() {
+  try {
+    return call_user_func_array('wordlet_edit', func_get_args());
   } catch (Exception $e) {
     return '';
   }

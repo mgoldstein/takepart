@@ -19,11 +19,9 @@
     display: inline;
 }
 
-.wordlet_edit,
-.wordlet_add {
+.wordlet_edit {
     font-size: 10px;
     display: none !important;
-    position: absolute;
     background: #fff;
 }
 
@@ -32,21 +30,13 @@
     color: blue;
 }
 
-.wordlet_configure,
-.wordlet_add {
+.wordlet_configure {
     outline: 1px dashed red;
     color: red;
 }
 
 .wordlets_modal input[type="text"] {
     width: 300px;
-}
-
-.wordlet_helper_link {
-    outline: 1px dashed blue;
-    color: blue;
-    padding: 2px;
-    background: rgba(255,255,255,.8);
 }
 
 .wordlet_edit_mode {
@@ -110,6 +100,25 @@
 .wordlets_modal .form-type-select label,
 .wordlets_modal .form-type-textfield label {
     display: inline-block;
+}
+
+/* Tooltip */
+
+.wordlet_helper_container {
+    background: rgba(255,255,255,.8);
+    padding: 1px;
+}
+
+.wordlet_helper_container a {
+    color: blue;
+}
+
+.wordlet_helper_container a,
+.wordlet_helper_container .wordlet_configure,
+.wordlet_helper_container .wordlet_edit {
+    display: block !important;
+    cursor: pointer;
+    margin: 4px;
 }
 
 /* modal */

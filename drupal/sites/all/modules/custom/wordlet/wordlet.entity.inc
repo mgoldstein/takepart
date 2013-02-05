@@ -1,19 +1,7 @@
 <?php
 
 class WordletItem {
-
-  public $page;
-  public $name;
-  public $format;
-
-  public $single;
-  public $multi;
-  public $href;
-  public $href_raw;
-  public $node;
-  public $img_src;
-
-  public $empty;
+  private $args;
 
   public function __construct($args = array()) {
     $args += array(
@@ -21,7 +9,9 @@ class WordletItem {
       'name' => '',
       'format' => WORDLET_PLAIN_TEXT,
       'single' => '',
+      'single_no_markup' => '',
       'multi' => '',
+      'multi_no_markup' => '',
       'href' => '',
       'href_raw' => '',
       'node' => '',
@@ -35,24 +25,44 @@ class WordletItem {
         'img_src' => TRUE,
       ),
     );
-    foreach ($args as $attribute => $value) {
-      $this->{$attribute} = $value;
-    }
+
+    $this->args = $args;
   }
 
   public function __toString() {
     $priority = array('multi', 'single', 'node', 'href', 'href_raw', 'img_src');
+    $retval = null;
     foreach ($priority as $attribute) {
       if (!$this->empty[$attribute]) {
-        return $this->{$attribute};
+        $retval = $this->{$attribute};
+        break;
       }
     }
-    foreach ($priority as $attribute) {
-      if (!empty($this->{$attribute})) {
-        return $this->{$attribute};
+    if ( $retval === null ) {
+      foreach ($priority as $attribute) {
+        if (!empty($this->{$attribute})) {
+          $retval = $this->{$attribute};
+          break;
+        }
       }
     }
+
+    return $retval;
+  }
+
+  public function __get($name) {
+    if ( method_exists($this, $name) ) {
+      return call_user_method($name, $this);
+    }
+
+    if ( isset($this->args[$name]) ) return $this->args[$name];
+
     return '';
+  }
+
+  public function single($markup = true) {
+    if ( $markup ) return $this->args['single'];
+    return $this->args['single_no_markup'];
   }
 }
 
@@ -193,7 +203,9 @@ class WordletController extends EntityAPIControllerExportable {
       'name' => $entity->name,
       'format' => $entity->format,
       'single' => '',
+      'single_no_markup' => '',
       'multi' => '',
+      'multi_no_markup' => '',
       'href' => '',
       'href_raw' => '',
       'node' => '',
@@ -366,6 +378,8 @@ class WordletController extends EntityAPIControllerExportable {
         }
 
         $description = ( $entity->description ) ? ' title="' . htmlspecialchars($entity->description) . '"' : '';
+
+        $args[$attribute . '_no_markup'] = $args[$attribute];
 
         $args[$attribute] = implode('', array(
           "<{$tag} class=\"{$classes}\" {$description}>",

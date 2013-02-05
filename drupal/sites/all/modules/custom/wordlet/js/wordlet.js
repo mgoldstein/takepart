@@ -189,7 +189,8 @@ var $menu = $('<li id="wordlet_toggle"><a id="wordlets_show" href="">Show Wordle
 $('body')
 	.delegate('.wordlet', 'click', function(e) {
 		var $link = $(this).find('.wordlet_configure, .wordlet_edit');
-		load_form($link.data('href'));
+		var link = $link.data('edit') || $link.data('configure');
+		load_form(link);
 		e.preventDefault();
 		e.stopPropagation();
 	})
@@ -220,10 +221,20 @@ $('body')
 	.addClass((getCookie('show_wordlets')?'':'hide_wordlets'))
 	;
 
-$('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
+//$('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
+$('.wordlet:not(:has(.wordlet_configure))').each(function() {
 	var $this = $(this);
-	var $wordlet = $this.find('.wordlet');
-	var $a = $('<a href="' + this.href + '" class="wordlet_helper_link">Open Link</a>')
+	//var $wordlet = $this.find('.wordlet');
+
+	var $link = $this.closest('a');
+	var $edit = $this.find('.wordlet_edit');
+	if ( !$edit.data('configure') && !$link.length ) return true;
+	var $configure = $this.find('.wordlet_configure');
+	var edit = null;
+	var configure = null;
+
+	var $container = $('<div/>')
+		.addClass('wordlet_helper_container')
 		.css({
 			display: 'block',
 			position: 'absolute',
@@ -234,21 +245,45 @@ $('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
 		.appendTo('body')
 		;
 
+
+	if ( $link.length ) {
+		var $wlink = $('<a href="' + $link[0].href + '">Open Link</a>');
+		$wlink.html('Open Link');
+		$container.append($wlink);
+	}
+
+	if ( $edit.length ) {
+		edit = $edit.data('edit');
+		configure = ( $edit.data('configure') ) ? $edit.data('configure') : null;
+	} else if ( $configure.length ) {
+		configure = $edit.data('configure');
+	}
+
+	/*if ( edit ) {
+		var $wedit = $('<span class="wordlet_edit" data-edit="' + edit + '">Edit</a>');
+		$container.append($wedit);
+	}*/
+
+	if ( configure ) {
+		var $wconfigure = $('<span class="wordlet_configure" data-configure="' + configure + '">Configure</a>');
+		$container.append($wconfigure);
+	}
+
 	var do_hide = true;
 	var hide = function() {
-		if ( do_hide ) $a.css({left: '', right: '100%', top: 0});
+		if ( do_hide ) $container.css({left: '', right: '100%', top: 0});
 	}
 
 	$this
 		.bind('mouseenter', function(e) {
 			do_hide = false;
 
-			if ( $a[0].style.right != '100%' ) return true;
+			if ( $container[0].style.right != '100%' ) return true;
 
-			var x = $wordlet.offset().left + $wordlet.width();
-			var y = $wordlet.offset().top;
+			var x = $this.offset().left + $this.width();
+			var y = $this.offset().top;
 
-			$a
+			$container
 				.css({
 					right: '',
 					left: x,
@@ -261,7 +296,8 @@ $('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
 		})
 		;
 
-	$a
+	$container
+	$container
 		.bind('mouseenter', function(e) {
 			do_hide = false;
 		})

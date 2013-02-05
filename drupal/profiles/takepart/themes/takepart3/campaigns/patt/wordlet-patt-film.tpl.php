@@ -29,7 +29,16 @@
 		</div>
 		<div class="sponsored">
 			<h4>sponsored by:</h4>
-			<a href="#"><img src="http://stage.bltdigital.com/apatt/images/interior-participant-media-logo.png" width="151" height="49" alt="Participant Media Logo"></a>
+			<?=we('sponsor_links')?>
+			<? if ( w('sponsor_links') ): ?>
+				<ul>
+					<? foreach ( wl('sponsor_links') as $w ): ?>
+						<li><a href="<?=$w->href?>">
+							<img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
+						</a></li>
+					<? endforeach ?>
+				</ul>
+			<? endif ?>
 		</div>
 	</div>
 </div><!-- /.column-3 -->
