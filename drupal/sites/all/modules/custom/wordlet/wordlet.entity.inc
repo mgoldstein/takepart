@@ -255,6 +255,17 @@ class WordletController extends EntityAPIControllerExportable {
     // Link href
     if (in_array('href', $entity->item_keys)) {
       $args['href'] = $item['href'];
+
+      $config = _wordlet_configuration();
+      $search = array();
+      $replace = array();
+      foreach ( $config as $k => $c ) {
+        $search[] = '{' . $k . '_url}';
+        $replace[] = '/' . $c['path'];
+      }
+
+      $args['href'] = str_replace($search, $replace, $args['href']);
+
       $stripped = strip_tags($item['href']);
       $args['empty']['href'] = empty($stripped);
     }

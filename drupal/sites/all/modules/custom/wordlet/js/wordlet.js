@@ -238,7 +238,7 @@ $('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
 		.bind('mouseenter', function(e) {
 			do_hide = false;
 
-			if ( $a.css('right') != '100%' ) return true;
+			if ( $a[0].style.right != '100%' ) return true;
 
 			var x = $wordlet.offset().left + $wordlet.width();
 			var y = $wordlet.offset().top;
