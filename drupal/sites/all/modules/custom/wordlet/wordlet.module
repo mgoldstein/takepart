@@ -950,6 +950,7 @@ function wordlet($name) {
   $controller = entity_get_controller('wordlet');
 
   $w = $controller->viewOne($wordlet);
+
   return $w;
 }
 

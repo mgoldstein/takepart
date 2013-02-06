@@ -34,14 +34,15 @@ class WordletItem {
     $retval = null;
     foreach ($priority as $attribute) {
       if (!$this->empty[$attribute]) {
-        $retval = $this->{$attribute};
+        $retval = $this->__get($attribute);
         break;
       }
     }
+
     if ( $retval === null ) {
       foreach ($priority as $attribute) {
-        if (!empty($this->{$attribute})) {
-          $retval = $this->{$attribute};
+        if ( $this->__get($attribute) ) {
+          $retval = $this->__get($attribute);
           break;
         }
       }
@@ -359,7 +360,7 @@ class WordletController extends EntityAPIControllerExportable {
         }
 
         $edit_link = '';
-        if (!$is_empty) {
+        if ( !$args['empty'][$attribute] ) {
           $data_configure = '';
           if ( $configurable ) {
             $data_configure = ' data-configure="/admin/wordlet/page/' . $entity->page . '/manage/' . $entity->id . '/configure"';
