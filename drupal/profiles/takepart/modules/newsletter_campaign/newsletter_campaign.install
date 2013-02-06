@@ -4,7 +4,7 @@
  *
  * Module schema, update and uninstall handlers.
  *
- * Removes variables used by the module. 
+ * Removes variables used by the module.
  */
 
 /**
@@ -46,19 +46,19 @@ function newsletter_campaign_schema() {
       'campaign_id' => array(
         'type' => 'varchar',
         'length' => 60,
-  	    'not null' => TRUE, 
+  	    'not null' => TRUE,
   	    'default' =>  '',
         'description' => 'Campaign code generated from the BSD system.',
       ),
       'bsd_form_id' => array(
         'type' => 'int',
-  	    'not null' => TRUE, 
+  	    'not null' => TRUE,
   	    'default' =>  0,
         'description' => 'ID code for BSD signup form serving this campaign.',
       ),
       'bsd_field_id' => array(
         'type' => 'int',
-  	    'not null' => TRUE, 
+  	    'not null' => TRUE,
   	    'default' =>  0,
         'description' => 'ID code for BSD signup form field serving this campaign.',
       ),
@@ -82,21 +82,21 @@ function newsletter_campaign_schema() {
   	  'campaign_id' => array(
   	    'type' => 'varchar',
   	    'length' => 60,
-  	    'not null' => TRUE, 
+  	    'not null' => TRUE,
   	    'default' =>  '',
   	    'description' => "Campaign ID from BSD",
   	  ),
   	  'source' => array(
   	    'type' => 'varchar',
   	    'length' => 100,
-  	    'not null' => TRUE, 
+  	    'not null' => TRUE,
   	    'default' =>  " ",
   	    'description' => "Source of Email",
   	  ),
   	  'status' => array(
   	    'type' => 'varchar',
   	    'length' => 1,
-  	    'not null' => TRUE, 
+  	    'not null' => TRUE,
   	    'default' =>  's',
   	    'description' => "Status of Subscription (s or u)",
   	  ),
@@ -124,10 +124,10 @@ function newsletter_campaign_schema() {
       'campaign_id' => array('campaign_id'),
       'uid' => array('uid'),
     ),
-    'primary key' => array('tns_id'), 
+    'primary key' => array('tns_id'),
   );
-  
-  return $schema;  
+
+  return $schema;
 }
 
 /**
@@ -152,7 +152,7 @@ function newsletter_campaign_update_7100(&$sandbox) {
               ->condition('name', 'takepart_user_customizations', '=')
               ->execute()
               ->fetchField();
-  
+
   db_update('system')
     ->fields(array('weight' => $weight +1))
     ->condition('name', 'newsletter_campaign', '=')
@@ -165,24 +165,24 @@ function newsletter_campaign_update_7100(&$sandbox) {
  */
 function newsletter_campaign_update_7101(&$sandbox) {
   db_drop_index('newsletter_signups', 'campaign_id');
-  
-  db_change_field('newsletter_signups', 'campaign_id', 'campaign_id', 
+
+  db_change_field('newsletter_signups', 'campaign_id', 'campaign_id',
     array(
       'type' => 'varchar',
       'length' => 60,
-  	  'not null' => TRUE, 
+  	  'not null' => TRUE,
   	  'default' =>  '',
   	  'description' => "Campaign ID from BSD",
     )
   );
 
   db_add_index('newsletter_signups', 'campaign_id_index', array('campaign_id'));
-  
-  db_change_field('newsletter_campaign', 'campaign_id', 'campaign_id', 
+
+  db_change_field('newsletter_campaign', 'campaign_id', 'campaign_id',
     array(
       'type' => 'varchar',
       'length' => 60,
-  	  'not null' => TRUE, 
+  	  'not null' => TRUE,
   	  'default' =>  '',
   	  'description' => "Campaign Code generated from the BSD system.",
     )
@@ -192,9 +192,9 @@ function newsletter_campaign_update_7101(&$sandbox) {
 function newsletter_campaign_update_7102(&$sandbox) {
   db_add_field('newsletter_campaign', 'signup_form_id', array(
     'type' => 'varchar',
-    'length' => 60, 
-    'not null' => TRUE, 
-    'default' => '', 
+    'length' => 60,
+    'not null' => TRUE,
+    'default' => '',
     'description' => "Signup form ID from BSD"
   ));
 }
@@ -222,14 +222,14 @@ function newsletter_campaign_update_7200(&$sandbox) {
 
   db_add_field('newsletter_campaign', 'bsd_form_id', array(
     'type' => 'int',
-    'not null' => TRUE, 
+    'not null' => TRUE,
     'default' =>  0,
     'description' => 'ID code for BSD signup form serving this campaign.',
   ));
 
   db_add_field('newsletter_campaign', 'bsd_field_id', array(
     'type' => 'int',
-    'not null' => TRUE, 
+    'not null' => TRUE,
     'default' =>  0,
     'description' => 'ID code for BSD signup form field serving this campaign.',
   ));

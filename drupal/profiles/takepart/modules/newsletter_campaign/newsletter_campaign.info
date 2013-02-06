@@ -1,6 +1,6 @@
 name = TakePart Newsletter Campaigns
 description = Provides newsletter signup blocks with support for sending the signup to Blue State Digital.
 package = TakePart
-version = 7.x-2.0-dev
+version = 7.x-2.1
 core = 7.x
 dependencies[] = entity
