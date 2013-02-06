@@ -2918,7 +2918,9 @@ l div.addthis_toolbox a.addthis_button_google_plusone,.node-type-openpublish-pho
 .node-type-topic-front .block-boxes-current-featured_items .view-dom-id-1 .views-field-php {
     padding-top: 3em;
 }
-.node-type-takepart-campaign .block-boxes-current-featured_items .view-dom-id-1 .views-field-php {
+.node-type-takepart-campaign .block-boxes-current-featured_items .view-dom-id-1 .views-field-php 
+.node-type-takepart-campaign .block-boxes-title-primary .views-row-1 .views-field-php
+{
     padding-top: 3em;
 }
 .node-type-takepart-campaign .main-content .block-boxes h2 {
