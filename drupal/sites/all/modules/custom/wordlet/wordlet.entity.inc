@@ -360,7 +360,7 @@ class WordletController extends EntityAPIControllerExportable {
         }
 
         $edit_link = '';
-        if ( !$args['empty'][$attribute] ) {
+        if (!$args['empty'][$attribute]) {
           $data_configure = '';
           if ( $configurable ) {
             $data_configure = ' data-configure="/admin/wordlet/page/' . $entity->page . '/manage/' . $entity->id . '/configure"';
