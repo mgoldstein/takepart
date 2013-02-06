@@ -1799,8 +1799,7 @@ body.node-type-topic-front .submitted-wrapper{
 
 .block-box-primary .view-featured-items .views-field-field-thumbnail,
 .block-boxes-title-primary .view-featured-items .views-field-field-thumbnail,
-.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-thumbnail img, 
-.block-boxes-current-featured_items .view-featured-items .views-field-field-thumbnail {
+.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-thumbnail img {
     border: none;
     float: left;
     height: 222px;
@@ -1811,8 +1810,7 @@ body.node-type-topic-front .submitted-wrapper{
 
 .block-box-primary .view-featured-items .views-field-field-promo-text,
 .block-boxes-title-primary .view-featured-items .views-field-field-promo-text,
-.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-promo-text, 
-.block-boxes-current-featured_items .view-featured-items .views-field-field-promo-text,{
+.block-boxes-current-featured_items .view-dom-id-1 .views-field-field-promo-text {
     font-size: 14px;
     line-height: 20px;
 }
@@ -1883,8 +1881,7 @@ body.node-type-topic-front .submitted-wrapper{
 
 .block-box-primary .view-featured-items .views-field-php,
 .block-boxes-current-featured_items .view-dom-id-1 .views-field-php,
-.block-boxes-title-primary .view-featured-items .views-field-php,
-.block-boxes-current-featured_items .view-featured-items .views-field-php
+.block-boxes-title-primary .view-featured-items .views-field-php
 {
     /* border-bottom: 1px dotted silver; */
     margin-bottom: 0;
@@ -1894,8 +1891,7 @@ body.node-type-topic-front .submitted-wrapper{
 
 .block-box-primary .view-featured-items .views-field-php .field-content a,
 .block-boxes-current-featured_items .view-dom-id-1 .field-content a,
-.block-boxes-title-primary .view-featured-items .views-field-php .field-content a, 
-.block-boxes-current-featured_items .view-featured-items .views-field-php a
+.block-boxes-title-primary .view-featured-items .views-field-php .field-content a
 {
     font-size: 30px;
     line-height: 32px;
@@ -1904,8 +1900,7 @@ body.node-type-topic-front .submitted-wrapper{
 }
 .block-box-primary .view-featured-items .views-field-php .field-content a:hover,
 .block-boxes-current-featured_items .view-dom-id-1 .field-content a:hover,
-.block-boxes-title-primary .view-featured-items .views-field-php .field-content a:hover, 
-.block-boxes-current-featured_items .view-featured-items .views-field-php a:hover
+.block-boxes-title-primary .view-featured-items .views-field-php .field-content a:hover
 {
     color: #1CA9E7;
     text-decoration: none;
