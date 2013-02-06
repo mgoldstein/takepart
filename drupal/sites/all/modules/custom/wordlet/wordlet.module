@@ -707,7 +707,7 @@ function wordlet_page_import_form_submit($form, &$form_state) {
 
       // Set the wordlet properties
       foreach (array_keys($values) as $attribute) {
-        if (!empty($wordlet[$attribute])) {
+        if (isset($wordlet[$attribute])) {
           $entity->{$attribute} = $wordlet[$attribute];
         }
       }
