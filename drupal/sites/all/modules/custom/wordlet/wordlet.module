@@ -712,6 +712,12 @@ function wordlet_page_import_form_submit($form, &$form_state) {
         }
       }
 
+      $items = unserialize($entity->items_data);
+      if (!empty($items) && is_array($items)) {
+        $entity->items = $items;
+      }
+      $entity->item_keys = explode(',', $entity->keys_data);
+
       // Save.
       $entity->save();
       $imported += 1;
