@@ -1,9 +1,10 @@
 <div class="column column-1">
 	<div class="content">
+		<?=we('side_links')?>
 		<ol>
 			<? foreach ( wl('side_links') as $w ): ?>
 				<li><a href="<?=$w->href?>">
-					<?=$w->single?>
+					<?=$w->single(false)?>
 				</a></li>
 			<? endforeach ?>
 		</ol>

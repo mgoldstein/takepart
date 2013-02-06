@@ -1072,13 +1072,13 @@ function wc() {
 function wordlet_edit($name) {
   if ( !wordlet_edit_mode() ) return '';
   $w = wordlet($name);
-  if ( !$w->title ) return '';
 
   $markup = $w . '';
 
-  $word = $w->__toString(false);
-
-  $markup = str_replace($word, 'Edit ' . $w->title, $markup);
+  if ( $w->title ) {
+    $word = $w->__toString(false);
+    $markup = str_replace($word, 'Edit ' . $w->title, $markup);
+  }
 
   return $markup;
 }
