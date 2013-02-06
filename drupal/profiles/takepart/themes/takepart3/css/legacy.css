@@ -1827,7 +1827,7 @@ body.node-type-topic-front .submitted-wrapper{
 }
 
 .block-box-secondary .view-featured-items .views-field-field-blogpost-main-image,
-.block-boxes-current-featured_items .view-dom-id-2 .views-field-field-blogpost-main-image{
+.block-boxes-current-featured_items .view-dom-id-2 .views-field-field-blogpost-main-image {
     border: none;
     width: 192px;
     height: 158px;
@@ -1891,8 +1891,9 @@ body.node-type-topic-front .submitted-wrapper{
 
 .block-box-primary .view-featured-items .views-field-php .field-content a,
 .block-boxes-current-featured_items .view-dom-id-1 .field-content a,
-.block-boxes-title-primary .view-featured-items .views-field-php .field-content a 
-{ 
+.block-boxes-title-primary .view-featured-items .views-field-php .field-content a, 
+.block-boxes-current-featured_items .view-featured-items .views-field-php a
+{
     font-size: 30px;
     line-height: 32px;
     font-weight: bold;
@@ -1900,8 +1901,9 @@ body.node-type-topic-front .submitted-wrapper{
 }
 .block-box-primary .view-featured-items .views-field-php .field-content a:hover,
 .block-boxes-current-featured_items .view-dom-id-1 .field-content a:hover,
-.block-boxes-title-primary .view-featured-items .views-field-php .field-content a:hover
-{ 
+.block-boxes-title-primary .view-featured-items .views-field-php .field-content a:hover, 
+.block-boxes-current-featured_items .view-featured-items .views-field-php a:hover
+{
     color: #1CA9E7;
     text-decoration: none;
 }
