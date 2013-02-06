@@ -1078,6 +1078,7 @@ function wc() {
 function wordlet_edit($name) {
   if ( !wordlet_edit_mode() ) return '';
   $w = wordlet($name);
+  if ( !$w->title ) return '';
 
   $markup = $w . '';
 
