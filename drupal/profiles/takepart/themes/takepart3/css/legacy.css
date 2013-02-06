@@ -1880,7 +1880,8 @@ body.node-type-topic-front .submitted-wrapper{
 
 .block-box-primary .view-featured-items .views-field-php,
 .block-boxes-current-featured_items .view-dom-id-1 .views-field-php,
-.block-boxes-title-primary .view-featured-items .views-field-php
+.block-boxes-title-primary .view-featured-items .views-field-php,
+.block-boxes-current-featured_items .view-featured-items .views-field-php
 {
     /* border-bottom: 1px dotted silver; */
     margin-bottom: 0;
