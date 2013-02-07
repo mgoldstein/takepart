@@ -143,6 +143,10 @@
     padding: 0 1em;
 }
 
+.wordlet-full-html textarea {
+    width: 578px;
+}
+
 /* Drupal admin bar */
 
 #toolbar {

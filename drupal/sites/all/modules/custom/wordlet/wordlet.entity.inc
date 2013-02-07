@@ -232,11 +232,11 @@ class WordletController extends EntityAPIControllerExportable {
       // Preprocess the value
       switch ($entity->format) {
       case WORDLET_FULL_HTML:
-        $value = $item['single'];
+        $value = strip_tags($item['single'], '<a><b><i><strong><em><br><br/><img><p><ul><ol><li><blockquote><hr><hr/>');
         break;
       case WORDLET_SIMPLE_HTML:
         $value = strip_tags($item['single'],
-          '<b><i><strong><em><br><br/><img>');
+          '<a><b><i><strong><em><br><br/><img>');
         break;
       case WORDLET_PLAIN_TEXT:
       default:
@@ -252,14 +252,13 @@ class WordletController extends EntityAPIControllerExportable {
 
     // Multi line text
     if (in_array('multi', $entity->item_keys)) {
-
       // Preprocess the value
-      switch ($this->format) {
+      switch ($entity->format) {
       case WORDLET_FULL_HTML:
-        $value = $item['multi'];
+        $value = strip_tags($item['multi'], '<a><b><i><strong><em><br><br/><img><p><ul><ol><li><blockquote><hr><hr/>');
         break;
       case WORDLET_SIMPLE_HTML:
-        $value = strip_tags($item['multi'], '<b><i><strong><em><br><br/><img>');
+        $value = strip_tags($item['multi'], '<a><b><i><strong><em><br><br/><img>');
         break;
       case WORDLET_PLAIN_TEXT:
       default:
@@ -267,7 +266,7 @@ class WordletController extends EntityAPIControllerExportable {
         break;
       }
       // Plain text and simple HTML fields need to be converted to paragraphs
-      if ($this->format != WORDLET_FULL_HTML) {
+      if ($entity->format != WORDLET_FULL_HTML) {
         $value = str_replace(array("\r\n", "\r"), "\n", $value);
         $value = str_replace("\n\n\n", '</p><p>', $value);
         $value = str_replace("\n\n", '<br/>', $value);

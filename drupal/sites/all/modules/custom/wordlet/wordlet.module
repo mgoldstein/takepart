@@ -13,6 +13,17 @@ define('WORDLET_PLAIN_TEXT', 0);
 define('WORDLET_SIMPLE_HTML', 1);
 define('WORDLET_FULL_HTML', 2);
 
+function wordlet_formats($value = NULL) {
+  static $formats = array(
+    0 => 'WORDLET_PLAIN_TEXT',
+    1 => 'WORDLET_SIMPLE_HTML',
+    2 => 'WORDLET_FULL_HTML'
+  );
+  if ( $value == NULL ) return $formats;
+  if ( isset($formats[$value]) ) return $formats[$value];
+  return NULL;
+}
+
 /**
  * Inverts the wordlet configuration array to be keyed by path.
  */
@@ -762,6 +773,7 @@ function wordlet_page_edit_form($form, &$form_state, $page) {
     );
 
     $entities = entity_load('wordlet', array_keys($result['wordlet']));
+
     foreach ($entities as $entity) {
       $form['fields'][$entity->name] = array(
         '#type' => 'container',
@@ -863,6 +875,9 @@ function wordlet_load_for_page($page) {
  * Wordlet page view callback.
  */
 function wordlet_page_view_callback($page) {
+  if ( function_exists("wysiwyg_get_profile") ) {
+    wysiwyg_get_profile('full_html');
+  }
 
   // No such page.
   if ($page === FALSE) {

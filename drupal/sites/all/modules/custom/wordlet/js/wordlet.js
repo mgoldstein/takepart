@@ -137,6 +137,9 @@ var load_form = function(url, data) {
 						overflow: 'hidden'
 					});
 
+				var $wysiwyg = null;
+				var wysiwyg_id = null;
+
 				// Submit hook
 				$div.find('form')
 					.each(function() {
@@ -144,18 +147,45 @@ var load_form = function(url, data) {
 					})
 					.bind('submit', function(e) {
 						var $this = $(this);
+						if ( $wysiwyg ) {
+							$wysiwyg.css({
+								display: 'block',
+								height: '1px'
+							});
+							$wysiwyg.val(CKEDITOR.instances[wysiwyg_id].getData());
+						}
 						load_form(this.action, $this.serializeArray());
 
 						e.preventDefault();
 					});
 
 				$.tpmodal.show({id: modal_id, html: $div, callback: function() {
-					setTimeout(function() {
-						$div.find('textarea').autosize();
-						setTimeout(function() {
-							$.tpmodal.position({id: modal_id});
-						}, 100);
-					}, 600);
+					$wysiwyg = $div.find('.wordlet-full-html textarea').each(function() {
+						wysiwyg_id = this.id;
+						$.tpmodal.set({id: modal_id, values: {
+							afterClose: function() {
+								delete(CKEDITOR.instances[wysiwyg_id]);
+							}
+						}});
+						//$(this).autosize();
+						CKEDITOR.replace( this, {
+							pasteFromWordRemoveStyles: true,
+							pasteFromWordRemoveFontStyles: true,
+							pasteFromWordNumberedHeadingToList: true,
+							pasteFromWordCleanupFile: true,
+							autoGrow_onStartup: true,
+							toolbar_Full: [
+								{ name: 'document',    items : [ 'Bold','Italic','Underline','JustifyLeft','JustifyCenter','BulletedList','NumberedList','Undo','Redo','Link','Unlink','Anchor','Blockquote','Source','HorizontalRule','Cut','Copy','Paste','PasteText','PasteFromWord','RemoveFormat' ] },
+								'/',
+								{ name: 'styles',      items : [ 'Format','Styles' ] },
+								{ name: 'colors',      items : [ 'Table', 'Scayt','Image' ] }
+							]
+						});
+
+						CKEDITOR.instances[wysiwyg_id].on("instanceReady", function(event) {
+							$.tpmodal.position({id: modal_id, callback: null}, null, true);
+						});
+					});
 				}});
 			}
 		}

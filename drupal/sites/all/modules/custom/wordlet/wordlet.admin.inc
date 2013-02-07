@@ -762,6 +762,12 @@ function wordlet_form($form, &$form_state, $entity, $op) {
       '#value' => t('Save wordlet'),
       '#weight' => 40,
     );
+    $wordlet_formats = wordlet_formats($entity->format);
+
+    if ( $wordlet_formats ) {
+      $wordlet_formats = strtolower(str_replace('_', '-', $wordlet_formats));
+      $form['#attributes'] = array('class' => $wordlet_formats);
+    }
   }
   return $form;
 }

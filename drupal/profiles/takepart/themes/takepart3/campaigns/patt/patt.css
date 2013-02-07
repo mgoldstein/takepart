@@ -3,7 +3,7 @@
    ========================================================================== */
 
 body {
-	background: url('/profiles/takepart/themes/takepart3/campaigns/patt/images/bg-wood.jpg') #EFF3F5 repeat;
+	background: #a17757 url('/profiles/takepart/themes/takepart3/campaigns/patt/images/bg-wood.jpg');
 	color: #333;
 	font-size: 12px;
 	font-family: Helvetica,Arial,sans-serif;
@@ -612,35 +612,35 @@ body {
 
 	}
 
-	.page-wordlet-patt-home .news {
+	.page-wordlet-patt-home .hunger {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-news.png) center top no-repeat;
 	}
 
-	.page-wordlet-patt-home .film {
+	.page-wordlet-patt-home .patt_film_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-film.png) center top no-repeat;
 	}
 
-	.page-wordlet-patt-home .book {
+	.page-wordlet-patt-home .patt_book_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-book.png) center top no-repeat;
 	}
 
-	.page-wordlet-patt-home .alliances {
+	.page-wordlet-patt-home .patt_alliances_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-alliances.png) center top no-repeat;
 	}
 
-	.page-wordlet-patt-home .events {
+	.page-wordlet-patt-home .patt_events_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-events.png) center top no-repeat;
 	}
 
-	.page-wordlet-patt-home .snap {
+	.page-wordlet-patt-home .patt_snap_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-gallery.png) center top no-repeat;
 	}
 
-	.page-wordlet-patt-home .assistance {
+	.page-wordlet-patt-home .patt_assistance_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-assistance.png) center top no-repeat;
 	}
 
-	.page-wordlet-patt-home .action {
+	.page-wordlet-patt-home .patt_action_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-action.png) center top no-repeat;
 	}
 
