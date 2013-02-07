@@ -2940,9 +2940,8 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 l div.addthis_toolbox a.addthis_button_google_plusone,.node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_linkedin {
     width:50px !important;
 }
-.node-type-topic-front .block-boxes-current-featured_items .view-dom-id-1 .views-field-php {
-    padding-top: 3em;
-}
+.node-type-topic-front .block-boxes-current-featured_items .view-dom-id-1 .views-field-php, 
+.node-type-topic-front .block-boxes-title-primary .views-field-php, 
 .node-type-takepart-campaign .block-boxes-current-featured_items .view-dom-id-1 .views-field-php 
 .node-type-takepart-campaign .block-boxes-title-primary .views-field-php
 {
