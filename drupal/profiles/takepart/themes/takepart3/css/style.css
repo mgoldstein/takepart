@@ -1991,10 +1991,16 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     z-index: 1000;
 }
 
-body.node-type-takepart-campaign .main-content #content,
 body.node-type-takepart-campaign .main-content #left-rail {
     padding-bottom: 20px;
     padding-left: 0;
+    float: left;
+}
+
+body.node-type-takepart-campaign .main-content #content {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px !important;
     float: left;
 }
 
@@ -2425,9 +2431,7 @@ q:before, q:after {
     padding-left: 10px;
 }
 
-body.node-type-takepart-campaign .main-content #content {
-    padding-left: 20px !important;
-}
+
 
 .node-type-section-front-wide .view-campaigns.view-dom-id-3 .view-content ul li {
     margin: 0 7px 0px 0;
