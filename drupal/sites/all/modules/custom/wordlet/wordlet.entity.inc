@@ -52,7 +52,7 @@ class WordletItem {
       return call_user_method_array($attribute, $this, func_get_args());
     }
 
-    return $retval;
+    return $retval . '';
   }
 
   public function __get($name) {
@@ -245,6 +245,7 @@ class WordletController extends EntityAPIControllerExportable {
       }
 
       $args['single'] = $value;
+      $args['single_no_markup'] = $value;
 
       $stripped = strip_tags($value);
       $args['empty']['single'] = empty($stripped);
@@ -274,6 +275,7 @@ class WordletController extends EntityAPIControllerExportable {
       }
 
       $args['multi'] = $value;
+      $args['multi_no_markup'] = $value;
 
       $stripped = strip_tags($value);
       $args['empty']['multi'] = empty($stripped);
@@ -383,8 +385,6 @@ class WordletController extends EntityAPIControllerExportable {
         }
 
         $description = ( $entity->description ) ? ' title="' . htmlspecialchars($entity->description) . '"' : '';
-
-        $args[$attribute . '_no_markup'] = $args[$attribute];
 
         $args[$attribute] = implode('', array(
           "<{$tag} class=\"{$classes}\" {$description}>",
