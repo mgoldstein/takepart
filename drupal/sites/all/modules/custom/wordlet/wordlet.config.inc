@@ -64,7 +64,9 @@ function _wordlet_configuration() {
       'css' => array(
         'campaigns/intelchange/intelchange.css',
       ),
-      'js' => array(),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
       'load' => array('site', 'intel_girls_campaign'),
     ),
 
