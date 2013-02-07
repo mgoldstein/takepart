@@ -1118,7 +1118,8 @@ body.front .main-content .block-boxes-current-promo .views-row
 }
 .main-content .block-boxes-title-secondary-headlines .views-row,
 .main-content .block-boxes-title-secondary-features .views-row, 
-.main-content .block-boxes-title-secondary .views-row {
+.main-content .block-boxes-title-secondary .views-row,
+.node-type-takepart-campaign .main-content .block-boxes-current-promo .views-row {
     height: 250px;
     overflow: hidden;
     margin:10px 0 10px 10px;
