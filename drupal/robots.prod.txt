@@ -48,7 +48,6 @@ Disallow: /url/
 Disallow: /user
 Disallow: /user/
 Disallow: /users/
-Disallow: /googlenews.xml
 Disallow: /CHANGELOG.txt
 Disallow: /cron.php
 Disallow: /INSTALL.mysql.txt
