@@ -1096,14 +1096,17 @@ body.front .main-content .block-boxes-current-promo h2 span,
 
 .main-content .block-boxes-title-secondary-headlines .content,
 .main-content .block-boxes-title-features .content,
-.main-content .block-boxes-title-secondary-features .content {
-    background-color:#eff3f5;
+.main-content .block-boxes-title-secondary-features .content, 
+.main-content .block-boxes-title-secondary .content 
+{
+    background-color:#EFF3F5;
 }
 
 /*featured blocks, img gallery styles */
 .main-content .block-boxes-title-secondary-headlines .views-row,
 .main-content .block-boxes-title-features .views-row,
 .main-content .block-boxes-title-secondary-features .views-row,
+.main-content .block-boxes-title-secondary .views-row,
 body.front .main-content .block-boxes-current-promo .views-row
 {
     display:table;
@@ -1114,13 +1117,15 @@ body.front .main-content .block-boxes-current-promo .views-row
     float:left;
 }
 .main-content .block-boxes-title-secondary-headlines .views-row,
-.main-content .block-boxes-title-secondary-features .views-row {
-    height:250px;
-    overflow:hidden;
+.main-content .block-boxes-title-secondary-features .views-row, 
+.main-content .block-boxes-title-secondary .views-row {
+    height: 250px;
+    overflow: hidden;
     margin:10px 0 10px 10px;
 }
 .main-content .block-boxes-title-secondary-headlines .views-field-field-thumbnail img,
-.main-content .block-boxes-title-secondary-features .views-field-field-thumbnail img {
+.main-content .block-boxes-title-secondary-features .views-field-field-thumbnail img, 
+.main-content .block-boxes-title-secondary .views-field-field-thumbnail img {
     width:200px;
     height:150px;
     border:none;
@@ -1132,18 +1137,21 @@ body.front .main-content .block-boxes-current-promo .view-content,
     padding: 5px 4px 1px;
 }
 .main-content .block-boxes-title-secondary-headlines .views-field-php,
-.main-content .block-boxes-title-secondary-features .views-field-php {
+.main-content .block-boxes-title-secondary-features .views-field-php, 
+.main-content .block-boxes-title-secondary .views-field-php {
     font-size: 16px;
     padding:0 5px;
 }
 .main-content .block-boxes-title-secondary-headlines .views-field-field-promo-text,
-.main-content .block-boxes-title-secondary-features .views-field-field-promo-text {
+.main-content .block-boxes-title-secondary-features .views-field-field-promo-text, 
+.main-content .block-boxes-title-secondary .views-field-field-promo-text {
     padding:0 5px;
     font-size: 13px;
     line-height: 15px;
 }
 .main-content .block-boxes-title-secondary-headlines .views-field-php,
-.main-content .block-boxes-title-secondary-features .views-field-php {
+.main-content .block-boxes-title-secondary-features .views-field-php, 
+.main-content .block-boxes-title-secondary .views-field-php {
     margin:10px 0 0 0;
 }
 .main-content .block-boxes-title-features .views-field-field-thumbnail-1,
@@ -2270,26 +2278,33 @@ div.tp-pet-thank-you-heading {
 .main-content .block-boxes-current-video {
     margin-bottom: 20px;
 }
-.node-type-topic-front .block-boxes-title-secondary-features {
+.node-type-topic-front .block-boxes-title-secondary-features, 
+.node-type-topic-front .block-boxes-title-secondary {
     background-color: #EFF3F5;
     padding:5px;
 }
 
-.node-type-topic-front .block-boxes-title-secondary-features .views-row {
+.node-type-topic-front .block-boxes-title-secondary-features .views-row, 
+.node-type-topic-front .block-boxes-title-secondary  .views-row {
     margin:5px;
 }
 
 .node-type-topic-front .block-boxes-title-secondary-features .views-field-field-promo-text,
 .node-type-topic-front .block-boxes-title-secondary-features .views-field-php,
-.node-type-topic-front .block-boxes-title-secondary-features .views-field-field-thumbnail {
+.node-type-topic-front .block-boxes-title-secondary-features .views-field-field-thumbnail, 
+.node-type-topic-front .block-boxes-title-secondary .views-field-php,  
+.node-type-topic-front .block-boxes-title-secondary .views-field-field-promo-text, 
+.node-type-topic-front .block-boxes-title-secondary .views-field-field-thumbnail {
     background-color: #FFF;
 }
 
-.node-type-topic-front .block-boxes-title-secondary-features .views-field-php  .field-content {
+.node-type-topic-front .block-boxes-title-secondary-features .views-field-php  .field-content, 
+.node-type-topic-front .block-boxes-title-secondary .views-field-php  .field-content {
     padding:0 10px 2px 10px;
     display: block;
 }
-.node-type-topic-front .block-boxes-title-secondary-features .views-field-field-promo-text .field-content {
+.node-type-topic-front .block-boxes-title-secondary-features .views-field-field-promo-text .field-content, 
+.node-type-topic-front .block-boxes-title-secondary .views-field-field-promo-text .field-content {
     padding:0 10px 10px 10px;
 }
 .block-boxes-view-name-video .views-field-field-promo-text {
