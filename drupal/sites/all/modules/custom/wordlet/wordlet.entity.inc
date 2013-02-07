@@ -232,7 +232,7 @@ class WordletController extends EntityAPIControllerExportable {
       // Preprocess the value
       switch ($entity->format) {
       case WORDLET_FULL_HTML:
-        $value = strip_tags($item['single'], '<a><b><i><strong><em><br><br/><img><p><ul><ol><li><blockquote><hr><hr/>');
+        $value = strip_tags($item['single'], '<a><b><i><strong><em><br><br/><img><p><ul><ol><li><blockquote><hr><hr/><h1><h2><h3><h4><h5><h6>');
         break;
       case WORDLET_SIMPLE_HTML:
         $value = strip_tags($item['single'],
@@ -256,7 +256,7 @@ class WordletController extends EntityAPIControllerExportable {
       // Preprocess the value
       switch ($entity->format) {
       case WORDLET_FULL_HTML:
-        $value = strip_tags($item['multi'], '<a><b><i><strong><em><br><br/><img><p><ul><ol><li><blockquote><hr><hr/>');
+        $value = strip_tags($item['multi'], '<a><b><i><strong><em><br><br/><img><p><ul><ol><li><blockquote><hr><hr/><h1><h2><h3><h4><h5><h6>');
         break;
       case WORDLET_SIMPLE_HTML:
         $value = strip_tags($item['multi'], '<a><b><i><strong><em><br><br/><img>');
