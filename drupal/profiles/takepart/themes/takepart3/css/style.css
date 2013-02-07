@@ -1107,7 +1107,8 @@ body.front .main-content .block-boxes-current-promo h2 span,
 .main-content .block-boxes-title-features .views-row,
 .main-content .block-boxes-title-secondary-features .views-row,
 .main-content .block-boxes-title-secondary .views-row,
-body.front .main-content .block-boxes-current-promo .views-row
+body.front .main-content .block-boxes-current-promo .views-row, 
+.node-type-takepart-campaign .main-content .block-boxes-current-promo .views-row
 {
     display:table;
     background-color:#FFF;
@@ -1116,10 +1117,12 @@ body.front .main-content .block-boxes-current-promo .views-row
     width:200px;
     float:left;
 }
+.node-type-takepart-campaign .main-content .block-boxes-current-promo {
+    margin-bottom: 10px;
+}
 .main-content .block-boxes-title-secondary-headlines .views-row,
 .main-content .block-boxes-title-secondary-features .views-row, 
-.main-content .block-boxes-title-secondary .views-row,
-.node-type-takepart-campaign .main-content .block-boxes-current-promo .views-row {
+.main-content .block-boxes-title-secondary .views-row {
     height: 250px;
     overflow: hidden;
     margin:10px 0 10px 10px;
@@ -1999,7 +2002,7 @@ body.node-type-takepart-campaign .main-content #left-rail {
 }
 
 body.node-type-takepart-campaign .main-content #content {
-    padding-top: 10px;
+    margin-top: 10px;
     padding-bottom: 20px;
     padding-left: 20px !important;
     float: left;
@@ -2292,7 +2295,7 @@ div.tp-pet-thank-you-heading {
 }
 
 .node-type-topic-front .block-boxes-title-secondary-features .views-row, 
-.node-type-topic-front .block-boxes-title-secondary  .views-row {
+.node-type-topic-front .block-boxes-title-secondary .views-row {
     margin:5px;
 }
 
@@ -2837,7 +2840,9 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 .node-type-takepart-campaign .main-content .block-boxes-current-taxonomy_search_list h2 span {
     background:none repeat scroll 0 0 #FFF;
 }
-.boxes-selected-style-6 .views-field-title a,.boxes-selected-style-6 .views-field-field-article-subhead a,.boxes-selected-style-6 .views-field-nid span a {
+.boxes-selected-style-6 .views-field-title a,
+.boxes-selected-style-6 .views-field-field-article-subhead a,
+.boxes-selected-style-6 .views-field-nid span a {
     color:#000;
     line-height:20px;
     font-weight:700;
