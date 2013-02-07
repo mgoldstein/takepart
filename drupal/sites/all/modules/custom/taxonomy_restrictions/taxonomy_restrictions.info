@@ -1,0 +1,3 @@
+name = Taxonomy Restrictions
+description = Rules for restricting taxonomy selections on certain content types.
+core = 7.x
