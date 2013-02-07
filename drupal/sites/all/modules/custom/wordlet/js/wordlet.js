@@ -147,7 +147,7 @@ var load_form = function(url, data) {
 					})
 					.bind('submit', function(e) {
 						var $this = $(this);
-						if ( $wysiwyg ) {
+						if ( $wysiwyg.length  ) {
 							$wysiwyg.css({
 								display: 'block',
 								height: '1px'

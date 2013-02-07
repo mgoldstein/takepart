@@ -72,7 +72,7 @@ function _wordlet_configuration() {
 
     // Place at the Table Campaign
     'patt_campaign' => array(
-      'title' => 'Place at the Table Campaign',
+      'title' => 'A Place at the Table Campaign',
     ),
 
     // Place at the Table Home

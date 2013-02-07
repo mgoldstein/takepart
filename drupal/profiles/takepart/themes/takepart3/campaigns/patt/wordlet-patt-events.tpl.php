@@ -2,24 +2,29 @@
 	<div class="column column-2">
 		<div class="inner">
 			<div class="overview">
-				<h3><?=w('header')?></h3>
 				<?=w('body')?>
 			</div>
 		</div><!-- /.inner -->
 	</div><!-- /.column-2 -->
-	<div class="column column-3">
-		<div class="content">
-			<div class="email-signup">
-				<form name="email-form" action="" method="get">
-				<h3>email signup</h3>
-				<div class="input"><input type="text"  name="email"></div>
-				<div class="submit"><input type="image" value="Submit" src="/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-form-btn.png"></div>
-				</form>
-			</div>
-			<div class="sponsored">
-				<h4>sponsored by:</h4>
-				<a href="#"><img src="http://stage.bltdigital.com/apatt/images/interior-participant-media-logo.png" width="151" height="49" alt="Participant Media Logo"></a>
-			</div>
-		</div>
-	</div><!-- /.column-3 -->
+	<? var_dump(__FILE__) ?>
+	<? var_dump(__DIR__) ?>
+	<? var_dump(file_exists(__DIR__ . '/subtemplates/-patt-right.tpl.php')) ?>
+	<? include_once('subtemplates/-patt-right.tpl.php') ?>
+<?
+if ($handle = opendir(__DIR__ . '/subtemplates')) {
+    echo "Directory handle: $handle\n";
+    echo "Entries:\n";
+
+    /* This is the correct way to loop over the directory. */
+    while (false !== ($entry = readdir($handle))) {
+        echo "$entry\n";
+    }
+
+    /* This is the WRONG way to loop over the directory. */
+    while ($entry = readdir($handle)) {
+        echo "$entry\n";
+    }
+
+    closedir($handle);
+} ?>
 </div>
