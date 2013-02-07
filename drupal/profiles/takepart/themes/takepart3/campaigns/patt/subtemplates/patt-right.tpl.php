@@ -21,7 +21,7 @@
 			<? endif ?>
 		</div>
 		<div class="follow">
-			<?=w('follow_us')?>
+			<h4><?=w('follow_us')?></h4>
 			<?=we('follow_links')?>
 			<? if ( w('follow_links') ): ?>
 				<ul>
