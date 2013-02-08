@@ -24,6 +24,8 @@
             </div>
         </div>
         <div class="second-block">
+            <?=we("signup:submit_caption")?>
+            <?=we("signup:thank_you")?>
             <div class="form-desc">
                 <h2><?=w("form_desc_title")?></h2>
                 <div class="form-blurb">
@@ -35,21 +37,7 @@
                 <div class="form-content">
                     <h3><?=w("form_title")?></h3>
                     <?=w("form_blurb")?>
-                    <form>
-                        <div class="field-wrapper email">
-                            <label for="email">Email</label>
-                            <input name="email" type="email" />
-                        </div>
-                        <div class="field-wrapper phone">
-                            <label for="phone-areacode">Mobile Number <span class="optional">(Optional&#42;)</span></label>
-                            <input name="phone-areacode" type="text">
-                            <input name="phone-first" type="text">
-                            <input name="phone-second" type="text">
-                        </div>
-                        <div class="field-wraper buttons">
-                            <button class="submit">Submit</button>
-                        </div>
-                    </form>
+                    <?=w("signup")?>
                     <span class="optional-info">&#42;<?=w("form_optional_info")?></span>
                         <a class='terms-link' href='<?=w("terms_link")->href?>'><?=w("terms_link")->single?></a>
                     </div>

@@ -969,13 +969,20 @@ function wordlet($name) {
   }
 
   $controller = entity_get_controller('wordlet');
-
-  $w = $controller->viewOne($wordlet);
+  if ($wordlet->cardinality == 1) {
+    $w = $controller->viewOne($wordlet);
+  }
+  else {
+    $w = $controller->viewList($wordlet);
+    if ($w->count() == 0) {
+      $w = $controller->viewOne($wordlet);
+    }
+  }
 
   return $w;
 }
 
-function w($name) {
+function w() {
   try {
     return call_user_func_array('wordlet', func_get_args());
   } catch (Exception $e) {
@@ -983,36 +990,9 @@ function w($name) {
   }
 }
 
-function wordlet_list($name) {
-  $page = wordlet_active_page();
-  if ($page === FALSE) {
-    return NULL;
-  }
-  if (isset($page['wordlets'][$name])) {
-    $wordlet = $page['wordlets'][$name];
-  }
-  else {
-    $values = array(
-      'page' => $page['name'],
-      'name' => $name,
-      'cardinality' => 1,
-    );
-    $wordlet = entity_create('wordlet', $values);
-    $wordlet->save();
-    $page['wordlets'][$name] = $wordlet;
-    wordlet_active_page($page);
-  }
-
-  $controller = entity_get_controller('wordlet');
-  $wl = $controller->viewList($wordlet);
-  if ($wl->count() == 0) { echo wordlet($name); }
-
-  return $wl;
-}
-
 function wl() {
   try {
-    return call_user_func_array('wordlet_list', func_get_args());
+    return call_user_func_array('wordlet', func_get_args());
   } catch (Exception $e) {
     return '';
   }
