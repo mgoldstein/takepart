@@ -72,7 +72,7 @@ function _wordlet_configuration() {
 
     // Place at the Table Campaign
     'patt_campaign' => array(
-      'title' => 'Place at the Table Campaign',
+      'title' => 'A Place at the Table Campaign',
     ),
 
     // Place at the Table Home
@@ -83,6 +83,7 @@ function _wordlet_configuration() {
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
       'js' => array(
@@ -99,6 +100,7 @@ function _wordlet_configuration() {
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
       'js' => array(
@@ -115,6 +117,7 @@ function _wordlet_configuration() {
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
       'js' => array(
@@ -131,6 +134,7 @@ function _wordlet_configuration() {
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
       'js' => array(
@@ -147,6 +151,7 @@ function _wordlet_configuration() {
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
       'js' => array(
@@ -157,12 +162,13 @@ function _wordlet_configuration() {
 
     // Place at the Table - Events & Resources
     'patt_events' => array(
-      'title' => 'A Place at the Table - Events &amp; Resources',
+      'title' => 'A Place at the Table - Events and Resources',
       'path' => 'place-at-the-table/events-resources',
       'published' => TRUE,
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
       'js' => array(
@@ -179,6 +185,7 @@ function _wordlet_configuration() {
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
       'js' => array(
@@ -195,6 +202,7 @@ function _wordlet_configuration() {
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
       'js' => array(

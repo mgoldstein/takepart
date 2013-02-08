@@ -73,7 +73,7 @@ body {
 	/*top:25px;*/
 	font-family: sans-serif;
 	font-weight:700;
-	padding-bottom: 200px;
+	padding-bottom: 20px;
 }
 
 .table.int .header {
@@ -244,7 +244,7 @@ body {
 }
 
 .table.int .main .column .inner {
-	padding:40px 15px 15px 15px;
+	padding: 15px;
 }
 
 .table.int .main .inner h3 {
@@ -264,15 +264,14 @@ body {
 	color:#fff;
 }
 
-.table.int .main .column-3 .email-signup {
-	margin-top:40px;
+.table.int .main .column-3 h3,
+.table.int .main .column-3 h4 {
+	margin: 20px 0 5px 0;
 }
 
 .table.int .main .column-3 form .input {
 	width:149px;
-	height:28px;
 	margin:0 auto;
-	margin-top:-12px;
 }
 
 .table.int .main .column-3 form input[type="text"] {
@@ -306,13 +305,12 @@ body {
 	margin:35px auto 0 auto;
 }
 
-.table.int .main .column-3 .sponsored h4 {
+.table.int .main .column-3 h4 {
 	color: #fff;
 	text-transform: uppercase;
 	font-weight: 500;
 	text-align: center;
 	font-size: 16px;
-	margin:0;
 }
 
 #mobile_back {
@@ -335,10 +333,31 @@ body {
 	display: none;
 }
 
+.column h1,
+.column h2,
+.column h3,
+.column h4,
+.column h5,
+.column h6,
+.column p {
+	color: inherit;
+}
+
+.follow ul,
+.follow li {
+	list-style: none;
+}
+
+.follow li {
+	display: block;
+	text-align: center;
+}
 
 /* --------------------------------------------------------------------
    Page specific
    ----------------------------------------------------------------- */
+
+/* Home ---------------- */
 
 .page-wordlet-patt-home .table {
 	height: 750px;
@@ -450,6 +469,40 @@ body {
 	position:absolute;
 	top: -95px;
 	left: 61px;
+}
+
+/* Alliances ---------------- */
+
+.page-wordlet-patt-alliances .primary_alliances ul,
+.page-wordlet-patt-alliances .primary_alliances li,
+.page-wordlet-patt-alliances .secondary_alliances ul,
+.page-wordlet-patt-alliances .secondary_alliances li {
+	list-style: none;
+}
+
+.page-wordlet-patt-alliances .primary_alliances li {
+	margin: 20px;
+	float: left;
+}
+
+.page-wordlet-patt-alliances .primary_alliances ul {
+	display: inline-block; *display: inline; zoom: 1;
+	width: 100%;
+}
+
+.page-wordlet-patt-alliances .secondary_alliances li {
+	margin: .5em 0;
+	float: left;
+	width: 50%;
+}
+
+.page-wordlet-patt-alliances .secondary_alliances ul {
+	display: inline-block; *display: inline; zoom: 1;
+	width: 100%;
+}
+
+.page-wordlet-patt-alliances .secondary_alliances a {
+	color: #fff;
 }
 
 /* ==========================================================================
@@ -644,68 +697,6 @@ body {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-action.png) center top no-repeat;
 	}
 
-}
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-.ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    *text-indent: -9999px;
-}
-
-.ir:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 100%;
-}
-
-.hidden {
-    display: none !important;
-    visibility: hidden;
-}
-
-.visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-}
-
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
-}
-
-.invisible {
-    visibility: hidden;
-}
-
-.clearfix:before,
-.clearfix:after {
-    content: " ";
-    display: table;
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-.clearfix {
-    *zoom: 1;
 }
 
 /* ==========================================================================
