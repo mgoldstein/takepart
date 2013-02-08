@@ -100,14 +100,14 @@
 ================================================== */
 .smartgirls .second-block {
   background: rgb(233, 232, 230);
-  min-height: 550px;
-  _height: 550px;
+  display: inline-block; *display: inline: zoom: 1;
+  width: 100%;
 }
 .smartgirls .second-block .form-desc {
-  display: inline-block; *display: inline; *zoom: 1;
   width: 450px;
   margin-left: 30px;
   margin-top: 45px;
+  float: left;
 }
 .smartgirls .second-block .form-desc,
 .smartgirls .second-block .form-desc p { /* should be included with above but root "p" overrides */
@@ -124,16 +124,16 @@
   font-weight: normal;
   color: rgb(1, 135, 207);
 }
-.smartgirls .second-block .form-wrapper {
+.smartgirls .second-block .form_wrapper {
   width: 425px;
-  float: right;
+  float: left;
   margin-right: 30px;
   color: #313131;
   position: relative;
   padding: 6px;
   top: -55px;
 }
-.smartgirls .second-block .form-wrapper .form-bg {
+.smartgirls .second-block .form_wrapper .form-bg {
   -ms-transform:rotate(0.5deg); /* IE 9 */
   -moz-transform:rotate(0.5deg); /* Firefox */
   -webkit-transform:rotate(0.5deg); /* Safari and Chrome */
@@ -146,33 +146,33 @@
   width: 100%;
   height: 100%;
 }
-.smartgirls .second-block .form-wrapper .form-content {
+.smartgirls .second-block .form_wrapper .form-content {
   background: rgb(255, 255, 255);
   position: relative;
   padding: 38px;
   padding-top: 50px;
 }
-.smartgirls .second-block .form-wrapper,
-.smartgirls .second-block .form-wrapper p { /* should be included with above but root "p" overrides */
+.smartgirls .second-block .form_wrapper,
+.smartgirls .second-block .form_wrapper p { /* should be included with above but root "p" overrides */
   font-size: 14px;
   line-height: 1.4em;
 }
-.smartgirls .second-block .form-wrapper h3 {
+.smartgirls .second-block .form_wrapper h3 {
   color: rgb(1, 135, 207);
   font-size: 30px;
   margin-bottom: 10px;
   font-weight: normal;
 }
-.smartgirls .second-block .form-wrapper label {
+.smartgirls .second-block .form_wrapper label {
   text-transform: uppercase;
   margin-bottom: 2px;
   color: rgb(75, 54, 57);
 }
-.smartgirls .second-block .form-wrapper label .optional {
+.smartgirls .second-block .form_wrapper label .optional {
   text-transform: none;
   font-weight: normal;
 }
-.smartgirls .second-block .form-wrapper .optional-info {
+.smartgirls .second-block .form_wrapper .optional-info {
   color: rgb(109, 109, 109);
   font-size: 12px;
   line-height: 1.5em;
@@ -181,7 +181,7 @@
   padding-top: 15px;
   display: block;
 }
-.smartgirls .second-block .form-wrapper .submit {
+.smartgirls .second-block .form_wrapper .submit {
   background: rgb(243, 116, 36);
   color: rgb(255, 255, 255);
   text-transform: uppercase;
@@ -190,19 +190,13 @@
   border: 0;
   cursor: pointer;
   padding: 14px 50px;
-  -ms-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
 }
-.smartgirls .second-block .form-wrapper .field-wrapper {
+.smartgirls .second-block .form_wrapper .field-wrapper {
   margin-bottom: 25px;
 }
-.smartgirls .second-block .form-wrapper input {
+.smartgirls .second-block .form_wrapper input {
   background: rgb(235, 235, 235);
-  -ms-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
   border: 0;
   color: rgb(75, 54, 57);
@@ -210,11 +204,23 @@
   padding: 6px 0;
   width: 100%;
 }
-.smartgirls .second-block .form-wrapper .phone input {
+
+.smartgirls .second-block .form_wrapper #edit-mobile {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.smartgirls .second-block .form_wrapper #edit-mobile .form-item {
+  display: inline;
+}
+
+.smartgirls .second-block .form_wrapper #edit-mobile input {
   width: 28%;
   margin-right: 2%;
 }
-.smartgirls .second-block .form-wrapper .terms-link {
+
+.smartgirls .second-block .form_wrapper .terms-link {
   margin-top: 10px;
   display: block;
   font-size: 12px;

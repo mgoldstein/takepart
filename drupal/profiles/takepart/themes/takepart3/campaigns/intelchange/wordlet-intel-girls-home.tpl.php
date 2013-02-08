@@ -10,6 +10,7 @@
                 <?=w("site_title")?>
             </h1>
         </div>
+
         <div class="first-block clearfix">
             <div class="main-info">
                 <div class='vid-embed' data-previewSrc="/profiles/takepart/themes/takepart3/campaigns/intelchange/images/main_info.jpg" >
@@ -25,24 +26,27 @@
                 </div>
             </div>
         </div>
+
         <div class="second-block">
-            <?=we("signup:submit_caption")?>
-            <?=we("signup:thank_you")?>
             <div class="form-desc">
                 <h2><?=w("form_desc_title")?></h2>
                 <div class="form-blurb">
                     <?=w("form_desc")?>
                 </div>
             </div>
-            <div class="form-wrapper">
+            <div class="form_wrapper">
                 <div class="form-bg"></div>
                 <div class="form-content">
                     <h3><?=w("form_title")?></h3>
                     <?=w("form_blurb")?>
+
+                    <?=we("signup:submit_caption")?>
+                    <?=we("signup:thank_you")?>
+
                     <?=w("signup_form")?>
                     <span class="optional-info">&#42;<?=w("form_optional_info")?></span>
-                        <a class='terms-link' href='<?=w("terms_link")->href?>'><?=w("terms_link")->single?></a>
-                    </div>
+                    <a class='terms-link' href='<?=w("terms_link")->href?>'><?=w("terms_link")->single?></a>
+                </div>
             </div>
         </div>
         <div class="footer-block"></div>
