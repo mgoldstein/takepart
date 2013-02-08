@@ -202,6 +202,11 @@ body {
 	background: rgba(0,0,0,.2);
 }
 
+.table.int .main .column-1 .content,
+.table.int .main .column-3 .content {
+	padding: 0 10px;
+}
+
 .table.int .main .column-2 {
 	width:638px;
 	float:left;
@@ -238,11 +243,6 @@ body {
 	color:#4f86ad;
 }
 
-.table.int .main .column-1 .social {
-	width:116px;
-	margin:170px auto 0 auto;
-}
-
 .table.int .main .column .inner {
 	padding: 15px;
 }
@@ -264,6 +264,12 @@ body {
 	color:#fff;
 }
 
+.table.int .main .column-1 .content,
+.table.int .main .column-3 .content {
+	padding-top: 10px;
+}
+
+.table.int .main .column-1 h4,
 .table.int .main .column-3 h3,
 .table.int .main .column-3 h4 {
 	margin: 20px 0 5px 0;

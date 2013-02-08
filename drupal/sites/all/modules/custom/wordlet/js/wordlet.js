@@ -197,7 +197,7 @@ var setCookie = function(c_name, value, exdays) {
 	var exdate=new Date();
 	exdate.setDate(exdate.getDate() + exdays);
 	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-	document.cookie=c_name + "=" + c_value;
+	document.cookie=c_name + "=" + c_value + '; path=/';
 };
 
 var getCookie = function(c_name) {
@@ -210,6 +210,10 @@ var getCookie = function(c_name) {
 			return unescape(y);
 		}
 	}
+};
+
+var deleteCookie = function(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
 };
 
 // Wordlet toggle menu
@@ -246,7 +250,8 @@ $('body')
 		setCookie('show_wordlets', 1, 100);
 	})
 	.delegate('#wordlets_hide', 'click', function(e) {
-		setCookie('show_wordlets', '', -1);
+		deleteCookie('show_wordlets');
+		console.log(document.cookie);
 	})
 	.addClass((getCookie('show_wordlets')?'':'hide_wordlets'))
 	;
