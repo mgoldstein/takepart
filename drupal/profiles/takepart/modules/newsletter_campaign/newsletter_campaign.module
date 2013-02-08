@@ -80,7 +80,7 @@ class NewsletterCampaignUIController extends EntityDefaultUIController {
     $items[$this->path]['description'] = 'Manage newsletter campaigns.';
     return $items;
   }
-  
+
   public function overviewTable($conditions = array()) {
     $render = parent::overviewTable($conditions);
     $headers = $render['#header'];
@@ -91,10 +91,10 @@ class NewsletterCampaignUIController extends EntityDefaultUIController {
       t('Promo Message'),
       t('Thank You Message'),
     );
-    $render['#header'] = array_merge(array($label), $extra_headers, $headers);     
+    $render['#header'] = array_merge(array($label), $extra_headers, $headers);
     return $render;
   }
-  
+
   protected function overviewTableRow($conditions, $id, $entity, $additional_cols = array()) {
     $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
     $additional_cols[] = empty($entity->bsd_form_id) ? '' : (string) $entity->bsd_form_id;
@@ -258,7 +258,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign,
   );
 
   $form['bluestatedigital']['bsd_field_id']
-    = bluestatedigital_forms_signup_field_id($values['bsd_form_id'], 
+    = bluestatedigital_forms_signup_field_id($values['bsd_form_id'],
       $values['bsd_field_id']);
   $form['bluestatedigital']['bsd_field_id'] += array(
     '#prefix' => '<div id="newsletter-campaign-form-email-field-wrapper">',
@@ -351,8 +351,8 @@ function newsletter_campaign_theme() {
   return array(
     'newsletter_signup_block' => array(
       'variables' => array(
-        'form_id' => NULL, 
-        'promo_text' => NULL, 
+        'form_id' => NULL,
+        'promo_text' => NULL,
         'signup_form' => NULL
       ),
       'template' => 'theme/newsletter-signup-block',
@@ -367,7 +367,7 @@ function newsletter_campaign_block_info() {
   $blocks = array();
   foreach (entity_load('newsletter_campaign') as $campaign) {
     $blocks[$campaign->ncid] = array(
-      'info' => t('@title (Newsletter Campaign)', 
+      'info' => t('@title (Newsletter Campaign)',
         array('@title' => $campaign->title)),
       'cache' => DRUPAL_NO_CACHE,
     );
@@ -387,7 +387,7 @@ function newsletter_campaign_block_view($delta) {
 
     $campaign = reset(entity_load('newsletter_campaign', array($delta)));
     if ($campaign !== FALSE) {
-    
+
       $path = drupal_get_path('module', 'newsletter_campaign');
       drupal_add_js($path . '/js/newsletter_campaign_block.js');
       drupal_add_css($path . '/css/newsletter_campaign_block.css');
@@ -471,7 +471,7 @@ function newsletter_campaign_signup_form_callback($form, $form_state) {
   $commands = array();
 
   if (!empty($form_state['newsletter_campaign_email_is_valid'])) {
- 
+
     // Email was valid, no need to resubmit so hide the form.
     $commands[] = ajax_command_invoke($content_selector, 'hide');
 
@@ -522,4 +522,51 @@ function newsletter_campaign_signup($ncid, $email) {
     return $campaign->signup($email);
   }
   return FALSE;
+}
+
+function newsletter_campaign_email_mobile_signup($form, &$form_state, $wordlet) {
+
+  $email_title_name = "{$wordlet->name}:email_label";
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#title' => wordlet($email_title_name),
+  );
+
+  $mobile_title_name = "{$wordlet->name}:mobile_label";
+  $form['mobile'] = array(
+    '#type' => 'fieldset',
+    '#title' => wordlet($mobile_title_name),
+    '#tree' => FALSE,
+  );
+
+  $form['mobile']['areacode'] = array(
+    '#type' => 'textfield',
+  );
+
+  $form['mobile']['exchange'] = array(
+    '#type' => 'textfield',
+  );
+
+  $form['mobile']['number'] = array(
+    '#type' => 'textfield',
+  );
+
+  $submit_caption_name = "{$wordlet->name}:submit_caption";
+  $submit_wordlet = wordlet($submit_caption_name);
+  $submit_caption = $submit_wordlet->single(FALSE);
+  $form['actions'] = array('#type' => 'actions');
+  if (empty($submit_caption)) {
+    $submit_caption = t('Submit');
+  }
+  $submit = array();
+  if (!empty($form['#submit'])) {
+    $submit += $form['#submit'];
+  }
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => $submit_caption,
+    '#weight' => 40,
+  );
+
+  return $form;
 }

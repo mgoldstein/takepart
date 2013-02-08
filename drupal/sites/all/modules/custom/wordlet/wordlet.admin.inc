@@ -711,6 +711,27 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     );
   }
 
+  if ($configure || in_array('form', $entity->item_keys)) {
+    $form['form'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['form']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Form',
+        '#attributes' => array('data-for' => array('form-input')),
+        '#default_value' => in_array('form', $entity->item_keys),
+      );
+    }
+    $form['form']['value'] = array(
+      '#title' => t('Form'),
+      '#type' => 'textfield',
+      '#default_value' => $values['form'],
+      '#attributes' => array('class' => array('form-input')),
+      '#element_validate' => array('wordlet_validate_form'),
+    );
+  }
+
   return $form;
 }
 
@@ -737,6 +758,16 @@ function wordlet_validate_node_id($element, &$form_state) {
     $node = node_load($value);
     if ($node === FALSE) {
       form_error($element, t('%name must be a valid node id.',
+        array('%name' => $element['#title'])));
+    }
+  }
+}
+
+function wordlet_validate_form($element, &$form_state) {
+  $value = $element['#value'];
+  if (!empty($value)) {
+    if (!function_exists($value)) {
+      form_error($element, t('%name must be a valid form callback.',
         array('%name' => $element['#title'])));
     }
   }
@@ -859,6 +890,7 @@ function wordlet_update_items_from_fields($entity, $values) {
       'nid' => '',
       'view_mode' => '',
       'img_src' => '',
+      'form' => '',
     );
     $is_empty = TRUE;
     foreach (array_keys($item) as $key) {

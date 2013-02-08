@@ -16,6 +16,7 @@ class WordletItem {
       'href_raw' => '',
       'node' => '',
       'img_src' => '',
+      'form' => '',
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
@@ -23,6 +24,7 @@ class WordletItem {
         'href_raw' => TRUE,
         'node' => TRUE,
         'img_src' => TRUE,
+        'form' => TRUE,
       ),
     );
 
@@ -30,7 +32,7 @@ class WordletItem {
   }
 
   public function __toString() {
-    $priority = array('multi', 'single', 'node', 'href', 'href_raw', 'img_src');
+    $priority = array('multi', 'single', 'node', 'form', 'href', 'href_raw', 'img_src');
     $retval = null;
     foreach ($priority as $attribute) {
       if (!$this->empty[$attribute]) {
@@ -216,6 +218,7 @@ class WordletController extends EntityAPIControllerExportable {
       'href_raw' => '',
       'node' => '',
       'img_src' => '',
+      'form' => '',
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
@@ -223,6 +226,7 @@ class WordletController extends EntityAPIControllerExportable {
         'href_raw' => TRUE,
         'node' => TRUE,
         'img_src' => TRUE,
+        'form' => TRUE,
       ),
     );
 
@@ -323,6 +327,16 @@ class WordletController extends EntityAPIControllerExportable {
 
       $stripped = strip_tags($item['img_src']);
       $args['empty']['img_src'] = empty($stripped);
+    }
+
+    if (in_array('form', $entity->item_keys)) {
+      $value = '';
+      if (!empty($item['form']) && function_exists($item['form'])) {
+        $form = drupal_get_form($item['form'], $entity);
+        $value = drupal_render($form);
+      }
+      $args['form'] = $value;
+      $args['empty']['form'] = empty($item['form']);
     }
 
     // Determine the access level for the wordlet.
