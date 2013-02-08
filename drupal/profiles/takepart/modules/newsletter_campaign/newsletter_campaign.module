@@ -538,6 +538,12 @@ function newsletter_campaign_email_mobile_signup_configuration($form, $config) {
     '#default_value' => $config['mobile_label'],
   );
 
+  $form['thank_you_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Thank You'),
+    '#default_value' => $config['thank_you_message'],
+  );
+
   $form['submit_caption'] = array(
     '#type' => 'textfield',
     '#title' => t('Submit Caption'),
