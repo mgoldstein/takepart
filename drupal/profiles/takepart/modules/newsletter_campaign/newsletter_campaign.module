@@ -763,9 +763,17 @@ function newsletter_campaign_direct_signup_form_validate($form, &$form_state) {
 }
 
 function newsletter_campaign_direct_signup_form_callback($form, $form_state) {
-  $commands = array();
+
   $config = $form_state['newsletter_campaign_direct_signup'];
-  $commands[] = ajax_command_html($config['selector'], $config['message']);
+
+  $message = strip_tags($config['message'], '<a><b><i><strong><em><br><br/><img>');
+  $message = str_replace(array("\r\n", "\r"), "\n", $message);
+  $message = str_replace("\n\n\n", '</p><p>', $message);
+  $message = str_replace("\n\n", '<br/>', $message);
+  $message = '<div class="thank-you-message"><p>' . $message . '</p></div>';
+
+  $commands = array();
+  $commands[] = ajax_command_replace($config['selector'], $message);
   return array(
     '#type' => 'ajax',
     '#commands' => $commands,
