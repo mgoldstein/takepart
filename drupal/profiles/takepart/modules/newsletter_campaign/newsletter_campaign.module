@@ -524,6 +524,151 @@ function newsletter_campaign_signup($ncid, $email) {
   return FALSE;
 }
 
+
+/**
+ * Direct signup forms.
+ ******************************************************************************/
+function newsletter_campaign_email_only_signup_configuration($form, $config) {
+
+  $form['email_label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Email Label'),
+    '#default_value' => $config['email_label'],
+  );
+
+  $form['submit_caption'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Submit Caption'),
+    '#default_value' => $config['submit_caption'],
+  );
+
+  $form['thank_you_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Thank You'),
+    '#default_value' => $config['thank_you_message'],
+  );
+
+  return $form;
+}
+
+function newsletter_campaign_email_only_signup_form($form, &$form_state, $config) {
+
+  $config += array(
+    'email_label' => t('Email'),
+    'submit_caption' => t('Submit'),
+    'thank_you_message' => t("Thanks for subscribing! We're so excited to have you on board."),
+  );
+
+  $form_state['newsletter_campaign_direct_signup'] = array(
+    'selector' => '#newsletter-campaign-email-only-signup-form',
+    'message' => $config['thank_you_message'],
+  );
+
+  $form['#validate'] = array('newsletter_campaign_direct_signup_form_callback');
+
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#title' => $config['email_label'],
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $submit = array('newsletter_campaign_direct_signup_form_submit');
+  if (!empty($form['#submit'])) {
+    $submit += $form['#submit'];
+  }
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => $config['submit_caption'],
+    '#weight' => 40,
+    '#ajax' => array(
+      'callback' => 'newsletter_campaign_direct_signup_form_callback',
+      'progress' => array(
+        'type' => 'throbber',
+        'message' => NULL,
+      ),
+    ),
+  );
+
+  return $form;
+}
+
+function newsletter_campaign_mobile_only_signup_configuration($form, $config) {
+
+  $form['mobile_label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Mobile Label'),
+    '#default_value' => $config['mobile_label'],
+  );
+
+  $form['submit_caption'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Submit Caption'),
+    '#default_value' => $config['submit_caption'],
+  );
+
+  $form['thank_you_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Thank You'),
+    '#default_value' => $config['thank_you_message'],
+  );
+
+  return $form;
+}
+
+function newsletter_campaign_mobile_only_signup_form($form, &$form_state, $config) {
+
+  $config += array(
+    'mobile_label' => t('Mobile'),
+    'submit_caption' => t('Submit'),
+    'thank_you_message' => t("Thanks for subscribing! We're so excited to have you on board."),
+  );
+
+  $form_state['newsletter_campaign_direct_signup'] = array(
+    'selector' => '#newsletter-campaign-mobile-only-signup-form',
+    'message' => $config['thank_you_message'],
+  );
+
+  $form['#validate'] = array('newsletter_campaign_direct_signup_form_callback');
+
+  $form['mobile'] = array(
+    '#type' => 'fieldset',
+    '#title' => $config['mobile_label'],
+    '#tree' => TRUE,
+  );
+
+  $form['mobile']['areacode'] = array(
+    '#type' => 'textfield',
+  );
+
+  $form['mobile']['exchange'] = array(
+    '#type' => 'textfield',
+  );
+
+  $form['mobile']['number'] = array(
+    '#type' => 'textfield',
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $submit = array('newsletter_campaign_direct_signup_form_submit');
+  if (!empty($form['#submit'])) {
+    $submit += $form['#submit'];
+  }
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => $config['submit_caption'],
+    '#weight' => 40,
+    '#ajax' => array(
+      'callback' => 'newsletter_campaign_direct_signup_form_callback',
+      'progress' => array(
+        'type' => 'throbber',
+        'message' => NULL,
+      ),
+    ),
+  );
+
+  return $form;
+}
+
 function newsletter_campaign_email_mobile_signup_configuration($form, $config) {
 
   $form['email_label'] = array(
@@ -544,10 +689,30 @@ function newsletter_campaign_email_mobile_signup_configuration($form, $config) {
     '#default_value' => $config['submit_caption'],
   );
 
+  $form['thank_you_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Thank You'),
+    '#default_value' => $config['thank_you_message'],
+  );
+
   return $form;
 }
 
 function newsletter_campaign_email_mobile_signup_form($form, &$form_state, $config) {
+
+  $config += array(
+    'email_label' => t('Email'),
+    'mobile_label' => t('Mobile'),
+    'submit_caption' => t('Submit'),
+    'thank_you_message' => t("Thanks for subscribing! We're so excited to have you on board."),
+  );
+
+  $form_state['newsletter_campaign_direct_signup'] = array(
+    'selector' => '#newsletter-campaign-email-mobile-signup-form',
+    'message' => $config['thank_you_message'],
+  );
+
+  $form['#validate'] = array('newsletter_campaign_direct_signup_form_callback');
 
   $form['email'] = array(
     '#type' => 'textfield',
@@ -557,7 +722,7 @@ function newsletter_campaign_email_mobile_signup_form($form, &$form_state, $conf
   $form['mobile'] = array(
     '#type' => 'fieldset',
     '#title' => $config['mobile_label'],
-    '#tree' => FALSE,
+    '#tree' => TRUE,
   );
 
   $form['mobile']['areacode'] = array(
@@ -573,7 +738,7 @@ function newsletter_campaign_email_mobile_signup_form($form, &$form_state, $conf
   );
 
   $form['actions'] = array('#type' => 'actions');
-  $submit = array();
+  $submit = array('newsletter_campaign_direct_signup_form_submit');
   if (!empty($form['#submit'])) {
     $submit += $form['#submit'];
   }
@@ -581,7 +746,40 @@ function newsletter_campaign_email_mobile_signup_form($form, &$form_state, $conf
     '#type' => 'submit',
     '#value' => $config['submit_caption'],
     '#weight' => 40,
+    '#ajax' => array(
+      'callback' => 'newsletter_campaign_direct_signup_form_callback',
+      'progress' => array(
+        'type' => 'throbber',
+        'message' => NULL,
+      ),
+    ),
   );
 
   return $form;
+}
+
+function newsletter_campaign_direct_signup_form_validate($form, &$form_state) {
+
+}
+
+function newsletter_campaign_direct_signup_form_callback($form, $form_state) {
+
+  $config = $form_state['newsletter_campaign_direct_signup'];
+
+  $message = strip_tags($config['message'], '<a><b><i><strong><em><br><br/><img>');
+  $message = str_replace(array("\r\n", "\r"), "\n", $message);
+  $message = str_replace("\n\n\n", '</p><p>', $message);
+  $message = str_replace("\n\n", '<br/>', $message);
+  $message = '<div class="thank-you-message"><p>' . $message . '</p></div>';
+
+  $commands = array();
+  $commands[] = ajax_command_replace($config['selector'], $message);
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+}
+
+function newsletter_campaign_direct_signup_form_submit($form, &$form_state) {
+
 }

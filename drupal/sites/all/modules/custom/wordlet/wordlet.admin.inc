@@ -719,19 +719,28 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       '#tree' => TRUE,
       '#attributes' => array('class' => array('form-input')),
       '#prefix' => '<div class="form-type-container">',
-      'name' => array(
+      '#suffix' => '</div>',
+    );
+    if ($configure) {
+      $form['form']['value']['name'] = array(
         '#title' => t('Form'),
         '#type' => 'select',
         // TODO: Get the list of forms from custom module hook.
         '#options' => array(
-          'newsletter_campaign_email_signup' => t('Email Only Signup'),
+          'newsletter_campaign_email_only_signup' => t('Email Only Signup'),
+          'newsletter_campaign_mobile_only_signup' => t('Mobile Only Signup'),
           'newsletter_campaign_email_mobile_signup' => t('Email + Mobile Signup'),
         ),
         '#default_value' => $values['form']['name'],
         '#element_validate' => array('wordlet_validate_form'),
-      ),
-      '#suffix' => '</div>',
-    );
+      );
+    }
+    else {
+      $form['form']['value']['name'] = array(
+        '#type' => 'value',
+        '#value' => $values['form']['name'],
+      );
+    }
     if (!empty($values['form']['name'])) {
       $config_hook = "{$values['form']['name']}_configuration";
       if (function_exists($config_hook)) {
@@ -801,7 +810,7 @@ function wordlet_form($form, &$form_state, $entity, $op) {
     $form += wordlet_get_item_fields($entity);
 
     $form['actions'] = array('#type' => 'actions');
-    $submit = array();
+    $submit = array('wordlet_form_submit');
     if (!empty($form['#submit'])) {
       $submit += $form['#submit'];
     }
