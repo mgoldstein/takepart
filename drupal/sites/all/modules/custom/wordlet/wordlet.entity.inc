@@ -1,13 +1,15 @@
 <?php
 
 class WordletItem {
+
   private $args;
 
   public function __construct($args = array()) {
     $args += array(
-      'id' => 0,
+      'id' => '',
       'page' => '',
       'name' => '',
+      'title' => '',
       'format' => WORDLET_PLAIN_TEXT,
       'single' => '',
       'single_no_markup' => '',
@@ -15,9 +17,15 @@ class WordletItem {
       'multi_no_markup' => '',
       'href' => '',
       'href_raw' => '',
-      'node' => '',
+      'node' => array(
+        'nid' => '',
+        'view_mode' => '',
+      ),
       'img_src' => '',
-      'form' => '',
+      'form' => array(
+        'name' => '',
+        'config' => array(),
+      ),
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
@@ -28,7 +36,6 @@ class WordletItem {
         'form' => TRUE,
       ),
     );
-
     $this->args = $args;
   }
 
@@ -205,7 +212,7 @@ class WordletController extends EntityAPIControllerExportable {
 
   protected function createViewItem($entity, $item) {
 
-    // Default attributes
+    // Item attributes
     $args = array(
       'id' => $entity->id,
       'page' => $entity->page,
@@ -218,9 +225,15 @@ class WordletController extends EntityAPIControllerExportable {
       'multi_no_markup' => '',
       'href' => '',
       'href_raw' => '',
-      'node' => '',
+      'node' => array(
+        'nid' => '',
+        'view_mode' => '',
+      ),
       'img_src' => '',
-      'form' => '',
+      'form' => array(
+        'name' => '',
+        'config' => array(),
+      ),
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
@@ -272,6 +285,7 @@ class WordletController extends EntityAPIControllerExportable {
         $value = check_plain($item['multi']);
         break;
       }
+
       // Plain text and simple HTML fields need to be converted to paragraphs
       if ($entity->format != WORDLET_FULL_HTML) {
         $value = str_replace(array("\r\n", "\r"), "\n", $value);
@@ -307,13 +321,12 @@ class WordletController extends EntityAPIControllerExportable {
     }
 
     // Node requires a nid and a view mode
-    if (in_array('nid', $entity->item_keys)
-      && in_array('view_mode', $entity->item_keys)) {
+    if (in_array('node', $entity->item_keys)) {
       $value = '';
-      if (!empty($item['nid']) && !empty($item['view_mode'])) {
-        $node = node_load($item['nid']);
+      if (!empty($item['node']['nid']) && !empty($item['node']['view_mode'])) {
+        $node = node_load($item['node']['nid']);
         if ($node !== FALSE) {
-          $value = drupal_render(node_view($node, $item['view_mode']));
+          $value = drupal_render(node_view($node, $item['node']['view_mode']));
           $have_value = TRUE;
         }
       }
@@ -333,9 +346,12 @@ class WordletController extends EntityAPIControllerExportable {
 
     if (in_array('form', $entity->item_keys)) {
       $value = '';
-      if (!empty($item['form']) && function_exists($item['form'])) {
-        $form = drupal_get_form($item['form'], $entity);
-        $value = drupal_render($form);
+      if (!empty($item['form']['name'])) {
+        $form_hook = "{$item['form']['name']}_form";
+        if (function_exists($form_hook)) {
+          $form = drupal_get_form($form_hook, $item['form']['config']);
+          $value = drupal_render($form);
+        }
       }
       $args['form'] = $value;
       $args['empty']['form'] = empty($item['form']);
@@ -357,7 +373,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     if ($editable) {
 
-      $displayed_attributes = array('single', 'multi', 'node');
+      $displayed_attributes = array('single', 'multi', 'node', 'form');
 
       foreach ($displayed_attributes as $attribute) {
 

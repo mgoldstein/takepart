@@ -524,18 +524,39 @@ function newsletter_campaign_signup($ncid, $email) {
   return FALSE;
 }
 
-function newsletter_campaign_email_mobile_signup($form, &$form_state, $wordlet) {
+function newsletter_campaign_email_mobile_signup_configuration($form, $config) {
 
-  $email_title_name = "{$wordlet->name}:email_label";
-  $form['email'] = array(
+  $form['email_label'] = array(
     '#type' => 'textfield',
-    '#title' => wordlet($email_title_name),
+    '#title' => t('Email Label'),
+    '#default_value' => $config['email_label'],
   );
 
-  $mobile_title_name = "{$wordlet->name}:mobile_label";
+  $form['mobile_label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Mobile Label'),
+    '#default_value' => $config['mobile_label'],
+  );
+
+  $form['submit_caption'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Submit Caption'),
+    '#default_value' => $config['submit_caption'],
+  );
+
+  return $form;
+}
+
+function newsletter_campaign_email_mobile_signup_form($form, &$form_state, $config) {
+
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#title' => $config['email_label'],
+  );
+
   $form['mobile'] = array(
     '#type' => 'fieldset',
-    '#title' => wordlet($mobile_title_name),
+    '#title' => $config['mobile_label'],
     '#tree' => FALSE,
   );
 
@@ -551,20 +572,14 @@ function newsletter_campaign_email_mobile_signup($form, &$form_state, $wordlet) 
     '#type' => 'textfield',
   );
 
-  $submit_caption_name = "{$wordlet->name}:submit_caption";
-  $submit_wordlet = wordlet($submit_caption_name);
-  $submit_caption = $submit_wordlet->single(FALSE);
   $form['actions'] = array('#type' => 'actions');
-  if (empty($submit_caption)) {
-    $submit_caption = t('Submit');
-  }
   $submit = array();
   if (!empty($form['#submit'])) {
     $submit += $form['#submit'];
   }
   $form['actions']['submit'] = array(
     '#type' => 'submit',
-    '#value' => $submit_caption,
+    '#value' => $config['submit_caption'],
     '#weight' => 40,
   );
 
