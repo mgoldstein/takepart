@@ -354,7 +354,7 @@ class WordletController extends EntityAPIControllerExportable {
         }
       }
       $args['form'] = $value;
-      $args['empty']['form'] = empty($item['form']);
+      $args['empty']['form'] = empty($item['form']['name']);
     }
 
     // Determine the access level for the wordlet.
