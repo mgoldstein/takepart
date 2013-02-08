@@ -86,6 +86,12 @@
   height: 25px;
 }
 
+.smartgirls .first-block .addThis .addthis_button_email .at16nc {
+  background: url('images/email_bttn.png') no-repeat;
+  width: 55px;
+  height: 20px;
+}
+
 /* #Second Block
 ================================================== */
 .smartgirls .second-block {
