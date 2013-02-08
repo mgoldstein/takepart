@@ -219,6 +219,8 @@ var deleteCookie = function(name) {
 // Wordlet toggle menu
 var $menu = $('<li id="wordlet_toggle"><a id="wordlets_show" href="">Show Wordlets</a><a id="wordlets_hide" href="">Hide Wordlets</a></li>');
 
+$('[data-edit]').addClass('wordlet');
+
 // Wordlet events & other setup
 $('body')
 	.delegate('.wordlet', 'click', function(e) {

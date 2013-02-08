@@ -5,6 +5,7 @@ class WordletItem {
 
   public function __construct($args = array()) {
     $args += array(
+      'id' => 0,
       'page' => '',
       'name' => '',
       'format' => WORDLET_PLAIN_TEXT,
@@ -206,6 +207,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     // Default attributes
     $args = array(
+      'id' => $entity->id,
       'page' => $entity->page,
       'name' => $entity->name,
       'format' => $entity->format,
