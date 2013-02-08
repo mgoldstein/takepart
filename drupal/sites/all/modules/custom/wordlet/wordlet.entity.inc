@@ -17,15 +17,9 @@ class WordletItem {
       'multi_no_markup' => '',
       'href' => '',
       'href_raw' => '',
-      'node' => array(
-        'nid' => '',
-        'view_mode' => '',
-      ),
+      'node' => '',
       'img_src' => '',
-      'form' => array(
-        'name' => '',
-        'config' => array(),
-      ),
+      'form' => '',
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
@@ -225,15 +219,9 @@ class WordletController extends EntityAPIControllerExportable {
       'multi_no_markup' => '',
       'href' => '',
       'href_raw' => '',
-      'node' => array(
-        'nid' => '',
-        'view_mode' => '',
-      ),
+      'node' => '',
       'img_src' => '',
-      'form' => array(
-        'name' => '',
-        'config' => array(),
-      ),
+      'form' => '',
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
@@ -349,7 +337,8 @@ class WordletController extends EntityAPIControllerExportable {
       if (!empty($item['form']['name'])) {
         $form_hook = "{$item['form']['name']}_form";
         if (function_exists($form_hook)) {
-          $form = drupal_get_form($form_hook, $item['form']['config']);
+          $config = empty($item['form']['config']) ? array() : $item['form']['config'];
+          $form = drupal_get_form($form_hook, $config);
           $value = drupal_render($form);
         }
       }

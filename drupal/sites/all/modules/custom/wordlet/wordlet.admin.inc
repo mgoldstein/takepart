@@ -727,7 +727,8 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
         '#type' => 'select',
         // TODO: Get the list of forms from custom module hook.
         '#options' => array(
-          'newsletter_campaign_email_signup' => t('Email Only Signup'),
+          'newsletter_campaign_email_only_signup' => t('Email Only Signup'),
+          'newsletter_campaign_mobile_only_signup' => t('Mobile Only Signup'),
           'newsletter_campaign_email_mobile_signup' => t('Email + Mobile Signup'),
         ),
         '#default_value' => $values['form']['name'],
