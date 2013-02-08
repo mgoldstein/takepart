@@ -224,7 +224,8 @@ $('[data-edit]').addClass('wordlet');
 // Wordlet events & other setup
 $('body')
 	.delegate('.wordlet', 'click', function(e) {
-		var $link = $(this).find('.wordlet_configure, .wordlet_edit');
+		var $this = $(this);
+		var $link = ($this.is('[data-edit]')) ? $this : $this.find('.wordlet_configure, .wordlet_edit');
 		var link = $link.data('edit') || $link.data('configure');
 		load_form(link);
 		e.preventDefault();
@@ -253,7 +254,6 @@ $('body')
 	})
 	.delegate('#wordlets_hide', 'click', function(e) {
 		deleteCookie('show_wordlets');
-		console.log(document.cookie);
 	})
 	.addClass((getCookie('show_wordlets')?'':'hide_wordlets'))
 	;
@@ -264,7 +264,7 @@ $('.wordlet:not(:has(.wordlet_configure))').each(function() {
 	//var $wordlet = $this.find('.wordlet');
 
 	var $link = $this.closest('a');
-	var $edit = $this.find('.wordlet_edit');
+	var $edit = ( $this.is('[data-edit]') ) ? $this : $this.find('.wordlet_edit');
 	if ( !$edit.data('configure') && !$link.length ) return true;
 	var $configure = $this.find('.wordlet_configure');
 	var edit = null;
