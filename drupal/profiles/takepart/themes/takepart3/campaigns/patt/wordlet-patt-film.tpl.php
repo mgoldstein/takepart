@@ -13,7 +13,9 @@
 <div class="column column-2">
 	<div class="inner">
 		<div class="overview">
-			<?=w('body')?>
+			<div class="cms">
+				<?=w('body')?>
+			</div>
 		</div>
 	</div><!-- /.inner -->
 </div><!-- /.column-2 -->

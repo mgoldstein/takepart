@@ -72,7 +72,7 @@
 }
 .smartgirls .first-block .intro,
 .smartgirls .first-block .intro p { /* should be included with above but root "p" overrides */
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.7em;
 }
 .smartgirls .first-block .intro p {
@@ -92,6 +92,10 @@
   height: 20px;
 }
 
+.smartgirls .first-block .addThis .addthis_button_tweet iframe {
+  width: 92px !important;
+}
+
 /* #Second Block
 ================================================== */
 .smartgirls .second-block {
@@ -107,7 +111,7 @@
 }
 .smartgirls .second-block .form-desc,
 .smartgirls .second-block .form-desc p { /* should be included with above but root "p" overrides */
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.5em;
 }
 .smartgirls .second-block .form-desc p {

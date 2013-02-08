@@ -264,15 +264,14 @@ body {
 	color:#fff;
 }
 
-.table.int .main .column-3 .email-signup {
-	margin-top:40px;
+.table.int .main .column-3 h3,
+.table.int .main .column-3 h4 {
+	margin: 20px 0 5px 0;
 }
 
 .table.int .main .column-3 form .input {
 	width:149px;
-	height:28px;
 	margin:0 auto;
-	margin-top:-12px;
 }
 
 .table.int .main .column-3 form input[type="text"] {
@@ -312,7 +311,6 @@ body {
 	font-weight: 500;
 	text-align: center;
 	font-size: 16px;
-	margin:0;
 }
 
 #mobile_back {
@@ -335,17 +333,25 @@ body {
 	display: none;
 }
 
-.cms h1,
-.cms h2,
-.cms h3,
-.cms h4,
-.cms h5,
-.cms h6,
-.cms p {
+.column h1,
+.column h2,
+.column h3,
+.column h4,
+.column h5,
+.column h6,
+.column p {
 	color: inherit;
 }
 
+.follow ul,
+.follow li {
+	list-style: none;
+}
 
+.follow li {
+	display: block;
+	text-align: center;
+}
 
 /* --------------------------------------------------------------------
    Page specific
