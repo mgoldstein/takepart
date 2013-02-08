@@ -311,6 +311,11 @@ body {
 	margin:35px auto 0 auto;
 }
 
+.table.int .main .column-3 .sponsored ul,
+.table.int .main .column-3 .sponsored li {
+	list-style: none;
+}
+
 .table.int .main .column-3 h4 {
 	color: #fff;
 	text-transform: uppercase;

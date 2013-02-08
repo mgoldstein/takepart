@@ -45,7 +45,7 @@
 
                     <?=w("signup_form")?>
                     <span class="optional-info">&#42;<?=w("form_optional_info")?></span>
-                    <a class='terms-link' href='<?=w("terms_link")->href?>'><?=w("terms_link")->single?></a>
+                    <a class="terms-link" href="<?=w("terms_link")->href?>" target="_blank"><?=w("terms_link")->single?></a>
                 </div>
             </div>
         </div>

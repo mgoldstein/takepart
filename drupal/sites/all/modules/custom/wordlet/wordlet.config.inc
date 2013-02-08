@@ -62,6 +62,7 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array('campaign', 'html'),
       'css' => array(
+        'css/slim-header.css',
         'campaigns/intelchange/intelchange.css',
       ),
       'js' => array(
