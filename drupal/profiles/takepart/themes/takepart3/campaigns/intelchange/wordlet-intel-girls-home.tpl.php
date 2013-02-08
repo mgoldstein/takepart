@@ -1,12 +1,14 @@
 <div id="page-wrapper" class="campaign">
 <?php print $header ?>
     <div class="smartgirls">
-        <?=we("site_title")?>
-        <?=we("subtitle")?>
         <div class="header-block">
-            <span class="logo-intro">Presented by</span>
-            <img src="/profiles/takepart/themes/takepart3/campaigns/intelchange/images/intel_logo.png" alt="Intel Logo" class="logo">
-            <h1><?=w("title")?> <span class="subheader"><?=w("subtitle")?></span></h1>
+            <span class="logo-intro"><?=w("presented_by")?></span>
+            <? foreach ( wl('intel_logo') as $w ): ?>
+                <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" class="logo" <?=wa('intel_logo')?> />
+            <? endforeach ?>
+            <h1 <?=wa("site_title")?>>
+                <?=w("site_title")?>
+            </h1>
         </div>
         <div class="first-block clearfix">
             <div class="main-info">

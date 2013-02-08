@@ -1,7 +1,6 @@
 <div class="column column-1">
 	<div class="content">
-		<?=we('side_links')?>
-		<ol>
+		<ol <?=wa('side_links')?>>
 			<? foreach ( wl('side_links') as $w ): ?>
 				<li><a href="<?=$w->href?>">
 					<?=$w->single(false)?>
