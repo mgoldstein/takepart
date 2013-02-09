@@ -116,9 +116,28 @@ class SignatureNodeController extends EntityAPIController {
    */
   public function progressVariables($entity) {
 
+    try {
+      $api = takeaction_get_api();
+      $info = $api->actionInfo($entity->nid);
+      if (!empty($info)) {
+        $entity_goal = isset($info->goal) ? $info->goal : $entity->goal;
+        $entity_count = isset($info->participation_count)
+          ? $info->participation_count : $entity->count;
+      }
+    }
+    catch (TakeActionApiException $ex) {
+      $message = 'Error retrieving action info [@code] @body';
+      watchdog('takeaction_tracking', $message, array(
+        '@code' => $ex->getResponseCode(),
+        '@body' => $ex->getResponseBody(),
+      ));
+      $entity_goal = $entity->goal;
+      $entity_count = $entity->count;
+    }
+
     // Calculate the progress percentage.
-    if ($entity->goal > 0) {
-      $percent = ((float) $entity->count / (float) ($entity->goal)) * 100.0;
+    if ($entity_goal > 0) {
+      $percent = ((float) $entity_count / (float) ($entity_goal)) * 100.0;
     }
     else {
       $percent = 0.0;
@@ -154,21 +173,21 @@ class SignatureNodeController extends EntityAPIController {
     if ($percent > 100.0) {
       $complete_classes[] = 'signature-progress-complete-over';
     }
-    if ($entity->count >= $entity->goal) {
+    if ($entity_count >= $entity_goal) {
       $complete_classes[] = 'signature-progress-complete-goal';
     }
 
     // Calculate the count classes.
     $count_classes = array(
-      "signature-progress-count-{$entity->count}",
+      "signature-progress-count-{$entity_count}",
     );
-    if ($entity->count >= $entity->goal) {
+    if ($entity_count >= $entity_goal) {
       $count_classes[] = 'signature-progress-count-goal';
     }
 
     // Calculate the number of signaturs needed.
-    $needed = ($entity->goal >= $entity->count)
-      ? $entity->goal - $entity->count : 0;
+    $needed = ($entity_goal >= $entity_count)
+      ? $entity_goal - $entity_count : 0;
 
     // Calculate the number of days left.
     $days_left = 0;
@@ -191,8 +210,8 @@ class SignatureNodeController extends EntityAPIController {
       'decimals' => $decimals,
       'complete_classes' => $complete_classes,
       'count_classes' => $count_classes,
-      'count' => (int) $entity->count,
-      'goal' => (int) $entity->goal,
+      'count' => (int) $entity_count,
+      'goal' => (int) $entity_goal,
       'needed' => $needed,
       'days_left' => $days_left,
       'state' => $state,

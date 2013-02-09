@@ -314,7 +314,7 @@ class TakeActionApi {
 
     return $response;
   }
-
+  
   /**
    * Make a call to the API server using stream wrappers.
    *
@@ -524,5 +524,16 @@ class TakeActionApi {
         TakeActionApiException::FAILED_RESPONSE_CODE,
         $response['http_code'], $response['body']);
     }
+  }
+  
+  public function actionInfo($action_id) {
+    $response = $this->callAPI("actions/{$action_id}");
+    if ($response['http_code'] != self::HTTP_CODE_OK) {
+      throw new TakeActionApiException(
+        'Unexpected response status code.',
+        TakeActionApiException::FAILED_RESPONSE_CODE,
+        $response['http_code'], $response['body']);
+    }
+    return json_decode($response['body']);
   }
 }
