@@ -522,6 +522,121 @@ body {
 	display: none;
 }
 
+/* Snap ---------------- */
+
+.page-wordlet-patt-snap .tile .modal-left,
+.page-wordlet-patt-snap .tile .modal-header,
+.page-wordlet-patt-snap .tile .description {
+	display: none;
+}
+
+.tile .modal-left,
+.tile .modal-right {
+	display: none;
+}
+
+#grid-overlay {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.8);
+	display: none;
+	z-index: 100;
+}
+
+#grid-modal {
+	top: 50%;
+	margin-top: -175px;
+	position: relative;
+	height: auto;
+}
+
+.modal-left .fact {
+	background-color: #cc0f23;
+	height: 100%;
+}
+
+.modal-left .fact h1 {
+	background-color: transparent;
+	font-size: 60pt;
+	line-height: 1em;
+}
+
+.modal .modal-header h1.fact {
+	display: block;
+	background: #fff;
+}
+
+.modal-right .modal-content {
+	height: 100%;
+}
+
+.modal-right .modal-content.fact {
+	background: #fff;
+}
+
+.modal .modal-right .modal-content p {
+	color: #fff;
+}
+
+.modal-right .modal-content.fact h1,
+.modal .modal-right .modal-content.fact p {
+	color: #0182aa;
+}
+
+.modal .close-btn {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.modal .modal-right {
+	height: 312px;
+}
+
+.modal footer {
+	float: right;
+	width: 490px;
+}
+
+.modal-content h2 {
+	background-color: #515151;
+}
+
+.modal-content {
+	background-color: #323232;
+	height: 312px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.modal-content h3 {
+	display: inline-block;
+	font-size: 19px;
+	line-height: 26px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+	font-weight: bold;
+}
+
+.modal-content .description {
+	color: #FFFFFF;
+	font-size: 0.9em;
+	line-height: 1.2em;
+	height: 143px;
+	overflow: auto;
+	margin: 0 20px;
+	font-weight: normal;
+}
+
 /* ==========================================================================
    Media Queries
    ========================================================================== */
@@ -714,6 +829,543 @@ body {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-action.png) center top no-repeat;
 	}
 
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Modules / Reusable elements 
+ */
+.snap-grid {
+    Xbackground-color: #0082ab;
+    display: inline-block; *display: inline; zoom: 1;
+    width: 100%;
+}
+
+x.snap-grid {
+    position: relative;
+    width: 100%;
+    
+}
+
+.tile {
+    background-color: #0082ab;
+    color: white;
+    float: left;
+    /*width: 196px;
+    height: 156px;*/
+    width: 50%;
+    margin: 0 0 0 0;
+    overflow: hidden;
+}
+
+.tile img {
+    width: 100%;
+}
+
+.tile p {
+    line-height: 1.2em;
+    font-weight: lighter;
+    font-size: 11pt;
+    margin: 0 auto;
+    padding-right: 5px;
+}
+
+.tile b {
+    font-weight: 900;
+}
+
+.tile-myth {
+    padding: 15px;
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    /*width: 100%;*/
+    height: 90%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-left {
+    float: left;
+    position: relative;
+    width: auto;
+    
+}
+
+p.question {
+    color: white;
+    font-size: 14pt;
+}
+
+.modal-left p.question {
+    font-size: 1.3em;
+    font-weight: lighter;
+    
+}
+
+p.myth-fact {
+    color: white;
+    line-height: 1.1em;
+    font-size: 1.3em;
+    font-weight: lighter;
+}
+
+.modal-left > img {
+    width: 100%;
+}
+
+.modal-right {
+    /*position: relative;*/
+    float: left;
+    /*width: 50%;*/
+    height: 350px;
+}
+
+.modal h1,
+.modal h2,
+.modal h3,
+.modal p.myth-fact {
+    display: inline-block;
+    color: white;
+    padding: 10px 20px;
+    margin:0;
+}
+
+#modal-content {
+    height: 312px;
+    width: 100%;
+    overflow: hidden;
+}
+
+#modal-content p.myth-fact,
+#modal-content h1.fact {
+    color: #0182aa;
+}
+
+.modal-left  {
+    height: auto;    
+}
+
+.modal-left.fact {
+    background-color: #cc0f23;
+}
+
+#modal-content {
+    background-color: #323232;
+    
+}
+
+#modal-content.fact {
+    background-color: white;
+}
+
+h1.tile-header {
+    margin: 15px 0 0 0;
+    padding: 0;
+    font-size: 35pt;
+    line-height: 1em;
+}
+
+.tile h1,
+.tile p {
+    padding-left: 15px;
+    margin-bottom: 3px;
+}
+
+.modal h1 {
+    
+    background-color: #0082ab;
+}
+
+.modal h1.fact {
+    background-color: transparent;
+    font-size: 60pt;
+    line-height: 1em;
+}
+
+#modal-content h2 {
+    background-color: #515151; 
+}
+
+.close-btn {
+    float: right;
+    cursor: pointer;
+}
+
+#modal-content > div.description {
+    color: #FFFFFF;
+    font-size: 0.9em;
+    line-height: 1.2em;
+    height: 143px;
+    overflow: auto;
+    margin: 0 20px;
+    
+}
+
+#modal-content > div.fact {
+    height: 190px;
+    margin-left: 0;
+}
+
+
+.modal-nav {
+    float: left;
+}
+
+.nav-button {
+    float: left;
+    cursor: pointer;
+    margin-right: 3px;
+}
+
+#share-btn  {
+    float: right;
+    padding: 6px 10px;
+    color: #323232;
+    background-color: #474747;
+    cursor: pointer;
+}
+
+#social-buttons {
+    float: right;
+    background-color: #323232;
+    padding: 2px 3px;
+}
+
+/**
+ * Section Specific
+ */
+
+.social-icon {
+    margin-right: 10px;
+}
+
+
+
+/**
+ * Page Specific
+ */
+
+
+
+
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media only screen and (min-width: 392px) {
+ 
+    .wrapper {
+        /*width: 392px;*/
+        max-width: 392px;
+    }
+    
+    .tile {
+        width: 196px;
+        height: 156px;
+        margin: 0 0 0 0;
+    }
+    
+}
+
+
+@media only screen and (min-width: 588px) {
+
+/* ====================
+    INTERMEDIATE: Menu
+   ==================== */
+
+    nav a {
+        float: left;
+        width: 27%;
+        margin: 0 1.7%;
+        padding: 25px 2%;
+        margin-bottom: 0;
+    }
+
+    nav li:first-child a {
+        margin-left: 0;
+    }
+
+    nav li:last-child a {
+        margin-right: 0;
+    }
+
+/* ========================
+    INTERMEDIATE: IE Fixes
+   ======================== */
+
+    nav ul li {
+        display: inline;
+    }
+
+    .oldie nav a {
+        margin: 0 0.7%;
+    }
+    
+/* =======================
+ *  Custom
+   ========================*/
+    .wrapper {
+        width: 588px;
+        max-width: 588px;
+    }
+    
+    .modal-left {
+        /*width: 491px;*/
+        height: 312px;
+    }
+    
+    .modal-right {
+        
+    }
+    
+
+  
+}
+
+@media only screen and (min-width: 784px) {
+
+/* ====================
+    WIDE: CSS3 Effects
+   ==================== */
+
+    .header-container,
+    .main aside {
+        -webkit-box-shadow: 0 5px 10px #aaa;
+           -moz-box-shadow: 0 5px 10px #aaa;
+                box-shadow: 0 5px 10px #aaa;
+    }
+    
+    .wrapper {
+        width: 784px;
+        max-width: 784px;
+    }
+
+/* ============
+    WIDE: Menu
+   ============ */
+
+    .title {
+        float: left;
+    }
+
+    nav {
+        float: right;
+        width: 38%;
+    }
+
+/* ============
+    WIDE: Main
+   ============ */
+
+    .main article {
+        float: left;
+        width: 57%;
+    }
+
+    .main aside {
+        float: right;
+        width: 28%;
+    }
+    
+/* =======================
+ *  Custom
+   ========================*/
+    .modal-left,
+    .modal-right {
+        width: 50%;
+    }
+    
+    
+    
+}
+
+@media only screen and (min-width: 980px) {
+
+/* ===============
+    Maximal Width
+   =============== */
+
+    .wrapper {
+        width: 980px; /* 1140px - 10% for margins */
+        max-width: 980px;
+        margin: 0 auto;
+    }
+    
+    /* =======================
+ *  Custom
+   ========================*/
+    .modal-left,
+    .modal-right {
+        /*width: 491px;*/
+       width: 50%;
+    }
+    
+    
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
 }
 
 /* ==========================================================================
