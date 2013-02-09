@@ -80,7 +80,7 @@ class NewsletterCampaignUIController extends EntityDefaultUIController {
     $items[$this->path]['description'] = 'Manage newsletter campaigns.';
     return $items;
   }
-  
+
   public function overviewTable($conditions = array()) {
     $render = parent::overviewTable($conditions);
     $headers = $render['#header'];
@@ -91,10 +91,10 @@ class NewsletterCampaignUIController extends EntityDefaultUIController {
       t('Promo Message'),
       t('Thank You Message'),
     );
-    $render['#header'] = array_merge(array($label), $extra_headers, $headers);     
+    $render['#header'] = array_merge(array($label), $extra_headers, $headers);
     return $render;
   }
-  
+
   protected function overviewTableRow($conditions, $id, $entity, $additional_cols = array()) {
     $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
     $additional_cols[] = empty($entity->bsd_form_id) ? '' : (string) $entity->bsd_form_id;
@@ -258,7 +258,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign,
   );
 
   $form['bluestatedigital']['bsd_field_id']
-    = bluestatedigital_forms_signup_field_id($values['bsd_form_id'], 
+    = bluestatedigital_forms_signup_field_id($values['bsd_form_id'],
       $values['bsd_field_id']);
   $form['bluestatedigital']['bsd_field_id'] += array(
     '#prefix' => '<div id="newsletter-campaign-form-email-field-wrapper">',
@@ -351,8 +351,8 @@ function newsletter_campaign_theme() {
   return array(
     'newsletter_signup_block' => array(
       'variables' => array(
-        'form_id' => NULL, 
-        'promo_text' => NULL, 
+        'form_id' => NULL,
+        'promo_text' => NULL,
         'signup_form' => NULL
       ),
       'template' => 'theme/newsletter-signup-block',
@@ -367,7 +367,7 @@ function newsletter_campaign_block_info() {
   $blocks = array();
   foreach (entity_load('newsletter_campaign') as $campaign) {
     $blocks[$campaign->ncid] = array(
-      'info' => t('@title (Newsletter Campaign)', 
+      'info' => t('@title (Newsletter Campaign)',
         array('@title' => $campaign->title)),
       'cache' => DRUPAL_NO_CACHE,
     );
@@ -387,7 +387,7 @@ function newsletter_campaign_block_view($delta) {
 
     $campaign = reset(entity_load('newsletter_campaign', array($delta)));
     if ($campaign !== FALSE) {
-    
+
       $path = drupal_get_path('module', 'newsletter_campaign');
       drupal_add_js($path . '/js/newsletter_campaign_block.js');
       drupal_add_css($path . '/css/newsletter_campaign_block.css');
@@ -471,7 +471,7 @@ function newsletter_campaign_signup_form_callback($form, $form_state) {
   $commands = array();
 
   if (!empty($form_state['newsletter_campaign_email_is_valid'])) {
- 
+
     // Email was valid, no need to resubmit so hide the form.
     $commands[] = ajax_command_invoke($content_selector, 'hide');
 
@@ -522,4 +522,468 @@ function newsletter_campaign_signup($ncid, $email) {
     return $campaign->signup($email);
   }
   return FALSE;
+}
+
+
+/**
+ * Direct signup forms.
+ ******************************************************************************/
+function newsletter_campaign_signup_form_filter($var) {
+  return ($var == 'None' || preg_match('/^\[[0-9]+\] Email/', $var));
+}
+
+function newsletter_campaign_email_only_signup_configuration($form, $config) {
+
+  $form['email_signup_form_id']
+    = bluestatedigital_forms_signup_form_id($config['email_signup_form_id']);
+  $form['email_signup_form_id']['#title'] = t('Email Newsletter');
+  $options = $form['email_signup_form_id']['#options'];
+  $form['email_signup_form_id']['#options']
+    = array_filter($options, 'newsletter_campaign_signup_form_filter');
+
+  $form['email_label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Email Label'),
+    '#default_value' => $config['email_label'],
+  );
+
+  $form['submit_caption'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Submit Caption'),
+    '#default_value' => $config['submit_caption'],
+  );
+
+  $form['thank_you_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Thank You'),
+    '#default_value' => $config['thank_you_message'],
+  );
+
+  return $form;
+}
+
+function newsletter_campaign_email_only_signup_form($form, &$form_state, $config) {
+
+  $config += array(
+    'email_label' => t('Email'),
+    'submit_caption' => t('Submit'),
+    'thank_you_message' => t("Thanks for subscribing! We're so excited to have you on board."),
+  );
+
+  $form_state['newsletter_campaign_direct_signup'] = array(
+    'selector' => '#newsletter-campaign-email-only-signup-form',
+    'config' => $config,
+  );
+
+  $form['#validate'] = array('newsletter_campaign_direct_signup_form_validate');
+  $form['#submit'] = array('newsletter_campaign_direct_signup_form_submit');
+
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#title' => $config['email_label'],
+    '#required' => TRUE,
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => $config['submit_caption'],
+    '#weight' => 40,
+    '#ajax' => array(
+      'callback' => 'newsletter_campaign_direct_signup_form_callback',
+      'progress' => array(
+        'type' => 'throbber',
+        'message' => NULL,
+      ),
+    ),
+  );
+
+  return $form;
+}
+
+function newsletter_campaign_mobile_only_signup_configuration($form, $config) {
+
+  Waterfall::Api()->post('authenticate', array(
+    'username' => 'TakePart',
+    'password' => 'sms4takepart',
+  ));
+  $us_flows = array('' => t('-- None --'));
+  foreach (PhoneCampaigns::US()->flows() as $flow) {
+    $us_flows[$flow->id] = $flow->name;
+  }
+  $canada_flows = array('' => t('-- None --'));
+  foreach (PhoneCampaigns::Canada()->flows() as $flow) {
+    $canada_flows[$flow->id] = $flow->name;
+  }
+  Waterfall::Api()->post('authenticate/logout');
+
+  $form['us_mobile_flow_id'] = array(
+    '#type' => 'select',
+    '#title' => t('US Mobile Flow'),
+    '#options' => $us_flows,
+    '#required' => FALSE,
+    '#default_value' => $config['us_mobile_flow_id'],
+  );
+
+  $form['canada_mobile_flow_id'] = array(
+    '#type' => 'select',
+    '#title' => t('Canadian Mobile Flow'),
+    '#options' => $canada_flows,
+    '#required' => FALSE,
+    '#default_value' => $config['canada_mobile_flow_id'],
+  );
+
+  $form['mobile_label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Mobile Label'),
+    '#default_value' => $config['mobile_label'],
+  );
+
+  $form['submit_caption'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Submit Caption'),
+    '#default_value' => $config['submit_caption'],
+  );
+
+  $form['thank_you_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Thank You'),
+    '#default_value' => $config['thank_you_message'],
+  );
+
+  return $form;
+}
+
+function newsletter_campaign_mobile_only_signup_form($form, &$form_state, $config) {
+
+  $config += array(
+    'mobile_label' => t('Mobile'),
+    'submit_caption' => t('Submit'),
+    'thank_you_message' => t("Thanks for subscribing! We're so excited to have you on board."),
+  );
+
+  $form_state['newsletter_campaign_direct_signup'] = array(
+    'selector' => '#newsletter-campaign-mobile-only-signup-form',
+    'config' => $config,
+  );
+
+  $form['#validate'] = array('newsletter_campaign_direct_signup_form_validate');
+  $form['#submit'] = array('newsletter_campaign_direct_signup_form_submit');
+
+  $form['mobile'] = array(
+    '#type' => 'fieldset',
+    '#title' => $config['mobile_label'],
+    '#tree' => TRUE,
+  );
+
+  $form['mobile']['areacode'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 3,
+  );
+
+  $form['mobile']['exchange'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 3,
+  );
+
+  $form['mobile']['number'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 4,
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => $config['submit_caption'],
+    '#weight' => 40,
+    '#ajax' => array(
+      'callback' => 'newsletter_campaign_direct_signup_form_callback',
+      'progress' => array(
+        'type' => 'throbber',
+        'message' => NULL,
+      ),
+    ),
+  );
+
+  return $form;
+}
+
+function newsletter_campaign_email_mobile_signup_configuration($form, $config) {
+
+  Waterfall::Api()->post('authenticate', array(
+    'username' => 'TakePart',
+    'password' => 'sms4takepart',
+  ));
+  $us_flows = array('' => t('-- None --'));
+  foreach (PhoneCampaigns::US()->flows() as $flow) {
+    $us_flows[$flow->id] = $flow->name;
+  }
+  $canada_flows = array('' => t('-- None --'));
+  foreach (PhoneCampaigns::Canada()->flows() as $flow) {
+    $canada_flows[$flow->id] = $flow->name;
+  }
+  Waterfall::Api()->post('authenticate/logout');
+
+  $form['email_signup_form_id']
+    = bluestatedigital_forms_signup_form_id($config['email_signup_form_id']);
+  $form['email_signup_form_id']['#title'] = t('Email Newsletter');
+  $options = $form['email_signup_form_id']['#options'];
+  $form['email_signup_form_id']['#options']
+    = array_filter($options, 'newsletter_campaign_signup_form_filter');
+
+  $form['us_mobile_flow_id'] = array(
+    '#type' => 'select',
+    '#title' => t('US Mobile Flow'),
+    '#options' => $us_flows,
+    '#required' => FALSE,
+    '#default_value' => $config['us_mobile_flow_id'],
+  );
+
+  $form['canada_mobile_flow_id'] = array(
+    '#type' => 'select',
+    '#title' => t('Canadian Mobile Flow'),
+    '#options' => $canada_flows,
+    '#required' => FALSE,
+    '#default_value' => $config['canada_mobile_flow_id'],
+  );
+
+  $form['email_label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Email Label'),
+    '#default_value' => $config['email_label'],
+  );
+
+  $form['mobile_label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Mobile Label'),
+    '#default_value' => $config['mobile_label'],
+  );
+
+  $form['submit_caption'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Submit Caption'),
+    '#default_value' => $config['submit_caption'],
+  );
+
+  $form['thank_you_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Thank You'),
+    '#default_value' => $config['thank_you_message'],
+  );
+
+  return $form;
+}
+
+function newsletter_campaign_email_mobile_signup_form($form, &$form_state, $config) {
+
+  $config += array(
+    'email_label' => t('Email'),
+    'mobile_label' => t('Mobile'),
+    'submit_caption' => t('Submit'),
+    'thank_you_message' => t("Thanks for subscribing! We're so excited to have you on board."),
+  );
+
+  $form_state['newsletter_campaign_direct_signup'] = array(
+    'selector' => '#newsletter-campaign-email-mobile-signup-form',
+    'config' => $config,
+  );
+
+  $form['#validate'] = array('newsletter_campaign_direct_signup_form_validate');
+  $form['#submit'] = array('newsletter_campaign_direct_signup_form_submit');
+
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#title' => $config['email_label'],
+    '#required' => TRUE,
+  );
+
+  $form['mobile'] = array(
+    '#type' => 'fieldset',
+    '#title' => $config['mobile_label'],
+    '#tree' => TRUE,
+  );
+
+  $form['mobile']['areacode'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 3,
+  );
+
+  $form['mobile']['exchange'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 3,
+  );
+
+  $form['mobile']['number'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 4,
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => $config['submit_caption'],
+    '#weight' => 40,
+    '#ajax' => array(
+      'callback' => 'newsletter_campaign_direct_signup_form_callback',
+      'progress' => array(
+        'type' => 'throbber',
+        'message' => NULL,
+      ),
+    ),
+  );
+
+  return $form;
+}
+
+function newsletter_campaign_direct_signup_form_validate($form, &$form_state) {
+
+  $args = $form_state['newsletter_campaign_direct_signup'];
+  $selector = $args['selector'];
+
+  /* Validate the email */
+  if ($selector != '#newsletter-campaign-mobile-only-signup-form') {
+    $email = $form_state['values']['email'];
+    if ($email !== '' && !valid_email_address($email)) {
+      form_set_error('email', t('Invalid email address.'));
+    }
+  }
+
+  /* Validate the phone number */
+  if ($selector != '#newsletter-campaign-email-only-signup-form') {
+
+    $mobile = $form_state['values']['mobile'];
+    $areacode_empty = $mobile['areacode'] === '';
+    $exchange_empty = $mobile['exchange'] === '';
+    $number_empty = $mobile['number'] === '';
+
+    if ($areacode_empty === $exchange_empty && $exchange_empty === $number_empty) {
+      if (!$areacode_empty) {
+        $areacode_3_digits = preg_match('/^[0-9]{3}$/', $mobile['areacode']);
+        $exchange_3_digits = preg_match('/^[0-9]{3}$/', $mobile['exchange']);
+        $number_4_digits = preg_match('/^[0-9]{4}$/', $mobile['number']);
+        if (!$areacode_3_digits || !$exchange_3_digits || !$number_4_digits) {
+          form_set_error('mobile', t('Invalid mobile number.'));
+        }
+      }
+      elseif ($selector == '#newsletter-campaign-mobile-only-signup-form') {
+        form_set_error('mobile', t('Mobile number is required.'));
+      }
+    }
+    else {
+      form_set_error('mobile', t('Incomplete mobile number.'));
+    }
+  }
+}
+
+function newsletter_campaign_direct_signup_form_callback($form, $form_state) {
+
+  // Standard form submission stuff.
+  $commands = array();
+  $commands[] = ajax_command_replace(NULL, drupal_render($form));
+  $commands[] = ajax_command_prepend(NULL, theme('status_messages'));
+
+  $errors = form_get_errors();
+  if (empty($errors)) {
+
+    $args = $form_state['newsletter_campaign_direct_signup'];
+    $selector = $args['selector'];
+    $config = $args['config'];
+
+    $message = strip_tags($config['thank_you_message'], '<a><b><i><strong><em><br><br/><img>');
+    $message = str_replace(array("\r\n", "\r"), "\n", $message);
+    $message = str_replace("\n\n\n", '</p><p>', $message);
+    $message = str_replace("\n\n", '<br/>', $message);
+    $message = '<div class="thank-you-message"><p>' . $message . '</p></div>';
+
+    $commands[] = ajax_command_replace($selector, $message);
+  }
+
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+}
+
+function newsletter_campaign_direct_signup_form_submit($form, &$form_state) {
+
+  $args = $form_state['newsletter_campaign_direct_signup'];
+  $selector = $args['selector'];
+  $config = $args['config'];
+
+  $send_email = $selector != '#newsletter-campaign-mobile-only-signup-form';
+  $send_phone = $selector != '#newsletter-campaign-email-only-signup-form';
+
+  $have_form_id = !empty($config['email_signup_form_id']);
+  $have_us_flow_id = !empty($config['us_mobile_flow_id']);
+  $have_canada_flow_id = !empty($config['canada_mobile_flow_id']);
+
+  $email = $form_state['values']['email'];
+  $phone = implode('', array(
+    $form_state['values']['mobile']['areacode'],
+    $form_state['values']['mobile']['exchange'],
+    $form_state['values']['mobile']['number'],
+  ));
+
+  /* Send the email to BSD */
+  if ($send_email && $have_form_id) {
+    try {
+
+      $api = bluestatedigital_get_api('signup');
+
+      $fields = $api->listFormFields($config['email_signup_form_id']);
+
+      $email_field_id = 0;
+      $phone_field_id = 0;
+      foreach ($fields as $id => $field) {
+        if ($field['description'] == 'Email') {
+          $email_field_id = $id;
+        }
+        if ($field['description'] == 'Phone') {
+          $phone_field_id = $id;
+        }
+      }
+
+      $fields[$email_field_id]['value'] = array(
+        'type' => 'value',
+        'value' => $email,
+      );
+      if (!empty($phone)) {
+        $fields[$phone_field_id]['value'] = array(
+          'type' => 'value',
+          'value' => $phone,
+        );
+      }
+
+      $signup = array($config['email_signup_form_id'] => $fields);
+      $api->processSignup($signup);
+    }
+    catch (BlueStateDigitalApiException $ex) {
+      $message = 'Error sending email signup [@code] @body';
+      watchdog('newsletter_campaign', $message, array(
+        '@code' => $ex->getResponseCode(),
+        '@body' => $ex->getResponseBody(),
+      ));
+    }
+  }
+
+  /* Send the mobile number to Waterfall */
+  if ($send_phone) {
+    $area_code = $form_state['values']['mobile']['areacode'];
+    if (PhoneCampaigns::IsCanadianAreaCode($area_code) && $have_canada_flow_id) {
+      Waterfall::Api()->post('authenticate', array(
+        'username' => 'TakePart',
+        'password' => 'sms4takepart',
+      ));
+      PhoneCampaigns::Canada()->initiateFlow($config['canada_mobile_flow_id'], $phone);
+      Waterfall::Api()->post('authenticate/logout');
+    }
+    elseif ($have_us_flow_id) {
+      Waterfall::Api()->post('authenticate', array(
+        'username' => 'TakePart',
+        'password' => 'sms4takepart',
+      ));
+      PhoneCampaigns::US()->initiateFlow($config['us_mobile_flow_id'], $phone);
+      Waterfall::Api()->post('authenticate/logout');
+    }
+  }
 }

@@ -13,6 +13,11 @@ if (typeof takepart == "undefined" || !takepart) {
                 $($(this).attr('href')).attr('tabIndex', '-1').focus();
             })
             ;
+
+        // Sticky social nav on article page
+        $('.node-type-openpublish-article #left-rail .region-sidebar-first').tpsticky({
+            offsetNode: '#content'
+        });
     });
 })(window, jQuery);
 
