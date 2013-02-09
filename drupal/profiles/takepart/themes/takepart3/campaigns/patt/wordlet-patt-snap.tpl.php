@@ -1,58 +1,62 @@
 <div class="column">
     <div class="inner">
-        <div class="snap-grid" <?=wa('snap_slides')?>>
-            <div class="tile">
-                <img src="https://clients.midnightoilcreative.com/clients/participantmedia/gallery/img/tile-static-snap-logo.jpg" alt="Image">
-            </div>
-
-            <? foreach ( wl('snap_slides') as $s ): ?>
-                <div class="tile <?=$s->href?'link':''?> <?=$s->img_src?'person':''?> <?=(!$s->href && !$s->image)?'fact':''?>">
-                    <? if ( $s->href ): ?>
-                        <a href="<?=$s->href?>">
-                            <img src="<?=$s->thumb_src?>"/>
-                        </a>
-                    <? elseif ( !$s->href && !$s->img_src ): ?>
-                        <h1 class="tile-header">MYTH</h1>
-                        <p><?=$s->single?></p>
-                        <div class="modal-left">
-                            <div class="fact">
-                                <h1>MYTH</h1>
-                                <p class="myth-fact"><?=$s->single?></p>
-                            </div>
-                        </div>
-                        <div class="modal-right">
-                            <div class="modal-content fact">
-                                <div class="modal-header">
-                                    <h1 class="fact">FACT</h1>
-                                </div>
-                                <div class="description">
-                                    <p class="myth-fact"><?=$s->multi?></p>
-                                </div>
-                            </div>
-                        </div>
-                    <? elseif ( $n = explode('|', $s->single(false)) ): ?>
-                        <img src="<?=$s->thumb_src?>"/>
-                        <div class="modal-left">
-                            <img src="<?=$s->img_src?>" alt="<?=$n[0]?>">
-                        </div>
-                        <div class="modal-right">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1><?=$n[0]?></h1><br/>
-                                    <h2><?=$n[1]?></h2><br/>
-                                    <h3><?=$n[2]?></h3>
-                                </div>
-                                <div class="description">
-                                    <?=$s->multi?>
-                                </div>
-                            </div>
-                        </div>
-                    <? endif ?>
-                </div>
-            <? endforeach ?>
-
+        <div class="cms">
+            <?=w('body')?>
         </div>
     </div>
+</div>
+
+<div class="snap-grid" <?=wa('snap_slides')?>>
+    <div class="tile">
+        <img src="https://clients.midnightoilcreative.com/clients/participantmedia/gallery/img/tile-static-snap-logo.jpg" alt="Image">
+    </div>
+
+    <? foreach ( wl('snap_slides') as $s ): ?>
+        <div class="tile <?=$s->href?'link':''?> <?=$s->img_src?'person':''?> <?=(!$s->href && !$s->image)?'fact':''?>">
+            <? if ( $s->href ): ?>
+                <a href="<?=$s->href?>">
+                    <img src="<?=$s->thumb_src?>"/>
+                </a>
+            <? elseif ( !$s->href && !$s->img_src ): ?>
+                <h1 class="tile-header">MYTH</h1>
+                <p><?=$s->single?></p>
+                <div class="modal-left">
+                    <div class="fact">
+                        <h1>MYTH</h1>
+                        <p class="myth-fact"><?=$s->single?></p>
+                    </div>
+                </div>
+                <div class="modal-right">
+                    <div class="modal-content fact">
+                        <div class="modal-header">
+                            <h1 class="fact">FACT</h1>
+                        </div>
+                        <div class="description">
+                            <p class="myth-fact"><?=$s->multi?></p>
+                        </div>
+                    </div>
+                </div>
+            <? elseif ( $n = explode('|', $s->single(false)) ): ?>
+                <img src="<?=$s->thumb_src?>"/>
+                <div class="modal-left">
+                    <img src="<?=$s->img_src?>" alt="<?=$n[0]?>">
+                </div>
+                <div class="modal-right">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1><?=$n[0]?></h1><br/>
+                            <h2><?=$n[1]?></h2><br/>
+                            <h3><?=$n[2]?></h3>
+                        </div>
+                        <div class="description">
+                            <?=$s->multi?>
+                        </div>
+                    </div>
+                </div>
+            <? endif ?>
+        </div>
+    <? endforeach ?>
+
 </div>
 
 <div id="grid-overlay">

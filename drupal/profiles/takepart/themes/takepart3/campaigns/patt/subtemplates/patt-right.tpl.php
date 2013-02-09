@@ -7,6 +7,9 @@
             <div class="submit"><input type="image" value="Submit" src="/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-form-btn.png"></div>
 			</form>
 		</div>
+		<div class="sms">
+			<?=w('sms')?>
+		</div>
 		<div class="follow">
 			<h4><?=w('follow_us')?></h4>
 			<ul <?=wa('follow_links')?>>

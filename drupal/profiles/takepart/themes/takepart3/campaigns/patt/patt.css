@@ -68,11 +68,8 @@ body {
 
 .table.int {
 	width:1000px;
-	/*background:url(/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-page-bg.png) no-repeat;*/
 	position:relative;
-	/*top:25px;*/
 	font-family: sans-serif;
-	font-weight:700;
 	padding-bottom: 20px;
 }
 
@@ -119,7 +116,6 @@ body {
 	position: relative;
 	z-index: 51;
 	display: block;
-
 }
 
 .table.int .nav li a:hover {
@@ -225,18 +221,19 @@ body {
 .table.int .main .column-1 ol li {
 	list-style:none;
 	min-height:22px;
-	width:92px;
 	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-chevron.png') no-repeat top left;
-	padding-left:35px;
-	margin-bottom:30px;
+	margin-bottom:25px;
 }
 
 .table.int .main .column-1 ol li a {
+	padding-left:35px;
 	text-decoration:none;
 	text-transform:uppercase;
 	color:#fff;
 	font-size:14px;
 	display:block;
+	font-weight: bold;
+	line-height: 19px;
 }
 
 .table.int .main .column-1 ol li a:hover {
@@ -266,12 +263,13 @@ body {
 
 .table.int .main .column-1 .content,
 .table.int .main .column-3 .content {
-	padding-top: 10px;
+	padding: 10px;
 }
 
 .table.int .main .column-1 h4,
 .table.int .main .column-3 h3,
-.table.int .main .column-3 h4 {
+.table.int .main .column-3 h4,
+.table.int .main .column-3 .sms {
 	margin: 20px 0 5px 0;
 }
 
@@ -357,11 +355,12 @@ body {
 .follow ul,
 .follow li {
 	list-style: none;
+	text-align: center;
 }
 
 .follow li {
-	display: block;
-	text-align: center;
+	display: inline;
+	margin: 0 5px;
 }
 
 /* --------------------------------------------------------------------
@@ -518,6 +517,8 @@ body {
 
 /* Book ---------------- */
 
+.page-wordlet-patt-assistance .sponsored,
+.page-wordlet-patt-events .sponsored,
 .page-wordlet-patt-book .sponsored {
 	display: none;
 }
@@ -528,6 +529,11 @@ body {
 .page-wordlet-patt-snap .tile .modal-header,
 .page-wordlet-patt-snap .tile .description {
 	display: none;
+}
+
+.snap-grid h1,
+.snap-grid p {
+	color: #fff;
 }
 
 .tile .modal-left,
@@ -633,7 +639,8 @@ body {
 	line-height: 1.2em;
 	height: 143px;
 	overflow: auto;
-	margin: 0 20px;
+	margin: 0 0 0 20px;
+	padding: 0 20px 0 0;
 	font-weight: normal;
 }
 

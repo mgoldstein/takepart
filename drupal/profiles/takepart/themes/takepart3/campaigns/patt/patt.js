@@ -11,15 +11,16 @@ if ( $columns.length ) {
 	$columns.tpsticky({
 		offsetNode: '.page-wrap .main'
 	});
-
-	var height = $('.page-wrap .main').outerHeight();
-	$columns.each(function() {
-		var tempheight;
-		height = ( (tempheight = $(this).parent().outerHeight()) && tempheight > height ) ? tempheight : height;
-	});
-
-	$columns.parent().add('.page-wrap .main').height(height);
 }
+
+
+var height = 0;
+$('.table.int .column').each(function() {
+	var tempheight;
+	height = ( (tempheight = $(this).outerHeight()) && tempheight > height ) ? tempheight : height;
+})
+.height(height);
+
 
 // Snap gallery
 
