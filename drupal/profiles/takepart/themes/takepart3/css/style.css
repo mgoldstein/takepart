@@ -1090,74 +1090,27 @@ body.front .main-content .block-boxes-current-promo h2 span,
     text-transform: uppercase;
     font-weight: 300;
 }
-.main-content .block-boxes-current-taxonomy_search_list h2 {
+.main-content .block-boxes-current-taxonomy_search_list h2 
+{
     margin: 15px 0;
 }
 
-.main-content .block-boxes-title-secondary-headlines .content,
-.main-content .block-boxes-title-features .content,
-.main-content .block-boxes-title-secondary-features .content, 
-.main-content .block-boxes-title-secondary .content 
-{
-    background-color:#EFF3F5;
-}
 
 /*featured blocks, img gallery styles */
-.main-content .block-boxes-title-secondary-headlines .views-row,
-.main-content .block-boxes-title-features .views-row,
-.main-content .block-boxes-title-secondary-features .views-row,
-.main-content .block-boxes-title-secondary .views-row,
-body.front .main-content .block-boxes-current-promo .views-row, 
-.node-type-takepart-campaign .main-content .block-boxes-current-promo .views-row
-{
-    display:table;
-    background-color:#FFF;
-    margin:5px;
-    vertical-align:top;
-    width:200px;
-    float:left;
-}
+
 .node-type-takepart-campaign .main-content .block-boxes-current-promo {
     margin-bottom: 10px;
 }
-.main-content .block-boxes-title-secondary-headlines .views-row,
-.main-content .block-boxes-title-secondary-features .views-row, 
-.main-content .block-boxes-title-secondary .views-row {
-    height: 250px;
-    overflow: hidden;
-    margin:10px 0 10px 10px;
-}
-.main-content .block-boxes-title-secondary-headlines .views-field-field-thumbnail img,
-.main-content .block-boxes-title-secondary-features .views-field-field-thumbnail img, 
-.main-content .block-boxes-title-secondary .views-field-field-thumbnail img {
-    width:200px;
-    height:150px;
-    border:none;
-}
+
 
 body.front .main-content .block-boxes-current-promo .view-content,
-.main-content .block-boxes-title-features .view-content {
+.main-content .block-boxes-title-features .view-content 
+{
     display: inline-block;
     padding: 5px 4px 1px;
 }
-.main-content .block-boxes-title-secondary-headlines .views-field-php,
-.main-content .block-boxes-title-secondary-features .views-field-php, 
-.main-content .block-boxes-title-secondary .views-field-php {
-    font-size: 16px;
-    padding:0 5px;
-}
-.main-content .block-boxes-title-secondary-headlines .views-field-field-promo-text,
-.main-content .block-boxes-title-secondary-features .views-field-field-promo-text, 
-.main-content .block-boxes-title-secondary .views-field-field-promo-text {
-    padding:0 5px;
-    font-size: 13px;
-    line-height: 15px;
-}
-.main-content .block-boxes-title-secondary-headlines .views-field-php,
-.main-content .block-boxes-title-secondary-features .views-field-php, 
-.main-content .block-boxes-title-secondary .views-field-php {
-    margin:10px 0 0 0;
-}
+
+
 .main-content .block-boxes-title-features .views-field-field-thumbnail-1,
 body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail-1
 {
@@ -1445,6 +1398,10 @@ body.front .main-content .block-boxes-current-promo .views-field-field-display-t
     margin: 0;
     border: none;
     padding: 0;
+}
+
+body.page-search #right-rail h2 {
+    margin-bottom: 0.5em;
 }
 
 /*block content header text*/
@@ -2288,35 +2245,7 @@ div.tp-pet-thank-you-heading {
 .main-content .block-boxes-current-video {
     margin-bottom: 20px;
 }
-.node-type-topic-front .block-boxes-title-secondary-features, 
-.node-type-topic-front .block-boxes-title-secondary {
-    background-color: #EFF3F5;
-    padding:5px;
-}
 
-.node-type-topic-front .block-boxes-title-secondary-features .views-row, 
-.node-type-topic-front .block-boxes-title-secondary .views-row {
-    margin:5px;
-}
-
-.node-type-topic-front .block-boxes-title-secondary-features .views-field-field-promo-text,
-.node-type-topic-front .block-boxes-title-secondary-features .views-field-php,
-.node-type-topic-front .block-boxes-title-secondary-features .views-field-field-thumbnail, 
-.node-type-topic-front .block-boxes-title-secondary .views-field-php,  
-.node-type-topic-front .block-boxes-title-secondary .views-field-field-promo-text, 
-.node-type-topic-front .block-boxes-title-secondary .views-field-field-thumbnail {
-    background-color: #FFF;
-}
-
-.node-type-topic-front .block-boxes-title-secondary-features .views-field-php  .field-content, 
-.node-type-topic-front .block-boxes-title-secondary .views-field-php  .field-content {
-    padding:0 10px 2px 10px;
-    display: block;
-}
-.node-type-topic-front .block-boxes-title-secondary-features .views-field-field-promo-text .field-content, 
-.node-type-topic-front .block-boxes-title-secondary .views-field-field-promo-text .field-content {
-    padding:0 10px 10px 10px;
-}
 .block-boxes-view-name-video .views-field-field-promo-text {
     font-size: 14px;
 }
@@ -2936,17 +2865,154 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 .boxes-selected-style-6 .views-field-field-promo-text .field-content {
     padding-bottom:4px;
 }
-.node-type-openpublish-photo-gallery div.takepart_addthis_leftpane
-l div.addthis_toolbox a.addthis_button_google_plusone,.node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_linkedin {
+.node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_plusone,
+.node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_linkedin {
     width:50px !important;
 }
-.node-type-topic-front .block-boxes-current-featured_items .view-dom-id-1 .views-field-php, 
-.node-type-topic-front .block-boxes-title-primary .views-field-php, 
-.node-type-takepart-campaign .block-boxes-current-featured_items .view-dom-id-1 .views-field-php 
-.node-type-takepart-campaign .block-boxes-title-primary .views-field-php
+.primary-feature 
+{
+    overflow:hidden;
+    padding-bottom:0;
+}
+.primary-feature,
+.secondary-feature 
+{
+    clear: both;
+}
+
+.primary-feature h2,
+.secondary-feature h2
+{
+    display: none;
+}
+
+.primary-feature .views-field-field-thumbnail,
+.primary-feature .views-field-field-thumbnail img 
+{
+    border: none;
+    float: left;
+    height: 222px;
+    margin-right: 18px;
+    margin-bottom: 15px;
+    width: 298px;
+}
+
+.primary-feature .views-field-php
+{
+    margin-bottom: 0;
+    margin-left: 318px;
+    padding-bottom: 10px;
+}
+
+.primary-feature .views-field-php .field-content a
+{
+    font-size: 30px;
+    line-height: 32px;
+    font-weight: bold;
+    color: black;
+}
+.primary-feature .views-field-php .field-content a:hover
+{
+    color: #1CA9E7;
+    text-decoration: none;
+}
+
+.primary-feature .views-field-field-promo-text 
+{
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.node-type-topic-front .primary-feature .views-field-php, 
+.node-type-takepart-campaign .primary-feature .views-field-php
 {
     padding-top: 3em;
 }
+
+.main-content .secondary-feature .views-field-field-promo-text {
+    padding:0 5px;
+    font-size: 13px;
+    line-height: 15px;
+}
+
+.secondary-feature
+{
+    border-top: none;
+    overflow: hidden;
+    background-color: #EFF3F5;
+    margin: 0;
+    padding: 0;
+}
+
+.secondary-feature h2 {
+    font-size: 18px;
+}
+
+.secondary-feature .views-row 
+{
+    float:left;
+    display: block;
+    width: 200px;
+    height: 260px;
+    margin:10px 0 10px 10px;
+    vertical-align: top;
+    background-color: #FFFFFF;
+}
+
+.secondary-feature .views-field-field-thumbnail img 
+{
+    border: none;
+    height: 160px;
+    width: 200px;
+}
+
+.secondary-feature .views-row.views-row-last
+{
+    margin-right: 0;
+}
+
+.secondary-feature .views-field-php
+{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+    background-color: #FFF;
+}
+
+.secondary-feature .views-field-php .field-content {
+   padding:0 15px;
+   display: block;
+}
+
+.secondary-feature .views-field-php a {
+    color: black;
+    text-decoration: none;
+    padding-top:0;
+}
+
+.secondary-feature .views-field-php a:hover {
+    color: #1CA9E7;
+    text-decoration: none;
+}
+
+.secondary-feature .views-field-field-promo-text
+{
+    font-size: 12px;
+    line-height: 20px;
+    padding:0 10px 10px 10px;
+}
+
+.promo-features .views-row {
+    background-color: #FFFFFF;
+    display: table;
+    float: left;
+    margin: 5px;
+    vertical-align: top;
+    width: 200px;
+}
+
 .node-type-takepart-campaign .main-content .block-boxes h2 {
     border-top: 0 none;
 }
