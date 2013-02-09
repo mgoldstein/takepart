@@ -649,44 +649,35 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     );
   }
 
-  if ($configure || in_array('nid', $entity->item_keys)) {
-    $form['nid'] = array(
+  if ($configure || in_array('node', $entity->item_keys)) {
+    $form['node'] = array(
       '#tree' => TRUE,
     );
     if ($configure) {
-      $form['nid']['enabled'] = array(
+      $form['node']['enabled'] = array(
         '#type' => 'checkbox',
-        '#title' => 'Enable Node ID',
+        '#title' => 'Enable Embedded Node',
         '#attributes' => array('data-for' => array('node-input')),
-        '#default_value' => in_array('nid', $entity->item_keys),
+        '#default_value' => in_array('node', $entity->item_keys),
       );
     }
-    $form['nid']['value'] = array(
-      '#title' => t('Node'),
-      '#type' => 'textfield',
-      '#default_value' => $values['nid'],
-      '#attributes' => array('class' => array('node-input')),
-      '#element_validate' => array('wordlet_validate_node_id'),
-    );
-  }
-
-  if ($configure || in_array('view_mode', $entity->item_keys)) {
-    $form['view_mode'] = array(
+    $form['node']['value'] = array(
+      '#type' => 'container',
       '#tree' => TRUE,
-    );
-    if ($configure) {
-      $form['view_mode']['enabled'] = array(
-        '#type' => 'checkbox',
-        '#title' => 'Enable View Mode',
-        '#attributes' => array('data-for' => array('view_mode-input')),
-        '#default_value' => in_array('view_mode', $entity->item_keys),
-      );
-    }
-    $form['view_mode']['value'] = array(
-      '#title' => t('View Mode'),
-      '#type' => 'textfield',
-      '#attributes' => array('class' => array('view_mode-input')),
-      '#default_value' => $values['view_mode'],
+      '#attributes' => array('class' => array('node-input')),
+      '#prefix' => '<div class="form-type-container">',
+      'nid' => array(
+        '#title' => t('Node'),
+        '#type' => 'textfield',
+        '#default_value' => $values['node']['nid'],
+        '#element_validate' => array('wordlet_validate_node_id'),
+      ),
+      'view_mode' => array(
+        '#title' => t('View Mode'),
+        '#type' => 'textfield',
+        '#default_value' => $values['node']['view_mode'],
+      ),
+      '#suffix' => '</div>',
     );
   }
 
@@ -709,6 +700,60 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       '#attributes' => array('class' => array('img-src-input')),
       '#element_validate' => array('wordlet_validate_href'),
     );
+  }
+
+  if ($configure || in_array('form', $entity->item_keys)) {
+    $form['form'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['form']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Form',
+        '#attributes' => array('data-for' => array('form-input')),
+        '#default_value' => in_array('form', $entity->item_keys),
+      );
+    }
+    $form['form']['value'] = array(
+      '#type' => 'container',
+      '#tree' => TRUE,
+      '#attributes' => array('class' => array('form-input')),
+      '#prefix' => '<div class="form-type-container">',
+      '#suffix' => '</div>',
+    );
+    if ($configure) {
+      $form['form']['value']['name'] = array(
+        '#title' => t('Form'),
+        '#type' => 'select',
+        // TODO: Get the list of forms from custom module hook.
+        '#options' => array(
+          'newsletter_campaign_email_only_signup' => t('Email Only Signup'),
+          'newsletter_campaign_mobile_only_signup' => t('Mobile Only Signup'),
+          'newsletter_campaign_email_mobile_signup' => t('Email + Mobile Signup'),
+        ),
+        '#default_value' => $values['form']['name'],
+        '#element_validate' => array('wordlet_validate_form'),
+      );
+    }
+    else {
+      $form['form']['value']['name'] = array(
+        '#type' => 'value',
+        '#value' => $values['form']['name'],
+      );
+    }
+    if (!empty($values['form']['name'])) {
+      $config_hook = "{$values['form']['name']}_configuration";
+      if (function_exists($config_hook)) {
+        $config_form = array();
+        $config_values = empty($values['form']['config']) ? array()
+          : $values['form']['config'];
+        $fields = call_user_func_array($config_hook, array(
+          $config_form,
+          $config_values
+        ));
+        $form['form']['value']['config'] = $fields;
+      }
+    }
   }
 
   return $form;
@@ -742,6 +787,18 @@ function wordlet_validate_node_id($element, &$form_state) {
   }
 }
 
+function wordlet_validate_form($element, &$form_state) {
+  $value = $element['#value'];
+  if (!empty($value)) {
+    $form_hook = "{$value}_form";
+    $config_hook = "{$value}_configuration";
+    if (!function_exists($form_hook) || !function_exists($config_hook)) {
+      form_error($element, t('%name must be a valid form callback.',
+        array('%name' => $element['#title'])));
+    }
+  }
+}
+
 function wordlet_form($form, &$form_state, $entity, $op) {
 
   $form_state['wordlet_op'] = $op;
@@ -753,7 +810,7 @@ function wordlet_form($form, &$form_state, $entity, $op) {
     $form += wordlet_get_item_fields($entity);
 
     $form['actions'] = array('#type' => 'actions');
-    $submit = array();
+    $submit = array('wordlet_form_submit');
     if (!empty($form['#submit'])) {
       $submit += $form['#submit'];
     }
@@ -762,6 +819,12 @@ function wordlet_form($form, &$form_state, $entity, $op) {
       '#value' => t('Save wordlet'),
       '#weight' => 40,
     );
+    $wordlet_formats = wordlet_formats($entity->format);
+
+    if ( $wordlet_formats ) {
+      $wordlet_formats = strtolower(str_replace('_', '-', $wordlet_formats));
+      $form['#attributes'] = array('class' => $wordlet_formats);
+    }
   }
   return $form;
 }
@@ -772,9 +835,12 @@ function wordlet_form($form, &$form_state, $entity, $op) {
 function wordlet_form_validate($form, &$form_state) {
 
   $page = $form_state['wordlet_page'];
-
+  $entity = $form_state['wordlet'];
   $op = $form_state['wordlet_op'];
-  if ($op == 'add' || $op == 'configure') {
+
+  $page_changed = $form_state['values']['configuration']['page'] != $entity->page;
+
+  if ($op == 'add' || ($op == 'configure' && $page_changed)) {
 
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'wordlet');
@@ -847,9 +913,9 @@ function wordlet_update_items_from_fields($entity, $values) {
       'single' => '',
       'multi' => '',
       'href' => '',
-      'nid' => '',
-      'view_mode' => '',
+      'node' => '',
       'img_src' => '',
+      'form' => '',
     );
     $is_empty = TRUE;
     foreach (array_keys($item) as $key) {

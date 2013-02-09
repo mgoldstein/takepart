@@ -117,7 +117,8 @@ var tpmodal = function(parameters) {
 				me.showUrl(settings, settings.url + extra);
 			}
 		} else if ( settings.html !== null ) {
-			me.showNode(settings, null);
+			var fake_settings = $.extend({}, settings, {callback: null});
+			me.showNode(fake_settings, null);
 			me.showHtml(settings, settings.html);
 		} else {
 			me.showNode(settings, null);
@@ -242,8 +243,17 @@ var tpmodal = function(parameters) {
 		var ocss = css || null;
 		css = css || {};
 		var settings = get_settings(parameters);
+
+		if ( !ocss ) {
+			var ow = $modal.width();
+			$modal.css('width', '');
+			$modal_content.css('width', '');
+		}
 		css.width = css.width || $modal.width();
 		css.height = css.height || $modal.height();
+		if ( !ocss ) {
+			$modal.css('width', ow);
+		}
 		animate = animate || false;
 
 		css.left = $window.scrollLeft() + $window.width() / 2 - css.width / 2;
@@ -277,9 +287,9 @@ var tpmodal = function(parameters) {
 		});
 
 		$modal.animate({opacity: 0}, settings.speed, function() {
+			if ( settings.afterClose ) settings.afterClose();
 			$modal.hide();
 			$modal_content.html('');
-			if ( settings.afterClose ) settings.afterClose();
 			$modal.css({
 				width: '',
 				height: '',
@@ -295,6 +305,10 @@ var tpmodal = function(parameters) {
 
 		$root.removeClass(settings.prepend + 'showing');
 		showing = false;
+	};
+
+	this.set = function(parameters) {
+		settings = $.extend({}, settings, parameters.values);
 	};
 
 	// Setup
@@ -322,7 +336,7 @@ var tpmodal = function(parameters) {
 	});
 
 	if ( settings.autoReposition ) $window.bind('resize', function() {
-		this.position(settings);
+		me.position(settings);
 	});
 };
 
@@ -358,9 +372,13 @@ $.tpmodal = {
 		var modal = get_modal(parameters);
 		modal.hide(parameters);
 	},
-	position: function(parameters) {
+	position: function(parameters, css, animate) {
 		var modal = get_modal(parameters);
-		modal.position(parameters);
+		modal.position(parameters, css, animate);
+	},
+	set: function(parameters) {
+		var modal = get_modal(parameters);
+		modal.set(parameters);
 	},
 	get: function (parameters) {
 		return get_modal(parameters);

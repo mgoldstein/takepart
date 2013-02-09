@@ -49,7 +49,7 @@ var load_form = function(url, data) {
 				}
 
 				// Otherwise, condense html to just the form
-				$div.find('*:not(form,input,label,legend,select,textarea,option,h1,.messages.error):not(:has(textarea,input,label,select,option,legend,h1,.messages.error))').remove();
+				$div.find('*:not(form,input,label,legend,select,textarea,option,h1,.messages.error,.form-required):not(:has(textarea,input,label,select,option,legend,h1,.messages.error,.form-required))').remove();
 
 				var $repeaters = $div.find('.repeating');
 
@@ -132,10 +132,13 @@ var load_form = function(url, data) {
 
 				$div.find('#wordlet-edit-form-data input[type="checkbox"]').bind('change', check_enabled);
 
-				$div.find('#wordlet-edit-form-data').find('.form-type-textfield, .form-type-textarea')
+				$div.find('#wordlet-edit-form-data').find('.form-type-textfield, .form-type-textarea, .form-type-container')
 					.css({
 						overflow: 'hidden'
 					});
+
+				var $wysiwyg = null;
+				var wysiwyg_id = null;
 
 				// Submit hook
 				$div.find('form')
@@ -144,18 +147,45 @@ var load_form = function(url, data) {
 					})
 					.bind('submit', function(e) {
 						var $this = $(this);
+						if ( $wysiwyg.length  ) {
+							$wysiwyg.css({
+								display: 'block',
+								height: '1px'
+							});
+							$wysiwyg.val(CKEDITOR.instances[wysiwyg_id].getData());
+						}
 						load_form(this.action, $this.serializeArray());
 
 						e.preventDefault();
 					});
 
 				$.tpmodal.show({id: modal_id, html: $div, callback: function() {
-					setTimeout(function() {
-						$div.find('textarea').autosize();
-						setTimeout(function() {
-							$.tpmodal.position({id: modal_id});
-						}, 100);
-					}, 600);
+					$wysiwyg = $div.find('.wordlet-full-html textarea').each(function() {
+						wysiwyg_id = this.id;
+						$.tpmodal.set({id: modal_id, values: {
+							afterClose: function() {
+								delete(CKEDITOR.instances[wysiwyg_id]);
+							}
+						}});
+						//$(this).autosize();
+						CKEDITOR.replace( this, {
+							pasteFromWordRemoveStyles: true,
+							pasteFromWordRemoveFontStyles: true,
+							pasteFromWordNumberedHeadingToList: true,
+							pasteFromWordCleanupFile: true,
+							autoGrow_onStartup: true,
+							toolbar_Full: [
+								{ name: 'document',    items : [ 'Bold','Italic','Underline','JustifyLeft','JustifyCenter','BulletedList','NumberedList','Undo','Redo','Link','Unlink','Anchor','Blockquote','Source','HorizontalRule','Cut','Copy','Paste','PasteText','PasteFromWord','RemoveFormat' ] },
+								'/',
+								{ name: 'styles',      items : [ 'Format','Styles' ] },
+								{ name: 'colors',      items : [ 'Table', 'Scayt','Image' ] }
+							]
+						});
+
+						CKEDITOR.instances[wysiwyg_id].on("instanceReady", function(event) {
+							$.tpmodal.position({id: modal_id, callback: null}, null, true);
+						});
+					});
 				}});
 			}
 		}
@@ -167,7 +197,7 @@ var setCookie = function(c_name, value, exdays) {
 	var exdate=new Date();
 	exdate.setDate(exdate.getDate() + exdays);
 	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-	document.cookie=c_name + "=" + c_value;
+	document.cookie=c_name + "=" + c_value + '; path=/';
 };
 
 var getCookie = function(c_name) {
@@ -182,14 +212,22 @@ var getCookie = function(c_name) {
 	}
 };
 
+var deleteCookie = function(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+};
+
 // Wordlet toggle menu
 var $menu = $('<li id="wordlet_toggle"><a id="wordlets_show" href="">Show Wordlets</a><a id="wordlets_hide" href="">Hide Wordlets</a></li>');
+
+$('[data-edit]').addClass('wordlet');
 
 // Wordlet events & other setup
 $('body')
 	.delegate('.wordlet', 'click', function(e) {
-		var $link = $(this).find('.wordlet_configure, .wordlet_edit');
-		load_form($link.data('href'));
+		var $this = $(this);
+		var $link = ($this.is('[data-edit]')) ? $this : $this.find('.wordlet_configure, .wordlet_edit');
+		var link = $link.data('edit') || $link.data('configure');
+		load_form(link);
 		e.preventDefault();
 		e.stopPropagation();
 	})
@@ -215,15 +253,25 @@ $('body')
 		setCookie('show_wordlets', 1, 100);
 	})
 	.delegate('#wordlets_hide', 'click', function(e) {
-		setCookie('show_wordlets', '', -1);
+		deleteCookie('show_wordlets');
 	})
 	.addClass((getCookie('show_wordlets')?'':'hide_wordlets'))
 	;
 
-$('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
+//$('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
+$('.wordlet:not(:has(.wordlet_configure))').each(function() {
 	var $this = $(this);
-	var $wordlet = $this.find('.wordlet');
-	var $a = $('<a href="' + this.href + '" class="wordlet_helper_link">Open Link</a>')
+	//var $wordlet = $this.find('.wordlet');
+
+	var $link = $this.closest('a');
+	var $edit = ( $this.is('[data-edit]') ) ? $this : $this.find('.wordlet_edit');
+	if ( !$edit.data('configure') && !$link.length ) return true;
+	var $configure = $this.find('.wordlet_configure');
+	var edit = null;
+	var configure = null;
+
+	var $container = $('<div/>')
+		.addClass('wordlet_helper_container')
 		.css({
 			display: 'block',
 			position: 'absolute',
@@ -234,21 +282,45 @@ $('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
 		.appendTo('body')
 		;
 
+
+	if ( $link.length ) {
+		var $wlink = $('<a href="' + $link[0].href + '">Open Link</a>');
+		$wlink.html('Open Link');
+		$container.append($wlink);
+	}
+
+	if ( $edit.length ) {
+		edit = $edit.data('edit');
+		configure = ( $edit.data('configure') ) ? $edit.data('configure') : null;
+	} else if ( $configure.length ) {
+		configure = $edit.data('configure');
+	}
+
+	/*if ( edit ) {
+		var $wedit = $('<span class="wordlet_edit" data-edit="' + edit + '">Edit</a>');
+		$container.append($wedit);
+	}*/
+
+	if ( configure ) {
+		var $wconfigure = $('<span class="wordlet_configure" data-configure="' + configure + '">Configure</a>');
+		$container.append($wconfigure);
+	}
+
 	var do_hide = true;
 	var hide = function() {
-		if ( do_hide ) $a.css({left: '', right: '100%', top: 0});
+		if ( do_hide ) $container.css({left: '', right: '100%', top: 0});
 	}
 
 	$this
 		.bind('mouseenter', function(e) {
 			do_hide = false;
 
-			if ( $a[0].style.right != '100%' ) return true;
+			if ( $container[0].style.right != '100%' ) return true;
 
-			var x = $wordlet.offset().left + $wordlet.width();
-			var y = $wordlet.offset().top;
+			var x = $this.offset().left + $this.width();
+			var y = $this.offset().top;
 
-			$a
+			$container
 				.css({
 					right: '',
 					left: x,
@@ -261,7 +333,8 @@ $('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
 		})
 		;
 
-	$a
+	$container
+	$container
 		.bind('mouseenter', function(e) {
 			do_hide = false;
 		})

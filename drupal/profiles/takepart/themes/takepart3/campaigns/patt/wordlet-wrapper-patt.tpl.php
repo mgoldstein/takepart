@@ -8,7 +8,11 @@
 		
 			<div class="header">
 				<div class="logo">
-					<a href="<?=wu('patt_home')?>"><img src="http://stage.bltdigital.com/apatt/images/interior-logo.png" width="357" height="206" alt="Interior Logo" usemap="#logo"></a>
+					<a href="<?=wu('patt_home')?>">
+						<? foreach ( wl('logo') as $w ): ?>
+							<a href="<?=$w->href?>"><img src="<?=$w->img_src?>" width="357" height="206" alt="<?=$w->single(false)?>" <?=wa('logo')?> /></a>
+						<? endforeach ?>
+					</a>
 				</div>
 				<p class="mobile" id="mobile_back">
 					<a href="<?=wu('patt_home')?>"><?=w('back')?></a>

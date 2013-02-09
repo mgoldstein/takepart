@@ -46,7 +46,7 @@
     <head profile="<?php print $grddl_profile; ?>">
       <title><?php print $head_title; ?></title>
       <?php print $head; ?>
-        <meta name="viewport" content="width=320">
+        <meta name="viewport" content="width=device-width">
         <meta property="fb:admins" content="1327833247" />
         <meta property="fb:app_id" content="247137505296280" />
         <?php print $styles; ?>

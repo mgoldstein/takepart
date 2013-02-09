@@ -2,30 +2,24 @@
 
 class WordletItem {
 
-  public $page;
-  public $name;
-  public $format;
-
-  public $single;
-  public $multi;
-  public $href;
-  public $href_raw;
-  public $node;
-  public $img_src;
-
-  public $empty;
+  private $args;
 
   public function __construct($args = array()) {
     $args += array(
+      'id' => '',
       'page' => '',
       'name' => '',
+      'title' => '',
       'format' => WORDLET_PLAIN_TEXT,
       'single' => '',
+      'single_no_markup' => '',
       'multi' => '',
+      'multi_no_markup' => '',
       'href' => '',
       'href_raw' => '',
       'node' => '',
       'img_src' => '',
+      'form' => '',
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
@@ -33,26 +27,51 @@ class WordletItem {
         'href_raw' => TRUE,
         'node' => TRUE,
         'img_src' => TRUE,
+        'form' => TRUE,
       ),
     );
-    foreach ($args as $attribute => $value) {
-      $this->{$attribute} = $value;
-    }
+    $this->args = $args;
   }
 
   public function __toString() {
-    $priority = array('multi', 'single', 'node', 'href', 'href_raw', 'img_src');
+    $priority = array('multi', 'single', 'node', 'form', 'href', 'href_raw', 'img_src');
+    $retval = null;
     foreach ($priority as $attribute) {
       if (!$this->empty[$attribute]) {
-        return $this->{$attribute};
+        $retval = $this->__get($attribute);
+        break;
       }
     }
-    foreach ($priority as $attribute) {
-      if (!empty($this->{$attribute})) {
-        return $this->{$attribute};
+
+    if ( $retval === null ) {
+      foreach ($priority as $attribute) {
+        if ( $this->__get($attribute) ) {
+          $retval = $this->__get($attribute);
+          break;
+        }
       }
     }
+
+    if ( method_exists($this, $attribute) ) {
+      return call_user_method_array($attribute, $this, func_get_args());
+    }
+
+    return $retval . '';
+  }
+
+  public function __get($name) {
+    if ( method_exists($this, $name) ) {
+      return call_user_method($name, $this);
+    }
+
+    if ( isset($this->args[$name]) ) return $this->args[$name];
+
     return '';
+  }
+
+  public function single($markup = true) {
+    if ( $markup ) return $this->args['single'];
+    return $this->args['single_no_markup'];
   }
 }
 
@@ -187,17 +206,22 @@ class WordletController extends EntityAPIControllerExportable {
 
   protected function createViewItem($entity, $item) {
 
-    // Default attributes
+    // Item attributes
     $args = array(
+      'id' => $entity->id,
       'page' => $entity->page,
       'name' => $entity->name,
       'format' => $entity->format,
+      'title' => $entity->title,
       'single' => '',
+      'single_no_markup' => '',
       'multi' => '',
+      'multi_no_markup' => '',
       'href' => '',
       'href_raw' => '',
       'node' => '',
       'img_src' => '',
+      'form' => '',
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
@@ -205,6 +229,7 @@ class WordletController extends EntityAPIControllerExportable {
         'href_raw' => TRUE,
         'node' => TRUE,
         'img_src' => TRUE,
+        'form' => TRUE,
       ),
     );
 
@@ -214,11 +239,11 @@ class WordletController extends EntityAPIControllerExportable {
       // Preprocess the value
       switch ($entity->format) {
       case WORDLET_FULL_HTML:
-        $value = $item['single'];
+        $value = strip_tags($item['single'], '<a><b><i><strong><em><br><br/><img><p><ul><ol><li><blockquote><hr><hr/><h1><h2><h3><h4><h5><h6>');
         break;
       case WORDLET_SIMPLE_HTML:
         $value = strip_tags($item['single'],
-          '<b><i><strong><em><br><br/><img>');
+          '<a><b><i><strong><em><br><br/><img>');
         break;
       case WORDLET_PLAIN_TEXT:
       default:
@@ -227,6 +252,7 @@ class WordletController extends EntityAPIControllerExportable {
       }
 
       $args['single'] = $value;
+      $args['single_no_markup'] = $value;
 
       $stripped = strip_tags($value);
       $args['empty']['single'] = empty($stripped);
@@ -234,22 +260,22 @@ class WordletController extends EntityAPIControllerExportable {
 
     // Multi line text
     if (in_array('multi', $entity->item_keys)) {
-
       // Preprocess the value
-      switch ($this->format) {
+      switch ($entity->format) {
       case WORDLET_FULL_HTML:
-        $value = $item['multi'];
+        $value = strip_tags($item['multi'], '<a><b><i><strong><em><br><br/><img><p><ul><ol><li><blockquote><hr><hr/><h1><h2><h3><h4><h5><h6>');
         break;
       case WORDLET_SIMPLE_HTML:
-        $value = strip_tags($item['multi'], '<b><i><strong><em><br><br/><img>');
+        $value = strip_tags($item['multi'], '<a><b><i><strong><em><br><br/><img>');
         break;
       case WORDLET_PLAIN_TEXT:
       default:
         $value = check_plain($item['multi']);
         break;
       }
+
       // Plain text and simple HTML fields need to be converted to paragraphs
-      if ($this->format != WORDLET_FULL_HTML) {
+      if ($entity->format != WORDLET_FULL_HTML) {
         $value = str_replace(array("\r\n", "\r"), "\n", $value);
         $value = str_replace("\n\n\n", '</p><p>', $value);
         $value = str_replace("\n\n", '<br/>', $value);
@@ -257,6 +283,7 @@ class WordletController extends EntityAPIControllerExportable {
       }
 
       $args['multi'] = $value;
+      $args['multi_no_markup'] = $value;
 
       $stripped = strip_tags($value);
       $args['empty']['multi'] = empty($stripped);
@@ -282,13 +309,12 @@ class WordletController extends EntityAPIControllerExportable {
     }
 
     // Node requires a nid and a view mode
-    if (in_array('nid', $entity->item_keys)
-      && in_array('view_mode', $entity->item_keys)) {
+    if (in_array('node', $entity->item_keys)) {
       $value = '';
-      if (!empty($item['nid']) && !empty($item['view_mode'])) {
-        $node = node_load($item['nid']);
+      if (!empty($item['node']['nid']) && !empty($item['node']['view_mode'])) {
+        $node = node_load($item['node']['nid']);
         if ($node !== FALSE) {
-          $value = drupal_render(node_view($node, $item['view_mode']));
+          $value = drupal_render(node_view($node, $item['node']['view_mode']));
           $have_value = TRUE;
         }
       }
@@ -304,6 +330,20 @@ class WordletController extends EntityAPIControllerExportable {
 
       $stripped = strip_tags($item['img_src']);
       $args['empty']['img_src'] = empty($stripped);
+    }
+
+    if (in_array('form', $entity->item_keys)) {
+      $value = '';
+      if (!empty($item['form']['name'])) {
+        $form_hook = "{$item['form']['name']}_form";
+        if (function_exists($form_hook)) {
+          $config = empty($item['form']['config']) ? array() : $item['form']['config'];
+          $form = drupal_get_form($form_hook, $config);
+          $value = drupal_render($form);
+        }
+      }
+      $args['form'] = $value;
+      $args['empty']['form'] = empty($item['form']['name']);
     }
 
     // Determine the access level for the wordlet.
@@ -322,7 +362,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     if ($editable) {
 
-      $displayed_attributes = array('single', 'multi', 'node');
+      $displayed_attributes = array('single', 'multi', 'node', 'form');
 
       foreach ($displayed_attributes as $attribute) {
 
@@ -342,7 +382,7 @@ class WordletController extends EntityAPIControllerExportable {
         }
 
         $edit_link = '';
-        if (!$is_empty) {
+        if (!$args['empty'][$attribute]) {
           $data_configure = '';
           if ( $configurable ) {
             $data_configure = ' data-configure="/admin/wordlet/page/' . $entity->page . '/manage/' . $entity->id . '/configure"';
