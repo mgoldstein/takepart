@@ -3,11 +3,10 @@
 		<h4 class="side_header">
 			<?=w('side_header')?>
 		</h4>
-		<?=we('side_links')?>
-		<ol>
+		<ol <?=wa('side_links')?>>
 			<? foreach ( wl('side_links') as $w ): ?>
 				<li><a href="<?=$w->href?>">
-					<?=$w->single?>
+					<?=$w->single(false)?>
 				</a></li>
 			<? endforeach ?>
 		</ol>

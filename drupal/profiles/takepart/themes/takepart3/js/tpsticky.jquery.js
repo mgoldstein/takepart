@@ -23,7 +23,7 @@ $.fn.tpsticky = function(parameters) {
 					.removeClass('above').removeClass('inside').addClass('below')
 					.css({
 						position: 'static',
-						marginTop: $offset.height() - $this.height()
+						marginTop: $offset.height() - $this.outerHeight()
 					})
 					;
 			} else if ( $window.scrollTop() > $offset.offset().top ) {
