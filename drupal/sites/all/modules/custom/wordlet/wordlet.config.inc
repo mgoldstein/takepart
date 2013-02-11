@@ -50,6 +50,23 @@ function _wordlet_configuration() {
       'title' => 'Site Wordlets',
     ),
 
+    // Test
+    'test' => array(
+      'title' => 'Test',
+      'path' => 'wordletstest',
+      'published' => FALSE,
+      'wrappers' => array(),
+      /*'wrappers' => array('campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intel_girls_campaign'),*/
+    ),
+
     // Intel Girls Campaign
     'intel_girls_campaign' => array(
       'title' => 'Intel Girls Campaign',
