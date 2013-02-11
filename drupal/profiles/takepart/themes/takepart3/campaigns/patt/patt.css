@@ -523,7 +523,26 @@ body {
 	display: none;
 }
 
-/* Snap ---------------- */
+/* Snap Gallery ---------------- */
+
+.social-buttons {
+	text-align: center;
+	line-height: 9px;
+}
+
+.social-buttons h3 {
+	text-transform: uppercase;
+	color: #fff;
+	float: left;
+	margin: 0 10px 0 0;
+	line-height: 32px;
+}
+
+.addthis_toolbox {
+	background: rgba(0,0,0,.6);
+	display: inline-block; *display: inline; zoom: 1;
+	padding: 8px 12px;
+}
 
 .page-wordlet-patt-snap .tile .modal-left,
 .page-wordlet-patt-snap .tile .modal-header,
@@ -727,14 +746,45 @@ body {
 		margin: 0;
 	}
 
-	.table.int .nav,
-	.table.int .main .column-1 {
+	.table.int .main {
+		background: none;
+	}
+
+	.table.int .nav {
 		display: none;
+	}
+
+	.table.int .main .column-1 .content {
+		position: static !important;
+		margin-top: 0 !important;
+	}
+
+	.table.int .main .column-2,
+	.table.int .main .column-3 {
+		background: rgba(0,0,0,.6);
 	}
 
 	.table.int .main .column-3 .content {
 		margin-top: 0 !important;
 		position: static !important;
+	}
+
+	.table.int .main .column-1 ol {
+		display: inline-block;
+		width: 100%;
+	}
+
+	.table.int .main .column-1 ol li {
+		width: 33.33%;
+		float: left;
+		background: rgba(0,0,0,.6);
+		height: 2.5em;
+		vertical-align: middle;
+	}
+
+	.table.int .main .column-1 ol li a {
+		display: inline-block;
+		line-height: 1em;
 	}
 
 	.table.int .nav li {
