@@ -37,10 +37,13 @@ class SignatureAnalyticsController extends TakeActionAnalyticsController {
     if (!$args[0]) {
       array_shift($args);
     }
+
+    $title = html_entity_decode($entity->title, ENT_QUOTES);
+    $title = strtolower($title);
     $page_name = implode(':', array(
       'takepart',
       $args[0],
-      html_entity_decode($entity->title, ENT_QUOTES),
+      $title,
     ));
 
     // Petition/pledge signed event.
