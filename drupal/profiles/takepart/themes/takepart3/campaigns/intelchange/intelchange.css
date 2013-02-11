@@ -252,9 +252,9 @@
   font-size: 12px;
 }
 
-.smartgirls .second-block .form_wrapper .thank-you-message p {
-  font-size: 24px;
-  color: rgb(1, 135, 207);
+.smartgirls .second-block .form_wrapper .thank-you-message {
+  min-height: 450px;
+  _height: 450px;
 }
 
 /* #Footer Block
