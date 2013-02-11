@@ -1,7 +1,0 @@
-name = TakePart Newsletter Campaigns (Embdedded version)
-description = Provides embedded newsletter signup blocks with support for sending the signup to Blue State Digital.
-package = TakePart
-version = 7.x-2.0-dev
-core = 7.x
-dependencies[] = entity
-dependencies[] = newsletter_campaign
