@@ -2862,15 +2862,9 @@ body.sidebar-first #left-rail{
     width:140px;
 }
 
-.region-highlighted{
-    padding:35px 20px 0;
-}
 .front .region-highlighted,
-.campaign-page .region-highlighted{
+.campaign-page .region-highlighted {
     padding:10px;
-}
-.node-type-takepart-group .region-highlighted{
-    padding:35px 0px 0;
 }
 
 body.node-type-takepart-group #content,
@@ -4087,9 +4081,6 @@ ul#global-links {
 /* campaign page */
 .field-name-field-tp-campaign-alliances tbody{
     border-top:none;
-}
-
-.node-type-takepart-campaign .region-highlighted{
 }
 
 .node-type-takepart-campaign .field-name-field-tp-campaign-intro-media img {

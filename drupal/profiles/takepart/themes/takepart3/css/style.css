@@ -1957,6 +1957,10 @@ body.page-search #right-rail h2 {
     z-index: 1000;
 }
 
+body.node-type-takepart-campaign .main-content .region-content-top {
+    margin:0 0 20px 0;
+}
+    
 body.node-type-takepart-campaign .main-content #left-rail {
     padding-bottom: 20px;
     padding-left: 0;
@@ -1964,7 +1968,7 @@ body.node-type-takepart-campaign .main-content #left-rail {
 }
 
 body.node-type-takepart-campaign .main-content #content {
-    margin-top: 10px;
+    margin-top: 0;
     padding-bottom: 20px;
     padding-left: 20px !important;
     float: left;
@@ -2363,7 +2367,7 @@ q:before, q:after {
 }
 
 .node-type-takepart-campaign #page {
-    padding-top: 10px;
+    padding-top: 0;
     padding-right: 0;
     padding-bottom: 20px;
     padding-left: 10px;
@@ -2407,7 +2411,7 @@ q:before, q:after {
 .node-type-section-front-wide .view-campaigns.view-display-id-block_1 ul {
     margin-left: -12px;
 }
-.region-content-top a.addthis_button_google_plusone {.node-type-section-front-wide .view-campaigns.view-display-id-block_1
+.region-content-top a.addthis_button_google_plusone {
     margin-left: 5px;
     margin-top: 1px;
 }
@@ -2790,11 +2794,15 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
     font-size:15px;
     padding:0 10px;
 }
-.main-content .boxes-selected-style-6 .views-row:hover .views-field-title a,.main-content .boxes-selected-style-6 .views-row:hover .views-field-field-article-subhead a,.main-content .boxes-selected-style-6 .views-row:hover .views-field-nid a {
+.main-content .boxes-selected-style-6 .views-row:hover .views-field-title a,
+.main-content .boxes-selected-style-6 .views-row:hover .views-field-field-article-subhead a,
+.main-content .boxes-selected-style-6 .views-row:hover .views-field-nid a {
     color:#1ca9e7;
     text-decoration:none;
 }
-.main-content .boxes-selected-style-6 .views-row-4,.main-content .boxes-selected-style-6 .views-row-7,.main-content .boxes-selected-style-6 .views-row-10 {
+.main-content .boxes-selected-style-6 .views-row-4,
+.main-content .boxes-selected-style-6 .views-row-7,
+.main-content .boxes-selected-style-6 .views-row-10 {
     clear:both;
 }
 .main-content .boxes-selected-style-6 h2 {
@@ -3047,16 +3055,16 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
     padding: 0;
 }
 
-body.node-type-takepart-campaign #highlighted {
-    padding: 25px 0 0 0;
-}
-
 .multipage-campaign #highlighted {
     padding: 0;
 }
 
-#highlighted .region-highlighted {
-    padding: 10px;
+.node-type-takepart-campaign #highlighted .region-highlighted {
+    padding:20px 10px;
+}
+
+.multipage-campaign #highlighted .region-highlighted {
+    padding-top: 10px;
 }
 
 #edit-terms-of-use {
@@ -3221,6 +3229,7 @@ body.node-type-takepart-campaign #highlighted {
     background-color:#FFF;
     vertical-align:top;
     width:200px;
+    height:250px;
     float:left;
     margin:5px;
 }
