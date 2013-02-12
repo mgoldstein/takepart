@@ -40,9 +40,6 @@
                     <h3><?=w("form_title")?></h3>
                     <?=w("form_blurb")?>
 
-                    <?=we("signup:submit_caption")?>
-                    <?=we("signup:thank_you")?>
-
                     <?=w("signup_form")?>
                     <span class="optional-info">&#42;<?=w("form_optional_info")?></span>
                     <a class="terms-link" href="<?=w("terms_link")->href?>" target="_blank"><?=w("terms_link")->single?></a>

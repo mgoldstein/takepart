@@ -34,6 +34,9 @@ var show_modal = function() {
 	$modal.find('.modal-right').html($current_tile.find('.modal-right').html());
 };
 
+var http_match = /^http(s)?:\/\//;
+var takepart_match = /^http(s)?:\/\/(.+)takepart\.com/;
+
 $('body')
 	.delegate('.tile', 'click', function() {
 		$current_tile = $(this);
@@ -61,6 +64,12 @@ $('body')
 		}
 
 		show_modal();
+	})
+	.delegate('a:not([href*="takepart.com/"])', 'click', function() {
+		var href = this.getAttribute('href');
+		if ( href && href.match(http_match) && !href.match(takepart_match) ) {
+			$(this).attr({target: '_blank'});
+		}
 	})
 	;
 

@@ -968,7 +968,8 @@ function wordlet($name) {
 
 function w() {
   try {
-    return call_user_func_array('wordlet', func_get_args());
+    $func_get_args = func_get_args();
+    return call_user_func_array('wordlet', $func_get_args);
   } catch (Exception $e) {
     return '';
   }
@@ -1003,7 +1004,8 @@ function wordlet_list($name) {
 
 function wl() {
   try {
-    return call_user_func_array('wordlet_list', func_get_args());
+    $func_get_args = func_get_args();
+    return call_user_func_array('wordlet_list', $func_get_args);
   } catch (Exception $e) {
     return '';
   }
@@ -1024,7 +1026,8 @@ function wordlet_generator($name) {
 
 function wg() {
   try {
-    return call_user_func_array('wordlet_generator', func_get_args());
+    $func_get_args = func_get_args();
+    return call_user_func_array('wordlet_generator', $func_get_args);
   } catch (Exception $e) {
     return '';
   }
@@ -1041,7 +1044,8 @@ function wordlet_url($name) {
 
 function wu() {
   try {
-    return call_user_func_array('wordlet_url', func_get_args());
+    $func_get_args = func_get_args();
+    return call_user_func_array('wordlet_url', $func_get_args);
   } catch (Exception $e) {
     return '';
   }
@@ -1074,7 +1078,8 @@ function wordlet_classify($string) {
 
 function wc() {
   try {
-    return call_user_func_array('wordlet_classify', func_get_args());
+    $func_get_args = func_get_args();
+    return call_user_func_array('wordlet_classify', $func_get_args);
   } catch (Exception $e) {
     return '';
   }
@@ -1097,7 +1102,8 @@ function wordlet_edit($name) {
 
 function we() {
   try {
-    return call_user_func_array('wordlet_edit', func_get_args());
+    $func_get_args = func_get_args();
+    return call_user_func_array('wordlet_edit', $func_get_args);
   } catch (Exception $e) {
     return '';
   }
@@ -1115,7 +1121,8 @@ function wordlet_edit_attribute($name) {
 
 function wa() {
   try {
-    return call_user_func_array('wordlet_edit_attribute', func_get_args());
+    $func_get_args = func_get_args();
+    return call_user_func_array('wordlet_edit_attribute', $func_get_args);
   } catch (Exception $e) {
     return '';
   }
