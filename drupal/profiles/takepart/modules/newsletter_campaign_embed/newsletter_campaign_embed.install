@@ -1,7 +1,0 @@
-<?php
-
-/**
- * Implements hook_uninstall().
- */
-function newsletter_campaign_embed_uninstall() {
-}

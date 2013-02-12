@@ -53,7 +53,8 @@ class WordletItem {
     }
 
     if ( method_exists($this, $attribute) ) {
-      return call_user_method_array($attribute, $this, func_get_args());
+      $func_get_args = func_get_args();
+      return call_user_method_array($attribute, $this, $func_get_args);
     }
 
     return $retval . '';

@@ -532,6 +532,16 @@ function newsletter_campaign_signup_form_filter($var) {
   return ($var == 'None' || preg_match('/^\[[0-9]+\] Email/', $var));
 }
 
+function newsletter_campaign_preprocess_markup($markup) {
+  $allowed_tags = '<a><b><i><strong><em><br><br/><img><p><ul><ol><li>'
+    . '<blockquote><hr><hr/><h1><h2><h3><h4><h5><h6>';
+  $markup = strip_tags($markup, $allowed_tags);
+  $markup = str_replace(array("\r\n", "\r"), "\n", $markup);
+  $markup = str_replace("\n\n\n", '</p><p>', $markup);
+  $markup = str_replace("\n\n", '<br/>', $markup);
+  return $markup;
+}
+
 function newsletter_campaign_email_only_signup_configuration($form, $config) {
 
   $form['email_signup_form_id']
@@ -540,6 +550,12 @@ function newsletter_campaign_email_only_signup_configuration($form, $config) {
   $options = $form['email_signup_form_id']['#options'];
   $form['email_signup_form_id']['#options']
     = array_filter($options, 'newsletter_campaign_signup_form_filter');
+
+  $form['header'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Header'),
+    '#default_value' => $config['header'],
+  );
 
   $form['email_label'] = array(
     '#type' => 'textfield',
@@ -551,6 +567,12 @@ function newsletter_campaign_email_only_signup_configuration($form, $config) {
     '#type' => 'textfield',
     '#title' => t('Submit Caption'),
     '#default_value' => $config['submit_caption'],
+  );
+
+  $form['footer'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Footer'),
+    '#default_value' => $config['footer'],
   );
 
   $form['thank_you_message'] = array(
@@ -578,6 +600,11 @@ function newsletter_campaign_email_only_signup_form($form, &$form_state, $config
   $form['#validate'] = array('newsletter_campaign_direct_signup_form_validate');
   $form['#submit'] = array('newsletter_campaign_direct_signup_form_submit');
 
+  $form['header'] = array(
+    '#type' => 'markup',
+    '#markup' => newsletter_campaign_preprocess_markup($config['header']),
+  );
+
   $form['email'] = array(
     '#type' => 'textfield',
     '#title' => $config['email_label'],
@@ -596,6 +623,12 @@ function newsletter_campaign_email_only_signup_form($form, &$form_state, $config
         'message' => NULL,
       ),
     ),
+  );
+
+  $form['footer'] = array(
+    '#type' => 'markup',
+    '#weight' => 100,
+    '#markup' => newsletter_campaign_preprocess_markup($config['footer']),
   );
 
   return $form;
@@ -633,6 +666,12 @@ function newsletter_campaign_mobile_only_signup_configuration($form, $config) {
     '#default_value' => $config['canada_mobile_flow_id'],
   );
 
+  $form['header'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Header'),
+    '#default_value' => $config['header'],
+  );
+
   $form['mobile_label'] = array(
     '#type' => 'textfield',
     '#title' => t('Mobile Label'),
@@ -643,6 +682,12 @@ function newsletter_campaign_mobile_only_signup_configuration($form, $config) {
     '#type' => 'textfield',
     '#title' => t('Submit Caption'),
     '#default_value' => $config['submit_caption'],
+  );
+
+  $form['footer'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Footer'),
+    '#default_value' => $config['footer'],
   );
 
   $form['thank_you_message'] = array(
@@ -669,6 +714,11 @@ function newsletter_campaign_mobile_only_signup_form($form, &$form_state, $confi
 
   $form['#validate'] = array('newsletter_campaign_direct_signup_form_validate');
   $form['#submit'] = array('newsletter_campaign_direct_signup_form_submit');
+
+  $form['header'] = array(
+    '#type' => 'markup',
+    '#markup' => newsletter_campaign_preprocess_markup($config['header']),
+  );
 
   $form['mobile'] = array(
     '#type' => 'fieldset',
@@ -703,6 +753,12 @@ function newsletter_campaign_mobile_only_signup_form($form, &$form_state, $confi
         'message' => NULL,
       ),
     ),
+  );
+
+  $form['footer'] = array(
+    '#type' => 'markup',
+    '#weight' => 100,
+    '#markup' => newsletter_campaign_preprocess_markup($config['footer']),
   );
 
   return $form;
@@ -747,6 +803,12 @@ function newsletter_campaign_email_mobile_signup_configuration($form, $config) {
     '#default_value' => $config['canada_mobile_flow_id'],
   );
 
+  $form['header'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Header'),
+    '#default_value' => $config['header'],
+  );
+
   $form['email_label'] = array(
     '#type' => 'textfield',
     '#title' => t('Email Label'),
@@ -763,6 +825,12 @@ function newsletter_campaign_email_mobile_signup_configuration($form, $config) {
     '#type' => 'textfield',
     '#title' => t('Submit Caption'),
     '#default_value' => $config['submit_caption'],
+  );
+
+  $form['footer'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Footer'),
+    '#default_value' => $config['footer'],
   );
 
   $form['thank_you_message'] = array(
@@ -790,6 +858,11 @@ function newsletter_campaign_email_mobile_signup_form($form, &$form_state, $conf
 
   $form['#validate'] = array('newsletter_campaign_direct_signup_form_validate');
   $form['#submit'] = array('newsletter_campaign_direct_signup_form_submit');
+
+  $form['header'] = array(
+    '#type' => 'markup',
+    '#markup' => newsletter_campaign_preprocess_markup($config['header'])
+  );
 
   $form['email'] = array(
     '#type' => 'textfield',
@@ -830,6 +903,12 @@ function newsletter_campaign_email_mobile_signup_form($form, &$form_state, $conf
         'message' => NULL,
       ),
     ),
+  );
+
+  $form['footer'] = array(
+    '#type' => 'markup',
+    '#weight' => 100,
+    '#markup' => newsletter_campaign_preprocess_markup($config['footer']),
   );
 
   return $form;
@@ -889,10 +968,7 @@ function newsletter_campaign_direct_signup_form_callback($form, $form_state) {
     $selector = $args['selector'];
     $config = $args['config'];
 
-    $message = strip_tags($config['thank_you_message'], '<a><b><i><strong><em><br><br/><img>');
-    $message = str_replace(array("\r\n", "\r"), "\n", $message);
-    $message = str_replace("\n\n\n", '</p><p>', $message);
-    $message = str_replace("\n\n", '<br/>', $message);
+    $message = newsletter_campaign_preprocess_markup($config['thank_you_message']);
     $message = '<div class="thank-you-message"><p>' . $message . '</p></div>';
 
     $commands[] = ajax_command_replace($selector, $message);
