@@ -894,6 +894,50 @@ function wordlet_page_view_callback($page) {
     drupal_set_title($title);
   }
 
+  // Facebook image og tag
+  $fb_image = '';
+  if (isset($page['wordlets']['fb_image'])) {
+    $tw = $page['wordlets']['fb_image'];
+    if (count($tw->items)) {
+      $fb_image = $tw->items[0]['single'];
+    }
+  }
+  $fb_image = variable_get("wordlet_{$page['name']}_fb_image", $fb_image);
+  if (!empty($fb_image)) {
+    $metatag = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'property' => 'og:image',
+        'content' =>  $fb_image,
+      ),
+     );
+
+    drupal_add_html_head( $metatag, 'facebook_image');
+  }
+
+  // Facebook description og tag
+  $fb_description = '';
+  if (isset($page['wordlets']['fb_description'])) {
+    $tw = $page['wordlets']['fb_description'];
+    if (count($tw->items)) {
+      $fb_image = $tw->items[0]['single'];
+    }
+  }
+  $fb_description = variable_get("wordlet_{$page['name']}_fb_description", $fb_description);
+  if (!empty($fb_description)) {
+    $metatag = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'property' => 'og:description',
+        'content' =>  $fb_description,
+      ),
+    );
+
+    drupal_add_html_head( $metatag, 'facebook_description');
+  }
+
   // Add the page CSS and JS.
   foreach ($page['css'] as $filename) {
     drupal_add_css(WORDLET_CSS_DIRECTORY . $filename, array(
