@@ -26,45 +26,63 @@ $('.table.int .column').each(function() {
 
 var $modal = $('#grid-modal');
 var $overlay = $('#grid-overlay');
-var speed = 'fast';
+var speed = 400;
 var $current_tile;
+//var modal_options = {id: 'snap_modal';
 
-var show_modal = function() {
+var show_modal = function(animate) {
 	$modal.find('.modal-left').html($current_tile.find('.modal-left').html());
 	$modal.find('.modal-right').html($current_tile.find('.modal-right').html());
+
+	var dospeed = animate ? speed : 0;
+
+	$.tpmodal.show({id: 'snap_modal_', html: $modal.html(), prepend: 'snap_modal_', speed: dospeed});
 };
 
 var http_match = /^http(s)?:\/\//;
 var takepart_match = /^http(s)?:\/\/(.+)takepart\.com/;
 
+var next = function() {
+	$current_tile = $current_tile.next('.tile.person, .tile.fact, .tile.link');
+	if ( $current_tile.is('.link') ) {
+		next();
+		return;
+	}
+	if ( !$current_tile.length ) {
+		$current_tile = $('.tile.person, .tile.fact').first();
+	}
+
+	show_modal(false);
+};
+
+var prev = function() {
+	$current_tile = $current_tile.prev('.tile.person, .tile.fact, .tile.link');
+	if ( $current_tile.is('.link') ) {
+		prev();
+		return;
+	}
+	if ( !$current_tile.length ) {
+		$current_tile = $('.tile.person, .tile.fact').last();
+	}
+
+	show_modal(false);
+};
+
 $('body')
 	.delegate('.tile', 'click', function() {
 		$current_tile = $(this);
-		show_modal();
+		show_modal(true);
 
-		$overlay.fadeIn(speed);
-		$modal.fadeIn(speed);
+		//$overlay.fadeIn(speed);
+		//$modal.fadeIn(speed);
 	})
 	.delegate('.close-btn', 'click', function() {
-		$modal.fadeOut(speed);
-		$overlay.fadeOut(speed);
+		$.tpmodal.hide({id: 'snap_modal_'});
+		//$modal.fadeOut(speed);
+		//$overlay.fadeOut(speed);
 	})
-	.delegate('#nav-right', 'click', function() {
-		$current_tile = $current_tile.next('.tile.person, .tile.fact');
-		if ( !$current_tile.length ) {
-			$current_tile = $('.tile.person, .tile.fact').first();
-		}
-
-		show_modal();
-	})
-	.delegate('#nav-left', 'click', function() {
-		$current_tile = $current_tile.prev('.tile.person, .tile.fact');
-		if ( !$current_tile.length ) {
-			$current_tile = $('.tile.person, .tile.fact').last();
-		}
-
-		show_modal();
-	})
+	.delegate('#nav-right', 'click', next)
+	.delegate('#nav-left', 'click', prev)
 	.delegate('a:not([href*="takepart.com/"])', 'click', function() {
 		var href = this.getAttribute('href');
 		if ( href && href.match(http_match) && !href.match(takepart_match) ) {
