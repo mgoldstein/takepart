@@ -817,12 +817,20 @@ body {
 	}
 
 	.table.int .main .column-1 ol li a {
-		display: inline-block;
-		padding: 0 5px;
-		vertical-align: middle;
+		display: block;
+		height: 48px;
+		line-height: 46px;
+		padding: 0;
 	}
 
 	.table.int .main .column-1 ol li a span {
+		display: inline-block;
+		padding: 0 5px;
+		vertical-align: middle;
+		line-height: 1em;
+	}
+
+	.table.int .main .column-1 ol li a span span {
 		font-size: 1em;
 	}
 
@@ -868,13 +876,13 @@ body {
 		display: none;
 	}
 
+	.page-wordlet-patt-home .table.int .nav li:after {
+		display: none;
+	}
+
 	.page-wordlet-patt-home .table.int .nav li {
 		width: 50%;
 		height: 172px;
-	}
-
-	.page-wordlet-patt-home .table.int .nav li:after {
-		display: none;
 	}
 
 	.page-wordlet-patt-home .table.int .nav li a {
