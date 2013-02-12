@@ -273,6 +273,10 @@ body {
 	margin: 20px 0 5px 0;
 }
 
+.table.int .main .column-3 .sms p {
+	line-height: 1.1;
+}
+
 .table.int .main .column-3 form .input {
 	width:149px;
 	margin:0 auto;
@@ -283,8 +287,6 @@ body {
 	margin-left: 10px;
 	margin-top: 7px;
 	border: none;
-	-webkit-border-radius: 50px;
-	-moz-border-radius: 50px;
 	border-radius: 50px;
 	padding: 3px;
 }
@@ -326,6 +328,7 @@ body {
 	position: absolute;
 	top: 46px;
 	left: -1em;
+	font-weight: bold;
 }
 
 #mobile_back a {
@@ -748,15 +751,30 @@ body {
 
 	.table.int .main {
 		background: none;
+		margin-top: -45px;
+		position: relative;
+		z-index: 60;
 	}
 
 	.table.int .nav {
 		display: none;
 	}
 
+	.table.int .main .column-3,
+	.table.int .main .column-1 {
+		background: none;
+	}
+
+	.table.int .main .column-3 .content,
 	.table.int .main .column-1 .content {
 		position: static !important;
 		margin-top: 0 !important;
+		width: auto !important;
+		padding: 10px;
+	}
+
+	.table.int .main .column-1 .content {
+		padding: 10px 0;
 	}
 
 	.table.int .main .column-2,
@@ -764,27 +782,37 @@ body {
 		background: rgba(0,0,0,.6);
 	}
 
-	.table.int .main .column-3 .content {
-		margin-top: 0 !important;
-		position: static !important;
+	.table.int .main .column-3,
+	.table.int .main .column-2 {
+		margin: 0 5px;
 	}
 
 	.table.int .main .column-1 ol {
 		display: inline-block;
 		width: 100%;
+		padding: 0 0 0 5px;
 	}
 
 	.table.int .main .column-1 ol li {
-		width: 33.33%;
+		width: 32.33%;
 		float: left;
 		background: rgba(0,0,0,.6);
-		height: 2.5em;
-		vertical-align: middle;
+		min-height: 50px;
+		line-height: 46px;
+		text-align: center;
+		margin: 0 1% 5px 0;
+		border: 2px solid #5a86a6;
+		border-radius: 2px;
 	}
 
 	.table.int .main .column-1 ol li a {
 		display: inline-block;
-		line-height: 1em;
+		padding: 0 5px;
+		vertical-align: middle;
+	}
+
+	.table.int .main .column-1 ol li a span {
+		font-size: 1em;
 	}
 
 	.table.int .nav li {
