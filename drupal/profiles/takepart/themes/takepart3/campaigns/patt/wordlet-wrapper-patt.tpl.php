@@ -20,10 +20,10 @@
 			</div>
 			
 			<div class="nav">
-				<ul <?=wa('top_nav')?>>
+				<ul>
 					<? foreach ( wl('top_nav') as $w ): ?>
 						<li class="<?=wc($w->href_raw)?>"><a href="<?=$w->href?>">
-							<span><?=$w->single(false)?></span>
+							<span><?=$w->single?></span>
 						</a></li>
 					<? endforeach ?>
 				</ul>

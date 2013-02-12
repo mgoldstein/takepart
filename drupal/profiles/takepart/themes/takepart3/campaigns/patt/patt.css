@@ -779,13 +779,13 @@ body {
 		height: auto !important;
 	}
 
-	.table.int .main .column-3 .content,
-	.table.int .main .column-1 .content {
+	.table.int .main .column-1 .content,
+	.table.int .main .column-3 .content {
+		position: static !important;
+		margin-top: 0 !important;
+		width: auto !important;
+		height: auto !important;
 		padding: 10px;
-	}
-
-	.table.int .main .column-1 .content {
-		padding: 10px 0;
 	}
 
 	.table.int .main .column-2,
