@@ -6,7 +6,7 @@
 		<ol <?=wa('side_links')?>>
 			<? foreach ( wl('side_links') as $w ): ?>
 				<li><a href="<?=$w->href?>">
-					<?=$w->single(false)?>
+					<span><span><?=$w->single(false)?></span></span>
 				</a></li>
 			<? endforeach ?>
 		</ol>

@@ -98,11 +98,3 @@
         </footer>
     </div>
 </div>
-
-<div class="code">
-<?
-
-// echo highlight_string(file_get_contents(__FILE__));
-
-?>
-</div>

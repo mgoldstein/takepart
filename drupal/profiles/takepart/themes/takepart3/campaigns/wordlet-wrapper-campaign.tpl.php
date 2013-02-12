@@ -12,6 +12,12 @@
 				<? endforeach ?>
 			</p>
 		<? endif ?>
+		<p>
+			FB Image: <?=w('fb_image')?>
+		</p>
+		<p>
+			FB Description: <?=w('fb_description')?>
+		</p>
 	</div>
 <? endif ?>
 
