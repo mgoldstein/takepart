@@ -12,9 +12,9 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
         // TAB - full page action view.
         $event = tp_analytics_event(
           'action_view',
-          $this->getEventArgs($entity),
+          $this->getEventArgs($entity, $view_mode),
           'session',
-          "action-view-node-{$entity->nid}"
+          "action-view-node-{$entity->nid}-{$view_mode}"
         );
         $this->addPageloadEvent($event);
 
@@ -23,12 +23,16 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
           $instance_name = "action_taken-{$entity->nid}";
           $event = tp_analytics_event(
             'action_taken',
-            $this->getEventArgs($entity),
+            $this->getEventArgs($entity, $view_mode),
             'page',
             "action_taken-{$entity->nid}"
           );
           $this->addFrontEndEventInstance($instance_name, $event);
         }
+      }
+      elseif ($entity->type !== 'action') {
+        // Embedded action thank you share.
+        $this->addShareEventInstance($entity, $view_mode);
       }
 
       // TAB - See more actions button click
@@ -47,8 +51,7 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
 
   public function addShareEventInstance($entity, $view_mode) {
     $instance_name = "action_share-{$entity->nid}";
-    $args = $this->getEventArgs($entity);
-    $args['view_mode'] = $view_mode;
+    $args = $this->getEventArgs($entity, $view_mode);
     $event = tp_analytics_event('action_share', $args);
     $this->addFrontEndEventInstance($instance_name, $event);
   }
@@ -57,14 +60,59 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
     // TAB - action taken (petitions and pledges) AJAX command.
     $event = tp_analytics_event(
       'action_taken',
-      $this->getEventArgs($entity),
+      $this->getEventArgs($entity, $view_mode),
       'page',
       "action-taken-node-{$entity->nid}"
     );
     return $this->getFireEventCommand($event);
   }
 
-  protected function getEventArgs($entity) {
+  public function getSignedEvents($entity, $view_mode, $opt_ins) {
+    $events = array();
+
+    $type_name = node_type_get_name($entity);
+    $action_name = $type_name . ': ' . check_plain($entity->title);
+
+    $short_names = array(
+      'pledge_action' => 'Pledge',
+      'petition_action' => 'Petition',
+    );
+    $type_short_name = $short_names[$entity->type];
+
+    // TAB action taken event.
+    if ($view_mode === 'full') {
+      $args = $this->getEventArgs($entity, $view_mode);
+      $events[] = tp_analytics_event(
+        'action_taken',
+        $args,
+        'page',
+        "action_taken-{$entity->nid}"
+      );
+    }
+
+    // Newsletter signup events.
+    $settings = entity_load_single('signature_node', $entity->nid);
+    foreach ($opt_ins as $delta => $opt_in) {
+      if ($opt_in) {
+        $events[] = tp_analytics_event(
+          "newsletter_action_opt_in",
+          array(
+            'group' => check_plain($settings->newsletter_opt_ins[$delta]['group']),
+            'title' => check_plain($entity->title),
+            'view_mode' => $view_mode,
+            'type_short_name' => $type_short_name,
+            'action_name' => $action_name,
+          ),
+          'page',
+          "newsletter-signup-{$delta}-node-{$entity->nid}"
+        );
+      }
+    }
+
+    return $events;
+  }
+
+  protected function getEventArgs($entity, $view_mode) {
 
     // Extract the action type term ids from the field.
     $action_type = '';
@@ -108,8 +156,21 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
       }
     }
 
+    $extra_events = array(
+      'petition_action' => 'event27',
+      'pledge_action' => 'event32',
+      'action' => 'event37',
+    );
+    $extra_event = $extra_events[$entity->type];
+
+    $type_name = node_type_get_name($entity);
+    $action_name = $type_name . ': ' . check_plain($entity->title);
+
     return array(
-      'title' => check_plain($entity->title),
+      'extra_event' => $extra_event,
+      'type_name' => $type_name,
+      'view_mode' => $view_mode,
+      'action_name' => $action_name,
       'action_type' => $action_type,
       'topic' => $topic,
       'empowered_by' => $sponsor,

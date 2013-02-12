@@ -110,12 +110,12 @@ function signature_entity_info_alter(&$entity_info) {
 
   // Add the analytics controller to petition and pledge actions
   $entity_info['node']['analytics']['bundles']['petition_action'] = array(
-    'controller class' => 'SignatureAnalyticsController',
+    'controller class' => 'TakeActionAnalyticsController',
   );
   $entity_info['node']['analytics']['bundles']['pledge_action'] = array(
-    'controller class' => 'SignatureAnalyticsController',
+    'controller class' => 'TakeActionAnalyticsController',
   );
- 
+
   // Add the signature types to the list of bundles for signatures.
   foreach (signature_type_load() as $type => $info) {
     $entity_info['signature']['bundles'][$type] = array(

@@ -1,6 +1,6 @@
 // Add analytics to the TakePart JavaScript name space
 if (typeof tp == 'undefined' || !tp) { var tp = {}; }
-if (!tp.analytics) { tp.analytics = {'events': {}}; } 
+if (!tp.analytics) { tp.analytics = {'events': {}}; }
 
 (function ($) {
 
@@ -35,12 +35,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
       'embed': 'Embedded'
     }
     s.linkTrackVars = 'eVar25,eVar30,eVar39,events';
-    if (args.view_mode === 'full' || args.link_only) {
-      s.events = s.linkTrackEvents = 'event37';
-    }
-    else {
-      s.events = s.linkTrackEvents = 'event34';
-    }
+    s.events = s.linkTrackEvents = 'event34';
     s.eVar25 = args.title;
     s.eVar30 = s.pageName;
     s.eVar39 = view_modes[args.view_mode];
@@ -48,4 +43,3 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
   };
 
 })(jQuery);
-
