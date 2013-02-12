@@ -6,9 +6,13 @@
             <? foreach ( wl('intel_logo') as $w ): ?>
                 <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" class="logo" <?=wa('intel_logo')?> />
             <? endforeach ?>
-            <h1 <?=wa("site_title")?>>
-                <?=w("site_title")?>
-            </h1>
+            
+            <? foreach ( wl('site_title') as $w ): ?>
+                <h1 <?=wa("site_title")?> style="background-image:url(<?=$w->img_src?>);">
+                    <?=$w->single(false)?>
+                </h1>
+            <? endforeach ?>
+
         </div>
 
         <div class="first-block clearfix">
