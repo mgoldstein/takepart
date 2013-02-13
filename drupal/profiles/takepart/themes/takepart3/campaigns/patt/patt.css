@@ -1109,7 +1109,6 @@ body {
  * Modules / Reusable elements 
  */
 .snap-grid {
-    Xbackground-color: #0082ab;
     display: inline-block; *display: inline; zoom: 1;
     width: 100%;
 }
@@ -1133,6 +1132,7 @@ x.snap-grid {
 
 .tile img {
     width: 100%;
+    display: block;
 }
 
 .tile p {
@@ -1369,6 +1369,12 @@ h1.tile-header {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
+@media only screen and (max-width: 391px) {
+	.snap-grid {
+	    background-color: #0082ab;
+	}
+}
+
 @media only screen and (min-width: 392px) {
  
     .wrapper {
@@ -1440,6 +1446,12 @@ h1.tile-header {
   
 }
 
+@media only screen and (max-width: 784px) {
+    .modal-left {
+        float: none;
+    }
+}
+
 @media only screen and (min-width: 784px) {
 
 /* ====================
@@ -1492,9 +1504,6 @@ h1.tile-header {
     .modal-right {
         width: 50%;
     }
-    
-    
-    
 }
 
 @media only screen and (min-width: 980px) {
@@ -1517,7 +1526,6 @@ h1.tile-header {
         /*width: 491px;*/
        width: 50%;
     }
-    
     
 }
 

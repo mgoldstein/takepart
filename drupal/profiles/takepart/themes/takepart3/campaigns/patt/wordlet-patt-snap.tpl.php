@@ -25,7 +25,7 @@
 
 <div class="snap-grid" <?=wa('snap_slides')?>>
     <div class="tile">
-        <img src="https://clients.midnightoilcreative.com/clients/participantmedia/gallery/img/tile-static-snap-logo.jpg" alt="Image">
+        <img src="/profiles/takepart/themes/takepart3/campaigns/patt/images/snap/tile-static-snap-logo.jpg" alt="Image">
     </div>
 
     <? foreach ( wl('snap_slides') as $s ): ?>
@@ -90,9 +90,9 @@
 
 <div id="grid-overlay">
     <div id="grid-modal" class="modal wrapper">
-        <div class="close-btn"><img src="https://clients.midnightoilcreative.com/clients/participantmedia/gallery/img/close-btn.jpg" alt="Close"></div>
+        <div class="close-btn"><img src="/profiles/takepart/themes/takepart3/campaigns/patt/images/snap/close-btn.jpg" alt="Close"></div>
         <div class="modal-left">
-            <img src="https://clients.midnightoilcreative.com/clients/participantmedia/gallery/img/photo-sarah-parker-full.jpg" alt="Full Image">
+            
         </div>
         <div class="modal-right">
             <div class="modal-content">
@@ -102,8 +102,8 @@
         </div>
         <footer>
             <div class="modal-nav">
-                <div id="nav-left" class="nav-button"><img src="https://clients.midnightoilcreative.com/clients/participantmedia/gallery/img/nav-arrow-left.jpg" alt="Left"></div>
-                <div id="nav-right" class="nav-button"><img src="https://clients.midnightoilcreative.com/clients/participantmedia/gallery/img/nav-arrow-right.jpg" alt="right"></div>
+                <div id="nav-left" class="nav-button"><img src="/profiles/takepart/themes/takepart3/campaigns/patt/images/snap/nav-arrow-left.jpg" alt="Left"></div>
+                <div id="nav-right" class="nav-button"><img src="/profiles/takepart/themes/takepart3/campaigns/patt/images/snap/nav-arrow-right.jpg" alt="right"></div>
             </div>
             <div id="social-buttons">
                 <div class="addthis_toolbox addthis_default_style addthis_32x32_style thank-you-addthis">
