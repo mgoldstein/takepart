@@ -316,10 +316,36 @@ body {
 }
 
 .table.int .main .column-3 form .submit {
+}
+
+.table.int .main .column-3 form .form-submit {
+	background: transparent url(/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-form-btn.png) left top no-repeat;
 	width:111px;
 	height:41px;
-	margin:0 auto;
-	margin-top:5px;
+	margin: 5px auto 0;
+	line-height: 100px;
+	overflow: hidden;
+	text-indent: 100%;
+	border: none;
+	display: block;
+}
+
+.table.int .main .column-3 form .form-item-email label {
+	display: none;
+}
+
+.table.int .main .column-3 form .form-item-email .form-required {
+	display: none;
+}
+
+.table.int .main .column-3 .email-signup .thank-you-message {
+	padding: 10px;
+	background: rgba(0,0,0,.4);
+	margin: 0 -10px;
+}
+
+.table.int .main .column-3 .email-signup .thank-you-message p {
+	margin: 0;
 }
 
 .table.int .main .column-3 .sponsored {
@@ -626,6 +652,7 @@ body {
 .snap_modal_modal .modal-right .modal-content p,
 .snap_modal_modal .modal-right .modal-content em {
 	color: inherit;
+	line-height: 1.3em;
 }
 
 .modal-right .modal-content.fact h1,
@@ -1186,7 +1213,7 @@ p.myth-fact {
 	margin-top: 15px;
 	font-size: 18pt;
 	font-weight: bold;
-	max-width: 300px;
+	max-width: 400px;
 }
 
 .modal-header h2 {
@@ -1263,7 +1290,7 @@ h1.tile-header {
 
 .modal-left .myth-fact {
 	text-align: right;
-	padding: 10px 40px 10px 40px;
+	padding: 15px 40px 10px 40px;
 	font-weight: bold;
 	display: block;
 }
