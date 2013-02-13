@@ -3330,9 +3330,7 @@ p.fb-login-text {
 .series-view-list .views-row:last-child{
     margin-bottom: 0;
 }
-.series-view-list .views-field-field-thumbnail img {
-    width: 200px;
-}
+
 .series-view-list .views-field-field-thumbnail,
 .series-view-list .views-field-title {
     display: inline-block; *display: inline; *zoom: 1;
