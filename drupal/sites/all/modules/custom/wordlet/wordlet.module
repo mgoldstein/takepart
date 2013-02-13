@@ -885,6 +885,11 @@ function wordlet_page_view_callback($page) {
   // Set the active page configuration
   wordlet_active_page($page);
 
+  $alter_hook = "wordlet_{$page['name']}_page_alter";
+  if (function_exists($alter_hook)) {
+    call_user_func_array($alter_hook, array($page));
+  }
+
   $title = '';
   if (isset($page['wordlets']['title'])) {
     $tw = $page['wordlets']['title'];
