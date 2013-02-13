@@ -49,7 +49,7 @@ em {color: #000;}
 
 /***** Common ******/
 .divide {
-    background: url(../images/sprite.png) repeat-x 0 -159px;
+    background: url('../images/sprite.png') repeat-x 0 -159px;
     height: 4px;
     clear: both;
 }
@@ -75,7 +75,7 @@ img.photo, .gallery-item img {
 }
 
 .dot-line-horizontal {
-    background: url(../images/dot-line-h.gif) repeat-x;
+    background: url('../images/dot-line-h.gif') repeat-x;
     height: 1px;
 }
 
@@ -123,7 +123,7 @@ img.photo, .gallery-item img {
 #user-nav li.login-1{
     padding-left: 5px;
     margin-left: 5px;
-  background: url(images/login_top_bar.png) no-repeat left top;
+  background: url('images/login_top_bar.png') no-repeat left top;
 }
 .logged-in #user-nav li {
     margin-left:10px;
@@ -182,22 +182,22 @@ ul#top-follow li.title {
 }
 
 ul#top-follow li.fb a {
-    background: url(../images/sprite_global_nav_social.png) no-repeat 0 0;
+    background: url('../images/sprite_global_nav_social.png') no-repeat 0 0;
 }
 ul#top-follow li.twitter a {
-    background: url(../images/sprite_global_nav_social.png) no-repeat -20px 0;
+    background: url('../images/sprite_global_nav_social.png') no-repeat -20px 0;
 }
 ul#top-follow li.pinterest a {
-    background: url(../images/sprite_global_nav_social.png) no-repeat -40px 0;
+    background: url('../images/sprite_global_nav_social.png') no-repeat -40px 0;
 }
 ul#top-follow li.googleplus a {
-    background: url(../images/sprite_global_nav_social.png) no-repeat -100px 0;
+    background: url('../images/sprite_global_nav_social.png') no-repeat -100px 0;
 }
 ul#top-follow li.youtube a {
-    background: url(../images/sprite_global_nav_social.png) no-repeat -60px 0;
+    background: url('../images/sprite_global_nav_social.png') no-repeat -60px 0;
 }
 ul#top-follow li.rss a {
-    background: url(../images/sprite_global_nav_social.png) no-repeat -80px 0;
+    background: url('../images/sprite_global_nav_social.png') no-repeat -80px 0;
 }
 
 /**** Top Navigation ***/
@@ -207,7 +207,7 @@ ul#top-follow li.rss a {
 }
 
 #nav-logo-arrow {
-    background: url(../images/sprite.png) no-repeat scroll -14px -68px #000000;
+    background: url('../images/sprite.png') no-repeat scroll -14px -68px #000000;
     height: 14px;
     left: 14px;
     position: absolute;
@@ -268,7 +268,7 @@ ul#top-follow li.rss a {
     z-index: 1;
 }
 
-#slim-header ul.menu li.expanded a { background: #FFF url(../images/dot.png) no-repeat 0 7px; color: #000;}
+#slim-header ul.menu li.expanded a { background: #FFF url('../images/dot.png') no-repeat 0 7px; color: #000;}
 
 #slim-header ul.menu li.dhtml-menu li a {
     font-weight: normal; 
@@ -316,7 +316,7 @@ form#search-api-page-search-form-site-search {
 }
 
 #top-search .form-submit {
-    background: url(../images/sprite.png) no-repeat 0 -115px;
+    background: url('../images/sprite.png') no-repeat 0 -115px;
     border: none;
     cursor: pointer;
     height: 20px;
@@ -424,7 +424,7 @@ ul.author-date-comment li {
 }
 
 ul.author-date-comment li.author {
-    background: url(../images/sprite.png) no-repeat -383px 0px;
+    background: url('../images/sprite.png') no-repeat -383px 0px;
     padding-left: 20px;
 }
 
@@ -433,12 +433,12 @@ ul.author-date-comment li a {
 }
 
 ul.author-date-comment li.date {
-    background: url(../images/sprite.png) no-repeat -383px -44px;
+    background: url('../images/sprite.png') no-repeat -383px -44px;
     padding-left: 20px;
 }
 
 ul.author-date-comment li.comment {
-    background: url(../images/sprite.png) no-repeat -381px -90px;
+    background: url('../images/sprite.png') no-repeat -381px -90px;
     padding-left: 20px;
 }
 
@@ -463,19 +463,19 @@ ul.author-date-comment li.comment {
 }
 
 .meta-block a.digg {
-    background: url(../images/sprite.png) no-repeat -370px -188px;
+    background: url('../images/sprite.png') no-repeat -370px -188px;
 }
 
 .meta-block a.stumble {
-    background: url(../images/sprite.png) no-repeat -370px -250px;
+    background: url('../images/sprite.png') no-repeat -370px -250px;
 }
 
 .meta-block a.email {
-    background: url(../images/sprite.png) no-repeat -370px -317px;
+    background: url('../images/sprite.png') no-repeat -370px -317px;
 }
 
 .action-callout {
-    background: #ffefd8 url(../images/sprite.png) no-repeat 0 -448px;
+    background: #ffefd8 url('../images/sprite.png') no-repeat 0 -448px;
     margin: 9px 10px 10px -10px;
     padding: 8px 10px;
     margin-bottom: 25px;
@@ -486,7 +486,7 @@ ul.author-date-comment li.comment {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: bold;
-    background: url(../images/arrow-white.png) no-repeat 100px 2px;
+    background: url('../images/arrow-white.png') no-repeat 100px 2px;
     padding-right: 20px;
 }
 
@@ -524,7 +524,7 @@ ul.author-date-comment li.comment {
 }
 
 .action-callout-mega-wrapper .title-wrap {
-    background: url(../images/bg-mega-action-title.png) no-repeat;
+    background: url('../images/bg-mega-action-title.png') no-repeat;
     position: absolute;
     z-index: 1;
     width: 151px;
@@ -539,7 +539,7 @@ ul.author-date-comment li.comment {
     font-size: 14px;
     font-weight: bold;
     display: block;
-    background: url(../images/arrow-white.png) no-repeat 112px 25px;
+    background: url('../images/arrow-white.png') no-repeat 112px 25px;
     padding: 23px 0 0 10px;
 }
 
@@ -625,7 +625,7 @@ ul.author-date-comment li.comment {
 
 /****** Right Rail ******/
 #right-rail #blog-callout {
-    background: url(images/bg-blog.png) no-repeat;
+    background: url('images/bg-blog.png') no-repeat;
     min-height: 222px;
 }
 
@@ -681,19 +681,19 @@ h3.title a:hover{
 }
 
 .section-header-campaign {
-    background: url(../images/sprite.png) no-repeat 0 -181px;
+    background: url('../images/sprite.png') no-repeat 0 -181px;
 }
 
 .section-header-action {
-    background: url(../images/sprite.png) no-repeat 0 -242px;
+    background: url('../images/sprite.png') no-repeat 0 -242px;
 }
 
 .section-header-also-see {
-    background: url(../images/sprite.png) no-repeat 0 -379px;
+    background: url('../images/sprite.png') no-repeat 0 -379px;
 }
 
 .section-header-similar-actions {
-    background: url(../images/sprite.png) no-repeat 0 -511px;
+    background: url('../images/sprite.png') no-repeat 0 -511px;
 }
 
 /****** Footer  ******/
@@ -704,43 +704,43 @@ h3.title a:hover{
 #partner-footer ul li a {display: block;   height: 40px;}
 
 #partner-footer ul li.climate a{
-    background: url(../images/logos-footer.gif) no-repeat 0 0;
+    background: url('../images/logos-footer.gif') no-repeat 0 0;
     width: 186px;
 }
 
 #partner-footer ul li.climate a:hover{
-    background: url(../images/logos-footer.gif) no-repeat 0 -49px;
+    background: url('../images/logos-footer.gif') no-repeat 0 -49px;
 }
 
 #partner-footer ul li.save a{
-    background: url(../images/logos-footer.gif) no-repeat 0 -122px;
+    background: url('../images/logos-footer.gif') no-repeat 0 -122px;
     width: 220px;
 }
 
 #partner-footer ul li.save a:hover{
-    background: url(../images/logos-footer.gif) no-repeat 0 -167px;
+    background: url('../images/logos-footer.gif') no-repeat 0 -167px;
 }
 
 #partner-footer ul li.hungry a{
-    background: url(../images/logos-footer.gif) no-repeat 0 -248px;
+    background: url('../images/logos-footer.gif') no-repeat 0 -248px;
     width: 206px;
 }
 
 #partner-footer ul li.hungry a:hover{
-    background: url(../images/logos-footer.gif) no-repeat 0 -292px;
+    background: url('../images/logos-footer.gif') no-repeat 0 -292px;
 }
 
 #partner-footer ul li.waiting a{
-    background: url(../images/logos-footer.gif) no-repeat 0 -363px;
+    background: url('../images/logos-footer.gif') no-repeat 0 -363px;
     width: 174px;
 }
 
 #partner-footer ul li.waiting a:hover{
-    background: url(../images/logos-footer.gif) no-repeat 0 -397px;
+    background: url('../images/logos-footer.gif') no-repeat 0 -397px;
 }
 
 #partner-footer ul {
-    background: url(../images/dot-line-h.gif) repeat-x left bottom;
+    background: url('../images/dot-line-h.gif') repeat-x left bottom;
     padding: 20px;
 }
 
@@ -777,7 +777,7 @@ ul#soc-links li a {
 ul#soc-links {padding: 10px 20px; width: 200px; float: left;}
 
 ul#soc-links li#fb a {
-    background: url("../images/sprite-social-media.png") no-repeat scroll 0 -5px transparent;
+    background: url('"../images/sprite-social-media.png") no-repeat scroll 0 -5px transparent;
 }
 
 ul#soc-links li {
@@ -786,7 +786,7 @@ ul#soc-links li {
 }
 
 ul#soc-links li#twitter a {
-    background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
+    background: url('"../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
 }
 
 /****** Boxes ******/
@@ -855,13 +855,13 @@ ul#soc-links li#twitter a {
 }
 
 #gallery-controls .next a {
-    background: url(../images/sprite.png) repeat-x -220px -40px;
+    background: url('../images/sprite.png') repeat-x -220px -40px;
     display: block;
     padding: 2px 15px 2px 32px;
 }
 
 #gallery-controls .previous a {
-    background: url(../images/sprite.png) repeat-x -291px -71px;
+    background: url('../images/sprite.png') repeat-x -291px -71px;
     display: block;
     padding: 2px 0 2px 25px;
 }
@@ -901,7 +901,7 @@ ul#soc-links li#twitter a {
 }
 
 .gallery-main h2 {
-    background: #FFF url(../images/sprite.png) no-repeat -100px -280px;
+    background: #FFF url('../images/sprite.png') no-repeat -100px -280px;
     display: inline;
     padding: 5px 50px 3px 0;
     text-transform: uppercase;
@@ -1006,18 +1006,18 @@ div.takepart_addthis_rightrail div.addthis_toolbox div.custom_images {
 div.takepart_addthis_rightrail div.custom_images a.addthis_button_digg,
 div.takepart_addthis_leftpanel div.custom_images a.addthis_button_digg
 {
-    background: url(../images/icon_digg.png) no-repeat;
+    background: url('../images/icon_digg.png') no-repeat;
 }
 
 div.takepart_addthis_rightrail div.custom_images a.addthis_button_stumbleupon,
 div.takepart_addthis_leftpanel div.custom_images a.addthis_button_stumbleupon
 {
-    background: url(../images/icon_stumble.png) no-repeat;
+    background: url('../images/icon_stumble.png') no-repeat;
 }
 
 div.takepart_addthis_rightrail div.custom_images a.addthis_button_email,
 div.takepart_addthis_leftpanel div.custom_images a.addthis_button_email {
-    background: url(../images/icon_email.png) no-repeat;
+    background: url('../images/icon_email.png') no-repeat;
 }
 
 div.takepart_addthis_rightrail div.custom_images a,
@@ -1113,7 +1113,7 @@ div.takepart_addthis_footer div.buttons {
 }
 
 span.comment-num {
-    background: url(../images/sprite.png) no-repeat -328px -333px;
+    background: url('../images/sprite.png') no-repeat -328px -333px;
     color: #FFF;
     display: block;
     float: left;
@@ -1155,7 +1155,7 @@ span.comment-num {
 }
 
 #comments .comment-count {
-    background: transparent url(../images/icon_comment_count.png) no-repeat scroll 0 0;
+    background: transparent url('../images/icon_comment_count.png') no-repeat scroll 0 0;
     color: white;
     display: inline-block;
     font-weight: bold;
@@ -1182,7 +1182,6 @@ span.comment-num {
     float: left;
     width: 533px;
 }
-
 
 .comment-form .comment-form-title {
     display: none;
@@ -1224,7 +1223,7 @@ span.comment-num {
 }
 
 #comments .submitted {
-    background-image: url(../images/icon_comment_bubble.png);
+    background-image: url('../images/icon_comment_bubble.png');
     background-repeat: no-repeat;
     background-position: 20px top;
     padding-top:18px;
@@ -1268,7 +1267,7 @@ span.comment-num {
 }
 
 #comments ul.links,
-#comments ul.links li{
+#comments ul.links li {
     height: 0;
     overflow: visible;
 }
@@ -1289,7 +1288,7 @@ span.comment-num {
 
 /***** Article ******/
 .quote {
-    background: url(../images/bg-quote.gif) no-repeat 0 4px;
+    background: url('../images/bg-quote.gif') no-repeat 0 4px;
     color: #999;
     font-size: 28px;
     font-family: Georgia, serif;
@@ -1322,23 +1321,23 @@ span.comment-num {
 }
 
 .share-this-strip li.fb a {
-    background: url(../images/sprite.png) no-repeat -208px -115px;
+    background: url('../images/sprite.png') no-repeat -208px -115px;
 }
 
 .share-this-strip li.tweet a {
-    background: url(../images/sprite.png) no-repeat -236px -115px;
+    background: url('../images/sprite.png') no-repeat -236px -115px;
 }
 
 .share-this-strip li.stumble a {
-    background: url(../images/sprite.png) no-repeat -264px -115px;
+    background: url('../images/sprite.png') no-repeat -264px -115px;
 }
 
 .share-this-strip li.digg a {
-    background: url(../images/sprite.png) no-repeat -293px -115px;
+    background: url('../images/sprite.png') no-repeat -293px -115px;
 }
 
 .share-this-strip li.email a {
-    background: url(../images/sprite.png) no-repeat -320px -115px;
+    background: url('../images/sprite.png') no-repeat -320px -115px;
 }
 
 .share-this-strip li.email {margin-right: 0;}
@@ -1643,7 +1642,7 @@ h2.title a{
 
 .submitted-wrapper {
     padding-bottom: 15px;
-    background:url("../images/sprite.png") no-repeat scroll -383px 0 transparent;
+    background:url('"../images/sprite.png") no-repeat scroll -383px 0 transparent;
     padding-left:20px;
     padding-bottom: 0;
     margin-bottom:1em;
@@ -1885,7 +1884,7 @@ q, q.pull-quote {
 }
 
 .field-name-field-tp-campaign-intro-media a.play {
-    background: url("../images/play.png") no-repeat scroll center center transparent;
+    background: url('"../images/play.png") no-repeat scroll center center transparent;
     display: block;
     height: 272px;
     outline: medium none;
@@ -1896,7 +1895,7 @@ q, q.pull-quote {
 
 .field-name-field-tp-campaign-intro-media a.close {
     -moz-box-shadow: 0 0 5px #333333;
-    background: url("../images/close.png") no-repeat scroll 0 0 transparent;
+    background: url('"../images/close.png") no-repeat scroll 0 0 transparent;
     display: block;
     height: 15px;
     outline: medium none;
@@ -2404,7 +2403,7 @@ div.messages a:visited {
 }
 
 #slim-header #logo a {
-    background: url(../images/logo-sm-slim.png) no-repeat;
+    background: url('../images/logo-sm-slim.png') no-repeat;
     display: block;
     height: 42px;
     text-indent: -9000px;
@@ -2482,7 +2481,7 @@ div.messages a:visited {
 }
 
 #slim-header #join-login-top span.fb {
-    background: url("../images/sprite-slim-header.gif") no-repeat scroll -106px 0 transparent;
+    background: url('"../images/sprite-slim-header.gif") no-repeat scroll -106px 0 transparent;
     display: inline-block;
     height: 14px;
     display: none;
@@ -2523,7 +2522,7 @@ body.logged-in #slim-header.multipage-campaign #top-search {
 #slim-header ul.menu li a:hover {
     text-decoration: none;
     color: #1CA9E7;
-    background: #FFF url(../images/dot.png) no-repeat 0 7px;
+    background: #FFF url('../images/dot.png') no-repeat 0 7px;
 }
 
 #slim-header ul.menu li.last a {
@@ -2635,12 +2634,12 @@ div.view-display-id-block_8 div.rotator_nav_bar {
     left:-1px;
     padding-left:35px;
     padding-top:0;
-    background: url("../images/2012-02-08/gallery_left_arrow.png") no-repeat scroll 0 0 transparent;
+    background: url('"../images/2012-02-08/gallery_left_arrow.png") no-repeat scroll 0 0 transparent;
     height:68px;
     width:40px;
 }
 .view-display-id-block_8 a.jcarousel-prev-horizontal:hover {
-    background: url("../images/gallery_left_rollover_arrow.png") no-repeat scroll 0 0 transparent;
+    background: url('"../images/gallery_left_rollover_arrow.png") no-repeat scroll 0 0 transparent;
 }
 .view-display-id-block_8 a.jcarousel-next-horizontal {
     position:absolute;
@@ -2648,12 +2647,12 @@ div.view-display-id-block_8 div.rotator_nav_bar {
     right:0;
     padding-right:0;
     padding-top:0;
-    background: url("../images/2012-02-08/gallery_right_arrow.png") no-repeat scroll 0 0 transparent;
+    background: url('"../images/2012-02-08/gallery_right_arrow.png") no-repeat scroll 0 0 transparent;
     height:68px;
     width:40px;
 }
 .view-display-id-block_8 a.jcarousel-next-horizontal:hover {
-    background: url("../images/gallery_right_rollover_arrow.png") no-repeat scroll 0 0 transparent;
+    background: url('"../images/gallery_right_rollover_arrow.png") no-repeat scroll 0 0 transparent;
 }
 
 /*
@@ -3272,7 +3271,7 @@ body.page-taxonomy-term h1{
 .block-boxes-view-name-video h2,
 div[class*='block-boxes-bid-views-video-block'] h2,
 div[class*='block-boxes-delta-video-block'] h2 {
-    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 0 transparent;
+    background: url('"../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 0 transparent;
     margin: 0 0 10px 0;
     color: #99BBCC;
 }
@@ -3395,7 +3394,7 @@ div[class*='block-boxes-delta-video-block'] h2 span{
 #right-rail #block-boxes-box-e9e8814f h2,
 #right-rail #block-views-video-block h2,
 #right-rail .block-boxes-view-name-related_campaigns h2{
-    background: url("../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 0 transparent;
+    background: url('"../images/2012-02-08/45deg_lines_large.gif") repeat-x scroll 0 0 transparent;
     font-size: 18px;
     font-weight: lighter;
     color: #99bbcc;
@@ -3405,7 +3404,7 @@ div[class*='block-boxes-delta-video-block'] h2 span{
 }
 
 #left-rail #block-views-related-campaigns-block h2{
-    background: url("../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 0 transparent;
+    background: url('"../images/2012-02-08/45deg_lines.gif") repeat-x scroll 0 0 transparent;
     font-size: 18px;
     font-weight: lighter;
     color: #99bbcc;
@@ -3558,7 +3557,7 @@ body.logged-in .multipage-campaign #top-search .form-text:active {
 }
 
 #top-search .form-submit {
-    background: url("../images/sprite.png") no-repeat scroll 0 -115px transparent;
+    background: url('"../images/sprite.png") no-repeat scroll 0 -115px transparent;
     border: medium none;
     cursor: pointer;
     float: left;
@@ -3731,7 +3730,7 @@ p.search-performance{
 
 /* sponsored by block */
 #block-views-groups-block h2{
-    background: url("../images/sprite-box-ribbons.gif") no-repeat scroll 0 -180px transparent;
+    background: url('"../images/sprite-box-ribbons.gif") no-repeat scroll 0 -180px transparent;
     border-bottom: 2px solid black;
     font-size: 15px;
     font-weight: bold;
@@ -3999,26 +3998,26 @@ div.takepart_addthis_footer span#addthis_footer_sharethis {
     top:-1px;
 }
 .takepart_addthis_footer a.addthis_button_facebook span{
-    background: url("../images/icon_facebook.png") no-repeat scroll 0 0 transparent;
+    background: url('"../images/icon_facebook.png") no-repeat scroll 0 0 transparent;
 } 
 .takepart_addthis_footer a.addthis_button_twitter span{
-    background: url("../images/icon_twitter.png") no-repeat scroll 0 0 transparent;
+    background: url('"../images/icon_twitter.png") no-repeat scroll 0 0 transparent;
 }
 div.takepart_addthis_footer div.addthis_toolbox a.addthis_button_google_plusone.at300b div{
 
     width:50px !important;
     height: 21px !important;
-    /*background: url("../images/social_media_googleplus.png") no-repeat scroll -3px -2px transparent !important; */
+    /*background: url('"../images/social_media_googleplus.png") no-repeat scroll -3px -2px transparent !important; */
     margin: 3px 0 0 !important;
 }
 .takepart_addthis_footer a.addthis_button_stumbleupon span{
-    background: url("../images/icon_stumble.png") no-repeat scroll 0 0 transparent;
+    background: url('"../images/icon_stumble.png") no-repeat scroll 0 0 transparent;
 }
 .takepart_addthis_footer a.addthis_button_digg span{
-    background: url("../images/icon_digg.png") no-repeat scroll 0 0 transparent;
+    background: url('"../images/icon_digg.png") no-repeat scroll 0 0 transparent;
 }
 .takepart_addthis_footer a.addthis_button_email span{
-    background: url("../images/icon_email.png") no-repeat scroll 0 0 transparent;
+    background: url('"../images/icon_email.png") no-repeat scroll 0 0 transparent;
 }
 
 /* addthis simple */
@@ -4041,10 +4040,10 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
     margin-left: 5px;
 }
 .takepart_addthis_simple a.addthis_button_facebook span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll 0 -5px transparent;
+    background: url('"../images/sprite-social-media.png") no-repeat scroll 0 -5px transparent;
 } 
 .takepart_addthis_simple a.addthis_button_twitter span{
-    background: url("../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
+    background: url('"../images/sprite-social-media.png") no-repeat scroll -26px -5px transparent;
 }
 
 /* homepage promo box */
@@ -4060,7 +4059,7 @@ div.takepart_addthis_simple span#addthis_simple_sharethis {
 /* media browser for wysiwyg */
 #overlay-container #media-tab-brightcove a.fake-ok,
 #overlay-container #media-tab-library a.fake-ok{
-    background: url("images/buttons.png") no-repeat scroll -1px 50% #FFFFFF;
+    background: url('"images/buttons.png") no-repeat scroll -1px 50% #FFFFFF;
     border-color: #DDDDDD #DDDDDD #CCCCCC;
     border-style: solid;
     border-width: 1px;
@@ -4266,7 +4265,7 @@ in take-part feature */
     height: 23px;
     overflow: visible;
     margin-top:0px;
-    background: url("../images/header-arrows.png") no-repeat scroll 0 0 transparent;
+    background: url('"../images/header-arrows.png") no-repeat scroll 0 0 transparent;
 }
 #join-login-box #user-nav {
     height: 26px; 
