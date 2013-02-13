@@ -14,11 +14,16 @@
             <? endforeach ?>
 
         </div>
-
         <div class="first-block clearfix">
             <div class="main-info">
-                <div class='vid-embed' data-previewSrc="/profiles/takepart/themes/takepart3/campaigns/intelchange/images/main_info.jpg" >
-                    <iframe width="602" height="339" src="http://www.youtube.com/embed/kpPShxQJzG4?rel=0&showinfo=0&theme=light&showsearch=0&hd=1&cc_load_policy=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                <div class='vid-embed' <?=wa("video")?> >
+                    <? foreach ( wl('video') as $w ): ?>
+                        <? if ( $w->img_src != NULL ) : ?>
+                            <iframe width="602" height="339" src="http://www.youtube.com/embed/<?=$w->img_src?>?rel=0&showinfo=0&theme=light&showsearch=0&hd=1&cc_load_policy=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                        <? else : ?>
+                            <img src="<?=$w->href?>" alt="Intel for Change video placeholder" />
+                        <? endif ?>
+                    <? endforeach ?>
                 </div>
             </div>
             <div class="intro">

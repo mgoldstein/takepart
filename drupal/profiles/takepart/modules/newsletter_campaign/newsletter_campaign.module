@@ -586,11 +586,15 @@ function newsletter_campaign_email_only_signup_configuration($form, $config) {
 
 function newsletter_campaign_email_only_signup_form($form, &$form_state, $config) {
 
-  $config += array(
-    'email_label' => t('Email'),
-    'submit_caption' => t('Submit'),
-    'thank_you_message' => t("Thanks for subscribing! We're so excited to have you on board."),
-  );
+  if (empty($config['email_label'])) {
+    $config['email_label'] = t('Email');
+  }
+  if (empty($config['submit_caption'])) {
+    $config['submit_caption'] = t('Submit');
+  }
+  if (empty($config['thank_you_message'])) {
+    $config['thank_you_message'] = t("Thanks for subscribing! We're so excited to have you on board.");
+  }
 
   $form_state['newsletter_campaign_direct_signup'] = array(
     'selector' => '#newsletter-campaign-email-only-signup-form',
@@ -701,11 +705,15 @@ function newsletter_campaign_mobile_only_signup_configuration($form, $config) {
 
 function newsletter_campaign_mobile_only_signup_form($form, &$form_state, $config) {
 
-  $config += array(
-    'mobile_label' => t('Mobile'),
-    'submit_caption' => t('Submit'),
-    'thank_you_message' => t("Thanks for subscribing! We're so excited to have you on board."),
-  );
+  if (empty($config['email_label'])) {
+    $config['email_label'] = t('Email');
+  }
+  if (empty($config['submit_caption'])) {
+    $config['submit_caption'] = t('Submit');
+  }
+  if (empty($config['thank_you_message'])) {
+    $config['thank_you_message'] = t("Thanks for subscribing! We're so excited to have you on board.");
+  }
 
   $form_state['newsletter_campaign_direct_signup'] = array(
     'selector' => '#newsletter-campaign-mobile-only-signup-form',
@@ -844,12 +852,15 @@ function newsletter_campaign_email_mobile_signup_configuration($form, $config) {
 
 function newsletter_campaign_email_mobile_signup_form($form, &$form_state, $config) {
 
-  $config += array(
-    'email_label' => t('Email'),
-    'mobile_label' => t('Mobile'),
-    'submit_caption' => t('Submit'),
-    'thank_you_message' => t("Thanks for subscribing! We're so excited to have you on board."),
-  );
+  if (empty($config['email_label'])) {
+    $config['email_label'] = t('Email');
+  }
+  if (empty($config['submit_caption'])) {
+    $config['submit_caption'] = t('Submit');
+  }
+  if (empty($config['thank_you_message'])) {
+    $config['thank_you_message'] = t("Thanks for subscribing! We're so excited to have you on board.");
+  }
 
   $form_state['newsletter_campaign_direct_signup'] = array(
     'selector' => '#newsletter-campaign-email-mobile-signup-form',
@@ -958,20 +969,20 @@ function newsletter_campaign_direct_signup_form_callback($form, $form_state) {
 
   // Standard form submission stuff.
   $commands = array();
-  $commands[] = ajax_command_replace(NULL, drupal_render($form));
-  $commands[] = ajax_command_prepend(NULL, theme('status_messages'));
+
+  $args = $form_state['newsletter_campaign_direct_signup'];
+  $selector = $args['selector'];
 
   $errors = form_get_errors();
   if (empty($errors)) {
-
-    $args = $form_state['newsletter_campaign_direct_signup'];
-    $selector = $args['selector'];
     $config = $args['config'];
-
     $message = newsletter_campaign_preprocess_markup($config['thank_you_message']);
     $message = '<div class="thank-you-message"><p>' . $message . '</p></div>';
-
     $commands[] = ajax_command_replace($selector, $message);
+  }
+  else {
+    $markup = theme('status_messages') . drupal_render($form);
+    $commands[] = ajax_command_replace($selector, $markup);
   }
 
   return array(
