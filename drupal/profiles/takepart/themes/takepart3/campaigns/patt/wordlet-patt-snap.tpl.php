@@ -8,9 +8,16 @@
 
 <div class="social-buttons">
     <div class="addthis_toolbox addthis_default_style addthis_32x32_style thank-you-addthis" nid="28177">
-        <h3>Share</h3>
+        <h3><?=w('share')?></h3>
         <a class="addthis_button_facebook social-icon at300b" title="Facebook" href="#"><span class=" at300bs at15nc at15t_facebook"><span class="at_a11y">Share on facebook</span></span></a>
-        <a class="addthis_button_twitter social-icon at300b" title="Tweet" href="#"><span class=" at300bs at15nc at15t_twitter"><span class="at_a11y">Share on twitter</span></span></a>
+        <a class="addthis_button_twitter social-icon at300b" title="Tweet" href="#" tw:text="<?=w('twitter_text')->single(false)?>" <?=wa('twitter_text')?>><span class=" at300bs at15nc at15t_twitter"><span class="at_a11y">Share on twitter</span></span></a>
+        <script>
+        var addthis_share = {
+            templates : {
+                twitter : "<?=htmlspecialchars(w('twitter_text')->single(false))?>"
+            }
+        };
+        </script>
         <!-- <a class="addthis_button_google_plusone" g:plusone:size="standard" g:plusone:annotation="none" title="Share on Google+1"></a> -->
         <a class="addthis_button_email at300b" target="_blank" title="Email" href="#"><span class=" at300bs at15nc at15t_email"><span class="at_a11y">Share on email</span></span></a>
     </div>
@@ -28,21 +35,33 @@
                     <img src="<?=$s->thumb_src?>"/>
                 </a>
             <? elseif ( !$s->href && !$s->img_src ): ?>
-                <h1 class="tile-header">MYTH</h1>
+                <h1 class="tile-header"><?=w('myth')?></h1>
                 <p><?=$s->single?></p>
                 <div class="modal-left">
                     <div class="fact">
-                        <h1>MYTH</h1>
+                        <h1><?=w('myth')?></h1>
                         <p class="myth-fact"><?=$s->single?></p>
                     </div>
                 </div>
                 <div class="modal-right">
                     <div class="modal-content fact">
                         <div class="modal-header">
-                            <h1 class="fact">FACT</h1>
+                            <h1 class="fact"><?=w('fact')?></h1>
                         </div>
                         <div class="description">
-                            <p class="myth-fact"><?=$s->multi?></p>
+                            <?=$s->multi?>
+                        </div>
+                    </div>
+                </div>
+            <? elseif( !$s->single(false) ): ?>
+                <img src="<?=$s->thumb_src?>"/>
+                <div class="modal-left">
+                    <img src="<?=$s->img_src?>" alt="Take your place">
+                </div>
+                <div class="modal-right">
+                    <div class="modal-content">
+                        <div class="description take-your-place">
+                            <?=$s->multi?>
                         </div>
                     </div>
                 </div>
