@@ -124,6 +124,11 @@ function takepart3_preprocess_page(&$variables) {
     $variables['header'] = _render_tp3_header($variables);
     $variables['footer'] = _render_tp3_footer($variables);
 
+    $wordlet_page = wordlet_active_page();
+    if ($wordlet_page !== FALSE) {
+      $variables['header'] .= render($variables['tabs']);
+    } 
+    
     //if shares don't exists in the left sidebar, add them to the top:
     //so much for consistent design ...
     /*

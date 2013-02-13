@@ -91,5 +91,42 @@ $('body')
 	})
 	;
 
+var ytreg = /v=([a-zA-Z0-9]+)/;
+// Page specific:
+if ( $('body').is('.page-wordlet-patt-home') ) {
+	$('.table .tag img')
+		.each(function() {
+			var $img = $(this);
+			var $a = $img.parent();
+			$a.data({
+				off: $img.attr('src'),
+				on: $img.data('onsrc')
+			});
+		});
+
+	$('body')
+		.delegate('.table .tag', 'mouseover focus', function() {
+			var $a = $(this);
+			var $img = $a.find('img');
+			$img.attr({src: $a.data('on')});
+		})
+		.delegate('.table .tag', 'mouseout blur', function() {
+			var $a = $(this);
+			var $img = $a.find('img');
+			$img.attr({src: $a.data('off')});
+		})
+		;
+} else if ( $('body').is('.page-wordlet-patt-film') ) {
+	$('body')
+		.delegate('a[href^="http://www.youtube.com"]', 'click', function(e) {
+			var m = ytreg.exec(this.href);
+			var yt = m[1];
+			var html = '<iframe width="560" height="315" src="http://www.youtube.com/embed/' + yt + '?autoplay=1" frameborder="0" allowfullscreen></iframe>';
+			$.tpmodal.show({html: html});
+			e.preventDefault();
+		});
+
+}
+
 });
 })(window, jQuery);

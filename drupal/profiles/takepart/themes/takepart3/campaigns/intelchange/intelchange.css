@@ -231,17 +231,17 @@
   width: 94%;
 }
 
-.smartgirls .second-block .form_wrapper #edit-mobile {
+.smartgirls .second-block .form_wrapper fieldset {
   border: none;
   padding: 0;
   margin: 0;
 }
 
-.smartgirls .second-block .form_wrapper #edit-mobile .form-item {
+.smartgirls .second-block .form_wrapper fieldset .form-item {
   display: inline;
 }
 
-.smartgirls .second-block .form_wrapper #edit-mobile input {
+.smartgirls .second-block .form_wrapper fieldset input {
   width: 24%;
   margin-right: 2%;
 }
@@ -255,6 +255,10 @@
 .smartgirls .second-block .form_wrapper .thank-you-message {
   min-height: 450px;
   _height: 450px;
+}
+
+.smartgirls .second-block .form_wrapper .messages {
+  margin-bottom: 25px;
 }
 
 /* #Footer Block
