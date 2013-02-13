@@ -84,7 +84,7 @@ body {
 .table.int .header .logo {
 	position:absolute;
 	left:380px;
-	top:-35px;
+	top:-45px;
 }
 
 .table.int .nav {
@@ -119,11 +119,23 @@ body {
 	display: block;
 }
 
+.table .nav a {
+	text-decoration:none;
+	color:#000;
+}
+
+.page-wordlet-patt-film li.patt_film_url a,
+.page-wordlet-patt-action li.patt_action_url a,
+.page-wordlet-patt-snap li.patt_snap_url a,
+.page-wordlet-patt-book li.patt_book_url a,
+.page-wordlet-patt-events li.patt_events_url a,
+.page-wordlet-patt-alliances li.patt_alliances_url a,
+.page-wordlet-patt-assistance li.patt_assistance_url a,
 .table.int .nav li a:hover {
 	color:#fff;
 }
 
-.table.int .nav li:after {
+.table .nav li:after {
 	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-nav-bg-white.png') no-repeat;
 	z-index: 49;
 	position: absolute;
@@ -135,6 +147,13 @@ body {
 	content: " ";
 }
 
+.page-wordlet-patt-film li.patt_film_url:after,
+.page-wordlet-patt-action li.patt_action_url:after,
+.page-wordlet-patt-snap li.patt_snap_url:after,
+.page-wordlet-patt-book li.patt_book_url:after,
+.page-wordlet-patt-events li.patt_events_url:after,
+.page-wordlet-patt-alliances li.patt_alliances_url:after,
+.page-wordlet-patt-assistance li.patt_assistance_url:after,
 .table.int .nav li:hover:after,
 .table.int .nav .hover {
 	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-nav-bg-blue.png') no-repeat;
@@ -144,12 +163,6 @@ body {
 .table.int .nav .active a,
 .table.int .nav .hover a {
 	color:#fff;
-}
-
-.table.int .nav li a {
-	text-decoration:none;
-	color:#000;
-	
 }
 
 .table.int .nav li span {
@@ -211,8 +224,8 @@ body {
 	height: 100%;
 }
 
-.table.int .main .two-columns .column-2 {
-	width: 810px;
+.table.int .main .two-columns {
+	margin-left: 85px;
 }
 
 .table.int .main .column-1 ol {
@@ -269,9 +282,12 @@ body {
 
 .table.int .main .column-1 h4,
 .table.int .main .column-3 h3,
-.table.int .main .column-3 h4,
-.table.int .main .column-3 .sms {
+.table.int .main .column-3 h4 {
 	margin: 20px 0 5px 0;
+}
+
+.table.int .main .column-3 .sms {
+	margin: 35px 0;
 }
 
 .table.int .main .column-3 .sms p {
@@ -300,10 +316,36 @@ body {
 }
 
 .table.int .main .column-3 form .submit {
+}
+
+.table.int .main .column-3 form .form-submit {
+	background: transparent url(/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-form-btn.png) left top no-repeat;
 	width:111px;
 	height:41px;
-	margin:0 auto;
-	margin-top:5px;
+	margin: 5px auto 0;
+	line-height: 100px;
+	overflow: hidden;
+	text-indent: 100%;
+	border: none;
+	display: block;
+}
+
+.table.int .main .column-3 form .form-item-email label {
+	display: none;
+}
+
+.table.int .main .column-3 form .form-item-email .form-required {
+	display: none;
+}
+
+.table.int .main .column-3 .email-signup .thank-you-message {
+	padding: 10px;
+	background: rgba(0,0,0,.4);
+	margin: 0 -10px;
+}
+
+.table.int .main .column-3 .email-signup .thank-you-message p {
+	margin: 0;
 }
 
 .table.int .main .column-3 .sponsored {
@@ -352,6 +394,7 @@ body {
 .column h4,
 .column h5,
 .column h6,
+.column em,
 .column p {
 	color: inherit;
 }
@@ -606,8 +649,10 @@ body {
 	background: #fff;
 }
 
-.snap_modal_modal .modal-right .modal-content p {
-	color: #fff;
+.snap_modal_modal .modal-right .modal-content p,
+.snap_modal_modal .modal-right .modal-content em {
+	color: inherit;
+	line-height: 1.3em;
 }
 
 .modal-right .modal-content.fact h1,
@@ -669,8 +714,31 @@ body {
 	font-weight: normal;
 }
 
+.modal-content .description p {
+	margin: 1em 0;
+}
+
 .modal-content.fact .description {
-	height: 214px;
+	height: 184px;
+	padding-left: 20px;
+}
+
+.description.take-your-place {
+	height: 100%;
+	background: #fff;
+	color: #0182aa;
+	margin: 0;
+}
+
+.description.take-your-place p {
+	font-size: 16pt;
+	padding: 10px 40px 10px 40px;
+	display: inline-block;
+	margin-top: 110px;
+}
+
+.description.take-your-place p a {
+	color: blue;
 }
 
 /* ==========================================================================
@@ -850,6 +918,9 @@ body {
 		margin-top: 0;
 	}
 
+	.table.int .main .two-columns {
+		margin-left: 0;
+	}
 
 	/* Home */
 
@@ -1096,6 +1167,8 @@ x.snap-grid {
 
 .modal-left img {
     display: block;
+    width: 490px;
+    height: 315px;
 }
 
 p.question {
@@ -1129,12 +1202,31 @@ p.myth-fact {
 
 .snap_modal_modal h1,
 .snap_modal_modal h2,
-.snap_modal_modal h3,
-.snap_modal_modal p.myth-fact {
+.snap_modal_modal h3 {
     display: inline-block;
     color: white;
-    padding: 10px 20px;
+    padding: 5px 20px;
     margin:0;
+}
+
+.modal-header h1 {
+	margin-top: 15px;
+	font-size: 18pt;
+	font-weight: bold;
+	max-width: 400px;
+}
+
+.modal-header h2 {
+	margin-top: 7px;
+	font-size: 16pt;
+	font-weight: 200;
+	line-height: 1;
+}
+
+.modal-header h3 {
+	font-size: 13pt;
+	font-weight: 100;
+	padding-bottom: 0;
 }
 
 #modal-content {
@@ -1182,10 +1274,25 @@ h1.tile-header {
     background-color: #0082ab;
 }
 
-.snap_modal_modal h1.fact {
+.snap_modal_modal .fact h1 {
     background-color: transparent;
     font-size: 60pt;
     line-height: 1em;
+    display: block;
+    text-align: right;
+    padding: 40px 40px 10px 40px;
+}
+
+.modal-right .fact h1 {
+	margin: 0;
+	text-align: left;
+}
+
+.modal-left .myth-fact {
+	text-align: right;
+	padding: 15px 40px 10px 40px;
+	font-weight: bold;
+	display: block;
 }
 
 #modal-content h2 {

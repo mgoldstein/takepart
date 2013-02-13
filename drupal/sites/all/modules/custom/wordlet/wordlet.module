@@ -924,7 +924,7 @@ function wordlet_page_view_callback($page) {
   if (isset($page['wordlets']['fb_description'])) {
     $tw = $page['wordlets']['fb_description'];
     if (count($tw->items)) {
-      $fb_image = $tw->items[0]['single'];
+      $fb_description = $tw->items[0]['single'];
     }
   }
   $fb_description = variable_get("wordlet_{$page['name']}_fb_description", $fb_description);
