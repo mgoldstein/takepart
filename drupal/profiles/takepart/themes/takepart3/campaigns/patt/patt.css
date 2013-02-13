@@ -660,6 +660,11 @@ body {
 	color: #0182aa;
 }
 
+.snap_modal_modal .modal-right .modal-content.fact p {
+	font-size: 16px;
+	padding-right: 40px;
+}
+
 .close-btn {
 	position: absolute;
 	right: 0;
@@ -1185,7 +1190,7 @@ p.question {
 p.myth-fact {
     color: white;
     line-height: 1.1em;
-    font-size: 1.3em;
+    font-size: 18px;
     font-weight: lighter;
 }
 
@@ -1291,7 +1296,6 @@ h1.tile-header {
 .modal-left .myth-fact {
 	text-align: right;
 	padding: 15px 40px 10px 40px;
-	font-weight: bold;
 	display: block;
 }
 
