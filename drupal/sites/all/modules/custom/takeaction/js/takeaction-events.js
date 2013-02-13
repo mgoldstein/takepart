@@ -8,7 +8,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
     'full': 'Full Page',
     'embedaction': 'Embedded',
     'embedaction_expanded': 'Embedded',
-    'thank_you': 'Thank You Page'
+    'thank_you': 'Full Page'
   };
 
   $(document).ready(function () {
@@ -20,6 +20,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
   tp.analytics.events['action_view'] = function (args) {
     var tracked = [
       'eVar4', 'prop4',
+      'eVar30',
       'eVar39',
       'eVar53', 'prop53',
       'eVar55', 'prop55',
@@ -32,6 +33,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
     s.linkTrackVars = tracked.join(',');
     s.events = s.linkTrackEvents = 'event55';
     s.eVar4 = s.prop4 = args.type_name;
+    s.eVar30 = s.pageName;
     s.eVar39 = view_modes[args.view_mode];
     s.eVar53 = s.prop53 = args.action_name;
     s.eVar55 = s.prop55 = args.action_type;
@@ -64,8 +66,8 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
     s.eVar55 = s.prop55 = args.action_type;
     s.eVar56 = s.prop56 = args.topic;
     s.eVar60 = s.prop60 = args.empowered_by;
-    s.prop66 = 'Action Plage Completion';
-    s.prop67 = 'Action Plage Completion';
+    s.prop66 = 'Action Page Completion';
+    s.prop67 = 'Action Page Completion';
     s.tl(true, 'o', 'action taken');
     s.events = s.linkTrackEvents = s.linkTrackVars = null;
   };
@@ -90,10 +92,9 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
   };
 
   tp.analytics.events['newsletter_action_opt_in'] = function (args) {
-    s.linkTrackVars = 'eVar23,eVar25,eVar30,eVar39,eVar53,prop53,events';
+    s.linkTrackVars = 'eVar23,eVar30,eVar39,eVar53,prop53,events';
     s.events = s.linkTrackEvents = 'event39';
     s.eVar23 = args.group;
-    s.eVar25 = args.title;
     s.eVar30 = args.view_mode === 'full' ? args.page_name : s.pageName;
     s.eVar38 = args.type_short_name;
     s.eVar39 = view_modes[args.view_mode];
