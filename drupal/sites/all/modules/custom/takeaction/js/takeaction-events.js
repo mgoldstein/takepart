@@ -19,7 +19,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
 
   tp.analytics.events['action_view'] = function (args) {
     var tracked = [
-      'eVar4', 'prop4'
+      'eVar4', 'prop4',
       'eVar39',
       'eVar53', 'prop53',
       'eVar55', 'prop55',
@@ -44,7 +44,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
 
   tp.analytics.events['action_taken'] = function (args) {
     var tracked = [
-      'eVar4', 'prop4'
+      'eVar4', 'prop4',
       'eVar30',
       'eVar39',
       'eVar53', 'prop53',
@@ -103,7 +103,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
 
   tp.analytics.events['action_share'] = function (args) {
     var tracked = [
-      'eVar4', 'prop4,'
+      'eVar4', 'prop4,',
       'eVar27', 'prop26', // the mismatch is intentional
       'eVar30',
       'eVar39', 'prop39',
@@ -141,7 +141,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
       'stumbleupon': 'StumbleUpon',
       'digg': 'Digg',
       'google_plusone': 'Google +1'
-    }
+    };
     if (evt.data.service in services) {
       share_method = services[evt.data.service];
     }
