@@ -603,6 +603,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     $form['single']['value'] = array(
       '#title' => t('Single Line'),
       '#type' => 'textfield',
+      '#maxlength' => '1000',
       '#attributes' => array('class' => array('single-input')),
       '#default_value' => $values['single'],
     );
