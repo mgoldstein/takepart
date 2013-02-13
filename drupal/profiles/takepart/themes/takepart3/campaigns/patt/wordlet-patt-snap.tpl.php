@@ -29,7 +29,7 @@
     </div>
 
     <? foreach ( wl('snap_slides') as $s ): ?>
-        <div class="tile <?=$s->href?'link':''?> <?=$s->img_src?'person':''?> <?=(!$s->href && !$s->image)?'fact':''?>">
+        <div class="tile <?=$s->href?'link':''?> <?=$s->img_src?'person':''?> <?=(!$s->href && !$s->image)?'fact':''?>" data-token="<?=$s->token?>">
             <? if ( $s->href ): ?>
                 <a href="<?=$s->href?>">
                     <img src="<?=$s->thumb_src?>"/>
@@ -106,7 +106,7 @@
                 <div id="nav-right" class="nav-button"><img src="/profiles/takepart/themes/takepart3/campaigns/patt/images/snap/nav-arrow-right.jpg" alt="right"></div>
             </div>
             <div id="social-buttons">
-                <div class="addthis_toolbox addthis_default_style addthis_32x32_style thank-you-addthis">
+                <div class="addthis_toolbox addthis_toolbox_modal addthis_default_style addthis_32x32_style thank-you-addthis">
                   <a class="addthis_button_facebook social-icon at300b" title="Facebook" href="#"><span class=" at300bs at15nc at15t_facebook"><span class="at_a11y">Share on facebook</span></span></a>
                   <a class="addthis_button_twitter social-icon at300b" title="Tweet" href="#"><span class=" at300bs at15nc at15t_twitter"><span class="at_a11y">Share on twitter</span></span></a>
                   <!-- <a class="addthis_button_google_plusone" g:plusone:size="standard" g:plusone:annotation="none" title="Share on Google+1"></a> -->

@@ -703,6 +703,27 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     );
   }
 
+  if ($configure || in_array('token', $entity->item_keys)) {
+    $form['token'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['token']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Token',
+        '#attributes' => array('data-for' => array('token-input')),
+        '#default_value' => in_array('token', $entity->item_keys),
+      );
+    }
+    $form['token']['value'] = array(
+      '#title' => t('Token'),
+      '#type' => 'textfield',
+      '#default_value' => $values['token'],
+      '#attributes' => array('class' => array('token-input')),
+      '#element_validate' => array('wordlet_validate_href'),
+    );
+  }
+
   if ($configure || in_array('thumb_src', $entity->item_keys)) {
     $form['thumb_src'] = array(
       '#tree' => TRUE,
@@ -937,6 +958,7 @@ function wordlet_update_items_from_fields($entity, $values) {
       'href' => '',
       'node' => '',
       'img_src' => '',
+      'token' => '',
       'thumb_src' => '',
       'form' => '',
     );
