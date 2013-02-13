@@ -168,10 +168,6 @@ a:hover {
     padding:35px 20px;
 }
 
-.node-type-takepart-campaign #page.page-multipage {
-    padding-left:10px;
-}
-
 .main-content {
     width:640px;
     float:left;
@@ -1910,7 +1906,7 @@ body.page-search #right-rail h2 {
 }
 
 body.node-type-takepart-campaign .main-content .region-content-top {
-    margin:0 0 20px 0;
+    padding:0 0 20px 0;
 }
     
 body.node-type-takepart-campaign .main-content #left-rail {
@@ -2293,7 +2289,7 @@ q:before, q:after {
 }
 
 .node-type-takepart-campaign #page {
-    padding-top: 0;
+    padding-top: 10px;
     padding-right: 0;
     padding-bottom: 20px;
     padding-left: 10px;
@@ -2971,13 +2967,13 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 }
 
 .node-type-takepart-campaign #highlighted .region-highlighted {
-    padding:20px 10px;
+    padding:20px 10px 10px 10px;
 }
 
-.multipage-campaign #highlighted .region-highlighted {
-    padding-top: 10px;
+.node-type-takepart-campaign.multipage-campaign #highlighted .region-highlighted {
+    padding:10px;
 }
-
+ 
 #edit-terms-of-use {
     display: none;
 }
