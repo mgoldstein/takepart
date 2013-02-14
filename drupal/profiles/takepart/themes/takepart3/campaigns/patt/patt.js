@@ -1,7 +1,6 @@
 (function(window, $, undefined) {
 // Setup
 
-
 // Document load
 $(function() {
 
@@ -12,7 +11,6 @@ if ( $columns.length ) {
 		offsetNode: '.page-wrap .main'
 	});
 }
-
 
 var height = 0;
 $('.table.int .column').each(function() {
@@ -107,6 +105,8 @@ $('body')
 var ytreg = /v=([a-zA-Z0-9]+)/;
 // Page specific:
 if ( $('body').is('.page-wordlet-patt-home') ) {
+	$.tpmodal.show({html: '<iframe width="560" height="315" src="http://www.youtube.com/embed/f4LuipQzXqA?autoplay=1" frameborder="0" allowfullscreen=""></iframe>'});
+
 	$('.table .tag img')
 		.each(function() {
 			var $img = $(this);
