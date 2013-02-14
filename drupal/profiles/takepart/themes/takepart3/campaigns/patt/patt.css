@@ -1124,12 +1124,6 @@ body {
     width: 100%;
 }
 
-x.snap-grid {
-    position: relative;
-    width: 100%;
-    
-}
-
 .tile {
     background-color: #0082ab;
     color: white;
@@ -1139,6 +1133,10 @@ x.snap-grid {
     width: 50%;
     margin: 0 0 0 0;
     overflow: hidden;
+}
+
+.tile a:hover {
+	text-decoration: none;
 }
 
 .tile img {

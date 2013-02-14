@@ -35,8 +35,10 @@
                     <img src="<?=$s->thumb_src?>"/>
                 </a>
             <? elseif ( !$s->href && !$s->img_src ): ?>
-                <h1 class="tile-header"><?=w('myth')?></h1>
-                <p><?=$s->single?></p>
+                <a href="?<?=$s->token?>">
+                    <h1 class="tile-header"><?=w('myth')?></h1>
+                    <p><?=$s->single?></p>
+                </a>
                 <div class="modal-left">
                     <div class="fact">
                         <h1><?=w('myth')?></h1>
@@ -54,7 +56,9 @@
                     </div>
                 </div>
             <? elseif( !$s->single(false) ): ?>
-                <img src="<?=$s->thumb_src?>"/>
+                <a href="?<?=$s->token?>">
+                    <img src="<?=$s->thumb_src?>"/>
+                </a>
                 <div class="modal-left">
                     <img src="<?=$s->img_src?>" alt="Take your place">
                 </div>

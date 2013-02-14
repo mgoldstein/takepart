@@ -96,6 +96,9 @@ $current_tile = $('.tile[data-token="' + getQueryParam('slide') + '"]');
 if ( $current_tile.length ) show_modal();
 
 $('body')
+	.delegate('.tile:not(.link) a', 'click', function(e) {
+		e.preventDefault();
+	})
 	.delegate('.tile', 'click', function() {
 		$current_tile = $(this);
 		show_modal(true);
