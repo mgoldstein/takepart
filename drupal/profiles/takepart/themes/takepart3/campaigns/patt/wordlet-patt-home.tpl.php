@@ -1,7 +1,7 @@
 <div class="table">
 	<img class="logo" src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-logo.png" width="506" height="249" alt="a place at the table logo">
 	<img class="tagline" src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-tagline.png" width="386" height="51" alt="In theaters, available on iTunes and ON Demand March 1st">
-	
+
 	<div class="item salad">
 		<img class="item full" src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-salad.png" width="214" height="206" alt="salad bowl with salad" usemap="#salad">
 		<a class="tag" href="/hunger">

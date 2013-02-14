@@ -1,7 +1,6 @@
 (function(window, $, undefined) {
 // Setup
 
-
 // Document load
 $(function() {
 
@@ -12,7 +11,6 @@ if ( $columns.length ) {
 		offsetNode: '.page-wrap .main'
 	});
 }
-
 
 var height = 0;
 $('.table.int .column').each(function() {
@@ -36,7 +34,20 @@ var show_modal = function(animate) {
 
 	var dospeed = animate ? speed : 0;
 
+	$modal.find('.addthis_toolbox a').attr('addthis:url', [location.protocol, '//', location.host, location.pathname].join('') + '?slide=' + $current_tile.data('token'));
+
 	$.tpmodal.show({id: 'snap_modal_', html: $modal.html(), prepend: 'snap_modal_', speed: dospeed});
+
+	// Sitecat garbage
+    var s=s_gi(Drupal.settings.omniture.s_account);
+    s.linkTrackVars='eVar73,eVar30,events';
+    s.linkTrackEvents='event73';
+    s.events='event73';
+    s.eVar28="APATT - SNAP Gallery Modal View";
+    s.eVar30="takepart:place-at-the-table:APATT Gallery";
+    s.tl(true, 'o', 'APATT - SNAP Gallery Modal View');
+
+	addthis.toolbox('.addthis_toolbox_modal');
 };
 
 var http_match = /^http(s)?:\/\//;
@@ -94,6 +105,8 @@ $('body')
 var ytreg = /v=([a-zA-Z0-9]+)/;
 // Page specific:
 if ( $('body').is('.page-wordlet-patt-home') ) {
+	$.tpmodal.show({html: '<iframe width="560" height="315" src="http://www.youtube.com/embed/f4LuipQzXqA?autoplay=1" frameborder="0" allowfullscreen=""></iframe>'});
+
 	$('.table .tag img')
 		.each(function() {
 			var $img = $(this);
