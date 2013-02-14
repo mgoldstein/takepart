@@ -2966,6 +2966,10 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
     padding: 0;
 }
 
+#highlighted .region-highlighted {
+    padding:10px;
+}
+
 .node-type-takepart-campaign #highlighted .region-highlighted {
     padding:20px 10px 10px 10px;
 }

@@ -2883,8 +2883,8 @@ body.node-type-takepart-campaign #right-rail {
 @font-face {
     font-family: 'GorriSansRegular';
     src: url(../includes/gorrisans-webfont.eot);
-    src: url(../includes/gorrisans-webfont.eot?#iefix) format('embedded-opentype'),
-        url(../includes/gorrisans-webfont.woff) format('woff'),
+    src: url('../includes/gorrisans-webfont.eot?#iefix') format('embedded-opentype'),
+        url('../includes/gorrisans-webfont.woff') format('woff'),
         url(../includes/gorrisans-webfont.ttf) format('truetype'),
         url(../includes/gorrisans-webfont.svg#GorriSansRegular) format('svg');
     font-weight: normal;
