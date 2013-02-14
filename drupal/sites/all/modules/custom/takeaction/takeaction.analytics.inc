@@ -80,7 +80,7 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
     $type_short_name = $short_names[$entity->type];
 
     // TAB action taken event.
-    if ($view_mode === 'full') {
+    //if ($view_mode === 'full') {
       $args = $this->getEventArgs($entity, $view_mode);
       $events[] = tp_analytics_event(
         'action_taken',
@@ -88,7 +88,7 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
         'page',
         "action_taken-{$entity->nid}"
       );
-    }
+    //}
 
     // Newsletter signup events.
     $settings = entity_load_single('signature_node', $entity->nid);
@@ -156,24 +156,36 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
       }
     }
 
-    $extra_events = array(
-      'petition_action' => 'event27',
-      'pledge_action' => 'event32',
-      'action' => 'event37',
-    );
-    $extra_event = $extra_events[$entity->type];
+    if ($view_mode === 'full') {
+      $events = array(
+        'petition_action' => 'event56,event27',
+        'pledge_action' => 'event56,event32',
+        'action' => 'event56,event37',
+      );
+      $completion = 'Action Page Completion';
+    }
+    else {
+      $events = array(
+        'petition_action' => 'event64,event27',
+        'pledge_action' => 'event64,event32',
+        'action' => 'event64,event37',
+      );
+      $completion = 'Embedded Action Completion';
+    }
+    $fired_events = $events[$entity->type];
 
     $type_name = node_type_get_name($entity);
     $action_name = $type_name . ': ' . check_plain($entity->title);
 
     return array(
-      'extra_event' => $extra_event,
+      'fired_events' => $fired_events,
       'type_name' => $type_name,
       'view_mode' => $view_mode,
       'action_name' => $action_name,
       'action_type' => $action_type,
       'topic' => $topic,
       'empowered_by' => $sponsor,
+      'completion' => $completion
     );
   }
 }

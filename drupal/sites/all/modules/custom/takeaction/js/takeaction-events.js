@@ -58,7 +58,7 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
       'events'
     ];
     s.linkTrackVars = tracked.join(',');
-    s.events = s.linkTrackEvents = 'event56,' + args.extra_event;
+    s.events = s.linkTrackEvents = args.fired_events;
     s.eVar4 = s.prop4 = args.type_name;
     s.eVar30 = s.pageName;
     s.eVar39 = view_modes[args.view_mode];
@@ -66,8 +66,8 @@ if (!tp.analytics) { tp.analytics = {'events': {}}; }
     s.eVar55 = s.prop55 = args.action_type;
     s.eVar56 = s.prop56 = args.topic;
     s.eVar60 = s.prop60 = args.empowered_by;
-    s.prop66 = 'Action Page Completion';
-    s.prop67 = 'Action Page Completion';
+    s.prop66 = args.completion;
+    s.prop67 = args.completion;
     s.tl(true, 'o', 'action taken');
     s.events = s.linkTrackEvents = s.linkTrackVars = null;
   };
