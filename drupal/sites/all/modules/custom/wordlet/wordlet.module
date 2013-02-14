@@ -885,6 +885,11 @@ function wordlet_page_view_callback($page) {
   // Set the active page configuration
   wordlet_active_page($page);
 
+  $alter_hook = "wordlet_{$page['name']}_page_alter";
+  if (function_exists($alter_hook)) {
+    call_user_func_array($alter_hook, array($page));
+  }
+
   $title = '';
   if (isset($page['wordlets']['title'])) {
     $tw = $page['wordlets']['title'];
@@ -969,6 +974,11 @@ function wordlet_page_view_callback($page) {
       'group' => JS_THEME,
       'weight' => 20,
     ));
+  }
+
+  $alterfn = 'wordlet_' . $page['name'] . '_page_alter';
+  if ( function_exists($alterfn) ) {
+    call_user_func_array($alterfn, array($page));
   }
 
   // Structure is in the template, content in the wordlets.
@@ -1174,3 +1184,22 @@ function wa() {
     return '';
   }
 }
+
+// Find wordlet in wordlet list based on "key"
+function wordlet_find($name, $key, $value) {
+  foreach( wordlet_list($name) as $w ) {
+    if ( $w->{$key} == $value ) return $w;
+  }
+
+  return null;
+}
+
+function wf() {
+  try {
+    $func_get_args = func_get_args();
+    return call_user_func_array('wordlet_find', $func_get_args);
+  } catch (Exception $e) {
+    return '';
+  }
+}
+

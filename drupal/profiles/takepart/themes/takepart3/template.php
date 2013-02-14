@@ -1,5 +1,25 @@
 <?php
 
+function wordlet_patt_snap_page_alter($page) {
+    if ( isset($_GET['slide']) ) {
+        $w = wordlet_find('snap_slides', 'token', $_GET['slide']);
+        if ( $w && $w->img_src ) {
+            $metatag = array(
+              '#type' => 'html_tag',
+              '#tag' => 'meta',
+              '#attributes' => array(
+                'property' => 'og:image',
+                'content' =>  $w->img_src,
+              ),
+            );
+
+            drupal_add_html_head( $metatag, 'facebook_image');
+        }
+    }
+
+  return '';
+}
+
 /**
  * Each item of the array should be keyed as follows:
  * url (String, 21 characters ) http://www.google.com
