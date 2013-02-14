@@ -10,7 +10,7 @@
     <div class="addthis_toolbox addthis_default_style addthis_32x32_style thank-you-addthis">
         <h3><?=w('share')?></h3>
         <a class="addthis_button_facebook social-icon at300b" title="Facebook" href="#"><span class=" at300bs at15nc at15t_facebook"><span class="at_a11y">Share on facebook</span></span></a>
-        <a class="addthis_button_twitter social-icon at300b" title="Tweet" href="#" <?=wa('twitter_text')?>><span class=" at300bs at15nc at15t_twitter"><span class="at_a11y">Share on twitter</span></span></a>
+        <a class="addthis_button_twitter social-icon at300b" title="Tweet" addthis:url="http://bit.ly/WJIyQ3" href="#" <?=wa('twitter_text')?>><span class=" at300bs at15nc at15t_twitter"><span class="at_a11y">Share on twitter</span></span></a>
         <script>
         var addthis_share = {
             templates : {
