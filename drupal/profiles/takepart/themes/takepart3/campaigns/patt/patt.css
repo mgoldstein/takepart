@@ -591,6 +591,12 @@ body {
 	padding: 8px 12px;
 }
 
+.page-wordlet-patt-snap .tile.person,
+.page-wordlet-patt-snap .tile.link,
+.page-wordlet-patt-snap .tile.fact {
+	cursor: pointer;
+}
+
 .page-wordlet-patt-snap .tile .modal-left,
 .page-wordlet-patt-snap .tile .modal-header,
 .page-wordlet-patt-snap .tile .description {
@@ -658,6 +664,11 @@ body {
 .modal-right .modal-content.fact h1,
 .snap_modal_modal .modal-right .modal-content.fact p {
 	color: #0182aa;
+}
+
+.snap_modal_modal .modal-right .modal-content.fact p {
+	font-size: 16px;
+	padding-right: 40px;
 }
 
 .close-btn {
@@ -1185,7 +1196,7 @@ p.question {
 p.myth-fact {
     color: white;
     line-height: 1.1em;
-    font-size: 1.3em;
+    font-size: 18px;
     font-weight: lighter;
 }
 
@@ -1291,7 +1302,6 @@ h1.tile-header {
 .modal-left .myth-fact {
 	text-align: right;
 	padding: 15px 40px 10px 40px;
-	font-weight: bold;
 	display: block;
 }
 

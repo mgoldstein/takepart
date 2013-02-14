@@ -976,6 +976,11 @@ function wordlet_page_view_callback($page) {
     ));
   }
 
+  $alterfn = 'wordlet_' . $page['name'] . '_page_alter';
+  if ( function_exists($alterfn) ) {
+    call_user_func_array($alterfn, array($page));
+  }
+
   // Structure is in the template, content in the wordlets.
   return '';
 }
@@ -1179,3 +1184,22 @@ function wa() {
     return '';
   }
 }
+
+// Find wordlet in wordlet list based on "key"
+function wordlet_find($name, $key, $value) {
+  foreach( wordlet_list($name) as $w ) {
+    if ( $w->{$key} == $value ) return $w;
+  }
+
+  return null;
+}
+
+function wf() {
+  try {
+    $func_get_args = func_get_args();
+    return call_user_func_array('wordlet_find', $func_get_args);
+  } catch (Exception $e) {
+    return '';
+  }
+}
+
