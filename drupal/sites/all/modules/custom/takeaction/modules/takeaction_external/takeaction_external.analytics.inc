@@ -14,7 +14,7 @@ class ExternalActionAnalyticsController extends TakeActionAnalyticsController {
         $link_only = !empty($item['value']);
       }
 
-      if ($view_mode === 'embed' && !$link_only) {
+      if ($view_mode === 'embed' && $link_only) {
         // External action taken (on-site and link only).
         $instance_name = "external_action_click-{$entity->nid}";
         $event = tp_analytics_event('external_action_click', array(
@@ -23,12 +23,7 @@ class ExternalActionAnalyticsController extends TakeActionAnalyticsController {
         ));
         $this->addFrontEndEventInstance($instance_name, $event);
       }
-      else {
-        parent::entityView($entity, $view_mode, $langcode);
-      }
     }
-    else {
-      parent::entityView($entity, $view_mode, $langcode);
-    }
+    parent::entityView($entity, $view_mode, $langcode);
   }
 }
