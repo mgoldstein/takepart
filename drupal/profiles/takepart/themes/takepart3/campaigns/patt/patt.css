@@ -591,6 +591,12 @@ body {
 	padding: 8px 12px;
 }
 
+.page-wordlet-patt-snap .tile.person,
+.page-wordlet-patt-snap .tile.link,
+.page-wordlet-patt-snap .tile.fact {
+	cursor: pointer;
+}
+
 .page-wordlet-patt-snap .tile .modal-left,
 .page-wordlet-patt-snap .tile .modal-header,
 .page-wordlet-patt-snap .tile .description {
