@@ -6,12 +6,14 @@ $(function() {
 
 var $columns = $('.column-1 .content, .column-3 .content');
 
+// Make columns stay in viewport
 if ( $columns.length ) {
 	$columns.tpsticky({
 		offsetNode: '.page-wrap .main'
 	});
 }
 
+// Make columns equal height
 var height = 0;
 $('.table.int .column').each(function() {
 	var tempheight;
@@ -27,6 +29,17 @@ var $overlay = $('#grid-overlay');
 var speed = 400;
 var $current_tile;
 //var modal_options = {id: 'snap_modal';
+
+var getQueryParam = function(name) {
+	var result = {}, queryString = location.search.substring(1),
+		re = /([^&=]+)=([^&]*)/g, m;
+
+	while (m = re.exec(queryString)) {
+		result[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+	}
+
+	return result[name];
+};
 
 var show_modal = function(animate) {
 	$modal.find('.modal-left').html($current_tile.find('.modal-left').html());
@@ -79,6 +92,9 @@ var prev = function() {
 	show_modal(false);
 };
 
+$current_tile = $('.tile[data-token="' + getQueryParam('slide') + '"]');
+if ( $current_tile.length ) show_modal();
+
 $('body')
 	.delegate('.tile', 'click', function() {
 		$current_tile = $(this);
@@ -111,6 +127,8 @@ if ( $('body').is('.page-wordlet-patt-home') ) {
 		.each(function() {
 			var $img = $(this);
 			var $a = $img.parent();
+			var img = new Image();
+			img.src = $img.data('onsrc');
 			$a.data({
 				off: $img.attr('src'),
 				on: $img.data('onsrc')

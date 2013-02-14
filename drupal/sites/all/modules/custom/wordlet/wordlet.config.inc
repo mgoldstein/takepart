@@ -88,7 +88,7 @@ function _wordlet_configuration() {
       'load' => array('site', 'intel_girls_campaign'),
     ),
 
-    /* // Place at the Table Campaign
+    // Place at the Table Campaign
     'patt_campaign' => array(
       'title' => 'A Place at the Table Campaign',
     ),
@@ -235,6 +235,6 @@ function _wordlet_configuration() {
       'path' => 'place-at-the-table/json/snapgriddata.txt',
       'published' => TRUE,
       'wrappers' => array(),
-    ), */
+    ),
   );
 }
