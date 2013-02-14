@@ -10,7 +10,7 @@
     <div class="addthis_toolbox addthis_default_style addthis_32x32_style thank-you-addthis">
         <h3><?=w('share')?></h3>
         <a class="addthis_button_facebook social-icon at300b" title="Facebook" href="#"><span class=" at300bs at15nc at15t_facebook"><span class="at_a11y">Share on facebook</span></span></a>
-        <a class="addthis_button_twitter social-icon at300b" title="Tweet" href="#" <?=wa('twitter_text')?>><span class=" at300bs at15nc at15t_twitter"><span class="at_a11y">Share on twitter</span></span></a>
+        <a class="addthis_button_twitter social-icon at300b" title="Tweet" addthis:url="http://bit.ly/WJIyQ3" href="#" <?=wa('twitter_text')?>><span class=" at300bs at15nc at15t_twitter"><span class="at_a11y">Share on twitter</span></span></a>
         <script>
         var addthis_share = {
             templates : {
@@ -35,8 +35,10 @@
                     <img src="<?=$s->thumb_src?>"/>
                 </a>
             <? elseif ( !$s->href && !$s->img_src ): ?>
-                <h1 class="tile-header"><?=w('myth')?></h1>
-                <p><?=$s->single?></p>
+                <a href="?slide=<?=$s->token?>">
+                    <h1 class="tile-header"><?=w('myth')?></h1>
+                    <p><?=$s->single?></p>
+                </a>
                 <div class="modal-left">
                     <div class="fact">
                         <h1><?=w('myth')?></h1>
@@ -54,7 +56,9 @@
                     </div>
                 </div>
             <? elseif( !$s->single(false) ): ?>
-                <img src="<?=$s->thumb_src?>"/>
+                <a href="?slide=<?=$s->token?>">
+                    <img src="<?=$s->thumb_src?>"/>
+                </a>
                 <div class="modal-left">
                     <img src="<?=$s->img_src?>" alt="Take your place">
                 </div>
@@ -66,7 +70,9 @@
                     </div>
                 </div>
             <? elseif ( $n = explode('|', $s->single(false)) ): ?>
-                <img src="<?=$s->thumb_src?>"/>
+                <a href="?slide=<?=$s->token?>">
+                    <img src="<?=$s->thumb_src?>"/>
+                </a>
                 <div class="modal-left">
                     <img src="<?=$s->img_src?>" alt="<?=$n[0]?>">
                 </div>
