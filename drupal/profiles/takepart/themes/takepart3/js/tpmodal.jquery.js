@@ -282,6 +282,12 @@ var tpmodal = function(parameters) {
 
 		if ( form_edited && !confirm('Form has been edited. Continue?') ) return false;
 
+		$modal_content.css({
+			height: $modal_content.height(),
+			width: $modal_content.width()
+		})
+		.html('');
+
 		$overlay.animate({opacity: 0}, settings.speed, function() {
 			$overlay.hide();
 		});
@@ -299,7 +305,8 @@ var tpmodal = function(parameters) {
 
 			$modal_content.css({
 				width: '',
-				height: ''
+				height: '',
+				visibility: ''
 			});
 		});
 
