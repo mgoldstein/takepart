@@ -6,8 +6,11 @@
 		</div>
 	</div>
 	<div class="secondary">
-		<div class="signup_form">
-			<h3><?=w('signup_headline')?></h3>
+		<div class="signup_form" <?=wa('signup_form')?>>
+			<? if ( $w = w('signup_form') ): ?>
+				<h3><?=$w->single(false)?></h3>
+				<?=$w?>
+			<? endif ?>
 		</div>
 		<div class="partners">
 			<ul <?=wa('partners')?>>
