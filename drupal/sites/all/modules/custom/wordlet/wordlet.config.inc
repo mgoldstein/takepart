@@ -265,7 +265,7 @@ function _wordlet_configuration() {
     // CAN About
     'can_about' => array(
       'title' => 'CAN - About',
-      'template' => 'can_home'
+      'template' => 'can_home',
       'path' => 'can/about',
       'published' => TRUE,
       'wrappers' => array('can', 'campaign', 'html'),
