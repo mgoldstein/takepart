@@ -50,6 +50,17 @@ function _wordlet_configuration() {
       'title' => 'Site Wordlets',
     ),
 
+    // Responsive iframed header for outside devs
+    'iframed_header' => array(
+      'title' => 'Iframed header',
+      'path' => 'responsive-header',
+      'published' => TRUE,
+      'wrappers' => array('html'),
+      'css' => array(
+        'css/slim-header.css',
+      ),
+    ),
+
     // Test
     'test' => array(
       'title' => 'Test',
@@ -236,5 +247,28 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array(),
     ),
+
+    // Place at the Table Campaign
+    'can_campaign' => array(
+      'title' => 'CAN Campaign',
+    ),
+
+    // Place at the Table Home
+    'can_home' => array(
+      'title' => 'CAN - Home',
+      'path' => 'can',
+      'published' => TRUE,
+      'wrappers' => array('can', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/can/can.css',
+      ),
+      'js' => array(
+        'campaigns/can/can.js',
+      ),
+      'load' => array('site', 'can_campaign'),
+    ),
+
   );
 }
