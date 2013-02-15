@@ -9,7 +9,7 @@
 		<div class="signup_form" <?=wa('signup_form')?>>
 			<? if ( $w = w('signup_form') ): ?>
 				<h3><?=$w->single(false)?></h3>
-				<?=$w?>
+				<?=$w->form?>
 			<? endif ?>
 		</div>
 		<div class="partners">
