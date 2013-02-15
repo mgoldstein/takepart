@@ -382,6 +382,7 @@ function wordlet_url_outbound_alter(&$path, &$options, $original_path) {
 function wordlet_preprocess_page(&$variables) {
   $config = wordlet_active_page();
   if ($config !== FALSE) {
+    if ( isset($config['template']) )  $variables['theme_hook_suggestions'][] = "wordlet_{$config['template']}";
     $variables['theme_hook_suggestions'][] = "wordlet_{$config['name']}";
   }
 }

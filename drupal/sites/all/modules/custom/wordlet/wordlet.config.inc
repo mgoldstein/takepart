@@ -240,14 +240,6 @@ function _wordlet_configuration() {
       'load' => array('site', 'patt_campaign'),
     ),
 
-    // Place at the Table - I Need Food Assistance
-    'patt_json' => array(
-      'title' => 'A Place at the Table - JSON',
-      'path' => 'place-at-the-table/json/snapgriddata.txt',
-      'published' => TRUE,
-      'wrappers' => array(),
-    ),
-
     // CAN Campaign
     'can_campaign' => array(
       'title' => 'CAN Campaign',
@@ -257,6 +249,24 @@ function _wordlet_configuration() {
     'can_home' => array(
       'title' => 'CAN - Home',
       'path' => 'can',
+      'published' => TRUE,
+      'wrappers' => array('can', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/can/can.css',
+      ),
+      'js' => array(
+        'campaigns/can/can.js',
+      ),
+      'load' => array('site', 'can_campaign'),
+    ),
+
+    // CAN About
+    'can_about' => array(
+      'title' => 'CAN - About',
+      'template' => 'can_home'
+      'path' => 'can/about',
       'published' => TRUE,
       'wrappers' => array('can', 'campaign', 'html'),
       'css' => array(
