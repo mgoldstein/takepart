@@ -248,12 +248,12 @@ function _wordlet_configuration() {
       'wrappers' => array(),
     ),
 
-    // Place at the Table Campaign
+    // CAN Campaign
     'can_campaign' => array(
       'title' => 'CAN Campaign',
     ),
 
-    // Place at the Table Home
+    // CAN Home
     'can_home' => array(
       'title' => 'CAN - Home',
       'path' => 'can',
