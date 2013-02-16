@@ -259,6 +259,16 @@ $('body')
 	;
 
 // Configure links
+$('.wordlet_edit').each(function() {
+	var $this = $(this);
+	$this.parent()
+		.addClass('wordlet')
+		.attr({
+			'data-edit': $this.data('edit'),
+			'data-configure': $this.data('configure')
+		});
+});
+
 //$('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
 $('.wordlet:not(:has(.wordlet_configure))').each(function() {
 	var $this = $(this);

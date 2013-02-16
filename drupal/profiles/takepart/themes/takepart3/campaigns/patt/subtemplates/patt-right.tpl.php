@@ -2,7 +2,7 @@
 	<div class="content">
 		<div class="email-signup">
 			<h4><?=w('email_signup')?></h4>
-			<?=w('email_signup_form')?>
+			<div><?=w('email_signup_form')?></div>
 		</div>
 		<div class="sms">
 			<?=w('sms')?>
