@@ -1171,7 +1171,6 @@ function we() {
 function wordlet_edit_attribute($name) {
   if ( !wordlet_edit_mode() ) return '';
   $w = wordlet($name);
-var_dump($w);
   $data_configure = '';
   if ( wordlet_access('administer') ) $data_configure = ' data-configure="/admin/wordlet/page/' . $w->page . '/manage/' . $w->id . '/configure"';
   $data_edit = '';

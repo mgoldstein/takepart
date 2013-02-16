@@ -13,7 +13,6 @@
 					</h1>
 				<? endif ?>
 				<div class="menu">
-					<? var_dump(w('menu')) ?>
 					<ul <?=wa('menu')?>>
 						<? foreach( wl('menu') as $w ): ?>
 							<li><a href="<?=$w->href?>"><?=$w->single(false)?></a></li>
