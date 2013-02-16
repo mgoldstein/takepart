@@ -78,7 +78,7 @@ function _wordlet_configuration() {
       'load' => array('site', 'intel_girls_campaign'),*/
     ),
 
-    // Intel Girls Campaign
+    /*// Intel Girls Campaign
     'intel_girls_campaign' => array(
       'title' => 'Intel Girls Campaign',
     ),
@@ -97,7 +97,7 @@ function _wordlet_configuration() {
         'campaigns/intelchange/intelchange.js',
       ),
       'load' => array('site', 'intel_girls_campaign'),
-    ),
+    ),*/
 
     // Place at the Table Campaign
     'patt_campaign' => array(
@@ -317,6 +317,28 @@ function _wordlet_configuration() {
         'campaigns/eyelevel/eyelevel.js',
       ),
       'load' => array('site', 'eyelevel_campaign'),
+    ),
+
+    // Intel Girls Campaign
+    'intelgirls_campaign' => array(
+      'title' => 'Intel Girls Campaign',
+    ),
+
+    // Intel Girls Home
+    'intelgirls_home' => array(
+      'title' => 'Intel Girls - Home',
+      'path' => 'intelgirls',
+      'published' => TRUE,
+      'wrappers' => array('intelgirls', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelgirls/intelgirls.css',
+      ),
+      'js' => array(
+        'campaigns/intelgirls/intelgirls.js',
+      ),
+      'load' => array('site', 'intelgirls_campaign'),
     ),
 
   );
