@@ -78,6 +78,11 @@ class WordletItem {
     if ( $markup ) return $this->args['single'];
     return $this->args['single_no_markup'];
   }
+
+  public function multi($markup = true) {
+    if ( $markup ) return $this->args['multi'];
+    return $this->args['multi_no_markup'];
+  }
 }
 
 class WordletList implements Iterator {
