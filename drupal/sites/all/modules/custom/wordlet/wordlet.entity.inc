@@ -467,7 +467,7 @@ class WordletController extends EntityAPIControllerExportable {
 
       }
     }
-
+var_dump($args);
     return new WordletItem($args);
   }
 
