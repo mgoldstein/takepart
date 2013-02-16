@@ -258,6 +258,7 @@ $('body')
 	.addClass((getCookie('show_wordlets')?'':'hide_wordlets'))
 	;
 
+// Configure links
 //$('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
 $('.wordlet:not(:has(.wordlet_configure))').each(function() {
 	var $this = $(this);
@@ -336,6 +337,65 @@ $('.wordlet:not(:has(.wordlet_configure))').each(function() {
 		;
 
 	$container
+		.bind('mouseenter', function(e) {
+			do_hide = false;
+		})
+		.bind('mouseleave', function(e) {
+			do_hide = true;
+			setTimeout(hide, 0);
+		})
+		;
+});
+
+// TODO: combine this with the one above
+$('.wordlet a').each(function() {
+	var $this = $(this);
+	var $link = $this;
+
+	var $container = $('<div/>')
+		.addClass('wordlet_helper_container')
+		.css({
+			display: 'block',
+			position: 'absolute',
+			right: '100%',
+			top: 0,
+			zIndex: 10000
+		})
+		.appendTo('body')
+		;
+
+	var $wlink = $('<a href="' + $link[0].href + '">Open Link</a>');
+	$wlink.html('Open Link');
+	$container.append($wlink);
+
+	var do_hide = true;
+	var hide = function() {
+		if ( do_hide ) $container.css({left: '', right: '100%', top: 0});
+	}
+
+	$this
+		.bind('mouseenter', function(e) {
+			do_hide = false;
+
+			if ( $container[0].style.right != '100%' ) return true;
+
+			var x = $this.offset().left + $this.width() - $container.width();
+			if ( $this.width() < $container.width() || $this.height() < $container.height() ) x = $this.offset().left + $this.width();
+			var y = $this.offset().top;
+
+			$container
+				.css({
+					right: '',
+					left: x,
+					top: y
+				});
+		})
+		.bind('mouseleave', function(e) {
+			do_hide = true;
+			setTimeout(hide, 0);
+		})
+		;
+
 	$container
 		.bind('mouseenter', function(e) {
 			do_hide = false;

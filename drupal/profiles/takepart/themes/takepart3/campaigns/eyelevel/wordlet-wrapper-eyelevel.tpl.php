@@ -9,7 +9,7 @@
 				<? if ( $w = w('header_image') ): ?>
 					<h1 <?=wa('header_image')?>>
 						<span><?=$w->single(false)?></span>
-						<img src="<?=$w->img_src?>" alt="eye level logo" />
+						<a href="<?=$w->href?>"><img src="<?=$w->img_src?>" alt="eye level logo" /></a>
 					</h1>
 				<? endif ?>
 				<div class="menu">
