@@ -458,11 +458,9 @@ class WordletController extends EntityAPIControllerExportable {
         $description = ( $entity->description ) ? ' title="' . htmlspecialchars($entity->description) . '"' : '';
 
         $args[$attribute] = implode('', array(
-          "<{$tag} class=\"{$classes}\" {$description}>",
           $args[$attribute],
           $edit_link,
           $configure_link,
-          "</{$tag}>",
         ));
 
       }

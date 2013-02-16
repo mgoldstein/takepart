@@ -381,7 +381,7 @@ $('.wordlet a').each(function() {
 
 			var x = $this.offset().left + $this.width() - $container.width();
 			if ( $this.width() < $container.width() || $this.height() < $container.height() ) x = $this.offset().left + $this.width();
-			var y = $this.offset().top;
+			var y = $this.offset().top + 10;
 
 			$container
 				.css({
