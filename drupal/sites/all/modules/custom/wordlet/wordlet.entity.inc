@@ -11,6 +11,7 @@ class WordletItem {
       'name' => '',
       'title' => '',
       'format' => WORDLET_PLAIN_TEXT,
+      'configured' => false,
       'single' => '',
       'single_no_markup' => '',
       'multi' => '',
@@ -223,6 +224,7 @@ class WordletController extends EntityAPIControllerExportable {
       'name' => $entity->name,
       'format' => $entity->format,
       'title' => $entity->title,
+      'configured' => false,
       'single' => '',
       'single_no_markup' => '',
       'multi' => '',
@@ -251,7 +253,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     // Single line text
     if (in_array('single', $entity->item_keys)) {
-
+      $args['configured'] = true;
       // Preprocess the value
       switch ($entity->format) {
       case WORDLET_FULL_HTML:
@@ -276,6 +278,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     // Multi line text
     if (in_array('multi', $entity->item_keys)) {
+      $args['configured'] = true;
       // Preprocess the value
       switch ($entity->format) {
       case WORDLET_FULL_HTML:
@@ -307,6 +310,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     // Link href
     if (in_array('href', $entity->item_keys)) {
+      $args['configured'] = true;
       $args['href'] = $item['href'];
       $args['href_raw'] = $item['href'];
 
@@ -326,6 +330,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     // Node requires a nid and a view mode
     if (in_array('node', $entity->item_keys)) {
+      $args['configured'] = true;
       $value = '';
       if (!empty($item['node']['nid']) && !empty($item['node']['view_mode'])) {
         $node = node_load($item['node']['nid']);
@@ -342,6 +347,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     // Image src
     if (in_array('img_src', $entity->item_keys)) {
+      $args['configured'] = true;
       $args['img_src'] = $item['img_src'];
 
       $stripped = strip_tags($item['img_src']);
@@ -350,6 +356,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     // token
     if (in_array('token', $entity->item_keys)) {
+      $args['configured'] = true;
       $args['token'] = $item['token'];
 
       $stripped = strip_tags($item['token']);
@@ -358,6 +365,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     // video
     if (in_array('video', $entity->item_keys)) {
+      $args['configured'] = true;
       $args['video'] = $item['video'];
 
       $stripped = strip_tags($item['video']);
@@ -366,6 +374,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     // Thumb src
     if (in_array('thumb_src', $entity->item_keys)) {
+      $args['configured'] = true;
       $args['thumb_src'] = $item['thumb_src'];
 
       $stripped = strip_tags($item['thumb_src']);
@@ -373,6 +382,7 @@ class WordletController extends EntityAPIControllerExportable {
     }
 
     if (in_array('form', $entity->item_keys)) {
+      $args['configured'] = true;
       $value = '';
       if (!empty($item['form']['name'])) {
         $form_hook = "{$item['form']['name']}_form";

@@ -1173,7 +1173,8 @@ function wordlet_edit_attribute($name) {
   $w = wordlet($name);
   $data_configure = '';
   if ( wordlet_access('administer') ) $data_configure = ' data-configure="/admin/wordlet/page/' . $w->page . '/manage/' . $w->id . '/configure"';
-  $data_edit = ' data-edit="/admin/wordlet/page/' . $w->page . '/manage/' . $w->id . '/edit"';
+  $data_edit = '';
+  if ( $w->configured ) $data_edit = ' data-edit="/admin/wordlet/page/' . $w->page . '/manage/' . $w->id . '/edit"';
   return $data_configure . $data_edit;
 }
 
