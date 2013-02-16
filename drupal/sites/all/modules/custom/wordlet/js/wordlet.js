@@ -269,17 +269,19 @@ $('.wordlet_edit').each(function() {
 		});
 });
 
-//$('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
-$('.wordlet:not(:has(.wordlet_configure))').each(function() {
+// TODO: combine this with the one above
+$('.wordlet a, .wordlet:not(:has(.wordlet_configure))').each(function() {
 	var $this = $(this);
-	//var $wordlet = $this.find('.wordlet');
+	var $link;
+	var $wordlet;
 
-	var $link = $this.closest('a');
-	var $edit = ( $this.is('[data-edit]') ) ? $this : $this.find('.wordlet_edit');
-	if ( !$edit.data('configure') && !$link.length ) return true;
-	var $configure = $this.find('.wordlet_configure');
-	var edit = null;
-	var configure = null;
+	if ( $this.is('.wordlet') ) {
+		$wordlet = $this;
+		$link = $wordlet.closest('a');
+	} else {
+		$wordlet = $this.closest('.wordlet');
+		$link = $this;
+	}
 
 	var $container = $('<div/>')
 		.addClass('wordlet_helper_container')
@@ -293,29 +295,16 @@ $('.wordlet:not(:has(.wordlet_configure))').each(function() {
 		.appendTo('body')
 		;
 
+	var $clink = $('<a class="wordlet_configure" href="' + $wordlet.data('configure') + '" data-configure="' + $wordlet.data('configure') + '">Configure</a>');
+	$container.append($clink);
 
 	if ( $link.length ) {
-		var $wlink = $('<a href="' + $link[0].href + '">Open Link</a>');
-		$wlink.html('Open Link');
+		var $wlink = $('<a class="wordlet_link" href="' + $link[0].href + '">Open Link</a>');
 		$container.append($wlink);
 	}
 
-	if ( $edit.length ) {
-		edit = $edit.data('edit');
-		configure = ( $edit.data('configure') ) ? $edit.data('configure') : null;
-	} else if ( $configure.length ) {
-		configure = $edit.data('configure');
-	}
-
-	/*if ( edit ) {
-		var $wedit = $('<span class="wordlet_edit" data-edit="' + edit + '">Edit</a>');
-		$container.append($wedit);
-	}*/
-
-	if ( configure ) {
-		var $wconfigure = $('<span class="wordlet_configure" data-configure="' + configure + '">Configure</a>');
-		$container.append($wconfigure);
-	}
+	var $elink = $('<a class="wordlet_edit" href="' + $wordlet.data('edit') + '" data-edit="' + $wordlet.data('edit') + '">Edit</a>');
+	$container.append($elink);
 
 	var do_hide = true;
 	var hide = function() {
@@ -328,70 +317,8 @@ $('.wordlet:not(:has(.wordlet_configure))').each(function() {
 
 			if ( $container[0].style.right != '100%' ) return true;
 
-			//var x = $this.offset().left + $this.width();
-			var x = $this.offset().left + $this.width() - $container.width();
-			if ( $this.width() < $container.width() || $this.height() < $container.height() ) x = $this.offset().left + $this.width();
+			var x = $this.offset().left;
 			var y = $this.offset().top;
-
-			$container
-				.css({
-					right: '',
-					left: x,
-					top: y
-				});
-		})
-		.bind('mouseleave', function(e) {
-			do_hide = true;
-			setTimeout(hide, 0);
-		})
-		;
-
-	$container
-		.bind('mouseenter', function(e) {
-			do_hide = false;
-		})
-		.bind('mouseleave', function(e) {
-			do_hide = true;
-			setTimeout(hide, 0);
-		})
-		;
-});
-
-// TODO: combine this with the one above
-$('.wordlet a').each(function() {
-	var $this = $(this);
-	var $link = $this;
-
-	var $container = $('<div/>')
-		.addClass('wordlet_helper_container')
-		.css({
-			display: 'block',
-			position: 'absolute',
-			right: '100%',
-			top: 0,
-			zIndex: 10000
-		})
-		.appendTo('body')
-		;
-
-	var $wlink = $('<a href="' + $link[0].href + '">Open Link</a>');
-	$wlink.html('Open Link');
-	$container.append($wlink);
-
-	var do_hide = true;
-	var hide = function() {
-		if ( do_hide ) $container.css({left: '', right: '100%', top: 0});
-	}
-
-	$this
-		.bind('mouseenter', function(e) {
-			do_hide = false;
-
-			if ( $container[0].style.right != '100%' ) return true;
-
-			var x = $this.offset().left + $this.width() - $container.width();
-			if ( $this.width() < $container.width() || $this.height() < $container.height() ) x = $this.offset().left + $this.width();
-			var y = $this.offset().top + 10;
 
 			$container
 				.css({
