@@ -269,7 +269,6 @@ $('.wordlet_edit').each(function() {
 		});
 });
 
-// TODO: combine this with the one above
 $('.wordlet a, .wordlet:not(:has(.wordlet_configure))').each(function() {
 	var $this = $(this);
 	var $link;
@@ -295,16 +294,16 @@ $('.wordlet a, .wordlet:not(:has(.wordlet_configure))').each(function() {
 		.appendTo('body')
 		;
 
-	var $clink = $('<a class="wordlet_configure" href="' + $wordlet.data('configure') + '" data-configure="' + $wordlet.data('configure') + '">Configure</a>');
-	$container.append($clink);
+	var $elink = $('<a class="wordlet_edit" href="' + $wordlet.data('edit') + '" data-edit="' + $wordlet.data('edit') + '">Edit</a>');
+	$container.append($elink);
 
 	if ( $link.length ) {
 		var $wlink = $('<a class="wordlet_link" href="' + $link[0].href + '">Open Link</a>');
 		$container.append($wlink);
 	}
 
-	var $elink = $('<a class="wordlet_edit" href="' + $wordlet.data('edit') + '" data-edit="' + $wordlet.data('edit') + '">Edit</a>');
-	$container.append($elink);
+	var $clink = $('<a class="wordlet_configure" href="' + $wordlet.data('configure') + '" data-configure="' + $wordlet.data('configure') + '">Configure</a>');
+	$container.append($clink);
 
 	var do_hide = true;
 	var hide = function() {
@@ -317,7 +316,8 @@ $('.wordlet a, .wordlet:not(:has(.wordlet_configure))').each(function() {
 
 			if ( $container[0].style.right != '100%' ) return true;
 
-			var x = $this.offset().left;
+			var x = $this.offset().left + $this.width() - $container.width();
+			if ( x < $this.offset().left ) x = $this.offset().left;
 			var y = $this.offset().top;
 
 			$container
