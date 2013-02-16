@@ -317,7 +317,9 @@ $('.wordlet:not(:has(.wordlet_configure))').each(function() {
 
 			if ( $container[0].style.right != '100%' ) return true;
 
-			var x = $this.offset().left + $this.width();
+			//var x = $this.offset().left + $this.width();
+			var x = $this.offset().left + $this.width() - $container.width();
+			if ( $this.width() < $container.width() || $this.height() < $container.height() ) x = $this.offset().left + $this.width();
 			var y = $this.offset().top;
 
 			$container

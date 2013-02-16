@@ -8,7 +8,7 @@
 			<div class="header">
 				<? if ( $w = w('header_image') ): ?>
 					<h1 <?=wa('header_image')?>>
-						<span><?=$w->single?></span>
+						<span><?=$w->single(false)?></span>
 						<img src="<?=$w->img_src?>" alt="eye level logo" />
 					</h1>
 				<? endif ?>
