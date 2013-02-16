@@ -20,6 +20,7 @@ class WordletItem {
       'node' => '',
       'img_src' => '',
       'token' => '',
+      'video' => '',
       'form' => '',
       'empty' => array(
         'single' => TRUE,
@@ -29,6 +30,7 @@ class WordletItem {
         'node' => TRUE,
         'img_src' => TRUE,
         'token' => TRUE,
+        'video' => TRUE,
         'form' => TRUE,
       ),
     );
@@ -36,7 +38,7 @@ class WordletItem {
   }
 
   public function __toString() {
-    $priority = array('multi', 'single', 'node', 'form', 'href', 'href_raw', 'img_src', 'token', 'thumb_src');
+    $priority = array('multi', 'single', 'node', 'form', 'href', 'href_raw', 'img_src', 'token', 'video', 'thumb_src');
     $retval = null;
     foreach ($priority as $attribute) {
       if (!$this->empty[$attribute]) {
@@ -225,6 +227,7 @@ class WordletController extends EntityAPIControllerExportable {
       'node' => '',
       'img_src' => '',
       'token' => '',
+      'video' => '',
       'thumb_src' => '',
       'form' => '',
       'empty' => array(
@@ -235,6 +238,7 @@ class WordletController extends EntityAPIControllerExportable {
         'node' => TRUE,
         'img_src' => TRUE,
         'token' => TRUE,
+        'video' => TRUE,
         'thumb_src' => TRUE,
         'form' => TRUE,
       ),
@@ -345,6 +349,14 @@ class WordletController extends EntityAPIControllerExportable {
 
       $stripped = strip_tags($item['token']);
       $args['empty']['token'] = empty($stripped);
+    }
+
+    // video
+    if (in_array('video', $entity->item_keys)) {
+      $args['video'] = $item['video'];
+
+      $stripped = strip_tags($item['video']);
+      $args['empty']['video'] = empty($stripped);
     }
 
     // Thumb src

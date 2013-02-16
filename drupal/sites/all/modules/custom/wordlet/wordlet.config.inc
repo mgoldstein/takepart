@@ -280,5 +280,44 @@ function _wordlet_configuration() {
       'load' => array('site', 'can_campaign'),
     ),
 
+    // CAN Campaign
+    'eyelevel_campaign' => array(
+      'title' => 'Eye Level Campaign',
+    ),
+
+    // CAN Home
+    'eyelevel_home' => array(
+      'title' => 'Eve Level - Home',
+      'path' => 'eyelevel',
+      'published' => TRUE,
+      'wrappers' => array('eyelevel', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/eyelevel/eyelevel.css',
+      ),
+      'js' => array(
+        'campaigns/eyelevel/eyelevel.js',
+      ),
+      'load' => array('site', 'eyelevel_campaign'),
+    ),
+
+    // CAN Videos
+    'eyelevel_video' => array(
+      'title' => 'Eve Level - Video',
+      'path' => 'eyelevel/video',
+      'published' => TRUE,
+      'wrappers' => array('eyelevel', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/eyelevel/eyelevel.css',
+      ),
+      'js' => array(
+        'campaigns/eyelevel/eyelevel.js',
+      ),
+      'load' => array('site', 'eyelevel_campaign'),
+    ),
+
   );
 }

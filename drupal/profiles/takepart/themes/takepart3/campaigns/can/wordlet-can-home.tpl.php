@@ -1,7 +1,7 @@
 <div class="content">
 	<div class="primary">
 		<h2><?=w('headline')?></h2>
-		<div class="cms">
+		<div class="body cms">
 			<?=w('body')?>
 		</div>
 	</div>
