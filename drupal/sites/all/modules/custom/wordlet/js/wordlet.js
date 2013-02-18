@@ -344,6 +344,7 @@ $('.wordlet a, .wordlet:not(:has(.wordlet_configure))').each(function() {
 		;
 });
 
+// Put edit/view links into Drupal admin bar
 $('#toolbar .toolbar-shortcuts .menu')
 	.append($menu)
 	.append($('.tabs.primary li'));

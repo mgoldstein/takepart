@@ -116,6 +116,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -133,6 +134,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -150,6 +152,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -167,6 +170,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -184,6 +188,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -201,6 +206,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -218,6 +224,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -235,6 +242,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -257,6 +265,7 @@ function _wordlet_configuration() {
         'campaigns/can/can.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/can/can.js',
       ),
       'load' => array('site', 'can_campaign'),
@@ -275,6 +284,7 @@ function _wordlet_configuration() {
         'campaigns/can/can.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/can/can.js',
       ),
       'load' => array('site', 'can_campaign'),
@@ -297,6 +307,7 @@ function _wordlet_configuration() {
         'campaigns/eyelevel/eyelevel.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/eyelevel/eyelevel.js',
       ),
       'load' => array('site', 'eyelevel_campaign'),
@@ -314,6 +325,7 @@ function _wordlet_configuration() {
         'campaigns/eyelevel/eyelevel.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/eyelevel/eyelevel.js',
       ),
       'load' => array('site', 'eyelevel_campaign'),
@@ -336,6 +348,7 @@ function _wordlet_configuration() {
         'campaigns/intelgirls/intelgirls.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/intelgirls/intelgirls.js',
       ),
       'load' => array('site', 'intelgirls_campaign'),
