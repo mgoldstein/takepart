@@ -149,12 +149,13 @@ var tpmodal = function(parameters) {
 		me.showNode(settings, $div);
 	};
 
+	var ajaxer;
 	this.showUrl = function(parameters, url) {
 		var settings = get_settings(parameters);
 
 		var $div = $('<div/>');
 
-		$div.load(settings.url, function(data, status) {
+		ajaxer = $div.load(settings.url, function(data, status) {
 			me.showNode(settings, $div);
 		});
 
@@ -279,6 +280,11 @@ var tpmodal = function(parameters) {
 
 	this.hide = function(parameters) {
 		var settings = get_settings(parameters);
+
+		if ( ajaxer && ajaxer.abort ) {
+			ajaxer.abort();
+			ajaxer = null;
+		}
 
 		if ( form_edited && !confirm('Form has been edited. Continue?') ) return false;
 

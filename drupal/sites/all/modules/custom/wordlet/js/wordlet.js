@@ -4,14 +4,15 @@ $(function() {
 var rscript = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
 var modal_id = 'wordlets_';
 var adding = false;
+var ajaxer = null;
 
 var load_form = function(url, data) {
 	data = data || null;
-	$.tpmodal.show({id: modal_id});
+	$.tpmodal.show({id: modal_id, afterClose: function() { if ( ajaxer ) ajaxer.abort(); }});
 
 	// Updated jQuery.load function, basically:
 	// Request the remote document
-	jQuery.ajax({
+	ajaxer = jQuery.ajax({
 		url: url,
 		type: ((data)?'POST':'GET'),
 		dataType: "html",
