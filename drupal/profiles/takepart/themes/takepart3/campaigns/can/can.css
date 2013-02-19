@@ -60,10 +60,11 @@
 }
 .content .primary {
     float: left;
-    width: 650px;
+    margin-right: 300px;
 }
 .content .secondary {
     width: 260px;
+    margin-left: -300px;
     float: right;
     padding-top: 60px;
 }
