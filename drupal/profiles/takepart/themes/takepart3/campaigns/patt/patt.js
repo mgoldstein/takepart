@@ -115,7 +115,30 @@ $('body')
 var ytreg = /v=([a-zA-Z0-9]+)/;
 // Page specific:
 if ( $('body').is('.page-wordlet-patt-home') ) {
-	$.tpmodal.show({html: '<iframe width="560" height="315" src="http://www.youtube.com/embed/f4LuipQzXqA?autoplay=1" frameborder="0" allowfullscreen=""></iframe>'});
+	// Lazily copy/pasted cookie functions
+	var setCookie = function(c_name, value, exdays) {
+		var exdate=new Date();
+		exdate.setDate(exdate.getDate() + exdays);
+		var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+		document.cookie=c_name + "=" + c_value + '; path=/';
+	};
+
+	var getCookie = function(c_name) {
+		var i,x,y,ARRcookies=document.cookie.split(";");
+		for (i=0;i<ARRcookies.length;i++) {
+			x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+			y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+			x=x.replace(/^\s+|\s+$/g,"");
+			if (x==c_name) {
+				return unescape(y);
+			}
+		}
+	};
+
+	if ( getCookie('pattshowntrailer') == undefined ) {
+		$.tpmodal.show({html: '<iframe width="560" height="315" src="http://www.youtube.com/embed/f4LuipQzXqA?autoplay=1" frameborder="0" allowfullscreen=""></iframe>'});
+		setCookie('pattshowntrailer', 1, 100);
+	}
 
 	$('.table .tag img')
 		.each(function() {
