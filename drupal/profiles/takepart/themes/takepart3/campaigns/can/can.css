@@ -1,0 +1,94 @@
+/* # General
+================================================== */
+.page-wrap {
+    padding: 10px;
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+.page-wrap h1,
+.page-wrap h2,
+.page-wrap h3 {
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+}
+
+/* # Header
+================================================== */
+.header h1 {
+    line-height: 0;
+}
+.header h1 span {
+    display: none;
+}
+/* menu */
+.header .menu {
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
+}
+.header .menu ul {
+    list-style: none;
+}
+.header .menu ul li {
+    display: inline-block; *display: inline; *zoom: 1;
+    margin-left: 10px;
+}
+.header .menu ul li a {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    padding: 5px 0;
+    display: block;
+}
+/* # Content
+================================================== */
+.content {
+    background: #efeee9;
+    padding: 20px 7px 27px 27px;
+    min-height: 336px;
+    _height: 336px;
+}
+.content h2 {
+    font-size: 50px;
+    line-height: 100%;
+    margin-bottom: 20px;
+}
+.content .body p {
+    line-height: 150%;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.content .secondary {
+    width: 260px;
+    float: right;
+}
+
+/* signup form */
+.content .signup_form {
+    background: #a7c3c2;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 27px 19px 7px 19px;
+}
+.content .signup_form .form-item input {
+    width: 100%;
+}
+.content .signup_form h3 {
+    font-size: 17px;
+}
+.content .signup_form .form-item-email label {
+    display: none;
+}
+
+/* partners */
+.content .partners {
+    text-align: center;
+    margin-top: 20px;
+}
+.content .partners ul {
+    list-style: none;
+}
+.content .partners ul li {
+    margin-top: 10px;
+}

@@ -1,10 +1,5 @@
 <div class="content">
-	<div class="primary">
-		<h2><?=w('headline')?></h2>
-		<div class="body cms">
-			<?=w('body')?>
-		</div>
-	</div>
+	<h2><?=w('headline')?></h2>
 	<div class="secondary">
 		<div class="signup_form" <?=wa('signup_form')?>>
 			<? if ( $w = w('signup_form') ): ?>
@@ -21,5 +16,8 @@
 				<? endforeach ?>
 			</ul>
 		</div>
+	</div>
+	<div class="body cms">
+		<?=w('body')?>
 	</div>
 </div>
