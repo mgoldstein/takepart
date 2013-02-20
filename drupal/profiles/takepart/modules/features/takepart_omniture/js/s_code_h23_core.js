@@ -4,10 +4,11 @@ More info available at http://www.omniture.com */
 
 // var s_account=Drupal.settings.omniture.s_account; // "takepartprod"
 if (typeof Drupal != 'undefined') {
-  var s_account=Drupal.settings.omniture.s_account;
+  s_account=Drupal.settings.omniture.s_account;
 } else {
-  var s_account="takepartprod";
-}var s=s_gi(s_account);
+  s_account="takepartprod";
+}
+var s=s_gi(s_account);
 /************************** CONFIG SECTION **************************/
 /* You may add or alter any code config here. */
 s.charSet="UTF-8";
