@@ -8,8 +8,8 @@
 			<div class="header">
 				<? if ( $w = w('header_image') ): ?>
 					<h1 <?=wa('header_image')?>>
-						<span><?=$w->single(false)?></span>
-						<a href="<?=$w->href?>"><img src="<?=$w->img_src?>" alt="intel for change logo" /></a>
+						<span><?=$w->single?></span>
+						<a href="<?=wu('intelchange_home')?>"><img src="<?=$w->img_src?>" alt="intel for change logo" /></a>
 					</h1>
 				<? endif ?>
 				<? if ( $w = w('presented_by') ): ?>

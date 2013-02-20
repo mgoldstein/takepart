@@ -53,7 +53,7 @@ function _wordlet_configuration() {
     // Responsive iframed header for outside devs
     'iframed_header' => array(
       'title' => 'Iframed header',
-      'path' => 'responsive-header',
+      'path' => 'iframes/responsive-header',
       'published' => TRUE,
       'wrappers' => array('html'),
       'css' => array(
@@ -320,7 +320,7 @@ function _wordlet_configuration() {
       'title' => 'Intel For Change - Home',
       'path' => 'intelforchange',
       'published' => TRUE,
-      'wrappers' => array('intelgirls', 'campaign', 'html'),
+      'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
         'css/normalize_cms.css',
