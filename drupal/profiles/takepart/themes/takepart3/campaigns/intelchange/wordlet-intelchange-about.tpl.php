@@ -15,8 +15,8 @@
 		<? endif ?>
 	</div>
 
-	<div id="about-partners" <?=wa('about_partners')?>>
-		<? foreach ( wl('about_partners') as $w ): ?>
+	<div id="about-partners" <?=wa('partners_list')?>>
+		<? foreach ( wl('partners_list') as $w ): ?>
 			<div class="parnter">
 				<p class="image">
 					<a href="<?=$w->href?>">
