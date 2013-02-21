@@ -50,6 +50,19 @@
 .header .menu ul li .active {
     color: #1CA9E7;
 }
+/* # Home - General
+================================================== */
+.page-wordlet-eyelevel-home .content {
+    padding-top: 37px;
+    padding-bottom: 80px;
+}
+.page-wordlet-eyelevel-home .video_intro {
+    text-align: center;
+}
+.page-wordlet-eyelevel-home .content h2 {
+    margin-top: 33px;
+    font-size: 30px;
+}
 
 /* # Video - General
 ================================================== */
