@@ -8,13 +8,13 @@
         </p>
     <? endif ?>
     <p class="video-play">
-        <a href="http://www.youtube.com/watch?v=<?=$w->video?>">Video</a>
+        <a href="http://www.youtube.com/watch?v=<?=w('video')->video?>"><?=w('video')->single?></a>
     </p>
     <div class="video-block">
 
     </div>
     <script id="video-template" type="text/x-javascript-template">
-        <iframe width="560" height="315" src="http://www.youtube.com/embed/<?=$w->video?>?autoplay=true" frameborder="0" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="http://www.youtube.com/embed/<?=w('video')->video?>?autoplay=true" frameborder="0" allowfullscreen></iframe>
     </script>
 </div>
 
@@ -39,22 +39,22 @@
             <p class="enter-contest">
                 <a href="<?=wu('intelchange_contest')?>"><?=w('enter_the_contest')?></a>
             </p>
-            <p class="stay-contected cta">
+            <div class="stay-contected cta">
                 <a href="#stay-connected">
                     <? if ( $w = w('stay_connected') ): ?>
                         <h4><?=$w->single?></h4>
                         <p><?=$w->multi?></p>
                     <? endif ?>
                 </a>
-            </p>
-            <p class="more-ways cta">
+            </div>
+            <div class="more-ways cta">
                 <? if ( $w = w('more_ways') ): ?>
                     <a href="<?=$w->href?>">
-                        <h4><?=$w->signle?></h4>
+                        <h4><?=$w->single?></h4>
                         <p><?=$w->multi?></p>
                     </a>
                 <? endif ?>
-            </p>
+            </div>
         </div>
 
         <div id="stay-connected" class="form-state form-content">
