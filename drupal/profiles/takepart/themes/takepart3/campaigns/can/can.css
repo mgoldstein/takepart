@@ -40,29 +40,28 @@
     padding: 5px 0;
     display: block;
 }
-/* # Content
+/* # Home
 ================================================== */
-.content {
+.page-wordlet-can-home .content {
+    display: inline-block; *display: inline; *zoom: 1;
     background: #efeee9;
     padding: 20px 7px 27px 27px;
-    min-height: 336px;
-    _height: 336px;
 }
-.content h2 {
+.page-wordlet-can-home h2 {
     font-size: 50px;
     line-height: 100%;
     margin-bottom: 20px;
 }
-.content .body p {
+.page-wordlet-can-home .body p {
     line-height: 150%;
     text-transform: uppercase;
     font-size: 12px;
 }
-.content .primary {
+.page-wordlet-can-home .primary {
     float: left;
     margin-right: 300px;
 }
-.content .secondary {
+.page-wordlet-can-home .secondary {
     width: 260px;
     margin-left: -300px;
     float: right;
@@ -70,31 +69,31 @@
 }
 
 /* signup form */
-.content .signup_form {
+.page-wordlet-can-home .signup_form {
     background: #a7c3c2;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     padding: 27px 19px 7px 19px;
 }
-.content .signup_form .form-item input {
+.page-wordlet-can-home .signup_form .form-item input {
     width: 100%;
 }
-.content .signup_form h3 {
+.page-wordlet-can-home .signup_form h3 {
     font-size: 17px;
 }
-.content .signup_form .form-item-email label {
+.page-wordlet-can-home .signup_form .form-item-email label {
     display: none;
 }
 
 /* partners */
-.content .partners {
+.page-wordlet-can-home .partners {
     text-align: center;
     margin-top: 20px;
 }
-.content .partners ul {
+.page-wordlet-can-home .partners ul {
     list-style: none;
 }
-.content .partners ul li {
+.page-wordlet-can-home .partners ul li {
     margin-top: 10px;
 }
