@@ -2,8 +2,11 @@
 Copyright 1996-2011 Adobe, Inc. All Rights Reserved
 More info available at http://www.omniture.com */
 
-var s_account="takepartprod";
+if (typeof s_account == 'undefined') {
+  s_account="takepartprod"; 
+}
 var s=s_gi(s_account);
+
 /************************** CONFIG SECTION **************************/
 /* You may add or alter any code config here. */
 s.charSet="UTF-8";
@@ -36,10 +39,7 @@ s.trackPageName=true
 s.useCommerce=false
 s.varUsed="prop28"
 s.eventList="" //Abandon,Success,Error
-
 s.channelDomain="Partner|americanexpress.com"; /*KN: Remove/update? */
-
-// s.pageURL
 
 /* Plugin Config */
 s.usePlugins=true
@@ -120,18 +120,12 @@ function s_doPlugins(s) {
     s.eVar7=s.prop7?s.prop7:'';    // Internal Search Terms
     s.eVar12=s.channel?s.channel:'';    // Site Sections
     s.eVar13=s.prop13?s.prop13:'';  // 404 error page URL -- was previously "Featured Content ID"
-    // s.eVar15=s.prop14?s.prop14:'';  // Retire -- was previuously "Article open click"
     s.eVar17=s.prop16?s.prop16:''; // Author
     s.eVar18=s.prop17?s.prop17:''; // Content Title
     s.eVar19=s.prop18?s.prop18:''; // Blog Series
     s.eVar20=s.prop19?s.prop19:''; // Content post date  CHECK
     s.eVar21=s.prop20?s.prop20:''; // Display topic
     s.eVar22=s.prop21?s.prop21:''; // Title of content commented on
-    //s.eVar23=s.prop22?s.prop22:'';  Retire -- Was previously "article type created"
-    //s.eVar24=s.prop23?s.prop23:'';  Retire -- was previously "Issue type"
-    // s.eVar26=s.prop25?s.prop25:''; Retire -- was previously "Article saved"
-    s.eVar27=s.prop26?s.prop26:''; // Share method/channel
-    //s.eVar28=s.prop27?s.prop27:''; s.profp 27 Article Share clicked
 
     s.previousPage=s.getPreviousValue(s.pageName,'gpv_p5','');
     if (s.events.indexOf('event26')>-1){
