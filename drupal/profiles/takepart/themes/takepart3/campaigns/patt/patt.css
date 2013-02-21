@@ -95,7 +95,7 @@ body {
 }
 
 .table.int .nav ul {
-	float: left;
+	display: inline-block; *display: inline; zoom: 1;
 }
 
 .table.int .nav li {
@@ -752,6 +752,14 @@ body {
 .description.take-your-place p a {
 	color: blue;
 }
+
+/* Iframed header ---------------- */
+
+.page-wordlet-patt-nav,
+.page-wordlet-patt-nav .page-wrap .table {
+	background: transparent;
+}
+
 
 /* ==========================================================================
    Media Queries

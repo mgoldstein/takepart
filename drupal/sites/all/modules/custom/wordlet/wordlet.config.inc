@@ -83,7 +83,22 @@ function _wordlet_configuration() {
       'title' => 'A Place at the Table Campaign',
     ),
 
-    // Place at the Table Home
+    // Place at the Table - Nav
+    'patt_nav' => array(
+      'title' => 'A Place at the Table - Top Navigation',
+      'path' => 'iframes/place-at-the-table/header',
+      'published' => TRUE,
+      'wrappers' => array('html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
+    // Place at the Table - Home
     'patt_home' => array(
       'title' => 'A Place at the Table - Home',
       'path' => 'place-at-the-table',

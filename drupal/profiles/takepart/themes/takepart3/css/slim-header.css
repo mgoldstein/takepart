@@ -122,3 +122,17 @@ body.logged-in #top-search .form-text:focus {
 form#search-api-page-search-form-2 {
 	margin: 0;
 }
+
+#search-api-page-search-form-site-search div {
+	display: block;
+}
+
+form#search-api-page-search-form-site-search {
+	margin-top: 0;
+}
+
+/* Iframed responsive header ---------------- */
+
+.page-wordlet-iframed-header {
+	background: transparent;
+}
