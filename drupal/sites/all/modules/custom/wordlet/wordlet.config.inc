@@ -53,7 +53,7 @@ function _wordlet_configuration() {
     // Responsive iframed header for outside devs
     'iframed_header' => array(
       'title' => 'Iframed header',
-      'path' => 'responsive-header',
+      'path' => 'iframes/responsive-header',
       'published' => TRUE,
       'wrappers' => array('html'),
       'css' => array(
@@ -77,27 +77,6 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'intel_girls_campaign'),*/
     ),
-
-    /*// Intel Girls Campaign
-    'intel_girls_campaign' => array(
-      'title' => 'Intel Girls Campaign',
-    ),
-
-    // Intel Girls Home
-    'intel_girls_home' => array(
-      'title' => 'Intel Girls Home',
-      'path' => 'intelgirls',
-      'published' => TRUE,
-      'wrappers' => array('campaign', 'html'),
-      'css' => array(
-        'css/slim-header.css',
-        'campaigns/intelchange/intelchange.css',
-      ),
-      'js' => array(
-        'campaigns/intelchange/intelchange.js',
-      ),
-      'load' => array('site', 'intel_girls_campaign'),
-    ),*/
 
     // Place at the Table Campaign
     'patt_campaign' => array(
@@ -331,27 +310,111 @@ function _wordlet_configuration() {
       'load' => array('site', 'eyelevel_campaign'),
     ),
 
-    // Intel Girls Campaign
-    'intelgirls_campaign' => array(
-      'title' => 'Intel Girls Campaign',
+    // Intel For Change Campaign
+    'intelchange_campaign' => array(
+      'title' => 'Intel For Change Campaign',
     ),
 
-    // Intel Girls Home
-    'intelgirls_home' => array(
-      'title' => 'Intel Girls - Home',
-      'path' => 'intelgirls',
+    // Intel For Change - Home
+    'intelchange_home' => array(
+      'title' => 'Intel For Change - Home',
+      'path' => 'intelforchange',
       'published' => TRUE,
-      'wrappers' => array('intelgirls', 'campaign', 'html'),
+      'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
         'css/normalize_cms.css',
-        'campaigns/intelgirls/intelgirls.css',
+        'campaigns/intelchange/intelchange.css',
       ),
       'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/intelgirls/intelgirls.js',
+        'campaigns/intelchange/intelchange.js',
       ),
-      'load' => array('site', 'intelgirls_campaign'),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
+    // Intel For Change - About
+    'intelchange_about' => array(
+      'title' => 'Intel For Change - About',
+      'path' => 'intelforchange/about',
+      'published' => TRUE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
+    // Intel For Change - Contest
+    'intelchange_contest' => array(
+      'title' => 'Intel For Change - Contest',
+      'path' => 'intelforchange/contest',
+      'published' => TRUE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
+    // Intel For Change - Contest Entry
+    'intelchange_contest_enter' => array(
+      'title' => 'Intel For Change - Contest Entery',
+      'path' => 'intelforchange/contest/enter',
+      'published' => TRUE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
+    // Intel For Change - Take Action
+    'intelchange_action' => array(
+      'title' => 'Intel For Change - Take Action',
+      'path' => 'intelforchange/action',
+      'published' => TRUE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
+    // Intel For Change - Resources
+    'intelchange_resources' => array(
+      'title' => 'Intel For Change - Resources',
+      'path' => 'intelforchange/resources',
+      'published' => TRUE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
     ),
 
   );

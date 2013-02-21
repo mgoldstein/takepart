@@ -9,8 +9,14 @@
 				<? if ( $w = w('header_image') ): ?>
 					<h1 <?=wa('header_image')?>>
 						<span><?=$w->single?></span>
-						<img src="<?=$w->img_src?>" alt="eye level logo" />
+						<a href="<?=wu('intelchange_home')?>"><img src="<?=$w->img_src?>" alt="intel for change logo" /></a>
 					</h1>
+				<? endif ?>
+				<? if ( $w = w('presented_by') ): ?>
+					<p class="presented">
+						<span class="by"><?=$w->single?></span>
+						<img src="<?=$w->img_src?>" alt="intel logo" />
+					</p>
 				<? endif ?>
 				<div class="menu">
 					<ul <?=wa('menu')?>>
@@ -20,7 +26,9 @@
 					</ul>
 				</div>
 			</div>
-			<?=$content?>
+			<div class="content">
+				<?=$content?>
+			</div>
 		</div>
 	</div><!-- /.page-wrap -->
 
