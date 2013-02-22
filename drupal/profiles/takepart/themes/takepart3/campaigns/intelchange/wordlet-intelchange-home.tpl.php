@@ -34,7 +34,7 @@
 
         <div class="default-state">
             <h3><?=w('default_header')?></h3>
-            <p class="enter-contest">
+            <p class="enter-contest important">
                 <a href="<?=wu('intelchange_contest')?>"><?=w('enter_the_contest')?></a>
             </p>
             <div class="stay-contected cta" <?=wa('stay_connected')?>>
