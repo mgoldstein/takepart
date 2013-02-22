@@ -1,5 +1,9 @@
 /* # General
 ================================================== */
+@font-face {
+    font-family: 'Monotype';
+    src: url('/profiles/takepart/themes/takepart3/fonts/Monotype/ModernMTStd-ExtendedItalic.otf');
+}
 .page-wrap {
     padding: 10px;
     background: rgb(255, 255, 255);
@@ -8,9 +12,10 @@
 .page-wrap h1,
 .page-wrap h2,
 .page-wrap h3 {
+    font-family: 'Monotype', serif;
+    font-weight: 400;
     text-transform: uppercase;
     color: rgb(0, 0, 0);
-    font-family: serif;
     font-style: italic;
 }
 
@@ -74,15 +79,16 @@
 ================================================== */
 .page-wordlet-eyelevel-video h2 {
     text-align: center;
+    margin-bottom: 11px;
 }
 .page-wordlet-eyelevel-video .artists-list {
     margin-bottom: 30px;
+    display: inline-block; *display: inline; *zoom: 1;
+    width: 100%;
 }
 .page-wordlet-eyelevel-video .artists-list ul {
     list-style: none;
     margin-left: -1%;
-    display: inline-block; *display: inline; zoom: 1;
-    width: 100%;
 }
 .page-wordlet-eyelevel-video .artists-list ul li {
     float: left;
@@ -104,6 +110,7 @@
     color: #1ca9e7;
     padding: 0 5%;
     display: block;
+    text-decoration: none;
 }
 
 /* # Video - Artists
