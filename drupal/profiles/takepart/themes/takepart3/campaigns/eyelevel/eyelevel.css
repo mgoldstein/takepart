@@ -1,8 +1,9 @@
 /* # General
 ================================================== */
 @font-face {
-    font-family: 'Monotype';
+    font-family: 'Monotype Std';
     src: url('/profiles/takepart/themes/takepart3/fonts/Monotype/ModernMTStd-ExtendedItalic.otf');
+    font-style: italic;
 }
 .page-wrap {
     padding: 10px;
@@ -12,7 +13,8 @@
 .page-wrap h1,
 .page-wrap h2,
 .page-wrap h3 {
-    font-family: 'Monotype', serif;
+    line-height: 90%;
+    font-family: 'Monotype Std', serif;
     font-weight: 400;
     text-transform: uppercase;
     color: rgb(0, 0, 0);
