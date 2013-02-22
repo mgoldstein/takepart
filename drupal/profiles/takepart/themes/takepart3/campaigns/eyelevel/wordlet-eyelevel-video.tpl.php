@@ -24,7 +24,7 @@
 				<div id="<?=$w->token?>" class='artist'>
 					<div class="info-wrapper">
 						<h3><?=$w->single(false)?></h3>
-						<div class="info cms">
+						<div class="info">
 							<?=$w->multi(false)?>
 						</div>
 					</div>

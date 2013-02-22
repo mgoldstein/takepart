@@ -5,7 +5,7 @@
 
 	<div class="page-wrap">
 		<div class="main">
-			<div class="header">
+			<header class="header">
 				<? if ( $w = w('header_image') ): ?>
 					<h1 <?=wa('header_image')?>>
 						<span><?=$w->single?></span>
@@ -18,14 +18,14 @@
 						<img src="<?=$w->img_src?>" alt="intel logo" />
 					</p>
 				<? endif ?>
-				<div class="menu">
-					<ul <?=wa('menu')?>>
-						<? foreach( wl('menu') as $w ): ?>
-							<li><a href="<?=$w->href?>"><?=$w->single(false)?></a></li>
-						<? endforeach ?>
-					</ul>
-				</div>
-			</div>
+			</header>
+			<nav class="menu">
+				<ul <?=wa('menu')?>>
+					<? foreach( wl('menu') as $w ): ?>
+						<li><a href="<?=$w->href?>"><?=$w->single(false)?></a></li>
+					<? endforeach ?>
+				</ul>
+			</nav>
 			<div class="content">
 				<?=$content?>
 			</div>

@@ -41,7 +41,7 @@
                 <a href="#stay-connected">
                     <? if ( $w = w('stay_connected') ): ?>
                         <h4><?=$w->single(false)?></h4>
-                        <p><?=$w->multi(false)?></p>
+                        <?=$w->multi(false)?>
                     <? endif ?>
                 </a>
             </div>
