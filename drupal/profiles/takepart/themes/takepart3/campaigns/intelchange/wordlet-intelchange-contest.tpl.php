@@ -48,7 +48,7 @@
 		<ul <?=wa('countries')?>>
 			<? foreach ( wl('countries') as $w ): ?>
 				<li>
-					<a href="#<?=$w->token?>"><?=$w->single(false)?></a>
+					<a href="#country_<?=$w->token?>"><?=$w->single(false)?></a>
 				</li>
 			<? endforeach ?>
 		</ul>
@@ -56,7 +56,7 @@
 
 	<div class="countries" <?=wa('countries')?>>
 		<? foreach ( wl('countries') as $w ): ?>
-			<div id="<?=$w->token?>">
+			<div id="country_<?=$w->token?>">
 				<div class="country_image">
 					<p>
 						<img src="<?=$w->img_src?>" alt="<?=$w->single(false)?> Image" />

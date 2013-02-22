@@ -220,13 +220,17 @@ var deleteCookie = function(name) {
 // Wordlet toggle menu
 var $menu = $('<li id="wordlet_toggle"><a id="wordlets_show" href="">Show Wordlets</a><a id="wordlets_hide" href="">Hide Wordlets</a></li>');
 
-$('[data-edit]').addClass('wordlet');
+$('[data-edit],[data-configure]').each(function() {
+	var $this = $(this);
+	$this.addClass('wordlet');
+	if ( $this.is('[data-configure]') && !$this.is('[data-edit]') ) $this.addClass('wordlet_configure');
+});
 
 // Wordlet events & other setup
 $('body')
 	.delegate('.wordlet', 'click', function(e) {
 		var $this = $(this);
-		var $link = ($this.is('[data-edit]')) ? $this : $this.find('.wordlet_configure, .wordlet_edit');
+		var $link = ($this.is('[data-edit]') || $this.is('[data-configure]')) ? $this : $this.find('.wordlet_configure, .wordlet_edit');
 		var link = $link.data('edit') || $link.data('configure');
 		load_form(link);
 		e.preventDefault();
@@ -295,16 +299,20 @@ $('.wordlet a, .wordlet:not(:has(.wordlet_configure))').each(function() {
 		.appendTo('body')
 		;
 
-	var $elink = $('<a class="wordlet_edit" href="' + $wordlet.data('edit') + '" data-edit="' + $wordlet.data('edit') + '">Edit</a>');
-	$container.append($elink);
+	if ( $wordlet.data('edit') ) {
+		var $elink = $('<a class="wordlet_edit" href="' + $wordlet.data('edit') + '" data-edit="' + $wordlet.data('edit') + '">Edit</a>');
+		$container.append($elink);
+	}
 
 	if ( $link.length ) {
 		var $wlink = $('<a class="wordlet_link" href="' + $link[0].href + '">Open Link</a>');
 		$container.append($wlink);
 	}
 
-	var $clink = $('<a class="wordlet_configure" href="' + $wordlet.data('configure') + '" data-configure="' + $wordlet.data('configure') + '">Configure</a>');
-	$container.append($clink);
+	if ( $wordlet.data('configure') ) {
+		var $clink = $('<a class="wordlet_configure" href="' + $wordlet.data('configure') + '" data-configure="' + $wordlet.data('configure') + '">Configure</a>');
+		$container.append($clink);
+	}
 
 	var do_hide = true;
 	var hide = function() {
