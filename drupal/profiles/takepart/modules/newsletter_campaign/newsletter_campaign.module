@@ -615,7 +615,10 @@ function newsletter_campaign_email_only_signup_form($form, &$form_state, $config
     '#required' => TRUE,
   );
 
-  $form['actions'] = array('#type' => 'actions');
+  $form['actions'] = array(
+    '#type' => 'actions',
+    '#weight' => 40,
+  );
   $form['actions']['submit'] = array(
     '#type' => 'submit',
     '#value' => $config['submit_caption'],
@@ -749,7 +752,10 @@ function newsletter_campaign_mobile_only_signup_form($form, &$form_state, $confi
     '#maxlength' => 4,
   );
 
-  $form['actions'] = array('#type' => 'actions');
+  $form['actions'] = array(
+    '#type' => 'actions',
+    '#weight' => 40,
+  );
   $form['actions']['submit'] = array(
     '#type' => 'submit',
     '#value' => $config['submit_caption'],
@@ -902,7 +908,10 @@ function newsletter_campaign_email_mobile_signup_form($form, &$form_state, $conf
     '#maxlength' => 4,
   );
 
-  $form['actions'] = array('#type' => 'actions');
+  $form['actions'] = array(
+    '#type' => 'actions',
+    '#weight' => 40,
+  );
   $form['actions']['submit'] = array(
     '#type' => 'submit',
     '#value' => $config['submit_caption'],
