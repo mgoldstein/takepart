@@ -1,0 +1,136 @@
+/* # General
+================================================== */
+.page-wrap {
+    padding: 10px;
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+.page-wrap h1,
+.page-wrap h2,
+.page-wrap h3 {
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+    font-family: serif;
+    font-style: italic;
+}
+
+/* # Header
+================================================== */
+.header h1 {
+    line-height: 0;
+}
+.header h1 span {
+    display: none;
+}
+/* menu */
+.header .menu {
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
+}
+.header .menu ul {
+    list-style: none;
+}
+.header .menu ul li {
+    display: inline-block; *display: inline; *zoom: 1;
+    border-right: 1px dotted #4c4c4c;
+}
+.header .menu ul li a {
+    font-family: 'TradeGothicLTStdCnBold';
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    padding: 5px 0;
+    display: block;
+    padding: 0 25px;
+    font-size: 19px;
+    line-height: 150%;
+}
+.header .menu ul li a:hover,
+.header .menu ul li .active {
+    color: #1CA9E7;
+}
+/* # Home - General
+================================================== */
+.page-wordlet-eyelevel-home .content {
+    padding-top: 37px;
+    padding-bottom: 80px;
+}
+.page-wordlet-eyelevel-home .video_intro {
+    text-align: center;
+}
+.page-wordlet-eyelevel-home .content h2 {
+    margin-top: 33px;
+    font-size: 30px;
+}
+
+/* # Video - General
+================================================== */
+.page-wordlet-eyelevel-video .content {
+    padding-top: 27px;
+}
+
+/* # Video - Artist Menu
+================================================== */
+.page-wordlet-eyelevel-video h2 {
+    text-align: center;
+}
+.page-wordlet-eyelevel-video .artists-list {
+    margin-bottom: 30px;
+    display: inline-block; *display: inline; *zoom: 1;
+}
+.page-wordlet-eyelevel-video .artists-list ul {
+    list-style: none;
+    margin-left: -1%;
+}
+.page-wordlet-eyelevel-video .artists-list ul li {
+    float: left;
+    vertical-align: top;
+    width: 9%;
+    text-align: center;
+    margin-left: 1%;
+}
+.page-wordlet-eyelevel-video .artists-list .portrait {
+    line-height: 0;
+    margin-bottom: 7px;
+}
+.page-wordlet-eyelevel-video .artists-list .portrait img {
+    width: 100%;
+}
+.page-wordlet-eyelevel-video .artists-list .name {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #1ca9e7;
+    padding: 0 5%;
+    display: block;
+}
+
+/* # Video - Artists
+================================================== */
+.page-wordlet-eyelevel-video .artist-info h3 {
+    font-size: 30px;
+}
+.page-wordlet-eyelevel-video .artist {
+    display: inline-block; *display: inline; *zoom: 1;
+    margin-bottom: 30px;
+}
+
+.page-wordlet-eyelevel-video .artist .info-wrapper {
+    float: left;
+    margin-right: 575px;
+}
+.page-wordlet-eyelevel-video .artist .video {
+    width: 560px;
+    margin-left: -575px;
+    float: right;
+}
+.page-wordlet-eyelevel-video .artist:nth-child(2n) .info-wrapper {
+    float: right;
+    margin-right: 0;
+    width: 41%;
+}
+.page-wordlet-eyelevel-video .artist:nth-child(2n) .video {
+    width: auto;
+    margin-left: 0;
+    float: none;
+}

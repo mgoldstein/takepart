@@ -720,7 +720,26 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       '#type' => 'textfield',
       '#default_value' => $values['token'],
       '#attributes' => array('class' => array('token-input')),
-      '#element_validate' => array('wordlet_validate_href'),
+    );
+  }
+
+  if ($configure || in_array('video', $entity->item_keys)) {
+    $form['video'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['video']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Video',
+        '#attributes' => array('data-for' => array('video-input')),
+        '#default_value' => in_array('video', $entity->item_keys),
+      );
+    }
+    $form['video']['value'] = array(
+      '#title' => t('Video'),
+      '#type' => 'textfield',
+      '#default_value' => $values['video'],
+      '#attributes' => array('class' => array('video-input')),
     );
   }
 
@@ -959,6 +978,7 @@ function wordlet_update_items_from_fields($entity, $values) {
       'node' => '',
       'img_src' => '',
       'token' => '',
+      'video' => '',
       'thumb_src' => '',
       'form' => '',
     );

@@ -50,6 +50,17 @@ function _wordlet_configuration() {
       'title' => 'Site Wordlets',
     ),
 
+    // Responsive iframed header for outside devs
+    'iframed_header' => array(
+      'title' => 'Iframed header',
+      'path' => 'iframes/responsive-header',
+      'published' => TRUE,
+      'wrappers' => array('html'),
+      'css' => array(
+        'css/slim-header.css',
+      ),
+    ),
+
     // Test
     'test' => array(
       'title' => 'Test',
@@ -67,33 +78,27 @@ function _wordlet_configuration() {
       'load' => array('site', 'intel_girls_campaign'),*/
     ),
 
-    // Intel Girls Campaign
-    'intel_girls_campaign' => array(
-      'title' => 'Intel Girls Campaign',
-    ),
-
-    // Intel Girls Home
-    'intel_girls_home' => array(
-      'title' => 'Intel Girls Home',
-      'path' => 'intelgirls',
-      'published' => TRUE,
-      'wrappers' => array('campaign', 'html'),
-      'css' => array(
-        'css/slim-header.css',
-        'campaigns/intelchange/intelchange.css',
-      ),
-      'js' => array(
-        'campaigns/intelchange/intelchange.js',
-      ),
-      'load' => array('site', 'intel_girls_campaign'),
-    ),
-
     // Place at the Table Campaign
     'patt_campaign' => array(
       'title' => 'A Place at the Table Campaign',
     ),
 
-    // Place at the Table Home
+    // Place at the Table - Nav
+    'patt_nav' => array(
+      'title' => 'A Place at the Table - Top Navigation',
+      'path' => 'iframes/place-at-the-table/header',
+      'published' => TRUE,
+      'wrappers' => array('html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
+    // Place at the Table - Home
     'patt_home' => array(
       'title' => 'A Place at the Table - Home',
       'path' => 'place-at-the-table',
@@ -105,6 +110,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -122,6 +128,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -139,6 +146,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -156,6 +164,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -173,6 +182,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -190,6 +200,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -207,6 +218,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
@@ -224,17 +236,201 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/patt/patt.js',
       ),
       'load' => array('site', 'patt_campaign'),
     ),
 
-    // Place at the Table - I Need Food Assistance
-    'patt_json' => array(
-      'title' => 'A Place at the Table - JSON',
-      'path' => 'place-at-the-table/json/snapgriddata.txt',
-      'published' => TRUE,
-      'wrappers' => array(),
+    // CAN Campaign
+    'can_campaign' => array(
+      'title' => 'CAN Campaign',
     ),
+
+    // CAN Home
+    'can_home' => array(
+      'title' => 'CAN - Home',
+      'path' => 'can',
+      'published' => TRUE,
+      'wrappers' => array('can', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/can/can.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/can/can.js',
+      ),
+      'load' => array('site', 'can_campaign'),
+    ),
+
+    // CAN About
+    'can_about' => array(
+      'title' => 'CAN - About',
+      'template' => 'can_home',
+      'path' => 'can/about',
+      'published' => TRUE,
+      'wrappers' => array('can', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/can/can.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/can/can.js',
+      ),
+      'load' => array('site', 'can_campaign'),
+    ),
+
+    // CAN Campaign
+    'eyelevel_campaign' => array(
+      'title' => 'Eye Level Campaign',
+    ),
+
+    // CAN Home
+    'eyelevel_home' => array(
+      'title' => 'Eve Level - Home',
+      'path' => 'eyelevel',
+      'published' => TRUE,
+      'wrappers' => array('eyelevel', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/eyelevel/eyelevel.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/eyelevel/eyelevel.js',
+      ),
+      'load' => array('site', 'eyelevel_campaign'),
+    ),
+
+    // CAN Videos
+    'eyelevel_video' => array(
+      'title' => 'Eve Level - Video',
+      'path' => 'eyelevel/video',
+      'published' => TRUE,
+      'wrappers' => array('eyelevel', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/eyelevel/eyelevel.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/eyelevel/eyelevel.js',
+      ),
+      'load' => array('site', 'eyelevel_campaign'),
+    ),
+
+    // Intel For Change Campaign
+    'intelchange_campaign' => array(
+      'title' => 'Intel For Change Campaign',
+    ),
+
+    // Intel For Change - Home
+    'intelchange_home' => array(
+      'title' => 'Intel For Change - Home',
+      'path' => 'intelforchange',
+      'published' => TRUE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
+    // Intel For Change - About
+    'intelchange_about' => array(
+      'title' => 'Intel For Change - About',
+      'path' => 'intelforchange/about',
+      'published' => TRUE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
+    // Intel For Change - Contest
+    'intelchange_contest' => array(
+      'title' => 'Intel For Change - Contest',
+      'path' => 'intelforchange/contest',
+      'published' => TRUE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
+    // Intel For Change - Contest Entry
+    'intelchange_contest_enter' => array(
+      'title' => 'Intel For Change - Contest Entry',
+      'path' => 'intelforchange/contest/enter',
+      'published' => TRUE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
+    // Intel For Change - Take Action
+    'intelchange_action' => array(
+      'title' => 'Intel For Change - Take Action',
+      'path' => 'intelforchange/action',
+      'published' => TRUE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
+    // Intel For Change - Resources
+    'intelchange_resources' => array(
+      'title' => 'Intel For Change - Resources',
+      'path' => 'intelforchange/resources',
+      'published' => TRUE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
   );
 }

@@ -1,7 +1,7 @@
 <? if ( wordlet_edit_mode() ): ?>
 	<div class="wordlet_edit_mode">
 		<p>
-			Page Title: <?=w('title')?>
+			Page Title: <span><?=w('title')?></span>
 		</p>
 		<? if ( ($wlinks = wordlet_configure_links()) ): ?>
 			<p>Configure:
@@ -13,10 +13,10 @@
 			</p>
 		<? endif ?>
 		<p>
-			FB Image: <?=w('fb_image')?>
+			FB Image: <span><?=w('fb_image')?></span>
 		</p>
 		<p>
-			FB Description: <?=w('fb_description')?>
+			FB Description: <span><?=w('fb_description')?></span>
 		</p>
 	</div>
 <? endif ?>

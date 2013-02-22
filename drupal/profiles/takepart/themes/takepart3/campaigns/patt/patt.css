@@ -95,7 +95,7 @@ body {
 }
 
 .table.int .nav ul {
-	float: left;
+	display: inline-block; *display: inline; zoom: 1;
 }
 
 .table.int .nav li {
@@ -347,6 +347,17 @@ body {
 
 .table.int .main .column-3 .email-signup .thank-you-message p {
 	margin: 0;
+}
+
+.email-signup .terms_and_conditions a {
+	display: block;
+	text-align: center;
+	color: #fff;
+	font-size: 11px;
+}
+
+.email-signup .form-actions {
+	margin-bottom: 0;
 }
 
 .table.int .main .column-3 .sponsored {
@@ -752,6 +763,14 @@ body {
 .description.take-your-place p a {
 	color: blue;
 }
+
+/* Iframed header ---------------- */
+
+.page-wordlet-patt-nav,
+.page-wordlet-patt-nav .page-wrap .table {
+	background: transparent;
+}
+
 
 /* ==========================================================================
    Media Queries

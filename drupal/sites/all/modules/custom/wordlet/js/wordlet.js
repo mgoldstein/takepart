@@ -4,14 +4,15 @@ $(function() {
 var rscript = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
 var modal_id = 'wordlets_';
 var adding = false;
+var ajaxer = null;
 
 var load_form = function(url, data) {
 	data = data || null;
-	$.tpmodal.show({id: modal_id});
+	$.tpmodal.show({id: modal_id, afterClose: function() { if ( ajaxer ) ajaxer.abort(); }});
 
 	// Updated jQuery.load function, basically:
 	// Request the remote document
-	jQuery.ajax({
+	ajaxer = jQuery.ajax({
 		url: url,
 		type: ((data)?'POST':'GET'),
 		dataType: "html",
@@ -137,8 +138,7 @@ var load_form = function(url, data) {
 						overflow: 'hidden'
 					});
 
-				var $wysiwyg = null;
-				var wysiwyg_id = null;
+				var wysiwygs = [];
 
 				// Submit hook
 				$div.find('form')
@@ -147,12 +147,20 @@ var load_form = function(url, data) {
 					})
 					.bind('submit', function(e) {
 						var $this = $(this);
-						if ( $wysiwyg.length  ) {
-							$wysiwyg.css({
-								display: 'block',
-								height: '1px'
-							});
-							$wysiwyg.val(CKEDITOR.instances[wysiwyg_id].getData());
+						if ( wysiwygs.length  ) {
+							for ( var i in wysiwygs ) {
+								var w = wysiwygs[i];
+								var $wysiwyg = w.$wysiwyg;
+								var wysiwyg_id = w.wysiwyg_id;
+
+								$wysiwyg.css({
+									display: 'block',
+									height: '1px'
+								});
+
+								$wysiwyg.val(CKEDITOR.instances[wysiwyg_id].getData());
+								delete(CKEDITOR.instances[w.wysiwyg_id]);
+							}
 						}
 						load_form(this.action, $this.serializeArray());
 
@@ -160,14 +168,21 @@ var load_form = function(url, data) {
 					});
 
 				$.tpmodal.show({id: modal_id, html: $div, callback: function() {
-					$wysiwyg = $div.find('.wordlet-full-html textarea').each(function() {
-						wysiwyg_id = this.id;
+					$div.find('.wordlet-full-html textarea').each(function() {
+						var wysiwyg = {};
+						wysiwyg.$wysiwyg = $(this);
+						wysiwyg.wysiwyg_id = this.id;
+						wysiwygs.push(wysiwyg);
+
 						$.tpmodal.set({id: modal_id, values: {
 							afterClose: function() {
-								delete(CKEDITOR.instances[wysiwyg_id]);
+								for ( var i in wysiwygs ) {
+									var w = wysiwygs[i];
+									delete(CKEDITOR.instances[w.wysiwyg_id]);
+								}
 							}
 						}});
-						//$(this).autosize();
+
 						CKEDITOR.replace( this, {
 							pasteFromWordRemoveStyles: true,
 							pasteFromWordRemoveFontStyles: true,
@@ -182,7 +197,7 @@ var load_form = function(url, data) {
 							]
 						});
 
-						CKEDITOR.instances[wysiwyg_id].on("instanceReady", function(event) {
+						CKEDITOR.instances[wysiwyg.wysiwyg_id].on("instanceReady", function(event) {
 							$.tpmodal.position({id: modal_id, callback: null}, null, true);
 						});
 					});
@@ -219,13 +234,17 @@ var deleteCookie = function(name) {
 // Wordlet toggle menu
 var $menu = $('<li id="wordlet_toggle"><a id="wordlets_show" href="">Show Wordlets</a><a id="wordlets_hide" href="">Hide Wordlets</a></li>');
 
-$('[data-edit]').addClass('wordlet');
+$('[data-edit],[data-configure]').each(function() {
+	var $this = $(this);
+	$this.addClass('wordlet');
+	if ( $this.is('[data-configure]') && !$this.is('[data-edit]') ) $this.addClass('wordlet_configure');
+});
 
 // Wordlet events & other setup
 $('body')
 	.delegate('.wordlet', 'click', function(e) {
 		var $this = $(this);
-		var $link = ($this.is('[data-edit]')) ? $this : $this.find('.wordlet_configure, .wordlet_edit');
+		var $link = ($this.is('[data-edit]') || $this.is('[data-configure]')) ? $this : $this.find('.wordlet_configure, .wordlet_edit');
 		var link = $link.data('edit') || $link.data('configure');
 		load_form(link);
 		e.preventDefault();
@@ -258,17 +277,29 @@ $('body')
 	.addClass((getCookie('show_wordlets')?'':'hide_wordlets'))
 	;
 
-//$('a:has(.wordlet_configure, .wordlet_edit)').each(function() {
-$('.wordlet:not(:has(.wordlet_configure))').each(function() {
+// Configure links
+$('.wordlet_edit').each(function() {
 	var $this = $(this);
-	//var $wordlet = $this.find('.wordlet');
+	$this.parent()
+		.addClass('wordlet')
+		.attr({
+			'data-edit': $this.data('edit'),
+			'data-configure': $this.data('configure')
+		});
+});
 
-	var $link = $this.closest('a');
-	var $edit = ( $this.is('[data-edit]') ) ? $this : $this.find('.wordlet_edit');
-	if ( !$edit.data('configure') && !$link.length ) return true;
-	var $configure = $this.find('.wordlet_configure');
-	var edit = null;
-	var configure = null;
+$('.wordlet a, .wordlet:not(:has(.wordlet_configure))').each(function() {
+	var $this = $(this);
+	var $link;
+	var $wordlet;
+
+	if ( $this.is('.wordlet') ) {
+		$wordlet = $this;
+		$link = $wordlet.closest('a');
+	} else {
+		$wordlet = $this.closest('.wordlet');
+		$link = $this;
+	}
 
 	var $container = $('<div/>')
 		.addClass('wordlet_helper_container')
@@ -282,28 +313,19 @@ $('.wordlet:not(:has(.wordlet_configure))').each(function() {
 		.appendTo('body')
 		;
 
+	if ( $wordlet.data('edit') ) {
+		var $elink = $('<a class="wordlet_edit" href="' + $wordlet.data('edit') + '" data-edit="' + $wordlet.data('edit') + '">Edit</a>');
+		$container.append($elink);
+	}
 
 	if ( $link.length ) {
-		var $wlink = $('<a href="' + $link[0].href + '">Open Link</a>');
-		$wlink.html('Open Link');
+		var $wlink = $('<a class="wordlet_link" href="' + $link[0].href + '">Open Link</a>');
 		$container.append($wlink);
 	}
 
-	if ( $edit.length ) {
-		edit = $edit.data('edit');
-		configure = ( $edit.data('configure') ) ? $edit.data('configure') : null;
-	} else if ( $configure.length ) {
-		configure = $edit.data('configure');
-	}
-
-	/*if ( edit ) {
-		var $wedit = $('<span class="wordlet_edit" data-edit="' + edit + '">Edit</a>');
-		$container.append($wedit);
-	}*/
-
-	if ( configure ) {
-		var $wconfigure = $('<span class="wordlet_configure" data-configure="' + configure + '">Configure</a>');
-		$container.append($wconfigure);
+	if ( $wordlet.data('configure') ) {
+		var $clink = $('<a class="wordlet_configure" href="' + $wordlet.data('configure') + '" data-configure="' + $wordlet.data('configure') + '">Configure</a>');
+		$container.append($clink);
 	}
 
 	var do_hide = true;
@@ -317,7 +339,8 @@ $('.wordlet:not(:has(.wordlet_configure))').each(function() {
 
 			if ( $container[0].style.right != '100%' ) return true;
 
-			var x = $this.offset().left + $this.width();
+			var x = $this.offset().left + $this.width() - $container.width();
+			if ( x < $this.offset().left ) x = $this.offset().left;
 			var y = $this.offset().top;
 
 			$container
@@ -334,7 +357,6 @@ $('.wordlet:not(:has(.wordlet_configure))').each(function() {
 		;
 
 	$container
-	$container
 		.bind('mouseenter', function(e) {
 			do_hide = false;
 		})
@@ -345,6 +367,7 @@ $('.wordlet:not(:has(.wordlet_configure))').each(function() {
 		;
 });
 
+// Put edit/view links into Drupal admin bar
 $('#toolbar .toolbar-shortcuts .menu')
 	.append($menu)
 	.append($('.tabs.primary li'));

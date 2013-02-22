@@ -20,14 +20,7 @@
 }
 
 .wordlet_edit {
-    font-size: 10px;
     display: none !important;
-    background: #fff;
-}
-
-.wordlet_edit {
-    outline: 1px dashed blue;
-    color: blue;
 }
 
 .wordlet_configure {
@@ -109,8 +102,13 @@
     padding: 1px;
 }
 
-.wordlet_helper_container a {
+.wordlet_helper_container .wordlet_link {
     color: blue;
+}
+
+.wordlet_helper_container .wordlet_edit {
+    color: green;
+    border: 1px dashed green;
 }
 
 .wordlet_helper_container a,
