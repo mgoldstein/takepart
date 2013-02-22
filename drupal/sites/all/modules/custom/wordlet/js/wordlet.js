@@ -159,6 +159,7 @@ var load_form = function(url, data) {
 								});
 
 								$wysiwyg.val(CKEDITOR.instances[wysiwyg_id].getData());
+								delete(CKEDITOR.instances[w.wysiwyg_id]);
 							}
 						}
 						load_form(this.action, $this.serializeArray());

@@ -383,7 +383,7 @@ function _wordlet_configuration() {
 
     // Intel For Change - Contest Entry
     'intelchange_contest_enter' => array(
-      'title' => 'Intel For Change - Contest Entery',
+      'title' => 'Intel For Change - Contest Entry',
       'path' => 'intelforchange/contest/enter',
       'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
