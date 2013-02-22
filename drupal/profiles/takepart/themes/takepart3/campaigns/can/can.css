@@ -40,28 +40,29 @@
     padding: 5px 0;
     display: block;
 }
-/* # Home
+/* # Content
 ================================================== */
-.page-wordlet-can-home .content {
+.content {
     display: inline-block; *display: inline; *zoom: 1;
+    width: 96.6%;
     background: #efeee9;
-    padding: 20px 7px 27px 27px;
+    padding: 2.4% 1% 2% 2.4%;
 }
-.page-wordlet-can-home h2 {
+.content h2 {
     font-size: 50px;
     line-height: 100%;
     margin-bottom: 20px;
 }
-.page-wordlet-can-home .body p {
+.content .body p {
     line-height: 150%;
     text-transform: uppercase;
     font-size: 12px;
 }
-.page-wordlet-can-home .primary {
+.content .primary {
     float: left;
     margin-right: 300px;
 }
-.page-wordlet-can-home .secondary {
+.content .secondary {
     width: 260px;
     margin-left: -300px;
     float: right;
@@ -69,31 +70,31 @@
 }
 
 /* signup form */
-.page-wordlet-can-home .signup_form {
+.content .signup_form {
     background: #a7c3c2;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     padding: 27px 19px 7px 19px;
 }
-.page-wordlet-can-home .signup_form .form-item input {
+.content .signup_form .form-item input {
     width: 100%;
 }
-.page-wordlet-can-home .signup_form h3 {
+.content .signup_form h3 {
     font-size: 17px;
 }
-.page-wordlet-can-home .signup_form .form-item-email label {
+.content .signup_form .form-item-email label {
     display: none;
 }
 
 /* partners */
-.page-wordlet-can-home .partners {
+.content .partners {
     text-align: center;
     margin-top: 20px;
 }
-.page-wordlet-can-home .partners ul {
+.content .partners ul {
     list-style: none;
 }
-.page-wordlet-can-home .partners ul li {
+.content .partners ul li {
     margin-top: 10px;
 }
