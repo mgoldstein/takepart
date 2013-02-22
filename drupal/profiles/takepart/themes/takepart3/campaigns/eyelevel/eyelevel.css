@@ -77,10 +77,11 @@
 }
 .page-wordlet-eyelevel-video .artists-list {
     margin-bottom: 30px;
-    display: inline-block; *display: inline; *zoom: 1;
 }
 .page-wordlet-eyelevel-video .artists-list ul {
     list-style: none;
+    display: inline-block; *display: inline; zoom: 1;
+    width: 100%;
 }
 .page-wordlet-eyelevel-video .artists-list ul li {
     float: left;

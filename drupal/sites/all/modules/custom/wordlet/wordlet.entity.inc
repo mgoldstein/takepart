@@ -20,6 +20,7 @@ class WordletItem {
       'href_raw' => '',
       'node' => '',
       'img_src' => '',
+      'active' => '',
       'token' => '',
       'video' => '',
       'form' => '',
@@ -30,6 +31,7 @@ class WordletItem {
         'href_raw' => TRUE,
         'node' => TRUE,
         'img_src' => TRUE,
+        'active' => TRUE,
         'token' => TRUE,
         'video' => TRUE,
         'form' => TRUE,
@@ -233,6 +235,7 @@ class WordletController extends EntityAPIControllerExportable {
       'href_raw' => '',
       'node' => '',
       'img_src' => '',
+      'active' => '',
       'token' => '',
       'video' => '',
       'thumb_src' => '',
@@ -244,6 +247,7 @@ class WordletController extends EntityAPIControllerExportable {
         'href_raw' => TRUE,
         'node' => TRUE,
         'img_src' => TRUE,
+        'active' => TRUE,
         'token' => TRUE,
         'video' => TRUE,
         'thumb_src' => TRUE,
@@ -352,6 +356,14 @@ class WordletController extends EntityAPIControllerExportable {
 
       $stripped = strip_tags($item['img_src']);
       $args['empty']['img_src'] = empty($stripped);
+    }
+
+    // Active
+    if (in_array('active', $entity->item_keys)) {
+      $args['configured'] = true;
+      $args['active'] = $item['active'];
+
+      $args['empty']['active'] = empty($args['active']);
     }
 
     // token
