@@ -138,8 +138,7 @@ var load_form = function(url, data) {
 						overflow: 'hidden'
 					});
 
-				var $wysiwyg = null;
-				var wysiwyg_id = null;
+				var wysiwygs = [];
 
 				// Submit hook
 				$div.find('form')
@@ -148,12 +147,19 @@ var load_form = function(url, data) {
 					})
 					.bind('submit', function(e) {
 						var $this = $(this);
-						if ( $wysiwyg.length  ) {
-							$wysiwyg.css({
-								display: 'block',
-								height: '1px'
-							});
-							$wysiwyg.val(CKEDITOR.instances[wysiwyg_id].getData());
+						if ( wysiwygs.length  ) {
+							for ( var i in wysiwygs ) {
+								var w = wysiwygs[i];
+								var $wysiwyg = w.$wysiwyg;
+								var wysiwyg_id = w.wysiwyg_id;
+
+								$wysiwyg.css({
+									display: 'block',
+									height: '1px'
+								});
+
+								$wysiwyg.val(CKEDITOR.instances[wysiwyg_id].getData());
+							}
 						}
 						load_form(this.action, $this.serializeArray());
 
@@ -161,14 +167,21 @@ var load_form = function(url, data) {
 					});
 
 				$.tpmodal.show({id: modal_id, html: $div, callback: function() {
-					$wysiwyg = $div.find('.wordlet-full-html textarea').each(function() {
-						wysiwyg_id = this.id;
+					$div.find('.wordlet-full-html textarea').each(function() {
+						var wysiwyg = {};
+						wysiwyg.$wysiwyg = $(this);
+						wysiwyg.wysiwyg_id = this.id;
+						wysiwygs.push(wysiwyg);
+
 						$.tpmodal.set({id: modal_id, values: {
 							afterClose: function() {
-								delete(CKEDITOR.instances[wysiwyg_id]);
+								for ( var i in wysiwygs ) {
+									var w = wysiwygs[i];
+									delete(CKEDITOR.instances[w.wysiwyg_id]);
+								}
 							}
 						}});
-						//$(this).autosize();
+
 						CKEDITOR.replace( this, {
 							pasteFromWordRemoveStyles: true,
 							pasteFromWordRemoveFontStyles: true,
@@ -183,7 +196,7 @@ var load_form = function(url, data) {
 							]
 						});
 
-						CKEDITOR.instances[wysiwyg_id].on("instanceReady", function(event) {
+						CKEDITOR.instances[wysiwyg.wysiwyg_id].on("instanceReady", function(event) {
 							$.tpmodal.position({id: modal_id, callback: null}, null, true);
 						});
 					});
