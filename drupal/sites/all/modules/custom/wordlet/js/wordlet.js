@@ -133,7 +133,7 @@ var load_form = function(url, data) {
 
 				$div.find('#wordlet-edit-form-data input[type="checkbox"]').bind('change', check_enabled);
 
-				$div.find('#wordlet-edit-form-data').find('.form-type-textfield, .form-type-textarea, .form-type-container')
+				$div.find('#wordlet-edit-form-data').find('.form-type-textfield, .form-type-textarea, .form-type-container, .form-type-select')
 					.css({
 						overflow: 'hidden'
 					});
