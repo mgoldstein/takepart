@@ -1,6 +1,6 @@
 <div class="first-block">
     <div class="intro-image" <?=wa('intro-image')?>>
-        <? if ( $w = w('intro-image') && $w->img_src ): ?>
+        <? if ( ($w = w('intro-image')) && $w->img_src ): ?>
             <p>
                 <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
             </p>
