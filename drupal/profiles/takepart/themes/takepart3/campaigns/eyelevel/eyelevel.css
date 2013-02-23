@@ -1,8 +1,9 @@
 /* # General
 ================================================== */
 @font-face {
-    font-family: 'Monotype';
+    font-family: 'Monotype Std';
     src: url('/profiles/takepart/themes/takepart3/fonts/Monotype/ModernMTStd-ExtendedItalic.otf');
+    font-style: italic;
 }
 .page-wrap {
     padding: 10px;
@@ -12,7 +13,8 @@
 .page-wrap h1,
 .page-wrap h2,
 .page-wrap h3 {
-    font-family: 'Monotype', serif;
+    line-height: 90%;
+    font-family: 'Monotype Std', serif;
     font-weight: 400;
     text-transform: uppercase;
     color: rgb(0, 0, 0);
@@ -50,6 +52,7 @@
     padding: 0 25px;
     font-size: 19px;
     line-height: 150%;
+    text-decoration: none;
 }
 .header .menu ul li a:hover,
 .header .menu ul li .active {
@@ -100,6 +103,7 @@
 .page-wordlet-eyelevel-video .artists-list .portrait {
     line-height: 0;
     margin-bottom: 7px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 }
 .page-wordlet-eyelevel-video .artists-list .portrait img {
     width: 100%;
