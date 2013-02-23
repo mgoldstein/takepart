@@ -212,6 +212,7 @@
   background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/watch_video_sprite.png) left top no-repeat;
   width: 123px;
   height: 123px;
+  margin: 60px 0 0 60px;
 }
 
 .page-wordlet-intelchange-home .video-play a:hover {
@@ -219,7 +220,8 @@
 }
 
 .page-wordlet-intelchange-home .intro-blurb {
-  font-size: .8em;
+  font-size: .85em;
+  margin-top: 45px;
 }
 
 .page-wordlet-intelchange-home .intro-link {
