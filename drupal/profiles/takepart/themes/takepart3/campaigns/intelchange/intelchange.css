@@ -194,7 +194,7 @@
   display: block;
 }
 
-.page-wordlet-intelchange-home .inro-content {
+.page-wordlet-intelchange-home .intro-content {
   padding-right: 290px;
   float: left;
 }
@@ -221,10 +221,32 @@
 
 .page-wordlet-intelchange-home .intro-blurb {
   font-size: .85em;
-  margin-top: 45px;
+  padding-top: 45px;
 }
 
 .page-wordlet-intelchange-home .intro-link {
   margin: 1em 0;
 }
 
+.page-wordlet-intelchange-home .video-block {
+  position: relative;
+  padding: 35px;
+  text-align: center;
+}
+
+.page-wordlet-intelchange-home .video-block .close a {
+  background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/close_video_sprite.png) left top no-repeat;
+  display: block;
+  position: absolute;
+  right: 115px;
+  top: 35px;
+  width: 36px;
+  height: 36px;
+  white-space: nowrap;
+  text-indent: 100%;
+  overflow: hidden;
+}
+
+.page-wordlet-intelchange-home .video-block .close a:hover {
+  background-position: left -36px;
+}
