@@ -342,6 +342,7 @@ function _wordlet_configuration() {
         'campaigns/intelchange/intelchange.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/intelchange/intelchange.js',
       ),
       'load' => array('site', 'intelchange_campaign'),
@@ -359,6 +360,7 @@ function _wordlet_configuration() {
         'campaigns/intelchange/intelchange.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/intelchange/intelchange.js',
       ),
       'load' => array('site', 'intelchange_campaign'),
@@ -376,6 +378,7 @@ function _wordlet_configuration() {
         'campaigns/intelchange/intelchange.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/intelchange/intelchange.js',
       ),
       'load' => array('site', 'intelchange_campaign'),
@@ -393,6 +396,7 @@ function _wordlet_configuration() {
         'campaigns/intelchange/intelchange.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/intelchange/intelchange.js',
       ),
       'load' => array('site', 'intelchange_campaign'),
@@ -410,6 +414,7 @@ function _wordlet_configuration() {
         'campaigns/intelchange/intelchange.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/intelchange/intelchange.js',
       ),
       'load' => array('site', 'intelchange_campaign'),
@@ -427,6 +432,7 @@ function _wordlet_configuration() {
         'campaigns/intelchange/intelchange.css',
       ),
       'js' => array(
+        'campaigns/campaign.js',
         'campaigns/intelchange/intelchange.js',
       ),
       'load' => array('site', 'intelchange_campaign'),

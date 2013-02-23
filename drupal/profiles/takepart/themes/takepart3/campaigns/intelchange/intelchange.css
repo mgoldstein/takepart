@@ -59,11 +59,24 @@ footer, header, hgroup, menu, nav, section {
 
 .main {
   font-size: 16px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  padding: 8px;
+  background: #fff;
+  margin: 16px 0;
 }
+
+.main a {
+  color: blue;
+}
+
+/* header ---------------- */
 
 .main .header {
   position: relative;
   color: #fff;
+  display: inline-block; *display: inline; zoom: 1;
+  width: 100%;
+  vertical-align: bottom;
 
   background: rgb(2,136,207); /* Old browsers */
   background: -moz-radial-gradient(center, ellipse cover,  rgba(2,136,207,1) 0%, rgba(1,165,254,1) 100%); /* FF3.6+ */
@@ -79,6 +92,10 @@ footer, header, hgroup, menu, nav, section {
   float: left;
 }
 
+.main .header h1 img {
+  padding: 28px 37px;
+}
+
 .main .header h1 span {
   display: block;
   width: 100%;
@@ -92,6 +109,80 @@ footer, header, hgroup, menu, nav, section {
 
 .main .header .presented {
   float: right;
+  font-size: .6em;
+  padding: 31px 48px;
+}
+
+.main .header .presented span {
+  vertical-align: top;
+  display: inline-block;
+  padding-top: .3em;
+}
+
+/* menu ---------------- */
+
+.main .menu {
+  background: #4b3639;
+  display: inline-block; *display: inline; zoom: 1;
+  vertical-align: bottom;
+  width: 100%;
+}
+
+.main .menu ul {
+  padding: 8px 9px;
+  float: left;
+}
+
+.main .menu li {
+  float: left;
+}
+
+.main .menu li a {
+  padding: 16px 0;
+  display: block;
+  text-align: center;
+  width: 170px;
+  margin-right: 1px;
+  background: #5d4a4d;
+  position: relative;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.main .menu li a.active,
+.main .menu li a:hover {
+  background: #6f5e61;
+}
+
+.main .menu li a.active:after,
+.main .menu li a:hover:after {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  border-color: rgba(111, 94, 97, 0);
+  border-top-color: #6f5e61;
+  border-width: 13px;
+  left: 50%;
+  margin-left: -13px;
+}
+
+.main .menu .addThis {
+  float: right;
+  padding: 20px 46px 10px 10px;
+}
+
+.main .addThis .addthis_button_email .at16nc {
+  background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/email_bttn.png) no-repeat;
+  width: 55px;
+  height: 20px;
+  display: inline-block;
+}
+
+.main .addThis .addthis_button_tweet iframe {
+  width: 92px !important;
 }
 
 /* reusable ---------------- */

@@ -1,4 +1,11 @@
 <div class="first-block">
+    <div class="intro-image" <?=wa('intro-image')?>>
+        <? if ( ($w = w('intro-image')) && $w->img_src ): ?>
+            <p>
+                <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
+            </p>
+        <? endif ?>
+    </div>
     <div class="inro-content cms">
         <?=w('intro')?>
     </div>
