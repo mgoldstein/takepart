@@ -31,7 +31,7 @@ $.fn.tpsticky = function(parameters) {
 					.removeClass('above').removeClass('below').addClass('inside')
 					.css({
 						position: 'fixed',
-						left: left,
+						left: left - $window.scrollLeft(),
 						top: 0,
 						marginTop: 0
 					})

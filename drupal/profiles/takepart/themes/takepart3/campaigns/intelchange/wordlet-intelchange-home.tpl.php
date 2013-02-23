@@ -1,17 +1,19 @@
 <div class="first-block">
-    <div class="intro-image" <?=wa('intro-image')?>>
-        <? if ( ($w = w('intro-image')) && $w->img_src ): ?>
-            <p>
-                <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
-            </p>
-        <? endif ?>
+    <div class="inro-content">
+        <div class="intro-image" <?=wa('intro-image')?>>
+            <? if ( ($w = w('intro-image')) && $w->img_src ): ?>
+                <p>
+                    <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
+                </p>
+            <? endif ?>
+        </div>
+        <div class="intro-blurb">
+            <?=w('intro')?>
+        </div>
+        <p class="intro-link">
+            <?=w('intro_link')?>
+        </p>
     </div>
-    <div class="inro-content cms">
-        <?=w('intro')?>
-    </div>
-    <p class="intro-link">
-        <?=w('intro_link')?>
-    </p>
     <p class="video-play">
         <a href="http://www.youtube.com/watch?v=<?=w('video')->video?>"><?=w('video')->single?></a>
     </p>

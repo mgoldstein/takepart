@@ -1,60 +1,6 @@
 /* # General
 ================================================== */
 
-/* reset ---------------- */
-
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-.main html, .main body, .main div, .main span, .main applet, .main object, .main iframe,
-.main h1, .main h2, .main h3, .main h4, .main h5, .main h6, .main p, .main blockquote, .main pre,
-.main a, .main abbr, .main acronym, .main address, .main big, .main cite, .main code,
-.main del, .main dfn, .main em, .main img, .main ins, .main kbd, .main q, .main s, .main samp,
-.main small, .main strike, .main strong, .main sub, .main sup, .main tt, .main var,
-.main b, .main u, .main i, .main center,
-.main dl, .main dt, .main dd, .main ol, .main ul, .main li,
-.main fieldset, .main form, .main label, .main legend,
-.main table, .main caption, .main tbody, .main tfoot, .main thead, .main tr, .main th, .main td,
-.main article, .main aside, .main canvas, .main details, .main embed, .main 
-.main figure, .main figcaption, .main footer, .main header, .main hgroup, .main 
-.main menu, .main nav, .main output, .main ruby, .main section, .main summary,
-.main time, .main mark, .main audio, .main video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  /* TakePart specific: */
-  color: inherit;
-  line-height: inherit;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-.main {
-  line-height: 1;
-}
-.main ol, .main ul {
-  list-style: none;
-}
-.main blockquote, .main q {
-  quotes: none;
-}
-.main blockquote:before, .main blockquote:after,
-.main q:before, .main q:after {
-  content: '';
-  content: none;
-}
-.main table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
 /* campaign specific ---------------- */
 
 .main {
@@ -225,3 +171,58 @@ footer, header, hgroup, menu, nav, section {
 .cta a * {
   color: #fff;
 }
+
+/* # Page Specific
+================================================== */
+
+/* Home ---------------- */
+
+.page-wordlet-intelchange-home .first-block {
+  background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/home_top_bg.jpg) left top;
+  color: #fff;
+
+  display: inline-block; *display: inline; zoom: 1;
+  vertical-align: bottom;
+  width: 100%;
+}
+
+.page-wordlet-intelchange-home .intro-image p {
+  float: left;
+}
+
+.page-wordlet-intelchange-home .intro-image img {
+  display: block;
+}
+
+.page-wordlet-intelchange-home .inro-content {
+  padding-right: 290px;
+  float: left;
+}
+
+.page-wordlet-intelchange-home .video-play {
+  float: left;
+  margin-left: -290px;
+}
+
+.page-wordlet-intelchange-home .video-play a {
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+  text-indent: 100%;
+  background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/watch_video_sprite.png) left top no-repeat;
+  width: 123px;
+  height: 123px;
+}
+
+.page-wordlet-intelchange-home .video-play a:hover {
+  background-position: left -123px;
+}
+
+.page-wordlet-intelchange-home .intro-blurb {
+  font-size: .8em;
+}
+
+.page-wordlet-intelchange-home .intro-link {
+  margin: 1em 0;
+}
+

@@ -338,6 +338,7 @@ function _wordlet_configuration() {
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'campaigns/reset.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
       ),
@@ -356,6 +357,7 @@ function _wordlet_configuration() {
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'campaigns/reset.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
       ),
@@ -374,6 +376,7 @@ function _wordlet_configuration() {
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'campaigns/reset.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
       ),
@@ -392,6 +395,7 @@ function _wordlet_configuration() {
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'campaigns/reset.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
       ),
@@ -410,6 +414,7 @@ function _wordlet_configuration() {
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'campaigns/reset.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
       ),
@@ -428,6 +433,7 @@ function _wordlet_configuration() {
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
+        'campaigns/reset.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
       ),
