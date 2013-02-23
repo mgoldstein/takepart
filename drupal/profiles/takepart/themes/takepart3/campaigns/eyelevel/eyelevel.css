@@ -103,6 +103,7 @@
 .page-wordlet-eyelevel-video .artists-list .portrait {
     line-height: 0;
     margin-bottom: 7px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 }
 .page-wordlet-eyelevel-video .artists-list .portrait img {
     width: 100%;
