@@ -33,7 +33,7 @@
 <div class="second-block">
     <div class="form-desc">
         <h2><?=w('form_desc_header')?></h2>
-        <div class="form-blurb">
+        <div class="form-blurb cms">
             <?=w('form_blurb')?>
         </div>
         <? if ( $w = w('contest_more') ): ?>
@@ -44,8 +44,6 @@
     </div>
 
     <div class="form_wrapper">
-        <div class="form-bg"></div>
-
         <div class="default-state">
             <h3><?=w('default_header')?></h3>
             <p class="enter-contest important">

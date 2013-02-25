@@ -400,14 +400,14 @@ body {
 	display: none;
 }
 
-.column h1,
-.column h2,
-.column h3,
-.column h4,
-.column h5,
-.column h6,
-.column em,
-.column p {
+.main h1,
+.main h2,
+.main h3,
+.main h4,
+.main h5,
+.main h6,
+.main em,
+.main p {
 	color: inherit;
 }
 
