@@ -13,6 +13,15 @@
 							<?=$w->single(false)?>
 						</span>
 					</a></li>
+				<? else: ?>
+					<li class='inactive'>
+						<div class="portrait">
+							<img src="<?=$w->img_src?>" alt="Portrait"/>
+						</div>
+						<span class="name">
+							<?=$w->single(false)?>
+						</span>
+					</li>
 				<? endif ?>
 			<? endforeach ?>
 		</ul>
