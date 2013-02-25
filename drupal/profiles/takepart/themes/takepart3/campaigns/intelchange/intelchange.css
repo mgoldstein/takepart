@@ -15,6 +15,11 @@
   color: blue;
 }
 
+.main h2 {
+  color: #026fab;
+  font-size: 2em;
+}
+
 /* header ---------------- */
 
 .main .header {

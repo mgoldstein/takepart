@@ -16,6 +16,8 @@ class WordletItem {
       'single_no_markup' => '',
       'multi' => '',
       'multi_no_markup' => '',
+      'multi_short' => '',
+      'multi_short_no_markup' => '',
       'href' => '',
       'href_raw' => '',
       'node' => '',
@@ -27,6 +29,7 @@ class WordletItem {
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
+        'multi_short' => TRUE,
         'href' => TRUE,
         'href_raw' => TRUE,
         'node' => TRUE,
@@ -41,7 +44,7 @@ class WordletItem {
   }
 
   public function __toString() {
-    $priority = array('multi', 'single', 'node', 'form', 'href', 'href_raw', 'img_src', 'token', 'video', 'thumb_src');
+    $priority = array('multi', 'single', 'multi_short', 'node', 'form', 'href', 'href_raw', 'img_src', 'token', 'video', 'thumb_src');
     $retval = null;
     foreach ($priority as $attribute) {
       if (!$this->empty[$attribute]) {
@@ -85,6 +88,11 @@ class WordletItem {
   public function multi($markup = true) {
     if ( $markup ) return $this->args['multi'];
     return $this->args['multi_no_markup'];
+  }
+
+  public function multi_short($markup = true) {
+    if ( $markup ) return $this->args['multi_short'];
+    return $this->args['multi_short_no_markup'];
   }
 }
 
@@ -231,6 +239,8 @@ class WordletController extends EntityAPIControllerExportable {
       'single_no_markup' => '',
       'multi' => '',
       'multi_no_markup' => '',
+      'multi_short' => '',
+      'multi_short_no_markup' => '',
       'href' => '',
       'href_raw' => '',
       'node' => '',
@@ -243,6 +253,7 @@ class WordletController extends EntityAPIControllerExportable {
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
+        'multi_short' => TRUE,
         'href' => TRUE,
         'href_raw' => TRUE,
         'node' => TRUE,
@@ -310,6 +321,38 @@ class WordletController extends EntityAPIControllerExportable {
 
       $stripped = strip_tags($value);
       $args['empty']['multi'] = empty($stripped);
+    }
+
+    // Short multi line text
+    if (in_array('multi_short', $entity->item_keys)) {
+      $args['configured'] = true;
+      // Preprocess the value
+      switch ($entity->format) {
+      case WORDLET_FULL_HTML:
+        $value = strip_tags($item['multi_short'], '<a><b><i><strong><small><em><br><br/><img><p><ul><ol><li><blockquote><hr><hr/><h1><h2><h3><h4><h5><h6>');
+        break;
+      case WORDLET_SIMPLE_HTML:
+        $value = strip_tags($item['multi_short'], '<a><b><i><strong><small><em><br><br/><img>');
+        break;
+      case WORDLET_PLAIN_TEXT:
+      default:
+        $value = check_plain($item['multi_short']);
+        break;
+      }
+
+      // Plain text and simple HTML fields need to be converted to paragraphs
+      if ($entity->format != WORDLET_FULL_HTML) {
+        $value = str_replace(array("\r\n", "\r"), "\n", $value);
+        $value = str_replace("\n\n\n", '</p><p>', $value);
+        $value = str_replace("\n\n", '<br/>', $value);
+        $value = '<p>' . $value . '</p>';
+      }
+
+      $args['multi_short'] = $value;
+      $args['multi_short_no_markup'] = $value;
+
+      $stripped = strip_tags($value);
+      $args['empty']['multi_short'] = empty($stripped);
     }
 
     // Link href
@@ -424,7 +467,7 @@ class WordletController extends EntityAPIControllerExportable {
 
     if ($editable) {
 
-      $displayed_attributes = array('single', 'multi', 'node', 'form');
+      $displayed_attributes = array('single', 'multi', 'multi_short', 'node', 'form');
 
       foreach ($displayed_attributes as $attribute) {
 
