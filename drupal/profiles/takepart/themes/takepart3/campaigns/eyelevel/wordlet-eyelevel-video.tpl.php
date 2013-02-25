@@ -38,7 +38,7 @@
 						</div>
 					</div>
 					<div class="video">
-						<iframe width="560" height="315" src="http://www.youtube.com/embed/<?=$w->video?>" frameborder="0" allowfullscreen></iframe>
+						<iframe width="460" height="315" src="http://www.youtube.com/embed/<?=$w->video?>" frameborder="0" allowfullscreen></iframe>
 					</div>
 				</div>
 			<? endif ?>
