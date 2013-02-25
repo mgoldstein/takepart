@@ -629,6 +629,26 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     );
   }
 
+  if ($configure || in_array('multi_short', $entity->item_keys)) {
+    $form['multi_short'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['multi_short']['enabled'] = array(
+       '#type' => 'checkbox',
+       '#title' => 'Enable Short Multi Line',
+       '#attributes' => array('data-for' => array('multi-short-input')),
+       '#default_value' => in_array('multi_short', $entity->item_keys),
+      );
+    }
+    $form['multi_short']['value'] = array(
+      '#title' => t('Short Multi Line'),
+      '#type' => 'textarea',
+      '#attributes' => array('class' => array('multi-short-input')),
+      '#default_value' => $values['multi_short'],
+    );
+  }
+
   if ($configure || in_array('href', $entity->item_keys)) {
     $form['href'] = array(
       '#tree' => TRUE,
@@ -994,6 +1014,7 @@ function wordlet_update_items_from_fields($entity, $values) {
     $item = array(
       'single' => '',
       'multi' => '',
+      'multi_short' => '',
       'href' => '',
       'node' => '',
       'img_src' => '',
