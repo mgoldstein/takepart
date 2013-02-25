@@ -95,6 +95,48 @@
 .content .signup_form .form-item-email label {
     display: none;
 }
+.content .signup_form .form-submit {
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgb(255, 133, 68);
+    border: 0;
+    font-weight: bold;
+    background: rgb(212, 109, 55);
+    border-radius: 2px;
+    padding: 6px 16px;
+    border: 1px solid rgb(255, 133, 68);
+
+    background: rgb(255, 133, 68);
+    background: -moz-linear-gradient(top, rgb(255, 133, 68) 0%, rgb(212, 109, 55) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(255, 133, 68)), color-stop(100%,rgb(212, 109, 55)));
+    background: -webkit-linear-gradient(top, rgb(255, 133, 68) 0%,rgb(212, 109, 55) 100%);
+    background: -o-linear-gradient(top, rgb(255, 133, 68) 0%,rgb(212, 109, 55) 100%);
+    background: -ms-linear-gradient(top, rgb(255, 133, 68) 0%,rgb(212, 109, 55) 100%);
+    background: linear-gradient(to bottom, rgb(255, 133, 68) 0%,rgb(212, 109, 55) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgb(255, 133, 68)', endColorstr='rgb(212, 109, 55)',GradientType=0 );
+}
+.content .signup_form .form-submit:hover,
+.content .signup_form .form-submit:focus {
+    background: rgb(244, 129, 75);/*
+    background: -moz-linear-gradient(top, rgb(212, 109, 55) 0%, rgb(255, 133, 68) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(212, 109, 55)), color-stop(100%,rgb(255, 133, 68)));
+    background: -webkit-linear-gradient(top, rgb(212, 109, 55) 0%,rgbrgb(255, 133, 68) 100%);
+    background: -o-linear-gradient(top, rgb(212, 109, 55) 0%,rgb(255, 133, 68) 100%);
+    background: -ms-linear-gradient(top, rgb(212, 109, 55) 0%,rgb(255, 133, 68) 100%);
+    background: linear-gradient(to bottom, rgb(212, 109, 55) 0%,rgb(255, 133, 68) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgb(212, 109, 55)', endColorstr='rgb(255, 133, 68)',GradientType=0 );*/
+}
+.content .signup_form .form-submit:active {
+    background: rgb(212, 109, 55);
+    background: -moz-linear-gradient(top, rgb(212, 109, 55) 0%, rgb(255, 133, 68) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(212, 109, 55)), color-stop(100%,rgb(255, 133, 68)));
+    background: -webkit-linear-gradient(top, rgb(212, 109, 55) 0%,rgbrgb(255, 133, 68) 100%);
+    background: -o-linear-gradient(top, rgb(212, 109, 55) 0%,rgb(255, 133, 68) 100%);
+    background: -ms-linear-gradient(top, rgb(212, 109, 55) 0%,rgb(255, 133, 68) 100%);
+    background: linear-gradient(to bottom, rgb(212, 109, 55) 0%,rgb(255, 133, 68) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgb(212, 109, 55)', endColorstr='rgb(255, 133, 68)',GradientType=0 );
+}
 
 /* partners */
 .content .partners {
