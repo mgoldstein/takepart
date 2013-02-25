@@ -17,8 +17,16 @@
 
 .main h2 {
   color: #026fab;
-  font-size: 2em;
+  font-size: 2.1em;
   margin-bottom: 1em;
+  line-height: 1.3;
+}
+
+.content {
+  background: #e9e8e6;
+  display: inline-block; *display: inline; zoom: 1;
+  width: 100%;
+  text-align: bottom;
 }
 
 /* header ---------------- */
@@ -178,6 +186,39 @@
   color: #fff;
 }
 
+/* More link */
+
+.more a {
+  color: #f37424;
+  display: inline-block;
+  padding-right: 36px;
+  position: relative;
+  text-decoration: none;
+  font-size: .8em;
+  text-transform: uppercase;
+  line-height: 18px;
+}
+
+.more a:after {
+  background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/more_arrow_sprite.png) top left no-repeat;
+  width: 18px;
+  height: 18px;
+  content: " ";
+  display: block;
+  position: absolute;
+  right: 7px;
+  top: 0;
+}
+
+.more a:hover {
+  color: #d95604;
+}
+
+.more a:hover:after {
+  right: 0;
+  background-position: left -18px;
+}
+
 /* # Page Specific
 ================================================== */
 
@@ -257,10 +298,6 @@
   background-position: left -36px;
 }
 
-.page-wordlet-intelchange-home .second-block {
-  background: #e9e8e6;
-}
-
 .page-wordlet-intelchange-home .form-desc {
   padding: 60px 55px;
   width: 380px;
@@ -297,4 +334,8 @@
 .page-wordlet-intelchange-home .second-block .form_wrapper div {
   position: relative;
   z-index: 1;
+}
+
+.page-wordlet-intelchange-home .form-blurb {
+  font-size: .8em;
 }
