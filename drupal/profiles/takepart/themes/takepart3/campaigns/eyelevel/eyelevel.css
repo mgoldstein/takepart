@@ -13,7 +13,7 @@
 .page-wrap h1,
 .page-wrap h2,
 .page-wrap h3 {
-    line-height: 90%;
+    line-height: 95%;
     font-family: 'Monotype Std', serif;
     font-weight: 400;
     text-transform: uppercase;
@@ -99,11 +99,29 @@
     width: 9%;
     text-align: center;
     margin-left: 1%;
+    position: relative;
 }
 .page-wordlet-eyelevel-video .artists-list .portrait {
     line-height: 0;
     margin-bottom: 7px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+    position: relative;
+}
+.page-wordlet-eyelevel-video .artists-list .inactive .portrait:before{
+    display: block;
+    position: absolute;  
+    top: 0;
+    left: 0; 
+    background: rgba(0,0,0, 0.5);
+    content: 'coming soon';
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    font-weight: bold;
+    line-height: 110%;
+    padding-top: 40%;
+    height: 60%;
+    width: 100%;
 }
 .page-wordlet-eyelevel-video .artists-list .portrait img {
     width: 100%;
@@ -111,9 +129,11 @@
 .page-wordlet-eyelevel-video .artists-list .name {
     text-transform: uppercase;
     font-weight: bold;
-    color: #1ca9e7;
     padding: 0 5%;
     display: block;
+}
+.page-wordlet-eyelevel-video .artists-list a {
+    color: #1ca9e7;
     text-decoration: none;
 }
 
