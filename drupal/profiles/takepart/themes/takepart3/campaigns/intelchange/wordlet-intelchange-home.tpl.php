@@ -1,18 +1,32 @@
 <div class="first-block">
-    <div class="inro-content cms">
-        <?=w('intro')?>
+    <div class="intro-block">
+        <div class="intro-content">
+            <div class="intro-image" <?=wa('intro-image')?>>
+                <? if ( ($w = w('intro-image')) && $w->img_src ): ?>
+                    <p>
+                        <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
+                    </p>
+                <? endif ?>
+            </div>
+            <div class="intro-blurb">
+                <?=w('intro')?>
+            </div>
+            <p class="intro-link">
+                <?=w('intro_link')?>
+            </p>
+        </div>
+        <p class="video-play">
+            <a href="http://www.youtube.com/watch?v=<?=w('video')->video?>"><?=w('video')->single?></a>
+        </p>
     </div>
-    <p class="intro-link">
-        <?=w('intro_link')?>
-    </p>
-    <p class="video-play">
-        <a href="http://www.youtube.com/watch?v=<?=w('video')->video?>"><?=w('video')->single?></a>
-    </p>
-    <div class="video-block">
 
-    </div>
     <script id="video-template" type="text/x-javascript-template">
-        <iframe width="560" height="315" src="http://www.youtube.com/embed/<?=w('video')->video?>?autoplay=true" frameborder="0" allowfullscreen></iframe>
+        <div class="video-block">
+            <iframe width="560" height="315" src="http://www.youtube.com/embed/<?=w('video')->video?>?autoplay=true" frameborder="0" allowfullscreen></iframe>
+            <p class="close">
+                <a href="#">Close</a>
+            </p>
+        </div>
     </script>
 </div>
 
@@ -41,7 +55,7 @@
                 <a href="#stay-connected">
                     <? if ( $w = w('stay_connected') ): ?>
                         <h4><?=$w->single(false)?></h4>
-                        <p><?=$w->multi(false)?></p>
+                        <?=$w->multi(false)?>
                     <? endif ?>
                 </a>
             </div>

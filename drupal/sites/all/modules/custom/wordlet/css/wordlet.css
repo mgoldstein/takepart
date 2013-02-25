@@ -28,6 +28,12 @@
     color: red;
 }
 
+.wordlet_configure:after {
+    content: "Configure";
+    display: inline;
+    color: red;
+}
+
 .wordlets_modal input[type="text"] {
     width: 300px;
 }

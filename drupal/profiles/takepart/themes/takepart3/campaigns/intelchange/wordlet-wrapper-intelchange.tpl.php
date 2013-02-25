@@ -5,27 +5,32 @@
 
 	<div class="page-wrap">
 		<div class="main">
-			<div class="header">
+			<header class="header">
 				<? if ( $w = w('header_image') ): ?>
 					<h1 <?=wa('header_image')?>>
 						<span><?=$w->single?></span>
 						<a href="<?=wu('intelchange_home')?>"><img src="<?=$w->img_src?>" alt="intel for change logo" /></a>
 					</h1>
 				<? endif ?>
-				<? if ( $w = w('presented_by') ): ?>
-					<p class="presented">
-						<span class="by"><?=$w->single?></span>
+				<p class="presented" <?=wa('presented_by')?>>
+					<? if ( $w = w('presented_by') ): ?>
+						<span class="by"><?=$w->single(false)?></span>
 						<img src="<?=$w->img_src?>" alt="intel logo" />
-					</p>
-				<? endif ?>
-				<div class="menu">
-					<ul <?=wa('menu')?>>
-						<? foreach( wl('menu') as $w ): ?>
-							<li><a href="<?=$w->href?>"><?=$w->single(false)?></a></li>
-						<? endforeach ?>
-					</ul>
-				</div>
-			</div>
+					<? endif ?>
+				</p>
+			</header>
+			<nav class="menu">
+				<ul <?=wa('menu')?>>
+					<? foreach( wl('menu') as $w ): ?>
+						<li><a href="<?=$w->href?>"><?=$w->single(false)?></a></li>
+					<? endforeach ?>
+				</ul>
+				<div class="addThis">
+                    <a class="addthis_button_facebook_like"></a>
+                    <a class="addthis_button_tweet"></a>
+                    <a class="addthis_button_email"></a>
+                </div>
+			</nav>
 			<div class="content">
 				<?=$content?>
 			</div>

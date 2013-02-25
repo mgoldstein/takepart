@@ -1,5 +1,10 @@
 /* # General
 ================================================== */
+@font-face {
+    font-family: 'Monotype Std';
+    src: url('/profiles/takepart/themes/takepart3/fonts/Monotype/ModernMTStd-ExtendedItalic.otf');
+    font-style: italic;
+}
 .page-wrap {
     padding: 10px;
     background: rgb(255, 255, 255);
@@ -8,9 +13,11 @@
 .page-wrap h1,
 .page-wrap h2,
 .page-wrap h3 {
+    line-height: 90%;
+    font-family: 'Monotype Std', serif;
+    font-weight: 400;
     text-transform: uppercase;
     color: rgb(0, 0, 0);
-    font-family: serif;
     font-style: italic;
 }
 
@@ -36,7 +43,7 @@
 }
 .header .menu ul li a {
     font-family: 'TradeGothicLTStdCnBold';
-    font-weight: bold;
+    font-weight: normal;
     text-transform: uppercase;
     color: rgb(255, 255, 255);
     font-size: 12px;
@@ -45,6 +52,7 @@
     padding: 0 25px;
     font-size: 19px;
     line-height: 150%;
+    text-decoration: none;
 }
 .header .menu ul li a:hover,
 .header .menu ul li .active {
@@ -74,10 +82,12 @@
 ================================================== */
 .page-wordlet-eyelevel-video h2 {
     text-align: center;
+    margin-bottom: 11px;
 }
 .page-wordlet-eyelevel-video .artists-list {
     margin-bottom: 30px;
     display: inline-block; *display: inline; *zoom: 1;
+    width: 100%;
 }
 .page-wordlet-eyelevel-video .artists-list ul {
     list-style: none;
@@ -93,6 +103,7 @@
 .page-wordlet-eyelevel-video .artists-list .portrait {
     line-height: 0;
     margin-bottom: 7px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 }
 .page-wordlet-eyelevel-video .artists-list .portrait img {
     width: 100%;
@@ -103,6 +114,7 @@
     color: #1ca9e7;
     padding: 0 5%;
     display: block;
+    text-decoration: none;
 }
 
 /* # Video - Artists
