@@ -30,16 +30,26 @@
 }
 .header .menu ul li {
     display: inline-block; *display: inline; *zoom: 1;
-    margin-left: 10px;
+    border-right: 1px dotted #4c4c4c;
 }
 .header .menu ul li a {
-    font-weight: bold;
+    font-family: 'TradeGothicLTStdCnBold';
+    font-weight: normal;
     text-transform: uppercase;
     color: rgb(255, 255, 255);
     font-size: 12px;
     padding: 5px 0;
     display: block;
+    padding: 0 25px;
+    font-size: 19px;
+    line-height: 150%;
+    text-decoration: none;
 }
+.header .menu ul li a:hover,
+.header .menu ul li .active {
+    color: #1CA9E7;
+}
+
 /* # Content
 ================================================== */
 .content {
