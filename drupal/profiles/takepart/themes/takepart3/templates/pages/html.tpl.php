@@ -50,6 +50,9 @@
         <meta property="fb:admins" content="1327833247" />
         <meta property="fb:app_id" content="247137505296280" />
         <?php print $styles; ?>
+        <!--[if lt IE 9]>
+            <script src="/profiles/takepart/themes/takepart3/js/html5shiv.js"></script>
+        <![endif]-->
         <?php print $scripts; ?>
     </head>
     <body class="<?php print $classes; ?>" <?php print $attributes; ?>>

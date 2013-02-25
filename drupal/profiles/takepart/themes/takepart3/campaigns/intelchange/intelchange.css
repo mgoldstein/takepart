@@ -15,6 +15,12 @@
   color: blue;
 }
 
+.main h2 {
+  color: #026fab;
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
 /* header ---------------- */
 
 .main .header {
@@ -249,4 +255,46 @@
 
 .page-wordlet-intelchange-home .video-block .close a:hover {
   background-position: left -36px;
+}
+
+.page-wordlet-intelchange-home .second-block {
+  background: #e9e8e6;
+}
+
+.page-wordlet-intelchange-home .form-desc {
+  padding: 60px 55px;
+  width: 380px;
+  float: left;
+}
+
+.page-wordlet-intelchange-home .second-block .form_wrapper {
+  width: 425px;
+  float: left;
+  margin-right: 30px;
+  color: #313131;
+  position: relative;
+  padding: 6px;
+  top: -55px;
+  color: #fff;
+}
+
+.page-wordlet-intelchange-home .second-block .form_wrapper:after {
+  -ms-transform: rotate(0.5deg);
+  -moz-transform: rotate(0.5deg);
+  -webkit-transform: rotate(0.5deg);
+  -o-transform: rotate(0.5deg);
+  transform: rotate(0.5deg);
+  background: #1fa2dc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: " ";
+  z-index: 0;
+}
+
+.page-wordlet-intelchange-home .second-block .form_wrapper div {
+  position: relative;
+  z-index: 1;
 }

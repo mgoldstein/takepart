@@ -103,7 +103,7 @@ Jacked from:
 
 .cms p,
 .cms pre {
-    margin: 1em 0;
+    margin: 0 0 1em 0;
 }
 
 /*
@@ -164,7 +164,7 @@ Jacked from:
 .cms menu,
 .cms ol,
 .cms ul {
-    margin: 1em 0;
+    margin: 0 0 1em 0;
 }
 
 .cms dd {
@@ -207,7 +207,7 @@ Jacked from:
 }
 
 .cms li {
-	margin: .5em 0;
+	margin: 0 0 .5em 0;
 }
 
 /* ==========================================================================

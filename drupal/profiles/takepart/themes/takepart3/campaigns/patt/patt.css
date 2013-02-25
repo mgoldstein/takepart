@@ -400,14 +400,14 @@ body {
 	display: none;
 }
 
-.column h1,
-.column h2,
-.column h3,
-.column h4,
-.column h5,
-.column h6,
-.column em,
-.column p {
+.main h1,
+.main h2,
+.main h3,
+.main h4,
+.main h5,
+.main h6,
+.main em,
+.main p {
 	color: inherit;
 }
 
@@ -620,9 +620,44 @@ body {
 	color: #fff;
 }
 
+.tile {
+	position: relative;
+}
+
 .tile .modal-left,
 .tile .modal-right {
 	display: none;
+}
+
+.tile .veil {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	background: rgba(0,0,0,.7);
+}
+
+.tile a:active .veil,
+.tile a:focus .veil,
+.tile a:hover .veil {
+	display: block;
+}
+
+.tile .veil_content {
+	position: absolute;
+	top: 36%;
+	color: #fff;
+	text-align: center;
+	width: 100%;
+}
+
+.tile .veil_content p {
+	padding: 0 5px;
+	margin: 0;
+	font-size: 11px;
 }
 
 #grid-overlay {

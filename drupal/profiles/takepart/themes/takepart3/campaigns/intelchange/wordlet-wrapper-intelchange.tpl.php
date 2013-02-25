@@ -31,9 +31,14 @@
                     <a class="addthis_button_email"></a>
                 </div>
 			</nav>
-			<div class="content">
+			<main class="content">
 				<?=$content?>
-			</div>
+			</main>
+			<footer class="footer" <?=wa('footer_image')?>>
+				<? if ( ($w = w('footer_image')) && $w->img_src ): ?>
+					<img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
+				<? endif ?>
+			</footer>
 		</div>
 	</div><!-- /.page-wrap -->
 
