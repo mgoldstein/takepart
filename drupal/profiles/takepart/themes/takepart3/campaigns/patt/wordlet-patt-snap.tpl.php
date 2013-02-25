@@ -30,11 +30,11 @@
 
     <? foreach ( wl('snap_slides') as $s ): ?>
         <div class="tile <?=$s->href?'link':''?> <?=$s->img_src?'person':''?> <?=(!$s->href && !$s->image)?'fact':''?>" data-token="<?=$s->token?>">
-            <? if ( $s->href ): ?>
+            <? if ( $s->href ): // Outside link ?>
                 <a href="<?=$s->href?>">
                     <img src="<?=$s->thumb_src?>"/>
                 </a>
-            <? elseif ( !$s->href && !$s->img_src ): ?>
+            <? elseif ( !$s->href && !$s->img_src ): // Fact ?>
                 <a href="?slide=<?=$s->token?>">
                     <h1 class="tile-header"><?=w('myth')?></h1>
                     <p><?=$s->single?></p>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-            <? elseif( !$s->single(false) ): ?>
+            <? elseif( !$s->single(false) ): // Take your place graphic ?>
                 <a href="?slide=<?=$s->token?>">
                     <img src="<?=$s->thumb_src?>"/>
                 </a>
@@ -69,9 +69,14 @@
                         </div>
                     </div>
                 </div>
-            <? elseif ( $n = explode('|', $s->single(false)) ): ?>
+            <? elseif ( $n = explode('|', $s->single(false)) ): // Person ?>
                 <a href="?slide=<?=$s->token?>">
                     <img src="<?=$s->thumb_src?>"/>
+                    <div class="veil">
+                        <div class="veil_content">
+                            <?=$s->multi_short(false)?>
+                        </div>
+                    </div>
                 </a>
                 <div class="modal-left">
                     <img src="<?=$s->img_src?>" alt="<?=$n[0]?>">
