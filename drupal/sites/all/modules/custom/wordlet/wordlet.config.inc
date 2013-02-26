@@ -346,10 +346,10 @@ function _wordlet_configuration() {
       'wrappers' => array('campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
-        'campaigns/intelchange/intelchange.css',
+        'campaigns/intelgirls/intelchange.css',
       ),
       'js' => array(
-        'campaigns/intelchange/intelchange.js',
+        //'campaigns/intelgirls/intelchange.js',
       ),
       'load' => array('site', 'intel_girls_campaign'),
     ),
