@@ -169,7 +169,8 @@ if ( $('body').is('.page-wordlet-patt-home') ) {
 		.delegate('a[href^="http://www.youtube.com"]', 'click', function(e) {
 			var m = ytreg.exec(this.href);
 			var yt = m[1];
-			var html = '<iframe width="560" height="315" src="http://www.youtube.com/embed/' + yt + '?autoplay=1" frameborder="0" allowfullscreen></iframe>';
+			//var html = '<iframe width="560" height="315" src="http://www.youtube.com/embed/' + yt + '?autoplay=1" frameborder="0" allowfullscreen></iframe>';
+			var html = '<iframe width="560" height="315" src="/video/players/?id=Mcam9iPd-Y3bNKxgM" frameborder="0" allowfullscreen=""></iframe>';
 			$.tpmodal.show({html: html});
 			e.preventDefault();
 		});
