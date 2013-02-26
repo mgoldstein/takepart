@@ -463,11 +463,13 @@
   width: 157px;
   float: left;
 }
+.page-wordlet-intelchange-about .content-nav ul li {
+  margin-bottom: 9px;
+}
 .page-wordlet-intelchange-about .content-nav ul li a {
   text-transform: uppercase;
   background: rgb(244, 244, 244);
   display: block;
-  margin-bottom: 9px;
   position: relative;
   text-align: center;
   font-weight: bold;
