@@ -406,14 +406,24 @@
   height: 182px;
 }
 
+.page-wordlet-intelchange-home .partners-block a {
+  text-decoration: none;
+}
+
 .page-wordlet-intelchange-home .partners-block h4 {
   color: #026fab;
   font-size: 1.15em;
   margin-bottom: 30px;
 }
 
+.page-wordlet-intelchange-home .partners-block .partners-list {
+  float: left;
+  margin: 0 0 0 20px;
+}
+
 .page-wordlet-intelchange-home .partners-block .parnter {
   float: left;
+  margin: 0 57px 0 0;
 }
 
 
