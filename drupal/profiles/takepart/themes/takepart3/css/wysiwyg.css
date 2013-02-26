@@ -62,3 +62,9 @@ blockquote{
     text-align:center; 
     overflow:hidden;
 }
+
+.takepart-take-action-widget { 
+	background-position: 0 0px;
+	border: solid black 1px;
+	background-image: url(images/icon.gif);
+}
