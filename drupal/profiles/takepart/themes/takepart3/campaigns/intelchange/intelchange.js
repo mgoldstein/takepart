@@ -50,7 +50,15 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
             });
             e.preventDefault();
         })
+        .delegate('.stay-contected a', 'click', function(e) {
+            $('.default-state').hide();
+            $(this.hash).show();
+            e.preventDefault();
+        })
         ;
+
+    $('.form-state').hide();
+
 }
 
 });

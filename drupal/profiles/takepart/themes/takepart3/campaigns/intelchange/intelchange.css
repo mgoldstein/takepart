@@ -17,8 +17,16 @@
 
 .main h2 {
   color: #026fab;
-  font-size: 2em;
+  font-size: 2.1em;
   margin-bottom: 1em;
+  line-height: 1.3;
+}
+
+.content {
+  background: #e9e8e6;
+  display: inline-block; *display: inline; zoom: 1;
+  width: 100%;
+  text-align: bottom;
 }
 
 /* header ---------------- */
@@ -160,6 +168,8 @@
   display: block;
   position: relative;
   color: #fff;
+  padding: 35px 50px;
+  text-decoration: none;
 }
 
 .cta a:after {
@@ -176,6 +186,65 @@
 
 .cta a * {
   color: #fff;
+}
+
+.cta h4 {
+  font-size: 1.55em;
+  margin-bottom: 10px;
+}
+
+.cta p {
+  font-size: .8em;
+}
+
+/* More link */
+
+.more a {
+  color: #f37424;
+  display: inline-block;
+  padding-right: 36px;
+  position: relative;
+  text-decoration: none;
+  font-size: .8em;
+  text-transform: uppercase;
+  line-height: 18px;
+}
+
+.more a:after {
+  background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/more_arrow_sprite.png) top left no-repeat;
+  width: 18px;
+  height: 18px;
+  content: " ";
+  display: block;
+  position: absolute;
+  right: 7px;
+  top: 0;
+}
+
+.more a:hover {
+  color: #d95604;
+}
+
+.more a:hover:after {
+  right: 0;
+  background-position: left -18px;
+}
+
+/* important link (button) */
+
+.important a {
+  background: #f37424;
+  font-weight: bold;
+  color: #fff;
+  padding: 20px 45px;
+  display: inline-block;
+  border-radius: 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.important a:hover {
+  background: #d95604;
 }
 
 /* # Page Specific
@@ -257,10 +326,6 @@
   background-position: left -36px;
 }
 
-.page-wordlet-intelchange-home .second-block {
-  background: #e9e8e6;
-}
-
 .page-wordlet-intelchange-home .form-desc {
   padding: 60px 55px;
   width: 380px;
@@ -274,7 +339,7 @@
   color: #313131;
   position: relative;
   padding: 6px;
-  top: -55px;
+  top: -20px;
   color: #fff;
 }
 
@@ -297,4 +362,20 @@
 .page-wordlet-intelchange-home .second-block .form_wrapper div {
   position: relative;
   z-index: 1;
+}
+
+.page-wordlet-intelchange-home .form-blurb {
+  font-size: .8em;
+}
+
+.page-wordlet-intelchange-home .default-content {
+  background: #026fab;
+  margin-bottom: 5px;
+  padding: 95px 50px;
+}
+
+.page-wordlet-intelchange-home .default-content h3 {
+  font-size: 1.9em;
+  line-height: 1.3;
+  margin-bottom: 1em;
 }

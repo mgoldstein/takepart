@@ -78,7 +78,9 @@ function _wordlet_configuration() {
       'load' => array('site', 'intel_girls_campaign'),*/
     ),
 
-    // Place at the Table Campaign
+    // --------------------------------------------
+    // Place at the Table Campaign ----------------
+    // --------------------------------------------
     'patt_campaign' => array(
       'title' => 'A Place at the Table Campaign',
     ),
@@ -242,7 +244,9 @@ function _wordlet_configuration() {
       'load' => array('site', 'patt_campaign'),
     ),
 
-    // CAN Campaign
+    // -----------------------------
+    // CAN Campaign ----------------
+    // -----------------------------
     'can_campaign' => array(
       'title' => 'CAN Campaign',
     ),
@@ -284,12 +288,14 @@ function _wordlet_configuration() {
       'load' => array('site', 'can_campaign'),
     ),
 
-    // CAN Campaign
+    // -----------------------------------
+    // Eye Level Campaign ----------------
+    // -----------------------------------
     'eyelevel_campaign' => array(
       'title' => 'Eye Level Campaign',
     ),
 
-    // CAN Home
+    // Eye Level Home
     'eyelevel_home' => array(
       'title' => 'Eve Level - Home',
       'path' => 'eyelevel',
@@ -307,7 +313,7 @@ function _wordlet_configuration() {
       'load' => array('site', 'eyelevel_campaign'),
     ),
 
-    // CAN Videos
+    // Eye Level Videos
     'eyelevel_video' => array(
       'title' => 'Eve Level - Video',
       'path' => 'eyelevel/video',
@@ -325,7 +331,32 @@ function _wordlet_configuration() {
       'load' => array('site', 'eyelevel_campaign'),
     ),
 
-    // Intel For Change Campaign
+    // -------------------------------------
+    // Intel Girls Campaign ----------------
+    // -------------------------------------
+    'intel_girls_campaign' => array(
+      'title' => 'Intel Girls Campaign',
+    ),
+
+    // Intel Girls Home
+    'intel_girls_home' => array(
+      'title' => 'Intel Girls Home',
+      'path' => 'intelforchange',
+      'published' => TRUE,
+      'wrappers' => array('campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/intelgirls/intelgirls.css',
+      ),
+      'js' => array(
+        'campaigns/intelgirls/intelgirls.js',
+      ),
+      'load' => array('site', 'intel_girls_campaign'),
+    ),
+
+    // ------------------------------------------
+    // Intel For Change Campaign ----------------
+    // ------------------------------------------
     'intelchange_campaign' => array(
       'title' => 'Intel For Change Campaign',
     ),
@@ -333,7 +364,7 @@ function _wordlet_configuration() {
     // Intel For Change - Home
     'intelchange_home' => array(
       'title' => 'Intel For Change - Home',
-      'path' => 'intelforchange',
+      'path' => 'intelforchangedev',
       'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
@@ -352,7 +383,7 @@ function _wordlet_configuration() {
     // Intel For Change - About
     'intelchange_about' => array(
       'title' => 'Intel For Change - About',
-      'path' => 'intelforchange/about',
+      'path' => 'intelforchangedev/about',
       'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
@@ -371,7 +402,7 @@ function _wordlet_configuration() {
     // Intel For Change - Contest
     'intelchange_contest' => array(
       'title' => 'Intel For Change - Contest',
-      'path' => 'intelforchange/contest',
+      'path' => 'intelforchangedev/contest',
       'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
@@ -390,7 +421,7 @@ function _wordlet_configuration() {
     // Intel For Change - Contest Entry
     'intelchange_contest_enter' => array(
       'title' => 'Intel For Change - Contest Entry',
-      'path' => 'intelforchange/contest/enter',
+      'path' => 'intelforchangedev/contest/enter',
       'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
@@ -409,7 +440,7 @@ function _wordlet_configuration() {
     // Intel For Change - Take Action
     'intelchange_action' => array(
       'title' => 'Intel For Change - Take Action',
-      'path' => 'intelforchange/action',
+      'path' => 'intelforchangedev/action',
       'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
@@ -428,7 +459,7 @@ function _wordlet_configuration() {
     // Intel For Change - Resources
     'intelchange_resources' => array(
       'title' => 'Intel For Change - Resources',
-      'path' => 'intelforchange/resources',
+      'path' => 'intelforchangedev/resources',
       'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(

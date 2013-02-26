@@ -45,10 +45,12 @@
 
     <div class="form_wrapper">
         <div class="default-state">
-            <h3><?=w('default_header')?></h3>
-            <p class="enter-contest important">
-                <a href="<?=wu('intelchange_contest')?>"><?=w('enter_the_contest')?></a>
-            </p>
+            <div class="default-content">
+                <h3><?=w('default_header')?></h3>
+                <p class="enter-contest important">
+                    <a href="<?=wu('intelchange_contest')?>"><?=w('enter_the_contest')?></a>
+                </p>
+            </div>
             <div class="stay-contected cta" <?=wa('stay_connected')?>>
                 <a href="#stay-connected">
                     <? if ( $w = w('stay_connected') ): ?>
