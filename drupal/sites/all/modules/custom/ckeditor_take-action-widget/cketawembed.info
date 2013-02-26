@@ -1,0 +1,5 @@
+name = CKEditor Take Action Widget Embed plugin
+description = WYSIWYG plugin for the embedded action widget.
+core = 7.x
+dependencies[] = wysiwyg
+package = User interface
