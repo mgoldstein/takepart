@@ -173,7 +173,8 @@ if ( $('body').is('.page-wordlet-patt-home') ) {
 			$.tpmodal.show({html: html});
 			e.preventDefault();
 		});
-
+} else if ( $('body').is('.page-wordlet-patt-nav') ) {
+	$('a').attr({target: '_top'});
 }
 
 });
