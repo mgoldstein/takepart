@@ -1,5 +1,12 @@
 <?php
 
+function wordlet_patt_nav_page_alter($page) {
+    // remove analytics from this page
+    global $conf;
+    $conf['googleanalytics_account'] = '';
+    $conf['quantcast_account'] = '';
+}
+
 function wordlet_patt_snap_page_alter($page) {
     if ( isset($_GET['slide']) ) {
         $w = wordlet_find('snap_slides', 'token', $_GET['slide']);
@@ -51,6 +58,14 @@ function takepart3_preprocess_html(&$vars) {
     drupal_add_library('system', 'jquery.cookie');
     if (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage')) {
         $vars['classes_array'][] = 'multipage-campaign';
+    }
+
+    // Remove tracking from place at the table iframed header
+    // TODO: Fucking fix this
+    if ( preg_match('/^\/iframes\/place-at-the-table\/header/', $_SERVER['REQUEST_URI']) ) {
+        unset($vars['page']['page_bottom']['omniture']);
+        unset($vars['page']['page_bottom']['quantcast']);
+        unset($vars['page']['page_bottom']['federatedmedia']);
     }
 
     if (isset($vars['page']['content']['system_main']['nodes'])) {
