@@ -266,7 +266,7 @@
   width: 100%;
 }
 
-.page-wordlet-intelchange-home .intro-image p {
+.page-wordlet-intelchange-home .intro-image {
   float: left;
 }
 
@@ -401,7 +401,7 @@
 
 .page-wordlet-intelchange-home .partners-block {
   background: #fff;
-  padding: 35px;
+  padding: 35px 0 35px 35px;
   margin: 10px 10px 10px 343px;
   height: 182px;
 }
@@ -423,7 +423,7 @@
 
 .page-wordlet-intelchange-home .partners-block .parnter {
   float: left;
-  margin: 0 57px 0 0;
+  margin: 0 70px 0 0;
 }
 
 
