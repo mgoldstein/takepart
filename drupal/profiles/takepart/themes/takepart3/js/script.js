@@ -171,6 +171,9 @@ takepart.analytics.addThis_shareEventHandler = function (evt) {
             case ("linkedin"):
                 title = "LinkedIn";
                 break;
+            case ("email"):
+                title = "email";
+                break;
         }
 
         if (title) {
