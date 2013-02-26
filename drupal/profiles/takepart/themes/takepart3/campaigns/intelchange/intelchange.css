@@ -168,6 +168,8 @@
   display: block;
   position: relative;
   color: #fff;
+  padding: 35px 50px;
+  text-decoration: none;
 }
 
 .cta a:after {
@@ -184,6 +186,15 @@
 
 .cta a * {
   color: #fff;
+}
+
+.cta h4 {
+  font-size: 1.55em;
+  margin-bottom: 10px;
+}
+
+.cta p {
+  font-size: .8em;
 }
 
 /* More link */
@@ -217,6 +228,23 @@
 .more a:hover:after {
   right: 0;
   background-position: left -18px;
+}
+
+/* important link (button) */
+
+.important a {
+  background: #f37424;
+  font-weight: bold;
+  color: #fff;
+  padding: 20px 45px;
+  display: inline-block;
+  border-radius: 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.important a:hover {
+  background: #d95604;
 }
 
 /* # Page Specific
@@ -311,7 +339,7 @@
   color: #313131;
   position: relative;
   padding: 6px;
-  top: -55px;
+  top: -20px;
   color: #fff;
 }
 
@@ -338,4 +366,16 @@
 
 .page-wordlet-intelchange-home .form-blurb {
   font-size: .8em;
+}
+
+.page-wordlet-intelchange-home .default-content {
+  background: #026fab;
+  margin-bottom: 5px;
+  padding: 95px 50px;
+}
+
+.page-wordlet-intelchange-home .default-content h3 {
+  font-size: 1.9em;
+  line-height: 1.3;
+  margin-bottom: 1em;
 }
