@@ -61,5 +61,22 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
 
 }
 
+// About
+if ( $body.is('.page-wordlet-intelchange-about') ) {
+    var contentNav = $('.content-nav');
+    var contentInfo = $('.content-info');
+    var contentSections = contentInfo.children();
+    $body
+        // Nav click
+        .delegate('.content-nav li a', 'click', function(e) {
+            e.preventDefault();
+            contentNav.find('li a').removeClass('active');
+            contentSections.hide().filter('#' + $(this).attr('href')).show();
+            $(this).addClass('active');
+        });
+
+    contentNav.find('li a').first().trigger('click');
+}
+
 });
 })(window, jQuery);
