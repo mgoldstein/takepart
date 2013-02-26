@@ -136,7 +136,7 @@ if ( $('body').is('.page-wordlet-patt-home') ) {
 	};
 
 	if ( getCookie('pattshowntrailer') == undefined ) {
-		$.tpmodal.show({html: '<iframe width="560" height="315" src="http://www.youtube.com/embed/f4LuipQzXqA?autoplay=1" frameborder="0" allowfullscreen=""></iframe>'});
+		$.tpmodal.show({html: '<iframe width="560" height="315" src="/video/players/?id=Mcam9iPd-Y3bNKxgM" frameborder="0" allowfullscreen=""></iframe>'});
 		setCookie('pattshowntrailer', 1, 100);
 	}
 
