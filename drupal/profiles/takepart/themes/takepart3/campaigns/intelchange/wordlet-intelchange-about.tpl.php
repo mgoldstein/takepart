@@ -1,7 +1,7 @@
 <div class="content-nav">
 	<ul>
-		<li><a href="#about-intel"><?=w('intel_for_change')?></a></li>
-		<li><a href="#about-partners"><?=w('partners')?></a></li>
+		<li><a href="#about-intel"><span><?=w('intel_for_change')?></span></a></li>
+		<li><a href="#about-partners"><span><?=w('partners')?></span></a></li>
 	</ul>
 </div>
 
