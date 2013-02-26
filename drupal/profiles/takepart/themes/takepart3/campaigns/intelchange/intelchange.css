@@ -266,7 +266,7 @@
   width: 100%;
 }
 
-.page-wordlet-intelchange-home .intro-image p {
+.page-wordlet-intelchange-home .intro-image {
   float: left;
 }
 
@@ -401,7 +401,7 @@
 
 .page-wordlet-intelchange-home .partners-block {
   background: #fff;
-  padding: 35px;
+  padding: 35px 0 35px 35px;
   margin: 10px 10px 10px 343px;
   height: 182px;
 }
@@ -423,12 +423,24 @@
 
 .page-wordlet-intelchange-home .partners-block .parnter {
   float: left;
-  margin: 0 57px 0 0;
+  margin: 0 70px 0 0;
 }
 
 
 
 /* About ---------------- */
+.page-wordlet-intelchange-about .content h2 {
+  margin-bottom: 0.5em;
+}
+.page-wordlet-intelchange-about .content p,
+.page-wordlet-intelchange-about .content ul {
+  line-height: 1.25em;
+  margin-bottom: 39px;
+}
+.page-wordlet-intelchange-about .content .special-lists li {
+  padding-left: 50px;
+  margin-bottom: 30px;
+}
 .page-wordlet-intelchange-about .content {
   padding: 25px 15px 40px 15px;
   -webkit-box-sizing: border-box;
@@ -451,23 +463,21 @@
   width: 157px;
   float: left;
 }
+.page-wordlet-intelchange-about .content-nav ul li {
+  margin-bottom: 9px;
+}
 .page-wordlet-intelchange-about .content-nav ul li a {
   text-transform: uppercase;
   background: rgb(244, 244, 244);
   display: block;
-  margin-bottom: 9px;
   position: relative;
   text-align: center;
   font-weight: bold;
   color: rgb(75, 54, 57);
   width: 137px;
   height: 80px;
-  line-height: 80px;
-}
-.page-wordlet-intelchange-about .content-nav ul li a span {
+  display: table-cell;
   vertical-align: middle;
-  line-height: 1.25em;
-  display: inline-block;
 }
 .page-wordlet-intelchange-about .content-nav ul a.active {
   color: rgb(255, 255, 255);

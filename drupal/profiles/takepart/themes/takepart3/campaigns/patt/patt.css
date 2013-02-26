@@ -118,6 +118,7 @@ body {
 	position: relative;
 	z-index: 51;
 	display: block;
+	background: rgba(0,0,0,0);
 }
 
 .table .nav a {
