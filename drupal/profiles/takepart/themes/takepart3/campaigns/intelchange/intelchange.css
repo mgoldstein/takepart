@@ -462,12 +462,8 @@
   color: rgb(75, 54, 57);
   width: 137px;
   height: 80px;
-  line-height: 80px;
-}
-.page-wordlet-intelchange-about .content-nav ul li a span {
+  display: table-cell;
   vertical-align: middle;
-  line-height: 1.25em;
-  display: inline-block;
 }
 .page-wordlet-intelchange-about .content-nav ul a.active {
   color: rgb(255, 255, 255);
