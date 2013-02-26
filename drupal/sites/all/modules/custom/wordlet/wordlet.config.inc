@@ -349,7 +349,7 @@ function _wordlet_configuration() {
         'campaigns/intelgirls/intelgirls.css',
       ),
       'js' => array(
-        //'campaigns/intelgirls/intelchange.js',
+        'campaigns/intelgirls/intelgirls.js',
       ),
       'load' => array('site', 'intel_girls_campaign'),
     ),
