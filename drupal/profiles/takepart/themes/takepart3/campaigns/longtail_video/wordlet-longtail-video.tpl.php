@@ -5,6 +5,10 @@
 <title>Video</title>
 <meta name="viewport" content="width=device-width">
 <style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
 	body {
 		background: transparent;
 	}
