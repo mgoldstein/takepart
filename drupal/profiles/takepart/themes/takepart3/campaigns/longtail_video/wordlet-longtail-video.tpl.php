@@ -10,7 +10,7 @@
 		padding: 0;
 	}
 	body {
-		background: transparent url(/profiles/takepart/themes/takepart3/images/spinner.gif) center center no-repeat;;
+		background: transparent;
 	}
 </style>
 
