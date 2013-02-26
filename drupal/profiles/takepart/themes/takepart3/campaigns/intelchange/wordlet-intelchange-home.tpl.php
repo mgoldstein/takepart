@@ -79,7 +79,7 @@
     <div class="partners-block">
         <a href="<?=wu('intelchange_about')?>">
             <h4><?=w('partners_header')?></h4>
-            <ul <?=wa('partners_list')?>>
+            <ul class="partners-list" <?=wa('partners_list')?>>
                 <? foreach ( wl('partners_list') as $w ): ?>
                     <li class="parnter">
                         <img alt="<?=$w->single(false)?>" src="<?=$w->thumb_src?>"/>

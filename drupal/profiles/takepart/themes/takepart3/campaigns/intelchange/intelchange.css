@@ -26,7 +26,7 @@
   background: #e9e8e6;
   display: inline-block; *display: inline; zoom: 1;
   width: 100%;
-  text-align: bottom;
+  vertical-align: bottom;
 }
 
 /* header ---------------- */
@@ -77,6 +77,11 @@
   vertical-align: top;
   display: inline-block;
   padding-top: .3em;
+}
+
+.main .footer img {
+  width: 100%;
+  height: auto;
 }
 
 /* menu ---------------- */
@@ -379,6 +384,39 @@
   line-height: 1.3;
   margin-bottom: 1em;
 }
+
+.page-wordlet-intelchange-home .footer-block {
+  clear: both;
+  display: inline-block; *display: inline; zoom: 1;
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.page-wordlet-intelchange-home .facts-block {
+  float: left;
+  background: #fff;
+  padding: 5px;
+  margin: 10px 3px 10px 10px;
+}
+
+.page-wordlet-intelchange-home .partners-block {
+  background: #fff;
+  padding: 35px;
+  margin: 10px 10px 10px 343px;
+  height: 182px;
+}
+
+.page-wordlet-intelchange-home .partners-block h4 {
+  color: #026fab;
+  font-size: 1.15em;
+  margin-bottom: 30px;
+}
+
+.page-wordlet-intelchange-home .partners-block .parnter {
+  float: left;
+}
+
+
 
 /* About ---------------- */
 .page-wordlet-intelchange-about .content {

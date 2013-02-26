@@ -6,7 +6,7 @@ $(function() {
 
 // Add active class to anchors
 $('a').each(function() {
-	if ( this.pathname == location.pathname && this.protocol == location.protocol && this.hostname == location.hostname ) {
+	if ( !this.hash && this.pathname == location.pathname && this.protocol == location.protocol && this.hostname == location.hostname ) {
 		$(this).addClass('active');
 	}
 });
