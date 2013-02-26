@@ -107,6 +107,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/patt/patt.js'
       ),
       'load' => array('site', 'patt_campaign'),
     ),
