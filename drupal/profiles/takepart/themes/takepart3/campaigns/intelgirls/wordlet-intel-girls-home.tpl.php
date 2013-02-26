@@ -27,10 +27,19 @@
                 </div>
             </div>
             <div class="intro">
-                <?=w("intro_blurb")?>
+                <div>
+                    <?=w("intro_blurb")?>
+                </div>
                 <div class="addThis">
                     <a class="addthis_button_facebook_like"></a>
-                    <a class="addthis_button_tweet"></a>
+                    <a class="addthis_button_tweet" <?=wa('twitter_text')?>></a>
+                    <script>
+                    var addthis_share = {
+                        templates : {
+                            twitter : "<?=htmlspecialchars(w('twitter_text')->single(false))?>"
+                        }
+                    };
+                    </script>
                     <a class="addthis_button_email"></a>
                 </div>
             </div>
