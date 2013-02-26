@@ -78,6 +78,17 @@ function _wordlet_configuration() {
       'load' => array('site', 'intel_girls_campaign'),*/
     ),
 
+    // Longtail video
+    'longtail_video' => array(
+      'title' => 'Video',
+      'path' => 'video/players',
+      'published' => TRUE,
+      'wrappers' => array(),
+      'css' => array(),
+      'js' => array(),
+      'load' => array(),
+    ),
+
     // --------------------------------------------
     // Place at the Table Campaign ----------------
     // --------------------------------------------
@@ -96,6 +107,7 @@ function _wordlet_configuration() {
         'campaigns/patt/patt.css',
       ),
       'js' => array(
+        'campaigns/patt/patt.js'
       ),
       'load' => array('site', 'patt_campaign'),
     ),
