@@ -429,6 +429,18 @@
 
 
 /* About ---------------- */
+.page-wordlet-intelchange-about .content h2 {
+  margin-bottom: 0.5em;
+}
+.page-wordlet-intelchange-about .content p,
+.page-wordlet-intelchange-about .content ul {
+  line-height: 1.25em;
+  margin-bottom: 39px;
+}
+.page-wordlet-intelchange-about .content .special-lists li {
+  padding-left: 50px;
+  margin-bottom: 30px;
+}
 .page-wordlet-intelchange-about .content {
   padding: 25px 15px 40px 15px;
   -webkit-box-sizing: border-box;

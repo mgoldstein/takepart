@@ -6,7 +6,7 @@
 </div>
 
 <div class="content-info">
-	<div id="about-intel">
+	<div id="about-intel" class='special-lists'>
 		<?=w('about_intel')?>
 		<? if ( $w = w('intel_more') ): ?>
 			<p class="more">
