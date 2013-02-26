@@ -1409,7 +1409,7 @@ function takepart_campaign_field_default_fields() {
           'class' => '',
           'configurable_title' => 0,
           'rel' => '',
-          'target' => 'user',
+          'target' => '_self',
           'title' => '',
         ),
         'display' => array(
