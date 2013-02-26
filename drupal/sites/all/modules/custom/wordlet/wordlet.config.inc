@@ -341,12 +341,12 @@ function _wordlet_configuration() {
     // Intel Girls Home
     'intel_girls_home' => array(
       'title' => 'Intel Girls Home',
-      'path' => 'intelgirls',
+      'path' => 'intelforchange',
       'published' => TRUE,
       'wrappers' => array('campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
-        'campaigns/intelgirls/intelchange.css',
+        'campaigns/intelgirls/intelgirls.css',
       ),
       'js' => array(
         //'campaigns/intelgirls/intelchange.js',
