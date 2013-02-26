@@ -438,6 +438,14 @@
 }
 .page-wordlet-intelchange-about .content-info {
   display: inline-block; *display: inline; *zoom: 1;
+  background: rgb(255, 255, 255);
+  vertical-align: top;
+  width: 797px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 49px 69px 50px 69px;
 }
 .page-wordlet-intelchange-about .content-nav {
   width: 157px;
@@ -451,7 +459,7 @@
   position: relative;
   text-align: center;
   font-weight: bold;
-  color: rgb(255, 255, 255);
+  color: rgb(75, 54, 57);
   width: 137px;
   height: 80px;
   line-height: 80px;
@@ -461,14 +469,11 @@
   line-height: 1.25em;
   display: inline-block;
 }
-.page-wordlet-intelchange-about .content-nav ul a.active,
-.page-wordlet-intelchange-about .content-nav ul a:hover,
-.page-wordlet-intelchange-about .content-nav ul a:focus {
+.page-wordlet-intelchange-about .content-nav ul a.active {
+  color: rgb(255, 255, 255);
   background: rgb(0, 140, 215);
 }
-.page-wordlet-intelchange-about .content-nav ul a.active::after,
-.page-wordlet-intelchange-about .content-nav ul a:hover::after,
-.page-wordlet-intelchange-about .content-nav ul a:focus::after {
+.page-wordlet-intelchange-about .content-nav ul a.active::after {
   content: "";
   position: absolute;
   left: 100%;
@@ -479,4 +484,17 @@
   border-bottom: 40px solid transparent;
   border-left: 20px solid rgb(0, 140, 215);
   top: 0;
+}
+.page-wordlet-intelchange-about .partner {
+  display: inline-block; *display: inline; *zoom: 1;
+}
+.page-wordlet-intelchange-about .partner .image {
+  float: left;
+  display: inline-block; *display: inline; *zoom: 1;
+  margin-right: 50px;
+  width: 140px;
+  text-align: center;
+}
+.page-wordlet-intelchange-about .partner .description {
+  margin-left: 10px;
 }

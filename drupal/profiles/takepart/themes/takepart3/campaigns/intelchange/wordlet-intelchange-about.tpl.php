@@ -17,7 +17,7 @@
 
 	<div id="about-partners" <?=wa('partners_list')?>>
 		<? foreach ( wl('partners_list') as $w ): ?>
-			<div class="parnter">
+			<div class="partner">
 				<p class="image">
 					<a href="<?=$w->href?>">
 						<img src="<?=$w->img_src?>"/>
