@@ -26,6 +26,7 @@ stylesheets[all][] = css/actions.css
 stylesheets[all][] = css/tpmodal.css
 
 ; Javascript
+scripts[] = js/analytics.js
 scripts[] = js/script.js
 scripts[] = js/widgets.js
 scripts[] = js/tastemakers/venue.js
