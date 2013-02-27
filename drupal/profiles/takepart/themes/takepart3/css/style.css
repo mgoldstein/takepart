@@ -3232,3 +3232,7 @@ p.fb-login-text {
 .map_canvas {
   border: 0;
 }
+.takepart-take-action-widget { 
+	width:90%;
+	margin:0px auto;
+}
