@@ -426,6 +426,17 @@
   margin: 0 70px 0 0;
 }
 
+.page-wordlet-intelchange-home .form-state {
+  color: #4b3639;
+  background: #fff;
+  padding: 40px;
+}
+
+.page-wordlet-intelchange-home .form-state h3 {
+  font-size: 1.85em;
+  margin-bottom: 1em;
+}
+
 /* Contest ---------------- */
 .page-wordlet-intelchange-contest .content {
   padding: 31px 11px 95px 11px;
