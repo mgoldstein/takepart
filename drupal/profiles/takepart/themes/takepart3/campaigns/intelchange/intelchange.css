@@ -139,6 +139,14 @@
   padding: 20px 46px 10px 10px;
 }
 
+.main .addThis>a {
+  float: left;
+}
+
+.main .addThis .addthis_button_facebook_like {
+  margin-right: 14px;
+}
+
 .main .addThis .addthis_button_email .at16nc {
   background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/email_bttn.png) no-repeat;
   width: 55px;
@@ -213,6 +221,7 @@
   font-size: .8em;
   text-transform: uppercase;
   line-height: 18px;
+  font-weight: bold;
 }
 
 .more a:after {
@@ -542,7 +551,11 @@
 
 /* Contest ---------------- */
 .page-wordlet-intelchange-contest .content {
-  padding: 31px 11px 95px 11px;
+  padding: 31px 11px 80px 11px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .page-wordlet-intelchange-contest .content h2 {
   margin-bottom: 0.5em;
@@ -554,8 +567,9 @@
 }
 .page-wordlet-intelchange-contest .content p,
 .page-wordlet-intelchange-contest .content ul {
-  line-height: 1.25em;
-  margin-bottom: 39px;
+  line-height: 1.5em;
+  margin-bottom: 1em;
+  font-size: 14px;
 }
 .page-wordlet-intelchange-contest .content .first-block,
 .page-wordlet-intelchange-contest .content .second-block,
@@ -567,7 +581,7 @@
   padding-bottom: 29px;
 }
 .page-wordlet-intelchange-contest .content .first-block h2 {
-  padding-top: 29px;
+  padding-top: 0.5em;
 }
 .page-wordlet-intelchange-contest .content .first-block .image {
   float: left;
@@ -575,6 +589,7 @@
 }
 
 .page-wordlet-intelchange-contest .content .second-block {
+  position: relative;
   background: rgb(255, 255, 255);
   color: rgb(75, 54, 57);
   display: inline-block; *display: inline; *zoom: 1;
@@ -588,13 +603,14 @@
 .page-wordlet-intelchange-contest .content .second-block .first-sub {
   margin-right: 507px;
   float: left;
-  padding-top: 55px;
+  padding-top: 3.5em;
+  padding-bottom: 3.5em;
 }
 .page-wordlet-intelchange-contest .content .second-block .second-sub {
-  position: relative;
   float: right;
-  margin-left: -507px;
   color: #fff;
+  position: absolute;
+  right: 43px;
 }
 .page-wordlet-intelchange-contest .content .second-block .second-sub .sub-wrapper {
   position: relative;
@@ -618,10 +634,20 @@
   content: " ";
 }
 .page-wordlet-intelchange-contest .content .second-block .second-sub .instructions li {
-  margin-bottom: 20px;
-  margin-left: 42px;
-  list-style: decimal;
-  line-height: 1.25em;
+  margin-bottom: 1em;
+  padding-left: 42px;
+  line-height: 1.5em;
+  counter-increment: customlistcounter;
+  *list-style-type: decimal;
+  position: relative;
+}
+.page-wordlet-intelchange-contest .content .second-block .second-sub .instructions li:before {
+  content: counter(customlistcounter) " ";
+  font-weight: bold;
+  position: absolute;
+  left: 0px;
+  font-size: 2em;
+  top: 8px;
 }
 .page-wordlet-intelchange-contest .content .second-block .second-sub .important {
   margin: 30px 0 0 0;
@@ -639,7 +665,7 @@
   top: 80px;
 }
 .page-wordlet-intelchange-contest .content .third-block h3 {
-  margin-bottom: 31px;
+  margin-bottom: 1em;
 }
 .page-wordlet-intelchange-contest .content .countries-nav li {
   display: inline-block; *display: inline; *zoom: 1;
@@ -655,10 +681,13 @@
   color: #333;
 }
 .page-wordlet-intelchange-contest .content .country_body ul {
-  margin-left: 59px;
+  list-style: none;
+  padding: 0;
 }
 .page-wordlet-intelchange-contest .content .country_body li {
-  margin-bottom: 27px;
+  margin-bottom: 1em;
+  padding-left: 4em;
+  background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/pencil.png) no-repeat 0.5em 0.5em;
 }
 
 
@@ -668,12 +697,14 @@
 }
 .page-wordlet-intelchange-about .content p,
 .page-wordlet-intelchange-about .content ul {
-  line-height: 1.25em;
-  margin-bottom: 39px;
+  line-height: 1.5em;
+  margin-bottom: 1.5em;
+  font-size: 14px;
 }
 .page-wordlet-intelchange-about .content .special-lists li {
-  padding-left: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 1.5em;
+  padding-left: 4em;
+  background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/pencil.png) no-repeat 0.5em 0.5em;
 }
 .page-wordlet-intelchange-about .content {
   padding: 25px 15px 40px 15px;
