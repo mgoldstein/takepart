@@ -490,12 +490,15 @@
 }
 .page-wordlet-intelchange-contest .content .second-block .second-sub {
   position: relative;
-  width: 317px;
   float: right;
   margin-left: -507px;
-  padding: 53px 70px 39px 40px;
-  background: #026fab;
   color: #fff;
+}
+.page-wordlet-intelchange-contest .content .second-block .second-sub .sub-wrapper {
+  position: relative;
+  background: #026fab;
+  width: 317px;
+  padding: 53px 40px 40px 40px;
 }
 .page-wordlet-intelchange-contest .content .second-block .second-sub:before {
   -ms-transform: rotate(0.5deg);
@@ -504,12 +507,22 @@
   -o-transform: rotate(0.5deg);
   transform: rotate(0.5deg);
   background: #1fa2dc;
+  padding: 6px;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -6px;
+  left: -6px;
   width: 100%;
   height: 100%;
   content: " ";
+}
+.page-wordlet-intelchange-contest .content .second-block .second-sub .instructions li {
+  margin-bottom: 20px;
+  margin-left: 42px;
+  list-style: decimal;
+  line-height: 1.25em;
+}
+.page-wordlet-intelchange-contest .content .second-block .second-sub .important {
+  margin: 30px 0 0 0;
 }
 .page-wordlet-intelchange-contest .content .third-block {
   padding-top: 80px;

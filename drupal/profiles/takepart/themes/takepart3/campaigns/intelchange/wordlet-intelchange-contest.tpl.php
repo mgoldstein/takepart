@@ -26,19 +26,21 @@
 	</div>
 
 	<div class="second-sub">
-		<div class="instructions">
-			<ol <?=wa('instructions')?>>
-				<? foreach ( wl('instructions') as $w ): ?>
-					<li>
-						<?=$w?>
-					</li>
-				<? endforeach ?>
-			</ol>
-		</div>
+		<div class="sub-wrapper">
+			<div class="instructions">
+				<ol <?=wa('instructions')?>>
+					<? foreach ( wl('instructions') as $w ): ?>
+						<li>
+							<?=$w?>
+						</li>
+					<? endforeach ?>
+				</ol>
+			</div>
 
-		<p class="important">
-			<a href="<?=wu('intelchange_contest_enter')?>"><?=w('enter_the_contest')?></a>
-		</p>
+			<p class="important">
+				<a href="<?=wu('intelchange_contest_enter')?>"><?=w('enter_the_contest')?></a>
+			</p>
+		</div>
 	</div>
 </div>
 
