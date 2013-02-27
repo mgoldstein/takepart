@@ -1,31 +1,5 @@
 <?php
 /**
- * @file
- * TakeAction Button Action Tracking Module.
- */
-
-/**
- * Implements hook_entity_insert().
- */
-function takeaction_tracking_entity_insert($entity, $type) {
-  if ($type === 'signature') {
-    takeaction_tracking_track_action($entity->nid);
-  }
-}
-
-/**
- * Implements hook_entity_update().
- *
- * TODO: Remove this hook once the cause of the missing signatures is
- * determined.
- */
-function takeaction_tracking_entity_update($entity, $type) {
-  if ($type === 'signature') {
-    takeaction_tracking_track_action($entity->nid);
-  }
-}
-
-/**
  * Function to report a user action.
  */
 function takeaction_tracking_track_action($nid) {

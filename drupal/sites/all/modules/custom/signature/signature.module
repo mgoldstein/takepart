@@ -260,6 +260,12 @@ function signature_menu() {
       'type' => MENU_CALLBACK,
       'access arguments' => array('access content'),
     ),
+    'api/signature' => array(
+      'page callback' => 'signature_api_create',
+      'type' => MENU_CALLBACK,
+      'access arguments' => array('access content'),
+      'delivery callback' => 'signature_deliver_api_page',
+    ),
   );
 }
 
@@ -1389,6 +1395,7 @@ function signature_send_signup($signature) {
       try {
         $api = bluestatedigital_get_api('signup');
         $api->processSignup($signup);
+        takeaction_tracking_track_action($signature->nid);
       }
       catch (BlueStateDigitalApiException $ex) {
         $message = 'Error sending signature signup [@code] @body';
@@ -1740,8 +1747,10 @@ function signature_field_formatter_view($entity_type, $entity, $field,
 /**
  * Implements hook_field_formatter_prepare_view().
  */
-function signature_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
-  taxonomy_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, $items, $displays);
+function signature_field_formatter_prepare_view($entity_type, $entities, $field,
+  $instances, $langcode, &$items, $displays) {
+  taxonomy_field_formatter_prepare_view($entity_type, $entities, $field,
+    $instances, $langcode, $items, $displays);
 }
 
 
@@ -1798,4 +1807,259 @@ function signature_node_state_callback($nids) {
     }
   }
   return drupal_json_output($state);
+}
+
+function signature_deliver_api_page($page_callback_result) {
+  drupal_add_http_header('Content-Type', 'application/json');
+  drupal_add_http_header('Status', $page_callback_result['status']);
+  print drupal_json_encode($page_callback_result['payload']);
+}
+
+function signature_api_create($nid) {
+
+  // Creates are done through a POST
+  if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    return array(
+      'status' => '405 Method Not Allowed',
+      'payload' => array(
+        'errors' => array(
+          'HTTP method must be POST.'
+        ),
+      ),
+    );
+  }
+
+  // Requestion authorization token must be correct
+
+  // Request content type must be JSON
+  if ($_SERVER['CONTENT_TYPE'] !== 'application/json') {
+    return array(
+      'status' => '400 Bad Request',
+      'payload' => array(
+        'errors' => array(
+          'Invalid request content type.',
+        ),
+      ),
+    );
+  }
+
+  // First (and only) path element is a nid
+  if (!preg_match('/^[0-9]+$/', $nid)) {
+    return array(
+      'status' => '400 Bad Request',
+      'payload' => array(
+        'errors' => array(
+          'Invalid action id.',
+        ),
+      ),
+    );
+  }
+
+  // The nid must point to a valid node
+  $node = node_load($nid);
+  if ($node === FALSE) {
+    return array(
+      'status' => '404 Not Found',
+      'payload' => array(
+        'errors' => array(
+          'No such action exists.',
+        ),
+      ),
+    );
+  }
+
+  // Only petition and pledge actions have signatures
+  if ($node->type !== 'petition_action' && $node->type !== 'pledge_action') {
+    return array(
+      'status' => '400 Bad Request',
+      'payload' => array(
+        'errors' => array(
+          'The requested action does not support signatures.',
+        ),
+      ),
+    );
+  }
+
+  // Decode the JSON payload
+  $request_body = file_get_contents('php://input');
+  $payload = drupal_json_decode($request_body);
+  if (!isset($payload)) {
+    return array(
+      'status' => '400 Bad Request',
+      'payload' => array(
+        'errors' => array(
+          'Unable to decode request payload.',
+        ),
+      ),
+    );
+  }
+
+  // Validate the payload
+  $validation_errors = array();
+  if (!isset($payload['first_name'])) {
+    $validation_errors[] = 'First name is required.';
+  }
+  if (!isset($payload['last_name'])) {
+    $validation_errors[] = 'Last name is required.';
+  }
+  if (!isset($payload['email'])) {
+    $validation_errors[] = 'Email is required.';
+  }
+  if (!isset($payload['display_signature'])) {
+    $validation_errors[] = 'Signature display flag is required.';
+  }
+  if (!isset($payload['opt_ins'])) {
+    $validation_errors[] = 'Opt-in list is required.';
+  }
+  if (!is_array($payload['opt_ins'])) {
+    $validation_errors[] = 'Opt-in list must be an array.';
+  }
+  if (!empty($validation_errors)) {
+    return array(
+      'status' => '400 Bad Request',
+      'payload' => array(
+        'errors' => $validation_errors,
+      ),
+    );
+  }
+
+  // Create a signature on the Drupal side
+  $values = array(
+    'type' => 'international_signature',
+    'nid' => $nid,
+    'email' => $payload['email'],
+    'display' => $payload['display_signature'],
+    'newsletter' => 0,
+  );
+  $signature = entity_create('signature', $values);
+
+  // Newsletter opt-ins
+  foreach ($payload['opt_ins'] as $opt_in) {
+    if ($opt_in['name'] === 'opt_in_1') {
+      if (!empty($opt_in['value'])) {
+        $signature->newsletter |= 0x01;
+      }
+    }
+    elseif ($opt_in['name'] === 'opt_in_2') {
+      if (!empty($opt_in['value'])) {
+        $signature->newsletter |= 0x02;
+      }
+    }
+    elseif ($opt_in['name'] === 'opt_in_3') {
+      if (!empty($opt_in['value'])) {
+        $signature->newsletter |= 0x04;
+      }
+    }
+    elseif ($opt_in['name'] === 'opt_in_4') {
+      if (!empty($opt_in['value'])) {
+        $signature->newsletter |= 0x08;
+      }
+    }
+    elseif ($opt_in['name'] === 'opt_in_5') {
+      if (!empty($opt_in['value'])) {
+        $signature->newsletter |= 0x10;
+      }
+    }
+  }
+
+  // First name field
+  $signature->field_sig_first_name = array(
+    'und' => array(array('value' => $payload['first_name']))
+  );
+
+  // Last name field
+  $signature->field_sig_last_name = array(
+    'und' => array(array('value' => $payload['last_name']))
+  );
+
+  if (!empty($payload['address'])) {
+    // Address field
+    $signature->field_sig_address = array(
+      'und' => array(array('value' => $payload['address']))
+    );
+  }
+  else {
+    $signature->field_sig_address = array('und' => array());
+  }
+
+  if (!empty($payload['city'])) {
+    // City field
+    $signature->field_sig_city = array(
+      'und' => array(array('value' => $payload['city']))
+    );
+  }
+  else {
+    $signature->field_sig_city = array('und' => array());
+  }
+
+  if (empty($payload['country']) || $payload['country'] == 'United States') {
+
+    if (!empty($payload['state'])) {
+      // State field
+      $signature->field_sig_state = array(
+        'und' => array(array('value' => $payload['state']))
+      );
+    }
+    else {
+      $signature->field_sig_state = array('und' => array());
+    }
+
+    if (!empty($payload['postal_code'])) {
+      // ZIP code field
+      $signature->field_sig_zip_code = array(
+        'und' => array(array('value' => $payload['postal_code']))
+      );
+    }
+    else {
+      $signature->field_sig_zip_code = array('und' => array());
+    }
+
+    $signature->field_sig_postal_code = array('und' => array());
+  }
+  else {
+
+    $signature->field_sig_state = array('und' => array());
+
+    if (!empty($payload['postal_code'])) {
+      // Postal code field
+      $signature->field_sig_postal_code = array(
+        'und' => array(array('value' => $payload['postal_code']))
+      );
+    }
+    else {
+      $signature->field_sig_postal_code = array('und' => array());
+    }
+
+    $signature->field_sig_zip_code = array('und' => array());
+  }
+
+  if (!empty($payload['country'])) {
+    // Country field
+    $signature->field_sig_country = array(
+      'und' => array(array('value' => $payload['country']))
+    );
+  }
+  else {
+    $signature->field_sig_country = array('und' => array());
+  }
+
+  // Partner code field
+  if (!empty($_REQUEST['partner_code'])) {
+    $signature->field_partner_code = array(
+      'und' => array(array('value' => $_REQUEST['partner_code']))
+    );
+  }
+  else {
+    $signature->field_partner_code = array('und' => array());
+  }
+
+  $signature->save();
+  signature_send_signup($signature);
+
+  return array(
+    'status' => '201 Created',
+    'payload' => array(
+      'id' => $signature->id,
+    ),
+  );
 }
