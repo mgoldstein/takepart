@@ -350,11 +350,11 @@ body {
 	margin: 0;
 }
 
-.email-signup .terms_and_conditions a {
+.email-signup .terms_and_conditions {
 	display: block;
-	text-align: center;
 	color: #fff;
 	font-size: 11px;
+	line-height: 1.1;
 }
 
 .email-signup .form-actions {

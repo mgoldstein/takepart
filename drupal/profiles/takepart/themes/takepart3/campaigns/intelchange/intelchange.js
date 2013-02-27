@@ -55,6 +55,7 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
             $(this.hash).show();
             e.preventDefault();
         })
+        .delegate('#edit-mobile input', 'keypress', $.tpautoTab)
         ;
 
     $('.form-state').hide();
