@@ -46,7 +46,7 @@
 
 <div class="third-block">
 	<h3><?=w('countries_header')?></h3>
-	<div class="countries_nav">
+	<div class="countries-nav">
 		<ul <?=wa('countries')?>>
 			<? foreach ( wl('countries') as $w ): ?>
 				<li>
