@@ -62,6 +62,23 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
 
 }
 
+// Contest
+if ( $body.is('.page-wordlet-intelchange-contest') ) {
+    var contentNav = $('.countries-nav');
+    var content = $('.countries');
+    var contentSections = content.children();
+    $body
+        // Nav click
+        .delegate('.countries-nav li a', 'click', function(e) {
+            e.preventDefault();
+            contentNav.find('li a').removeClass('active');
+            contentSections.hide().filter('#' + $(this).attr('href')).show();
+            $(this).addClass('active');
+        });
+
+    contentNav.find('li a').first().trigger('click');
+}
+
 // About
 if ( $body.is('.page-wordlet-intelchange-about') ) {
     var contentNav = $('.content-nav');
