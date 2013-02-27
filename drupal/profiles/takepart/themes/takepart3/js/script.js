@@ -1,7 +1,3 @@
-if (typeof takepart == "undefined" || !takepart) {
-    var takepart = {};
-}
-
 // TODO: Put all the document ready code in one document ready closure
 (function(window, $, undefined) {
     // Document ready
@@ -147,59 +143,6 @@ jQuery(document).ready(function() {
         });
     });
 });
-
-//Analytics functions:
-//@todo: move into seprate file
-takepart.analytics = takepart.analytics || {};
-
-takepart.analytics.addThis_shareEventHandler = function (evt) {
-
-    if (evt.type == 'addthis.menu.share') {
-
-        var title;
-
-        switch (evt.data.service) {
-            case ("facebook_like"):
-                title = "Facebook Recommend";
-                break;
-            case ("tweet"):
-                title = "Twitter Tweet";
-                break;
-            case ("google_plusone"):
-                title = "Google Plus One";
-                break;
-            case ("linkedin"):
-                title = "LinkedIn";
-                break;
-        }
-
-        if (title) {
-            s.events = 'event25';
-            s.prop26 = title;
-            s.eVar27 = title;
-            s.linkTrackVars = 'eVar27,prop26,events';
-            s.linkTrackEvents = 'event25';
-            s.tl(this.href, 'o', 'Content Share');
-        }
-    }
-}
-
-takepart.analytics.omn_clickTrack = function (target) {
-    jQuery(target).click(function() {
-        var link_title = jQuery(this).attr('title');
-        var title = convert_title(link_title);
-        s.events='event25';
-        s.prop26=title;
-        s.eVar27=title;
-        s.linkTrackVars='eVar27,prop26,events';
-        s.linkTrackEvents='event25';
-        s.tl(this.href, 'o', 'Content Share');
-    });
-}
-
-takepart.analytics.addThis_ready = function (evt) {
-    addthis.addEventListener('addthis.menu.share', takepart.analytics.addThis_shareEventHandler);
-}
 
 jQuery(document).ready(function () {
     if (typeof addthis != "undefined") {
