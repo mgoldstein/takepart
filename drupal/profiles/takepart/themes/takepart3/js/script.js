@@ -1,7 +1,3 @@
-if (typeof takepart == "undefined" || !takepart) {
-    var takepart = {};
-}
-
 // TODO: Put all the document ready code in one document ready closure
 (function(window, $, undefined) {
     // Document ready

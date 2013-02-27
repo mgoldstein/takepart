@@ -51,14 +51,9 @@ var show_modal = function(animate) {
 
 	$.tpmodal.show({id: 'snap_modal_', html: $modal.html(), prepend: 'snap_modal_', speed: dospeed});
 
-	// Sitecat garbage
-    var s=s_gi(Drupal.settings.omniture.s_account);
-    s.linkTrackVars='eVar73,eVar30,events';
-    s.linkTrackEvents='event73';
-    s.events='event73';
-    s.eVar28="APATT - SNAP Gallery Modal View";
-    s.eVar30="takepart:place-at-the-table:APATT Gallery";
-    s.tl(true, 'o', 'APATT - SNAP Gallery Modal View');
+	var name = $current_tile.find('.modal-left .fact').text() || $current_tile.find('.modal-header h1').html() || 'Other';
+
+	takepart.analytics.track('patt_show_modal', name);
 
 	addthis.toolbox('.addthis_toolbox_modal');
 };
@@ -93,10 +88,10 @@ $current_tile = $('.tile[data-token="' + getQueryParam('slide') + '"]');
 if ( $current_tile.length ) show_modal();
 
 $('body')
-	.delegate('.tile:not(.link) a', 'click', function(e) {
+	.delegate('.tile[data-token] a', 'click', function(e) {
 		e.preventDefault();
 	})
-	.delegate('.tile', 'click', function() {
+	.delegate('.tile[data-token]', 'click', function() {
 		$current_tile = $(this);
 		show_modal(true);
 
@@ -110,6 +105,30 @@ $('body')
 	})
 	.delegate('#nav-right', 'click', next)
 	.delegate('#nav-left', 'click', prev)
+	.delegate('#snap_modal_modal .addthis_button_email', 'click', function() {
+		var name = $current_tile.find('.modal-left .fact').text() || $current_tile.find('.modal-header h1').html() || 'Other';
+
+		takepart.analytics.track('patt_email_modal', name);
+	})
+	.delegate('#snap_modal_modal .addthis_button_twitter', 'click', function() {
+		var name = $current_tile.find('.modal-left .fact').text() || $current_tile.find('.modal-header h1').html() || 'Other';
+
+		takepart.analytics.track('patt_twitter_modal', name);
+	})
+	.delegate('#snap_modal_modal .addthis_button_facebook', 'click', function() {
+		var name = $current_tile.find('.modal-left .fact').text() || $current_tile.find('.modal-header h1').html() || 'Other';
+
+		takepart.analytics.track('patt_facebook_modal', name);
+	})
+	.delegate('.social-buttons .addthis_button_email', 'click', function() {
+		takepart.analytics.track('patt_email_gallery');
+	})
+	.delegate('.social-buttons .addthis_button_twitter', 'click', function() {
+		takepart.analytics.track('patt_twitter_gallery');
+	})
+	.delegate('.social-buttons .addthis_button_facebook', 'click', function() {
+		takepart.analytics.track('patt_facebook_gallery');
+	})
 	;
 
 var ytreg = /v=([a-zA-Z0-9]+)/;
