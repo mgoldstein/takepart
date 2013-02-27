@@ -532,6 +532,14 @@
   top: 10px;
 }
 
+.page-wordlet-intelchange-home .fact {
+  display: none;
+}
+
+.page-wordlet-intelchange-home .fact0 {
+  display: block;
+}
+
 /* Contest ---------------- */
 .page-wordlet-intelchange-contest .content {
   padding: 31px 11px 95px 11px;

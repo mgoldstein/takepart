@@ -71,6 +71,12 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
         .hide()
         .append('<p class="close"><a href="#">Close</a></p>');
 
+    // Show random fact
+    var $facts = $('.facts-block .fact');
+    var fact_length = $facts.length;
+    var rfact = Math.floor(Math.random()*fact_length);
+    $facts.hide();
+    $($facts.get(rfact)).show();
 }
 
 // Contest

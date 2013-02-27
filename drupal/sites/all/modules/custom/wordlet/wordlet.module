@@ -1069,6 +1069,25 @@ function wl() {
   }
 }
 
+/* Sort of useless because Drupal caching, so just commenting for now
+function wordlet_random($name) {
+  $wl = wordlet_list($name);
+  if ( get_class($wl) != 'WordletList' ) return $wl;
+  $rnd = rand(0, $wl->count() - 1);
+  foreach ( $wl as $i => $w ) {
+    if ( $i == $rnd ) return $w;
+  }
+}
+
+function wr() {
+  try {
+    $func_get_args = func_get_args();
+    return call_user_func_array('wordlet_random', $func_get_args);
+  } catch (Exception $e) {
+    return '';
+  }
+}*/
+
 function wordlet_generator($name) {
   $values = &drupal_static(__FUNCTION__, array());
   if (!isset($values[$name])) {
