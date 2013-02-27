@@ -106,17 +106,17 @@ $('body')
 	.delegate('#nav-right', 'click', next)
 	.delegate('#nav-left', 'click', prev)
 	.delegate('#snap_modal_modal .addthis_button_email', 'click', function() {
-		var name = $current_tile.find('.modal-left .fact').text() || $current_tile.find('.modal-header h1').html() || 'Other';
+		var name = $current_tile.find('.modal-left .fact').text().replace(/\s{2,}/,': ') || $current_tile.find('.modal-header h1').html() || 'Other';
 
 		takepart.analytics.track('patt_email_modal', name);
 	})
 	.delegate('#snap_modal_modal .addthis_button_twitter', 'click', function() {
-		var name = $current_tile.find('.modal-left .fact').text() || $current_tile.find('.modal-header h1').html() || 'Other';
+		var name = $current_tile.find('.modal-left .fact').text().replace(/\s{2,}/,': ') || $current_tile.find('.modal-header h1').html() || 'Other';
 
 		takepart.analytics.track('patt_twitter_modal', name);
 	})
 	.delegate('#snap_modal_modal .addthis_button_facebook', 'click', function() {
-		var name = $current_tile.find('.modal-left .fact').text() || $current_tile.find('.modal-header h1').html() || 'Other';
+		var name = $current_tile.find('.modal-left .fact').text().replace(/\s{2,}/,': ') || $current_tile.find('.modal-header h1').html() || 'Other';
 
 		takepart.analytics.track('patt_facebook_modal', name);
 	})
