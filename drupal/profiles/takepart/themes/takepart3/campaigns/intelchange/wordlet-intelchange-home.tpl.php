@@ -69,8 +69,8 @@
 
 <div class="footer-block">
     <div class="facts-block" <?=wa('facts')?>>
-        <? foreach ( wl('facts') as $w ): ?>
-            <div class="fact">
+        <? foreach ( wl('facts') as $i => $w ): ?>
+            <div class="fact fact<?=$i?>">
                 <a href="<?=$w->href?>"><img src="<?=$w->img_src?>"></a>
             </div>
         <? endforeach ?>

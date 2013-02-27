@@ -55,11 +55,28 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
             $(this.hash).show();
             e.preventDefault();
         })
-        .delegate('#edit-mobile input', 'keypress', $.tpautoTab)
+        .delegate('.form-state .close a', 'click', function(e) {
+            $('.form-state').hide();
+            $('.default-state').show();
+            e.preventDefault();
+        })
+        .delegate('#edit-mobile input', 'keypress', function(e) {
+            $.tpautoTab(e, this, {
+                mask: /^[0-9]+$/
+            })
+        })
         ;
 
-    $('.form-state').hide();
+    $('.form-state')
+        .hide()
+        .append('<p class="close"><a href="#">Close</a></p>');
 
+    // Show random fact
+    var $facts = $('.facts-block .fact');
+    var fact_length = $facts.length;
+    var rfact = Math.floor(Math.random()*fact_length);
+    $facts.hide();
+    $($facts.get(rfact)).show();
 }
 
 // Contest
