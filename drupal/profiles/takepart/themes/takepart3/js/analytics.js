@@ -57,11 +57,11 @@ takepart.analytics.addThis_ready = function (evt) {
 // Named tracking
 takepart.analytics.track = function(name) {
     var args = arguments || [];
-console.log(args[1]);
+
     switch (name) {
         case 'patt_show_modal':
             var s=s_gi(Drupal.settings.omniture.s_account);
-            s.linkTrackVars='eVar73,eVar30,events';
+            s.linkTrackVars='eVar73,prop73,eVar30,eVar28,events';
             s.linkTrackEvents='event73';
             s.events='event73';
             s.eVar28="APATT - SNAP Gallery Modal View";
