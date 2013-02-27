@@ -66,6 +66,6 @@ blockquote{
 .takepart-take-action-widget { 
 	background-position: 0 0px;
 	border: solid #CCC 1px;
-	background-repeat:none;
+	background-repeat:no-repeat;
 	background-image: url(/sites/all/modules/custom/ckeditor_take-action-widget/plugin/tawembed/images/icon.gif);
 }
