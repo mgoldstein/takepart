@@ -139,6 +139,14 @@
   padding: 20px 46px 10px 10px;
 }
 
+.main .addThis>a {
+  float: left;
+}
+
+.main .addThis .addthis_button_facebook_like {
+  margin-right: 14px;
+}
+
 .main .addThis .addthis_button_email .at16nc {
   background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/email_bttn.png) no-repeat;
   width: 55px;
