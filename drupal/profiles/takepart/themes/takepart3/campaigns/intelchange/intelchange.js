@@ -55,6 +55,11 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
             $(this.hash).show();
             e.preventDefault();
         })
+        .delegate('.form-state .close a', 'click', function(e) {
+            $('.form-state').hide();
+            $('.default-state').show();
+            e.preventDefault();
+        })
         .delegate('#edit-mobile input', 'keypress', function(e) {
             $.tpautoTab(e, this, {
                 mask: /^[0-9]+$/
@@ -62,7 +67,9 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
         })
         ;
 
-    $('.form-state').hide();
+    $('.form-state')
+        .hide()
+        .append('<p class="close"><a href="#">Close</a></p>');
 
 }
 

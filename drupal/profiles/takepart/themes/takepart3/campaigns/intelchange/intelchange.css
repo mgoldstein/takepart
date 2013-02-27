@@ -255,6 +255,22 @@
   background: #d95604;
 }
 
+/* close button */
+
+.close a {
+  background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/close_video_sprite.png) left top no-repeat;
+  display: block;
+  width: 36px;
+  height: 36px;
+  white-space: nowrap;
+  text-indent: 100%;
+  overflow: hidden;
+}
+
+.close a:hover {
+  background-position: left -36px;
+}
+
 /* # Page Specific
 ================================================== */
 
@@ -318,20 +334,9 @@
 }
 
 .page-wordlet-intelchange-home .video-block .close a {
-  background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/close_video_sprite.png) left top no-repeat;
-  display: block;
   position: absolute;
   right: 115px;
   top: 35px;
-  width: 36px;
-  height: 36px;
-  white-space: nowrap;
-  text-indent: 100%;
-  overflow: hidden;
-}
-
-.page-wordlet-intelchange-home .video-block .close a:hover {
-  background-position: left -36px;
 }
 
 .page-wordlet-intelchange-home .form-desc {
@@ -459,10 +464,20 @@
   border: 1px solid #999;
 }
 
+.page-wordlet-intelchange-home .second-block .messages li,
 .page-wordlet-intelchange-home .second-block .form-item,
 .page-wordlet-intelchange-home .second-block fieldset,
 .page-wordlet-intelchange-home .second-block .form-actions {
   margin-bottom: 1em;
+}
+
+.page-wordlet-intelchange-home .second-block .error {
+  background: none;
+  color: red;
+}
+
+.page-wordlet-intelchange-home .second-block .messages ul {
+  margin: 0;
 }
 
 .page-wordlet-intelchange-home .second-block label,
@@ -509,6 +524,12 @@
 
 .page-wordlet-intelchange-home .second-block .terms-link {
   font-size: .8em;
+}
+
+.page-wordlet-intelchange-home .second-block .close a {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 /* Contest ---------------- */
