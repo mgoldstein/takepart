@@ -136,3 +136,16 @@ form#search-api-page-search-form-site-search {
 .page-wordlet-iframed-header {
 	background: transparent;
 }
+
+#header-wrapper {
+	font-family: sans-serif;
+}
+
+#footer {
+	font-family: sans-serif;
+	font-size: 12px;
+}
+
+a {
+	color: #1CA9E7;
+}

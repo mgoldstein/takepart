@@ -3,19 +3,19 @@
    License: none (public domain)
 */
 
-.main html, .main body, .main div, .main span, .main applet, .main object, .main iframe,
-.main h1, .main h2, .main h3, .main h4, .main h5, .main h6, .main p, .main blockquote, .main pre,
-.main a, .main abbr, .main acronym, .main address, .main big, .main cite, .main code,
-.main del, .main dfn, .main em, .main img, .main ins, .main kbd, .main q, .main s, .main samp,
-.main small, .main strike, .main strong, .main sub, .main sup, .main tt, .main var,
-.main b, .main u, .main i, .main center,
-.main dl, .main dt, .main dd, .main ol, .main ul, .main li,
-.main fieldset, .main form, .main label, .main legend,
-.main table, .main caption, .main tbody, .main tfoot, .main thead, .main tr, .main th, .main td,
-.main article, .main aside, .main canvas, .main details, .main embed, .main 
-.main figure, .main figcaption, .main footer, .main header, .main hgroup, .main 
-.main menu, .main nav, .main output, .main ruby, .main section, .main summary,
-.main time, .main mark, .main audio, .main video {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -31,21 +31,21 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
-.main {
+{
   line-height: 1;
 }
-.main ol, .main ul {
+ol, ul {
   list-style: none;
 }
-.main blockquote, .main q {
+blockquote, q {
   quotes: none;
 }
-.main blockquote:before, .main blockquote:after,
-.main q:before, .main q:after {
+blockquote:before, blockquote:after,
+q:before, q:after {
   content: '';
   content: none;
 }
-.main table {
+table {
   border-collapse: collapse;
   border-spacing: 0;
 }
