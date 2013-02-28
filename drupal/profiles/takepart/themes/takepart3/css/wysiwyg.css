@@ -65,9 +65,11 @@ blockquote{
 
 .takepart-take-action-widget { 
 	background-position: 0 0px;
-	border: solid #CCC 1px;
+	background-color: #eee;
 	background-repeat:no-repeat;
-	/*background-image: url(/sites/all/modules/custom/ckeditor_take-action-widget/plugin/tawembed/images/icon.gif);*/
+	background-image: url(/profiles/takepart/themes/takepart3/images/tab_wysiwyg_bg.png);
+	min-height: 53px;
+    	padding-left: 39px;
 }
 .takepart-take-action-widget:before
 {
