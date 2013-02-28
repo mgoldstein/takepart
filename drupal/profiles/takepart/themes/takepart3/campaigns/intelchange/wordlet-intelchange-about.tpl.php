@@ -6,7 +6,7 @@
 </div>
 
 <div class="content-info">
-	<div id="about-intel" class='special-lists'>
+	<div id="about-intel" class="tab-content special-lists">
 		<?=w('about_intel')?>
 		<? if ( $w = w('intel_more') ): ?>
 			<p class="more">
@@ -15,7 +15,7 @@
 		<? endif ?>
 	</div>
 
-	<div id="about-partners" <?=wa('partners_list')?>>
+	<div id="about-partners"  class="tab-content" <?=wa('partners_list')?>>
 		<? foreach ( wl('partners_list') as $w ): ?>
 			<div class="partner">
 				<p class="image">
