@@ -656,6 +656,9 @@
   height: 100%;
   content: " ";
 }
+.page-wordlet-intelchange-contest .content .second-block .second-sub .instructions ol {
+  list-style: none;
+}
 .page-wordlet-intelchange-contest .content .second-block .second-sub .instructions li {
   margin-bottom: 1em;
   padding-left: 42px;
