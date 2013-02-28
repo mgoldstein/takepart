@@ -208,6 +208,7 @@ function _render_tp3_user_menu($variables) {
 
                 if (function_exists('_takepart_facebookapis_get_user_session')) {
                     $fbsession = _takepart_facebookapis_get_user_session();
+	
                     $username = $fbsession->name;
                     if ($username == '') {
                         $username = $user->name;
@@ -217,7 +218,13 @@ function _render_tp3_user_menu($variables) {
                 }
                 
                 if ($variables['node']->type == 'venue' || $variables['node']->type == 'action'
-            || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action' || (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])))  {            
+            || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action' || (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context'])))  { 
+		if (strlen($username)>10 && isset($fbsession->first_name) && isset($fbsession->last_name)) {
+                    $username = $fbsession->first_name . " " . substr($fbsession->last_name,0,1);
+ 		    if (strlen($username) < 10 ) {
+                       $username = $username . ".";
+                    }
+                }           
                 if (strlen($username)>10) {
                     $username = substr($username,0,10) . "…";
                 }
