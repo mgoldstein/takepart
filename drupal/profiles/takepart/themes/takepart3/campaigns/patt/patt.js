@@ -41,6 +41,11 @@ var getQueryParam = function(name) {
 	return result[name];
 };
 
+var clean_myth = function(text) {
+	text = text.replace(/^[\n\r\s]*/,'').replace(/[\n\r\s]*$/,'').replace(/[\n\r]+/g,'').replace(/\s{2,}/,': ');
+	return text;
+}
+
 var show_modal = function(animate) {
 	$modal.find('.modal-left').html($current_tile.find('.modal-left').html());
 	$modal.find('.modal-right').html($current_tile.find('.modal-right').html());
@@ -51,7 +56,7 @@ var show_modal = function(animate) {
 
 	$.tpmodal.show({id: 'snap_modal_', html: $modal.html(), prepend: 'snap_modal_', speed: dospeed});
 
-	var name = $current_tile.find('.modal-left .fact').text() || $current_tile.find('.modal-header h1').html() || 'Other';
+	var name = clean_myth($current_tile.find('.modal-left .fact').text()) || $current_tile.find('.modal-header h1').html() || 'Other';
 
 	takepart.analytics.track('patt_show_modal', name);
 
@@ -106,17 +111,17 @@ $('body')
 	.delegate('#nav-right', 'click', next)
 	.delegate('#nav-left', 'click', prev)
 	.delegate('#snap_modal_modal .addthis_button_email', 'click', function() {
-		var name = $current_tile.find('.modal-left .fact').text().replace(/\s{2,}/,': ') || $current_tile.find('.modal-header h1').html() || 'Other';
+		var name = clean_myth($current_tile.find('.modal-left .fact').text()) || $current_tile.find('.modal-header h1').html() || 'Other';
 
 		takepart.analytics.track('patt_email_modal', name);
 	})
 	.delegate('#snap_modal_modal .addthis_button_twitter', 'click', function() {
-		var name = $current_tile.find('.modal-left .fact').text().replace(/\s{2,}/,': ') || $current_tile.find('.modal-header h1').html() || 'Other';
+		var name = clean_myth($current_tile.find('.modal-left .fact').text()) || $current_tile.find('.modal-header h1').html() || 'Other';
 
 		takepart.analytics.track('patt_twitter_modal', name);
 	})
 	.delegate('#snap_modal_modal .addthis_button_facebook', 'click', function() {
-		var name = $current_tile.find('.modal-left .fact').text().replace(/\s{2,}/,': ') || $current_tile.find('.modal-header h1').html() || 'Other';
+		var name = clean_myth($current_tile.find('.modal-left .fact').text()) || $current_tile.find('.modal-header h1').html() || 'Other';
 
 		takepart.analytics.track('patt_facebook_modal', name);
 	})
