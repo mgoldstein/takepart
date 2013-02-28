@@ -18,3 +18,20 @@ function cketawembed_wysiwyg_plugin($editor, $version) {
      break;
   }
 }
+
+/* Implements hook_filter_info(). */
+function cketawembed_filter_info() {
+
+  $filters['tab'] = array(
+    'title' => t('Filter for TAB Widgets'),
+    'description' => t('Performs various filter opperations on TAB widgets.'),
+    'process callback'  => '_cketawembed_filters',
+  );
+  return $filters;
+}
+
+/* Process callbacks, where the work is done. */
+function _cketawembed_filters($text, $filter) {
+  // Remove all tab tags containing nbsps:
+  return preg_replace('/<div([^>]*)(class\\s*=\\s*["\']takepart-take-action-widget["\'])([^>]*)>(&nbsp;|\s)*<\/div>/', '$3', $text);
+}
