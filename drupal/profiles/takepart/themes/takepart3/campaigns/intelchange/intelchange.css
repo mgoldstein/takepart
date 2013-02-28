@@ -88,17 +88,18 @@
 
 .main .menu {
   background: #4b3639;
-  float: left;
-  width: 100%;
+  display: block;
+  position: relative;
 }
 
 .main .menu ul {
   padding: 8px 9px;
-  float: left;
 }
 
 .main .menu li {
-  float: left;
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
+
 }
 
 .main .menu li a {
@@ -140,8 +141,10 @@
 }
 
 .main .menu .addThis {
-  float: right;
   padding: 20px 46px 10px 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .main .addThis>a {
