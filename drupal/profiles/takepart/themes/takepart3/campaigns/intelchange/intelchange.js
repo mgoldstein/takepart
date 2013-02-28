@@ -1,10 +1,31 @@
 (function(window, $, undefined) {
 // Setup ----------------
 
+var speed = 'slow';
+
+var swap = function($from, $to, $parent, callback) {
+    $from
+        .animate({opacity: 0}, speed, function() {
+            var h = $parent.height();
+            var callback = callback || null;
+
+            $from.css({display: 'none'});
+            $to.css({opacity: 0, display: 'block'});
+            $parent.css({height: 'auto'});
+            var h2 = $parent.height();
+            $parent.height(h);
+
+            $parent.animate({height: h2}, speed, function() {
+                $to.animate({opacity: 1}, function() {
+                    if ( callback ) callback();
+                });
+            });
+        });
+};
+
 // Document Ready ----------------
 $(function() {
 
-var speed = 'slow';
 $body = $('body');
 
 // Page Specific -----------------
@@ -14,6 +35,10 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
     var $video_template;
     var $first_block = $('.first-block');
     var $intro_block = $('.intro-block');
+
+    var $form_wrapper = $('.form_wrapper');
+    var $default_state = $('.default-state');
+    var $form_state = $('.form-state');
 
     $body
         // Show video
@@ -51,13 +76,11 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
             e.preventDefault();
         })
         .delegate('.stay-contected a', 'click', function(e) {
-            $('.default-state').hide();
-            $(this.hash).show();
+            swap($default_state, $form_state, $form_wrapper);
             e.preventDefault();
         })
         .delegate('.form-state .close a', 'click', function(e) {
-            $('.form-state').hide();
-            $('.default-state').show();
+            swap($form_state, $default_state, $form_wrapper);
             e.preventDefault();
         })
         .delegate('#edit-mobile input', 'keypress', function(e) {
@@ -78,9 +101,8 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
     $facts.hide();
     $($facts.get(rfact)).show();
 }
-
 // Contest
-if ( $body.is('.page-wordlet-intelchange-contest') ) {
+else if ( $body.is('.page-wordlet-intelchange-contest') ) {
     var contentNav = $('.countries-nav');
     var content = $('.countries');
     var contentSections = content.children();
@@ -95,22 +117,31 @@ if ( $body.is('.page-wordlet-intelchange-contest') ) {
 
     contentNav.find('li a').first().trigger('click');
 }
-
 // About
-if ( $body.is('.page-wordlet-intelchange-about') ) {
+else if ( $body.is('.page-wordlet-intelchange-about') ) {
     var contentNav = $('.content-nav');
     var contentInfo = $('.content-info');
     var contentSections = contentInfo.children();
+    var $content_navs = contentNav.find('li a');
+    var $current_nav = $content_navs.first();
+    var $current_content = contentSections.filter('#' + $current_nav.attr('href'));
+
     $body
         // Nav click
         .delegate('.content-nav li a', 'click', function(e) {
             e.preventDefault();
-            contentNav.find('li a').removeClass('active');
-            contentSections.hide().filter('#' + $(this).attr('href')).show();
-            $(this).addClass('active');
+            if ( this == $current_nav[0] ) return;
+            $content_navs.removeClass('active');
+            var $this = $(this).addClass('active');
+            var $from = $current_content;
+            var $to = contentSections.filter('#' + $this.attr('href'));
+            swap($from, $to, contentInfo);
+            $current_content = $to;
+            $current_nav = $this;
         });
 
-    contentNav.find('li a').first().trigger('click');
+    $current_nav.addClass('active');
+    contentSections.not('#' + $current_nav.attr('href')).hide();
 }
 
 });
