@@ -21,11 +21,9 @@
 			</header>
 			<nav class="menu">
 				<ul <?=wa('menu')?>>
-					<!--
 					<? foreach( wl('menu') as $w ): ?>
-						--><li><a href="<?=$w->href?>"><?=$w->single(false)?></a></li><!--
+						<li><a href="<?=$w->href?>"><?=$w->single(false)?></a></li>
 					<? endforeach ?>
-					-->
 				</ul>
 				<div class="addThis">
                     <a class="addthis_button_facebook_like"></a>
