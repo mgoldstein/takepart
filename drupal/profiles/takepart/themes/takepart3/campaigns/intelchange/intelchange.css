@@ -359,10 +359,12 @@
 .page-wordlet-intelchange-home .intro-blurb {
   font-size: .88em;
   padding-top: 45px;
+  line-height: 1.71;
 }
 
 .page-wordlet-intelchange-home .intro-link {
-  margin: 1em 0;
+  margin: 1.75em 0 0 0;
+  font-weight: bold;
 }
 
 .page-wordlet-intelchange-home .video-block {
