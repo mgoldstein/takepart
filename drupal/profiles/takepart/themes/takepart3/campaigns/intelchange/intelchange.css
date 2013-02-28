@@ -12,7 +12,7 @@
 }
 
 .main a {
-  color: #02a2f8;
+  color: rgb(2, 162, 248);
 }
 
 .main h2 {
@@ -590,10 +590,11 @@
   margin-bottom: 20px;
 }
 .page-wordlet-intelchange-contest .content p,
-.page-wordlet-intelchange-contest .content ul {
+.page-wordlet-intelchange-contest .content ul,
+.page-wordlet-intelchange-contest .content ol {
   line-height: 1.5em;
   margin-bottom: 1em;
-  font-size: 14px;
+  font-size: .85em;
 }
 .page-wordlet-intelchange-contest .content .first-block,
 .page-wordlet-intelchange-contest .content .second-block,
@@ -659,6 +660,7 @@
 }
 .page-wordlet-intelchange-contest .content .second-block .second-sub .instructions ol {
   list-style: none;
+  font-size: 1.02em;
 }
 .page-wordlet-intelchange-contest .content .second-block .second-sub .instructions li {
   margin-bottom: 1em;
@@ -723,10 +725,11 @@
   margin-bottom: 0.5em;
 }
 .page-wordlet-intelchange-about .content p,
-.page-wordlet-intelchange-about .content ul {
+.page-wordlet-intelchange-about .content ul,
+.page-wordlet-intelchange-about .content ol {
   line-height: 1.5em;
   margin-bottom: 1.5em;
-  font-size: 14px;
+  font-size: .85em;
 }
 .page-wordlet-intelchange-about .content .special-lists li {
   margin-bottom: 1.5em;
