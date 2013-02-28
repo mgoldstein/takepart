@@ -215,13 +215,13 @@
 }
 
 .cta p {
-  font-size: .85em;
+  font-size: .88em;
 }
 
 /* More link */
 
 .more {
-  font-size: .85em;
+  font-size: .88em;
 }
 
 .more a {
@@ -357,12 +357,14 @@
 }
 
 .page-wordlet-intelchange-home .intro-blurb {
-  font-size: .85em;
+  font-size: .88em;
   padding-top: 45px;
+  line-height: 1.71;
 }
 
 .page-wordlet-intelchange-home .intro-link {
-  margin: 1em 0;
+  margin: 1.75em 0 0 0;
+  font-weight: bold;
 }
 
 .page-wordlet-intelchange-home .video-block {
@@ -416,7 +418,7 @@
 }
 
 .page-wordlet-intelchange-home .form-blurb {
-  font-size: .85em;
+  font-size: .88em;
 }
 
 .page-wordlet-intelchange-home .default-content {
@@ -479,7 +481,7 @@
 }
 
 .page-wordlet-intelchange-home .form-state h3 {
-  font-size: 1.85em;
+  font-size: 1.88em;
   margin-bottom: 1em;
 }
 
@@ -599,7 +601,7 @@
 .page-wordlet-intelchange-contest .content ol {
   line-height: 1.5em;
   margin-bottom: 1em;
-  font-size: .85em;
+  font-size: .88em;
 }
 .page-wordlet-intelchange-contest .content .first-block,
 .page-wordlet-intelchange-contest .content .second-block,
@@ -734,7 +736,7 @@
 .page-wordlet-intelchange-about .content ol {
   line-height: 1.5em;
   margin-bottom: 1.5em;
-  font-size: .85em;
+  font-size: .88em;
 }
 .page-wordlet-intelchange-about .content .special-lists li {
   margin-bottom: 1.5em;
