@@ -88,8 +88,7 @@
 
 .main .menu {
   background: #4b3639;
-  display: inline-block; *display: inline; zoom: 1;
-  vertical-align: bottom;
+  float: left;
   width: 100%;
 }
 
@@ -243,14 +242,15 @@
   content: " ";
   display: block;
   position: absolute;
-  right: 7px;
+  left: 100%;
   top: 0;
+  margin-left: -24px;
 
-  -webkit-transition: right .2s ease-in-out;
-  -moz-transition: right .2s ease-in-out;
-  -o-transition: right .2s ease-in-out;
-  -ms-transition: right .2s ease-in-out;
-  transition: right .2s ease-in-out;
+  -webkit-transition: margin .2s ease-in-out;
+  -moz-transition: margin .2s ease-in-out;
+  -o-transition: margin .2s ease-in-out;
+  -ms-transition: margin .2s ease-in-out;
+  transition: margin .2s ease-in-out;
 }
 
 .more a:hover,
@@ -260,7 +260,7 @@
 
 .more a:hover:after,
 .more a:focus:after {
-  right: 0;
+  margin-left: -18px;
   background-position: left -18px;
 }
 
@@ -313,8 +313,7 @@
   background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/home_top_bg.jpg) left top;
   color: #fff;
 
-  display: inline-block; *display: inline; zoom: 1;
-  vertical-align: bottom;
+  float: left;
   width: 100%;
 }
 
