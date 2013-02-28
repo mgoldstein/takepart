@@ -94,12 +94,12 @@
 
 .main .menu ul {
   padding: 8px 9px;
+  display: inline-block; *display: inline; zoom: 1;
+  vertical-align: bottom;
 }
 
 .main .menu li {
-  display: inline-block; *display: inline; *zoom: 1;
-  vertical-align: top;
-
+  float: left;
 }
 
 .main .menu li a {
@@ -316,7 +316,7 @@
 /* Home ---------------- */
 
 .page-wordlet-intelchange-home .first-block {
-  background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/home_top_bg.jpg) left top;
+  background: #2e2425 url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/home_top_bg.jpg) left top;
   color: #fff;
 
   float: left;
