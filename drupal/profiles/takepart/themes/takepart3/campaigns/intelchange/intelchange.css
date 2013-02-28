@@ -112,6 +112,13 @@
   position: relative;
   color: #fff;
   text-transform: uppercase;
+  text-decoration: none;
+
+  -webkit-transition: background-color .2s ease-in-out;
+  -moz-transition: background-color .2s ease-in-out;
+  -o-transition: background-color .2s ease-in-out;
+  -ms-transition: background-color .2s ease-in-out;
+  transition: background-color .2s ease-in-out;
 }
 
 .main .menu li a.active,
@@ -119,8 +126,7 @@
   background: #6f5e61;
 }
 
-.main .menu li a.active:after,
-.main .menu li a:hover:after {
+.main .menu li a.active:after {
   top: 100%;
   border: solid transparent;
   content: " ";
@@ -222,6 +228,12 @@
   text-transform: uppercase;
   line-height: 18px;
   font-weight: bold;
+
+  -webkit-transition: color .2s ease-in-out;
+  -moz-transition: color .2s ease-in-out;
+  -o-transition: color .2s ease-in-out;
+  -ms-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
 }
 
 .more a:after {
@@ -233,6 +245,12 @@
   position: absolute;
   right: 7px;
   top: 0;
+
+  -webkit-transition: right .2s ease-in-out;
+  -moz-transition: right .2s ease-in-out;
+  -o-transition: right .2s ease-in-out;
+  -ms-transition: right .2s ease-in-out;
+  transition: right .2s ease-in-out;
 }
 
 .more a:hover,
@@ -257,6 +275,12 @@
   border-radius: 5px;
   text-decoration: none;
   text-transform: uppercase;
+
+  -webkit-transition: background-color .2s ease-in-out;
+  -moz-transition: background-color .2s ease-in-out;
+  -o-transition: background-color .2s ease-in-out;
+  -ms-transition: background-color .2s ease-in-out;
+  transition: background-color .2s ease-in-out;
 }
 
 .important a:focus,
