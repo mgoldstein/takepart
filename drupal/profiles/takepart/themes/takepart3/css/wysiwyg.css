@@ -67,5 +67,10 @@ blockquote{
 	background-position: 0 0px;
 	border: solid #CCC 1px;
 	background-repeat:no-repeat;
-	background-image: url(/sites/all/modules/custom/ckeditor_take-action-widget/plugin/tawembed/images/icon.gif);
+	/*background-image: url(/sites/all/modules/custom/ckeditor_take-action-widget/plugin/tawembed/images/icon.gif);*/
 }
+.takepart-take-action-widget:before
+{
+	content:"Take Action Banner Widget";
+} 
+

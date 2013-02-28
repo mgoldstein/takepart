@@ -3352,3 +3352,7 @@ p.fb-login-text {
 .OUTBRAIN .ob_what a {
  display:none;
 }
+.takepart-take-action-widget { 
+	width:90%;
+	margin:0px auto;
+}
