@@ -32,11 +32,17 @@ takepart.analytics.addThis_ready = function (evt) {
     addthis.addEventListener('addthis.menu.share', takepart.analytics.addThis_shareEventHandler);
 };
 
+// c = prop
+// v = evar
+
 // Named tracking
 takepart.analytics.track = function(name) {
     var args = arguments || [];
     var special_share_event = "event74";
     var s = window.s || {};
+    var _gaq = window._gaq || [];
+    var ga_category = 'Social';
+    var ga_action = 'Share';
 
     switch (name) {
         case 'generic_addthis':
@@ -44,19 +50,21 @@ takepart.analytics.track = function(name) {
             switch (args[1]) {
                 case ("Like this content on Facebook."):
                 case ("facebook_like"):
-                    title = "Facebook Recommend";
+                case ("facebook"):
+                    title = "Facebook";
                     break;
                 case ("Twitter Tweet Button"):
                 case ("tweet"):
-                    title = "Twitter Tweet";
+                case ("twitter"):
+                    title = "Twitter";
                     break;
                 case ("+1"):
                 case ("google_plusone"):
-                    title = "Google Plus One";
+                    title = "GooglePlus";
                     break;
-                case ("linkedin"):
-                    title = "LinkedIn";
-                    break;
+                // case ("linkedin"):
+                //     title = "LinkedIn";
+                //     break;
                 case ("email"):
                     title = "Email";
                     break;
@@ -69,14 +77,14 @@ takepart.analytics.track = function(name) {
                 s.linkTrackVars = 'eVar27,prop26,events';
                 s.linkTrackEvents = 'event25';
                 s.tl(args[2], 'o', 'Content Share');
+                _gaq.push(['_trackEvent', ga_category, ga_action, title]);
             }
             break;
         case 'patt_show_modal':
             var s=s_gi(Drupal.settings.omniture.s_account);
-            s.linkTrackVars='eVar73,prop73,eVar30,eVar28,events';
+            s.linkTrackVars='eVar73,prop73,eVar30,events';
             s.linkTrackEvents='event73';
             s.events='event73';
-            s.eVar28="APATT - SNAP Gallery Modal View";
             s.eVar30="takepart:place-at-the-table:APATT Gallery";
             s.eVar73=args[1];
             s.prop73=args[1]; 
@@ -96,14 +104,14 @@ takepart.analytics.track = function(name) {
             break;
         case 'patt_twitter_modal':
             var s=s_gi(Drupal.settings.omniture.s_account);
-            s.linkTrackVars='eVar27,prop27,eVar30,eVar73,prop73,events';
-            s.linkTrackEvents=special_share_event;
             s.events=special_share_event;
             s.eVar27="Twitter";
             s.prop27="Twitter";
             s.eVar30=s.pageName;
             s.eVar73=args[1];
             s.prop73=args[1]; 
+            s.linkTrackVars='eVar27,prop27,eVar30,eVar73,prop73,events';
+            s.linkTrackEvents=special_share_event;
             s.tl(true, 'o', 'SNAP Gallery share');
             break;
         case 'patt_facebook_modal':
