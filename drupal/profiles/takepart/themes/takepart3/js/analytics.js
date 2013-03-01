@@ -44,19 +44,21 @@ takepart.analytics.track = function(name) {
             switch (args[1]) {
                 case ("Like this content on Facebook."):
                 case ("facebook_like"):
+                case ("facebook"):
                     title = "Facebook Recommend";
                     break;
                 case ("Twitter Tweet Button"):
                 case ("tweet"):
+                case ("twitter"):
                     title = "Twitter Tweet";
                     break;
                 case ("+1"):
                 case ("google_plusone"):
                     title = "Google Plus One";
                     break;
-                case ("linkedin"):
-                    title = "LinkedIn";
-                    break;
+                // case ("linkedin"):
+                //     title = "LinkedIn";
+                //     break;
                 case ("email"):
                     title = "Email";
                     break;
