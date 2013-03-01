@@ -57,6 +57,9 @@ takepart.analytics.track = function(name) {
                 case ("linkedin"):
                     title = "LinkedIn";
                     break;
+                case ("email"):
+                    title = "Email";
+                    break;
             }
 
             if ( title ) {
