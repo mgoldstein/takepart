@@ -1011,7 +1011,7 @@ function takepart3_search_api_page_results(array $variables) {
 
     $index = $variables['index'];
     $results = $variables['results'];
-    $entities = $variables['entities'];
+    $entities = $variables['items'];
     $keys = $variables['keys'];
 
     $output = '<p class="search-performance">' . format_plural($results['result count'], 'Current search found 1 result for ' . check_plain($keys), 'Current search found @count results for ' . check_plain($keys), array('@sec' => round($results['performance']['complete'], 3))) . '</p>';
@@ -1027,9 +1027,11 @@ function takepart3_search_api_page_results(array $variables) {
     if ($variables['view_mode'] == 'search_api_page_result') {
         entity_prepare_view($index->entity_type, $entities);
         $output .= '<ol class="search-results">';
+	// dpm($results);
         foreach ($results['results'] as $item) {
             $output .= '<li class="search-result">' . theme('search_api_page_result', array('index' => $index, 'result' => $item, 'entity' => isset($entities[$item['id']]) ? $entities[$item['id']] : NULL, 'keys' => $keys)) . '</li>';
-        }
+        // $output .= '<li class="search-result">' . $item . '</li>';
+	}
         $output .= '</ol>';
     } else {
         $output .= '<div class="search-results">';
@@ -1057,10 +1059,10 @@ function takepart3_search_api_page_result(array $variables) {
     $id = $variables['result']['id'];
     $entity = $variables['entity'];
 
-    $wrapper = entity_metadata_wrapper($index->entity_type, $entity);
+    $wrapper = entity_metadata_wrapper($index->item_type, $entity);
 
-    $url = entity_uri($index->entity_type, $entity);
-    $name = entity_label($index->entity_type, $entity);
+    $url = entity_uri($index->item_type, $entity);
+    $name = entity_label($index->item_type, $entity);
 
     if ($index->entity_type == 'file') {
         $url = array(
@@ -1075,7 +1077,7 @@ function takepart3_search_api_page_result(array $variables) {
     } elseif (!empty($entity->field_promo_text[$entity->language][0]['safe_value'])) {
         $text = $entity->field_promo_text[$entity->language][0]['safe_value'];
     }
-
+//dpm($entity->nid);
     $output = '';
     if (isset($entity->nid)) {
         $type = takepart3_return_node_type($entity->type);
