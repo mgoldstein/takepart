@@ -13,5 +13,3 @@ files[] = signature_type.entity.inc
 files[] = signature.admin.inc
 files[] = signature.entity.inc
 files[] = signature.analytics.inc
-
-scripts[] = js/signature-events.js
