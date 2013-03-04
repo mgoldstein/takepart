@@ -413,7 +413,13 @@
   content: " ";
   z-index: 0;
 }
-
+.form-content {
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
 .page-wordlet-intelchange-home .second-block .form_wrapper div {
   position: relative;
   z-index: 1;
