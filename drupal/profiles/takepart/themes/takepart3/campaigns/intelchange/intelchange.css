@@ -752,7 +752,6 @@
 }
 .page-wordlet-intelchange-about .content-info {
   display: inline-block; *display: inline; *zoom: 1;
-  background: rgb(255, 255, 255);
   vertical-align: top;
   width: 797px;
   -webkit-box-sizing: border-box;
@@ -760,11 +759,22 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-.page-wordlet-intelchange-about .tab-content {
+.page-wordlet-intelchange-about .content-info #about-intel,
+.page-wordlet-intelchange-about .content-info #about-partners .partner {
+  background: rgb(255, 255, 255);
+}
+.page-wordlet-intelchange-about .content-info #about-intel {
   padding: 49px 69px 50px 69px;
 }
+.page-wordlet-intelchange-about .content-info #about-partners {
+  padding-bottom: 50px;
+}
+.page-wordlet-intelchange-about .content-info #about-partners .partner {
+  padding: 2.5em 20px 3.5em 20px;
+  margin-bottom: 5px;
+}
 .page-wordlet-intelchange-about .content-nav {
-  width: 157px;
+  width: 153px;
   float: left;
 }
 .page-wordlet-intelchange-about .content-nav ul li {
@@ -796,7 +806,7 @@
   border-left: none;
   border-top: 40px solid transparent;
   border-bottom: 40px solid transparent;
-  border-left: 20px solid rgb(0, 140, 215);
+  border-left: 15px solid rgb(0, 140, 215);
   top: 0;
 }
 .page-wordlet-intelchange-about .partner {
