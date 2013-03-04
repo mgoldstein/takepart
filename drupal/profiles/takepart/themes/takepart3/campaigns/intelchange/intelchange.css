@@ -78,7 +78,9 @@
   display: inline-block;
   padding-top: .3em;
 }
-
+.main .footer {
+  border-top: 7px solid #ddd;
+}
 .main .footer img {
   width: 100%;
   height: auto;
