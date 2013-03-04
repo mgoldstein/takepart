@@ -779,12 +779,14 @@
 }
 .page-wordlet-intelchange-about .content-nav ul li {
   margin-bottom: 9px;
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
+  position: relative;
 }
 .page-wordlet-intelchange-about .content-nav ul li a {
   text-transform: uppercase;
   background: rgb(244, 244, 244);
   display: block;
-  position: relative;
   text-align: center;
   font-weight: bold;
   color: rgb(75, 54, 57);
