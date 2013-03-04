@@ -31,7 +31,7 @@
                     <a class="addthis_button_email"></a>
                 </div>
 			</nav>
-			<main class="content">
+			<main id="page" class="content">
 				<?=$content?>
 			</main>
 			<footer class="footer" <?=wa('footer_image')?>>

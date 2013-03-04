@@ -29,9 +29,9 @@
 				</ul>
 			</div>
 
-			<div class="main">
+			<main id="page" class="main">
 				<?=$content?>
-			</div>
+			</main>
 			
 		</div><!-- /.table -->
 		

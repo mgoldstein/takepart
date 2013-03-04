@@ -20,7 +20,9 @@
 					</ul>
 				</div>
 			</div>
-			<?=$content?>
+			<main id="page">
+				<?=$content?>
+			</main>
 		</div>
 	</div><!-- /.page-wrap -->
 
