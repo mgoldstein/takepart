@@ -523,10 +523,12 @@
 }
 
 .page-wordlet-intelchange-home .second-block label,
-.page-wordlet-intelchange-home .second-block legend {
-  margin-bottom: 1em;
+.page-wordlet-intelchange-home .second-block legend,
+.page-wordlet-intelchange-home .second-block .fieldset-legend {
+  margin-bottom: 0.625em;
   font-weight: bold;
   text-transform: uppercase;
+  color: rgb(75, 54, 57);
 }
 
 .page-wordlet-intelchange-home .second-block legend small {
@@ -576,6 +578,10 @@
 
 .page-wordlet-intelchange-home .fact {
   display: none;
+}
+
+.page-wordlet-intelchange-home .fact a img {
+  display: block;
 }
 
 .page-wordlet-intelchange-home .fact0 {
