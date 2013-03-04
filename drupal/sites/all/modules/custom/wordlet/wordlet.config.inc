@@ -78,6 +78,23 @@ function _wordlet_configuration() {
       'load' => array('site', 'intel_girls_campaign'),*/
     ),
 
+    // Test
+    'test_blank' => array(
+      'title' => 'Test - Blank Campaign',
+      'path' => 'test/blank-campaign-page',
+      'published' => TRUE,
+      'wrappers' => array('campaign', 'html'),
+      'css' => array(
+        'campaigns/reset.css',
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+      ),
+      'load' => array(),
+    ),
+
     // Longtail video
     'longtail_video' => array(
       'title' => 'Video',
