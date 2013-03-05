@@ -712,7 +712,10 @@
 .page-wordlet-intelchange-contest .content .countries .country_image {
   position: absolute;
   left: 0;
-  top: 80px;
+  top: 0;
+  width: 400px;
+  padding-top: 100px;
+  text-align: center;
 }
 .page-wordlet-intelchange-contest .content .third-block h3 {
   margin-bottom: 1em;
