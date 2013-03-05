@@ -9,7 +9,7 @@
 <div class="social-buttons">
     <div class="addthis_toolbox addthis_default_style addthis_32x32_style thank-you-addthis">
         <h3><?=w('share')?></h3>
-        <a class="addthis_button_facebook social-icon at300b" title="Facebook" href="#"><span class=" at300bs at15nc at15t_facebook"><span class="at_a11y">Share on facebook</span></span></a>
+        <a class="tpsocial-facebook social-icon at300b" title="Facebook" href="#"><span class=" at300bs at15nc at15t_facebook"><span class="at_a11y">Share on facebook</span></span></a>
         <a class="addthis_button_twitter social-icon at300b" title="Tweet" addthis:url="http://bit.ly/WJIyQ3" href="#" <?=wa('twitter_text')?>><span class=" at300bs at15nc at15t_twitter"><span class="at_a11y">Share on twitter</span></span></a>
         <script>
         var addthis_share = {
@@ -19,7 +19,7 @@
         };
         </script>
         <!-- <a class="addthis_button_google_plusone" g:plusone:size="standard" g:plusone:annotation="none" title="Share on Google+1"></a> -->
-        <a class="addthis_button_email at300b" target="_blank" title="Email" href="#"><span class=" at300bs at15nc at15t_email"><span class="at_a11y">Share on email</span></span></a>
+        <a class="addthis_button_email at300b" target="_blank" title="Email" href="#" addthis:image="<?=w('fb_image')?>"><span class=" at300bs at15nc at15t_email"><span class="at_a11y">Share on email</span></span></a>
     </div>
 </div>
 
