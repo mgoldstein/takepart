@@ -851,7 +851,7 @@
   padding: 49px 69px 50px 69px;
 }
 .page-wordlet-intelchange-about .content-info #about-partners .partner {
-  padding: 2.5em 20px 3.5em 20px;
+  padding: 2.5em 0 3em 0;
   margin-bottom: 5px;
 }
 .page-wordlet-intelchange-about .content-nav {
@@ -898,10 +898,9 @@
 .page-wordlet-intelchange-about .partner .image {
   float: left;
   display: inline-block; *display: inline; *zoom: 1;
-  margin-right: 50px;
-  width: 140px;
+  width: 210px;
   text-align: center;
 }
 .page-wordlet-intelchange-about .partner .description {
-  margin-left: 10px;
+  margin: 0 20px;
 }
