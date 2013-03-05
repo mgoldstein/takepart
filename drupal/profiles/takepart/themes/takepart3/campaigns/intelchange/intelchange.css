@@ -8,7 +8,7 @@
   font-family: Verdana, Arial, Helvetica, sans-serif;
   padding: 8px;
   background: #fff;
-  margin: 16px 0;
+  margin: 16px 0 0 0;
 }
 
 .main a {
@@ -18,7 +18,7 @@
 .main h2 {
   color: #026fab;
   font-size: 2.1em;
-  margin-bottom: 1em;
+  margin-bottom: 0.735em;
   line-height: 1.3;
 }
 
@@ -78,7 +78,9 @@
   display: inline-block;
   padding-top: .3em;
 }
-
+.main .footer {
+  border-top: 7px solid #ddd;
+}
 .main .footer img {
   width: 100%;
   height: auto;
@@ -411,7 +413,13 @@
   content: " ";
   z-index: 0;
 }
-
+.form-content {
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
 .page-wordlet-intelchange-home .second-block .form_wrapper div {
   position: relative;
   z-index: 1;
@@ -521,10 +529,12 @@
 }
 
 .page-wordlet-intelchange-home .second-block label,
-.page-wordlet-intelchange-home .second-block legend {
-  margin-bottom: 1em;
+.page-wordlet-intelchange-home .second-block legend,
+.page-wordlet-intelchange-home .second-block .fieldset-legend {
+  margin-bottom: 0.625em;
   font-weight: bold;
   text-transform: uppercase;
+  color: rgb(75, 54, 57);
 }
 
 .page-wordlet-intelchange-home .second-block legend small {
@@ -574,6 +584,10 @@
 
 .page-wordlet-intelchange-home .fact {
   display: none;
+}
+
+.page-wordlet-intelchange-home .fact a img {
+  display: block;
 }
 
 .page-wordlet-intelchange-home .fact0 {
@@ -698,7 +712,10 @@
 .page-wordlet-intelchange-contest .content .countries .country_image {
   position: absolute;
   left: 0;
-  top: 80px;
+  top: 0;
+  width: 400px;
+  padding-top: 100px;
+  text-align: center;
 }
 .page-wordlet-intelchange-contest .content .third-block h3 {
   margin-bottom: 1em;
@@ -752,7 +769,6 @@
 }
 .page-wordlet-intelchange-about .content-info {
   display: inline-block; *display: inline; *zoom: 1;
-  background: rgb(255, 255, 255);
   vertical-align: top;
   width: 797px;
   -webkit-box-sizing: border-box;
@@ -760,21 +776,31 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-.page-wordlet-intelchange-about .tab-content {
+.page-wordlet-intelchange-about .content-info #about-intel,
+.page-wordlet-intelchange-about .content-info #about-partners .partner {
+  background: rgb(255, 255, 255);
+}
+.page-wordlet-intelchange-about .content-info #about-intel {
   padding: 49px 69px 50px 69px;
 }
+.page-wordlet-intelchange-about .content-info #about-partners .partner {
+  padding: 2.5em 20px 3.5em 20px;
+  margin-bottom: 5px;
+}
 .page-wordlet-intelchange-about .content-nav {
-  width: 157px;
+  width: 153px;
   float: left;
 }
 .page-wordlet-intelchange-about .content-nav ul li {
   margin-bottom: 9px;
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
+  position: relative;
 }
 .page-wordlet-intelchange-about .content-nav ul li a {
   text-transform: uppercase;
   background: rgb(244, 244, 244);
   display: block;
-  position: relative;
   text-align: center;
   font-weight: bold;
   color: rgb(75, 54, 57);
@@ -796,7 +822,7 @@
   border-left: none;
   border-top: 40px solid transparent;
   border-bottom: 40px solid transparent;
-  border-left: 20px solid rgb(0, 140, 215);
+  border-left: 17px solid rgb(0, 140, 215);
   top: 0;
 }
 .page-wordlet-intelchange-about .partner {
