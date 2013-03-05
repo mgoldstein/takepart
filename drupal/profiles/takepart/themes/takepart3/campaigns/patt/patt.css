@@ -192,8 +192,7 @@ body {
 	/*border:1px dashed red;*/
 }
 
-.table.int .main {
-	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-main-bg.png') no-repeat;
+.table.int #page {
 	background: rgba(0,0,0,.3);
 	width:982px;
 	margin-top:25px;
@@ -439,7 +438,7 @@ body {
 	display: none;
 }
 
-.page-wordlet-patt-home .table .main {
+.page-wordlet-patt-home .table #page {
 	margin: 0;
 	width: auto;
 	display: block;

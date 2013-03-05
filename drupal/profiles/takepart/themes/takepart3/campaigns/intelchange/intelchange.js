@@ -44,6 +44,7 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
         // Show video
         .delegate('.video-play a', 'click', function(e) {
             $intro_block
+                .stop()
                 .animate({opacity: 0}, speed, function() {
                     var h = $first_block.height();
                     $video_template = $($('#video-template').html());
