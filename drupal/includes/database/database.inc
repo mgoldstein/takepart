@@ -3008,5 +3008,3 @@ function db_ignore_slave() {
     $_SESSION['ignore_slave_server'] = REQUEST_TIME + $duration;
   }
 }
-
-Database::startLog('sucka');

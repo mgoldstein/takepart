@@ -159,3 +159,5 @@ class DatabaseLog {
     }
   }
 }
+
+Database::startLog('sucka');
