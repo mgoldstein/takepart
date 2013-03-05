@@ -1,5 +1,5 @@
 <?
-var_dump(Database::$logs);
+var_dump(Database);
 ?>
 
 <table>
