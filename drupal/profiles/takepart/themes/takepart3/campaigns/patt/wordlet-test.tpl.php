@@ -1,3 +1,7 @@
+<?
+var_dump(Database::$logs);
+?>
+
 <table>
 	<tr>
 		<th>Name</th>
