@@ -22,7 +22,7 @@
   line-height: 1.3;
 }
 
-.content {
+#page {
   background: #e9e8e6;
   display: inline-block; *display: inline; zoom: 1;
   width: 100%;
@@ -516,7 +516,7 @@
 .page-wordlet-intelchange-home .second-block .form-item,
 .page-wordlet-intelchange-home .second-block fieldset,
 .page-wordlet-intelchange-home .second-block .form-actions {
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 
 .page-wordlet-intelchange-home .second-block .error {
@@ -592,49 +592,49 @@
 
 .page-wordlet-intelchange-home .fact0 {
   display: block;
-}
+} 
 
 /* Contest ---------------- */
-.page-wordlet-intelchange-contest .content {
+.page-wordlet-intelchange-contest #page {
   padding: 31px 11px 80px 11px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-.page-wordlet-intelchange-contest .content h2 {
+.page-wordlet-intelchange-contest #page h2 {
   margin-bottom: 0.5em;
 }
-.page-wordlet-intelchange-contest .content h3 {
+.page-wordlet-intelchange-contest #page h3 {
   color: #4b3639;
   font-size: 25px;
   margin-bottom: 20px;
 }
-.page-wordlet-intelchange-contest .content p,
-.page-wordlet-intelchange-contest .content ul,
-.page-wordlet-intelchange-contest .content ol {
+.page-wordlet-intelchange-contest #page p,
+.page-wordlet-intelchange-contest #page ul,
+.page-wordlet-intelchange-contest #page ol {
   line-height: 1.5em;
   margin-bottom: 1em;
   font-size: .88em;
 }
-.page-wordlet-intelchange-contest .content .first-block,
-.page-wordlet-intelchange-contest .content .second-block,
-.page-wordlet-intelchange-contest .content .third-block {
+.page-wordlet-intelchange-contest #page .first-block,
+.page-wordlet-intelchange-contest #page .second-block,
+.page-wordlet-intelchange-contest #page .third-block {
   padding: 0 43px;
 }
 
-.page-wordlet-intelchange-contest .content .first-block {
+.page-wordlet-intelchange-contest #page .first-block {
   padding-bottom: 29px;
 }
-.page-wordlet-intelchange-contest .content .first-block h2 {
+.page-wordlet-intelchange-contest #page .first-block h2 {
   padding-top: 0.5em;
 }
-.page-wordlet-intelchange-contest .content .first-block .image {
+.page-wordlet-intelchange-contest #page .first-block .image {
   float: left;
   margin-right: 49px;
 }
 
-.page-wordlet-intelchange-contest .content .second-block {
+.page-wordlet-intelchange-contest #page .second-block {
   position: relative;
   background: rgb(255, 255, 255);
   color: rgb(75, 54, 57);
@@ -646,25 +646,25 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-.page-wordlet-intelchange-contest .content .second-block .first-sub {
+.page-wordlet-intelchange-contest #page .second-block .first-sub {
   margin-right: 507px;
   float: left;
   padding-top: 3.5em;
   padding-bottom: 3.5em;
 }
-.page-wordlet-intelchange-contest .content .second-block .second-sub {
+.page-wordlet-intelchange-contest #page .second-block .second-sub {
   float: right;
   color: #fff;
   position: absolute;
   right: 43px;
-}
-.page-wordlet-intelchange-contest .content .second-block .second-sub .sub-wrapper {
+} 
+.page-wordlet-intelchange-contest #page .second-block .second-sub .sub-wrapper {
   position: relative;
   background: #026fab;
   width: 317px;
   padding: 53px 40px 40px 40px;
 }
-.page-wordlet-intelchange-contest .content .second-block .second-sub:before {
+.page-wordlet-intelchange-contest #page .second-block .second-sub:before {
   -ms-transform: rotate(0.5deg);
   -moz-transform: rotate(0.5deg);
   -webkit-transform: rotate(0.5deg);
@@ -679,11 +679,11 @@
   height: 100%;
   content: " ";
 }
-.page-wordlet-intelchange-contest .content .second-block .second-sub .instructions ol {
+.page-wordlet-intelchange-contest #page .second-block .second-sub .instructions ol {
   list-style: none;
   font-size: 1.02em;
 }
-.page-wordlet-intelchange-contest .content .second-block .second-sub .instructions li {
+.page-wordlet-intelchange-contest #page .second-block .second-sub .instructions li {
   margin-bottom: 1em;
   padding-left: 42px;
   line-height: 1.5em;
@@ -691,7 +691,7 @@
   *list-style-type: decimal;
   position: relative;
 }
-.page-wordlet-intelchange-contest .content .second-block .second-sub .instructions li:before {
+.page-wordlet-intelchange-contest #page .second-block .second-sub .instructions li:before {
   content: counter(customlistcounter) " ";
   font-weight: bold;
   position: absolute;
@@ -699,17 +699,17 @@
   font-size: 2em;
   top: 8px;
 }
-.page-wordlet-intelchange-contest .content .second-block .second-sub .important {
+.page-wordlet-intelchange-contest #page .second-block .second-sub .important {
   margin: 30px 0 0 0;
 }
-.page-wordlet-intelchange-contest .content .third-block {
+.page-wordlet-intelchange-contest #page .third-block {
   padding-top: 80px;
   padding-left: 413px;
   position: relative;
   min-height: 389px;
   _height: 389px;
 }
-.page-wordlet-intelchange-contest .content .countries .country_image {
+.page-wordlet-intelchange-contest #page .countries .country_image {
   position: absolute;
   left: 0;
   top: 0;
@@ -717,76 +717,76 @@
   padding-top: 100px;
   text-align: center;
 }
-.page-wordlet-intelchange-contest .content .third-block h3 {
+.page-wordlet-intelchange-contest #page .third-block h3 {
   margin-bottom: 1em;
 }
-.page-wordlet-intelchange-contest .content .countries-nav li {
+.page-wordlet-intelchange-contest #page .countries-nav li {
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
   margin-right: 57px;
 }
-.page-wordlet-intelchange-contest .content .countries-nav a {
+.page-wordlet-intelchange-contest #page .countries-nav a {
   color: #f37424;
   text-transform: uppercase;
   font-weight: bold;
 }
-.page-wordlet-intelchange-contest .content .countries-nav a.active {
+.page-wordlet-intelchange-contest #page .countries-nav a.active {
   color: #333;
 }
-.page-wordlet-intelchange-contest .content .country_body ul {
+.page-wordlet-intelchange-contest #page .country_body ul {
   list-style: none;
   padding: 0;
 }
-.page-wordlet-intelchange-contest .content .country_body li {
+.page-wordlet-intelchange-contest #page .country_body li {
   margin-bottom: 1em;
   padding-left: 4em;
   background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/pencil.png) no-repeat 0.5em 0.5em;
 }
 
 /* Contest Enter ---------------- */
-.page-wordlet-intelchange-contest-enter .content {
+.page-wordlet-intelchange-contest-enter #page {
   padding: 60px 27px 85px 27px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-.page-wordlet-intelchange-contest-enter .content p,
-.page-wordlet-intelchange-contest-enter .content ul,
-.page-wordlet-intelchange-contest-enter .content ol {
+.page-wordlet-intelchange-contest-enter #page p,
+.page-wordlet-intelchange-contest-enter #page ul,
+.page-wordlet-intelchange-contest-enter #page ol {
   line-height: 1.5em;
   margin-bottom: 1.5em;
   font-size: .88em;
 }
-.page-wordlet-intelchange-contest-enter .content h2 {
+.page-wordlet-intelchange-contest-enter #page h2 {
   margin-bottom: 0.559em;
 }
-.page-wordlet-intelchange-contest-enter .content h3 {
+.page-wordlet-intelchange-contest-enter #page h3 {
   font-size: 1.313em;
   font-weight: normal;
   margin-bottom: 1em;
 }
-.page-wordlet-intelchange-contest-enter .content .info-block,
-.page-wordlet-intelchange-contest-enter .content .form-block {
+.page-wordlet-intelchange-contest-enter #page .info-block,
+.page-wordlet-intelchange-contest-enter #page .form-block {
   float: left;
 }
-.page-wordlet-intelchange-contest-enter .content .info-block {
+.page-wordlet-intelchange-contest-enter #page .info-block {
   width: 350px;
 }
-.page-wordlet-intelchange-contest-enter .content .form-block {
+.page-wordlet-intelchange-contest-enter #page .form-block {
   width: 520px;
   margin-right: 55px;
   min-height: 200px;
   _height: 200px;
 }
-.page-wordlet-intelchange-contest-enter .content .important-info-block {
+.page-wordlet-intelchange-contest-enter #page .important-info-block {
   margin-bottom: 3em;
 }
-.page-wordlet-intelchange-contest-enter .content .important-info-block ol {
+.page-wordlet-intelchange-contest-enter #page .important-info-block ol {
   list-style: none;
   font-size: 1.02em;
 }
-.page-wordlet-intelchange-contest-enter .content .important-info-block ol li {
+.page-wordlet-intelchange-contest-enter #page .important-info-block ol li {
   margin-bottom: 1em;
   padding-left: 42px;
   line-height: 1.5em;
@@ -794,7 +794,7 @@
   *list-style-type: decimal;
   position: relative;
 }
-.page-wordlet-intelchange-contest-enter .content .important-info-block ol li:before {
+.page-wordlet-intelchange-contest-enter #page .important-info-block ol li:before {
   content: counter(customlistcounter) " ";
   font-weight: bold;
   position: absolute;
@@ -803,31 +803,31 @@
   top: 8px;
   color: rgb(2, 111, 171);
 }
-.page-wordlet-intelchange-contest-enter .content .tips-block ul {
+.page-wordlet-intelchange-contest-enter #page .tips-block ul {
   list-style: none;
   padding: 0;
 }
-.page-wordlet-intelchange-contest-enter .content .tips-block li {
+.page-wordlet-intelchange-contest-enter #page .tips-block li {
   margin-bottom: 1em;
 }
 
 /* About ---------------- */
-.page-wordlet-intelchange-about .content h2 {
+.page-wordlet-intelchange-about #page h2 {
   margin-bottom: 0.5em;
 }
-.page-wordlet-intelchange-about .content p,
-.page-wordlet-intelchange-about .content ul,
-.page-wordlet-intelchange-about .content ol {
+.page-wordlet-intelchange-about #page p,
+.page-wordlet-intelchange-about #page ul,
+.page-wordlet-intelchange-about #page ol {
   line-height: 1.5em;
   margin-bottom: 1.5em;
   font-size: .88em;
 }
-.page-wordlet-intelchange-about .content .special-lists li {
+.page-wordlet-intelchange-about #page .special-lists li {
   margin-bottom: 1.5em;
   padding-left: 4em;
   background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/pencil.png) no-repeat 0.5em 0.5em;
 }
-.page-wordlet-intelchange-about .content {
+.page-wordlet-intelchange-about #page {
   padding: 25px 15px 40px 15px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
