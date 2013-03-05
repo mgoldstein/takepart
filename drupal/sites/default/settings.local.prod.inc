@@ -31,10 +31,6 @@ $conf['memcache_servers'] = array(
 
 $conf['memcache_key_prefix'] = 'prod';
 
-$conf['memcache_options'] = array(
-	Memcached::OPT_BINARY_PROTOCOL => TRUE,
-);
-
 $conf['memcache_bins'] = array(
       'cache' => 'default',
       'cache_filter' => 'default',
