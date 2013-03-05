@@ -26,7 +26,7 @@ $conf['omniture_account_name'] = 'takeparttakepartdev2';
 $conf['cache_default_class']   = 'MemCacheDrupal';
 $conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
 $conf['memcache_servers'] = array(
-      'memcache-prod.takepart.com:11211' => 'default', //Elasticache
+      'memcache1.prod.takepart.com:11211' => 'default', //Elasticache
 );
 
 $conf['memcache_key_prefix'] = 'prod';
