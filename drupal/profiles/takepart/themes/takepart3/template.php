@@ -23,7 +23,6 @@ function wordlet_patt_snap_page_alter($page) {
             drupal_add_html_head( $metatag, 'facebook_image');
         }
     }
-
   return '';
 }
 
