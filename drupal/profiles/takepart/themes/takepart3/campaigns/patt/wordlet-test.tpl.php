@@ -1,5 +1,5 @@
 <?
-var_dump(Database);
+var_dump(Database::getLog('sucka'));
 ?>
 
 <table>
