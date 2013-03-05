@@ -22,7 +22,7 @@
 			<nav class="menu">
 				<ul <?=wa('menu')?>>
 					<? foreach( wl('menu') as $w ): ?>
-						<li><a href="<?=$w->href?>"><?=$w->single(false)?></a></li>
+						<li><a href="<?=$w->href?>" class="<?=ws($w->href)?>"><?=$w->single(false)?></a></li>
 					<? endforeach ?>
 				</ul>
 				<div class="addThis">
