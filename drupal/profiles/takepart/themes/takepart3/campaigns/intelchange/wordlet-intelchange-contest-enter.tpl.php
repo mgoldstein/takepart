@@ -8,7 +8,7 @@
 	<div class="info-block">
 		<div class="important-info-block">
 			<h3><?=w('important_info_header')?></h3>
-			<ol <?=wa('important_info')?>>
+			<ol <?=wa('important_info')?> class='cms'>
 				<? foreach ( wl('important_info') as $w ): ?>
 					<li>
 						<?=$w->multi(false)?>
@@ -19,7 +19,7 @@
 
 		<div class="tips-block">
 			<h3><?=w('tips_header')?></h3>
-			<ul <?=wa('tips')?>>
+			<ul <?=wa('tips')?> class='cms'>
 				<? foreach ( wl('tips') as $w ): ?>
 					<li>
 						<strong><?=$w->single(false)?></strong> <?=$w->multi(false)?>
