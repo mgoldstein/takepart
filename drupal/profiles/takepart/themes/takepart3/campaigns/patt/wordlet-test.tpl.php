@@ -1,5 +1,5 @@
 <?
-var_dump(Database::getLog('sucka'));
+var_dump(squeeker::$qs);
 ?>
 
 <table>

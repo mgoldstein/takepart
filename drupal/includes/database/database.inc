@@ -2090,7 +2090,9 @@ interface DatabaseStatementInterface extends Traversable {
    */
   public function fetchAllAssoc($key, $fetch = NULL);
 }
-
+class squeeker {
+  public static $qs = array();
+}
 /**
  * Default implementation of DatabaseStatementInterface.
  *
@@ -2132,17 +2134,17 @@ class DatabaseStatementBase extends PDOStatement implements DatabaseStatementInt
     }
 
     $logger = $this->dbh->getLogger();
-    if (!empty($logger)) {
+    //if (!empty($logger)) {
       $query_start = microtime(TRUE);
-    }
+    //}
 
     $return = parent::execute($args);
 
-    if (!empty($logger)) {
+    //if (!empty($logger)) {
       $query_end = microtime(TRUE);
-      $logger->log($this, $args, $query_end - $query_start);
-    }
-
+      //$logger->log($this, $args, $query_end - $query_start);
+    //}
+squeeker::$qs[] = array($this->queryString, $query_end - $query_start);
     return $return;
   }
 
