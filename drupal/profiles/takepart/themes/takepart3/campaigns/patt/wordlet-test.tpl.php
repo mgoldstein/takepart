@@ -1,7 +1,3 @@
-<?
-var_dump(squeeker::$qs);
-?>
-
 <table>
 	<tr>
 		<th>Name</th>
