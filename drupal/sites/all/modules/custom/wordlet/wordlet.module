@@ -1224,3 +1224,29 @@ function wf() {
   }
 }
 
+// Is the current page the same as the entered URL
+function wordlet_active_page_or_section($href, $return_value_if_true = 'active') {
+  $current_path = trim($_SERVER['REQUEST_URI'], '/');
+  $href = trim($href, '/');
+  $parts = explode('/', $href);
+  $match = false;
+
+  if ( count($parts) == 1 && $href == $current_path ) {
+    $match = true;
+  } elseif ( count($parts) > 1 && strpos($current_path, $href) === 0 ) {
+    $match = true;
+  }
+
+  if ( $match ) return $return_value_if_true;
+  return NULL;
+}
+
+function ws() {
+  try {
+    $func_get_args = func_get_args();
+    return call_user_func_array('wordlet_active_page_or_section', $func_get_args);
+  } catch (Exception $e) {
+    return '';
+  }
+}
+
