@@ -56,7 +56,10 @@ var show_modal = function(animate) {
 
 	var dospeed = animate ? speed : 0;
 
-	$modal.find('.addthis_toolbox a').attr('addthis:url', [location.protocol, '//', location.host, location.pathname].join('') + '?slide=' + $current_tile.data('token'));
+	var url = [location.protocol, '//', location.host, location.pathname].join('') + '?slide=' + $current_tile.data('token');
+	$modal.find('.addthis_toolbox a')
+		.attr('addthis:url', url)
+		.attr('href', url);
 
 	$.tpmodal.show({id: 'snap_modal_', html: $modal.html(), prepend: 'snap_modal_', speed: dospeed});
 
@@ -124,7 +127,7 @@ $('body')
 
 		takepart.analytics.track('patt_twitter_modal', name);
 	})
-	.delegate('#snap_modal_modal .addthis_button_facebook', 'click', function() {
+	.delegate('#snap_modal_modal .addthis_button_facebook, #snap_modal_modal .tpsocial-facebook', 'click', function() {
 		var name = clean_myth($current_tile.find('.modal-left .fact').text()) || $current_tile.find('.modal-header h1').html() || 'Share Your Story';
 
 		takepart.analytics.track('patt_facebook_modal', name);
@@ -135,7 +138,7 @@ $('body')
 	.delegate('.social-buttons .addthis_button_twitter', 'click', function() {
 		takepart.analytics.track('patt_twitter_gallery');
 	})
-	.delegate('.social-buttons .addthis_button_facebook', 'click', function() {
+	.delegate('.social-buttons .addthis_button_facebook, .social-buttons .tpsocial-facebook', 'click', function() {
 		takepart.analytics.track('patt_facebook_gallery');
 	})
 	;
