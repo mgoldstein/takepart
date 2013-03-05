@@ -22,7 +22,7 @@
 			<nav class="menu">
 				<ul <?=wa('menu')?>>
 					<? foreach( wl('menu') as $w ): ?>
-						<li><a href="<?=$w->href?>"><?=$w->single(false)?></a></li>
+						<li><a href="<?=$w->href?>" class="<?=ws($w->href)?>"><?=$w->single(false)?></a></li>
 					<? endforeach ?>
 				</ul>
 				<div class="addThis">
@@ -31,7 +31,7 @@
                     <a class="addthis_button_email"></a>
                 </div>
 			</nav>
-			<main class="content">
+			<main id="page" class="content">
 				<?=$content?>
 			</main>
 			<footer class="footer" <?=wa('footer_image')?>>

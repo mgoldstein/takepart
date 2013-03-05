@@ -4,13 +4,6 @@
 // Onload ----------------
 $(function() {
 
-// Add active class to anchors
-$('a').each(function() {
-	if ( !this.hash && this.pathname == location.pathname && this.protocol == location.protocol && this.hostname == location.hostname ) {
-		$(this).addClass('active');
-	}
-});
-
 // Delegates
 $('body')
 	// Open non-takepart URLs in a new window

@@ -4,7 +4,7 @@
 
 	<div class="page-wrap">
 		<div class="main">
-			<main class="content">
+			<main id="page" class="content">
 				<!-- campaign page start -->
 				<p>Body Text</p>
 				<!-- campaign page end -->
