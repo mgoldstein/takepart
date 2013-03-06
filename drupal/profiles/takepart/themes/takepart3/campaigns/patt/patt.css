@@ -121,6 +121,10 @@ body {
 	background: rgba(0,0,0,0);
 }
 
+.table.int .nav li img {
+	display: none;
+}
+
 .table .nav a {
 	text-decoration:none;
 	color:#000;
@@ -1009,7 +1013,7 @@ body {
 	}
 
 	.page-wordlet-patt-home #mobile_back,
-	.page-wordlet-patt-home .table .main {
+	.page-wordlet-patt-home .table #page {
 		display: none;
 	}
 
@@ -1022,20 +1026,13 @@ body {
 		height: 172px;
 	}
 
-	.page-wordlet-patt-home .table.int .nav li a {
-		overflow: hidden;
-		text-indent: 100%;
-		width: 100%;
-		white-space: nowrap;
-		height: 100%;
+	.page-wordlet-patt-home .table.int .nav li img {
+		display: block;
+		margin: auto;
 	}
 
 	.page-wordlet-patt-home .table.int .nav li span {
-		display: inline;
-		padding: 0;
-		width: auto;
-		height: auto;
-
+		display: none;
 	}
 
 	.page-wordlet-patt-home .hunger {
