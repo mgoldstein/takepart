@@ -72,6 +72,7 @@ takepart.analytics.track = function(name) {
             }
 
             if ( title ) {
+                var s=s_gi(Drupal.settings.omniture.s_account);
                 s.events = 'event25';
                 s.prop26 = title;
                 s.eVar27 = title;

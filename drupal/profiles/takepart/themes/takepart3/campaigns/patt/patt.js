@@ -59,7 +59,7 @@ var show_modal = function(animate) {
 	var url = [location.protocol, '//', location.host, location.pathname].join('') + '?slide=' + $current_tile.data('token');
 	$modal.find('.addthis_toolbox a')
 		.attr('addthis:url', url)
-		.attr('href', url);
+		.attr('data-tpsocial-href', url);
 
 	$.tpmodal.show({id: 'snap_modal_', html: $modal.html(), prepend: 'snap_modal_', speed: dospeed});
 
@@ -105,6 +105,7 @@ $('body')
 	})
 	.delegate('.tile[data-token]', 'click', function() {
 		$current_tile = $(this);
+
 		show_modal(true);
 
 		//$overlay.fadeIn(speed);
