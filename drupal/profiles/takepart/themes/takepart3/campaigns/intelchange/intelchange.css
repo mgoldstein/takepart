@@ -451,7 +451,6 @@
 .page-wordlet-intelchange-home .facts-block {
   float: left;
   background: #fff;
-  padding: 5px;
   margin: 10px 3px 10px 10px;
 }
 
@@ -585,11 +584,17 @@
 .page-wordlet-intelchange-home .fact {
   display: none;
 }
-
+.page-wordlet-intelchange-home .fact a {
+  display: table-cell;
+  vertical-align: middle;
+  height: 252px;
+  width: 329px;
+  text-align: center;
+}
 .page-wordlet-intelchange-home .fact a img {
   display: block;
+  margin: 0 auto;
 }
-
 .page-wordlet-intelchange-home .fact0 {
   display: block;
 } 
@@ -820,7 +825,7 @@
 .page-wordlet-intelchange-about #page ol {
   line-height: 1.5em;
   margin-bottom: 1.5em;
-  font-size: .88em;
+  font-size: 0.88em;
 }
 .page-wordlet-intelchange-about #page .special-lists li {
   margin-bottom: 1.5em;
