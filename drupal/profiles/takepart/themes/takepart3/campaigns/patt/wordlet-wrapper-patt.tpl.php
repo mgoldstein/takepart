@@ -23,6 +23,7 @@
 				<ul <?=wa('top_nav')?>>
 					<? foreach ( wl('top_nav') as $w ): ?>
 						<li class="<?=wc($w->href_raw)?>"><a href="<?=$w->href?>" class="<?=ws($w->href)?>">
+							<img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
 							<span><?=$w->single(false)?></span>
 						</a></li>
 					<? endforeach ?>
