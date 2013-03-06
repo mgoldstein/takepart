@@ -45,6 +45,7 @@ takepart.analytics.track = function(name) {
     var ga_action = 'Share';
 
     switch (name) {
+        case 'generic_tpsocial':
         case 'generic_addthis':
             var title = null;
             switch (args[1]) {
