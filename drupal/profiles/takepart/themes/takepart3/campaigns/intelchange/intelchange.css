@@ -784,11 +784,11 @@
   _height: 200px;
 }
 .page-wordlet-intelchange-contest-enter #page .form-block:before {
-  -ms-transform: rotate(-0.3deg);
-  -moz-transform: rotate(-0.3deg);
-  -webkit-transform: rotate(-0.3deg);
-  -o-transform: rotate(-0.3deg);
-  transform: rotate(-0.3deg);
+  -ms-transform: rotate(-0.2deg);
+  -moz-transform: rotate(-0.2deg);
+  -webkit-transform: rotate(-0.2deg);
+  -o-transform: rotate(-0.2deg);
+  transform: rotate(-0.2deg);
   background: #1fa2dc;
   padding: 6px;
   position: absolute;
