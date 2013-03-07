@@ -1,6 +1,5 @@
 <div class="table">
 	<img class="logo" src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-logo.png" width="506" height="249" alt="a place at the table logo">
-	<img class="tagline" src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-tagline.png" width="386" height="51" alt="In theaters, available on iTunes and ON Demand March 1st">
 
 	<? if ( $w = wf('top_nav', 'token', 'patt_news') ): ?>
 		<div class="item salad">
