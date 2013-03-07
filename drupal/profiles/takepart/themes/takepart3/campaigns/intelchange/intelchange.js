@@ -7,7 +7,7 @@ var swap = function($from, $to, $parent, callback) {
     $from
         .animate({opacity: 0}, speed, function() {
             var h = $parent.height();
-            var callback = callback || null;
+            callback = callback || null;
 
             $from.css({display: 'none'});
             $to.css({opacity: 0, display: 'block'});
@@ -77,7 +77,9 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
             e.preventDefault();
         })
         .delegate('.stay-contected a', 'click', function(e) {
-            swap($default_state, $form_state, $form_wrapper);
+            swap($default_state, $form_state, $form_wrapper, function(){
+                $form_wrapper.height('');
+            });
             e.preventDefault();
         })
         .delegate('.form-state .close a', 'click', function(e) {
