@@ -824,9 +824,13 @@
 .page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
   font-weight: normal;
   text-transform: none;
-  display: block;
-  margin: 0 0 0 20px;
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
+  margin: 0 10px 0 10px;
+}
+.page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
   width: 360px;
+  margin-right: 0;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-textfield input {
   background: #f7f6f6;
@@ -855,6 +859,12 @@
   width: auto;
   font-size: 1.1em;
   border: none;
+}
+.page-wordlet-intelchange-contest-enter #page .form-item-age-check .form-item,
+.page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item,
+.page-wordlet-intelchange-contest-enter #page .form-item-trip-visit .form-item {
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
 }
 .page-wordlet-intelchange-contest-enter #page .form-actions {
   margin: 29px 0 0 0;
