@@ -880,7 +880,7 @@
   color: rgb(229, 30, 30);
   margin-bottom: 3px;
 }
-.page-wordlet-intelchange-contest-enter #page .form-type-textfield.error input {
+.page-wordlet-intelchange-contest-enter #page .form-type-textfield input.error {
   border-color: rgb(229, 30, 30);
 }
 .page-wordlet-intelchange-contest-enter #page .important-info-block {
