@@ -1,7 +1,7 @@
 <h2><?=w('header')?></h2>
 
 <div class="first-block">
-	<div class="form-block">
+	<div class="form-block cms">
 		<?=w('contest_form')?>
 	</div>
 
