@@ -120,7 +120,7 @@ function jquery_update_form_system_performance_settings_alter(&$form, &$form_sta
 function jquery_update_jquery_replace(&$libraries, $cdn, $path, $min) {
   switch($cdn) {
     case 'google':
-      $libraries['jquery']['js']['misc/jquery.js']['data'] = 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery' . $min . '.js';
+      $libraries['jquery']['js']['misc/jquery.js']['data'] = '//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery' . $min . '.js';
       $libraries['jquery']['js']['misc/jquery.js']['type'] = 'external';
       jquery_update_jquery_backup($libraries, $path, $min);
       break;
@@ -195,7 +195,7 @@ function jquery_update_jqueryui_replace(&$libraries, $cdn, $path, $min) {
 
   switch($cdn) {
     case 'google':
-      $cdn = 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui' . $min . '.js';
+      $cdn = '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui' . $min . '.js';
       jquery_update_jqueryui_cdn($cdn, $libraries, $path, $min, $names);
       jquery_update_jqueryui_backup($libraries, $path, $min);
       break;
