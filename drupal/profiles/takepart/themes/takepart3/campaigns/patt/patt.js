@@ -1,7 +1,3 @@
-var addthis_config = {
-     data_track_clickback: false 
-};
-
 (function(window, $, undefined) {
 // Setup
 

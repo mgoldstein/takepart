@@ -147,6 +147,7 @@
   position: absolute;
   right: 0;
   top: 0;
+  line-height: 0;
 }
 
 .main .addThis>a {
@@ -729,6 +730,7 @@
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
   margin-right: 57px;
+  font-size: 1.071em;
 }
 .page-wordlet-intelchange-contest #page .countries-nav a {
   color: #f37424;
@@ -824,9 +826,13 @@
 .page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
   font-weight: normal;
   text-transform: none;
-  display: block;
-  margin: 0 0 0 20px;
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
+  margin: 0 10px 0 10px;
+}
+.page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
   width: 360px;
+  margin-right: 0;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-textfield input {
   background: #f7f6f6;
@@ -856,6 +862,12 @@
   font-size: 1.1em;
   border: none;
 }
+.page-wordlet-intelchange-contest-enter #page .form-item-age-check .form-item,
+.page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item,
+.page-wordlet-intelchange-contest-enter #page .form-item-trip-visit .form-item {
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
+}
 .page-wordlet-intelchange-contest-enter #page .form-actions {
   margin: 29px 0 0 0;
 }
@@ -870,7 +882,7 @@
   color: rgb(229, 30, 30);
   margin-bottom: 3px;
 }
-.page-wordlet-intelchange-contest-enter #page .form-type-textfield.error input {
+.page-wordlet-intelchange-contest-enter #page .form-type-textfield input.error {
   border-color: rgb(229, 30, 30);
 }
 .page-wordlet-intelchange-contest-enter #page .important-info-block {
@@ -920,6 +932,8 @@
   margin-bottom: 1.5em;
   padding-left: 4em;
   background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/pencil.png) no-repeat 0.5em 0.5em;
+  min-height: 27px;
+  _height: 27px;
 }
 .page-wordlet-intelchange-about #page {
   padding: 25px 15px 40px 15px;
