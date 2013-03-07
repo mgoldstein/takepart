@@ -217,13 +217,13 @@
 }
 
 .cta p {
-  font-size: .88em;
+  font-size: .875em;
 }
 
 /* More link */
 
 .more {
-  font-size: .88em;
+  font-size: .875em;
 }
 
 .more a {
@@ -359,7 +359,7 @@
 }
 
 .page-wordlet-intelchange-home .intro-blurb {
-  font-size: .88em;
+  font-size: .875em;
   padding-top: 45px;
   line-height: 1.71;
 }
@@ -426,7 +426,7 @@
 }
 
 .page-wordlet-intelchange-home .form-blurb {
-  font-size: .88em;
+  font-size: .875em;
 }
 
 .page-wordlet-intelchange-home .default-content {
@@ -451,7 +451,6 @@
 .page-wordlet-intelchange-home .facts-block {
   float: left;
   background: #fff;
-  padding: 5px;
   margin: 10px 3px 10px 10px;
 }
 
@@ -585,11 +584,17 @@
 .page-wordlet-intelchange-home .fact {
   display: none;
 }
-
+.page-wordlet-intelchange-home .fact a {
+  display: table-cell;
+  vertical-align: middle;
+  height: 252px;
+  width: 329px;
+  text-align: center;
+}
 .page-wordlet-intelchange-home .fact a img {
   display: block;
+  margin: 0 auto;
 }
-
 .page-wordlet-intelchange-home .fact0 {
   display: block;
 } 
@@ -615,7 +620,7 @@
 .page-wordlet-intelchange-contest #page ol {
   line-height: 1.5em;
   margin-bottom: 1em;
-  font-size: .88em;
+  font-size: .875em;
 }
 .page-wordlet-intelchange-contest #page .first-block,
 .page-wordlet-intelchange-contest #page .second-block,
@@ -751,12 +756,10 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-.page-wordlet-intelchange-contest-enter #page p,
-.page-wordlet-intelchange-contest-enter #page ul,
-.page-wordlet-intelchange-contest-enter #page ol {
+.page-wordlet-intelchange-contest-enter #page p {
   line-height: 1.5em;
   margin-bottom: 1.5em;
-  font-size: .88em;
+  font-size: .875em;
 }
 .page-wordlet-intelchange-contest-enter #page h2 {
   margin-bottom: 0.559em;
@@ -774,10 +777,111 @@
   width: 350px;
 }
 .page-wordlet-intelchange-contest-enter #page .form-block {
-  width: 520px;
-  margin-right: 55px;
+  position: relative;
+  width: 510px;
+  margin-right: 69px;
   min-height: 200px;
   _height: 200px;
+}
+.page-wordlet-intelchange-contest-enter #page .form-block:before {
+  -ms-transform: rotate(-0.2deg);
+  -moz-transform: rotate(-0.2deg);
+  -webkit-transform: rotate(-0.2deg);
+  -o-transform: rotate(-0.2deg);
+  transform: rotate(-0.2deg);
+  background: #1fa2dc;
+  padding: 6px;
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 100%;
+  height: 100%;
+  content: " ";
+}
+.page-wordlet-intelchange-contest-enter #page .form-block form {
+  position: relative;
+  padding: 2.857em 3.214em;
+  background: #fff;
+}
+.page-wordlet-intelchange-contest-enter #page .form-type-textfield {
+  margin-bottom: 2.214em;
+}
+.page-wordlet-intelchange-contest-enter #page .form-type-radios,
+.page-wordlet-intelchange-contest-enter #page .form-type-checkbox {
+  margin-bottom: 3.214em;
+}
+.page-wordlet-intelchange-contest-enter #page .form-type-textfield label,
+.page-wordlet-intelchange-contest-enter #page .form-type-radios label,
+.page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
+  font-size: 0.875em;
+  margin-bottom: 0.214em;
+  line-height: 1.5em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: rgb(75, 54, 57);
+}
+.page-wordlet-intelchange-contest-enter #page .form-type-radio label,
+.page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
+  font-weight: normal;
+  text-transform: none;
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
+  margin: 0 10px 0 10px;
+}
+.page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
+  width: 360px;
+  margin-right: 0;
+}
+.page-wordlet-intelchange-contest-enter #page .form-type-textfield input {
+  background: #f7f6f6;
+  border-radius: 3px;
+  color: rgb(75,54,57);
+  padding: 0.214em 3%;
+  width: 94%;
+  font-size: 2em;
+  border: 0.107em solid #d4d4d4;
+}
+.page-wordlet-intelchange-contest-enter #page .form-type-radio input,
+.page-wordlet-intelchange-contest-enter #page .form-type-checkbox input {
+  float: left;
+  margin: 4px 0 0;
+}
+.page-wordlet-intelchange-contest-enter #page .form-actions input {
+  background: #f37424;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+  padding: .8em 2.5em;
+  display: inline-block;
+  border-radius: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: auto;
+  font-size: 1.1em;
+  border: none;
+}
+.page-wordlet-intelchange-contest-enter #page .form-item-age-check .form-item,
+.page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item,
+.page-wordlet-intelchange-contest-enter #page .form-item-trip-visit .form-item {
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
+}
+.page-wordlet-intelchange-contest-enter #page .form-actions {
+  margin: 29px 0 0 0;
+}
+.page-wordlet-intelchange-contest-enter #page .form-actions input:hover,
+.page-wordlet-intelchange-contest-enter #page .form-actions input:focus {
+  background: #d95604;
+}
+.page-wordlet-intelchange-contest-enter #page form .visible-description p {
+  margin-bottom: 0.625em;
+}
+.page-wordlet-intelchange-contest-enter #page form p.error {
+  color: rgb(229, 30, 30);
+  margin-bottom: 3px;
+}
+.page-wordlet-intelchange-contest-enter #page .form-type-textfield input.error {
+  border-color: rgb(229, 30, 30);
 }
 .page-wordlet-intelchange-contest-enter #page .important-info-block {
   margin-bottom: 3em;
@@ -820,7 +924,7 @@
 .page-wordlet-intelchange-about #page ol {
   line-height: 1.5em;
   margin-bottom: 1.5em;
-  font-size: .88em;
+  font-size: 0.875em;
 }
 .page-wordlet-intelchange-about #page .special-lists li {
   margin-bottom: 1.5em;
