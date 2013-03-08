@@ -1317,7 +1317,7 @@ function signature_base_form_submit($form, &$form_state) {
 /**
  * Sends a signature to BSD as a signup.
  */
-function signature_send_signup($signature) {
+function signature_send_signup($signature, $local = TRUE) {
 
   // Get the node specific settings.
   $settings = entity_load_single('signature_node', $signature->nid);
@@ -1395,7 +1395,9 @@ function signature_send_signup($signature) {
       try {
         $api = bluestatedigital_get_api('signup');
         $api->processSignup($signup);
-        takeaction_tracking_track_action($signature->nid);
+        if ($local) {
+          takeaction_tracking_track_action($signature->nid);
+        }
       }
       catch (BlueStateDigitalApiException $ex) {
         $message = 'Error sending signature signup [@code] @body';
@@ -2054,7 +2056,7 @@ function signature_api_create($nid) {
   }
 
   $signature->save();
-  signature_send_signup($signature);
+  signature_send_signup($signature, FALSE);
 
   return array(
     'status' => '201 Created',
