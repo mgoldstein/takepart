@@ -1317,7 +1317,7 @@ function signature_base_form_submit($form, &$form_state) {
 /**
  * Sends a signature to BSD as a signup.
  */
-function signature_send_signup($signature) {
+function signature_send_signup($signature, $local = TRUE) {
 
   // Get the node specific settings.
   $settings = entity_load_single('signature_node', $signature->nid);
@@ -1395,7 +1395,9 @@ function signature_send_signup($signature) {
       try {
         $api = bluestatedigital_get_api('signup');
         $api->processSignup($signup);
-        takeaction_tracking_track_action($signature->nid);
+        if ($local) {
+          takeaction_tracking_track_action($signature->nid);
+        }
       }
       catch (BlueStateDigitalApiException $ex) {
         $message = 'Error sending signature signup [@code] @body';
@@ -1923,6 +1925,40 @@ function signature_api_create($nid) {
     );
   }
 
+  // Check that the email adress is in fact an email address
+  if (!valid_email_address($payload['email'])) {
+    return array(
+      'status' => '400 Bad Request',
+      'payload' => array(
+        'errors' => array(
+          'Invalid email address.',
+        ),
+      ),
+    );
+  }
+
+  // Create an entity query.
+  $query = new EntityFieldQuery();
+
+  // Limit that query to signatures for the associated node.
+  $query->entityCondition('entity_type', 'signature');
+  $query->propertyCondition('nid', $nid);
+
+  // Limit signing to once per email.
+  $query->propertyCondition('email', $payload['email']);
+
+  $results = $query->execute();
+  if (!empty($results['signature'])) {
+    return array(
+      'status' => '400 Bad Request',
+      'payload' => array(
+        'errors' => array(
+          'Signature already exists.',
+        ),
+      ),
+    );
+  }
+
   // Create a signature on the Drupal side
   $values = array(
     'type' => 'international_signature',
@@ -1994,6 +2030,10 @@ function signature_api_create($nid) {
 
   if (empty($payload['country']) || $payload['country'] == 'United States') {
 
+    $signature->field_sig_address_toggle = array(
+      'und' => array(array('value' => 'inside'))
+    );
+
     if (!empty($payload['state'])) {
       // State field
       $signature->field_sig_state = array(
@@ -2017,6 +2057,10 @@ function signature_api_create($nid) {
     $signature->field_sig_postal_code = array('und' => array());
   }
   else {
+
+    $signature->field_sig_address_toggle = array(
+      'und' => array(array('value' => 'outside'))
+    );
 
     $signature->field_sig_state = array('und' => array());
 
@@ -2054,7 +2098,7 @@ function signature_api_create($nid) {
   }
 
   $signature->save();
-  signature_send_signup($signature);
+  signature_send_signup($signature, FALSE);
 
   return array(
     'status' => '201 Created',
