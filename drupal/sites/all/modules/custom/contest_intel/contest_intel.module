@@ -195,6 +195,7 @@ function contest_intel_entry_form($form, &$form_state, $config) {
       'Ecuador' => t('Ecuador'),
       'India' => t('India'),
       'Kenya' => t('Kenya'),
+      'no preference' => t('No Preference'),
     ),
   );
 
