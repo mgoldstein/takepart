@@ -20,7 +20,7 @@
 		</div>
 		<p class="more">
 			<? if ( $w = w('howto_more') ): ?>
-				<a href="<?=$w->href?>"><?=$w->single?></a>
+				<a target='_blank' href="<?=$w->href?>"><?=$w->single?></a>
 			<? endif ?>
 		</p>
 	</div>
