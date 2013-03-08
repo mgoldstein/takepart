@@ -3372,3 +3372,10 @@ p.fb-login-text {
 .tpinfographic_modal_modal {
     cursor: url(../images/zoomout.cur), pointer;
 }
+
+.tpinfographic_embed_textarea textarea {
+    max-width: 100%;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}

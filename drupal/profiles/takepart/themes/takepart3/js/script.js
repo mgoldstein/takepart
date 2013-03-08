@@ -51,7 +51,7 @@
             var $embed_link_p = $('<p/>').addClass('tpinfographic_embed_link');
             var $embed_link_a = $('<a href="#"/>').html('Embed This Infographic on Your Site');
             var $embed_textarea_p = $('<p/>').addClass('tpinfographic_embed_textarea').hide();
-            var $embed_textarea = $('<textarea/>').addClass('tpinfographic_embed_textarea').attr({cols: 58, rows: 7}).val(html);
+            var $embed_textarea = $('<textarea/>').addClass('tpinfographic_embed_textarea').attr({cols: 56, rows: 7}).val(html);
 
             $embed_link_p.append($embed_link_a);
 
