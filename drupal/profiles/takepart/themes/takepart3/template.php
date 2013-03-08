@@ -714,7 +714,7 @@ function takepart3_field__field_author(&$vars) {
     // Author
     $authors = array();
     foreach ($vars['items'] as $key => $value) {
-        $authors[] = render($value);
+        $authors[] = l( t($value['#title']), $value['#href'], array('attributes' => array('rel' => 'author')) );
     }
     switch (count($authors)) {
         case 1:
