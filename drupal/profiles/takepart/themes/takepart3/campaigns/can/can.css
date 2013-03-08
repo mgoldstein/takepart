@@ -6,9 +6,12 @@
     color: rgb(0, 0, 0);
 }
 .page-wrap h1,
-.page-wrap h2,
 .page-wrap h3 {
     text-transform: uppercase;
+    color: rgb(0, 0, 0);
+}
+
+.page-wrap h2 {
     color: rgb(0, 0, 0);
 }
 
