@@ -1996,6 +1996,10 @@ function signature_api_create($nid) {
 
   if (empty($payload['country']) || $payload['country'] == 'United States') {
 
+    $signature->field_sig_address_toggle = array(
+      'und' => array(array('value' => 'inside'))
+    );
+
     if (!empty($payload['state'])) {
       // State field
       $signature->field_sig_state = array(
@@ -2019,6 +2023,10 @@ function signature_api_create($nid) {
     $signature->field_sig_postal_code = array('und' => array());
   }
   else {
+
+    $signature->field_sig_address_toggle = array(
+      'und' => array(array('value' => 'outside'))
+    );
 
     $signature->field_sig_state = array('und' => array());
 
