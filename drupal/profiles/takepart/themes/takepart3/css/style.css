@@ -3356,16 +3356,19 @@ p.fb-login-text {
     font-weight: bold;
 }
 
-.tpinfographic a,
-.tpinfographic img {
-    display: block;
-}
-
 .tpinfographic_container .tpinfographic_embed_link,
 .tpinfographic_container .tpinfographic {
-    margin-bottom: .25em;
+    margin-bottom: .15em;
 }
 
 .tpinfographic_container {
     margin-bottom: 1em;
+}
+
+.tpinfographic a {
+    cursor: url(../images/zoomin.cur), pointer;
+}
+
+.tpinfographic_modal_modal {
+    cursor: url(../images/zoomout.cur), pointer;
 }

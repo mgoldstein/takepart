@@ -10,7 +10,7 @@
             })
             // Infographic pop-up
             .delegate('.tpinfographic a', 'click', function(e) {
-                $.tpmodal.show({id: 'tpinfographic_modal_', url: this.href});
+                $.tpmodal.show({id: 'tpinfographic_modal_', url: this.href, hideOnModalClick: true});
                 takepart.analytics.track('tpinfographic_show', $(this).find('img')[0].alt);
                 e.preventDefault();
             })
@@ -25,8 +25,20 @@
                     $embed_textarea_p.hide();
                 }
             })
-            .delegate('.tpinfographic_embed_link textarea', 'click', function() {
-                this.select();
+            .delegate('.tpinfographic_embed_textarea textarea', 'focus keyup', function(e) {
+                var keycode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+                if(keycode === 9 || !keycode){
+                    // Hacemos select
+                    var $this = $(this);
+                    $this.select();
+
+                    // Para Chrome's que da problema
+                    $this.bind("mouseup", function() {
+                        // Unbindeamos el mouseup
+                        $this.unbind("mouseup");
+                        return false;
+                    });
+                }
             })
             ;
 
@@ -39,7 +51,7 @@
             var $embed_link_p = $('<p/>').addClass('tpinfographic_embed_link');
             var $embed_link_a = $('<a href="#"/>').html('Embed This Infographic on Your Site');
             var $embed_textarea_p = $('<p/>').addClass('tpinfographic_embed_textarea').hide();
-            var $embed_textarea = $('<textarea/>').addClass('tpinfographic_embed_textarea').attr({cols: 60, rows: 7}).val(html);
+            var $embed_textarea = $('<textarea/>').addClass('tpinfographic_embed_textarea').attr({cols: 58, rows: 7}).val(html);
 
             $embed_link_p.append($embed_link_a);
 

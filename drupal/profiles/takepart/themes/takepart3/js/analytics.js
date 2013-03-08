@@ -82,6 +82,30 @@ takepart.analytics.track = function(name) {
                 _gaq.push(['_trackEvent', ga_category, ga_action, title]);
             }
             break;
+        // -------------------------------
+        // TP Infographic ----------------
+        // -------------------------------
+        case 'tpinfographic_show':
+            var s=s_gi(Drupal.settings.omniture.s_account);
+            s.linkTrackVars='eVar45,eVar30,events';
+            s.linkTrackEvents='event45';
+            s.events='event45';
+            s.eVar45=args[1];
+            s.eVar30=s.pageName;
+            s.tl(true, 'o', 'Click on Infographic');
+            break;
+        case 'tpinfographic_embed_show':
+            var s=s_gi(Drupal.settings.omniture.s_account);
+            s.linkTrackVars='eVar45,eVar30,events';
+            s.linkTrackEvents='event46';
+            s.events='event46';
+            s.eVar45=args[1];
+            s.eVar30=s.pageName;
+            s.tl(true, 'o', 'Click on Embed Infographic Link');
+            break;
+        // -----------------------------------
+        // Place at the Table ----------------
+        // -----------------------------------
         case 'patt_show_modal':
             var s=s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars='eVar73,prop73,eVar30,events';
