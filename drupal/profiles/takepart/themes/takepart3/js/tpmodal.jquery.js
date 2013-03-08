@@ -12,6 +12,7 @@ var defaults = {
 	speed: 500,
 	opacity: .8,
 	hideOnOverlayClick: true,
+	hideOnModalClick: false,
 	afterClose: null,
 	autoReposition: true,
 	height: null,
@@ -162,6 +163,10 @@ var tpmodal = function(parameters) {
 		me.showNode(settings, null);
 	};
 
+	var hide_modal = function() {
+		me.hide();
+	};
+
 	this.showNode = function(parameters, node) {
 		var settings = get_settings(parameters);
 
@@ -221,6 +226,7 @@ var tpmodal = function(parameters) {
 			});
 
 			if ( node ) $modal.removeClass(settings.prepend + 'loading');
+			if ( settings.hideOnModalClick ) $modal.bind('click', hide_modal);
 		}
 
 		$root.addClass(settings.prepend + 'showing');
@@ -287,6 +293,8 @@ var tpmodal = function(parameters) {
 		}
 
 		if ( form_edited && !confirm('Form has been edited. Continue?') ) return false;
+
+		$modal.unbind('click', hide_modal);
 
 		$modal_content.css({
 			height: $modal_content.height(),
