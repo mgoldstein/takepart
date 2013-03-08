@@ -2785,12 +2785,13 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 .boxes-selected-style-6 .views-field-field-promo-text .field-content {
     padding-bottom:4px;
 }
-.node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_plusone,
-.node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_linkedin {
-    width:50px !important;
+.node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_plusone {
+    width:28px !important;
 }
-.primary-feature 
-{
+.node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_linkedin {
+    width:20px !important;
+}
+.primary-feature {
     overflow:hidden;
     padding-bottom:0;
 }
