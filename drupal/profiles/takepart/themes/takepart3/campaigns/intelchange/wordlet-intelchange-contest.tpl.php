@@ -38,7 +38,7 @@
 			</div>
 
 			<p class="important">
-				<a target='_blank' href="<?=wu('intelchange_contest_enter')?>"><?=w('enter_the_contest')?></a>
+				<a href="<?=wu('intelchange_contest_enter')?>"><?=w('enter_the_contest')?></a>
 			</p>
 		</div>
 	</div>
