@@ -3351,3 +3351,21 @@ p.fb-login-text {
 .OUTBRAIN .ob_what a {
  display:none;
 }
+
+.tpinfographic_embed_link {
+    font-weight: bold;
+}
+
+.tpinfographic a,
+.tpinfographic img {
+    display: block;
+}
+
+.tpinfographic_container .tpinfographic_embed_link,
+.tpinfographic_container .tpinfographic {
+    margin-bottom: .25em;
+}
+
+.tpinfographic_container {
+    margin-bottom: 1em;
+}

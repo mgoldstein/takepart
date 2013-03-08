@@ -8,12 +8,59 @@
             .delegate('#skip-link a', 'click', function() {
                 $($(this).attr('href')).attr('tabIndex', '-1').focus();
             })
+            // Infographic pop-up
+            .delegate('.tpinfographic a', 'click', function(e) {
+                $.tpmodal.show({id: 'tpinfographic_modal_', url: this.href});
+                takepart.analytics.track('tpinfographic_show', $(this).find('img')[0].alt);
+                e.preventDefault();
+            })
+            .delegate('.tpinfographic_embed_link a', 'click', function(e) {
+                e.preventDefault();
+                var $this = $(this);
+                var $embed_textarea_p = $this.closest('.tpinfographic_embed_container').find('.tpinfographic_embed_textarea');
+                if ( $embed_textarea_p.css('display') == 'none' ) {
+                    $embed_textarea_p.show();
+                    takepart.analytics.track('tpinfographic_embed_show', $this.closest('.tpinfographic_container').find('img')[0].alt);
+                } else {
+                    $embed_textarea_p.hide();
+                }
+            })
+            .delegate('.tpinfographic_embed_link textarea', 'click', function() {
+                this.select();
+            })
             ;
+
+        // Make tpinfographic stuff
+        $('.tpinfographic').each(function() {
+            var $this = $(this);
+            var html = $this.html() + '<br />Via: <a href="http://www.takepart.com">TakePart.com</a>';
+            var $container = $('<div/>').addClass('tpinfographic_container');
+            var $embed = $('<div/>').addClass('tpinfographic_embed_container');
+            var $embed_link_p = $('<p/>').addClass('tpinfographic_embed_link');
+            var $embed_link_a = $('<a href="#"/>').html('Embed This Infographic on Your Site');
+            var $embed_textarea_p = $('<p/>').addClass('tpinfographic_embed_textarea').hide();
+            var $embed_textarea = $('<textarea/>').addClass('tpinfographic_embed_textarea').attr({cols: 60, rows: 7}).val(html);
+
+            $embed_link_p.append($embed_link_a);
+
+            $embed_textarea_p.append($embed_textarea);
+
+            $embed
+                .append($embed_link_p)
+                .append($embed_textarea_p)
+
+            $container
+                .insertAfter($this)
+                .append($this)
+                .append($embed)
+                ;
+        });
 
         // Sticky social nav on article page
         $('.node-type-openpublish-article #left-rail .region-sidebar-first').tpsticky({
             offsetNode: '#content'
         });
+
     });
 })(window, jQuery);
 
