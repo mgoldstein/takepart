@@ -1925,6 +1925,40 @@ function signature_api_create($nid) {
     );
   }
 
+  // Check that the email adress is in fact an email address
+  if (!valid_email_address($payload['email'])) {
+    return array(
+      'status' => '400 Bad Request',
+      'payload' => array(
+        'errors' => array(
+          'Invalid email address.',
+        ),
+      ),
+    );
+  }
+
+  // Create an entity query.
+  $query = new EntityFieldQuery();
+
+  // Limit that query to signatures for the associated node.
+  $query->entityCondition('entity_type', 'signature');
+  $query->propertyCondition('nid', $nid);
+
+  // Limit signing to once per email.
+  $query->propertyCondition('email', $payload['email']);
+
+  $results = $query->execute();
+  if (!empty($results['signature'])) {
+    return array(
+      'status' => '400 Bad Request',
+      'payload' => array(
+        'errors' => array(
+          'Signature already exists.',
+        ),
+      ),
+    );
+  }
+
   // Create a signature on the Drupal side
   $values = array(
     'type' => 'international_signature',
