@@ -3351,7 +3351,31 @@ p.fb-login-text {
 .OUTBRAIN .ob_what a {
  display:none;
 }
-.takepart-take-action-widget { 
-	width:90%;
-	margin:0px auto;
+
+.tpinfographic_embed_link {
+    font-weight: bold;
+}
+
+.tpinfographic_container .tpinfographic_embed_link,
+.tpinfographic_container .tpinfographic {
+    margin-bottom: .15em;
+}
+
+.tpinfographic_container {
+    margin-bottom: 1em;
+}
+
+.tpinfographic a {
+    cursor: url(../images/zoomin.cur), pointer;
+}
+
+.tpinfographic_modal_modal {
+    cursor: url(../images/zoomout.cur), pointer;
+}
+
+.tpinfographic_embed_textarea textarea {
+    max-width: 100%;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
 }
