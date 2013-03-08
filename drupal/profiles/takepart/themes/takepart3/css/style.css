@@ -3365,6 +3365,10 @@ p.fb-login-text {
     margin-bottom: 1em;
 }
 
+#right-rail .tpinfographic_container {
+    margin-bottom: 0;
+}
+
 .tpinfographic a {
     cursor: url(../images/zoomin.cur), pointer;
 }
