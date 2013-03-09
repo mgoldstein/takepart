@@ -2790,6 +2790,12 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 .node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_linkedin {
     width:20px !important;
 }
+.node-type-openpublish-photo-gallery .tab-gallery {
+    float: left;
+    position: relative;
+    margin-top: 10px;
+    width: 98px
+}
 .primary-feature {
     overflow:hidden;
     padding-bottom:0;
