@@ -764,6 +764,10 @@
   margin-bottom: 1.5em;
   font-size: .875em;
 }
+
+.page-wordlet-intelchange-contest-enter #page .form-block p {
+  font-size: 0.813em;
+}
 .page-wordlet-intelchange-contest-enter #page h2 {
   margin-bottom: 0.559em;
 }
@@ -816,7 +820,7 @@
 .page-wordlet-intelchange-contest-enter #page .form-type-textfield label,
 .page-wordlet-intelchange-contest-enter #page .form-type-radios label,
 .page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
-  font-size: 0.875em;
+  font-size: 0.813em;
   margin-bottom: 0.214em;
   line-height: 1.5em;
   font-weight: bold;
