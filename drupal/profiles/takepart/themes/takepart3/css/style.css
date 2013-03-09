@@ -2786,10 +2786,10 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
     padding-bottom:4px;
 }
 .node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_plusone {
-    width:28px !important;
+    width:28px;
 }
 .node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_linkedin {
-    width:20px !important;
+    width:20px;
 }
 .node-type-openpublish-photo-gallery .tab-gallery {
     float: left;
@@ -3209,11 +3209,6 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 
 .boxes-selected-style-6 .views-field-field-promo-text .field-content {
     padding-bottom:4px;
-}
-
-.node-type-openpublish-photo-gallery div.takepart_addthis_leftpane
-l div.addthis_toolbox a.addthis_button_google_plusone,.node-type-openpublish-photo-gallery div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_linkedin {
-    width:50px !important;
 }
 
 .node-type-topic-front .block-boxes-current-featured_items .view-dom-id-1 .views-field-php {
