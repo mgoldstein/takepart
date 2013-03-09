@@ -1000,6 +1000,7 @@
   border-bottom: 40px solid transparent;
   border-left: 17px solid rgb(0, 140, 215);
   top: 0;
+  border-style: dotted dotted dotted solid; /*osx+ff fix*/
 }
 .page-wordlet-intelchange-about .partner {
   display: inline-block; *display: inline; *zoom: 1;
