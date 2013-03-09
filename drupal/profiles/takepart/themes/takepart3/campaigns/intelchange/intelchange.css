@@ -634,6 +634,7 @@
 }
 .page-wordlet-intelchange-contest #page .first-block h2 {
   padding-top: 0;
+  line-height: 0.8em;
 }
 .page-wordlet-intelchange-contest #page .first-block .image {
   float: left;
@@ -763,6 +764,10 @@
   margin-bottom: 1.5em;
   font-size: .875em;
 }
+
+.page-wordlet-intelchange-contest-enter #page .form-block p {
+  font-size: 0.813em;
+}
 .page-wordlet-intelchange-contest-enter #page h2 {
   margin-bottom: 0.559em;
 }
@@ -806,16 +811,16 @@
   background: #fff;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-textfield {
-  margin-bottom: 2.214em;
+  margin-bottom: 1em;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-radios,
 .page-wordlet-intelchange-contest-enter #page .form-type-checkbox {
-  margin-bottom: 3.214em;
+  margin-bottom: 1em;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-textfield label,
 .page-wordlet-intelchange-contest-enter #page .form-type-radios label,
 .page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
-  font-size: 0.875em;
+  font-size: 0.813em;
   margin-bottom: 0.214em;
   line-height: 1.5em;
   font-weight: bold;
