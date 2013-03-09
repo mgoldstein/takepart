@@ -45,7 +45,7 @@
         // Make tpinfographic stuff
         $('.tpinfographic').each(function() {
             var $this = $(this);
-            var html = $this.html() + '<br />Via: <a href="http://www.takepart.com">TakePart.com</a>';
+            var html = $this.html().replace(/^\s+|\s+$/g, '') + '<br />Via: <a href="http://www.takepart.com">TakePart.com</a>';
             var $container = $('<div/>').addClass('tpinfographic_container');
             var $embed = $('<div/>').addClass('tpinfographic_embed_container');
             var $embed_link_p = $('<p/>').addClass('tpinfographic_embed_link');

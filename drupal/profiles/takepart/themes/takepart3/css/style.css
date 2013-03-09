@@ -44,7 +44,7 @@ body.node-type-action
 
 body.page-iframes-slim-header,
 body.page-iframes-footer {
-    background: #FFF none;
+    background: #eff3f5 none;
 }
 
 hr {
@@ -3363,6 +3363,10 @@ p.fb-login-text {
 
 .tpinfographic_container {
     margin-bottom: 1em;
+}
+
+#right-rail .tpinfographic_container {
+    margin-bottom: 0;
 }
 
 .tpinfographic a {
