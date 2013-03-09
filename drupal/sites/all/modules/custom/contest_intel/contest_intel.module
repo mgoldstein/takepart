@@ -1,8 +1,15 @@
 <?php
 
-function contest_intel_signup_form_filter($var) {
-  return ($var == 'None' || preg_match('/^\[[0-9]+\] Email/', $var));
-}
+define('ENTRY_FORM_ID', 137);
+define('FIRST_NAME_FIELD_ID', 2725);
+define('LAST_NAME_FIELD_ID', 2727);
+define('EMAIL_FIELD_ID', 2723);
+define('AGE_CHECK_FIELD_ID', 2882);
+define('ABOUT_YOU_FIELD_ID', 2883);
+define('TRIP_VISIT_FIELD_ID', 2884);
+define('VIDEO_FIELD_ID', 2737);
+define('AGREE_TO_RULES_FIELD_ID', 2885);
+define('AGREE_TO_SHARE_FIELD_ID', 2886);
 
 function contest_intel_preprocess_markup($markup) {
   $allowed_tags = '<a><b><i><strong><em><br><br/><img><p><ul><ol><li>'
@@ -137,6 +144,18 @@ function contest_intel_entry_configuration($form, $config) {
     '#default_value' => $config['submit_caption'],
   );
 
+  $form['thank_you_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Thank You'),
+    '#default_value' => $config['thank_you_message'],
+  );
+
+  $form['signup_error_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Signup Error Message'),
+    '#default_value' => $config['signup_error_message'],
+  );
+
   return $form;
 }
 
@@ -146,7 +165,10 @@ function contest_intel_entry_configuration($form, $config) {
 function contest_intel_entry_form($form, &$form_state, $config) {
 
   $config = contest_intel_entry_form_defaults($config);
-  $form['#contest_intel_config'] = $config;
+  $form_state['contest_intel_entry'] = array(
+    'selector' => '#contest-intel-entry-form',
+    'config' => $config,
+  );
 
   $form['required_label'] = array(
     '#type' => 'markup',
@@ -239,13 +261,13 @@ function contest_intel_entry_form($form, &$form_state, $config) {
     '#type' => 'submit',
     '#value' => $config['submit_caption'],
     '#weight' => 40,
-    #'#ajax' => array(
-    #  'callback' => 'contest_intel_entry_form_callback',
-    #  'progress' => array(
-    #    'type' => 'throbber',
-    #    'message' => NULL,
-    #  ),
-    #),
+    '#ajax' => array(
+      'callback' => 'contest_intel_entry_form_callback',
+      'progress' => array(
+        'type' => 'throbber',
+        'message' => NULL,
+      ),
+    ),
   );
 
   if (!isset($form['#pre_render'])) {
@@ -312,6 +334,45 @@ function contest_intel_entry_form_validate($form, &$form_state) {
  */
 function contest_intel_entry_form_submit($form, &$form_state) {
 
+  $mapping = array(
+    'first_name' => FIRST_NAME_FIELD_ID,
+    'last_name' => LAST_NAME_FIELD_ID,
+    'email' => EMAIL_FIELD_ID,
+    'age_check' => AGE_CHECK_FIELD_ID,
+    'about_you' => ABOUT_YOU_FIELD_ID,
+    'trip_visit' => TRIP_VISIT_FIELD_ID,
+    'video' => VIDEO_FIELD_ID,
+    'agree_to_rules' => AGREE_TO_RULES_FIELD_ID,
+    'agree_to_share' => AGREE_TO_SHARE_FIELD_ID,
+  );
+
+  $args = $form_state['contest_intel_entry'];
+  $config = $args['config'];
+
+  $form_state['contest_intel_entry_signup_failed'] = FALSE;
+  try {
+
+    $api = bluestatedigital_get_api('signup');
+    $fields = $api->listFormFields(ENTRY_FORM_ID);
+
+    foreach ($mapping as $name => $id) {
+      $fields[$id]['value'] = array(
+        'type' => 'value',
+        'value' => $form_state['values'][$name],
+      );
+    }
+
+    $signup = array(ENTRY_FORM_ID => $fields);
+    $api->processSignup($signup);
+  }
+  catch (BlueStateDigitalApiException $ex) {
+    $form_state['contest_intel_entry_signup_failed'] = TRUE;
+    $message = 'Error sending contest entry [@code] @body';
+    watchdog('contest_intel', $message, array(
+      '@code' => $ex->getResponseCode(),
+      '@body' => $ex->getResponseBody(),
+    ));
+  }
 }
 
 /**
@@ -319,6 +380,34 @@ function contest_intel_entry_form_submit($form, &$form_state) {
  */
 function contest_intel_entry_form_callback($form, &$form_state) {
 
+  // Standard form submission stuff.
+  $commands = array();
+
+  $args = $form_state['contest_intel_entry'];
+  $selector = $args['selector'];
+
+  $errors = form_get_errors();
+  if (empty($errors) && !$form_state['contest_intel_entry_signup_failed']) {
+    $config = $args['config'];
+    $message = contest_intel_preprocess_markup($config['thank_you_message']);
+    $message = '<div class="thank-you-message"><p>' . $message . '</p></div>';
+    $commands[] = ajax_command_replace($selector, $message);
+  }
+  elseif ($form_state['contest_intel_entry_signup_failed']) {
+    $config = $args['config'];
+    $message = contest_intel_preprocess_markup($config['signup_error_message']);
+    $message = '<div class="signup-error-message"><p>' . $message . '</p></div>';
+    $commands[] = ajax_command_replace($selector, $message);
+  }
+  else {
+    $markup = drupal_render($form);
+    $commands[] = ajax_command_replace($selector, $markup);
+  }
+
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
 }
 
 function contest_intel_entry_form_pre_render($element) {
