@@ -73,6 +73,16 @@
             offsetNode: '#content'
         });
 
+        // Lazy load facebook comments
+        $('.fb_comments')
+            .lazyload({threshold: 200, load: function() {
+                var $div = $('<div/>');
+                var $template = $(this).find('.fb_comments_template');
+                var html = $template.text();
+                $div.html(html);
+                $div.insertAfter(this);
+                FB.XFBML.parse($div[0]);
+            }});
     });
 })(window, jQuery);
 
