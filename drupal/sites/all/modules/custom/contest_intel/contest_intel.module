@@ -443,7 +443,7 @@ function theme_contest_intel_visible_description($variables) {
 function theme_contest_intel_inline_error_message($variables) {
   $element = $variables['element'];
   if (isset($element['#inline_error_message'])) {
-  return '<p class="error">' . $element['#inline_error_message'] . '</p>' . $element['#children'];
+    return '<label class="error" for="' . $element['#id'] . '">' . $element['#inline_error_message'] . '</label>' . $element['#children'];
   }
   return $element['#children'];
 }
