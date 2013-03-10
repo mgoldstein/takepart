@@ -873,6 +873,13 @@
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
 }
+.page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item {
+  width: 50%;
+  float: left;
+}
+.page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item label {
+  width: 170px;
+}
 .page-wordlet-intelchange-contest-enter #page .form-actions {
   margin: 29px 0 0 0;
 }
