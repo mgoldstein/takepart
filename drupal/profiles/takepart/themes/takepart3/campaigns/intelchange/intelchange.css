@@ -811,7 +811,7 @@
   background: #fff;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-textfield {
-  margin-bottom: 1.875em;
+  margin-bottom: 1em;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-radios,
 .page-wordlet-intelchange-contest-enter #page .form-type-checkbox {
@@ -872,6 +872,13 @@
 .page-wordlet-intelchange-contest-enter #page .form-item-trip-visit .form-item {
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
+}
+.page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item {
+  width: 50%;
+  float: left;
+}
+.page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item label {
+  width: 170px;
 }
 .page-wordlet-intelchange-contest-enter #page .form-actions {
   margin: 29px 0 0 0;
