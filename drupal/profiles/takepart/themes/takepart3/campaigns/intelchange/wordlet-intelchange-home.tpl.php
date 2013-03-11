@@ -81,7 +81,7 @@
     </div>
 
     <div class="partners-block">
-        <a href="<?=wu('intelchange_about')?>">
+        <a href="<?=wu('intelchange_about')?>#about-partners">
             <h4><?=w('partners_header')?></h4>
             <ul class="partners-list" <?=wa('partners_list')?>>
                 <? foreach ( wl('partners_list') as $w ): ?>

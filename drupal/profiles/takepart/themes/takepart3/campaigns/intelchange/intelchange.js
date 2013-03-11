@@ -145,6 +145,8 @@ else if ( $body.is('.page-wordlet-intelchange-about') ) {
 
     $current_nav.addClass('active');
     contentSections.not('#' + $current_nav.attr('href')).hide();
+
+    if ( location.hash ) $('a[href="' + location.hash + '"]').trigger('click');
 }
 
 });
