@@ -812,6 +812,11 @@
   padding: 2.857em 3.214em;
   background: #fff;
 }
+.page-wordlet-intelchange-contest-enter #page .form-block .thank-you-message h3 {
+  font-size: 1.750em;
+  margin-bottom: .5em;
+  margin-top: 0;
+}
 .page-wordlet-intelchange-contest-enter #page .form-type-textfield {
   margin-bottom: 1em;
 }
