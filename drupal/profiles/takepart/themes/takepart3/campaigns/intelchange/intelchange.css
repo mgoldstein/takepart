@@ -1021,13 +1021,13 @@
   content: "";
   position: absolute;
   left: 100%;
+  top: 0;
   width: 0;
   height: 0;
-  border-left: none;
-  border-top: 40px solid transparent;
-  border-bottom: 40px solid transparent;
-  border-left: 17px solid rgb(0, 140, 215);
-  top: 0;
+  border-style: solid;
+  border-color: transparent transparent transparent rgb(0, 140, 215);
+  border-width: 40px 0 40px 17px;
+  border-style: dotted solid dotted; /* mozilla + osx fix */
 }
 .page-wordlet-intelchange-about .partner {
   display: inline-block; *display: inline; *zoom: 1;
