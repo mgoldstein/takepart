@@ -73,6 +73,7 @@
             offsetNode: '#content'
         });
 
+        // TODO reduce code duplication
         // Lazy load facebook comments
         $('.fb_comments')
             .lazyload({threshold: 200, load: function() {
@@ -82,6 +83,18 @@
                 $div.html(html);
                 $div.insertAfter(this);
                 FB.XFBML.parse($div[0]);
+            }});
+
+        // Lazy load takepart_addthis_footer
+        // TODO check to see if this has the proper settings
+        $('.takepart_addthis_footer')
+            .lazyload({threshold: 200, load: function() {
+                var $div = $('<div/>');
+                var $template = $(this).find('.takepart_addthis_footer_template');
+                var html = $template.text();
+                $div.html(html);
+                $div.insertAfter(this);
+                addthis.toolbox('addthis_toolbox');
             }});
     });
 })(window, jQuery);
