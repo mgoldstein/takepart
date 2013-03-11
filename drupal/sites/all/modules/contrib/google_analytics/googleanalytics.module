@@ -219,6 +219,8 @@ function googleanalytics_page_alter(&$page) {
 
     // Build tracker code.
     $script = 'var _gaq = _gaq || [];';
+    $script .= "var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';";
+    $script .= "_gaq.push(['_require', 'inpage_linkid', pluginUrl]);";
     $script .= '_gaq.push(["_setAccount", ' . drupal_json_encode($id) . ']);';
     if (variable_get('googleanalytics_tracker_anonymizeip', 0)) {
       // FIXME: The Google API is currently broken and "_gat._anonymizeIp" is only

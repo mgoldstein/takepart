@@ -15,8 +15,12 @@
                 <?=w('intro_link')?>
             </p>
         </div>
-        <p class="video-play">
-            <a href="http://www.youtube.com/watch?v=<?=w('video')->video?>"><?=w('video')->single?></a>
+        <p class="video-play" <?=wa('video')?>>
+            <? if ( w('video')->video ): ?>
+                <a href="http://www.youtube.com/watch?v=<?=w('video')->video?>"><?=w('video')->single?></a>
+            <? elseif( wordlet_edit_mode() ): ?>
+                Add Video
+            <? endif ?>
         </p>
     </div>
 
@@ -77,7 +81,7 @@
     </div>
 
     <div class="partners-block">
-        <a href="<?=wu('intelchange_about')?>">
+        <a href="<?=wu('intelchange_about')?>#about-partners">
             <h4><?=w('partners_header')?></h4>
             <ul class="partners-list" <?=wa('partners_list')?>>
                 <? foreach ( wl('partners_list') as $w ): ?>

@@ -127,6 +127,12 @@ else if ( $body.is('.page-wordlet-intelchange-about') ) {
     var contentSections = contentInfo.children();
     var $content_navs = contentNav.find('li a');
     var $current_nav = $content_navs.first();
+    if ( location.hash ) {
+        var $target_nav = $('a[href="' + location.hash + '"]');
+        if ( $target_nav.is('.content-nav a') ) {
+            $current_nav = $target_nav;
+        }
+    }
     var $current_content = contentSections.filter('#' + $current_nav.attr('href'));
 
     $body
