@@ -25,7 +25,7 @@
     </div><!--/join-login-top-->
     <?php print $follow_us_links; ?><!--/top follow-->
     <div class="logo-wrapper">
-  		<div id="logo"><?php print l("", "<front>", array('attributes' => array('title' => 'TakePart logo', 'absolute' => TRUE) ) )?></div>
+  		<div id="logo"><?php print l("Home", "<front>", array('attributes' => array('title' => 'TakePart logo', 'absolute' => TRUE) ) )?></div>
 			<div class="header-right">
         <div id="nav-wrap" class="clear clearfix">
           <div id="block-menu-block-1">
