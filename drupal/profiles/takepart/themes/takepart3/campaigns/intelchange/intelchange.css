@@ -873,6 +873,13 @@
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
 }
+.page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item {
+  width: 50%;
+  float: left;
+}
+.page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item label {
+  width: 170px;
+}
 .page-wordlet-intelchange-contest-enter #page .form-actions {
   margin: 29px 0 0 0;
 }
@@ -883,9 +890,11 @@
 .page-wordlet-intelchange-contest-enter #page form .visible-description p {
   margin-bottom: 0.625em;
 }
-.page-wordlet-intelchange-contest-enter #page form p.error {
+.page-wordlet-intelchange-contest-enter #page form label.error {
   color: rgb(229, 30, 30);
   margin-bottom: 3px;
+  text-transform: none;
+  font-weight: normal;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-textfield input.error {
   border-color: rgb(229, 30, 30);
