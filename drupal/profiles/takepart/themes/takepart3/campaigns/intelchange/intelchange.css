@@ -768,10 +768,6 @@
   margin-bottom: 1.5em;
   font-size: .875em;
 }
-
-.page-wordlet-intelchange-contest-enter #page .form-block p {
-  font-size: 0.813em;
-}
 .page-wordlet-intelchange-contest-enter #page h2 {
   margin-bottom: 0.559em;
 }
@@ -791,8 +787,6 @@
   position: relative;
   width: 510px;
   margin-right: 69px;
-  min-height: 200px;
-  _height: 200px;
 }
 .page-wordlet-intelchange-contest-enter #page .form-block:before {
   -ms-transform: rotate(-0.2deg);
@@ -809,7 +803,11 @@
   height: 100%;
   content: " ";
 }
-.page-wordlet-intelchange-contest-enter #page .form-block form {
+.page-wordlet-intelchange-contest-enter #page .form-block p {
+  font-size: 0.813em;
+}
+.page-wordlet-intelchange-contest-enter #page .form-block form,
+.page-wordlet-intelchange-contest-enter #page .form-block .thank-you-message {
   position: relative;
   padding: 2.857em 3.214em;
   background: #fff;
