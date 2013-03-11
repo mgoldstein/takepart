@@ -895,6 +895,12 @@
   margin-bottom: 3px;
   text-transform: none;
   font-weight: normal;
+  display: block;
+  width: 100%;
+}
+.page-wordlet-intelchange-contest-enter #page form .form-type-checkbox label.error {
+  margin-left: 0;
+  margin-right: 0;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-textfield input.error {
   border-color: rgb(229, 30, 30);
