@@ -25,6 +25,11 @@
 						<li><a href="<?=$w->href?>" class="<?=ws($w->href)?>"><?=$w->single(false)?></a></li>
 					<? endforeach ?>
 				</ul>
+				<script type="text/javascript">
+					var addthis_share = {
+					    url: "<?=wu('intelchange_home')?>"
+					}
+				</script>
 				<div class="addThis">
                     <a class="addthis_button_facebook_like"></a>
                     <a class="addthis_button_tweet"></a>

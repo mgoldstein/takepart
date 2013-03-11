@@ -1112,9 +1112,11 @@ function wg() {
 
 // Return URL for requested wordlet page
 function wordlet_url($name) {
+  global $base_url;
+
   $config = _wordlet_configuration();
   if (isset($config[$name]) && isset($config[$name]['path']) ) {
-    return '/' . $config[$name]['path'];
+    return $base_url . '/' . $config[$name]['path'];
   }
   return '';
 }
