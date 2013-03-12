@@ -29,7 +29,7 @@ function takeaction_javascript_init() {
         window.TP = window.TP || {};
         TP.tabHost = '{$scheme}://{$host}';
         TP.publisherId = '{$pub_id}';
-        (function() {         
+        (function() {
           var tabScript = document.createElement('script');
           tabScript.type = 'text/javascript';
           tabScript.async = true;
@@ -60,11 +60,11 @@ function takeaction_javascript_init() {
  */
 function takeaction_javascript_node_view($node, $view_mode, $langcode) {
   $items = field_get_items('node', $node, 'field_tab_action_override');
-  if ($items !== FALSE) {
+  if ($items !== FALSE && $view_mode === 'full') {
     $action = array('null', 'null', 'null');
     foreach ($items as $delta => $item) {
       $action[$delta] = $items[$delta]['nid'];
-    } 
+    }
     $override_js = "
       TP.action1 = {$action[0]};
       TP.action2 = {$action[1]};
