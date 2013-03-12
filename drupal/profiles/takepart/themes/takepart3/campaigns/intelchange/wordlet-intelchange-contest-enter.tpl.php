@@ -1,6 +1,22 @@
 <h2><?=w('header')?></h2>
 
 <div class="first-block">
+    <script type="text/javascript">
+	    if (typeof addthis_config !== "undefined") {
+			addthis_config.ui_email_note = '<?=addslashes(w('thanks_email_message')->single(false))?>';
+		} else {
+			var addthis_config = {
+				ui_email_note: '<?=addslashes(w('thanks_email_message')->single(false))?>'
+			};
+		}
+    </script>
+
+	<? if ( wordlet_edit_mode() ): ?>
+		<p>
+			Thank-you Email Note: <?=w('thanks_email_message')?>
+		</p>
+	<? endif ?>
+
 	<div class="form-block cms">
 		<?=w('contest_form')?>
 	</div>
