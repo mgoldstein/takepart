@@ -15,19 +15,6 @@ takepart.analytics.addThis_shareEventHandler = function (evt) {
     }
 };
 
-takepart.analytics.omn_clickTrack = function (target) {
-    jQuery(target).click(function() {
-        var link_title = jQuery(this).attr('title');
-        var title = convert_title(link_title);
-        s.events='event25';
-        s.prop26=title;
-        s.eVar27=title;
-        s.linkTrackVars='eVar27,prop26,events';
-        s.linkTrackEvents='event25';
-        s.tl(this.href, 'o', 'Content Share');
-    });
-};
-
 takepart.analytics.addThis_ready = function (evt) {
     addthis.addEventListener('addthis.menu.share', takepart.analytics.addThis_shareEventHandler);
 };
@@ -63,9 +50,15 @@ takepart.analytics.track = function(name) {
                 case ("google_plusone"):
                     title = "GooglePlus";
                     break;
-                // case ("linkedin"):
-                //     title = "LinkedIn";
-                //     break;
+                case ("linkedin"):
+                     title = "LinkedIn";
+                     break;
+                case ("stumbleupon"):
+                     title = "Stumbleupon";
+                     break;
+                case ("pinterest"):
+                     title = "Pinterest";
+                     break;
                 case ("email"):
                     title = "Email";
                     break;
@@ -76,7 +69,8 @@ takepart.analytics.track = function(name) {
                 s.events = 'event25';
                 s.prop26 = title;
                 s.eVar27 = title;
-                s.linkTrackVars = 'eVar27,prop26,events';
+                s.eVar30 = s.pageName;
+                s.linkTrackVars = 'eVar30,eVar27,prop26,events';
                 s.linkTrackEvents = 'event25';
                 s.tl(args[2], 'o', 'Content Share');
                 _gaq.push(['_trackEvent', ga_category, ga_action, title]);
@@ -193,14 +187,15 @@ takepart.analytics.track = function(name) {
 
 // Document Ready
 $(function() {
-    if (typeof addthis != "undefined") {
-        if(addthis) {
-            addthis.addEventListener('addthis.ready', takepart.analytics.addThis_ready);
-        }
+    if (typeof addthis != "undefined" && addthis) {
+        addthis.addEventListener('addthis.ready', takepart.analytics.addThis_ready);
     }
-    /* Incorrectly attaches social sharing event to Take Action button
-     * takepart.analytics.omn_clickTrack('.take_action_button');
-     */
+
+    // Pinterest doesn't work when it's just a link
+    $('body')
+        .delegate('a.addthis_button_pinterest_pinit', 'click', function() {
+            takepart.analytics.track('generic_addthis', 'pinterest');
+        });
 
     /* // Track clicks to addthis iframes
     var hoverframe = null;
