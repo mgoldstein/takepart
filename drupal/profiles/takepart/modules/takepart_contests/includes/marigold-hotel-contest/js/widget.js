@@ -16,13 +16,6 @@ marigold_hotel_contest.widgets = {
             	var title = link_title;
             }
             
-            s.events = 'event25';
-            s.prop26 = title;
-            s.eVar27 = title;
-            s.linkTrackVars = 'eVar27,prop26,events';
-            s.linkTrackEvents = 'event25';
-            s.tl(this.href, 'o', 'Content Share');
-
             s.events = 'event19';
             s.eVar28 = 'Content Share';
             s.linkTrackVars = 'eVar28,events';
@@ -69,13 +62,6 @@ marigold_hotel_contest.widgets = {
 function addthisMenuShareEventHandler(evt) {
   // one of these two works, (I think email)
   if (evt.data.service == 'toemail' || evt.data.service == 'email') {
-    s.events = 'event25';
-    s.prop26 = 'Email';
-    s.eVar27 = 'Email';
-    s.linkTrackVars = 'eVar27,prop26,events';
-    s.linkTrackEvents = 'event25';
-    s.tl(this.href, 'o', 'Content Share');
-
     s.events = 'event19';
     s.eVar28 = 'Content Share';
     s.linkTrackVars = 'eVar28,events';
