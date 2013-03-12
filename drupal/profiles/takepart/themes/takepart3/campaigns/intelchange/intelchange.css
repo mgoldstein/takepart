@@ -503,17 +503,13 @@
 }
 
 .page-wordlet-intelchange-home .second-block .form_wrapper .form-item input {
-  background: rgb(235,235,235);
+  background: #f7f6f6;
   border-radius: 3px;
   color: rgb(75,54,57);
-  padding: 6px 3%;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
+  padding: 0.214em 3%;
+  width: 92%;
   font-size: 2em;
-  border: 1px solid #999;
+  border: 0.107em solid #d4d4d4;
 }
 
 .page-wordlet-intelchange-home .second-block .messages li,
@@ -803,30 +799,32 @@
   height: 100%;
   content: " ";
 }
-.page-wordlet-intelchange-contest-enter #page .form-block p {
+
+/* enter form */
+.page-wordlet-intelchange-contest-enter #page .form-block.cms p {
   font-size: 0.813em;
 }
-.page-wordlet-intelchange-contest-enter #page .form-block form,
-.page-wordlet-intelchange-contest-enter #page .form-block .thank-you-message {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms form,
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .thank-you-message {
   position: relative;
   padding: 2.857em 3.214em;
   background: #fff;
 }
-.page-wordlet-intelchange-contest-enter #page .form-block .thank-you-message h3 {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .thank-you-message h3 {
   font-size: 1.750em;
   margin-bottom: .5em;
   margin-top: 0;
 }
-.page-wordlet-intelchange-contest-enter #page .form-type-textfield {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-textfield {
   margin-bottom: 1em;
 }
-.page-wordlet-intelchange-contest-enter #page .form-type-radios,
-.page-wordlet-intelchange-contest-enter #page .form-type-checkbox {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-radios,
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-checkbox {
   margin-bottom: 1em;
 }
-.page-wordlet-intelchange-contest-enter #page .form-type-textfield label,
-.page-wordlet-intelchange-contest-enter #page .form-type-radios label,
-.page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-textfield label,
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-radios label,
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-checkbox label {
   font-size: 0.813em;
   margin-bottom: 0.231em;
   line-height: 1.5em;
@@ -834,22 +832,22 @@
   text-transform: uppercase;
   color: rgb(75, 54, 57);
 }
-.page-wordlet-intelchange-contest-enter #page .form-type-radios .form-radios {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-radios .form-radios {
   margin-top: 0.615em;
 }
-.page-wordlet-intelchange-contest-enter #page .form-type-radio label,
-.page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-radio label,
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-checkbox label {
   font-weight: normal;
   text-transform: none;
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
   margin: 0 15px 0 22px;
 }
-.page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-checkbox label {
   width: 360px;
   margin-right: 0;
 }
-.page-wordlet-intelchange-contest-enter #page .form-type-textfield input {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-textfield input {
   background: #f7f6f6;
   border-radius: 3px;
   color: rgb(75,54,57);
@@ -858,12 +856,12 @@
   font-size: 2em;
   border: 0.107em solid #d4d4d4;
 }
-.page-wordlet-intelchange-contest-enter #page .form-type-radio input,
-.page-wordlet-intelchange-contest-enter #page .form-type-checkbox input {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-radio input,
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-checkbox input {
   margin: 3px 0 0;
   position: absolute;
 }
-.page-wordlet-intelchange-contest-enter #page .form-actions input {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-actions input {
   background: #f37424;
   cursor: pointer;
   font-weight: bold;
@@ -877,29 +875,29 @@
   font-size: 1.1em;
   border: none;
 }
-.page-wordlet-intelchange-contest-enter #page .form-item {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-item {
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
   margin: 0 0 1.25em 0;
 }
-.page-wordlet-intelchange-contest-enter #page .form-item .form-item {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-item .form-item {
   margin-bottom: 0.25em;
 }
-.page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-item-about-you .form-item {
   width: 50%;
   float: left;
 }
-.page-wordlet-intelchange-contest-enter #page .form-actions {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-actions {
   margin: 29px 0 0 0;
 }
-.page-wordlet-intelchange-contest-enter #page .form-actions input:hover,
-.page-wordlet-intelchange-contest-enter #page .form-actions input:focus {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-actions input:hover,
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-actions input:focus {
   background: #d95604;
 }
-.page-wordlet-intelchange-contest-enter #page form .visible-description p {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms form .visible-description p {
   margin-bottom: 0.625em;
 }
-.page-wordlet-intelchange-contest-enter #page form label.error {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms form label.error {
   color: rgb(229, 30, 30);
   margin-bottom: 3px;
   text-transform: none;
@@ -907,13 +905,14 @@
   display: block;
   width: 100%;
 }
-.page-wordlet-intelchange-contest-enter #page form .form-type-checkbox label.error {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms form .form-type-checkbox label.error {
   margin-left: 0;
   margin-right: 0;
 }
-.page-wordlet-intelchange-contest-enter #page .form-type-textfield input.error {
+.page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-textfield input.error {
   border-color: rgb(229, 30, 30);
 }
+
 .page-wordlet-intelchange-contest-enter #page .important-info-block {
   margin-bottom: 3em;
 }
