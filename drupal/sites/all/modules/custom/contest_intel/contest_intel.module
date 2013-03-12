@@ -62,36 +62,42 @@ function contest_intel_entry_configuration($form, $config) {
 
   $form['required_label'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 1023,
     '#title' => t('Required Label'),
     '#default_value' => $config['required_label'],
   );
 
   $form['first_name_label'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 1023,
     '#title' => t('First Name Label'),
     '#default_value' => $config['first_name_label'],
   );
 
   $form['last_name_label'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 1023,
     '#title' => t('Last Name Label'),
     '#default_value' => $config['last_name_label'],
   );
 
   $form['email_label'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 1023,
     '#title' => t('Email Label'),
     '#default_value' => $config['email_label'],
   );
 
   $form['age_check_label'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 1023,
     '#title' => t('Age Check Label'),
     '#default_value' => $config['age_check_label'],
   );
 
   $form['about_you_label'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 1023,
     '#title' => t('About You Label'),
     '#default_value' => $config['about_you_label'],
   );
@@ -104,12 +110,14 @@ function contest_intel_entry_configuration($form, $config) {
 
   $form['trip_visit_label'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 1023,
     '#title' => t('Trip Visit Label'),
     '#default_value' => $config['trip_visit_label'],
   );
 
   $form['video_label'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 1023,
     '#title' => t('Video Label'),
     '#default_value' => $config['video_label'],
   );
@@ -122,24 +130,28 @@ function contest_intel_entry_configuration($form, $config) {
 
   $form['contest_rules_label'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 1023,
     '#title' => t('Contest Rules Label'),
     '#default_value' => $config['contest_rules_label'],
   );
 
   $form['share_info_label'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 1023,
     '#title' => t('Share Info Label'),
     '#default_value' => $config['share_info_label'],
   );
 
   $form['terms_of_use'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 1023,
     '#title' => t('Terms of Use'),
     '#default_value' => $config['terms_of_use'],
   );
 
   $form['submit_caption'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 1023,
     '#title' => t('Submit Caption'),
     '#default_value' => $config['submit_caption'],
   );
