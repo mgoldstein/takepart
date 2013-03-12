@@ -1950,7 +1950,7 @@ function signature_api_create($nid) {
   $results = $query->execute();
   if (!empty($results['signature'])) {
     return array(
-      'status' => '400 Bad Request',
+      'status' => '409 Conflict',
       'payload' => array(
         'errors' => array(
           'Signature already exists.',
