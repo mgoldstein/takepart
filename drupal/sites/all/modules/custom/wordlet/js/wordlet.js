@@ -243,6 +243,8 @@ $('[data-edit],[data-configure]').each(function() {
 // Wordlet events & other setup
 $('body')
 	.delegate('.wordlet', 'click', function(e) {
+		var $target = $(e.target);
+		if ( $target.is('input') || $target.is('textarea') || $target.is('select') || $target.is('label') ) return true;
 		var $this = $(this);
 		var $link = ($this.is('[data-edit]') || $this.is('[data-configure]')) ? $this : $this.find('.wordlet_configure, .wordlet_edit');
 		var link = $link.data('edit') || $link.data('configure');
