@@ -95,6 +95,9 @@
 .content .signup_form h3 {
     font-size: 17px;
 }
+.content .signup_form a {
+    color: #af4901;
+}
 .content .signup_form .form-item-email label {
     display: none;
 }
