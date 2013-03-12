@@ -120,6 +120,16 @@ else if ( $body.is('.page-wordlet-intelchange-contest') ) {
 
     contentNav.find('li a').first().trigger('click');
 }
+
+else if ( $body.is('.page-wordlet-intelchange-contest-enter')) {
+    Drupal.behaviors.contestEntryFormThankYou = {
+        attach: function (context) {
+            addthis.toolbox('.addThis');
+        }
+    }
+}
+
+
 // About
 else if ( $body.is('.page-wordlet-intelchange-about') ) {
     var contentNav = $('.content-nav');

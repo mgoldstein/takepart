@@ -404,8 +404,8 @@ function contest_intel_entry_form_callback($form, &$form_state) {
   $errors = form_get_errors();
   if (empty($errors) && !$form_state['contest_intel_entry_signup_failed']) {
     $config = $args['config'];
-    $message = contest_intel_preprocess_markup($config['thank_you_message']);
-    $message = '<div class="thank-you-message"><p>' . $message . '</p></div>';
+    $message = $config['thank_you_message'];
+    $message = '<div class="thank-you-message">' . $message . '</div>';
     $commands[] = ajax_command_replace($selector, $message);
   }
   elseif ($form_state['contest_intel_entry_signup_failed']) {
