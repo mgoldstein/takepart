@@ -309,6 +309,9 @@ function contest_intel_entry_form_validate($form, &$form_state) {
   if (strlen($email) == 0) {
     form_set_error('email', t('Please enter your email.'));
   }
+  elseif (!valid_email_address($email)) {
+    form_set_error('email', t('Please enter a valid email.'));
+  }
 
   $age_check = trim($form_state['values']['age_check']);
   if (empty($age_check)) {
