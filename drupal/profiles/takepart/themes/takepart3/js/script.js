@@ -81,7 +81,7 @@
                 var $template = $(this).find('.fb_comments_template');
                 var html = $template.text();
                 $div.html(html);
-                $div.insertAfter(this);
+                $div.insertAfter($template);
                 FB.XFBML.parse($div[0]);
             }});
 
@@ -93,8 +93,8 @@
                 var $template = $(this).find('.takepart_addthis_footer_template');
                 var html = $template.text();
                 $div.html(html);
-                $div.insertAfter(this);
-                addthis.toolbox('addthis_toolbox');
+                $div.insertAfter($template);
+                addthis.toolbox('.addthis_toolbox');
             }});
     });
 })(window, jQuery);
