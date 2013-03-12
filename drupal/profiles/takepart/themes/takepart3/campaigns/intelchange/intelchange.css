@@ -507,7 +507,11 @@
   border-radius: 3px;
   color: rgb(75,54,57);
   padding: 6px 3%;
-  width: 94%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
   font-size: 2em;
   border: 1px solid #999;
 }
@@ -764,10 +768,6 @@
   margin-bottom: 1.5em;
   font-size: .875em;
 }
-
-.page-wordlet-intelchange-contest-enter #page .form-block p {
-  font-size: 0.813em;
-}
 .page-wordlet-intelchange-contest-enter #page h2 {
   margin-bottom: 0.559em;
 }
@@ -787,8 +787,6 @@
   position: relative;
   width: 510px;
   margin-right: 69px;
-  min-height: 200px;
-  _height: 200px;
 }
 .page-wordlet-intelchange-contest-enter #page .form-block:before {
   -ms-transform: rotate(-0.2deg);
@@ -805,10 +803,19 @@
   height: 100%;
   content: " ";
 }
-.page-wordlet-intelchange-contest-enter #page .form-block form {
+.page-wordlet-intelchange-contest-enter #page .form-block p {
+  font-size: 0.813em;
+}
+.page-wordlet-intelchange-contest-enter #page .form-block form,
+.page-wordlet-intelchange-contest-enter #page .form-block .thank-you-message {
   position: relative;
   padding: 2.857em 3.214em;
   background: #fff;
+}
+.page-wordlet-intelchange-contest-enter #page .form-block .thank-you-message h3 {
+  font-size: 1.750em;
+  margin-bottom: .5em;
+  margin-top: 0;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-textfield {
   margin-bottom: 1em;
@@ -821,11 +828,14 @@
 .page-wordlet-intelchange-contest-enter #page .form-type-radios label,
 .page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
   font-size: 0.813em;
-  margin-bottom: 0.214em;
+  margin-bottom: 0.231em;
   line-height: 1.5em;
   font-weight: bold;
   text-transform: uppercase;
   color: rgb(75, 54, 57);
+}
+.page-wordlet-intelchange-contest-enter #page .form-type-radios .form-radios {
+  margin-top: 0.615em;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-radio label,
 .page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
@@ -833,7 +843,7 @@
   text-transform: none;
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
-  margin: 0 10px 0 10px;
+  margin: 0 15px 0 22px;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-checkbox label {
   width: 360px;
@@ -844,14 +854,14 @@
   border-radius: 3px;
   color: rgb(75,54,57);
   padding: 0.214em 3%;
-  width: 94%;
+  width: 92%;
   font-size: 2em;
   border: 0.107em solid #d4d4d4;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-radio input,
 .page-wordlet-intelchange-contest-enter #page .form-type-checkbox input {
-  float: left;
-  margin: 4px 0 0;
+  margin: 3px 0 0;
+  position: absolute;
 }
 .page-wordlet-intelchange-contest-enter #page .form-actions input {
   background: #f37424;
@@ -867,18 +877,17 @@
   font-size: 1.1em;
   border: none;
 }
-.page-wordlet-intelchange-contest-enter #page .form-item-age-check .form-item,
-.page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item,
-.page-wordlet-intelchange-contest-enter #page .form-item-trip-visit .form-item {
+.page-wordlet-intelchange-contest-enter #page .form-item {
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
+  margin: 0 0 1.25em 0;
+}
+.page-wordlet-intelchange-contest-enter #page .form-item .form-item {
+  margin-bottom: 0.25em;
 }
 .page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item {
   width: 50%;
   float: left;
-}
-.page-wordlet-intelchange-contest-enter #page .form-item-about-you .form-item label {
-  width: 170px;
 }
 .page-wordlet-intelchange-contest-enter #page .form-actions {
   margin: 29px 0 0 0;
@@ -895,6 +904,12 @@
   margin-bottom: 3px;
   text-transform: none;
   font-weight: normal;
+  display: block;
+  width: 100%;
+}
+.page-wordlet-intelchange-contest-enter #page form .form-type-checkbox label.error {
+  margin-left: 0;
+  margin-right: 0;
 }
 .page-wordlet-intelchange-contest-enter #page .form-type-textfield input.error {
   border-color: rgb(229, 30, 30);
@@ -1006,13 +1021,13 @@
   content: "";
   position: absolute;
   left: 100%;
+  top: 0;
   width: 0;
   height: 0;
-  border-left: none;
-  border-top: 40px solid transparent;
-  border-bottom: 40px solid transparent;
-  border-left: 17px solid rgb(0, 140, 215);
-  top: 0;
+  border-style: solid;
+  border-color: transparent transparent transparent rgb(0, 140, 215);
+  border-width: 40px 0 40px 17px;
+  border-style: dotted solid dotted; /* mozilla + osx fix */
 }
 .page-wordlet-intelchange-about .partner {
   display: inline-block; *display: inline; *zoom: 1;
