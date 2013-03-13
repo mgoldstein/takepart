@@ -404,7 +404,7 @@ function _takeaction_feed_update_domain($url, $force = FALSE) {
     $is_takepart = substr_compare($pieces['host'], 'takepart.com', -12, 12);
     $is_action_center = substr_compare($pieces['host'], 'actioncenter.takepart.com', -25, 25);
     if ($force || $is_domain === FALSE || $is_takepart === 0) {
-      if (!$is_action_center) {
+      if ($is_action_center !== 0) {
         $pieces['host'] = $new_domain;
         $url = _takeaction_feed_build_url($pieces);
       }
