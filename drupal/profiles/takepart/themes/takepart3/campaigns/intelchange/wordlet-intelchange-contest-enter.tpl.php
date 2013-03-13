@@ -1,7 +1,16 @@
 <h2><?=w('header')?></h2>
 
 <div class="first-block">
-	<div class="form-block cms">
+	<? if ( wordlet_edit_mode() ): ?>
+		<div>
+			<p>Share Block Message: <?=w('thanks_share_message')?></p>
+			<p>Share Block URL: <?=w('thanks_share_url')?></p>
+		</div>
+	<? endif ?>
+
+	<div class="form-block cms"
+		data-thankyouUrl='<?=addslashes(w('thanks_share_url')->single(false))?>'
+		data-thankyouMessage='<?=addslashes(w('thanks_share_message')->single(false))?>'>
 		<?=w('contest_form')?>
 	</div>
 

@@ -16,6 +16,9 @@ $('body')
 			$(this).attr({target: '_blank'});
 		}
 	})
+	.delegate('a[href*="privacy-policy"], a[href*="terms-of-use"]', 'click', function() {
+		$(this).attr({target: '_blank'});
+	})
 	;
 
 });
