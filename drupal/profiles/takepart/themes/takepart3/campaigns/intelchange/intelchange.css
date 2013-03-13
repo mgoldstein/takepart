@@ -815,6 +815,9 @@
   margin-bottom: .5em;
   margin-top: 0;
 }
+.thank-you-message .addthis_button_facebook_send {
+  margin-right: 13px;
+}
 .page-wordlet-intelchange-contest-enter #page .form-block.cms .form-type-textfield {
   margin-bottom: 1em;
 }
