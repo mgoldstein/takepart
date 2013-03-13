@@ -123,18 +123,21 @@ else if ( $body.is('.page-wordlet-intelchange-contest') ) {
 
 else if ( $body.is('.page-wordlet-intelchange-contest-enter')) {
     Drupal.behaviors.contestEntryFormThankYou = {
-        attach: function (context) {
-            addthis.toolbox('.addThis', {
-                ui_email_note: $('.addThis', context).data('message') + '  ' + $('.addThis', context).data('url')
-            },
-            {
-                url: $('.addThis', context).data('url'),
-                message: $('.addThis', context).data('message')
-            });
-            
+        attach: function (context) {            
             if (context.is('.thank-you-message')){
+                
+                // scroll to top of thank you after loaded
                 $('html, body').animate({
                      scrollTop: context.offset().top
+                });
+
+                // thank you add this block
+                addthis.toolbox('.addThis', {
+                    ui_email_note: $('.addThis', context).data('message') + '  ' + $('.addThis', context).data('url')
+                },
+                {
+                    url: $('.addThis', context).data('url'),
+                    title: $('.addThis', context).data('message')
                 });
             }
         }
