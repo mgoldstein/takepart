@@ -75,4 +75,8 @@ blockquote{
 {
 	content:"Take Action Banner Widget";
 } 
+p.takepart-take-action-widget-wysiwyg-wrapper { 
+	display: none; 
+}
+
 

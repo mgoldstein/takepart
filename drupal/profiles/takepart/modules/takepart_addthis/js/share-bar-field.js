@@ -1,16 +1,5 @@
 (function ($) {
   var addthisShareListener = function (evt) {
-    var title = 'Unknown';
-    if (evt.data.service == 'email') { title = 'Email'; }
-    else if (evt.data.service == 'facebook') { title = 'Facebook'; }
-    else if (evt.data.service == 'twitter') { title = 'Twitter'; }
-    s.linkTrackVars = "eVar27,eVar30,events";
-    s.linkTrackEvents = "event25";
-    s.prop26 = title;
-    s.eVar27 = title;
-    s.eVar30 = s.pageName;
-    s.events = 'event25';
-    s.tl(true, 'o', 'Content Share');
   };
   Drupal.behaviors.addthisField = {
     attach: function (context, settings) {

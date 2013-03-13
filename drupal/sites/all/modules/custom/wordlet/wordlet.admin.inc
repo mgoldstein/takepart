@@ -594,7 +594,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     );
     if ($configure) {
       $form['single']['enabled'] = array(
-        '#type' => 'checkbox',
+       '#type' => 'checkbox',
        '#title' => 'Enable Single Line',
        '#attributes' => array('data-for' => array('single-input')),
        '#default_value' => in_array('single', $entity->item_keys),
@@ -664,6 +664,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     $form['href']['value'] = array(
       '#title' => t('Link'),
       '#type' => 'textfield',
+      '#maxlength' => '1000',
       '#default_value' => $values['href'],
       '#attributes' => array('class' => array('href-input')),
       '#element_validate' => array('wordlet_validate_href'),
@@ -717,6 +718,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     $form['img_src']['value'] = array(
       '#title' => t('Image Source'),
       '#type' => 'textfield',
+      '#maxlength' => '1000',
       '#default_value' => $values['img_src'],
       '#attributes' => array('class' => array('img-src-input')),
       '#element_validate' => array('wordlet_validate_href'),
@@ -758,6 +760,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     $form['token']['value'] = array(
       '#title' => t('Token'),
       '#type' => 'textfield',
+      '#maxlength' => '1000',
       '#default_value' => $values['token'],
       '#attributes' => array('class' => array('token-input')),
     );
@@ -778,6 +781,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     $form['video']['value'] = array(
       '#title' => t('Video'),
       '#type' => 'textfield',
+      '#maxlength' => '1000',
       '#default_value' => $values['video'],
       '#attributes' => array('class' => array('video-input')),
     );
@@ -798,6 +802,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     $form['thumb_src']['value'] = array(
       '#title' => t('Thumb Source'),
       '#type' => 'textfield',
+      '#maxlength' => '1000',
       '#default_value' => $values['thumb_src'],
       '#attributes' => array('class' => array('thumb-src-input')),
       '#element_validate' => array('wordlet_validate_href'),

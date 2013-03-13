@@ -120,6 +120,33 @@ else if ( $body.is('.page-wordlet-intelchange-contest') ) {
 
     contentNav.find('li a').first().trigger('click');
 }
+
+else if ( $body.is('.page-wordlet-intelchange-contest-enter')) {
+    Drupal.behaviors.contestEntryFormThankYou = {
+        attach: function (context) {            
+            if (context.is('.thank-you-message')){
+                
+                // scroll to top of thank you after loaded
+                $('html, body').animate({
+                     scrollTop: context.offset().top
+                });
+
+                // thank you add this block
+                var $thankyouMessage = $('.form-block').data('thankyouMessage');
+                var $thankyouUrl = $('.form-block').data('thankyouUrl');
+                addthis.toolbox('.addThis', {
+                    ui_email_note: $thankyouMessage + '  ' + $thankyouUrl
+                },
+                {
+                    url: $thankyouUrl,
+                    title: $thankyouMessage
+                });
+            }
+        }
+    }
+}
+
+
 // About
 else if ( $body.is('.page-wordlet-intelchange-about') ) {
     var contentNav = $('.content-nav');
