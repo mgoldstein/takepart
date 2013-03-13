@@ -877,6 +877,12 @@
   width: auto;
   font-size: 1.1em;
   border: none;
+
+  -webkit-transition: background-color .2s ease-in-out;
+  -moz-transition: background-color .2s ease-in-out;
+  -o-transition: background-color .2s ease-in-out;
+  -ms-transition: background-color .2s ease-in-out;
+  transition: background-color .2s ease-in-out;
 }
 .page-wordlet-intelchange-contest-enter #page .form-block.cms .form-item {
   display: inline-block; *display: inline; *zoom: 1;
@@ -892,7 +898,7 @@
 }
 .page-wordlet-intelchange-contest-enter #page .form-block.cms .form-actions {
   margin: 29px 0 0 0;
-}
+  }
 .page-wordlet-intelchange-contest-enter #page .form-block.cms .form-actions input:hover,
 .page-wordlet-intelchange-contest-enter #page .form-block.cms .form-actions input:focus {
   background: #d95604;
