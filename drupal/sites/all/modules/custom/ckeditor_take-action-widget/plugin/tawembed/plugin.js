@@ -50,10 +50,16 @@
  	    if(targeturlval) {
 	        targeturl = ' data-article-url="' + targeturlval + '"';
 	    }
-            final_html = 'TAWEmbedInsertData|---' + escape('<div class="takepart-take-action-widget" '+dfstyle+targeturl+'></div>') + '---|TAWEmbedInsertData';
+            final_html = '|TAWEmbedInsertData|';
+	
+	    final_tag = '<div class="takepart-take-action-widget" '+dfstyle+targeturl+'></div>';
             editor.insertHtml(final_html);
             updated_editor_data = editor.getData();
-            clean_editor_data = updated_editor_data.replace(final_html,'<div class="takepart-take-action-widget" '+dfstyle+targeturl+'></div>');
+            clean_editor_data = updated_editor_data.replace(final_html,final_tag);
+	    //alert(updated_editor_data);
+            //alert( clean_editor_data);
+	    clean_editor_data =  clean_editor_data.replace("<p>" + final_tag + "</p>", "<p class=\"takepart-take-action-widget-wysiwyg-wrapper\"></p>" + final_tag + "<p class=\"takepart-take-action-widget-wysiwyg-wrapper\"></p>");
+	    //alert( clean_editor_data);
             editor.setData(clean_editor_data);
 	    if(TP) {
  	        if(typeof TP.WidgetFrame == 'function') {
