@@ -40,5 +40,4 @@ function _cketawembed_filters($text, $filter) {
 /* Implements hook_init(). */
 function cketawembed_init() {
     drupal_add_css(drupal_get_path('module', 'cketawembed') . '/takepart-take-action-widget-wysiwyg-wrapper.css');
-    echo drupal_get_path('module', 'cketawembed') . '/takepart-take-action-widget-wysiwyg-wrapper.css';
 }
