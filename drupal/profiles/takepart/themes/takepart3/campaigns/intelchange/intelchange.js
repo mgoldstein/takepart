@@ -124,7 +124,14 @@ else if ( $body.is('.page-wordlet-intelchange-contest') ) {
 else if ( $body.is('.page-wordlet-intelchange-contest-enter')) {
     Drupal.behaviors.contestEntryFormThankYou = {
         attach: function (context) {
-            addthis.toolbox('.addThis');
+            addthis.toolbox('.addThis', {
+                ui_email_note: $('.addThis', context).data('message') + '  ' + $('.addThis', context).data('url')
+            },
+            {
+                url: $('.addThis', context).data('url'),
+                message: $('.addThis', context).data('message')
+            });
+            
             if (context.is('.thank-you-message')){
                 $('html, body').animate({
                      scrollTop: context.offset().top
