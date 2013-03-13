@@ -132,12 +132,14 @@ else if ( $body.is('.page-wordlet-intelchange-contest-enter')) {
                 });
 
                 // thank you add this block
+                var $thankyouMessage = $('.form-block').data('thankyouMessage');
+                var $thankyouUrl = $('.form-block').data('thankyouUrl');
                 addthis.toolbox('.addThis', {
-                    ui_email_note: $('.addThis', context).data('message') + '  ' + $('.addThis', context).data('url')
+                    ui_email_note: $thankyouMessage + '  ' + $thankyouUrl
                 },
                 {
-                    url: $('.addThis', context).data('url'),
-                    title: $('.addThis', context).data('message')
+                    url: $thankyouUrl,
+                    title: $thankyouMessage
                 });
             }
         }
