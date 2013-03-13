@@ -75,7 +75,11 @@
     <div class="facts-block" <?=wa('facts')?>>
         <? foreach ( wl('facts') as $i => $w ): ?>
             <div class="fact fact<?=$i?>">
-                <a href="<?=$w->href?>"><img src="<?=$w->img_src?>"></a>
+                <? if ( $w->href ): ?>
+                    <a href="<?=$w->href?>"><img src="<?=$w->img_src?>"></a>
+                <? else: ?>
+                    <img src="<?=$w->img_src?>">
+                <? endif ?>
             </div>
         <? endforeach ?>
     </div>
