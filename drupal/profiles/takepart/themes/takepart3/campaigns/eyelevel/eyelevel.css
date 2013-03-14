@@ -127,6 +127,10 @@
 .page-wordlet-eyelevel-home .video_intro {
     text-align: center;
 }
+.page-wordlet-eyelevel-home .body p {
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
 .page-wordlet-eyelevel-home .content h2 {
     margin-top: 33px;
     font-size: 30px;
