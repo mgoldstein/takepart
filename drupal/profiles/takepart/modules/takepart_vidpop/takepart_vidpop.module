@@ -264,6 +264,26 @@ function takepart_vidpop_preprocess_node(&$vars, $hook) {
   }
 }
 
+/**
+ * Implements hook_omniture_variables().
+ */
+function _example_takepart_vidpop_omniture_variables() {
+
+	  
+	$return = array();
+	$linkTrackEvents = "";
+	  
+	if ($vars['node']->type == 'openpublish_video') {
+		if (isset($vars['field_promo_headline'])) {
+			$linkTrackEvents = 'event40';
+		}
+	}
+
+	$return = array_merge($return, (array('s.linkTrackEvents'=>$linkTrackEvents,'s.events'=>$linkTrackEvents)));
+
+	return array("variables" => $return);
+}
+
 /***
  * format image to look like a youtube video preview
  *
