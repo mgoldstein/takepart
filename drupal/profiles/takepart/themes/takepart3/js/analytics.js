@@ -76,28 +76,6 @@ takepart.analytics.track = function(name) {
                 _gaq.push(['_trackEvent', ga_category, ga_action, title]);
             }
             break;
-        // --------------------------------
-        // FB Registration ----------------
-        // --------------------------------
-        case 'registration_start':
-            var s=s_gi(Drupal.settings.omniture.s_account);
-            s.linkTrackVars='eVar22,events';
-            s.linkTrackEvents='event20';
-            s.events='event20';
-            s.eVar22=args[1];
-            s.eVar30=s.pageName;
-            s.tl(true, 'o', 'Registration Start');
-            break;
-        case 'registration_success':
-            var s=s_gi(Drupal.settings.omniture.s_account);
-            s.linkTrackVars='eVar22,events';
-            s.linkTrackEvents='event21';
-            s.events='event21';
-            s.eVar22=args[1];
-            s.eVar30=s.pageName;
-            s.tl(true, 'o', 'Registration Success');
-            break;
-
         // -------------------------------
         // TP Infographic ----------------
         // -------------------------------
