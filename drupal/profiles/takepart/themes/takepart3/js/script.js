@@ -98,27 +98,6 @@
                 $div.insertAfter($template);
                 addthis.toolbox('.addthis_toolbox');
             }});
-
-
-        // ------------------------------
-        // Page Specific ----------------
-        // ------------------------------
-        if ( $body.is('.page-user-register') ) {
-            takepart.analytics.track('registration_start', 'Facebook');
-            var oldfn = window['fbregistration_validate'];
-            window['fbregistration_validate'] = function(form) {
-                var ret = oldfn(form);
-
-                var i = 0;
-                for ( var p in ret ) i++;
-
-                if ( !i ) {
-                    window['fbregistration_validate'] = oldfn;
-                    takepart.analytics.track('registration_success', 'Facebook');
-                }
-                return ret;
-            };
-        }
     });
 })(window, jQuery);
 
