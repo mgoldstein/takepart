@@ -156,7 +156,9 @@
     border-bottom: 1px solid rgb(204, 204, 204);
     padding-bottom: 20px;
 }
-
+.page-wordlet-eyelevel-video .artist:last-child {
+    border-bottom: 0;
+}
 .page-wordlet-eyelevel-video .artist .info-wrapper {
     float: left;
     margin-right: 475px;
