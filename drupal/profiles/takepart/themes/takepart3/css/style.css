@@ -44,7 +44,7 @@ body.node-type-action
 
 body.page-iframes-slim-header,
 body.page-iframes-footer {
-    background: #eff3f5 none;
+    background: transparent;
 }
 
 hr {
