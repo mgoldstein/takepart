@@ -124,16 +124,19 @@
     padding-top: 37px;
     padding-bottom: 80px;
 }
-.page-wordlet-eyelevel-home .video_intro {
+.page-wordlet-eyelevel-home .content .video_intro {
     text-align: center;
 }
-.page-wordlet-eyelevel-home .body p {
+.page-wordlet-eyelevel-home .content .body p {
     padding: 0 20px;
     margin-bottom: 30px;
 }
-.page-wordlet-eyelevel-home .content h2 {
-    margin-top: 33px;
+.page-wordlet-eyelevel-home .content .main-header {
+    font-size: 30px;
+}
+.page-wordlet-eyelevel-home .content .nav-header {
     text-align: left;
+    margin-top: 33px;
 }
 
 /* # Video - General
