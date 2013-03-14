@@ -1394,6 +1394,8 @@ CKEDITOR.config.ignoreEmptyParagraph = true;
  * @example
  * config.autoParagraph = false;
  */
+config.autoParagraph = false;
+
 
 /**
  * Fired when some elements are added to the document
