@@ -79,6 +79,24 @@ function _wordlet_configuration() {
     ),
 
     // Test
+    'test_social' => array(
+      'title' => 'Social Sharing Test',
+      'path' => 'socialtest',
+      'published' => FALSE,
+      'wrappers' => array(),
+      'wrappers' => array('html'),
+      'css' => array(
+        'campaigns/reset.css',
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+      ),
+      'load' => array('site'),
+    ),
+
+    // Blank Wordlet Page
     'test_blank' => array(
       'title' => 'Test - Blank Campaign',
       'path' => 'test/blank-campaign-page',
