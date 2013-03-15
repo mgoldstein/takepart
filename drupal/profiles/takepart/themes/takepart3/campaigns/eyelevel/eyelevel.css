@@ -133,11 +133,13 @@
 .page-wordlet-eyelevel-home .content .body.second p {
     margin-top: 30px;
 }
+.page-wordlet-eyelevel-home .content h2 {
+    text-align: left;
+}
 .page-wordlet-eyelevel-home .content .main-headline {
     font-size: 30px;
 }
 .page-wordlet-eyelevel-home .content .nav-headline {
-    text-align: left;
     margin-top: 33px;
 }
 
