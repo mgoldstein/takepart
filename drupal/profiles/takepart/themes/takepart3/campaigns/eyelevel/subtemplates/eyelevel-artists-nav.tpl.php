@@ -2,7 +2,7 @@
 	<ul <?=wa('artists')?>>
 		<? foreach( wl('artists') as $w ): ?>
 			<? if ( $w->active ): ?>
-				<li><a href="#<?=$w->token?>">
+				<li><a href="<?=$wu('eyelevel_video')?>#<?=$w->token?>">
 					<div class="portrait">
 						<img src="<?=$w->img_src?>" alt="Portrait"/>
 					</div>
