@@ -1,7 +1,7 @@
 (function(window, $, undefined) {
 
 /*
-	test
+	test2
 	data- attributes:
 	tps-url: URL override
 	tps-image: Image override
