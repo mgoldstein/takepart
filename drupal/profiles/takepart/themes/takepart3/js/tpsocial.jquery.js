@@ -67,10 +67,46 @@ var valid_services = {
 		width: 550,
 		height: 420,
 		share: function(args) {
-			var url = 'https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdev.twitter.com%2Fdocs%2Ftweet-button&text=Tweet%20Button%20%7C%20Twitter%20Developers&tw_p=tweetbutton&url=https%3A%2F%2Fdev.twitter.com%2Fdocs%2Ftweet-button';
+			// Replace variables in twitter template
+			var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
+			var template_tplvar_clean_reg = /({{)|(}})/g;
+
+			var text = args.text || '';
+			var matches = text.match(twitter_tpl_reg);
+
+			for ( var i in matches ) {
+				var match = matches[i];
+				var prop = match.replace(template_tplvar_clean_reg, '');
+
+				if ( match != 'text' && args[prop] != undefined && args[prop] ) {
+					text = text.replace(match, args[prop]);
+				} else {
+					text = text.replace(match, '');
+				}
+			}
+
+			// Create twitter URL
+			var url_obj = {
+				url: args.url,
+				via: args.via,
+				text: text,
+				in_reply_to: args.in_reply_to,
+				hashtags: args.hashtags,
+				related: args.related
+			};
+
+			var url_parts = [];
+			for ( var i in url_obj ) {
+				var val = url_obj[i];
+				if ( val != undefined && val ) url_parts.push(i + '=' + encodeURIComponent(val));
+			}
+			var url = 'https://twitter.com/intent/tweet?' + url_parts.join('&');
+
+			// Open twitter share
+			var windowOptions = 'scrollbars=yes,resizable=yes,toolbar=no,location=yes,';
 			var left = 0;
 			var tops = Number((screen.height/2)-(args.height/2));
-			window.open(url, undefined, ["width="+args.width,"height="+args.height,"left="+left,"top="+tops].join(", "));
+			window.open(url, undefined, windowOptions + ["width="+args.width,"height="+args.height,"left="+left,"top="+tops].join(", "));
 		}
 	},
 	googleplus: {
@@ -84,13 +120,16 @@ var valid_services = {
 };
 
 // Make an object based on data- attributes from the given jQuery object
-var get_data = function($el, prefix) {
+var get_data = function($el, prefix_main, prefix_secondary) {
 	var data = $el.data();
 	var ret = {};
 	var prop, i;
 	for ( i in data ) {
-		if ( i.indexOf(prefix) === 0 ) {
-			prop = i.substring(prefix.length);
+		if ( i.indexOf(prefix_main) === 0 ) {
+			prop = i.substring(prefix_main.length);
+			ret[prop] = data[i];
+		} else if ( i.indexOf(prefix_secondary) === 0 ) {
+			prop = i.substring(prefix_secondary.length);
 			ret[prop] = data[i];
 		}
 	}
@@ -139,7 +178,7 @@ $.fn.tpsocial = function(args) {
 			$link
 				.bind('click', (function(srvc, $parent, $lnk) {
 						return function(e) {
-							var data = $.extend({}, defaults, srvc, get_data($parent, dpre), get_data($lnk, dpre + srvc.name + '-'));
+							var data = $.extend({}, defaults, srvc, get_data($parent, dpre + srvc.name + '-', dpre), get_data($lnk, dpre + srvc.name + '-', dpre));
 
 							srvc.share(data);
 							e.preventDefault();
