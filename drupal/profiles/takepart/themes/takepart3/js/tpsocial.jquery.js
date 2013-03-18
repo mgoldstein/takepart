@@ -12,24 +12,27 @@ var dpre = 'tps-';
 var cpre = 'tp-social-';
 var $window = $(window);
 
-var Service = function(args) {
-	var name = args.name;
-	var display = args.display;
+// function to make social share link
+var makeLink = function(args) {
+	var $link = $('<a href="#"/>')
+		.addClass(cpre + args.name)
+		.addClass(cpre + 'link')
+		.html(args.display);
 
-	this.makeLink = function() {
-		var $link = $('<a href="#"/>')
-			.addClass(cpre + name)
-			.addClass(cpre + 'link')
-			.html(display);
-
-		return $link;
-	};
-
-	this.Share = function() {
-		return args.share(args);
-	};
+	return $link;
 };
 
+// Default values
+var default_url = document.location.href;
+var $rel_canonical = $('link[rel="canonical"]');
+if ( $rel_canonical.length ) default_url = $rel_canonical.attr('href');
+
+var defaults = {
+	url: default_url,
+	title: document.title
+};
+
+// Service specific defaults
 var valid_services = {
 	facebook: {
 		name: 'facebook',
@@ -38,22 +41,23 @@ var valid_services = {
 		caption: null,
 		description: null,
 		share: function(args) {
-			// calling the API ...
-			var obj = {
+			FB.ui({
 				method: 'feed',
-				redirect_uri: args.url + '#facebook-share-complete',
-				link: args.url,
-				picture: args.image,
 				name: args.title,
+				link: args.url + '',
+				picture: args.image,
 				caption: args.caption,
-				description: args.description
-			};
-
-			/*function callback(response) {
-				document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
-			}*/
-
-			FB.ui(obj /*, callback*/);
+				description: args.description //,
+				// message: 'Facebook Dialogs are easy!' ???
+			},
+			function(response) {
+				if (response && response.post_id) {
+					// Post was published
+					$window.trigger(cpre + 'share', args);
+				} else {
+					//Post was not published
+				}
+			});
 		}
 	},
 	twitter: {
@@ -63,9 +67,9 @@ var valid_services = {
 		height: 420,
 		share: function(args) {
 			var url = 'https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdev.twitter.com%2Fdocs%2Ftweet-button&text=Tweet%20Button%20%7C%20Twitter%20Developers&tw_p=tweetbutton&url=https%3A%2F%2Fdev.twitter.com%2Fdocs%2Ftweet-button';
-			left = 0;
-			top = 100;
-			window.open(url, undefined, ["width="+args.width,"height="+args.height,"left="+left,"top="+top].join(","));
+			var left = 0;
+			var tops = Number((screen.height/2)-(args.height/2));
+			window.open(url, undefined, ["width="+args.width,"height="+args.height,"left="+left,"top="+tops].join(", "));
 		}
 	},
 	googleplus: {
@@ -78,38 +82,43 @@ var valid_services = {
 	}
 };
 
-var default_url = document.location;
-var $rel_canonical = $('link[rel="canonical"]');
-if ( $rel_canonical.length ) default_url = $rel_canonical.attr('href');
-
-var defaults = {
-	url: default_url,
-	title: document.title
-};
-
 // Make an object based on data- attributes from the given jQuery object
-var get_properties = function($el) {
+var get_data = function($el, prefix) {
+	var data = $el.data();
+	var ret = {};
+	var prop, i;
+	for ( i in data ) {
+		if ( i.indexOf(prefix) === 0 ) {
+			prop = i.substring(prefix.length);
+			ret[prop] = data[i];
+		}
+	}
 
+	return ret;
 };
 
 $.fn.tpsocial = function(args) {
-	var settings = $.extend(defaults, args);
-	var services = settings.services;
+	//var settings = $.extend(defaults, args);
+	//var services = settings.services;
+	var services = args.services;
 
 	return this.each(function() {
 		var $this = $(this);
 		if ( $this.data(dpre + 'processed') ) return true;
 
-		for ( var s in settings.services ) {
-			var service = settings.services[s];
+		// Loop through the requested services
+		for ( var s in services ) {
+			var service = services[s];
 			var name = service.name;
+			// See if the requested service has been added
 			if ( !(name in valid_services) ) continue;
-			service = $.extend(defaults, valid_services[name], service);
-			service = new Service(service);
+			var srvc = $.extend({}, valid_services[name], service);
 
+			// Find the link for the requested service in the node
 			var $link = $this.find('a.' + cpre + name + ', .' + cpre + name + ' a');
+			// If none exists, create and append it
 			if ( !$link.length ) {
-				$link = service.makeLink();
+				$link = makeLink(srvc);
 
 				var $container = $this.find('.' + cpre + name);
 				if ( $container.length ) {
@@ -119,21 +128,36 @@ $.fn.tpsocial = function(args) {
 				}
 			}
 
-			$this
-				.delegate('a.' + cpre + name, 'click', (function(service) {
+			// Add service specific arguments to the links'd data object
+			for ( var i in service ) {
+				if ( typeof service[i] == 'function' ) continue;
+				$link.data(dpre + name + '-' + i, service[i]);
+			}
+
+			// Bind an event to the link
+			$link
+				.bind('click', (function(srvc, $parent, $lnk) {
 						return function(e) {
-							service.Share();
+							var data = $.extend({}, defaults, srvc, get_data($parent, dpre), get_data($lnk, dpre + srvc.name + '-'));
+
+							srvc.share(data);
 							e.preventDefault();
 						}
-					})(service)
+					})(srvc, $this, $link)
 				);
-
 		}
 
 		$this.data(dpre + 'processed', true);
 		$this.addClass(cpre + 'processed');
 	});
 };
+
+// Temp: event tracking example
+
+$window.bind('tp-social-share', function(e, args) {
+	console.log('tp-social-share')
+	console.log(args)
+});
 
 
 // -----------------------------------------------
