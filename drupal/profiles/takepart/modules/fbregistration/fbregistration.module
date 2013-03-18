@@ -186,8 +186,8 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
 
 function _fbregistration_default_validation() {
   $v = <<<HTM
-  if (form['field_usertermsofservice'] != true) {
-    errors['field_usertermsofservice'] = "Please accept the terms of service.";
+  if (form['bsd_0_field_usertermsofservice'] != true) {
+    errors['bsd_0_field_usertermsofservice'] = "Please accept the terms of service.";
   }
 HTM;
   return $v;
