@@ -759,7 +759,7 @@ function takepart3_field__field_tp_campaign_4_things_link(&$vars) {
 function takepart3_field__field_tp_campaign_cover_link(&$vars) {
   if (!empty($vars['element']['#items'][0])) {
     $item = $vars['element']['#items'][0];
-    $markup = l($item['title'], $item['url'], $item['attributes']);
+    $markup = l($item['title'], $item['url'], array('attributes' => $item['attributes']));
     return '<div class="field field-name-field-tp-campaign-cover-link field-type-link-field field-label-hidden"><div class="field-items"><div class="field-item even">'
       . str_replace('&amp;amp;', '&amp;', $markup) . '</div></div></div>';
   }
