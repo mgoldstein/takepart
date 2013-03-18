@@ -18,6 +18,7 @@
 						<div class="tp-social"
 							data-tps-url="http://bananas.com"
 							data-tps-image="http://placekitten.com/500/500"
+							data-tps-twitter-text="Page title: {{title}}"
 							></div>
 					</section>
 
