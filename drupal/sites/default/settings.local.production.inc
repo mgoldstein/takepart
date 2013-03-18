@@ -4,7 +4,7 @@ $databases = array (
     array (
       'default' =>
         array (
-          'database' => 'takepart',
+          'database' => 'takepart_standbylane',
           'username' => 'takepart',
           'password' => 'GkA29UFJeumGLB',
           'host' => '172.17.128.100',
@@ -14,7 +14,7 @@ $databases = array (
         ),
       'slave' =>
         array (
-          'database' => 'takepart',
+          'database' => 'takepart_standbylane',
           'username' => 'takepart-slave',
           'password' => '7mEwdni8tbcXBQ',
           'host' => '172.17.128.111',
