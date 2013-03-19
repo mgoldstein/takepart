@@ -21,6 +21,65 @@
     font-style: italic;
 }
 
+/* # General - Artist Menu
+================================================== */
+.page-wrap h2 {
+    text-align: center;
+    margin-bottom: 11px;
+}
+.page-wrap .artists-list {
+    margin-bottom: 30px;
+    display: inline-block; *display: inline; *zoom: 1;
+    width: 100%;
+}
+.page-wrap .artists-list ul {
+    list-style: none;
+    margin-left: -1%;
+}
+.page-wrap .artists-list ul li {
+    float: left;
+    vertical-align: top;
+    width: 9%;
+    text-align: center;
+    margin-left: 1%;
+    position: relative;
+}
+.page-wrap .artists-list .portrait {
+    line-height: 0;
+    margin-bottom: 7px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+    position: relative;
+}
+.page-wrap .artists-list .inactive .portrait:before{
+    display: block;
+    position: absolute;  
+    top: 0;
+    left: 0; 
+    background: rgba(0,0,0, 0.5);
+    content: 'coming soon';
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    font-weight: bold;
+    line-height: 110%;
+    padding-top: 40%;
+    height: 60%;
+    width: 100%;
+}
+.page-wrap .artists-list .portrait img {
+    width: 100%;
+}
+.page-wrap .artists-list .name {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0 5%;
+    display: block;
+}
+.page-wrap .artists-list a {
+    color: #1ca9e7;
+    text-decoration: none;
+}
+
 /* # Header
 ================================================== */
 .header h1 {
@@ -65,77 +124,29 @@
     padding-top: 37px;
     padding-bottom: 80px;
 }
-.page-wordlet-eyelevel-home .video_intro {
+.page-wordlet-eyelevel-home .content .video_intro {
     text-align: center;
 }
+.page-wordlet-eyelevel-home .content .body p {
+    margin-bottom: 30px;
+}
+.page-wordlet-eyelevel-home .content .body.second p {
+    margin-top: 30px;
+}
 .page-wordlet-eyelevel-home .content h2 {
-    margin-top: 33px;
+    text-align: left;
+}
+.page-wordlet-eyelevel-home .content .main-headline {
     font-size: 30px;
+}
+.page-wordlet-eyelevel-home .content .nav-headline {
+    margin-top: 33px;
 }
 
 /* # Video - General
 ================================================== */
 .page-wordlet-eyelevel-video .content {
     padding-top: 27px;
-}
-
-/* # Video - Artist Menu
-================================================== */
-.page-wordlet-eyelevel-video h2 {
-    text-align: center;
-    margin-bottom: 11px;
-}
-.page-wordlet-eyelevel-video .artists-list {
-    margin-bottom: 30px;
-    display: inline-block; *display: inline; *zoom: 1;
-    width: 100%;
-}
-.page-wordlet-eyelevel-video .artists-list ul {
-    list-style: none;
-    margin-left: -1%;
-}
-.page-wordlet-eyelevel-video .artists-list ul li {
-    float: left;
-    vertical-align: top;
-    width: 9%;
-    text-align: center;
-    margin-left: 1%;
-    position: relative;
-}
-.page-wordlet-eyelevel-video .artists-list .portrait {
-    line-height: 0;
-    margin-bottom: 7px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
-    position: relative;
-}
-.page-wordlet-eyelevel-video .artists-list .inactive .portrait:before{
-    display: block;
-    position: absolute;  
-    top: 0;
-    left: 0; 
-    background: rgba(0,0,0, 0.5);
-    content: 'coming soon';
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #fff;
-    font-weight: bold;
-    line-height: 110%;
-    padding-top: 40%;
-    height: 60%;
-    width: 100%;
-}
-.page-wordlet-eyelevel-video .artists-list .portrait img {
-    width: 100%;
-}
-.page-wordlet-eyelevel-video .artists-list .name {
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 0 5%;
-    display: block;
-}
-.page-wordlet-eyelevel-video .artists-list a {
-    color: #1ca9e7;
-    text-decoration: none;
 }
 
 /* # Video - Artists
@@ -145,9 +156,13 @@
 }
 .page-wordlet-eyelevel-video .artist {
     display: inline-block; *display: inline; *zoom: 1;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    padding-bottom: 20px;
 }
-
+.page-wordlet-eyelevel-video .artist:last-child {
+    border-bottom: 0;
+}
 .page-wordlet-eyelevel-video .artist .info-wrapper {
     float: left;
     margin-right: 475px;

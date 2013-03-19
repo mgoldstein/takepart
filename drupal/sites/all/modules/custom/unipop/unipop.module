@@ -166,7 +166,7 @@ function unipop_set_metric_page_load($op, $id = NULL, $title = NULL, $type = NUL
           $js .= 's.eVar40="' . $metric_types[$idx] . ':' . addslashes($title) . '";';
           $js .= 's.prop42="' . $metric_types[$idx] . '";';
           $js .= 's.eVar42="' . $metric_types[$idx] . '";';
-          $js .= 's.tl(true, "o", "Video Popup Page Load");';
+          //$js .= 's.tl(true, "o", "Video Popup Page Load");';
         }
 
         $js = 'function unipop_loaded() { ' . $js . '};';

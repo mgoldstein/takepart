@@ -9,6 +9,7 @@ define('ABOUT_YOU_FIELD_ID', 2883);
 define('TRIP_VISIT_FIELD_ID', 2884);
 define('VIDEO_FIELD_ID', 2737);
 define('AGREE_TO_RULES_FIELD_ID', 2885);
+define('AGREE_TO_SUBMISSION_FIELD_ID', 2992);
 define('AGREE_TO_SHARE_FIELD_ID', 2886);
 
 function contest_intel_preprocess_markup($markup) {
@@ -33,13 +34,16 @@ function contest_intel_entry_form_defaults($config) {
     'trip_visit_label' => t('Which country would you prefer to visit on the trip? (Choose one.)'),
     'video_label' => t('Upload Your Video'),
     'video_description' => '',
-    'contest_rules_label' => t('I agree to <a href="@rules">Official Contest Rules and Submission Agreement</a>', array(
-      '@rules' => url('rules'),
-    )),
-    'share_info_label' => t('I agree that TakePart can share my information with Intel and Me to We'),
-    'terms_of_use' => t('<p>Subject to <a href="@privacy">TakePart Privacy Policy</a> and <a href="@tos">Terms of Use</a></p>', array(
+    'contest_rules_label' => t('I understand and agree to the <a href="@rules">Official Rules</a>, <a href="@tou">Terms of Use</a> and <a href="@privacy">Privacy Policy</a>.', array(
+      '@rules' => '',
+      '@tou' => url('terms-of-use'),
       '@privacy' => url('privacy-policy'),
-      '@tos' => url('terms-of-use'),
+    )),
+    'submission_agreement_label' => t('I understand and agree to the <a href="">Submission Agreement</a>.'),
+    'share_info_label' => t('I consent to receiving information from TakePart and other third parties (including Intel) about products or services you think would be of interest to me.'),
+    'terms_of_use' => t('<p>Subject to <a href="@privacy">TakePart Privacy Policy</a> and <a href="@tou">Terms of Use</a></p>', array(
+      '@privacy' => url('privacy-policy'),
+      '@tou' => url('terms-of-use'),
     )),
     'submit_caption' => t('Submit Application'),
   );
@@ -131,8 +135,15 @@ function contest_intel_entry_configuration($form, $config) {
   $form['contest_rules_label'] = array(
     '#type' => 'textfield',
     '#maxlength' => 1023,
-    '#title' => t('Contest Rules Label'),
+    '#title' => t('Rules, TOS, Privacy Label'),
     '#default_value' => $config['contest_rules_label'],
+  );
+
+  $form['submission_agreement_label'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Submission Agreement Label'),
+    '#default_value' => $config['submission_agreement_label'],
   );
 
   $form['share_info_label'] = array(
@@ -255,6 +266,11 @@ function contest_intel_entry_form($form, &$form_state, $config) {
     '#title' => $config['contest_rules_label'],
   );
 
+  $form['agree_to_submission'] = array(
+    '#type' => 'checkbox',
+    '#title' => $config['submission_agreement_label'],
+  );
+
   $form['agree_to_share'] = array(
     '#type' => 'checkbox',
     '#title' => $config['share_info_label'],
@@ -335,7 +351,12 @@ function contest_intel_entry_form_validate($form, &$form_state) {
 
   $agree_to_rules = trim($form_state['values']['agree_to_rules']);
   if (empty($agree_to_rules)) {
-    form_set_error('agree_to_rules', t('If you would like to enter the Intel for Change contest, please agree to the Official Contest Rules.'));
+    form_set_error('agree_to_rules', t('If you would like to enter the Intel for Change contest, please confirm you understand and agree to the Official Rules, Terms of Use and Privacy Policy.'));
+  }
+
+  $agree_to_submission = trim($form_state['values']['agree_to_submission']);
+  if (empty($agree_to_submission)) {
+    form_set_error('agree_to_submission', t('If you would like to enter the Intel for Change contest, please confirm you understand and agree to the Submission Agreement.'));
   }
 
   $agree_to_share = trim($form_state['values']['agree_to_share']);
@@ -358,6 +379,7 @@ function contest_intel_entry_form_submit($form, &$form_state) {
     'trip_visit' => TRIP_VISIT_FIELD_ID,
     'video' => VIDEO_FIELD_ID,
     'agree_to_rules' => AGREE_TO_RULES_FIELD_ID,
+    'agree_to_submission' => AGREE_TO_SUBMISSION_FIELD_ID,
     'agree_to_share' => AGREE_TO_SHARE_FIELD_ID,
   );
 
