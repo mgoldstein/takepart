@@ -32,6 +32,29 @@ var defaults = {
 	title: document.title
 };
 
+// Return string from template
+var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
+var template_tplvar_clean_reg = /({{)|(}})/g;
+
+var template_value = function(tpl_name, args) {
+	// Replace variables in twitter template
+	var text = args[tpl_name] || '';
+	var matches = text.match(twitter_tpl_reg);
+
+	for ( var i in matches ) {
+		var match = matches[i];
+		var prop = match.replace(template_tplvar_clean_reg, '');
+
+		if ( match != tpl_name && args[prop] != undefined && args[prop] ) {
+			text = text.replace(match, args[prop]);
+		} else {
+			text = text.replace(match, '');
+		}
+	}
+
+	return text;
+};
+
 // Service specific defaults
 var valid_services = {
 	facebook: {
@@ -129,47 +152,33 @@ var valid_services = {
 		name: 'email',
 		display: 'Email',
 		share: function(args) {
-			addthis_share = {
-				url: args.url,
-				title: args.title,
-				ui_email_note: 'Sucka'
-			}
-			$(args.element).attr('addthis:ui_email_note', 'Pooh');
+			
 		},
 		prepare: function(el, args) {
-			//$(el).parent()
-				//.attr('addthis:ui_email_note', 'Pooh2');
-
-			$(el)
-				//.attr('addthis:ui_email_note', 'Pooh')
-				//.addClass('addthis_button_email');
-
 			load_script(addthis, 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8', this, function() {
-				// addthisstuff
-				// console.log(args);
-				//addthis.ost = 0;
-				//addthis.init($(el).parent());
 
 			});
 		},
 		hoverfocus: function(args) {
-console.log(args)
+			var note = template_value('note', args);
+
+			var email_config = {
+				ui_email_note: note
+			};
+
+			var addthis_config = {
+				url: args.url,
+                title: args.title
+			};
+
 			$(args.element)
-				//.attr('addthis:ui_email_note', 'Pooh')
 				.addClass('addthis_button_email');
 
-			//load_script(addthis, 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8', this, function() {
-				// addthisstuff
-				// console.log(args);
-				//addthis.ost = 0;
-				addthis.toolbox($(args.element).parent()[0], {
-                    ui_email_note: '$thankyouMessage + + $thankyouUrl'
-                },
-                {
-                    url: '$thankyouUrl',
-                    title: '$thankyouMessage'
-                });
-			//});
+			addthis.toolbox(
+				$(args.element).parent()[0],
+				email_config,
+				addthis_config
+			);
 		}
 	}
 };
