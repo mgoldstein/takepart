@@ -48,7 +48,7 @@ function vidpop_loaded() {
     s.eVar40=modaltype+':'+modaltitle;
     s.prop42=modaltype;
     s.eVar42=modaltype;
-    s.tl(true, 'o', 'Video Popup Page Load');
+   // s.tl(true, 'o', 'Video Popup Page Load');
   }
 };
 

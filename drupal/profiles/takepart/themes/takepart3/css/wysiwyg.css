@@ -62,3 +62,21 @@ blockquote{
     text-align:center; 
     overflow:hidden;
 }
+
+.takepart-take-action-widget { 
+	background-position: 0 0px;
+	background-color: #eee;
+	background-repeat:no-repeat;
+	background-image: url(/profiles/takepart/themes/takepart3/images/tab_wysiwyg_bg.png);
+	min-height: 53px;
+    	padding-left: 39px;
+}
+.takepart-take-action-widget:before
+{
+	content:"Take Action Banner Widget";
+} 
+p.takepart-take-action-widget-wysiwyg-wrapper { 
+	display: none; 
+}
+
+
