@@ -1,7 +1,6 @@
 (function(window, $, undefined) {
 
 /*
-	test2
 	data- attributes:
 	tps-url: URL override
 	tps-image: Image override
@@ -103,20 +102,107 @@ var valid_services = {
 			var url = 'https://twitter.com/intent/tweet?' + url_parts.join('&');
 
 			// Open twitter share
-			var windowOptions = 'scrollbars=yes,resizable=yes,toolbar=no,location=yes,';
+			var windowOptions = 'scrollbars=yes,resizable=yes,toolbar=no,location=yes';
 			var left = 0;
 			var tops = Number((screen.height/2)-(args.height/2));
-			window.open(url, undefined, windowOptions + ["width="+args.width,"height="+args.height,"left="+left,"top="+tops].join(", "));
+			window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height,"left="+left,"top="+tops].join(", "));
+
+			// TODO use Twitter's twttr object for the sake of event tracking
+			$window.trigger(cpre + 'share', args);
 		}
 	},
 	googleplus: {
 		name: 'googleplus',
-		display: 'Google +1'
+		display: 'Google +1',
+		width: 600,
+		height: 600,
+		share: function(args) {
+			var url = 'https://plus.google.com/share?url=' + encodeURIComponent(args.url);
+
+			var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+			/*var left = 0;
+			var tops = Number((screen.height/2)-(args.height/2));*/
+			window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
+		}
 	},
 	email: {
 		name: 'email',
-		display: 'Email'
+		display: 'Email',
+		share: function(args) {
+			addthis_share = {
+				url: args.url,
+				title: args.title,
+				ui_email_note: 'Sucka'
+			}
+			$(args.element).attr('addthis:ui_email_note', 'Pooh');
+		},
+		prepare: function(el, args) {
+			//$(el).parent()
+				//.attr('addthis:ui_email_note', 'Pooh2');
+
+			$(el)
+				//.attr('addthis:ui_email_note', 'Pooh')
+				//.addClass('addthis_button_email');
+
+			load_script(addthis, 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8', this, function() {
+				// addthisstuff
+				// console.log(args);
+				//addthis.ost = 0;
+				//addthis.init($(el).parent());
+
+			});
+		},
+		hoverfocus: function(args) {
+console.log(args)
+			$(args.element)
+				//.attr('addthis:ui_email_note', 'Pooh')
+				.addClass('addthis_button_email');
+
+			//load_script(addthis, 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8', this, function() {
+				// addthisstuff
+				// console.log(args);
+				//addthis.ost = 0;
+				addthis.toolbox($(args.element).parent()[0], {
+                    ui_email_note: '$thankyouMessage + + $thankyouUrl'
+                },
+                {
+                    url: '$thankyouUrl',
+                    title: '$thankyouMessage'
+                });
+			//});
+		}
 	}
+};
+
+// Load script and run callback
+var queues = {};
+var load_script = function(test, url, context, callback) {
+	if ( test != undefined ) {
+		callback.call(context);
+		return true;
+	}
+
+	if ( queues[url] == undefined ) queues[url] = [];
+	queues[url].push(callback);
+
+	var ready = function(s) {
+		// Use this in IE if we want to track throughout the load.
+		if ( s.readyState == 'loaded' || s.readyState == 'complete' ) done();
+	}
+
+	var done = function() {
+		for ( var i in queues[url] ) {
+			var cb = queues[i];
+			cb.call(context);
+		}
+	}
+
+	var s = document.createElement('script');
+	s.type = "text/javascript";
+	s.onreadystatechange = function(s) { return function() { ready(s) } }(s);
+	s.onerror = s.onload = done;
+	s.src = url;
+	document.getElementsByTagName('head')[0].appendChild(s);
 };
 
 // Make an object based on data- attributes from the given jQuery object
@@ -174,17 +260,37 @@ $.fn.tpsocial = function(args) {
 				$link.data(dpre + name + '-' + i, service[i]);
 			}
 
+			// Set up link
+			var data = $.extend({}, defaults, srvc, get_data($this, dpre + srvc.name + '-', dpre), get_data($link, dpre + srvc.name + '-', dpre));
+			if ( typeof data.prepare == 'function' ) {
+				data.prepare($link[0], data);
+			}
+
 			// Bind an event to the link
 			$link
 				.bind('click', (function(srvc, $parent, $lnk) {
 						return function(e) {
 							var data = $.extend({}, defaults, srvc, get_data($parent, dpre + srvc.name + '-', dpre), get_data($lnk, dpre + srvc.name + '-', dpre));
+							data.element = this;
 
 							srvc.share(data);
 							e.preventDefault();
 						}
 					})(srvc, $this, $link)
 				);
+			if ( typeof data.hoverfocus == 'function' ) {
+				$link
+					.bind('mouseover focus', (function(srvc, $parent, $lnk) {
+							return function(e) {
+								var data = $.extend({}, defaults, srvc, get_data($parent, dpre + srvc.name + '-', dpre), get_data($lnk, dpre + srvc.name + '-', dpre));
+								data.element = this;
+
+								srvc.hoverfocus(data);
+								//e.preventDefault();
+							}
+						})(srvc, $this, $link)
+					);
+			}
 		}
 
 		$this.data(dpre + 'processed', true);
