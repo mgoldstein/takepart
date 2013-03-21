@@ -55,140 +55,6 @@ var template_value = function(tpl_name, args) {
 	return text;
 };
 
-// Service specific defaults
-var valid_services = {
-	facebook: {
-		name: 'facebook',
-		display: 'Facebook',
-		image: null,
-		caption: null,
-		description: null,
-		share: function(args) {
-			FB.ui({
-				method: 'feed',
-				name: args.title,
-				link: args.url + '',
-				picture: args.image,
-				caption: args.caption,
-				description: args.description //,
-				// message: 'Facebook Dialogs are easy!' ???
-			},
-			function(response) {
-				if (response && response.post_id) {
-					// Post was published
-					$window.trigger(cpre + 'share', args);
-				} else {
-					//Post was not published
-				}
-			});
-		}
-	},
-	twitter: {
-		name: 'twitter',
-		display: 'Twitter',
-		width: 550,
-		height: 420,
-		share: function(args) {
-			// Replace variables in twitter template
-			var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
-			var template_tplvar_clean_reg = /({{)|(}})/g;
-
-			var text = args.text || '';
-			var matches = text.match(twitter_tpl_reg);
-
-			for ( var i in matches ) {
-				var match = matches[i];
-				var prop = match.replace(template_tplvar_clean_reg, '');
-
-				if ( match != 'text' && args[prop] != undefined && args[prop] ) {
-					text = text.replace(match, args[prop]);
-				} else {
-					text = text.replace(match, '');
-				}
-			}
-
-			// Create twitter URL
-			var url_obj = {
-				url: args.url,
-				via: args.via,
-				text: text,
-				in_reply_to: args.in_reply_to,
-				hashtags: args.hashtags,
-				related: args.related
-			};
-
-			var url_parts = [];
-			for ( var i in url_obj ) {
-				var val = url_obj[i];
-				if ( val != undefined && val ) url_parts.push(i + '=' + encodeURIComponent(val));
-			}
-			var url = 'https://twitter.com/intent/tweet?' + url_parts.join('&');
-
-			// Open twitter share
-			var windowOptions = 'scrollbars=yes,resizable=yes,toolbar=no,location=yes';
-			var left = 0;
-			var tops = Number((screen.height/2)-(args.height/2));
-			window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height,"left="+left,"top="+tops].join(", "));
-
-			// TODO use Twitter's twttr object for the sake of event tracking
-			$window.trigger(cpre + 'share', args);
-		}
-	},
-	googleplus: {
-		name: 'googleplus',
-		display: 'Google +1',
-		width: 600,
-		height: 600,
-		share: function(args) {
-			var url = 'https://plus.google.com/share?url=' + encodeURIComponent(args.url);
-
-			var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-			/*var left = 0;
-			var tops = Number((screen.height/2)-(args.height/2));*/
-			window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
-		}
-	},
-	email: {
-		name: 'email',
-		display: 'Email',
-		share: function(args) {
-
-		},
-		prepare: function(el, args) {
-		},
-		hoverfocus: function(args) {
-			var note = template_value('note', args);
-
-			var email_config = {
-				ui_email_note: note
-			};
-
-			var addthis_config = {
-				url: args.url,
-                title: args.title
-			};
-
-			$(args.element)
-				.addClass('addthis_button_email');
-
-			load_script(addthis, 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8', this, function() {
-				addthis.toolbox(
-					$(args.element).parent()[0],
-					email_config,
-					addthis_config
-				);
-			});
-		}
-	}
-};
-
-var sucka = function(e1, e2) {
-	console.log(e1)
-	console.log(e2)
-}
-
-addthis.addEventListener('addthis.menu.share', sucka);
-
 // Load script and run callback
 var queues = {};
 var load_script = function(test, url, context, callback) {
@@ -313,6 +179,14 @@ $.fn.tpsocial = function(args) {
 	});
 };
 
+var valid_services = {};
+
+$.tpsocial = {
+	add_service: function(args) {
+		valid_services[args.name] = args;
+	}
+};
+
 // Temp: event tracking example
 
 $window.bind('tp-social-share', function(e, args) {
@@ -320,6 +194,146 @@ $window.bind('tp-social-share', function(e, args) {
 	console.log(args)
 });
 
+$.tpsocial.add_service({
+	name: 'facebook',
+	display: 'Facebook',
+	image: null,
+	caption: null,
+	description: null,
+	share: function(args) {
+		FB.ui({
+			method: 'feed',
+			name: args.title,
+			link: args.url + '',
+			picture: args.image,
+			caption: args.caption,
+			description: args.description //,
+			// message: 'Facebook Dialogs are easy!' ???
+		},
+		function(response) {
+			if (response && response.post_id) {
+				// Post was published
+				$window.trigger(cpre + 'share', args);
+			} else {
+				//Post was not published
+			}
+		});
+	}
+});
+
+$.tpsocial.add_service({
+	name: 'twitter',
+	display: 'Twitter',
+	width: 550,
+	height: 420,
+	share: function(args) {
+		// Replace variables in twitter template
+		var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
+		var template_tplvar_clean_reg = /({{)|(}})/g;
+
+		var text = args.text || '';
+		var matches = text.match(twitter_tpl_reg);
+
+		for ( var i in matches ) {
+			var match = matches[i];
+			var prop = match.replace(template_tplvar_clean_reg, '');
+
+			if ( match != 'text' && args[prop] != undefined && args[prop] ) {
+				text = text.replace(match, args[prop]);
+			} else {
+				text = text.replace(match, '');
+			}
+		}
+
+		// Create twitter URL
+		var url_obj = {
+			url: args.url,
+			via: args.via,
+			text: text,
+			in_reply_to: args.in_reply_to,
+			hashtags: args.hashtags,
+			related: args.related
+		};
+
+		var url_parts = [];
+		for ( var i in url_obj ) {
+			var val = url_obj[i];
+			if ( val != undefined && val ) url_parts.push(i + '=' + encodeURIComponent(val));
+		}
+		var url = 'https://twitter.com/intent/tweet?' + url_parts.join('&');
+
+		// Open twitter share
+		var windowOptions = 'scrollbars=yes,resizable=yes,toolbar=no,location=yes';
+		var left = 0;
+		var tops = Number((screen.height/2)-(args.height/2));
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height,"left="+left,"top="+tops].join(", "));
+
+		// TODO use Twitter's twttr object for the sake of event tracking
+		$window.trigger(cpre + 'share', args);
+	}
+});
+
+$.tpsocial.add_service({
+	name: 'googleplus',
+	display: 'Google +1',
+	width: 600,
+	height: 600,
+	share: function(args) {
+		var url = 'https://plus.google.com/share?url=' + encodeURIComponent(args.url);
+
+		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+		/*var left = 0;
+		var tops = Number((screen.height/2)-(args.height/2));*/
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
+	}
+});
+
+$.tpsocial.add_service({
+	name: 'email',
+	display: 'Email',
+	share: function(args) {
+
+	},
+	prepare: function(el, args) {
+	},
+	hoverfocus: function(args) {
+		var note = template_value('note', args);
+
+		var email_config = {
+			ui_email_note: note
+		};
+
+		var addthis_config = {
+			url: args.url,
+            title: args.title
+		};
+
+		$(args.element)
+			.addClass('addthis_button_email addthis_button_compact');
+
+		load_script(addthis, 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8', this, function() {
+			addthis.toolbox(
+				$(args.element).parent()[0],
+				email_config,
+				addthis_config
+			);
+		});
+	}
+});
+
+
+$(function() {
+	var tp_social_defaults = {
+		services: [
+			{name: 'facebook'},
+			{name: 'twitter'},
+			{name: 'googleplus'},
+			{name: 'email'}
+		]
+	};
+
+	$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_defaults);
+});
 
 // -----------------------------------------------
 // Old: (Only PATT Alumni Gallery ----------------
