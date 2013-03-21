@@ -84,7 +84,7 @@ function _wordlet_configuration() {
       'path' => 'socialtest',
       'published' => FALSE,
       'wrappers' => array(),
-      'wrappers' => array('html'),
+      //'wrappers' => array('html'),
       'css' => array(
         'campaigns/reset.css',
         'css/slim-header.css',
