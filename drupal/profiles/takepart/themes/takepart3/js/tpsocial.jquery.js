@@ -374,3 +374,5 @@ $(function() {
 });
 
 })(window, jQuery);
+
+var addthis_config = { ui_use_css:false };
