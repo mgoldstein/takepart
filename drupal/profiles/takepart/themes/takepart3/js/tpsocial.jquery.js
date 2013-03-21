@@ -152,12 +152,9 @@ var valid_services = {
 		name: 'email',
 		display: 'Email',
 		share: function(args) {
-			
+
 		},
 		prepare: function(el, args) {
-			load_script(addthis, 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8', this, function() {
-
-			});
 		},
 		hoverfocus: function(args) {
 			var note = template_value('note', args);
@@ -174,14 +171,23 @@ var valid_services = {
 			$(args.element)
 				.addClass('addthis_button_email');
 
-			addthis.toolbox(
-				$(args.element).parent()[0],
-				email_config,
-				addthis_config
-			);
+			load_script(addthis, 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8', this, function() {
+				addthis.toolbox(
+					$(args.element).parent()[0],
+					email_config,
+					addthis_config
+				);
+			});
 		}
 	}
 };
+
+var sucka = function(e1, e2) {
+	console.log(e1)
+	console.log(e2)
+}
+
+addthis.addEventListener('addthis.menu.share', sucka);
 
 // Load script and run callback
 var queues = {};
