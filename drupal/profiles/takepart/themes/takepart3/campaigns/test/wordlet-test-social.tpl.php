@@ -19,7 +19,7 @@
 							data-tps-url="http://bananas.com"
 							data-tps-image="http://placekitten.com/500/500"
 							data-tps-twitter-text="Page title: {{title}}"
-							data-tps-email-note="Page title: {{title}} URL: {{url}}"
+							data-tps-email-note="Page title: {{title}} URL: {{url}} - test"
 							></div>
 					</section>
 
