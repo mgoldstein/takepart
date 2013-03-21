@@ -64,18 +64,6 @@
 // Page:
 (function(window, $, undefined) {
 
-$(function() {
-	var tp_social_defaults = {
-		services: [
-			{name: 'facebook'},
-			{name: 'twitter'},
-			{name: 'googleplus'},
-			{name: 'email'}
-		]
-	};
-	$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_defaults);
-});
-
 })(window, jQuery);
 
 </script>
