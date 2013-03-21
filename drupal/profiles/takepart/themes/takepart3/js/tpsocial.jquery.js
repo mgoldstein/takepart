@@ -22,16 +22,6 @@ var makeLink = function(args) {
 	return $link;
 };
 
-// Default values
-var default_url = document.location.href;
-var $rel_canonical = $('link[rel="canonical"]');
-if ( $rel_canonical.length ) default_url = $rel_canonical.attr('href');
-
-var defaults = {
-	url: default_url,
-	title: document.title
-};
-
 // Return string from template
 var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
 var template_tplvar_clean_reg = /({{)|(}})/g;
@@ -53,37 +43,6 @@ var template_value = function(tpl_name, args) {
 	}
 
 	return text;
-};
-
-// Load script and run callback
-var queues = {};
-var load_script = function(test, url, context, callback) {
-	if ( test != undefined ) {
-		callback.call(context);
-		return true;
-	}
-
-	if ( queues[url] == undefined ) queues[url] = [];
-	queues[url].push(callback);
-
-	var ready = function(s) {
-		// Use this in IE if we want to track throughout the load.
-		if ( s.readyState == 'loaded' || s.readyState == 'complete' ) done();
-	}
-
-	var done = function() {
-		for ( var i in queues[url] ) {
-			var cb = queues[i];
-			cb.call(context);
-		}
-	}
-
-	var s = document.createElement('script');
-	s.type = "text/javascript";
-	s.onreadystatechange = function(s) { return function() { ready(s) } }(s);
-	s.onerror = s.onload = done;
-	s.src = url;
-	document.getElementsByTagName('head')[0].appendChild(s);
 };
 
 // Make an object based on data- attributes from the given jQuery object
@@ -184,6 +143,44 @@ var valid_services = {};
 $.tpsocial = {
 	add_service: function(args) {
 		valid_services[args.name] = args;
+	},
+	// Load script and run callback
+	queues: {},
+	onces: {},
+	load_script: function(test, url, context, callback, once) {
+		if ( test != undefined ) {
+			callback.call(context);
+			return true;
+		}
+
+		if ( $.tpsocial.queues[url] != undefined ) {
+			$.tpsocial.queues[url].push(callback);
+			return;
+		}
+
+		$.tpsocial.queues[url] = [];
+		$.tpsocial.onces[url] = once;
+
+		var ready = function(s) {
+			// Use this in IE if we want to track throughout the load.
+			if ( s.readyState == 'loaded' || s.readyState == 'complete' ) done();
+		}
+
+		var done = function() {
+			for ( var i in $.tpsocial.queues[url] ) {
+				var cb = $.tpsocial.queues[url][i];
+				if ( typeof cb == 'function' ) cb.call(context);
+			}
+
+			if ( typeof $.tpsocial.onces[url] == 'function' ) $.tpsocial.onces[url].call(context);
+		}
+
+		var s = document.createElement('script');
+		s.type = "text/javascript";
+		s.onreadystatechange = function(s) { return function() { ready(s) } }(s);
+		s.onerror = s.onload = done;
+		s.src = url;
+		document.getElementsByTagName('head')[0].appendChild(s);
 	}
 };
 
@@ -193,6 +190,18 @@ $window.bind('tp-social-share', function(e, args) {
 	console.log('tp-social-share')
 	console.log(args)
 });
+
+// Default values
+var default_url = document.location.href;
+var $rel_canonical = $('link[rel="canonical"]');
+if ( $rel_canonical.length ) default_url = $rel_canonical.attr('href');
+
+var defaults = {
+	url: default_url,
+	title: document.title
+};
+
+// Add services
 
 $.tpsocial.add_service({
 	name: 'facebook',
@@ -268,7 +277,6 @@ $.tpsocial.add_service({
 		var tops = Number((screen.height/2)-(args.height/2));
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height,"left="+left,"top="+tops].join(", "));
 
-		// TODO use Twitter's twttr object for the sake of event tracking
 		$window.trigger(cpre + 'share', args);
 	}
 });
@@ -285,39 +293,58 @@ $.tpsocial.add_service({
 		/*var left = 0;
 		var tops = Number((screen.height/2)-(args.height/2));*/
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
+
+		$window.trigger(cpre + 'share', args);
 	}
 });
+
+// Email
+
+var email_args;
+var email_once = function() {
+	addthis.addEventListener('addthis.menu.share', email_callback);
+};
+var email_callback = function(addthis_event) {
+	if ( addthis_event.data.service == email_args.name ) {
+		$window.trigger(cpre + 'share', email_args);
+	}
+};
+var email_script = 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+var email_var = 'addthis';
 
 $.tpsocial.add_service({
 	name: 'email',
 	display: 'Email',
 	share: function(args) {
-
+		email_args = args;
 	},
 	prepare: function(el, args) {
+		$.tpsocial.load_script(window[email_var], email_script, this, function() {
+		}, email_once);
 	},
 	hoverfocus: function(args) {
-		var note = template_value('note', args);
-
-		var email_config = {
-			ui_email_note: note
-		};
-
-		var addthis_config = {
-			url: args.url,
-            title: args.title
-		};
-
 		$(args.element)
-			.addClass('addthis_button_email addthis_button_compact');
+			.addClass('addthis_button_email addthis_button_compact')
+			.wrapInner('<span></span>');
 
-		load_script(addthis, 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8', this, function() {
+		$.tpsocial.load_script(window[email_var], email_script, this, function() {
+			var note = template_value('note', args);
+
+			var email_config = {
+				ui_email_note: note
+			};
+
+			var addthis_config = {
+				url: args.url,
+				title: args.title
+			};
+
 			addthis.toolbox(
 				$(args.element).parent()[0],
 				email_config,
 				addthis_config
 			);
-		});
+		}, email_once);
 	}
 });
 
@@ -375,4 +402,4 @@ $(function() {
 
 })(window, jQuery);
 
-var addthis_config = { ui_use_css:false };
+//var addthis_config = { ui_use_css:false };
