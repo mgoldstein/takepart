@@ -164,6 +164,7 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
       );
       $completion = 'Action Page Completion';
     }
+    /* Remove metrics from embedded tab banners
     else {
       $events = array(
         'petition_action' => 'event64,event27',
@@ -171,7 +172,7 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
         'action' => 'event64,event37',
       );
       $completion = 'Embedded Action Completion';
-    }
+    } */
     $fired_events = $events[$entity->type];
 
     $type_name = node_type_get_name($entity);

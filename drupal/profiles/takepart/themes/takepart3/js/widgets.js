@@ -676,6 +676,7 @@
         s.tl(true, 'o', 'pledge submit');
       }
     },
+    /* Remove metrics from old embeded widgets
     _track_newsletter_signup: function (event, title) {
       s.linkTrackVars = "eVar23,eVar30,events";
       s.linkTrackEvents = "event39";
@@ -684,6 +685,7 @@
       s.events = 'event39';
       s.tl(true, 'o', 'Newsletter Signup');
     },
+    */
     init: function () {
       // Bind the events that should be fired when the action is loaded/viewed.
       this.bind('track_view.signaturemetrics', methods._track_view);
