@@ -372,6 +372,7 @@ $(function() {
 			{name: 'facebook'},
 			{name: 'twitter'},
 			{name: 'googleplus'},
+			{name: 'reddit'},
 			{name: 'email'}
 		]
 	};
