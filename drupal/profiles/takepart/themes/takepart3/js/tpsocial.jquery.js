@@ -298,6 +298,23 @@ $.tpsocial.add_service({
 	}
 });
 
+$.tpsocial.add_service({
+	name: 'reddit',
+	display: 'Reddit',
+	width: 850,
+	height: 600,
+	share: function(args) {
+		var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(args.url);
+
+		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+		/*var left = 0;
+		var tops = Number((screen.height/2)-(args.height/2));*/
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
+
+		$window.trigger(cpre + 'share', args);
+	}
+});
+
 // Email
 
 var email_args;
