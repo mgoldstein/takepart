@@ -84,10 +84,25 @@ function _wordlet_configuration() {
       'path' => 'socialtest',
       'published' => FALSE,
       'wrappers' => array(),
-      //'wrappers' => array('html'),
       'css' => array(
         'campaigns/reset.css',
         'css/slim-header.css',
+        'css/normalize_cms.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+      ),
+      'load' => array('site'),
+    ),
+
+    // Article Test
+    'test_article' => array(
+      'title' => 'Article Test',
+      'path' => 'articletest',
+      'published' => FALSE,
+      'wrappers' => array(),
+      'css' => array(
+        'campaigns/reset.css',
         'css/normalize_cms.css',
       ),
       'js' => array(
