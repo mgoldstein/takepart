@@ -33,7 +33,7 @@ function _s($var) {
 /*
   Preprocess
 */
-function chunkpart_preprocess_html(&$vars) {
+function chunkpart_preprocess_page(&$vars) {
   // Batshit crazy nav stuff
   $user_nav = menu_tree('user-menu');
   foreach ($user_nav as &$nav) {
