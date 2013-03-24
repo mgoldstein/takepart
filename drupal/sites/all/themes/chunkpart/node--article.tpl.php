@@ -29,6 +29,17 @@
 
 <?*/
 
-//listArrayRecursive(&$variables, '$variables');
-
 ?>
+
+<h1><?=_s($title) ?></h1>
+<p class="abstract"><?=_s($field_article_subhead) ?></p>
+<div class="body"><?=_s($body)?></div>
+
+<pre>
+-----------------
+<? var_dump(array_keys(get_defined_vars()))?>
+-----------------
+</pre>
+
+<? // listArrayRecursive(&$node, '$node'); ?>
+

@@ -12,44 +12,9 @@
 </head>
 <body class="<?=$classes ?>" <?=$attributes ?>>
 
-  <div id="skip-link" class="skip-link">
-      <a href="#page"><?= t('Skip to main content') ?></a>
-  </div>
-
-  <header id="site-header">
-    <p id="logo">
-      <img src="<?=theme_get_setting('logo')?>" alt="TakePart logo" />
-    </p>
-
-    <nav id="user-nav">
-      <?=render($user_nav) ?>
-    </nav>
-
-    <nav id="main-menu-nav">
-      <?=render(menu_tree('main-menu')) ?>
-    </nav>
-
-    <nav id="menu-reel-impact-nav">
-      <?=render(menu_tree('menu-reel-impact')) ?>
-    </nav>
-
-    <nav id="menu-hot-topics-nav">
-      <?=render(menu_tree('menu-hot-topics')) ?>
-    </nav>
-
-    <nav id="menu-don-t-miss-nav">
-      <p><?=t('Don\'t Miss:') ?></p>
-      <?=render(menu_tree('menu-don-t-miss')) ?>
-    </nav>
-
-    <?=drupal_render(module_invoke('search_api_page', 'block_view', '2')) ?>
-  </header>
-
   <? if (isset($page_top)): ?>
       <?=$page_top ?>
   <? endif ?>
-
-<? listArrayRecursive(&$variables, '$variables'); ?>
 
   <? if (isset($page)): ?>
       <?=$page ?>
@@ -59,7 +24,7 @@
       <?=$custom ?>
   <? endif ?>        
 
-  <?php print $scripts; ?>
+  <?=$scripts ?>
 
   <? if (isset($page_bottom)): ?>
       <?=$page_bottom ?>
