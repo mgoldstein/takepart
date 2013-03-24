@@ -26,6 +26,17 @@ function wordlet_patt_snap_page_alter($page) {
     return '';
 }
 
+function takepart3_form_search_api_page_search_form_site_search_alter(&$form, &$form_state, $form_id) {
+  $form['keys_2']['#default_value'] = 'Search';
+  $form['keys_2']['#attributes'] = array('onfocus' => array("if(this.value=='" . t('Search') . "'){this.value=''};"));
+  $form['submit_2']['#attributes'] = array('class' => array('tpform-submit'));
+  // On the 404 page, unset any form tokens so that we bypass attempted validation ( and give a warning to authenticated users )
+  if (request_uri() == '/' . drupal_get_normal_path(variable_get('static_404', ''))) {
+    unset($form['form_token']); 
+    unset($form['#token']);
+  }
+}
+
 /**
  * Each item of the array should be keyed as follows:
  * url (String, 21 characters ) http://www.google.com

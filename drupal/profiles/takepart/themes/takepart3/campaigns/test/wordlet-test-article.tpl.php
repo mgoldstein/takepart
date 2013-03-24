@@ -21,6 +21,15 @@
 	<![endif]-->
 </head>
 <body>
+	<p id="skip-link">
+		<a href="#main">Skip to main content</a>
+	</p>
+	<header id="site-header">
+		<p id="site-logo">
+			<img src="http://www.takepart.com/profiles/takepart/themes/takepart3/images/logo.png" />
+		</p>
+	</header>
+
 	Article Test
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
