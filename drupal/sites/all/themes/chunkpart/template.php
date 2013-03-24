@@ -67,9 +67,3 @@ function chunkpart_preprocess_page(&$vars) {
   }
   $vars['user_nav'] = $user_nav;
 }
-
-// Get rid of extra drupal garbage
-// TODO: Try to find a better way to do this
-function chunkpart_menu_tree($tree) {
-  return '<ul>' . $tree . '</ul>';
-}
