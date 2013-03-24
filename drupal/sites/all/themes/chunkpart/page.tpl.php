@@ -64,6 +64,14 @@
 
 <main role="main" id="main">
   <?=render($page['content']) ?>
+
+<? var_dump($page['sidebar_second']) ?>
+
+<? var_dump(array_keys($page))?>
+
+  <? foreach ( $page['sidebar_second'] as $block ): ?>
+    <?=render($block)?>
+  <? endforeach ?>
 </main>
 
 <footer id="site-footer">
