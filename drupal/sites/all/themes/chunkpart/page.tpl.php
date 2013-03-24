@@ -65,8 +65,6 @@
 <main role="main" id="main">
   <?=render($page['content']) ?>
 
-<? var_dump(($variables))?>
-
   <? foreach ( $page['sidebar_second'] as $block ): ?>
     <?=render($block)?>
   <? endforeach ?>
