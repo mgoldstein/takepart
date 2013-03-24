@@ -7,15 +7,22 @@
     <img src="<?=$logo?>" alt="TakePart logo" />
   </p>
 
-  <nav id="user-nav">
-    <?=render($user_nav) ?>
-  </nav>
+  <nav id="site-nav">
+    <div id="user-nav">
+      <?=render($user_nav) ?>
+    </div>
 
-  <nav id="main-menu-nav">
-    <?=render(menu_tree('main-menu')) ?>
+    <div id="main-menu-nav">
+      <?=render(menu_tree('main-menu')) ?>
+    </div>
+
+    <div id="site-search">
+      <?=drupal_render(module_invoke('search_api_page', 'block_view', '2')) ?>
+    </div>
   </nav>
 
   <div id="menu-reel-impact-nav">
+    <p>Participant Films</p>
     <?=render(menu_tree('menu-reel-impact')) ?>
   </div>
 
@@ -27,10 +34,6 @@
     <p><?=t('Don\'t Miss:') ?></p>
     <?=render(menu_tree('menu-don-t-miss')) ?>
   </div>
-
-  <nav id="site-search">
-    <?=drupal_render(module_invoke('search_api_page', 'block_view', '2')) ?>
-  </nav>
 </header>
 
 <? /*
