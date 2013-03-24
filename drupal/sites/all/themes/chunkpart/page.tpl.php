@@ -2,9 +2,9 @@
     <a href="#main"><?= t('Skip to main content') ?></a>
 </div>
 
-<header id="site-header">
+<header id="site-header" role="banner">
   <p id="logo">
-    <img src="<?=$logo?>" alt="TakePart logo" />
+    <img src="<?=$logo?>" alt="TakePart" role="logo" />
   </p>
 
   <nav id="site-nav">
