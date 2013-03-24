@@ -1,13 +1,52 @@
 <?php
+
+function listArrayRecursive($someArray, $prepend = '') {
+    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
+    foreach ($iterator as $k => $v) {
+        //$indent = str_repeat('&nbsp;', 10 * $iterator->getDepth());
+        // Not at end: show key only
+        if ($iterator->hasChildren()) {
+            //echo "$k :<br>";
+        // At end: show key, value and path
+        } else {
+            for ($p = array(), $i = 0, $z = $iterator->getDepth(); $i <= $z; $i++) {
+                $p[] = '[\'' . $iterator->getSubIterator($i)->key() . '\']';
+            }
+            $path = $prepend . implode('', $p);
+            echo '<div class="data"><span class="key">' . $path . ': <span class="value">' . htmlspecialchars($v) . '</span></div>';
+        }
+    }
+}
+
 /*
   Preprocess
 */
 
-/*
 function chunkpart_preprocess_html(&$vars) {
-  //  kpr($vars['content']);
+  // Batshit crazy nav stuff
+  $user_nav = menu_tree('user-menu');
+  foreach ($user_nav as &$nav) {
+    if ($nav['#href'] == 'user') {
+      if (user_is_logged_in()) {
+        global $user;
+        if (function_exists('_takepart_facebookapis_get_user_session')) {
+          $fbsession = _takepart_facebookapis_get_user_session();
+          $username = $fbsession->name;
+          if ($username == '') {
+            $username = $user->name;
+          }
+        } else {
+          $username = $user->name;
+        }
+      }
+      $nav['#title'] = $username;
+      break;
+    }
+  }
+  $vars['user_nav'] = $user_nav;
 }
 
+/*
 function chunkpart_preprocess_page(&$vars,$hook) {
   //typekit
   //drupal_add_js('http://use.typekit.com/XXX.js', 'external');

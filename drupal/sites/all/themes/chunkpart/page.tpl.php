@@ -1,3 +1,6 @@
+<?=$logo?>
+
+<? /*
 <?php
   // Ignore the content added by the embeddable module, I have no idea what it
   // is for, it is probably admin stuff.
@@ -26,6 +29,7 @@
     <?php endif; ?>
   <?php endforeach; ?>
 </ul>
+*/ ?>
 <?php
   // The article node is in the page's content region.
   // there are other regions
