@@ -3,7 +3,7 @@
 </div>
 
 <header id="site-header" role="banner">
-  <p id="logo">
+  <p id="site-logo">
     <img src="<?=$logo?>" alt="TakePart" role="logo" />
   </p>
 

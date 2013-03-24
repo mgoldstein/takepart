@@ -33,6 +33,11 @@ a:visited {
 
 /* Header */
 
+#site-logo {
+	width: 116px;
+	height: 116px;
+}
+
 /* Main */
 
 #main {
