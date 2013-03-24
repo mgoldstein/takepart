@@ -21,16 +21,16 @@
     </div>
   </nav>
 
-  <div id="menu-hot-topics-nav">
+  <div id="site-hot-nav">
     <?=render(menu_tree('menu-hot-topics')) ?>
   </div>
 
-  <div id="menu-don-t-miss-nav">
+  <div id="site-miss-nav">
     <p><?=t('Don\'t Miss:') ?></p>
     <?=render(menu_tree('menu-don-t-miss')) ?>
   </div>
 
-  <div id="menu-reel-impact-nav">
+  <div id="site-participant-nav">
     <p>Participant Films</p>
     <?=render(menu_tree('menu-reel-impact')) ?>
   </div>
