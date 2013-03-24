@@ -8,11 +8,11 @@
   </p>
 
   <nav id="site-nav">
-    <div id="user-nav">
+    <div id="site-user-nav">
       <?=render($user_nav) ?>
     </div>
 
-    <div id="main-menu-nav">
+    <div id="site-main-nav">
       <?=render(menu_tree('main-menu')) ?>
     </div>
 
