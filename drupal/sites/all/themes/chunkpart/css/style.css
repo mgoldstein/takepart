@@ -24,6 +24,7 @@ body {
 	background: #f1f3f4;
 	width: 49em;
 	margin: auto;
+	font-family: sans-serif;
 }
 
 a:link,
@@ -34,16 +35,17 @@ a:visited {
 /* Header */
 
 #site-header {
-	padding-top: 1em;
-}
-
-#site-header li {
-	float: left;
+	padding: .55em 0 0 1em;
+	display: inline-block; *display: inline; zoom: 1;
+	vertical-align: top;
+	margin-left: 116px;
+	position: relative;
 }
 
 #site-logo {
-	float: left;
-	padding: 1em 1em 0 0;
+	position: absolute;
+	left: -116px;
+	bottom: -15px;
 }
 
 #site-logo img {
@@ -52,9 +54,43 @@ a:visited {
 	display: block;
 }
 
+#site-header li {
+	float: left;
+}
+
+#site-header a {
+	text-decoration: none;
+}
+
 #site-user-nav {
+	width: 100%;
+	float: left;
+	font-size: .55em;
+	margin-top: -.55em;
+	position: relative;
+}
+
+#site-user-nav ul {
 	float: right;
 }
+
+#site-main-nav {
+	font-family: TradeGothicLTStdCnBold;
+}
+
+#site-main-nav li {
+	padding-right: 1em;
+}
+
+#site-main-nav li.last {
+	padding-right: 0;
+}
+
+#site-user-nav,
+#site-main-nav {
+	text-transform: uppercase;
+}
+
 
 /* Main */
 
