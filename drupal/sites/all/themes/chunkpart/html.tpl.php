@@ -1,12 +1,12 @@
-<!-- old template -->
 <!doctype html>
-<html lang="<?=$language->language ?>" dir="<?=$language->dir ?>"<?=$rdf_namespaces ?> >
+<html lang="<?=$language->language ?>" dir="<?=$language->dir ?>">
 <head profile="<?=$grddl_profile ?>">
   <title><?=$head_title ?></title>
   <?=$head ?>
   <meta name="viewport" content="width=device-width">
   <?=$styles ?>
   <!--[if lt IE 9]>
+      <? // TODO: move this to the new theme ?>
       <script src="/profiles/takepart/themes/takepart3/js/html5shiv.js"></script>
   <![endif]-->
 </head>
@@ -35,8 +35,6 @@
   <? endif ?>
 </body>
 </html>
-
-<!-- /old template -->
 
 <? /*
 <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
