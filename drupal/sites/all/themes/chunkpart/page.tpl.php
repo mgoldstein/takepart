@@ -21,11 +21,6 @@
     </div>
   </nav>
 
-  <div id="menu-reel-impact-nav">
-    <p>Participant Films</p>
-    <?=render(menu_tree('menu-reel-impact')) ?>
-  </div>
-
   <div id="menu-hot-topics-nav">
     <?=render(menu_tree('menu-hot-topics')) ?>
   </div>
@@ -33,6 +28,11 @@
   <div id="menu-don-t-miss-nav">
     <p><?=t('Don\'t Miss:') ?></p>
     <?=render(menu_tree('menu-don-t-miss')) ?>
+  </div>
+
+  <div id="menu-reel-impact-nav">
+    <p>Participant Films</p>
+    <?=render(menu_tree('menu-reel-impact')) ?>
   </div>
 </header>
 
