@@ -25,9 +25,20 @@ function listArrayRecursive($someArray, $prepend = '') {
 function _s($var) {
   if ( is_string($var) ) {
     return $var;
+  // Body attribute
   } elseif ( isset($var[0]) && isset($var[0]['safe_value']) ) {
     return $var[0]['safe_value'];
   }
+}
+
+// return a block
+function _sblock($var) {
+  // Only print blocks
+  // TODO: add appropriate rules for a block
+  if ( is_array($var) ) {
+    return render($var);
+  }
+  return '';
 }
 
 /*

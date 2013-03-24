@@ -15,20 +15,22 @@
     <?=render(menu_tree('main-menu')) ?>
   </nav>
 
-  <nav id="menu-reel-impact-nav">
+  <div id="menu-reel-impact-nav">
     <?=render(menu_tree('menu-reel-impact')) ?>
-  </nav>
+  </div>
 
-  <nav id="menu-hot-topics-nav">
+  <div id="menu-hot-topics-nav">
     <?=render(menu_tree('menu-hot-topics')) ?>
-  </nav>
+  </div>
 
-  <nav id="menu-don-t-miss-nav">
+  <div id="menu-don-t-miss-nav">
     <p><?=t('Don\'t Miss:') ?></p>
     <?=render(menu_tree('menu-don-t-miss')) ?>
-  </nav>
+  </div>
 
-  <?=drupal_render(module_invoke('search_api_page', 'block_view', '2')) ?>
+  <nav id="site-search">
+    <?=drupal_render(module_invoke('search_api_page', 'block_view', '2')) ?>
+  </nav>
 </header>
 
 <? /*
@@ -65,42 +67,49 @@
 <main role="main" id="main">
   <?=render($page['content']) ?>
 
-  <? foreach ( $page['sidebar_second'] as $block ): ?>
-    <?=render($block)?>
-  <? endforeach ?>
+  <aside id="site-secondary">
+    <? foreach ( $page['sidebar_second'] as $val ): ?>
+      <? if ( ($block = _sblock($block)) ): ?>
+        <? // TODO: get the section tag/classes onto blocks ?>
+        <section>
+          <?=$block?>
+        </section>
+      <? endif ?>
+    <? endforeach ?>
+  </aside>
 </main>
 
+<? // Confirm this block can be here with the site JS below it ?>
+<?=render($page['footer']) ?>
+
 <footer id="site-footer">
-  <?=render($page['footer']) ?>
-  
   <? if ( ($nav = render(menu_tree('menu-takepart-topics'))) ): ?>
-    <div>
-      <p class="column-title">Topics</p>
+    <section id="site-topics">
+      <h4><?=t('Topics') ?></h4>
       <?=$nav ?>
-    </div>
+    </section>
   <? endif ?>
 
   <? if ( ($nav = render(menu_tree('menu-takepart-film-campaigns'))) ): ?>
-    <div>
+    <section id="site-campaigns">
+      <h4><?=t('Film Campaigns') ?></h4>
       <?=$nav ?>
-      
       <p>
         <a href="/film-campaigns">More Film Campaigns</a>
       </p>
-    </div>
+    </section>
   <? endif ?>
 
   <? if ( ($nav = render(menu_tree('menu-takepart-links'))) ): ?>
-    <div>
-      <p>About TakePart</p>
-
+    <section id="site-takepart-links">
+      <h4><?=t('About TakePart') ?></h4>
       <?=$nav ?>
-    </div>
+    </section>
   <? endif ?>
 
-  <div id="footer-links-share" class="footer-column-wrapper">
-    <p>Connect</p>
-    <ul id="bottom-follow">
+  <section id="site-connect">
+    <h4>Connect</h4>
+    <ul>
       <li class="fb"><a href="http://www.facebook.com/takepart" target="_blank" name="&lpos=footer">facebook</a></li>
       <li class="twitter"><a href="http://www.twitter.com/takepart" target="_blank" name="&lpos=footer">twitter</a></li>
       <li class="pinterest"><a href="http://pinterest.com/takepart/" target="_blank"><img src="http://passets-ec.pinterest.com/images/about/buttons/big-p-button.png" width="25" height="25" alt="Follow Me on Pinterest" /></a></li>
@@ -108,13 +117,10 @@
       <li class="youtube"><a href="http://www.youtube.com/takepart" target="_blank" name="&lpos=footer">youtube</a></li>
       <li class="rss"><a href="/rss">rss</a></li>
     </ul>
-    
-    <div id="footer-about">
-      <p>TakePart is the digital division of <a target="_blank" href="http://www.participantmedia.com/">Participant Media</a></p>
-      <div id="footer-legal">
-        &copy; 2008-<?=date('Y') ?>
-        TakePart, LLC
-      </div>
-    </div>
-  </div>
+  </section>
+
+  <section id="site-about">
+    <p id="site-participant">TakePart is the digital division of <a target="_blank" href="http://www.participantmedia.com/">Participant Media</a></p>
+    <p id="site-copyright">&copy; 2008-<?=date('Y') ?> TakePart, LLC</p>
+  </section>
 </footer>

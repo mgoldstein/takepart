@@ -20,11 +20,12 @@
       <?=$page ?>
   <? endif ?>      
 
+  <?=$scripts ?>
+
   <? if (isset($custom)): ?>
       <?=$custom ?>
   <? endif ?>        
 
-  <?=$scripts ?>
 
   <? if (isset($page_bottom)): ?>
       <?=$page_bottom ?>
