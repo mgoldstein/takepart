@@ -55,9 +55,6 @@
 	</div>
 
 	<div id="article-body">
-		<?=render($picture)?>
-		<?=theme_image($picture)?>
-		<?=_simage($picture)?>
 		<?=_s($body)?>
 	</div>
 
@@ -75,6 +72,8 @@
 	<pre>
 	-----------------
 	<? var_dump(array_keys(get_defined_vars())) ?>
+	<? _l($picture) ?>
+	<? var_dump($picture) ?>
 	-----------------
 	</pre>
 
