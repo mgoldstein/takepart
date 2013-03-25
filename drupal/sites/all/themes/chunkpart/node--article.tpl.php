@@ -73,9 +73,9 @@
 	<pre>
 	-----------------
 	<? var_dump(array_keys(get_defined_vars())) ?>
-	<? var_dump($field_article_main_image) ?>
+	<? var_dump($field_author) ?>
 
-	<? _l($field_article_main_image) ?>
+	<? _l($field_author) ?>
 	-----------------
 	</pre>
 
