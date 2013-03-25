@@ -14,7 +14,14 @@ function _l($someArray, $prepend = '') {
         // At end: show key, value and path
         } else {
             for ($p = array(), $i = 0, $z = $iterator->getDepth(); $i <= $z; $i++) {
-                $p[] = '[\'' . $iterator->getSubIterator($i)->key() . '\']';
+                $b = '[';
+                $e = ']';
+                $c = $iterator->getSubIterator($i)->current();
+                if ( is_object($c) ){
+                  $b = '{';
+                  $e = '}';
+                }
+                $p[] = $b . '\'' . $iterator->getSubIterator($i)->key() . '\'' . $e;
             }
             $path = $prepend . implode('', $p);
             echo '<div class="data"><span class="key">' . $path . ': <span class="value">' . htmlspecialchars($v) . '</span></div>';
@@ -68,9 +75,28 @@ function _simage($var) {
   return theme_image($image);
 }
 
+function _smenu($menu_name) {
+  $items = menu_tree($menu_name);
+  foreach( $items as $ikey => &$item ) {
+    foreach ( $item['#attributes']['class'] as $ckey => $class ) {
+      if ( $class == 'leaf' ) {
+        unset($items[$ikey]['#attributes']['class'][$ckey]);
+        break;
+      }
+    }
+  }
+
+  return render($items);
+}
+
 /*
   Preprocess
 */
+
+function chunkpart_menu_tree($variables) {
+  return '<ul>' . $variables['tree'] . '</ul>';
+}
+
 function chunkpart_preprocess_page(&$variables) {
   // Batshit crazy nav stuff
   if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {

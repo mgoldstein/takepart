@@ -381,14 +381,28 @@ a:visited {
 	float: left;
 }
 
-.node-type-article #article-sidebar {
-	width: 7em;
-	float: left;
-}
-
 .node-type-article #article-content {
 	width: 23em;
 	float: right;
+}
+
+.node-type-article #article-header {
+	line-height: 1.5;
+}
+
+.node-type-article #article-headline {
+	font-size: 1.6em;
+	font-weight: bold;
+	line-height: 1.2;
+	margin-bottom: .1em;
+}
+
+.node-type-article #article-abstract {
+	text-overflow: ellipsis;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	font-size: .8em;
 }
 
 /* ============================================================
