@@ -72,7 +72,7 @@
 
   <aside id="site-secondary">
     <? foreach ( $page['sidebar_second'] as $val ): ?>
-      <? if ( ($block = _sblock($block)) ): ?>
+      <? if ( ($block = _sblock($val)) ): ?>
         <? // TODO: get the section tag/classes onto blocks ?>
         <section>
           <?=$block?>
@@ -86,44 +86,46 @@
 <?=render($page['footer']) ?>
 
 <footer id="site-footer">
-  <? if ( ($nav = render(menu_tree('menu-takepart-topics'))) ): ?>
-    <section id="site-topics">
-      <h4><?=t('Topics') ?></h4>
-      <?=$nav ?>
+  <div class="inner">
+    <? if ( ($nav = render(menu_tree('menu-takepart-topics'))) ): ?>
+      <section id="site-topics">
+        <h4><?=t('Topics') ?></h4>
+        <?=$nav ?>
+      </section>
+    <? endif ?>
+
+    <? if ( ($nav = render(menu_tree('menu-takepart-film-campaigns'))) ): ?>
+      <section id="site-campaigns">
+        <h4><?=t('Film Campaigns') ?></h4>
+        <?=$nav ?>
+        <p>
+          <a href="/film-campaigns"><?=t('More Film Campaigns') ?></a>
+        </p>
+      </section>
+    <? endif ?>
+
+    <? if ( ($nav = render(menu_tree('menu-takepart-links'))) ): ?>
+      <section id="site-takepart-links">
+        <h4><?=t('About TakePart') ?></h4>
+        <?=$nav ?>
+      </section>
+    <? endif ?>
+
+    <section id="site-connect">
+      <h4><?=t('Connect') ?></h4>
+      <ul>
+        <li class="fb"><a href="http://www.facebook.com/takepart" target="_blank" name="&lpos=footer">facebook</a></li>
+        <li class="twitter"><a href="http://www.twitter.com/takepart" target="_blank" name="&lpos=footer">twitter</a></li>
+        <li class="pinterest"><a href="http://pinterest.com/takepart/" target="_blank"><img src="http://passets-ec.pinterest.com/images/about/buttons/big-p-button.png" width="25" height="25" alt="Follow Me on Pinterest" /></a></li>
+        <li class="googleplus"><a href="https://plus.google.com/113369936500827860065?prsrc=3" name="&lpos=footer" rel="publisher" style="text-decoration:none;" target="_blank" title="google plus"><img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt="google plus" style="border:0;width:24px;height:24px;" /></a></li>
+        <li class="youtube"><a href="http://www.youtube.com/takepart" target="_blank" name="&lpos=footer">youtube</a></li>
+        <li class="rss"><a href="/rss">rss</a></li>
+      </ul>
     </section>
-  <? endif ?>
 
-  <? if ( ($nav = render(menu_tree('menu-takepart-film-campaigns'))) ): ?>
-    <section id="site-campaigns">
-      <h4><?=t('Film Campaigns') ?></h4>
-      <?=$nav ?>
-      <p>
-        <a href="/film-campaigns"><?=t('More Film Campaigns') ?></a>
-      </p>
+    <section id="site-about">
+      <p id="site-participant"><?=t('TakePart is the digital division of') ?> <a target="_blank" href="http://www.participantmedia.com/"><?=t('Participant Media') ?></a></p>
+      <p id="site-copyright">&copy; 2008-<?=date('Y') ?> TakePart, LLC</p>
     </section>
-  <? endif ?>
-
-  <? if ( ($nav = render(menu_tree('menu-takepart-links'))) ): ?>
-    <section id="site-takepart-links">
-      <h4><?=t('About TakePart') ?></h4>
-      <?=$nav ?>
-    </section>
-  <? endif ?>
-
-  <section id="site-connect">
-    <h4><?=t('Connect') ?></h4>
-    <ul>
-      <li class="fb"><a href="http://www.facebook.com/takepart" target="_blank" name="&lpos=footer">facebook</a></li>
-      <li class="twitter"><a href="http://www.twitter.com/takepart" target="_blank" name="&lpos=footer">twitter</a></li>
-      <li class="pinterest"><a href="http://pinterest.com/takepart/" target="_blank"><img src="http://passets-ec.pinterest.com/images/about/buttons/big-p-button.png" width="25" height="25" alt="Follow Me on Pinterest" /></a></li>
-      <li class="googleplus"><a href="https://plus.google.com/113369936500827860065?prsrc=3" name="&lpos=footer" rel="publisher" style="text-decoration:none;" target="_blank" title="google plus"><img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt="google plus" style="border:0;width:24px;height:24px;" /></a></li>
-      <li class="youtube"><a href="http://www.youtube.com/takepart" target="_blank" name="&lpos=footer">youtube</a></li>
-      <li class="rss"><a href="/rss">rss</a></li>
-    </ul>
-  </section>
-
-  <section id="site-about">
-    <p id="site-participant"><?=t('TakePart is the digital division of') ?> <a target="_blank" href="http://www.participantmedia.com/"><?=t('Participant Media') ?></a></p>
-    <p id="site-copyright">&copy; 2008-<?=date('Y') ?> TakePart, LLC</p>
-  </section>
+  </div>
 </footer>
