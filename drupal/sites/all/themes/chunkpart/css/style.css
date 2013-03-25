@@ -19,6 +19,12 @@
 || 1.) General Site Layout
 ============================================================ */
 
+* {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
 body {
 	font-size: 20px;
 	background: #f1f3f4;
@@ -247,9 +253,8 @@ a:visited {
 /* Footer */
 
 #site-footer {
-	display: table;
-	width: 100%;
 	color: #555;
+	line-height: 1.5;
 }
 
 #site-footer a {
@@ -261,25 +266,36 @@ a:visited {
 	text-decoration: underline;
 }
 
-#site-footer .inner {
-	display: table-row;
-}
-
 #site-footer section {
 	float: left;
-	display: table-cell;
+	padding: 1em 0 1em 1em;
+	width: 25%;
+}
+
+#site-footer section > * {
 	font-size: .55em;
-	padding: 1em 0 0 1em;
+}
+
+#site-footer h4 {
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 #site-footer #site-about {
-	float: none;
 	border-top: 1px solid #dbdbdb;
 	clear: both;
 	padding: 1em 0;
 	display: block;
-	font-size: .5em;
 	text-align: right;
+	width: 100%;
+}
+
+#site-footer #site-about > * {
+	font-size: .5em;
+}
+
+#site-footer #site-more-campaigns a {
+	color: #28a9e9;
 }
 
 /* ============================================================
