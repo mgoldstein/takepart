@@ -46,7 +46,10 @@
 		</aside>
 
 		<aside id="article-author">
-			Author
+			<? if ( $author = _s($field_author) ): ?>
+				<?=theme_image(_s($author->field_profile_photo))?>
+				<h3><?=_s($author->title)?></h3>
+			<? endif ?>
 		</aside>
 	</div>
 
