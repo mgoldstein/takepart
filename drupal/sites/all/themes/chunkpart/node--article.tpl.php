@@ -32,8 +32,8 @@
 	<header>
 		<h1><?=_s($title) ?></h1>
 		<p class="abstract"><?=_s($field_article_subhead) ?></p>
-		<p class="date">Date</p>
-		<p class="author"><a href="#">Author</a></p>
+		<p class="date"><?=$date?><? //=date('F j, Y', )?></p>
+		<p class="author"><a href="#"><?=$author?></a></p>
 	</header>
 
 	<div id="article-sidebar">
@@ -74,6 +74,8 @@
 	<pre>
 	-----------------
 	<? var_dump(array_keys(get_defined_vars())) ?>
+	<? listArrayRecursive($author) ?>
+	<? var_dump($author) ?>
 	<? listArrayRecursive($field_author) ?>
 	<? var_dump($field_author) ?>
 	-----------------
