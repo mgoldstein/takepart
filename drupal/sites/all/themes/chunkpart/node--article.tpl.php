@@ -49,6 +49,7 @@
 			<?=_simage($author->field_profile_photo)?>
 			<h3><?=_s($author->title)?></h3>
 			<div class="body">
+				<?=_simage($field_article_main_image)?>
 				<?=_s($author->body)?>
 			</div>
 		</aside>
@@ -72,10 +73,8 @@
 	<pre>
 	-----------------
 	<? var_dump(array_keys(get_defined_vars())) ?>
-	<? var_dump($picture) ?>
-	<? _l($picture) ?>
-	<? var_dump($user_picture) ?>
-	<? _l($user_picture) ?>
+	<? var_dump($field_article_main_image) ?>
+	<? _l($field_article_main_image) ?>
 
 	<? _l($node) ?>
 	-----------------
