@@ -59,7 +59,7 @@ function _simage($var) {
     return '';
   }
 
-  if ( !isset((array)$image['path']) ) {
+  if ( !isset($image['path']) ) {
     if ( $wrapper = file_stream_wrapper_get_instance_by_uri($image['uri']) ) {
       $image['path'] = $wrapper->realpath();
     }
