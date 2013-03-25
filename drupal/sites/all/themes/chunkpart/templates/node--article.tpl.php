@@ -28,7 +28,7 @@
 
 ?>
 
-<article>
+<article id="article-main">
 	<header>
 		<h1><?=_s($title) ?></h1>
 		<p class="abstract"><?=_s($field_article_subhead) ?></p>
