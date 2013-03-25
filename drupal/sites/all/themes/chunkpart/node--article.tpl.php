@@ -46,8 +46,8 @@
 		</aside>
 
 		<aside id="article-author">
-			<?=_simage($author->field_profile_photo)?>
-			<h3><?=_s($author->title)?></h3>
+			<?=_simage($field_author->field_profile_photo)?>
+			<h3><?=_s($field_author->title)?></h3>
 			<div class="body">
 				<?=_simage($field_article_main_image)?>
 				<?=_s($author->body)?>
@@ -75,8 +75,6 @@
 	<? var_dump(array_keys(get_defined_vars())) ?>
 	<? var_dump($field_article_main_image) ?>
 	<? _l($field_article_main_image) ?>
-
-	<? _l($node) ?>
 	-----------------
 	</pre>
 
