@@ -13,16 +13,16 @@
 
   <div id="site-navs">
     <nav id="site-main-nav">
-      <?=render(menu_tree('main-menu')) ?>
+      <?=_smenu('main-menu') ?>
     </nav>
 
     <div id="site-hot-nav">
-      <?=render(menu_tree('menu-hot-topics')) ?>
+      <?=_smenu('menu-hot-topics') ?>
     </div>
 
     <div id="site-miss-nav">
       <p><?=t('Don\'t Miss:') ?></p>
-      <?=render(menu_tree('menu-don-t-miss')) ?>
+      <?=_smenu('menu-don-t-miss') ?>
     </div>
   </div>
 
@@ -33,7 +33,7 @@
 
     <div id="site-participant-nav">
       <p>Participant Films</p>
-      <?=render(menu_tree('menu-reel-impact')) ?>
+      <?=_smenu('menu-reel-impact') ?>
     </div>
   </div>
 </header>
@@ -84,19 +84,16 @@
   </aside>
 </main>
 
-<? // TODO: Confirm this block can be here with the site JS below it ?>
-<?=render($page['footer']) ?>
-
 <footer id="site-footer">
   <div class="inner">
-    <? if ( ($nav = render(menu_tree('menu-takepart-topics'))) ): ?>
+    <? if ( ($nav = _smenu('menu-takepart-topics')) ): ?>
       <section id="site-topics">
         <h4><?=t('Topics') ?></h4>
         <?=$nav ?>
       </section>
     <? endif ?>
 
-    <? if ( ($nav = render(menu_tree('menu-takepart-film-campaigns'))) ): ?>
+    <? if ( ($nav = _smenu('menu-takepart-film-campaigns')) ): ?>
       <section id="site-campaigns">
         <h4><?=t('Film Campaigns') ?></h4>
         <?=$nav ?>
@@ -106,7 +103,7 @@
       </section>
     <? endif ?>
 
-    <? if ( ($nav = render(menu_tree('menu-takepart-links'))) ): ?>
+    <? if ( ($nav = _smenu('menu-takepart-links')) ): ?>
       <section id="site-takepart-links">
         <h4><?=t('About TakePart') ?></h4>
         <?=$nav ?>
@@ -131,3 +128,6 @@
     <p id="site-copyright">&copy; 2008-<?=date('Y') ?> TakePart, LLC</p>
   </section>
 </footer>
+
+<? // TODO: Confirm this block can be here with the site JS below it ?>
+<?=render($page['footer']) ?>

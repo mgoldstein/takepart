@@ -29,16 +29,17 @@
 ?>
 
 <article id="article-main">
-	<header>
-		<h1><?=_s($title) ?></h1>
-		<p class="abstract"><?=_s($field_article_subhead) ?></p>
-		<p class="date"><?=$date?><? //=date('F j, Y', )?></p>
-		<p class="author"><a href="#"><?=$author?></a></p>
+	<header id="article-header">
+		<h1 id="article-headline"><?=_s($title) ?></h1>
+		<p id="article-abstract"><?=_s($field_article_subhead) ?></p>
+		<p id="article-badge">{Article Badge}</p>
+		<p id="article-date"><?=$date?><? //=date('F j, Y', )?></p>
+		<p id="article-author-name"><a href="{Author link}"><?=$author?></a></p>
 	</header>
 
 	<div id="article-sidebar">
 		<aside id="article-social" class="social">
-			<p>tab</p>
+			<p>{Take Action Button}</p>
 			<div class="social-links"></div>
 			<p id="article-comments-link" class="comments-link">
 				<a href="#article-comments"><?=t('Comments') ?><span class="count"></span></a>
@@ -75,13 +76,16 @@
 
 <pre>
 -----------------
-<? var_dump(array_keys(get_defined_vars())) ?>
+<? //var_dump(array_keys(get_defined_vars())) ?>
 
+<? //_l($field_author) ?>
 
-<? var_dump($field_article_main_image) ?>
+<? $w = entity_metadata_wrapper('node', $field_author[0]['node']) ?>
 
+<?=_l($w->body->value())?>
 
-<? _l($field_article_main_image) ?>
+-----------------
+<? //_l($w) ?>
 -----------------
 </pre>
 	</div>

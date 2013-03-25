@@ -2,7 +2,7 @@
 
 // Remove Drupal default stylings
 // TODO: fix this
-jQuery('style').get(0).innerHTML = '';
+//jQuery('style').get(0).innerHTML = '';
 
 var $body = $('body');
 
