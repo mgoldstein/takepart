@@ -50,9 +50,10 @@ function _sblock($var) {
 // return an image
 function _simage($var) {
   $image = null;
-  if ( isset($var['und']) && isset($var['und'][0]) && isset($var['und'][0]['file']) ) {
+  /*if ( isset($var['und']) && isset($var['und'][0]) && isset($var['und'][0]['file']) ) {
     $image = $var['und'][0]['file'];
-  } elseif ( isset($var['und']) && $var['und'][0] ) {
+  } else*/
+  if ( isset($var['und']) && $var['und'][0] ) {
     $image = $var['und'][0];
   } else {
     return '';
