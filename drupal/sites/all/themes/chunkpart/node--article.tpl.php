@@ -41,17 +41,19 @@
 			<p>tab</p>
 			<div class="social-links"></div>
 			<p id="article-comments-link" class="comments-link">
-				<a href="#article-comments"><span class="count">Comments</span></a>
+				<a href="#article-comments"><?=t('Comments') ?><span class="count"></span></a>
 			</p>
 		</aside>
 
 		<aside id="article-author">
-			<?=_simage($field_author->field_profile_photo)?>
-			<h3><?=_s($field_author->title)?></h3>
-			<div class="body">
-				<?=_simage($field_article_main_image)?>
-				<?=_s($author->body)?>
-			</div>
+			<? if ( $author = _s($field_author) ): ?>
+				<?=_simage($field_author->field_profile_photo)?>
+				<h3><?=_s($field_author->title)?></h3>
+				<div class="body">
+					<?=_simage($field_article_main_image)?>
+					<?=_s($author->body)?>
+				</div>
+			<? endif ?>
 		</aside>
 	</div>
 
@@ -72,10 +74,13 @@
 
 	<pre>
 	-----------------
-	<? var_dump(array_keys(get_defined_vars())) ?>
-	<? var_dump($field_author) ?>
+<? var_dump(array_keys(get_defined_vars())) ?>
 
-	<? _l($field_author) ?>
+
+<? var_dump($field_article_main_image) ?>
+
+
+<? _l($field_article_main_image) ?>
 	-----------------
 	</pre>
 
