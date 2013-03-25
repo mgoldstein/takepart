@@ -206,6 +206,7 @@ a:visited {
 	white-space: nowrap;
 	-webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 	box-shadow:         0px 0px 4px rgba(0, 0, 0, 0.2);
+	right: -1px;
 }
 
 #site-header #site-participant-nav.focusin,
@@ -226,7 +227,6 @@ a:visited {
 #site-participant-nav:hover ul {
 	bottom: auto;
 	top: 100%;
-	right: -1px;
 }
 
 #site-participant-nav li {
@@ -367,7 +367,7 @@ a:visited {
 	float: left;
 }
 
-.node-type-article #article-body {
+.node-type-article #article-content {
 	width: 23em;
 	float: right;
 }
