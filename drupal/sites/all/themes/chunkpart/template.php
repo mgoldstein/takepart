@@ -32,6 +32,9 @@ function _s($var) {
   // Node
   } elseif ( isset($var[0]) && $var[0]['node'] ) {
     return $var[0]['node'];
+  // Some array thing (picture)
+  } elseif ( isset($var['und']) && $var['und'][0] ) {
+    return $var['und'][0];
   }
 }
 
