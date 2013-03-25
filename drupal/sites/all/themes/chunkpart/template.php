@@ -32,9 +32,6 @@ function _s($var) {
   // Node
   } elseif ( isset($var[0]) && $var[0]['node'] ) {
     return $var[0]['node'];
-  // Some array thing (picture)
-  } elseif ( isset($var['und']) && $var['und'][0] ) {
-    return $var['und'][0];
   }
 }
 
@@ -44,6 +41,20 @@ function _sblock($var) {
   // TODO: add appropriate rules for a block
   if ( is_array($var) ) {
     return render($var);
+  }
+  return '';
+}
+
+// return an image
+function _simage($var) {
+ if ( isset($var['und']) && $var['und'][0] ) {
+    $image = $var['und'][0];
+    if ( !isset($image['path']) ) {
+      if ( $wrapper = file_stream_wrapper_get_instance_by_uri($image['uri']) ) {
+        $image['path'] = $wrapper->realpath();
+      }
+    }
+    return theme_image($image);
   }
   return '';
 }
