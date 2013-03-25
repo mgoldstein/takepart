@@ -47,8 +47,11 @@
 
 		<aside id="article-author">
 			<? if ( $author = _s($field_author) ): ?>
-				<?=theme_image(_s($author->field_profile_photo))?>
+				<?=render(_s($author->field_profile_photo))?>
 				<h3><?=_s($author->title)?></h3>
+				<div class="body">
+					<?=_s($author->body)?>
+				</div>
 			<? endif ?>
 		</aside>
 	</div>
