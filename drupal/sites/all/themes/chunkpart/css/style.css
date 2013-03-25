@@ -347,13 +347,28 @@ a:visited {
 /* Article Page
 ------------------------------------------------------------ */
 
-.node-type-article .region-content {
+.node-type-article #article-main {
 	width: 31em;
 	float: left;
 }
 
 .node-type-article #site-secondary {
 	width: 15em;
+	float: right;
+}
+
+.node-type-article #article-sidebar {
+	width: 7em;
+	float: left;
+}
+
+.node-type-article #article-sidebar {
+	width: 7em;
+	float: left;
+}
+
+.node-type-article #article-body {
+	width: 23em;
 	float: right;
 }
 
