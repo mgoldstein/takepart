@@ -29,6 +29,8 @@ function _s($var) {
   // Body attribute
   } elseif ( isset($var[0]) && isset($var[0]['safe_value']) ) {
     return $var[0]['safe_value'];
+  } elseif ( isset($var['und']) && isset($var['und'][0]) && isset($var['und'][0]['safe_value']) ) {
+    return $var['und'][0]['safe_value'];
   // Node
   } elseif ( isset($var[0]) && $var[0]['node'] ) {
     return $var[0]['node'];
