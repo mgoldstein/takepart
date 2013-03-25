@@ -47,7 +47,7 @@
 
 		<aside id="article-author">
 			<? if ( $author = _s($field_author) ): ?>
-				<?=render(_s($author->field_profile_photo))?>
+				<?=render($author->field_profile_photo)?>
 				<h3><?=_s($author->title)?></h3>
 				<div class="body">
 					<?=_s($author->body)?>
