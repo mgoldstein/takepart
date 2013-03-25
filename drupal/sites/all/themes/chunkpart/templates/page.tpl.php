@@ -8,7 +8,7 @@
   </nav>
 
   <p id="site-logo">
-    <img src="<?=$logo?>" alt="TakePart" role="logo" />
+    <a href="/"><img src="<?=$logo?>" alt="TakePart" role="logo" /></a>
   </p>
 
   <div id="site-navs">
