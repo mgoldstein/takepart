@@ -122,10 +122,10 @@
         <li class="rss"><a href="/rss">rss</a></li>
       </ul>
     </section>
-
-    <section id="site-about">
-      <p id="site-participant"><?=t('TakePart is the digital division of') ?> <a target="_blank" href="http://www.participantmedia.com/"><?=t('Participant Media') ?></a></p>
-      <p id="site-copyright">&copy; 2008-<?=date('Y') ?> TakePart, LLC</p>
-    </section>
   </div>
+
+  <section id="site-about">
+    <p id="site-participant"><?=t('TakePart is the digital division of') ?> <a target="_blank" href="http://www.participantmedia.com/"><?=t('Participant Media') ?></a></p>
+    <p id="site-copyright">&copy; 2008-<?=date('Y') ?> TakePart, LLC</p>
+  </section>
 </footer>
