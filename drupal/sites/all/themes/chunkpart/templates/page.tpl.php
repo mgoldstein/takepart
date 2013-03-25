@@ -2,15 +2,9 @@
     <a href="#main"><?= t('Skip to main content') ?></a>
 </div>
 
-<pre>
-<? var_dump($user_nav) ?>
-
-<? _l($user_nav) ?>
-</pre>
-
 <header id="site-header" role="banner">
   <nav id="site-user-nav">
-    <?=render($user_nav) ?>
+    <?=$user_nav ?>
   </nav>
 
   <p id="site-logo">

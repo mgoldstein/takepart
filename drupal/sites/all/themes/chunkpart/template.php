@@ -71,26 +71,83 @@ function _simage($var) {
 /*
   Preprocess
 */
-function chunkpart_preprocess_page(&$vars) {
+function chunkpart_preprocess_page(&$variables) {
   // Batshit crazy nav stuff
-  $user_nav = menu_tree('user-menu');
-  foreach ($user_nav as &$nav) {
-    if ($nav['#href'] == 'user') {
-      if (user_is_logged_in()) {
-        global $user;
-        if (function_exists('_takepart_facebookapis_get_user_session')) {
-          $fbsession = _takepart_facebookapis_get_user_session();
-          $username = $fbsession->name;
-          if ($username == '') {
-            $username = $user->name;
-          }
-        } else {
-          $username = $user->name;
-        }
-      }
-      $nav['#title'] = $username;
-      break;
-    }
+  if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
+    $variables['user_nav'] = _render_tp3_user_menu($variables);
   }
-  $vars['user_nav'] = $user_nav;
+}
+
+/**
+ * Helper to output the custom HTML for out main menu.
+ */
+function _render_tp3_user_menu($variables) {
+    // dpm($vars);
+    $menu_data = menu_tree_page_data("user-menu");
+    $uri = drupal_get_path_alias($_GET['q']);
+    $uri_substr = substr($uri, 0, 14);
+    $links = array();
+    foreach ($menu_data as $menu_item) {
+        $opts = array(
+            'attributes' => _default_menu_options($menu_item),
+        );
+        if (($uri_substr == 'bsd/header') || ($uri_substr == 'bsd/footer')) {
+            $opts['absolute'] = TRUE;
+        }
+
+        $opts['attributes']['class'][] = 'user-menu-' . strtolower($menu_item['link']['title']);
+
+        if (empty($opts['attributes']['title'])) {
+            unset($opts['attributes']['title']);
+        }
+
+        if ($menu_item['link']['href'] == 'user') {
+            if (user_is_logged_in()) {
+                global $user;
+                if (function_exists('_takepart_facebookapis_get_user_session')) {
+                    $fbsession = _takepart_facebookapis_get_user_session();
+                    $username = $fbsession->name;
+                    if ($username == '') {
+                        $username = $user->name;
+                    }
+                } else {
+                    $username = $user->name;
+                }
+
+                if ($variables['node']->type == 'venue' || $variables['node']->type == 'action'
+                        || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action'
+                        || (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context']))) {
+                    if (strlen($username) > 10 && isset($fbsession->first_name) && isset($fbsession->last_name)) {
+                        $username = $fbsession->first_name . " " . substr($fbsession->last_name, 0, 1);
+                        if (strlen($username) < 10) {
+                            $username = $username . ".";
+                        }
+                    }
+                    if (strlen($username) > 10) {
+                        $username = substr($username, 0, 10) . "…";
+                    }
+                }
+                $menu_item['link']['title'] = $username;
+                $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');
+            } else {
+                $opts['attributes']['class'][] = 'join-login';
+                $opts['query'] = drupal_get_destination();
+                $menu_item['link']['title'] = variable_get("takepart_user_login_link_name", "Login");
+            }
+        } else {
+            switch ($menu_item['link']['href']) {
+                case 'user/register':
+                    $opts['attributes']['class'][] = 'join-takepart';
+                    break;
+            }
+        }
+        if (empty($menu_item['link']['href'])) {
+            $link = $menu_item['link']['title'];
+        } else {
+            $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
+        }
+        $links[] = '<li class="login-' . count($links) . '">' . $link . "</li>";
+    }
+    $output = "<ul id='user-nav'>" . implode($links) . "</ul>";
+    return $output;
 }
