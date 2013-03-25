@@ -61,6 +61,8 @@ a:visited {
 	display: block;
 }
 
+#site-user-nav ul,
+#site-user-nav li,
 #site-header div p,
 #site-header div ul,
 #site-header div li {
@@ -77,7 +79,27 @@ a:visited {
 
 #site-user-nav {
 	font-size: .55em;
-	text-align: right;
+	float: right;
+	clear: both;
+	font-weight: bold;
+}
+
+#site-user-nav a {
+	color: #000;
+}
+
+#site-user-nav a:hover {
+	text-decoration: underline;
+}
+
+#site-user-nav li {
+	padding: 0 .5em;
+	border-right: 1px solid #dbdbdb;
+}
+
+#site-user-nav li:last-child {
+	padding-right: 0;
+	border-right: none;
 }
 
 #site-participant-nav p,
