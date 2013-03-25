@@ -49,16 +49,22 @@ function _sblock($var) {
 
 // return an image
 function _simage($var) {
- if ( isset($var['und']) && $var['und'][0] ) {
+  $image = null;
+  if ( isset($var['und']) && isset($var['und'][0]) && isset($var['und'][0]['file']) ) {
+    $image = $var['und'][0]['file'];
+  } elseif ( isset($var['und']) && $var['und'][0] ) {
     $image = $var['und'][0];
-    if ( !isset($image['path']) ) {
-      if ( $wrapper = file_stream_wrapper_get_instance_by_uri($image['uri']) ) {
-        $image['path'] = $wrapper->realpath();
-      }
-    }
-    return theme_image($image);
+  } else {
+    return '';
   }
-  return '';
+
+  if ( !isset($image['path']) ) {
+    if ( $wrapper = file_stream_wrapper_get_instance_by_uri($image['uri']) ) {
+      $image['path'] = $wrapper->realpath();
+    }
+  }
+
+  return theme_image($image);
 }
 
 /*
