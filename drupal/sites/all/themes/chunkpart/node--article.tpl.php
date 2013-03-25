@@ -46,17 +46,18 @@
 		</aside>
 
 		<aside id="article-author">
-			<? if ( $author = _s($field_author) ): ?>
-				<?=_simage($author->field_profile_photo)?>
-				<h3><?=_s($author->title)?></h3>
-				<div class="body">
-					<?=_s($author->body)?>
-				</div>
-			<? endif ?>
+			<?=_simage($author->field_profile_photo)?>
+			<h3><?=_s($author->title)?></h3>
+			<div class="body">
+				<?=_s($author->body)?>
+			</div>
 		</aside>
 	</div>
 
 	<div id="article-body">
+		<?=render($picture)?>
+		<?=theme_image($picture)?>
+		<?=_simage($picture)?>
 		<?=_s($body)?>
 	</div>
 
@@ -74,10 +75,6 @@
 	<pre>
 	-----------------
 	<? var_dump(array_keys(get_defined_vars())) ?>
-	<? listArrayRecursive($author) ?>
-	<? var_dump($author) ?>
-	<? listArrayRecursive($field_author) ?>
-	<? var_dump($field_author) ?>
 	-----------------
 	</pre>
 
