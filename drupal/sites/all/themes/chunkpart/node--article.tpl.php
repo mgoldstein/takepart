@@ -47,10 +47,9 @@
 
 		<aside id="article-author">
 			<? if ( $author = _s($field_author) ): ?>
-				<?=_simage($field_author->field_profile_photo)?>
-				<h3><?=_s($field_author->title)?></h3>
+				<?=_simage($author->field_profile_photo)?>
+				<h3><?=_s($author->title)?></h3>
 				<div class="body">
-					<?=_simage($field_article_main_image)?>
 					<?=_s($author->body)?>
 				</div>
 			<? endif ?>
@@ -58,6 +57,7 @@
 	</div>
 
 	<div id="article-body">
+		<?=_simage($field_article_main_image)?>
 		<?=_s($body)?>
 	</div>
 
