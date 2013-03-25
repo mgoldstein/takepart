@@ -4,6 +4,7 @@
 
 // pretty print arrays
 function listArrayRecursive($someArray, $prepend = '') {
+    $someArray = (array) $someArray;
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
     foreach ($iterator as $k => $v) {
         //$indent = str_repeat('&nbsp;', 10 * $iterator->getDepth());
