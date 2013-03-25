@@ -72,8 +72,12 @@
 	<pre>
 	-----------------
 	<? var_dump(array_keys(get_defined_vars())) ?>
-	<? _l($picture) ?>
 	<? var_dump($picture) ?>
+	<? _l($picture) ?>
+	<? var_dump($user_picture) ?>
+	<? _l($user_picture) ?>
+
+	<? _l($node) ?>
 	-----------------
 	</pre>
 
