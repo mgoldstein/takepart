@@ -56,24 +56,25 @@
 		</aside>
 	</div>
 
-	<div id="article-body">
-		<?=_simage($field_article_main_image)?>
-		<?=_s($body)?>
-	</div>
+	<div id="article-content">
+		<div id="article-body">
+			<?=_simage($field_article_main_image)?>
+			<?=_s($body)?>
+		</div>
 
-	<footer id="article-footer">
-		<nav id="next-article">
-			<p><?=t('Next Article') ?></p>
-			<p><a href="#">Next Article Title</a></p>
-		</nav>
-	</footer>
+		<footer id="article-footer">
+			<nav id="next-article">
+				<p><?=t('Next Article') ?></p>
+				<p><a href="#">Next Article Title</a></p>
+			</nav>
+		</footer>
 
-	<section id="article-comments" class="comments">
-		<h3><?=t('Comments') ?> <span class="count"></span></h3>
-	</section>
+		<section id="article-comments" class="comments">
+			<h3><?=t('Comments') ?> <span class="count"></span></h3>
+		</section>
 
-	<pre>
-	-----------------
+<pre>
+-----------------
 <? var_dump(array_keys(get_defined_vars())) ?>
 
 
@@ -81,8 +82,7 @@
 
 
 <? _l($field_article_main_image) ?>
-	-----------------
-	</pre>
-
-	<? // listArrayRecursive(&$node, '$node'); ?>
+-----------------
+</pre>
+	</div>
 </article>
