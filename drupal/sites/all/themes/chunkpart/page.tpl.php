@@ -82,7 +82,7 @@
   </aside>
 </main>
 
-<? // Confirm this block can be here with the site JS below it ?>
+<? // TODO: Confirm this block can be here with the site JS below it ?>
 <?=render($page['footer']) ?>
 
 <footer id="site-footer">
@@ -98,7 +98,7 @@
       <h4><?=t('Film Campaigns') ?></h4>
       <?=$nav ?>
       <p>
-        <a href="/film-campaigns">More Film Campaigns</a>
+        <a href="/film-campaigns"><?=t('More Film Campaigns') ?></a>
       </p>
     </section>
   <? endif ?>
@@ -111,7 +111,7 @@
   <? endif ?>
 
   <section id="site-connect">
-    <h4>Connect</h4>
+    <h4><?=t('Connect') ?></h4>
     <ul>
       <li class="fb"><a href="http://www.facebook.com/takepart" target="_blank" name="&lpos=footer">facebook</a></li>
       <li class="twitter"><a href="http://www.twitter.com/takepart" target="_blank" name="&lpos=footer">twitter</a></li>
@@ -123,7 +123,7 @@
   </section>
 
   <section id="site-about">
-    <p id="site-participant">TakePart is the digital division of <a target="_blank" href="http://www.participantmedia.com/">Participant Media</a></p>
+    <p id="site-participant"><?=t('TakePart is the digital division of') ?> <a target="_blank" href="http://www.participantmedia.com/"><?=t('Participant Media') ?></a></p>
     <p id="site-copyright">&copy; 2008-<?=date('Y') ?> TakePart, LLC</p>
   </section>
 </footer>
