@@ -96,8 +96,9 @@ if (!tp.analytics) {
         s.prop67 = 'See More Actions Click';
         s.tl(true, 'o', 'see more actions click');
     };
-    if (view_modes[args.view_mode] == 'Full Page') {
-        tp.analytics.events['newsletter_action_opt_in'] = function (args) {
+    
+    tp.analytics.events['newsletter_action_opt_in'] = function (args) {
+        if (view_modes[args.view_mode] == 'Full Page') {
             s.linkTrackVars = 'eVar23,eVar30,eVar39,eVar53,prop53,events';
             s.events = s.linkTrackEvents = 'event39';
             s.eVar23 = args.group;
@@ -106,23 +107,24 @@ if (!tp.analytics) {
             s.eVar39 = view_modes[args.view_mode];
             s.eVar53 = s.prop53 = args.action_name;
             s.tl(true, 'o', 'newsletter signup');
-        };
-    }
-    if (view_modes[args.view_mode] == 'Full Page') {
-        tp.analytics.events['action_share'] = function (args) {
-            var tracked = [
-            'eVar4', 'prop4,',
-            'eVar27', 'prop26', // the mismatch is intentional
-            'eVar30',
-            'eVar39', 'prop39',
-            'eVar53', 'prop53',
-            'eVar55', 'prop55',
-            'eVar56', 'prop56',
-            'eVar60', 'prop60',
-            'prop66',
-            'prop67',
-            'events'
-            ];    
+        }
+    };
+
+    tp.analytics.events['action_share'] = function (args) {
+        var tracked = [
+        'eVar4', 'prop4,',
+        'eVar27', 'prop26', // the mismatch is intentional
+        'eVar30',
+        'eVar39', 'prop39',
+        'eVar53', 'prop53',
+        'eVar55', 'prop55',
+        'eVar56', 'prop56',
+        'eVar60', 'prop60',
+        'prop66',
+        'prop67',
+        'events'
+        ];
+        if (view_modes[args.view_mode] == 'Full Page') {
             s.linkTrackVars = tracked.join(','); 
             s.events = s.linkTrackEvents = 'event60';
             s.eVar4 = s.prop4 = args.type_name;
@@ -136,8 +138,9 @@ if (!tp.analytics) {
             s.prop66 = 'Share';
             s.prop67 = 'Share';
             s.tl(true, 'o', 'action thank you share');
-        };
-    }
+        }
+    };
+    
     var takeactionShareListener = function (evt) {
         var share_method = 'Unknown';
         var services = {
