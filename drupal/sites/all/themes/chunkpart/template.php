@@ -151,3 +151,8 @@ function _render_tp3_user_menu($variables) {
     $output = "<ul id='user-nav'>" . implode($links) . "</ul>";
     return $output;
 }
+
+function _default_menu_options($menu_item) {
+    $menu_opts = empty($menu_item['link']['options']['attributes']) ? array() : $menu_item['link']['options']['attributes'];
+    return $menu_opts;
+}
