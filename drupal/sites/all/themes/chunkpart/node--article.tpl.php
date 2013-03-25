@@ -69,6 +69,7 @@
 	-----------------
 	<? var_dump(array_keys(get_defined_vars())) ?>
 	<? listArrayRecursive($field_author) ?>
+	<? var_dump($field_author) ?>
 	-----------------
 	</pre>
 
