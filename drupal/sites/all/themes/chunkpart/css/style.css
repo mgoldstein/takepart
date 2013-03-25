@@ -41,18 +41,18 @@ a:visited {
 /* Header */
 
 #site-header {
-	padding: .55em 0 0 1em;
+	padding: .55em 0 0 0;
 	display: inline-block; *display: inline; zoom: 1;
+	width: 100%;
 	vertical-align: top;
-	margin-left: 116px;
 	position: relative;
 	min-height: 116px;
 }
 
 #site-logo {
-	position: absolute;
-	left: -116px;
-	bottom: -15px;
+	margin-bottom: -16px;
+	padding-right: 1em;
+	float: left;
 }
 
 #site-logo img {
@@ -61,10 +61,9 @@ a:visited {
 	display: block;
 }
 
-#site-header div,
-#site-header p,
-#site-header ul,
-#site-header li {
+#site-header div p,
+#site-header div ul,
+#site-header div li {
 	float: left;
 }
 
@@ -72,20 +71,13 @@ a:visited {
 	text-decoration: none;
 }
 
-#site-nav {
+#site-navs {
 	float: left;
-	width: 100%;
 }
 
 #site-user-nav {
 	font-size: .55em;
-	top: 0;
-	right: 0;
-	position: absolute;
-}
-
-#site-user-nav ul {
-	float: right;
+	text-align: right;
 }
 
 #site-participant-nav p,
@@ -103,6 +95,7 @@ a:visited {
 
 #site-hot-nav {
 	padding-top: .75em;
+	float: left;
 }
 
 #site-hot-nav li {
@@ -125,8 +118,10 @@ a:visited {
 }
 
 #site-main-nav {
-	padding: 1em 0 .75em;
+	padding: .75em 0 .75em;
 	border-bottom: 1px solid #dbdbdb;
+	display: inline-block; *display: inline; zoom: 1;
+	width: 100%;
 }
 
 #site-main-nav li {
@@ -145,14 +140,11 @@ a:visited {
 	color: #28a9e9;
 }
 
-#site-header #site-search {
-	float: right;
-}
-
 #site-miss-nav {
 	margin-top: .5em;
 	background: #f7f7f7;
 	padding: .25em .1em .25em .5em;
+	float: right;
 }
 
 #site-miss-nav a:hover {
@@ -174,12 +166,16 @@ a:visited {
 	font-size: .6em;
 }
 
+#site-more-navs {
+	float: right;
+}
+
 #site-header #site-participant-nav {
 	color: #333;
 	border: 1px solid #d0d0d0;
-	float: right;
 	padding: .5em .7em;
 	text-shadow: 0 1px #fff;
+	float: left;
 
 	background: #fdfdfd;
 	background: -moz-linear-gradient(top,  #fdfdfd 0%, #ececec 100%);
@@ -229,7 +225,7 @@ a:visited {
 	top: 100%;
 }
 
-#site-participant-nav li {
+#site-header #site-participant-nav li {
 	float: none;
 	display: block;
 	border-bottom: 1px solid #e8e8e8;
