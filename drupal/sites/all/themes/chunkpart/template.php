@@ -3,7 +3,7 @@
 /* Template helpers */
 
 // pretty print arrays
-function listArrayRecursive($someArray, $prepend = '') {
+function _l($someArray, $prepend = '') {
     $someArray = (array) $someArray;
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
     foreach ($iterator as $k => $v) {
