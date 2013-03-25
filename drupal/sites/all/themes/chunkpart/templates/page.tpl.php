@@ -3,36 +3,38 @@
 </div>
 
 <header id="site-header" role="banner">
+  <nav id="site-user-nav">
+    <?=render($user_nav) ?>
+  </nav>
+
   <p id="site-logo">
     <img src="<?=$logo?>" alt="TakePart" role="logo" />
   </p>
 
-  <nav id="site-nav">
-    <div id="site-user-nav">
-      <?=render($user_nav) ?>
-    </div>
-
-    <div id="site-main-nav">
+  <div id="site-navs">
+    <nav id="site-main-nav">
       <?=render(menu_tree('main-menu')) ?>
+    </nav>
+
+    <div id="site-hot-nav">
+      <?=render(menu_tree('menu-hot-topics')) ?>
     </div>
 
-    <div id="site-search">
+    <div id="site-miss-nav">
+      <p><?=t('Don\'t Miss:') ?></p>
+      <?=render(menu_tree('menu-don-t-miss')) ?>
+    </div>
+  </div>
+
+  <div id="site-more-navs">
+    <nav id="site-search">
       <?=drupal_render(module_invoke('search_api_page', 'block_view', '2')) ?>
+    </nav>
+
+    <div id="site-participant-nav">
+      <p>Participant Films</p>
+      <?=render(menu_tree('menu-reel-impact')) ?>
     </div>
-  </nav>
-
-  <div id="site-hot-nav">
-    <?=render(menu_tree('menu-hot-topics')) ?>
-  </div>
-
-  <div id="site-miss-nav">
-    <p><?=t('Don\'t Miss:') ?></p>
-    <?=render(menu_tree('menu-don-t-miss')) ?>
-  </div>
-
-  <div id="site-participant-nav">
-    <p>Participant Films</p>
-    <?=render(menu_tree('menu-reel-impact')) ?>
   </div>
 </header>
 
