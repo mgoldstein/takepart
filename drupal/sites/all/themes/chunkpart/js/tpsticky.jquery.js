@@ -13,7 +13,12 @@ $.fn.tpsticky = function(parameters) {
 		var $offset = settings.offsetNode || $this.parent();
 		$offset = $($offset);
 
-		$this.width($this.width());
+		// Border box fix
+		if ( $this.css( 'boxSizing' ) === 'border-box' ) {
+			$this.width($this.outerWidth());
+		} else {
+			$this.width($this.width());
+		}
 
 		var left = $this.offset().left;
 
