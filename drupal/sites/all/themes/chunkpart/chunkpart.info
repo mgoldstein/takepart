@@ -38,5 +38,6 @@ stylesheets[all][] = css/reset.css
 stylesheets[all][] = css/style.css
 
 ;-------------- JS -------------
+scripts[] = js/tpsticky.jquery.js
 scripts[] = js/tpsocial.jquery.js
 scripts[] = js/script.js
