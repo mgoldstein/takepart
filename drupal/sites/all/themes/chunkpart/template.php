@@ -57,7 +57,9 @@ function _sblock($var) {
 // return an image
 function _simage($var) {
   $image = null;
-  if ( isset($var['und']) && isset($var['und'][0]) && isset($var['und'][0]['file']) ) {
+  if ( isset($var['type']) && $var['type'] == 'image') {
+    $image = $var;
+  } elseif ( isset($var['und']) && isset($var['und'][0]) && isset($var['und'][0]['file']) ) {
     $image = (array)$var['und'][0]['file'];
   } else
   if ( isset($var['und']) && $var['und'][0] ) {
@@ -87,6 +89,12 @@ function _smenu($menu_name) {
   }
 
   return render($items);
+}
+
+function _snode($var) {
+  if ( isset($var[0]) ) {
+    return entity_metadata_wrapper('node', $var[0]['node']);
+  }
 }
 
 /*

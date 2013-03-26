@@ -47,12 +47,16 @@
 		</aside>
 
 		<aside id="article-author">
-			<? if ( $author = _s($field_author) ): ?>
-				<?=_simage($author->field_profile_photo)?>
-				<h3><?=_s($author->title)?></h3>
-				<div class="body">
-					<?=_s($author->body)?>
-				</div>
+			<? if ( $author = _snode($field_author) ): ?>
+				<?=_simage($author->field_profile_photo->value())?>
+				<h3><?=$author->title->value() ?></h3>
+				<? if ( $abody = $author->body->value() ): ?>
+					<div class="body">
+						<?=$abody['summary'] ?>
+						<a href="#">{Full Bio}</a>
+					</div>
+				<? endif ?>
+				{Follow me}
 			<? endif ?>
 		</aside>
 	</div>
@@ -66,23 +70,18 @@
 		<footer id="article-footer">
 			<nav id="next-article">
 				<p><?=t('Next Article') ?></p>
-				<p><a href="#">Next Article Title</a></p>
+				<p><a href="#">{Next Article}</a></p>
 			</nav>
 		</footer>
 
 		<section id="article-comments" class="comments">
 			<h3><?=t('Comments') ?> <span class="count"></span></h3>
+			{Comments module}
 		</section>
 
 <pre>
 -----------------
-<? //var_dump(array_keys(get_defined_vars())) ?>
-
-<? //_l($field_author) ?>
-
-<? $w = entity_metadata_wrapper('node', $field_author[0]['node']) ?>
-
-<?=_l($w->body->value())?>
+<? var_dump(array_keys(get_defined_vars())) ?>
 
 -----------------
 <? //_l($w) ?>
