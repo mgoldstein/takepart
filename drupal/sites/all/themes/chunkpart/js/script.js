@@ -29,7 +29,7 @@ $(function() {
 	if ( $body.is('.node-type-article') ) {
 		// Sticky social nav on article page
 		$('#article-social').tpsticky({
-			offsetNode: '#article-sidebar'
+			offsetNode: '#article-content'
 		});
 	}
 
