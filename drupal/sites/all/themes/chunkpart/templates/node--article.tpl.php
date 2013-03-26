@@ -40,7 +40,7 @@
 	<div id="article-sidebar">
 		<aside id="article-social" class="social">
 			<p>{Take Action Button}</p>
-			<div class="social-links"></div>
+			<div class="tp-social"></div>
 			<p id="article-comments-link" class="comments-link">
 				<a href="#article-comments"><?=t('Comments') ?><span class="count"></span></a>
 			</p>
