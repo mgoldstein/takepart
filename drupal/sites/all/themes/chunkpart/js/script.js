@@ -8,10 +8,10 @@ var $body = $('body');
 
 // Delegates
 $body
-    // Skip link tabbing fix for Webkit
-    .delegate('.skip-link a', 'click', function() {
-        $($(this).attr('href')).attr('tabIndex', '-1').focus();
-    })
+	// Skip link tabbing fix for Webkit
+	.delegate('.skip-link a', 'click', function() {
+		$($(this).attr('href')).attr('tabIndex', '-1').focus();
+	})
 
 // Document Ready
 $(function() {
@@ -22,6 +22,18 @@ $(function() {
 		.bind('focusout', function() {
 			$site_participant_nav.removeClass('focusin');
 		});
+
+
+	/* --------------------------------
+	| Page Specific ---------------- */
+	if ( $body.is('.node-type-article') ) {
+		// Sticky social nav on article page
+		$('#article-social').tpsticky({
+			offsetNode: '#article-sidebar'
+		});
+	}
+
+
 });
 
 })(window, jQuery);

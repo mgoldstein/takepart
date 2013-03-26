@@ -402,6 +402,15 @@ a:visited {
 	height: auto;
 }
 
+/* addthis email block fix */
+body #at16p {
+	width: auto;
+}
+
+body #at16pt {
+	height: auto;
+}
+
 /* ============================================================
 || 3.) Section Specific
 ============================================================ */
@@ -450,6 +459,10 @@ a:visited {
 	white-space: nowrap;
 	overflow: hidden;
 	font-size: .8em;
+}
+
+.node-type-article #article-share a {
+	display: block;
 }
 
 /* ============================================================
