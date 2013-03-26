@@ -41,7 +41,7 @@ a:visited {
 /* Header */
 
 #site-header {
-	padding: .55em 0 0 0;
+	/*padding: .55em 0 0 0;*/
 	display: inline-block; *display: inline; zoom: 1;
 	width: 100%;
 	vertical-align: top;
@@ -78,10 +78,16 @@ a:visited {
 }
 
 #site-user-nav {
-	font-size: .55em;
-	float: right;
 	clear: both;
 	font-weight: bold;
+	display: inline-block; *display: inline; zoom: 1;
+	vertical-align: bottom;
+	width: 100%;
+}
+
+#site-user-nav ul {
+	float: right;
+	font-size: .55em;
 }
 
 #site-user-nav a {
@@ -133,6 +139,7 @@ a:visited {
 
 #site-hot-nav li.last {
 	border-right: none;
+	padding-right: 0;
 }
 
 #site-hot-nav li a:hover {
@@ -141,7 +148,7 @@ a:visited {
 }
 
 #site-main-nav {
-	padding: .75em 0 .75em;
+	padding: 1em 0 .75em;
 	border-bottom: 1px solid #dbdbdb;
 	float: left;
 	clear: right;
@@ -167,7 +174,8 @@ a:visited {
 	margin-top: .5em;
 	background: #f7f7f7;
 	padding: .25em .1em .25em .5em;
-	float: right;
+	float: left;
+	margin-left: 1em;
 }
 
 #site-miss-nav a:hover {
@@ -193,12 +201,40 @@ a:visited {
 	float: right;
 }
 
+#site-search,
+#site-participant-nav {
+	margin: .5em 0;
+}
+
+#site-search .form-item {
+	float: left;
+	margin: 0;
+}
+
+#site-search .form-item input {
+	display: block;
+	width: 160px;
+	border: 1px solid #ccc;
+	margin: 0;
+	height: 34px;
+}
+
+#site-search .form-submit {
+	display: block;
+	float: left;
+	margin: 0;
+	width: 33px;
+	height: 34px;
+}
+
 #site-header #site-participant-nav {
 	color: #333;
 	border: 1px solid #d0d0d0;
-	padding: .5em .7em;
+	height: 34px;
+	padding-left: .75em;
 	text-shadow: 0 1px #fff;
 	float: left;
+	width: 193px;
 
 	background: #fdfdfd;
 	background: -moz-linear-gradient(top,  #fdfdfd 0%, #ececec 100%);
@@ -213,8 +249,19 @@ a:visited {
     box-shadow:          0px 1px 0px 0px rgba(0, 0, 0, 0.2), inset 0px 1px 0px 0px rgba(255, 255, 255, 1);
 }
 
+#site-header #site-participant-nav:after {
+	display: block;
+	float: right;
+	content: "\\\/";
+	border-left: 1px solid #d0d0d0;
+	height: 100%;
+	width: 33px;
+}
+
 #site-participant-nav p {
 	font-size: .9em;
+	line-height: 34px;
+	vertical-align: middle;
 }
 
 #site-participant-nav ul {
