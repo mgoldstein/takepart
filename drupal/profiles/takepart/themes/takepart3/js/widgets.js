@@ -400,7 +400,7 @@
   var methods = {
     _create: function (options) {
       this.options = $.extend({
-        'view_name': '',
+        'view_name': ''
       }, options);
       methods.init.apply(this);
     },

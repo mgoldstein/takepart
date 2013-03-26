@@ -164,14 +164,6 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
       );
       $completion = 'Action Page Completion';
     }
-    else {
-      $events = array(
-        'petition_action' => 'event64,event27',
-        'pledge_action' => 'event64,event32',
-        'action' => 'event64,event37',
-      );
-      $completion = 'Embedded Action Completion';
-    }
     $fired_events = $events[$entity->type];
 
     $type_name = node_type_get_name($entity);
