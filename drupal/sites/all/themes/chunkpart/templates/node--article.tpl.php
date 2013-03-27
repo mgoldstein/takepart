@@ -32,9 +32,17 @@
 	<header id="article-header">
 		<h1 id="article-headline"><?=_s($title) ?></h1>
 		<p id="article-abstract"><?=_s($field_article_subhead) ?></p>
-		<p id="article-badge">{Article Badge}</p>
-		<p id="article-date"><?=$date?><? //=date('F j, Y', )?></p>
-		<p id="article-author-name"><a href="{Author link}"><?=$author?></a></p>
+		<div class="secondary">
+			<p id="article-badge">{Article Badge}</p>
+			<p id="article-date"><?=$date?><? //=date('F j, Y', )?></p>
+			<ul id="article-author-names">
+				<? while ( $author = _seach($field_author) ): ?>
+					<li>
+						<a href="{Author link}"><?=$author->title->value() ?></a>
+					</li>
+				<? endwhile ?>
+			</ul>
+		</div>
 	</header>
 
 	<div id="article-sidebar">
