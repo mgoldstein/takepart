@@ -77,6 +77,7 @@ function _simage($var) {
   return theme_image($image);
 }
 
+// Rip out Drupal system classes
 function _smenu($menu_name) {
   $items = menu_tree($menu_name);
   foreach( $items as $ikey => &$item ) {
@@ -91,10 +92,22 @@ function _smenu($menu_name) {
   return render($items);
 }
 
+// Get a node
 function _snode($var) {
   if ( isset($var[0]) ) {
     return entity_metadata_wrapper('node', $var[0]['node']);
   }
+}
+
+// Loop through a node?
+function _seach(&$arr) {
+  $ea = each($arr);
+  if ( !$ea ) {
+    reset($arr);
+    return $ea;
+  }
+  if ( isset($ea['value']['node']) ) return entity_metadata_wrapper('node', $ea['value']['node']);
+  return null;
 }
 
 /*

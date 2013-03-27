@@ -11,7 +11,7 @@
 			*+html [selector] {}
 		Display inline-block on block-level element for IE6/7
 			div {
-				display: inline-block; *display: inline; zoom: 1;
+				display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
 			}
 */
 
@@ -80,8 +80,7 @@ a:visited {
 #site-user-nav {
 	clear: both;
 	font-weight: bold;
-	display: inline-block; *display: inline; zoom: 1;
-	vertical-align: bottom;
+	display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
 	width: 100%;
 }
 
@@ -447,6 +446,7 @@ body #at16pt {
 
 .node-type-article #article-header {
 	line-height: 1.5;
+	display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
 }
 
 .node-type-article #article-headline {
@@ -462,6 +462,37 @@ body #at16pt {
 	white-space: nowrap;
 	overflow: hidden;
 	font-size: .8em;
+}
+
+.node-type-article .secondary {
+	font-size: .65em;
+}
+
+.node-type-article #article-author-names,
+.node-type-article #article-author-names li,
+.node-type-article #article-author-names li a,
+.node-type-article #article-badge,
+.node-type-article #article-date {
+	float: left;
+}
+
+.node-type-article #article-author-names li {
+	padding-right: .25em;
+}
+
+.node-type-article #article-author-names li:last-child {
+	padding-right: 0;
+}
+
+.node-type-article #article-author-names li:after {
+	content: ", ";
+	display: block;
+	float: left;
+}
+
+.node-type-article #article-author-names li:last-child:after {
+	content: "";
+	display: none;
 }
 
 .node-type-article #article-social a {
