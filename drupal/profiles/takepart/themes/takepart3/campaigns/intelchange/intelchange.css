@@ -332,6 +332,11 @@
   float: left;
 }
 
+.page-wordlet-intelchange-home .intro-text {
+  margin-left: 95px;
+  margin-bottom: 65px;
+}
+
 .page-wordlet-intelchange-home .video-play {
   float: left;
   margin-left: -290px;
