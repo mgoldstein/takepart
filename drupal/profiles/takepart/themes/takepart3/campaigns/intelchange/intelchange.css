@@ -117,9 +117,6 @@
   text-decoration: none;
 
   -webkit-transition: background-color .2s ease-in-out;
-  -moz-transition: background-color .2s ease-in-out;
-  -o-transition: background-color .2s ease-in-out;
-  -ms-transition: background-color .2s ease-in-out;
   transition: background-color .2s ease-in-out;
 }
 
@@ -174,18 +171,23 @@
 /* CTA block */
 
 .cta {
-  background: rgb(1,144,214); /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover,  rgba(1,144,214,1) 0%, rgba(1,128,206,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(1,144,214,1)), color-stop(100%,rgba(1,128,206,1))); /* Chrome,Safari4+ */
-  background: -webkit-radial-gradient(center, ellipse cover,  rgba(1,144,214,1) 0%,rgba(1,128,206,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover,  rgba(1,144,214,1) 0%,rgba(1,128,206,1) 100%); /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover,  rgba(1,144,214,1) 0%,rgba(1,128,206,1) 100%); /* IE10+ */
-  background: radial-gradient(ellipse at center,  rgba(1,144,214,1) 0%,rgba(1,128,206,1) 100%); /* W3C */
+  background-color: rgb(1,144,214); /* Old browsers */
+  background-image: -moz-radial-gradient(center, ellipse cover,  rgba(1,144,214,0) 0%, rgba(1,128,206,1) 100%); /* FF3.6+ */
+  background-image: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(1,144,214,0)), color-stop(100%,rgba(1,128,206,1))); /* Chrome,Safari4+ */
+  background-image: -webkit-radial-gradient(center, ellipse cover,  rgba(1,144,214,0) 0%,rgba(1,128,206,1) 100%); /* Chrome10+,Safari5.1+ */
+  background-image: -o-radial-gradient(center, ellipse cover,  rgba(1,144,214,0) 0%,rgba(1,128,206,1) 100%); /* Opera 12+ */
+  background-image: -ms-radial-gradient(center, ellipse cover,  rgba(1,144,214,0) 0%,rgba(1,128,206,1) 100%); /* IE10+ */
+  background-image: radial-gradient(ellipse at center,  rgba(1,144,214,0) 0%,rgba(1,128,206,1) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0190d6', endColorstr='#0180ce',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+  -webkit-transition: background-color .2s ease-in-out;
+  transition: background-color .2s ease-in-out;
 }
 
-.cta:hover {
-  background: #027CBF;
+.cta:hover,
+.cta:active,
+.cta:focus {
+  background-color: #027CBF;
 }
 
 .cta a {
@@ -238,9 +240,6 @@
   font-weight: bold;
 
   -webkit-transition: color .2s ease-in-out;
-  -moz-transition: color .2s ease-in-out;
-  -o-transition: color .2s ease-in-out;
-  -ms-transition: color .2s ease-in-out;
   transition: color .2s ease-in-out;
 }
 
@@ -256,9 +255,6 @@
   margin-left: -24px;
 
   -webkit-transition: margin .2s ease-in-out;
-  -moz-transition: margin .2s ease-in-out;
-  -o-transition: margin .2s ease-in-out;
-  -ms-transition: margin .2s ease-in-out;
   transition: margin .2s ease-in-out;
 }
 
@@ -286,9 +282,6 @@
   text-transform: uppercase;
 
   -webkit-transition: background-color .2s ease-in-out;
-  -moz-transition: background-color .2s ease-in-out;
-  -o-transition: background-color .2s ease-in-out;
-  -ms-transition: background-color .2s ease-in-out;
   transition: background-color .2s ease-in-out;
 }
 
@@ -892,9 +885,6 @@
   border: none;
 
   -webkit-transition: background-color .2s ease-in-out;
-  -moz-transition: background-color .2s ease-in-out;
-  -o-transition: background-color .2s ease-in-out;
-  -ms-transition: background-color .2s ease-in-out;
   transition: background-color .2s ease-in-out;
 }
 .page-wordlet-intelchange-contest-enter #page .form-block.cms .form-item {
