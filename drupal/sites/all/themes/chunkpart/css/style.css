@@ -659,6 +659,7 @@ body #at16pt {
 
 .node-type-article #article-social {
 	padding-top: 1em;
+	z-index: 2;
 }
 
 .node-type-article #article-social .inner {
@@ -679,7 +680,6 @@ body #at16pt {
     position: relative !important;
     left: 0 !important;
     top: 0 !important;
-    z-index: 2;
 }
 
 .node-type-article #article-social.inside .inner {
