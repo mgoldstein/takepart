@@ -69,9 +69,10 @@ function _simage($var) {
   }
 
   if ( !isset($image['path']) ) {
-    if ( $wrapper = file_stream_wrapper_get_instance_by_uri($image['uri']) ) {
+    $image['path'] = file_create_url($image['uri']);
+    /*if ( $wrapper = file_stream_wrapper_get_instance_by_uri($image['uri']) ) {
       $image['path'] = $wrapper->realpath();
-    }
+    }*/
   }
 
   return theme_image($image);
