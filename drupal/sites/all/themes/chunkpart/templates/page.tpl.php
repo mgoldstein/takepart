@@ -113,12 +113,14 @@
     <section id="site-connect">
       <h4><?=t('Connect') ?></h4>
       <ul>
-        <li class="fb"><a href="http://www.facebook.com/takepart" target="_blank" name="&lpos=footer">facebook</a></li>
-        <li class="twitter"><a href="http://www.twitter.com/takepart" target="_blank" name="&lpos=footer">twitter</a></li>
-        <li class="pinterest"><a href="http://pinterest.com/takepart/" target="_blank"><img src="http://passets-ec.pinterest.com/images/about/buttons/big-p-button.png" width="25" height="25" alt="Follow Me on Pinterest" /></a></li>
-        <li class="googleplus"><a href="https://plus.google.com/113369936500827860065?prsrc=3" name="&lpos=footer" rel="publisher" style="text-decoration:none;" target="_blank" title="google plus"><img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt="google plus" style="border:0;width:24px;height:24px;" /></a></li>
-        <li class="youtube"><a href="http://www.youtube.com/takepart" target="_blank" name="&lpos=footer">youtube</a></li>
-        <li class="rss"><a href="/rss">rss</a></li>
+        <li class="facebook"><a href="http://www.facebook.com/takepart">Facebook</a></li>
+        <li class="twitter"><a href="http://www.twitter.com/takepart">Twitter</a></li>
+        <li class="google"><a href="https://plus.google.com/113369936500827860065?prsrc=3">Google+</a></li>
+        <li class="pinterest"><a href="http://pinterest.com/takepart/">Pinterest</a></li>
+        <li class="youtube"><a href="http://www.youtube.com/takepart">YouTube</a></li>
+        <li class="tumblr"><a href="#">YouTube</a></li>
+
+        <!-- li class="rss"><a href="/rss">RSS</a></li -->
       </ul>
     </section>
   </div>

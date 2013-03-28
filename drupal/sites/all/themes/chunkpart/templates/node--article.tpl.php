@@ -93,9 +93,21 @@
 			{Comments module}
 		</section>
 
+		<section class="follow_us">
+			<h3>Follow Us</h3>
+			<ul>
+				<li class="facebook"><a href="#">Facebook</a></li>
+				<li class="twitter"><a href="#">Twitter</a></li>
+				<li class="google"><a href="#">Google+</a></li>
+				<li class="pinterest"><a href="#">Pinterest</a></li>
+				<li class="youtube"><a href="#">YouTube</a></li>
+				<li class="tumblr"><a href="#">Tumblr</a></li>
+			</ul>
+		</section>
+
 <pre>
 -----------------
-<? var_dump(array_keys(get_defined_vars())) ?>
+<? //var_dump(array_keys(get_defined_vars())) ?>
 
 -----------------
 <? //_l($w) ?>
