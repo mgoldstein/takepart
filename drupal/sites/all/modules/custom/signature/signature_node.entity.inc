@@ -49,7 +49,8 @@ class SignatureNodeController extends EntityAPIController {
       'newsletter_opt_ins' => array(),
       'restrictions' => '',
       'terms_of_use' => "By signing, you accept TakePart's "
-      . '<a href="/terms-of-use" target="_blank">Terms of Use</a>.',
+      . '<a href="/terms-of-use" target="_blank">Terms of Use</a>.'
+        . " and " . '<a href="/privacy-policy">Privacy Policy</a>',
       'display_disclaimer' => implode(' ', array(
         'You may choose not to display your name on this website,',
         'but TakePart will include your name,',
