@@ -46,7 +46,7 @@
 	</header>
 
 	<div id="article-sidebar">
-		<aside id="article-social" class="social">
+		<aside id="article-social" class="social"><div class="inner">
 			<div id="article-tab">
 				{Take Action Button}
 			</div>
@@ -54,12 +54,12 @@
 			<p id="article-comments-link" class="comments-link">
 				<a href="#article-comments"><?=t('Comments') ?><span class="count"></span></a>
 			</p>
-		</aside>
+		</div></aside>
 
-		<aside id="article-author">
+		<aside id="article-author"><div class="inner">
 			<? if ( $author = _snode($field_author) ): ?>
 				<?=_simage($author->field_profile_photo->value())?>
-				<h3><?=$author->title->value() ?></h3>
+				<h3 class="headline"><?=$author->title->value() ?></h3>
 				<? if ( $abody = $author->body->value() ): ?>
 					<div class="body">
 						<?=$abody['summary'] ?>
@@ -68,12 +68,14 @@
 				<? endif ?>
 				{Follow me}
 			<? endif ?>
-		</aside>
+		</div></aside>
 	</div>
 
 	<div id="article-content">
-		<div id="article-body">
+		<div id="article-image">
 			<?=_simage($field_article_main_image)?>
+		</div>
+		<div id="article-body" class="cms">
 			<?=_s($body)?>
 		</div>
 

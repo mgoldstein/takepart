@@ -27,8 +27,10 @@ $(function() {
 	/* --------------------------------
 	| Page Specific ---------------- */
 	if ( $body.is('.node-type-article') ) {
+		$('#article-author').css('padding-top', $('#article-social').outerHeight());
+
 		// Sticky social nav on article page
-		$('#article-social').tpsticky({
+		$('#article-sidebar aside').tpsticky({
 			offsetNode: '#article-content'
 		});
 	}
