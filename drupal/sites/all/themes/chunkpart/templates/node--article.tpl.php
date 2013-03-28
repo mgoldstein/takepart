@@ -58,7 +58,9 @@
 
 		<aside id="article-author"><div class="inner">
 			<? if ( $author = _snode($field_author) ): ?>
-				<?=_simage($author->field_profile_photo->value())?>
+				<p class="image">
+					<?=_simage($author->field_profile_photo->value())?>
+				</p>
 				<h3 class="headline"><?=$author->title->value() ?></h3>
 				<? if ( $abody = $author->body->value() ): ?>
 					<div class="body">

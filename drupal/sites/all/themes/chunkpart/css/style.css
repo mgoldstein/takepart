@@ -547,6 +547,13 @@ body #at16pt {
 	/*transition: margin .2s ease-in-out;*/
 }
 
+.node-type-article #article-social.above {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    z-index: 2;
+}
+
 .node-type-article #article-social.inside .inner {
 	margin-top: 1em;
 }
@@ -567,6 +574,7 @@ body #at16pt {
     position: absolute !important;
     left: 0 !important;
     top: 0 !important;
+    z-index: 1;
 }
 
 .node-type-article #article-author .inner {
@@ -588,6 +596,10 @@ body #at16pt {
 	opacity: 0;
 }
 
+.node-type-article #article-author .image {
+	text-align: center;
+}
+
 .node-type-article #article-author .headline {
 	font-size: .7em;
 	font-weight: bold;
@@ -599,6 +611,15 @@ body #at16pt {
 
 .node-type-article #article-body {
 	font-size: .7em;
+}
+
+.node-type-article #article-image {
+	margin-bottom: 1em;
+}
+
+/* TODO: maybe just make this global */
+.node-type-article #article-image img {
+	max-width: 100%;
 }
 
 /* ============================================================
