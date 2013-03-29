@@ -684,26 +684,6 @@
   height: 100%;
   content: " ";
 }
-.page-wordlet-intelchange-contest #page .second-block .second-sub .instructions ol {
-  list-style: none;
-  font-size: 1.02em;
-}
-.page-wordlet-intelchange-contest #page .second-block .second-sub .instructions li {
-  margin-bottom: 1em;
-  padding-left: 42px;
-  line-height: 1.5em;
-  counter-increment: customlistcounter;
-  *list-style-type: decimal;
-  position: relative;
-}
-.page-wordlet-intelchange-contest #page .second-block .second-sub .instructions li:before {
-  content: counter(customlistcounter) " ";
-  font-weight: bold;
-  position: absolute;
-  left: 0px;
-  font-size: 2em;
-  top: 8px;
-}
 .page-wordlet-intelchange-contest #page .second-block .second-sub .important {
   margin: 30px 0 0 0;
 }

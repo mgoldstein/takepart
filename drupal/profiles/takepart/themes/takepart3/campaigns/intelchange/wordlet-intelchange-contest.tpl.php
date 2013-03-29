@@ -14,31 +14,27 @@
 
 <div class="second-block">
 	<div class="first-sub">
-		<h3><?=w('howto_header')?></h3>
-		<div class="cms">
-			<?=w('howto_body')?>
-		</div>
-		<p class="more">
-			<? if ( $w = w('howto_more') ): ?>
-				<a target='_blank' href="<?=$w->href?>"><?=$w->single?></a>
-			<? endif ?>
-		</p>
+		<h3><?=w('cta_header')?></h3>
+		<h4><?=w('cta_subheader')?></h4>
+		<? if ( $w = w('cta_image') ): ?>
+		<img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+		<? endif ?>
 	</div>
 
 	<div class="second-sub">
 		<div class="sub-wrapper">
-			<div class="instructions">
-				<ol <?=wa('instructions')?>>
-					<? foreach ( wl('instructions') as $w ): ?>
-						<li>
-							<?=$w?>
-						</li>
+			<div class="finalists-wrapper">
+				<ul class="finalists" <?=wa('finalists')?>>
+					<? foreach ( wl('finalists') as $w ): ?>
+						<li><a href="<?=wu('intelchange_voting')?>#<?=$w->token?>"><img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>"></a></li>
 					<? endforeach ?>
-				</ol>
+				</ul>
 			</div>
-
+			<p class="instructions">
+				<?=w('cta_instructions')?>
+			</p>
 			<p class="important">
-				<a href="<?=wu('intelchange_contest_enter')?>"><?=w('enter_the_contest')?></a>
+				<a href="<?=wu('intelchange_voting')?>"><?=w('view_finalists_cta')?></a>
 			</p>
 		</div>
 	</div>
