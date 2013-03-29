@@ -13,7 +13,7 @@
 </div>
 
 <div class="second-block">
-	<div class="first-sub">
+	<div class="first-sub" <?=wa('cta_image')?>>
 		<h3><?=w('cta_header')?></h3>
 		<h4><?=w('cta_subheader')?></h4>
 		<? if ( $w = w('cta_image') ): ?>
