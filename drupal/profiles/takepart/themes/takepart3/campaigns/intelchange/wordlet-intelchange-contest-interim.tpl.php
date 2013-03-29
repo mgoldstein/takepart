@@ -1,4 +1,4 @@
-<div class="first-block interim" <?=wa('first_block')?>>
+<div class="first-block" <?=wa('first_block')?>>
 	<? if ( $w = w('first_block') ): ?>
 		<p class="image">
 			<img src="<?=$w->img_src?>"/>
@@ -12,7 +12,39 @@
 	<? endif ?>
 </div>
 
-<div class="third-block interim">
+<div class="second-block">
+	<div class="first-sub">
+		<h3><?=w('howto_header')?></h3>
+		<div class="cms">
+			<?=w('howto_body')?>
+		</div>
+		<p class="more">
+			<? if ( $w = w('howto_more') ): ?>
+				<a target='_blank' href="<?=$w->href?>"><?=$w->single?></a>
+			<? endif ?>
+		</p>
+	</div>
+
+	<div class="second-sub">
+		<div class="sub-wrapper">
+			<div class="instructions">
+				<ol <?=wa('instructions')?>>
+					<? foreach ( wl('instructions') as $w ): ?>
+						<li>
+							<?=$w?>
+						</li>
+					<? endforeach ?>
+				</ol>
+			</div>
+
+			<p class="important">
+				<a href="<?=wu('intelchange_contest_enter')?>"><?=w('enter_the_contest')?></a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="third-block">
 	<h3><?=w('countries_header')?></h3>
 	<div class="countries-nav">
 		<ul <?=wa('countries')?>>
