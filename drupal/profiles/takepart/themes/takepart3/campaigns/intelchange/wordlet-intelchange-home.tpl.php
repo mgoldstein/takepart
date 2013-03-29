@@ -8,12 +8,14 @@
                     </p>
                 <? endif ?>
             </div>
-            <div class="intro-blurb">
-                <?=w('intro')?>
+            <div class="into-text">
+                <div class="intro-blurb">
+                    <?=w('intro')?>
+                </div>
+                <p class="intro-link">
+                    <?=w('intro_link')?>
+                </p>
             </div>
-            <p class="intro-link">
-                <?=w('intro_link')?>
-            </p>
         </div>
         <p class="video-play" <?=wa('video')?>>
             <? if ( w('video')->video ): ?>
