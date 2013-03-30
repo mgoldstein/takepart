@@ -14,10 +14,14 @@
 
 <div class="second-block">
 	<div class="first-sub" <?=wa('cta_image')?>>
-		<h3><?=w('cta_header')?></h3>
-		<h4><?=w('cta_subheader')?></h4>
+		<div class="header">
+			<h3><?=w('cta_header')?></h3>
+			<h4><?=w('cta_subheader')?></h4>
+		</div>
 		<? if ( $w = w('cta_image') ): ?>
-		<img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+		<div class="prize-image">
+			<img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+		</div>
 		<? endif ?>
 	</div>
 
@@ -30,9 +34,9 @@
 					<? endforeach ?>
 				</ul>
 			</div>
-			<p class="instructions">
+			<div class="instructions">
 				<?=w('cta_instructions')?>
-			</p>
+			</div>
 			<p class="important">
 				<a href="<?=wu('intelchange_voting')?>"><?=w('view_finalists_cta')?></a>
 			</p>
