@@ -436,6 +436,14 @@ a:visited {
 	background: url(../images/connect_linkedin.png) no-repeat;
 }
 
+#site-connect .youtube a {
+	background: url(../images/connect_youtube.png) no-repeat;
+}
+
+#site-connect .tumblr a {
+	background: url(../images/connect_tumblr.png) no-repeat;
+}
+
 /* ============================================================
 || 2.) Reusables/Modules
 ============================================================ */
