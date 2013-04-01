@@ -669,7 +669,8 @@
   text-align: center;
 }
 .page-wordlet-intelchange-contest #page .second-block .first-sub .header-block {
-  margin-bottom: 2.5em;
+  position: absolute;
+  top: 239px;
 }
 .page-wordlet-intelchange-contest #page .second-block .first-sub h3 {
   color: rgb(1, 141, 216);
