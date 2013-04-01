@@ -576,6 +576,39 @@ body #at16pt {
 	margin-bottom: .5em;
 }
 
+/* Badge */
+
+.node-type-article #article-badge {
+	height: 36px;
+	line-height: 26px;
+	margin: 0 20px;
+	position: relative;
+	background: url(../images/article_badge_blue_bg.png) left top repeat-x;
+	display: inline-block;
+	color: #fff;
+	font-weight: bold;
+}
+
+.node-type-article #article-badge:before {
+	background: url(../images/article_badge_blue_left.png) left top no-repeat;
+	height: 36px;
+	content: " ";
+	position: absolute;
+	top: 0;
+	left: -20px;
+	width: 20px;
+}
+
+.node-type-article #article-badge:after {
+	background: url(../images/article_badge_blue_right.png) left top no-repeat;
+	height: 36px;
+	content: " ";
+	position: absolute;
+	top: 0;
+	right: -20px;
+	width: 20px;
+}
+
 .node-type-article .secondary {
 	font-size: .65em;
 	line-height: 1;
@@ -759,22 +792,83 @@ body #at16pt {
 	max-width: 100%;
 }
 
+/* Next Article */
+.node-type-article #next-article {
+	margin-bottom: 1em;
+	font-size: .8em;
+}
+
+.node-type-article #next-article .headline {
+	text-transform: uppercase;
+	font-family: TradeGothicLTStdCnBold, sans-serif;
+}
+
 .node-type-article #next-article a {
 	display: block;
+	text-overflow: ellipsis;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-right: 2em;
+	position: relative;
+	line-height: 1.5em;
+	text-decoration: none;
 }
 
 .node-type-article #next-article a:hover {
 	opacity: .6;
+	text-decoration: underline;
 }
 
 .node-type-article #next-article a:after {
 	display: block;
-	float: right;
 	content: " ";
 	height: 1.5em;
 	width: 1.5em;
 	border-radius: 3em;
 	background: #28a9e9 url(../images/next_article_arrow.png) center center no-repeat;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+
+/* Article Tags */
+.node-type-article #article-tags {
+	display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
+	margin-bottom: 1em;
+	font-size: .55em;
+}
+
+.node-type-article #article-tags ul,
+.node-type-article #article-tags .headline,
+.node-type-article #article-tags li,
+.node-type-article #article-tags a {
+	float: left;
+}
+
+.node-type-article #article-tags a {
+	text-decoration: none;
+}
+
+.node-type-article #article-tags a:hover {
+	text-decoration: underline;
+}
+
+.node-type-article #article-tags .headline {
+	text-transform: uppercase;
+	padding-right: .25em;
+}
+
+.node-type-article #article-tags li:after {
+	content: ',';
+	padding-right: .25em;
+	display: block;
+	float: left;
+}
+
+.node-type-article #article-tags li:last-child:after {
+	display: none;
 }
 
 /* ============================================================

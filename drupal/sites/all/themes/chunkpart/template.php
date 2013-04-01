@@ -4,7 +4,12 @@
 
 // pretty print arrays
 function _l($someArray, $prepend = '') {
-    $someArray = (array) $someArray;
+    echo "<hr />";
+    if ( !is_array($someArray) && !is_object($someArray) ) {
+      echo '<div class="data"><span class="value">' . htmlspecialchars($v) . '</span></div>';
+    }
+
+    $someArray = (array)$someArray;
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
     foreach ($iterator as $k => $v) {
         //$indent = str_repeat('&nbsp;', 10 * $iterator->getDepth());
@@ -33,14 +38,15 @@ function _l($someArray, $prepend = '') {
 function _s($var) {
   if ( is_string($var) ) {
     return $var;
+  // Avoid doing ->value()
+  } elseif ( is_object($var) && get_class($var) == 'EntityValueWrapper' ) {
+    return $var->value();
+  // In case a node is passed to this function
+  } elseif ( isset($var[0]) && isset($var[0]['node']) ) {
+    return entity_metadata_wrapper('node', $var[0]['node']);
   // Body attribute
   } elseif ( isset($var[0]) && isset($var[0]['safe_value']) ) {
     return $var[0]['safe_value'];
-  } elseif ( isset($var['und']) && isset($var['und'][0]) && isset($var['und'][0]['safe_value']) ) {
-    return $var['und'][0]['safe_value'];
-  // Node
-  } elseif ( isset($var[0]) && $var[0]['node'] ) {
-    return $var[0]['node'];
   }
 }
 
@@ -57,13 +63,18 @@ function _sblock($var) {
 // return an image
 function _simage($var) {
   $image = null;
+  if ( is_object($var) && get_class($var) == 'EntityStructureWrapper' ) {
+    $var = $var->value();
+  }
+
   if ( isset($var['type']) && $var['type'] == 'image') {
     $image = $var;
   } elseif ( isset($var['und']) && isset($var['und'][0]) && isset($var['und'][0]['file']) ) {
+    echo 'Bad und stuff; plz fix :(';
     $image = (array)$var['und'][0]['file'];
-  } else
-  if ( isset($var['und']) && $var['und'][0] ) {
-    $image = $var['und'][0];
+  /*} elseif ( isset($var['und']) && $var['und'][0] ) {
+    echo 'und2';
+    $image = $var['und'][0];*/
   } else {
     return '';
   }
@@ -107,7 +118,13 @@ function _seach(&$arr) {
     reset($arr);
     return $ea;
   }
-  if ( isset($ea['value']['node']) ) return entity_metadata_wrapper('node', $ea['value']['node']);
+
+  if ( isset($ea['value']['node']) ) {
+    return entity_metadata_wrapper('node', $ea['value']['node']);
+  } elseif( isset($ea['value']['taxonomy_term']) ) {
+    return $ea['value']['taxonomy_term'];
+  }
+
   return null;
 }
 
