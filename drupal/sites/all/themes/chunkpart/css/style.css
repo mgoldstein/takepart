@@ -630,6 +630,8 @@ body #at16pt {
 	text-transform: uppercase;
 	padding: .25em 0 .25em 30px;
 	line-height: 24px;
+	text-decoration: none;
+	color: #000;
 }
 
 .node-type-article #article-tab,
