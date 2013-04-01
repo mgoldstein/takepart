@@ -380,13 +380,45 @@
   top: 35px;
 }
 
-.page-wordlet-intelchange-home .form-desc {
+/* second block - first sub */
+.page-wordlet-intelchange-home .first-sub {
   padding: 60px 55px;
-  width: 380px;
+  width: 405px;
   float: left;
 }
+.page-wordlet-intelchange-home #page .second-block .first-sub .vote-desc {
+  line-height: 1.5em;
+  margin-bottom: 1.5em;
+  font-size: .875em;
+}
+.page-wordlet-intelchange-home #page .second-block .first-sub .prize-image {
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+.page-wordlet-intelchange-home #page .second-block .first-sub .header-block {
+  margin-bottom: 2.5em;
+}
+.page-wordlet-intelchange-home #page .second-block .first-sub h3 {
+  color: rgb(1, 141, 216);
+  font-size: 2.500em;
+  margin-bottom: 0.425em;
+}
+.page-wordlet-intelchange-home #page .second-block .first-sub h4 {
+  font-size: 1.375em;
+  color: rgb(75, 54, 57);
+}
+.page-wordlet-intelchange-home #page .second-block .first-sub .important {
+  margin-bottom: 1.5em;
+}
+.page-wordlet-intelchange-home #page .second-block .first-sub .important a {
+  display: block;
+  padding: 1em 0;
+  text-align: center;
+  font-size: 1.143em;
+}
 
-.page-wordlet-intelchange-home .second-block .form_wrapper {
+/* second block - second sub */
+.page-wordlet-intelchange-home .second-block .second-sub {
   width: 425px;
   float: left;
   margin-right: 30px;
@@ -397,7 +429,7 @@
   color: #fff;
 }
 
-.page-wordlet-intelchange-home .second-block .form_wrapper:after {
+.page-wordlet-intelchange-home .second-block .second-sub:after {
   -ms-transform: rotate(0.5deg);
   -moz-transform: rotate(0.5deg);
   -webkit-transform: rotate(0.5deg);
@@ -419,7 +451,7 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-.page-wordlet-intelchange-home .second-block .form_wrapper div {
+.page-wordlet-intelchange-home .second-block .second-sub div {
   position: relative;
   z-index: 1;
 }

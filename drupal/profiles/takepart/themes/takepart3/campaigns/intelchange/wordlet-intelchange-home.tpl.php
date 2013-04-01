@@ -37,19 +37,29 @@
 </div>
 
 <div class="second-block">
-    <div class="form-desc">
-        <h2><?=w('form_desc_header')?></h2>
-        <div class="form-blurb cms">
-            <?=w('form_blurb')?>
+    <div class="first-sub" <?=wa('cta_image')?>>
+        <div class="header-block">
+            <h3><?=w('cta_header')?></h3>
+            <h4><?=w('cta_subheader')?></h4>
         </div>
-        <? if ( $w = w('contest_more') ): ?>
-            <p class="more">
-                <a href="<?=$w->href?>"><?=$w->single?></a>
-            </p>
+        <? if ( $w = w('cta_image') ): ?>
+        <div class="prize-image">
+            <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+        </div>
         <? endif ?>
+        <div class="vote-desc">
+            <?=w('vote_desc')?>
+        </div>
+        <p class="important">
+            <a href="<?=wu('intelchange_voting')?>"><?=w('view_finalists_cta')?></a>
+        </p>
+
+        <p class="more">
+            <a href="<?=wu('intelchange_contest')?>"><?=w('contest_more_label')?></a>
+        </p>
     </div>
 
-    <div class="form_wrapper">
+    <div class="second-sub">
         <div class="default-state">
             <div class="default-content">
                 <h3><?=w('default_header')?></h3>
