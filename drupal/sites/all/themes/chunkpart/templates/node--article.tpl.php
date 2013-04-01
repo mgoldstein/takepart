@@ -38,7 +38,7 @@
 			<ul id="article-author-names">
 				<? while ( $author = _seach($field_author) ): ?>
 					<li>
-						<a href="{Author link}"><?=$author->title->value() ?></a>
+						<a href="{Author link}"><?=_s($author->title) ?></a>
 					</li>
 				<? endwhile ?>
 			</ul>
@@ -59,9 +59,9 @@
 		<aside id="article-author"><div class="inner">
 			<? if ( $author = _snode($field_author) ): ?>
 				<p class="image">
-					<?=_simage($author->field_profile_photo->value())?>
+					<?=_simage($author->field_profile_photo)?>
 				</p>
-				<h3 class="headline"><?=$author->title->value() ?></h3>
+				<h3 class="headline"><?=_s($author->title) ?></h3>
 				<? if ( $abody = $author->body->value() ): ?>
 					<div class="body">
 						<?=$abody['summary'] ?>
@@ -77,14 +77,33 @@
 		<div id="article-image">
 			<?=_simage($field_article_main_image)?>
 		</div>
+
 		<div id="article-body" class="cms">
 			<?=_s($body)?>
 		</div>
 
 		<footer id="article-footer">
 			<nav id="next-article">
-				<p><?=t('Next Article') ?></p>
-				<p><a href="#">{Next Article}</a></p>
+				<h3 class="headline"><?=t('Next Article') ?></h3>
+				<p><a href="#">{Next Article Next Article Next Article Next Article Next Article Next Article}</a></p>
+			</nav>
+			<nav id="article-tags">
+				<h3 class="headline">
+					<?=t('Get More:') ?>
+				</h3>
+				<ul>
+					<? while ( $tag = _seach($field_topic) ): ?>
+						<li>
+							<a href="#"><?=$tag->name ?></a>
+						</li>
+					<? endwhile ?>
+
+					<? while ( $tag = _seach($field_free_tag) ): ?>
+						<li>
+							<a href="#"><?=$tag->name ?></a>
+						</li>
+					<? endwhile ?>
+				</ul>
 			</nav>
 		</footer>
 
@@ -94,23 +113,22 @@
 		</section>
 
 		<section class="follow_us">
-			<h3>Follow Us</h3>
+			<h3><?=t('Follow Us') ?></h3>
 			<ul>
-				<li class="facebook"><a href="#">Facebook</a></li>
-				<li class="twitter"><a href="#">Twitter</a></li>
-				<li class="google"><a href="#">Google+</a></li>
-				<li class="pinterest"><a href="#">Pinterest</a></li>
-				<li class="youtube"><a href="#">YouTube</a></li>
-				<li class="tumblr"><a href="#">Tumblr</a></li>
+				<li class="facebook"><a href="#"><?=t('Facebook') ?></a></li>
+				<li class="twitter"><a href="#"><?=t('Twitter') ?></a></li>
+				<li class="google"><a href="#"><?=t('Google+') ?></a></li>
+				<li class="pinterest"><a href="#"><?=t('Pinterest') ?></a></li>
+				<li class="youtube"><a href="#"><?=t('YouTube') ?></a></li>
+				<li class="tumblr"><a href="#"><?=t('Tumblr') ?></a></li>
 			</ul>
 		</section>
 
 <pre>
 -----------------
-<? //var_dump(array_keys(get_defined_vars())) ?>
+<? var_dump(array_keys(get_defined_vars())) ?>
 
 -----------------
-<? //_l($w) ?>
 -----------------
 </pre>
 	</div>
