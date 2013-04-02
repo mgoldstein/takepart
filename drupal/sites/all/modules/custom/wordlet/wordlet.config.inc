@@ -499,6 +499,25 @@ function _wordlet_configuration() {
       'load' => array('site', 'intelchange_campaign'),
     ),
 
+    // Intel For Change - Vote
+    'intelchange_vote' => array(
+      'title' => 'Intel For Change - Vote',
+      'path' => 'intelforchangedev/vote',
+      'published' => FALSE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'campaigns/reset.css',
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
     // Intel For Change - Take Action
     'intelchange_action' => array(
       'title' => 'Intel For Change - Take Action',
