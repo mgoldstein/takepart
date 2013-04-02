@@ -3,15 +3,15 @@
 </div>
 
 <header id="site-header" role="banner">
-  <nav id="site-user-nav">
-    <?=$user_nav ?>
-  </nav>
-
   <p id="site-logo">
     <a href="/"><img src="<?=$logo?>" alt="TakePart" role="logo" /></a>
   </p>
 
   <div id="site-navs">
+    <nav id="site-user-nav">
+      <?=$user_nav ?>
+    </nav>
+
     <nav id="site-main-nav">
       <?=_smenu('main-menu') ?>
     </nav>

@@ -1,0 +1,68 @@
+/*
+	TOC:
+	1.) General Site Layout
+	2.) Reusables/Modules
+	3.) Section Specific
+	4.) Page Specific
+*/
+
+/* ============================================================
+|| 1.) General Site Layout
+============================================================ */
+
+@media all and (max-width: 480px) {
+	* {
+		max-width: 100% !important;
+	}
+
+	body {
+		font-size: 15px;
+	}
+
+	#site-participant-nav {
+		display: none;
+	}
+}
+
+/* ============================================================
+|| 2.) Reusables/Modules
+============================================================ */
+
+@media all and (max-width: 480px) {
+	.tpsticky_main {
+		position: static !important;
+		margin-top: inherit !important;
+		padding-top: inherit !important;
+	}
+}
+
+/* ============================================================
+|| 3.) Section Specific
+============================================================ */
+
+
+/* ============================================================
+|| 4.) Page Specific
+============================================================ */
+
+@media all and (max-width: 480px) {
+	.node-type-article #article-sidebar {
+		float: none;
+	}
+
+	.node-type-article #article-author.above {
+		position: static !important;
+	}
+
+	.node-type-article #article-sidebar {
+		width: auto;
+	}
+
+	.node-type-article #article-social {
+		width: auto !important;
+	}
+
+	.node-type-article #article-content {
+		width: auto;
+	}
+}
