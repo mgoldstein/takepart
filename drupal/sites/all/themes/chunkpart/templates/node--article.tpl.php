@@ -1,44 +1,14 @@
-<? /*
-<h1>Article Node Template Variables</h1>
-<dl>
-  <?php foreach(array_keys($variables) as $name): ?>
-    <dt><?php print $name; ?></dt>
-    <dd><pre><?php
-      $repr = print_r($variables[$name], TRUE);
-      print htmlentities($repr);
-    ?></pre></dd>
-  <?php endforeach; ?>
-</dl>
-* /
-?>
-<pre>
-<?=drupal_realpath('public://profiles/photos/AbbySchanfield.jpg');?>
-
-<?=theme('image', $variables)?>
-<? 
-	var_dump(array_keys($variables));
-	var_dump($node);
-?>
-</pre>
-
-<?=render(field_view_field('node', $node, 'body')); ?>
- 
-
-<?*/
-
-?>
-
 <article id="article-main">
 	<header id="article-header">
 		<h1 id="article-headline"><?=_s($title) ?></h1>
 		<p id="article-abstract"><?=_s($field_article_subhead) ?></p>
 		<div class="secondary">
-			<p id="article-badge">{Article Badge}</p>
+			<p id="article-badge"><a href="#">{Article Badge}</a></p>
 			<p id="article-date"><?=$date?><? //=date('F j, Y', )?></p>
 			<ul id="article-author-names">
 				<? while ( $author = _seach($field_author) ): ?>
 					<li>
-						<a href="{Author link}"><?=_s($author->title) ?></a>
+						<a href="<?=_surl($author)?>"><?=$author->title ?></a>
 					</li>
 				<? endwhile ?>
 			</ul>
@@ -59,13 +29,14 @@
 		<aside id="article-author"><div class="inner">
 			<? if ( $author = _snode($field_author) ): ?>
 				<p class="image">
-					<?=_simage($author->field_profile_photo)?>
+					<?=_simage($author, 'field_profile_photo')?>
 				</p>
-				<h3 class="headline"><?=_s($author->title) ?></h3>
-				<? if ( $abody = $author->body->value() ): ?>
+				<h3 class="headline"><?=$author->title ?></h3>
+
+				<? if ( $abody = _s($author, 'body') ): ?>
 					<div class="body">
 						<?=$abody['summary'] ?>
-						<a href="#">{Full Bio}</a>
+						<a href="<?=_surl($field_author)?>"><?=t('Full Bio') ?></a>
 					</div>
 				<? endif ?>
 				{Follow me}
@@ -75,7 +46,7 @@
 
 	<div id="article-content">
 		<div id="article-image">
-			<?=_simage($field_article_main_image)?>
+			<?=_simage($node, 'field_article_main_image')?>
 		</div>
 
 		<div id="article-body" class="cms">
@@ -91,16 +62,17 @@
 				<h3 class="headline">
 					<?=t('Get More:') ?>
 				</h3>
+
 				<ul>
 					<? while ( $tag = _seach($field_topic) ): ?>
 						<li>
-							<a href="#"><?=$tag->name ?></a>
+							<a href="<?=_surl($tag) ?>"><?=$tag->name ?></a>
 						</li>
 					<? endwhile ?>
 
 					<? while ( $tag = _seach($field_free_tag) ): ?>
 						<li>
-							<a href="#"><?=$tag->name ?></a>
+							<a href="<?=_surl($tag) ?>"><?=$tag->name ?></a>
 						</li>
 					<? endwhile ?>
 				</ul>

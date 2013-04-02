@@ -35,9 +35,12 @@ function _l($someArray, $prepend = '') {
 }
 
 // return safe variable
-function _s($var) {
+function _s($var, $prop = NULL, $type = 'node') {
   if ( is_string($var) ) {
     return $var;
+  } elseif ( is_object($var) && $prop ) {
+    $ret = field_get_items($type, $var, $prop);
+    return $ret[0];
   // Avoid doing ->value()
   } elseif ( is_object($var) && get_class($var) == 'EntityValueWrapper' ) {
     return $var->value();
@@ -50,6 +53,20 @@ function _s($var) {
   }
 }
 
+/* Return a URL */
+function _surl($var) {
+  if ( is_array($var) && isset($var[0]) && isset($var[0]['node']) ) {
+    return url('node/' . $var[0]['node']->nid);
+  } elseif ( is_array($var) && isset($var['node']) ) {
+    return url('node/' . $var['node']->nid);
+  } elseif ( is_object($var) ) {
+    return url('node/' . $var->nid);
+  } elseif ( $var->_surl ) {
+    return $var->_surl;
+  }
+  return '/';
+}
+
 // return a block
 function _sblock($var) {
   // Only print blocks
@@ -60,8 +77,13 @@ function _sblock($var) {
   return '';
 }
 
+
 // return an image
-function _simage($var) {
+function _simage($var, $prop = NULL, $type = 'node') {
+  if ( is_object($var) && $prop ) {
+    $var = field_get_items($type, $var, $prop);
+  }
+
   $image = null;
   if ( is_object($var) && get_class($var) == 'EntityStructureWrapper' ) {
     $var = $var->value();
@@ -69,29 +91,28 @@ function _simage($var) {
 
   if ( isset($var['type']) && $var['type'] == 'image') {
     $image = $var;
-  } elseif ( isset($var['und']) && isset($var['und'][0]) && isset($var['und'][0]['file']) ) {
-    echo 'Bad und stuff; plz fix :(';
-    $image = (array)$var['und'][0]['file'];
-  /*} elseif ( isset($var['und']) && $var['und'][0] ) {
-    echo 'und2';
-    $image = $var['und'][0];*/
+  } elseif ( isset($var[0]) && isset($var[0]['file']) ) {
+    $image = (array)$var[0]['file'];
+  } elseif ( isset($var[0]) ) {
+    $image = $var[0];
   } else {
     return '';
   }
 
   if ( !isset($image['path']) ) {
     $image['path'] = file_create_url($image['uri']);
-    /*if ( $wrapper = file_stream_wrapper_get_instance_by_uri($image['uri']) ) {
-      $image['path'] = $wrapper->realpath();
-    }*/
   }
 
   return theme_image($image);
 }
 
 // Rip out Drupal system classes
-function _smenu($menu_name) {
-  $items = menu_tree($menu_name);
+function _smenu($menu) {
+  if ( is_string($menu) ) {
+    $items = menu_tree($menu);
+  } elseif ( is_array($menu) ) {
+    $items = $menu;
+  }
   foreach( $items as $ikey => &$item ) {
     foreach ( $item['#attributes']['class'] as $ckey => $class ) {
       if ( $class == 'leaf' ) {
@@ -107,21 +128,29 @@ function _smenu($menu_name) {
 // Get a node
 function _snode($var) {
   if ( isset($var[0]) ) {
-    return entity_metadata_wrapper('node', $var[0]['node']);
+    return $var[0]['node'];
   }
 }
 
 // Loop through a node?
-function _seach(&$arr) {
-  $ea = each($arr);
+function _seach(&$var /*, $prop = null, $type = 'node'*/ ) {
+  /*if ( is_object($var) && $prop ) {
+    $var = field_get_items($type, $var, $prop);
+  }*/
+
+  if ( !is_array($var) ) return null;
+
+  $ea = each($var);
   if ( !$ea ) {
-    reset($arr);
+    reset($var);
     return $ea;
   }
 
   if ( isset($ea['value']['node']) ) {
-    return entity_metadata_wrapper('node', $ea['value']['node']);
+    return $ea['value']['node'];
   } elseif( isset($ea['value']['taxonomy_term']) ) {
+    $uri = entity_uri('taxonomy_term', $ea['value']['taxonomy_term']);
+    $ea['value']['taxonomy_term']->_surl = url($uri['path']);
     return $ea['value']['taxonomy_term'];
   }
 
@@ -132,6 +161,7 @@ function _seach(&$arr) {
   Preprocess
 */
 
+// Don't let nasty Drupal classes get put on the menu ul's
 function chunkpart_menu_tree($variables) {
   return '<ul>' . $variables['tree'] . '</ul>';
 }
@@ -148,73 +178,33 @@ function chunkpart_preprocess_page(&$variables) {
  */
 function _render_tp3_user_menu($variables) {
     // dpm($vars);
-    $menu_data = menu_tree_page_data("user-menu");
-    $uri = drupal_get_path_alias($_GET['q']);
-    $uri_substr = substr($uri, 0, 14);
-    $links = array();
-    foreach ($menu_data as $menu_item) {
-        $opts = array(
-            'attributes' => _default_menu_options($menu_item),
-        );
-        if (($uri_substr == 'bsd/header') || ($uri_substr == 'bsd/footer')) {
-            $opts['absolute'] = TRUE;
-        }
+    $menu_data = menu_tree_page_data('user-menu');
 
-        $opts['attributes']['class'][] = 'user-menu-' . strtolower($menu_item['link']['title']);
-
-        if (empty($opts['attributes']['title'])) {
-            unset($opts['attributes']['title']);
-        }
-
-        if ($menu_item['link']['href'] == 'user') {
-            if (user_is_logged_in()) {
+    foreach ( $menu_data as &$menu_item ) {
+        if ( $menu_item['link']['href'] == 'user' ) {
+            if ( user_is_logged_in() ) {
                 global $user;
-                if (function_exists('_takepart_facebookapis_get_user_session')) {
+                if ( function_exists('_takepart_facebookapis_get_user_session') ) {
                     $fbsession = _takepart_facebookapis_get_user_session();
                     $username = $fbsession->name;
-                    if ($username == '') {
+                    if ( $username == '' ) {
                         $username = $user->name;
                     }
                 } else {
                     $username = $user->name;
                 }
 
-                if ($variables['node']->type == 'venue' || $variables['node']->type == 'action'
-                        || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action'
-                        || (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context']))) {
-                    if (strlen($username) > 10 && isset($fbsession->first_name) && isset($fbsession->last_name)) {
-                        $username = $fbsession->first_name . " " . substr($fbsession->last_name, 0, 1);
-                        if (strlen($username) < 10) {
-                            $username = $username . ".";
-                        }
-                    }
-                    if (strlen($username) > 10) {
-                        $username = substr($username, 0, 10) . "…";
-                    }
-                }
                 $menu_item['link']['title'] = $username;
                 $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');
             } else {
-                $opts['attributes']['class'][] = 'join-login';
-                $opts['query'] = drupal_get_destination();
+                $menu_item['link']['localized_options']['query'] = drupal_get_destination();
                 $menu_item['link']['title'] = variable_get("takepart_user_login_link_name", "Login");
-            }
-        } else {
-            switch ($menu_item['link']['href']) {
-                case 'user/register':
-                    $opts['attributes']['class'][] = 'join-takepart';
-                    break;
+                $menu_item['link']['hidden'] = 0;
             }
         }
-        if (empty($menu_item['link']['href'])) {
-            $link = $menu_item['link']['title'];
-        } else {
-            $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-        }
-        $links[] = '<li class="login-' . count($links) . '">' . $link . "</li>";
     }
-    $output = "<ul id='user-nav'>" . implode($links) . "</ul>";
-    return $output;
+
+    return _smenu(menu_tree_output($menu_data));
 }
 
 function _default_menu_options($menu_item) {
