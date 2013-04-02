@@ -10,13 +10,6 @@ if (!tp.analytics) {
 
 (function ($) {
 
-    var view_modes = {
-        'full': 'Full Page',
-        'embedaction': 'Embedded',
-        'embedaction_expanded': 'Embedded',
-        'thank_you': 'Full Page'
-    };
-
     $(document).ready(function () {
         $('.more-actions .button').click(function (event) {
             $('body').analyticstracking('fireInstance', 'see_more_actions_click');
