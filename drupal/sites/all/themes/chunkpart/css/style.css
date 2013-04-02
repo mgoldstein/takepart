@@ -227,9 +227,12 @@ a:visited {
 	margin: 0;
 	width: 33px;
 	height: 34px;
-	background: #fff;
 	border: 1px solid #ccc;
 	border-left: none;
+	background: #fff url(../images/search_submit.png) center center no-repeat;
+	text-indent: 100%;
+	line-height: 200px;
+	overflow: hidden;
 }
 
 #site-header #site-participant-nav {
