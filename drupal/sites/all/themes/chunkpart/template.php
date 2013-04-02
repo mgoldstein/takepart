@@ -113,10 +113,14 @@ function _smenu($menu) {
   } elseif ( is_array($menu) ) {
     $items = $menu;
   }
+
+  // Strip drupal system class
   foreach( $items as $ikey => &$item ) {
     foreach ( $item['#attributes']['class'] as $ckey => $class ) {
       if ( $class == 'leaf' ) {
-        unset($items[$ikey]['#attributes']['class'][$ckey]);
+        // Pretty hacky, but whatcha gonna do :\
+        //unset($items[$ikey]['#attributes']['class'][$ckey]);
+        $items[$ikey]['#attributes']['class'][$ckey] = 'text-' . preg_replace('/[^a-z]+/', '_', strtolower($items[$ikey]['#title']));
         break;
       }
     }
