@@ -9,7 +9,7 @@ $.fn.tpsticky = function(parameters) {
 	}, parameters);
 
 	return this.each(function() {
-		var $this = $(this);
+		var $this = $(this).addClass(settings.prepend + 'main');
 		var $offset = settings.offsetNode || $this.parent();
 		$offset = $($offset);
 

@@ -37,6 +37,7 @@ stylesheets-conditional[IE][all][] = css/typeface_ie.css
 stylesheets[all][] = css/reset.css
 stylesheets[all][] = css/normalize_cms.css
 stylesheets[all][] = css/style.css
+stylesheets[all][] = css/responsive.css
 
 ;-------------- JS -------------
 scripts[] = js/tpsticky.jquery.js
