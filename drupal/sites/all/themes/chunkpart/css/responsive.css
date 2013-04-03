@@ -17,13 +17,20 @@
 
 	body {
 		font-size: 15px;
-		background: #fff;
+		background: #000;
 	}
 
 	#site-header {
 		padding: 1em;
 		min-height: auto;
 		overflow: hidden;
+		background: #fff;
+		position: relative;
+		z-index: 10;
+	}
+
+	.clickedon #site-header {
+		overflow: visible;
 	}
 
 	#site-header:after {
@@ -34,6 +41,14 @@
 		background: url(../images/sitenav_open.png) left top no-repeat;
 		width: 25px;
 		height: 25px;
+	}
+
+	.clickedon #site-header:after {
+		background: url(../images/sitenav_close.png) left top no-repeat;
+	}
+
+	.clickedon main {
+		opacity: .2;
 	}
 
 	#site-participant-nav {
@@ -53,6 +68,19 @@
 		position: static;
 	}
 
+	#site-navs #site-main-nav ul,
+	#site-navs #site-main-nav li,
+	#site-main-nav {
+		float: none;
+	}
+
+	#site-main-nav a {
+		display: block;
+		padding: 1rem 1rem 1rem 4.7rem;
+		border-top: 1px solid #dbdbdb;
+		font-size: 1.2em;
+	}
+
 	#site-hot-nav {
 		display: none;
 	}
@@ -64,6 +92,8 @@
 	#site-navs {
 		position: absolute;
 		top: 100%;
+		background: #eff3f5;
+		left: 0;
 	}
 
 	#site-more-navs {
