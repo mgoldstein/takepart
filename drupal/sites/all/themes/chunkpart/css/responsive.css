@@ -26,6 +26,16 @@
 		overflow: hidden;
 	}
 
+	#site-header:after {
+		padding-left: 1em;
+		content: " ";
+		float: right;
+		display: block;
+		background: url(../images/sitenav_open.png) left top no-repeat;
+		width: 25px;
+		height: 25px;
+	}
+
 	#site-participant-nav {
 		display: none;
 	}
@@ -54,6 +64,10 @@
 	#site-navs {
 		position: absolute;
 		top: 100%;
+	}
+
+	#site-more-navs {
+		float: left;
 	}
 
 	#site-footer {
