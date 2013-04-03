@@ -52,16 +52,20 @@ function _googlenews_getgooglenews() {
     $content .= '<loc>' . url('node/' . $node->nid, array('absolute' => TRUE)) . '</loc>';
     $content .= '<n:news>';
     $content .= '<n:publication>';
-      $content .= '<n:name>' . variable_get('site_name', 'Drupal') . '</n:name>';
-      $content .= '<n:language>' . check_plain($language_content->language) . '</n:language>';
+    $content .= '<n:name>' . variable_get('site_name', 'Drupal') . '</n:name>';
+    $content .= '<n:language>' . check_plain($language_content->language) . '</n:language>';
     $content .= '</n:publication>';
     $content .= '<n:title>' . check_plain($node->title) . '</n:title>';
     $content .= '<n:publication_date>' . gmdate(DATE_W3C, $node->created) . '</n:publication_date>';
     $content .= '</n:news>';
     $content .= '</url>';
+    $content .= '<n:genres>Article</n:genres>';
+    $content .= '<n:keywords>Arts, Entertainment, Action, Impact, Culture, Education, Environment, Fashion, Film, Food, Gay Rights, Green, Health, Human Rights, Hunger, Innovation, Lifestyle, News, Opinion, Politics, Social Justice, Technology, Travel, Water, Wildlife, World </n:keywords>';
+   
   }
 
   $content .= '</urlset>';
+
 
   drupal_add_http_header('Content-Type', 'text/xml; charset=utf-8');
   print $content;
