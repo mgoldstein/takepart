@@ -15,12 +15,47 @@ $body
 
 // Document Ready
 $(function() {
+	// Adding tab support to participant nav
 	var $site_participant_nav = $('#site-participant-nav')
 		.bind('focusin', function() {
 			$site_participant_nav.addClass('focusin');
 		})
 		.bind('focusout', function() {
 			$site_participant_nav.removeClass('focusin');
+		});
+
+	// Responsive nav
+	var nav = '#site-header';
+	var $nav = $('#site-header');
+
+	var click = 'click';
+	var is_touchmove = false;
+	if ( 'ontouchend' in document.documentElement ) click = 'touchend';
+
+	$body
+		.delegate(nav, 'touchmove', function () {
+			is_touchmove = true;
+		})
+		.delegate(nav, click, function () {
+			if ( click == 'touchend' && is_touchmove ) {
+				is_touchmove = false;
+				return true;
+			}
+
+			if ( $body.is('.clickedon') ) {
+				$body.removeClass('clickedon');
+			} else {
+				$body.addClass('clickedon');
+			}
+		})
+		.delegate(nav + ' a', click, function (e) {
+			e.stopPropagation();
+		})
+		.delegate(nav, 'focusin', function (e) {
+			$body.addClass('clickedon');
+		})
+		.delegate(nav, 'focusout', function (e) {
+			$body.removeClass('clickedon');
 		});
 
 
