@@ -15,6 +15,19 @@ $body
 
 // Document Ready
 $(function() {
+	// Social share buttons
+	var tp_social_defaults = {
+		services: [
+			{name: 'facebook'},
+			{name: 'twitter'},
+			{name: 'googleplus'},
+			{name: 'reddit'},
+			{name: 'email'}
+		]
+	};
+
+	$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_defaults);
+
 	// Adding tab support to participant nav
 	var $site_participant_nav = $('#site-participant-nav')
 		.bind('focusin', function() {

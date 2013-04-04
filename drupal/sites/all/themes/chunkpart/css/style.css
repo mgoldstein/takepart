@@ -695,7 +695,7 @@ body #at16pt {
 	font-size: 13px;
 	font-family: TradeGothicLTStdCnBold, sans-serif;
 	text-transform: uppercase;
-	padding: .25em 0 .25em 30px;
+	padding: .25em 0;
 	line-height: 24px;
 	text-decoration: none;
 	color: #000;
@@ -710,28 +710,38 @@ body #at16pt {
 	opacity: .6;
 }
 
-.node-type-article #article-social .tp-social-facebook {
-	background: url(../images/share_facebook.png) left center no-repeat;
+.node-type-article #article-social #article-comments-link a:before,
+.node-type-article #article-social .tp-social-link:before {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	content: " ";
+	vertical-align: middle;
+	padding-right: .5em;
 }
 
-.node-type-article #article-social .tp-social-twitter {
-	background: url(../images/share_twitter.png) left center no-repeat;
+.node-type-article #article-social .tp-social-facebook:before {
+	background: url(../images/share_facebook.png) left top no-repeat;
 }
 
-.node-type-article #article-social .tp-social-googleplus {
-	background: url(../images/share_google.png) left center no-repeat;
+.node-type-article #article-social .tp-social-twitter:before {
+	background: url(../images/share_twitter.png) left top no-repeat;
 }
 
-.node-type-article #article-social .tp-social-email {
-	background: url(../images/share_email.png) left center no-repeat;
+.node-type-article #article-social .tp-social-googleplus:before {
+	background: url(../images/share_google.png) left top no-repeat;
 }
 
-.node-type-article #article-social .tp-social-reddit {
-	background: url(../images/share_reddit.png) left center no-repeat;
+.node-type-article #article-social .tp-social-email:before {
+	background: url(../images/share_email.png) left 1px no-repeat;
 }
 
-.node-type-article #article-social #article-comments-link a {
-	background: url(../images/share_comments.png) left center no-repeat;
+.node-type-article #article-social .tp-social-reddit:before {
+	background: url(../images/share_reddit.png) left top no-repeat;
+}
+
+.node-type-article #article-social #article-comments-link a:before {
+	background: url(../images/share_comments.png) left 2px no-repeat;
 }
 
 .node-type-article #article-social {

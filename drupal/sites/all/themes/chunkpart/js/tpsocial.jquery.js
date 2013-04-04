@@ -365,26 +365,9 @@ $.tpsocial.add_service({
 	}
 });
 
-
-$(function() {
-	var tp_social_defaults = {
-		services: [
-			{name: 'facebook'},
-			{name: 'twitter'},
-			{name: 'googleplus'},
-			{name: 'reddit'},
-			{name: 'email'}
-		]
-	};
-
-	$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_defaults);
-});
-
 // -----------------------------------------------
 // Old: (Only PATT Alumni Gallery ----------------
 // -----------------------------------------------
-
-
 
 // Setup
 var open_link = function(link, network) {
