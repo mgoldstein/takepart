@@ -98,8 +98,7 @@
 
 <pre>
 -----------------
-<? var_dump(array_keys(get_defined_vars())) ?>
-
+<? //var_dump(array_keys(get_defined_vars())) ?>
 -----------------
 -----------------
 </pre>
