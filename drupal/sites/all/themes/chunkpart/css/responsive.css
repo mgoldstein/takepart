@@ -17,23 +17,40 @@
 
 	body {
 		font-size: 15px;
-		background: #000;
 	}
 
 	#site-header {
-		padding: 1em;
+		padding: 0;
+		min-height: auto;
+		position: static;
+	}
+
+	#site-header-inner {
+		padding: .5em 1em;
 		min-height: auto;
 		overflow: hidden;
 		background: #fff;
 		position: relative;
 		z-index: 10;
+		display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
+		width: 100%;
 	}
 
-	.clickedon #site-header {
+	.clickedon #site-header-inner {
 		overflow: visible;
 	}
 
-	#site-header:after {
+	.clickedon #site-header:after {
+		content: " ";
+		position: absolute;
+		min-height: 100%;
+		background: rgba(0,0,0,.8);
+		width: 100%;
+		left: 0;
+		z-index: 8;
+	}
+
+	#site-header-inner:after {
 		padding-left: 1em;
 		content: " ";
 		float: right;
@@ -41,14 +58,11 @@
 		background: url(../images/sitenav_open.png) left top no-repeat;
 		width: 25px;
 		height: 25px;
+		margin-top: 9px;
 	}
 
-	.clickedon #site-header:after {
+	.clickedon #site-header-inner:after {
 		background: url(../images/sitenav_close.png) left top no-repeat;
-	}
-
-	.clickedon main {
-		opacity: .2;
 	}
 
 	#site-participant-nav {
@@ -67,15 +81,39 @@
 	#site-main-nav {
 		border: none;
 		padding: 0;
+		background: #eff3f5;
 	}
 
 	#site-user-nav {
 		position: static;
 		display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
+		width: 100%;
+		background: #eff3f5;
+	}
+
+	#site-navs #site-user-nav ul {
+		float: none;
+		line-height: 3.5em;
+		padding: 0;
 	}
 
 	#site-user-nav li {
 		font-size: .75em;
+		width: 50%;
+		border-right: 1px solid #dbdbdb;
+	}
+
+	#site-user-nav li:last-child {
+		border-right: none;
+	}
+
+	#site-user-nav li {
+		font-size: .75em;
+	}
+
+	#site-user-nav li a {
+		display: block;
+		text-align: center;
 	}
 
 	#site-navs #site-main-nav ul,
@@ -112,6 +150,30 @@
 		background-image: url(../images/topic_culture.png);
 	}
 
+	#site-main-nav .text-food a:before {
+		background-image: url(../images/topic_food.png);
+	}
+
+	#site-main-nav .text-environment a:before {
+		background-image: url(../images/topic_environment.png);
+	}
+
+	#site-main-nav .text-wildlife a:before {
+		background-image: url(../images/topic_wildlife.png);
+	}
+
+	#site-main-nav .text-social_action a:before {
+		background-image: url(../images/topic_social_action.png);
+	}
+
+	#site-main-nav .text-education a:before {
+		background-image: url(../images/topic_education.png);
+	}
+
+	#site-main-nav .text-health a:before {
+		background-image: url(../images/topic_health.png);
+	}
+
 	#site-hot-nav {
 		display: none;
 	}
@@ -123,7 +185,6 @@
 	#site-navs {
 		position: absolute;
 		top: 100%;
-		background: #eff3f5;
 		left: 0;
 	}
 
@@ -131,10 +192,31 @@
 		float: left;
 	}
 
+	/* Footer */
+	#site-connect,
+	#site-topics {
+		display: none;
+	}
+
 	#site-footer {
 		background: #f1f3f4;
 		display: inline-block; vertical-align: bottom;
 		width: 100%;
+	}
+
+	#site-footer section {
+		float: none;
+		text-align: center;
+		width: auto;
+	}
+
+	#site-footer #site-about {
+		text-align: center;
+	}
+
+	#site-footer li {
+		padding: 0 1em;
+		display: inline-block;
 	}
 }
 
@@ -178,5 +260,49 @@
 
 	.node-type-article #article-content {
 		width: auto;
+	}
+
+	.node-type-article #article-author,
+	.node-type-article #article-badge {
+		display: none;
+	}
+
+	.node-type-article #article-headline {
+		font-size: 24px;
+	}
+
+	.node-type-article #article-social .inner {
+		border: 1px solid #e8e8e8;
+		border-left: none;
+		border-right: none;
+		margin: 1em 0 0 0;
+		padding: .5em 0;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
+		width: 100%;
+	}
+
+	.node-type-article #article-tab,
+	.node-type-article #article-share,
+	.node-type-article #article-social li {
+		float: left;
+	}
+
+	.node-type-article #article-tab {
+		border: none;
+	}
+
+	.node-type-article #article-comments-link {
+		display: none;
+	}
+
+	.node-type-article #article-social a {
+		float: none;
+		display: inline-block;
+		text-indent: -1000px;
+		overflow: hidden;
+		white-space: nowrap;
+		border: none;
 	}
 }

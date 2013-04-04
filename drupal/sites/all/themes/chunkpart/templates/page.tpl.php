@@ -2,7 +2,7 @@
     <a href="#main"><?= t('Skip to main content') ?></a>
 </div>
 
-<header id="site-header" role="banner">
+<header id="site-header" role="banner"><div id="site-header-inner">
   <p id="site-logo">
     <a href="/"><img src="<?=$logo?>" alt="TakePart" role="logo" /></a>
   </p>
@@ -36,7 +36,7 @@
       <?=_smenu('menu-reel-impact') ?>
     </div>
   </div>
-</header>
+</div></header>
 
 <? /*
 <?php
