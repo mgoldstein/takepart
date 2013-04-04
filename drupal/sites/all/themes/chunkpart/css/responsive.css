@@ -51,7 +51,6 @@
 	}
 
 	#site-header-inner:after {
-		padding-left: 1em;
 		content: " ";
 		float: right;
 		display: block;
@@ -190,6 +189,10 @@
 
 	#site-more-navs {
 		float: left;
+	}
+
+	#site-search .form-item input {
+		width: 150px;
 	}
 
 	/* Footer */
