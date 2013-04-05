@@ -1,0 +1,7 @@
+name = On Our Radar
+description = Block for "On Our Radar"
+core = 7.x
+files[] = "plugins/bean/on_our_radar_listing.inc"
+dependencies[] = bean
+package = Bean
+
