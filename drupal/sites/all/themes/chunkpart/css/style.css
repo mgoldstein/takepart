@@ -922,6 +922,7 @@ body #at16pt {
 	width: 15em;
 	padding: 1em;
 	margin-bottom: 1em;
+	float: right;
 }
 
 .node-type-article #topic_box:after,
@@ -938,18 +939,21 @@ body #at16pt {
 .node-type-article #topic_box:after {
 	border-color: rgba(248, 251, 255, 0);
 	border-right-color: #f8fbff;
-	border-width: 20px;
-	top: 50%;
-	margin-top: -20px;
-	border-top-width: ;
+	border-width: 11px;
+	margin-top: -11px;
+	top: 20%;
+	border-left-width: 14px;
+	border-right-width: 14px;
 }
 
 .node-type-article #topic_box:before {
 	border-color: rgba(224, 224, 224, 0);
 	border-right-color: #e0e0e0;
-	border-width: 21px;
-	top: 50%;
-	margin-top: -21px;
+	top: 20%;
+	border-width: 12px;
+	margin-top: -12px;
+	border-left-width: 15px;
+	border-right-width: 15px;
 }
 
 .node-type-article #topic_box a,
