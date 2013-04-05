@@ -54,7 +54,7 @@ function _s($var, $prop = NULL, $type = 'node') {
 }
 
 /* Return a URL */
-function _surl($var) {
+function _surl($var, $prop = NULL, $type = 'node') {
   if ( is_array($var) && isset($var[0]) && isset($var[0]['node']) ) {
     return url('node/' . $var[0]['node']->nid);
   } elseif ( is_array($var) && isset($var['node']) ) {
@@ -81,6 +81,7 @@ function _sblock($var) {
 // return an image
 function _simage($var, $prop = NULL, $type = 'node') {
   if ( is_object($var) && $prop ) {
+    if ( isset($var->_stype) ) $type = $var->_stype;
     $var = field_get_items($type, $var, $prop);
   }
 
@@ -136,6 +137,15 @@ function _snode($var) {
   }
 }
 
+// Get link
+function _slink($var, $prop = NULL, $type = NULL) {
+  if ( is_object($var) && isset($var->_stype) && $prop ) {
+    $ret = field_get_items($var->_stype, $var, $prop);
+    return $ret[0];
+  }
+  return '';
+}
+
 // Loop through a node?
 function _seach(&$var /*, $prop = null, $type = 'node'*/ ) {
   /*if ( is_object($var) && $prop ) {
@@ -155,6 +165,7 @@ function _seach(&$var /*, $prop = null, $type = 'node'*/ ) {
   } elseif( isset($ea['value']['taxonomy_term']) ) {
     $uri = entity_uri('taxonomy_term', $ea['value']['taxonomy_term']);
     $ea['value']['taxonomy_term']->_surl = url($uri['path']);
+    $ea['value']['taxonomy_term']->_stype = 'taxonomy_term';
     return $ea['value']['taxonomy_term'];
   }
 
