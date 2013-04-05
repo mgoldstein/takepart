@@ -58,6 +58,7 @@
 		width: 25px;
 		height: 25px;
 		margin-top: 9px;
+		margin-right: .5em;
 	}
 
 	.clickedon #site-header-inner:after {
@@ -92,7 +93,6 @@
 
 	#site-navs #site-user-nav ul {
 		float: none;
-		line-height: 3.5em;
 		padding: 0;
 	}
 
@@ -107,7 +107,9 @@
 	}
 
 	#site-user-nav li {
-		font-size: .75em;
+		font-size: 11px;
+		line-height: 5em;
+		font-weight: bold;
 	}
 
 	#site-user-nav li a {
@@ -127,9 +129,9 @@
 
 	#site-main-nav a {
 		display: inline-block;
-		padding: .65rem 1rem;
+		padding: .65rem 4rem .65em 1rem;
 		border-top: 1px solid #dbdbdb;
-		font-size: 1.2em;
+		font-size: 18px;
 		line-height: 37px;
 		white-space: nowrap;
 		width: 100%;
