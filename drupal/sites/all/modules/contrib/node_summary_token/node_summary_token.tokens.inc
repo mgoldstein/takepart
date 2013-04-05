@@ -45,22 +45,6 @@ function node_summary_token_tokens_alter(array &$replacements, array $context) {
       $trimmed_or_summary = truncate_utf8(strip_tags($text), $teaser_length, TRUE, FALSE);
     }
 
-    // Needed to scan all tokens to find the one called summary as a key
-    // for some inefficient reason?
-    /*
-    foreach ($context['tokens'] as $name => $original) {
-      $trimmed_or_summary = '';
-      $split_name = explode(':', $name);
-      if ($split_name[0] == 'summary') {
-        $replacements[$original] = $sanitize ? filter_xss($trimmed_or_summary) : $trimmed_or_summary;
-        if (isset($split_name[1])) {
-          $teaser_length = (int) $split_name[1];
-        }
-      }
-    }
-    */
-
-    // No, just set the thing I know I need to set.
     $sanitize = !empty($context['options']['sanitize']);
     $replacements['[node:summary]'] = $sanitize ? filter_xss($trimmed_or_summary) : $trimmed_or_summary;
   }
