@@ -1,0 +1,13 @@
+name = Promo Topic Taxonomy
+core = 7.x
+package = Features
+dependencies[] = features
+dependencies[] = field_sql_storage
+dependencies[] = image
+dependencies[] = link
+dependencies[] = media_image_formatter
+dependencies[] = taxonomy
+features[features_api][] = api:1
+features[field][] = taxonomy_term-promo_topic-field_promo_box_image
+features[field][] = taxonomy_term-promo_topic-field_url
+features[taxonomy][] = promo_topic
