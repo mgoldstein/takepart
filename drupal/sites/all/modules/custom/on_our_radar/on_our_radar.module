@@ -1,0 +1,43 @@
+<?php
+/**
+ * Implements hook_bean_types_api_info().
+ */
+function on_our_radar_bean_types_api_info() {
+  return array('api' => 4);
+}
+
+/**
+ * Implements hook_bean_types().
+ */
+function on_our_radar_bean_types() {
+  //echo "hook called<br/>";
+  $plugins = array();
+  $plugin_path = drupal_get_path('module', 'on_our_radar') . '/plugins/bean';
+  $plugins['on_our_radar'] = array(
+    'label' => t('On Our Radar Listing'),
+    'description' => t('A listing of links.'),
+    'handler' => array(
+      'class' => 'OnOurRadarBean',
+      'parent' => 'bean',
+    ),
+    'path' => $plugin_path,
+    'file' => 'on_our_radar_listing.inc',
+  );
+  return $plugins;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function on_our_radar_theme() {
+  $items = array();
+  $items['on_our_radar_link'] = array(
+    'arguments' => array(
+      'link' => NULL,
+      'title'  => NULL,
+      'topic'  => NULL,
+    ),
+    'file' => 'on_our_radar.theme.inc',
+  );
+  return $items;
+}
