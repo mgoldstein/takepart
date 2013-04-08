@@ -76,9 +76,7 @@
     <? foreach ( $page['sidebar_second'] as $val ): ?>
       <? if ( ($block = _sblock($val)) ): ?>
         <? // TODO: get the section tag/classes onto blocks ?>
-        <section>
-          <?=$block?>
-        </section>
+        <?=$block?>
       <? endif ?>
     <? endforeach ?>
   </aside>
