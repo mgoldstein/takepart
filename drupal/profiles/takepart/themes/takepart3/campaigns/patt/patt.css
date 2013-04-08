@@ -646,6 +646,10 @@ body {
 	background: rgba(0,0,0,.7);
 }
 
+.tile.fact .veil {
+	background: #cc0f23;
+}
+
 .tile a:active .veil,
 .tile a:focus .veil,
 .tile a:hover .veil {
