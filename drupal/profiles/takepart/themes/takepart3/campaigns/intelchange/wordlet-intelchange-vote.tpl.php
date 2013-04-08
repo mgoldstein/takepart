@@ -1,5 +1,5 @@
 <div class="first-block" <?=wa('cta_image')?>>
-    <div class="header-block">
+    <div class="header-block cms">
         <h3><?=w('cta_header')?></h3>
         <h4><?=w('cta_subheader')?></h4>
         <div class="vote-desc">
