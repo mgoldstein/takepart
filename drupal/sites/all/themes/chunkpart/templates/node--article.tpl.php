@@ -19,11 +19,14 @@
 		<div id="article-sidebar">
 			<aside id="article-social" class="social"><div class="inner">
 				<div id="article-tab">
-					{Take Action Button}
+					<p class="takepart-take-action"></p>
 				</div>
 				<div class="tp-social" id="article-share"></div>
 				<p id="article-comments-link" class="comments-link">
 					<a href="#article-comments"><?=t('Comments') ?><span class="count"></span></a>
+				</p>
+				<p id="article-more-shares">
+
 				</p>
 			</div></aside>
 

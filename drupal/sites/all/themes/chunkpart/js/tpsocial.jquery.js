@@ -365,6 +365,56 @@ $.tpsocial.add_service({
 	}
 });
 
+// More
+
+var more_args;
+var more_once = function() {
+	addthis.addEventListener('addthis.menu.share', more_callback);
+};
+var more_callback = function(addthis_event) {
+	if ( addthis_event.data.service == more_args.name ) {
+		$window.trigger(cpre + 'share', more_args);
+	}
+};
+var more_script = 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+var more_var = 'addthis';
+
+$.tpsocial.add_service({
+	name: 'more',
+	display: 'More',
+	share: function(args) {
+	},
+	prepare: function(el, args) {
+		$.tpsocial.load_script(window[more_var], more_script, this, function() {
+			addthis.button(el, {services_compact:'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves'}, {url: "http://example.com/blog/24", title: "The 24th post"});
+		}, more_once);
+	},
+	hoverfocus: function(args) {
+		$(args.element)
+			.addClass('addthis_button_more addthis_button_compact')
+			.wrapInner('<span></span>');
+
+		$.tpsocial.load_script(window[more_var], more_script, this, function() {
+			var note = template_value('note', args);
+
+			var more_config = {
+				ui_more_note: note
+			};
+
+			var addthis_config = {
+				url: args.url,
+				title: args.title
+			};
+
+			addthis.toolbox(
+				$(args.element).parent()[0],
+				more_config,
+				addthis_config
+			);
+		}, more_once);
+	}
+});
+
 // -----------------------------------------------
 // Old: (Only PATT Alumni Gallery ----------------
 // -----------------------------------------------

@@ -28,6 +28,10 @@ $(function() {
 
 	$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_defaults);
 
+	$('#article-more-shares').tpsocial({
+		services: [{name: 'more'}]
+	});
+
 	// Adding tab support to participant nav
 	var $site_participant_nav = $('#site-participant-nav')
 		.bind('focusin', function() {
