@@ -10,7 +10,6 @@ function on_our_radar_bean_types_api_info() {
  * Implements hook_bean_types().
  */
 function on_our_radar_bean_types() {
-  //echo "hook called<br/>";
   $plugins = array();
   $plugin_path = drupal_get_path('module', 'on_our_radar') . '/plugins/bean';
   $plugins['on_our_radar'] = array(
@@ -31,13 +30,11 @@ function on_our_radar_bean_types() {
  */
 function on_our_radar_theme() {
   $items = array();
-  $items['on_our_radar_link'] = array(
+  $items['on_our_radar'] = array(
     'arguments' => array(
-      'link' => NULL,
-      'title'  => NULL,
-      'topic'  => NULL,
+      'links' => NULL,
     ),
-    'file' => 'on_our_radar.theme.inc',
+    'template' => 'templates/on_our_radar',
   );
   return $items;
 }

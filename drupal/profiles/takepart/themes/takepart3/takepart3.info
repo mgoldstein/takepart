@@ -1,5 +1,6 @@
 name = TakePart 3.0 Theme
 description = The TakePart theme
+base theme = takepart_core
 core = 7.x
 engine = phptemplate
 

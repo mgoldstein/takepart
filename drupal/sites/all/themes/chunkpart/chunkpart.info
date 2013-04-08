@@ -2,6 +2,7 @@ name = ChunkPart
 description = CHUNK!!!
 screenshot = screenshot.png
 engine = phptemplate
+base theme = takepart_core
 core = 7.x
 php = 5.2
 

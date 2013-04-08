@@ -1,0 +1,5 @@
+name = Takepart Core
+description = A theme for centralizing control of globally used assets. 
+
+core = 7.x
+engine = phptemplate
