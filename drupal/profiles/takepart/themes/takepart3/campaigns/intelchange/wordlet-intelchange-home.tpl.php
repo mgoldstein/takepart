@@ -51,7 +51,7 @@
             <?=w('vote_desc')?>
         </div>
         <p class="important">
-            <a href="<?=wu('intelchange_voting')?>"><?=w('view_finalists_cta')?></a>
+            <a href="<?=wu('intelchange_vote')?>"><?=w('view_finalists_cta')?></a>
         </p>
 
         <p class="more">
