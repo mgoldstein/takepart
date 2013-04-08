@@ -403,7 +403,7 @@ function _wordlet_configuration() {
     // Intel Girls Home
     'intel_girls_home' => array(
       'title' => 'Intel Girls Home',
-      'path' => 'intelforchange',
+      'path' => 'intelforchangeold',
       'published' => TRUE,
       'wrappers' => array('campaign', 'html'),
       'css' => array(
@@ -502,7 +502,7 @@ function _wordlet_configuration() {
     // Intel For Change - Vote
     'intelchange_vote' => array(
       'title' => 'Intel For Change - Vote',
-      'path' => 'intelforchangedev/vote',
+      'path' => 'intelforchange/vote',
       'published' => FALSE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
