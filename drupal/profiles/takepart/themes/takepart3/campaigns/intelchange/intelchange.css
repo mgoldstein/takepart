@@ -1122,3 +1122,32 @@
 .page-wordlet-intelchange-about .partner .description {
   margin: 0 20px;
 }
+
+/* Vote ---------------- */
+
+.page-wordlet-intelchange-vote #page .first-block {
+  padding-top: 3.750em;
+  padding-left: 3.000em;
+  padding-right: 3.000em;
+}
+.page-wordlet-intelchange-vote #page .first-block h3 {
+  color: rgb(1, 141, 216);
+  font-size: 40px;
+  margin-bottom: 0.425em;
+}
+
+.page-wordlet-intelchange-vote #page .first-block h4 {
+  font-size: 22px;
+  color: rgb(75, 54, 57);
+  margin-bottom: 1.136em;
+}
+
+.page-wordlet-intelchange-vote #page .first-block .vote-desc {
+  line-height: 1.5em;
+  margin-bottom: 1.5em;
+  font-size: 14px;
+}
+
+.page-wordlet-intelchange-vote #page .first-block .prize-image {
+  float: right;
+}
