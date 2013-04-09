@@ -59,10 +59,10 @@ function _surl($var, $prop = NULL, $type = 'node') {
     return url('node/' . $var[0]['node']->nid);
   } elseif ( is_array($var) && isset($var['node']) ) {
     return url('node/' . $var['node']->nid);
-  } elseif ( is_object($var) ) {
-    return url('node/' . $var->nid);
   } elseif ( $var->_surl ) {
     return $var->_surl;
+  } elseif ( is_object($var) ) {
+    return url('node/' . $var->nid);
   }
   return '/';
 }
@@ -162,11 +162,20 @@ function _seach(&$var /*, $prop = null, $type = 'node'*/ ) {
 
   if ( isset($ea['value']['node']) ) {
     return $ea['value']['node'];
-  } elseif( isset($ea['value']['taxonomy_term']) ) {
-    $uri = entity_uri('taxonomy_term', $ea['value']['taxonomy_term']);
-    $ea['value']['taxonomy_term']->_surl = url($uri['path']);
-    $ea['value']['taxonomy_term']->_stype = 'taxonomy_term';
-    return $ea['value']['taxonomy_term'];
+  }
+
+  $taxonomy_term = null;
+  if( isset($ea['value']['taxonomy_term']) ) {
+    $taxonomy_term = $ea['value']['taxonomy_term'];
+  } elseif ( isset($ea['taxonomy_term']) ) {
+    $taxonomy_term = $ea['taxonomy_term'];
+  }
+
+  if ( $taxonomy_term ) {
+    $uri = entity_uri('taxonomy_term', $taxonomy_term);
+    $taxonomy_term->_surl = url($uri['path']);
+    $taxonomy_term->_stype = 'taxonomy_term';
+    return $taxonomy_term;
   }
 
   return null;

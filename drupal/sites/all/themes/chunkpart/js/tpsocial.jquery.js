@@ -386,7 +386,13 @@ $.tpsocial.add_service({
 	},
 	prepare: function(el, args) {
 		$.tpsocial.load_script(window[more_var], more_script, this, function() {
-			addthis.button(el, {services_compact:'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves'}, {url: "http://example.com/blog/24", title: "The 24th post"});
+			addthis.button(el, {
+				services_compact:'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
+				services_expanded:'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves'
+			}, {
+				url: "http://example.com/blog/24",
+				title: "The 24th post"
+			});
 		}, more_once);
 	},
 	hoverfocus: function(args) {
