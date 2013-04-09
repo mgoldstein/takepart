@@ -1,0 +1,31 @@
+<?php
+
+function article_support_node_view($node, $view_mode, $langcode) {
+
+  if ($node->type === 'article') {
+
+    // Get the first article from a list of articles created before this one
+    // sorted from newest to oldest
+    $query = db_select('node', 'n')
+      ->fields('n', array('nid', 'title'))
+      ->condition('created', $node->created, '<')
+      ->orderBy('created', 'DESC')
+      ->orderBy('nid', 'DESC')
+      ->range(0, 1);
+
+    // Fetch the previous article.
+    $previous = $query->execute()->fetchAssoc();
+
+    if ($previous !== FALSE) {
+
+      // TODO: make use of a Link view helper (if and when they are implemented)
+      $link = new StdClass();
+      $link->title = $previous['title'];
+      $link->href = url('node/' . $previous['nid']);
+
+      // Add the link to the 'next' article to the content available to the
+      // article template.
+      $node->content['next_article'] = $link;
+    }
+  }
+}
