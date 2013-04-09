@@ -299,7 +299,6 @@ function takepart_omniture_campaign($nid) {
         return 'Not-A-Number';
     }
     $node = node_load($nid);
-    //dpm($node);
     if (isset($node->field_multi_page_campaign['und'][0]['context']) && $node->field_multi_page_campaign['und'][0]['context'] != '') {
         $campaign_context_name = $node->field_multi_page_campaign['und'][0]['context'];
         $context = context_load($campaign_context_name);
