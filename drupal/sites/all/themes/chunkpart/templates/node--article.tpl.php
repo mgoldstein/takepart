@@ -7,7 +7,7 @@
 				<? if ( $badge = _seach($field_significance) ): ?>
 					<p id="article-badge"><a href="<?=_surl($badge)?>"><?=$badge->name?></a></p>
 				<? endif ?>
-				<p id="article-date"><?=$date?><? //=date('F j, Y', )?></p>
+				<p id="article-date"><?=date('F j, Y', $node->created)?></p>
 				<ul id="article-author-names">
 					<? while ( $author = _seach($field_author) ): ?>
 						<li>
