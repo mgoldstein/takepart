@@ -55,7 +55,7 @@ function takepart_omniture_token_info() {
             'function' => "takepart_omniture_str_decode",
         ),
     );
-    
+
     $info['tokens']['tp_omniture']['lowercase'] = array(
         'name' => t('Lowercase'),
         'description' => t('Set the value to all lowercase.'),
@@ -65,7 +65,7 @@ function takepart_omniture_token_info() {
             'function' => "takepart_omniture_lowercase",
         ),
     );
-        
+
     $info['tokens']['tp_omniture']['first_word'] = array(
         'name' => t('Grab the first word'),
         'description' => t('Grab the first word with html_entity_decode function.'),
@@ -115,12 +115,12 @@ function takepart_omniture_token_info() {
             'function' => "takepart_omniture_campaign",
         ),
     );
-    
+
     return $info;
 }
 
 function takepart_omniture_first_word($str) {
-    $content_type_array = explode(" ",$str);
+    $content_type_array = explode(" ", $str);
     return html_entity_decode($content_type_array[0], ENT_QUOTES);
 }
 
@@ -298,9 +298,16 @@ function takepart_omniture_campaign($nid) {
     if (!is_numeric($nid)) {
         return 'Not-A-Number';
     }
-    $node = node_load($nid);   
-    $campaign_context_name = $node->field_multi_page_campaign['und'][0]['context'];
-    $context = context_load($campaign_context_name);
-
-    return $context->description;
+    $node = node_load($nid);
+    if (isset($node->field_multi_page_campaign['und'][0]['context'])) {
+        $campaign_context_name = $node->field_multi_page_campaign['und'][0]['context'];
+        $context = context_load($campaign_context_name);
+        $campaign_name = $context->description;
+    } else if ($node->type == 'takepart_campaign') {
+        $campaign_name = $node->title;
+    }
+    else {
+        $campaign_name = '';
+    }
+    return $campaign_name;
 }
