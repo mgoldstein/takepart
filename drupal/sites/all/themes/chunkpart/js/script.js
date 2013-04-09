@@ -19,7 +19,11 @@ $(function() {
 	var tp_social_defaults = {
 		services: [
 			{name: 'facebook'},
-			{name: 'twitter'},
+			{
+				name: 'twitter',
+				text: '{{title}}',
+				via: 'TakePart'
+			},
 			{name: 'googleplus'},
 			{name: 'reddit'},
 			{name: 'email'}
