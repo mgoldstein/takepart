@@ -394,10 +394,6 @@ a:visited {
 	width: 100%;
 }
 
-#site-footer #site-about > * {
-	font-size: 11px;
-}
-
 #site-footer #site-more-campaigns a {
 	color: #28a9e9;
 }
@@ -702,6 +698,7 @@ body #at16pt {
 	color: #000;
 }
 
+.node-type-article #article-comments-link a,
 .node-type-article #article-tab,
 .node-type-article #article-share a {
 	border-bottom: 1px solid #e8e8e8;
@@ -745,9 +742,17 @@ body #at16pt {
 	background: url(../images/share_comments.png) left 2px no-repeat;
 }
 
+.node-type-article #article-social #article-more-shares a:before {
+	background: url(../images/share_more.png) left top no-repeat;
+}
+
 .node-type-article #article-social {
 	padding-top: 1em;
 	z-index: 2;
+}
+
+.node-type-article #article-tab .takepart-take-action {
+	height: 32px;
 }
 
 .node-type-article #article-social .inner {
@@ -882,7 +887,7 @@ body #at16pt {
 .node-type-article #article-tags {
 	display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
 	margin-bottom: 1em;
-	font-size: 11px;
+	font-size: 14px;
 }
 
 .node-type-article #article-tags ul,

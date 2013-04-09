@@ -4,7 +4,9 @@
 			<h1 id="article-headline"><?=_s($title) ?></h1>
 			<p id="article-abstract"><?=_s($field_article_subhead) ?></p>
 			<div class="secondary">
-				<p id="article-badge"><a href="#">{Article Badge}</a></p>
+				<? if ( $badge = _seach($field_significance) ): ?>
+					<p id="article-badge"><a href="<?=_surl($badge)?>"><?=$badge->name?></a></p>
+				<? endif ?>
 				<p id="article-date"><?=$date?><? //=date('F j, Y', )?></p>
 				<ul id="article-author-names">
 					<? while ( $author = _seach($field_author) ): ?>
