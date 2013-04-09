@@ -29,7 +29,9 @@ $(function() {
 	$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_defaults);
 
 	$('#article-more-shares').tpsocial({
-		services: [{name: 'more'}]
+		services: [{
+			name: 'more'
+		}]
 	});
 
 	// Adding tab support to participant nav
