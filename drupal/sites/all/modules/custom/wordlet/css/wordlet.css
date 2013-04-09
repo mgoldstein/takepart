@@ -46,8 +46,9 @@
 .wordlet_edit_mode p {
     margin: 0;
     font-weight: bold;
-    display: inline;
+    display: inline-block;
     padding-left: 10px;
+    white-space: nowrap;
 }
 
 .wordlet_edit_mode p:first-child {

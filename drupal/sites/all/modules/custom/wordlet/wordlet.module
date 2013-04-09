@@ -986,6 +986,25 @@ function wordlet_page_view_callback($page) {
   return '';
 }
 
+function wordlet_omniture_variables() {
+  $return = array();
+
+  $campaign_name = wordlet('campaign_name');
+
+  if ( !empty($campaign_name) ) {
+    $return = array(
+      's.eVar43' => $campaign_name->single(false),
+      's.prop43' => $campaign_name->single(false)
+    );
+  }
+
+  return array("variables" => $return);
+}
+
+/* =========================================================
+  Template helpers
+========================================================= */
+
 function wordlet_edit_mode($configure = FALSE) {
   if (!empty($_COOKIE['show_wordlets'])) {
     if ($configure) {
