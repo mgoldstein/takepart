@@ -60,6 +60,7 @@
 			</div>
 
 			<footer id="article-footer">
+				<? var_dump($next_article) ?>
 				<nav id="next-article">
 					<h3 class="headline"><?=t('Next Article') ?></h3>
 					<p><a href="#">{Next Article Next Article Next Article Next Article Next Article Next Article}</a></p>
@@ -104,9 +105,15 @@
 
 <pre>
 -----------------
-<? // _l($field_topic_box) ?>
+<? // _l($comment) ?>
+<? // _l($comment_count) ?>
 
 <? // var_dump(array_keys(get_defined_vars())) ?>
+
+<? // var_dump($comment) ?>
+
+<? // var_dump(array_keys(get_object_vars($node))) ?>
+
 -----------------
 -----------------
 </pre>
