@@ -106,6 +106,16 @@ function takepart_omniture_token_info() {
         ),
     );
 
+    $info['tokens']['tp_omniture']['campaign_context'] = array(
+        'name' => t('Get campaign context'),
+        'description' => t('Get the name of the campaign this page belongs to'),
+        'dynamic' => TRUE,
+        'function' => array(
+            'file' => drupal_get_path("module", "takepart_omniture") . "/takepart_omniture.token.inc",
+            'function' => "takepart_omniture_campaign",
+        ),
+    );
+    
     return $info;
 }
 
@@ -184,7 +194,7 @@ function takepart_omniture_tab_uid($param) {
 
 function takepart_omniture_value_or_empty($param) {
     // if param wrapped in brakets [], then token was not
-    // found, just retuen empty string.
+    // found, just return empty string.
     $param = html_entity_decode($param, ENT_QUOTES);
     return preg_replace('/^\[[\w].*\]$/', '', $param);
 }
@@ -282,4 +292,15 @@ function takepart_omniture_date($date_str) {
  */
 function takepart_omniture_urldecode($url) {
     return urldecode($url);
+}
+
+function takepart_omniture_campaign($nid) {
+    if (!is_numeric($nid)) {
+        return 'Not-A-Number';
+    }
+    $node = node_load($nid);   
+    $campaign_context_name = $node->field_multi_page_campaign['und'][0]['context'];
+    $context = context_load($campaign_context_name);
+
+    return $context->description;
 }
