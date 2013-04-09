@@ -3,7 +3,9 @@
 class OnOurRadarBean extends BeanPlugin
 {
 
-  //Items in Link grouping:
+  /**
+  * Items in Link grouping:
+  */
   private $radar_lnk_cnt = 3;
 
   /**
