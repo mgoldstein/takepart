@@ -388,12 +388,12 @@ $.tpsocial.add_service({
 	prepare: function(el, args) {
 		$.tpsocial.load_script(window[more_var], more_script, this, function() {
 			addthis.button(el, {
-				services_compact:'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-				services_expanded:'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-				services_exclude: 'facebook,twitter,google_plusone,reddit,email'
+				services_compact: args.services_compact,
+				services_expanded: args.services_expanded,
+				services_exclude: args.services_exclude
 			}, {
-				url: "http://example.com/blog/24",
-				title: "The 24th post"
+				url: args.url,
+				title: args.title
 			});
 		}, more_once);
 	},
