@@ -240,8 +240,16 @@ $.tpsocial.add_service({
 		var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
 		var template_tplvar_clean_reg = /({{)|(}})/g;
 
-		var text = args.text || '';
+		var text = args.text || '{{title}}';
 		var matches = text.match(twitter_tpl_reg);
+
+		var url_obj = {
+			url: args.url,
+			via: args.via,
+			in_reply_to: args.in_reply_to,
+			hashtags: args.hashtags,
+			related: args.related
+		};
 
 		for ( var i in matches ) {
 			var match = matches[i];
@@ -254,16 +262,9 @@ $.tpsocial.add_service({
 			}
 		}
 
-		// Create twitter URL
-		var url_obj = {
-			url: args.url,
-			via: args.via,
-			text: text,
-			in_reply_to: args.in_reply_to,
-			hashtags: args.hashtags,
-			related: args.related
-		};
+		if ( text ) url_obj.text = text;
 
+		// Create twitter URL
 		var url_parts = [];
 		for ( var i in url_obj ) {
 			var val = url_obj[i];
@@ -388,7 +389,8 @@ $.tpsocial.add_service({
 		$.tpsocial.load_script(window[more_var], more_script, this, function() {
 			addthis.button(el, {
 				services_compact:'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-				services_expanded:'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves'
+				services_expanded:'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
+				services_exclude: 'facebook,twitter,google_plusone,reddit,email'
 			}, {
 				url: "http://example.com/blog/24",
 				title: "The 24th post"
