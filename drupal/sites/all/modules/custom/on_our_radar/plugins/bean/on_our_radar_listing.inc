@@ -44,7 +44,7 @@ class OnOurRadarBean extends BeanPlugin
     }
 
 
-    $form_state['storage']['linkcount'] = isset($form_state['storage']['linkcount']) ? $form_state['storage']['linkcount'] : (int)((count($bean->radar_links) + 1) / $this->radar_lnk_cnt);
+    $form_state['storage']['linkcount'] = isset($form_state['storage']['linkcount']) ? $form_state['storage']['linkcount'] : (int)((count($bean->radar_links) + 1) / $this->radar_lnk_cnt) - 1;
 
     $form['radar_links'] = array(
       '#type' => 'fieldset',
@@ -135,7 +135,7 @@ class OnOurRadarBean extends BeanPlugin
   public function view($bean, $content, $view_mode = 'default', $langcode = NULL)
   {
     $elements = array();
-    for ($i = 1; $i <= ((count($bean->radar_links) + 1) / $this->radar_lnk_cnt); $i++) {
+    for ($i = 1; $i <= ((count($bean->radar_links) + 1) / $this->radar_lnk_cnt)-1; $i++) {
       $elements[$i]          = array();
       $elements[$i]['topic'] = $bean->radar_links['topic' . $i];
       $elements[$i]['link']  = $bean->radar_links['link' . $i];
