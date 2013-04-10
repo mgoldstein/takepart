@@ -184,13 +184,6 @@ $.tpsocial = {
 	}
 };
 
-// Temp: event tracking example
-
-$window.bind('tp-social-share', function(e, args) {
-	console.log('tp-social-share')
-	console.log(args)
-});
-
 // Default values
 var default_url = document.location.href;
 var $rel_canonical = $('link[rel="canonical"]');
@@ -316,6 +309,57 @@ $.tpsocial.add_service({
 	}
 });
 
+$.tpsocial.add_service({
+	name: 'myspace',
+	display: 'Myspace',
+	width: 550,
+	height: 450,
+	share: function(args) {
+		var url = 'http://www.myspace.com/Modules/PostTo/Pages/?u=' + encodeURIComponent(args.url) + '&t=' + encodeURIComponent(args.title);
+
+		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+		/*var left = 0;
+		var tops = Number((screen.height/2)-(args.height/2));*/
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
+
+		$window.trigger(cpre + 'share', args);
+	}
+});
+
+$.tpsocial.add_service({
+	name: 'delicious',
+	display: 'Delicious',
+	width: 550,
+	height: 420,
+	share: function(args) {
+		var url = 'https://delicious.com/post?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&notes=';
+
+		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+		/*var left = 0;
+		var tops = Number((screen.height/2)-(args.height/2));*/
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
+
+		$window.trigger(cpre + 'share', args);
+	}
+});
+
+$.tpsocial.add_service({
+	name: 'linkedin',
+	display: 'Linked In',
+	width: 600,
+	height: 370,
+	share: function(args) {
+		var url = 'http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&ro=false&summary=&source=';
+
+		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+		/*var left = 0;
+		var tops = Number((screen.height/2)-(args.height/2));*/
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
+
+		$window.trigger(cpre + 'share', args);
+	}
+});
+
 // Email
 
 var email_args;
@@ -388,12 +432,12 @@ $.tpsocial.add_service({
 	prepare: function(el, args) {
 		$.tpsocial.load_script(window[more_var], more_script, this, function() {
 			addthis.button(el, {
-				services_compact:'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-				services_expanded:'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-				services_exclude: 'facebook,twitter,google_plusone,reddit,email'
+				services_compact: args.services_compact,
+				services_expanded: args.services_expanded,
+				services_exclude: args.services_exclude
 			}, {
-				url: "http://example.com/blog/24",
-				title: "The 24th post"
+				url: args.url,
+				title: args.title
 			});
 		}, more_once);
 	},
