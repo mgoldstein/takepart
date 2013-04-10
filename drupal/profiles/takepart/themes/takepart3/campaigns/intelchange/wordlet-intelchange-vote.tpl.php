@@ -19,17 +19,17 @@
         <?
         $finalists = array();
         foreach (wl('finalists') as $i => $w):
-            array_push('<li class="<?= $i&1?"even":"odd"?>">
-                <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>">
-                    <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
-                    <span class="name"><?=$w->single(false)?></span>
-                </a>
-            </li>');
+            array_push($w);
         endforeach
         shuffle($finalists);
         ?>
         <? foreach ( $finalists as $i => $w ): ?>
-            <?=$w?>
+            <li class='<?= $i&1?"even":"odd"?>'>
+                <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>">
+                    <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+                    <span class="name"><?=$w->single(false)?></span>
+                </a>
+            </li>
         <? endforeach ?>
         </ul>
         <? endif ?>
