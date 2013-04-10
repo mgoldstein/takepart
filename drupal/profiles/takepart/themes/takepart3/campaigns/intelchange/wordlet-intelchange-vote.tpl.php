@@ -16,7 +16,7 @@
     <h4><?=w('vote_header')?></h4>
     <div class="vote" <?=wa('finalists')?>>
         <? if ( $list = wl('finalists') ): ?>
-        <?= count($list) ?>
+        <?=$list->count()?>
         <ul class="finalists">
         <? foreach ( $list as $i => $w ): ?>
             <li><a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>"></a></li>
