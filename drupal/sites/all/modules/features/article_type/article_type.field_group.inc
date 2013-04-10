@@ -13,25 +13,21 @@ function article_type_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_promo_fields|node|article|form';
-  $field_group->group_name = 'group_promo_fields';
+  $field_group->identifier = 'group_takeaction|node|article|form';
+  $field_group->group_name = 'group_takeaction';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'article';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Promo Fields',
-    'weight' => '19',
+    'label' => 'TakeAction Button',
+    'weight' => '15',
     'children' => array(
-      0 => 'field_article_campaign_terms',
-      1 => 'field_article_series_terms',
-      2 => 'field_article_topic_terms',
-      3 => 'field_promo_image',
-      4 => 'field_url',
+      0 => 'field_tab_action_override',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -39,7 +35,34 @@ function article_type_field_group_info() {
       ),
     ),
   );
-  $export['group_promo_fields|node|article|form'] = $field_group;
+  $export['group_takeaction|node|article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_topic_box|node|article|form';
+  $field_group->group_name = 'group_topic_box';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'article';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Topic Box',
+    'weight' => '14',
+    'children' => array(
+      0 => 'field_topic_box',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_topic_box|node|article|form'] = $field_group;
 
   return $export;
 }
