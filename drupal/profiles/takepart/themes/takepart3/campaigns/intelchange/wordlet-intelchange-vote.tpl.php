@@ -13,8 +13,13 @@
     <? endif ?>
 </div>
 <div class="second-block">
+    <h4><?=w('vote_header')?></h4>
     <div class="vote" <?=wa('finalists')?>>
-        <h4><?=w('vote_header')?></h4>
-        <?= count(wl('finalists')) ?>
+        <ul class="finalists">
+        <? for ($i = 0; $i < count(wl('finalists')); $i++): ?>
+            <? $w = wl('finalists')[$i]; ?>
+            <li><a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>"></a></li>
+        <? endfor ?>
+        </ul>                
     </div>
 </div>
