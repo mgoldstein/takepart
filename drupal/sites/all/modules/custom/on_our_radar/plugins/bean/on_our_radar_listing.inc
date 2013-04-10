@@ -44,7 +44,7 @@ class OnOurRadarBean extends BeanPlugin
     }
 
 
-    $form_state['storage']['linkcount'] = isset($form_state['storage']['linkcount']) ? $form_state['storage']['linkcount'] : (int)((count($bean->radar_links) + 1) / $this->radar_lnk_cnt) - 1;
+    $form_state['storage']['linkcount'] = isset($form_state['storage']['linkcount']) ? $form_state['storage']['linkcount'] : (int)((count($bean->radar_links) + 1) / $this->radar_lnk_cnt-1);
 
     $form['radar_links'] = array(
       '#type' => 'fieldset',
@@ -56,9 +56,6 @@ class OnOurRadarBean extends BeanPlugin
 
     if (substr($form_state['triggering_element']['#name'], 0, 6) == 'remove') {
       $itemnum = substr($form_state['triggering_element']['#name'], 6, strlen($form_state['triggering_element']['#name']));
-      /*unset($bean->radar_links['link' . $i]);
-      unset($bean->radar_links['title' . $i]);
-      unset($bean->radar_links['topic' . $i]);*/
       for ($x = $itemnum; $x <= $form_state['storage']['linkcount']; $x++) {
           $form_state['values']['radar_links']['link' . $x] = $form_state['values']['radar_links']['link' . ($x+1)];
           $form_state['values']['radar_links']['title' . $x] = $form_state['values']['radar_links']['title' . ($x+1)];
@@ -70,11 +67,10 @@ class OnOurRadarBean extends BeanPlugin
 
     $linkcount = $form_state['storage']['linkcount'];
 
-
-    for ($x = 1; $x <= $linkcount; $x++) {
+    for ($x = 0; $x <= $linkcount; $x++) {
       $form['radar_links']['link' . $x]  = array(
         '#type' => 'textfield',
-        '#title' => t('Link ' . $x),
+        '#title' => t('Link ' . ($x+1)),
         '#default_value' => $bean->radar_links['link' . $x],
       );
       if(isset($form_state['values']['radar_links']['link' . $x])) {
@@ -82,7 +78,7 @@ class OnOurRadarBean extends BeanPlugin
       }
       $form['radar_links']['title' . $x] = array(
         '#type' => 'textfield',
-        '#title' => t('Title ' . $x),
+        '#title' => t('Title ' . ($x+1)),
         '#default_value' => $bean->radar_links['title' . $x],
       );
       if(isset($form_state['values']['radar_links']['title' . $x])) {
@@ -90,13 +86,13 @@ class OnOurRadarBean extends BeanPlugin
       }
       $form['radar_links']['topic' . $x] = array(
         '#type' => 'textfield',
-        '#title' => t('Topic ' . $x),
+        '#title' => t('Topic ' . ($x+1)),
         '#default_value' => $bean->radar_links['topic' . $x],
       );
       if(isset($form_state['values']['radar_links']['topic' . $x])) {
         $form['radar_links']['topic' . $x]['#value'] =  $form_state['values']['radar_links']['topic' . $x];
       }
-      if ($x > 1) {
+      if ($x > 0) {
         $form['radar_links']['remove_link' . $x] = array(
           '#type' => 'button',
           '#value' => t('Remove'),
@@ -135,7 +131,8 @@ class OnOurRadarBean extends BeanPlugin
   public function view($bean, $content, $view_mode = 'default', $langcode = NULL)
   {
     $elements = array();
-    for ($i = 1; $i <= ((count($bean->radar_links) + 1) / $this->radar_lnk_cnt)-1; $i++) {
+    $linkcount = (int)((count($bean->radar_links) + 1) / $this->radar_lnk_cnt-1);
+    for ($i = 0; $i <= $linkcount; $i++) {
       $elements[$i]          = array();
       $elements[$i]['topic'] = $bean->radar_links['topic' . $i];
       $elements[$i]['link']  = $bean->radar_links['link' . $i];
