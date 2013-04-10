@@ -18,9 +18,9 @@
         <ul class="finalists">
         <?
         $finalists = array();
-        foreach (wl('finalists') as $i => $w):
+        foreach (wl('finalists') as $i => $w){
             array_push($w);
-        endforeach
+        }
         shuffle($finalists);
         ?>
         <? foreach ( $finalists as $i => $w ): ?>
