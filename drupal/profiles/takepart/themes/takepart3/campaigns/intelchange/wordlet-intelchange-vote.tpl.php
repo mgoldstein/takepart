@@ -40,7 +40,7 @@
                     <?=$w->multi(false)?>
                 </div>
                 <p class="important">
-                    <a href="google.com"><?=w('vote_finalist_btn')?></a>
+                    <a href="google.com"><?=w('vote_finalist_'.$w->token)?></a>
                 </p>
                 <div class="addThis"
                     data-message="MESSAGEVARIABLE"
