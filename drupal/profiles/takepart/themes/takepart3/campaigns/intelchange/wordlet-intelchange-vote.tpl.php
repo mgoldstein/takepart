@@ -15,11 +15,13 @@
 <div class="second-block">
     <h4><?=w('vote_header')?></h4>
     <div class="vote" <?=wa('finalists')?>>
-        <ul class="finalists">
         <? if ( $list = wl('finalists') ): ?>
+        <?= count($list) ?>
+        <ul class="finalists">
         <? foreach ( $list as $i => $w ): ?>
             <li><a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>"></a></li>
         <? endforeach ?>
-        </ul>                
+        </ul>
+        <? endif ?>
     </div>
 </div>
