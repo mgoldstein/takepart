@@ -1125,10 +1125,13 @@
 
 /* Vote ---------------- */
 
-.page-wordlet-intelchange-vote #page .first-block {
+.page-wordlet-intelchange-vote #page {
   padding-top: 3.750em;
   padding-left: 3.000em;
   padding-right: 3.000em;
+}
+.page-wordlet-intelchange-vote #page .first-block {
+  position: relative;
 }
 .page-wordlet-intelchange-vote #page .first-block h3 {
   color: rgb(1, 141, 216);
@@ -1141,6 +1144,7 @@
   font-size: 22px;
   color: rgb(75, 54, 57);
   margin-bottom: 1.136em;
+  margin-top: 0;
 }
 
 .page-wordlet-intelchange-vote #page .first-block .vote-desc {
@@ -1150,5 +1154,7 @@
 }
 
 .page-wordlet-intelchange-vote #page .first-block .prize-image {
-  float: right;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
