@@ -360,6 +360,23 @@ $.tpsocial.add_service({
 	}
 });
 
+$.tpsocial.add_service({
+	name: 'myaol',
+	display: 'My AOL',
+	width: 600,
+	height: 370,
+	share: function(args) {
+		var url = 'http://favorites.my.aol.com/ffclient/AddBookmark?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&description=';
+
+		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+		/*var left = 0;
+		var tops = Number((screen.height/2)-(args.height/2));*/
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
+
+		$window.trigger(cpre + 'share', args);
+	}
+});
+
 // Email
 
 var email_args;
