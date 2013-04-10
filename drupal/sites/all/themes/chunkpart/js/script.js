@@ -1,5 +1,11 @@
 (function (window, $, undefined) {
 
+// Temp: event tracking example
+$(window).bind('tp-social-share', function(e, args) {
+	console.log('tp-social-share')
+	console.log(args)
+});
+
 // Remove Drupal default stylings
 // TODO: fix this
 //jQuery('style').get(0).innerHTML = '';
@@ -12,6 +18,7 @@ $body
 	.delegate('.skip-link a', 'click', function() {
 		$($(this).attr('href')).attr('tabIndex', '-1').focus();
 	})
+	;
 
 // Document Ready
 $(function() {
@@ -33,12 +40,22 @@ $(function() {
 	$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_defaults);
 
 	$('#article-more-shares').tpsocial({
-		services: [{
-			name: 'more',
-			services_compact: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-			services_expanded: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-			services_exclude: 'facebook,twitter,google_plusone,reddit,email'
-		}]
+		services: [
+			{
+				name: 'more',
+				services_compact: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
+				services_expanded: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
+				services_exclude: 'facebook,twitter,google_plusone,reddit,email'
+			},
+			{name: 'myspace'},
+			{name: 'delicious'},
+			{name: 'linkedin'},
+			{name: 'myaol'},
+			{name: 'live'},
+			{name: 'digg'},
+			{name: 'stumbleupon'},
+			{name: 'hyves'}
+		]
 	});
 
 	// Adding tab support to participant nav
