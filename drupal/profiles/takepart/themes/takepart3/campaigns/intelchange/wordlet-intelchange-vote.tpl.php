@@ -16,10 +16,10 @@
     <h4><?=w('vote_header')?></h4>
     <div class="vote" <?=wa('finalists')?>>
         <ul class="finalists">
-        <? for ($i = 0; $i < count(wl('finalists')); $i++): ?>
-            <? $w = wl('finalists')[$i]; ?>
+        <? if ( $list = wl('finalists') ): ?>
+        <? foreach ( $list as $i => $w ): ?>
             <li><a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>"></a></li>
-        <? endfor ?>
+        <? endforeach ?>
         </ul>                
     </div>
 </div>
