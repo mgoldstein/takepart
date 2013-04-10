@@ -105,19 +105,19 @@ function article_type_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '13',
+          'weight' => '16',
         ),
         'title' => array(
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '14',
+          'weight' => '17',
         ),
         'redirect' => array(
-          'weight' => '15',
+          'weight' => '18',
         ),
         'xmlsitemap' => array(
-          'weight' => '16',
+          'weight' => '19',
         ),
       ),
       'display' => array(),
