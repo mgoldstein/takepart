@@ -17,10 +17,7 @@
     <div class="vote" <?=wa('finalists')?>>
         <ul class="finalists">
         <?
-        $finalists = array();
-        foreach (wl('finalists') as $i => $w){
-            array_push($w);
-        }
+        $finalists = iterator_to_array(wl('finalists'));
         shuffle($finalists);
         ?>
         <? foreach ( $finalists as $i => $w ): ?>
