@@ -16,10 +16,16 @@
     <h4><?=w('vote_header')?></h4>
     <div class="vote" <?=wa('finalists')?>>
         <? if ( $list = wl('finalists') ): ?>
+        <?=$list->shuffle()?>
         <?=$list->count()?>
         <ul class="finalists">
         <? foreach ( $list as $i => $w ): ?>
-            <li><a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>"></a></li>
+            <li class='<?= $i&1?"even":"odd"?>'>
+                <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>">
+                    <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+                    <span class="name"><?=$w->single(false)?></span>
+                </a>
+            </li>
         <? endforeach ?>
         </ul>
         <? endif ?>
