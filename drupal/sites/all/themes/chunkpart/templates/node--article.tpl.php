@@ -28,9 +28,9 @@
 					<a href="#article-comments"><?=t('Comments') ?><span class="count"></span></a>
 				</p>
 				<div id="article-social-more">
-					<h4><a href="#article-more-shares">More</a></h4>
+					<h4 class="trigger"><a href="#article-more-shares">More</a></h4>
 					<div id="article-more-shares">
-						<h5><?=t('Share with your friends') ?></h5>
+						<h5 class="header"><?=t('Share with your friends') ?></h5>
 						<p></p>
 					</div>
 				</div>
