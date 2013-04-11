@@ -347,7 +347,7 @@ $.tpsocial.add_service({
 	name: 'linkedin',
 	display: 'Linked In',
 	width: 600,
-	height: 370,
+	height: 390,
 	share: function(args) {
 		var url = 'http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&ro=false&summary=&source=';
 
@@ -414,10 +414,27 @@ $.tpsocial.add_service({
 $.tpsocial.add_service({
 	name: 'stumbleupon',
 	display: 'Stumbleupon',
-	width: 1070,
-	height: 670,
+	width: 790,
+	height: 560,
 	share: function(args) {
 		var url = 'http://www.stumbleupon.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
+
+		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+		/*var left = 0;
+		var tops = Number((screen.height/2)-(args.height/2));*/
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
+
+		$window.trigger(cpre + 'share', args);
+	}
+});
+
+$.tpsocial.add_service({
+	name: 'hyves',
+	display: 'Hyves',
+	width: 1030,
+	height: 700,
+	share: function(args) {
+		var url = 'http://www.hyves.nl/profilemanage/add/tips/?name=' + encodeURIComponent(args.title) + '&text=' + encodeURIComponent(args.url) + '&type=12#';
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
 		/*var left = 0;

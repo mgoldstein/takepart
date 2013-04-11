@@ -27,9 +27,13 @@
 				<p id="article-comments-link" class="comments-link">
 					<a href="#article-comments"><?=t('Comments') ?><span class="count"></span></a>
 				</p>
-				<p id="article-more-shares">
-
-				</p>
+				<div id="article-social-more">
+					<h4><a href="#article-more-shares">More</a></h4>
+					<div id="article-more-shares">
+						<h5><?=t('Share with your friends') ?></h5>
+						<p></p>
+					</div>
+				</div>
 			</div></aside>
 
 			<aside id="article-author"><div class="inner">

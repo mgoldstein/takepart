@@ -709,7 +709,8 @@ body #at16pt {
 }
 
 .node-type-article #article-social #article-comments-link a:before,
-.node-type-article #article-social .tp-social-link:before {
+.node-type-article #article-social .tp-social-link:before,
+.node-type-article #article-social-more h4 a:before {
 	display: inline-block;
 	width: 24px;
 	height: 24px;
@@ -742,9 +743,19 @@ body #at16pt {
 	background: url(../images/share_comments.png) left 2px no-repeat;
 }
 
-.node-type-article #article-social #article-more-shares a:before {
+.node-type-article #article-social-more h4 a:before {
 	background: url(../images/share_more.png) left top no-repeat;
 }
+
+.node-type-article #article-social-more {
+	position: relative;
+}
+
+.node-type-article #article-more-shares {
+	position: absolute;
+	top: 100%;
+}
+
 
 .node-type-article #article-social {
 	padding-top: 1em;

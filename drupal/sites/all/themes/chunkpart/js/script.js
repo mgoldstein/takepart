@@ -41,12 +41,12 @@ $(function() {
 
 	$('#article-more-shares').tpsocial({
 		services: [
-			{
+			/*{
 				name: 'more',
 				services_compact: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
 				services_expanded: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
 				services_exclude: 'facebook,twitter,google_plusone,reddit,email'
-			},
+			},*/
 			{name: 'myspace'},
 			{name: 'delicious'},
 			{name: 'linkedin'},
