@@ -39,7 +39,7 @@ $(function() {
 
 	$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_defaults);
 
-	$('#article-more-shares').tpsocial({
+	$('#article-more-shares p').tpsocial({
 		services: [
 			/*{
 				name: 'more',
@@ -111,6 +111,33 @@ $(function() {
 		$('#article-sidebar aside').tpsticky({
 			offsetNode: '#article-content'
 		});
+
+		// more share tab support & click event
+
+		var social_more_close = function() {
+			$article_social_more.removeClass('focusin');
+			$body.unbind('click', social_more_close);
+		};
+
+		var $article_social_more = $('#article-social-more')
+			.bind('focusin', function() {
+				$article_social_more.addClass('focusin');
+			})
+			.bind('focusout', function() {
+				$article_social_more.removeClass('focusin');
+			})
+			.bind('click', function(e) {
+				if ( !$article_social_more.is('.focusin') ) {
+					$article_social_more.addClass('focusin');
+					setTimeout(function() {
+						$body.bind('click', social_more_close);
+					}, 100);
+				}
+				e.preventDefault();
+			})
+			;
+
+
 	}
 
 

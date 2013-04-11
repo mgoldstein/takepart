@@ -687,9 +687,13 @@ body #at16pt {
 	position: relative;
 }
 
-.node-type-article #article-social a {
+/* Social */
+
+.node-type-article #article-social #article-comments-link a,
+.node-type-article #article-social #article-share a,
+.node-type-article #article-social-more h4 a {
 	display: block;
-	font-size: 13px;
+	font-size: 14px;
 	font-family: TradeGothicLTStdCnBold, sans-serif;
 	text-transform: uppercase;
 	padding: .25em 0;
@@ -709,7 +713,7 @@ body #at16pt {
 }
 
 .node-type-article #article-social #article-comments-link a:before,
-.node-type-article #article-social .tp-social-link:before,
+.node-type-article #article-social #article-share a:before,
 .node-type-article #article-social-more h4 a:before {
 	display: inline-block;
 	width: 24px;
@@ -749,13 +753,102 @@ body #at16pt {
 
 .node-type-article #article-social-more {
 	position: relative;
+	overflow: hidden;
+}
+
+.node-type-article #article-social-more.focusin {
+	position: relative;
+	overflow: visible;
 }
 
 .node-type-article #article-more-shares {
 	position: absolute;
-	top: 100%;
+	bottom: 100%;
+	background: #fff;
+	border-radius: 5px;
+	border: 5px solid rgba(0,0,0,.5);
+	-webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+    min-width: 250px;
+    display: inline-block;
 }
 
+.node-type-article .focusin #article-more-shares {
+	top: 100%;
+	bottom: auto;
+}
+
+.node-type-article #article-more-shares .header {
+	font-size: 14px;
+	background: #f7f7f7;
+	border-bottom: 1px solid #e0e0e0;
+	padding: .25em;
+	white-space: nowrap;
+}
+
+.node-type-article #article-more-shares .header:after {
+	display: block;
+	content: " ";
+	margin: 3px;
+	width: 7px;
+	height: 7px;
+	float: right;
+	background: url(../images/social_more_close.gif) left top no-repeat;
+}
+
+.node-type-article #article-more-shares a {
+	display: block;
+	font-size: 14px;
+	padding: .25em;
+	line-height: 16px;
+	text-decoration: none;
+	color: #000;
+	white-space: nowrap;
+	float: left;
+	width: 50%;
+}
+
+.node-type-article #article-more-shares a:before {
+	display: inline-block;
+	content: " ";
+	vertical-align: middle;
+	padding-right: .5em;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+}
+
+.node-type-article #article-more-shares .tp-social-myspace:before {
+	background: url(../images/social_more_myspace.gif) left top no-repeat;
+}
+
+.node-type-article #article-more-shares .tp-social-delicious:before {
+	background: url(../images/social_more_delicious.gif) left top no-repeat;
+}
+
+.node-type-article #article-more-shares .tp-social-linkedin:before {
+	background: url(../images/social_more_linkedin.gif) left top no-repeat;
+}
+
+.node-type-article #article-more-shares .tp-social-myaol:before {
+	background: url(../images/social_more_myaol.gif) left top no-repeat;
+}
+
+.node-type-article #article-more-shares .tp-social-live:before {
+	background: url(../images/social_more_live.gif) left top no-repeat;
+}
+
+.node-type-article #article-more-shares .tp-social-digg:before {
+	background: url(../images/social_more_digg.gif) left top no-repeat;
+}
+
+.node-type-article #article-more-shares .tp-social-stumbleupon:before {
+	background: url(../images/social_more_stumbleupon.gif) left top no-repeat;
+}
+
+.node-type-article #article-more-shares .tp-social-hyves:before {
+	background: url(../images/social_more_hyves.gif) left top no-repeat;
+}
 
 .node-type-article #article-social {
 	padding-top: 1em;
@@ -788,6 +881,8 @@ body #at16pt {
 
 .node-type-article #article-social.inside .inner {
 }
+
+/* Author */
 
 .node-type-article #article-author {
 	z-index: 1;
