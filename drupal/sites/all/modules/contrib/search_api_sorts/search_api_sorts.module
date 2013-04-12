@@ -169,13 +169,10 @@ function search_api_sorts_block_search_sorts_view() {
   }
 
   $item = menu_get_item();
-  $path = $item['href'];
+  $path = $_GET['q'];
   $current_sort = $query->getSort();
 
-  $params = drupal_get_query_parameters($_GET, array(
-    'q',
-    'page'
-  ));
+  $params = drupal_get_query_parameters($_GET, array('q'));
 
   //Override the path if facetapi_pretty_paths is enabled
   if (module_exists('facetapi_pretty_paths')) {
