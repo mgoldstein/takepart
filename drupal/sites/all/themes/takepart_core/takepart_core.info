@@ -8,6 +8,8 @@ engine = phptemplate
 stylesheets[all][] = css/typeface.css
 stylesheets-conditional[IE][all][] = css/typeface_ie.css
 
+stylesheets[all][] = css/normalize_cms.css
+
 ;-------------- JS -------------
 scripts[] = js/analytics.js
 scripts[] = js/jquery.lazyload.js
