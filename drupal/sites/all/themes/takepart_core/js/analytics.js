@@ -19,6 +19,39 @@ takepart.analytics.addThis_ready = function (evt) {
     addthis.addEventListener('addthis.menu.share', takepart.analytics.addThis_shareEventHandler);
 };
 
+var normalize_share_title = function(title) {
+    switch (title) {
+        case ("Like this content on Facebook."):
+        case ("facebook_like"):
+        case ("facebook"):
+            title = "Facebook";
+            break;
+        case ("Twitter Tweet Button"):
+        case ("tweet"):
+        case ("twitter"):
+            title = "Twitter";
+            break;
+        case ("+1"):
+        case ("google_plusone"):
+            title = "GooglePlus";
+            break;
+        case ("linkedin"):
+             title = "LinkedIn";
+             break;
+        case ("stumbleupon"):
+             title = "Stumbleupon";
+             break;
+        case ("pinterest"):
+             title = "Pinterest";
+             break;
+        case ("email"):
+            title = "Email";
+            break;
+    }
+
+    return title;
+};
+
 // c = prop
 // v = evar
 
@@ -32,37 +65,26 @@ takepart.analytics.track = function(name) {
     var ga_action = 'Share';
 
     switch (name) {
+        case 'tp-social-share':
+            var title = normalize_share_title(args[1].name);
+
+            var s=s_gi(Drupal.settings.omniture.s_account);
+            s.events = 'event22';
+            s.prop26 = title;
+            s.eVar27 = title;
+            s.eVar30 = s.pageName;
+            s.linkTrackVars = 'eVar30,eVar27,prop26,events';
+            s.linkTrackEvents = 'event22';
+            s.tl(args[2], 'o', 'Share Completion');
+            _gaq.push(['_trackEvent', ga_category, 'Confirmed Share', title]);
+            break;
+        case 'tp-social-click':
+            var tpsargs = args[1];
+            args[1] = tpsargs.name;
+            // PASS THROUGH
         case 'generic_tpsocial':
         case 'generic_addthis':
-            var title = null;
-            switch (args[1]) {
-                case ("Like this content on Facebook."):
-                case ("facebook_like"):
-                case ("facebook"):
-                    title = "Facebook";
-                    break;
-                case ("Twitter Tweet Button"):
-                case ("tweet"):
-                case ("twitter"):
-                    title = "Twitter";
-                    break;
-                case ("+1"):
-                case ("google_plusone"):
-                    title = "GooglePlus";
-                    break;
-                case ("linkedin"):
-                     title = "LinkedIn";
-                     break;
-                case ("stumbleupon"):
-                     title = "StumbleUpon";
-                     break;
-                case ("pinterest"):
-                     title = "Pinterest";
-                     break;
-                case ("email"):
-                    title = "Email";
-                    break;
-            }
+            var title = normalize_share_title(args[1]);
 
             if ( title ) {
                 var s=s_gi(Drupal.settings.omniture.s_account);

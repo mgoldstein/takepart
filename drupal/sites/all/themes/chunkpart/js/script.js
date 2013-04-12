@@ -2,8 +2,11 @@
 
 // Temp: event tracking example
 $(window).bind('tp-social-share', function(e, args) {
-	console.log('tp-social-share')
-	console.log(args)
+	takepart.analytics.track('tp-social-share', args);
+});
+
+$(window).bind('tp-social-click', function(e, args) {
+	takepart.analytics.track('tp-social-click', args);
 });
 
 // Remove Drupal default stylings
