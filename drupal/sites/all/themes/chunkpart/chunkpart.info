@@ -33,7 +33,8 @@ regions[highlighted] = Highlighted
 
 ;-------------- C S S -------------
 stylesheets[all][] = css/reset.css
-css[css/reset.css][options][weight] = -1
+stylesheets[all][] = css/normalize_cms.css
+;css[css/reset.css][options][weight] = -1
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/responsive.css
 
