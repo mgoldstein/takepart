@@ -114,6 +114,7 @@ $.fn.tpsocial = function(args) {
 							data.element = this;
 
 							srvc.share(data);
+							$window.trigger(cpre + 'click', data);
 							e.preventDefault();
 						}
 					})(srvc, $this, $link)
@@ -271,7 +272,7 @@ $.tpsocial.add_service({
 		var tops = Number((screen.height/2)-(args.height/2));
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height,"left="+left,"top="+tops].join(", "));
 
-		$window.trigger(cpre + 'share', args);
+		//$window.trigger(cpre + 'share', args);
 	}
 });
 
@@ -288,7 +289,7 @@ $.tpsocial.add_service({
 		var tops = Number((screen.height/2)-(args.height/2));*/
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
 
-		$window.trigger(cpre + 'share', args);
+		//$window.trigger(cpre + 'share', args);
 	}
 });
 
@@ -305,7 +306,7 @@ $.tpsocial.add_service({
 		var tops = Number((screen.height/2)-(args.height/2));*/
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
 
-		$window.trigger(cpre + 'share', args);
+		//$window.trigger(cpre + 'share', args);
 	}
 });
 
@@ -322,7 +323,7 @@ $.tpsocial.add_service({
 		var tops = Number((screen.height/2)-(args.height/2));*/
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
 
-		$window.trigger(cpre + 'share', args);
+		//$window.trigger(cpre + 'share', args);
 	}
 });
 
@@ -339,7 +340,7 @@ $.tpsocial.add_service({
 		var tops = Number((screen.height/2)-(args.height/2));*/
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
 
-		$window.trigger(cpre + 'share', args);
+		//$window.trigger(cpre + 'share', args);
 	}
 });
 
@@ -356,7 +357,7 @@ $.tpsocial.add_service({
 		var tops = Number((screen.height/2)-(args.height/2));*/
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
 
-		$window.trigger(cpre + 'share', args);
+		//$window.trigger(cpre + 'share', args);
 	}
 });
 
@@ -373,7 +374,7 @@ $.tpsocial.add_service({
 		var tops = Number((screen.height/2)-(args.height/2));*/
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
 
-		$window.trigger(cpre + 'share', args);
+		//$window.trigger(cpre + 'share', args);
 	}
 });
 
@@ -390,7 +391,7 @@ $.tpsocial.add_service({
 		var tops = Number((screen.height/2)-(args.height/2));*/
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
 
-		$window.trigger(cpre + 'share', args);
+		//$window.trigger(cpre + 'share', args);
 	}
 });
 
@@ -407,7 +408,7 @@ $.tpsocial.add_service({
 		var tops = Number((screen.height/2)-(args.height/2));*/
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
 
-		$window.trigger(cpre + 'share', args);
+		//$window.trigger(cpre + 'share', args);
 	}
 });
 
@@ -424,7 +425,7 @@ $.tpsocial.add_service({
 		var tops = Number((screen.height/2)-(args.height/2));*/
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
 
-		$window.trigger(cpre + 'share', args);
+		//$window.trigger(cpre + 'share', args);
 	}
 });
 
@@ -441,7 +442,7 @@ $.tpsocial.add_service({
 		var tops = Number((screen.height/2)-(args.height/2));*/
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
 
-		$window.trigger(cpre + 'share', args);
+		//$window.trigger(cpre + 'share', args);
 	}
 });
 
@@ -453,7 +454,7 @@ var email_once = function() {
 };
 var email_callback = function(addthis_event) {
 	if ( addthis_event.data.service == email_args.name ) {
-		$window.trigger(cpre + 'share', email_args);
+		//$window.trigger(cpre + 'share', email_args);
 	}
 };
 var email_script = 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
@@ -503,7 +504,7 @@ var more_once = function() {
 };
 var more_callback = function(addthis_event) {
 	if ( addthis_event.data.service == more_args.name ) {
-		$window.trigger(cpre + 'share', more_args);
+		//$window.trigger(cpre + 'share', more_args);
 	}
 };
 var more_script = 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
