@@ -32,15 +32,10 @@ regions[highlighted] = Highlighted
 
 
 ;-------------- C S S -------------
-stylesheets[all][] = css/typeface.css
-stylesheets-conditional[IE][all][] = css/typeface_ie.css
-
 stylesheets[all][] = css/reset.css
-stylesheets[all][] = css/normalize_cms.css
+css[css/reset.css][options][weight] = -1
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/responsive.css
 
 ;-------------- JS -------------
-scripts[] = js/tpsticky.jquery.js
-scripts[] = js/tpsocial.jquery.js
 scripts[] = js/script.js
