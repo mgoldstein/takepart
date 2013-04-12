@@ -960,7 +960,7 @@ function takepart3_search_api_page_results(array $variables) {
         return $output;
     } else {
         $block = module_invoke('search_api_sorts', 'block_view', 'search-sorts');
-        $output .= '<div id="block-search-api-sorts-search-sorts"><h2>Sort by:</h2><div class="content">' . $block['content'] . '</div></div>';
+        $output .= '<div id="block-search-api-sorts-search-sorts"><h2>Sort by:</h2><div class="content">' . render($block['content']) . '</div></div>';
     }
 
     if ($variables['view_mode'] == 'search_api_page_result') {
