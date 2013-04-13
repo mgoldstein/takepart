@@ -41,13 +41,14 @@
  * @see template_process()
  */
 ?>
-<section id="<?php print $block_html_id; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<section id="<?=$block_html_id ?>" class="<?=$classes ?>"<?=$attributes ?>>
 	<?=render($title_prefix) ?>
 	<? if ($block->subject): ?>
-  		<h3<?php print $title_attributes; ?>><span><?php print $block->subject ?></span></h3>
-	<? endif;?>
+  		<h3<?=$title_attributes ?>><?=$block->subject ?></h3>
+	<? endif ?>
 	<?=render($title_suffix) ?>
-	<div class="content"<?php print $content_attributes; ?>>
+	<? /* <div class="content"<?php print $content_attributes; ?>>
 		<?php print $content ?>
-	</div>
+	</div> */ ?>
+	<?=render($elements['radar_links']) ?>
 </section>
