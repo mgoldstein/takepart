@@ -27,64 +27,61 @@
  * @ingroup views_templates
  */
 ?>
-<section class="<?php print $classes; ?>">
-  <?php print render($title_prefix); ?>
-  <?php if ($title): ?>
-    <?php print $title; ?>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
-  <?php if ($header): ?>
+
+<? /* <div class="<?=$classes ?>"> */ ?>
+  <?=render($title_prefix) ?>
+  <? if ($title): ?>
+    <?=$title ?>
+  <? endif ?>
+  <?=render($title_suffix) ?>
+  <? if ($header): ?>
     <div class="view-header">
-      <?php print $header; ?>
+      <?=$header ?>
     </div>
-  <?php endif; ?>
+  <? endif ?>
 
-  <?php if ($exposed): ?>
+  <? if ($exposed): ?>
     <div class="view-filters">
-      <?php print $exposed; ?>
+      <?=$exposed ?>
     </div>
-  <?php endif; ?>
+  <? endif ?>
 
-  <?php if ($attachment_before): ?>
+  <? if ($attachment_before): ?>
     <div class="attachment attachment-before">
-      <?php print $attachment_before; ?>
+      <?=$attachment_before ?>
     </div>
-  <?php endif; ?>
+  <? endif ?>
 
-  <?php if ($rows): ?>
-    <div class="view-content">
-      <?php print $rows; ?>
-    </div>
-  <?php elseif ($empty): ?>
+  <? if ($rows): ?>
+      <?=$rows ?>
+  <? elseif ($empty): ?>
     <div class="view-empty">
-      <?php print $empty; ?>
+      <?=$empty ?>
     </div>
-  <?php endif; ?>
+  <? endif ?>
 
-  <?php if ($pager): ?>
-    <?php print $pager; ?>
-  <?php endif; ?>
+  <? if ($pager): ?>
+    <?=$pager ?>
+  <? endif ?>
 
-  <?php if ($attachment_after): ?>
+  <? if ($attachment_after): ?>
     <div class="attachment attachment-after">
-      <?php print $attachment_after; ?>
+      <?=$attachment_after ?>
     </div>
-  <?php endif; ?>
+  <? endif ?>
 
-  <?php if ($more): ?>
-    <?php print $more; ?>
-  <?php endif; ?>
+  <? if ($more): ?>
+    <?=$more ?>
+  <? endif ?>
 
-  <?php if ($footer): ?>
+  <? if ($footer): ?>
     <div class="view-footer">
-      <?php print $footer; ?>
+      <?=$footer ?>
     </div>
-  <?php endif; ?>
+  <? endif ?>
 
-  <?php if ($feed_icon): ?>
+  <? if ($feed_icon): ?>
     <div class="feed-icon">
-      <?php print $feed_icon; ?>
+      <?=$feed_icon ?>
     </div>
-  <?php endif; ?>
-
-</section><?php /* class view */ ?>
+  <? endif ?>
