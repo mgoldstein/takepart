@@ -10,7 +10,7 @@
 			<li>
 				<a href="<?=$link['link'] ?>">
 					<p class="topic"><?=$link['topic'] ?></p>
-					<p class="topic"><?=$link['title'] ?></p>
+					<p class="title"><?=$link['title'] ?></p>
 				</a>
 			</li>
 		<? endif ?>

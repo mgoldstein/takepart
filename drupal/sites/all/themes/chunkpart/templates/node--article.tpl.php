@@ -43,7 +43,7 @@
 					</p>
 					<h3 class="headline"><?=$author->title ?></h3>
 
-					<? if ( $abody = _s($author, 'body') ): ?>
+					<? if ( $abody = _s($author, 'body') && $abody['summary'] ): ?>
 						<div class="body">
 							<?=$abody['summary'] ?>
 							<a href="<?=_surl($field_author)?>"><?=t('Full Bio') ?></a>
@@ -59,16 +59,20 @@
 				<?=_simage($node, 'field_article_main_image')?>
 			</div>
 
-			<div id="article-body" class="cms">
-				<?=_s($body)?>
-			</div>
+			<? if ( $body = _s($node, 'body') ): ?>
+				<div id="article-body" class="cms">
+					<?=$body['safe_value']?>
+				</div>
+			<? endif ?>
 
 			<footer id="article-footer">
-				<? var_dump($next_article) ?>
-				<nav id="next-article">
-					<h3 class="headline"><?=t('Next Article') ?></h3>
-					<p><a href="#">{Next Article Next Article Next Article Next Article Next Article Next Article}</a></p>
-				</nav>
+				<? if ( $next_article): ?>
+					<nav id="next-article">
+						<h3 class="headline"><?=t('Next Article') ?></h3>
+						<p><a href="<?=$next_article->href ?>"><?=$next_article->title ?></a></p>
+					</nav>
+				<? endif ?>
+
 				<nav id="article-tags">
 					<h3 class="headline">
 						<?=t('Get More:') ?>

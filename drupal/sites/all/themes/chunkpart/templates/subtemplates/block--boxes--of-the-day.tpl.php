@@ -41,13 +41,12 @@
  * @see template_process()
  */
 ?>
-<section id="<?=$block_html_id ?>" class="<?=$classes ?>"<?=$attributes ?>>
+<section id="<?=$block_html_id ?>" class="section <?=$classes ?>"<?=$attributes ?>>
 	<?=render($title_prefix) ?>
 	<? if ($block->subject): ?>
-  		<h3<?=$title_attributes ?>><?=$block->subject ?></h3>
+  		<h3 class="section_header" <?=$title_attributes ?>><?=$block->subject ?></h3>
 	<? endif;?>
 	<?=render($title_suffix) ?>
 
-	<? /* <div class="content"<?=$content_attributes ?>> */ ?>
 	<?=$content ?>
 </section>

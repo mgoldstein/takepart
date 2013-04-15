@@ -530,6 +530,51 @@ body #at16pt {
 	background: url(../images/follow_tumblr.png) no-repeat;
 }
 
+/* Right Rail */
+
+#site-secondary .section {
+	margin-bottom: 1em;
+}
+
+#site-secondary .section .section_header {
+	font-family: TradeGothicLTStdCnBold, sans-serif;
+	padding-bottom: .5em;
+	border-bottom: 1px solid #e8e8e8;
+	margin-bottom: .5em;
+}
+
+/* On Our Radar module */
+
+#site-secondary .on_our_radar_section {
+}
+
+#site-secondary .on_our_radar_section ol,
+#site-secondary .on_our_radar_section li {
+	list-style-type: decimal;
+	margin-left: 1em;
+	font-size: 14px;
+}
+
+#site-secondary .on_our_radar_section li {
+	padding-bottom: .5em;
+	border-bottom: 1px solid #e8e8e8;
+	margin-bottom: .5em;
+	line-height: 1.5;
+}
+
+#site-secondary .on_our_radar_section a {
+	color: #000;
+	text-decoration: none;
+}
+
+#site-secondary .on_our_radar_section .title {
+	font-weight: bold;
+}
+
+#site-secondary .on_our_radar_section a:hover .title {
+	text-decoration: underline;
+}
+
 /* ============================================================
 || 3.) Section Specific
 ============================================================ */
