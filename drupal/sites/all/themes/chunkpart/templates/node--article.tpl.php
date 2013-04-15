@@ -43,7 +43,7 @@
 					</p>
 					<h3 class="headline"><?=$author->title ?></h3>
 
-					<? if ( $abody = _s($author, 'body') && $abody['summary'] ): ?>
+					<? if ( $abody = _s($author, 'body') ): ?>
 						<div class="body">
 							<?=$abody['summary'] ?>
 							<a href="<?=_surl($field_author)?>"><?=t('Full Bio') ?></a>
