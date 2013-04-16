@@ -813,15 +813,7 @@ function boxes_preprocess_block(&$vars) {
   if ($vars['block']->module === 'boxes') {
   }
   if ($vars['block']->module === 'boxes' && isset($vars['block']->boxes_plugin)) {
-    if (empty($vars['block']->additional_classes)) {
-      return;
-    }
-
-    $additional_classes = explode(' ', $vars['block']->additional_classes);
-
-    foreach ($additional_classes as $class) {
-      $vars['classes_array'][] = $class;
-    }
+    $vars['classes_array'][] = 'block-boxes-' . $vars['block']->boxes_plugin;
   }
   if ($vars['block']->module === 'boxes' && isset($vars['block']->additional_classes)) {
     $vars['classes_array'] = array_merge($vars['classes_array'], explode(' ', $vars['block']->additional_classes));
