@@ -978,11 +978,11 @@ body #at16pt {
 
 .node-type-article #article-author .body {
 	font-size: 11px;
+	margin-bottom: 1em;
 }
 
 .node-type-article #article-body {
 	font-size: 14px;
-	margin-bottom: 1em;
 }
 
 .node-type-article #article-image {
@@ -990,6 +990,7 @@ body #at16pt {
 }
 
 .node-type-article #article-author .follow {
+	font-size: 14px;
 	margin-bottom: 1em;
 	text-align: center;
 }
@@ -1003,13 +1004,16 @@ body #at16pt {
 	width: 21px;
 	height: 21px;
 	text-indent: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	line-height: 21px;
 }
 
-.node-type-article #article-author .follow .twitter {
+.node-type-article #article-author .follow .twitter a {
 	background: url(../images/author_twitter.png) left top no-repeat;
 }
 
-.node-type-article #article-author .follow .google {
+.node-type-article #article-author .follow .google a {
 	background: url(../images/author_google.png) left top no-repeat;
 }
 
