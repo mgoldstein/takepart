@@ -121,21 +121,6 @@
 					<li class="tumblr"><a href="#"><?=t('Tumblr') ?></a></li>
 				</ul>
 			</section>
-
-<pre>
------------------
-<? // _l($comment) ?>
-<? // _l($comment_count) ?>
-
-<? // var_dump(array_keys(get_defined_vars())) ?>
-
-<? // var_dump($comment) ?>
-
-<? // var_dump(array_keys(get_object_vars($node))) ?>
-
------------------
------------------
-</pre>
 		</div>
 	</div>
 	<? if ( $field_topic_box ): ?>
