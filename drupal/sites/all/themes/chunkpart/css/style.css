@@ -950,7 +950,7 @@ body #at16pt {
 
 .node-type-article #article-author .inner {
 	border: 1px solid #dadada;
-	padding: .75em .5em;
+	padding: .75em .5em 0 .5em;
 	margin-top: 20px;
 	background: #f1f3f4;
 	line-height: 1.5;
@@ -982,10 +982,35 @@ body #at16pt {
 
 .node-type-article #article-body {
 	font-size: 14px;
+	margin-bottom: 1em;
 }
 
 .node-type-article #article-image {
 	margin-bottom: 1em;
+}
+
+.node-type-article #article-author .follow {
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+.node-type-article #article-author .follow li {
+	display: inline;
+}
+
+.node-type-article #article-author .follow li a {
+	display: inline-block;
+	width: 21px;
+	height: 21px;
+	text-indent: 100%;
+}
+
+.node-type-article #article-author .follow .twitter {
+	background: url(../images/author_twitter.png) left top no-repeat;
+}
+
+.node-type-article #article-author .follow .google {
+	background: url(../images/author_google.png) left top no-repeat;
 }
 
 /* TODO: maybe just make this global */

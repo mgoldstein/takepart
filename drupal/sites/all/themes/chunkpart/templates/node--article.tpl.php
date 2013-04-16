@@ -49,7 +49,18 @@
 							<a href="<?=_surl($field_author)?>"><?=t('Full Bio') ?></a>
 						</div>
 					<? endif ?>
-					{Follow me}
+
+					<? if ( ($aftwitter = _s($author, 'field_follow_twitter')) && ($afgoogle = _s($author, 'field_follow_google')) ): ?>
+						<ul class="follow">
+							<? if ( $aftwitter['url'] ): ?>
+								<li class="twitter"><a href="<?=$aftwitter['url'] ?>"><?=$aftwitter['title'] ?></a></li>
+							<? endif ?>
+
+							<? if ( $afgoogle['url'] ): ?>
+								<li class="google"><a href="<?=$afgoogle['url'] ?>"><?=$afgoogle['title'] ?></a></li>
+							<? endif ?>
+						</ul>
+					<? endif ?>
 				<? endif ?>
 			</div></aside>
 		</div>
