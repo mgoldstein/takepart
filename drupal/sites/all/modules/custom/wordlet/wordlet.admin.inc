@@ -864,6 +864,57 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     }
   }
 
+  if ($configure || in_array('block', $entity->item_keys)) {
+    $form['block'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+
+      $form['block']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Block',
+        '#attributes' => array('data-for' => array('block-input')),
+        '#default_value' => in_array('block', $entity->item_keys),
+      );
+
+      $form['block']['value'] = array(
+        '#type' => 'container',
+        '#tree' => TRUE,
+        '#attributes' => array('class' => array('block-input')),
+        '#prefix' => '<div class="block-type-container">',
+        '#suffix' => '</div>',
+      );
+
+      $form['block']['value']['module'] = array(
+        '#title' => t('Module'),
+        '#type' => 'select',
+        // TODO: Get the list of modules from custom module hook.
+        '#options' => array(
+          'boxes' => t('Boxes'),
+          'newsletter_campaign' => t('Newsletter Campaigns'),
+          'views' => t('Views'),
+        ),
+        '#default_value' => $values['block']['module'],
+      );
+
+      $form['block']['value']['delta'] = array(
+        '#title' => t('Delta'),
+        '#type' => 'textfield',
+        '#default_value' => $values['block']['delta'],
+      );
+    }
+    else {
+      $form['block']['value']['module'] = array(
+        '#type' => 'value',
+        '#value' => $values['block']['module'],
+      );
+      $form['block']['value']['delta'] = array(
+        '#type' => 'value',
+        '#value' => $values['block']['delta'],
+      );
+    }
+  }
+
   return $form;
 }
 
@@ -1029,6 +1080,7 @@ function wordlet_update_items_from_fields($entity, $values) {
       'video' => '',
       'thumb_src' => '',
       'form' => '',
+      'block' => '',
     );
     $is_empty = TRUE;
     foreach (array_keys($item) as $key) {

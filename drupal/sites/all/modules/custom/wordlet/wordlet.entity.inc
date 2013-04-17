@@ -26,6 +26,7 @@ class WordletItem {
       'token' => '',
       'video' => '',
       'form' => '',
+      'block' => '',
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
@@ -38,13 +39,14 @@ class WordletItem {
         'token' => TRUE,
         'video' => TRUE,
         'form' => TRUE,
+        'block' => TRUE,
       ),
     );
     $this->args = $args;
   }
 
   public function __toString() {
-    $priority = array('multi', 'single', 'multi_short', 'node', 'form', 'href', 'href_raw', 'img_src', 'token', 'video', 'thumb_src');
+    $priority = array('multi', 'single', 'multi_short', 'node', 'block', 'form', 'href', 'href_raw', 'img_src', 'token', 'video', 'thumb_src');
     $retval = null;
     foreach ($priority as $attribute) {
       if (!$this->empty[$attribute]) {
@@ -449,6 +451,34 @@ class WordletController extends EntityAPIControllerExportable {
       }
       $args['form'] = $value;
       $args['empty']['form'] = empty($item['form']['name']);
+    }
+
+    if (in_array('block', $entity->item_keys)) {
+
+      $args['configured'] = true;
+      $args['block'] = '';
+      $args['empty']['block'] = TRUE;
+
+      if (!empty($item['block']['module']) && !empty($item['block']['delta'])) {
+
+        // Load the block configuration
+        $block = block_load($item['block']['module'], $item['block']['delta']);
+
+        // Set the block region so there is something to use when generating
+        // ids and classes.
+        $block->region = 'wordlets';
+
+        // Render the individual blocks.
+        $loaded_blocks = array("{$block->module}_{$block->delta}" => $block);
+        $rendered_blocks = _block_render_blocks($loaded_blocks);
+
+        // Render the block wrapper.
+        $build = _block_get_renderable_array($rendered_blocks);
+        $args['block'] = render($build);
+
+        // The wordlet has data.
+        $args['empty']['block'] = FALSE;
+      }
     }
 
     // Determine the access level for the wordlet.
