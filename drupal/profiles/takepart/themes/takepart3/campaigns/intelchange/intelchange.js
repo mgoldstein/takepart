@@ -93,7 +93,7 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
         })
         ;
 
-    $('#stay-connected').not('.interim')
+    $('.form-state')
         .hide()
         .append('<p class="close"><a href="#">Close</a></p>');
 

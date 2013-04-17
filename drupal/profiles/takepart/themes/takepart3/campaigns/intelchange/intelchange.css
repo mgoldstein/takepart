@@ -598,7 +598,7 @@
 }
 .page-wordlet-intelchange-home .fact0 {
   display: block;
-}
+} 
 
 /* Contest ---------------- */
 .page-wordlet-intelchange-contest #page {
@@ -749,19 +749,6 @@
   margin-bottom: 1em;
   padding-left: 4em;
   background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/pencil.png) no-repeat 0.5em 0.5em;
-}
-
-/* Contest Interim -------- */
-.page-wordlet-intelchange-contest #page .first-block.interim {
-  border-bottom: 2px solid rgb(201, 196, 195);
-  padding-bottom: 36px;
-}
-
-.page-wordlet-intelchange-contest #page .third-block.interim {
-  padding-top: 59px;
-}
-.page-wordlet-intelchange-contest #page .third-block.interim .countries .country_image {
-  padding-top: 69px;
 }
 
 /* Contest Enter ---------------- */
