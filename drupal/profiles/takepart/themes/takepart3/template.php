@@ -253,7 +253,12 @@ function _render_tp3_user_menu($variables) {
                 $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');
             } else {
                 $opts['attributes']['class'][] = 'join-login';
-                $opts['query'] = drupal_get_destination();
+                if ($uri == 'iframes/slim-header') {
+                    $opts['query'] = $_SERVER["HTTP_REFERER"];
+                }
+                else {
+                    $opts['query'] = drupal_get_destination();
+                }
                 $menu_item['link']['title'] = variable_get("takepart_user_login_link_name", "Login");
             }
         } else {
