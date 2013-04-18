@@ -838,6 +838,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
           'newsletter_campaign_mobile_only_signup' => t('Mobile Only Signup'),
           'newsletter_campaign_email_mobile_signup' => t('Email + Mobile Signup'),
           'contest_intel_entry' => t('Intel Contest Entry'),
+          'contest_intel_vote' => t('Intel Contest Vote'),
         ),
         '#default_value' => $values['form']['name'],
         '#element_validate' => array('wordlet_validate_form'),
