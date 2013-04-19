@@ -49,7 +49,7 @@
                 <div class="video">
                     <iframe width="541" height="305" src="http://www.youtube.com/embed/<?=$w->video?>" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <h4><?=$w->single(false)?></h4>
+                <h4 class="name"><?=$w->single(false)?></h4>
                 <div class="cms">
                     <?=$w->multi(false)?>
                 </div>
