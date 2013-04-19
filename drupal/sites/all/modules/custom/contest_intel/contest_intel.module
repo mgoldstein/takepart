@@ -494,7 +494,7 @@ function contest_intel_vote_form_defaults($config) {
     'vote_form_id' => '',
     'vote_token' => '',
     'vote_submit' => t('Confirm'),
-    'entry_opt_in' => t('I want to enter the Intel for Change Sweepstakes.')
+    'entry_opt_in' => t('I want to enter the Intel for Change Sweepstakes.'),
     'agree_to_rules' => t("I agree to <a href=\"@rules\">Official Contest Rules</a>*.", array(
       '@rules' => url('privacy-policy'),
     )),
