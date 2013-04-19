@@ -1251,3 +1251,11 @@
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
 }
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .video {
+  margin-bottom: 35px;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .name {
+  font-size: 1.938em;
+  color: rgb(31, 162, 220);
+  margin-bottom: 15px;
+}
