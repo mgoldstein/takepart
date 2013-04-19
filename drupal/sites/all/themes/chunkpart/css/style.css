@@ -394,7 +394,7 @@ a:visited {
 	width: 100%;
 }
 
-#site-footer #site-more-campaigns a {
+#site-footer #site-campaigns li:last-child a {
 	color: #28a9e9;
 }
 
