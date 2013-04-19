@@ -1167,6 +1167,7 @@
 /* vote block */
 .page-wordlet-intelchange-vote #page .second-block {
   background: rgb(54,44, 44);
+  margin-top: 50px;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote {
   width: 555px;
@@ -1205,4 +1206,29 @@
   right: 0;
   border-right-color: transparent;
   border-width: 0.667em 0.667em 0 0;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists li {
+  position: relative;
+  margin-bottom: 2px;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists li a {
+  display: block;
+  width:163px;
+  height: 187px;
+  background: rgb(233, 232, 230);
+  text-align: center;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists li .portrait {
+  height: 147px;
+  margin-top: 13px;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists li .portrait img {
+  max-width: 100%;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists li .name {
+  display: block;
+  color: rgb(38, 31, 31);
+  font-size: 16px;
+  position: absolute;
+  bottom: 15px;
 }

@@ -23,7 +23,9 @@
         <? foreach ( $finalists as $i => $w ): ?>
             <li class='<?= $i&1?"even":"odd"?>'>
                 <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>">
-                    <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+                    <div class="portrait">
+                        <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+                    </div>                    
                     <span class="name"><?=$w->single(false)?></span>
                 </a>
             </li>
