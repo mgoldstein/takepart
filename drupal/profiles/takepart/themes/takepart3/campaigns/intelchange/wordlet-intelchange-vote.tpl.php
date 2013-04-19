@@ -15,22 +15,34 @@
 <div class="second-block">
     <div class="vote" <?=wa('finalists')?>>
         <h3><?=w('vote_header')?></h3>
-        <ul class="finalists">
+        
+        <div class="finalists">
         <?
-        $finalists = iterator_to_array(wl('finalists'));
-        shuffle($finalists);
+        $finalists = wl('finalists'); //$finalists = wl('finalists')->shuffle();
+        $finalists_count = $finalists->count();
         ?>
         <? foreach ( $finalists as $i => $w ): ?>
-            <li class='<?= $i&1?"even":"odd"?>'>
-                <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>">
-                    <div class="portrait">
-                        <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
-                    </div>                    
-                    <span class="name"><?=$w->single(false)?></span>
-                </a>
-            </li>
+            <?if($i == 0):?>
+            <div class="sect-one">
+            <?endif?>
+                <div class='finalist'>
+                    <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>">
+                        <div class="portrait">
+                            <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+                        </div>                    
+                        <span class="name"><?=$w->single(false)?></span>
+                    </a>
+                </div>
+            <?if($i == (($finalists_count / 2) - 1)):?>
+            </div>
+            <div class="sect-two">
+            <?endif?>
+            <?if($i == ($finalists_count - 1)):?>
+            </div>
+            <?endif?>
         <? endforeach ?>
-        </ul>
+        </div>
+        
         <div class="finalist_content">
             <? foreach ( $finalists as $i => $w ): ?>
             <div id='<?=$w->token?>' class="finalist">
