@@ -1,5 +1,5 @@
 <?
 unset($variables['view']);
 unset($variables['fields']);
-_l($variables);
+//_l($variables);
 ?>

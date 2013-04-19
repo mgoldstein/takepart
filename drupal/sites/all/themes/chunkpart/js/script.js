@@ -104,6 +104,17 @@ $(function() {
 			$body.removeClass('clickedon');
 		});
 
+    // TODO reduce code duplication
+    // Lazy load facebook comments
+    $('.fb_comments')
+        .lazyload({threshold: 200, load: function() {
+            var $div = $('<div/>');
+            var $template = $(this).find('.fb_comments_template');
+            var html = $template.text();
+            $div.html(html);
+            $div.insertAfter($template);
+            FB.XFBML.parse($div[0]);
+        }});
 
 	/* --------------------------------
 	| Page Specific ---------------- */
