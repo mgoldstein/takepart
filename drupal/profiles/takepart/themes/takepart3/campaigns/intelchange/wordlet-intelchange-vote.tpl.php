@@ -16,7 +16,7 @@
     <div class="vote" <?=wa('finalists')?>>
         <h3><?=w('vote_header')?></h3>
         
-        <div class="finalists">
+        <div class="finalists-menu">
         <?
         $finalists = wl('finalists'); //$finalists = wl('finalists')->shuffle();
         $finalists_count = $finalists->count();
@@ -43,7 +43,7 @@
         <? endforeach ?>
         </div>
         
-        <div class="finalist_content">
+        <div class="finalist-content">
             <? foreach ( $finalists as $i => $w ): ?>
             <div id='<?=$w->token?>' class="finalist">
                 <div class="video">

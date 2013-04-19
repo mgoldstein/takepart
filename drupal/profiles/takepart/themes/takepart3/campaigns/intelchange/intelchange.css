@@ -738,24 +738,24 @@
   height: 100%;
   content: " ";
 }
-.page-wordlet-intelchange-contest #page .second-block .finalists {
+.page-wordlet-intelchange-contest #page .second-block .finalists-menu {
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
   margin-top: -4px;
   margin-left: -4px;
   margin-bottom: 1.5em;
 }
-.page-wordlet-intelchange-contest #page .second-block .finalists li {
+.page-wordlet-intelchange-contest #page .second-block .finalists-menu li {
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
   margin-left: 4px;
   margin-top: 4px;
 }
-.page-wordlet-intelchange-contest #page .second-block .finalists li {
+.page-wordlet-intelchange-contest #page .second-block .finalists-menu li {
   float: left;
 }
-.page-wordlet-intelchange-contest #page .second-block .finalists li a,
-.page-wordlet-intelchange-contest #page .second-block .finalists li img {
+.page-wordlet-intelchange-contest #page .second-block .finalists-menu li a,
+.page-wordlet-intelchange-contest #page .second-block .finalists-menu li img {
   display: block;
 }
 .page-wordlet-intelchange-contest #page .second-block .instructions {
@@ -1127,8 +1127,8 @@
 
 .page-wordlet-intelchange-vote #page {
   padding-top: 3.750em;
-  padding-left: 3.000em;
-  padding-right: 3.000em;
+  padding-left: 30px;
+  padding-right: 30px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -1168,23 +1168,25 @@
 .page-wordlet-intelchange-vote #page .second-block {
   background: rgb(54,44, 44);
   margin-top: 50px;
+  position: relative;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote {
   width: 555px;
   margin: 0 auto;
   background: rgb(38, 31, 31);
+  text-align: center;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote h3 {
   background: rgb(1, 139, 212);
   color: rgb(255, 255, 255);
   text-align: center;
   position: relative;
-  padding: 0.5em 0.667em;
-  font-size: 25px;
-  margin-bottom: 0.667em;
+  padding: 0.5em 0.458em;
+  font-size: 22px;
+  margin-bottom: 0.458em;
   width: 100%;
-  left: -0.667em;
-  top: -0.667em;
+  left: -0.458em;
+  top: -0.458em;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote h3::after,
 .page-wordlet-intelchange-vote #page .second-block .vote h3::before {
@@ -1196,37 +1198,56 @@
   border-color: rgb(22, 101, 145);
   border-bottom-color: transparent;
   border-style: solid;
+  border-width: 0.458em;
+  border-bottom-width: 0;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote h3::before {
   left: 0;
   border-left-color: transparent;
-  border-width: 0.667em 0 0 0.667em;
+  border-right-width: 0;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote h3::after {
   right: 0;
   border-right-color: transparent;
-  border-width: 0.667em 0.667em 0 0;
+  border-left-width: 0;
 }
-.page-wordlet-intelchange-vote #page .second-block .vote .finalists .finalist {
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-one,
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-two {
+  position: absolute;
+  top: 0;
+  margin: 5px;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-one {
+  left: 0;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-two {
+  right: 0;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .finalist {
   position: relative;
   margin-bottom: 2px;
 }
-.page-wordlet-intelchange-vote #page .second-block .vote .finalists .finalist a {
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .finalist a {
   display: block;
   width:163px;
   height: 187px;
   background: rgb(233, 232, 230);
   text-align: center;
 }
-.page-wordlet-intelchange-vote #page .second-block .vote .finalists .finalist .portrait {
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .finalist .portrait {
   height: 147px;
   padding-top: 13px;
 }
-.page-wordlet-intelchange-vote #page .second-block .vote .finalists .finalist .portrait img {
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .finalist .portrait img {
   max-width: 100%;
 }
-.page-wordlet-intelchange-vote #page .second-block .vote .finalists .finalist .name {
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .finalist .name {
   display: block;
   color: rgb(38, 31, 31);
   font-size: 16px;
+}
+
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .addThis {
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
 }
