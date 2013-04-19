@@ -91,13 +91,10 @@
       </section>
     <? endif ?>
 
-    <? if ( ($nav = _smenu('menu-takepart-film-campaigns')) ): ?>
+    <? if ( ($nav = _smenu('menu-reel-impact')) ): ?>
       <section id="site-campaigns">
         <h4><?=t('Film Campaigns') ?></h4>
         <?=$nav ?>
-        <p id="site-more-campaigns">
-          <a href="/film-campaigns"><?=t('More Film Campaigns') ?></a>
-        </p>
       </section>
     <? endif ?>
 
