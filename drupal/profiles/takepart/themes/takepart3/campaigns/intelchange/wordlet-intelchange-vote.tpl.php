@@ -56,10 +56,10 @@
                 <p class="important">
                     <a href="google.com"><?=w('vote_finalist_'.$w->token)?></a>
                 </p>
-                <? $w = w('add_this_'.$w->token); ?>
+                <? $w2 = w('add_this_'.$w->token); ?>
                 <div class="addThis"
-                    data-message="<?=$w->multi(false)?>"
-                    data-url="<?=$w->href?>"
+                    data-message="<?=$w2->multi(false)?>"
+                    data-url="<?=$w2->href?>"
                     <?=wa('add_this_'.$w->token)?>>
                     <a class="addthis_button_facebook at300b" title="Facebook" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook"></a>
                     <a class="addthis_button_twitter at300b" title="Tweet" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter"></a>
