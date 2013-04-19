@@ -1026,6 +1026,8 @@ body #at16pt {
 .node-type-article #next-article {
 	margin-bottom: 1em;
 	font-size: 16px;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #e8e8e8;
 }
 
 .node-type-article #next-article .headline {
