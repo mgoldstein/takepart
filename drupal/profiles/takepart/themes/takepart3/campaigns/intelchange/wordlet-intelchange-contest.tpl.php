@@ -28,7 +28,7 @@
 	<div class="second-sub">
 		<div class="sub-wrapper">
 			<div class="finalists-wrapper">
-				<ul class="finalists" <?=wa('finalists')?>>
+				<ul class="finalists-menu" <?=wa('finalists')?>>
 					<? foreach ( wl('finalists') as $w ): ?>
 						<li><a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>"></a></li>
 					<? endforeach ?>
