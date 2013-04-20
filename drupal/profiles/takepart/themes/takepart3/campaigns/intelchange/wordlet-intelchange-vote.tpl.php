@@ -51,10 +51,10 @@
                 </div>
                 <h4 class="name"><?=$w->single(false)?></h4>
                 <div class="cms">
-                    <p><?=$w->multi(false)?></p>
-                    <p><?=$w->multi_short(false)?></p>
+                    <div class='facts'><?=$w->multi_short(false)?></div>
+                    <div class='blurb'><?=$w->multi(false)?></div>
                     <? $w2 = w('content_full_'.$w->token); ?>
-                    <?=$w2->multi(false)?>
+                    <div class="full-text"><?=$w2->multi(false)?></div>                    
                 </div>
                 <p class="important">
                     <a href="google.com"><?=w('vote_finalist_'.$w->token)?></a>
