@@ -105,10 +105,7 @@
 				</nav>
 			</footer>
 
-			<section id="article-comments" class="comments">
-				<h3><?=t('Comments') ?> <span class="count"></span></h3>
-				<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
-			</section>
+			<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
 
 			<section class="follow_us">
 				<h3><?=t('Follow Us') ?></h3>

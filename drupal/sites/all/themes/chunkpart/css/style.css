@@ -1154,10 +1154,34 @@ body #at16pt {
 	margin-bottom: .5em;
 }
 
-.node-type-article #article-comments .fb_iframe_widget,
-.node-type-article #article-comments .fb_iframe_widget span,
-.node-type-article #article-comments iframe {
+/* Comments */
+
+.node-type-article .fb_comments .fb_iframe_widget,
+.node-type-article .fb_comments .fb_iframe_widget span,
+.node-type-article .fb_comments iframe {
 	max-width: 100%;
+}
+
+.node-type-article .fb_comments .header {
+	text-transform: uppercase;
+	font-family: TradeGothicLTStdCnBold, sans-serif;
+	margin-bottom: .5em;
+	padding-bottom: .5em;
+	border-bottom: 1px solid #e8e8e8;
+	margin-top: 1.5em;
+}
+
+.node-type-article .fb_comments .header .fb_comments_count {
+	background: url(../images/share_comments.png) left 2px no-repeat;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	line-height: 23px;
+	vertical-align: middle;
+	text-align: center;
+	color: #fff;
+	font-family: sans-serif;
+	font-size: 11px;
 }
 
 /* ============================================================
