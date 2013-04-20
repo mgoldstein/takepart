@@ -1263,7 +1263,7 @@
   margin-bottom: 15px;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .details {
-  padding: 0 40px;
+  padding: 0 40px 40px 40px;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .facts p {
   font-size: 14px;
@@ -1274,4 +1274,9 @@
 }
 .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .full-text p {
   font-size: 13px;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .vote-btn a {
+  margin-top: 2.250em;
+  margin-bottom: 1.563em;
+  padding: 1em 2.875em;
 }
