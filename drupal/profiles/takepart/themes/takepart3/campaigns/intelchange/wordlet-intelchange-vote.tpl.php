@@ -59,7 +59,7 @@
                             <?=$w2->multi(false)?>
                         </div>                    
                     </div>
-                    <p class="important">
+                    <p class="vote-btn important">
                         <a href="google.com"><?=w('vote_finalist_'.$w->token)?></a>
                     </p>
                     <? $w2 = w('add_this_'.$w->token); ?>
