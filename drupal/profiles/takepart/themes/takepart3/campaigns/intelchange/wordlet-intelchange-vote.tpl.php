@@ -49,26 +49,28 @@
                 <div class="video">
                     <iframe width="541" height="305" src="http://www.youtube.com/embed/<?=$w->video?>" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <h4 class="name"><?=$w->single(false)?></h4>
-                <div class="cms">
-                    <div class='facts'><?=$w->multi_short(false)?></div>
-                    <div class='blurb'><?=$w->multi(false)?></div>
-                    <? $w2 = w('content_full_'.$w->token); ?>
-                    <div class="full-text"<?=wa('content_full_'.$w->token)?>>
-                        <?=$w2->multi(false)?>
-                    </div>                    
-                </div>
-                <p class="important">
-                    <a href="google.com"><?=w('vote_finalist_'.$w->token)?></a>
-                </p>
-                <? $w2 = w('add_this_'.$w->token); ?>
-                <div class="addThis"
-                    data-message="<?=$w2->multi(false)?>"
-                    data-url="<?=$w2->href?>"
-                    <?=wa('add_this_'.$w->token)?>>
-                    <a class="addthis_button_facebook at300b" title="Facebook" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook"></a>
-                    <a class="addthis_button_twitter at300b" title="Tweet" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter"></a>
-                    <a class="addthis_button_email at300b" title="Email" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_email_share.png" alt="Share by Email"></a>
+                <div class="details">
+                    <h4 class="name"><?=$w->single(false)?></h4>
+                    <div class="cms">
+                        <div class='facts'><?=$w->multi_short(false)?></div>
+                        <div class='blurb'><?=$w->multi(false)?></div>
+                        <? $w2 = w('content_full_'.$w->token); ?>
+                        <div class="full-text"<?=wa('content_full_'.$w->token)?>>
+                            <?=$w2->multi(false)?>
+                        </div>                    
+                    </div>
+                    <p class="important">
+                        <a href="google.com"><?=w('vote_finalist_'.$w->token)?></a>
+                    </p>
+                    <? $w2 = w('add_this_'.$w->token); ?>
+                    <div class="addThis"
+                        data-message="<?=$w2->multi(false)?>"
+                        data-url="<?=$w2->href?>"
+                        <?=wa('add_this_'.$w->token)?>>
+                        <a class="addthis_button_facebook at300b" title="Facebook" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook"></a>
+                        <a class="addthis_button_twitter at300b" title="Tweet" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter"></a>
+                        <a class="addthis_button_email at300b" title="Email" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_email_share.png" alt="Share by Email"></a>
+                    </div>
                 </div>
             </div>
             <? endforeach ?>

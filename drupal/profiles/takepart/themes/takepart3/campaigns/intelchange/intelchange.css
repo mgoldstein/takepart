@@ -1247,7 +1247,10 @@
   font-size: 16px;
 }
 
-.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .addThis {
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist p {
+  color: rgb(255, 255, 255);
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .addThis {
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
 }
@@ -1258,4 +1261,17 @@
   font-size: 1.938em;
   color: rgb(31, 162, 220);
   margin-bottom: 15px;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .details {
+  padding: 0 40px;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .facts p {
+  font-size: 14px;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .blurb p {
+  font-size: 16px;
+  font-weight: bold;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .full-text p {
+  font-size: 13px;
 }
