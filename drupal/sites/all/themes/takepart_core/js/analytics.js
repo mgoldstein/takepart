@@ -32,6 +32,7 @@ var normalize_share_title = function(title) {
             title = "Twitter";
             break;
         case ("+1"):
+        case ("googleplus"):
         case ("google_plusone"):
             title = "GooglePlus";
             break;
@@ -46,6 +47,9 @@ var normalize_share_title = function(title) {
              break;
         case ("email"):
             title = "Email";
+            break;
+        case ("reddit"):
+            title = "Reddit";
             break;
     }
 
