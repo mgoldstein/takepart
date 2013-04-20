@@ -366,6 +366,10 @@ a:visited {
 	text-decoration: none;
 }
 
+#site-footer #site-participant a {
+	color: #28a9e9;
+}
+
 #site-footer a:hover {
 	text-decoration: underline;
 }
@@ -394,7 +398,7 @@ a:visited {
 	width: 100%;
 }
 
-#site-footer #site-campaigns li:last-child a {
+#site-footer #site-more-campaigns a {
 	color: #28a9e9;
 }
 

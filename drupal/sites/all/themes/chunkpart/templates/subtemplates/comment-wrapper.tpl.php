@@ -56,10 +56,10 @@
   <? else: ?>
     <? if ($content['#node']->comment_count > 0): ?>
       <?=render($title_prefix) ?>
-      <div class='comments-header'>
-        <h2 class="title"><?=$content['comments_title'] ?></h2>
+      <h3 class="header">
+        <?=$content['comments_title'] ?>
         <span class='comment-count'><?=$content['#node']->comment_count ?></span>
-      </div>
+      </h3>
       <?=render($title_suffix) ?>
       <?=render(array_reverse($content['comments'])) ?>
     <? endif ?>
