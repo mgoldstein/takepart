@@ -34,37 +34,34 @@
  * @see theme_comment_wrapper()
  */
 ?>
-<div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php if ($content['#fb_comments']['enabled']): ?>
-    <?php print render($title_prefix); ?>
+<div class="<?=$classes ?>"<?=$attributes ?>>
+  <? if ($content['#fb_comments']['enabled']): ?>
+    <?=render($title_prefix) ?>
     <div class="fb_comments">
       <script class="fb_comments_template" type="text/x-javascript-template">
         <div class='comments-header'>
-          <h2 class="title"><?php print $content['comments_title']; ?></h2>
+          <h2 class="title"><?=$content['comments_title'] ?></h2>
           <span class='comment-count'><fb:comments-count href="<?php
             print $content['#fb_comments']['url']
           ?>"></fb:comments-count></span>
         </div>
-        <?php print render($title_suffix); ?>
-        <fb:comments href="<?php print $content['#fb_comments']['url']; ?>"
-          num_posts="<?php print $content['#fb_comments']['amount']; ?>"
-          <? /* width="<?php print $content['#fb_comments']['width']; ?>" */ ?>
-          mobile="<?php print $content['#fb_comments']['mobile']; ?>"
-          colorscheme="<?php print $content['#fb_comments']['style']; ?>"></fb:comments>
+        <?=render($title_suffix) ?>
+        <fb:comments href="<?=$content['#fb_comments']['url'] ?>"
+          num_posts="<?=$content['#fb_comments']['amount'] ?>"
+          <? /* width="<?=$content['#fb_comments']['width'] ?>" */ ?>
+          mobile="<?=$content['#fb_comments']['mobile'] ?>"
+          colorscheme="<?=$content['#fb_comments']['style'] ?>"></fb:comments>
       </script>
     </div>
-  <?php else: ?>
-  <?php if ($content['#node']->comment_count > 0): ?>
-    <?php print render($title_prefix); ?>
-    <div class='comments-header'>
-      <h2 class="title"><?php print $content['comments_title']; ?></h2>
-      <span class='comment-count'><?php print $content['#node']->comment_count; ?></span>
-    </div>
-    <?php print render($title_suffix); ?>
-    <?php
-      $comments = array_reverse($content['comments']);
-      print render($comments);
-    ?>
-  <?php endif; ?>
-  <?php endif; ?>
+  <? else: ?>
+    <? if ($content['#node']->comment_count > 0): ?>
+      <?=render($title_prefix) ?>
+      <div class='comments-header'>
+        <h2 class="title"><?=$content['comments_title'] ?></h2>
+        <span class='comment-count'><?=$content['#node']->comment_count ?></span>
+      </div>
+      <?=render($title_suffix) ?>
+      <?=render(array_reverse($content['comments'])) ?>
+    <? endif ?>
+  <? endif ?>
 </div>
