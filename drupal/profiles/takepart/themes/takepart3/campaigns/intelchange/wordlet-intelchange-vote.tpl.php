@@ -54,7 +54,9 @@
                     <div class='facts'><?=$w->multi_short(false)?></div>
                     <div class='blurb'><?=$w->multi(false)?></div>
                     <? $w2 = w('content_full_'.$w->token); ?>
-                    <div class="full-text"><?=$w2->multi(false)?></div>                    
+                    <div class="full-text"<?=wa('content_full_'.$w->token)?>>
+                        <?=$w2->multi(false)?>
+                    </div>                    
                 </div>
                 <p class="important">
                     <a href="google.com"><?=w('vote_finalist_'.$w->token)?></a>
