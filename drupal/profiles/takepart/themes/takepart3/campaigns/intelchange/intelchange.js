@@ -1,7 +1,7 @@
 (function(window, $, undefined) {
 // Setup ----------------
 
-var speed = 'slow';
+var speed = 'fast';
 
 var swap = function($from, $to, $parent, callback) {
     $from
@@ -178,6 +178,46 @@ else if ( $body.is('.page-wordlet-intelchange-about') ) {
 
     $current_nav.addClass('active');
     contentSections.not('#' + $current_nav.attr('href')).hide();
+}
+
+// Vote
+else if ( $body.is('.page-wordlet-intelchange-vote') ) {
+    var $voteWrap = $('.second-block .vote');
+    var $contentNav = $('.finalists-menu');
+    var $contentInfo = $('.finalist-content');
+    var $contentNavs = $contentNav.find('.finalist a');
+    var $contentSections = $contentInfo.find('.finalist');
+    var $currentNav = $contentNavs.first();
+    var $currentContent;
+
+    // set first 
+    if ( location.hash ) {
+        var $to = $contentNavs.filter('a[href="' + location.href + '"]');
+        if ( $to.length > 0 ) {
+            $currentNav = $to;
+        }
+    }
+    $currentContent = $contentSections.filter($currentNav[0].hash);
+    $currentNav.addClass('active');
+    $contentSections.not($currentNav[0].hash).hide();
+    $voteWrap.css({
+        'min-height': $contentNav.children().outerHeight(),
+        '_height': $contentNav.children().outerHeight()
+    });
+
+    $body
+        // Nav click
+        .delegate('.finalists-menu .finalist a', 'click', function(e) {
+            e.preventDefault();
+            if ( this == $currentNav[0] ) return;
+            $contentNavs.removeClass('active');
+            var $this = $(this).addClass('active');
+            var $from = $currentContent;
+            var $to = $contentSections.filter($this[0].hash);
+            swap($from, $to, $contentInfo);
+            $currentContent = $to;
+            $currentNav = $this;
+        });
 }
 
 });

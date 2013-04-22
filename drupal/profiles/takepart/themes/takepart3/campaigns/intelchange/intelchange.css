@@ -1215,7 +1215,7 @@
 .page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-two {
   position: absolute;
   top: 0;
-  margin: 5px;
+  padding: 5px;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-one {
   left: 0;
