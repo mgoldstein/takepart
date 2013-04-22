@@ -18,8 +18,7 @@
         
         <div class="finalists-menu">
         <?
-        $finalists = wl('finalists'); //$finalists = wl('finalists')->shuffle();
-        $finalists_count = $finalists->count();
+        $finalists = wl('finalists', true);
         ?>
         <? foreach ( $finalists as $i => $w ): ?>
             <?if($i == 0):?>
@@ -33,11 +32,11 @@
                         <span class="name"><?=$w->single(false)?></span>
                     </a>
                 </div>
-            <?if($i == (($finalists_count / 2) - 1)):?>
+            <?if($i == (($finalists->count() / 2) - 1)):?>
             </div>
             <div class="sect-two">
             <?endif?>
-            <?if($i == ($finalists_count - 1)):?>
+            <?if($i == ($finalists->count() - 1)):?>
             </div>
             <?endif?>
         <? endforeach ?>
