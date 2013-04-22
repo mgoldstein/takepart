@@ -182,6 +182,8 @@ else if ( $body.is('.page-wordlet-intelchange-about') ) {
 
 // Vote
 else if ( $body.is('.page-wordlet-intelchange-vote') ) {
+
+    // variables
     var $voteWrap = $('.second-block .vote');
     var $contentNav = $('.finalists-menu');
     var $contentInfo = $('.finalist-content');
@@ -190,7 +192,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var $currentNav = $contentNavs.first();
     var $currentContent;
 
-    // set first 
+    // initialize finalist on load
     if ( location.hash ) {
         var $to = $contentNavs.filter('a[href="' + location.href + '"]');
         if ( $to.length > 0 ) {
@@ -200,11 +202,14 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     $currentContent = $contentSections.filter($currentNav[0].hash);
     $currentNav.addClass('active');
     $contentSections.not($currentNav[0].hash).hide();
+
+    // adjust finalist wrapper height based on menu size
     $voteWrap.css({
         'min-height': $contentNav.children().outerHeight(),
         '_height': $contentNav.children().outerHeight()
     });
 
+    // body delegates
     $body
         // Nav click
         .delegate('.finalists-menu .finalist a', 'click', function(e) {
@@ -217,6 +222,10 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
             swap($from, $to, $contentInfo);
             $currentContent = $to;
             $currentNav = $this;
+        })
+        // Vote btn click
+        .delegate('.finalist .vote-btn a', 'click', function(e) {
+            console.log('voted')
         });
 }
 
