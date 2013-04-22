@@ -129,6 +129,8 @@
 							<a href="<?=($link['url'])?$link['url']:'#' ?>">
 								<?=_simage($topic, 'field_topic_box_image') ?>
 							</a>
+						<? else: ?>
+							<?=_simage($topic, 'field_topic_box_image') ?>						
 						<? endif ?>
 					</li>
 				<? endwhile ?>
