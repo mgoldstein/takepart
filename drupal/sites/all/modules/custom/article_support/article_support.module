@@ -1,29 +1,186 @@
 <?php
 
-function article_support_add_next_article($node, &$variables) {
+class ViewHelperLink {
+  public function __construct($title, $href, $target = NULL) {
+    $this->title = $title;
+    $this->href = $href;
+    $this->target = $target;
+  }
+}
+
+class ViewHelperImage {
+  public function __construct($src, $alt, $href = NULL) {
+    $this->src = $src;
+    $this->alt = $alt;
+    $this->href = $href;
+  }
+}
+
+class ViewHelperAuthor {
+  public function __construct($name, $href) {
+    $this->name = $name;
+    $this->href = $href;
+    $this->image = NULL;
+    $this->summary = NULL;
+    $this->follow = NULL;
+  }
+}
+
+function article_support_abstract($wrapper) {
+  return $wrapper->field_article_subhead->value();
+}
+
+function article_support_significance($wrapper) {
+  $significance = $wrapper->field_significance->value();
+  if ($significance) {
+    $term = entity_metadata_wrapper('taxonomy_term', $significance);
+    $badge = new StdClass();
+    $badge->title = $term->name->value();
+    $badge->badge = $term->field_significance_badge->value();
+    return $badge;
+  }
+}
+
+function article_support_authored_on($wrapper) {
+  return $wrapper->created->value();
+}
+
+function article_support_authors($wrapper) {
+
+  $authors = array();
+
+  $profiles = $wrapper->field_author->value();
+  foreach ($profiles as $profile) {
+
+    // Create an author view helper with the required info.
+    $url = url("node/{$profile->nid}");
+    $author = new ViewHelperAuthor($profile->title, $url);
+
+    // Wrap the profile node to get the rest of the author data.
+    $profile_wrapper = entity_metadata_wrapper('node', $profile);
+
+    if ($profile_wrapper->body->value()) {
+      $author->summary = $profile_wrapper->body->summary->value();
+    }
+
+    if ($profile_wrapper->field_profile_photo->value()) {
+      $image = $profile_wrapper->field_profile_photo->value();
+      $author->image = image_style_url('thumbnail', $image['uri']);
+    }
+
+    $author->follow = array();
+    if (isset($profile->field_follow_me)) {
+      $follow_me_links = $profile_wrapper->field_follow_me->value();
+      foreach ($follow_me_links as $link) {
+        $icon = new StdClass();
+        $icon->service = $link['title'];
+        $icon->href = $link['url'];
+        $author->follow[] = $icon;
+      }
+    }
+
+    $authors[] = $author;
+  }
+
+  return $authors;
+}
+
+function article_support_main_image($wrapper) {
+  $image = $wrapper->field_article_main_image->file->value();
+  $src = image_style_url('thumbnail', $image->uri);
+  return new ViewHelperImage($src, '');
+}
+
+function article_support_body($wrapper) {
+  return $wrapper->body->value->value();
+}
+
+function article_support_next_article($wrapper) {
 
   // Get the first article from a list of articles created before this one
   // sorted from newest to oldest
   $query = db_select('node', 'n')
     ->fields('n', array('nid', 'title'))
-    ->condition('created', $node->created, '<')
+    ->condition('created', $wrapper->created->value(), '<')
+    //->condition('type', 'article')
     ->orderBy('created', 'DESC')
     ->orderBy('nid', 'DESC')
     ->range(0, 1);
 
   // Fetch the previous article.
   $previous = $query->execute()->fetchAssoc();
-
   if ($previous !== FALSE) {
+    return new ViewHelperLink($previous['title'],
+      url('node/' . $previous['nid']));
+  }
+}
 
-    // TODO: make use of a Link view helper (if and when they are implemented)
-    $link = new StdClass();
-    $link->title = $previous['title'];
-    $link->href = url('node/' . $previous['nid']);
+function article_support_get_more($wrapper) {
 
-    // Add the link to the 'next' article to the content available to the
-    // article template.
-    $variables['next_article'] = $link;
+  $tags = array();
+
+  // Topic
+  $topics = $wrapper->field_topic->value();
+  foreach ($topics as $topic) {
+    $url = url("taxonomy/term/{$topic->tid}");
+    $link = new ViewHelperLink($topic->name, $url);
+    $tags[] = $link;
+  }
+
+  // Free tags
+  $free_tags = $wrapper->field_free_tag->value();
+  foreach ($free_tags as $free_tag) {
+    $url = url("taxonomy/term/{$free_tag->tid}");
+    $link = new ViewHelperLink($free_tag->name, $url);
+    $tags[] = $link;
+  }
+
+  return $tags;
+}
+
+function article_support_topic_box($wrapper) {
+
+  $topic_box = array();
+
+  $terms = $wrapper->field_topic_box->value();
+  foreach ($terms as $term) {
+
+    $term_wrapper = entity_metadata_wrapper('taxonomy_term', $term);
+
+    // Not all topic box terms are required to have an image, only the leaf
+    // terms. TODO: investigate adding appropriate validation of image.
+    $image = $term_wrapper->field_topic_box_image->value();
+    if ($image) {
+
+      $src = file_create_url($image['uri']);
+      $badge = new ViewHelperImage($src, $image['alt']);
+
+      // The topic badge can optionally link to more information.
+      $link = $term_wrapper->field_topic_box_link->value();
+      $badge->href = $link ? url($link['url']) : NULL;
+
+      $topic_box[] = $badge;
+    }
+  }
+
+  return $topic_box;
+}
+
+function article_support_comments($wrapper) {
+
+  $nid = $wrapper->nid->value();
+
+  $settings = db_select('facebook_comments', 'f')
+    ->fields('f', array('enabled', 'amount'))
+    ->condition('f.nid', $nid, '=')
+    ->execute()
+    ->fetchObject();
+
+  if ($settings && $settings->enabled) {
+    $comments = new StdClass();
+    $comments->num_posts = $settings->amount;
+    $comments->href = url("node/{$nid}", array('absolute' => TRUE));
+    return $comments;
   }
 }
 
@@ -35,9 +192,27 @@ function article_support_node_view($node, $view_mode, $langcode) {
   if ($node->type === 'article' && $view_mode === 'full') {
 
     // Additional variables to make available to the template.
-    $variables = array();
+    $variables = array(
+      'abstract' => NULL,
+      'significance' => NULL,
+      'authored_on' => NULL,
+      'authors' => NULL,
+      'main_image' => NULL,
+      'body' => NULL,
+      'next_article' => NULL,
+      'get_more' => NULL,
+      'topic_box' => NULL,
+      'comments' => NULL,
+    );
 
-    article_support_add_next_article($node, $variables);
+    // Get the value of each additional variable.
+    $wrapper = entity_metadata_wrapper('node', $node);
+    foreach (array_keys($variables) as $name) {
+      $function = "article_support_{$name}";
+      if (function_exists($function)) {
+        $variables['as_' . $name] = call_user_func_array($function, array($wrapper));
+      }
+    }
 
     // Pass the additional variables through to the preprocessor.
     $node->content['#additional_variables'] = $variables;
