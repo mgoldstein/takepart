@@ -71,7 +71,7 @@ function takepart3_preprocess_html(&$vars) {
     }
 
     // Remove tracking from place at the table iframed header
-    // TODO: Fucking fix this. 
+    // TODO: Fucking fix this.
     // Potty mouth
     if (preg_match('/^\/iframes\/place-at-the-table\/header/', $_SERVER['REQUEST_URI'])) {
         unset($vars['page']['page_bottom']['omniture']);
@@ -962,9 +962,9 @@ function takepart3_search_api_page_results(array $variables) {
     $results = $variables['results'];
     $entities = $variables['items'];
     $keys = $variables['keys'];
-    $output = '<p class="search-performance">' . 
-            format_plural($results['result count'], 'Current search found 1 result for ' . 
-            check_plain($keys), 'Current search found @count results for ' . 
+    $output = '<p class="search-performance">' .
+            format_plural($results['result count'], 'Current search found 1 result for ' .
+            check_plain($keys), 'Current search found @count results for ' .
             check_plain($keys), array('@sec' => round($results['performance']['complete'], 3))) . '</p>';
     if (!$results['result count']) {
         $output .= "\n<h2>" . t('Your search yielded no results') . "</h2>\n";
@@ -1019,7 +1019,7 @@ function takepart3_search_api_page_result(array $variables) {
     $text = '';
     if (!empty($variables['result']['excerpt'])) {
         $text = $variables['result']['excerpt'];
-    } 
+    }
     else if (!empty($entity->field_promo_text[$entity->language][0]['safe_value'])) {
         $text = $entity->field_promo_text[$entity->language][0]['safe_value'];
     }
@@ -1372,5 +1372,57 @@ function takepart3_html_head_alter(&$head_elements) {
     // remove any duplicate canonical links (those not coming from pager link)
     foreach ($remove as $junk => $key) {
         unset($head_elements[$key]);
+    }
+}
+
+function takepart3_preprocess_entity(&$variables, $hook) {
+
+    $variables["custom_render"] = array();
+
+    switch ($variables['entity_type']) {
+        case "bean":
+            if($variables['bean']->{'type'} == "of_the_day") {
+                //Look for a tpl file called bean--of-the-day-custom.tpl.php:
+                $variables['theme_hook_suggestions'][] = 'bean__of_the_day_custom';
+                $acnids = $variables['bean']->{'field_associated_content'}['und'];
+
+                for ($i = 0; $i <= sizeof($acnids); $i++) {
+
+                    $acnid = $variables['bean']->{'field_associated_content'}['und'][$i]['nid'];
+                    $node = node_load($acnid);
+
+                    if($node->type == 'openpublish_article') {
+                        $main_image = field_get_items('node', $node, 'field_article_main_image');
+                    }
+                    if($node->type == 'action') {
+                        $main_image = field_get_items('node', $node, 'field_action_main_image');
+                    }
+                    if($node->type == 'openpublish_photo_gallery') {
+                        $main_image = field_get_items('node', $node, 'field_gallery_main_image');
+                    }
+                    if($node->type == 'openpublish_video') {
+                        $main_image = field_get_items('node', $node, 'field_main_image');
+                    }
+
+                    if(isset($main_image[0]['fid'])) {
+                        $img_url = file_load($main_image[0]['fid']);
+                        if(isset($img_url->{'uri'})){
+                            $variables['custom_render'][$i]['thumbnail'] = image_style_url('thumbnail', $img_url->{'uri'});
+                        }
+                    }
+
+                    $types = node_type_get_types();
+                    if(isset($types[$node->type]->{'name'})) {
+                        $variables['custom_render'][$i]['type'] = $types[$node->type]->{'name'};
+                    }
+
+                    if(isset($node->{'title'})) {
+                        $variables['custom_render'][$i]['title'] = $node->{'title'};
+                    }
+
+                    $variables['custom_render'][$i]['url'] = url('node/'. $node->nid);
+                }
+            }
+          break;
     }
 }
