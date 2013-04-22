@@ -1246,11 +1246,13 @@
   display: block;
   color: rgb(38, 31, 31);
   font-size: 16px;
+  -webkit-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .finalist a {
   text-decoration: none;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: background-color .2s ease-in-out;
+  transition: background-color .2s ease-in-out;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .finalist a.active {
   background: rgb(243, 116, 36);
