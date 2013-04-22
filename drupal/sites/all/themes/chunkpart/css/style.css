@@ -545,6 +545,7 @@ body #at16pt {
 	padding-bottom: .5em;
 	border-bottom: 1px solid #e8e8e8;
 	margin-bottom: .5em;
+	font-size: 20px;
 }
 
 /* On Our Radar module */
@@ -1173,6 +1174,7 @@ body #at16pt {
 	padding-bottom: .5em;
 	border-bottom: 1px solid #e8e8e8;
 	margin-top: 1.5em;
+	font-size: 20px;
 }
 
 .node-type-article .fb_comments .header .fb_comments_count {
