@@ -725,6 +725,50 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     );
   }
 
+  if ($configure || in_array('thumb_src', $entity->item_keys)) {
+    $form['thumb_src'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['thumb_src']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Thumb Source',
+        '#attributes' => array('data-for' => array('thumb-src-input')),
+        '#default_value' => in_array('thumb_src', $entity->item_keys),
+      );
+    }
+    $form['thumb_src']['value'] = array(
+      '#title' => t('Thumb Source'),
+      '#type' => 'textfield',
+      '#maxlength' => '1000',
+      '#default_value' => $values['thumb_src'],
+      '#attributes' => array('class' => array('thumb-src-input')),
+      '#element_validate' => array('wordlet_validate_href'),
+    );
+  }
+
+  if ($configure || in_array('small_src', $entity->item_keys)) {
+    $form['small_src'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['small_src']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Small Image Source',
+        '#attributes' => array('data-for' => array('small-src-input')),
+        '#default_value' => in_array('small_src', $entity->item_keys),
+      );
+    }
+    $form['small_src']['value'] = array(
+      '#title' => t('Small Image Source'),
+      '#type' => 'textfield',
+      '#maxlength' => '1000',
+      '#default_value' => $values['small_src'],
+      '#attributes' => array('class' => array('small-src-input')),
+      '#element_validate' => array('wordlet_validate_href'),
+    );
+  }
+
   if ($configure || in_array('active', $entity->item_keys)) {
     $form['active'] = array(
       '#tree' => TRUE,
@@ -784,28 +828,6 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
       '#maxlength' => '1000',
       '#default_value' => $values['video'],
       '#attributes' => array('class' => array('video-input')),
-    );
-  }
-
-  if ($configure || in_array('thumb_src', $entity->item_keys)) {
-    $form['thumb_src'] = array(
-      '#tree' => TRUE,
-    );
-    if ($configure) {
-      $form['thumb_src']['enabled'] = array(
-        '#type' => 'checkbox',
-        '#title' => 'Enable Thumb Source',
-        '#attributes' => array('data-for' => array('thumb-src-input')),
-        '#default_value' => in_array('thumb_src', $entity->item_keys),
-      );
-    }
-    $form['thumb_src']['value'] = array(
-      '#title' => t('Thumb Source'),
-      '#type' => 'textfield',
-      '#maxlength' => '1000',
-      '#default_value' => $values['thumb_src'],
-      '#attributes' => array('class' => array('thumb-src-input')),
-      '#element_validate' => array('wordlet_validate_href'),
     );
   }
 
@@ -1025,10 +1047,11 @@ function wordlet_update_items_from_fields($entity, $values) {
       'href' => '',
       'node' => '',
       'img_src' => '',
+      'thumb_src' => '',
+      'small_src' => '',
       'active' => '',
       'token' => '',
       'video' => '',
-      'thumb_src' => '',
       'form' => '',
     );
     $is_empty = TRUE;

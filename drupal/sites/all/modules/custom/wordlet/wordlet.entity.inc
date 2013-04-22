@@ -22,6 +22,8 @@ class WordletItem {
       'href_raw' => '',
       'node' => '',
       'img_src' => '',
+      'thumb_src' => '',
+      'small_src' => '',
       'active' => '',
       'token' => '',
       'video' => '',
@@ -34,6 +36,8 @@ class WordletItem {
         'href_raw' => TRUE,
         'node' => TRUE,
         'img_src' => TRUE,
+        'thumb_src' => TRUE,
+        'small_src' => TRUE,
         'active' => TRUE,
         'token' => TRUE,
         'video' => TRUE,
@@ -44,7 +48,7 @@ class WordletItem {
   }
 
   public function __toString() {
-    $priority = array('multi', 'single', 'multi_short', 'node', 'form', 'href', 'href_raw', 'img_src', 'token', 'video', 'thumb_src');
+    $priority = array('multi', 'single', 'multi_short', 'node', 'form', 'href', 'href_raw', 'img_src', 'thumb_src', 'small_src', 'token', 'video');
     $retval = null;
     foreach ($priority as $attribute) {
       if (!$this->empty[$attribute]) {
@@ -245,10 +249,11 @@ class WordletController extends EntityAPIControllerExportable {
       'href_raw' => '',
       'node' => '',
       'img_src' => '',
+      'thumb_src' => '',
+      'small_src' => '',
       'active' => '',
       'token' => '',
       'video' => '',
-      'thumb_src' => '',
       'form' => '',
       'empty' => array(
         'single' => TRUE,
@@ -258,10 +263,11 @@ class WordletController extends EntityAPIControllerExportable {
         'href_raw' => TRUE,
         'node' => TRUE,
         'img_src' => TRUE,
+        'thumb_src' => TRUE,
+        'small_src' => TRUE,
         'active' => TRUE,
         'token' => TRUE,
         'video' => TRUE,
-        'thumb_src' => TRUE,
         'form' => TRUE,
       ),
     );
@@ -401,6 +407,24 @@ class WordletController extends EntityAPIControllerExportable {
       $args['empty']['img_src'] = empty($stripped);
     }
 
+    // Thumb src
+    if (in_array('thumb_src', $entity->item_keys)) {
+      $args['configured'] = true;
+      $args['thumb_src'] = $item['thumb_src'];
+
+      $stripped = strip_tags($item['thumb_src']);
+      $args['empty']['thumb_src'] = empty($stripped);
+    }
+
+    // Small src
+    if (in_array('small_src', $entity->item_keys)) {
+      $args['configured'] = true;
+      $args['small_src'] = $item['small_src'];
+
+      $stripped = strip_tags($item['small_src']);
+      $args['empty']['small_src'] = empty($stripped);
+    }
+
     // Active
     if (in_array('active', $entity->item_keys)) {
       $args['configured'] = true;
@@ -425,15 +449,6 @@ class WordletController extends EntityAPIControllerExportable {
 
       $stripped = strip_tags($item['video']);
       $args['empty']['video'] = empty($stripped);
-    }
-
-    // Thumb src
-    if (in_array('thumb_src', $entity->item_keys)) {
-      $args['configured'] = true;
-      $args['thumb_src'] = $item['thumb_src'];
-
-      $stripped = strip_tags($item['thumb_src']);
-      $args['empty']['thumb_src'] = empty($stripped);
     }
 
     if (in_array('form', $entity->item_keys)) {
