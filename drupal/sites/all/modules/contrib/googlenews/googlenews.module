@@ -60,12 +60,10 @@ function _googlenews_getgooglenews() {
     $content .= '</n:news>';
     $content .= '</url>';
     $content .= '<n:genres>Article</n:genres>';
-    $content .= '<n:keywords>Arts, Entertainment, Action, Impact, Culture, Education, Environment, Fashion, Film, Food, Gay Rights, Green, Health, Human Rights, Hunger, Innovation, Lifestyle, News, Opinion, Politics, Social Justice, Technology, Travel, Water, Wildlife, World </n:keywords>';
-   
+    // $content .= '<n:keywords>Arts, Entertainment, Action, Impact, Culture, Education, Environment, Fashion, Film, Food, Gay Rights, Green, Health, Human Rights, Hunger, Innovation, Lifestyle, News, Opinion, Politics, Social Justice, Technology, Travel, Water, Wildlife, World </n:keywords>';
   }
 
   $content .= '</urlset>';
-
 
   drupal_add_http_header('Content-Type', 'text/xml; charset=utf-8');
   print $content;
