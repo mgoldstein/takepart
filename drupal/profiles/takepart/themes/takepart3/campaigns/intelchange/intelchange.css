@@ -1169,6 +1169,7 @@
   background: rgb(54,44, 44);
   margin-top: 50px;
   position: relative;
+  margin-bottom: 145px;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote {
   width: 555px;
@@ -1253,6 +1254,9 @@
 .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .addThis {
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .addThis>a {
+  margin: 0 10px;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .video {
   margin-bottom: 35px;
