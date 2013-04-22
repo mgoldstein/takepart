@@ -502,7 +502,7 @@ function _wordlet_configuration() {
     // Intel For Change - Vote
     'intelchange_vote' => array(
       'title' => 'Intel For Change - Vote',
-      'path' => 'intelforchange/vote',
+      'path' => 'intelforchange/contest/vote',
       'published' => FALSE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
