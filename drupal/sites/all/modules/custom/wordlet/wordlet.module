@@ -1052,7 +1052,7 @@ function w() {
   }
 }
 
-function wordlet_list($name) {
+function wordlet_list($name, $randomize = false) {
   $page = wordlet_active_page();
   if ($page === FALSE) {
     return NULL;
@@ -1073,7 +1073,7 @@ function wordlet_list($name) {
   }
 
   $controller = entity_get_controller('wordlet');
-  $wl = $controller->viewList($wordlet);
+  $wl = $controller->viewList($wordlet, $randomize);
   if ($wl->count() == 0) { echo wordlet($name); }
 
   return $wl;

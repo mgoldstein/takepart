@@ -530,11 +530,12 @@ class WordletController extends EntityAPIControllerExportable {
     return $this->createViewItem($entity, $item);
   }
 
-  public function viewList($entity) {
+  public function viewList($entity, $randomize = false) {
     $wordlets = array();
     foreach ($entity->items as $item) {
       $wordlets[] = $this->createViewItem($entity, $item);
     }
+    if ( $randomize ) shuffle($wordlets);
     return new WordletList($wordlets);
   }
 }
