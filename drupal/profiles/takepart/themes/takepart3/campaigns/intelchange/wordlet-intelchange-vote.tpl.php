@@ -59,13 +59,13 @@
                         </div>                    
                     </div>
                     <p class="vote-btn important">
-                        <a href="google.com"><?=w('vote_finalist_'.$w->token)?></a>
+                        <a href="<?=wu('intelchange_vote')?>#vote_<?=$w->token?>"><?=w('vote_finalist_'.$w->token)?></a>
                     </p>
                     <div class="modal-wrapper">
                         <? if(!user_is_logged_in()): ?>
                         <div class="modal vote-register">
                             <div class='fb-connect-wrapper'>
-                                <?=_takepart_facebookapis_getfblogin("intelchange/contest/vote#vote_".$w->token);?>
+                                <?=_takepart_facebookapis_getfblogin("intelforchange/contest/vote#vote_".$w->token);?>
                             </div>
                         </div>
                         <? else: ?>
@@ -85,6 +85,16 @@
                             
                         </div>
                     </div>
+                    <? if ( wordlet_edit_mode() ): ?>
+                        <h5>Modal Wordlets</h5>
+                        <p <?=wa('fb_signup_modal')?>>Edit Registration Modal</p>
+                        <p <?=wa($w->token . '_confirm_modal')?>>Edit <?=$w->token?> Confirm Modal</p>
+                        <p <?=wa($w->token . '_vote_form')?>>Edit <?=$w->token?> Confirm Modal Vote Form</p>
+                        <p <?=wa($w->token . '_thank_you_modal')?>>Edit <?=$w->token?> Thank You Modal</p>
+                        <p <?=wa($w->token.'_add_this')?>>Edit <?=$w->token?> Thank You Modal Add This Block</p>
+                        <p <?=wa($w->token . '_rejected_modal')?>>Edit <?=$w->token?> Rejected Modal</p>
+                        <p <?=wa('error_modal')?>>Edit Error Modal</p>
+                    <? endif ?>
                     <? $w2 = w('add_this_'.$w->token); ?>
                     <div class="addThis"
                         data-message="<?=$w2->multi(false)?>"
