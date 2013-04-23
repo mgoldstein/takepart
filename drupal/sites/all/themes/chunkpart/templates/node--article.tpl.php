@@ -79,8 +79,10 @@
 			<footer id="article-footer">
 				<? if ( $next_article): ?>
 					<nav id="next-article">
-						<h3 class="headline"><?=t('Next Article') ?></h3>
-						<p><a href="<?=$next_article->href ?>"><?=$next_article->title ?></a></p>
+						<a href="<?=$next_article->href ?>">
+							<h3 class="headline"><?=t('Next Article') ?></h3><!--
+							--><p><?=$next_article->title ?></p>
+						</a>
 					</nav>
 				<? endif ?>
 
