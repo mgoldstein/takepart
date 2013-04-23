@@ -553,6 +553,7 @@ function wordlet_get_item_fields($entity, $configure = FALSE) {
   $form = array(
     'items' => array(
       '#title' => $entity->title,
+      '#description' => $entity->description,
       '#type' => 'fieldset',
       '#tree' => TRUE,
     ),
