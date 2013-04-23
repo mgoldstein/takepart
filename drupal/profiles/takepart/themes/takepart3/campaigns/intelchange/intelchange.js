@@ -222,9 +222,9 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         $modalClose.trigger('click');
     };
     var voteConfirmSubmit = function(context, settings){
-        if (settings && settings.can_campaign && settings.can_campaign.vote_result){
+        if (settings && settings.contest_intel && settings.contest_intel.vote_result){
             var $voteModalWrapper = $currentContent.find('.modal-wrapper');
-            var vote_result = settings.can_campaign.vote_result;
+            var vote_result = settings.contest_intel.vote_result;
             var $contentToShow = $('.vote-error', $voteModalWrapper);
             if (vote_result === 'accepted'){
                 // show thank you modal
