@@ -191,7 +191,51 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var $contentSections = $contentInfo.find('.finalist');
     var $currentNav = $contentNavs.first();
     var $currentContent;
-
+    var finalistMenuClickHandler = function(e) {
+        if ( this == $currentNav[0] ) return;
+        $contentNavs.removeClass('active');
+        var $this = $(this).addClass('active');
+        var $from = $currentContent;
+        var $to = $contentSections.filter($this[0].hash);
+        swap($from, $to, $contentInfo);
+        $currentContent = $to;
+        $currentNav = $this;
+    };
+    var voteBtnHandler = function(e){
+        e.preventDefault();
+        var $voteModalWrapper = $currentContent.find('.modal-wrapper');
+        var $fbModalContent = $('.vote-register', $voteModalWrapper);
+        var $confirmModalContent = $('.vote-confirm', $voteModalWrapper);
+        var $contentToShow = $fbModalContent.length > 0 ? $fbModalContent : $confirmModalContent;
+        showVoteModal($contentToShow);
+    };
+    var showVoteModal = function(contentToShow){
+        var $voteModalWrapper = $currentContent.find('.modal-wrapper');
+        $.tpmodal.show({node: contentToShow, afterClose: function() {
+            $voteModalWrapper.append(contentToShow);
+        }});
+    };
+    var modalCancelHandler = function(e){
+        e.preventDefault();
+        var $parent = $(this).parents('.tpmodal_modal');
+        var $modalClose = $parent.find('.tpmodal_close');
+        $modalClose.trigger('click');
+    };
+    var voteConfirmSubmit = function(context, settings){
+        if (settings && settings.can_campaign && settings.can_campaign.vote_result){
+            var $voteModalWrapper = $currentContent.find('.modal-wrapper');
+            var vote_result = settings.can_campaign.vote_result;
+            var $contentToShow = $('.vote-error', $voteModalWrapper);
+            if (vote_result === 'accepted'){
+                // show thank you modal
+                $contentToShow = $('.vote-thanks', $voteModalWrapper);
+            } else if(vote_result === 'rejected'){
+                // show rejected modal
+                $contentToShow = $('.vote-rejected', $voteModalWrapper);
+            }
+            showVoteModal($contentToShow);
+        }
+    }
     // initialize finalist on load
     if ( location.hash ) {
         var $to = $contentNavs.filter('a[href="' + location.href + '"]');
@@ -203,6 +247,9 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     $currentNav.addClass('active');
     $contentSections.not($currentNav[0].hash).hide();
 
+    // hide finalist modals
+    $('.finalist .modal-wrapper').hide();
+
     // adjust finalist wrapper height based on menu size
     $voteWrap.css({
         'min-height': $contentNav.children().outerHeight(),
@@ -212,20 +259,16 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     // body delegates
     $body
         // Nav click
-        .delegate('.finalists-menu .finalist a', 'click', function(e) {
-            if ( this == $currentNav[0] ) return;
-            $contentNavs.removeClass('active');
-            var $this = $(this).addClass('active');
-            var $from = $currentContent;
-            var $to = $contentSections.filter($this[0].hash);
-            swap($from, $to, $contentInfo);
-            $currentContent = $to;
-            $currentNav = $this;
-        })
-        // Vote btn click
-        .delegate('.finalist .vote-btn a', 'click', function(e) {
-            console.log('voted')
-        });
+        .delegate('.finalists-menu .finalist a', 'click', finalistMenuClickHandler)
+        // Vote Button click
+        .delegate('.finalist .vote-btn a', 'click', voteBtnHandler)
+        // Modal Cancel click
+        .delegate('.modal .cancel', 'click', modalCancelHandler);
+
+    /* drupal behavior binding for vote confirm */
+    Drupal.behaviors.confirmFormSubmit = {
+        attach: voteConfirmSubmit
+    }
 }
 
 });

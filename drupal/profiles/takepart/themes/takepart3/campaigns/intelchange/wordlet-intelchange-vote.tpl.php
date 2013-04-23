@@ -63,19 +63,25 @@
                     </p>
                     <div class="modal-wrapper">
                         <? if(!user_is_logged_in()): ?>
-                        <div class="modal registration">
+                        <div class="modal vote-register">
                             <div class='fb-connect-wrapper'>
                                 <?=_takepart_facebookapis_getfblogin("intelchange/contest/vote#vote_".$w->token);?>
                             </div>
                         </div>
                         <? else: ?>
-                        <div class="modal confirm">
+                        <div class="modal vote-confirm">
                             <div class="cms vote-form-wrapper">
                                 <?=w($w->token . '_vote_form')?>
                             </div>
                         </div>
                         <? endif ?>
-                        <div class="modal thank-you">
+                        <div class="modal vote-thanks">
+                            
+                        </div>
+                        <div class="modal vote-error">
+                            
+                        </div>
+                        <div class="modal vote-rejected">
                             
                         </div>
                     </div>
