@@ -235,7 +235,7 @@ function _default_menu_options($menu_item) {
     $menu_opts = empty($menu_item['link']['options']['attributes']) ? array() : $menu_item['link']['options']['attributes'];
     return $menu_opts;
 }
-*/
+
 
 function takepart3_preprocess_entity(&$variables, $hook) {
 
@@ -288,4 +288,68 @@ function takepart3_preprocess_entity(&$variables, $hook) {
           break;
     }
 }
+*/
+
+function takepart3_preprocess_entity(&$variables, $hook) {
+
+    $variables["custom_render"] = array();
+
+    switch ($variables['entity_type']) {
+        case "bean":
+            if($variables['bean']->{'type'} == "of_the_day") {
+                //Look for a tpl file called bean--of-the-day-custom.tpl.php:
+                $variables['theme_hook_suggestions'][] = 'bean__of_the_day_custom';
+
+                for ($i = 0; $i <= sizeof($variables['elements']['field_listing_collection']); $i++) {
+                   $listing = $variables['elements']['field_listing_collection'][$i];
+
+                    $collection = $listing['entity']['field_collection_item'];
+
+                    foreach ($collection as $key => $collectiondata) {
+
+                        $acnid = $collectiondata['field_associated_content']['#items'][0]['nid'];
+                        $variables['custom_render'][$key]['typename'] = $collectiondata['field_type_label']['#items'][0]['value'];
+
+                        $node = node_load($acnid);
+
+                        if($node->type == 'openpublish_article') {
+                            $main_image = field_get_items('node', $node, 'field_article_main_image');
+                        }
+                        if($node->type == 'action') {
+                            $main_image = field_get_items('node', $node, 'field_action_main_image');
+                        }
+                        if($node->type == 'openpublish_photo_gallery') {
+                            $main_image = field_get_items('node', $node, 'field_gallery_main_image');
+                        }
+                        if($node->type == 'openpublish_video') {
+                            $main_image = field_get_items('node', $node, 'field_main_image');
+                        }
+
+                        if(isset($main_image[0]['fid'])) {
+                            $img_url = file_load($main_image[0]['fid']);
+                            if(isset($img_url->{'uri'})){
+                                $variables['custom_render'][$i]['thumbnail'] = image_style_url('thumbnail', $img_url->{'uri'});
+                            }
+                        }
+
+                        $types = node_type_get_types();
+                        if(isset($types[$node->type]->{'name'})) {
+                            $variables['custom_render'][$key]['type'] = $types[$node->type]->{'name'};
+                        }
+
+                        if(isset($node->{'title'})) {
+                            $variables['custom_render'][$key]['title'] = $node->{'title'};
+                        }
+
+                        $variables['custom_render'][$key]['url'] = url('node/'. $node->nid);
+
+                    }
+
+                }
+            }
+          break;
+    }
+
+}
+
 
