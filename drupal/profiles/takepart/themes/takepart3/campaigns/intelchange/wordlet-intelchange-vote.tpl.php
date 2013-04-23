@@ -74,7 +74,7 @@
                                 <?=w($w->token . '_vote_form')?>
                             </div>
                         </div>
-                        <? endif ?>
+                        <? endif: ?>
                         <div class="modal thank-you">
                             
                         </div>
