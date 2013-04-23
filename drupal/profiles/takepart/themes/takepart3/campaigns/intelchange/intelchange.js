@@ -201,6 +201,12 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         $currentContent = $to;
         $currentNav = $this;
     };
+    var showVoteModal = function(contentToShow){
+        var $voteModalWrapper = $currentContent.find('.modal-wrapper');
+        $.tpmodal.show({id: 'intelforchange_',node: contentToShow, afterClose: function() {
+            $voteModalWrapper.append(contentToShow);
+        }});
+    };
     var voteBtnHandler = function(e){
         e.preventDefault();
         var $voteModalWrapper = $currentContent.find('.modal-wrapper');
@@ -208,12 +214,6 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         var $confirmModalContent = $('.vote-confirm', $voteModalWrapper);
         var $contentToShow = $fbModalContent.length > 0 ? $fbModalContent : $confirmModalContent;
         showVoteModal($contentToShow);
-    };
-    var showVoteModal = function(contentToShow){
-        var $voteModalWrapper = $currentContent.find('.modal-wrapper');
-        $.tpmodal.show({node: contentToShow, afterClose: function() {
-            $voteModalWrapper.append(contentToShow);
-        }});
     };
     var modalCancelHandler = function(e){
         e.preventDefault();
