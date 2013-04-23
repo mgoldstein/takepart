@@ -10,11 +10,67 @@
 function of_the_day_bean_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'bean-of_the_day-field_associated_content'.
-  $fields['bean-of_the_day-field_associated_content'] = array(
+  // Exported field: 'bean-of_the_day-field_listing_collection'.
+  $fields['bean-of_the_day-field_listing_collection'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_listing_collection',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'field_collection',
+      'settings' => array(
+        'hide_blank_items' => 1,
+        'path' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'field_collection',
+    ),
+    'field_instance' => array(
+      'bundle' => 'of_the_day',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'field_collection',
+          'settings' => array(
+            'add' => 'Add',
+            'delete' => 'Delete',
+            'description' => TRUE,
+            'edit' => 'Edit',
+            'view_mode' => 'full',
+          ),
+          'type' => 'field_collection_view',
+          'weight' => 2,
+        ),
+      ),
+      'entity_type' => 'bean',
+      'field_name' => 'field_listing_collection',
+      'label' => 'Listing',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'field_collection',
+        'settings' => array(),
+        'type' => 'field_collection_embed',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_listing_collection-field_associated_content'.
+  $fields['field_collection_item-field_listing_collection-field_associated_content'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_associated_content',
@@ -46,7 +102,7 @@ function of_the_day_bean_field_default_fields() {
           'openpublish_photo' => 0,
           'openpublish_photo_gallery' => 'openpublish_photo_gallery',
           'openpublish_video' => 'openpublish_video',
-          'petition_action' => 0,
+          'petition_action' => 'petition_action',
           'pledge_action' => 'pledge_action',
           'profile' => 0,
           'section_front' => 0,
@@ -71,7 +127,7 @@ function of_the_day_bean_field_default_fields() {
       'type' => 'node_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'of_the_day',
+      'bundle' => 'field_listing_collection',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -84,9 +140,9 @@ function of_the_day_bean_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'entity_type' => 'bean',
+      'entity_type' => 'field_collection_item',
       'field_name' => 'field_associated_content',
-      'label' => 'Listing',
+      'label' => 'Reference',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -100,7 +156,70 @@ function of_the_day_bean_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '42',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_listing_collection-field_type_label'.
+  $fields['field_collection_item-field_listing_collection-field_type_label'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_type_label',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_listing_collection',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 1,
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_type_label',
+      'label' => 'Type',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '2',
       ),
     ),
   );
@@ -108,6 +227,8 @@ function of_the_day_bean_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Listing');
+  t('Reference');
+  t('Type');
 
   return $fields;
 }
