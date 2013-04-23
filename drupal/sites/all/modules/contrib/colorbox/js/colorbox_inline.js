@@ -2,6 +2,9 @@
 
 Drupal.behaviors.initColorboxInline = {
   attach: function (context, settings) {
+    if (!settings.colorbox) {
+      return;
+    }
     if (!$.isFunction($.colorbox)) {
       return;
     }
@@ -16,9 +19,6 @@ Drupal.behaviors.initColorboxInline = {
       return results[1] || '';
     };
     $('a, area, input', context).filter('.colorbox-inline').once('init-colorbox-inline').colorbox({
-      if (!settings.colorbox) {
-        return;
-      }
       transition:settings.colorbox.transition,
       speed:settings.colorbox.speed,
       opacity:settings.colorbox.opacity,
