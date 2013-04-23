@@ -59,7 +59,7 @@
         </p>
     </div>
 
-    <div class="second-sub">
+    <div class="second-sub form_wrapper">
         <div class="default-state">
             <div class="default-content">
                 <h3><?=w('default_header')?></h3>
