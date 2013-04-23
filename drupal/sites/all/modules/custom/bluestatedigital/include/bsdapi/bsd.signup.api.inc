@@ -251,6 +251,49 @@ class BlueStateDigitalSignupApi extends BlueStateDigitalApi {
   }
 
   /**
+   * Get the number of signups for a signup form using the /utils/cons_counter
+   * URL instead of the deferred API call.
+   *
+   * @param int $signup_form_id
+   *   The signup form ID that is being queried.
+   *
+   * @throws BlueStateDigitalApiException
+   */
+  public function signupCountUtil($signup_form_id) {
+
+    $components = parse_url($this->httpRequestBase);
+    $components['path'] = "/utils/cons_counter/signup_counter.ajax.php";
+    $components['query'] = "signup_form_id={$signup_form_id}";
+
+    $url = implode('', array(
+      $components['scheme'],
+      '://',
+      $components['host'],
+      $components['path'],
+      '?',
+      $components['query'],
+    ));
+
+    // Send the request.
+    if ($this->restMethod == self::REST_METHOD_STREAM_WRAPPER) {
+      $response = $this->streamWrapper($url);
+    }
+    else /* self::REST_METHOD_CURL */ {
+      $response = $this->curl($url);
+    }
+
+    // Check the response code.
+    if ($response['http_code'] != self::HTTP_CODE_OK) {
+      throw new BlueStateDigitalApiException(
+        'Unexpected response status code.',
+        BlueStateDigitalApiException::FAILED_RESPONSE_CODE,
+        $response['http_code'], $response['body']);
+    }
+
+    return (int) $response['body'];
+  }
+
+  /**
    * Parse the response to the count_by_field API call.
    *
    * @param array $response
@@ -469,5 +512,238 @@ class BlueStateDigitalSignupApi extends BlueStateDigitalApi {
         BlueStateDigitalApiException::FAILED_RESPONSE_CODE,
         $response['http_code'], $response['body']);
     }
+  }
+
+  public static function signupValue($value) {
+    return array(
+      'value' => array(
+        'type' => 'value',
+        'value' => $value,
+      ),
+    );
+  }
+
+  public static function signupItems($items) {
+    return array(
+      'value' => array(
+        'type' => 'items',
+        'items' => $items,
+      ),
+    );
+  }
+
+  public static function signupFile($filename, $data) {
+    return array(
+      'value' => array(
+        'type' => 'file',
+        'filename' => $filename,
+        'data' => $data,
+      ),
+    );
+  }
+
+  /**
+   * Parse the response to the get_signups_by_email and get_signups_by_form_id
+   * API calls.
+   *
+   * @param array $response
+   *   An associative array containing:
+   *   - http_code: Integer HTTP code of the response.
+   *   - body: String body of the the response.
+   *
+   * @return array
+   *   An array of the signups for the provided query parameter.
+   *
+   * @throws BlueStateDigitalApiException
+   */
+  protected function parseSignupListResponse($response) {
+
+    // Check the response code.
+    if ($response['http_code'] != self::HTTP_CODE_OK) {
+      throw new BlueStateDigitalApiException(
+        'Unexpected response status code.',
+        BlueStateDigitalApiException::FAILED_RESPONSE_CODE,
+        $response['http_code'], $response['body']);
+    }
+
+    // Parse the response body.
+    $api = simplexml_load_string($response['body']);
+    if ($api === FALSE) {
+      throw new BlueStateDigitalApiException(
+        'Unable to parse XML response.',
+        BlueStateDigitalApiException::INVALID_RESPONSE_BODY,
+        $response['http_code'], $response['body']);
+    }
+
+    // Fields
+    $signup_field = array(
+      'stg_signup_id' => 'integer',
+      'signup_form_id' => 'integer',
+      'cons_upload_id' => 'integer',
+      'stg_invitation_id' => 'integer',
+      'cons_source_id' => 'integer',
+      'ext_id' => 'integer',
+      'ext_type' => 'string',
+      'mailing_recipient_id' => 'integer',
+      'mailing_link_id' => 'integer',
+      'stg_contribution_id' => 'integer',
+      'spk_letter_id' => 'integer',
+      'email' => 'string',
+      'work_email' => 'string',
+      'email_opt_in' => 'boolean',
+      'prefix' => 'string',
+      'firstname' => 'string',
+      'middlename' => 'string',
+      'lastname' => 'string',
+      'suffix' => 'string',
+      'salutation' => 'string',
+      'gender' => 'string',
+      'birth_dt' => 'date',
+      'title' => 'string',
+      'employer' => 'string',
+      'occupation' => 'string',
+      'income' => 'string',
+      'mobile_opt_in' => 'boolean',
+      'mobile' => 'string',
+      'phone' => 'string',
+      'work_phone' => 'string',
+      'fax' => 'string',
+      'addr1' => 'string',
+      'addr2' => 'string',
+      'addr3' => 'string',
+      'city' => 'string',
+      'state_cd' => 'string',
+      'zip' => 'string',
+      'zip_4' => 'string',
+      'country' => 'string',
+      'transaction_amt' => 'string',
+      'transaction_dt' => 'date',
+      'contribution_status' => 'string',
+      'source' => 'string',
+      'subsource' => 'string',
+      'is_contrib_recurring' => 'boolean',
+      'opt_in' => 'boolean',
+      'create_dt' => 'date',
+      'create_app' => 'string',
+      'create_user' => 'string',
+      'create_ip_addr' => 'string',
+      'create_user_agent' => 'string',
+      'status' => 'integer',
+      'note' => 'integer',
+      'chapter_id' => 'integer',
+    );
+
+    $signups = array();
+    foreach ($api->stg_signups->children() as $node) {
+
+      // Extract the core fields of the signup.
+      $signup = array();
+      foreach ($signup_field as $name => $type) {
+        switch ($type) {
+        case 'string':
+          $signup[$name] = (string) $node->{$name};
+          break;
+        case 'integer':
+          $signup[$name] = (int) $node->{$name};
+          break;
+        case 'boolean':
+          $signup[$name] = (int) $node->{$name} ? TRUE : FALSE;
+          break;
+        case 'date':
+          $signup[$name] = $this->convertTimestamp(
+            (string) $node->{$name});
+          break;
+        }
+      }
+
+      // TODO - Extra the extra fields (and values) of the signup.
+
+      // Add the signup to the list.
+      $signups[] = $signup;
+    }
+
+    return $signups;
+  }
+
+  public function getSignupsByEmail($email) {
+
+     // Request the field list.
+    $response = $this->callAPI('signup/get_signups_by_email',
+      array('email' => $email));
+
+    return $this->parseSignupListResponse($response);
+  }
+
+  public function getSignupsByFormId($signup_form_id) {
+
+     // Request the field list.
+    $response = $this->callAPI('signup/get_signups_by_form_id',
+      array('signup_form_id' => $signup_form_id));
+
+    return $this->parseSignupListResponse($response);
+  }
+
+  public function cloneForm($signup_form_id, $title, $signup_form_name, $slug) {
+
+    // Build the request.
+    $data = http_build_query(array(
+      'signup_form_id' => $signup_form_id,
+      'title' => $title,
+      'signup_form_name' => $signup_form_name,
+      'slug' => $slug,
+    ));
+
+    // Make the request.
+    $response = $this->callAPI('signup/clone_form', array(), $data);
+
+    // Check the response code.
+    if ($response['http_code'] != self::HTTP_CODE_OK) {
+      throw new BlueStateDigitalApiException(
+        'Unexpected response status code.',
+        BlueStateDigitalApiException::FAILED_RESPONSE_CODE,
+        $response['http_code'], $response['body']);
+    }
+
+    // Parse the response body.
+    $api = simplexml_load_string($response['body']);
+    if ($api === FALSE) {
+      throw new BlueStateDigitalApiException(
+        'Unable to parse XML response.',
+        BlueStateDigitalApiException::INVALID_RESPONSE_BODY,
+        $response['http_code'], $response['body']);
+    }
+
+    // Return the new signup form id.
+    return (int) $api->signup_form->id;
+  }
+
+  public function setFormConsGroup($signup_form_id, $cons_group_id) {
+
+    // Build the request.
+    $data = http_build_query(array(
+      'signup_form_id' => $signup_form_id,
+      'cons_group_id' => $cons_group_id,
+    ));
+
+    // Make the request.
+    $response = $this->callAPI('signup/set_cons_group', array(), $data);
+
+    // The API call does not return a value
+    $this->checkNoContentResponse($response, self::HTTP_CODE_OK);
+  }
+
+  public function setFieldConsGroup($signup_form_field_id, $cons_group_id) {
+
+    // Build the request.
+    $data = http_build_query(array(
+      'signup_form_field_id' => $signup_form_field_id,
+      'cons_group_id' => $cons_group_id,
+    ));
+
+    // Make the request.
+    $response = $this->callAPI('signup/set_cons_group', array(), $data);
+
+    // The API call does not return a value
+    $this->checkNoContentResponse($response, self::HTTP_CODE_OK);
   }
 }
