@@ -79,8 +79,10 @@
 			<footer id="article-footer">
 				<? if ( $next_article): ?>
 					<nav id="next-article">
-						<h3 class="headline"><?=t('Next Article') ?></h3>
-						<p><a href="<?=$next_article->href ?>"><?=$next_article->title ?></a></p>
+						<a href="<?=$next_article->href ?>">
+							<h3 class="headline"><?=t('Next Article') ?></h3><!--
+							--><p><?=$next_article->title ?></p>
+						</a>
 					</nav>
 				<? endif ?>
 
@@ -91,15 +93,11 @@
 
 					<ul>
 						<? while ( $tag = _seach($field_topic) ): ?>
-							<li>
-								<a href="<?=_surl($tag) ?>"><?=$tag->name ?></a>
-							</li>
+							<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
 						<? endwhile ?>
 
 						<? while ( $tag = _seach($field_free_tag) ): ?>
-							<li>
-								<a href="<?=_surl($tag) ?>"><?=$tag->name ?></a>
-							</li>
+							<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
 						<? endwhile ?>
 					</ul>
 				</nav>
