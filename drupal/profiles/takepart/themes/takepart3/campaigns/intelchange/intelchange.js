@@ -213,7 +213,6 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     $body
         // Nav click
         .delegate('.finalists-menu .finalist a', 'click', function(e) {
-            e.preventDefault();
             if ( this == $currentNav[0] ) return;
             $contentNavs.removeClass('active');
             var $this = $(this).addClass('active');
