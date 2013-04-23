@@ -290,7 +290,7 @@ function takepart3_preprocess_entity(&$variables, $hook) {
 }
 */
 
-function takepart3_preprocess_entity(&$variables, $hook) {
+function chunkpart_preprocess_entity(&$variables, $hook) {
 
     $variables["custom_render"] = array();
 
