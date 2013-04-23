@@ -93,15 +93,11 @@
 
 					<ul>
 						<? while ( $tag = _seach($field_topic) ): ?>
-							<li>
-								<a href="<?=_surl($tag) ?>"><?=$tag->name ?></a>
-							</li>
+							<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
 						<? endwhile ?>
 
 						<? while ( $tag = _seach($field_free_tag) ): ?>
-							<li>
-								<a href="<?=_surl($tag) ?>"><?=$tag->name ?></a>
-							</li>
+							<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
 						<? endwhile ?>
 					</ul>
 				</nav>
