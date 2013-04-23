@@ -54,7 +54,7 @@ takepart.analytics.track = function(name) {
                      title = "LinkedIn";
                      break;
                 case ("stumbleupon"):
-                     title = "Stumbleupon";
+                     title = "StumbleUpon";
                      break;
                 case ("pinterest"):
                      title = "Pinterest";
