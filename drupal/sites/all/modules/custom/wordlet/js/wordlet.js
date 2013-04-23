@@ -50,7 +50,7 @@ var load_form = function(url, data) {
 				}
 
 				// Otherwise, condense html to just the form
-				$div.find('*:not(form,input,label,legend,select,textarea,option,h1,.messages.error,.form-required):not(:has(textarea,input,label,select,option,legend,h1,.messages.error,.form-required))').remove();
+				$div.find('*:not(form,input,label,legend,legend span,select,textarea,option,h1,.messages.error,.form-required):not(:has(textarea,input,label,select,option,legend,h1,.messages.error,.form-required))').remove();
 
 				var $repeaters = $div.find('.repeating');
 
