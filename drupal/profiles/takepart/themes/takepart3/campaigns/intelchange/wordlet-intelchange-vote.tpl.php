@@ -61,6 +61,24 @@
                     <p class="vote-btn important">
                         <a href="google.com"><?=w('vote_finalist_'.$w->token)?></a>
                     </p>
+                    <div class="modal-wrapper">
+                        <? if(!user_is_logged_in()): ?>
+                        <div class="modal registration">
+                            <div class='fb-connect-wrapper'>
+                                <?=_takepart_facebookapis_getfblogin("intelchange/contest/vote#vote_".$w->token);?>
+                            </div>
+                        </div>
+                        <? else: ?>
+                        <div class="modal confirm">
+                            <div class="cms vote-form-wrapper">
+                                <?=w($w->token . '_vote_form')?>
+                            </div>
+                        </div>
+                        <? endif: ?>
+                        <div class="modal thank-you">
+                            
+                        </div>
+                    </div>
                     <? $w2 = w('add_this_'.$w->token); ?>
                     <div class="addThis"
                         data-message="<?=$w2->multi(false)?>"
