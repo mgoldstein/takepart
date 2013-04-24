@@ -68,13 +68,13 @@
                             <h5 class='title'><?=$w2->single(false)?></h5>
                             <div class='cms modal-content'><?=$w2->multi(false)?></div>
                             <div class='fb-connect-wrapper'>
-                                <?=_takepart_facebookapis_getfblogin("can#vote_".$w->token);?>
+                                <?=_takepart_facebookapis_getfblogin("intelforchange/contest/vote#vote_".$w->token);?>
                             </div>
                         </div>
                         <? else: ?>
                         <div class="modal vote-confirm">
                             <div class="cms vote-form-wrapper">
-                                <? $w2 = w($w->token . '_confirm_modal') ?>
+                                <? $w2 = w('confirm_modal') ?>
                                 <h5 class='title'><?=$w2->single(false)?></h5>
                                 <div class='cms modal-content'><?=$w2->multi(false)?></div>
                                 <div class="cms vote-form-wrapper">
@@ -88,10 +88,10 @@
                         </div>
                         <? endif ?>
                         <div class="modal vote-thanks">
-                            <? $w2 = w($w->token . '_thank_you_modal') ?>
+                            <? $w2 = w('thank_you_modal') ?>
                             <h5 class='title'><?=$w2->single(false)?></h5>
                             <div class='cms modal-content'><?=$w2->multi(false)?></div>
-                            <? $w2 = w($w->token.'_add_this'); ?>
+                            <? $w2 = w('thank_you_add_this'); ?>
                             <div class="addThis"
                                 data-message="<?=$w2->multi(false)?>"
                                 data-url="<?=$w2->href?>">
@@ -106,7 +106,7 @@
                             <div class='cms modal-content'><?=$w2->multi(false)?></div>
                         </div>
                         <div class="modal vote-rejected">
-                            <? $w2 = w($w->token . '_rejected_modal') ?>
+                            <? $w2 = w('rejected_modal') ?>
                             <h5 class='title'><?=$w2->single(false)?></h5>
                             <div class='cms modal-content'><?=$w2->multi(false)?></div>
                         </div>
@@ -114,18 +114,18 @@
                     <? if ( wordlet_edit_mode() ): ?>
                         <h5>Modal Wordlets</h5>
                         <p <?=wa('fb_signup_modal')?>>Edit Registration Modal</p>
-                        <p <?=wa($w->token . '_confirm_modal')?>>Edit <?=$w->token?> Confirm Modal</p>
+                        <p <?=wa('confirm_modal')?>>Edit <?=$w->token?> Confirm Modal</p>
                         <p <?=wa($w->token . '_vote_form')?>>Edit <?=$w->token?> Confirm Modal Vote Form</p>
-                        <p <?=wa($w->token . '_thank_you_modal')?>>Edit <?=$w->token?> Thank You Modal</p>
-                        <p <?=wa($w->token.'_add_this')?>>Edit <?=$w->token?> Thank You Modal Add This Block</p>
-                        <p <?=wa($w->token . '_rejected_modal')?>>Edit <?=$w->token?> Rejected Modal</p>
+                        <p <?=wa('thank_you_modal')?>>Edit <?=$w->token?> Thank You Modal</p>
+                        <p <?=wa('thank_you_add_this')?>>Edit <?=$w->token?> Thank You Modal Add This Block</p>
+                        <p <?=wa('rejected_modal')?>>Edit <?=$w->token?> Rejected Modal</p>
                         <p <?=wa('error_modal')?>>Edit Error Modal</p>
                     <? endif ?>
                     <? $w2 = w('add_this_'.$w->token); ?>
                     <div class="addThis"
                         data-message="<?=$w2->multi(false)?>"
                         data-url="<?=$w2->href?>"
-                        <?=wa('add_this_'.$w->token)?>>
+                        <?=wa('add_this')?>>
                         <a class="addthis_button_facebook at300b" title="Facebook" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook"></a>
                         <a class="addthis_button_twitter at300b" title="Tweet" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter"></a>
                         <a class="addthis_button_email at300b" title="Email" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_email_share.png" alt="Share by Email"></a>
