@@ -76,7 +76,9 @@
                             <div class="cms vote-form-wrapper">
                                 <? $w2 = w('confirm_modal') ?>
                                 <h5 class='title'><?=$w2->single(false)?></h5>
-                                <div class='cms modal-content'><?=$w2->multi(false)?></div>
+                                <div class='cms modal-content'>
+                                    <?=wr($w2->multi(false), $w) ?>
+                                </div>
                                 <div class="cms vote-form-wrapper">
                                     <?=w($w->token . '_vote_form')?>
                                 </div>
@@ -90,11 +92,11 @@
                         <div class="modal vote-thanks">
                             <? $w2 = w('thank_you_modal') ?>
                             <h5 class='title'><?=$w2->single(false)?></h5>
-                            <div class='cms modal-content'><?=$w2->multi(false)?></div>
+                            <div class='cms modal-content'><?=wr($w2->multi(false), $w) ?></div>
                             <? $w2 = w('thank_you_add_this'); ?>
                             <div class="addThis"
-                                data-message="<?=$w2->multi(false)?>"
-                                data-url="<?=$w2->href?>">
+                                data-message="<?=wr($w2->multi(false), $w) ?>"
+                                data-url="<?=wr($w2->href, $w) ?>">
                                 <a class="addthis_button_facebook at300b" title="Facebook" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook"></a>
                                 <a class="addthis_button_twitter at300b" title="Tweet" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter"></a>
                                 <a class="addthis_button_email at300b" title="Email" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_email_share.png" alt="Share by Email"></a>
@@ -121,10 +123,10 @@
                         <p <?=wa('rejected_modal')?>>Edit Rejected Modal</p>
                         <p <?=wa('error_modal')?>>Edit Error Modal</p>
                     <? endif ?>
-                    <? $w2 = w('add_this_'.$w->token); ?>
+                    <? $w2 = w('finalist_add_this'); ?>
                     <div class="addThis"
-                        data-message="<?=$w2->multi(false)?>"
-                        data-url="<?=$w2->href?>"
+                        data-message="<?=wr($w2->multi(false), $w) ?>"
+                        data-url="<?=wr($w2->href, $w) ?>"
                         <?=wa('add_this')?>>
                         <a class="addthis_button_facebook at300b" title="Facebook" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook"></a>
                         <a class="addthis_button_twitter at300b" title="Tweet" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter"></a>
