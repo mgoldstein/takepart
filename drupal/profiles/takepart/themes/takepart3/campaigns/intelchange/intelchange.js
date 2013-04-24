@@ -190,7 +190,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var $contentNavs = $contentNav.find('.finalist a');
     var $contentSections = $contentInfo.find('.finalist');
     var $currentNav = $contentNavs.first();
-    var $currentContent;
+    var $currentContent = $contentSections.filter($currentNav[0].hash);
     var finalistMenuClickHandler = function(e) {
         if ( this == $currentNav[0] ) return;
         $contentNavs.removeClass('active');
@@ -236,25 +236,6 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
             showVoteModal($contentToShow);
         }
     }
-    // initialize finalist on load
-    if ( location.hash ) {
-        var $to = $contentNavs.filter('a[href="' + location.href + '"]');
-        if ( $to.length > 0 ) {
-            $currentNav = $to;
-        }
-    }
-    $currentContent = $contentSections.filter($currentNav[0].hash);
-    $currentNav.addClass('active');
-    $contentSections.not($currentNav[0].hash).hide();
-
-    // hide finalist modals
-    $('.finalist .modal-wrapper').hide();
-
-    // adjust finalist wrapper height based on menu size
-    $voteWrap.css({
-        'min-height': $contentNav.children().outerHeight(),
-        '_height': $contentNav.children().outerHeight()
-    });
 
     // body delegates
     $body
@@ -269,6 +250,30 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     Drupal.behaviors.confirmFormSubmit = {
         attach: voteConfirmSubmit
     }
+    
+    // initialize finalist on load
+    var modalHash = 'vote_';
+    var $hashFinalist = $contentNavs.filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
+    if ($hashFinalist.length > 0){
+        $currentNav = $hashFinalist;
+        $currentContent = $contentSections.filter($currentNav[0].hash);
+        if (window.location.href.indexOf(modalHash) !== -1){
+            console.log($currentContent.find('.vote-btn a'));
+            $currentContent.find('.vote-btn a').trigger('click');
+        }
+    }
+    $currentNav.addClass('active');
+    $contentSections.not($currentNav[0].hash).hide();
+
+    // hide finalist modals
+    $('.finalist .modal-wrapper').hide();
+
+    // adjust finalist wrapper height based on menu size
+    $voteWrap.css({
+        'min-height': $contentNav.children().outerHeight(),
+        '_height': $contentNav.children().outerHeight()
+    });
+
 }
 
 });
