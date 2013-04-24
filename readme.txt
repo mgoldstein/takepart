@@ -120,5 +120,3 @@ done in a manner that would allow them to be contributed back to the community.
 		Files for integration with external systems/libraries and tests. This
     directory needs further review before making any modifications
 
-
-TESTING

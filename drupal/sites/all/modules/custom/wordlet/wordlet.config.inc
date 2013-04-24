@@ -79,6 +79,39 @@ function _wordlet_configuration() {
     ),
 
     // Test
+    'test_social' => array(
+      'title' => 'Social Sharing Test',
+      'path' => 'socialtest',
+      'published' => FALSE,
+      'wrappers' => array(),
+      'css' => array(
+        'campaigns/reset.css',
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+      ),
+      'load' => array('site'),
+    ),
+
+    // Article Test
+    'test_article' => array(
+      'title' => 'Article Test',
+      'path' => 'articletest',
+      'published' => FALSE,
+      'wrappers' => array(),
+      'css' => array(
+        'campaigns/reset.css',
+        'css/normalize_cms.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+      ),
+      'load' => array('site'),
+    ),
+
+    // Blank Wordlet Page
     'test_blank' => array(
       'title' => 'Test - Blank Campaign',
       'path' => 'test/blank-campaign-page',
@@ -409,6 +442,25 @@ function _wordlet_configuration() {
     ),
 
     // Intel For Change - Home
+    // 'intelchange_home' => array(
+    //   'title' => 'Intel For Change - Home',
+    //   'path' => 'intelforchangedev',
+    //   'published' => FALSE,
+    //   'wrappers' => array('intelchange', 'campaign', 'html'),
+    //   'css' => array(
+    //     'campaigns/reset.css',
+    //     'css/slim-header.css',
+    //     'css/normalize_cms.css',
+    //     'campaigns/intelchange/intelchange.css',
+    //   ),
+    //   'js' => array(
+    //     'campaigns/campaign.js',
+    //     'campaigns/intelchange/intelchange.js',
+    //   ),
+    //   'load' => array('site', 'intelchange_campaign'),
+    // ),
+
+    // Intel For Change - Home
     'intelchange_home' => array(
       'title' => 'Intel For Change - Home',
       'path' => 'intelforchange',
@@ -445,6 +497,25 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'intelchange_campaign'),
     ),
+
+    // Intel For Change - Contest
+    // 'intelchange_contest' => array(
+    //   'title' => 'Intel For Change - Contest',
+    //   'path' => 'intelforchangedev/contest',
+    //   'published' => FALSE,
+    //   'wrappers' => array('intelchange', 'campaign', 'html'),
+    //   'css' => array(
+    //     'campaigns/reset.css',
+    //     'css/slim-header.css',
+    //     'css/normalize_cms.css',
+    //     'campaigns/intelchange/intelchange.css',
+    //   ),
+    //   'js' => array(
+    //     'campaigns/campaign.js',
+    //     'campaigns/intelchange/intelchange.js',
+    //   ),
+    //   'load' => array('site', 'intelchange_campaign'),
+    // ),
 
     // Intel For Change - Contest
     'intelchange_contest' => array(
