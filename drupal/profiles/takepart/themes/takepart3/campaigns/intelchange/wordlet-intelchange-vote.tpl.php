@@ -64,25 +64,51 @@
                     <div class="modal-wrapper">
                         <? if(!user_is_logged_in()): ?>
                         <div class="modal vote-register">
+                            <? $w2 = w('fb_signup_modal') ?>
+                            <h5 class='title'><?=$w2->single(false)?></h5>
+                            <div class='cms modal-content'><?=$w2->multi(false)?></div>
                             <div class='fb-connect-wrapper'>
-                                <?=_takepart_facebookapis_getfblogin("intelforchange/contest/vote#vote_".$w->token);?>
+                                <?=_takepart_facebookapis_getfblogin("can#vote_".$w->token);?>
                             </div>
                         </div>
                         <? else: ?>
                         <div class="modal vote-confirm">
                             <div class="cms vote-form-wrapper">
-                                <?=w($w->token . '_vote_form')?>
+                                <? $w2 = w($w->token . '_confirm_modal') ?>
+                                <h5 class='title'><?=$w2->single(false)?></h5>
+                                <div class='cms modal-content'><?=$w2->multi(false)?></div>
+                                <div class="cms vote-form-wrapper">
+                                    <?=w($w->token . '_vote_form')?>
+                                </div>
+                                <div class="cms footnote">
+                                    <?=$w2->multi_short(false)?>
+                                </div>
+                                <span class='cancel'>Cancel</span>
                             </div>
                         </div>
                         <? endif ?>
                         <div class="modal vote-thanks">
-                            
+                            <? $w2 = w($w->token . '_thank_you_modal') ?>
+                            <h5 class='title'><?=$w2->single(false)?></h5>
+                            <div class='cms modal-content'><?=$w2->multi(false)?></div>
+                            <? $w2 = w($w->token.'_add_this'); ?>
+                            <div class="addThis"
+                                data-message="<?=$w2->multi(false)?>"
+                                data-url="<?=$w2->href?>">
+                                <a class="addthis_button_facebook at300b" title="Facebook" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook"></a>
+                                <a class="addthis_button_twitter at300b" title="Tweet" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter"></a>
+                                <a class="addthis_button_email at300b" title="Email" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_email_share.png" alt="Share by Email"></a>
+                            </div>
                         </div>
                         <div class="modal vote-error">
-                            
+                            <? $w2 = w('error_modal') ?>
+                            <h5 class='title'><?=$w2->single(false)?></h5>
+                            <div class='cms modal-content'><?=$w2->multi(false)?></div>
                         </div>
                         <div class="modal vote-rejected">
-                            
+                            <? $w2 = w($w->token . '_rejected_modal') ?>
+                            <h5 class='title'><?=$w2->single(false)?></h5>
+                            <div class='cms modal-content'><?=$w2->multi(false)?></div>
                         </div>
                     </div>
                     <? if ( wordlet_edit_mode() ): ?>
