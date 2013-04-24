@@ -59,7 +59,7 @@ function _googlenews_getgooglenews() {
     $content .= '<n:publication_date>' . gmdate(DATE_W3C, $node->created) . '</n:publication_date>';
     $content .= '</n:news>';
     $content .= '</url>';
-    $content .= '<n:genres>Article</n:genres>';
+    // $content .= '<n:genres>OpEd</n:genres>';
     // $content .= '<n:keywords>Arts, Entertainment, Action, Impact, Culture, Education, Environment, Fashion, Film, Food, Gay Rights, Green, Health, Human Rights, Hunger, Innovation, Lifestyle, News, Opinion, Politics, Social Justice, Technology, Travel, Water, Wildlife, World </n:keywords>';
   }
 
