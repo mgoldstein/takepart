@@ -131,6 +131,7 @@ body {
 	color:#000;
 }
 
+.page-wordlet-patt-videos li.patt_videos_url a,
 .page-wordlet-patt-film li.patt_film_url a,
 .page-wordlet-patt-action li.patt_action_url a,
 .page-wordlet-patt-snap li.patt_snap_url a,
@@ -155,6 +156,7 @@ body {
 	content: " ";
 }
 
+.page-wordlet-patt-videos li.patt_videos_url:after,
 .page-wordlet-patt-film li.patt_film_url:after,
 .page-wordlet-patt-action li.patt_action_url:after,
 .page-wordlet-patt-snap li.patt_snap_url:after,
