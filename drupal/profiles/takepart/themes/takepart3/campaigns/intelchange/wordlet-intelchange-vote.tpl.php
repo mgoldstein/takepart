@@ -127,7 +127,7 @@
                     <div class="addThis"
                         data-message="<?=wr($w2->multi(false), $w) ?>"
                         data-url="<?=wr($w2->href, $w) ?>"
-                        <?=wa('add_this')?>>
+                        <?=wa('finalist_add_this')?>>
                         <a class="addthis_button_facebook at300b" title="Facebook" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook"></a>
                         <a class="addthis_button_twitter at300b" title="Tweet" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter"></a>
                         <a class="addthis_button_email at300b" title="Email" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_email_share.png" alt="Share by Email"></a>
