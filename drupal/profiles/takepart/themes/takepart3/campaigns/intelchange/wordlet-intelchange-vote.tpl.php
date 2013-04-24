@@ -114,11 +114,11 @@
                     <? if ( wordlet_edit_mode() ): ?>
                         <h5>Modal Wordlets</h5>
                         <p <?=wa('fb_signup_modal')?>>Edit Registration Modal</p>
-                        <p <?=wa('confirm_modal')?>>Edit <?=$w->token?> Confirm Modal</p>
-                        <p <?=wa($w->token . '_vote_form')?>>Edit <?=$w->token?> Confirm Modal Vote Form</p>
-                        <p <?=wa('thank_you_modal')?>>Edit <?=$w->token?> Thank You Modal</p>
-                        <p <?=wa('thank_you_add_this')?>>Edit <?=$w->token?> Thank You Modal Add This Block</p>
-                        <p <?=wa('rejected_modal')?>>Edit <?=$w->token?> Rejected Modal</p>
+                        <p <?=wa('confirm_modal')?>>Edit Confirm Modal</p>
+                        <p <?=wa($w->token . '_vote_form')?>>Edit Confirm Modal Vote Form</p>
+                        <p <?=wa('thank_you_modal')?>>Edit Thank You Modal</p>
+                        <p <?=wa('thank_you_add_this')?>>Edit Thank You Modal Add This Block</p>
+                        <p <?=wa('rejected_modal')?>>Edit Rejected Modal</p>
                         <p <?=wa('error_modal')?>>Edit Error Modal</p>
                     <? endif ?>
                     <? $w2 = w('add_this_'.$w->token); ?>
