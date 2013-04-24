@@ -95,7 +95,7 @@
                             <div class='cms modal-content'><?=wr($w2->multi(false), $w) ?></div>
                             <? $w2 = w('thank_you_add_this'); ?>
                             <div class="addThis"
-                                data-message="<?=wr($w2->multi(false), $w) ?>"
+                                data-message="<?=wr($w2->single(false), $w) ?>"
                                 data-url="<?=wr($w2->href, $w) ?>">
                                 <a class="addthis_button_facebook at300b" title="Facebook" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook"></a>
                                 <a class="addthis_button_twitter at300b" title="Tweet" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter"></a>
@@ -125,8 +125,8 @@
                     <? endif ?>
                     <? $w2 = w('finalist_add_this'); ?>
                     <div class="addThis"
-                        data-message="<?=wr($w2->multi(false), $w) ?>"
-                        data-url="<?=wr($w2->href, $w) ?>"
+                        data-message="<?=wr($w2->single(false), $w)?>"
+                        data-url="<?=wr($w2->href, $w)?>"
                         <?=wa('finalist_add_this')?>>
                         <a class="addthis_button_facebook at300b" title="Facebook" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook"></a>
                         <a class="addthis_button_twitter at300b" title="Tweet" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter"></a>
