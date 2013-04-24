@@ -1286,7 +1286,11 @@ function wordlet_token_replace($string, $replace) {
   if ( (preg_match_all('/\{([a-zA-Z\-_]+)\}/', $string, $matches)) && isset($matches[1]) ) {
     foreach ( $matches[1] as $key => $match ) {
       if ( gettype($array) == 'object' ) {
-        $find = $array->{$match};
+        if ( $match == 'single' || $match == 'multi' ) {
+          $find = $array->{$match}(false);
+        } else {
+          $find = $array->{$match};
+        }
       } else {
         // untested
         $find = $array[$match];
