@@ -104,18 +104,6 @@
 			</footer>
 
 			<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
-
-			<section class="follow_us">
-				<h3><?=t('Follow Us') ?></h3>
-				<ul>
-					<li class="facebook"><a href="#"><?=t('Facebook') ?></a></li>
-					<li class="twitter"><a href="#"><?=t('Twitter') ?></a></li>
-					<li class="google"><a href="#"><?=t('Google+') ?></a></li>
-					<li class="pinterest"><a href="#"><?=t('Pinterest') ?></a></li>
-					<li class="youtube"><a href="#"><?=t('YouTube') ?></a></li>
-					<li class="tumblr"><a href="#"><?=t('Tumblr') ?></a></li>
-				</ul>
-			</section>
 		</div>
 	</div>
 	<? if ( $field_topic_box ): ?>

@@ -41,12 +41,6 @@
  * @see template_process()
  */
 ?>
-<section id="<?=$block_html_id ?>" class="section of_the_day_section <?=$classes ?>"<?=$attributes ?>>
-	<?=render($title_prefix) ?>
-	<? if ($block->subject): ?>
-  		<h3 class="section_header" <?=$title_attributes ?>><?=$block->subject ?></h3>
-	<? endif ?>
-	<?=render($title_suffix) ?>
-
+<div id="<?=$block_html_id ?>" class="newsletter_social <?=$classes ?>"<?=$attributes ?>>
 	<?=$content ?>
-</section>
+</div>
