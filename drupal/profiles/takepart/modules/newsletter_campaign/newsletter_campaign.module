@@ -4,7 +4,7 @@ function newsletter_campaign_follow_us_services() {
   return array(
     'facebook' => 'http://www.facebook.com/takepart',
     'twitter' => 'http://www.twitter.com/takepart',
-    'google_plus' => 'https://plus.google.com/113369936500827860065?prsrc=3',
+    'google' => 'https://plus.google.com/113369936500827860065?prsrc=3',
     'pinterest' => 'http://www.pinterest.com/takepart',
     'youtube' => 'http://www.youtube.com/takepart',
   );
@@ -249,7 +249,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign, $op = 'edit') 
     'follow_us_enabled' => $campaign->follow_us_enabled,
     'follow_us_facebook' => $campaign->follow_us_configuration->facebook,
     'follow_us_twitter' => $campaign->follow_us_configuration->twitter,
-    'follow_us_google_plus' => $campaign->follow_us_configuration->google_plus,
+    'follow_us_google' => $campaign->follow_us_configuration->google,
     'follow_us_pinterest' => $campaign->follow_us_configuration->pinterest,
     'follow_us_youtube' => $campaign->follow_us_configuration->youtube,
   );
@@ -359,12 +359,12 @@ function newsletter_campaign_form($form, &$form_state, $campaign, $op = 'edit') 
     '#element_validate' => array('newsletter_campaign_validate_url'),
   );
 
-  $form['follow_us']['follow_us_google_plus'] = array(
+  $form['follow_us']['follow_us_google'] = array(
     '#type' => 'textfield',
     '#title' => t('Google+'),
     '#description' => t('TakePart Google+ service URL.'),
     '#required' => FALSE,
-    '#default_value' => $values['follow_us_google_plus'],
+    '#default_value' => $values['follow_us_google'],
     '#element_validate' => array('newsletter_campaign_validate_url'),
   );
 
@@ -497,13 +497,13 @@ function newsletter_campaign_services_admin_form($form, &$form_state) {
     '#element_validate' => array('newsletter_campaign_validate_url'),
   );
 
-  $form['newsletter_campaign_service_google_plus'] = array(
+  $form['newsletter_campaign_service_google'] = array(
     '#type' => 'textfield',
     '#title' => t('Google+'),
     '#description' => t('Default TakePart Google+ service URL.'),
     '#required' => FALSE,
-    '#default_value' => variable_get('newsletter_campaign_service_google_plus',
-      $services['google_plus']),
+    '#default_value' => variable_get('newsletter_campaign_service_google',
+      $services['google']),
     '#element_validate' => array('newsletter_campaign_validate_url'),
   );
 
@@ -653,6 +653,9 @@ function newsletter_campaign_block_view($delta) {
       $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol',
         'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
 
+      // Have the block template provide the title/header.
+      $subject = filter_xss($newsletter->header, $allowed_tags);
+
       // Both blocks have a terms of service link.
       $tos_link = array(
         '#theme' => 'link',
@@ -668,13 +671,10 @@ function newsletter_campaign_block_view($delta) {
 
       if ($newsletter->follow_us_enabled && isset($newsletter->follow_us_configuration)) {
 
-        // Have the newsletter template provide the title/header.
-        $subject = '';
-
         $services = array(
           'facebook' => t('Facebook'),
           'twitter' => t('Twitter'),
-          'google_plus' => t('Google+'),
+          'google' => t('Google'),
           'pinterest' => t('Pinterest'),
           'youtube' => t('YouTube'),
         );
@@ -715,9 +715,6 @@ function newsletter_campaign_block_view($delta) {
         ));
       }
       else {
-
-        // Have the block template provide the title/header.
-        $subject = filter_xss($newsletter->header, $allowed_tags);
 
         $path = drupal_get_path('module', 'newsletter_campaign');
         drupal_add_js($path . '/js/newsletter_campaign_block.js');
