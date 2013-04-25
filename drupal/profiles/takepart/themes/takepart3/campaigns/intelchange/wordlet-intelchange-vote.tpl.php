@@ -44,7 +44,7 @@
         
         <div class="finalist-content">
             <? foreach ( $finalists as $i => $w ): ?>
-            <div id='<?=$w->token?>' class="finalist">
+            <div id='<?=$w->token?>' class="finalist" data-finalistToken="<?=$w->token?>">
                 <div class="video">
                     <iframe width="541" height="305" src="http://www.youtube.com/embed/<?=$w->video?>" frameborder="0" allowfullscreen></iframe>
                 </div>
