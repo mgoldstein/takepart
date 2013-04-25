@@ -1,4 +1,4 @@
-<div class="first-block">
+<div class="first-block first-block-interim">
     <div class="intro-block">
         <div class="intro-content">
             <div class="intro-image" <?=wa('intro-image')?>>
@@ -48,24 +48,7 @@
     </div>
 
     <div class="form_wrapper">
-        <div class="default-state">
-            <div class="default-content">
-                <h3><?=w('default_header')?></h3>
-                <p class="enter-contest important">
-                    <a href="<?=wu('intelchange_contest')?>"><?=w('enter_the_contest')?></a>
-                </p>
-            </div>
-            <div class="stay-contected cta" <?=wa('stay_connected')?>>
-                <a href="#stay-connected">
-                    <? if ( $w = w('stay_connected') ): ?>
-                        <h4><?=$w->single(false)?></h4>
-                        <?=$w->multi(false)?>
-                    <? endif ?>
-                </a>
-            </div>
-        </div>
-
-        <div id="stay-connected" class="form-state form-content">
+        <div id="stay-connected" class="form-state form-content interim">
             <?=w('stay_connected_form')?>
         </div>
     </div>
