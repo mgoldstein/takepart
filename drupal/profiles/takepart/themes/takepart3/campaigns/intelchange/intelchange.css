@@ -5,7 +5,7 @@
 
 .main {
   font-size: 16px;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-family: Verdana, sans-serif;
   padding: 8px;
   background: #fff;
   margin: 16px 0 0 0;
@@ -1318,4 +1318,63 @@
   margin-top: 2.250em;
   margin-bottom: 1.563em;
   padding: 1em 2.875em;
+}
+
+.page-wordlet-intelchange-vote .intelforchange_modal {
+  border-radius: 0;
+  border: 5px solid rgb(233, 232, 230);
+  max-width: 565px;
+}
+.page-wordlet-intelchange-vote .intelforchange_content {
+  padding: 40px;
+  font-family: Verdana, sans-serif;
+  font-size: 13px;
+}
+.page-wordlet-intelchange-vote .intelforchange_content h5 {
+  font-size: 35px;
+  margin: 0 0 0.5em 0;
+  color: rgb(2, 111, 171);
+}
+.page-wordlet-intelchange-vote .intelforchange_modal .form-submit {
+  background: #f37424;
+  font-weight: bold;
+  color: #fff;
+  display: inline-block;
+  border-radius: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 0;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 16px 77px;
+  cursor: pointer;
+  margin-bottom: 30px;
+
+  -webkit-transition: background-color .2s ease-in-out;
+  transition: background-color .2s ease-in-out;
+}
+.page-wordlet-intelchange-vote .intelforchange_modal .form-submit:focus,
+.page-wordlet-intelchange-vote .intelforchange_modal .form-submit:hover {
+  background: #d95604;
+}
+.page-wordlet-intelchange-vote .intelforchange_content .footnote {
+  color: rgb(133, 133, 133);
+  font-size: 12px;
+}
+.page-wordlet-intelchange-vote .intelforchange_modal .intelforchange_close {
+  background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/close_video_sprite.png) left top no-repeat;
+  display: block;
+  width: 36px;
+  height: 36px;
+  white-space: nowrap;
+  text-indent: 100%;
+  overflow: hidden;
+  margin-top: 13px;
+  margin-right: 13px;
+}
+.page-wordlet-intelchange-vote .intelforchange_modal .cancel {
+  color: rgb(2, 162, 248);
+  cursor: pointer;
+  margin-top: 2em;
+  display: block;
 }
