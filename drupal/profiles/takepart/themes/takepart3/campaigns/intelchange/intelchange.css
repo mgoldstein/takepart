@@ -1319,6 +1319,14 @@
   margin-bottom: 1.563em;
   padding: 1em 2.875em;
 }
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .already-voted p {
+  color: #f37424;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0 2.875em;
+  line-height: 1.25em;
+  margin: 35px 0;
+}
 
 .page-wordlet-intelchange-vote .intelforchange_modal {
   border-radius: 0;
