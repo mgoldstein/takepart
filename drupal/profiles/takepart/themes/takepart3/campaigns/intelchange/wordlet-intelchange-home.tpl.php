@@ -8,7 +8,7 @@
                     </p>
                 <? endif ?>
             </div>
-            <div class="into-text">
+            <div class="intro-text">
                 <div class="intro-blurb">
                     <?=w('intro')?>
                 </div>
