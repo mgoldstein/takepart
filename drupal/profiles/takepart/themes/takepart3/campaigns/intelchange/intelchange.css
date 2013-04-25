@@ -1357,7 +1357,7 @@
 .page-wordlet-intelchange-vote .intelforchange_modal .form-submit:hover {
   background: #d95604;
 }
-.page-wordlet-intelchange-vote .intelforchange_content .footnote {
+.page-wordlet-intelchange-vote .intelforchange_modal .footnote {
   color: rgb(133, 133, 133);
   font-size: 12px;
 }
@@ -1377,4 +1377,10 @@
   cursor: pointer;
   margin-top: 2em;
   display: block;
+}
+
+.page-wordlet-intelchange-vote .intelforchange_modal h6 {
+  font-size: 25px;
+  margin: 0 0 0.4em 0;
+  color: rgb(75, 54, 57);
 }
