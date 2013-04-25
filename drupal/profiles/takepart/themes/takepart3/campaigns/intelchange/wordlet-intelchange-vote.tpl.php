@@ -59,7 +59,7 @@
                         </div>                    
                     </div>
                     <p class="vote-btn important">
-                        <a href="<?=wu('intelchange_vote')?>#vote_<?=$w->token?>"><?=w('vote_finalist_'.$w->token)?></a>
+                        <a href="<?=wu('intelchange_vote')?>#vote_<?=$w->token?>"><?=wr(w('vote_finalist_button'), $w)?></a>
                     </p>
                     <div class="modal-wrapper">
                         <? if(!user_is_logged_in()): ?>
