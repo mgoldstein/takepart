@@ -58,7 +58,7 @@
                             <?=$w2->multi(false)?>
                         </div>                    
                     </div>
-                    <? if (w($w->token . '_vote_form')->vote_allowed)): ?>
+                    <? if (w($w->token . '_vote_form')->vote_allowed): ?>
                     <p class="vote-btn important">
                         <a href="<?=wu('intelchange_vote')?>#vote_<?=$w->token?>"><?=wr(w('vote_finalist_button'), $w)?></a>
                     </p>
