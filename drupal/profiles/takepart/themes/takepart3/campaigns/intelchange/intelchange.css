@@ -1260,17 +1260,23 @@
 .page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .finalist a.active .name {
   color: rgb(255, 255, 255);
 }
-.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-one .finalist a.active::after,
-.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-two .finalist a.active::before {
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-one .finalist a::after,
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-two .finalist a::before {
   content: "";
   position: absolute;
   top: 50%;
   margin-top: -10px;
   width: 0;
   height: 0;
-  border-color: transparent rgb(243, 116, 36) transparent;
+  border-color: transparent;
   border-width: 10px;
   border-style: dotted solid dotted;
+  -webkit-transition: border-color .2s ease-in-out;
+  transition: border-color .2s ease-in-out;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-one .finalist a.active::after,
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-two .finalist a.active::before {
+  border-color: transparent rgb(243, 116, 36) transparent;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-one .finalist a.active::after {
   border-right-color: transparent;
