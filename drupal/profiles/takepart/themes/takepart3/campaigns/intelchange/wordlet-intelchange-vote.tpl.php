@@ -67,8 +67,10 @@
                         <p><?=wr(w('already_voted'), $w)?></p>
                     </div>
                     <? endif ?>
+                    <? if ( wordlet_edit_mode() ): ?>
                     <p <?=wa('vote_finalist_button')?>>Edit Vote Button</p>
                     <p <?=wa('already_voted')?>>Edit Already Voted Text</p>
+                    <? endif ?>
                     <div class="modal-wrapper">
                         <? if(!user_is_logged_in()): ?>
                         <div class="modal vote-register">
