@@ -30,7 +30,7 @@
 			<div class="finalists-wrapper">
 				<ul class="finalists-menu" <?=wa('finalists')?>>
 					<? foreach ( wl('finalists', true) as $w ): ?>
-						<li><a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><img src="<?=$w->thumb_src?>" alt="<?=$w->single(false)?>" ></a></li>
+						<li><a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><div class="outline"></div><img src="<?=$w->thumb_src?>" alt="<?=$w->single(false)?>" ></a></li>
 					<? endforeach ?>
 				</ul>
 			</div>

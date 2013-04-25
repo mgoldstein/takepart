@@ -758,6 +758,25 @@
 .page-wordlet-intelchange-contest #page .second-block .finalists-menu li img {
   display: block;
 }
+.page-wordlet-intelchange-contest #page .second-block .finalists-menu li a {
+  position: relative;
+}
+.page-wordlet-intelchange-contest #page .second-block .finalists-menu li a .outline {
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  position: absolute;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-transition: border-color .2s ease-in-out;
+  transition: border-color .2s ease-in-out;
+}
+.page-wordlet-intelchange-contest #page .second-block .finalists-menu li a:hover .outline {
+  border-color: #d95604;
+}
 .page-wordlet-intelchange-contest #page .second-block .instructions {
   margin-bottom: 1.5em;
 }
