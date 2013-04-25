@@ -64,7 +64,7 @@
                     </p>
                     <? else: ?>
                     <div class="already-voted">
-                        <?=wr(w('already_voted'), $w)?>
+                        <p><?=wr(w('already_voted'), $w)?></p>
                     </div>
                     <? endif ?>
                     <p <?=wa('vote_finalist_button')?>>Edit Vote Button</p>
