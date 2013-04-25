@@ -554,69 +554,19 @@ function newsletter_campaign_theme() {
         'promo_text' => NULL,
         'signup_form' => NULL,
       ),
+      'template' => 'theme/newsletter-signup-block',
     ),
     'newsletter_social_block' => array(
       'variables' => array(
         'newsletter' => NULL,
         'form' => NULL,
       ),
+      'template' => 'theme/newsletter-social-block',
     ),
     'newsletter_campaign_inline_error_message' => array(
       'render element' => 'element',
     ),
   );
-}
-
-function theme_newsletter_signup_block($variables) {
-
-  $id = $variables['id'];
-
-  $content = implode("\n", array(
-    '<div class="takepart-newsletter-wrapper">',
-      "<div id=\"takepart-newsletter-{$id}-body\">",
-        '<div class="takepart-newsletter-promo-text">',
-          $variables['body'],
-        '</div>',
-        '<div class="takepart-newsletter-form">',
-          "<div id=\"wrapper-form-{$id}\">",
-            drupal_render($variables['form']),
-          '</div>',
-        '</div>',
-        '<div class="takepart-newsletter-terms">',
-          drupal_render($variables['tos_link']),
-        '</div>',
-      '</div>',
-      "<div id=\"takepart-newsletter-{$id}-results\" class=\"takepart-newsletter-message\">",
-      '</div>',
-    '</div>',
-  ));
-
-  return $content;
-}
-
-function theme_newsletter_social_block($variables) {
-
-  // Header
-  $content .= "<h3>" . $variables['header'] . "</h3>";
-
-  // The body, form and terms of service are all replaced with the response
-  // message.
-  $content .= "<div id=\"{$variables['response_id']}\">";
-  $content .= "<p class=\"message\">" . $variables['body'] . "</p>";
-  $content .= drupal_render($variables['form']);
-  $content .= "<p class=\"terms-of-service\">" . drupal_render($variables['tos_link']) . "</p>";
-  $content .= "</div>";
-
-  // Add the social service links.
-  $social_links = $variables['social_links'];
-  $content .= "<h3>" . t('Follow Us') . "</h3>";
-  $content .= "<ul>";
-  foreach ($social_links as $link) {
-    $content .= "<li>" . drupal_render($link) . "</li>";
-  }
-  $content .= "</ul>";
-
-  return $content;
 }
 
 /**
@@ -652,9 +602,6 @@ function newsletter_campaign_block_view($delta) {
       // The header and body and response message are filtered HTML.
       $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol',
         'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
-
-      // Have the block template provide the title/header.
-      $subject = filter_xss($newsletter->header, $allowed_tags);
 
       // Both blocks have a terms of service link.
       $tos_link = array(
@@ -704,6 +651,9 @@ function newsletter_campaign_block_view($delta) {
           }
         }
 
+        // Have the content template provide the title/header.
+        $subject = '';
+        
         $content = theme('newsletter_social_block', array(
           'id' => (string) $newsletter->ncid,
           'response_id' => "takepart-newsletter-{$newsletter->ncid}-body",
@@ -720,8 +670,11 @@ function newsletter_campaign_block_view($delta) {
         drupal_add_js($path . '/js/newsletter_campaign_block.js');
         drupal_add_css($path . '/css/newsletter_campaign_block.css');
 
+        // Have the block template provide the title/header.
+        $subject = filter_xss($newsletter->header, $allowed_tags);
+
         $content = theme('newsletter_signup_block', array(
-          'id' => (string) $newsletter->ncid,
+          'ncid' => (string) $newsletter->ncid,
           'body' => filter_xss($newsletter->promo_message, $allowed_tags),
           'form' => drupal_get_form('newsletter_campaign_signup_form', $newsletter),
           'tos_link' => $tos_link,
@@ -777,8 +730,12 @@ function newsletter_campaign_social_form($form, &$form_state, $campaign) {
   $form['email'] = array(
     '#type' => 'textfield',
     '#title' => t('Email'),
-    '#default_value' => 'Your Email',
-    '#maxlength' => 128,
+    '#default_value' => '',
+    '#attributes' => array(
+      'placeholder' => t('Your Email'),
+    ),
+    '#size' => NULL,
+    '#maxlength' => NULL,
   );
 
   // Simple submit button
