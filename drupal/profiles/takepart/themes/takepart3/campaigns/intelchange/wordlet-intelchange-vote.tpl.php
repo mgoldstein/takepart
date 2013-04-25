@@ -58,9 +58,17 @@
                             <?=$w2->multi(false)?>
                         </div>                    
                     </div>
+                    <? if (w($w->token . '_vote_form')->vote_allowed)): ?>
                     <p class="vote-btn important">
                         <a href="<?=wu('intelchange_vote')?>#vote_<?=$w->token?>"><?=wr(w('vote_finalist_button'), $w)?></a>
                     </p>
+                    <? else: ?>
+                    <div class="already-voted">
+                        <?=wr(w('already_voted'), $w)?>
+                    </div>
+                    <? endif ?>
+                    <p <?=wa('vote_finalist_button')?>>Edit Vote Button</p>
+                    <p <?=wa('already_voted')?>>Edit Already Voted Text</p>
                     <div class="modal-wrapper">
                         <? if(!user_is_logged_in()): ?>
                         <div class="modal vote-register">
@@ -80,7 +88,7 @@
                                     <?=wr($w2->multi(false), $w) ?>
                                 </div>
                                 <div class="cms vote-form-wrapper">
-                                    <?=w($w->token . '_vote_form')?>
+                                    <?=w($w->token . '_vote_form')->vote_allowed?>
                                 </div>
                                 <div class="cms footnote">
                                     <?=$w2->multi_short(false)?>
