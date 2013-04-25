@@ -173,6 +173,7 @@ function takepart3_preprocess_page(&$variables) {
             $variables['header'] .= render($variables['tabs']);
         }
     }
+
     return $variables;
 }
 
