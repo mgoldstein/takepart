@@ -442,7 +442,6 @@ body #at16pt {
 	line-height: 1.5;
 	display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
 	width: 100%;
-	min-height: 8em;
 }
 
 .node-type-article #article-headline {
@@ -453,10 +452,6 @@ body #at16pt {
 }
 
 .node-type-article #article-abstract {
-	text-overflow: ellipsis;
-	width: 100%;
-	white-space: nowrap;
-	overflow: hidden;
 	font-size: 16px;
 	margin-bottom: .5em;
 }
