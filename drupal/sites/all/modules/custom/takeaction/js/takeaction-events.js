@@ -16,6 +16,12 @@ if (!tp.analytics) {
         });
     });
 
+    var view_modes = {
+      'full': 'Full Page',
+      'embed': 'Embedded',
+      'embed_action': 'Embedded'
+    };
+
     tp.analytics.events['action_view'] = function (args) {
         var tracked = [
         'eVar4', 'prop4',
@@ -89,7 +95,7 @@ if (!tp.analytics) {
         s.prop67 = 'See More Actions Click';
         s.tl(true, 'o', 'see more actions click');
     };
-    
+
     tp.analytics.events['newsletter_action_opt_in'] = function (args) {
         if (view_modes[args.view_mode] == 'Full Page') {
             s.linkTrackVars = 'eVar23,eVar30,eVar39,eVar53,prop53,events';
@@ -118,7 +124,7 @@ if (!tp.analytics) {
         'events'
         ];
         if (view_modes[args.view_mode] == 'Full Page') {
-            s.linkTrackVars = tracked.join(','); 
+            s.linkTrackVars = tracked.join(',');
             s.events = s.linkTrackEvents = 'event60';
             s.eVar4 = s.prop4 = args.type_name;
             s.eVar27 = s.prop26 = args.share_method;
@@ -133,7 +139,7 @@ if (!tp.analytics) {
             s.tl(true, 'o', 'action thank you share');
         }
     };
-    
+
     var takeactionShareListener = function (evt) {
         var share_method = 'Unknown';
         var services = {
