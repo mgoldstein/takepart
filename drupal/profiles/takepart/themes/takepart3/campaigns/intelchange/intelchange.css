@@ -781,6 +781,10 @@
 .page-wordlet-intelchange-contest #page .second-block .instructions {
   margin-bottom: 1.5em;
 }
+.page-wordlet-intelchange-contest #page .second-block .instructions a {
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
+}
 .page-wordlet-intelchange-contest #page .second-block .second-sub .important {
   margin-bottom: 0;
 }
