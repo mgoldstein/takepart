@@ -15,7 +15,7 @@
 <div class="second-block">
     <div class="vote" <?=wa('finalists')?>>
         <h3><?=w('vote_header')?></h3>
-        
+
         <div class="finalists-menu">
         <?
         $finalists = wl('finalists', true);
@@ -28,7 +28,7 @@
                     <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>">
                         <div class="portrait">
                             <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
-                        </div>                    
+                        </div>
                         <span class="name"><?=$w->single(false)?></span>
                     </a>
                 </div>
@@ -41,7 +41,7 @@
             <?endif?>
         <? endforeach ?>
         </div>
-        
+
         <div class="finalist-content">
             <? foreach ( $finalists as $i => $w ): ?>
             <div id='<?=$w->token?>' class="finalist" data-finalistToken="<?=$w->token?>">
@@ -56,9 +56,9 @@
                         <? $w2 = w('content_full_'.$w->token); ?>
                         <div class="full-text"<?=wa('content_full_'.$w->token)?>>
                             <?=$w2->multi(false)?>
-                        </div>                    
+                        </div>
                     </div>
-                    <? if (w($w->token . '_vote_form')->vote_allowed): ?>
+                    <? if (w($w->token . '_vote_form')->form->vote_allowed): ?>
                     <p class="vote-btn important">
                         <a href="<?=wu('intelchange_vote')?>#vote_<?=$w->token?>"><?=wr(w('vote_finalist_button'), $w)?></a>
                     </p>
