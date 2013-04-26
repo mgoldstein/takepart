@@ -104,12 +104,22 @@
                             <h5 class='title'><?=$w2->single(false)?></h5>
                             <div class='cms modal-content'><?=wr($w2->multi(false), $w) ?></div>
                             <? $w2 = w('thank_you_add_this'); ?>
-                            <div class="addThis thanks-share"
-                                data-message="<?=wr($w2->single(false), $w) ?>"
-                                data-url="<?=wr($w2->href, $w) ?>">
-                                <a class="addthis_button_facebook at300b" title="Facebook" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook"></a>
-                                <a class="addthis_button_twitter at300b" title="Tweet" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter"></a>
-                                <a class="addthis_button_email at300b" title="Email" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_email_share.png" alt="Share by Email"></a>
+                            <div class="addThis thanks-share">
+                                <a class="addthis_button_facebook at300b" title="Facebook" href="#"
+                                    addthis:url="<?=wu('intelchange_vote')?>#<?=$w->token?>"
+                                    addthis:title="<?=wr($w2->single(false), $w)?>">
+                                    <img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook">
+                                </a>
+                                <a class="addthis_button_twitter at300b" title="Tweet" href="#"
+                                    addthis:url="<?=wu('intelchange_vote')?>#<?=$w->token?>"
+                                    addthis:title="<?=wr($w2->single(false), $w)?>">
+                                    <img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter">
+                                </a>
+                                <a class="addthis_button_email at300b" title="Email" href="#"
+                                    addthis:url="<?=wu('intelchange_vote')?>#<?=$w->token?>"
+                                    addthis:title="<?=wr($w2->single(false), $w)?>">
+                                    <img src="/profiles/takepart/modules/takepart_addthis/images/ta_email_share.png" alt="Share by Email">
+                                </a>
                             </div>
                         </div>
                         <div class="modal vote-error">
@@ -135,12 +145,22 @@
                     <? endif ?>
                     <? $w2 = w('finalist_add_this'); ?>
                     <div class="addThis finalist-share"
-                        data-message="<?=wr($w2->single(false), $w)?>"
-                        data-url="<?=wr($w2->href, $w)?>"
                         <?=wa('finalist_add_this')?>>
-                        <a class="addthis_button_facebook at300b" title="Facebook" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook"></a>
-                        <a class="addthis_button_twitter at300b" title="Tweet" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter"></a>
-                        <a class="addthis_button_email at300b" title="Email" href="#"><img src="/profiles/takepart/modules/takepart_addthis/images/ta_email_share.png" alt="Share by Email"></a>
+                        <a class="addthis_button_facebook at300b" title="Facebook" href="#"
+                            addthis:url="<<?=wu('intelchange_vote')?>#<?=$w->token?>"
+                            addthis:title="<?=wr($w2->single(false), $w)?>">
+                            <img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook">
+                        </a>
+                        <a class="addthis_button_twitter at300b" title="Tweet" href="#"
+                            addthis:url="<?=wu('intelchange_vote')?>#<?=$w->token?>"
+                            addthis:title="<?=wr($w2->single(false), $w)?>">
+                            <img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter">
+                        </a>
+                        <a class="addthis_button_email at300b" title="Email" href="#"
+                            addthis:url="<?=wu('intelchange_vote')?>#<?=$w->token?>"
+                            addthis:title="<?=wr($w2->single(false), $w)?>">
+                            <img src="/profiles/takepart/modules/takepart_addthis/images/ta_email_share.png" alt="Share by Email">
+                        </a>
                     </div>
                 </div>
             </div>
