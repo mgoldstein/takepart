@@ -54,7 +54,7 @@
             <a href="<?=wu('intelchange_vote')?>"><?=w('view_finalists_cta')?></a>
         </p>
 
-        <p class="more">
+        <p class="more" <?=wa('contest_more')?>>
             <? $w = w('contest_more') ?>
             <? if ( $w->multi(false) != "" ): ?>
                 <?=$w->multi(false)?>
