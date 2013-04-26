@@ -90,7 +90,7 @@
                                     <?=wr($w2->multi(false), $w) ?>
                                 </div>
                                 <div class="cms vote-form-wrapper">
-                                    <?=w($w->token . '_vote_form')->vote_allowed?>
+                                    <?=w($w->token . '_vote_form')->form->vote_allowed?>
                                 </div>
                                 <div class="cms footnote">
                                     <?=$w2->multi_short(false)?>
