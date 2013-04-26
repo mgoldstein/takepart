@@ -10,6 +10,19 @@ RewriteCond %{HTTP_HOST} =takepart.com
 RewriteRule robots.txt robots.prod.txt [L]
 # ..else..
 RewriteRule robots.txt robots.dev.txt [L]
+
+# If we're running on one of the production webheads...
+# ..AND the request is not for origin.prod.takepart.com, origin.takepart.com,
+# www.takepart.com, nor for any of the internal IP's of the webheads
+# (that's how the ELB health check forms it's requests),
+# then redirect the client to "www.takepart.com":
+RewriteCond %{SERVER_ADDR} ^(10.169.5.88|10.169.18.45|10.159.65.54|10.170.34.57)$
+RewriteCond %{HTTP_HOST} !^(10.169.5.88|10.169.18.45|10.159.65.54|10.170.34.57)$
+RewriteCond %{HTTP_HOST} !^web(1|2|3|4).prod.takepart.com$
+RewriteCond %{HTTP_HOST} !=www.takepart.com
+RewriteCond %{HTTP_HOST} !=origin.takepart.com
+RewriteCond %{HTTP_HOST} !=origin.prod.takepart.com
+RewriteRule (.*) http://www.takepart.com/$1 [R=301,L,NC]
 </IfModule>
 
 # Protect files and directories from prying eyes.
