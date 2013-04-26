@@ -191,6 +191,8 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var $contentSections = $contentInfo.find('.finalist');
     var $currentNav = $contentNavs.first();
     var $currentContent = $contentSections.filter($currentNav[0].hash);
+    var modalHash = 'vote_';
+    var $hashFinalist = $contentNavs.filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
     var finalistMenuClickHandler = function(e) {
         if ( this == $currentNav[0] ) return;
         $contentNavs.removeClass('active');
@@ -235,7 +237,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
             }
             showVoteModal($contentToShow);
         }
-    }
+    };
 
     // body delegates
     $body
@@ -252,8 +254,6 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     }
     
     // initialize finalist on load
-    var modalHash = 'vote_';
-    var $hashFinalist = $contentNavs.filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
     if ($hashFinalist.length > 0){
         $currentNav = $hashFinalist;
         $currentContent = $contentSections.filter($currentNav[0].hash);
