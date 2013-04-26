@@ -63,6 +63,19 @@
         <div class="default-state">
             <div class="default-content">
                 <h3><?=w('default_header')?></h3>
+                <div class="finalists-wrapper">
+                    <ul class="finalists-menu" <?=wa('finalists')?>>
+                        <? foreach ( wl('finalists', true) as $w ): ?>
+                            <li>
+                                <p class="image"><img src="<?=$w->small_src?>" alt="<?=$w->single(false)?>" ></p>
+                                <h4 class="ginalist_headline"><?=$w->single(false) ?></h4>
+                                <p class="info"><?=$w->small_multi(false) ?></p>
+                                <p class="blurb">&ldquo;<?=$w->small_multi(false) ?>&rdquo;</p>
+                                <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
+                            </li>
+                        <? endforeach ?>
+                    </ul>
+                </div>
                 <p class="enter-contest important">
                     <a href="<?=wu('intelchange_contest')?>"><?=w('enter_the_contest')?></a>
                 </p>

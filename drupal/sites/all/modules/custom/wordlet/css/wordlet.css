@@ -148,6 +148,11 @@
     position: relative;
     outline: 1px dashed #ccc;
     padding: 5px 28px 5px 5px;
+    margin-bottom: 1em;
+}
+
+.wordlets_modal .repeating:last-child {
+    margin-bottom: 0;
 }
 
 .wordlets_modal .repeating_end {
