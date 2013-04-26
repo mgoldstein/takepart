@@ -57,9 +57,9 @@
         <p class="more">
             <? $w = w('contest_more') ?>
             <? if ( $w->multi(false) != "" ): ?>
-                <?$w->multi(false)?>
+                <?=$w->multi(false)?>
             <? else: ?>
-                <a href="<?=wu('intelchange_contest')?>"><?$w->single(false)?></a>
+                <a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a>
             <?endif?>
         </p>
     </div>
