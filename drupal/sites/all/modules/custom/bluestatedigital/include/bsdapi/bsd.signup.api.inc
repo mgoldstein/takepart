@@ -36,7 +36,7 @@ class BlueStateDigitalSignupApi extends BlueStateDigitalApi {
     // Check the response code.
     if ($response['http_code'] != self::HTTP_CODE_OK) {
       throw new BlueStateDigitalApiException(
-        'Unexpected response status code.',
+        'Unexpected response status code.' . print_r($response, TRUE),
         BlueStateDigitalApiException::FAILED_RESPONSE_CODE,
         $response['http_code'], $response['body']);
     }
@@ -656,7 +656,16 @@ class BlueStateDigitalSignupApi extends BlueStateDigitalApi {
         }
       }
 
-      // TODO - Extra the extra fields (and values) of the signup.
+      // Extract the extra fields (and values) of the signup.
+      // TODO: Extend this to support lists and file uploads
+      $signup['extra_fields'] = array();
+      foreach ($node->xpath('stg_signup_extra') as $extra) {
+        $id = (int) $extra->signup_form_field_id;
+        $signup['extra_fields'][$id] = array(
+          'varchar' => (string) $extra->stg_signup_extra_value->value_varchar,
+          'text' => (string) $extra->stg_signup_extra_value->value_text,
+        );
+      }
 
       // Add the signup to the list.
       $signups[] = $signup;

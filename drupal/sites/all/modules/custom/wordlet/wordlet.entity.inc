@@ -1,5 +1,16 @@
 <?php
 
+class WordletFormItem {
+
+  public function __construct($markup) {
+    $this->markup = $markup;
+  }
+
+  public function __toString() {
+    return $this->markup;
+  }
+}
+
 class WordletItem {
 
   private $args;
@@ -177,6 +188,8 @@ class Wordlet extends Entity {
 
 class WordletController extends EntityAPIControllerExportable {
 
+  protected static $form_cache = array();
+    
   public function create(array $values = array()) {
     $values += array(
       'id' => '',
@@ -452,14 +465,28 @@ class WordletController extends EntityAPIControllerExportable {
     }
 
     if (in_array('form', $entity->item_keys)) {
+       
       $args['configured'] = true;
       $value = '';
       if (!empty($item['form']['name'])) {
+
         $form_hook = "{$item['form']['name']}_form";
         if (function_exists($form_hook)) {
-          $config = empty($item['form']['config']) ? array() : $item['form']['config'];
-          $form = drupal_get_form($form_hook, $config);
-          $value = drupal_render($form);
+
+          $form_key = "{$this->name}:{$item['form']['name']}";
+          if (! isset(self::$form_cache[$form_key])) {
+
+            $config = empty($item['form']['config']) ? array() : $item['form']['config'];
+
+            $form = drupal_get_form($form_hook, $config);
+            $form += array('#wordlet_attributes' => array());
+
+            self::$form_cache[$form_key] = new WordletFormItem(drupal_render($form));
+            foreach ($form['#wordlet_attributes'] as $key => $v) {
+              self::$form_cache[$form_key]->{$key} = $v;
+            }
+          }
+          $value = self::$form_cache[$form_key];
         }
       }
       $args['form'] = $value;
@@ -527,12 +554,20 @@ class WordletController extends EntityAPIControllerExportable {
 
         $description = ( $entity->description ) ? ' title="' . htmlspecialchars($entity->description) . '"' : '';
 
-        $args[$attribute] = implode('', array(
-          $args[$attribute],
-          $edit_link,
-          $configure_link,
-        ));
-
+        if ($attribute == 'form' && is_object($args['form'])) {
+          $args[$attribute]->markup = implode('', array(
+            $args[$attribute]->markup,
+            $edit_link,
+            $configure_link,
+          ));
+        }
+        else {
+          $args[$attribute] = implode('', array(
+            $args[$attribute],
+            $edit_link,
+            $configure_link,
+          ));
+        }
       }
     }
 

@@ -85,47 +85,6 @@ class BlueStateDigitalVoting extends BlueStateDigitalService {
     $this->signupApi->setFieldConsGroup($field_id, $group_id);
   }
 
-  public function checkEligibility($ballot_id, $email, $frequency = self::NO_LIMIT) {
-
-    $signups = $this->signupApi->getSignupsByEmail($email);
-
-    if ($frequency === self::ONCE_PER_CALENDAR_DAY) {
-
-      // Date comparisons are done in a specific timezone.
-      $tz = new DateTimeZone($this->calendarTimeZone);
-      $now = new DateTime();
-      $now->setTimezone($tz);
-
-      // Check for a signup with the same ballot id, created on the same day of
-      // the same year.
-      foreach ($signups as $signup) {
-        if ($signup['signup_form_id'] == $ballot_id) {
-
-          $timestamp = (string) $signup['create_dt'];
-          $created = new DateTime();
-          $created->setTimestamp($timestamp);
-          $created->setTimezone($tz);
-
-          if ($now->format('Yz') == $created->format('Yz')) {
-            return FALSE;
-          }
-        }
-      }
-
-    }
-    elseif ($frequency === self::ONCE_PER_LIFETIME) {
-
-      // Check for any signup with the ballot id.
-      foreach ($signups as $signup) {
-        if ($signup['signup_form_id'] == $ballot_id) {
-          return FALSE;
-        }
-      }
-    }
-
-    return TRUE;
-  }
-
   protected function getFieldIds($ballot_id, $reset = FALSE) {
 
     $key = $this->createSlug(self::TEMPLATE_NAME, $ballot_id);
@@ -210,5 +169,65 @@ class BlueStateDigitalVoting extends BlueStateDigitalService {
     }
 
     return FALSE;
+  }
+
+  public function getMostRecentVote($ballot_id, $email) {
+
+    $signups = $this->signupApi->getSignupsByEmail($email);
+
+    $latest = NULL;
+    foreach ($signups as $signup) {
+      if ($signup['signup_form_id'] == $ballot_id) {
+        if (!isset($latest) || $signup['create_dt'] > $latest['create_dt']) {
+          $latest = $signup;
+        }
+      }
+    }
+
+    if (isset($latest)) {
+      // Get the field ids for the ballot.
+      $mapping = $this->getFieldIds($ballot_id);
+      // Return the vote token value if there is one.
+      if (isset($latest['extra_fields'][$mapping->vote])) {
+        return array(
+          'token' => $latest['extra_fields'][$mapping->vote]['varchar'],
+          'timestamp' => $latest['create_dt'],
+        );
+      }
+    }
+
+    return FALSE;
+  }
+
+  public function checkEligibility($most_recent_vote, $frequency = self::NO_LIMIT) {
+
+    // Check if there is even a most recent vote to start with.
+    if ($most_recent_vote === FALSE) {
+      return TRUE;
+    }
+
+    if ($frequency === self::ONCE_PER_CALENDAR_DAY) {
+
+      // Date comparisons are done in a specific timezone.
+      $tz = new DateTimeZone($this->calendarTimeZone);
+      $now = new DateTime();
+      $now->setTimezone($tz);
+
+      $timestamp = (string) $most_recent_vote['timestamp'];
+      $created = new DateTime();
+      $created->setTimestamp($timestamp);
+      $created->setTimezone($tz);
+
+      // Check if the vote is on the same day of the year.
+      if ($now->format('Yz') == $created->format('Yz')) {
+        return FALSE;
+      }
+    }
+    elseif ($frequency === self::ONCE_PER_LIFETIME) {
+      // One vote for all time.
+      return FALSE;
+    }
+
+    return TRUE;
   }
 }

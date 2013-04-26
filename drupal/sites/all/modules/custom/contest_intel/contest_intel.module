@@ -12,6 +12,8 @@ define('AGREE_TO_RULES_FIELD_ID', 2885);
 define('AGREE_TO_SUBMISSION_FIELD_ID', 2992);
 define('AGREE_TO_SHARE_FIELD_ID', 2886);
 
+define('VOTE_FORM_ID', 229);
+
 function contest_intel_preprocess_markup($markup) {
   $allowed_tags = '<a><b><i><strong><em><br><br/><img><p><ul><ol><li>'
     . '<blockquote><hr><hr/><h1><h2><h3><h4><h5><h6>';
@@ -491,7 +493,6 @@ function theme_contest_intel_inline_error_message($variables) {
 function contest_intel_vote_form_defaults($config) {
 
   $default_config = array(
-    'vote_form_id' => '',
     'vote_token' => '',
     'vote_submit' => t('Confirm'),
     'entry_opt_in' => t('I want to enter the Intel for Change Sweepstakes.'),
@@ -520,20 +521,6 @@ function contest_intel_vote_form_defaults($config) {
 function contest_intel_vote_configuration($form, $config) {
 
   $config = contest_intel_vote_form_defaults($config);
-
-  $voting = bluestatedigital_get_service('voting');
-  $ballots = $voting->listBallots();
-  $options = array();
-  foreach ($ballots as $id => $ballot) {
-    $options[$id] = $ballot['form_public_title'];
-  }
-
-  $form['vote_form_id'] = array(
-    '#type' => 'select',
-    '#options' => $options,
-    '#title' => t('BSD Ballot ID'),
-    '#default_value' => $config['vote_form_id'],
-  );
 
   $form['vote_token'] = array(
     '#type' => 'textfield',
@@ -609,6 +596,25 @@ function contest_intel_vote_form($form, &$form_state, $config) {
   $config = contest_intel_vote_form_defaults($config);
   $form_state['contest_intel_vote'] = $config;
 
+  $attributes = array(
+    'last_vote' => NULL,
+    'last_timestamp' => NULL,
+    'vote_allowed' => TRUE,
+    'vote_token' => $config['vote_token'],
+  );
+
+  if (user_is_logged_in() && isset($user->mail)) {
+    $voting = bluestatedigital_get_service('voting');
+    $vote = $voting->getMostRecentVote(VOTE_FORM_ID, $user->mail);
+    if ($vote !== FALSE) {
+      $attributes['last_vote'] = $vote['token'];
+      $attributes['last_timestamp'] = $vote['timestamp'];
+    }
+    $attributes['vote_allowed'] = $voting->checkEligibility($vote,
+      BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
+  }
+  $form['#wordlet_attributes'] = $attributes;
+
   $form['entry_opt_in'] = array(
     '#type' => 'checkbox',
     '#title' => $config['entry_opt_in'],
@@ -661,20 +667,20 @@ function contest_intel_vote_form_submit($form, &$form_state) {
   if (user_is_logged_in() && isset($user->mail)) {
 
     $config = $form_state['contest_intel_vote'];
-    $ballot_id = $config['vote_form_id'];
     $token = $config['vote_token'];
     $voting = bluestatedigital_get_service('voting');
 
     try {
 
-      if ($voting->checkEligibility($ballot_id, $user->mail,
-        BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY)) {
-
+      $vote = $voting->getMostRecentVote(VOTE_FORM_ID, $user->mail);
+      $allowed = $voting->checkEligibility($vote,
+        BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
+      if ($allowed) {
         $opt_ins = array(
           1 => !empty($form_state['values']['entry_opt_in']),
           2 => !empty($form_state['values']['agree_to_rules']),
         );
-        $voting->castVote($ballot_id, $user->mail, $token, $opt_ins);
+        $voting->castVote(VOTE_FORM_ID, $user->mail, $token, $opt_ins);
         $form_state['contest_intel_vote_signup_result'] = 'accepted';
       }
       else {
