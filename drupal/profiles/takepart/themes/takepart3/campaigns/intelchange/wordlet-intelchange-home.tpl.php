@@ -80,7 +80,7 @@
                                 <p class="image"><img src="<?=$w->small_src?>" alt="<?=$w->single(false)?>" ></p>
                                 <div class="bio">
                                     <h4 class="finalist_headline"><?=$w->single(false) ?></h4>
-                                    <div class="info"><?=$w->multi_short ?></div>
+                                    <div class="info"><?=$w->multi_short(false) ?></div>
                                     <div class="blurb"><?=$w->multi(false) ?></div>
                                 </div>
                                 <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
