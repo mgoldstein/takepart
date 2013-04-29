@@ -54,14 +54,14 @@
             <a href="<?=wu('intelchange_vote')?>"><?=w('view_finalists_cta')?></a>
         </p>
 
-        <p class="more" <?=wa('contest_more')?>>
+        <div class="more" <?=wa('contest_more')?>>
             <? $w = w('contest_more') ?>
             <? if ( $w->multi(false) != "" ): ?>
                 <?=$w->multi(false)?>
             <? else: ?>
                 <a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a>
             <?endif?>
-        </p>
+        </div>
     </div>
 
     <div class="second-sub form_wrapper">
