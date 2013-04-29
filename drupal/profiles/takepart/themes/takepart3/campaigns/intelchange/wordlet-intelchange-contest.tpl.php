@@ -23,6 +23,14 @@
 			<img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
 		</div>
 		<? endif ?>
+		<div class="more" <?=wa('contest_more')?>>
+            <? $w = w('contest_more') ?>
+            <? if ( $w->multi(false) != "" ): ?>
+                <?=$w->multi(false)?>
+            <? else: ?>
+                <p><a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a></p>
+            <?endif?>
+        </div>
 	</div>
 
 	<div class="second-sub">
