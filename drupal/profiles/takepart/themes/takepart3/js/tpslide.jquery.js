@@ -23,8 +23,8 @@
         return this.each(function () {
             var $this = $(this);
             var $wrapper = $('<span/>').addClass(settings.prepend + 'wrapper');
-            var $prev = $('<span/>').addClass(settings.prepend + 'prev').html('&larr;');
-            var $next = $('<span/>').addClass(settings.prepend + 'next').html('&rarr;');
+            var $prev = $('<span/>').attr('title', 'Previous slide').addClass(settings.prepend + 'prev').html('&larr;');
+            var $next = $('<span/>').attr('title', 'Next slide').addClass(settings.prepend + 'next').html('&rarr;');
             var $nav = $('<span/>').addClass(settings.prepend + 'nav');
             var $nav_slides = $('<span/>').addClass(settings.prepend + 'nav_slides');
             var $slides = $this.find(settings.slides).addClass(settings.prepend + 'slide');
