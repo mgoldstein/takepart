@@ -53,15 +53,20 @@
         <p class="important">
             <a href="<?=wu('intelchange_vote')?>"><?=w('view_finalists_cta')?></a>
         </p>
-
-        <div class="more" <?=wa('contest_more')?>>
-            <? $w = w('contest_more') ?>
-            <? if ( $w->multi(false) != "" ): ?>
-                <?=$w->multi(false)?>
-            <? else: ?>
-                <p><a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a></p>
-            <?endif?>
+        
+        <div class='more-wrapper' <?=wa('contest_more')?>>
+            <div class="more">
+                <? $w = w('contest_more') ?>
+                <? if ( $w->multi(false) ): ?>
+                    <?=$w->multi(false)?>
+                <? elseif($w->single(false)): ?>
+                    <p><a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a></p>
+                <? elseif(wordlet_edit_mode()): ?>
+                    Add Link
+                <?endif?>
+            </div>
         </div>
+
     </div>
 
     <div class="second-sub form_wrapper">
