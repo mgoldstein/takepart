@@ -592,7 +592,8 @@ function contest_intel_vote_configuration($form, $config) {
  * Voting form
  */
 function contest_intel_vote_form($form, &$form_state, $config) {
-
+  global $user;
+    
   $config = contest_intel_vote_form_defaults($config);
   $form_state['contest_intel_vote'] = $config;
 
