@@ -482,6 +482,9 @@
 
 .page-wordlet-intelchange-home .finalists-wrapper .important a {
   border-radius: 0;
+  font-size: 13px;
+  display: block;
+  text-align: center;
 }
 
 .page-wordlet-intelchange-home .finalists-wrapper .image img {

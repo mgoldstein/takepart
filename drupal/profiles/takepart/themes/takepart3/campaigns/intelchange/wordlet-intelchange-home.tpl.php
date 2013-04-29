@@ -90,9 +90,6 @@
                         <? endforeach ?>
                     </ul>
                 </div>
-                <p class="enter-contest important">
-                    <a href="<?=wu('intelchange_contest')?>"><?=w('enter_the_contest')?></a>
-                </p>
             </div>
             <div class="stay-contected cta" <?=wa('stay_connected')?>>
                 <a href="#stay-connected">
