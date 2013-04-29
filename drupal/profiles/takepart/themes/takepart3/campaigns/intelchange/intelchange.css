@@ -472,6 +472,17 @@
   margin-bottom: 1em;
 }
 
+.page-wordlet-intelchange-home .finalists-wrapper .bio {
+  background: #fff;
+  color: #4b3639;
+  padding: 35px 25px 40px 25px;
+}
+
+.page-wordlet-intelchange-home .finalists-wrapper .bio .finalist_headline {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
 .page-wordlet-intelchange-home .footer-block {
   clear: both;
   display: inline-block; *display: inline; zoom: 1;
