@@ -476,11 +476,31 @@
   background: #fff;
   color: #4b3639;
   padding: 35px 25px 40px 25px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.page-wordlet-intelchange-home .finalists-wrapper .important a {
+  border-radius: 0;
+}
+
+.page-wordlet-intelchange-home .finalists-wrapper .image img {
+  display: block;
 }
 
 .page-wordlet-intelchange-home .finalists-wrapper .bio .finalist_headline {
   font-size: 25px;
   margin-bottom: 10px;
+}
+
+.page-wordlet-intelchange-home .finalists-wrapper .info p {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.page-wordlet-intelchange-home .finalists-wrapper .blurb {
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .page-wordlet-intelchange-home .footer-block {

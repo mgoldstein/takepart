@@ -83,7 +83,9 @@
                                     <div class="info"><?=$w->multi_short(false) ?></div>
                                     <div class="blurb"><?=$w->multi(false) ?></div>
                                 </div>
-                                <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
+                                <p class="important">
+                                    <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
+                                </p>
                             </li>
                         <? endforeach ?>
                     </ul>
