@@ -17,13 +17,17 @@
 		<div class="header-block">
 			<h3><?=w('cta_header')?></h3>
 			<h4><?=w('cta_subheader')?></h4>
-			<div class="more" <?=wa('contest_more')?>>
-	            <? $w = w('contest_more') ?>
-	            <? if ( $w->multi(false) != "" ): ?>
-	                <?=$w->multi(false)?>
-	            <? else: ?>
-	                <p><a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a></p>
-	            <?endif?>
+	        <div class='more-wrapper' <?=wa('contest_more')?>>
+	            <div class="more">
+	                <? $w = w('contest_more') ?>
+	                <? if ( $w->multi(false) ): ?>
+	                    <?=$w->multi(false)?>
+	                <? elseif($w->single(false)): ?>
+	                    <p><a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a></p>
+	                <? elseif(wordlet_edit_mode()): ?>
+	                    Add Link
+	                <?endif?>
+	            </div>
 	        </div>
 		</div>
 		<? if ( $w = w('cta_image') ): ?>
