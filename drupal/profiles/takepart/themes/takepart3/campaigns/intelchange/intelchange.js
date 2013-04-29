@@ -156,7 +156,7 @@ else if ( $body.is('.page-wordlet-intelchange-about') ) {
     var contentInfo = $('.content-info');
     var contentSections = contentInfo.children();
     var $content_navs = contentNav.find('li a');
-    var $current_nav = $content_navs.first();
+    var $current_nav;
     if ( location.hash ) {
         var $target_nav = $('a[href="' + location.hash + '"]');
         if ( $target_nav.is('.content-nav a') ) {
@@ -196,9 +196,17 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var $currentContent = $contentSections.filter($currentNav[0].hash);
     var modalHash = 'vote_';
     var $hashFinalist = $contentNavs.filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
+    var setCurFinalist = function(navItem){
+        if ($currentNav === navItem) return;
+        $currentNav = navItem;
+        $contentNavs.removeClass('active');
+        $currentNav.addClass('active');
+        $contentSections.hide();
+        $($currentNav[0].hash).show();
+    };
     var scrollTopFinalists = function(){
         $('body').scrollTo('.second-block', 0);
-    }
+    };
     var finalistMenuClickHandler = function(e) {
         e.preventDefault();
         if ( this == $currentNav[0] ) return;
@@ -209,6 +217,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         swap($from, $to, $contentInfo);
         $currentContent = $to;
         $currentNav = $this;
+        window.location.hash = $currentContent.data('finalisttoken');
         scrollTopFinalists();
     };
     var showVoteModal = function(contentToShow){
@@ -271,16 +280,20 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
 
     // initialize finalist on load
     if ($hashFinalist.length > 0){
-        $currentNav = $hashFinalist;
-        $currentContent = $contentSections.filter($currentNav[0].hash);
+        // if #finalistToken or #modalToken_finalistToken
+        setCurFinalist($hashFinalist);
         if (window.location.href.indexOf(modalHash) !== -1){
+            // if #modalToken_finalistToken (exapmle: #vote_one)
             $currentContent.find('.vote-btn a').trigger('click');
         } else {
-            $(window).load(scrollTopFinalists);
+            console.log('LOL');
+            scrollTopFinalists();
         }
+    } else {
+        // else use first finalist in menu
+        setCurFinalist($contentNavs.first());
     }
-    $currentNav.addClass('active');
-    $contentSections.not($currentNav[0].hash).hide();
+
 }
 
 });
