@@ -103,6 +103,9 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
     var rfact = Math.floor(Math.random()*fact_length);
     $facts.hide();
     $($facts.get(rfact)).show();
+
+    // Slider
+    $('.finalists-menu').tpslide();
 }
 // Contest
 else if ( $body.is('.page-wordlet-intelchange-contest') ) {

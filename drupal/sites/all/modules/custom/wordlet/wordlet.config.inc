@@ -438,7 +438,7 @@ function _wordlet_configuration() {
       'js' => array(
         'campaigns/campaign.js',
         'js/jquery.scrollTo.js',
-        'js/tpscroll.jquery.js',
+        'js/tpslide.jquery.js',
         'campaigns/intelchange/intelchange.js',
       ),
       'load' => array('site', 'intelchange_campaign'),
