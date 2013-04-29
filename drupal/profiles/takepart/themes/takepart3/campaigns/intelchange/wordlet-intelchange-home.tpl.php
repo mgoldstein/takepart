@@ -73,9 +73,11 @@
                         <? foreach ( wl('finalists', true) as $w ): ?>
                             <li>
                                 <p class="image"><img src="<?=$w->small_src?>" alt="<?=$w->single(false)?>" ></p>
-                                <h4 class="ginalist_headline"><?=$w->single(false) ?></h4>
-                                <p class="info"><?=$w->multi_short ?></p>
-                                <div class="blurb"><?=$w->multi(false) ?></div>
+                                <div class="bio">
+                                    <h4 class="ginalist_headline"><?=$w->single(false) ?></h4>
+                                    <p class="info"><?=$w->multi_short ?></p>
+                                    <div class="blurb"><?=$w->multi(false) ?></div>
+                                </div>
                                 <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
                             </li>
                         <? endforeach ?>
