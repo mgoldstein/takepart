@@ -475,7 +475,6 @@
 .page-wordlet-intelchange-home .finalists-menu {
   white-space: nowrap;
   overflow: hidden;
-  background: #fff;
 }
 
 .page-wordlet-intelchange-home .tpslide_wrapper {
@@ -495,6 +494,13 @@
   height: 56px;
   cursor: pointer;
   overflow: hidden;
+  -webkit-transition: background .2s ease-in-out;
+  transition: background .2s ease-in-out;
+}
+
+.page-wordlet-intelchange-home .tpslide_prev:hover,
+.page-wordlet-intelchange-home .tpslide_next:hover {
+  background: #6f5e61;
 }
 
 .page-wordlet-intelchange-home .tpslide_next {
@@ -529,6 +535,7 @@
 }
 
 .page-wordlet-intelchange-home .finalists-wrapper .bio {
+  background: #fff;
   color: #4b3639;
   padding: 35px 25px 40px 25px;
   text-align: center;
