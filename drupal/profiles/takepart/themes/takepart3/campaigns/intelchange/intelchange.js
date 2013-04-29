@@ -196,7 +196,11 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var $currentContent = $contentSections.filter($currentNav[0].hash);
     var modalHash = 'vote_';
     var $hashFinalist = $contentNavs.filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
+    var scrollTopFinalists = function(){
+        $('body').scrollTo('.second-block', 0);
+    }
     var finalistMenuClickHandler = function(e) {
+        e.preventDefault();
         if ( this == $currentNav[0] ) return;
         $contentNavs.removeClass('active');
         var $this = $(this).addClass('active');
@@ -205,6 +209,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         swap($from, $to, $contentInfo);
         $currentContent = $to;
         $currentNav = $this;
+        scrollTopFinalists();
     };
     var showVoteModal = function(contentToShow){
         var $voteModalWrapper = $currentContent.find('.modal-wrapper');
@@ -213,7 +218,6 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         }});
     };
     var voteBtnHandler = function(e){
-        e.preventDefault();
         var $voteModalWrapper = $currentContent.find('.modal-wrapper');
         var $fbModalContent = $('.vote-register', $voteModalWrapper);
         var $confirmModalContent = $('.vote-confirm', $voteModalWrapper);
@@ -255,18 +259,6 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     Drupal.behaviors.confirmFormSubmit = {
         attach: voteConfirmSubmit
     }
-    
-    // initialize finalist on load
-    if ($hashFinalist.length > 0){
-        $currentNav = $hashFinalist;
-        $currentContent = $contentSections.filter($currentNav[0].hash);
-        if (window.location.href.indexOf(modalHash) !== -1){
-            console.log($currentContent.find('.vote-btn a'));
-            $currentContent.find('.vote-btn a').trigger('click');
-        }
-    }
-    $currentNav.addClass('active');
-    $contentSections.not($currentNav[0].hash).hide();
 
     // hide finalist modals
     $('.finalist .modal-wrapper').hide();
@@ -277,6 +269,18 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         '_height': $contentNav.children().outerHeight()
     });
 
+    // initialize finalist on load
+    if ($hashFinalist.length > 0){
+        $currentNav = $hashFinalist;
+        $currentContent = $contentSections.filter($currentNav[0].hash);
+        if (window.location.href.indexOf(modalHash) !== -1){
+            $currentContent.find('.vote-btn a').trigger('click');
+        } else {
+            $(window).load(scrollTopFinalists);
+        }
+    }
+    $currentNav.addClass('active');
+    $contentSections.not($currentNav[0].hash).hide();
 }
 
 });
