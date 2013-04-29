@@ -35,6 +35,8 @@ scripts[] = js/tastemakers/nationwide.js
 scripts[] = js/actions.js
 
 scripts[] = js/jquery.lazyload.js
+scripts[] = js/jquery.scrollTo.js
+scripts[] = js/tpslide.jquery.js
 scripts[] = js/tpsocial.jquery.js
 scripts[] = js/tpautoTab.jquery.js
 scripts[] = js/tpmodal.jquery.js
