@@ -59,7 +59,7 @@
             <? if ( $w->multi(false) != "" ): ?>
                 <?=$w->multi(false)?>
             <? else: ?>
-                <a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a>
+                <p><a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a></p>
             <?endif?>
         </div>
     </div>
