@@ -473,7 +473,7 @@ class WordletController extends EntityAPIControllerExportable {
         $form_hook = "{$item['form']['name']}_form";
         if (function_exists($form_hook)) {
 
-          $form_key = "{$this->name}:{$item['form']['name']}";
+          $form_key = "{$entity->name}:{$item['form']['name']}";
           if (! isset(self::$form_cache[$form_key])) {
 
             $config = empty($item['form']['config']) ? array() : $item['form']['config'];
