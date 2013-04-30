@@ -1467,6 +1467,7 @@
 }
 .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .full-text p {
   font-size: 13px;
+  text-align: left;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .vote-btn a {
   margin-top: 2.250em;
