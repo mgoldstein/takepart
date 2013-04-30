@@ -617,6 +617,9 @@ function contest_intel_vote_form($form, &$form_state, $config) {
     'vote_token' => $config['vote_token'],
   );
 
+  $debug = print_r($config, TRUE);
+  watchdog('intel_contest_debug', $debug);
+
   if (user_is_logged_in() && isset($user->mail)) {
     $vote = contest_intel_most_recent_vote();
 
