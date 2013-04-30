@@ -617,14 +617,8 @@ function contest_intel_vote_form($form, &$form_state, $config) {
     'vote_token' => $config['vote_token'],
   );
 
-  $debug = print_r($config, TRUE);
-  watchdog('intel_contest_debug', $debug);
-
   if (user_is_logged_in() && isset($user->mail)) {
     $vote = contest_intel_most_recent_vote();
-
-    $debug = print_r($vote, TRUE);
-    watchdog('intel_contest_debug', $debug);
 
     if ($vote !== FALSE) {
       $attributes['last_vote'] = $vote['token'];
@@ -633,6 +627,9 @@ function contest_intel_vote_form($form, &$form_state, $config) {
     $voting = bluestatedigital_get_service('voting');
     $attributes['vote_allowed'] = $voting->checkEligibility($vote,
       BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
+
+    $debug = print_r($attributes, TRUE);
+    watchdog('intel_contest_debug', $debug);
   }
   $form['#wordlet_attributes'] = $attributes;
 
@@ -689,18 +686,22 @@ function contest_intel_vote_form_submit($form, &$form_state) {
 
     $config = $form_state['contest_intel_vote'];
     $token = $config['vote_token'];
-    $voting = bluestatedigital_get_service('voting');
 
     try {
       $vote = contest_intel_most_recent_vote();
+      $voting = bluestatedigital_get_service('voting');
       $allowed = $voting->checkEligibility($vote,
         BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
+
+      watchdog('intel_contest_allowed', $allowed);
+
       if ($allowed) {
         $opt_ins = array(
           1 => !empty($form_state['values']['entry_opt_in']),
           2 => !empty($form_state['values']['agree_to_rules']),
         );
         $voting->castVote(VOTE_FORM_ID, $user->mail, $token, $opt_ins);
+        watchdog('intel_contest_voted', $user->mail);
         $form_state['contest_intel_vote_signup_result'] = 'accepted';
       }
       else {
