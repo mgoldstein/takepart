@@ -427,7 +427,7 @@ function _wordlet_configuration() {
     'intelchange_home' => array(
       'title' => 'Intel For Change - Home',
       'path' => 'intelforchange',
-      'published' => true,
+      'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
@@ -446,7 +446,7 @@ function _wordlet_configuration() {
     'intelchange_about' => array(
       'title' => 'Intel For Change - About',
       'path' => 'intelforchange/about',
-      'published' => true,
+      'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
@@ -465,7 +465,7 @@ function _wordlet_configuration() {
     'intelchange_contest' => array(
       'title' => 'Intel For Change - Contest',
       'path' => 'intelforchange/contest',
-      'published' => true,
+      'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
