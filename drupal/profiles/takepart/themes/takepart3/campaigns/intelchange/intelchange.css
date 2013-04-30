@@ -1353,13 +1353,28 @@
 .page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .finalist a {
   display: block;
   width:163px;
-  height: 187px;
+  height: 175px;
   background: rgb(233, 232, 230);
   text-align: center;
+  padding-top: 13px;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .finalist .portrait {
-  height: 147px;
-  padding-top: 13px;
+  position: relative;
+  display: inline-block; *display: inline; *zoom: 1;
+  margin-bottom: 13px;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .finalist .voted .portrait::before {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+  content: ' ';
+  height: 100%;
+  width: 100%;
+  background-image: url(images/check_56_42.png);
+  background-repeat: no-repeat;
+  background-position: 10% 90%;
 }
 .page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .finalist .portrait img {
   max-width: 100%;
@@ -1417,6 +1432,10 @@
 .js .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist.active {
   display: block;
 }
+/*.js .page-wordlet-intelchange-vote #page .second-block .vote .finalist-menu,
+.js .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content {
+  display: none;
+}*/
 
 .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist p {
   color: rgb(255, 255, 255);
@@ -1461,6 +1480,17 @@
   padding: 0 2.875em;
   line-height: 1.25em;
   margin: 35px 0;
+}
+.page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist .already-voted-this p {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0 2.875em;
+  line-height: 1.25em;
+  height: 20px;
+  background: url(images/check_27_20.png) no-repeat;
+  padding-left: 39px;
+  display: inline-block; *display: inline; *zoom: 1;
+  margin: 35px auto
 }
 
 .page-wordlet-intelchange-vote .intelforchange_modal {

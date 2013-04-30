@@ -17,17 +17,19 @@
         <h3><?=w('vote_header')?></h3>
 
         <div class="finalists-menu">
-        <?
-        $finalists = wl('finalists', true);
+        <? 
+       $finalists = wl('finalists', true);
         ?>
         <? foreach ( $finalists as $i => $w ): ?>
             <?if($i == 0):?>
             <div class="sect-one">
             <?endif?>
                 <div class='finalist'>
-                    <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>" class="<?=$i==0?'active':''?>">
+                    <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>" class="<?=$i==0?'active':''?> <?= (w($w->token . '_vote_form')->form->last_vote == w($w->token . '_vote_form')->form->vote_token) ? 'voted' : '' ?>">
                         <div class="portrait">
-                            <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+                            <div class="img-wrap">
+                                <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+                            </div>
                         </div>
                         <span class="name"><?=$w->single(false)?></span>
                     </a>
@@ -62,6 +64,10 @@
                     <p class="vote-btn important">
                         <a href="<?=wu('intelchange_vote')?>#vote_<?=$w->token?>"><?=wr(w('vote_finalist_button'), $w)?></a>
                     </p>
+                    <? elseif(w($w->token . '_vote_form')->form->last_vote == w($w->token . '_vote_form')->form->vote_token): ?>
+                    <div class="already-voted-this">
+                        <?=wr(w('already_voted_this'), $w)?>
+                    </div>
                     <? else: ?>
                     <div class="already-voted">
                         <p><?=wr(w('already_voted'), $w)?></p>
@@ -70,6 +76,7 @@
                     <? if ( wordlet_edit_mode() ): ?>
                     <p <?=wa('vote_finalist_button')?>>Edit Vote Button</p>
                     <p <?=wa('already_voted')?>>Edit Already Voted Text</p>
+                    <p <?=wa('already_voted_this')?>>Edit Already Voted (for this finalist) Text</p>
                     <? endif ?>
                     <div class="modal-wrapper">
                         <? if(!user_is_logged_in()): ?>
