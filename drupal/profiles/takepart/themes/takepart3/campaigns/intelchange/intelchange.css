@@ -1411,6 +1411,13 @@
   right: 100%;
 }
 
+.js .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist {
+  display: none;
+}
+.js .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist.active {
+  display: block;
+}
+
 .page-wordlet-intelchange-vote #page .second-block .vote .finalist-content .finalist p {
   color: rgb(255, 255, 255);
 }

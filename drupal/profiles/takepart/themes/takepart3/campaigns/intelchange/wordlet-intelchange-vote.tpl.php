@@ -25,7 +25,7 @@
             <div class="sect-one">
             <?endif?>
                 <div class='finalist'>
-                    <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>">
+                    <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>" class="<?=$i==0?'active':''?>">
                         <div class="portrait">
                             <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
                         </div>
@@ -44,7 +44,7 @@
 
         <div class="finalist-content">
             <? foreach ( $finalists as $i => $w ): ?>
-            <div id='<?=$w->token?>' class="finalist" data-finalistToken="<?=$w->token?>">
+            <div id='<?=$w->token?>' class="finalist<?=$i==0?' active':''?>" data-finalistToken="<?=$w->token?>">
                 <div class="video">
                     <iframe width="541" height="305" src="http://www.youtube.com/embed/<?=$w->video?>" frameborder="0" allowfullscreen></iframe>
                 </div>

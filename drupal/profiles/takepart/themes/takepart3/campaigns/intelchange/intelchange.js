@@ -201,8 +201,6 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         $currentNav = navItem;
         $contentNavs.removeClass('active');
         $currentNav.addClass('active');
-        $contentSections.hide();
-        $($currentNav[0].hash).show();
     };
     var scrollTopFinalists = function(){
         $('body').scrollTo('.second-block', 0);
@@ -286,7 +284,6 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
             // if #modalToken_finalistToken (exapmle: #vote_one)
             $currentContent.find('.vote-btn a').trigger('click');
         } else {
-            console.log('LOL');
             scrollTopFinalists();
         }
     } else {
