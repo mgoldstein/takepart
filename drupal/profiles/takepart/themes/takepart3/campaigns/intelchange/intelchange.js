@@ -199,6 +199,9 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var setCurFinalist = function(navItem){
         if ($currentNav === navItem) return;
         $currentNav = navItem;
+        $currentContent = $($currentNav[0].hash);
+        $contentSections.removeClass('active');
+        $currentContent.addClass('active');
         $contentNavs.removeClass('active');
         $currentNav.addClass('active');
     };
@@ -225,6 +228,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         }});
     };
     var voteBtnHandler = function(e){
+        e.preventDefault();
         var $voteModalWrapper = $currentContent.find('.modal-wrapper');
         var $fbModalContent = $('.vote-register', $voteModalWrapper);
         var $confirmModalContent = $('.vote-confirm', $voteModalWrapper);
