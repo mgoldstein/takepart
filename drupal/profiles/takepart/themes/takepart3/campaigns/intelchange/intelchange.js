@@ -195,6 +195,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var $currentNav;
     var $currentContent;
     var modalHash = 'vote_';
+    var justVoted = false;
     var $hashFinalist = $contentNavs.filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
     var setCurFinalist = function(navItem){
         if ($currentNav === navItem) return;
@@ -219,8 +220,11 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     };
     var showVoteModal = function(contentToShow){
         var $voteModalWrapper = $currentContent.find('.modal-wrapper');
-        $.tpmodal.show({id: 'intelforchange_',node: contentToShow, afterClose: function() {
+        $.tpmodal.show({id: 'intelforchange_',node: contentToShow, afterClose: function(){
             $voteModalWrapper.append(contentToShow);
+            if (justVoted){
+                location.reload();
+            }
         }});
     };
     var voteBtnHandler = function(e){
@@ -245,6 +249,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
             if (vote_result === 'accepted'){
                 // show thank you modal
                 $contentToShow = $('.vote-thanks', $voteModalWrapper);
+                justVoted = true;
             } else if(vote_result === 'rejected'){
                 // show rejected modal
                 $contentToShow = $('.vote-rejected', $voteModalWrapper);
