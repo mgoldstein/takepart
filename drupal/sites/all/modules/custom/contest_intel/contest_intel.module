@@ -588,6 +588,19 @@ function contest_intel_vote_configuration($form, $config) {
   return $form;
 }
 
+function contest_intel_most_recent_vote($email = NULL) {
+  global $user;
+  static $vote = NULL;
+  if (!isset($vote)) {
+    if (!isset($email)) {
+      $email = $user->mail;
+    }
+    $voting = bluestatedigital_get_service('voting');
+    $vote = $voting->getMostRecentVote(VOTE_FORM_ID, $email);
+  }
+  return $vote;
+}
+
 /**
  * Voting form
  */
@@ -605,12 +618,12 @@ function contest_intel_vote_form($form, &$form_state, $config) {
   );
 
   if (user_is_logged_in() && isset($user->mail)) {
-    $voting = bluestatedigital_get_service('voting');
-    $vote = $voting->getMostRecentVote(VOTE_FORM_ID, $user->mail);
+    $vote = contest_intel_most_recent_vote();
     if ($vote !== FALSE) {
       $attributes['last_vote'] = $vote['token'];
       $attributes['last_timestamp'] = $vote['timestamp'];
     }
+    $voting = bluestatedigital_get_service('voting');
     $attributes['vote_allowed'] = $voting->checkEligibility($vote,
       BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
   }
@@ -672,8 +685,7 @@ function contest_intel_vote_form_submit($form, &$form_state) {
     $voting = bluestatedigital_get_service('voting');
 
     try {
-
-      $vote = $voting->getMostRecentVote(VOTE_FORM_ID, $user->mail);
+      $vote = contest_intel_most_recent_vote();
       $allowed = $voting->checkEligibility($vote,
         BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
       if ($allowed) {
