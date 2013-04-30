@@ -1508,6 +1508,9 @@
   margin: 0 0 0.5em 0;
   color: rgb(2, 111, 171);
 }
+.page-wordlet-intelchange-vote .intelforchange_modal .error {
+  color: rgb(229, 30, 30);
+}
 .page-wordlet-intelchange-vote .intelforchange_modal .form-submit {
   background: #f37424;
   font-weight: bold;
