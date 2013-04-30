@@ -236,15 +236,15 @@ function bluestatedigital_get_service($service) {
       10);
 
     if ($service == 'voting') {
-      $values[$api] = new BlueStateDigitalVoting($api_id,
+      $values[$service] = new BlueStateDigitalVoting($api_id,
         $api_secret, $rest_method, $request_base, $request_timeout);
-      $values[$api]->setCacheController(new DrupalBallotCacheController());
+      $values[$service]->setCacheController(new DrupalBallotCacheController());
     }
     else {
-      $values[$api] = FALSE;
+      $values[$service] = FALSE;
     }
   }
-  return $values[$api];
+  return $values[$service];
 }
 
 /**

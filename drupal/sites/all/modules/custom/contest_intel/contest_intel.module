@@ -606,7 +606,7 @@ function contest_intel_most_recent_vote($email = NULL) {
  */
 function contest_intel_vote_form($form, &$form_state, $config) {
   global $user;
-    
+
   $config = contest_intel_vote_form_defaults($config);
   $form_state['contest_intel_vote'] = $config;
 
@@ -619,6 +619,10 @@ function contest_intel_vote_form($form, &$form_state, $config) {
 
   if (user_is_logged_in() && isset($user->mail)) {
     $vote = contest_intel_most_recent_vote();
+
+    $debug = print_r($vote, TRUE);
+    watchdog('intel_contest_debug', $debug);
+
     if ($vote !== FALSE) {
       $attributes['last_vote'] = $vote['token'];
       $attributes['last_timestamp'] = $vote['timestamp'];
