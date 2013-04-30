@@ -210,7 +210,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     };
     var finalistMenuClickHandler = function(e) {
         e.preventDefault();
-        if ( this == $currentNav[0] ) return;
+        if ( this === $currentNav[0] ) return;
         var $from = $currentContent;
         setCurFinalist($(this));
         swap($from, $currentContent, $contentInfo);
