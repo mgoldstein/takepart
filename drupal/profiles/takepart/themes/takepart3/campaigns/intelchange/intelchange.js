@@ -211,13 +211,9 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var finalistMenuClickHandler = function(e) {
         e.preventDefault();
         if ( this == $currentNav[0] ) return;
-        $contentNavs.removeClass('active');
-        var $this = $(this).addClass('active');
         var $from = $currentContent;
-        var $to = $contentSections.filter($this[0].hash);
-        swap($from, $to, $contentInfo);
-        $currentContent = $to;
-        $currentNav = $this;
+        setCurFinalist($(this));
+        swap($from, $currentContent, $contentInfo);
         window.location.hash = $currentContent.data('finalisttoken');
         scrollTopFinalists();
     };
