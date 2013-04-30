@@ -192,8 +192,8 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var $contentInfo = $('.finalist-content');
     var $contentNavs = $contentNav.find('.finalist a');
     var $contentSections = $contentInfo.find('.finalist');
-    var $currentNav = $contentNavs.first();
-    var $currentContent = $contentSections.filter($currentNav[0].hash);
+    var $currentNav;
+    var $currentContent;
     var modalHash = 'vote_';
     var $hashFinalist = $contentNavs.filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
     var setCurFinalist = function(navItem){
