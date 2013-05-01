@@ -26,20 +26,12 @@
 /* ===GLOBAL=== */
 /* ------------------------------------------------------------------------*/
 body {
-    background:#eff3f5 url('../images/bg-page2.jpg') no-repeat top center;
+    background: #f1f3f4;
     color:#333;
     font-size:12px;
     font-family:Helvetica, Arial, sans-serif;
     margin:0;
     padding:0;
-}
-
-body.multipage-campaign,
-body.node-type-petition-action,
-body.node-type-pledge-action,
-body.node-type-action
-{
-    background: #eff3f5 url('../images/2012-02-08/bg-page-cv.png') repeat-x 0 0;
 }
 
 body.page-iframes-slim-header,
@@ -1813,35 +1805,6 @@ body.page-search #right-rail h2 {
     text-decoration: none;
 }
 
-/*search box*/
-#top-search {
-    width:202px;
-    float:right;
-    margin:0;
-}
-
-#top-search .form-text,
-#top-search .form-text:focus,
-#top-search .form-text:active {
-    border: medium none;
-    display: block;
-    width: 169px;
-    float: left;
-    font-size: 12px;
-    height: 16px;
-    line-height: 16px;
-    margin: 0;
-    padding: 2px 5px;
-    background: #FFF;
-}
-#top-search .form-text {
-    font-style: italic;
-}
-
-#search-api-page-search-form-site-search div {
-    border: 1px solid #ececec;
-    display: inline-block;
-}
 .view-id-slide_rotator {
     border-top: 1px dotted #000000;
     overflow: hidden;
@@ -3042,28 +3005,6 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
     text-align:center;
 }
 
-#user-nav li {
-    display: inline-block;
-    font-weight: normal;
-    margin-top:3px;
-    vertical-align: bottom;
-}
-
-.logged-in #user-nav li {
-    margin-left:10px;
-    font-weight: normal;
-    font-size: 10px;
-    height:  14px;
-    line-height:  14px;
-}
-.logged-in #user-nav li.login-0 {
-    margin-left:5px;
-}
-.logged-in #user-nav li.login-1 {
-    margin-left:5px;
-}
-
-
 /* --- from css now -- */
 
 
@@ -3457,7 +3398,29 @@ p.fb-login-text {
     padding-right: 20px;
 }
 
-/* Slim Header */
+/* Header ---------------- */
+
+#site-header {
+    font-size: 20px;
+}
+
+#site-header * {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 1;
+}
+
+#site-header li {
+    list-style: none;
+    margin-left: 0;
+}
+
+#site-header p {
+    margin-bottom: 0;
+}
+
+/* Slim Header ---------------- */
 
 #header-wrapper.slim-header {
     background-color: #d9e8ef;
