@@ -49,7 +49,7 @@
             <div id='<?=$w->token?>' class="finalist<?=$i==0?' active':''?>" data-finalistToken="<?=$w->token?>">
                 <div class="video">
                     <script type="text/x-javascript-template" class="video-template">
-                        <iframe width="541" height="305" src="http://www.youtube.com/embed/<?=$w->video?>" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="video-player" width="541" height="305" src="http://www.youtube.com/embed/<?=$w->video?>" frameborder="0" allowfullscreen></iframe>
                     </script>
                 </div>
                 <div class="details">
