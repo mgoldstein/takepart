@@ -211,7 +211,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
             $loadedVidWrapper = $currentContent.find('.video');
             $loadedVid = $('.video-player', $loadedVidWrapper);
             $loadedVidWrapper.height($loadedVid.height());
-            $loadedVid.hide('fade', function(){
+            $loadedVid.animate({opacity: 0}, speed, function() {
                 $(this).remove();
             });
         }
