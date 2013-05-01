@@ -205,6 +205,17 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var $hashFinalist = $contentNavs.filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
     var setCurFinalist = function(navItem){
         if ($currentNav === navItem) return;
+
+        // Stop Current Video (Hide it)
+        if ($currentContent){
+            $loadedVidWrapper = $currentContent.find('.video');
+            $loadedVid = $('.video-player', $loadedVidWrapper);
+            $loadedVidWrapper.height($loadedVid.height());
+            $loadedVid.hide('fade', function(){
+                $(this).remove();
+            });
+        }
+
         $currentNav = navItem;
         $currentContent = $($currentNav[0].hash);
         $contentSections.removeClass('active');
@@ -217,7 +228,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         if ( $videotpl.length ) {
             var $video = $($videotpl.html());
             $videotpl.parent().append($video);
-            $videotpl.remove();
+            //$videotpl.remove();
         }
     };
     var scrollTopFinalists = function(){
