@@ -245,7 +245,11 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         var $voteModalWrapper = $currentContent.find('.modal-wrapper');
         var $fbModalContent = $('.vote-register', $voteModalWrapper);
         var $confirmModalContent = $('.vote-confirm', $voteModalWrapper);
-        var $contentToShow = $fbModalContent.length > 0 ? $fbModalContent : $confirmModalContent;
+        var notLoggedIn = $fbModalContent.length > 0;
+        var $contentToShow = notLoggedIn ? $fbModalContent : $confirmModalContent;
+        if (!notLoggedIn){
+            e.preventDefault();
+        }
         showVoteModal($contentToShow);
     };
     var modalCancelHandler = function(e){
