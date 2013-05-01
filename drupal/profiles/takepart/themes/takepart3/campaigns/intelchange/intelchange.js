@@ -325,6 +325,9 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         setCurFinalist($contentNavs.first());
     }
 
+    // fix for swap function jumpiness
+    $contentSections.not('.active').hide();
+
 }
 
 });
