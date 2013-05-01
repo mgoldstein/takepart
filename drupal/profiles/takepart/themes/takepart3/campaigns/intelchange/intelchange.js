@@ -203,6 +203,17 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var modalHash = 'vote_';
     var justVoted = false;
     var $hashFinalist = $contentNavs.filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
+    var confirmFormOptInHandler = function(e){
+        var $container = $(this).parents('.vote-confirm');
+        if ($(this).find('input').is(':checked')){
+            $container.find('.form-item-agree-to-rules').show();
+            $container.find('.footnote').show();
+        } else {
+            $container.find('.form-item-agree-to-rules').hide();
+            $container.find('.footnote').hide();
+        }
+        
+    }
     var setCurFinalist = function(navItem){
         if ($currentNav === navItem) return;
 
@@ -294,7 +305,9 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         // Vote Button click
         .delegate('.finalist .vote-btn a', 'click', voteBtnHandler)
         // Modal Cancel click
-        .delegate('.modal .cancel', 'click', modalCancelHandler);
+        .delegate('.modal .cancel', 'click', modalCancelHandler)
+        // Confirm vote form opt in handler
+        .delegate('.vote-confirm .form-item-entry-opt-in', 'click', confirmFormOptInHandler);
 
     /* drupal behavior binding for vote confirm */
     Drupal.behaviors.confirmFormSubmit = {
