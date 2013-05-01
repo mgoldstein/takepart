@@ -187,6 +187,7 @@
 	display: block;
 	width: 160px;
 	border: 1px solid #ccc;
+	border-right: none;
 	margin: 0;
 	height: 34px;
 	padding-left: 10px;
@@ -307,4 +308,56 @@
 	background: -ms-linear-gradient(top,  #ffffff 0%,#ededed 100%);
 	background: linear-gradient(to bottom,  #ffffff 0%,#ededed 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 );
+}
+
+/* Slim Header */
+
+.multipage-campaign #site-header {
+	min-height: 36px;
+	padding: 0;
+	margin-bottom: -6px;
+}
+
+.multipage-campaign #site-logo img {
+	width: 42px;
+	height: 42px;
+}
+
+.multipage-campaign #site-hot-nav,
+.multipage-campaign #site-miss-nav,
+.multipage-campaign #site-participant-nav {
+	display: none;
+}
+
+.multipage-campaign #site-main-nav {
+	font-size:  15px;
+	padding: 12px 0;
+	border: none;
+	clear: none;
+}
+
+.multipage-campaign #site-user-nav {
+	position: static;
+	float: right;
+}
+
+.multipage-campaign #site-more-navs {
+	width: auto;
+}
+
+.multipage-campaign #site-search {
+	margin: 6px 8px 0 0;
+}
+
+.multipage-campaign #site-search .form-item input {
+	height: 24px;
+}
+
+.multipage-campaign #site-search .form-submit {
+	height: 24px;
+	width: 24px;
+}
+
+#site-user-nav ul {
+	padding-top: 12px;
 }
