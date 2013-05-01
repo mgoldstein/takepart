@@ -6,6 +6,8 @@
                     <p>
                         <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
                     </p>
+                <? elseif( wordlet_edit_mode() ): ?>
+                    Add Image
                 <? endif ?>
             </div>
             <div class="intro-text">
