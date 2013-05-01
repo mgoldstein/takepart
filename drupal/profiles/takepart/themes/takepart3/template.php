@@ -66,7 +66,11 @@ function takepart3_preprocess_html(&$vars) {
         'weight' => -1,
     ));
     drupal_add_library('system', 'jquery.cookie');
-    if (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage')) {
+
+    if (
+     (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage'))
+     || (function_exists('wordlet_active_page') && ($wordlet_page = wordlet_active_page()))
+    ) {
         $vars['classes_array'][] = 'multipage-campaign';
     }
 

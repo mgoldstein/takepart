@@ -325,6 +325,7 @@ function wordlet_theme() {
 }
 
 function wordlet_preprocess_page_template(&$variables) {
+  $variables['is_multipage'] = TRUE;
   _tp3_fill_template_vars($variables);
   $variables['header'] = theme('takepart3_header', $variables);
   $tabs = menu_local_tabs();
@@ -335,6 +336,7 @@ function wordlet_preprocess_page_template(&$variables) {
 }
 
 function wordlet_preprocess_wrapper_template(&$variables) {
+  $variables['is_multipage'] = TRUE;
   _tp3_fill_template_vars($variables);
   $variables['header'] = theme('takepart3_header', $variables);
   $tabs = menu_local_tabs();
