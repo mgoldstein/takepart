@@ -8,10 +8,10 @@
 	position: relative;
 	min-height: 116px;
 	z-index: 2;
+	margin-bottom: -16px;
 }
 
-#site-logo {
-	margin-bottom: -16px;
+#site-header #site-logo {
 	padding-right: 1em;
 	float: left;
 }
@@ -122,7 +122,7 @@
 }
 
 #site-main-nav li {
-	padding-right: .9em;
+	padding: 0 .9em 0 0;
 }
 
 #site-main-nav li.last {
@@ -153,12 +153,12 @@
 	text-decoration: underline;
 }
 
-#site-miss-nav li {
+#site-header #site-miss-nav li {
 	border-right: 1px solid #dbdbdb;
 	padding: 0 .4em;
 }
 
-#site-miss-nav li.last {
+#site-header #site-miss-nav li.last {
 	border-right: none;
 	padding: 0 .4em;
 }
@@ -170,11 +170,12 @@
 
 #site-more-navs {
 	float: right;
+	width: 193px;
 }
 
-#site-search,
-#site-participant-nav {
+#site-search {
 	margin: .5em 0;
+	float: left;
 }
 
 #site-search .form-item {
@@ -212,7 +213,7 @@
 	padding-left: .75em;
 	text-shadow: 0 1px #fff;
 	float: left;
-	width: 193px;
+	width: 100%;
 
 	background: #fdfdfd;
 	background: -moz-linear-gradient(top,  #fdfdfd 0%, #ececec 100%);
