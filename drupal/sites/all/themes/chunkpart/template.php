@@ -236,6 +236,7 @@ function _default_menu_options($menu_item) {
     return $menu_opts;
 }
 
+/*
 
 function takepart3_preprocess_entity(&$variables, $hook) {
 
@@ -350,7 +351,4 @@ function chunkpart_preprocess_entity(&$variables, $hook) {
             }
           break;
     }
-
 }
-
-
