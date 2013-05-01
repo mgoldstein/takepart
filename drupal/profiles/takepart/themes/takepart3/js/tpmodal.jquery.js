@@ -295,7 +295,7 @@ var tpmodal = function(parameters) {
 			ajaxer = null;
 		}
 
-		if ( parameters.alertOnChange && form_edited && !confirm('Form has been edited. Continue?') ) return false;
+		if ( settings.alertOnChange && form_edited && !confirm('Form has been edited. Continue?') ) return false;
 
 		$modal.unbind('click', hide_modal);
 
