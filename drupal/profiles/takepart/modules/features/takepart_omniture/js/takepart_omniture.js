@@ -25,7 +25,7 @@
             });
         }
     }
-
+/* Remove embedded action metrics
     Drupal.behaviors.scEmbeddedActionClick = {
         attach: function (context, settings) {
             $('.embed-action a').click(function(){
@@ -37,7 +37,7 @@
             });
         }
     }
-
+*/
     Drupal.behaviors.scFiveThingsClick = {
         attach: function (context, settings) {
             $('.field-name-field-tp-campaign-4-things-link a').click(function(){

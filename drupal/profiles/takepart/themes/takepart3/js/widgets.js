@@ -400,7 +400,7 @@
   var methods = {
     _create: function (options) {
       this.options = $.extend({
-        'view_name': '',
+        'view_name': ''
       }, options);
       methods.init.apply(this);
     },
@@ -675,14 +675,6 @@
         s.prop67=s.pageName;
         s.tl(true, 'o', 'pledge submit');
       }
-    },
-    _track_newsletter_signup: function (event, title) {
-      s.linkTrackVars = "eVar23,eVar30,events";
-      s.linkTrackEvents = "event39";
-      s.eVar23 = title;
-      s.eVar30 = s.pageName;
-      s.events = 'event39';
-      s.tl(true, 'o', 'Newsletter Signup');
     },
     init: function () {
       // Bind the events that should be fired when the action is loaded/viewed.

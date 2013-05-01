@@ -43,14 +43,21 @@
     "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" version="XHTML+RDFa 1.0" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?> >
     <head profile="<?php print $grddl_profile; ?>">
-      <title><?php print $head_title; ?></title>
-      <?php print $head; ?>
-      <base href="<?php print 'http://'.$_SERVER['HTTP_HOST']; ?>" target="_parent" />
+        <title><?php print $head_title; ?></title>
+        <?php print $head; ?>
+        <base href="<?php print 'http://' . $_SERVER['HTTP_HOST']; ?>" target="_parent" />
         <meta name="viewport" content="width=320" />
         <meta property="fb:admins" content="1327833247" />
         <meta property="fb:app_id" content="247137505296280" />
         <?php print $styles; ?>
         <?php print $scripts; ?>
+        <script type="text/javascript">
+            jQuery( document ).ready(function() {
+                jQuery('a.join-login').attr('href', function(i, val) {
+                    return val + '?destination=' + document.referrer
+                });
+            });
+        </script>
     </head>
     <body class="<?php print $classes; ?>" <?php print $attributes; ?>>
         <div id="skip-link">
@@ -81,5 +88,6 @@
             echo $tp_sysinfo_comment_tags;
         endif;
         ?>
+
     </body>
 </html>

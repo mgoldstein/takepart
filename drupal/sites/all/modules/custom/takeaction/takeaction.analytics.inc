@@ -4,7 +4,7 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
 
   public function entityView($entity, $view_mode, $langcode) {
 
-    $tracked_views = array('full', 'embedaction', 'embedaction_expanded');
+    $tracked_views = array('full');
     if (in_array($view_mode, $tracked_views)) {
 
       if ($view_mode === 'full') {
@@ -29,10 +29,6 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
           );
           $this->addFrontEndEventInstance($instance_name, $event);
         }
-      }
-      elseif ($entity->type !== 'action') {
-        // Embedded action thank you share.
-        $this->addShareEventInstance($entity, $view_mode);
       }
 
       // TAB - See more actions button click
@@ -80,7 +76,7 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
     $type_short_name = $short_names[$entity->type];
 
     // TAB action taken event.
-    //if ($view_mode === 'full') {
+    if ($view_mode === 'full') {
       $args = $this->getEventArgs($entity, $view_mode);
       $events[] = tp_analytics_event(
         'action_taken',
@@ -88,27 +84,29 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
         'page',
         "action_taken-{$entity->nid}"
       );
-    //}
-
-    // Newsletter signup events.
-    $settings = entity_load_single('signature_node', $entity->nid);
-    foreach ($opt_ins as $delta => $opt_in) {
-      if ($opt_in) {
-        $events[] = tp_analytics_event(
-          "newsletter_action_opt_in",
-          array(
-            'group' => check_plain($settings->newsletter_opt_ins[$delta]['group']),
-            'title' => check_plain($entity->title),
-            'view_mode' => $view_mode,
-            'type_short_name' => $type_short_name,
-            'action_name' => $action_name,
-          ),
-          'page',
-          "newsletter-signup-{$delta}-node-{$entity->nid}"
-        );
-      }
     }
 
+    // Newsletter opt-in events for signature form
+    // Only fire for full page actions
+    if ($view_mode === 'full') {
+      $settings = entity_load_single('signature_node', $entity->nid);
+      foreach ($opt_ins as $delta => $opt_in) {
+        if ($opt_in) {
+          $events[] = tp_analytics_event(
+            "newsletter_action_opt_in",
+            array(
+              'group' => check_plain($settings->newsletter_opt_ins[$delta]['group']),
+              'title' => check_plain($entity->title),
+              'view_mode' => $view_mode,
+              'type_short_name' => $type_short_name,
+              'action_name' => $action_name,
+            ),
+            'page',
+            "newsletter-signup-{$delta}-node-{$entity->nid}"
+          );
+        }
+      }
+    }
     return $events;
   }
 
@@ -163,14 +161,6 @@ class TakeActionAnalyticsController extends TakePartAnalyticsController {
         'action' => 'event56,event37',
       );
       $completion = 'Action Page Completion';
-    }
-    else {
-      $events = array(
-        'petition_action' => 'event64,event27',
-        'pledge_action' => 'event64,event32',
-        'action' => 'event64,event37',
-      );
-      $completion = 'Embedded Action Completion';
     }
     $fired_events = $events[$entity->type];
 

@@ -3,6 +3,9 @@
 		<p>
 			Page Title: <span><?=w('title')?></span>
 		</p>
+		<p>
+			Campaign Name: <span><?=w('campaign_name')?></span>
+		</p>
 		<? if ( ($wlinks = wordlet_configure_links()) ): ?>
 			<p>Configure:
 				<? foreach ( $wlinks as $wlink ): ?>

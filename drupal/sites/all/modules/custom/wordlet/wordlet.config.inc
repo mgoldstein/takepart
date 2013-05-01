@@ -424,30 +424,10 @@ function _wordlet_configuration() {
     ),
 
     // Intel For Change - Home
-    // 'intelchange_home' => array(
-    //   'title' => 'Intel For Change - Home',
-    //   'path' => 'intelforchangedev',
-    //   'published' => FALSE,
-    //   'wrappers' => array('intelchange', 'campaign', 'html'),
-    //   'css' => array(
-    //     'campaigns/reset.css',
-    //     'css/slim-header.css',
-    //     'css/normalize_cms.css',
-    //     'campaigns/intelchange/intelchange.css',
-    //   ),
-    //   'js' => array(
-    //     'campaigns/campaign.js',
-    //     'campaigns/intelchange/intelchange.js',
-    //   ),
-    //   'load' => array('site', 'intelchange_campaign'),
-    // ),
-
-    // Intel For Change - Home
     'intelchange_home' => array(
       'title' => 'Intel For Change - Home',
-      'template' => 'intelchange_home_interim',
-      'path' => 'intelforchangedev',
-      'published' => FALSE,
+      'path' => 'intelforchange',
+      'published' => true,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
@@ -482,30 +462,10 @@ function _wordlet_configuration() {
     ),
 
     // Intel For Change - Contest
-    // 'intelchange_contest' => array(
-    //   'title' => 'Intel For Change - Contest',
-    //   'path' => 'intelforchangedev/contest',
-    //   'published' => FALSE,
-    //   'wrappers' => array('intelchange', 'campaign', 'html'),
-    //   'css' => array(
-    //     'campaigns/reset.css',
-    //     'css/slim-header.css',
-    //     'css/normalize_cms.css',
-    //     'campaigns/intelchange/intelchange.css',
-    //   ),
-    //   'js' => array(
-    //     'campaigns/campaign.js',
-    //     'campaigns/intelchange/intelchange.js',
-    //   ),
-    //   'load' => array('site', 'intelchange_campaign'),
-    // ),
-
-    // Intel For Change - Contest
     'intelchange_contest' => array(
       'title' => 'Intel For Change - Contest',
-      'template' => 'intelchange_contest_interim',
-      'path' => 'intelforchangedev/contest',
-      'published' => FALSE,
+      'path' => 'intelforchange/contest',
+      'published' => true,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',

@@ -13,9 +13,9 @@ function takepart_campaign_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'multi_page_comapaign_default_context';
-  $context->description = 'Default Context for Multi Page Campaign';
-  $context->tag = 'Context Field Default';
+  $context->name = 'multi_page_campaign_default_context';
+  $context->description = 'Default Context for Multi-Page Campaigns';
+  $context->tag = 'Multipage Campaign';
   $context->conditions = array(
     'context_field' => array(
       'values' => array(
@@ -33,7 +33,7 @@ function takepart_campaign_context_default_contexts() {
         'context_related_menu-context_related_menu' => array(
           'module' => 'context_related_menu',
           'delta' => 'context_related_menu',
-          'region' => 'sidebar_first',
+          'region' => 'highlighted',
           'weight' => '-10',
         ),
       ),
@@ -48,7 +48,7 @@ function takepart_campaign_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Context Field Default');
   t('Default Context for Multi Page Campaign');
-  $export['multi_page_comapaign_default_context'] = $context;
+  $export['multi_page_campaign_default_context'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
