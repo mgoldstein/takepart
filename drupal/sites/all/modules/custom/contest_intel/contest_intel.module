@@ -673,9 +673,15 @@ function contest_intel_vote_form_validate($form, &$form_state) {
 
   $config = $form_state['contest_intel_vote'];
 
+  $entry_opt_in = trim($form_state['values']['entry_opt_in']);
   $agree_to_rules = trim($form_state['values']['agree_to_rules']);
-  if (empty($agree_to_rules)) {
-    form_set_error('agree_to_rules', $config['agree_to_rules_error']);
+
+  // If the user wants to enter the sweepstakes.
+  if (!empty($entry_opt_in)) {
+    // The user must agree to the rules.
+    if (empty($agree_to_rules)) {
+      form_set_error('agree_to_rules', $config['agree_to_rules_error']);
+    }
   }
 }
 
