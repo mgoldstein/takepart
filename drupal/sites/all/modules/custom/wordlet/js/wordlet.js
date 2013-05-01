@@ -8,7 +8,7 @@ var ajaxer = null;
 
 var load_form = function(url, data) {
 	data = data || null;
-	$.tpmodal.show({id: modal_id, afterClose: function() { if ( ajaxer ) ajaxer.abort(); }});
+	$.tpmodal.show({id: modal_id, alertOnChange: true, afterClose: function() { if ( ajaxer ) ajaxer.abort(); }});
 
 	// Updated jQuery.load function, basically:
 	// Request the remote document
