@@ -636,6 +636,7 @@ function contest_intel_vote_form($form, &$form_state, $config) {
   $form['entry_opt_in'] = array(
     '#type' => 'checkbox',
     '#title' => $config['entry_opt_in'],
+    '#default_value' => TRUE,
   );
 
   $form['agree_to_rules'] = array(
