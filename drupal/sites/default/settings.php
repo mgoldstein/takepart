@@ -460,3 +460,8 @@ if (file_exists(dirname(__FILE__) .'/settings.local.inc')) {
   include_once dirname(__FILE__) .'/settings.local.inc';
 }
  
+if(isset($_SERVER['HTTP_VIA'])) {
+  if(stripos($_SERVER['HTTP_VIA'], 'akamai') === false) {
+    header("X-Robots-Tag: noindex, nofollow", true);
+  }
+}
