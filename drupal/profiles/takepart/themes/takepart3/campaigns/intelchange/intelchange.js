@@ -263,6 +263,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
                 // show thank you modal
                 $contentToShow = $('.vote-thanks', $voteModalWrapper);
                 justVoted = true;
+                window.location.hash = "";
             } else if(vote_result === 'rejected'){
                 // show rejected modal
                 $contentToShow = $('.vote-rejected', $voteModalWrapper);
