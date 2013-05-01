@@ -1413,7 +1413,7 @@
   height: 0;
   border-color: transparent;
   border-width: 10px;
-  border-style: dotted solid dotted;
+  border-style: solid;
   -webkit-transition: border-color .2s ease-in-out;
   transition: border-color .2s ease-in-out;
 }
