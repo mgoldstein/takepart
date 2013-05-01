@@ -211,6 +211,14 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         $currentContent.addClass('active');
         $contentNavs.removeClass('active');
         $currentNav.addClass('active');
+
+        // Show Video
+        var $videotpl = $currentContent.find('.video-template');
+        if ( $videotpl.length ) {
+            var $video = $($videotpl.html());
+            $videotpl.parent().append($video);
+            $videotpl.remove();
+        }
     };
     var scrollTopFinalists = function(){
         $('body').scrollTo('.second-block', 0);

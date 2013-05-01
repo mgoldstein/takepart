@@ -48,7 +48,9 @@
             <? foreach ( $finalists as $i => $w ): ?>
             <div id='<?=$w->token?>' class="finalist<?=$i==0?' active':''?>" data-finalistToken="<?=$w->token?>">
                 <div class="video">
-                    <iframe width="541" height="305" src="http://www.youtube.com/embed/<?=$w->video?>" frameborder="0" allowfullscreen></iframe>
+                    <script type="text/x-javascript-template" class="video-template">
+                        <iframe width="541" height="305" src="http://www.youtube.com/embed/<?=$w->video?>" frameborder="0" allowfullscreen></iframe>
+                    </script>
                 </div>
                 <div class="details">
                     <h4 class="name"><?=$w->single(false)?></h4>
