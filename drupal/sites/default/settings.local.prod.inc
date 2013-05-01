@@ -21,7 +21,7 @@ include_once('./includes/cache.inc');
 include_once('./sites/all/modules/contrib/memcache/memcache.inc');
 
 //change this to "takepartprod" when we're ready to go live:
-$conf['omniture_account_name'] = 'takeparttakepartdev2';
+$conf['omniture_account_name'] = 'takepartprod';
 
 $conf['cache_default_class']   = 'MemCacheDrupal';
 $conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
