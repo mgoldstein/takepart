@@ -85,7 +85,7 @@
                             <h5 class='title'><?=$w2->single(false)?></h5>
                             <div class='cms modal-content'><?=$w2->multi(false)?></div>
                             <div class='fb-connect-wrapper'>
-                                <?=_takepart_facebookapis_getfblogin("intelforchange/contest/vote#vote_".$w->token);?>
+                                <fb:login-button onlogin="takepart_facebookapi_check_login_session0()" registration-url="/user/register?fbreg=true&destination=<?=urlencode(wu('intelchange_vote'))?>" fb_register="true" fb_only="false" width="530">Log In</fb:login-button>
                             </div>
                         </div>
                         <? else: ?>

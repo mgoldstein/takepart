@@ -1,3 +1,9 @@
+// FB login redirect for voting page
+function takepart_facebookapi_check_login_session0() {
+    path = '/tpfboauth/connect?destination=' + encodeURI(window.location);
+    window.location = path;
+}
+
 (function(window, $, undefined) {
 // Setup ----------------
 
@@ -228,7 +234,6 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         }});
     };
     var voteBtnHandler = function(e){
-        e.preventDefault();
         var $voteModalWrapper = $currentContent.find('.modal-wrapper');
         var $fbModalContent = $('.vote-register', $voteModalWrapper);
         var $confirmModalContent = $('.vote-confirm', $voteModalWrapper);
