@@ -137,6 +137,7 @@
   border-width: 13px;
   left: 50%;
   margin-left: -13px;
+  z-index: 1;
 }
 
 .main .menu .addThis {
