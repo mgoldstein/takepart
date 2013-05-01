@@ -633,10 +633,12 @@ function contest_intel_vote_form($form, &$form_state, $config) {
   }
   $form['#wordlet_attributes'] = $attributes;
 
+  $entry_opt_in_value = isset($form_state['values']['entry_opt_in'])
+    ? $form_state['values']['entry_opt_in'] : TRUE;
   $form['entry_opt_in'] = array(
     '#type' => 'checkbox',
     '#title' => $config['entry_opt_in'],
-    '#default_value' => TRUE,
+    '#default_value' => $entry_opt_in_value,
   );
 
   $form['agree_to_rules'] = array(
