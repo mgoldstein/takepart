@@ -318,9 +318,12 @@
 
   float: left;
   width: 100%;
-  position: relative;
 }
-
+.intro-block-inner {
+  position: relative;
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
+}
 .page-wordlet-intelchange-home .intro-image {
   float: left;
 }
