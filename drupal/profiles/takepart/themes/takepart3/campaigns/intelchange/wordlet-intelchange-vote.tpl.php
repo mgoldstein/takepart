@@ -25,7 +25,7 @@
             <div class="sect-one">
             <?endif?>
                 <div class='finalist'>
-                    <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>" class="<?=$i==0?'active':''?> <?= (w($w->token . '_vote_form')->form->last_vote == w($w->token . '_vote_form')->form->vote_token) ? 'voted' : '' ?>">
+                    <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>" class="<?=$i==0?'active':''?> <?= (!w($w->token . '_vote_form')->form->vote_allowed && w($w->token . '_vote_form')->form->last_vote == w($w->token . '_vote_form')->form->vote_token) ? 'voted' : '' ?>">
                         <div class="portrait">
                             <div class="img-wrap">
                                 <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
