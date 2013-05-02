@@ -47,7 +47,7 @@ function wordlet_intelchange_vote_page_alter($page) {
                 '#tag' => 'meta',
                 '#attributes' => array(
                     'property' => 'og:title',
-                    'content' => $w->single(false) . ' (' . strip_tags($w->multi_short(false)) . ')',
+                    'content' => 'Check out this Intel for Change finalist: ' . $w->single(false) . ' (' . strip_tags($w->multi_short(false)) . ')',
                 ),
             );
 

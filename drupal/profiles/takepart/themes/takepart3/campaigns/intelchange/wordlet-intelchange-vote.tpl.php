@@ -115,9 +115,7 @@
                             <? $w2 = w('thank_you_add_this'); ?>
                             <div class="addThis thanks-share">
                                 <a class="addthis_button_facebook at300b" title="Facebook" href="#"
-                                    addthis:url="<?=wu('intelchange_vote')?>?finalist=<?=$w->token?>#<?=$w->token?>"
-                                    addthis:title="<?=$w->single(false) . ' (' . strip_tags($w->multi_short(false)) . ')'?>"
-                                    addthis:description="<?=strip_tags(w('content_full_'.$w->token)->multi(false))?>">
+                                    addthis:url="<?=wu('intelchange_vote')?>?finalist=<?=$w->token?>#<?=$w->token?>">
                                     <img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook">
                                 </a>
                                 <a class="addthis_button_twitter at300b" title="Tweet" href="#"
@@ -157,9 +155,7 @@
                     <div class="addThis finalist-share"
                         <?=wa('finalist_add_this')?>>
                         <a class="addthis_button_facebook at300b" title="Facebook" href="#"
-                            addthis:url="<<?=wu('intelchange_vote')?>?finalist=<?=$w->token?>#<?=$w->token?>"
-                            addthis:title="<?=$w->single(false) . ' (' . strip_tags($w->multi_short(false)) . ')'?>"
-                            addthis:description="<?=strip_tags(w('content_full_'.$w->token)->multi(false))?>">
+                            addthis:url="<<?=wu('intelchange_vote')?>?finalist=<?=$w->token?>#<?=$w->token?>">
                             <img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook">
                         </a>
                         <a class="addthis_button_twitter at300b" title="Tweet" href="#"
