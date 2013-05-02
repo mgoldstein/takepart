@@ -29,6 +29,11 @@ var swap = function($from, $to, $parent, callback) {
         });
 };
 
+var updatePropertyMetaTag = function(property, content){
+    $('meta[property="' + property + '"]').remove();
+    $('head').append('<meta property="' + property + '" content="' + content + '" />');
+}
+
 // Document Ready ----------------
 $(function() {
 
@@ -238,6 +243,9 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         $currentContent.addClass('active');
         $contentNavs.removeClass('active');
         $currentNav.addClass('active');
+
+        // Update facebook og meta tags
+        updatePropertyMetaTag('og:image', $('.portrait img', $currentNav).attr('src'));
 
         // Show Video
         var $videotpl = $currentContent.find('.video-template');
