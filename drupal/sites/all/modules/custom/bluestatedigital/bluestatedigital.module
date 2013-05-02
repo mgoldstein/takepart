@@ -252,8 +252,13 @@ function bluestatedigital_get_service($service) {
  */
 class DrupalBallotCacheController extends BlueStateDigitalCacheController{
 
-  public function get($key, $value) {
-    return cache_get($key);
+  public function get($key, &$value) {
+    $cached = cache_get($key);
+    if ($cached !== FALSE) {
+      $value = $cached;
+      return TRUE;
+    }
+    return FALSE;
   }
 
   public function set($key, $value) {

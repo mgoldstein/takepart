@@ -12,7 +12,7 @@ class BlueStateDigitalCacheController {
     $this->clear();
   }
 
-  public function get($key, $value) {
+  public function get($key, &$value) {
     if (in_array($key, $this->bin)) {
       $value = $this->bin[$key];
       return TRUE;
