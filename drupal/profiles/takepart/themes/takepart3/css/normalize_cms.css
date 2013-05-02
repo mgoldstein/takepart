@@ -68,6 +68,15 @@ Jacked from:
 }
 
 /*
+ * Addresses style set to `emphasis`.
+ */
+
+.cms em,
+.cms i {
+    font-style: italic;
+}
+
+/*
  * Addresses styling not present in Safari 5 and Chrome.
  */
 
