@@ -1,12 +1,24 @@
 <?php
 
-function newsletter_campaign_follow_us_services() {
+function newsletter_campaign_follow_us_service_urls() {
   return array(
     'facebook' => 'http://www.facebook.com/takepart',
     'twitter' => 'http://www.twitter.com/takepart',
     'google' => 'https://plus.google.com/113369936500827860065?prsrc=3',
     'pinterest' => 'http://www.pinterest.com/takepart',
     'youtube' => 'http://www.youtube.com/takepart',
+    'tumblr' => 'http://takepart.tumblr.com',
+  );
+}
+
+function newsletter_campaign_follow_us_service_names() {
+  return array(
+    'facebook' => t('Facebook'),
+    'twitter' => t('Twitter'),
+    'google' => t('Google'),
+    'pinterest' => t('Pinterest'),
+    'youtube' => t('YouTube'),
+    'tumblr' => t('Tumblr'),
   );
 }
 
@@ -68,8 +80,8 @@ class NewsletterCampaignController extends EntityApiController {
     if ($configuration === NULL) {
       $configuration = new StdClass();
     }
-    $services = newsletter_campaign_follow_us_services();
-    foreach ($services as $service => $default) {
+    $services = newsletter_campaign_follow_us_service_urls();
+    foreach (array_keys($services) as $service) {
       if (!isset($configuration->{$service})) {
         $configuration->{$service} = '';
       }
@@ -245,14 +257,13 @@ function newsletter_campaign_form($form, &$form_state, $campaign, $op = 'edit') 
     'thankyou_message' => $campaign->thankyou_message,
     'bsd_form_id' => $campaign->bsd_form_id,
     'bsd_field_id' => $campaign->bsd_field_id,
-
     'follow_us_enabled' => $campaign->follow_us_enabled,
-    'follow_us_facebook' => $campaign->follow_us_configuration->facebook,
-    'follow_us_twitter' => $campaign->follow_us_configuration->twitter,
-    'follow_us_google' => $campaign->follow_us_configuration->google,
-    'follow_us_pinterest' => $campaign->follow_us_configuration->pinterest,
-    'follow_us_youtube' => $campaign->follow_us_configuration->youtube,
   );
+
+  $service_names = newsletter_campaign_follow_us_service_names();
+  foreach ($service_names as $service => $name) {
+    $default["follow_us_{$service}"] = $campaign->follow_us_configuration->{$service};
+  }
 
   $values = array();
   foreach ($defaults as $name => $value) {
@@ -341,50 +352,17 @@ function newsletter_campaign_form($form, &$form_state, $campaign, $op = 'edit') 
     '#collapsible' => TRUE,
   );
 
-  $form['follow_us']['follow_us_facebook'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Facebook'),
-    '#description' => t('TakePart Facebook service URL.'),
-    '#required' => FALSE,
-    '#default_value' => $values['follow_us_facebook'],
-    '#element_validate' => array('newsletter_campaign_validate_url'),
-  );
-
-  $form['follow_us']['follow_us_twitter'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Twitter'),
-    '#description' => t('TakePart Twitter service URL.'),
-    '#required' => FALSE,
-    '#default_value' => $values['follow_us_twitter'],
-    '#element_validate' => array('newsletter_campaign_validate_url'),
-  );
-
-  $form['follow_us']['follow_us_google'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Google+'),
-    '#description' => t('TakePart Google+ service URL.'),
-    '#required' => FALSE,
-    '#default_value' => $values['follow_us_google'],
-    '#element_validate' => array('newsletter_campaign_validate_url'),
-  );
-
-  $form['follow_us']['follow_us_pinterest'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Pinterest'),
-    '#description' => t('TakePart Pinterest service URL.'),
-    '#required' => FALSE,
-    '#default_value' => $values['follow_us_pinterest'],
-    '#element_validate' => array('newsletter_campaign_validate_url'),
-  );
-
-  $form['follow_us']['follow_us_youtube'] = array(
-    '#type' => 'textfield',
-    '#title' => t('YouTube'),
-    '#description' => t('TakePart YouTube service URL.'),
-    '#required' => FALSE,
-    '#default_value' => $values['follow_us_youtube'],
-    '#element_validate' => array('newsletter_campaign_validate_url'),
-  );
+  foreach ($service_names as $service => $name) {
+    $variable = "follow_us_{$service}";
+    $form['follow_us'][$variable] = array(
+      '#type' => 'textfield',
+      '#title' => $name,
+      '#description' => t('TakePart @name service URL.', array('@name' => $name)),
+      '#required' => FALSE,
+      '#default_value' => $values[$variable],
+      '#element_validate' => array('newsletter_campaign_validate_url'),
+    );
+  }
 
   $form['actions'] = array('#type' => 'actions');
   $submit = array();
@@ -433,7 +411,7 @@ function newsletter_campaign_form_submit(&$form, &$form_state) {
   // build the newsletter campaign entity from the form
   $campaign = entity_ui_form_submit_build_entity($form, $form_state);
 
-  $services = newsletter_campaign_follow_us_services();
+  $services = newsletter_campaign_follow_us_service_urls();
   $campaign->follow_us_configuration = new StdClass();
   foreach (array_keys($services) as $service) {
     $input_name = "follow_us_{$service}";
@@ -475,57 +453,20 @@ function newsletter_campaign_form_submit_delete($form, &$form_state) {
 
 function newsletter_campaign_services_admin_form($form, &$form_state) {
 
-  $services = newsletter_campaign_follow_us_services();
+  $service_urls = newsletter_campaign_follow_us_service_urls();
+  $service_names = newsletter_campaign_follow_us_service_names();
 
-  $form['newsletter_campaign_service_facebook'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Facebook'),
-    '#description' => t('Default TakePart Facebook service URL.'),
-    '#required' => FALSE,
-    '#default_value' => variable_get('newsletter_campaign_service_facebook',
-      $services['facebook']),
-    '#element_validate' => array('newsletter_campaign_validate_url'),
-  );
-
-  $form['newsletter_campaign_service_twitter'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Twitter'),
-    '#description' => t('Default TakePart Twitter service URL.'),
-    '#required' => FALSE,
-    '#default_value' => variable_get('newsletter_campaign_service_twitter',
-      $services['twitter']),
-    '#element_validate' => array('newsletter_campaign_validate_url'),
-  );
-
-  $form['newsletter_campaign_service_google'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Google+'),
-    '#description' => t('Default TakePart Google+ service URL.'),
-    '#required' => FALSE,
-    '#default_value' => variable_get('newsletter_campaign_service_google',
-      $services['google']),
-    '#element_validate' => array('newsletter_campaign_validate_url'),
-  );
-
-  $form['newsletter_campaign_service_pinterest'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Pinterest'),
-    '#description' => t('Default TakePart Pinterest service URL.'),
-    '#required' => FALSE,
-    '#default_value' => variable_get('newsletter_campaign_service_pinterest',
-      $services['pinterest']),
-    '#element_validate' => array('newsletter_campaign_validate_url'),
-  );
-
-  $form['newsletter_campaign_service_youtube'] = array(
-    '#type' => 'textfield',
-    '#title' => t('YouTube'),
-    '#description' => t('Default TakePart YouTube service URL.'),
-    '#required' => FALSE,
-    '#default_value' => variable_get('newsletter_campaign_service_youtube',
-      $services['youtube']),
-    '#element_validate' => array('newsletter_campaign_validate_url'),
-  );
+  foreach ($service_names as $service => $name) {
+    $variable = "newsletter_campaign_service_{$service}";
+    $form[$variable] = array(
+      '#type' => 'textfield',
+      '#title' => $name,
+      '#description' => t('Default TakePart @name service URL.', array('@name' => $name)),
+      '#required' => FALSE,
+      '#default_value' => variable_get($variable, $service_urls[$service]),
+      '#element_validate' => array('newsletter_campaign_validate_url'),
+    );
+  }
 
   return system_settings_form($form);
 }
@@ -618,17 +559,10 @@ function newsletter_campaign_block_view($delta) {
 
       if ($newsletter->follow_us_enabled && isset($newsletter->follow_us_configuration)) {
 
-        $services = array(
-          'facebook' => t('Facebook'),
-          'twitter' => t('Twitter'),
-          'google' => t('Google'),
-          'pinterest' => t('Pinterest'),
-          'youtube' => t('YouTube'),
-        );
-
         $config = $newsletter->follow_us_configuration;
         $social_links = array();
-        foreach ($services as $service => $title) {
+        $services = newsletter_campaign_follow_us_service_names();
+        foreach ($services as $service => $name) {
           if (isset($config->{$service}) && strlen($config->{$service}) > 0) {
             $link = $config->{$service};
           }
@@ -638,7 +572,7 @@ function newsletter_campaign_block_view($delta) {
           if (strlen($link) > 0) {
             $social_links[$service] = array(
               '#theme' => 'link',
-              '#text' => $title,
+              '#text' => $name,
               '#path' => $link,
               '#options' => array(
                 'attributes' => array(
@@ -653,7 +587,7 @@ function newsletter_campaign_block_view($delta) {
 
         // Have the content template provide the title/header.
         $subject = '';
-        
+
         $content = theme('newsletter_social_block', array(
           'id' => (string) $newsletter->ncid,
           'response_id' => "takepart-newsletter-{$newsletter->ncid}-body",
