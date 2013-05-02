@@ -85,6 +85,17 @@ function takepart3_preprocess_html(&$vars) {
         $vars['is_multipage'] = TRUE;
     }
 
+    // Remove tracking from place at the table iframed header
+    // TODO: Fucking fix this.
+    // Potty mouth
+    if (
+        preg_match('/^\/iframes\/place-at-the-table\/header/', $_SERVER['REQUEST_URI'])
+        ) {
+        unset($vars['page']['page_bottom']['omniture']);
+        unset($vars['page']['page_bottom']['quantcast']);
+        unset($vars['page']['page_bottom']['federatedmedia']);
+    }
+
     if (isset($vars['page']['content']['system_main']['nodes'])) {
         //Override header if field exists:
         $nodes = $vars['page']['content']['system_main']['nodes'];
