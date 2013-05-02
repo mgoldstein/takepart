@@ -103,7 +103,9 @@
 				</nav>
 			</footer>
 
-			<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
+			<div id="article-comments">
+				<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
+			</div>
 		</div>
 	</div>
 	<? if ( $field_topic_box ): ?>
