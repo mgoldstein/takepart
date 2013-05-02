@@ -157,8 +157,7 @@
                     <div class="addThis finalist-share"
                         <?=wa('finalist_add_this')?>>
                         <a class="addthis_button_facebook at300b" title="Facebook" href="#"
-                            addthis:image="<?=$w->img_src?>"
-                            addthis:url="<<?=wu('intelchange_vote')?>#<?=$w->token?>"
+                            addthis:url="<<?=wu('intelchange_vote')?>?finalist=<?=$w->token?>#<?=$w->token?>"
                             addthis:title="<?=wr($w2->single(false), $w)?>">
                             <img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook">
                         </a>
