@@ -59,7 +59,7 @@ function wordlet_intelchange_vote_page_alter($page) {
                 '#tag' => 'meta',
                 '#attributes' => array(
                     'property' => 'og:description',
-                    'content' => strip_tags($w->multi(false)),
+                    'content' => str_replace(array("\r", "\n"), ' ', strip_tags($w->multi(false))),
                 ),
             );
 
