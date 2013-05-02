@@ -499,7 +499,7 @@ function contest_intel_vote_form_defaults($config) {
     'agree_to_rules' => t("I agree to <a href=\"@rules\">Official Contest Rules</a>*.", array(
       '@rules' => url('privacy-policy'),
     )),
-    'rules_href' => 'intelforchange/rules',
+    'terms_of_use' => t('<p class="email-notice">By confirming your vote below, you agree to receive emails from TakePart in relation to Intel for Change.</p>'),
     'vote_accepted_message' => t(''),
     'vote_rejected_message' => t(''),
     'bsd_communication_error' => t(''),
@@ -550,11 +550,11 @@ function contest_intel_vote_configuration($form, $config) {
     '#default_value' => $config['agree_to_rules'],
   );
 
-  $form['rules_href'] = array(
+  $form['terms_of_use'] = array(
     '#type' => 'textfield',
     '#maxlength' => 1023,
-    '#title' => t('Rule page href'),
-    '#default_value' => $config['rules_href'],
+    '#title' => t('Terms of Use'),
+    '#default_value' => $config['terms_of_use'],
   );
 
   $form['vote_accepted_message'] = array(
@@ -644,6 +644,11 @@ function contest_intel_vote_form($form, &$form_state, $config) {
   $form['agree_to_rules'] = array(
     '#type' => 'checkbox',
     '#title' => $config['agree_to_rules'],
+  );
+
+  $form['terms_of_use'] = array(
+    '#type' => 'markup',
+    '#markup' => contest_intel_preprocess_markup($config['terms_of_use']),
   );
 
   $form['submit'] = array(
