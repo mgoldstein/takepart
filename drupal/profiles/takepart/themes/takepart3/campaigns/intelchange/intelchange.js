@@ -215,6 +215,8 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         
     }
     var setCurFinalist = function(navItem){
+
+        // Return if clicked current finalist
         if ($currentNav === navItem) return;
 
         // Stop Current Video (Hide it)
@@ -227,8 +229,11 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
             });
         }
 
+        // Set current finalist variables
         $currentNav = navItem;
         $currentContent = $($currentNav[0].hash);
+
+        // Update active classes
         $contentSections.removeClass('active');
         $currentContent.addClass('active');
         $contentNavs.removeClass('active');
@@ -248,9 +253,16 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var finalistMenuClickHandler = function(e) {
         e.preventDefault();
         if ( this === $currentNav[0] ) return;
+        
+        // Store current content so we can swap it out
         var $from = $currentContent;
+
+        // Set new current finalist
         setCurFinalist($(this));
+        
+        // optional fade animation
         swap($from, $currentContent, $contentInfo);
+
         window.location.hash = $currentContent.data('finalisttoken');
         scrollTopFinalists();
     };
@@ -258,6 +270,8 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         var $voteModalWrapper = $currentContent.find('.modal-wrapper');
         $.tpmodal.show({id: 'intelforchange_',node: contentToShow, afterClose: function(){
             $voteModalWrapper.append(contentToShow);
+            
+            // Reload page if close thank you modal
             if (justVoted){
                 location.reload();
             }
@@ -269,9 +283,12 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         var $confirmModalContent = $('.vote-confirm', $voteModalWrapper);
         var notLoggedIn = $fbModalContent.length > 0;
         var $contentToShow = notLoggedIn ? $fbModalContent : $confirmModalContent;
+        
+        // only prevent default if not logged in (for the fb login return url)
         if (!notLoggedIn){
             e.preventDefault();
         }
+
         showVoteModal($contentToShow);
     };
     var modalCancelHandler = function(e){
