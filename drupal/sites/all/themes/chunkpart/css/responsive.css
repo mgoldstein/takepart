@@ -202,7 +202,7 @@
 		float: none;
 	}
 
-	#site-secondary section {
+	#site-secondary .block {
 		display: none;
 	}
 
@@ -352,7 +352,7 @@
 	}
 
 	/* Right Rail */
-	#site-secondary .newsletter_social section {
+	#site-secondary .newsletter_social {
 		display: block;
 	}
 }
