@@ -10,6 +10,7 @@ stylesheets-conditional[IE][all][] = css/typeface_ie.css
 
 stylesheets[all][] = css/normalize_cms.css
 stylesheets[all][] = css/header.css
+stylesheets[all][] = css/footer.css
 
 ;-------------- JS -------------
 scripts[] = js/analytics.js

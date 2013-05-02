@@ -1,62 +1,46 @@
-<div id="footer" class='clear'>
-    <div id="footer-top-border" class="clear"></div>
-    <?php print render($page['footer']) ?>
-    
-    <?php if (!(is_null($takepart_topics_nav) || empty($takepart_topics_nav))): ?>
-        <div id="footer-topic-links" class="footer-column-wrapper">
-            <div class="column-title">Topics</div>
-            <!--/column-->
-            <?php print $takepart_topics_nav ?>
-            <?php print $takepart_topics_nav_piped ?>
-        </div>
-    <?php endif; ?>
+<footer id="site-footer">
+  <div class="inner">
+    <? if ( ($nav = _smenu('menu-takepart-topics')) ): ?>
+      <section id="site-topics">
+        <h4><?=t('Topics') ?></h4>
+        <?=$nav ?>
+      </section>
+    <? endif ?>
 
-    <?php if (!(is_null($film_camp_nav) || empty($film_camp_nav))): ?>
-        <div id="our-film-campaigns" class="footer-column-wrapper">
-            <div class="column-title">film campaigns</div>
-            <!--/column-->
-            <?php print $film_camp_nav ?>
-            <?php print $film_camp_nav_piped ?>
-            
-            <div id="footer-more-campaigns"><a href="/film-campaigns">More Film Campaigns</a></div>
-        </div>
-    <?php endif; ?>
+    <? if ( ($nav = _smenu('menu-takepart-film-campaigns')) ): ?>
+      <section id="site-campaigns">
+        <h4><?=t('Film Campaigns') ?></h4>
+        <?=$nav ?>
+        <p id="site-more-campaigns">
+          <a href="/film-campaigns"><?=t('More Film Campaigns') ?></a>
+        </p>
+      </section>
+    <? endif ?>
 
-    <?php if (!(is_null($friends_takepart_nav) || empty($friends_takepart_nav))): ?> 
-        <!-- <div id="friends-of-takepart" class="footer-column-wrapper">
-        <div class="column-title">friends of takepart</div>
-        -->
-            <?php // print $friends_takepart_nav; ?>
-        <!-- </div> -->
-    <?php endif; ?>
+    <? if ( ($nav = _smenu('menu-takepart-links')) ): ?>
+      <section id="site-takepart-links">
+        <h4><?=t('About TakePart') ?></h4>
+        <?=$nav ?>
+      </section>
+    <? endif ?>
 
-    <?php if (!(is_null($corporate_links_nav) || empty($corporate_links_nav))): ?>
-        <div id="footer-set-links" class="footer-column-wrapper">
-            <div class="column-title">About TakePart</div>
-            <!--/column-->
-            <?php print $corporate_links_nav; ?>
-        </div>
-    <?php endif; ?>
+    <section id="site-connect">
+      <h4><?=t('Connect') ?></h4>
+      <ul>
+        <li class="facebook"><a href="http://www.facebook.com/takepart">Facebook</a></li>
+        <li class="twitter"><a href="http://www.twitter.com/takepart">Twitter</a></li>
+        <li class="google"><a href="https://plus.google.com/113369936500827860065?prsrc=3">Google+</a></li>
+        <li class="pinterest"><a href="http://pinterest.com/takepart/">Pinterest</a></li>
+        <li class="youtube"><a href="http://www.youtube.com/takepart">YouTube</a></li>
+        <li class="tumblr"><a href="#">YouTube</a></li>
 
-    <div id="footer-links-share" class="footer-column-wrapper">
-        <div class="column-title">Connect</div>
-        <ul id="bottom-follow">
-            <li class="fb"><a href="http://www.facebook.com/takepart" target="_blank" name="&lpos=footer">facebook</a></li>
-            <li class="twitter"><a href="http://www.twitter.com/takepart" target="_blank" name="&lpos=footer">twitter</a></li>
-            <li class="pinterest"><a href="http://pinterest.com/takepart/" target="_blank"><img src="http://passets-ec.pinterest.com/images/about/buttons/big-p-button.png" width="25" height="25" alt="Follow Me on Pinterest" /></a></li>
-            <li class="googleplus"><a href="https://plus.google.com/113369936500827860065?prsrc=3" name="&lpos=footer" rel="publisher" style="text-decoration:none;" target="_blank" title="google plus"><img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt="google plus" style="border:0;width:24px;height:24px;" /></a></li>
-            <li class="youtube"><a href="http://www.youtube.com/takepart" target="_blank" name="&lpos=footer">youtube</a></li>
-            <li class="rss"><a href="/rss">rss</a></li>
-        </ul>
-        
-        <div id="footer-about">
-            <p>TakePart is the digital division of <a target="_blank" href="http://www.participantmedia.com/">Participant Media</a></p>
-            <div id="footer-legal">
-                &copy; 2008-<?php echo date('Y'); ?>
-                TakePart, LLC
-            </div>
-        </div>
-    </div>
+        <!-- li class="rss"><a href="/rss">RSS</a></li -->
+      </ul>
+    </section>
+  </div>
 
-</div>
-<div class="footer_rule"></div>
+  <section id="site-about">
+    <p id="site-participant"><?=t('TakePart is the digital division of') ?> <a target="_blank" href="http://www.participantmedia.com/"><?=t('Participant Media') ?></a></p>
+    <p id="site-copyright">&copy; 2008-<?=date('Y') ?> TakePart, LLC</p>
+  </section>
+</footer>
