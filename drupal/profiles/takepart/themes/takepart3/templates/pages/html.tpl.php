@@ -44,8 +44,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" version="XHTML+RDFa 1.0" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?> >
 
     <head profile="<?php print $grddl_profile; ?>">
-      <title><?php print $head_title; ?></title>
-      <?php print $head; ?>
+        <title><?php print $head_title; ?></title>
+        <?php print $head; ?>
+        <? if ( $is_iframed ): ?>
+            <base href="<?php print 'http://' . $_SERVER['HTTP_HOST']; ?>" target="_parent" />
+        <? endif ?>
         <meta name="viewport" content="width=device-width">
         <meta property="fb:admins" content="1327833247" />
         <meta property="fb:app_id" content="247137505296280" />
@@ -54,11 +57,22 @@
             <script src="/profiles/takepart/themes/takepart3/js/html5shiv.js"></script>
         <![endif]-->
         <?php print $scripts; ?>
+        <? if ( $is_iframed ): ?>
+            <script type="text/javascript">
+                jQuery( document ).ready(function() {
+                    jQuery('a.join-login').attr('href', function(i, val) {
+                        return val + '?destination=' + document.referrer
+                    });
+                });
+            </script>
+        <? endif ?>
     </head>
     <body class="<?php print $classes; ?>" <?php print $attributes; ?>>
-        <div id="skip-link">
-            <a href="#page" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
-        </div>
+        <? if ( !$is_iframed ): ?>
+            <div id="skip-link">
+                <a href="#page" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
+            </div>
+        <? endif ?>
         <?php
         if (isset($page_top)):
             echo $page_top;

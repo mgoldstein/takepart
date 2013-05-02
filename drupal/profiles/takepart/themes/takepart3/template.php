@@ -57,6 +57,9 @@ function takepart3_dolinks($links_field) {
 }
 
 function takepart3_preprocess_html(&$vars) {
+    $uri = drupal_get_path_alias($_GET['q']);
+    $vars['is_multipage'] = FALSE;
+    $vars['is_iframed'] = FALSE;
     // Optimizely
     drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
         'type' => 'external',
@@ -70,14 +73,18 @@ function takepart3_preprocess_html(&$vars) {
     if (
      (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage'))
      || (function_exists('wordlet_active_page') && ($wordlet_page = wordlet_active_page()))
+     || ($uri == 'iframes/slim-header')
     ) {
         $vars['classes_array'][] = 'multipage-campaign';
+        $vars['is_multipage'] = TRUE;
     }
 
     // Remove tracking from place at the table iframed header
     // TODO: Fucking fix this.
     // Potty mouth
-    if (preg_match('/^\/iframes\/place-at-the-table\/header/', $_SERVER['REQUEST_URI'])) {
+    if (
+        preg_match('/^\/iframes\/place-at-the-table\/header/', $_SERVER['REQUEST_URI'])
+        ) {
         unset($vars['page']['page_bottom']['omniture']);
         unset($vars['page']['page_bottom']['quantcast']);
         unset($vars['page']['page_bottom']['federatedmedia']);
@@ -123,9 +130,20 @@ function takepart3_preprocess_html(&$vars) {
 
     _render_tp3_renderheaderfooterfeed($vars);
     _render_tp3_bsd_wrapper($vars);
+
+    if ( ($uri == 'iframes/slim-header')
+        || ($uri == 'bsd/header') ) {
+        $vars['is_iframed'] = TRUE;
+        $vars['page_top'] = null;
+        $vars['page_bottom'] = null;
+        $vars['page'] = null;
+        _tp3_fill_template_vars($vars);
+        $vars['custom'] = _render_tp3_header($vars);
+    }
 }
 
 function takepart3_preprocess_page(&$variables) {
+    $uri = drupal_get_path_alias($_GET['q']);
     _tp3_fill_template_vars($variables);
 
     if (isset($variables['node'])) {
@@ -136,6 +154,7 @@ function takepart3_preprocess_page(&$variables) {
             user_cookie_save(array('webform_referrer' => $_SERVER['HTTP_REFERER']));
         }
     }
+    $variables['is_iframed'] = TRUE;
     $variables['is_multipage'] = FALSE;
     $variables['multipage_class'] = '';
 
@@ -160,6 +179,12 @@ function takepart3_preprocess_page(&$variables) {
                 || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action') {
             $variables['is_multipage'] = TRUE;
         }
+    }
+
+    if ( ($uri == 'iframes/slim-header')
+        || ($uri == 'bsd/header') ) {
+        $variables['is_iframed'] = TRUE;
+        $variables['is_multipage'] = TRUE;
     }
 
     $status = drupal_get_http_header('status');
@@ -1153,10 +1178,6 @@ function _render_tp3_header(&$params) {
     return theme('takepart3_header', $params);
 }
 
-function _render_tp3_slim_header(&$params) {
-    return theme('takepart3_slim_header', $params);
-}
-
 function _render_tp3_footer(&$params) {
     return theme('takepart3_footer', $params);
 }
@@ -1176,15 +1197,13 @@ function _render_tp3_wrapper_footer(&$params) {
 
 function _render_tp3_renderheaderfooterfeed(&$vars) {
     $uri = drupal_get_path_alias($_GET['q']);
-    if (($uri == 'iframes/header') || ($uri == 'iframes/footer') || ($uri == 'iframes/slim-header')) {
+    if (($uri == 'iframes/header') || ($uri == 'iframes/footer')) {
         $vars['page_top'] = null;
         $vars['page_bottom'] = null;
         $vars['page'] = null;
         _tp3_fill_template_vars($vars);
         if ($uri == 'iframes/header') {
             $vars['custom'] = _render_tp3_header($vars);
-        } else if ($uri == 'iframes/slim-header') {
-            $vars['custom'] = _render_tp3_slim_header($vars);
         } else if ($uri == 'iframes/footer') {
             $vars['custom'] = _render_tp3_footer($vars);
         }
@@ -1218,20 +1237,8 @@ function takepart3_theme() {
                 'params' => NULL,
             ),
         ),
-        'takepart3_slim_header' => array(
-            'template' => 'templates/pages/header-slim',
-            'arguments' => array(
-                'params' => NULL,
-            ),
-        ),
         'takepart3_footer' => array(
             'template' => 'templates/pages/footer',
-            'arguments' => array(
-                'params' => NULL,
-            ),
-        ),
-        'takepart3_wrapper_header' => array(
-            'template' => 'templates/pages/header-bsd',
             'arguments' => array(
                 'params' => NULL,
             ),
