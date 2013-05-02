@@ -206,6 +206,10 @@
 		display: none;
 	}
 
+	#site-secondary .newsletter_social {
+		display: block;
+	}
+
 	/* Footer */
 	#site-connect,
 	#site-topics {
@@ -352,7 +356,7 @@
 	}
 
 	/* Right Rail */
-	#site-secondary .newsletter_social {
-		display: block;
+	#topic_box {
+		display: none;
 	}
 }
