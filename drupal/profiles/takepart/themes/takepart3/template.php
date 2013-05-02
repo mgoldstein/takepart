@@ -261,9 +261,6 @@ function _render_tp3_user_menu($variables) {
                             $username = $username . ".";
                         }
                     }
-                    if (strlen($username) > 10) {
-                        $username = substr($username, 0, 10) . "…";
-                    }
                 }
                 $menu_item['link']['title'] = $username;
                 $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');

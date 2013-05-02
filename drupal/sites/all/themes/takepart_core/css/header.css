@@ -352,6 +352,11 @@
 .multipage-campaign #site-follow {
 	display: block;
 	float: left;
+	margin: 8px 7px 0 0;
+}
+
+.multipage-campaign #site-follow li {
+	margin-right: 3px;
 }
 
 .multipage-campaign #site-follow a {
@@ -400,6 +405,15 @@
 	width: 24px;
 }
 
-#site-user-nav ul {
+.multipage-campaign #site-user-nav ul {
 	padding-top: 12px;
 }
+
+.multipage-campaign #site-user-nav .user-menu-my {
+	max-width: 75px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: inline-block;
+}
+
