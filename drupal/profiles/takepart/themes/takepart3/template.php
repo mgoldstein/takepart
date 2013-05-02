@@ -28,14 +28,14 @@ function wordlet_patt_snap_page_alter($page) {
 
 function wordlet_intelchange_vote_page_alter($page) {
     if (isset($_GET['finalist'])) {
-        $w = wordlet_find('finalist', 'token', $_GET['finalist']);
-        if ($w && $w->img_src) {
+        $w = wordlet_find('finalists', 'token', $_GET['finalist']);
+        if ($w && $w->small_src) {
             $metatag = array(
                 '#type' => 'html_tag',
                 '#tag' => 'meta',
                 '#attributes' => array(
                     'property' => 'og:image',
-                    'content' => $w->img_src,
+                    'content' => $w->small_src,
                 ),
             );
 
@@ -47,7 +47,7 @@ function wordlet_intelchange_vote_page_alter($page) {
                 '#tag' => 'meta',
                 '#attributes' => array(
                     'property' => 'og:title',
-                    'content' => $w->single(false) . ' (' . $w->multi_short(false) . ')',
+                    'content' => $w->single(false) . ' (' . strip_tags($w->multi_short(false)) . ')',
                 ),
             );
 
@@ -59,7 +59,7 @@ function wordlet_intelchange_vote_page_alter($page) {
                 '#tag' => 'meta',
                 '#attributes' => array(
                     'property' => 'og:description',
-                    'content' => $w->multi(false),
+                    'content' => strip_tags($w->multi(false)),
                 ),
             );
 
