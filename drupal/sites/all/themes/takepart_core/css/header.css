@@ -173,6 +173,10 @@
 	width: 193px;
 }
 
+#site-follow {
+	display: none;
+}
+
 #site-search {
 	margin: .5em 0;
 	float: left;
@@ -343,6 +347,44 @@
 
 .multipage-campaign #site-more-navs {
 	width: auto;
+}
+
+.multipage-campaign #site-follow {
+	display: block;
+	float: left;
+}
+
+.multipage-campaign #site-follow a {
+	display: block;
+	overflow: hidden;
+	width: 19px;
+	height: 19px;
+	white-space: nowrap;
+	text-indent: 100%;
+}
+
+.multipage-campaign #site-follow .facebook {
+	background: url(../images/header_social_facebook.png) left top no-repeat;
+}
+
+.multipage-campaign #site-follow .facebook:hover {
+	background: url(../images/header_social_facebook_hover.png) left top no-repeat;
+}
+
+.multipage-campaign #site-follow .twitter {
+	background: url(../images/header_social_twitter.png) left top no-repeat;
+}
+
+.multipage-campaign #site-follow .twitter:hover {
+	background: url(../images/header_social_twitter_hover.png) left top no-repeat;
+}
+
+.multipage-campaign #site-follow .rss {
+	background: url(../images/header_social_rss.png) left top no-repeat;
+}
+
+.multipage-campaign #site-follow .rss:hover {
+	background: url(../images/header_social_rss_hover.png) left top no-repeat;
 }
 
 .multipage-campaign #site-search {
