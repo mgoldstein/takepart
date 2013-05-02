@@ -1,6 +1,10 @@
 /* # General
 ================================================== */
 
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 /* campaign specific ---------------- */
 
 .main {
@@ -8,7 +12,6 @@
   font-family: Verdana, Arial, Helvetica, sans-serif;
   padding: 8px;
   background: #fff;
-  margin: 16px 0 0 0;
 }
 
 .main a {

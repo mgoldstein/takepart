@@ -1,5 +1,9 @@
 <?php
 
+class Tp3Site {
+    public static $logo;
+}
+
 function wordlet_patt_nav_page_alter($page) {
     // remove analytics from this page
     global $conf;
@@ -60,6 +64,8 @@ function takepart3_preprocess_html(&$vars) {
     $uri = drupal_get_path_alias($_GET['q']);
     $vars['is_multipage'] = FALSE;
     $vars['is_iframed'] = FALSE;
+    $vars['logo'] = Tp3Site::$logo;
+
     // Optimizely
     drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
         'type' => 'external',
@@ -77,17 +83,6 @@ function takepart3_preprocess_html(&$vars) {
     ) {
         $vars['classes_array'][] = 'multipage-campaign';
         $vars['is_multipage'] = TRUE;
-    }
-
-    // Remove tracking from place at the table iframed header
-    // TODO: Fucking fix this.
-    // Potty mouth
-    if (
-        preg_match('/^\/iframes\/place-at-the-table\/header/', $_SERVER['REQUEST_URI'])
-        ) {
-        unset($vars['page']['page_bottom']['omniture']);
-        unset($vars['page']['page_bottom']['quantcast']);
-        unset($vars['page']['page_bottom']['federatedmedia']);
     }
 
     if (isset($vars['page']['content']['system_main']['nodes'])) {
@@ -132,7 +127,10 @@ function takepart3_preprocess_html(&$vars) {
     _render_tp3_bsd_wrapper($vars);
 
     if ( ($uri == 'iframes/slim-header')
-        || ($uri == 'bsd/header') ) {
+        || ($uri == 'bsd/header')
+        || ($uri == 'iframes/place-at-the-table/header')
+        || ($uri == 'iframes/header')
+        ) {
         $vars['is_iframed'] = TRUE;
         $vars['page_top'] = null;
         $vars['page_bottom'] = null;
@@ -143,6 +141,7 @@ function takepart3_preprocess_html(&$vars) {
 }
 
 function takepart3_preprocess_page(&$variables) {
+    Tp3Site::$logo = $variables['logo'];
     $uri = drupal_get_path_alias($_GET['q']);
     _tp3_fill_template_vars($variables);
 
@@ -182,7 +181,10 @@ function takepart3_preprocess_page(&$variables) {
     }
 
     if ( ($uri == 'iframes/slim-header')
-        || ($uri == 'bsd/header') ) {
+        || ($uri == 'bsd/header')
+        || ($uri == 'iframes/place-at-the-table/header')
+        || ($uri == 'iframes/header')
+        ) {
         $variables['is_iframed'] = TRUE;
         $variables['is_multipage'] = TRUE;
     }
@@ -1182,10 +1184,6 @@ function _render_tp3_footer(&$params) {
     return theme('takepart3_footer', $params);
 }
 
-function _render_tp3_wrapper_header(&$params) {
-    return theme('takepart3_wrapper_header', $params);
-}
-
 function _render_tp3_wrapper_footer(&$params) {
     return theme('takepart3_wrapper_footer', $params);
 }
@@ -1197,14 +1195,12 @@ function _render_tp3_wrapper_footer(&$params) {
 
 function _render_tp3_renderheaderfooterfeed(&$vars) {
     $uri = drupal_get_path_alias($_GET['q']);
-    if (($uri == 'iframes/header') || ($uri == 'iframes/footer')) {
+    if (($uri == 'iframes/footer')) {
         $vars['page_top'] = null;
         $vars['page_bottom'] = null;
         $vars['page'] = null;
         _tp3_fill_template_vars($vars);
-        if ($uri == 'iframes/header') {
-            $vars['custom'] = _render_tp3_header($vars);
-        } else if ($uri == 'iframes/footer') {
+        if ($uri == 'iframes/footer') {
             $vars['custom'] = _render_tp3_footer($vars);
         }
     }
@@ -1213,13 +1209,10 @@ function _render_tp3_renderheaderfooterfeed(&$vars) {
 function _render_tp3_bsd_wrapper(&$vars) {
     $uri = drupal_get_path_alias($_GET['q']);
     $uri = substr($uri, 0, 14);
-    if (($uri == 'bsd/header') || ($uri == 'bsd/footer')) {
+    if (($uri == 'bsd/footer')) {
         // dpm($vars);
         _tp3_fill_template_vars($vars);
-        if ($uri == 'bsd/header') {
-            $vars['custom'] = _render_tp3_wrapper_header($vars);
-            // $vars['custom'] = _render_tp3_header($vars);
-        } else if ($uri == 'bsd/footer') {
+        if ($uri == 'bsd/footer') {
             $vars['custom'] = _render_tp3_wrapper_footer($vars);
             // $vars['custom'] = _render_tp3_footer($vars);
         }
