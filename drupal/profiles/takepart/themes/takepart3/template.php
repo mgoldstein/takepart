@@ -53,13 +53,13 @@ function wordlet_intelchange_vote_page_alter($page) {
 
             drupal_add_html_head($metatag, 'facebook_title');
         }
-        if ($w && $w->multi) {
+        if ($w && w('content_full_'.$w->token)->multi(false)) {
             $metatag = array(
                 '#type' => 'html_tag',
                 '#tag' => 'meta',
                 '#attributes' => array(
                     'property' => 'og:description',
-                    'content' => str_replace(array("\r", "\n"), ' ', strip_tags($w->multi(false))),
+                    'content' => strip_tags(w('content_full_'.$w->token)->multi(false)),
                 ),
             );
 
