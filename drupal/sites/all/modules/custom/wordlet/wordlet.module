@@ -325,6 +325,7 @@ function wordlet_theme() {
 }
 
 function wordlet_preprocess_page_template(&$variables) {
+  $variables['is_multipage'] = TRUE;
   _tp3_fill_template_vars($variables);
   $variables['header'] = theme('takepart3_header', $variables);
   $tabs = menu_local_tabs();
@@ -335,6 +336,7 @@ function wordlet_preprocess_page_template(&$variables) {
 }
 
 function wordlet_preprocess_wrapper_template(&$variables) {
+  $variables['is_multipage'] = TRUE;
   _tp3_fill_template_vars($variables);
   $variables['header'] = theme('takepart3_header', $variables);
   $tabs = menu_local_tabs();
@@ -985,6 +987,25 @@ function wordlet_page_view_callback($page) {
   // Structure is in the template, content in the wordlets.
   return '';
 }
+
+function wordlet_omniture_variables() {
+  $return = array();
+
+  $campaign_name = wordlet('campaign_name');
+
+  if ( !empty($campaign_name) ) {
+    $return = array(
+      's.eVar43' => $campaign_name->single(false),
+      's.prop43' => $campaign_name->single(false)
+    );
+  }
+
+  return array("variables" => $return);
+}
+
+/* =========================================================
+  Template helpers
+========================================================= */
 
 function wordlet_edit_mode($configure = FALSE) {
   if (!empty($_COOKIE['show_wordlets'])) {

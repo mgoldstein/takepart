@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions.
+ */
+
+/**
+ * Set the module weight to run after core node module, as we override its token.
+ *
+ * @see http://drupal.org/node/110238
+ */
+function node_summary_token_enable() {
+  $weight = db_select('system', 's')
+              ->fields('s', array('weight'))
+              ->condition('name', 'node', '=')
+              ->execute()
+              ->fetchField();
+  db_update('system')
+    ->fields(array('weight' => $weight +1))
+    ->condition('name', 'node_summary_token', '=')
+    ->execute();
+}

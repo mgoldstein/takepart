@@ -1,0 +1,5 @@
+<?php
+/**
+ * @file Module needs a module file, but the only code is in the .tokens.inc
+ *
+ */

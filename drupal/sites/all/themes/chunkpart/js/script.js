@@ -31,7 +31,7 @@ $(function() {
 			{name: 'facebook'},
 			{
 				name: 'twitter',
-				text: '{{title}}',
+				text: '{{title}} {{url}}',
 				via: 'TakePart'
 			},
 			{name: 'googleplus'},

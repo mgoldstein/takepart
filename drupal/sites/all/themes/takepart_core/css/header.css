@@ -173,6 +173,10 @@
 	width: 193px;
 }
 
+#site-follow {
+	display: none;
+}
+
 #site-search {
 	margin: .5em 0;
 	float: left;
@@ -345,6 +349,49 @@
 	width: auto;
 }
 
+.multipage-campaign #site-follow {
+	display: block;
+	float: left;
+	margin: 8px 7px 0 0;
+}
+
+.multipage-campaign #site-follow li {
+	margin-right: 3px;
+}
+
+.multipage-campaign #site-follow a {
+	display: block;
+	overflow: hidden;
+	width: 19px;
+	height: 19px;
+	white-space: nowrap;
+	text-indent: 100%;
+}
+
+.multipage-campaign #site-follow .facebook a {
+	background: url(../images/header_social_facebook.png) left top no-repeat;
+}
+
+.multipage-campaign #site-follow .facebook a:hover {
+	background: url(../images/header_social_facebook_hover.png) left top no-repeat;
+}
+
+.multipage-campaign #site-follow .twitter a {
+	background: url(../images/header_social_twitter.png) left top no-repeat;
+}
+
+.multipage-campaign #site-follow .twitter a:hover {
+	background: url(../images/header_social_twitter_hover.png) left top no-repeat;
+}
+
+.multipage-campaign #site-follow .rss a {
+	background: url(../images/header_social_rss.png) left top no-repeat;
+}
+
+.multipage-campaign #site-follow .rss a:hover {
+	background: url(../images/header_social_rss_hover.png) left top no-repeat;
+}
+
 .multipage-campaign #site-search {
 	margin: 6px 8px 0 0;
 }
@@ -358,6 +405,15 @@
 	width: 24px;
 }
 
-#site-user-nav ul {
+.multipage-campaign #site-user-nav ul {
 	padding-top: 12px;
 }
+
+.multipage-campaign #site-user-nav .user-menu-my {
+	max-width: 75px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: inline-block;
+}
+

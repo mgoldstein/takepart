@@ -1,0 +1,33 @@
+diff --git a/modules/node/node.tokens.inc b/modules/node/node.tokens.inc
+index e43db5e..65245b8 100644
+--- a/modules/node/node.tokens.inc
++++ b/modules/node/node.tokens.inc
+@@ -139,7 +139,27 @@ function node_tokens($type, $tokens, array $data = array(), array $options = arr
+             $column = ($name == 'body') ? 'value' : 'summary';
+             $instance = field_info_instance('node', 'body', $node->type);
+             $field_langcode = field_language('node', $node, 'body', $language_code);
+-            $replacements[$original] = $sanitize ? _text_sanitize($instance, $field_langcode, $items[0], $column) : $items[0][$column];
++            // PATCH from http://drupal.org/node/1300920#comment-6200094
++            // The [node:summary] token does not output anything for body fields without a manual summary
++            // Required to make metatags behave right.
++            #$replacements[$original] = $sanitize ? _text_sanitize($instance, $field_langcode, $items[0], $column) : $items[0][$column];
++            if ($name == 'summary' && !empty($items[0]['summary'])) {
++              $output = $sanitize ? _text_sanitize($instance, $field_langcode, $items[0], 'summary') : $items[0]['summary'];
++            }
++            else {
++              $output = $sanitize ? _text_sanitize($instance, $field_langcode, $items[0], 'value') : $items[0]['value'];
++              if ($name == 'summary') {
++                if (isset($instance['display']['teaser']['settings']['trim_length'])) {
++                  $trim_length = $instance['display']['teaser']['settings']['trim_length'];
++                }
++                else {
++                  // Use default value.
++                  $trim_length = NULL;
++                }
++                $output = text_summary($output, $instance['settings']['text_processing'] ? $items[0]['format'] : NULL, $trim_length);
++              }
++            }
++            $replacements[$original] = $output;
+           }
+           break;
+ 

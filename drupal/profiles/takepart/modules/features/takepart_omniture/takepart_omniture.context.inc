@@ -53,7 +53,9 @@ s.eVar18 = [tp_omniture:str_decode:{node:title}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
 s.eVar17 = [tp_omniture:get_author:{node:nid}]
 s.prop16 = [tp_omniture:get_author:{node:nid}]
-s.prop6 = [node:nid]',
+s.prop6 = [node:nid]
+s.prop43 = [tp_omniture:campaign_context:{node:nid}]
+s.eVar43 = [tp_omniture:campaign_context:{node:nid}]',
     ),
   );
   $context->condition_mode = 0;
@@ -139,10 +141,8 @@ s.eVar11 = Logged_In',
   $context->reactions = array(
 'omniture_reaction' => array(
 'variables' => 's.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.eVar11 = [f:bool:{current-user:uid}:Logged_In:Anonymous]
 s.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-',
+s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]',
     ),
   );
   $context->condition_mode = 0;

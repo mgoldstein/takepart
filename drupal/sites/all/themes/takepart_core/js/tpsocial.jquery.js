@@ -299,7 +299,7 @@ $.tpsocial.add_service({
 	width: 850,
 	height: 600,
 	share: function(args) {
-		var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(args.url);
+		var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
 		/*var left = 0;

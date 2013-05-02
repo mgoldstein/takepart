@@ -66,7 +66,11 @@ function takepart3_preprocess_html(&$vars) {
         'weight' => -1,
     ));
     drupal_add_library('system', 'jquery.cookie');
-    if (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage')) {
+
+    if (
+     (context_isset('takepart3_page', 'campaign_is_multipage') && context_get('takepart3_page', 'campaign_is_multipage'))
+     || (function_exists('wordlet_active_page') && ($wordlet_page = wordlet_active_page()))
+    ) {
         $vars['classes_array'][] = 'multipage-campaign';
     }
 
@@ -257,15 +261,14 @@ function _render_tp3_user_menu($variables) {
                             $username = $username . ".";
                         }
                     }
-                    if (strlen($username) > 10) {
-                        $username = substr($username, 0, 10) . "…";
-                    }
                 }
                 $menu_item['link']['title'] = $username;
                 $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');
             } else {
                 $opts['attributes']['class'][] = 'join-login';
-                $opts['query'] = drupal_get_destination();
+                if ( ($uri != 'iframes/slim-header') && ($uri != 'iframes/header') ) {
+                    $opts['query'] = drupal_get_destination();
+                }
                 $menu_item['link']['title'] = variable_get("takepart_user_login_link_name", "Login");
             }
         } else {

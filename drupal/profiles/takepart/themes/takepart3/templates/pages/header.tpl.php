@@ -23,6 +23,14 @@
       <?=$user_nav ?>
     </nav>
 
+    <nav id="site-follow">
+      <ul>
+        <li class="facebook"><a target="_blank" href="http://www.facebook.com/takepart">Facebook</a></li>
+        <li class="twitter"><a target="_blank" href="http://www.twitter.com/takepart">Twitter</a></li>
+        <li class="rss"><?php print l("rss", "node/19814", array('attributes' => array('title' => 'RSS'), 'absolute' => TRUE ) ); ?></li>
+      </ul>
+    </nav>
+
     <nav id="site-search">
       <?php print drupal_render($search_takepart_form); ?>
     </nav>
