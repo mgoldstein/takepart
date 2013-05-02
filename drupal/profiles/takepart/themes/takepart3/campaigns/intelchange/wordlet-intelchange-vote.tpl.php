@@ -115,6 +115,7 @@
                             <? $w2 = w('thank_you_add_this'); ?>
                             <div class="addThis thanks-share">
                                 <a class="addthis_button_facebook at300b" title="Facebook" href="#"
+                                    addthis:image="<?=$w->img_src?>"
                                     addthis:url="<?=wu('intelchange_vote')?>#<?=$w->token?>"
                                     addthis:title="<?=wr($w2->single(false), $w)?>">
                                     <img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook">
@@ -156,6 +157,7 @@
                     <div class="addThis finalist-share"
                         <?=wa('finalist_add_this')?>>
                         <a class="addthis_button_facebook at300b" title="Facebook" href="#"
+                            addthis:image="<?=$w->img_src?>"
                             addthis:url="<<?=wu('intelchange_vote')?>#<?=$w->token?>"
                             addthis:title="<?=wr($w2->single(false), $w)?>">
                             <img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook">
