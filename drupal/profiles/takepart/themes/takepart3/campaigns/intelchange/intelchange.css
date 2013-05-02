@@ -1496,11 +1496,12 @@
   font-size: 16px;
   padding: 0 2.875em;
   line-height: 1.25em;
-  height: 20px;
+  min-height: 20px;
+  _height: 20px;
   background: url(images/check_27_20.png) no-repeat;
   padding-left: 39px;
   display: inline-block; *display: inline; *zoom: 1;
-  margin: 35px auto
+  margin: 35px auto;
 }
 
 .page-wordlet-intelchange-vote .intelforchange_modal {
