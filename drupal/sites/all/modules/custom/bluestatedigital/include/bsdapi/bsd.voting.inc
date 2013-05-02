@@ -132,8 +132,8 @@ class BlueStateDigitalVoting extends BlueStateDigitalService {
     // Get the field ids for the ballot.
     $mapping = $this->getFieldIds($ballot_id);
 
-      // Email and vote are required fields.
-      if (isset($mapping->email) && isset($mapping->vote)) {
+    // Email and vote are required fields.
+    if (isset($mapping->email) && isset($mapping->vote)) {
 
       // Populate the fields of the signup.
       $fields = array(

@@ -588,17 +588,28 @@ function contest_intel_vote_configuration($form, $config) {
   return $form;
 }
 
-function contest_intel_most_recent_vote($email = NULL) {
-  global $user;
+function contest_intel_most_recent_vote($email) {
   static $vote = NULL;
   if (!isset($vote)) {
-    if (!isset($email)) {
-      $email = $user->mail;
-    }
-    $voting = bluestatedigital_get_service('voting');
-    $vote = $voting->getMostRecentVote(VOTE_FORM_ID, $email);
+    $vote = db_select('contest_intel_votes', 'v')
+      ->fields('v', array('token', 'timestamp'))
+      ->condition('email', $email)
+      ->orderBy('timestamp', 'DESC')
+      ->range(0, 1)
+      ->execute()
+      ->fetchAssoc();
   }
   return $vote;
+}
+
+function contest_intel_store_vote($email, $token) {
+  db_insert('contest_intel_votes')
+    ->fields(array(
+      'email' => $email,
+      'token' => $token,
+      'timestamp' => REQUEST_TIME,
+    ))
+    ->execute();
 }
 
 /**
@@ -618,7 +629,7 @@ function contest_intel_vote_form($form, &$form_state, $config) {
   );
 
   if (user_is_logged_in() && isset($user->mail)) {
-    $vote = contest_intel_most_recent_vote();
+    $vote = contest_intel_most_recent_vote($user->mail);
 
     if ($vote !== FALSE) {
       $attributes['last_vote'] = $vote['token'];
@@ -702,7 +713,7 @@ function contest_intel_vote_form_submit($form, &$form_state) {
     $token = $config['vote_token'];
 
     try {
-      $vote = contest_intel_most_recent_vote();
+      $vote = contest_intel_most_recent_vote($user->mail);
       $voting = bluestatedigital_get_service('voting');
       $allowed = $voting->checkEligibility($vote,
         BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
@@ -714,9 +725,13 @@ function contest_intel_vote_form_submit($form, &$form_state) {
           1 => !empty($form_state['values']['entry_opt_in']),
           2 => !empty($form_state['values']['agree_to_rules']),
         );
-        $voting->castVote(VOTE_FORM_ID, $user->mail, $token, $opt_ins);
-        watchdog('intel_contest_voted', $user->mail);
-        $form_state['contest_intel_vote_signup_result'] = 'accepted';
+        if ($voting->castVote(VOTE_FORM_ID, $user->mail, $token, $opt_ins)) {
+          contest_intel_store_vote($user->mail, $token);
+          $form_state['contest_intel_vote_signup_result'] = 'accepted';
+        }
+        else {
+          $form_state['contest_intel_vote_signup_result'] = 'error';
+        }
       }
       else {
         $form_state['contest_intel_vote_signup_result'] = 'rejected';
