@@ -332,12 +332,31 @@
 	height: 42px;
 }
 
-.multipage-campaign #site-hot-nav,
 .multipage-campaign #site-miss-nav,
 .multipage-campaign #site-participant-nav {
 	display: none;
 }
 
+.multipage-campaign #site-hot-nav li {
+	display: none;
+}
+
+.multipage-campaign #site-hot-nav .first {
+	padding-right: 0;
+	border: none;
+	display: block;
+}
+
+.multipage-campaign #site-hot-nav .first a:hover {
+	text-decoration: none;
+	color: #28a9e9;
+}
+
+.multipage-campaign #site-main-nav .last {
+	padding-right: .9em;
+}
+
+.multipage-campaign #site-hot-nav,
 .multipage-campaign #site-main-nav {
 	font-size:  15px;
 	padding: 12px 0;
