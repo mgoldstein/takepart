@@ -9,6 +9,12 @@
  */
 function takepart_core_theme() {
     return array(
+        'takepart3_footer' => array(
+            'template' => 'templates/subtemplates/_footer',
+            'arguments' => array(
+                'params' => NULL,
+            ),
+        ),
         'takepart3_header' => array(
             'template' => 'templates/subtemplates/_header',
             'arguments' => array(
@@ -16,6 +22,16 @@ function takepart_core_theme() {
             ),
         ),
     );
+}
+
+/* Custom functions */
+
+function _render_tp3_header(&$params) {
+    return theme('takepart3_header', $params);
+}
+
+function _render_tp3_footer(&$params) {
+    return theme('takepart3_footer', $params);
 }
 
 /* Template helpers */

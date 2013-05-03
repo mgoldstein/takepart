@@ -1187,14 +1187,6 @@ function _tp3_fill_template_vars(&$variables) {
     }
 }
 
-function _render_tp3_header(&$params) {
-    return theme('takepart3_header', $params);
-}
-
-function _render_tp3_footer(&$params) {
-    return theme('takepart3_footer', $params);
-}
-
 function _render_tp3_wrapper_footer(&$params) {
     return theme('takepart3_wrapper_footer', $params);
 }
@@ -1235,12 +1227,6 @@ function _render_tp3_bsd_wrapper(&$vars) {
  */
 function takepart3_theme() {
     return array(
-        'takepart3_footer' => array(
-            'template' => 'templates/pages/footer',
-            'arguments' => array(
-                'params' => NULL,
-            ),
-        ),
         'takepart3_wrapper_footer' => array(
             'template' => 'templates/pages/footer-bsd',
             'arguments' => array(

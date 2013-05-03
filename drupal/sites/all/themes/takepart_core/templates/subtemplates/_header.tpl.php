@@ -1,6 +1,6 @@
 <header id="site-header" role="banner"><div id="site-header-inner">
   <p id="site-logo">
-    <a href="/"><img src="<?=$logo?>" alt="TakePart" role="logo" /></a>
+    <a href="/"><img src="<?=($is_multipage)?'/profiles/takepart/themes/takepart3/images/logo-sm-slim.png':$logo?>" alt="TakePart" role="logo" /></a>
   </p>
 
   <div id="site-navs">

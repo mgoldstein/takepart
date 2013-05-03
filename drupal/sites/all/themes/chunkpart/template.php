@@ -4,10 +4,6 @@
   Preprocess
 */
 
-function _render_tp3_header(&$params) {
-    return theme('takepart3_header', $params);
-}
-
 // Don't let nasty Drupal classes get put on the menu ul's
 function chunkpart_menu_tree($variables) {
   return '<ul>' . $variables['tree'] . '</ul>';
@@ -20,6 +16,7 @@ function chunkpart_preprocess_page(&$variables) {
   }
 
   $variables['header'] = _render_tp3_header($variables);
+  $variables['footer'] = _render_tp3_header($variables);
 }
 
 /**
