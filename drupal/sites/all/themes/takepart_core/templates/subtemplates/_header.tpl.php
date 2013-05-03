@@ -4,10 +4,6 @@
   </p>
 
   <div id="site-navs">
-    <nav id="site-user-nav">
-      <?=$user_nav ?>
-    </nav>
-
     <nav id="site-main-nav">
       <?=_smenu('main-menu') ?>
     </nav>
@@ -23,6 +19,18 @@
   </div>
 
   <div id="site-more-navs">
+    <nav id="site-user-nav">
+      <?=$user_nav ?>
+    </nav>
+
+    <nav id="site-follow">
+      <ul>
+        <li class="facebook"><a target="_blank" href="http://www.facebook.com/takepart">Facebook</a></li>
+        <li class="twitter"><a target="_blank" href="http://www.twitter.com/takepart">Twitter</a></li>
+        <li class="rss"><?php print l("rss", "node/19814", array('attributes' => array('title' => 'RSS'), 'absolute' => TRUE ) ); ?></li>
+      </ul>
+    </nav>
+
     <nav id="site-search">
       <?=drupal_render(module_invoke('search_api_page', 'block_view', '2')) ?>
     </nav>
