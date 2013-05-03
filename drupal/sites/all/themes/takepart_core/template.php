@@ -47,6 +47,15 @@ function takepart_core_menu_link(array $variables) {
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
+function takepart_core_form_search_api_page_search_form_site_search_alter(&$form, &$form_state, $form_id) {
+  $form['keys_2']['#attributes'] = array('placeholder' => array("Search"));
+  // On the 404 page, unset any form tokens so that we bypass attempted validation ( and give a warning to authenticated users )
+  if (request_uri() == '/' . drupal_get_normal_path(variable_get('static_404', ''))) {
+    unset($form['form_token']); 
+    unset($form['#token']);
+  }
+}
+
 /* Custom functions */
 
 function _render_tp3_header(&$params) {

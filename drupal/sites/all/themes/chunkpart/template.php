@@ -53,11 +53,6 @@ function _render_tp3_user_menu($variables) {
     return _smenu(menu_tree_output($menu_data));
 }
 
-function _default_menu_options($menu_item) {
-    $menu_opts = empty($menu_item['link']['options']['attributes']) ? array() : $menu_item['link']['options']['attributes'];
-    return $menu_opts;
-}
-
 /*
 
 function takepart3_preprocess_entity(&$variables, $hook) {

@@ -30,17 +30,6 @@ function wordlet_patt_snap_page_alter($page) {
     return '';
 }
 
-function takepart3_form_search_api_page_search_form_site_search_alter(&$form, &$form_state, $form_id) {
-  $form['keys_2']['#default_value'] = 'Search';
-  $form['keys_2']['#attributes'] = array('onfocus' => array("if(this.value=='" . t('Search') . "'){this.value=''};"));
-  $form['submit_2']['#attributes'] = array('class' => array('tpform-submit'));
-  // On the 404 page, unset any form tokens so that we bypass attempted validation ( and give a warning to authenticated users )
-  if (request_uri() == '/' . drupal_get_normal_path(variable_get('static_404', ''))) {
-    unset($form['form_token']); 
-    unset($form['#token']);
-  }
-}
-
 /**
  * Each item of the array should be keyed as follows:
  * url (String, 21 characters ) http://www.google.com
@@ -140,6 +129,16 @@ function takepart3_preprocess_html(&$vars) {
         $vars['page'] = null;
         _tp3_fill_template_vars($vars);
         $vars['custom'] = _render_tp3_header($vars);
+    } elseif (
+        ($uri == 'bsd/footer')
+        || ($uri == 'iframes/footer')
+        ) {
+        $vars['is_iframed'] = TRUE;
+        $vars['page_top'] = null;
+        $vars['page_bottom'] = null;
+        $vars['page'] = null;
+        _tp3_fill_template_vars($vars);
+        $vars['custom'] = _render_tp3_footer($vars);
     }
 }
 
@@ -185,8 +184,10 @@ function takepart3_preprocess_page(&$variables) {
 
     if ( ($uri == 'iframes/slim-header')
         || ($uri == 'bsd/header')
+        || ($uri == 'bsd/footer')
         || ($uri == 'iframes/place-at-the-table/header')
         || ($uri == 'iframes/header')
+        || ($uri == 'iframes/footer')
         ) {
         $variables['is_iframed'] = TRUE;
         $variables['is_multipage'] = TRUE;
@@ -209,131 +210,6 @@ function takepart3_preprocess_page(&$variables) {
     }
 
     return $variables;
-}
-
-function _render_tp3_main_menu_bsd() {
-    $menu_data = menu_tree_page_data("main-menu");
-    $links = array();
-    $count = count($menu_data);
-    $i = 0;
-    foreach ($menu_data as $menu_item) {
-        $opts = array(
-            'attributes' => _default_menu_options($menu_item),
-            'absolute' => TRUE
-        );
-
-        $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-        if ($i == 0) {
-            $li = '<li class="first dhtml-menu collapsed">';
-        } else if ($i == ($count - 1)) {
-            $li = '<li class="last dhtml-menu collapsed">';
-        } else {
-            $li = '<li class="dhtml-menu collapsed">';
-        }
-        $links[] = $li . $link . "</li>";
-        $i++;
-    }
-    return "<ul class='menu'>" . implode($links) . "</ul>";
-}
-
-function _render_tp3_participant_pulldown() {
-    $menu_data = menu_tree_page_data("menu-reel-impact");
-    $uri = drupal_get_path_alias($_GET['q']);
-    $uri_substr = substr($uri, 0, 14);
-    $count = count($menu_data);
-    $i = 0;
-    foreach ($menu_data as $menu_item) {
-        $opts = array(
-            'attributes' => _default_menu_options($menu_item),
-        );
-        if (($uri_substr == 'bsd/header') || ($uri_substr == 'bsd/footer')) {
-            $opts['absolute'] = TRUE;
-        }
-        $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-        if ($i == 0) {
-            $li = '<li class="first">';
-        } else if ($i == ($count - 1)) {
-            $li = '<li class="last">';
-        } else {
-            $li = '<li>';
-        }
-        $links[] = $li . $link . "</li>";
-        $i++;
-    }
-    return '<ul class="clearfix">' . implode($links) . "</ul>";
-}
-
-// so we need to render the menus as follows,
-// order from top to bottom, but distribute evenly from left to right.
-function _render_menu_columns($menu_key, $col_limit) {
-    $menu_data = _tp_menu_tree_data($menu_key);
-    $columns = array();
-    $total_items = count($menu_data);
-    $remainder_row = $total_items % $col_limit;
-    $column_idx = 0;
-    $half = count($menu_data) / 2;
-    $uri = drupal_get_path_alias($_GET['q']);
-    $uri_substr = substr($uri, 0, 14);
-    foreach ($menu_data as $menu_item) {
-        $opts = array('attributes' => _default_menu_options($menu_item));
-        if (($uri_substr == 'bsd/header') || ($uri_substr == 'bsd/footer')) {
-            $opts['absolute'] = TRUE;
-        }
-        $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-
-        $columns[$column_idx][] = "<li>" . $link . "</li>";
-
-        if (count($columns[$column_idx]) > $half) {
-            $column_idx++;
-        }
-    }
-    $menu_cols = "";
-    // add links to column 0 up to max #, then add the rest to second column
-    foreach ($columns as $col) {
-        $menu_cols .= "<div class='column'><ul>" . implode($col) . "</ul></div>\n";
-    }
-    return $menu_cols;
-}
-
-function _render_footer_links_menu_as_piped($menu_key) {
-    $menu_data = _tp_menu_tree_data($menu_key);
-    $uri = drupal_get_path_alias($_GET['q']);
-    $uri_substr = substr($uri, 0, 14);
-    $total_items = count($menu_data);
-    $column_idx = 0;
-    $x = 0;
-    foreach ($menu_data as $menu_item) {
-        $x++;
-        $opts = array('attributes' => _default_menu_options($menu_item));
-        if (($uri_substr == 'bsd/header') || ($uri_substr == 'bsd/footer')) {
-            $opts['absolute'] = TRUE;
-        }
-        $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-        if ($x < $total_items) {
-            $columns[$column_idx][] = $link . " | ";
-        } else {
-            $columns[$column_idx][] = $link;
-        }
-    }
-    $menu_cols = "";
-    foreach ($columns as $col) {
-        $menu_cols .= "<div class='links'>" . implode($col) . "</div>\n";
-    }
-    return $menu_cols;
-}
-
-function _tp_col_depth($total, $col_limit, $remainder) {
-    return floor($total / $col_limit) + ( $remainder === 0 ? 0 : 1);
-}
-
-function _tp_menu_tree_data($menu_key) {
-    $menu_data = menu_tree_page_data($menu_key);
-    return $menu_data;
-}
-
-function _default_menu_options($menu_item) {
-    $menu_opts = empty($menu_item['link']['options']['attributes']) ? array() : $menu_item['link']['options']['attributes'];
-    return $menu_opts;
 }
 
 /**
@@ -886,10 +762,6 @@ function takepart3_search_api_page_result(array $variables) {
     return $output;
 }
 
-function _render_tp3_header_search_form() {
-    return module_invoke('search_api_page', 'block_view', '2');
-}
-
 /**
  * find the authors of a nid.
  * Uses a caching mechanism based on static variable
@@ -940,21 +812,8 @@ function _get_author($nid) {
  * Helper functions for header / footer.
  */
 function _tp3_fill_template_vars(&$variables) {
-    if ((!isset($variables['top_nav'])) || (!$variables['top_nav'])) {
-        $uri = drupal_get_path_alias($_GET['q']);
-        $uri_substr = substr($uri, 0, 14);
-        if (($uri_substr == 'bsd/header') || ($uri_substr == 'bsd/footer')) {
-            $variables['top_nav'] = _render_tp3_main_menu_bsd();
-        }
-    }
-    if ((!isset($variables['participant_pulldown'])) || (!$variables['participant_pulldown'])) {
-        $variables['participant_pulldown'] = _render_tp3_participant_pulldown();
-    }
     if ((!isset($variables['takepart_theme_path'])) || (!$variables['takepart_theme_path'])) {
         $variables['takepart_theme_path'] = drupal_get_path('theme', 'takepart3');
-    }
-    if ((!isset($variables['search_takepart_form'])) || (!$variables['search_takepart_form'])) {
-        $variables['search_takepart_form'] = _render_tp3_header_search_form();
     }
     if ((!isset($variables['follow_us_links'])) || (!$variables['follow_us_links'])) {
         $variables['follow_us_links'] = theme('takepart3_follow_us_links', $variables);
@@ -1001,12 +860,6 @@ function _render_tp3_bsd_wrapper(&$vars) {
  */
 function takepart3_theme() {
     return array(
-        'takepart3_wrapper_footer' => array(
-            'template' => 'templates/pages/footer-bsd',
-            'arguments' => array(
-                'params' => NULL,
-            ),
-        ),
         'takepart3_follow_us_links' => array(
             'template' => 'templates/pages/follow_us_links',
             'arguments' => array(
