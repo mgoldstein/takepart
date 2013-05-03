@@ -808,18 +808,6 @@ function _get_author($nid) {
     return $authors;
 }
 
-/**
- * Helper functions for header / footer.
- */
-function _tp3_fill_template_vars(&$variables) {
-    if ((!isset($variables['takepart_theme_path'])) || (!$variables['takepart_theme_path'])) {
-        $variables['takepart_theme_path'] = drupal_get_path('theme', 'takepart3');
-    }
-    if ((!isset($variables['follow_us_links'])) || (!$variables['follow_us_links'])) {
-        $variables['follow_us_links'] = theme('takepart3_follow_us_links', $variables);
-    }
-}
-
 function _render_tp3_wrapper_footer(&$params) {
     return theme('takepart3_wrapper_footer', $params);
 }

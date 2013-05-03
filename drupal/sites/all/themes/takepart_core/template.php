@@ -65,7 +65,7 @@ function _render_tp3_user_menu($variables) {
     return _smenu(menu_tree_output($menu_data));
 }
 
-function takepart_core_preprocess_html(&$vars) {
+function takepart_core_preprocess_html(&$variables) {
     // Optimizely
     drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
         'type' => 'external',
@@ -74,6 +74,11 @@ function takepart_core_preprocess_html(&$vars) {
         'every_page' => TRUE,
         'weight' => -1,
     ));
+
+	// Batshit crazy nav stuff
+	if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
+		$variables['user_nav'] = _render_tp3_user_menu($variables);
+	}
 }
 
 function takepart_core_menu_link(array $variables) {
@@ -98,6 +103,22 @@ function takepart_core_form_search_api_page_search_form_site_search_alter(&$form
 }
 
 /* Custom functions */
+
+/**
+ * Helper functions for header / footer.
+ */
+function _tp3_fill_template_vars(&$variables) {
+    if ((!isset($variables['takepart_theme_path'])) || (!$variables['takepart_theme_path'])) {
+        $variables['takepart_theme_path'] = drupal_get_path('theme', 'takepart3');
+    }
+    if ((!isset($variables['follow_us_links'])) || (!$variables['follow_us_links'])) {
+        $variables['follow_us_links'] = theme('takepart3_follow_us_links', $variables);
+    }
+	// Batshit crazy nav stuff
+	if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
+		$variables['user_nav'] = _render_tp3_user_menu($variables);
+	}
+}
 
 function _render_tp3_header(&$params) {
     return theme('takepart3_header', $params);
