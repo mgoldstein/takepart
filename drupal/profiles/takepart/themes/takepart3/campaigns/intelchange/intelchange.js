@@ -202,7 +202,6 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var $currentContent;
     var modalHash = 'vote_';
     var justVoted = false;
-    var $hashFinalist = $contentNavs.filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
     var confirmFormOptInHandler = function(e){
         var $container = $(this).parents('.vote-confirm');
         if ($(this).find('input').is(':checked')){
@@ -218,6 +217,9 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
 
         // Return if clicked current finalist
         if ($currentNav === navItem) return;
+
+        // Store current content so we can swap it out
+        var $from = $currentContent;
 
         // Stop Current Video (Hide it)
         if ($currentContent){
@@ -246,6 +248,12 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
             $videotpl.parent().append($video);
             //$videotpl.remove();
         }
+
+        // optional fade animation
+        if ($from){
+            swap($from, $currentContent, $contentInfo);
+        }
+
     };
     var scrollTopFinalists = function(){
         $('body').scrollTo('.second-block', 0);
@@ -253,17 +261,10 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     var finalistMenuClickHandler = function(e) {
         e.preventDefault();
         if ( this === $currentNav[0] ) return;
-        
-        // Store current content so we can swap it out
-        var $from = $currentContent;
-
-        // Set new current finalist
-        setCurFinalist($(this));
-        
-        // optional fade animation
-        swap($from, $currentContent, $contentInfo);
-
-        window.location.hash = $currentContent.data('finalisttoken');
+        window.location.hash = $($(this)[0].hash).data('finalisttoken');
+    };
+    var hashChangeHandler = function(e){
+        setCurFinalist($contentNavs.filter('[href="' + window.location.href + '"]'));
         scrollTopFinalists();
     };
     var showVoteModal = function(contentToShow){
@@ -326,6 +327,8 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         // Confirm vote form opt in handler
         .delegate('.vote-confirm .form-item-entry-opt-in', 'click', confirmFormOptInHandler);
 
+    $(window).bind('hashchange', hashChangeHandler);
+
     /* drupal behavior binding for vote confirm */
     Drupal.behaviors.confirmFormSubmit = {
         attach: voteConfirmSubmit
@@ -341,6 +344,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     });
 
     // initialize finalist on load
+    var $hashFinalist = $contentNavs.filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
     if ($hashFinalist.length > 0){
         // if #finalistToken or #modalToken_finalistToken
         setCurFinalist($hashFinalist);
