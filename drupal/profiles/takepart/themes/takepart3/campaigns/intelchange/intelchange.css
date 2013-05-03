@@ -1421,12 +1421,12 @@
 .page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-two .finalist a.active::before {
   border-color: transparent rgb(243, 116, 36) transparent;
 }
-.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-one .finalist a.active::after {
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-one .finalist a::after {
   border-right-color: transparent;
   border-right-width: 0;
   left: 100%;
 }
-.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-two .finalist a.active::before {
+.page-wordlet-intelchange-vote #page .second-block .vote .finalists-menu .sect-two .finalist a::before {
   border-left-color: transparent;
   border-left-width: 0;
   right: 100%;
