@@ -403,6 +403,8 @@
 
 .multipage-campaign #site-search .form-item input {
 	height: 24px;
+	line-height: 24px;
+	width: 109px;
 }
 
 .multipage-campaign #site-search .form-submit {
@@ -414,7 +416,7 @@
 	padding: 12px 10px 0 0;
 }
 
-.multipage-campaign #site-user-nav .user-menu-my {
+.multipage-campaign #site-user-nav .first {
 	max-width: 75px;
 	overflow: hidden;
 	white-space: nowrap;
