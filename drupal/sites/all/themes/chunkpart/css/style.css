@@ -468,7 +468,7 @@ body #at16pt {
 	padding: .25em 0;
 	line-height: 24px;
 	text-decoration: none;
-	color: #000;
+	color: #555;
 }
 
 .node-type-article #article-comments-link a,
@@ -477,7 +477,7 @@ body #at16pt {
 	border-bottom: 1px solid #e8e8e8;
 }
 
-.node-type-article #article-social a:hover {
+.node-type-article #article-social a:hover:before {
 	opacity: .6;
 }
 
