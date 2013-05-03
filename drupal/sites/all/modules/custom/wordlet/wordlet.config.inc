@@ -288,6 +288,24 @@ function _wordlet_configuration() {
       'load' => array('site', 'patt_campaign'),
     ),
 
+    // Place at the Table - Alliances
+    'patt_videos' => array(
+      'title' => 'A Place at the Table - Videos',
+      'path' => 'place-at-the-table/videos',
+      'published' => TRUE,
+      'wrappers' => array('patt', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
     // Place at the Table - I Need Food Assistance
     'patt_assistance' => array(
       'title' => 'A Place at the Table - I Need Food Assistance',
