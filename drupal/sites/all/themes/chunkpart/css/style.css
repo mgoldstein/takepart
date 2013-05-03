@@ -711,6 +711,17 @@ body #at16pt {
 
 .node-type-article #article-image {
 	margin-bottom: 1em;
+	padding-bottom: .5em;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.node-type-article #article-image img {
+	margin-bottom: .5em;
+}
+
+.node-type-article #article-image figcaption {
+	font-size: 14px;
+	color: #777;
 }
 
 .node-type-article #article-author .follow {

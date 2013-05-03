@@ -66,9 +66,14 @@
 		</div>
 
 		<div id="article-content">
-			<div id="article-image">
+			<figure id="article-image">
 				<?=_simage($node, 'field_article_main_image')?>
-			</div>
+				<? if ( $caption = _s($field_article_main_image[0]['file'], 'field_media_caption', 'file') ): ?>
+					<figcaption>
+						<?=_s($caption) ?>
+					</figcaption>
+				<? endif ?>
+			</figure>
 
 			<? if ( $body = _s($node, 'body') ): ?>
 				<div id="article-body" class="cms">
