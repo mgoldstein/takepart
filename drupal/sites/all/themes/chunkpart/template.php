@@ -16,7 +16,7 @@ function chunkpart_preprocess_page(&$variables) {
   }
 
   $variables['header'] = _render_tp3_header($variables);
-  $variables['footer'] = _render_tp3_header($variables);
+  $variables['footer'] = _render_tp3_footer($variables);
 }
 
 /**
