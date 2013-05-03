@@ -710,18 +710,19 @@ body #at16pt {
 }
 
 .node-type-article #article-image {
-	margin-bottom: 1em;
-	padding-bottom: .5em;
-	border-bottom: 1px solid #e8e8e8;
+	margin-bottom: .75em;
 }
 
 .node-type-article #article-image img {
-	margin-bottom: .5em;
+	display: block;
 }
 
 .node-type-article #article-image figcaption {
 	font-size: 14px;
 	color: #777;
+	border-bottom: 1px solid #e8e8e8;
+	padding: .75rem 0;
+	line-height: 1.2;
 }
 
 .node-type-article #article-author .follow {
