@@ -1235,12 +1235,6 @@ function _render_tp3_bsd_wrapper(&$vars) {
  */
 function takepart3_theme() {
     return array(
-        'takepart3_header' => array(
-            'template' => 'templates/pages/header',
-            'arguments' => array(
-                'params' => NULL,
-            ),
-        ),
         'takepart3_footer' => array(
             'template' => 'templates/pages/footer',
             'arguments' => array(

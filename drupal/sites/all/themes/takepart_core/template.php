@@ -1,5 +1,23 @@
 <?php
 
+/*
+  Preprocess
+*/
+
+/**
+ * Implementation of hook_theme().
+ */
+function takepart_core_theme() {
+    return array(
+        'takepart3_header' => array(
+            'template' => 'templates/subtemplates/_header',
+            'arguments' => array(
+                'params' => NULL,
+            ),
+        ),
+    );
+}
+
 /* Template helpers */
 
 // pretty print arrays
