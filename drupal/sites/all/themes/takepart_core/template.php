@@ -24,6 +24,29 @@ function takepart_core_theme() {
     );
 }
 
+function takepart_core_preprocess_html(&$vars) {
+    // Optimizely
+    drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
+        'type' => 'external',
+        'scope' => 'footer',
+        'group' => JS_DEFAULT,
+        'every_page' => TRUE,
+        'weight' => -1,
+    ));
+}
+
+function takepart_core_menu_link(array $variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+  $element['#localized_options']['absolute'] = TRUE;
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
 /* Custom functions */
 
 function _render_tp3_header(&$params) {
@@ -151,6 +174,10 @@ function _smenu($menu) {
 
   // Strip drupal system class
   foreach( $items as $ikey => &$item ) {
+    //if ( substr($item['#href'], 0, 4) == 'http' ) {
+	//	$items[$ikey]['#href'] = $_SERVER['HTTP_HOST'] . $item['#href'];
+    //}
+
     foreach ( $item['#attributes']['class'] as $ckey => $class ) {
       if ( $class == 'leaf' ) {
         // Pretty hacky, but whatcha gonna do :\

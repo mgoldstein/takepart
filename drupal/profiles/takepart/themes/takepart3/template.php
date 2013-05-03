@@ -66,14 +66,6 @@ function takepart3_preprocess_html(&$vars) {
     $vars['is_iframed'] = FALSE;
     $vars['logo'] = Tp3Site::$logo;
 
-    // Optimizely
-    drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
-        'type' => 'external',
-        'scope' => 'footer',
-        'group' => JS_DEFAULT,
-        'every_page' => TRUE,
-        'weight' => -1,
-    ));
     drupal_add_library('system', 'jquery.cookie');
 
     if (
@@ -219,16 +211,6 @@ function takepart3_preprocess_page(&$variables) {
     return $variables;
 }
 
-/**
- * Helper to output the custom HTML for out main menu.
- * starting release 342 we are using a new design and dropdown menu
- * We need to have the menus children rendered
- */
-function _render_tp3_main_menu() {
-    $tree = menu_tree("main-menu");
-    return drupal_render($tree);
-}
-
 function _render_tp3_main_menu_bsd() {
     $menu_data = menu_tree_page_data("main-menu");
     $links = array();
@@ -252,143 +234,6 @@ function _render_tp3_main_menu_bsd() {
         $i++;
     }
     return "<ul class='menu'>" . implode($links) . "</ul>";
-}
-
-/**
- * Helper to output the custom HTML for out main menu.
- */
-function _render_tp3_user_menu($variables) {
-    // dpm($vars);
-    $menu_data = menu_tree_page_data("user-menu");
-    $uri = drupal_get_path_alias($_GET['q']);
-    $uri_substr = substr($uri, 0, 14);
-    $links = array();
-    foreach ($menu_data as $menu_item) {
-        $opts = array(
-            'attributes' => _default_menu_options($menu_item),
-        );
-        if (($uri_substr == 'bsd/header') || ($uri_substr == 'bsd/footer')) {
-            $opts['absolute'] = TRUE;
-        }
-
-        $opts['attributes']['class'][] = 'user-menu-' . strtolower($menu_item['link']['title']);
-
-        if (empty($opts['attributes']['title'])) {
-            unset($opts['attributes']['title']);
-        }
-
-        if ($menu_item['link']['href'] == 'user') {
-            if (user_is_logged_in()) {
-                global $user;
-                if (function_exists('_takepart_facebookapis_get_user_session')) {
-                    $fbsession = _takepart_facebookapis_get_user_session();
-                    $username = $fbsession->name;
-                    if ($username == '') {
-                        $username = $user->name;
-                    }
-                } else {
-                    $username = $user->name;
-                }
-
-                if ($variables['node']->type == 'venue' || $variables['node']->type == 'action'
-                        || $variables['node']->type == 'petition_action' || $variables['node']->type == 'pledge_action'
-                        || (!empty($variables['node']->field_multi_page_campaign[$variables['node']->language][0]['context']))) {
-                    if (strlen($username) > 10 && isset($fbsession->first_name) && isset($fbsession->last_name)) {
-                        $username = $fbsession->first_name . " " . substr($fbsession->last_name, 0, 1);
-                        if (strlen($username) < 10) {
-                            $username = $username . ".";
-                        }
-                    }
-                }
-                $menu_item['link']['title'] = $username;
-                $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');
-            } else {
-                $opts['attributes']['class'][] = 'join-login';
-                if ( ($uri != 'iframes/slim-header') && ($uri != 'iframes/header') ) {
-                    $opts['query'] = drupal_get_destination();
-                }
-                $menu_item['link']['title'] = variable_get("takepart_user_login_link_name", "Login");
-            }
-        } else {
-            switch ($menu_item['link']['href']) {
-                case 'user/register':
-                    $opts['attributes']['class'][] = 'join-takepart';
-                    break;
-            }
-        }
-        if (empty($menu_item['link']['href'])) {
-            $link = $menu_item['link']['title'];
-        } else {
-            $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-        }
-        $links[] = '<li class="login-' . count($links) . '">' . $link . "</li>";
-    }
-    $output = "<ul id='user-nav'>" . implode($links) . "</ul>";
-    return $output;
-}
-
-/**
- * Helper to output the custom HTML for out hot topic menu.
- * could be refactored to just one menu themer, but since the class and such were
- * sllightly different, waiting to see how the submenus pan out.
- */
-function _render_tp3_hottopics_menu() {
-    $menu_data = menu_tree_page_data("menu-hot-topics");
-
-    $uri = drupal_get_path_alias($_GET['q']);
-    $uri_substr = substr($uri, 0, 14);
-
-    $count = count($menu_data);
-    $i = 0;
-    foreach ($menu_data as $menu_item) {
-        $opts = array(
-            'attributes' => _default_menu_options($menu_item),
-        );
-        if (($uri_substr == 'bsd/header') || ($uri_substr == 'bsd/footer')) {
-            $opts['absolute'] = TRUE;
-        }
-        $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-        if ($i == 0) {
-            $li = '<li class="first">';
-        } else if ($i == ($count - 1)) {
-            $li = '<li class="last">';
-        } else {
-            $li = '<li>';
-        }
-        $links[] = $li . $link . "</li>";
-        $i++;
-    }
-    return "<ul class='clearfix'>" . implode($links) . "</ul>";
-}
-
-/**
- * Helper to output the custom HTML for our don't miss menu in header nav.
- */
-function _render_tp3_dontmiss_menu() {
-    $menu_data = menu_tree_page_data("menu-don-t-miss");
-    $uri = drupal_get_path_alias($_GET['q']);
-    $uri_substr = substr($uri, 0, 14);
-    $count = count($menu_data);
-    $i = 0;
-    foreach ($menu_data as $menu_item) {
-        $opts = array(
-            'attributes' => _default_menu_options($menu_item),
-        );
-        if (($uri_substr == 'bsd/header') || ($uri_substr == 'bsd/footer')) {
-            $opts['absolute'] = TRUE;
-        }
-        $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-        if ($i == 0) {
-            $li = '<li class="first">';
-        } else if ($i == ($count - 1)) {
-            $li = '<li class="last">';
-        } else {
-            $li = '<li>';
-        }
-        $links[] = $li . $link . "</li>";
-        $i++;
-    }
-    return "<ul class='clearfix'>" . implode($links) . "</ul>";
 }
 
 function _render_tp3_participant_pulldown() {
@@ -416,48 +261,6 @@ function _render_tp3_participant_pulldown() {
         $i++;
     }
     return '<ul class="clearfix">' . implode($links) . "</ul>";
-}
-
-function _render_footer_links_menu($menu_key) {
-    $menu_data = _tp_menu_tree_data($menu_key);
-    $uri = drupal_get_path_alias($_GET['q']);
-    $uri_substr = substr($uri, 0, 14);
-    $links = array();
-    foreach ($menu_data as $menu_item) {
-        $opts = array(
-            'attributes' => _default_menu_options($menu_item),
-        );
-        if (($uri_substr == 'bsd/header') || ($uri_substr == 'bsd/footer')) {
-            $opts['absolute'] = TRUE;
-        }
-        $link = l($menu_item['link']['title'], $menu_item['link']['href'], $opts);
-        $links[] = "<li>" . $link . "</li>";
-    }
-    return "<ul class='clearfix global-links'>" . implode($links) . "</ul>";
-}
-
-function _render_tp3_corporate_links_menu() {
-    return _render_footer_links_menu("menu-takepart-links");
-}
-
-function _render_tp3_film_campaign_menu() {
-    return _render_footer_links_menu("menu-takepart-film-campaigns");
-}
-
-function _render_tp3_friends_takepart_menu() {
-    return _render_footer_links_menu('menu-takepart-friends');
-}
-
-function _render_tp3_topics_takepart_menu() {
-    return _render_menu_columns('menu-takepart-topics', 6);
-}
-
-function _render_tp3_topics_takepart_menu_piped() {
-    return _render_footer_links_menu_as_piped('menu-takepart-topics');
-}
-
-function _render_tp3_film_campaign_menu_piped() {
-    return _render_footer_links_menu_as_piped("menu-takepart-film-campaigns");
 }
 
 // so we need to render the menus as follows,
@@ -1142,39 +945,10 @@ function _tp3_fill_template_vars(&$variables) {
         $uri_substr = substr($uri, 0, 14);
         if (($uri_substr == 'bsd/header') || ($uri_substr == 'bsd/footer')) {
             $variables['top_nav'] = _render_tp3_main_menu_bsd();
-        } else {
-            $variables['top_nav'] = _render_tp3_main_menu();
         }
-    }
-    if ((!isset($variables['hottopic_nav'])) || (!$variables['hottopic_nav'])) {
-        $variables['hottopic_nav'] = _render_tp3_hottopics_menu();
-    }
-    if ((!isset($variables['dontmiss_nav'])) || (!$variables['dontmiss_nav'])) {
-        $variables['dontmiss_nav'] = _render_tp3_dontmiss_menu();
     }
     if ((!isset($variables['participant_pulldown'])) || (!$variables['participant_pulldown'])) {
         $variables['participant_pulldown'] = _render_tp3_participant_pulldown();
-    }
-    if ((!isset($variables['film_camp_nav'])) || (!$variables['film_camp_nav'])) {
-        $variables['film_camp_nav'] = _render_tp3_film_campaign_menu();
-    }
-    if ((!isset($variables['film_camp_nav_piped'])) || (!$variables['film_camp_nav_piped'])) {
-        $variables['film_camp_nav_piped'] = _render_tp3_film_campaign_menu_piped();
-    }
-    if ((!isset($variables['friends_takepart_nav'])) || (!$variables['friends_takepart_nav'])) {
-        $variables['friends_takepart_nav'] = _render_tp3_friends_takepart_menu();
-    }
-    if ((!isset($variables['takepart_topics_nav'])) || (!$variables['takepart_topics_nav'])) {
-        $variables['takepart_topics_nav'] = _render_tp3_topics_takepart_menu();
-    }
-    if ((!isset($variables['takepart_topics_nav_piped'])) || (!$variables['takepart_topics_nav_piped'])) {
-        $variables['takepart_topics_nav_piped'] = _render_tp3_topics_takepart_menu_piped();
-    }
-    if ((!isset($variables['corporate_links_nav'])) || (!$variables['corporate_links_nav'])) {
-        $variables['corporate_links_nav'] = _render_tp3_corporate_links_menu();
-    }
-    if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
-        $variables['user_nav'] = _render_tp3_user_menu($variables);
     }
     if ((!isset($variables['takepart_theme_path'])) || (!$variables['takepart_theme_path'])) {
         $variables['takepart_theme_path'] = drupal_get_path('theme', 'takepart3');
