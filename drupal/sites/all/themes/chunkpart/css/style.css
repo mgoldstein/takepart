@@ -815,6 +815,7 @@ body #at16pt {
 	margin-bottom: 1em;
 	font-size: 14px;
 	font-weight: bold;
+	line-height: 1.5;
 }
 
 .node-type-article #article-tags ul,
