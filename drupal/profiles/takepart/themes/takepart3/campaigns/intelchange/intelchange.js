@@ -132,9 +132,9 @@ else if ( $body.is('.page-wordlet-intelchange-contest') ) {
 
 else if ( $body.is('.page-wordlet-intelchange-contest-enter')) {
     Drupal.behaviors.contestEntryFormThankYou = {
-        attach: function (context) {            
+        attach: function (context) {
             if (context.is('.thank-you-message')){
-                
+
                 // scroll to top of thank you after loaded
                 $('html, body').animate({
                      scrollTop: context.offset().top
@@ -211,7 +211,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
             $container.find('.form-item-agree-to-rules').hide();
             $container.find('.footnote').hide();
         }
-        
+
     }
     var setCurFinalist = function(navItem){
 
@@ -254,6 +254,10 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
             swap($from, $currentContent, $contentInfo);
         }
 
+        // override scrollTo if not #vote_finalist
+        if (window.location.href.indexOf(modalHash) === -1){
+            scrollTopFinalists();
+        }
     };
     var scrollTopFinalists = function(){
         $('body').scrollTo('.second-block', 0);
@@ -262,16 +266,17 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         e.preventDefault();
         if ( this === $currentNav[0] ) return;
         window.location.hash = $($(this)[0].hash).data('finalisttoken');
+        scrollTopFinalists();
     };
     var hashChangeHandler = function(e){
-        setCurFinalist($contentNavs.filter('[href="' + window.location.href + '"]'));
-        scrollTopFinalists();
+        e.preventDefault();
+        setCurFinalist($contentNavs.filter('[href="' + getCleanUrl() + '"]'));
     };
     var showVoteModal = function(contentToShow){
         var $voteModalWrapper = $currentContent.find('.modal-wrapper');
         $.tpmodal.show({id: 'intelforchange_',node: contentToShow, afterClose: function(){
             $voteModalWrapper.append(contentToShow);
-            
+
             // Reload page if close thank you modal
             if (justVoted){
                 location.reload();
@@ -284,7 +289,7 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
         var $confirmModalContent = $('.vote-confirm', $voteModalWrapper);
         var notLoggedIn = $fbModalContent.length > 0;
         var $contentToShow = notLoggedIn ? $fbModalContent : $confirmModalContent;
-        
+
         // only prevent default if not logged in (for the fb login return url)
         if (!notLoggedIn){
             e.preventDefault();
@@ -315,6 +320,22 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
             showVoteModal($contentToShow);
         }
     };
+    var getCleanUrl = function(ignoreModalHash){
+        // remove hash and query string
+        var url = window.location.href.split("?")[0].split("#")[0];
+
+        // add hash back on
+        if (!!window.location.hash){
+            url = url + window.location.hash;
+        }
+
+        // remove modal hash if necessary
+        if (ignoreModalHash){
+            url = url.replace(modalHash, '');
+        }
+
+        return url;
+    };
 
     // body delegates
     $body
@@ -344,15 +365,13 @@ else if ( $body.is('.page-wordlet-intelchange-vote') ) {
     });
 
     // initialize finalist on load
-    var $hashFinalist = $contentNavs.filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
-    if ($hashFinalist.length > 0){
+    if (!!window.location.hash){
         // if #finalistToken or #modalToken_finalistToken
+        var $hashFinalist = $contentNavs.filter('[href="' + getCleanUrl(true) + '"]');
         setCurFinalist($hashFinalist);
-        if (window.location.href.indexOf(modalHash) !== -1){
+        if (getCleanUrl().indexOf(modalHash) !== -1){
             // if #modalToken_finalistToken (exapmle: #vote_one)
             $currentContent.find('.vote-btn a').trigger('click');
-        } else {
-            scrollTopFinalists();
         }
     } else {
         // else use first finalist in menu
