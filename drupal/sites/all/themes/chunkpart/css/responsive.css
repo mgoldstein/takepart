@@ -15,6 +15,7 @@
 		max-width: 100% !important;
 	}
 
+	html,
 	body {
 		font-size: 10px;
 	}
@@ -200,6 +201,7 @@
 	#site-secondary {
 		width: auto;
 		float: none;
+		margin-top: 2em;
 	}
 
 	#site-secondary .block {

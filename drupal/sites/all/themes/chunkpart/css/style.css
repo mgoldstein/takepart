@@ -27,6 +27,7 @@
 
 html {
 	min-height: 100%;
+	font-size: 20px;
 }
 
 body {
@@ -811,7 +812,6 @@ body #at16pt {
 
 /* Article Tags */
 .node-type-article #article-tags {
-	display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
 	margin-bottom: 1em;
 	font-size: 14px;
 	font-weight: bold;
@@ -912,7 +912,7 @@ body #at16pt {
 	margin-bottom: .5em;
 	padding-bottom: .5em;
 	border-bottom: 1px solid #e8e8e8;
-	margin-top: 1.5em;
+	margin-top: 2rem;
 	font-size: 20px;
 }
 
