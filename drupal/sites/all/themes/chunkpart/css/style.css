@@ -359,6 +359,10 @@ body #at16pt {
 	line-height: 1;
 }
 
+.node-type-article #article-badge {
+	margin-bottom: -10px;
+}
+
 /* Badge */
 
 .node-type-article #article-badge a {
