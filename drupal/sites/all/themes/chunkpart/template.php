@@ -14,6 +14,24 @@ function chunkpart_preprocess_page(&$variables) {
   $variables['footer'] = _render_tp3_footer($variables);
 }
 
+function chunkpart_preprocess_html(&$variables) {
+}
+
+function chunkpart_css_alter(&$css) {
+  // Pull important styles from the themes .info file and place them above all stylesheets.
+  foreach ($css as $i => $style_from_foo) {
+    $dirname = dirname($i);
+    $basename = basename($i);
+//var_dump(file_exists($dirname . '/generated/' . $basename));
+    if ( file_exists($dirname . '/generated/' . $basename) ) {
+      $new = str_replace($basename, 'generated/' . $basename, $i);
+      //$css[$new]['data'] = $new;
+      //unset($css[$i]);
+      $css[$i]['data'] = $new;
+    }
+  }
+}
+
 /*
 
 function takepart3_preprocess_entity(&$variables, $hook) {
