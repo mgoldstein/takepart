@@ -37,14 +37,14 @@
 		</div>
 	<? endif ?>
 
-	<? if ( $w = wf('top_nav', 'token', 'patt_alliances') ): ?>
+	<? if ( $w = wf('top_nav', 'token', 'patt_videos') ): ?>
 		<div class="item cola">
 			<img class="item full" src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-cola-full-touch.png" width="148" height="136" alt="glass full with cola" usemap="#cola">
 			<a class="tag" href="<?=$w->href?>">
 				<img
-				 src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-tag-alliances.png"
-				 data-onsrc="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-tag-alliances-hover.png"
-				 width="155" height="151" alt="alliances" usemap="#alliances">
+				 src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-tag-videos.png"
+				 data-onsrc="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-tag-videos-hover.png"
+				 width="155" height="151" alt="Videos">
 			</a>
 		</div>
 	<? endif ?>

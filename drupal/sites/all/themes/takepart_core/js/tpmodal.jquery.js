@@ -17,6 +17,7 @@ var defaults = {
 	autoReposition: true,
 	height: null,
 	width: null,
+	alertOnChange: false,
 
 	urlSelector: '',
 	url: null,
@@ -294,7 +295,7 @@ var tpmodal = function(parameters) {
 			ajaxer = null;
 		}
 
-		if ( form_edited && !confirm('Form has been edited. Continue?') ) return false;
+		if ( settings.alertOnChange && form_edited && !confirm('Form has been edited. Continue?') ) return false;
 
 		$modal.unbind('click', hide_modal);
 

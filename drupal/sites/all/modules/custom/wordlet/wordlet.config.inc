@@ -277,6 +277,24 @@ function _wordlet_configuration() {
       'load' => array('site', 'patt_campaign'),
     ),
 
+    // Place at the Table - Alliances
+    'patt_videos' => array(
+      'title' => 'A Place at the Table - Videos',
+      'path' => 'place-at-the-table/videos',
+      'published' => TRUE,
+      'wrappers' => array('patt', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
     // Place at the Table - I Need Food Assistance
     'patt_assistance' => array(
       'title' => 'A Place at the Table - I Need Food Assistance',
@@ -387,7 +405,7 @@ function _wordlet_configuration() {
     // Intel Girls Home
     'intel_girls_home' => array(
       'title' => 'Intel Girls Home',
-      'path' => 'intelforchange',
+      'path' => 'intelforchangeold',
       'published' => TRUE,
       'wrappers' => array('campaign', 'html'),
       'css' => array(
@@ -410,7 +428,7 @@ function _wordlet_configuration() {
     'intelchange_home' => array(
       'title' => 'Intel For Change - Home',
       'path' => 'intelforchange',
-      'published' => true,
+      'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
@@ -428,7 +446,7 @@ function _wordlet_configuration() {
     'intelchange_about' => array(
       'title' => 'Intel For Change - About',
       'path' => 'intelforchange/about',
-      'published' => true,
+      'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
@@ -446,7 +464,7 @@ function _wordlet_configuration() {
     'intelchange_contest' => array(
       'title' => 'Intel For Change - Contest',
       'path' => 'intelforchange/contest',
-      'published' => true,
+      'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
@@ -468,6 +486,25 @@ function _wordlet_configuration() {
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange/intelchange.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange/intelchange.js',
+      ),
+      'load' => array('site', 'intelchange_campaign'),
+    ),
+
+    // Intel For Change - Vote
+    'intelchange_vote' => array(
+      'title' => 'Intel For Change - Vote',
+      'path' => 'intelforchange/contest/vote',
+      'published' => TRUE,
+      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'css' => array(
+        'campaigns/reset.css',
+        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
       ),
