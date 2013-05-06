@@ -936,7 +936,7 @@
   list-style: none;
   padding: 0;
 }
-.page-wordlet-intelchange-contest #page .country_body li {
+.page-wordlet-intelchange-contest #page .country_body ul li {
   margin-bottom: 1em;
   padding-left: 4em;
   background: url(/profiles/takepart/themes/takepart3/campaigns/intelchange/images/pencil.png) no-repeat 0.5em 0.5em;
