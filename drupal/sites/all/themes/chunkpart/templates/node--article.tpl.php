@@ -66,14 +66,16 @@
 		</div>
 
 		<div id="article-content">
-			<figure id="article-image">
-				<?=_simage($node, 'field_article_main_image')?>
-				<? if ( $caption = _s($field_article_main_image[0]['file'], 'field_media_caption', 'file') ): ?>
-					<figcaption>
-						<?=_s($caption) ?>
-					</figcaption>
-				<? endif ?>
-			</figure>
+			<? if ( ($image = _simage($node, 'field_article_main_image')) ): ?>
+				<figure id="article-image">
+					<?=$image?>
+					<? if ( $caption = _s($field_article_main_image[0]['file'], 'field_media_caption', 'file') ): ?>
+						<figcaption>
+							<?=_s($caption) ?>
+						</figcaption>
+					<? endif ?>
+				</figure>
+			<? endif ?>
 
 			<? if ( $body = _s($node, 'body') ): ?>
 				<div id="article-body" class="cms">
