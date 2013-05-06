@@ -30,6 +30,49 @@ function wordlet_patt_snap_page_alter($page) {
     return '';
 }
 
+function wordlet_intelchange_vote_page_alter($page) {
+    if (isset($_GET['finalist'])) {
+        $w = wordlet_find('finalists', 'token', $_GET['finalist']);
+        if ($w && $w->small_src) {
+            $metatag = array(
+                '#type' => 'html_tag',
+                '#tag' => 'meta',
+                '#attributes' => array(
+                    'property' => 'og:image',
+                    'content' => $w->small_src,
+                ),
+            );
+
+            drupal_add_html_head($metatag, 'facebook_image');
+        }
+        if ($w && $w->single && $w->multi_short) {
+            $metatag = array(
+                '#type' => 'html_tag',
+                '#tag' => 'meta',
+                '#attributes' => array(
+                    'property' => 'og:title',
+                    'content' => 'Check out this Intel for Change finalist: ' . $w->single(false) . ' (' . strip_tags($w->multi_short(false)) . ')',
+                ),
+            );
+
+            drupal_add_html_head($metatag, 'facebook_title');
+        }
+        if ($w && w('content_full_'.$w->token)->multi(false)) {
+            $metatag = array(
+                '#type' => 'html_tag',
+                '#tag' => 'meta',
+                '#attributes' => array(
+                    'property' => 'og:description',
+                    'content' => strip_tags(w('content_full_'.$w->token)->multi(false)),
+                ),
+            );
+
+            drupal_add_html_head($metatag, 'facebook_description');
+        }
+    }
+    return '';
+}
+
 /**
  * Each item of the array should be keyed as follows:
  * url (String, 21 characters ) http://www.google.com

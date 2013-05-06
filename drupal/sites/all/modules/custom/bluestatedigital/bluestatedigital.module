@@ -5,6 +5,8 @@
  */
 
 include_once dirname(__FILE__) . '/include/bsdapi/bsd.api.inc';
+include_once dirname(__FILE__) . '/include/bsdapi/bsd.service.inc';
+include_once dirname(__FILE__) . '/include/bsdapi/bsd.cache.inc';
 
 /**
  * Implements hook_help().
@@ -201,4 +203,70 @@ function bluestatedigital_get_api($api) {
     }
   }
   return $values[$api];
+}
+
+/**
+ * Create a pre-initialized instance of a Blue State Digital service.
+ *
+ * This function creates and initializes an instance of a Blue State Digital
+ * service using the settings defined on the Blue State Digital API
+ * configuration page.
+ *
+ * @param string $service
+ *   The name of the service to create, must be one of the following
+ *   - voting: the Voting service
+ *
+ * @return object|boolean
+ *   Instance of the requested service or FALSE if no such service is supported.
+ */
+function bluestatedigital_get_service($service) {
+  $values = &drupal_static(__FUNCTION__, array());
+  if (!isset($values[$service])) {
+
+    $api_id = variable_get('bluestatedigital_api_id', 'takepart-com');
+    $api_secret = variable_get('bluestatedigital_api_secret',
+      'ae2cbc9a230ba4c36a9972fb7eeef41e2f2c62f8');
+    $rest_method = variable_get('bluestatedigital_rest_method',
+      BlueStateDigitalApi::REST_METHOD_CURL);
+    $request_base = variable_get('bluestatedigital_api_url',
+      'http://secure.takepart.com/page/api/');
+    $secure_base = variable_get('bluestatedigital_api_secure_url',
+      'https://secure.takepart.com/page/api/');
+    $request_timeout = variable_get('bluestatedigital_curl_request_timeout',
+      10);
+
+    if ($service == 'voting') {
+      $values[$service] = new BlueStateDigitalVoting($api_id,
+        $api_secret, $rest_method, $request_base, $request_timeout);
+      $values[$service]->setCacheController(new DrupalBallotCacheController());
+    }
+    else {
+      $values[$service] = FALSE;
+    }
+  }
+  return $values[$service];
+}
+
+/**
+ * Cache controller that uses Drupal's cache.
+ */
+class DrupalBallotCacheController extends BlueStateDigitalCacheController{
+
+  public function get($key, &$value) {
+    $cached = cache_get($key);
+    if ($cached !== FALSE) {
+      $value = $cached;
+      return TRUE;
+    }
+    return FALSE;
+  }
+
+  public function set($key, $value) {
+    cache_set($key, $value);
+    return TRUE;
+  }
+
+  public function clear() {
+    cache_clear_all('ballot-', 'cache', TRUE);
+  }
 }
