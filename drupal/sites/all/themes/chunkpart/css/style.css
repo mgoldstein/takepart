@@ -894,8 +894,12 @@ body #at16pt {
 	margin: auto;
 }
 
-.node-type-article #topic_box li:first-child {
+.node-type-article #topic_box li {
 	margin-bottom: .5em;
+}
+
+.node-type-article #topic_box li:last-child {
+	margin-bottom: 0;
 }
 
 /* Comments */
