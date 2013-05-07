@@ -581,6 +581,89 @@ function _wordlet_configuration() {
       'load' => array('site', 'intelchange_winners_campaign'),
     ),
 
+    // ------------------------------------------
+    // Intel For Change (Interim Phase) Campaign ----------------
+    // ------------------------------------------
+    'intelchange_interim_campaign' => array(
+      'title' => 'Intel For Change Campaign',
+    ),
+
+    // Intel For Change - Home
+    'intelchange_interim_home' => array(
+      'title' => 'Intel For Change - Home',
+      'path' => 'intelforchange_interim',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_interim', 'campaign', 'html'),
+      'css' => array(
+        'campaigns/reset.css',
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange_interim/intelchange-interim.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange_interim/intelchange-interim.js',
+      ),
+      'load' => array('site', 'intelchange_interim_campaign'),
+    ),
+
+    // Intel For Change - About
+    'intelchange_interim_about' => array(
+      'title' => 'Intel For Change - About',
+      'path' => 'intelforchange_interim/about',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_interim', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/reset.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange_interim/intelchange-interim.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange_interim/intelchange-interim.js',
+      ),
+      'load' => array('site', 'intelchange_interim_campaign'),
+    ),
+
+    // Intel For Change - Contest
+    'intelchange_interim_contest' => array(
+      'title' => 'Intel For Change - Contest',
+      'path' => 'intelforchange_interim/contest',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_interim', 'campaign', 'html'),
+      'css' => array(
+        'campaigns/reset.css',
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange_interim/intelchange-interim.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange_interim/intelchange-interim.js',
+      ),
+      'load' => array('site', 'intelchange_interim_campaign'),
+    ),
+
+    // Intel For Change - Vote
+    'intelchange_interim_vote' => array(
+      'title' => 'Intel For Change - Vote',
+      'path' => 'intelforchange_interim/contest/vote',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_interim', 'campaign', 'html'),
+      'css' => array(
+        'campaigns/reset.css',
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange_interim/intelchange-interim.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange_interim/intelchange-interim.js',
+      ),
+      'load' => array('site', 'intelchange_interim_campaign'),
+    ),
+
 
   );
 }
