@@ -124,6 +124,14 @@ Jacked from:
     quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
+.cms q:before {
+    content: open-quote;
+}
+
+.cms q:after {
+    content: close-quote;
+}
+
 .cms blockquote {
     margin: 0 0 1em 1.5em;
     padding: 0 1.5em;

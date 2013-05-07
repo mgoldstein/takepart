@@ -315,6 +315,29 @@ body #at16pt {
 	border-color: #e8e8e8;
 }
 
+.cms .pull-quote {
+	padding: 1em;
+	float: left;
+	width: 50%;
+	border: 1px solid #e8e8e8;
+	border-left: none;
+	border-right: none;
+	background: #f9fbfc;
+	font-size: 20px;
+	line-height: 30px;
+	margin-right: 1em;
+	text-align: center;
+}
+
+.cms .photo-wrapper {
+	color: #777;
+	border-bottom: 1px solid #e8e8e8;
+	padding: .75rem 0;
+	line-height: 1.2;
+	margin-bottom: 1em;
+	line-height: 1.5;
+}
+
 /* ============================================================
 || 3.) Section Specific
 ============================================================ */
