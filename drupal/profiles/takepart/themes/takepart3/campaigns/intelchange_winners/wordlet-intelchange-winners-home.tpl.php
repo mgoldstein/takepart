@@ -55,9 +55,9 @@
             <?=w('vote_desc')?>
         </div>
         <p class="important">
-            <a href="<?=wu('intelchange_vote')?>"><?=w('view_finalists_cta')?></a>
+            <a href="<?=wu('intelchange_winners_vote')?>"><?=w('view_finalists_cta')?></a>
         </p>
-        
+
         <div class='more-wrapper' <?=wa('contest_more')?>>
             <div class="more">
                 <? $w = w('contest_more') ?>
@@ -88,7 +88,7 @@
                                     <div class="blurb"><?=$w->multi(false) ?></div>
                                 </div>
                                 <p class="important">
-                                    <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
+                                    <a href="<?=wu('intelchange_winners_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
                                 </p>
                             </li>
                         <? endforeach ?>

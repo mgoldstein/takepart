@@ -9,7 +9,7 @@
 				<? if ( $w = w('header_image') ): ?>
 					<h1 <?=wa('header_image')?>>
 						<span><?=$w->single?></span>
-						<a href="<?=wu('intelchange_home')?>"><img src="<?=$w->img_src?>" alt="intel for change logo" /></a>
+						<a href="<?=wu('intelchange_finalists_home')?>"><img src="<?=$w->img_src?>" alt="intel for change logo" /></a>
 					</h1>
 				<? endif ?>
 				<p class="presented" <?=wa('presented_by')?>>
@@ -27,7 +27,7 @@
 				</ul>
 				<script type="text/javascript">
 					var addthis_share = {
-					    url: "<?=wu('intelchange_home')?>"
+					    url: "<?=wu('intelchange_finalists_home')?>"
 					}
 				</script>
 				<div class="addThis">
