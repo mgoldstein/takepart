@@ -1,27 +1,33 @@
 <div class="first-block first-block-interim">
     <div class="intro-block">
-        <div class="intro-content">
-            <div class="intro-image" <?=wa('intro-image')?>>
-                <? if ( ($w = w('intro-image')) && $w->img_src ): ?>
-                    <p>
-                        <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
+        <div class="intro-block-inner">
+            <div class="intro-content">
+                <div class="intro-image" <?=wa('intro-image')?>>
+                    <? if ( ($w = w('intro-image')) && $w->img_src ): ?>
+                        <p>
+                            <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
+                        </p>
+                    <? elseif( wordlet_edit_mode() ): ?>
+                        Add Image
+                    <? endif ?>
+                </div>
+                <div class="intro-text">
+                    <div class="intro-blurb">
+                        <?=w('intro')?>
+                    </div>
+                    <p class="intro-link">
+                        <?=w('intro_link')?>
                     </p>
+                </div>
+            </div>
+            <p class="video-play" <?=wa('video')?>>
+                <? if ( w('video')->video ): ?>
+                    <a href="http://www.youtube.com/watch?v=<?=w('video')->video?>"><?=w('video')->single?></a>
+                <? elseif( wordlet_edit_mode() ): ?>
+                    Add Video
                 <? endif ?>
-            </div>
-            <div class="intro-blurb">
-                <?=w('intro')?>
-            </div>
-            <p class="intro-link">
-                <?=w('intro_link')?>
             </p>
         </div>
-        <p class="video-play" <?=wa('video')?>>
-            <? if ( w('video')->video ): ?>
-                <a href="http://www.youtube.com/watch?v=<?=w('video')->video?>"><?=w('video')->single?></a>
-            <? elseif( wordlet_edit_mode() ): ?>
-                Add Video
-            <? endif ?>
-        </p>
     </div>
 
     <script id="video-template" type="text/x-javascript-template">

@@ -325,7 +325,11 @@
   float: left;
   width: 100%;
 }
-
+.intro-block-inner {
+  position: relative;
+  display: inline-block; *display: inline; *zoom: 1;
+  vertical-align: top;
+}
 .page-wordlet-intelchange-interim-home .intro-image {
   float: left;
 }
@@ -337,6 +341,11 @@
 .page-wordlet-intelchange-interim-home .intro-content {
   padding-right: 290px;
   float: left;
+}
+
+.page-wordlet-intelchange-finalists-home .intro-text {
+  margin-left: 95px;
+  margin-bottom: 65px;
 }
 
 .page-wordlet-intelchange-interim-home .video-play {
