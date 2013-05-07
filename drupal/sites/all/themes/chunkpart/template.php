@@ -129,7 +129,7 @@ function takepart3_preprocess_entity(&$variables, $hook) {
                     if(isset($main_image[0]['fid'])) {
                         $img_url = file_load($main_image[0]['fid']);
                         if(isset($img_url->{'uri'})){
-                            $variables['custom_render'][$i]['thumbnail'] = image_style_url('thumbnail', $img_url->{'uri'});
+                            $variables['custom_render'][$i]['thumbnail'] = image_style_url('thumbnail_v2', $img_url->{'uri'});
                         }
                     }
 
