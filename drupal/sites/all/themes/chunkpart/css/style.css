@@ -309,6 +309,12 @@ body #at16pt {
 	background: url(../images/follow_tumblr.png) no-repeat;
 }
 
+/* cms overrides */
+
+.cms blockquote {
+	border-color: #e8e8e8;
+}
+
 /* ============================================================
 || 3.) Section Specific
 ============================================================ */

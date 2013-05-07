@@ -124,6 +124,13 @@ Jacked from:
     quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
+.cms blockquote {
+    margin: 0 0 1em 1.5em;
+    padding: 0 1.5em;
+    border-left: solid 1px #000;
+    display: block;
+}
+
 /*
  * Addresses inconsistent and variable font size in all browsers.
  */
