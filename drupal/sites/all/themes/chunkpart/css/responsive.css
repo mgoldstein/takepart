@@ -22,7 +22,7 @@
 
 	#site-header {
 		padding: 0;
-		min-height: auto;
+		min-height: 0;
 		position: static;
 		margin-bottom: 0;
 	}
@@ -80,6 +80,14 @@
 	#site-logo img {
 		width: 50px;
 		height: 50px;
+	}
+
+	#site-navs {
+		display: none;
+	}
+
+	.clickedon #site-navs {
+		display: block;
 	}
 
 	#site-main-nav {

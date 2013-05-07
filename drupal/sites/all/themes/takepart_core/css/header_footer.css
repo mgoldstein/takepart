@@ -201,6 +201,9 @@
 	margin: 0;
 	height: 34px;
 	padding-left: 10px;
+	border-radius: 0;
+	-webkit-appearance: none;
+	font-size: 16px;
 }
 
 #site-search .form-submit {
@@ -215,6 +218,7 @@
 	text-indent: 200%;
 	line-height: 200px;
 	overflow: hidden;
+	border-radius: 0;
 }
 
 #site-header #site-participant-nav {
