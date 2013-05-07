@@ -860,7 +860,7 @@ body #at16pt {
 	background-color: #28a9e9;
 	background-position: 14px 10px;
 	background-repeat: no-repeat;
-	background-image: url(../images/next_article_arrow.png); /** sprite-ref: mysprite; */
+	background-image: url(../images/next_article_arrow.png); /** sprite-ref: mysprite; sprite-margin-top: 10px; sprite-margin-left: 14px; */
 	position: absolute;
 	right: 0;
 	top: 0;
