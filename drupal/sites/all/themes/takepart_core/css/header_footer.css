@@ -247,7 +247,9 @@
 	border-left: 1px solid #d0d0d0;
 	height: 100%;
 	width: 33px;
-	background: url(../images/participant_nav_down.png) center center no-repeat;
+	background-repeat: no-repeat;
+	background-position: 12px 12px;
+	background-image: url(../images/participant_nav_down.png); /** sprite-ref: mysprite; */
 }
 
 #site-participant-nav p {
@@ -283,7 +285,9 @@
 
 #site-header #site-participant-nav.focusin:after,
 #site-header #site-participant-nav:hover:after {
-	background: url(../images/participant_nav_up.png) center center no-repeat;
+	background-repeat: no-repeat;
+	background-position: 12px 12px;
+	background-image: url(../images/participant_nav_up.png); /** sprite-ref: mysprite; */
 }
 
 #site-participant-nav.focusin ul,
@@ -396,30 +400,31 @@
 	height: 19px;
 	white-space: nowrap;
 	text-indent: 100%;
+	background-repeat: no-repeat;
 }
 
 .multipage-campaign #site-follow .facebook a {
-	background: url(../images/header_social_facebook.png) no-repeat;
+	background-image: url(../images/header_social_facebook.png); /** sprite-ref: mysprite; */
 }
 
 .multipage-campaign #site-follow .facebook a:hover {
-	background: url(../images/header_social_facebook_hover.png) no-repeat;
+	background-image: url(../images/header_social_facebook_hover.png); /** sprite-ref: mysprite; */
 }
 
 .multipage-campaign #site-follow .twitter a {
-	background: url(../images/header_social_twitter.png) no-repeat;
+	background-image: url(../images/header_social_twitter.png); /** sprite-ref: mysprite; */
 }
 
 .multipage-campaign #site-follow .twitter a:hover {
-	background: url(../images/header_social_twitter_hover.png) no-repeat;
+	background-image: url(../images/header_social_twitter_hover.png); /** sprite-ref: mysprite; */
 }
 
 .multipage-campaign #site-follow .rss a {
-	background: url(../images/header_social_rss.png) no-repeat;
+	background-image: url(../images/header_social_rss.png); /** sprite-ref: mysprite; */
 }
 
 .multipage-campaign #site-follow .rss a:hover {
-	background: url(../images/header_social_rss_hover.png) no-repeat;
+	background-image: url(../images/header_social_rss_hover.png); /** sprite-ref: mysprite; */
 }
 
 .multipage-campaign #site-search {
