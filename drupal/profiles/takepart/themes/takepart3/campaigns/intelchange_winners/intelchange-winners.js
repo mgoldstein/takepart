@@ -37,7 +37,7 @@ $body = $('body');
 // Page Specific -----------------
 
 // Home
-if ( $body.is('.page-wordlet-intelchange-home') ) {
+if ( $body.is('.page-wordlet-intelchange-winners-home') ) {
     var $video_template;
     var $first_block = $('.first-block');
     var $intro_block = $('.intro-block');
@@ -114,7 +114,7 @@ if ( $body.is('.page-wordlet-intelchange-home') ) {
     $('.finalists-menu').tpslide();
 }
 // Contest
-else if ( $body.is('.page-wordlet-intelchange-contest') ) {
+else if ( $body.is('.page-wordlet-intelchange-winners-contest') ) {
     var contentNav = $('.countries-nav');
     var content = $('.countries');
     var contentSections = content.children();
@@ -130,7 +130,7 @@ else if ( $body.is('.page-wordlet-intelchange-contest') ) {
     contentNav.find('li a').first().trigger('click');
 }
 
-else if ( $body.is('.page-wordlet-intelchange-contest-enter')) {
+else if ( $body.is('.page-wordlet-intelchange-winners-contest-enter')) {
     Drupal.behaviors.contestEntryFormThankYou = {
         attach: function (context) {
             if (context.is('.thank-you-message')){
@@ -157,7 +157,7 @@ else if ( $body.is('.page-wordlet-intelchange-contest-enter')) {
 
 
 // About
-else if ( $body.is('.page-wordlet-intelchange-about') ) {
+else if ( $body.is('.page-wordlet-intelchange-winners-about') ) {
     var contentNav = $('.content-nav');
     var contentInfo = $('.content-info');
     var contentSections = contentInfo.children();
@@ -190,7 +190,7 @@ else if ( $body.is('.page-wordlet-intelchange-about') ) {
 }
 
 // Vote
-else if ( $body.is('.page-wordlet-intelchange-vote') ) {
+else if ( $body.is('.page-wordlet-intelchange-winners-vote') ) {
 
     // variables
     var $voteWrap = $('.second-block .vote');
