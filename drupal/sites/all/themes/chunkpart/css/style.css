@@ -964,11 +964,11 @@ body #at16pt {
 	width: 24px;
 	height: 24px;
 	line-height: 23px;
-	vertical-align: middle;
 	text-align: center;
 	color: #fff;
 	font-family: sans-serif;
 	font-size: 11px;
+	vertical-align: bottom;
 }
 
 /* ============================================================
