@@ -211,11 +211,13 @@
 	height: 34px;
 	border: 1px solid #ccc;
 	border-left: none;
-	background: #fff url(../images/search_submit.png) center center no-repeat;
 	text-indent: 200%;
 	line-height: 200px;
 	overflow: hidden;
 	border-radius: 0;
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-image: url(../images/search_submit.png); /** sprite-ref: mysprite; */
 }
 
 #site-header #site-participant-nav {
@@ -249,7 +251,7 @@
 	width: 33px;
 	background-repeat: no-repeat;
 	background-position: 12px 12px;
-	background-image: url(../images/participant_nav_down.png); /** sprite-ref: mysprite; */
+	background-image: url(../images/participant_nav_down.png); /** sprite-ref: mysprite; sprite-margin-top: 12px; sprite-margin-left: 12px; sprite-margin-bottom: 12px */
 }
 
 #site-participant-nav p {
@@ -287,7 +289,7 @@
 #site-header #site-participant-nav:hover:after {
 	background-repeat: no-repeat;
 	background-position: 12px 12px;
-	background-image: url(../images/participant_nav_up.png); /** sprite-ref: mysprite; */
+	background-image: url(../images/participant_nav_up.png); /** sprite-ref: mysprite; sprite-margin-top: 12px; sprite-margin-left: 12px; sprite-margin-top: 12px; sprite-margin-bottom: 12px */
 }
 
 #site-participant-nav.focusin ul,

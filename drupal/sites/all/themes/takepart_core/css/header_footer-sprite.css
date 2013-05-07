@@ -210,11 +210,14 @@
 	height: 34px;
 	border: 1px solid #ccc;
 	border-left: none;
-	background: #fff url(../images/search_submit.png) center center no-repeat;
 	text-indent: 200%;
 	line-height: 200px;
 	overflow: hidden;
 	border-radius: 0;
+	background-color: #fff;
+	background-repeat: no-repeat;
+  background-image: url('style-sprite.png');
+  background-position: left -1235px;
 }
 
 #site-header #site-participant-nav {
@@ -249,7 +252,7 @@
 	background-repeat: no-repeat;
 	background-position: 12px 12px;
   background-image: url('style-sprite.png');
-  background-position: left -1235px;
+  background-position: left -1277px;
 }
 
 #site-participant-nav p {
@@ -288,7 +291,7 @@
 	background-repeat: no-repeat;
 	background-position: 12px 12px;
   background-image: url('style-sprite.png');
-  background-position: left -1254px;
+  background-position: left -1310px;
 }
 
 #site-participant-nav.focusin ul,
@@ -406,32 +409,32 @@
 
 .multipage-campaign #site-follow .facebook a {
   background-image: url('style-sprite.png');
-  background-position: left -1273px;
+  background-position: left -1343px;
 }
 
 .multipage-campaign #site-follow .facebook a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1302px;
+  background-position: left -1372px;
 }
 
 .multipage-campaign #site-follow .twitter a {
   background-image: url('style-sprite.png');
-  background-position: left -1331px;
+  background-position: left -1401px;
 }
 
 .multipage-campaign #site-follow .twitter a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1360px;
+  background-position: left -1430px;
 }
 
 .multipage-campaign #site-follow .rss a {
   background-image: url('style-sprite.png');
-  background-position: left -1389px;
+  background-position: left -1459px;
 }
 
 .multipage-campaign #site-follow .rss a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1418px;
+  background-position: left -1488px;
 }
 
 .multipage-campaign #site-search {
@@ -537,40 +540,40 @@ Footer ------------------------------------------------------------
 
 #site-connect .facebook a {
   background-image: url('style-sprite.png');
-  background-position: left -1447px;
+  background-position: left -1517px;
 }
 
 #site-connect .twitter a {
   background-image: url('style-sprite.png');
-  background-position: left -1481px;
+  background-position: left -1551px;
 }
 
 #site-connect .email a {
   background-image: url('style-sprite.png');
-  background-position: left -1515px;
+  background-position: left -1585px;
 }
 
 #site-connect .google a {
   background-image: url('style-sprite.png');
-  background-position: left -1549px;
+  background-position: left -1619px;
 }
 
 #site-connect .pinterest a {
   background-image: url('style-sprite.png');
-  background-position: left -1583px;
+  background-position: left -1653px;
 }
 
 #site-connect .linkedin a {
   background-image: url('style-sprite.png');
-  background-position: left -1617px;
+  background-position: left -1687px;
 }
 
 #site-connect .youtube a {
   background-image: url('style-sprite.png');
-  background-position: left -1651px;
+  background-position: left -1721px;
 }
 
 #site-connect .tumblr a {
   background-image: url('style-sprite.png');
-  background-position: left -1685px;
+  background-position: left -1755px;
 }
