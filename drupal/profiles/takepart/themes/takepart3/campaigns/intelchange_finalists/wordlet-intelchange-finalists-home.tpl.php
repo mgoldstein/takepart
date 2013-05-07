@@ -64,7 +64,7 @@
                 <? if ( $w->multi(false) ): ?>
                     <?=$w->multi(false)?>
                 <? elseif($w->single(false)): ?>
-                    <p><a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a></p>
+                    <p><a href="<?=wu('intelchange_finalists_contest')?>"><?=$w->single(false)?></a></p>
                 <? elseif(wordlet_edit_mode()): ?>
                     Add Link
                 <?endif?>
@@ -125,7 +125,7 @@
     </div>
 
     <div class="partners-block">
-        <a href="<?=wu('intelchange_about')?>#about-partners">
+        <a href="<?=wu('intelchange_finalists_about')?>#about-partners">
             <h4><?=w('partners_header')?></h4>
             <ul class="partners-list" <?=wa('partners_list')?>>
                 <? foreach ( wl('partners_list') as $w ): ?>
