@@ -17,7 +17,7 @@
         <h3><?=w('vote_header')?></h3>
 
         <div class="finalists-menu">
-        <? 
+        <?
        $finalists = wl('finalists', true);
         ?>
         <? foreach ( $finalists as $i => $w ): ?>
@@ -25,7 +25,7 @@
             <div class="sect-one">
             <?endif?>
                 <div class='finalist'>
-                    <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>" class="<?=$i==0?'active':''?> <?= (!w($w->token . '_vote_form')->form->vote_allowed && w($w->token . '_vote_form')->form->last_vote == w($w->token . '_vote_form')->form->vote_token) ? 'voted' : '' ?>">
+                    <a href="<?=wu('intelchange_winners_vote')?>#<?=$w->token?>" class="<?=$i==0?'active':''?> <?= (!w($w->token . '_vote_form')->form->vote_allowed && w($w->token . '_vote_form')->form->last_vote == w($w->token . '_vote_form')->form->vote_token) ? 'voted' : '' ?>">
                         <div class="portrait">
                             <div class="img-wrap">
                                 <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
@@ -64,7 +64,7 @@
                     </div>
                     <? if (w($w->token . '_vote_form')->form->vote_allowed): ?>
                     <p class="vote-btn important">
-                        <a href="<?=wu('intelchange_vote')?>#vote_<?=$w->token?>"><?=wr(w('vote_finalist_button'), $w)?></a>
+                        <a href="<?=wu('intelchange_winners_vote')?>#vote_<?=$w->token?>"><?=wr(w('vote_finalist_button'), $w)?></a>
                     </p>
                     <? elseif(w($w->token . '_vote_form')->form->last_vote == w($w->token . '_vote_form')->form->vote_token): ?>
                     <div class="already-voted-this">
@@ -87,7 +87,7 @@
                             <h5 class='title'><?=$w2->single(false)?></h5>
                             <div class='cms modal-content'><?=$w2->multi(false)?></div>
                             <div class='fb-connect-wrapper'>
-                                <fb:login-button onlogin="takepart_facebookapi_check_login_session0()" registration-url="/user/register?fbreg=true&destination=<?=urlencode(wu('intelchange_vote'))?>" fb_register="true" fb_only="false" width="530">Log In</fb:login-button>
+                                <fb:login-button onlogin="takepart_facebookapi_check_login_session0()" registration-url="/user/register?fbreg=true&destination=<?=urlencode(wu('intelchange_winners_vote'))?>" fb_register="true" fb_only="false" width="530">Log In</fb:login-button>
                             </div>
                         </div>
                         <? else: ?>
@@ -115,16 +115,16 @@
                             <? $w2 = w('thank_you_add_this'); ?>
                             <div class="addThis thanks-share">
                                 <a class="addthis_button_facebook at300b" title="Facebook" href="#"
-                                    addthis:url="<?=wu('intelchange_vote')?>?finalist=<?=$w->token?>#<?=$w->token?>">
+                                    addthis:url="<?=wu('intelchange_winners_vote')?>?finalist=<?=$w->token?>#<?=$w->token?>">
                                     <img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook">
                                 </a>
                                 <a class="addthis_button_twitter at300b" title="Tweet" href="#"
-                                    addthis:url="<?=wu('intelchange_vote')?>#<?=$w->token?>"
+                                    addthis:url="<?=wu('intelchange_winners_vote')?>#<?=$w->token?>"
                                     addthis:title="<?=wr($w2->single(false), $w)?>">
                                     <img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter">
                                 </a>
                                 <a class="addthis_button_email at300b" title="Email" href="#"
-                                    addthis:url="<?=wu('intelchange_vote')?>#<?=$w->token?>"
+                                    addthis:url="<?=wu('intelchange_winners_vote')?>#<?=$w->token?>"
                                     addthis:title="<?=wr($w2->single(false), $w)?>">
                                     <img src="/profiles/takepart/modules/takepart_addthis/images/ta_email_share.png" alt="Share by Email">
                                 </a>
@@ -155,16 +155,16 @@
                     <div class="addThis finalist-share"
                         <?=wa('finalist_add_this')?>>
                         <a class="addthis_button_facebook at300b" title="Facebook" href="#"
-                            addthis:url="<<?=wu('intelchange_vote')?>?finalist=<?=$w->token?>#<?=$w->token?>">
+                            addthis:url="<<?=wu('intelchange_winners_vote')?>?finalist=<?=$w->token?>#<?=$w->token?>">
                             <img src="/profiles/takepart/modules/takepart_addthis/images/ta_fb_share.png" alt="Share on Facebook">
                         </a>
                         <a class="addthis_button_twitter at300b" title="Tweet" href="#"
-                            addthis:url="<?=wu('intelchange_vote')?>#<?=$w->token?>"
+                            addthis:url="<?=wu('intelchange_winners_vote')?>#<?=$w->token?>"
                             addthis:title="<?=wr($w2->single(false), $w)?>">
                             <img src="/profiles/takepart/modules/takepart_addthis/images/ta_twitter_share.png" alt="Share on Twitter">
                         </a>
                         <a class="addthis_button_email at300b" title="Email" href="#"
-                            addthis:url="<?=wu('intelchange_vote')?>#<?=$w->token?>"
+                            addthis:url="<?=wu('intelchange_winners_vote')?>#<?=$w->token?>"
                             addthis:title="<?=wr($w2->single(false), $w)?>">
                             <img src="/profiles/takepart/modules/takepart_addthis/images/ta_email_share.png" alt="Share by Email">
                         </a>
