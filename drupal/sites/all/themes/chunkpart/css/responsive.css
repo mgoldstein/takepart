@@ -58,7 +58,8 @@
 		content: " ";
 		float: right;
 		display: block;
-		background: url(../images/sitenav_open.png) left top no-repeat;
+		background-repeat: no-repeat;
+		background-image: url(../images/sitenav_open.png); /** sprite-ref: mysprite; */
 		width: 25px;
 		height: 25px;
 		margin-top: 9px;
@@ -66,7 +67,7 @@
 	}
 
 	.clickedon #site-header-inner:after {
-		background: url(../images/sitenav_close.png) left top no-repeat;
+		background-image: url(../images/sitenav_close.png); /** sprite-ref: mysprite; */
 	}
 
 	#site-participant-nav {
@@ -167,35 +168,35 @@
 		display: inline-block;
 		content: " ";
 		vertical-align: middle;
-		background: url(../images/topic_culture.png) left top no-repeat;
+		background-repeat: no-repeat;
 	}
 
 	#site-main-nav .text-culture a:before {
-		background-image: url(../images/topic_culture.png);
+		background-image: url(../images/topic_culture.png); /** sprite-ref: mysprite; */
 	}
 
 	#site-main-nav .text-food a:before {
-		background-image: url(../images/topic_food.png);
+		background-image: url(../images/topic_food.png); /** sprite-ref: mysprite; */
 	}
 
 	#site-main-nav .text-environment a:before {
-		background-image: url(../images/topic_environment.png);
+		background-image: url(../images/topic_environment.png); /** sprite-ref: mysprite; */
 	}
 
 	#site-main-nav .text-wildlife a:before {
-		background-image: url(../images/topic_wildlife.png);
+		background-image: url(../images/topic_wildlife.png); /** sprite-ref: mysprite; */
 	}
 
 	#site-main-nav .text-social_action a:before {
-		background-image: url(../images/topic_social_action.png);
+		background-image: url(../images/topic_social_justice.png); /** sprite-ref: mysprite; */
 	}
 
 	#site-main-nav .text-education a:before {
-		background-image: url(../images/topic_education.png);
+		background-image: url(../images/topic_education.png); /** sprite-ref: mysprite; */
 	}
 
 	#site-main-nav .text-health a:before {
-		background-image: url(../images/topic_health.png);
+		background-image: url(../images/topic_health.png); /** sprite-ref: mysprite; */
 	}
 
 	#site-hot-nav {

@@ -285,27 +285,33 @@ body #at16pt {
 }
 
 .follow_us .facebook {
-	background-image: url(../images/follow_facebook.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -399px;
 }
 
 .follow_us .twitter {
-	background-image: url(../images/follow_twitter.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -433px;
 }
 
 .follow_us .google {
-	background-image: url(../images/follow_google.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -467px;
 }
 
 .follow_us .pinterest {
-	background-image: url(../images/follow_pinterest.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -501px;
 }
 
 .follow_us .youtube {
-	background-image: url(../images/follow_youtube.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -535px;
 }
 
 .follow_us .tumblr {
-	background-image: url(../images/follow_tumblr.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -569px;
 }
 
 /* cms overrides */
@@ -420,7 +426,8 @@ body #at16pt {
 }
 
 .node-type-article #article-badge a:before {
-	background-image: url(../images/article_badge_blue_left.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -603px;
 	height: 36px;
 	content: " ";
 	position: absolute;
@@ -431,7 +438,8 @@ body #at16pt {
 
 .node-type-article #article-badge a:after {
 	background-repeat: no-repeat;
-	background-image: url(../images/article_badge_blue_right.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -649px;
 	height: 36px;
 	content: " ";
 	position: absolute;
@@ -533,31 +541,38 @@ body #at16pt {
 }
 
 .node-type-article #article-social .tp-social-facebook:before {
-	background-image: url(../images/share_facebook.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -686px;
 }
 
 .node-type-article #article-social .tp-social-twitter:before {
-	background-image: url(../images/share_twitter.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -720px;
 }
 
 .node-type-article #article-social .tp-social-googleplus:before {
-	background-image: url(../images/share_google.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -754px;
 }
 
 .node-type-article #article-social .tp-social-email:before {
-	background-image: url(../images/share_email.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -788px;
 }
 
 .node-type-article #article-social .tp-social-reddit:before {
-	background-image: url(../images/share_reddit.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -822px;
 }
 
 .node-type-article #article-social #article-comments-link a:before {
-	background-image: url(../images/share_comments.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -856px;
 }
 
 .node-type-article #article-social-more h4 a:before {
-	background-image: url(../images/share_more.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -890px;
 }
 
 .node-type-article #article-social-more {
@@ -603,7 +618,8 @@ body #at16pt {
 	height: 7px;
 	float: right;
 	background-repeat: no-repeat;
-	background-image: url(../images/social_more_close.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -924px;
 }
 
 .node-type-article #article-more-shares a {
@@ -630,35 +646,43 @@ body #at16pt {
 }
 
 .node-type-article #article-more-shares .tp-social-myspace:before {
-	background-image: url(../images/social_more_myspace.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -941px;
 }
 
 .node-type-article #article-more-shares .tp-social-delicious:before {
-	background-image: url(../images/social_more_delicious.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -967px;
 }
 
 .node-type-article #article-more-shares .tp-social-linkedin:before {
-	background-image: url(../images/social_more_linkedin.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -993px;
 }
 
 .node-type-article #article-more-shares .tp-social-myaol:before {
-	background-image: url(../images/social_more_myaol.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -1019px;
 }
 
 .node-type-article #article-more-shares .tp-social-live:before {
-	background-image: url(../images/social_more_live.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -1045px;
 }
 
 .node-type-article #article-more-shares .tp-social-digg:before {
-	background-image: url(../images/social_more_digg.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -1071px;
 }
 
 .node-type-article #article-more-shares .tp-social-stumbleupon:before {
-	background-image: url(../images/social_more_stumbleupon.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -1097px;
 }
 
 .node-type-article #article-more-shares .tp-social-hyves:before {
-	background-image: url(../images/social_more_hyves.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -1123px;
 }
 
 .node-type-article #article-social {
@@ -805,11 +829,13 @@ body #at16pt {
 }
 
 .node-type-article #article-author .follow .twitter a {
-	background-image: url(../images/author_twitter.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -1149px;
 }
 
 .node-type-article #article-author .follow .google a {
-	background-image: url(../images/author_google.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -1180px;
 }
 
 /* TODO: maybe just make this global */
@@ -860,7 +886,8 @@ body #at16pt {
 	background-color: #28a9e9;
 	background-position: 14px 10px;
 	background-repeat: no-repeat;
-	background-image: url(../images/next_article_arrow.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -1211px;
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -983,7 +1010,8 @@ body #at16pt {
 
 .node-type-article .fb_comments .header .fb_comments_count {
 	background-repeat: no-repeat;
-	background-image: url(../images/share_comments.png); /** sprite-ref: mysprite; */
+  background-image: url('../../takepart_core/css/style-sprite.png');
+  background-position: left -856px;
 	display: inline-block;
 	width: 24px;
 	height: 24px;
