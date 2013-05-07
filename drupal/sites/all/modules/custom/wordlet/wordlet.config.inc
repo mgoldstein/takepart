@@ -643,26 +643,7 @@ function _wordlet_configuration() {
         'campaigns/intelchange_interim/intelchange-interim.js',
       ),
       'load' => array('site', 'intelchange_interim_campaign'),
-    ),
-
-    // Intel For Change - Vote
-    'intelchange_interim_vote' => array(
-      'title' => 'Intel For Change - Vote',
-      'path' => 'intelforchange_interim/contest/vote',
-      'published' => TRUE,
-      'wrappers' => array('intelchange_interim', 'campaign', 'html'),
-      'css' => array(
-        'campaigns/reset.css',
-        'css/slim-header.css',
-        'css/normalize_cms.css',
-        'campaigns/intelchange_interim/intelchange-interim.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/intelchange_interim/intelchange-interim.js',
-      ),
-      'load' => array('site', 'intelchange_interim_campaign'),
-    ),
+    )
 
 
   );

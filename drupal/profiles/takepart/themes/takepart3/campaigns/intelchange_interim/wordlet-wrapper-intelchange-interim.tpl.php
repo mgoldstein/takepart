@@ -31,7 +31,7 @@
 					}
 				</script>
 				<div class="addThis">
-                    <a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:action="recommend"></a>
+                    <a class="addthis_button_facebook_like"></a>
                     <a class="addthis_button_tweet"></a>
                     <a class="addthis_button_email"></a>
                 </div>
