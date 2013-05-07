@@ -349,8 +349,10 @@
 }
 
 .page-wordlet-intelchange-interim-home .video-play {
-  float: left;
-  margin-left: -290px;
+  position: absolute;
+  right: 95px;
+  top: 50%;
+  margin-top: -61px;
 }
 
 .page-wordlet-intelchange-interim-home .video-play a {
@@ -361,7 +363,6 @@
   background: url(images/watch_video_sprite.png) left top no-repeat;
   width: 123px;
   height: 123px;
-  margin: 60px 0 0 60px;
 }
 
 .page-wordlet-intelchange-interim-home .video-play a:hover {
