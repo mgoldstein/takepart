@@ -146,6 +146,7 @@ function takepart_article_default_box() {
           <div class="addthis_toolbox addthis_default_style">
             <a class="addthis_button_facebook_like"
                addthis:url=""
+               fb:like:href="<?php echo url(NULL, array('absolute' => TRUE)); ?>"
                fb:like:action="like"
                fb:like:layout="button_count"></a>
             <a class="addthis_button_tweet"
