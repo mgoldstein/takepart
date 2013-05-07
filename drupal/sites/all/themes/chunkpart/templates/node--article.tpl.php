@@ -46,11 +46,14 @@
 					<? if ( $abody = _s($author, 'body') ): ?>
 						<div class="body">
 							<?=$abody['summary'] ?>
-							<a href="<?=_surl($field_author)?>"><?=t('Full Bio') ?></a>
+							<p class="full_bio_link">
+								<a href="<?=_surl($field_author)?>"><?=t('Full Bio') ?></a>
+							</p>
 						</div>
 					<? endif ?>
 
 					<? if ( ($aftwitter = _s($author, 'field_follow_twitter')) && ($afgoogle = _s($author, 'field_follow_google')) ): ?>
+						<h4 class="follow_headline"><?=t('Follow Me') ?></h4>
 						<ul class="follow">
 							<? if ( $aftwitter['url'] ): ?>
 								<li class="twitter"><a href="<?=$aftwitter['url'] ?>"><?=$aftwitter['title'] ?></a></li>

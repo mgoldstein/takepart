@@ -739,6 +739,15 @@ body #at16pt {
 	font-weight: bold;
 }
 
+.node-type-article #article-author .full_bio_link a {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.node-type-article #article-author .full_bio_link a:hover {
+	text-decoration: underline;
+}
+
 .node-type-article #article-author .body {
 	font-size: 11px;
 	margin-bottom: 1em;
@@ -762,6 +771,13 @@ body #at16pt {
 	border-bottom: 1px solid #e8e8e8;
 	padding: .75rem 0;
 	line-height: 1.2;
+}
+
+.node-type-article #article-author .follow_headline {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	color: #555;
 }
 
 .node-type-article #article-author .follow {
