@@ -1,3 +1,8 @@
+/* Sprite Mapper config */
+/* spritemapper.output_css=generated_{basename}.css */
+/* spritemapper.output_image=./generated_header_footer.png */
+/* spritemapper.padding=10 */
+
 /* Header */
 
 #site-header {
@@ -393,27 +398,27 @@
 }
 
 .multipage-campaign #site-follow .facebook a {
-	background: url(../images/header_social_facebook.png) left top no-repeat;
+	background: url('generated_header_footer.png') no-repeat -92px 0;
 }
 
 .multipage-campaign #site-follow .facebook a:hover {
-	background: url(../images/header_social_facebook_hover.png) left top no-repeat;
+	background: url('generated_header_footer.png') no-repeat -121px 0;
 }
 
 .multipage-campaign #site-follow .twitter a {
-	background: url(../images/header_social_twitter.png) left top no-repeat;
+	background: url('generated_header_footer.png') no-repeat -150px 0;
 }
 
 .multipage-campaign #site-follow .twitter a:hover {
-	background: url(../images/header_social_twitter_hover.png) left top no-repeat;
+	background: url('generated_header_footer.png') no-repeat -63px 0;
 }
 
 .multipage-campaign #site-follow .rss a {
-	background: url(../images/header_social_rss.png) left top no-repeat;
+	background: url('generated_header_footer.png') no-repeat -179px 0;
 }
 
 .multipage-campaign #site-follow .rss a:hover {
-	background: url(../images/header_social_rss_hover.png) left top no-repeat;
+	background: url('generated_header_footer.png') no-repeat -34px 0;
 }
 
 .multipage-campaign #site-search {
@@ -443,3 +448,107 @@
 	display: inline-block;
 }
 
+/* ----------------------------------------------------------------
+Footer ------------------------------------------------------------
+------------------------------------------------------------------- */
+
+#site-footer {
+	color: #555;
+	line-height: 1.5;
+}
+
+#site-footer a {
+	color: #555;
+	text-decoration: none;
+}
+
+#site-footer #site-participant a {
+	color: #28a9e9;
+}
+
+#site-footer a:hover {
+	text-decoration: underline;
+}
+
+#site-footer section {
+	float: left;
+	padding: 1em 0 1em 1em;
+	width: 25%;
+}
+
+#site-footer section > * {
+	font-size: 14px;
+}
+
+#site-footer h4 {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#site-footer #site-about {
+	border-top: 1px solid #dbdbdb;
+	clear: both;
+	padding: 1em 0;
+	display: block;
+	text-align: right;
+	width: 100%;
+}
+
+#site-footer #site-more-campaigns a {
+	color: #28a9e9;
+}
+
+/* Connect */
+
+#site-connect ul {
+	display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
+}
+
+#site-connect li {
+	float: left;
+	margin-right: 5px;
+}
+
+#site-connect a {
+	width: 24px;
+	height: 24px;
+	display: block;
+	text-indent: 100%;
+	overflow: hidden;
+}
+
+#site-connect a:hover {
+	opacity: .6;
+}
+
+#site-connect .facebook a {
+	background: url('generated_header_footer.png') no-repeat -34px -34px;
+}
+
+#site-connect .twitter a {
+	background: url('generated_header_footer.png') no-repeat -204px -34px;
+}
+
+#site-connect .email a {
+	background: url('generated_header_footer.png') no-repeat 0 -34px;
+}
+
+#site-connect .google a {
+	background: url('generated_header_footer.png') no-repeat -102px -34px;
+}
+
+#site-connect .pinterest a {
+	background: url('generated_header_footer.png') no-repeat -170px -34px;
+}
+
+#site-connect .linkedin a {
+	background: url('generated_header_footer.png') no-repeat -68px -34px;
+}
+
+#site-connect .youtube a {
+	background: url('generated_header_footer.png') no-repeat 0 0;
+}
+
+#site-connect .tumblr a {
+	background: url('generated_header_footer.png') no-repeat -136px -34px;
+}

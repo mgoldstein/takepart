@@ -102,6 +102,10 @@ function takepart_core_form_search_api_page_search_form_site_search_alter(&$form
   }
 }
 
+function takepart_core_css_alter(&$css) {
+  _alter_generated_css($css);
+}
+
 /* Custom functions */
 
 /**
@@ -126,6 +130,21 @@ function _render_tp3_header(&$params) {
 
 function _render_tp3_footer(&$params) {
     return theme('takepart3_footer', $params);
+}
+
+function _alter_generated_css(&$css) {
+  // Pull important styles from the themes .info file and place them above all stylesheets.
+  foreach ($css as $i => $style_from_foo) {
+    $dirname = dirname($i);
+    $basename = basename($i);
+
+    if ( file_exists($dirname . '/generated_' . $basename) ) {
+      $new = str_replace($basename, 'generated_' . $basename, $i);
+      //$css[$new]['data'] = $new;
+      //unset($css[$i]);
+      $css[$i]['data'] = $new;
+    }
+  }
 }
 
 /* Template helpers */
