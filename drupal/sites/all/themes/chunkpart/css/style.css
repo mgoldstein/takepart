@@ -1,7 +1,7 @@
 /* Sprite Mapper config */
-/* spritemapper.output_css = generated/{basename}.css */
-/* spritemapper.output_image = ../images/generated/style.png */
-/* spritemapper.padding = 10 */
+/* spritemapper.output_css=generated_{basename}.css */
+/* spritemapper.output_image=./generated_style.png */
+/* spritemapper.padding=10 */
 
 /*
 	TOC:

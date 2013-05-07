@@ -1,7 +1,7 @@
 /* Sprite Mapper config */
-/* spritemapper.output_css = generated/{basename}.css */
-/* spritemapper.output_image = ../images/generated/style.png */
-/* spritemapper.padding = 10 */
+/* spritemapper.output_css=generated_{basename}.css */
+/* spritemapper.output_image=./generated_style.png */
+/* spritemapper.padding=10 */
 
 /*
 	TOC:
@@ -286,27 +286,27 @@ body #at16pt {
 }
 
 .follow_us .facebook {
-	background: url('../../images/generated/style.png') no-repeat -25px -75px;
+	background: url('generated_style.png') no-repeat -102px -136px;
 }
 
 .follow_us .twitter {
-	background: url('../../images/generated/style.png') no-repeat -50px -150px;
+	background: url('generated_style.png') no-repeat -102px 0;
 }
 
 .follow_us .google {
-	background: url('../../images/generated/style.png') no-repeat -50px -25px;
+	background: url('generated_style.png') no-repeat -102px -34px;
 }
 
 .follow_us .pinterest {
-	background: url('../../images/generated/style.png') no-repeat -50px -75px;
+	background: url('generated_style.png') no-repeat -68px 0;
 }
 
 .follow_us .youtube {
-	background: url('../../images/generated/style.png') no-repeat -25px 0;
+	background: url('generated_style.png') no-repeat -68px -68px;
 }
 
 .follow_us .tumblr {
-	background: url('../../images/generated/style.png') no-repeat 0 -25px;
+	background: url('generated_style.png') no-repeat -102px -68px;
 }
 
 /* ============================================================
@@ -392,7 +392,7 @@ body #at16pt {
 }
 
 .node-type-article #article-badge a:before {
-	background: url('../../images/generated/style.png') no-repeat -25px -144px;
+	background: url('generated_style.png') no-repeat -68px -170px;
 	height: 36px;
 	content: " ";
 	position: absolute;
@@ -402,7 +402,7 @@ body #at16pt {
 }
 
 .node-type-article #article-badge a:after {
-	background: url('../../images/generated/style.png') no-repeat 0 -50px;
+	background: url('generated_style.png') no-repeat -68px -133px;
 	height: 36px;
 	content: " ";
 	position: absolute;
@@ -503,31 +503,31 @@ body #at16pt {
 }
 
 .node-type-article #article-social .tp-social-facebook:before {
-	background: url('../../images/generated/style.png') no-repeat -50px -100px;
+	background: url('generated_style.png') no-repeat -34px 0;
 }
 
 .node-type-article #article-social .tp-social-twitter:before {
-	background: url('../../images/generated/style.png') no-repeat 0 0;
+	background: url('generated_style.png') no-repeat 0 -34px;
 }
 
 .node-type-article #article-social .tp-social-googleplus:before {
-	background: url('../../images/generated/style.png') no-repeat -50px -50px;
+	background: url('generated_style.png') no-repeat -102px -102px;
 }
 
 .node-type-article #article-social .tp-social-email:before {
-	background: url('../../images/generated/style.png') no-repeat -25px -50px;
+	background: url('generated_style.png') no-repeat -34px -34px;
 }
 
 .node-type-article #article-social .tp-social-reddit:before {
-	background: url('../../images/generated/style.png') no-repeat -25px -25px;
+	background: url('generated_style.png') no-repeat -68px -34px;
 }
 
 .node-type-article #article-social #article-comments-link a:before {
-	background: url('../../images/generated/style.png') no-repeat -50px 0;
+	background: url('generated_style.png') no-repeat -102px -170px;
 }
 
 .node-type-article #article-social-more h4 a:before {
-	background: url('../../images/generated/style.png') no-repeat -50px -125px;
+	background: url('generated_style.png') no-repeat 0 0;
 }
 
 .node-type-article #article-social-more {
@@ -572,7 +572,7 @@ body #at16pt {
 	width: 7px;
 	height: 7px;
 	float: right;
-	background: url('../../images/generated/style.png') no-repeat 0 -163px;
+	background: url('generated_style.png') no-repeat 0 -172px;
 }
 
 .node-type-article #article-more-shares a {
@@ -598,35 +598,35 @@ body #at16pt {
 }
 
 .node-type-article #article-more-shares .tp-social-myspace:before {
-	background: url('../../images/generated/style.png') no-repeat 0 -146px;
+	background: url('generated_style.png') no-repeat -34px -177px;
 }
 
 .node-type-article #article-more-shares .tp-social-delicious:before {
-	background: url('../../images/generated/style.png') no-repeat 0 -95px;
+	background: url('generated_style.png') no-repeat -34px -99px;
 }
 
 .node-type-article #article-more-shares .tp-social-linkedin:before {
-	background: url('../../images/generated/style.png') no-repeat -25px -198px;
+	background: url('generated_style.png') no-repeat -34px -151px;
 }
 
 .node-type-article #article-more-shares .tp-social-myaol:before {
-	background: url('../../images/generated/style.png') no-repeat -25px -181px;
+	background: url('generated_style.png') no-repeat 0 -68px;
 }
 
 .node-type-article #article-more-shares .tp-social-live:before {
-	background: url('../../images/generated/style.png') no-repeat 0 -112px;
+	background: url('generated_style.png') no-repeat 0 -146px;
 }
 
 .node-type-article #article-more-shares .tp-social-digg:before {
-	background: url('../../images/generated/style.png') no-repeat 0 -78px;
+	background: url('generated_style.png') no-repeat 0 -94px;
 }
 
 .node-type-article #article-more-shares .tp-social-stumbleupon:before {
-	background: url('../../images/generated/style.png') no-repeat 0 -129px;
+	background: url('generated_style.png') no-repeat -34px -125px;
 }
 
 .node-type-article #article-more-shares .tp-social-hyves:before {
-	background: url('../../images/generated/style.png') no-repeat -25px -215px;
+	background: url('generated_style.png') no-repeat 0 -120px;
 }
 
 .node-type-article #article-social {
@@ -756,11 +756,11 @@ body #at16pt {
 }
 
 .node-type-article #article-author .follow .twitter a {
-	background: url('../../images/generated/style.png') no-repeat -25px -122px;
+	background: url('generated_style.png') no-repeat -34px -68px;
 }
 
 .node-type-article #article-author .follow .google a {
-	background: url('../../images/generated/style.png') no-repeat -25px -100px;
+	background: url('generated_style.png') no-repeat -68px -102px;
 }
 
 /* TODO: maybe just make this global */
@@ -930,7 +930,7 @@ body #at16pt {
 }
 
 .node-type-article .fb_comments .header .fb_comments_count {
-	background: url('../../images/generated/style.png') no-repeat -50px 0;
+	background: url('generated_style.png') no-repeat -102px -170px;
 	display: inline-block;
 	width: 24px;
 	height: 24px;
