@@ -515,6 +515,7 @@ Footer ------------------------------------------------------------
 	display: block;
 	text-indent: 100%;
 	overflow: hidden;
+	background-repeat: no-repeat;
 }
 
 #site-connect a:hover {
@@ -522,33 +523,33 @@ Footer ------------------------------------------------------------
 }
 
 #site-connect .facebook a {
-	background: url(../images/connect_facebook.png) no-repeat;
+	background-image: url(../images/connect_facebook.png); /** sprite-ref: mysprite; */
 }
 
 #site-connect .twitter a {
-	background: url(../images/connect_twitter.png) no-repeat;
+	background-image: url(../images/connect_twitter.png); /** sprite-ref: mysprite; */
 }
 
 #site-connect .email a {
-	background: url(../images/connect_email.png) no-repeat;
+	background-image: url(../images/connect_email.png); /** sprite-ref: mysprite; */
 }
 
 #site-connect .google a {
-	background: url(../images/connect_google.png) no-repeat;
+	background-image: url(../images/connect_google.png); /** sprite-ref: mysprite; */
 }
 
 #site-connect .pinterest a {
-	background: url(../images/connect_pinterest.png) no-repeat;
+	background-image: url(../images/connect_pinterest.png); /** sprite-ref: mysprite; */
 }
 
 #site-connect .linkedin a {
-	background: url(../images/connect_linkedin.png) no-repeat;
+	background-image: url(../images/connect_linkedin.png); /** sprite-ref: mysprite; */
 }
 
 #site-connect .youtube a {
-	background: url(../images/connect_youtube.png) no-repeat;
+	background-image: url(../images/connect_youtube.png); /** sprite-ref: mysprite; */
 }
 
 #site-connect .tumblr a {
-	background: url(../images/connect_tumblr.png) no-repeat;
+	background-image: url(../images/connect_tumblr.png); /** sprite-ref: mysprite; */
 }

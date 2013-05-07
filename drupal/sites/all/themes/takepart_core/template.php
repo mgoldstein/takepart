@@ -133,14 +133,14 @@ function _render_tp3_footer(&$params) {
 }
 
 function _alter_generated_css(&$css) {
-  return;
   // Pull important styles from the themes .info file and place them above all stylesheets.
   foreach ($css as $i => $style_from_foo) {
     $dirname = dirname($i);
     $basename = basename($i);
-
-    if ( file_exists($dirname . '/generated_' . $basename) ) {
-      $new = str_replace($basename, 'generated_' . $basename, $i);
+    $file = explode('.', $basename);
+    $filename = $file[0] . '-sprite.' . $file[1];
+    if ( file_exists($dirname . '/' . $filename) ) {
+      $new = str_replace($basename, $filename, $i);
       //$css[$new]['data'] = $new;
       //unset($css[$i]);
       $css[$i]['data'] = $new;

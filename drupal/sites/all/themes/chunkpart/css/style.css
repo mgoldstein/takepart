@@ -1,7 +1,4 @@
-/* Sprite Mapper config */
-/* spritemapper.output_css=generated_{basename}.css */
-/* spritemapper.output_image=./generated_style.png */
-/* spritemapper.padding=10 */
+/** sprite: mysprite; sprite-image: url('style-sprite.png'); sprite-layout: vertical; sprite-margin-right: 10px; sprite-margin-bottom: 10px; */
 
 /*
 	TOC:
@@ -285,28 +282,32 @@ body #at16pt {
 	opacity: .6;
 }
 
+.follow_us li a {
+	background-repeat: no-repeat;
+}
+
 .follow_us .facebook {
-	background: url(../images/follow_facebook.png) no-repeat;
+	background-image: url(../images/follow_facebook.png); /** sprite-ref: mysprite; */
 }
 
 .follow_us .twitter {
-	background: url(../images/follow_twitter.png) no-repeat;
+	background-image: url(../images/follow_twitter.png); /** sprite-ref: mysprite; */
 }
 
 .follow_us .google {
-	background: url(../images/follow_google.png) no-repeat;
+	background-image: url(../images/follow_google.png); /** sprite-ref: mysprite; */
 }
 
 .follow_us .pinterest {
-	background: url(../images/follow_pinterest.png) no-repeat;
+	background-image: url(../images/follow_pinterest.png); /** sprite-ref: mysprite; */
 }
 
 .follow_us .youtube {
-	background: url(../images/follow_youtube.png) no-repeat;
+	background-image: url(../images/follow_youtube.png); /** sprite-ref: mysprite; */
 }
 
 .follow_us .tumblr {
-	background: url(../images/follow_tumblr.png) no-repeat;
+	background-image: url(../images/follow_tumblr.png); /** sprite-ref: mysprite; */
 }
 
 /* cms overrides */
@@ -421,7 +422,7 @@ body #at16pt {
 }
 
 .node-type-article #article-badge a:before {
-	background: url(../images/article_badge_blue_left.png) no-repeat;
+	background-image: url(../images/article_badge_blue_left.png); /** sprite-ref: mysprite; */
 	height: 36px;
 	content: " ";
 	position: absolute;
@@ -431,7 +432,8 @@ body #at16pt {
 }
 
 .node-type-article #article-badge a:after {
-	background: url(../images/article_badge_blue_right.png) no-repeat;
+	background-repeat: no-repeat;
+	background-image: url(../images/article_badge_blue_right.png); /** sprite-ref: mysprite; */
 	height: 36px;
 	content: " ";
 	position: absolute;
@@ -529,34 +531,35 @@ body #at16pt {
 	content: " ";
 	vertical-align: middle;
 	padding-right: .5em;
+	background-repeat: no-repeat;
 }
 
 .node-type-article #article-social .tp-social-facebook:before {
-	background: url(../images/share_facebook.png) no-repeat;
+	background-image: url(../images/share_facebook.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-social .tp-social-twitter:before {
-	background: url(../images/share_twitter.png) no-repeat;
+	background-image: url(../images/share_twitter.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-social .tp-social-googleplus:before {
-	background: url(../images/share_google.png) no-repeat;
+	background-image: url(../images/share_google.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-social .tp-social-email:before {
-	background: url(../images/share_email.png) no-repeat;
+	background-image: url(../images/share_email.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-social .tp-social-reddit:before {
-	background: url(../images/share_reddit.png) no-repeat;
+	background-image: url(../images/share_reddit.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-social #article-comments-link a:before {
-	background: url(../images/share_comments.png) no-repeat;
+	background-image: url(../images/share_comments.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-social-more h4 a:before {
-	background: url(../images/share_more.png) no-repeat;
+	background-image: url(../images/share_more.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-social-more {
@@ -601,7 +604,8 @@ body #at16pt {
 	width: 7px;
 	height: 7px;
 	float: right;
-	background: url(../images/social_more_close.png) no-repeat;
+	background-repeat: no-repeat;
+	background-image: url(../images/social_more_close.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-more-shares a {
@@ -624,38 +628,39 @@ body #at16pt {
 	width: 16px;
 	height: 16px;
 	line-height: 16px;
+	background-repeat: no-repeat;
 }
 
 .node-type-article #article-more-shares .tp-social-myspace:before {
-	background: url(../images/social_more_myspace.png) no-repeat;
+	background-image: url(../images/social_more_myspace.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-more-shares .tp-social-delicious:before {
-	background: url(../images/social_more_delicious.png) no-repeat;
+	background-image: url(../images/social_more_delicious.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-more-shares .tp-social-linkedin:before {
-	background: url(../images/social_more_linkedin.png) no-repeat;
+	background-image: url(../images/social_more_linkedin.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-more-shares .tp-social-myaol:before {
-	background: url(../images/social_more_myaol.png) no-repeat;
+	background-image: url(../images/social_more_myaol.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-more-shares .tp-social-live:before {
-	background: url(../images/social_more_live.png) no-repeat;
+	background-image: url(../images/social_more_live.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-more-shares .tp-social-digg:before {
-	background: url(../images/social_more_digg.png) no-repeat;
+	background-image: url(../images/social_more_digg.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-more-shares .tp-social-stumbleupon:before {
-	background: url(../images/social_more_stumbleupon.png) no-repeat;
+	background-image: url(../images/social_more_stumbleupon.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-more-shares .tp-social-hyves:before {
-	background: url(../images/social_more_hyves.png) no-repeat;
+	background-image: url(../images/social_more_hyves.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-social {
@@ -798,14 +803,15 @@ body #at16pt {
 	overflow: hidden;
 	white-space: nowrap;
 	line-height: 21px;
+	background-repeat: no-repeat;
 }
 
 .node-type-article #article-author .follow .twitter a {
-	background: url(../images/author_twitter.png) no-repeat;
+	background-image: url(../images/author_twitter.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-author .follow .google a {
-	background: url(../images/author_google.png) no-repeat;
+	background-image: url(../images/author_google.png); /** sprite-ref: mysprite; */
 }
 
 /* TODO: maybe just make this global */
@@ -853,7 +859,10 @@ body #at16pt {
 	height: 34px;
 	width: 34px;
 	border-radius: 68px;
-	background: #28a9e9 url(../images/next_article_arrow.png) center center no-repeat;
+	background-color: #28a9e9;
+	background-position: 14px 10px;
+	background-repeat: no-repeat;
+	background-image: url(../images/next_article_arrow.png); /** sprite-ref: mysprite; */
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -975,7 +984,8 @@ body #at16pt {
 }
 
 .node-type-article .fb_comments .header .fb_comments_count {
-	background: url(../images/share_comments.png) no-repeat;
+	background-repeat: no-repeat;
+	background-image: url(../images/share_comments.png); /** sprite-ref: mysprite; */
 	display: inline-block;
 	width: 24px;
 	height: 24px;
