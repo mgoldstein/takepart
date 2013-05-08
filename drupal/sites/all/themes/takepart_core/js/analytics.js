@@ -9,13 +9,17 @@ if ( typeof takepart == "undefined" || !takepart ) {
 //Analytics functions:
 takepart.analytics = takepart.analytics || {};
 
+takepart.analytics.skip_addthis = false;
+
 takepart.analytics.addThis_shareEventHandler = function (evt) {
+    if ( takepart.analytics.skip_addthis ) return;
     if (evt.type == 'addthis.menu.share') {
         takepart.analytics.track('generic_addthis', evt.data.service, this.href);
     }
 };
 
 takepart.analytics.addThis_ready = function (evt) {
+    if ( takepart.analytics.skip_addthis ) return;
     addthis.addEventListener('addthis.menu.share', takepart.analytics.addThis_shareEventHandler);
 };
 
@@ -61,6 +65,7 @@ var normalize_share_title = function(title) {
 
 // Named tracking
 takepart.analytics.track = function(name) {
+console.log('track');
     var args = arguments || [];
     var special_share_event = "event74";
     var s = window.s || {};

@@ -133,19 +133,21 @@ function _render_tp3_footer(&$params) {
 }
 
 function _alter_generated_css(&$css) {
-  // Pull important styles from the themes .info file and place them above all stylesheets.
-  foreach ($css as $i => $style_from_foo) {
-    $dirname = dirname($i);
-    $basename = basename($i);
-    $file = explode('.', $basename);
-    $filename = $file[0] . '-sprite.' . $file[1];
-    if ( file_exists($dirname . '/' . $filename) && (filemtime($i) - filemtime($dirname . '/' . $filename) < 10 ) ) {
-      $new = str_replace($basename, $filename, $i);
-      //$css[$new]['data'] = $new;
-      //unset($css[$i]);
-      $css[$i]['data'] = $new;
-    }
-  }
+	// Pull important styles from the themes .info file and place them above all stylesheets.
+	foreach ($css as $i => $style_from_foo) {
+		$dirname = dirname($i);
+		$basename = basename($i);
+		$file = explode('.', $basename);
+		$filename = $file[0] . '-sprite.' . $file[1];
+		if ( file_exists($dirname . '/' . $filename) ) {
+			if ( filemtime($i) - filemtime($dirname . '/' . $filename) < 10 ) {
+				$new = str_replace($basename, $filename, $i);
+				//$css[$new]['data'] = $new;
+				//unset($css[$i]);
+				$css[$i]['data'] = $new;
+			}
+		}
+	}
 }
 
 /* Template helpers */

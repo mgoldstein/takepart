@@ -450,7 +450,8 @@ $.tpsocial.add_service({
 
 var email_args;
 var email_once = function() {
-	addthis.addEventListener('addthis.menu.share', email_callback);
+	// Don't need to do this because of global tracking in analytics.js
+	//addthis.addEventListener('addthis.menu.share', email_callback);
 };
 var email_callback = function(addthis_event) {
 	if ( addthis_event.data.service == email_args.name ) {

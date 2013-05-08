@@ -119,6 +119,7 @@ $(function() {
 	/* --------------------------------
 	| Page Specific ---------------- */
 	if ( $body.is('.node-type-article') ) {
+		takepart.analytics.skip_addthis = true;
 		$('#article-author').css('padding-top', $('#article-social').outerHeight());
 
 		// Sticky social nav on article page
