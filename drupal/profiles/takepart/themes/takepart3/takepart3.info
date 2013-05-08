@@ -22,8 +22,6 @@ stylesheets[all][] = css/petitions.css
 stylesheets[all][] = css/pledges.css
 stylesheets[all][] = css/actions.css
 
-stylesheets[all][] = css/tpmodal.css
-
 ; Javascript
 scripts[] = js/script.js
 scripts[] = js/widgets.js
@@ -32,14 +30,8 @@ scripts[] = js/tastemakers/city.js
 scripts[] = js/tastemakers/nationwide.js
 scripts[] = js/actions.js
 
-scripts[] = js/jquery.lazyload.js
 scripts[] = js/jquery.scrollTo.js
 scripts[] = js/tpslide.jquery.js
-scripts[] = js/tpsocial.jquery.js
-scripts[] = js/tpautoTab.jquery.js
-scripts[] = js/tpmodal.jquery.js
-scripts[] = js/tpsticky.jquery.js
-scripts[] = js/autosize.jquery.js
 
 ; ----- FEATURES ------
 features[] = logo

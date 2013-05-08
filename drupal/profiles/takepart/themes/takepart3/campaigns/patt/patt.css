@@ -20,6 +20,16 @@ body {
 	height: 36px;
 }
 
+#site-footer {
+	background: #f1f3f4;
+	display: inline-block; *display: inline; zoom: 1;
+	width: 100%;
+}
+
+#site-footer #site-about {
+	padding-right: 1em;
+}
+
 .page-wrap {
 	width:1000px;
 	margin:0 auto;
