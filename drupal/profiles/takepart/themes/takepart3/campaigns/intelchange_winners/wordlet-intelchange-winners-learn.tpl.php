@@ -6,12 +6,12 @@
             Add Image
         <? endif ?>
     </div>
-    <h2 class='headline'><?=wl('first_block_headline')?></h2>
+    <h2 class='headline'><?=w('first_block_headline')?></h2>
     <div class="text-block cms">
-    	<?=wl('first_block_text')?>
+    	<?=w('first_block_text')?>
     </div>
 </div>
 <div class="second-block">
-	<h3 class="header-title"><?=wl('second_block_headline')?></h3>
-	<div class="resources"><?=wl('resources_view')?></div>
+	<h3 class="header-title"><?=w('second_block_headline')?></h3>
+	<div class="resources"><?=w('resources_view')?></div>
 </div>
