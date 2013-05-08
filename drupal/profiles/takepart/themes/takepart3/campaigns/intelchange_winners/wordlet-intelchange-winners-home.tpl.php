@@ -110,30 +110,3 @@
         </div>
     </div>
 </div>
-
-<div class="footer-block">
-    <div class="facts-block" <?=wa('facts')?>>
-        <? foreach ( wl('facts') as $i => $w ): ?>
-            <div class="fact fact<?=$i?>">
-                <? if ( $w->href ): ?>
-                    <a href="<?=$w->href?>"><img src="<?=$w->img_src?>"></a>
-                <? else: ?>
-                    <img src="<?=$w->img_src?>">
-                <? endif ?>
-            </div>
-        <? endforeach ?>
-    </div>
-
-    <div class="partners-block">
-        <a href="<?=wu('intelchange_winners_about')?>#about-partners">
-            <h4><?=w('partners_header')?></h4>
-            <ul class="partners-list" <?=wa('partners_list')?>>
-                <? foreach ( wl('partners_list') as $w ): ?>
-                    <li class="parnter">
-                        <img alt="<?=$w->single(false)?>" src="<?=$w->thumb_src?>"/>
-                    </li>
-                <? endforeach ?>
-            </ul>
-        </a>
-    </div>
-</div>
