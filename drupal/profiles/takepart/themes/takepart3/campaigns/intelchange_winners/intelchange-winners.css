@@ -339,7 +339,7 @@
 
 .page-wordlet-intelchange-winners-home #page .intro-text {
   margin-left: 95px;
-  margin-bottom: 65px;
+  margin-bottom: 55px;
 }
 
 .page-wordlet-intelchange-winners-home #page .video-play {
@@ -373,6 +373,7 @@
   margin: 1.75em 0 0 0;
   font-weight: bold;
   color: rgb(243, 116, 36);
+  line-height: 1.4em;
 }
 
 .page-wordlet-intelchange-winners-home #page .video-block {
