@@ -563,9 +563,9 @@ function _wordlet_configuration() {
     ),
 
     // Intel For Change - Contest
-    'intelchange_winners_contest' => array(
-      'title' => 'Intel For Change - Contest',
-      'path' => 'intelforchange_winners/contest',
+    'intelchange_winners_teams' => array(
+      'title' => 'Intel For Change - Teams',
+      'path' => 'intelforchange_winners/teams',
       'published' => TRUE,
       'wrappers' => array('intelchange_winners', 'campaign', 'html'),
       'css' => array(
