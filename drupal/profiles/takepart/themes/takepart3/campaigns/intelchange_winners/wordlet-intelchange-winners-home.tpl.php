@@ -58,28 +58,56 @@
     <div class="second-sub form_wrapper">
         <div class="default-state">
             <div class="default-content">
-                <h2 class='title'><?=w('default_header')?></h2>
-
-                <div class="winners-wrapper">
-                    <h4 class="subtitle"><?=$w->single(false) ?></h4>
-                    <div class="important">
-                        <a href="<?=wu('intelchange_winners_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
-                    </div>
-                    <ul class="finalists-menu" <?=wa('finalists')?>>
-                        <? foreach ( wl('finalists', true) as $w ): ?>
-                            <li>
-                                <p class="image"><img src="<?=$w->small_src?>" alt="<?=$w->single(false)?>" ></p>
-                                <div class="bio">
-                                    <h4 class="subtitle"><?=$w->single(false) ?></h4>
-                                    <div class="info"><?=$w->multi_short(false) ?></div>
-                                    <div class="blurb"><?=$w->multi(false) ?></div>
-                                </div>
-
-                            </li>
+                <div class="teams-wrapper" <?=wa('teams')?>>
+                    <ul class="teams-menu">
+                        <? foreach ( wl('teams', true) as $team ): ?>
+                        <li class='team'>
+                            <a href="<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>" data-team='<?=$team->token?>'><?=$team->single(false)?></a>
+                        </li>
                         <? endforeach ?>
                     </ul>
+                    <div class="teams-content" <?=wa('finalists')?>>
+                        <? foreach ( wl('teams', true) as $team ): ?>
+                            <?
+                                $team_winner = wf($team->token.'_team', 'token', 'winner');
+                                $team_comp1 = wf($team->token.'_team', 'token', 'companion1');
+                                $team_comp2 = wf($team->token.'_team', 'token', 'companion2');
+                                $team_comp3 = wf($team->token.'_team', 'token', 'companion3');
+                            ?>
+                            <div class="team <?=$team->token?>">
+                                <a class="winner" href='<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>&member=<?=$team_winner->token?>'>
+                                    <img src="<?=$team_winner->img_src?>" alt="<?=$team_winner->single(false)?>">
+                                    <span class="title"><?=w($team_winner->token.'_member_title_label')?></span>
+                                    <span class='name'><?=$team_winner->single(false)?></span>
+                                    <div class='facts'><?=$team_member->multi_short(false)?></div>
+                                </a>
+                                <div class="mentors">
+                                    <a class="mentor one" href='<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>&member=<?=$team_comp1->token?>'>
+                                        <img src="<?=$team_comp1->thumb_src?>" alt="<?=$team_comp1->single(false)?>">
+                                        <span class='name'><?=$team_comp1->single(false)?></span>
+                                        <span class="company"><?=w($team->token.'_'.$team_comp1->token.'_company')?></span>
+                                        <span class="title"><?=w($team_comp1->token.'_member_title_label')?></span>
+                                    </a>
+                                    <a class="mentor two" href='<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>&member=<?=$team_comp2->token?>'>
+                                        <img src="<?=$team_comp2->thumb_src?>" alt="<?=$team_comp2->single(false)?>">
+                                        <span class='name'><?=$team_comp2->single(false)?></span>
+                                        <span class="company"><?=w($team->token.'_'.$team_comp2->token.'_company')?></span>
+                                        <span class="title"><?=w($team_comp2->token.'_member_title_label')?></span>
+                                    </a>
+                                    <a class="mentor three" href='<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>&member=<?=$team_comp3->token?>'>
+                                        <img src="<?=$team_comp3->thumb_src?>" alt="<?=$team_comp3->single(false)?>">
+                                        <span class='name'><?=$team_comp3->single(false)?></span>
+                                        <span class="company"><?=w($team->token.'_'.$team_comp3->token.'_company')?></span>
+                                        <span class="title"><?=w($team_comp3->token.'_member_title_label')?></span>
+                                    </a>
+                                </div>
+                                <div class="important">
+                                    <a href="<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>"><?=w('read_more') ?></a>
+                                </div>
+                            </div>
+                        <? endforeach ?>
+                    </div>
                 </div>
-
             </div>
             <div class="stay-contected cta" <?=wa('stay_connected')?>>
                 <a href="#stay-connected">
