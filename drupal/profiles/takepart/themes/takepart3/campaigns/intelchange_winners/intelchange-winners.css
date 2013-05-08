@@ -392,10 +392,9 @@
   width: 405px;
   float: left;
 }
-.page-wordlet-intelchange-winners-home #page .second-block .first-sub .vote-desc {
-  line-height: 1.5em;
+.page-wordlet-intelchange-winners-home #page .second-block .first-sub .text-block p {
+  font-size: 13px;
   margin-bottom: 1.5em;
-  font-size: .875em;
 }
 .page-wordlet-intelchange-winners-home #page .second-block .first-sub .prize-image {
   text-align: center;
@@ -406,12 +405,16 @@
 }
 .page-wordlet-intelchange-winners-home #page .second-block .first-sub .title {
   color: rgb(1, 141, 216);
-  font-size: 2.500em;
-  margin-bottom: 0.425em;
+  font-size: 35px;
+  margin-bottom: 0.657em;
+  font-weight: normal;
 }
-.page-wordlet-intelchange-winners-home #page .second-block .first-sub h4 {
-  font-size: 1.375em;
+.page-wordlet-intelchange-winners-home #page .second-block .first-sub .subtitle {
   color: rgb(75, 54, 57);
+  font-size: 25px;
+  margin-bottom: 0.95em;
+  margin-top: 1.4em;
+  font-weight: normal;
 }
 .page-wordlet-intelchange-winners-home #page .second-block .first-sub .important {
   margin-bottom: 1.5em;
@@ -421,6 +424,7 @@
   padding: 1em 0;
   text-align: center;
   font-size: 1.143em;
+  margin-top: 2em;
 }
 
 /* second block - second sub */
