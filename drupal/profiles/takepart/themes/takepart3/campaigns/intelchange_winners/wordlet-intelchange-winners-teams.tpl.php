@@ -37,6 +37,7 @@ if (isset($_GET['member'])) {
     $team = wf('teams', 'token', $cur_team);
     $team_member = wf($team->token.'_team', 'token', $cur_member);
     ?>
+    <? if($team && $team_member):?>
     <div class="member" <?=wa($team->token.'_team')?>>
         <img src="<?=$team_member->img_src?>" alt="<?=$team_member->single(false)?>">
         <h2 class='title'><span class='member-title'><?=wl($team_member->token.'_member_title_label')?></span> <?=$team_member->single(false)?></h2>
@@ -46,4 +47,7 @@ if (isset($_GET['member'])) {
             <iframe class="video-player" width="675" height="393" src="http://www.youtube.com/embed/<?=$team_member->video?>" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
+    <?else:?>
+    <p>Nope.</p>
+    <?endif?>
 </div>
