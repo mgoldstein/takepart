@@ -139,7 +139,7 @@ function _alter_generated_css(&$css) {
     $basename = basename($i);
     $file = explode('.', $basename);
     $filename = $file[0] . '-sprite.' . $file[1];
-    if ( file_exists($dirname . '/' . $filename) ) {
+    if ( file_exists($dirname . '/' . $filename) && (filemtime($i) - filemtime($dirname . '/' . $filename) < 10 ) ) {
       $new = str_replace($basename, $filename, $i);
       //$css[$new]['data'] = $new;
       //unset($css[$i]);
