@@ -1,5 +1,5 @@
 <div class="first-block">
-	<div class="header-image" <?=wa('first_block_header_image')?>>
+	<div class="image-wrapper" <?=wa('first_block_image')?>>
         <? if ( ($w = w('first_block_header_image')) && $w->img_src ): ?>
             <p>
                 <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
@@ -8,9 +8,9 @@
             Add Image
         <? endif ?>
     </div>
-    <h2 class='header-title'><?=wl('first_block_header_title')?></h2>
-    <div class="header-text">
-    	<?=wl('first_block_header_text')?>
+    <h2 class='headline'><?=wl('first_block_headline')?></h2>
+    <div class="text cms">
+    	<?=wl('first_block_text')?>
     </div>
 </div>
 <div class="second-block">
