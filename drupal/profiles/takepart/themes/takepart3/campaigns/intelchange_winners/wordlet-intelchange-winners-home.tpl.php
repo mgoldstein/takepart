@@ -41,59 +41,45 @@
 </div>
 
 <div class="second-block">
-    <div class="first-sub" <?=wa('cta_image')?>>
-        <div class="header-block">
-            <h3><?=w('cta_header')?></h3>
-            <h4><?=w('cta_subheader')?></h4>
+    <div class="first-sub">
+        <h2 class='title'><?=w('second_block_first_sub_title')?></h2>
+        <div class="text-block cms">
+            <?=w('second_block_first_sub_first_text')?>
         </div>
-        <? if ( $w = w('cta_image') ): ?>
-        <div class="prize-image">
-            <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+        <h3 class='subtitle'><?=w('second_block_first_sub_subtitle')?></h3>
+        <div class="text-block cms">
+            <?=w('second_block_first_sub_text')?>
         </div>
-        <? endif ?>
-        <div class="vote-desc">
-            <?=w('vote_desc')?>
+        <div class="important">
+            <a href="<?=wu('intelchange_winners_involved')?>"><?=w('second_block_first_sub_cta')?></a>
         </div>
-        <p class="important">
-            <a href="<?=wu('intelchange_winners_vote')?>"><?=w('view_finalists_cta')?></a>
-        </p>
-
-        <div class='more-wrapper' <?=wa('contest_more')?>>
-            <div class="more">
-                <? $w = w('contest_more') ?>
-                <? if ( $w->multi(false) ): ?>
-                    <?=$w->multi(false)?>
-                <? elseif($w->single(false)): ?>
-                    <p><a href="<?=wu('intelchange_winners_contest')?>"><?=$w->single(false)?></a></p>
-                <? elseif(wordlet_edit_mode()): ?>
-                    Add Link
-                <?endif?>
-            </div>
-        </div>
-
     </div>
 
     <div class="second-sub form_wrapper">
         <div class="default-state">
             <div class="default-content">
-                <h3><?=w('default_header')?></h3>
-                <div class="finalists-wrapper">
+                <h2 class='title'><?=w('default_header')?></h2>
+
+                <div class="winners-wrapper">
+                    <h4 class="subtitle"><?=$w->single(false) ?></h4>
+                    <div class="important">
+                        <a href="<?=wu('intelchange_winners_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
+                    </div>
                     <ul class="finalists-menu" <?=wa('finalists')?>>
                         <? foreach ( wl('finalists', true) as $w ): ?>
                             <li>
                                 <p class="image"><img src="<?=$w->small_src?>" alt="<?=$w->single(false)?>" ></p>
                                 <div class="bio">
-                                    <h4 class="finalist_headline"><?=$w->single(false) ?></h4>
+                                    <h4 class="subtitle"><?=$w->single(false) ?></h4>
                                     <div class="info"><?=$w->multi_short(false) ?></div>
                                     <div class="blurb"><?=$w->multi(false) ?></div>
                                 </div>
-                                <p class="important">
-                                    <a href="<?=wu('intelchange_winners_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
-                                </p>
+
                             </li>
                         <? endforeach ?>
                     </ul>
                 </div>
+
             </div>
             <div class="stay-contected cta" <?=wa('stay_connected')?>>
                 <a href="#stay-connected">
