@@ -48,7 +48,7 @@
         </div>
         <h3 class='subtitle'><?=w('second_block_first_sub_subtitle')?></h3>
         <div class="text-block cms">
-            <?=w('second_block_first_sub_text')?>
+            <?=w('second_block_first_sub_second_text')?>
         </div>
         <div class="important">
             <a href="<?=wu('intelchange_winners_involved')?>"><?=w('second_block_first_sub_cta')?></a>
