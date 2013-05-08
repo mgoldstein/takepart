@@ -563,7 +563,7 @@ function _wordlet_configuration() {
     ),
 
     // Intel For Change - Learn More
-    'intelchange_winners_about' => array(
+    'intelchange_winners_learn' => array(
       'title' => 'Intel For Change - Learn More',
       'path' => 'intelforchange_winners/learn',
       'published' => TRUE,
