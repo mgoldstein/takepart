@@ -249,6 +249,21 @@ body #at16pt {
 	font-size: 11px;
 }
 
+/* Top ad */
+
+#site-top div {
+	width: auto !important;
+	height: auto !important;
+}
+
+#site-top iframe {
+	background: red;
+	display: block;
+	margin: 0 auto 1em auto;
+}
+
+/* Right rail */
+
 #site-secondary .newsletter_social .section_header {
 	border: none;
 	padding-bottom: 0;

@@ -231,6 +231,13 @@
 		font-size: 16px;
 	}
 
+	/* Top ad */
+	#site-top {
+		display: none;
+	}
+
+	/* Side bar */
+
 	#site-secondary {
 		width: auto;
 		float: none;

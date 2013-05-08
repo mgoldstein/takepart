@@ -5,14 +5,15 @@
 <?=$header ?>
 
 <main role="main" id="main">
- <aside id="site-top">
+  <div id="site-top">
     <? foreach ( $page['content_top'] as $val ): ?>
       <? if ( ($block = _sblock($val)) ): ?>
         <? // TODO: get the section tag/classes onto blocks ?>
         <?=$block?>
       <? endif ?>
     <? endforeach ?>
-  </aside>
+  </div>
+
   <?=render($page['content']) ?>
 
   <aside id="site-secondary">
