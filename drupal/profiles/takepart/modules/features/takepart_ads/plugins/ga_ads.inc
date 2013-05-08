@@ -61,7 +61,14 @@ class boxes_ga_ad extends boxes_box {
 <!-- $slot -->
 <div id='$gptid[$slot]' style='width:$lr[0]px; height:$lr[1]px;'>
 <script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('$gptid[$slot]'); });
+  function $gptfunction() {
+   if (typeof(googletag) !== 'undefined') {
+    googletag.cmd.push(function() { googletag.display('$gptid[$slot]'); });
+   } else {
+    setTimeout("$gptfunction()",1000);
+   }
+  }
+  $gptfunction();
 </script>
 </div>
 HTM;
