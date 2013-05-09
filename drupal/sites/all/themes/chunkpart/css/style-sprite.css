@@ -135,13 +135,12 @@ body #at16pt {
 /* Of The Day Module */
 
 #block-bean-of-the-day li {
-	padding-left: 120px;
+	padding: 7px 0 10px 120px;
 	position: relative;
 	font-size: 14px;
 	min-height: 110px; *height: 110px;
-	padding-bottom: .5em;
 	border-bottom: 1px solid #e8e8e8;
-	margin-bottom: .5em;
+	margin-bottom: 10px;
 	line-height: 1.5;
 }
 
@@ -488,10 +487,12 @@ body #at16pt {
 	margin-right: .5em;
 	margin-top: .5em;
 	border-right: 1px solid #ccc;
+	color: #777;
 }
 
 .node-type-article #article-author-names {
 	margin-top: .5em;
+	font-weight: bold;
 }
 
 .node-type-article #article-author-names li {
