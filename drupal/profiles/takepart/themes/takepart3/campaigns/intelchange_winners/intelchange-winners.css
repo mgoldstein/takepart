@@ -1725,8 +1725,11 @@
   color: rgb(149, 174, 194);
   margin-bottom: 3px;
 }
-.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member.winner .title {
-  color: rgb(255, 255, 255);
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member.active .title,
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member.active .company {
+  color: rgb(213, 226, 237);
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member.active.winner .title {
   font-weight: bold;
 }
 
