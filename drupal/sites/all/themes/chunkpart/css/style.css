@@ -111,6 +111,10 @@ body #at16pt {
 	font-size: 14px;
 }
 
+#site-secondary .on_our_radar_section ol {
+	font-family: TradeGothicLTStdCnBold, sans-serif;
+}
+
 #site-secondary .on_our_radar_section li {
 	padding-bottom: .5em;
 	border-bottom: 1px solid #e8e8e8;
@@ -122,6 +126,7 @@ body #at16pt {
 	color: #000;
 	text-decoration: none;
 	display: block;
+	font-family: sans-serif;
 }
 
 #site-secondary .on_our_radar_section .title {
