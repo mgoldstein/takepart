@@ -1604,3 +1604,16 @@
   margin-bottom: 20px;
   color: rgb(75, 54, 57);
 }
+
+/* Teams ---------------- */
+.page-wordlet-intelchange-winners-teams #page {
+  padding-top: 23px;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block {
+  margin: 0 13px;
+  width: 135px;
+  float: left;
+}
+.page-wordlet-intelchange-winners-teams #page .second-block {
+  background: #fff;
+}

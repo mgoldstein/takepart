@@ -21,7 +21,8 @@ if (isset($_GET['member'])) {
         ?>
         <div class="team<?=($active_team?' active':'')?>">
             <? $team_members = wl($team->token.'_team'); ?>
-            <span class="team-name"><?=$team->single(false)?></span>
+            <a class="team-name" href='<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>'><?=$team->single(false)?></a>
+            <div class="team-members">
             <? foreach ( $team_members as $i => $team_member ): ?>
                 <?
                 $active_member = $cur_member == $team_member->token;
@@ -32,6 +33,7 @@ if (isset($_GET['member'])) {
                     <span class="title"><?=w($team_member->token.'_member_title_label')?></span>
                 </a>
             <? endforeach ?>
+            </div>
         </div>
     <? endforeach ?>
     </div>
