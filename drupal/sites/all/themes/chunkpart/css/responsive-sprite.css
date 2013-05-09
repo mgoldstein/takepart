@@ -363,7 +363,7 @@
 	.node-type-article #article-tab,
 	.node-type-article #article-social li {
 		display: inline-block;
-		vertical-align: middle;
+		vertical-align: top;
 	}
 
 	.node-type-article #article-tab {

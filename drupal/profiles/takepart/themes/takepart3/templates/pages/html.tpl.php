@@ -54,7 +54,7 @@
         <meta property="fb:app_id" content="247137505296280" />
         <?php print $styles; ?>
         <!--[if lt IE 9]>
-            <script src="/profiles/takepart/themes/takepart3/js/html5shiv.js"></script>
+            <script src="/sites/all/themes/takepart_core/js/html5shiv.js"></script>
         <![endif]-->
         <?php print $scripts; ?>
         <? if ( $is_iframed ): ?>
