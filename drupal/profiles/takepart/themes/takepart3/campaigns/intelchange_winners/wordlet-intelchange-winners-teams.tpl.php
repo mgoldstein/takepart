@@ -49,7 +49,10 @@ if (isset($_GET['member'])) {
         <div class="portrait">
             <img src="<?=$team_member->img_src?>" alt="<?=$team_member->single(false)?>">
         </div>
-        <h2 class='headline'><span class='member-title'><?=w($team_member->token.'_member_title_label')?></span> <?=$team_member->single(false)?></h2>
+        <h2 class='headline'>
+            <span class='member-title'><?=w($team_member->token.'_member_title_label')?> </span>
+            <span class="name"><?=$team_member->single(false)?></span>
+        </h2>
         <div class='facts'><?=$team_member->multi_short(false)?></div>
         <div class='blurb'><?=$team_member->multi(false)?></div>
         <div class="video">
