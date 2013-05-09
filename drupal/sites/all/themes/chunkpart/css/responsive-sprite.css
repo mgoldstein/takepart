@@ -241,7 +241,6 @@
 	#site-secondary {
 		width: auto;
 		float: none;
-		margin-top: 2em;
 	}
 
 	#site-secondary .block {
@@ -408,6 +407,10 @@
 		margin-right: 0;
 	}
 
+	.node-type-article #article-main-inner {
+		margin-bottom: 1em;
+	}
+
 	/* Next artcle */
 
 	.node-type-article #next-article a {
@@ -418,8 +421,9 @@
 		display: none;
 	}
 
-	/* Right Rail */
-	#topic_box {
+	/* Faux right rail */
+	#topic_box:before,
+	#topic_box:after {
 		display: none;
 	}
 }
