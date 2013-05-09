@@ -46,7 +46,9 @@ if (isset($_GET['member'])) {
     $team_member = wf($team->token.'_team', 'token', $cur_member);
     ?>
     <div class="member" <?=wa($team->token.'_team')?>>
-        <img src="<?=$team_member->img_src?>" alt="<?=$team_member->single(false)?>">
+        <div class="portrait">
+            <img src="<?=$team_member->img_src?>" alt="<?=$team_member->single(false)?>">
+        </div>
         <h2 class='title'><span class='member-title'><?=w($team_member->token.'_member_title_label')?></span> <?=$team_member->single(false)?></h2>
         <div class='facts'><?=$team_member->multi_short(false)?></div>
         <div class='blurb'><?=$team_member->multi(false)?></div>
