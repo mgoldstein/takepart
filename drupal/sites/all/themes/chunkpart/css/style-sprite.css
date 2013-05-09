@@ -916,7 +916,6 @@ body #at16pt {
 .node-type-article #article-tags {
 	margin-bottom: 1em;
 	font-size: 14px;
-	font-weight: bold;
 	line-height: 1.5;
 }
 
@@ -937,6 +936,8 @@ body #at16pt {
 
 .node-type-article #article-tags .headline {
 	padding-right: .25em;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 .node-type-article #article-tags li:after {
