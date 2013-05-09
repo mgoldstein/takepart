@@ -42,11 +42,11 @@
 
 <div class="second-block">
     <div class="first-sub">
-        <h2 class='title'><?=w('second_block_first_sub_title')?></h2>
+        <h2 class='headline'><?=w('second_block_first_sub_headline')?></h2>
         <div class="text-block cms">
             <?=w('second_block_first_sub_first_text')?>
         </div>
-        <h3 class='subtitle'><?=w('second_block_first_sub_subtitle')?></h3>
+        <h3 class='subtitle'><?=w('second_block_first_sub_subheadline')?></h3>
         <div class="text-block cms">
             <?=w('second_block_first_sub_second_text')?>
         </div>
@@ -58,6 +58,7 @@
     <div class="second-sub form_wrapper">
         <div class="default-state">
             <div class="default-content">
+                <h2 class='headline'>w('second_block_second_sub_headline')</h2>
                 <div class="teams-wrapper" <?=wa('teams')?>>
                     <ul class="teams-menu">
                         <? foreach ( wl('teams') as $team ): ?>
