@@ -150,6 +150,7 @@
 
 #site-miss-nav p {
 	font-weight: bold;
+	color: #555;
 }
 
 #site-miss-nav a:hover {
