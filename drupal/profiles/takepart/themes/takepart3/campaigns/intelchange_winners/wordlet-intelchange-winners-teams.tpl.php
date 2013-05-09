@@ -27,8 +27,8 @@ if (isset($_GET['member'])) {
                 <?
                 $active_member = $cur_member == $team_member->token;
                 ?>
-                <a href="<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>&member=<?=$team_member->token?>" class="member<?=($active_member?' active':'')?>">
-                    <span class="name"><?=$team_member->single(false)?></span>
+                <a href="<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>&member=<?=$team_member->token?>" class="member <?=$team_member->token?><?=($active_member?' active':'')?>">
+                    <span class="name"><?=strtok($team_member->single(false), " ")?></span>
                     <span class="company"><?=w($team->token.'_'.$team_member->token.'_company')?></span>
                     <span class="title"><?=w($team_member->token.'_member_title_label')?></span>
                 </a>

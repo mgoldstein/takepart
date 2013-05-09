@@ -1615,5 +1615,110 @@
   float: left;
 }
 .page-wordlet-intelchange-winners-teams #page .second-block {
-  background: #fff;
+  width: 809px;
+  float: left;
+  background: rgb(255, 255, 255);
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team {
+  margin-bottom: 5px;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-name {
+  padding: 33px 0 33px 12px;
+  background: rgb(244, 244, 243);
+  color: rgb(75, 54, 57);
+  text-transform: uppercase;
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-name:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(16, 118, 174);
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-name:hover {
+  text-decoration: none;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team.active .team-name {
+  background: rgb(16, 118, 174);
+  color: rgb(255, 255, 255);
+  padding-top: 19px;
+  padding-bottom: 19px;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team.active .team-name::before {
+  content: url(images/map_marker.png);
+  vertical-align: middle;
+  margin-right: 5px;
+  display: inline-block; *display: inline; *zoom: 1;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members {
+  display: none;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team.active .team-members {
+  display: block;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member {
+  display: block;
+  padding: 17px 5px 10px 12px;
+  border-color: rgb(16, 118, 174);
+  border-width: 0 3px 3px 3px;
+  border-style: solid;
+  background-color: rgb(2, 89, 137);
+  position: relative;
+  height: 82px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-transition: background-color .2s ease-in-out;
+  transition: background-color .2s ease-in-out;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member:hover {
+  text-decoration: none;
+  background-color: rgb(0, 140, 215);
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member.active {
+  background: rgb(0, 140, 215);
+  border-right-width: 0;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-width: 40px 0 40px 14px;
+  border-style: dotted;
+  -webkit-transition: border-color .2s ease-in-out;
+  transition: border-color .2s ease-in-out;
+
+  border-left-style: solid;
+  border-right-color: transparent;
+  border-right-width: 0;
+  left: 100%;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member.active:after {
+  border-color: transparent rgb(0, 140, 215) transparent;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member span {
+  color: #fff;
+  display: block;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member .name {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member .title,
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member .company {
+  font-size: 12px;
+  color: rgb(149, 174, 194);
+  margin-bottom: 3px;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member.winner .title {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
 }
