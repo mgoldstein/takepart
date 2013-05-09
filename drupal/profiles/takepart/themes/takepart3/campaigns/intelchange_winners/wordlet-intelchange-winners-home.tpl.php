@@ -46,7 +46,7 @@
         <div class="text-block cms">
             <?=w('second_block_first_sub_first_text')?>
         </div>
-        <h3 class='subtitle'><?=w('second_block_first_sub_subheadline')?></h3>
+        <h3 class='subheadline'><?=w('second_block_first_sub_subheadline')?></h3>
         <div class="text-block cms">
             <?=w('second_block_first_sub_second_text')?>
         </div>
