@@ -1734,6 +1734,11 @@
 .page-wordlet-intelchange-winners-teams #page .second-block .member {
   padding: 53px 73px 50px 73px;
 }
+.page-wordlet-intelchange-winners-teams #page .second-block .member .portrait {
+  margin-bottom: 19px;
+  margin-right: 37px;
+  float: left;
+}
 .page-wordlet-intelchange-winners-teams #page .second-block .member .headline {
   margin-bottom: 0.1em;
 }
@@ -1741,11 +1746,13 @@
   font-size: 13px;
   display: block;
   text-transform: uppercase;
+  font-weight: bold;
 }
 .page-wordlet-intelchange-winners-teams #page .second-block .member .facts p {
   font-size: 14px;
   color: rgb(197, 197, 197);
   line-height: 1.25em;
+  margin-bottom: 0.5em;
 }
 .page-wordlet-intelchange-winners-teams #page .second-block .member .blurb p {
   font-size: 14px;
