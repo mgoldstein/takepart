@@ -1578,3 +1578,30 @@
   margin: 0 0 0.4em 0;
   color: rgb(75, 54, 57);
 }
+
+/* Learn More ---------------- */
+.page-wordlet-intelchange-winners-learn #page .first-block,
+.page-wordlet-intelchange-winners-learn #page .second-block {
+  margin: 40px;
+}
+.page-wordlet-intelchange-winners-learn #page .second-block {
+  margin-bottom: 87px;
+}
+.page-wordlet-intelchange-winners-learn #page .first-block .image-wrapper {
+  margin-right: 47px;
+  float: left;
+}
+.page-wordlet-intelchange-winners-learn #page .first-block .headline {
+  font-size: 35px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+.page-wordlet-intelchange-winners-learn #page .first-block .text-block p {
+  font-size: 14px;
+  margin-bottom: 2em;
+}
+.page-wordlet-intelchange-winners-learn #page .second-block .headline {
+  font-size: 25px;
+  margin-bottom: 20px;
+  color: rgb(75, 54, 57);
+}
