@@ -1661,7 +1661,7 @@
 }
 .page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member {
   display: block;
-  padding: 17px 5px 10px 12px;
+  padding: 0 5px 0 12px;
   border-color: rgb(16, 118, 174);
   border-width: 0 3px 3px 3px;
   border-style: solid;
@@ -1703,6 +1703,11 @@
 }
 .page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member.active:after {
   border-color: transparent rgb(0, 140, 215) transparent;
+}
+.page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member .inner-wrapper {
+  height: 79px;
+  display: table-cell;
+  vertical-align: middle;
 }
 .page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member span {
   color: #fff;
