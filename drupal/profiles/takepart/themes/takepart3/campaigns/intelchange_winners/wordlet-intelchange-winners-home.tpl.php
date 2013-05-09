@@ -58,7 +58,7 @@
     <div class="second-sub form_wrapper">
         <div class="default-state">
             <div class="default-content">
-                <h2 class='headline'>w('second_block_second_sub_headline')</h2>
+                <h2 class='headline'><?=w('second_block_second_sub_headline')?></h2>
                 <div class="teams-wrapper" <?=wa('teams')?>>
                     <ul class="teams-menu">
                         <? foreach ( wl('teams') as $team ): ?>
