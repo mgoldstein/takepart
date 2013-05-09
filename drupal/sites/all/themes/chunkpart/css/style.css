@@ -857,12 +857,13 @@ body #at16pt {
 	font-family: TradeGothicLTStdCnBold, sans-serif;
 	border-right: 1px solid #c1c1c1;
 	padding-right: .75em;
-	color: #000;
+	color: #333;
 }
 
 .node-type-article #next-article p {
 	display: inline;
 	padding-left: .75em;
+	font-weight: bold;
 }
 
 .node-type-article #next-article a:after {
@@ -911,6 +912,7 @@ body #at16pt {
 	padding-right: .25em;
 	text-transform: uppercase;
 	font-weight: bold;
+	color: #333;
 }
 
 .node-type-article #article-tags li:after {
