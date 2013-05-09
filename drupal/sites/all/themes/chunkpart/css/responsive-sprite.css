@@ -408,6 +408,16 @@
 		margin-right: 0;
 	}
 
+	/* Next artcle */
+
+	.node-type-article #next-article a {
+		padding-right: 0;
+	}
+
+	.node-type-article #next-article a:after {
+		display: none;
+	}
+
 	/* Right Rail */
 	#topic_box {
 		display: none;
