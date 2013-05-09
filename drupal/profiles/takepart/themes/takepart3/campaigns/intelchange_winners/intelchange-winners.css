@@ -1619,11 +1619,13 @@
   float: left;
   background: rgb(255, 255, 255);
 }
+
+/*first block: team-menu*/
 .page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team {
   margin-bottom: 5px;
 }
 .page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-name {
-  padding: 33px 0 33px 12px;
+  padding: 33px 0 33px 15px;
   background: rgb(244, 244, 243);
   color: rgb(75, 54, 57);
   text-transform: uppercase;
@@ -1726,4 +1728,27 @@
 .page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member.winner .title {
   color: rgb(255, 255, 255);
   font-weight: bold;
+}
+
+/*second block: member*/
+.page-wordlet-intelchange-winners-teams #page .second-block .member {
+  padding: 53px 73px 50px 73px;
+}
+.page-wordlet-intelchange-winners-teams #page .second-block .member .headline {
+  margin-bottom: 0.1em;
+}
+.page-wordlet-intelchange-winners-teams #page .second-block .member .headline .member-title {
+  font-size: 13px;
+  display: block;
+  text-transform: uppercase;
+}
+.page-wordlet-intelchange-winners-teams #page .second-block .member .facts p {
+  font-size: 14px;
+  color: rgb(197, 197, 197);
+  line-height: 1.25em;
+}
+.page-wordlet-intelchange-winners-teams #page .second-block .member .blurb p {
+  font-size: 14px;
+  margin-bottom: 1em;
+  line-height: 1.25em;
 }
