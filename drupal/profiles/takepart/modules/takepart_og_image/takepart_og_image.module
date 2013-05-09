@@ -14,12 +14,19 @@ function takepart_og_image_token_info() {
             'function' => "takepart_og_image_thumbnail",
         ),
     );
-
+    $info['tokens']['tp_og_image']['article_main_image'] = array(
+        'name' => t('Article Main Image'),
+        'description' => t("Returns the URL of the article main image"),
+        'dynamic' => TRUE,
+        'function' => array(
+            'file' => drupal_get_path("module", "takepart_og_image") . "/takepart_og_image.module",
+            'function' => "takepart_og_image_article_main",
+        ),
+    );
     return $info;
 }
 
 function takepart_og_image_thumbnail($nid) {
-    
     if (!is_numeric($nid)) {
         return 'Not-A-Number';
     }
@@ -31,8 +38,24 @@ function takepart_og_image_thumbnail($nid) {
         $url = $base_url . base_path() . variable_get('file_public_path', conf_path() . '/files') . '/' . $thumb->filename;
 
         return $url;
+    } else {
+        return null;
     }
-    else {
+}
+
+function takepart_og_image_article_main($nid) {
+    if (!is_numeric($nid)) {
+        return 'Not-A-Number';
+    }
+    $thisnode = node_load($nid);
+    if (!empty($thisnode->field_article_main_image)) {
+        $thisfile = $thisnode->field_article_main_image['und'][0]['fid'];
+        $image = file_load($thisfile);
+        global $base_url;
+        $url = $base_url . base_path() . variable_get('file_public_path', conf_path() . '/files') . '/' . $image->filename;
+
+        return $url;
+    } else {
         return null;
     }
 }
