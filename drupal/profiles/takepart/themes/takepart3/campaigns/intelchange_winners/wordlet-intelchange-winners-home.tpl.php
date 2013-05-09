@@ -50,8 +50,8 @@
         <div class="text-block cms">
             <?=w('second_block_first_sub_second_text')?>
         </div>
-        <div class="important">
-            <a href="<?=wu('intelchange_winners_involved')?>"><?=w('second_block_first_sub_cta')?></a>
+        <div class="important" <?= wa('second_block_first_sub_cta')?>>
+            <a href="<?=w('second_block_first_sub_cta')->href?>"><?=w('second_block_first_sub_cta')->single(false)?></a>
         </div>
     </div>
 
