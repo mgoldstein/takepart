@@ -300,10 +300,6 @@ body #at16pt {
 	overflow: hidden;
 }
 
-.follow_us a:hover {
-	opacity: .6;
-}
-
 .follow_us li a {
 	background-repeat: no-repeat;
 }
