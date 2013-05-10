@@ -422,6 +422,12 @@ body #at16pt {
 	display: block;
 }
 
+/* Drupal stuff */
+
+.tabs-toolbar {
+	display: none;
+}
+
 /* ============================================================
 || 3.) Section Specific
 ============================================================ */
@@ -436,6 +442,10 @@ body #at16pt {
 .node-type-article #article-main-inner {
 	width: 31em;
 	float: left;
+}
+
+.node-type-article .unpublished #article-main-inner {
+	background: #fff4f4;
 }
 
 .node-type-article #site-secondary {
