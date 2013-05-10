@@ -432,6 +432,10 @@ body #at16pt {
 	float: left;
 }
 
+.node-type-article .unpublished #article-main-inner {
+	background: #fff4f4;
+}
+
 .node-type-article #site-secondary {
 	width: 15em;
 	float: right;

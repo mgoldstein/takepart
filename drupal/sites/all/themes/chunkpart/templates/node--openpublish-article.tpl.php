@@ -1,4 +1,4 @@
-<article id="article-main">
+<article id="article-main" class="<?=!$node->status ? 'unpublished':'' ?>">
 	<div id="article-main-inner">
 		<header id="article-header">
 			<h1 id="article-headline"><?=_s($title) ?></h1>
