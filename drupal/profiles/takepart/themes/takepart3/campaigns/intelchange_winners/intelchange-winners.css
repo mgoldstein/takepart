@@ -516,6 +516,17 @@
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
+.page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-menu .team a.active {
+  color: rgb(0, 0, 0);
+  height: 49px;
+  background: rgb(255, 255, 255);
+}
+.page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-menu .team a.active::before {
+  content: url(images/map_marker.png);
+  vertical-align: middle;
+  margin-right: 5px;
+  display: inline-block; *display: inline; *zoom: 1;
+}
 .page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-menu .team a:hover,
 .page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-menu .team a:focus {
   color: rgb(0, 0, 0);
