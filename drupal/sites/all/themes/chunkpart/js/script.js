@@ -64,6 +64,34 @@ $(function() {
 		]
 	});
 
+    // Make tpinfographic stuff
+    $('.tpinfographic').each(function() {
+        var $this = $(this);
+        var html = $this.html().replace(/^\s+|\s+$/g, '') + '<br />Via: <a href="http://www.takepart.com">TakePart.com</a>';
+        var $container = $('<div/>').addClass('tpinfographic_container');
+        var $embed = $('<div/>').addClass('tpinfographic_embed_container');
+        var $embed_link_p = $('<p/>').addClass('tpinfographic_embed_link');
+        var $embed_link_a = $('<a href="#"/>').html('Embed This Infographic on Your Site');
+        var $embed_textarea_p = $('<p/>').addClass('tpinfographic_embed_textarea').hide();
+        var $embed_textarea = $('<textarea/>').addClass('tpinfographic_embed_textarea').attr({cols: 56, rows: 7}).val(html);
+
+        $embed_link_p.append($embed_link_a);
+
+        $embed_textarea_p.append($embed_textarea);
+
+        $embed
+            .append($embed_link_p)
+            .append($embed_textarea_p)
+
+        $container
+            .insertAfter($this)
+            .append($this)
+            .append($embed)
+            ;
+    });
+
+
+
 	// Adding tab support to participant nav
 	var $site_participant_nav = $('#site-participant-nav')
 		.bind('focusin', function() {
