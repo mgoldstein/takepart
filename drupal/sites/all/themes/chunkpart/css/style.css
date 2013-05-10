@@ -557,7 +557,7 @@ body #at16pt {
 	float: left;
 }
 
-.node-type-article #article-author-names li:last-child:after {
+.node-type-article #article-author-names li.last-child:after {
 	content: "";
 	display: none;
 }
