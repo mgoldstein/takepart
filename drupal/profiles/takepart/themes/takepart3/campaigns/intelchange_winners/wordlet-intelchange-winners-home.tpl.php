@@ -63,7 +63,7 @@
                     <ul class="teams-menu">
                         <? foreach ( wl('teams') as $team ): ?>
                         <li class='team'>
-                            <a href="<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>" data-team='<?=$team->token?>'><?=$team->single(false)?></a>
+                            <a href="<?=wu('intelchange_winners_home')?>#<?=$team->token?>"><?=$team->single(false)?></a>
                         </li>
                         <? endforeach ?>
                     </ul>
@@ -75,7 +75,7 @@
                                 $team_mentor2 = wf($team->token.'_team', 'token', 'mentor2');
                                 $team_mentor3 = wf($team->token.'_team', 'token', 'mentor3');
                             ?>
-                            <div class="team <?=$team->token?>" <?=wa($team->token.'_team')?>>
+                            <div id='<?=$team->token?>' class="team" <?=wa($team->token.'_team')?>>
                                 <a class="winner" href='<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>&member=<?=$team_winner->token?>'>
                                     <div class="portrait">
                                         <img src="<?=$team_winner->img_src?>" alt="<?=$team_winner->single(false)?>">
