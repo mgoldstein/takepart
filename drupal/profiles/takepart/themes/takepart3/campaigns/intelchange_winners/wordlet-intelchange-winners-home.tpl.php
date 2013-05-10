@@ -80,11 +80,16 @@
                                     <div class="portrait">
                                         <img src="<?=$team_winner->img_src?>" alt="<?=$team_winner->single(false)?>">
                                     </div>
-                                    <span class="title"><?=w($team_winner->token.'_member_title_label')?></span>
-                                    <span class='name'><?=strtok($team_winner->single(false), " ")?></span>
+                                    <h3 class='winner-headline'>
+                                        <span class="title"><?=w($team_winner->token.'_member_title_label')?></span>
+                                        <span class='name'><?=strtok($team_winner->single(false), " ")?></span>
+                                    </h3>
                                     <div class='facts'><?=$team_winner->multi_short(false)?></div>
                                 </a>
                                 <div class="mentors">
+                                    <h3 class='mentors-headline'>
+                                        <?=w('second_block_second_sub_subheadline')?>
+                                    </h3>
                                     <a class="mentor one" href='<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>&member=<?=$team_mentor1->token?>'>
                                         <img src="<?=$team_mentor1->thumb_src?>" alt="<?=$team_mentor1->single(false)?>">
                                         <span class='name'><?=$team_mentor1->single(false)?></span>
@@ -103,9 +108,9 @@
                                         <span class="company"><?=w($team->token.'_'.$team_mentor3->token.'_company')?></span>
                                         <span class="title"><?=w($team_mentor3->token.'_member_title_label')?></span>
                                     </a>
-                                </div>
-                                <div class="important">
-                                    <a href="<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>"><?=w('read_more') ?></a>
+                                    <div class="important">
+                                        <a href="<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>"><?=w('read_more') ?></a>
+                                    </div>
                                 </div>
                             </div>
                         <? endforeach ?>
