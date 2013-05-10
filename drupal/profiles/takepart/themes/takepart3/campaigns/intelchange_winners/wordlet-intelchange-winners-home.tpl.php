@@ -63,7 +63,7 @@
                     <ul class="teams-menu">
                         <? foreach ( wl('teams') as $team ): ?>
                         <li class='team'>
-                            <a href="<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>" data-team='<?=$team->token?>'><?=$team->single(false)?></a>
+                            <a href="<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>" data-team='<?=$team->token?>'><span><?=$team->single(false)?></span></a>
                         </li>
                         <? endforeach ?>
                     </ul>
