@@ -81,7 +81,7 @@
                                         <img src="<?=$team_winner->img_src?>" alt="<?=$team_winner->single(false)?>">
                                     </div>
                                     <span class="title"><?=w($team_winner->token.'_member_title_label')?></span>
-                                    <span class='name'><?=$team_winner->single(false)?></span>
+                                    <span class='name'><?=strtok($team_winner->single(false), " ")?></span>
                                     <div class='facts'><?=$team_winner->multi_short(false)?></div>
                                 </a>
                                 <div class="mentors">
