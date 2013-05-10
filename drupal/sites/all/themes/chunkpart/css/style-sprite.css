@@ -413,9 +413,13 @@ body #at16pt {
 .cms .photo-wrapper {
 	color: #777;
 	border-bottom: 1px solid #e8e8e8;
-	padding-bottom: .75rem;
-	margin-bottom: 1em;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
 	line-height: 1.2;
+}
+
+.cms p span img {
+	display: block;
 }
 
 /* ============================================================
@@ -910,7 +914,7 @@ body #at16pt {
 	font-size: 14px;
 	color: #777;
 	border-bottom: 1px solid #e8e8e8;
-	padding: .75rem 0;
+	padding: 10px 0;
 	line-height: 1.2;
 }
 
