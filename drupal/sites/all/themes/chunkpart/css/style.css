@@ -203,6 +203,11 @@ body #at16pt {
 	display: block;
 	width: 100%;
 	white-space: nowrap;
+
+	*text-indent: 0; text-indent: 0\0/;
+	*position: static; position: static\0/;
+	padding-bottom: 5px;
+	font-size: 14px;
 }
 
 .newsletter_social label.error {
@@ -232,6 +237,10 @@ body #at16pt {
 	-webkit-box-shadow: inset 3px 3px 10px rgba(50, 50, 50, 0.1);
 	-moz-box-shadow:    inset 3px 3px 10px rgba(50, 50, 50, 0.1);
 	box-shadow:         inset 3px 3px 10px rgba(50, 50, 50, 0.1);
+}
+
+.newsletter_social form .form-text:focus {
+	z-index: 4;
 }
 
 .newsletter_social form .form-submit {
