@@ -396,7 +396,7 @@
 }
 .page-wordlet-intelchange-winners-home #page .second-block {
   display: inline-block; *display: inline; *zoom: 1;
-  margin-bottom: 80px;
+  vertical-align: top;
 }
 .page-wordlet-intelchange-winners-home #page .second-block .first-sub .text-block p {
   font-size: 14px;
