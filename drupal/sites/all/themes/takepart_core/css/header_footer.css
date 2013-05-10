@@ -561,3 +561,37 @@ Footer ------------------------------------------------------------
 #site-connect .tumblr a {
 	background-image: url(../images/connect_tumblr.png); /** sprite-ref: mysprite; */
 }
+
+/* rolovers */
+
+#site-connect .facebook a:hover {
+	background-image: url(../images/connect_facebook_rollover.png); /** sprite-ref: mysprite; */
+}
+
+#site-connect .twitter a:hover {
+	background-image: url(../images/connect_twitter_rollover.png); /** sprite-ref: mysprite; */
+}
+
+#site-connect .email a:hover {
+	background-image: url(../images/connect_email_rollover.png); /** sprite-ref: mysprite; */
+}
+
+#site-connect .google a:hover {
+	background-image: url(../images/connect_google_rollover.png); /** sprite-ref: mysprite; */
+}
+
+#site-connect .pinterest a:hover {
+	background-image: url(../images/connect_pinterest_rollover.png); /** sprite-ref: mysprite; */
+}
+
+#site-connect .linkedin a:hover {
+	background-image: url(../images/connect_linkedin_rollover.png); /** sprite-ref: mysprite; */
+}
+
+#site-connect .youtube a:hover {
+	background-image: url(../images/connect_youtube_rollover.png); /** sprite-ref: mysprite; */
+}
+
+#site-connect .tumblr a:hover {
+	background-image: url(../images/connect_tumblr_rollover.png); /** sprite-ref: mysprite; */
+}

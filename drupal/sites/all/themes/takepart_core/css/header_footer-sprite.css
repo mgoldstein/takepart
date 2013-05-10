@@ -577,3 +577,45 @@ Footer ------------------------------------------------------------
   background-image: url('style-sprite.png');
   background-position: left -2131px;
 }
+
+/* rolovers */
+
+#site-connect .facebook a:hover {
+  background-image: url('style-sprite.png');
+  background-position: left -1124px;
+}
+
+#site-connect .twitter a:hover {
+  background-image: url('style-sprite.png');
+  background-position: left -1158px;
+}
+
+#site-connect .email a:hover {
+  background-image: url('style-sprite.png');
+  background-position: left -1226px;
+}
+
+#site-connect .google a:hover {
+  background-image: url('style-sprite.png');
+  background-position: left -2165px;
+}
+
+#site-connect .pinterest a:hover {
+  background-image: url('style-sprite.png');
+  background-position: left -2199px;
+}
+
+#site-connect .linkedin a:hover {
+  background-image: url('style-sprite.png');
+  background-position: left -2233px;
+}
+
+#site-connect .youtube a:hover {
+  background-image: url('style-sprite.png');
+  background-position: left -2267px;
+}
+
+#site-connect .tumblr a:hover {
+  background-image: url('style-sprite.png');
+  background-position: left -2131px;
+}
