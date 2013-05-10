@@ -526,10 +526,6 @@ Footer ------------------------------------------------------------
 	background-repeat: no-repeat;
 }
 
-#site-connect a:hover {
-	opacity: .6;
-}
-
 #site-connect .facebook a {
 	background-image: url(../images/connect_facebook.png); /** sprite-ref: mysprite; */
 }

@@ -534,10 +534,6 @@ Footer ------------------------------------------------------------
 	background-repeat: no-repeat;
 }
 
-#site-connect a:hover {
-	opacity: .6;
-}
-
 #site-connect .facebook a {
   background-image: url('style-sprite.png');
   background-position: left -603px;
