@@ -592,43 +592,43 @@ body #at16pt {
 
 .node-type-article #article-social-more h4 a:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -890px;
+  background-position: left -886px;
 }
 
 /* rollovers */
 .node-type-article #article-social .tp-social-facebook:hover:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -924px;
+  background-position: left -920px;
 }
 
 .node-type-article #article-social .tp-social-twitter:hover:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -958px;
+  background-position: left -954px;
 }
 
 .node-type-article #article-social .tp-social-googleplus:hover:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -992px;
+  background-position: left -988px;
 }
 
 .node-type-article #article-social .tp-social-email:hover:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1026px;
+  background-position: left -1022px;
 }
 
 .node-type-article #article-social .tp-social-reddit:hover:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1060px;
+  background-position: left -1056px;
 }
 
 .node-type-article #article-social #article-comments-link a:hover:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1094px;
+  background-position: left -1090px;
 }
 
 .node-type-article #article-social-more h4 a:hover:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1124px;
+  background-position: left -1120px;
 }
 
 .node-type-article #article-social-more {
@@ -675,7 +675,7 @@ body #at16pt {
 	float: right;
 	background-repeat: no-repeat;
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1158px;
+  background-position: left -1154px;
 }
 
 .node-type-article #article-more-shares a {
@@ -703,42 +703,42 @@ body #at16pt {
 
 .node-type-article #article-more-shares .tp-social-myspace:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1175px;
+  background-position: left -1171px;
 }
 
 .node-type-article #article-more-shares .tp-social-delicious:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1201px;
+  background-position: left -1197px;
 }
 
 .node-type-article #article-more-shares .tp-social-linkedin:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1227px;
+  background-position: left -1223px;
 }
 
 .node-type-article #article-more-shares .tp-social-myaol:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1253px;
+  background-position: left -1249px;
 }
 
 .node-type-article #article-more-shares .tp-social-live:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1279px;
+  background-position: left -1275px;
 }
 
 .node-type-article #article-more-shares .tp-social-digg:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1305px;
+  background-position: left -1301px;
 }
 
 .node-type-article #article-more-shares .tp-social-stumbleupon:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1331px;
+  background-position: left -1327px;
 }
 
 .node-type-article #article-more-shares .tp-social-hyves:before {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1357px;
+  background-position: left -1353px;
 }
 
 .node-type-article #article-social {
@@ -887,12 +887,12 @@ body #at16pt {
 
 .node-type-article #article-author .follow .twitter a {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1383px;
+  background-position: left -1379px;
 }
 
 .node-type-article #article-author .follow .google a {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1414px;
+  background-position: left -1410px;
 }
 
 /* TODO: maybe just make this global */
@@ -945,7 +945,7 @@ body #at16pt {
 	background-position: 14px 10px;
 	background-repeat: no-repeat;
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -1445px;
+  background-position: left -1441px;
 	position: absolute;
 	right: 0;
 	top: 0;
