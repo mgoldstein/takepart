@@ -28,6 +28,11 @@ var swap = function($from, $to, $parent, callback) {
             });
         });
 };
+var getCleanUrl = function(url, cleanHash){
+    // remove query string and hash (optional)
+    var urlObj = $('<a href="' + url + '"></a>')[0];
+    return urlObj.hostname + urlObj.pathname + (cleanHash ? '' : urlObj.hash);
+};
 
 // Document Ready ----------------
 $(function() {
@@ -45,6 +50,11 @@ if ( $body.is('.page-wordlet-intelchange-winners-home') ) {
     var $form_wrapper = $('.form_wrapper');
     var $default_state = $('.default-state');
     var $form_state = $('.form-state');
+
+    var $team_wrapper = $('.teams-wrapper');
+    var $team_navs = $('.teams-menu a', $team_wrapper);
+    var $team_contents_wrapper = $('.teams-content', $team_wrapper);
+    var $team_contents = $('.team', $team_contents_wrapper);
 
     $body
         // Show video
@@ -97,64 +107,34 @@ if ( $body.is('.page-wordlet-intelchange-winners-home') ) {
                 mask: /^[0-9]+$/
             })
         })
+        .delegate('.teams-menu a', 'click', function(e) {
+            e.preventDefault();
+
+            // return if clicked the active menu item
+            if ($(this).is('.active')) return;
+
+            // store from
+            var $from = $team_contents.filter($team_navs.filter('.active')[0].hash);
+
+            // set menu classes
+            $team_navs.removeClass('active');
+            $(this).addClass('active');
+
+            // swap update content classes and make swap
+            var $to = $team_contents.filter(this.hash);
+            swap($from, $to, $team_contents_wrapper);
+        })
         ;
 
+    // teams tabs init
+    $team_navs.first().addClass('active');
+    $team_contents.hide().first().show();
+
+    // stay connected init
     $('#stay-connected').not('.interim')
         .hide()
         .append('<p class="close"><a href="#">Close</a></p>');
-
-    // Show random fact
-    var $facts = $('.facts-block .fact');
-    var fact_length = $facts.length;
-    var rfact = Math.floor(Math.random()*fact_length);
-    $facts.hide();
-    $($facts.get(rfact)).show();
-
-    // Slider
-    $('.finalists-menu').tpslide();
 }
-// Contest
-else if ( $body.is('.page-wordlet-intelchange-winners-contest') ) {
-    var contentNav = $('.countries-nav');
-    var content = $('.countries');
-    var contentSections = content.children();
-    $body
-        // Nav click
-        .delegate('.countries-nav li a', 'click', function(e) {
-            e.preventDefault();
-            contentNav.find('li a').removeClass('active');
-            contentSections.hide().filter('#' + $(this).attr('href')).show();
-            $(this).addClass('active');
-        });
-
-    contentNav.find('li a').first().trigger('click');
-}
-
-else if ( $body.is('.page-wordlet-intelchange-winners-contest-enter')) {
-    Drupal.behaviors.contestEntryFormThankYou = {
-        attach: function (context) {
-            if (context.is('.thank-you-message')){
-
-                // scroll to top of thank you after loaded
-                $('html, body').animate({
-                     scrollTop: context.offset().top
-                });
-
-                // thank you add this block
-                var $thankyouMessage = $('.form-block').data('thankyouMessage');
-                var $thankyouUrl = $('.form-block').data('thankyouUrl');
-                addthis.toolbox('.addThis', {
-                    ui_email_note: $thankyouMessage + '  ' + $thankyouUrl
-                },
-                {
-                    url: $thankyouUrl,
-                    title: $thankyouMessage
-                });
-            }
-        }
-    }
-}
-
 
 // About
 else if ( $body.is('.page-wordlet-intelchange-winners-about') ) {
@@ -187,200 +167,6 @@ else if ( $body.is('.page-wordlet-intelchange-winners-about') ) {
 
     $current_nav.addClass('active');
     contentSections.not('#' + $current_nav.attr('href')).hide();
-}
-
-// Vote
-else if ( $body.is('.page-wordlet-intelchange-winners-vote') ) {
-
-    // variables
-    var $voteWrap = $('.second-block .vote');
-    var $contentNav = $('.finalists-menu');
-    var $contentInfo = $('.finalist-content');
-    var $contentNavs = $contentNav.find('.finalist a');
-    var $contentSections = $contentInfo.find('.finalist');
-    var $currentNav;
-    var $currentContent;
-    var modalHash = 'vote_';
-    var justVoted = false;
-    var confirmFormOptInHandler = function(e){
-        var $container = $(this).parents('.vote-confirm');
-        if ($(this).find('input').is(':checked')){
-            $container.find('.form-item-agree-to-rules').show();
-            $container.find('.footnote').show();
-        } else {
-            $container.find('.form-item-agree-to-rules').hide();
-            $container.find('.footnote').hide();
-        }
-
-    }
-    var setCurFinalist = function(navItem){
-
-        // Return if clicked current finalist
-        if ($currentNav === navItem) return;
-
-        // Store current content so we can swap it out
-        var $from = $currentContent;
-
-        // Stop Current Video (Hide it)
-        if ($currentContent){
-            $loadedVidWrapper = $currentContent.find('.video');
-            $loadedVid = $('.video-player', $loadedVidWrapper);
-            $loadedVidWrapper.height($loadedVid.height());
-            $loadedVid.animate({opacity: 0}, speed, function() {
-                $(this).remove();
-            });
-        }
-
-        // Set current finalist variables
-        $currentNav = navItem;
-        $currentContent = $($currentNav[0].hash);
-
-        // Update active classes
-        $contentSections.removeClass('active');
-        $currentContent.addClass('active');
-        $contentNavs.removeClass('active');
-        $currentNav.addClass('active');
-
-        // Show Video
-        var $videotpl = $currentContent.find('.video-template');
-        if ( $videotpl.length ) {
-            var $video = $($videotpl.html());
-            $videotpl.parent().append($video);
-            //$videotpl.remove();
-        }
-
-        // optional fade animation
-        if ($from){
-            swap($from, $currentContent, $contentInfo);
-        }
-
-        // override scrollTo if not #vote_finalist
-        if (window.location.href.indexOf(modalHash) === -1){
-            scrollTopFinalists();
-        }
-    };
-    var scrollTopFinalists = function(){
-        $('body').scrollTo('.second-block', 0);
-    };
-    var finalistMenuClickHandler = function(e) {
-        e.preventDefault();
-        if ( this === $currentNav[0] ) return;
-        window.location.hash = $($(this)[0].hash).data('finalisttoken');
-        scrollTopFinalists();
-    };
-    var hashChangeHandler = function(e){
-        e.preventDefault();
-        setCurFinalist($contentNavs.filter('[href="' + getCleanUrl() + '"]'));
-    };
-    var showVoteModal = function(contentToShow){
-        var $voteModalWrapper = $currentContent.find('.modal-wrapper');
-        $.tpmodal.show({id: 'intelforchange_',node: contentToShow, afterClose: function(){
-            $voteModalWrapper.append(contentToShow);
-
-            // Reload page if close thank you modal
-            if (justVoted){
-                location.reload();
-            }
-        }});
-    };
-    var voteBtnHandler = function(e){
-        var $voteModalWrapper = $currentContent.find('.modal-wrapper');
-        var $fbModalContent = $('.vote-register', $voteModalWrapper);
-        var $confirmModalContent = $('.vote-confirm', $voteModalWrapper);
-        var notLoggedIn = $fbModalContent.length > 0;
-        var $contentToShow = notLoggedIn ? $fbModalContent : $confirmModalContent;
-
-        // only prevent default if not logged in (for the fb login return url)
-        if (!notLoggedIn){
-            e.preventDefault();
-        }
-
-        showVoteModal($contentToShow);
-    };
-    var modalCancelHandler = function(e){
-        e.preventDefault();
-        var $parent = $(this).parents('.tpmodal_modal');
-        var $modalClose = $parent.find('.tpmodal_close');
-        $modalClose.trigger('click');
-    };
-    var voteConfirmSubmit = function(context, settings){
-        if (settings && settings.contest_intel && settings.contest_intel.vote_result){
-            var $voteModalWrapper = $currentContent.find('.modal-wrapper');
-            var vote_result = settings.contest_intel.vote_result;
-            var $contentToShow = $('.vote-error', $voteModalWrapper);
-            if (vote_result === 'accepted'){
-                // show thank you modal
-                $contentToShow = $('.vote-thanks', $voteModalWrapper);
-                justVoted = true;
-                window.location.hash = "";
-            } else if(vote_result === 'rejected'){
-                // show rejected modal
-                $contentToShow = $('.vote-rejected', $voteModalWrapper);
-            }
-            showVoteModal($contentToShow);
-        }
-    };
-    var getCleanUrl = function(ignoreModalHash){
-        // remove hash and query string
-        var url = window.location.href.split("?")[0].split("#")[0];
-
-        // add hash back on
-        if (!!window.location.hash){
-            url = url + window.location.hash;
-        }
-
-        // remove modal hash if necessary
-        if (ignoreModalHash){
-            url = url.replace(modalHash, '');
-        }
-
-        return url;
-    };
-
-    // body delegates
-    $body
-        // Nav click
-        .delegate('.finalists-menu .finalist a', 'click', finalistMenuClickHandler)
-        // Vote Button click
-        .delegate('.finalist .vote-btn a', 'click', voteBtnHandler)
-        // Modal Cancel click
-        .delegate('.modal .cancel', 'click', modalCancelHandler)
-        // Confirm vote form opt in handler
-        .delegate('.vote-confirm .form-item-entry-opt-in', 'click', confirmFormOptInHandler);
-
-    $(window).bind('hashchange', hashChangeHandler);
-
-    /* drupal behavior binding for vote confirm */
-    Drupal.behaviors.confirmFormSubmit = {
-        attach: voteConfirmSubmit
-    }
-
-    // hide finalist modals
-    $('.finalist .modal-wrapper').hide();
-
-    // adjust finalist wrapper height based on menu size
-    $voteWrap.css({
-        'min-height': $contentNav.children().outerHeight(),
-        '_height': $contentNav.children().outerHeight()
-    });
-
-    // initialize finalist on load
-    if (!!window.location.hash){
-        // if #finalistToken or #modalToken_finalistToken
-        var $hashFinalist = $contentNavs.filter('[href="' + getCleanUrl(true) + '"]');
-        setCurFinalist($hashFinalist);
-        if (getCleanUrl().indexOf(modalHash) !== -1){
-            // if #modalToken_finalistToken (exapmle: #vote_one)
-            $currentContent.find('.vote-btn a').trigger('click');
-        }
-    } else {
-        // else use first finalist in menu
-        setCurFinalist($contentNavs.first());
-    }
-
-    // fix for swap function jumpiness
-    $contentSections.not('.active').hide();
-
 }
 
 });
