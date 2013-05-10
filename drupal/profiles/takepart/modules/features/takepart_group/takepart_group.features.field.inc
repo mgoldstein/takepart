@@ -1150,7 +1150,7 @@ function takepart_group_field_default_fields() {
           'user' => 0,
           'views' => 0,
         ),
-        'default_context' => 'multi_page_comapaign_default_context',
+        'default_context' => 'multi_page_campaign_default_context',
         'use_default' => '0',
         'user_register_form' => FALSE,
       ),

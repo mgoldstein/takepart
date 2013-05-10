@@ -113,7 +113,7 @@ class BlueStateDigitalConstituentGroupApi extends BlueStateDigitalApi {
   public function getConstituentGroup($cons_group_id) {
 
     // Make the request.
-    $response = $this->callAPI('cons_group/delete_constituent_groups',
+    $response = $this->callAPI('cons_group/get_constituent_group',
       array('cons_group_id' => $cons_group_id));
 
     // Parse the response to a list, then return the first item.
@@ -151,6 +151,28 @@ class BlueStateDigitalConstituentGroupApi extends BlueStateDigitalApi {
   }
 
   /**
+   * Rename an existing constituent group.
+   *
+   * @param int $cons_group_id
+   *   The id of the constituent group to rename.
+   * @param string $new_name
+   *   The new name of the constituent group.
+   */
+  public function renameGroup($cons_group_id, $new_name) {
+
+    // Build the request.
+    $data = http_build_query(array(
+      'cons_group_id' => $cons_group_id,
+      'new_name' => $new_name,
+    ));
+
+    // Make the request.
+    $response = $this->callAPI('cons_group/rename_group', array(), $data);
+
+    $this->checkNoContentResponse($response);
+  }
+
+  /**
    * Delete one or more constituent groups.
    *
    * @param array $cons_group_ids
@@ -184,7 +206,6 @@ class BlueStateDigitalConstituentGroupApi extends BlueStateDigitalApi {
       return TRUE;
     }
     return $response;
-
   }
 
   /**

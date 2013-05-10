@@ -2792,9 +2792,9 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 }
 .node-type-openpublish-photo-gallery .tab-gallery {
     float: left;
-    position: relative;
     margin-top: 10px;
-    width: 98px
+    width: 98px;
+    z-index: 10;
 }
 .primary-feature {
     overflow:hidden;

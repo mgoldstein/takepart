@@ -13,32 +13,44 @@
 </div>
 
 <div class="second-block">
-	<div class="first-sub">
-		<h3><?=w('howto_header')?></h3>
-		<div class="cms">
-			<?=w('howto_body')?>
+	<div class="first-sub" <?=wa('cta_image')?>>
+		<div class="header-block">
+			<h3><?=w('cta_header')?></h3>
+			<h4><?=w('cta_subheader')?></h4>
+	        <div class='more-wrapper' <?=wa('contest_more')?>>
+	            <div class="more">
+	                <? $w = w('contest_more') ?>
+	                <? if ( $w->multi(false) ): ?>
+	                    <?=$w->multi(false)?>
+	                <? elseif($w->single(false)): ?>
+	                    <p><a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a></p>
+	                <? elseif(wordlet_edit_mode()): ?>
+	                    Add Link
+	                <?endif?>
+	            </div>
+	        </div>
 		</div>
-		<p class="more">
-			<? if ( $w = w('howto_more') ): ?>
-				<a target='_blank' href="<?=$w->href?>"><?=$w->single?></a>
-			<? endif ?>
-		</p>
+		<? if ( $w = w('cta_image') ): ?>
+		<div class="prize-image">
+			<img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+		</div>
+		<? endif ?>
 	</div>
 
 	<div class="second-sub">
 		<div class="sub-wrapper">
-			<div class="instructions">
-				<ol <?=wa('instructions')?>>
-					<? foreach ( wl('instructions') as $w ): ?>
-						<li>
-							<?=$w?>
-						</li>
+			<div class="finalists-wrapper">
+				<ul class="finalists-menu" <?=wa('finalists')?>>
+					<? foreach ( wl('finalists', true) as $w ): ?>
+						<li><a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><div class="outline"></div><img src="<?=$w->thumb_src?>" alt="<?=$w->single(false)?>" ></a></li>
 					<? endforeach ?>
-				</ol>
+				</ul>
 			</div>
-
+			<div class="instructions">
+				<?=w('cta_instructions')?>
+			</div>
 			<p class="important">
-				<a href="<?=wu('intelchange_contest_enter')?>"><?=w('enter_the_contest')?></a>
+				<a href="<?=wu('intelchange_vote')?>"><?=w('view_finalists_cta')?></a>
 			</p>
 		</div>
 	</div>

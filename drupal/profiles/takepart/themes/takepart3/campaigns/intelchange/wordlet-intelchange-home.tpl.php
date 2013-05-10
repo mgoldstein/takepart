@@ -1,27 +1,33 @@
 <div class="first-block">
     <div class="intro-block">
-        <div class="intro-content">
-            <div class="intro-image" <?=wa('intro-image')?>>
-                <? if ( ($w = w('intro-image')) && $w->img_src ): ?>
-                    <p>
-                        <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
+        <div class="intro-block-inner">
+            <div class="intro-content">
+                <div class="intro-image" <?=wa('intro-image')?>>
+                    <? if ( ($w = w('intro-image')) && $w->img_src ): ?>
+                        <p>
+                            <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
+                        </p>
+                    <? elseif( wordlet_edit_mode() ): ?>
+                        Add Image
+                    <? endif ?>
+                </div>
+                <div class="intro-text">
+                    <div class="intro-blurb">
+                        <?=w('intro')?>
+                    </div>
+                    <p class="intro-link">
+                        <?=w('intro_link')?>
                     </p>
+                </div>
+            </div>
+            <p class="video-play" <?=wa('video')?>>
+                <? if ( w('video')->video ): ?>
+                    <a href="http://www.youtube.com/watch?v=<?=w('video')->video?>"><?=w('video')->single?></a>
+                <? elseif( wordlet_edit_mode() ): ?>
+                    Add Video
                 <? endif ?>
-            </div>
-            <div class="intro-blurb">
-                <?=w('intro')?>
-            </div>
-            <p class="intro-link">
-                <?=w('intro_link')?>
             </p>
         </div>
-        <p class="video-play" <?=wa('video')?>>
-            <? if ( w('video')->video ): ?>
-                <a href="http://www.youtube.com/watch?v=<?=w('video')->video?>"><?=w('video')->single?></a>
-            <? elseif( wordlet_edit_mode() ): ?>
-                Add Video
-            <? endif ?>
-        </p>
     </div>
 
     <script id="video-template" type="text/x-javascript-template">
@@ -35,25 +41,59 @@
 </div>
 
 <div class="second-block">
-    <div class="form-desc">
-        <h2><?=w('form_desc_header')?></h2>
-        <div class="form-blurb cms">
-            <?=w('form_blurb')?>
+    <div class="first-sub" <?=wa('cta_image')?>>
+        <div class="header-block">
+            <h3><?=w('cta_header')?></h3>
+            <h4><?=w('cta_subheader')?></h4>
         </div>
-        <? if ( $w = w('contest_more') ): ?>
-            <p class="more">
-                <a href="<?=$w->href?>"><?=$w->single?></a>
-            </p>
+        <? if ( $w = w('cta_image') ): ?>
+        <div class="prize-image">
+            <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>">
+        </div>
         <? endif ?>
+        <div class="vote-desc">
+            <?=w('vote_desc')?>
+        </div>
+        <p class="important">
+            <a href="<?=wu('intelchange_vote')?>"><?=w('view_finalists_cta')?></a>
+        </p>
+        
+        <div class='more-wrapper' <?=wa('contest_more')?>>
+            <div class="more">
+                <? $w = w('contest_more') ?>
+                <? if ( $w->multi(false) ): ?>
+                    <?=$w->multi(false)?>
+                <? elseif($w->single(false)): ?>
+                    <p><a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a></p>
+                <? elseif(wordlet_edit_mode()): ?>
+                    Add Link
+                <?endif?>
+            </div>
+        </div>
+
     </div>
 
-    <div class="form_wrapper">
+    <div class="second-sub form_wrapper">
         <div class="default-state">
             <div class="default-content">
                 <h3><?=w('default_header')?></h3>
-                <p class="enter-contest important">
-                    <a href="<?=wu('intelchange_contest')?>"><?=w('enter_the_contest')?></a>
-                </p>
+                <div class="finalists-wrapper">
+                    <ul class="finalists-menu" <?=wa('finalists')?>>
+                        <? foreach ( wl('finalists', true) as $w ): ?>
+                            <li>
+                                <p class="image"><img src="<?=$w->small_src?>" alt="<?=$w->single(false)?>" ></p>
+                                <div class="bio">
+                                    <h4 class="finalist_headline"><?=$w->single(false) ?></h4>
+                                    <div class="info"><?=$w->multi_short(false) ?></div>
+                                    <div class="blurb"><?=$w->multi(false) ?></div>
+                                </div>
+                                <p class="important">
+                                    <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
+                                </p>
+                            </li>
+                        <? endforeach ?>
+                    </ul>
+                </div>
             </div>
             <div class="stay-contected cta" <?=wa('stay_connected')?>>
                 <a href="#stay-connected">

@@ -17,6 +17,7 @@ var defaults = {
 	autoReposition: true,
 	height: null,
 	width: null,
+	alertOnChange: false,
 
 	urlSelector: '',
 	url: null,
@@ -121,6 +122,8 @@ var tpmodal = function(parameters) {
 			var fake_settings = $.extend({}, settings, {callback: null});
 			me.showNode(fake_settings, null);
 			me.showHtml(settings, settings.html);
+		} else if ( settings.node !== null ) {
+			me.showNode(settings, settings.node);
 		} else {
 			me.showNode(settings, null);
 		}
@@ -292,15 +295,15 @@ var tpmodal = function(parameters) {
 			ajaxer = null;
 		}
 
-		if ( form_edited && !confirm('Form has been edited. Continue?') ) return false;
+		if ( settings.alertOnChange && form_edited && !confirm('Form has been edited. Continue?') ) return false;
 
 		$modal.unbind('click', hide_modal);
 
 		$modal_content.css({
 			height: $modal_content.height(),
 			width: $modal_content.width()
-		})
-		.html('');
+		});
+		//.html('');
 
 		$overlay.animate({opacity: 0}, settings.speed, function() {
 			$overlay.hide();

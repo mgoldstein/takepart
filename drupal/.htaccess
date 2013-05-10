@@ -2,6 +2,17 @@
 # Apache/PHP/Drupal settings:
 #
 
+
+# Send a "X-Robots-Tag" header when site is NOT accessed via Akamai, to
+# prevent Google from indexing URLs other than those it finds at
+# www.takepart.com via Akamai (keeps origin out of Akamai):
+<ifModule mod_headers.c>
+SetEnvIfNoCase Via akamai RequestFromAkamai
+Header set X-Robots-Tag "noindex, nofollow" env=!RequestFromAkamai
+</ifModule>
+
+
+
 # If you don't visit as www.takepart.com or takepart.com, return "go-away" robots.txt to Google, etc.
 <IfModule mod_rewrite.c>
 RewriteEngine on
@@ -10,6 +21,23 @@ RewriteCond %{HTTP_HOST} =takepart.com
 RewriteRule robots.txt robots.prod.txt [L]
 # ..else..
 RewriteRule robots.txt robots.dev.txt [L]
+
+# If we're running on one of the production webheads...
+# ..AND the request is not for origin.prod.takepart.com, origin.takepart.com,
+# www.takepart.com, nor for any of the internal IP's of the webheads
+# (that's how the ELB health check forms it's requests),
+# then redirect the client to "www.takepart.com":
+# web1:		10.169.5.88	web2:	10.169.18.45	web3:	10.159.65.54
+# web4:		10.170.34.57	web5:	10.169.7.73	web6:	10.170.14.16
+# web7:		10.158.92.165	web8:	10.157.31.198	web9:	10.169.0.201
+# web10:	10.169.14.46	web11:	10.171.15.199	web12:	10.169.5.122
+RewriteCond %{SERVER_ADDR} ^(10.169.5.88|10.169.18.45|10.159.65.54|10.170.34.57|10.169.7.73|10.170.14.16|10.158.92.165|10.157.31.198|10.169.0.201|10.169.14.46|10.171.15.199|10.169.5.122)$
+RewriteCond %{HTTP_HOST} !^(10.169.5.88|10.169.18.45|10.159.65.54|10.170.34.57|10.169.7.73|10.170.14.16|10.158.92.165|10.157.31.198|10.169.0.201|10.169.14.46|10.171.15.199|10.169.5.122)$
+RewriteCond %{HTTP_HOST} !^web(1|2|3|4|5|6|7|8|9|10|11|12).prod.takepart.com$
+RewriteCond %{HTTP_HOST} !=www.takepart.com
+RewriteCond %{HTTP_HOST} !=origin.takepart.com
+RewriteCond %{HTTP_HOST} !=origin.prod.takepart.com
+RewriteRule (.*) http://www.takepart.com/$1 [R=301,L,NC]
 </IfModule>
 
 # Protect files and directories from prying eyes.

@@ -46,8 +46,9 @@
 .wordlet_edit_mode p {
     margin: 0;
     font-weight: bold;
-    display: inline;
+    display: inline-block;
     padding-left: 10px;
+    white-space: nowrap;
 }
 
 .wordlet_edit_mode p:first-child {
@@ -68,6 +69,7 @@
     content: '';
 }
 
+.wordlet_move,
 .wordlet_down,
 .wordlet_up {
     text-indent: 100%;
@@ -90,10 +92,19 @@
     margin-left: 25px;
 }
 
+.wordlet_up {
+    top: 25px;
+}
+
 .wordlet_down {
     background-image: url(/misc/arrow-asc.png);
     background-position: center -1px;
-    top: 25px;
+    top: 45px;
+}
+
+.wordlet_move {
+    background-image: url(/misc/draggable.png);
+    background-position: center 1px;
 }
 
 .wordlets_modal .form-type-select label,
@@ -127,10 +138,29 @@
 
 /* modal */
 
+.wordlets_modal .description {
+    margin: 1em 0;
+    font-weight: bold;
+    color: royalblue;
+}
+
 .wordlets_modal .repeating {
     position: relative;
     outline: 1px dashed #ccc;
     padding: 5px 28px 5px 5px;
+    margin-bottom: 1em;
+}
+
+.wordlets_modal .repeating:last-child {
+    margin-bottom: 0;
+}
+
+.wordlets_modal .repeating_end {
+    background: #ccccaa;
+}
+
+.wordlets_modal .repeating_start {
+    background: #ffffdd;
 }
 
 .wordlets_modal h1 {

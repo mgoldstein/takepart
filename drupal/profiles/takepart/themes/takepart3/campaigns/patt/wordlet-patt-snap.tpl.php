@@ -29,7 +29,7 @@
     </div>
 
     <? foreach ( wl('snap_slides') as $s ): ?>
-        <div class="tile <?=$s->href?'link':''?> <?=$s->img_src?'person':''?> <?=(!$s->href && !$s->image)?'fact':''?>" data-token="<?=$s->token?>">
+        <div class="tile <?=$s->href?'link':''?> <?=$s->img_src?'person':''?> <?=(!$s->href && !$s->img_src)?'fact':''?>" data-token="<?=$s->token?>">
             <? if ( $s->href ): // Outside link ?>
                 <a href="<?=$s->href?>">
                     <img src="<?=$s->thumb_src?>"/>
@@ -38,6 +38,11 @@
                 <a href="?slide=<?=$s->token?>">
                     <h1 class="tile-header"><?=w('myth')?></h1>
                     <p><?=$s->single?></p>
+                    <div class="veil">
+                        <div class="veil_content">
+                            <?=$s->multi_short(false)?>
+                        </div>
+                    </div>
                 </a>
                 <div class="modal-left">
                     <div class="fact">

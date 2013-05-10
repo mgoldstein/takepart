@@ -26,6 +26,49 @@ function wordlet_patt_snap_page_alter($page) {
     return '';
 }
 
+function wordlet_intelchange_vote_page_alter($page) {
+    if (isset($_GET['finalist'])) {
+        $w = wordlet_find('finalists', 'token', $_GET['finalist']);
+        if ($w && $w->small_src) {
+            $metatag = array(
+                '#type' => 'html_tag',
+                '#tag' => 'meta',
+                '#attributes' => array(
+                    'property' => 'og:image',
+                    'content' => $w->small_src,
+                ),
+            );
+
+            drupal_add_html_head($metatag, 'facebook_image');
+        }
+        if ($w && $w->single && $w->multi_short) {
+            $metatag = array(
+                '#type' => 'html_tag',
+                '#tag' => 'meta',
+                '#attributes' => array(
+                    'property' => 'og:title',
+                    'content' => 'Check out this Intel for Change finalist: ' . $w->single(false) . ' (' . strip_tags($w->multi_short(false)) . ')',
+                ),
+            );
+
+            drupal_add_html_head($metatag, 'facebook_title');
+        }
+        if ($w && w('content_full_'.$w->token)->multi(false)) {
+            $metatag = array(
+                '#type' => 'html_tag',
+                '#tag' => 'meta',
+                '#attributes' => array(
+                    'property' => 'og:description',
+                    'content' => strip_tags(w('content_full_'.$w->token)->multi(false)),
+                ),
+            );
+
+            drupal_add_html_head($metatag, 'facebook_description');
+        }
+    }
+    return '';
+}
+
 /**
  * Each item of the array should be keyed as follows:
  * url (String, 21 characters ) http://www.google.com
@@ -253,7 +296,9 @@ function _render_tp3_user_menu($variables) {
                 $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');
             } else {
                 $opts['attributes']['class'][] = 'join-login';
-                $opts['query'] = drupal_get_destination();
+                if ( ($uri != 'iframes/slim-header') && ($uri != 'iframes/header') ) {
+                    $opts['query'] = drupal_get_destination();
+                }
                 $menu_item['link']['title'] = variable_get("takepart_user_login_link_name", "Login");
             }
         } else {
