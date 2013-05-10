@@ -310,19 +310,20 @@ function _seach(&$var /*, $prop = null, $type = 'node'*/ ) {
 
   if ( !is_array($var) ) return null;
 
-  $ea = each($var);
+  list($k, $ea) = each($var);
+
   if ( !$ea ) {
     reset($var);
     return $ea;
   }
 
-  if ( isset($ea['value']['node']) ) {
-    return $ea['value']['node'];
+  if ( isset($ea['node']) ) {
+    return array($k, $ea['node']);
   }
 
   $taxonomy_term = null;
-  if( isset($ea['value']['taxonomy_term']) ) {
-    $taxonomy_term = $ea['value']['taxonomy_term'];
+  if( isset($ea['taxonomy_term']) ) {
+    $taxonomy_term = $ea['taxonomy_term'];
   } elseif ( isset($ea['taxonomy_term']) ) {
     $taxonomy_term = $ea['taxonomy_term'];
   }
@@ -331,7 +332,7 @@ function _seach(&$var /*, $prop = null, $type = 'node'*/ ) {
     $uri = entity_uri('taxonomy_term', $taxonomy_term);
     $taxonomy_term->_surl = url($uri['path']);
     $taxonomy_term->_stype = 'taxonomy_term';
-    return $taxonomy_term;
+    return array($k, $taxonomy_term);
   }
 
   return null;

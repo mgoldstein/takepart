@@ -4,13 +4,13 @@
 			<h1 id="article-headline"><?=_s($title) ?></h1>
 			<p id="article-abstract"><?=_s($field_article_subhead) ?></p>
 			<div class="secondary">
-				<? if ( $badge = _seach($field_significance) ): ?>
+				<? if ( list($key, $badge) = _seach($field_significance) ): ?>
 					<p id="article-badge"><a href="<?=_surl($badge)?>"><?=$badge->name?></a></p>
 				<? endif ?>
 				<p id="article-date"><?=date('F j, Y', $node->created)?></p>
 				<ul id="article-author-names">
-					<? while ( $author = _seach($field_author) ): ?>
-						<li>
+					<? while ( list($key, $author) = _seach($field_author) ): ?>
+						<li class="<?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
 							<a href="<?=_surl($author)?>"><?=$author->title ?></a>
 						</li>
 					<? endwhile ?>
@@ -102,11 +102,11 @@
 					</h3>
 
 					<ul>
-						<? while ( $tag = _seach($field_topic) ): ?>
+						<? while ( list($key, $tag) = _seach($field_topic) ): ?>
 							<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
 						<? endwhile ?>
 
-						<? while ( $tag = _seach($field_free_tag) ): ?>
+						<? while ( list($key, $tag) = _seach($field_free_tag) ): ?>
 							<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
 						<? endwhile ?>
 					</ul>
@@ -121,7 +121,7 @@
 	<? if ( $field_topic_box ): ?>
 		<aside id="topic_box">
 			<ul>
-				<? while ( $topic = _seach($field_topic_box) ): ?>
+				<? while ( list($key, $topic) = _seach($field_topic_box) ): ?>
 					<li>
 						<? if ( $link = _slink($topic, 'field_topic_box_link') ): ?>
 							<a href="<?=($link['url'])?$link['url']:'#' ?>">
