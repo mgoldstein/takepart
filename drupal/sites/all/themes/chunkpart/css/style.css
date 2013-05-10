@@ -536,10 +536,6 @@ body #at16pt {
 	border-bottom: 1px solid #e8e8e8;
 }
 
-.node-type-article #article-social a:hover:before {
-	opacity: .6;
-}
-
 .node-type-article #article-social .at300b:hover {
 	opacity: 1;
 }
@@ -582,6 +578,35 @@ body #at16pt {
 
 .node-type-article #article-social-more h4 a:before {
 	background-image: url(../images/share_more.png); /** sprite-ref: mysprite; */
+}
+
+/* rollovers */
+.node-type-article #article-social .tp-social-facebook:hover:before {
+	background-image: url(../images/share_facebook_rollover.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-article #article-social .tp-social-twitter:hover:before {
+	background-image: url(../images/share_twitter_rollover.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-article #article-social .tp-social-googleplus:hover:before {
+	background-image: url(../images/share_google_rollover.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-article #article-social .tp-social-email:hover:before {
+	background-image: url(../images/share_email_rollover.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-article #article-social .tp-social-reddit:hover:before {
+	background-image: url(../images/share_reddit_rollover.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-article #article-social #article-comments-link a:hover:before {
+	background-image: url(../images/share_comments_rollover.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-article #article-social-more h4 a:hover:before {
+	background-image: url(../images/share_more_rollover.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-social-more {
