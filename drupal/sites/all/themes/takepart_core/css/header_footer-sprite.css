@@ -217,7 +217,7 @@
 	background-color: #fff;
 	background-repeat: no-repeat;
   background-image: url('style-sprite.png');
-  background-position: left -1475px;
+  background-position: left -1679px;
 }
 
 #site-header #site-participant-nav {
@@ -252,7 +252,7 @@
 	background-repeat: no-repeat;
 	background-position: 12px 12px;
   background-image: url('style-sprite.png');
-  background-position: left -1517px;
+  background-position: left -1721px;
 }
 
 #site-participant-nav p {
@@ -291,7 +291,7 @@
 	background-repeat: no-repeat;
 	background-position: 12px 12px;
   background-image: url('style-sprite.png');
-  background-position: left -1550px;
+  background-position: left -1754px;
 }
 
 #site-participant-nav.focusin ul,
@@ -409,32 +409,32 @@
 
 .multipage-campaign #site-follow .facebook a {
   background-image: url('style-sprite.png');
-  background-position: left -1583px;
+  background-position: left -1787px;
 }
 
 .multipage-campaign #site-follow .facebook a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1612px;
+  background-position: left -1816px;
 }
 
 .multipage-campaign #site-follow .twitter a {
   background-image: url('style-sprite.png');
-  background-position: left -1641px;
+  background-position: left -1845px;
 }
 
 .multipage-campaign #site-follow .twitter a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1670px;
+  background-position: left -1874px;
 }
 
 .multipage-campaign #site-follow .rss a {
   background-image: url('style-sprite.png');
-  background-position: left -1699px;
+  background-position: left -1903px;
 }
 
 .multipage-campaign #site-follow .rss a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1728px;
+  background-position: left -1932px;
 }
 
 .multipage-campaign #site-search {
@@ -540,40 +540,40 @@ Footer ------------------------------------------------------------
 
 #site-connect .facebook a {
   background-image: url('style-sprite.png');
-  background-position: left -1757px;
+  background-position: left -603px;
 }
 
 #site-connect .twitter a {
   background-image: url('style-sprite.png');
-  background-position: left -1791px;
+  background-position: left -1961px;
 }
 
 #site-connect .email a {
   background-image: url('style-sprite.png');
-  background-position: left -1825px;
+  background-position: left -1995px;
 }
 
 #site-connect .google a {
   background-image: url('style-sprite.png');
-  background-position: left -1859px;
+  background-position: left -2029px;
 }
 
 #site-connect .pinterest a {
   background-image: url('style-sprite.png');
-  background-position: left -1893px;
+  background-position: left -705px;
 }
 
 #site-connect .linkedin a {
   background-image: url('style-sprite.png');
-  background-position: left -1927px;
+  background-position: left -2063px;
 }
 
 #site-connect .youtube a {
   background-image: url('style-sprite.png');
-  background-position: left -1961px;
+  background-position: left -2097px;
 }
 
 #site-connect .tumblr a {
   background-image: url('style-sprite.png');
-  background-position: left -1995px;
+  background-position: left -2131px;
 }
