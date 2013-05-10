@@ -231,6 +231,8 @@ body #at16pt {
 	width: 80px;
 	color: #888;
 	text-transform: uppercase;
+	position: relative;
+	z-index: 2;
 
 	background: rgb(255,255,255);
 	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(236,236,236,1) 100%);
