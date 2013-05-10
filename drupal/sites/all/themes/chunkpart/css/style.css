@@ -540,6 +540,10 @@ body #at16pt {
 	opacity: .6;
 }
 
+.node-type-article #article-social .at300b:hover {
+	opacity: 1;
+}
+
 .node-type-article #article-social #article-comments-link a:before,
 .node-type-article #article-social #article-share a:before,
 .node-type-article #article-social-more h4 a:before {
