@@ -2,6 +2,10 @@
     <a href="#main"><?= t('Skip to main content') ?></a>
 </div>
 
+<? if ($tabs): ?>
+  <div class="tabs-toolbar"><?=render($tabs) ?></div>
+<? endif ?>
+
 <?=$header ?>
 
 <main role="main" id="main">

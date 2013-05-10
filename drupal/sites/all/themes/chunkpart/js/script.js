@@ -23,6 +23,9 @@ $body
 	})
 	;
 
+// Drupal tab stuff
+$('.tabs-toolbar li').appendTo('.toolbar-shortcuts ul');
+
 // Document Ready
 $(function() {
 	// Social share buttons

@@ -11,7 +11,7 @@
 				<ul id="article-author-names">
 					<? while ( list($key, $author) = _seach($field_author) ): ?>
 						<li class="<?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
-							<a href="<?=_surl($author)?>"><?=$author->title ?></a>
+							<a href="<?=_surl($author)?>" rel="author"><?=$author->title ?></a>
 						</li>
 					<? endwhile ?>
 				</ul>
