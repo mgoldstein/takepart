@@ -53,8 +53,8 @@ if (isset($_GET['member'])) {
             <span class='member-title'><?=w($team_member->token.'_member_title_label')?> </span>
             <span class="name"><?=$team_member->single(false)?></span>
         </h2>
-        <div class='facts'><?=$team_member->multi_short(false)?></div>
-        <div class='blurb'><?=$team_member->multi(false)?></div>
+        <div class='facts cms'><?=$team_member->multi_short(false)?></div>
+        <div class='blurb cms'><?=$team_member->multi(false)?></div>
         <div class="video">
             <iframe class="video-player" width="675" height="393" src="http://www.youtube.com/embed/<?=$team_member->video?>" frameborder="0" allowfullscreen></iframe>
         </div>
