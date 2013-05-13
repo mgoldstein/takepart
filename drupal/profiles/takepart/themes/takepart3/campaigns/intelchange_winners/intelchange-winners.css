@@ -167,6 +167,28 @@
   width: 92px !important;
 }
 
+/* dropdown menu ---------------- */
+.main .menu li {
+  position: relative;
+}
+.main .menu ul ul {
+  padding: 0;
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  -webkit-transition: opacity .2s ease-in-out;
+  transition: opacity .2s ease-in-out;
+}
+.main .menu ul li ul li {
+  display: block;
+  float: none;
+}
+.main .menu ul li:hover ul,
+.main .menu ul li:focus ul {
+  left: 0;
+  opacity: 0.99;
+}
+
 /* reusable ---------------- */
 
 /* CTA block */

@@ -25,9 +25,16 @@
 						<li>
 							<a href="<?=$w->href?>" class="<?=ws($w->href)?>"><?=$w->single(false)?></a>
 							<? if ($w->active): ?>
+								<?
+								if (isset($_GET['team'])) {
+								    $cur_team = $_GET['team'];
+								} else {
+								    $cur_team = w('teams')->token; //first team token
+								}
+								?>
 								<ul>
 									<? foreach( wl('teams') as $team ): ?>
-									<li><a href="<?=$w->href?>?team=<?=$team->token?>" tabindex="-1"><?=$team->single(false)?></a></li>
+									<li><a href="<?=$w->href?>?team=<?=$team->token?>" tabindex="-1" class='<?=($cur_team == $team->token ? "active" : "")?>'><?=$team->single(false)?></a></li>
 									<? endforeach ?>
 								</ul>
 							<? endif ?>
