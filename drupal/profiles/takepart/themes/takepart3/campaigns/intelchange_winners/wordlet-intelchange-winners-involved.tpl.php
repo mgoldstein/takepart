@@ -15,6 +15,7 @@
             <a href="<?=w('first_block_cta')->href?>"><?=w('first_block_cta')->single(false)?></a>
         </div>
     </div>
+    <div class="border-bg"></div>
 </div>
 <div class="second-block" <?=wa('read_more_items')?>>
     <h2 class='headline'><?=w('second_block_headline')?></h2>
@@ -32,7 +33,7 @@
             <div class="text-block cms">
                 <?=$w->multi(false)?>
             </div>
-            <a class="read-more-link" href='<?=$w->href(false)?>'>
+            <a class="read-more-link" href="<?=$w->href?>">
                 <? if ( w('read_more_link_label') ): ?>
                 <?=wr(w('read_more_link_label'), $w)?>
                 <? elseif( wordlest_edit_mode() ): ?>
