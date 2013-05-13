@@ -1,6 +1,6 @@
 <div class="first-block">
 	<div class="image-wrapper" <?=wa('first_block_image')?>>
-        <? if ( ($w = w('first_block_header_image')) && $w->img_src ): ?>
+        <? if ( ($w = w('first_block_image')) && $w->img_src ): ?>
             <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
         <? elseif( wordlet_edit_mode() ): ?>
             Add Image
