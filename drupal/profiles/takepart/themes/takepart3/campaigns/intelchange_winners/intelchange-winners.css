@@ -1710,6 +1710,10 @@
 .page-wordlet-intelchange-winners-involved #page .second-block {
   margin-bottom: 87px;
 }
+.page-wordlet-intelchange-winners-involved #page .first-block {
+  background: rgb(255, 255, 255);
+  padding: 11px 13px;
+}
 .page-wordlet-intelchange-winners-involved #page .first-block .image-wrapper {
   margin-right: 47px;
   float: left;
