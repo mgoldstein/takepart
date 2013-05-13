@@ -1,18 +1,20 @@
 <div class="first-block">
-	<div class="image-wrapper" <?=wa('first_block_image')?>>
-        <? if ( ($w = w('first_block_image')) && $w->img_src ): ?>
-            <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
-        <? elseif( wordlet_edit_mode() ): ?>
-            Add Image
-        <? endif ?>
-    </div>
-    <div class="first-sub">
-        <h2 class='headline'><?=w('first_block_headline')?></h2>
-        <div class="text-block cms">
-            <?=w('first_block_text')?>
+	<div class="inner-wrapper">
+        <div class="image-wrapper" <?=wa('first_block_image')?>>
+            <? if ( ($w = w('first_block_image')) && $w->img_src ): ?>
+                <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
+            <? elseif( wordlet_edit_mode() ): ?>
+                Add Image
+            <? endif ?>
         </div>
-        <div class="important" <?= wa('first_block_cta')?>>
-            <a href="<?=w('first_block_cta')->href?>"><?=w('first_block_cta')->single(false)?></a>
+        <div class="first-sub">
+            <h2 class='headline'><?=w('first_block_headline')?></h2>
+            <div class="text-block cms">
+                <?=w('first_block_text')?>
+            </div>
+            <div class="important" <?= wa('first_block_cta')?>>
+                <a href="<?=w('first_block_cta')->href?>"><?=w('first_block_cta')->single(false)?></a>
+            </div>
         </div>
     </div>
     <div class="border-bg"></div>
