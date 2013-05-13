@@ -402,20 +402,6 @@ function takepart3_form_comment_form_alter(&$form, &$form_state, $form_id) {
     unset($form['author']['_author']['#title']);
 }
 
-function takepart3_field__field_series(&$vars) {
-    $base = base_path() . 'sites/default/files/styles/action_header_image/public/';
-    $filename = $vars['element']['#object']->field_series['und'][0]['taxonomy_term']->field_series_graphic_header['und'][0]['filename'];
-    $url = $base . $filename;
-    $linkOverride = $filename = $vars['element']['#object']->field_series['und'][0]['taxonomy_term']->field_series_graphic_header_link;
-    if (!empty($linkOverride)) {
-        $link = $linkOverride['und'][0]['url'];
-    } else {
-        $link = url($vars['items'][0]['#href']);
-    }
-    $altText = $filename = $vars['element']['#object']->field_series['und'][0]['taxonomy_term']->field_series_graphic_header['und'][0]['alt'];
-    return sprintf('<a href="%s"><img class="field-name-field-series-graphic-header" src="%s" alt="%s" /></a>', $link, $url, $altText);
-}
-
 function takepart3_field__field_actionheaderimghref(&$vars) {
     $base = base_path() . 'sites/default/files/styles/action_header_image/public/';
     $link = $vars['element']['#object']->field_actionheaderimghref['und'][0]['url'];
