@@ -187,6 +187,20 @@
 .main .menu ul li:focus ul {
   left: 0;
   opacity: 0.99;
+  z-index: 1;
+}
+.main .menu ul li ul li a.active {
+  background: rgb(255, 255, 255);
+  color: rgb(0,0,0);
+}
+.main .menu ul li ul li a.active:after {
+  border: 0;
+}
+.main .menu ul li ul li a.active:before{
+  content: url(images/map_marker.png);
+  vertical-align: middle;
+  margin-right: 5px;
+  display: inline-block; *display: inline; *zoom: 1;
 }
 
 /* reusable ---------------- */
