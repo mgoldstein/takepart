@@ -44,3 +44,7 @@
     </div>
     <? endforeach ?>
 </div>
+<div class="third-block">
+    <h2 class="headline"><?=w('third_block_headline')?></h2>
+    <h3 class="subheadline"><?=w('third_block_subheadline')?></h3>
+</div>
