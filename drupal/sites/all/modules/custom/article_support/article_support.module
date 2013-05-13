@@ -1,12 +1,10 @@
 <?php
 
-class ViewHelperAuthor {
-  public function __construct($name, $href) {
-    $this->name = $name;
+class ViewHelperLink {
+  public function __construct($title, $href, $target = NULL) {
+    $this->title = $title;
     $this->href = $href;
-    $this->image = NULL;
-    $this->summary = NULL;
-    $this->follow = NULL;
+    $this->target = $target;
   }
 }
 
