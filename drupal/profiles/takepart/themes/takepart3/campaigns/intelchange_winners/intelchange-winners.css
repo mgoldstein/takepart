@@ -1702,6 +1702,27 @@
   color: rgb(75, 54, 57);
 }
 
+/* Stay Involved ---------------- */
+.page-wordlet-intelchange-winners-involved #page .first-block,
+.page-wordlet-intelchange-winners-involved #page .second-block {
+  margin: 40px;
+}
+.page-wordlet-intelchange-winners-involved #page .second-block {
+  margin-bottom: 87px;
+}
+.page-wordlet-intelchange-winners-involved #page .first-block .image-wrapper {
+  margin-right: 47px;
+  float: left;
+}
+.page-wordlet-intelchange-winners-involved #page .first-block .headline {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+.page-wordlet-intelchange-winners-involved #page .first-block .text-block p {
+  font-size: 14px;
+  margin-bottom: 2em;
+}
+
 /* Teams ---------------- */
 .page-wordlet-intelchange-winners-teams #page {
   padding-top: 23px;

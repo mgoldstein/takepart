@@ -12,6 +12,4 @@
     </div>
 </div>
 <div class="second-block">
-	<h3 class="headline"><?=w('second_block_headline')?></h3>
-	<div class="resources"><?=w('resources_view')?></div>
 </div>
