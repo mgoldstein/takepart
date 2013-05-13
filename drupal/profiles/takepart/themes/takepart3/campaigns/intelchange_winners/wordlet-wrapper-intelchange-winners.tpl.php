@@ -22,7 +22,16 @@
 			<nav class="menu">
 				<ul <?=wa('menu')?>>
 					<? foreach( wl('menu') as $w ): ?>
-						<li><a href="<?=$w->href?>" class="<?=ws($w->href)?>"><?=$w->single(false)?></a></li>
+						<li>
+							<a href="<?=$w->href?>" class="<?=ws($w->href)?>"><?=$w->single(false)?></a>
+							<? if ($w->active): ?>
+								<ul>
+									<? foreach( wl('teams') as $team ): ?>
+									<li><a href="<?=$w->href?>?team=<?=$team->token?>" tabindex="-1"><?=$team->single(false)?></a></li>
+									<? endforeach ?>
+								</ul>
+							<? endif ?>
+						</li>
 					<? endforeach ?>
 				</ul>
 				<script type="text/javascript">
