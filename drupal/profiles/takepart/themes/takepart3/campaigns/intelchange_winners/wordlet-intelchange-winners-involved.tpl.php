@@ -21,7 +21,7 @@
     <? foreach ( wl('read_more_item') as $w ): ?>
     <div class="read-more">
         <div class="image-wrapper">
-            <? if ( ($w->img_src ): ?>
+            <? if ( ($w->img_src ) ): ?>
                 <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
             <? elseif( wordlet_edit_mode() ): ?>
                 Add Image
