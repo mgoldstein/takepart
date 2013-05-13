@@ -32,7 +32,13 @@
             <div class="text-block cms">
                 <?=$w->multi(false)?>
             </div>
-            <a class="read-more-link" href='<?=$w->href(false)?>'><?=wr(w('read_more_link_label'), $w)?></a>
+            <a class="read-more-link" href='<?=$w->href(false)?>'>
+                <? if ( w('read_more_link_label') ): ?>
+                <?=wr(w('read_more_link_label'), $w)?>
+                <? elseif( wordlest_edit_mode() ): ?>
+                <span <?=wa('read_more_link_label')?>>Add Link Text</span>
+                <? endif ?>
+            </a>
         </div>
     </div>
     <? endforeach ?>
