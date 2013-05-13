@@ -1,0 +1,576 @@
+<?php
+/**
+ * Inline content module.
+ */
+
+/**
+ * Inline entity form controller for pieces of inline content.
+ */
+class InlineContentFormController extends EntityInlineEntityFormController {
+
+  /**
+   * Overrides EntityInlineEntityFormController::defaultFields().
+   */
+  public function defaultFields($bundles) {
+    // Use the bean's label for the table display.
+    $fields = array(
+      'label' => array(
+        'type' => 'property',
+        'label' => t('Inline Content'),
+        'visible' => TRUE,
+        'weight' => 1,
+      ),
+    );
+    return $fields;
+  }
+
+  /**
+   * Overrides EntityInlineEntityFormController::defaultSettings().
+   */
+  public function defaultSettings() {
+    // Automatically delete the inline content with the parent.
+    $defaults = parent::defaultSettings();
+    $defaults['delete_references'] = TRUE;
+    return $defaults;
+  }
+
+  /**
+   * Overrides EntityInlineEntityFormController::settingsForm().
+   */
+  public function settingsForm($field, $instance) {
+    $form = parent::settingsForm($field, $instance);
+    unset($form['allow_existing']);
+    unset($form['match_operator']);
+    return $form;
+  }
+
+  /**
+   * Overrides EntityInlineEntityFormController::labels().
+   */
+  public function labels() {
+    $labels = array(
+      'singular' => t('replacement'),
+      'plural' => t('replacements'),
+    );
+    return $labels;
+  }
+
+  /**
+   * Overrides EntityInlineEntityFormController::entityForm().
+   */
+  public function entityForm($entity_form, &$form_state) {
+    $replacement = $entity_form['#entity'];
+
+    // Add the Field API fields.
+    if(function_exists('entity_language')){
+      $langcode = entity_language('inline_content', $replacement);
+    }
+    else {
+      $langcode = NULL;
+    }
+    field_attach_form('inline_content', $replacement, $entity_form, $form_state,
+      $langcode);
+
+    // The redirect module goes super crazy with adding redirects to forms,
+    // remove the field as it is not needed.
+    unset($entity_form['redirect']);
+
+    return $entity_form;
+  }
+
+  /**
+   * Validates the entity form.
+   *
+   * @param $entity_form
+   *   The entity form.
+   * @param $form_state
+   *   The form state of the parent form.
+   */
+  public function entityFormValidate($entity_form, &$form_state) {
+    $replacement = $entity_form['#entity'];
+
+    // Validate the Field API fields.
+    if(function_exists('entity_language')){
+      $langcode = entity_language('inline_content', $replacement);
+    }
+    else {
+      $langcode = NULL;
+    }
+    field_attach_form_validate('inline_content', $replacement, $entity_form,
+      $form_state, $langcode);
+  }
+
+  /**
+   * Overrides EntityInlineEntityFormController::entityFormSubmit().
+   */
+  public function entityFormSubmit(&$entity_form, &$form_state) {
+    $replacement = $entity_form['#entity'];
+
+    field_attach_submit('inline_content', $replacement, $entity_form,
+      $form_state);
+
+    // Update the replacement's label so it will be reflected in the inline
+    // entity form control.
+    $controller = inline_content_get_replacement_controller($replacement->type);
+    if ($controller !== FALSE) {
+      $controller->updateLabel($replacement);
+    }
+  }
+
+  /**
+   * Overrides EntityInlineEntityFormController::save().
+   */
+  public function save($entity, $context) {
+    $entity->save();
+  }
+}
+
+class InlineContent extends Entity {
+
+  public function __construct($values = array(), $entity_type = 'inline_content') {
+    parent::__construct($values, $entity_type);
+  }
+}
+
+class InlineContentController extends EntityAPIController {
+
+  public function create(array $values = array()) {
+    $values += array(
+      'id' => '',
+      'type' => '',
+      'label' => t('Inline Content'),
+      'language' => LANGUAGE_NONE,
+      'created' => 0,
+      'changed' => 0,
+    );
+    return parent::create($values);
+  }
+
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+    // set/update the created and changed timestamps
+    $entity->is_new = isset($entity->is_new) ? $entity->is_new : 0;
+    if ($entity->is_new) {
+      $entity->created = time();
+    }
+    $entity->changed = time();
+    return parent::save($entity, $transaction);
+  }
+
+  public function view($entities, $view_mode = 'full', $langcode = NULL, $page = NULL) {
+
+    // For Field API and entity_prepare_view, the entities have to be keyed by
+    // (numeric) id.
+    $entities = entity_key_array_by_property($entities, $this->idKey);
+    if (!empty($this->entityInfo['fieldable'])) {
+      field_attach_prepare_view($this->entityType, $entities, $view_mode);
+    }
+    entity_prepare_view($this->entityType, $entities);
+    $langcode = isset($langcode) ? $langcode : $GLOBALS['language_content']->language;
+
+    $view = array();
+    foreach ($entities as $entity) {
+      $build = entity_build_content($this->entityType, $entity, $view_mode, $langcode);
+      $build += array(
+        // If the entity type provides an implementation, use this instead the
+        // generic one.
+        // @see template_preprocess_entity()
+        '#theme' => 'entity',
+        '#entity_type' => $this->entityType,
+        '#entity' => $entity,
+        '#view_mode' => $view_mode,
+        '#language' => $langcode,
+        '#page' => $page,
+      );
+
+      // Give the inline content controller a crack at it.
+      $controller = inline_content_get_replacement_controller($entity->type);
+      if ($controller !== FALSE) {
+        $build = $controller->view($entity, $build, $view_mode, $langcode);
+      }
+
+      // Allow modules to modify the structured entity.
+      drupal_alter(array($this->entityType . '_view', 'entity_view'), $build, $this->entityType);
+      $key = isset($entity->{$this->idKey}) ? $entity->{$this->idKey} : NULL;
+      $view[$this->entityType][$key] = $build;
+    }
+    return $view;
+  }
+}
+
+class InlineContentUIController extends EntityDefaultUIController {
+
+  public function hook_menu() {
+
+    $items = array();
+    $id_count = count(explode('/', $this->path));
+
+    $items[$this->path] = array(
+      'title' => t('Inline Content Types'),
+      'description' => t('Manage inline content types.'),
+      'page callback' => 'inline_content_type_page',
+      'page arguments' => array(NULL),
+      'access callback' => 'inline_content_access',
+      'access arguments' => array('administer', 'types'),
+    );
+
+    $items[$this->path . '/list'] = array(
+      'title' => t('List'),
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'weight' => -10,
+    );
+
+    $items[$this->path . '/manage/%inline_content_type'] = array(
+      'title' => t('Overview'),
+      'title callback' => 'inline_content_type_label',
+      'title arguments' => array($id_count + 1),
+      'page callback' => 'inline_content_type_page',
+      'page arguments' => array($id_count + 1),
+      'access callback' => 'inline_content_access',
+      'access arguments' => array('administer', 'types'),
+    );
+
+    $items[$this->path . '/manage/%inline_content_type/overview'] = array(
+      'title' => t('Overview'),
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+    );
+
+    return $items;
+  }
+}
+
+function inline_content_type_label($type) {
+  return $type->label;
+}
+
+function inline_content_type_page($type = NULL) {
+
+  // Just show the type's description.
+  if (isset($type)) {
+    return $type->description;
+  }
+
+  // Show a link and description for each type.
+  $links = array();
+  foreach (inline_content_replacement_types() as $type => $info) {
+    $path = 'admin/structure/inline-content/manage/' . $type;
+    $markup = l($info['label'], $path);
+    $markup .= '<p><em>' . $info['description'] . '</em></p>';
+    $links[] = $markup;
+  }
+  return array('types' => array(
+    '#theme' => 'item_list',
+    '#type' => 'ul',
+    '#items' => $links,
+  ));
+}
+
+/* Entity
+ ******************************************************************************/
+/**
+ * Implements hook_entity_info().
+ */
+function inline_content_entity_info() {
+  return array(
+    'inline_content' => array(
+      'label' => t('Inline Content'),
+      'entity class' => 'InlineContent',
+      'controller class' => 'InlineContentController',
+      'base table' => 'inline_content',
+      'fieldable' => TRUE,
+      'entity keys' => array(
+        'id' => 'id',
+        'bundle' => 'type',
+        'label' => 'label',
+      ),
+      'bundle keys' => array(
+        'bundle' => 'name',
+      ),
+      'bundles' => array(),
+      'uri callback' => 'entity_class_uri',
+      'access callback' => 'inline_content_access',
+      'inline entity form' => array(
+        'controller' => 'InlineContentFormController',
+      ),
+      'module' => 'inline_content',
+      'admin ui' => array(
+        'path' => 'admin/structure/inline-content',
+        'controller class' => 'InlineContentUIController',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function inline_content_entity_info_alter(&$entity_info) {
+  foreach (inline_content_replacement_types() as $type => $info) {
+    $entity_info['inline_content']['bundles'][$type] = array(
+      'label' => $info['label'],
+      'admin' => array(
+        'path' => 'admin/structure/inline-content/manage/%inline_content_type',
+        'bundle argument' => 4,
+        'real path' => 'admin/structure/inline-content/manage/' . $type,
+        'access arguments' => array('administer inline_content types'),
+      ),
+    );
+  }
+}
+
+function inline_content_type_load($name) {
+  $types = inline_content_replacement_types();
+  if (isset($types[$name])) {
+    $type = new StdClass();
+    $type->name = $name;
+    $type->label = $types[$name]['label'];
+    $type->description = $types[$name]['description'];
+    return $type;
+  }
+  return FALSE;
+}
+
+function inline_content_replacement_types() {
+
+  $types = array();
+
+  $types['gallery'] = array(
+    'label' => t('Related Gallery'),
+    'description' => t('Related Gallery'),
+    'controller' => 'InlineContentGallery',
+  );
+
+  $types['markup'] = array(
+    'label' => t('HTML Block'),
+    'description' => t('A free form HTML block to be use ONLY when all else fails.'),
+    'controller' => 'InlineContentMarkup',
+  );
+
+  $types['media'] = array(
+    'label' => t('External Media'),
+    'description' => t('External media like YouTube videos.'),
+    'controller' => 'InlineContentMedia',
+  );
+
+  $types['newsletter'] = array(
+    'label' => t('Newsletter Signup'),
+    'description' => t('A newsletter signup form.'),
+    'controller' => 'InlineContentNewsletter',
+  );
+
+  $types['nodes'] = array(
+    'label' => t('Embedded Nodes'),
+    'description' => t('One or more embedded nodes with a selectable view mode.'),
+    'controller' => 'InlineContentNodes',
+  );
+
+  $types['take_action_widget'] = array(
+    'label' => t('Take Action Widget'),
+    'description' => t('Take Action Widget.'),
+    'controller' => 'InlineContentTakeActionWidget',
+  );
+
+  $types['video'] = array(
+    'label' => t('Video Modal'),
+    'description' => t('Inline videos shown using the video modal.'),
+    'controller' => 'InlineContentVideo',
+  );
+
+  return $types;
+}
+
+function inline_content_get_replacement_controller($type) {
+  $controllers = &drupal_static(__FUNCTION__, array());
+  if (!isset($controllers[$type])) {
+    $info = inline_content_replacement_types();
+    if (isset($info[$type])) {
+      $class = $info[$type]['controller'];
+      $controllers[$type] = new $class();
+    }
+    else {
+      $controllers[$type] = FALSE;
+    }
+  }
+  return $controllers[$type];
+}
+
+/* Access Control
+ ******************************************************************************/
+/**
+ * Implements hook_permission().
+ */
+function inline_content_permission() {
+  // Return permissions for the standard API entity operations.
+  return array(
+    'administer inline_content inline_content' => array(
+      'title' => t('Administer Inline Content'),
+      'restrict access' => TRUE,
+    ),
+    'view inline_content inline_content' => array(
+      'title' => t('View Inline Content'),
+      'restrict access' => TRUE,
+    ),
+    'update inline_content inline_content' => array(
+      'title' => t('Update Inline Content'),
+      'restrict access' => TRUE,
+    ),
+    'create inline_content signature' => array(
+      'title' => t('Create Inline Content'),
+      'restrict access' => TRUE,
+    ),
+    'delete inline_content inline_content' => array(
+      'title' => t('Delete Inline Content'),
+      'restrict access' => TRUE,
+    ),
+    'administer inline_content types' => array(
+      'title' => t('Administer Inline Content Types'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Access callback for signatures.
+ */
+function inline_content_access($op, $entity, $account = NULL,
+  $entity_type = 'inline_content') {
+  // Block unknown operations.
+  $allowed_ops = array('administer', 'view', 'update', 'create', 'delete');
+  if (in_array($op, $allowed_ops)) {
+    return user_access("$op inline_content $entity_type", $account)
+      || user_access("administer inline_content $entity_type", $account);
+  }
+  return FALSE;
+}
+
+/* Field Formatter
+ ******************************************************************************/
+/**
+ * Implements hook_field_formatter_info().
+ */
+function inline_content_field_formatter_info() {
+  return array(
+    'text_with_inline_content' => array(
+      'label' => t('With Inline Content'),
+      'field types' => array('text_long', 'text_with_summary'),
+      'settings' => array('source' => ''),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function inline_content_field_formatter_settings_form($field, $instance,
+  $view_mode, $form, &$form_state) {
+
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $replacement_fields = array(
+    '' => t('[None]'),
+  );
+  $instances = field_info_instances($instance['entity_type'], $instance['bundle']);
+  foreach ($instances as $name => $info) {
+    if ($info['widget']['type'] == 'inline_entity_form') {
+      $replacement_fields[$name] = $info['label'];
+    }
+  }
+
+  $elements = array();
+  if ($display['type'] == 'text_with_inline_content') {
+    $elements['source'] = array(
+      '#type' => 'select',
+      '#title' => t('Source'),
+      '#options' => $replacement_fields,
+      '#default_value' => $settings['source'],
+    );
+  }
+  return $elements;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function inline_content_field_formatter_settings_summary($field, $instance,
+  $view_mode) {
+
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = '';
+  if ($display['type'] == 'text_with_inline_content') {
+    if (isset($settings['source']) && strlen($settings['source']) > 0) {
+      $summary = t('Source') . ': ' . $settings['source'];
+    }
+    else {
+      $summary = t('Source: [None]');
+    }
+  }
+  return $summary;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function inline_content_field_formatter_view($entity_type, $entity, $field,
+  $instance, $langcode, $items, $display) {
+
+  if (count($items) > 1) {
+    // Not supported yet, just pass the field through to the core text field
+    // formatter so something shows up on the page.
+    $display['type'] = 'text_default';
+    return text_field_formatter_view($entity_type, $entity, $field, $instance,
+      $langcode, $items, $display);
+  }
+
+  // Get the inline content beans.
+  $replacements = array();
+  $settings = $display['settings'];
+  if (isset($settings['source']) && strlen($settings['source']) > 0) {
+    $inline_content = field_get_items($entity_type, $entity, $settings['source']);
+    if ($inline_content !== FALSE) {
+      $ids = array();
+      foreach ($inline_content as $data) {
+        $ids[] = $data['target_id'];
+      }
+      $replacements = entity_load('inline_content', $ids);
+    }
+  }
+
+  $elements = array();
+  foreach ($items as $delta => $item) {
+
+    // Sanitize the value.
+    if (isset($item['safe_value'])) {
+      $markup = $item['safe_value'];
+    }
+    else {
+      $markup = $instance['settings']['text_processing']
+        ? check_markup($item['value'], $item['format'], $langcode)
+        : check_plain($item['value']);
+    }
+
+    // Break the value into pieces.
+    $markup = str_replace(array("\r\n", "\r"), "\n", $markup);
+    $markup = str_replace(array('<hr/>', '<hr />'), '<hr>', $markup);
+    $chunks = explode('<hr>', $markup);
+
+    $elements[$delta] = array();
+    while (count($chunks) > 0 && count($replacements) > 0) {
+      $elements[$delta][] = array(
+        '#markup' => array_shift($chunks),
+      );
+      $replacement = array_shift($replacements);
+      $elements[$delta][] = entity_view('inline_content', array($replacement));
+    }
+    foreach ($chunks as $chunk) {
+      $elements[$delta][] = array(
+        '#markup' => $chunk,
+      );
+    }
+    foreach ($replacements as $replacement) {
+      $elements[$delta][] = entity_view('inline_content', array($replacement));
+    }
+  }
+  return $elements;
+}

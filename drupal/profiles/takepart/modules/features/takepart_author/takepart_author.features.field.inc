@@ -10,7 +10,7 @@
 function takepart_author_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-profile-field_author_links'
+  // Exported field: 'node-profile-field_author_links'.
   $fields['node-profile-field_author_links'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20,6 +20,7 @@ function takepart_author_field_default_fields() {
       'field_name' => 'field_author_links',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -32,6 +33,7 @@ function takepart_author_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -48,10 +50,17 @@ function takepart_author_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 14,
         ),
         'teaser' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -73,16 +82,18 @@ function takepart_author_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );

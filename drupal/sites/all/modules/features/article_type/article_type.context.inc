@@ -35,17 +35,17 @@ function article_type_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
-        'newsletter_campaign-10' => array(
+        'newsletter_campaign-48' => array(
           'module' => 'newsletter_campaign',
-          'delta' => '10',
+          'delta' => '48',
           'region' => 'sidebar_second',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
         'boxes-ga_articles_bottom_right' => array(
           'module' => 'boxes',
           'delta' => 'ga_articles_bottom_right',
           'region' => 'sidebar_second',
-          'weight' => '-8',
+          'weight' => '-7',
         ),
       ),
     ),
