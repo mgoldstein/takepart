@@ -16,9 +16,9 @@
         </div>
     </div>
 </div>
-<div class="second-block" <?=wa('read_more_item')?>>
+<div class="second-block" <?=wa('read_more_items')?>>
     <h2 class='headline'><?=w('second_block_headline')?></h2>
-    <? foreach ( wl('read_more_item') as $w ): ?>
+    <? foreach ( wl('read_more_items') as $w ): ?>
     <div class="read-more">
         <div class="image-wrapper">
             <? if ( ($w->img_src ) ): ?>
