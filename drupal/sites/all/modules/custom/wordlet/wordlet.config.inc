@@ -581,6 +581,25 @@ function _wordlet_configuration() {
       'load' => array('site', 'intelchange_winners_campaign'),
     ),
 
+    // Intel For Change - Stay Involved
+    'intelchange_winners_involved' => array(
+      'title' => 'Intel For Change - Stay Involved',
+      'path' => 'intelforchange_winners/involved',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_winners', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/reset.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange_winners/intelchange-winners.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange_winners/intelchange-winners.js',
+      ),
+      'load' => array('site', 'intelchange_winners_campaign'),
+    ),
+
     // Intel For Change - Contest
     'intelchange_winners_teams' => array(
       'title' => 'Intel For Change - Teams',
