@@ -101,6 +101,9 @@ function article_type_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'of_the_day' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -111,13 +114,13 @@ function article_type_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '17',
+          'weight' => '16',
         ),
         'redirect' => array(
-          'weight' => '18',
+          'weight' => '17',
         ),
         'xmlsitemap' => array(
-          'weight' => '19',
+          'weight' => '18',
         ),
       ),
       'display' => array(),
