@@ -26,9 +26,9 @@
 							<a href="<?=$w->href?>" class="<?=ws($w->href)?>"><?=$w->single(false)?></a>
 							<? if ($w->active): ?>
 								<?
-								if ( ws($w->href) == 'active') && isset($_GET['team'])) {
+								if ( ws($w->href) == 'active' && isset($_GET['team'])) {
 								    $cur_team = $_GET['team'];
-								} elseif(ws($w->href) == 'active')) {
+								} elseif(ws($w->href) == 'active') {
 								    $cur_team = w('teams')->token; //first team token
 								}
 								?>
