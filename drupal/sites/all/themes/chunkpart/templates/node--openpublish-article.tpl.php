@@ -1,5 +1,13 @@
 <article id="article-main" class="<?=!$node->status ? 'unpublished':'' ?>">
 	<div id="article-main-inner">
+		<? if ( list($key, $series) = _seach($field_series) ): ?>
+			<aside id="article-series">
+				<a href="<?=_surl($series)?>">
+					<?=_simage($series, 'field_series_graphic_header')?>
+				</a>
+			</aside>
+		<? endif ?>
+
 		<header id="article-header">
 			<h1 id="article-headline"><?=_s($title) ?></h1>
 			<p id="article-abstract"><?=_s($field_article_subhead) ?></p>
