@@ -97,7 +97,7 @@ function takepart_core_form_search_api_page_search_form_site_search_alter(&$form
   $form['keys_2']['#attributes'] = array('placeholder' => array("Search"));
   // On the 404 page, unset any form tokens so that we bypass attempted validation ( and give a warning to authenticated users )
   if (request_uri() == '/' . drupal_get_normal_path(variable_get('static_404', ''))) {
-    unset($form['form_token']); 
+    unset($form['form_token']);
     unset($form['#token']);
   }
 }
@@ -256,7 +256,7 @@ function _simage($var, $prop = NULL, $type = 'node') {
     $image['path'] = file_create_url($image['uri']);
   }
 
-  return theme_image($image);
+  return theme('image', $image);
 }
 
 // Rip out Drupal system classes

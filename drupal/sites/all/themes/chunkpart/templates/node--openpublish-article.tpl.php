@@ -71,7 +71,7 @@
 		<div id="article-content">
 			<? if ( ($image = _simage($node, 'field_article_main_image')) ): ?>
 				<figure id="article-image">
-					<?=$image?>
+          <?=render($content['field_article_main_image']);?>
 					<? if ( $caption = _s($field_article_main_image[0]['file'], 'field_media_caption', 'file') ): ?>
 						<figcaption>
 							<?=_s($caption) ?>
