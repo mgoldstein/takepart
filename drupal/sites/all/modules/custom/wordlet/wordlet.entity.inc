@@ -270,6 +270,7 @@ class WordletController extends EntityAPIControllerExportable {
       'token' => '',
       'video' => '',
       'form' => '',
+      'block' => '',
       'empty' => array(
         'single' => TRUE,
         'multi' => TRUE,
@@ -284,6 +285,7 @@ class WordletController extends EntityAPIControllerExportable {
         'token' => TRUE,
         'video' => TRUE,
         'form' => TRUE,
+        'block' => TRUE,
       ),
     );
 
