@@ -33,8 +33,6 @@ class InlineContentNewsletter extends InlineContentReplacementController {
    */
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
 
-    $markup = '';
-
     $newsletter = field_get_items('inline_content', $replacement, 'field_ic_newsletter');
     if ($newsletter !== FALSE && count($newsletter) > 0) {
       $data = reset($newsletter);
@@ -45,13 +43,9 @@ class InlineContentNewsletter extends InlineContentReplacementController {
       $delta = "newsletter_campaign_{$data['target_id']}";
       $rendered = _block_render_blocks(array($delta => $block));
 
-      return _block_get_renderable_array($rendered);
+      $content['#replacements'][$delta] = _block_get_renderable_array($rendered);
     }
 
-    // Show nothing if no newsletter was available.
-    return array(
-      '#type' => 'markup',
-      '#markup' => '',
-    );
+    return $content;
   }
 }

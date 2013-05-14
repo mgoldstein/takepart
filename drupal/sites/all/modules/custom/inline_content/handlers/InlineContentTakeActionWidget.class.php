@@ -26,7 +26,7 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
     $form_style = field_get_items('inline_content', $replacement, 'field_ic_expanded');
     if ($form_style !== FALSE && count($form_style) > 0) {
       $data = reset($form_style);
-      $state = $data['value'] == 'expanded' ? t('Expanded') : t('Collapsed');
+      $state = ((string) $data['value'] == 'expanded') ? t('Expanded') : t('Collapsed');
     }
     else {
       $state = t('Collapsed');
@@ -71,10 +71,11 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
       $attributes['data-action-id'] = $data['nid'];
     }
 
-    // Output the widget markup.
-    return array('widget' => array(
+    $content['#replacements']['widget'] = array(
       '#type' => 'markup',
       '#markup' => '<div' . drupal_attributes($attributes) . '></div>',
-    ));
+    );
+
+    return $content;
   }
 }
