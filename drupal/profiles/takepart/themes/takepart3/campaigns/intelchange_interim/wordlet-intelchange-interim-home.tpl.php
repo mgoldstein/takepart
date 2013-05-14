@@ -54,7 +54,7 @@
     </div>
 
     <div class="form_wrapper">
-        <div id="stay-connected" class="form-state form-content interim">
+        <div id="stay-connected" class="form-state form-content interim" <?=wa('stay_connected_form')?>>
             <?=w('stay_connected_form')?>
         </div>
     </div>
