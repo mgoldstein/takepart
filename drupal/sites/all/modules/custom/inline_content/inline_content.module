@@ -12,7 +12,7 @@ class InlineContentFormController extends EntityInlineEntityFormController {
    * Overrides EntityInlineEntityFormController::defaultFields().
    */
   public function defaultFields($bundles) {
-    // Use the bean's label for the table display.
+    // Use the label for the table display.
     $fields = array(
       'label' => array(
         'type' => 'property',
@@ -179,7 +179,7 @@ class InlineContentController extends EntityAPIController {
 
       $build = array(
         '#theme' => 'inline_content',
-        '#replacement' => $entity,
+        '#inline_content' => $entity,
         '#replacements' => array(),
       );
 
@@ -341,12 +341,6 @@ function inline_content_replacement_types() {
 
   $types = array();
 
-  // $types['gallery'] = array(
-  //   'label' => t('Related Gallery'),
-  //   'description' => t('Related Gallery'),
-  //   'controller' => 'InlineContentGallery',
-  // );
-
   $types['nodes'] = array(
     'label' => t('Embedded Content'),
     'description' => t('One or more embedded nodes.'),
@@ -382,12 +376,6 @@ function inline_content_replacement_types() {
     'description' => t('Take Action Widget.'),
     'controller' => 'InlineContentTakeActionWidget',
   );
-
-  // $types['video'] = array(
-  //   'label' => t('Video Modal'),
-  //   'description' => t('Inline videos shown using the video modal.'),
-  //   'controller' => 'InlineContentVideo',
-  // );
 
   return $types;
 }
@@ -571,18 +559,22 @@ function inline_content_field_formatter_view($entity_type, $entity, $field,
     $markup = str_replace(array('<hr/>', '<hr />'), '<hr>', $markup);
     $chunks = explode('<hr>', $markup);
 
+    // Interlace the inline content with the body content.
     while (count($chunks) > 0 && count($replacements) > 0) {
       $rebuild[] = array_shift($chunks);
       $replacement = array_shift($replacements);
       $content = entity_view('inline_content', array($replacement));
       $rebuild[] = render($content);
     }
+
+    // Append any remaining content (inline or body).
     $rebuild[] = implode('', $chunks);
     foreach ($replacements as $replacement) {
       $content = entity_view('inline_content', array($replacement));
       $rebuild[] = render($content);
     }
 
+    // Smash the value back together.
     $elements[$delta] = array(
       '#type' => 'markup',
       '#markup' => implode('', $rebuild),
@@ -592,11 +584,18 @@ function inline_content_field_formatter_view($entity_type, $entity, $field,
   return $elements;
 }
 
-function inline_content_preprocess_inline_content($variables) {
+/**
+ * Implements hook_preprocess_THEME_HOOK().
+ */
+function inline_content_preprocess_inline_content(&$variables) {
   $element = $variables['element'];
-  $variables['theme_suggestions'][] = "inline_content__" . $element['type'];
+  $inline_content = $element['#inline_content'];
+  $variables['theme_hook_suggestions'][] = "inline_content__" . $inline_content->type;
 }
 
+/**
+ * Implements hook_theme().
+ */
 function inline_content_theme() {
   return array(
     'inline_content' => array(
