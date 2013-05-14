@@ -10,100 +10,6 @@
 function inline_content_fields_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'inline_content-gallery-field_ic_gallery'.
-  $fields['inline_content-gallery-field_ic_gallery'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_ic_gallery',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'node_reference',
-      'settings' => array(
-        'referenceable_types' => array(
-          'action' => 0,
-          'article' => 0,
-          'audio' => 0,
-          'blog_front' => 0,
-          'feed' => 0,
-          'feed_item' => 0,
-          'openpublish_article' => 0,
-          'openpublish_blog_post' => 0,
-          'openpublish_photo' => 0,
-          'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-          'openpublish_video' => 0,
-          'petition_action' => 0,
-          'pledge_action' => 0,
-          'profile' => 0,
-          'section_front' => 0,
-          'section_front_wide' => 0,
-          'takepart_campaign' => 0,
-          'takepart_group' => 0,
-          'takepart_list' => 0,
-          'takepart_page' => 0,
-          'takepart_quick_study' => 0,
-          'takepart_slide' => 0,
-          'topic_front' => 0,
-          'venue' => 0,
-          'webform' => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'node_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'gallery',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'inline_content',
-      'field_name' => 'field_ic_gallery',
-      'label' => 'Gallery',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'node_reference',
-        'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => '60',
-        ),
-        'type' => 'node_reference_autocomplete',
-        'weight' => '0',
-      ),
-    ),
-  );
-
   // Exported field: 'inline_content-markup-field_ic_label'.
   $fields['inline_content-markup-field_ic_label'] = array(
     'field_config' => array(
@@ -755,113 +661,17 @@ function inline_content_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'inline_content-video-field_ic_video'.
-  $fields['inline_content-video-field_ic_video'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_ic_video',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'node_reference',
-      'settings' => array(
-        'referenceable_types' => array(
-          'action' => 0,
-          'article' => 0,
-          'audio' => 0,
-          'blog_front' => 0,
-          'feed' => 0,
-          'feed_item' => 0,
-          'openpublish_article' => 0,
-          'openpublish_blog_post' => 0,
-          'openpublish_photo' => 0,
-          'openpublish_photo_gallery' => 0,
-          'openpublish_video' => 'openpublish_video',
-          'petition_action' => 0,
-          'pledge_action' => 0,
-          'profile' => 0,
-          'section_front' => 0,
-          'section_front_wide' => 0,
-          'takepart_campaign' => 0,
-          'takepart_group' => 0,
-          'takepart_list' => 0,
-          'takepart_page' => 0,
-          'takepart_quick_study' => 0,
-          'takepart_slide' => 0,
-          'topic_front' => 0,
-          'venue' => 0,
-          'webform' => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'node_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'video',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'inline_content',
-      'field_name' => 'field_ic_video',
-      'label' => 'Video',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'node_reference',
-        'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => '60',
-        ),
-        'type' => 'node_reference_autocomplete',
-        'weight' => '0',
-      ),
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Action Override');
   t('Article URL');
   t('Content');
   t('Expanded');
-  t('Gallery');
   t('Label');
   t('Markup');
   t('Media');
   t('Newsletter');
   t('Orientation');
-  t('Video');
 
   return $fields;
 }

@@ -50,6 +50,29 @@ class InlineContentNodes extends InlineContentReplacementController {
    * Return the replacement content.
    */
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
+
+    $orientation = 'horizontal';
+    $items = field_get_items('inline_content', $replacement, 'field_ic_orientation');
+    if ($items !== FALSE && count($items) > 0) {
+      $data = reset($items);
+      $orientation = $data['value'];
+    }
+
+    // Start fresh.
+    $content['#attributes'] =array(
+      'class' => array('inline-content', $orientation),
+    );
+
+    $items = field_get_items('inline_content', $replacement, 'field_ic_content');
+    if ($items !== FALSE) {
+      $nids = array();
+      foreach ($items as $data) {
+        $nids[] = (int) $data['nid'];
+      }
+      foreach (node_load_multiple($nids) as $nid => $node) {
+        $content['#replacements'][$nid] = node_view($node, 'inline_content');
+      }
+    }
     return $content;
   }
 }

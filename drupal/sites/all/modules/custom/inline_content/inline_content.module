@@ -71,6 +71,13 @@ class InlineContentFormController extends EntityInlineEntityFormController {
     field_attach_form('inline_content', $replacement, $entity_form, $form_state,
       $langcode);
 
+    if ($replacement->type == 'horizontal_rule') {
+      $entity_form['label'] = array(
+        '#type' => 'markup',
+        '#markup' => '<h3>Horizontal Rule</h3>'
+      );
+    }
+
     // The redirect module goes super crazy with adding redirects to forms,
     // remove the field as it is not needed.
     unset($entity_form['redirect']);
@@ -169,17 +176,11 @@ class InlineContentController extends EntityAPIController {
 
     $view = array();
     foreach ($entities as $entity) {
-      $build = entity_build_content($this->entityType, $entity, $view_mode, $langcode);
-      $build += array(
-        // If the entity type provides an implementation, use this instead the
-        // generic one.
-        // @see template_preprocess_entity()
-        '#theme' => 'entity',
-        '#entity_type' => $this->entityType,
-        '#entity' => $entity,
-        '#view_mode' => $view_mode,
-        '#language' => $langcode,
-        '#page' => $page,
+
+      $build = array(
+        '#theme' => 'inline_content',
+        '#replacement' => $entity,
+        '#replacements' => array(),
       );
 
       // Give the inline content controller a crack at it.
@@ -193,6 +194,7 @@ class InlineContentController extends EntityAPIController {
       $key = isset($entity->{$this->idKey}) ? $entity->{$this->idKey} : NULL;
       $view[$this->entityType][$key] = $build;
     }
+
     return $view;
   }
 }
@@ -286,6 +288,12 @@ function inline_content_entity_info() {
         'bundle' => 'name',
       ),
       'bundles' => array(),
+      'view modes' => array(
+        'full' => array(
+          'label' => t('Inline Content'),
+          'custom settings' => FALSE,
+        ),
+      ),
       'uri callback' => 'entity_class_uri',
       'access callback' => 'inline_content_access',
       'inline entity form' => array(
@@ -333,10 +341,22 @@ function inline_content_replacement_types() {
 
   $types = array();
 
-  $types['gallery'] = array(
-    'label' => t('Related Gallery'),
-    'description' => t('Related Gallery'),
-    'controller' => 'InlineContentGallery',
+  // $types['gallery'] = array(
+  //   'label' => t('Related Gallery'),
+  //   'description' => t('Related Gallery'),
+  //   'controller' => 'InlineContentGallery',
+  // );
+
+  $types['nodes'] = array(
+    'label' => t('Embedded Content'),
+    'description' => t('One or more embedded nodes.'),
+    'controller' => 'InlineContentNodes',
+  );
+
+  $types['horizontal_rule'] = array(
+    'label' => t('Horizontal Rule'),
+    'description' => t('A simple horizontal rule.'),
+    'controller' => 'InlineContentHorizontalRule',
   );
 
   $types['markup'] = array(
@@ -346,7 +366,7 @@ function inline_content_replacement_types() {
   );
 
   $types['media'] = array(
-    'label' => t('External Media'),
+    'label' => t('Media'),
     'description' => t('External media like YouTube videos.'),
     'controller' => 'InlineContentMedia',
   );
@@ -357,23 +377,17 @@ function inline_content_replacement_types() {
     'controller' => 'InlineContentNewsletter',
   );
 
-  $types['nodes'] = array(
-    'label' => t('Embedded Nodes'),
-    'description' => t('One or more embedded nodes with a selectable view mode.'),
-    'controller' => 'InlineContentNodes',
-  );
-
   $types['take_action_widget'] = array(
     'label' => t('Take Action Widget'),
     'description' => t('Take Action Widget.'),
     'controller' => 'InlineContentTakeActionWidget',
   );
 
-  $types['video'] = array(
-    'label' => t('Video Modal'),
-    'description' => t('Inline videos shown using the video modal.'),
-    'controller' => 'InlineContentVideo',
-  );
+  // $types['video'] = array(
+  //   'label' => t('Video Modal'),
+  //   'description' => t('Inline videos shown using the video modal.'),
+  //   'controller' => 'InlineContentVideo',
+  // );
 
   return $types;
 }
@@ -540,6 +554,8 @@ function inline_content_field_formatter_view($entity_type, $entity, $field,
   $elements = array();
   foreach ($items as $delta => $item) {
 
+    $rebuild = array();
+
     // Sanitize the value.
     if (isset($item['safe_value'])) {
       $markup = $item['safe_value'];
@@ -555,22 +571,42 @@ function inline_content_field_formatter_view($entity_type, $entity, $field,
     $markup = str_replace(array('<hr/>', '<hr />'), '<hr>', $markup);
     $chunks = explode('<hr>', $markup);
 
-    $elements[$delta] = array();
     while (count($chunks) > 0 && count($replacements) > 0) {
-      $elements[$delta][] = array(
-        '#markup' => array_shift($chunks),
-      );
+      $rebuild[] = array_shift($chunks);
       $replacement = array_shift($replacements);
-      $elements[$delta][] = entity_view('inline_content', array($replacement));
+      $content = entity_view('inline_content', array($replacement));
+      $rebuild[] = render($content);
     }
-    foreach ($chunks as $chunk) {
-      $elements[$delta][] = array(
-        '#markup' => $chunk,
-      );
-    }
+    $rebuild[] = implode('', $chunks);
     foreach ($replacements as $replacement) {
-      $elements[$delta][] = entity_view('inline_content', array($replacement));
+      $content = entity_view('inline_content', array($replacement));
+      $rebuild[] = render($content);
     }
+
+    $elements[$delta] = array('#markup' => implode('', $rebuild));
   }
+
   return $elements;
+}
+
+function inline_content_preprocess_inline_content($variables) {
+  $element = $variables['element'];
+  $variables['theme_suggestions'][] = "inline_content__" . $element['type'];
+}
+
+function inline_content_theme() {
+  return array(
+    'inline_content' => array(
+      'render element' => 'element',
+    ),
+  );
+}
+
+function theme_inline_content($variables) {
+  $output = '';
+  $element = $variables['element'];
+  foreach ($element['#replacements'] as $item) {
+    $output .= render($item);
+  }
+  return $output;
 }

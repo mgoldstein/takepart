@@ -29,8 +29,6 @@ class InlineContentMarkup extends InlineContentReplacementController {
 
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
 
-    $markup = '';
-
     $items = field_get_items('inline_content', $replacement, 'field_ic_markup');
     if ($items !== FALSE && count($items) > 0) {
       $item = reset($items);
@@ -40,11 +38,12 @@ class InlineContentMarkup extends InlineContentReplacementController {
       else {
         $markup = check_markup($item['value'], $item['format'], $langcode);
       }
+      $content['#replacements'][] = array(
+        '#type' => 'markup',
+        '#markup' => $markup,
+      );
     }
 
-    return array('markup' => array(
-      '#type' => 'markup',
-      '#markup' => $markup,
-    ));
+    return $content;
   }
 }
