@@ -69,7 +69,6 @@ function _wordlet_configuration() {
       'wrappers' => array(),
       /*'wrappers' => array('campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'campaigns/intelchange/intelchange.css',
       ),
       'js' => array(
@@ -86,7 +85,6 @@ function _wordlet_configuration() {
       'wrappers' => array(),
       'css' => array(
         'campaigns/reset.css',
-        'css/slim-header.css',
         'css/normalize_cms.css',
       ),
       'js' => array(
@@ -119,7 +117,6 @@ function _wordlet_configuration() {
       'wrappers' => array('campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
-        'css/slim-header.css',
         'css/normalize_cms.css',
       ),
       'js' => array(
@@ -153,7 +150,6 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array('html'),
       'css' => array(
-        'css/slim-header.css',
         'campaigns/patt/patt.css',
       ),
       'js' => array(
@@ -169,7 +165,6 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
@@ -187,7 +182,6 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
@@ -205,7 +199,6 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
@@ -223,7 +216,6 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
@@ -241,7 +233,6 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
@@ -259,7 +250,6 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
@@ -277,7 +267,6 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
@@ -313,7 +302,6 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array('patt', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/patt/patt.css',
       ),
@@ -338,7 +326,6 @@ function _wordlet_configuration() {
       'published' => FALSE,
       'wrappers' => array('can', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/can/can.css',
       ),
@@ -357,7 +344,6 @@ function _wordlet_configuration() {
       'published' => FALSE,
       'wrappers' => array('can', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/can/can.css',
       ),
@@ -382,7 +368,6 @@ function _wordlet_configuration() {
       'published' => FALSE,
       'wrappers' => array('eyelevel', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/eyelevel/eyelevel.css',
       ),
@@ -400,7 +385,6 @@ function _wordlet_configuration() {
       'published' => FALSE,
       'wrappers' => array('eyelevel', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/eyelevel/eyelevel.css',
       ),
@@ -425,7 +409,6 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array('campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'campaigns/intelgirls/intelgirls.css',
       ),
       'js' => array(
@@ -449,7 +432,6 @@ function _wordlet_configuration() {
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
       ),
@@ -467,7 +449,6 @@ function _wordlet_configuration() {
       'published' => TRUE,
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
-        'css/slim-header.css',
         'campaigns/reset.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
@@ -487,7 +468,6 @@ function _wordlet_configuration() {
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
       ),
@@ -506,7 +486,6 @@ function _wordlet_configuration() {
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
       ),
@@ -544,7 +523,6 @@ function _wordlet_configuration() {
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
       ),
@@ -563,7 +541,6 @@ function _wordlet_configuration() {
       'wrappers' => array('intelchange', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
-        'css/slim-header.css',
         'css/normalize_cms.css',
         'campaigns/intelchange/intelchange.css',
       ),
