@@ -583,7 +583,10 @@ function inline_content_field_formatter_view($entity_type, $entity, $field,
       $rebuild[] = render($content);
     }
 
-    $elements[$delta] = array('#markup' => implode('', $rebuild));
+    $elements[$delta] = array(
+      '#type' => 'markup',
+      '#markup' => implode('', $rebuild),
+    );
   }
 
   return $elements;
