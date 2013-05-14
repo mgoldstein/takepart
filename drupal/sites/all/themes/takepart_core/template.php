@@ -211,7 +211,7 @@ function _surl($var, $prop = NULL, $type = 'node') {
     return url('node/' . $var[0]['node']->nid);
   } elseif ( is_array($var) && isset($var['node']) ) {
     return url('node/' . $var['node']->nid);
-  } elseif ( $var->_surl ) {
+  } elseif ( is_object($var) && isset($var->_surl) ) {
     return $var->_surl;
   } elseif ( is_object($var) ) {
     return url('node/' . $var->nid);

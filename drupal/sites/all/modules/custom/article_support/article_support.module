@@ -65,3 +65,18 @@ function article_support_preprocess_node(&$variables) {
     $variables[$key] = $value;
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function article_support_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // Limit the formatter for article main image to landscape and portrait.
+  $node = $form['#node'];
+  if ($node->type == 'openpublish_article' && isset($form['field_main_image_format'])) {
+    $lang = $form['field_main_image_format']['#language'];
+    $form['field_main_image_format'][$lang][0]['type']['#options'] = array(
+      'styles_media_landscape_main_image' => t('Landscape'),
+      'styles_media_portrait_main_image' => t('Portrait'),
+    );
+  }
+}
