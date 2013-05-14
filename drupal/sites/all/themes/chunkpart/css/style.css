@@ -394,7 +394,7 @@ body #at16pt {
 	background: #f9fbfc;
 	font-size: 20px;
 	line-height: 30px;
-	margin-right: 1em;
+	margin: 0 1em 1em 0;
 	text-align: center;
 }
 
