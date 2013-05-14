@@ -1999,3 +1999,28 @@
   padding-top: 60px;
   padding-bottom: 15px;
 }
+.page-wordlet-intelchange-winners-teams #page .second-block .member .third-sub .entries {
+  border-top: 1px solid rgb(219, 215, 215);
+}
+.page-wordlet-intelchange-winners-teams #page .second-block .member .third-sub .entry {
+  padding-top: 32px;
+  display: block;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgb(219, 215, 215);
+}
+.page-wordlet-intelchange-winners-teams #page .second-block .member .third-sub .entry:hover {
+  text-decoration: none;
+}
+.page-wordlet-intelchange-winners-teams #page .second-block .member .third-sub .entry .label {
+  font-size: 18px;
+  margin-bottom: 0.25em;
+  display: block;
+}
+.page-wordlet-intelchange-winners-teams #page .second-block .member .third-sub .entry:hover .label {
+  text-decoration: underline;
+}
+.page-wordlet-intelchange-winners-teams #page .second-block .member .third-sub .entry .text-block {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(75, 54, 57);
+}
