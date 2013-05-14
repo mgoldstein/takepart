@@ -70,7 +70,7 @@ if (isset($_GET['member'])) {
                         Add Image
                     <? endif ?>
                 </div>
-                <div class="gallery-link-wrapper">
+                <div class="gallery-link-wrapper" <?=wa($team->token.'_'.$team_member->token.'_gallery_link')?>>
                     <a href="<?=w($team->token.'_'.$team_member->token.'_gallery_link')->href?>" class="gallery-link"><?=w($team->token.'_'.$team_member->token.'_gallery_link')->single(false)?></a>
                 </div>
             </div>
