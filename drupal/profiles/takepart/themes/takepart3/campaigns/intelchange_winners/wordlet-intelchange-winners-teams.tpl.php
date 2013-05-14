@@ -71,6 +71,14 @@ if (isset($_GET['member'])) {
                     <? endif ?>
                 </div>
                 <div class="gallery-link-wrapper" <?=wa($team->token.'_'.$team_member->token.'_gallery_link')?>>
+                    <a class="gallery-link" href="<?=w($team->token.'_'.$team_member->token.'_gallery_link')->href?>">
+                        <? if ( w('gallery_link_label') ): ?>
+                        <?=wr(w('gallery_link_label'), $team_member)?>
+                        <? elseif( wordlest_edit_mode() ): ?>
+                        <span <?=wa('gallery_link_label')?>>Add Link Text</span>
+                        <? endif ?>
+                    </a>
+
                     <a href="<?=w($team->token.'_'.$team_member->token.'_gallery_link')->href?>" class="gallery-link"><?=w($team->token.'_'.$team_member->token.'_gallery_link')->single(false)?></a>
                 </div>
             </div>
