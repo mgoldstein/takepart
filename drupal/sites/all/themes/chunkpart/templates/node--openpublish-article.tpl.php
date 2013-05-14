@@ -80,9 +80,9 @@
 				</figure>
 			<? endif ?>
 
-			<? if ( $body = _s($node, 'body') ): ?>
+			<? if ( $content['body'] ): ?>
 				<div id="article-body" class="cms">
-					<?=$body['safe_value']?>
+					<?=render($content['body'])?>
 				</div>
 			<? endif ?>
 
@@ -139,7 +139,7 @@
 								<?=_simage($topic, 'field_topic_box_image') ?>
 							</a>
 						<? else: ?>
-							<?=_simage($topic, 'field_topic_box_image') ?>						
+							<?=_simage($topic, 'field_topic_box_image') ?>
 						<? endif ?>
 					</li>
 				<? endwhile ?>
