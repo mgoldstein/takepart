@@ -33,7 +33,7 @@ function article_support_next_article($wrapper) {
  */
 function article_support_node_view($node, $view_mode, $langcode) {
 
-  if ($node->type === 'article' && $view_mode === 'full') {
+  if ($node->type === 'openpublish_article' && $view_mode === 'full') {
 
     // Additional variables to make available to the template.
     $variables = array(
@@ -76,11 +76,10 @@ function article_support_form_node_form_alter(&$form, &$form_state, $form_id) {
 
     $lang = $form['field_main_image_format']['#language'];
     $item = $form['field_main_image_format'][$lang][0];
-    $form['field_main_image_format'][$lang][0]['type'] = array(
-      '#type' => 'value',
-      '#value' => 'media',
+    $form['field_main_image_format'][$lang][0]['type']['#options'] = array(
+      'media' => t('Media'),
     );
-    
+
     $form['field_main_image_format'][$lang][0]['settings']['file_view_mode']['#options'] = array(
       'landscape' => t('Landscape'),
       'portrait' => t('Portrait'),
