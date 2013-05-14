@@ -1944,6 +1944,11 @@
 .page-wordlet-intelchange-winners-teams #page .second-block .member .headline {
   margin-bottom: 0.1em;
 }
+.page-wordlet-intelchange-winners-teams #page .second-block .member .subheadline {
+  font-size: 25px;
+  margin-bottom: 20px;
+  color: rgb(75, 54, 57);
+}
 .page-wordlet-intelchange-winners-teams #page .second-block .member .headline .member-title {
   font-size: 13px;
   display: block;
