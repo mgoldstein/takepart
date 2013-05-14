@@ -13,5 +13,12 @@
 </div>
 <div class="second-block">
 	<h3 class="headline"><?=w('second_block_headline')?></h3>
-	<div class="resources"><?=w('resources_view')?></div>
+    <div class="resources" <?=wa('resources')?>>
+        <? foreach ( wl('resources') as $i => $resource ): ?>
+            <a class="resource" href="<?=$resource->href?>">
+                <span class="label"><?=$resource->single(false)?></span>
+                <div class="text-block cms"><?=$resource->multi(false)?></div>
+            </a>
+        <? endforeach ?>
+    </div>
 </div>
