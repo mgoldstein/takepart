@@ -61,7 +61,7 @@ if (isset($_GET['member'])) {
             </div>
         </div>
         <div class="second-sub">
-            <h3 class="subheadline"><?=w('second_block_second_sub_headline')->single(false)?></h3>
+            <h3 class="subheadline"><?=w('second_block_second_sub_headline')?></h3>
             <div class="gallery">
                 <div class="image-wrapper" <?=wa($team->token.'_'.$team_member->token.'_gallery_image')?>>
                     <? if ( ($w = w($team->token.'_'.$team_member->token.'_gallery_image')) && $w->img_src ): ?>
@@ -84,7 +84,7 @@ if (isset($_GET['member'])) {
             </div>
         </div>
         <div class="third-sub">
-            <h3 class="subheadline"><?=w('second_block_third_sub_headline')->single(false)?></h3>
+            <h3 class="subheadline"><?=w('second_block_third_sub_headline')?></h3>
         </div>
     </div>
 </div>
