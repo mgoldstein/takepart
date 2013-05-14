@@ -20,3 +20,4 @@ scripts[] = js/tpautoTab.jquery.js
 scripts[] = js/tpmodal.jquery.js
 scripts[] = js/tpsticky.jquery.js
 scripts[] = js/autosize.jquery.js
+scripts[] = js/script.js
