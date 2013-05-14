@@ -34,24 +34,8 @@
   <? if (isset($tp_sysinfo_comment_tags)): ?>
       <?=$tp_sysinfo_comment_tags ?>
   <? endif ?>
+
+  <? // Twitter widget ?>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </body>
 </html>
-
-<? /*
-<a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
-<h1>HTML Template Variables</h1>
-<dl>
-  <?php foreach(array_keys($variables) as $name): ?>
-    <dt><?php print $name; ?></dt>
-    <dd><pre><?php
-      $repr = print_r($variables[$name], TRUE);
-      print htmlentities($repr);
-    ?></pre></dd>
-  <?php endforeach; ?>
-</dl>
-<?php
-  // As the HTML template is a wrapper, the content it wraps is already rendered
-  // in this case the rendered content is in $page
-  print $page;
-?>
-*/ ?>
