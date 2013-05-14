@@ -889,10 +889,18 @@ body #at16pt {
 
 .node-type-article #article-image {
 	margin-bottom: .75em;
+	display: table;
+	width: 1px;
+}
+
+.node-type-article #article-image.portrait_main_image {
+	margin-right: 1em;
+	float: left;
 }
 
 .node-type-article #article-image img {
 	display: block;
+	max-width: 460px;
 }
 
 .node-type-article #article-image figcaption {
@@ -937,11 +945,6 @@ body #at16pt {
 
 .node-type-article #article-author .follow .google a {
 	background-image: url(../images/author_google.png); /** sprite-ref: mysprite; */
-}
-
-/* TODO: maybe just make this global */
-.node-type-article #article-image img {
-	max-width: 100%;
 }
 
 /* Next Article */

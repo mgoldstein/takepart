@@ -335,5 +335,5 @@ function _seach(&$var /*, $prop = null, $type = 'node'*/ ) {
     return array($k, $taxonomy_term);
   }
 
-  return null;
+  return array($k, $ea);
 }
