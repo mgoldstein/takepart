@@ -4,9 +4,9 @@ More info available at http://www.omniture.com */
 
 // var s_account=Drupal.settings.omniture.s_account; // "takepartprod"
 if (typeof Drupal != 'undefined') {
-  s_account=Drupal.settings.omniture.s_account;
+    s_account=Drupal.settings.omniture.s_account;
 } else {
-  s_account="takepartprod";
+    s_account="takepartprod";
 }
 var s=s_gi(s_account);
 /************************** CONFIG SECTION **************************/
@@ -127,6 +127,10 @@ function s_doPlugins(s) {
     if(!s.prop9&&!s.eVar9) s.prop9=s.eVar9=s.getTimeParting('d','-8'); // Set day
     if(!s.prop10&&!s.eVar10) s.prop10=s.eVar10=s.getTimeParting('w','-8'); // Set weekday
 
+    if(s.prop20){
+        s.prop20=s.prop20.toLowerCase();
+    }
+
     /* Copy props to eVars */
     s.eVar46=s.pageName?s.pageName:'';
     s.eVar1=s.prop1?s.prop1:'';         // Sub Section 1
@@ -149,7 +153,7 @@ function s_doPlugins(s) {
     // s.eVar24=s.prop23?s.prop23:'';   Retire -- was previously "Issue type"
     // s.eVar26=s.prop25?s.prop25:'';   Retire -- was previously "Article saved"
     s.eVar27=s.prop26?s.prop26:'';      // Share method/channel
-    // s.eVar28=s.prop27?s.prop27:''; s.profp 27 Article Share clicked
+    // s.eVar28=s.prop27?s.prop27:'';   Retire --  Article Share clicked
     s.previousPage=s.getPreviousValue(s.pageName,'gpv_p5','');
 }
 s.doPlugins=s_doPlugins

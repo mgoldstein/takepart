@@ -310,7 +310,7 @@ function takepart_action_default_box() {
   $box->title = '';
   $box->description = 'Take Action Banner';
   $box->options = array(
-    'body' => '<a href="/take-action"><img src="/sites/default/files/TABHeader.png" id="take-action-980-banner"></a>',
+    'body' => '<a href="/take-action"><img src="/sites/default/files/TABHeader-2.png" id="take-action-980-banner"></a>',
     'additional_classes' => '',
     'selected_style' => '0',
   );

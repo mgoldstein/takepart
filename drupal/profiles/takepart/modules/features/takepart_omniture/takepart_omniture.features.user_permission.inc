@@ -10,7 +10,7 @@
 function takepart_omniture_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: administer SiteCatalyst configuration
+  // Exported permission: administer SiteCatalyst configuration.
   $permissions['administer SiteCatalyst configuration'] = array(
     'name' => 'administer SiteCatalyst configuration',
     'roles' => array(

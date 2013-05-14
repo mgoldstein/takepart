@@ -26,15 +26,15 @@ function takepart_search_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'facetapi-VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1' => array(
-          'module' => 'facetapi',
-          'delta' => 'VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
         'facetapi-p6j6uydvqzGOZ3pcNbwjsR5fzChT15JY' => array(
           'module' => 'facetapi',
           'delta' => 'p6j6uydvqzGOZ3pcNbwjsR5fzChT15JY',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+        'facetapi-VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1' => array(
+          'module' => 'facetapi',
+          'delta' => 'VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1',
           'region' => 'sidebar_second',
           'weight' => '-9',
         ),
