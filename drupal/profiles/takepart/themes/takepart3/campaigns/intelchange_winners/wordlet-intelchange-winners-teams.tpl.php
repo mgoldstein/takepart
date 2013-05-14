@@ -86,7 +86,7 @@ if (isset($_GET['member'])) {
         <div class="third-sub">
             <h3 class="subheadline"><?=w('second_block_third_sub_headline')?></h3>
             <div class="entries" <?=wa($team->token.'_'.$team_member->token.'_journal_entries')?>>
-                <? foreach ( w($team->token.'_'.$team_member->token.'_journal_entries') as $i => $journal_entry ): ?>
+                <? foreach ( wl($team->token.'_'.$team_member->token.'_journal_entries') as $i => $journal_entry ): ?>
                     <a class="entry" href="<?=$journal_entry->href?>">
                         <span class="label"><?=$journal_entry->single(false)?></span>
                         <div class="text-block cms"><?=$journal_entry->multi(false)?></div>
