@@ -479,6 +479,18 @@ body #at16pt {
 	margin-bottom: -10px;
 }
 
+/* Series */
+
+#article-series {
+  margin-bottom: 12px;
+}
+
+#article-series img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Badge */
 
 .node-type-article #article-badge a {
