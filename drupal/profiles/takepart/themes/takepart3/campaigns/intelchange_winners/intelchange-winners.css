@@ -1705,14 +1705,11 @@
   margin-bottom: 20px;
   color: rgb(75, 54, 57);
 }
-.page-wordlet-intelchange-winners-learn #page .second-block .resources {
-  border-top: 1px solid rgb(219, 215, 215);
-}
 .page-wordlet-intelchange-winners-learn #page .second-block .resource {
-  padding-top: 32px;
   display: block;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgb(219, 215, 215);
+  padding: 32px 40px 14px 40px;
+  margin-bottom: 7px;
+  background-color: rgb(255, 255, 255);
 }
 .page-wordlet-intelchange-winners-learn #page .second-block .resource:hover {
   text-decoration: none;
@@ -1721,6 +1718,7 @@
   font-size: 18px;
   margin-bottom: 0.25em;
   display: block;
+  color: rgb(2, 111, 171);
 }
 .page-wordlet-intelchange-winners-learn #page .second-block .resource:hover .label {
   text-decoration: underline;
@@ -2043,6 +2041,7 @@
   font-size: 18px;
   margin-bottom: 0.25em;
   display: block;
+  color: rgb(2, 111, 171);
 }
 .page-wordlet-intelchange-winners-teams #page .second-block .member .third-sub .entry:hover .label {
   text-decoration: underline;
