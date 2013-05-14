@@ -141,7 +141,7 @@
 }
 
 .main .menu .addThis {
-  padding: 20px 46px 10px 10px;
+  padding: 20px 10px 10px 10px;
   position: absolute;
   right: 0;
   top: 0;
@@ -187,7 +187,7 @@
 .main .menu ul li:focus ul {
   left: 0;
   opacity: 0.99;
-  z-index: 1;
+  z-index: 99;
 }
 
 /* specific styling for this campaign */
@@ -1703,28 +1703,105 @@
 }
 
 /* Stay Involved ---------------- */
-.page-wordlet-intelchange-winners-involved #page .first-block,
-.page-wordlet-intelchange-winners-involved #page .second-block {
-  margin: 40px;
-}
-.page-wordlet-intelchange-winners-involved #page .second-block {
-  margin-bottom: 87px;
-}
 .page-wordlet-intelchange-winners-involved #page .first-block {
+  margin: 37px 27px 25px 27px;
+  display: inline-block; *display: inline; *zoom: 1;
+  position: relative;
+}
+.page-wordlet-intelchange-winners-involved #page .first-block .inner-wrapper {
+  position: relative;
+  padding: 11px 13px 11px 23px;
   background: rgb(255, 255, 255);
-  padding: 11px 13px;
+  z-index: 1;
+}
+.page-wordlet-intelchange-winners-involved #page .first-block .border-bg {
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  background: rgb(31, 162, 220);
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  -ms-transform: rotate(0.3deg);
+  -moz-transform: rotate(0.3deg);
+  -webkit-transform: rotate(0.3deg);
+  -o-transform: rotate(0.3deg);
+  transform: rotate(0.3deg);
 }
 .page-wordlet-intelchange-winners-involved #page .first-block .image-wrapper {
-  margin-right: 47px;
-  float: left;
+  margin-left: 47px;
+  float: right;
+}
+.page-wordlet-intelchange-winners-involved #page .first-block .image-wrapper {
+  max-height: 325px;
+}
+.page-wordlet-intelchange-winners-involved #page .first-block .first-sub {
+  display: table-cell;
+  vertical-align: middle;
+  height: 325px;
 }
 .page-wordlet-intelchange-winners-involved #page .first-block .headline {
-  font-size: 35px;
-  margin-bottom: 20px;
+  font-size: 30px;
+  margin-bottom: 0.5em;
 }
 .page-wordlet-intelchange-winners-involved #page .first-block .text-block p {
   font-size: 14px;
   margin-bottom: 2em;
+}
+.page-wordlet-intelchange-winners-involved #page .second-block {
+  margin: 0 19px 40px 19px;
+  background: rgb(255, 255, 255);
+  padding: 41px 30px 45px 30px;
+}
+.page-wordlet-intelchange-winners-involved #page .second-block .headline {
+  font-size: 30px;
+}
+.page-wordlet-intelchange-winners-involved #page .second-block .read-more {
+  padding: 0 33px;
+  margin-top: 41px;
+}
+.page-wordlet-intelchange-winners-involved #page .second-block .image-wrapper {
+  float: left;
+  margin-right: 39px;
+}
+.page-wordlet-intelchange-winners-involved #page .second-block .image-wrapper img {
+  max-height: 202px;
+}
+.page-wordlet-intelchange-winners-involved #page .second-block .first-sub {
+  display: table-cell;
+  vertical-align: middle;
+  height: 202px;
+}
+.page-wordlet-intelchange-winners-involved #page .second-block .name {
+  display: block;
+  font-size: 25px;
+  color: rgb(96, 78, 80);
+  margin-bottom: 1em;
+}
+.page-wordlet-intelchange-winners-involved #page .second-block .text-block p {
+  font-size: 14px;
+  margin-bottom: 1.5em;
+}
+.page-wordlet-intelchange-winners-involved #page .second-block .read-more-link {
+  font-size: 14px;
+}
+.page-wordlet-intelchange-winners-involved #page .third-block {
+  margin: 0 19px 50px 19px;
+  text-align: center;
+  background-color: rgb(111, 94, 97);
+}
+.page-wordlet-intelchange-winners-involved #page .third-block {
+  padding: 41px 0 41px 0;
+}
+.page-wordlet-intelchange-winners-involved #page .third-block .headline {
+  font-size: 42px;
+  color: rgb(162, 203, 225);
+  margin-bottom: 0.25em;
+  line-height: 1em;
+}
+.page-wordlet-intelchange-winners-involved #page .third-block .subheadline {
+  font-size: 32px;
+  color: rgb(255, 255, 255);
 }
 
 /* Teams ---------------- */
