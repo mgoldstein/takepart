@@ -66,6 +66,12 @@ function takepart_action_strongarm() {
       'medium_preview' => array(
         'custom_settings' => TRUE,
       ),
+      'of_the_day' => array(
+        'custom_settings' => TRUE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -115,6 +121,14 @@ function takepart_action_strongarm() {
             'weight' => '5',
             'visible' => FALSE,
           ),
+          'of_the_day' => array(
+            'weight' => '2',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '2',
+            'visible' => FALSE,
+          ),
         ),
         'signature_action_label' => array(
           'default' => array(
@@ -143,6 +157,14 @@ function takepart_action_strongarm() {
           ),
           'embed' => array(
             'weight' => '4',
+            'visible' => FALSE,
+          ),
+          'of_the_day' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '1',
             'visible' => FALSE,
           ),
         ),
@@ -175,6 +197,14 @@ function takepart_action_strongarm() {
             'weight' => '3',
             'visible' => FALSE,
           ),
+          'of_the_day' => array(
+            'weight' => '3',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '4',
+            'visible' => FALSE,
+          ),
         ),
         'signature_action_taken' => array(
           'default' => array(
@@ -204,6 +234,14 @@ function takepart_action_strongarm() {
           'embed' => array(
             'weight' => '0',
             'visible' => TRUE,
+          ),
+          'of_the_day' => array(
+            'weight' => '1',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '3',
+            'visible' => FALSE,
           ),
         ),
       ),

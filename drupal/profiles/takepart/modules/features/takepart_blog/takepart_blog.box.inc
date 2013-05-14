@@ -62,10 +62,10 @@ function takepart_blog_default_box() {
     'bundle' => 'openpublish_article',
     'field' => array(
       'field_topic' => 'field_topic',
+      'field_free_tag' => 0,
       'body' => 0,
       'field_author' => 0,
       'field_article_main_image' => 0,
-      'field_free_tag' => 0,
       'field_thumbnail' => 0,
       'field_article_action' => 0,
       'field_article_subhead' => 0,
@@ -80,10 +80,14 @@ function takepart_blog_default_box() {
       'field_related_campaigns' => 0,
       'field_suggest_actions' => 0,
       'field_multi_page_campaign' => 0,
+      'field_tp_campaign_show_title' => 0,
+      'field_html_title' => 0,
+      'field_tab_action_override' => 0,
     ),
     'use_page' => 1,
     'exclude_from_content' => 0,
     'view_mode' => 'default',
+    'additional_classes' => '',
   );
   $export['box-4eb62add'] = $box;
 

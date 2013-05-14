@@ -15,8 +15,7 @@ function openpublish_blog_post_taxonomy_default_vocabularies() {
       'description' => 'Organizational vocabulary for blog contributors or sections',
       'hierarchy' => '1',
       'module' => 'taxonomy',
-      'weight' => '0',
-      'metatags' => array(),
+      'weight' => '-8',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

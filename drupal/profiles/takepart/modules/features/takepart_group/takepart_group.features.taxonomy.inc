@@ -15,8 +15,7 @@ function takepart_group_taxonomy_default_vocabularies() {
       'description' => 'Used to store the different group types available.',
       'hierarchy' => '0',
       'module' => 'taxonomy',
-      'weight' => '0',
-      'metatags' => array(),
+      'weight' => '-6',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

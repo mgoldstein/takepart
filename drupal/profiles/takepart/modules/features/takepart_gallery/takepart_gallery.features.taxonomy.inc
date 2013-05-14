@@ -15,8 +15,7 @@ function takepart_gallery_taxonomy_default_vocabularies() {
       'description' => 'Asset provider',
       'hierarchy' => '0',
       'module' => 'taxonomy',
-      'weight' => '0',
-      'metatags' => array(),
+      'weight' => '-9',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -39,8 +38,7 @@ function takepart_gallery_taxonomy_default_vocabularies() {
       'description' => 'Free tagging for images.',
       'hierarchy' => '0',
       'module' => 'taxonomy',
-      'weight' => '0',
-      'metatags' => array(),
+      'weight' => '-5',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

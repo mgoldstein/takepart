@@ -56,12 +56,22 @@ class boxes_ga_ad extends boxes_box {
      if ($gptid) {
        $adsize = substr( strrchr( $slot, '_' ), 1);
        $lr = explode("x", $adsize);
-       
+
+       $gptfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 10);
+
+
        $content = <<<HTM
 <!-- $slot -->
 <div id='$gptid[$slot]' style='width:$lr[0]px; height:$lr[1]px;'>
 <script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('$gptid[$slot]'); });
+  function $gptfunction() {
+   if (typeof(googletag) !== 'undefined') {
+    googletag.cmd.push(function() { googletag.display('$gptid[$slot]'); });
+   } else {
+    setTimeout("$gptfunction()",1000);
+   }
+  }
+  $gptfunction();
 </script>
 </div>
 HTM;
