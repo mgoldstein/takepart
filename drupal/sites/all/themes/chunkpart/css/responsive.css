@@ -417,6 +417,11 @@
 	#topic_box:after {
 		display: none;
 	}
+
+	/* inline content */
+	.inline-content img {
+		max-width: none !important;
+	}
 }
 
 @media all and (max-width: 320px) {
