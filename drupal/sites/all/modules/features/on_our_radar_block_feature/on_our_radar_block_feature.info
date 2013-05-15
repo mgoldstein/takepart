@@ -5,5 +5,6 @@ version = 7.x-1.0
 project = on_our_radar_block_feature
 dependencies[] = bean
 dependencies[] = fe_block
+dependencies[] = on_our_radar
 features[fe_block_settings][] = bean-on-our-radar-block
 features[features_api][] = api:1
