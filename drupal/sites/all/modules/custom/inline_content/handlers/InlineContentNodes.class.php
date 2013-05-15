@@ -61,7 +61,7 @@ class InlineContentNodes extends InlineContentReplacementController {
     $content['#attributes'] = array(
       'class' => array('inline-content', $orientation),
     );
-    $content['#orienation'] = $orientation;
+    $content['#orientation'] = $orientation;
     //$content['#theme_wrappers'] = array('container');
 
     $items = field_get_items('inline_content', $replacement, 'field_ic_content');
