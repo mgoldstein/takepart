@@ -421,6 +421,11 @@ body #at16pt {
 	display: none;
 }
 
+/* Tab embed */
+div.takepart-take-action-widget {
+	margin-bottom: 1em;
+}
+
 /* ============================================================
 || 3.) Section Specific
 ============================================================ */
