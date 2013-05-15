@@ -71,7 +71,7 @@ class InlineContentNodes extends InlineContentReplacementController {
         $nids[] = (int) $data['nid'];
       }
       foreach (node_load_multiple($nids) as $nid => $node) {
-        $content['#replacements'][$nid] = node_view($node, 'inline_content');
+        $content['#replacements'][] = node_view($node, 'inline_content');
       }
     }
     return $content;
