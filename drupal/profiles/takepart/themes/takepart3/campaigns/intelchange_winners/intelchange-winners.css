@@ -633,6 +633,7 @@
 .page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-content .winner .facts {
   font-size: 13px;
   color: #777;
+  line-height: 1.25em;
 }
 .page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-content .mentors-wrapper {
   background-color: rgb(235, 235, 235);
