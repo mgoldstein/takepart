@@ -2022,12 +2022,24 @@
   display: block;
   width: 651px;
   margin: 0 auto;
+
+  -webkit-transition: background-color .2s ease-in-out;
+  transition: background-color .2s ease-in-out;
+}
+.page-wordlet-intelchange-winners-teams #page .second-block .member .second-sub .gallery:hover {
+  background-color: rgb(2, 162, 248);
 }
 .page-wordlet-intelchange-winners-teams #page .second-block .member .second-sub .gallery .image-wrapper {
   margin-bottom: 12px;
+  display: block;
 }
 .page-wordlet-intelchange-winners-teams #page .second-block .member .second-sub .gallery .gallery-link {
   text-decoration: underline;
+  -webkit-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
+}
+.page-wordlet-intelchange-winners-teams #page .second-block .member .second-sub .gallery:hover .gallery-link {
+  color: rgb(255, 255, 255);
 }
 .page-wordlet-intelchange-winners-teams #page .second-block .member .third-sub {
   padding-top: 60px;
