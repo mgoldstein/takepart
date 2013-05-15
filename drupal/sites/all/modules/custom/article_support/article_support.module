@@ -70,6 +70,10 @@ function article_support_preprocess_node(&$variables) {
  * Implements hook_form_FORM_ID_alter().
  */
 function article_support_form_node_form_alter(&$form, &$form_state, $form_id) {
+
+  // Not altering the form for the time being to allow updates to existing content.
+  return;
+
   // Limit the formatter for article main image to landscape and portrait.
   $node = $form['#node'];
   if ($node->type == 'openpublish_article' && isset($form['field_main_image_format'])) {

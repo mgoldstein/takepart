@@ -387,6 +387,7 @@ body #at16pt {
 .cms .pull-quote {
 	padding: 1em;
 	float: left;
+	clear: left;
 	width: 50%;
 	border: 1px solid #e8e8e8;
 	border-left: none;
@@ -819,6 +820,69 @@ body #at16pt {
 .node-type-article #article-social.inside .inner {
 }
 
+/* Article main image */
+
+.node-type-article #article-image {
+	margin-bottom: .75em;
+	display: table;
+	width: 1px;
+}
+
+.node-type-article #article-image.portrait_main_image {
+	margin-right: 1em;
+	float: left;
+	width: 250px;
+}
+
+.node-type-article #article-image img {
+	display: block;
+	max-width: 460px;
+}
+
+.node-type-article #article-image figcaption {
+	font-size: 14px;
+	color: #777;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 10px 0;
+	line-height: 1.2;
+}
+
+/* Article inline content */
+
+.node-type-article .inline-content {
+	margin: 0 1em 0 0;
+	display: table;
+	width: 1px;
+	float: left;
+	clear: left;
+}
+
+.node-type-article .inline-content a {
+	color: #000;
+	text-decoration: none;
+}
+
+.node-type-article .inline-content a:hover {
+	text-decoration: underline;
+}
+
+.node-type-article .inline-content p {
+	margin: 3px 0 10px 0;
+	padding-top: 10px;
+	border-top: 1px solid #e8e8e8;
+}
+
+.node-type-article .inline-content img {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.node-type-article .inline-content span {
+	display: block;
+	font-weight: bold;
+	font-size: 15px;
+}
+
 /* Author */
 
 .node-type-article #article-author {
@@ -887,22 +951,6 @@ body #at16pt {
 	color: #333;
 }
 
-.node-type-article #article-image {
-	margin-bottom: .75em;
-}
-
-.node-type-article #article-image img {
-	display: block;
-}
-
-.node-type-article #article-image figcaption {
-	font-size: 14px;
-	color: #777;
-	border-bottom: 1px solid #e8e8e8;
-	padding: 10px 0;
-	line-height: 1.2;
-}
-
 .node-type-article #article-author .follow_headline {
 	font-size: 12px;
 	font-weight: bold;
@@ -937,11 +985,6 @@ body #at16pt {
 
 .node-type-article #article-author .follow .google a {
 	background-image: url(../images/author_google.png); /** sprite-ref: mysprite; */
-}
-
-/* TODO: maybe just make this global */
-.node-type-article #article-image img {
-	max-width: 100%;
 }
 
 /* Next Article */
@@ -1151,7 +1194,7 @@ body #at16pt {
 	display: inline-block;
 	width: 24px;
 	height: 24px;
-	line-height: 23px;
+	line-height: 18px;
 	text-align: center;
 	color: #fff;
 	font-family: sans-serif;

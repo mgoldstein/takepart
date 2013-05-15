@@ -231,7 +231,7 @@ function _sblock($var) {
 
 
 // return an image
-function _simage($var, $prop = NULL, $type = 'node') {
+function _simage($var, $prop = NULL, $type = 'node', $style = null) {
   if ( is_object($var) && $prop ) {
     if ( isset($var->_stype) ) $type = $var->_stype;
     $var = field_get_items($type, $var, $prop);
@@ -252,11 +252,20 @@ function _simage($var, $prop = NULL, $type = 'node') {
     return '';
   }
 
-  if ( !isset($image['path']) ) {
-    $image['path'] = file_create_url($image['uri']);
-  }
+  if ( $style ) {
+    if ( !isset($image['path']) ) {
+      $image['path'] = $image['uri'];
+    }
 
-  return theme('image', $image);
+    $image['style_name'] = $style;
+    return theme('image_style', $image);
+  } else {
+    if ( !isset($image['path']) ) {
+      $image['path'] = file_create_url($image['uri']);
+    }
+
+    return theme('image', $image);
+  }
 }
 
 // Rip out Drupal system classes
@@ -335,5 +344,5 @@ function _seach(&$var /*, $prop = null, $type = 'node'*/ ) {
     return array($k, $taxonomy_term);
   }
 
-  return null;
+  return array($k, $ea);
 }
