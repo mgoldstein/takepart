@@ -104,6 +104,9 @@ function article_type_strongarm() {
       'of_the_day' => array(
         'custom_settings' => TRUE,
       ),
+      'inline_content' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

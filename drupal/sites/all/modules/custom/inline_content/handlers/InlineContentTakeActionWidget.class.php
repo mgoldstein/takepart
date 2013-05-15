@@ -71,7 +71,7 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
       $attributes['data-action-id'] = $data['nid'];
     }
 
-    $content['#replacements']['widget'] = array(
+    $content['#replacements'][] = array(
       '#type' => 'markup',
       '#markup' => '<div' . drupal_attributes($attributes) . '></div>',
     );

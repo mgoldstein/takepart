@@ -70,6 +70,12 @@ function takepart_share_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-box-72e1be3c' => array(
+          'module' => 'boxes',
+          'delta' => 'box-72e1be3c',
+          'region' => 'sidebar_first',
+          'weight' => 0,
+        ),
         'takepart_addthis-addthis_full' => array(
           'module' => 'takepart_addthis',
           'delta' => 'addthis_full',

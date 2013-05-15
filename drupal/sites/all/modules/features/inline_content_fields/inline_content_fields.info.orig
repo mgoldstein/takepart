@@ -1,0 +1,37 @@
+name = Inline Content Fields
+description = Fields for inline content replacements.
+core = 7.x
+package = Content Types
+<<<<<<< HEAD
+php = 5.2.4
+=======
+>>>>>>> article-redesign-frontend-dev
+version = 7.x-1.0
+project = inline_content_fields
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = field_sql_storage
+dependencies[] = link
+dependencies[] = list
+dependencies[] = media
+dependencies[] = node_reference
+dependencies[] = options
+dependencies[] = text
+features[features_api][] = api:1
+<<<<<<< HEAD
+features[field][] = inline_content-gallery-field_ic_gallery
+=======
+>>>>>>> article-redesign-frontend-dev
+features[field][] = inline_content-markup-field_ic_label
+features[field][] = inline_content-markup-field_ic_markup
+features[field][] = inline_content-media-field_ic_media
+features[field][] = inline_content-newsletter-field_ic_newsletter
+features[field][] = inline_content-nodes-field_ic_content
+features[field][] = inline_content-nodes-field_ic_orientation
+features[field][] = inline_content-take_action_widget-field_ic_action
+features[field][] = inline_content-take_action_widget-field_ic_article_url
+features[field][] = inline_content-take_action_widget-field_ic_expanded
+<<<<<<< HEAD
+features[field][] = inline_content-video-field_ic_video
+=======
+>>>>>>> article-redesign-frontend-dev

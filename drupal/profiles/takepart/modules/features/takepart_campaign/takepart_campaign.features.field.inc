@@ -58,11 +58,23 @@ function takepart_campaign_field_default_fields() {
           'type' => 'hidden',
           'weight' => '28',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '9',
+        ),
+        'of_the_day' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -157,6 +169,12 @@ function takepart_campaign_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_multi_page_campaign',
@@ -227,10 +245,9 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'context_field',
           'settings' => array(),
-          'type' => 'context_field_context',
-          'weight' => '7',
+          'type' => 'hidden',
+          'weight' => '17',
         ),
         'full' => array(
           'label' => 'above',
@@ -239,11 +256,23 @@ function takepart_campaign_field_default_fields() {
           'type' => 'context_field_context',
           'weight' => '2',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '9',
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -285,7 +314,7 @@ function takepart_campaign_field_default_fields() {
           ),
         ),
         'type' => 'context_field_select',
-        'weight' => '15',
+        'weight' => '11',
       ),
     ),
   );
@@ -327,6 +356,12 @@ function takepart_campaign_field_default_fields() {
           'weight' => 0,
         ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -420,7 +455,25 @@ function takepart_campaign_field_default_fields() {
           'type' => 'context_field_context',
           'weight' => '3',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
+        'of_the_day' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -513,6 +566,18 @@ function takepart_campaign_field_default_fields() {
           'settings' => array(),
           'type' => 'context_field_context',
           'weight' => '5',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
+        'of_the_day' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1170,6 +1235,119 @@ function takepart_campaign_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-takepart_campaign-field_tab_action_override'.
+  $fields['node-takepart_campaign-field_tab_action_override'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '3',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tab_action_override',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'action' => 'action',
+          'article' => 0,
+          'audio' => 0,
+          'blog_front' => 0,
+          'feed' => 0,
+          'feed_item' => 0,
+          'openpublish_article' => 0,
+          'openpublish_blog_post' => 0,
+          'openpublish_photo' => 0,
+          'openpublish_photo_gallery' => 0,
+          'openpublish_video' => 0,
+          'petition_action' => 'petition_action',
+          'pledge_action' => 'pledge_action',
+          'profile' => 0,
+          'section_front' => 0,
+          'section_front_wide' => 0,
+          'takepart_campaign' => 0,
+          'takepart_group' => 0,
+          'takepart_list' => 0,
+          'takepart_page' => 0,
+          'takepart_quick_study' => 0,
+          'takepart_slide' => 0,
+          'topic_front' => 0,
+          'venue' => 0,
+          'webform' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 35,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tab_action_override',
+      'label' => 'TAB Action Overrides',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '34',
+      ),
+    ),
+  );
+
   // Exported field: 'node-takepart_campaign-field_thumbnail'.
   $fields['node-takepart_campaign-field_thumbnail'] = array(
     'field_config' => array(
@@ -1197,10 +1375,13 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
-          'settings' => array(),
-          'type' => 'media_large',
-          'weight' => 34,
+          'module' => 'media_image_formatter',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '34',
         ),
         'full' => array(
           'label' => 'above',
@@ -1413,7 +1594,7 @@ function takepart_campaign_field_default_fields() {
           'title' => '',
         ),
         'display' => array(
-          'url_cutoff' => '80',
+          'url_cutoff' => '255',
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
@@ -3697,11 +3878,11 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'node_reference',
+          'module' => 'node_reference_view_formatter',
           'settings' => array(
             'view' => 'groups block',
           ),
-          'type' => 'node_reference_default',
+          'type' => 'node_reference_view',
           'weight' => '21',
         ),
         'full' => array(
@@ -3861,6 +4042,12 @@ function takepart_campaign_field_default_fields() {
           'type' => 'hidden',
           'weight' => '6',
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_multi_page_campaign',
@@ -3945,6 +4132,7 @@ function takepart_campaign_field_default_fields() {
   t('Spotlight Nodes');
   t('Sub Headline');
   t('Suggest Related Actions?');
+  t('TAB Action Overrides');
   t('Thumbnail');
   t('Topic');
   t('User can create and/or reference a Photo to serve as the Spotlight Image.');

@@ -49,6 +49,9 @@ function article_type_context_default_contexts() {
         ),
       ),
     ),
+    'theme_html' => array(
+      'class' => 'node-type-article',
+    ),
   );
   $context->condition_mode = 0;
 

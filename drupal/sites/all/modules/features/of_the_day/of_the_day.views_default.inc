@@ -87,6 +87,13 @@ function of_the_day_views_default_views() {
   $handler = $view->new_display('block', 'Of the Day', 'block');
   $handler->display->display_options['display_description'] = 'Block display for the "Of the Day" content listing';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['wrapper_class'] = '';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['block_description'] = 'Of The Day Block';
   $export['of_the_day'] = $view;
 
