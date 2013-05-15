@@ -890,6 +890,7 @@ body #at16pt {
 .node-type-article .inline-content.horizontal {
 	margin: 0 0 1em 0;
 	display: inline-block; *display: inline; zoom: 1;
+	vertical-align: bottom;
 	width: auto;
 	float: none;
 }
