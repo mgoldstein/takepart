@@ -131,7 +131,7 @@
             </div>
         </div>
 
-        <div id="stay-connected" class="form-state form-content">
+        <div id="stay-connected" class="form-state form-content" <?=wa('stay_connected_form')?>>
             <?=w('stay_connected_form')?>
         </div>
     </div>

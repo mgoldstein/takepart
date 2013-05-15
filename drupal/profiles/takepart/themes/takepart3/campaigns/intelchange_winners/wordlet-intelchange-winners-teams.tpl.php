@@ -30,8 +30,8 @@ if (isset($_GET['member'])) {
                 <a href="<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>&member=<?=$team_member->token?>" class="member <?=$team_member->token?><?=($active_member?' active':'')?>">
                     <div class="inner-wrapper">
                         <span class="name"><?=strtok($team_member->single(false), " ")?></span>
-                        <span class="company"><?=w($team->token.'_'.$team_member->token.'_company')?></span>
                         <span class="title"><?=w($team_member->token.'_member_title_label')?></span>
+                        <span class="company"><?=w($team->token.'_'.$team_member->token.'_company')?></span>
                     </div>
                 </a>
             <? endforeach ?>
@@ -85,6 +85,15 @@ if (isset($_GET['member'])) {
         </div>
         <div class="third-sub">
             <h3 class="subheadline"><?=w('second_block_third_sub_headline')?></h3>
+            <div class="entries" <?=wa($team->token.'_'.$team_member->token.'_journal_entries')?>>
+                <?=w($team->token.'_'.$team_member->token.'_journal_entries_view')?>
+                <? foreach ( wl($team->token.'_'.$team_member->token.'_journal_entries') as $i => $journal_entry ): ?>
+                    <a class="entry" href="<?=$journal_entry->href?>">
+                        <span class="label"><?=$journal_entry->single(false)?></span>
+                        <div class="text-block cms"><?=$journal_entry->multi(false)?></div>
+                    </a>
+                <? endforeach ?>
+            </div>
         </div>
     </div>
 </div>
