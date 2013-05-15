@@ -1034,7 +1034,7 @@ body #at16pt {
 }
 
 .node-type-article #next-article a {
-	font-size: 16px;
+	font-size: 15px;
 	padding: 10px 2.5em 10px 0;
 	text-overflow: ellipsis;
 	max-width: 100%;
@@ -1078,7 +1078,6 @@ body #at16pt {
 }
 
 .node-type-article #next-article a:hover {
-	opacity: .6;
 	text-decoration: underline;
 }
 
