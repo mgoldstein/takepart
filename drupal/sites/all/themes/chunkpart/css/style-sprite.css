@@ -399,6 +399,7 @@ body #at16pt {
 .cms .pull-quote {
 	padding: 1em;
 	float: left;
+	clear: left;
 	width: 50%;
 	border: 1px solid #e8e8e8;
 	border-left: none;
@@ -890,6 +891,7 @@ body #at16pt {
 	display: table;
 	width: 1px;
 	float: left;
+	clear: left;
 }
 
 .node-type-article .inline-content a {
