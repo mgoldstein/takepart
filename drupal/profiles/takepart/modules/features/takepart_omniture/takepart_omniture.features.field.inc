@@ -78,6 +78,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '5',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -199,6 +205,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '24',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -306,6 +318,12 @@ function takepart_omniture_field_default_fields() {
           ),
           'type' => 'image',
           'weight' => '0',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'hidden',
@@ -472,6 +490,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '37',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -611,6 +635,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '50',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -759,6 +789,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '36',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -882,6 +918,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '27',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -988,6 +1030,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '41',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -1120,6 +1168,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '42',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1241,6 +1295,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '43',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1357,6 +1417,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '17',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1467,6 +1533,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '18',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -1582,6 +1654,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '26',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1693,6 +1771,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '27',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -1827,6 +1911,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '56',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1939,6 +2029,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '0',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -2055,6 +2151,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '55',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2167,6 +2269,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '38',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2265,6 +2373,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '53',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -2417,6 +2531,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '39',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2527,6 +2647,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '6',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -2641,6 +2767,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'link_default',
           'weight' => '3',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -2767,6 +2899,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '20',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2888,6 +3026,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '13',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3001,6 +3145,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '26',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3107,6 +3257,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '44',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'hidden',
@@ -3217,6 +3373,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '45',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'hidden',
@@ -3356,6 +3518,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '51',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -3497,6 +3665,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '52',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3616,6 +3790,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '28',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3725,6 +3905,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '1',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -3827,6 +4013,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '10',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -3969,6 +4161,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '13',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -4079,6 +4277,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '14',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -4184,6 +4388,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '29',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -4292,6 +4502,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '47',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -4403,6 +4619,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '48',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -4512,6 +4734,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '49',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -4624,6 +4852,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '30',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -4733,6 +4967,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '32',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -4844,6 +5084,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '23',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -4970,6 +5216,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '22',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5077,6 +5329,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '33',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -5189,6 +5447,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '34',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5297,6 +5561,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '35',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -5409,6 +5679,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '31',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5516,6 +5792,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '24',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -5630,6 +5912,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '25',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5740,6 +6028,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '16',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5849,6 +6143,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '18',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5945,6 +6245,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '46',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -6077,6 +6383,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '54',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6186,6 +6498,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '40',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6292,6 +6610,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '21',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -6405,6 +6729,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '7',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'hidden',
@@ -6526,6 +6856,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '6',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6633,6 +6969,12 @@ function takepart_omniture_field_default_fields() {
           ),
           'type' => 'image',
           'weight' => '0',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'hidden',
@@ -6799,6 +7141,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '22',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6938,6 +7286,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '48',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -7086,6 +7440,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '23',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7209,6 +7569,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '35',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7315,6 +7681,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '37',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -7448,6 +7820,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '32',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7569,6 +7947,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '39',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7685,6 +8069,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '18',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7795,6 +8185,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '19',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -7910,6 +8306,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '21',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -8021,6 +8423,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '22',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -8155,6 +8563,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '30',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -8267,6 +8681,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '0',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -8383,6 +8803,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '36',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -8495,6 +8921,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '29',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -8593,6 +9025,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '31',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -8745,6 +9183,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '28',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -8856,6 +9300,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '27',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -8981,6 +9431,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '3',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9092,6 +9548,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '62',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9201,6 +9663,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '17',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -9314,6 +9782,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '26',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9420,6 +9894,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '41',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'hidden',
@@ -9530,6 +10010,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '42',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'hidden',
@@ -9669,6 +10155,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '49',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -9810,6 +10302,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '50',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9929,6 +10427,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '34',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -10034,6 +10538,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '19',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'hidden',
@@ -10148,6 +10658,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '16',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -10258,6 +10774,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'text_default',
           'weight' => '17',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -10363,6 +10885,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '24',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -10471,6 +10999,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '45',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -10582,6 +11116,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '46',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -10691,6 +11231,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '47',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -10802,6 +11348,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '51',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -10910,6 +11462,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '58',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -11021,6 +11579,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '38',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -11147,6 +11711,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '15',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11253,6 +11823,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '56',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -11364,6 +11940,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '55',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11471,6 +12053,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '54',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -11582,6 +12170,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '52',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11689,6 +12283,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '40',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'hidden',
@@ -11803,6 +12403,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '16',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11913,6 +12519,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '21',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -12022,6 +12634,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '18',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -12118,6 +12736,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '44',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',
@@ -12250,6 +12874,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '25',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -12359,6 +12989,12 @@ function takepart_omniture_field_default_fields() {
           'type' => 'hidden',
           'weight' => '33',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'medium_preview' => array(
           'label' => 'above',
           'settings' => array(),
@@ -12465,6 +13101,12 @@ function takepart_omniture_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '20',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'medium_preview' => array(
           'label' => 'above',

@@ -2,6 +2,7 @@ name = of_the_day
 description = Of the Day related dependencies
 core = 7.x
 package = Features
+php = 5.2.4
 dependencies[] = boxes
 dependencies[] = ctools
 dependencies[] = views

@@ -28,9 +28,9 @@ function article_type_ctools_plugin_api() {
 function article_type_node_info() {
   $items = array(
     'article' => array(
-      'name' => t('Article'),
+      'name' => t('Not an article after all'),
       'base' => 'node_content',
-      'description' => t('Used to add articles to the site.'),
+      'description' => t('This is the new article content type that was added as part of the article redesign. It is not longer going to be used.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

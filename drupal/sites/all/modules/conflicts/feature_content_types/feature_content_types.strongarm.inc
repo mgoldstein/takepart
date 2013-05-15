@@ -411,6 +411,9 @@ function feature_content_types_strongarm() {
       'of_the_day' => array(
         'custom_settings' => FALSE,
       ),
+      'inline_content' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

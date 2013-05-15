@@ -43,6 +43,21 @@ function takepart_campaign_strongarm() {
       'embedaction' => array(
         'custom_settings' => FALSE,
       ),
+      'embedaction_expanded' => array(
+        'custom_settings' => FALSE,
+      ),
+      'action_summary' => array(
+        'custom_settings' => FALSE,
+      ),
+      'medium_preview' => array(
+        'custom_settings' => FALSE,
+      ),
+      'of_the_day' => array(
+        'custom_settings' => FALSE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

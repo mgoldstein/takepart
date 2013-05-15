@@ -78,7 +78,6 @@ function takepart_search_default_search_api_index() {
               "blog_front" : "blog_front",
               "openpublish_blog_post" : "openpublish_blog_post",
               "takepart_campaign" : "takepart_campaign",
-              "takepart_group" : "takepart_group",
               "takepart_page" : "takepart_page",
               "petition_action" : "petition_action",
               "openpublish_photo_gallery" : "openpublish_photo_gallery",
@@ -131,15 +130,16 @@ function takepart_search_default_search_api_index() {
           }
         },
         "search_api_html_filter" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "10",
           "settings" : {
             "fields" : {
               "title" : true,
               "field_promo_headline" : true,
-              "field_promo_text" : true
+              "field_promo_text" : true,
+              "body:value" : true
             },
-            "title" : 0,
+            "title" : 1,
             "alt" : 1,
             "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
           }
@@ -166,7 +166,6 @@ function takepart_search_default_search_api_index() {
     },
     "enabled" : "1",
     "read_only" : "0",
-    "metatags" : [],
     "rdf_mapping" : []
   }');
   return $items;
@@ -190,7 +189,6 @@ function takepart_search_default_search_api_server() {
       "http_pass" : ""
     },
     "enabled" : "0",
-    "metatags" : [],
     "rdf_mapping" : []
   }');
   $items['takepart_solr_production'] = entity_import('search_api_server', '{
@@ -206,7 +204,6 @@ function takepart_search_default_search_api_server() {
       "http_pass" : ""
     },
     "enabled" : "1",
-    "metatags" : [],
     "rdf_mapping" : []
   }');
   return $items;

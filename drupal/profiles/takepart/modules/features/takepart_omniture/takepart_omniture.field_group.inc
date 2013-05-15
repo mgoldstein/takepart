@@ -1479,6 +1479,68 @@ function takepart_omniture_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_signature_fields|node|petition_action|embedaction';
+  $field_group->group_name = 'group_signature_fields';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'petition_action';
+  $field_group->mode = 'embedaction';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Signature Fields',
+    'weight' => '6',
+    'children' => array(
+      0 => 'group_petition_tabs',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Signature Fields',
+      'instance_settings' => array(
+        'classes' => 'signature-state-fields unsigned signed active',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_signature_fields|node|petition_action|embedaction'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_signature_fields|node|petition_action|embedaction_expanded';
+  $field_group->group_name = 'group_signature_fields';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'petition_action';
+  $field_group->mode = 'embedaction_expanded';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Signature Fields',
+    'weight' => '5',
+    'children' => array(
+      0 => 'group_petition_tabs',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Signature Fields',
+      'instance_settings' => array(
+        'classes' => 'signature-state-fields unsigned signed active',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_signature_fields|node|petition_action|embedaction_expanded'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_signature_fields|node|petition_action|full';
   $field_group->group_name = 'group_signature_fields';
   $field_group->entity_type = 'node';
