@@ -22,12 +22,12 @@ class InlineContentNodes extends InlineContentReplacementController {
         $nids[] = (int) $data['nid'];
       }
       foreach (node_load_multiple($nids) as $node) {
-        $titles[] = $node->title;
+        $titles[] = '<br /> : ' . $node->title;
       }
     }
 
     // Collapse the titles into a single title.
-    $title = count($titles) ? implode(', ', $titles) : t('[No Content]');
+    $title = count($titles) ? implode('', $titles) : t('[No Content]');
 
     // Determine the display orientation.
     $orientation = t('Horizontal');
@@ -40,8 +40,8 @@ class InlineContentNodes extends InlineContentReplacementController {
     }
 
     // Format the label.
-    $replacement->label = t('Embedded Content: !title (!orientation)', array(
-      '!title' => $title,
+    $replacement->label = t('Embedded Content: (!orientation) !titles', array(
+      '!titles' => $title,
       '!orientation' => $orientation,
     ));
   }
