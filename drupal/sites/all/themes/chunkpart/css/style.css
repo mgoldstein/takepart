@@ -978,6 +978,11 @@ body #at16pt {
 	color: #333;
 }
 
+.node-type-article #article-body div,
+.node-type-article #article-body iframe {
+	max-width: 100% !important;
+}
+
 .node-type-article #article-author .follow_headline {
 	font-size: 12px;
 	font-weight: bold;
