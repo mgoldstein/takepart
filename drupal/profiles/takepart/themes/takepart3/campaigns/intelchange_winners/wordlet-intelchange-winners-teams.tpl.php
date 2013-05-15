@@ -79,7 +79,7 @@ if (isset($_GET['member'])) {
                         <? endif ?>
                     </div>
 
-                    <a href="<?=w($team->token.'_'.$team_member->token.'_gallery_link')->href?>" class="gallery-link"><?=w($team->token.'_'.$team_member->token.'_gallery_link')->single(false)?></a>
+                    <span class="gallery-link"><?=w($team->token.'_'.$team_member->token.'_gallery_link')->single(false)?></span>
                 </div>
             </a>
         </div>
