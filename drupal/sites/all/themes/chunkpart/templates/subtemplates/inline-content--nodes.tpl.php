@@ -14,8 +14,8 @@
 ?>
 
 <aside class="drupal-embed inline-content <?=$element['#orientation']?>">
-	<? foreach ($element['#replacements'] as $item): ?>
-		<p>
+	<? foreach ($element['#replacements'] as $key => $item): ?>
+		<p class="<?=($key == 0)?'first-child':''?> <?=($key == count($element['#replacements']) - 1)?'last-child':''?>">
 			<a href="<?=_surl($item['#node']) ?>">
 				<?=_simage($item['field_thumbnail']['#object'], 'field_thumbnail', 'node', $item['field_thumbnail'][0]['#image_style'])?>
 				<span><?=$item['#node']->title ?></span>

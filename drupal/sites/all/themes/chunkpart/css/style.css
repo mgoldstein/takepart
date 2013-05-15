@@ -887,6 +887,29 @@ body #at16pt {
 	font-size: 15px;
 }
 
+.node-type-article .inline-content.horizontal {
+	margin: 0 0 1em 0;
+	display: inline-block; *display: inline; zoom: 1;
+	width: auto;
+	float: none;
+}
+
+.node-type-article .inline-content.horizontal p {
+	float: left;
+	display: table;
+	float: left;
+	width: 1px;
+	margin: 0 5px 0 0;
+}
+
+.node-type-article .inline-content.horizontal p.last-child {
+	margin: 0;
+}
+
+.node-type-article .inline-content.horizontal span {
+	padding: 0 10px 0 0;
+}
+
 /* Author */
 
 .node-type-article #article-author {
