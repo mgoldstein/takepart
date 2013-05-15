@@ -12,11 +12,14 @@
  * $element['#attributes'] - The attributes (class, id, etc...) of the replacement
  */
 ?>
-<div <?=drupal_attributes($element['#attributes'])?>>
-<?php foreach ($element['#replacements'] as $node): ?>
-  <div>
-    <?php echo render($node['field_thumbnail']) ?>
-    <p><?php echo l($node['#node']->title, 'node/' . $node['#node']->nid)  ?></p>
-  </div>
-<?php endforeach ?>
-</div>
+
+<aside class="drupal-embed inline-content <?=$element['#orientation']?>">
+	<? foreach ($element['#replacements'] as $item): ?>
+		<p>
+			<a href="<?=_surl($item['#node']) ?>">
+				<?=_simage($item['field_thumbnail']['#object'], 'field_thumbnail', 'node', $item['field_thumbnail'][0]['#image_style'])?>
+				<span><?=$item['#node']->title ?></span>
+			</a>
+		</p>
+	<? endforeach ?>
+</aside>
