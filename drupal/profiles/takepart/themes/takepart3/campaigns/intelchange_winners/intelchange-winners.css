@@ -637,7 +637,7 @@
 }
 .page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-content .mentors-wrapper {
   background-color: rgb(235, 235, 235);
-  padding: 19px 16px;
+  padding: 19px 16px 25px 16px;
   border-top: 1px solid rgb(229, 229, 229);
   display: inline-block; *display: inline; *zoom: 1;
   vertical-align: top;
@@ -672,7 +672,7 @@
   display: block;
   font-size: 16px;
   color: rgb(75, 54, 57);
-  margin-bottom: 0.6em;
+  margin-bottom: 0.4em;
 }
 .page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-content .mentors-wrapper .mentor .company,
 .page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-content .mentors-wrapper .mentor .title {
@@ -683,7 +683,7 @@
 }
 .page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-content .important {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 .page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-content .important a {
   width: 50%;
