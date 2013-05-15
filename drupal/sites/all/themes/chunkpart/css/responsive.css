@@ -418,3 +418,10 @@
 		display: none;
 	}
 }
+
+@media all and (max-width: 320px) {
+	.node-type-article #article-content #article-image {
+		float: none;
+		margin-right: 0;
+	}
+}
