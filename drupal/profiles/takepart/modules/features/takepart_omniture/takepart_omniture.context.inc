@@ -116,7 +116,7 @@ s.prop6 = [node:nid]',
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'article' => 'article',
+        'openpublish_article' => 'openpublish_article',
       ),
       'options' => array(
         'node_form' => '1',
@@ -125,27 +125,7 @@ s.prop6 = [node:nid]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.channel = article
-s.events = event2, event6
-s.prop1 = [tp_omniture:str_decode:{node:url:path}]
-s.eVar1 = [tp_omniture:str_decode:{node:url:path}]
-s.prop4 = Article
-s.eVar4 = Article
-s.prop6 = [node:nid]
-s.eVar6 = [node:nid]
-s.prop8 = [current-date:custom:g\\:iA]
-s.eVar8 = [current-date:custom:g\\:iA]
-s.prop9 = [current-date:custom:l]
-s.eVar9 = [current-date:custom:l]
-s.prop12 = [tp_omniture:str_decode:{node:url}]
-s.prop16= [node:field_author]
-s.eVar17= [node:field_author]
-s.prop19 = [tp_omniture:date:{node:created:raw}]
-s.prop20 = [tp_omniture:value_or_empty:{node:field_topic}]
-s.eVar21 = [tp_omniture:value_or_empty:{node:field_topic}]
-s.eVar20 = [tp_omniture:date:{node:created:raw}]
-s.prop31 = New Article Template
-s.eVar31 = New Article Template',
+      'variables' => 's.events = event6',
     ),
   );
   $context->condition_mode = 0;

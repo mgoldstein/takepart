@@ -733,7 +733,7 @@ function article_type_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 'action',
-          'article' => 'article',
+          'article' => 0,
           'audio' => 0,
           'blog_front' => 0,
           'feed' => 0,

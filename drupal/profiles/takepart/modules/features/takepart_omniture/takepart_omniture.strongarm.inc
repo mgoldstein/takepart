@@ -251,6 +251,9 @@ function takepart_omniture_strongarm() {
       'of_the_day' => array(
         'custom_settings' => TRUE,
       ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -356,6 +359,10 @@ function takepart_omniture_strongarm() {
             'weight' => '31',
             'visible' => FALSE,
           ),
+          'inline_content' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
         ),
         'signature_progress_days_left' => array(
           'vidpop_map' => array(
@@ -388,6 +395,10 @@ function takepart_omniture_strongarm() {
           ),
           'of_the_day' => array(
             'weight' => '30',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '7',
             'visible' => FALSE,
           ),
         ),
@@ -424,6 +435,10 @@ function takepart_omniture_strongarm() {
             'weight' => '25',
             'visible' => FALSE,
           ),
+          'inline_content' => array(
+            'weight' => '8',
+            'visible' => FALSE,
+          ),
         ),
         'signature_progress_count' => array(
           'vidpop_map' => array(
@@ -456,6 +471,10 @@ function takepart_omniture_strongarm() {
           ),
           'of_the_day' => array(
             'weight' => '24',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '9',
             'visible' => FALSE,
           ),
         ),
@@ -492,6 +511,10 @@ function takepart_omniture_strongarm() {
             'weight' => '19',
             'visible' => FALSE,
           ),
+          'inline_content' => array(
+            'weight' => '6',
+            'visible' => FALSE,
+          ),
         ),
         'signature_action_label' => array(
           'vidpop_map' => array(
@@ -524,6 +547,10 @@ function takepart_omniture_strongarm() {
           ),
           'of_the_day' => array(
             'weight' => '18',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '5',
             'visible' => FALSE,
           ),
         ),
@@ -560,6 +587,10 @@ function takepart_omniture_strongarm() {
             'weight' => '20',
             'visible' => FALSE,
           ),
+          'inline_content' => array(
+            'weight' => '1',
+            'visible' => FALSE,
+          ),
         ),
         'signature_action_taken' => array(
           'vidpop_map' => array(
@@ -592,6 +623,10 @@ function takepart_omniture_strongarm() {
           ),
           'of_the_day' => array(
             'weight' => '21',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '2',
             'visible' => FALSE,
           ),
         ),
@@ -628,6 +663,10 @@ function takepart_omniture_strongarm() {
             'weight' => '23',
             'visible' => FALSE,
           ),
+          'inline_content' => array(
+            'weight' => '3',
+            'visible' => FALSE,
+          ),
         ),
         'signature_form_redirect' => array(
           'vidpop_map' => array(
@@ -660,6 +699,10 @@ function takepart_omniture_strongarm() {
           ),
           'of_the_day' => array(
             'weight' => '22',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '4',
             'visible' => FALSE,
           ),
         ),
@@ -711,6 +754,9 @@ function takepart_omniture_strongarm() {
         'custom_settings' => TRUE,
       ),
       'of_the_day' => array(
+        'custom_settings' => TRUE,
+      ),
+      'inline_content' => array(
         'custom_settings' => TRUE,
       ),
     ),
@@ -822,6 +868,10 @@ function takepart_omniture_strongarm() {
             'weight' => '29',
             'visible' => FALSE,
           ),
+          'inline_content' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'signature_progress_days_left' => array(
           'default' => array(
@@ -858,6 +908,10 @@ function takepart_omniture_strongarm() {
           ),
           'of_the_day' => array(
             'weight' => '30',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -898,6 +952,10 @@ function takepart_omniture_strongarm() {
             'weight' => '25',
             'visible' => FALSE,
           ),
+          'inline_content' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'signature_progress_count' => array(
           'default' => array(
@@ -934,6 +992,10 @@ function takepart_omniture_strongarm() {
           ),
           'of_the_day' => array(
             'weight' => '24',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -974,6 +1036,10 @@ function takepart_omniture_strongarm() {
             'weight' => '19',
             'visible' => FALSE,
           ),
+          'inline_content' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'signature_action_label' => array(
           'default' => array(
@@ -1010,6 +1076,10 @@ function takepart_omniture_strongarm() {
           ),
           'of_the_day' => array(
             'weight' => '18',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -1050,6 +1120,10 @@ function takepart_omniture_strongarm() {
             'weight' => '20',
             'visible' => FALSE,
           ),
+          'inline_content' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'signature_action_taken' => array(
           'default' => array(
@@ -1086,6 +1160,10 @@ function takepart_omniture_strongarm() {
           ),
           'of_the_day' => array(
             'weight' => '21',
+            'visible' => FALSE,
+          ),
+          'inline_content' => array(
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -1126,6 +1204,10 @@ function takepart_omniture_strongarm() {
             'weight' => '23',
             'visible' => FALSE,
           ),
+          'inline_content' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'signature_form_redirect' => array(
           'default' => array(
@@ -1164,6 +1246,10 @@ function takepart_omniture_strongarm() {
             'weight' => '22',
             'visible' => FALSE,
           ),
+          'inline_content' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
       ),
     ),
@@ -1177,6 +1263,9 @@ function takepart_omniture_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'of_the_day' => array(
+        'custom_settings' => FALSE,
+      ),
+      'inline_content' => array(
         'custom_settings' => FALSE,
       ),
     ),
@@ -1240,6 +1329,9 @@ function takepart_omniture_strongarm() {
         'custom_settings' => FALSE,
       ),
       'of_the_day' => array(
+        'custom_settings' => FALSE,
+      ),
+      'inline_content' => array(
         'custom_settings' => FALSE,
       ),
     ),
