@@ -12,7 +12,11 @@ $(function() {
 		'Embedded Content': '#article-body .drupal-embed',
 		'Related Stories': '#article-related',
 		'Next Article': '#next-article',
-		'Keyword Link': '#article-tags'
+		'Keyword Link': '#article-tags',
+		'Author Full Bio Link': '#article-author .full_bio_link',
+		'Author Byline Link': '#article-author-names',
+		'Badge': '#article-badge',
+		'Topic Box': '#topic_box'
 	};
 
 	// Only place it on internal urls
