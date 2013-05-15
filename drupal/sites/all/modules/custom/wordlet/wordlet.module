@@ -933,6 +933,7 @@ function wordlet_page_view_callback($page) {
       $fb_description = $tw->items[0]['single'];
     }
   }
+
   $fb_description = variable_get("wordlet_{$page['name']}_fb_description", $fb_description);
   if (!empty($fb_description)) {
     $metatag = array(
@@ -945,6 +946,29 @@ function wordlet_page_view_callback($page) {
     );
 
     drupal_add_html_head( $metatag, 'facebook_description');
+  }
+
+  // meta desciption
+  $meta_description = '';
+  if (isset($page['wordlets']['meta_description'])) {
+    $tw = $page['wordlets']['meta_description'];
+    if (count($tw->items)) {
+      $meta_description = $tw->items[0]['single'];
+    }
+  }
+
+  $meta_description = variable_get("wordlet_{$page['name']}_meta_description", $meta_description);
+  if (!empty($meta_description)) {
+    $metatag = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'property' => 'description',
+        'content' =>  $meta_description,
+      ),
+    );
+
+    drupal_add_html_head( $metatag, 'meta_description');
   }
 
   // Add the page CSS and JS.

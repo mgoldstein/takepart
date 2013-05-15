@@ -905,7 +905,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
         '#type' => 'container',
         '#tree' => TRUE,
         '#attributes' => array('class' => array('block-input')),
-        '#prefix' => '<div class="block-type-container">',
+        '#prefix' => '<div class="form-type-container">',
         '#suffix' => '</div>',
       );
 
