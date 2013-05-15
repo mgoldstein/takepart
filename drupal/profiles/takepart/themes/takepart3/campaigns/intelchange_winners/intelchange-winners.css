@@ -361,6 +361,13 @@
 .view-taxonomy-search-list .views-row {
   border-bottom: 1px solid rgb(219, 215, 215);
 }
+.view-taxonomy-search-list .views-field-url a {
+  -webkit-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
+}
+.view-taxonomy-search-list .views-field-type {
+  margin-bottom: 0.25em;
+}
 
 /* # Page Specific
 ================================================== */
