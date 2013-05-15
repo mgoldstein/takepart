@@ -34,7 +34,7 @@
 								?>
 								<ul>
 									<? foreach( wl('teams') as $team ): ?>
-									<li><a href="<?=$w->href?>?team=<?=$team->token?>" tabindex="-1" class='<?=($cur_team == $team->token ? "active" : "")?>'><?=$team->single(false)?></a></li>
+									<li><a href="<?=$w->href?>?team=<?=$team->token?>" class='<?=($cur_team == $team->token ? "active" : "")?>'><?=$team->single(false)?></a></li>
 									<? endforeach ?>
 								</ul>
 							<? endif ?>

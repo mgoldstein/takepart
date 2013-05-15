@@ -21,6 +21,9 @@
 		<p>
 			FB Description: <span><?=w('fb_description')?></span>
 		</p>
+		<p>
+			Meta Description: <span><?=w('meta_description')?></span>
+		</p>
 	</div>
 <? endif ?>
 

@@ -62,7 +62,7 @@ if (isset($_GET['member'])) {
         </div>
         <div class="second-sub">
             <h3 class="subheadline"><?=w('second_block_second_sub_headline')?></h3>
-            <div class="gallery">
+            <a class="gallery" href="<?=w($team->token.'_'.$team_member->token.'_gallery_link')->href?>">
                 <div class="image-wrapper" <?=wa($team->token.'_'.$team_member->token.'_gallery_image')?>>
                     <? if ( ($w = w($team->token.'_'.$team_member->token.'_gallery_image')) && $w->img_src ): ?>
                         <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
@@ -71,21 +71,21 @@ if (isset($_GET['member'])) {
                     <? endif ?>
                 </div>
                 <div class="gallery-link-wrapper" <?=wa($team->token.'_'.$team_member->token.'_gallery_link')?>>
-                    <a class="gallery-link" href="<?=w($team->token.'_'.$team_member->token.'_gallery_link')->href?>">
+                    <div class="gallery-link">
                         <? if ( $link_label = w('gallery_link_label') ): ?>
                         <?=wr($link_label, $team_member)?>
                         <? elseif( wordlest_edit_mode() ): ?>
                         <span <?=wa('gallery_link_label')?>>Add Link Text</span>
                         <? endif ?>
-                    </a>
+                    </div>
 
                     <a href="<?=w($team->token.'_'.$team_member->token.'_gallery_link')->href?>" class="gallery-link"><?=w($team->token.'_'.$team_member->token.'_gallery_link')->single(false)?></a>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="third-sub">
             <h3 class="subheadline"><?=w('second_block_third_sub_headline')?></h3>
-            <div class="entries" <?=wa($team->token.'_'.$team_member->token.'_journal_entries')?>>
+            <div class="entries" <?=wa($team->token.'_'.$team_member->token.'_journal_entries_view')?>>
                 <?=w($team->token.'_'.$team_member->token.'_journal_entries_view')?>
             </div>
         </div>
