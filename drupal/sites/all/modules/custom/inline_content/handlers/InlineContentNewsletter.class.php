@@ -43,7 +43,7 @@ class InlineContentNewsletter extends InlineContentReplacementController {
       $delta = "newsletter_campaign_{$data['target_id']}";
       $rendered = _block_render_blocks(array($delta => $block));
 
-      $content['#replacements'][$delta] = _block_get_renderable_array($rendered);
+      $content['#replacements'][] = _block_get_renderable_array($rendered);
     }
 
     return $content;
