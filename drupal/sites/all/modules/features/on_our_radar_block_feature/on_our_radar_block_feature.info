@@ -1,0 +1,9 @@
+name = On Our Radar Block Feature
+core = 7.x
+package = Blocks
+version = 7.x-1.0
+project = on_our_radar_block_feature
+dependencies[] = bean
+dependencies[] = fe_block
+features[fe_block_settings][] = bean-on-our-radar-block
+features[features_api][] = api:1
