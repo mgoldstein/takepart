@@ -1,0 +1,9 @@
+name = Of the Day Block Feature
+core = 7.x
+package = Blocks
+version = 7.x-1.0
+project = of_the_day_block_feature
+dependencies[] = bean
+dependencies[] = fe_block
+features[fe_block_settings][] = bean-of-the-day
+features[features_api][] = api:1
