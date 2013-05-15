@@ -39,6 +39,16 @@ $(function() {
 
 $body = $('body');
 
+// Nav fix for tabbing
+
+$('.main .menu ul li')
+    .bind('focusin', function() {
+        $(this).addClass('focusin');
+    })
+    .bind('focusout', function() {
+        $(this).removeClass('focusin');
+    });
+
 // Page Specific -----------------
 
 // Home
