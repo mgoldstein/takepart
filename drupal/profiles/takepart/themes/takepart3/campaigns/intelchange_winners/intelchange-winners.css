@@ -356,6 +356,12 @@
   background-position: left -36px;
 }
 
+/* Views ---------------- */
+
+.view-taxonomy-search-list .views-row {
+  border-bottom: 1px solid rgb(219, 215, 215);
+}
+
 /* # Page Specific
 ================================================== */
 
