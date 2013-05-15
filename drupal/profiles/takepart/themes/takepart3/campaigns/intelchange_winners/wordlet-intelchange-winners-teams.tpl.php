@@ -85,7 +85,7 @@ if (isset($_GET['member'])) {
         </div>
         <div class="third-sub">
             <h3 class="subheadline"><?=w('second_block_third_sub_headline')?></h3>
-            <div class="entries" <?=wa($team->token.'_'.$team_member->token.'_journal_entries')?>>
+            <div class="entries" <?=wa($team->token.'_'.$team_member->token.'_journal_entries_view')?>>
                 <?=w($team->token.'_'.$team_member->token.'_journal_entries_view')?>
             </div>
         </div>
