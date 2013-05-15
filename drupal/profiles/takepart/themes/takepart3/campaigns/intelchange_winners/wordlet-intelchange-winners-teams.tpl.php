@@ -63,13 +63,13 @@ if (isset($_GET['member'])) {
         <div class="second-sub">
             <h3 class="subheadline"><?=w('second_block_second_sub_headline')?></h3>
             <div class="gallery">
-                <div class="image-wrapper" <?=wa($team->token.'_'.$team_member->token.'_gallery_image')?>>
+                <a href='<?=w($team->token.'_'.$team_member->token.'_gallery_link')->href?>' class="image-wrapper" <?=wa($team->token.'_'.$team_member->token.'_gallery_image')?>>
                     <? if ( ($w = w($team->token.'_'.$team_member->token.'_gallery_image')) && $w->img_src ): ?>
                         <img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
                     <? elseif( wordlet_edit_mode() ): ?>
                         Add Image
                     <? endif ?>
-                </div>
+                </a>
                 <div class="gallery-link-wrapper" <?=wa($team->token.'_'.$team_member->token.'_gallery_link')?>>
                     <a class="gallery-link" href="<?=w($team->token.'_'.$team_member->token.'_gallery_link')->href?>">
                         <? if ( $link_label = w('gallery_link_label') ): ?>
