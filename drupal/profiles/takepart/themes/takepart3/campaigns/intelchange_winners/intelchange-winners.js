@@ -127,8 +127,11 @@ if ( $body.is('.page-wordlet-intelchange-winners-home') ) {
         ;
 
     // teams tabs init
-    $team_navs.first().addClass('active');
-    $team_contents.hide().first().show();
+    if ($team_navs.length){
+        var randomNavIndex = Math.floor(Math.random() * $team_navs.length);
+        $team_navs.eq(randomNavIndex).addClass('active');
+        $team_contents.hide().eq(randomNavIndex).show();
+    }
 
     // stay connected init
     $('#stay-connected').not('.interim')
