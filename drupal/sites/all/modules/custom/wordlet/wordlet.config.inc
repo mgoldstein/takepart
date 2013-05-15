@@ -565,7 +565,7 @@ function _wordlet_configuration() {
     // Intel For Change - Learn More
     'intelchange_winners_learn' => array(
       'title' => 'Intel For Change - Learn More',
-      'path' => 'intelforchange_winners/learn',
+      'path' => 'intelforchange_winners/learn-more',
       'published' => TRUE,
       'wrappers' => array('intelchange_winners', 'campaign', 'html'),
       'css' => array(
@@ -584,7 +584,7 @@ function _wordlet_configuration() {
     // Intel For Change - Stay Involved
     'intelchange_winners_involved' => array(
       'title' => 'Intel For Change - Stay Involved',
-      'path' => 'intelforchange_winners/involved',
+      'path' => 'intelforchange_winners/stay-involved',
       'published' => TRUE,
       'wrappers' => array('intelchange_winners', 'campaign', 'html'),
       'css' => array(
