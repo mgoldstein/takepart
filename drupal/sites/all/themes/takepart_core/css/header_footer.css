@@ -222,6 +222,11 @@
 	cursor: pointer;
 }
 
+#site-search .form-submit:hover {
+	background-position: 8px 9px;
+	background-image: url(../images/search_submit_hover.png); /** sprite-ref: mysprite; sprite-margin-top: 8px; sprite-margin-left: 9px; */
+}
+
 #site-header #site-participant-nav {
 	color: #333;
 	border: 1px solid #d0d0d0;
@@ -447,6 +452,11 @@
 	background-position: 4px 4px;
 	background-repeat: no-repeat;
 	background-image: url(../images/search_submit.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; sprite-margin-left: 4px; */
+}
+
+.multipage-campaign #site-search .form-submit:hover {
+	background-position: 4px 4px;
+	background-image: url(../images/search_submit_hover.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; sprite-margin-left: 4px; */
 }
 
 .multipage-campaign #site-user-nav ul {
