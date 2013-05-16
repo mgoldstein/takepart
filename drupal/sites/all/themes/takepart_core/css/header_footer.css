@@ -217,7 +217,9 @@
 	border-radius: 0;
 	background-color: #fff;
 	background-repeat: no-repeat;
-	background-image: url(../images/search_submit.png); /** sprite-ref: mysprite; */
+	background-position: 8px 9px;
+	background-image: url(../images/search_submit.png); /** sprite-ref: mysprite; sprite-margin-top: 8px; sprite-margin-left: 9px; */
+	cursor: pointer;
 }
 
 #site-header #site-participant-nav {
@@ -442,6 +444,9 @@
 .multipage-campaign #site-search .form-submit {
 	height: 24px;
 	width: 24px;
+	background-position: 4px 4px;
+	background-repeat: no-repeat;
+	background-image: url(../images/search_submit.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; sprite-margin-left: 4px; */
 }
 
 .multipage-campaign #site-user-nav ul {

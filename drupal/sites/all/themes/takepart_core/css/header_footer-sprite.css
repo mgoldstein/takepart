@@ -216,8 +216,10 @@
 	border-radius: 0;
 	background-color: #fff;
 	background-repeat: no-repeat;
+	background-position: 8px 9px;
   background-image: url('style-sprite.png');
   background-position: left -1679px;
+	cursor: pointer;
 }
 
 #site-header #site-participant-nav {
@@ -252,7 +254,7 @@
 	background-repeat: no-repeat;
 	background-position: 12px 12px;
   background-image: url('style-sprite.png');
-  background-position: left -1721px;
+  background-position: left -1712px;
 }
 
 #site-participant-nav p {
@@ -291,7 +293,7 @@
 	background-repeat: no-repeat;
 	background-position: 12px 12px;
   background-image: url('style-sprite.png');
-  background-position: left -1754px;
+  background-position: left -1745px;
 }
 
 #site-participant-nav.focusin ul,
@@ -409,32 +411,32 @@
 
 .multipage-campaign #site-follow .facebook a {
   background-image: url('style-sprite.png');
-  background-position: left -1787px;
+  background-position: left -1778px;
 }
 
 .multipage-campaign #site-follow .facebook a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1816px;
+  background-position: left -1807px;
 }
 
 .multipage-campaign #site-follow .twitter a {
   background-image: url('style-sprite.png');
-  background-position: left -1845px;
+  background-position: left -1836px;
 }
 
 .multipage-campaign #site-follow .twitter a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1874px;
+  background-position: left -1865px;
 }
 
 .multipage-campaign #site-follow .rss a {
   background-image: url('style-sprite.png');
-  background-position: left -1903px;
+  background-position: left -1894px;
 }
 
 .multipage-campaign #site-follow .rss a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1932px;
+  background-position: left -1923px;
 }
 
 .multipage-campaign #site-search {
@@ -450,6 +452,10 @@
 .multipage-campaign #site-search .form-submit {
 	height: 24px;
 	width: 24px;
+	background-position: 4px 4px;
+	background-repeat: no-repeat;
+  background-image: url('style-sprite.png');
+  background-position: left -1952px;
 }
 
 .multipage-campaign #site-user-nav ul {
@@ -541,17 +547,17 @@ Footer ------------------------------------------------------------
 
 #site-connect .twitter a {
   background-image: url('style-sprite.png');
-  background-position: left -1961px;
+  background-position: left -1981px;
 }
 
 #site-connect .email a {
   background-image: url('style-sprite.png');
-  background-position: left -1995px;
+  background-position: left -2015px;
 }
 
 #site-connect .google a {
   background-image: url('style-sprite.png');
-  background-position: left -2029px;
+  background-position: left -2049px;
 }
 
 #site-connect .pinterest a {
@@ -561,7 +567,7 @@ Footer ------------------------------------------------------------
 
 #site-connect .linkedin a {
   background-image: url('style-sprite.png');
-  background-position: left -2063px;
+  background-position: left -2083px;
 }
 
 #site-connect .youtube a {
@@ -571,7 +577,7 @@ Footer ------------------------------------------------------------
 
 #site-connect .tumblr a {
   background-image: url('style-sprite.png');
-  background-position: left -2097px;
+  background-position: left -2117px;
 }
 
 /* rolovers */
@@ -593,25 +599,25 @@ Footer ------------------------------------------------------------
 
 #site-connect .google a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2131px;
+  background-position: left -2151px;
 }
 
 #site-connect .pinterest a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2165px;
+  background-position: left -2185px;
 }
 
 #site-connect .linkedin a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2199px;
+  background-position: left -2219px;
 }
 
 #site-connect .youtube a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2233px;
+  background-position: left -2253px;
 }
 
 #site-connect .tumblr a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2267px;
+  background-position: left -2287px;
 }
