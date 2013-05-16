@@ -1720,10 +1720,9 @@
   margin-bottom: 20px;
   color: rgb(75, 54, 57);
 }
-.page-wordlet-intelchange-winners-learn #page .second-block .view-taxonomy-search-list .views-row {
-  border-bottom: 0;
+.page-wordlet-intelchange-winners-learn #page .second-block .resources {
   background: rgb(255, 255, 255);
-  padding: 40px 30px;
+  padding: 15px 20px;
 }
 .page-wordlet-intelchange-winners-learn #page .second-block .resource {
   display: block;
