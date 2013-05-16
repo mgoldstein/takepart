@@ -1209,6 +1209,12 @@ div.takepart-take-action-widget {
 	margin-bottom: 5px;
 }
 
+/* Footer */
+
+.node-type-article #article-footer {
+	clear: both;
+}
+
 /* Comments */
 
 .node-type-article .fb_comments .fb_iframe_widget,
