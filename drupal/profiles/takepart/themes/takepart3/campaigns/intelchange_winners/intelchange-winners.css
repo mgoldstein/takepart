@@ -1720,6 +1720,10 @@
   margin-bottom: 20px;
   color: rgb(75, 54, 57);
 }
+.page-wordlet-intelchange-winners-learn #page .second-block .resources {
+  background: rgb(255, 255, 255);
+  padding: 15px 20px;
+}
 .page-wordlet-intelchange-winners-learn #page .second-block .resource {
   display: block;
   padding: 32px 40px 14px 40px;
@@ -2012,7 +2016,7 @@
 .page-wordlet-intelchange-winners-teams #page .second-block .member .first-sub .blurb p {
   font-size: 14px;
   margin-bottom: 1em;
-  line-height: 1.25em;
+  line-height: 1.5em;
 }
 .page-wordlet-intelchange-winners-teams #page .second-block .member .first-sub .video {
   margin-top: 35px;
