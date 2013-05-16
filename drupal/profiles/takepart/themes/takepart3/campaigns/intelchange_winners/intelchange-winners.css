@@ -1,6 +1,10 @@
 /* # General
 ================================================== */
 
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 /* campaign specific ---------------- */
 
 .main {
@@ -361,6 +365,13 @@
 .view-taxonomy-search-list .views-row {
   border-bottom: 1px solid rgb(219, 215, 215);
 }
+.view-taxonomy-search-list .views-field-url a {
+  -webkit-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
+}
+.view-taxonomy-search-list .views-field-type {
+  margin-bottom: 0.25em;
+}
 
 /* # Page Specific
 ================================================== */
@@ -677,7 +688,7 @@
 .page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-content .mentors-wrapper .mentor .company,
 .page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper .teams-content .mentors-wrapper .mentor .title {
   font-size: 12px;
-  color: rgb(149, 149, 149);
+  color: #777;
   display: block;
   line-height: 1.25em;
 }
@@ -1713,6 +1724,10 @@
   margin-bottom: 20px;
   color: rgb(75, 54, 57);
 }
+.page-wordlet-intelchange-winners-learn #page .second-block .resources {
+  background: rgb(255, 255, 255);
+  padding: 15px 20px;
+}
 .page-wordlet-intelchange-winners-learn #page .second-block .resource {
   display: block;
   padding: 32px 40px 14px 40px;
@@ -1957,7 +1972,7 @@
 .page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member .company {
   font-size: 12px;
   color: rgb(149, 174, 194);
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 .page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member.active .title,
 .page-wordlet-intelchange-winners-teams #page .first-block .team-menu .team .team-members .member.active .company {
@@ -2005,7 +2020,7 @@
 .page-wordlet-intelchange-winners-teams #page .second-block .member .first-sub .blurb p {
   font-size: 14px;
   margin-bottom: 1em;
-  line-height: 1.25em;
+  line-height: 1.5em;
 }
 .page-wordlet-intelchange-winners-teams #page .second-block .member .first-sub .video {
   margin-top: 35px;
