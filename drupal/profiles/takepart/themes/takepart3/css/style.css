@@ -1541,6 +1541,19 @@ body.page-search #right-rail h2 {
     margin:0;
 }
 
+.multipage-campaign li.dhtml-menu > ul.menu {
+    position: absolute;
+    z-index: 1000;
+    margin-left: -25px;
+}
+
+.multipage-campaign li.dhtml-menu > ul.menu > li.dhtml-menu {
+    float: none;
+    border-right: 0;
+    border-bottom: 1px dotted #4C4C4C;
+    padding: 3px 25px;
+}
+
 #bottom-follow {
     display: block;
     padding-top:4px;
