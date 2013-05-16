@@ -428,9 +428,10 @@
 	}
 
 	/* inline content */
-	.inline-content img {
+	.node-type-article .inline-content img {
 		max-width: none !important;
 	}
+
 
 	.node-type-article #article-content #article-image {
 		float: none;
@@ -441,5 +442,15 @@
 
 	.node-type-article #article-image img {
 		margin: auto;
+	}
+}
+
+
+@media all and (max-width: 320px) {
+	.node-type-article .inline-content.horizontal {
+		float: left;
+		display: table;
+		width: 1px;
+		margin-right: 1em;
 	}
 }
