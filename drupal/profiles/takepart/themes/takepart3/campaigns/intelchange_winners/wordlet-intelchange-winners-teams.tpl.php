@@ -1,50 +1,30 @@
-<?
-if (isset($_GET['team'])) {
-    $cur_team = $_GET['team'];
-} else {
-    $cur_team = w('teams')->token; //first team token
-}
-if (isset($_GET['member'])) {
-    $cur_member = $_GET['member'];
-} else {
-    $cur_member = w($cur_team.'_team')->token; //first member token of cur_team
-}
-?>
 <div class="first-block">
     <div class="team-menu">
-    <?
-   $teams = wl('teams');
-    ?>
-    <? foreach ( $teams as $i => $team ): ?>
-        <?
-        $active_team = $cur_team == $team->token;
-        ?>
-        <div class="team<?=($active_team?' active':'')?>">
-            <? $team_members = wl($team->token.'_team'); ?>
-            <a class="team-name" href='<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>'><?=$team->single(false)?></a>
-            <div class="team-members">
-            <? foreach ( $team_members as $i => $team_member ): ?>
-                <?
-                $active_member = $cur_member == $team_member->token;
-                ?>
-                <a href="<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>&member=<?=$team_member->token?>" class="member <?=$team_member->token?><?=($active_member?' active':'')?>">
-                    <div class="inner-wrapper">
-                        <span class="name"><?=strtok($team_member->single(false), " ")?></span>
-                        <span class="title"><?=w($team_member->token.'_member_title_label')?></span>
-                        <span class="company"><?=w($team->token.'_'.$team_member->token.'_company')?></span>
+    <? if ( $teams = wl('teams') ): ?>
+        <? foreach ( $teams as $i => $team ): ?>
+            <div class="team<?=( ($cur_team == $team->token)?' active':'')?>">
+                <? if ( $team_members = wl($team->token.'_team') ): ?>
+                    <a class="team-name" href='<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>'><?=$team->single(false)?></a>
+                    <div class="team-members">
+                    <? foreach ( $team_members as $i => $team_member ): ?>
+                        <a href="<?=wu('intelchange_winners_teams')?>?team=<?=$team->token?>&member=<?=$team_member->token?>" class="member <?=$team_member->token?><?=( ($cur_member == $team_member->token) ?' active':'')?>">
+                            <div class="inner-wrapper">
+                                <span class="name"><?=strtok($team_member->single(false), " ")?></span>
+                                <span class="title"><?=w($team_member->token.'_member_title_label')?></span>
+                                <span class="company"><?=w($team->token.'_'.$team_member->token.'_company')?></span>
+                            </div>
+                        </a>
+                    <? endforeach ?>
                     </div>
-                </a>
-            <? endforeach ?>
+                <? endif ?>
             </div>
-        </div>
-    <? endforeach ?>
+        <? endforeach ?>
+    <? endif ?>
     </div>
 </div>
 <div class="second-block">
-    <?
-    $team = wf('teams', 'token', $cur_team);
-    $team_member = wf($team->token.'_team', 'token', $cur_member);
-    ?>
+    <? if ( ($team = wf('teams', 'token', $cur_team))
+        && ($team_member = wf($team->token.'_team', 'token', $cur_member)) ): ?>
     <div class="member" <?=wa($team->token.'_team')?>>
         <div class="first-sub">
             <div class="portrait">
@@ -73,9 +53,9 @@ if (isset($_GET['member'])) {
                 <div class="gallery-link-wrapper" <?=wa($team->token.'_'.$team_member->token.'_gallery_link')?>>
                     <div class="gallery-link">
                         <? if ( $link_label = w('gallery_link_label') ): ?>
-                        <?=wr($link_label, $team_member)?>
+                            <?=wr($link_label, $team_member)?>
                         <? elseif( wordlest_edit_mode() ): ?>
-                        <span <?=wa('gallery_link_label')?>>Add Link Text</span>
+                            <span <?=wa('gallery_link_label')?>>Add Link Text</span>
                         <? endif ?>
                     </div>
 
@@ -90,4 +70,5 @@ if (isset($_GET['member'])) {
             </div>
         </div>
     </div>
+    <? endif ?>
 </div>
