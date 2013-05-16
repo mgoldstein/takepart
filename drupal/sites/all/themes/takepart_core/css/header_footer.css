@@ -480,6 +480,11 @@ Footer ------------------------------------------------------------
 	line-height: 1.5;
 }
 
+#site-footer ul,
+#site-footer li {
+	list-style: none;
+}
+
 #site-footer a {
 	color: #555;
 	text-decoration: none;
