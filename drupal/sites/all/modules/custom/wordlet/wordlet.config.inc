@@ -418,138 +418,249 @@ function _wordlet_configuration() {
     ),
 
     // ------------------------------------------
-    // Intel For Change Campaign ----------------
+    // Intel For Change (Finalists Phase) Campaign ----------------
     // ------------------------------------------
-    'intelchange_campaign' => array(
+    'intelchange_finalists_campaign' => array(
       'title' => 'Intel For Change Campaign',
     ),
 
     // Intel For Change - Home
-    'intelchange_home' => array(
+    'intelchange_finalists_home' => array(
       'title' => 'Intel For Change - Home',
       'path' => 'intelforchange',
       'published' => TRUE,
-      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'wrappers' => array('intelchange_finalists', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
         'css/normalize_cms.css',
-        'campaigns/intelchange/intelchange.css',
+        'campaigns/intelchange_finalists/intelchange-finalists.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
-        'campaigns/intelchange/intelchange.js',
+        'campaigns/intelchange_finalists/intelchange-finalists.js',
       ),
-      'load' => array('site', 'intelchange_campaign'),
+      'load' => array('site', 'intelchange_finalists_campaign'),
     ),
 
     // Intel For Change - About
-    'intelchange_about' => array(
+    'intelchange_finalists_about' => array(
       'title' => 'Intel For Change - About',
       'path' => 'intelforchange/about',
       'published' => TRUE,
-      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'wrappers' => array('intelchange_finalists', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
         'css/normalize_cms.css',
-        'campaigns/intelchange/intelchange.css',
+        'campaigns/intelchange_finalists/intelchange-finalists.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
-        'campaigns/intelchange/intelchange.js',
+        'campaigns/intelchange_finalists/intelchange-finalists.js',
       ),
-      'load' => array('site', 'intelchange_campaign'),
+      'load' => array('site', 'intelchange_finalists_campaign'),
     ),
 
     // Intel For Change - Contest
-    'intelchange_contest' => array(
+    'intelchange_finalists_contest' => array(
       'title' => 'Intel For Change - Contest',
       'path' => 'intelforchange/contest',
       'published' => TRUE,
-      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'wrappers' => array('intelchange_finalists', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
         'css/normalize_cms.css',
-        'campaigns/intelchange/intelchange.css',
+        'campaigns/intelchange_finalists/intelchange-finalists.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
-        'campaigns/intelchange/intelchange.js',
+        'campaigns/intelchange_finalists/intelchange-finalists.js',
       ),
-      'load' => array('site', 'intelchange_campaign'),
-    ),
-
-    // Intel For Change - Contest Entry
-    'intelchange_contest_enter' => array(
-      'title' => 'Intel For Change - Contest Entry',
-      'path' => 'intelforchange/contest/enter',
-      'published' => true,
-      'wrappers' => array('intelchange', 'campaign', 'html'),
-      'css' => array(
-        'campaigns/reset.css',
-        'css/normalize_cms.css',
-        'campaigns/intelchange/intelchange.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/intelchange/intelchange.js',
-      ),
-      'load' => array('site', 'intelchange_campaign'),
+      'load' => array('site', 'intelchange_finalists_campaign'),
     ),
 
     // Intel For Change - Vote
-    'intelchange_vote' => array(
+    'intelchange_finalists_vote' => array(
       'title' => 'Intel For Change - Vote',
       'path' => 'intelforchange/contest/vote',
       'published' => TRUE,
-      'wrappers' => array('intelchange', 'campaign', 'html'),
+      'wrappers' => array('intelchange_finalists', 'campaign', 'html'),
+      'css' => array(
+        'campaigns/reset.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange_finalists/intelchange-finalists.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange_finalists/intelchange-finalists.js',
+      ),
+      'load' => array('site', 'intelchange_finalists_campaign'),
+    ),
+
+    // ------------------------------------------
+    // Intel For Change (Winners Phase) Campaign ----------------
+    // ------------------------------------------
+    'intelchange_winners_campaign' => array(
+      'title' => 'Intel For Change Campaign',
+    ),
+
+    // Intel For Change - Home
+    'intelchange_winners_home' => array(
+      'title' => 'Intel For Change - Home',
+      'path' => 'intelforchange_winners',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_winners', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
         'css/slim-header.css',
         'css/normalize_cms.css',
-        'campaigns/intelchange/intelchange.css',
+        'campaigns/intelchange_winners/intelchange-winners.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
-        'campaigns/intelchange/intelchange.js',
+        'campaigns/intelchange_winners/intelchange-winners.js',
       ),
-      'load' => array('site', 'intelchange_campaign'),
+      'load' => array('site', 'intelchange_winners_campaign'),
     ),
 
-    // Intel For Change - Take Action
-    'intelchange_action' => array(
-      'title' => 'Intel For Change - Take Action',
-      'path' => 'intelforchange/action',
-      'published' => true,
-      'wrappers' => array('intelchange', 'campaign', 'html'),
+    // Intel For Change - About
+    'intelchange_winners_about' => array(
+      'title' => 'Intel For Change - About',
+      'path' => 'intelforchange_winners/about',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_winners', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/reset.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange_winners/intelchange-winners.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange_winners/intelchange-winners.js',
+      ),
+      'load' => array('site', 'intelchange_winners_campaign'),
+    ),
+
+    // Intel For Change - Learn More
+    'intelchange_winners_learn' => array(
+      'title' => 'Intel For Change - Learn More',
+      'path' => 'intelforchange_winners/learn-more',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_winners', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/reset.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange_winners/intelchange-winners.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange_winners/intelchange-winners.js',
+      ),
+      'load' => array('site', 'intelchange_winners_campaign'),
+    ),
+
+    // Intel For Change - Stay Involved
+    'intelchange_winners_involved' => array(
+      'title' => 'Intel For Change - Stay Involved',
+      'path' => 'intelforchange_winners/stay-involved',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_winners', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/reset.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange_winners/intelchange-winners.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange_winners/intelchange-winners.js',
+      ),
+      'load' => array('site', 'intelchange_winners_campaign'),
+    ),
+
+    // Intel For Change - Contest
+    'intelchange_winners_teams' => array(
+      'title' => 'Intel For Change - Teams',
+      'path' => 'intelforchange_winners/teams',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_winners', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
         'css/normalize_cms.css',
-        'campaigns/intelchange/intelchange.css',
+        'campaigns/intelchange_winners/intelchange-winners.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
-        'campaigns/intelchange/intelchange.js',
+        'campaigns/intelchange_winners/intelchange-winners.js',
       ),
-      'load' => array('site', 'intelchange_campaign'),
+      'load' => array('site', 'intelchange_winners_campaign'),
     ),
 
-    // Intel For Change - Resources
-    'intelchange_resources' => array(
-      'title' => 'Intel For Change - Resources',
-      'path' => 'intelforchange/resources',
-      'published' => true,
-      'wrappers' => array('intelchange', 'campaign', 'html'),
+    // ------------------------------------------
+    // Intel For Change (Interim Phase) Campaign ----------------
+    // ------------------------------------------
+    'intelchange_interim_campaign' => array(
+      'title' => 'Intel For Change Campaign',
+    ),
+
+    // Intel For Change - Home
+    'intelchange_interim_home' => array(
+      'title' => 'Intel For Change - Home',
+      'path' => 'intelforchange_interim',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_interim', 'campaign', 'html'),
       'css' => array(
         'campaigns/reset.css',
+        'css/slim-header.css',
         'css/normalize_cms.css',
-        'campaigns/intelchange/intelchange.css',
+        'campaigns/intelchange_interim/intelchange-interim.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
-        'campaigns/intelchange/intelchange.js',
+        'campaigns/intelchange_interim/intelchange-interim.js',
       ),
-      'load' => array('site', 'intelchange_campaign'),
+      'load' => array('site', 'intelchange_interim_campaign'),
     ),
+
+    // Intel For Change - About
+    'intelchange_interim_about' => array(
+      'title' => 'Intel For Change - About',
+      'path' => 'intelforchange_interim/about',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_interim', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'campaigns/reset.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange_interim/intelchange-interim.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange_interim/intelchange-interim.js',
+      ),
+      'load' => array('site', 'intelchange_interim_campaign'),
+    ),
+
+    // Intel For Change - Contest
+    'intelchange_interim_contest' => array(
+      'title' => 'Intel For Change - Contest',
+      'path' => 'intelforchange_interim/contest',
+      'published' => TRUE,
+      'wrappers' => array('intelchange_interim', 'campaign', 'html'),
+      'css' => array(
+        'campaigns/reset.css',
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/intelchange_interim/intelchange-interim.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/intelchange_interim/intelchange-interim.js',
+      ),
+      'load' => array('site', 'intelchange_interim_campaign'),
+    )
+
 
   );
 }

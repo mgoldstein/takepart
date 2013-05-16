@@ -9,7 +9,7 @@
 				<? if ( $w = w('header_image') ): ?>
 					<h1 <?=wa('header_image')?>>
 						<span><?=$w->single?></span>
-						<a href="<?=wu('intelchange_home')?>"><img src="<?=$w->img_src?>" alt="intel for change logo" /></a>
+						<a href="<?=wu('intelchange_winners_home')?>"><img src="<?=$w->img_src?>" alt="intel for change logo" /></a>
 					</h1>
 				<? endif ?>
 				<p class="presented" <?=wa('presented_by')?>>
@@ -22,12 +22,28 @@
 			<nav class="menu">
 				<ul <?=wa('menu')?>>
 					<? foreach( wl('menu') as $w ): ?>
-						<li><a href="<?=$w->href?>" class="<?=ws($w->href)?>"><?=$w->single(false)?></a></li>
+						<li>
+							<a href="<?=$w->href?>" class="<?=ws($w->href)?>"><?=$w->single(false)?></a>
+							<? if ($w->active): ?>
+								<?
+								if ( ws($w->href) == 'active' && isset($_GET['team'])) {
+								    $cur_team = $_GET['team'];
+								} elseif(ws($w->href) == 'active') {
+								    $cur_team = w('teams')->token; //first team token
+								}
+								?>
+								<ul>
+									<? foreach( wl('teams') as $team ): ?>
+									<li><a href="<?=$w->href?>?team=<?=$team->token?>" class='<?=($cur_team == $team->token ? "active" : "")?>'><?=$team->single(false)?></a></li>
+									<? endforeach ?>
+								</ul>
+							<? endif ?>
+						</li>
 					<? endforeach ?>
 				</ul>
 				<script type="text/javascript">
 					var addthis_share = {
-					    url: "<?=wu('intelchange_home')?>"
+					    url: "<?=wu('intelchange_winners_home')?>"
 					}
 				</script>
 				<div class="addThis">

@@ -55,16 +55,16 @@
             <?=w('vote_desc')?>
         </div>
         <p class="important">
-            <a href="<?=wu('intelchange_vote')?>"><?=w('view_finalists_cta')?></a>
+            <a href="<?=wu('intelchange_finalists_vote')?>"><?=w('view_finalists_cta')?></a>
         </p>
-        
+
         <div class='more-wrapper' <?=wa('contest_more')?>>
             <div class="more">
                 <? $w = w('contest_more') ?>
                 <? if ( $w->multi(false) ): ?>
                     <?=$w->multi(false)?>
                 <? elseif($w->single(false)): ?>
-                    <p><a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a></p>
+                    <p><a href="<?=wu('intelchange_finalists_contest')?>"><?=$w->single(false)?></a></p>
                 <? elseif(wordlet_edit_mode()): ?>
                     Add Link
                 <?endif?>
@@ -88,7 +88,7 @@
                                     <div class="blurb"><?=$w->multi(false) ?></div>
                                 </div>
                                 <p class="important">
-                                    <a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
+                                    <a href="<?=wu('intelchange_finalists_vote')?>#<?=$w->token?>"><?=w('read_more') ?></a>
                                 </p>
                             </li>
                         <? endforeach ?>
@@ -125,7 +125,7 @@
     </div>
 
     <div class="partners-block">
-        <a href="<?=wu('intelchange_about')?>#about-partners">
+        <a href="<?=wu('intelchange_finalists_about')?>#about-partners">
             <h4><?=w('partners_header')?></h4>
             <ul class="partners-list" <?=wa('partners_list')?>>
                 <? foreach ( wl('partners_list') as $w ): ?>
