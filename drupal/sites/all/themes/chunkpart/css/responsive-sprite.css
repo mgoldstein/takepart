@@ -431,11 +431,15 @@
 	.inline-content img {
 		max-width: none !important;
 	}
-}
 
-@media all and (max-width: 320px) {
 	.node-type-article #article-content #article-image {
 		float: none;
 		margin-right: 0;
+		display: block;
+		width: auto;
+	}
+
+	.node-type-article #article-image img {
+		margin: auto;
 	}
 }
