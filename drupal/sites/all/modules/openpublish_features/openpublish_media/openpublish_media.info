@@ -30,6 +30,7 @@ features[field][] = node-openpublish_photo_gallery-field_tab_action_override
 features[field][] = node-openpublish_video-body
 features[field][] = node-openpublish_video-field_author
 features[field][] = node-openpublish_video-field_html_title
+features[field][] = node-openpublish_video-field_tab_action_override
 features[field][] = node-openpublish_video-field_video_display_mode
 features[field][] = node-openpublish_video-field_video_embedded
 features[node][] = openpublish_photo

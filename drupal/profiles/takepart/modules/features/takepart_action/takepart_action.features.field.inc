@@ -1104,7 +1104,7 @@ function takepart_action_field_default_fields() {
         'active' => 1,
         'module' => 'image',
         'settings' => array(
-          'preview_image_style' => 'action_header_image',
+          'preview_image_style' => '',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
@@ -4372,9 +4372,12 @@ function takepart_action_field_default_fields() {
         ),
         'inline_content' => array(
           'label' => 'hidden',
-          'module' => 'styles',
-          'settings' => array(),
-          'type' => 'styles_media_inline_thumbnail',
+          'module' => 'media_image_formatter',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => 'inline_thumbnail',
+          ),
+          'type' => 'image',
           'weight' => '0',
         ),
         'medium_preview' => array(

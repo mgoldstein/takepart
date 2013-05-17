@@ -21,7 +21,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Deprectated',
-    'weight' => '20',
+    'weight' => '21',
     'children' => array(
       0 => 'field_article_action',
       1 => 'field_display_tag',
@@ -33,7 +33,6 @@ function takepart_campaign_field_group_info() {
       7 => 'field_suggest_actions',
       8 => 'field_multi_page_campaign',
       9 => 'field_tp_campaign_show_title',
-      10 => 'field_related_stories',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
