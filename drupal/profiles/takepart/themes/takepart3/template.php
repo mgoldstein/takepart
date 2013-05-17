@@ -26,6 +26,23 @@ function wordlet_patt_snap_page_alter($page) {
     return '';
 }
 
+function wordlet_page_intelchange_winners_teams_preprocess(&$variables) {
+    if (isset($_GET['team'])) {
+        $cur_team = $_GET['team'];
+    } else {
+        $cur_team = w('teams')->token; //first team token
+    }
+
+    if (isset($_GET['member'])) {
+        $cur_member = $_GET['member'];
+    } else {
+        $cur_member = w($cur_team.'_team')->token; //first member token of cur_team
+    }
+
+    $variables['cur_team'] = $cur_team;
+    $variables['cur_member'] = $cur_member;
+}
+
 function wordlet_intelchange_vote_page_alter($page) {
     if (isset($_GET['finalist'])) {
         $w = wordlet_find('finalists', 'token', $_GET['finalist']);

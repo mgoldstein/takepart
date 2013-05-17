@@ -324,6 +324,7 @@ function wordlet_theme() {
   return $hooks;
 }
 
+/* I don't think this is actually used... tricky JP. */
 function wordlet_preprocess_page_template(&$variables) {
   _tp3_fill_template_vars($variables);
   $variables['header'] = theme('takepart3_header', $variables);
@@ -384,6 +385,12 @@ function wordlet_preprocess_page(&$variables) {
   if ($config !== FALSE) {
     $variables['theme_hook_suggestions'][] = "wordlet_{$config['name']}";
     if ( isset($config['template']) )  $variables['theme_hook_suggestions'][] = "wordlet_{$config['template']}";
+  }
+
+  $page = wordlet_active_page();
+  $preprocess_hook = "wordlet_page_{$page['name']}_preprocess";
+  if (function_exists($preprocess_hook)) {
+    call_user_func_array($preprocess_hook, array(&$variables));
   }
 }
 
