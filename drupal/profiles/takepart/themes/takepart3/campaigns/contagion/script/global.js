@@ -382,8 +382,7 @@ if(isIPad) {
 	$('a.timelineOpen').html('Learn how pandemics have changed the world');
 }
 else {
-
-//Footer Timeline Functions	
+	//Footer Timeline Functions	
 	//Activate timeline
 	$('.timelineOpen').click(function(){
 		if(timelineOpen == false) {
@@ -411,6 +410,9 @@ else {
 	});	
 }
 
+//Tabs Init
+$('ul.tabs').tabs('div.panes > div', { history: false });
+
 });
 
 //Activate Moving Boxes			
@@ -423,9 +425,5 @@ $(document).ready(function(){
 		$(this).children('.menu').hide();
 	});		
 });
-
-//Tabs Init
-$('ul.tabs').tabs('div.panes > div', { history: false });
-
 
 })(window, jQuery);

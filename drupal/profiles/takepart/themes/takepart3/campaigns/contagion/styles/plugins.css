@@ -193,12 +193,13 @@ ___________________ */
 
 Tabs
 ___________________ */
-ul.tabs {
+.page-wordlet ul.tabs {
 	list-style: none;
 	margin: 0 !important;
 	padding: 0;
 	overflow: auto;
 	zoom: 1;
+	display: block;
 }
 
 /* single tab */

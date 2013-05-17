@@ -138,7 +138,11 @@ a.linkStyle01:hover {
 	background: #999999;
 }
 
-
+body:hover #toolbar,
+body:hover .wordlet_edit_mode {
+	position: relative;
+	z-index: 1000;
+}
 
 /* New Nav CSS */
 .global-nav-container {
@@ -167,6 +171,8 @@ body {
 	position: fixed;
 	z-index: 10;
 	background: #d9e8ef;
+	top: 0;
+	left: 0;
 }
 
 #header-wrapper {
@@ -883,7 +889,7 @@ h2.tower_head {
 	line-height: 12px;
 	width: 248px;
 }
-.alt .partnerContent .partnerInfo {color: #fff;		}
+.alt .partnerContent .partnerInfo * {color: #fff;		}
 .partnerInfo h2 {font: 20px 'BebasNeueRegular';}
 
 
