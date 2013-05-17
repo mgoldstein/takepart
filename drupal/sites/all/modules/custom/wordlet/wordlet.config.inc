@@ -151,14 +151,18 @@ function _wordlet_configuration() {
       'title' => 'Contagion - Home',
       'path' => 'contagion-wordlet',
       'published' => TRUE,
-      'wrappers' => array('campaign', 'html'),
+      'wrappers' => array('contagion', 'campaign', 'html'),
       'css' => array(
         'css/slim-header.css',
         'css/normalize_cms.css',
-        'campaigns/contagion/contagion.css',
+        'campaigns/contagion/styles/main.css',
+        'campaigns/contagion/styles/plugins.css',
       ),
       'js' => array(
-        'campaigns/contagion/contagion.js'
+        'campaigns/contagion/script/jquery.movingboxes.min.js',
+        'campaigns/contagion/script/jquery.tools.min.js',
+        'campaigns/contagion/script/jquery.zrssfeed.min.js',
+        'campaigns/contagion/script/global.js',
       ),
       'load' => array('site', 'contagion_campaign'),
     ),
