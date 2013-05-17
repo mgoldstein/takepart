@@ -46,11 +46,18 @@
         <div class="form-blurb cms">
             <?=w('form_blurb')?>
         </div>
-        <? if ( $w = w('contest_more') ): ?>
-            <p class="more">
-                <a href="<?=$w->href?>"><?=$w->single?></a>
-            </p>
-        <? endif ?>
+        <div class='more-wrapper' <?=wa('contest_more')?>>
+            <div class="more">
+                <? $w = w('contest_more') ?>
+                <? if ( $w->multi(false) ): ?>
+                    <?=$w->multi(false)?>
+                <? elseif($w->single(false)): ?>
+                    <p><a href="<?=wu('intelchange_finalists_contest')?>"><?=$w->single(false)?></a></p>
+                <? elseif(wordlet_edit_mode()): ?>
+                    Add Link
+                <?endif?>
+            </div>
+        </div>
     </div>
 
     <div class="form_wrapper">
