@@ -197,11 +197,14 @@ function takepart_search_default_search_api_server() {
     "description" : "Used for TakePart SOLR on production.",
     "class" : "search_api_solr_service",
     "options" : {
-      "host" : "localhost",
+      "host" : "qa-solr.dev.takepart.com",
       "port" : "8080",
       "path" : "\\/solr",
       "http_user" : "",
-      "http_pass" : ""
+      "http_pass" : "",
+      "excerpt" : 0,
+      "retrieve_data" : 0,
+      "highlight_data" : 0
     },
     "enabled" : "1",
     "rdf_mapping" : []

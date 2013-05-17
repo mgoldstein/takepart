@@ -1111,9 +1111,12 @@ function takepart_video_field_default_fields() {
         ),
         'inline_content' => array(
           'label' => 'hidden',
-          'module' => 'styles',
-          'settings' => array(),
-          'type' => 'styles_media_inline_thumbnail',
+          'module' => 'media_image_formatter',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => 'inline_thumbnail',
+          ),
+          'type' => 'image',
           'weight' => '0',
         ),
         'of_the_day' => array(
