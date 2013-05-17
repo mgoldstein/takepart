@@ -52,7 +52,7 @@
                 <? if ( $w->multi(false) ): ?>
                     <?=$w->multi(false)?>
                 <? elseif($w->single(false)): ?>
-                    <p><a href="<?=wu('intelchange_finalists_contest')?>"><?=$w->single(false)?></a></p>
+                    <p><a href="<?=wu('intelchange_interim_contest')?>"><?=$w->single(false)?></a></p>
                 <? elseif(wordlet_edit_mode()): ?>
                     Add Link
                 <?endif?>
