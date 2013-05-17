@@ -47,9 +47,11 @@ function openpublish_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
+          'module' => 'inline_content',
+          'settings' => array(
+            'source' => 'field_inline_replacements',
+          ),
+          'type' => 'text_with_inline_content',
           'weight' => '7',
         ),
         'full' => array(
@@ -401,6 +403,99 @@ function openpublish_article_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-openpublish_article-field_inline_replacements'.
+  $fields['node-openpublish_article-field_inline_replacements'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_inline_replacements',
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(),
+        ),
+        'target_type' => 'inline_content',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_article',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_inline_replacements',
+      'label' => 'Inline Replacements',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'inline_entity_form',
+        'settings' => array(
+          'fields' => array(),
+          'type_settings' => array(
+            'delete_references' => 1,
+          ),
+        ),
+        'type' => 'inline_entity_form',
+        'weight' => '10',
+      ),
+    ),
+  );
+
   // Exported field: 'node-openpublish_article-field_main_image_format'.
   $fields['node-openpublish_article-field_main_image_format'] = array(
     'field_config' => array(
@@ -432,13 +527,13 @@ function openpublish_article_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '25',
+          'weight' => '26',
         ),
         'inline_content' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -579,7 +674,7 @@ function openpublish_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -783,7 +878,7 @@ function openpublish_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '16',
+        'weight' => '17',
       ),
     ),
   );
@@ -888,6 +983,7 @@ function openpublish_article_field_default_fields() {
   t('Author(s)');
   t('Body');
   t('HTML Title Tag');
+  t('Inline Replacements');
   t('Main Image');
   t('Main Image Format');
   t('Related Stories');
