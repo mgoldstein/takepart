@@ -427,7 +427,7 @@ function _wordlet_configuration() {
     // Intel For Change - Home
     'intelchange_finalists_home' => array(
       'title' => 'Intel For Change - Home',
-      'path' => 'intelforchange',
+      'path' => 'intelforchange_finalists',
       'published' => TRUE,
       'wrappers' => array('intelchange_finalists', 'campaign', 'html'),
       'css' => array(
@@ -445,7 +445,7 @@ function _wordlet_configuration() {
     // Intel For Change - About
     'intelchange_finalists_about' => array(
       'title' => 'Intel For Change - About',
-      'path' => 'intelforchange/about',
+      'path' => 'intelforchange_finalists/about',
       'published' => TRUE,
       'wrappers' => array('intelchange_finalists', 'campaign', 'html'),
       'css' => array(
@@ -463,7 +463,7 @@ function _wordlet_configuration() {
     // Intel For Change - Contest
     'intelchange_finalists_contest' => array(
       'title' => 'Intel For Change - Contest',
-      'path' => 'intelforchange/contest',
+      'path' => 'intelforchange_finalists/contest',
       'published' => TRUE,
       'wrappers' => array('intelchange_finalists', 'campaign', 'html'),
       'css' => array(
@@ -481,7 +481,7 @@ function _wordlet_configuration() {
     // Intel For Change - Vote
     'intelchange_finalists_vote' => array(
       'title' => 'Intel For Change - Vote',
-      'path' => 'intelforchange/contest/vote',
+      'path' => 'intelforchange_finalists/contest/vote',
       'published' => TRUE,
       'wrappers' => array('intelchange_finalists', 'campaign', 'html'),
       'css' => array(
@@ -607,7 +607,7 @@ function _wordlet_configuration() {
     // Intel For Change - Home
     'intelchange_interim_home' => array(
       'title' => 'Intel For Change - Home',
-      'path' => 'intelforchange_interim',
+      'path' => 'intelforchange',
       'published' => TRUE,
       'wrappers' => array('intelchange_interim', 'campaign', 'html'),
       'css' => array(
@@ -626,7 +626,7 @@ function _wordlet_configuration() {
     // Intel For Change - About
     'intelchange_interim_about' => array(
       'title' => 'Intel For Change - About',
-      'path' => 'intelforchange_interim/about',
+      'path' => 'intelforchange/about',
       'published' => TRUE,
       'wrappers' => array('intelchange_interim', 'campaign', 'html'),
       'css' => array(
@@ -645,7 +645,7 @@ function _wordlet_configuration() {
     // Intel For Change - Contest
     'intelchange_interim_contest' => array(
       'title' => 'Intel For Change - Contest',
-      'path' => 'intelforchange_interim/contest',
+      'path' => 'intelforchange/contest',
       'published' => TRUE,
       'wrappers' => array('intelchange_interim', 'campaign', 'html'),
       'css' => array(
