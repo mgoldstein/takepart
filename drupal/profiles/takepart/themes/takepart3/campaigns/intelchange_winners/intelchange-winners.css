@@ -1841,7 +1841,7 @@ body {
   background-color: rgb(111, 94, 97);
 }
 .page-wordlet-intelchange-winners-involved #page .third-block {
-  padding: 41px 0 41px 0;
+  padding: 41px 0 35px 0;
 }
 .page-wordlet-intelchange-winners-involved #page .third-block .headline {
   font-size: 42px;
@@ -1852,6 +1852,14 @@ body {
 .page-wordlet-intelchange-winners-involved #page .third-block .subheadline {
   font-size: 32px;
   color: rgb(255, 255, 255);
+  margin-bottom: 0.5em;
+}
+.page-wordlet-intelchange-winners-involved #page .third-block .footnote {
+  color: #fff;
+  line-height: 1.25em;
+  font-size: 13px;
+  width: 75%;
+  margin: 0 auto;
 }
 
 /* Teams ---------------- */
