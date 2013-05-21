@@ -270,6 +270,12 @@ body #at16pt {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ececec',GradientType=0 );
 }
 
+.newsletter_social .message {
+	margin-bottom: 2em;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
 .newsletter_social .tos-link {
 	clear: both;
 	padding: 10px 0;
@@ -1021,6 +1027,14 @@ div.takepart-take-action-widget {
 .node-type-article #article-body {
 	font-size: 14px;
 	color: #333;
+}
+
+.node-type-article #article-body a {
+	text-decoration: none;
+}
+
+.node-type-article #article-body a:hover {
+	text-decoration: underline;
 }
 
 .node-type-article #article-body div,
