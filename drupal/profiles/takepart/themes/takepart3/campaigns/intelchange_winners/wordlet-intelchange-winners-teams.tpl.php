@@ -32,7 +32,7 @@
             </div>
             <h2 class='headline'>
                 <? if (w($team_member->token.'_member_title_label')->single): ?>
-                    <span class='member-title' <?=wa($team_member->token.'_member_title_label')><?=w($team_member->token.'_member_title_label')->single(false)?> </span>
+                    <span class='member-title' <?=wa($team_member->token.'_member_title_label')?>><?=w($team_member->token.'_member_title_label')->single(false)?> </span>
                 <?endif?>
                 <?=$team_member->single(false)?>
             </h2>
