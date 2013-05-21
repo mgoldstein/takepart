@@ -31,8 +31,16 @@
                 <img src="<?=$team_member->img_src?>" alt="<?=$team_member->single(false)?>">
             </div>
             <h2 class='headline'>
-                <span class='member-title'><?=w($team_member->token.'_member_title_label')?> </span>
-                <span class="name"><?=$team_member->single(false)?></span>
+                <? if (w($team_member->token.'_member_title_label')->single): ?>
+                    <span class='member-title' <?=wa($team_member->token.'_member_title_label')?>>
+                        <? if ( ($w = w($team_member->token.'_member_title_label')) && $w->single ): ?>
+                            <?=$w->single(false)?>
+                        <? elseif( wordlet_edit_mode() ): ?>
+                            Add Label
+                        <? endif ?>
+                    </span>
+                <?endif?>
+                <?=$team_member->single(false)?>
             </h2>
             <div class='facts cms'><?=$team_member->multi_short(false)?></div>
             <div class='blurb cms'><?=$team_member->multi(false)?></div>
