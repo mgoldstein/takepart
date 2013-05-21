@@ -2014,10 +2014,7 @@ body {
   display: block;
   text-transform: uppercase;
   font-weight: bold;
-}
-.page-wordlet-intelchange-winners-teams #page .second-block .member .first-sub .headline .name {
-  display: block;
-  margin-top: -2px;
+  margin-bottom: -2px;
 }
 .page-wordlet-intelchange-winners-teams #page .second-block .member .first-sub .facts p {
   font-size: 13px;
