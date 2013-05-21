@@ -992,6 +992,14 @@ div.takepart-take-action-widget {
 	color: #333;
 }
 
+.node-type-article #article-body a {
+	text-decoration: none;
+}
+
+.node-type-article #article-body a:hover {
+	text-decoration: underline;
+}
+
 .node-type-article #article-body div,
 .node-type-article #article-body iframe {
 	max-width: 100% !important;
