@@ -270,6 +270,12 @@ body #at16pt {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ececec',GradientType=0 );
 }
 
+.newsletter_social .message {
+	margin-bottom: 2em;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
 .newsletter_social .tos-link {
 	clear: both;
 	padding: 10px 0;
