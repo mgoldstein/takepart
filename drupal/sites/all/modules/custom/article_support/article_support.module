@@ -16,6 +16,7 @@ function article_support_next_article($wrapper) {
     ->fields('n', array('nid', 'title'))
     ->condition('created', $wrapper->created->value(), '<')
     ->condition('type', 'openpublish_article')
+    ->condition('status', 0, '!=')
     ->orderBy('created', 'DESC')
     ->orderBy('nid', 'DESC')
     ->range(0, 1);
