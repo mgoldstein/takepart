@@ -34,7 +34,7 @@
                 <? if (w($team_member->token.'_member_title_label')->single): ?>
                     <span class='member-title' <?=wa($team_member->token.'_member_title_label')?>>
                         <? if ( ($w = w($team_member->token.'_member_title_label')) && $w->single ): ?>
-                            <?=w($w->single(false)?>
+                            <?=$w->single(false)?>
                         <? elseif( wordlet_edit_mode() ): ?>
                             Add Label
                         <? endif ?>
