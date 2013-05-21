@@ -31,7 +31,9 @@
                 <img src="<?=$team_member->img_src?>" alt="<?=$team_member->single(false)?>">
             </div>
             <h2 class='headline'>
-                <span class='member-title'><?=w($team_member->token.'_member_title_label')?> </span>
+                <? if ($w = w($team_member->token.'_member_title_label')): ?>
+                    <span class='member-title'><?=$w->single(false)?> </span>
+                <?endif?>
                 <?=$team_member->single(false)?>
             </h2>
             <div class='facts cms'><?=$team_member->multi_short(false)?></div>
