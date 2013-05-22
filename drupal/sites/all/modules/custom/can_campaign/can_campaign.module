@@ -1,0 +1,272 @@
+<?php
+
+define('CAN_VOTE_FORM_ID', 221);
+
+/**
+ * Configuration Defaults
+ */
+function can_campaign_vote_form_defaults($config) {
+
+  $default_config = array(
+    'vote_token' => '',
+    'vote_submit' => t('Confirm'),
+    'email_opt_in' => t('Sign me up to receive emails about CAN.'),
+    'terms_of_use' => t("By clicking \"Confirm\", you agree to TakePart.com's Terms of Use <a href=\"@tou\">Terms of Use</a> and Privacy Policy <a href=\"@privacy\">TakePart Privacy Policy</a>.", array(
+      '@privacy' => url('privacy-policy'),
+      '@tou' => url('terms-of-use'),
+    )),
+    'vote_accepted_message' => t(''),
+    'vote_rejected_message' => t(''),
+    'bsd_communication_error' => t(''),
+    'terms_of_use_error' => t(''),
+  );
+
+  foreach ($default_config as $name => $value) {
+    if (empty($config[$name])) {
+      $config[$name] = $value;
+    }
+  }
+
+  return $config;
+}
+
+/**
+ * Configuration form
+ */
+function can_campaign_vote_configuration($form, $config) {
+
+  $config = can_campaign_vote_form_defaults($config);
+
+  $form['vote_token'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Voting Token'),
+    '#default_value' => $config['vote_token'],
+  );
+
+  $form['vote_submit'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Confirm Caption'),
+    '#default_value' => $config['vote_submit'],
+  );
+
+  $form['email_opt_in'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Email opt-in label'),
+    '#default_value' => $config['email_opt_in'],
+  );
+
+  $form['terms_of_use'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Terms of Use'),
+    '#default_value' => $config['terms_of_use'],
+  );
+
+  $form['vote_accepted_message'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Accepted message'),
+    '#default_value' => $config['vote_accepted_message'],
+  );
+
+  $form['vote_rejected_message'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Rejected message'),
+    '#default_value' => $config['vote_rejected_message'],
+  );
+
+  $form['bsd_communication_error'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('BSD communication error'),
+    '#default_value' => $config['bsd_communication_error'],
+  );
+
+  $form['terms_of_use_error'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Terms of Use error'),
+    '#default_value' => $config['terms_of_use_error'],
+  );
+
+  return $form;
+}
+
+/**
+ * Voting form
+ */
+function can_campaign_vote_form($form, &$form_state, $config) {
+  global $user;
+
+  $config = can_campaign_vote_form_defaults($config);
+  $form_state['can_campaign_vote'] = $config;
+
+  $attributes = array(
+    'last_vote' => NULL,
+    'last_timestamp' => NULL,
+    'vote_allowed' => TRUE,
+    'vote_token' => $config['vote_token'],
+  );
+  if (user_is_logged_in() && isset($user->mail)) {
+    $voting = bluestatedigital_get_service('voting');
+    $vote = $voting->getMostRecentVote(CAN_VOTE_FORM_ID, $user->mail);
+    if ($vote !== FALSE) {
+      $attributes['last_vote'] = $vote['token'];
+      $attributes['last_timestamp'] = $vote['timestamp'];
+    }
+    $attributes['vote_allowed'] = $voting->checkEligibility($vote,
+      BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
+  }
+
+  $form['#wordlet_attributes'] = $attributes;
+
+  drupal_add_js(array('can_campaign' => array(
+    'vote_allowed' => $attributes['vote_allowed'],
+    'last_vote' => $attributes['last_vote'],
+    'last_timestamp' => $attributes['last_timestamp'],
+  )), 'setting');
+
+  $form['email_opt_in'] = array(
+    '#type' => 'checkbox',
+    '#title' => $config['email_opt_in'],
+  );
+
+  $form['agree_to_terms_of_use'] = array(
+    '#type' => 'checkbox',
+    '#title' => $config['terms_of_use'],
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => $config['vote_submit'],
+    '#ajax' => array(
+      'callback' => 'can_campaign_vote_form_callback',
+      'progress' => array(
+        'type' => 'throbber',
+        'message' => NULL,
+      ),
+    ),
+  );
+
+  if (!isset($form['#pre_render'])) {
+    $form['#pre_render'] = array();
+  }
+  array_unshift($form['#pre_render'], 'can_campaign_vote_form_pre_render');
+
+  return $form;
+}
+
+/**
+ * Voting form validation
+ */
+function can_campaign_vote_form_validate($form, &$form_state) {
+
+  $config = $form_state['can_campaign_vote'];
+
+  $agree_to_terms_of_use = trim($form_state['values']['agree_to_terms_of_use']);
+  if (empty($agree_to_terms_of_use)) {
+    form_set_error('agree_to_terms_of_use', $config['terms_of_use_error']);
+  }
+}
+
+/**
+ * Voting form submit
+ */
+function can_campaign_vote_form_submit($form, &$form_state) {
+  global $user;
+
+  if (user_is_logged_in() && isset($user->mail)) {
+
+    $config = $form_state['can_campaign_vote'];
+    $token = $config['vote_token'];
+    $voting = bluestatedigital_get_service('voting');
+
+    try {
+
+      $vote = $voting->getMostRecentVote(CAN_VOTE_FORM_ID, $user->mail);
+      $allowed = $voting->checkEligibility($vote,
+        BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
+      if ($allowed) {
+        $opt_ins = array(
+          1 => !empty($form_state['values']['email_opt_in']),
+        );
+        $voting->castVote(CAN_VOTE_FORM_ID, $user->mail, $token, $opt_ins);
+        $form_state['can_campaign_vote_signup_result'] = 'accepted';
+      }
+      else {
+        $form_state['can_campaign_vote_signup_result'] = 'rejected';
+      }
+    }
+    catch (BlueStateDigitalApiException $ex) {
+      $form_state['can_campaign_vote_signup_result'] = 'error';
+      $message = 'Error processing vote [@code] @body';
+      watchdog('can_campaign', $message, array(
+        '@code' => $ex->getResponseCode(),
+        '@body' => $ex->getResponseBody(),
+      ));
+    }
+  }
+  else {
+    $form_state['can_campaign_vote_signup_result'] = 'not-logged-in';
+  }
+}
+
+/**
+ * Voting form AJAX callback
+ */
+function can_campaign_vote_form_callback($form, &$form_state) {
+
+  // Standard form submission stuff.
+  $commands = array();
+
+  $markup = drupal_render($form);
+  $selector = '#' . $form_state['complete form']['#id'];
+  $commands[] = ajax_command_replace($selector, $markup);
+
+  $errors = form_get_errors();
+  if (empty($errors)) {
+    $commands[] = ajax_command_settings(array(
+      'can_campaign' => array(
+        'vote_result' => $form_state['can_campaign_vote_signup_result'],
+      )
+    ));
+  }
+
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+}
+
+function can_campaign_vote_form_pre_render($element) {
+  $errors = form_get_errors();
+  if ($errors) {
+    drupal_get_messages('error');
+    foreach ($errors as $field => $error) {
+      $element[$field]['#inline_error_message'] = $error;
+      array_unshift($element[$field]['#theme_wrappers'], 'can_campaign_inline_error_message');
+    }
+  }
+  return $element;
+}
+
+function can_campaign_theme() {
+  return array(
+    'can_campaign_inline_error_message' => array(
+      'render element' => 'element',
+    ),
+  );
+}
+
+function theme_can_campaign_inline_error_message($variables) {
+  $element = $variables['element'];
+  if (isset($element['#inline_error_message'])) {
+    return '<label class="error" for="' . $element['#id'] . '">'
+      . $element['#inline_error_message'] . '</label>' . $element['#children'];
+  }
+  return $element['#children'];
+}

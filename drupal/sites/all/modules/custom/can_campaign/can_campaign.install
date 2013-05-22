@@ -1,0 +1,5 @@
+<?php
+
+function can_campaign_uninstall() {
+  variable_del('can_campaign_voting_form_id');
+}
