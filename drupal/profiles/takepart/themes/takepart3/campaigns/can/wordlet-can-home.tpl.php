@@ -89,7 +89,9 @@
 							<? if($w2->video): ?>
 							<div class="video-wrapper">
 								<div class="video">
-									<iframe width="515" height="315" src="http://www.youtube.com/embed/<?=$w2->video?>" frameborder="0" allowfullscreen></iframe>
+								<script type="text/x-javascript-template" class="video-template">
+									<iframe class="video-player" width="515" height="315" src="http://www.youtube.com/embed/<?=$w2->video?>" frameborder="0" allowfullscreen></iframe>
+								</script>
 								</div>
 								<div class="info cms">
 									<?=$w2->multi(false)?>

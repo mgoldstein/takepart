@@ -18,7 +18,13 @@ $(function() {
         var currentChapter;
         var modalHash = 'vote_';
         var $hashChapter = $chapterNav.find('.chapter').filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
-        /*event handlers */
+        var loadVideo = function($vidWrapper){
+			var $videotpl = $vidWrapper.find('.video-template');
+        	if ( $videotpl.length ) {
+	            var $video = $($videotpl.html());
+	            $videotpl.parent().append($video);
+	        }
+        }
         var chapterMenuHandler = function(e){
             if ($(this).is('.active')){
                 return;
@@ -39,9 +45,21 @@ $(function() {
             if ($(this).is('.active')){
                 return;
             }
+            var $section = $thisSections.filter('#' + this.hash.substr(1));
+            var $prevSection = $thisSections.filter(':visible');
+
+            // update menu styling
             $(this).siblings().removeClass('active');
             $(this).addClass('active');
-            swap($thisSections, $thisSections.filter('#' + this.hash.substr(1)), $thisSectionsWrapper);
+
+            // show video in new section if there
+            loadVideo($section.find('.video-wrapper'));
+
+            // animate hide/show sections
+            swap($thisSections, $section, $thisSectionsWrapper);
+
+            // hide old video if there
+            $prevSection.find('.video-wrapper .video-player').remove();
         }
 
         var voteBtnHandler = function(e){
@@ -88,8 +106,11 @@ $(function() {
 
         /* show first section in each chapter */
         $.each($sectionNavs, function(i, e){
-            var $firstSection = $(e).find('a').first().addClass('active');
-            $('.chapter .sections').children().hide().filter('#' + $firstSection[0].hash.substr(1)).show();
+            var $firstSectionMenuItem = $(e).find('a').first().addClass('active');
+            var $firstSection = $('.chapter .sections').children().hide().filter('#' + $firstSectionMenuItem[0].hash.substr(1)).show();
+
+            // load video if there is one
+            loadVideo($firstSection.find('.video-wrapper'));
         });
         $chaptersWrapper.show();
 
