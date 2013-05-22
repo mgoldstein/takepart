@@ -5,12 +5,12 @@
  */
 
 /**
- * Implementation of hook_user_default_permissions().
+ * Implements hook_user_default_permissions().
  */
 function takepart_comment_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: access comments
+  // Exported permission: access comments.
   $permissions['access comments'] = array(
     'name' => 'access comments',
     'roles' => array(
@@ -22,7 +22,7 @@ function takepart_comment_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: administer comments
+  // Exported permission: administer comments.
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
     'roles' => array(
@@ -33,7 +33,7 @@ function takepart_comment_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: edit own comments
+  // Exported permission: edit own comments.
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
     'roles' => array(
@@ -44,7 +44,7 @@ function takepart_comment_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: post comments
+  // Exported permission: post comments.
   $permissions['post comments'] = array(
     'name' => 'post comments',
     'roles' => array(
@@ -55,7 +55,7 @@ function takepart_comment_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: skip comment approval
+  // Exported permission: skip comment approval.
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
     'roles' => array(

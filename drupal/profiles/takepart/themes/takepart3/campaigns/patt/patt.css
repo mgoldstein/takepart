@@ -11,6 +11,25 @@ body {
 	padding: 0;
 }
 
+.multipage-campaign #site-header {
+	margin-bottom: 3px;
+}
+
+#site-header-inner {
+	background: #f1f3f4;
+	height: 36px;
+}
+
+#site-footer {
+	background: #f1f3f4;
+	display: inline-block; *display: inline; zoom: 1;
+	width: 100%;
+}
+
+#site-footer #site-about {
+	padding-right: 1em;
+}
+
 .page-wrap {
 	width:1000px;
 	margin:0 auto;
@@ -1465,7 +1484,7 @@ h1.tile-header {
     INTERMEDIATE: Menu
    ==================== */
 
-    nav a {
+    .page-wrap nav a {
         float: left;
         width: 27%;
         margin: 0 1.7%;
@@ -1473,11 +1492,11 @@ h1.tile-header {
         margin-bottom: 0;
     }
 
-    nav li:first-child a {
+    .page-wrap nav li:first-child a {
         margin-left: 0;
     }
 
-    nav li:last-child a {
+    .page-wrap nav li:last-child a {
         margin-right: 0;
     }
 
@@ -1485,7 +1504,7 @@ h1.tile-header {
     INTERMEDIATE: IE Fixes
    ======================== */
 
-    nav ul li {
+    .page-wrap nav ul li {
         display: inline;
     }
 
@@ -1546,7 +1565,7 @@ h1.tile-header {
         float: left;
     }
 
-    nav {
+    .page-wrap nav {
         float: right;
         width: 38%;
     }

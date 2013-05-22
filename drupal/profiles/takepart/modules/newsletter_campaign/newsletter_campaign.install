@@ -62,6 +62,20 @@ function newsletter_campaign_schema() {
   	    'default' =>  0,
         'description' => 'ID code for BSD signup form field serving this campaign.',
       ),
+      'follow_us_enabled' => array(
+        'description' => 'Show Follow Us box (0 = Hidden, 1 = Visible).',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'follow_us_configuration' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'Serialized Follow Us configuration.',
+        'serialize' => TRUE,
+      ),
     ),
     'primary key' => array('ncid'),
   );
@@ -235,4 +249,16 @@ function newsletter_campaign_update_7200(&$sandbox) {
   ));
 
   db_drop_field('newsletter_campaign', 'signup_form_id');
+}
+
+/**
+ * Add 'Follow Us' box to Newsletter signups.
+ */
+function newsletter_campaign_update_7201(&$sandbox) {
+  $schema = newsletter_campaign_schema();
+  $table = 'newsletter_campaign';
+  $fields = array('follow_us_enabled', 'follow_us_configuration');
+  foreach ($fields as $field) {
+    db_add_field($table, $field, $schema[$table]['fields'][$field]);
+  }
 }

@@ -1,0 +1,447 @@
+/*
+	TOC:
+	1.) General Site Layout
+	2.) Reusables/Modules
+	3.) Section Specific
+	4.) Page Specific
+*/
+
+/* ============================================================
+|| 1.) General Site Layout
+============================================================ */
+
+@media all and (max-width: 480px) {
+	* {
+		max-width: 100% !important;
+	}
+
+	html,
+	body {
+		font-size: 10px;
+	}
+
+	#site-header {
+		padding: 0;
+		min-height: 0;
+		position: static;
+		margin-bottom: 0;
+	}
+
+	#site-header-inner {
+		padding: 7px;
+		min-height: auto;
+		overflow: hidden;
+		background: #fff;
+		position: relative;
+		z-index: 10;
+		display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
+		width: 100%;
+	}
+
+	.clickedon #site-header-inner {
+		overflow: visible;
+		padding-bottom: 62px;
+	}
+
+	.clickedon #site-header:after {
+		content: " ";
+		position: absolute;
+		min-height: 100%;
+		background: rgba(0,0,0,.8);
+		width: 100%;
+		left: 0;
+		z-index: 8;
+		width: 100%;
+	}
+
+	#site-header-inner:after {
+		content: " ";
+		float: right;
+		display: block;
+		background-repeat: no-repeat;
+		background-image: url(../images/sitenav_open.png); /** sprite-ref: mysprite; */
+		width: 25px;
+		height: 25px;
+		margin-top: 9px;
+		margin-right: .5em;
+	}
+
+	.clickedon #site-header-inner:after {
+		background-image: url(../images/sitenav_close.png); /** sprite-ref: mysprite; */
+	}
+
+	#site-participant-nav {
+		display: none;
+	}
+
+	#site-logo {
+		margin-bottom: 0;
+	}
+
+	#site-logo img {
+		width: 50px;
+		height: 50px;
+	}
+
+	#site-navs {
+		display: none;
+	}
+
+	.clickedon #site-navs {
+		display: block;
+	}
+
+	#site-main-nav {
+		border: none;
+		padding: 0;
+		background: #eff3f5;
+	}
+
+	#site-user-nav {
+		display: none;
+	}
+
+	.clickedon #site-user-nav {
+		display: block;
+		width: 100%;
+		background: #eff3f5;
+		position: absolute;
+		bottom: 0;
+		top: auto;
+	}
+
+	#site-user-nav ul {
+		width: 100%;
+		float: none;
+		padding: 0;
+	}
+
+	#site-user-nav li {
+		font-size: .75em;
+		width: 50%;
+		border-right: 1px solid #dbdbdb;
+	}
+
+	#site-user-nav li:last-child {
+		border-right: none;
+	}
+
+	#site-user-nav li {
+		font-size: 11px;
+		line-height: 5em;
+		font-weight: bold;
+	}
+
+	#site-user-nav li a {
+		display: block;
+		text-align: center;
+		max-width: 100%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	#site-navs #site-main-nav ul,
+	#site-navs #site-main-nav li,
+	#site-main-nav {
+		float: none;
+	}
+
+	#site-main-nav li {
+		padding: 0;
+	}
+
+	#site-main-nav a {
+		display: inline-block;
+		padding: .65rem 4rem .65em 1rem;
+		border-top: 1px solid #dbdbdb;
+		font-size: 18px;
+		line-height: 37px;
+		white-space: nowrap;
+		width: 100%;
+	}
+
+	#site-main-nav a:before {
+		width: 53px;
+		padding-right: 1rem;
+		height: 37px;
+		display: inline-block;
+		content: " ";
+		vertical-align: middle;
+		background-repeat: no-repeat;
+	}
+
+	#site-main-nav .text-culture a:before {
+		background-image: url(../images/topic_culture.png); /** sprite-ref: mysprite; */
+	}
+
+	#site-main-nav .text-food a:before {
+		background-image: url(../images/topic_food.png); /** sprite-ref: mysprite; */
+	}
+
+	#site-main-nav .text-environment a:before {
+		background-image: url(../images/topic_environment.png); /** sprite-ref: mysprite; */
+	}
+
+	#site-main-nav .text-wildlife a:before {
+		background-image: url(../images/topic_wildlife.png); /** sprite-ref: mysprite; */
+	}
+
+	#site-main-nav .text-social_action a:before {
+		background-image: url(../images/topic_social_justice.png); /** sprite-ref: mysprite; */
+	}
+
+	#site-main-nav .text-education a:before {
+		background-image: url(../images/topic_education.png); /** sprite-ref: mysprite; */
+	}
+
+	#site-main-nav .text-health a:before {
+		background-image: url(../images/topic_health.png); /** sprite-ref: mysprite; */
+	}
+
+	#site-hot-nav {
+		display: none;
+	}
+
+	#site-miss-nav {
+		display: none;
+	}
+
+	#site-navs {
+		position: absolute;
+		top: 100%;
+		left: 0;
+	}
+
+	#site-more-navs {
+		float: left;
+	}
+
+	#site-search .form-item input {
+		width: 150px;
+		font-size: 16px;
+	}
+
+	/* Top ad */
+	#site-top {
+		display: none;
+	}
+
+	/* Side bar */
+
+	#site-secondary {
+		width: auto;
+		float: none;
+	}
+
+	#site-secondary .block {
+		display: none;
+	}
+
+	#site-secondary .newsletter_social {
+		display: block;
+	}
+
+	/* Footer */
+	#site-connect,
+	#site-topics {
+		display: none;
+	}
+
+	#site-footer {
+		background: #f1f3f4;
+		display: inline-block; vertical-align: bottom;
+		width: 100%;
+	}
+
+	#site-footer section {
+		float: none;
+		text-align: center;
+		width: auto;
+	}
+
+	#site-footer #site-about {
+		text-align: center;
+	}
+
+	#site-footer li {
+		padding: 0 1em;
+		display: inline-block;
+	}
+}
+
+/* ============================================================
+|| 2.) Reusables/Modules
+============================================================ */
+
+@media all and (max-width: 480px) {
+	.tpsticky_main {
+		position: static !important;
+		margin-top: inherit !important;
+		padding-top: inherit !important;
+	}
+}
+
+/* ============================================================
+|| 3.) Section Specific
+============================================================ */
+
+
+/* ============================================================
+|| 4.) Page Specific
+============================================================ */
+
+@media all and (max-width: 480px) {
+
+/* Article
+------------------------------------------------------------ */
+	.node-type-article #site-secondary,
+	.node-type-article #article-content,
+	.node-type-article #article-main-inner,
+	.node-type-article #topic_box {
+		width: auto;
+		float: none;
+	}
+
+
+	.node-type-article #article-sidebar {
+		float: none;
+	}
+
+	.node-type-article #article-author.above {
+		position: static !important;
+	}
+
+	.node-type-article #article-sidebar {
+		width: auto;
+	}
+
+	.node-type-article #article-social {
+		width: auto !important;
+	}
+
+	.node-type-article #article-author,
+	.node-type-article #article-badge {
+		display: none;
+	}
+
+	.node-type-article #article-headline {
+		font-size: 24px;
+	}
+
+	.node-type-article #article-social {
+		border: 1px solid #e8e8e8;
+		border-left: none;
+		border-right: none;
+		margin: 1em 0 0 0 !important;
+		padding: 1em 0 !important;
+	}
+
+	.node-type-article #article-social .inner {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		padding: 0;
+		border: none;
+		height: 36px;
+		overflow: hidden;
+	}
+
+	.node-type-article #article-share {
+		display: inline;
+	}
+
+	.node-type-article #article-tab,
+	.node-type-article #article-social li {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.node-type-article #article-tab {
+		margin-top: 4px;
+	}
+
+	.node-type-article #article-tab {
+		border: none;
+	}
+
+	/* Social */
+
+	.node-type-article #article-social #article-comments-link,
+	.node-type-article #article-social #article-social-more {
+		display: none;
+	}
+
+	.node-type-article #article-social a,
+	.node-type-article #article-tab {
+		margin-right: 13px;
+
+	}
+
+	.node-type-article #article-social a {
+		overflow: hidden;
+		white-space: nowrap;
+		border: none;
+		width: 24px;
+		height: 28px;
+		padding: 0;
+	}
+
+	.node-type-article #article-social .atclear {
+		display: none;
+	}
+
+	.node-type-article #article-social #article-share a {
+		display: inline-block;
+	}
+
+	.node-type-article #article-social a:last-child {
+		margin-right: 0;
+	}
+
+	.node-type-article #article-main-inner {
+		margin-bottom: 1em;
+	}
+
+	/* Next artcle */
+
+	.node-type-article #next-article a {
+		padding-right: 0;
+	}
+
+	.node-type-article #next-article a:after {
+		display: none;
+	}
+
+	/* Faux right rail */
+	#topic_box:before,
+	#topic_box:after {
+		display: none;
+	}
+
+	/* inline content */
+	.node-type-article .inline-content img {
+		max-width: none !important;
+	}
+
+
+	.node-type-article #article-content #article-image {
+		float: none;
+		margin-right: 0;
+		display: block;
+		width: auto;
+	}
+
+	.node-type-article #article-image img {
+		margin: auto;
+	}
+}
+
+
+@media all and (max-width: 320px) {
+	.node-type-article .inline-content.horizontal {
+		float: left;
+		display: table;
+		width: 1px;
+		margin-right: 1em;
+	}
+}

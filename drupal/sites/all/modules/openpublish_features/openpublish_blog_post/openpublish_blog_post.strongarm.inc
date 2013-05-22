@@ -37,6 +37,12 @@ function openpublish_blog_post_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'of_the_day' => array(
+        'custom_settings' => FALSE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

@@ -1,0 +1,13 @@
+name = of_the_day
+description = Of the Day related dependencies
+core = 7.x
+package = Features
+php = 5.2.4
+dependencies[] = boxes
+dependencies[] = ctools
+dependencies[] = views
+features[box][] = of_the_day
+features[ctools][] = boxes:box:1
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = of_the_day

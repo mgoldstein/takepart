@@ -68,6 +68,12 @@ function openpublish_blog_post_field_default_fields() {
           'type' => 'text_summary_or_trimmed',
           'weight' => '3',
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'body',
@@ -118,6 +124,7 @@ function openpublish_blog_post_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
+          'article' => 0,
           'audio' => 0,
           'blog_front' => 0,
           'feed' => 0,
@@ -176,6 +183,12 @@ function openpublish_blog_post_field_default_fields() {
           'settings' => array(),
           'type' => 'node_reference_default',
           'weight' => '1',
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -258,6 +271,12 @@ function openpublish_blog_post_field_default_fields() {
           'type' => 'hidden',
           'weight' => '16',
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_blogpost_blog',
@@ -325,6 +344,12 @@ function openpublish_blog_post_field_default_fields() {
           ),
           'type' => 'image',
           'weight' => '2',
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -406,6 +431,12 @@ function openpublish_blog_post_field_default_fields() {
           'weight' => 0,
         ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
