@@ -189,7 +189,7 @@ function takepart_mos_views_default_views() {
         'url' => '',
       ),
     ),
-    'action::takepart_mos_signature_publish_action' => array(
+    'action::signature_publish_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
@@ -203,7 +203,7 @@ function takepart_mos_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-    'action::takepart_mos_signature_unpublish_action' => array(
+    'action::signature_unpublish_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
