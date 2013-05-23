@@ -32,7 +32,21 @@ $(function() {
             currentChapter = $(this).attr('data-chapter');
             $chapterNav.find('a').removeClass('active');
             $(this).addClass('active');
-            swap($chapters, $chapters.filter('#' + this.hash.substr(1)), $chaptersWrapper);
+            var $chapterToShow = $chapters.filter('#' + this.hash.substr(1));
+            var $curSectionMenu = $chapterToShow.find('.section-menu');
+            var $curSections = $chapterToShow.find('.sections');
+            var $curSectionMenuItem = $('.section.active', $curSectionMenu);
+            var $curSection = $curSections.find('#' + $curSectionMenuItem[0].hash.substr(1))
+
+            // show video if need to
+            if ($curSection.find('.video-wrapper').length > 0 && $chapterToShow.find('.video-player').length < 1) {
+            	loadVideo($curSection.find('.video-wrapper'));
+            }
+
+            swap($chapters, $chapterToShow, $chaptersWrapper, function(){
+            	// hide video in prev section if need to
+            	$('.sections .section', $chapters).filter(':not(:visible)').find('.video-player').remove();
+            });
             $('html, body').animate({
                  scrollTop: $chaptersWrapper.offset().top
             });
@@ -56,10 +70,10 @@ $(function() {
             loadVideo($section.find('.video-wrapper'));
 
             // animate hide/show sections
-            swap($thisSections, $section, $thisSectionsWrapper);
-
-            // hide old video if there
-            $prevSection.find('.video-wrapper .video-player').remove();
+            swap($thisSections, $section, $thisSectionsWrapper, function(){
+            	// hide old video if there
+            	$prevSection.find('.video-wrapper .video-player').remove();
+            });
         }
 
         var voteBtnHandler = function(e){
@@ -108,9 +122,6 @@ $(function() {
         $.each($sectionNavs, function(i, e){
             var $firstSectionMenuItem = $(e).find('a').first().addClass('active');
             var $firstSection = $('.chapter .sections').children().hide().filter('#' + $firstSectionMenuItem[0].hash.substr(1)).show();
-
-            // load video if there is one
-            loadVideo($firstSection.find('.video-wrapper'));
         });
         $chaptersWrapper.show();
 
