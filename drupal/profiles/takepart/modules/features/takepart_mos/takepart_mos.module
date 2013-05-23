@@ -7,38 +7,7 @@
 include_once 'takepart_mos.features.inc';
 
 // ToDo: move actions to sugnature module
-function takepart_mos_action_info() {
-  return array(
-    'takepart_mos_signature_unpublish_action' => array(
-      'type' => 'signature',
-      'label' => t('Unpublish Signature'),
-      'configurable' => FALSE,
-      //'behavior' => array('changes_property'),
-      //'triggers' => array('comment_presave', 'comment_insert', 'comment_update'),
-    ),
-    'takepart_mos_signature_publish_action' => array(
-      'type' => 'signature',
-      'label' => t('Publish Signature'),
-      'configurable' => FALSE,
-      //'behavior' => array('changes_property'),
-      //'triggers' => array('comment_presave', 'comment_insert', 'comment_update'),
-    ),
-  );
-}
 
-function takepart_mos_signature_publish_action ($signature) {
-  if (empty($signature->status)) {
-    $signature->status = 1;
-    entity_save('signature', $signature);
-  }
-}
-
-function takepart_mos_signature_unpublish_action ($signature) {
-  if ($signature->status) {
-    $signature->status = 0;
-    entity_save('signature', $signature);
-  }
-}
 
 /**
  * Implements hook_permission().
@@ -51,37 +20,3 @@ function takepart_mos_permission() {
     ),
   );
 }
-
-/**
- * hook_entity_presave implementation
- */
-/*
-function takepart_mos_entity_presave ($entity, $type) {
-  if ($type == 'signature' && $entity->type == 'mos_signature') {
-    // force status value to 0 (unpublished) if display (public display) value is FALSE
-    if (empty($entity->display) && $entity->status) {
-      $entity->status = 0;
-      drupal_set_message(
-        t('@label (id @id) signature can\'t be published because it\'s public display turned off',
-          array('@label'=>entity_label('signature', $entity), '@id' => $entity->id)),
-        'warning');
-    }
-  }
-}*/
-
-/**
- * hook_form_FORM_ID_alter implementation
- * for signature_edit_mos_signature_form
- */
-/*function takepart_mos_form_signature_edit_mos_signature_form_alter (&$form, &$form_state) {
-  $form['#validate'][] = 'takepart_mos_form_signature_edit_mos_signature_form_validate';
-}*/
-
-/**
- * validation callback for signature_edit_mos_signature_form
- */
-/*function takepart_mos_form_signature_edit_mos_signature_form_validate ($form, &$form_state) {
-  if (empty($form_state['values']['display']) && $form_state['values']['status']) {
-    form_set_error('status', t('Signature can\'t be published because it\'s public display turned off'));
-  }
-}*/
