@@ -484,6 +484,10 @@
 .page-wordlet-can-home .chapters .chapter.palo_alto .vote:active {
     background-color: rgb(203, 32, 38);
 }
+.page-wordlet-can-home .chapters .chapter .chapter-info {
+    display: inline-block; *display: inline; *zoom: 1;
+    vertical-align: top;
+}
 .page-wordlet-can-home .chapters .chapter .section-menu {
     width: 106px;
     float: left;
@@ -515,6 +519,10 @@
 }
 .page-wordlet-can-home .chapters .chapter .sections .section .video {
     margin-bottom: 12px;
+}
+.page-wordlet-can-home .chapters .chapter .sections .section .info {
+    display: inline-block; *display: inline; *zoom: 1;
+    vertical-align: top;
 }
 .page-wordlet-can-home .chapters .chapter .sections .section .info p {
     font-size: 12px;

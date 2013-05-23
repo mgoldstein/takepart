@@ -43,7 +43,7 @@ $(function() {
             	loadVideo($curSection.find('.video-wrapper'));
             }
 
-            swap($chapters, $chapterToShow, $chaptersWrapper, function(){
+            swap($chapters.filter(':visible'), $chapterToShow, $chaptersWrapper, function(){
             	// hide video in prev section if need to
             	$('.sections .section', $chapters).filter(':not(:visible)').find('.video-player').remove();
             });
@@ -70,9 +70,9 @@ $(function() {
             loadVideo($section.find('.video-wrapper'));
 
             // animate hide/show sections
-            swap($thisSections, $section, $thisSectionsWrapper, function(){
-            	// hide old video if there
-            	$prevSection.find('.video-wrapper .video-player').remove();
+            swap($thisSections.filter(':visible'), $section, $thisSectionsWrapper, function(){
+            	// hide video in prev section if need to
+            	$('.sections .section', $chapters).filter(':not(:visible)').find('.video-player').remove();
             });
         }
 
@@ -173,17 +173,10 @@ $(function() {
     // Global Page Functions -----------------
 
     function swapIn(toShow, parent, callback){
-        var h = parent.height();
-        callback = callback || null;
-
-        toShow.css({opacity: 0, display: 'block'});
-        parent.css({height: 'auto'});
-        var h2 = parent.height();
-        parent.height(h);
-
-        parent.stop().animate({height: h2}, animationSpeed, function() {
-            toShow.stop().animate({opacity: 1}, function() {
-                parent.height('');
+    	toShow.css({opacity: 0, display: 'block'});
+        parent.animate({height: toShow.outerHeight(true)}, animationSpeed, function() {
+            toShow.animate({opacity: 1}, animationSpeed, function() {
+                parent.css({height: ''});
                 if ( callback ) callback();
             });
         });
@@ -191,7 +184,8 @@ $(function() {
 
     function swap(toHide, toShow, parent, callback) {
         if (toHide.length > 0){
-            toHide.stop().animate({opacity: 0}, animationSpeed, function() {
+            toHide.animate({opacity: 0}, animationSpeed, function() {
+                parent.css({height: toHide.outerHeight(true)});
                 toHide.css({display: 'none'});
                 swapIn(toShow, parent, callback);
             });
