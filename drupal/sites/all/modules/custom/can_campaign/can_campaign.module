@@ -192,8 +192,12 @@ function can_campaign_vote_form($form, &$form_state, $config) {
   );
 
   $form['terms_of_use'] = array(
-    '#type' => 'markup',
-    '#markup' => can_campaign_preprocess_markup($config['terms_of_use']),
+    '#theme' => 'html_tag',
+    '#tag' => 'label',
+    '#attributes' => array(
+      'class' => array('terms-of-use'),
+    ),
+    '#value' => can_campaign_preprocess_markup($config['terms_of_use'])
   );
 
   $form['submit'] = array(
