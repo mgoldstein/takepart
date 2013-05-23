@@ -1,5 +1,10 @@
 <?php
 
+include_once dirname(__FILE__) . '/mailchimp/MCAPI.class.php';
+
+define('MAIL_CHIMP_API_KEY', '82975735a7b27a8bc6959bb3f20af46e-us6');
+define('MAIL_CHIMP_LIST_ID', 'a823599bf3');
+
 define('CAN_VOTE_FORM_ID', 221);
 
 function can_campaign_preprocess_markup($markup) {
@@ -138,6 +143,23 @@ function can_campaign_store_vote($email, $token) {
     ->execute();
 }
 
+function can_campaign_send_to_mailchimp($email) {
+
+  $api = new MCAPI(MAIL_CHIMP_API_KEY);
+
+  $api->listSubscribe(MAIL_CHIMP_LIST_ID, $email);
+  if ($api->errorCode) {
+    $message = 'Error sending email signup to MailChimp [@code] @body';
+    watchdog('can_campaign', $message, array(
+      '@code' => $ex->getResponseCode(),
+      '@body' => $ex->getResponseBody(),
+    ));
+    return FALSE;
+  }
+
+  return TRUE;
+}
+
 /**
  * Voting form
  */
@@ -264,6 +286,10 @@ function can_campaign_vote_form_submit($form, &$form_state) {
     }
     else {
       $form_state['can_campaign_vote_signup_result'] = 'rejected';
+    }
+
+    if (!empty($form_state['values']['email_opt_in'])) {
+      can_campaign_send_to_mailchimp($email);
     }
   }
   catch (BlueStateDigitalApiException $ex) {
