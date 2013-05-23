@@ -61,6 +61,12 @@ function feature_content_types_field_default_fields() {
           'type' => 'text_summary_or_trimmed',
           'weight' => 0,
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'body',
@@ -132,6 +138,12 @@ function feature_content_types_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_html_title',
@@ -189,6 +201,12 @@ function feature_content_types_field_default_fields() {
           'weight' => 1,
         ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -279,6 +297,12 @@ function feature_content_types_field_default_fields() {
           'weight' => '17',
         ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

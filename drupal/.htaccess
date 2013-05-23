@@ -2,6 +2,17 @@
 # Apache/PHP/Drupal settings:
 #
 
+
+# Send a "X-Robots-Tag" header when site is NOT accessed via Akamai, to
+# prevent Google from indexing URLs other than those it finds at
+# www.takepart.com via Akamai (keeps origin out of Akamai):
+<ifModule mod_headers.c>
+SetEnvIfNoCase Via akamai RequestFromAkamai
+Header set X-Robots-Tag "noindex, nofollow" env=!RequestFromAkamai
+</ifModule>
+
+
+
 # If you don't visit as www.takepart.com or takepart.com, return "go-away" robots.txt to Google, etc.
 <IfModule mod_rewrite.c>
 RewriteEngine on

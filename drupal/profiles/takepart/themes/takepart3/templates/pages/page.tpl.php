@@ -1,6 +1,6 @@
 <div id="page-wrapper">
 
-<?php print $header ?>
+  <?php print $header ?>
  
   <?php if ($page['highlighted']): ?>
     <div class="clear" id='highlighted'><div class='limiter clearfix'>

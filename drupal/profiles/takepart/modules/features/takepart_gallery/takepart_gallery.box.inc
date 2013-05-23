@@ -46,13 +46,13 @@ GA_googleFillSlot("TP3_Home_RR_ATF_300x250");
   $box->options = array(
     'view' => 'photo_galleries--block',
     'settings' => array(
-      'nid' => '31365+31945+31363',
+      'nid' => '36233+36151+36369',
     ),
     'view_object' => NULL,
     'view_more_text' => '',
     'view_more_link' => '',
+    'expose_filters' => 0,
     'additional_classes' => '',
-    'selected_style' => '0',
   );
   $export['box-7d1ce087'] = $box;
 
@@ -110,6 +110,19 @@ z-index:5000;
     'selected_style' => '0',
   );
   $export['box-944fcfe9'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'box-e15d1292';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Take Action Button - Galleries';
+  $box->options = array(
+    'body' => '<div class="takepart-take-action" data-size="medium"></div>',
+    'additional_classes' => 'tab-gallery',
+  );
+  $export['box-e15d1292'] = $box;
 
   return $export;
 }

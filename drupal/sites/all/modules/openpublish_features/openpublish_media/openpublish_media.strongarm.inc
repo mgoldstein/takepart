@@ -15,7 +15,14 @@ function openpublish_media_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__openpublish_photo';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'of_the_day' => array(
+        'custom_settings' => FALSE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
@@ -62,6 +69,24 @@ function openpublish_media_strongarm() {
       ),
       'embedaction' => array(
         'custom_settings' => FALSE,
+      ),
+      'vidpop_map' => array(
+        'custom_settings' => TRUE,
+      ),
+      'embedaction_expanded' => array(
+        'custom_settings' => FALSE,
+      ),
+      'action_summary' => array(
+        'custom_settings' => FALSE,
+      ),
+      'medium_preview' => array(
+        'custom_settings' => FALSE,
+      ),
+      'of_the_day' => array(
+        'custom_settings' => TRUE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(
@@ -116,6 +141,24 @@ function openpublish_media_strongarm() {
       ),
       'embedaction' => array(
         'custom_settings' => FALSE,
+      ),
+      'vidpop_map' => array(
+        'custom_settings' => TRUE,
+      ),
+      'embedaction_expanded' => array(
+        'custom_settings' => FALSE,
+      ),
+      'action_summary' => array(
+        'custom_settings' => FALSE,
+      ),
+      'medium_preview' => array(
+        'custom_settings' => FALSE,
+      ),
+      'of_the_day' => array(
+        'custom_settings' => TRUE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(

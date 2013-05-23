@@ -35,6 +35,8 @@ function takepart_ads_preprocess_page(&$vars) {
             $ad_html .= 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad . '");';
         }
     }
+
+    $gptad_html .= 'googletag.pubads().collapseEmptyDivs();';
     $contentType = isset($vars['node']->type) ? 'GA_googleAddAttr("Type", "' . $vars['node']->type . '");' . "\n" : "";
     $gpt_contentType = isset($vars['node']->type) ? 'googletag.pubads().setTargeting("Type", "' . $vars['node']->type . '");' . "\n" : "";
     $field_topic = isset($vars['node']->field_topic['und']) ? $vars['node']->field_topic['und'] : array();

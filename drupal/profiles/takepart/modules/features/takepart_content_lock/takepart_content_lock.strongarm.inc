@@ -10,21 +10,21 @@
 function takepart_content_lock_strongarm() {
   $export = array();
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'content_lock_admin_cancelbutton';
   $strongarm->value = 1;
   $export['content_lock_admin_cancelbutton'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'content_lock_admin_verbose';
   $strongarm->value = 1;
   $export['content_lock_admin_verbose'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'content_lock_allowed_formats';
@@ -35,7 +35,7 @@ function takepart_content_lock_strongarm() {
   );
   $export['content_lock_allowed_formats'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'content_lock_allowed_node_types';
@@ -62,28 +62,28 @@ function takepart_content_lock_strongarm() {
   );
   $export['content_lock_allowed_node_types'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'content_lock_timeout_minutes';
   $strongarm->value = '30';
   $export['content_lock_timeout_minutes'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'content_lock_timeout_on_edit';
   $strongarm->value = 1;
   $export['content_lock_timeout_on_edit'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'content_lock_unload_js';
   $strongarm->value = 1;
   $export['content_lock_unload_js'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'content_lock_unload_js_message';

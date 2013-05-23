@@ -8,7 +8,7 @@ var ajaxer = null;
 
 var load_form = function(url, data) {
 	data = data || null;
-	$.tpmodal.show({id: modal_id, afterClose: function() { if ( ajaxer ) ajaxer.abort(); }});
+	$.tpmodal.show({id: modal_id, alertOnChange: true, afterClose: function() { if ( ajaxer ) ajaxer.abort(); }});
 
 	// Updated jQuery.load function, basically:
 	// Request the remote document
@@ -50,7 +50,7 @@ var load_form = function(url, data) {
 				}
 
 				// Otherwise, condense html to just the form
-				$div.find('*:not(form,input,label,legend,select,textarea,option,h1,.messages.error,.form-required):not(:has(textarea,input,label,select,option,legend,h1,.messages.error,.form-required))').remove();
+				$div.find('*:not(form,input,label,legend,.description,select,textarea,option,h1,.messages.error,.form-required):not(:has(textarea,input,label,select,option,legend,.description,h1,.messages.error,.form-required))').remove();
 
 				var $repeaters = $div.find('.repeating');
 
@@ -71,6 +71,7 @@ var load_form = function(url, data) {
 					var $repeater = $(this);
 					var $up = $('<a href="#" class="wordlet_up">Up</a>');
 					var $down = $('<a href="#" class="wordlet_down">Down</a>');
+					var $move = $('<a href="#" class="wordlet_move">Move</a>');
 					var $inputs = $repeater.find('input, textarea, select');
 
 					var up = function(e) {
@@ -106,6 +107,8 @@ var load_form = function(url, data) {
 
 					$up.bind('click', up);
 					$down.bind('click', down);
+
+					$repeater.append($move);
 
 					if ( i != 0 ) $repeater.append($up);
 
@@ -241,6 +244,9 @@ $('[data-edit],[data-configure]').each(function() {
 });
 
 // Wordlet events & other setup
+var moving = false;
+var $repeating_start = null;
+
 $('body')
 	.delegate('.wordlet', 'click', function(e) {
 		var $target = $(e.target);
@@ -277,6 +283,50 @@ $('body')
 		deleteCookie('show_wordlets');
 	})
 	.addClass((getCookie('show_wordlets')?'':'hide_wordlets'))
+	// Drag/drop
+	.delegate('.wordlet_move', 'mousedown', function() {
+		moving = true;
+		$repeating_start = $(this).closest('.repeating');
+		$repeating_start.addClass('repeating_start');
+		return false;
+	})
+	.delegate('.repeating', 'mouseover', function() {
+		if ( !moving ) return;
+		$(this).addClass('repeating_end');
+	})
+	.delegate('.repeating', 'mouseout', function() {
+		if ( !moving ) return;
+		$(this).removeClass('repeating_end');
+	})
+	.delegate('.repeating', 'mouseup', function() {
+		if ( !moving ) return;
+		var $this = $(this);
+		if ( $this[0] == $repeating_start[0] ) return;
+
+		if ( $repeating_start.nextAll().filter('#' + $this[0].id).length ) {
+			$nexts = $repeating_start.nextUntil('#' + $this[0].id);
+			$repeating_start.find('.wordlet_down').click();
+			$nexts.each(function() {
+				$(this).find('.wordlet_down').click();
+			});
+			//$this.filter('.wordlet_down').click();
+		} else {
+			//console.log($repeating_start.prevAll().filter('#' + $this[0].id).length);
+			$prevs = $repeating_start.prevUntil('#' + $this[0].id);
+			$repeating_start.find('.wordlet_up').click();
+			$prevs.each(function() {
+				$(this).find('.wordlet_up').click();
+			});
+		}
+
+		//console.log($this.nextUntil('#' + $repeating_start[0].id));
+		//console.log($this.prevUntil('#' + $repeating_start[0].id));
+	})
+	.bind('mouseup', function() {
+		moving = false;
+		$repeating_start = null;
+		$('.repeating').removeClass('repeating_end').removeClass('repeating_start');
+	})
 	;
 
 // Configure links
