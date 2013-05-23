@@ -172,6 +172,7 @@ $(function() {
 
         parent.stop().animate({height: h2}, animationSpeed, function() {
             toShow.stop().animate({opacity: 1}, function() {
+                parent.height('');
                 if ( callback ) callback();
             });
         });
