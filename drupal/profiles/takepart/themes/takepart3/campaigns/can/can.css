@@ -173,7 +173,10 @@
     max-width: 500px;
 }
 .tpmodal_modal .tpmodal_content .modal {
-    padding: 42px 3px 3px 3px;
+    padding: 46px 3px 3px 3px;
+}
+.tpmodal_modal .modal-content h5 {
+    margin-top: 0;
 }
 .tpmodal_modal .title {
     font-family: 'TradeGothicLTStdCnBold';
@@ -182,7 +185,7 @@
     background: rgb(167, 195, 194);
     display: inline-block;
     color: rgb(255, 255, 255);
-    padding: 0.5em 39px 0.5em 39px;
+    padding: 0.4em 39px 0.4em 39px;
     font-size: 24px;
     line-height: 1em;
     font-weight: normal;
