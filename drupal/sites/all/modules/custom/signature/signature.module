@@ -273,7 +273,7 @@ function signature_menu() {
  * Helper function for determining if a node collects signatures.
  */
 function signature_node_is_signature_action($node) {
-  return in_array($node->type, array('petition_action', 'pledge_action'));
+  return in_array($node->type, array('petition_action', 'pledge_action', 'mos_action'));
 }
 
 
@@ -496,6 +496,9 @@ function signature_node_form_values($form, $form_state) {
     elseif ($node->type === 'pledge_action') {
       $values['sign_label'] = 'Sign Now';
     }
+    elseif ($node->type === 'mos_action') {
+      $values['sign_label'] = 'Send Your Support!';
+    }
     else {
       $values['sign_label'] = 'Take Action';
     }
@@ -531,7 +534,7 @@ function signature_field_extra_fields_alter(&$info) {
 
   // Add signature progress and signature form extra fields to node types that
   // collect signatures.
-  foreach (array('petition_action', 'pledge_action') as $type) {
+  foreach (array('petition_action', 'pledge_action', 'mos_action') as $type) {
     $info['node'][$type]['display']['signature_progress_percent'] = array(
       'label' => t('Percentage to Goal'),
       'description' => t('Signature progress as a percentage of the goal.'),
@@ -1871,7 +1874,7 @@ function signature_api_create($nid) {
   }
 
   // Only petition and pledge actions have signatures
-  if ($node->type !== 'petition_action' && $node->type !== 'pledge_action') {
+  if (!signature_node_is_signature_action($node)) {
     return array(
       'status' => '400 Bad Request',
       'payload' => array(
