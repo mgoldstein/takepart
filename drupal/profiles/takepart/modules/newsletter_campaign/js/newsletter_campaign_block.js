@@ -11,6 +11,16 @@
         s.tl(true, 'o', 'Newsletter Signup');
       }
     );
+    $("body").bind(
+      'newsletter_signup', function(e, title) {
+        s.linkTrackVars = "eVar23,eVar30,events";
+        s.linkTrackEvents = "event39";
+        s.eVar23 = title;
+        s.eVar30 = s.pageName;
+        s.events = 'event39';
+        s.tl(true, 'o', 'Newsletter Signup');
+      }
+    );
     $(".takepart-newsletter-wrapper").each(function() {
       // setup the email input field to have a placeholder message
       $(".form-item-email > input", this).focus(function() {

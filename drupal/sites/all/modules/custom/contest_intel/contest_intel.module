@@ -12,6 +12,8 @@ define('AGREE_TO_RULES_FIELD_ID', 2885);
 define('AGREE_TO_SUBMISSION_FIELD_ID', 2992);
 define('AGREE_TO_SHARE_FIELD_ID', 2886);
 
+define('VOTE_FORM_ID', 229);
+
 function contest_intel_preprocess_markup($markup) {
   $allowed_tags = '<a><b><i><strong><em><br><br/><img><p><ul><ol><li>'
     . '<blockquote><hr><hr/><h1><h2><h3><h4><h5><h6>';
@@ -301,7 +303,7 @@ function contest_intel_entry_form($form, &$form_state, $config) {
   if (!isset($form['#pre_render'])) {
     $form['#pre_render'] = array();
   }
-  array_unshift($form['#pre_render'], 'contest_intel_entry_form_pre_render');
+  array_unshift($form['#pre_render'], 'contest_intel_form_pre_render');
 
   return $form;
 }
@@ -447,7 +449,7 @@ function contest_intel_entry_form_callback($form, &$form_state) {
   );
 }
 
-function contest_intel_entry_form_pre_render($element) {
+function contest_intel_form_pre_render($element) {
   $errors = form_get_errors();
   if ($errors) {
     foreach ($errors as $field => $error) {
@@ -483,4 +485,295 @@ function theme_contest_intel_inline_error_message($variables) {
     return '<label class="error" for="' . $element['#id'] . '">' . $element['#inline_error_message'] . '</label>' . $element['#children'];
   }
   return $element['#children'];
+}
+
+/**
+ * Configuration Defaults
+ */
+function contest_intel_vote_form_defaults($config) {
+
+  $default_config = array(
+    'vote_token' => '',
+    'vote_submit' => t('Confirm'),
+    'entry_opt_in' => t('I want to enter the Intel for Change Sweepstakes.'),
+    'agree_to_rules' => t("I agree to <a href=\"@rules\">Official Contest Rules</a>*.", array(
+      '@rules' => url('privacy-policy'),
+    )),
+    'terms_of_use' => t('<p class="email-notice">By confirming your vote below, you agree to receive emails from TakePart in relation to Intel for Change.</p>'),
+    'vote_accepted_message' => t(''),
+    'vote_rejected_message' => t(''),
+    'bsd_communication_error' => t(''),
+    'agree_to_rules_error' => t('Please agree to Official Rules.'),
+  );
+
+  foreach ($default_config as $name => $value) {
+    if (empty($config[$name])) {
+      $config[$name] = $value;
+    }
+  }
+
+  return $config;
+}
+
+/**
+ * Configuration form
+ */
+function contest_intel_vote_configuration($form, $config) {
+
+  $config = contest_intel_vote_form_defaults($config);
+
+  $form['vote_token'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Voting Token'),
+    '#default_value' => $config['vote_token'],
+  );
+
+  $form['vote_submit'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Confirm Caption'),
+    '#default_value' => $config['vote_submit'],
+  );
+
+  $form['entry_opt_in'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Entry opt-in label'),
+    '#default_value' => $config['entry_opt_in'],
+  );
+
+  $form['agree_to_rules'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Agree to rules opt-in label'),
+    '#default_value' => $config['agree_to_rules'],
+  );
+
+  $form['terms_of_use'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Terms of Use'),
+    '#default_value' => $config['terms_of_use'],
+  );
+
+  $form['vote_accepted_message'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Accepted message'),
+    '#default_value' => $config['vote_accepted_message'],
+  );
+
+  $form['vote_rejected_message'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Rejected message'),
+    '#default_value' => $config['vote_rejected_message'],
+  );
+
+  $form['bsd_communication_error'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('BSD communication error'),
+    '#default_value' => $config['bsd_communication_error'],
+  );
+
+  $form['agree_to_rules_error'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 1023,
+    '#title' => t('Agree to rules error'),
+    '#default_value' => $config['agree_to_rules_error'],
+  );
+
+  return $form;
+}
+
+function contest_intel_most_recent_vote($email) {
+  static $vote = NULL;
+  if (!isset($vote)) {
+    $vote = db_select('contest_intel_votes', 'v')
+      ->fields('v', array('token', 'timestamp'))
+      ->condition('email', $email)
+      ->orderBy('timestamp', 'DESC')
+      ->range(0, 1)
+      ->execute()
+      ->fetchAssoc();
+  }
+  return $vote;
+}
+
+function contest_intel_store_vote($email, $token) {
+  db_insert('contest_intel_votes')
+    ->fields(array(
+      'email' => $email,
+      'token' => $token,
+      'timestamp' => REQUEST_TIME,
+    ))
+    ->execute();
+}
+
+/**
+ * Voting form
+ */
+function contest_intel_vote_form($form, &$form_state, $config) {
+  global $user;
+
+  $config = contest_intel_vote_form_defaults($config);
+  $form_state['contest_intel_vote'] = $config;
+
+  $attributes = array(
+    'last_vote' => NULL,
+    'last_timestamp' => NULL,
+    'vote_allowed' => TRUE,
+    'vote_token' => $config['vote_token'],
+  );
+
+  if (user_is_logged_in() && isset($user->mail)) {
+    $vote = contest_intel_most_recent_vote($user->mail);
+
+    if ($vote !== FALSE) {
+      $attributes['last_vote'] = $vote['token'];
+      $attributes['last_timestamp'] = $vote['timestamp'];
+    }
+    $voting = bluestatedigital_get_service('voting');
+    $attributes['vote_allowed'] = $voting->checkEligibility($vote,
+      BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
+
+    $debug = print_r($attributes, TRUE);
+    watchdog('intel_contest_debug', $debug);
+  }
+  $form['#wordlet_attributes'] = $attributes;
+
+  $entry_opt_in_value = isset($form_state['values']['entry_opt_in'])
+    ? $form_state['values']['entry_opt_in'] : TRUE;
+  $form['entry_opt_in'] = array(
+    '#type' => 'checkbox',
+    '#title' => $config['entry_opt_in'],
+    '#default_value' => $entry_opt_in_value,
+  );
+
+  $form['agree_to_rules'] = array(
+    '#type' => 'checkbox',
+    '#title' => $config['agree_to_rules'],
+  );
+
+  $form['terms_of_use'] = array(
+    '#type' => 'markup',
+    '#markup' => contest_intel_preprocess_markup($config['terms_of_use']),
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => $config['vote_submit'],
+    '#ajax' => array(
+      'callback' => 'contest_intel_vote_form_callback',
+      'progress' => array(
+        'type' => 'throbber',
+        'message' => NULL,
+      ),
+    ),
+  );
+
+  if (!isset($form['#pre_render'])) {
+    $form['#pre_render'] = array();
+  }
+  array_unshift($form['#pre_render'], 'contest_intel_form_pre_render');
+
+  return $form;
+}
+
+/**
+ * Voting form validation
+ */
+function contest_intel_vote_form_validate($form, &$form_state) {
+
+  $config = $form_state['contest_intel_vote'];
+
+  $entry_opt_in = trim($form_state['values']['entry_opt_in']);
+  $agree_to_rules = trim($form_state['values']['agree_to_rules']);
+
+  // If the user wants to enter the sweepstakes.
+  if (!empty($entry_opt_in)) {
+    // The user must agree to the rules.
+    if (empty($agree_to_rules)) {
+      form_set_error('agree_to_rules', $config['agree_to_rules_error']);
+    }
+  }
+}
+
+/**
+ * Voting form submit
+ */
+function contest_intel_vote_form_submit($form, &$form_state) {
+  global $user;
+
+  if (user_is_logged_in() && isset($user->mail)) {
+
+    $config = $form_state['contest_intel_vote'];
+    $token = $config['vote_token'];
+
+    try {
+      $vote = contest_intel_most_recent_vote($user->mail);
+      $voting = bluestatedigital_get_service('voting');
+      $allowed = $voting->checkEligibility($vote,
+        BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
+
+      watchdog('intel_contest_allowed', $allowed);
+
+      if ($allowed) {
+        $opt_ins = array(
+          1 => !empty($form_state['values']['entry_opt_in']),
+          2 => !empty($form_state['values']['agree_to_rules']),
+        );
+        if ($voting->castVote(VOTE_FORM_ID, $user->mail, $token, $opt_ins)) {
+          contest_intel_store_vote($user->mail, $token);
+          $form_state['contest_intel_vote_signup_result'] = 'accepted';
+        }
+        else {
+          $form_state['contest_intel_vote_signup_result'] = 'error';
+        }
+      }
+      else {
+        $form_state['contest_intel_vote_signup_result'] = 'rejected';
+      }
+    }
+    catch (BlueStateDigitalApiException $ex) {
+      $form_state['contest_intel_vote_signup_result'] = 'error';
+      $message = 'Error processing vote [@code] @body';
+      watchdog('contest_intel', $message, array(
+        '@code' => $ex->getResponseCode(),
+        '@body' => $ex->getResponseBody(),
+      ));
+    }
+  }
+  else {
+    $form_state['contest_intel_vote_signup_result'] = 'not-logged-in';
+  }
+}
+
+/**
+ * Voting form AJAX callback
+ */
+function contest_intel_vote_form_callback($form, &$form_state) {
+
+  // Standard form submission stuff.
+  $commands = array();
+
+  $markup = drupal_render($form);
+  $selector = '#' . $form_state['complete form']['#id'];
+  $commands[] = ajax_command_replace($selector, $markup);
+
+  $errors = form_get_errors();
+  if (empty($errors)) {
+    $commands[] = ajax_command_settings(array(
+      'contest_intel' => array(
+        'vote_result' => $form_state['contest_intel_vote_signup_result'],
+      )
+    ));
+  }
+
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
 }

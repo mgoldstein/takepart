@@ -672,7 +672,11 @@ class BlueStateDigitalApi {
   protected function convertTimestamp($timestamp) {
     // If the timestamp is not already in UNIX time, convert it to UNIX time.
     if (!preg_match('/^[0-9]+$/', $timestamp)) {
-      return strtotime($timestamp);
+      $tz = date_default_timezone_get();
+      date_default_timezone_set('UTC');
+      $unixtime = strtotime($timestamp);
+      date_default_timezone_set($tz);
+      return $unixtime;
     }
     return (int) $timestamp;
   }
@@ -690,10 +694,11 @@ class BlueStateDigitalApi {
    *
    * @throws BlueStateDigitalApiException
    */
-  protected function checkNoContentResponse($response) {
+  protected function checkNoContentResponse($response,
+    $code = self::HTTP_CODE_NO_CONTENT) {
 
     // Check the response code.
-    if ($response['http_code'] != self::HTTP_CODE_NO_CONTENT) {
+    if ($response['http_code'] != $code) {
       throw new BlueStateDigitalApiException(
         'Unexpected response content.',
         BlueStateDigitalApiException::FAILED_RESPONSE_CODE,

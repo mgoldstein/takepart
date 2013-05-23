@@ -10,7 +10,7 @@
 function takepart_custom_default_box() {
   $export = array();
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-1104adce';
@@ -24,7 +24,7 @@ function takepart_custom_default_box() {
   );
   $export['box-1104adce'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-66c05d6f';
@@ -33,12 +33,12 @@ function takepart_custom_default_box() {
   $box->description = 'GA: ROS Top Right';
   $box->options = array(
     'ga_ad_slot' => 'TP3_ROS_RR_ATF_300x250',
-    'ga_ad_gpt_id' => 'div-gpt-ad-1340672916662-0',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1367970740963-0',
     'additional_classes' => 'block-boxes-ga_ad',
   );
   $export['box-66c05d6f'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'box-7fa6e22c';
@@ -48,11 +48,12 @@ function takepart_custom_default_box() {
   $box->options = array(
     'view' => 'photo_galleries--block_2',
     'settings' => array(
-      'nid' => '20908+21091+19625',
+      'nid' => '33541+30259+34847',
     ),
     'view_object' => NULL,
     'view_more_text' => '',
     'view_more_link' => '',
+    'expose_filters' => 0,
     'additional_classes' => '',
   );
   $export['box-7fa6e22c'] = $box;

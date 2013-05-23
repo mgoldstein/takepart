@@ -1,28 +1,23 @@
 <?php
-  /**
-   *  Variables defined in takeart_newsletter_signup.module
-   *
-   *  $promo_text - promotional text
-   *  $signup_form - the rendered form html  
-   *  $form_id - for ajax purposes
-   */
- 
+  $id = $variables['ncid'];
+  $body_wrapper_id = "takepart-newsletter-{$id}-body";
+  $form_wrapper_id = "wrapper-form-{$id}";
+  $result_wrapper_id = "takepart-newsletter-{$id}-results";
 ?>
 <div class="takepart-newsletter-wrapper">
-  <div id="takepart-newsletter-<?php print $form_id; ?>-body">
-    <div class="takepart-newsletter-promo-text"><?php
-      print $promo_text;
-    ?></div>
+  <div id="<?= $body_wrapper_id ?>">
+    <div class="takepart-newsletter-promo-text">
+      <?php echo $variables['body'] ?>
+    </div>
     <div class="takepart-newsletter-form">
-      <div id="wrapper-form-<?php print $form_id; ?>">
-        <?php print drupal_render($signup_form); ?>
+      <div id="<?= $form_wrapper_id ?>">
+        <?php echo drupal_render($variables['form']); ?>
       </div>
     </div>
-    <div class="takepart-newsletter-terms"><?php
-      print l(t("Terms & Conditions"), "terms-of-use",
-        array('attributes'=>array('target'=>'_blank')));
-    ?></div>
+    <div class="takepart-newsletter-terms">
+      <?php echo drupal_render($variables['tos_link']); ?>
+    </div>
   </div>
-  <div id="takepart-newsletter-<?php print $form_id; ?>-results"
-    class="takepart-newsletter-message"></div>
+  <div id="<?= $result_wrapper_id ?>" class="takepart-newsletter-message">
+  </div>
 </div>

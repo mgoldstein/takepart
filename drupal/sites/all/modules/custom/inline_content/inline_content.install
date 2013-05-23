@@ -1,0 +1,64 @@
+<?php
+/**
+ * @file
+ * Sets up the base table for the signature entity and a table to store
+ * information about the entity types.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function inline_content_schema() {
+  $schema = array();
+
+  $schema['inline_content'] = array(
+    'description' => 'The base table for inline content entities.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key identifier for the replacement.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'type' => array(
+        'description' => 'The type of the replacement.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'label' => array(
+        'description' => 'The display label of the replacement.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'language' => array(
+        'description' => 'The {languages}.language of the replacement.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the replacement was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'changed' => array(
+        'description' => 'The Unix timestamp when the replacement was last changed.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'indexes' => array(
+      'type' => array('type'),
+    ),
+  );
+
+  return $schema;
+}

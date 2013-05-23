@@ -57,6 +57,11 @@
 						<div class="tp-social tp-social-skip"></div>
 					</section>
 
+					<section id="more">
+						<h2>More</h2>
+						<p id="article-more-shares"></p>
+					</section>
+
 					<section id="lazy-load">
 						<h2>Lazy Load</h2>
 						<div class="tp-social tp-lazy-load"></div>
@@ -73,9 +78,9 @@
 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.js" defer="defer"></script>
 <script type="text/javascript" src="http://jp1.dev.takepart.com/profiles/takepart/themes/takepart3/js/analytics.js?mjzh5o" defer="defer"></script>
-<script type="text/javascript" src="http://jp1.dev.takepart.com/profiles/takepart/themes/takepart3/js/script.js?mjzh5o" defer="defer"></script>
+<script type="text/javascript" src="http://article-redesign.dev.takepart.com/sites/all/themes/chunkpart/js/script.js?ml0ddw" defer="defer"></script>
 <script type="text/javascript" src="http://jp1.dev.takepart.com/profiles/takepart/themes/takepart3/js/jquery.lazyload.js?mjzh5o" defer="defer"></script>
-<script type="text/javascript" src="http://jp1.dev.takepart.com/profiles/takepart/themes/takepart3/js/tpsocial.jquery.js?mjzh5o" defer="defer"></script>
+<script type="text/javascript" src="http://article-redesign.dev.takepart.com/sites/all/themes/chunkpart/js/tpsocial.jquery.js?ml0ddw" defer="defer"></script>
 <script type="text/javascript" src="http://jp1.dev.takepart.com/profiles/takepart/themes/takepart3/js/tpautoTab.jquery.js?mjzh5o" defer="defer"></script>
 <script type="text/javascript" src="http://jp1.dev.takepart.com/profiles/takepart/themes/takepart3/js/tpmodal.jquery.js?mjzh5o" defer="defer"></script>
 <script type="text/javascript" src="http://jp1.dev.takepart.com/profiles/takepart/themes/takepart3/js/tpsticky.jquery.js?mjzh5o" defer="defer"></script>
