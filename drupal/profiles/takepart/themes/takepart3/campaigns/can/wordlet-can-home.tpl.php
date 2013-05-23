@@ -26,16 +26,6 @@
 						<? $w2 = w($w->token . '_vote_button') ?>
 						<a href='vote_<?=w($w->token)?>' class="vote" <?=wa($w->token . '_vote_button')?>><?=$w2->single(false)?></a>
 						<div class="modal-wrapper">
-							<? if(!user_is_logged_in()): ?>
-							<div class="modal facebook-signup">
-								<? $w2 = w('fb_signup_modal') ?>
-								<h4 class='title'><?=$w2->single(false)?></h4>
-								<div class='cms modal-content'><?=$w2->multi(false)?></div>
-								<div class='fb-connect-wrapper'>
-									<?=_takepart_facebookapis_getfblogin("can#vote_".$w->token)?>
-								</div>
-							</div>
-							<? else: ?>
 							<div class="modal vote-form">
 								<? $w2 = w($w->token . '_confirm_modal') ?>
 								<h4 class='title'><?=$w2->single(false)?></h4>
@@ -45,7 +35,6 @@
 								</div>
 								<span class='cancel'>Cancel</span>
 							</div>
-							<? endif ?>
 
 							<div class="modal thank-you">
 								<? $w2 = w($w->token . '_thank_you_modal') ?>
