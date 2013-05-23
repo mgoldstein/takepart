@@ -94,6 +94,7 @@
 								</script>
 								</div>
 								<div class="info cms">
+									<span class="headline"><?=$w2->single(false)?></span>
 									<?=$w2->multi(false)?>
 								</div>
 							</div>
