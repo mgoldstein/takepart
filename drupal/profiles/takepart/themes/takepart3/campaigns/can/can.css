@@ -264,6 +264,12 @@
 .tpmodal_modal .cancel:active {
     border-color: rgb(157, 205, 232);
 }
+.tpmodal_modal .terms-of-use {
+    font-weight: normal;
+    font-size: 12px;
+    margin-bottom: 1em;
+    color: #000;
+}
 
 /* # Home Content
 ================================================== */
