@@ -497,6 +497,9 @@
     float: left;
     margin-right: -100%;
 }
+.page-wordlet-can-home .chapters .chapter .section-menu img {
+    max-width: 100%;
+}
 .page-wordlet-can-home .chapters .chapter .sections {
     display: inline-block; *display: inline; *zoom: 1;
     float: left;
