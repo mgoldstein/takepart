@@ -16,6 +16,8 @@ $(function() {
         var $chapters = $chaptersWrapper.children().hide();
         var $sectionNavs = $('.chapter .section-menu');
         var currentChapter;
+        var voteComplete = false;
+        var $currentModals = [];
         var modalHash = 'vote_';
         var $hashChapter = $chapterNav.find('.chapter').filter('[href="' + window.location.href.replace(modalHash, '') + '"]');
         var loadVideo = function($vidWrapper){
@@ -78,10 +80,13 @@ $(function() {
 
         var voteBtnHandler = function(e){
             e.preventDefault();
-            var $voteModalWrapper = $(this).parent('.vote-wrapper').find('.modal-wrapper');
+            var $voteModalWrapper = $(' .modal-wrapper', '.chapter.' + currentChapter);
             var $fbModalContent = $('.facebook-signup', $voteModalWrapper);
             var $confirmModalContent = $('.vote-form', $voteModalWrapper);
             var $contentToShow = $fbModalContent.length > 0 ? $fbModalContent : $confirmModalContent;
+            if (voteComplete) {
+            	$contentToShow = $('.voting-rejected', $voteModalWrapper);
+            }
             showVoteModal($contentToShow);
         }
 
@@ -100,9 +105,11 @@ $(function() {
                 if (vote_result === 'accepted'){
                     // show thank you modal
                     $contentToShow = $('.thank-you', $voteModalWrapper);
+                    voteComplete = true;
                 } else if(vote_result === 'rejected'){
                     // show rejected modal
                     $contentToShow = $('.voting-rejected', $voteModalWrapper);
+                    voteComplete = true;
                 }
                 showVoteModal($contentToShow);
             }
@@ -110,9 +117,14 @@ $(function() {
 
         var showVoteModal = function(contentToShow){
             var $voteModalWrapper = $(' .modal-wrapper', '.chapter.' + currentChapter);
+
             $.tpmodal.show({node: contentToShow, afterClose: function() {
-                $voteModalWrapper.append(contentToShow);
+                $.each($currentModals, function(i, e){
+					$voteModalWrapper.append($(e));
+	        	});
+	        	$currentModals = [];
             }});
+            $currentModals.push(contentToShow);
         }
 
         /* hide modal containers */
