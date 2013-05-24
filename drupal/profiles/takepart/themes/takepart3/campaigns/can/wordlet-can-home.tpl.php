@@ -51,7 +51,7 @@
 							</div>
 
 							<div class="modal voting-rejected">
-								<? $w2 = w($w->token . '_rejected_modal') ?>
+								<? $w2 = w('rejected_modal') ?>
 								<h4 class='title'><?=$w2->single(false)?></h4>
 								<div class='cms modal-content'><?=$w2->multi(false)?></div>
 							</div>
@@ -117,7 +117,7 @@
 					<p <?=wa($w->token . '_vote_form')?>>Edit <?=$w->token?> Vote Form</p>
 					<p <?=wa($w->token . '_thank_you_modal')?>>Edit <?=$w->token?> Thank You Modal</p>
 					<p <?=wa($w->token.'_add_this')?>>Edit <?=$w->token?> Add This Block</p>
-					<p <?=wa($w->token . '_rejected_modal')?>>Edit <?=$w->token?> Rejected Modal</p>
+					<p <?=wa('rejected_modal')?>>Edit Rejected Modal</p>
 					<p <?=wa('error_modal')?>>Edit Error Modal</p>
 				<? endif ?>
 
