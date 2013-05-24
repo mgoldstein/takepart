@@ -172,6 +172,10 @@
     overflow: visible;
     max-width: 500px;
 }
+.tpmodal_modal .tpmodal_content {
+    min-width: 460px;
+    _width: 460px;
+}
 .tpmodal_modal .tpmodal_content .modal {
     padding: 46px 3px 3px 3px;
 }
