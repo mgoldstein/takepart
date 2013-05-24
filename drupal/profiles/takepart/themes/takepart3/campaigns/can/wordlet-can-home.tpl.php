@@ -22,8 +22,9 @@
 				<div class="header">
 					<? $w2 = w($w->token . '_headline') ?>
 					<h3 <?=wa($w->token . '_headline')?>><?=$w2->single(false)?></h3>
+					<? $w2 = w($w->token . '_vote_button') ?>
+					<? if ($w2->active): ?>
 					<div class="vote-wrapper">
-						<? $w2 = w($w->token . '_vote_button') ?>
 						<a href='vote_<?=w($w->token)?>' class="vote" <?=wa($w->token . '_vote_button')?>><?=$w2->single(false)?></a>
 						<div class="modal-wrapper">
 							<div class="modal vote-form">
@@ -63,6 +64,7 @@
 							</div>
 						</div>
 					</div>
+					<?endif?>
 				</div>
 				<div class="chapter-info" <?=wa($w->token . '_sections')?>>
 					<div class="section-menu">
