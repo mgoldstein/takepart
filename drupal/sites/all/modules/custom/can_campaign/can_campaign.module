@@ -151,8 +151,8 @@ function can_campaign_send_to_mailchimp($email) {
   if ($api->errorCode) {
     $message = 'Error sending email signup to MailChimp [@code] @body';
     watchdog('can_campaign', $message, array(
-      '@code' => $ex->getResponseCode(),
-      '@body' => $ex->getResponseBody(),
+      '@code' => $api->errorCode,
+      '@body' => $api->errorMessage,
     ));
     return FALSE;
   }
