@@ -782,7 +782,7 @@ function newsletter_campaign_social_form_callback($form, $form_state) {
 
     // Fire the analytics events.
     $commands[] = ajax_command_invoke('body', 'trigger', array(
-      'newsletter_signup', array(check_plain($newsletter->title)),
+      'newsletter_social_signup', array(check_plain($newsletter->title)),
     ));
 
     // The signup was sent to BSD.

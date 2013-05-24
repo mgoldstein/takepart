@@ -12,7 +12,7 @@
       }
     );
     $("body").bind(
-      'newsletter_signup', function(e, title) {
+      'newsletter_social_signup', function(e, title) {
         s.linkTrackVars = "eVar23,eVar30,events";
         s.linkTrackEvents = "event39";
         s.eVar23 = title;
