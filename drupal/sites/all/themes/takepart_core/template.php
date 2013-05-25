@@ -192,6 +192,7 @@ function _s($var, $prop = NULL, $type = 'node') {
     return $var['safe_value'];
   } elseif ( is_object($var) && $prop ) {
     $ret = field_get_items($type, $var, $prop);
+    if ( is_array($ret[0]) ) return _s($ret[0]);
     return $ret[0];
   // Avoid doing ->value()
   } elseif ( is_object($var) && get_class($var) == 'EntityValueWrapper' ) {
@@ -209,6 +210,8 @@ function _s($var, $prop = NULL, $type = 'node') {
 function _surl($var, $prop = NULL, $type = 'node') {
   if ( is_array($var) && isset($var[0]) && isset($var[0]['node']) ) {
     return url('node/' . $var[0]['node']->nid);
+  } elseif ( is_array($var) && isset($var[0]) && isset($var[0]['nid']) ) {
+    return url('node/' . $var[0]['nid']);
   } elseif ( is_array($var) && isset($var['node']) ) {
     return url('node/' . $var['node']->nid);
   } elseif ( is_object($var) && isset($var->_surl) ) {
@@ -242,10 +245,15 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
     $var = $var->value();
   }
 
-  if ( isset($var['type']) && $var['type'] == 'image') {
+  if ( isset($var['file']) ) {
+    $image = (array)$var['file'];
+  } elseif ( isset($var['type']) && $var['type'] == 'image') {
     $image = $var;
   } elseif ( isset($var[0]) && isset($var[0]['file']) ) {
     $image = (array)$var[0]['file'];
+  } elseif ( isset($var[0]) && isset($var[0]['fid']) ) {
+    $image = file_load($var[0]['fid']);
+    $image = (array)$image;
   } elseif ( isset($var[0]) ) {
     $image = $var[0];
   } else {
@@ -296,7 +304,12 @@ function _smenu($menu) {
 }
 
 // Get a node
-function _snode($var) {
+function _snode($var, $prop = null, $type = 'node') {
+  if ( is_object($var) && $prop ) {
+    $var = field_get_items($type, $var, $prop);
+    return $var;
+  }
+
   if ( isset($var[0]) ) {
     return $var[0]['node'];
   }
@@ -331,8 +344,8 @@ function _seach(&$var /*, $prop = null, $type = 'node'*/ ) {
   }
 
   $taxonomy_term = null;
-  if( isset($ea['taxonomy_term']) ) {
-    $taxonomy_term = $ea['taxonomy_term'];
+  if ( isset($ea['tid']) ) {
+    $taxonomy_term = taxonomy_term_load($ea['tid']);
   } elseif ( isset($ea['taxonomy_term']) ) {
     $taxonomy_term = $ea['taxonomy_term'];
   }

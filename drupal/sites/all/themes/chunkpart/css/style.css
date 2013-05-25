@@ -99,6 +99,11 @@ body #at16pt {
 
 /* Right Rail */
 
+#site-secondary {
+	width: 15em;
+	float: right;
+}
+
 #site-secondary .block {
 	margin-bottom: 1em;
 }
@@ -450,11 +455,6 @@ div.takepart-take-action-widget {
 
 .node-type-article .unpublished #article-main-inner {
 	background: #fff4f4;
-}
-
-.node-type-article #site-secondary {
-	width: 15em;
-	float: right;
 }
 
 .node-type-article #article-sidebar {
@@ -1260,6 +1260,18 @@ div.takepart-take-action-widget {
 	font-size: 11px;
 	vertical-align: bottom;
 }
+
+/* Gallery Page
+------------------------------------------------------------ */
+
+.node-type-openpublish-photo-gallery #site-top {
+	display: none;
+}
+
+.node-type-openpublish-photo-gallery #gallery-body .drupal-embed {
+	display: none;
+}
+
 
 /* ============================================================
 || 5.) Media Queries

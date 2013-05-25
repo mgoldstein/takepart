@@ -1,85 +1,71 @@
-<article id="article-main" class="<?=!$node->status ? 'unpublished':'' ?>">
-	<div id="article-main-inner">
-		<header id="article-header">
-			<h1 id="article-headline"><?=_s($title) ?></h1>
-			<p id="article-abstract"><?=_s($field_article_subhead) ?></p>
+<article id="gallery-main" class="<?=!$node->status ? 'unpublished':'' ?>">
+	<div id="gallery-main-inner">
+		<header id="gallery-header">
+			<h1 id="gallery-headline"><?=_s($node->title) ?></h1>
+			<p id="gallery-abstract"><?=_s($node, 'field_subhead') ?></p>
 			<div class="secondary">
-				<? if ( list($key, $badge) = _seach($field_significance) ): ?>
-					<p id="article-badge"><a href="<?=_surl($badge)?>"><?=$badge->name?></a></p>
-				<? endif ?>
-				<p id="article-date"><?=date('F j, Y', $node->created)?></p>
-				<ul id="article-author-names">
-					<? while ( list($key, $author) = _seach($field_author) ): ?>
-						<li class="<?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
-							<a href="<?=_surl($author)?>" rel="author"><?=$author->title ?></a>
-						</li>
-					<? endwhile ?>
+				<p id="gallery-date"><?=date('F j, Y', $node->created)?></p>
+
+				<ul id="gallery-author-names">
+					<? if ( $authors = _snode($node, 'field_author') ): ?>
+						<? while ( list($key, $author) = _seach($authors) ): ?>
+							<li class="<?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
+								<a href="<?=_surl($author)?>" rel="author"><?=$author->title ?></a>
+							</li>
+						<? endwhile ?>
+					<? endif ?>
 				</ul>
 			</div>
 		</header>
 
-		<div id="article-sidebar">
-			<aside id="article-social" class="social"><div class="inner">
-				<div id="article-tab">
+		<div id="gallery-sidebar">
+			<aside id="gallery-social" class="social"><div class="inner">
+				<div id="gallery-tab">
 					<p class="takepart-take-action"></p>
 				</div><!--
-				--><div class="tp-social" id="article-share"></div>
-				<p id="article-comments-link" class="comments-link">
-					<a href="#article-comments"><?=t('Comments') ?><span class="count"></span></a>
+				--><div class="tp-social" id="gallery-share"></div>
+				<p id="gallery-comments-link" class="comments-link">
+					<a href="#gallery-comments"><?=t('Comments') ?><span class="count"></span></a>
 				</p>
-				<div id="article-social-more">
-					<h4 class="trigger"><a href="#article-more-shares">More</a></h4>
-					<div id="article-more-shares">
+				<div id="gallery-social-more">
+					<h4 class="trigger"><a href="#gallery-more-shares">More</a></h4>
+					<div id="gallery-more-shares">
 						<h5 class="header"><?=t('Share with your friends') ?></h5>
 						<p></p>
 					</div>
 				</div>
 			</div></aside>
-
-			<aside id="article-author"><div class="inner">
-				<? if ( $author = _snode($field_author) ): ?>
-					<p class="image">
-						<?=_simage($author, 'field_profile_photo')?>
-					</p>
-					<h3 class="headline"><?=$author->title ?></h3>
-
-					<? if ( $abody = _s($author, 'body') ): ?>
-						<div class="body">
-							<?=$abody['summary'] ?>
-							<p class="full_bio_link">
-								<a href="<?=_surl($field_author)?>"><?=t('Full Bio') ?></a>
-							</p>
-						</div>
-					<? endif ?>
-
-					<? if ( ($aftwitter = _s($author, 'field_follow_twitter')) && ($afgoogle = _s($author, 'field_follow_google')) ): ?>
-						<h4 class="follow_headline"><?=t('Follow Me') ?></h4>
-						<ul class="follow">
-							<? if ( $aftwitter['url'] ): ?>
-								<li class="twitter"><a href="<?=$aftwitter['url'] ?>"><?=$aftwitter['title'] ?></a></li>
-							<? endif ?>
-
-							<? if ( $afgoogle['url'] ): ?>
-								<li class="google"><a href="<?=$afgoogle['url'] ?>"><?=$afgoogle['title'] ?></a></li>
-							<? endif ?>
-						</ul>
-					<? endif ?>
-				<? endif ?>
-			</div></aside>
 		</div>
 
-		<div id="article-content">
-			<?=render($content['field_article_main_image']);?>
+		<div id="gallery-content">
+Cover Page:
+			<?=_simage($node, 'field_thumbnail') ?>
 
 			<? if ( $content['body'] ): ?>
-				<div id="article-body" class="cms">
+				<div id="gallery-body" class="cms">
 					<?=render($content['body'])?>
 				</div>
 			<? endif ?>
+Gallery:
+			<ul>
+				<? if ( $images = _snode($node, 'field_gallery_images') ): ?>
+					<? while ( list($key, $image) = _seach($images) ): ?>
+						<li>
+							<figure>
+								<?=_simage($image) ?>
+								<figcaption>
+									<?=_s($image['file'], 'field_image_title', 'file') ?>
+									<?=_s($image['file'], 'field_media_caption', 'file') ?>
+								</figcaption>
+							<figure>
+						</li>
+					<? endwhile ?>
+				<? endif ?>
+			</ul>
 
-			<footer id="article-footer">
+			<footer id="gallery-footer">
 				<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
-					<nav id="article-related">
+					<nav id="gallery-related">
 						<h3><?=t('Related stories on TakePart:') ?></h3>
 						<ul>
 							<? while ( list($key, $related) = _seach($relateds) ): ?>
@@ -89,33 +75,38 @@
 					</nav>
 				<? endif ?>
 
-				<? if ( $next_article): ?>
+				<? if ( $next_gallery ): ?>
 					<nav id="next-article">
-						<a href="<?=$next_article->href ?>">
-							<h3 class="headline"><?=t('Next Article') ?></h3><!--
-							--><p><?=$next_article->title ?></p>
+						<a href="<?=$next_gallery->href ?>">
+							<?=_simage($next_gallery->node, 'field_thumbnail') ?>
+							<p><?=_s($next_gallery->title) ?></p>
+							<h3 class="headline"><?=t('Enter Photo Gallery') ?></h3>
 						</a>
 					</nav>
 				<? endif ?>
 
-				<nav id="article-tags">
+				<nav id="gallery-tags">
 					<h3 class="headline">
 						<?=t('Get More:') ?>
 					</h3>
 
 					<ul>
-						<? while ( list($key, $tag) = _seach($field_topic) ): ?>
-							<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
-						<? endwhile ?>
+						<? if ( $field_topic = _snode($node, 'field_topic') ): ?>
+							<? while ( list($key, $tag) = _seach($field_topic) ): ?>
+								<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
+							<? endwhile ?>
+						<? endif ?>
 
-						<? while ( list($key, $tag) = _seach($field_free_tag) ): ?>
-							<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
-						<? endwhile ?>
+						<? if ( $field_free_tag = _snode($node, 'field_free_tag') ): ?>
+							<? while ( list($key, $tag) = _seach($field_free_tag) ): ?>
+								<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
+							<? endwhile ?>
+						<? endif ?>
 					</ul>
 				</nav>
 			</footer>
 
-			<div id="article-comments">
+			<div id="gallery-comments">
 				<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
 			</div>
 		</div>
