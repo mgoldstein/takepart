@@ -111,6 +111,7 @@ Gallery:
 			</div>
 		</div>
 	</div>
+Topic:
 	<? if ( $field_topic_box ): ?>
 		<aside id="topic_box">
 			<ul>
