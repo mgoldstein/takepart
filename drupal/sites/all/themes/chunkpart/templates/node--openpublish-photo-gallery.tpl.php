@@ -128,6 +128,5 @@ Topic:
 				<? endwhile ?>
 			</ul>
 		</aside>
-		<pre><? _l($field_topic_box) ?></pre>
 	<? endif ?>
 </article>
