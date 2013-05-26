@@ -112,7 +112,7 @@ Gallery:
 		</div>
 	</div>
 Topic:
-	<? if ( $field_topic_box ): ?>
+	<? if ( $field_topic_box = _snode($node, 'field_topic_box') ): ?>
 		<aside id="topic_box">
 			<ul>
 				<? while ( list($key, $topic) = _seach($field_topic_box) ): ?>
@@ -128,5 +128,6 @@ Topic:
 				<? endwhile ?>
 			</ul>
 		</aside>
+		<pre><? _l($field_topic_box) ?></pre>
 	<? endif ?>
 </article>
