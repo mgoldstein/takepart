@@ -94,6 +94,9 @@
 			<ul>
 				<? if ( $images = _snode($node, 'field_gallery_images') ): ?>
 					<? while ( list($key, $image) = _seach($images) ): ?>
+						<!--
+<? var_dump($image) ?>
+						-->
 						<li class="slide<?=$key ?>">
 							<figure>
 								<?=_simage($image) ?>
