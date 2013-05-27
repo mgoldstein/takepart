@@ -1272,6 +1272,9 @@ div.takepart-take-action-widget {
 	display: none;
 }
 
+.js #gallery-photos {
+	display: none;
+}
 
 /* ============================================================
 || 5.) Media Queries

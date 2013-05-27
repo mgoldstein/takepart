@@ -180,6 +180,11 @@ $(function() {
 				e.preventDefault();
 			})
 			;
+	} else if ( $body.is('.node-type-openpublish-photo-gallery') ) {
+		$('#gallery-cover .enter a').bind('click', function() {
+			$('#gallery-cover').hide();
+			$('#gallery-photos').show();
+		});
 	}
 });
 
