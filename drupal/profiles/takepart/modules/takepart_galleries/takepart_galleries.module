@@ -126,6 +126,26 @@ function _takepart_galleries_fix_urls(&$item, $key) {
 }
 
 /**
+ * Similar to above, helper function to get slide's token
+ */
+function _takepart_galleries_get_token($title, $filename) {
+  $token = '';
+
+  if ( $title ) {
+    $token = strtolower(ereg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", $title)));
+  }
+
+  if ( $token == '' && $filename ) {
+    $filename = strtok($filename, ".");
+    if($filename) {
+      $token = strtolower($filename);
+    }
+  }
+
+  return $token;
+}
+
+/**
  * Return JSON for specified gallery
  */
 function _takepart_galleries_mappings_json($nid) {

@@ -1,3 +1,5 @@
+<!-- Gallery start -->
+
 <div id="gallery-main" class="<?=!$node->status ? 'unpublished':'' ?>">
 	<article id="gallery-cover">
 		<aside id="gallery-cover-social" class="social">
@@ -15,9 +17,9 @@
 			</div>
 		</div>
 
-		<? if ( $content['body'] ): ?>
+		<? if ( $body = _snode($node, 'field_body') ): ?>
 			<div id="gallery-body" class="cms">
-				<?=render($content['body'])?>
+				<?=_s($body)?>
 			</div>
 		<? endif ?>
 
@@ -94,10 +96,7 @@
 			<ul>
 				<? if ( $images = _snode($node, 'field_gallery_images') ): ?>
 					<? while ( list($key, $image) = _seach($images) ): ?>
-						<!--
-<? var_dump($image) ?>
-						-->
-						<li class="slide<?=$key ?>">
+						<li class="slide<?=$key ?>" data-token="<?=_takepart_galleries_get_token(_s($image['file'], 'field_image_title', 'file'), $image['file']->filename) ?>">
 							<figure>
 								<?=_simage($image) ?>
 								<figcaption>
@@ -139,3 +138,5 @@
 		</footer>
 	</article>
 </div>
+
+<!-- /Gallery start -->
