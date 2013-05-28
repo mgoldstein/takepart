@@ -210,7 +210,7 @@ $(function() {
 			history.pushState(null, null, base_url + '/' + token);
 		};
 
-		$('#gallery-cover .enter a').bind('click', function() {
+		$('#gallery-cover .enter-link').bind('click', function() {
 			$('#gallery-cover').hide();
 			$('#gallery-photos').show();
 			var slide_callback = function($current) {

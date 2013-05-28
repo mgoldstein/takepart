@@ -5,14 +5,16 @@
 				<h3 class="headline"><?=t('Share Gallery') ?></h3>
 				<div class="tp-social" id="gallery-cover-share"></div>
 			</aside>
-			<p class="image">
-				<?=_simage($node, 'field_thumbnail') ?>
-			</p>
-			<div class="content">
-				<p class="description"><?=t('Photo Gallery') ?></p>
-				<h1 class="headline"><?=_s($node->title) ?></h1>
-				<p class="enter"><a href="#gallery-photos"><?=t('Enter Photo Gallery') ?></a></p>
-			</div>
+			<a href="#gallery-photos" class="enter-link">
+				<p class="image">
+					<?=_simage($node, 'field_thumbnail') ?>
+				</p>
+				<div class="content">
+					<p class="description"><?=t('Photo Gallery') ?></p>
+					<h1 class="headline"><?=_s($node->title) ?></h1>
+					<p class="enter"><?=t('Enter Photo Gallery') ?></p>
+				</div>
+			</a>
 		</div>
 
 		<div id="gallery-cover-content">
