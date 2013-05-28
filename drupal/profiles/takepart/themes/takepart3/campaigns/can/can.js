@@ -27,6 +27,13 @@ $(function() {
 	            $videotpl.parent().append($video);
 	        }
         }
+        var resetModals = function(){
+        	var $voteModalWrapper = $(' .modal-wrapper', '.chapter.' + currentChapter);
+        	$.each($currentModals, function(i, e){
+				$voteModalWrapper.append($(e));
+        	});
+        	$currentModals = [];
+        }
         var chapterMenuHandler = function(e){
             if ($(this).is('.active')){
                 return;
@@ -115,13 +122,7 @@ $(function() {
                 showVoteModal($contentToShow);
             }
         }
-        var resetModals = function(){
-        	var $voteModalWrapper = $(' .modal-wrapper', '.chapter.' + currentChapter);
-        	$.each($currentModals, function(i, e){
-				$voteModalWrapper.append($(e));
-        	});
-        	$currentModals = [];
-        }
+
         var showVoteModal = function(contentToShow){
             $.tpmodal.show({node: contentToShow, afterClose: function() {
                 resetModals();
