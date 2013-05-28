@@ -28,42 +28,6 @@ $('.tabs-toolbar li').appendTo('.toolbar-shortcuts ul');
 
 // Document Ready
 $(function() {
-	// Social share buttons
-	var tp_social_defaults = {
-		services: [
-			{name: 'facebook'},
-			{
-				name: 'twitter',
-				text: '{{title}}',
-				via: 'TakePart'
-			},
-			{name: 'googleplus'},
-			{name: 'reddit'},
-			{name: 'email'}
-		]
-	};
-
-	$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_defaults);
-
-	$('#article-more-shares p').tpsocial({
-		services: [
-			/*{
-				name: 'more',
-				services_compact: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-				services_expanded: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-				services_exclude: 'facebook,twitter,google_plusone,reddit,email'
-			},*/
-			{name: 'myspace'},
-			{name: 'delicious'},
-			{name: 'linkedin'},
-			{name: 'myaol'},
-			{name: 'live'},
-			{name: 'digg'},
-			{name: 'stumbleupon'},
-			{name: 'hyves'}
-		]
-	});
-
     // Make tpinfographic stuff
     $('.tpinfographic').each(function() {
         var $this = $(this);
@@ -148,6 +112,42 @@ $(function() {
 	/* --------------------------------
 	| Page Specific ---------------- */
 	if ( $body.is('.node-type-article') ) {
+		// Social share buttons
+		var tp_social_config = {
+			services: [
+				{name: 'facebook'},
+				{
+					name: 'twitter',
+					text: '{{title}}',
+					via: 'TakePart'
+				},
+				{name: 'googleplus'},
+				{name: 'reddit'},
+				{name: 'email'}
+			]
+		};
+
+		$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+
+		$('#article-more-shares p').tpsocial({
+			services: [
+				/*{
+					name: 'more',
+					services_compact: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
+					services_expanded: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
+					services_exclude: 'facebook,twitter,google_plusone,reddit,email'
+				},*/
+				{name: 'myspace'},
+				{name: 'delicious'},
+				{name: 'linkedin'},
+				{name: 'myaol'},
+				{name: 'live'},
+				{name: 'digg'},
+				{name: 'stumbleupon'},
+				{name: 'hyves'}
+			]
+		});
+
 		takepart.analytics.skip_addthis = true;
 		$('#article-author').css('padding-top', $('#article-social').outerHeight());
 
@@ -183,6 +183,23 @@ $(function() {
 	} else if ( $body.is('.node-type-openpublish-photo-gallery') ) {
 		var $slides = $('#gallery-content ul');
 		var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
+		// Social share buttons
+		var tp_social_config = {
+			services: [
+				{name: 'facebook'},
+				{
+					name: 'twitter',
+					text: '{{title}}',
+					via: 'TakePart'
+				},
+				{name: 'googleplus'},
+				{name: 'pinterest'},
+				{name: 'tumblr'}
+			]
+		};
+
+		$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+
 		var has_history = function() {
 			return (typeof history != 'undefined');
 		};

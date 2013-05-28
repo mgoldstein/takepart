@@ -1,10 +1,10 @@
 <div id="gallery-main" class="<?=!$node->status ? 'unpublished':'' ?>">
 	<article id="gallery-cover">
-		<aside id="gallery-cover-social" class="social">
-			<h3 class="headline"><?=t('Share Gallery') ?></h3>
-			<div class="tp-social" id="gallery-cover-share"></div>
-		</aside>
 		<div id="gallery-cover-main">
+			<aside id="gallery-cover-social" class="social">
+				<h3 class="headline"><?=t('Share Gallery') ?></h3>
+				<div class="tp-social" id="gallery-cover-share"></div>
+			</aside>
 			<p class="image">
 				<?=_simage($node, 'field_thumbnail') ?>
 			</p>
@@ -15,37 +15,39 @@
 			</div>
 		</div>
 
-		<? if ( $body = _snode($node, 'field_body') ): ?>
-			<div id="gallery-body" class="cms">
-				<?=_s($body)?>
-			</div>
-		<? endif ?>
+		<div id="gallery-cover-content">
+			<? if ( $body = _snode($node, 'body') ): ?>
+				<div id="gallery-body" class="cms">
+					<?=_s($body)?>
+				</div>
+			<? endif ?>
 
-		<footer>
-			<nav id="gallery-tags">
-				<h3 class="headline">
-					<?=t('Get More:') ?>
-				</h3>
+			<footer>
+				<nav id="gallery-tags">
+					<h3 class="headline">
+						<?=t('Get More:') ?>
+					</h3>
 
-				<ul>
-					<? if ( $field_topic = _snode($node, 'field_topic') ): ?>
-						<? while ( list($key, $tag) = _seach($field_topic) ): ?>
-							<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
-						<? endwhile ?>
-					<? endif ?>
+					<ul>
+						<? if ( $field_topic = _snode($node, 'field_topic') ): ?>
+							<? while ( list($key, $tag) = _seach($field_topic) ): ?>
+								<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
+							<? endwhile ?>
+						<? endif ?>
 
-					<? if ( $field_free_tag = _snode($node, 'field_free_tag') ): ?>
-						<? while ( list($key, $tag) = _seach($field_free_tag) ): ?>
-							<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
-						<? endwhile ?>
-					<? endif ?>
-				</ul>
-			</nav>
+						<? if ( $field_free_tag = _snode($node, 'field_free_tag') ): ?>
+							<? while ( list($key, $tag) = _seach($field_free_tag) ): ?>
+								<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
+							<? endwhile ?>
+						<? endif ?>
+					</ul>
+				</nav>
 
-			<div id="gallery-comments">
-				<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
-			</div>
-		</footer>
+				<div id="gallery-comments">
+					<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
+				</div>
+			</footer>
+		</div>
 	</article>
 
 	<article id="gallery-photos">

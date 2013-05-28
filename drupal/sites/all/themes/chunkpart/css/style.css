@@ -1266,10 +1266,6 @@ div.takepart-take-action-widget {
 /* Gallery Page
 ------------------------------------------------------------ */
 
-.node-type-openpublish-photo-gallery #site-top {
-	display: none;
-}
-
 .node-type-openpublish-photo-gallery #gallery-body .drupal-embed {
 	display: none;
 }
@@ -1312,6 +1308,22 @@ div.takepart-take-action-widget {
 .node-type-openpublish-photo-gallery #gallery-photos #gallery-content {
 	/*width: 31em;
 	float: left;*/
+}
+
+.node-type-openpublish-photo-gallery #gallery-cover-content {
+	width: 31em;
+	float: left;
+}
+
+.node-type-openpublish-photo-gallery #gallery-cover-main {
+	width: 31em;
+	margin: auto;
+}
+
+.node-type-openpublish-photo-gallery #gallery-cover-social .headline {
+	font-size: 16px;
+	text-transform: uppercase;
+	font-family: TradeGothicLTStdCnBold, sans-serif;
 }
 
 /* TP Slide plugin */
