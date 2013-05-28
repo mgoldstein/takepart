@@ -31,6 +31,7 @@ $(function() {
             if ($(this).is('.active')){
                 return;
             }
+            resetModals();
             currentChapter = $(this).attr('data-chapter');
             $chapterNav.find('a').removeClass('active');
             $(this).addClass('active');
@@ -114,15 +115,16 @@ $(function() {
                 showVoteModal($contentToShow);
             }
         }
-
+        var resetModals = function(){
+        	var $voteModalWrapper = $(' .modal-wrapper', '.chapter.' + currentChapter);
+        	$.each($currentModals, function(i, e){
+				$voteModalWrapper.append($(e));
+        	});
+        	$currentModals = [];
+        }
         var showVoteModal = function(contentToShow){
-            var $voteModalWrapper = $(' .modal-wrapper', '.chapter.' + currentChapter);
-
             $.tpmodal.show({node: contentToShow, afterClose: function() {
-                $.each($currentModals, function(i, e){
-					$voteModalWrapper.append($(e));
-	        	});
-	        	$currentModals = [];
+                resetModals();
             }});
             $currentModals.push(contentToShow);
         }
