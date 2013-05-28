@@ -181,9 +181,31 @@ $(function() {
 			})
 			;
 	} else if ( $body.is('.node-type-openpublish-photo-gallery') ) {
+		var $slides = $('#gallery-content ul');
+		var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
+		var has_history = function() {
+			return (typeof history != 'undefined');
+		};
+
+		var hpush = function(token) {
+			var curtoken = document.location.href.split(/\/|#/).slice(5,6) + '';
+			if ( !has_history() || curtoken == token ) return;
+			history.pushState(null, null, base_url + '/' + token);
+		};
+
 		$('#gallery-cover .enter a').bind('click', function() {
 			$('#gallery-cover').hide();
 			$('#gallery-photos').show();
+			var slide_callback = function($current) {
+				hpush($current.data('token'));
+			}
+
+			$slides.tpslide({onslide: slide_callback});
+			window.addEventListener("popstate", function(e) {
+				var token = document.location.href.split(/\/|#/).slice(5,6) + '';
+				var $slide = $slides.find('[data-token="' + token + '"]')
+				$slides.tpslide_to($slide);
+			});
 		});
 	}
 });

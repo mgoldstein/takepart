@@ -4,10 +4,16 @@
     var return_false = function () {
         return false;
     };
-    $.fn.slide_set = function (key, val) {
+    $.fn.tpslide_set = function (key, val) {
         return this.each(function () {
             var accessor = $(this).data('accessor');
             accessor.set(key, val);
+        });
+    };
+    $.fn.tpslide_to = function (val) {
+        return this.each(function () {
+            var accessor = $(this).data('accessor');
+            accessor.slide_to(val);
         });
     };
     $.fn.tpslide = function (options) {
@@ -18,7 +24,8 @@
             threshold: 50,
             autoslide: false,
             cycle: true,
-            do_hash: false
+            do_hash: false,
+            onslide: null
         }, options || {});
         return this.each(function () {
             var $this = $(this);
@@ -28,6 +35,7 @@
             var $nav = $('<span/>').addClass(settings.prepend + 'nav');
             var $nav_slides = $('<span/>').addClass(settings.prepend + 'nav_slides');
             var $slides = $this.find(settings.slides).addClass(settings.prepend + 'slide');
+            var slides = {};
             var current = 0;
             var $current = $slides.eq(0);
             var hash = location.hash;
@@ -35,6 +43,12 @@
             var autoslide_timeout = null;
             var accessor = {};
             $this.data('accessor', accessor);
+
+            for ( var i = 0; i <= $slides.length; i++ ) {
+                var slide = $slides.get(i);
+                $(slide).data('tpslide-key', i);
+            };
+
             accessor.set = function (key, val) {
                 if (typeof (key) == 'object') {
                     settings = $.extend(settings, key);
@@ -100,7 +114,28 @@
                 } else {
                     $prev.removeClass(settings.prepend + 'disabled');
                 }
+
+                if ( settings.onslide ) settings.onslide($current);
             };
+
+            accessor.slide_to = function (val) {
+                var $el;
+                if ( typeof val == 'string' ) {
+                    $el = $(val);
+                } else if ( val.jquery ) {
+                    $el = val;
+                } else {
+                    $el = $(val);
+                }
+
+                // TODO: figure out the dohash stuff
+                if ( $current[0] != $el[0] ) {
+                    $current = $el;
+                    current = $current.data('tpslide-key');
+                    slide(false);
+                }
+            };
+
             var next = function (do_hash) {
                 if (!settings.cycle && $next.is('.' + settings.prepend + 'disabled')) return;
                 current++;

@@ -1,5 +1,3 @@
-<!-- Gallery start -->
-
 <div id="gallery-main" class="<?=!$node->status ? 'unpublished':'' ?>">
 	<article id="gallery-cover">
 		<aside id="gallery-cover-social" class="social">
@@ -52,26 +50,28 @@
 
 	<article id="gallery-photos">
 		<header id="gallery-header">
-			<h1 class="headline"><?=_s($node->title) ?></h1>
-			<? /* <p id="gallery-abstract"><?=_s($node, 'field_subhead') ?></p> */ ?>
-			<div class="secondary">
-				<p id="gallery-date"><?=date('F j, Y', $node->created)?></p>
+			<div id="gallery-header-main">
+				<h1 class="headline"><?=_s($node->title) ?></h1>
+				<? /* <p id="gallery-abstract"><?=_s($node, 'field_subhead') ?></p> */ ?>
+				<div class="secondary">
+					<p id="gallery-date"><?=date('F j, Y', $node->created)?></p>
 
-				<ul id="gallery-author-names">
-					<? if ( $authors = _snode($node, 'field_author') ): ?>
-						<? while ( list($key, $author) = _seach($authors) ): ?>
-							<li class="<?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
-								<a href="<?=_surl($author)?>" rel="author"><?=$author->title ?></a>
-							</li>
-						<? endwhile ?>
-					<? endif ?>
-				</ul>
+					<ul id="gallery-author-names">
+						<? if ( $authors = _snode($node, 'field_author') ): ?>
+							<? while ( list($key, $author) = _seach($authors) ): ?>
+								<li class="<?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
+									<a href="<?=_surl($author)?>" rel="author"><?=$author->title ?></a>
+								</li>
+							<? endwhile ?>
+						<? endif ?>
+					</ul>
+				</div>
+
+				<aside id="gallery-cover-social" class="social">
+					<h3 class="headline"><?=t('Share Gallery') ?></h3>
+					<div class="tp-social" id="gallery-cover-share"></div>
+				</aside>
 			</div>
-
-			<aside id="gallery-cover-social" class="social">
-				<h3 class="headline"><?=t('Share Gallery') ?></h3>
-				<div class="tp-social" id="gallery-cover-share"></div>
-			</aside>
 
 			<? if ( $field_topic_box = _snode($node, 'field_topic_box') ): ?>
 				<aside id="topic_box">
@@ -101,16 +101,16 @@
 								<?=_simage($image) ?>
 								<figcaption>
 									<h2 class="headline"><?=_s($image['file'], 'field_image_title', 'file') ?></h2>
-									<div class="caption">
+									<div class="caption cms">
 										<?=_s($image['file'], 'field_media_caption', 'file') ?>
 									</div>
 								</figcaption>
-							<figure>
+							</figure>
 						</li>
 					<? endwhile ?>
 				<? endif ?>
 				<? if ( $next_gallery ): ?>
-					<li id="next-gallery">
+					<li id="next-gallery" data-token="next-gallery">
 						<a href="<?=$next_gallery->href ?>">
 							<p class="image"><?=_simage($next_gallery->node, 'field_thumbnail') ?></p>
 							<div class="content">
@@ -138,5 +138,3 @@
 		</footer>
 	</article>
 </div>
-
-<!-- /Gallery start -->
