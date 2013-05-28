@@ -26,7 +26,6 @@
  *
  */
 function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
-
     $rows = $vars["rows"];
     $options = $vars["options"];
     $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?" . ">\n";
@@ -86,9 +85,8 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
         $xml .= "\t\t<item>\n";
         $description = '';
         $content = '';
+        $related_content = '';
         foreach ($row as $id => $object) {
-            // print_r($object);
-            // print "$id-------------------------";
             if ($id == 'created') {
                 $xml .= "\t\t\t<pubDate><![CDATA[" . $object->content . "]]></pubDate>\n";
             } else if ($id == 'title') {
@@ -101,10 +99,22 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                 $xml .= "\t\t\t<category><![CDATA[" . $object->content . "]]></category>\n";
             } else if ($id == 'field_promo_text' && $object->content != '') {
                 $xml .= "\t\t\t<description><![CDATA[" . $object->content . "]]></description>\n";
+
+            } else if ($id == 'field_topic_box' && $object->content != '') {
+                $related_content .= $object->content . "\n\n";
+            } else if ($id == 'field_related_stories' && $object->content != '') {
+                $related_content .= $object->content . "\n\n";
+            } else if ($id == 'field_inline_replacements' && $object->content != '') {
+                $inline = $object->content;
+                //$inline = strip_tags($object->content, '<ul><li><a>');
+                $related_content .= 'inline:' . $inline . "\n\n";
             } else {
                 $content .= ($object->content);
             }
         }
+
+        if ( $related_content ) $content .= "\n\n<h3>Related stories on TakePart:</h3>\n\n" . $related_content;
+
         $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
         $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
         $urlprefix = $protocol."://".$_SERVER['SERVER_NAME'].$port;
