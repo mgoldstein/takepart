@@ -98,7 +98,7 @@
 					</nav>
 				<? endif ?>
 
-				<nav id="article-tags">
+				<nav id="article-tags" class="page-tags">
 					<h3 class="headline">
 						<?=t('Get More:') ?>
 					</h3>

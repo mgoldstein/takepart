@@ -542,6 +542,45 @@ div.takepart-take-action-widget {
 	margin-bottom: 0;
 }
 
+/* Article Tags */
+.page-tags {
+	margin-bottom: 1em;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.page-tags ul,
+.page-tags .headline,
+.page-tags li,
+.page-tags a {
+	display: inline;
+}
+
+.page-tags a {
+	text-decoration: none;
+}
+
+.page-tags a:hover {
+	text-decoration: underline;
+}
+
+.page-tags .headline {
+	padding-right: .25em;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #333;
+}
+
+.page-tags li:after {
+	content: ',';
+	padding-right: .25em;
+	display: inline;
+}
+
+.page-tags li:last-child:after {
+	display: none;
+}
+
 /* ============================================================
 || 3.) Section Specific
 ============================================================ */
@@ -1150,45 +1189,6 @@ div.takepart-take-action-widget {
 	text-decoration: underline;
 }
 
-/* Article Tags */
-.node-type-article #article-tags {
-	margin-bottom: 1em;
-	font-size: 14px;
-	line-height: 1.5;
-}
-
-.node-type-article #article-tags ul,
-.node-type-article #article-tags .headline,
-.node-type-article #article-tags li,
-.node-type-article #article-tags a {
-	display: inline;
-}
-
-.node-type-article #article-tags a {
-	text-decoration: none;
-}
-
-.node-type-article #article-tags a:hover {
-	text-decoration: underline;
-}
-
-.node-type-article #article-tags .headline {
-	padding-right: .25em;
-	text-transform: uppercase;
-	font-weight: bold;
-	color: #333;
-}
-
-.node-type-article #article-tags li:after {
-	content: ',';
-	padding-right: .25em;
-	display: inline;
-}
-
-.node-type-article #article-tags li:last-child:after {
-	display: none;
-}
-
 /* Related stories */
 
 .node-type-article #article-related {
@@ -1376,6 +1376,8 @@ div.takepart-take-action-widget {
 	height: 14px;
 	background-repeat: no-repeat;
 	background-image: url(../images/gallery_enter.png); /** sprite-ref: mysprite; */
+	vertical-align: middle;
+	margin-left: 5px;
 }
 
 .node-type-openpublish-photo-gallery #gallery-cover-main .content .headline {
