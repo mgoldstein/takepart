@@ -15,7 +15,7 @@
 		<li>
 			<a href="<?=$item['url'] ?>">
 				<h4 class="subhead"><?=$item['typename'] ?></h4>
-				<p class="image"><img src="<?=$item['thumbnail'] ?>" alt="<?=$item['typename'] ?> image" height="100" width="100" /></p>
+				<p class="image"><img src="<?=$item['thumbnail'] ?>" alt="<?=$item['thumbnail_alt'] ?> image" height="100" width="100" /></p>
 				<p class="link"><?=$item['title'] ?></p>
 			</a>
 		</li>
