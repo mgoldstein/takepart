@@ -105,15 +105,13 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
             } else if ($id == 'field_related_stories' && $object->content != '') {
                 $related_content .= $object->content . "\n\n";
             } else if ($id == 'field_inline_replacements' && $object->content != '') {
-                $inline = $object->content;
-                //$inline = strip_tags($object->content, '<ul><li><a>');
-                $related_content .= 'inline:' . $inline . "\n\n";
+                $related_content .= $object->content . "\n\n";
             } else {
                 $content .= ($object->content);
             }
         }
 
-        if ( $related_content ) $content .= "\n\n<h3>Related stories on TakePart:</h3>\n\n" . $related_content;
+        if ( $related_content ) $content .= "\n\n<p><strong>Related stories on TakePart:</strong></p>\n\n" . $related_content;
 
         $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
         $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
