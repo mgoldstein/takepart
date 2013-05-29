@@ -13,6 +13,21 @@
  * @see views_xml.views.inc
  */
 
+// Like the name says
+function _build_list_for_yahoo_rss_feed($content) {
+    $parts = explode(',,,', $content);
+    $ret = '';
+    foreach ( $parts as $part ) {
+        $part = trim($part);
+        if ( $part ) {
+            $ret .= '<li><p><strong>' . $part . '</strong></p></li>';
+        }
+    }
+
+    if ( $ret ) return '<ul>' . $ret . '</ul>';
+    return '';
+}
+
 /**
  * Template preprocess for RSS w/ Images
  * @param $vars
@@ -101,11 +116,11 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                 $xml .= "\t\t\t<description><![CDATA[" . $object->content . "]]></description>\n";
 
             } else if ($id == 'field_topic_box' && $object->content != '') {
-                $related_content .= $object->content . "\n\n";
+                $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } else if ($id == 'field_related_stories' && $object->content != '') {
-                $related_content .= $object->content . "\n\n";
+                $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } else if ($id == 'field_inline_replacements' && $object->content != '') {
-                $related_content .= $object->content . "\n\n";
+                $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } else {
                 $content .= ($object->content);
             }
