@@ -73,14 +73,27 @@
 
 			<? if ( $content['body'] ): ?>
 				<div id="article-body" class="cms">
-					<?=render($content['body'])?>
+					<div class="content">
+						<?=render($content['body'])?>
+					</div>
 				</div>
 			<? endif ?>
 
 			<footer id="article-footer">
+				<? if ( $next_article): ?>
+					<nav id="next-article">
+						<h3 class="headline"><?=t('Next Article') ?></h3>
+						<p>
+							<a href="<?=$next_article->href ?>">
+							<?=$next_article->title ?>
+							</a>
+						</p>
+					</nav>
+				<? endif ?>
+
 				<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
 					<nav id="article-related">
-						<h3><?=t('Related stories on TakePart:') ?></h3>
+						<h3 class="headline"><?=t('Related Articles') ?></h3>
 						<ul>
 							<? while ( list($key, $related) = _seach($relateds) ): ?>
 								<li><a href="<?=_surl($related) ?>"><?=$related->title ?></a></li>
@@ -89,16 +102,7 @@
 					</nav>
 				<? endif ?>
 
-				<? if ( $next_article): ?>
-					<nav id="next-article">
-						<a href="<?=$next_article->href ?>">
-							<h3 class="headline"><?=t('Next Article') ?></h3><!--
-							--><p><?=$next_article->title ?></p>
-						</a>
-					</nav>
-				<? endif ?>
-
-				<nav id="article-tags">
+				<nav id="article-tags" class="page-tags">
 					<h3 class="headline">
 						<?=t('Get More:') ?>
 					</h3>

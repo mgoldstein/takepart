@@ -542,6 +542,55 @@ div.takepart-take-action-widget {
 	margin-bottom: 0;
 }
 
+/* Article Tags */
+.page-tags {
+	margin-bottom: 1.25em;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.page-tags .headline {
+	text-transform: uppercase;
+	font-family: TradeGothicLTStdCnBold, sans-serif;
+	color: #333;
+	font-size: 16px;
+}
+
+.page-tags ul {
+	font-size: 14px;
+}
+
+.page-tags ul,
+.page-tags li,
+.page-tags a {
+	display: inline;
+}
+
+.page-tags a {
+	text-decoration: none;
+}
+
+.page-tags a:hover {
+	text-decoration: underline;
+}
+
+.page-tags .headline {
+	padding-right: .25em;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #333;
+}
+
+.page-tags li:after {
+	content: ',';
+	padding-right: .25em;
+	display: inline;
+}
+
+.page-tags li:last-child:after {
+	display: none;
+}
+
 /* ============================================================
 || 3.) Section Specific
 ============================================================ */
@@ -1043,6 +1092,10 @@ div.takepart-take-action-widget {
 }
 
 .node-type-article #article-body {
+	margin-bottom: 1.5em;
+}
+
+.node-type-article #article-body .content {
 	font-size: 14px;
 	color: #333;
 }
@@ -1097,131 +1150,37 @@ div.takepart-take-action-widget {
 }
 
 /* Next Article */
-.node-type-article #next-article {
-	padding-bottom: 10px;
-	border-bottom: 1px solid #e8e8e8;
-	margin-bottom: 1em;
+.node-type-article #next-article,
+.node-type-article #article-related {
+	margin-bottom: 1.25em;
 }
 
-.node-type-article #next-article a {
-	font-size: 15px;
-	padding: 10px 2.5em 10px 0;
-	text-overflow: ellipsis;
-	max-width: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-	line-height: 14px;
-	position: relative;
-	display: inline-block;
-	text-decoration: none;
-}
-
-.node-type-article #next-article .headline {
-	display: inline-block;
+.node-type-article #next-article .headline,
+.node-type-article #article-related .headline {
 	text-transform: uppercase;
 	font-family: TradeGothicLTStdCnBold, sans-serif;
-	border-right: 1px solid #c1c1c1;
-	padding-right: .75em;
 	color: #333;
+	font-size: 16px;
+	margin-bottom: 10px;
 }
 
-.node-type-article #next-article p {
-	display: inline;
-	padding-left: .75em;
-	font-weight: bold;
-}
-
-.node-type-article #next-article a:after {
-	display: block;
-	content: " ";
-	height: 34px;
-	width: 34px;
-	border-radius: 68px;
-	background-color: #28a9e9;
-	background-position: 14px 10px;
-	background-repeat: no-repeat;
-	background-image: url(../images/next_article_arrow.png); /** sprite-ref: mysprite; sprite-margin-top: 10px; sprite-margin-left: 14px; */
-	position: absolute;
-	right: 0;
-	top: 0;
-}
-
-.node-type-article #next-article a:hover {
-	text-decoration: underline;
-}
-
-/* Article Tags */
-.node-type-article #article-tags {
-	margin-bottom: 1em;
+.node-type-article #next-article p,
+.node-type-article #article-related li {
 	font-size: 14px;
-	line-height: 1.5;
+	margin-bottom: 10px;
 }
 
-.node-type-article #article-tags ul,
-.node-type-article #article-tags .headline,
-.node-type-article #article-tags li,
-.node-type-article #article-tags a {
-	display: inline;
-}
-
-.node-type-article #article-tags a {
-	text-decoration: none;
-}
-
-.node-type-article #article-tags a:hover {
-	text-decoration: underline;
-}
-
-.node-type-article #article-tags .headline {
-	padding-right: .25em;
-	text-transform: uppercase;
-	font-weight: bold;
-	color: #333;
-}
-
-.node-type-article #article-tags li:after {
-	content: ',';
-	padding-right: .25em;
-	display: inline;
-}
-
-.node-type-article #article-tags li:last-child:after {
-	display: none;
-}
-
-/* Related stories */
-
-.node-type-article #article-related {
-	margin: 1em 0;
-}
-
+.node-type-article #next-article a,
 .node-type-article #article-related a {
 	text-decoration: none;
 }
 
+.node-type-article #next-article a:hover,
 .node-type-article #article-related a:hover {
 	text-decoration: underline;
 }
 
-.node-type-article #article-related ul,
-.node-type-article #article-related h3 {
-	font-size: 14px;
-}
-
-.node-type-article #article-related ul {
-	list-style-type: disc;
-	list-style-position: outside;
-	margin-left: 1.5em;
-}
-
-.node-type-article #article-related h3 {
-	font-weight: bold;
-	margin-bottom: .5em;
-}
-
-.node-type-article #article-related li {
-	margin-bottom: 5px;
-}
+/* Topic Box */
 
 /* Footer */
 
@@ -1240,10 +1199,11 @@ div.takepart-take-action-widget {
 .node-type-article .fb_comments .header {
 	text-transform: uppercase;
 	font-family: TradeGothicLTStdCnBold, sans-serif;
-	margin-bottom: .5em;
-	padding-bottom: .5em;
-	border-bottom: 1px solid #e8e8e8;
 	margin-top: 1em;
+	margin-bottom: .5em;
+	padding: .4em 0 .5em 0;
+	border-bottom: 1px solid #e8e8e8;
+	border-top: 1px solid #e8e8e8;
 	font-size: 20px;
 }
 
