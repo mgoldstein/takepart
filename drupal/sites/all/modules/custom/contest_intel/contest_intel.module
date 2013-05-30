@@ -638,9 +638,6 @@ function contest_intel_vote_form($form, &$form_state, $config) {
     $voting = bluestatedigital_get_service('voting');
     $attributes['vote_allowed'] = $voting->checkEligibility($vote,
       BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
-
-    $debug = print_r($attributes, TRUE);
-    watchdog('intel_contest_debug', $debug);
   }
   $form['#wordlet_attributes'] = $attributes;
 
@@ -713,12 +710,11 @@ function contest_intel_vote_form_submit($form, &$form_state) {
     $token = $config['vote_token'];
 
     try {
+
       $vote = contest_intel_most_recent_vote($user->mail);
       $voting = bluestatedigital_get_service('voting');
       $allowed = $voting->checkEligibility($vote,
         BlueStateDigitalVoting::ONCE_PER_CALENDAR_DAY);
-
-      watchdog('intel_contest_allowed', $allowed);
 
       if ($allowed) {
         $opt_ins = array(

@@ -79,6 +79,46 @@ function takepart_core_preprocess_html(&$variables) {
 	if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
 		$variables['user_nav'] = _render_tp3_user_menu($variables);
 	}
+
+
+  if (isset($variables['page']['content']['system_main']['nodes'])) {
+        //Override header if field exists:
+        $nodes = $variables['page']['content']['system_main']['nodes'];
+        $header_override = false;
+        if (!empty($nodes)) {
+            while ((list($key, $value) = each($nodes)) && (!$header_override)) {
+                if (is_numeric($key)) {
+                    try {
+                        if (isset($value['body'])) {
+                            if (array_key_exists('field_html_title', $value['body']['#object'])) {
+                                $header_override = $value['body']['#object']->field_html_title;
+                            }
+                        }
+                        if (isset($value['field_html_title'])) {
+                            if (array_key_exists('field_html_title', $value['field_html_title']['#object'])) {
+                                $header_override = $value['field_html_title']['#object']->field_html_title;
+                                unset($variables['page']['content']['system_main']['nodes'][$key]['field_html_title']);
+                            }
+                        }
+                        if (isset($value['#node'])) {
+                            if (array_key_exists('field_html_title', $value['#node'])) {
+                                $header_override = $value['#node']->field_html_title;
+                            }
+                        }
+                    } catch (Exception $e) {
+                        $header_override = false;
+                    }
+                }
+            }
+        }
+    }
+
+    if (isset($header_override)) {
+        if ($header_override) {
+            $variables['head_title'] = $header_override['und'][0]['value'];
+        }
+    }
+
 }
 
 function takepart_core_menu_link(array $variables) {
