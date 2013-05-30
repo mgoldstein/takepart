@@ -47,7 +47,7 @@ function takepart3_preprocess_entity(&$variables, $hook) {
 	                    }
 	                    if($node->type == 'openpublish_photo_gallery') {
 	                        $main_image = field_get_items('node', $node, 'field_gallery_main_image');
-	                    }                                                   
+	                    }
 	                    if($node->type == 'openpublish_video') {
 	                        $main_image = field_get_items('node', $node, 'field_main_image');
 	                    }
@@ -79,9 +79,9 @@ function takepart3_preprocess_entity(&$variables, $hook) {
 
 
 function chunkpart_preprocess_entity(&$variables, $hook) {
-  
+
   $variables["custom_render"] = array();
-  
+
   switch ($variables['entity_type']) {
 
     case "bean":
@@ -89,20 +89,20 @@ function chunkpart_preprocess_entity(&$variables, $hook) {
       if ($variables['bean']->{'type'} == "of_the_day") {
         //Look for a tpl file called bean--of-the-day-custom.tpl.php:
         $variables['theme_hook_suggestions'][] = 'bean__of_the_day_custom';
-     
+
         for ($i = 0; $i <= sizeof($variables['elements']['field_listing_collection']); $i++) {
-          $listing = $variables['elements']['field_listing_collection'][$i];     
+          $listing = $variables['elements']['field_listing_collection'][$i];
           $collection = $listing['entity']['field_collection_item'];
-          
+
           foreach ($collection as $key => $collectiondata) {
-            
+
             $acnid = $collectiondata['field_associated_content']['#items'][0]['nid'];
             $node  = node_load($acnid);
-            
+
             if ($node->status == 1) {
-              
+
               $variables['custom_render'][$key]['typename'] = $collectiondata['field_type_label']['#items'][0]['value'];
-              
+
               if ($node->type == 'openpublish_article') {
                 $main_image = field_get_items('node', $node, 'field_article_main_image');
               }
@@ -116,29 +116,30 @@ function chunkpart_preprocess_entity(&$variables, $hook) {
               if ($node->type == 'openpublish_video') {
                 $main_image = field_get_items('node', $node, 'field_main_image');
               }
-              
               if (isset($main_image[0]['fid'])) {
                 $img_url = file_load($main_image[0]['fid']);
+                $img_alt = field_get_items('file', $img_url, 'field_media_alt');
+                $variables['custom_render'][$key]['thumbnail_alt'] = $img_alt[0]['safe_value'];
                 if (isset($img_url->{'uri'})) {
                   $variables['custom_render'][$key]['thumbnail'] = image_style_url('thumbnail_v2', $img_url->{'uri'});
                 }
               }
-              
+
               $types = node_type_get_types();
               if (isset($types[$node->type]->{'name'})) {
                 $variables['custom_render'][$key]['type'] = $types[$node->type]->{'name'};
               }
-              
+
               if (isset($node->{'title'})) {
                 $variables['custom_render'][$key]['title'] = $node->{'title'};
               }
-              
+
               $variables['custom_render'][$key]['url'] = url('node/' . $node->nid);
-              
+
             }
-            
+
           }
-          
+
         }
       }
       break;
