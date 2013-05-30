@@ -860,6 +860,7 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
           'newsletter_campaign_email_only_signup' => t('Email Only Signup'),
           'newsletter_campaign_mobile_only_signup' => t('Mobile Only Signup'),
           'newsletter_campaign_email_mobile_signup' => t('Email + Mobile Signup'),
+          'can_campaign_vote' => t('CAN Voting Form'),
           'contest_intel_entry' => t('Intel Contest Entry'),
           'contest_intel_vote' => t('Intel Contest Vote'),
         ),
@@ -886,6 +887,47 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
         $form['form']['value']['config'] = $fields;
       }
     }
+  }
+
+  if ($configure || in_array('block', $entity->item_keys)) {
+    $form['block'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+
+      $form['block']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Block',
+        '#attributes' => array('data-for' => array('block-input')),
+        '#default_value' => in_array('block', $entity->item_keys),
+      );
+    }
+
+    $form['block']['value'] = array(
+      '#type' => 'container',
+      '#tree' => TRUE,
+      '#attributes' => array('class' => array('block-input')),
+      '#prefix' => '<div class="form-type-container">',
+      '#suffix' => '</div>',
+    );
+
+    $form['block']['value']['module'] = array(
+      '#title' => t('Module'),
+      '#type' => 'select',
+      // TODO: Get the list of modules from custom module hook.
+      '#options' => array(
+        'boxes' => t('Boxes'),
+        'newsletter_campaign' => t('Newsletter Campaigns'),
+        'views' => t('Views'),
+      ),
+      '#default_value' => $values['block']['module'],
+    );
+
+    $form['block']['value']['delta'] = array(
+      '#title' => t('Delta'),
+      '#type' => 'textfield',
+      '#default_value' => $values['block']['delta'],
+    );
   }
 
   return $form;
@@ -1054,6 +1096,7 @@ function wordlet_update_items_from_fields($entity, $values) {
       'token' => '',
       'video' => '',
       'form' => '',
+      'block' => '',
     );
     $is_empty = TRUE;
     foreach (array_keys($item) as $key) {

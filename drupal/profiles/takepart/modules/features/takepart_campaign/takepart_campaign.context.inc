@@ -46,8 +46,8 @@ function takepart_campaign_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Context Field Default');
-  t('Default Context for Multi Page Campaign');
+  t('Default Context for Multi-Page Campaigns');
+  t('Multipage Campaign');
   $export['multi_page_campaign_default_context'] = $context;
 
   $context = new stdClass();

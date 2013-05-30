@@ -30,6 +30,7 @@ features[box][] = box-6ab3a933
 features[box][] = box-7d1ce087
 features[box][] = box-7fdc48e2
 features[box][] = box-944fcfe9
+features[box][] = box-e15d1292
 features[context][] = blocks_photo_gallery
 features[ctools][] = boxes:box:1
 features[ctools][] = context:context:3

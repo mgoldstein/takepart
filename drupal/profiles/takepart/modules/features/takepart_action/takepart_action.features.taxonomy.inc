@@ -15,8 +15,7 @@ function takepart_action_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
-      'weight' => '0',
-      'metatags' => array(),
+      'weight' => '-10',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

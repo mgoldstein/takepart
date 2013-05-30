@@ -1,0 +1,127 @@
+<?php
+
+class ViewHelperLink {
+  public function __construct($title, $href, $target = NULL) {
+    $this->title = $title;
+    $this->href = $href;
+    $this->target = $target;
+  }
+}
+
+function article_support_next_article($node) {
+
+  // Get the first article from a list of articles created before this one
+  // sorted from newest to oldest
+  $series = field_get_items('node', $node, 'field_series');
+  if ($series !== FALSE) {
+
+    $value = reset($series);
+
+    // Stay within the same series if there is one.
+    $query = db_select('node', 'n')
+      ->fields('n', array('nid', 'title'));
+    $query->join('field_data_field_series', 'f', 'n.nid = f.entity_id');
+    $query->condition('f.entity_type', 'node')
+      ->condition('f.field_series_tid', $value['tid'])
+      ->condition('n.created', $node->created, '<')
+      ->condition('n.type', 'openpublish_article')
+      ->condition('n.status', 0, '!=')
+      ->orderBy('n.created', 'DESC')
+      ->orderBy('n.nid', 'DESC')
+      ->range(0, 1);
+  }
+  else {
+
+    $topic = field_get_items('node', $node, 'field_topic');
+    if ($topic !== FALSE) {
+
+    $value = reset($topic);
+
+    // Stay within the same topic if there is no series.
+    $query = db_select('node', 'n')
+      ->fields('n', array('nid', 'title'));
+    $query->join('field_data_field_topic', 'f', 'n.nid = f.entity_id');
+    $query->condition('f.entity_type', 'node')
+      ->condition('f.field_topic_tid', $value['tid'])
+      ->condition('n.created', $node->created, '<')
+      ->condition('n.type', 'openpublish_article')
+      ->condition('n.status', 0, '!=')
+      ->orderBy('n.created', 'DESC')
+      ->orderBy('n.nid', 'DESC')
+      ->range(0, 1);
+    }
+    else {
+
+      // Fall back on chronological ordering
+      $query = db_select('node', 'n')
+        ->fields('n', array('nid', 'title'))
+        ->condition('created', $node->created, '<')
+        ->condition('type', 'openpublish_article')
+        ->condition('status', 0, '!=')
+        ->orderBy('created', 'DESC')
+        ->orderBy('nid', 'DESC')
+        ->range(0, 1);
+    }
+  }
+
+  // Fetch the previous article.
+  $previous = $query->execute()->fetchAssoc();
+  if ($previous !== FALSE) {
+    return new ViewHelperLink($previous['title'],
+      url('node/' . $previous['nid']));
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function article_support_node_view($node, $view_mode, $langcode) {
+
+  if ($node->type === 'openpublish_article' && $view_mode === 'full') {
+
+    // Pass the additional variables through to the preprocessor.
+    $node->content['#additional_variables'] = array(
+      'next_article' => article_support_next_article($node),
+    );
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function article_support_preprocess_node(&$variables) {
+
+  // Transfer all additional variables added when the view of the article was
+  // built to the template.
+  foreach ($variables['elements']['#additional_variables'] as $key => $value) {
+    $variables[$key] = $value;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function article_support_form_node_form_alter(&$form, &$form_state, $form_id) {
+
+  // Limit the formatter for article main image to landscape and portrait.
+  $node = $form['#node'];
+  if ($node->type == 'openpublish_article' && isset($form['field_main_image_format'])) {
+
+    $lang = $form['field_main_image_format']['#language'];
+    $item = $form['field_main_image_format'][$lang][0];
+    $form['field_main_image_format'][$lang][0]['type'] = array(
+      '#type' => 'hidden',
+      '#default_value' => 'image',
+    );
+
+    $form['field_main_image_format'][$lang][0]['settings']['image_style']['#options'] = array(
+      'landscape_main_image' => t('Landscape'),
+      'portrait_main_image' => t('Portrait'),
+    );
+
+    $form['field_main_image_format'][$lang][0]['settings']['image_link'] = array(
+      '#type' => 'hidden',
+      '#default_value' => '',
+    );
+  }
+}
