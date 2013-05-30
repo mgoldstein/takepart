@@ -1473,23 +1473,16 @@ div.takepart-take-action-widget {
 
 .tpslide_prev,
 .tpslide_next {
-  /*background: #4b3639;
-  border-radius: 2px;
-  text-indent: 100%;
-  position: absolute;
-  top: 50%;
-  margin-top: -28px;
-  width: 52px;
-  height: 56px;
-  cursor: pointer;
+  width: 22px;
+  height: 35px;
   overflow: hidden;
-  -webkit-transition: background .2s ease-in-out;
-  transition: background .2s ease-in-out;*/
+  text-indent: 100%;
+  white-space: nowrap;
 }
 
 .tpslide_prev:hover,
 .tpslide_next:hover {
-  background: #6f5e61;
+  /*background: #6f5e61;*/
 }
 
 .tpslide_next {
