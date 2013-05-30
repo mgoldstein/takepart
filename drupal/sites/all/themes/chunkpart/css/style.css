@@ -624,6 +624,41 @@ div.takepart-take-action-widget {
 	vertical-align: bottom;
 }
 
+/* Legacy right rail garbage */
+
+#site-secondary .block h2 {
+	font-family: TradeGothicLTStdCnBold, sans-serif;
+	font-size: 20px;
+	text-transform: uppercase;
+	border-bottom: 1px solid #e8e8e8;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+#site-secondary .block .views-field-field-thumbnail img {
+	display: block;
+	padding-bottom: 10px;
+}
+
+#site-secondary .block .views-field-field-promo-headline a {
+	font-size: 14px;
+	line-height: 1.5;
+	color: #000;
+	text-decoration: none;
+	font-weight: bold;
+	display: block;
+	padding-bottom: 10px;
+}
+
+#site-secondary .block .views-row:hover .views-field-field-promo-headline a {
+	color: #28a9e9;
+}
+
+#site-secondary .block .views-row {
+	border-bottom: 1px solid #e8e8e8;
+	margin-bottom: 10px;
+}
+
 /* ============================================================
 || 3.) Section Specific
 ============================================================ */
