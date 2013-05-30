@@ -15,6 +15,7 @@
 
 // Like the name says
 function _build_list_for_yahoo_rss_feed($content) {
+    
     $parts = explode(',,,', $content);
     $ret = '';
     foreach ( $parts as $part ) {
@@ -24,8 +25,10 @@ function _build_list_for_yahoo_rss_feed($content) {
         }
     }
 
-    if ( $ret ) return '<ul>' . $ret . '</ul>';
+   if ( $ret ) return '<ul>' . $ret . '</ul>';
     return '';
+
+    //return print_r($content);
 }
 
 /**
@@ -102,6 +105,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
         $content = '';
         $related_content = '';
         foreach ($row as $id => $object) {
+            // print_r($object);
             if ($id == 'created') {
                 $xml .= "\t\t\t<pubDate><![CDATA[" . $object->content . "]]></pubDate>\n";
             } else if ($id == 'title') {
