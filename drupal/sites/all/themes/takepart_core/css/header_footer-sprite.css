@@ -559,22 +559,22 @@ Footer ------------------------------------------------------------
 
 #site-connect .facebook a {
   background-image: url('style-sprite.png');
-  background-position: left -603px;
+  background-position: left -2043px;
 }
 
 #site-connect .twitter a {
   background-image: url('style-sprite.png');
-  background-position: left -2043px;
+  background-position: left -2077px;
 }
 
 #site-connect .email a {
   background-image: url('style-sprite.png');
-  background-position: left -2077px;
+  background-position: left -2111px;
 }
 
 #site-connect .google a {
   background-image: url('style-sprite.png');
-  background-position: left -2111px;
+  background-position: left -2145px;
 }
 
 #site-connect .pinterest a {
@@ -584,7 +584,7 @@ Footer ------------------------------------------------------------
 
 #site-connect .linkedin a {
   background-image: url('style-sprite.png');
-  background-position: left -2145px;
+  background-position: left -2179px;
 }
 
 #site-connect .youtube a {
@@ -594,7 +594,7 @@ Footer ------------------------------------------------------------
 
 #site-connect .tumblr a {
   background-image: url('style-sprite.png');
-  background-position: left -2179px;
+  background-position: left -2213px;
 }
 
 /* rolovers */
@@ -616,25 +616,25 @@ Footer ------------------------------------------------------------
 
 #site-connect .google a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2213px;
+  background-position: left -2247px;
 }
 
 #site-connect .pinterest a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2247px;
+  background-position: left -2281px;
 }
 
 #site-connect .linkedin a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2281px;
+  background-position: left -2315px;
 }
 
 #site-connect .youtube a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2315px;
+  background-position: left -2349px;
 }
 
 #site-connect .tumblr a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2349px;
+  background-position: left -2383px;
 }
