@@ -25,7 +25,7 @@
 			<? endif ?>
 
 			<footer>
-				<nav id="gallery-tags">
+				<nav id="gallery-tags" class="page-tags">
 					<h3 class="headline">
 						<?=t('Get More:') ?>
 					</h3>
