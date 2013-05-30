@@ -49,3 +49,17 @@ function takepart_mos_node_info() {
   );
   return $items;
 }
+
+/**
+ * Implements hook_default_signature_type().
+ */
+function takepart_mos_default_signature_type() {
+  $items = array();
+  $items['mos_signature'] = entity_import('signature_type', '{
+    "type" : "mos_signature",
+    "label" : "Messages of Support Signature",
+    "bsd_form" : "0",
+    "rdf_mapping" : []
+  }');
+  return $items;
+}
