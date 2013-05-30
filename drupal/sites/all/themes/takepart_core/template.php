@@ -358,5 +358,9 @@ function _seach(&$var /*, $prop = null, $type = 'node'*/ ) {
     return array($k, $taxonomy_term);
   }
 
+  if ( is_array($ea) && count($ea) < 3 && isset($ea['nid']) ) {
+    $ea = node_load($ea['nid']);
+  }
+
   return array($k, $ea);
 }

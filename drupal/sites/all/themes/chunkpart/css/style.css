@@ -659,6 +659,65 @@ div.takepart-take-action-widget {
 	margin-bottom: 10px;
 }
 
+/* Secondary header author info */
+
+.header-secondary {
+	font-size: 13px;
+}
+
+.header-secondary .author-names,
+.header-secondary .author-names li,
+.header-secondary .author-names li a,
+.header-secondary .date,
+.header-secondary .badge {
+	float: left;
+}
+
+.header-secondary .author-names li a {
+	color: #999;
+	text-decoration: none;
+}
+
+.header-secondary .author-names li a:hover {
+	color: #28a9e9;
+}
+
+.header-secondary .badge,
+.header-secondary .author-names,
+.header-secondary .date {
+	padding-right: .5em;
+}
+
+.header-secondary .date {
+	margin-right: .5em;
+	margin-top: .5em;
+	border-right: 1px solid #ccc;
+	color: #777;
+}
+
+.header-secondary .author-names {
+	margin-top: .5em;
+}
+
+.header-secondary .author-names li {
+	padding-right: .25em;
+}
+
+.header-secondary .author-names li:last-child {
+	padding-right: 0;
+}
+
+.header-secondary .author-names li:after {
+	content: ", ";
+	display: block;
+	float: left;
+}
+
+.header-secondary .author-names li.last-child:after {
+	content: "";
+	display: none;
+}
+
 /* ============================================================
 || 3.) Section Specific
 ============================================================ */
@@ -713,10 +772,6 @@ div.takepart-take-action-widget {
 	line-height: 1;
 }
 
-.node-type-article #article-badge {
-	margin-bottom: -10px;
-}
-
 /* Series */
 
 #article-series {
@@ -731,7 +786,11 @@ div.takepart-take-action-widget {
 
 /* Badge */
 
-.node-type-article #article-badge a {
+.node-type-article .badge {
+	margin-bottom: -10px;
+}
+
+.node-type-article .badge a {
 	height: 36px;
 	line-height: 26px;
 	margin: 0 30px 0 20px;
@@ -748,11 +807,11 @@ div.takepart-take-action-widget {
 	padding-right: 2px;
 }
 
-.node-type-article #article-badge a:hover {
+.node-type-article .badge a:hover {
 	opacity: .6;
 }
 
-.node-type-article #article-badge a:before {
+.node-type-article .badge a:before {
 	background-image: url(../images/article_badge_blue_left.png); /** sprite-ref: mysprite; */
 	height: 36px;
 	content: " ";
@@ -762,7 +821,7 @@ div.takepart-take-action-widget {
 	width: 20px;
 }
 
-.node-type-article #article-badge a:after {
+.node-type-article .badge a:after {
 	background-repeat: no-repeat;
 	background-image: url(../images/article_badge_blue_right.png); /** sprite-ref: mysprite; */
 	height: 36px;
@@ -771,59 +830,6 @@ div.takepart-take-action-widget {
 	top: 0;
 	right: -20px;
 	width: 20px;
-}
-
-.node-type-article #article-author-names,
-.node-type-article #article-author-names li,
-.node-type-article #article-author-names li a,
-.node-type-article #article-badge,
-.node-type-article #article-date {
-	float: left;
-}
-
-.node-type-article #article-author-names li a {
-	text-decoration: none;
-}
-
-.node-type-article #article-author-names li a:hover {
-	color: #999;
-}
-
-.node-type-article #article-author-names,
-.node-type-article #article-badge,
-.node-type-article #article-date {
-	padding-right: .5em;
-}
-
-.node-type-article #article-date {
-	margin-right: .5em;
-	margin-top: .5em;
-	border-right: 1px solid #ccc;
-	color: #777;
-}
-
-.node-type-article #article-author-names {
-	margin-top: .5em;
-	font-weight: bold;
-}
-
-.node-type-article #article-author-names li {
-	padding-right: .25em;
-}
-
-.node-type-article #article-author-names li:last-child {
-	padding-right: 0;
-}
-
-.node-type-article #article-author-names li:after {
-	content: ", ";
-	display: block;
-	float: left;
-}
-
-.node-type-article #article-author-names li.last-child:after {
-	content: "";
-	display: none;
 }
 
 .node-type-article #article-sidebar {
@@ -1429,6 +1435,28 @@ div.takepart-take-action-widget {
 	font-size: 32px;
 	font-weight: bold;
 	margin-bottom: 10px;
+}
+
+/* Slideshow section */
+
+.node-type-openpublish-photo-gallery #gallery-photos #gallery-header-main > .headline {
+	font-size: 32px;
+	font-weight: bold;
+	margin-bottom: 12px;
+}
+
+.node-type-openpublish-photo-gallery #gallery-photos #gallery-header-main .secondary {
+	font-size: 13px;
+	color: #777;
+}
+
+.node-type-openpublish-photo-gallery #gallery-photos #gallery-header-main .secondary a {
+	color: #777;
+	text-decoration: none;
+}
+
+.node-type-openpublish-photo-gallery #gallery-photos #gallery-header-main .secondary a:hover {
+	color: #28a9e9;
 }
 
 /* TP Slide plugin */

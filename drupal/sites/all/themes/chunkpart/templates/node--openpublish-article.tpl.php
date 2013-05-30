@@ -3,12 +3,12 @@
 		<header id="article-header">
 			<h1 id="article-headline"><?=_s($title) ?></h1>
 			<p id="article-abstract"><?=_s($field_article_subhead) ?></p>
-			<div class="secondary">
+			<div class="header-secondary">
 				<? if ( list($key, $badge) = _seach($field_significance) ): ?>
-					<p id="article-badge"><a href="<?=_surl($badge)?>"><?=$badge->name?></a></p>
+					<p class="badge"><a href="<?=_surl($badge)?>"><?=$badge->name?></a></p>
 				<? endif ?>
-				<p id="article-date"><?=date('F j, Y', $node->created)?></p>
-				<ul id="article-author-names">
+				<p class="date"><?=date('F j, Y', $node->created)?></p>
+				<ul class="author-names">
 					<? while ( list($key, $author) = _seach($field_author) ): ?>
 						<li class="<?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
 							<a href="<?=_surl($author)?>" rel="author"><?=$author->title ?></a>

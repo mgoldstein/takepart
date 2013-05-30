@@ -60,18 +60,18 @@
 			<div id="gallery-header-main">
 				<h1 class="headline"><?=_s($node->title) ?></h1>
 				<? /* <p id="gallery-abstract"><?=_s($node, 'field_subhead') ?></p> */ ?>
-				<div class="secondary">
-					<p id="gallery-date"><?=date('F j, Y', $node->created)?></p>
+				<div class="header-secondary">
+					<p class="date"><?=date('F j, Y', $node->created)?></p>
 
-					<ul id="gallery-author-names">
-						<? if ( $authors = _snode($node, 'field_author') ): ?>
+					<? if ( $authors = _snode($node, 'field_author') ): ?>
+						<ul class="author-names">
 							<? while ( list($key, $author) = _seach($authors) ): ?>
 								<li class="<?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
 									<a href="<?=_surl($author)?>" rel="author"><?=$author->title ?></a>
 								</li>
 							<? endwhile ?>
-						<? endif ?>
-					</ul>
+						</ul>
+					<? endif ?>
 				</div>
 
 				<aside id="gallery-cover-social" class="social">
