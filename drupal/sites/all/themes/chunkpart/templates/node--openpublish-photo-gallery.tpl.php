@@ -20,7 +20,10 @@
 		<div id="gallery-cover-content">
 			<? if ( $body = _snode($node, 'body') ): ?>
 				<div id="gallery-body" class="cms">
-					<?=_s($body)?>
+					<p class="header"><?=_s($node->title) ?></p>
+					<div class="content">
+						<?=_s($body)?>
+					</div>
 				</div>
 			<? endif ?>
 
