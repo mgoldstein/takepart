@@ -152,7 +152,7 @@ body #at16pt {
 }
 
 #site-secondary .on_our_radar_section a:hover .title {
-	text-decoration: underline;
+	color: #28a9e9;
 }
 
 /* Of The Day Module */
@@ -189,7 +189,7 @@ body #at16pt {
 }
 
 #block-bean-of-the-day a:hover .link {
-	text-decoration: underline;
+	color: #28a9e9;
 }
 
 /* Newsletter form */
@@ -772,6 +772,10 @@ div.takepart-take-action-widget {
 	line-height: 1;
 }
 
+.node-type-article .badge {
+	margin-bottom: -10px;
+}
+
 /* Series */
 
 #article-series {
@@ -1055,8 +1059,9 @@ div.takepart-take-action-widget {
 	text-decoration: none;
 }
 
-.node-type-article .inline-content a:hover {
-	text-decoration: underline;
+.node-type-article #article-body .inline-content a:hover {
+	text-decoration: none;
+	color: #28a9e9;
 }
 
 .node-type-article .inline-content p {
