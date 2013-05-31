@@ -30,8 +30,8 @@
         return this.each(function () {
             var $this = $(this);
             var $wrapper = $('<span/>').addClass(settings.prepend + 'wrapper');
-            var $prev = $('<span/>').attr('title', 'Previous slide').addClass(settings.prepend + 'prev').html('&larr;');
-            var $next = $('<span/>').attr('title', 'Next slide').addClass(settings.prepend + 'next').html('&rarr;');
+            var $prev = $('<a href="#"/>').attr('title', 'Previous slide').addClass(settings.prepend + 'prev').html('&larr;');
+            var $next = $('<a href="#"/>').attr('title', 'Next slide').addClass(settings.prepend + 'next').html('&rarr;');
             var $nav = $('<span/>').addClass(settings.prepend + 'nav');
             var $nav_slides = $('<span/>').addClass(settings.prepend + 'nav_slides');
             var $slides = $this.find(settings.slides).addClass(settings.prepend + 'slide');
@@ -43,6 +43,7 @@
             var autoslide_timeout = null;
             var accessor = {};
             $this.data('accessor', accessor);
+            var block_slide_to = false;
 
             for ( var i = 0; i <= $slides.length; i++ ) {
                 var slide = $slides.get(i);
@@ -60,6 +61,7 @@
                     autoslide_timeout = setTimeout(auto_next, settings.autoslide);
                 }
             };
+
             $slides.each(function (i) {
                 var $slide = $(this).data(settings.prepend + 'index', i);
                 links += '<a href="#' + $slide.attr('id') + '" class="' + settings.prepend + 'link"><span>' + (i + 1) + ' / ' + $slides.length + '</span></a>';
@@ -68,16 +70,20 @@
                     $current = $slide
                 }
             });
+
             $nav_slides.html(links);
+
             var $links = $nav_slides.find('a').each(function (i) {
                 var $a = $(this).data('slide', i);
                 if (i == current) $a.addClass(settings.prepend + 'active');
             });
+
             $nav.prepend($prev).append($nav_slides).append($next);
             $wrapper.insertAfter($this).append($this).prepend($nav);
             $slides.css({
                 width: $wrapper.outerWidth()
             });
+
             $window.bind('resize', function () {
                 $slides.css({
                     width: $wrapper.outerWidth()
@@ -119,6 +125,7 @@
             };
 
             accessor.slide_to = function (val) {
+                if ( block_slide_to ) return;
                 var $el;
                 if ( typeof val == 'string' ) {
                     $el = $(val);
@@ -146,11 +153,15 @@
                         current = $slides.length - 1;
                     }
                 }
+
                 $current = $slides.eq(current);
                 slide(do_hash);
             };
-            $next.bind('click', function () {
+            $next.bind('click', function (e) {
+                block_slide_to = true;
+                e.preventDefault();
                 next();
+                block_slide_to = false;
             });
             if (settings.autoslide) {
                 clearTimeout(autoslide_timeout);
@@ -169,10 +180,13 @@
                 $current = $slides.eq(current);
                 slide(do_hash);
             };
-            $prev.bind('click', function () {
+            $prev.bind('click', function (e) {
+                block_slide_to = true;
+                e.preventDefault();
                 prev();
+                block_slide_to = false;
             });
-            $nav.delegate('a', 'click', function () {
+            $nav_slides.delegate('a', 'click', function (e) {
                 current = $.data(this, 'slide');
                 $current = $slides.eq(current);
                 slide();

@@ -182,7 +182,7 @@ $(function() {
 			;
 	} else if ( $body.is('.node-type-openpublish-photo-gallery') ) {
 		var $slides = $('#gallery-content ul');
-		var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
+		var base_url = '/' + document.location.href.split(/\/|#/).slice(3,5).join('/');
 		// Social share buttons
 		var tp_social_config = {
 			services: [
@@ -198,32 +198,67 @@ $(function() {
 			]
 		};
 
+		var get_curtoken = function() {
+			return document.location.href.split(/\/|#/).slice(5,6) + '';;
+		};
+
+		var goto_slide = function() {
+			var token = get_curtoken();
+			var $slide = $slides.find('[data-token="' + token + '"]');
+			$slides.tpslide_to($slide);
+		};
+
+		$slides.find('.image img').each(function() {
+			var $this = $(this);
+			if ( this.clientHeight ) {
+				$this.closest('li').height($this.height());
+			} else {
+				$this.bind('load', function() {
+					$this.closest('li').height($this.height());
+				});
+			}
+		});
+
 		$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
 		var has_history = function() {
 			return (typeof history != 'undefined');
 		};
 
-		var hpush = function(token) {
-			var curtoken = document.location.href.split(/\/|#/).slice(5,6) + '';
+		var hpush = function(token, title) {
+			var curtoken = get_curtoken();
 			if ( !has_history() || curtoken == token ) return;
-			history.pushState(null, null, base_url + '/' + token);
+			history.pushState(null, title, base_url + '/' + token);
 		};
+
+		var slide_callback = function($current) {
+			if ( !gallery_showing ) return;
+			hpush($current.data('token'), $current.find('.headline').text());
+		}
+
+		var gallery_showing = false;
+		var show_gallery = function() {
+			$('#gallery-cover').hide();
+			$('#gallery-photos').show();
+
+			window.addEventListener("popstate", function(e) {
+				goto_slide();
+			});
+			gallery_showing = true;
+		};
+
+		$slides.tpslide({onslide: slide_callback});
+
+		if ( get_curtoken() ) {
+			goto_slide();
+			show_gallery();
+		}
+
+		//$('#gallery-photos').hide();
 
 		$('#gallery-cover .enter-link').bind('click', function(e) {
 			e.preventDefault();
-			$('#gallery-cover').hide();
-			$('#gallery-photos').show();
-			var slide_callback = function($current) {
-				hpush($current.data('token'));
-			}
-
-			$slides.tpslide({onslide: slide_callback});
-			window.addEventListener("popstate", function(e) {
-				var token = document.location.href.split(/\/|#/).slice(5,6) + '';
-				var $slide = $slides.find('[data-token="' + token + '"]')
-				$slides.tpslide_to($slide);
-			});
+			show_gallery();
 		});
 	}
 });

@@ -105,8 +105,10 @@
 					<? while ( list($key, $image) = _seach($images) ): ?>
 						<li class="slide<?=$key ?>" data-token="<?=_takepart_galleries_get_token(_s($image['file'], 'field_image_title', 'file'), $image['file']->filename) ?>">
 							<figure>
-								<?=_simage($image) ?>
-								<figcaption>
+								<div class="image">
+									<?=_simage($image) ?>
+								</div>
+								<figcaption class="photo-caption">
 									<h2 class="headline"><?=_s($image['file'], 'field_image_title', 'file') ?></h2>
 									<div class="caption cms">
 										<?=_s($image['file'], 'field_media_caption', 'file') ?>
@@ -118,12 +120,18 @@
 				<? endif ?>
 				<? if ( $next_gallery ): ?>
 					<li id="next-gallery" data-token="next-gallery">
-						<a href="<?=$next_gallery->href ?>">
+						<a href="<?=$next_gallery->href ?>" class="enter-link">
 							<p class="image"><?=_simage($next_gallery->node, 'field_thumbnail') ?></p>
 							<div class="content">
 								<p class="description"><?=t('Up Next') ?></p>
-								<h2><?=_s($next_gallery->title) ?></h2>
+								<h2 class="headline"><?=_s($next_gallery->title) ?></h2>
 								<p class="enter"><?=t('Enter Photo Gallery') ?></p>
+							</div>
+							<div class="photo-caption">
+								<h2 class="headline"><?=_s($next_gallery->title) ?></h2>
+								<div class="caption cms">
+									<?=_s($next_gallery->node, 'body')?>
+								</div>
 							</div>
 						</a>
 					</li>
