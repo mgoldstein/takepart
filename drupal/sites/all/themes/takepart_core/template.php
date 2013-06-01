@@ -204,6 +204,8 @@ function _s($var, $prop = NULL, $type = 'node') {
   // Body attribute
   } elseif ( isset($var[0]) && isset($var[0]['safe_value']) ) {
     return $var[0]['safe_value'];
+  } elseif ( isset($var['value']) ) {
+    return $var['value'];
   }
 }
 
