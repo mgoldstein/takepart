@@ -1515,6 +1515,13 @@ div.takepart-take-action-widget {
 	display: block;
 }
 
+/* related stuff */
+
+.node-type-openpublish-photo-gallery #gallery-related {
+	float: left;
+	width: 31em;
+}
+
 /* TP Slide plugin */
 
 .tpslide_wrapper {

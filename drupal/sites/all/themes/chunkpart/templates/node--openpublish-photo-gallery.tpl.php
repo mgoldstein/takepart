@@ -26,32 +26,6 @@
 						</div>
 					</div>
 				<? endif ?>
-
-				<footer>
-					<nav id="gallery-tags" class="page-tags">
-						<h3 class="headline">
-							<?=t('Get More:') ?>
-						</h3>
-
-						<ul>
-							<? if ( $field_topic = _snode($node, 'field_topic') ): ?>
-								<? while ( list($key, $tag) = _seach($field_topic) ): ?>
-									<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
-								<? endwhile ?>
-							<? endif ?>
-
-							<? if ( $field_free_tag = _snode($node, 'field_free_tag') ): ?>
-								<? while ( list($key, $tag) = _seach($field_free_tag) ): ?>
-									<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
-								<? endwhile ?>
-							<? endif ?>
-						</ul>
-					</nav>
-
-					<div id="gallery-comments">
-						<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
-					</div>
-				</footer>
 			</div>
 		</article>
 	<? endif ?>
@@ -143,43 +117,42 @@
 				<? endif ?>
 			</ul>
 		</div>
+	</article>
 
-		<footer id="gallery-footer">
-			<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
-				<nav id="gallery-related">
-					<h3><?=t('Related stories on TakePart:') ?></h3>
-					<ul>
-						<? while ( list($key, $related) = _seach($relateds) ): ?>
-							<li><a href="<?=_surl($related) ?>"><?=$related->title ?></a></li>
-						<? endwhile ?>
-					</ul>
-				</nav>
-			<? endif ?>
-
-			<? // Do we _need_ to copy these? ?>
-			<nav class="page-tags">
-				<h3 class="headline">
-					<?=t('Get More:') ?>
-				</h3>
-
+	<div id="gallery-related">
+		<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
+			<nav id="gallery-related">
+				<h3><?=t('Related stories on TakePart:') ?></h3>
 				<ul>
-					<? if ( $field_topic = _snode($node, 'field_topic') ): ?>
-						<? while ( list($key, $tag) = _seach($field_topic) ): ?>
-							<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
-						<? endwhile ?>
-					<? endif ?>
-
-					<? if ( $field_free_tag = _snode($node, 'field_free_tag') ): ?>
-						<? while ( list($key, $tag) = _seach($field_free_tag) ): ?>
-							<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
-						<? endwhile ?>
-					<? endif ?>
+					<? while ( list($key, $related) = _seach($relateds) ): ?>
+						<li><a href="<?=_surl($related) ?>"><?=$related->title ?></a></li>
+					<? endwhile ?>
 				</ul>
 			</nav>
+		<? endif ?>
 
-			<div class="gallery-comments">
-				<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
-			</div>
-		</footer>
-	</article>
+		<nav id="gallery-tags" class="page-tags">
+			<h3 class="headline">
+				<?=t('Get More:') ?>
+			</h3>
+
+			<ul>
+				<? if ( $field_topic = _snode($node, 'field_topic') ): ?>
+					<? while ( list($key, $tag) = _seach($field_topic) ): ?>
+						<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
+					<? endwhile ?>
+				<? endif ?>
+
+				<? if ( $field_free_tag = _snode($node, 'field_free_tag') ): ?>
+					<? while ( list($key, $tag) = _seach($field_free_tag) ): ?>
+						<li><a href="<?=_surl($tag) ?>"><?=$tag->name ?></a></li>
+					<? endwhile ?>
+				<? endif ?>
+			</ul>
+		</nav>
+
+		<div class="gallery-comments">
+			<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
+		</div>
+	</div>
 </div>
