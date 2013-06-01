@@ -186,15 +186,28 @@ $(function() {
 		// Social share buttons
 		var tp_social_config = {
 			services: [
-				{name: 'facebook'},
+				{
+					name: 'facebook',
+					url: '{current}'
+				},
 				{
 					name: 'twitter',
 					text: '{{title}}',
-					via: 'TakePart'
+					via: 'TakePart',
+					url: '{current}'
 				},
-				{name: 'googleplus'},
-				{name: 'pinterest'},
-				{name: 'tumblr'}
+				{
+					name: 'googleplus',
+					url: '{current}'
+				},
+				{
+					name: 'pinterest',
+					url: '{current}'
+				},
+				{
+					name: 'tumblr',
+					url: '{current}'
+				}
 			]
 		};
 
@@ -208,17 +221,6 @@ $(function() {
 			$slides.tpslide_to($slide);
 		};
 
-		$slides.find('.image img').each(function() {
-			var $this = $(this);
-			if ( this.clientHeight ) {
-				$this.closest('li').height($this.height());
-			} else {
-				$this.bind('load', function() {
-					$this.closest('li').height($this.height());
-				});
-			}
-		});
-
 		$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
 		var has_history = function() {
@@ -231,27 +233,46 @@ $(function() {
 			history.pushState(null, title, base_url + '/' + token);
 		};
 
+		var $current_slide = null;
 		var slide_callback = function($current) {
+			$current_slide = $current;
 			if ( !gallery_showing ) return;
 			hpush($current.data('token'), $current.find('.headline').text());
 		}
 
 		var gallery_showing = false;
 		var show_gallery = function() {
+			if ( gallery_showing ) return;
 			$('#gallery-cover').hide();
 			$('#gallery-photos').show();
+			hpush($current_slide.data('token'), $current_slide.find('.headline').text());
 
-			window.addEventListener("popstate", function(e) {
-				goto_slide();
-			});
 			gallery_showing = true;
+		};
+
+		var hide_gallery = function() {
+			$('#gallery-cover').show();
+			$('#gallery-photos').hide();
+
+			gallery_showing = false;
 		};
 
 		$slides.tpslide({onslide: slide_callback});
 
+		window.addEventListener("popstate", function(e) {
+			if ( get_curtoken() ) {
+				show_gallery();
+				goto_slide();
+			} else {
+				hide_gallery();
+			}
+		});
+
 		if ( get_curtoken() ) {
 			goto_slide();
 			show_gallery();
+		} else {
+			hide_gallery();
 		}
 
 		//$('#gallery-photos').hide();

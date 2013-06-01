@@ -7,7 +7,7 @@
 			</aside>
 			<a href="#gallery-photos" class="enter-link">
 				<p class="image">
-					<?=_simage($node, 'field_thumbnail') ?>
+					<?=_simage($node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?>
 				</p>
 				<div class="content">
 					<p class="description"><?=t('Photo Gallery') ?></p>
@@ -20,7 +20,6 @@
 		<div id="gallery-cover-content">
 			<? if ( $body = _snode($node, 'body') ): ?>
 				<div id="gallery-body" class="cms">
-					<p class="header"><?=_s($node->title) ?></p>
 					<div class="content">
 						<?=_s($body)?>
 					</div>
@@ -103,10 +102,10 @@
 			<ul>
 				<? if ( $images = _snode($node, 'field_gallery_images') ): ?>
 					<? while ( list($key, $image) = _seach($images) ): ?>
-						<li class="slide<?=$key ?>" data-token="<?=_takepart_galleries_get_token(_s($image['file'], 'field_image_title', 'file'), $image['file']->filename) ?>">
+						<li class="slide<?=$key ?> gallery-slide" data-token="<?=_takepart_galleries_get_token(_s($image['file'], 'field_image_title', 'file'), $image['file']->filename) ?>">
 							<figure>
 								<div class="image">
-									<?=_simage($image) ?>
+									<?=_simage($image, null, null, 'tp_gallery_slide') ?>
 								</div>
 								<figcaption class="photo-caption">
 									<h2 class="headline"><?=_s($image['file'], 'field_image_title', 'file') ?></h2>
@@ -121,14 +120,18 @@
 				<? if ( $next_gallery ): ?>
 					<li id="next-gallery" data-token="next-gallery">
 						<a href="<?=$next_gallery->href ?>" class="enter-link">
-							<p class="image"><?=_simage($next_gallery->node, 'field_thumbnail') ?></p>
-							<div class="content">
-								<p class="description"><?=t('Up Next') ?></p>
-								<h2 class="headline"><?=_s($next_gallery->title) ?></h2>
-								<p class="enter"><?=t('Enter Photo Gallery') ?></p>
+							<div class="image-area">
+								<div class="image-area-inner">
+									<p class="image"><?=_simage($next_gallery->node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?></p>
+									<div class="content">
+										<p class="description"><?=t('Up Next') ?></p>
+										<h2 class="headline"><?=_s($next_gallery->title) ?></h2>
+										<p class="enter"><?=t('Enter Photo Gallery') ?></p>
+									</div>
+								</div>
 							</div>
+
 							<div class="photo-caption">
-								<h2 class="headline"><?=_s($next_gallery->title) ?></h2>
 								<div class="caption cms">
 									<?=_s($next_gallery->node, 'body')?>
 								</div>

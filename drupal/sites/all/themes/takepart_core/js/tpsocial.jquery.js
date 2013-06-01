@@ -113,6 +113,8 @@ $.fn.tpsocial = function(args) {
 							var data = $.extend({}, defaults, srvc, get_data($parent, dpre + srvc.name + '-', dpre), get_data($lnk, dpre + srvc.name + '-', dpre));
 							data.element = this;
 
+							if ( data.url == '{current}' ) data.url = document.location.href;
+
 							srvc.share(data);
 							$window.trigger(cpre + 'click', data);
 							e.preventDefault();

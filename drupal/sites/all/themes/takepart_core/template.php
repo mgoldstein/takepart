@@ -267,6 +267,7 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
     }
 
     $image['style_name'] = $style;
+    $image['getsize'] = TRUE;
     return theme('image_style', $image);
   } else {
     if ( !isset($image['path']) ) {
