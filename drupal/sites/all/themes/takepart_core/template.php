@@ -191,11 +191,11 @@ function _s($var, $prop = NULL, $type = 'node') {
     return $var;
   } elseif ( is_array($var) && isset($var['safe_value']) ) {
     return $var['safe_value'];
-  } elseif ( is_object($var) && $prop && isset($var->{$prop}) ) {
+  } elseif ( is_object($var) && $prop && isset($var->{$prop}) && is_string($var->{$prop}) ) {
     return $var->{$prop};
   } elseif ( is_object($var) && $prop ) {
     $ret = field_get_items($type, $var, $prop);
-    if ( is_array($ret[0]) ) return _s($ret[0]);
+    if ( is_array($ret) ) return _s($ret[0]);
     return $ret[0];
   // Avoid doing ->value()
   } elseif ( is_object($var) && get_class($var) == 'EntityValueWrapper' ) {

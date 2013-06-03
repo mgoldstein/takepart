@@ -50,7 +50,7 @@
 				</div>
 
 				<aside id="gallery-cover-social" class="social">
-					<h3 class="headline"><?=t('Share Gallery') ?></h3>
+					<h3 class="headline"><?=t('Share Photo') ?></h3>
 					<div class="tp-social" id="gallery-cover-share"></div>
 				</aside>
 			</div>
