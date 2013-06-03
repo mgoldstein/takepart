@@ -1329,6 +1329,7 @@ div.takepart-take-action-widget {
 }
 
 .node-type-openpublish-photo-gallery #gallery-photos #gallery-content {
+	margin-bottom: 1.5em;
 }
 
 .node-type-openpublish-photo-gallery #gallery-photos .gallery-slide .image,
@@ -1479,6 +1480,19 @@ div.takepart-take-action-widget {
 	line-height: 1.75;
 }
 
+.node-type-openpublish-photo-gallery #gallery-cover #gallery-body .enter-link {
+	font-size: 14px;
+}
+
+.node-type-openpublish-photo-gallery #gallery-cover #gallery-body .enter-link a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.node-type-openpublish-photo-gallery #gallery-cover #gallery-body .enter-link a:hover {
+	text-decoration: underline;
+}
+
 .node-type-openpublish-photo-gallery #gallery-header .header {
 	font-size: 32px;
 	font-weight: bold;
@@ -1486,6 +1500,11 @@ div.takepart-take-action-widget {
 }
 
 /* Slideshow section */
+
+.node-type-openpublish-photo-gallery #gallery-photos .abstract {
+	font-size: 16px;
+	margin-bottom: .5em;
+}
 
 .node-type-openpublish-photo-gallery #gallery-photos #gallery-header-main > .headline {
 	font-size: 32px;

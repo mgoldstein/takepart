@@ -24,6 +24,7 @@
 						<div class="content">
 							<?=_s($body)?>
 						</div>
+						<p class="enter-link"><a href="#gallery-photos">Enter Photo Gallery</a></p>
 					</div>
 				<? endif ?>
 			</div>
@@ -34,7 +35,9 @@
 		<header id="gallery-header">
 			<div id="gallery-header-main">
 				<h1 class="headline"><?=_s($node->title) ?></h1>
-				<? /* <p id="gallery-abstract"><?=_s($node, 'field_subhead') ?></p> */ ?>
+				<? if ( $subhead = _snode($node, 'field_subhead') ): ?>
+					<p class="abstract"><?=_s($subhead) ?></p>
+				<? endif ?>
 				<div class="header-secondary">
 					<p class="date"><?=date('F j, Y', $node->created)?></p>
 
