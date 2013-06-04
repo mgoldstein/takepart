@@ -190,7 +190,7 @@ $(function() {
 	} else if ( $body.is('.node-type-openpublish-photo-gallery') ) {
 		var $gallery_cover = $('#gallery-cover');
 		var $gallery_main = $('#gallery-main');
-		var $slides = $('#gallery-content ul');
+		var $slides = $('#gallery-content > ul');
 		var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
 		var fb_comment_el = $('.fb_comments')[0];
 		// Social share buttons
@@ -287,7 +287,7 @@ $(function() {
 			hide_gallery();
 		} else {
 			show_gallery();
-			hpush($current.data('token'), $current.find('.headline').text());
+			hpush($current_slide.data('token'), $current.find('.headline').text());
 		}
 
 		//$('#gallery-photos').hide();
