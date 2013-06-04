@@ -140,7 +140,7 @@
 				<ul>
 					<? while ( list($key, $related) = _seach($relateds) ): ?>
 						<li><a href="<?=_surl($related) ?>">
-							<?=_simage($related, 'field_thumbnail', 'node', 'tp_300x225') ?>
+							<?=_simage($related, 'field_thumbnail', 'node', 'tp_300x185') ?>
 							<?=$related->title ?>
 						</a></li>
 					<? endwhile ?>

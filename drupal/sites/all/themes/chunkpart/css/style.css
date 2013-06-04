@@ -1271,6 +1271,7 @@ div.takepart-take-action-widget {
 	display: none;
 }
 
+.node-type-openpublish-photo-gallery .hide_gallery #related-galleries,
 .node-type-openpublish-photo-gallery .hide_gallery #gallery-photos {
 	display: none;
 }
