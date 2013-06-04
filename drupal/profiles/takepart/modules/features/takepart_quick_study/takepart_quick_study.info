@@ -16,6 +16,7 @@ dependencies[] = media_views_widget
 dependencies[] = node_reference
 dependencies[] = strongarm
 dependencies[] = takepart_blog
+dependencies[] = takepart_video
 dependencies[] = taxonomy
 features[context][] = blocks_quick_study
 features[ctools][] = boxes:box:1

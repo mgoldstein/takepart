@@ -10,7 +10,7 @@
 function takepart_content_lock_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: administer checked out documents
+  // Exported permission: administer checked out documents.
   $permissions['administer checked out documents'] = array(
     'name' => 'administer checked out documents',
     'roles' => array(
@@ -21,7 +21,7 @@ function takepart_content_lock_user_default_permissions() {
     'module' => 'content_lock',
   );
 
-  // Exported permission: check out documents
+  // Exported permission: check out documents.
   $permissions['check out documents'] = array(
     'name' => 'check out documents',
     'roles' => array(

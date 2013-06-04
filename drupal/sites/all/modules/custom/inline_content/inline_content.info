@@ -1,0 +1,17 @@
+name = Inline Content
+description = Provides interface and entities for maintaining inline content outside the WYSIWYG.
+package = Fields
+core = 7.x
+version = 7.x-1.0
+
+files[] = handlers/InlineContentReplacementController.class.php
+
+files[] = handlers/InlineContentHorizontalRule.class.php
+files[] = handlers/InlineContentMarkup.class.php
+files[] = handlers/InlineContentMedia.class.php
+files[] = handlers/InlineContentNewsletter.class.php
+files[] = handlers/InlineContentNodes.class.php
+files[] = handlers/InlineContentTakeActionWidget.class.php
+
+dependencies[] = inline_entity_form
+dependencies[] = inline_content_fields

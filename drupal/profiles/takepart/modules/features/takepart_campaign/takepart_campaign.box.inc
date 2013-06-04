@@ -659,7 +659,9 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_seg_4_html' => 'field_tp_campaign_seg_4_html',
       'field_tp_campaign_seg_4_rel' => 'field_tp_campaign_seg_4_rel',
       'body' => 0,
+      'field_thumbnail' => 0,
       'field_topic' => 0,
+      'field_main_image' => 0,
       'field_tp_campaign_4_things_link' => 0,
       'field_tp_campaign_5_things_head' => 0,
       'field_tp_campaign_cover_image' => 0,
@@ -688,10 +690,14 @@ function takepart_campaign_default_box() {
       'field_tp_campaign_cover_link' => 0,
       'field_tp_campaign_alliances' => 0,
       'field_tp_campaign_show_title' => 0,
+      'field_calendar' => 0,
+      'field_html_title' => 0,
+      'field_google_map' => 0,
     ),
     'use_page' => 0,
     'exclude_from_content' => 0,
     'view_mode' => 'default',
+    'additional_classes' => '',
   );
   $export['box-97545db1'] = $box;
 

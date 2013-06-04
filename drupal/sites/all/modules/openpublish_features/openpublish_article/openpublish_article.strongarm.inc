@@ -20,7 +20,7 @@ function openpublish_article_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -40,23 +40,41 @@ function openpublish_article_strongarm() {
       'embedaction' => array(
         'custom_settings' => FALSE,
       ),
+      'vidpop_map' => array(
+        'custom_settings' => TRUE,
+      ),
+      'embedaction_expanded' => array(
+        'custom_settings' => FALSE,
+      ),
+      'action_summary' => array(
+        'custom_settings' => FALSE,
+      ),
+      'medium_preview' => array(
+        'custom_settings' => FALSE,
+      ),
+      'of_the_day' => array(
+        'custom_settings' => FALSE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'path' => array(
-          'weight' => '16',
+          'weight' => '18',
         ),
         'xmlsitemap' => array(
-          'weight' => '18',
+          'weight' => '20',
         ),
         'metatags' => array(
           'weight' => '40',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '19',
         ),
       ),
       'display' => array(),

@@ -1,5 +1,27 @@
 <?php
 
+function newsletter_campaign_follow_us_service_urls() {
+  return array(
+    'facebook' => 'http://www.facebook.com/takepart',
+    'twitter' => 'http://www.twitter.com/takepart',
+    'google' => 'https://plus.google.com/113369936500827860065?prsrc=3',
+    'pinterest' => 'http://www.pinterest.com/takepart',
+    'youtube' => 'http://www.youtube.com/takepart',
+    'tumblr' => 'http://takepart.tumblr.com',
+  );
+}
+
+function newsletter_campaign_follow_us_service_names() {
+  return array(
+    'facebook' => t('Facebook'),
+    'twitter' => t('Twitter'),
+    'google' => t('Google'),
+    'pinterest' => t('Pinterest'),
+    'youtube' => t('YouTube'),
+    'tumblr' => t('Tumblr'),
+  );
+}
+
 /**
  * Newsletter Campaign Entity.
  */
@@ -54,6 +76,19 @@ class NewsletterCampaign extends Entity {
  */
 class NewsletterCampaignController extends EntityApiController {
 
+  protected function initializeFollowUs($configuration = NULL) {
+    if ($configuration === NULL) {
+      $configuration = new StdClass();
+    }
+    $services = newsletter_campaign_follow_us_service_urls();
+    foreach (array_keys($services) as $service) {
+      if (!isset($configuration->{$service})) {
+        $configuration->{$service} = '';
+      }
+    }
+    return $configuration;
+  }
+
   public function create(array $values = array()) {
     $values += array(
       'ncid' => '',
@@ -64,9 +99,21 @@ class NewsletterCampaignController extends EntityApiController {
       'campaign_id' => '',
       'bsd_form_id' => 0,
       'bsd_field_id' => 0,
+      'follow_us_enabled' => FALSE,
+      'follow_us_configuration' => $this->initializeFollowUs(),
       'is_new' => TRUE,
     );
     return parent::create($values);
+  }
+
+  protected function attachLoad(&$queried_entities, $revision_id = FALSE) {
+    // Fully populate the follow us configuration.
+    parent::attachLoad($queried_entities, $revision_id);
+    foreach ($queried_entities as $key => $entity) {
+      $entity->follow_us_configuration = $this->initializeFollowUs(
+        $entity->follow_us_configuration);
+      $queried_entities[$key] = $entity;
+    }
   }
 }
 
@@ -76,8 +123,29 @@ class NewsletterCampaignController extends EntityApiController {
 class NewsletterCampaignUIController extends EntityDefaultUIController {
 
   public function hook_menu() {
+
     $items = parent::hook_menu();
     $items[$this->path]['description'] = 'Manage newsletter campaigns.';
+
+    $items['admin/config/newsletter-campaign'] = array(
+      'title' => 'Newsletter Campaigns',
+      'description' => 'Configuration of Newsletter Campaigns',
+      'weight' => 0,
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    );
+
+    $items['admin/config/newsletter-campaign/services'] = array(
+      'title' => 'Newsletter Campaign Services',
+      'description' => "Configure 'Follow Us' service link defaults.",
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('newsletter_campaign_services_admin_form'),
+      'access callback' => 'entity_access',
+      'access arguments' => array('create', 'newsletter_campaign'),
+    );
+
     return $items;
   }
 
@@ -96,7 +164,8 @@ class NewsletterCampaignUIController extends EntityDefaultUIController {
   }
 
   protected function overviewTableRow($conditions, $id, $entity, $additional_cols = array()) {
-    $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
+    $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol', 'li',
+      'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
     $additional_cols[] = empty($entity->bsd_form_id) ? '' : (string) $entity->bsd_form_id;
     $additional_cols[] = filter_xss($entity->header, $allowed_tags);
     $additional_cols[] = filter_xss($entity->promo_message, $allowed_tags);
@@ -133,7 +202,7 @@ function newsletter_campaign_permission() {
 /**
  * Access callback.
  */
-function newsletter_campaign_access($op, $campaign = NULL, $account = NULL) {
+function newsletter_campaign_access($op, $entity = NULL, $account = NULL) {
   // Block unknown operations.
   if (in_array($op, array('view', 'update', 'create', 'delete'))) {
     return user_access("$op newsletter campaign", $account);
@@ -170,8 +239,7 @@ function newsletter_campaign_entity_info() {
 /**
  * Newsletter Campaign entity form.
  */
-function newsletter_campaign_form($form, &$form_state, $campaign,
-  $op = 'edit') {
+function newsletter_campaign_form($form, &$form_state, $campaign, $op = 'edit') {
 
   $form_state['newsletter_campaign'] = $campaign;
 
@@ -189,7 +257,13 @@ function newsletter_campaign_form($form, &$form_state, $campaign,
     'thankyou_message' => $campaign->thankyou_message,
     'bsd_form_id' => $campaign->bsd_form_id,
     'bsd_field_id' => $campaign->bsd_field_id,
+    'follow_us_enabled' => $campaign->follow_us_enabled,
   );
+
+  $service_names = newsletter_campaign_follow_us_service_names();
+  foreach ($service_names as $service => $name) {
+    $default["follow_us_{$service}"] = $campaign->follow_us_configuration->{$service};
+  }
 
   $values = array();
   foreach ($defaults as $name => $value) {
@@ -265,6 +339,31 @@ function newsletter_campaign_form($form, &$form_state, $campaign,
     '#suffix' => '</div>',
   );
 
+  $form['follow_us_enabled'] = array(
+   '#type' => 'checkbox',
+   '#title' => "Enable Follow Us Box",
+   '#default_value' => $values['follow_us_enabled'],
+  );
+
+  $form['follow_us'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Follow Us Service URL Overrides'),
+    '#tree' => FALSE,
+    '#collapsible' => TRUE,
+  );
+
+  foreach ($service_names as $service => $name) {
+    $variable = "follow_us_{$service}";
+    $form['follow_us'][$variable] = array(
+      '#type' => 'textfield',
+      '#title' => $name,
+      '#description' => t('TakePart @name service URL.', array('@name' => $name)),
+      '#required' => FALSE,
+      '#default_value' => $values[$variable],
+      '#element_validate' => array('newsletter_campaign_validate_url'),
+    );
+  }
+
   $form['actions'] = array('#type' => 'actions');
   $submit = array();
   if (! empty($form['#submit'])) {
@@ -273,7 +372,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign,
 
   $form['actions']['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('Save campaign'),
+    '#value' => t('Save'),
     '#weight' => 40,
     '#submit' => $submit + array('newsletter_campaign_form_submit'),
   );
@@ -282,7 +381,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign,
   if (! empty($campaign->ncid)) {
     $form['actions']['delete'] = array(
       '#type' => 'submit',
-      '#value' => t('Delete campaign'),
+      '#value' => t('Delete'),
       '#submit' => $submit + array('newsletter_campaign_form_submit_delete'),
       '#weight' => 45,
     );
@@ -312,6 +411,14 @@ function newsletter_campaign_form_submit(&$form, &$form_state) {
   // build the newsletter campaign entity from the form
   $campaign = entity_ui_form_submit_build_entity($form, $form_state);
 
+  $services = newsletter_campaign_follow_us_service_urls();
+  $campaign->follow_us_configuration = new StdClass();
+  foreach (array_keys($services) as $service) {
+    $input_name = "follow_us_{$service}";
+    $campaign->follow_us_configuration->{$service}
+      = $form_state['values'][$input_name];
+  }
+
   // save the newsletter campaign
   $status = $campaign->save();
   if ($status == SAVED_UPDATED) {
@@ -330,7 +437,7 @@ function newsletter_campaign_form_submit(&$form, &$form_state) {
 /**
  * Newsletter Campaign entity form delete (submit) handler
  */
-function newsletter_campaign_form_submit_delete(&$form, &$form_state) {
+function newsletter_campaign_form_submit_delete($form, &$form_state) {
 
   // go to the delete confirmation page
   $form_state['redirect'] = array(
@@ -344,6 +451,39 @@ function newsletter_campaign_form_submit_delete(&$form, &$form_state) {
   );
 }
 
+function newsletter_campaign_services_admin_form($form, &$form_state) {
+
+  $service_urls = newsletter_campaign_follow_us_service_urls();
+  $service_names = newsletter_campaign_follow_us_service_names();
+
+  foreach ($service_names as $service => $name) {
+    $variable = "newsletter_campaign_service_{$service}";
+    $form[$variable] = array(
+      '#type' => 'textfield',
+      '#title' => $name,
+      '#description' => t('Default TakePart @name service URL.', array('@name' => $name)),
+      '#required' => FALSE,
+      '#default_value' => variable_get($variable, $service_urls[$service]),
+      '#element_validate' => array('newsletter_campaign_validate_url'),
+    );
+  }
+
+  return system_settings_form($form);
+}
+
+/**
+ * URL form element validation callback.
+ */
+function newsletter_campaign_validate_url($element, &$form_state) {
+  if (!empty($element['#value'])) {
+    if (!valid_url($element['#value'], TRUE)) {
+      form_error($element, t('@title must be an absolute URL.', array(
+        '@title' => $element['#title'],
+      )));
+    }
+  }
+}
+
 /**
  * Implementation of hook_theme()
  */
@@ -353,9 +493,19 @@ function newsletter_campaign_theme() {
       'variables' => array(
         'form_id' => NULL,
         'promo_text' => NULL,
-        'signup_form' => NULL
+        'signup_form' => NULL,
       ),
       'template' => 'theme/newsletter-signup-block',
+    ),
+    'newsletter_social_block' => array(
+      'variables' => array(
+        'newsletter' => NULL,
+        'form' => NULL,
+      ),
+      'template' => 'theme/newsletter-social-block',
+    ),
+    'newsletter_campaign_inline_error_message' => array(
+      'render element' => 'element',
     ),
   );
 }
@@ -383,26 +533,88 @@ function newsletter_campaign_block_view($delta) {
   $content = '';
   $subject = '';
 
+  // The newsletter campaign entity ID is used as the delta.
   if (is_numeric($delta)) {
 
-    $campaign = reset(entity_load('newsletter_campaign', array($delta)));
-    if ($campaign !== FALSE) {
+    // Load the specific newsletter campaign.
+    $newsletter = entity_load_single('newsletter_campaign', $delta);
+    if ($newsletter !== FALSE) {
+
+      // The header and body and response message are filtered HTML.
+      $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol',
+        'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
+
+      // Both blocks have a terms of service link.
+      $tos_link = array(
+        '#theme' => 'link',
+        '#text' => t("Terms & Conditions"),
+        '#path' => 'terms-of-use',
+        '#options' => array(
+          'attributes' => array(
+            'target' => '_blank',
+          ),
+          'html' => FALSE,
+        ),
+      );
 
       $path = drupal_get_path('module', 'newsletter_campaign');
       drupal_add_js($path . '/js/newsletter_campaign_block.js');
-      drupal_add_css($path . '/css/newsletter_campaign_block.css');
 
-      $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
-      $promo_message = isset($campaign->promo_message)
-        ? $campaign->promo_message : '';
-      $variables = array(
-        'form_id' => (string ) $campaign->ncid,
-        'promo_text' => filter_xss($promo_message, $allowed_tags),
-        'signup_form' => drupal_get_form('newsletter_campaign_signup_form',
-          $campaign),
-      );
-      $content = theme('newsletter_signup_block', $variables);
-      $subject = filter_xss($campaign->header, $allowed_tags);
+      if ($newsletter->follow_us_enabled && isset($newsletter->follow_us_configuration)) {
+
+        $config = $newsletter->follow_us_configuration;
+        $social_links = array();
+        $services = newsletter_campaign_follow_us_service_names();
+        foreach ($services as $service => $name) {
+          if (isset($config->{$service}) && strlen($config->{$service}) > 0) {
+            $link = $config->{$service};
+          }
+          else {
+            $link = variable_get("newsletter_campaign_service_{$service}", '');
+          }
+          if (strlen($link) > 0) {
+            $social_links[$service] = array(
+              '#theme' => 'link',
+              '#text' => $name,
+              '#path' => $link,
+              '#options' => array(
+                'attributes' => array(
+                  'target' => '_blank',
+                  'class' => array($service),
+                ),
+                'html' => FALSE,
+              ),
+            );
+          }
+        }
+
+        // Have the content template provide the title/header.
+        $subject = '';
+
+        $content = theme('newsletter_social_block', array(
+          'id' => (string) $newsletter->ncid,
+          'response_id' => "takepart-newsletter-{$newsletter->ncid}-body",
+          'header' => filter_xss($newsletter->header, $allowed_tags),
+          'body' => filter_xss($newsletter->promo_message, $allowed_tags),
+          'form' => drupal_get_form('newsletter_campaign_social_form', $newsletter),
+          'tos_link' => $tos_link,
+          'social_links' => $social_links,
+        ));
+      }
+      else {
+
+        drupal_add_css($path . '/css/newsletter_campaign_block.css');
+
+        // Have the block template provide the title/header.
+        $subject = filter_xss($newsletter->header, $allowed_tags);
+
+        $content = theme('newsletter_signup_block', array(
+          'ncid' => (string) $newsletter->ncid,
+          'body' => filter_xss($newsletter->promo_message, $allowed_tags),
+          'form' => drupal_get_form('newsletter_campaign_signup_form', $newsletter),
+          'tos_link' => $tos_link,
+        ));
+      }
     }
   }
 
@@ -420,7 +632,6 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign) {
     '#type' => 'textfield',
     '#title' => t('Email'),
     '#default_value' => 'Your Email',
-    '#size' => 60,
     '#maxlength' => 128,
   );
 
@@ -435,6 +646,7 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign) {
     '#prefix' => '<img src="/'. $hover_src . '" class="rollover-image-on" />',
     '#value' => t('Submit'),
     '#submit' => array('newsletter_campaign_signup_form_submit'),
+    '#validate' => array('newsletter_campaign_signup_form_validate'),
     '#ajax' => array(
       'callback' => 'newsletter_campaign_signup_form_callback',
       'progress' => array(
@@ -445,6 +657,55 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign) {
   );
 
   return $form;
+}
+
+function newsletter_campaign_social_form($form, &$form_state, $campaign) {
+
+  $form_state['newsletter_campaign'] = $campaign;
+
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Email'),
+    '#default_value' => '',
+    '#attributes' => array(
+      'placeholder' => t('Your Email'),
+    ),
+    '#size' => NULL,
+    '#maxlength' => NULL,
+  );
+
+  // Simple submit button
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+    '#submit' => array('newsletter_campaign_signup_form_submit'),
+    '#validate' => array('newsletter_campaign_signup_form_validate'),
+    '#ajax' => array(
+      'callback' => 'newsletter_campaign_social_form_callback',
+      'progress' => array(
+        'type' => 'throbber',
+        'message' => NULL,
+      ),
+    ),
+  );
+
+  // Inline error messages.
+  if (!isset($form['#pre_render'])) {
+    $form['#pre_render'] = array();
+  }
+  array_unshift($form['#pre_render'], 'newsletter_campaign_social_form_pre_render');
+
+  return $form;
+}
+
+function newsletter_campaign_signup_form_validate($form, $form_state) {
+  $email = trim($form_state['values']['email']);
+  if (strlen($email) == 0) {
+    form_set_error('email', t('Please enter your email.'));
+  }
+  elseif (!valid_email_address($email)) {
+    form_set_error('email', t('Please enter a valid email.'));
+  }
 }
 
 function newsletter_campaign_signup_form_submit($form, &$form_state) {
@@ -481,8 +742,9 @@ function newsletter_campaign_signup_form_callback($form, $form_state) {
         'newsletter_signup', array(check_plain($campaign->title)),
       ));
       // Thank the user for their signup.
-      $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
-      $message .= filter_xss($campaign->thankyou_message, $allowed_tags);
+      $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol',
+        'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
+      $message = filter_xss($campaign->thankyou_message, $allowed_tags);
     }
     else {
       // Inform the user that email signup failed.
@@ -504,6 +766,68 @@ function newsletter_campaign_signup_form_callback($form, $form_state) {
   );
 }
 
+function newsletter_campaign_social_form_callback($form, $form_state) {
+
+  $commands = array();
+
+  $newsletter = $form_state['newsletter_campaign'];
+
+  $errors = form_get_errors();
+  if (!empty($errors)) {
+    // The form has validation errors.
+    $selector = '#' . $form_state['complete form']['#id'];
+    $markup = drupal_render($form);
+  }
+  elseif ($form_state['newsletter_campaign_signup_successful']) {
+
+    // Fire the analytics events.
+    $commands[] = ajax_command_invoke('body', 'trigger', array(
+      'newsletter_social_signup', array(check_plain($newsletter->title)),
+    ));
+
+    // The signup was sent to BSD.
+    $selector = "#takepart-newsletter-{$newsletter->ncid}-body";
+    $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol', 'li',
+      'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
+    $markup = '<p class="message">'
+      . filter_xss($newsletter->thankyou_message, $allowed_tags)
+      . '</p>';
+  }
+  else {
+    // The signup could not be sent to BSD.
+    $selector = "#takepart-newsletter-{$newsletter->ncid}-body";
+    $markup = '<p class="error">'
+      . t('We were unable to process your subscription at this time, please try again later.')
+      . '</p>';
+  }
+
+  $commands[] = ajax_command_replace($selector, $markup);
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+}
+
+function newsletter_campaign_social_form_pre_render($element) {
+  $errors = form_get_errors();
+  if ($errors) {
+    foreach ($errors as $field => $error) {
+      $element[$field]['#inline_error_message'] = $error;
+      array_unshift($element[$field]['#theme_wrappers'],
+        'newsletter_campaign_inline_error_message');
+    }
+  }
+  return $element;
+}
+
+function theme_newsletter_campaign_inline_error_message($variables) {
+  $element = $variables['element'];
+  if (isset($element['#inline_error_message'])) {
+    return '<label class="error" for="' . $element['#id'] . '">' . $element['#inline_error_message'] . '</label>' . $element['#children'];
+  }
+  return $element['#children'];
+}
+
 /**
  * Process a signup for a newsletter campaign given the campaign's id.
  *
@@ -516,8 +840,7 @@ function newsletter_campaign_signup_form_callback($form, $form_state) {
  *   TRUE if the signup was successful, false otherwise.
  */
 function newsletter_campaign_signup($ncid, $email) {
-
-  $campaign = reset(entity_load('newsletter_campaign', array($ncid)));
+  $campaign = entity_load_single('newsletter_campaign', $ncid);
   if ($campaign !== FALSE) {
     return $campaign->signup($email);
   }

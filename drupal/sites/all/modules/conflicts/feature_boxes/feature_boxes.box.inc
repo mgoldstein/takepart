@@ -13,55 +13,6 @@ function feature_boxes_default_box() {
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'box-1104adce';
-  $box->plugin_key = 'ga_ad';
-  $box->title = '';
-  $box->description = 'GA: ROS Bottom Right';
-  $box->options = array(
-    'ga_ad_slot' => 'TP3_ROS_RR_BTF_300x600',
-    'ga_ad_gpt_id' => 'div-gpt-ad-1345512885535-0',
-    'additional_classes' => 'block-boxes-ga_ad',
-  );
-  $export['box-1104adce'] = $box;
-
-  $box = new stdClass();
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
-  $box->delta = 'box-66c05d6f';
-  $box->plugin_key = 'ga_ad';
-  $box->title = '';
-  $box->description = 'GA: ROS Top Right';
-  $box->options = array(
-    'ga_ad_slot' => 'TP3_ROS_RR_ATF_300x250',
-    'ga_ad_gpt_id' => 'div-gpt-ad-1340672916662-0',
-    'additional_classes' => 'block-boxes-ga_ad',
-  );
-  $export['box-66c05d6f'] = $box;
-
-  $box = new stdClass();
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
-  $box->delta = 'box-7fa6e22c';
-  $box->plugin_key = 'view';
-  $box->title = 'Popular Galleries';
-  $box->description = 'News + Issues - Gallery Right Rail';
-  $box->options = array(
-    'view' => 'photo_galleries--block_2',
-    'settings' => array(
-      'nid' => '20908+21091+19625', 
-        /* 'nid' => '22831+29841', */
-    ),
-    'view_object' => NULL,
-    'view_more_text' => '',
-    'view_more_link' => '',
-    'additional_classes' => '',
-    /* 'selected_style' => '0', */
-  );
-  $export['box-7fa6e22c'] = $box;
-
-  $box = new stdClass();
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
   $box->delta = 'box-bb0b625d';
   $box->plugin_key = 'field';
   $box->title = '';
@@ -91,12 +42,42 @@ function feature_boxes_default_box() {
       'field_suggest_actions' => 0,
       'field_multi_page_campaign' => 0,
       'field_tp_campaign_show_title' => 0,
+      'field_html_title' => 0,
+      'field_tab_action_override' => 0,
     ),
     'use_page' => 1,
     'exclude_from_content' => 0,
     'view_mode' => 'default',
+    'additional_classes' => '',
   );
   $export['box-bb0b625d'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'ga_articles_top';
+  $box->plugin_key = 'ga_ad';
+  $box->title = '';
+  $box->description = 'GA: Articles Top';
+  $box->options = array(
+    'ga_ad_slot' => 'TP_Test_ATF_header_728x90',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1367984606334-0',
+    'additional_classes' => '',
+  );
+  $export['ga_articles_top'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'takepart';
+  $box->plugin_key = 'ga_ad';
+  $box->title = '';
+  $box->description = 'GA: Leaderboard ROS';
+  $box->options = array(
+    'ga_ad_slot' => 'TP3_ROS_Leaderboard_728x90',
+    'ga_ad_gpt_id' => '1346089138325-0',
+  );
+  $export['takepart'] = $box;
 
   return $export;
 }
