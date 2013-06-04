@@ -13,8 +13,8 @@ function takepart_mos_default_field_validation_rule() {
   $rule = new stdClass();
   $rule->disabled = FALSE; /* Edit this to true to make a default rule disabled initially */
   $rule->api_version = 2;
-  $rule->rulename = 'MOS User Custom Message 600 Chars Max';
-  $rule->name = 'mos_custom_message_600_chars_max';
+  $rule->rulename = '600 characters max';
+  $rule->name = 'field_mos_message_max_length';
   $rule->field_name = 'field_mos_user_custom_message';
   $rule->col = 'value';
   $rule->entity_type = 'signature';
@@ -33,14 +33,14 @@ function takepart_mos_default_field_validation_rule() {
     ),
     'errors' => 0,
   );
-  $rule->error_message = 'User Custom Message max length is 600 characters';
-  $export['mos_custom_message_600_chars_max'] = $rule;
+  $rule->error_message = '600 characters max';
+  $export['field_mos_message_max_length'] = $rule;
 
   $rule = new stdClass();
   $rule->disabled = FALSE; /* Edit this to true to make a default rule disabled initially */
   $rule->api_version = 2;
-  $rule->rulename = 'Signature City 70 Chars Max';
-  $rule->name = 'sig_city_70_chars_max';
+  $rule->rulename = '70 characters max';
+  $rule->name = 'field_sig_city_max_length';
   $rule->field_name = 'field_sig_city';
   $rule->col = 'value';
   $rule->entity_type = 'signature';
@@ -59,8 +59,60 @@ function takepart_mos_default_field_validation_rule() {
     ),
     'errors' => 0,
   );
-  $rule->error_message = 'City name max length is 70 characters.';
-  $export['sig_city_70_chars_max'] = $rule;
+  $rule->error_message = '70 characters max';
+  $export['field_sig_city_max_length'] = $rule;
+
+  $rule = new stdClass();
+  $rule->disabled = FALSE; /* Edit this to true to make a default rule disabled initially */
+  $rule->api_version = 2;
+  $rule->rulename = '35 characters max';
+  $rule->name = 'field_sig_first_name_max_length';
+  $rule->field_name = 'field_sig_first_name';
+  $rule->col = 'value';
+  $rule->entity_type = 'signature';
+  $rule->bundle = 'mos_signature';
+  $rule->validator = 'field_validation_length_validator';
+  $rule->settings = array(
+    'min' => '',
+    'max' => '35',
+    'bypass' => 0,
+    'roles' => array(
+      2 => 0,
+      3 => 0,
+      5 => 0,
+      6 => 0,
+      7 => 0,
+    ),
+    'errors' => 0,
+  );
+  $rule->error_message = '35 characters max length';
+  $export['field_sig_first_name_max_length'] = $rule;
+
+  $rule = new stdClass();
+  $rule->disabled = FALSE; /* Edit this to true to make a default rule disabled initially */
+  $rule->api_version = 2;
+  $rule->rulename = '35 characters max';
+  $rule->name = 'field_sig_last_name_max_length';
+  $rule->field_name = 'field_sig_last_name';
+  $rule->col = 'value';
+  $rule->entity_type = 'signature';
+  $rule->bundle = 'mos_signature';
+  $rule->validator = 'field_validation_length_validator';
+  $rule->settings = array(
+    'min' => '',
+    'max' => '35',
+    'bypass' => 0,
+    'roles' => array(
+      2 => 0,
+      3 => 0,
+      5 => 0,
+      6 => 0,
+      7 => 0,
+    ),
+    'errors' => 0,
+  );
+  $rule->error_message = '35 characters max';
+  $export['field_sig_last_name_max_length'] = $rule;
 
   return $export;
 }

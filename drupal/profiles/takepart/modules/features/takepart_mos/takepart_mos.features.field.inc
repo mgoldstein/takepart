@@ -1310,7 +1310,7 @@ function takepart_mos_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '41',
+        'weight' => '19',
       ),
     ),
   );
@@ -1373,7 +1373,7 @@ function takepart_mos_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'text_textfield',
-        'weight' => '17',
+        'weight' => '18',
       ),
     ),
   );
@@ -1802,120 +1802,14 @@ function takepart_mos_field_default_fields() {
     ),
   );
 
-  // Exported field: 'signature-mos_signature-field_sig_state'.
-  $fields['signature-mos_signature-field_sig_state'] = array(
+  // Exported field: 'signature-mos_signature-field_sig_state_international'.
+  $fields['signature-mos_signature-field_sig_state_international'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_sig_state',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'AL' => 'Alabama',
-          'AK' => 'Alaska',
-          'AZ' => 'Arizona',
-          'AR' => 'Arkansas',
-          'CA' => 'California',
-          'CO' => 'Colorado',
-          'CT' => 'Connecticut',
-          'DE' => 'Delaware',
-          'DC' => 'District Of Columbia',
-          'FL' => 'Florida',
-          'GA' => 'Georgia',
-          'HI' => 'Hawaii',
-          'ID' => 'Idaho',
-          'IL' => 'Illinois',
-          'IN' => 'Indiana',
-          'IA' => 'Iowa',
-          'KS' => 'Kansas',
-          'KY' => 'Kentucky',
-          'LA' => 'Louisiana',
-          'ME' => 'Maine',
-          'MD' => 'Maryland',
-          'MA' => 'Massachusetts',
-          'MI' => 'Michigan',
-          'MN' => 'Minnesota',
-          'MS' => 'Mississippi',
-          'MO' => 'Missouri',
-          'MT' => 'Montana',
-          'NE' => 'Nebraska',
-          'NV' => 'Nevada',
-          'NH' => 'New Hampshire',
-          'NJ' => 'New Jersey',
-          'NM' => 'New Mexico',
-          'NY' => 'New York',
-          'NC' => 'North Carolina',
-          'ND' => 'North Dakota',
-          'OH' => 'Ohio',
-          'OK' => 'Oklahoma',
-          'OR' => 'Oregon',
-          'PA' => 'Pennsylvania',
-          'RI' => 'Rhode Island',
-          'SC' => 'South Carolina',
-          'SD' => 'South Dakota',
-          'TN' => 'Tennessee',
-          'TX' => 'Texas',
-          'UT' => 'Utah',
-          'VT' => 'Vermont',
-          'VA' => 'Virginia',
-          'WA' => 'Washington',
-          'WV' => 'West Virginia',
-          'WI' => 'Wisconsin',
-          'WY' => 'Wyoming',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'mos_signature',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => 7,
-        ),
-      ),
-      'entity_type' => 'signature',
-      'field_name' => 'field_sig_state',
-      'label' => 'State',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '15',
-      ),
-    ),
-  );
-
-  // Exported field: 'signature-mos_signature-field_sig_state_non_us'.
-  $fields['signature-mos_signature-field_sig_state_non_us'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_sig_state_non_us',
+      'field_name' => 'field_sig_state_international',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -1948,11 +1842,11 @@ function takepart_mos_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 6,
+          'weight' => 9,
         ),
       ),
       'entity_type' => 'signature',
-      'field_name' => 'field_sig_state_non_us',
+      'field_name' => 'field_sig_state_international',
       'label' => 'State',
       'required' => 0,
       'settings' => array(
@@ -1966,7 +1860,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '16',
+        'weight' => '17',
       ),
     ),
   );

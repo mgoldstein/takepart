@@ -58,7 +58,7 @@ function takepart_mos_default_signature_type() {
   $items['mos_signature'] = entity_import('signature_type', '{
     "type" : "mos_signature",
     "label" : "Messages of Support Signature",
-    "bsd_form" : "0",
+    "bsd_form" : "242",
     "rdf_mapping" : []
   }');
   return $items;
