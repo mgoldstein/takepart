@@ -718,6 +718,35 @@ div.takepart-take-action-widget {
 	display: none;
 }
 
+/* Related Links */
+
+.related {
+	margin-bottom: 1.25em;
+}
+
+.related .headline {
+	text-transform: uppercase;
+	font-family: TradeGothicLTStdCnBold, sans-serif;
+	color: #333;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+.related p,
+.related li {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.related a {
+	text-decoration: none;
+}
+
+.related a:hover {
+	text-decoration: underline;
+}
+
+
 /* ============================================================
 || 3.) Section Specific
 ============================================================ */
@@ -1228,39 +1257,6 @@ div.takepart-take-action-widget {
 	background-image: url(../images/author_google.png); /** sprite-ref: mysprite; */
 }
 
-/* Next Article */
-.node-type-article #next-article,
-.node-type-article #article-related {
-	margin-bottom: 1.25em;
-}
-
-.node-type-article #next-article .headline,
-.node-type-article #article-related .headline {
-	text-transform: uppercase;
-	font-family: TradeGothicLTStdCnBold, sans-serif;
-	color: #333;
-	font-size: 16px;
-	margin-bottom: 10px;
-}
-
-.node-type-article #next-article p,
-.node-type-article #article-related li {
-	font-size: 14px;
-	margin-bottom: 10px;
-}
-
-.node-type-article #next-article a,
-.node-type-article #article-related a {
-	text-decoration: none;
-}
-
-.node-type-article #next-article a:hover,
-.node-type-article #article-related a:hover {
-	text-decoration: underline;
-}
-
-/* Topic Box */
-
 /* Footer */
 
 .node-type-article #article-footer {
@@ -1269,6 +1265,20 @@ div.takepart-take-action-widget {
 
 /* Gallery Page
 ------------------------------------------------------------ */
+
+.node-type-openpublish-photo-gallery .show_gallery #gallery-cover,
+.node-type-openpublish-photo-gallery .show_gallery #gallery-description {
+	display: none;
+}
+
+.node-type-openpublish-photo-gallery .hide_gallery #gallery-photos {
+	display: none;
+}
+
+.node-type-openpublish-photo-gallery .show_gallery #gallery-related {
+	padding-left: 0;
+	margin-top: 50px
+}
 
 .node-type-openpublish-photo-gallery #gallery-body .drupal-embed {
 	display: none;
@@ -1329,7 +1339,7 @@ div.takepart-take-action-widget {
 }
 
 .node-type-openpublish-photo-gallery #gallery-photos #gallery-content {
-	margin-bottom: 1.5em;
+	margin-bottom: 1em;
 }
 
 .node-type-openpublish-photo-gallery #gallery-photos .gallery-slide .image,
@@ -1349,12 +1359,6 @@ div.takepart-take-action-widget {
 	vertical-align: middle;
 }
 
-.node-type-openpublish-photo-gallery #gallery-cover-content {
-	width: 31em;
-	float: left;
-	padding-left: 6em;
-}
-
 .node-type-openpublish-photo-gallery #gallery-cover-main {
 	width: 31em;
 	margin: auto;
@@ -1362,7 +1366,8 @@ div.takepart-take-action-widget {
 	text-align: center;
 }
 
-.node-type-openpublish-photo-gallery .enter-link {
+.node-type-openpublish-photo-gallery #gallery-cover-main .enter-link,
+.node-type-openpublish-photo-gallery #next-gallery .enter-link {
 	position: relative;
 	display: inline-block;
 }
@@ -1464,32 +1469,35 @@ div.takepart-take-action-widget {
 	margin-left: 7px;
 }
 
-.node-type-openpublish-photo-gallery #gallery-cover #gallery-body {
+.node-type-openpublish-photo-gallery #gallery-description {
 	margin-bottom: 1.5em;
+}
+
+.node-type-openpublish-photo-gallery #gallery-description #gallery-body {
 	color: #333;
 }
 
-.node-type-openpublish-photo-gallery #gallery-cover #gallery-body h2 {
+.node-type-openpublish-photo-gallery #gallery-description #gallery-body h2 {
 	font-weight: bold;
 	font-size: 18px;
 	margin: 0 0 .5em 0;
 }
 
-.node-type-openpublish-photo-gallery #gallery-cover #gallery-body .content {
+.node-type-openpublish-photo-gallery #gallery-description #gallery-body .content {
 	font-size: 14px;
 	line-height: 1.75;
 }
 
-.node-type-openpublish-photo-gallery #gallery-cover #gallery-body .enter-link {
+.node-type-openpublish-photo-gallery #gallery-description #gallery-body .enter-link {
 	font-size: 14px;
 }
 
-.node-type-openpublish-photo-gallery #gallery-cover #gallery-body .enter-link a {
+.node-type-openpublish-photo-gallery #gallery-description #gallery-body .enter-link a {
 	text-decoration: none;
 	font-weight: bold;
 }
 
-.node-type-openpublish-photo-gallery #gallery-cover #gallery-body .enter-link a:hover {
+.node-type-openpublish-photo-gallery #gallery-description #gallery-body .enter-link a:hover {
 	text-decoration: underline;
 }
 
@@ -1539,6 +1547,38 @@ div.takepart-take-action-widget {
 .node-type-openpublish-photo-gallery #gallery-related {
 	float: left;
 	width: 31em;
+	padding-left: 6em;
+}
+
+.node-type-openpublish-photo-gallery #related-galleries ul {
+	float: left;
+	width: 100%;
+}
+
+.node-type-openpublish-photo-gallery #related-galleries li {
+	float: left;
+	width: 300px;
+}
+
+.node-type-openpublish-photo-gallery #related-galleries img {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.node-type-openpublish-photo-gallery #related-galleries a {
+	color: #000;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.node-type-openpublish-photo-gallery #related-galleries a:hover {
+	color: #28a9e9;
+	text-decoration: none;
+}
+
+.node-type-openpublish-photo-gallery #related-galleries li:first-child {
+	margin-right: 20px;
 }
 
 /* TP Slide plugin */
@@ -1546,7 +1586,6 @@ div.takepart-take-action-widget {
 .tpslide_wrapper {
 	display: block;
 	position: relative;
-	padding-bottom: 45px;
 }
 
 .tpslide_wrapper ul {
@@ -1564,7 +1603,7 @@ div.takepart-take-action-widget {
 	display: block;
 	background-repeat: no-repeat;
 	position: absolute;
-	bottom: 0;
+	bottom: -45px;
 	z-index: 2;
 }
 

@@ -189,6 +189,7 @@ $(function() {
 			;
 	} else if ( $body.is('.node-type-openpublish-photo-gallery') ) {
 		var $gallery_cover = $('#gallery-cover');
+		var $gallery_main = $('#gallery-main');
 		var $slides = $('#gallery-content ul');
 		var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
 		var fb_comment_el = $('.fb_comments')[0];
@@ -255,7 +256,7 @@ $(function() {
 		var show_gallery = function() {
 			if ( gallery_showing ) return;
 			$gallery_cover.hide();
-			$('#gallery-photos').show();
+			$gallery_main.removeClass('hide_gallery').addClass('show_gallery');
 			hpush($current_slide.data('token'), $current_slide.find('.headline').text());
 
 			gallery_showing = true;
@@ -263,7 +264,7 @@ $(function() {
 
 		var hide_gallery = function() {
 			$gallery_cover.show();
-			$('#gallery-photos').hide();
+			$gallery_main.removeClass('show_gallery').addClass('hide_gallery');
 
 			gallery_showing = false;
 		};

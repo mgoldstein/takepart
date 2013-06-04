@@ -1,6 +1,6 @@
-<div id="gallery-main" class="<?=!$node->status ? 'unpublished':'' ?>">
+<article id="gallery-main" class="<?=!$node->status ? 'unpublished':'' ?>">
 	<? if ( _s($node, 'field_display_cover') ): ?>
-		<article id="gallery-cover">
+		<div id="gallery-cover">
 			<div id="gallery-cover-main">
 				<aside id="gallery-cover-social" class="social">
 					<h3 class="headline"><?=t('Share Gallery') ?></h3>
@@ -17,21 +17,10 @@
 					</div>
 				</a>
 			</div>
-
-			<div id="gallery-cover-content">
-				<? if ( $body = _snode($node, 'body') ): ?>
-					<div id="gallery-body" class="cms">
-						<div class="content">
-							<?=_s($body)?>
-						</div>
-						<p class="enter-link"><a href="#gallery-photos">Enter Photo Gallery</a></p>
-					</div>
-				<? endif ?>
-			</div>
-		</article>
+		</div>
 	<? endif ?>
 
-	<article id="gallery-photos">
+	<div id="gallery-photos">
 		<header id="gallery-header">
 			<div id="gallery-header-main">
 				<h1 class="headline"><?=_s($node->title) ?></h1>
@@ -120,15 +109,40 @@
 				<? endif ?>
 			</ul>
 		</div>
-	</article>
+	</div>
 
 	<div id="gallery-related">
+		<div id="gallery-description">
+			<? if ( $body = _snode($node, 'body') ): ?>
+				<div id="gallery-body" class="cms">
+					<div class="content">
+						<?=_s($body)?>
+					</div>
+					<p class="enter-link"><a href="#gallery-photos">Enter Photo Gallery</a></p>
+				</div>
+			<? endif ?>
+		</div>
+
 		<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
-			<nav id="gallery-related">
-				<h3><?=t('Related stories on TakePart:') ?></h3>
+			<nav class="related">
+				<h3 class="headline"><?=t('Related stories on TakePart:') ?></h3>
 				<ul>
 					<? while ( list($key, $related) = _seach($relateds) ): ?>
 						<li><a href="<?=_surl($related) ?>"><?=$related->title ?></a></li>
+					<? endwhile ?>
+				</ul>
+			</nav>
+		<? endif ?>
+
+		<? if ( $relateds = field_get_items('node', $node, 'field_related_galleries') ): ?>
+			<nav id="related-galleries" class="related">
+				<h3 class="headline"><?=t('Related galleries') ?></h3>
+				<ul>
+					<? while ( list($key, $related) = _seach($relateds) ): ?>
+						<li><a href="<?=_surl($related) ?>">
+							<?=_simage($related, 'field_thumbnail', 'node', 'tp_300x225') ?>
+							<?=$related->title ?>
+						</a></li>
 					<? endwhile ?>
 				</ul>
 			</nav>
@@ -158,4 +172,4 @@
 			<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
 		</div>
 	</div>
-</div>
+</article>
