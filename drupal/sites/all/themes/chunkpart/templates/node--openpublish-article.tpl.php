@@ -1,20 +1,20 @@
 <article id="article-main" class="<?=!$node->status ? 'unpublished':'' ?>">
 	<div id="article-main-inner">
-		<header id="article-header">
-			<h1 id="article-headline"><?=_s($title) ?></h1>
-			<p id="article-abstract"><?=_s($field_article_subhead) ?></p>
+		<header class="article-header">
+			<h1 class="article-headline"><?=_s($title) ?></h1>
+			<p class="article-abstract"><?=_s($field_article_subhead) ?></p>
 			<div class="header-secondary">
 				<? if ( list($key, $badge) = _seach($field_significance) ): ?>
 					<p class="badge"><a href="<?=_surl($badge)?>"><?=$badge->name?></a></p>
 				<? endif ?>
-				<p class="date"><?=date('F j, Y', $node->created)?></p>
-				<ul class="author-names">
+				<time class="pubdate"><?=date('F j, Y', $node->created)?></time>
+				<address class="authors">
 					<? while ( list($key, $author) = _seach($field_author) ): ?>
-						<li class="<?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
+						<span class="author <?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
 							<a href="<?=_surl($author)?>" rel="author"><?=$author->title ?></a>
-						</li>
+						</span>
 					<? endwhile ?>
-				</ul>
+				</address>
 			</div>
 		</header>
 
