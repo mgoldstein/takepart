@@ -70,7 +70,6 @@ $.fn.tpsocial = function(args) {
 
 	return this.each(function() {
 		var $this = $(this);
-		if ( $this.data(dpre + 'processed') ) return true;
 
 		// Loop through the requested services
 		for ( var s in services ) {
@@ -99,6 +98,9 @@ $.fn.tpsocial = function(args) {
 				if ( typeof service[i] == 'function' ) continue;
 				$link.data(dpre + name + '-' + i, service[i]);
 			}
+
+			// If you are simply updating the services, bail out
+			if ( $this.data(dpre + 'processed') ) continue;
 
 			// Set up link
 			var data = $.extend({}, defaults, srvc, get_data($this, dpre + srvc.name + '-', dpre), get_data($link, dpre + srvc.name + '-', dpre));
@@ -279,6 +281,21 @@ $.tpsocial.add_service({
 });
 
 $.tpsocial.add_service({
+	name: 'pinterest',
+	display: 'Pinterest',
+	width: 760,
+	height: 316,
+	media: null,
+	description: null,
+	share: function(args) {
+		var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(args.url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
+
+		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+	}
+});
+
+$.tpsocial.add_service({
 	name: 'googleplus',
 	display: 'Google +1',
 	width: 600,
@@ -287,11 +304,7 @@ $.tpsocial.add_service({
 		var url = 'https://plus.google.com/share?url=' + encodeURIComponent(args.url);
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-		/*var left = 0;
-		var tops = Number((screen.height/2)-(args.height/2));*/
-		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
-
-		//$window.trigger(cpre + 'share', args);
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
 	}
 });
 
@@ -304,11 +317,7 @@ $.tpsocial.add_service({
 		var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-		/*var left = 0;
-		var tops = Number((screen.height/2)-(args.height/2));*/
-		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
-
-		//$window.trigger(cpre + 'share', args);
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
 	}
 });
 
@@ -321,11 +330,7 @@ $.tpsocial.add_service({
 		var url = 'http://www.myspace.com/Modules/PostTo/Pages/?u=' + encodeURIComponent(args.url) + '&t=' + encodeURIComponent(args.title);
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-		/*var left = 0;
-		var tops = Number((screen.height/2)-(args.height/2));*/
-		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
-
-		//$window.trigger(cpre + 'share', args);
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
 	}
 });
 
@@ -338,11 +343,7 @@ $.tpsocial.add_service({
 		var url = 'https://delicious.com/post?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&notes=';
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-		/*var left = 0;
-		var tops = Number((screen.height/2)-(args.height/2));*/
-		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
-
-		//$window.trigger(cpre + 'share', args);
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
 	}
 });
 
@@ -355,11 +356,7 @@ $.tpsocial.add_service({
 		var url = 'http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&ro=false&summary=&source=';
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-		/*var left = 0;
-		var tops = Number((screen.height/2)-(args.height/2));*/
-		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
-
-		//$window.trigger(cpre + 'share', args);
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
 	}
 });
 
@@ -372,11 +369,7 @@ $.tpsocial.add_service({
 		var url = 'http://favorites.my.aol.com/ffclient/AddBookmark?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&description=';
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-		/*var left = 0;
-		var tops = Number((screen.height/2)-(args.height/2));*/
-		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
-
-		//$window.trigger(cpre + 'share', args);
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
 	}
 });
 
@@ -389,11 +382,7 @@ $.tpsocial.add_service({
 		var url = 'https://profile.live.com/P.mvc#!/badge?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-		/*var left = 0;
-		var tops = Number((screen.height/2)-(args.height/2));*/
-		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
-
-		//$window.trigger(cpre + 'share', args);
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
 	}
 });
 
@@ -406,11 +395,7 @@ $.tpsocial.add_service({
 		var url = 'http://digg.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&bodytext=';
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-		/*var left = 0;
-		var tops = Number((screen.height/2)-(args.height/2));*/
-		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
-
-		//$window.trigger(cpre + 'share', args);
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
 	}
 });
 
@@ -423,11 +408,7 @@ $.tpsocial.add_service({
 		var url = 'http://www.stumbleupon.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-		/*var left = 0;
-		var tops = Number((screen.height/2)-(args.height/2));*/
-		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
-
-		//$window.trigger(cpre + 'share', args);
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
 	}
 });
 
@@ -440,11 +421,7 @@ $.tpsocial.add_service({
 		var url = 'http://www.hyves.nl/profilemanage/add/tips/?name=' + encodeURIComponent(args.title) + '&text=' + encodeURIComponent(args.url) + '&type=12#';
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-		/*var left = 0;
-		var tops = Number((screen.height/2)-(args.height/2));*/
-		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height/*,"left="+left,"top="+tops*/].join(", "));
-
-		//$window.trigger(cpre + 'share', args);
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
 	}
 });
 
