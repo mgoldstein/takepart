@@ -319,7 +319,7 @@ $(function() {
 
 		//$('#gallery-photos').hide();
 
-		$('#gallery-cover .enter-link').bind('click', function(e) {
+		$('#gallery-cover .enter-link, #gallery-body .enter-link').bind('click', function(e) {
 			e.preventDefault();
 			show_gallery();
 		});
