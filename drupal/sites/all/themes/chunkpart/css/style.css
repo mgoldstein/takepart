@@ -347,6 +347,10 @@ body #at16pt {
 	background-image: url(../images/share_reddit.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 
+.tp-social-pinterest {
+	background-image: url(../images/share_pinterest.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; */
+}
+
 /* rollovers */
 .tp-social-facebook:hover {
 	background-image: url(../images/share_facebook_rollover.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; */
@@ -366,6 +370,10 @@ body #at16pt {
 
 .tp-social-reddit:hover {
 	background-image: url(../images/share_reddit_rollover.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; */
+}
+
+.tp-social-pinterest:hover {
+	background-image: url(../images/share_pinterest_rollover.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 
 /* Follow Us box */
