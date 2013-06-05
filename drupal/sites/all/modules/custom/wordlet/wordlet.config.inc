@@ -146,7 +146,7 @@ function _wordlet_configuration() {
     // Contagion - Home
     'contagion_home' => array(
       'title' => 'Contagion - Home',
-      'path' => 'contagion-wordlet',
+      'path' => 'contagion',
       'published' => TRUE,
       'wrappers' => array('contagion', 'campaign', 'html'),
       'css' => array(
