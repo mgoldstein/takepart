@@ -233,12 +233,14 @@ function takepart_mos_views_default_views() {
   $handler->display->display_options['fields']['field_sig_country']['field'] = 'field_sig_country';
   $handler->display->display_options['fields']['field_sig_country']['exclude'] = TRUE;
   /* Field: Signature: State */
-  $handler->display->display_options['fields']['field_sig_state']['id'] = 'field_sig_state';
-  $handler->display->display_options['fields']['field_sig_state']['table'] = 'field_data_field_sig_state';
-  $handler->display->display_options['fields']['field_sig_state']['field'] = 'field_sig_state';
-  $handler->display->display_options['fields']['field_sig_state']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_sig_state']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_sig_state']['alter']['text'] = ', [field_sig_state]';
+  $handler->display->display_options['fields']['field_sig_state_international']['id'] = 'field_sig_state_international';
+  $handler->display->display_options['fields']['field_sig_state_international']['table'] = 'field_data_field_sig_state_international';
+  $handler->display->display_options['fields']['field_sig_state_international']['field'] = 'field_sig_state_international';
+  $handler->display->display_options['fields']['field_sig_state_international']['label'] = '';
+  $handler->display->display_options['fields']['field_sig_state_international']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_sig_state_international']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_sig_state_international']['alter']['text'] = ', [field_sig_state_international]';
+  $handler->display->display_options['fields']['field_sig_state_international']['element_label_colon'] = FALSE;
   /* Field: Signature: City */
   $handler->display->display_options['fields']['field_sig_city']['id'] = 'field_sig_city';
   $handler->display->display_options['fields']['field_sig_city']['table'] = 'field_data_field_sig_city';
@@ -271,7 +273,7 @@ function takepart_mos_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_1']['label'] = 'Location';
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '[field_sig_country][field_sig_state][field_sig_city]';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '[field_sig_country][field_sig_state_international][field_sig_city]';
   /* Field: Signature: Display */
   $handler->display->display_options['fields']['display_1']['id'] = 'display_1';
   $handler->display->display_options['fields']['display_1']['table'] = 'signature';
@@ -374,10 +376,11 @@ function takepart_mos_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['path'] = 'admin/config/mos-signatures';
-  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['path'] = 'admin/content/signature/mos-signatures';
+  $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Messages of Support Signatures';
   $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'management';
   $handler->display->display_options['menu']['context'] = 0;
   $export['takepart_mos_admin_signatures'] = $view;
 
