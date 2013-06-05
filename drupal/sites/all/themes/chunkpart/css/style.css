@@ -351,6 +351,10 @@ body #at16pt {
 	background-image: url(../images/share_pinterest.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 
+.tp-social-tumblr {
+	background-image: url(../images/share_tumblr.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; */
+}
+
 /* rollovers */
 .tp-social-facebook:hover {
 	background-image: url(../images/share_facebook_rollover.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; */
@@ -374,6 +378,10 @@ body #at16pt {
 
 .tp-social-pinterest:hover {
 	background-image: url(../images/share_pinterest_rollover.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; */
+}
+
+.tp-social-tumblr:hover {
+	background-image: url(../images/share_tumblr_rollover.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 
 /* Follow Us box */

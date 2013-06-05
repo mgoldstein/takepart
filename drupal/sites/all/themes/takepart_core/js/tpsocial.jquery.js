@@ -281,6 +281,21 @@ $.tpsocial.add_service({
 });
 
 $.tpsocial.add_service({
+	name: 'tumblr',
+	display: 'Tumblr',
+	width: 460,
+	height: 600,
+	media: null,
+	description: null,
+	share: function(args) {
+		var url = 'http://www.tumblr.com/share/photo?source=' + encodeURIComponent(args.source) + '&caption=' + encodeURIComponent(args.caption) + '&click_thru=' + encodeURIComponent(args.url);
+
+		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+	}
+});
+
+$.tpsocial.add_service({
 	name: 'pinterest',
 	display: 'Pinterest',
 	width: 760,

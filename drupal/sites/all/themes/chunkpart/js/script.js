@@ -223,7 +223,9 @@ $(function() {
 				},
 				tumblr: {
 					name: 'tumblr',
-					url: '{current}'
+					url: '{current}',
+					source: first_slide_image,
+					caption: first_slide_description
 				}
 			}
 		};
@@ -258,9 +260,11 @@ $(function() {
 
 			var current_image = $current_slide.find('img').attr('src');
 			tp_social_config.services.pinterest.media = current_image;
+			tp_social_config.services.tumblr.source = current_image;
 	
 			var current_description = $current_slide.find('.photo-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
 			tp_social_config.services.pinterest.description = current_description;
+			tp_social_config.services.tumblr.caption = current_description;
 
 			$('#gallery-photos .tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
