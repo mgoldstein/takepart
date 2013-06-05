@@ -3181,3 +3181,7 @@ p.fb-login-text {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+.addthis_button_pinterest_pinit.at300b {
+    width:80px;
+}
