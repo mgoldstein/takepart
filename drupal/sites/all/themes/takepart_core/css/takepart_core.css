@@ -1,0 +1,11 @@
+/* WYSIWYG editor styles */
+
+img.align-left {
+  float: left;
+  padding: 0 10px 10px 0;
+}
+
+img.align-right {
+  float: right;
+  padding: 0 0 10px 10px;
+}
