@@ -123,17 +123,6 @@
 			<? endif ?>
 		</div>
 
-		<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
-			<nav class="related">
-				<h3 class="headline"><?=t('Related stories on TakePart:') ?></h3>
-				<ul>
-					<? while ( list($key, $related) = _seach($relateds) ): ?>
-						<li><a href="<?=_surl($related) ?>"><?=$related->title ?></a></li>
-					<? endwhile ?>
-				</ul>
-			</nav>
-		<? endif ?>
-
 		<? if ( $relateds = field_get_items('node', $node, 'field_related_galleries') ): ?>
 			<nav id="related-galleries" class="related">
 				<h3 class="headline"><?=t('Related galleries') ?></h3>
@@ -143,6 +132,17 @@
 							<?=_simage($related, 'field_thumbnail', 'node', 'tp_300x185') ?>
 							<?=$related->title ?>
 						</a></li>
+					<? endwhile ?>
+				</ul>
+			</nav>
+		<? endif ?>
+
+		<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
+			<nav class="related">
+				<h3 class="headline"><?=t('Related stories on TakePart:') ?></h3>
+				<ul>
+					<? while ( list($key, $related) = _seach($relateds) ): ?>
+						<li><a href="<?=_surl($related) ?>"><?=$related->title ?></a></li>
 					<? endwhile ?>
 				</ul>
 			</nav>
