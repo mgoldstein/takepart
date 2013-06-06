@@ -22,22 +22,22 @@
 
 	<div id="gallery-photos">
 		<header id="gallery-header">
-			<div id="gallery-header-main">
-				<h1 class="headline"><?=_s($node->title) ?></h1>
+			<div id="gallery-header-main" class="article-header">
+				<h1 class="article-headline"><?=_s($node->title) ?></h1>
 				<? if ( $subhead = _snode($node, 'field_subhead') ): ?>
-					<p class="abstract"><?=_s($subhead) ?></p>
+					<p class="article-abstract"><?=_s($subhead) ?></p>
 				<? endif ?>
 				<div class="header-secondary">
-					<p class="date"><?=date('F j, Y', $node->created)?></p>
+					<p class="pubdate"><?=date('F j, Y', $node->created)?></p>
 
 					<? if ( $authors = _snode($node, 'field_author') ): ?>
-						<ul class="author-names">
+						<address class="authors">
 							<? while ( list($key, $author) = _seach($authors) ): ?>
-								<li class="<?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
+								<span class="author <?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
 									<a href="<?=_surl($author)?>" rel="author"><?=$author->title ?></a>
-								</li>
+								</span>
 							<? endwhile ?>
-						</ul>
+						</address>
 					<? endif ?>
 				</div>
 
