@@ -286,9 +286,8 @@ $.tpsocial.add_service({
 	width: 460,
 	height: 600,
 	media: null,
-	description: null,
+	caption: null,
 	share: function(args) {
-		args.description = args.description.replace('/\n/g', '<br>');
 		var url = 'http://www.tumblr.com/share/photo?source=' + encodeURIComponent(args.source) + '&caption=' + encodeURIComponent(args.caption) + '&click_thru=' + encodeURIComponent(args.url);
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';

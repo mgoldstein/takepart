@@ -11,8 +11,10 @@
 						<?=_simage($node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?>
 					</p>
 					<div class="content">
-						<p class="description"><?=t('Photo Gallery') ?></p>
-						<h1 class="headline"><?=_s($node->title) ?></h1>
+						<div class="content-inner">
+							<p class="description"><?=t('Photo Gallery') ?></p>
+							<h1 class="headline"><?=_s($node->title) ?></h1>
+						</div>
 						<p class="enter"><?=t('Enter Photo Gallery') ?></p>
 					</div>
 				</a>
@@ -92,8 +94,10 @@
 								<div class="image-area-inner">
 									<p class="image"><?=_simage($next_gallery->node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?></p>
 									<div class="content">
-										<p class="description"><?=t('Up Next') ?></p>
-										<h2 class="headline"><?=_s($next_gallery->title) ?></h2>
+										<div class="content-inner">
+											<p class="description"><?=t('Up Next') ?></p>
+											<h2 class="headline"><?=_s($next_gallery->title) ?></h2>
+										</div>
 										<p class="enter"><?=t('Enter Photo Gallery') ?></p>
 									</div>
 								</div>
@@ -101,7 +105,8 @@
 
 							<div class="photo-caption">
 								<div class="caption cms">
-									<?=_s($next_gallery->node, 'body')?>
+									<p class="headline"><?=_s($next_gallery->title) ?></p>
+									<p class="article-abstract"><?=_s($subhead) ?></p>
 								</div>
 							</div>
 						</a>

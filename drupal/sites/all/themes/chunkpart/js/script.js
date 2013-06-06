@@ -246,10 +246,18 @@ $(function() {
 			return (typeof history != 'undefined');
 		};
 
+		var fb_to = null;
 		var hpush = function(token, title) {
 			var curtoken = get_curtoken();
 			if ( curtoken == token ) return;
-			show_fb_comments(fb_comment_el, base_url + '/' + token);
+
+			$(fb_comment_el).hide();
+			clearTimeout(fb_to);
+			fb_to = setTimeout(function() {
+				$(fb_comment_el).show();
+				show_fb_comments(fb_comment_el, base_url + '/' + token);
+			}, 500);
+
 			if ( !has_history() ) return;
 			history.pushState(null, title, base_url + '/' + token);
 		};
@@ -275,6 +283,8 @@ $(function() {
 			} else {
 				$('#gallery-header-main .social').show();
 			}
+
+			$slides.animate({height: $current_slide.height()}, 'slow');
 			hpush(token, $current.find('.headline').text());
 		}
 
