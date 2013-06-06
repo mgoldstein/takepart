@@ -455,6 +455,7 @@
 	.node-type-openpublish-photo-gallery #gallery-cover-social {
 		clear: both;
 		margin: 1em 0;
+		display: block !important;
 	}
 
 	.node-type-openpublish-photo-gallery #topic_box {

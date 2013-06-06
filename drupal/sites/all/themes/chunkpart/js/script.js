@@ -276,15 +276,16 @@ $(function() {
 
 			$('#gallery-photos .tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
-			if ( !gallery_showing ) return;
 			var token = $current.data('token');
 			if ( token == 'next-gallery' ) {
-				$('#gallery-header-main .social').hide();
+				$('#gallery-header-main .social').css({visibility: 'hidden', display: 'none'});
 			} else {
-				$('#gallery-header-main .social').show();
+				$('#gallery-header-main .social').css({visibility: 'visible', display: 'block'});
 			}
 
 			$slides.animate({height: $current_slide.height()}, 'slow');
+
+			if ( !gallery_showing ) return;
 			hpush(token, $current.find('.headline').text());
 		}
 
