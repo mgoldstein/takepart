@@ -1582,24 +1582,25 @@ div.takepart-take-action-widget {
 
 /* TP Slide plugin */
 
-.tpslide_wrapper {
+.node-type-openpublish-photo-gallery .tpslide_wrapper {
 	display: block;
 	position: relative;
 }
 
-.tpslide_wrapper ul {
+.node-type-openpublish-photo-gallery #gallery-content > ul,
+.node-type-openpublish-photo-gallery .tpslide_wrapper ul {
 	white-space: nowrap;
 	overflow: hidden;
 }
 
-.tpslide_nav {
+.node-type-openpublish-photo-gallery .tpslide_nav {
 	position: absolute;
 	bottom: -45px;
 	width: 620px;
 }
 
-.tpslide_prev,
-.tpslide_next {
+.node-type-openpublish-photo-gallery .tpslide_prev,
+.node-type-openpublish-photo-gallery .tpslide_next {
 	width: 22px;
 	height: 35px;
 	overflow: hidden;
@@ -1612,33 +1613,33 @@ div.takepart-take-action-widget {
 	bottom: 0;
 }
 
-.tpslide_next {
+.node-type-openpublish-photo-gallery .tpslide_next {
 	background-image: url(../images/gallery_next.png); /** sprite-ref: mysprite; */
 	right: 0;
 }
 
-.tpslide_prev {
+.node-type-openpublish-photo-gallery .tpslide_prev {
 	background-image: url(../images/gallery_prev.png); /** sprite-ref: mysprite; */
 	left: 0;
 }
 
-.tpslide_next:hover {
+.node-type-openpublish-photo-gallery .tpslide_next:hover {
 	background-image: url(../images/gallery_next_rollover.png); /** sprite-ref: mysprite; */
 }
 
-.tpslide_prev:hover {
+.node-type-openpublish-photo-gallery .tpslide_prev:hover {
 	background-image: url(../images/gallery_prev_rollover.png); /** sprite-ref: mysprite; */
 }
 
-.tpslide_nav_slides {
+.node-type-openpublish-photo-gallery .tpslide_nav_slides {
 	height: 35px;
 }
 
-.tpslide_link {
+.node-type-openpublish-photo-gallery .tpslide_link {
 	display: none;
 }
 
-.tpslide_wrapper .tpslide_active {
+.node-type-openpublish-photo-gallery .tpslide_wrapper .tpslide_active {
 	display: block;
 	width: 620px;
 	text-align: center;
@@ -1652,13 +1653,18 @@ div.takepart-take-action-widget {
 	z-index: 1;
 }
 
-.tpslide_slide {
+.node-type-openpublish-photo-gallery #gallery-content > ul > li {
+	display: inline-block; *display: inline; zoom: 1;
+	vertical-align: top;
+}
+
+.node-type-openpublish-photo-gallery .tpslide_slide {
 	display: inline-block; *display: inline; zoom: 1;
 	vertical-align: top;
 	height: 465px;
 }
 
-.tpslide_nav_slides a {
+.node-type-openpublish-photo-gallery .tpslide_nav_slides a {
 	cursor: default;
 }
 
