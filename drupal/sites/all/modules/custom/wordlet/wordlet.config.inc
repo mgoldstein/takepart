@@ -137,6 +137,35 @@ function _wordlet_configuration() {
     ),
 
     // --------------------------------------------
+    // Contagion LOL ------------------------------
+    // --------------------------------------------
+    'contagion_campaign' => array(
+      'title' => 'Contagion - Campaign',
+    ),
+
+    // Contagion - Home
+    'contagion_home' => array(
+      'title' => 'Contagion - Home',
+      'path' => 'contagion',
+      'published' => TRUE,
+      'wrappers' => array('contagion', 'campaign', 'html'),
+      'css' => array(
+        'css/slim-header.css',
+        'css/normalize_cms.css',
+        'campaigns/contagion/styles/main.css',
+        'campaigns/contagion/styles/plugins.css',
+      ),
+      'js' => array(
+        'campaigns/contagion/script/jquery.movingboxes.min.js',
+        'campaigns/contagion/script/jquery.tools.min.js',
+        'campaigns/contagion/script/jquery.zrssfeed.min.js',
+        'campaigns/contagion/script/global.js',
+      ),
+      'load' => array('site', 'contagion_campaign'),
+    ),
+
+
+    // --------------------------------------------
     // Place at the Table Campaign ----------------
     // --------------------------------------------
     'patt_campaign' => array(
