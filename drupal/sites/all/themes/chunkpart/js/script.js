@@ -283,7 +283,7 @@ $(function() {
 				$('#gallery-header-main .social').css({visibility: 'visible', display: 'block'});
 			}
 
-			$slides.animate({height: $current_slide.height()}, 'slow');
+			$slides.height($current_slide.height());
 
 			if ( !gallery_showing ) return;
 			hpush(token, $current.find('.headline').text());
