@@ -272,6 +272,23 @@ function _wordlet_configuration() {
       'load' => array('site', 'patt_campaign'),
     ),
 
+    // Place at the Table - Hungry to Get By
+    'patt_game' => array(
+      'title' => 'A Place at the Table - Hungry to Get By',
+      'path' => 'place-at-the-table/game',
+      'published' => TRUE,
+      'wrappers' => array('patt', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
     // Place at the Table - Events & Resources
     'patt_events' => array(
       'title' => 'A Place at the Table - Events and Resources',
