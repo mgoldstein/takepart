@@ -138,20 +138,21 @@ $(function() {
 
 		$('#article-more-shares p').tpsocial({
 			services: [
-				/*{
-					name: 'more',
-					services_compact: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-					services_expanded: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-					services_exclude: 'facebook,twitter,google_plusone,reddit,email'
-				},*/
-				{name: 'myspace'},
-				{name: 'delicious'},
+				{name: 'pinterest'},
+				{name: 'tumblr_link'},
+				{name: 'gmail'},
+				{name: 'hotmail'},
+				{name: 'yahoomail'},
+				{name: 'aolmail'},
+
+				//{name: 'myspace'},
+				//{name: 'delicious'},
 				{name: 'linkedin'},
-				{name: 'myaol'},
-				{name: 'live'},
+				//{name: 'myaol'},
+				//{name: 'live'},
 				{name: 'digg'},
-				{name: 'stumbleupon'},
-				{name: 'hyves'}
+				{name: 'stumbleupon'}//,
+				//{name: 'hyves'}
 			]
 		});
 

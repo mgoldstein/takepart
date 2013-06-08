@@ -967,62 +967,82 @@ div.takepart-take-action-widget {
 	background-image: url(../images/social_more_close.png); /** sprite-ref: mysprite; */
 }
 
+.node-type-article #article-more-shares p {
+	padding: .25em;
+	float: left;
+	width: 100%;
+}
+
 .node-type-article #article-more-shares a {
 	display: block;
 	font-size: 14px;
-	padding: .25em;
+	padding: .25em .25em .25em 20px;
 	line-height: 16px;
 	color: #000;
 	white-space: nowrap;
 	float: left;
 	width: 50%;
+	background-repeat: no-repeat;
 }
 
 .node-type-article #article-more-shares a:hover {
 	text-decoration: none;
 }
 
-.node-type-article #article-more-shares a:before {
-	display: inline-block;
-	content: " ";
-	vertical-align: middle;
-	padding-right: .5em;
-	width: 16px;
-	height: 16px;
-	line-height: 16px;
-	background-repeat: no-repeat;
-}
-
-.node-type-article #article-more-shares .tp-social-myspace:before {
+.node-type-article #article-more-shares  .tp-social-myspace {
 	background-image: url(../images/social_more_myspace.png); /** sprite-ref: mysprite; */
 }
 
-.node-type-article #article-more-shares .tp-social-delicious:before {
+.node-type-article #article-more-shares .tp-social-delicious {
 	background-image: url(../images/social_more_delicious.png); /** sprite-ref: mysprite; */
 }
 
-.node-type-article #article-more-shares .tp-social-linkedin:before {
+.node-type-article #article-more-shares .tp-social-linkedin {
 	background-image: url(../images/social_more_linkedin.png); /** sprite-ref: mysprite; */
 }
 
-.node-type-article #article-more-shares .tp-social-myaol:before {
+.node-type-article #article-more-shares .tp-social-myaol {
 	background-image: url(../images/social_more_myaol.png); /** sprite-ref: mysprite; */
 }
 
-.node-type-article #article-more-shares .tp-social-live:before {
+.node-type-article #article-more-shares .tp-social-live {
 	background-image: url(../images/social_more_live.png); /** sprite-ref: mysprite; */
 }
 
-.node-type-article #article-more-shares .tp-social-digg:before {
+.node-type-article #article-more-shares .tp-social-digg {
 	background-image: url(../images/social_more_digg.png); /** sprite-ref: mysprite; */
 }
 
-.node-type-article #article-more-shares .tp-social-stumbleupon:before {
+.node-type-article #article-more-shares .tp-social-stumbleupon {
 	background-image: url(../images/social_more_stumbleupon.png); /** sprite-ref: mysprite; */
 }
 
-.node-type-article #article-more-shares .tp-social-hyves:before {
+.node-type-article #article-more-shares .tp-social-hyves {
 	background-image: url(../images/social_more_hyves.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-article #article-more-shares .tp-social-pinterest {
+	background-image: url(../images/social_more_pinterest.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-article #article-more-shares .tp-social-tumblr_link {
+	background-image: url(../images/social_more_tumblr_link.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-article #article-more-shares .tp-social-gmail {
+	background-image: url(../images/social_more_gmail.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-article #article-more-shares .tp-social-hotmail {
+	background-image: url(../images/social_more_hotmail.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-article #article-more-shares .tp-social-yahoomail {
+	background-image: url(../images/social_more_yahoomail.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-article #article-more-shares .tp-social-aolmail {
+	background-image: url(../images/social_more_aolmail.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-article #article-social {
