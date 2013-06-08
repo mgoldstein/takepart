@@ -97,7 +97,7 @@ $.tpsocial.add_service({
 $.tpsocial.add_service({
 	name: 'yahoomail',
 	display: 'Y! Mail',
-	width: 640,
+	width: 660,
 	height: 650,
 	share: function(args) {
 		var url = 'http://compose.mail.yahoo.com/?subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
@@ -110,7 +110,7 @@ $.tpsocial.add_service({
 $.tpsocial.add_service({
 	name: 'hotmail',
 	display: 'Hotmail',
-	width: 460,
+	width: 490,
 	height: 600,
 	share: function(args) {
 		var url = 'https://mail.live.com/default.aspx?rru=compose&subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
@@ -124,7 +124,7 @@ $.tpsocial.add_service({
 	name: 'gmail',
 	display: 'Gmail',
 	width: 460,
-	height: 600,
+	height: 500,
 	share: function(args) {
 		var url = 'https://mail.google.com/mail/?view=cm&ui=1&tf=0&fs=1&su=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
 
@@ -137,7 +137,7 @@ $.tpsocial.add_service({
 	name: 'tumblr_link',
 	display: 'Tumblr',
 	width: 460,
-	height: 600,
+	height: 500,
 	description: '',
 	share: function(args) {
 		var url = 'http://www.tumblr.com/share/link?name=' + encodeURIComponent(args.title) + '&description=' + encodeURIComponent(args.description) + '&url=' + encodeURIComponent(args.url);
@@ -151,7 +151,7 @@ $.tpsocial.add_service({
 	name: 'tumblr',
 	display: 'Tumblr',
 	width: 460,
-	height: 600,
+	height: 500,
 	media: null,
 	caption: null,
 	source: null,
@@ -168,9 +168,10 @@ $.tpsocial.add_service({
 	display: 'Pinterest',
 	width: 760,
 	height: 316,
-	media: null,
-	description: null,
+	media: '',
+	description: '',
 	share: function(args) {
+		if ( !args.description ) args.description = args.title;
 		var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(args.url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';

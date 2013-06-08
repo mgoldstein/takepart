@@ -136,24 +136,32 @@ $(function() {
 
 		$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
-		$('#article-more-shares p').tpsocial({
-			services: [
-				{name: 'pinterest'},
-				{name: 'tumblr_link'},
-				{name: 'gmail'},
-				{name: 'hotmail'},
-				{name: 'yahoomail'},
-				{name: 'aolmail'},
+		var main_image = $('#article-image img').attr('src');
+		var more_services = {
+			pinterest: {
+				name: 'pinterest',
+				media: main_image
+			},
+			tumblr_link: {name: 'tumblr_link'},
+			gmail: {name: 'gmail'},
+			hotmail: {name: 'hotmail'},
+			yahoomail: {name: 'yahoomail'},
+			aolmail: {name: 'aolmail'},
 
-				//{name: 'myspace'},
-				//{name: 'delicious'},
-				{name: 'linkedin'},
-				//{name: 'myaol'},
-				//{name: 'live'},
-				{name: 'digg'},
-				{name: 'stumbleupon'}//,
-				//{name: 'hyves'}
-			]
+			//{name: 'myspace'},
+			//{name: 'delicious'},
+			linkedin: {name: 'linkedin'},
+			//{name: 'myaol'},
+			//{name: 'live'},
+			digg: {name: 'digg'},
+			stumbleupon: {name: 'stumbleupon'},
+			//{name: 'hyves'}
+		};
+
+		if ( !main_image ) delete more_services.pinterest;
+
+		$('#article-more-shares p').tpsocial({
+			services: more_services
 		});
 
 		takepart.analytics.skip_addthis = true;
