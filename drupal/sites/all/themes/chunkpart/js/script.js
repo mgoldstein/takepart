@@ -116,8 +116,9 @@ $(function() {
 			show_fb_comments(this);
 		}});
 
-	/* --------------------------------
-	| Page Specific ---------------- */
+	/* Page Specific ---------------------------------------------------------------------------------- */
+
+	/* Article ----------------*/
 	if ( $body.is('.node-type-article') ) {
 		// Social share buttons
 		var tp_social_config = {
@@ -196,6 +197,7 @@ $(function() {
 				e.preventDefault();
 			})
 			;
+	/* Gallery ---------------- */
 	} else if ( $body.is('.node-type-openpublish-photo-gallery') ) {
 		var $gallery_cover = $('#gallery-cover');
 		var $gallery_main = $('#gallery-main');
@@ -204,8 +206,36 @@ $(function() {
 		var fb_comment_el = $('.fb_comments')[0];
 
 		var $first_slide = $slides.find('> li:first-child');
-		var first_slide_image = $first_slide.find('img').attr('src');
-		var first_slide_description = $first_slide.find('.photo-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
+		var has_cover = $gallery_cover.length;
+		var first_image;
+		var first_description;
+
+		if ( has_cover ) {
+			first_image = $gallery_cover.find('img').attr('src');
+			first_description = $gallery_cover.find('.headline').text();
+		} else {
+			first_image = $first_slide.find('img').attr('src');
+			first_description = $first_slide.find('.photo-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
+		}
+
+		var update_to = null;
+		var update_page = function() {
+			// $(fb_comment_el).hide();
+			clearTimeout(update_to);
+			update_to = setTimeout(function() {
+				// $(fb_comment_el).show();
+				var token = get_curtoken();
+				//if ( token ) {
+					show_fb_comments(fb_comment_el, base_url + '/' + token);
+				//} else {
+				//	show_fb_comments(fb_comment_el, base_url);
+				//}
+
+				if ( googletag != undefined ) {
+					googletag.pubads().refresh();
+				}
+			}, 500);
+		};
 
 		// Social share buttons
 		var tp_social_config = {
@@ -227,20 +257,20 @@ $(function() {
 				pinterest: {
 					name: 'pinterest',
 					url: '{current}',
-					media: first_slide_image,
-					description: first_slide_description
+					media: first_image,
+					description: first_description
 				},
 				tumblr: {
 					name: 'tumblr',
 					url: '{current}',
-					source: first_slide_image,
-					caption: first_slide_description
+					source: first_image,
+					caption: first_description
 				}
 			}
 		};
 
 		var get_curtoken = function() {
-			return document.location.href.split(/\/|#/).slice(5,6) + '';;
+			return document.location.href.split(/\/|#/).slice(5,6) + '';
 		};
 
 		var goto_slide = function() {
@@ -249,23 +279,16 @@ $(function() {
 			$slides.tpslide_to($slide);
 		};
 
-		$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+		//$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
 		var has_history = function() {
 			return (typeof history != 'undefined');
 		};
 
-		var fb_to = null;
 		var hpush = function(token, title) {
 			var curtoken = get_curtoken();
 			if ( curtoken == token ) return;
-
-			$(fb_comment_el).hide();
-			clearTimeout(fb_to);
-			fb_to = setTimeout(function() {
-				$(fb_comment_el).show();
-				show_fb_comments(fb_comment_el, base_url + '/' + token);
-			}, 500);
+			update_page();
 
 			if ( !has_history() ) return;
 			history.pushState(null, title, base_url + '/' + token);
@@ -278,7 +301,7 @@ $(function() {
 			var current_image = $current_slide.find('img').attr('src');
 			tp_social_config.services.pinterest.media = current_image;
 			tp_social_config.services.tumblr.source = current_image;
-	
+
 			var current_description = $current_slide.find('.photo-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
 			tp_social_config.services.pinterest.description = current_description;
 			tp_social_config.services.tumblr.caption = current_description;
@@ -295,6 +318,7 @@ $(function() {
 			$slides.height($current_slide.height());
 
 			if ( !gallery_showing ) return;
+			update_page();
 			hpush(token, $current.find('.headline').text());
 		}
 
@@ -310,6 +334,18 @@ $(function() {
 		var hide_gallery = function() {
 			$gallery_cover.show();
 			$gallery_main.removeClass('show_gallery').addClass('hide_gallery');
+
+			var current_image = $gallery_cover.find('img').attr('src');
+			tp_social_config.services.pinterest.media = current_image;
+			tp_social_config.services.tumblr.source = current_image;
+
+			var current_description = $gallery_cover.find('.headline').text();
+			tp_social_config.services.pinterest.description = current_description;
+			tp_social_config.services.tumblr.caption = current_description;
+
+			$('#gallery-cover .tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+
+			if ( gallery_showing ) update_page();
 
 			gallery_showing = false;
 		};
