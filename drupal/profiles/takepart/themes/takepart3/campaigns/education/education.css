@@ -1,10 +1,5 @@
 /* # General
 ================================================== */
-@font-face {
-    font-family: 'Monotype Std';
-    src: url('/profiles/takepart/themes/takepart3/fonts/Monotype/ModernMTStd-ExtendedItalic.otf');
-    font-style: italic;
-}
 .page-wrap {
     padding: 10px;
     background: rgb(255, 255, 255);
@@ -13,12 +8,7 @@
 .page-wrap h1,
 .page-wrap h2,
 .page-wrap h3 {
-    line-height: 95%;
-    font-family: 'Monotype Std', serif;
-    font-weight: 400;
-    text-transform: uppercase;
-    color: rgb(0, 0, 0);
-    font-style: italic;
+
 }
 
 /* # General - Artist Menu
