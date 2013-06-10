@@ -433,7 +433,7 @@ function _wordlet_configuration() {
     // I Am Education Home
     'education_home' => array(
       'title' => 'I Am Education - Home',
-      'path' => 'education',
+      'path' => 'i-am-education',
       'published' => FALSE,
       'wrappers' => array('education', 'campaign', 'html'),
       'css' => array(
@@ -450,7 +450,7 @@ function _wordlet_configuration() {
     // I Am Education Videos
     'education_video' => array(
       'title' => 'I Am Education - Video',
-      'path' => 'education/video',
+      'path' => 'i-am-education/video',
       'published' => FALSE,
       'wrappers' => array('education', 'campaign', 'html'),
       'css' => array(
