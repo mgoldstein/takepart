@@ -324,7 +324,9 @@ function wordlet_theme() {
   return $hooks;
 }
 
+/* I don't think this is actually used... tricky JP. */
 function wordlet_preprocess_page_template(&$variables) {
+  $variables['is_multipage'] = TRUE;
   _tp3_fill_template_vars($variables);
   $variables['header'] = theme('takepart3_header', $variables);
   $tabs = menu_local_tabs();
@@ -335,6 +337,7 @@ function wordlet_preprocess_page_template(&$variables) {
 }
 
 function wordlet_preprocess_wrapper_template(&$variables) {
+  $variables['is_multipage'] = TRUE;
   _tp3_fill_template_vars($variables);
   $variables['header'] = theme('takepart3_header', $variables);
   $tabs = menu_local_tabs();
@@ -384,6 +387,12 @@ function wordlet_preprocess_page(&$variables) {
   if ($config !== FALSE) {
     $variables['theme_hook_suggestions'][] = "wordlet_{$config['name']}";
     if ( isset($config['template']) )  $variables['theme_hook_suggestions'][] = "wordlet_{$config['template']}";
+  }
+
+  $page = wordlet_active_page();
+  $preprocess_hook = "wordlet_page_{$page['name']}_preprocess";
+  if (function_exists($preprocess_hook)) {
+    call_user_func_array($preprocess_hook, array(&$variables));
   }
 }
 
@@ -933,6 +942,7 @@ function wordlet_page_view_callback($page) {
       $fb_description = $tw->items[0]['single'];
     }
   }
+
   $fb_description = variable_get("wordlet_{$page['name']}_fb_description", $fb_description);
   if (!empty($fb_description)) {
     $metatag = array(
@@ -945,6 +955,29 @@ function wordlet_page_view_callback($page) {
     );
 
     drupal_add_html_head( $metatag, 'facebook_description');
+  }
+
+  // meta desciption
+  $meta_description = '';
+  if (isset($page['wordlets']['meta_description'])) {
+    $tw = $page['wordlets']['meta_description'];
+    if (count($tw->items)) {
+      $meta_description = $tw->items[0]['single'];
+    }
+  }
+
+  $meta_description = variable_get("wordlet_{$page['name']}_meta_description", $meta_description);
+  if (!empty($meta_description)) {
+    $metatag = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'description',
+        'content' =>  $meta_description,
+      ),
+    );
+
+    drupal_add_html_head( $metatag, 'meta_description');
   }
 
   // Add the page CSS and JS.
@@ -1052,7 +1085,7 @@ function w() {
   }
 }
 
-function wordlet_list($name) {
+function wordlet_list($name, $randomize = false) {
   $page = wordlet_active_page();
   if ($page === FALSE) {
     return NULL;
@@ -1073,7 +1106,7 @@ function wordlet_list($name) {
   }
 
   $controller = entity_get_controller('wordlet');
-  $wl = $controller->viewList($wordlet);
+  $wl = $controller->viewList($wordlet, $randomize);
   if ($wl->count() == 0) { echo wordlet($name); }
 
   return $wl;
@@ -1266,6 +1299,51 @@ function ws() {
   try {
     $func_get_args = func_get_args();
     return call_user_func_array('wordlet_active_page_or_section', $func_get_args);
+  } catch (Exception $e) {
+    return '';
+  }
+}
+
+// Replace tokens in wordlets
+function wordlet_token_replace($string, $replace) {
+  /*if ( get_class($replace) == 'WordletItem' ) {
+    $array = (Array)$replace;
+    $array = $array['args'];
+  } else {
+    $array = (Array)$replace;
+  }*/
+
+  $array = $replace;
+
+  $ret = $string;
+  if ( (preg_match_all('/\{([a-zA-Z\-_]+)\}/', $string, $matches)) && isset($matches[1]) ) {
+    foreach ( $matches[1] as $key => $match ) {
+      if ( gettype($array) == 'object' ) {
+        if ( $match == 'single' || $match == 'multi' ) {
+          $find = $array->{$match}(false);
+        } else {
+          $find = $array->{$match};
+        }
+      } else {
+        // untested
+        $find = $array[$match];
+      }
+
+      if ( !empty($find) ) {
+        $ret = str_replace($matches[0][$key], $find, $ret);
+      } else {
+        $ret = str_replace($matches[0][$key], '', $ret);
+      }
+    }
+  }
+
+  return $ret;
+}
+
+function wr() {
+  try {
+    $func_get_args = func_get_args();
+    return call_user_func_array('wordlet_token_replace', $func_get_args);
   } catch (Exception $e) {
     return '';
   }

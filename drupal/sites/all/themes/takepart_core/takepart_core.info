@@ -1,0 +1,23 @@
+name = Takepart Core
+description = A theme for centralizing control of globally used assets. 
+
+core = 7.x
+engine = phptemplate
+
+;-------------- C S S -------------
+stylesheets[all][] = css/typeface.css
+stylesheets-conditional[IE][all][] = css/typeface_ie.css
+
+stylesheets[all][] = css/normalize_cms.css
+stylesheets[all][] = css/header_footer.css
+stylesheets[all][] = css/tpmodal.css
+
+;-------------- JS -------------
+scripts[] = js/analytics.js
+scripts[] = js/jquery.lazyload.js
+scripts[] = js/tpsocial.jquery.js
+scripts[] = js/tpautoTab.jquery.js
+scripts[] = js/tpmodal.jquery.js
+scripts[] = js/tpsticky.jquery.js
+scripts[] = js/autosize.jquery.js
+scripts[] = js/script_takepart_core.js

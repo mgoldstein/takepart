@@ -2,6 +2,9 @@
 
 Drupal.behaviors.initColorboxInline = {
   attach: function (context, settings) {
+    if (!settings.colorbox) {
+      return;
+    }
     if (!$.isFunction($.colorbox)) {
       return;
     }

@@ -553,6 +553,7 @@ function wordlet_get_item_fields($entity, $configure = FALSE) {
   $form = array(
     'items' => array(
       '#title' => $entity->title,
+      '#description' => $entity->description,
       '#type' => 'fieldset',
       '#tree' => TRUE,
     ),
@@ -725,6 +726,50 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     );
   }
 
+  if ($configure || in_array('thumb_src', $entity->item_keys)) {
+    $form['thumb_src'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['thumb_src']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Thumb Source',
+        '#attributes' => array('data-for' => array('thumb-src-input')),
+        '#default_value' => in_array('thumb_src', $entity->item_keys),
+      );
+    }
+    $form['thumb_src']['value'] = array(
+      '#title' => t('Thumb Source'),
+      '#type' => 'textfield',
+      '#maxlength' => '1000',
+      '#default_value' => $values['thumb_src'],
+      '#attributes' => array('class' => array('thumb-src-input')),
+      '#element_validate' => array('wordlet_validate_href'),
+    );
+  }
+
+  if ($configure || in_array('small_src', $entity->item_keys)) {
+    $form['small_src'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+      $form['small_src']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Small Image Source',
+        '#attributes' => array('data-for' => array('small-src-input')),
+        '#default_value' => in_array('small_src', $entity->item_keys),
+      );
+    }
+    $form['small_src']['value'] = array(
+      '#title' => t('Small Image Source'),
+      '#type' => 'textfield',
+      '#maxlength' => '1000',
+      '#default_value' => $values['small_src'],
+      '#attributes' => array('class' => array('small-src-input')),
+      '#element_validate' => array('wordlet_validate_href'),
+    );
+  }
+
   if ($configure || in_array('active', $entity->item_keys)) {
     $form['active'] = array(
       '#tree' => TRUE,
@@ -787,28 +832,6 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
     );
   }
 
-  if ($configure || in_array('thumb_src', $entity->item_keys)) {
-    $form['thumb_src'] = array(
-      '#tree' => TRUE,
-    );
-    if ($configure) {
-      $form['thumb_src']['enabled'] = array(
-        '#type' => 'checkbox',
-        '#title' => 'Enable Thumb Source',
-        '#attributes' => array('data-for' => array('thumb-src-input')),
-        '#default_value' => in_array('thumb_src', $entity->item_keys),
-      );
-    }
-    $form['thumb_src']['value'] = array(
-      '#title' => t('Thumb Source'),
-      '#type' => 'textfield',
-      '#maxlength' => '1000',
-      '#default_value' => $values['thumb_src'],
-      '#attributes' => array('class' => array('thumb-src-input')),
-      '#element_validate' => array('wordlet_validate_href'),
-    );
-  }
-
   if ($configure || in_array('form', $entity->item_keys)) {
     $form['form'] = array(
       '#tree' => TRUE,
@@ -837,7 +860,9 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
           'newsletter_campaign_email_only_signup' => t('Email Only Signup'),
           'newsletter_campaign_mobile_only_signup' => t('Mobile Only Signup'),
           'newsletter_campaign_email_mobile_signup' => t('Email + Mobile Signup'),
+          'can_campaign_vote' => t('CAN Voting Form'),
           'contest_intel_entry' => t('Intel Contest Entry'),
+          'contest_intel_vote' => t('Intel Contest Vote'),
         ),
         '#default_value' => $values['form']['name'],
         '#element_validate' => array('wordlet_validate_form'),
@@ -862,6 +887,47 @@ function wordlet_get_single_item_fields($entity, $values, $configure = FALSE) {
         $form['form']['value']['config'] = $fields;
       }
     }
+  }
+
+  if ($configure || in_array('block', $entity->item_keys)) {
+    $form['block'] = array(
+      '#tree' => TRUE,
+    );
+    if ($configure) {
+
+      $form['block']['enabled'] = array(
+        '#type' => 'checkbox',
+        '#title' => 'Enable Block',
+        '#attributes' => array('data-for' => array('block-input')),
+        '#default_value' => in_array('block', $entity->item_keys),
+      );
+    }
+
+    $form['block']['value'] = array(
+      '#type' => 'container',
+      '#tree' => TRUE,
+      '#attributes' => array('class' => array('block-input')),
+      '#prefix' => '<div class="form-type-container">',
+      '#suffix' => '</div>',
+    );
+
+    $form['block']['value']['module'] = array(
+      '#title' => t('Module'),
+      '#type' => 'select',
+      // TODO: Get the list of modules from custom module hook.
+      '#options' => array(
+        'boxes' => t('Boxes'),
+        'newsletter_campaign' => t('Newsletter Campaigns'),
+        'views' => t('Views'),
+      ),
+      '#default_value' => $values['block']['module'],
+    );
+
+    $form['block']['value']['delta'] = array(
+      '#title' => t('Delta'),
+      '#type' => 'textfield',
+      '#default_value' => $values['block']['delta'],
+    );
   }
 
   return $form;
@@ -1024,11 +1090,13 @@ function wordlet_update_items_from_fields($entity, $values) {
       'href' => '',
       'node' => '',
       'img_src' => '',
+      'thumb_src' => '',
+      'small_src' => '',
       'active' => '',
       'token' => '',
       'video' => '',
-      'thumb_src' => '',
       'form' => '',
+      'block' => '',
     );
     $is_empty = TRUE;
     foreach (array_keys($item) as $key) {

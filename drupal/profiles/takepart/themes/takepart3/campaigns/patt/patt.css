@@ -11,6 +11,25 @@ body {
 	padding: 0;
 }
 
+.multipage-campaign #site-header {
+	margin-bottom: 3px;
+}
+
+#site-header-inner {
+	background: #f1f3f4;
+	height: 36px;
+}
+
+#site-footer {
+	background: #f1f3f4;
+	display: inline-block; *display: inline; zoom: 1;
+	width: 100%;
+}
+
+#site-footer #site-about {
+	padding-right: 1em;
+}
+
 .page-wrap {
 	width:1000px;
 	margin:0 auto;
@@ -131,6 +150,7 @@ body {
 	color:#000;
 }
 
+.page-wordlet-patt-videos li.patt_videos_url a,
 .page-wordlet-patt-film li.patt_film_url a,
 .page-wordlet-patt-action li.patt_action_url a,
 .page-wordlet-patt-snap li.patt_snap_url a,
@@ -155,6 +175,7 @@ body {
 	content: " ";
 }
 
+.page-wordlet-patt-videos li.patt_videos_url:after,
 .page-wordlet-patt-film li.patt_film_url:after,
 .page-wordlet-patt-action li.patt_action_url:after,
 .page-wordlet-patt-snap li.patt_snap_url:after,
@@ -301,6 +322,10 @@ body {
 	line-height: 1.1;
 }
 
+.table.int .main .column-3 form {
+	text-align: center;
+}
+
 .table.int .main .column-3 form .input {
 	width:149px;
 	margin:0 auto;
@@ -308,7 +333,6 @@ body {
 
 .table.int .main .column-3 form input[type="text"] {
 	width: 127px;
-	margin-left: 10px;
 	margin-top: 7px;
 	border: none;
 	border-radius: 50px;
@@ -843,9 +867,49 @@ body {
 	}
 
 	/* nav */
+
+	.multipage-campaign #site-header #site-logo {
+		padding-right: 0;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+
+	.multipage-campaign #site-header {
+		margin-bottom: 0;
+	}
+
+	.multipage-campaign #site-main-nav {
+		padding: 5px 0;
+	}
+
+	#site-header li {
+		line-height: 1.5;
+	}
+
+	#site-header-inner {
+		height: auto;
+		float: left;
+		padding-left: 47px;
+	}
+
+	#site-navs {
+		float: none;
+	}
+
+	#site-main-nav {
+		float: none;
+	}
+
+	#site-header div ul {
+		float: none;
+	}
+
+	#site-hot-nav,
 	#top-search,
 	#join-login-top,
-	#top-follow-wrapper {
+	#top-follow-wrapper,
+	#site-more-navs {
 		display: none;
 	}
 
@@ -879,6 +943,10 @@ body {
 		top: -46px;
 		position: relative;
 		z-index: 1;
+	}
+
+	.table.int #page {
+		margin-left: 0;
 	}
 
 	/* patt */
@@ -1053,8 +1121,8 @@ body {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-book.png) center top no-repeat;
 	}
 
-	.page-wordlet-patt-home .patt_alliances_url {
-		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-alliances.png) center top no-repeat;
+	.page-wordlet-patt-home .patt_videos_url {
+		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-videos.png) center top no-repeat;
 	}
 
 	.page-wordlet-patt-home .patt_events_url {
@@ -1463,7 +1531,7 @@ h1.tile-header {
     INTERMEDIATE: Menu
    ==================== */
 
-    nav a {
+    .page-wrap nav a {
         float: left;
         width: 27%;
         margin: 0 1.7%;
@@ -1471,11 +1539,11 @@ h1.tile-header {
         margin-bottom: 0;
     }
 
-    nav li:first-child a {
+    .page-wrap nav li:first-child a {
         margin-left: 0;
     }
 
-    nav li:last-child a {
+    .page-wrap nav li:last-child a {
         margin-right: 0;
     }
 
@@ -1483,7 +1551,7 @@ h1.tile-header {
     INTERMEDIATE: IE Fixes
    ======================== */
 
-    nav ul li {
+    .page-wrap nav ul li {
         display: inline;
     }
 
@@ -1544,7 +1612,7 @@ h1.tile-header {
         float: left;
     }
 
-    nav {
+    .page-wrap nav {
         float: right;
         width: 38%;
     }

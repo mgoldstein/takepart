@@ -47,10 +47,12 @@ function openpublish_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '0',
+          'module' => 'inline_content',
+          'settings' => array(
+            'source' => 'field_inline_replacements',
+          ),
+          'type' => 'text_with_inline_content',
+          'weight' => '7',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -58,6 +60,12 @@ function openpublish_article_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '0',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '24',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -67,6 +75,12 @@ function openpublish_article_field_default_fields() {
           ),
           'type' => 'text_summary_or_trimmed',
           'weight' => '3',
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -85,7 +99,7 @@ function openpublish_article_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '5',
+        'weight' => '9',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
@@ -118,18 +132,22 @@ function openpublish_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'media',
-          'settings' => array(
-            'file_view_mode' => 'media_large',
-          ),
-          'type' => 'media',
-          'weight' => '9',
+          'module' => 'formatter_field',
+          'settings' => array(),
+          'type' => 'from_field',
+          'weight' => '6',
         ),
         'full' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '6',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -140,6 +158,12 @@ function openpublish_article_field_default_fields() {
           ),
           'type' => 'image',
           'weight' => '2',
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -167,7 +191,7 @@ function openpublish_article_field_default_fields() {
           'view' => 'media_views_widget_default--default',
         ),
         'type' => 'media_generic_alt',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -198,6 +222,7 @@ function openpublish_article_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
+          'article' => 0,
           'audio' => 0,
           'blog_front' => 0,
           'feed' => 0,
@@ -242,7 +267,7 @@ function openpublish_article_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '8',
+          'weight' => '5',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -250,12 +275,24 @@ function openpublish_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '4',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
         'teaser' => array(
           'label' => 'hidden',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
           'weight' => '1',
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -274,7 +311,7 @@ function openpublish_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '4',
+        'weight' => '6',
       ),
     ),
   );
@@ -319,7 +356,7 @@ function openpublish_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '11',
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -327,7 +364,19 @@ function openpublish_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => '0',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
+        ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -349,7 +398,368 @@ function openpublish_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '0',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_article-field_inline_replacements'.
+  $fields['node-openpublish_article-field_inline_replacements'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_inline_replacements',
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(),
+        ),
+        'target_type' => 'inline_content',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_article',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_inline_replacements',
+      'label' => 'Inline Replacements',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'inline_entity_form',
+        'settings' => array(
+          'fields' => array(),
+          'type_settings' => array(
+            'delete_references' => 1,
+          ),
+        ),
+        'type' => 'inline_entity_form',
+        'weight' => '10',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_article-field_main_image_format'.
+  $fields['node-openpublish_article-field_main_image_format'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_main_image_format',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'formatter_field',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'formatter',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_article',
+      'default_value' => array(
+        0 => array(
+          'type' => 'styles_media_landscape_main_image',
+          'settings' => 'a:0:{}',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '26',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_main_image_format',
+      'label' => 'Main Image Format',
+      'required' => 0,
+      'settings' => array(
+        'field_name' => 'field_article_main_image',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'formatter_field',
+        'settings' => array(),
+        'type' => 'formatter_select',
+        'weight' => '8',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_article-field_related_stories'.
+  $fields['node-openpublish_article-field_related_stories'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '3',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_related_stories',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'action' => 'action',
+          'article' => 0,
+          'audio' => 0,
+          'blog_front' => 0,
+          'feed' => 0,
+          'feed_item' => 0,
+          'openpublish_article' => 'openpublish_article',
+          'openpublish_blog_post' => 0,
+          'openpublish_photo' => 0,
+          'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+          'openpublish_video' => 'openpublish_video',
+          'petition_action' => 'petition_action',
+          'pledge_action' => 'pledge_action',
+          'profile' => 0,
+          'section_front' => 0,
+          'section_front_wide' => 0,
+          'takepart_campaign' => 0,
+          'takepart_group' => 0,
+          'takepart_list' => 0,
+          'takepart_page' => 0,
+          'takepart_quick_study' => 0,
+          'takepart_slide' => 0,
+          'topic_front' => 0,
+          'venue' => 0,
+          'webform' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_article',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '8',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_related_stories',
+      'label' => 'Related Stories',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_article-field_significance'.
+  $fields['node-openpublish_article-field_significance'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_significance',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'significance',
+            'parent' => '0',
+            'depth' => '',
+          ),
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_article',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '3',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_significance',
+      'label' => 'Significance',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '4',
       ),
     ),
   );
@@ -380,6 +790,7 @@ function openpublish_article_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 'action',
+          'article' => 0,
           'audio' => 0,
           'blog_front' => 0,
           'feed' => 0,
@@ -420,11 +831,11 @@ function openpublish_article_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 21,
+          'weight' => '14',
         ),
         'full' => array(
           'label' => 'above',
@@ -432,7 +843,19 @@ function openpublish_article_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
+        ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -455,7 +878,102 @@ function openpublish_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '41',
+        'weight' => '17',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-openpublish_article-field_topic_box'.
+  $fields['node-openpublish_article-field_topic_box'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '2',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_topic_box',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'topic_box',
+            'parent' => '0',
+            'depth' => '',
+          ),
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_article',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '4',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_topic_box',
+      'label' => 'Topic Box',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'term_reference_tree',
+        'settings' => array(
+          'cascading_selection' => 0,
+          'filter_view' => '',
+          'leaves_only' => 1,
+          'max_depth' => '',
+          'parent_term_id' => '',
+          'select_parents' => 0,
+          'start_minimized' => 1,
+          'token_display' => '',
+          'track_list' => 1,
+        ),
+        'type' => 'term_reference_tree',
+        'weight' => '5',
       ),
     ),
   );
@@ -465,8 +983,13 @@ function openpublish_article_field_default_fields() {
   t('Author(s)');
   t('Body');
   t('HTML Title Tag');
+  t('Inline Replacements');
   t('Main Image');
+  t('Main Image Format');
+  t('Related Stories');
+  t('Significance');
   t('TAB Action Overrides');
+  t('Topic Box');
 
   return $fields;
 }

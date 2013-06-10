@@ -1,11 +1,10 @@
 name = TakePart 3.0 Theme
 description = The TakePart theme
+base theme = takepart_core
 core = 7.x
 engine = phptemplate
 
 ; Stylsheets
-stylesheets[all][] = css/typeface.css
-stylesheets-conditional[IE][all][] = css/typeface_ie.css
 stylesheets[all][] = css/legacy.css
 stylesheets[all][] = css/style.css
 ; stylesheets[all][] = css/style2.css.less
@@ -23,10 +22,7 @@ stylesheets[all][] = css/petitions.css
 stylesheets[all][] = css/pledges.css
 stylesheets[all][] = css/actions.css
 
-stylesheets[all][] = css/tpmodal.css
-
 ; Javascript
-scripts[] = js/analytics.js
 scripts[] = js/script.js
 scripts[] = js/widgets.js
 scripts[] = js/tastemakers/venue.js
@@ -34,13 +30,11 @@ scripts[] = js/tastemakers/city.js
 scripts[] = js/tastemakers/nationwide.js
 scripts[] = js/actions.js
 
-scripts[] = js/jquery.lazyload.js
-scripts[] = js/tpsocial.jquery.js
-scripts[] = js/tpautoTab.jquery.js
-scripts[] = js/tpmodal.jquery.js
-scripts[] = js/tpsticky.jquery.js
-scripts[] = js/autosize.jquery.js
+scripts[] = js/jquery.scrollTo.js
+scripts[] = js/tpslide.jquery.js
 
+; ----- FEATURES ------
+features[] = logo
 features[] = favicon
 
 ; Defaults

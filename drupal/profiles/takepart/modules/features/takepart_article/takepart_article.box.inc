@@ -119,57 +119,11 @@ function takepart_article_default_box() {
   $box->api_version = 1;
   $box->delta = 'box-bedd1fbb';
   $box->plugin_key = 'simple';
-  $box->title = 'TakePart Tastemakers';
+  $box->title = 'How Long is Forever?';
   $box->description = 'Right Rail -- TakePart Takes On';
   $box->options = array(
-    'body' => '<div id="youtube_block" class="rr-preview">
-  <div style="line-height: 12px;">&nbsp;</div>
-  <img src="http://img.youtube.com/vi/oiY_UxZJMSM/mqdefault.jpg" width="275" height="155" />
-  <div style="line-height: 5px;">&nbsp;</div>
-  <strong><a href="http://www.youtube.com/embed/oiY_UxZJMSM">Read more and take action here.</a></strong>
-  <a class="colorbox-inline" href="?width=870&amp;height=420&amp;inline=true#oiY_UxZJMSM"><div class="rr-preview-arrow"></div></a>
-</div>
-<div class="vidpop-overlay">
-  <div id="oiY_UxZJMSM"><div class=\'rightrail-video-popup clearfix node-embedded vidpop-popup\' >
-  <div class="inner-wrapper">
-        <div class="contents">
-      <div class="leftside">
-        <div class="vidpop-popup right-rail-vidpop" style="height: 360px; width: 640px;">
-  <iframe width="640" height="411" frameborder="0" type="text/html" class="youtube-player right-rail-vidpop-iframe" src="http://www.youtube.com/embed/oiY_UxZJMSM?version=3&amp;wmode=opaque" style="height: 360px; width: 640px;"></iframe>
-</div>      </div>
-      <div class="rightside">
-        <div class="field-name-field-promo-headline">TakePart Tastemakers</div>
-        <!-- subscribe button -->
-        <div class="subscribe"><a target="_blank" href="http://www.youtube.com/subscription_center?add_user_id=FYRWsIH2BivGa_-2LVTsBA&amp;feature=creators_cornier-http%3A//s.ytimg.com/yt/img/creators_corner/Subscribe_to_my_videos/YT_Subscribe_160x27_red.png"><img alt="Subscribe to me on YouTube" src="http://s.ytimg.com/yt/img/creators_corner/Subscribe_to_my_videos/YT_Subscribe_160x27_red.png" /></a></div>
-
-        <div id="vidpop-social" class="social-links">
-          <div class="addthis_toolbox addthis_default_style">
-            <a class="addthis_button_facebook_like"
-               addthis:url=""
-               fb:like:href="'. url(current_path(), array('absolute' => TRUE)) . '"
-               fb:like:action="like"
-               fb:like:layout="button_count"></a>
-            <a class="addthis_button_tweet"
-               tw:counturl=""
-               tw:count="horizontal"
-               tw:url=""
-               tw:text=""
-               tw:via="TakePart"
-               tw:title="Tweet"></a>
-            <a class="addthis_button_email"
-               title="Email"
-               addthis:url=""></a>
-          </div>
-        </div>
-        <div class="comment-link"></div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>',
+    'body' => '<iframe width="272" height="153" src="http://www.youtube.com/embed/7BnFlpsyF4c" frameborder="0" allowfullscreen></iframe>',
     'additional_classes' => 'video-popup',
-    'selected_style' => '0',
   );
   $export['box-bedd1fbb'] = $box;
 
@@ -186,51 +140,52 @@ function takepart_article_default_box() {
 	<img src="http://www.takepart.com/sites/default/files/featuredcontributors1.gif" alt="Featured Contributers" />
 	</p>
 
-	<h2><span>Stephanie McMillan</span></h2>
+<h2><span>Justine Lucas</span></h2>
 	
 	<div class="views-field views-field-field-thumbnail">
 		<div class="field-content" style="padding: 5px 5px 10px 0;">
-		<a href="http://www.takepart.com/author/stephanie-mcmillan" target="_self"><img src="http://www.takepart.com/sites/default/files/stephmcmillan70x70.jpeg" alt="Stephanie McMillan" /></a>
+		<a href="http://www.takepart.com/author/justine-lucas-us-campaigns-manager-global-poverty-project" target="_self"><img src="http://www.takepart.com/sites/default/files/Justine_Lucas70.jpg" alt="Justine Lucas" /></a>
 	
 			<div class="views-field views-field-field-promo-headline" style="float:right;  width:140px; padding: 0px 15px 0 0; font-size:14px"">
-			<a href="http://www.takepart.com/article/2012/12/05/op-ed-haitis-garment-workers-look-america-solidarity" target="_self">Hait\'s Garment Workers Join the Worldwide Fight Against Sweatshop Abuse</a>
+			<a href="http://www.takepart.com/author/justine-lucas-us-campaigns-manager-global-poverty-project" target="_self">Op-Ed: The Extreme Poverty Curse and How to Lift It</a>
+</a>
 
 			</div>
 		</div>
 	</div>
 
 
-	<h2><span>Karen Blessen</span></h2>
+<h2><span>Evan Handler</span></h2>
 	
 	<div class="views-field views-field-field-thumbnail">
 		<div class="field-content" style="padding: 5px 5px 10px 0;">
-		<a href="http://www.takepart.com/author/karen-blessen" target="_self"><img src="http://www.takepart.com/sites/default/files/KarenBlessen70x70.jpg" alt="Karen Blessen" /></a>
+		<a href="http://www.takepart.com/author/evan-handler" target="_self"><img src="http://www.takepart.com/sites/default/files/EvenHandler70.jpg" alt="Evan Handler" /></a>
 	
 			<div class="views-field views-field-field-promo-headline" style="float:right;  width:140px; padding: 0px 15px 0 0; font-size:14px"">
-			<a href="http://www.takepart.com/article/2012/12/05/art-schools-why-inspire-peace" target="_self">Paintbrushes for Peace: Can Art in Schools Inspire Adults to Get Along?</a>
+			<a href="http://www.takepart.com/article/2013/03/18/i-love-livestrong-and-so-should-you" target="_self">Op-Ed: I Love LIVESTRONG—And So Should You</a>
+</a>
 
 			</div>
 		</div>
 	</div>
 
 
-	<h2><span>Tom Devine</span></h2>
+<h2><span>Dean Puckett</span></h2>
 	
 	<div class="views-field views-field-field-thumbnail">
 		<div class="field-content" style="padding: 5px 5px 10px 0;">
-		<a href="http://www.takepart.com/author/tom-devine-legal-director-government-accountability-project" target="_self"><img src="http://www.takepart.com/sites/default/files/Tom_Devine70x70.jpeg" alt="Tom Devine" /></a>
+		<a href="http://www.takepart.com/author/dean-puckett" target="_self"><img src="http://www.takepart.com/sites/default/files/deanPuckett70.jpg" alt="Dean Puckett" /></a>
 	
 			<div class="views-field views-field-field-promo-headline" style="float:right;  width:140px; padding: 0px 15px 0 0; font-size:14px"">
-			<a href="http://www.takepart.com/article/2012/12/04/op-ed-dont-let-whistleblowers-get-blown-away" target="_self">Op-Ed: Don\'t Let Whistleblowers Get Blown Away</a>
+			<a href="http://www.takepart.com/article/2013/03/15/op-ed-if-you-want-change-world-you-have-get-your-hands-dirty" target="_self">Op-Ed: Want to Change the World? You\'ll Have to Get Your Hands Dirty</a>
+</a>
 
 			</div>
 		</div>
 	</div>
-
 </div>
 ',
     'additional_classes' => '',
-    'selected_style' => '0',
   );
   $export['box-c49bfd54'] = $box;
 

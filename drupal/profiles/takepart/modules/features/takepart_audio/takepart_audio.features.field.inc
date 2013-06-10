@@ -61,6 +61,12 @@ function takepart_audio_field_default_fields() {
           'type' => 'text_summary_or_trimmed',
           'weight' => 0,
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'body',
@@ -124,6 +130,12 @@ function takepart_audio_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_audio_asset',
@@ -180,6 +192,7 @@ function takepart_audio_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
+          'article' => 0,
           'audio' => 0,
           'blog_front' => 0,
           'feed' => 0,
@@ -227,6 +240,12 @@ function takepart_audio_field_default_fields() {
           'weight' => '0',
         ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -307,6 +326,12 @@ function takepart_audio_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_free_tag',
@@ -372,6 +397,12 @@ function takepart_audio_field_default_fields() {
           'weight' => '10',
         ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -445,6 +476,12 @@ function takepart_audio_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_promo_headline',
@@ -506,6 +543,12 @@ function takepart_audio_field_default_fields() {
           'weight' => '5',
         ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -587,6 +630,12 @@ function takepart_audio_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_series',
@@ -652,6 +701,12 @@ function takepart_audio_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_subhead',
@@ -705,6 +760,12 @@ function takepart_audio_field_default_fields() {
           'weight' => '9',
         ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -790,6 +851,12 @@ function takepart_audio_field_default_fields() {
           'weight' => '7',
         ),
         'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

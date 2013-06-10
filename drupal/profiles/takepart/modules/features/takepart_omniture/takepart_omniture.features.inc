@@ -27,6 +27,22 @@ function takepart_omniture_ctools_plugin_api() {
  */
 function takepart_omniture_node_info() {
   $items = array(
+    'petition_action' => array(
+      'name' => t('Petition Action'),
+      'base' => 'node_content',
+      'description' => t('Used to add petitions to the site.'),
+      'has_title' => '1',
+      'title_label' => t('Page Title'),
+      'help' => '',
+    ),
+    'pledge_action' => array(
+      'name' => t('Pledge Action'),
+      'base' => 'node_content',
+      'description' => t('Used to add pledges to the site.'),
+      'has_title' => '1',
+      'title_label' => t('Page Title'),
+      'help' => '',
+    ),
     'profile' => array(
       'name' => t('Profile'),
       'base' => 'node_content',
