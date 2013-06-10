@@ -17,7 +17,7 @@ $(function() {
 		'Keyword Link': '.page-tags',
 		'Author Full Bio Link': '#article-author .full_bio_link',
 		'Author Byline Link': '.authors',
-		'Badge': '#article-badge',
+		'Badge': '.badge',
 		'Topic Box': '#topic_box'
 	};
 
