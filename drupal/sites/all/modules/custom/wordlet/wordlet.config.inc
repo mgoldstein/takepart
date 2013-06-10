@@ -423,6 +423,48 @@ function _wordlet_configuration() {
       'load' => array('site', 'eyelevel_campaign'),
     ),
 
+    // -----------------------------------
+    // I Am Education Campaign ----------------
+    // -----------------------------------
+    'education_campaign' => array(
+      'title' => 'I Am Education Campaign',
+    ),
+
+    // I Am Education Home
+    'education_home' => array(
+      'title' => 'I Am Education - Home',
+      'path' => 'education',
+      'published' => FALSE,
+      'wrappers' => array('education', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/education/education.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/education/education.js',
+      ),
+      'load' => array('site', 'education_campaign'),
+    ),
+
+    // I Am Education Videos
+    'education_video' => array(
+      'title' => 'I Am Education - Video',
+      'path' => 'education/video',
+      'published' => FALSE,
+      'wrappers' => array('education', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/education/education.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/education/education.js',
+      ),
+      'load' => array('site', 'education_campaign'),
+    ),
+
+
     // -------------------------------------
     // Intel Girls Campaign ----------------
     // -------------------------------------
