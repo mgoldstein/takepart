@@ -15,6 +15,7 @@
 
 // Like the name says
 function _build_list_for_yahoo_rss_feed($content) {
+    
     $parts = explode(',,,', $content);
     $ret = '';
     foreach ( $parts as $part ) {
@@ -24,7 +25,7 @@ function _build_list_for_yahoo_rss_feed($content) {
         }
     }
 
-    if ( $ret ) return '<ul>' . $ret . '</ul>';
+   if ( $ret ) return '<ul>' . $ret . '</ul>';
     return '';
 }
 
@@ -119,14 +120,16 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } else if ($id == 'field_related_stories' && $object->content != '') {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
-            } else if ($id == 'field_inline_replacements' && $object->content != '') {
+            } else if ($id == 'field_ic_content' && $object->content != '') {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } else {
                 $content .= ($object->content);
             }
         }
 
-        if ( $related_content ) $content .= "\n\n<p><strong>Related stories on TakePart:</strong></p>\n\n" . $related_content;
+        if ($related_content) {
+            $content .= "\n\n<p><strong>Related stories on TakePart:</strong></p>\n\n" . $related_content;
+        }
 
         $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
         $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
