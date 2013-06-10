@@ -65,7 +65,6 @@ var normalize_share_title = function(title) {
 
 // Named tracking
 takepart.analytics.track = function(name) {
-console.log('track');
     var args = arguments || [];
     var special_share_event = "event74";
     var s = window.s || {};

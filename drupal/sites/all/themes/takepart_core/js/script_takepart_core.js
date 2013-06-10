@@ -12,12 +12,12 @@ $(function() {
 		'Daily Featured Content': '.of_the_day_section',
 		'Partner Link': '.on_our_radar_section',
 		'Embedded Content': '#article-body .drupal-embed',
-		'Related Stories': '#article-related',
-		'Next Article': '#next-article',
-		'Keyword Link': '#article-tags',
+		'Related Stories': '.related-stories',
+		'Next Article': '.next-article',
+		'Keyword Link': '.page-tags',
 		'Author Full Bio Link': '#article-author .full_bio_link',
-		'Author Byline Link': '#article-author-names',
-		'Badge': '#article-badge',
+		'Author Byline Link': '.authors',
+		'Badge': '.badge',
 		'Topic Box': '#topic_box'
 	};
 

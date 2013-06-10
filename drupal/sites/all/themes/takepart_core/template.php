@@ -173,7 +173,8 @@ function _render_tp3_footer(&$params) {
 }
 
 function _alter_generated_css(&$css) {
-	// Pull important styles from the themes .info file and place them above all stylesheets.
+	return;
+  // Pull important styles from the themes .info file and place them above all stylesheets.
 	foreach ($css as $i => $style_from_foo) {
 		$dirname = dirname($i);
 		$basename = basename($i);
@@ -230,8 +231,11 @@ function _s($var, $prop = NULL, $type = 'node') {
     return $var;
   } elseif ( is_array($var) && isset($var['safe_value']) ) {
     return $var['safe_value'];
+  } elseif ( is_object($var) && $prop && isset($var->{$prop}) && is_string($var->{$prop}) ) {
+    return $var->{$prop};
   } elseif ( is_object($var) && $prop ) {
     $ret = field_get_items($type, $var, $prop);
+    if ( is_array($ret) ) return _s($ret[0]);
     return $ret[0];
   // Avoid doing ->value()
   } elseif ( is_object($var) && get_class($var) == 'EntityValueWrapper' ) {
@@ -242,6 +246,8 @@ function _s($var, $prop = NULL, $type = 'node') {
   // Body attribute
   } elseif ( isset($var[0]) && isset($var[0]['safe_value']) ) {
     return $var[0]['safe_value'];
+  } elseif ( isset($var['value']) ) {
+    return $var['value'];
   }
 }
 
@@ -249,6 +255,8 @@ function _s($var, $prop = NULL, $type = 'node') {
 function _surl($var, $prop = NULL, $type = 'node') {
   if ( is_array($var) && isset($var[0]) && isset($var[0]['node']) ) {
     return url('node/' . $var[0]['node']->nid);
+  } elseif ( is_array($var) && isset($var[0]) && isset($var[0]['nid']) ) {
+    return url('node/' . $var[0]['nid']);
   } elseif ( is_array($var) && isset($var['node']) ) {
     return url('node/' . $var['node']->nid);
   } elseif ( is_object($var) && isset($var->_surl) ) {
@@ -282,10 +290,15 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
     $var = $var->value();
   }
 
-  if ( isset($var['type']) && $var['type'] == 'image') {
+  if ( isset($var['file']) ) {
+    $image = (array)$var['file'];
+  } elseif ( isset($var['type']) && $var['type'] == 'image') {
     $image = $var;
   } elseif ( isset($var[0]) && isset($var[0]['file']) ) {
     $image = (array)$var[0]['file'];
+  } elseif ( isset($var[0]) && isset($var[0]['fid']) ) {
+    $image = file_load($var[0]['fid']);
+    $image = (array)$image;
   } elseif ( isset($var[0]) ) {
     $image = $var[0];
   } else {
@@ -298,6 +311,7 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
     }
 
     $image['style_name'] = $style;
+    $image['getsize'] = TRUE;
     return theme('image_style', $image);
   } else {
     if ( !isset($image['path']) ) {
@@ -336,7 +350,12 @@ function _smenu($menu) {
 }
 
 // Get a node
-function _snode($var) {
+function _snode($var, $prop = null, $type = 'node') {
+  if ( is_object($var) && $prop ) {
+    $var = field_get_items($type, $var, $prop);
+    return $var;
+  }
+
   if ( isset($var[0]) ) {
     return $var[0]['node'];
   }
@@ -371,8 +390,8 @@ function _seach(&$var /*, $prop = null, $type = 'node'*/ ) {
   }
 
   $taxonomy_term = null;
-  if( isset($ea['taxonomy_term']) ) {
-    $taxonomy_term = $ea['taxonomy_term'];
+  if ( isset($ea['tid']) ) {
+    $taxonomy_term = taxonomy_term_load($ea['tid']);
   } elseif ( isset($ea['taxonomy_term']) ) {
     $taxonomy_term = $ea['taxonomy_term'];
   }
@@ -382,6 +401,10 @@ function _seach(&$var /*, $prop = null, $type = 'node'*/ ) {
     $taxonomy_term->_surl = url($uri['path']);
     $taxonomy_term->_stype = 'taxonomy_term';
     return array($k, $taxonomy_term);
+  }
+
+  if ( is_array($ea) && count($ea) < 3 && isset($ea['nid']) ) {
+    $ea = node_load($ea['nid']);
   }
 
   return array($k, $ea);
