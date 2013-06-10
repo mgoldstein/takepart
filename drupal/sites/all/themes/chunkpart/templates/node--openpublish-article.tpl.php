@@ -81,7 +81,7 @@
 
 			<footer id="article-footer">
 				<? if ( $next_article): ?>
-					<nav id="next-article" class="related">
+					<nav id="next-article" class="related next-article">
 						<h3 class="headline"><?=t('Next Article') ?></h3>
 						<p>
 							<a href="<?=$next_article->href ?>">
@@ -92,8 +92,8 @@
 				<? endif ?>
 
 				<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
-					<nav id="article-related" class="related">
-						<h3 class="headline"><?=t('Related Articles') ?></h3>
+					<nav id="article-related" class="related related-stories">
+						<h3 class="headline"><?=t('Related stories on TakePart:') ?></h3>
 						<ul>
 							<? while ( list($key, $related) = _seach($relateds) ): ?>
 								<li><a href="<?=_surl($related) ?>"><?=$related->title ?></a></li>

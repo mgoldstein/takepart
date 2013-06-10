@@ -88,7 +88,7 @@
 					<? endwhile ?>
 				<? endif ?>
 				<? if ( $next_gallery ): ?>
-					<li id="next-gallery" data-token="next-gallery">
+					<li id="next-gallery" data-token="next-gallery" class="next-article">
 						<a href="<?=$next_gallery->href ?>" class="enter-link">
 							<div class="image-area">
 								<div class="image-area-inner">
@@ -143,7 +143,7 @@
 		<? endif ?>
 
 		<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
-			<nav class="related">
+			<nav class="related related-stories">
 				<h3 class="headline"><?=t('Related stories on TakePart:') ?></h3>
 				<ul>
 					<? while ( list($key, $related) = _seach($relateds) ): ?>
