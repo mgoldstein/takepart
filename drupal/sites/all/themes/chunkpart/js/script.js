@@ -220,11 +220,16 @@ $(function() {
 
 		var update_to = null;
 		var update_page = function() {
-			// $(fb_comment_el).hide();
 			clearTimeout(update_to);
+			// $(fb_comment_el).hide();
 			update_to = setTimeout(function() {
-				// $(fb_comment_el).show();
 				var token = get_curtoken();
+				omniture = s.prop15.split(':');
+				s.prop15 = omniture[0] + ':' + omniture[1] + ':' + token;
+				s.eVar15 = s.prop15;
+				s.t();
+
+				// $(fb_comment_el).show();
 				//if ( token ) {
 					show_fb_comments(fb_comment_el, base_url + '/' + token);
 				//} else {
@@ -296,6 +301,7 @@ $(function() {
 
 		var $current_slide = null;
 		var slide_callback = function($current) {
+			var old_token = ( $current_slide ) ? $current_slide.data('token') : null;
 			$current_slide = $current;
 
 			var current_image = $current_slide.find('img').attr('src');
@@ -318,7 +324,7 @@ $(function() {
 			$slides.height($current_slide.height());
 
 			if ( !gallery_showing ) return;
-			update_page();
+			if ( old_token && old_token != token ) update_page();
 			hpush(token, $current.find('.headline').text());
 		}
 
