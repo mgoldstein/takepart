@@ -449,8 +449,8 @@ function _wordlet_configuration() {
 
     // I Am Education Videos
     'education_video' => array(
-      'title' => 'I Am Education - Video',
-      'path' => 'i-am-education/video',
+      'title' => 'I Am Education - Videos',
+      'path' => 'i-am-education/videos',
       'published' => FALSE,
       'wrappers' => array('education', 'campaign', 'html'),
       'css' => array(
