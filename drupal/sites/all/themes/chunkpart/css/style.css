@@ -676,6 +676,7 @@ div.takepart-take-action-widget {
 
 .related {
 	margin-bottom: 1.25em;
+	overflow: hidden;
 }
 
 .related .headline {
@@ -1363,6 +1364,7 @@ div.takepart-take-action-widget {
 	margin-bottom: 1em;
 }
 
+.node-type-openpublish-photo-gallery #gallery-photos .image,
 .node-type-openpublish-photo-gallery #gallery-cover .image,
 .node-type-openpublish-photo-gallery #gallery-photos .gallery-slide .image,
 .node-type-openpublish-photo-gallery #gallery-photos .image-area {
