@@ -972,7 +972,7 @@ function wordlet_page_view_callback($page) {
       '#type' => 'html_tag',
       '#tag' => 'meta',
       '#attributes' => array(
-        'property' => 'description',
+        'name' => 'description',
         'content' =>  $meta_description,
       ),
     );
