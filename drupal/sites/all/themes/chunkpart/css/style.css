@@ -55,7 +55,7 @@ body {
 
 a:link,
 a:visited {
-	color: #28a9e9;
+	color: #1CA9E7;
 	text-decoration: none;
 }
 
@@ -162,7 +162,7 @@ body #at16pt {
 }
 
 #site-secondary .on_our_radar_section a:hover .title {
-	color: #28a9e9;
+	color: #1CA9E7;
 }
 
 /* Of The Day Module */
@@ -202,7 +202,7 @@ body #at16pt {
 }
 
 #block-bean-of-the-day a:hover .link {
-	color: #28a9e9;
+	color: #1CA9E7;
 }
 
 /* Newsletter form */
@@ -574,7 +574,7 @@ div.takepart-take-action-widget {
 	text-transform: uppercase;
 	font-family: TradeGothicLTStdCnBold, sans-serif;
 	color: #333;
-	font-size: 16px;
+	font-size: 20px;
 }
 
 .page-tags ul {
@@ -664,7 +664,7 @@ div.takepart-take-action-widget {
 }
 
 #site-secondary .block .views-row:hover .views-field-field-promo-headline a {
-	color: #28a9e9;
+	color: #1CA9E7;
 }
 
 #site-secondary .block .views-row {
@@ -683,7 +683,7 @@ div.takepart-take-action-widget {
 	text-transform: uppercase;
 	font-family: TradeGothicLTStdCnBold, sans-serif;
 	color: #333;
-	font-size: 16px;
+	font-size: 20px;
 	margin-bottom: 10px;
 }
 
@@ -1121,7 +1121,7 @@ div.takepart-take-action-widget {
 
 .node-type-article #article-body .inline-content a:hover {
 	text-decoration: none;
-	color: #28a9e9;
+	color: #1CA9E7;
 }
 
 .node-type-article .inline-content p {
@@ -1354,7 +1354,7 @@ div.takepart-take-action-widget {
 	background: #f6f8f9;
 	border: 1px solid #e5e5e5;
 	border-left: none;
-	max-height: 465px;
+	height: 465px;
 	overflow: auto;
 	color: #333;
 
@@ -1587,7 +1587,7 @@ div.takepart-take-action-widget {
 }
 
 .node-type-openpublish-photo-gallery #gallery-photos #gallery-header-main .secondary a:hover {
-	color: #28a9e9;
+	color: #1CA9E7;
 	text-decoration: none;
 }
 
@@ -1597,6 +1597,41 @@ div.takepart-take-action-widget {
 
 .node-type-openpublish-photo-gallery #gallery-photos .enter-link {
 	display: block;
+}
+
+.node-type-openpublish-photo-gallery #gallery-photos {
+	position: relative;
+}
+
+.node-type-openpublish-photo-gallery .back-to-cover {
+	display: none;
+}
+
+.node-type-openpublish-photo-gallery .on-first .back-to-cover {
+	display: block;
+}
+
+.node-type-openpublish-photo-gallery .back-to-cover a {
+	height: 35px;
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+	display: block;
+	background-repeat: no-repeat;
+	position: absolute;
+	z-index: 2;
+	background-image: url(../images/gallery_prev.png); /** sprite-ref: mysprite; */
+	left: 0;
+	bottom: -45px;
+	width: 22px;
+}
+
+.node-type-openpublish-photo-gallery .back-to-cover a:hover {
+	background-image: url(../images/gallery_prev_rollover.png); /** sprite-ref: mysprite; */
+}
+
+.node-type-openpublish-photo-gallery .on-first .tpslide_prev {
+	display: none;
 }
 
 /* related stuff */
@@ -1630,7 +1665,7 @@ div.takepart-take-action-widget {
 }
 
 .node-type-openpublish-photo-gallery #related-galleries a:hover {
-	color: #28a9e9;
+	color: #1CA9E7;
 	text-decoration: none;
 }
 

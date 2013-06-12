@@ -75,7 +75,7 @@
 		</header>
 
 		<div id="gallery-content">
-			<ul data-tpslide_previous="<?=t('Previous Slide')?>" data-tpslide_next="<?=t('Next Slide')?>">
+			<ul data-tpslide_separator="<?=t(' of ') ?>" data-tpslide_previous="<?=t('Previous Slide')?>" data-tpslide_next="<?=t('Next Slide')?>">
 				<? if ( $images = _snode($node, 'field_gallery_images') ): ?>
 					<? while ( list($key, $image) = _seach($images) ): ?>
 						<li class="slide<?=$key ?> gallery-slide" data-token="<?=_takepart_galleries_get_token(_s($image['file'], 'field_image_title', 'file'), $image['file']->filename) ?>">
@@ -127,6 +127,10 @@
 					</li>
 				<? endif ?>
 			</ul>
+
+			<p class="back-to-cover">
+				<a href="#gallery-cover"><?=t('Back to cover')?></a>
+			</p>
 		</div>
 	</div>
 
@@ -158,7 +162,7 @@
 
 		<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
 			<nav class="related related-stories">
-				<h3 class="headline"><?=t('Related stories on TakePart:') ?></h3>
+				<h3 class="headline"><?=t('Related stories on TakePart') ?></h3>
 				<ul>
 					<? while ( list($key, $related) = _seach($relateds) ): ?>
 						<li><a href="<?=_surl($related) ?>"><?=$related->title ?></a></li>
@@ -169,7 +173,7 @@
 
 		<nav id="gallery-tags" class="page-tags">
 			<h3 class="headline">
-				<?=t('Get More:') ?>
+				<?=t('Get More') ?>
 			</h3>
 
 			<ul>

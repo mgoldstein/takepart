@@ -93,7 +93,7 @@
 
 				<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
 					<nav id="article-related" class="related related-stories">
-						<h3 class="headline"><?=t('Related stories on TakePart:') ?></h3>
+						<h3 class="headline"><?=t('Related stories on TakePart') ?></h3>
 						<ul>
 							<? while ( list($key, $related) = _seach($relateds) ): ?>
 								<li><a href="<?=_surl($related) ?>"><?=$related->title ?></a></li>
@@ -104,7 +104,7 @@
 
 				<nav id="article-tags" class="page-tags">
 					<h3 class="headline">
-						<?=t('Get More:') ?>
+						<?=t('Get More') ?>
 					</h3>
 
 					<ul>

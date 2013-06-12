@@ -27,13 +27,15 @@
             do_hash: false,
             onslide: null,
             previous: '&larr;',
-            next: '&rarr;'
+            next: '&rarr;',
+            separator: ' / '
         }, options || {});
         return this.each(function () {
             var $this = $(this);
 
             settings.previous = $this.data(settings.prepend + 'previous') || settings.previous;
             settings.next = $this.data(settings.prepend + 'next') || settings.next;
+            settings.separator = $this.data(settings.prepend + 'separator') || settings.separator;
 
             var $wrapper = $('<span/>').addClass(settings.prepend + 'wrapper');
             var $prev = $('<a href="#"/>').attr('title', 'Previous slide').addClass(settings.prepend + 'prev').html(settings.previous);
@@ -70,7 +72,7 @@
 
             $slides.each(function (i) {
                 var $slide = $(this).data(settings.prepend + 'index', i);
-                links += '<a href="#' + $slide.attr('id') + '" class="' + settings.prepend + 'link"><span>' + (i + 1) + ' / ' + $slides.length + '</span></a>';
+                links += '<a href="#' + $slide.attr('id') + '" class="' + settings.prepend + 'link"><span>' + (i + 1) + settings.separator + $slides.length + '</span></a>';
                 if (hash && $slide.is(hash)) {
                     current = i;
                     $current = $slide
