@@ -314,6 +314,12 @@ $(function() {
 			var old_token = ( $current_slide ) ? $current_slide.data('token') : null;
 			$current_slide = $current;
 
+			if ( !$current_slide.prev().length ) {
+				$gallery_main.addClass('on-first');
+			} else {
+				$gallery_main.removeClass('on-first');
+			}
+
 			var current_image = $current_slide.find('img').attr('src');
 			tp_social_config.services.pinterest.media = current_image;
 			tp_social_config.services.tumblr.source = current_image;
@@ -382,6 +388,13 @@ $(function() {
 			}
 
 			update_page(token);
+		});
+
+		$('.back-to-cover a').bind('click', function(e) {
+			e.preventDefault();
+			if ( !gallery_showing ) return;
+			hide_gallery();
+			hpush('', $('#gallery-cover-main').find('.headline').text());
 		});
 
 		if ( get_curtoken() ) {
