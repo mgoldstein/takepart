@@ -276,6 +276,10 @@ $(function() {
 					url: '{current}',
 					source: first_image,
 					caption: first_description
+				},
+				email: {
+					name: 'email',
+					url: '{current}'
 				}
 			}
 		};

@@ -94,6 +94,11 @@
                 next(false);
             };
             var slide = function (do_hash) {
+                if ( isNaN(current) ) {
+                    current = 0;
+                    $current = $slides.eq(current);
+                }
+
                 if (settings.autoslide) {
                     clearTimeout(autoslide_timeout);
                     autoslide_timeout = setTimeout(auto_next, settings.autoslide);
@@ -101,6 +106,7 @@
                 do_hash = do_hash || settings.do_hash;
                 $this.scrollTo($current, 'slow');
                 $links.removeClass(settings.prepend + 'active');
+
                 $links.eq(current).addClass(settings.prepend + 'active');
                 var hash = $current.attr('id');
                 $current.attr({
