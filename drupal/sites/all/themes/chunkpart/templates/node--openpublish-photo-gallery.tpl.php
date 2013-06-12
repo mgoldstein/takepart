@@ -6,7 +6,8 @@
 					<h3 class="headline"><?=t('Share Gallery') ?></h3>
 					<div class="tp-social" id="gallery-cover-share"></div>
 				</aside>
-				<a href="#gallery-photos" class="enter-link">
+
+				<a href="#gallery-photos" class="enter-link image-content-wrapper">
 					<p class="image">
 						<?=_simage($node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?>
 					</p>
@@ -18,6 +19,7 @@
 						<p class="enter"><?=t('Enter Photo Gallery') ?></p>
 					</div>
 				</a>
+
 			</div>
 		</div>
 	<? endif ?>
@@ -74,8 +76,10 @@
 					<? while ( list($key, $image) = _seach($images) ): ?>
 						<li class="slide<?=$key ?> gallery-slide" data-token="<?=_takepart_galleries_get_token(_s($image['file'], 'field_image_title', 'file'), $image['file']->filename) ?>">
 							<figure>
-								<div class="image">
-									<?=_simage($image, null, null, 'tp_gallery_slide') ?>
+								<div class="image-content-wrapper">
+									<div class="image">
+										<?=_simage($image, null, null, 'tp_gallery_slide') ?>
+									</div>
 								</div>
 								<figcaption class="photo-caption">
 									<h2 class="headline"><?=_s($image['file'], 'field_image_title', 'file') ?></h2>
@@ -90,7 +94,7 @@
 				<? if ( $next_gallery ): ?>
 					<li id="next-gallery" data-token="next-gallery" class="next-article">
 						<a href="<?=$next_gallery->href ?>" class="enter-link">
-							<div class="image-area">
+							<div class="image-content-wrapper">
 								<div class="image-area-inner">
 									<p class="image"><?=_simage($next_gallery->node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?></p>
 									<div class="content">

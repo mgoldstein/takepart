@@ -219,15 +219,21 @@ $(function() {
 		}
 
 		var update_to = null;
-		var update_page = function() {
+		var update_page = function(token) {
 			clearTimeout(update_to);
+
+			setTimeout((function(token) {
+				return function() {
+					omniture = s.prop15.split(':');
+					s.prop15 = omniture[0] + ':' + omniture[1] + ((token) ? ':' + token : '');
+					s.eVar15 = s.prop15;
+					s.t();
+				}
+			})(token), 500);
+
 			// $(fb_comment_el).hide();
 			update_to = setTimeout(function() {
 				var token = get_curtoken();
-				omniture = s.prop15.split(':');
-				s.prop15 = omniture[0] + ':' + omniture[1] + ':' + token;
-				s.eVar15 = s.prop15;
-				s.t();
 
 				// $(fb_comment_el).show();
 				//if ( token ) {
@@ -293,7 +299,7 @@ $(function() {
 		var hpush = function(token, title) {
 			var curtoken = get_curtoken();
 			if ( curtoken == token ) return;
-			update_page();
+			update_page(token);
 
 			if ( !has_history() ) return;
 			history.pushState(null, title, base_url + '/' + token);
@@ -324,7 +330,6 @@ $(function() {
 			$slides.height($current_slide.height());
 
 			if ( !gallery_showing ) return;
-			if ( old_token && old_token != token ) update_page();
 			hpush(token, $current.find('.headline').text());
 		}
 
@@ -351,14 +356,18 @@ $(function() {
 
 			$('#gallery-cover .tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
-			if ( gallery_showing ) update_page();
-
 			gallery_showing = false;
 		};
 
 		$slides.tpslide({onslide: slide_callback});
 
-		window.addEventListener("popstate", function(e) {
+		var first_popped = false;
+		window.addEventListener('popstate', function(e) {
+			if ( !first_popped ) {
+				first_popped = true;
+				return;
+			}
+
 			var token = get_curtoken();
 
 			if ( token ) {
@@ -367,6 +376,8 @@ $(function() {
 			} else if ( $gallery_cover.length ) {
 				hide_gallery();
 			}
+
+			update_page(token);
 		});
 
 		if ( get_curtoken() ) {
@@ -378,8 +389,6 @@ $(function() {
 			show_gallery();
 			hpush($current_slide.data('token'), $current.find('.headline').text());
 		}
-
-		//$('#gallery-photos').hide();
 
 		$('#gallery-cover .enter-link, #gallery-body .enter-link').bind('click', function(e) {
 			e.preventDefault();
