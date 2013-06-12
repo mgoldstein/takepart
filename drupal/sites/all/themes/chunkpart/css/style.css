@@ -1478,6 +1478,7 @@ div.takepart-take-action-widget {
 .node-type-openpublish-photo-gallery #gallery-cover-social {
 	float: right;
 	line-height: 24px;
+	margin-bottom: 10px;
 }
 
 .node-type-openpublish-photo-gallery #gallery-cover-social .tp-social {

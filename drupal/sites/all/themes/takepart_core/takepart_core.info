@@ -14,6 +14,7 @@ stylesheets[all][] = css/tpmodal.css
 
 ;-------------- JS -------------
 scripts[] = js/analytics.js
+scripts[] = js/jquery.touchSwipe.js
 scripts[] = js/jquery.lazyload.js
 scripts[] = js/tpsocial.jquery.js
 scripts[] = js/tpsocial.services.js

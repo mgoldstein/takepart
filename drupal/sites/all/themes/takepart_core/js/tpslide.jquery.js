@@ -208,65 +208,19 @@
                 }
                 return true;
             });
-            var total_moved = 0;
-            var mouse_start_x;
-            var delta_x;
-            var last_x;
-            var old_moz_user_select;
-            var moving = false;
-            var drag = function (event) {
-                if (event.originalEvent.touches) {
-                    event.pageX = event.originalEvent.touches[0].clientX;
-                    event.pageY = event.originalEvent.touches[0].clientY;
-                }
-                delta_x = event.pageX - last_x;
-                total_moved = event.pageX - mouse_start_x;
-                last_x = event.pageX;
-            };
-            var stop = function (event) {
-                $body.unbind('touchmove', drag).unbind('touchend touchcancel touchup touchleave', stop);
-                $wrapper.removeClass(settings.prepend + 'mousedown');
-                $body.css({
-                    MozUserSelect: old_moz_user_select
-                });
-                if ($.browser.msie) {
-                    $body.unbind('dragstart', return_false).unbind('selectstart', return_false);
-                }
-                if (total_moved > settings.threshold) {
-                    prev();
-                } else if (total_moved < settings.threshold * -1) {
+
+
+            // Swipe - requires jquery.touchSwipe.js
+            $wrapper.swipe({
+                swipeLeft: function(event, direction, distance, duration, fingerCount) {
                     next();
-                }
-                moving = false;
-                total_moved = 0;
-            };
-            if ((navigator.userAgent.indexOf('Android') == -1)) {
-                $wrapper.bind('touchstart', function (event) {
-                    if (moving) return true;
-                    moving = true;
-                    if (event.originalEvent.touches) {
-                        event.pageX = event.originalEvent.touches[0].clientX;
-                        event.pageY = event.originalEvent.touches[0].clientY;
-                    }
-                    last_x = event.pageX;
-                    mouse_start_x = event.pageX;
-                    old_moz_user_select = $body.css('MozUserSelect');
-                    $body.css({
-                        MozUserSelect: 'none'
-                    });
-                    $wrapper.addClass(settings.prepend + 'mousedown');
-                    $body.bind('touchmove', drag).bind('touchend touchcancel touchup touchleave', stop);
-                    if ($.browser.msie) {
-                        $body.bind('dragstart', return_false).bind('selectstart', return_false);
-                    }
-                }).bind('click', function () {
-                    if (total_moved > settings.threshold || total_moved < settings.threshold * -1) {
-                        total_moved = 0;
-                        return false;
-                    }
-                    total_moved = 0;
-                });
-            }
+                },
+                swipeRight: function(event, direction, distance, duration, fingerCount) {
+                    prev();
+                },
+                threshold: settings.threshold
+            });
+
             slide(false);
         });
     };
