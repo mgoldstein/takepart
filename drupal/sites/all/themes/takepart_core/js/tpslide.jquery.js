@@ -209,17 +209,19 @@
                 return true;
             });
 
-
-            // Swipe - requires jquery.touchSwipe.js
-            $wrapper.swipe({
-                swipeLeft: function(event, direction, distance, duration, fingerCount) {
-                    next();
-                },
-                swipeRight: function(event, direction, distance, duration, fingerCount) {
-                    prev();
-                },
-                threshold: settings.threshold
-            });
+            // Detect swipe in mobile and win8
+            if ( 'ontouchstart' in window || window.navigator.msPointerEnabled ) {
+                // Swipe - requires jquery.touchSwipe.js
+                $wrapper.swipe({
+                    swipeLeft: function(event, direction, distance, duration, fingerCount) {
+                        next();
+                    },
+                    swipeRight: function(event, direction, distance, duration, fingerCount) {
+                        prev();
+                    },
+                    threshold: settings.threshold
+                });
+            }
 
             slide(false);
         });
