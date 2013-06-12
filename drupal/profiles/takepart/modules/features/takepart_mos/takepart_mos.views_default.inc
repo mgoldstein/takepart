@@ -232,7 +232,7 @@ function takepart_mos_views_default_views() {
   $handler->display->display_options['fields']['field_sig_country']['table'] = 'field_data_field_sig_country';
   $handler->display->display_options['fields']['field_sig_country']['field'] = 'field_sig_country';
   $handler->display->display_options['fields']['field_sig_country']['exclude'] = TRUE;
-  /* Field: Signature: State */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_sig_state_international']['id'] = 'field_sig_state_international';
   $handler->display->display_options['fields']['field_sig_state_international']['table'] = 'field_data_field_sig_state_international';
   $handler->display->display_options['fields']['field_sig_state_international']['field'] = 'field_sig_state_international';
@@ -260,14 +260,10 @@ function takepart_mos_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Author';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_sig_first_name] [field_sig_last_name]  ';
-  /* Field: Signature: User Custom Message */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_mos_user_custom_message']['id'] = 'field_mos_user_custom_message';
   $handler->display->display_options['fields']['field_mos_user_custom_message']['table'] = 'field_data_field_mos_user_custom_message';
   $handler->display->display_options['fields']['field_mos_user_custom_message']['field'] = 'field_mos_user_custom_message';
-  $handler->display->display_options['fields']['field_mos_user_custom_message']['type'] = 'text_trimmed';
-  $handler->display->display_options['fields']['field_mos_user_custom_message']['settings'] = array(
-    'trim_length' => '120',
-  );
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
@@ -443,15 +439,12 @@ function takepart_mos_views_default_views() {
   $handler->display->display_options['fields']['created']['label'] = 'Created';
   $handler->display->display_options['fields']['created']['exclude'] = TRUE;
   $handler->display->display_options['fields']['created']['date_format'] = 'time ago';
-  /* Field: Signature: User Custom Message */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_mos_user_custom_message']['id'] = 'field_mos_user_custom_message';
   $handler->display->display_options['fields']['field_mos_user_custom_message']['table'] = 'field_data_field_mos_user_custom_message';
   $handler->display->display_options['fields']['field_mos_user_custom_message']['field'] = 'field_mos_user_custom_message';
   $handler->display->display_options['fields']['field_mos_user_custom_message']['label'] = '';
   $handler->display->display_options['fields']['field_mos_user_custom_message']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_mos_user_custom_message']['settings'] = array(
-    'trim_length' => '120',
-  );
   /* Field: Author */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
