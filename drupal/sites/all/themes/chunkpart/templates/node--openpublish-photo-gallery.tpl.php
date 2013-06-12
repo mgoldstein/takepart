@@ -75,7 +75,7 @@
 		</header>
 
 		<div id="gallery-content">
-			<ul>
+			<ul data-tpslide_previous="<?=t('Previous Slide')?>" data-tpslide_next="<?=t('Next Slide')?>">
 				<? if ( $images = _snode($node, 'field_gallery_images') ): ?>
 					<? while ( list($key, $image) = _seach($images) ): ?>
 						<li class="slide<?=$key ?> gallery-slide" data-token="<?=_takepart_galleries_get_token(_s($image['file'], 'field_image_title', 'file'), $image['file']->filename) ?>">

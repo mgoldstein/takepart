@@ -25,13 +25,19 @@
             autoslide: false,
             cycle: true,
             do_hash: false,
-            onslide: null
+            onslide: null,
+            previous: '&larr;',
+            next: '&rarr;'
         }, options || {});
         return this.each(function () {
             var $this = $(this);
+
+            settings.previous = $this.data(settings.prepend + 'previous') || settings.previous;
+            settings.next = $this.data(settings.prepend + 'next') || settings.next;
+
             var $wrapper = $('<span/>').addClass(settings.prepend + 'wrapper');
-            var $prev = $('<a href="#"/>').attr('title', 'Previous slide').addClass(settings.prepend + 'prev').html('&larr;');
-            var $next = $('<a href="#"/>').attr('title', 'Next slide').addClass(settings.prepend + 'next').html('&rarr;');
+            var $prev = $('<a href="#"/>').attr('title', 'Previous slide').addClass(settings.prepend + 'prev').html(settings.previous);
+            var $next = $('<a href="#"/>').attr('title', 'Next slide').addClass(settings.prepend + 'next').html(settings.next);
             var $nav = $('<span/>').addClass(settings.prepend + 'nav');
             var $nav_slides = $('<span/>').addClass(settings.prepend + 'nav_slides');
             var $slides = $this.find(settings.slides).addClass(settings.prepend + 'slide');
