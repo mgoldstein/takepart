@@ -9,7 +9,11 @@
 
 				<a href="#gallery-photos" class="enter-link image-content-wrapper">
 					<p class="image">
-						<?=_simage($node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?>
+						<? if ( $node->field_gallery_main_image ): ?>
+							<?=_simage($node, 'field_gallery_main_image', 'node', 'tp_gallery_slide') ?>
+						<? else: ?>
+							<?=_simage($node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?>
+						<? endif ?>
 					</p>
 					<div class="content">
 						<div class="content-inner">
@@ -96,7 +100,13 @@
 						<a href="<?=$next_gallery->href ?>" class="enter-link">
 							<div class="image-content-wrapper">
 								<div class="image-area-inner">
-									<p class="image"><?=_simage($next_gallery->node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?></p>
+									<p class="image">
+										<? if ( $next_gallery->node->field_gallery_main_image ): ?>
+											<?=_simage($next_gallery->node, 'field_gallery_main_image', 'node', 'tp_gallery_slide') ?>
+										<? else: ?>
+											<?=_simage($next_gallery->node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?>
+										<? endif ?>
+									</p>
 									<div class="content">
 										<div class="content-inner">
 											<p class="description"><?=t('Up Next') ?></p>

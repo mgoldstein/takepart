@@ -1380,9 +1380,11 @@ div.takepart-take-action-widget {
 	font-size: 0;
 }
 
-.node-type-openpublish-photo-gallery #gallery-photos .gallery-slide img,
 .node-type-openpublish-photo-gallery #gallery-photos .image-area-inner {
 	position: relative;
+}
+
+.node-type-openpublish-photo-gallery #gallery-photos .gallery-slide img {
 	display: inline-block;
 	vertical-align: middle;
 }
