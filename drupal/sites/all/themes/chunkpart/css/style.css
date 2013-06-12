@@ -1287,6 +1287,25 @@ div.takepart-take-action-widget {
 /* Gallery Page
 ------------------------------------------------------------ */
 
+.js .node-type-openpublish-photo-gallery #gallery-main {
+	background: url(../images/loading_text.gif) center 100px no-repeat;
+}
+
+.js .node-type-openpublish-photo-gallery #gallery-main.hide_gallery,
+.js .node-type-openpublish-photo-gallery #gallery-main.show_gallery {
+	background: none;
+}
+
+.js .node-type-openpublish-photo-gallery #gallery-cover,
+.js .node-type-openpublish-photo-gallery #gallery-photos {
+	visibility: hidden;
+}
+
+.js .node-type-openpublish-photo-gallery .hide_gallery #gallery-cover,
+.js .node-type-openpublish-photo-gallery .show_gallery #gallery-photos {
+	visibility: visible;
+}
+
 .node-type-openpublish-photo-gallery .show_gallery #gallery-cover,
 .node-type-openpublish-photo-gallery .show_gallery #gallery-description {
 	display: none;

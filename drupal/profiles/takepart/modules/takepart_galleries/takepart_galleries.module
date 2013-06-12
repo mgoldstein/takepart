@@ -16,7 +16,7 @@ function takepart_galleries_url_inbound_alter(&$path, $original_path, $path_lang
  */
 function takepart_galleries_init() {
   
-  $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
+  /*$first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
   $last_folder = substr(substr($_SERVER["REQUEST_URI"],1), strrpos(substr($_SERVER["REQUEST_URI"],0), "/"), strlen($_SERVER["REQUEST_URI"]));
   if($first_folder == 'photos') {
     $js_path = drupal_get_path('module', 'takepart_galleries') . '/js/takepart_galleries.js';
@@ -38,7 +38,7 @@ function takepart_galleries_init() {
         'nid' => $nid,
     );
     drupal_add_js($settings, 'setting');
-  }
+  }*/
 }
 
 /**
