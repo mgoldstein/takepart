@@ -128,9 +128,11 @@
 				<? endif ?>
 			</ul>
 
-			<p class="back-to-cover">
-				<a href="#gallery-cover"><?=t('Back to cover')?></a>
-			</p>
+			<? if ( _s($node, 'field_display_cover') ): ?>
+				<p class="back-to-cover">
+					<a href="#gallery-cover"><?=t('Back to cover')?></a>
+				</p>
+			<? endif ?>
 		</div>
 	</div>
 
