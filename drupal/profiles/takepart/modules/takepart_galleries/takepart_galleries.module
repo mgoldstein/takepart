@@ -196,7 +196,7 @@ function takepart_galleries_omniture_variables() {
   $return = array();
   $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
   if($first_folder == 'photos') {
-    $return = $return + (array('s.linkTrackEvents'=>'event15','s.events'=>'event15'));
+    $return = $return + (array('s.linkTrackEvents'=>'event14','s.events'=>'event14'));
     return array("variables" => $return);
   }
 }
