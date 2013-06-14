@@ -126,42 +126,51 @@ body #at16pt {
 
 /* On Our Radar module */
 
-#site-secondary .on_our_radar_section {
+.on_our_radar_section .section_header {
+	font-family: TradeGothicLTStdCnBold, sans-serif;
+	text-transform: uppercase;
+	padding-bottom: .5em;
+	border-bottom: 1px solid #e8e8e8;
+	margin-bottom: .5em;
+	font-size: 20px;
 }
 
-#site-secondary .on_our_radar_section ol,
-#site-secondary .on_our_radar_section li {
-	list-style-type: decimal;
-	margin-left: 1em;
+.on_our_radar_section li {
 	font-size: 14px;
 }
 
-#site-secondary .on_our_radar_section ol {
+.on_our_radar_section ol {
 	font-family: TradeGothicLTStdCnBold, sans-serif;
 }
 
-#site-secondary .on_our_radar_section li {
+.on_our_radar_section li {
 	padding-bottom: .5em;
 	border-bottom: 1px solid #e8e8e8;
 	margin-bottom: .5em;
 	line-height: 1.5;
 }
 
-#site-secondary .on_our_radar_section a {
+.on_our_radar_section a {
 	color: #000;
 	display: block;
 	font-family: sans-serif;
 }
 
-#site-secondary .on_our_radar_section a:hover {
+.on_our_radar_section a:hover {
 	text-decoration: none;
 }
 
-#site-secondary .on_our_radar_section .title {
+.on_our_radar_section .title {
 	font-weight: bold;
 }
 
-#site-secondary .on_our_radar_section a:hover .title {
+.on_our_radar_section .title .topic {
+	font-weight: normal;
+	font-size: 11px;
+	text-transform: uppercase;
+}
+
+.on_our_radar_section a:hover .title {
 	color: #1CA9E7;
 }
 
@@ -566,8 +575,6 @@ div.takepart-take-action-widget {
 /* Article Tags */
 .page-tags {
 	margin-bottom: 1.25em;
-	font-size: 14px;
-	line-height: 1.5;
 }
 
 .page-tags .headline {
@@ -577,7 +584,8 @@ div.takepart-take-action-widget {
 	font-size: 20px;
 }
 
-.page-tags ul {
+.page-tags li {
+	line-height: 1.5;
 	font-size: 14px;
 }
 
@@ -588,10 +596,9 @@ div.takepart-take-action-widget {
 }
 
 .page-tags .headline {
-	padding-right: .25em;
 	text-transform: uppercase;
-	font-weight: bold;
 	color: #333;
+	margin-bottom: 10px;
 }
 
 .page-tags li:after {
@@ -675,7 +682,7 @@ div.takepart-take-action-widget {
 /* Related Links */
 
 .related {
-	margin-bottom: 1.25em;
+	margin-bottom: .75em;
 	overflow: hidden;
 }
 
@@ -691,6 +698,7 @@ div.takepart-take-action-widget {
 .related li {
 	font-size: 14px;
 	margin-bottom: 10px;
+	line-height: 1.5;
 }
 
 /* Article Header */

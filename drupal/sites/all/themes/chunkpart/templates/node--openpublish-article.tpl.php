@@ -80,12 +80,12 @@
 			<? endif ?>
 
 			<footer id="article-footer">
-				<? if ( $next_article): ?>
+				<? if ( $next_article ): ?>
 					<nav id="next-article" class="related next-article">
 						<h3 class="headline"><?=t('Next Article') ?></h3>
 						<p>
 							<a href="<?=$next_article->href ?>">
-							<?=$next_article->title ?>
+								<?=$next_article->title ?>
 							</a>
 						</p>
 					</nav>
@@ -118,6 +118,10 @@
 					</ul>
 				</nav>
 			</footer>
+
+			<? if ( isset($node_region['bean_on-our-radar-block']) ): ?>
+				<?=render($node_region['bean_on-our-radar-block']) ?>
+			<? endif ?>
 
 			<div id="article-comments">
 				<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
