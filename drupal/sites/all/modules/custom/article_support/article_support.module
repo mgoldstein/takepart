@@ -1,10 +1,11 @@
 <?php
 
 class ViewHelperLink {
-  public function __construct($title, $href, $target = NULL) {
+  public function __construct($title, $href, $target = NULL, $node = NULL) {
     $this->title = $title;
     $this->href = $href;
     $this->target = $target;
+    $this->node = $node;
   }
 }
 
@@ -72,17 +73,57 @@ function article_support_next_article($node) {
   }
 }
 
+function article_support_next_gallery($wrapper) {
+
+  // Get the first article from a list of articles created before this one
+  // sorted from newest to oldest
+  $query = db_select('node', 'n')
+    ->fields('n', array('nid', 'title'))
+    ->condition('created', $wrapper->created->value(), '<')
+    ->condition('type', 'openpublish_photo_gallery')
+    ->condition('status', 0, '!=')
+    ->orderBy('created', 'DESC')
+    ->orderBy('nid', 'DESC')
+    ->range(0, 1);
+
+  // Fetch the previous article.
+  $previous = $query->execute()->fetchAssoc();
+  if ($previous !== FALSE) {
+    return new ViewHelperLink($previous['title'],
+      url('node/' . $previous['nid']),
+      NULL,
+      node_load($previous['nid'])
+    );
+  }
+}
+
 /**
  * Implements hook_node_view().
  */
 function article_support_node_view($node, $view_mode, $langcode) {
 
   if ($node->type === 'openpublish_article' && $view_mode === 'full') {
-
     // Pass the additional variables through to the preprocessor.
     $node->content['#additional_variables'] = array(
       'next_article' => article_support_next_article($node),
     );
+  } elseif ($node->type === 'openpublish_photo_gallery' && $view_mode === 'full') {
+    // Additional variables to make available to the template.
+    $variables = array(
+      'next_gallery' => NULL,
+    );
+
+    // Get the value of each additional variable.
+    $wrapper = entity_metadata_wrapper('node', $node);
+    foreach (array_keys($variables) as $name) {
+      $function = "article_support_{$name}";
+      if (function_exists($function)) {
+        $variables[$name] = call_user_func_array($function, array($wrapper));
+      }
+    }
+
+    // Pass the additional variables through to the preprocessor.
+    $node->content['#additional_variables'] = $variables;
   }
 }
 

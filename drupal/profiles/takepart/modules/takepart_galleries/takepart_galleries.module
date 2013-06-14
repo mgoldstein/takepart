@@ -16,7 +16,7 @@ function takepart_galleries_url_inbound_alter(&$path, $original_path, $path_lang
  */
 function takepart_galleries_init() {
   
-  $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
+  /*$first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
   $last_folder = substr(substr($_SERVER["REQUEST_URI"],1), strrpos(substr($_SERVER["REQUEST_URI"],0), "/"), strlen($_SERVER["REQUEST_URI"]));
   if($first_folder == 'photos') {
     $js_path = drupal_get_path('module', 'takepart_galleries') . '/js/takepart_galleries.js';
@@ -38,7 +38,7 @@ function takepart_galleries_init() {
         'nid' => $nid,
     );
     drupal_add_js($settings, 'setting');
-  }
+  }*/
 }
 
 /**
@@ -126,6 +126,26 @@ function _takepart_galleries_fix_urls(&$item, $key) {
 }
 
 /**
+ * Similar to above, helper function to get slide's token
+ */
+function _takepart_galleries_get_token($title, $filename) {
+  $token = '';
+
+  if ( $title ) {
+    $token = strtolower(ereg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", $title)));
+  }
+
+  if ( $token == '' && $filename ) {
+    $filename = strtok($filename, ".");
+    if($filename) {
+      $token = strtolower($filename);
+    }
+  }
+
+  return $token;
+}
+
+/**
  * Return JSON for specified gallery
  */
 function _takepart_galleries_mappings_json($nid) {
@@ -176,7 +196,7 @@ function takepart_galleries_omniture_variables() {
   $return = array();
   $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
   if($first_folder == 'photos') {
-    $return = $return + (array('s.linkTrackEvents'=>'event15','s.events'=>'event15'));
+    $return = $return + (array('s.linkTrackEvents'=>'event14','s.events'=>'event14'));
     return array("variables" => $return);
   }
 }

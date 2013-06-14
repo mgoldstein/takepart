@@ -28,42 +28,6 @@ $('.tabs-toolbar li').appendTo('.toolbar-shortcuts ul');
 
 // Document Ready
 $(function() {
-	// Social share buttons
-	var tp_social_defaults = {
-		services: [
-			{name: 'facebook'},
-			{
-				name: 'twitter',
-				text: '{{title}}',
-				via: 'TakePart'
-			},
-			{name: 'googleplus'},
-			{name: 'reddit'},
-			{name: 'email'}
-		]
-	};
-
-	$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_defaults);
-
-	$('#article-more-shares p').tpsocial({
-		services: [
-			/*{
-				name: 'more',
-				services_compact: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-				services_expanded: 'myspace,linkedin,delicious,myaol,live,digg,stumbleupon,hyves',
-				services_exclude: 'facebook,twitter,google_plusone,reddit,email'
-			},*/
-			{name: 'myspace'},
-			{name: 'delicious'},
-			{name: 'linkedin'},
-			{name: 'myaol'},
-			{name: 'live'},
-			{name: 'digg'},
-			{name: 'stumbleupon'},
-			{name: 'hyves'}
-		]
-	});
-
     // Make tpinfographic stuff
     $('.tpinfographic').each(function() {
         var $this = $(this);
@@ -135,19 +99,72 @@ $(function() {
 
     // TODO reduce code duplication
     // Lazy load facebook comments
-    $('.fb_comments')
-        .lazyload({threshold: 200, load: function() {
-            var $div = $('<div/>');
-            var $template = $(this).find('.fb_comments_template');
-            var html = $template.text();
-            $div.html(html);
-            $div.insertAfter($template);
-            FB.XFBML.parse($div[0]);
-        }});
+	var show_fb_comments = function(el, url) {
+		var $this = $(el);
+		var url = url || '';
+		var $template = $this.parent().find('.fb_comments_template');
+		var html = $template.text();
+		if ( url ) {
+			html = html.replace(/href="[^"]+"/g, 'href="' + url + '"');
+		}
+		$this.html(html);
+		FB.XFBML.parse($this[0]);
+    }
 
-	/* --------------------------------
-	| Page Specific ---------------- */
+	$('.fb_comments')
+		.lazyload({threshold: 200, load: function() {
+			show_fb_comments(this);
+		}});
+
+	/* Page Specific ---------------------------------------------------------------------------------- */
+
+	/* Article ----------------*/
 	if ( $body.is('.node-type-article') ) {
+		// Social share buttons
+		var tp_social_config = {
+			services: [
+				{name: 'facebook'},
+				{
+					name: 'twitter',
+					text: '{{title}}',
+					via: 'TakePart'
+				},
+				{name: 'googleplus'},
+				{name: 'reddit'},
+				{name: 'email'}
+			]
+		};
+
+		$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+
+		var main_image = $('#article-image img').attr('src');
+		var more_services = {
+			pinterest: {
+				name: 'pinterest',
+				media: main_image
+			},
+			tumblr_link: {name: 'tumblr_link'},
+			gmail: {name: 'gmail'},
+			hotmail: {name: 'hotmail'},
+			yahoomail: {name: 'yahoomail'},
+			aolmail: {name: 'aolmail'},
+
+			//{name: 'myspace'},
+			//{name: 'delicious'},
+			linkedin: {name: 'linkedin'},
+			//{name: 'myaol'},
+			//{name: 'live'},
+			digg: {name: 'digg'},
+			stumbleupon: {name: 'stumbleupon'},
+			//{name: 'hyves'}
+		};
+
+		if ( !main_image ) delete more_services.pinterest;
+
+		$('#article-more-shares p').tpsocial({
+			services: more_services
+		});
+
 		takepart.analytics.skip_addthis = true;
 		$('#article-author').css('padding-top', $('#article-social').outerHeight());
 
@@ -180,6 +197,220 @@ $(function() {
 				e.preventDefault();
 			})
 			;
+	/* Gallery ---------------- */
+	} else if ( $body.is('.node-type-openpublish-photo-gallery') ) {
+		var $gallery_cover = $('#gallery-cover');
+		var $gallery_main = $('#gallery-main');
+		var $slides = $('#gallery-content > ul');
+		var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
+		var fb_comment_el = $('.fb_comments')[0];
+
+		var $first_slide = $slides.find('> li:first-child');
+		var has_cover = $gallery_cover.length;
+		var first_image;
+		var first_description;
+
+		if ( has_cover ) {
+			first_image = $gallery_cover.find('img').attr('src');
+			first_description = $gallery_cover.find('.headline').text();
+		} else {
+			first_image = $first_slide.find('img').attr('src');
+			first_description = $first_slide.find('.photo-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
+		}
+
+		var update_to = null;
+		var update_page = function(token) {
+			clearTimeout(update_to);
+
+			setTimeout((function(token) {
+				return function() {
+					omniture = s.prop15.split(':');
+					s.prop15 = omniture[0] + ':' + omniture[1] + ((token) ? ':' + token : '');
+					s.eVar15 = s.prop15;
+					s.t();
+				}
+			})(token), 500);
+
+			// $(fb_comment_el).hide();
+			update_to = setTimeout(function() {
+				var token = get_curtoken();
+
+				// $(fb_comment_el).show();
+				//if ( token ) {
+					show_fb_comments(fb_comment_el, base_url + '/' + token);
+				//} else {
+				//	show_fb_comments(fb_comment_el, base_url);
+				//}
+
+				if ( googletag != undefined ) {
+					googletag.pubads().refresh();
+				}
+			}, 500);
+		};
+
+		// Social share buttons
+		var tp_social_config = {
+			services: {
+				facebook: {
+					name: 'facebook',
+					url: '{current}'
+				},
+				twitter: {
+					name: 'twitter',
+					text: '{{title}}',
+					via: 'TakePart',
+					url: '{current}'
+				},
+				googleplus: {
+					name: 'googleplus',
+					url: '{current}'
+				},
+				pinterest: {
+					name: 'pinterest',
+					url: '{current}',
+					media: first_image,
+					description: first_description
+				},
+				tumblr: {
+					name: 'tumblr',
+					url: '{current}',
+					source: first_image,
+					caption: first_description
+				},
+				email: {
+					name: 'email',
+					url: '{current}'
+				}
+			}
+		};
+
+		var get_curtoken = function() {
+			return document.location.href.split(/\/|#/).slice(5,6) + '';
+		};
+
+		var goto_slide = function() {
+			var token = get_curtoken();
+			var $slide = $slides.find('[data-token="' + token + '"]');
+			$slides.tpslide_to($slide);
+		};
+
+		//$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+
+		var has_history = function() {
+			return (typeof history != 'undefined');
+		};
+
+		var hpush = function(token, title) {
+			var curtoken = get_curtoken();
+			if ( curtoken == token ) return;
+			update_page(token);
+
+			if ( !has_history() ) return;
+			history.pushState(null, title, base_url + '/' + token);
+		};
+
+		var $current_slide = null;
+		var slide_callback = function($current) {
+			var old_token = ( $current_slide ) ? $current_slide.data('token') : null;
+			$current_slide = $current;
+
+			if ( !$current_slide.prev().length ) {
+				$gallery_main.addClass('on-first');
+			} else {
+				$gallery_main.removeClass('on-first');
+			}
+
+			var current_image = $current_slide.find('img').attr('src');
+			tp_social_config.services.pinterest.media = current_image;
+			tp_social_config.services.tumblr.source = current_image;
+
+			var current_description = $current_slide.find('.photo-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
+			tp_social_config.services.pinterest.description = current_description;
+			tp_social_config.services.tumblr.caption = current_description;
+
+			$('#gallery-photos .tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+
+			var token = $current.data('token');
+			if ( token == 'next-gallery' ) {
+				$('#gallery-header-main .social').css({visibility: 'hidden', display: 'none'});
+			} else {
+				$('#gallery-header-main .social').css({visibility: 'visible', display: 'block'});
+			}
+
+			$slides.height($current_slide.height());
+
+			if ( !gallery_showing ) return;
+			hpush(token, $current.find('.headline').text());
+		}
+
+		var gallery_showing = false;
+		var show_gallery = function() {
+			if ( gallery_showing ) return;
+			gallery_showing = true;
+			$gallery_cover.hide();
+			$gallery_main.removeClass('hide_gallery').addClass('show_gallery');
+			hpush($current_slide.data('token'), $current_slide.find('.headline').text());
+		};
+
+		var hide_gallery = function() {
+			$gallery_cover.show();
+			$gallery_main.removeClass('show_gallery').addClass('hide_gallery');
+
+			var current_image = $gallery_cover.find('img').attr('src');
+			tp_social_config.services.pinterest.media = current_image;
+			tp_social_config.services.tumblr.source = current_image;
+
+			var current_description = $gallery_cover.find('.headline').text();
+			tp_social_config.services.pinterest.description = current_description;
+			tp_social_config.services.tumblr.caption = current_description;
+
+			$('#gallery-cover .tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+
+			gallery_showing = false;
+		};
+
+		$slides.tpslide({onslide: slide_callback});
+
+		var first_popped = false;
+		window.addEventListener('popstate', function(e) {
+			if ( !first_popped ) {
+				first_popped = true;
+				return;
+			}
+
+			var token = get_curtoken();
+
+			if ( token ) {
+				goto_slide();
+				show_gallery();
+			} else if ( $gallery_cover.length ) {
+				hide_gallery();
+			}
+
+			update_page(token);
+		});
+
+		$('.back-to-cover a').bind('click', function(e) {
+			e.preventDefault();
+			if ( !gallery_showing ) return;
+			hide_gallery();
+			hpush('', $('#gallery-cover-main').find('.headline').text());
+		});
+
+		if ( get_curtoken() ) {
+			goto_slide();
+			show_gallery();
+		} else if ( $gallery_cover.length ) {
+			hide_gallery();
+		} else {
+			show_gallery();
+			hpush($current_slide.data('token'), $current.find('.headline').text());
+		}
+
+		$('#gallery-cover .enter-link, #gallery-body .enter-link').bind('click', function(e) {
+			e.preventDefault();
+			show_gallery();
+		});
 	}
 });
 
