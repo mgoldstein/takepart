@@ -349,15 +349,19 @@ function _smenu($menu) {
   return render($items);
 }
 
-// Get a node
+// Get a node or a value off a node
 function _snode($var, $prop = null, $type = 'node') {
   if ( is_object($var) && $prop ) {
     $var = field_get_items($type, $var, $prop);
-    return $var;
+    //return $var;
   }
 
-  if ( isset($var[0]) ) {
+  if ( isset($var[0]) && isset($var[0]['node']) ) {
     return $var[0]['node'];
+  } elseif ( isset($var[0]) && isset($var[0]['taxonomy_term']) ) {
+    return $var[0]['taxonomy_term'];
+  } else {
+    return $var;
   }
 }
 

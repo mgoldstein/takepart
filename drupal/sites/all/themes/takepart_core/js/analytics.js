@@ -2,8 +2,9 @@
 
 // Setup ----------------
 
-if ( typeof takepart == "undefined" || !takepart ) {
+if ( typeof takepart == 'undefined' ) {
     window.takepart = {};
+    takepart = window.takepart;
 }
 
 //Analytics functions:
@@ -93,14 +94,53 @@ takepart.analytics.track = function(name) {
         case 'generic_tpsocial':
         case 'generic_addthis':
             var title = normalize_share_title(args[1]);
+            var evar4, evar17, evar19, evar21, linkTrackVars;
+
+            // Series stuff for article, add photo gallery later
+            if ( $('body').is('.node-type-article') ) {
+                evar4 = s.prop4;
+                var authors = [];
+                $('.article-header .authors a').each(function() {
+                    authors.push($(this).text());
+                })
+                evar17 = authors.join(',');
+                evar19 = $('.article').data('series');
+                evar21 = s.eVar21;
+            }
 
             if ( title ) {
                 var s=s_gi(Drupal.settings.omniture.s_account);
                 s.events = 'event25';
+                linkTrackVars = [];
+
+                if ( evar4 ) {
+                    s.eVar4 = evar4;
+                    linkTrackVars.push('eVar4');
+                    s.prop4 = evar4;
+                    linkTrackVars.push('prop4');
+                }
+                if ( evar17 ) {
+                    s.eVar17 = evar17;
+                    linkTrackVars.push('eVar17');
+                    s.prop16 = evar17;
+                    linkTrackVars.push('prop16');
+                }
+                if ( evar19 ) {
+                    s.eVar19 = evar19;
+                    linkTrackVars.push('eVar19');
+                    s.sProp18 = evar19;
+                    linkTrackVars.push('prop18');
+                }
+                if ( evar21 ) {
+                    s.eVar21 = evar21;
+                    linkTrackVars.push('eVar21');
+                }
+                linkTrackVars.push('eVar30,eVar27,prop26,events')
+
                 s.prop26 = title;
                 s.eVar27 = title;
                 s.eVar30 = s.pageName;
-                s.linkTrackVars = 'eVar30,eVar27,prop26,events';
+                s.linkTrackVars = linkTrackVars.join(',');
                 s.linkTrackEvents = 'event25';
                 s.tl(args[2], 'o', 'Content Share');
                 _gaq.push(['_trackEvent', ga_category, ga_action, title]);

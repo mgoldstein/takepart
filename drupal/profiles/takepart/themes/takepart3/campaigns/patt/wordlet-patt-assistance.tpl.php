@@ -5,6 +5,9 @@
 				<div class="cms">
 					<?=w('body')?>
 				</div>
+				<div class="sms">
+					<?=w('sms')?>
+				</div>
 			</div>
 		</div><!-- /.inner -->
 	</div><!-- /.column-2 -->
