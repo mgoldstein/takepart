@@ -318,20 +318,17 @@ body {
 	margin: 35px 0;
 }
 
-.table.int .main .column-3 .sms .form-wrapper {
-	display: inline-block; *display: inline; *zoom: 1;
-	vertical-align: top;
-}
-
-
-.table.int .main .column-3 .sms .form-item {
+.table.int .main .column-3 .sms .form-item-mobile-areacode,
+.table.int .main .column-3 .sms .form-item-mobile-exchange,
+.table.int .main .column-3 .sms .form-item-mobile-number {
 	width: 33%;
 	float: left;
 }
 
-.table.int .main .column-3 .sms form input[type="text"] {
-	width: 85%;
-	margin-right: 5%;
+.table.int .main .column-3 .sms .form-item-mobile-areacode input,
+.table.int .main .column-3 .sms .form-item-mobile-exchange input,
+.table.int .main .column-3 .sms .form-item-mobile-number input {
+	width: 80%;
 	padding: 3px 5%;
 }
 
