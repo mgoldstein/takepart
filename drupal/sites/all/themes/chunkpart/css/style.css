@@ -149,6 +149,9 @@ body #at16pt {
 	margin-bottom: .5em;
 	line-height: 1.5;
 }
+.on_our_radar_section li:last-child {
+	border-bottom: 0;
+}
 
 .on_our_radar_section a {
 	color: #000;
