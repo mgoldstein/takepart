@@ -1091,7 +1091,7 @@ div.takepart-take-action-widget {
 .node-type-article #next-article {
 	padding-bottom: 10px;
 	border-bottom: 1px solid #e8e8e8;
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
 }
 
 .node-type-article #next-article a {
@@ -1144,7 +1144,7 @@ div.takepart-take-action-widget {
 
 /* Article Tags */
 .node-type-article #article-tags {
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
 	font-size: 14px;
 	line-height: 1.5;
 }
@@ -1239,7 +1239,7 @@ div.takepart-take-action-widget {
 /* Related stories */
 
 .node-type-article #article-related {
-	margin: 1em 0;
+	margin: 1em 0 1.5em 0;
 }
 
 .node-type-article #article-related a {
