@@ -158,6 +158,7 @@ body {
 .page-wordlet-patt-events li.patt_events_url a,
 .page-wordlet-patt-alliances li.patt_alliances_url a,
 .page-wordlet-patt-assistance li.patt_assistance_url a,
+.page-wordlet-patt-game li.patt_game_url a,
 .table.int .nav li.active a,
 .table.int .nav li a:hover {
 	color:#fff;
@@ -183,6 +184,7 @@ body {
 .page-wordlet-patt-events li.patt_events_url:after,
 .page-wordlet-patt-alliances li.patt_alliances_url:after,
 .page-wordlet-patt-assistance li.patt_assistance_url:after,
+.page-wordlet-patt-game li.patt_game_url:after,
 .table.int .nav li:hover:after,
 .table.int .nav li.active:after,
 .table.int .nav .hover {
