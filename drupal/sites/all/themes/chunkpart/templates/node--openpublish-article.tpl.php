@@ -1,4 +1,8 @@
-<article id="article-main" class="<?=!$node->status ? 'unpublished':'' ?>">
+<article id="article-main" class="article <?=!$node->status ? 'unpublished':'' ?>"
+	<? if ( $series = _snode($node, 'field_series') ): ?>
+		data-series="<?=htmlspecialchars($series->name) ?>"
+	<? endif ?>
+	>
 	<div id="article-main-inner">
 		<header class="article-header">
 			<h1 class="article-headline"><?=_s($title) ?></h1>
