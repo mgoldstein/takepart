@@ -4,6 +4,9 @@
 			<div class="overview">
 				<div class="cms">
 					<?=w('body')?>
+					<div class="sms">
+						<?=w('sms')?>
+					</div>
 				</div>
 			</div>
 		</div><!-- /.inner -->

@@ -314,20 +314,20 @@ body {
 	margin: 20px 0 5px 0;
 }
 
-.table.int .main .column-3 .sms {
+.table.int .main .sms {
 	margin: 35px 0;
 }
 
-.table.int .main .column-3 .sms .form-item-mobile-areacode,
-.table.int .main .column-3 .sms .form-item-mobile-exchange,
-.table.int .main .column-3 .sms .form-item-mobile-number {
+.table.int .main .sms .form-item-mobile-areacode,
+.table.int .main .sms .form-item-mobile-exchange,
+.table.int .main .sms .form-item-mobile-number {
 	width: 33%;
 	float: left;
 }
 
-.table.int .main .column-3 .sms .form-item-mobile-areacode input,
-.table.int .main .column-3 .sms .form-item-mobile-exchange input,
-.table.int .main .column-3 .sms .form-item-mobile-number input {
+.table.int .main .sms .form-item-mobile-areacode input,
+.table.int .main .sms .form-item-mobile-exchange input,
+.table.int .main .sms .form-item-mobile-number input {
 	width: 80%;
 	padding: 3px 5%;
 }
