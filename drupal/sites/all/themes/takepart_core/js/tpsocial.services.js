@@ -195,6 +195,10 @@ $.tpsocial.add_service({
 	description: '',
 	share: function(args) {
 		if ( !args.description ) args.description = args.title;
+		args.description = args.description + '';
+		if ( args.description.length > 499 ) {
+			args.description = args.description.substring(0, 496) + '...';
+		}
 		var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(args.url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';

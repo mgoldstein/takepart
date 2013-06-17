@@ -131,6 +131,10 @@ function s_doPlugins(s) {
         s.prop20=s.prop20.toLowerCase();
     }
 
+    if(s.prop4){
+        s.prop4=s.prop4.toLowerCase();
+    }
+
     /* Copy props to eVars */
     s.eVar30=s.pageName?s.pageName:'';
     s.eVar46=s.pageName?s.pageName:'';

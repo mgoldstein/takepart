@@ -1,4 +1,8 @@
-<article id="gallery-main" class="<?=!$node->status ? 'unpublished':'' ?>">
+<article id="gallery-main" class="article <?=!$node->status ? 'unpublished':'' ?>"
+	<? if ( $series = _snode($node, 'field_series') ): ?>
+		data-series="<?=htmlspecialchars($series->name) ?>"
+	<? endif ?>
+	>
 	<? if ( _s($node, 'field_display_cover') ): ?>
 		<div id="gallery-cover">
 			<div id="gallery-cover-main">
