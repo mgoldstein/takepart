@@ -318,6 +318,23 @@ body {
 	margin: 35px 0;
 }
 
+.table.int .main .column-3 .sms .form-wrapper {
+	display: inline-block; *display: inline; *zoom: 1;
+	vertical-align: top;
+}
+
+
+.table.int .main .column-3 .sms .form-item {
+	width: 33%;
+	float: left;
+}
+
+.table.int .main .column-3 .sms form input[type="text"] {
+	width: 85%;
+	margin-right: 5%;
+	padding: 3px 5%;
+}
+
 .table.int .main .column-3 .sms p {
 	line-height: 1.1;
 }
@@ -1243,7 +1260,7 @@ body {
 
 
 /**
- * Modules / Reusable elements 
+ * Modules / Reusable elements
  */
 .snap-grid {
     display: inline-block; *display: inline; zoom: 1;
@@ -1314,7 +1331,7 @@ p.question {
 .modal-left p.question {
     font-size: 1.3em;
     font-weight: lighter;
-    
+
 }
 
 p.myth-fact {
@@ -1376,7 +1393,7 @@ p.myth-fact {
 }
 
 .modal-left  {
-    height: auto;    
+    height: auto;
 }
 
 .modal-left.fact {
@@ -1385,7 +1402,7 @@ p.myth-fact {
 
 #modal-content {
     background-color: #323232;
-    
+
 }
 
 #modal-content.fact {
@@ -1430,7 +1447,7 @@ h1.tile-header {
 }
 
 #modal-content h2 {
-    background-color: #515151; 
+    background-color: #515151;
 }
 
 #modal-content > div.description {
@@ -1440,7 +1457,7 @@ h1.tile-header {
     height: 143px;
     overflow: auto;
     margin: 0 20px;
-    
+
 }
 
 #modal-content > div.fact {
@@ -1510,18 +1527,18 @@ h1.tile-header {
 }
 
 @media only screen and (min-width: 392px) {
- 
+
     .wrapper {
         /*width: 392px;*/
         max-width: 392px;
     }
-    
+
     .tile {
         width: 196px;
         height: 156px;
         margin: 0 0 0 0;
     }
-    
+
 }
 
 
@@ -1558,7 +1575,7 @@ h1.tile-header {
     .oldie nav a {
         margin: 0 0.7%;
     }
-    
+
 /* =======================
  *  Custom
    ========================*/
@@ -1566,18 +1583,18 @@ h1.tile-header {
         width: 588px;
         max-width: 588px;
     }
-    
+
     .modal-left {
         /*width: 491px;*/
         height: 314px;
     }
-    
-    .modal-right {
-        
-    }
-    
 
-  
+    .modal-right {
+
+    }
+
+
+
 }
 
 @media only screen and (max-width: 784px) {
@@ -1598,7 +1615,7 @@ h1.tile-header {
            -moz-box-shadow: 0 5px 10px #aaa;
                 box-shadow: 0 5px 10px #aaa;
     }
-    
+
     .wrapper {
         width: 784px;
         max-width: 784px;
@@ -1630,7 +1647,7 @@ h1.tile-header {
         float: right;
         width: 28%;
     }
-    
+
 /* =======================
  *  Custom
    ========================*/
@@ -1651,7 +1668,7 @@ h1.tile-header {
         max-width: 980px;
         margin: 0 auto;
     }
-    
+
     /* =======================
  *  Custom
    ========================*/
@@ -1660,7 +1677,7 @@ h1.tile-header {
         /*width: 491px;*/
        width: 50%;
     }
-    
+
 }
 
 /* ==========================================================================
