@@ -4,9 +4,6 @@
 			<h4><?=w('email_signup')?></h4>
 			<div><?=w('email_signup_form')?></div>
 		</div>
-		<div class="sms">
-			<?=w('sms')?>
-		</div>
 		<div class="follow">
 			<h4><?=w('follow_us')?></h4>
 			<ul <?=wa('follow_links')?>>
@@ -19,7 +16,7 @@
 		</div>
 		<div class="sponsored">
 			<h4><?=w('sponsored_by')?></h4>
-			
+
 			<ul <?=wa('sponsor_links')?>>
 				<? foreach ( wl('sponsor_links') as $w ): ?>
 					<li><a href="<?=$w->href?>">
