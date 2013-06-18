@@ -353,6 +353,7 @@ body {
 }
 
 .table.int .main .sms .form-submit {
+	display: block;
 	cursor: pointer;
 	background: url(images/submit.jpg);
 	width: 87px;
