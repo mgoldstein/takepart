@@ -1313,9 +1313,8 @@ function newsletter_campaign_direct_signup_form_validate($form, &$form_state) {
 
       $mobile_number = $form_state['values']['mobile_number'];
       if (!empty($mobile_number)) {
-        $matches_pattern = preg_match('^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$', $mobile_number);
         $sanitized = PhoneCampaigns::Sanitize($mobile_number);
-        if (!$matches_pattern || strlen($sanitized) != 10) {
+        if (!preg_match('/^[0-9]{10}$/', $sanitized)) {
           form_set_error('mobile', t('Invalid mobile number.'));
         }
       }
