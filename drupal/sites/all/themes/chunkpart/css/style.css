@@ -574,7 +574,7 @@ div.takepart-take-action-widget {
 
 /* Article Tags */
 .page-tags {
-	margin-bottom: 1.5em;
+	margin-bottom: 30px;
 }
 
 .page-tags .headline {
@@ -681,7 +681,7 @@ div.takepart-take-action-widget {
 /* Related Links */
 
 .related {
-	margin-bottom: 1.5em;
+	margin-bottom: 30px;
 	overflow: hidden;
 }
 
@@ -1083,6 +1083,11 @@ div.takepart-take-action-widget {
 }
 
 .node-type-article #article-social.inside .inner {
+}
+
+/* Article OUTBRAIN */
+.node-type-article .OUTBRAIN {
+	margin-bottom: 30px;
 }
 
 /* Article main image */
