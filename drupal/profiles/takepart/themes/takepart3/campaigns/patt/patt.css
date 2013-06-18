@@ -317,21 +317,56 @@ body {
 }
 
 .table.int .main .sms {
-	margin: 35px 0;
+	display: inline-block;
+	width: 100%;
+	width: 349px;
+	margin: 0 auto;
+	display: block;
 }
 
-.table.int .main .sms .form-item-mobile-areacode,
-.table.int .main .sms .form-item-mobile-exchange,
-.table.int .main .sms .form-item-mobile-number {
-	width: 33%;
+.table.int .main .sms .form-item {
+	width: 250px;
+	margin-right: 8px;
 	float: left;
 }
 
-.table.int .main .sms .form-item-mobile-areacode input,
-.table.int .main .sms .form-item-mobile-exchange input,
-.table.int .main .sms .form-item-mobile-number input {
-	width: 80%;
-	padding: 3px 5%;
+.table.int .main .sms label {
+	display: none;
+}
+
+.table.int .main .sms input {
+	width: 100%;
+	height: 34px;
+	font-size: 21px;
+}
+
+.table.int .main .sms .form-actions {
+	float: left;
+}
+
+.table.int .main .sms .form-submit {
+	cursor: pointer;
+	background: url(images/submit.jpg);
+	width: 87px;
+	height: 40px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	*text-indent: 0;
+	line-height: 1000px;
+	border: 0;
+}
+
+.sms .messages.error {
+	color: rgb(0, 204, 255);
+	border: 0;
+	background: none;
+	padding: 0;
+	margin: 0;
+}
+
+.table.int .main .sms .ajax-progress {
+	position: absolute;
 }
 
 .table.int .main .column-3 .sms p {
