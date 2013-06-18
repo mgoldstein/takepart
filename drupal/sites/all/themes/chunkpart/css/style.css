@@ -589,6 +589,7 @@ div.takepart-take-action-widget {
 .page-tags li {
 	line-height: 1.5;
 	font-size: 14px;
+	text-transform: capitalize;
 }
 
 .page-tags ul,
