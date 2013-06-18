@@ -336,8 +336,11 @@ body {
 
 .table.int .main .sms input {
 	width: 100%;
-	height: 34px;
+	height: 40px;
 	font-size: 21px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .table.int .main .sms .form-actions {
