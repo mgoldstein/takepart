@@ -14,12 +14,21 @@ if ( $columns.length ) {
 }
 
 // Make columns equal height
-var height = 0;
-$('.table.int .column').each(function() {
-	var tempheight;
-	height = ( (tempheight = $(this).outerHeight()) && tempheight > height ) ? tempheight : height;
-})
-.height(height);
+var columnEq = function(){
+	var height = 0;
+	$('.table.int .column').each(function() {
+		var tempheight;
+		height = ( (tempheight = $(this).outerHeight()) && tempheight > height ) ? tempheight : height;
+	})
+	.height(height);
+}
+columnEq();
+Drupal.behaviors.pattColumnEq = {
+    attach: function (context) {
+        columnEq();
+    }
+}
+
 
 
 // Snap gallery
