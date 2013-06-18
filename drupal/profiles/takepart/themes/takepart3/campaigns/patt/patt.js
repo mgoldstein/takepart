@@ -16,7 +16,7 @@ if ( $columns.length ) {
 // Make columns equal height
 var columnEq = function(){
 	var height = 0;
-	$('.table.int .column').each(function() {
+	$('.table.int .column').height('').each(function() {
 		var tempheight;
 		height = ( (tempheight = $(this).outerHeight()) && tempheight > height ) ? tempheight : height;
 	})
