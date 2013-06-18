@@ -317,16 +317,17 @@ body {
 }
 
 .table.int .main .sms {
-	text-align: center;
 	display: inline-block;
 	width: 100%;
+	width: 349px;
+	margin: 0 auto;
+	display: block;
 }
 
 .table.int .main .sms .form-item {
 	width: 250px;
 	margin-right: 8px;
-	display: inline-block; *display: inline; *zoom: 1;
-	vertical-align: top;
+	float: left;
 }
 
 .table.int .main .sms label {
@@ -340,8 +341,7 @@ body {
 }
 
 .table.int .main .sms .form-actions {
-	display: inline-block; *display: inline; *zoom: 1;
-	vertical-align: top;
+	float: left;
 }
 
 .table.int .main .sms .form-submit {
@@ -355,6 +355,18 @@ body {
 	*text-indent: 0;
 	line-height: 1000px;
 	border: 0;
+}
+
+.sms .messages.error {
+	color: rgb(0, 204, 255);
+	border: 0;
+	background: none;
+	padding: 0;
+	margin: 0;
+}
+
+.table.int .main .sms .ajax-progress {
+	position: absolute;
 }
 
 .table.int .main .column-3 .sms p {
