@@ -158,6 +158,7 @@ body {
 .page-wordlet-patt-events li.patt_events_url a,
 .page-wordlet-patt-alliances li.patt_alliances_url a,
 .page-wordlet-patt-assistance li.patt_assistance_url a,
+.page-wordlet-patt-game li.patt_game_url a,
 .table.int .nav li.active a,
 .table.int .nav li a:hover {
 	color:#fff;
@@ -183,6 +184,7 @@ body {
 .page-wordlet-patt-events li.patt_events_url:after,
 .page-wordlet-patt-alliances li.patt_alliances_url:after,
 .page-wordlet-patt-assistance li.patt_assistance_url:after,
+.page-wordlet-patt-game li.patt_game_url:after,
 .table.int .nav li:hover:after,
 .table.int .nav li.active:after,
 .table.int .nav .hover {
@@ -314,8 +316,57 @@ body {
 	margin: 20px 0 5px 0;
 }
 
-.table.int .main .column-3 .sms {
-	margin: 35px 0;
+.table.int .main .sms {
+	display: inline-block;
+	width: 100%;
+	width: 349px;
+	margin: 0 auto;
+	display: block;
+}
+
+.table.int .main .sms .form-item {
+	width: 250px;
+	margin-right: 8px;
+	float: left;
+}
+
+.table.int .main .sms label {
+	display: none;
+}
+
+.table.int .main .sms input {
+	width: 100%;
+	height: 34px;
+	font-size: 21px;
+}
+
+.table.int .main .sms .form-actions {
+	float: left;
+}
+
+.table.int .main .sms .form-submit {
+	cursor: pointer;
+	background: url(images/submit.jpg);
+	width: 87px;
+	height: 40px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	*text-indent: 0;
+	line-height: 1000px;
+	border: 0;
+}
+
+.sms .messages.error {
+	color: rgb(0, 204, 255);
+	border: 0;
+	background: none;
+	padding: 0;
+	margin: 0;
+}
+
+.table.int .main .sms .ajax-progress {
+	position: absolute;
 }
 
 .table.int .main .column-3 .sms p {
@@ -1243,7 +1294,7 @@ body {
 
 
 /**
- * Modules / Reusable elements 
+ * Modules / Reusable elements
  */
 .snap-grid {
     display: inline-block; *display: inline; zoom: 1;
@@ -1314,7 +1365,7 @@ p.question {
 .modal-left p.question {
     font-size: 1.3em;
     font-weight: lighter;
-    
+
 }
 
 p.myth-fact {
@@ -1376,7 +1427,7 @@ p.myth-fact {
 }
 
 .modal-left  {
-    height: auto;    
+    height: auto;
 }
 
 .modal-left.fact {
@@ -1385,7 +1436,7 @@ p.myth-fact {
 
 #modal-content {
     background-color: #323232;
-    
+
 }
 
 #modal-content.fact {
@@ -1430,7 +1481,7 @@ h1.tile-header {
 }
 
 #modal-content h2 {
-    background-color: #515151; 
+    background-color: #515151;
 }
 
 #modal-content > div.description {
@@ -1440,7 +1491,7 @@ h1.tile-header {
     height: 143px;
     overflow: auto;
     margin: 0 20px;
-    
+
 }
 
 #modal-content > div.fact {
@@ -1510,18 +1561,18 @@ h1.tile-header {
 }
 
 @media only screen and (min-width: 392px) {
- 
+
     .wrapper {
         /*width: 392px;*/
         max-width: 392px;
     }
-    
+
     .tile {
         width: 196px;
         height: 156px;
         margin: 0 0 0 0;
     }
-    
+
 }
 
 
@@ -1558,7 +1609,7 @@ h1.tile-header {
     .oldie nav a {
         margin: 0 0.7%;
     }
-    
+
 /* =======================
  *  Custom
    ========================*/
@@ -1566,18 +1617,18 @@ h1.tile-header {
         width: 588px;
         max-width: 588px;
     }
-    
+
     .modal-left {
         /*width: 491px;*/
         height: 314px;
     }
-    
-    .modal-right {
-        
-    }
-    
 
-  
+    .modal-right {
+
+    }
+
+
+
 }
 
 @media only screen and (max-width: 784px) {
@@ -1598,7 +1649,7 @@ h1.tile-header {
            -moz-box-shadow: 0 5px 10px #aaa;
                 box-shadow: 0 5px 10px #aaa;
     }
-    
+
     .wrapper {
         width: 784px;
         max-width: 784px;
@@ -1630,7 +1681,7 @@ h1.tile-header {
         float: right;
         width: 28%;
     }
-    
+
 /* =======================
  *  Custom
    ========================*/
@@ -1651,7 +1702,7 @@ h1.tile-header {
         max-width: 980px;
         margin: 0 auto;
     }
-    
+
     /* =======================
  *  Custom
    ========================*/
@@ -1660,7 +1711,7 @@ h1.tile-header {
         /*width: 491px;*/
        width: 50%;
     }
-    
+
 }
 
 /* ==========================================================================
