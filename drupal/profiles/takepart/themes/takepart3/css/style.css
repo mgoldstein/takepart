@@ -138,6 +138,8 @@ a:hover {
 #page-wrapper {
     margin: 0px auto 0;
     width:1000px;
+    position: relative;
+    z-index: 2;
 }
 
 #header {

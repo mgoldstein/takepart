@@ -12,7 +12,8 @@ body {
 }
 
 .multipage-campaign #site-header {
-	margin-bottom: 3px;
+	height: 36px;
+	margin-bottom: 9px;
 }
 
 #site-header-inner {
@@ -24,6 +25,10 @@ body {
 	background: #f1f3f4;
 	display: inline-block; *display: inline; zoom: 1;
 	width: 100%;
+}
+
+#site-header #site-logo {
+	margin-bottom: 0;
 }
 
 #site-footer #site-about {
