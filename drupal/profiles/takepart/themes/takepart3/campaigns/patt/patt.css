@@ -324,6 +324,11 @@ body {
 	display: block;
 }
 
+.table.int .main .sms form {
+	display: inline-block; *display: inline; *zoom: 1;
+	vertical-align: top;
+}
+
 .table.int .main .sms .form-item {
 	width: 250px;
 	margin-right: 8px;
