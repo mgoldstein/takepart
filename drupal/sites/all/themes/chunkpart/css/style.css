@@ -71,6 +71,8 @@ a:active {
 	padding: 1em;
 	display: inline-block; *display: inline; zoom: 1; vertical-align: top;
 	width: 100%;
+	position: relative;
+	z-index: 2;
 }
 
 /* ============================================================

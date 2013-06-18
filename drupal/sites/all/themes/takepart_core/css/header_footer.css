@@ -480,6 +480,12 @@ Footer ------------------------------------------------------------
 #site-footer {
 	color: #555;
 	line-height: 1.5;
+	position: relative;
+	z-index: 2;
+	display: inline-block; *display: inline; zoom: 1;
+	vertical-align: top;
+	width: 100%;
+	background: #f1f3f4;
 }
 
 #site-footer ul,
