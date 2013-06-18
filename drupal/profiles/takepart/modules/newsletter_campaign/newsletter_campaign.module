@@ -1066,7 +1066,6 @@ function newsletter_campaign_mobile_only_signup_form($form, &$form_state, $confi
       '#type' => 'textfield',
       '#title' => $config['mobile_label'],
       '#maxlength' => 14,
-      '#required' => TRUE,
     );
   }
   else {
@@ -1239,7 +1238,7 @@ function newsletter_campaign_email_mobile_signup_form($form, &$form_state, $conf
     $form['mobile_number'] = array(
       '#type' => 'textfield',
       '#title' => $config['mobile_label'],
-      '#maxlength' => 10,
+      '#maxlength' => 14,
     );
   }
   else {
@@ -1311,12 +1310,15 @@ function newsletter_campaign_direct_signup_form_validate($form, &$form_state) {
 
     if ($config['single_phone_number_field']) {
 
-      $mobile_number = $form_state['values']['mobile_number'];
+      $mobile_number = trim($form_state['values']['mobile_number']);
       if (!empty($mobile_number)) {
         $sanitized = PhoneCampaigns::Sanitize($mobile_number);
         if (!preg_match('/^[0-9]{10}$/', $sanitized)) {
-          form_set_error('mobile', t('Invalid mobile number.'));
+          form_set_error('mobile_number', t('Invalid mobile number.'));
         }
+      }
+      else {
+        form_set_error('mobile_number', t('This field is required.'));
       }
     }
     else {
