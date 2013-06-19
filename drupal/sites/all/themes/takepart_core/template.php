@@ -325,6 +325,10 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
       $image['alt'] = _s($alt);
     }
 
+    if ( !$style ) {
+      return theme('image', $image);
+    }
+
     return theme('image_style', $image);
   } else {
     if ( !isset($image['path']) ) {
