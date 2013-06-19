@@ -246,6 +246,8 @@ function _s($var, $prop = NULL, $type = 'node') {
   // Body attribute
   } elseif ( isset($var[0]) && isset($var[0]['safe_value']) ) {
     return $var[0]['safe_value'];
+  } elseif ( isset($var['safe_value']) ) {
+    return $var['safe_value'];
   } elseif ( isset($var['value']) ) {
     return $var['value'];
   }
@@ -308,12 +310,21 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
   }
 
   if ( $style ) {
+    if ( is_array($style) && isset($style['settings']) ) {
+      $settings = unserialize($style['settings']);
+      $style = $settings['image_style'];
+    }
+
     if ( !isset($image['path']) ) {
       $image['path'] = $image['uri'];
     }
 
     $image['style_name'] = $style;
     $image['getsize'] = TRUE;
+    if ( isset($var[0]['file']) && $alt = _snode($var[0]['file'], 'field_media_alt', 'file') ) {
+      $image['alt'] = _s($alt);
+    }
+
     return theme('image_style', $image);
   } else {
     if ( !isset($image['path']) ) {
@@ -362,6 +373,8 @@ function _snode($var, $prop = null, $type = 'node') {
     return $var[0]['node'];
   } elseif ( isset($var[0]) && isset($var[0]['taxonomy_term']) ) {
     return $var[0]['taxonomy_term'];
+  } elseif ( is_array($var) && count($var) === 1 && isset($var[0]) ) {
+    return $var[0];
   } else {
     return $var;
   }
