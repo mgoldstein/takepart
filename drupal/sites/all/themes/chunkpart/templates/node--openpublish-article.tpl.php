@@ -73,7 +73,7 @@
 		</div>
 
 		<div id="article-content">
-			<figure id="article-image" class="">
+			<figure id="article-image" class="<?=_ssettings($node, 'field_main_image_format', 'node', 'image_style') ?>">
 				<?=_simage($node, 'field_article_main_image', 'node', _snode($node, 'field_main_image_format')) ?>
 
 				<? if ( ($image = _snode($node, 'field_article_main_image')) ): ?>

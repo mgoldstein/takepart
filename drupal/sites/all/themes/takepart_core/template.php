@@ -281,6 +281,16 @@ function _sblock($var) {
   return '';
 }
 
+function _ssettings($var, $prop = NULL, $type = 'node', $key = NULL) {
+  $var = field_get_items($type, $var, $prop);
+  if ( is_array($var) && isset($var[0]['settings']) ) {
+    $settings = unserialize($var[0]['settings']);
+    $val = $settings[$key];
+    return $val;
+  }
+
+  return '';
+}
 
 // return an image
 function _simage($var, $prop = NULL, $type = 'node', $style = null) {
