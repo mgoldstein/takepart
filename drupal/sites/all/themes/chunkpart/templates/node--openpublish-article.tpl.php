@@ -47,24 +47,24 @@
 					</p>
 					<h3 class="headline"><?=$author->title ?></h3>
 
-					<? if ( $abody = _s($author, 'body') ): ?>
+					<? if ( $abody = _snode($author, 'body') ): ?>
 						<div class="body">
-							<?=$abody['summary'] ?>
+							<?=$abody[0]['summary'] ?>
 							<p class="full_bio_link">
 								<a href="<?=_surl($field_author)?>"><?=t('Full Bio') ?></a>
 							</p>
 						</div>
 					<? endif ?>
 
-					<? if ( ($aftwitter = _s($author, 'field_follow_twitter')) && ($afgoogle = _s($author, 'field_follow_google')) ): ?>
+					<? if ( ($aftwitter = _snode($author, 'field_follow_twitter')) && ($afgoogle = _snode($author, 'field_follow_google')) ): ?>
 						<h4 class="follow_headline"><?=t('Follow Me') ?></h4>
 						<ul class="follow">
-							<? if ( $aftwitter['url'] ): ?>
-								<li class="twitter"><a href="<?=$aftwitter['url'] ?>"><?=$aftwitter['title'] ?></a></li>
+							<? if ( $aftwitter[0]['url'] ): ?>
+								<li class="twitter"><a href="<?=$aftwitter[0]['url'] ?>"><?=$aftwitter[0]['title'] ?></a></li>
 							<? endif ?>
 
-							<? if ( $afgoogle['url'] ): ?>
-								<li class="google"><a href="<?=$afgoogle['url'] ?>"><?=$afgoogle['title'] ?></a></li>
+							<? if ( $afgoogle[0]['url'] ): ?>
+								<li class="google"><a href="<?=$afgoogle[0]['url'] ?>"><?=$afgoogle[0]['title'] ?></a></li>
 							<? endif ?>
 						</ul>
 					<? endif ?>
@@ -73,7 +73,17 @@
 		</div>
 
 		<div id="article-content">
-			<?=render($content['field_article_main_image']);?>
+			<figure id="article-image" class="<?=_ssettings($node, 'field_main_image_format', 'node', 'image_style') ?>">
+				<?=_simage($node, 'field_article_main_image', 'node', _snode($node, 'field_main_image_format')) ?>
+
+				<? if ( ($image = _snode($node, 'field_article_main_image')) ): ?>
+					<? if ( $caption = _s($image[0]['file'], 'field_media_caption', 'file') ): ?>
+						<figcaption>
+							<?=_s($caption) ?>
+						</figcaption>
+					<? endif ?>
+				<? endif ?>
+			</figure>
 
 			<? if ( $content['body'] ): ?>
 				<div id="article-body" class="cms">

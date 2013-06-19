@@ -246,6 +246,8 @@ function _s($var, $prop = NULL, $type = 'node') {
   // Body attribute
   } elseif ( isset($var[0]) && isset($var[0]['safe_value']) ) {
     return $var[0]['safe_value'];
+  } elseif ( isset($var['safe_value']) ) {
+    return $var['safe_value'];
   } elseif ( isset($var['value']) ) {
     return $var['value'];
   }
@@ -279,6 +281,16 @@ function _sblock($var) {
   return '';
 }
 
+function _ssettings($var, $prop = NULL, $type = 'node', $key = NULL) {
+  $var = field_get_items($type, $var, $prop);
+  if ( is_array($var) && isset($var[0]['settings']) ) {
+    $settings = unserialize($var[0]['settings']);
+    $val = $settings[$key];
+    return $val;
+  }
+
+  return '';
+}
 
 // return an image
 function _simage($var, $prop = NULL, $type = 'node', $style = null) {
@@ -308,12 +320,25 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
   }
 
   if ( $style ) {
+    if ( is_array($style) && isset($style[0]['settings']) ) {
+      $settings = unserialize($style[0]['settings']);
+      $style = $settings['image_style'];
+    }
+
     if ( !isset($image['path']) ) {
       $image['path'] = $image['uri'];
     }
 
     $image['style_name'] = $style;
     $image['getsize'] = TRUE;
+    if ( isset($var[0]['file']) && $alt = _snode($var[0]['file'], 'field_media_alt', 'file') ) {
+      $image['alt'] = _s($alt);
+    }
+
+    if ( !$style ) {
+      return theme('image', $image);
+    }
+
     return theme('image_style', $image);
   } else {
     if ( !isset($image['path']) ) {
