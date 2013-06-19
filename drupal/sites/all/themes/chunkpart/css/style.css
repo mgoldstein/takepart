@@ -1327,7 +1327,8 @@ div.takepart-take-action-widget {
 }
 
 .node-type-openpublish-photo-gallery .hide_gallery #related-galleries,
-.node-type-openpublish-photo-gallery .hide_gallery #gallery-photos {
+.node-type-openpublish-photo-gallery .hide_gallery #gallery-photos,
+.node-type-openpublish-photo-gallery .hide_gallery .OUTBRAIN {
 	display: none;
 }
 
@@ -1527,6 +1528,7 @@ div.takepart-take-action-widget {
 .node-type-openpublish-photo-gallery #gallery-cover-social {
 	float: right;
 	line-height: 24px;
+	margin-bottom: 7px;
 }
 
 .node-type-openpublish-photo-gallery #gallery-cover-social .tp-social {
