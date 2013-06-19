@@ -308,12 +308,21 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
   }
 
   if ( $style ) {
+    if ( is_array($style) && isset($style[0]['settings']) ) {
+      $settings = unserialize($style[0]['settings']);
+      $style = $settings['image_style'];
+    }
+
     if ( !isset($image['path']) ) {
       $image['path'] = $image['uri'];
     }
 
     $image['style_name'] = $style;
     $image['getsize'] = TRUE;
+    if ( isset($var[0]['file']) && $alt = _snode($var[0]['file'], 'field_media_alt', 'file') ) {
+      $image['alt'] = _s($alt);
+    }
+
     return theme('image_style', $image);
   } else {
     if ( !isset($image['path']) ) {

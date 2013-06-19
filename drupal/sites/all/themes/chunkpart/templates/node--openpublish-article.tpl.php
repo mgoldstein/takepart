@@ -73,7 +73,17 @@
 		</div>
 
 		<div id="article-content">
-			<?=render($content['field_article_main_image']);?>
+			<figure id="article-image" class="">
+				<?=_simage($node, 'field_article_main_image', 'node', _snode($node, 'field_main_image_format')) ?>
+
+				<? if ( ($image = _snode($node, 'field_article_main_image')) ): ?>
+					<? if ( $caption = _s($image[0]['file'], 'field_media_caption', 'file') ): ?>
+						<figcaption>
+							<?=_s($caption) ?>
+						</figcaption>
+					<? endif ?>
+				<? endif ?>
+			</figure>
 
 			<? if ( $content['body'] ): ?>
 				<div id="article-body" class="cms">
