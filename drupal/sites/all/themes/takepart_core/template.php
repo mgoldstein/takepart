@@ -246,6 +246,8 @@ function _s($var, $prop = NULL, $type = 'node') {
   // Body attribute
   } elseif ( isset($var[0]) && isset($var[0]['safe_value']) ) {
     return $var[0]['safe_value'];
+  } elseif ( isset($var['safe_value']) ) {
+    return $var['safe_value'];
   } elseif ( isset($var['value']) ) {
     return $var['value'];
   }
@@ -253,6 +255,8 @@ function _s($var, $prop = NULL, $type = 'node') {
 
 /* Return a URL */
 function _surl($var, $prop = NULL, $type = 'node') {
+  $options = array('absolute' => TRUE);
+
   if ( is_array($var) && isset($var[0]) && isset($var[0]['node']) ) {
     return url('node/' . $var[0]['node']->nid);
   } elseif ( is_array($var) && isset($var[0]) && isset($var[0]['nid']) ) {
@@ -261,8 +265,8 @@ function _surl($var, $prop = NULL, $type = 'node') {
     return url('node/' . $var['node']->nid);
   } elseif ( is_object($var) && isset($var->_surl) ) {
     return $var->_surl;
-  } elseif ( is_object($var) ) {
-    return url('node/' . $var->nid);
+  } elseif ( is_object($var) && isset($var->nid) ) {
+    return url('node/' . $var->nid, $options);
   }
   return '/';
 }
@@ -306,12 +310,25 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
   }
 
   if ( $style ) {
+    if ( is_array($style) && isset($style['settings']) ) {
+      $settings = unserialize($style['settings']);
+      $style = $settings['image_style'];
+    }
+
     if ( !isset($image['path']) ) {
       $image['path'] = $image['uri'];
     }
 
     $image['style_name'] = $style;
     $image['getsize'] = TRUE;
+    if ( isset($var[0]['file']) && $alt = _snode($var[0]['file'], 'field_media_alt', 'file') ) {
+      $image['alt'] = _s($alt);
+    }
+
+    if ( !$style ) {
+      return theme('image', $image);
+    }
+
     return theme('image_style', $image);
   } else {
     if ( !isset($image['path']) ) {
@@ -349,15 +366,21 @@ function _smenu($menu) {
   return render($items);
 }
 
-// Get a node
+// Get a node or a value off a node
 function _snode($var, $prop = null, $type = 'node') {
   if ( is_object($var) && $prop ) {
     $var = field_get_items($type, $var, $prop);
-    return $var;
+    //return $var;
   }
 
-  if ( isset($var[0]) ) {
+  if ( isset($var[0]) && isset($var[0]['node']) ) {
     return $var[0]['node'];
+  } elseif ( isset($var[0]) && isset($var[0]['taxonomy_term']) ) {
+    return $var[0]['taxonomy_term'];
+  } elseif ( is_array($var) && count($var) === 1 && isset($var[0]) ) {
+    return $var[0];
+  } else {
+    return $var;
   }
 }
 

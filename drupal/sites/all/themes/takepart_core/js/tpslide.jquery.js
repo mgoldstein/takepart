@@ -25,13 +25,21 @@
             autoslide: false,
             cycle: true,
             do_hash: false,
-            onslide: null
+            onslide: null,
+            previous: '&larr;',
+            next: '&rarr;',
+            separator: ' / '
         }, options || {});
         return this.each(function () {
             var $this = $(this);
+
+            settings.previous = $this.data(settings.prepend + 'previous') || settings.previous;
+            settings.next = $this.data(settings.prepend + 'next') || settings.next;
+            settings.separator = $this.data(settings.prepend + 'separator') || settings.separator;
+
             var $wrapper = $('<span/>').addClass(settings.prepend + 'wrapper');
-            var $prev = $('<a href="#"/>').attr('title', 'Previous slide').addClass(settings.prepend + 'prev').html('&larr;');
-            var $next = $('<a href="#"/>').attr('title', 'Next slide').addClass(settings.prepend + 'next').html('&rarr;');
+            var $prev = $('<a href="#"/>').attr('title', 'Previous slide').addClass(settings.prepend + 'prev').html(settings.previous);
+            var $next = $('<a href="#"/>').attr('title', 'Next slide').addClass(settings.prepend + 'next').html(settings.next);
             var $nav = $('<span/>').addClass(settings.prepend + 'nav');
             var $nav_slides = $('<span/>').addClass(settings.prepend + 'nav_slides');
             var $slides = $this.find(settings.slides).addClass(settings.prepend + 'slide');
@@ -64,7 +72,7 @@
 
             $slides.each(function (i) {
                 var $slide = $(this).data(settings.prepend + 'index', i);
-                links += '<a href="#' + $slide.attr('id') + '" class="' + settings.prepend + 'link"><span>' + (i + 1) + ' / ' + $slides.length + '</span></a>';
+                links += '<a href="#' + $slide.attr('id') + '" class="' + settings.prepend + 'link"><span>' + (i + 1) + settings.separator + $slides.length + '</span></a>';
                 if (hash && $slide.is(hash)) {
                     current = i;
                     $current = $slide
@@ -94,6 +102,11 @@
                 next(false);
             };
             var slide = function (do_hash) {
+                if ( isNaN(current) ) {
+                    current = 0;
+                    $current = $slides.eq(current);
+                }
+
                 if (settings.autoslide) {
                     clearTimeout(autoslide_timeout);
                     autoslide_timeout = setTimeout(auto_next, settings.autoslide);
@@ -101,6 +114,7 @@
                 do_hash = do_hash || settings.do_hash;
                 $this.scrollTo($current, 'slow');
                 $links.removeClass(settings.prepend + 'active');
+
                 $links.eq(current).addClass(settings.prepend + 'active');
                 var hash = $current.attr('id');
                 $current.attr({
@@ -208,65 +222,21 @@
                 }
                 return true;
             });
-            var total_moved = 0;
-            var mouse_start_x;
-            var delta_x;
-            var last_x;
-            var old_moz_user_select;
-            var moving = false;
-            var drag = function (event) {
-                if (event.originalEvent.touches) {
-                    event.pageX = event.originalEvent.touches[0].clientX;
-                    event.pageY = event.originalEvent.touches[0].clientY;
-                }
-                delta_x = event.pageX - last_x;
-                total_moved = event.pageX - mouse_start_x;
-                last_x = event.pageX;
-            };
-            var stop = function (event) {
-                $body.unbind('touchmove', drag).unbind('touchend touchcancel touchup touchleave', stop);
-                $wrapper.removeClass(settings.prepend + 'mousedown');
-                $body.css({
-                    MozUserSelect: old_moz_user_select
-                });
-                if ($.browser.msie) {
-                    $body.unbind('dragstart', return_false).unbind('selectstart', return_false);
-                }
-                if (total_moved > settings.threshold) {
-                    prev();
-                } else if (total_moved < settings.threshold * -1) {
-                    next();
-                }
-                moving = false;
-                total_moved = 0;
-            };
-            if ((navigator.userAgent.indexOf('Android') == -1)) {
-                $wrapper.bind('touchstart', function (event) {
-                    if (moving) return true;
-                    moving = true;
-                    if (event.originalEvent.touches) {
-                        event.pageX = event.originalEvent.touches[0].clientX;
-                        event.pageY = event.originalEvent.touches[0].clientY;
-                    }
-                    last_x = event.pageX;
-                    mouse_start_x = event.pageX;
-                    old_moz_user_select = $body.css('MozUserSelect');
-                    $body.css({
-                        MozUserSelect: 'none'
-                    });
-                    $wrapper.addClass(settings.prepend + 'mousedown');
-                    $body.bind('touchmove', drag).bind('touchend touchcancel touchup touchleave', stop);
-                    if ($.browser.msie) {
-                        $body.bind('dragstart', return_false).bind('selectstart', return_false);
-                    }
-                }).bind('click', function () {
-                    if (total_moved > settings.threshold || total_moved < settings.threshold * -1) {
-                        total_moved = 0;
-                        return false;
-                    }
-                    total_moved = 0;
+
+            // Detect swipe in mobile and win8
+            if ( 'ontouchstart' in window || window.navigator.msPointerEnabled ) {
+                // Swipe - requires jquery.touchSwipe.js
+                $wrapper.swipe({
+                    swipeLeft: function(event, direction, distance, duration, fingerCount) {
+                        next();
+                    },
+                    swipeRight: function(event, direction, distance, duration, fingerCount) {
+                        prev();
+                    },
+                    threshold: settings.threshold
                 });
             }
+
             slide(false);
         });
     };

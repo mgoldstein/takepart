@@ -32,29 +32,6 @@ var makeLink = function(args) {
 	return $link;
 };
 
-// Return string from template
-var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
-var template_tplvar_clean_reg = /({{)|(}})/g;
-
-var template_value = function(tpl_name, args) {
-	// Replace variables in twitter template
-	var text = args[tpl_name] || '';
-	var matches = text.match(twitter_tpl_reg);
-
-	for ( var i in matches ) {
-		var match = matches[i];
-		var prop = match.replace(template_tplvar_clean_reg, '');
-
-		if ( match != tpl_name && args[prop] != undefined && args[prop] ) {
-			text = text.replace(match, args[prop]);
-		} else {
-			text = text.replace(match, '');
-		}
-	}
-
-	return text;
-};
-
 // Make an object based on data- attributes from the given jQuery object
 var get_data = function($el, prefix_main, prefix_secondary) {
 	var data = $el.data();
@@ -138,6 +115,9 @@ $.fn.tpsocial = function(args) {
 					.bind('mouseover focus', (function(srvc, $parent, $lnk) {
 							return function(e) {
 								var data = $.extend({}, defaults, srvc, get_data($parent, dpre + srvc.name + '-', dpre), get_data($lnk, dpre + srvc.name + '-', dpre));
+
+								if ( data.url == '{current}' ) data.url = document.location.href;
+
 								data.element = this;
 
 								srvc.hoverfocus(data);

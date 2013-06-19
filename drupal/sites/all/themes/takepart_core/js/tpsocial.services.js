@@ -1,5 +1,28 @@
 (function(window, $, undefined) {
 
+// Return string from template
+var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
+var template_tplvar_clean_reg = /({{)|(}})/g;
+
+var template_value = function(tpl_name, args) {
+	// Replace variables in twitter template
+	var text = args[tpl_name] || '';
+	var matches = text.match(twitter_tpl_reg);
+
+	for ( var i in matches ) {
+		var match = matches[i];
+		var prop = match.replace(template_tplvar_clean_reg, '');
+
+		if ( match != tpl_name && args[prop] != undefined && args[prop] ) {
+			text = text.replace(match, args[prop]);
+		} else {
+			text = text.replace(match, '');
+		}
+	}
+
+	return text;
+};
+
 // Add services
 
 $.tpsocial.add_service({
@@ -172,6 +195,10 @@ $.tpsocial.add_service({
 	description: '',
 	share: function(args) {
 		if ( !args.description ) args.description = args.title;
+		args.description = args.description + '';
+		if ( args.description.length > 499 ) {
+			args.description = args.description.substring(0, 496) + '...';
+		}
 		var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(args.url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';

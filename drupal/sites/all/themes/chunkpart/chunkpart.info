@@ -31,6 +31,8 @@ regions[sidebar_second] = Right Rail
 regions[help] = Help
 regions[highlighted] = Highlighted
 
+regions[node_region] = Node
+
 
 ;-------------- C S S -------------
 stylesheets[all][] = css/reset.css

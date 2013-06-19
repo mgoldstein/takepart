@@ -7,15 +7,17 @@
 	width: 100%;
 	vertical-align: top;
 	position: relative;
-	min-height: 116px;
-	z-index: 2;
-	margin: 0 auto -16px auto;
+	z-index: 3;
+	margin: 0 auto 0 auto;
 	max-width: 1000px;
+	background: #f1f3f4;
 }
 
 #site-header #site-logo {
 	padding-right: 1em;
 	float: left;
+	position: relative;
+	margin-bottom: -16px;
 }
 
 #site-logo img {
@@ -218,14 +220,14 @@
 	background-repeat: no-repeat;
 	background-position: 8px 9px;
   background-image: url('style-sprite.png');
-  background-position: left -1679px;
+  background-position: left -2243px;
 	cursor: pointer;
 }
 
 #site-search .form-submit:hover {
 	background-position: 8px 9px;
   background-image: url('style-sprite.png');
-  background-position: left -1712px;
+  background-position: left -2276px;
 }
 
 #site-header #site-participant-nav {
@@ -260,7 +262,7 @@
 	background-repeat: no-repeat;
 	background-position: 12px 12px;
   background-image: url('style-sprite.png');
-  background-position: left -1745px;
+  background-position: left -2309px;
 }
 
 #site-participant-nav p {
@@ -299,7 +301,7 @@
 	background-repeat: no-repeat;
 	background-position: 12px 12px;
   background-image: url('style-sprite.png');
-  background-position: left -1778px;
+  background-position: left -2342px;
 }
 
 #site-participant-nav.focusin ul,
@@ -342,11 +344,11 @@
 .multipage-campaign #site-header {
 	min-height: 36px;
 	padding: 0;
-	margin-bottom: -6px;
 }
 
 .multipage-campaign #site-header #site-logo {
 	padding-right: 17px;
+	margin-bottom: -5px;
 }
 
 .multipage-campaign #site-logo img {
@@ -381,7 +383,7 @@
 .multipage-campaign #site-hot-nav,
 .multipage-campaign #site-main-nav {
 	font-size:  15px;
-	padding: 12px 0;
+	padding: 11px 0;
 	border: none;
 	clear: none;
 }
@@ -417,32 +419,32 @@
 
 .multipage-campaign #site-follow .facebook a {
   background-image: url('style-sprite.png');
-  background-position: left -1811px;
+  background-position: left -2375px;
 }
 
 .multipage-campaign #site-follow .facebook a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1840px;
+  background-position: left -2404px;
 }
 
 .multipage-campaign #site-follow .twitter a {
   background-image: url('style-sprite.png');
-  background-position: left -1869px;
+  background-position: left -2433px;
 }
 
 .multipage-campaign #site-follow .twitter a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1898px;
+  background-position: left -2462px;
 }
 
 .multipage-campaign #site-follow .rss a {
   background-image: url('style-sprite.png');
-  background-position: left -1927px;
+  background-position: left -2491px;
 }
 
 .multipage-campaign #site-follow .rss a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1956px;
+  background-position: left -2520px;
 }
 
 .multipage-campaign #site-search {
@@ -461,13 +463,13 @@
 	background-position: 4px 4px;
 	background-repeat: no-repeat;
   background-image: url('style-sprite.png');
-  background-position: left -1985px;
+  background-position: left -2549px;
 }
 
 .multipage-campaign #site-search .form-submit:hover {
 	background-position: 4px 4px;
   background-image: url('style-sprite.png');
-  background-position: left -2014px;
+  background-position: left -2578px;
 }
 
 .multipage-campaign #site-user-nav ul {
@@ -489,6 +491,12 @@ Footer ------------------------------------------------------------
 #site-footer {
 	color: #555;
 	line-height: 1.5;
+	position: relative;
+	z-index: 2;
+	display: inline-block; *display: inline; zoom: 1;
+	vertical-align: top;
+	width: 100%;
+	background: #f1f3f4;
 }
 
 #site-footer ul,
@@ -559,82 +567,82 @@ Footer ------------------------------------------------------------
 
 #site-connect .facebook a {
   background-image: url('style-sprite.png');
-  background-position: left -2043px;
+  background-position: left -2607px;
 }
 
 #site-connect .twitter a {
   background-image: url('style-sprite.png');
-  background-position: left -2077px;
+  background-position: left -2641px;
 }
 
 #site-connect .email a {
   background-image: url('style-sprite.png');
-  background-position: left -2111px;
+  background-position: left -2675px;
 }
 
 #site-connect .google a {
   background-image: url('style-sprite.png');
-  background-position: left -2145px;
+  background-position: left -2709px;
 }
 
 #site-connect .pinterest a {
   background-image: url('style-sprite.png');
-  background-position: left -705px;
+  background-position: left -1237px;
 }
 
 #site-connect .linkedin a {
   background-image: url('style-sprite.png');
-  background-position: left -2179px;
+  background-position: left -2743px;
 }
 
 #site-connect .youtube a {
   background-image: url('style-sprite.png');
-  background-position: left -739px;
+  background-position: left -1271px;
 }
 
 #site-connect .tumblr a {
   background-image: url('style-sprite.png');
-  background-position: left -2213px;
+  background-position: left -2777px;
 }
 
 /* rolovers */
 
 #site-connect .facebook a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1124px;
+  background-position: left -2811px;
 }
 
 #site-connect .twitter a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1158px;
+  background-position: left -2845px;
 }
 
 #site-connect .email a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -1226px;
+  background-position: left -2879px;
 }
 
 #site-connect .google a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2247px;
+  background-position: left -2913px;
 }
 
 #site-connect .pinterest a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2281px;
+  background-position: left -2947px;
 }
 
 #site-connect .linkedin a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2315px;
+  background-position: left -2981px;
 }
 
 #site-connect .youtube a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2349px;
+  background-position: left -3015px;
 }
 
 #site-connect .tumblr a:hover {
   background-image: url('style-sprite.png');
-  background-position: left -2383px;
+  background-position: left -3049px;
 }

@@ -44,6 +44,9 @@
             })
             ;
 
+        // Admin tabs
+        $('.tabs.primary li').appendTo('.toolbar-shortcuts ul');
+
         // Make tpinfographic stuff
         $('.tpinfographic').each(function() {
             var $this = $(this);

@@ -4,6 +4,18 @@
   Preprocess
 */
 
+/**
+* Implements template_preprocess_node().
+*/
+function chunkpart_preprocess_node(&$vars) {
+  // Add 'After node' block region inside node.
+  if ( $vars['view_mode'] == 'full' ) {
+    if ( $block_region_name = block_get_blocks_by_region('node_region') ) {
+      $vars['node_region'] = $block_region_name;
+    }
+  }
+}
+
 // Don't let nasty Drupal classes get put on the menu ul's
 function chunkpart_menu_tree($variables) {
   return '<ul>' . $variables['tree'] . '</ul>';

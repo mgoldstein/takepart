@@ -8,15 +8,17 @@
 	width: 100%;
 	vertical-align: top;
 	position: relative;
-	min-height: 116px;
-	z-index: 2;
-	margin: 0 auto -16px auto;
+	z-index: 3;
+	margin: 0 auto 0 auto;
 	max-width: 1000px;
+	background: #f1f3f4;
 }
 
 #site-header #site-logo {
 	padding-right: 1em;
 	float: left;
+	position: relative;
+	margin-bottom: -16px;
 }
 
 #site-logo img {
@@ -339,11 +341,11 @@
 .multipage-campaign #site-header {
 	min-height: 36px;
 	padding: 0;
-	margin-bottom: -6px;
 }
 
 .multipage-campaign #site-header #site-logo {
 	padding-right: 17px;
+	margin-bottom: -5px;
 }
 
 .multipage-campaign #site-logo img {
@@ -378,7 +380,7 @@
 .multipage-campaign #site-hot-nav,
 .multipage-campaign #site-main-nav {
 	font-size:  15px;
-	padding: 12px 0;
+	padding: 11px 0;
 	border: none;
 	clear: none;
 }
@@ -478,6 +480,12 @@ Footer ------------------------------------------------------------
 #site-footer {
 	color: #555;
 	line-height: 1.5;
+	position: relative;
+	z-index: 2;
+	display: inline-block; *display: inline; zoom: 1;
+	vertical-align: top;
+	width: 100%;
+	background: #f1f3f4;
 }
 
 #site-footer ul,

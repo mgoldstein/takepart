@@ -9,8 +9,7 @@
 		<? if ( $link['title'] ): ?>
 			<li>
 				<a href="<?=$link['link'] ?>">
-					<p class="topic"><?=$link['topic'] ?></p>
-					<p class="title"><?=$link['title'] ?></p>
+					<p class="title"><?=$link['title'] ?> <span class="topic">(<?=$link['topic'] ?>)</span></p>
 				</a>
 			</li>
 		<? endif ?>

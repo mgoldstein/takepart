@@ -1,4 +1,8 @@
-<article id="article-main" class="<?=!$node->status ? 'unpublished':'' ?>">
+<article id="article-main" class="article <?=!$node->status ? 'unpublished':'' ?>"
+	<? if ( $series = _snode($node, 'field_series') ): ?>
+		data-series="<?=htmlspecialchars($series->name) ?>"
+	<? endif ?>
+	>
 	<div id="article-main-inner">
 		<header class="article-header">
 			<h1 class="article-headline"><?=_s($title) ?></h1>
@@ -43,7 +47,7 @@
 					</p>
 					<h3 class="headline"><?=$author->title ?></h3>
 
-					<? if ( $abody = _s($author, 'body') ): ?>
+					<? if ( $abody = _snode($author, 'body') ): ?>
 						<div class="body">
 							<?=$abody['summary'] ?>
 							<p class="full_bio_link">
@@ -52,7 +56,7 @@
 						</div>
 					<? endif ?>
 
-					<? if ( ($aftwitter = _s($author, 'field_follow_twitter')) && ($afgoogle = _s($author, 'field_follow_google')) ): ?>
+					<? if ( ($aftwitter = _snode($author, 'field_follow_twitter')) && ($afgoogle = _snode($author, 'field_follow_google')) ): ?>
 						<h4 class="follow_headline"><?=t('Follow Me') ?></h4>
 						<ul class="follow">
 							<? if ( $aftwitter['url'] ): ?>
@@ -69,7 +73,17 @@
 		</div>
 
 		<div id="article-content">
-			<?=render($content['field_article_main_image']);?>
+			<figure id="article-image" class="">
+				<?=_simage($node, 'field_article_main_image', 'node', _snode($node, 'field_main_image_format')) ?>
+
+				<? if ( ($image = _snode($node, 'field_article_main_image')) ): ?>
+					<? if ( $caption = _s($image['file'], 'field_media_caption', 'file') ): ?>
+						<figcaption>
+							<?=_s($caption) ?>
+						</figcaption>
+					<? endif ?>
+				<? endif ?>
+			</figure>
 
 			<? if ( $content['body'] ): ?>
 				<div id="article-body" class="cms">
@@ -80,12 +94,12 @@
 			<? endif ?>
 
 			<footer id="article-footer">
-				<? if ( $next_article): ?>
+				<? if ( $next_article ): ?>
 					<nav id="next-article" class="related next-article">
 						<h3 class="headline"><?=t('Next Article') ?></h3>
 						<p>
 							<a href="<?=$next_article->href ?>">
-							<?=$next_article->title ?>
+								<?=$next_article->title ?>
 							</a>
 						</p>
 					</nav>
@@ -93,7 +107,7 @@
 
 				<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
 					<nav id="article-related" class="related related-stories">
-						<h3 class="headline"><?=t('Related stories on TakePart:') ?></h3>
+						<h3 class="headline"><?=t('Related stories on TakePart') ?></h3>
 						<ul>
 							<? while ( list($key, $related) = _seach($relateds) ): ?>
 								<li><a href="<?=_surl($related) ?>"><?=$related->title ?></a></li>
@@ -104,7 +118,7 @@
 
 				<nav id="article-tags" class="page-tags">
 					<h3 class="headline">
-						<?=t('Get More:') ?>
+						<?=t('Get More') ?>
 					</h3>
 
 					<ul>
@@ -118,6 +132,13 @@
 					</ul>
 				</nav>
 			</footer>
+
+			<div class="OUTBRAIN" data-src="<?=_surl($node) ?>" data-widget-id="AR_3" data-ob-template="TakePart" ></div>
+			<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
+
+			<? if ( isset($node_region['bean_on-our-radar-block']) ): ?>
+				<?=render($node_region['bean_on-our-radar-block']) ?>
+			<? endif ?>
 
 			<div id="article-comments">
 				<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
