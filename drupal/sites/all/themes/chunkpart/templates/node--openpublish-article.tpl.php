@@ -47,7 +47,7 @@
 					</p>
 					<h3 class="headline"><?=$author->title ?></h3>
 
-					<? if ( $abody = _s($author, 'body') ): ?>
+					<? if ( $abody = _snode($author, 'body') ): ?>
 						<div class="body">
 							<?=$abody['summary'] ?>
 							<p class="full_bio_link">
@@ -56,7 +56,7 @@
 						</div>
 					<? endif ?>
 
-					<? if ( ($aftwitter = _s($author, 'field_follow_twitter')) && ($afgoogle = _s($author, 'field_follow_google')) ): ?>
+					<? if ( ($aftwitter = _snode($author, 'field_follow_twitter')) && ($afgoogle = _snode($author, 'field_follow_google')) ): ?>
 						<h4 class="follow_headline"><?=t('Follow Me') ?></h4>
 						<ul class="follow">
 							<? if ( $aftwitter['url'] ): ?>
@@ -77,7 +77,7 @@
 				<?=_simage($node, 'field_article_main_image', 'node', _snode($node, 'field_main_image_format')) ?>
 
 				<? if ( ($image = _snode($node, 'field_article_main_image')) ): ?>
-					<? if ( $caption = _s($image[0]['file'], 'field_media_caption', 'file') ): ?>
+					<? if ( $caption = _s($image['file'], 'field_media_caption', 'file') ): ?>
 						<figcaption>
 							<?=_s($caption) ?>
 						</figcaption>
