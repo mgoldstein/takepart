@@ -1369,7 +1369,7 @@ div.takepart-take-action-widget {
 	background: #f6f8f9;
 	border: 1px solid #e5e5e5;
 	border-left: none;
-	height: 465px;
+	height: 413px;
 	overflow: auto;
 	color: #333;
 
@@ -1408,8 +1408,8 @@ div.takepart-take-action-widget {
 
 .node-type-openpublish-photo-gallery #gallery-main .image-content-wrapper {
 	float: left;
-	line-height: 465px;
-	height: 465px;
+	line-height: 413px;
+	height: 413px;
 	background: #000;
 	width: 620px;
 	text-align: center;
@@ -1769,7 +1769,7 @@ div.takepart-take-action-widget {
 .node-type-openpublish-photo-gallery .tpslide_slide {
 	display: inline-block; *display: inline; zoom: 1;
 	vertical-align: top;
-	height: 465px;
+	height: 413px;
 }
 
 .node-type-openpublish-photo-gallery .tpslide_nav_slides a {
