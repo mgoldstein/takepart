@@ -123,6 +123,9 @@
 				</nav>
 			</footer>
 
+			<div class="OUTBRAIN" data-src="<?=_surl($node) ?>" data-widget-id="AR_3" data-ob-template="TakePart" ></div>
+			<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
+
 			<? if ( isset($node_region['bean_on-our-radar-block']) ): ?>
 				<?=render($node_region['bean_on-our-radar-block']) ?>
 			<? endif ?>

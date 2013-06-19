@@ -253,6 +253,8 @@ function _s($var, $prop = NULL, $type = 'node') {
 
 /* Return a URL */
 function _surl($var, $prop = NULL, $type = 'node') {
+  $options = array('absolute' => TRUE);
+
   if ( is_array($var) && isset($var[0]) && isset($var[0]['node']) ) {
     return url('node/' . $var[0]['node']->nid);
   } elseif ( is_array($var) && isset($var[0]) && isset($var[0]['nid']) ) {
@@ -261,8 +263,8 @@ function _surl($var, $prop = NULL, $type = 'node') {
     return url('node/' . $var['node']->nid);
   } elseif ( is_object($var) && isset($var->_surl) ) {
     return $var->_surl;
-  } elseif ( is_object($var) ) {
-    return url('node/' . $var->nid);
+  } elseif ( is_object($var) && isset($var->nid) ) {
+    return url('node/' . $var->nid, $options);
   }
   return '/';
 }
