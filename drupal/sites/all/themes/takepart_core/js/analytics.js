@@ -128,7 +128,7 @@ takepart.analytics.track = function(name) {
                 if ( evar19 ) {
                     s.eVar19 = evar19;
                     linkTrackVars.push('eVar19');
-                    s.sProp18 = evar19;
+                    s.prop18 = evar19;
                     linkTrackVars.push('prop18');
                 }
                 if ( evar21 ) {
