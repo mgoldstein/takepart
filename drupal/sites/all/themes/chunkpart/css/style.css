@@ -587,7 +587,7 @@ div.takepart-take-action-widget {
 }
 
 .page-tags li {
-	line-height: 1.5;
+	line-height: 1.25;
 	font-size: 14px;
 	text-transform: capitalize;
 }
@@ -700,7 +700,7 @@ div.takepart-take-action-widget {
 .related li {
 	font-size: 14px;
 	margin-bottom: 10px;
-	line-height: 1.5;
+	line-height: 1.25;
 }
 
 /* Article Header */
