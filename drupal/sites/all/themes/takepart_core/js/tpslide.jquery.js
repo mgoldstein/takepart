@@ -4,10 +4,16 @@
     var return_false = function () {
         return false;
     };
-    $.fn.slide_set = function (key, val) {
+    $.fn.tpslide_set = function (key, val) {
         return this.each(function () {
             var accessor = $(this).data('accessor');
             accessor.set(key, val);
+        });
+    };
+    $.fn.tpslide_to = function (val) {
+        return this.each(function () {
+            var accessor = $(this).data('accessor');
+            accessor.slide_to(val);
         });
     };
     $.fn.tpslide = function (options) {
@@ -18,16 +24,26 @@
             threshold: 50,
             autoslide: false,
             cycle: true,
-            do_hash: false
+            do_hash: false,
+            onslide: null,
+            previous: '&larr;',
+            next: '&rarr;',
+            separator: ' / '
         }, options || {});
         return this.each(function () {
             var $this = $(this);
+
+            settings.previous = $this.data(settings.prepend + 'previous') || settings.previous;
+            settings.next = $this.data(settings.prepend + 'next') || settings.next;
+            settings.separator = $this.data(settings.prepend + 'separator') || settings.separator;
+
             var $wrapper = $('<span/>').addClass(settings.prepend + 'wrapper');
-            var $prev = $('<span/>').attr('title', 'Previous slide').addClass(settings.prepend + 'prev').html('&larr;');
-            var $next = $('<span/>').attr('title', 'Next slide').addClass(settings.prepend + 'next').html('&rarr;');
+            var $prev = $('<a href="#"/>').attr('title', 'Previous slide').addClass(settings.prepend + 'prev').html(settings.previous);
+            var $next = $('<a href="#"/>').attr('title', 'Next slide').addClass(settings.prepend + 'next').html(settings.next);
             var $nav = $('<span/>').addClass(settings.prepend + 'nav');
             var $nav_slides = $('<span/>').addClass(settings.prepend + 'nav_slides');
             var $slides = $this.find(settings.slides).addClass(settings.prepend + 'slide');
+            var slides = {};
             var current = 0;
             var $current = $slides.eq(0);
             var hash = location.hash;
@@ -35,6 +51,13 @@
             var autoslide_timeout = null;
             var accessor = {};
             $this.data('accessor', accessor);
+            var block_slide_to = false;
+
+            for ( var i = 0; i <= $slides.length; i++ ) {
+                var slide = $slides.get(i);
+                $(slide).data('tpslide-key', i);
+            };
+
             accessor.set = function (key, val) {
                 if (typeof (key) == 'object') {
                     settings = $.extend(settings, key);
@@ -46,24 +69,29 @@
                     autoslide_timeout = setTimeout(auto_next, settings.autoslide);
                 }
             };
+
             $slides.each(function (i) {
                 var $slide = $(this).data(settings.prepend + 'index', i);
-                links += '<a href="#' + $slide.attr('id') + '" class="' + settings.prepend + 'link"><span>' + (i + 1) + ' / ' + $slides.length + '</span></a>';
+                links += '<a href="#' + $slide.attr('id') + '" class="' + settings.prepend + 'link"><span>' + (i + 1) + settings.separator + $slides.length + '</span></a>';
                 if (hash && $slide.is(hash)) {
                     current = i;
                     $current = $slide
                 }
             });
+
             $nav_slides.html(links);
+
             var $links = $nav_slides.find('a').each(function (i) {
                 var $a = $(this).data('slide', i);
                 if (i == current) $a.addClass(settings.prepend + 'active');
             });
+
             $nav.prepend($prev).append($nav_slides).append($next);
             $wrapper.insertAfter($this).append($this).prepend($nav);
             $slides.css({
                 width: $wrapper.outerWidth()
             });
+
             $window.bind('resize', function () {
                 $slides.css({
                     width: $wrapper.outerWidth()
@@ -74,6 +102,11 @@
                 next(false);
             };
             var slide = function (do_hash) {
+                if ( isNaN(current) ) {
+                    current = 0;
+                    $current = $slides.eq(current);
+                }
+
                 if (settings.autoslide) {
                     clearTimeout(autoslide_timeout);
                     autoslide_timeout = setTimeout(auto_next, settings.autoslide);
@@ -81,6 +114,7 @@
                 do_hash = do_hash || settings.do_hash;
                 $this.scrollTo($current, 'slow');
                 $links.removeClass(settings.prepend + 'active');
+
                 $links.eq(current).addClass(settings.prepend + 'active');
                 var hash = $current.attr('id');
                 $current.attr({
@@ -100,7 +134,29 @@
                 } else {
                     $prev.removeClass(settings.prepend + 'disabled');
                 }
+
+                if ( settings.onslide ) settings.onslide($current);
             };
+
+            accessor.slide_to = function (val) {
+                if ( block_slide_to ) return;
+                var $el;
+                if ( typeof val == 'string' ) {
+                    $el = $(val);
+                } else if ( val.jquery ) {
+                    $el = val;
+                } else {
+                    $el = $(val);
+                }
+
+                // TODO: figure out the dohash stuff
+                if ( $current[0] != $el[0] ) {
+                    $current = $el;
+                    current = $current.data('tpslide-key');
+                    slide(false);
+                }
+            };
+
             var next = function (do_hash) {
                 if (!settings.cycle && $next.is('.' + settings.prepend + 'disabled')) return;
                 current++;
@@ -111,11 +167,15 @@
                         current = $slides.length - 1;
                     }
                 }
+
                 $current = $slides.eq(current);
                 slide(do_hash);
             };
-            $next.bind('click', function () {
+            $next.bind('click', function (e) {
+                block_slide_to = true;
+                e.preventDefault();
                 next();
+                block_slide_to = false;
             });
             if (settings.autoslide) {
                 clearTimeout(autoslide_timeout);
@@ -134,10 +194,13 @@
                 $current = $slides.eq(current);
                 slide(do_hash);
             };
-            $prev.bind('click', function () {
+            $prev.bind('click', function (e) {
+                block_slide_to = true;
+                e.preventDefault();
                 prev();
+                block_slide_to = false;
             });
-            $nav.delegate('a', 'click', function () {
+            $nav_slides.delegate('a', 'click', function (e) {
                 current = $.data(this, 'slide');
                 $current = $slides.eq(current);
                 slide();
@@ -159,65 +222,21 @@
                 }
                 return true;
             });
-            var total_moved = 0;
-            var mouse_start_x;
-            var delta_x;
-            var last_x;
-            var old_moz_user_select;
-            var moving = false;
-            var drag = function (event) {
-                if (event.originalEvent.touches) {
-                    event.pageX = event.originalEvent.touches[0].clientX;
-                    event.pageY = event.originalEvent.touches[0].clientY;
-                }
-                delta_x = event.pageX - last_x;
-                total_moved = event.pageX - mouse_start_x;
-                last_x = event.pageX;
-            };
-            var stop = function (event) {
-                $body.unbind('touchmove', drag).unbind('touchend touchcancel touchup touchleave', stop);
-                $wrapper.removeClass(settings.prepend + 'mousedown');
-                $body.css({
-                    MozUserSelect: old_moz_user_select
-                });
-                if ($.browser.msie) {
-                    $body.unbind('dragstart', return_false).unbind('selectstart', return_false);
-                }
-                if (total_moved > settings.threshold) {
-                    prev();
-                } else if (total_moved < settings.threshold * -1) {
-                    next();
-                }
-                moving = false;
-                total_moved = 0;
-            };
-            if ((navigator.userAgent.indexOf('Android') == -1)) {
-                $wrapper.bind('touchstart', function (event) {
-                    if (moving) return true;
-                    moving = true;
-                    if (event.originalEvent.touches) {
-                        event.pageX = event.originalEvent.touches[0].clientX;
-                        event.pageY = event.originalEvent.touches[0].clientY;
-                    }
-                    last_x = event.pageX;
-                    mouse_start_x = event.pageX;
-                    old_moz_user_select = $body.css('MozUserSelect');
-                    $body.css({
-                        MozUserSelect: 'none'
-                    });
-                    $wrapper.addClass(settings.prepend + 'mousedown');
-                    $body.bind('touchmove', drag).bind('touchend touchcancel touchup touchleave', stop);
-                    if ($.browser.msie) {
-                        $body.bind('dragstart', return_false).bind('selectstart', return_false);
-                    }
-                }).bind('click', function () {
-                    if (total_moved > settings.threshold || total_moved < settings.threshold * -1) {
-                        total_moved = 0;
-                        return false;
-                    }
-                    total_moved = 0;
+
+            // Detect swipe in mobile and win8
+            if ( 'ontouchstart' in window || window.navigator.msPointerEnabled ) {
+                // Swipe - requires jquery.touchSwipe.js
+                $wrapper.swipe({
+                    swipeLeft: function(event, direction, distance, duration, fingerCount) {
+                        next();
+                    },
+                    swipeRight: function(event, direction, distance, duration, fingerCount) {
+                        prev();
+                    },
+                    threshold: settings.threshold
                 });
             }
+
             slide(false);
         });
     };

@@ -272,6 +272,23 @@ function _wordlet_configuration() {
       'load' => array('site', 'patt_campaign'),
     ),
 
+    // Place at the Table - Hungry to Get By
+    'patt_game' => array(
+      'title' => 'A Place at the Table - Hungry to Get By',
+      'path' => 'place-at-the-table/game',
+      'published' => TRUE,
+      'wrappers' => array('patt', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site', 'patt_campaign'),
+    ),
+
     // Place at the Table - Events & Resources
     'patt_events' => array(
       'title' => 'A Place at the Table - Events and Resources',
@@ -422,6 +439,48 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'eyelevel_campaign'),
     ),
+
+    // -----------------------------------
+    // I Am Education Campaign ----------------
+    // -----------------------------------
+    'education_campaign' => array(
+      'title' => 'I Am Education Campaign',
+    ),
+
+    // I Am Education Home
+    'education_home' => array(
+      'title' => 'I Am Education - Home',
+      'path' => 'i-am-education',
+      'published' => FALSE,
+      'wrappers' => array('education', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/education/education.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/education/education.js',
+      ),
+      'load' => array('site', 'education_campaign'),
+    ),
+
+    // I Am Education Videos
+    'education_video' => array(
+      'title' => 'I Am Education - Videos',
+      'path' => 'i-am-education/videos',
+      'published' => FALSE,
+      'wrappers' => array('education', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/education/education.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/education/education.js',
+      ),
+      'load' => array('site', 'education_campaign'),
+    ),
+
 
     // -------------------------------------
     // Intel Girls Campaign ----------------

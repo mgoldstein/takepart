@@ -1,20 +1,24 @@
-<article id="article-main" class="<?=!$node->status ? 'unpublished':'' ?>">
+<article id="article-main" class="article <?=!$node->status ? 'unpublished':'' ?>"
+	<? if ( $series = _snode($node, 'field_series') ): ?>
+		data-series="<?=htmlspecialchars($series->name) ?>"
+	<? endif ?>
+	>
 	<div id="article-main-inner">
-		<header id="article-header">
-			<h1 id="article-headline"><?=_s($title) ?></h1>
-			<p id="article-abstract"><?=_s($field_article_subhead) ?></p>
+		<header class="article-header">
+			<h1 class="article-headline"><?=_s($title) ?></h1>
+			<p class="article-abstract"><?=_s($field_article_subhead) ?></p>
 			<div class="header-secondary">
 				<? if ( list($key, $badge) = _seach($field_significance) ): ?>
 					<p class="badge"><a href="<?=_surl($badge)?>"><?=$badge->name?></a></p>
 				<? endif ?>
-				<p class="date"><?=date('F j, Y', $node->created)?></p>
-				<ul class="author-names">
+				<time class="pubdate"><?=date('F j, Y', $node->created)?></time>
+				<address class="authors">
 					<? while ( list($key, $author) = _seach($field_author) ): ?>
-						<li class="<?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
+						<span class="author <?=($key == 0)?'first-child':''?> <?=($key == count($field_author) - 1)?'last-child':''?>">
 							<a href="<?=_surl($author)?>" rel="author"><?=$author->title ?></a>
-						</li>
+						</span>
 					<? endwhile ?>
-				</ul>
+				</address>
 			</div>
 		</header>
 
@@ -73,14 +77,27 @@
 
 			<? if ( $content['body'] ): ?>
 				<div id="article-body" class="cms">
-					<?=render($content['body'])?>
+					<div class="content">
+						<?=render($content['body'])?>
+					</div>
 				</div>
 			<? endif ?>
 
 			<footer id="article-footer">
+				<? if ( $next_article ): ?>
+					<nav id="next-article" class="related next-article">
+						<h3 class="headline"><?=t('Next Article') ?></h3>
+						<p>
+							<a href="<?=$next_article->href ?>">
+								<?=$next_article->title ?>
+							</a>
+						</p>
+					</nav>
+				<? endif ?>
+
 				<? if ( $relateds = field_get_items('node', $node, 'field_related_stories') ): ?>
-					<nav id="article-related">
-						<h3><?=t('Related stories on TakePart:') ?></h3>
+					<nav id="article-related" class="related related-stories">
+						<h3 class="headline"><?=t('Related stories on TakePart') ?></h3>
 						<ul>
 							<? while ( list($key, $related) = _seach($relateds) ): ?>
 								<li><a href="<?=_surl($related) ?>"><?=$related->title ?></a></li>
@@ -89,18 +106,9 @@
 					</nav>
 				<? endif ?>
 
-				<? if ( $next_article): ?>
-					<nav id="next-article">
-						<a href="<?=$next_article->href ?>">
-							<h3 class="headline"><?=t('Next Article') ?></h3><!--
-							--><p><?=$next_article->title ?></p>
-						</a>
-					</nav>
-				<? endif ?>
-
-				<nav id="article-tags">
+				<nav id="article-tags" class="page-tags">
 					<h3 class="headline">
-						<?=t('Get More:') ?>
+						<?=t('Get More') ?>
 					</h3>
 
 					<ul>
@@ -114,6 +122,13 @@
 					</ul>
 				</nav>
 			</footer>
+
+			<div class="OUTBRAIN" data-src="<?=_surl($node) ?>" data-widget-id="AR_3" data-ob-template="TakePart" ></div>
+			<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
+
+			<? if ( isset($node_region['bean_on-our-radar-block']) ): ?>
+				<?=render($node_region['bean_on-our-radar-block']) ?>
+			<? endif ?>
 
 			<div id="article-comments">
 				<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>

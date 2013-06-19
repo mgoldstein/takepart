@@ -7,8 +7,8 @@
 		  }
 		?>
 		<?=render($item) ?>
-		<? if ( ($image = _s($element['#object'], 'field_article_main_image')) ): ?>
-			<? if ( $caption = _s($image['file'], 'field_media_caption', 'file') ): ?>
+		<? if ( ($image = _snode($element['#object'], 'field_article_main_image')) ): ?>
+			<? if ( $caption = _s($image[0]['file'], 'field_media_caption', 'file') ): ?>
 				<figcaption>
 					<?=_s($caption) ?>
 				</figcaption>

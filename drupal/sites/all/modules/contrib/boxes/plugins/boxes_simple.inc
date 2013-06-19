@@ -62,7 +62,6 @@ class boxes_simple extends boxes_box {
         '#default_value' => $this->options['additional_classes'],
       );
     }
-
     return $form;
   }
 
@@ -71,7 +70,6 @@ class boxes_simple extends boxes_box {
    */
   public function render() {
     $content = '';
-
     if (!empty($this->options['body']['value'])) {
       if (isset($this->options['body']['format']) && !$this->options['body']['format']) {
         $content = check_markup($this->options['body']['value'], $this->options['body']['format'], $langcode = '' /* TODO Set this variable. */, FALSE);
@@ -80,12 +78,11 @@ class boxes_simple extends boxes_box {
         $content = $this->options['body'];
       }
     }
-
     $title = isset($this->title) ? $this->title : NULL;
     $box = array(
       'delta' => $this->delta, // Crucial.
       'title' => $title,
-      'subject' => $title,
+      'subject' => check_plain($title),
       'content' => $content,
     );
 

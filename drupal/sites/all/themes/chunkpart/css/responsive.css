@@ -187,7 +187,7 @@
 		background-image: url(../images/topic_wildlife.png); /** sprite-ref: mysprite; */
 	}
 
-	#site-main-nav .text-social_action a:before {
+	#site-main-nav .text-social_justice a:before {
 		background-image: url(../images/topic_social_justice.png); /** sprite-ref: mysprite; */
 	}
 
@@ -433,6 +433,123 @@
 
 	.node-type-article #article-image img {
 		margin: auto;
+	}
+
+/* Gallery
+------------------------------------------------------------ */
+	/* Cover */
+	.node-type-openpublish-photo-gallery #gallery-cover-main {
+		width: auto;
+	}
+
+	.node-type-openpublish-photo-gallery .enter-link .content .headline {
+		font-size: 22px;
+	}
+
+	/* Photos */
+	.node-type-openpublish-photo-gallery #gallery-header-main {
+		float: none;
+		width: auto;
+	}
+
+	.node-type-openpublish-photo-gallery #gallery-cover-social {
+		clear: both;
+		margin: 1em 0;
+		display: block !important;
+	}
+
+	.node-type-openpublish-photo-gallery #topic_box {
+		display: none;
+	}
+
+	.node-type-openpublish-photo-gallery #gallery-main {
+		display: inline-block;
+		width: 100%;
+	}
+
+	.node-type-openpublish-photo-gallery #gallery-photos .gallery-slide .image,
+	.node-type-openpublish-photo-gallery #gallery-photos .image-area {
+		float: none;
+		width: auto;
+		line-height: 1.5;
+		height: auto;
+		background-color: #fff;
+	}
+
+	.node-type-openpublish-photo-gallery #gallery-content .photo-caption {
+		float: none;
+		width: auto;
+
+		background: transparent;
+		border: none;
+		max-height: auto;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+	}
+
+	.node-type-openpublish-photo-gallery .tpslide_slide {
+		height: auto;
+	}
+
+	.node-type-openpublish-photo-gallery .tpslide_nav {
+		position: relative;
+		bottom: auto;
+		width: auto;
+		display: block;
+	}
+
+	.node-type-openpublish-photo-gallery .tpslide_nav_slides {
+		display: block;
+		margin-bottom: 1em;
+	}
+
+	.node-type-openpublish-photo-gallery #gallery-photos .gallery-slide img,
+	.node-type-openpublish-photo-gallery #gallery-content .image img,
+	.node-type-openpublish-photo-gallery .enter-link .image img {
+		height: auto;
+	}
+
+	.node-type-openpublish-photo-gallery #gallery-related {
+		width: auto;
+		float: none;
+		padding-left: 0;
+	}
+
+	.node-type-openpublish-photo-gallery .enter-link .content .enter {
+		position: static;
+		margin-top: 10px;
+		text-align: center;
+		font-weight: bold;
+	}
+
+	.node-type-openpublish-photo-gallery .enter-link .content {
+		padding: 1em;
+	}
+
+	.node-type-openpublish-photo-gallery .enter-link .content {
+		background: transparent;
+		padding: 0;
+	}
+
+	.node-type-openpublish-photo-gallery .enter-link .content-inner {
+		padding: 1em;
+
+		background: -moz-linear-gradient(left,  rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.7) 69%, rgba(0,0,0,0) 91%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.7)), color-stop(69%,rgba(0,0,0,0.7)), color-stop(91%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(left,  rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 69%,rgba(0,0,0,0) 91%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(left,  rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 69%,rgba(0,0,0,0) 91%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(left,  rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 69%,rgba(0,0,0,0) 91%,rgba(0,0,0,0) 100%); /* IE10+ */
+		background: linear-gradient(to right,  rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 69%,rgba(0,0,0,0) 91%,rgba(0,0,0,0) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+	}
+
+	.node-type-openpublish-photo-gallery .enter-link .image {
+		padding-bottom: 55px;
+	}
+
+	.node-type-openpublish-photo-gallery .show_gallery #gallery-related {
+		margin-top: 1em;
 	}
 }
 

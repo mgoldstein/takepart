@@ -37,22 +37,21 @@
 <section class="<?=$classes ?>"<?=$attributes ?>>
   <? if ($content['#fb_comments']['enabled']): ?>
     <?=render($title_prefix) ?>
-    <div class="fb_comments">
-      <script class="fb_comments_template" type="text/x-javascript-template">
-        <div class='comments-header'>
-          <h3 class="header">
-            <?=$content['comments_title'] ?>
-            <span class='comment-count'><fb:comments-count href="<?=$content['#fb_comments']['url'] ?>"></fb:comments-count></span>
-          </h3>
-        </div>
-        <?=render($title_suffix) ?>
-        <fb:comments href="<?=$content['#fb_comments']['url'] ?>"
-          num_posts="<?=$content['#fb_comments']['amount'] ?>"
-          width="<?=$content['#fb_comments']['width'] ?>"
-          mobile="<?=$content['#fb_comments']['mobile'] ?>"
-          colorscheme="<?=$content['#fb_comments']['style'] ?>"></fb:comments>
-      </script>
-    </div>
+    <div class="fb_comments"></div>
+    <script class="fb_comments_template" type="text/x-javascript-template">
+      <div class='comments-header'>
+        <h3 class="header">
+          <?=$content['comments_title'] ?>
+          <span class='comment-count'><fb:comments-count href="<?=$content['#fb_comments']['url'] ?>"></fb:comments-count></span>
+        </h3>
+      </div>
+      <?=render($title_suffix) ?>
+      <fb:comments href="<?=$content['#fb_comments']['url'] ?>"
+        num_posts="<?=$content['#fb_comments']['amount'] ?>"
+        width="<?=$content['#fb_comments']['width'] ?>"
+        mobile="<?=$content['#fb_comments']['mobile'] ?>"
+        colorscheme="<?=$content['#fb_comments']['style'] ?>"></fb:comments>
+    </script>
   <? else: ?>
     <? if ($content['#node']->comment_count > 0): ?>
       <?=render($title_prefix) ?>

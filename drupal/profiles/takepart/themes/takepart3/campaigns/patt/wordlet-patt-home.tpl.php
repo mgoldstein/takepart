@@ -12,7 +12,7 @@
 			</a>
 		</div>
 	<? endif ?>
-	
+
 	<? if ( $w = wf('top_nav', 'token', 'patt_film') ): ?>
 		<div class="item saltpepper">
 			<img class="item full" src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-saltpepper.png" width="105" height="68" alt="filled salt and pepper shakers" usemap="#saltpepper">
@@ -80,6 +80,18 @@
 				<img
 				 src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-tag-assistance.png"
 				 data-onsrc="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-tag-assistance-hover.png"
+				 width="144" height="142" alt="Assistance">
+			</a>
+		</div>
+	<? endif ?>
+
+	<? if ( $w = wf('top_nav', 'token', 'patt_game') ): ?>
+		<div class="item knife">
+			<img class="item full" src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-knife.png" width="148" height="87" alt="butter knife" usemap="#knife">
+			<a class="tag" href="<?=$w->href?>">
+				<img
+				 src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-tag-game.png"
+				 data-onsrc="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-tag-game-hover.png"
 				 width="144" height="142" alt="Assistance">
 			</a>
 		</div>
