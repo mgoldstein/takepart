@@ -586,7 +586,6 @@ div.takepart-take-action-widget {
 	font-size: 20px;
 }
 
-.page-tags ul,
 .page-tags li {
 	line-height: 1.25;
 	font-size: 14px;
@@ -602,7 +601,7 @@ div.takepart-take-action-widget {
 .page-tags .headline {
 	text-transform: uppercase;
 	color: #333;
-	margin-bottom: 6px;
+	margin-bottom: 4px;
 }
 
 .page-tags li:after {
