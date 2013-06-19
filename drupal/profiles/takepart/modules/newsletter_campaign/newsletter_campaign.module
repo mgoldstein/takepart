@@ -1355,6 +1355,7 @@ function newsletter_campaign_direct_signup_form_callback($form, $form_state) {
 
   $args = $form_state['newsletter_campaign_direct_signup'];
   $selector = $args['selector'];
+  $config = $args['config'];
 
   $errors = form_get_errors();
   if (empty($errors)) {
@@ -1364,7 +1365,12 @@ function newsletter_campaign_direct_signup_form_callback($form, $form_state) {
     $commands[] = ajax_command_replace($selector, $message);
   }
   else {
-    $markup = theme('status_messages') . drupal_render($form);
+    $form['header'] = array(
+      '#type' => 'markup',
+      '#markup' => theme('status_messages')
+        . newsletter_campaign_preprocess_markup($config['header']),
+    );
+    $markup = drupal_render($form);
     $commands[] = ajax_command_replace($selector, $markup);
   }
 
