@@ -281,6 +281,16 @@ function _sblock($var) {
   return '';
 }
 
+function _ssettings($var, $prop = NULL, $type = 'node', $key = NULL) {
+  $var = field_get_items($type, $var, $prop);
+  if ( is_array($var) && isset($var[0]['settings']) ) {
+    $settings = unserialize($var[0]['settings']);
+    $val = $settings[$key];
+    return $val;
+  }
+
+  return '';
+}
 
 // return an image
 function _simage($var, $prop = NULL, $type = 'node', $style = null) {
@@ -310,8 +320,8 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
   }
 
   if ( $style ) {
-    if ( is_array($style) && isset($style['settings']) ) {
-      $settings = unserialize($style['settings']);
+    if ( is_array($style) && isset($style[0]['settings']) ) {
+      $settings = unserialize($style[0]['settings']);
       $style = $settings['image_style'];
     }
 
@@ -377,8 +387,6 @@ function _snode($var, $prop = null, $type = 'node') {
     return $var[0]['node'];
   } elseif ( isset($var[0]) && isset($var[0]['taxonomy_term']) ) {
     return $var[0]['taxonomy_term'];
-  } elseif ( is_array($var) && count($var) === 1 && isset($var[0]) ) {
-    return $var[0];
   } else {
     return $var;
   }
