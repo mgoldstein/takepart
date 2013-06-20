@@ -26,7 +26,7 @@ function googlenews_getgooglenews() {
 
     $content = '<?xml version="1.0" encoding="UTF-8"?>';
     $content .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
-    $content .= '  xmlns:n="http://www.google.com/schemas/sitemap-news/0.9">';
+    $content .= '  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">';
 
     // Load the publication name.
     $publication_name = variable_get('googlenews_publication_name', '');
