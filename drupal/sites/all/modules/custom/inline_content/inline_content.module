@@ -612,3 +612,99 @@ function theme_inline_content($variables) {
   }
   return $output;
 }
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function inline_content_entity_property_info_alter(&$info) {
+  // Add related inline_content of embedded bundle to nodes as a property.
+  $inline_content_source_fields_info = inline_content_source_fields_info('node');
+  foreach ($inline_content_source_fields_info as $bundle => $fields) {
+    $info['node']['bundles'][$bundle]['properties']['inline_content_embedded'] = array(
+      'label' => t('Inline Content: Embedded Content'),
+      'description' => t('Inline Content: Embedded Content'),
+      'type' => 'list<node>',
+      'getter callback' => 'inline_content_entity_metadata_inline_content_embedded_property_get',
+    );
+  }
+}
+
+/**
+ * Getter callback for inline_content_embedded node property
+ */
+function inline_content_entity_metadata_inline_content_embedded_property_get ($entity, array $options, $name, $entity_type, $info) {
+
+  $inline_content_source_fields_info = inline_content_source_fields_info('node');
+  if (empty($inline_content_source_fields_info[$entity->type])) {
+    return;
+  }
+
+  $all_source_fields = array();
+  foreach ($inline_content_source_fields_info[$entity->type] as $instance_source_fields) {
+    foreach ($instance_source_fields as $source_field) {
+      $all_source_fields[] = $source_field;
+    }
+  }
+  $all_source_fields = array_unique($all_source_fields);
+
+  foreach ($all_source_fields as $source_field) {
+    if (empty($entity->{$source_field})) {
+      continue;
+    }
+
+    $inline_content_items = field_get_items($entity_type, $entity, $source_field);
+    foreach ($inline_content_items as $inline_content_item) {
+      $inline_content_items_ids[] = $inline_content_item['target_id'];
+    }
+  }
+  $inline_content_items_ids = array_unique($inline_content_items_ids);
+
+  $inline_content_entities = entity_load('inline_content',  $inline_content_items_ids);
+
+  $nids = array();
+  foreach ($inline_content_entities as $inline_content_entity) {
+    if ($inline_content_entity->type == 'nodes' && !empty($inline_content_entity->field_ic_content)) {
+      $inline_nodes = field_get_items('inline_content', $inline_content_entity, 'field_ic_content');
+      foreach ($inline_nodes as $inline_node) {
+        $nids[] = $inline_node['nid'];
+      }
+    }
+  }
+
+  $nids = array_unique($nids);
+
+  return $nids;
+}
+
+/**
+ * Implements hook_views_data_alter().
+ *
+ */
+function inline_content_views_data_alter(&$data) {
+  // Add related inline_content of embedded bundle to views.
+  $entity_data = entity_views_data();
+  $data['node']['inline_content_embedded'] = $entity_data['entity_node']['inline_content_embedded'];
+}
+
+/**
+ * Helper function to get source fields for entities using inline_content formatters
+ */
+function inline_content_source_fields_info($entity_type = 'node') {
+  $source_fields_info = &drupal_static(__FUNCTION__);
+  if (isset($source_fields_info[$entity_type])) {
+    return $source_fields_info[$entity_type];
+  }
+
+  $field_instances = field_info_instances();
+  foreach ($field_instances[$entity_type] as $bundle => $bundle_info) {
+    foreach ($bundle_info as $field_instance_name => $field_instance) {
+      foreach ($field_instance['display'] as $display_type => $display_settings) {
+        if ($display_settings['type'] == 'text_with_inline_content' && !empty($display_settings['settings']['source'])) {
+          $source_fields_info[$entity_type][$bundle][$field_instance_name][] = $display_settings['settings']['source'];
+        }
+      }
+    }
+  }
+
+  return $source_fields_info[$entity_type];
+}
