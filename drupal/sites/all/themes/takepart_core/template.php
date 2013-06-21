@@ -173,7 +173,6 @@ function _render_tp3_footer(&$params) {
 }
 
 function _alter_generated_css(&$css) {
-	return;
   // Pull important styles from the themes .info file and place them above all stylesheets.
 	foreach ($css as $i => $style_from_foo) {
 		$dirname = dirname($i);
