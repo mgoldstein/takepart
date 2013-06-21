@@ -485,6 +485,21 @@ function _takeaction_feed_page_url($node) {
   return _takeaction_feed_update_domain($page_url);
 }
 
+function _takeaction_feed_facebook_comment_settings($node) {
+  $settings = db_select('facebook_comments', 'f')
+    ->fields('f', array('enabled', 'amount'))
+    ->condition('f.nid', $node->nid, '=')
+    ->execute()
+    ->fetchObject();
+  if ($settings) {
+    return array(
+      'enabled' => $settings->enabled,
+      'amount' => $settings->amount,
+    );
+  }
+  return NULL;
+}
+
 /**
  * Function for creating an action feed item data set.
  */
@@ -630,6 +645,7 @@ function takeaction_feed_action_item_data($node) {
       'actionGoal' => $action_goal,
       'dateRange' => $date_range,
       'priority' => _takeaction_feed_field_value($node, 'field_priority'),
+      'facebookComments' => _takeaction_feed_facebook_comment_settings($node),
     ) + $sanitized;
   }
   return FALSE;
@@ -703,14 +719,14 @@ function _takeaction_feed_replace_with_property($data, $property) {
 function _takeaction_feed_image($data) {
   $url = NULL;
   if (!empty($data)) {
-    if (isset($data['und']) && isset($data['und'][0])) {
-      $uri = $data['und'][0];
+    if (isset($data['und']) && isset($data['und'][0]) && isset($data['und'][0]['fid'])) {
+      $fid = $data['und'][0]['fid'];
     }
     elseif (isset($data['fid'])) {
-      $uri = $data['fid'];
+      $fid = $data['fid'];
     }
-    if (!empty($uri)) {
-      $file = file_load($data['fid']);
+    if (!empty($fid)) {
+      $file = file_load($fid);
       $original_url = file_create_url($file->uri);
       $url = _takeaction_feed_update_domain($original_url);
     }

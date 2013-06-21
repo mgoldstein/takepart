@@ -1008,6 +1008,12 @@ function newsletter_campaign_mobile_only_signup_configuration($form, $config) {
     '#default_value' => $config['mobile_label'],
   );
 
+  $form['single_phone_number_field'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Use a single field for the phone number.'),
+    '#default_value' => $config['single_phone_number_field'],
+  );
+
   $form['submit_caption'] = array(
     '#type' => 'textfield',
     '#title' => t('Submit Caption'),
@@ -1054,26 +1060,37 @@ function newsletter_campaign_mobile_only_signup_form($form, &$form_state, $confi
     '#markup' => newsletter_campaign_preprocess_markup($config['header']),
   );
 
-  $form['mobile'] = array(
-    '#type' => 'fieldset',
-    '#title' => $config['mobile_label'],
-    '#tree' => TRUE,
-  );
+  if (!empty($config['single_phone_number_field'])) {
 
-  $form['mobile']['areacode'] = array(
-    '#type' => 'textfield',
-    '#maxlength' => 3,
-  );
+    $form['mobile_number'] = array(
+      '#type' => 'textfield',
+      '#title' => $config['mobile_label'],
+      '#maxlength' => 14,
+    );
+  }
+  else {
 
-  $form['mobile']['exchange'] = array(
-    '#type' => 'textfield',
-    '#maxlength' => 3,
-  );
+    $form['mobile'] = array(
+      '#type' => 'fieldset',
+      '#title' => $config['mobile_label'],
+      '#tree' => TRUE,
+    );
 
-  $form['mobile']['number'] = array(
-    '#type' => 'textfield',
-    '#maxlength' => 4,
-  );
+    $form['mobile']['areacode'] = array(
+      '#type' => 'textfield',
+      '#maxlength' => 3,
+    );
+
+    $form['mobile']['exchange'] = array(
+      '#type' => 'textfield',
+      '#maxlength' => 3,
+    );
+
+    $form['mobile']['number'] = array(
+      '#type' => 'textfield',
+      '#maxlength' => 4,
+    );
+  }
 
   $form['actions'] = array(
     '#type' => 'actions',
@@ -1158,6 +1175,12 @@ function newsletter_campaign_email_mobile_signup_configuration($form, $config) {
     '#default_value' => $config['mobile_label'],
   );
 
+  $form['single_phone_number_field'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Use a single field for the phone number.'),
+    '#default_value' => $config['single_phone_number_field'],
+  );
+
   $form['submit_caption'] = array(
     '#type' => 'textfield',
     '#title' => t('Submit Caption'),
@@ -1210,26 +1233,37 @@ function newsletter_campaign_email_mobile_signup_form($form, &$form_state, $conf
     '#required' => TRUE,
   );
 
-  $form['mobile'] = array(
-    '#type' => 'fieldset',
-    '#title' => $config['mobile_label'],
-    '#tree' => TRUE,
-  );
+  if (!empty($config['single_phone_number_field'])) {
 
-  $form['mobile']['areacode'] = array(
-    '#type' => 'textfield',
-    '#maxlength' => 3,
-  );
+    $form['mobile_number'] = array(
+      '#type' => 'textfield',
+      '#title' => $config['mobile_label'],
+      '#maxlength' => 14,
+    );
+  }
+  else {
 
-  $form['mobile']['exchange'] = array(
-    '#type' => 'textfield',
-    '#maxlength' => 3,
-  );
+    $form['mobile'] = array(
+      '#type' => 'fieldset',
+      '#title' => $config['mobile_label'],
+      '#tree' => TRUE,
+    );
 
-  $form['mobile']['number'] = array(
-    '#type' => 'textfield',
-    '#maxlength' => 4,
-  );
+    $form['mobile']['areacode'] = array(
+      '#type' => 'textfield',
+      '#maxlength' => 3,
+    );
+
+    $form['mobile']['exchange'] = array(
+      '#type' => 'textfield',
+      '#maxlength' => 3,
+    );
+
+    $form['mobile']['number'] = array(
+      '#type' => 'textfield',
+      '#maxlength' => 4,
+    );
+  }
 
   $form['actions'] = array(
     '#type' => 'actions',
@@ -1261,6 +1295,7 @@ function newsletter_campaign_direct_signup_form_validate($form, &$form_state) {
 
   $args = $form_state['newsletter_campaign_direct_signup'];
   $selector = $args['selector'];
+  $config = $args['config'];
 
   /* Validate the email */
   if ($selector != '#newsletter-campaign-mobile-only-signup-form') {
@@ -1273,26 +1308,42 @@ function newsletter_campaign_direct_signup_form_validate($form, &$form_state) {
   /* Validate the phone number */
   if ($selector != '#newsletter-campaign-email-only-signup-form') {
 
-    $mobile = $form_state['values']['mobile'];
-    $areacode_empty = $mobile['areacode'] === '';
-    $exchange_empty = $mobile['exchange'] === '';
-    $number_empty = $mobile['number'] === '';
+    if ($config['single_phone_number_field']) {
 
-    if ($areacode_empty === $exchange_empty && $exchange_empty === $number_empty) {
-      if (!$areacode_empty) {
-        $areacode_3_digits = preg_match('/^[0-9]{3}$/', $mobile['areacode']);
-        $exchange_3_digits = preg_match('/^[0-9]{3}$/', $mobile['exchange']);
-        $number_4_digits = preg_match('/^[0-9]{4}$/', $mobile['number']);
-        if (!$areacode_3_digits || !$exchange_3_digits || !$number_4_digits) {
-          form_set_error('mobile', t('Invalid mobile number.'));
+      $mobile_number = trim($form_state['values']['mobile_number']);
+      if (!empty($mobile_number)) {
+        $sanitized = PhoneCampaigns::Sanitize($mobile_number);
+        if (!preg_match('/^[0-9]{10}$/', $sanitized)) {
+          form_set_error('mobile_number', t('Invalid mobile number.'));
         }
       }
-      elseif ($selector == '#newsletter-campaign-mobile-only-signup-form') {
-        form_set_error('mobile', t('Mobile number is required.'));
+      else {
+        form_set_error('mobile_number', t('This field is required.'));
       }
     }
     else {
-      form_set_error('mobile', t('Incomplete mobile number.'));
+
+      $mobile = $form_state['values']['mobile'];
+      $areacode_empty = $mobile['areacode'] === '';
+      $exchange_empty = $mobile['exchange'] === '';
+      $number_empty = $mobile['number'] === '';
+
+      if ($areacode_empty === $exchange_empty && $exchange_empty === $number_empty) {
+        if (!$areacode_empty) {
+          $areacode_3_digits = preg_match('/^[0-9]{3}$/', $mobile['areacode']);
+          $exchange_3_digits = preg_match('/^[0-9]{3}$/', $mobile['exchange']);
+          $number_4_digits = preg_match('/^[0-9]{4}$/', $mobile['number']);
+          if (!$areacode_3_digits || !$exchange_3_digits || !$number_4_digits) {
+            form_set_error('mobile', t('Invalid mobile number.'));
+          }
+        }
+        elseif ($selector == '#newsletter-campaign-mobile-only-signup-form') {
+          form_set_error('mobile', t('Mobile number is required.'));
+        }
+      }
+      else {
+        form_set_error('mobile', t('Incomplete mobile number.'));
+      }
     }
   }
 }
@@ -1304,6 +1355,7 @@ function newsletter_campaign_direct_signup_form_callback($form, $form_state) {
 
   $args = $form_state['newsletter_campaign_direct_signup'];
   $selector = $args['selector'];
+  $config = $args['config'];
 
   $errors = form_get_errors();
   if (empty($errors)) {
@@ -1313,7 +1365,12 @@ function newsletter_campaign_direct_signup_form_callback($form, $form_state) {
     $commands[] = ajax_command_replace($selector, $message);
   }
   else {
-    $markup = theme('status_messages') . drupal_render($form);
+    $form['header'] = array(
+      '#type' => 'markup',
+      '#markup' => theme('status_messages')
+        . newsletter_campaign_preprocess_markup($config['header']),
+    );
+    $markup = drupal_render($form);
     $commands[] = ajax_command_replace($selector, $markup);
   }
 
@@ -1337,11 +1394,16 @@ function newsletter_campaign_direct_signup_form_submit($form, &$form_state) {
   $have_canada_flow_id = !empty($config['canada_mobile_flow_id']);
 
   $email = $form_state['values']['email'];
-  $phone = implode('', array(
-    $form_state['values']['mobile']['areacode'],
-    $form_state['values']['mobile']['exchange'],
-    $form_state['values']['mobile']['number'],
-  ));
+  if ($config['single_phone_number_field']) {
+    $phone = PhoneCampaigns::Sanitize($form_state['values']['mobile_number']);
+  }
+  else {
+    $phone = implode('', array(
+      $form_state['values']['mobile']['areacode'],
+      $form_state['values']['mobile']['exchange'],
+      $form_state['values']['mobile']['number'],
+    ));
+  }
 
   /* Send the email to BSD */
   if ($send_email && $have_form_id) {
@@ -1387,7 +1449,7 @@ function newsletter_campaign_direct_signup_form_submit($form, &$form_state) {
 
   /* Send the mobile number to Waterfall */
   if ($send_phone) {
-    $area_code = $form_state['values']['mobile']['areacode'];
+    $area_code = substr($phone, 0, 3);
     if (PhoneCampaigns::IsCanadianAreaCode($area_code) && $have_canada_flow_id) {
       Waterfall::Api()->post('authenticate', array(
         'username' => 'TakePart',
