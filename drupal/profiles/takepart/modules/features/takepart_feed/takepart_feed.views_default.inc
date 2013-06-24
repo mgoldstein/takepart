@@ -24,7 +24,11 @@ function takepart_feed_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '-1';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '-1';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -33,6 +37,10 @@ function takepart_feed_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_inline_replacements_target_id']['id'] = 'field_inline_replacements_target_id';
+  $handler->display->display_options['relationships']['field_inline_replacements_target_id']['table'] = 'field_data_field_inline_replacements';
+  $handler->display->display_options['relationships']['field_inline_replacements_target_id']['field'] = 'field_inline_replacements_target_id';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -146,6 +154,13 @@ function takepart_feed_views_default_views() {
   /* Display: Yahoo Feed */
   $handler = $view->new_display('page', 'Yahoo Feed', 'page_2');
   $handler->display->display_options['display_description'] = 'Full content RSS feed formatted for Yahoo';
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['defaults']['query'] = FALSE;
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
@@ -157,6 +172,7 @@ function takepart_feed_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -174,14 +190,6 @@ function takepart_feed_views_default_views() {
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  /* Field: Content: Display Tag */
-  $handler->display->display_options['fields']['field_display_tag']['id'] = 'field_display_tag';
-  $handler->display->display_options['fields']['field_display_tag']['table'] = 'field_data_field_display_tag';
-  $handler->display->display_options['fields']['field_display_tag']['field'] = 'field_display_tag';
-  $handler->display->display_options['fields']['field_display_tag']['label'] = '';
-  $handler->display->display_options['fields']['field_display_tag']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_display_tag']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_display_tag']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
@@ -200,6 +208,73 @@ function takepart_feed_views_default_views() {
   $handler->display->display_options['fields']['body']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '1200',
+  );
+  /* Field: Content: Inline Content: Embedded Content */
+  $handler->display->display_options['fields']['inline_content_embedded']['id'] = 'inline_content_embedded';
+  $handler->display->display_options['fields']['inline_content_embedded']['table'] = 'node';
+  $handler->display->display_options['fields']['inline_content_embedded']['field'] = 'inline_content_embedded';
+  $handler->display->display_options['fields']['inline_content_embedded']['label'] = '';
+  $handler->display->display_options['fields']['inline_content_embedded']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['inline_content_embedded']['list']['separator'] = ',,,';
+  $handler->display->display_options['fields']['inline_content_embedded']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['inline_content_embedded']['view_mode'] = 'full';
+  /* Field: Content: Related Stories */
+  $handler->display->display_options['fields']['field_related_stories']['id'] = 'field_related_stories';
+  $handler->display->display_options['fields']['field_related_stories']['table'] = 'field_data_field_related_stories';
+  $handler->display->display_options['fields']['field_related_stories']['field'] = 'field_related_stories';
+  $handler->display->display_options['fields']['field_related_stories']['label'] = '';
+  $handler->display->display_options['fields']['field_related_stories']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_related_stories']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_related_stories']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_related_stories']['separator'] = ',,,';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['php']['alter']['text'] = '[field_related_stories][php][inline_content_embedded]';
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+if (!empty($data->_field_data[\'nid\'][\'entity\']->field_related_stories) && !empty($data->_entity_properties[\'inline_content_embedded\'])) {
+  $separator = \',,,\';
+} else {
+  $separator = \'\';
+}
+echo $separator;
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['group_type'] = 'count_distinct';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'action' => 'action',
+    'openpublish_article' => 'openpublish_article',
+    'petition_action' => 'petition_action',
+    'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+    'pledge_action' => 'pledge_action',
+    'openpublish_video' => 'openpublish_video',
   );
   $handler->display->display_options['path'] = 'content/%/yahoo_feed.xml ';
 

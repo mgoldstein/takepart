@@ -15,3 +15,4 @@ files[] = handlers/InlineContentTakeActionWidget.class.php
 
 dependencies[] = inline_entity_form
 dependencies[] = inline_content_fields
+dependencies[] = entity
