@@ -387,6 +387,7 @@ function _snode($var, $prop = null, $type = 'node') {
   } elseif ( isset($var[0]) && isset($var[0]['taxonomy_term']) ) {
     return $var[0]['taxonomy_term'];
   } else {
+    if ( is_array($var) ) reset($var);
     return $var;
   }
 }
