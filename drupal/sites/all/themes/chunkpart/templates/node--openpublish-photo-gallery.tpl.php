@@ -200,6 +200,10 @@
 		<div class="OUTBRAIN" data-src="<?=_surl($node) ?>" data-widget-id="AR_5" data-ob-template="TakePart" ></div>
 		<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
 
+		<? if ( isset($node_region['bean_on-our-radar-block']) ): ?>
+			<?=render($node_region['bean_on-our-radar-block']) ?>
+		<? endif ?>
+
 		<div class="gallery-comments">
 			<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
 		</div>
