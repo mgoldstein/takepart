@@ -552,8 +552,8 @@ body {
 }
 /* second block second sub */
 .page-wordlet-intelchange-winners-home #page .second-block .second-sub .stay-contected a {
-  margin-left: 20px;
-  margin-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .page-wordlet-intelchange-winners-home #page .teams-wrapper {
 /*  white-space: nowrap;
