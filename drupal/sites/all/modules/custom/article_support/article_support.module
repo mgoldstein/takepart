@@ -9,7 +9,7 @@ class ViewHelperLink {
   }
 }
 
-function article_support_next_article($node) {
+function article_support_next_story($node, $type) {
 
   // Get the first article from a list of articles created before this one
   // sorted from newest to oldest
@@ -25,7 +25,7 @@ function article_support_next_article($node) {
     $query->condition('f.entity_type', 'node')
       ->condition('f.field_series_tid', $value['tid'])
       ->condition('n.created', $node->created, '<')
-      ->condition('n.type', 'openpublish_article')
+      ->condition('n.type', $type)
       ->condition('n.status', 0, '!=')
       ->orderBy('n.created', 'DESC')
       ->orderBy('n.nid', 'DESC')
@@ -45,7 +45,7 @@ function article_support_next_article($node) {
     $query->condition('f.entity_type', 'node')
       ->condition('f.field_topic_tid', $value['tid'])
       ->condition('n.created', $node->created, '<')
-      ->condition('n.type', 'openpublish_article')
+      ->condition('n.type', $type)
       ->condition('n.status', 0, '!=')
       ->orderBy('n.created', 'DESC')
       ->orderBy('n.nid', 'DESC')
@@ -57,7 +57,7 @@ function article_support_next_article($node) {
       $query = db_select('node', 'n')
         ->fields('n', array('nid', 'title'))
         ->condition('created', $node->created, '<')
-        ->condition('type', 'openpublish_article')
+        ->condition('type', $type)
         ->condition('status', 0, '!=')
         ->orderBy('created', 'DESC')
         ->orderBy('nid', 'DESC')
@@ -68,28 +68,8 @@ function article_support_next_article($node) {
   // Fetch the previous article.
   $previous = $query->execute()->fetchAssoc();
   if ($previous !== FALSE) {
-    return new ViewHelperLink($previous['title'],
-      url('node/' . $previous['nid']));
-  }
-}
-
-function article_support_next_gallery($wrapper) {
-
-  // Get the first article from a list of articles created before this one
-  // sorted from newest to oldest
-  $query = db_select('node', 'n')
-    ->fields('n', array('nid', 'title'))
-    ->condition('created', $wrapper->created->value(), '<')
-    ->condition('type', 'openpublish_photo_gallery')
-    ->condition('status', 0, '!=')
-    ->orderBy('created', 'DESC')
-    ->orderBy('nid', 'DESC')
-    ->range(0, 1);
-
-  // Fetch the previous article.
-  $previous = $query->execute()->fetchAssoc();
-  if ($previous !== FALSE) {
-    return new ViewHelperLink($previous['title'],
+    return new ViewHelperLink(
+      $previous['title'],
       url('node/' . $previous['nid']),
       NULL,
       node_load($previous['nid'])
@@ -105,25 +85,13 @@ function article_support_node_view($node, $view_mode, $langcode) {
   if ($node->type === 'openpublish_article' && $view_mode === 'full') {
     // Pass the additional variables through to the preprocessor.
     $node->content['#additional_variables'] = array(
-      'next_article' => article_support_next_article($node),
+      'next_article' => article_support_next_story($node, $node->type),
     );
   } elseif ($node->type === 'openpublish_photo_gallery' && $view_mode === 'full') {
-    // Additional variables to make available to the template.
-    $variables = array(
-      'next_gallery' => NULL,
-    );
-
-    // Get the value of each additional variable.
-    $wrapper = entity_metadata_wrapper('node', $node);
-    foreach (array_keys($variables) as $name) {
-      $function = "article_support_{$name}";
-      if (function_exists($function)) {
-        $variables[$name] = call_user_func_array($function, array($wrapper));
-      }
-    }
-
     // Pass the additional variables through to the preprocessor.
-    $node->content['#additional_variables'] = $variables;
+    $node->content['#additional_variables'] = array(
+      'next_gallery' => article_support_next_story($node, $node->type),
+    );
   }
 }
 

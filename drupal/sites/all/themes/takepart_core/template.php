@@ -196,7 +196,7 @@ function _alter_generated_css(&$css) {
 function _l($someArray, $prepend = '') {
     echo "<hr />";
     if ( !is_array($someArray) && !is_object($someArray) ) {
-      echo '<div class="data"><span class="value">' . htmlspecialchars($v) . '</span></div>';
+      echo '<div class="data"><span class="value">' . htmlspecialchars($someArray) . '</span></div>';
     }
 
     $someArray = (array)$someArray;
@@ -349,7 +349,12 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
 }
 
 // Rip out Drupal system classes
-function _smenu($menu) {
+function _smenu($menu, $prop = NULL, $type = 'node') {
+  if ( is_object($menu) && $prop ) {
+    $menu = field_get_items($type, $menu, $prop);
+    $menu = $menu[0]['safe_value'];
+  }
+
   if ( is_string($menu) ) {
     $items = menu_tree($menu);
   } elseif ( is_array($menu) ) {
@@ -379,16 +384,18 @@ function _smenu($menu) {
 function _snode($var, $prop = null, $type = 'node') {
   if ( is_object($var) && $prop ) {
     $var = field_get_items($type, $var, $prop);
-    //return $var;
+    if ( isset($var[0]['tid']) ) {
+      $taxonomy_term = taxonomy_term_load($var[0]['tid']);
+      $taxonomy_term->_stype = 'taxonomy_term';
+      return $taxonomy_term;
+    }
+    return $var;
   }
 
-  if ( isset($var[0]) && isset($var[0]['node']) ) {
-    return $var[0]['node'];
-  } elseif ( isset($var[0]) && isset($var[0]['taxonomy_term']) ) {
-    return $var[0]['taxonomy_term'];
-  } else {
-    if ( is_array($var) ) reset($var);
-    return $var;
+  if ( isset($var[0]) ) {
+    if ( isset($var[0]['access']) && !$var[0]['access'] ) return null;
+    if ( isset($var[0]['node']) ) return $var[0]['node'];
+    return $var[0];
   }
 }
 
