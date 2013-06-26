@@ -36,7 +36,8 @@ $(function() {
 		'Author Full Bio Link': '#article-author .full_bio_link',
 		'Author Byline Link': '.authors',
 		'Badge': '.badge',
-		'Topic Box': '#topic_box'
+		'Topic Box': '#topic_box',
+		'Outbrain Widget': '.OUTBRAIN'
 	};
 
 	// Only place it on internal urls
