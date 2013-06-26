@@ -26,9 +26,11 @@
             cycle: true,
             do_hash: false,
             onslide: null,
+            onafter: null,
             previous: '&larr;',
             next: '&rarr;',
-            separator: ' / '
+            separator: ' / ',
+            speed: 'slow'
         }, options || {});
         return this.each(function () {
             var $this = $(this);
@@ -96,12 +98,14 @@
                 $slides.css({
                     width: $wrapper.outerWidth()
                 });
-                slide(false);
+                slide(false, 0);
             });
             var auto_next = function () {
                 next(false);
             };
-            var slide = function (do_hash) {
+            var slide = function (do_hash, speed) {
+                // TODO: better define when callbacks should not be called
+                speed = (speed == undefined) ? settings.speed : speed;
                 if ( isNaN(current) ) {
                     current = 0;
                     $current = $slides.eq(current);
@@ -112,7 +116,16 @@
                     autoslide_timeout = setTimeout(auto_next, settings.autoslide);
                 }
                 do_hash = do_hash || settings.do_hash;
-                $this.scrollTo($current, 'slow');
+                if ( settings.onafter && speed ) {
+                    $this.scrollTo($current, speed, {onAfter: (function($current) {
+                            return function() {
+                                settings.onafter($current);
+                            }
+                        })($current)
+                    });
+                } else {
+                    $this.scrollTo($current, speed);
+                }
                 $links.removeClass(settings.prepend + 'active');
 
                 $links.eq(current).addClass(settings.prepend + 'active');
@@ -135,7 +148,7 @@
                     $prev.removeClass(settings.prepend + 'disabled');
                 }
 
-                if ( settings.onslide ) settings.onslide($current);
+                if ( settings.onslide && speed ) settings.onslide($current);
             };
 
             accessor.slide_to = function (val) {

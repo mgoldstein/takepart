@@ -551,6 +551,15 @@
 	.node-type-openpublish-photo-gallery .show_gallery #gallery-related {
 		margin-top: 1em;
 	}
+
+	.node-type-openpublish-photo-gallery #gallery-main .image-content-wrapper {
+		line-height: 1;
+		height: auto;
+	}
+
+	.node-type-openpublish-photo-gallery #gallery-content .photo-caption {
+		height: auto;
+	}
 }
 
 
