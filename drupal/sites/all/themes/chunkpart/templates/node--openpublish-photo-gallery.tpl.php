@@ -143,6 +143,8 @@
 	</div>
 
 	<div id="gallery-related">
+		<div class="takepart-take-action-widget"></div>
+
 		<div id="gallery-description">
 			<? if ( $body = _snode($node, 'body') ): ?>
 				<div id="gallery-body" class="cms">
