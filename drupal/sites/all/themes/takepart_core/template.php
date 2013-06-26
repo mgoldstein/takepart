@@ -384,11 +384,6 @@ function _smenu($menu, $prop = NULL, $type = 'node') {
 function _snode($var, $prop = null, $type = 'node') {
   if ( is_object($var) && $prop ) {
     $var = field_get_items($type, $var, $prop);
-    if ( isset($var[0]['tid']) ) {
-      $taxonomy_term = taxonomy_term_load($var[0]['tid']);
-      $taxonomy_term->_stype = 'taxonomy_term';
-      return $taxonomy_term;
-    }
     return $var;
   }
 
