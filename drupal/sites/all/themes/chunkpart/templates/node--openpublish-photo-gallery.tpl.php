@@ -124,7 +124,9 @@
 							<div class="photo-caption">
 								<div class="caption cms">
 									<p class="headline"><?=_s($next_gallery->title) ?></p>
-									<p class="article-abstract"><?=_s($subhead) ?></p>
+									<? if ( $nextsubhead = _snode($next_gallery->node, 'field_subhead', 'node') ): ?>
+										<p class="article-abstract"><?=_s($nextsubhead) ?></p>
+									<? endif ?>
 								</div>
 							</div>
 						</a>
