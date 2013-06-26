@@ -384,8 +384,6 @@ function _snode($var, $prop = null, $type = 'node') {
 
   if ( isset($var[0]) && isset($var[0]['node']) ) {
     return $var[0]['node'];
-  } elseif ( isset($var[0]) && isset($var[0]['taxonomy_term']) ) {
-    return $var[0]['taxonomy_term'];
   } else {
     return $var;
   }
