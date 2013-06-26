@@ -492,6 +492,30 @@
 		height: auto;
 	}
 
+	.node-type-openpublish-photo-gallery #gallery-photos #gallery-content {
+		position: relative;
+	}
+
+	.node-type-openpublish-photo-gallery .back-to-cover a {
+		top: 0;
+	}
+
+	.node-type-openpublish-photo-gallery .on-first .back-to-cover {
+		top: 0;
+		bottom: auto;
+	}
+
+	.node-type-openpublish-photo-gallery .back-to-cover a,
+	.node-type-openpublish-photo-gallery .tpslide_prev {
+		right: auto;
+		left: 0;
+	}
+
+	.node-type-openpublish-photo-gallery .tpslide_next {
+		left: auto;
+		right: 0;
+	}
+
 	.node-type-openpublish-photo-gallery .tpslide_nav {
 		position: relative;
 		bottom: auto;
