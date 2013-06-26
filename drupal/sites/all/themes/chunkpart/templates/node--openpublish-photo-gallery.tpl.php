@@ -143,8 +143,6 @@
 	</div>
 
 	<div id="gallery-related">
-		<div class="takepart-take-action-widget"></div>
-
 		<div id="gallery-description">
 			<? if ( $body = _snode($node, 'body') ): ?>
 				<div id="gallery-body" class="cms">
@@ -155,6 +153,10 @@
 				</div>
 			<? endif ?>
 		</div>
+
+		<? if ( _s($node, 'field_display_tab_banner') ): ?>
+			<div class="takepart-take-action-widget"></div>
+		<? endif ?>
 
 		<? if ( $relateds = field_get_items('node', $node, 'field_related_galleries') ): ?>
 			<nav id="related-galleries" class="related">
