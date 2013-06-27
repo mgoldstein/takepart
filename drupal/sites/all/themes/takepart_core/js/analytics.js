@@ -147,6 +147,42 @@ takepart.analytics.track = function(name) {
             }
             break;
         // -------------------------------
+        // TP Gallery ----------------
+        // -------------------------------
+        case 'gallery-next-gallery-click':
+            var s=s_gi(Drupal.settings.omniture.s_account);
+            s.linkTrackVars='events';
+            s.linkTrackEvents='event17';
+            s.events='event17';
+            s.eVar14=args[1].headline;
+            s.tl(true, 'o', 'Click on Up Next Promo Gallery');
+            break;
+        case 'gallery-track-slide':
+            var token = args[1].token;
+            omniture = s.prop15.split(':');
+            s.prop15 = omniture[0] + ':' + omniture[1] + ((token) ? ':' + token : '');
+            s.eVar15 = s.prop15;
+            s.events = 'event2';
+            s.linkTrackEvents = 'event2';
+
+            // Next gallery
+            if ( token == 'next-gallery' ) {
+                s.events += ',event16';
+                s.linkTrackEvents += ',event16';
+                s.eVar16 = 'Up Next Gallery Cover';
+            // Photo view
+            } else if ( token ) {
+                s.events += ',event15';
+                s.linkTrackEvents += ',event15';
+                s.eVar16 = 'Photo';
+            // Gallery cover
+            } else {
+                s.eVar16 = 'Gallery Cover';
+            }
+
+            s.t();
+            break;
+        // -------------------------------
         // TP Infographic ----------------
         // -------------------------------
         case 'tpinfographic_show':
