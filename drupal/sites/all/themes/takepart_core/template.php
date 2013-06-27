@@ -384,6 +384,7 @@ function _smenu($menu, $prop = NULL, $type = 'node') {
 function _snode($var, $prop = null, $type = 'node') {
   if ( is_object($var) && $prop ) {
     $var = field_get_items($type, $var, $prop);
+    if ( is_array($var) ) reset($var);
     return $var;
   }
 
