@@ -943,6 +943,7 @@ body {
 
 	.multipage-campaign #site-header {
 		margin-bottom: 0;
+		height: auto;
 	}
 
 	.multipage-campaign #site-main-nav {
