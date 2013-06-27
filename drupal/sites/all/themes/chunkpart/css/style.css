@@ -1623,10 +1623,6 @@ div.takepart-take-action-widget {
 	display: none;
 }
 
-.node-type-openpublish-photo-gallery .back-to-cover a:hover {
-	background-image: url(../images/gallery_prev_rollover.png); /** sprite-ref: mysprite; */
-}
-
 .node-type-openpublish-photo-gallery .on-first .tpslide_prev {
 	display: none;
 }
@@ -1707,22 +1703,23 @@ div.takepart-take-action-widget {
 }
 
 .node-type-openpublish-photo-gallery .tpslide_next {
-	background-image: url(../images/gallery_next.png); /** sprite-ref: mysprite; */
+	background-image: url(../images/gallery_next_rollover.png); /** sprite-ref: mysprite; */
 	left: 56%;
 }
 
 .node-type-openpublish-photo-gallery .back-to-cover a,
 .node-type-openpublish-photo-gallery .tpslide_prev {
-	background-image: url(../images/gallery_prev.png); /** sprite-ref: mysprite; */
+	background-image: url(../images/gallery_prev_rollover.png); /** sprite-ref: mysprite; */
 	right: 56%;
 }
 
 .node-type-openpublish-photo-gallery .tpslide_next:hover {
-	background-image: url(../images/gallery_next_rollover.png); /** sprite-ref: mysprite; */
+	background-image: url(../images/gallery_next.png); /** sprite-ref: mysprite; */
 }
 
+.node-type-openpublish-photo-gallery .back-to-cover a:hover,
 .node-type-openpublish-photo-gallery .tpslide_prev:hover {
-	background-image: url(../images/gallery_prev_rollover.png); /** sprite-ref: mysprite; */
+	background-image: url(../images/gallery_prev.png); /** sprite-ref: mysprite; */
 }
 
 .node-type-openpublish-photo-gallery .tpslide_nav_slides {
