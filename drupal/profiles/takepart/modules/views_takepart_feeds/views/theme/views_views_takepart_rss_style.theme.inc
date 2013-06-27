@@ -21,11 +21,11 @@ function _build_list_for_yahoo_rss_feed($content) {
     foreach ( $parts as $part ) {
         $part = trim($part);
         if ( $part ) {
-            $ret .= '<li><p><strong>' . $part . '</strong></p></li>';
+            $ret .= '<p><strong>&bull; ' . $part . '</strong></p>';
         }
     }
 
-   if ( $ret ) return '<ul>' . $ret . '</ul>';
+   if ( $ret ) return '<nav>' . $ret . '</nav>';
     return '';
 }
 
