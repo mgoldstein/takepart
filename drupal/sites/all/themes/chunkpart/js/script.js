@@ -369,7 +369,10 @@ $(function() {
 			gallery_showing = false;
 		};
 
-		$slides.tpslide({onslide: slide_callback});
+		$slides.tpslide({
+			onslide: slide_callback,
+			threshold: 75
+		});
 
 		var first_popped = false;
 		window.addEventListener('popstate', function(e) {

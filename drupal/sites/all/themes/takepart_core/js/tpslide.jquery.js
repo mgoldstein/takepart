@@ -21,7 +21,7 @@
             prepend: 'tpslide_',
             slides: '> *',
             rewind: true,
-            threshold: 100,
+            threshold: 50,
             autoslide: false,
             cycle: true,
             do_hash: false,
