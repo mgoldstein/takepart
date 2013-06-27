@@ -25,7 +25,7 @@ function _build_list_for_yahoo_rss_feed($content) {
         }
     }
 
-   if ( $ret ) return '<nav>' . $ret . '</nav>';
+   if ( $ret ) return $ret;
     return '';
 }
 
@@ -126,7 +126,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
         }
 
         if ($related_content) {
-            $content .= "\n\n<p><strong>Related stories on TakePart:</strong></p>\n\n" . $related_content;
+            $content .= "\n\n<nav><h2><strong>Related stories on TakePart:</strong></h2><br/>\n\n" . $related_content . '</nav>';
         }
 
         $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
