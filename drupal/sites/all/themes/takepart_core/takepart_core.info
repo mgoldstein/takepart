@@ -15,7 +15,8 @@ stylesheets[all][] = css/header_footer.css
 stylesheets[all][] = css/tpmodal.css
 
 ;-------------- JS -------------
-scripts[] = js/analytics.js
+scripts[] = js/custom-lib/tpanalytics.js
+scripts[] = js/tpanalytics.events.js
 scripts[] = js/jquery.touchSwipe.js
 scripts[] = js/jquery.lazyload.js
 scripts[] = js/tpsocial.jquery.js
