@@ -15,7 +15,6 @@ function article_support_next_story($node, $type) {
   // sorted from newest to oldest
   $series = field_get_items('node', $node, 'field_series');
   if ($series !== FALSE) {
-
     $value = reset($series);
 
     // Stay within the same series if there is one.
@@ -30,44 +29,51 @@ function article_support_next_story($node, $type) {
       ->orderBy('n.created', 'DESC')
       ->orderBy('n.nid', 'DESC')
       ->range(0, 1);
-  }
-  else {
 
+    // Fetch the previous article.
+    $previous = $query->execute()->fetchAssoc();
+  }
+
+  if ( !$previous ) {
     $topic = field_get_items('node', $node, 'field_topic');
+
     if ($topic !== FALSE) {
+      $value = reset($topic);
 
-    $value = reset($topic);
-
-    // Stay within the same topic if there is no series.
-    $query = db_select('node', 'n')
-      ->fields('n', array('nid', 'title'));
-    $query->join('field_data_field_topic', 'f', 'n.nid = f.entity_id');
-    $query->condition('f.entity_type', 'node')
-      ->condition('f.field_topic_tid', $value['tid'])
-      ->condition('n.created', $node->created, '<')
-      ->condition('n.type', $type)
-      ->condition('n.status', 0, '!=')
-      ->orderBy('n.created', 'DESC')
-      ->orderBy('n.nid', 'DESC')
-      ->range(0, 1);
-    }
-    else {
-
-      // Fall back on chronological ordering
+      // Stay within the same topic if there is no series.
       $query = db_select('node', 'n')
-        ->fields('n', array('nid', 'title'))
-        ->condition('created', $node->created, '<')
-        ->condition('type', $type)
-        ->condition('status', 0, '!=')
-        ->orderBy('created', 'DESC')
-        ->orderBy('nid', 'DESC')
+        ->fields('n', array('nid', 'title'));
+      $query->join('field_data_field_topic', 'f', 'n.nid = f.entity_id');
+      $query->condition('f.entity_type', 'node')
+        ->condition('f.field_topic_tid', $value['tid'])
+        ->condition('n.created', $node->created, '<')
+        ->condition('n.type', $type)
+        ->condition('n.status', 0, '!=')
+        ->orderBy('n.created', 'DESC')
+        ->orderBy('n.nid', 'DESC')
         ->range(0, 1);
+
+      // Fetch the previous article.
+      $previous = $query->execute()->fetchAssoc();
     }
   }
 
-  // Fetch the previous article.
-  $previous = $query->execute()->fetchAssoc();
-  if ($previous !== FALSE) {
+  if ( !$previous ) {
+    // Fall back on chronological ordering
+    $query = db_select('node', 'n')
+      ->fields('n', array('nid', 'title'))
+      ->condition('created', $node->created, '<')
+      ->condition('type', $type)
+      ->condition('status', 0, '!=')
+      ->orderBy('created', 'DESC')
+      ->orderBy('nid', 'DESC')
+      ->range(0, 1);
+
+    // Fetch the previous article.
+    $previous = $query->execute()->fetchAssoc();
+  }
+
+  if ( $previous ) {
     return new ViewHelperLink(
       $previous['title'],
       url('node/' . $previous['nid']),
