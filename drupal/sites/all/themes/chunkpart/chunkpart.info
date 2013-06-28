@@ -38,6 +38,7 @@ regions[node_region] = Node
 stylesheets[all][] = css/reset.css
 css[css/reset.css][options][weight] = -1
 stylesheets[all][] = css/style.css
+stylesheets[print][] = css/print.css
 stylesheets[all][] = css/responsive.css
 
 ;-------------- JS -------------

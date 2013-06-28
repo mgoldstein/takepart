@@ -131,18 +131,18 @@
 						<? endwhile ?>
 					</ul>
 				</nav>
+
+				<div class="OUTBRAIN" data-src="<?=_surl($node) ?>" data-widget-id="AR_3" data-ob-template="TakePart" ></div>
+				<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
+
+				<? if ( isset($node_region['bean_on-our-radar-block']) ): ?>
+					<?=render($node_region['bean_on-our-radar-block']) ?>
+				<? endif ?>
+
+				<div id="article-comments">
+					<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
+				</div>
 			</footer>
-
-			<div class="OUTBRAIN" data-src="<?=_surl($node) ?>" data-widget-id="AR_3" data-ob-template="TakePart" ></div>
-			<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
-
-			<? if ( isset($node_region['bean_on-our-radar-block']) ): ?>
-				<?=render($node_region['bean_on-our-radar-block']) ?>
-			<? endif ?>
-
-			<div id="article-comments">
-				<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>
-			</div>
 		</div>
 	</div>
 	<? if ( $field_topic_box ): ?>
