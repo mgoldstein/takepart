@@ -43,7 +43,7 @@
 			<aside id="article-author"><div class="inner">
 				<? if ( $author = _snode($field_author) ): ?>
 					<p class="image">
-						<?=_simage($author, 'field_profile_photo')?>
+						<?=_simage($author, 'field_profile_photo', 'node', 'tp_article_author_bio_photo') ?>
 					</p>
 					<h3 class="headline"><?=$author->title ?></h3>
 
