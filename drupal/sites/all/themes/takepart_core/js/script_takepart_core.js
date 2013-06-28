@@ -24,7 +24,7 @@ $(function() {
 
 	// Omniture position tracking
 	// Parent/ancestor vars to track in reverse order of importance
-	var positions = {
+	$.tpregions.add({
 		'Header': '#site-header',
 		'Footer': '#site-footer',
 		'Daily Featured Content': '.of_the_day_section',
@@ -36,26 +36,9 @@ $(function() {
 		'Author Full Bio Link': '#article-author .full_bio_link',
 		'Author Byline Link': '.authors',
 		'Badge': '.badge',
-		'Topic Box': '#topic_box'
-	};
-
-	// Only place it on internal urls
-	var relative_test = new RegExp("//" + location.host + "($|/)");
-
-	for ( var pos in positions ) {
-		var sel = positions[pos];
-
-		var $as = $(sel + ' a');
-
-		for ( var i = 0; i < $as.length; i++ ) {
-			var a = $as[i];
-			var is_local = (a.href.substring(0,4) === "http") ? relative_test.test(a.href) : true;
-
-			if ( is_local  ) {
-				a.name = '&lpos=' + pos;
-			}
-		}
-	}
+		'Topic Box': '#topic_box',
+		'Outbrain Widget': '.OUTBRAIN'
+	});
 
 	/* --------------------------------
 	| Page Specific ---------------- */
