@@ -194,9 +194,15 @@ function _takepart_galleries_mappings($nid) {
  */
 function takepart_galleries_omniture_variables() {
   $return = array();
-  $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
-  if($first_folder == 'photos') {
-    $return = $return + (array('s.linkTrackEvents'=>'event14','s.events'=>'event14'));
+  $folders = explode('/', $_SERVER['REQUEST_URI']);
+  $first_folder = $folders[1];
+  $third_folder = @$folders[3];
+  if ( $first_folder == 'photos' ) {
+    if ( $third_folder ) {
+      $return = $return + (array('s.linkTrackEvents'=>'event14,event15','s.events'=>'event14,event15'));
+    } else {
+      $return = $return + (array('s.linkTrackEvents'=>'event14','s.events'=>'event14'));
+    }
     return array("variables" => $return);
   }
 }
