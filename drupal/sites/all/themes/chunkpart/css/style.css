@@ -1336,6 +1336,11 @@ div.takepart-take-action-widget {
 	margin-top: 50px
 }
 
+.node-type-openpublish-photo-gallery .takepart-take-action-widget {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .node-type-openpublish-photo-gallery #gallery-body .drupal-embed {
 	display: none;
 }
