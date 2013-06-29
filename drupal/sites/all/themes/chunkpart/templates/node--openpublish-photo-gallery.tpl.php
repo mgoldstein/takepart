@@ -101,7 +101,7 @@
 				<? endif ?>
 				<? if ( $next_gallery ): ?>
 					<li id="next-gallery" data-token="next-gallery" class="next-article">
-						<a href="<?=$next_gallery->href ?>" class="enter-link">
+						<span class="enter-link">
 							<div class="image-content-wrapper">
 								<div class="image-area-inner">
 									<p class="image">
@@ -111,13 +111,15 @@
 											<?=_simage($next_gallery->node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?>
 										<? endif ?>
 									</p>
-									<div class="content">
-										<div class="content-inner">
-											<p class="description"><?=t('Up Next') ?></p>
-											<h2 class="headline"><?=_s($next_gallery->title) ?></h2>
+									<a href="<?=$next_gallery->href ?>">
+										<div class="content">
+											<div class="content-inner">
+												<p class="description"><?=t('Up Next') ?></p>
+												<h2 class="headline"><?=_s($next_gallery->title) ?></h2>
+											</div>
+											<p class="enter"><?=t('Enter Photo Gallery') ?></p>
 										</div>
-										<p class="enter"><?=t('Enter Photo Gallery') ?></p>
-									</div>
+									</a>
 								</div>
 							</div>
 
@@ -129,7 +131,7 @@
 									<? endif ?>
 								</div>
 							</div>
-						</a>
+						</span>
 					</li>
 				<? endif ?>
 			</ul>
