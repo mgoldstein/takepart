@@ -24,7 +24,7 @@ $(function() {
 
 	// Omniture position tracking
 	// Parent/ancestor vars to track in reverse order of importance
-	var positions = {
+	$.tpregions.add({
 		'Header': '#site-header',
 		'Footer': '#site-footer',
 		'Daily Featured Content': '.of_the_day_section',

@@ -915,10 +915,12 @@ div.takepart-take-action-widget {
 }
 
 .node-type-article #article-social #article-comments-link a {
+	background-position: 0 4px;
 	background-image: url(../images/share_comments.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 
 .node-type-article #article-social-more h4 a {
+	background-position: 0 4px;
 	background-image: url(../images/share_more.png); /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 
