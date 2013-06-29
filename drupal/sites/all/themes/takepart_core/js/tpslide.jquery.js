@@ -30,7 +30,8 @@
             previous: '&larr;',
             next: '&rarr;',
             separator: ' / ',
-            speed: 'slow'
+            speed: 'slow',
+            swipeTarget: null
         }, options || {});
         return this.each(function () {
             var $this = $(this);
@@ -238,16 +239,30 @@
 
             // Detect swipe in mobile and win8
             if ( 'ontouchstart' in window || window.navigator.msPointerEnabled ) {
+                var $swipeTarget = $wrapper;
+                if ( settings.swipeTarget ) $swipeTarget = $wrapper.find(settings.swipeTarget);
                 // Swipe - requires jquery.touchSwipe.js
-                $wrapper.swipe({
-                    swipeLeft: function(event, direction, distance, duration, fingerCount) {
-                        next();
-                    },
-                    swipeRight: function(event, direction, distance, duration, fingerCount) {
-                        prev();
-                    },
-                    threshold: settings.threshold
-                });
+                $swipeTarget
+                    .swipe({
+                        swipeUp: function(event, direction, distance, duration, fingerCount) {
+                            //console.log('up');
+                        },
+                        swipeDown: function(event, direction, distance, duration, fingerCount) {
+                            //console.log('down');
+                        },
+                        swipeLeft: function(event, direction, distance, duration, fingerCount) {
+                            //console.log('left');
+                            next();
+                        },
+                        swipeRight: function(event, direction, distance, duration, fingerCount) {
+                            //console.log('right');
+                            prev();
+                        },
+                        threshold: settings.threshold,
+                        allowPageScroll: 'vertical',
+                        triggerOnTouchEnd: false
+                    })
+                    ;
             }
 
             slide(false);

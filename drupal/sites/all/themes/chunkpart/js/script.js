@@ -371,7 +371,8 @@ $(function() {
 
 		$slides.tpslide({
 			onslide: slide_callback,
-			threshold: 75
+			threshold: 75,
+			swipeTarget: 'img'
 		});
 
 		var first_popped = false;
