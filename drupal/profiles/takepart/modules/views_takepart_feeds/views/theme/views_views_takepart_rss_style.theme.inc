@@ -116,11 +116,9 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
             } else if ($id == 'field_promo_text' && $object->content != '') {
                 $xml .= "\t\t\t<description><![CDATA[" . $object->content . "]]></description>\n";
 
-            } else if ($id == 'field_topic_box' && $object->content != '') {
-                $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } else if ($id == 'field_related_stories' && $object->content != '') {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
-            } else if ($id == 'field_ic_content' && $object->content != '') {
+            } else if ($id == 'inline_content_embedded' && $object->content != '') {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } else {
                 $content .= ($object->content);
