@@ -39,6 +39,8 @@
       <? endif ?>
     <? endforeach ?>
   </aside>
+
+  <?=render($page['content_bottom']); ?>
 </main>
 
 <?=$footer ?>

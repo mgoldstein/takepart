@@ -778,6 +778,12 @@ div.takepart-take-action-widget {
 	display: none;
 }
 
+/* Content bottom */
+
+.region-content-bottom {
+	clear: both;
+}
+
 
 /* ============================================================
 || 3.) Section Specific

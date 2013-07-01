@@ -24,15 +24,15 @@ regions[page_bottom] = Page Bottom
 
 ;-- Core Regions
 regions[header] = Header
-regions[content_top] = Top Content
 regions[footer] = Footer
 regions[sidebar_first] = Left Rail
 regions[sidebar_second] = Right Rail
 regions[help] = Help
 regions[highlighted] = Highlighted
 
+regions[content_top] = Top Content
 regions[node_region] = Node
-
+regions[content_bottom]  = Content bottom
 
 ;-------------- C S S -------------
 stylesheets[all][] = css/reset.css
