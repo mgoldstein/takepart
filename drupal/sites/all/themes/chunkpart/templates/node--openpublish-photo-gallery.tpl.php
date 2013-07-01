@@ -101,7 +101,7 @@
 				<? endif ?>
 				<? if ( $next_gallery ): ?>
 					<li id="next-gallery" data-token="next-gallery" class="next-article">
-						<span class="enter-link">
+						<section class="enter-link">
 							<div class="image-content-wrapper">
 								<div class="image-area-inner">
 									<p class="image">
@@ -126,12 +126,14 @@
 							<div class="photo-caption">
 								<div class="caption cms">
 									<p class="headline"><?=_s($next_gallery->title) ?></p>
-									<? if ( $nextsubhead = _snode($next_gallery->node, 'field_subhead', 'node') ): ?>
-										<p class="article-abstract"><?=_s($nextsubhead) ?></p>
+									<? if ( $nextbody = _snode($next_gallery->node, 'body', 'node') ): ?>
+										<?=_s($nextbody)?>
+									<? elseif ( $nextsubhead = _snode($next_gallery->node, 'field_subhead', 'node') ): ?>
+										<h3 class="article-abstract"><?=_s($nextsubhead) ?></h3>
 									<? endif ?>
 								</div>
 							</div>
-						</span>
+						</section>
 					</li>
 				<? endif ?>
 			</ul>
