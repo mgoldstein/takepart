@@ -38,7 +38,7 @@ $(function() {
 		'Badge': '.badge',
 		'Topic Box': '#topic_box',
 		'Outbrain Widget': '.OUTBRAIN'
-	};
+	});
 
 	// Only place it on internal urls
 	var relative_test = new RegExp("//" + location.host + "($|/)");
