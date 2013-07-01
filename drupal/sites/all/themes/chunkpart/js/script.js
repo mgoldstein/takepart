@@ -416,7 +416,7 @@ $(function() {
 		if ( get_curtoken() ) {
 			goto_slide();
 			show_gallery();
-		} else if ( document.location.hash == '#first-photo' ) {
+		} else if ( document.location.hash == '#first-slide' ) {
 			show_gallery();
 			hpush($current_slide.data('token'), $current.find('.headline').text());
 		} else if ( $gallery_cover.length ) {
