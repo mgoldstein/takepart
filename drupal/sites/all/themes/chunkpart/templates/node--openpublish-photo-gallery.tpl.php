@@ -101,7 +101,7 @@
 				<? endif ?>
 				<? if ( $next_gallery ): ?>
 					<li id="next-gallery" data-token="next-gallery" class="next-article">
-						<span class="enter-link">
+						<section class="enter-link">
 							<div class="image-content-wrapper">
 								<div class="image-area-inner">
 									<p class="image">
@@ -111,7 +111,7 @@
 											<?=_simage($next_gallery->node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?>
 										<? endif ?>
 									</p>
-									<a href="<?=$next_gallery->href ?>">
+									<a href="<?=$next_gallery->href ?>#first-slide">
 										<div class="content">
 											<div class="content-inner">
 												<p class="description"><?=t('Up Next') ?></p>
@@ -126,12 +126,14 @@
 							<div class="photo-caption">
 								<div class="caption cms">
 									<p class="headline"><?=_s($next_gallery->title) ?></p>
-									<? if ( $nextsubhead = _snode($next_gallery->node, 'field_subhead', 'node') ): ?>
-										<p class="article-abstract"><?=_s($nextsubhead) ?></p>
+									<? if ( $nextbody = _snode($next_gallery->node, 'body', 'node') ): ?>
+										<?=_s($nextbody)?>
+									<? elseif ( $nextsubhead = _snode($next_gallery->node, 'field_subhead', 'node') ): ?>
+										<h3 class="article-abstract"><?=_s($nextsubhead) ?></h3>
 									<? endif ?>
 								</div>
 							</div>
-						</span>
+						</section>
 					</li>
 				<? endif ?>
 			</ul>
@@ -139,6 +141,11 @@
 			<? if ( _s($node, 'field_display_cover') ): ?>
 				<p class="back-to-cover">
 					<a href="#gallery-cover"><?=t('Back to cover')?></a>
+				</p>
+			<? endif ?>
+			<? if ( $next_gallery ): ?>
+				<p class="forward-to-gallery">
+					<a href="<?=$next_gallery->href ?>#first-slide"><?=t('Next photo gallery:')?> <?=_s($next_gallery->title) ?></a>
 				</p>
 			<? endif ?>
 		</div>

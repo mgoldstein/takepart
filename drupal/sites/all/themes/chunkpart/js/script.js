@@ -199,6 +199,7 @@ $(function() {
 			;
 	/* Gallery ---------------- */
 	} else if ( $body.is('.node-type-openpublish-photo-gallery') ) {
+		// Tracking for "Next gallery" clicks
 		$body
 			.delegate('#next-gallery a', 'click', function() {
 				takepart.analytics.track('gallery-next-gallery-click', {
@@ -225,6 +226,7 @@ $(function() {
 			first_description = $first_slide.find('.photo-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
 		}
 
+		// Update ads/fb comments etc per slide load
 		var update_to = null;
 		var update_page = function(token) {
 			clearTimeout(update_to);
@@ -284,22 +286,27 @@ $(function() {
 			}
 		};
 
+		// Get current "token" from last folder of URL
 		var get_curtoken = function() {
-			return document.location.href.split(/\/|#/).slice(5,6) + '';
+			var token = document.location.href.split(/\/|#/).slice(5,6) + '';
+			// Allow for back buttoning to #first-slide cover page
+			if ( token == 'first-slide' ) token = '';
+			return token;
 		};
 
+		// Update slideshow based on url
 		var goto_slide = function() {
 			var token = get_curtoken();
 			var $slide = $slides.find('[data-token="' + token + '"]');
 			$slides.tpslide_to($slide);
 		};
 
-		//$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
-
+		// Return history functionality in browser
 		var has_history = function() {
 			return (typeof history != 'undefined');
 		};
 
+		// Update html5 history if token is new
 		var hpush = function(token, title) {
 			var curtoken = get_curtoken();
 			if ( curtoken == token ) return;
@@ -309,6 +316,7 @@ $(function() {
 			history.pushState(null, title, base_url + '/' + token);
 		};
 
+		// Callback for slideshow sliding a slide
 		var $current_slide = null;
 		var slide_callback = function($current) {
 			var old_token = ( $current_slide ) ? $current_slide.data('token') : null;
@@ -318,6 +326,12 @@ $(function() {
 				$gallery_main.addClass('on-first');
 			} else {
 				$gallery_main.removeClass('on-first');
+			}
+
+			if ( !$current_slide.next().length ) {
+				$gallery_main.addClass('on-last');
+			} else {
+				$gallery_main.removeClass('on-last');
 			}
 
 			var current_image = $current_slide.find('img').attr('src');
@@ -369,12 +383,14 @@ $(function() {
 			gallery_showing = false;
 		};
 
+		// Make slideshow
 		$slides.tpslide({
 			onslide: slide_callback,
 			threshold: 75,
 			swipeTarget: 'img'
 		});
 
+		// Listen for html5 history updates/back button
 		var first_popped = false;
 		window.addEventListener('popstate', function(e) {
 			if ( !first_popped ) {
@@ -394,6 +410,7 @@ $(function() {
 			update_page(token);
 		});
 
+		// Event for fake back button to go to cover page
 		$('.back-to-cover a').bind('click', function(e) {
 			e.preventDefault();
 			if ( !gallery_showing ) return;
@@ -401,9 +418,13 @@ $(function() {
 			hpush('', $('#gallery-cover-main').find('.headline').text());
 		});
 
+		// Initialize page based on URL
 		if ( get_curtoken() ) {
 			goto_slide();
 			show_gallery();
+		} else if ( document.location.hash == '#first-slide' ) {
+			show_gallery();
+			hpush($current_slide.data('token'), $current.find('.headline').text());
 		} else if ( $gallery_cover.length ) {
 			hide_gallery();
 		} else {
@@ -411,6 +432,7 @@ $(function() {
 			hpush($current_slide.data('token'), $current.find('.headline').text());
 		}
 
+		// Cover page link event
 		$('#gallery-cover .enter-link, #gallery-body .enter-link').bind('click', function(e) {
 			e.preventDefault();
 			show_gallery();
