@@ -19,8 +19,9 @@ window.tp_ad_takeover = function(bgcolor, bgimage, link) {
 			left: 0,
 			top: 0,
 			zIndex: 1
-		})
-		$body.append($a);
+		});
+
+	$body.append($a);
 };
 
 })(window, jQuery);
