@@ -1632,11 +1632,16 @@ div.takepart-take-action-widget {
 	position: relative;
 }
 
+.node-type-openpublish-photo-gallery .forward-to-gallery,
 .node-type-openpublish-photo-gallery .back-to-cover {
 	display: none;
 }
 
 .node-type-openpublish-photo-gallery .on-first .tpslide_prev {
+	display: none;
+}
+
+.node-type-openpublish-photo-gallery .on-last .tpslide_next {
 	display: none;
 }
 
@@ -1693,6 +1698,7 @@ div.takepart-take-action-widget {
 }
 
 .node-type-openpublish-photo-gallery .on-first .back-to-cover,
+.node-type-openpublish-photo-gallery .on-last .forward-to-gallery,
 .node-type-openpublish-photo-gallery .tpslide_nav {
 	display: block;
 	position: absolute;
@@ -1700,6 +1706,7 @@ div.takepart-take-action-widget {
 	width: 620px;
 }
 
+.node-type-openpublish-photo-gallery .forward-to-gallery a,
 .node-type-openpublish-photo-gallery .back-to-cover a,
 .node-type-openpublish-photo-gallery .tpslide_prev,
 .node-type-openpublish-photo-gallery .tpslide_next {
@@ -1715,6 +1722,7 @@ div.takepart-take-action-widget {
 	bottom: 0;
 }
 
+.node-type-openpublish-photo-gallery .forward-to-gallery a,
 .node-type-openpublish-photo-gallery .tpslide_next {
 	background-image: url(../images/gallery_next_rollover.png); /** sprite-ref: mysprite; */
 	left: 56%;

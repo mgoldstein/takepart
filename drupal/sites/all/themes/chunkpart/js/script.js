@@ -328,6 +328,12 @@ $(function() {
 				$gallery_main.removeClass('on-first');
 			}
 
+			if ( !$current_slide.next().length ) {
+				$gallery_main.addClass('on-last');
+			} else {
+				$gallery_main.removeClass('on-last');
+			}
+
 			var current_image = $current_slide.find('img').attr('src');
 			tp_social_config.services.pinterest.media = current_image;
 			tp_social_config.services.tumblr.source = current_image;

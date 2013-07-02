@@ -143,6 +143,11 @@
 					<a href="#gallery-cover"><?=t('Back to cover')?></a>
 				</p>
 			<? endif ?>
+			<? if ( $next_gallery ): ?>
+				<p class="forward-to-gallery">
+					<a href="<?=$next_gallery->href ?>#first-slide"><?=t('Next photo gallery:')?> <?=_s($next_gallery->title) ?></a>
+				</p>
+			<? endif ?>
 		</div>
 	</div>
 
