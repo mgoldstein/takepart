@@ -402,6 +402,11 @@ $(function() {
 			swipeTarget: 'img'
 		});
 
+		// Fix heights for responsive
+		$window.bind('resize', function () {
+			$slides.height($current_slide.height());
+		});
+
 		// Listen for html5 history updates/back button
 		var first_popped = false;
 		window.addEventListener('popstate', function(e) {
