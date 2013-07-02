@@ -116,6 +116,11 @@ $(function() {
 			show_fb_comments(this);
 		}});
 
+	/*// Track "On Our Radar" links - if we can ever get exit link tracking to work correctly
+	$('.on_our_radar_section a').bind('click', function() {
+		takepart.analytics.track('on-our-radar-click', {element: this});
+	});*/
+
 	/* Page Specific ---------------------------------------------------------------------------------- */
 
 	/* Article ----------------*/
@@ -211,7 +216,8 @@ $(function() {
 		var $gallery_main = $('#gallery-main');
 		var $slides = $('#gallery-content > ul');
 		var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
-		var fb_comment_el = $('.fb_comments')[0];
+		var $fb_comment = $('.fb_comments');
+		var fb_comment_el = $fb_comment[0];
 
 		var $first_slide = $slides.find('> li:first-child');
 		var has_cover = $gallery_cover.length;
@@ -241,6 +247,12 @@ $(function() {
 
 			update_to = setTimeout(function() {
 				var token = get_curtoken();
+
+				if ( token == 'next-gallery' ) {
+					$fb_comment.hide();
+				} else {
+					$fb_comment.show();
+				}
 
 				show_fb_comments(fb_comment_el, base_url + '/' + token);
 

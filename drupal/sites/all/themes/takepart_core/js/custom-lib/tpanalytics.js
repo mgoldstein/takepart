@@ -32,7 +32,7 @@ takepart.analytics.add = function(name, fn) {
 takepart.analytics.track = function(name, options) {
 	if ( events[name] == undefined ) return;
 	var e = events[name];
-	e(options);
+	return e(options);
 };
 
 })(window);

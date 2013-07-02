@@ -115,6 +115,27 @@ var social_click = function(options) {
 };
 
 takepart.analytics.add({
+    /* // Putting off til we can get exit tracking figured out
+    'on-our-radar-click': function(options) {
+        var type = s.prop4;
+        var url = options.element.href.split(/\?url=/).slice(1, 2) + '';
+        url = 'http://' + url;
+        var $a = $('<a href="' + url + '"/>').html(options.element.innerHTML);
+        var a = $a[0];
+        var ns = s_gi(Drupal.settings.omniture.s_account);
+        ns.linkTrackVars = 'eVar90,eVar30,events';
+        ns.linkTrackEvents = 'event90';
+        ns.events = 'event90';
+        ns.eVar4 = type;
+        ns.prop4 = type;
+        ns.eVar30 = ns.pageName;
+        ns.eVar90 = a.hostname;
+        ns.tl(a, 'e', 'On Our Radar Click');
+
+        //_gaq.push(['_trackEvent', 'Partner', 'OnOurRadarClick', title]);
+
+        // Omniture will handle the click
+    },*/
     'tp-social-share': function(options) {
         var title = normalize_share_title(options.name);
 
