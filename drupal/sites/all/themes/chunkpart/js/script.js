@@ -14,6 +14,7 @@ $(window).bind('tp-social-click', function(e, args) {
 //jQuery('style').get(0).innerHTML = '';
 
 var $body = $('body');
+var $window = $(window);
 
 // Delegates
 $body
