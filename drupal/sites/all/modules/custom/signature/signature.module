@@ -2100,6 +2100,16 @@ function signature_api_create($nid) {
     $signature->field_partner_code = array('und' => array());
   }
 
+  // Partner opt-in field
+  if (isset($_REQUEST['partner_opt_in'])) {
+    $signature->field_partner_opt_in = array(
+      'und' => array(array('value' => $_REQUEST['partner_opt_in']))
+    );
+  }
+  else {
+    $signature->field_partner_opt_in = array('und' => array());
+  }
+
   $signature->save();
   signature_send_signup($signature, FALSE);
 
