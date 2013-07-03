@@ -118,7 +118,7 @@ takepart.analytics.add({
     // Putting off til we can get exit tracking figured out
     'on-our-radar-click': function(options) {
         var domain = options.element.hostname.replace('www.', '');
-        _gaq.push(['_trackEvent', 'Partner', 'OnOurRadarClick', domain]);
+        _gaq.push(['_trackEvent', 'Click', 'On Our Radar', domain]);
 
         // Omniture will handle the click
     },
