@@ -118,9 +118,10 @@ $(function() {
 		}});
 
 	// Track "On Our Radar" links - if we can ever get exit link tracking to work correctly
-	$('.on_our_radar_section a').bind('click', function() {
-		return takepart.analytics.track('on-our-radar-click', {element: this});
-	});
+	$body
+		.delegate('.on_our_radar_section a', 'click', function() {
+			return takepart.analytics.track('on-our-radar-click', {element: this});
+		});
 
 	/* Page Specific ---------------------------------------------------------------------------------- */
 
