@@ -117,10 +117,10 @@ $(function() {
 			show_fb_comments(this);
 		}});
 
-	/*// Track "On Our Radar" links - if we can ever get exit link tracking to work correctly
+	// Track "On Our Radar" links - if we can ever get exit link tracking to work correctly
 	$('.on_our_radar_section a').bind('click', function() {
-		takepart.analytics.track('on-our-radar-click', {element: this});
-	});*/
+		return takepart.analytics.track('on-our-radar-click', {element: this});
+	});
 
 	/* Page Specific ---------------------------------------------------------------------------------- */
 
