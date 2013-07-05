@@ -500,6 +500,7 @@
 		top: 0;
 	}
 
+	.node-type-openpublish-photo-gallery .on-last .forward-to-gallery,
 	.node-type-openpublish-photo-gallery .on-first .back-to-cover {
 		top: 0;
 		bottom: auto;
@@ -511,15 +512,26 @@
 		left: 0;
 	}
 
+	.node-type-openpublish-photo-gallery .on-last .forward-to-gallery a,
 	.node-type-openpublish-photo-gallery .tpslide_next {
 		left: auto;
 		right: 0;
+	}
+
+	.node-type-openpublish-photo-gallery .on-last .forward-to-gallery a {
+		bottom: auto;
 	}
 
 	.node-type-openpublish-photo-gallery .tpslide_nav {
 		position: relative;
 		bottom: auto;
 		width: auto;
+		display: block;
+	}
+
+	.node-type-openpublish-photo-gallery .on-last .forward-to-gallery {
+		bottom: auto;
+		width: 100%;
 		display: block;
 	}
 

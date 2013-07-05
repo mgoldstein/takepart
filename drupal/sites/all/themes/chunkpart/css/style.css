@@ -1734,6 +1734,7 @@ div.takepart-take-action-widget {
 	right: 56%;
 }
 
+.node-type-openpublish-photo-gallery .forward-to-gallery a:hover,
 .node-type-openpublish-photo-gallery .tpslide_next:hover {
 	background-image: url(../images/gallery_next.png); /** sprite-ref: mysprite; */
 }
