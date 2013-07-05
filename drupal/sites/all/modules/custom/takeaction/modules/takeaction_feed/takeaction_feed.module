@@ -457,7 +457,8 @@ function _takeaction_feed_term_list($node, $field) {
     }
   }
   // Load and implode the terms.
-  $terms = taxonomy_term_load_multiple($tids);
+  // use entity_load with cache reset option instead of taxonomy_term_load_multiple because of issue with static cache and entitycache module
+  $terms = entity_load('taxonomy_term', $tids, array(), TRUE);
   return taxonomy_implode_tags($terms);
 }
 
