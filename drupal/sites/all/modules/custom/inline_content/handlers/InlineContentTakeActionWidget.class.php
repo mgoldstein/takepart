@@ -71,6 +71,13 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
       $attributes['data-action-id'] = $data['nid'];
     }
 
+    // Set the widget's action title override.
+    $title = field_get_items('inline_content', $replacement, 'field_ic_label');
+    if ($title !== FALSE && count($title) > 0) {
+      $data = reset($title);
+      $attributes['data-action-title'] = $data['value'];
+    }
+
     $content['#replacements'][] = array(
       '#type' => 'markup',
       '#markup' => '<div' . drupal_attributes($attributes) . '></div>',
