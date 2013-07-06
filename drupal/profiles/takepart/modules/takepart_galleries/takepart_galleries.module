@@ -203,11 +203,11 @@ function takepart_galleries_omniture_variables() {
     $field_display_cover = field_get_items('node', $node, 'field_display_cover');
 
     if ( $third_folder == 'next-gallery' ) {
-      $return = $return + (array('s.linkTrackEvents'=>'event14,event16','s.events'=>'event14,event16'));
+      $return = $return + (array('s.linkTrackEvents'=>'event14,event16','s.events'=>'event14,event16','s.eVar16'=>'Up Next Gallery Cover'));
     } elseif ( $third_folder || !$field_display_cover ) {
-      $return = $return + (array('s.linkTrackEvents'=>'event14,event15','s.events'=>'event14,event15'));
+      $return = $return + (array('s.linkTrackEvents'=>'event14,event15','s.events'=>'event14,event15','s.eVar16'=>'Photo'));
     } else {
-      $return = $return + (array('s.linkTrackEvents'=>'event14','s.events'=>'event14'));
+      $return = $return + (array('s.linkTrackEvents'=>'event14','s.events'=>'event14','s.eVar16'=>'Gallery Cover'));
     }
     return array("variables" => $return);
   }
