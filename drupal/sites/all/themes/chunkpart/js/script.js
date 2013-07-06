@@ -225,6 +225,7 @@ $(function() {
 		var has_cover = $gallery_cover.length;
 		var first_image;
 		var first_description;
+		var skip_next_pageview = false;
 
 		if ( has_cover ) {
 			first_image = $gallery_cover.find('img').attr('src');
@@ -239,13 +240,18 @@ $(function() {
 		var update_page = function(token) {
 			clearTimeout(update_to);
 
-			setTimeout((function(token) {
-				return function() {
-					takepart.analytics.track('gallery-track-slide', {
-						token: token
-					});
-				}
-			})(token), 500);
+			if ( !skip_next_pageview ) {
+				setTimeout((function(token, skip_next_pageview) {
+					return function() {
+						takepart.analytics.track('gallery-track-slide', {
+							token: token,
+							skip_pageview: skip_next_pageview
+						});
+					}
+				})(token, skip_next_pageview), 500);
+			} else {
+				skip_next_pageview = false;
+			}
 
 			update_to = setTimeout(function() {
 				var token = get_curtoken();
@@ -439,16 +445,19 @@ $(function() {
 
 		// Initialize page based on URL
 		if ( get_curtoken() ) {
+			skip_next_pageview = true;
 			goto_slide();
 			show_gallery();
 		} else if ( document.location.hash == '#first-slide' ) {
+			skip_next_pageview = true;
 			show_gallery();
-			hpush($current_slide.data('token'), $current.find('.headline').text());
+			hpush($current_slide.data('token'), $current_slide.find('.headline').text());
 		} else if ( $gallery_cover.length ) {
 			hide_gallery();
 		} else {
+			skip_next_pageview = true;
 			show_gallery();
-			hpush($current_slide.data('token'), $current.find('.headline').text());
+			hpush($current_slide.data('token'), $current_slide.find('.headline').text());
 		}
 
 		// Cover page link event

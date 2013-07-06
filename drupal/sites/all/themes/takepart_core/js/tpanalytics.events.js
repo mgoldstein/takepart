@@ -155,18 +155,22 @@ takepart.analytics.add({
         omniture = s.prop15.split(':');
         s.prop15 = omniture[0] + ':' + omniture[1] + ((token) ? ':' + token : '');
         s.eVar15 = s.prop15;
-        s.events = 'event2';
-        s.linkTrackEvents = 'event2';
+        s.events = ( options.skip_pageview ) ? '' : 'event2';
+        s.linkTrackEvents = ( options.skip_pageview ) ? '' : 'event2';
 
         // Next gallery
         if ( token == 'next-gallery' ) {
-            s.events += ',event16';
-            s.linkTrackEvents += ',event16';
+            if ( s.events ) s.events += ',';
+            s.events += 'event16';
+            if ( s.linkTrackEvents ) s.linkTrackEvents += ',';
+            s.linkTrackEvents += 'event16';
             s.eVar16 = 'Up Next Gallery Cover';
         // Photo view
         } else if ( token ) {
-            s.events += ',event15';
-            s.linkTrackEvents += ',event15';
+            if ( s.events ) s.events += ',';
+            s.events += 'event15';
+            if ( s.linkTrackEvents ) s.linkTrackEvents += ',';
+            s.linkTrackEvents += 'event15';
             s.eVar16 = 'Photo';
         // Gallery cover
         } else {

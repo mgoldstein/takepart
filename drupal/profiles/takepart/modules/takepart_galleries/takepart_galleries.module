@@ -193,12 +193,18 @@ function _takepart_galleries_mappings($nid) {
  * Implements hook_omniture_variables().
  */
 function takepart_galleries_omniture_variables() {
+  $node = menu_get_object();
+
   $return = array();
   $folders = explode('/', $_SERVER['REQUEST_URI']);
   $first_folder = $folders[1];
   $third_folder = @$folders[3];
   if ( $first_folder == 'photos' ) {
-    if ( $third_folder ) {
+    $field_display_cover = field_get_items('node', $node, 'field_display_cover');
+
+    if ( $third_folder == 'next-gallery' ) {
+      $return = $return + (array('s.linkTrackEvents'=>'event14,event16','s.events'=>'event14,event16'));
+    } elseif ( $third_folder || !$field_display_cover ) {
       $return = $return + (array('s.linkTrackEvents'=>'event14,event15','s.events'=>'event14,event15'));
     } else {
       $return = $return + (array('s.linkTrackEvents'=>'event14','s.events'=>'event14'));
