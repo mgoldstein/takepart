@@ -2101,13 +2101,15 @@ function signature_api_create($nid) {
   }
 
   // Partner opt-in field
-  if (isset($_REQUEST['partner_opt_in'])) {
+  if (!empty($payload['partner_opt_in'])) {
     $signature->field_partner_opt_in = array(
-      'und' => array(array('value' => $_REQUEST['partner_opt_in']))
+      'und' => array(array('value' => '1'))
     );
   }
   else {
-    $signature->field_partner_opt_in = array('und' => array());
+    $signature->field_partner_opt_in = array(
+      'und' => array(array('value' => '0'))
+    );
   }
 
   $signature->save();
