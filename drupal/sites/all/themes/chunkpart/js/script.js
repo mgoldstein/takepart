@@ -226,6 +226,9 @@ $(function() {
 		var first_image;
 		var first_description;
 		var skip_next_pageview = false;
+		var $next_gallery = $('#next-gallery');
+		var next_gallery_headline = $next_gallery.find('.headline').text();
+		var next_gallery_topic = $next_gallery.find('.topic').text();
 
 		if ( has_cover ) {
 			first_image = $gallery_cover.find('img').attr('src');
@@ -245,7 +248,9 @@ $(function() {
 					return function() {
 						takepart.analytics.track('gallery-track-slide', {
 							token: token,
-							skip_pageview: skip_next_pageview
+							skip_pageview: skip_next_pageview,
+							next_gallery_headline: next_gallery_headline,
+							next_gallery_topic: next_gallery_topic
 						});
 					}
 				})(token, skip_next_pageview), 500);

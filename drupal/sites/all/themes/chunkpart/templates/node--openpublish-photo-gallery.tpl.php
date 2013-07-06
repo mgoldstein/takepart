@@ -126,6 +126,12 @@
 							<div class="photo-caption">
 								<div class="caption cms">
 									<p class="headline"><?=_s($next_gallery->title) ?></p>
+									<? if ( $field_topic = _snode($next_gallery->node, 'field_topic') ): ?>
+										<? while ( list($key, $tag) = _seach($field_topic) ): ?>
+											<p class="topic"><?=$tag->name ?></p>
+										<? endwhile ?>
+									<? endif ?>
+
 									<? if ( $nextbody = _snode($next_gallery->node, 'body', 'node') ): ?>
 										<?=_s($nextbody)?>
 									<? elseif ( $nextsubhead = _snode($next_gallery->node, 'field_subhead', 'node') ): ?>

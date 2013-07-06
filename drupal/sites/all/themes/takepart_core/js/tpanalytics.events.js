@@ -165,6 +165,8 @@ takepart.analytics.add({
             if ( s.linkTrackEvents ) s.linkTrackEvents += ',';
             s.linkTrackEvents += 'event16';
             s.eVar16 = 'Up Next Gallery Cover';
+            s.eVar33 = options.next_gallery_headline;
+            s.eVar34 = options.next_gallery_topic.toLowerCase();
         // Photo view
         } else if ( token ) {
             if ( s.events ) s.events += ',';

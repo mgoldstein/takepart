@@ -1398,6 +1398,10 @@ div.takepart-take-action-widget {
 	line-height: 1.618em;
 }
 
+.node-type-openpublish-photo-gallery #gallery-content .photo-caption .topic {
+	display: none;
+}
+
 .node-type-openpublish-photo-gallery #gallery-content .photo-caption .caption h2 {
 	font-size: 18px;
 	color: #333;
