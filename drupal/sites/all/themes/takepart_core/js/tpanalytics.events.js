@@ -115,6 +115,13 @@ var social_click = function(options) {
 };
 
 takepart.analytics.add({
+    // Putting off til we can get exit tracking figured out
+    'on-our-radar-click': function(options) {
+        var domain = options.element.hostname.replace('www.', '');
+        _gaq.push(['_trackEvent', 'Click', 'On Our Radar', domain]);
+
+        // Omniture will handle the click
+    },
     'tp-social-share': function(options) {
         var title = normalize_share_title(options.name);
 
@@ -148,18 +155,24 @@ takepart.analytics.add({
         omniture = s.prop15.split(':');
         s.prop15 = omniture[0] + ':' + omniture[1] + ((token) ? ':' + token : '');
         s.eVar15 = s.prop15;
-        s.events = 'event2';
-        s.linkTrackEvents = 'event2';
+        s.events = ( options.skip_pageview ) ? '' : 'event2';
+        s.linkTrackEvents = ( options.skip_pageview ) ? '' : 'event2';
 
         // Next gallery
         if ( token == 'next-gallery' ) {
-            s.events += ',event16';
-            s.linkTrackEvents += ',event16';
+            if ( s.events ) s.events += ',';
+            s.events += 'event16';
+            if ( s.linkTrackEvents ) s.linkTrackEvents += ',';
+            s.linkTrackEvents += 'event16';
             s.eVar16 = 'Up Next Gallery Cover';
+            s.eVar33 = options.next_gallery_headline;
+            s.eVar34 = options.next_gallery_topic.toLowerCase();
         // Photo view
         } else if ( token ) {
-            s.events += ',event15';
-            s.linkTrackEvents += ',event15';
+            if ( s.events ) s.events += ',';
+            s.events += 'event15';
+            if ( s.linkTrackEvents ) s.linkTrackEvents += ',';
+            s.linkTrackEvents += 'event15';
             s.eVar16 = 'Photo';
         // Gallery cover
         } else {

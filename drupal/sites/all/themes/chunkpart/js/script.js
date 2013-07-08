@@ -14,6 +14,7 @@ $(window).bind('tp-social-click', function(e, args) {
 //jQuery('style').get(0).innerHTML = '';
 
 var $body = $('body');
+var $window = $(window);
 
 // Delegates
 $body
@@ -116,6 +117,12 @@ $(function() {
 			show_fb_comments(this);
 		}});
 
+	// Track "On Our Radar" links - if we can ever get exit link tracking to work correctly
+	$body
+		.delegate('.on_our_radar_section a', 'click', function() {
+			return takepart.analytics.track('on-our-radar-click', {element: this});
+		});
+
 	/* Page Specific ---------------------------------------------------------------------------------- */
 
 	/* Article ----------------*/
@@ -211,12 +218,17 @@ $(function() {
 		var $gallery_main = $('#gallery-main');
 		var $slides = $('#gallery-content > ul');
 		var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
-		var fb_comment_el = $('.fb_comments')[0];
+		var $fb_comment = $('.fb_comments');
+		var fb_comment_el = $fb_comment[0];
 
 		var $first_slide = $slides.find('> li:first-child');
 		var has_cover = $gallery_cover.length;
 		var first_image;
 		var first_description;
+		var skip_next_pageview = false;
+		var $next_gallery = $('#next-gallery');
+		var next_gallery_headline = $next_gallery.find('.headline').text();
+		var next_gallery_topic = $next_gallery.find('.topic').text();
 
 		if ( has_cover ) {
 			first_image = $gallery_cover.find('img').attr('src');
@@ -231,16 +243,29 @@ $(function() {
 		var update_page = function(token) {
 			clearTimeout(update_to);
 
-			setTimeout((function(token) {
-				return function() {
-					takepart.analytics.track('gallery-track-slide', {
-						token: token
-					});
-				}
-			})(token), 500);
+			if ( !skip_next_pageview ) {
+				setTimeout((function(token, skip_next_pageview) {
+					return function() {
+						takepart.analytics.track('gallery-track-slide', {
+							token: token,
+							skip_pageview: skip_next_pageview,
+							next_gallery_headline: next_gallery_headline,
+							next_gallery_topic: next_gallery_topic
+						});
+					}
+				})(token, skip_next_pageview), 500);
+			} else {
+				skip_next_pageview = false;
+			}
 
 			update_to = setTimeout(function() {
 				var token = get_curtoken();
+
+				if ( token == 'next-gallery' ) {
+					$fb_comment.hide();
+				} else {
+					$fb_comment.show();
+				}
 
 				show_fb_comments(fb_comment_el, base_url + '/' + token);
 
@@ -390,6 +415,11 @@ $(function() {
 			swipeTarget: 'img'
 		});
 
+		// Fix heights for responsive
+		$window.bind('resize', function () {
+			$slides.height($current_slide.height());
+		});
+
 		// Listen for html5 history updates/back button
 		var first_popped = false;
 		window.addEventListener('popstate', function(e) {
@@ -420,16 +450,19 @@ $(function() {
 
 		// Initialize page based on URL
 		if ( get_curtoken() ) {
+			skip_next_pageview = true;
 			goto_slide();
 			show_gallery();
 		} else if ( document.location.hash == '#first-slide' ) {
+			skip_next_pageview = true;
 			show_gallery();
-			hpush($current_slide.data('token'), $current.find('.headline').text());
+			hpush($current_slide.data('token'), $current_slide.find('.headline').text());
 		} else if ( $gallery_cover.length ) {
 			hide_gallery();
 		} else {
+			skip_next_pageview = true;
 			show_gallery();
-			hpush($current_slide.data('token'), $current.find('.headline').text());
+			hpush($current_slide.data('token'), $current_slide.find('.headline').text());
 		}
 
 		// Cover page link event

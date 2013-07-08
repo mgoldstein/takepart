@@ -1398,6 +1398,10 @@ div.takepart-take-action-widget {
 	line-height: 1.618em;
 }
 
+.node-type-openpublish-photo-gallery #gallery-content .photo-caption .topic {
+	display: none;
+}
+
 .node-type-openpublish-photo-gallery #gallery-content .photo-caption .caption h2 {
 	font-size: 18px;
 	color: #333;
@@ -1734,6 +1738,7 @@ div.takepart-take-action-widget {
 	right: 56%;
 }
 
+.node-type-openpublish-photo-gallery .forward-to-gallery a:hover,
 .node-type-openpublish-photo-gallery .tpslide_next:hover {
 	background-image: url(../images/gallery_next.png); /** sprite-ref: mysprite; */
 }
