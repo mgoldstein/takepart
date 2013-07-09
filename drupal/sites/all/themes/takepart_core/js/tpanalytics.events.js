@@ -144,10 +144,11 @@ takepart.analytics.add({
     // -------------------------------
     'gallery-next-gallery-click': function(options) {
         var s=s_gi(Drupal.settings.omniture.s_account);
-        s.linkTrackVars='events';
+        s.linkTrackVars='eVar34,eVar33,events';
         s.linkTrackEvents='event17';
         s.events='event17';
-        s.eVar14=options.headline;
+        s.eVar33=options.headline;
+        s.eVar34=options.topic.toLowerCase();
         s.tl(true, 'o', 'Click on Up Next Promo Gallery');
     },
     'gallery-track-slide': function(options) {
