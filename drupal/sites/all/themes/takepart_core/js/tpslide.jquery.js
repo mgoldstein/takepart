@@ -118,14 +118,14 @@
                 }
                 do_hash = do_hash || settings.do_hash;
                 if ( settings.onafter && speed ) {
-                    $this.scrollTo($current, speed, {onAfter: (function($current) {
+                    $this.stop(true).scrollTo($current, speed, {onAfter: (function($current) {
                             return function() {
                                 settings.onafter($current);
                             }
                         })($current)
                     });
                 } else {
-                    $this.scrollTo($current, speed);
+                    $this.stop(true).scrollTo($current, speed);
                 }
                 $links.removeClass(settings.prepend + 'active');
 

@@ -208,9 +208,10 @@ $(function() {
 	} else if ( $body.is('.node-type-openpublish-photo-gallery') ) {
 		// Tracking for "Next gallery" clicks
 		$body
-			.delegate('#next-gallery a', 'click', function() {
+			.delegate('#next-gallery a, .forward-to-gallery a', 'click', function() {
 				takepart.analytics.track('gallery-next-gallery-click', {
-					headline: $('#next-gallery .headline').text()
+					headline: next_gallery_headline,
+					topic: next_gallery_topic
 				});
 			});
 
@@ -227,8 +228,8 @@ $(function() {
 		var first_description;
 		var skip_next_pageview = false;
 		var $next_gallery = $('#next-gallery');
-		var next_gallery_headline = $next_gallery.find('.headline').text();
-		var next_gallery_topic = $next_gallery.find('.topic').text();
+		var next_gallery_headline = $next_gallery.find('.caption .headline').text();
+		var next_gallery_topic = $next_gallery.find('.caption .topic').text();
 
 		if ( has_cover ) {
 			first_image = $gallery_cover.find('img').attr('src');
@@ -315,7 +316,6 @@ $(function() {
 		var get_curtoken = function() {
 			var token = document.location.href.split(/\/|#/).slice(5,6) + '';
 			// Allow for back buttoning to #first-slide cover page
-			if ( token == 'first-slide' ) token = '';
 			return token;
 		};
 
@@ -334,11 +334,17 @@ $(function() {
 		// Update html5 history if token is new
 		var hpush = function(token, title) {
 			var curtoken = get_curtoken();
+			var replace = false;
 			if ( curtoken == token ) return;
+			if ( curtoken == 'first-slide' ) replace = true;
 			update_page(token);
 
 			if ( !has_history() ) return;
-			history.pushState(null, title, base_url + '/' + token);
+			if ( replace ) {
+				history.replaceState(null, title, base_url + '/' + token);
+			} else {
+				history.pushState(null, title, base_url + '/' + token);
+			}
 		};
 
 		// Callback for slideshow sliding a slide
@@ -421,13 +427,7 @@ $(function() {
 		});
 
 		// Listen for html5 history updates/back button
-		var first_popped = false;
 		window.addEventListener('popstate', function(e) {
-			if ( !first_popped ) {
-				first_popped = true;
-				return;
-			}
-
 			var token = get_curtoken();
 
 			if ( token ) {
@@ -449,20 +449,21 @@ $(function() {
 		});
 
 		// Initialize page based on URL
-		if ( get_curtoken() ) {
+		if ( get_curtoken() && get_curtoken() != 'first-slide' ) {
 			skip_next_pageview = true;
 			goto_slide();
 			show_gallery();
-		} else if ( document.location.hash == '#first-slide' ) {
+		} else if ( get_curtoken() == 'first-slide' ) {
 			skip_next_pageview = true;
 			show_gallery();
-			hpush($current_slide.data('token'), $current_slide.find('.headline').text());
+			//hpush($current_slide.data('token'), $current_slide.find('.headline').text());
 		} else if ( $gallery_cover.length ) {
+			skip_next_pageview = true;
 			hide_gallery();
 		} else {
 			skip_next_pageview = true;
 			show_gallery();
-			hpush($current_slide.data('token'), $current_slide.find('.headline').text());
+			hpush($current_slide.data('token'), $current_slide.find('.headline').text(), true);
 		}
 
 		// Cover page link event

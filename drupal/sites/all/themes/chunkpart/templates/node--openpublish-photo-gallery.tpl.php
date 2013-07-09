@@ -111,7 +111,7 @@
 											<?=_simage($next_gallery->node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?>
 										<? endif ?>
 									</p>
-									<a href="<?=$next_gallery->href ?>#first-slide">
+									<a href="<?=$next_gallery->href ?>/first-slide">
 										<div class="content">
 											<div class="content-inner">
 												<p class="description"><?=t('Up Next') ?></p>
