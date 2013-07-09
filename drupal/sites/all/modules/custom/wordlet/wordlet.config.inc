@@ -164,6 +164,29 @@ function _wordlet_configuration() {
       'load' => array('site', 'contagion_campaign'),
     ),
 
+    // --------------------------------------------
+    // Interstitials ------------------------------
+    // --------------------------------------------
+    'interstitials' => array(
+      'title' => 'Interstitials - Campaign',
+    ),
+
+    // Interstitials - Social
+    'interstitial_social_follows' => array(
+      'title' => 'Interstitial: Social Folows',
+      'path' => 'interstitials/social-follows',
+      'published' => TRUE,
+      'wrappers' => array('campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/interstitials/social_follows/social_interstitial.css',
+      ),
+      'js' => array(
+        'campaigns/interstitials/social_follows/social_interstitial.js',
+      ),
+      'load' => array('site', 'interstitials'),
+    ),
+
 
     // --------------------------------------------
     // Place at the Table Campaign ----------------

@@ -22,6 +22,22 @@ window.tp_ad_takeover = function(bgcolor, bgimage, link) {
 $(function() {
 	var $body = $('body');
 
+	var $interstitial = $('#interstitial');
+	if ( $interstitial.length ) {
+		var $a = $interstitial.find('a');
+		var $iframe = $('<iframe src="' + $a.attr('href') + '"></iframe>').css({border: '0'});
+
+		window.resize_interstitial = function(w, h) {
+			$iframe.css({width: w, height: h});
+		};
+
+		$.tpmodal.load({
+			id: 'interstitial_modal_',
+			prepend: 'interstitial_modal_',
+			node: $iframe
+		});
+	}
+
 	// Omniture position tracking
 	// Parent/ancestor vars to track in reverse order of importance
 	var positions = {
