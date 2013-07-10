@@ -60,7 +60,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
     $xml .= "  xmlns:dc=\"http://purl.org/dc/elements/1.1/\"";
     $xml .= "  xmlns:content=\"http://purl.org/rss/1.0/modules/content/\"";
     $xml .= "  xmlns:admin=\"http://webns.net/mvcb/\"";
-    $xml .= "  xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">";
+    $xml .= "  xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n";
 
     $xml .= "\t<channel>\n";
     $table_queue = ($vars['view']->query->table_queue);
@@ -111,11 +111,12 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                 if ($poslink) {
                     $xml .= "\t\t\t<link><![CDATA[" . $poslink . "]]></link>\n";
                 }
+            } else if ($id == 'field_author') {
+                $xml .= "\t\t\t<author><![CDATA[" . $object->content . "]]></author>\n";
             } else if ($id == 'field_display_tag' && $object->content != '') {
                 $xml .= "\t\t\t<category><![CDATA[" . $object->content . "]]></category>\n";
             } else if ($id == 'field_promo_text' && $object->content != '') {
                 $xml .= "\t\t\t<description><![CDATA[" . $object->content . "]]></description>\n";
-
             } else if ($id == 'field_related_stories' && $object->content != '') {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } else if ($id == 'inline_content_embedded' && $object->content != '') {
