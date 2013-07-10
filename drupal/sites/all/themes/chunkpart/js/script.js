@@ -211,8 +211,7 @@ $(function() {
 			.delegate('#next-gallery a, .forward-to-gallery a', 'click', function() {
 				takepart.analytics.track('gallery-next-gallery-click', {
 					headline: next_gallery_headline,
-					topic: next_gallery_topic,
-					current_gallery_url: base_url
+					topic: next_gallery_topic
 				});
 			});
 
