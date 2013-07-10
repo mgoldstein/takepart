@@ -332,11 +332,10 @@ $(function() {
 		};
 
 		// Update html5 history if token is new
-		var hpush = function(token, title) {
+		var hpush = function(token, title, replace) {
 			var curtoken = get_curtoken();
-			var replace = false;
+			var replace = replace || false;
 			if ( curtoken == token ) return;
-			if ( curtoken == 'first-slide' ) replace = true;
 			update_page(token);
 
 			if ( !has_history() ) return;
@@ -389,12 +388,12 @@ $(function() {
 		}
 
 		var gallery_showing = false;
-		var show_gallery = function() {
+		var show_gallery = function(replace) {
 			if ( gallery_showing ) return;
 			gallery_showing = true;
 			$gallery_cover.hide();
 			$gallery_main.removeClass('hide_gallery').addClass('show_gallery');
-			hpush($current_slide.data('token'), $current_slide.find('.headline').text());
+			hpush($current_slide.data('token'), $current_slide.find('.headline').text(), replace);
 		};
 
 		var hide_gallery = function() {
@@ -426,20 +425,6 @@ $(function() {
 			$slides.height($current_slide.height());
 		});
 
-		// Listen for html5 history updates/back button
-		window.addEventListener('popstate', function(e) {
-			var token = get_curtoken();
-
-			if ( token ) {
-				goto_slide();
-				show_gallery();
-			} else if ( $gallery_cover.length ) {
-				hide_gallery();
-			}
-
-			update_page(token);
-		});
-
 		// Event for fake back button to go to cover page
 		$('.back-to-cover a').bind('click', function(e) {
 			e.preventDefault();
@@ -455,16 +440,35 @@ $(function() {
 			show_gallery();
 		} else if ( get_curtoken() == 'first-slide' ) {
 			skip_next_pageview = true;
-			show_gallery();
+			show_gallery(true);
 			//hpush($current_slide.data('token'), $current_slide.find('.headline').text());
 		} else if ( $gallery_cover.length ) {
-			skip_next_pageview = true;
 			hide_gallery();
 		} else {
 			skip_next_pageview = true;
-			show_gallery();
-			hpush($current_slide.data('token'), $current_slide.find('.headline').text(), true);
+			show_gallery(true);
+			//hpush($current_slide.data('token'), $current_slide.find('.headline').text(), true);
 		}
+
+		var first_pop = true;
+		// Listen for html5 history updates/back button
+		window.addEventListener('popstate', function(e) {
+			if ( first_pop ) {
+				first_pop = false;
+				return;
+			}
+
+			var token = get_curtoken();
+
+			if ( token ) {
+				goto_slide();
+				show_gallery();
+			} else if ( $gallery_cover.length ) {
+				hide_gallery();
+			}
+
+			update_page(token);
+		});
 
 		// Cover page link event
 		$('#gallery-cover .enter-link, #gallery-body .enter-link').bind('click', function(e) {
