@@ -9,3 +9,28 @@ img.align-right {
   float: right;
   padding: 0 0 10px 10px;
 }
+
+/* Interstitials ------------------------- */
+
+/* Social */
+
+.interstitial_modal_modal.tpmodal_modal {
+	background: transparent;
+	border-radius: 0;
+	position: fixed !important;
+}
+
+.interstitial_modal_modal .tpmodal_content {
+	padding: 0;
+}
+
+.interstitial_modal_modal .tpmodal_close {
+	background: url(/profiles/takepart/themes/takepart3/campaigns/interstitials/social_follows/images/close.png);
+	width: 40px;
+	height: 40px;
+}
+
+.interstitial_modal_modal iframe {
+	width: 360px;
+	height: 380px;
+}

@@ -29,11 +29,11 @@ $(function() {
 
 		window.resize_interstitial = function(w, h) {
 			$iframe.css({width: w, height: h});
+			$.tpmodal.showModal({id: 'interstitial_modal_'});
 		};
 
 		$.tpmodal.load({
 			id: 'interstitial_modal_',
-			prepend: 'interstitial_modal_',
 			node: $iframe
 		});
 	}
