@@ -76,40 +76,40 @@ var social_click = function(options) {
     }
 
     if ( title ) {
-        var s=s_gi(Drupal.settings.omniture.s_account);
-        s.events = 'event25';
+        var s2=s_gi(Drupal.settings.omniture.s_account);
+        s2.events = 'event25';
         linkTrackVars = [];
 
         if ( evar4 ) {
-            s.eVar4 = evar4;
+            s2.eVar4 = evar4;
             linkTrackVars.push('eVar4');
-            s.prop4 = evar4;
+            s2.prop4 = evar4;
             linkTrackVars.push('prop4');
         }
         if ( evar17 ) {
-            s.eVar17 = evar17;
+            s2.eVar17 = evar17;
             linkTrackVars.push('eVar17');
-            s.prop16 = evar17;
+            s2.prop16 = evar17;
             linkTrackVars.push('prop16');
         }
         if ( evar19 ) {
-            s.eVar19 = evar19;
+            s2.eVar19 = evar19;
             linkTrackVars.push('eVar19');
-            s.prop18 = evar19;
+            s2.prop18 = evar19;
             linkTrackVars.push('prop18');
         }
         if ( evar21 ) {
-            s.eVar21 = evar21;
+            s2.eVar21 = evar21;
             linkTrackVars.push('eVar21');
         }
         linkTrackVars.push('eVar30,eVar27,prop26,events')
 
-        s.prop26 = title;
-        s.eVar27 = title;
-        s.eVar30 = s.pageName;
-        s.linkTrackVars = linkTrackVars.join(',');
-        s.linkTrackEvents = 'event25';
-        s.tl(options.url, 'o', 'Content Share');
+        s2.prop26 = title;
+        s2.eVar27 = title;
+        s2.eVar30 = s2.pageName;
+        s2.linkTrackVars = linkTrackVars.join(',');
+        s2.linkTrackEvents = 'event25';
+        s2.tl(options.url, 'o', 'Content Share');
         _gaq.push(['_trackEvent', ga_category, ga_action, title]);
     }
 };
