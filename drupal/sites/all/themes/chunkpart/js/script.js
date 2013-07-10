@@ -417,7 +417,8 @@ $(function() {
 		$slides.tpslide({
 			onslide: slide_callback,
 			threshold: 75,
-			swipeTarget: 'img'
+			swipeTarget: 'img',
+			cycle: false
 		});
 
 		// Fix heights for responsive
