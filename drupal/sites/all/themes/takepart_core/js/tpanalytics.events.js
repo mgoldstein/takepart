@@ -143,13 +143,23 @@ takepart.analytics.add({
     // TP Gallery --------------------
     // -------------------------------
     'gallery-next-gallery-click': function(options) {
-        var s=s_gi(Drupal.settings.omniture.s_account);
-        s.linkTrackVars='eVar34,eVar33,events';
-        s.linkTrackEvents='event17';
-        s.events='event17';
-        s.eVar33=options.headline;
-        s.eVar34=options.topic.toLowerCase();
-        s.tl(true, 'o', 'Click on Up Next Promo Gallery');
+        var s2=s_gi(Drupal.settings.omniture.s_account);
+        s2.linkTrackVars='prop16,prop20,eVar21,eVar30,eVar17,eVar14,prop12,eVar34,eVar33,events';
+        s2.linkTrackEvents='event17';
+        s2.events='event17';
+        s2.eVar33=options.headline;
+        s2.eVar34=options.topic.toLowerCase();
+        s2.eVar14=s.eVar14;
+        s2.eVar30=s.pageName;
+        s2.eVar21=s.eVar21;
+        s2.prop20=s2.eVar21;
+        var authors = [];
+        $('.article-header .authors a').each(function() {
+            authors.push($(this).text());
+        })
+        s2.eVar17=authors.join(',');
+        s2.prop16=s2.eVar17;
+        s2.tl(true, 'o', 'Click on Up Next Promo Gallery');
     },
     'gallery-track-slide': function(options) {
         var token = options.token;

@@ -442,13 +442,11 @@ $(function() {
 		} else if ( get_curtoken() == 'first-slide' ) {
 			skip_next_pageview = true;
 			show_gallery(true);
-			//hpush($current_slide.data('token'), $current_slide.find('.headline').text());
 		} else if ( $gallery_cover.length ) {
 			hide_gallery();
 		} else {
 			skip_next_pageview = true;
 			show_gallery(true);
-			//hpush($current_slide.data('token'), $current_slide.find('.headline').text(), true);
 		}
 
 		var first_pop = true;
