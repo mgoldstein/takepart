@@ -1419,6 +1419,14 @@ div.takepart-take-action-widget {
 	line-height: 1.618em;
 }
 
+.node-type-openpublish-photo-gallery #gallery-content .caption hr {
+	visibility: hidden;
+}
+
+.node-type-openpublish-photo-gallery #gallery-content .caption iframe {
+	max-width: 100%;
+}
+
 .node-type-openpublish-photo-gallery #gallery-photos #gallery-content {
 	margin-bottom: 1em;
 }
@@ -1578,6 +1586,13 @@ div.takepart-take-action-widget {
 .node-type-openpublish-photo-gallery #gallery-description #gallery-body .content {
 	font-size: 14px;
 	line-height: 1.75;
+}
+.node-type-openpublish-photo-gallery #gallery-description #gallery-body .content hr {
+	visibility: hidden;
+}
+
+.node-type-openpublish-photo-gallery #gallery-description #gallery-body .content iframe {
+	max-width: 100%;
 }
 
 .node-type-openpublish-photo-gallery #gallery-description #gallery-body .enter-link {
