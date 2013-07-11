@@ -47,6 +47,7 @@ $p_content['field_video_embedded'][0]['file']['#options']['height'] = 360;
          <div class="addthis_toolbox addthis_default_style">
            <a class="addthis_button_facebook_like"
               addthis:url="<?php print $share_node_url; ?>"
+              fb:like:href="<?php echo $share_node_url; ?>"
               fb:like:action="like"
               fb:like:layout="button_count"></a>
            <a class="addthis_button_tweet"

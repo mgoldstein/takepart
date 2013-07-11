@@ -550,8 +550,12 @@ body {
   margin-bottom: 5px;
   padding: 30px 5px 5px 5px;
 }
-/* second block second sub winners tab area*/
-.page-wordlet-intelchange-winners-home #page .second-block .second-sub .teams-wrapper {
+/* second block second sub */
+.page-wordlet-intelchange-winners-home #page .second-block .second-sub .stay-contected a {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.page-wordlet-intelchange-winners-home #page .teams-wrapper {
 /*  white-space: nowrap;
   overflow: hidden;*/
 }

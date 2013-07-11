@@ -21,11 +21,11 @@ function _build_list_for_yahoo_rss_feed($content) {
     foreach ( $parts as $part ) {
         $part = trim($part);
         if ( $part ) {
-            $ret .= '<li><p><strong>' . $part . '</strong></p></li>';
+            $ret .= '<p><strong>&bull; ' . $part . '</strong></p>';
         }
     }
 
-   if ( $ret ) return '<ul>' . $ret . '</ul>';
+   if ( $ret ) return $ret;
     return '';
 }
 
@@ -60,7 +60,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
     $xml .= "  xmlns:dc=\"http://purl.org/dc/elements/1.1/\"";
     $xml .= "  xmlns:content=\"http://purl.org/rss/1.0/modules/content/\"";
     $xml .= "  xmlns:admin=\"http://webns.net/mvcb/\"";
-    $xml .= "  xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">";
+    $xml .= "  xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n";
 
     $xml .= "\t<channel>\n";
     $table_queue = ($vars['view']->query->table_queue);
@@ -111,11 +111,12 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                 if ($poslink) {
                     $xml .= "\t\t\t<link><![CDATA[" . $poslink . "]]></link>\n";
                 }
+            } else if ($id == 'field_author') {
+                $xml .= "\t\t\t<author><![CDATA[" . $object->content . "]]></author>\n";
             } else if ($id == 'field_display_tag' && $object->content != '') {
                 $xml .= "\t\t\t<category><![CDATA[" . $object->content . "]]></category>\n";
             } else if ($id == 'field_promo_text' && $object->content != '') {
                 $xml .= "\t\t\t<description><![CDATA[" . $object->content . "]]></description>\n";
-
             } else if ($id == 'field_related_stories' && $object->content != '') {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } else if ($id == 'inline_content_embedded' && $object->content != '') {
@@ -126,14 +127,14 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
         }
 
         if ($related_content) {
-            $content .= "\n\n<p><strong>Related stories on TakePart:</strong></p>\n\n" . $related_content;
+            $content .= "\n\n<nav><h2><strong>Related stories on TakePart:</strong></h2><br/>\n\n" . $related_content . '</nav>';
         }
 
         $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
         $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
         $urlprefix = $protocol."://".$_SERVER['SERVER_NAME'].$port;
         $content=preg_replace('#(href|src)="([^:"]*)(?:")#', '$1="'.$urlprefix.'$2"', $content);
-        $xml .= "\t\t\t<content:encoded><![CDATA[" . $content . "]]></content:encoded>\n";
+        $xml .= "\t\t\t<content:encoded><![CDATA[" . str_replace('<hr>', '', $content) . "]]></content:encoded>\n";
         $xml .= "\t\t</item>\n";
     }
     $xml .= "\t</channel>\n";

@@ -457,7 +457,8 @@ function _takeaction_feed_term_list($node, $field) {
     }
   }
   // Load and implode the terms.
-  $terms = taxonomy_term_load_multiple($tids);
+  // use entity_load with cache reset option instead of taxonomy_term_load_multiple because of issue with static cache and entitycache module
+  $terms = entity_load('taxonomy_term', $tids, array(), TRUE);
   return taxonomy_implode_tags($terms);
 }
 
@@ -661,7 +662,20 @@ function takeaction_feed_build_node_json($node) {
     if ($name == 'field_social_share_bar') {
       $name = 'field_social_share_bar';
     }
+    // add 'path' attribute for taxonomy terms
     $json['page'][$name] = $property->value();
+    if (in_array($name, array('field_free_tag', 'field_display_tag', 'field_series', 'field_topic'))) {
+      if (is_array($json['page'][$name])) {
+        foreach ($json['page'][$name] as &$term) {
+          if (is_object($term) && isset($term->tid)) {
+            $term->path = drupal_get_path_alias('taxonomy/term/'.$term->tid);
+          }
+        }
+      }
+      elseif (is_object($json['page'][$name]) && isset($json['page'][$name]->tid)) {
+        $json['page'][$name]->path = drupal_get_path_alias('taxonomy/term/'.$term->tid);
+      }
+    }
   }
 
   # Load the form data

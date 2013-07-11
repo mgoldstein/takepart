@@ -4,8 +4,8 @@
 			<h4><?=w('email_signup')?></h4>
 			<div><?=w('email_signup_form')?></div>
 		</div>
-		<div class="sms-rail cms">
-			<?=w('sms_rail')?>
+		<div class="promo-rail cms">
+			<?=w('promo_rail')?>
 		</div>
 		<div class="follow">
 			<h4><?=w('follow_us')?></h4>

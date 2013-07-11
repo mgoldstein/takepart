@@ -193,10 +193,24 @@ function _takepart_galleries_mappings($nid) {
  * Implements hook_omniture_variables().
  */
 function takepart_galleries_omniture_variables() {
+  $node = menu_get_object();
+
   $return = array();
-  $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
-  if($first_folder == 'photos') {
-    $return = $return + (array('s.linkTrackEvents'=>'event14','s.events'=>'event14'));
+  $folders = explode('/', $_SERVER['REQUEST_URI']);
+  $first_folder = $folders[1];
+  $second_folder = @$folders[2];
+  $third_folder = @$folders[3];
+  if ( $first_folder == 'photos' ) {
+    $field_display_cover = field_get_items('node', $node, 'field_display_cover');
+    $field_display_cover = ( $field_display_cover ) ? $field_display_cover[0]['value'] : false;
+
+    if ( $third_folder == 'next-gallery' ) {
+      $return = $return + (array('s.linkTrackEvents'=>'event14,event16','s.events'=>'event14,event16','s.eVar16'=>'Up Next Gallery Cover'));
+    } elseif ( $third_folder || (!$field_display_cover && $second_folder) ) {
+      $return = $return + (array('s.linkTrackEvents'=>'event14,event15','s.events'=>'event14,event15','s.eVar16'=>'Photo'));
+    } elseif ( $second_folder ) {
+      $return = $return + (array('s.linkTrackEvents'=>'event14','s.events'=>'event14','s.eVar16'=>'Gallery Cover'));
+    }
     return array("variables" => $return);
   }
 }

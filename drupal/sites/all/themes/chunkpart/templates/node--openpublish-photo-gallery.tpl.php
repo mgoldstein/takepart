@@ -101,7 +101,7 @@
 				<? endif ?>
 				<? if ( $next_gallery ): ?>
 					<li id="next-gallery" data-token="next-gallery" class="next-article">
-						<a href="<?=$next_gallery->href ?>" class="enter-link">
+						<section class="enter-link">
 							<div class="image-content-wrapper">
 								<div class="image-area-inner">
 									<p class="image">
@@ -111,23 +111,35 @@
 											<?=_simage($next_gallery->node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?>
 										<? endif ?>
 									</p>
-									<div class="content">
-										<div class="content-inner">
-											<p class="description"><?=t('Up Next') ?></p>
-											<h2 class="headline"><?=_s($next_gallery->title) ?></h2>
+									<a href="<?=$next_gallery->href ?>/first-slide">
+										<div class="content">
+											<div class="content-inner">
+												<p class="description"><?=t('Up Next') ?></p>
+												<h2 class="headline"><?=_s($next_gallery->title) ?></h2>
+											</div>
+											<p class="enter"><?=t('Enter Photo Gallery') ?></p>
 										</div>
-										<p class="enter"><?=t('Enter Photo Gallery') ?></p>
-									</div>
+									</a>
 								</div>
 							</div>
 
 							<div class="photo-caption">
 								<div class="caption cms">
 									<p class="headline"><?=_s($next_gallery->title) ?></p>
-									<p class="article-abstract"><?=_s($subhead) ?></p>
+									<? if ( $field_topic = _snode($next_gallery->node, 'field_topic') ): ?>
+										<? while ( list($key, $tag) = _seach($field_topic) ): ?>
+											<p class="topic"><?=$tag->name ?></p>
+										<? endwhile ?>
+									<? endif ?>
+
+									<? if ( $nextbody = _snode($next_gallery->node, 'body', 'node') ): ?>
+										<?=_s($nextbody)?>
+									<? elseif ( $nextsubhead = _snode($next_gallery->node, 'field_subhead', 'node') ): ?>
+										<h3 class="article-abstract"><?=_s($nextsubhead) ?></h3>
+									<? endif ?>
 								</div>
 							</div>
-						</a>
+						</section>
 					</li>
 				<? endif ?>
 			</ul>
@@ -135,6 +147,11 @@
 			<? if ( _s($node, 'field_display_cover') ): ?>
 				<p class="back-to-cover">
 					<a href="#gallery-cover"><?=t('Back to cover')?></a>
+				</p>
+			<? endif ?>
+			<? if ( $next_gallery ): ?>
+				<p class="forward-to-gallery">
+					<a href="<?=$next_gallery->href ?>#first-slide"><?=t('Next photo gallery:')?> <?=_s($next_gallery->title) ?></a>
 				</p>
 			<? endif ?>
 		</div>
@@ -151,6 +168,10 @@
 				</div>
 			<? endif ?>
 		</div>
+
+		<? if ( _s($node, 'field_display_tab_banner') ): ?>
+			<div class="takepart-take-action-widget"></div>
+		<? endif ?>
 
 		<? if ( $relateds = field_get_items('node', $node, 'field_related_galleries') ): ?>
 			<nav id="related-galleries" class="related">
@@ -199,6 +220,10 @@
 
 		<div class="OUTBRAIN" data-src="<?=_surl($node) ?>" data-widget-id="AR_5" data-ob-template="TakePart" ></div>
 		<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
+
+		<? if ( isset($node_region['bean_on-our-radar-block']) ): ?>
+			<?=render($node_region['bean_on-our-radar-block']) ?>
+		<? endif ?>
 
 		<div class="gallery-comments">
 			<?=drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')) ?>

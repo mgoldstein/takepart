@@ -1,30 +1,12 @@
 (function (window, $, undefined) {
 
-window.tp_ad_takeover = function(bgcolor, bgimage, link) {
-	var $body = $('body');
-	var $a = $('<a id="tp_ad_takeover" href="' + link + '"></a>');
-	$body.css({
-		background: bgcolor + ' url("' + bgimage + '") center top no-repeat',
-		backgroundAttachment: 'fixed'
-	});
-	$a.css({
-		position: 'fixed',
-		height: '100%',
-		width: '100%',
-		left: 0,
-		top: 0,
-		zIndex: 1
-	})
-	$body.append($a);
-};
-
 // Document Ready
 $(function() {
 	var $body = $('body');
 
 	// Omniture position tracking
 	// Parent/ancestor vars to track in reverse order of importance
-	var positions = {
+	$.tpregions.add({
 		'Header': '#site-header',
 		'Footer': '#site-footer',
 		'Daily Featured Content': '.of_the_day_section',
@@ -36,26 +18,26 @@ $(function() {
 		'Author Full Bio Link': '#article-author .full_bio_link',
 		'Author Byline Link': '.authors',
 		'Badge': '.badge',
-		'Topic Box': '#topic_box'
-	};
+		'Topic Box': '#topic_box',
+		'Outbrain Widget': '.OUTBRAIN'
+	});
 
 	// Only place it on internal urls
 	var relative_test = new RegExp("//" + location.host + "($|/)");
 
-	for ( var pos in positions ) {
-		var sel = positions[pos];
-
-		var $as = $(sel + ' a');
-
-		for ( var i = 0; i < $as.length; i++ ) {
-			var a = $as[i];
+	$body
+		.delegate('a:not(.tplinkpos)', 'focus mouseover', function() {
+			var a = this;
+			var $a = $(this);
+			$a.addClass('tplinkpos');
 			var is_local = (a.href.substring(0,4) === "http") ? relative_test.test(a.href) : true;
+			if ( !is_local ) return;
 
-			if ( is_local  ) {
-				a.name = '&lpos=' + pos;
+			for ( var pos in positions ) {
+				var sel = positions[pos];
+				if ( $a.is(sel + ' a') ) a.name += '&lpos=' + pos;
 			}
-		}
-	}
+		});
 
 	/* --------------------------------
 	| Page Specific ---------------- */

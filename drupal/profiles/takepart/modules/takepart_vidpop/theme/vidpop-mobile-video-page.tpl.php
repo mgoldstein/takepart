@@ -51,6 +51,7 @@ $share_node_title = $p_video_title;
             <a class="addthis_button_facebook_like"
                addthis:url="<?php print $share_node_url; ?>"
                fb:like:action="like"
+               fb:like:href="<?php echo $share_node_url; ?>"
                fb:like:layout="button_count"></a>
             <a class="addthis_button_tweet"
                tw:counturl="<?php print $share_node_url; ?>"
