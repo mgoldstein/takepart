@@ -172,7 +172,9 @@ $(function() {
 			services: more_services
 		});
 
+		// prevent 2 email calls from firing
 		takepart.analytics.skip_addthis = true;
+
 		$('#article-author').css('padding-top', $('#article-social').outerHeight());
 
 		// Sticky social nav on article page
@@ -311,6 +313,9 @@ $(function() {
 				}
 			}
 		};
+
+		// prevent 2 email calls from firing
+		takepart.analytics.skip_addthis = true;
 
 		// Get current "token" from last folder of URL
 		var get_curtoken = function() {
