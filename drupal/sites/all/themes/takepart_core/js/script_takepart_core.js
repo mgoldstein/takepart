@@ -14,6 +14,10 @@ $(function() {
 			$.tpmodal.showModal({id: 'interstitial_modal_'});
 		};
 
+		window.dont_show_interstitial = function() {
+			$.tpmodal.hide({id: 'interstitial_modal_'});
+		};
+
 		$.tpmodal.load({
 			id: 'interstitial_modal_',
 			node: $iframe
