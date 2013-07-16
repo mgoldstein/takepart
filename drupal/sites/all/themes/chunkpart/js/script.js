@@ -118,7 +118,7 @@ $(function() {
 
 	/* Page Specific ---------------------------------------------------------------------------------- */
 
-	/* Article ----------------*/
+	/* Article --------------------------------------------------- */
 	if ( $body.is('.node-type-article') ) {
 		// Social share buttons
 		var tp_social_config = {
@@ -197,7 +197,7 @@ $(function() {
 				e.preventDefault();
 			})
 			;
-	/* Gallery ---------------- */
+	/* Gallery --------------------------------------------------- */
 	} else if ( $body.is('.node-type-openpublish-photo-gallery') ) {
 		var $gallery_cover = $('#gallery-cover');
 		var $gallery_main = $('#gallery-main');
