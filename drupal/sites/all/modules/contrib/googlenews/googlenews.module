@@ -95,13 +95,13 @@ function googlenews_tag_list() {
  * Get a list of all nodes to be output in the Google News sitemap.
  *
  * return array
- *   An array of node nid's, with the 'created' and 'title' values.
+ *   An array of node nid's.
  */
 function googlenews_list_nodes() {
-  $time = REQUEST_TIME - intval(variable_get('googlenews_hours', 48)) * 3600;
+  $time = REQUEST_TIME - intval(variable_get('googlenews_content_hours', 48)) * 3600;
 
   $query = db_select('node', 'n');
-  $query->fields('n', array('nid', 'created', 'title'));
+  $query->fields('n', array('nid'));
   $query->condition('n.type', variable_get('googlenews_node_types', array_keys(node_type_get_names())));
   $query->condition('n.status', NODE_PUBLISHED);
   $query->condition('n.created', $time, '>=');
