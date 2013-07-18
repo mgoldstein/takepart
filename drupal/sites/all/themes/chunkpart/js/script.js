@@ -14,6 +14,7 @@ $(window).bind('tp-social-click', function(e, args) {
 //jQuery('style').get(0).innerHTML = '';
 
 var $body = $('body');
+var $window = $(window);
 
 // Delegates
 $body
@@ -116,6 +117,12 @@ $(function() {
 			show_fb_comments(this);
 		}});
 
+	// Track "On Our Radar" links - if we can ever get exit link tracking to work correctly
+	$body
+		.delegate('.on_our_radar_section a', 'click', function() {
+			return takepart.analytics.track('on-our-radar-click', {element: this});
+		});
+
 	/* Page Specific ---------------------------------------------------------------------------------- */
 
 	/* Article --------------------------------------------------- */
@@ -199,16 +206,30 @@ $(function() {
 			;
 	/* Gallery --------------------------------------------------- */
 	} else if ( $body.is('.node-type-openpublish-photo-gallery') ) {
+		// Tracking for "Next gallery" clicks
+		$body
+			.delegate('#next-gallery a, .forward-to-gallery a', 'click', function() {
+				takepart.analytics.track('gallery-next-gallery-click', {
+					headline: next_gallery_headline,
+					topic: next_gallery_topic
+				});
+			});
+
 		var $gallery_cover = $('#gallery-cover');
 		var $gallery_main = $('#gallery-main');
 		var $slides = $('#gallery-content > ul');
 		var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
-		var fb_comment_el = $('.fb_comments')[0];
+		var $fb_comment = $('.fb_comments');
+		var fb_comment_el = $fb_comment[0];
 
 		var $first_slide = $slides.find('> li:first-child');
 		var has_cover = $gallery_cover.length;
 		var first_image;
 		var first_description;
+		var skip_next_pageview = false;
+		var $next_gallery = $('#next-gallery');
+		var next_gallery_headline = $next_gallery.find('.caption .headline').text();
+		var next_gallery_topic = $next_gallery.find('.caption .topic').text();
 
 		if ( has_cover ) {
 			first_image = $gallery_cover.find('img').attr('src');
@@ -218,29 +239,36 @@ $(function() {
 			first_description = $first_slide.find('.photo-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
 		}
 
+		// Update ads/fb comments etc per slide load
 		var update_to = null;
 		var update_page = function(token) {
 			clearTimeout(update_to);
 
-			setTimeout((function(token) {
-				return function() {
-					omniture = s.prop15.split(':');
-					s.prop15 = omniture[0] + ':' + omniture[1] + ((token) ? ':' + token : '');
-					s.eVar15 = s.prop15;
-					s.t();
-				}
-			})(token), 500);
+			if ( !skip_next_pageview ) {
+				setTimeout((function(token, skip_next_pageview) {
+					return function() {
+						takepart.analytics.track('gallery-track-slide', {
+							token: token,
+							skip_pageview: skip_next_pageview,
+							next_gallery_headline: next_gallery_headline,
+							next_gallery_topic: next_gallery_topic
+						});
+					}
+				})(token, skip_next_pageview), 500);
+			} else {
+				skip_next_pageview = false;
+			}
 
-			// $(fb_comment_el).hide();
 			update_to = setTimeout(function() {
 				var token = get_curtoken();
 
-				// $(fb_comment_el).show();
-				//if ( token ) {
-					show_fb_comments(fb_comment_el, base_url + '/' + token);
-				//} else {
-				//	show_fb_comments(fb_comment_el, base_url);
-				//}
+				if ( token == 'next-gallery' ) {
+					$fb_comment.hide();
+				} else {
+					$fb_comment.show();
+				}
+
+				show_fb_comments(fb_comment_el, base_url + '/' + token);
 
 				if ( googletag != undefined ) {
 					googletag.pubads().refresh();
@@ -284,31 +312,41 @@ $(function() {
 			}
 		};
 
+		// Get current "token" from last folder of URL
 		var get_curtoken = function() {
-			return document.location.href.split(/\/|#/).slice(5,6) + '';
+			var token = document.location.href.split(/\/|#/).slice(5,6) + '';
+			// Allow for back buttoning to #first-slide cover page
+			return token;
 		};
 
+		// Update slideshow based on url
 		var goto_slide = function() {
 			var token = get_curtoken();
 			var $slide = $slides.find('[data-token="' + token + '"]');
 			$slides.tpslide_to($slide);
 		};
 
-		//$('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
-
+		// Return history functionality in browser
 		var has_history = function() {
 			return (typeof history != 'undefined');
 		};
 
-		var hpush = function(token, title) {
+		// Update html5 history if token is new
+		var hpush = function(token, title, replace) {
 			var curtoken = get_curtoken();
+			var replace = replace || false;
 			if ( curtoken == token ) return;
 			update_page(token);
 
 			if ( !has_history() ) return;
-			history.pushState(null, title, base_url + '/' + token);
+			if ( replace ) {
+				history.replaceState(null, title, base_url + '/' + token);
+			} else {
+				history.pushState(null, title, base_url + '/' + token);
+			}
 		};
 
+		// Callback for slideshow sliding a slide
 		var $current_slide = null;
 		var slide_callback = function($current) {
 			var old_token = ( $current_slide ) ? $current_slide.data('token') : null;
@@ -318,6 +356,12 @@ $(function() {
 				$gallery_main.addClass('on-first');
 			} else {
 				$gallery_main.removeClass('on-first');
+			}
+
+			if ( !$current_slide.next().length ) {
+				$gallery_main.addClass('on-last');
+			} else {
+				$gallery_main.removeClass('on-last');
 			}
 
 			var current_image = $current_slide.find('img').attr('src');
@@ -344,12 +388,12 @@ $(function() {
 		}
 
 		var gallery_showing = false;
-		var show_gallery = function() {
+		var show_gallery = function(replace) {
 			if ( gallery_showing ) return;
 			gallery_showing = true;
 			$gallery_cover.hide();
 			$gallery_main.removeClass('hide_gallery').addClass('show_gallery');
-			hpush($current_slide.data('token'), $current_slide.find('.headline').text());
+			hpush($current_slide.data('token'), $current_slide.find('.headline').text(), replace);
 		};
 
 		var hide_gallery = function() {
@@ -369,12 +413,47 @@ $(function() {
 			gallery_showing = false;
 		};
 
-		$slides.tpslide({onslide: slide_callback});
+		// Make slideshow
+		$slides.tpslide({
+			onslide: slide_callback,
+			threshold: 75,
+			swipeTarget: 'img',
+			cycle: false
+		});
 
-		var first_popped = false;
+		// Fix heights for responsive
+		$window.bind('resize', function () {
+			$slides.height($current_slide.height());
+		});
+
+		// Event for fake back button to go to cover page
+		$('.back-to-cover a').bind('click', function(e) {
+			e.preventDefault();
+			if ( !gallery_showing ) return;
+			hide_gallery();
+			hpush('', $('#gallery-cover-main').find('.headline').text());
+		});
+
+		// Initialize page based on URL
+		if ( get_curtoken() && get_curtoken() != 'first-slide' ) {
+			skip_next_pageview = true;
+			goto_slide();
+			show_gallery();
+		} else if ( get_curtoken() == 'first-slide' ) {
+			skip_next_pageview = true;
+			show_gallery(true);
+		} else if ( $gallery_cover.length ) {
+			hide_gallery();
+		} else {
+			skip_next_pageview = true;
+			show_gallery(true);
+		}
+
+		var first_pop = true;
+		// Listen for html5 history updates/back button
 		window.addEventListener('popstate', function(e) {
-			if ( !first_popped ) {
-				first_popped = true;
+			if ( first_pop ) {
+				first_pop = false;
 				return;
 			}
 
@@ -390,23 +469,7 @@ $(function() {
 			update_page(token);
 		});
 
-		$('.back-to-cover a').bind('click', function(e) {
-			e.preventDefault();
-			if ( !gallery_showing ) return;
-			hide_gallery();
-			hpush('', $('#gallery-cover-main').find('.headline').text());
-		});
-
-		if ( get_curtoken() ) {
-			goto_slide();
-			show_gallery();
-		} else if ( $gallery_cover.length ) {
-			hide_gallery();
-		} else {
-			show_gallery();
-			hpush($current_slide.data('token'), $current.find('.headline').text());
-		}
-
+		// Cover page link event
 		$('#gallery-cover .enter-link, #gallery-body .enter-link').bind('click', function(e) {
 			e.preventDefault();
 			show_gallery();

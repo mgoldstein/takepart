@@ -13,7 +13,7 @@
             // Infographic pop-up
             .delegate('.tpinfographic a', 'click', function(e) {
                 $.tpmodal.show({id: 'tpinfographic_modal_', url: this.href, hideOnModalClick: true});
-                takepart.analytics.track('tpinfographic_show', $(this).find('img')[0].alt);
+                takepart.analytics.track('tpinfographic_show', {name: $(this).find('img')[0].alt});
                 e.preventDefault();
             })
             .delegate('.tpinfographic_embed_link a', 'click', function(e) {
@@ -22,7 +22,7 @@
                 var $embed_textarea_p = $this.closest('.tpinfographic_embed_container').find('.tpinfographic_embed_textarea');
                 if ( $embed_textarea_p.css('display') == 'none' ) {
                     $embed_textarea_p.show();
-                    takepart.analytics.track('tpinfographic_embed_show', $this.closest('.tpinfographic_container').find('img')[0].alt);
+                    takepart.analytics.track('tpinfographic_embed_show', {name: $this.closest('.tpinfographic_container').find('img')[0].alt});
                 } else {
                     $embed_textarea_p.hide();
                 }

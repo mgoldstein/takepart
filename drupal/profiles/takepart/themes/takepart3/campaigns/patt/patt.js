@@ -70,7 +70,7 @@ var show_modal = function(animate) {
 
 	var name = clean_myth($current_tile.find('.modal-left .fact').text()) || $current_tile.find('.modal-header h1').html() || 'Share Your Story';
 
-	takepart.analytics.track('patt_show_modal', name);
+	takepart.analytics.track('patt_show_modal', {name: name});
 
 	addthis.toolbox('.addthis_toolbox_modal');
 };
@@ -126,17 +126,17 @@ $('body')
 	.delegate('#snap_modal_modal .addthis_button_email', 'click', function() {
 		var name = clean_myth($current_tile.find('.modal-left .fact').text()) || $current_tile.find('.modal-header h1').html() || 'Share Your Story';
 
-		takepart.analytics.track('patt_email_modal', name);
+		takepart.analytics.track('patt_email_modal', {name: name});
 	})
 	.delegate('#snap_modal_modal .addthis_button_twitter', 'click', function() {
 		var name = clean_myth($current_tile.find('.modal-left .fact').text()) || $current_tile.find('.modal-header h1').html() || 'Share Your Story';
 
-		takepart.analytics.track('patt_twitter_modal', name);
+		takepart.analytics.track('patt_twitter_modal', {name: name});
 	})
 	.delegate('#snap_modal_modal .addthis_button_facebook, #snap_modal_modal .tpsocial-facebook', 'click', function() {
 		var name = clean_myth($current_tile.find('.modal-left .fact').text()) || $current_tile.find('.modal-header h1').html() || 'Share Your Story';
 
-		takepart.analytics.track('patt_facebook_modal', name);
+		takepart.analytics.track('patt_facebook_modal', {name: name});
 	})
 	.delegate('.social-buttons .addthis_button_email', 'click', function() {
 		takepart.analytics.track('patt_email_gallery');
@@ -213,7 +213,7 @@ var open_link = function(link, network) {
 
 	window.open(href, '_blank');
 
-	takepart.analytics.track('generic_tpsocial', network);
+	takepart.analytics.track('generic_tpsocial', {name: network});
 	//link.target = '_blank';
 };
 

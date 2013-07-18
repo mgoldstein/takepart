@@ -75,10 +75,10 @@ function takepart_core_preprocess_html(&$variables) {
         'weight' => -1,
     ));
 
-	// Batshit crazy nav stuff
-	if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
-		$variables['user_nav'] = _render_tp3_user_menu($variables);
-	}
+  // Batshit crazy nav stuff
+  if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
+    $variables['user_nav'] = _render_tp3_user_menu($variables);
+  }
 
 
   if (isset($variables['page']['content']['system_main']['nodes'])) {
@@ -158,10 +158,10 @@ function _tp3_fill_template_vars(&$variables) {
     if ((!isset($variables['follow_us_links'])) || (!$variables['follow_us_links'])) {
         $variables['follow_us_links'] = theme('takepart3_follow_us_links', $variables);
     }
-	// Batshit crazy nav stuff
-	if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
-		$variables['user_nav'] = _render_tp3_user_menu($variables);
-	}
+  // Batshit crazy nav stuff
+  if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
+    $variables['user_nav'] = _render_tp3_user_menu($variables);
+  }
 }
 
 function _render_tp3_header(&$params) {
@@ -174,20 +174,20 @@ function _render_tp3_footer(&$params) {
 
 function _alter_generated_css(&$css) {
   // Pull important styles from the themes .info file and place them above all stylesheets.
-	foreach ($css as $i => $style_from_foo) {
-		$dirname = dirname($i);
-		$basename = basename($i);
-		$file = explode('.', $basename);
-		$filename = $file[0] . '-sprite.' . $file[1];
-		if ( file_exists($dirname . '/' . $filename) ) {
-			if ( filemtime($i) - filemtime($dirname . '/' . $filename) < 10 ) {
-				$new = str_replace($basename, $filename, $i);
-				//$css[$new]['data'] = $new;
-				//unset($css[$i]);
-				$css[$i]['data'] = $new;
-			}
-		}
-	}
+  foreach ($css as $i => $style_from_foo) {
+    $dirname = dirname($i);
+    $basename = basename($i);
+    $file = explode('.', $basename);
+    $filename = $file[0] . '-sprite.' . $file[1];
+    if ( file_exists($dirname . '/' . $filename) ) {
+      if ( filemtime($i) - filemtime($dirname . '/' . $filename) < 10 ) {
+        $new = str_replace($basename, $filename, $i);
+        //$css[$new]['data'] = $new;
+        //unset($css[$i]);
+        $css[$i]['data'] = $new;
+      }
+    }
+  }
 }
 
 /* Template helpers */
@@ -196,7 +196,7 @@ function _alter_generated_css(&$css) {
 function _l($someArray, $prepend = '') {
     echo "<hr />";
     if ( !is_array($someArray) && !is_object($someArray) ) {
-      echo '<div class="data"><span class="value">' . htmlspecialchars($v) . '</span></div>';
+      echo '<div class="data"><span class="value">' . htmlspecialchars($someArray) . '</span></div>';
     }
 
     $someArray = (array)$someArray;
@@ -349,7 +349,12 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
 }
 
 // Rip out Drupal system classes
-function _smenu($menu) {
+function _smenu($menu, $prop = NULL, $type = 'node') {
+  if ( is_object($menu) && $prop ) {
+    $menu = field_get_items($type, $menu, $prop);
+    $menu = $menu[0]['safe_value'];
+  }
+
   if ( is_string($menu) ) {
     $items = menu_tree($menu);
   } elseif ( is_array($menu) ) {
@@ -359,7 +364,7 @@ function _smenu($menu) {
   // Strip drupal system class
   foreach( $items as $ikey => &$item ) {
     //if ( substr($item['#href'], 0, 4) == 'http' ) {
-	//	$items[$ikey]['#href'] = $_SERVER['HTTP_HOST'] . $item['#href'];
+  //  $items[$ikey]['#href'] = $_SERVER['HTTP_HOST'] . $item['#href'];
     //}
 
     foreach ( $item['#attributes']['class'] as $ckey => $class ) {
@@ -379,15 +384,14 @@ function _smenu($menu) {
 function _snode($var, $prop = null, $type = 'node') {
   if ( is_object($var) && $prop ) {
     $var = field_get_items($type, $var, $prop);
-    //return $var;
+    if ( is_array($var) ) reset($var);
+    return $var;
   }
 
-  if ( isset($var[0]) && isset($var[0]['node']) ) {
-    return $var[0]['node'];
-  } elseif ( isset($var[0]) && isset($var[0]['taxonomy_term']) ) {
-    return $var[0]['taxonomy_term'];
-  } else {
-    return $var;
+  if ( isset($var[0]) ) {
+    if ( isset($var[0]['access']) && !$var[0]['access'] ) return null;
+    if ( isset($var[0]['node']) ) return $var[0]['node'];
+    return $var[0];
   }
 }
 

@@ -26,7 +26,7 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
     $form_style = field_get_items('inline_content', $replacement, 'field_ic_expanded');
     if ($form_style !== FALSE && count($form_style) > 0) {
       $data = reset($form_style);
-      $state = ((string) $data['value'] == 'expanded') ? t('Expanded') : t('Collapsed');
+      $state = (!empty($data['value'])) ? t('Expanded') : t('Collapsed');
     }
     else {
       $state = t('Collapsed');
@@ -52,7 +52,7 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
     $form_style = field_get_items('inline_content', $replacement, 'field_ic_expanded');
     if ($form_style !== FALSE && count($form_style) > 0) {
       $data = reset($form_style);
-      if ($data['value'] == 'expanded') {
+      if (!empty($data['value'])) {
         $attributes['data-form-style'] = 'expanded';
       }
     }
@@ -69,6 +69,13 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
     if ($action !== FALSE && count($action) > 0) {
       $data = reset($action);
       $attributes['data-action-id'] = $data['nid'];
+    }
+
+    // Set the widget's action title override.
+    $title = field_get_items('inline_content', $replacement, 'field_ic_label');
+    if ($title !== FALSE && count($title) > 0) {
+      $data = reset($title);
+      $attributes['data-action-title'] = $data['value'];
     }
 
     $content['#replacements'][] = array(

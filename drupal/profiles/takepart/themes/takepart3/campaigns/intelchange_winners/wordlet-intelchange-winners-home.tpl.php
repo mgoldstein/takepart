@@ -57,6 +57,14 @@
 
     <div class="second-sub form_wrapper">
         <div class="default-state">
+            <div class="stay-contected cta" <?=wa('stay_connected')?>>
+                <a href="#stay-connected">
+                    <? if ( $w = w('stay_connected') ): ?>
+                        <h4><?=$w->single(false)?></h4>
+                        <?=$w->multi(false)?>
+                    <? endif ?>
+                </a>
+            </div>
             <div class="default-content">
                 <h2 class='headline'><?=w('second_block_second_sub_headline')?></h2>
                 <div class="teams-wrapper" <?=wa('teams')?>>
@@ -120,14 +128,6 @@
                         <? endforeach ?>
                     </div>
                 </div>
-            </div>
-            <div class="stay-contected cta" <?=wa('stay_connected')?>>
-                <a href="#stay-connected">
-                    <? if ( $w = w('stay_connected') ): ?>
-                        <h4><?=$w->single(false)?></h4>
-                        <?=$w->multi(false)?>
-                    <? endif ?>
-                </a>
             </div>
         </div>
 
