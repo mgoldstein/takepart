@@ -140,8 +140,8 @@ var tpmodal = function(parameters) {
 				me.showUrl(settings, settings.url + extra);
 			}
 		} else if ( settings.html !== null ) {
-			var fake_settings = $.extend({}, settings, {callback: null});
-			me.showNode(fake_settings, null);
+			/*var fake_settings = $.extend({}, settings, {callback: null});
+			me.showNode(fake_settings, null);*/
 			me.showHtml(settings, settings.html);
 		} else if ( settings.node !== null ) {
 			me.showNode(settings, settings.node);
@@ -176,14 +176,17 @@ var tpmodal = function(parameters) {
 	this.loadHtml = function(parameters, html) {
 		var settings = get_settings(parameters);
 		var $div = $('<div/>');
-
 		$div.html(html);
-		loadNode($div);
+		me.loadNode(parameters, $div);
 	};
 
+	// TODO: reduce duplicate code
 	this.showHtml = function(parameters, html) {
-		loadHtml(parameters, html);
-		me.showModal(parameters);
+		var settings = get_settings(parameters);
+		var $div = $('<div/>');
+		$div.html(html);
+
+		me.showNode(parameters, $div);
 	};
 
 	/* AJAX -------------------------------- */
@@ -220,7 +223,11 @@ var tpmodal = function(parameters) {
 
 		$modal_content
 			.html('')
-			.append(node);
+			.append(node)
+			.css({
+				width: 'auto',
+				height: 'auto'
+			});
 
 		if ( node ) $modal.removeClass(settings.prepend + 'loading');
 		if ( settings.hideOnModalClick ) $modal.bind('click', hide_modal);

@@ -4,11 +4,11 @@ $(function() {
 	var $main = $('#main');
 	var w = $main.width();
 	var h = $main.height();
-	window.parent.resize_interstitial(w, h);
+	if ( window.parent && window.parent.resize_interstitial ) window.parent.resize_interstitial(w, h);
 
 	$('#dont a').bind('click', function(e) {
 		e.preventDefault();
-		window.parent.dont_show_interstitial();
+		if ( window.parent && window.parent.dont_show_interstitial ) window.parent.dont_show_interstitial();
 	})
 });
 

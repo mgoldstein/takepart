@@ -1,7 +1,7 @@
 <header class="header">
 	<div <?=wa('promo-image') ?> >
 		<? if ( $promo_image = w('promo-image') ): ?>
-			<img src="<?=$promo_image->img_src ?>" alt="<?=$promo_image->single(false) ?>" width="360" height="196">
+			<img src="<?=$promo_image->img_src ?>" alt="<?=$promo_image->single(false) ?>">
 		<? endif ?>
 	</div>
 

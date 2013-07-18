@@ -2,21 +2,26 @@ body {
 	background: #fff;
 }
 
+#site-footer,
 #site-header {
 	display: none;
 }
 
-#main {
+#page-wrapper {
+	width: auto;
+}
+
+#page {
 	display: inline-block;
 	vertical-align: top;
 }
 
-#main .content,
-#main .headline {
+#page .content,
+#page .headline {
 	padding: 0 40px;
 }
 
-#main .headline {
+#page .headline {
 	padding-top: 20px;
 	margin-bottom: 5px;
 
@@ -25,32 +30,32 @@ body {
 	font-family: TradeGothicLTStdCnBold, sans-serif;
 }
 
-#main .content {
+#page .content {
 	padding-bottom: 20px;
 }
 
-#main .body {
+#page .body {
 	width: 160px;
 	float: left;
 }
 
-#main .body p {
+#page .body p {
 	margin-bottom: 5px;
 }
 
-#main .socials {
+#page .socials {
 	float: left;
 }
 
-#main .socials .social {
+#page .socials .social {
 	float: left;
 	margin-left: 14px;
 }
 
-#main .socials .social img {
+#page .socials .social img {
 	display: block;
 }
 
-#main #dont {
+#page #dont {
 	font-size: 12px;
 }
