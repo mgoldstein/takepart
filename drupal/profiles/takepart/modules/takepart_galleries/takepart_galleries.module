@@ -132,10 +132,12 @@ function _takepart_galleries_get_token($title, $filename) {
   $token = '';
 
   if ( $title ) {
+    $title = htmlspecialchars_decode($title, ENT_QUOTES);
     $token = strtolower(ereg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", $title)));
   }
 
   if ( $token == '' && $filename ) {
+    $filename = htmlspecialchars_decode($filename, ENT_QUOTES);
     $filename = strtok($filename, ".");
     if($filename) {
       $token = strtolower($filename);
