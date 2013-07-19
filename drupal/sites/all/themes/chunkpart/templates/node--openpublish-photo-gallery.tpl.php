@@ -1,6 +1,8 @@
 <article id="gallery-main" class="article <?=!$node->status ? 'unpublished':'' ?>"
 	<? if ( $series = _snode($node, 'field_series') ): ?>
-		data-series="<?=htmlspecialchars($series->name) ?>"
+		<? while ( list($key, $serie) = _seach($series) ): ?>
+			data-series="<?=htmlspecialchars($serie->name) ?>"
+		<? endwhile ?>
 	<? endif ?>
 	>
 	<? if ( _s($node, 'field_display_cover') ): ?>

@@ -1,6 +1,8 @@
 <article id="article-main" class="article <?=!$node->status ? 'unpublished':'' ?>"
 	<? if ( $series = _snode($node, 'field_series') ): ?>
-		data-series="<?=htmlspecialchars($series->name) ?>"
+		<? while ( list($key, $serie) = _seach($series) ): ?>
+			data-series="<?=htmlspecialchars($serie->name) ?>"
+		<? endwhile ?>
 	<? endif ?>
 	>
 	<div id="article-main-inner">
