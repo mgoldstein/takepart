@@ -441,7 +441,6 @@ $(function() {
 
 		// Initialize page based on URL
 		if ( get_curtoken() && get_curtoken() != 'first-slide' ) {
-			skip_next_pageview = true;
 			goto_slide();
 			show_gallery();
 		} else if ( get_curtoken() == 'first-slide' ) {
