@@ -12,9 +12,15 @@ body {
 }
 
 #page {
-	display: inline-block;
+	float: left;
 	vertical-align: top;
 	width: 400px;
+}
+
+#page * {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 #page .content,
@@ -41,4 +47,56 @@ body {
 
 #page #dont {
 	font-size: 12px;
+}
+
+#page .form {
+	margin-bottom: 1em;
+}
+
+.form-item-email {
+	position: relative;
+}
+
+.form-item-email label {
+	position: absolute;
+	z-index: 2;
+	line-height: 32px;
+	padding: 0 5px;
+	border: 1px solid transparent;
+}
+
+.form-item-email input {
+	max-width: 100%;
+	z-index: 1;
+	border: 1px solid #ccc;
+	box-shadow: inset 5px 5px 10px 0 rgba(0, 0, 0, .1);
+	background: #fff;
+	line-height: 32px;
+	padding: 0 5px;
+	position: relative;
+}
+
+.form-item-email input:focus {
+	max-width: 100%;
+	z-index: 3;
+}
+
+.form-actions input {
+	border: none;
+	font-size: 24px;
+	text-transform: uppercase;
+	font-family: TradeGothicLTStdCnBold, sans-serif;
+	color: #fff;
+	width: 100%;
+	padding: .25em;
+	border-radius: 3px;
+
+	background: rgb(40,169,232); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(40,169,232,1) 0%, rgba(32,134,185,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(40,169,232,1)), color-stop(100%,rgba(32,134,185,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(40,169,232,1) 0%,rgba(32,134,185,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(40,169,232,1) 0%,rgba(32,134,185,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(40,169,232,1) 0%,rgba(32,134,185,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(40,169,232,1) 0%,rgba(32,134,185,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#28a9e8', endColorstr='#2086b9',GradientType=0 ); /* IE6-9 */
 }
