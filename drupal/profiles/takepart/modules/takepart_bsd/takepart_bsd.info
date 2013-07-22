@@ -1,8 +1,0 @@
-name = TakePart Blue State Digital Support
-description = Blue State Digital API functionality for Drupal 7
-core = 7.x
-package = TakePart
-
-files[] = takepart_bsd.module
-files[] = takepart_bsd.install
-files[] = takepart_bsd.test
