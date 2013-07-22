@@ -234,6 +234,10 @@
 		float: none;
 	}
 
+	#site-secondary .block {
+		display: none;
+	}
+
 	#site-secondary .newsletter_social {
 		display: block;
 	}
