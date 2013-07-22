@@ -1,7 +1,0 @@
-name = Blue State Digital User Management
-description = Blue State Digtal user management functionality for Drupal 7
-core = 7.x
-package = Blue State Digital
-version = 7.x-1.0
-dependencies[] = bluestatedigital_forms
-configure = admin/config/bluestatedigital/user
