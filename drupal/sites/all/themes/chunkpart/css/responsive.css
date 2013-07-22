@@ -234,10 +234,6 @@
 		float: none;
 	}
 
-	#site-secondary .block {
-		display: none;
-	}
-
 	#site-secondary .newsletter_social {
 		display: block;
 	}
@@ -433,6 +429,7 @@
 
 	.node-type-article #article-image img {
 		margin: auto;
+		height: auto;
 	}
 
 /* Gallery
