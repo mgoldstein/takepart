@@ -426,6 +426,18 @@ $(function() {
 			cycle: false
 		});
 
+		$slides
+			.delegate('.gallery-slide img', 'mouseover', function() {
+				$gallery_main.addClass('image-hover');
+			})
+			.delegate('.gallery-slide img', 'mouseout', function() {
+				$gallery_main.removeClass('image-hover');
+			})
+			.delegate('.gallery-slide img', 'click', function() {
+				$slides.tpslide_next(false);
+			})
+			;
+
 		// Fix heights for responsive
 		$window.bind('resize', function () {
 			$slides.height($current_slide.height());

@@ -1455,6 +1455,7 @@ div.takepart-take-action-widget {
 .node-type-openpublish-photo-gallery #gallery-photos .gallery-slide img {
 	display: inline-block;
 	vertical-align: middle;
+	cursor: pointer;
 }
 
 .node-type-openpublish-photo-gallery #gallery-cover-main {
@@ -1753,6 +1754,8 @@ div.takepart-take-action-widget {
 	right: 56%;
 }
 
+.node-type-openpublish-photo-gallery .image-hover .forward-to-gallery a,
+.node-type-openpublish-photo-gallery .image-hover .tpslide_next,
 .node-type-openpublish-photo-gallery .forward-to-gallery a:hover,
 .node-type-openpublish-photo-gallery .tpslide_next:hover {
 	background-image: url(../images/gallery_next.png); /** sprite-ref: mysprite; */

@@ -16,6 +16,12 @@
             accessor.slide_to(val);
         });
     };
+    $.fn.tpslide_next = function (do_hash) {
+        return this.each(function () {
+            var accessor = $(this).data('accessor');
+            accessor.slide_next(do_hash);
+        });
+    };
     $.fn.tpslide = function (options) {
         var settings = $.extend({
             prepend: 'tpslide_',
@@ -169,6 +175,10 @@
                     current = $current.data('tpslide-key');
                     slide(false);
                 }
+            };
+
+            accessor.slide_next = function (do_hash) {
+                next(do_hash);
             };
 
             var next = function (do_hash) {
