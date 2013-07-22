@@ -10,7 +10,6 @@ class ViewHelperLink {
 }
 
 function article_support_next_story($node, $type) {
-
   // Get the first article from a list of articles created before this one
   // sorted from newest to oldest
   $series = field_get_items('node', $node, 'field_series');
@@ -34,7 +33,7 @@ function article_support_next_story($node, $type) {
     $previous = $query->execute()->fetchAssoc();
   }
 
-  if ( !$previous ) {
+  if ( !$previous && $type == 'openpublish_photo_gallery' ) {
     $topic = field_get_items('node', $node, 'field_topic');
 
     if ($topic !== FALSE) {
@@ -58,7 +57,7 @@ function article_support_next_story($node, $type) {
     }
   }
 
-  if ( !$previous ) {
+  if ( !$previous && $type == 'openpublish_photo_gallery' ) {
     // Fall back on chronological ordering
     $query = db_select('node', 'n')
       ->fields('n', array('nid', 'title'))
