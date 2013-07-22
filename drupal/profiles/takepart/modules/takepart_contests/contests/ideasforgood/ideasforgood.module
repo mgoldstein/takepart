@@ -262,56 +262,8 @@ function ideasforgood_vote_form($form, &$form_state, $finalist) {
 }
 
 function ideasforgood_vote_form_submit(&$form, &$form_state) {
-  global $user;
-
-  $finalist = $form_state['ideasforgood_finalist'];
-
-  // get the voting group
-  $group = ideasforgood_finalist_group($finalist);
-  if ($group !== FALSE) {
-
-    // build the signup
-    $signup = array(
-      $group->voting_form_id => array(
-        $group->email_field_id => array(
-          'value' => array(
-            'type' => 'value',
-            'value' => $user->mail,
-          ),
-        ),
-        $group->vote_field_id => array(
-          'value' => array(
-            'type' => 'value',
-            'value' => $form_state['values']['vote'],
-          ),
-        ),
-        $group->opt_in_field_id => array(
-          'value' => array(
-            'type' => 'value',
-            'value' => $form_state['values']['opt_in'],
-          ),
-        ),
-      ),
-    );
-
-    // send the vote
-    $form_state['vote_accepted'] = FALSE;
-    try {
-      $api = bluestatedigital_get_api('signup');
-      $api->processSignup($signup);
-      $form_state['vote_accepted'] = TRUE;
-    }
-    catch (BlueStateDigitalApiException $ex) {
-      if ($ex->getResponseCode() != 409 ||
-          $ex->getResponseBody() != 'Email limiting check failed') {
-        $message = 'Error sending vote signup [@code] @body';
-        watchdog('ideasforgood', $message, array(
-          '@code' => $ex->getResponseCode(),
-          '@body' => $ex->getResponseBody(),
-        ));
-      }
-    }
-  }
+  // NOTE: Vote submission disabled as part of email migration from BSD to
+  //       Blue Hornet.
 }
 
 function ideasforgood_vote_form_callback(&$form, $form_state) {

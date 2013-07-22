@@ -11,10 +11,10 @@ class IdeasForGoodVotingGroupUIController extends EntityDefaultUIController {
 
   public function hook_menu() {
     $items = parent::hook_menu();
-    
+
     // Update the description for the main admin page.
     $items[$this->path]['description'] = 'Manage Ideas for Good voting groups.';
-    
+
     $items[$this->path . '/autocomplete'] = array(
       'title' => 'Voting Group autocomplete',
       'page callback' => 'ideasforgood_voting_group_autocomplete',
@@ -24,7 +24,7 @@ class IdeasForGoodVotingGroupUIController extends EntityDefaultUIController {
       'file path' => drupal_get_path('module', $this->entityInfo['module']),
       'type' => MENU_CALLBACK,
     );
-    
+
     return $items;
   }
 }
@@ -104,50 +104,6 @@ function ideasforgood_voting_group_form($form, &$form_state, $entity,
     '#default_value' => $values['contest'],
   );
 
-  $form['signupform'] = array(
-    '#title' => 'Blue State Digital Signup Tracking',
-    '#description' => t('Select the Blue State Digital signup form and fields for this voting group.'),
-    '#type' => 'fieldset',
-    '#tree' => FALSE,
-   );
-
-  $form['signupform']['voting_form_id'] =
-    bluestatedigital_forms_signup_form_id($values['voting_form_id']);
-  $form['signupform']['voting_form_id']['#title'] = t('Voting Signup Form');
-  $form['signupform']['voting_form_id'] += array(
-    '#ajax' => array(
-      'event' => 'change',
-      'callback' => 'ideasforgood_signup_form_id_callback',
-      'wrapper' => 'ideasforgood-signup-fields-wrapper',
-      'progress' => array(
-        'type' => 'throbber',
-        'message' => t('Loading fields ...'),
-      ),
-    ),
-  );
-
-  $form['signupform']['fields'] = array(
-    '#type' => 'container',
-    '#tree' => FALSE,
-    '#prefix' => '<div id="ideasforgood-signup-fields-wrapper">',
-    '#suffix' => '</div>',
-  );
-
-  $form['signupform']['fields']['email_field_id'] =
-    bluestatedigital_forms_signup_field_id($values['voting_form_id'],
-      $values['email_field_id']);
-  $form['signupform']['fields']['email_field_id']['#title'] = 'Email Field ID';
-
-  $form['signupform']['fields']['vote_field_id'] =
-    bluestatedigital_forms_signup_field_id($values['voting_form_id'],
-      $values['vote_field_id']);
-  $form['signupform']['fields']['vote_field_id']['#title'] = 'Vote Field ID';
-
-  $form['signupform']['fields']['opt_in_field_id'] =
-    bluestatedigital_forms_signup_field_id($values['voting_form_id'],
-      $values['opt_in_field_id']);
-  $form['signupform']['fields']['opt_in_field_id']['#title'] = 'Opt-In Field ID';
-
   field_attach_form('ideasforgood_voting_group',
     $form_state['ideasforgood_voting_group'], $form, $form_state);
 
@@ -184,13 +140,6 @@ function ideasforgood_voting_group_form($form, &$form_state, $entity,
   $form['#validate'][] = 'ideasforgood_voting_group_form_validate';
 
   return $form;
-}
-
-/**
- * Voting Group entity form BSD signup form field AJAX callback
- */
-function ideasforgood_signup_form_id_callback(&$form, $form_state) {
-  return $form['signupform']['fields'];
 }
 
 /**
