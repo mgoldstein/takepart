@@ -1,0 +1,8 @@
+name = Interstitials
+description = Marketing interstitials.
+core = 7.x
+version = 7.x-1.0
+package = Customization
+
+dependencies[] = pm_core
+dependencies[] = context
