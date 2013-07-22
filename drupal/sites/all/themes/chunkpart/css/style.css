@@ -1479,6 +1479,7 @@ div.takepart-take-action-widget {
 .node-type-openpublish-photo-gallery .enter-link .image img {
 	line-height: 1;
 	vertical-align: middle;
+	cursor: pointer;
 }
 
 .node-type-openpublish-photo-gallery .enter-link .content {

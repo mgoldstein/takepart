@@ -427,14 +427,18 @@ $(function() {
 		});
 
 		$slides
-			.delegate('.gallery-slide img', 'mouseover', function() {
+			.delegate('.gallery-slide img, .image-content-wrapper', 'mouseover', function() {
 				$gallery_main.addClass('image-hover');
 			})
-			.delegate('.gallery-slide img', 'mouseout', function() {
+			.delegate('.gallery-slide img, .image-content-wrapper', 'mouseout', function() {
 				$gallery_main.removeClass('image-hover');
 			})
 			.delegate('.gallery-slide img', 'click', function() {
 				$slides.tpslide_next(false);
+			})
+			.delegate('#next-gallery .image img', 'click', function() {
+				var $a = $(this).closest('#next-gallery').find('a');
+				document.location = $a.attr('href');
 			})
 			;
 
