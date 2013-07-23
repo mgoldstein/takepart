@@ -1,5 +1,0 @@
-name = Intel Contest Entry Form
-description = Entry form for the Intel for Change contest.
-core = 7.x
-version = 7.x-1.0
-package = TakePart
