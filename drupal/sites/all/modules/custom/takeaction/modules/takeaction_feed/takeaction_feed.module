@@ -731,6 +731,11 @@ function _takeaction_feed_replace_with_property($data, $property) {
 }
 
 function _takeaction_feed_image($data) {
+  # If file data already replaced by url, return it
+  if (is_string($data)) {
+    return $data;
+  }
+
   $url = NULL;
   if (!empty($data)) {
     if (isset($data['und']) && isset($data['und'][0]) && isset($data['und'][0]['fid'])) {
