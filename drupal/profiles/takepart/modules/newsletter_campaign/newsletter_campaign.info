@@ -3,4 +3,8 @@ description = Provides newsletter signup blocks with support for sending the sig
 package = TakePart
 version = 7.x-2.2
 core = 7.x
+
+files[] = newsletter_campaign.signup.inc
+
 dependencies[] = entity
+dependencies[] = pm_signup

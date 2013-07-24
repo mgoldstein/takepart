@@ -42,29 +42,40 @@ class NewsletterCampaign extends Entity {
 
   public function signup($email) {
 
-    // Build the email signup.
-    $signup = array(
-      $this->bsd_form_id => array(
-        $this->bsd_field_id => array(
-          'value' => array(
-            'type' => 'value',
-            'value' => $email,
-          ),
-        ),
-      ),
-    );
+    // Create an email signup.
+    $signup = NewsletterCampaignSignup::create();
+    $signup['email'] = $email;
 
-    // Send the email signup.
-    try {
-      $api = bluestatedigital_get_api('signup');
-      $api->processSignup($signup);
-      return TRUE;
+    // Load the submission endpoint.
+    $endpoint = NewsletterCampaignSignupEndpoint::loadByName($this->signup_name);
+
+    if ($endpoint !== FALSE) {
+      // Send the signup.
+      try {
+        $signup->validate();
+        $endpoint->submit($signup);
+        return TRUE;
+      }
+      catch (SignupValidationException $sve) {
+        $message = 'Error validating signup [@name] @email';
+        watchdog('newsletter_campaign', $message, array(
+          '@name' => $this->signup_name,
+          '@email' => $email,
+        ));
+      }
+      catch (SignupSubmissionException $sse) {
+        $message = 'Error sending signup [@name] @email';
+        watchdog('newsletter_campaign', $message, array(
+          '@name' => $this->signup_name,
+          '@email' => $email,
+        ));
+      }
     }
-    catch (BlueStateDigitalApiException $ex) {
-      $message = 'Error sending email signup [@code] @body';
+    else {
+      $message = 'Unknown signup [@name] @email';
       watchdog('newsletter_campaign', $message, array(
-        '@code' => $ex->getResponseCode(),
-        '@body' => $ex->getResponseBody(),
+        '@name' => $this->signup_name,
+        '@email' => $email,
       ));
     }
     return FALSE;
@@ -97,10 +108,9 @@ class NewsletterCampaignController extends EntityApiController {
       'promo_message' => '',
       'thankyou_message' => '',
       'campaign_id' => '',
-      'bsd_form_id' => 0,
-      'bsd_field_id' => 0,
       'follow_us_enabled' => FALSE,
       'follow_us_configuration' => $this->initializeFollowUs(),
+      'signup_name' => '',
       'is_new' => TRUE,
     );
     return parent::create($values);
@@ -154,7 +164,7 @@ class NewsletterCampaignUIController extends EntityDefaultUIController {
     $headers = $render['#header'];
     $label = array_shift($headers);
     $extra_headers = array(
-      t('Signup Form ID'),
+      t('Signup Name'),
       t('Header'),
       t('Promo Message'),
       t('Thank You Message'),
@@ -166,7 +176,7 @@ class NewsletterCampaignUIController extends EntityDefaultUIController {
   protected function overviewTableRow($conditions, $id, $entity, $additional_cols = array()) {
     $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol', 'li',
       'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
-    $additional_cols[] = empty($entity->bsd_form_id) ? '' : (string) $entity->bsd_form_id;
+    $additional_cols[] = $entity->signup_name;
     $additional_cols[] = filter_xss($entity->header, $allowed_tags);
     $additional_cols[] = filter_xss($entity->promo_message, $allowed_tags);
     $additional_cols[] = filter_xss($entity->thankyou_message, $allowed_tags);
@@ -255,14 +265,13 @@ function newsletter_campaign_form($form, &$form_state, $campaign, $op = 'edit') 
     'header' => $campaign->header,
     'promo_message' => $campaign->promo_message,
     'thankyou_message' => $campaign->thankyou_message,
-    'bsd_form_id' => $campaign->bsd_form_id,
-    'bsd_field_id' => $campaign->bsd_field_id,
+    'signup_name' => $campaign->signup_name,
     'follow_us_enabled' => $campaign->follow_us_enabled,
   );
 
   $service_names = newsletter_campaign_follow_us_service_names();
   foreach ($service_names as $service => $name) {
-    $default["follow_us_{$service}"] = $campaign->follow_us_configuration->{$service};
+    $defaults["follow_us_{$service}"] = $campaign->follow_us_configuration->{$service};
   }
 
   $values = array();
@@ -310,33 +319,14 @@ function newsletter_campaign_form($form, &$form_state, $campaign, $op = 'edit') 
     '#rows' => 4,
   );
 
-  $form['bluestatedigital'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Blue State Digital'),
-    '#description' => t('Blue State Digital signup form and field configuration.'),
-    '#tree' => FALSE,
-  );
-
-  $form['bluestatedigital']['bsd_form_id']
-    = bluestatedigital_forms_signup_form_id($values['bsd_form_id']);
-  $form['bluestatedigital']['bsd_form_id'] += array(
-    '#ajax' => array(
-      'event' => 'change',
-      'callback' => 'newsletter_campaign_form_email_field_callback',
-      'wrapper' => 'newsletter-campaign-form-email-field-wrapper',
-      'progress' => array(
-        'type' => 'throbber',
-        'message' => t('Loading fields ...'),
-      ),
-    ),
-  );
-
-  $form['bluestatedigital']['bsd_field_id']
-    = bluestatedigital_forms_signup_field_id($values['bsd_form_id'],
-      $values['bsd_field_id']);
-  $form['bluestatedigital']['bsd_field_id'] += array(
-    '#prefix' => '<div id="newsletter-campaign-form-email-field-wrapper">',
-    '#suffix' => '</div>',
+  $signup_options = NewsletterCampaignSignupEndpoint::namedEnpoints();
+  $form['signup_name'] = array(
+    '#type' => 'select',
+    '#title' => t('Signup Name'),
+    '#default_value' => $values['signup_name'],
+    '#description' => t('The name of the signup endpoint used to register emails.'),
+    '#required' => TRUE,
+    '#options' => $signup_options,
   );
 
   $form['follow_us_enabled'] = array(
@@ -394,13 +384,6 @@ function newsletter_campaign_form($form, &$form_state, $campaign, $op = 'edit') 
   );
 
   return $form;
-}
-
-/**
- * AJAX callback for Blue State Digital signup form field.
- */
-function newsletter_campaign_form_email_field_callback($form, $form_state) {
-  return $form['bluestatedigital']['bsd_field_id'];
 }
 
 /**
@@ -867,12 +850,15 @@ function newsletter_campaign_preprocess_markup($markup) {
 
 function newsletter_campaign_email_only_signup_configuration($form, $config) {
 
-  $form['email_signup_form_id']
-    = bluestatedigital_forms_signup_form_id($config['email_signup_form_id']);
-  $form['email_signup_form_id']['#title'] = t('Email Newsletter');
-  $options = $form['email_signup_form_id']['#options'];
-  $form['email_signup_form_id']['#options']
-    = array_filter($options, 'newsletter_campaign_signup_form_filter');
+  $signup_options = NewsletterCampaignSignupEndpoint::namedEnpoints();
+  $form['signup_name'] = array(
+    '#type' => 'select',
+    '#title' => t('Signup Name'),
+    '#default_value' => $config['signup_name'],
+    '#description' => t('The name of the signup endpoint.'),
+    '#required' => TRUE,
+    '#options' => $signup_options,
+  );
 
   $form['header'] = array(
     '#type' => 'textarea',
@@ -966,34 +952,14 @@ function newsletter_campaign_email_only_signup_form($form, &$form_state, $config
 
 function newsletter_campaign_mobile_only_signup_configuration($form, $config) {
 
-  Waterfall::Api()->post('authenticate', array(
-    'username' => 'TakePart',
-    'password' => 'sms4takepart',
-  ));
-  $us_flows = array('' => t('-- None --'));
-  foreach (PhoneCampaigns::US()->flows() as $flow) {
-    $us_flows[$flow->id] = $flow->name;
-  }
-  $canada_flows = array('' => t('-- None --'));
-  foreach (PhoneCampaigns::Canada()->flows() as $flow) {
-    $canada_flows[$flow->id] = $flow->name;
-  }
-  Waterfall::Api()->post('authenticate/logout');
-
-  $form['us_mobile_flow_id'] = array(
+  $signup_options = NewsletterCampaignSignupEndpoint::namedEnpoints();
+  $form['signup_name'] = array(
     '#type' => 'select',
-    '#title' => t('US Mobile Flow'),
-    '#options' => $us_flows,
-    '#required' => FALSE,
-    '#default_value' => $config['us_mobile_flow_id'],
-  );
-
-  $form['canada_mobile_flow_id'] = array(
-    '#type' => 'select',
-    '#title' => t('Canadian Mobile Flow'),
-    '#options' => $canada_flows,
-    '#required' => FALSE,
-    '#default_value' => $config['canada_mobile_flow_id'],
+    '#title' => t('Signup Name'),
+    '#default_value' => $config['signup_name'],
+    '#description' => t('The name of the signup endpoint.'),
+    '#required' => TRUE,
+    '#options' => $signup_options,
   );
 
   $form['header'] = array(
@@ -1120,41 +1086,14 @@ function newsletter_campaign_mobile_only_signup_form($form, &$form_state, $confi
 
 function newsletter_campaign_email_mobile_signup_configuration($form, $config) {
 
-  Waterfall::Api()->post('authenticate', array(
-    'username' => 'TakePart',
-    'password' => 'sms4takepart',
-  ));
-  $us_flows = array('' => t('-- None --'));
-  foreach (PhoneCampaigns::US()->flows() as $flow) {
-    $us_flows[$flow->id] = $flow->name;
-  }
-  $canada_flows = array('' => t('-- None --'));
-  foreach (PhoneCampaigns::Canada()->flows() as $flow) {
-    $canada_flows[$flow->id] = $flow->name;
-  }
-  Waterfall::Api()->post('authenticate/logout');
-
-  $form['email_signup_form_id']
-    = bluestatedigital_forms_signup_form_id($config['email_signup_form_id']);
-  $form['email_signup_form_id']['#title'] = t('Email Newsletter');
-  $options = $form['email_signup_form_id']['#options'];
-  $form['email_signup_form_id']['#options']
-    = array_filter($options, 'newsletter_campaign_signup_form_filter');
-
-  $form['us_mobile_flow_id'] = array(
+  $signup_options = NewsletterCampaignSignupEndpoint::namedEnpoints();
+  $form['signup_name'] = array(
     '#type' => 'select',
-    '#title' => t('US Mobile Flow'),
-    '#options' => $us_flows,
-    '#required' => FALSE,
-    '#default_value' => $config['us_mobile_flow_id'],
-  );
-
-  $form['canada_mobile_flow_id'] = array(
-    '#type' => 'select',
-    '#title' => t('Canadian Mobile Flow'),
-    '#options' => $canada_flows,
-    '#required' => FALSE,
-    '#default_value' => $config['canada_mobile_flow_id'],
+    '#title' => t('Signup Name'),
+    '#default_value' => $config['signup_name'],
+    '#description' => t('The name of the signup endpoint.'),
+    '#required' => TRUE,
+    '#options' => $signup_options,
   );
 
   $form['header'] = array(
@@ -1312,7 +1251,7 @@ function newsletter_campaign_direct_signup_form_validate($form, &$form_state) {
 
       $mobile_number = trim($form_state['values']['mobile_number']);
       if (!empty($mobile_number)) {
-        $sanitized = PhoneCampaigns::Sanitize($mobile_number);
+        $sanitized = str_replace(array('(',')',' ','-','.'), '', "{$mobile_number}");
         if (!preg_match('/^[0-9]{10}$/', $sanitized)) {
           form_set_error('mobile_number', t('Invalid mobile number.'));
         }
@@ -1386,85 +1325,57 @@ function newsletter_campaign_direct_signup_form_submit($form, &$form_state) {
   $selector = $args['selector'];
   $config = $args['config'];
 
-  $send_email = $selector != '#newsletter-campaign-mobile-only-signup-form';
-  $send_phone = $selector != '#newsletter-campaign-email-only-signup-form';
+  $signup = NewsletterCampaignSignup::create();
 
-  $have_form_id = !empty($config['email_signup_form_id']);
-  $have_us_flow_id = !empty($config['us_mobile_flow_id']);
-  $have_canada_flow_id = !empty($config['canada_mobile_flow_id']);
+  // Set the email if one was supplied.
+  if ($selector != '#newsletter-campaign-mobile-only-signup-form') {
+    $signup['email'] = $form_state['values']['email'];
+  }
 
-  $email = $form_state['values']['email'];
-  if ($config['single_phone_number_field']) {
-    $phone = PhoneCampaigns::Sanitize($form_state['values']['mobile_number']);
+  // Set the phone number if one was supplied.
+  if ($selector != '#newsletter-campaign-email-only-signup-form') {
+    if ($config['single_phone_number_field']) {
+      $signup['phone-number'] = $form_state['values']['mobile_number'];
+    }
+    else {
+      $signup['phone-number.area-code'] = $form_state['values']['mobile']['areacode'];
+      $signup['phone-number.exchange'] = $form_state['values']['mobile']['exchange'];
+      $signup['phone-number.number'] = $form_state['values']['mobile']['number'];
+    }
+  }
+
+  // Load the submission endpoint.
+  $endpoint = NewsletterCampaignSignupEndpoint::loadByName($config['signup_name']);
+  if ($endpoint !== FALSE) {
+    // Send the signup.
+    try {
+      $signup->validate();
+      $endpoint->submit($signup);
+      return TRUE;
+    }
+    catch (SignupValidationException $sve) {
+      $message = 'Error validating signup [@name] @email, @phone';
+      watchdog('newsletter_campaign', $message, array(
+        '@name' => $config['signup_name'],
+        '@email' => $signup['email'],
+        '@phone' => $signup->getPhoneNumber(),
+      ));
+    }
+    catch (SignupSubmissionException $sse) {
+      $message = 'Error sending signup [@name] @email, @phone';
+      watchdog('newsletter_campaign', $message, array(
+        '@name' => $config['signup_name'],
+        '@email' => $signup['email'],
+        '@phone' => $signup->getPhoneNumber(),
+      ));
+    }
   }
   else {
-    $phone = implode('', array(
-      $form_state['values']['mobile']['areacode'],
-      $form_state['values']['mobile']['exchange'],
-      $form_state['values']['mobile']['number'],
+    $message = 'Unkown signup [@name] @email, @phone';
+    watchdog('newsletter_campaign', $message, array(
+      '@name' => $config['signup_name'],
+      '@email' => $signup['email'],
+      '@phone' => $signup->getPhoneNumber(),
     ));
-  }
-
-  /* Send the email to BSD */
-  if ($send_email && $have_form_id) {
-    try {
-
-      $api = bluestatedigital_get_api('signup');
-
-      $fields = $api->listFormFields($config['email_signup_form_id']);
-
-      $email_field_id = 0;
-      $phone_field_id = 0;
-      foreach ($fields as $id => $field) {
-        if ($field['description'] == 'Email') {
-          $email_field_id = $id;
-        }
-        if ($field['description'] == 'Phone') {
-          $phone_field_id = $id;
-        }
-      }
-
-      $fields[$email_field_id]['value'] = array(
-        'type' => 'value',
-        'value' => $email,
-      );
-      if (!empty($phone)) {
-        $fields[$phone_field_id]['value'] = array(
-          'type' => 'value',
-          'value' => $phone,
-        );
-      }
-
-      $signup = array($config['email_signup_form_id'] => $fields);
-      $api->processSignup($signup);
-    }
-    catch (BlueStateDigitalApiException $ex) {
-      $message = 'Error sending email signup [@code] @body';
-      watchdog('newsletter_campaign', $message, array(
-        '@code' => $ex->getResponseCode(),
-        '@body' => $ex->getResponseBody(),
-      ));
-    }
-  }
-
-  /* Send the mobile number to Waterfall */
-  if ($send_phone) {
-    $area_code = substr($phone, 0, 3);
-    if (PhoneCampaigns::IsCanadianAreaCode($area_code) && $have_canada_flow_id) {
-      Waterfall::Api()->post('authenticate', array(
-        'username' => 'TakePart',
-        'password' => 'sms4takepart',
-      ));
-      PhoneCampaigns::Canada()->initiateFlow($config['canada_mobile_flow_id'], $phone);
-      Waterfall::Api()->post('authenticate/logout');
-    }
-    elseif ($have_us_flow_id) {
-      Waterfall::Api()->post('authenticate', array(
-        'username' => 'TakePart',
-        'password' => 'sms4takepart',
-      ));
-      PhoneCampaigns::US()->initiateFlow($config['us_mobile_flow_id'], $phone);
-      Waterfall::Api()->post('authenticate/logout');
-    }
   }
 }
