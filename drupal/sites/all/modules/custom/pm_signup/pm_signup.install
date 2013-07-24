@@ -1,0 +1,64 @@
+<?php
+/**
+ * @file
+ * Module schema information.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function pm_signup_schema() {
+  $schema = array();
+
+  $schema['pm_signup_endpoint'] = array(
+    'description' => 'Stores signup endpoint configuration.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key identifier.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'type' => array(
+        'description' => 'Type class name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'name' => array(
+        'description' => 'Machine readable name for export.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'label' => array(
+        'description' => 'Human readable name for selection.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'configuration' => array(
+        'description' => 'Endpoint configuration.',
+        'type' => 'text',
+        'serialize' => TRUE,
+        'size' => 'normal',
+      ),
+      'plugins' => array(
+        'description' => 'Plugin configurations.',
+        'type' => 'text',
+        'serialize' => TRUE,
+        'size' => 'normal',
+      ),
+    ),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'name' => array('name'),
+    ),
+    'indexes' => array(
+      'type' => array('type'),
+    ),
+  );
+
+  return $schema;
+}

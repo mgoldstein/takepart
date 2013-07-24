@@ -1,0 +1,9 @@
+name = Signups
+description = User signups for newsletters, actions and bears.
+core = 7.x
+version = 7.x-1.0
+package = Customization
+
+files[] = includes/pm_signup.core.inc
+
+dependencies[] = pm_core
