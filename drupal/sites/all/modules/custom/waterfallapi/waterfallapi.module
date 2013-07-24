@@ -2,6 +2,15 @@
 
 include(drupal_get_path('module', 'waterfallapi') . '/includes/waterfallapi.inc');
 
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function waterfallapi_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner === 'pm_signup' && $plugin_type === 'handler') {
+    return "plugins";
+  }
+}
+
 function waterfallapi_block_info() {
   $blocks = array();
 
@@ -131,7 +140,7 @@ function waterfallapi_menu() {
 }
 
 function waterfallapi_page() {
-  global $user; 
+  global $user;
   $nbr_records = db_query("SELECT count(msisdns) FROM {waterfallapi_signups}")->fetchField();
   $title = "<h2>" . $nbr_records . " Records</h2>";
 
@@ -241,7 +250,7 @@ function waterfallapi_form_validate($form, &$form_state) {
 }
 
 function waterfallapi_form_submit($form, &$form_state) {
-	global $user; 
+	global $user;
 	$canadian = false;
 	$areacode = $form['cellphone']['areacode']['#value'];
 	$prefix = $form['cellphone']['phone1']['#value'];
@@ -264,16 +273,16 @@ function waterfallapi_form_submit($form, &$form_state) {
 	}
 
     //@todo: some of these fields are no longer needed:
-	$subinfo = $waterFallAPI->addSubscriber($listid, $areacode.$prefix.$line, 
+	$subinfo = $waterFallAPI->addSubscriber($listid, $areacode.$prefix.$line,
 											array(
 			    								'50b4fbf80cf2d5cf4a7e15e5'  => $zip
-			    							),  
-			    							variable_get('waterfallsubscriptionSMS',  ''), 
+			    							),
+			    							variable_get('waterfallsubscriptionSMS',  ''),
 			    							variable_get('waterfallsubscriptionSMSConfirm',  ''),
 			    							$flowid, $shortcode);
 
     $waterFallAPI->addMetadata(array('50b4fbf80cf2d5cf4a7e15e5'  => $zip), $areacode.$prefix.$line);
-	
+
 	$result = db_insert('waterfallapi_signups')->fields(array(
 		  'msisdns' => $areacode.$prefix.$line,
 		  'zip' => $zip,
