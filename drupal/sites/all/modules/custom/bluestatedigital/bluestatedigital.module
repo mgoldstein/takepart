@@ -72,6 +72,15 @@ function bluestatedigital_permission() {
 }
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function bluestatedigital_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner === 'pm_signup' && $plugin_type === 'handler') {
+    return "plugins";
+  }
+}
+
+/**
  * Admin form callback.
  */
 function bluestatedigital_api_admin_form($form, &$form_state) {
