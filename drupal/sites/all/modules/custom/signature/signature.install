@@ -157,13 +157,6 @@ function signature_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
-      'bsd_form' => array(
-        'description' => 'The signup form to use for setting field mappings.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
       // Exportable entity fields.
       'status' => array(
         'description' => 'The exportable status of the entity.',
@@ -210,6 +203,13 @@ function signature_schema() {
       ),
       'bsd_form' => array(
         'description' => 'The signup form to use for sending data to BSD.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'pm_signup_endpoint_id' => array(
+        'description' => 'The signup endpoint.',
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
@@ -337,4 +337,14 @@ function signature_update_7101(&$sandbox) {
 function signature_update_7102(&$sandbox) {
   db_add_index('signature', 'email', array('email'));
   db_add_index('signature', 'email_and_nid', array('email', 'nid'));
+}
+
+/**
+ * Replace BSD fields with generic signup.
+ */
+function signature_update_7103(&$sandbox) {
+  db_drop_field('signature_type', 'bsd_form');
+  $schema = signature_schema();
+  db_add_field('signature_node', 'pm_signup_endpoint_id',
+    $schema['signature_node']['fields']['pm_signup_endpoint_id']);
 }
