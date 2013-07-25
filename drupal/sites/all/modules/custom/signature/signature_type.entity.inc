@@ -6,7 +6,7 @@ class SignatureType extends Entity {
     $entity_type = 'signature_type') {
     parent::__construct($values, $entity_type);
   }
-  
+
   protected function defaultUri() {
     $info = $this->entityInfo();
     if (isset($info['admin ui']) && isset($info['admin ui']['path'])) {
@@ -24,7 +24,6 @@ class SignatureTypeController extends EntityAPIControllerExportable {
       'id' => '',
       'type' => '',
       'label' => '',
-      'bsd_form' => 0,
       'status' => ENTITY_CUSTOM,
       'module' => 'signature',
     );
