@@ -58,9 +58,42 @@ class BlueStateDigitalSignupHandler {
     $this->sendSignupToServer($bsd_signup);
   }
 
+  protected function submitSignatureSignup($signup) {
+
+    $fields = array();
+    foreach ($this->configuration['field-ids'] as $name => $id) {
+      $fields[$id] = array(
+        'value' => array(
+          'type' => 'value',
+          'value' => $signup[$name],
+        ),
+      );
+    }
+
+    $opt_ins = explode(',', $signup['action.opt-ins.newsletters']);
+    foreach ($this->configuration['opt-in-ids'] as $index => $id) {
+      if (isset($opt_ins[$index]) && $opt_ins[$index] === 'true') {
+        $fields[$id] = array(
+          'value' => array(
+            'type' => 'value',
+            'value' => '1',
+          ),
+        );
+      }
+    }
+
+    $form_id = $this->configuration['form-id'];
+    $bsd_signup = array($form_id => $fields);
+    $this->sendSignupToServer($bsd_signup);
+  }
+
   public function submit($signup) {
-    if (get_class($signup) === 'NewsletterCampaignSignup') {
+    $signup_type = get_class($signup);
+    if ($signup_type === 'NewsletterCampaignSignup') {
       $this->submitNewsletterCampaignSignup($signup);
+    }
+    elseif ($signup_type === 'SignatureSignup') {
+      $this->submitSignatureSignup($signup);
     }
   }
 }
