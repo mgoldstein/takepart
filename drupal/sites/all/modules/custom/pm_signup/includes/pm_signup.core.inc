@@ -238,6 +238,7 @@ abstract class Signup extends SignupFieldSet implements ArrayAccess {
     return array(
       'AL' => 'Alabama',
       'AK' => 'Alaska',
+      'AS' => 'American Samoa',
       'AZ' => 'Arizona',
       'AR' => 'Arkansas',
       'CA' => 'California',
@@ -247,6 +248,7 @@ abstract class Signup extends SignupFieldSet implements ArrayAccess {
       'DC' => 'District of Columbia',
       'FL' => 'Florida',
       'GA' => 'Georgia',
+      'GU' => 'Guam',
       'HI' => 'Hawaii',
       'ID' => 'Idaho',
       'IL' => 'Illinois',
@@ -256,9 +258,11 @@ abstract class Signup extends SignupFieldSet implements ArrayAccess {
       'KY' => 'Kentucky',
       'LA' => 'Louisiana',
       'ME' => 'Maine',
+      'MH' => 'Marshall Islands',
       'MD' => 'Maryland',
       'MA' => 'Massachusetts',
       'MI' => 'Michigan',
+      'FM' => 'Micronesia',
       'MN' => 'Minnesota',
       'MS' => 'Mississippi',
       'MO' => 'Missouri',
@@ -271,10 +275,13 @@ abstract class Signup extends SignupFieldSet implements ArrayAccess {
       'NY' => 'New York',
       'NC' => 'North Carolina',
       'ND' => 'North Dakota',
+      'MP' => 'Northern Marianas',
       'OH' => 'Ohio',
       'OK' => 'Oklahoma',
       'OR' => 'Oregon',
+      'PW' => 'Palau',
       'PA' => 'Pennsylvania',
+      'PR' => 'Puerto Rico',
       'RI' => 'Rhode Island',
       'SC' => 'South Carolina',
       'SD' => 'South Dakota',
@@ -282,6 +289,7 @@ abstract class Signup extends SignupFieldSet implements ArrayAccess {
       'TX' => 'Texas',
       'UT' => 'Utah',
       'VT' => 'Vermont',
+      'VI' => 'Virgin Islands',
       'VA' => 'Virginia',
       'WA' => 'Washington',
       'WV' => 'West Virginia',
@@ -521,6 +529,13 @@ abstract class SignupEndpoint extends SignupFieldSet {
         'configuration' => serialize($this->configuration),
         'plugins' => serialize($this->plugins),
       ))
+      ->execute();
+  }
+
+  public static function deleteByID($type, $id) {
+    db_delete('pm_signup_endpoint')
+      ->condition('id', $id)
+      ->condition('type', $type)
       ->execute();
   }
 
