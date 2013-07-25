@@ -135,6 +135,11 @@ class BlueStateDigitalSignupApi extends BlueStateDigitalApi {
           (string) $signup_form_field->create_dt),
         'cons_field_id' => (int) $signup_form_field->cons_field_id,
       );
+
+      if (isset($signup_form_field->binarycheckbox_email)) {
+        $fields[$key]['cons_group_id']
+          = (int) $signup_form_field->extra_def->cons_group_id;
+      }
     }
 
     return $fields;
