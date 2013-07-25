@@ -586,16 +586,15 @@ div.takepart-take-action-widget {
 	font-size: 20px;
 }
 
-.page-tags li {
-	line-height: 1.25;
-	font-size: 14px;
-	text-transform: capitalize;
+.page-tags ul {
+    display: inline-block; *display: inline; *zoom: 1;
 }
 
-.page-tags ul,
-.page-tags li,
-.page-tags a {
-	display: inline;
+.page-tags li {
+    text-transform: capitalize;
+    font-size: 14px;
+    line-height: 1.286;
+    float: left;
 }
 
 .page-tags .headline {
@@ -627,7 +626,7 @@ div.takepart-take-action-widget {
 	font-family: TradeGothicLTStdCnBold, sans-serif;
 	margin-top: 1em;
 	margin-bottom: .5em;
-	padding: .4em 0 .5em 0;
+	padding: 0 0 .5em 0;
 	border-bottom: 1px solid #e8e8e8;
 	font-size: 20px;
 }
@@ -689,18 +688,18 @@ div.takepart-take-action-widget {
 }
 
 .related .headline {
-	text-transform: uppercase;
-	font-family: TradeGothicLTStdCnBold, sans-serif;
-	color: #333;
-	font-size: 20px;
-	margin-bottom: 6px;
+    text-transform: uppercase;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 4px;
 }
 
 .related p,
 .related li {
-	font-size: 14px;
-	margin-bottom: 10px;
-	line-height: 1.25;
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.286;
 }
 
 /* Article Header */
