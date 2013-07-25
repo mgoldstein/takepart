@@ -46,8 +46,7 @@ class BlueHornet {
 
     // Add or update the subscriber.
     $response = $this->core->addUpdateSubscriber($data);
-    
-    // The user may be added or updated.
-    return $response['status'] === 1 || $response['status'] === 2;
+
+    return $response['status'] == 1 || $response['status'] == 2;
   }
 }
