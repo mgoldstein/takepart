@@ -64,7 +64,7 @@ var social_click = function(options) {
     var evar4, evar17, evar19, evar21, linkTrackVars;
 
     // Series stuff for article, add photo gallery later
-    if ( $('body').is('.node-type-article') ) {
+    if ( $('body').is('.node-type-article') || $('body').is('.node-type-openpublish-photo-gallery') ) {
         evar4 = s.prop4;
         var authors = [];
         $('.article-header .authors a').each(function() {

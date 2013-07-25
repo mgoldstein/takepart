@@ -172,7 +172,9 @@ $(function() {
 			services: more_services
 		});
 
+		// prevent 2 email calls from firing
 		takepart.analytics.skip_addthis = true;
+
 		$('#article-author').css('padding-top', $('#article-social').outerHeight());
 
 		// Sticky social nav on article page
@@ -312,6 +314,9 @@ $(function() {
 			}
 		};
 
+		// prevent 2 email calls from firing
+		takepart.analytics.skip_addthis = true;
+
 		// Get current "token" from last folder of URL
 		var get_curtoken = function() {
 			var token = document.location.href.split(/\/|#/).slice(5,6) + '';
@@ -421,6 +426,22 @@ $(function() {
 			cycle: false
 		});
 
+		$slides
+			.delegate('.gallery-slide img, .image-content-wrapper', 'mouseover', function() {
+				$gallery_main.addClass('image-hover');
+			})
+			.delegate('.gallery-slide img, .image-content-wrapper', 'mouseout', function() {
+				$gallery_main.removeClass('image-hover');
+			})
+			.delegate('.gallery-slide img', 'click', function() {
+				$slides.tpslide_next(false);
+			})
+			.delegate('#next-gallery .image img', 'click', function() {
+				var $a = $(this).closest('#next-gallery').find('a');
+				document.location = $a.attr('href');
+			})
+			;
+
 		// Fix heights for responsive
 		$window.bind('resize', function () {
 			$slides.height($current_slide.height());
@@ -436,7 +457,6 @@ $(function() {
 
 		// Initialize page based on URL
 		if ( get_curtoken() && get_curtoken() != 'first-slide' ) {
-			skip_next_pageview = true;
 			goto_slide();
 			show_gallery();
 		} else if ( get_curtoken() == 'first-slide' ) {

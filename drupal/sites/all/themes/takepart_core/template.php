@@ -305,6 +305,8 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
 
   if ( isset($var['file']) ) {
     $image = (array)$var['file'];
+  } elseif ( isset($var['uri'])  ) {
+    $image = $var;
   } elseif ( isset($var['type']) && $var['type'] == 'image') {
     $image = $var;
   } elseif ( isset($var[0]) && isset($var[0]['file']) ) {
@@ -331,6 +333,8 @@ function _simage($var, $prop = NULL, $type = 'node', $style = null) {
     $image['style_name'] = $style;
     $image['getsize'] = TRUE;
     if ( isset($var[0]['file']) && $alt = _snode($var[0]['file'], 'field_media_alt', 'file') ) {
+      $image['alt'] = _s($alt);
+    } elseif ( isset($var['file']) && $alt = _snode($var['file'], 'field_media_alt', 'file') ) {
       $image['alt'] = _s($alt);
     }
 

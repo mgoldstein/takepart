@@ -22,23 +22,6 @@ $(function() {
 		'Outbrain Widget': '.OUTBRAIN'
 	});
 
-	// Only place it on internal urls
-	var relative_test = new RegExp("//" + location.host + "($|/)");
-
-	$body
-		.delegate('a:not(.tplinkpos)', 'focus mouseover', function() {
-			var a = this;
-			var $a = $(this);
-			$a.addClass('tplinkpos');
-			var is_local = (a.href.substring(0,4) === "http") ? relative_test.test(a.href) : true;
-			if ( !is_local ) return;
-
-			for ( var pos in positions ) {
-				var sel = positions[pos];
-				if ( $a.is(sel + ' a') ) a.name += '&lpos=' + pos;
-			}
-		});
-
 	/* --------------------------------
 	| Page Specific ---------------- */
 	if ( $body.is('.page-iframes-header, .page-iframes-slim-header') ) {
