@@ -520,16 +520,30 @@ abstract class SignupEndpoint extends SignupFieldSet {
   }
 
   public function save() {
-    db_merge('pm_signup_endpoint')
-      ->key(array('id' => $this->id))
-      ->fields(array(
-        'type' => $this->type,
-        'name' => $this->name,
-        'label' => $this->label,
-        'configuration' => serialize($this->configuration),
-        'plugins' => serialize($this->plugins),
-      ))
-      ->execute();
+    if (isset($this->id)) {
+      return db_update('pm_signup_endpoint')
+        ->fields(array(
+          'type' => $this->type,
+          'name' => $this->name,
+          'label' => $this->label,
+          'configuration' => serialize($this->configuration),
+          'plugins' => serialize($this->plugins),
+        ))
+        ->condition('id', $this->id)
+        ->execute();
+    }
+    else {
+      db_insert('pm_signup_endpoint')
+        ->fields(array(
+          'type' => $this->type,
+          'name' => $this->name,
+          'label' => $this->label,
+          'configuration' => serialize($this->configuration),
+          'plugins' => serialize($this->plugins),
+        ))
+        ->execute();
+      $this->id = Database::getConnection()->lastInsertId();
+    }
   }
 
   public static function deleteByID($type, $id) {
@@ -545,6 +559,10 @@ abstract class SignupEndpoint extends SignupFieldSet {
         ->condition('id', $this->id)
         ->execute();
     }
+  }
+
+  public function getID() {
+    return $this->id;
   }
 
   public function getLabel() {
