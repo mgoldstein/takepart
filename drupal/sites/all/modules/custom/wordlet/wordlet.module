@@ -1025,10 +1025,17 @@ function wordlet_omniture_variables() {
   $campaign_name = wordlet('campaign_name');
 
   if ( !empty($campaign_name) ) {
-    $return = array(
-      's.eVar43' => $campaign_name->single(false),
-      's.prop43' => $campaign_name->single(false)
-    );
+    $single = trim($campaign_name->single(false));
+    if ( $single == 'Social Interstitial: Popup View' ) {
+      $return = array(
+        's.prop46' => $single
+      );
+    } else {
+      $return = array(
+        's.eVar43' => $single,
+        's.prop43' => $single
+      );
+    }
   }
 
   return array("variables" => $return);
