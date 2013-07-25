@@ -29,7 +29,8 @@ class BlueHornet {
     $this->core = new BF_Esp_Bluehornet($auth);
   }
 
-  public function addUpdateSubscriber($email, $segments, $custom_fields) {
+  public function addUpdateSubscriber($email, $segments, $custom_fields,
+    $send_welcome) {
 
     // Always have an email.
     $data = array('email' => $email);
@@ -42,6 +43,10 @@ class BlueHornet {
     // Add any custom field values.
     foreach($custom_fields as $number => $value) {
       $data["custval{$number}"] = $value;
+    }
+
+    if ($send_welcome) {
+      $data['welcomeletter'] = '1';
     }
 
     // Add or update the subscriber.
