@@ -655,7 +655,7 @@ function signature_save_node_settings($node) {
       $settings->pm_signup_endpoint_id, $errors);
     if ($endpoint !== FALSE) {
       $endpoint->save();
-      $settings->pm_signup_endpoint_id = $endpoint->id;
+      $settings->pm_signup_endpoint_id = $endpoint->getID();
     }
 
     // Display the errors to the user so they know things are not going to
