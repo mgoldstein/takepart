@@ -140,7 +140,7 @@ function chunkpart_preprocess_entity(&$variables, $hook) {
               $variables['custom_render'][$key]['typename'] = $collectiondata['field_type_label']['#items'][0]['value'];
 
               if ($node->type == 'openpublish_article') {
-                $main_image = field_get_items('node', $node, 'field_article_main_image');
+                $main_image = field_get_items('node', $node, 'field_thumbnail');
               }
               if ($node->type == 'action') {
                 $main_image = field_get_items('node', $node, 'field_action_main_image');
