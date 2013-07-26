@@ -32,7 +32,7 @@
         <li class="google"><a href="https://plus.google.com/113369936500827860065?prsrc=3">Google+</a></li>
         <li class="pinterest"><a href="http://pinterest.com/takepart/">Pinterest</a></li>
         <li class="youtube"><a href="http://www.youtube.com/takepart">YouTube</a></li>
-        <li class="tumblr"><a href="#">YouTube</a></li>
+        <li class="tumblr"><a href="http://takepart.tumblr.com/">Tumblr</a></li>
 
         <!-- li class="rss"><a href="/rss">RSS</a></li -->
       </ul>
