@@ -426,6 +426,7 @@ $(function() {
 			cycle: false
 		});
 
+		// Make img clicks forward gallery
 		$slides
 			.delegate('.gallery-slide img, .image-content-wrapper', 'mouseover', function() {
 				$gallery_main.addClass('image-hover');
@@ -438,6 +439,7 @@ $(function() {
 			})
 			.delegate('#next-gallery .image img', 'click', function() {
 				var $a = $(this).closest('#next-gallery').find('a');
+				$a.click();
 				document.location = $a.attr('href');
 			})
 			;
