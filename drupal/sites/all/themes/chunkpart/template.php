@@ -166,7 +166,9 @@ function chunkpart_preprocess_entity(&$variables, $hook) {
                 $variables['custom_render'][$key]['type'] = $types[$node->type]->{'name'};
               }
 
-              if (isset($node->{'title'})) {
+	      $variables['custom_render'][$key]['title'] = field_get_items('node', $node, 'field_promo_headline');
+	      
+              if ((isset($node->{'title'})) && (!isset($variables['custom_render'][$key]['title']))) {
                 $variables['custom_render'][$key]['title'] = $node->{'title'};
               }
 
