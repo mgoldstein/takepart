@@ -509,7 +509,7 @@ function _wordlet_configuration() {
     // Every Three Seconds Videos
     'every3seconds_video' => array(
       'title' => 'Every 3 Seconds - Videos',
-      'path' => 'every-3-seconds/videos',
+      'path' => 'every-3-seconds/action',
       'published' => TRUE,
       'wrappers' => array('every3seconds', 'campaign', 'html'),
       'css' => array(
