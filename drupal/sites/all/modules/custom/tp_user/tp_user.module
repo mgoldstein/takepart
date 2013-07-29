@@ -1,0 +1,59 @@
+<?php
+/**
+ * @file
+ * TakePart user customization module
+ */
+
+/**
+ * Implements hook_user_insert().
+ */
+function tp_user_user_insert(&$edit, $account, $category) {
+
+  // TODO: The Facebook registration needs to be fixed to actually set
+  // this information on the user entity.
+  $postal_code = '';
+  $newsletter_opt_in = FALSE;
+
+  // Create a user signup.
+  $signup = TakePartUserSignup::create();
+
+  $signup['email'] = $account->mail;
+  $signup['address.postal-code'] = $postal_code;
+  $endpoint_name = $newsletter_opt_in ? 'user_registration_opt_in_yes'
+    : 'user_registration_opt_in_no';
+
+  // Load the submission endpoint.
+  $endpoint = TakePartUserSignupEndpoint::loadByName($endpoint_name);
+
+  if ($endpoint !== FALSE) {
+    // Send the signup.
+    try {
+      $signup->validate();
+      $endpoint->submit($signup);
+    }
+    catch (SignupValidationException $sve) {
+      $message = 'Error validating signup [@name] @email, @postal_code';
+      watchdog('tp_user', $message, array(
+        '@name' => $this->signup_name,
+        '@email' => $email,
+        '@postal_code' => $postal_code,
+      ));
+    }
+    catch (SignupSubmissionException $sse) {
+      $message = 'Error sending signup [@name] @email, @postal_code';
+      watchdog('tp_user', $message, array(
+        '@name' => $this->signup_name,
+        '@email' => $email,
+        '@postal_code' => $postal_code,
+      ));
+    }
+  }
+  else {
+    $message = 'Unknown signup [@name] @email, @postal_code';
+    watchdog('tp_user', $message, array(
+      '@name' => $this->signup_name,
+      '@email' => $email,
+      '@postal_code' => $postal_code,
+    ));
+  }
+}
