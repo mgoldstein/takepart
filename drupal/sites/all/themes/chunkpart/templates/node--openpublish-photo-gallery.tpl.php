@@ -106,14 +106,14 @@
 						<section class="enter-link">
 							<div class="image-content-wrapper">
 								<div class="image-area-inner">
-									<p class="image">
-										<? if ( $next_gallery->node->field_gallery_main_image ): ?>
-											<?=_simage($next_gallery->node, 'field_gallery_main_image', 'node', 'tp_gallery_slide') ?>
-										<? else: ?>
-											<?=_simage($next_gallery->node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?>
-										<? endif ?>
-									</p>
 									<a href="<?=$next_gallery->href ?>/first-slide">
+										<p class="image">
+											<? if ( $next_gallery->node->field_gallery_main_image ): ?>
+												<?=_simage($next_gallery->node, 'field_gallery_main_image', 'node', 'tp_gallery_slide') ?>
+											<? else: ?>
+												<?=_simage($next_gallery->node, 'field_thumbnail', 'node', 'tp_gallery_slide') ?>
+											<? endif ?>
+										</p>
 										<div class="content">
 											<div class="content-inner">
 												<p class="description"><?=t('Up Next') ?></p>

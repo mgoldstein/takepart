@@ -159,7 +159,7 @@ takepart.analytics.add({
         })
         s2.eVar17=authors.join(',');
         s2.prop16=s2.eVar17;
-        s2.tl(true, 'o', 'Click on Up Next Promo Gallery');
+        s2.tl(options.a, 'o', 'Click on Up Next Promo Gallery');
     },
     'gallery-track-slide': function(options) {
         var token = options.token;

@@ -213,7 +213,8 @@ $(function() {
 			.delegate('#next-gallery a, .forward-to-gallery a', 'click', function() {
 				takepart.analytics.track('gallery-next-gallery-click', {
 					headline: next_gallery_headline,
-					topic: next_gallery_topic
+					topic: next_gallery_topic,
+					a: this
 				});
 			});
 
@@ -436,11 +437,6 @@ $(function() {
 			})
 			.delegate('.gallery-slide img', 'click', function() {
 				$slides.tpslide_next(false);
-			})
-			.delegate('#next-gallery .image img', 'click', function() {
-				var $a = $(this).closest('#next-gallery').find('a');
-				$a.click();
-				document.location = $a.attr('href');
 			})
 			;
 
