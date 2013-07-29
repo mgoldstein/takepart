@@ -4,11 +4,11 @@
 //
 function metatag_tab_metatag_info() {
   $info['groups']['metatag_tab'] = array(
-    'label' => t('My Custom Metatags'),
+    'label' => t('TAB Keywords'),
   );
  
   $info['tags']['tab-keywords'] = array(
-    'label' => t('My Custom Meta Tag'),
+    'label' => t('TAB Keywords'),
     'description' => t('This is a custom meta tag'),
     'class' => 'DrupalTextMetaTag',
     'group' => 'metatag_tab',
@@ -22,6 +22,7 @@ function metatag_tab_metatag_info() {
 //
 function metatag_tab_metatag_config_default_alter(array &$configs) {
   foreach ($configs as &$config) {
+      dpm($config->instance);
     switch ($config->instance) {
       case 'global':
         $config->config += array();
