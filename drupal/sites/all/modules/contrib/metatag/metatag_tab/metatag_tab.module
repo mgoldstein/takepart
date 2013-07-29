@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function metatag_tab_ctools_plugin_api($owner, $api) {
+  if ($owner == 'metatag' && $api == 'metatag') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function metatag_tab_theme() {
+  $info['metatag_tab'] = array(
+    'render element' => 'element',
+  );
+
+  return $info;
+}
+
+/**
+ * Theme callback for a TAB  meta tag.
+ */
+function theme_metatag_tab($variables) {
+  $element = &$variables['element'];
+  element_set_attributes($element, array('#name' => 'property', '#value' => 'content'));
+  unset($element['#value']);
+  return theme('html_tag', $variables);
+}
+
+/*
+og:title = [node:title] / [user:name]
+og:type = article / profile
+og:image = ? / [user:picture:url]
+og:url = [node:url] / [user:url]
+og:description
+og:site_name = [site:name]
+
+og:latitude
+og:longitude
+og:street-address
+og:locality
+og:region
+og:postal-code
+og:country-name
+
+og:email
+og:phone_number
+og:fax_number
+
+og:video
+og:video:height
+og:video:width
+og:video:type
+
+og:audio
+og:audio:title
+og:audio:artist
+og:audio:album
+og:audio:type
+
+og:upc
+og:isbn
+
+fb:admins
+fb:app_id
+*/
