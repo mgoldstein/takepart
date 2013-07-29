@@ -1,0 +1,8 @@
+name = Take Action Button Metatags
+description = Custom Metatags for TAB platform
+core = 7.x
+version = 7.x-1.x
+ 
+dependencies[] = metatag
+ 
+files[] = metatag_tab.metatags.inc
