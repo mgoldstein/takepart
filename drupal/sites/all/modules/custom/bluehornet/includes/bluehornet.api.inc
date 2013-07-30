@@ -29,11 +29,8 @@ class BlueHornet {
     $this->core = new BF_Esp_Bluehornet($auth);
   }
 
-  public function addUpdateSubscriber($email, $segments, $custom_fields,
+  public function addUpdateSubscriber($data, $segments, $custom_fields,
     $send_welcome) {
-
-    // Always have an email.
-    $data = array('email' => $email);
 
     // Include the segments to which the user should be added (if any).
     if (count($segments) > 0) {
@@ -52,6 +49,6 @@ class BlueHornet {
     // Add or update the subscriber.
     $response = $this->core->addUpdateSubscriber($data);
 
-    return $response['status'] == 1 || $response['status'] == 2;
+    return $response;
   }
 }
