@@ -22,12 +22,18 @@ class BlueHornetSignupHandler {
   protected function submitNewsletterCampaignSignup($signup) {
 
     if (isset($signup['email'])) {
-      $added_or_updated = BlueHornet::Api()->addUpdateSubscriber($signup['email'],
+
+      $data = array('email' => $signup['email']);
+
+      $response = BlueHornet::Api()->addUpdateSubscriber($data,
         $this->configuration['segments'], $this->configuration['fields'],
         $this->configuration['send-welcome']);
+
+      $added_or_updated = $response['status'] == 1 || $response['status'] == 2;
       if (!$added_or_updated) {
-        $message = t('Error sending email signup [@email]', array(
+        $message = t('Error sending email signup [@email] @response', array(
           '@email' => $signup['email'],
+          '@response' => print_r($response, TRUE),
         ));
         throw new SignupHandlerException($message);
       }
@@ -58,14 +64,41 @@ class BlueHornetSignupHandler {
     }
 
     if ($have_at_least_one_opt_in) {
-      $added_or_updated = BlueHornet::Api()->addUpdateSubscriber($signup['email'],
+
+      $data = array('email' => $signup['email']);
+
+      $response = BlueHornet::Api()->addUpdateSubscriber($data,
         $segments, $fields, $send_welcome);
+
+      $added_or_updated = $response['status'] == 1 || $response['status'] == 2;
       if (!$added_or_updated) {
-        $message = t('Error sending email signup [@email]', array(
+        $message = t('Error sending email signup [@email] @response', array(
           '@email' => $signup['email'],
+          '@response' => print_r($response, TRUE),
         ));
         throw new SignupHandlerException($message);
       }
+    }
+  }
+
+  protected function submitTakePartUserSignup($signup) {
+
+    $data = array('email' => $signup['email']);
+    if (isset($signup['address.postal-code'])) {
+      $data['postal_code'] = $signup['address.postal-code'];
+    }
+
+    $response = BlueHornet::Api()->addUpdateSubscriber($data,
+      $this->configuration['segments'], $this->configuration['fields'],
+      $this->configuration['send-welcome']);
+
+    $added_or_updated = $response['status'] == 1 || $response['status'] == 2;
+    if (!$added_or_updated) {
+      $message = t('Error sending email signup [@email] @response', array(
+        '@email' => $signup['email'],
+        '@response' => print_r($response, TRUE),
+      ));
+      throw new SignupHandlerException($message);
     }
   }
 
@@ -76,6 +109,9 @@ class BlueHornetSignupHandler {
     }
     elseif ($signup_type === 'SignatureSignup') {
       $this->submitSignatureSignup($signup);
+    }
+    elseif ($signup_type === 'TakePartUserSignup') {
+      $this->submitTakePartUserSignup($signup);
     }
   }
 }
