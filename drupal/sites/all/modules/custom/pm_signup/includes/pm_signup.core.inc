@@ -229,7 +229,7 @@ abstract class Signup extends SignupFieldSet implements ArrayAccess {
   public function getAreaCode($use_parts = NULL) {
     $number = $this->getSanitizedPhoneNumber($use_parts);
     if ($number !== FALSE) {
-      return $number[0];
+      return $number['area-code'];
     }
     return '';
   }
@@ -678,6 +678,17 @@ abstract class SignupEndpoint extends SignupFieldSet {
             $handler->submit($signup);
           }
           catch (SignupHandlerException $she) {
+            if (variable_get('pm_signup_log', FALSE)) {
+              db_insert('pm_signup_log')
+                ->fields(array(
+                  'handler' => $id,
+                  'message' => $she->getMessage(),
+                  'exception' => print_r($she, true),
+                  'backtrace' => print_r(debug_backtrace(), true),
+                  'created' => REQUEST_TIME,
+                ))
+                ->execute();
+            }
             $errors[] = $she;
           }
         }
