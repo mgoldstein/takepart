@@ -1513,6 +1513,8 @@ function signature_send_signup($signature, $local = TRUE) {
         else {
           // Signature is from outside the US, use the postal code field instead
           $signup['address.postal-code'] = $postal_code;
+          // and clear any state code
+          unset($signup['address.state.code']);
         }
       }
     }
