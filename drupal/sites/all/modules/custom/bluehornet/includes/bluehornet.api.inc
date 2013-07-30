@@ -46,6 +46,18 @@ class BlueHornet {
       $data['welcomeletter'] = '1';
     }
 
+    if (variable_get('pm_signup_log', FALSE)) {
+      db_insert('pm_signup_log')
+        ->fields(array(
+          'handler' => 'bluehornet.api.inc',
+          'message' => 'api request',
+          'exception' => print_r($data, true),
+          'backtrace' => '',
+          'created' => REQUEST_TIME,
+        ))
+        ->execute();
+    }
+
     // Add or update the subscriber.
     $response = $this->core->addUpdateSubscriber($data);
 
