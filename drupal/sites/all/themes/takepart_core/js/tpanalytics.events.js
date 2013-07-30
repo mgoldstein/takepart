@@ -123,6 +123,9 @@ takepart.analytics.add({
         _gaq.push(['_trackEvent', 'Click', 'On Our Radar', domain]);
 
         // Omniture
+        var linkTrackVars = s.linkTrackVars;
+        var linkTrackEvents = s.linkTrackEvents;
+
         var s2 = s_gi(Drupal.settings.omniture.s_account);
         s2.linkTrackVars = 'eVar4,prop4,eVar30,eVar35,eVar36,events';
         s2.linkTrackEvents = 'event44';
@@ -133,6 +136,9 @@ takepart.analytics.add({
         s2.eVar35 = domain;
         s2.eVar36 = options.element.href;
         s2.tl(options.element, 'o', 'On Our Radar Click');
+
+        s.linkTrackVars = linkTrackVars;
+        s.linkTrackEvents = linkTrackEvents;
     },
     'tp-social-share': function(options) {
         var title = normalize_share_title(options.name);
