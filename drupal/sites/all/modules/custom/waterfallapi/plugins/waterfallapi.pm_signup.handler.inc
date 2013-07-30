@@ -23,7 +23,7 @@ class WaterfalllSignupHandler {
 
   protected function submitNewsletterCampaignSignup($signup) {
 
-    $phone = $signup->getPhoneNumber();
+    $phone = $signup->getPhoneNumber('');
     if (!empty($phone)) {
 
       $area_code = $signup->getAreaCode();
