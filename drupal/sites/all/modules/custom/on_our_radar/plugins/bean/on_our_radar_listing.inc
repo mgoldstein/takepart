@@ -8,6 +8,21 @@ class OnOurRadarBean extends BeanPlugin
   */
   private $radar_lnk_cnt = 3;
 
+
+  /**
+   * Returns proper link count.
+   */
+  public function get_link_count($radar_links) {
+    foreach(array_reverse($radar_links) as $key => $value) {
+      list($column, $index) = preg_split('#(?<=[a-z](?=\d))#i', $key);
+      if ($column != 'remove_link' && !empty($value)) {
+        return (int)($index+1);
+      }
+    }
+
+    return 0;
+  }
+
   /**
    * Declares default block settings.
    */
@@ -26,6 +41,7 @@ class OnOurRadarBean extends BeanPlugin
     return array_merge(parent::values(), $values);
   }
 
+
   /**
    * Builds extra settings for the block edit form.
    */
@@ -43,8 +59,7 @@ class OnOurRadarBean extends BeanPlugin
       $form_state['storage']['linkcount']++;
     }
 
-
-    $form_state['storage']['linkcount'] = isset($form_state['storage']['linkcount']) ? $form_state['storage']['linkcount'] : (int)((count($bean->radar_links) + 1) / $this->radar_lnk_cnt-1);
+    $form_state['storage']['linkcount'] = isset($form_state['storage']['linkcount']) ? $form_state['storage']['linkcount'] : $this->get_link_count($bean->radar_links);
 
     $form['radar_links'] = array(
       '#type' => 'fieldset',
@@ -131,7 +146,7 @@ class OnOurRadarBean extends BeanPlugin
   public function view($bean, $content, $view_mode = 'default', $langcode = NULL)
   {
     $elements = array();
-    $linkcount = (int)((count($bean->radar_links) + 1) / $this->radar_lnk_cnt-1);
+    $linkcount = $this->get_link_count($bean->radar_links);
     for ($i = 0; $i <= $linkcount; $i++) {
       $elements[$i]          = array();
       $elements[$i]['topic'] = $bean->radar_links['topic' . $i];

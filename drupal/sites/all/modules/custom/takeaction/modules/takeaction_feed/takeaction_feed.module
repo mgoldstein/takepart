@@ -568,7 +568,7 @@ function takeaction_feed_action_item_data($node) {
     // Get the action goal and date range (if available). Also get the action
     // button text to use as a default if the TAB call to action field is
     // empty.
-    if ($node->type === 'pledge_action' || $node->type === 'petition_action') {
+    if ($node->type === 'pledge_action' || $node->type === 'petition_action' || $node->type === 'mos_action') {
       // For petitions and pledges the fields are stored in the signature
       // settings.
       $settings = entity_load_single('signature_node', $node->nid);
@@ -731,6 +731,11 @@ function _takeaction_feed_replace_with_property($data, $property) {
 }
 
 function _takeaction_feed_image($data) {
+  # If file data already replaced by url, return it
+  if (is_string($data)) {
+    return $data;
+  }
+
   $url = NULL;
   if (!empty($data)) {
     if (isset($data['und']) && isset($data['und'][0]) && isset($data['und'][0]['fid'])) {

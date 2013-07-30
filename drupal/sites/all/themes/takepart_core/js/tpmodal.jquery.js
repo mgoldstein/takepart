@@ -107,7 +107,28 @@ var tpmodal = function(parameters) {
 		return new_settings;
 	};
 
+	this.load = function(parameters) {
+		var settings = get_settings(parameters);
+
+		if ( settings.url ) {
+			if ( settings.url.match(img_search) ) {
+				me.loadImage(settings, settings.url);
+			} else {
+				var extra = '';
+				if ( settings.urlSelector ) extra = ' ' + settings.urlSelector;
+				me.loadUrl(settings, settings.url + extra);
+			}
+		} else if ( settings.html !== null ) {
+			me.loadHtml(settings, settings.html);
+		} else if ( settings.node !== null ) {
+			me.loadNode(settings, settings.node);
+		} else {
+			me.loadNode(settings, null);
+		}
+	};
+
 	this.show = function(parameters) {
+		this.load(parameters);
 		var settings = get_settings(parameters);
 
 		if ( settings.url ) {
@@ -119,8 +140,8 @@ var tpmodal = function(parameters) {
 				me.showUrl(settings, settings.url + extra);
 			}
 		} else if ( settings.html !== null ) {
-			var fake_settings = $.extend({}, settings, {callback: null});
-			me.showNode(fake_settings, null);
+			/*var fake_settings = $.extend({}, settings, {callback: null});
+			me.showNode(fake_settings, null);*/
 			me.showHtml(settings, settings.html);
 		} else if ( settings.node !== null ) {
 			me.showNode(settings, settings.node);
@@ -129,7 +150,8 @@ var tpmodal = function(parameters) {
 		}
 	};
 
-	this.showImage = function(parameters, src) {
+	/* Image -------------------------------- */
+	this.loadImage = function(parameters, src, readyfn) {
 		var settings = get_settings(parameters);
 		var img = new Image();
 
@@ -137,37 +159,108 @@ var tpmodal = function(parameters) {
 		img.onload = function() {
 			img.onload = function(){}; // clear onLoad, IE behaves irratically with animated gifs otherwise
 
-			me.showNode(settings, img);
+			me.loadNode(parameters, img);
+			if ( readyfn ) readyfn();
 		};
 
 		img.src = src;
-		me.showNode(settings, null);
+	}
+
+	this.showImage = function(parameters, src) {
+		loadImage(parameters, src, function() {
+			me.showModal(parameters);
+		});
 	};
 
+	/* HTML -------------------------------- */
+	this.loadHtml = function(parameters, html) {
+		var settings = get_settings(parameters);
+		var $div = $('<div/>');
+		$div.html(html);
+		me.loadNode(parameters, $div);
+	};
+
+	// TODO: reduce duplicate code
 	this.showHtml = function(parameters, html) {
 		var settings = get_settings(parameters);
 		var $div = $('<div/>');
-
 		$div.html(html);
 
-		me.showNode(settings, $div);
+		me.showNode(parameters, $div);
 	};
 
+	/* AJAX -------------------------------- */
 	var ajaxer;
-	this.showUrl = function(parameters, url) {
+	this.loadUrl = function(parameters, url, readyfn) {
 		var settings = get_settings(parameters);
 
 		var $div = $('<div/>');
 
-		ajaxer = $div.load(settings.url, function(data, status) {
-			me.showNode(settings, $div);
+		ajaxer = $div.load(url, function(data, status) {
+			me.loadNode(settings, $div);
+			if ( readyfn ) readyfn();
 		});
-
-		me.showNode(settings, null);
 	};
 
+	this.showUrl = function(parameters, url) {
+		loadUrl(parameters, url, function() {
+			me.showModal(parameters);
+		});
+	};
+
+	/* Show/Hide -------------------------------- */
 	var hide_modal = function() {
 		me.hide();
+	};
+
+	/* Node -------------------------------- */
+	this.loadNode = function(parameters, node) {
+		var settings = get_settings(parameters);
+
+		if ( showing ) {
+			// Do something?
+		}
+
+		$modal_content
+			.html('')
+			.append(node)
+			.css({
+				width: 'auto',
+				height: 'auto'
+			});
+
+		if ( node ) $modal.removeClass(settings.prepend + 'loading');
+		if ( settings.hideOnModalClick ) $modal.bind('click', hide_modal);
+	};
+
+	this.showModal = function(parameters) {
+		var settings = get_settings(parameters);
+
+		$modal_content
+			.css({
+				height: 'auto',
+				width: 'auto',
+				opacity: 0,
+				display: 'block'
+			});
+
+		me.position(parameters, {
+			height: $modal_content.height(),
+			width: $modal_content.width()
+		});
+
+		$modal_content
+			.css({
+				opacity: 1
+			});
+
+		$overlay
+			.css({display: 'block'})
+			.animate({opacity: settings.opacity}, settings.speed);
+
+		$modal
+			.css({display: 'block'})
+			.animate({opacity: 1}, settings.speed);
 	};
 
 	this.showNode = function(parameters, node) {
@@ -388,9 +481,17 @@ var get_modal = function(parameters) {
 
 // Public delegate functions for easy access
 $.tpmodal = {
+	load: function(parameters) {
+		var modal = get_modal(parameters);
+		modal.load(parameters);
+	},
 	show: function(parameters) {
 		var modal = get_modal(parameters);
 		modal.show(parameters);
+	},
+	showModal: function(parameters) {
+		var modal = get_modal(parameters);
+		modal.showModal(parameters);
 	},
 	hide: function(parameters) {
 		var modal = get_modal(parameters);
