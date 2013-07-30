@@ -12,25 +12,33 @@ function metatag_tab_metatag_config_default_alter(array &$configs) {
   foreach ($configs as &$config) {
     switch ($config->instance) {
       case 'global':
-        $config->config += array( );
+        $config->config += array( 
+            'tab-keywords' => array(),
+        );
         break;
     
       case 'global:frontpage':
-        $config->config += array( );
+        $config->config += array( 
+            'tab-keywords' => array(),
+        );
         break;
     
       case 'node':
         $config->config += array(
-          'tab-keywords' => array('value' => '[node:field_topic] [node:field_free_tag]'),
+          'tab-keywords' => array('value' => '[node:field_topic], [node:field_free_tag]'),
         );
         break;
     
       case 'taxonomy_term':
-        $config->config += array( );
+        $config->config += array( 
+            'tab-keywords' => array(),
+        );
         break;
     
       case 'user':
-        $config->config += array( );
+        $config->config += array( 
+            'tab-keywords' => array(),
+        );
         break;
 
     }
