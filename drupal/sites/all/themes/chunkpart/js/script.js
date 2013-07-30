@@ -213,7 +213,8 @@ $(function() {
 			.delegate('#next-gallery a, .forward-to-gallery a', 'click', function() {
 				takepart.analytics.track('gallery-next-gallery-click', {
 					headline: next_gallery_headline,
-					topic: next_gallery_topic
+					topic: next_gallery_topic,
+					a: this
 				});
 			});
 
@@ -426,6 +427,7 @@ $(function() {
 			cycle: false
 		});
 
+		// Make img clicks forward gallery
 		$slides
 			.delegate('.gallery-slide img, .image-content-wrapper', 'mouseover', function() {
 				$gallery_main.addClass('image-hover');
@@ -435,10 +437,6 @@ $(function() {
 			})
 			.delegate('.gallery-slide img', 'click', function() {
 				$slides.tpslide_next(false);
-			})
-			.delegate('#next-gallery .image img', 'click', function() {
-				var $a = $(this).closest('#next-gallery').find('a');
-				document.location = $a.attr('href');
 			})
 			;
 
