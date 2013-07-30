@@ -205,8 +205,8 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluestatedigital.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
-          'form-id' => 21,
-          'email-field-id' => 316,
+          'form-id' => 5,
+          'email-field-id' => 52,
         ),
       ),
       'bluehornet.pm_signup.handler' => array(
