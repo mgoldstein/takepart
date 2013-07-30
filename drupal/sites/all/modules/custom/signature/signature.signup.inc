@@ -41,7 +41,7 @@ class SignatureSignup extends Signup {
       ),
       'address.postal-code.type' => array(
         'required' => FALSE,
-        'default' => FALSE,
+        'default' => '',
       ),
 
       'partner.code' => array(
@@ -130,7 +130,7 @@ class SignatureSignupEndpoint extends SignupEndpoint {
       ),
       'address.postal-code.type' => array(
         'required' => FALSE,
-        'default' => FALSE,
+        'default' => '',
       ),
       'address.postal-code.plus-four' => array(
         'required' => FALSE,
