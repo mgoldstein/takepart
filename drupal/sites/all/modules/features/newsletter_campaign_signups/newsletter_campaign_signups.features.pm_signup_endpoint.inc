@@ -74,7 +74,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
           'phone-field-id' => 927,
         ),
       ),
-      'waterfall.pm_signup.handler' => array(
+      'waterfallapi.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
           'us-flow-id' => '51106a5a0cf21faa046d7edf',
