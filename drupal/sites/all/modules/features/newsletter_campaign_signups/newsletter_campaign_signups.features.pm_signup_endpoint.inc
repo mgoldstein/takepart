@@ -206,7 +206,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'enabled' => TRUE,
         'configuration' => array(
           'form-id' => 5,
-          'email-field-id' => 316,
+          'email-field-id' => 52,
         ),
       ),
       'bluehornet.pm_signup.handler' => array(
