@@ -77,7 +77,7 @@ function signature_constituent_group_configurations() {
         '1008387',
         '1008388',
         '1008389',
-        '1008396',
+        '1009346',
       ),
       'fields' => array(
         '253159' => 'NEWS',
@@ -95,7 +95,7 @@ function signature_constituent_group_configurations() {
         '1008387',
         '1008388',
         '1008389',
-        '1008391',
+        '1009347',
       ),
       'fields' => array(
         '253159' => 'NEWS',
@@ -126,7 +126,7 @@ function signature_constituent_group_configurations() {
         '1008387',
         '1008388',
         '1008389',
-        '1008393',
+        '1008396',
         '1008363',
       ),
       'fields' => array(
@@ -178,7 +178,7 @@ function signature_constituent_group_configurations() {
         '1008364',
       ),
       'fields' => array(
-        '253159' => 'COVE',
+        '253159' => 'APATT',
       ),
       'send-welcome' => TRUE,
     ),
