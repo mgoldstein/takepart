@@ -1547,14 +1547,14 @@ function signature_send_signup($signature, $local = TRUE) {
       catch (SignupValidationException $sve) {
         $message = 'Error validating signup [@id] @email';
         watchdog('signature', $message, array(
-          '@name' => $settings->pm_signup_endpoint_id,
+          '@id' => $settings->pm_signup_endpoint_id,
           '@email' => $signature->email,
         ));
       }
       catch (SignupSubmissionException $sse) {
         $message = 'Error sending signup [@id] @email';
         watchdog('signature', $message, array(
-          '@name' => $settings->pm_signup_endpoint_id,
+          '@id' => $settings->pm_signup_endpoint_id,
           '@email' => $signature->email,
         ));
       }
@@ -2250,24 +2250,26 @@ function signature_api_create($nid) {
 
   // Partner code field
   if (!empty($_REQUEST['partner_code'])) {
+
     $signature->field_partner_code = array(
       'und' => array(array('value' => $_REQUEST['partner_code']))
     );
+
+    // Partner opt-in field
+    if (!empty($payload['partner_opt_in'])) {
+      $signature->field_partner_opt_in = array(
+        'und' => array(array('value' => '1'))
+      );
+    }
+    else {
+      $signature->field_partner_opt_in = array(
+        'und' => array(array('value' => '0'))
+      );
+    }
   }
   else {
     $signature->field_partner_code = array('und' => array());
-  }
-
-  // Partner opt-in field
-  if (!empty($payload['partner_opt_in'])) {
-    $signature->field_partner_opt_in = array(
-      'und' => array(array('value' => '1'))
-    );
-  }
-  else {
-    $signature->field_partner_opt_in = array(
-      'und' => array(array('value' => '0'))
-    );
+    $signature->field_partner_opt_in = array('und' => array());
   }
 
   $signature->save();
