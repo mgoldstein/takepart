@@ -20,11 +20,15 @@ function metatag_tab_token_info() {
 }
 
 function metatag_tab_topic_freetags($topic, $freetags = '') {
-    $tag_array = array($topic);
     if ($freetags != '') {
+        $tag_array = array($topic);
         $ft_array=explode(",", $freetags);
         $tag_array = array_merge($tag_array, $ft_array);
+        $tag_str=implode(",", $tag_array);
     }
-    $tag_str=implode(",", $tag_array);
-    return rtrim($tag_str, ",");
+    else {
+        $tag_str=rtrim($topic, " ,\n\t"); 
+    }
+    
+    return $tag_str;
 }
