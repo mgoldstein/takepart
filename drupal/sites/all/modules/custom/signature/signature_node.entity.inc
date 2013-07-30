@@ -41,6 +41,7 @@ class SignatureNodeController extends EntityAPIController {
       'type' => '',
       'goal' => 100000,
       'bsd_form' => 0,
+      'pm_signup_endpoint_id' => 0,
       'limit_to_dates' => FALSE,
       'start_date' => time(),
       'end_date' => time() + 365 * 24 * 60 * 60,

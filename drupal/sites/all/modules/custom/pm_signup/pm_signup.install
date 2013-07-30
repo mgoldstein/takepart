@@ -1,0 +1,115 @@
+<?php
+/**
+ * @file
+ * Module schema information.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function pm_signup_schema() {
+  $schema = array();
+
+  $schema['pm_signup_endpoint'] = array(
+    'description' => 'Stores signup endpoint configuration.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key identifier.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'type' => array(
+        'description' => 'Type class name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'name' => array(
+        'description' => 'Machine readable name for export.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'label' => array(
+        'description' => 'Human readable name for selection.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'configuration' => array(
+        'description' => 'Endpoint configuration.',
+        'type' => 'text',
+        'serialize' => TRUE,
+        'size' => 'normal',
+      ),
+      'plugins' => array(
+        'description' => 'Plugin configurations.',
+        'type' => 'text',
+        'serialize' => TRUE,
+        'size' => 'normal',
+      ),
+    ),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'name' => array('name'),
+    ),
+    'indexes' => array(
+      'type' => array('type'),
+    ),
+  );
+
+  $schema['pm_signup_log'] = array(
+    'description' => 'Signup handler exception log.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key identifier for the log entry.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'handler' => array(
+        'description' => 'The signup handler id.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'message' => array(
+        'description' => 'The exception message.',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'exception' => array(
+        'description' => 'The exception thrown.',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'backtrace' => array(
+        'description' => 'Full debug backtrace.',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the log entry was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Add the signup logging table.
+ */
+function pm_signup_update_7100() {
+  $schema = pm_signup_schema();
+  db_create_table('pm_signup_log', $schema['pm_signup_log']);
+}

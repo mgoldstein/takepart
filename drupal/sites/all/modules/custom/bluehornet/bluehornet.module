@@ -1,0 +1,12 @@
+<?php
+
+include_once dirname(__FILE__) . '/includes/bluehornet.api.inc';
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function bluehornet_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner === 'pm_signup' && $plugin_type === 'handler') {
+    return "plugins";
+  }
+}

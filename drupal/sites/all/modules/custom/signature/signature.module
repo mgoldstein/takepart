@@ -4,6 +4,8 @@
  * Module for Signatures
  */
 
+include_once dirname(__FILE__) . '/signature.mapping.conf.inc';
+
 /* Entity
  ******************************************************************************/
 /**
@@ -635,6 +637,7 @@ function signature_save_node_settings($node) {
   $settings->type = $node->signature_type;
   $settings->goal = $node->signature_goal;
   $settings->bsd_form = $node->signature_bsd_form;
+  $settings->pm_signup_endpoint_id = 0;
   $settings->limit_to_dates = $node->signature_limit_to_dates;
   $settings->start_date = signature_date_to_timestamp($node->signature_start_date);
   $settings->end_date = signature_date_to_timestamp($node->signature_end_date);
@@ -644,11 +647,30 @@ function signature_save_node_settings($node) {
   $settings->terms_of_use = $node->signature_terms_of_use;
   $settings->display_disclaimer = $node->signature_display_disclaimer;
 
+  // Update the attached signup endpoint, or attach a new one if the node
+  // is new.
+  if (!empty($settings->bsd_form)) {
+    $errors = array();
+    $endpoint = signature_configure_signup_endpoint($settings->bsd_form,
+      $settings->pm_signup_endpoint_id, $errors);
+    if ($endpoint !== FALSE) {
+      $endpoint->save();
+      $settings->pm_signup_endpoint_id = $endpoint->getID();
+    }
+
+    // Display the errors to the user so they know things are not going to
+    // go well for the action. Use the warning level severity as the action
+    // is still saved.
+    foreach ($errors as $error) {
+      drupal_set_message($error, 'warning');
+    }
+  }
+  elseif (!empty($settings->pm_signup_endpoint_id)) {
+    SignatureSignupEndpoint::deleteByID($settings->pm_signup_endpoint_id);
+  }
+
   // Save the settings for the node.
   entity_save('signature_node', $settings);
-
-  // Calculate and save the signature field mapping.
-  signature_save_node_field_mapping($node);
 }
 
 /**
@@ -681,96 +703,150 @@ function signature_node_delete($node) {
 }
 
 /**
- * Helper function to get a list of Blue State Digital form fields.
+ * Implements hook_entity_delete().
  */
-function signture_signup_list_form_fields($form_id) {
+function signature_entity_delete($entity, $type) {
+  if ($type === 'signature_node') {
+    // Delete the accompaning signup endpoint.
+    if (!empty($entity->pm_signup_endpoint_id)) {
+      SignatureSignupEndpoint::deleteByID($entity->pm_signup_endpoint_id);
+    }
+  }
+}
+
+function signature_build_plugin_configuration($form_id, &$errors) {
+
+  static $groups = FALSE;
+
   try {
+
+    // Get the fields on the signup form.
     $api = bluestatedigital_get_api('signup');
-    return $api->listFormFields($form_id);
+    $fields = $api->listFormFields($form_id);
+
+    // Get a list of the constituent groups for error reporting.
+    if ($groups === FALSE) {
+      $api = bluestatedigital_get_api('group');
+      $groups = $api->listConstituentGroups();
+    }
   }
   catch (BlueStateDigitalApiException $ex) {
-    $message = 'Error retrieving sign form field list [@code] @body';
+    $message = 'Error retrieving sign form description [@code] @body';
     watchdog('signature', $message, array(
       '@code' => $ex->getResponseCode(),
       '@body' => $ex->getResponseBody(),
     ));
+    return FALSE;
   }
-  return FALSE;
+
+  // Invert the form field list to be keyed by label for quick lookup when
+  // translating from the form field label to the signup field name.
+  $by_label = array();
+  foreach ($fields as $id => $field) {
+    $by_label[$field['label']] = $id;
+  }
+
+  // Get the mapping configuration from the includesd config file.
+  $label_to_name = signature_label_to_name_mapping();
+  $label_to_opt_in = signature_label_to_opt_in_mapping();
+  $group_configs = signature_constituent_group_configurations();
+
+  // Map each form field to appropriate signup field using the form field's
+  // label, collecting any errors to show to the user when the action is saved.
+  $name_to_field_id = array();
+  foreach ($label_to_name as $label => $name) {
+
+    if (isset($by_label[$label])) {
+      $name_to_field_id[$name] = $by_label[$label];
+    }
+    else {
+      if ($name !== 'action.id' && $name !== 'action.message') {
+        $errors[] = "[{$form_id}] {$label} not found on form.";
+      }
+    }
+  }
+
+  // The Blue Hornet configuration depends on the constituent group selected
+  // in the Blue State Digital signup form admin. By default none of the opt-ins
+  // are used.
+  $bh_configuration = array(array(), array(), array(), array(), array());
+  $opt_in_to_field_id = array(0,0,0,0,0);
+
+  // Map the opt-ins.
+  foreach ($label_to_opt_in as $label => $index) {
+
+    if (isset($by_label[$label])) {
+      $opt_in_to_field_id[$index] = $by_label[$label];
+
+      // Pull the constituent group id from the field.
+      $field = $fields[$by_label[$label]];
+      $cons_group_id = $field['cons_group_id'];
+
+      // Opt-ins are optional so not all of them will have group ids.
+      if (!empty($cons_group_id)) {
+
+        if (array_key_exists($cons_group_id, $group_configs)) {
+          $bh_configuration[$index] = $group_configs[$cons_group_id];
+        }
+        else {
+          if (isset($groups[$cons_group_id])) {
+            $name = $groups[$cons_group_id]['name'];
+            $errors[] = "[{$form_id}] Constituent group {$name} [{$cons_group_id}] on {$label} is not supported.";
+          }
+          else {
+            $errors[] = "[{$form_id}] Unknown constituent group id {$cons_group_id} on {$label} is not supported.";
+          }
+        }
+      }
+    }
+  }
+
+  // Make sure only the email field is both shown and required.
+  foreach ($fields as $field_id => $field) {
+    if ($field['is_required'] && $field['is_shown'] && $field['label'] !== 'Email') {
+      $errors[] = "[{$form_id}] {$field['label']} should not be required";
+    }
+  }
+
+  return array(
+    'bluestatedigital.pm_signup.handler' => array(
+      'form-id' => $form_id,
+      'field-ids' => $name_to_field_id,
+      'opt-in-ids' => $opt_in_to_field_id,
+    ),
+    'bluehornet.pm_signup.handler' => array(
+      'opt-ins' => $bh_configuration,
+    ),
+  );
 }
 
 /**
  * Helper function for saving the signature field mapping.
  */
-function signature_save_node_field_mapping($node) {
+function signature_configure_signup_endpoint($form_id, $endpoint_id, &$errors) {
 
-  if (!empty($node->signature_bsd_form)) {
+  $configurations = signature_build_plugin_configuration($form_id, $errors);
+  if ($configurations !== FALSE) {
 
-    // Get the node's signature type.
-    $signature_type = signature_type_load($node->signature_type);
-
-    // Get the list of fields on both the type's template signup form, and the
-    // node's signup form.
-    $type_fields = signture_signup_list_form_fields($signature_type->bsd_form);
-    $node_fields = signture_signup_list_form_fields($node->signature_bsd_form);
-
-    // If we didn't get both lists let the user know and proceed without mapping
-    // the signup form fields.
-    if (empty($type_fields) || empty($node_fields)) {
-      drupal_set_message('Blue State Digital signup form fields not mapped.'
-      . ' Unable to communicate with Blue State Digital servers.', 'warning');
-      return;
+    if (empty($endpoint_id)) {
+      $endpoint = new SignatureSignupEndpoint();
     }
-
-    // Invert the node field list to be keyed by label for quick lookup when
-    // translating from the type's field id to the node's field id.
-    $node_by_labels = array();
-    foreach ($node_fields as $id => $field) {
-      $node_by_labels[$field['label']] = $id;
-    }
-
-    // Get the signature type's mapping.
-    $variable = "signature_mapping_type_{$signature_type->type}";
-    $type_mapping = variable_get($variable, array());
-
-    // Translate the type's mapping to the node's mapping by matching the
-    // labels of the fields.
-    $node_mapping = array();
-    foreach ($type_mapping as $field_name => $id) {
-      if (isset($type_fields[$id])) {
-        $label = $type_fields[$id]['label'];
-        if (isset($node_by_labels[$label])) {
-          $node_mapping[$field_name] = $node_by_labels[$label];
-        }
-        else {
-          $format = 'Field mapping error [!type_form => !node_form] type:!type node:!node label:!label';
-          watchdog('signature', $format, array(
-            '!type_form' => $signature_type->bsd_form,
-            '!node_form' => $node->signature_bsd_form,
-            '!type' => $signature_type->type,
-            '!node' => $node->nid,
-            '!label' => $label,
-          ));
-        }
-      }
-      else {
-        $format = 'Field mapping error [!type_form => !node_form] type:!type node:!node';
-        watchdog('signature', $format, array(
-          '!type_form' => $signature_type->bsd_form,
-          '!node_form' => $node->signature_bsd_form,
-          '!type' => $signature_type->type,
-          '!node' => $node->nid,
-        ));
+    else {
+      $endpoint = SignatureSignupEndpoint::load($endpoint_id);
+      if ($endpoint === FALSE) {
+        $endpoint = new SignatureSignupEndpoint();
       }
     }
 
-    // Save the node's field mapping.
-    $variable = "signature_mapping_node_{$node->nid}";
-    variable_set($variable, $node_mapping);
+    foreach ($configurations as $name => $configuration) {
+      $endpoint->setPluginEnabled($name, !empty($configuration));
+      $endpoint->setPluginConfiguration($name, $configuration);
+    }
+
+    return $endpoint;
   }
-  else {
-    // Delete any existing node field mapping.
-    variable_del("signature_mapping_node_{$node->nid}");
-  }
+
+  return FALSE;
 }
 
 /**
@@ -1324,93 +1400,175 @@ function signature_send_signup($signature, $local = TRUE) {
 
   // Get the node specific settings.
   $settings = entity_load_single('signature_node', $signature->nid);
-  if ($settings !== FALSE && !empty($settings->bsd_form)) {
+  if ($settings !== FALSE && !empty($settings->pm_signup_endpoint_id)) {
 
-    // Get the signature field mapping.
-    $variable = "signature_mapping_node_{$signature->nid}";
-    $mapping = variable_get($variable, FALSE);
-    if ($mapping !== FALSE && !empty($mapping)) {
+    // Create a signature signup.
+    $signup = SignatureSignup::create();
 
-      $fields = array();
-      $lang = isset($signature->language) ? $signature->language
-        : LANGUAGE_NONE;
+    $signup['email'] = $signature->email;
 
-      foreach ($mapping as $field_name => $id) {
+    $items = field_get_items('signature', $signature, 'field_sig_first_name');
+    if ($items !== FALSE) {
+      $item = reset($items);
+      if ($item !== FALSE) {
+        $signup['name.first'] = $item['value'];
+      }
+    }
 
-        // Get the value of the field.
-        if ($field_name == 'email') {
-          $value = $signature->email;
-        }
-        elseif ($field_name == 'display') {
-          $value = $signature->display;
-        }
-        elseif ($field_name == 'newsletter_0' || $field_name == 'newsletter') {
-          $value = $signature->newsletter & 0x01 ? 1 : 0;
-        }
-        elseif ($field_name == 'newsletter_1') {
-          $value = $signature->newsletter & 0x02 ? 1 : 0;
-        }
-        elseif ($field_name == 'newsletter_2') {
-          $value = $signature->newsletter & 0x04 ? 1 : 0;
-        }
-        elseif ($field_name == 'newsletter_3') {
-          $value = $signature->newsletter & 0x08 ? 1 : 0;
-        }
-        elseif ($field_name == 'newsletter_4') {
-          $value = $signature->newsletter & 0x10 ? 1 : 0;
+    $items = field_get_items('signature', $signature, 'field_sig_last_name');
+    if ($items !== FALSE) {
+      $item = reset($items);
+      if ($item !== FALSE) {
+        $signup['name.last'] = $item['value'];
+      }
+    }
+
+    $signup['action.id'] = $signature->nid;
+    $signup['action.signature-type'] = $signature->type;
+    $signup['action.opt-ins.display'] = $signature->display;
+
+    // Combine the newsletter opt-ins into a single comma separated list.
+    $opt_ins = array();
+    for ($opt_in = 0x01; $opt_in < 0x20; $opt_in*=2) {
+      $opt_ins[] = ($signature->newsletter & $opt_in) ? 'true' : 'false';
+    }
+    $signup['action.opt-ins.newsletters'] = implode(',', $opt_ins);
+
+    $items = field_get_items('signature', $signature, 'field_partner_code');
+    if ($items !== FALSE) {
+      $item = reset($items);
+      if ($item !== FALSE) {
+        $signup['partner.code'] = $item['value'];
+      }
+    }
+
+    $items = field_get_items('signature', $signature, 'field_partner_opt_in');
+    if ($items !== FALSE) {
+      $item = reset($items);
+      if ($item !== FALSE) {
+        $signup['action.opt-ins.partner'] = $item['value'];
+      }
+    }
+
+    $items = field_get_items('signature', $signature, 'field_sig_address');
+    if ($items !== FALSE) {
+      $item = reset($items);
+      if ($item !== FALSE) {
+        $signup['address.address'] = $item['value'];
+      }
+    }
+
+    $items = field_get_items('signature', $signature, 'field_sig_city');
+    if ($items !== FALSE) {
+      $item = reset($items);
+      if ($item !== FALSE) {
+        $signup['address.city'] = $item['value'];
+      }
+    }
+
+    $items = field_get_items('signature', $signature, 'field_sig_state');
+    if ($items !== FALSE) {
+      $item = reset($items);
+      if ($item !== FALSE) {
+        $signup['address.state.code'] = $item['value'];
+      }
+    }
+
+    $items = field_get_items('signature', $signature, 'field_sig_country');
+    if ($items !== FALSE) {
+      $item = reset($items);
+      if ($item !== FALSE) {
+        $signup['address.country'] = $item['value'];
+      }
+    }
+
+    // Assume a ZIP code. This cover the US only signature and the US versions
+    // of the international signature
+    $items = field_get_items('signature', $signature, 'field_sig_zip_code');
+    if ($items !== FALSE) {
+      $item = reset($items);
+      if ($item !== FALSE) {
+       $signup['address.postal-code'] = $item['value'];
+      }
+    }
+
+    // Grab the outside US postal code if there is one.
+    $postal_code = '';
+    $items = field_get_items('signature', $signature, 'field_sig_postal_code');
+    if ($items !== FALSE) {
+      $item = reset($items);
+      if ($item !== FALSE) {
+        $postal_code = $item['value'];
+      }
+    }
+
+    $items = field_get_items('signature', $signature, 'field_sig_address_toggle');
+    if ($items !== FALSE) {
+      $item = reset($items);
+      if ($item !== FALSE) {
+        if ($item['value'] === 'inside') {
+          // Signature is from inside the US, mark the type for extra validation.
+          $signup['address.postal-code.type'] = 'ZIP';
         }
         else {
-          // The field is attached, make sure it is still attached, then
-          // implode any values it has to a single string.
-          if (isset($signature->{$field_name})) {
-            $values = array();
-            foreach ($signature->{$field_name}[$lang] as $item) {
-              $values[] = (string) $item['value'];
-            }
-            $value = implode(' ', $values);
-          }
-        }
-
-        if (isset($fields[$id])) {
-          // Use the last non-empty value.
-          if (!empty($value)) {
-            $fields[$id] = array(
-              'value' => array(
-                'type' => 'value',
-                'value' => $value,
-              ),
-            );
-          }
-        }
-        else {
-          // First time encountering the field.
-          $fields[$id] = array(
-            'value' => array(
-              'type' => 'value',
-              'value' => $value,
-            ),
-          );
+          // Signature is from outside the US, use the postal code field instead
+          $signup['address.postal-code'] = $postal_code;
+          // and clear any state code
+          unset($signup['address.state.code']);
         }
       }
+    }
 
-      // Send the signup to Blue State Digital.
-      $signup = array($settings->bsd_form => $fields);
+    // Messages of support have a custom message along with the signup info.
+    $items = field_get_items('signature', $signature, 'field_custom_message');
+    if ($items !== FALSE) {
+      $item = reset($items);
+      if ($item !== FALSE) {
+        $signup['action.message'] = $item['value'];
+      }
+    }
+
+    // Load the submission endpoint.
+    $endpoint = SignatureSignupEndpoint::load($settings->pm_signup_endpoint_id);
+
+    if ($endpoint !== FALSE) {
+      // Send the signup.
       try {
-        $api = bluestatedigital_get_api('signup');
-        $api->processSignup($signup);
+
+        $signup->validate();
+        $endpoint->submit($signup);
+
         if ($local) {
           takeaction_tracking_track_action($signature->nid);
         }
+
+        return TRUE;
       }
-      catch (BlueStateDigitalApiException $ex) {
-        $message = 'Error sending signature signup [@code] @body';
+      catch (SignupValidationException $sve) {
+        $message = 'Error validating signup [@id] @email';
         watchdog('signature', $message, array(
-          '@code' => $ex->getResponseCode(),
-          '@body' => $ex->getResponseBody(),
+          '@id' => $settings->pm_signup_endpoint_id,
+          '@email' => $signature->email,
+        ));
+      }
+      catch (SignupSubmissionException $sse) {
+        $message = 'Error sending signup [@id] @email';
+        watchdog('signature', $message, array(
+          '@id' => $settings->pm_signup_endpoint_id,
+          '@email' => $signature->email,
         ));
       }
     }
+    else {
+      $message = 'Unknown signup [@id] @email';
+      watchdog('signature', $message, array(
+        '@id' => $settings->pm_signup_endpoint_id,
+        '@email' => $signature->email,
+      ));
+    }
   }
+
+  return FALSE;
 }
 
 
@@ -2092,24 +2250,26 @@ function signature_api_create($nid) {
 
   // Partner code field
   if (!empty($_REQUEST['partner_code'])) {
+
     $signature->field_partner_code = array(
       'und' => array(array('value' => $_REQUEST['partner_code']))
     );
+
+    // Partner opt-in field
+    if (!empty($payload['partner_opt_in'])) {
+      $signature->field_partner_opt_in = array(
+        'und' => array(array('value' => '1'))
+      );
+    }
+    else {
+      $signature->field_partner_opt_in = array(
+        'und' => array(array('value' => '0'))
+      );
+    }
   }
   else {
     $signature->field_partner_code = array('und' => array());
-  }
-
-  // Partner opt-in field
-  if (!empty($payload['partner_opt_in'])) {
-    $signature->field_partner_opt_in = array(
-      'und' => array(array('value' => '1'))
-    );
-  }
-  else {
-    $signature->field_partner_opt_in = array(
-      'und' => array(array('value' => '0'))
-    );
+    $signature->field_partner_opt_in = array('und' => array());
   }
 
   $signature->save();

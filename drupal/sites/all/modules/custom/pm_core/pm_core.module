@@ -1,0 +1,67 @@
+<?php
+/**
+ * @file
+ * Participant Media Core.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function pm_core_help($path, $arg) {
+  $output = '';
+  if ($path == 'admin/help#pm_core') {
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t("The Participant Media Core module provides common utilities and classes for other Participant Media custom modules.") . '</p>';
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function pm_core_menu() {
+  return array(
+    'admin/config/participant-media' => array(
+      'title' => 'Participant Media',
+      'description' => 'Configuraion of Participant Media modules',
+      'position' => 'right',
+      'weight' => 0,
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    ),
+  );
+}
+
+/* Helper and utility functions
+ ******************************************************************************/
+
+/**
+ * Split a string into an array of strings.
+ *
+ * This function splits a single string value into an array of string values
+ * given one or more delimiters. Additionally, consecutive delimiters are
+ * collapsed into a single delimiter, and each split piece is trimmed of
+ * whitespace.
+ *
+ * @param string $value
+ *   The string to split
+ * @param string $delimiters
+ *   The delimiter
+ * @param array $alternates
+ *   An array of additional delimiter strings. These delimiters are replaced
+ *   with the primary delimiter (using str_replace) before exploding the value.
+ *
+ * @return array
+ *   Array of trimmed strings created from splitting $value.
+ */
+function pm_split($value, $delimiter, $alternates = array()) {
+  if (count($alternates) > 0) {
+    // Replace all alternate delimiters with the primary delimter.
+    $value = str_replace($alternates, $delimiter, $value);
+  }
+  $list = explode($delimiter, $value);
+  $trimmed = array_map('trim', $list);
+  return array_filter($trimmed, 'strlen');
+}

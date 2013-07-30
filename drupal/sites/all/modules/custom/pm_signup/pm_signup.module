@@ -1,0 +1,45 @@
+<?php
+/**
+ * @file
+ * User signups module.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function pm_signup_help($path, $arg) {
+  $output = '';
+  if ($path == 'admin/help#pm_signup') {
+
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_ctools_plugin_type().
+ */
+function pm_signup_ctools_plugin_type() {
+  // Handler plugins provide a class for handling a signup.
+  return array(
+    'handler' => array(
+      'cache' => TRUE,
+      'classes' => array('handler'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_features_api().
+ */
+function pm_signup_features_api() {
+  return array(
+    'pm_signup_endpoint' => array(
+      'name' => t('Signup Endpoints'),
+      'feature_source' => TRUE,
+      'default_hook' => 'pm_signup_endpoint_defaults',
+      'default_file' => FEATURES_DEFAULTS_INCLUDED,
+      'file' => drupal_get_path('module', 'pm_signup')
+        . '/pm_signup.features.inc',
+    ),
+  );
+}
