@@ -7,4 +7,5 @@ project = tp_user_signup
 dependencies[] = pm_signup
 dependencies[] = tp_user
 features[features_api][] = api:1
-features[pm_signup_endpoint][] = user_registration
+features[pm_signup_endpoint][] = user_registration_opt_in_yes
+features[pm_signup_endpoint][] = user_registration_opt_in_no
