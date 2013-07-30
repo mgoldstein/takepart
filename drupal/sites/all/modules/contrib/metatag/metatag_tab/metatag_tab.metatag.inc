@@ -25,7 +25,7 @@ function metatag_tab_metatag_config_default_alter(array &$configs) {
     
       case 'node':
         $config->config += array(
-          'tab-keywords' => array('value' => '[node:field_topic], [node:field_free_tag]'),
+          'tab-keywords' => array('value' => '[tab_metatags:topic_freetags:{node:field_topic}, {node:field_free_tag}]'),
         );
         break;
     
