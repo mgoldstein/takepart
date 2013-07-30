@@ -87,6 +87,21 @@ class BlueStateDigitalSignupHandler {
     $this->sendSignupToServer($bsd_signup);
   }
 
+  protected function submitTakePartUserSignup($signup) {
+
+    $fields = array();
+
+    $email_field_id = $this->configuration['email-field-id'];
+    $fields[$email_field_id]['value'] = array(
+      'type' => 'value',
+      'value' => $signup['email'],
+    );
+
+    $form_id = $this->configuration['form-id'];
+    $bsd_signup = array($form_id => $fields);
+    $this->sendSignupToServer($bsd_signup);
+  }
+
   public function submit($signup) {
     $signup_type = get_class($signup);
     if ($signup_type === 'NewsletterCampaignSignup') {
@@ -94,6 +109,9 @@ class BlueStateDigitalSignupHandler {
     }
     elseif ($signup_type === 'SignatureSignup') {
       $this->submitSignatureSignup($signup);
+    }
+    elseif ($signup_type === 'TakePartUserSignup') {
+      $this->submitTakePartUserSignup($signup);
     }
   }
 }
