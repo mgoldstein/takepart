@@ -51,7 +51,7 @@ function tp_user_user_insert(&$edit, $account, $category) {
   else {
     $message = 'Unknown signup [@name] @email, @postal_code';
     watchdog('tp_user', $message, array(
-      '@name' => $this->signup_name,
+      '@name' => $endpoint_name,
       '@email' => $email,
       '@postal_code' => $postal_code,
     ));

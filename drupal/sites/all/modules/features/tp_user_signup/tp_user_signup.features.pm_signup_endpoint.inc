@@ -7,7 +7,7 @@
 /**
  * Implements hook_pm_signup_endpoint_defaults().
  */
-function tp_user_signups_pm_signup_endpoint_defaults() {
+function tp_user_signup_pm_signup_endpoint_defaults() {
   $endpoints = array();
   $endpoints[] = array(
     'type' => 'TakePartUserSignupEndpoint',
