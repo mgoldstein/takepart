@@ -2272,6 +2272,16 @@ function signature_api_create($nid) {
     $signature->field_partner_opt_in = array('und' => array());
   }
 
+  // Message of support custom message.
+  if (!empty($payload['message'])) {
+    // Switch to the MOS signature type as it is the only
+    // one with the custom message field.
+    $signature->type = 'mos_signature';
+    $signature->field_custom_message = array(
+      'und' => array(array('value' => $payload['message']))
+    );
+  }
+
   $signature->save();
   signature_send_signup($signature, FALSE);
 
