@@ -26,5 +26,5 @@ function metatag_tab_topic_freetags($topic, $freetags = '') {
         $tag_array = array_merge($tag_array, $ft_array);
     }
     $tag_str=implode(",", $tag_array);
-    return rtrim($tag_str, ', \t\n');
+    return rtrim($tag_str, ",");
 }
