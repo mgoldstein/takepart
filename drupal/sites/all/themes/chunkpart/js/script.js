@@ -129,7 +129,7 @@ $(function() {
 	if ( $body.is('.node-type-article') ) {
 		// Social share buttons
 		var tp_social_config = {
-			url_append: '?cmpid=organic-share-{name}',
+			url_append: '?cmpid=organic-share-{{name}}',
 			services: [
 				{name: 'facebook'},
 				{
@@ -282,7 +282,7 @@ $(function() {
 
 		// Social share buttons
 		var tp_social_config = {
-			url_append: '?cmpid=organic-share-{name}',
+			url_append: '?cmpid=organic-share-{{name}}',
 			services: {
 				facebook: {
 					name: 'facebook',
