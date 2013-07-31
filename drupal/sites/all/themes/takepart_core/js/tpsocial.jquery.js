@@ -103,6 +103,11 @@ $.fn.tpsocial = function(args) {
 							data.element = this;
 
 							if ( data.url == '{current}' ) data.url = document.location.href;
+							if ( data.url_append != undefined ) {
+								if ( data.url.indexOf('?') !== -1 && data.url_append.indexOf('?') !== -1 ) {
+									// more to come!
+								}
+							}
 
 							srvc.share(data);
 							$window.trigger(cpre + 'click', data);
