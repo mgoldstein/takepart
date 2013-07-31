@@ -178,6 +178,10 @@ body #at16pt {
 
 /* Of The Day Module */
 
+#block-bean-of-the-day {
+	padding-top: 5px;
+}
+
 #block-bean-of-the-day li {
 	padding: 7px 0 10px 120px;
 	position: relative;
