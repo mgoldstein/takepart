@@ -1370,25 +1370,26 @@ function signature_base_form_submit($form, &$form_state) {
 
   $results = $query->execute();
   if (empty($results['signature'])) {
-    $signature->save();
+  //   $signature->save();
     signature_send_signup($signature);
-    $action_id = $signature->id;
-  }
-  else {
-    $action_id = reset(array_keys($results['signature']));
+  //   $action_id = $signature->id;
+  // }
+  // else {
+  //   $action_id = reset(array_keys($results['signature']));
   }
 
   // Set the node signed cookie.
-  $cookie = "{$signature->type}_{$signature->nid}_signed";
-  setcookie($cookie, 1, time() + (86400 * 365), '/');
+  // $cookie = "{$signature->type}_{$signature->nid}_signed";
+  // setcookie($cookie, 1, time() + (86400 * 365), '/');
 
   // Redirect to the thank you page if no using AJAX.
   if (!$form['#use_ajax']) {
     $thank_you_page = variable_get('takeaction_thank_you_page', '');
     if (!empty($thank_you_page)) {
-      drupal_goto($thank_you_page, array(
-        'query' => array('action' => $action_id),
-      ));
+      drupal_goto($thank_you_page);
+      // , array(
+      //   'query' => array('action' => $action_id),
+      // ));
     }
   }
 }
