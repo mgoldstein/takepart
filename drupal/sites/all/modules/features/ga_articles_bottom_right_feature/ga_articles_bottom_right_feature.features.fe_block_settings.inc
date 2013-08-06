@@ -27,7 +27,7 @@ function ga_articles_bottom_right_feature_default_fe_block_settings() {
         'region' => 'sidebar_second',
         'status' => '1',
         'theme' => 'chunkpart',
-        'weight' => '4',
+        'weight' => '50',
       ),
       'rubik' => array(
         'region' => '',
