@@ -18,8 +18,7 @@ function ga_top_right_feature_default_fe_block_settings() {
     'delta' => 'box-66c05d6f',
     'module' => 'boxes',
     'node_types' => array(
-      0 => 'article',
-      1 => 'openpublish_article',
+      0 => 'openpublish_article',
     ),
     'pages' => '',
     'roles' => array(),
@@ -28,7 +27,7 @@ function ga_top_right_feature_default_fe_block_settings() {
         'region' => 'sidebar_second',
         'status' => '1',
         'theme' => 'chunkpart',
-        'weight' => '0',
+        'weight' => '-100',
       ),
       'rubik' => array(
         'region' => '',
