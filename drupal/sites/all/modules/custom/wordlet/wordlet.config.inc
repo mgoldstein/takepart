@@ -514,7 +514,7 @@ function _wordlet_configuration() {
       'wrappers' => array('every3seconds', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
-        'campaigns/education/education.css',
+        'campaigns/every3seconds/every3seconds.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
