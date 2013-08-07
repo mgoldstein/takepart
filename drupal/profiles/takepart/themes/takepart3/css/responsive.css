@@ -1,328 +1,42 @@
-/* currently not being used, just checking in for safe keeping */
-
-/* media query overrides */
-@media all and (max-width: 999px) {
-  #footer,
-  #page-wrapper {
-    width: auto;
-  }
-
-  img {
-    max-width: 100%;
-  }
-
+@media all and (max-width: 480px) {
   * {
-    max-width: 100%;
-  }
-}
-
-@media all and (max-width: 969px) {
-  #right-rail,
-  .main-content {
-    width: auto;
-    float: none;
-  }
-
-  #page {
-    padding-right: 30px;
-  }
-}
-
-@media all and (max-width: 589px) {
-  body {
-    font-size: 16px !important;
-  }
-
-  /* Home page */
-
-  #logo {
-    float: none;
-    width: auto;
-    position: static;
-  }
-
-  #block-menu-block-1 li.collapsed a {
-    font-size: 2em !important;
-    text-align: center;
-    margin: .5em 0;
-    height: auto;
-  }
-
-  #top-follow-wrapper {
-    display: none;
-  }
-
-  #logo a {
-    text-indent: 0;
-    position: static;
-    /*width: auto;*/
-    /*height: auto;*/
-    /*background: none;*/
-  }
-
-  #views_slideshow_cycle_main_slide_rotator-block {
-    width: auto !important;
-  }
-
-  #views_slideshow_cycle_main_slide_rotator-block .views-slideshow-cycle-main-frame-row {
-    position: static !important;
-    opacity: 1 !important;
-    display: block !important;
-    height: auto !important;
-  }
-
-  #views_slideshow_cycle_main_slide_rotator-block .dots {
-    display: none;
-  }
-
-  .views-field-field-slide-headline-override .field-content a {
-    padding: 0;
-    height: auto;
-    margin: .5em 0;
-  }
-
-  .views-slideshow-cycle-main-frame-row-item {
-    background: transparent;
-  }
-
-  .views-field-field-slide-headline-override {
-    margin: 0;
-  }
-
-  .main-content .block-boxes-title-secondary-headlines .views-row,
-  .main-content .block-boxes-title-features .views-row,
-  .main-content .block-boxes-title-secondary-features .views-row,
-  body.front .main-content .block-boxes-current-promo .views-row {
-    width: auto;
-    float: none;
-    display: block;
-  }
-
-  #header-wrapper {
-    height: auto;
-  }
-
-  .header-right {
-    margin: 0;
-  }
-
-  #block-menu-block-1 li {
-    float: none;
-  }
-
-  .header-right .row2 {
-    display: none;
-  }
-
-  #dontmiss-nav {
-    display: none;
-  }
-
-  #participant-pulldown {
-    display: none;
-  }
-
-  #slim-header #nav-wrap {
-    width: auto;
-  }
-
-  #block-menu-block-1 {
-    float: none;
-    height: auto;
-  }
-
-  .main-content .block-boxes-title-features .views-field-field-thumbnail-1,
-  body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail-1,
-  .main-content .block-boxes-title-features .views-field-field-thumbnail-1 .field-content,
-  body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail-1 .field-content {
-    width: auto;
-    text-align: center;
-  }
-
-  #right-rail .block {
-    padding: 0;
-  }
-
-  #right-rail .views-field-field-thumbnail {
-    position: relative;
-    min-height: 70px;
-    margin-bottom: 1em;
-    margin-right: 0;
-  }
-
-  #right-rail .views-field-field-thumbnail img {
-    position: absolute;
-    left: .5em;
-    top: .5em;
-  }
-
-  #right-rail .views-field-field-promo-headline {
-    float: none !important;
-    padding-left: 80px !important;
-    padding-right: 0 !important;
-    width: auto !important;
-  }
-
-  #right-rail .views-field-field-promo-headline a {
-    display: block;
-    padding-left: .5em;
-  }
-
-  /* All pages */
-
-  * {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
     max-width: 100% !important;
-    height: auto !important;
   }
 
-  table,
-  thead,
-  tr,
-  td {
-    display: block;
+
+  /* Footer */
+  #site-footer {
+    background: #f1f3f4;
+    display: inline-block; vertical-align: bottom;
+    width: 100%;
   }
 
-  #right-rail .block-boxes-ga_ad {
-    display: none;
-  }
-
-  .fb_iframe_widget iframe {
-    position: relative;
-  }
-
-  #footer-links-share,
-  #footer-topic-links {
-    width: auto;
-  }
-
-  #footer ul#bottom-follow li {
+  #site-footer section {
     float: none;
+    width: auto;
+    padding: 1em;
+    text-align: center;
+  }
+
+  #site-footer ul {
+    text-align: center;
+  }
+
+  #site-footer #site-about {
+    text-align: center;
+  }
+
+  #site-footer li {
+    display: inline;
+    margin: 0;
+  }
+
+  #site-footer #site-connect li {
+    margin-right: 5px;
+  }
+
+  #site-footer li a {
+    padding: 0 1em;
     display: inline-block;
   }
-
-  #page-wrapper .region-full-width-top,
-  #page {
-    padding: 1em;
-  }
-
-  .footer-column-wrapper {
-    margin: 1em 0;
-    padding: 0;
-    float: none;
-    width: auto;
-  }
-
-  #footer {
-    text-align: center;
-  }
-
-  #footer .column {
-    float: none;
-    width: auto;
-  }
-
-  #footer a {
-    display: block;
-    font-size: 1.5em;
-    line-height: 1.5em;
-    text-decoration: underline;
-  }
-
-  /* non-homepage */
-
-  .not-front #nav-wrap,
-  .not-front .header-right {
-    display: none;
-  }
-
-  /* page: article */
-
-  body.two-sidebars #content,
-  body.sidebar-first #content {
-    margin: 0;
-  }
-
-  .tpart-links-noborder {
-    width: 100%;
-  }
-
-  .tpart-links-noborder,
-  .tpart-links-noborder tbody,
-  .tpart-links-noborder tr,
-  .tpart-links-noborder td {
-    display: block;
-  }
-
-  #right-rail .views-field-field-thumbnail img {
-    position: static;
-  }
-
-  /* take action */
-  .petition_pledge_action .block-boxes-bid-boxes-action_topic_and_share .field-type-share-bar {
-    display: none;
-  }
-
-  .petition_pledge_action .signature-form {
-    padding: 0;
-  }
-
-  .petition_pledge_action .take_action_button,
-  .petition_pledge_action .signature-form .form-submit {
-    width: 100%;
-    text-align: center;
-  }
-
-  /* module: take action embedded */
-
-  #page #content .embedaction-wrapper .more-actions {
-    left: 0;
-  }
-
-  .embedaction-wrapper .signature-form .field-type-list-text,
-  .embedaction-wrapper .signature-form .form-type-textfield,
-  .embedaction-wrapper .signature-form .form-type-checkbox,
-  .embedaction-wrapper .signature-form .form-actions {
-    padding-left: 0;
-  }
-
-  .petition_pledge_action .take_action_button,
-  .petition_pledge_action .signature-form .form-submit {
-    padding: 0;
-  }
-
-  .embedaction-wrapper .group-signature-progress .signature-progress-percent {
-    position: relative;
-    left: 0;
-    top: 0;
-  }
-
-  .embedaction-wrapper .group-signature-progress {
-    padding: 0;
-    height: auto;
-    margin: 0;
-  }
-
-  /* taste makers */
-
-  #page-wrapper #column1 {
-    padding: 0;
-  }
-
-  #page-wrapper .venue-address,
-  #page-wrapper .venue-thumbnail {
-    padding: 0;
-    width: auto;
-    float: none;
-    height: auto;
-  }
-
-  #page-wrapper .venue-container {
-    height: auto;
-  }
-
-  /* Slim header */
-
 }
