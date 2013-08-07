@@ -489,7 +489,7 @@ function _wordlet_configuration() {
     'education_home' => array(
       'title' => 'I Am Education - Home',
       'path' => 'i-am-education',
-      'published' => FALSE,
+      'published' => TRUE,
       'wrappers' => array('education', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
@@ -506,7 +506,7 @@ function _wordlet_configuration() {
     'education_video' => array(
       'title' => 'I Am Education - Videos',
       'path' => 'i-am-education/videos',
-      'published' => FALSE,
+      'published' => TRUE,
       'wrappers' => array('education', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
@@ -517,6 +517,48 @@ function _wordlet_configuration() {
         'campaigns/education/education.js',
       ),
       'load' => array('site', 'education_campaign'),
+    ),
+
+
+    // -----------------------------------
+    // Every 3 Seconds Campaign ----------
+    // -----------------------------------
+    'every3seconds_campaign' => array(
+      'title' => 'Every 3 Seconds Campaign',
+    ),
+
+    // Every 3 Seconds Home
+    'every3seconds_home' => array(
+      'title' => 'Every 3 Seconds - Home',
+      'path' => 'every-3-seconds',
+      'published' => TRUE,
+      'wrappers' => array('every3seconds', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/every3seconds/every3seconds.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/every3seconds/education.js',
+      ),
+      'load' => array('site', 'every3seconds_campaign'),
+    ),
+
+    // Every Three Seconds Videos
+    'every3seconds_video' => array(
+      'title' => 'Every 3 Seconds - Videos',
+      'path' => 'every-3-seconds/action',
+      'published' => TRUE,
+      'wrappers' => array('every3seconds', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/every3seconds/every3seconds.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/every3seconds/every3seconds.js',
+      ),
+      'load' => array('site', 'every3seconds_campaign'),
     ),
 
 
