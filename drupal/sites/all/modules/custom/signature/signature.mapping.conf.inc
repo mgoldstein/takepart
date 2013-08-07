@@ -59,7 +59,7 @@ function signature_constituent_group_configurations() {
         '1008387',
         '1008388',
         '1008389',
-        '1008394',
+        '1008391',
       ),
       'fields' => array(
         '253159' => 'NEWS',
