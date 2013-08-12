@@ -12,9 +12,8 @@ $(function() {
 		data: {},
 		success: function(data){
 			if(!data.show){
-				//return;
+				return;
 			}
-			data.show = 'interstitials/newsletter';
 			$interstitial_link = $('<a></a>').attr('href', '/' + data.show);
 			$interstitial = $('<div></div>').attr('id', 'interstitial').append($interstitial_link);
 			interstitial_init($interstitial);
@@ -32,7 +31,7 @@ $(function() {
 			$.cookie('pm_igloo', null);
 			$.cookie('pm_igloo', myCookieValue, { expires:date, secure:true, path:'/' });
 		};
-		
+
 		window.resize_interstitial = function(w, h) {
 			$iframe.css({width: w, height: h});
 			$.tpmodal.showModal({id: interstitial_modal_id});
