@@ -358,11 +358,20 @@ var tpmodal = function(parameters) {
 			$modal.css('width', ow);
 		}
 		animate = animate || false;
-
-		css.left = $window.scrollLeft() + $window.width() / 2 - css.width / 2;
-		css.top = $window.scrollTop() + $window.height() / 2 - css.height / 2;
-		if ( css.left < $window.scrollLeft() ) css.left = $window.scrollLeft();
-		if ( css.top < $window.scrollTop() ) css.top = $window.scrollTop();
+		if (css.width < $window.width() && css.height < $window.height()){
+			css.position = 'fixed';
+			css.margin = 'auto';
+			css.top = '0';
+			css.bottom = '0';
+			css.left = '0';
+			css.right = '0';
+		} else {
+			css.position = 'absolute';
+			css.left = $window.scrollLeft() + $window.width() / 2 - css.width / 2;
+			css.top = $window.scrollTop() + $window.height() / 2 - css.height / 2;
+			if ( css.left < $window.scrollLeft() ) css.left = $window.scrollLeft();
+			if ( css.top < $window.scrollTop() ) css.top = $window.scrollTop();
+		}
 
 		if ( animate ) {
 			$modal.animate(css, settings.speed, function() {

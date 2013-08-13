@@ -17,7 +17,6 @@ img.align-right {
 .interstitial_modal_modal.tpmodal_modal {
 	background: transparent;
 	border-radius: 0;
-	position: fixed !important;
 }
 
 .interstitial_modal_modal .tpmodal_content {
