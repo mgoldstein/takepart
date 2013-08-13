@@ -1,0 +1,83 @@
+<?php
+/**
+ * TakeAction TAB module.
+ */
+
+/**
+ * hook_menu implementation.
+ */
+function takeaction_tab_menu () {
+  return array(
+    'admin/config/takeaction/tab' => array(
+      'title' => 'TakeAction Button TAB Settings',
+      'description' => 'Settings for TakeAction Button TAB API',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('takeaction_tab_settings_form'),
+      'file' => 'takeaction_tab.pages.inc',
+      'access callback' => 'user_access',
+      'access arguments' => array('takeaction configure settings'),
+    ),
+  );
+}
+
+/**
+ * Send notification to TAB
+ * @param $op operation type, can be 'update', 'delete'.
+ * @param $nid node id.
+ *
+ * @return TRUE on success, FALSE otherwise.
+ */
+function takeaction_tab_action_notification($op, $nid) {
+  $url = variable_get('takeaction_tab_api_url', '');
+  $security_token = variable_get('takeaction_tab_security_token', '');
+  if (empty($url) || empty($security_token)) {
+    drupal_set_message(
+      t('To send notifications to TAB configure !page.',
+        array(
+          '!page' => l(t('api settings'), 'admin/config/takeaction/tab')
+        )
+      ),
+      'warning');
+    return;
+  }
+
+
+
+  $ch = curl_init($url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+      'Authorization: Token token="'.$security_token.'"',
+    )
+  );
+
+  switch ($op) {
+    case 'update':
+      $node = node_load($nid);
+      $data = takeaction_feed_action_item_data($node);
+      if (empty($data)) {
+        return FALSE;
+      }
+      $json = drupal_json_encode($data);
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+          'Content-Type: application/json',
+          'Content-Length: ' . strlen($json),
+        )
+      );
+      break;
+    case 'delete':
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+      curl_setopt($ch, CURLOPT_URL, $url.'/'.$nid);
+      break;
+    default:
+      return FALSE;
+  }
+
+  $response = curl_exec($ch);
+  if(!$response) {
+    return FALSE;
+  }
+
+  return TRUE;
+}
