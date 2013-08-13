@@ -15,7 +15,7 @@ function pm_interstitial_uninstall() {
   // Delete the variables used by this module.
   $variables = db_select('variable', 'v')
     ->fields('v', array('name'))
-    ->condition('name', db_like('om_interstitial_') . '%', 'LIKE')
+    ->condition('name', db_like('pm_interstitial_') . '%', 'LIKE')
     ->execute();
   while ($variable = $variables->fetchAssoc()) {
     variable_del($variable['name']);
