@@ -186,7 +186,7 @@ function pm_interstitial_block_view($delta = '') {
       if ($url !== FALSE) {
         $links[] = l($type, $url, array(
           'attributes' => array(
-            'class' => array($type),
+            'data-interstitial-type' => $type,
             'rel' => 'nofollow',
           ),
         ));
