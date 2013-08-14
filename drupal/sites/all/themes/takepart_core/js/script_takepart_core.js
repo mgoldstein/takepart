@@ -4,26 +4,49 @@
 $(function() {
 	var $body = $('body');
 
-	var interstitial_url = $('body').attr('data-interstitial-provider');
 
-	$.ajax({
-		dataType: "json",
-		url: interstitial_url,
-		data: {},
-		success: function(data){
-			if(!data.show){
+	// INTERSTITIALS
+
+	interstitial_init();
+
+	function interstitial_init(){
+
+		var interstitial_cookie = $.cookie('pm_igloo');
+		var referers = $('body').attr('data-interstitial-referer');
+		if (typeof referers === 'undefined'){ // opt out
+			return;
+		}
+
+		if (interstitial_cookie === null){ // first page view
+			// create ignore interstitial cookie and set to off
+			$.cookie('pm_igloo', 0);
+			
+			// create referer list cookie
+			$.cookie('pm_referers', referers);
+
+		} else if(interstitial_cookie === '0') { // second page view (or subsequent page view without closing the interstitial)
+			var excluded_links = $.cookie('pm_referers').split(',');
+			var $interstitial_links = $('#block-pm-interstitial-interstitials .content a');
+			if($interstitial_links.length <= 0){
 				return;
 			}
-			$interstitial_link = $('<a></a>').attr('href', '/' + data.show);
-			$interstitial = $('<div></div>').attr('id', 'interstitial').append($interstitial_link);
-			interstitial_init($interstitial);
+			
+			// exclude referrer classes and map the remaining hrefs
+			var interstitial_hrefs = $.map($interstitial_links, function(link, i){
+				if ($.inArray($(link).attr('data-interstitial-type'), excluded_links) === -1){
+					return $(link).attr('href');
+				}
+			});
+			// show random href from list of available interstitials
+			show_interstitial(interstitial_hrefs[Math.floor(Math.random() * interstitial_hrefs.length)]);
 		}
-	});
+	}
 
-	function interstitial_init($interstitial){
+	function show_interstitial(address){
 		var interstitial_modal_id = 'interstitial_modal_';
-		var $a = $interstitial.find('a');
-		var $iframe = $('<iframe src="' + $a.attr('href') + '"></iframe>').css({border: '0'});
+		console.log(address);
+		var $iframe = $('<iframe src="' + address + '"></iframe>').css({border: '0'});
+		
 		var extend_pm_interstitial_cookie = function(days){
 			var date = new Date();
 			date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
