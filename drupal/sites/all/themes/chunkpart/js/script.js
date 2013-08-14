@@ -321,6 +321,9 @@ $(function() {
 		// Get current "token" from last folder of URL
 		var get_curtoken = function() {
 			var token = document.location.href.split(/\/|#/).slice(5,6) + '';
+			if(token.indexOf('?') > -1) {
+				token =  token.substring(0, token.indexOf('?'));
+                        }
 			// Allow for back buttoning to #first-slide cover page
 			return token;
 		};
