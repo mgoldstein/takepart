@@ -173,7 +173,7 @@ function _wordlet_configuration() {
 
     // Interstitials - Social
     'interstitial_social_follows' => array(
-      'title' => 'Interstitial: Social Folows',
+      'title' => 'Interstitial: Social Follows',
       'path' => 'interstitials/social-follows',
       'published' => TRUE,
       'wrappers' => array('interstitials', 'campaign', 'html'),
@@ -199,7 +199,7 @@ function _wordlet_configuration() {
       'js' => array(
         'campaigns/interstitials/newsletter/newsletter.js',
       ),
-      'load' => array('site', 'interstitials'),
+      'load' => array('site', 'interstitials_campaign'),
     ),
 
 

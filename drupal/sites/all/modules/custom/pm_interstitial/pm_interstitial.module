@@ -4,9 +4,6 @@
  * Marketing interstitials.
  */
 
-define('PM_INTERSTITIAL_DEFAULT_COOKIE_NAME', 'pm_igloo');
-define('PM_INTERSTITIAL_DEFAULT_COOKIE_LIFESPAN', 60 * 60 * 24 * 7);
-
 /**
  * Implements hook_help().
  */
@@ -43,13 +40,6 @@ function pm_interstitial_menu() {
       'access callback' => 'user_access',
       'access arguments' => array('pm_interstitial configure settings'),
     ),
-    'interstitials' => array(
-      'title' => 'Interstitial Provider',
-      'type' => MENU_CALLBACK,
-      'page callback' => 'pm_interstitial_provider_callback',
-      'access callback' => 'user_access',
-      'access arguments' => array('access content'),
-    ),
   );
 }
 
@@ -70,56 +60,6 @@ function pm_interstitial_permission() {
  * Admin form callback.
  */
 function pm_interstitial_admin_form($form, &$form_state) {
-
-  $form['tracking'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Tracking Cookie'),
-    '#description' => t('Settings for the tracking cookie.'),
-    '#tree' => FALSE,
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-  );
-
-  $form['tracking']['pm_interstitial_cookie_name'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Name'),
-    '#description' => t('The name of the tracking cookie.'),
-    '#required' => FALSE,
-    '#attributes' => array(
-      'placeholder' => PM_INTERSTITIAL_DEFAULT_COOKIE_NAME,
-    ),
-    '#default_value' => variable_get('pm_interstitial_cookie_name',
-      PM_INTERSTITIAL_DEFAULT_COOKIE_NAME),
-    '#disabled' => TRUE,
-  );
-
-  $form['tracking']['pm_interstitial_cookie_path'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Path'),
-    '#description' => t('The access path of the tracking cookie.'),
-    '#required' => FALSE,
-    '#default_value' => variable_get('pm_interstitial_cookie_path', ''),
-  );
-
-  $form['tracking']['pm_interstitial_cookie_domain'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Domain'),
-    '#description' => t('The domain of the tracking cookie.'),
-    '#required' => FALSE,
-    '#default_value' => variable_get('pm_interstitial_cookie_domain', ''),
-  );
-  $form['tracking']['pm_interstitial_cookie_lifespan'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Lifespan'),
-    '#description' => t('The life span of the tracking cookie (in seconds) after the user is shown an interstitial. This value may be increased if the user permanently opts out of interstitials.'),
-    '#required' => FALSE,
-    '#element_validate' => array('_element_validate_integer_positive'),
-    '#attributes' => array(
-      'placeholder' => PM_INTERSTITIAL_DEFAULT_COOKIE_LIFESPAN,
-    ),
-    '#default_value' => variable_get('pm_interstitial_cookie_lifespan',
-      PM_INTERSTITIAL_DEFAULT_COOKIE_LIFESPAN),
-  );
 
   $form['email'] = array(
     '#type' => 'fieldset',
@@ -175,73 +115,6 @@ function pm_interstitial_admin_form($form, &$form_state) {
 }
 
 /**
- * Provider callback.
- */
-function pm_interstitial_provider_callback() {
-
-  $cookie = variable_get('pm_interstitial_cookie_name',
-    PM_INTERSTITIAL_DEFAULT_COOKIE_NAME);
-
-  $path = variable_get('pm_interstitial_cookie_path', '');
-  $path = empty($path) ? NULL : $path;
-
-  $domain = variable_get('pm_interstitial_cookie_domain', '');
-  $domain = empty($domain) ? NULL : $domain;
-
-  $lifespan = variable_get('pm_interstitial_cookie_lifespan',
-    PM_INTERSTITIAL_DEFAULT_COOKIE_LIFESPAN);
-
-  $interstitial = FALSE;
-
-  if (!isset($_COOKIE[$cookie])) {
-
-    // Which (if any) interstitial to show is determined by the campaign id
-    // of the initial page view, it will need to be stored until the second
-    // page view.
-    $value = isset($_GET['cmpid']) ? "0:{$_GET['cmpid']}" : "0";
-
-    // Start the tracking session.
-    setcookie($cookie, $value, 0, $path, $domain);
-  }
-  else {
-
-    // Extract the opt out and campaign id from the cookie.
-    $pieces = explode(':', $_COOKIE[$cookie]);
-    $opt_out = $pieces[0];
-    $first_cmpid = count($pieces) < 2 ? NULL : $pieces[1];
-
-    // Check for a campaign id on the current page.
-    $current_cmpid = isset($_GET['cmpid']) ? $_GET['cmpid'] : NULL;
-
-    // The interstitial must be active for the page and the user must not have
-    // already been shown an interstitial.
-    if (isset($_GET['active']) && $_GET['active'] === 'true' && $opt_out === '0') {
-
-      $exclude = array();
-      // Add in the excluded interstitials from the first page view
-      if (isset($first_cmpid)) {
-        $exclude += InterstitialProviderReaction::get_exclusions($first_cmpid);
-      }
-      // Add in the excluded interstitials from the current page view.
-      if (isset($current_cmpid)) {
-        $exclude += InterstitialProviderReaction::get_exclusions($current_cmpid);
-      }
-
-      // Get an interstitial from the provider.
-      $interstitial = InterstitialProviderReaction::get_interstitial($exclude);
-      if ($interstitial !== FALSE) {
-        // The user is being shown an interstitial, and should not be shown
-        // another for the configured lifespan of the tracking cookie (defaults
-        // to 7 days), the frontend may extend the expiration date even further.
-        setcookie($cookie, "1", REQUEST_TIME + $lifespan, $path, $domain);
-      }
-    }
-  }
-
-  return drupal_json_output(array('show' => $interstitial));
-}
-
-/**
  * Implements hook_context_registry().
  *
  * Registers the interstitial data attribute reaction.
@@ -249,15 +122,10 @@ function pm_interstitial_provider_callback() {
 function pm_interstitial_context_registry() {
   return array(
     'reactions' => array(
-      'pm_interstitial_provider' => array(
-        'title' => t('Interstitial Provider'),
-        'description' => t('Add a marketing interstitial provider to the page.'),
-        'plugin' => 'pm_interstitial_provider',
-      ),
-      'pm_interstitial_activation' => array(
-        'title' => t('Interstitial Activation'),
-        'description' => t('Activate a marketing interstitial for the page.'),
-        'plugin' => 'pm_interstitial_activation',
+      'pm_interstitial_referer' => array(
+        'title' => t('Interstitial Referer'),
+        'description' => t('Adds the marketing interstitial referer type to the page.'),
+        'plugin' => 'pm_interstitial_referer',
       ),
     )
   );
@@ -270,19 +138,11 @@ function pm_interstitial_context_registry() {
  */
 function pm_interstitial_context_plugins() {
   return array(
-    'pm_interstitial_provider' => array(
+    'pm_interstitial_referer' => array(
       'handler' => array(
         'path' => drupal_get_path('module', 'pm_interstitial') . '/plugins',
         'file' => 'context.reactions.inc',
-        'class' => 'InterstitialProviderReaction',
-        'parent' => 'context_reaction',
-      ),
-    ),
-    'pm_interstitial_activation' => array(
-      'handler' => array(
-        'path' => drupal_get_path('module', 'pm_interstitial') . '/plugins',
-        'file' => 'context.reactions.inc',
-        'class' => 'InterstitialActivationReaction',
+        'class' => 'InterstitialReaction',
         'parent' => 'context_reaction',
       ),
     ),
@@ -295,17 +155,56 @@ function pm_interstitial_context_plugins() {
  * Activates the interstitial data attribute reaction.
  */
 function pm_interstitial_preprocess_html(&$vars) {
-
-  // Fire the activation reaction first to determine if the interstitial is
-  // active.
-  $active = FALSE;
-  if ($plugin = context_get_plugin('reaction', 'pm_interstitial_activation')) {
-    $active = $plugin->execute($vars);
-  }
-
   // Fire the provider url reaction with the current activation state.
-  if ($plugin = context_get_plugin('reaction', 'pm_interstitial_provider')) {
-    $cmpid = isset($_GET['cmpid']) ? $_GET['cmpid'] : NULL;
-    $plugin->execute($vars, $active, $cmpid);
+  if ($plugin = context_get_plugin('reaction', 'pm_interstitial_referer')) {
+    $cmpid = isset($_GET['cmpid']) ? $_GET['cmpid'] : '';
+    $plugin->execute($vars, $cmpid);
+  }
+}
+
+
+/**
+ * Implements hook_block_info().
+ */
+function pm_interstitial_block_info() {
+  return array(
+    'interstitials' => array(
+      'info' => t('Interstitial URLs'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function pm_interstitial_block_view($delta = '') {
+  $links = array();
+  if ($delta === 'interstitials') {
+    foreach(array('email', 'social') as $type) {
+      $url = InterstitialReaction::get_interstitial($type);
+      if ($url !== FALSE) {
+        $links[] = l($type, $url, array(
+          'attributes' => array(
+            'data-interstitial-type' => $type,
+            'rel' => 'nofollow',
+          ),
+        ));
+      }
+    }
+  }
+  return array(
+    'subject' => '',
+    'content' => implode("\n", $links),
+  );
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function pm_interstitial_preprocess_block(&$variables) {
+  $block = $variables['block'];
+  if ($block->module === 'pm_interstitial' && $block->delta === 'interstitials') {
+    $variables['classes_array'][] = 'element-invisible';
   }
 }
