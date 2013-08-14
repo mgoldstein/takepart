@@ -23,7 +23,7 @@
 	                <? if ( $w->multi(false) ): ?>
 	                    <?=$w->multi(false)?>
 	                <? elseif($w->single(false)): ?>
-	                    <p><a href="<?=wu('intelchange_contest')?>"><?=$w->single(false)?></a></p>
+	                    <p><a href="<?=wu('intelchange_finalists_vote')?>"><?=$w->single(false)?></a></p>
 	                <? elseif(wordlet_edit_mode()): ?>
 	                    Add Link
 	                <?endif?>
@@ -42,7 +42,7 @@
 			<div class="finalists-wrapper">
 				<ul class="finalists-menu" <?=wa('finalists')?>>
 					<? foreach ( wl('finalists', true) as $w ): ?>
-						<li><a href="<?=wu('intelchange_vote')?>#<?=$w->token?>"><div class="outline"></div><img src="<?=$w->thumb_src?>" alt="<?=$w->single(false)?>" ></a></li>
+						<li><a href="<?=wu('intelchange_finalists_vote')?>#<?=$w->token?>"><div class="outline"></div><img src="<?=$w->thumb_src?>" alt="<?=$w->single(false)?>" ></a></li>
 					<? endforeach ?>
 				</ul>
 			</div>
@@ -50,7 +50,7 @@
 				<?=w('cta_instructions')?>
 			</div>
 			<p class="important">
-				<a href="<?=wu('intelchange_vote')?>"><?=w('view_finalists_cta')?></a>
+				<a href="<?=wu('intelchange_finalists_vote')?>"><?=w('view_finalists_cta')?></a>
 			</p>
 		</div>
 	</div>

@@ -171,11 +171,18 @@ function takeaction_feed_entity_update($entity, $type) {
         'data' => serialize($data),
       ))
       ->execute();
+
+    if (module_exists('takeaction_tab')) {
+      takeaction_tab_action_notification('update', $node->nid);
+    }
   }
   else {
     db_delete('takeaction_feed_actions')
       ->condition('nid', $node->nid, '=')
       ->execute();
+    if (module_exists('takeaction_tab')) {
+      takeaction_tab_action_notification('delete', $node->nid);
+    }
   }
 }
 
@@ -195,6 +202,9 @@ function takeaction_feed_entity_delete($entity, $type) {
     db_delete('takeaction_feed_actions')
       ->condition('nid', $entity->nid, '=')
       ->execute();
+    if (module_exists('takeaction_tab')) {
+      takeaction_tab_action_notification('delete', $entity->nid);
+    }
   }
 }
 

@@ -150,7 +150,7 @@ function chunkpart_preprocess_entity(&$variables, $hook) {
                 $main_image = field_get_items('node', $node, 'field_gallery_images');
               }
               if ($node->type == 'openpublish_video') {
-                $main_image = field_get_items('node', $node, 'field_main_image');
+                $main_image = field_get_items('node', $node, 'field_thumbnail');
               }
               if (isset($main_image[0]['fid'])) {
                 $img_url = file_load($main_image[0]['fid']);
