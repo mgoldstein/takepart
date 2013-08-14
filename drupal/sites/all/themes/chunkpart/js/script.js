@@ -394,6 +394,8 @@ $(function() {
 
 			if ( !gallery_showing ) return;
 			hpush(token, $current.find('.headline').text());
+			refresh_dfp_ads();
+
 		}
 
 		var gallery_showing = false;
@@ -403,6 +405,7 @@ $(function() {
 			$gallery_cover.hide();
 			$gallery_main.removeClass('hide_gallery').addClass('show_gallery');
 			hpush($current_slide.data('token'), $current_slide.find('.headline').text(), replace);
+			refresh_dfp_ads();
 		};
 
 		var hide_gallery = function() {
@@ -420,6 +423,12 @@ $(function() {
 			$('#gallery-cover .tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
 			gallery_showing = false;
+		};
+
+		var refresh_dfp_ads = function() {
+			if(typeof googletag != 'undefined') {
+				googletag.pubads().refresh();
+			}
 		};
 
 		// Make slideshow
