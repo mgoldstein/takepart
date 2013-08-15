@@ -11,8 +11,9 @@ $(function() {
 
 	function interstitial_init(){
 		// // FOR TESTING
-		// if($('#block-pm-interstitial-interstitials .content a').length > 0){
-		// 	show_interstitial('/interstitials/social-follows');
+		// var interstitial_links = $('#block-pm-interstitial-interstitials .content a');
+		// if(interstitial_links.length > 0){
+		// 	show_interstitial(interstitial_links.filter('[data-interstitial-type="social"]'));
 		// }
 		// return;
 
@@ -38,20 +39,26 @@ $(function() {
 			}
 			
 			// exclude referrer classes and map the remaining hrefs
-			var interstitial_hrefs = $.map($interstitial_links, function(link, i){
+			var interstitial_links = $.map($interstitial_links, function(link, i){
 				if ($.inArray($(link).attr('data-interstitial-type'), excluded_links) === -1){
-					return $(link).attr('href');
+					return $(link);
 				}
 			});
 			// show random href from list of available interstitials
-			show_interstitial(interstitial_hrefs[Math.floor(Math.random() * interstitial_hrefs.length)]);
+			show_interstitial(interstitial_links[Math.floor(Math.random() * interstitial_links.length)]);
 		}
 	}
 
-	function show_interstitial(address){
+	function show_interstitial(interstitial_link){
 		var interstitial_modal_id = 'interstitial_modal_';
+		var address = interstitial_link.attr('href');
 		var $iframe = $('<iframe src="' + address + '"></iframe>').css({border: '0'});
-		
+		var interstitial_type = interstitial_link.attr('data-interstitial-type');
+		var analytics_types = {
+			'email': 'Newsletter',
+			'social': 'Social'
+		};
+
 		var extend_pm_interstitial_cookie = function(days){
 			var date = new Date();
 			date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -71,7 +78,7 @@ $(function() {
 				values: {
 					afterClose: function() {
 						extend_pm_interstitial_cookie(365 * 5);
-						takepart.analytics.track('tpinterstitial_dontshow');
+						takepart.analytics.track('tpinterstitial_dontshow', {interstitial_type: analytics_types[interstitial_type]});
 					}
 				}
 			});
@@ -91,7 +98,7 @@ $(function() {
 			node: $iframe,
 			afterClose: function() {
 				extend_pm_interstitial_cookie(7);
-				takepart.analytics.track('tpinterstitial_dismiss');
+				takepart.analytics.track('tpinterstitial_dismiss', {interstitial_type: analytics_types[interstitial_type]});
 			}
 		});
 	}
