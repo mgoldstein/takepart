@@ -69,7 +69,7 @@ $(function() {
 		};
 
 		window.resize_interstitial = function(w, h) {
-			$iframe.css({width: w, height: h});
+			//$iframe.css({width: w, height: h});
 			$.tpmodal.showModal({id: interstitial_modal_id});
 		};
 
