@@ -348,7 +348,7 @@ var tpmodal = function(parameters) {
 		var settings = get_settings(parameters);
 		if ( !ocss ) {
 			var ow = $modal.width();
-			$modal.css('width', '');
+			//$modal.css('width', '');
 			$modal_content.css('width', '');
 		}
 		css.width = css.width || $modal.width();
@@ -363,10 +363,10 @@ var tpmodal = function(parameters) {
 		css.bottom = '0';
 		css.left = '0';
 		css.right = '0';
-		
+
 		if ( animate ) {
 			$modal.animate(css, settings.speed, function() {
-				$modal.css({height: ''});
+				//$modal.css({height: ''});
 				$modal_content.css({height: ''});
 				if ( settings.callback ) settings.callback();
 			});
