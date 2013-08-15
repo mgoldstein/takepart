@@ -531,7 +531,7 @@ function _wordlet_configuration() {
     'every3seconds_home' => array(
       'title' => 'Every 3 Seconds - Home',
       'path' => 'every-3-seconds',
-      'published' => TRUE,
+      'published' => FALSE,
       'wrappers' => array('every3seconds', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
@@ -548,7 +548,7 @@ function _wordlet_configuration() {
     'every3seconds_video' => array(
       'title' => 'Every 3 Seconds - Videos',
       'path' => 'every-3-seconds/action',
-      'published' => TRUE,
+      'published' => FALSE,
       'wrappers' => array('every3seconds', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
@@ -560,7 +560,6 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'every3seconds_campaign'),
     ),
-
 
     // -------------------------------------
     // Intel Girls Campaign ----------------
