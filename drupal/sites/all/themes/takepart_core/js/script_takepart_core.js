@@ -63,9 +63,8 @@ $(function() {
 		var extend_pm_interstitial_cookie = function(days){
 			var date = new Date();
 			date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-			var myCookieValue = $.cookie('pm_igloo');
 			$.cookie('pm_igloo', null);
-			$.cookie('pm_igloo', myCookieValue, { expires:date, path:'/' });
+			$.cookie('pm_igloo', 1, { expires:date, path:'/' });
 		};
 
 		window.resize_interstitial = function(w, h) {
