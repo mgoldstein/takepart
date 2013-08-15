@@ -32,4 +32,5 @@ img.align-right {
 .interstitial_modal_modal iframe {
 	width: 360px;
 	height: 380px;
+	overflow: hidden;
 }
