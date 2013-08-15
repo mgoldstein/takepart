@@ -236,18 +236,24 @@ var tpmodal = function(parameters) {
 	this.showModal = function(parameters) {
 		var settings = get_settings(parameters);
 
-		$modal_content
-			.css({
-				height: 'auto',
-				width: 'auto',
-				opacity: 0,
-				display: 'block'
-			});
+		// TODO: FIX THIS SO WE DON'T SHOW/HIDE QUICKLY
+		$modal.show();
+		var modal_content_height = $modal_content.height();
+		var modal_content_width = $modal_content.width();
+		$modal.hide();
 
-		me.position(parameters, {
-			height: $modal_content.height(),
-			width: $modal_content.width()
+		$modal_content.css({
+			height: 'auto',
+			width: 'auto',
+			opacity: 0,
+			display: 'block'
 		});
+		
+		me.position(parameters, {
+			height: modal_content_height,
+			width: modal_content_width
+		});
+
 
 		$modal_content
 			.css({
@@ -343,47 +349,25 @@ var tpmodal = function(parameters) {
 	};
 
 	this.position = function(parameters, css, animate) {
-		var ocss = css || { width: 0, height: 0 };
 		css = css || {};
 		var settings = get_settings(parameters);
-		if ( !ocss ) {
-			var ow = $modal.width();
-			$modal.css('width', '');
-			$modal_content.css('width', '');
-		}
-		css.width = css.width || $modal.width();
-		css.height = css.height || $modal.height();
-		if ( !ocss ) {
-			$modal.css('width', ow);
-		}
+
 		animate = animate || false;
-		if (css.width < $window.width() && css.height < $window.height()){
-			css.position = 'fixed';
-			css.margin = 'auto';
-			css.top = '0';
-			css.bottom = '0';
-			css.left = '0';
-			css.right = '0';
-		} else {
-			css.position = 'absolute';
-			css.left = $window.scrollLeft() + $window.width() / 2 - css.width / 2;
-			css.top = $window.scrollTop() + $window.height() / 2 - css.height / 2;
-			if ( css.left < $window.scrollLeft() ) css.left = $window.scrollLeft();
-			if ( css.top < $window.scrollTop() ) css.top = $window.scrollTop();
-		}
+		css.position = 'fixed';
+		css.margin = 'auto';
+		css.top = '0';
+		css.bottom = '0';
+		css.left = '0';
+		css.right = '0';
 
 		if ( animate ) {
 			$modal.animate(css, settings.speed, function() {
-				$modal.css({height: ''});
-				$modal_content.css({height: ''});
+				$modal_content.css({height: '', width: ''});
 				if ( settings.callback ) settings.callback();
 			});
 		} else {
-			if ( !ocss ) {
-				css.height = '';
-			}
-
 			$modal.css(css);
+			$modal_content.css({height: '', width: ''});
 			if ( settings.callback ) settings.callback();
 		}
 	};

@@ -1,10 +1,9 @@
 (function (window, $, undefined) {
 
 $(function() {
-	var $main = $('#page');
 	
 	$(window).bind('load', function(){
-		var w = $main.width();
+		var w = $('#page').width();
 		var h = $('html').height();
 		if ( window.parent && window.parent.resize_interstitial ) window.parent.resize_interstitial(w, h);
 	});
