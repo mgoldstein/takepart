@@ -5,7 +5,7 @@
 .tpmodal_modal {
     background: #fff;
     border-radius: 10px;
-    overflow: hidden;
+    overflow: auto;
 
     min-height: 40px;
     min-width: 40px;
