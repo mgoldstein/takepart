@@ -1,3 +1,12 @@
+GoogleNews 7.x-1.x-dev, xxxx-xx-xx
+----------------------------------
+#2028063 by DamienMcKenna: Don't output empty tags.
+#2028047 by DamienMcKenna: Clear the sitemap cache after saving the settings.
+#2027937 by DamienMcKenna: Moved the menu item.
+#2028201 by DamienMcKenna: Made the output readable.
+#2028207 by DamienMcKenna: Moved the optional tags to the correct location.
+
+
 GoogleNews 7.x-1.6, 2013-06-21
 ------------------------------
 #2020029 by DamienMcKenna: Incorrect variable name for the content timer.

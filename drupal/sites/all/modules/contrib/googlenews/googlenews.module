@@ -15,7 +15,7 @@ function googlenews_menu() {
     'type' => MENU_CALLBACK,
     'file' => 'googlenews.sitemap.inc',
   );
-  $items['admin/config/services/googlenews'] = array(
+  $items['admin/config/search/googlenews'] = array(
     'title' => 'Google News sitemap',
     'description' => 'Specify category types for the Google News sitemap.',
     'page callback' => 'drupal_get_form',
