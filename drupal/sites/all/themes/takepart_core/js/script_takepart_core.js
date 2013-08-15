@@ -10,10 +10,11 @@ $(function() {
 	interstitial_init();
 
 	function interstitial_init(){
-		if($('#block-pm-interstitial-interstitials .content a').length > 0){
-			show_interstitial('/interstitials/social-follows');
-		}
-		return;
+		// // FOR TESTING
+		// if($('#block-pm-interstitial-interstitials .content a').length > 0){
+		// 	show_interstitial('/interstitials/social-follows');
+		// }
+		// return;
 
 		var interstitial_cookie = $.cookie('pm_igloo');
 		var referer_cookie = $.cookie('pm_referers');
