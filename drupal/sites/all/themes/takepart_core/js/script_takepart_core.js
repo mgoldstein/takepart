@@ -25,11 +25,12 @@ $(function() {
 		}
 
 		if (interstitial_cookie === null){ // first page view
+
 			// create ignore interstitial cookie and set to off
-			$.cookie('pm_igloo', 0);
+			$.cookie('pm_igloo', 0, { path:'/' });
 			
 			// create referer list cookie
-			$.cookie('pm_referers', referers);
+			$.cookie('pm_referers', referers, { path:'/' });
 
 		} else if(interstitial_cookie === '0') { // second page view (or subsequent page view without closing the interstitial)
 			var excluded_links = $.cookie('pm_referers').split(',');
@@ -64,7 +65,7 @@ $(function() {
 			date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
 			var myCookieValue = $.cookie('pm_igloo');
 			$.cookie('pm_igloo', null);
-			$.cookie('pm_igloo', myCookieValue, { expires:date, secure:true, path:'/' });
+			$.cookie('pm_igloo', myCookieValue, { expires:date, path:'/' });
 		};
 
 		window.resize_interstitial = function(w, h) {
