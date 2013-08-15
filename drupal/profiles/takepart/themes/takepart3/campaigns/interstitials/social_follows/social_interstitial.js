@@ -2,10 +2,12 @@
 
 $(function() {
 	var $main = $('#page');
-	var w = $main.width();
-	var h = $('html').height();
-
-	if ( window.parent && window.parent.resize_interstitial ) window.parent.resize_interstitial(w, h);
+	
+	$(window).bind('load', function(){
+		var w = $main.width();
+		var h = $('html').height();
+		if ( window.parent && window.parent.resize_interstitial ) window.parent.resize_interstitial(w, h);
+	});
 
 	$('#dont a').bind('click', function(e) {
 		e.preventDefault();
