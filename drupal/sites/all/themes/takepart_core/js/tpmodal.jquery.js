@@ -236,18 +236,24 @@ var tpmodal = function(parameters) {
 	this.showModal = function(parameters) {
 		var settings = get_settings(parameters);
 
-		$modal_content
-			.css({
-				height: 'auto',
-				width: 'auto',
-				opacity: 0,
-				display: 'block'
-			});
+		// TODO: FIX THIS SO WE DON'T SHOW/HIDE QUICKLY
+		$modal.show();
+		var modal_content_height = $modal_content.height();
+		var modal_content_width = $modal_content.width();
+		$modal.hide();
 
-		me.position(parameters, {
-			height: $modal_content.height(),
-			width: $modal_content.width()
+		$modal_content.css({
+			height: 'auto',
+			width: 'auto',
+			opacity: 0,
+			display: 'block'
 		});
+		
+		me.position(parameters, {
+			height: modal_content_height,
+			width: modal_content_width
+		});
+
 
 		$modal_content
 			.css({
@@ -343,19 +349,9 @@ var tpmodal = function(parameters) {
 	};
 
 	this.position = function(parameters, css, animate) {
-		var ocss = css || { width: 0, height: 0 };
 		css = css || {};
 		var settings = get_settings(parameters);
-		if ( !ocss ) {
-			var ow = $modal.width();
-			//$modal.css('width', '');
-			$modal_content.css('width', '');
-		}
-		css.width = css.width || $modal.width();
-		css.height = css.height || $modal.height();
-		if ( !ocss ) {
-			$modal.css('width', ow);
-		}
+
 		animate = animate || false;
 		css.position = 'fixed';
 		css.margin = 'auto';
@@ -366,16 +362,12 @@ var tpmodal = function(parameters) {
 
 		if ( animate ) {
 			$modal.animate(css, settings.speed, function() {
-				//$modal.css({height: ''});
-				$modal_content.css({height: ''});
+				$modal_content.css({height: '', width: ''});
 				if ( settings.callback ) settings.callback();
 			});
 		} else {
-			if ( !ocss ) {
-				css.height = '';
-			}
-
 			$modal.css(css);
+			$modal_content.css({height: '', width: ''});
 			if ( settings.callback ) settings.callback();
 		}
 	};
