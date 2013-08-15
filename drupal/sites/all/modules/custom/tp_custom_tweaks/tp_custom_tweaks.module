@@ -1,0 +1,26 @@
+<?php
+/**
+ * @page
+ * Custom tweaks for Takepart.
+ */
+
+/* Implementation of hook_form_alter() */
+function tp_custom_tweaks_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'boxes_box_form') {
+    // alter the views_boxes generated form for blocks like 'All Films'
+    // so that maxlength is not defined and more campaigns can be added to the view
+    if (!isset($form['#after_build'])) {
+      $form['#after_build'] = array();
+    }
+    array_unshift($form['#after_build'], 'tp_custom_tweaks_form_after_build');
+  }
+}
+
+/*
+ * After build handler
+*/
+function tp_custom_tweaks_form_after_build($form, &$form_state) {
+  // unset maxlength on nid
+  unset($form['options']['settings']['nid']['#maxlength']);
+  return $form;
+}
