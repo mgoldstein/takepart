@@ -1,0 +1,31 @@
+diff --git a/googlenews.sitemap.inc b/googlenews.sitemap.inc
+index ba8c20b..4c453e2 100644
+--- a/googlenews.sitemap.inc
++++ b/googlenews.sitemap.inc
+@@ -58,6 +58,9 @@ function googlenews_getgooglenews() {
+       $content .= "      <news:publication>\n";
+       $content .= "        <news:name>" . $publication_name . "</news:name>\n";
+       $content .= "        <news:language>" . check_plain($langcode) . "</news:language>\n";
++      $content .= "      </news:publication>\n";
++      $content .= "      <news:title>" . check_plain($node->title) . "</news:title>\n";
++      $content .= "      <news:publication_date>" . gmdate(DATE_W3C, $node->created) . "</news:publication_date>\n";
+ 
+       // Insert any added tags if they have values; processing tokens first.
+       if (!empty($tags)) {
+@@ -69,15 +72,12 @@ function googlenews_getgooglenews() {
+           if (!empty($value)) {
+             $value = check_plain(token_replace($value, array('node' => $node), array('clear' => TRUE)));
+             if (!empty($value)) {
+-              $content .= "        <news:{$tag}>{$value}</news:{$tag}>\n";
++              $content .= "      <news:{$tag}>{$value}</news:{$tag}>\n";
+             }
+           }
+         }
+       }
+ 
+-      $content .= "      </news:publication>\n";
+-      $content .= "      <news:title>" . check_plain($node->title) . "</news:title>\n";
+-      $content .= "      <news:publication_date>" . gmdate(DATE_W3C, $node->created) . "</news:publication_date>\n";
+       $content .= "    </news:news>\n";
+       $content .= "  </url>\n";
+     }
