@@ -70,6 +70,7 @@ $(function() {
 
 		window.resize_interstitial = function(w, h) {
 			//$iframe.css({width: w, height: h});
+			$iframe.css({overflow: 'hidden'});
 			$.tpmodal.showModal({id: interstitial_modal_id});
 		};
 
