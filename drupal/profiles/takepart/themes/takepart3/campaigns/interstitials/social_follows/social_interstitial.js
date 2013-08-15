@@ -1,7 +1,7 @@
 (function (window, $, undefined) {
 
 $(function() {
-	var $main = $('#main');
+	var $main = $('#page');
 	var w = $main.width();
 	var h = $('html').height();
 
