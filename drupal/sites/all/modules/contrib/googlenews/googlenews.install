@@ -54,3 +54,10 @@ function googlenews_update_7100() {
     drupal_set_message('The GoogleNews publication name will automatically use the site name if nothing else is assigned. As the publication name was the same as the site name it has been blanked out.');
   }
 }
+
+/**
+ * Rebuild the menus so that the moved menu item will work.
+ */
+function googlenews_update_7101() {
+  menu_rebuild();
+}

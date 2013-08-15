@@ -27,7 +27,7 @@ Configuration / Usage
 	    http://example.com/googlenews.xml
 
  2. All configuration is handled via the main settings page:
-      admin/config/services/googlenews
+      admin/config/search/googlenews
 
  3. The following items may be controlled:
 

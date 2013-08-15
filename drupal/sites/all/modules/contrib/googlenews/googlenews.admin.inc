@@ -82,5 +82,15 @@ function googlenews_admin_settings() {
     );
   }
 
+  $form['#submit'][] = 'googlenews_admin_settings_submit';
+
   return system_settings_form($form);
+}
+
+/**
+ * FormAPI submission callback for googlenews_admin_settings.
+ */
+function googlenews_admin_settings_submit(&$form, &$form_state) {
+  cache_clear_all('googlenews', 'cache');
+  drupal_set_message(t('The cached sitemap has been cleared, all settings changes will take immediate effect.'));
 }
