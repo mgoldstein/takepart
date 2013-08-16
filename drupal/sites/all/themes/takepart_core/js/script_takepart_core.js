@@ -10,12 +10,12 @@ $(function() {
 	interstitial_init();
 
 	function interstitial_init(){
-		// // FOR TESTING
-		// var interstitial_links = $('#block-pm-interstitial-interstitials .content a');
-		// if(interstitial_links.length > 0){
-		// 	show_interstitial(interstitial_links.filter('[data-interstitial-type="social"]'));
-		// }
-		// return;
+		// FOR TESTING
+		var interstitial_links = $('#block-pm-interstitial-interstitials .content a');
+		if(interstitial_links.length > 0){
+			show_interstitial(interstitial_links.filter('[data-interstitial-type="social"]'));
+		}
+		return;
 
 		var interstitial_cookie = $.cookie('pm_igloo');
 		var referer_cookie = $.cookie('pm_referers');
@@ -53,6 +53,7 @@ $(function() {
 	function show_interstitial(interstitial_link){
 		var interstitial_modal_id = 'interstitial_modal_';
 		var address = interstitial_link.attr('href');
+		console.log('load iframe');
 		var $iframe = $('<iframe src="' + address + '"></iframe>').css({border: '0'});
 		var interstitial_type = interstitial_link.attr('data-interstitial-type');
 		var analytics_types = {
@@ -68,7 +69,10 @@ $(function() {
 		};
 
 		window.resize_interstitial = function(w, h) {
-			//$iframe.css({width: w, height: h});
+			console.log('RESIZE INTERSTITIAL');
+			console.log('WIDTH: ' + w);
+			$iframe.css({width: w, height: h});
+			console.log('show modal');
 			$.tpmodal.showModal({id: interstitial_modal_id});
 		};
 
@@ -93,6 +97,7 @@ $(function() {
 			}
 		}
 
+		console.log('load modal');
 		$.tpmodal.load({
 			id: interstitial_modal_id,
 			node: $iframe,
