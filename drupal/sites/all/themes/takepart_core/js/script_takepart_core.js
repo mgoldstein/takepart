@@ -61,11 +61,13 @@ $(function() {
 		};
 
 		$iframe.bind('load', function(){
-			$('#interstitial_modal_modal').show();
+			var $modal = $(interstitial_modal_id + '_modal');
+			$modal.show();
 			var w = $iframe.contents().find('#page').width();
 			var h = $iframe.contents().find('html').height();
-			$('#interstitial_modal_modal').hide();
+			$modal.hide();
 			$iframe.css({width: w, height: h, overflow: 'hidden'});
+			$modal.css({overflow: 'hidden'});
 			$.tpmodal.showModal({id: interstitial_modal_id});
 		});
 
