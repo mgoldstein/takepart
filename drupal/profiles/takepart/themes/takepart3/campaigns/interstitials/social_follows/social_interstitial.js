@@ -2,15 +2,16 @@
 
 $(function() {
 	
-	$(window).bind('load', function(){
-		console.log('WINDOW LOAD');
-		var w = $('#page').width();
-		var h = $('html').height();
-		console.log('PAGE: ');
-		console.log($('#page'));
-		console.log('WIDTH: ' + w);
-		if ( window.parent && window.parent.resize_interstitial ) window.parent.resize_interstitial(w, h);
-	});
+	// $(window).bind('load', function(){
+	// 	debugger;
+	// 	console.log('WINDOW LOAD');
+	// 	var w = $('#page').width();
+	// 	var h = $('html').height();
+	// 	console.log('PAGE: ');
+	// 	console.log($('#page'));
+	// 	console.log('WIDTH: ' + w);
+	// 	if ( window.parent && window.parent.resize_interstitial ) window.parent.resize_interstitial(w, h);
+	// });
 
 	$('#dont a').bind('click', function(e) {
 		e.preventDefault();
