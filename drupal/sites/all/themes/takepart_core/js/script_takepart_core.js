@@ -10,12 +10,12 @@ $(function() {
 	interstitial_init();
 
 	function interstitial_init(){
-		// FOR TESTING
-		var interstitial_links = $('#block-pm-interstitial-interstitials .content a');
-		if(interstitial_links.length > 0){
-			show_interstitial(interstitial_links.filter('[data-interstitial-type="social"]'));
-		}
-		return;
+		// // FOR TESTING
+		// var interstitial_links = $('#block-pm-interstitial-interstitials .content a');
+		// if(interstitial_links.length > 0){
+		// 	show_interstitial(interstitial_links.filter('[data-interstitial-type="social"]'));
+		// }
+		// return;
 
 		var interstitial_cookie = $.cookie('pm_igloo');
 		var referer_cookie = $.cookie('pm_referers');
@@ -53,7 +53,6 @@ $(function() {
 	function show_interstitial(interstitial_link){
 		var interstitial_modal_id = 'interstitial_modal_';
 		var address = interstitial_link.attr('href');
-		console.log('load iframe');
 		var $iframe = $('<iframe src="' + address + '"></iframe>').css({border: '0'});
 		var interstitial_type = interstitial_link.attr('data-interstitial-type');
 		var analytics_types = {
@@ -62,8 +61,11 @@ $(function() {
 		};
 
 		$iframe.bind('load', function(){
-			debugger;
-			//$(this).css({});
+			$('#interstitial_modal_modal').show();
+			var w = $iframe.contents().find('#page').width();
+			var h = $iframe.contents().find('html').height();
+			$('#interstitial_modal_modal').hide();
+			$iframe.css({width: w, height: h});
 			$.tpmodal.showModal({id: interstitial_modal_id});
 		});
 
@@ -72,14 +74,6 @@ $(function() {
 			date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
 			$.cookie('pm_igloo', null);
 			$.cookie('pm_igloo', 1, { expires:date, path:'/' });
-		};
-
-		window.resize_interstitial = function(w, h) {
-			console.log('RESIZE INTERSTITIAL');
-			console.log('WIDTH: ' + w);
-			$iframe.css({width: w, height: h});
-			console.log('show modal');
-			$.tpmodal.showModal({id: interstitial_modal_id});
 		};
 
 		window.dont_show_interstitial = function() {
@@ -103,7 +97,6 @@ $(function() {
 			}
 		}
 
-		console.log('load modal');
 		$.tpmodal.load({
 			id: interstitial_modal_id,
 			node: $iframe,
