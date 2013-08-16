@@ -61,6 +61,12 @@ $(function() {
 			'social': 'Social'
 		};
 
+		$iframe.bind('load', function(){
+			debugger;
+			//$(this).css({});
+			$.tpmodal.showModal({id: interstitial_modal_id});
+		});
+
 		var extend_pm_interstitial_cookie = function(days){
 			var date = new Date();
 			date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
