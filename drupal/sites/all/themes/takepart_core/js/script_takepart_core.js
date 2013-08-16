@@ -65,7 +65,7 @@ $(function() {
 			var w = $iframe.contents().find('#page').width();
 			var h = $iframe.contents().find('html').height();
 			$('#interstitial_modal_modal').hide();
-			$iframe.css({width: w, height: h});
+			$iframe.css({width: w, height: h, overflow: 'hidden'});
 			$.tpmodal.showModal({id: interstitial_modal_id});
 		});
 
