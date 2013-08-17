@@ -62,7 +62,6 @@ $(function() {
 
 		$iframe.bind('load', function(){
 			var $modal = $('#' + interstitial_modal_id + 'modal');
-			debugger;
 			$modal.show();
 			var w = $iframe.contents().find('#page').width();
 			var h = $iframe.contents().find('html').height();
