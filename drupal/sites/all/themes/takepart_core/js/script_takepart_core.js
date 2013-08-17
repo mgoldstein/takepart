@@ -61,7 +61,7 @@ $(function() {
 		};
 
 		$iframe.bind('load', function(){
-			var $modal = $(interstitial_modal_id + 'modal');
+			var $modal = $('#' + interstitial_modal_id + 'modal');
 			debugger;
 			$modal.show();
 			var w = $iframe.contents().find('#page').width();
