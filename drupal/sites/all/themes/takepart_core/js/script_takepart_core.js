@@ -62,11 +62,12 @@ $(function() {
 
 		$iframe.bind('load', function(){
 			var $modal = $(interstitial_modal_id + 'modal');
+			debugger;
 			$modal.show();
 			var w = $iframe.contents().find('#page').width();
 			var h = $iframe.contents().find('html').height();
 			$modal.hide();
-			$iframe.css({width: w, height: h, overflow: 'hidden'});
+			$iframe.css({width: w, height: h});
 			$modal.css({overflow: 'hidden'});
 			$.tpmodal.showModal({id: interstitial_modal_id});
 		});
