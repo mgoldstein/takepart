@@ -211,6 +211,41 @@ takepart.analytics.add({
         s.t();
     },
     // -------------------------------
+    // TP Interstitial----------------
+    // -------------------------------
+    'tpinterstitial_twitter': function(options) {
+        var s=s_gi(Drupal.settings.omniture.s_account);
+        s.linkTrackVars='prop46';
+        s.linkTrackEvents=null;
+        s.events=null;
+        s.prop46="Social Interstitial: Twitter Click"
+        s.tl(true, 'o', 'Social Interstitial Click');
+    },
+    'tpinterstitial_facebook': function(options) {
+        var s=s_gi(Drupal.settings.omniture.s_account);
+        s.linkTrackVars='prop46';
+        s.linkTrackEvents=null;
+        s.events=null;
+        s.prop46="Social Interstitial: Facebook Click"
+        s.tl(true, 'o', 'Social Interstitial Click');
+    },
+    'tpinterstitial_dontshow': function(options) {
+        var s=s_gi(Drupal.settings.omniture.s_account);
+        s.linkTrackVars='prop46';
+        s.linkTrackEvents=null;
+        s.events=null;
+        s.prop46=options.interstitial_type + " Interstitial: Don't Show Me This Again"
+        s.tl(true, 'o', options.interstitial_type + ' Interstitial Click');
+    },
+    'tpinterstitial_dismiss': function(options) {
+        var s=s_gi(Drupal.settings.omniture.s_account);
+        s.linkTrackVars='prop46';
+        s.linkTrackEvents=null;
+        s.events=null;
+        s.prop46=options.interstitial_type + " Interstitial: Click on X to Dismiss"
+        s.tl(true, 'o', options.interstitial_type + ' Interstitial Click');
+    },
+    // -------------------------------
     // TP Infographic ----------------
     // -------------------------------
     'tpinfographic_show': function(options) {
