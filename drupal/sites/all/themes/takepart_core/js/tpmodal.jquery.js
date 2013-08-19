@@ -235,12 +235,9 @@ var tpmodal = function(parameters) {
 
 	this.showModal = function(parameters) {
 		var settings = get_settings(parameters);
-
-		// TODO: FIX THIS SO WE DON'T SHOW/HIDE QUICKLY
-		$modal.show();
-		var modal_content_height = $modal_content.height();
-		var modal_content_width = $modal_content.width();
-		$modal.hide();
+		
+		var modal_content_height = $modal_content.children().first().height();
+		var modal_content_width = $modal_content.children().first().width();
 
 		$modal_content.css({
 			height: 'auto',
