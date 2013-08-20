@@ -6,14 +6,18 @@ $(function() {
 
 
 	// INTERSTITIALS
-
 	interstitial_init();
-
 	function interstitial_init(){
+
+		// DISABLE INTERSTITIALS ON FIREFOX
+		if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+			return;
+		}
+
 		// // FOR TESTING
 		// var interstitial_links = $('#block-pm-interstitial-interstitials .content a');
 		// if(interstitial_links.length > 0){
-		// 	show_interstitial(interstitial_links.filter('[data-interstitial-type="social"]'));
+		// 	show_interstitial(interstitial_links.filter('[data-interstitial-type="email"]'));
 		// }
 		// return;
 
