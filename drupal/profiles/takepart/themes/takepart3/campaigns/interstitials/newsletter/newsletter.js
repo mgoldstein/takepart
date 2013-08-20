@@ -1,7 +1,6 @@
 (function (window, $, undefined) {
 
 $(function() {
-	console.log('asdf');
 	$('.form-item-email input').bind('blur', function(){
 		var newCss = {'z-index': ''};
 		if($(this).val()){
