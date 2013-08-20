@@ -101,3 +101,7 @@ body {
 	background: linear-gradient(to bottom,  rgba(40,169,232,1) 0%,rgba(32,134,185,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#28a9e8', endColorstr='#2086b9',GradientType=0 ); /* IE6-9 */
 }
+
+.form .thank-you-message {
+	margin-top: 1em;
+}
