@@ -959,7 +959,8 @@ body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail
 }
 
 .main-content .block-boxes-title-features .views-field-field-thumbnail-1 .field-content img,
-body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail-1 .field-content img
+body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail-1 .field-content img, 
+.block-boxes-current-promo .views-field-field-action-main-image .field-content img
 {
     width:200px;
 }
