@@ -67,6 +67,7 @@ body {
 
 .form-item-email input {
 	max-width: 100%;
+	font-size: 24px;
 	z-index: 1;
 	border: 1px solid #ccc;
 	box-shadow: inset 5px 5px 10px 0 rgba(0, 0, 0, .1);
