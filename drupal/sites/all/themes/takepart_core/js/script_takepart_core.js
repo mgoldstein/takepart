@@ -22,7 +22,7 @@ $(function() {
 		// return;
 
 		var interstitial_cookie = $.cookie('pm_igloo');
-		var referer_cookie = $.cookie('pm_referers');
+		var referer_cookie = $.cookie('pm_referers') || '';
 		var referers = $('body').attr('data-interstitial-referer');
 		if (typeof referers === 'undefined'){ // opt out
 			return;
@@ -37,7 +37,7 @@ $(function() {
 			$.cookie('pm_referers', referers, { path:'/' });
 
 		} else if(interstitial_cookie === '0') { // second page view (or subsequent page view without closing the interstitial)
-			var excluded_links = $.cookie('pm_referers').split(',');
+			var excluded_links = referer_cookie.split(',');
 			var $interstitial_links = $('#block-pm-interstitial-interstitials .content a');
 			if($interstitial_links.length <= 0){
 				return;

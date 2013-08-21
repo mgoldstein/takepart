@@ -129,8 +129,8 @@ function takepart3_preprocess_html(&$vars) {
     // Remove tracking from place at the table iframed header
     // TODO: Fucking fix this.
     // Potty mouth
-    if (
-        preg_match('/^\/iframes\/place-at-the-table\/header/', $_SERVER['REQUEST_URI'])
+    if (preg_match('/^\/iframes\/place-at-the-table\/header/', $_SERVER['REQUEST_URI'])
+      || preg_match('/^\/interstitials/', $_SERVER['REQUEST_URI'])
         ) {
         unset($vars['page']['page_bottom']['omniture']);
         unset($vars['page']['page_bottom']['quantcast']);
