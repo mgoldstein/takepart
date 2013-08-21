@@ -179,12 +179,16 @@ function pm_interstitial_block_info() {
  * Implements hook_block_view().
  */
 function pm_interstitial_block_view($delta = '') {
+  $interstitials = array(
+    'email' => 'Newsletter Interstitial',
+    'social' => 'Social Interstitial',
+  );
   $links = array();
   if ($delta === 'interstitials') {
-    foreach(array('email', 'social') as $type) {
+    foreach($interstitials as $type => $label) {
       $url = InterstitialReaction::get_interstitial($type);
       if ($url !== FALSE) {
-        $links[] = l($type, $url, array(
+        $links[] = l($label, $url, array(
           'attributes' => array(
             'data-interstitial-type' => $type,
             'rel' => 'nofollow',
