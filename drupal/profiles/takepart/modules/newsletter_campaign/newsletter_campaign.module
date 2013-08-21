@@ -861,7 +861,7 @@ function newsletter_campaign_email_only_signup_configuration($form, $config) {
   );
 
   $form['name'] = array(
-    '#type' => 'textarea',
+    '#type' => 'textfield',
     '#title' => t('Newsletter Name'),
     '#default_value' => $config['name'],
   );
