@@ -6,9 +6,16 @@ $(function() {
 		if($(this).val()){
 			newCss['z-index'] = 3;
 		}
-		console.log(newCss);
 		$(this).css(newCss);
 	});
+
+	Drupal.behaviors.newsletterSocialSignupSubmitted = {
+        attach: function (context) {
+            if (context.is('.thank-you-message') && window.parent && window.parent.interstitial_newsletter_signup){
+            	window.parent.interstitial_newsletter_signup(context.attr('data-newsletter-name'));
+            }
+        }
+    }
 
 	$('#dont a').bind('click', function(e) {
 		e.preventDefault();

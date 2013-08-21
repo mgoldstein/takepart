@@ -103,6 +103,10 @@ $(function() {
 			}
 		}
 
+		window.interstitial_newsletter_signup = function(title){
+			takepart.analytics.track('tpinterstitial_newsletter_signup', {title: title});
+		}
+
 		$.tpmodal.load({
 			id: interstitial_modal_id,
 			node: $iframe,

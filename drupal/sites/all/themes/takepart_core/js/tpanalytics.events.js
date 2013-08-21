@@ -218,7 +218,7 @@ takepart.analytics.add({
         s.linkTrackVars='prop46';
         s.linkTrackEvents=null;
         s.events=null;
-        s.prop46="Social Interstitial: Twitter Click"
+        s.prop46="Social Interstitial: Twitter Click";
         s.tl(true, 'o', 'Social Interstitial Click');
     },
     'tpinterstitial_facebook': function(options) {
@@ -226,7 +226,7 @@ takepart.analytics.add({
         s.linkTrackVars='prop46';
         s.linkTrackEvents=null;
         s.events=null;
-        s.prop46="Social Interstitial: Facebook Click"
+        s.prop46="Social Interstitial: Facebook Click";
         s.tl(true, 'o', 'Social Interstitial Click');
     },
     'tpinterstitial_dontshow': function(options) {
@@ -234,7 +234,7 @@ takepart.analytics.add({
         s.linkTrackVars='prop46';
         s.linkTrackEvents=null;
         s.events=null;
-        s.prop46=options.interstitial_type + " Interstitial: Don't Show Me This Again"
+        s.prop46=options.interstitial_type + " Interstitial: Don't Show Me This Again";
         s.tl(true, 'o', options.interstitial_type + ' Interstitial Click');
     },
     'tpinterstitial_dismiss': function(options) {
@@ -242,8 +242,19 @@ takepart.analytics.add({
         s.linkTrackVars='prop46';
         s.linkTrackEvents=null;
         s.events=null;
-        s.prop46=options.interstitial_type + " Interstitial: Click on X to Dismiss"
+        s.prop46=options.interstitial_type + " Interstitial: Click on X to Dismiss";
         s.tl(true, 'o', options.interstitial_type + ' Interstitial Click');
+    },
+    'tpinterstitial_newsletter_signup': function(options) {
+        var s=s_gi(Drupal.settings.omniture.s_account);
+        s.linkTrackVars = "prop46,eVar22,eVar23,eVar30,events";
+        s.linkTrackEvents = "event39";
+        s.prop46="Newsletter Interstitial: Email Signup";
+        s.eVar22 = "Newsletter Interstitial";
+        s.eVar23 = options.title;
+        s.eVar30 = s.pageName;
+        s.events = 'event39';
+        s.tl(true, 'o', 'Newsletter Interstitial Signup');
     },
     // -------------------------------
     // TP Infographic ----------------
