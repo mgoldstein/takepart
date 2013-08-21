@@ -860,6 +860,12 @@ function newsletter_campaign_email_only_signup_configuration($form, $config) {
     '#options' => $signup_options,
   );
 
+  $form['name'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Newsletter Name'),
+    '#default_value' => $config['name'],
+  );
+
   $form['header'] = array(
     '#type' => 'textarea',
     '#title' => t('Header'),
@@ -912,6 +918,10 @@ function newsletter_campaign_email_only_signup_form($form, &$form_state, $config
 
   $form['#validate'] = array('newsletter_campaign_direct_signup_form_validate');
   $form['#submit'] = array('newsletter_campaign_direct_signup_form_submit');
+
+  $form['#attributes'] = array(
+    'data-newsletter-name' => check_plain($config['name']),
+  );
 
   $form['header'] = array(
     '#type' => 'markup',
