@@ -20,7 +20,7 @@
 
 	<div class="socials" <?=wa('socials') ?>>
 		<? foreach ( wl('socials') as $social ): ?>
-			<a href="<?=$social->href ?>" class="social" data-service="<?=$social->token ?>" target="_blank">
+			<a href="<?=$social->href ?>" class="social-link" data-service="<?=$social->token ?>" target="_blank">
 				<img src="<?=$social->img_src ?>" alt="<?=$social->single(false) ?>">
 			</a>
 		<? endforeach ?>
