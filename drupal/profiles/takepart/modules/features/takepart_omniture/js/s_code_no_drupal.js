@@ -126,7 +126,7 @@ function s_doPlugins(s) {
     s.eVar19=s.prop18?s.prop18:''; // Blog Series
     s.eVar20=s.prop19?s.prop19:''; // Content post date  CHECK
     s.eVar21=s.prop20?s.prop20:''; // Display topic
-    s.eVar22=s.prop21?s.prop21:''; // Title of content commented on
+    // s.eVar22=s.prop21?s.prop21:''; // Title of content commented on
 
     s.previousPage=s.getPreviousValue(s.pageName,'gpv_p5','');
     if (s.events.indexOf('event26')>-1){

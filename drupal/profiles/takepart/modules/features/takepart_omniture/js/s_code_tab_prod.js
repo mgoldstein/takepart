@@ -137,7 +137,7 @@ function s_doPlugins(s) {
     s.eVar19=s.prop18?s.prop18:''; // Blog Series
     s.eVar20=s.prop19?s.prop19:''; // Content post date  CHECK
     s.eVar21=s.prop20?s.prop20:''; // Display topic
-    s.eVar22=s.prop21?s.prop21:''; // Title of content commented on
+    // s.eVar22=s.prop21?s.prop21:''; // Title of content commented on
     //s.eVar23=s.prop22?s.prop22:'';  Retire -- Was previously "article type created"
     //s.eVar24=s.prop23?s.prop23:'';  Retire -- was previously "Issue type"
     // s.eVar26=s.prop25?s.prop25:''; Retire -- was previously "Article saved"

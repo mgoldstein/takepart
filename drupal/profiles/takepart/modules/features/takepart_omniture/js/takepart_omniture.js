@@ -11,7 +11,7 @@
             });
         }
     }
-
+/*
     Drupal.behaviors.scCommentClick = {
         attach: function (context, settings) {
             $('form.comment-form input.form-submit', context).click(function(){
@@ -25,6 +25,7 @@
             });
         }
     }
+    */
 /* Remove embedded action metrics
     Drupal.behaviors.scEmbeddedActionClick = {
         attach: function (context, settings) {
