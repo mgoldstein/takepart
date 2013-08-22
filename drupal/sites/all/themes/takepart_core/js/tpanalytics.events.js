@@ -250,7 +250,7 @@ takepart.analytics.add({
         s.linkTrackVars = "prop46,eVar22,eVar23,eVar30,events";
         s.linkTrackEvents = "event39";
         s.prop46="Newsletter Interstitial: Email Signup";
-        s.eVar22 = "Newsletter Interstitial";
+        s.eVar22 = "Marketing Interstitial";
         s.eVar23 = options.title;
         s.eVar30 = s.pageName;
         s.events = 'event39';
