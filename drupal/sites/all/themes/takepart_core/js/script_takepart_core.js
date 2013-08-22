@@ -73,6 +73,7 @@ $(function() {
 			$iframe.css({width: w, height: h});
 			$modal.css({overflow: 'hidden'});
 			$.tpmodal.showModal({id: interstitial_modal_id});
+			takepart.analytics.track('tpinterstitial_show_modal', {interstitial_type: analytics_types[interstitial_type]});
 		});
 
 		var extend_pm_interstitial_cookie = function(days){

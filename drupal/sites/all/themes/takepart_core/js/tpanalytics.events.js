@@ -256,6 +256,14 @@ takepart.analytics.add({
         s.events = 'event39';
         s.tl(true, 'o', 'Newsletter Interstitial Signup');
     },
+    'tpinterstitial_show_modal': function(options) {
+        var s=s_gi(Drupal.settings.omniture.s_account);
+        s.linkTrackVars='prop46';
+        s.linkTrackEvents=null;
+        s.events=null;
+        s.prop46=options.interstitial_type + " Interstitial: Popup View";
+        s.tl(true, 'o', options.interstitial_type + ' Interstitial Popup View');
+    },
     // -------------------------------
     // TP Infographic ----------------
     // -------------------------------
