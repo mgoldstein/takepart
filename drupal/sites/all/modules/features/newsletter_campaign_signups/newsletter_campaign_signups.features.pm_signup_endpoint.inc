@@ -274,5 +274,31 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       ),
     ),
   );
+  $endpoints[] = array(
+    'type' => 'NewsletterCampaignSignupEndpoint',
+    'name' => 'newsletter_interstitial',
+    'label' => 'Newsletter Interstitial Signup',
+    'configuration' => array(),
+    'plugins' => array(
+      'bluestatedigital.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'form-id' => 5,
+          'email-field-id' => 52,
+        ),
+      ),
+      'bluehornet.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'segments' => array('1008359', '1008357', '1008358'),
+          'fields' => array(
+            '252906' => 'Marketing Interstitial',
+            '253159' => 'NEWS',
+          ),
+          'send-welcome' => TRUE,
+        ),
+      ),
+    ),
+  );
   return $endpoints;
 }
