@@ -24,4 +24,3 @@ if (version_compare(PHP_VERSION, '5.2.4') < 0) {
 // Start the installer.
 require_once DRUPAL_ROOT . '/includes/install.core.inc';
 install_drupal();
-
