@@ -1,21 +1,21 @@
 <?php
 /**
  * @file
- * openpublish_blog_post.features.taxonomy.inc
+ * openpublish_media.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function openpublish_blog_post_taxonomy_default_vocabularies() {
+function openpublish_media_taxonomy_default_vocabularies() {
   return array(
-    'blog' => array(
-      'name' => 'Blog',
-      'machine_name' => 'blog',
-      'description' => 'Organizational vocabulary for blog contributors or sections',
-      'hierarchy' => '1',
+    'admin_tag' => array(
+      'name' => 'Admin Tag',
+      'machine_name' => 'admin_tag',
+      'description' => 'Internal taxonomy for distributing content (for example, to RSS feeds) that is not visible to external users',
+      'hierarchy' => '0',
       'module' => 'taxonomy',
-      'weight' => '-7',
+      'weight' => '-9',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

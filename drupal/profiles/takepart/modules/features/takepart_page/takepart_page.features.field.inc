@@ -546,6 +546,116 @@ function takepart_page_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-takepart_page-field_page_context'.
+  $fields['node-takepart_page-field_page_context'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_page_context',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'context_field',
+      'settings' => array(
+        'global_setting' => 255,
+      ),
+      'translatable' => '0',
+      'type' => 'context_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'takepart_page',
+      'default_value' => array(
+        0 => array(
+          'context' => '',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'context_field',
+          'settings' => array(),
+          'type' => 'context_field_context',
+          'weight' => 19,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_page_context',
+      'label' => 'Page Context',
+      'required' => 0,
+      'settings' => array(
+        'allowed_blocks' => array(
+          'Boxes for Box' => 0,
+          'Boxes for Features Box' => 0,
+          'Boxes for Field Box' => 0,
+          'Boxes for GA Ad' => 0,
+          'Boxes for Image Box' => 0,
+          'Boxes for Screaming Headline' => 0,
+          'Boxes for View Box' => 0,
+          'akamai' => 0,
+          'badge_image' => 0,
+          'bean' => 0,
+          'block' => 0,
+          'boxes' => 0,
+          'comment' => 0,
+          'comment_block_simple' => 0,
+          'context_related_menu' => 0,
+          'context_ui' => 0,
+          'facetapi' => 0,
+          'fboauth' => 0,
+          'menu' => 0,
+          'newsletter_campaign' => 0,
+          'node' => 0,
+          'petition' => 0,
+          'search' => 0,
+          'search_api_page' => 0,
+          'search_api_sorts' => 0,
+          'shortcut' => 0,
+          'signature' => 0,
+          'system' => 0,
+          'takeaction_thankyou' => 0,
+          'takepart_addthis' => 0,
+          'takepart_contests' => 0,
+          'takepart_custom' => 0,
+          'twitter_pull' => 0,
+          'user' => 0,
+          'views' => 0,
+          'waterfallapi' => 0,
+        ),
+        'default_context' => 'context_field_default_context',
+        'use_default' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'context_field',
+        'settings' => array(
+          'form_element' => array(
+            'allow_create' => 1,
+            'category' => 'Page',
+          ),
+        ),
+        'type' => 'context_field_autocomplete',
+        'weight' => '31',
+      ),
+    ),
+  );
+
   // Exported field: 'node-takepart_page-field_page_main_image'.
   $fields['node-takepart_page-field_page_main_image'] = array(
     'field_config' => array(
@@ -598,7 +708,7 @@ function takepart_page_field_default_fields() {
       'label' => 'Main Image',
       'required' => 0,
       'settings' => array(
-        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
+        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico css',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1263,7 +1373,9 @@ function takepart_page_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
         'type' => 'options_select',
         'weight' => '16',
       ),
@@ -1322,7 +1434,7 @@ function takepart_page_field_default_fields() {
       'label' => 'Thumbnail Image',
       'required' => 0,
       'settings' => array(
-        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
+        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico css',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1419,7 +1531,9 @@ function takepart_page_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
         'type' => 'options_select',
         'weight' => '17',
       ),
@@ -1435,6 +1549,7 @@ function takepart_page_field_default_fields() {
   t('Free Tag');
   t('HTML title tag');
   t('Main Image');
+  t('Page Context');
   t('Promo Headline');
   t('Promo Text');
   t('Related Actions');

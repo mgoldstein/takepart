@@ -37,9 +37,6 @@ function takepart_page_strongarm() {
       'embed' => array(
         'custom_settings' => FALSE,
       ),
-      'of_the_day' => array(
-        'custom_settings' => FALSE,
-      ),
       'inline_content' => array(
         'custom_settings' => FALSE,
       ),
@@ -54,6 +51,9 @@ function takepart_page_strongarm() {
         ),
         'path' => array(
           'weight' => '21',
+        ),
+        'redirect' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),

@@ -14,7 +14,7 @@ function of_the_day_bean_field_default_fields() {
   $fields['bean-of_the_day-field_associated_content'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_associated_content',
@@ -41,6 +41,7 @@ function of_the_day_bean_field_default_fields() {
           'blog_front' => 0,
           'feed' => 0,
           'feed_item' => 0,
+          'mos_action' => 0,
           'openpublish_article' => 'openpublish_article',
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
@@ -165,7 +166,7 @@ function of_the_day_bean_field_default_fields() {
   $fields['field_collection_item-field_listing_collection-field_associated_content'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_associated_content',
@@ -192,6 +193,7 @@ function of_the_day_bean_field_default_fields() {
           'blog_front' => 0,
           'feed' => 0,
           'feed_item' => 0,
+          'mos_action' => 0,
           'openpublish_article' => 'openpublish_article',
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,

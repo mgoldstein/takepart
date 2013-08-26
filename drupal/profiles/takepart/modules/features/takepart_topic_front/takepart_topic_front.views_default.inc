@@ -26,9 +26,9 @@ function takepart_topic_front_views_default_views() {
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '300';
+  $handler->display->display_options['cache']['results_lifespan'] = '1800';
   $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '300';
+  $handler->display->display_options['cache']['output_lifespan'] = '1800';
   $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
@@ -139,7 +139,7 @@ print $value;
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['path']['element_default_classes'] = FALSE;
-  /* Field: Content: Thumbnail Image */
+  /* Field: Content: Thumbnail */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
@@ -169,8 +169,12 @@ print $value;
   $handler = $view->new_display('block', 'Primary', 'block');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'primary-feature';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Thumbnail Image */
+  /* Field: Content: Thumbnail */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
@@ -214,12 +218,6 @@ print $value;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Field: Content: Promo Text */
-  $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['label'] = '';
-  $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'node';
@@ -228,6 +226,7 @@ print $value;
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['path']['element_default_classes'] = FALSE;
+  $handler->display->display_options['block_description'] = 'Primary feature';
 
   /* Display: Secondary */
   $handler = $view->new_display('block', 'Secondary', 'block_1');
@@ -235,32 +234,22 @@ print $value;
   $handler->display->display_options['title'] = 'Secondary';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'secondary-feature';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '12';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Main Image */
-  $handler->display->display_options['fields']['field_gallery_main_image']['id'] = 'field_gallery_main_image';
-  $handler->display->display_options['fields']['field_gallery_main_image']['table'] = 'field_data_field_gallery_main_image';
-  $handler->display->display_options['fields']['field_gallery_main_image']['field'] = 'field_gallery_main_image';
-  $handler->display->display_options['fields']['field_gallery_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_gallery_main_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_gallery_main_image']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_gallery_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_gallery_main_image']['type'] = 'image';
-  $handler->display->display_options['fields']['field_gallery_main_image']['settings'] = array(
-    'image_style' => 'tp_secondary_feature_thumbnail',
-    'image_link' => 'content',
-  );
-  /* Field: Content: Main Image */
-  $handler->display->display_options['fields']['field_article_main_image']['id'] = 'field_article_main_image';
-  $handler->display->display_options['fields']['field_article_main_image']['table'] = 'field_data_field_article_main_image';
-  $handler->display->display_options['fields']['field_article_main_image']['field'] = 'field_article_main_image';
-  $handler->display->display_options['fields']['field_article_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_article_main_image']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_article_main_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_article_main_image']['empty'] = '[field_gallery_main_image]';
-  $handler->display->display_options['fields']['field_article_main_image']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_article_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_article_main_image']['type'] = 'image';
-  $handler->display->display_options['fields']['field_article_main_image']['settings'] = array(
+  /* Field: Content: Thumbnail */
+  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
+  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
     'image_style' => 'tp_secondary_feature_thumbnail',
     'image_link' => 'content',
   );
@@ -271,40 +260,23 @@ print $value;
   $handler->display->display_options['fields']['field_page_main_image']['label'] = '';
   $handler->display->display_options['fields']['field_page_main_image']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_page_main_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_page_main_image']['empty'] = '[field_article_main_image]';
-  $handler->display->display_options['fields']['field_page_main_image']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_page_main_image']['empty'] = '[field_thumbnail]';
   $handler->display->display_options['fields']['field_page_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_page_main_image']['type'] = 'image';
   $handler->display->display_options['fields']['field_page_main_image']['settings'] = array(
     'image_style' => 'tp_secondary_feature_thumbnail',
     'image_link' => 'content',
   );
-  /* Field: Content: Main Image */
-  $handler->display->display_options['fields']['field_blogpost_main_image']['id'] = 'field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['table'] = 'field_data_field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['field'] = 'field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_blogpost_main_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_blogpost_main_image']['empty'] = '[field_page_main_image]';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_blogpost_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['type'] = 'image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['settings'] = array(
-    'image_style' => 'tp_secondary_feature_thumbnail',
-    'image_link' => 'content',
-  );
-  /* Field: Content: Thumbnail Image */
-  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
-  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
-  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
-  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
-  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_thumbnail']['empty'] = '[field_blogpost_main_image]';
-  $handler->display->display_options['fields']['field_thumbnail']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
-  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
+  /* Field: Content: Action Image */
+  $handler->display->display_options['fields']['field_action_main_image']['id'] = 'field_action_main_image';
+  $handler->display->display_options['fields']['field_action_main_image']['table'] = 'field_data_field_action_main_image';
+  $handler->display->display_options['fields']['field_action_main_image']['field'] = 'field_action_main_image';
+  $handler->display->display_options['fields']['field_action_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_action_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_action_main_image']['empty'] = '[field_page_main_image]';
+  $handler->display->display_options['fields']['field_action_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_action_main_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_action_main_image']['settings'] = array(
     'image_style' => 'tp_secondary_feature_thumbnail',
     'image_link' => 'content',
   );
@@ -339,12 +311,6 @@ print $value;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Field: Content: Promo Text */
-  $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['label'] = '';
-  $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'node';
@@ -353,6 +319,7 @@ print $value;
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['path']['element_default_classes'] = FALSE;
+  $handler->display->display_options['block_description'] = 'Secondary features';
   $export['featured_items'] = $view;
 
   $view = new view();
@@ -434,7 +401,11 @@ print $value;
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
@@ -533,8 +504,11 @@ print $value;
     'openpublish_article' => 'openpublish_article',
     'audio' => 'audio',
     'openpublish_blog_post' => 'openpublish_blog_post',
+    'mos_action' => 'mos_action',
     'takepart_page' => 'takepart_page',
+    'petition_action' => 'petition_action',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+    'pledge_action' => 'pledge_action',
     'takepart_quick_study' => 'takepart_quick_study',
     'openpublish_video' => 'openpublish_video',
   );
@@ -543,11 +517,15 @@ print $value;
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['filters']['status']['group'] = '0';
 
   /* Display: Topic */
   $handler = $view->new_display('block', 'Topic', 'block');
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Indexed Content: Node ID */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -605,9 +583,44 @@ print $value;
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['label'] = '';
   $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Indexed Content: Content type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'action' => 'action',
+    'openpublish_article' => 'openpublish_article',
+    'audio' => 'audio',
+    'openpublish_blog_post' => 'openpublish_blog_post',
+    'mos_action' => 'mos_action',
+    'takepart_page' => 'takepart_page',
+    'petition_action' => 'petition_action',
+    'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+    'pledge_action' => 'pledge_action',
+    'openpublish_video' => 'openpublish_video',
+  );
+  $handler->display->display_options['filters']['type']['group'] = '0';
+  /* Filter criterion: Indexed Content: Status */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['status']['group'] = '0';
 
   /* Display: Free Tag */
   $handler = $view->new_display('block', 'Free Tag', 'block_1');
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Indexed Content: Node ID */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -642,6 +655,8 @@ print $value;
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['type']['format_name'] = 1;
   /* Field: Linked Headline */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'search_api_index_site_node_index';
@@ -683,6 +698,12 @@ print $value;
 
   /* Display: Series */
   $handler = $view->new_display('block', 'Series', 'block_2');
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Series [taxonomy_term] */
   $handler->display->display_options['arguments']['field_series']['id'] = 'field_series';
@@ -706,6 +727,12 @@ print $value;
   /* Display: Free Tag Feed */
   $handler = $view->new_display('page', 'Free Tag Feed', 'tag_feeds');
   $handler->display->display_options['display_description'] = 'Free Tag filter displayed as RSS';
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'views_takepart_rss_style';
   $handler->display->display_options['style_options']['schema'] = 'rssimages';

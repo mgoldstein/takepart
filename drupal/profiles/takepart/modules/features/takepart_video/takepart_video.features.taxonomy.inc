@@ -15,7 +15,7 @@ function takepart_video_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => '1',
       'module' => 'taxonomy',
-      'weight' => '-2',
+      'weight' => '-1',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

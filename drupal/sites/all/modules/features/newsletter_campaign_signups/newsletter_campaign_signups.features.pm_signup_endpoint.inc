@@ -25,10 +25,12 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
-          'segments' => array('1008360'),
+          'segments' => array(
+            0 => '1008360',
+          ),
           'fields' => array(
-            '252906' => 'Webform',
-            '253159' => 'FOODINC',
+            252906 => 'Webform',
+            253159 => 'FOODINC',
           ),
           'send-welcome' => TRUE,
         ),
@@ -51,9 +53,11 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
-          'segments' => array('1009255'),
+          'segments' => array(
+            0 => '1009255',
+          ),
           'fields' => array(
-            '252906' => 'Webform',
+            252906 => 'Webform',
           ),
           'send-welcome' => FALSE,
         ),
@@ -83,10 +87,13 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
-          'segments' => array('1008366', '1008403'),
+          'segments' => array(
+            0 => '1008366',
+            1 => '1008403',
+          ),
           'fields' => array(
-            '252906' => 'Webform',
-            '253159' => 'INTEL',
+            252906 => 'Webform',
+            253159 => 'INTEL',
           ),
           'send-welcome' => TRUE,
         ),
@@ -109,9 +116,11 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
-          'segments' => array('1009256'),
+          'segments' => array(
+            0 => '1009256',
+          ),
           'fields' => array(
-            '252906' => 'Webform',
+            252906 => 'Webform',
           ),
           'send-welcome' => FALSE,
         ),
@@ -134,10 +143,12 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
-          'segments' => array('1008364'),
+          'segments' => array(
+            0 => '1008364',
+          ),
           'fields' => array(
-            '252906' => 'Webform',
-            '253159' => 'APATT',
+            252906 => 'Webform',
+            253159 => 'APATT',
           ),
           'send-welcome' => TRUE,
         ),
@@ -160,10 +171,12 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
-          'segments' => array('1008361'),
+          'segments' => array(
+            0 => '1008361',
+          ),
           'fields' => array(
-            '252906' => 'Webform',
-            '253159' => 'WFS',
+            252906 => 'Webform',
+            253159 => 'WFS',
           ),
           'send-welcome' => TRUE,
         ),
@@ -186,10 +199,12 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
-          'segments' => array('1008363'),
+          'segments' => array(
+            0 => '1008363',
+          ),
           'fields' => array(
-            '252906' => 'Webform',
-            '253159' => 'AIT',
+            252906 => 'Webform',
+            253159 => 'AIT',
           ),
           'send-welcome' => TRUE,
         ),
@@ -212,10 +227,14 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
-          'segments' => array('1008359', '1008357', '1008358'),
+          'segments' => array(
+            0 => '1008359',
+            1 => '1008357',
+            2 => '1008358',
+          ),
           'fields' => array(
-            '252906' => 'Webform',
-            '253159' => 'NEWS',
+            252906 => 'Webform',
+            253159 => 'NEWS',
           ),
           'send-welcome' => TRUE,
         ),
@@ -238,62 +257,12 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
-          'segments' => array('1008362'),
-          'fields' => array(
-            '252906' => 'Webform',
-            '253159' => 'COVE',
+          'segments' => array(
+            0 => '1008362',
           ),
-          'send-welcome' => TRUE,
-        ),
-      ),
-    ),
-  );
-  $endpoints[] = array(
-    'type' => 'NewsletterCampaignSignupEndpoint',
-    'name' => 'can_email_signup',
-    'label' => 'CAN Email Signup',
-    'configuration' => array(),
-    'plugins' => array(
-      'bluestatedigital.pm_signup.handler' => array(
-        'enabled' => TRUE,
-        'configuration' => array(
-          'form-id' => 140,
-          'email-field-id' => 2784,
-        ),
-      ),
-      'bluehornet.pm_signup.handler' => array(
-        'enabled' => TRUE,
-        'configuration' => array(
-          'segments' => array('1008407'),
           'fields' => array(
-            '252906' => 'Webform',
-            '253159' => 'CAN',
-          ),
-          'send-welcome' => TRUE,
-        ),
-      ),
-    ),
-  );
-  $endpoints[] = array(
-    'type' => 'NewsletterCampaignSignupEndpoint',
-    'name' => 'newsletter_interstitial',
-    'label' => 'Newsletter Interstitial Signup',
-    'configuration' => array(),
-    'plugins' => array(
-      'bluestatedigital.pm_signup.handler' => array(
-        'enabled' => TRUE,
-        'configuration' => array(
-          'form-id' => 5,
-          'email-field-id' => 52,
-        ),
-      ),
-      'bluehornet.pm_signup.handler' => array(
-        'enabled' => TRUE,
-        'configuration' => array(
-          'segments' => array('1008359', '1008357', '1008358'),
-          'fields' => array(
-            '252906' => 'Marketing Interstitial',
-            '253159' => 'NEWS',
+            252906 => 'Webform',
+            253159 => 'COVE',
           ),
           'send-welcome' => TRUE,
         ),

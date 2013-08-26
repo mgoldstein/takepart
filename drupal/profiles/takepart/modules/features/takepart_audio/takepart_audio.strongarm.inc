@@ -61,9 +61,6 @@ function takepart_audio_strongarm() {
       'embedaction' => array(
         'custom_settings' => FALSE,
       ),
-      'of_the_day' => array(
-        'custom_settings' => FALSE,
-      ),
       'inline_content' => array(
         'custom_settings' => FALSE,
       ),
