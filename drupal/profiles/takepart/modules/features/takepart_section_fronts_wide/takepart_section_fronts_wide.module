@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Takepart Section Fronts (Wide) feature.
- */
-
-include_once('takepart_section_fronts_wide.features.inc');

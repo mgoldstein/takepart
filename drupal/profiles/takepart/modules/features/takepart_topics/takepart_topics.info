@@ -1,7 +1,0 @@
-core = "7.x"
-dependencies[] = "views"
-description = "Topics, term posts feed and RSS"
-features[ctools][] = "views:views_default:3.0"
-features[views_view][] = "terms_posts_feed_rss"
-name = "Takepart Topics"
-package = "Features"
