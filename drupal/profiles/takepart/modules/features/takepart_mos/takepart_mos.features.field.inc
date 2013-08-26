@@ -43,7 +43,7 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Describes the intent of the message.',
+      'description' => 'Describes the intent of the message.  This is featured in the body of the action page and appears on the \'Read more\' screen in the banner widget.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -51,6 +51,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '0',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -82,7 +88,7 @@ function takepart_mos_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '14',
+        'weight' => '12',
       ),
     ),
   );
@@ -124,7 +130,7 @@ function takepart_mos_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Optional text will override the \'SEND YOUR SUPPORT\' header text atop the action form.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -132,6 +138,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => 22,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -161,7 +173,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -200,6 +212,12 @@ function takepart_mos_field_default_fields() {
           ),
           'type' => 'image',
           'weight' => '5',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -319,6 +337,12 @@ function takepart_mos_field_default_fields() {
           'type' => 'node_reference_default',
           'weight' => '6',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -425,6 +449,12 @@ function takepart_mos_field_default_fields() {
           'type' => 'node_reference_default',
           'weight' => '7',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -504,6 +534,12 @@ function takepart_mos_field_default_fields() {
           'type' => 'image',
           'weight' => 19,
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -540,7 +576,7 @@ function takepart_mos_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '12',
+        'weight' => '15',
       ),
     ),
   );
@@ -588,6 +624,12 @@ function takepart_mos_field_default_fields() {
           'type' => 'link_default',
           'weight' => 20,
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -630,7 +672,7 @@ function takepart_mos_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '13',
+        'weight' => '16',
       ),
     ),
   );
@@ -666,9 +708,13 @@ function takepart_mos_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'mos_action',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => 'MESSAGE IS CLOSED',
+        ),
+      ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Optional text overrides the \'Closed Action\' header text in the left rail of action pages or main banner widget screen, if provided.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -676,6 +722,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '10',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -705,7 +757,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '15',
+        'weight' => '13',
       ),
     ),
   );
@@ -739,9 +791,16 @@ function takepart_mos_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'mos_action',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => '<p class="p1">Thanks so much for deciding to take action.</p>
+<p class="p1">We\'ve closed this for one of many good reasons.&nbsp;There are other great actions you can add your voice to here at TakePart, so please browse around!</p>
+',
+          'format' => 'full_html',
+        ),
+      ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Optional text overrides the \'Closed Message\' message text in left rail of actions pages or main banner widget screen that signed in users have already completed.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -749,6 +808,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '11',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -778,7 +843,7 @@ function takepart_mos_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '16',
+        'weight' => '14',
       ),
     ),
   );
@@ -814,9 +879,13 @@ function takepart_mos_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'mos_action',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => 'WE DID IT!',
+        ),
+      ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Header text used for goal completion messaging (100% of target reached) in the body of the action page.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -824,6 +893,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '12',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -853,7 +928,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '17',
+        'weight' => '15',
       ),
     ),
   );
@@ -887,9 +962,16 @@ function takepart_mos_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'mos_action',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => '<p class="p1">Thanks to all of you, we have reached our goal!</p>
+<p class="p1">However, &nbsp;we want as many of you to take action as possible, so please continue to spread the word!</p>
+',
+          'format' => 'full_html',
+        ),
+      ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Text used for goal completion messaging (100% of target reached) in the body of the action page.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -897,6 +979,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '13',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -926,7 +1014,7 @@ function takepart_mos_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '18',
+        'weight' => '16',
       ),
     ),
   );
@@ -994,6 +1082,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => 26,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1072,6 +1166,12 @@ function takepart_mos_field_default_fields() {
           'type' => 'list_default',
           'weight' => 18,
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1099,7 +1199,7 @@ function takepart_mos_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '14',
+        'weight' => '12',
       ),
     ),
   );
@@ -1151,6 +1251,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => 29,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1228,6 +1334,12 @@ function takepart_mos_field_default_fields() {
           'type' => 'text_default',
           'weight' => 17,
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1292,7 +1404,7 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Additional information about the MOS campaign. It is support WYSIWYG formatting and video embedding.',
+      'description' => 'Additional information about the MOS campaign that is displayed in the expandable region on action pages and in the \'Read more\' screen on the banner widget.  It supports WYSIWYG formatting and video embedding.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1300,6 +1412,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '1',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1319,7 +1437,7 @@ function takepart_mos_field_default_fields() {
       'label' => 'About The Message',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1376,6 +1494,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'link_default',
           'weight' => '2',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1461,7 +1585,7 @@ function takepart_mos_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => 'Label displayed as an in-field label within the user message field.',
+      'description' => 'Text label displayed atop the custom user message field.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1469,6 +1593,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '3',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1498,7 +1628,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -1532,6 +1662,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'context_field_context',
           'weight' => 27,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1656,6 +1792,12 @@ function takepart_mos_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => 30,
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1679,7 +1821,9 @@ function takepart_mos_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
         'type' => 'options_select',
         'weight' => '27',
       ),
@@ -1717,7 +1861,7 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Limit text to 250 characters.',
+      'description' => 'Displayed atop banner widget main screen.  Limit text to 250 characters.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1725,6 +1869,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => 21,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1790,9 +1940,13 @@ function takepart_mos_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'mos_action',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => 'YOU\'VE TAKEN ACTION',
+        ),
+      ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Optional text overrides the \'Already Signed\' header text in the left rail of action pages or main banner widget screen, if provided.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1800,6 +1954,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '15',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1829,7 +1989,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '11',
       ),
     ),
   );
@@ -1863,9 +2023,16 @@ function takepart_mos_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'mos_action',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => '<p class="p1">You have already signed this.</p>
+<p class="p1">The best thing to do now is get the word out: share it with your friends, shout it from the rooftops, talk about it in conversation. You can make an impact.</p>
+',
+          'format' => 'full_html',
+        ),
+      ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Optional text overrides the \'Already Signed\' message text in left rail of actions pages or main banner widget screen that signed in users have already completed.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1873,6 +2040,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '14',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1902,7 +2075,7 @@ function takepart_mos_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '14',
+        'weight' => '12',
       ),
     ),
   );
@@ -1944,6 +2117,12 @@ function takepart_mos_field_default_fields() {
           'type' => 'button_bar',
           'weight' => '16',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1969,7 +2148,7 @@ function takepart_mos_field_default_fields() {
         'module' => 'takepart_addthis',
         'settings' => array(),
         'type' => 'addthis_config',
-        'weight' => '17',
+        'weight' => '32',
       ),
     ),
   );
@@ -2004,7 +2183,7 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => array(
         0 => array(
-          'value' => 0,
+          'value' => 1,
         ),
       ),
       'deleted' => '0',
@@ -2016,6 +2195,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'list_default',
           'weight' => 23,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2032,7 +2217,7 @@ function takepart_mos_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_tab_action',
-      'label' => 'Show in TAB Modal',
+      'label' => 'Enable for TAB',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -2091,6 +2276,12 @@ function takepart_mos_field_default_fields() {
           'type' => 'text_default',
           'weight' => '4',
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2120,81 +2311,6 @@ function takepart_mos_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '9',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-mos_action-field_tab_external_title'.
-  $fields['node-mos_action-field_tab_external_title'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_tab_external_title',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'mos_action',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 25,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'vidpop_map' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_tab_external_title',
-      'label' => 'External Title',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '8',
       ),
     ),
   );
@@ -2241,6 +2357,12 @@ function takepart_mos_field_default_fields() {
           'type' => 'text_default',
           'weight' => 24,
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2256,7 +2378,7 @@ function takepart_mos_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_tab_internal_title',
-      'label' => 'Internal Title',
+      'label' => 'Alternate Title',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -2307,7 +2429,7 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Optional text will override \'Thank You\' header text on banner widget and action page thank you screen if provided.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2315,6 +2437,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '9',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2380,7 +2508,7 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Optional text appears on Impact Dashboard\'s action updates or banner widget \'Thank You\' screen when a user has competed an action.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2388,6 +2516,12 @@ function takepart_mos_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '8',
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2418,6 +2552,79 @@ function takepart_mos_field_default_fields() {
         ),
         'type' => 'text_textarea',
         'weight' => '10',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-mos_action-field_thank_you_share_bar'.
+  $fields['node-mos_action-field_thank_you_share_bar'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_thank_you_share_bar',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'takepart_addthis',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'share_bar',
+    ),
+    'field_instance' => array(
+      'bundle' => 'mos_action',
+      'default_value' => array(
+        0 => array(
+          'alternate_url' => '',
+          'twitter_message' => '',
+          'email_message' => '',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'takepart_addthis',
+          'settings' => array(
+            'orientation' => 'horizontal',
+          ),
+          'type' => 'button_bar',
+          'weight' => 31,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_thank_you_share_bar',
+      'label' => 'Thank You',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'takepart_addthis',
+        'settings' => array(),
+        'type' => 'addthis_config',
+        'weight' => '13',
       ),
     ),
   );
@@ -2471,6 +2678,12 @@ function takepart_mos_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => 28,
         ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2494,9 +2707,72 @@ function takepart_mos_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
         'type' => 'options_select',
         'weight' => '25',
+      ),
+    ),
+  );
+
+  // Exported field: 'signature-mos_signature-field_custom_message'.
+  $fields['signature-mos_signature-field_custom_message'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_custom_message',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'mos_signature',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 12,
+        ),
+      ),
+      'entity_type' => 'signature',
+      'field_name' => 'field_custom_message',
+      'label' => 'Custom Message',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '6',
       ),
     ),
   );
@@ -2550,7 +2826,7 @@ function takepart_mos_field_default_fields() {
         'module' => 'partnercode',
         'settings' => array(),
         'type' => 'hidden_input',
-        'weight' => '15',
+        'weight' => '8',
       ),
     ),
   );
@@ -2575,6 +2851,7 @@ function takepart_mos_field_default_fields() {
         'allowed_values' => array(
           'a21222324252627282920z' => 'Test',
           '6e2d7fd8998e6940beeaa33f72253c97' => 'Social Reality',
+          'tp-ptnr-tab-6ba99c27457f3e84f6389a93a445349b' => 'The Daily Beast',
         ),
         'url_parameter' => 'cmpid',
       ),
@@ -2607,7 +2884,7 @@ function takepart_mos_field_default_fields() {
         'module' => 'partnercode',
         'settings' => array(),
         'type' => 'opt_in_checkbox',
-        'weight' => '12',
+        'weight' => '7',
       ),
     ),
   );
@@ -2903,9 +3180,11 @@ function takepart_mos_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
         'type' => 'options_select',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -2968,7 +3247,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '0',
+        'weight' => '2',
       ),
     ),
   );
@@ -3031,7 +3310,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '3',
       ),
     ),
   );
@@ -3094,7 +3373,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -3108,9 +3387,10 @@ function takepart_mos_field_default_fields() {
   t('Action Image');
   t('Action Organizer');
   t('Action Sponsor');
-  t('Additional information about the MOS campaign. It is support WYSIWYG formatting and video embedding.');
+  t('Additional information about the MOS campaign that is displayed in the expandable region on action pages and in the \'Read more\' screen on the banner widget.  It supports WYSIWYG formatting and video embedding.');
   t('Already Signed Heading');
   t('Already Signed Message');
+  t('Alternate Title');
   t('Browser Title');
   t('Button Text');
   t('Campaign Page of');
@@ -3119,26 +3399,35 @@ function takepart_mos_field_default_fields() {
   t('Complete Heading');
   t('Complete Message');
   t('Country');
+  t('Custom Message');
   t('Customize Label');
-  t('Describes the intent of the message.');
+  t('Describes the intent of the message.  This is featured in the body of the action page and appears on the \'Read more\' screen in the banner widget.');
   t('Display Tag');
+  t('Displayed atop banner widget main screen.  Limit text to 250 characters.');
   t('Displays within the main yellow sign-up form submit button.');
-  t('External Title');
+  t('Enable for TAB');
   t('Featured');
   t('First Name');
   t('Free Tags');
+  t('Header text used for goal completion messaging (100% of target reached) in the body of the action page.');
   t('I would like to receive email updates from @partner.');
-  t('Internal Title');
-  t('Label displayed as an in-field label within the user message field.');
   t('Last Name');
-  t('Limit text to 250 characters.');
   t('Message Text');
+  t('Optional text appears on Impact Dashboard\'s action updates or banner widget \'Thank You\' screen when a user has competed an action.');
+  t('Optional text overrides the \'Already Signed\' header text in the left rail of action pages or main banner widget screen, if provided.');
+  t('Optional text overrides the \'Already Signed\' message text in left rail of actions pages or main banner widget screen that signed in users have already completed.');
+  t('Optional text overrides the \'Closed Action\' header text in the left rail of action pages or main banner widget screen, if provided.');
+  t('Optional text overrides the \'Closed Message\' message text in left rail of actions pages or main banner widget screen that signed in users have already completed.');
+  t('Optional text will override \'Thank You\' header text on banner widget and action page thank you screen if provided.');
+  t('Optional text will override the \'SEND YOUR SUPPORT\' header text atop the action form.');
   t('Partner Code');
   t('Recipient');
   t('Series');
   t('Short Introduction');
-  t('Show in TAB Modal');
   t('Social Sharing');
+  t('Text label displayed atop the custom user message field.');
+  t('Text used for goal completion messaging (100% of target reached) in the body of the action page.');
+  t('Thank You');
   t('Thank You Heading');
   t('Thank You Message');
   t('This marks an Action as eligible to be included as a TAB modal recommendation.');

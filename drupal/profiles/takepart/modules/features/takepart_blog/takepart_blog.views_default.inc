@@ -54,7 +54,7 @@ function takepart_blog_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_group_topic_node']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['relationships']['reverse_field_group_topic_node']['field'] = 'reverse_field_group_topic_node';
   $handler->display->display_options['relationships']['reverse_field_group_topic_node']['relationship'] = 'term_node_tid';
-  /* Field: Content: Thumbnail Image */
+  /* Field: Content: Thumbnail */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';

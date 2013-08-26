@@ -288,7 +288,9 @@ function openpublish_blog_post_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
         'type' => 'options_select',
         'weight' => '3',
       ),
@@ -357,7 +359,7 @@ function openpublish_blog_post_field_default_fields() {
       'label' => 'Main Image',
       'required' => 0,
       'settings' => array(
-        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
+        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico css',
         'user_register_form' => FALSE,
       ),
       'widget' => array(

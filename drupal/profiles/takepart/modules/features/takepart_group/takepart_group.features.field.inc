@@ -771,7 +771,9 @@ function takepart_group_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
         'type' => 'options_select',
         'weight' => '10',
       ),
@@ -863,6 +865,7 @@ function takepart_group_field_default_fields() {
         'module' => 'options',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_opt_groups' => FALSE,
           'size' => 60,
         ),
         'type' => 'options_select',

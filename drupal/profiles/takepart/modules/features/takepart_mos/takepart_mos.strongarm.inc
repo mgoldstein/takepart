@@ -114,10 +114,10 @@ function takepart_mos_strongarm() {
           'weight' => '2',
         ),
         'redirect' => array(
-          'weight' => '13',
+          'weight' => '11',
         ),
         'xmlsitemap' => array(
-          'weight' => '12',
+          'weight' => '10',
         ),
       ),
       'display' => array(

@@ -23,6 +23,7 @@ features[field][] = node-takepart_page-field_display_tag
 features[field][] = node-takepart_page-field_free_tag
 features[field][] = node-takepart_page-field_html_title
 features[field][] = node-takepart_page-field_page_action
+features[field][] = node-takepart_page-field_page_context
 features[field][] = node-takepart_page-field_page_main_image
 features[field][] = node-takepart_page-field_page_related_actions
 features[field][] = node-takepart_page-field_page_related_content

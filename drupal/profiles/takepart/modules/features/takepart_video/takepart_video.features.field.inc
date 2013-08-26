@@ -90,13 +90,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '2',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -127,7 +121,7 @@ function takepart_video_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '12',
+        'weight' => '10',
       ),
     ),
   );
@@ -196,13 +190,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -233,7 +221,7 @@ function takepart_video_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '15',
+        'weight' => '13',
       ),
     ),
   );
@@ -285,16 +273,6 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
-        ),
-        'of_the_day' => array(
-          'label' => 'hidden',
-          'module' => 'media_image_formatter',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => 'square_thumbnail_small',
-          ),
-          'type' => 'image',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -398,14 +376,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
-        ),
-        'of_the_day' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '1',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -498,13 +469,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '17',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '15',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -623,13 +588,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -730,13 +689,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '19',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -761,9 +714,11 @@ function takepart_video_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
         'type' => 'options_select',
-        'weight' => '14',
+        'weight' => '12',
       ),
     ),
   );
@@ -827,13 +782,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '19',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -927,13 +876,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '1',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '2',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1026,13 +969,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1118,12 +1055,6 @@ function takepart_video_field_default_fields() {
           ),
           'type' => 'image',
           'weight' => '0',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -1237,13 +1168,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '17',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1268,9 +1193,11 @@ function takepart_video_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
         'type' => 'options_select',
-        'weight' => '16',
+        'weight' => '14',
       ),
     ),
   );
@@ -1334,13 +1261,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1447,13 +1368,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1552,13 +1467,7 @@ function takepart_video_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
-        ),
-        'of_the_day' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1589,7 +1498,7 @@ function takepart_video_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '13',
+        'weight' => '11',
       ),
     ),
   );

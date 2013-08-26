@@ -16,9 +16,6 @@ function takepart_contact_us_form_strongarm() {
   $strongarm->name = 'field_bundle_settings_node__webform';
   $strongarm->value = array(
     'view_modes' => array(
-      'of_the_day' => array(
-        'custom_settings' => FALSE,
-      ),
       'inline_content' => array(
         'custom_settings' => FALSE,
       ),

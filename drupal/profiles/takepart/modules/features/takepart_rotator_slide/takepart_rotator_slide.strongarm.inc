@@ -37,9 +37,6 @@ function takepart_rotator_slide_strongarm() {
       'embed' => array(
         'custom_settings' => FALSE,
       ),
-      'of_the_day' => array(
-        'custom_settings' => FALSE,
-      ),
       'inline_content' => array(
         'custom_settings' => FALSE,
       ),

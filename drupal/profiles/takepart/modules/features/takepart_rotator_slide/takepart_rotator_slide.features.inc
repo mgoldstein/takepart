@@ -34,6 +34,7 @@ function takepart_rotator_slide_image_default_styles() {
   // Exported image style: takepart_rotator_slide.
   $styles['takepart_rotator_slide'] = array(
     'name' => 'takepart_rotator_slide',
+    'label' => 'takepart_rotator_slide',
     'effects' => array(
       31 => array(
         'label' => 'Scale and crop',

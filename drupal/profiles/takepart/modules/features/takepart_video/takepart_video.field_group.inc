@@ -142,7 +142,7 @@ function takepart_video_field_group_info() {
       3 => 'field_multi_page_campaign',
       4 => 'field_video_series',
       5 => 'field_display_tag',
-      6 => 'path',
+      6 => 'field_admin_tag',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
