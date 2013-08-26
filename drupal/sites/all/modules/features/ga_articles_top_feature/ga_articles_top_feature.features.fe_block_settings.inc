@@ -17,9 +17,7 @@ function ga_articles_top_feature_default_fe_block_settings() {
     'custom' => '0',
     'delta' => 'ga_articles_top',
     'module' => 'boxes',
-    'node_types' => array(
-      0 => 'openpublish_article',
-    ),
+    'node_types' => array(),
     'pages' => '',
     'roles' => array(),
     'themes' => array(

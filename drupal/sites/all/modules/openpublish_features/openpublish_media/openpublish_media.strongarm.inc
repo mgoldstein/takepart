@@ -16,9 +16,6 @@ function openpublish_media_strongarm() {
   $strongarm->name = 'field_bundle_settings_node__openpublish_photo';
   $strongarm->value = array(
     'view_modes' => array(
-      'of_the_day' => array(
-        'custom_settings' => FALSE,
-      ),
       'inline_content' => array(
         'custom_settings' => FALSE,
       ),
@@ -81,9 +78,6 @@ function openpublish_media_strongarm() {
       ),
       'medium_preview' => array(
         'custom_settings' => FALSE,
-      ),
-      'of_the_day' => array(
-        'custom_settings' => TRUE,
       ),
       'inline_content' => array(
         'custom_settings' => TRUE,
@@ -154,9 +148,6 @@ function openpublish_media_strongarm() {
       'medium_preview' => array(
         'custom_settings' => FALSE,
       ),
-      'of_the_day' => array(
-        'custom_settings' => TRUE,
-      ),
       'inline_content' => array(
         'custom_settings' => TRUE,
       ),
@@ -167,12 +158,15 @@ function openpublish_media_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '18',
-        ),
-        'xmlsitemap' => array(
           'weight' => '8',
         ),
+        'xmlsitemap' => array(
+          'weight' => '9',
+        ),
         'metatags' => array(
+          'weight' => '10',
+        ),
+        'redirect' => array(
           'weight' => '10',
         ),
       ),
