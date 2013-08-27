@@ -1,0 +1,93 @@
+/* # General
+================================================== */
+/* line 13, teach.scss */
+.page-wrap {
+  padding: 10px;
+  -webkit-font-smoothing: antialiased;
+}
+/* line 17, teach.scss */
+.page-wrap .main {
+  background: url('../img/blackboard.jpg?1377561140');
+}
+
+/* line 23, teach.scss */
+.right {
+  float: right;
+}
+
+/* line 24, teach.scss */
+.left {
+  float: left;
+}
+
+/* line 25, teach.scss */
+.text-right {
+  text-align: right;
+}
+
+/* # Header
+================================================== */
+/* line 30, teach.scss */
+.header {
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 20px;
+  position: relative;
+  min-height: 422px;
+  color: white;
+  background: url('../img/hero-background.jpg?1377561627');
+}
+/* line 38, teach.scss */
+.header h1 {
+  color: white;
+  background-color: #ea5f11;
+  font-size: 100px;
+  padding: .1em;
+  width: 400px;
+  margin-left: -20px;
+}
+/* line 47, teach.scss */
+.header .hero {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 50px;
+  z-index: 10;
+}
+/* line 55, teach.scss */
+.header .slug {
+  font-size: 27px;
+  line-height: 150%;
+}
+/* line 60, teach.scss */
+.header .credit {
+  font-size: 18px;
+}
+/* line 64, teach.scss */
+.header .date {
+  font-size: 32px;
+  line-height: 80%;
+}
+/* line 69, teach.scss */
+.header .burst {
+  font: bold 33px Helvetica, Arial, sans-serif;
+}
+/* line 73, teach.scss */
+.header .fine {
+  font-size: 9px;
+  color: #cccccc;
+  position: absolute;
+  margin-bottom: 60px;
+  bottom: 0;
+  z-index: 10;
+  width: 940px;
+}
+/* line 81, teach.scss */
+.header .fine .right {
+  color: white;
+}
+
+/* menu */
+/* # Content
+================================================== */
+/* # Content Signup Form
+================================================== */
