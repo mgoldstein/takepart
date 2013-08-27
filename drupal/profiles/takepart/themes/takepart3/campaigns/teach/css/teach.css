@@ -1,42 +1,69 @@
+@import url("//hello.myfonts.net/count/2826af");
+/* @license
+ * MyFonts Webfont Build ID 2631343, 2013-08-27T17:12:57-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Glypha Pro 75 Black by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/glypha/pro-75-black/
+ * Copyright: Part of the digitally encoded machine readable outline data for producing the Typefaces provided is copyrighted &#x00A9; 2008 Linotype GmbH, www.linotype.com. All rights reserved. This software is the property of Linotype GmbH, and may not be reproduced, 
+ * Licensed pageviews: 250,000
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2631343
+ * 
+ * © 2013 MyFonts Inc
+*/
+/* @import must be at top of file, otherwise CSS will not work */
+@font-face {
+  font-family: 'GlyphaLTPro-Black';
+  src: url("fonts/GlyphaLTPro-Black.eot");
+  src: url("fonts/GlyphaLTPro-Black.eot?#iefix") format("embedded-opentype"), url("fonts/GlyphaLTPro-Black.woff") format("woff"), url("fonts/GlyphaLTPro-Black.ttf") format("truetype");
+}
+
 /* # General
 ================================================== */
-/* line 13, teach.scss */
+/* line 15, teach.scss */
 .page-wrap {
   padding: 10px;
   -webkit-font-smoothing: antialiased;
 }
-/* line 17, teach.scss */
+/* line 19, teach.scss */
 .page-wrap .main {
-  background: url('../img/blackboard.jpg?1377561140');
+  background: url('../img/blackboard.jpg?1377641213');
 }
 
-/* line 23, teach.scss */
+/* line 25, teach.scss */
 .right {
   float: right;
 }
 
-/* line 24, teach.scss */
+/* line 26, teach.scss */
 .left {
   float: left;
 }
 
-/* line 25, teach.scss */
+/* line 27, teach.scss */
 .text-right {
   text-align: right;
 }
 
 /* # Header
 ================================================== */
-/* line 30, teach.scss */
+/* line 32, teach.scss */
 .header {
   font-family: Helvetica, Arial, sans-serif;
   padding: 20px;
   position: relative;
   min-height: 422px;
   color: white;
-  background: url('../img/hero-background.jpg?1377561627');
+  background: url('../img/hero-background.jpg?1377641213');
 }
-/* line 38, teach.scss */
+/* line 40, teach.scss */
 .header h1 {
   color: white;
   background-color: #ea5f11;
@@ -44,8 +71,9 @@
   padding: .1em;
   width: 400px;
   margin-left: -20px;
+  font-family: "GlyphaLTPro-Black", serif;
 }
-/* line 47, teach.scss */
+/* line 50, teach.scss */
 .header .hero {
   position: absolute;
   bottom: 0;
@@ -53,25 +81,25 @@
   margin-bottom: 50px;
   z-index: 10;
 }
-/* line 55, teach.scss */
+/* line 58, teach.scss */
 .header .slug {
   font-size: 27px;
   line-height: 150%;
 }
-/* line 60, teach.scss */
+/* line 63, teach.scss */
 .header .credit {
   font-size: 18px;
 }
-/* line 64, teach.scss */
+/* line 67, teach.scss */
 .header .date {
   font-size: 32px;
   line-height: 80%;
 }
-/* line 69, teach.scss */
+/* line 72, teach.scss */
 .header .burst {
   font: bold 33px Helvetica, Arial, sans-serif;
 }
-/* line 73, teach.scss */
+/* line 76, teach.scss */
 .header .fine {
   font-size: 9px;
   color: #cccccc;
@@ -81,7 +109,7 @@
   z-index: 10;
   width: 940px;
 }
-/* line 81, teach.scss */
+/* line 84, teach.scss */
 .header .fine .right {
   color: white;
 }

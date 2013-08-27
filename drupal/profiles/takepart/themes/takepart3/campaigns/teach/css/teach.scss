@@ -1,9 +1,11 @@
 @import "compass/css3/inline-block";
 @import "compass/css3/pie";
+@import "typeface";
 
 $primary-color: #ea5f11;
 $page-margins: 20px;
 $primary-font: Helvetica,Arial,sans-serif;
+$headline-font: 'GlyphaLTPro-Black', serif;
 
 $white: white;
 $light-white: #ccc;
@@ -42,6 +44,7 @@ $light-white: #ccc;
     padding: .1em;
     width: 400px;
     margin-left: -$page-margins;
+    font-family: $headline-font;
   }
 
   .hero {
