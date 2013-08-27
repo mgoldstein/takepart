@@ -1,7 +1,7 @@
 name = TakePart Audio
 description = Audio node type for TakePart
 core = 7.x
-package = Features
+package = Content Types
 php = 5.2.4
 version = 7.x-1.0
 project = takepart_audio

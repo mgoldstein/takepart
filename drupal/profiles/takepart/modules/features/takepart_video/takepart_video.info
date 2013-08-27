@@ -1,8 +1,7 @@
 name = TakePart Video
 description = Decorating the default Open publish video media asset and providing the Video Series content type.
 core = 7.x
-package = Features
-php = 5.2.4
+package = Content Types
 version = 7.x-1.2
 project = takepart_video
 dependencies[] = boxes

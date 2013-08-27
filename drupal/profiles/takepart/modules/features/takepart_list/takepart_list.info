@@ -1,8 +1,7 @@
 name = TakePart List
 description = Contains list content type
 core = 7.x
-package = Features
-php = 5.2.4
+package = Content Types
 version = 7.x-1.0
 project = takepart_list
 dependencies[] = feature_content_types

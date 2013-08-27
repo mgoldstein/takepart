@@ -1,8 +1,7 @@
 name = TakePart Group
 description = TakePart Group content type
 core = 7.x
-package = Features
-php = 5.2.4
+package = Content Types
 version = 7.x-1.0
 project = takepart_group
 dependencies[] = context
