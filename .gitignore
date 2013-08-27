@@ -15,3 +15,5 @@ settings/settings.local.pglatz.inc
 .idea
 
 sftp-config.json
+
+.sass-cache
