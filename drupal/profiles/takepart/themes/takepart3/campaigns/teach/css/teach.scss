@@ -1,12 +1,19 @@
 @import "compass/css3/inline-block";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+@import "compass/css3/transform";
 @import "compass/css3/pie";
 @import "typeface";
 
-$primary-color: #ea5f11;
+$page-width: 1000px;
 $page-margins: 20px;
 $primary-font: Helvetica,Arial,sans-serif;
 $headline-font: 'GlyphaLTPro-Black', serif;
+$content-width: $page-width - $page-margins;
 
+$primary-color: #ea5f11;
+$primary-font: Helvetica,Arial,sans-serif;
+$secondary-font: Helvetica,Arial,sans-serif;
 $white: white;
 $light-white: #ccc;
 
@@ -36,11 +43,13 @@ $light-white: #ccc;
   min-height: 422px;
   color: $white;
   background: image-url('hero-background.jpg');
+  clear: both;
+  zoom: 1;
 
   h1 {
     color: white;
     background-color: $primary-color;
-    font-size: 100px;
+    font: normal 100px $secondary-font;
     padding: .1em;
     width: 400px;
     margin-left: -$page-margins;
@@ -86,14 +95,75 @@ $light-white: #ccc;
     }
   }
 
+
+  /* menu */
+  .menu {
+    font: bold 20px/100% $secondary-font;
+    padding: 5px;
+    background: image-url('orange_felt.png');
+    @include border-radius(5px);
+    position: absolute;
+    bottom: 0;
+    left: $page-margins;
+    right: $page-margins;
+    ul {
+      border: 1px dashed #ECBE84;
+      list-style: none;
+      text-align: center;
+      overflow: visible;
+      height: 39px;
+    }
+    li {
+      overflow: visible;
+      @include inline-block;
+      a {
+        @include inline-block;
+        padding: 8px 0;
+        width: 127px;
+        text-align: center;
+        color: $white;
+        text-shadow: 0 -1px 2px #A84300;
+      }
+      &.active {
+        background: image-url('active_menu_bg.png') no-repeat -17px 0;
+        margin-top: -3px;
+        height: 43px;
+        a {
+            text-shadow: none;
+            color: black;
+            margin-top: 3px;
+          }
+      }
+    }
+  }
 }
 
 
-/* menu */
-
 /* # Content
 ================================================== */
-.content {
+#page {
+  padding: $page-margins;
+  background: none;
+  h3 {
+    background: image-url('header1_bg.png') no-repeat;
+    color: black;
+    font: bold 28px Helvetica, Arial, sans-serif;
+    height: 50px;
+    margin-bottom: 0px;
+    padding: 5px 10px;
+
+    span {
+      @include rotate(-2deg);
+      display: block;
+    }
+  }
+  .video {
+    width: 600px;
+    height: 500px;
+    background: black;
+    border: 5px solid white;
+    @include box-shadow(0 0 10px black);
+  }
 }
 
 .content .body p {

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("//hello.myfonts.net/count/2826af");
 /* @license
  * MyFonts Webfont Build ID 2631343, 2013-08-27T17:12:57-0400
@@ -27,53 +28,56 @@
 
 /* # General
 ================================================== */
-/* line 15, teach.scss */
+/* line 22, teach.scss */
 .page-wrap {
   padding: 10px;
   -webkit-font-smoothing: antialiased;
 }
-/* line 19, teach.scss */
+/* line 26, teach.scss */
 .page-wrap .main {
-  background: url('../img/blackboard.jpg?1377641213');
+  background: url('../img/blackboard.jpg?1377561140');
 }
 
-/* line 25, teach.scss */
+/* line 32, teach.scss */
 .right {
   float: right;
 }
 
-/* line 26, teach.scss */
+/* line 33, teach.scss */
 .left {
   float: left;
 }
 
-/* line 27, teach.scss */
+/* line 34, teach.scss */
 .text-right {
   text-align: right;
 }
 
 /* # Header
 ================================================== */
-/* line 32, teach.scss */
+/* line 39, teach.scss */
 .header {
   font-family: Helvetica, Arial, sans-serif;
   padding: 20px;
   position: relative;
   min-height: 422px;
   color: white;
-  background: url('../img/hero-background.jpg?1377641213');
+  background: url('../img/hero-background.jpg?1377561627');
+  clear: both;
+  zoom: 1;
+  /* menu */
 }
-/* line 40, teach.scss */
+/* line 49, teach.scss */
 .header h1 {
   color: white;
   background-color: #ea5f11;
-  font-size: 100px;
+  font: normal 100px Helvetica, Arial, sans-serif;
   padding: .1em;
   width: 400px;
   margin-left: -20px;
   font-family: "GlyphaLTPro-Black", serif;
 }
-/* line 50, teach.scss */
+/* line 59, teach.scss */
 .header .hero {
   position: absolute;
   bottom: 0;
@@ -81,25 +85,25 @@
   margin-bottom: 50px;
   z-index: 10;
 }
-/* line 58, teach.scss */
+/* line 67, teach.scss */
 .header .slug {
   font-size: 27px;
   line-height: 150%;
 }
-/* line 63, teach.scss */
+/* line 72, teach.scss */
 .header .credit {
   font-size: 18px;
 }
-/* line 67, teach.scss */
+/* line 76, teach.scss */
 .header .date {
   font-size: 32px;
   line-height: 80%;
 }
-/* line 72, teach.scss */
+/* line 81, teach.scss */
 .header .burst {
   font: bold 33px Helvetica, Arial, sans-serif;
 }
-/* line 76, teach.scss */
+/* line 85, teach.scss */
 .header .fine {
   font-size: 9px;
   color: #cccccc;
@@ -109,13 +113,105 @@
   z-index: 10;
   width: 940px;
 }
-/* line 84, teach.scss */
+/* line 93, teach.scss */
 .header .fine .right {
   color: white;
 }
+/* line 100, teach.scss */
+.header .menu {
+  font: bold 20px/100% Helvetica, Arial, sans-serif;
+  padding: 5px;
+  background: url('../img/orange_felt.png?1377644722');
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+}
+/* line 109, teach.scss */
+.header .menu ul {
+  border: 1px dashed #ECBE84;
+  list-style: none;
+  text-align: center;
+  overflow: visible;
+  height: 39px;
+}
+/* line 116, teach.scss */
+.header .menu li {
+  overflow: visible;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+}
+/* line 119, teach.scss */
+.header .menu li a {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  padding: 8px 0;
+  width: 127px;
+  text-align: center;
+  color: white;
+  text-shadow: 0 -1px 2px #A84300;
+}
+/* line 127, teach.scss */
+.header .menu li.active {
+  background: url('../img/active_menu_bg.png?1377644722') no-repeat -17px 0;
+  margin-top: -3px;
+  height: 43px;
+}
+/* line 131, teach.scss */
+.header .menu li.active a {
+  text-shadow: none;
+  color: black;
+  margin-top: 3px;
+}
 
-/* menu */
 /* # Content
 ================================================== */
+/* line 144, teach.scss */
+#page {
+  padding: 20px;
+  background: none;
+}
+/* line 147, teach.scss */
+#page h3 {
+  background: url('../img/header1_bg.png?1377644722') no-repeat;
+  color: black;
+  font: bold 28px Helvetica, Arial, sans-serif;
+  height: 50px;
+  margin-bottom: 0px;
+  padding: 5px 10px;
+}
+/* line 155, teach.scss */
+#page h3 span {
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  -o-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+  display: block;
+}
+/* line 160, teach.scss */
+#page .video {
+  width: 600px;
+  height: 500px;
+  background: black;
+  border: 5px solid white;
+  -webkit-box-shadow: 0 0 10px black;
+  -moz-box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px black;
+}
+
 /* # Content Signup Form
 ================================================== */
