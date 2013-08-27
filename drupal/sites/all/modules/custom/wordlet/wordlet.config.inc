@@ -397,6 +397,47 @@ function _wordlet_configuration() {
     ),
 
     // -----------------------------
+    // TEACH Campaign ----------------
+    // -----------------------------
+    'teach_campaign' => array(
+      'title' => 'TEACH Campaign',
+    ),
+
+    // teach Home
+    'teach_home' => array(
+      'title' => 'TEACH - Home',
+      'path' => 'teach',
+      'published' => FALSE,
+      'wrappers' => array('teach', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/teach/css/teach.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/teach/js/teach.js',
+      ),
+      'load' => array('site', 'teach_campaign'),
+    ),
+
+    // teach Students
+    'teach_students' => array(
+      'title' => 'TEACH - Students',
+      'path' => 'teach/students',
+      'published' => FALSE,
+      'wrappers' => array('teach', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/teach/teach.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/teach/teach.js',
+      ),
+      'load' => array('site', 'teach_campaign'),
+    ),
+
+    // -----------------------------
     // CAN Campaign ----------------
     // -----------------------------
     'can_campaign' => array(
