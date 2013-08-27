@@ -10,7 +10,7 @@
 		<div class="main">
 			<div class="header">
 				<div class="slug"><?=w('header_slug')?></div>
-				<h1><?=w('header_title')?></h1>
+				<h1 class="page-header"><?=w('header_title')?></h1>
 				<div class="credit"><?=w('header_credit')?></div>
 				<div class="burst"><?=w('header_burst')?></div>
 				<div class="date"><?=w('header_date')?></div>

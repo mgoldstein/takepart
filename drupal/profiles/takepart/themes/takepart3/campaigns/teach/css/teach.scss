@@ -7,13 +7,12 @@
 
 $page-width: 1000px;
 $page-margins: 20px;
-$primary-font: Helvetica,Arial,sans-serif;
-$headline-font: 'GlyphaLTPro-Black', serif;
 $content-width: $page-width - $page-margins;
 
 $primary-color: #ea5f11;
 $primary-font: Helvetica,Arial,sans-serif;
-$secondary-font: Helvetica,Arial,sans-serif;
+$secondary-font: 'GlyphaLTPro-Black', serif;
+
 $white: white;
 $light-white: #ccc;
 
@@ -25,6 +24,10 @@ $light-white: #ccc;
 
     .main {
       background: image-url('blackboard.jpg');
+    }
+
+    h1, h2 {
+      font: normal 100px $secondary-font;
     }
 
 }
@@ -46,14 +49,13 @@ $light-white: #ccc;
   clear: both;
   zoom: 1;
 
-  h1 {
+  .page-header {
     color: white;
     background-color: $primary-color;
-    font: normal 100px $secondary-font;
     padding: .1em;
     width: 400px;
     margin-left: -$page-margins;
-    font-family: $headline-font;
+    font-family: $secondary-font;
   }
 
   .hero {
@@ -98,7 +100,7 @@ $light-white: #ccc;
 
   /* menu */
   .menu {
-    font: bold 20px/100% $secondary-font;
+    font: bold 19px/100% $secondary-font;
     padding: 5px;
     background: image-url('orange_felt.png');
     @include border-radius(5px);
@@ -144,10 +146,10 @@ $light-white: #ccc;
 #page {
   padding: $page-margins;
   background: none;
-  h3 {
+  .content-header {
     background: image-url('header1_bg.png') no-repeat;
     color: black;
-    font: bold 28px Helvetica, Arial, sans-serif;
+    font-size: 26px;
     height: 50px;
     margin-bottom: 0px;
     padding: 5px 10px;

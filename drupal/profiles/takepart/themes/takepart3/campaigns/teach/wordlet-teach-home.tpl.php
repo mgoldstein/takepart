@@ -1,4 +1,4 @@
 <div class="content">
-	<h3><span><?=w('page_title')?></span></h3>
+	<h2 class="content-header"><span><?=w('page_title')?></span></h2>
 	<div class="video"></div>
 </div>
