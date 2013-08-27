@@ -438,7 +438,7 @@ function _wordlet_configuration() {
     ),
 
     // teach Parents
-    'teach_students' => array(
+    'teach_parents' => array(
       'title' => 'TEACH - Parents',
       'path' => 'teach/parents',
       'published' => TRUE,
@@ -455,7 +455,7 @@ function _wordlet_configuration() {
     ),
 
     // teach Teachers
-    'teach_students' => array(
+    'teach_teachers' => array(
       'title' => 'TEACH - Teachers',
       'path' => 'teach/teachers',
       'published' => TRUE,
@@ -472,7 +472,7 @@ function _wordlet_configuration() {
     ),
 
     // teach Photos
-    'teach_students' => array(
+    'teach_photos' => array(
       'title' => 'TEACH - Photos',
       'path' => 'teach/photos',
       'published' => TRUE,
@@ -489,7 +489,7 @@ function _wordlet_configuration() {
     ),
 
     // teach Alliances
-    'teach_students' => array(
+    'teach_alliances' => array(
       'title' => 'TEACH - Alliances',
       'path' => 'teach/alliances',
       'published' => TRUE,
@@ -506,7 +506,7 @@ function _wordlet_configuration() {
     ),
 
     // teach News
-    'teach_students' => array(
+    'teach_news' => array(
       'title' => 'TEACH - News',
       'path' => 'teach/news',
       'published' => TRUE,
