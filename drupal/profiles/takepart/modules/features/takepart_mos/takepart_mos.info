@@ -1,9 +1,8 @@
 name = TakePart Messages of Support
 description = Implements Messages of Support components and customization
 core = 7.x
-package = Features
-php = 5.2.4
-version = 7.x-1.0-dev
+package = Content Types
+version = 7.x-1.0
 project = takepart_mos
 dependencies[] = ctools
 dependencies[] = features

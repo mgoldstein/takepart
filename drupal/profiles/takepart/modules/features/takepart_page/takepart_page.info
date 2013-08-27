@@ -1,8 +1,7 @@
 name = TakePart Page
 description = Provides a base content type for Pages
 core = 7.x
-package = Features
-php = 5.2.4
+package = Content Types
 version = 7.x-1.0
 project = takepart_page
 dependencies[] = feature_content_types

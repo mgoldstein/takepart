@@ -1,8 +1,7 @@
 name = TakePart Campaign
 description = Provides Camapaign Content Type
 core = 7.x
-package = Features
-php = 5.2.4
+package = Content Types
 version = 7.x-1.0
 project = takepart_campaign
 dependencies[] = context
