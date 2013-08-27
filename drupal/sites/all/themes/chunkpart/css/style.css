@@ -220,6 +220,12 @@ body #at16pt {
 	color: #1CA9E7;
 }
 
+/* From the Web (Scribol) block */
+
+#block-block-54 {
+    border-bottom: 1px solid #e8e8e8;
+}
+
 /* Newsletter form */
 
 .newsletter_social {
