@@ -407,7 +407,7 @@ function _wordlet_configuration() {
     'teach_home' => array(
       'title' => 'TEACH - Home',
       'path' => 'teach',
-      'published' => FALSE,
+      'published' => TRUE,
       'wrappers' => array('teach', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
@@ -424,7 +424,7 @@ function _wordlet_configuration() {
     'teach_students' => array(
       'title' => 'TEACH - Students',
       'path' => 'teach/students',
-      'published' => FALSE,
+      'published' => TRUE,
       'wrappers' => array('teach', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
@@ -436,6 +436,92 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'teach_campaign'),
     ),
+
+    // teach Parents
+    'teach_students' => array(
+      'title' => 'TEACH - Parents',
+      'path' => 'teach/parents',
+      'published' => TRUE,
+      'wrappers' => array('teach', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/teach/teach.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/teach/teach.js',
+      ),
+      'load' => array('site', 'teach_campaign'),
+    ),
+
+    // teach Teachers
+    'teach_students' => array(
+      'title' => 'TEACH - Teachers',
+      'path' => 'teach/teachers',
+      'published' => TRUE,
+      'wrappers' => array('teach', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/teach/teach.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/teach/teach.js',
+      ),
+      'load' => array('site', 'teach_campaign'),
+    ),
+
+    // teach Photos
+    'teach_students' => array(
+      'title' => 'TEACH - Photos',
+      'path' => 'teach/photos',
+      'published' => TRUE,
+      'wrappers' => array('teach', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/teach/teach.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/teach/teach.js',
+      ),
+      'load' => array('site', 'teach_campaign'),
+    ),
+
+    // teach Alliances
+    'teach_students' => array(
+      'title' => 'TEACH - Alliances',
+      'path' => 'teach/alliances',
+      'published' => TRUE,
+      'wrappers' => array('teach', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/teach/teach.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/teach/teach.js',
+      ),
+      'load' => array('site', 'teach_campaign'),
+    ),
+
+    // teach News
+    'teach_students' => array(
+      'title' => 'TEACH - News',
+      'path' => 'teach/news',
+      'published' => TRUE,
+      'wrappers' => array('teach', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/teach/teach.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/teach/teach.js',
+      ),
+      'load' => array('site', 'teach_campaign'),
+    ),
+
 
     // -----------------------------
     // CAN Campaign ----------------
