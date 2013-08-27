@@ -22,4 +22,5 @@
 			</ul>
 		</div>
 	</div>
+	<? include_once('templates/teach-social-block.tpl.php') ?>
 </div>
