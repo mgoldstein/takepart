@@ -528,9 +528,10 @@ div.takepart-take-action-widget {
 	background: #f8fbff;
 	border: 1px solid #e0e0e0;
 	width: 15em;
-	padding: 1em;
+	padding: 1em 1em 1em 0.75em;
 	margin-bottom: 1em;
 	float: right;
+        text-align: center;
 }
 
 #topic_box:after,
@@ -567,7 +568,6 @@ div.takepart-take-action-widget {
 #topic_box a,
 #topic_box img {
 	display: block;
-	margin: auto;
 }
 
 #topic_box li {
