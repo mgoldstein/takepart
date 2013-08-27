@@ -52,7 +52,7 @@ function fbregistration_form($form, &$form_state) {
   $form['settings']['fbregistration_validation'] = array(
       '#type' => 'textarea',
       '#rows' => 4,
-      '#title' => t('Facebook Registration Tag (Iframe)'),
+      '#title' => t('Facebook Registration Validation Code (Use fbuserdata JS Variable)'),
       '#required' => TRUE,
       '#default_value' => variable_get('fbregistration_validation', _fbregistration_default_validation()),
   );

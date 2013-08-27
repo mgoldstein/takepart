@@ -106,15 +106,30 @@ function _tfbregistration_auth() {
     $account = user_load(array('uid' => $drupalid));
 
     foreach ($account as $key => $val) {
+      if((substr($key, 0, 4) == 'bsd_')) {
+          $bsd_keys = (explode('_', $key, 3));
+          $key = $bsd_keys[2];
+      }
       if(isset($response['registration'][$key])) {
         if(is_array($val)) {
+          if(empty($val)) {
+            echo $key;
+            $account->{$key}['und'] = array();
+            $account->{$key}['und'][0] = array();
+            $account->{$key}['und'][0]['value'] = '';
+          }
           _fbregistration_set_userval($account->{$key}, $response['registration'][$key]);
         } elseif ($key != 'name') {
           $account->{$key} = $response['registration'][$key];
         }
        }
      }
-
+     
+     //special:
+     if(isset($response['registration']['email'])) {
+        $account->mail = $response['registration']['email'];
+     }
+      
 
     user_save($account);
 
@@ -126,9 +141,6 @@ function _tfbregistration_auth() {
     $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
     drupal_goto($destination);
   }
-
-
-  exit();
 
 }
 
@@ -171,17 +183,42 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
 
    }
 
-   //Validation:
-   drupal_add_js('function fbregistration_validate(form) {
-        var errors = {};' . "\n" .
-         variable_get('fbregistration_validation', _fbregistration_default_validation())  . "\n" .
-        'return errors;
-        }'
+   
+   
+   $fbsetfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 10);
+   $callcount = 10;
+
+   $fbsetscript = <<<HTM
+  var fbuserdata;
+  function $fbsetfunction(cnt) {
+   cnt++;
+   if ((typeof(FB) !== 'undefined') && (cnt <= $callcount)) {
+     FB.api('/me', function (response) {
+        if(response.error){
+          setTimeout("$fbsetfunction(" + cnt + ")",1000);
+        } else {
+           fbuserdata = response;
+        }
+    });
+   } else {
+    setTimeout("$fbsetfunction(" + cnt + ")",1000);
+   }
+  }
+  $fbsetfunction(0);
+HTM;
+
+   drupal_add_js($fbsetscript .
+        'function fbregistration_validate(form) {' .
+        '  var errors = {};' . "\n" .
+           variable_get('fbregistration_validation', _fbregistration_default_validation())  . "\n" .
+        '  return errors;' .
+        '}'
        ,
        array('type' => 'inline', 'scope' => 'header', 'weight' => 5)
    );
 
 }
+
 
 
 function _fbregistration_default_validation() {
