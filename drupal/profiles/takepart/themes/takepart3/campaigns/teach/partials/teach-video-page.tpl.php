@@ -12,6 +12,7 @@
             </div>
         </section>
     <? endforeach ?>
+    <? include('partials/teach-social-block.tpl.php') ?>
     <div class="social-footer">
         <span><?=w('social_footer_label')?></span>
         <a href="<?=w('social_facebook')->href?>" target="_blank">
@@ -23,5 +24,8 @@
         <a href="<?=w('social_gplus')->href?>" target="_blank">
             <img src="<?=w('social_gplus')->img_src?>" alt="<?=w('social_gplus')->img_single?>">
         </a>
+    </div>
+    <div class="ad">
+        <?=w('ad')?>
     </div>
 </div>
