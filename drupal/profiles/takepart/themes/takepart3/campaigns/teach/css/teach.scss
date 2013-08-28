@@ -18,6 +18,7 @@ $secondary-font: 'GlyphaLTPro-Black', serif;
 
 $primary-white: white;
 $light-white: #ccc;
+$body-copy-black: #1a1a1a;
 
 /* # General
 ================================================== */
@@ -161,6 +162,10 @@ $light-white: #ccc;
 
 /* # Content
 ================================================== */
+p {
+  color: $body-copy-black;
+}
+
 #page {
   padding: $page-margins;
   background: none;
@@ -192,6 +197,11 @@ $light-white: #ccc;
     @include inline-block;
     @include box-shadow(0 0 10px black);
   }
+}
+
+.page-body-content {
+  background: $primary-white;
+  padding: $page-margins;
 }
 
 .page-wordlet-teach-home .social-menu {

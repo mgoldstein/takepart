@@ -5,4 +5,7 @@
 		<h4 class="link_on_white"><?=w('social_follow_body')?></h4>
 		<? include('partials/teach-social-block.tpl.php') ?>
 	</section>
+	<section class="page-body-content cms">
+		<?= w('page_body_content') ?>
+	</section>
 </div>
