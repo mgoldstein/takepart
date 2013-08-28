@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("//hello.myfonts.net/count/2826af");
 /* @license
  * MyFonts Webfont Build ID 2631343, 2013-08-27T17:12:57-0400
@@ -34,7 +35,7 @@
 }
 /* line 28, teach.scss */
 .page-wrap .main {
-  background: url('../img/blackboard.jpg?1377722629');
+  background: url('../img/blackboard.jpg?1377561140');
 }
 /* line 33, teach.scss */
 .page-wrap .page-header,
@@ -66,7 +67,7 @@
   position: relative;
   min-height: 422px;
   color: white;
-  background: url('../img/hero-background.jpg?1377722629');
+  background: url('../img/hero-background.jpg?1377561627');
   clear: both;
   zoom: 1;
   /* menu */
@@ -128,7 +129,7 @@
 .header .menu-wrapper {
   font: bold 19px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
-  background: url('../img/orange_felt.png?1377722629');
+  background: url('../img/orange_felt.png?1377644722');
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -192,7 +193,7 @@
 }
 /* line 146, teach.scss */
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377722629') no-repeat -17px 0;
+  background: url('../img/active_menu_bg.png?1377644722') no-repeat -17px 0;
   margin-top: -3px;
   height: 43px;
 }
@@ -212,7 +213,7 @@
 }
 /* line 167, teach.scss */
 #page .content-header {
-  background: url('../img/header1_bg.png?1377722629') no-repeat;
+  background: url('../img/header1_bg.png?1377644722') no-repeat;
   color: black;
   font-size: 26px;
   height: 50px;
@@ -252,10 +253,11 @@
   -moz-box-shadow: 0 0 10px black;
   box-shadow: 0 0 10px black;
 }
-/* line 196, teach.scss */
-#page .page-wordlet-teach-home .social-menu {
+
+/* line 197, teach.scss */
+.page-wordlet-teach-home .social-menu {
   width: 295px;
-  background: url('../img/paper_right.png?1377722629') no-repeat right 10px;
+  background: url('../img/paper_right.png?1377644722') no-repeat right 10px;
   padding: 0px 30px 0 300px;
   top: -50px;
   margin-left: -300px;
@@ -271,22 +273,22 @@
   vertical-align: top;
   float: right;
 }
-/* line 210, teach.scss */
-#page .page-wordlet-teach-home .social-menu h1 {
+/* line 211, teach.scss */
+.page-wordlet-teach-home .social-menu h1 {
   display: none;
 }
-/* line 211, teach.scss */
-#page .page-wordlet-teach-home .social-menu .sect-headline {
+/* line 212, teach.scss */
+.page-wordlet-teach-home .social-menu .sect-headline {
   font-size: 24px;
   color: #ea5f11;
 }
-/* line 215, teach.scss */
-#page .page-wordlet-teach-home .social-menu .link_on_white {
+/* line 216, teach.scss */
+.page-wordlet-teach-home .social-menu .link_on_white {
   margin: 0 0 80px -40px;
   width: 350px;
 }
-/* line 218, teach.scss */
-#page .page-wordlet-teach-home .social-menu .link_on_white a {
+/* line 219, teach.scss */
+.page-wordlet-teach-home .social-menu .link_on_white a {
   font: 22px "GlyphaLTPro-Black", serif;
   color: white;
 }
