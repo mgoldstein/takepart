@@ -22,7 +22,5 @@
 			</ul>
 		</div>
 	</div>
-	<? include_once('templates/teach-social-block.tpl.php') ?>
-	<?= dirname(__FILE__) ?>
-    <?= __FILE__ ?>
+	<? include('templates/teach-social-block.tpl.php') ?>
 </div>
