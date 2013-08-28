@@ -150,6 +150,7 @@
 /* line 124, teach.scss */
 .header .menu-wrapper .menu .item {
   margin: 0;
+  padding: 0;
   overflow: visible;
   display: -moz-inline-stack;
   display: inline-block;
@@ -158,7 +159,7 @@
   zoom: 1;
   *display: inline;
 }
-/* line 128, teach.scss */
+/* line 129, teach.scss */
 .header .menu-wrapper .menu .item a {
   display: -moz-inline-stack;
   display: inline-block;
@@ -172,13 +173,13 @@
   color: white;
   text-shadow: 0 -1px 2px #A84300;
 }
-/* line 136, teach.scss */
+/* line 137, teach.scss */
 .header .menu-wrapper .menu .item.active {
   background: url('../img/active_menu_bg.png?1377645449') no-repeat -17px 0;
   margin-top: -3px;
   height: 43px;
 }
-/* line 140, teach.scss */
+/* line 141, teach.scss */
 .header .menu-wrapper .menu .item.active a {
   text-shadow: none;
   color: black;
@@ -187,12 +188,12 @@
 
 /* # Content
 ================================================== */
-/* line 154, teach.scss */
+/* line 155, teach.scss */
 #page {
   padding: 20px;
   background: none;
 }
-/* line 157, teach.scss */
+/* line 158, teach.scss */
 #page .content-header {
   background: url('../img/header1_bg.png?1377645449') no-repeat;
   color: black;
@@ -201,7 +202,7 @@
   margin-bottom: 0px;
   padding: 5px 10px;
 }
-/* line 165, teach.scss */
+/* line 166, teach.scss */
 #page .content-header span {
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
@@ -210,7 +211,7 @@
   transform: rotate(-2deg);
   display: block;
 }
-/* line 170, teach.scss */
+/* line 171, teach.scss */
 #page .video {
   width: 600px;
   height: 500px;
@@ -220,7 +221,7 @@
   -moz-box-shadow: 0 0 10px black;
   box-shadow: 0 0 10px black;
 }
-/* line 179, teach.scss */
+/* line 180, teach.scss */
 #page .social-menu .sect-headline {
   font-size: 24px;
   color: #ea5f11;

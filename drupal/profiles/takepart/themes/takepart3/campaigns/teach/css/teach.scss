@@ -123,6 +123,7 @@ $light-white: #ccc;
       height: 39px;
       .item {
         margin: 0;
+        padding: 0;
         overflow: visible;
         @include inline-block;
         a {
