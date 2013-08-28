@@ -8,6 +8,9 @@
   <section class="connected">
     <h2 class="sect-headline"><?=w('social_connected_headline')?></h2>
     <div class="cms">
+        <?=w('social_connected_body')?>
+    </div>
+    <div class="cms">
         <?=w('social_connected_form')?>
     </div>
   </section>
