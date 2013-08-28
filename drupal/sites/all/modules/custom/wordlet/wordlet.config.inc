@@ -428,11 +428,11 @@ function _wordlet_configuration() {
       'wrappers' => array('teach', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
-        'campaigns/teach/teach.css',
+        'campaigns/teach/css/teach.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
-        'campaigns/teach/teach.js',
+        'campaigns/teach/js/teach.js',
       ),
       'load' => array('site', 'teach_campaign'),
     ),
@@ -445,11 +445,11 @@ function _wordlet_configuration() {
       'wrappers' => array('teach', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
-        'campaigns/teach/teach.css',
+        'campaigns/teach/css/teach.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
-        'campaigns/teach/teach.js',
+        'campaigns/teach/js/teach.js',
       ),
       'load' => array('site', 'teach_campaign'),
     ),
@@ -462,11 +462,11 @@ function _wordlet_configuration() {
       'wrappers' => array('teach', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
-        'campaigns/teach/teach.css',
+        'campaigns/teach/css/teach.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
-        'campaigns/teach/teach.js',
+        'campaigns/teach/js/teach.js',
       ),
       'load' => array('site', 'teach_campaign'),
     ),
@@ -479,11 +479,11 @@ function _wordlet_configuration() {
       'wrappers' => array('teach', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
-        'campaigns/teach/teach.css',
+        'campaigns/teach/css/teach.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
-        'campaigns/teach/teach.js',
+        'campaigns/teach/js/teach.js',
       ),
       'load' => array('site', 'teach_campaign'),
     ),
@@ -496,11 +496,11 @@ function _wordlet_configuration() {
       'wrappers' => array('teach', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
-        'campaigns/teach/teach.css',
+        'campaigns/teach/css/teach.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
-        'campaigns/teach/teach.js',
+        'campaigns/teach/js/teach.js',
       ),
       'load' => array('site', 'teach_campaign'),
     ),
@@ -513,11 +513,11 @@ function _wordlet_configuration() {
       'wrappers' => array('teach', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
-        'campaigns/teach/teach.css',
+        'campaigns/teach/css/teach.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
-        'campaigns/teach/teach.js',
+        'campaigns/teach/js/teach.js',
       ),
       'load' => array('site', 'teach_campaign'),
     ),
