@@ -23,4 +23,6 @@
 		</div>
 	</div>
 	<? include_once('templates/teach-social-block.tpl.php') ?>
+	<?= echo dirname(__FILE__) ?>
+    <?= echo __FILE__ ?>
 </div>
