@@ -10,10 +10,12 @@ $page-margins: 20px;
 $content-width: $page-width - $page-margins;
 
 $primary-color: #ea5f11;
+$primary-grey: #666;
+
 $primary-font: Helvetica,Arial,sans-serif;
 $secondary-font: 'GlyphaLTPro-Black', serif;
 
-$white: white;
+$primary-white: white;
 $light-white: #ccc;
 
 /* # General
@@ -44,7 +46,7 @@ $light-white: #ccc;
   padding: $page-margins;
   position: relative;
   min-height: 422px;
-  color: $white;
+  color: $primary-white;
   background: image-url('hero-background.jpg');
   clear: both;
   zoom: 1;
@@ -123,7 +125,7 @@ $light-white: #ccc;
         padding: 8px 0;
         width: 127px;
         text-align: center;
-        color: $white;
+        color: $primary-white;
         text-shadow: 0 -1px 2px #A84300;
       }
       &.active {
@@ -165,6 +167,13 @@ $light-white: #ccc;
     background: black;
     border: 5px solid white;
     @include box-shadow(0 0 10px black);
+  }
+
+  aside {
+    h2 {
+      font-size: 24px;
+      color: $primary-color;
+    }
   }
 }
 

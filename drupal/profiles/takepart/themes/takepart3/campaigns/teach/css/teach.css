@@ -28,38 +28,38 @@
 
 /* # General
 ================================================== */
-/* line 21, teach.scss */
+/* line 23, teach.scss */
 .page-wrap {
   padding: 10px;
   -webkit-font-smoothing: antialiased;
 }
-/* line 25, teach.scss */
+/* line 27, teach.scss */
 .page-wrap .main {
   background: url('../img/blackboard.jpg?1377561140');
 }
-/* line 29, teach.scss */
+/* line 31, teach.scss */
 .page-wrap h1, .page-wrap h2 {
   font: normal 100px "GlyphaLTPro-Black", serif;
 }
 
-/* line 35, teach.scss */
+/* line 37, teach.scss */
 .right {
   float: right;
 }
 
-/* line 36, teach.scss */
+/* line 38, teach.scss */
 .left {
   float: left;
 }
 
-/* line 37, teach.scss */
+/* line 39, teach.scss */
 .text-right {
   text-align: right;
 }
 
 /* # Header
 ================================================== */
-/* line 42, teach.scss */
+/* line 44, teach.scss */
 .header {
   font-family: Helvetica, Arial, sans-serif;
   padding: 20px;
@@ -71,7 +71,7 @@
   zoom: 1;
   /* menu */
 }
-/* line 52, teach.scss */
+/* line 54, teach.scss */
 .header .page-header {
   color: white;
   background-color: #ea5f11;
@@ -80,7 +80,7 @@
   margin-left: -20px;
   font-family: "GlyphaLTPro-Black", serif;
 }
-/* line 61, teach.scss */
+/* line 63, teach.scss */
 .header .hero {
   position: absolute;
   bottom: 0;
@@ -88,25 +88,25 @@
   margin-bottom: 50px;
   z-index: 10;
 }
-/* line 69, teach.scss */
+/* line 71, teach.scss */
 .header .slug {
   font-size: 27px;
   line-height: 150%;
 }
-/* line 74, teach.scss */
+/* line 76, teach.scss */
 .header .credit {
   font-size: 18px;
 }
-/* line 78, teach.scss */
+/* line 80, teach.scss */
 .header .date {
   font-size: 32px;
   line-height: 80%;
 }
-/* line 83, teach.scss */
+/* line 85, teach.scss */
 .header .burst {
   font: bold 33px Helvetica, Arial, sans-serif;
 }
-/* line 87, teach.scss */
+/* line 89, teach.scss */
 .header .fine {
   font-size: 9px;
   color: #cccccc;
@@ -116,11 +116,11 @@
   z-index: 10;
   width: 940px;
 }
-/* line 95, teach.scss */
+/* line 97, teach.scss */
 .header .fine .right {
   color: white;
 }
-/* line 102, teach.scss */
+/* line 104, teach.scss */
 .header .menu {
   font: bold 19px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
@@ -135,7 +135,7 @@
   left: 20px;
   right: 20px;
 }
-/* line 111, teach.scss */
+/* line 113, teach.scss */
 .header .menu ul {
   border: 1px dashed #ECBE84;
   list-style: none;
@@ -143,7 +143,7 @@
   overflow: visible;
   height: 39px;
 }
-/* line 118, teach.scss */
+/* line 120, teach.scss */
 .header .menu li {
   overflow: visible;
   display: -moz-inline-stack;
@@ -153,7 +153,7 @@
   zoom: 1;
   *display: inline;
 }
-/* line 121, teach.scss */
+/* line 123, teach.scss */
 .header .menu li a {
   display: -moz-inline-stack;
   display: inline-block;
@@ -167,13 +167,13 @@
   color: white;
   text-shadow: 0 -1px 2px #A84300;
 }
-/* line 129, teach.scss */
+/* line 131, teach.scss */
 .header .menu li.active {
   background: url('../img/active_menu_bg.png?1377644722') no-repeat -17px 0;
   margin-top: -3px;
   height: 43px;
 }
-/* line 133, teach.scss */
+/* line 135, teach.scss */
 .header .menu li.active a {
   text-shadow: none;
   color: black;
@@ -182,12 +182,12 @@
 
 /* # Content
 ================================================== */
-/* line 146, teach.scss */
+/* line 148, teach.scss */
 #page {
   padding: 20px;
   background: none;
 }
-/* line 149, teach.scss */
+/* line 151, teach.scss */
 #page .content-header {
   background: url('../img/header1_bg.png?1377644722') no-repeat;
   color: black;
@@ -196,7 +196,7 @@
   margin-bottom: 0px;
   padding: 5px 10px;
 }
-/* line 157, teach.scss */
+/* line 159, teach.scss */
 #page .content-header span {
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
@@ -205,7 +205,7 @@
   transform: rotate(-2deg);
   display: block;
 }
-/* line 162, teach.scss */
+/* line 164, teach.scss */
 #page .video {
   width: 600px;
   height: 500px;
@@ -214,6 +214,11 @@
   -webkit-box-shadow: 0 0 10px black;
   -moz-box-shadow: 0 0 10px black;
   box-shadow: 0 0 10px black;
+}
+/* line 173, teach.scss */
+#page aside h2 {
+  font-size: 24px;
+  color: #ea5f11;
 }
 
 /* # Content Signup Form
