@@ -16,5 +16,8 @@
             <? endforeach ?>
         </div>
     </article>
-    <? include('partials/teach-social-block.tpl.php') ?>
+    <section class="social-menu">
+        <h4 class="link_on_white"><?=w('social_follow_body')?></h4>
+        <? include('partials/teach-social-block.tpl.php') ?>
+    </section>
 </div>
