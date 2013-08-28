@@ -66,6 +66,15 @@ function fbregistration_form($form, &$form_state) {
       '#maxlength' => 255,
       '#required' => TRUE,
   );
+  
+  $form['settings']['fbregistration_foreign_zip'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Foriegn Label for ZIP:'),
+      '#default_value' => variable_get('fbregistration_foreign_zip', 'Postal Code'),
+      '#size' => 50,
+      '#maxlength' => 255,
+      '#required' => TRUE,
+  );
 
   $regform = drupal_get_form('user_register_form');
 
@@ -122,6 +131,9 @@ function fbregistration_form_submit($form, &$form_state) {
 
   $path = $form_state['values']['settings']['fbregistration_path'];
   variable_set('fbregistration_path', $path);
+  
+  $fbregistration_foreign_zip = $form_state['values']['settings']['fbregistration_foreign_zip'];
+  variable_set('fbregistration_foreign_zip', $fbregistration_foreign_zip);
 
   $fbregistration_state = $form_state['values']['settings']['fbregistration_state'];
   variable_set('fbregistration_state', $fbregistration_state);
