@@ -471,23 +471,6 @@ function _wordlet_configuration() {
       'load' => array('site', 'teach_campaign'),
     ),
 
-    // teach Photos
-    'teach_photos' => array(
-      'title' => 'TEACH - Photos',
-      'path' => 'teach/photos',
-      'published' => TRUE,
-      'wrappers' => array('teach', 'campaign', 'html'),
-      'css' => array(
-        'css/normalize_cms.css',
-        'campaigns/teach/css/teach.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/teach/js/teach.js',
-      ),
-      'load' => array('site', 'teach_campaign'),
-    ),
-
     // teach Alliances
     'teach_alliances' => array(
       'title' => 'TEACH - Alliances',
