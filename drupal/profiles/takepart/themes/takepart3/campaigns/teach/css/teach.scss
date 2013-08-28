@@ -177,18 +177,50 @@ $light-white: #ccc;
       display: block;
     }
   }
-  .video {
+  .content {
+    overflow: visible;
+    position: relative;
+  }
+  .video_container {
     width: 600px;
     height: 500px;
     background: black;
     border: 5px solid white;
+    position: relative;
+    z-index: 10;
+    vertical-align: top;
+    @include inline-block;
     @include box-shadow(0 0 10px black);
   }
 
   .social-menu {
     .sect-headline {
+  aside {
+    width: 295px;
+    background: image-url('paper_right.png') no-repeat right 10px;
+    padding: 0px 30px 0 300px;
+    top: -50px;
+    margin-left: -300px;
+    margin-right: -$page-margins;
+    position: relative;
+    z-index: 5;
+    @include inline-block;
+    vertical-align: top;
+    float: right;
+
+
+    h1 { display: none; }
+    h2 {
       font-size: 24px;
       color: $primary-color;
+    }
+    .link_on_white {
+      margin: 0 0 80px -40px;
+      width: 350px;
+      a {
+        font: 22px $secondary-font;
+        color: $primary-white;
+      }
     }
   }
 }

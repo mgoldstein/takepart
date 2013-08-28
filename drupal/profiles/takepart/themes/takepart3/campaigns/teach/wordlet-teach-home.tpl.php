@@ -1,7 +1,8 @@
 <div class="content">
 	<h2 class="content-header"><span><?=w('page_title')?></span></h2>
-	<div class="video"></div>
+	<div class="video_container"></div>
 	<aside>
+		<h4 class="link_on_white"><?=w('social_follow_body')?></h4>
 		<? include('partials/teach-social-block.tpl.php') ?>
 	</aside>
 </div>

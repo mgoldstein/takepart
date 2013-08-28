@@ -1,248 +1,70 @@
-@import url("//hello.myfonts.net/count/2826af");
-/* @license
- * MyFonts Webfont Build ID 2631343, 2013-08-27T17:12:57-0400
- * 
- * The fonts listed in this notice are subject to the End User License
- * Agreement(s) entered into by the website owner. All other parties are 
- * explicitly restricted from using the Licensed Webfonts(s).
- * 
- * You may obtain a valid license at the URLs below.
- * 
- * Webfont: Glypha Pro 75 Black by Linotype
- * URL: http://www.myfonts.com/fonts/linotype/glypha/pro-75-black/
- * Copyright: Part of the digitally encoded machine readable outline data for producing the Typefaces provided is copyrighted &#x00A9; 2008 Linotype GmbH, www.linotype.com. All rights reserved. This software is the property of Linotype GmbH, and may not be reproduced, 
- * Licensed pageviews: 250,000
- * 
- * 
- * License: http://www.myfonts.com/viewlicense?type=web&buildid=2631343
- * 
- * © 2013 MyFonts Inc
+/*
+Syntax error: Invalid CSS after "...============ *\/": expected "}", was ""
+        on line 233 of /Users/sshenassa/Sites/takepart-com/drupal/profiles/takepart/themes/takepart3/campaigns/teach/css/teach.scss
+
+Backtrace:
+/Users/sshenassa/Sites/takepart-com/drupal/profiles/takepart/themes/takepart3/campaigns/teach/css/teach.scss:233
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:1145:in `expected'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:1083:in `expected'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:1078:in `tok!'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:535:in `block'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:528:in `ruleset'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:590:in `block in declaration_or_ruleset'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:1121:in `call'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:1121:in `rethrow'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:591:in `declaration_or_ruleset'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:553:in `block_child'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:545:in `block_contents'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:534:in `block'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:528:in `ruleset'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:552:in `block_child'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:545:in `block_contents'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:82:in `stylesheet'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:27:in `parse'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/engine.rb:342:in `_to_tree'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/engine.rb:315:in `_render'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/engine.rb:262:in `render'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `block (2 levels) in compile'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `block in compile'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `block (2 levels) in run'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `block in run'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `call'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `run_callback'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/path.rb:55:in `callback_action'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/path.rb:35:in `update'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/state/directory.rb:39:in `block in modified'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `each'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `modified'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/state/directory.rb:18:in `refresh'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `block (2 levels) in run'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `each'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `block in run'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:15:in `loop'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:15:in `run'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/monitor.rb:26:in `run'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm.rb:70:in `monitor'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:87:in `perform'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/bin/compass:30:in `block in <top (required)>'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/bin/compass:44:in `call'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/bin/compass:44:in `<top (required)>'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/bin/compass:23:in `load'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/bin/compass:23:in `<main>'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/bin/ruby_noexec_wrapper:14:in `eval'
+/Users/sshenassa/.rvm/gems/ruby-2.0.0-p195/bin/ruby_noexec_wrapper:14:in `<main>'
 */
-/* @import must be at top of file, otherwise CSS will not work */
-@font-face {
-  font-family: 'GlyphaLTPro-Black';
-  src: url("fonts/GlyphaLTPro-Black.eot");
-  src: url("fonts/GlyphaLTPro-Black.eot?#iefix") format("embedded-opentype"), url("fonts/GlyphaLTPro-Black.woff") format("woff"), url("fonts/GlyphaLTPro-Black.ttf") format("truetype");
-}
-
-/* # General
-================================================== */
-/* line 24, teach.scss */
-.page-wrap {
-  padding: 10px;
-  -webkit-font-smoothing: antialiased;
-}
-/* line 28, teach.scss */
-.page-wrap .main {
-  background: url('../img/blackboard.jpg?1377641213');
-}
-/* line 33, teach.scss */
-.page-wrap .page-header,
-.page-wrap .content-header {
-  font: normal 100px "GlyphaLTPro-Black", serif;
-}
-
-/* line 39, teach.scss */
-.right {
-  float: right;
-}
-
-/* line 40, teach.scss */
-.left {
-  float: left;
-}
-
-/* line 41, teach.scss */
-.text-right {
-  text-align: right;
-}
-
-/* # Header
-================================================== */
-/* line 46, teach.scss */
-.header {
-  font-family: Helvetica, Arial, sans-serif;
-  padding: 20px;
-  position: relative;
-  min-height: 422px;
-  color: white;
-  background: url('../img/hero-background.jpg?1377641213');
-  clear: both;
-  zoom: 1;
-  /* menu */
-}
-/* line 56, teach.scss */
-.header .page-header {
-  color: white;
-  background-color: #ea5f11;
-  padding: .1em;
-  width: 400px;
-  margin-left: -20px;
-  font-family: "GlyphaLTPro-Black", serif;
-}
-/* line 65, teach.scss */
-.header .hero {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin-bottom: 50px;
-  z-index: 10;
-}
-/* line 73, teach.scss */
-.header .slug {
-  display: block;
-  font-size: 27px;
-  line-height: 150%;
-}
-/* line 79, teach.scss */
-.header .credit {
-  display: block;
-  font-size: 18px;
-}
-/* line 84, teach.scss */
-.header .date {
-  display: block;
-  font-size: 32px;
-  line-height: 80%;
-}
-/* line 90, teach.scss */
-.header .burst {
-  display: block;
-  font: bold 33px Helvetica, Arial, sans-serif;
-}
-/* line 95, teach.scss */
-.header .fine {
-  font-size: 9px;
-  color: #cccccc;
-  position: absolute;
-  margin-bottom: 60px;
-  bottom: 0;
-  z-index: 10;
-  width: 940px;
-}
-/* line 103, teach.scss */
-.header .fine .right {
-  color: white;
-}
-/* line 110, teach.scss */
-.header .menu-wrapper {
-  font: bold 19px/100% "GlyphaLTPro-Black", serif;
-  padding: 5px;
-  background: url('../img/orange_felt.png?1377645449');
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-  position: absolute;
-  bottom: 0;
-  left: 20px;
-  right: 20px;
-}
-/* line 119, teach.scss */
-.header .menu-wrapper .menu {
-  border: 1px dashed #ECBE84;
-  list-style: none;
-  text-align: center;
-  overflow: visible;
-  height: 39px;
-}
-/* line 125, teach.scss */
-.header .menu-wrapper .menu .item {
-  margin: 0;
-  padding: 0;
-  overflow: visible;
-  display: -moz-inline-stack;
-  display: inline-block;
-  vertical-align: middle;
-  *vertical-align: auto;
-  zoom: 1;
-  *display: inline;
-}
-/* line 130, teach.scss */
-.header .menu-wrapper .menu .item a {
-  display: -moz-inline-stack;
-  display: inline-block;
-  vertical-align: middle;
-  *vertical-align: auto;
-  zoom: 1;
-  *display: inline;
-  padding: 8px 0;
-  width: 127px;
-  text-align: center;
-  color: white;
-  text-shadow: 0 -1px 2px #A84300;
-  -webkit-transition-property: color;
-  -moz-transition-property: color;
-  -o-transition-property: color;
-  transition-property: color;
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  -webkit-transition-timing-function: ease-in-out;
-  -moz-transition-timing-function: ease-in-out;
-  -o-transition-timing-function: ease-in-out;
-  transition-timing-function: ease-in-out;
-}
-/* line 141, teach.scss */
-.header .menu-wrapper .menu .item a:hover, .header .menu-wrapper .menu .item a:focus {
-  text-decoration: none;
-  color: black;
-}
-/* line 146, teach.scss */
-.header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377645449') no-repeat -17px 0;
-  margin-top: -3px;
-  height: 43px;
-}
-/* line 150, teach.scss */
-.header .menu-wrapper .menu .item.active a {
-  text-shadow: none;
-  color: black;
-  margin-top: 3px;
-}
-
-/* # Content
-================================================== */
-/* line 164, teach.scss */
-#page {
-  padding: 20px;
-  background: none;
-}
-/* line 167, teach.scss */
-#page .content-header {
-  background: url('../img/header1_bg.png?1377645449') no-repeat;
-  color: black;
-  font-size: 26px;
-  height: 50px;
-  margin-bottom: 0px;
-  padding: 5px 10px;
-}
-/* line 175, teach.scss */
-#page .content-header span {
-  -webkit-transform: rotate(-2deg);
-  -moz-transform: rotate(-2deg);
-  -ms-transform: rotate(-2deg);
-  -o-transform: rotate(-2deg);
-  transform: rotate(-2deg);
-  display: block;
-}
-/* line 180, teach.scss */
-#page .video {
-  width: 600px;
-  height: 500px;
-  background: black;
-  border: 5px solid white;
-  -webkit-box-shadow: 0 0 10px black;
-  -moz-box-shadow: 0 0 10px black;
-  box-shadow: 0 0 10px black;
-}
-/* line 189, teach.scss */
-#page .social-menu .sect-headline {
-  font-size: 24px;
-  color: #ea5f11;
-}
-
-/* # Content Signup Form
-================================================== */
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"...============ */\": expected \"}\", was \"\"\A         on line 233 of /Users/sshenassa/Sites/takepart-com/drupal/profiles/takepart/themes/takepart3/campaigns/teach/css/teach.scss"; }
