@@ -1,4 +1,3 @@
-<section class="social-menu">
   <h1 class="sect-headline"><?=w('social_headline')?></h1>
   <section class="text">
     <h2 class="sect-headline"><?=w('social_text_headline')?></h2>
@@ -18,4 +17,3 @@
         <?=w('social_discussion_body')?>
     </div>
   </section>
-</section>
