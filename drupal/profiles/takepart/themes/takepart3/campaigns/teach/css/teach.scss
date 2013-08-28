@@ -28,7 +28,8 @@ $light-white: #ccc;
       background: image-url('blackboard.jpg');
     }
 
-    h1, h2 {
+    .page-header,
+    .content-header {
       font: normal 100px $secondary-font;
     }
 
@@ -105,7 +106,7 @@ $light-white: #ccc;
 
 
   /* menu */
-  .menu {
+  .menu-wrapper {
     font: bold 19px/100% $secondary-font;
     padding: 5px;
     background: image-url('orange_felt.png');
@@ -114,33 +115,33 @@ $light-white: #ccc;
     bottom: 0;
     left: $page-margins;
     right: $page-margins;
-    ul {
+    .menu {
       border: 1px dashed #ECBE84;
       list-style: none;
       text-align: center;
       overflow: visible;
       height: 39px;
-    }
-    li {
-      overflow: visible;
-      @include inline-block;
-      a {
+      .item {
+        overflow: visible;
         @include inline-block;
-        padding: 8px 0;
-        width: 127px;
-        text-align: center;
-        color: $primary-white;
-        text-shadow: 0 -1px 2px #A84300;
-      }
-      &.active {
-        background: image-url('active_menu_bg.png') no-repeat -17px 0;
-        margin-top: -3px;
-        height: 43px;
         a {
-            text-shadow: none;
-            color: black;
-            margin-top: 3px;
-          }
+          @include inline-block;
+          padding: 8px 0;
+          width: 127px;
+          text-align: center;
+          color: $primary-white;
+          text-shadow: 0 -1px 2px #A84300;
+        }
+        &.active {
+          background: image-url('active_menu_bg.png') no-repeat -17px 0;
+          margin-top: -3px;
+          height: 43px;
+          a {
+              text-shadow: none;
+              color: black;
+              margin-top: 3px;
+            }
+        }
       }
     }
   }
@@ -173,8 +174,8 @@ $light-white: #ccc;
     @include box-shadow(0 0 10px black);
   }
 
-  aside {
-    h2 {
+  .social-menu {
+    .sect-headline {
       font-size: 24px;
       color: $primary-color;
     }

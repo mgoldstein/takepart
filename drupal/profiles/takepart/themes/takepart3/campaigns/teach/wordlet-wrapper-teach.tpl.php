@@ -19,10 +19,10 @@
 					<?=w('header_fine')?>
 					<div class="right"><?=w('header_photo_credit')?></div>
 				</p>
-				<div class="menu">
-					<ul <?=wa('menu') ?>>
+				<div class="menu-wrapper">
+					<ul class='menu' <?=wa('menu') ?>>
 						<? foreach( wl('menu') as $w ): ?>
-							<li class="<?=ws($w->href)?>"><a href="<?=$w->href?>"><?=$w->single(false)?></a></li>
+							<li class="item <?=ws($w->href)?>"><a href="<?=$w->href?>"><?=$w->single(false)?></a></li>
 						<? endforeach ?>
 					</ul>
 				</div>
