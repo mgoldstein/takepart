@@ -2,6 +2,7 @@
 @import "compass/css3/box-shadow";
 @import "compass/css3/border-radius";
 @import "compass/css3/transform";
+@import "compass/css3/transition";
 @import "compass/css3/pie";
 @import "typeface";
 
@@ -133,6 +134,14 @@ $light-white: #ccc;
           text-align: center;
           color: $primary-white;
           text-shadow: 0 -1px 2px #A84300;
+          @include transition-property(color);
+          @include transition-duration(0.2s);
+          @include transition-timing-function(ease-in-out);
+          &:hover,
+          &:focus {
+            text-decoration: none;
+            color: black;
+          }
         }
         &.active {
           background: image-url('active_menu_bg.png') no-repeat -17px 0;

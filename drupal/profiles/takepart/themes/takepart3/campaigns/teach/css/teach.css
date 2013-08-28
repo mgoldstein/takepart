@@ -27,39 +27,39 @@
 
 /* # General
 ================================================== */
-/* line 23, teach.scss */
+/* line 24, teach.scss */
 .page-wrap {
   padding: 10px;
   -webkit-font-smoothing: antialiased;
 }
-/* line 27, teach.scss */
+/* line 28, teach.scss */
 .page-wrap .main {
   background: url('../img/blackboard.jpg?1377641213');
 }
-/* line 32, teach.scss */
+/* line 33, teach.scss */
 .page-wrap .page-header,
 .page-wrap .content-header {
   font: normal 100px "GlyphaLTPro-Black", serif;
 }
 
-/* line 38, teach.scss */
+/* line 39, teach.scss */
 .right {
   float: right;
 }
 
-/* line 39, teach.scss */
+/* line 40, teach.scss */
 .left {
   float: left;
 }
 
-/* line 40, teach.scss */
+/* line 41, teach.scss */
 .text-right {
   text-align: right;
 }
 
 /* # Header
 ================================================== */
-/* line 45, teach.scss */
+/* line 46, teach.scss */
 .header {
   font-family: Helvetica, Arial, sans-serif;
   padding: 20px;
@@ -71,7 +71,7 @@
   zoom: 1;
   /* menu */
 }
-/* line 55, teach.scss */
+/* line 56, teach.scss */
 .header .page-header {
   color: white;
   background-color: #ea5f11;
@@ -80,7 +80,7 @@
   margin-left: -20px;
   font-family: "GlyphaLTPro-Black", serif;
 }
-/* line 64, teach.scss */
+/* line 65, teach.scss */
 .header .hero {
   position: absolute;
   bottom: 0;
@@ -88,29 +88,29 @@
   margin-bottom: 50px;
   z-index: 10;
 }
-/* line 72, teach.scss */
+/* line 73, teach.scss */
 .header .slug {
   display: block;
   font-size: 27px;
   line-height: 150%;
 }
-/* line 78, teach.scss */
+/* line 79, teach.scss */
 .header .credit {
   display: block;
   font-size: 18px;
 }
-/* line 83, teach.scss */
+/* line 84, teach.scss */
 .header .date {
   display: block;
   font-size: 32px;
   line-height: 80%;
 }
-/* line 89, teach.scss */
+/* line 90, teach.scss */
 .header .burst {
   display: block;
   font: bold 33px Helvetica, Arial, sans-serif;
 }
-/* line 94, teach.scss */
+/* line 95, teach.scss */
 .header .fine {
   font-size: 9px;
   color: #cccccc;
@@ -120,11 +120,11 @@
   z-index: 10;
   width: 940px;
 }
-/* line 102, teach.scss */
+/* line 103, teach.scss */
 .header .fine .right {
   color: white;
 }
-/* line 109, teach.scss */
+/* line 110, teach.scss */
 .header .menu-wrapper {
   font: bold 19px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
@@ -139,7 +139,7 @@
   left: 20px;
   right: 20px;
 }
-/* line 118, teach.scss */
+/* line 119, teach.scss */
 .header .menu-wrapper .menu {
   border: 1px dashed #ECBE84;
   list-style: none;
@@ -147,7 +147,7 @@
   overflow: visible;
   height: 39px;
 }
-/* line 124, teach.scss */
+/* line 125, teach.scss */
 .header .menu-wrapper .menu .item {
   margin: 0;
   padding: 0;
@@ -159,7 +159,7 @@
   zoom: 1;
   *display: inline;
 }
-/* line 129, teach.scss */
+/* line 130, teach.scss */
 .header .menu-wrapper .menu .item a {
   display: -moz-inline-stack;
   display: inline-block;
@@ -172,14 +172,31 @@
   text-align: center;
   color: white;
   text-shadow: 0 -1px 2px #A84300;
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -o-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
 }
-/* line 137, teach.scss */
+/* line 141, teach.scss */
+.header .menu-wrapper .menu .item a:hover, .header .menu-wrapper .menu .item a:focus {
+  text-decoration: none;
+  color: black;
+}
+/* line 146, teach.scss */
 .header .menu-wrapper .menu .item.active {
   background: url('../img/active_menu_bg.png?1377645449') no-repeat -17px 0;
   margin-top: -3px;
   height: 43px;
 }
-/* line 141, teach.scss */
+/* line 150, teach.scss */
 .header .menu-wrapper .menu .item.active a {
   text-shadow: none;
   color: black;
@@ -188,12 +205,12 @@
 
 /* # Content
 ================================================== */
-/* line 155, teach.scss */
+/* line 164, teach.scss */
 #page {
   padding: 20px;
   background: none;
 }
-/* line 158, teach.scss */
+/* line 167, teach.scss */
 #page .content-header {
   background: url('../img/header1_bg.png?1377645449') no-repeat;
   color: black;
@@ -202,7 +219,7 @@
   margin-bottom: 0px;
   padding: 5px 10px;
 }
-/* line 166, teach.scss */
+/* line 175, teach.scss */
 #page .content-header span {
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
@@ -211,7 +228,7 @@
   transform: rotate(-2deg);
   display: block;
 }
-/* line 171, teach.scss */
+/* line 180, teach.scss */
 #page .video {
   width: 600px;
   height: 500px;
@@ -221,7 +238,7 @@
   -moz-box-shadow: 0 0 10px black;
   box-shadow: 0 0 10px black;
 }
-/* line 180, teach.scss */
+/* line 189, teach.scss */
 #page .social-menu .sect-headline {
   font-size: 24px;
   color: #ea5f11;
