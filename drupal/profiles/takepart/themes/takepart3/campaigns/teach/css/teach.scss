@@ -135,7 +135,7 @@ $light-white: #ccc;
           color: $primary-white;
           text-shadow: 0 -1px 2px #A84300;
           @include transition-property(color);
-          @include transition-duration(0.2s);
+          @include transition-duration(0.15s);
           @include transition-timing-function(ease-in-out);
           &:hover,
           &:focus {
@@ -210,8 +210,12 @@ $light-white: #ccc;
 
   h1 { display: none; }
   .sect-headline {
-    font-size: 24px;
+    font: normal 24px $secondary-font;
     color: $primary-color;
+    strong {
+      font-weight: normal;
+      color: black;
+    }
   }
   .link_on_white {
     margin: 0 0 80px -40px;

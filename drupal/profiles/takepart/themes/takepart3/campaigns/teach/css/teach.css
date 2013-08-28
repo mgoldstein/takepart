@@ -177,10 +177,10 @@
   -moz-transition-property: color;
   -o-transition-property: color;
   transition-property: color;
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  transition-duration: 0.2s;
+  -webkit-transition-duration: 0.15s;
+  -moz-transition-duration: 0.15s;
+  -o-transition-duration: 0.15s;
+  transition-duration: 0.15s;
   -webkit-transition-timing-function: ease-in-out;
   -moz-transition-timing-function: ease-in-out;
   -o-transition-timing-function: ease-in-out;
@@ -279,15 +279,20 @@
 }
 /* line 212, teach.scss */
 .page-wordlet-teach-home .social-menu .sect-headline {
-  font-size: 24px;
+  font: normal 24px "GlyphaLTPro-Black", serif;
   color: #ea5f11;
 }
-/* line 216, teach.scss */
+/* line 215, teach.scss */
+.page-wordlet-teach-home .social-menu .sect-headline strong {
+  font-weight: normal;
+  color: black;
+}
+/* line 220, teach.scss */
 .page-wordlet-teach-home .social-menu .link_on_white {
   margin: 0 0 80px -40px;
   width: 350px;
 }
-/* line 219, teach.scss */
+/* line 223, teach.scss */
 .page-wordlet-teach-home .social-menu .link_on_white a {
   font: 22px "GlyphaLTPro-Black", serif;
   color: white;
