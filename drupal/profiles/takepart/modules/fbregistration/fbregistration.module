@@ -187,25 +187,49 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
    
    $fbsetfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 10);
    $callcount = 10;
+   $ziplabel = variable_get('fbregistration_foreign_zip', 'Postal Code');
 
    $fbsetscript = <<<HTM
   var fbuserdata;
   function $fbsetfunction(cnt) {
-   cnt++;
-   if ((typeof(FB) !== 'undefined') && (cnt <= $callcount)) {
-     FB.api('/me', function (response) {
-        if(response.error){
-          setTimeout("$fbsetfunction(" + cnt + ")",1000);
-        } else {
-           fbuserdata = response;
-        }
-    });
-   } else {
-    setTimeout("$fbsetfunction(" + cnt + ")",1000);
-   }
+      cnt++;
+      if ((typeof (FB) !== 'undefined') && (cnt <= $callcount)) {
+          FB.api('/me', function (response) {
+              if (response.error) {
+                  setTimeout("$fbsetfunction(" + cnt + ")", 1000);
+              } else {
+                if(response) {
+                  fbuserdata = response;
+                  jQuery(document).ready(function () {
+                      var registration = document.getElementsByTagName('fb:registration');
+                      if (fbuserdata.locale != "en_US") {
+                          var data = eval(registration[0].getAttribute("fields"));
+                          var json = registration[0].getAttribute("fields");
+                          for (var x = 0; x < data.length; x++) {
+                              if(data[x]['name'] == 'field_userzipcode') {
+                                json = json.replace(data[x]['description'] ,"$ziplabel");
+                              }
+                          }
+                          registration[0].setAttribute("fields",json);
+                          //alert("reg: " + registration[0].getAttribute("fields"));
+                          FB.XFBML.parse();
+                      }
+                  });
+                } else {
+                  fbuserdata = new Array();
+                  fbuserdata['locale'] = 'en_US';
+                }
+              }
+          });
+      } else {
+          setTimeout("$fbsetfunction(" + cnt + ")", 1000);
+      }
   }
-  $fbsetfunction(0);
+  $fbsetfunction(0); 
+   
 HTM;
+
+     
 
    drupal_add_js($fbsetscript .
         'function fbregistration_validate(form) {' .
