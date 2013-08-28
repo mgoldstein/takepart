@@ -19,7 +19,7 @@
     </div>
   </section>
   <section class="follow">
-    <h2 class="sect-headline"><?=w('social_discussion_headline')?></h2>
+    <h2 class="sect-headline"><?=w('social_follow_headline')?></h2>
     <div class="cms">
         <?=w('social_follow_body')?>
     </div>
