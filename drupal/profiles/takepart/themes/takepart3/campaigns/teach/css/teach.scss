@@ -194,8 +194,6 @@ $light-white: #ccc;
   }
 
   .social-menu {
-    .sect-headline {
-  aside {
     width: 295px;
     background: image-url('paper_right.png') no-repeat right 10px;
     padding: 0px 30px 0 300px;
@@ -210,7 +208,7 @@ $light-white: #ccc;
 
 
     h1 { display: none; }
-    h2 {
+    .sect-headline {
       font-size: 24px;
       color: $primary-color;
     }
