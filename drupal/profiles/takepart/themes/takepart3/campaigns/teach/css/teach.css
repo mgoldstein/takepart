@@ -712,10 +712,17 @@ p a {
   max-width: 728px;
   margin: 1em auto 0;
 }
+@media (max-width: 767px) {
+  /* line 542, teach.scss */
+  .teach-video-page .ad,
+  .page-wordlet-teach-alliances .content .ad {
+    display: none;
+  }
+}
 
 /* # Video Pages
 ================================================== */
-/* line 554, teach.scss */
+/* line 557, teach.scss */
 .teach-video-page .content-preheader,
 .teach-video-page .col-headline {
   font-family: "GlyphaLTPro-Black", serif;
@@ -732,7 +739,7 @@ p a {
   -o-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 565, teach.scss */
+/* line 568, teach.scss */
 .teach-video-page .peek-a-boo {
   margin: 5px auto 0;
   background: transparent url(../img/paper-peek-a-boo.png) no-repeat scroll top right;
@@ -746,18 +753,18 @@ p a {
   box-shadow: 0 0 4px black;
 }
 @media (min-width: 480px) {
-  /* line 565, teach.scss */
+  /* line 568, teach.scss */
   .teach-video-page .peek-a-boo {
     margin-right: 25px;
     float: right;
   }
 }
-/* line 578, teach.scss */
+/* line 581, teach.scss */
 .teach-video-page .peek-a-boo a {
   color: black;
   font: normal normal 17px/1 "GlyphaLTPro-Black", serif, serif;
 }
-/* line 581, teach.scss */
+/* line 584, teach.scss */
 .teach-video-page .peek-a-boo a .fb {
   display: inline-block;
   *display: inline;
@@ -766,7 +773,7 @@ p a {
   height: 22px;
   background: transparent url(../img/social-facebook.png);
 }
-/* line 589, teach.scss */
+/* line 592, teach.scss */
 .teach-video-page .main-video-wrapper {
   clear: right;
   max-width: 859px;
@@ -779,65 +786,65 @@ p a {
   position: relative;
   z-index: 2;
 }
-/* line 599, teach.scss */
+/* line 602, teach.scss */
 .teach-video-page .content-column {
   margin-bottom: 2em;
 }
 @media (min-width: 768px) {
-  /* line 599, teach.scss */
+  /* line 602, teach.scss */
   .teach-video-page .content-column {
     width: 44.9%;
     margin-right: 5%;
     float: left;
   }
-  /* line 604, teach.scss */
+  /* line 607, teach.scss */
   .teach-video-page .content-column.column-odd {
     clear: left;
   }
 }
-/* line 609, teach.scss */
+/* line 612, teach.scss */
 .teach-video-page .content-column .col-headline {
   margin: 0 0 .5em;
 }
-/* line 612, teach.scss */
+/* line 615, teach.scss */
 .teach-video-page .content-column .col-content {
   font-size: 16px;
   line-height: 1.25;
   color: #666565;
 }
-/* line 616, teach.scss */
+/* line 619, teach.scss */
 .teach-video-page .content-column .col-content p {
   font-size: 16px;
   line-height: 1.25;
   color: #666565;
 }
-/* line 621, teach.scss */
+/* line 624, teach.scss */
 .teach-video-page .content-column .col-content strong {
   font-size: 18px;
 }
-/* line 624, teach.scss */
+/* line 627, teach.scss */
 .teach-video-page .content-column .col-content ul {
   list-style-type: none;
   padding-left: .75em;
 }
-/* line 627, teach.scss */
+/* line 630, teach.scss */
 .teach-video-page .content-column .col-content ul li {
   line-height: 1.25;
   margin-bottom: 0.25em;
   position: relative;
 }
-/* line 631, teach.scss */
+/* line 634, teach.scss */
 .teach-video-page .content-column .col-content ul li:before {
   content: '»';
   position: absolute;
   padding-right: 0.5em;
   right: 100%;
 }
-/* line 639, teach.scss */
+/* line 642, teach.scss */
 .teach-video-page .content-column .col-content a {
   color: #eb6413;
 }
-/* line 644, teach.scss */
+/* line 647, teach.scss */
 .teach-video-page .social-footer {
   text-align: center;
   font: normal normal 22px/1 "GlyphaLTPro-Black", serif, serif;
@@ -846,17 +853,17 @@ p a {
 
 /* # Alliances Page
 ================================================== */
-/* line 655, teach.scss */
+/* line 658, teach.scss */
 .page-wordlet-teach-alliances .content .main-image-wrapper {
   margin: 0.5em 20px;
   text-align: center;
 }
-/* line 658, teach.scss */
+/* line 661, teach.scss */
 .page-wordlet-teach-alliances .content .main-image-wrapper img {
   max-width: 100% !important;
   height: auto !important;
 }
-/* line 664, teach.scss */
+/* line 667, teach.scss */
 .page-wordlet-teach-alliances .content .content-main,
 .page-wordlet-teach-alliances .content .alliances {
   -webkit-box-sizing: border-box;
@@ -866,7 +873,7 @@ p a {
   width: 100%;
   float: left;
 }
-/* line 672, teach.scss */
+/* line 675, teach.scss */
 .page-wordlet-teach-alliances .content .alliance {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -881,7 +888,7 @@ p a {
   margin-bottom: 20px;
 }
 @media (min-width: 321px) {
-  /* line 672, teach.scss */
+  /* line 675, teach.scss */
   .page-wordlet-teach-alliances .content .alliance {
     float: left;
     width: 45%;
@@ -889,25 +896,25 @@ p a {
     min-height: 81px;
     line-height: 61px;
   }
-  /* line 688, teach.scss */
+  /* line 691, teach.scss */
   .page-wordlet-teach-alliances .content .alliance.alliance-even {
     margin-right: 0;
   }
 }
 @media (min-width: 769px) {
-  /* line 672, teach.scss */
+  /* line 675, teach.scss */
   .page-wordlet-teach-alliances .content .alliance {
     width: 22%;
     margin-right: 4%;
     height: 142px;
     line-height: 122px;
   }
-  /* line 697, teach.scss */
+  /* line 700, teach.scss */
   .page-wordlet-teach-alliances .content .alliance.alliance-nth-child-4n {
     margin-right: 0;
   }
 }
-/* line 701, teach.scss */
+/* line 704, teach.scss */
 .page-wordlet-teach-alliances .content .alliance img {
   max-width: 100% !important;
   height: auto !important;
