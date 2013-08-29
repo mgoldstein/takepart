@@ -17,18 +17,24 @@ $body-copy-black: #313131;
 
 /* # General
 ================================================== */
+#page-wrapper {
+  max-width: $page-width;
+  background-color: white;
+}
+
 .page-wrap {
-    padding: 10px;
-    -webkit-font-smoothing: antialiased;
+  width: auto;
+  padding: 10px;
+  -webkit-font-smoothing: antialiased;
 
-    .main {
-      background: image-url('blackboard.jpg');
-    }
+  .main {
+    background: image-url('blackboard.jpg');
+  }
 
-    .page-header,
-    .content-header {
-      font: normal 100px $secondary-font;
-    }
+  .page-header,
+  .content-header {
+    font: normal 100px $secondary-font;
+  }
 
 }
 
@@ -157,6 +163,99 @@ $body-copy-black: #313131;
     }
   }
 }
+
+
+/* # Responsive Layout
+================================================== */
+@media (max-width: 1000px) {
+  #page-wrapper {
+    width: 100%;
+  }
+  .header {
+    .hero {
+      width: 77%;
+      height: auto;
+    }
+    .logos {
+      width: 25%;
+      height: auto;
+    }
+
+    .menu-wrapper {
+      font-size: 17px;
+      .menu .item a {
+        width: 110px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #page-wrapper, .page-wrap {
+    padding: 0;
+  }
+  .header {
+    padding: 0;
+    text-align: center;
+    background: none;
+    .slug {
+      font-size: 23px;
+    }
+    .page-header {
+      width: auto;
+      margin-left: 0;
+      padding: 0;
+    }
+    .hero {
+      width: 111%;
+      height: auto;
+      position: static;
+      margin: -20px 0px -20px -43px;
+      margin-bottom: -4px;
+      margin-top: -20px;
+    }
+    .fine {
+      position: static;
+      margin: 0px;
+      text-align: center;
+      width: auto;
+      .logos {
+        width: 65%;
+        height: auto;
+        display: block;
+        margin: 10px auto;
+      }
+      .right {
+        display: none;
+      }
+    }
+
+    .menu-wrapper {
+      @include border-radius(0);
+      position: static;
+      font-size: 30px;
+      .menu {
+        border-left: none;
+        border-right: none;
+        height: auto;
+        .item {
+          display: block;
+          margin: 0 auto;
+          vertical-align: middle;
+          a {
+            width: auto;
+            text-align: center;
+          }
+          &.active {
+            background-position: center 3px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
 
 
 /* # Content

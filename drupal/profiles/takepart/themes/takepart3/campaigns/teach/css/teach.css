@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("//hello.myfonts.net/count/2826af");
 /* @license
  * MyFonts Webfont Build ID 2631343, 2013-08-27T17:12:57-0400
@@ -28,50 +29,57 @@
 /* # General
 ================================================== */
 /* line 20, teach.scss */
+#page-wrapper {
+  max-width: 1000px;
+  background-color: white;
+}
+
+/* line 25, teach.scss */
 .page-wrap {
+  width: auto;
   padding: 10px;
   -webkit-font-smoothing: antialiased;
 }
-/* line 24, teach.scss */
+/* line 30, teach.scss */
 .page-wrap .main {
-  background: url('../img/blackboard.jpg?1377714697');
+  background: url('../img/blackboard.jpg?1377730837');
 }
-/* line 29, teach.scss */
+/* line 35, teach.scss */
 .page-wrap .page-header,
 .page-wrap .content-header {
   font: normal 100px "GlyphaLTPro-Black", serif;
 }
 
-/* line 35, teach.scss */
+/* line 41, teach.scss */
 .right {
   float: right;
 }
 
-/* line 36, teach.scss */
+/* line 42, teach.scss */
 .left {
   float: left;
 }
 
-/* line 37, teach.scss */
+/* line 43, teach.scss */
 .text-right {
   text-align: right;
 }
 
 /* # Header
 ================================================== */
-/* line 42, teach.scss */
+/* line 48, teach.scss */
 .header {
   font-family: Helvetica, Arial, sans-serif;
   padding: 20px;
   position: relative;
   min-height: 422px;
   color: white;
-  background: url('../img/hero-background.jpg?1377714697');
+  background: url('../img/hero-background.jpg?1377730837');
   clear: both;
   zoom: 1;
   /* menu */
 }
-/* line 52, teach.scss */
+/* line 58, teach.scss */
 .header .page-header {
   color: white;
   background-color: #ea5f11;
@@ -80,7 +88,7 @@
   margin-left: -20px;
   font-family: "GlyphaLTPro-Black", serif;
 }
-/* line 61, teach.scss */
+/* line 67, teach.scss */
 .header .hero {
   position: absolute;
   bottom: 0;
@@ -88,29 +96,29 @@
   margin-bottom: 50px;
   z-index: 10;
 }
-/* line 69, teach.scss */
+/* line 75, teach.scss */
 .header .slug {
   display: block;
   font-size: 27px;
   line-height: 150%;
 }
-/* line 75, teach.scss */
+/* line 81, teach.scss */
 .header .credit {
   display: block;
   font-size: 18px;
 }
-/* line 80, teach.scss */
+/* line 86, teach.scss */
 .header .date {
   display: block;
   font-size: 32px;
   line-height: 80%;
 }
-/* line 86, teach.scss */
+/* line 92, teach.scss */
 .header .burst {
   display: block;
   font: bold 33px Helvetica, Arial, sans-serif;
 }
-/* line 91, teach.scss */
+/* line 97, teach.scss */
 .header .fine {
   font-size: 9px;
   color: #cccccc;
@@ -120,20 +128,20 @@
   z-index: 10;
   width: 940px;
 }
-/* line 99, teach.scss */
+/* line 105, teach.scss */
 .header .fine .logos {
   display: block;
   margin-bottom: 10px;
 }
-/* line 103, teach.scss */
+/* line 109, teach.scss */
 .header .fine .right {
   color: white;
 }
-/* line 110, teach.scss */
+/* line 116, teach.scss */
 .header .menu-wrapper {
   font: bold 19px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
-  background: url('../img/orange_felt.png?1377714705');
+  background: url('../img/orange_felt.png?1377730837');
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -144,7 +152,7 @@
   left: 20px;
   right: 20px;
 }
-/* line 119, teach.scss */
+/* line 125, teach.scss */
 .header .menu-wrapper .menu {
   border: 1px dashed #ECBE84;
   list-style: none;
@@ -152,7 +160,7 @@
   overflow: visible;
   height: 39px;
 }
-/* line 125, teach.scss */
+/* line 131, teach.scss */
 .header .menu-wrapper .menu .item {
   margin: 0;
   padding: 0;
@@ -164,7 +172,7 @@
   zoom: 1;
   *display: inline;
 }
-/* line 130, teach.scss */
+/* line 136, teach.scss */
 .header .menu-wrapper .menu .item a {
   display: -moz-inline-stack;
   display: inline-block;
@@ -190,51 +198,159 @@
   -o-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
 }
-/* line 141, teach.scss */
+/* line 147, teach.scss */
 .header .menu-wrapper .menu .item a:hover, .header .menu-wrapper .menu .item a:focus {
   text-decoration: none;
   color: black;
 }
-/* line 146, teach.scss */
+/* line 152, teach.scss */
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377714705') no-repeat -17px 0;
+  background: url('../img/active_menu_bg.png?1377730837') no-repeat -17px 0;
   margin-top: -3px;
   height: 43px;
 }
-/* line 150, teach.scss */
+/* line 156, teach.scss */
 .header .menu-wrapper .menu .item.active a {
   text-shadow: none;
   color: black;
   margin-top: 3px;
 }
 
+/* # Responsive Layout
+================================================== */
+@media (max-width: 1000px) {
+  /* line 171, teach.scss */
+  #page-wrapper {
+    width: 100%;
+  }
+
+  /* line 175, teach.scss */
+  .header .hero {
+    width: 77%;
+    height: auto;
+  }
+  /* line 179, teach.scss */
+  .header .logos {
+    width: 25%;
+    height: auto;
+  }
+  /* line 184, teach.scss */
+  .header .menu-wrapper {
+    font-size: 17px;
+  }
+  /* line 186, teach.scss */
+  .header .menu-wrapper .menu .item a {
+    width: 110px;
+  }
+}
+@media (max-width: 600px) {
+  /* line 194, teach.scss */
+  #page-wrapper, .page-wrap {
+    padding: 0;
+  }
+
+  /* line 197, teach.scss */
+  .header {
+    padding: 0;
+    text-align: center;
+    background: none;
+  }
+  /* line 201, teach.scss */
+  .header .slug {
+    font-size: 23px;
+  }
+  /* line 204, teach.scss */
+  .header .page-header {
+    width: auto;
+    margin-left: 0;
+    padding: 0;
+  }
+  /* line 209, teach.scss */
+  .header .hero {
+    width: 111%;
+    height: auto;
+    position: static;
+    margin: -20px 0px -20px -43px;
+    margin-bottom: -4px;
+    margin-top: -20px;
+  }
+  /* line 217, teach.scss */
+  .header .fine {
+    position: static;
+    margin: 0px;
+    text-align: center;
+    width: auto;
+  }
+  /* line 222, teach.scss */
+  .header .fine .logos {
+    width: 65%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+  }
+  /* line 228, teach.scss */
+  .header .fine .right {
+    display: none;
+  }
+  /* line 233, teach.scss */
+  .header .menu-wrapper {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    position: static;
+    font-size: 30px;
+  }
+  /* line 237, teach.scss */
+  .header .menu-wrapper .menu {
+    border-left: none;
+    border-right: none;
+    height: auto;
+  }
+  /* line 241, teach.scss */
+  .header .menu-wrapper .menu .item {
+    display: block;
+    margin: 0 auto;
+    vertical-align: middle;
+  }
+  /* line 245, teach.scss */
+  .header .menu-wrapper .menu .item a {
+    width: auto;
+    text-align: center;
+  }
+  /* line 249, teach.scss */
+  .header .menu-wrapper .menu .item.active {
+    background-position: center 3px;
+  }
+}
 /* # Content
 ================================================== */
-/* line 164, teach.scss */
+/* line 263, teach.scss */
 p {
   color: #313131;
   -webkit-font-smoothing: antialiased;
 }
-/* line 167, teach.scss */
+/* line 266, teach.scss */
 p a {
   color: #ea5f11;
 }
 
-/* line 172, teach.scss */
+/* line 271, teach.scss */
 #page {
   padding: 20px;
   background: none;
 }
-/* line 175, teach.scss */
+/* line 274, teach.scss */
 #page .content-header {
-  background: url('../img/header1_bg.png?1377714705') no-repeat;
+  background: url('../img/header1_bg.png?1377730837') no-repeat;
   color: black;
   font-size: 26px;
   height: 50px;
   margin-bottom: 0px;
   padding: 5px 10px;
 }
-/* line 183, teach.scss */
+/* line 282, teach.scss */
 #page .content-header span {
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
@@ -243,12 +359,12 @@ p a {
   transform: rotate(-2deg);
   display: block;
 }
-/* line 188, teach.scss */
+/* line 287, teach.scss */
 #page .content {
   overflow: visible;
   position: relative;
 }
-/* line 192, teach.scss */
+/* line 291, teach.scss */
 #page .video_container {
   width: 600px;
   height: 500px;
@@ -268,12 +384,12 @@ p a {
   box-shadow: 0 0 10px black;
 }
 
-/* line 205, teach.scss */
+/* line 304, teach.scss */
 .page-body-content {
   background: white;
   padding: 20px;
 }
-/* line 208, teach.scss */
+/* line 307, teach.scss */
 .page-body-content img {
   float: right;
   margin-left: 20px;
@@ -282,10 +398,10 @@ p a {
 
 /* # Home Page
 ================================================== */
-/* line 217, teach.scss */
+/* line 316, teach.scss */
 .page-wordlet-teach-home .social-menu {
   width: 290px;
-  background: url('../img/paper_right.png?1377714705') no-repeat right 10px;
+  background: url('../img/paper_right.png?1377730837') no-repeat right 10px;
   padding: 0px 30px 0 300px;
   top: -50px;
   margin-left: -300px;
@@ -301,71 +417,71 @@ p a {
   vertical-align: top;
   float: right;
 }
-/* line 230, teach.scss */
+/* line 329, teach.scss */
 .page-wordlet-teach-home .social-menu h1 {
   display: none;
 }
-/* line 231, teach.scss */
+/* line 330, teach.scss */
 .page-wordlet-teach-home .social-menu .link_on_white {
   margin: 0 0 80px -40px;
   width: 350px;
 }
-/* line 234, teach.scss */
+/* line 333, teach.scss */
 .page-wordlet-teach-home .social-menu .link_on_white a {
   font: 22px "GlyphaLTPro-Black", serif;
   color: white;
 }
-/* line 239, teach.scss */
+/* line 338, teach.scss */
 .page-wordlet-teach-home .social-menu .item {
   background-repeat: no-repeat;
   padding-left: 90px;
 }
-/* line 243, teach.scss */
+/* line 342, teach.scss */
 .page-wordlet-teach-home .social-menu .item.text {
-  background-image: url('../img/social-phone.png?1377735601');
+  background-image: url('../img/social-phone.png?1377734691');
 }
-/* line 244, teach.scss */
+/* line 343, teach.scss */
 .page-wordlet-teach-home .social-menu .item.connected {
-  background-image: url('../img/social-envelopes.png?1377735601');
+  background-image: url('../img/social-envelopes.png?1377734691');
 }
-/* line 245, teach.scss */
+/* line 344, teach.scss */
 .page-wordlet-teach-home .social-menu .item.discussion {
-  background-image: url('../img/social-chat.png?1377735601');
+  background-image: url('../img/social-chat.png?1377734691');
 }
-/* line 247, teach.scss */
+/* line 346, teach.scss */
 .page-wordlet-teach-home .social-menu .item p {
   line-height: 100%;
 }
-/* line 249, teach.scss */
+/* line 348, teach.scss */
 .page-wordlet-teach-home .social-menu .item p .terms {
   font-size: 12px;
   line-height: 25px;
 }
-/* line 255, teach.scss */
+/* line 354, teach.scss */
 .page-wordlet-teach-home .social-menu .item #newsletter-campaign-email-only-signup-form {
   position: relative;
 }
-/* line 257, teach.scss */
+/* line 356, teach.scss */
 .page-wordlet-teach-home .social-menu .item #newsletter-campaign-email-only-signup-form label {
   display: none;
 }
-/* line 258, teach.scss */
+/* line 357, teach.scss */
 .page-wordlet-teach-home .social-menu .item #newsletter-campaign-email-only-signup-form #edit-email {
-  background: url('../img/text-field-large.png?1377758755') no-repeat;
+  background: url('../img/text-field-large.png?1377742378') no-repeat;
   width: 240px;
   height: 46px;
   border: none;
   margin-left: -80px;
   padding: 0 15px;
 }
-/* line 267, teach.scss */
+/* line 366, teach.scss */
 .page-wordlet-teach-home .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions {
   position: absolute;
   top: 9px;
   right: 30px;
   margin: 0px;
 }
-/* line 272, teach.scss */
+/* line 371, teach.scss */
 .page-wordlet-teach-home .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions input {
   cursor: pointer;
   -webkit-appearance: none;
@@ -376,12 +492,12 @@ p a {
   text-transform: uppercase;
   width: 57px;
 }
-/* line 285, teach.scss */
+/* line 384, teach.scss */
 .page-wordlet-teach-home .social-menu .item .sect-headline {
   font: normal 24px/90% "GlyphaLTPro-Black", serif;
   color: #ea5f11;
 }
-/* line 288, teach.scss */
+/* line 387, teach.scss */
 .page-wordlet-teach-home .social-menu .item .sect-headline strong {
   font-weight: normal;
   color: #313131;
@@ -389,7 +505,7 @@ p a {
 
 /* # Common elements for some interior pages
 */
-/* line 303, teach.scss */
+/* line 402, teach.scss */
 .teach-video-page,
 .page-wordlet-teach-alliances .content {
   background: #ecedf6;
@@ -398,7 +514,7 @@ p a {
   -moz-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
 }
-/* line 308, teach.scss */
+/* line 407, teach.scss */
 .teach-video-page .content-headline,
 .page-wordlet-teach-alliances .content .content-headline {
   font-family: "GlyphaLTPro-Black", serif;
@@ -409,13 +525,13 @@ p a {
   max-width: 740px;
 }
 @media (min-width: 481px) {
-  /* line 308, teach.scss */
+  /* line 407, teach.scss */
   .teach-video-page .content-headline,
   .page-wordlet-teach-alliances .content .content-headline {
     margin-left: 20px;
   }
 }
-/* line 319, teach.scss */
+/* line 418, teach.scss */
 .teach-video-page .content-subheadline,
 .page-wordlet-teach-alliances .content .content-subheadline {
   font-weight: normal;
@@ -424,20 +540,20 @@ p a {
   line-height: 1;
 }
 @media (min-width: 481px) {
-  /* line 319, teach.scss */
+  /* line 418, teach.scss */
   .teach-video-page .content-subheadline,
   .page-wordlet-teach-alliances .content .content-subheadline {
     margin-left: 20px;
   }
 }
-/* line 328, teach.scss */
+/* line 427, teach.scss */
 .teach-video-page .social-menu,
 .page-wordlet-teach-alliances .content .social-menu {
   clear: both;
   text-align: center;
 }
 @media (min-width: 848px) {
-  /* line 328, teach.scss */
+  /* line 427, teach.scss */
   .teach-video-page .social-menu,
   .page-wordlet-teach-alliances .content .social-menu {
     background: transparent url(../img/video-page-social-block-bg.png) scroll no-repeat bottom center;
@@ -446,7 +562,7 @@ p a {
     padding: 0 9px 30px;
   }
 }
-/* line 337, teach.scss */
+/* line 436, teach.scss */
 .teach-video-page .social-menu h1.sect-headline,
 .page-wordlet-teach-alliances .content .social-menu h1.sect-headline {
   font-family: "GlyphaLTPro-Black", serif;
@@ -458,7 +574,7 @@ p a {
   max-width: 500px;
   margin: 1em auto 0.5em;
 }
-/* line 347, teach.scss */
+/* line 446, teach.scss */
 .teach-video-page .social-menu .item,
 .page-wordlet-teach-alliances .content .social-menu .item {
   display: inline-block;
@@ -472,14 +588,14 @@ p a {
   vertical-align: bottom;
   position: relative;
 }
-/* line 355, teach.scss */
+/* line 454, teach.scss */
 .teach-video-page .social-menu .item p,
 .page-wordlet-teach-alliances .content .social-menu .item p {
   font-size: 11.5px;
   line-height: 1;
   color: 666565;
 }
-/* line 360, teach.scss */
+/* line 459, teach.scss */
 .teach-video-page .social-menu .item .sect-headline,
 .page-wordlet-teach-alliances .content .social-menu .item .sect-headline {
   font-family: "GlyphaLTPro-Black", serif;
@@ -488,23 +604,23 @@ p a {
   line-height: 1;
   color: #eb6413;
 }
-/* line 366, teach.scss */
+/* line 465, teach.scss */
 .teach-video-page .social-menu .item .sect-headline strong,
 .page-wordlet-teach-alliances .content .social-menu .item .sect-headline strong {
   color: black;
   font-weight: normal;
 }
-/* line 372, teach.scss */
+/* line 471, teach.scss */
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form,
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form {
   position: relative;
 }
-/* line 374, teach.scss */
+/* line 473, teach.scss */
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form label,
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form label {
   display: none;
 }
-/* line 375, teach.scss */
+/* line 474, teach.scss */
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form #edit-email,
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form #edit-email {
   background: transparent url(../img/text-field-small.png);
@@ -514,7 +630,7 @@ p a {
   margin: 0 auto;
   padding: 0 10px;
 }
-/* line 383, teach.scss */
+/* line 482, teach.scss */
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions,
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions {
   position: absolute;
@@ -522,7 +638,7 @@ p a {
   right: -2px;
   margin: 0;
 }
-/* line 388, teach.scss */
+/* line 487, teach.scss */
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions input[type="submit"],
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions input[type="submit"] {
   cursor: pointer;
@@ -534,7 +650,7 @@ p a {
   text-transform: uppercase;
   width: 57px;
 }
-/* line 402, teach.scss */
+/* line 501, teach.scss */
 .teach-video-page .social-menu .item:before,
 .page-wordlet-teach-alliances .content .social-menu .item:before {
   display: block;
@@ -544,12 +660,12 @@ p a {
   left: 50%;
   background-color: transparent;
 }
-/* line 410, teach.scss */
+/* line 509, teach.scss */
 .teach-video-page .social-menu .item.text,
 .page-wordlet-teach-alliances .content .social-menu .item.text {
   margin-top: 73px;
 }
-/* line 412, teach.scss */
+/* line 511, teach.scss */
 .teach-video-page .social-menu .item.text:before,
 .page-wordlet-teach-alliances .content .social-menu .item.text:before {
   background-image: url(../img/social-phone.png);
@@ -557,12 +673,12 @@ p a {
   height: 73px;
   margin-left: -36px;
 }
-/* line 419, teach.scss */
+/* line 518, teach.scss */
 .teach-video-page .social-menu .item.connected,
 .page-wordlet-teach-alliances .content .social-menu .item.connected {
   margin-top: 79px;
 }
-/* line 421, teach.scss */
+/* line 520, teach.scss */
 .teach-video-page .social-menu .item.connected:before,
 .page-wordlet-teach-alliances .content .social-menu .item.connected:before {
   background-image: url(../img/social-envelopes.png);
@@ -570,12 +686,12 @@ p a {
   height: 79px;
   margin-left: -36px;
 }
-/* line 428, teach.scss */
+/* line 527, teach.scss */
 .teach-video-page .social-menu .item.discussion,
 .page-wordlet-teach-alliances .content .social-menu .item.discussion {
   margin-top: 55px;
 }
-/* line 430, teach.scss */
+/* line 529, teach.scss */
 .teach-video-page .social-menu .item.discussion:before,
 .page-wordlet-teach-alliances .content .social-menu .item.discussion:before {
   background-image: url(../img/social-chat.png);
@@ -586,7 +702,7 @@ p a {
 
 /* # Video Pages
 ================================================== */
-/* line 447, teach.scss */
+/* line 546, teach.scss */
 .teach-video-page .content-preheader,
 .teach-video-page .col-headline {
   font-family: "GlyphaLTPro-Black", serif;
@@ -603,7 +719,7 @@ p a {
   -o-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 458, teach.scss */
+/* line 557, teach.scss */
 .teach-video-page .peek-a-boo {
   float: right;
   margin-top: 5px;
@@ -618,12 +734,12 @@ p a {
   -moz-box-shadow: 0 0 4px black;
   box-shadow: 0 0 4px black;
 }
-/* line 469, teach.scss */
+/* line 568, teach.scss */
 .teach-video-page .peek-a-boo a {
   color: black;
   font: normal normal 17px/1 "GlyphaLTPro-Black", serif, serif;
 }
-/* line 472, teach.scss */
+/* line 571, teach.scss */
 .teach-video-page .peek-a-boo a .fb {
   display: inline-block;
   *display: inline;
@@ -632,7 +748,7 @@ p a {
   height: 22px;
   background: transparent url(../img/social-facebook.png);
 }
-/* line 480, teach.scss */
+/* line 579, teach.scss */
 .teach-video-page .main-video-wrapper {
   clear: right;
   width: 859px;
@@ -645,65 +761,65 @@ p a {
   position: relative;
   z-index: 2;
 }
-/* line 490, teach.scss */
+/* line 589, teach.scss */
 .teach-video-page .content-column {
   margin-bottom: 2em;
 }
 @media (min-width: 481px) {
-  /* line 490, teach.scss */
+  /* line 589, teach.scss */
   .teach-video-page .content-column {
     width: 44.9%;
     margin-right: 5%;
     float: left;
   }
-  /* line 495, teach.scss */
+  /* line 594, teach.scss */
   .teach-video-page .content-column.column-odd {
     clear: left;
   }
 }
-/* line 500, teach.scss */
+/* line 599, teach.scss */
 .teach-video-page .content-column .col-headline {
   margin: 0 0 .5em;
 }
-/* line 503, teach.scss */
+/* line 602, teach.scss */
 .teach-video-page .content-column .col-content {
   font-size: 16px;
   line-height: 1.25;
   color: #666565;
 }
-/* line 507, teach.scss */
+/* line 606, teach.scss */
 .teach-video-page .content-column .col-content p {
   font-size: 16px;
   line-height: 1.25;
   color: #666565;
 }
-/* line 512, teach.scss */
+/* line 611, teach.scss */
 .teach-video-page .content-column .col-content strong {
   font-size: 18px;
 }
-/* line 515, teach.scss */
+/* line 614, teach.scss */
 .teach-video-page .content-column .col-content ul {
   list-style-type: none;
   padding-left: .75em;
 }
-/* line 518, teach.scss */
+/* line 617, teach.scss */
 .teach-video-page .content-column .col-content ul li {
   line-height: 1.25;
   margin-bottom: 0.25em;
   position: relative;
 }
-/* line 522, teach.scss */
+/* line 621, teach.scss */
 .teach-video-page .content-column .col-content ul li:before {
   content: '»';
   position: absolute;
   padding-right: 0.5em;
   right: 100%;
 }
-/* line 530, teach.scss */
+/* line 629, teach.scss */
 .teach-video-page .content-column .col-content a {
   color: #eb6413;
 }
-/* line 535, teach.scss */
+/* line 634, teach.scss */
 .teach-video-page .social-footer {
   text-align: center;
   font: normal normal 22px/1 "GlyphaLTPro-Black", serif, serif;
@@ -712,12 +828,12 @@ p a {
 
 /* # Alliances Page
 ================================================== */
-/* line 546, teach.scss */
+/* line 645, teach.scss */
 .page-wordlet-teach-alliances .content .main-image-wrapper {
   margin: 0.5em 20px;
   text-align: center;
 }
-/* line 551, teach.scss */
+/* line 650, teach.scss */
 .page-wordlet-teach-alliances .content .content-main,
 .page-wordlet-teach-alliances .content .alliances {
   -webkit-box-sizing: border-box;
@@ -727,7 +843,7 @@ p a {
   width: 100%;
   float: left;
 }
-/* line 559, teach.scss */
+/* line 658, teach.scss */
 .page-wordlet-teach-alliances .content .alliance {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -741,32 +857,32 @@ p a {
   margin-bottom: 20px;
 }
 @media (min-width: 481px) {
-  /* line 559, teach.scss */
+  /* line 658, teach.scss */
   .page-wordlet-teach-alliances .content .alliance {
     float: left;
     width: 45%;
     margin-right: 20px;
     height: 81px;
   }
-  /* line 573, teach.scss */
+  /* line 672, teach.scss */
   .page-wordlet-teach-alliances .content .alliance.alliance-even {
     margin-right: 0;
   }
 }
 @media (min-width: 769px) {
-  /* line 559, teach.scss */
+  /* line 658, teach.scss */
   .page-wordlet-teach-alliances .content .alliance {
     width: 22%;
     margin-right: 4%;
     height: 142px;
     line-height: 142px;
   }
-  /* line 582, teach.scss */
+  /* line 681, teach.scss */
   .page-wordlet-teach-alliances .content .alliance.alliance-nth-child-4n {
     margin-right: 0;
   }
 }
-/* line 586, teach.scss */
+/* line 685, teach.scss */
 .page-wordlet-teach-alliances .content .alliance img {
   max-width: 100% !important;
   height: auto !important;

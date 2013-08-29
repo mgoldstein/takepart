@@ -14,12 +14,12 @@
 				<span class="credit"><?=w('header_credit')?></span>
 				<span class="burst"><?=w('header_burst')?></span>
 				<span class="date"><?=w('header_date')?></span>
-				<img class="hero" src="/profiles/takepart/themes/takepart3/campaigns/teach/img/teachers-hero.png" width="767" height="392" alt="Teachers" />
 				<div class="fine">
-					<img class="logos" src="/profiles/takepart/themes/takepart3/campaigns/teach/img/hero-logos.png" width="265" height="35" alt="CBS | Participant media" />
+					<img class="logos" src="/profiles/takepart/themes/takepart3/campaigns/teach/img/hero-logos.png" alt="CBS | Participant media" />
 					<?=w('header_fine')?>
 					<div class="right"><?=w('header_photo_credit')?></div>
 				</div>
+				<img class="hero" src="/profiles/takepart/themes/takepart3/campaigns/teach/img/teachers-hero.png" alt="Teachers" />
 				<div class="menu-wrapper">
 					<ul class='menu' <?=wa('menu') ?>>
 						<? foreach( wl('menu') as $w ): ?>
