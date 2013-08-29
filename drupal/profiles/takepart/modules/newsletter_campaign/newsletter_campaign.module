@@ -1312,7 +1312,7 @@ function newsletter_campaign_direct_signup_form_callback($form, $form_state) {
     $message = newsletter_campaign_preprocess_markup($config['thank_you_message']);
     $message = '<div data-newsletter-name="'
       . check_plain($config['name'])
-      . '" class="thank-you-message"><p>' . $message . '</p></div>';
+      . '" class="newsletter-signup thank-you-message"><p>' . $message . '</p></div>';
     $commands[] = ajax_command_replace($selector, $message);
   }
   else {
