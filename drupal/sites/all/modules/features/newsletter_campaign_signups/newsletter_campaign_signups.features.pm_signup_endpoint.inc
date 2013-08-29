@@ -172,6 +172,32 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
   );
   $endpoints[] = array(
     'type' => 'NewsletterCampaignSignupEndpoint',
+    'name' => 'teach_campaign',
+    'label' => 'Teach Campaign Signup',
+    'configuration' => array(),
+    'plugins' => array(
+      'bluestatedigital.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'form-id' => 53,
+          'email-field-id' => 902,
+        ),
+      ),
+      'bluehornet.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'segments' => array('1008361'),
+          'fields' => array(
+            '252906' => 'Teach Webform',
+            '253159' => 'TEACH',
+          ),
+          'send-welcome' => TRUE,
+        ),
+      ),
+    ),
+  );
+  $endpoints[] = array(
+    'type' => 'NewsletterCampaignSignupEndpoint',
     'name' => 'takepart_environment',
     'label' => 'TakePart Environment',
     'configuration' => array(),
