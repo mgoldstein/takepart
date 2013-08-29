@@ -1,18 +1,23 @@
 <div class="teach-video-page">
+    <h3 class="content-preheader"><?=w('page_preheader')?></h3>
     <h1 class="content-headline"><?=w('page_headline')?></h1>
     <h2 class="content-subheadline"><?=w('page_subheadline')?></h2>
     <div class="main-video-wrapper" <?=wa('video')?>>
-       VIDEO PLAYER GOES HERE LOL!
+        <script src="<?=w('video')?>"></script>
     </div>
     <? foreach ( wl('columns') as $i => $w ): ?>
-        <section class="column-first">
+        <? $column_number = $i + 1; // the array is zero indexed ?>
+        <? $zebra = ($column_number % 2 == 0) ? 'even' : 'odd'; ?>
+        <section class="content-column column-<?=$column_number?> column-<?=$zebra?>">
             <h1 class='col-headline'><?=$w->single?></h1>
             <div class="col-content">
                 <?=$w->multi?>
             </div>
         </section>
     <? endforeach ?>
-    <? include('partials/teach-social-block.tpl.php') ?>
+    <div class="social-block">
+        <? include('teach-social-block.tpl.php') ?>
+    </div>
     <div class="social-footer">
         <span><?=w('social_footer_label')?></span>
         <a href="<?=w('social_facebook')->href?>" target="_blank">
