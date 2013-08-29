@@ -202,10 +202,15 @@ p {
 .page-body-content {
   background: $primary-white;
   padding: $page-margins;
+  img {
+    float: right;
+    margin-left: $page-margins;
+    margin-right: -33px;
+  }
 }
 
 .page-wordlet-teach-home .social-menu {
-  width: 295px;
+  width: 290px;
   background: image-url('paper_right.png') no-repeat right 10px;
   padding: 0px 30px 0 300px;
   top: -50px;
@@ -216,6 +221,15 @@ p {
   @include inline-block;
   vertical-align: top;
   float: right;
+
+  .item {
+    background-repeat: no-repeat;
+    padding-left: 90px;
+
+    &.text { background-image: image-url('social-phone.png'); }
+    &.connected { background-image: image-url('social-envelopes.png'); }
+    &.discussion { background-image: image-url('social-chat.png'); }
+  }
 
 
   h1 { display: none; }

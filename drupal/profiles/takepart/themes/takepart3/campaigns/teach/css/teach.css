@@ -35,7 +35,7 @@
 }
 /* line 29, teach.scss */
 .page-wrap .main {
-  background: url('../img/blackboard.jpg?1377561140');
+  background: url('../img/blackboard.jpg?1377730837');
 }
 /* line 34, teach.scss */
 .page-wrap .page-header,
@@ -67,7 +67,7 @@
   position: relative;
   min-height: 422px;
   color: white;
-  background: url('../img/hero-background.jpg?1377561627');
+  background: url('../img/hero-background.jpg?1377730837');
   clear: both;
   zoom: 1;
   /* menu */
@@ -129,7 +129,7 @@
 .header .menu-wrapper {
   font: bold 19px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
-  background: url('../img/orange_felt.png?1377644722');
+  background: url('../img/orange_felt.png?1377730837');
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -193,7 +193,7 @@
 }
 /* line 147, teach.scss */
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377644722') no-repeat -17px 0;
+  background: url('../img/active_menu_bg.png?1377730837') no-repeat -17px 0;
   margin-top: -3px;
   height: 43px;
 }
@@ -218,7 +218,7 @@ p {
 }
 /* line 172, teach.scss */
 #page .content-header {
-  background: url('../img/header1_bg.png?1377644722') no-repeat;
+  background: url('../img/header1_bg.png?1377730837') no-repeat;
   color: black;
   font-size: 26px;
   height: 50px;
@@ -264,11 +264,17 @@ p {
   background: white;
   padding: 20px;
 }
+/* line 205, teach.scss */
+.page-body-content img {
+  float: right;
+  margin-left: 20px;
+  margin-right: -33px;
+}
 
-/* line 207, teach.scss */
+/* line 212, teach.scss */
 .page-wordlet-teach-home .social-menu {
-  width: 295px;
-  background: url('../img/paper_right.png?1377644722') no-repeat right 10px;
+  width: 290px;
+  background: url('../img/paper_right.png?1377730837') no-repeat right 10px;
   padding: 0px 30px 0 300px;
   top: -50px;
   margin-left: -300px;
@@ -284,26 +290,43 @@ p {
   vertical-align: top;
   float: right;
 }
-/* line 221, teach.scss */
+/* line 225, teach.scss */
+.page-wordlet-teach-home .social-menu .item {
+  background-repeat: no-repeat;
+  padding-left: 90px;
+}
+/* line 229, teach.scss */
+.page-wordlet-teach-home .social-menu .item.text {
+  background-image: url('../img/social-phone.png?1377733816');
+}
+/* line 230, teach.scss */
+.page-wordlet-teach-home .social-menu .item.connected {
+  background-image: url('../img/social-envelopes.png?1377733816');
+}
+/* line 231, teach.scss */
+.page-wordlet-teach-home .social-menu .item.discussion {
+  background-image: url('../img/social-chat.png?1377733816');
+}
+/* line 235, teach.scss */
 .page-wordlet-teach-home .social-menu h1 {
   display: none;
 }
-/* line 222, teach.scss */
+/* line 236, teach.scss */
 .page-wordlet-teach-home .social-menu .sect-headline {
   font: normal 24px "GlyphaLTPro-Black", serif;
   color: #ea5f11;
 }
-/* line 225, teach.scss */
+/* line 239, teach.scss */
 .page-wordlet-teach-home .social-menu .sect-headline strong {
   font-weight: normal;
   color: black;
 }
-/* line 230, teach.scss */
+/* line 244, teach.scss */
 .page-wordlet-teach-home .social-menu .link_on_white {
   margin: 0 0 80px -40px;
   width: 350px;
 }
-/* line 233, teach.scss */
+/* line 247, teach.scss */
 .page-wordlet-teach-home .social-menu .link_on_white a {
   font: 22px "GlyphaLTPro-Black", serif;
   color: white;
