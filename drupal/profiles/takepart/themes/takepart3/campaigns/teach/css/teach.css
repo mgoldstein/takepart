@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("//hello.myfonts.net/count/2826af");
 /* @license
  * MyFonts Webfont Build ID 2631343, 2013-08-27T17:12:57-0400
@@ -35,7 +34,7 @@
 }
 /* line 24, teach.scss */
 .page-wrap .main {
-  background: url('../img/blackboard.jpg?1377730837');
+  background: url('../img/blackboard.jpg?1377714697');
 }
 /* line 29, teach.scss */
 .page-wrap .page-header,
@@ -67,7 +66,7 @@
   position: relative;
   min-height: 422px;
   color: white;
-  background: url('../img/hero-background.jpg?1377730837');
+  background: url('../img/hero-background.jpg?1377714697');
   clear: both;
   zoom: 1;
   /* menu */
@@ -129,7 +128,7 @@
 .header .menu-wrapper {
   font: bold 19px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
-  background: url('../img/orange_felt.png?1377730837');
+  background: url('../img/orange_felt.png?1377714705');
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -193,7 +192,7 @@
 }
 /* line 142, teach.scss */
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377730837') no-repeat -17px 0;
+  background: url('../img/active_menu_bg.png?1377714705') no-repeat -17px 0;
   margin-top: -3px;
   height: 43px;
 }
@@ -223,7 +222,7 @@ p a {
 }
 /* line 171, teach.scss */
 #page .content-header {
-  background: url('../img/header1_bg.png?1377730837') no-repeat;
+  background: url('../img/header1_bg.png?1377714705') no-repeat;
   color: black;
   font-size: 26px;
   height: 50px;
@@ -279,7 +278,7 @@ p a {
 /* line 211, teach.scss */
 .page-wordlet-teach-home .social-menu {
   width: 290px;
-  background: url('../img/paper_right.png?1377730837') no-repeat right 10px;
+  background: url('../img/paper_right.png?1377714705') no-repeat right 10px;
   padding: 0px 30px 0 300px;
   top: -50px;
   margin-left: -300px;
@@ -316,15 +315,15 @@ p a {
 }
 /* line 237, teach.scss */
 .page-wordlet-teach-home .social-menu .item.text {
-  background-image: url('../img/social-phone.png?1377734691');
+  background-image: url('../img/social-phone.png?1377735601');
 }
 /* line 238, teach.scss */
 .page-wordlet-teach-home .social-menu .item.connected {
-  background-image: url('../img/social-envelopes.png?1377734691');
+  background-image: url('../img/social-envelopes.png?1377735601');
 }
 /* line 239, teach.scss */
 .page-wordlet-teach-home .social-menu .item.discussion {
-  background-image: url('../img/social-chat.png?1377734691');
+  background-image: url('../img/social-chat.png?1377735601');
 }
 /* line 241, teach.scss */
 .page-wordlet-teach-home .social-menu .item p {
@@ -345,7 +344,7 @@ p a {
 }
 /* line 252, teach.scss */
 .page-wordlet-teach-home .social-menu .item #newsletter-campaign-email-only-signup-form #edit-email {
-  background: url('../img/text-field-large.png?1377742378') no-repeat;
+  background: url('../img/text-field-large.png?1377743024') no-repeat;
   width: 240px;
   height: 46px;
   border: none;
@@ -381,7 +380,9 @@ p a {
   color: #313131;
 }
 
-/* line 294, teach.scss */
+/* # Video Pages
+================================================== */
+/* line 295, teach.scss */
 .teach-video-page {
   background: #ecedf6;
   padding: 20px;
@@ -389,10 +390,11 @@ p a {
   -moz-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
 }
-/* line 302, teach.scss */
+/* line 304, teach.scss */
 .teach-video-page .content-preheader,
 .teach-video-page .col-headline {
   font-family: "GlyphaLTPro-Black", serif;
+  font-weight: normal;
   margin: -0.5em 0 1em;
   padding: 5px 0 0 15px;
   font-size: 40px;
@@ -405,21 +407,22 @@ p a {
   -o-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 312, teach.scss */
+/* line 315, teach.scss */
 .teach-video-page .content-headline {
   font-family: "GlyphaLTPro-Black", serif;
+  font-weight: normal;
   font-size: 42px;
   line-height: 1;
   text-transform: uppercase;
   max-width: 740px;
 }
 @media (min-width: 481px) {
-  /* line 312, teach.scss */
+  /* line 315, teach.scss */
   .teach-video-page .content-headline {
     margin-left: 20px;
   }
 }
-/* line 322, teach.scss */
+/* line 326, teach.scss */
 .teach-video-page .content-subheadline {
   font-weight: normal;
   color: #666565;
@@ -427,40 +430,250 @@ p a {
   line-height: 1;
 }
 @media (min-width: 481px) {
-  /* line 322, teach.scss */
+  /* line 326, teach.scss */
   .teach-video-page .content-subheadline {
     margin-left: 20px;
   }
 }
-/* line 331, teach.scss */
+/* line 335, teach.scss */
+.teach-video-page .peek-a-boo {
+  float: right;
+  margin-top: 5px;
+  margin-right: 25px;
+  background: transparent url(../img/paper-peek-a-boo.png) no-repeat scroll top right;
+  width: 290px;
+  padding: 15px 0 10px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  -webkit-box-shadow: 0 0 4px black;
+  -moz-box-shadow: 0 0 4px black;
+  box-shadow: 0 0 4px black;
+}
+/* line 346, teach.scss */
+.teach-video-page .peek-a-boo a {
+  color: black;
+  font: normal normal 17px/1 "GlyphaLTPro-Black", serif, serif;
+}
+/* line 349, teach.scss */
+.teach-video-page .peek-a-boo a .fb {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  width: 24px;
+  height: 22px;
+  background: transparent url(../img/social-facebook.png);
+}
+/* line 357, teach.scss */
 .teach-video-page .main-video-wrapper {
+  clear: right;
   width: 859px;
   padding: 4px;
-  margin: 2em auto;
+  margin: 0 auto 2em;
   background-color: white;
   -webkit-box-shadow: 0 0 6px black;
   -moz-box-shadow: 0 0 6px black;
   box-shadow: 0 0 6px black;
+  position: relative;
+  z-index: 2;
+}
+/* line 367, teach.scss */
+.teach-video-page .content-column {
+  margin-bottom: 2em;
 }
 @media (min-width: 481px) {
-  /* line 338, teach.scss */
+  /* line 367, teach.scss */
   .teach-video-page .content-column {
     width: 44.9%;
     margin-right: 5%;
     float: left;
   }
-  /* line 343, teach.scss */
+  /* line 372, teach.scss */
   .teach-video-page .content-column.column-odd {
     clear: left;
   }
 }
-/* line 347, teach.scss */
+/* line 377, teach.scss */
 .teach-video-page .content-column .col-headline {
   margin: 0 0 .5em;
 }
-/* line 351, teach.scss */
+/* line 380, teach.scss */
+.teach-video-page .content-column .col-content {
+  font-size: 16px;
+  line-height: 1.25;
+  color: #666565;
+}
+/* line 384, teach.scss */
+.teach-video-page .content-column .col-content p {
+  font-size: 16px;
+  line-height: 1.25;
+  color: #666565;
+}
+/* line 389, teach.scss */
+.teach-video-page .content-column .col-content strong {
+  font-size: 18px;
+}
+/* line 392, teach.scss */
+.teach-video-page .content-column .col-content ul {
+  list-style-type: none;
+  padding-left: .75em;
+}
+/* line 395, teach.scss */
+.teach-video-page .content-column .col-content ul li {
+  line-height: 1.25;
+  margin-bottom: 0.25em;
+  position: relative;
+}
+/* line 399, teach.scss */
+.teach-video-page .content-column .col-content ul li:before {
+  content: '»';
+  position: absolute;
+  padding-right: 0.5em;
+  right: 100%;
+}
+/* line 407, teach.scss */
+.teach-video-page .content-column .col-content a {
+  color: #eb6413;
+}
+/* line 412, teach.scss */
 .teach-video-page .social-menu {
   clear: both;
+  text-align: center;
+}
+@media (min-width: 848px) {
+  /* line 412, teach.scss */
+  .teach-video-page .social-menu {
+    background: transparent url(../img/video-page-social-block-bg.png) scroll no-repeat bottom center;
+    max-width: 830px;
+    margin: 0 auto;
+    padding: 0 9px 30px;
+  }
+}
+/* line 421, teach.scss */
+.teach-video-page .social-menu h1.sect-headline {
+  font-family: "GlyphaLTPro-Black", serif;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  text-align: center;
+  max-width: 500px;
+  margin: 1em auto 0.5em;
+}
+/* line 431, teach.scss */
+.teach-video-page .social-menu .item {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  width: 27%;
+  margin: 0px 3%;
+  font-size: 11.5px;
+  line-height: 1;
+  color: 666565;
+  vertical-align: bottom;
+  position: relative;
+}
+/* line 439, teach.scss */
+.teach-video-page .social-menu .item p {
+  font-size: 11.5px;
+  line-height: 1;
+  color: 666565;
+}
+/* line 444, teach.scss */
+.teach-video-page .social-menu .item .sect-headline {
+  font-family: "GlyphaLTPro-Black", serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1;
+  color: #eb6413;
+}
+/* line 450, teach.scss */
+.teach-video-page .social-menu .item .sect-headline strong {
+  color: black;
+  font-weight: normal;
+}
+/* line 456, teach.scss */
+.teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form {
+  position: relative;
+}
+/* line 458, teach.scss */
+.teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form label {
+  display: none;
+}
+/* line 459, teach.scss */
+.teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form #edit-email {
+  background: transparent url(../img/text-field-small.png);
+  border: 0;
+  width: 217px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+/* line 467, teach.scss */
+.teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions {
+  position: absolute;
+  top: 4px;
+  right: -2px;
+  margin: 0;
+}
+/* line 472, teach.scss */
+.teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  border: none;
+  background-color: black;
+  font: normal normal 12px/1.2 "GlyphaLTPro-Black", serif, serif;
+  color: white;
+  text-transform: uppercase;
+  width: 57px;
+}
+/* line 486, teach.scss */
+.teach-video-page .social-menu .item:before {
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  background-color: transparent;
+}
+/* line 494, teach.scss */
+.teach-video-page .social-menu .item.text {
+  margin-top: 73px;
+}
+/* line 496, teach.scss */
+.teach-video-page .social-menu .item.text:before {
+  background-image: url(../img/social-phone.png);
+  width: 72px;
+  height: 73px;
+  margin-left: -36px;
+}
+/* line 503, teach.scss */
+.teach-video-page .social-menu .item.connected {
+  margin-top: 79px;
+}
+/* line 505, teach.scss */
+.teach-video-page .social-menu .item.connected:before {
+  background-image: url(../img/social-envelopes.png);
+  width: 72px;
+  height: 79px;
+  margin-left: -36px;
+}
+/* line 512, teach.scss */
+.teach-video-page .social-menu .item.discussion {
+  margin-top: 55px;
+}
+/* line 514, teach.scss */
+.teach-video-page .social-menu .item.discussion:before {
+  background-image: url(../img/social-chat.png);
+  width: 72px;
+  height: 55px;
+  margin-left: -36px;
+}
+/* line 523, teach.scss */
+.teach-video-page .social-footer {
+  text-align: center;
+  font: normal normal 22px/1 "GlyphaLTPro-Black", serif, serif;
+  text-transform: uppercase;
 }
 
 /* # Content Signup Form
