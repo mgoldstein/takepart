@@ -34,7 +34,7 @@
 }
 /* line 29, teach.scss */
 .page-wrap .main {
-  background: url('../img/blackboard.jpg?1377714697');
+  background: url('../img/blackboard.jpg?1377730103');
 }
 /* line 34, teach.scss */
 .page-wrap .page-header,
@@ -66,7 +66,7 @@
   position: relative;
   min-height: 422px;
   color: white;
-  background: url('../img/hero-background.jpg?1377714697');
+  background: url('../img/hero-background.jpg?1377730103');
   clear: both;
   zoom: 1;
   /* menu */
@@ -128,7 +128,7 @@
 .header .menu-wrapper {
   font: bold 19px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
-  background: url('../img/orange_felt.png?1377714705');
+  background: url('../img/orange_felt.png?1377730103');
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -192,7 +192,7 @@
 }
 /* line 147, teach.scss */
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377714705') no-repeat -17px 0;
+  background: url('../img/active_menu_bg.png?1377730103') no-repeat -17px 0;
   margin-top: -3px;
   height: 43px;
 }
@@ -217,7 +217,7 @@ p {
 }
 /* line 172, teach.scss */
 #page .content-header {
-  background: url('../img/header1_bg.png?1377714705') no-repeat;
+  background: url('../img/header1_bg.png?1377730103') no-repeat;
   color: black;
   font-size: 26px;
   height: 50px;
@@ -273,7 +273,7 @@ p {
 /* line 212, teach.scss */
 .page-wordlet-teach-home .social-menu {
   width: 290px;
-  background: url('../img/paper_right.png?1377714705') no-repeat right 10px;
+  background: url('../img/paper_right.png?1377730103') no-repeat right 10px;
   padding: 0px 30px 0 300px;
   top: -50px;
   margin-left: -300px;
@@ -296,15 +296,15 @@ p {
 }
 /* line 229, teach.scss */
 .page-wordlet-teach-home .social-menu .item.text {
-  background-image: url('../img/social-phone.png?1377735601');
+  background-image: url('../img/social-phone.png?1377734788');
 }
 /* line 230, teach.scss */
 .page-wordlet-teach-home .social-menu .item.connected {
-  background-image: url('../img/social-envelopes.png?1377735601');
+  background-image: url('../img/social-envelopes.png?1377734788');
 }
 /* line 231, teach.scss */
 .page-wordlet-teach-home .social-menu .item.discussion {
-  background-image: url('../img/social-chat.png?1377735601');
+  background-image: url('../img/social-chat.png?1377734788');
 }
 /* line 235, teach.scss */
 .page-wordlet-teach-home .social-menu h1 {
@@ -409,7 +409,7 @@ p {
   margin: 0 0 .5em;
 }
 /* line 315, teach.scss */
-.teach-video-page .social-block {
+.teach-video-page .social-menu {
   clear: both;
 }
 

@@ -15,9 +15,10 @@
             </div>
         </section>
     <? endforeach ?>
-    <div class="social-block">
-        <? include('teach-social-block.tpl.php') ?>
-    </div>
+    <section class="social-menu">
+        <? include('partials/teach-social-block.tpl.php') ?>
+        <h4 class="link_on_white"><?=w('social_follow_body')?></h4>
+    </section>
     <div class="social-footer">
         <span><?=w('social_footer_label')?></span>
         <a href="<?=w('social_facebook')->href?>" target="_blank">
