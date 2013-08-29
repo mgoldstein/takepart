@@ -542,6 +542,9 @@ p {
   .ad {
     max-width: 728px;
     margin: 1em auto 0;
+    @media (max-width: 767px) {
+      display: none;
+    }
   }
 } // .teach-video-page, .page-wordlet-teach-alliances .content
 
