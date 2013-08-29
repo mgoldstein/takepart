@@ -19,18 +19,26 @@
     <section class="social-menu">
         <? include('teach-social-block.tpl.php') ?>
     </section>
+    <? if (w('social_footer_label')) : ?>
     <div class="social-footer">
         <span><?=w('social_footer_label')?></span>
+        <? if(w('social_facebook')->img_src) : ?>
         <a href="<?=w('social_facebook')->href?>" target="_blank">
-	    <img src="<?=w('social_facebook')->img_src?>" alt="<?=w('social_facebook')->single_no_markup?>">
+	       <img src="<?=w('social_facebook')->img_src?>" alt="<?=w('social_facebook')->single_no_markup?>">
         </a>
+        <? endif ?>
+        <? if(w('social_twitter')->img_src) : ?>
         <a href="<?=w('social_twitter')->href?>" target="_blank">
-	    <img src="<?=w('social_twitter')->img_src?>" alt="<?=w('social_twitter')->single_no_markup?>">
+	       <img src="<?=w('social_twitter')->img_src?>" alt="<?=w('social_twitter')->single_no_markup?>">
         </a>
+        <? endif ?>
+        <? if(w('social_gplus')->img_src) : ?>
         <a href="<?=w('social_gplus')->href?>" target="_blank">
-	    <img src="<?=w('social_gplus')->img_src?>" alt="<?=w('social_gplus')->single_no_markup?>">
+	       <img src="<?=w('social_gplus')->img_src?>" alt="<?=w('social_gplus')->single_no_markup?>">
         </a>
+        <? endif ?>
     </div>
+    <? endif ?>
     <div class="ad">
         <?=w('ad')?>
     </div>
