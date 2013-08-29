@@ -3,21 +3,25 @@
         <h1 class="content-headline"><?=w('page_headline')?></h1>
         <h2 class="content-subheadline"><?=w('page_subheadline')?></h2>
         <div class="main-image-wrapper" <?=wa('main_image')?>>
-           <img src="<?=w('main_image')->img_src?>" alt="<?=w('main_image')->single?>"> 
+	    <img src="<?=w('main_image')->img_src?>" alt="<?=w('main_image')->single_no_markup?>">
         </div>
-        <div class="content-main">
+	<div class="content-main cms">
             <?=w('content_main')?>
         </div>
         <div class="alliances" <?=wa('alliances')?>>
             <? foreach ( wl('alliances') as $i => $w ): ?>
-                <div class="alliance">
-                    <img src="<?=$w->img_src?>" alt="<?=$w->single?>">
+		<? $row_count = $i + 1; //array is zero-indexed ?>
+		<? $zebra = 'alliance-' .($row_count % 2 == 0) ? 'even' : 'odd'; ?>
+		<? $zebra .= ($row_count % 4 == 0) ? ' alliance-nth-child-4n' : ''; ?>
+		<div class="alliance alliance-<?=$row_count?> <?=$zebra?>">
+		    <? $markup = '<img src="' . $w->img_src . '" alt="' . $w->single_no_markup . '">' ;?>
+		    <? if ($w->href) $markup = '<a href="' . $w->href . '">' . $markup . '</a>';?>
+		    <?=$markup?>
                 </div>
             <? endforeach ?>
         </div>
     </article>
     <section class="social-menu">
-        <h4 class="link_on_white"><?=w('social_follow_body')?></h4>
         <? include('partials/teach-social-block.tpl.php') ?>
     </section>
 </div>

@@ -22,13 +22,13 @@
     <div class="social-footer">
         <span><?=w('social_footer_label')?></span>
         <a href="<?=w('social_facebook')->href?>" target="_blank">
-            <img src="<?=w('social_facebook')->img_src?>" alt="<?=w('social_facebook')->img_single?>">
+	    <img src="<?=w('social_facebook')->img_src?>" alt="<?=w('social_facebook')->single_no_markup?>">
         </a>
         <a href="<?=w('social_twitter')->href?>" target="_blank">
-            <img src="<?=w('social_twitter')->img_src?>" alt="<?=w('social_twitter')->img_single?>">
+	    <img src="<?=w('social_twitter')->img_src?>" alt="<?=w('social_twitter')->single_no_markup?>">
         </a>
         <a href="<?=w('social_gplus')->href?>" target="_blank">
-            <img src="<?=w('social_gplus')->img_src?>" alt="<?=w('social_gplus')->img_single?>">
+	    <img src="<?=w('social_gplus')->img_src?>" alt="<?=w('social_gplus')->single_no_markup?>">
         </a>
     </div>
     <div class="ad">
