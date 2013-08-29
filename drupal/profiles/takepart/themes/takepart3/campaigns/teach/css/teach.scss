@@ -1,9 +1,4 @@
-@import "compass/css3/inline-block";
-@import "compass/css3/box-shadow";
-@import "compass/css3/border-radius";
-@import "compass/css3/transform";
-@import "compass/css3/transition";
-@import "compass/css3/pie";
+@import "compass/css3";
 @import "typeface";
 
 $page-width: 1000px;
@@ -18,7 +13,7 @@ $secondary-font: 'GlyphaLTPro-Black', serif;
 
 $primary-white: white;
 $light-white: #ccc;
-$body-copy-black: #1a1a1a;
+$body-copy-black: #313131;
 
 /* # General
 ================================================== */
@@ -164,6 +159,10 @@ $body-copy-black: #1a1a1a;
 ================================================== */
 p {
   color: $body-copy-black;
+  -webkit-font-smoothing: antialiased;
+  a {
+    color: $primary-color;
+  }
 }
 
 #page {
@@ -222,6 +221,15 @@ p {
   vertical-align: top;
   float: right;
 
+  h1 { display: none; }
+  .link_on_white {
+    margin: 0 0 80px -40px;
+    width: 350px;
+    a {
+      font: 22px $secondary-font;
+      color: $primary-white;
+    }
+  }
   .item {
     background-repeat: no-repeat;
     padding-left: 90px;
@@ -229,24 +237,52 @@ p {
     &.text { background-image: image-url('social-phone.png'); }
     &.connected { background-image: image-url('social-envelopes.png'); }
     &.discussion { background-image: image-url('social-chat.png'); }
-  }
 
-
-  h1 { display: none; }
-  .sect-headline {
-    font: normal 24px $secondary-font;
-    color: $primary-color;
-    strong {
-      font-weight: normal;
-      color: black;
+    p {
+      line-height: 100%;
+      .terms {
+        font-size: 12px;
+        line-height: 25px;
+      }
     }
-  }
-  .link_on_white {
-    margin: 0 0 80px -40px;
-    width: 350px;
-    a {
-      font: 22px $secondary-font;
-      color: $primary-white;
+
+    #newsletter-campaign-email-only-signup-form {
+      position: relative;
+      label { display: none; }
+      #edit-email {
+        background: image-url('text-field-large.png') no-repeat;
+        width: 240px;
+        height: 46px;
+        border: none;
+        margin-left: -80px;
+        padding: 0 15px;
+      }
+
+      #edit-actions {
+        position: absolute;
+        top: 9px;
+        right: 30px;
+        margin: 0px;
+        input {
+          cursor: pointer;
+          -webkit-appearance: none;
+          border: none;
+          background-color: black;
+          font: normal 12px/140% $secondary-font;
+          color: $primary-white;
+          text-transform: uppercase;
+          width: 57px;
+        }
+      }
+    }
+
+    .sect-headline {
+      font: normal 24px/90% $secondary-font;
+      color: $primary-color;
+      strong {
+        font-weight: normal;
+        color: $body-copy-black;
+      }
     }
   }
 }
