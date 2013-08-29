@@ -254,5 +254,68 @@ p {
 .content .body p {
 }
 
+// Video pages, ie Students, Parents, TEachers
+.teach-video-page {
+  // TODO: Paper background
+  background: #ecedf6; 
+  padding: 20px;
+  @include box-shadow(inset 0 0 40px rgba(0,0,0,0.2));
+
+  // "learn" headline with label behind it
+  .content-preheader,
+  .col-headline {
+    font-family: $secondary-font;
+    margin: -0.5em 0 1em;
+    padding: 5px 0 0 15px;
+    font-size: 40px;
+    line-height: 1.375;
+    text-transform: uppercase;
+    background: transparent url(../img/video-page-label-background.png) no-repeat scroll top left;
+    @include rotate(-4deg);
+  }
+  .content-headline {
+    font-family: $secondary-font;
+    font-size: 42px;
+    line-height: 1;
+    text-transform: uppercase;
+    max-width: 740px;
+    @media (min-width: 481px) {
+      margin-left: 20px;
+    }
+  }
+  .content-subheadline {
+    font-weight: normal;
+    color: #666565;
+    font-size: 16px;
+    line-height: 1;
+    @media (min-width: 481px) {
+      margin-left: 20px;
+    }
+  }
+  .main-video-wrapper {
+    width: 859px;
+    padding: 4px;
+    margin: 2em auto;
+    background-color: white;
+    @include box-shadow(0 0 6px black);
+  }
+  .content-column {
+    @media (min-width: 481px) {
+      width: 44.9%;
+      margin-right: 5%;
+      float: left;
+      &.column-odd {
+        clear: left;
+      }
+    }
+    .col-headline {
+      margin: 0 0 .5em;
+    }
+  }
+  .social-block {
+    clear: both;
+  }
+}
+
 /* # Content Signup Form
 ================================================== */
