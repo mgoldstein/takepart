@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("//hello.myfonts.net/count/2826af");
 /* @license
  * MyFonts Webfont Build ID 2631343, 2013-08-27T17:12:57-0400
@@ -41,7 +42,7 @@
 }
 /* line 30, teach.scss */
 .page-wrap .main {
-  background: url('../img/blackboard.jpg?1377714697');
+  background: url('../img/blackboard.jpg?1377730837');
 }
 /* line 35, teach.scss */
 .page-wrap .page-header,
@@ -73,7 +74,7 @@
   position: relative;
   min-height: 422px;
   color: white;
-  background: url('../img/hero-background.jpg?1377714697');
+  background: url('../img/hero-background.jpg?1377730837');
   clear: both;
   zoom: 1;
   /* menu */
@@ -140,7 +141,7 @@
 .header .menu-wrapper {
   font: bold 19px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
-  background: url('../img/orange_felt.png?1377714705');
+  background: url('../img/orange_felt.png?1377730837');
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -204,7 +205,7 @@
 }
 /* line 152, teach.scss */
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377714705') no-repeat -17px 0;
+  background: url('../img/active_menu_bg.png?1377730837') no-repeat -17px 0;
   margin-top: -3px;
   height: 43px;
 }
@@ -215,141 +216,33 @@
   margin-top: 3px;
 }
 
-/* # Responsive Layout
-================================================== */
-@media (max-width: 1000px) {
-  /* line 171, teach.scss */
-  #page-wrapper {
-    width: 100%;
-  }
-
-  /* line 175, teach.scss */
-  .header .hero {
-    width: 77%;
-    height: auto;
-  }
-  /* line 179, teach.scss */
-  .header .logos {
-    width: 25%;
-    height: auto;
-  }
-  /* line 184, teach.scss */
-  .header .menu-wrapper {
-    font-size: 17px;
-  }
-  /* line 186, teach.scss */
-  .header .menu-wrapper .menu .item a {
-    width: 110px;
-  }
-}
-@media (max-width: 600px) {
-  /* line 194, teach.scss */
-  #page-wrapper, .page-wrap {
-    padding: 0;
-  }
-
-  /* line 197, teach.scss */
-  .header {
-    padding: 0;
-    text-align: center;
-    background: none;
-  }
-  /* line 201, teach.scss */
-  .header .slug {
-    font-size: 23px;
-  }
-  /* line 204, teach.scss */
-  .header .page-header {
-    width: auto;
-    margin-left: 0;
-    padding: 0;
-  }
-  /* line 209, teach.scss */
-  .header .hero {
-    width: 111%;
-    height: auto;
-    position: static;
-    margin: -20px 0px -20px -43px;
-    margin-bottom: -4px;
-    margin-top: -20px;
-  }
-  /* line 217, teach.scss */
-  .header .fine {
-    position: static;
-    margin: 0px;
-    text-align: center;
-    width: auto;
-  }
-  /* line 222, teach.scss */
-  .header .fine .logos {
-    width: 65%;
-    height: auto;
-    display: block;
-    margin: 10px auto;
-  }
-  /* line 228, teach.scss */
-  .header .fine .right {
-    display: none;
-  }
-  /* line 233, teach.scss */
-  .header .menu-wrapper {
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    -o-border-radius: 0;
-    border-radius: 0;
-    position: static;
-    font-size: 30px;
-  }
-  /* line 237, teach.scss */
-  .header .menu-wrapper .menu {
-    border-left: none;
-    border-right: none;
-    height: auto;
-  }
-  /* line 241, teach.scss */
-  .header .menu-wrapper .menu .item {
-    display: block;
-    margin: 0 auto;
-    vertical-align: middle;
-  }
-  /* line 245, teach.scss */
-  .header .menu-wrapper .menu .item a {
-    width: auto;
-    text-align: center;
-  }
-  /* line 249, teach.scss */
-  .header .menu-wrapper .menu .item.active {
-    background-position: center 3px;
-  }
-}
 /* # Content
 ================================================== */
-/* line 263, teach.scss */
+/* line 170, teach.scss */
 p {
   color: #313131;
   -webkit-font-smoothing: antialiased;
 }
-/* line 266, teach.scss */
+/* line 173, teach.scss */
 p a {
   color: #ea5f11;
 }
 
-/* line 271, teach.scss */
+/* line 178, teach.scss */
 #page {
   padding: 20px;
   background: none;
 }
-/* line 274, teach.scss */
+/* line 181, teach.scss */
 #page .content-header {
-  background: url('../img/header1_bg.png?1377714705') no-repeat;
+  background: url('../img/header1_bg.png?1377730837') no-repeat;
   color: black;
   font-size: 26px;
   height: 50px;
   margin-bottom: 0px;
   padding: 5px 10px;
 }
-/* line 282, teach.scss */
+/* line 189, teach.scss */
 #page .content-header span {
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
@@ -358,16 +251,15 @@ p a {
   transform: rotate(-2deg);
   display: block;
 }
-/* line 287, teach.scss */
+/* line 194, teach.scss */
 #page .content {
   overflow: visible;
   position: relative;
 }
-/* line 291, teach.scss */
-#page .video_container {
-  width: 600px;
-  height: 500px;
-  background: black;
+/* line 198, teach.scss */
+#page .main-video-wrapper {
+  width: 637px;
+  margin-left: -5px;
   border: 5px solid white;
   position: relative;
   z-index: 10;
@@ -383,12 +275,12 @@ p a {
   box-shadow: 0 0 10px black;
 }
 
-/* line 304, teach.scss */
+/* line 210, teach.scss */
 .page-body-content {
   background: white;
   padding: 20px;
 }
-/* line 307, teach.scss */
+/* line 213, teach.scss */
 .page-body-content img {
   float: right;
   margin-left: 20px;
@@ -397,10 +289,10 @@ p a {
 
 /* # Home Page
 ================================================== */
-/* line 316, teach.scss */
+/* line 222, teach.scss */
 .page-wordlet-teach-home .social-menu {
-  width: 290px;
-  background: url('../img/paper_right.png?1377714705') no-repeat right 10px;
+  width: 277px;
+  background: url('../img/paper_right.png?1377730837') no-repeat right 10px;
   padding: 0px 30px 0 300px;
   top: -50px;
   margin-left: -300px;
@@ -416,71 +308,71 @@ p a {
   vertical-align: top;
   float: right;
 }
-/* line 329, teach.scss */
+/* line 235, teach.scss */
 .page-wordlet-teach-home .social-menu h1 {
   display: none;
 }
-/* line 330, teach.scss */
+/* line 236, teach.scss */
 .page-wordlet-teach-home .social-menu .link_on_white {
   margin: 0 0 80px -40px;
   width: 350px;
 }
-/* line 333, teach.scss */
+/* line 239, teach.scss */
 .page-wordlet-teach-home .social-menu .link_on_white a {
   font: 22px "GlyphaLTPro-Black", serif;
   color: white;
 }
-/* line 338, teach.scss */
+/* line 244, teach.scss */
 .page-wordlet-teach-home .social-menu .item {
   background-repeat: no-repeat;
   padding-left: 90px;
 }
-/* line 342, teach.scss */
+/* line 248, teach.scss */
 .page-wordlet-teach-home .social-menu .item.text {
-  background-image: url('../img/social-phone.png?1377735601');
+  background-image: url('../img/social-phone.png?1377734691');
 }
-/* line 343, teach.scss */
+/* line 249, teach.scss */
 .page-wordlet-teach-home .social-menu .item.connected {
-  background-image: url('../img/social-envelopes.png?1377735601');
+  background-image: url('../img/social-envelopes.png?1377734691');
 }
-/* line 344, teach.scss */
+/* line 250, teach.scss */
 .page-wordlet-teach-home .social-menu .item.discussion {
-  background-image: url('../img/social-chat.png?1377735601');
+  background-image: url('../img/social-chat.png?1377734691');
 }
-/* line 346, teach.scss */
+/* line 252, teach.scss */
 .page-wordlet-teach-home .social-menu .item p {
   line-height: 100%;
 }
-/* line 348, teach.scss */
+/* line 254, teach.scss */
 .page-wordlet-teach-home .social-menu .item p .terms {
   font-size: 12px;
   line-height: 25px;
 }
-/* line 354, teach.scss */
+/* line 260, teach.scss */
 .page-wordlet-teach-home .social-menu .item #newsletter-campaign-email-only-signup-form {
   position: relative;
 }
-/* line 356, teach.scss */
+/* line 262, teach.scss */
 .page-wordlet-teach-home .social-menu .item #newsletter-campaign-email-only-signup-form label {
   display: none;
 }
-/* line 357, teach.scss */
+/* line 263, teach.scss */
 .page-wordlet-teach-home .social-menu .item #newsletter-campaign-email-only-signup-form #edit-email {
-  background: url('../img/text-field-large.png?1377758755') no-repeat;
+  background: url('../img/text-field-large.png?1377742378') no-repeat;
   width: 240px;
   height: 46px;
   border: none;
   margin-left: -80px;
   padding: 0 15px;
 }
-/* line 366, teach.scss */
+/* line 272, teach.scss */
 .page-wordlet-teach-home .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions {
   position: absolute;
   top: 9px;
   right: 30px;
   margin: 0px;
 }
-/* line 371, teach.scss */
+/* line 277, teach.scss */
 .page-wordlet-teach-home .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions input {
   cursor: pointer;
   -webkit-appearance: none;
@@ -491,12 +383,12 @@ p a {
   text-transform: uppercase;
   width: 57px;
 }
-/* line 384, teach.scss */
+/* line 290, teach.scss */
 .page-wordlet-teach-home .social-menu .item .sect-headline {
   font: normal 24px/90% "GlyphaLTPro-Black", serif;
   color: #ea5f11;
 }
-/* line 387, teach.scss */
+/* line 293, teach.scss */
 .page-wordlet-teach-home .social-menu .item .sect-headline strong {
   font-weight: normal;
   color: #313131;
@@ -504,7 +396,7 @@ p a {
 
 /* # Common elements for some interior pages
 */
-/* line 402, teach.scss */
+/* line 308, teach.scss */
 .teach-video-page,
 .page-wordlet-teach-alliances .content {
   background: #ecedf6;
@@ -513,7 +405,7 @@ p a {
   -moz-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
 }
-/* line 407, teach.scss */
+/* line 313, teach.scss */
 .teach-video-page .content-headline,
 .page-wordlet-teach-alliances .content .content-headline {
   font-family: "GlyphaLTPro-Black", serif;
@@ -524,13 +416,13 @@ p a {
   max-width: 740px;
 }
 @media (min-width: 481px) {
-  /* line 407, teach.scss */
+  /* line 313, teach.scss */
   .teach-video-page .content-headline,
   .page-wordlet-teach-alliances .content .content-headline {
     margin-left: 20px;
   }
 }
-/* line 418, teach.scss */
+/* line 324, teach.scss */
 .teach-video-page .content-subheadline,
 .page-wordlet-teach-alliances .content .content-subheadline {
   font-weight: normal;
@@ -539,20 +431,20 @@ p a {
   line-height: 1;
 }
 @media (min-width: 481px) {
-  /* line 418, teach.scss */
+  /* line 324, teach.scss */
   .teach-video-page .content-subheadline,
   .page-wordlet-teach-alliances .content .content-subheadline {
     margin-left: 20px;
   }
 }
-/* line 427, teach.scss */
+/* line 333, teach.scss */
 .teach-video-page .social-menu,
 .page-wordlet-teach-alliances .content .social-menu {
   clear: both;
   text-align: center;
 }
 @media (min-width: 848px) {
-  /* line 427, teach.scss */
+  /* line 333, teach.scss */
   .teach-video-page .social-menu,
   .page-wordlet-teach-alliances .content .social-menu {
     background: transparent url(../img/video-page-social-block-bg.png) scroll no-repeat bottom center;
@@ -561,7 +453,7 @@ p a {
     padding: 0 9px 30px;
   }
 }
-/* line 436, teach.scss */
+/* line 342, teach.scss */
 .teach-video-page .social-menu h1.sect-headline,
 .page-wordlet-teach-alliances .content .social-menu h1.sect-headline {
   font-family: "GlyphaLTPro-Black", serif;
@@ -573,7 +465,7 @@ p a {
   max-width: 500px;
   margin: 1em auto 0.5em;
 }
-/* line 446, teach.scss */
+/* line 352, teach.scss */
 .teach-video-page .social-menu .item,
 .page-wordlet-teach-alliances .content .social-menu .item {
   font-size: 11.5px;
@@ -583,7 +475,7 @@ p a {
   position: relative;
 }
 @media (min-width: 848px) {
-  /* line 446, teach.scss */
+  /* line 352, teach.scss */
   .teach-video-page .social-menu .item,
   .page-wordlet-teach-alliances .content .social-menu .item {
     display: inline-block;
@@ -593,14 +485,14 @@ p a {
     margin: 0px 3%;
   }
 }
-/* line 456, teach.scss */
+/* line 362, teach.scss */
 .teach-video-page .social-menu .item p,
 .page-wordlet-teach-alliances .content .social-menu .item p {
   font-size: 11.5px;
   line-height: 1;
   color: 666565;
 }
-/* line 461, teach.scss */
+/* line 367, teach.scss */
 .teach-video-page .social-menu .item .sect-headline,
 .page-wordlet-teach-alliances .content .social-menu .item .sect-headline {
   font-family: "GlyphaLTPro-Black", serif;
@@ -609,25 +501,25 @@ p a {
   line-height: 1;
   color: #eb6413;
 }
-/* line 467, teach.scss */
+/* line 373, teach.scss */
 .teach-video-page .social-menu .item .sect-headline strong,
 .page-wordlet-teach-alliances .content .social-menu .item .sect-headline strong {
   color: black;
   font-weight: normal;
 }
-/* line 473, teach.scss */
+/* line 379, teach.scss */
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form,
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form {
   width: 217px;
   margin: 0 auto;
   position: relative;
 }
-/* line 477, teach.scss */
+/* line 383, teach.scss */
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form label,
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form label {
   display: none;
 }
-/* line 478, teach.scss */
+/* line 384, teach.scss */
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form #edit-email,
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form #edit-email {
   background: transparent url(../img/text-field-small.png);
@@ -637,7 +529,7 @@ p a {
   margin: 0 auto;
   padding: 0 10px;
 }
-/* line 486, teach.scss */
+/* line 392, teach.scss */
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions,
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions {
   position: absolute;
@@ -645,7 +537,7 @@ p a {
   right: -2px;
   margin: 0;
 }
-/* line 491, teach.scss */
+/* line 397, teach.scss */
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions input[type="submit"],
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form #edit-actions input[type="submit"] {
   cursor: pointer;
@@ -657,7 +549,7 @@ p a {
   text-transform: uppercase;
   width: 57px;
 }
-/* line 505, teach.scss */
+/* line 411, teach.scss */
 .teach-video-page .social-menu .item:before,
 .page-wordlet-teach-alliances .content .social-menu .item:before {
   display: block;
@@ -667,12 +559,12 @@ p a {
   left: 50%;
   background-color: transparent;
 }
-/* line 513, teach.scss */
+/* line 419, teach.scss */
 .teach-video-page .social-menu .item.text,
 .page-wordlet-teach-alliances .content .social-menu .item.text {
   margin-top: 73px;
 }
-/* line 515, teach.scss */
+/* line 421, teach.scss */
 .teach-video-page .social-menu .item.text:before,
 .page-wordlet-teach-alliances .content .social-menu .item.text:before {
   background-image: url(../img/social-phone.png);
@@ -680,12 +572,12 @@ p a {
   height: 73px;
   margin-left: -36px;
 }
-/* line 522, teach.scss */
+/* line 428, teach.scss */
 .teach-video-page .social-menu .item.connected,
 .page-wordlet-teach-alliances .content .social-menu .item.connected {
   margin-top: 79px;
 }
-/* line 524, teach.scss */
+/* line 430, teach.scss */
 .teach-video-page .social-menu .item.connected:before,
 .page-wordlet-teach-alliances .content .social-menu .item.connected:before {
   background-image: url(../img/social-envelopes.png);
@@ -693,12 +585,12 @@ p a {
   height: 79px;
   margin-left: -36px;
 }
-/* line 531, teach.scss */
+/* line 437, teach.scss */
 .teach-video-page .social-menu .item.discussion,
 .page-wordlet-teach-alliances .content .social-menu .item.discussion {
   margin-top: 55px;
 }
-/* line 533, teach.scss */
+/* line 439, teach.scss */
 .teach-video-page .social-menu .item.discussion:before,
 .page-wordlet-teach-alliances .content .social-menu .item.discussion:before {
   background-image: url(../img/social-chat.png);
@@ -706,23 +598,147 @@ p a {
   height: 55px;
   margin-left: -36px;
 }
-/* line 542, teach.scss */
+/* line 448, teach.scss */
 .teach-video-page .ad,
 .page-wordlet-teach-alliances .content .ad {
   max-width: 728px;
   margin: 1em auto 0;
 }
 @media (max-width: 767px) {
-  /* line 542, teach.scss */
+  /* line 448, teach.scss */
   .teach-video-page .ad,
   .page-wordlet-teach-alliances .content .ad {
     display: none;
   }
 }
 
+/* # Responsive Layout
+================================================== */
+@media (max-width: 1000px) {
+  /* line 460, teach.scss */
+  #page-wrapper {
+    width: 100%;
+  }
+
+  /* line 464, teach.scss */
+  .header .hero {
+    width: 77%;
+    height: auto;
+  }
+  /* line 468, teach.scss */
+  .header .logos {
+    width: 25%;
+    height: auto;
+  }
+  /* line 473, teach.scss */
+  .header .menu-wrapper {
+    font-size: 17px;
+  }
+  /* line 475, teach.scss */
+  .header .menu-wrapper .menu .item a {
+    width: 110px;
+  }
+
+  /* line 481, teach.scss */
+  #page .main-video-wrapper {
+    width: 59%;
+  }
+
+  /* line 485, teach.scss */
+  .page-wordlet-teach-home .social-menu {
+    width: 38%;
+  }
+}
+@media (max-width: 600px) {
+  /* line 491, teach.scss */
+  #page-wrapper, .page-wrap {
+    padding: 0;
+  }
+
+  /* line 495, teach.scss */
+  .header {
+    padding: 0;
+    text-align: center;
+    background: none;
+  }
+  /* line 499, teach.scss */
+  .header .slug {
+    font-size: 23px;
+  }
+  /* line 502, teach.scss */
+  .header .page-header {
+    width: auto;
+    margin-left: 0;
+    padding: 0;
+  }
+  /* line 507, teach.scss */
+  .header .hero {
+    width: 111%;
+    height: auto;
+    position: static;
+    margin: -20px 0px -20px -43px;
+    margin-bottom: -4px;
+    margin-top: -20px;
+  }
+  /* line 515, teach.scss */
+  .header .fine {
+    position: static;
+    margin: 0px;
+    text-align: center;
+    width: auto;
+  }
+  /* line 520, teach.scss */
+  .header .fine .logos {
+    width: 65%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+  }
+  /* line 526, teach.scss */
+  .header .fine .right {
+    display: none;
+  }
+  /* line 531, teach.scss */
+  .header .menu-wrapper {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    position: static;
+    font-size: 30px;
+  }
+  /* line 535, teach.scss */
+  .header .menu-wrapper .menu {
+    border-left: none;
+    border-right: none;
+    height: auto;
+  }
+  /* line 539, teach.scss */
+  .header .menu-wrapper .menu .item {
+    display: block;
+    margin: 0 auto;
+    vertical-align: middle;
+  }
+  /* line 543, teach.scss */
+  .header .menu-wrapper .menu .item a {
+    width: auto;
+    text-align: center;
+  }
+  /* line 547, teach.scss */
+  .header .menu-wrapper .menu .item.active {
+    background-position: center 3px;
+  }
+
+  /* line 556, teach.scss */
+  #page .main-video-wrapper {
+    width: 100%;
+    position: static;
+  }
+}
 /* # Video Pages
 ================================================== */
-/* line 557, teach.scss */
+/* line 573, teach.scss */
 .teach-video-page .content-preheader,
 .teach-video-page .col-headline {
   font-family: "GlyphaLTPro-Black", serif;
@@ -739,7 +755,7 @@ p a {
   -o-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 568, teach.scss */
+/* line 584, teach.scss */
 .teach-video-page .peek-a-boo {
   margin: 5px auto 0;
   background: transparent url(../img/paper-peek-a-boo.png) no-repeat scroll top right;
@@ -753,18 +769,18 @@ p a {
   box-shadow: 0 0 4px black;
 }
 @media (min-width: 480px) {
-  /* line 568, teach.scss */
+  /* line 584, teach.scss */
   .teach-video-page .peek-a-boo {
     margin-right: 25px;
     float: right;
   }
 }
-/* line 581, teach.scss */
+/* line 597, teach.scss */
 .teach-video-page .peek-a-boo a {
   color: black;
   font: normal normal 17px/1 "GlyphaLTPro-Black", serif, serif;
 }
-/* line 584, teach.scss */
+/* line 600, teach.scss */
 .teach-video-page .peek-a-boo a .fb {
   display: inline-block;
   *display: inline;
@@ -773,7 +789,7 @@ p a {
   height: 22px;
   background: transparent url(../img/social-facebook.png);
 }
-/* line 592, teach.scss */
+/* line 608, teach.scss */
 .teach-video-page .main-video-wrapper {
   clear: right;
   max-width: 859px;
@@ -786,65 +802,65 @@ p a {
   position: relative;
   z-index: 2;
 }
-/* line 602, teach.scss */
+/* line 618, teach.scss */
 .teach-video-page .content-column {
   margin-bottom: 2em;
 }
 @media (min-width: 768px) {
-  /* line 602, teach.scss */
+  /* line 618, teach.scss */
   .teach-video-page .content-column {
     width: 44.9%;
     margin-right: 5%;
     float: left;
   }
-  /* line 607, teach.scss */
+  /* line 623, teach.scss */
   .teach-video-page .content-column.column-odd {
     clear: left;
   }
 }
-/* line 612, teach.scss */
+/* line 628, teach.scss */
 .teach-video-page .content-column .col-headline {
   margin: 0 0 .5em;
 }
-/* line 615, teach.scss */
+/* line 631, teach.scss */
 .teach-video-page .content-column .col-content {
   font-size: 16px;
   line-height: 1.25;
   color: #666565;
 }
-/* line 619, teach.scss */
+/* line 635, teach.scss */
 .teach-video-page .content-column .col-content p {
   font-size: 16px;
   line-height: 1.25;
   color: #666565;
 }
-/* line 624, teach.scss */
+/* line 640, teach.scss */
 .teach-video-page .content-column .col-content strong {
   font-size: 18px;
 }
-/* line 627, teach.scss */
+/* line 643, teach.scss */
 .teach-video-page .content-column .col-content ul {
   list-style-type: none;
   padding-left: .75em;
 }
-/* line 630, teach.scss */
+/* line 646, teach.scss */
 .teach-video-page .content-column .col-content ul li {
   line-height: 1.25;
   margin-bottom: 0.25em;
   position: relative;
 }
-/* line 634, teach.scss */
+/* line 650, teach.scss */
 .teach-video-page .content-column .col-content ul li:before {
   content: '»';
   position: absolute;
   padding-right: 0.5em;
   right: 100%;
 }
-/* line 642, teach.scss */
+/* line 658, teach.scss */
 .teach-video-page .content-column .col-content a {
   color: #eb6413;
 }
-/* line 647, teach.scss */
+/* line 663, teach.scss */
 .teach-video-page .social-footer {
   text-align: center;
   font: normal normal 22px/1 "GlyphaLTPro-Black", serif, serif;
@@ -853,17 +869,17 @@ p a {
 
 /* # Alliances Page
 ================================================== */
-/* line 658, teach.scss */
+/* line 674, teach.scss */
 .page-wordlet-teach-alliances .content .main-image-wrapper {
   margin: 0.5em 20px;
   text-align: center;
 }
-/* line 661, teach.scss */
+/* line 677, teach.scss */
 .page-wordlet-teach-alliances .content .main-image-wrapper img {
   max-width: 100% !important;
   height: auto !important;
 }
-/* line 667, teach.scss */
+/* line 683, teach.scss */
 .page-wordlet-teach-alliances .content .content-main,
 .page-wordlet-teach-alliances .content .alliances {
   -webkit-box-sizing: border-box;
@@ -873,7 +889,7 @@ p a {
   width: 100%;
   float: left;
 }
-/* line 675, teach.scss */
+/* line 691, teach.scss */
 .page-wordlet-teach-alliances .content .alliance {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -888,7 +904,7 @@ p a {
   margin-bottom: 20px;
 }
 @media (min-width: 321px) {
-  /* line 675, teach.scss */
+  /* line 691, teach.scss */
   .page-wordlet-teach-alliances .content .alliance {
     float: left;
     width: 45%;
@@ -896,25 +912,25 @@ p a {
     min-height: 81px;
     line-height: 61px;
   }
-  /* line 691, teach.scss */
+  /* line 707, teach.scss */
   .page-wordlet-teach-alliances .content .alliance.alliance-even {
     margin-right: 0;
   }
 }
 @media (min-width: 769px) {
-  /* line 675, teach.scss */
+  /* line 691, teach.scss */
   .page-wordlet-teach-alliances .content .alliance {
     width: 22%;
     margin-right: 4%;
     height: 142px;
     line-height: 122px;
   }
-  /* line 700, teach.scss */
+  /* line 716, teach.scss */
   .page-wordlet-teach-alliances .content .alliance.alliance-nth-child-4n {
     margin-right: 0;
   }
 }
-/* line 704, teach.scss */
+/* line 720, teach.scss */
 .page-wordlet-teach-alliances .content .alliance img {
   max-width: 100% !important;
   height: auto !important;

@@ -7,6 +7,8 @@
 	<!-- start -->
 
 	<div class="page-wrap">
+		<?=w('background_skin')?>
+
 		<div class="main">
 			<header class="header">
 				<span class="slug"><?=w('header_slug')?></span>
