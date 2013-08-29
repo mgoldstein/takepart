@@ -96,6 +96,10 @@ $body-copy-black: #313131;
     bottom: 0;
     z-index: 10;
     width: 940px;
+    .logos {
+      display: block;
+      margin-bottom: 10px;
+    }
     .right { 
       color: white;
     }
@@ -208,6 +212,8 @@ p {
   }
 }
 
+/* # Home Page
+================================================== */
 .page-wordlet-teach-home .social-menu {
   width: 290px;
   background: image-url('paper_right.png') no-repeat right 10px;
