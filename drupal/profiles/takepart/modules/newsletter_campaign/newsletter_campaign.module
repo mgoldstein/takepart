@@ -927,6 +927,7 @@ function newsletter_campaign_email_only_signup_form($form, &$form_state, $config
 
   $form['#attributes'] = array(
     'data-newsletter-name' => check_plain($config['name']),
+    'class' => array('newsletter-signup'),
   );
 
   $form['header'] = array(

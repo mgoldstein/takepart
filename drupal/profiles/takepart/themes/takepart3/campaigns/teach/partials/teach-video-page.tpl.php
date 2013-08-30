@@ -6,6 +6,7 @@
     <div class="main-video-wrapper" <?=wa('video')?>>
         <script src="<?=w('video')?>"></script>
     </div>
+    <div class="columns-wrapper">
     <? foreach ( wl('columns') as $i => $w ): ?>
         <? $column_number = $i + 1; // the array is zero indexed ?>
         <? $zebra = ($column_number % 2 == 0) ? 'even' : 'odd'; ?>
@@ -16,6 +17,7 @@
             </div>
         </section>
     <? endforeach ?>
+    </div>
     <section class="social-menu">
         <? include('teach-social-block.tpl.php') ?>
     </section>
