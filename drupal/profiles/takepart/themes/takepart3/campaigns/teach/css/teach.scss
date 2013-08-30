@@ -11,6 +11,7 @@ $primary-grey: #666;
 
 $primary-font: Helvetica,Arial,sans-serif;
 $secondary-font: 'GlyphaLTPro-Black', serif;
+$third-font: 'OpenSans_Condensed', sans-serif;
 
 $primary-white: white;
 $light-white: #ccc;
@@ -48,7 +49,7 @@ $body-copy-black: #313131;
 /* # Header
 ================================================== */
 .header {
-  font-family: $primary-font;
+  font-family: $third-font;
   padding: $page-margins;
   position: relative;
   min-height: 422px;
@@ -75,6 +76,7 @@ $body-copy-black: #313131;
   }
 
   .slug {
+    font-family: $primary-font;
     display: block;
     font-size: 27px;
     line-height: 150%;
@@ -82,7 +84,8 @@ $body-copy-black: #313131;
 
   .credit {
     display: block;
-    font-size: 18px;
+    font-size: 24px;
+    margin-top: 5px;
     margin-bottom: .7em;
   }
 
@@ -99,7 +102,7 @@ $body-copy-black: #313131;
   }
 
   .fine {
-    font-size: 9px;
+    font-size: 13px;
     color: $light-white;
     position: absolute;
     margin-bottom: 60px;
@@ -258,6 +261,7 @@ p {
     @include inline-block;
     vertical-align: top;
     float: right;
+    min-height: 450px;
 
     h1 { display: none; }
     .item {
