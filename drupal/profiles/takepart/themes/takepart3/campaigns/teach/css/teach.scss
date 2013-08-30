@@ -571,6 +571,9 @@ p {
 }
 
 @media (max-width: 600px) {
+  #page-wrapper {
+    overflow: hidden;
+  }
   #page-wrapper, .page-wrap {
     padding: 0;
   }
