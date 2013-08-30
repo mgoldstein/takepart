@@ -809,8 +809,6 @@ p {
       	float: left;
       	width: 45%;
       	margin-right: 5%;
-      	min-height: 81px;
-        line-height: 61px; // height minus 10px top and bottom padding
       	&.alliance-even {
       	  margin-right: 0;
       	}
@@ -818,8 +816,6 @@ p {
       @media (min-width: 769px) {
       	width: 22%;
       	margin-right: 4%;
-      	height: 142px;
-      	line-height: 122px; // height minus 10px top and bottom padding
       	&.alliance-nth-child-4n {
       	  margin-right: 0;
       	}
