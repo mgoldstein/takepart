@@ -934,6 +934,28 @@ function wordlet_page_view_callback($page) {
     drupal_add_html_head( $metatag, 'facebook_image');
   }
 
+  // Google add slots
+  if (isset($page['wordlets']['google_ad_slots'])) {
+    $tw = $page['wordlets']['google_ad_slots'];
+    foreach ($tw->items as $item) {
+        
+      // Ad slot is stored in single
+      $slot = $item['single'];
+
+      // GPT id is stored in token
+      $gptid = $item['token'];
+
+      $property_code = variable_get('takepart_ads_dfp_property_code', '');
+      if(!empty($slot) && $property_code) {
+        if(!empty($gptid)) {
+          $gptid = array($slot => $gptid);
+          takepart_gpt_ads($gptid);
+        }
+        takepart_ads($slot);
+      }
+    }
+  }
+
   // Facebook description og tag
   $fb_description = '';
   if (isset($page['wordlets']['fb_description'])) {

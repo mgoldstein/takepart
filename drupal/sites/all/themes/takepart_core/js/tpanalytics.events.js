@@ -286,6 +286,18 @@ takepart.analytics.add({
         s.tl(true, 'o', 'Click on Embed Infographic Link');
     },
     // -----------------------------------
+    // Newsletter Signups ----------------
+    // -----------------------------------
+    'newsletter_signup': function(options) {
+        var s=s_gi(Drupal.settings.omniture.s_account);
+        s.linkTrackVars='eVar23,eVar30,events';
+        s.linkTrackEvents='event39';
+        s.events = 'event39';
+        s.eVar23 = options.name;
+        s.eVar30 = s.pageName;
+        s.tl(true, 'o', 'Newsletter Signup');
+    },
+    // -----------------------------------
     // Place at the Table ----------------
     // -----------------------------------
     'patt_show_modal': function(options) {
@@ -295,7 +307,7 @@ takepart.analytics.add({
         s.events='event73';
         s.eVar30="takepart:place-at-the-table:APATT Gallery";
         s.eVar73=options.name;
-        s.prop73=options.name; 
+        s.prop73=options.name;
         s.tl(true, 'o', 'APATT - SNAP Gallery Modal View');
     },
     'patt_email_modal': function(options) {
@@ -307,7 +319,7 @@ takepart.analytics.add({
         s.prop27="Email";
         s.eVar30=s.pageName;
         s.eVar73=options.name;
-        s.prop73=options.name; 
+        s.prop73=options.name;
         s.tl(true, 'o', 'SNAP Gallery share');
     },
     'patt_twitter_modal': function(options) {
@@ -317,7 +329,7 @@ takepart.analytics.add({
         s.prop27="Twitter";
         s.eVar30=s.pageName;
         s.eVar73=options.name;
-        s.prop73=options.name; 
+        s.prop73=options.name;
         s.linkTrackVars='eVar27,prop27,eVar30,eVar73,prop73,events';
         s.linkTrackEvents=special_share_event;
         s.tl(true, 'o', 'SNAP Gallery share');
@@ -331,7 +343,7 @@ takepart.analytics.add({
         s.prop27="Facebook";
         s.eVar30=s.pageName;
         s.eVar73=options.name;
-        s.prop73=options.name; 
+        s.prop73=options.name;
         s.tl(true, 'o', 'SNAP Gallery share');
     },
     'patt_email_gallery': function(options) {
@@ -343,7 +355,7 @@ takepart.analytics.add({
         s.prop27="Email";
         s.eVar30=s.pageName;
         s.eVar73="SNAP Alumni Gallery";
-        s.prop73="SNAP Alumni Gallery"; 
+        s.prop73="SNAP Alumni Gallery";
         s.tl(true, 'o', 'SNAP Gallery share');
     },
     'patt_twitter_gallery': function(options) {
@@ -355,7 +367,7 @@ takepart.analytics.add({
         s.prop27="Twitter";
         s.eVar30=s.pageName;
         s.eVar73="SNAP Alumni Gallery";
-        s.prop73="SNAP Alumni Gallery"; 
+        s.prop73="SNAP Alumni Gallery";
         s.tl(true, 'o', 'SNAP Gallery share');
     },
     'patt_facebook_gallery': function(options) {
@@ -367,7 +379,7 @@ takepart.analytics.add({
         s.prop27="Facebook";
         s.eVar30=s.pageName;
         s.eVar73="SNAP Alumni Gallery";
-        s.prop73="SNAP Alumni Gallery"; 
+        s.prop73="SNAP Alumni Gallery";
         s.tl(true, 'o', 'SNAP Gallery share');
     }
 });

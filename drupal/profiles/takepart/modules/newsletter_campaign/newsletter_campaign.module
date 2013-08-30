@@ -878,6 +878,12 @@ function newsletter_campaign_email_only_signup_configuration($form, $config) {
     '#default_value' => $config['email_label'],
   );
 
+  $form['email_placeholder'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Email Placeholder'),
+    '#default_value' => $config['email_placeholder'],
+  );
+
   $form['submit_caption'] = array(
     '#type' => 'textfield',
     '#title' => t('Submit Caption'),
@@ -933,6 +939,11 @@ function newsletter_campaign_email_only_signup_form($form, &$form_state, $config
     '#title' => $config['email_label'],
     '#required' => TRUE,
   );
+  if (!empty($config['email_placeholder'])) {
+    $form['email']['#attributes'] = array(
+      'placeholder' => $config['email_placeholder'],
+    );
+  }
 
   $form['actions'] = array(
     '#type' => 'actions',
@@ -1312,7 +1323,7 @@ function newsletter_campaign_direct_signup_form_callback($form, $form_state) {
     $message = newsletter_campaign_preprocess_markup($config['thank_you_message']);
     $message = '<div data-newsletter-name="'
       . check_plain($config['name'])
-      . '" class="thank-you-message"><p>' . $message . '</p></div>';
+      . '" class="newsletter-signup thank-you-message"><p>' . $message . '</p></div>';
     $commands[] = ajax_command_replace($selector, $message);
   }
   else {

@@ -16,6 +16,9 @@
 			</p>
 		<? endif ?>
 		<p>
+			Google Ad Slots: <span><?=w('google_ad_slots')?></span>
+		</p>
+		<p>
 			FB Image: <span><?=w('fb_image')?></span>
 		</p>
 		<p>

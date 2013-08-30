@@ -13,5 +13,8 @@ DEADJOE
 settings/settings.local.inc
 settings/settings.local.pglatz.inc
 .idea
+.sass-cache
+.swp
 
 sftp-config.json
+
