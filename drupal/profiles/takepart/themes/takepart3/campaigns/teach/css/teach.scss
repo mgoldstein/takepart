@@ -722,12 +722,15 @@ p {
       top: auto;
       position: relative;
       z-index: 1;
-      margin: 0 25px 0 auto;
+      margin: 1em 25px 0 auto;
       margin-right: 25px;
       float: right;
       background: transparent image-url('paper-peek-a-boo.png') no-repeat scroll top right;
       padding: 10px 0;
       @include box-shadow(0 0 4px black);
+    }
+    @media (min-width: 800px) {
+      margin-top: -2em;
     }
     a {
       color: black;
