@@ -1,6 +1,6 @@
 <div class="content">
-	<h2 class="content-header"><span><?=w('page_title')?></span></h2>
 	<h4 class="call-to-share"><?=w('social_follow_body')?></h4>
+	<h2 class="content-header"><span><?=w('page_title')?></span></h2>
   <div class="main-video-wrapper" <?=wa('video')?>>
       <script src="<?=w('video')?>"></script>
   </div>
@@ -11,3 +11,4 @@
 		<?= w('page_body_content') ?>
 	</section>
 </div>
+<br clear="all" />
