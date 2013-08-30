@@ -11,6 +11,7 @@ $primary-grey: #666;
 
 $primary-font: Helvetica,Arial,sans-serif;
 $secondary-font: 'GlyphaLTPro-Black', serif;
+$third-font: 'OpenSans_Condensed', sans-serif;
 
 $primary-white: white;
 $light-white: #ccc;
@@ -48,7 +49,7 @@ $body-copy-black: #313131;
 /* # Header
 ================================================== */
 .header {
-  font-family: $primary-font;
+  font-family: $third-font;
   padding: $page-margins;
   position: relative;
   min-height: 422px;
@@ -75,6 +76,7 @@ $body-copy-black: #313131;
   }
 
   .slug {
+    font-family: $primary-font;
     display: block;
     font-size: 27px;
     line-height: 150%;
@@ -82,13 +84,16 @@ $body-copy-black: #313131;
 
   .credit {
     display: block;
-    font-size: 18px;
+    font-size: 24px;
+    margin-top: 5px;
+    margin-bottom: .7em;
   }
 
   .date {
     display: block;
     font-size: 32px;
     line-height: 80%;
+    margin-bottom: .7em;
   }
 
   .burst {
@@ -97,7 +102,7 @@ $body-copy-black: #313131;
   }
 
   .fine {
-    font-size: 9px;
+    font-size: 13px;
     color: $light-white;
     position: absolute;
     margin-bottom: 60px;
@@ -180,6 +185,7 @@ p {
 #page {
   padding: $page-margins;
   background: none;
+  display: block;
 }
 
 /* # Home Page
@@ -255,6 +261,7 @@ p {
     @include inline-block;
     vertical-align: top;
     float: right;
+    min-height: 450px;
 
     h1 { display: none; }
     .item {
@@ -274,10 +281,10 @@ p {
         }
       }
 
-      #newsletter-campaign-email-only-signup-form {
+      .newsletter-signup {
         position: relative;
         label { display: none; }
-        #edit-email {
+        .form-type-textfield input {
           background: image-url('text-field-large.png') no-repeat;
           width: 240px;
           height: 46px;
@@ -286,7 +293,7 @@ p {
           padding: 0 15px;
         }
 
-        #edit-actions {
+        .form-actions {
           position: absolute;
           top: 9px;
           right: 20px;
@@ -373,6 +380,7 @@ p {
     }
     @media (min-width: 848px) {
       background: transparent image-url('video-page-social-block-bg.png') scroll no-repeat bottom center;
+      min-height: 241px;
       max-width: 830px;
       margin: 0 auto;
       padding: 0 9px 30px;
@@ -572,26 +580,28 @@ p {
     text-align: center;
     background: none;
     .slug {
-      font-size: 23px;
+      font-size: 18px;
+      padding: .5em 0;
     }
     .page-header {
-      width: auto;
-      margin-left: 0;
+      width: 100%;
+      margin: 0;
       padding: 0;
     }
+    .credit {
+      margin-top: .7em
+    }
     .hero {
-      width: 111%;
-      height: auto;
+      width: 100%;
+      height: auto !important;
       position: static;
-      margin: -20px 0px 0px -43px;
-      margin-bottom: -4px;
-      margin-top: -20px;
+      margin: 0;
     }
     .fine {
       position: static;
       margin: 0px;
       text-align: center;
-      width: auto;
+      width: 100%;
       .logos {
         width: 65%;
         height: auto;
@@ -606,7 +616,7 @@ p {
     .menu-wrapper {
       @include border-radius(0);
       position: static;
-      font-size: 30px;
+      font-size: 24px;
       .menu {
         border-left: none;
         border-right: none;
@@ -621,28 +631,36 @@ p {
           }
           &.active {
             background-position: center 3px;
-            background-size: 210px 100%;
+            background-size: 420px 100%;
+            height: auto;
           }
         }
       }
-    }
+    } // .menu-wrapper
   }
 
   .page-wordlet-teach-home {
     .call-to-share {
       float: none;
-      margin: -10px 0 5px;
+      text-align: center;
+      width: 100%;
     }
     .content-header {
+      background-size: 100%;
+      width: 80%;
     }
    .main-video-wrapper {
+      box-sizing: border-box;
       width: 100%;
-      height: 368px;
+      height: auto !important;
+      margin: 0;
+      border-width: 4px;
       position: relative;
     }
 
    .social-menu {
-      width: 85%;
+      box-sizing: border-box;
+      width: 100%;
       top: auto;
       display: block;
       position: relative;
@@ -653,13 +671,11 @@ p {
       @include box-shadow(0 0 40px #666 inset);
       @include background(linear-gradient(top, #eee, #ccc));
     }
-  }
-}
-
-@media (max-width: 1024px) {
-  html {
-    width: 1024px;
-  }
+    .page-body-content {
+      margin: 0;
+      padding: 20px;
+    }
+  } // .page-wordlet-teach-home (homepage styles)
 }
 
 
@@ -698,12 +714,15 @@ p {
       top: auto;
       position: relative;
       z-index: 1;
-      margin: 0 25px 0 auto;
+      margin: 1em 25px 0 auto;
       margin-right: 25px;
       float: right;
       background: transparent image-url('paper-peek-a-boo.png') no-repeat scroll top right;
       padding: 10px 0;
       @include box-shadow(0 0 4px black);
+    }
+    @media (min-width: 800px) {
+      margin-top: -2em;
     }
     a {
       color: black;
@@ -856,6 +875,3 @@ p {
     }
   }
 }
-
-/* # Content Signup Form
-================================================== */

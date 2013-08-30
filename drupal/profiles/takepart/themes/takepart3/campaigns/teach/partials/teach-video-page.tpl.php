@@ -24,21 +24,27 @@
     <? if (w('social_footer_label')) : ?>
     <div class="social-footer">
         <span><?=w('social_footer_label')?></span>
-        <? if(w('social_facebook')->img_src) : ?>
-        <a href="<?=w('social_facebook')->href?>" target="_blank">
-	       <img src="<?=w('social_facebook')->img_src?>" alt="<?=w('social_facebook')->single_no_markup?>">
-        </a>
-        <? endif ?>
-        <? if(w('social_twitter')->img_src) : ?>
-        <a href="<?=w('social_twitter')->href?>" target="_blank">
-	       <img src="<?=w('social_twitter')->img_src?>" alt="<?=w('social_twitter')->single_no_markup?>">
-        </a>
-        <? endif ?>
-        <? if(w('social_gplus')->img_src) : ?>
-        <a href="<?=w('social_gplus')->href?>" target="_blank">
-	       <img src="<?=w('social_gplus')->img_src?>" alt="<?=w('social_gplus')->single_no_markup?>">
-        </a>
-        <? endif ?>
+            <span <?=wa('social_facebook')?>>
+            <? if(w('social_facebook')->img_src) : ?>
+            <a href="<?=w('social_facebook')->href?>" target="_blank">
+    	       <img src="<?=w('social_facebook')->img_src?>" alt="<?=w('social_facebook')->single_no_markup?>">
+            </a>
+            <? endif ?>
+            </span>
+            <span <?=wa('social_twitter')?>>
+            <? if(w('social_twitter')->img_src) : ?>
+            <a href="<?=w('social_twitter')->href?>" target="_blank">
+    	       <img src="<?=w('social_twitter')->img_src?>" alt="<?=w('social_twitter')->single_no_markup?>">
+            </a>
+            <? endif ?>
+            </span>
+            <span <?=wa('social_gplus')?>>
+            <? if(w('social_gplus')->img_src) : ?>
+            <a href="<?=w('social_gplus')->href?>" target="_blank">
+    	       <img src="<?=w('social_gplus')->img_src?>" alt="<?=w('social_gplus')->single_no_markup?>">
+            </a>
+            </span>
+            <? endif ?>
     </div>
     <? endif ?>
     <div class="ad">
