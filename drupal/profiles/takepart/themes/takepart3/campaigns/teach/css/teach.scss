@@ -580,36 +580,28 @@ p {
     text-align: center;
     background: none;
     .slug {
-      font-size: 4.5em;
-    }
-    .credit {
-      margin-top: .5em;
-      font-size: 3.5em;
-    }
-    .burst {
-      font-size: 8em;
+      font-size: 18px;
+      padding: .5em 0;
     }
     .page-header {
-      width: auto;
-      margin-left: 0;
+      width: 100%;
+      margin: 0;
       padding: 0;
-      font-size: 20em;
     }
-    .date {
-      font-size: 8em;
+    .credit {
+      margin-top: .7em
     }
     .hero {
-      width: 110%;
-      height: auto;
+      width: 100%;
+      height: auto !important;
       position: static;
-      margin: -20px 0px 0px -120px;
+      margin: 0;
     }
     .fine {
-      font-size: 1.5em;
       position: static;
       margin: 0px;
       text-align: center;
-      width: auto;
+      width: 100%;
       .logos {
         width: 65%;
         height: auto;
@@ -624,8 +616,7 @@ p {
     .menu-wrapper {
       @include border-radius(0);
       position: static;
-      font-size: 60px;
-      line-height: 150%;
+      font-size: 24px;
       .menu {
         border-left: none;
         border-right: none;
@@ -645,38 +636,31 @@ p {
           }
         }
       }
-    }
+    } // .menu-wrapper
   }
 
   .page-wordlet-teach-home {
     .call-to-share {
       float: none;
       text-align: center;
-      a {
-        font-size: 3.6em;
-        .fb {
-          background-size: 100%;
-          width: 80px;
-          height: 80px;
-        }
-      }
+      width: 100%;
     }
     .content-header {
-      font-size: 5em;
       background-size: 100%;
       width: 80%;
-      margin-bottom: -90px;
-      height: 200px;
     }
    .main-video-wrapper {
+      box-sizing: border-box;
       width: 100%;
-      height: auto;
-      border-width: 1em;
+      height: auto !important;
+      margin: 0;
+      border-width: 4px;
       position: relative;
     }
 
    .social-menu {
-      width: 85%;
+      box-sizing: border-box;
+      width: 100%;
       top: auto;
       display: block;
       position: relative;
@@ -687,7 +671,11 @@ p {
       @include box-shadow(0 0 40px #666 inset);
       @include background(linear-gradient(top, #eee, #ccc));
     }
-  }
+    .page-body-content {
+      margin: 0;
+      padding: 20px;
+    }
+  } // .page-wordlet-teach-home (homepage styles)
 }
 
 
@@ -887,6 +875,3 @@ p {
     }
   }
 }
-
-/* # Content Signup Form
-================================================== */
