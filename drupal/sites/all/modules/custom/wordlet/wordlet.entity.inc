@@ -295,7 +295,7 @@ class WordletController extends EntityAPIControllerExportable {
       // Preprocess the value
       switch ($entity->format) {
       case WORDLET_FULL_HTML:
-        $value = strip_tags($item['single'], '<a><b><i><strong><small><em><br><br/><img><p><ul><ol><li><blockquote><hr><hr/><h1><h2><h3><h4><h5><h6>');
+        $value = $item['single'];
         break;
       case WORDLET_SIMPLE_HTML:
         $value = strip_tags($item['single'],
@@ -320,7 +320,7 @@ class WordletController extends EntityAPIControllerExportable {
       // Preprocess the value
       switch ($entity->format) {
       case WORDLET_FULL_HTML:
-        $value = strip_tags($item['multi'], '<a><b><i><strong><small><em><br><br/><img><p><ul><ol><li><blockquote><hr><hr/><h1><h2><h3><h4><h5><h6>');
+        $value = $item['multi'];
         break;
       case WORDLET_SIMPLE_HTML:
         $value = strip_tags($item['multi'], '<a><b><i><strong><small><em><br><br/><img>');
@@ -352,7 +352,7 @@ class WordletController extends EntityAPIControllerExportable {
       // Preprocess the value
       switch ($entity->format) {
       case WORDLET_FULL_HTML:
-        $value = strip_tags($item['multi_short'], '<a><b><i><strong><small><em><br><br/><img><p><ul><ol><li><blockquote><hr><hr/><h1><h2><h3><h4><h5><h6>');
+        $value = $item['multi_short'];
         break;
       case WORDLET_SIMPLE_HTML:
         $value = strip_tags($item['multi_short'], '<a><b><i><strong><small><em><br><br/><img>');

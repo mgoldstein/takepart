@@ -183,6 +183,7 @@ p {
 /* # Home Page
 ================================================== */
 .page-wordlet-teach-home {
+
   .content {
     overflow: visible;
     position: relative;
@@ -208,7 +209,7 @@ p {
     a {
       font: 22px $secondary-font;
       color: $primary-white;
-      .icon {
+      .fb {
         background: image-url('social-facebook-white.png') no-repeat;
         @include inline-block;
         width: 30px;
@@ -217,6 +218,7 @@ p {
       }
     }
   }
+
   .main-video-wrapper {
     width: 637px;
     margin-left: -5px;
@@ -227,86 +229,88 @@ p {
     @include inline-block;
     @include box-shadow(0 0 10px black);
   }
-}
-.social-menu {
-  width: 277px;
-  background: image-url('paper_right.png') no-repeat right 10px;
-  padding: 100px 30px 0 300px;
-  top: -50px;
-  margin-left: -300px;
-  margin-right: -$page-margins;
-  position: relative;
-  z-index: 5;
-  @include inline-block;
-  vertical-align: top;
-  float: right;
 
-  h1 { display: none; }
-  .item {
-    background-repeat: no-repeat;
-    padding-left: 90px;
+  .social-menu {
+    width: 277px;
+    background: image-url('paper_right.png') no-repeat right 10px;
+    padding: 100px 30px 0 300px;
+    top: -50px;
+    margin-left: -300px;
+    margin-right: -$page-margins;
+    position: relative;
+    z-index: 5;
+    @include inline-block;
+    vertical-align: top;
+    float: right;
 
-    &.text { background-image: image-url('social-phone.png'); }
-    &.connected { background-image: image-url('social-envelopes.png'); }
-    &.discussion { background-image: image-url('social-chat.png'); }
+    h1 { display: none; }
+    .item {
+      background-repeat: no-repeat;
+      padding-left: 90px;
 
-    p {
-      line-height: 100%;
-      .terms {
-        font-size: 12px;
-        line-height: 25px;
-      }
-    }
+      &.text { background-image: image-url('social-phone.png'); }
+      &.connected { background-image: image-url('social-envelopes.png'); }
+      &.discussion { background-image: image-url('social-chat.png'); }
 
-    #newsletter-campaign-email-only-signup-form {
-      position: relative;
-      label { display: none; }
-      #edit-email {
-        background: image-url('text-field-large.png') no-repeat;
-        width: 240px;
-        height: 46px;
-        border: none;
-        margin-left: -80px;
-        padding: 0 15px;
+      p {
+        line-height: 100%;
+        .terms {
+          font-size: 12px;
+          line-height: 25px;
+        }
       }
 
-      #edit-actions {
-        position: absolute;
-        top: 9px;
-        right: 30px;
-        margin: 0px;
-        input {
-          cursor: pointer;
-          -webkit-appearance: none;
+      #newsletter-campaign-email-only-signup-form {
+        position: relative;
+        label { display: none; }
+        #edit-email {
+          background: image-url('text-field-large.png') no-repeat;
+          width: 240px;
+          height: 46px;
           border: none;
-          background-color: black;
-          font: normal 12px/140% $secondary-font;
-          color: $primary-white;
-          text-transform: uppercase;
-          width: 57px;
+          margin-left: -80px;
+          padding: 0 15px;
+        }
+
+        #edit-actions {
+          position: absolute;
+          top: 9px;
+          right: 30px;
+          margin: 0px;
+          input {
+            cursor: pointer;
+            -webkit-appearance: none;
+            border: none;
+            background-color: black;
+            font: normal 12px/140% $secondary-font;
+            color: $primary-white;
+            text-transform: uppercase;
+            width: 57px;
+          }
+        }
+      }
+
+      .sect-headline {
+        font: normal 24px/90% $secondary-font;
+        color: $primary-color;
+        strong {
+          font-weight: normal;
+          color: $body-copy-black;
         }
       }
     }
+  }
 
-    .sect-headline {
-      font: normal 24px/90% $secondary-font;
-      color: $primary-color;
-      strong {
-        font-weight: normal;
-        color: $body-copy-black;
-      }
+  .page-body-content {
+    background: $primary-white;
+    padding: $page-margins;
+    img {
+      float: right;
+      margin-left: $page-margins;
+      margin-right: -33px;
     }
   }
-}
 
-.page-body-content {
-  background: $primary-white;
-  padding: $page-margins;
-  img {
-    float: right;
-    margin-left: $page-margins;
-    margin-right: -33px;
-  }
 }
 
 /* # Common elements for some interior pages
@@ -314,10 +318,15 @@ p {
 
 .teach-video-page,
 .page-wordlet-teach-alliances .content {
+  position: relative;
   // TODO: Paper background
-  background: #ecedf6; 
-  padding: 20px;
+  background: #ecedf6;
+  margin-top: 30px;
   @include box-shadow(inset 0 0 40px rgba(0,0,0,0.2));
+  @media (min-width: 481px) {
+    margin-top: 0;
+    padding: 20px;
+  }
   .content-headline {
     font-family: $secondary-font;
     font-weight: normal;
@@ -341,6 +350,10 @@ p {
   .social-menu {
     clear: both;
     text-align: center;
+    @media (max-width: 480px) {
+      background-color: black;
+      padding: 20px;
+    }
     @media (min-width: 848px) {
       background: transparent image-url('video-page-social-block-bg.png') scroll no-repeat bottom center;
       max-width: 830px;
@@ -356,12 +369,19 @@ p {
       text-align: center;
       max-width: 500px;
       margin: 1em auto 0.5em;
+      @media (max-width: 480px) {
+        color: white;
+        margin-top: 0;
+      }
     }
     .item {
       font-size: 11.5px;
       line-height: 1;
-      color: 666565;
       vertical-align: bottom;
+      color: 666565;
+      @media (max-width: 480px) {
+        color: white;
+      }
       @media (min-width: 848px) {
         display: inline-block; *display: inline; *zoom: 1;
         width: 27%;
@@ -371,6 +391,9 @@ p {
         font-size: 11.5px;
         line-height: 1;
         color: 666565;
+        @media (max-width: 480px) {
+          color: white;        
+        }
       }
       .sect-headline {
         font-family: $secondary-font;
@@ -381,6 +404,9 @@ p {
         strong {
           color: black;
           font-weight: normal;
+          @media (max-width: 480px) {
+            color: white;
+          }
         }
       }
       // form styling
@@ -431,6 +457,12 @@ p {
           width: 72px;
           height: 73px;
           margin-left: -36px;
+          @media (max-width: 480px) {
+            background-image: image-url('social-phone-white.png');
+            width: 52px;
+            height: 60px;
+            margin-left: -26px;
+          }
         }
       }
       &.connected {
@@ -440,6 +472,12 @@ p {
           width: 72px;
           height: 79px;
           margin-left: -36px;
+          @media (max-width: 480px) {
+            background-image: image-url('social-envelopes-white.png');
+            width: 42px;
+            height: 47px;
+            margin-left: -21px;
+          }
         }
       }
       &.discussion {
@@ -448,7 +486,13 @@ p {
           background-image: image-url('social-chat.png');
           width: 72px;
           height: 55px;
-          margin-left: -36px;        
+          margin-left: -36px;
+          @media (max-width: 480px) {
+            background-image: image-url('social-chat-white.png');
+            width: 50px;
+            height: 45px;
+            margin-left: -25px;
+          }
         }
       }
     } // .item
@@ -479,9 +523,9 @@ p {
     }
 
     .menu-wrapper {
-      font-size: 17px;
+      font-size: 15px;
       .menu .item a {
-        width: 110px;
+        width: 90px;
       }
     }
   }
@@ -564,16 +608,17 @@ p {
  .page-wordlet-teach-home {
    .main-video-wrapper {
       width: 100%;
-      height: 400px;
+      height: 368px;
       position: relative;
     }
 
    .social-menu {
-      width: 95%;
+      width: 85%;
+      top: auto;
       display: block;
       position: relative;
       float: none;
-      padding: 0;
+      padding: 20px;
       margin: 0 auto;
       background: none white;
       @include box-shadow(0 0 40px #666 inset);
@@ -603,18 +648,29 @@ p {
     background: transparent image-url('video-page-label-background.png') no-repeat scroll top left;
     @include rotate(-4deg);
   }
+  .content-preheader,
+  .content-headline,
+  .content-subheadline {
+    @media (max-width:480px) {
+      display: none;      
+    }
+  }
   .peek-a-boo {
-    margin: 5px auto 0;
-    background: transparent image-url('paper-peek-a-boo.png') no-repeat scroll top right;
-    width: 290px;
-    padding: 15px 0 10px;
     text-align: center;
-    position: relative;
-    z-index: 1;
-    @include box-shadow(0 0 4px black);
-    @media (min-width: 480px) {
+    position: absolute;
+    top: -20px;
+    width: 100%;
+    @media (min-width: 481px) {
+      width: 290px;
+      top: auto;
+      position: relative;
+      z-index: 1;
+      margin: 0 25px 0 auto;
       margin-right: 25px;
       float: right;
+      background: transparent image-url('paper-peek-a-boo.png') no-repeat scroll top right;
+      padding: 15px 0 10px;
+      @include box-shadow(0 0 4px black);
     }
     a {
       color: black;
@@ -624,6 +680,12 @@ p {
       	width: 24px;
       	height: 22px;
       	background: transparent image-url('social-facebook.png');
+      }
+      @media (max-width: 480px) {
+        color: white;
+        .fb {
+          background-image: image-url('social-facebook-white-small.png');
+        }
       }
     }
   }
@@ -636,6 +698,9 @@ p {
     @include box-shadow(0 0 6px black);
     position: relative;
     z-index: 2;
+    @media (max-width: 480px) {
+      @include scale(1.02);
+    }
   }
   .content-column {
     @media (min-width: 768px) {
@@ -654,10 +719,14 @@ p {
       font-size: 16px;
       line-height: 1.25;
       color: #666565;
+      @media (max-width:480px) {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
       p { // override
-	font-size: 16px;
-	line-height: 1.25;
-	color: #666565;
+      	font-size: 16px;
+      	line-height: 1.25;
+      	color: #666565;
       }
       strong {
 	font-size: 18px;
@@ -686,6 +755,9 @@ p {
     text-align: center;
     font: normal normal 22px/1 $secondary-font, serif;
     text-transform: uppercase;
+    @media (max-width: 480px) {
+      padding: 20px;
+    }
   } // .social-footer
 }
 
