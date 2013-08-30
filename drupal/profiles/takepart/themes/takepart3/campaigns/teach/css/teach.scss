@@ -178,22 +178,44 @@ p {
 #page {
   padding: $page-margins;
   background: none;
+}
+
+/* # Home Page
+================================================== */
+.page-wordlet-teach-home {
+  .content {
+    overflow: visible;
+    position: relative;
+  }
   .content-header {
-    background: image-url('header1_bg.png') no-repeat;
+    background: url('../img/header1_bg.png?1377730837') no-repeat;
     color: black;
     font-size: 26px;
-    height: 50px;
-    margin-bottom: 0px;
-    padding: 5px 10px;
+    margin-bottom: -59px;
+    padding: 0px 10px;
+    width: 400px;
+    line-height: 200%;
+    height: 85px;
 
     span {
       @include rotate(-2deg);
       display: block;
     }
   }
-  .content {
-    overflow: visible;
-    position: relative;
+  .call-to-share {
+    margin: -25px 0 25px 0;
+    float: right;
+    a {
+      font: 22px $secondary-font;
+      color: $primary-white;
+      .icon {
+        background: image-url('social-facebook-white.png') no-repeat;
+        @include inline-block;
+        width: 30px;
+        height: 30px;
+        margin: 0 15px;
+      }
+    }
   }
   .main-video-wrapper {
     width: 637px;
@@ -206,23 +228,10 @@ p {
     @include box-shadow(0 0 10px black);
   }
 }
-
-.page-body-content {
-  background: $primary-white;
-  padding: $page-margins;
-  img {
-    float: right;
-    margin-left: $page-margins;
-    margin-right: -33px;
-  }
-}
-
-/* # Home Page
-================================================== */
-.page-wordlet-teach-home .social-menu {
+.social-menu {
   width: 277px;
   background: image-url('paper_right.png') no-repeat right 10px;
-  padding: 0px 30px 0 300px;
+  padding: 100px 30px 0 300px;
   top: -50px;
   margin-left: -300px;
   margin-right: -$page-margins;
@@ -233,14 +242,6 @@ p {
   float: right;
 
   h1 { display: none; }
-  .link_on_white {
-    margin: 0 0 80px -40px;
-    width: 350px;
-    a {
-      font: 22px $secondary-font;
-      color: $primary-white;
-    }
-  }
   .item {
     background-repeat: no-repeat;
     padding-left: 90px;
@@ -298,7 +299,14 @@ p {
   }
 }
 
-.content .body p {
+.page-body-content {
+  background: $primary-white;
+  padding: $page-margins;
+  img {
+    float: right;
+    margin-left: $page-margins;
+    margin-right: -33px;
+  }
 }
 
 /* # Common elements for some interior pages
@@ -334,7 +342,7 @@ p {
     clear: both;
     text-align: center;
     @media (min-width: 848px) {
-      background: transparent url(../img/video-page-social-block-bg.png) scroll no-repeat bottom center;
+      background: transparent image-url('video-page-social-block-bg.png') scroll no-repeat bottom center;
       max-width: 830px;
       margin: 0 auto;
       padding: 0 9px 30px;
@@ -382,7 +390,7 @@ p {
         position: relative;
         label { display: none;}
         #edit-email {
-          background: transparent url(../img/text-field-small.png);
+          background: transparent image-url('text-field-small.png');
           border: 0;
           width: 217px;
           height: 30px;
@@ -419,7 +427,7 @@ p {
       &.text {
         margin-top: 73px;
         &:before {
-          background-image: url(../img/social-phone.png);
+          background-image: image-url('social-phone.png');
           width: 72px;
           height: 73px;
           margin-left: -36px;
@@ -428,7 +436,7 @@ p {
       &.connected {
       margin-top: 79px;
         &:before {
-          background-image: url(../img/social-envelopes.png);
+          background-image: image-url('social-envelopes.png');
           width: 72px;
           height: 79px;
           margin-left: -36px;
@@ -437,7 +445,7 @@ p {
       &.discussion {
         margin-top: 55px;
         &:before {
-          background-image: url(../img/social-chat.png);
+          background-image: image-url('social-chat.png');
           width: 72px;
           height: 55px;
           margin-left: -36px;        
@@ -478,12 +486,13 @@ p {
     }
   }
 
-  #page .main-video-wrapper {
-    width: 59%;
-  }
-
-  .page-wordlet-teach-home .social-menu {
-    width: 38%;
+  .page-wordlet-teach-home {
+    .social-menu {
+      width: 38%;
+    }
+    .main-video-wrapper {
+      width: 59%;
+    }
   }
 }
 
@@ -552,10 +561,23 @@ p {
     }
   }
 
-  #page {
-    .main-video-wrapper {
+ .page-wordlet-teach-home {
+   .main-video-wrapper {
       width: 100%;
-      position: static;
+      height: 400px;
+      position: relative;
+    }
+
+   .social-menu {
+      width: 95%;
+      display: block;
+      position: relative;
+      float: none;
+      padding: 0;
+      margin: 0 auto;
+      background: none white;
+      @include box-shadow(0 0 40px #666 inset);
+      @include background(linear-gradient(top, #eee, #ccc));
     }
   }
 }
@@ -578,12 +600,12 @@ p {
     font-size: 40px;
     line-height: 1.375;
     text-transform: uppercase;
-    background: transparent url(../img/video-page-label-background.png) no-repeat scroll top left;
+    background: transparent image-url('video-page-label-background.png') no-repeat scroll top left;
     @include rotate(-4deg);
   }
   .peek-a-boo {
     margin: 5px auto 0;
-    background: transparent url(../img/paper-peek-a-boo.png) no-repeat scroll top right;
+    background: transparent image-url('paper-peek-a-boo.png') no-repeat scroll top right;
     width: 290px;
     padding: 15px 0 10px;
     text-align: center;
@@ -601,7 +623,7 @@ p {
       	display: inline-block; *display: inline; *zoom: 1;
       	width: 24px;
       	height: 22px;
-      	background: transparent url(../img/social-facebook.png);
+      	background: transparent image-url('social-facebook.png');
       }
     }
   }
