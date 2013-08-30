@@ -878,6 +878,12 @@ function newsletter_campaign_email_only_signup_configuration($form, $config) {
     '#default_value' => $config['email_label'],
   );
 
+  $form['email_placeholder'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Email Placeholder'),
+    '#default_value' => $config['email_placeholder'],
+  );
+
   $form['submit_caption'] = array(
     '#type' => 'textfield',
     '#title' => t('Submit Caption'),
@@ -933,6 +939,11 @@ function newsletter_campaign_email_only_signup_form($form, &$form_state, $config
     '#title' => $config['email_label'],
     '#required' => TRUE,
   );
+  if (!empty($config['email_placeholder'])) {
+    $form['email']['#attributes'] = array(
+      'placeholder' => $config['email_placeholder'],
+    );
+  }
 
   $form['actions'] = array(
     '#type' => 'actions',
