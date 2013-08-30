@@ -406,7 +406,7 @@ function _wordlet_configuration() {
     // teach Home
     'teach_home' => array(
       'title' => 'TEACH - Home',
-      'path' => 'teach',
+      'path' => 'teach/home',
       'published' => TRUE,
       'wrappers' => array('teach', 'campaign', 'html'),
       'css' => array(
