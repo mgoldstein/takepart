@@ -19,7 +19,9 @@
  * will only have to specify some property information in getPropertyInfo(). If
  * you have a custom service class which already returns the extracted fields
  * with the search results, you will only have to provide a label and a type for
- * each field.
+ * each field. To make this use case easier, there is also a
+ * getFieldInformation() method which you can implement instead of directly
+ * implementing getPropertyInfo().
  */
 class SearchApiExternalDataSourceController extends SearchApiAbstractDataSourceController {
 
@@ -59,9 +61,16 @@ class SearchApiExternalDataSourceController extends SearchApiAbstractDataSourceC
   }
 
   /**
-   * Overrides SearchApiAbstractDataSourceController::getPropertyInfo().
+   * Helper method that can be used by subclasses to specify the property
+   * information to use when creating a metadata wrapper.
    *
-   * Only returns a single string ID field.
+   * For most use cases, you will have to override this method to provide the
+   * real property information for your item type.
+   *
+   * @return array
+   *   Property information as specified by hook_entity_property_info().
+   *
+   * @see hook_entity_property_info()
    */
   protected function getPropertyInfo() {
     $info['property info']['id'] = array(

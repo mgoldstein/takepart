@@ -60,6 +60,7 @@ function _search_api_rules_action_index(EntityDrupalWrapper $wrapper, SearchApiI
     return;
   }
 
+
   if ($index) {
     $indexes = array($index);
   }
@@ -76,7 +77,7 @@ function _search_api_rules_action_index(EntityDrupalWrapper $wrapper, SearchApiI
   }
   if ($index_immediately) {
     foreach ($indexes as $index) {
-      search_api_index_specific_items_delayed($index, $item_ids);
+      $indexed = search_api_index_specific_items_delayed($index, $item_ids);
     }
   }
   else {

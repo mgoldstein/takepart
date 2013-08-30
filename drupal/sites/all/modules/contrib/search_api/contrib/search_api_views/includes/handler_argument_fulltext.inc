@@ -3,7 +3,7 @@
 /**
  * Views argument handler class for handling fulltext fields.
  */
-class SearchApiViewsHandlerArgumentFulltext extends SearchApiViewsHandlerArgument {
+class SearchApiViewsHandlerArgumentFulltext extends SearchApiViewsHandlerArgumentText {
 
   /**
    * Specify the options this filter uses.
@@ -11,7 +11,6 @@ class SearchApiViewsHandlerArgumentFulltext extends SearchApiViewsHandlerArgumen
   public function option_definition() {
     $options = parent::option_definition();
     $options['fields'] = array('default' => array());
-    $options['conjunction'] = array('default' => 'AND');
     return $options;
   }
 
@@ -20,8 +19,6 @@ class SearchApiViewsHandlerArgumentFulltext extends SearchApiViewsHandlerArgumen
    */
   public function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
-
-    $form['help']['#markup'] = t('Note: You can change how search keys are parsed under "Advanced" > "Query settings".');
 
     $fields = $this->getFulltextFields();
     if (!empty($fields)) {
@@ -34,17 +31,6 @@ class SearchApiViewsHandlerArgumentFulltext extends SearchApiViewsHandlerArgumen
         '#multiple' => TRUE,
         '#default_value' => $this->options['fields'],
       );
-      $form['conjunction'] = array(
-        '#title' => t('Operator'),
-        '#description' => t('Determines how multiple keywords entered for the search will be combined.'),
-        '#type' => 'radios',
-        '#options' => array(
-          'AND' => t('Contains all of these words'),
-          'OR' => t('Contains any of these words'),
-        ),
-        '#default_value' => $this->options['conjunction'],
-      );
-
     }
     else {
       $form['fields'] = array(
@@ -62,9 +48,6 @@ class SearchApiViewsHandlerArgumentFulltext extends SearchApiViewsHandlerArgumen
   public function query($group_by = FALSE) {
     if ($this->options['fields']) {
       $this->query->fields($this->options['fields']);
-    }
-    if ($this->options['conjunction'] != 'AND') {
-      $this->query->setOption('conjunction', $this->options['conjunction']);
     }
 
     $old = $this->query->getOriginalKeys();

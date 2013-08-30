@@ -231,18 +231,12 @@ class SearchApiAlterAddHierarchy extends SearchApiAbstractAlterCallback {
       }
       return;
     }
-    try {
-      $v = $wrapper->value(array('identifier' => TRUE));
-      if ($v && !isset($values[$v])) {
-        $values[$v] = $v;
-        if (isset($wrapper->$property) && $wrapper->value() && $wrapper->$property->value()) {
-          $this->extractHierarchy($wrapper->$property, $property, $values);
-        }
+    $v = $wrapper->value(array('identifier' => TRUE));
+    if ($v && !isset($values[$v])) {
+      $values[$v] = $v;
+      if (isset($wrapper->$property) && $wrapper->$property->value()) {
+        $this->extractHierarchy($wrapper->$property, $property, $values);
       }
-    }
-    catch (EntityMetadataWrapperException $e) {
-      // Some properties like entity_metadata_book_get_properties() throw
-      // exceptions, so we catch them here and ignore the property.
     }
   }
 

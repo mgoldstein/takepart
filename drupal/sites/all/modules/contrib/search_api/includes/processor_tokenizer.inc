@@ -18,17 +18,6 @@ class SearchApiTokenizer extends SearchApiAbstractProcessor {
 
   public function configurationForm() {
     $form = parent::configurationForm();
-
-    // Only make fulltext fields available as options.
-    $fields = $this->index->getFields();
-    $field_options = array();
-    foreach ($fields as $name => $field) {
-      if (empty($field['real_type']) && search_api_is_text_type($field['type'])) {
-        $field_options[$name] = $field['name'];
-      }
-    }
-    $form['fields']['#options'] = $field_options;
-
     $form += array(
       'spaces' => array(
         '#type' => 'textfield',
@@ -48,7 +37,7 @@ class SearchApiTokenizer extends SearchApiAbstractProcessor {
     );
 
     if (!empty($this->options)) {
-      $form['spaces']['#default_value'] = $this->options['spaces'];
+      $form['spaces']['#default_value']   = $this->options['spaces'];
       $form['ignorable']['#default_value'] = $this->options['ignorable'];
     }
 
@@ -87,15 +76,12 @@ class SearchApiTokenizer extends SearchApiAbstractProcessor {
   }
 
   protected function process(&$value) {
-    // We don't touch integers, NULL values or the like.
-    if (is_string($value)) {
-      $this->prepare();
-      if ($this->ignorable) {
-        $value = preg_replace('/' . $this->ignorable . '+/u', '', $value);
-      }
-      if ($this->spaces) {
-        $value = preg_replace('/' . $this->spaces . '+/u', ' ', $value);
-      }
+    $this->prepare();
+    if ($this->ignorable) {
+      $value = preg_replace('/' . $this->ignorable . '+/u', '', $value);
+    }
+    if ($this->spaces) {
+      $value = preg_replace('/' . $this->spaces . '+/u', ' ', $value);
     }
   }
 
