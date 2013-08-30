@@ -373,6 +373,7 @@ p {
     }
     @media (min-width: 848px) {
       background: transparent image-url('video-page-social-block-bg.png') scroll no-repeat bottom center;
+      min-height: 241px;
       max-width: 830px;
       margin: 0 auto;
       padding: 0 9px 30px;
