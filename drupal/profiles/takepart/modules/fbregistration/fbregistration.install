@@ -12,3 +12,38 @@ function fbregistration_install() {
 function fbregistration_uninstall() {
   drupal_set_message(st('The Facebook registration module has been uninstalled.'));
 }
+
+/**
+ * Updates:
+ */
+function fbregistration_update_1002() {
+  $items = array();
+  $items[] = drupal_install_schema('fbregistration');
+  return $items;
+}
+
+/**
+ * Implements hook_schema().
+ */
+function fbregistration_schema() {
+  $schema = array();
+  $schema['fbregistration_facebook_id_map'] = array(
+    'description' => 'Facebook to Drupal ID table.',
+    'fields' => array(
+      'uid' => array(
+        'description' => 'The Drupal user ID.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'fbid' => array(
+        'description' => 'The Facebook user ID.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('uid'),
+  );
+  return $schema;
+}
