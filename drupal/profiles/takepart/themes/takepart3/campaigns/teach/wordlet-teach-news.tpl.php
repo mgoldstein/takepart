@@ -1,22 +1,23 @@
-<div class="content">
+<div class="content teach-news-content">
 	<article class="content-inner">
+        <h3 class="label-headline"><?=w('page_preheader')?></h3>
+        <h4 class="peek-a-boo"><?=w('social_follow_body')?></h4>
+        <div class="main-video-wrapper" <?=wa('video')?>>
+            <script src="<?=w('video')?>"></script>
+        </div>
         <h1 class="content-headline"><?=w('page_headline')?></h1>
         <h2 class="content-subheadline"><?=w('page_subheadline')?></h2>
-        <div class="images-wrapper">
-            <? foreach ( wl('images') as $i => $w ): ?>
-                <div class="column-first">
-                    <div class="image-wrapper">
-                        <img src="<?=$w->img_src?>" alt="<?=$w->single?>">
-                    </div>
-                    <div class="image-text">
-                        <?=$w->multi?>
-                    </div>
-                </div>
-            <? endforeach ?>
+        <div class="news-featured-wrapper">
+            <?=w('featured_articles')?>
         </div>
         <div class="related-articles">
             <?=w('related_articles')?>
         </div>
     </article>
-    <? include('partials/teach-social-block.tpl.php') ?>
+    <section class="social-menu">
+        <? include('partials/teach-social-block.tpl.php') ?>
+    </section>
+    <div class="ad">
+        <?=w('ad')?>
+    </div>
 </div>
