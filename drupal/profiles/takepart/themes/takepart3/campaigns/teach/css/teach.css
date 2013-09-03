@@ -1107,6 +1107,7 @@ p a {
 }
 /* line 819, teach.scss */
 .teach-video-page .social-footer {
+  color: black;
   text-align: center;
   font: normal normal 22px/1 "GlyphaLTPro-Black", serif, serif;
   text-transform: uppercase;
@@ -1120,17 +1121,17 @@ p a {
 
 /* # Alliances Page
 ================================================== */
-/* line 833, teach.scss */
+/* line 834, teach.scss */
 .page-wordlet-teach-alliances .content .main-image-wrapper {
   margin: 0.5em 20px;
   text-align: center;
 }
-/* line 836, teach.scss */
+/* line 837, teach.scss */
 .page-wordlet-teach-alliances .content .main-image-wrapper img {
   max-width: 100% !important;
   height: auto !important;
 }
-/* line 842, teach.scss */
+/* line 843, teach.scss */
 .page-wordlet-teach-alliances .content .content-main,
 .page-wordlet-teach-alliances .content .alliances {
   -webkit-box-sizing: border-box;
@@ -1140,7 +1141,7 @@ p a {
   width: 100%;
   float: left;
 }
-/* line 850, teach.scss */
+/* line 851, teach.scss */
 .page-wordlet-teach-alliances .content .alliance {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1155,29 +1156,29 @@ p a {
   margin-bottom: 20px;
 }
 @media (min-width: 321px) {
-  /* line 850, teach.scss */
+  /* line 851, teach.scss */
   .page-wordlet-teach-alliances .content .alliance {
     float: left;
     width: 45%;
     margin-right: 5%;
   }
-  /* line 864, teach.scss */
+  /* line 865, teach.scss */
   .page-wordlet-teach-alliances .content .alliance.alliance-even {
     margin-right: 0;
   }
 }
 @media (min-width: 769px) {
-  /* line 850, teach.scss */
+  /* line 851, teach.scss */
   .page-wordlet-teach-alliances .content .alliance {
     width: 22%;
     margin-right: 4%;
   }
-  /* line 871, teach.scss */
+  /* line 872, teach.scss */
   .page-wordlet-teach-alliances .content .alliance.alliance-nth-child-4n {
     margin-right: 0;
   }
 }
-/* line 875, teach.scss */
+/* line 876, teach.scss */
 .page-wordlet-teach-alliances .content .alliance img {
   max-width: 100% !important;
   height: auto !important;

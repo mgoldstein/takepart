@@ -18,9 +18,6 @@
         </section>
     <? endforeach ?>
     </div>
-    <section class="social-menu">
-        <? include('teach-social-block.tpl.php') ?>
-    </section>
     <? if (w('social_footer_label')) : ?>
     <div class="social-footer">
         <span><?=w('social_footer_label')?></span>
@@ -47,6 +44,9 @@
             <? endif ?>
     </div>
     <? endif ?>
+    <section class="social-menu">
+        <? include('teach-social-block.tpl.php') ?>
+    </section>
     <div class="ad">
         <?=w('ad')?>
     </div>
