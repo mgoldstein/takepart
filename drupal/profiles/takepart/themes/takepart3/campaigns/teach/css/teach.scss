@@ -86,7 +86,8 @@ $body-copy-black: #313131;
     display: block;
     font-size: 24px;
     margin-top: 5px;
-    margin-bottom: .7em;
+    margin-bottom: 5px;
+    width: 300px;
   }
 
   .date {
@@ -111,7 +112,7 @@ $body-copy-black: #313131;
     width: 940px;
     .logos {
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
     .right { 
       color: white;
@@ -593,7 +594,7 @@ p {
       font-size: 80px;
     }
     .credit {
-      margin-top: .7em
+      margin: .5em auto;
     }
     .hero {
       width: 100%;
