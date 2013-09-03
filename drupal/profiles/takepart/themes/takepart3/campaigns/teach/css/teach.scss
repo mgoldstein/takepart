@@ -72,7 +72,7 @@ $body-copy-black: #313131;
     bottom: 0;
     right: 0;
     margin-bottom: 50px;
-    z-index: 10;
+    z-index: 6;
   }
 
   .slug {
@@ -109,7 +109,9 @@ $body-copy-black: #313131;
     margin-bottom: 60px;
     bottom: 0;
     z-index: 10;
-    width: 940px;
+    left: $page-margins;
+    right: $page-margins;
+    @include text-shadow(0 0 3px black);
     .logos {
       display: block;
       margin-bottom: 5px;
