@@ -233,6 +233,8 @@ function template_preprocess_search_api_page_result(&$variables) {
   $index = $variables['index'];
   $variables['id'] = $variables['result']['id'];
   $item = $variables['item'];
+  // Hack to fix empty entity
+  if (empty($item)) { return; }
 
   $wrapper = $index->entityWrapper($item, FALSE);
 
