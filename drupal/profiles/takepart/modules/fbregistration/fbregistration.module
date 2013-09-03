@@ -96,6 +96,7 @@ function _tfbregistration_auth() {
     $destination = fboauth_action_invoke('connect', $app_id, $response['oauth_token']);
     $_SESSION['facebook_register_trigger'] = $response['oauth_token'];
 
+    
     if (empty($destination)) {
       $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
     }
@@ -104,23 +105,31 @@ function _tfbregistration_auth() {
     $drupalid = fboauth_uid_load($response['user_id']);
 
     $account = user_load(array('uid' => $drupalid));
+    
+    //print "<br>Before ------------------------------------------------ <br>";
+    //print "<pre>";
+    //print_r($account);
+    //print "</pre>";
 
     foreach ($account as $key => $val) {
-      if((substr($key, 0, 4) == 'bsd_')) {
-          $bsd_keys = (explode('_', $key, 3));
-          $key = $bsd_keys[2];
-      }
-      if(isset($response['registration'][$key])) {
+     // if((substr($key, 0, 4) == 'bsd_')) {
+      //    $bsd_keys = (explode('_', $key, 3));
+       //   $key = $bsd_keys[2];
+      //}
+      $fbval = _fbregistration_get_reg_value($response['registration'], $key);
+      if(!empty($fbval)) {
+       // echo '<br><br>Set:' . $key . ' to ' . $fbval;
         if(is_array($val)) {
-          if(empty($val)) {
-            echo $key;
+          //echo '<br>Array:' . count($val);
+          if(count($val)==0) {
+            //echo '<br>Empty Key:' . $key;
             $account->{$key}['und'] = array();
             $account->{$key}['und'][0] = array();
             $account->{$key}['und'][0]['value'] = '';
           }
-          _fbregistration_set_userval($account->{$key}, $response['registration'][$key]);
+          _fbregistration_set_userval($account->{$key}, $fbval);
         } elseif ($key != 'name') {
-          $account->{$key} = $response['registration'][$key];
+         // $account->{$key} = _fbregistration_get_reg_value($response['registration'], $key);
         }
        }
      }
@@ -130,8 +139,25 @@ function _tfbregistration_auth() {
         $account->mail = $response['registration']['email'];
      }
       
-
+      $result = db_insert('fbregistration_facebook_id_map')->fields(array(
+		  'uid' => $drupalid,
+		  'fbid' => $response['user_id'],
+		))->execute();
+      
+    /*print "<br>Sent ------------------------------------------------ <br>";
+    print "<pre>";
+    print_r($response);
+    print "</pre>";
+    print "<br>After ------------------------------------------------ <br>";
+    print "<pre>";
+    print_r($account);
+    print "</pre>";
+    exit();
+    */
+    
     user_save($account);
+    
+
 
     drupal_goto($destination);
 
@@ -153,6 +179,27 @@ function _fbregistration_set_userval(&$item, $value) {
       $item[$key] = $value;
     }
   }
+}
+
+
+
+function _fbregistration_get_reg_value($regarray, $key) {
+  $ret = '';
+  foreach ($regarray as $rkey => $val) {
+    if((substr($rkey, 0, 4) == 'bsd_')) {
+      $bsd_keys = (explode('_', $key, 3));
+      $rkey = $bsd_keys[2];
+    }
+    if ($rkey == $key) {
+        /*print "<br><b>" . $key . ' = '. $rkey . "</b>";
+        print "<pre>";
+        print_r($val);
+        print "</pre>";*/
+        $ret = $val;
+        break;
+    }
+  }
+  return $ret;
 }
 
 /**
@@ -186,51 +233,68 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
    
    
    $fbsetfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 10);
+   $fbregreloadfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 9);
    $callcount = 10;
    $ziplabel = variable_get('fbregistration_foreign_zip', 'Postal Code');
 
    $fbsetscript = <<<HTM
-  var fbuserdata;
-  function $fbsetfunction(cnt) {
-      cnt++;
-      if ((typeof (FB) !== 'undefined') && (cnt <= $callcount)) {
-          FB.api('/me', function (response) {
-              if (response.error) {
-                  setTimeout("$fbsetfunction(" + cnt + ")", 1000);
-              } else {
-                if(response) {
-                  fbuserdata = response;
-                  jQuery(document).ready(function () {
-                      var registration = document.getElementsByTagName('fb:registration');
-                      if (fbuserdata.locale != "en_US") {
-                          var data = eval(registration[0].getAttribute("fields"));
-                          var json = registration[0].getAttribute("fields");
-                          for (var x = 0; x < data.length; x++) {
-                              if(data[x]['name'] == 'field_userzipcode') {
-                                json = json.replace(data[x]['description'] ,"$ziplabel");
-                              }
-                          }
-                          registration[0].setAttribute("fields",json);
-                          //alert("reg: " + registration[0].getAttribute("fields"));
-                          FB.XFBML.parse();
-                      }
-                  });
-                } else {
-                  fbuserdata = new Array();
-                  fbuserdata['locale'] = 'en_US';
+var fbuserdata;
+var fbregtag;
+function $fbsetfunction(cnt) {
+    if (typeof (FB) !== 'undefined') {
+        FB.api('/me', function (response) {
+            if ((!response) || (response.error)) {
+                setTimeout("$fbsetfunction(" + cnt + ")", 1000);
+            } else {
+                FB.api({
+                        method: 'fql.query',
+                        query: 'SELECT current_location FROM user WHERE uid=' + FB.getUserID()
+                    },
+                    function (response) {
+                        try {
+                            var country = response[0]['current_location']['country'];
+                        } catch (err) {
+                            var country = '';
+                        }
+                        if(country != "United States") {  
+                            var registration = document.getElementsByTagName('fb:registration');
+                            var json = registration[0].getAttribute("fields");
+                            json = json.replace("{'name':'field_userzipcode','description':'ZIP Code','type':'text'},", '');
+                            registration[0].setAttribute("fields",json);
+                            FB.XFBML.parse();
+                        }
+                    }
+                );
+            }
+        });
+    } else {
+        setTimeout("$fbsetfunction(" + cnt + ")", 1000);
+    }
+}
+$fbsetfunction(0);
+function $fbregreloadfunction(cnt) {
+    var newfbregtag = jQuery(document.getElementsByTagName('fb:registration')).html();
+    var changed = false;
+    //check the iframe tag for changes:
+    if ((fbregtag) && (newfbregtag != fbregtag)) {
+        //0=initial load, 1=facebooks resize
+        if (cnt > 1) {
+            FB.getLoginStatus(function (response) {
+                if ((response.status != 'connected') || (response.status == 'not_authorized')) {
+                    jQuery(document.getElementsByTagName('fb:registration')).hide();
+                    window.location.reload();
                 }
-              }
-          });
-      } else {
-          setTimeout("$fbsetfunction(" + cnt + ")", 1000);
-      }
-  }
-  $fbsetfunction(0); 
-   
+            });
+        }
+        cnt++;
+    }
+    fbregtag = newfbregtag;
+    setTimeout("$fbregreloadfunction(" + cnt + ")", 1000);
+}
+$fbregreloadfunction(0);          
 HTM;
 
-     
-
+   
    drupal_add_js($fbsetscript .
         'function fbregistration_validate(form) {' .
         '  var errors = {};' . "\n" .
