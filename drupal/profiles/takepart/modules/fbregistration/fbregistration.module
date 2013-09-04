@@ -129,9 +129,8 @@ function _tfbregistration_auth() {
       
       if(count($result) > 0) {
           $result = db_update('fbregistration_facebook_id_map')->fields(array(
-		  'uid' => $drupalid,
 		  'fbid' => $response['user_id'],
-		))->execute();
+		))->condition('uid', $drupalid, '=')->execute();
       } else {
           $result = db_insert('fbregistration_facebook_id_map')->fields(array(
 		  'uid' => $drupalid,
