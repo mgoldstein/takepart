@@ -295,7 +295,6 @@ p {
           margin-left: -80px;
           padding: 0 15px;
         }
-
         .form-actions {
           position: absolute;
           top: 9px;
@@ -312,7 +311,16 @@ p {
             width: 57px;
           }
         }
+      .messages.error {
+        position: absolute;
+        background: transparent none;
+        padding: 0;
+        margin: 0 0 0 -71px;
+        border: none;
+        color: red;
+        bottom: 94%;
       }
+      } // .newsletter-signup
 
       .sect-headline {
         font: normal 24px/90% $secondary-font;
@@ -459,7 +467,7 @@ p {
         margin: 0 auto;
         position: relative;
         label { display: none;}
-        #edit-email {
+        input[name="email"] {
           background: transparent image-url('text-field-small.png');
           border: 0;
           width: 217px;
@@ -467,7 +475,7 @@ p {
           margin: 0 auto;
           padding: 0 10px;
         }        
-        #edit-actions {
+        .form-actions {
           position: absolute;
           top: 4px;
           right: -2px;
@@ -482,6 +490,16 @@ p {
             text-transform: uppercase;
             width: 57px;
           }
+        }
+        .messages.error {
+          position: absolute;
+          background: transparent none;
+          padding: 0;
+          margin: 0;
+          border: none;
+          font-size: 13px;
+          color: red;
+          bottom: 85%;
         }
       }
       // Icons for these social follows
