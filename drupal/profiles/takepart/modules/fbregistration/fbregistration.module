@@ -106,31 +106,17 @@ function _tfbregistration_auth() {
 
     $account = user_load(array('uid' => $drupalid));
     
-    //print "<br>Before ------------------------------------------------ <br>";
-    //print "<pre>";
-    //print_r($account);
-    //print "</pre>";
-
     foreach ($account as $key => $val) {
-     // if((substr($key, 0, 4) == 'bsd_')) {
-      //    $bsd_keys = (explode('_', $key, 3));
-       //   $key = $bsd_keys[2];
-      //}
       $fbval = _fbregistration_get_reg_value($response['registration'], $key);
       if(!empty($fbval)) {
-       // echo '<br><br>Set:' . $key . ' to ' . $fbval;
         if(is_array($val)) {
-          //echo '<br>Array:' . count($val);
           if(count($val)==0) {
-            //echo '<br>Empty Key:' . $key;
             $account->{$key}['und'] = array();
             $account->{$key}['und'][0] = array();
             $account->{$key}['und'][0]['value'] = '';
           }
           _fbregistration_set_userval($account->{$key}, $fbval);
-        } elseif ($key != 'name') {
-         // $account->{$key} = _fbregistration_get_reg_value($response['registration'], $key);
-        }
+        } 
        }
      }
      
@@ -138,27 +124,22 @@ function _tfbregistration_auth() {
      if(isset($response['registration']['email'])) {
         $account->mail = $response['registration']['email'];
      }
+     
+      $result = db_query("SELECT uid FROM {fbregistration_facebook_id_map} where {uid} = $drupalid");
       
-      $result = db_insert('fbregistration_facebook_id_map')->fields(array(
+      if(count($result) > 0) {
+          $result = db_update('fbregistration_facebook_id_map')->fields(array(
+		  'fbid' => $response['user_id'],
+		))->condition('uid', $drupalid, '=')->execute();
+      } else {
+          $result = db_insert('fbregistration_facebook_id_map')->fields(array(
 		  'uid' => $drupalid,
 		  'fbid' => $response['user_id'],
 		))->execute();
+      }
       
-    /*print "<br>Sent ------------------------------------------------ <br>";
-    print "<pre>";
-    print_r($response);
-    print "</pre>";
-    print "<br>After ------------------------------------------------ <br>";
-    print "<pre>";
-    print_r($account);
-    print "</pre>";
-    exit();
-    */
-    
+      
     user_save($account);
-    
-
-
     drupal_goto($destination);
 
   } else {

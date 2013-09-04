@@ -17,6 +17,8 @@ function tp_user_user_insert(&$edit, $account, $category) {
   // Create a user signup.
   $signup = TakePartUserSignup::create();
 
+  $userzipcode = field_get_items('user', $account, 'userzipcode');
+  $postal_code = field_view_value('user', $account, 'userzipcode', $userzipcode[0]);
   $signup['email'] = $account->mail;
   $signup['address.postal-code'] = $postal_code;
   $endpoint_name = $newsletter_opt_in ? 'user_registration_opt_in_yes'
