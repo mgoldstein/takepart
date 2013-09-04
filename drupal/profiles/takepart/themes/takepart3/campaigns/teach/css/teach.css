@@ -913,7 +913,7 @@ p a {
   display: inline-block;
   *display: inline;
   *zoom: 1;
-  vertical-align: bottom;
+  vertical-align: top;
   width: 24px;
   height: 22px;
   background: transparent url('../img/social-facebook.png?1377821572');

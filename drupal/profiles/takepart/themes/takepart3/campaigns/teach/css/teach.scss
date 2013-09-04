@@ -621,7 +621,7 @@ p {
     font: normal normal 17px/1 $secondary-font, serif;
     .fb {
       display: inline-block; *display: inline; *zoom: 1;
-      vertical-align: bottom;
+      vertical-align: top;
       width: 24px;
       height: 22px;
       background: transparent image-url('social-facebook.png');
