@@ -295,7 +295,6 @@ p {
           margin-left: -80px;
           padding: 0 15px;
         }
-
         .form-actions {
           position: absolute;
           top: 9px;
@@ -312,7 +311,16 @@ p {
             width: 57px;
           }
         }
+      .messages.error {
+        position: absolute;
+        background: transparent none;
+        padding: 0;
+        margin: 0 0 0 -71px;
+        border: none;
+        color: red;
+        bottom: 94%;
       }
+      } // .newsletter-signup
 
       .sect-headline {
         font: normal 24px/90% $secondary-font;
@@ -328,8 +336,9 @@ p {
   .page-body-content {
     padding: 100px $page-margins $page-margins $page-margins;
     margin: -60px 20px 0 6px;
-    @include box-shadow(0 0 6px 4px #A79B84 inset);
+    background-color: #D4D4D4;
     @include background(linear-gradient(-89deg, #FFFFFF 0%, #DBDBDB 90%, #B1A99A));
+    @include box-shadow(0 0 6px 4px #A79B84 inset);
 
     img {
       float: right;
@@ -458,7 +467,7 @@ p {
         margin: 0 auto;
         position: relative;
         label { display: none;}
-        #edit-email {
+        input[name="email"] {
           background: transparent image-url('text-field-small.png');
           border: 0;
           width: 217px;
@@ -466,7 +475,7 @@ p {
           margin: 0 auto;
           padding: 0 10px;
         }        
-        #edit-actions {
+        .form-actions {
           position: absolute;
           top: 4px;
           right: -2px;
@@ -481,6 +490,16 @@ p {
             text-transform: uppercase;
             width: 57px;
           }
+        }
+        .messages.error {
+          position: absolute;
+          background: transparent none;
+          padding: 0;
+          margin: 0;
+          border: none;
+          font-size: 13px;
+          color: red;
+          bottom: 85%;
         }
       }
       // Icons for these social follows
@@ -899,6 +918,9 @@ p {
 ================================================== */
 
 .teach-news-content {
+  .content-subheadline {
+    max-width: 100%;
+  }
   .peek-a-boo {
     @media (min-width: 800px) {
       margin-top: -3em;
