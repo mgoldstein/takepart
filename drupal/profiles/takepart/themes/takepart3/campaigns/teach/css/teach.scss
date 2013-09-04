@@ -900,6 +900,9 @@ p {
 ================================================== */
 
 .teach-news-content {
+  .content-subheadline {
+    max-width: 100%;
+  }
   .peek-a-boo {
     @media (min-width: 800px) {
       margin-top: -3em;
