@@ -566,7 +566,7 @@ p {
     padding: 4px;
     @include box-shadow(0 0 4px rgba(0,0,0,.65));
     margin: 1em auto 0;
-    @media (max-width: 767px) {
+    @media (max-width: 819px) {
       display: none;
     }
   }
