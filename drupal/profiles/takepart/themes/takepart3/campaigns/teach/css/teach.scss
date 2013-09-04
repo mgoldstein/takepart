@@ -566,7 +566,7 @@ p {
     padding: 4px;
     @include box-shadow(0 0 4px rgba(0,0,0,.65));
     margin: 1em auto 0;
-    @media (max-width: 767px) {
+    @media (max-width: 819px) {
       display: none;
     }
   }
@@ -621,7 +621,7 @@ p {
     font: normal normal 17px/1 $secondary-font, serif;
     .fb {
       display: inline-block; *display: inline; *zoom: 1;
-      vertical-align: bottom;
+      vertical-align: top;
       width: 24px;
       height: 22px;
       background: transparent image-url('social-facebook.png');
