@@ -258,7 +258,8 @@ function $fbregreloadfunction(cnt) {
     var changed = false;
     //check the iframe tag for changes:
     if ((fbregtag) && (newfbregtag != fbregtag)) {
-        //0=initial load, 1=facebooks resize
+        //0=initial load (skipped), 1=facebooks resize
+        //alert(cnt);
         if (cnt > 0) {
             FB.getLoginStatus(function (response) {
                 if ((response.status != 'connected') || (response.status == 'not_authorized')) {
@@ -272,7 +273,9 @@ function $fbregreloadfunction(cnt) {
     fbregtag = newfbregtag;
     setTimeout("$fbregreloadfunction(" + cnt + ")", 1000);
 }
-setTimeout("$fbregreloadfunction(" + cnt + ")", 1000);        
+jQuery(document).ready(function() {
+  setTimeout("$fbregreloadfunction(0)", 500);
+});        
 HTM;
 
    
