@@ -262,17 +262,19 @@ function $fbregreloadfunction(cnt) {
         if (cnt > 0) {
             FB.getLoginStatus(function (response) {
                 if ((response.status != 'connected') || (response.status == 'not_authorized')) {
-                    jQuery(document.getElementsByTagName('fb:registration')).hide();
+                    jQuery(document.getElementsByTagName('fb:registration')).children(':first').hide();
                     window.location.reload();
                 }
             });
         }
-        cnt++;
+        if(jQuery(document.getElementsByTagName('fb:registration')).children(':first').height() > 200) {
+          cnt++;
+        }
     }
     fbregtag = newfbregtag;
     setTimeout("$fbregreloadfunction(" + cnt + ")", 1000);
 }
-setTimeout("$fbregreloadfunction(" + cnt + ")", 1000);        
+$fbregreloadfunction(0);          
 HTM;
 
    
