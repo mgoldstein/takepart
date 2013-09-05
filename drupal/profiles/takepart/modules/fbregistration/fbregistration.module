@@ -259,7 +259,7 @@ function $fbregreloadfunction(cnt) {
     //check the iframe tag for changes:
     if ((fbregtag) && (newfbregtag != fbregtag)) {
         //0=initial load, 1=facebooks resize
-        if (cnt > 1) {
+        if (cnt > 0) {
             FB.getLoginStatus(function (response) {
                 if ((response.status != 'connected') || (response.status == 'not_authorized')) {
                     jQuery(document.getElementsByTagName('fb:registration')).hide();
@@ -272,7 +272,7 @@ function $fbregreloadfunction(cnt) {
     fbregtag = newfbregtag;
     setTimeout("$fbregreloadfunction(" + cnt + ")", 1000);
 }
-$fbregreloadfunction(0);          
+setTimeout("$fbregreloadfunction(" + cnt + ")", 1000);        
 HTM;
 
    
