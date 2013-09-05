@@ -1,4 +1,17 @@
 (function ($, Drupal, window, document, undefined) {
+  Drupal.behaviors.punishInternetExplorerUsers = {
+    attach: function (context) {
+      var message = 'This web page is not optimized for use with Intenret Explorer 8 or earlier versions of this browser. You may experience display issues while viewing.',
+          contentSelector = ($('body').is('.page-wordlet-teach')) ? '.page-body-content' : '#page .content';
+      if ($.browser.msie && parseInt($.browser.version, 10) === 8 ) {
+        $('<div />')
+          .addClass('messages error')
+          .html(message)
+          .prependTo(contentSelector)
+        ;        
+      }
+    }
+  };
   Drupal.behaviors.newsletterSocialSignupSubmitted = {
     attach: function (context) {
       if ($(context).is('.newsletter-signup.thank-you-message')){
