@@ -648,6 +648,10 @@ p {
       height: auto;
     }
 
+    .credit {
+      font-size: 20px;
+    }
+
     .menu-wrapper {
       font-size: 15px;
       .menu .item a {
@@ -659,6 +663,21 @@ p {
   .page-wordlet-teach-home {
     .social-menu {
       width: 38%;
+      padding: 80px 30px 20px 300px;
+      min-height: 330px;
+      .item {
+        background-position: 0 -5px;
+        background-size: 25%;
+        padding-left: 70px;
+
+        .sect-headline {
+          font-size: 20px;
+        }
+
+        p {
+          font-size: 13px;
+        }
+      }
     }
     .main-video-wrapper {
       width: 59%;

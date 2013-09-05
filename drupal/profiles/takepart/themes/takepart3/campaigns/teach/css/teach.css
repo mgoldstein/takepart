@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("//hello.myfonts.net/count/2826af");
 /* @license
  * MyFonts Webfont Build ID 2631343, 2013-08-27T17:12:57-0400
@@ -57,7 +58,7 @@
 }
 /* line 33, teach.scss */
 .page-wrap .main {
-  background: url('../img/blackboard.jpg?1377714697');
+  background: url('../img/blackboard.jpg?1377730837');
 }
 /* line 38, teach.scss */
 .page-wrap .page-header,
@@ -89,7 +90,7 @@
   position: relative;
   min-height: 422px;
   color: white;
-  background: url('../img/hero-background.jpg?1377834613');
+  background: url('../img/hero-background.jpg?1377838702');
   clear: both;
   zoom: 1;
   /* menu */
@@ -163,7 +164,7 @@
 .header .menu-wrapper {
   font: bold 19px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
-  background: url('../img/orange_felt.png?1377714705');
+  background: url('../img/orange_felt.png?1377730837');
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -227,7 +228,7 @@
 }
 /* line 162, teach.scss */
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377714705') no-repeat -17px 0;
+  background: url('../img/active_menu_bg.png?1377730837') no-repeat -17px 0;
   margin-top: -3px;
   height: 43px;
 }
@@ -302,7 +303,7 @@ p a {
 }
 /* line 229, teach.scss */
 .page-wordlet-teach-home .call-to-share a .fb {
-  background: url('../img/social-facebook-white.png?1377822354') no-repeat;
+  background: url('../img/social-facebook-white.png?1377821821') no-repeat;
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
@@ -340,7 +341,7 @@ p a {
 /* line 255, teach.scss */
 .page-wordlet-teach-home .social-menu {
   width: 277px;
-  background: url('../img/paper_right.png?1377714705') no-repeat right 10px;
+  background: url('../img/paper_right.png?1377730837') no-repeat right 10px;
   padding: 90px 30px 40px 300px;
   top: -50px;
   margin-left: -300px;
@@ -369,15 +370,15 @@ p a {
 }
 /* line 275, teach.scss */
 .page-wordlet-teach-home .social-menu .item.text {
-  background-image: url('../img/social-phone.png?1377735601');
+  background-image: url('../img/social-phone.png?1377734691');
 }
 /* line 276, teach.scss */
 .page-wordlet-teach-home .social-menu .item.connected {
-  background-image: url('../img/social-envelopes.png?1377735601');
+  background-image: url('../img/social-envelopes.png?1377734691');
 }
 /* line 277, teach.scss */
 .page-wordlet-teach-home .social-menu .item.discussion {
-  background-image: url('../img/social-chat.png?1377821572');
+  background-image: url('../img/social-chat.png?1377734691');
 }
 /* line 279, teach.scss */
 .page-wordlet-teach-home .social-menu .item p {
@@ -398,7 +399,7 @@ p a {
 }
 /* line 290, teach.scss */
 .page-wordlet-teach-home .social-menu .item .newsletter-signup .form-type-textfield input {
-  background: url('../img/text-field-large.png?1377758755') no-repeat;
+  background: url('../img/text-field-large.png?1377742378') no-repeat;
   width: 240px;
   height: 46px;
   border: none;
@@ -470,7 +471,7 @@ p a {
 .page-wordlet-teach-alliances .content,
 .teach-news-content {
   position: relative;
-  background: #ecedf6 url('../img/paper-background-texture-temp.jpg?1377830748') scroll repeat;
+  background: #ecedf6 url('../img/paper-background-texture-temp.jpg?1377834024') scroll repeat;
   margin-top: 30px;
   -webkit-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
@@ -556,7 +557,7 @@ p a {
   .teach-video-page .social-menu,
   .page-wordlet-teach-alliances .content .social-menu,
   .teach-news-content .social-menu {
-    background: transparent url('../img/video-page-social-block-bg.png?1377758768') scroll no-repeat bottom center;
+    background: transparent url('../img/video-page-social-block-bg.png?1377800756') scroll no-repeat bottom center;
     min-height: 241px;
     max-width: 830px;
     margin: 0 auto;
@@ -675,7 +676,7 @@ p a {
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"],
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"],
 .teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"] {
-  background: transparent url('../img/text-field-small.png?1377758768');
+  background: transparent url('../img/text-field-small.png?1377800756');
   border: 0;
   width: 217px;
   height: 30px;
@@ -738,7 +739,7 @@ p a {
 .teach-video-page .social-menu .item.text:before,
 .page-wordlet-teach-alliances .content .social-menu .item.text:before,
 .teach-news-content .social-menu .item.text:before {
-  background-image: url('../img/social-phone.png?1377735601');
+  background-image: url('../img/social-phone.png?1377734691');
   width: 72px;
   height: 73px;
   margin-left: -36px;
@@ -748,7 +749,7 @@ p a {
   .teach-video-page .social-menu .item.text:before,
   .page-wordlet-teach-alliances .content .social-menu .item.text:before,
   .teach-news-content .social-menu .item.text:before {
-    background-image: url('../img/social-phone-white.png?1377822363');
+    background-image: url('../img/social-phone-white.png?1377823634');
     width: 52px;
     height: 60px;
     margin-left: -26px;
@@ -764,7 +765,7 @@ p a {
 .teach-video-page .social-menu .item.connected:before,
 .page-wordlet-teach-alliances .content .social-menu .item.connected:before,
 .teach-news-content .social-menu .item.connected:before {
-  background-image: url('../img/social-envelopes.png?1377735601');
+  background-image: url('../img/social-envelopes.png?1377734691');
   width: 72px;
   height: 79px;
   margin-left: -36px;
@@ -774,7 +775,7 @@ p a {
   .teach-video-page .social-menu .item.connected:before,
   .page-wordlet-teach-alliances .content .social-menu .item.connected:before,
   .teach-news-content .social-menu .item.connected:before {
-    background-image: url('../img/social-envelopes-white.png?1377822363');
+    background-image: url('../img/social-envelopes-white.png?1377823634');
     width: 42px;
     height: 47px;
     margin-left: -21px;
@@ -790,7 +791,7 @@ p a {
 .teach-video-page .social-menu .item.discussion:before,
 .page-wordlet-teach-alliances .content .social-menu .item.discussion:before,
 .teach-news-content .social-menu .item.discussion:before {
-  background-image: url('../img/social-chat.png?1377821572');
+  background-image: url('../img/social-chat.png?1377734691');
   width: 72px;
   height: 55px;
   margin-left: -36px;
@@ -800,7 +801,7 @@ p a {
   .teach-video-page .social-menu .item.discussion:before,
   .page-wordlet-teach-alliances .content .social-menu .item.discussion:before,
   .teach-news-content .social-menu .item.discussion:before {
-    background-image: url('../img/social-chat-white.png?1377822363');
+    background-image: url('../img/social-chat-white.png?1377823634');
     width: 50px;
     height: 45px;
     margin-left: -25px;
@@ -839,7 +840,7 @@ p a {
   font-size: 40px;
   line-height: 1.375;
   text-transform: uppercase;
-  background: transparent url('../img/video-page-label-background.png?1377830748') no-repeat scroll top left;
+  background: transparent url('../img/video-page-label-background.png?1377834024') no-repeat scroll top left;
   -webkit-transform: rotate(-4deg);
   -moz-transform: rotate(-4deg);
   -ms-transform: rotate(-4deg);
@@ -872,7 +873,7 @@ p a {
     margin: 1em 25px 0 auto;
     margin-right: 25px;
     float: right;
-    background: transparent url('../img/paper-peek-a-boo.png?1377758768') no-repeat scroll top right;
+    background: transparent url('../img/paper-peek-a-boo.png?1377800756') no-repeat scroll top right;
     padding: 10px 0;
     -webkit-box-shadow: 0 0 4px black;
     -moz-box-shadow: 0 0 4px black;
@@ -902,7 +903,7 @@ p a {
   vertical-align: top;
   width: 24px;
   height: 22px;
-  background: transparent url('../img/social-facebook.png?1377821572');
+  background: transparent url('../img/social-facebook.png?1377800756');
 }
 @media (max-width: 480px) {
   /* line 615, teach.scss */
@@ -911,7 +912,7 @@ p a {
   }
   /* line 627, teach.scss */
   .peek-a-boo a .fb {
-    background-image: url('../img/social-facebook-white-small.png?1377822363');
+    background-image: url('../img/social-facebook-white-small.png?1377823634');
   }
 }
 
@@ -934,82 +935,102 @@ p a {
     height: auto;
   }
   /* line 651, teach.scss */
+  .header .credit {
+    font-size: 20px;
+  }
+  /* line 655, teach.scss */
   .header .menu-wrapper {
     font-size: 15px;
   }
-  /* line 653, teach.scss */
+  /* line 657, teach.scss */
   .header .menu-wrapper .menu .item a {
     width: 90px;
   }
 
-  /* line 660, teach.scss */
+  /* line 664, teach.scss */
   .page-wordlet-teach-home .social-menu {
     width: 38%;
+    padding: 80px 30px 20px 300px;
+    min-height: 330px;
   }
-  /* line 663, teach.scss */
+  /* line 668, teach.scss */
+  .page-wordlet-teach-home .social-menu .item {
+    background-position: 0 -5px;
+    background-size: 25%;
+    padding-left: 70px;
+  }
+  /* line 673, teach.scss */
+  .page-wordlet-teach-home .social-menu .item .sect-headline {
+    font-size: 20px;
+  }
+  /* line 677, teach.scss */
+  .page-wordlet-teach-home .social-menu .item p {
+    font-size: 13px;
+  }
+  /* line 682, teach.scss */
   .page-wordlet-teach-home .main-video-wrapper {
     width: 59%;
   }
 }
 @media (max-width: 600px) {
-  /* line 670, teach.scss */
+  /* line 689, teach.scss */
   #page-wrapper {
     overflow: hidden;
   }
 
-  /* line 673, teach.scss */
+  /* line 692, teach.scss */
   #page-wrapper, .page-wrap {
     padding: 0;
   }
 
-  /* line 677, teach.scss */
+  /* line 696, teach.scss */
   .header {
     padding: 0;
     text-align: center;
     background: none;
   }
-  /* line 681, teach.scss */
+  /* line 700, teach.scss */
   .header .slug {
     font-size: 18px;
     padding: .5em 0;
   }
-  /* line 685, teach.scss */
+  /* line 704, teach.scss */
   .header .page-header {
     width: 100%;
     margin: 0;
     padding: 0;
     font-size: 80px;
   }
-  /* line 691, teach.scss */
+  /* line 710, teach.scss */
   .header .credit {
     margin: .5em auto;
   }
-  /* line 694, teach.scss */
+  /* line 713, teach.scss */
   .header .hero {
     width: 100%;
     height: auto !important;
     position: static;
     margin: 0;
   }
-  /* line 700, teach.scss */
+  /* line 719, teach.scss */
   .header .fine {
     position: static;
     margin: 0px;
     text-align: center;
     width: 100%;
   }
-  /* line 705, teach.scss */
+  /* line 724, teach.scss */
   .header .fine .logos {
     width: 65%;
     height: auto;
     display: block;
     margin: 10px auto;
   }
-  /* line 711, teach.scss */
+  /* line 730, teach.scss */
   .header .fine .right {
     display: none;
   }
-  /* line 716, teach.scss */
+  /* line 735, teach.scss */
   .header .menu-wrapper {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -1019,42 +1040,42 @@ p a {
     position: static;
     font-size: 24px;
   }
-  /* line 720, teach.scss */
+  /* line 739, teach.scss */
   .header .menu-wrapper .menu {
     border-left: none;
     border-right: none;
     height: auto;
   }
-  /* line 724, teach.scss */
+  /* line 743, teach.scss */
   .header .menu-wrapper .menu .item {
     display: block;
     margin: 0 auto;
     vertical-align: middle;
   }
-  /* line 728, teach.scss */
+  /* line 747, teach.scss */
   .header .menu-wrapper .menu .item a {
     width: auto;
     text-align: center;
   }
-  /* line 732, teach.scss */
+  /* line 751, teach.scss */
   .header .menu-wrapper .menu .item.active {
     background-position: center 3px;
     background-size: 420px 100%;
     height: auto;
   }
 
-  /* line 743, teach.scss */
+  /* line 762, teach.scss */
   .page-wordlet-teach-home .call-to-share {
     float: none;
     text-align: center;
     width: 100%;
   }
-  /* line 748, teach.scss */
+  /* line 767, teach.scss */
   .page-wordlet-teach-home .content-header {
     background-size: 100%;
     width: 80%;
   }
-  /* line 752, teach.scss */
+  /* line 771, teach.scss */
   .page-wordlet-teach-home .main-video-wrapper {
     box-sizing: border-box;
     width: 100%;
@@ -1063,7 +1084,7 @@ p a {
     border-width: 4px;
     position: relative;
   }
-  /* line 761, teach.scss */
+  /* line 780, teach.scss */
   .page-wordlet-teach-home .social-menu {
     box-sizing: border-box;
     width: 100%;
@@ -1083,7 +1104,7 @@ p a {
     background: -o-linear-gradient(top, #eeeeee, #cccccc);
     background: linear-gradient(top, #eeeeee, #cccccc);
   }
-  /* line 774, teach.scss */
+  /* line 793, teach.scss */
   .page-wordlet-teach-home .page-body-content {
     margin: 0;
     padding: 20px;
@@ -1092,85 +1113,85 @@ p a {
 /* # Video Pages
 ================================================== */
 @media (max-width: 480px) {
-  /* line 786, teach.scss */
+  /* line 805, teach.scss */
   .teach-video-page .content-subheadline {
     display: none;
   }
 }
 @media (min-width: 768px) {
-  /* line 791, teach.scss */
+  /* line 810, teach.scss */
   .teach-video-page .columns-wrapper {
     width: 100%;
     float: left;
     margin: 0 30px;
   }
 }
-/* line 798, teach.scss */
+/* line 817, teach.scss */
 .teach-video-page .content-column {
   margin-bottom: 2em;
 }
 @media (min-width: 768px) {
-  /* line 798, teach.scss */
+  /* line 817, teach.scss */
   .teach-video-page .content-column {
     width: 44.9%;
     margin-right: 5%;
     float: left;
   }
-  /* line 803, teach.scss */
+  /* line 822, teach.scss */
   .teach-video-page .content-column.column-odd {
     clear: left;
   }
 }
-/* line 808, teach.scss */
+/* line 827, teach.scss */
 .teach-video-page .content-column .col-headline {
   margin: 0 0 .5em;
 }
-/* line 811, teach.scss */
+/* line 830, teach.scss */
 .teach-video-page .content-column .col-content {
   font-size: 16px;
   line-height: 1.25;
   color: #444;
 }
 @media (max-width: 480px) {
-  /* line 811, teach.scss */
+  /* line 830, teach.scss */
   .teach-video-page .content-column .col-content {
     margin-left: 10px;
     margin-right: 10px;
   }
 }
-/* line 819, teach.scss */
+/* line 838, teach.scss */
 .teach-video-page .content-column .col-content p {
   font-size: 16px;
   line-height: 1.25;
   color: #444;
 }
-/* line 824, teach.scss */
+/* line 843, teach.scss */
 .teach-video-page .content-column .col-content strong {
   font-size: 18px;
 }
-/* line 827, teach.scss */
+/* line 846, teach.scss */
 .teach-video-page .content-column .col-content ul {
   list-style-type: none;
   padding-left: .75em;
 }
-/* line 830, teach.scss */
+/* line 849, teach.scss */
 .teach-video-page .content-column .col-content ul li {
   line-height: 1.25;
   margin-bottom: 0.25em;
   position: relative;
 }
-/* line 834, teach.scss */
+/* line 853, teach.scss */
 .teach-video-page .content-column .col-content ul li:before {
   content: '»';
   position: absolute;
   padding-right: 0.5em;
   right: 100%;
 }
-/* line 842, teach.scss */
+/* line 861, teach.scss */
 .teach-video-page .content-column .col-content a {
   color: #ea5f11;
 }
-/* line 847, teach.scss */
+/* line 866, teach.scss */
 .teach-video-page .social-footer {
   color: black;
   text-align: center;
@@ -1178,7 +1199,7 @@ p a {
   text-transform: uppercase;
 }
 @media (max-width: 480px) {
-  /* line 847, teach.scss */
+  /* line 866, teach.scss */
   .teach-video-page .social-footer {
     padding: 20px;
   }
@@ -1186,17 +1207,17 @@ p a {
 
 /* # Alliances Page
 ================================================== */
-/* line 862, teach.scss */
+/* line 881, teach.scss */
 .page-wordlet-teach-alliances .content .main-image-wrapper {
   margin: 0.5em 20px;
   text-align: center;
 }
-/* line 865, teach.scss */
+/* line 884, teach.scss */
 .page-wordlet-teach-alliances .content .main-image-wrapper img {
   max-width: 100% !important;
   height: auto !important;
 }
-/* line 871, teach.scss */
+/* line 890, teach.scss */
 .page-wordlet-teach-alliances .content .content-main,
 .page-wordlet-teach-alliances .content .alliances {
   -webkit-box-sizing: border-box;
@@ -1206,7 +1227,7 @@ p a {
   width: 100%;
   float: left;
 }
-/* line 879, teach.scss */
+/* line 898, teach.scss */
 .page-wordlet-teach-alliances .content .alliance {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1221,29 +1242,29 @@ p a {
   margin-bottom: 20px;
 }
 @media (min-width: 321px) {
-  /* line 879, teach.scss */
+  /* line 898, teach.scss */
   .page-wordlet-teach-alliances .content .alliance {
     float: left;
     width: 45%;
     margin-right: 5%;
   }
-  /* line 893, teach.scss */
+  /* line 912, teach.scss */
   .page-wordlet-teach-alliances .content .alliance.alliance-even {
     margin-right: 0;
   }
 }
 @media (min-width: 769px) {
-  /* line 879, teach.scss */
+  /* line 898, teach.scss */
   .page-wordlet-teach-alliances .content .alliance {
     width: 22%;
     margin-right: 4%;
   }
-  /* line 900, teach.scss */
+  /* line 919, teach.scss */
   .page-wordlet-teach-alliances .content .alliance.alliance-nth-child-4n {
     margin-right: 0;
   }
 }
-/* line 904, teach.scss */
+/* line 923, teach.scss */
 .page-wordlet-teach-alliances .content .alliance img {
   max-width: 100% !important;
   height: auto !important;
@@ -1252,25 +1273,25 @@ p a {
 
 /* # News Page
 ================================================== */
-/* line 917, teach.scss */
+/* line 936, teach.scss */
 .teach-news-content .content-subheadline {
   max-width: 100%;
 }
 @media (min-width: 800px) {
-  /* line 920, teach.scss */
+  /* line 939, teach.scss */
   .teach-news-content .peek-a-boo {
     margin-top: -3em;
   }
 }
-/* line 925, teach.scss */
+/* line 944, teach.scss */
 .teach-news-content .main-video-wrapper {
   margin-bottom: 20px;
 }
-/* line 928, teach.scss */
+/* line 947, teach.scss */
 .teach-news-content .secondary-feature {
   background-color: transparent;
 }
-/* line 930, teach.scss */
+/* line 949, teach.scss */
 .teach-news-content .secondary-feature .views-row {
   background-color: transparent;
   width: 90%;
@@ -1279,14 +1300,14 @@ p a {
   float: none;
 }
 @media (min-width: 481px) {
-  /* line 930, teach.scss */
+  /* line 949, teach.scss */
   .teach-news-content .secondary-feature .views-row {
     float: left;
     width: 31%;
     margin: 20px 0 20px 2%;
   }
 }
-/* line 941, teach.scss */
+/* line 960, teach.scss */
 .teach-news-content .secondary-feature .views-row img {
   box-sizing: border-box;
   width: 100%;
@@ -1297,73 +1318,73 @@ p a {
   -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
-/* line 949, teach.scss */
+/* line 968, teach.scss */
 .teach-news-content .secondary-feature .views-row .views-field-php {
   background-color: transparent;
 }
-/* line 951, teach.scss */
+/* line 970, teach.scss */
 .teach-news-content .secondary-feature .views-row .views-field-php .field-content {
   padding: 0;
   font: normal normal 14px/1.25 helvetica, sans-serif;
   text-align: center;
 }
-/* line 955, teach.scss */
+/* line 974, teach.scss */
 .teach-news-content .secondary-feature .views-row .views-field-php .field-content a {
   color: #333;
 }
-/* line 957, teach.scss */
+/* line 976, teach.scss */
 .teach-news-content .secondary-feature .views-row .views-field-php .field-content a:hover {
   color: #ea5f11;
 }
-/* line 966, teach.scss */
+/* line 985, teach.scss */
 .teach-news-content .view-taxonomy-search-list .views-row {
   padding-right: 20px;
   padding-left: 20px;
   border-bottom: 2px dotted #b3b3b3;
 }
 @media (min-width: 481px) {
-  /* line 966, teach.scss */
+  /* line 985, teach.scss */
   .teach-news-content .view-taxonomy-search-list .views-row {
     padding-right: 0;
     padding-left: 0;
   }
 }
 @media (max-width: 480px) {
-  /* line 975, teach.scss */
+  /* line 994, teach.scss */
   .teach-news-content .view-taxonomy-search-list .views-row:last-child {
     border-bottom: none;
   }
 }
-/* line 979, teach.scss */
+/* line 998, teach.scss */
 .teach-news-content .view-taxonomy-search-list .views-row .views-field-type {
   text-transform: capitalize;
 }
-/* line 983, teach.scss */
+/* line 1002, teach.scss */
 .teach-news-content .view-taxonomy-search-list .views-row .views-field-url .field-content {
   font-size: 18px;
   display: inline;
 }
-/* line 986, teach.scss */
+/* line 1005, teach.scss */
 .teach-news-content .view-taxonomy-search-list .views-row .views-field-url .field-content a {
   display: inline;
   color: #333;
   font-weight: normal;
 }
-/* line 990, teach.scss */
+/* line 1009, teach.scss */
 .teach-news-content .view-taxonomy-search-list .views-row .views-field-url .field-content a:hover {
   color: #ea5f11;
 }
-/* line 994, teach.scss */
+/* line 1013, teach.scss */
 .teach-news-content .view-taxonomy-search-list .views-row .views-field-url .field-content:before {
   display: inline;
   content: "» ";
   color: #ea5f11;
 }
-/* line 1002, teach.scss */
+/* line 1021, teach.scss */
 .teach-news-content .view-taxonomy-search-list .item-list {
   text-align: center;
 }
-/* line 1005, teach.scss */
+/* line 1024, teach.scss */
 .teach-news-content .view-taxonomy-search-list ul.pager {
   float: none;
   display: inline-block;
@@ -1371,7 +1392,7 @@ p a {
   *zoom: 1;
   font-size: 14px;
 }
-/* line 1010, teach.scss */
+/* line 1029, teach.scss */
 .teach-news-content .view-taxonomy-search-list ul.pager li a {
   color: #ea5f11;
 }
