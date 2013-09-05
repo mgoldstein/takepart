@@ -258,24 +258,23 @@ function $fbregreloadfunction(cnt) {
     var changed = false;
     //check the iframe tag for changes:
     if ((fbregtag) && (newfbregtag != fbregtag)) {
-        //0=initial load (skipped), 1=facebooks resize
-        //alert(cnt);
+        //0=initial load, 1=facebooks resize
         if (cnt > 0) {
             FB.getLoginStatus(function (response) {
                 if ((response.status != 'connected') || (response.status == 'not_authorized')) {
-                    jQuery(document.getElementsByTagName('fb:registration')).hide();
+                    jQuery(document.getElementsByTagName('fb:registration')).children(':first').hide();
                     window.location.reload();
                 }
             });
         }
-        cnt++;
+        if(jQuery(document.getElementsByTagName('fb:registration')).children(':first').height() > 200) {
+          cnt++;
+        }
     }
     fbregtag = newfbregtag;
     setTimeout("$fbregreloadfunction(" + cnt + ")", 1000);
 }
-jQuery(document).ready(function() {
-  setTimeout("$fbregreloadfunction(0)", 500);
-});        
+$fbregreloadfunction(0);          
 HTM;
 
    
