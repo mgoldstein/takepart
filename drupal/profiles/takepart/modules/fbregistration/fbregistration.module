@@ -125,9 +125,10 @@ function _tfbregistration_auth() {
         $account->mail = $response['registration']['email'];
      }
      
-      $result = db_query("SELECT uid FROM {fbregistration_facebook_id_map} where {uid} = $drupalid");
+      $existingusers = db_query("SELECT count(uid) FROM {fbregistration_facebook_id_map} where {uid} = $drupalid")->fetchField();
       
-      if(count($result) > 0) {
+      
+      if($existingusers > 0) {
           $result = db_update('fbregistration_facebook_id_map')->fields(array(
 		  'fbid' => $response['user_id'],
 		))->condition('uid', $drupalid, '=')->execute();
@@ -140,6 +141,7 @@ function _tfbregistration_auth() {
       
       
     user_save($account);
+  
     drupal_goto($destination);
 
   } else {
@@ -172,10 +174,6 @@ function _fbregistration_get_reg_value($regarray, $key) {
       $rkey = $bsd_keys[2];
     }
     if ($rkey == $key) {
-        /*print "<br><b>" . $key . ' = '. $rkey . "</b>";
-        print "<pre>";
-        print_r($val);
-        print "</pre>";*/
         $ret = $val;
         break;
     }
@@ -221,6 +219,7 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
    $fbsetscript = <<<HTM
 var fbuserdata;
 var fbregtag;
+var fbvalidatezip = true;
 function $fbsetfunction(cnt) {
     if (typeof (FB) !== 'undefined') {
         FB.api('/me', function (response) {
@@ -243,6 +242,7 @@ function $fbsetfunction(cnt) {
                             json = json.replace("{'name':'field_userzipcode','description':'ZIP Code','type':'text'},", '');
                             registration[0].setAttribute("fields",json);
                             FB.XFBML.parse();
+                            fbvalidatezip = false;
                         }
                     }
                 );
