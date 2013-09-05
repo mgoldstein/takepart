@@ -613,19 +613,19 @@ p {
     margin: 0;
   }
   a {
-    color: black;
+    color: white;
     font: normal normal 17px/1 $secondary-font, serif;
     .fb {
       display: inline-block; *display: inline; *zoom: 1;
       vertical-align: top;
       width: 24px;
       height: 22px;
-      background: transparent image-url('social-facebook.png');
-    }
-    @media (max-width: 480px) {
-      color: white;
-      .fb {
         background-image: image-url('social-facebook-white-small.png');
+    }
+    @media (min-width: 481px) {
+      color: black;
+      .fb {
+        background: transparent image-url('social-facebook.png');
       }
     }
   }
@@ -948,14 +948,14 @@ p {
     background-color: transparent;
     .views-row {
       background-color: transparent;
-      width: 90%;
       height: auto;
-      margin: 20px 5%;
-      float: none;
-      @media (min-width: 481px) {
-        float: left;
-        width: 31%;
-        margin: 20px 0 20px 2%;
+      float: left;
+      width: 31%;
+      margin: 20px 0 20px 2%;
+      @media (max-width: 480px) {
+        width: 90%;
+        margin: 20px 5%;
+        float: none;
       }
       img {
         box-sizing: border-box;

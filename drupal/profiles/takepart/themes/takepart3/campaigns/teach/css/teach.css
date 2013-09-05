@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("//hello.myfonts.net/count/2826af");
 /* @license
  * MyFonts Webfont Build ID 2631343, 2013-08-27T17:12:57-0400
@@ -58,7 +57,7 @@
 }
 /* line 33, teach.scss */
 .page-wrap .main {
-  background: url('../img/blackboard.jpg?1377730837');
+  background: url('../img/blackboard.jpg?1377714697');
 }
 /* line 38, teach.scss */
 .page-wrap .page-header,
@@ -90,7 +89,7 @@
   position: relative;
   min-height: 422px;
   color: white;
-  background: url('../img/hero-background.jpg?1377838702');
+  background: url('../img/hero-background.jpg?1377834613');
   clear: both;
   zoom: 1;
   /* menu */
@@ -164,7 +163,7 @@
 .header .menu-wrapper {
   font: bold 19px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
-  background: url('../img/orange_felt.png?1377730837');
+  background: url('../img/orange_felt.png?1377714705');
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -228,7 +227,7 @@
 }
 /* line 162, teach.scss */
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377730837') no-repeat -17px 0;
+  background: url('../img/active_menu_bg.png?1377714705') no-repeat -17px 0;
   margin-top: -3px;
   height: 43px;
 }
@@ -303,7 +302,7 @@ p a {
 }
 /* line 229, teach.scss */
 .page-wordlet-teach-home .call-to-share a .fb {
-  background: url('../img/social-facebook-white.png?1377821821') no-repeat;
+  background: url('../img/social-facebook-white.png?1377822354') no-repeat;
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
@@ -341,7 +340,7 @@ p a {
 /* line 255, teach.scss */
 .page-wordlet-teach-home .social-menu {
   width: 277px;
-  background: url('../img/paper_right.png?1377730837') no-repeat right 10px;
+  background: url('../img/paper_right.png?1377714705') no-repeat right 10px;
   padding: 90px 30px 40px 300px;
   top: -50px;
   margin-left: -300px;
@@ -370,15 +369,15 @@ p a {
 }
 /* line 275, teach.scss */
 .page-wordlet-teach-home .social-menu .item.text {
-  background-image: url('../img/social-phone.png?1377734691');
+  background-image: url('../img/social-phone.png?1377735601');
 }
 /* line 276, teach.scss */
 .page-wordlet-teach-home .social-menu .item.connected {
-  background-image: url('../img/social-envelopes.png?1377734691');
+  background-image: url('../img/social-envelopes.png?1377735601');
 }
 /* line 277, teach.scss */
 .page-wordlet-teach-home .social-menu .item.discussion {
-  background-image: url('../img/social-chat.png?1377734691');
+  background-image: url('../img/social-chat.png?1377821572');
 }
 /* line 279, teach.scss */
 .page-wordlet-teach-home .social-menu .item p {
@@ -399,7 +398,7 @@ p a {
 }
 /* line 290, teach.scss */
 .page-wordlet-teach-home .social-menu .item .newsletter-signup .form-type-textfield input {
-  background: url('../img/text-field-large.png?1377742378') no-repeat;
+  background: url('../img/text-field-large.png?1377758755') no-repeat;
   width: 240px;
   height: 46px;
   border: none;
@@ -471,7 +470,7 @@ p a {
 .page-wordlet-teach-alliances .content,
 .teach-news-content {
   position: relative;
-  background: #ecedf6 url('../img/paper-background-texture-temp.jpg?1377834024') scroll repeat;
+  background: #ecedf6 url('../img/paper-background-texture-temp.jpg?1377830748') scroll repeat;
   margin-top: 30px;
   -webkit-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
@@ -557,7 +556,7 @@ p a {
   .teach-video-page .social-menu,
   .page-wordlet-teach-alliances .content .social-menu,
   .teach-news-content .social-menu {
-    background: transparent url('../img/video-page-social-block-bg.png?1377800756') scroll no-repeat bottom center;
+    background: transparent url('../img/video-page-social-block-bg.png?1377758768') scroll no-repeat bottom center;
     min-height: 241px;
     max-width: 830px;
     margin: 0 auto;
@@ -676,7 +675,7 @@ p a {
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"],
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"],
 .teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"] {
-  background: transparent url('../img/text-field-small.png?1377800756');
+  background: transparent url('../img/text-field-small.png?1377758768');
   border: 0;
   width: 217px;
   height: 30px;
@@ -739,7 +738,7 @@ p a {
 .teach-video-page .social-menu .item.text:before,
 .page-wordlet-teach-alliances .content .social-menu .item.text:before,
 .teach-news-content .social-menu .item.text:before {
-  background-image: url('../img/social-phone.png?1377734691');
+  background-image: url('../img/social-phone.png?1377735601');
   width: 72px;
   height: 73px;
   margin-left: -36px;
@@ -749,7 +748,7 @@ p a {
   .teach-video-page .social-menu .item.text:before,
   .page-wordlet-teach-alliances .content .social-menu .item.text:before,
   .teach-news-content .social-menu .item.text:before {
-    background-image: url('../img/social-phone-white.png?1377823634');
+    background-image: url('../img/social-phone-white.png?1377822363');
     width: 52px;
     height: 60px;
     margin-left: -26px;
@@ -765,7 +764,7 @@ p a {
 .teach-video-page .social-menu .item.connected:before,
 .page-wordlet-teach-alliances .content .social-menu .item.connected:before,
 .teach-news-content .social-menu .item.connected:before {
-  background-image: url('../img/social-envelopes.png?1377734691');
+  background-image: url('../img/social-envelopes.png?1377735601');
   width: 72px;
   height: 79px;
   margin-left: -36px;
@@ -775,7 +774,7 @@ p a {
   .teach-video-page .social-menu .item.connected:before,
   .page-wordlet-teach-alliances .content .social-menu .item.connected:before,
   .teach-news-content .social-menu .item.connected:before {
-    background-image: url('../img/social-envelopes-white.png?1377823634');
+    background-image: url('../img/social-envelopes-white.png?1377822363');
     width: 42px;
     height: 47px;
     margin-left: -21px;
@@ -791,7 +790,7 @@ p a {
 .teach-video-page .social-menu .item.discussion:before,
 .page-wordlet-teach-alliances .content .social-menu .item.discussion:before,
 .teach-news-content .social-menu .item.discussion:before {
-  background-image: url('../img/social-chat.png?1377734691');
+  background-image: url('../img/social-chat.png?1377821572');
   width: 72px;
   height: 55px;
   margin-left: -36px;
@@ -801,7 +800,7 @@ p a {
   .teach-video-page .social-menu .item.discussion:before,
   .page-wordlet-teach-alliances .content .social-menu .item.discussion:before,
   .teach-news-content .social-menu .item.discussion:before {
-    background-image: url('../img/social-chat-white.png?1377823634');
+    background-image: url('../img/social-chat-white.png?1377822363');
     width: 50px;
     height: 45px;
     margin-left: -25px;
@@ -840,7 +839,7 @@ p a {
   font-size: 40px;
   line-height: 1.375;
   text-transform: uppercase;
-  background: transparent url('../img/video-page-label-background.png?1377834024') no-repeat scroll top left;
+  background: transparent url('../img/video-page-label-background.png?1377830748') no-repeat scroll top left;
   -webkit-transform: rotate(-4deg);
   -moz-transform: rotate(-4deg);
   -ms-transform: rotate(-4deg);
@@ -873,7 +872,7 @@ p a {
     margin: 1em 25px 0 auto;
     margin-right: 25px;
     float: right;
-    background: transparent url('../img/paper-peek-a-boo.png?1377800756') no-repeat scroll top right;
+    background: transparent url('../img/paper-peek-a-boo.png?1377758768') no-repeat scroll top right;
     padding: 10px 0;
     -webkit-box-shadow: 0 0 4px black;
     -moz-box-shadow: 0 0 4px black;
@@ -892,7 +891,7 @@ p a {
 }
 /* line 615, teach.scss */
 .peek-a-boo a {
-  color: black;
+  color: white;
   font: normal normal 17px/1 "GlyphaLTPro-Black", serif, serif;
 }
 /* line 618, teach.scss */
@@ -903,16 +902,16 @@ p a {
   vertical-align: top;
   width: 24px;
   height: 22px;
-  background: transparent url('../img/social-facebook.png?1377800756');
+  background-image: url('../img/social-facebook-white-small.png?1377822363');
 }
-@media (max-width: 480px) {
+@media (min-width: 481px) {
   /* line 615, teach.scss */
   .peek-a-boo a {
-    color: white;
+    color: black;
   }
   /* line 627, teach.scss */
   .peek-a-boo a .fb {
-    background-image: url('../img/social-facebook-white-small.png?1377823634');
+    background: transparent url('../img/social-facebook.png?1377821572');
   }
 }
 
@@ -1294,17 +1293,17 @@ p a {
 /* line 949, teach.scss */
 .teach-news-content .secondary-feature .views-row {
   background-color: transparent;
-  width: 90%;
   height: auto;
-  margin: 20px 5%;
-  float: none;
+  float: left;
+  width: 31%;
+  margin: 20px 0 20px 2%;
 }
-@media (min-width: 481px) {
+@media (max-width: 480px) {
   /* line 949, teach.scss */
   .teach-news-content .secondary-feature .views-row {
-    float: left;
-    width: 31%;
-    margin: 20px 0 20px 2%;
+    width: 90%;
+    margin: 20px 5%;
+    float: none;
   }
 }
 /* line 960, teach.scss */
