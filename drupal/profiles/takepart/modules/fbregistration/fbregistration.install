@@ -22,6 +22,13 @@ function fbregistration_update_1002() {
   return $items;
 }
 
+function fbregistration_update_1003() {
+  $items = array();
+  $items[] = db_query("ALTER TABLE fbregistration_facebook_id_map ALTER COLUMN fbid bigint");
+  return $items;
+}
+
+
 /**
  * Implements hook_schema().
  */
