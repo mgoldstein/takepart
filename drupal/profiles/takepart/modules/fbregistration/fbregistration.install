@@ -24,7 +24,7 @@ function fbregistration_update_1002() {
 
 function fbregistration_update_1003() {
   $items = array();
-  $items[] = db_query("ALTER TABLE fbregistration_facebook_id_map ALTER COLUMN fbid bigint");
+  $items[] = db_query("alter table fbregistration_facebook_id_map modify fbid bigint;");
   return $items;
 }
 
