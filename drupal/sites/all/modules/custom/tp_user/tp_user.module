@@ -16,6 +16,7 @@ function tp_user_user_insert(&$edit, $account, $category) {
 
   // Create a user signup.
   $signup = TakePartUserSignup::create();
+  $email = $account->mail;
 
   //Get the zip code from FB reg:
   if (($_REQUEST) && isset($_REQUEST['signed_request'])) {
@@ -24,10 +25,12 @@ function tp_user_user_insert(&$edit, $account, $category) {
        $app_secret = variable_get('fboauth_secret', '');
        $response = _takepart_facebookapis_parse_signed_request($_REQUEST['signed_request'],$app_secret);
        $postal_code = $response['registration']['field_userzipcode'];
+       $email = $response['registration']['email'];
+       $newsletter_opt_in = (bool) $response['registration']['bsd_5_field_usernewslettersubscibe'];
     }
   }
   
-  $signup['email'] = $account->mail;
+  $signup['email'] = $email;
   $signup['address.postal-code'] = $postal_code;
   $endpoint_name = $newsletter_opt_in ? 'user_registration_opt_in_yes'
     : 'user_registration_opt_in_no';
