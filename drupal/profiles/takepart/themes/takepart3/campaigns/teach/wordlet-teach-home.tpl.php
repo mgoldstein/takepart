@@ -9,6 +9,7 @@
 	</section>
 	<section class="page-body-content cms">
 		<?= w('page_body_content') ?>
+    <? include('partials/teach-watch-promo.tpl.php') ?>
 	</section>
 </div>
 <br clear="all" />
