@@ -439,6 +439,10 @@ function jw_player_process_jw_player(&$variables) {
  *
  */
 function jw_player_init() {
+  // Add script file if requested.
+  if (variable_get('jw_player_all_pages', FALSE)) {
+    drupal_add_js(libraries_get_path('jwplayer') . '/jwplayer.js');
+  }
   // Add key if available.
   if ($key = variable_get('jw_player_key', NULL)) {
     drupal_add_js('jwplayer.key="' . $key . '"',
