@@ -371,6 +371,10 @@ p {
     text-transform: uppercase;
     max-width: 740px;
     margin: 10px 20px 0;
+    @media (max-width: 480px) {
+      font-size: 30px;
+      margin: 10px;
+    }
   }
   .content-subheadline {
     font-weight: normal;
