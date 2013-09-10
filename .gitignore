@@ -2,6 +2,9 @@
 /drupal/sites/default/settings.local.inc
 /drupal/sites/default/settings.db.name.inc
 /drupal/sites/default/files
+/drupal/flash
+/drupal/images
+/drupal/js
 
 /drupal/debug.php
 
