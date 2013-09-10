@@ -395,6 +395,7 @@ p {
         @include inline-block;
         width: 110px;
         margin-top: 10px;
+        line-height: 120%;
         &:before {
           content: '\00BB';
           color: $primary-grey;
