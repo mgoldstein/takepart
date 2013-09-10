@@ -18,5 +18,11 @@ function jw_player_settings_form($form) {
     '#description' => t('If you have a premium account enter your key here'),
     '#default_value' => variable_get('jw_player_key', NULL),
   );
+  $form['jw_player_all_pages'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Include on all pages'),
+    '#description' => t('Include the JW Player script file on all pages.'),
+    '#default_value' => variable_get('jw_player_all_pages', FALSE),
+  );
   return system_settings_form($form);
 }
