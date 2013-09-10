@@ -1,7 +1,7 @@
 <section class="teach-watch-promo">
   <div class="teach-watch-promo-content">
     <h2 class="sect-headline"><?=w('teach-promo-header')?></h2>
-    <ul>
+    <ul <?=wa('teach-promo-links')?>>
       <? foreach( wl('teach-promo-links') as $w ): ?>
       <li>
         <a href="<?=$w->href?>">
