@@ -17,6 +17,7 @@
     <section class="social-menu">
         <? include('partials/teach-social-block.tpl.php') ?>
     </section>
+    <? include('partials/teach-watch-promo.tpl.php') ?>
     <div class="ad">
         <?=w('ad')?>
     </div>
