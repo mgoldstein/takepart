@@ -361,11 +361,7 @@ p {
   width: 840px;
   height: 200px;
 
-  @media (min-width: 848px) {
-  }
-
   .teach-watch-promo-content {
-    padding: $page-margins;
     width: 770px;
     padding: 40px 0 $page-margins 0;
     margin: 0 auto;
@@ -382,19 +378,19 @@ p {
     padding: 0;
   }
   li {
-    width: 320px;
+    width: 49%;
     &:nth-child(even) {
       float: right;
     }
     @include inline-block;
     a {
       @include inline-block;
-      font-size: 16px;
+      font-size: 1.3em;
       color: $primary-color;
       span {
         @include inline-block;
-        width: 110px;
-        margin-top: 10px;
+        width: 46%;
+        margin-top: 1%;
         line-height: 120%;
         &:before {
           content: '\00BB';
@@ -406,9 +402,62 @@ p {
     }
     .media-logo {
       float: left;
-      margin: 0 30px 0 0;
+      margin: 0 7% 0 0;
+      width: 47%;
     }
   }
+
+  @media (max-width: 1000px) {
+    width: 100%;
+    background-size: 100%;
+    margin-top: 10px;
+    .sect-headline {
+      margin: 0px 0 0 0px;
+    }
+    .teach-watch-promo-content {
+      width: 90%;
+      margin: 0 auto;
+      padding: 6% 0 $page-margins 0;
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    background-size: 100% 85%;
+    .teach-watch-promo-content {
+      width: 95%;
+      margin: 0 auto;
+      padding: 6% 0 $page-margins 0;
+    }
+    .sect-headline {
+      font-size: 19px;
+      text-align: center;
+      margin: 20px 0 7px;
+    }
+    li {
+      width: 42%;
+      a {
+        display: block;
+        clear: both;
+        width: 100%;
+        .media-logo {
+          width: 100%;
+          height: auto;
+        }
+        span {
+          width: 100%;
+          display: block;
+          text-align: center;
+          font-size: 14px;
+          &:before {
+            content: '';
+          }
+        }
+      }
+    }
+  }
+
+
 }
 
 
@@ -432,6 +481,10 @@ p {
     text-transform: uppercase;
     max-width: 740px;
     margin: 10px 20px 0;
+    @media (max-width: 480px) {
+      font-size: 30px;
+      margin: 10px;
+    }
   }
   .content-subheadline {
     font-weight: normal;
