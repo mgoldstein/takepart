@@ -18,31 +18,6 @@ $light-white: #ccc;
 $body-copy-black: #313131;
 
 
-@mixin page-curl($width) {
-  position: relative;
-  overflow: visible;
-  border: 1px solid #efefef;
-  &:before, &:after {
-    content: '';
-    z-index: -1;
-    position: absolute;
-    left: $width;
-    bottom: $width;
-    width: 70%;
-    max-width: 300px; /* avoid rotation causing ugly appearance at large container widths */
-    max-height: 100px;
-    height: 55%;
-    @include box-shadow(0 $width 18px rgba(0, 0, 0, 0.2));
-    @include transform(skew(-15deg) rotate(-6deg));
-  }  
-
-  &:after {
-    left: auto;
-    right: $width;
-    @include transform(skew(15deg) rotate(6deg));
-  }
-}
-
 /* # General
 ================================================== */
 #page-wrapper {
@@ -380,13 +355,19 @@ p {
 */
 
 .teach-watch-promo {
-  @include page-curl(15px);
-  background: $primary-white;
-  padding: $page-margins;
-  margin-bottom: 30px;
+  background: image-url('teach-watch-bg.png') no-repeat;
+  margin: -10px auto 0;
   clear: both;
+  width: 840px;
+  height: 200px;
+
   @media (min-width: 848px) {
-    max-width: 780px;
+  }
+
+  .teach-watch-promo-content {
+    padding: $page-margins;
+    width: 770px;
+    padding: 40px 0 $page-margins 0;
     margin: 0 auto;
   }
 
@@ -401,7 +382,7 @@ p {
     padding: 0;
   }
   li {
-    width: 300px;
+    width: 320px;
     &:nth-child(even) {
       float: right;
     }
@@ -410,11 +391,16 @@ p {
       @include inline-block;
       font-size: 16px;
       color: $primary-color;
-      span:before {
-        content: '\00BB';
-        color: $primary-grey;
-        margin-left: -2ex;
-        margin-right: 6px;
+      span {
+        @include inline-block;
+        width: 110px;
+        margin-top: 10px;
+        &:before {
+          content: '\00BB';
+          color: $primary-grey;
+          margin-left: -2ex;
+          margin-right: 6px;
+        }
       }
     }
     .media-logo {
