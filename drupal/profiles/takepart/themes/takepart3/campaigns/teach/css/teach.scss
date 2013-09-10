@@ -17,6 +17,7 @@ $primary-white: white;
 $light-white: #ccc;
 $body-copy-black: #313131;
 
+
 /* # General
 ================================================== */
 #page-wrapper {
@@ -339,6 +340,7 @@ p {
     background-color: #D4D4D4;
     @include background(linear-gradient(-89deg, #FFFFFF 0%, #DBDBDB 90%, #B1A99A));
     @include box-shadow(0 0 6px 4px #A79B84 inset);
+    position: relative;
 
     img {
       float: right;
@@ -351,6 +353,64 @@ p {
 
 /* # Common elements for some interior pages
 */
+
+.teach-watch-promo {
+  background: image-url('teach-watch-bg.png') no-repeat;
+  margin: -10px auto 0;
+  clear: both;
+  width: 840px;
+  height: 200px;
+
+  @media (min-width: 848px) {
+  }
+
+  .teach-watch-promo-content {
+    padding: $page-margins;
+    width: 770px;
+    padding: 40px 0 $page-margins 0;
+    margin: 0 auto;
+  }
+
+
+  .sect-headline {
+    font: normal 23px/90% $secondary-font;
+    margin: 0 0 $page-margins;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    width: 320px;
+    &:nth-child(even) {
+      float: right;
+    }
+    @include inline-block;
+    a {
+      @include inline-block;
+      font-size: 16px;
+      color: $primary-color;
+      span {
+        @include inline-block;
+        width: 110px;
+        margin-top: 10px;
+        &:before {
+          content: '\00BB';
+          color: $primary-grey;
+          margin-left: -2ex;
+          margin-right: 6px;
+        }
+      }
+    }
+    .media-logo {
+      float: left;
+      margin: 0 30px 0 0;
+    }
+  }
+}
+
+
 
 .teach-video-page,
 .page-wordlet-teach-alliances .content,
