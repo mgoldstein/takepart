@@ -8,7 +8,6 @@ dependencies[] = entity
 dependencies[] = bluestatedigital_forms
 dependencies[] = pm_signup
 
-files[] = signature.signup.inc
 files[] = signature_node.entity.inc
 files[] = signature_type.admin.inc
 files[] = signature_type.entity.inc
