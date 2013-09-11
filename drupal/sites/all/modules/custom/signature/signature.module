@@ -1559,6 +1559,13 @@ function signature_send_signup($signature, $local = TRUE) {
           '@email' => $signature->email,
         ));
       }
+      catch (SignupDuplicateException $sde) {
+        $message = 'Duplicate signup [@id] @email';
+        watchdog('signature', $message, array(
+          '@id' => $settings->pm_signup_endpoint_id,
+          '@email' => $signature->email,
+        ));
+      }
     }
     else {
       $message = 'Unknown signup [@id] @email';

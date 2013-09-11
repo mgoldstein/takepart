@@ -86,6 +86,10 @@ class SignatureSignup extends Signup {
       throw new SignupValidationException(array('partner opt-in requires a partner code'));
     }
   }
+
+  public function key() {
+    return array('email', 'action.id');
+  }
 }
 
 

@@ -25,6 +25,14 @@ class SignupSubmissionException extends SignupException {
   }
 }
 
+class SignupDuplicateException extends SignupException {
+  public $key;
+  public function __construct($key) {
+    parent::__construct("duplicate signup error", 0);
+    $this->key = $key;
+  }
+}
+
 class SignupHandlerException extends SignupException {}
 
 
@@ -452,6 +460,19 @@ abstract class Signup extends SignupFieldSet implements ArrayAccess {
     $names = array_keys(static::fields());
     return array_filter($names, array($this, 'offsetExists'));
   }
+
+  public function key() {
+    // By default, there is no unique key.
+    return array();
+  }
+
+  public function key_data() {
+    $key_data = array();
+    foreach ($this->key() as $field) {
+      $key_data[$field] = $this[$field];
+    }
+    return $key_data;
+  }
 }
 
 /**
@@ -654,9 +675,39 @@ abstract class SignupEndpoint extends SignupFieldSet {
     }
   }
 
+  protected function limit($signup) {
+
+    $key = $signup->key_data();
+    if (!empty($key)) {
+      $record = db_select('pm_signup_ledger', 'sl')
+        ->fields('sl')
+        ->condition('signup_key', implode(':', $key))
+        ->execute()
+        ->fetchObject();
+      if ($record !== FALSE) {
+        throw new SignupDuplicateException($key);
+      }
+    }
+  }
+
+  protected function record($signup) {
+    $key = $signup->key_data();
+    if (!empty($key)) {
+      db_insert('pm_signup_ledger')
+        ->fields(array(
+          'type' => get_class($signup),
+          'signup_key' => implode(':', $key),
+          'created' => REQUEST_TIME,
+        ))
+        ->execute();
+    }
+  }
+
   public function submit($signup) {
 
     $this->validate($signup);
+
+    $this->limit($signup);
 
     $plugins = ctools_get_plugins('pm_signup', 'handler');
     $errors = array();
@@ -698,6 +749,8 @@ abstract class SignupEndpoint extends SignupFieldSet {
     if (count($errors) > 0) {
       throw new SignupSubmissionException($errors);
     }
+
+    $this->record($signup);
   }
 
 
