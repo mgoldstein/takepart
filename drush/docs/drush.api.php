@@ -191,12 +191,20 @@ function hook_drush_exit() {
 
 }
 
-/*
+/**
  * A commandfile may choose to decline to load for the current bootstrap
  * level by returning FALSE. This hook must be placed in MODULE.drush.load.inc.
  * @see drush_commandfile_list().
  */
 function hook_drush_load() {
+
+}
+
+/**
+ * A commandfile may adjust the contents of any command structure
+ * prior to dispatch.  @see core_drush_command_alter() for an example.
+ */
+function hook_drush_command_alter(&$command) {
 
 }
 
@@ -300,6 +308,17 @@ function hook_drush_cache_clear(&$types) {
  *   the characteristics of the engine type in relation to command definitions:
  *
  *   - description: The engine type description.
+ *   - topic: If specified, the name of the topic command that will
+ *     display the automatically generated topic for this engine.
+ *   - topic-file: If specified, the path to the file that will be
+ *     displayed at the head of the automatically generated topic for
+ *     this engine.  This path is relative to the Drush root directory;
+ *     non-core commandfiles should therefore use:
+ *       'topic-file' => dirname(__FILE__) . '/mytopic.html';
+ *   - topics: If set, contains a list of topics that should be added to
+ *     the "Topics" section of any command that uses this engine.  Note
+ *     that if 'topic' is set, it will automatically be added to the topics
+ *     list, and therefore does not need to also be listed here.
  *   - option: The command line option to choose an implementation for
  *     this engine type.
  *     FALSE means there's no option. That is, the engine type is for internal
@@ -308,6 +327,11 @@ function hook_drush_cache_clear(&$types) {
  *   - options: Engine options common to all implementations.
  *   - add-options-to-command: If there's a single implementation for this
  *     engine type, add its options as command level options.
+ *   - combine-help: If there are multiple implementations for this engine
+ *     type, then instead of adding multiple help items in the form of
+ *     --engine-option=engine-type [description], instead combine all help
+ *     options into a single --engine-option that lists the different possible
+ *     values that can be used.
  *
  * @see drush_get_engine_types_info()
  * @see pm_drush_engine_type_info()
@@ -327,6 +351,12 @@ function hook_drush_engine_type_info() {
 /**
  * Inform drush about one or more engines implementing a given engine type.
  *
+ *   - description: The engine implementation's description.
+ *   - engine-class:  The class that contains the engine implementation.
+ *       Defaults to the engine type key (e.g. 'ice-cream').
+ *   - verbose-only:  The engine implementation will only appear in help
+ *       output in --verbose mode.
+ *
  * This hook allow to declare implementations for an engine type.
  *
  * @see pm_drush_engine_package_handler()
@@ -342,6 +372,28 @@ function hook_drush_engine_ENGINE_TYPE() {
     ),
   );
 }
+
+/**
+ * Alter the order that hooks are invoked.
+ *
+ * When implementing a given hook we may need to ensure it is invoked before
+ * or after another implementation of the same hook. For example, let's say
+ * you want to implement a hook that would be called after drush_make. You'd
+ * write a drush_MY_MODULE_post_make() function. But if you need your hook to
+ * be called before drush_make_post_make(), you can ensure this by implemen-
+ * ting MY_MODULE_drush_invoke_alter().
+ *
+ * @see drush_command_invoke_all_ref()
+ */
+function hook_drush_invoke_alter($modules, $hook) {
+  if ($hook == 'some_hook') {
+    // Take the module who's hooks would normally be called last
+    $module = array_pop($modules);
+    // Ensure it'll be called first for 'some_hook'
+    array_unshift($modules, $module);
+  }
+}
+
 
 /**
  * @} End of "addtogroup hooks".

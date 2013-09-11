@@ -102,7 +102,7 @@ function sql_drush_sql_sync_sanitize($site) {
   }
 
   // Sanitize email addresses.
-  $newemail = drush_get_option(array('sanitize-email', 'destination-sanitize-email'), 'user+%uid@localhost');
+  $newemail = drush_get_option(array('sanitize-email', 'destination-sanitize-email'), 'user+%uid@localhost.localdomain');
   if ($newemail != 'no') {
     if (strpos($newemail, '%') !== FALSE) {
       // We need a different sanitization query for Postgres and Mysql.
@@ -116,10 +116,10 @@ function sql_drush_sql_sync_sanitize($site) {
         $email_map = array('%uid' => "', uid, '", '%mail' => "', replace(mail, '@', '_'), '", '%name' => "', replace(name, ' ', '_'), '");
         $newmail =  "concat('" . str_replace(array_keys($email_map), array_values($email_map), $newemail) . "')";
       }
-      $user_table_updates[] = "mail = $newmail";
+      $user_table_updates[] = "mail = $newmail, init = $newmail";
     }
     else {
-      $user_table_updates[] = "mail = '$newemail'";
+      $user_table_updates[] = "mail = '$newemail', init = '$newmail'";
     }
     $message_list[] = 'email addresses';
   }
@@ -160,15 +160,18 @@ function drush_sql_sync($source = NULL, $destination = NULL) {
 
     if (empty($source_db_url)) {
       if (empty($source_settings)) {
-        return drush_set_error('DRUSH_ALIAS_NOT_FOUND', dt('Error: no alias record could be found for !source', array('!source' => $source)));
+        return drush_set_error('DRUSH_ALIAS_NOT_FOUND', dt('Error: no alias record could be found for source !source', array('!source' => $source)));
       }
-      return drush_set_error('DRUSH_DATABASE_NOT_FOUND', dt('Error: no database record could be found for !source', array('!source' => $source)));
+      return drush_set_error('DRUSH_DATABASE_NOT_FOUND', dt('Error: no database record could be found for source !source', array('!source' => $source)));
     }
     if (empty($target_db_url)) {
       if (empty($destination_settings)) {
-        return drush_set_error('DRUSH_ALIAS_NOT_FOUND', dt('Error: no alias record could be found for !destination', array('!destination' => $destination)));
+        return drush_set_error('DRUSH_ALIAS_NOT_FOUND', dt('Error: no alias record could be found for target !destination', array('!destination' => $destination)));
       }
-      return drush_set_error('DRUSH_DATABASE_NOT_FOUND', dt('Error: no database record could be found for !destination', array('!destination' => $destination)));
+      return drush_set_error('DRUSH_DATABASE_NOT_FOUND', dt('Error: no database record could be found for target !destination', array('!destination' => $destination)));
+    }
+    if (isset($source_db_url['remote-host']) && isset($target_db_url['remote-host']) && ($source_db_url['remote-host'] == $target_db_url['remote-host']) && ($source_db_url['database'] == $target_db_url['database']) && !drush_get_context('DRUSH_SIMULATE')) {
+      return drush_set_error('DRUSH_SAME_DATABASE', dt('Source and target databases are the same; please sync to a different target.'));
     }
 
     // Set up the result file and the remote file.
@@ -249,7 +252,7 @@ function drush_sql_sync($source = NULL, $destination = NULL) {
 
     $table_selection = array();
     if (!isset($no_dump)) {
-      $table_selection = drush_sql_get_table_selection();
+      $table_selection = drush_sql_get_expanded_table_selection($source_db_url, $source);
     }
 
     // Prompt for confirmation. This is destructive.
@@ -392,6 +395,17 @@ function drush_sql_sync($source = NULL, $destination = NULL) {
         $db_su_connect = _drush_sql_connect($create_db_su);
         $pre_import_sql = drush_sql_build_createdb_sql($target_db_url);
         $pre_import_commands = sprintf('echo "%s" | %s; ', $pre_import_sql, $db_su_connect);
+        // Linux requires quotes around echo statements. Windows generally supports
+        // quotes for echo statements, but will complain if they are present
+        // when piping echo statements as input to other commands. Also,
+        // Windows multi-commands normally work when separated by '&&', '&', or ';'
+        // but will not function with ';' in this case.(http://drupal.org/node/1957020)
+        if (drush_is_windows($target_os)) {
+          $pre_import_commands = sprintf('echo %s | %s && ', $pre_import_sql, $db_su_connect);
+        }
+        else {
+          $pre_import_commands = sprintf('echo "%s" | %s; ', $pre_import_sql, $db_su_connect);
+        }
       }
 
       // Generate the import command

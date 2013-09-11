@@ -61,8 +61,8 @@
 # Note that the 'cpd' alias only works for local sites.  Use
 # `drush rsync` or gitd` to move files between remote sites.
 #
-# By default, aliases are also created for the following standard
-# commands:
+# Aliases are also possible for the following standard
+# commands. Uncomment their definitions below as desired.
 #
 #       cd                - cddl [*]
 #       ls                - lsd
@@ -72,9 +72,7 @@
 #
 # These standard commands behave exactly the same as they always
 # do, unless a drush site specification such as @dev or @live:%files
-# is used in one of the arguments.  If you do not want to override
-# these standard commands, they may be easily removed or commented out
-# in your copy of this file.
+# is used in one of the arguments.
 
 # Aliases for common drush commands that work in a global context.
 alias dr='drush'
@@ -132,16 +130,6 @@ if [ -f "$d/drush.complete.sh" ] ; then
   . "$d/drush.complete.sh"
 fi
 
-# Create an alias for every drush site alias.  This allows
-# for commands such as `@live pml` to run `drush @live pm-list`
-for a in $(drush sa); do
-  alias $a="drush $a"
-  ## Register another completion function for every alias to drush.
-  if [ -n "`type _drush_completion 2>/dev/null`" ] ; then
-    complete -o nospace -F _drush_completion $a > /dev/null
-  fi
-done
-
 # We extend the cd command to allow convenient
 # shorthand notations, such as:
 #   cd @site1
@@ -187,8 +175,8 @@ function cdd() {
   elif [ "${s:0:1}" == "@" ] || [ "${s:0:1}" == "%" ]
   then
     d="$(drush drupal-directory $s 2>/dev/null)"
-    $(drush sa ${s%%:*} --component=remote-host > /dev/null 2>&1)
-    if [ $? != 0 ]
+    rh="$(drush sa ${s%%:*} --fields=remote-host --format=list)"
+    if [ -z "$rh" ]
     then
       echo "cd $d"
       builtin cd "$d"
@@ -196,8 +184,8 @@ function cdd() {
       if [ -n "$d" ]
       then
         c="cd \"$d\" \; bash"
-        drush -s ${s%%:*} ssh --tty --escaped "$c"
-        drush ${s%%:*} ssh --tty --escaped "$c"
+        drush -s ${s%%:*} ssh --tty
+        drush ${s%%:*} ssh --tty
       else
         drush ssh ${s%%:*}
       fi
@@ -214,10 +202,10 @@ function gitd() {
   if [ -n "$s" ] && [ ${s:0:1} == "@" ] || [ ${s:0:1} == "%" ]
   then
     d="$(drush drupal-directory $s 2>/dev/null)"
-    $(drush sa ${s%%:*} --component=remote-host > /dev/null 2>&1)
-    if [ $? == 0 ]
+    rh="$(drush sa ${s%%:*} --fields=remote-host --format=list)"
+    if [ -n "$rh" ]
     then
-      dssh ${s%%:*} cd "$d" \; git "${@:2}"
+      drush ${s%%:*} ssh "cd '$d' ; git ${@:2}"
     else
       echo cd "$d" \; git "${@:2}"
       (
@@ -240,8 +228,8 @@ function lsd() {
       p[${#p[@]}]="$(drush drupal-directory $a 2>/dev/null)"
       if [ ${a:0:1} == "@" ]
       then
-        $(drush sa ${a%:*} --component=remote-host > /dev/null 2>&1)
-        if [ $? == 0 ]
+        rh="$(drush sa ${a%:*} --fields=remote-host --format=list)"
+        if [ -n "$rh" ]
         then
           r=${a%:*}
         fi
@@ -253,7 +241,7 @@ function lsd() {
   done
   if [ -n "$r" ]
   then
-    ssh $r ls "${p[@]}"
+    drush $r ssh 'ls "${p[@]}"'
   else
     "ls" "${p[@]}"
   fi
@@ -285,3 +273,10 @@ function dssh() {
     "ssh" "$@"
   fi
 }
+
+# Drush checks the current PHP version to ensure compatibility, and fails with
+# an error if less than the supported minimum (currently 5.3.3). If you would
+# like to try to run Drush on a lower version of PHP, you can un-comment the
+# line below to skip this check. Note, however, that this is un-supported.
+
+# DRUSH_NO_MIN_PHP=TRUE

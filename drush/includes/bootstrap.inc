@@ -194,11 +194,11 @@ function drush_bootstrap($phase, $phase_max = FALSE) {
       foreach ($errors as $code => $message) {
         drush_set_error($code, $message);
       }
+      break;
     }
     unset($phases[$phase_index++]);
   }
   drush_set_context('DRUSH_BOOTSTRAPPING', FALSE);
-
   return !drush_get_error();
 }
 
@@ -428,25 +428,26 @@ function _drush_bootstrap_drush_validate() {
  */
 function _drush_bootstrap_drush() {
   // Create an alias '@none' to represent no Drupal site
-  _drush_sitealias_cache_alias('none', array('root' => '', 'uri' => ''));
+  _drush_sitealias_cache_alias('@none', array('root' => '', 'uri' => ''));
 
   // Set the terminal width, used for wrapping table output.
   // Normally this is exported using tput in the drush script.
   // If this is not present we do an additional check using stty here.
   // On Windows in CMD and PowerShell is this exported using mode con.
-  // PHP version prior to 5.3.0 is not supporting this, they always
-  // return 80 columns
   if (!($columns = getenv('COLUMNS'))) {
     // Trying to export the columns using stty.
     exec('stty size 2>&1', $columns_output, $columns_status);
     if (!$columns_status) $columns = preg_replace('/\d+\s(\d+)/', '$1', $columns_output[0], -1, $columns_count);
 
     // If stty fails and Drush us running on Windows are we trying with mode con.
-    if (($columns_status || !$columns_count) && drush_is_windows() && version_compare(phpversion(), '5.3.0') > -1) {
+    if (($columns_status || !$columns_count) && drush_is_windows()) {
       $columns_output = array();
       exec('mode con', $columns_output, $columns_status);
       if (!$columns_status && is_array($columns_output)) {
         $columns = (int)preg_replace('/\D/', '', $columns_output[4], -1, $columns_count);
+      }
+      else {
+        drush_log(dt('Drush could not detect the console window width. Set a Windows Environment Variable of COLUMNS to the desired width.'), 'warning');
       }
     }
 
@@ -459,7 +460,7 @@ function _drush_bootstrap_drush() {
   // information to the drush output via post-processing, the
   // --reserve-margin flag can be used to declare how much
   // space to leave out.  This only affects drush functions
-  // such as drush_print_table that wrap the output.
+  // such as drush_print_table() that wrap the output.
   $columns -= drush_get_option('reserve-margin', 0);
   drush_set_context('DRUSH_COLUMNS', $columns);
 
@@ -496,7 +497,8 @@ function _drush_bootstrap_drush() {
   // affect these phases.
   drush_sitealias_check_arg();
 
-  // Load the config options from Drupal's sites/all/drush directory, even prior to bootstrapping the root
+  // Load the config options from Drupal's /drush and sites/all/drush directories,
+  // even prior to bootstrapping the root.
   drush_load_config('drupal');
 
   // Similarly, load the Drupal site configuration options upfront.
@@ -574,14 +576,13 @@ function _drush_bootstrap_select_drupal_site() {
     $drupal_root = drush_locate_root();
   }
   drush_set_context('DRUSH_SELECTED_DRUPAL_ROOT', $drupal_root);
-  drush_set_context('DRUSH_SELECTED_DRUPAL_SITES_ALL_DRUSH', $drupal_root . '/sites/all/drush');
   $uri = _drush_bootstrap_selected_uri();
   drush_set_context('DRUSH_SELECTED_URI', $uri);
   drush_set_context('DRUSH_SELECTED_DRUPAL_SITE_CONF_PATH', drush_conf_path($uri));
 
   if (!empty($drupal_root) && !empty($uri)) {
     // Create an alias '@self'
-    _drush_sitealias_cache_alias('self', array('root' => $drupal_root, 'uri' => $uri));
+    _drush_sitealias_cache_alias('@self', array('root' => $drupal_root, 'uri' => $uri));
   }
 }
 
@@ -598,7 +599,7 @@ function _drush_bootstrap_base_environment() {
   if (getenv('SHARE_PREFIX')) drush_set_context('SHARE_PREFIX', getenv('SHARE_PREFIX'));
 
   drush_set_context('DOC_PREFIX', DRUSH_BASE_PATH);
-  if (!file_exists(DRUSH_BASE_PATH . '/README.txt') && file_exists(drush_get_context('SHARE_PREFIX', '/usr') . '/share/doc/drush') . '/README.txt') {
+  if (!file_exists(DRUSH_BASE_PATH . '/README.md') && file_exists(drush_get_context('SHARE_PREFIX', '/usr') . '/share/doc/drush' . '/README.md')) {
     drush_set_context('DOC_PREFIX', drush_get_context('SHARE_PREFIX', '/usr') . '/share/doc/drush');
   }
   $alias_path =& drush_get_context('ALIAS_PATH');
@@ -678,32 +679,31 @@ function _drush_bootstrap_drupal_root_validate() {
  */
 function _drush_bootstrap_drupal_root() {
   $drupal_root = drush_set_context('DRUSH_DRUPAL_ROOT', drush_bootstrap_value('drupal_root'));
-  define('DRUPAL_ROOT', $drupal_root);
-
   chdir($drupal_root);
-  require_once DRUPAL_ROOT . '/' . DRUSH_DRUPAL_SIGNATURE;
-  // Beware the poison pill: prefer drush_drupal_version() and
-  // drush_drupal_major_version() to 'DRUSH_DRUPAL_VERSION' and
-  // 'DRUSH_DRUPAL_MAJOR_VERSION', respectively. See http://drupal.org/node/1816192
-  $version = drush_set_context('DRUSH_DRUPAL_VERSION', drush_drupal_version());
-  $major_version = drush_set_context('DRUSH_DRUPAL_MAJOR_VERSION', drush_drupal_major_version());
+  $version = drush_drupal_version();
+  $major_version = drush_drupal_major_version();
 
-  if (($major_version < 6) || ($major_version > 7)) {
-    if ($major_version < 6) {
-      $recommended_version = 4;
+  if ($major_version <= 5) {
+    drush_set_error('DRUSH_DRUPAL_VERSION_UNSUPPORTED', dt('Drush !drush_version does not support Drupal !major_version. See http://drupal.org/project/drush for more information.', array('!drush_version' => DRUSH_VERSION, '!major_version' => $major_version)));
+  }
+  else {
+    if ($major_version <= 7) {
+      define('DRUPAL_ROOT', $drupal_root);
+      $core = DRUPAL_ROOT;
     }
     else {
-      $recommended_version = 6;
+      $core = DRUPAL_ROOT . '/core';
     }
-    drush_set_error('DRUSH_DRUPAL_VERSION_UNSUPPORTED', dt('Drush !drush_version does not support Drupal !major_version. Use Drush !recommended_version instead.', array('!drush_version' => DRUSH_VERSION, '!major_version' => $major_version, '!recommended_version' => $recommended_version)));
+
+    // DRUSH_DRUPAL_CORE should point to the /core folder in Drupal 8+ or to DRUPAL_ROOT
+    // in prior versions.
+    drush_set_context('DRUSH_DRUPAL_CORE', $core);
+    define('DRUSH_DRUPAL_CORE', $core);
+
+    _drush_bootstrap_global_options();
+
+    drush_log(dt("Initialized Drupal !version root directory at !drupal_root", array("!version" => $version, '!drupal_root' => $drupal_root)));
   }
-
-  drush_set_context('DRUSH_DRUPAL_CORE', DRUPAL_ROOT);
-  define('DRUSH_DRUPAL_CORE', DRUPAL_ROOT);
-
-  _drush_bootstrap_global_options();
-
-  drush_log(dt("Initialized Drupal !version root directory at !drupal_root", array("!version" => $version, '!drupal_root' => $drupal_root)));
 }
 
 /**
@@ -755,6 +755,10 @@ function _drush_bootstrap_drupal_site_validate() {
     );
     $_SERVER['HTTP_HOST'] = $drupal_base_url['host'];
 
+    if ($drupal_base_url['scheme'] == 'https') {
+      $_SERVER['HTTPS'] = 'on';
+    }
+
     if ($drupal_base_url['port']) {
       $_SERVER['HTTP_HOST'] .= ':' . $drupal_base_url['port'];
     }
@@ -782,7 +786,7 @@ function _drush_bootstrap_drupal_site_validate() {
   $site = drush_bootstrap_value('site', $_SERVER['HTTP_HOST']);
 
   $conf_path = drush_bootstrap_value('conf_path', conf_path(TRUE, TRUE));
-  $conf_file = "./$conf_path/settings.php";
+  $conf_file = "$conf_path/settings.php";
   if (!file_exists($conf_file)) {
     return drush_bootstrap_error('DRUPAL_SITE_SETTINGS_NOT_FOUND', dt("Could not find a Drupal settings.php file at !file.",
        array('!file' => $conf_file)));
@@ -835,12 +839,17 @@ function _drush_bootstrap_drupal_configuration() {
     restore_error_handler();
   }
 
-  // Force Drupal6 not to store queries since we are not outputting them.
-  // Don't run poormanscron during Drush request (D7+).
   $override = array(
-    'dev_query' => FALSE,
-    'cron_safe_threshold' => 0,
+    'dev_query' => FALSE, // Force Drupal6 not to store queries since we are not outputting them.
+    'cron_safe_threshold' => 0, // Don't run poormanscron during Drush request (D7+).
   );
+  // Avoid MTimeProtected grief in D8+. See http://drupal.org/node/1899842. If you really don't
+  // want this override, set different values using a drushrc.php by passing different values.
+  $override['php_storage']['default'] = array(
+    'class' => 'Drupal\Component\PhpStorage\FileReadOnlyStorage',
+    // 'directory' => drush_directory_cache('php_storage'),
+  );
+
   $current_override = drush_get_option_list('variables');
   foreach ($current_override as $name => $value) {
     if (is_numeric($name) && (strpos($value, '=') !== FALSE)) {
@@ -889,6 +898,9 @@ function _drush_bootstrap_drupal_configuration() {
          $creds['port'] = $conn['port'];
          $creds['name'] = $conn['database'];
          $creds['pass'] = $conn['password'];
+         if(isset($conn['pdo'])) {
+             $creds['pdo'] = $conn['pdo'];
+         } else { $creds['pdo'] = null; }
        }
        break;
   }
@@ -942,6 +954,21 @@ function _drush_bootstrap_drupal_full() {
     module_implements('watchdog', FALSE, TRUE);
   }
 
+  // Write correct install_profile to cache as needed. Used by _drush_find_commandfiles().
+  $cid = drush_cid_install_profile();
+  if ($cached_install_profile = drush_cache_get($cid)) {
+    // We have a cached profile. Check it for correctness and save new value if needed.
+    $install_profile = drush_drupal_major_version() >= 7 ? drupal_get_profile() : variable_get('install_profile', 'standard');
+    if ($cached_install_profile->data != $install_profile) {
+      drush_cache_set($cid, $install_profile);
+    }
+  }
+  else {
+    // No cached entry so write to cache.
+    $install_profile = drush_drupal_major_version() >= 7 ? drupal_get_profile() : variable_get('install_profile', 'standard');
+    drush_cache_set($cid, $install_profile);
+  }
+
   _drush_log_drupal_messages();
 }
 
@@ -990,6 +1017,7 @@ function drush_bootstrap_prepare() {
   require_once DRUSH_BASE_PATH . '/includes/environment.inc';
   require_once DRUSH_BASE_PATH . '/includes/command.inc';
   require_once DRUSH_BASE_PATH . '/includes/drush.inc';
+  require_once DRUSH_BASE_PATH . '/includes/engines.inc';
   require_once DRUSH_BASE_PATH . '/includes/backend.inc';
   require_once DRUSH_BASE_PATH . '/includes/batch.inc';
   require_once DRUSH_BASE_PATH . '/includes/context.inc';
@@ -1007,8 +1035,12 @@ function drush_bootstrap_prepare() {
   }
 
   // Check supported version of PHP.
-  define('DRUSH_MINIMUM_PHP', '5.2.0');
-  if (version_compare(phpversion(), DRUSH_MINIMUM_PHP) < 0) {
+  // Note: If this is adjusted, check other code that compares
+  // PHP_VERSION, such as runserver/runserver.drush.inc, and also
+  // adjust _drush_environment_check_php_ini() and the php_prohibited_options
+  // list in the drush script.  See http://drupal.org/node/1748228
+  define('DRUSH_MINIMUM_PHP', '5.3.3');
+  if (version_compare(phpversion(), DRUSH_MINIMUM_PHP) < 0 && !getenv('DRUSH_NO_MIN_PHP')) {
     return drush_set_error('DRUSH_REQUIREMENTS_ERROR', dt('Your command line PHP installation is too old. Drush requires at least PHP !version.', array('!version' => DRUSH_MINIMUM_PHP)));
   }
 

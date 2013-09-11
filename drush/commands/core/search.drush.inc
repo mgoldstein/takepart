@@ -4,8 +4,15 @@ function search_drush_command() {
   $items['search-status'] = array(
     'description' => 'Show how many items remain to be indexed out of the total.',
     'drupal dependencies' => array('search'),
-    'options' => array(
-      'pipe' => 'Display in the format remaining/total for processing by scripts.',
+    'outputformat' => array(
+      'default' => 'message',
+      'pipe-format' => 'message',
+      'field-labels' => array('remaining' => 'Items not yet indexed', 'total' => 'Total items'),
+      'message-template' => 'There are !remaining items out of !total still to be indexed.',
+      'pipe-metadata' => array(
+        'message-template' => '!remaining/!total',
+      ),
+      'output-data-type' => 'format-list',
     ),
   );
   $items['search-index'] = array(
@@ -24,11 +31,10 @@ function search_drush_command() {
 
 function drush_search_status() {
   list($remaining, $total) = _drush_search_status();
-  drush_print(dt('There are @remaining items out of @total still to be indexed.', array(
-    '@remaining' => $remaining,
-    '@total' => $total,
-  )));
-  drush_print_pipe("$remaining/$total\n");
+  return array(
+    'remaining' => $remaining,
+    'total' => $total,
+  );
 }
 
 function _drush_search_status() {
@@ -66,6 +72,7 @@ function drush_search_index() {
 function _drush_search_index() {
   list($remaining, ) = _drush_search_status();
   register_shutdown_function('search_update_totals');
+  $failures = 0;
   while ($remaining > 0) {
     drush_log(dt('Remaining items to be indexed: ' . $remaining), 'ok');
     // Use drush_invoke_process() to start subshell. Avoids out of memory issue.
@@ -95,7 +102,22 @@ function _drush_search_index() {
       $eval .= " module_invoke_all('update_index');";
     }
     drush_invoke_process('@self', 'php-eval', array($eval));
+    $previous_remaining = $remaining;
     list($remaining, ) = _drush_search_status();
+    // Make sure we're actually making progress.
+    if ($remaining == $previous_remaining) {
+      $failures++;
+      if ($failures == 3) {
+        drush_log(dt('Indexing stalled with @number items remaining.', array(
+          '@number' => $remaining,
+        )), 'error');
+        return;
+      }
+    }
+    // Only count consecutive failures.
+    else {
+      $failures = 0;
+    }
   }
 }
 

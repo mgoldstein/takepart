@@ -14,7 +14,7 @@ function drush_drupal_version($drupal_root = NULL) {
 
   if (!$version) {
     if (($drupal_root != NULL) || ($drupal_root = drush_get_context('DRUSH_DRUPAL_ROOT'))) {
-      // Path to files in D6 and D7 where VERSION is defined.
+      // D7 stores VERSION in bootstrap.inc.
       $version_constant_paths = array('/modules/system/system.module', '/includes/bootstrap.inc');
       foreach ($version_constant_paths as $path) {
         if (file_exists($drupal_root . $path)) {
@@ -24,6 +24,15 @@ function drush_drupal_version($drupal_root = NULL) {
       // We just might be dealing with an early Drupal version (pre 4.7)
       if (defined('VERSION')) {
         $version = VERSION;
+      }
+      elseif (file_exists($drupal_root . '/core/vendor/autoload.php')) {
+        // Load the autoloader so we can access the class constants.
+        require_once $drupal_root .'/core/vendor/autoload.php';
+        // Drush depends on bootstrap being loaded at this point;
+        require_once $drupal_root .'/core/includes/bootstrap.inc';
+        if (defined('Drupal::VERSION')) {
+          $version = Drupal::VERSION;
+        }
       }
     }
   }
@@ -134,12 +143,19 @@ function drush_find_profiles($drupal_root , $key = 'name') {
  */
 function drush_drupal_login($drush_user) {
   global $user;
-  if (drush_drupal_major_version() >= 7) {
+  drush_include_engine('drupal', 'user', drush_drupal_major_version());
+  if (drush_drupal_major_version() >= 8) {
+    // @todo the global $user is no longer the right way to login a user in D8.
+    $user = is_numeric($drush_user) ? user_load($drush_user) : user_load_by_name($drush_user);
+  }
+  elseif (drush_drupal_major_version() == 7) {
     $user = is_numeric($drush_user) ? user_load($drush_user) : user_load_by_name($drush_user);
   }
   else {
     $user = user_load(is_numeric($drush_user) ? array('uid' => $drush_user) : array('name' => $drush_user));
   }
+  $name = drush_get_user_name($user);
+  $uid = drush_get_user_id($user);
 
   if (empty($user)) {
     if (is_numeric($drush_user)) {
@@ -154,8 +170,7 @@ function drush_drupal_login($drush_user) {
     return drush_set_error('DRUPAL_USER_LOGIN_FAILED', $message);
   }
   else {
-    $name = $user->name ? $user->name : variable_get('anonymous', t('Anonymous'));
-    drush_log(dt('Successfully logged into Drupal as !name', array('!name' => $name . " (uid=$user->uid)")), 'bootstrap');
+    drush_log(dt('Successfully logged into Drupal as !name', array('!name' => $name . " (uid=$uid)")), 'bootstrap');
   }
 
   return TRUE;
@@ -180,7 +195,7 @@ function drush_drupal_parse_info_file($filename) {
 /**
  * Parse the info file.
  */
-function _drush_drupal_parse_info_file($data) {
+function _drush_drupal_parse_info_file($data, $merge_item = NULL) {
   if (!$data) {
     return FALSE;
   }
@@ -217,6 +232,9 @@ function _drush_drupal_parse_info_file($data) {
         if ($key == '') {
           $key = count($parent);
         }
+        if (isset($merge_item) && isset($parent[$key]) && !is_array($parent[$key])) {
+          $parent[$key] = array($merge_item => $parent[$key]);
+        }
         if (!isset($parent[$key]) || !is_array($parent[$key])) {
           $parent[$key] = array();
         }
@@ -232,10 +250,22 @@ function _drush_drupal_parse_info_file($data) {
       if ($last == '') {
         $last = count($parent);
       }
-      $parent[$last] = $value;
+      if (isset($merge_item) && isset($parent[$last]) && is_array($parent[$last])) {
+        $parent[$last][$merge_item] = $value;
+      }
+      else {
+        $parent[$last] = $value;
+      }
     }
     return $info;
   }
   return FALSE;
+}
+
+/**
+ * Build a cache id to store the install_profile for a given site.
+ */
+function drush_cid_install_profile() {
+  return drush_get_cid('install_profile', array(), array(drush_get_context('DRUSH_SELECTED_DRUPAL_SITE_CONF_PATH')));
 }
 

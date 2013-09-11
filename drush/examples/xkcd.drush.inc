@@ -14,7 +14,7 @@
  *     2. Anywhere in a folder tree below an active module on your site.
  *     3. /usr/share/drush/commands (configurable)
  *     4. In an arbitrary folder specified with the --include option.
- *     5. Drupal's sites/all/drush folder.
+ *     5. Drupal's /drush or /sites/all/drush folders.
  */
 
 /**
@@ -104,10 +104,7 @@ access a web site (5) with awesome geek humor.\n
  * If for some reason you do not want your hook function to be named
  * after your command, you may define a 'callback' item in your command
  * object that specifies the exact name of the function that should be
- * called.  However, the specified callback function must still begin
- * with "drush_commandfile_" (e.g. 'callback' => "drush_example_foo_execute")
- * if you want that all hook functions are still called (e.g.
- * drush_example_pre_foo_execute, and so on).
+ * called.
  *
  * In this function, all of Drupal's API is (usually) available, including
  * any functions you have added in your own modules/themes.

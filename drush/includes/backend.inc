@@ -58,15 +58,23 @@
 
 /**
  * Identify the JSON encoded output from a command.
+ *
+ * Note that Drush now outputs a null ("\0") before the DRUSH_BACKEND_OUTPUT_DELIMITER,
+ * but this null occurs where this constant is output rather than being
+ * included in the define.  This is done to maintain compatibility with
+ * older versions of Drush, so that Drush-6.x can correctly parse backend messages
+ * from calls made to Drush-5.x and earlier.  The null is removed via trim().
  */
-define('DRUSH_BACKEND_OUTPUT_DELIMITER', 'DRUSH_BACKEND_OUTPUT_START>>>%s<<<DRUSH_BACKEND_OUTPUT_END');
+define('DRUSH_BACKEND_OUTPUT_START', 'DRUSH_BACKEND_OUTPUT_START>>>');
+define('DRUSH_BACKEND_OUTPUT_DELIMITER', DRUSH_BACKEND_OUTPUT_START . '%s<<<DRUSH_BACKEND_OUTPUT_END');
 
 /**
  * Identify JSON encoded "packets" embedded inside of backend
  * output; used to send out-of-band information durring a backend
  * invoke call (currently only used for log and error messages).
  */
-define('DRUSH_BACKEND_PACKET_PATTERN', "\0DRUSH_BACKEND:%s\0\n");
+define('DRUSH_BACKEND_PACKET_START', "DRUSH_BACKEND:");
+define('DRUSH_BACKEND_PACKET_PATTERN', "\0" . DRUSH_BACKEND_PACKET_START . "%s\n\0");
 
 /**
  * The backend result is the original PHP data structure (usually an array)
@@ -133,6 +141,7 @@ function drush_backend_output() {
   else {
     // Strip out backend commands.
     $packet_regex = strtr(sprintf(DRUSH_BACKEND_PACKET_PATTERN, "([^\0]*)"), array("\0" => "\\0"));
+    $packet_regex = str_replace("\n", "", $packet_regex);
     $data['output'] = preg_replace("/$packet_regex/s", '', drush_backend_output_collect(NULL));
   }
 
@@ -165,7 +174,7 @@ function drush_backend_output() {
 
   // Return the options that were set at the end of the process.
   $data['context']  = drush_get_merged_options();
-  printf(DRUSH_BACKEND_OUTPUT_DELIMITER, json_encode($data));
+  printf("\0" . DRUSH_BACKEND_OUTPUT_DELIMITER, json_encode($data));
 }
 
 /**
@@ -186,6 +195,7 @@ function drush_backend_output_collect($string) {
  */
 function drush_backend_output_discard($string) {
   $packet_regex = strtr(sprintf(DRUSH_BACKEND_PACKET_PATTERN, "([^\0]*)"), array("\0" => "\\0"));
+  $packet_regex = str_replace("\n", "", $packet_regex);
   if (preg_match_all("/$packet_regex/s", $string, $matches)) {
     return implode('', $matches[0]);
   }
@@ -206,7 +216,9 @@ function drush_backend_packet($packet, $data) {
   if (drush_get_context('DRUSH_BACKEND')) {
     $data['packet'] = $packet;
     $data = json_encode($data);
-    drush_print(sprintf(DRUSH_BACKEND_PACKET_PATTERN, $data), 0, STDERR);
+    // We use 'fwrite' instead of 'drush_print' here because
+    // this backend packet is out-of-band data.
+    fwrite(STDERR, sprintf(DRUSH_BACKEND_PACKET_PATTERN, $data));
     return TRUE;
   }
 
@@ -355,6 +367,10 @@ function _drush_backend_proc_open($cmds, $process_limit, $context = NULL) {
         $post_options = array();
         $backend_options = array();
       }
+      $backend_options += array(
+        '#output-label' => '',
+        '#process-read-size' => 4096,
+      );
       $process = array();
       drush_log($backend_options['#output-label'] . $c);
       $process['process'] = proc_open($c, $descriptorspec, $process['pipes'], null, null, array('context' => $context));
@@ -374,6 +390,7 @@ function _drush_backend_proc_open($cmds, $process_limit, $context = NULL) {
         stream_set_timeout($process['pipes'][1], 1);
         $bucket[$site]['cmd'] = $c;
         $bucket[$site]['output'] = '';
+        $bucket[$site]['remainder'] = '';
         $bucket[$site]['backend-options'] = $backend_options;
         $bucket[$site]['end_of_output'] = FALSE;
         $bucket[$site]['outputted'] = FALSE;
@@ -414,22 +431,31 @@ function _drush_backend_proc_open($cmds, $process_limit, $context = NULL) {
         $info = stream_get_meta_data($current_process['pipes'][1]);
 
         if (!feof($current_process['pipes'][1]) && !$info['timed_out']) {
-          $string = fread($current_process['pipes'][1], 4096);
-          $output_end_pos = strpos($string, 'DRUSH_BACKEND_OUTPUT_START>>>');
+          $string = $bucket[$site]['remainder'] . fread($current_process['pipes'][1], $backend_options['#process-read-size']);
+          $bucket[$site]['remainder'] = '';
+          $output_end_pos = strpos($string, DRUSH_BACKEND_OUTPUT_START);
           if ($output_end_pos !== FALSE) {
             $trailing_string = substr($string, 0, $output_end_pos);
-            if (!empty($trailing_string)) {
-              drush_backend_parse_packets($trailing_string, $bucket[$site]['backend-options']);
-              _drush_backend_print_output($trailing_string, $bucket[$site]['backend-options']);
+            $trailing_remainder = '';
+            // If there is any data in the trailing string (characters prior
+            // to the backend output start), then process any backend packets
+            // embedded inside.
+            if (strlen($trailing_string) > 0) {
+              drush_backend_parse_packets($trailing_string, $trailing_remainder, $bucket[$site]['backend-options']);
+            }
+            // If there is any data remaining in the trailing string after
+            // the backend packets are removed, then print it.
+            if (strlen($trailing_string) > 0) {
+              _drush_backend_print_output($trailing_string . $trailing_remainder, $bucket[$site]['backend-options']);
               $bucket[$site]['outputted'] = TRUE;
             }
             $bucket[$site]['end_of_output'] = TRUE;
           }
           if (!$bucket[$site]['end_of_output']) {
-            drush_backend_parse_packets($string, $bucket[$site]['backend-options']);
+            drush_backend_parse_packets($string, $bucket[$site]['remainder'], $bucket[$site]['backend-options']);
             // Pass output through.
             _drush_backend_print_output($string, $bucket[$site]['backend-options']);
-            if (!empty($string)) {
+            if (strlen($string) > 0) {
               $bucket[$site]['outputted'] = TRUE;
             }
           }
@@ -440,7 +466,7 @@ function _drush_backend_proc_open($cmds, $process_limit, $context = NULL) {
 
           // Reset the $nap_time variable as there might be output to process
           // next time around:
-          if (!empty($string)) {
+          if (strlen($string) > 0) {
             $nap_time = 0;
           }
         }
@@ -503,8 +529,10 @@ function _drush_backend_print_output($output_string, $backend_options) {
  * Parse out and remove backend packet from the supplied string and
  * invoke the commands.
  */
-function drush_backend_parse_packets(&$string, $backend_options) {
+function drush_backend_parse_packets(&$string, &$remainder, $backend_options) {
+  $remainder = '';
   $packet_regex = strtr(sprintf(DRUSH_BACKEND_PACKET_PATTERN, "([^\0]*)"), array("\0" => "\\0"));
+  $packet_regex = str_replace("\n", "", $packet_regex);
   if (preg_match_all("/$packet_regex/s", $string, $match, PREG_PATTERN_ORDER)) {
     drush_set_context('DRUSH_RECEIVED_BACKEND_PACKETS', TRUE);
     foreach ($match[1] as $packet_data) {
@@ -524,8 +552,28 @@ function drush_backend_parse_packets(&$string, $backend_options) {
         drush_log(dt("String is: @str", array('@str' => $packet_data), 'debug'));
       }
     }
-
-    $string = trim(preg_replace("/$packet_regex/s", '', $string));
+    $string = preg_replace("/$packet_regex/s", '', $string);
+  }
+  // Check to see if there is potentially a partial packet remaining.
+  // We only care about the last null; if there are any nulls prior
+  // to the last one, they would have been removed above if they were
+  // valid drush packets.
+  $embedded_null = strrpos($string, "\0");
+  if ($embedded_null !== FALSE) {
+    // We will consider everything after $embedded_null to be part of
+    // the $remainder string if:
+    //   - the embedded null is less than strlen(DRUSH_BACKEND_OUTPUT_START)
+    //     from the end of $string (that is, there might be a truncated
+    //     backend packet header, or the truncated backend output start
+    //     after the null)
+    //   OR
+    //   - the embedded null is followed by DRUSH_BACKEND_PACKET_START
+    //     (that is, the terminating null for that packet has not been
+    //     read into our buffer yet)
+    if (($embedded_null + strlen(DRUSH_BACKEND_OUTPUT_START) >= strlen($string)) || (substr($string, $embedded_null + 1, strlen(DRUSH_BACKEND_PACKET_START)) == DRUSH_BACKEND_PACKET_START)) {
+      $remainder = substr($string, $embedded_null);
+      $string = substr($string, 0, $embedded_null);
+    }
   }
 }
 
@@ -688,6 +736,9 @@ function drush_backend_invoke_concurrent($invocations, $common_options = array()
     // Insure that contexts such as DRUSH_SIMULATE and NO_COLOR are included.
     $command_options += _drush_backend_get_global_contexts($site_record);
 
+    // Add in command-specific options as well
+    $command_options += drush_command_get_command_specific_options($site_record, $command);
+
     // If the caller has requested it, don't pull the options from the alias
     // into the command line, but use the alias name for dispatching.
     if (!empty($backend_options['dispatch-using-alias']) && isset($site_record['#name'])) {
@@ -721,7 +772,7 @@ function drush_backend_invoke_concurrent($invocations, $common_options = array()
   $max_name_length = 0;
   $label_separator = '';
   if (!array_key_exists('no-label', $common_options) && (count($invocation_options) > 1)) {
-    $label_separator = array_key_exists('#label-separator', $common_options) ? $common_options['#label-separator'] : ' >> ';
+    $label_separator = array_key_exists('label-separator', $common_options) ? $common_options['label-separator'] : ' >> ';
     foreach ($invocation_options as $site => $item) {
       $backend_options = $item['backend-options'];
       if (!array_key_exists('#output-label', $backend_options)) {
@@ -833,6 +884,11 @@ function _drush_backend_classify_options($site_record, $command_options, &$backe
   // in the global option list) from the commandline options and put them into the post options.
   // The post options will be json-encoded and sent to the command via stdin
   $global_option_list = drush_get_global_options(FALSE); // These should be in the command line.
+  $additional_global_options = array();
+  if (array_key_exists('additional-global-options', $backend_options)) {
+    $additional_global_options = $backend_options['additional-global-options'];
+    $command_options += $additional_global_options;
+  }
   $method_post = ((!array_key_exists('method', $backend_options)) || ($backend_options['method'] == 'POST'));
   $post_options = array();
   $commandline_options = array();
@@ -845,7 +901,9 @@ function _drush_backend_classify_options($site_record, $command_options, &$backe
         $backend_options[$key] = $value;
       }
       if (!isset($command_options[$key])) {
-        $command_options[$key] = $value;
+        if (array_key_exists($key, $global_option_list)) {
+          $command_options[$key] = $value;
+        }
       }
     }
   }
@@ -855,9 +913,6 @@ function _drush_backend_classify_options($site_record, $command_options, &$backe
   }
   if (!empty($backend_options['backend']) && empty($backend_options['interactive']) && empty($backend_options['fork'])) {
     $drush_global_options['backend'] = '2';
-  }
-  if (!empty($backend_options['interactive'])) {
-    $drush_global_options['invoke'] = TRUE;
   }
   foreach ($command_options as $key => $value) {
     $global = array_key_exists($key, $global_option_list);
@@ -884,7 +939,7 @@ function _drush_backend_classify_options($site_record, $command_options, &$backe
       }
       // In METHOD GET, ignore options with array values
       elseif (!is_array($value)) {
-        if ($global) {
+        if ($global || array_key_exists($key, $additional_global_options)) {
           $drush_global_options[$key] = $value;
         }
         else {
@@ -943,7 +998,7 @@ function _drush_backend_invoke($cmds, $common_backend_options = array(), $contex
     return $ret;
   }
   else {
-    $process_limit = drush_get_option_override($common_backend_options, 'concurrency', 4);
+    $process_limit = drush_get_option_override($common_backend_options, 'concurrency', 1);
     $procs = _drush_backend_proc_open($cmds, $process_limit, $context);
     $procs = is_array($procs) ? $procs : array($procs);
 
@@ -1036,9 +1091,6 @@ function drush_backend_generate_sitealias($backend_options) {
  *   A text string representing a fully escaped command.
  */
 function _drush_backend_generate_command($site_record, $command, $args = array(), $command_options = array(), $backend_options = array()) {
-  $drush_path = null;
-  $php = '';
-
   $site_record += array(
     'remote-host' => NULL,
     'remote-user' => NULL,
@@ -1093,12 +1145,6 @@ function _drush_backend_generate_command($site_record, $command, $args = array()
 
       // Remove NULLs and separate with spaces
       $command = implode(' ', array_filter($ssh_cmd, 'strlen'));
-    }
-  }
-  else {
-    // TODO: `tty` is not usable on Windows.  Is this necessary at all, and if so, is there a better way to do it?
-    if (!drush_is_windows() && !empty($backend_options['interactive'])) {
-      $command .= ' > `tty`';
     }
   }
 

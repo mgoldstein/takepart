@@ -14,7 +14,7 @@
  *     2. Anywhere in a folder tree below an active module on your site.
  *     3. /usr/share/drush/commands (configurable)
  *     4. In an arbitrary folder specified with the --include option.
- *     5. Drupal's sites/all/drush folder.
+ *     5. Drupal's /drush or /sites/all/drush folders.
  */
 
 /**
@@ -51,6 +51,62 @@ function sandwich_drush_command() {
       'drush mmas turkey --spreads=ketchup,mustard' => 'Make a terrible-tasting sandwich that is lacking in pickles.',
     ),
     'aliases' => array('mmas'),
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUSH, // No bootstrap at all.
+  );
+
+  // The 'sandwiches-served' command.  Informs how many 'mmas' commands completed.
+  $items['sandwiches-served'] = array(
+    'description' => "Report how many sandwiches we have made.",
+    'examples' => array(
+      'drush sandwiches-served' => 'Show how many sandwiches we have served.',
+    ),
+    'aliases' => array('sws'),
+    // Example output engine data:  command returns a single keyed
+    // data item (e.g. array("served" => 1)) that can either be
+    // printed with a label (e.g. "served: 1"), or output raw with
+    // --pipe (e.g. "1").
+    'engines' => array(
+      'outputformat' => array(
+        'default' => 'key-value',
+        'pipe-format' => 'string',
+        'label' => 'Sandwiches Served',
+        'require-engine-capability' => array('format-single'),
+      ),
+    ),
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUSH, // No bootstrap at all.
+  );
+
+  // The 'spreads-status' command.  Prints a table about available spreads.
+  $items['spreads-status'] = array(
+    'description' => "Show a table of information about available spreads.",
+    'examples' => array(
+      'drush spreads-status' => 'Show a table of spreads.',
+    ),
+    'aliases' => array('sps'),
+    // Example output engine data:  command returns a deep array
+    // that can either be printed in table format or as a json array.
+    'engines' => array(
+      'outputformat' => array(
+        'default' => 'table',
+        'pipe-format' => 'json',
+        // Commands that return deep arrays will usually use
+        // machine-ids for the column data.  A 'field-labels'
+        // item maps from the machine-id to a human-readable label.
+        'field-labels' => array(
+          'name' => 'Name',
+          'description' => 'Description',
+          'available' => 'Num',
+          'taste' => 'Taste',
+        ),
+        // In table format, the 'column-widths' item is consulted
+        // to determine the default weights for any named column.
+        'column-widths' => array(
+          'name' => 10,
+          'available' => 3,
+        ),
+        'require-engine-capability' => array('format-table'),
+      ),
+    ),
     'bootstrap' => DRUSH_BOOTSTRAP_DRUSH, // No bootstrap at all.
   );
 
@@ -121,7 +177,7 @@ function sandwich_drush_help($section) {
  */
 function drush_sandwich_make_me_a_sandwich_validate() {
   if (drush_is_windows()) {
-    // $name = getenv('USERNAME');
+    // $name = drush_get_username();
     // TODO: implement check for elevated process using w32api
     // as sudo is not available for Windows
     // http://php.net/manual/en/book.w32api.php
@@ -151,10 +207,7 @@ function drush_sandwich_make_me_a_sandwich_validate() {
  * If for some reason you do not want your hook function to be named
  * after your command, you may define a 'callback' item in your command
  * object that specifies the exact name of the function that should be
- * called.  However, the specified callback function must still begin
- * with "drush_commandfile_" (e.g. 'callback' => "drush_example_foo_execute")
- * if you want that all hook functions are still called (e.g.
- * drush_example_pre_foo_execute, and so on).
+ * called.
  *
  * In this function, all of Drupal's API is (usually) available, including
  * any functions you have added in your own modules/themes.
@@ -183,6 +236,65 @@ function drush_sandwich_make_me_a_sandwich($filling = 'ascii') {
     $filename = dirname(__FILE__) . '/sandwich.txt';
   }
   drush_print(file_get_contents($filename));
+  // Find out how many sandwiches have been served, and set
+  // the cached value to one greater.
+  $served = drush_sandwich_sandwiches_served();
+  drush_cache_set(drush_get_cid('sandwiches-served'), $served + 1);
+}
+
+/**
+ * Implementation of hook_drush_command() for sandwiches-served command.
+ *
+ * Demonstrates how to return a simple value that is transformed by
+ * the selected formatter to display either with a label (using the
+ * key-value formatter) or as the raw value itself (using the string formatter).
+ */
+function drush_sandwich_sandwiches_served() {
+  $served = 0;
+  $served_object = drush_cache_get(drush_get_cid('sandwiches-served'));
+  if ($served_object) {
+    $served = $served_object->data;
+  }
+  // In the default format, key-value, this return value
+  // will print " Sandwiches Served    :  1".  In the default pipe
+  // format, only the array value ("1") is returned.
+  return $served;
+}
+
+/**
+ * Implementation of hook_drush_command() for spreads-status command.
+ *
+ * This ficticious command shows how a deep array can be constructed
+ * and used as a command return value that can be output by different
+ * output formatters.
+ */
+function drush_sandwich_spreads_status() {
+  return array(
+    'ketchup' => array(
+      'name' => 'Ketchup',
+      'description' => 'Some say its a vegetable, but we know its a sweet spread.',
+      'available' => '7',
+      'taste' => 'sweet',
+    ),
+    'mayonnaise' => array(
+      'name' => 'Mayonnaise',
+      'description' => 'A nice dairy-free spead.',
+      'available' => '12',
+      'taste' => 'creamy',
+    ),
+    'mustard' => array(
+      'name' => 'Mustard',
+      'description' => 'Pardon me, but could you please pass that plastic yellow bottle?',
+      'available' => '8',
+      'taste' => 'tangy',
+    ),
+    'pickles' => array(
+      'name' => 'Pickles',
+      'description' => 'A necessary part of any sandwich that does not taste terrible.',
+      'available' => '63',
+      'taste' => 'tasty',
+    ),
+  );
 }
 
 /**
