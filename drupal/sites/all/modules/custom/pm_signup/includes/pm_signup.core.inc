@@ -681,6 +681,7 @@ abstract class SignupEndpoint extends SignupFieldSet {
     if (!empty($key)) {
       $record = db_select('pm_signup_ledger', 'sl')
         ->fields('sl')
+        ->condition('type', get_class($signup))
         ->condition('signup_key', implode(':', $key))
         ->execute()
         ->fetchObject();
