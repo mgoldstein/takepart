@@ -103,6 +103,45 @@ function pm_signup_schema() {
     'primary key' => array('id'),
   );
 
+  $schema['pm_signup_ledger'] = array(
+    'description' => 'Signup ledger.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key identifier for the log entry.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'type' => array(
+        'description' => 'The signup handler id.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'signup_key' => array(
+        'description' => 'The signup handler id.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the log entry was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'key_for_type' => array('type', 'signup_key'),
+    ),
+    'indexes' => array(
+      'signup_key' => array('signup_key'),
+    ),
+  );
+
   return $schema;
 }
 
@@ -112,4 +151,12 @@ function pm_signup_schema() {
 function pm_signup_update_7100() {
   $schema = pm_signup_schema();
   db_create_table('pm_signup_log', $schema['pm_signup_log']);
+}
+
+/**
+ * Add the signup ledger table.
+ */
+function pm_signup_update_7101() {
+  $schema = pm_signup_schema();
+  db_create_table('pm_signup_ledger', $schema['pm_signup_ledger']);
 }
