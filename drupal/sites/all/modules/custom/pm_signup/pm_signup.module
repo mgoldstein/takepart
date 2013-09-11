@@ -43,3 +43,89 @@ function pm_signup_features_api() {
     ),
   );
 }
+
+function pm_signup_handle($request, &$duplicate = NULL) {
+
+  // Request must include a valid signup type
+  $types = array('newsletter', 'signature', 'user');
+  if (isset($request['type']) && in_array($request['type'], $types)) {
+
+    // Make sure all required keys are present
+    $request += array(
+      'endpoint' => 0,
+      'payload' => array(),
+    );
+
+    // Create the appropriate signup and endpoint.
+    $endpoint = FALSE;
+    if ($request['type'] === 'newsletter') {
+      $signup = NewsletterCampaignSignup::create();
+      $fields = array_keys(NewsletterCampaignSignup::fields());
+      $endpoint = NewsletterCampaignSignupEndpoint::loadByName(
+        (string) $request['endpoint']);
+    }
+    elseif ($request['type'] === 'signature') {
+      $signup = SignatureSignup::create();
+      $fields = array_keys(SignatureSignup::fields());
+      $endpoint = SignatureSignupEndpoint::load((int) $request['endpoint']);
+    }
+    elseif ($request['type'] === 'user') {
+      $signup = TakePartUserSignup::create();
+      $fields = array_keys(TakePartUserSignup::fields());
+      $endpoint = TakePartUserSignupEndpoint::loadByName(
+        (string) $request['endpoint']);
+    }
+
+    if ($endpoint !== FALSE) {
+
+      // Transfer the payload to the signup.
+      foreach ($fields as $field) {
+        if (isset($request['payload'][$field])) {
+          $signup[$field] = $request['payload'][$field];
+        }
+      }
+
+      // Send the signup.
+      try {
+        $signup->validate();
+        $endpoint->submit($signup);
+        if ($duplicate !== NULL) {
+          $duplicate = FALSE;
+        }
+        return TRUE;
+      }
+      catch (SignupValidationException $sve) {
+        $message = 'Error validating signup [@endpoint] @payload';
+        watchdog('pm_signup', $message, array(
+          '@endpoint' => $request['endpoint'],
+          '@payload' => json_encode($request['payload']),
+        ));
+      }
+      catch (SignupDuplicateException $sde) {
+        if ($duplicate !== NULL) {
+          $duplicate = TRUE;
+        }
+        $message = 'Duplicate signup [@endpoint] @payload';
+        watchdog('pm_signup', $message, array(
+          '@endpoint' => $request['endpoint'],
+          '@payload' => json_encode($request['payload']),
+        ));
+      }
+      catch (SignupSubmissionException $sse) {
+        $message = 'Error sending signup [@endpoint] @payload';
+        watchdog('pm_signup', $message, array(
+          '@endpoint' => $request['endpoint'],
+          '@payload' => json_encode($request['payload']),
+        ));
+      }
+    }
+    else {
+      $message = 'No such endpoint [@endpoint] @payload';
+      watchdog('pm_signup', $message, array(
+        '@endpoint' => $request['endpoint'],
+        '@payload' => json_encode($request['payload']),
+      ));
+    }
+  }
+  return FALSE;
+}

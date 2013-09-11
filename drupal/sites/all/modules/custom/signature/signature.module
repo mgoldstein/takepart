@@ -1403,16 +1403,16 @@ function signature_send_signup($signature, $local = TRUE) {
   $settings = entity_load_single('signature_node', $signature->nid);
   if ($settings !== FALSE && !empty($settings->pm_signup_endpoint_id)) {
 
-    // Create a signature signup.
-    $signup = SignatureSignup::create();
+    // Create a signature signup payload.
+    $payload = array();
 
-    $signup['email'] = $signature->email;
+    $payload['email'] = $signature->email;
 
     $items = field_get_items('signature', $signature, 'field_sig_first_name');
     if ($items !== FALSE) {
       $item = reset($items);
       if ($item !== FALSE) {
-        $signup['name.first'] = $item['value'];
+        $payload['name.first'] = $item['value'];
       }
     }
 
@@ -1420,26 +1420,26 @@ function signature_send_signup($signature, $local = TRUE) {
     if ($items !== FALSE) {
       $item = reset($items);
       if ($item !== FALSE) {
-        $signup['name.last'] = $item['value'];
+        $payload['name.last'] = $item['value'];
       }
     }
 
-    $signup['action.id'] = $signature->nid;
-    $signup['action.signature-type'] = $signature->type;
-    $signup['action.opt-ins.display'] = $signature->display;
+    $payload['action.id'] = $signature->nid;
+    $payload['action.signature-type'] = $signature->type;
+    $payload['action.opt-ins.display'] = $signature->display;
 
     // Combine the newsletter opt-ins into a single comma separated list.
     $opt_ins = array();
     for ($opt_in = 0x01; $opt_in < 0x20; $opt_in*=2) {
       $opt_ins[] = ($signature->newsletter & $opt_in) ? 'true' : 'false';
     }
-    $signup['action.opt-ins.newsletters'] = implode(',', $opt_ins);
+    $payload['action.opt-ins.newsletters'] = implode(',', $opt_ins);
 
     $items = field_get_items('signature', $signature, 'field_partner_code');
     if ($items !== FALSE) {
       $item = reset($items);
       if ($item !== FALSE) {
-        $signup['partner.code'] = $item['value'];
+        $payload['partner.code'] = $item['value'];
       }
     }
 
@@ -1447,7 +1447,7 @@ function signature_send_signup($signature, $local = TRUE) {
     if ($items !== FALSE) {
       $item = reset($items);
       if ($item !== FALSE) {
-        $signup['action.opt-ins.partner'] = $item['value'];
+        $payload['action.opt-ins.partner'] = $item['value'];
       }
     }
 
@@ -1455,7 +1455,7 @@ function signature_send_signup($signature, $local = TRUE) {
     if ($items !== FALSE) {
       $item = reset($items);
       if ($item !== FALSE) {
-        $signup['address.address'] = $item['value'];
+        $payload['address.address'] = $item['value'];
       }
     }
 
@@ -1463,7 +1463,7 @@ function signature_send_signup($signature, $local = TRUE) {
     if ($items !== FALSE) {
       $item = reset($items);
       if ($item !== FALSE) {
-        $signup['address.city'] = $item['value'];
+        $payload['address.city'] = $item['value'];
       }
     }
 
@@ -1471,7 +1471,7 @@ function signature_send_signup($signature, $local = TRUE) {
     if ($items !== FALSE) {
       $item = reset($items);
       if ($item !== FALSE) {
-        $signup['address.state.code'] = $item['value'];
+        $payload['address.state.code'] = $item['value'];
       }
     }
 
@@ -1479,7 +1479,7 @@ function signature_send_signup($signature, $local = TRUE) {
     if ($items !== FALSE) {
       $item = reset($items);
       if ($item !== FALSE) {
-        $signup['address.country'] = $item['value'];
+        $payload['address.country'] = $item['value'];
       }
     }
 
@@ -1489,7 +1489,7 @@ function signature_send_signup($signature, $local = TRUE) {
     if ($items !== FALSE) {
       $item = reset($items);
       if ($item !== FALSE) {
-       $signup['address.postal-code'] = $item['value'];
+       $payload['address.postal-code'] = $item['value'];
       }
     }
 
@@ -1509,13 +1509,13 @@ function signature_send_signup($signature, $local = TRUE) {
       if ($item !== FALSE) {
         if ($item['value'] === 'inside') {
           // Signature is from inside the US, mark the type for extra validation.
-          $signup['address.postal-code.type'] = 'ZIP';
+          $payload['address.postal-code.type'] = 'ZIP';
         }
         else {
           // Signature is from outside the US, use the postal code field instead
-          $signup['address.postal-code'] = $postal_code;
+          $payload['address.postal-code'] = $postal_code;
           // and clear any state code
-          unset($signup['address.state.code']);
+          unset($payload['address.state.code']);
         }
       }
     }
@@ -1525,57 +1525,16 @@ function signature_send_signup($signature, $local = TRUE) {
     if ($items !== FALSE) {
       $item = reset($items);
       if ($item !== FALSE) {
-        $signup['action.message'] = $item['value'];
+        $payload['action.message'] = $item['value'];
       }
     }
 
-    // Load the submission endpoint.
-    $endpoint = SignatureSignupEndpoint::load($settings->pm_signup_endpoint_id);
-
-    if ($endpoint !== FALSE) {
-      // Send the signup.
-      try {
-
-        $signup->validate();
-        $endpoint->submit($signup);
-
-        if ($local) {
-          takeaction_tracking_track_action($signature->nid);
-        }
-
-        return TRUE;
-      }
-      catch (SignupValidationException $sve) {
-        $message = 'Error validating signup [@id] @email';
-        watchdog('signature', $message, array(
-          '@id' => $settings->pm_signup_endpoint_id,
-          '@email' => $signature->email,
-        ));
-      }
-      catch (SignupSubmissionException $sse) {
-        $message = 'Error sending signup [@id] @email';
-        watchdog('signature', $message, array(
-          '@id' => $settings->pm_signup_endpoint_id,
-          '@email' => $signature->email,
-        ));
-      }
-      catch (SignupDuplicateException $sde) {
-        $message = 'Duplicate signup [@id] @email';
-        watchdog('signature', $message, array(
-          '@id' => $settings->pm_signup_endpoint_id,
-          '@email' => $signature->email,
-        ));
-      }
-    }
-    else {
-      $message = 'Unknown signup [@id] @email';
-      watchdog('signature', $message, array(
-        '@id' => $settings->pm_signup_endpoint_id,
-        '@email' => $signature->email,
-      ));
-    }
+    return pm_signup_handle(array(
+      'type' => 'signature',
+      'endpoint' => $settings->pm_signup_endpoint_id,
+      'payload' => $payload,
+    ));
   }
-
   return FALSE;
 }
 

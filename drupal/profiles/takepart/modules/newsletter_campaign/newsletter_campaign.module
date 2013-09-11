@@ -41,44 +41,13 @@ class NewsletterCampaign extends Entity {
   }
 
   public function signup($email) {
-
-    // Create an email signup.
-    $signup = NewsletterCampaignSignup::create();
-    $signup['email'] = $email;
-
-    // Load the submission endpoint.
-    $endpoint = NewsletterCampaignSignupEndpoint::loadByName($this->signup_name);
-
-    if ($endpoint !== FALSE) {
-      // Send the signup.
-      try {
-        $signup->validate();
-        $endpoint->submit($signup);
-        return TRUE;
-      }
-      catch (SignupValidationException $sve) {
-        $message = 'Error validating signup [@name] @email';
-        watchdog('newsletter_campaign', $message, array(
-          '@name' => $this->signup_name,
-          '@email' => $email,
-        ));
-      }
-      catch (SignupSubmissionException $sse) {
-        $message = 'Error sending signup [@name] @email';
-        watchdog('newsletter_campaign', $message, array(
-          '@name' => $this->signup_name,
-          '@email' => $email,
-        ));
-      }
-    }
-    else {
-      $message = 'Unknown signup [@name] @email';
-      watchdog('newsletter_campaign', $message, array(
-        '@name' => $this->signup_name,
-        '@email' => $email,
-      ));
-    }
-    return FALSE;
+    return pm_signup_handle(array(
+      'type' => 'newsletter',
+      'endpoint' => $this->signup_name,
+      'payload' => array(
+        'email' => $email,
+      ),
+    ));
   }
 }
 
