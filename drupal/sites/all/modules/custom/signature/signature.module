@@ -1358,25 +1358,25 @@ function signature_base_form_submit($form, &$form_state) {
     }
   }
 
-  // Create an entity query.
-  $query = new EntityFieldQuery();
+  // // Create an entity query.
+  // $query = new EntityFieldQuery();
 
-  // Limit that query to signatures for the associated node.
-  $query->entityCondition('entity_type', 'signature');
-  $query->propertyCondition('nid', $signature->nid);
+  // // Limit that query to signatures for the associated node.
+  // $query->entityCondition('entity_type', 'signature');
+  // $query->propertyCondition('nid', $signature->nid);
 
-  // Limit signing to once per email.
-  $query->propertyCondition('email', $signature->email);
+  // // Limit signing to once per email.
+  // $query->propertyCondition('email', $signature->email);
 
-  $results = $query->execute();
-  if (empty($results['signature'])) {
-  //   $signature->save();
-    signature_send_signup($signature);
-  //   $action_id = $signature->id;
+  // $results = $query->execute();
+  // if (empty($results['signature'])) {
+  // //   $signature->save();
+  // //   signature_send_signup($signature);
+  // //   $action_id = $signature->id;
+  // // }
+  // // else {
+  // //   $action_id = reset(array_keys($results['signature']));
   // }
-  // else {
-  //   $action_id = reset(array_keys($results['signature']));
-  }
 
   // Set the node signed cookie.
   // $cookie = "{$signature->type}_{$signature->nid}_signed";
@@ -1959,8 +1959,6 @@ function signature_api_create($nid) {
     );
   }
 
-  // Requestion authorization token must be correct
-
   // Request content type must be JSON
   if ($_SERVER['CONTENT_TYPE'] !== 'application/json') {
     return array(
@@ -1998,7 +1996,7 @@ function signature_api_create($nid) {
     );
   }
 
-  // Only petition and pledge actions have signatures
+  // The action must support signatures
   if (!signature_node_is_signature_action($node)) {
     return array(
       'status' => '400 Bad Request',
@@ -2010,10 +2008,23 @@ function signature_api_create($nid) {
     );
   }
 
+  // The action must has a signature configuration
+  $settings = entity_load_single('signature_node', $nid);
+  if ($settings === FALSE || empty($settings->pm_signup_endpoint_id)) {
+    return array(
+      'status' => '400 Bad Request',
+      'payload' => array(
+        'errors' => array(
+          'The requested action is not configured for signatures.',
+        ),
+      ),
+    );
+  }
+
   // Decode the JSON payload
-  $request_body = file_get_contents('php://input');
-  $payload = drupal_json_decode($request_body);
-  if (!isset($payload)) {
+  $body = file_get_contents('php://input');
+  $request = drupal_json_decode($body);
+  if (!isset($request)) {
     return array(
       'status' => '400 Bad Request',
       'payload' => array(
@@ -2026,22 +2037,22 @@ function signature_api_create($nid) {
 
   // Validate the payload
   $validation_errors = array();
-  if (!isset($payload['first_name'])) {
+  if (!isset($request['first_name'])) {
     $validation_errors[] = 'First name is required.';
   }
-  if (!isset($payload['last_name'])) {
+  if (!isset($request['last_name'])) {
     $validation_errors[] = 'Last name is required.';
   }
-  if (!isset($payload['email'])) {
+  if (!isset($request['email'])) {
     $validation_errors[] = 'Email is required.';
   }
-  if (!isset($payload['display_signature'])) {
+  if (!isset($request['display_signature'])) {
     $validation_errors[] = 'Signature display flag is required.';
   }
-  if (!isset($payload['opt_ins'])) {
+  if (!isset($request['opt_ins'])) {
     $validation_errors[] = 'Opt-in list is required.';
   }
-  if (!is_array($payload['opt_ins'])) {
+  if (!is_array($request['opt_ins'])) {
     $validation_errors[] = 'Opt-in list must be an array.';
   }
   if (!empty($validation_errors)) {
@@ -2054,7 +2065,7 @@ function signature_api_create($nid) {
   }
 
   // Check that the email adress is in fact an email address
-  if (!valid_email_address($payload['email'])) {
+  if (!valid_email_address($request['email'])) {
     return array(
       'status' => '400 Bad Request',
       'payload' => array(
@@ -2065,197 +2076,105 @@ function signature_api_create($nid) {
     );
   }
 
-  // Create an entity query.
-  $query = new EntityFieldQuery();
-
-  // Limit that query to signatures for the associated node.
-  $query->entityCondition('entity_type', 'signature');
-  $query->propertyCondition('nid', $nid);
-
-  // Limit signing to once per email.
-  $query->propertyCondition('email', $payload['email']);
-
-  $results = $query->execute();
-  if (!empty($results['signature'])) {
-    return array(
-      'status' => '409 Conflict',
-      'payload' => array(
-        'errors' => array(
-          'Signature already exists.',
-        ),
-      ),
-    );
-  }
-
-  // Create a signature on the Drupal side
-  $values = array(
-    'type' => 'international_signature',
-    'nid' => $nid,
-    'email' => $payload['email'],
-    'display' => $payload['display_signature'],
-    'newsletter' => 0,
+  // Translate the request body to the standard signup format
+  $payload = array(
+    'email' => $request['email'],
+    'name.first' => $request['first_name'],
+    'name.last' => $request['last_name'],
+    'action.id' => $nid,
+    'action.signature-type' => 'international_signature',
+    'action.opt-ins.display' => $request['display_signature'],
   );
-  $signature = entity_create('signature', $values);
 
   // Newsletter opt-ins
-  foreach ($payload['opt_ins'] as $opt_in) {
-    if ($opt_in['name'] === 'opt_in_1') {
-      if (!empty($opt_in['value'])) {
-        $signature->newsletter |= 0x01;
-      }
-    }
-    elseif ($opt_in['name'] === 'opt_in_2') {
-      if (!empty($opt_in['value'])) {
-        $signature->newsletter |= 0x02;
-      }
-    }
-    elseif ($opt_in['name'] === 'opt_in_3') {
-      if (!empty($opt_in['value'])) {
-        $signature->newsletter |= 0x04;
-      }
-    }
-    elseif ($opt_in['name'] === 'opt_in_4') {
-      if (!empty($opt_in['value'])) {
-        $signature->newsletter |= 0x08;
-      }
-    }
-    elseif ($opt_in['name'] === 'opt_in_5') {
-      if (!empty($opt_in['value'])) {
-        $signature->newsletter |= 0x10;
-      }
-    }
-  }
-
-  // First name field
-  $signature->field_sig_first_name = array(
-    'und' => array(array('value' => $payload['first_name']))
+  $opt_ins = array(
+    'opt_in_1' => 'false',
+    'opt_in_2' => 'false',
+    'opt_in_3' => 'false',
+    'opt_in_4' => 'false',
+    'opt_in_5' => 'false',
   );
-
-  // Last name field
-  $signature->field_sig_last_name = array(
-    'und' => array(array('value' => $payload['last_name']))
-  );
-
-  if (!empty($payload['address'])) {
-    // Address field
-    $signature->field_sig_address = array(
-      'und' => array(array('value' => $payload['address']))
-    );
-  }
-  else {
-    $signature->field_sig_address = array('und' => array());
-  }
-
-  if (!empty($payload['city'])) {
-    // City field
-    $signature->field_sig_city = array(
-      'und' => array(array('value' => $payload['city']))
-    );
-  }
-  else {
-    $signature->field_sig_city = array('und' => array());
-  }
-
-  if (empty($payload['country']) || $payload['country'] == 'United States') {
-
-    $signature->field_sig_address_toggle = array(
-      'und' => array(array('value' => 'inside'))
-    );
-
-    if (!empty($payload['state'])) {
-      // State field
-      $signature->field_sig_state = array(
-        'und' => array(array('value' => $payload['state']))
-      );
+  foreach ($request['opt_ins'] as $opt_in) {
+    $name = $opt_in['name'];
+    if (!empty($opt_in['value']) && isset($opt_ins[$name])) {
+      $opt_ins[$name] = 'true';
     }
-    else {
-      $signature->field_sig_state = array('und' => array());
-    }
-
-    if (!empty($payload['postal_code'])) {
-      // ZIP code field
-      $signature->field_sig_zip_code = array(
-        'und' => array(array('value' => $payload['postal_code']))
-      );
-    }
-    else {
-      $signature->field_sig_zip_code = array('und' => array());
-    }
-
-    $signature->field_sig_postal_code = array('und' => array());
   }
-  else {
+  $payload['action.opt-ins.newsletters'] = implode(',', $opt_ins);
 
-    $signature->field_sig_address_toggle = array(
-      'und' => array(array('value' => 'outside'))
-    );
-
-    $signature->field_sig_state = array('und' => array());
-
-    if (!empty($payload['postal_code'])) {
-      // Postal code field
-      $signature->field_sig_postal_code = array(
-        'und' => array(array('value' => $payload['postal_code']))
-      );
-    }
-    else {
-      $signature->field_sig_postal_code = array('und' => array());
-    }
-
-    $signature->field_sig_zip_code = array('und' => array());
+  // Address
+  if (!empty($request['address'])) {
+    $payload['address.address'] = $request['address'];
+  }
+  if (!empty($request['city'])) {
+    $payload['address.city'] = $request['city'];
+  }
+  if (!empty($request['postal_code'])) {
+    $payload['address.postal-code'] = $request['postal_code'];
+  }
+  if (!empty($request['country'])) {
+    $payload['address.country'] = $request['country'];
   }
 
-  if (!empty($payload['country'])) {
-    // Country field
-    $signature->field_sig_country = array(
-      'und' => array(array('value' => $payload['country']))
-    );
-  }
-  else {
-    $signature->field_sig_country = array('und' => array());
+  // Addresses in the US can have a state and ZIP code
+  if (empty($request['country']) || $request['country'] == 'United States') {
+    if (!empty($request['state'])) {
+      $payload['address.state.code'] = $request['state'];
+    }
+    if (!empty($request['postal_code'])) {
+      $payload['address.postal-code.type'] = 'ZIP';
+    }
   }
 
-  // Partner code field
+  // Custom message (of support)
+  if (!empty($request['message'])) {
+    $payload['action.message'] = $request['address'];
+    $payload['action.signature-type'] = 'mos_action';
+  }
+
+  // Partner code and opt-in
   if (!empty($_REQUEST['partner_code'])) {
+    $payload['partner.code'] = $_REQUEST['partner_code'];
+    if (!empty($request['partner_opt_in'])) {
+      $payload['action.opt-ins.partner'] = '1';
+    }
+  }
 
-    $signature->field_partner_code = array(
-      'und' => array(array('value' => $_REQUEST['partner_code']))
-    );
+  // Send the signup
+  $duplicate = FALSE;
+  $sent = pm_signup_handle(array(
+    'type' => 'signature',
+    'endpoint' => $settings->pm_signup_endpoint_id,
+    'payload' => $payload,
+  ), $duplicate);
 
-    // Partner opt-in field
-    if (!empty($payload['partner_opt_in'])) {
-      $signature->field_partner_opt_in = array(
-        'und' => array(array('value' => '1'))
+  if (!$sent) {
+    if ($duplicate) {
+      return array(
+        'status' => '409 Conflict',
+        'payload' => array(
+          'errors' => array(
+            'Signature already exists.',
+          ),
+        ),
       );
     }
     else {
-      $signature->field_partner_opt_in = array(
-        'und' => array(array('value' => '0'))
+      return array(
+        'status' => '500 Internal Server Error',
+        'payload' => array(
+          'errors' => array(
+            'Signup submission failed.',
+          ),
+        ),
       );
     }
   }
-  else {
-    $signature->field_partner_code = array('und' => array());
-    $signature->field_partner_opt_in = array('und' => array());
-  }
-
-  // Message of support custom message.
-  if (!empty($payload['message'])) {
-    // Switch to the MOS signature type as it is the only
-    // one with the custom message field.
-    $signature->type = 'mos_signature';
-    $signature->field_custom_message = array(
-      'und' => array(array('value' => $payload['message']))
-    );
-  }
-
-  $signature->save();
-  signature_send_signup($signature, FALSE);
 
   return array(
     'status' => '201 Created',
     'payload' => array(
-      'id' => $signature->id,
+      'id' => 0xDeadBeef,
     ),
   );
 }
