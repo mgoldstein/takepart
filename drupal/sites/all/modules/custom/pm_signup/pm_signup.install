@@ -107,27 +107,27 @@ function pm_signup_schema() {
     'description' => 'Signup ledger.',
     'fields' => array(
       'id' => array(
-        'description' => 'Primary key identifier for the log entry.',
+        'description' => 'Primary key identifier for the ledger entry.',
         'type' => 'serial',
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
       'type' => array(
-        'description' => 'The signup handler id.',
+        'description' => 'The type of signup.',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
         'default' => '',
       ),
       'signup_key' => array(
-        'description' => 'The signup handler id.',
+        'description' => 'The primary key.',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
         'default' => '',
       ),
       'created' => array(
-        'description' => 'The Unix timestamp when the log entry was created.',
+        'description' => 'The Unix timestamp when the ledger entry was created.',
         'type' => 'int',
         'not null' => TRUE,
         'default' => 0,
@@ -135,10 +135,10 @@ function pm_signup_schema() {
     ),
     'primary key' => array('id'),
     'unique keys' => array(
-      'key_for_type' => array('type', 'signup_key'),
+      'key_for_type' => array('signup_key', 'type'),
     ),
     'indexes' => array(
-      'signup_key' => array('signup_key'),
+      'signup_key' => array('signup_key', 'type'),
     ),
   );
 
