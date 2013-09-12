@@ -12,11 +12,11 @@ class SignatureSignup extends Signup {
         'default' => '',
       ),
       'name.first' => array(
-        'required' => TRUE,
+        'required' => FALSE,
         'default' => '',
       ),
       'name.last' => array(
-        'required' => TRUE,
+        'required' => FALSE,
         'default' => '',
       ),
       'address.address' => array(
@@ -105,11 +105,11 @@ class SignatureSignupEndpoint extends SignupEndpoint {
         'default' => '',
       ),
       'name.first' => array(
-        'required' => TRUE,
+        'required' => FALSE,
         'default' => '',
       ),
       'name.last' => array(
-        'required' => TRUE,
+        'required' => FALSE,
         'default' => '',
       ),
       'address.address' => array(
