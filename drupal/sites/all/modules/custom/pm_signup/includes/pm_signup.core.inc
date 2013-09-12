@@ -33,8 +33,15 @@ class SignupDuplicateException extends SignupException {
   }
 }
 
-class SignupHandlerException extends SignupException {}
+class SignupNoSuchEndpointException extends SignupException {
+  public $endpoint;
+  public function __construct($endpoint) {
+    parent::__construct("endpoint does not exist", 0);
+    $this->endpoint = $endpoint;
+  }
+}
 
+class SignupHandlerException extends SignupException {}
 
 /**
  * Standard signup field set.
