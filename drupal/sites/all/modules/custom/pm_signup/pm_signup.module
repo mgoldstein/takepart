@@ -49,6 +49,23 @@ function pm_signup_features_api() {
  */
 function pm_signup_menu() {
   return array(
+    'admin/config/signups' => array(
+      'title' => 'Signups',
+      'description' => 'Configuration of user signups',
+      'weight' => 0,
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    ),
+    'admin/config/signups/queue' => array(
+      'title' => 'Signup Queueing',
+      'description' => 'Enable queueing of user signups',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('pm_signup_admin_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('pm_signup configure settings'),
+    ),
     'api/signup' => array(
       'page callback' => 'pm_signup_api_callback',
       'type' => MENU_CALLBACK,
@@ -59,28 +76,58 @@ function pm_signup_menu() {
 }
 
 /**
- * API response delivery callback.
+ * Implements hook_permission().
  */
-function pm_signup_deliver_api_page($page_callback_result) {
-  drupal_add_http_header('Content-Type', 'application/json');
-  drupal_add_http_header('Status', $page_callback_result['status']);
-  print drupal_json_encode($page_callback_result['payload']);
+function pm_signup_permission() {
+  return array(
+    'pm_signup configure settings' => array(
+      'title' => t('Configure Settings'),
+      'description' => t('Configure the user signup settings.'),
+      'restrict access' => TRUE,
+    ),
+  );
 }
 
 /**
- * API error response builder.
+ * Signup administration and configuration form.
  */
-function pm_signup_api_error($error, $message) {
-  $statuses = array(
-    400 => '400 Bad Request',
-    405 => '405 Method Not Allowed',
-    409 => '409 Conflict',
-    500 => '500 Internal Server Error',
+function pm_signup_admin_form($form, &$form_state) {
+  $form['pm_signup_queue_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Queue signups for later processing'),
+    '#default_value' => variable_get('pm_signup_queue_enabled', FALSE),
   );
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_cron_queue_info().
+ */
+function pm_signup_cron_queue_info() {
   return array(
-    'status' => isset($statuses[$error]) ? $statuses[$error] : $statuses[500],
-    'payload' => array('errors' => array($message)),
+    'pm_signup_queue' => array(
+      'worker callback' => 'pm_signup_worker',
+      'time' => 30,
+    ),
   );
+}
+
+/**
+ * Cron queue worker callback.
+ */
+function pm_signup_worker($request) {
+  pm_signup_handle($request, TRUE);
+}
+
+/**
+ * Implements hook_cron_queue_info_alter().
+ */
+function pm_signup_cron_queue_info_alter(&$queues) {
+  if (isset($queues['pm_signup_queue'])
+  && variable_get('pm_signup_queue_enabled', FALSE)) {
+    // Keep the items in the queue for later processing
+    $queues['pm_signup_queue']['time'] = 0;
+  }
 }
 
 /**
@@ -129,9 +176,49 @@ function pm_signup_submit($request) {
 }
 
 /**
- * API endpoint handler
+ * Helper function for queueing a signup for submission
  */
-function pm_signup_api_callback() {
+function pm_signup_queue($request) {
+  if (variable_get('pm_signup_queue_enabled', FALSE)) {
+    // Queue the signup for later
+    $queue = DrupalQueue::get('pm_signup_queue');
+    $queue->createItem($request);
+  }
+  else {
+    // Submit the signup now
+    pm_signup_submit($request);
+  }
+}
+
+/**
+ * API response delivery callback.
+ */
+function pm_signup_deliver_api_page($page_callback_result) {
+  drupal_add_http_header('Content-Type', 'application/json');
+  drupal_add_http_header('Status', $page_callback_result['status']);
+  print drupal_json_encode($page_callback_result['payload']);
+}
+
+/**
+ * API error response builder.
+ */
+function pm_signup_api_error($error, $message) {
+  $statuses = array(
+    400 => '400 Bad Request',
+    405 => '405 Method Not Allowed',
+    409 => '409 Conflict',
+    500 => '500 Internal Server Error',
+  );
+  return array(
+    'status' => isset($statuses[$error]) ? $statuses[$error] : $statuses[500],
+    'payload' => array('errors' => array($message)),
+  );
+}
+
+/**
+ * AJAX API endpoint parsing and validation.
+ */
+function pm_signup_api_parse(&$request) {
 
   // Creates are done through a POST
   if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -196,12 +283,25 @@ function pm_signup_api_callback() {
     }
   }
 
+  return FALSE;
+}
+
+/**
+ * AJAX API endpoint handler
+ */
+function pm_signup_api_callback() {
+
+  // Parse and validate the request
+  $request = NULL;
+  $error = pm_signup_api_parse($request);
+  if ($error !== FALSE) { return $error; }
+
   // Submit each signup
   $response = array();
   foreach ($request as $signup) {
     $payload = array('success' => FALSE);
     try {
-      pm_signup_submit($signup);
+      pm_signup_queue($signup);
       $payload['success'] = TRUE;
     }
     catch (SignupNoSuchEndpointException $snsee) {
@@ -229,12 +329,14 @@ function pm_signup_api_callback() {
 /**
  * Direct handler
  */
-function pm_signup_handle($request, &$duplicate = NULL) {
+function pm_signup_handle($request, $disable_queue = FALSE) {
   // Submit the signup
   try {
-    pm_signup_submit($request);
-    if ($duplicate !== NULL) {
-      $duplicate = FALSE;
+    if ($disable_queue) {
+      pm_signup_submit($request);
+    }
+    else {
+      pm_signup_queue($request);
     }
     return TRUE;
   }
@@ -253,14 +355,12 @@ function pm_signup_handle($request, &$duplicate = NULL) {
     ));
   }
   catch (SignupDuplicateException $sde) {
-    if ($duplicate !== NULL) {
-      $duplicate = TRUE;
-    }
     $message = 'Duplicate signup [@endpoint] @payload';
     watchdog('pm_signup', $message, array(
       '@endpoint' => $request['endpoint'],
       '@payload' => json_encode($request['payload']),
     ));
+    return 'duplicate';
   }
   catch (SignupSubmissionException $sse) {
     $message = 'Error sending signup [@endpoint] @payload';

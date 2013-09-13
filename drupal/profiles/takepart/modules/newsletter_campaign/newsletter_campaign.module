@@ -1318,57 +1318,28 @@ function newsletter_campaign_direct_signup_form_submit($form, &$form_state) {
   $selector = $args['selector'];
   $config = $args['config'];
 
-  $signup = NewsletterCampaignSignup::create();
+  $payload = array();
 
   // Set the email if one was supplied.
   if ($selector != '#newsletter-campaign-mobile-only-signup-form') {
-    $signup['email'] = $form_state['values']['email'];
+    $payload['email'] = $form_state['values']['email'];
   }
 
   // Set the phone number if one was supplied.
   if ($selector != '#newsletter-campaign-email-only-signup-form') {
     if ($config['single_phone_number_field']) {
-      $signup['phone-number'] = $form_state['values']['mobile_number'];
+      $payload['phone-number'] = $form_state['values']['mobile_number'];
     }
     else {
-      $signup['phone-number.area-code'] = $form_state['values']['mobile']['areacode'];
-      $signup['phone-number.exchange'] = $form_state['values']['mobile']['exchange'];
-      $signup['phone-number.number'] = $form_state['values']['mobile']['number'];
+      $payload['phone-number.area-code'] = $form_state['values']['mobile']['areacode'];
+      $payload['phone-number.exchange'] = $form_state['values']['mobile']['exchange'];
+      $payload['phone-number.number'] = $form_state['values']['mobile']['number'];
     }
   }
 
-  // Load the submission endpoint.
-  $endpoint = NewsletterCampaignSignupEndpoint::loadByName($config['signup_name']);
-  if ($endpoint !== FALSE) {
-    // Send the signup.
-    try {
-      $signup->validate();
-      $endpoint->submit($signup);
-      return TRUE;
-    }
-    catch (SignupValidationException $sve) {
-      $message = 'Error validating signup [@name] @email, @phone';
-      watchdog('newsletter_campaign', $message, array(
-        '@name' => $config['signup_name'],
-        '@email' => $signup['email'],
-        '@phone' => $signup->getPhoneNumber(),
-      ));
-    }
-    catch (SignupSubmissionException $sse) {
-      $message = 'Error sending signup [@name] @email, @phone';
-      watchdog('newsletter_campaign', $message, array(
-        '@name' => $config['signup_name'],
-        '@email' => $signup['email'],
-        '@phone' => $signup->getPhoneNumber(),
-      ));
-    }
-  }
-  else {
-    $message = 'Unkown signup [@name] @email, @phone';
-    watchdog('newsletter_campaign', $message, array(
-      '@name' => $config['signup_name'],
-      '@email' => $signup['email'],
-      '@phone' => $signup->getPhoneNumber(),
-    ));
-  }
+  pm_signup_handle(array(
+    'type' => 'newsletter',
+    'endpoint' => $this->signup_name,
+    'payload' => $payload,
+  ));
 }

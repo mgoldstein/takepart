@@ -2141,34 +2141,31 @@ function signature_api_create($nid) {
   }
 
   // Send the signup
-  $duplicate = FALSE;
   $sent = pm_signup_handle(array(
     'type' => 'signature',
     'endpoint' => $settings->pm_signup_endpoint_id,
     'payload' => $payload,
-  ), $duplicate);
+  ));
 
-  if (!$sent) {
-    if ($duplicate) {
-      return array(
-        'status' => '409 Conflict',
-        'payload' => array(
-          'errors' => array(
-            'Signature already exists.',
-          ),
+  if ($sent === 'duplicate') {
+    return array(
+      'status' => '409 Conflict',
+      'payload' => array(
+        'errors' => array(
+          'Signature already exists.',
         ),
-      );
-    }
-    else {
-      return array(
-        'status' => '500 Internal Server Error',
-        'payload' => array(
-          'errors' => array(
-            'Signup submission failed.',
-          ),
+      ),
+    );
+  }
+  elseif ($sent === FALSE) {
+    return array(
+      'status' => '500 Internal Server Error',
+      'payload' => array(
+        'errors' => array(
+          'Signup submission failed.',
         ),
-      );
-    }
+      ),
+    );
   }
 
   return array(
