@@ -505,6 +505,80 @@ function _wordlet_configuration() {
       'load' => array('site', 'teach_campaign'),
     ),
 
+    // -----------------------------
+    // FOOD INC Campaign ----------------
+    // -----------------------------
+    'foodinc_campaign' => array(
+      'title' => 'FOODINC Campaign',
+    ),
+
+    // Food Inc Awards
+    'foodinc_awards' => array(
+      'title' => 'FOODINC - Awards',
+      'path' => 'foodinc/awards',
+      'published' => TRUE,
+      'wrappers' => array('foodinc', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/foodinc/css/foodinc.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/foodinc/js/foodinc.js',
+      ),
+      'load' => array('site', 'foodinc_campaign'),
+    ),
+
+    // Food Inc News
+    'foodinc_news' => array(
+      'title' => 'FOODINC - News',
+      'path' => 'foodinc/news',
+      'published' => TRUE,
+      'wrappers' => array('foodinc', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/foodinc/css/foodinc.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/foodinc/js/foodinc.js',
+      ),
+      'load' => array('site', 'foodinc_campaign'),
+    ),
+
+    // Food Inc Entry
+    'foodinc_entry' => array(
+      'title' => 'FOODINC - Entry',
+      'path' => 'foodinc/entry',
+      'published' => TRUE,
+      'wrappers' => array('foodinc', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/teach/foodinc/foodinc.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/foodinc/js/foodinc.js',
+      ),
+      'load' => array('site', 'foodinc_campaign'),
+    ),
+
+    // Food Inc How to Enter
+    'foodinc_howto' => array(
+      'title' => 'FOODINC - How To Enter',
+      'path' => 'foodinc/howto',
+      'published' => TRUE,
+      'wrappers' => array('foodinc', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/foodinc/css/foodinc.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/foodinc/js/foodinc.js',
+      ),
+      'load' => array('site', 'foodinc_campaign'),
+    ),
 
     // -----------------------------
     // CAN Campaign ----------------
