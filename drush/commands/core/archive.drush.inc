@@ -21,6 +21,7 @@ function archive_drush_command() {
       'generatorversion' => 'The generator version number to store in the MANIFEST file. The default is ' . DRUSH_VERSION . '.',
       'pipe' => 'Only print the destination of the archive. Useful for scripts that don\'t pass --destination.',
       'preserve-symlinks' => 'Preserve symbolic links.',
+      'no-core' => 'Exclude Drupal core, so the backup only contains the site specific stuff.',
       'tar-options' => 'Options passed thru to the tar command.',
     ),
     'examples' => array(
@@ -43,7 +44,10 @@ function archive_drush_command() {
     'options' => array(
       'destination' => 'Specify where the Drupal site should be expanded, including the docroot. Defaults to the current working directory.',
       'db-prefix' => 'An optional table prefix to use during restore.',
-      'db-url' => 'A Drupal 6 style database URL indicating the target for database restore. If not provided, the archived settings.php is used.',
+      'db-url' => array(
+        'description' => 'A Drupal 6 style database URL indicating the target for database restore. If not provided, the archived settings.php is used.',
+        'example-value' => 'mysql://root:pass@host/db',
+      ),
       'db-su' => 'Account to use when creating the new database. Optional.',
       'db-su-pw' => 'Password for the "db-su" account. Optional.',
       'overwrite' => 'Allow drush to overwrite any files in the destination.',
@@ -65,9 +69,14 @@ function archive_drush_command() {
  * Command callback. Generate site archive file.
  */
 function drush_archive_dump($sites_subdirs = '@self') {
+  $include_platform = !drush_get_option('no-core', FALSE);
   $tar = drush_get_tar_executable();
+
   $sites = array();
-  $aliases = drush_sitealias_resolve_sitespecs(explode(',', $sites_subdirs));
+  list($aliases, $not_found) = drush_sitealias_resolve_sitespecs(explode(',', $sites_subdirs));
+  if (!empty($not_found)) {
+    drush_log(dt("Some site subdirectories are not valid Drupal sites: @list", array("@list" => implode(', ', $not_found))), 'warning');
+  }
   foreach ($aliases as $key => $alias) {
     $sites[$key] = $alias;
     if (($db_record = sitealias_get_databases_from_record($alias))) {
@@ -105,7 +114,7 @@ function drush_archive_dump($sites_subdirs = '@self') {
       $prefix = count($sites) > 1 ? 'multiple_sites' : str_replace('/', '-', $first['databases']['default']['default']['database']);
     }
   }
-  $date = gmdate('Ymd_his');
+  $date = gmdate('Ymd_His');
   $temp_dest_name = "$prefix.$date.tar";
 
   $final_destination = drush_get_option('destination');
@@ -169,16 +178,25 @@ function drush_archive_dump($sites_subdirs = '@self') {
   $docroot_path = realpath(drush_get_context('DRUSH_DRUPAL_ROOT'));
   $docroot = basename($docroot_path);
   $workdir = dirname($docroot_path);
-  $dereference = (drush_get_option('preserve-symlinks', FALSE)) ? '' : '--dereference ';
-  // Archive Drupal core, excluding sites dir.
-  drush_shell_cd_and_exec($workdir, "$tar {$tar_extra_options} --exclude \"{$docroot}/sites\" {$dereference}-cf %s %s", $destination, $docroot);
-  // Add sites/all to the same archive.
-  drush_shell_cd_and_exec($workdir, "$tar {$tar_extra_options} {$dereference}-rf %s %s", $destination, "{$docroot}/sites/all");
-  // Add sites/sites.php, sites/example.sites.php and sites/default/default.settings.php to the same archive.
-  $files_to_add = array('sites/sites.php', 'sites/example.sites.php', 'sites/default/default.settings.php');
-  foreach ($files_to_add as $file_to_add) {
-    if (file_exists($file_to_add)) {
-      drush_shell_cd_and_exec($workdir, "$tar {$dereference}-rf %s %s", $destination, $docroot . DIRECTORY_SEPARATOR . $file_to_add);
+
+  if ($include_platform) {
+    $dereference = (drush_get_option('preserve-symlinks', FALSE)) ? '' : '--dereference ';
+    // Convert destination path to Unix style for tar on MinGW - see http://drupal.org/node/1844224
+    if (drush_is_mingw()) {
+      $destination_orig = $destination;
+      $destination = str_replace('\\', '/', $destination);
+      $destination = preg_replace('$^([a-zA-Z]):$', '/$1', $destination);
+    }
+    // Archive Drupal core, excluding sites dir.
+    drush_shell_cd_and_exec($workdir, "$tar {$tar_extra_options} --exclude \"{$docroot}/sites\" {$dereference}-cf %s %s", $destination, $docroot);
+    // Add sites/all to the same archive.
+    drush_shell_cd_and_exec($workdir, "$tar {$tar_extra_options} {$dereference}-rf %s %s", $destination, "{$docroot}/sites/all");
+    // Add special files in sites/ to the archive.
+    $files_to_add = array('sites/README.txt', 'sites/sites.php', 'sites/example.sites.php');
+    foreach ($files_to_add as $file_to_add) {
+      if (file_exists($file_to_add)) {
+        drush_shell_cd_and_exec($workdir, "$tar {$dereference}-rf %s %s", $destination, $docroot . '/' . $file_to_add);
+      }
     }
   }
 
@@ -214,12 +232,13 @@ function drush_archive_dump($sites_subdirs = '@self') {
     'generatorversion' => drush_get_option('generatorversion', DRUSH_VERSION),
     'description' => drush_get_option('description', ''),
     'tags' => drush_get_option('tags', ''),
+    'archiveformat' => ($include_platform ? 'platform' : 'site'),
   );
   $contents = drush_export_ini(array('Global' => $platform));
 
   $i=0;
   foreach ($sites as $key => $alias) {
-    if (!$status = drush_invoke_process($alias, 'core-status', array(), array())) {
+    if (!$status = drush_invoke_process($alias, 'core-status', array(), array(), array('integrate' => FALSE))) {
       drush_log(dt('Unable to determine sites directory for !alias', array('!alias' => $key)), 'warning');
     }
 
@@ -255,6 +274,11 @@ function drush_archive_dump($sites_subdirs = '@self') {
   $output = drush_shell_exec_output();
   if (!$res || !isset($output[0]) || empty($output[0])) {
     drush_shell_cd_and_exec($workdir, "$tar --dereference -vrf %s %s", $destination, $docroot . '/sites/default/default.settings.php');
+  }
+
+  // Switch back to original destination in case it was modified for tar on MinGW.
+  if (!empty($destination_orig)) {
+    $destination = $destination_orig;
   }
 
   // Compress the archive
@@ -297,17 +321,13 @@ function drush_archive_restore($file, $site_id = NULL) {
     }
   }
   else {
-    // No manifest. Try to find docroot and DB dump file.
-    $db_file = drush_scan_directory($tmp, '/\.sql$/',  array('.', '..', 'CVS'), 0, 0);
-    $directories = glob($tmp . '/*' , GLOB_ONLYDIR);
-    $ini = array(
-      'Global' => array(),
-      'default' => array(
-        'docroot' => reset($directories),
-        'sitedir' => 'sites/default',
-        'database-default-file' => key($db_file),
-      ),
-    );
+    $ini = drush_archive_guess_manifest($tmp);
+  }
+
+  // Backward compatibility: 'archiveformat' did not exist
+  // in older versions of archive-dump.
+  if (!isset( $ini['Global']['archiveformat'])) {
+    $ini['Global']['archiveformat'] = 'platform';
   }
 
   // Grab the first site in the Manifest and move docroot to destination.
@@ -316,15 +336,29 @@ function drush_archive_restore($file, $site_id = NULL) {
   $first = array_shift($ini_tmp);
   $docroot = basename($first['docroot']);
   $destination = drush_get_option('destination', realpath('.') . "/$docroot");
-  if (!drush_move_dir("$tmp/$docroot", $destination, drush_get_option('overwrite'))) {
-    return drush_set_error('DRUSH_ARCHIVE_UNABLE _RESTORE_FILES', dt('Unable to restore files to !dest', array('!dest' => $destination)));
+
+  if ($ini['Global']['archiveformat'] == 'platform') {
+    // Move the whole platform inplace at once.
+    if (!drush_move_dir("$tmp/$docroot", $destination, drush_get_option('overwrite'))) {
+      return drush_set_error('DRUSH_ARCHIVE_UNABLE_TO_RESTORE_FILES', dt('Unable to restore platform to !dest', array('!dest' => $destination)));
+    }
+  }
+  else {
+    // When no platform is included we do this on a per-site basis.
   }
 
   // Loop over sites and restore databases and append to settings.php.
   foreach ($ini as $section => $site) {
     if ($section != 'Global' && (is_null($site_id) || $section == $site_id) && !empty($site['database-default-file'])) {
+      $site_destination = $destination . '/' . $site['sitedir'];
+      // Restore site, in case not already done above.
+      if ($ini['Global']['archiveformat'] == 'site') {
+        if (!drush_move_dir("$tmp/$docroot/" . $site['sitedir'], $site_destination, drush_get_option('overwrite'))) {
+          return drush_set_error('DRUSH_ARCHIVE_UNABLE_TO_RESTORE_FILES', dt('Unable to restore site to !dest', array('!dest' => $site_destination)));
+        }
+      }
 
-      // Restore database
+      // Restore database.
       $sql_file = $tmp . '/' . $site['database-default-file'];
       if ($db_url = drush_get_option('db-url')) {
         if (empty($site_id) && count($ini) >= 3) {
@@ -367,6 +401,7 @@ function drush_archive_restore($file, $site_id = NULL) {
     }
   }
   drush_log(dt('Archive restored to !dest', array('!dest' => $destination)), 'ok');
+
   return $destination;
 }
 
@@ -389,4 +424,36 @@ function archive_archive_restore_complete() {
       ),
     ),
   );
+}
+
+/**
+ * Try to find docroot and DB dump file in an extracted archive.
+ *
+ * @param string $path The location of the extracted archive.
+ * @return array The manifest data.
+ */
+function drush_archive_guess_manifest($path) {
+  $db_file = drush_scan_directory($path, '/\.sql$/',  array('.', '..', 'CVS'), 0, 0);
+
+  if (file_exists($path . '/index.php')) {
+    $docroot = './';
+  }
+  else {
+    $directories = glob($path . '/*' , GLOB_ONLYDIR);
+    $docroot = reset($directories);
+  }
+
+  $ini = array(
+    'Global' => array(
+        // Very crude detection of a platform...
+        'archiveformat' => (drush_drupal_version($docroot) ? 'platform' : 'site'),
+    ),
+    'default' => array(
+      'docroot' => $docroot,
+      'sitedir' => 'sites/default',
+      'database-default-file' => key($db_file),
+    ),
+  );
+
+  return $ini;
 }

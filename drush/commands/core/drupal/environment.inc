@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- *   Specific functions for a drupal 7 environment.
+ *   Specific functions for a drupal 8 environment.
  *   drush_include_engine() magically includes either this file
  *   or environment_X.inc depending on which version of drupal drush
  *   is called from.
@@ -17,11 +17,14 @@
  */
 function drush_get_modules($include_hidden = TRUE) {
   $modules = system_rebuild_module_data();
-  if (!$include_hidden) {
-    foreach ($modules as $key => $module) {
-      if (isset($module->info['hidden'])) {
-        unset($modules[$key]);
-      }
+
+  foreach ($modules as $key => $module) {
+    $module->type = 'module';
+    if ((!$include_hidden) && (isset($module->info['hidden']))) {
+      unset($modules[$key]);
+    }
+    else {
+      $module->schema_version = drupal_get_installed_schema_version($key);
     }
   }
 
@@ -66,7 +69,7 @@ function drush_check_module_dependencies($modules, $module_info) {
       // check for version incompatibility
       foreach ($dependencies as $dependency_name => $v) {
         $current_version = $module_info[$dependency_name]->info['version'];
-        $current_version = str_replace(DRUPAL_CORE_COMPATIBILITY . '-', '', $current_version);
+        $current_version = str_replace(drush_get_drupal_core_compatibility() . '-', '', $current_version);
         $incompatibility = drupal_check_incompatibility($v, $current_version);
         if (!is_null($incompatibility)) {
           $status[$key]['error'] = array(
@@ -100,6 +103,36 @@ function drush_module_dependents($modules, $module_info) {
   }
 
   return array_unique($dependents);
+}
+
+/**
+ * Returns a list of enabled modules.
+ *
+ * This is a wrapper for module_list().
+ */
+function drush_module_list() {
+  return module_list('module_enabled');
+}
+
+/**
+ * Return a list of modules from a list of named modules.
+ * Both enabled and disabled/uninstalled modules are returned.
+ */
+function drush_get_named_extensions_list($extensions) {
+  $result = array();
+  $modules = drush_get_modules();
+  foreach($modules as $name => $module) {
+    if (in_array($name, $extensions)) {
+      $result[$name] = $module;
+    }
+  }
+  $themes = drush_get_themes();
+  foreach($themes as $name => $theme) {
+    if (in_array($name, $extensions)) {
+      $result[$name] = $theme;
+    }
+  }
+  return $result;
 }
 
 /**
@@ -140,7 +173,13 @@ function drush_module_disable($modules) {
  */
 function drush_module_uninstall($modules) {
   require_once DRUSH_DRUPAL_CORE . '/includes/install.inc';
-  drupal_uninstall_modules($modules);
+  // Break off 8.x functionality when we get another change.
+  if (drush_drupal_major_version() >= 8) {
+    module_uninstall($modules);
+  }
+  else {
+    drupal_uninstall_modules($modules);
+  }
 }
 
 /**
@@ -153,8 +192,9 @@ function drush_module_uninstall($modules) {
  */
 function drush_get_themes($include_hidden = TRUE) {
   $themes = system_rebuild_theme_data();
-  if (!$include_hidden) {
-    foreach ($themes as $key => $theme) {
+  foreach ($themes as $key => $theme) {
+    $theme->type = 'theme';
+    if (!$include_hidden) {
       if (isset($theme->info['hidden'])) {
         unset($themes[$key]);
       }

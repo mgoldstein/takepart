@@ -11,12 +11,27 @@
  *
  * @see drupal_parse_info_file
  */
-function make_parse_info_file($makefile, $parsed = TRUE) {
+function make_parse_info_file($makefile, $parsed = TRUE, $makefile_options = array()) {
   if (!($data = make_get_data($makefile))) {
-    return drush_set_error(dt('Invalid or empty make file: !makefile', array('!makefile' => $makefile)));
+    return drush_set_error('MAKE_INVALID_MAKE_FILE', dt('Invalid or empty make file: !makefile', array('!makefile' => $makefile)));
   }
   if (!($info = _drush_drupal_parse_info_file($data))) {
     return FALSE;
+  }
+  // $makefile_options are from projects[projectname][options][...] = value in
+  // the makefile that included us, whereas $info['options'] is from
+  // options[...] = value in this makefile.
+  if (!empty($info['options'])) {
+    $makefile_options = array_merge($makefile_options, $info['options']);
+  }
+  if (!empty($makefile_options)) {
+    foreach ($makefile_options as $key => $value) {
+      if (_make_is_override_allowed($key)) {
+        // n.b. 'custom' context has lower priority than 'cli', so
+        // options entered on the command line will "mask" makefile options.
+        drush_set_option($key, $value, 'custom');
+      }
+    }
   }
   if (!empty($info['includes'])) {
     $include_path = dirname($makefile);
@@ -465,42 +480,6 @@ function make_get_data($data_source) {
 }
 
 /**
- * Helper to provide sys_get_temp_dir if on php < 5.2.1.
- */
-if (!function_exists('sys_get_temp_dir')) {
-  /**
-   * Based on
-   * http://www.phpit.net/article/creating-zip-tar-archives-dynamically-php/2/
-   */
-  function sys_get_temp_dir() {
-    // Try to get from environment variable.
-    if (!empty($_ENV['TMP'])) {
-      return realpath($_ENV['TMP']);
-    }
-    elseif (!empty($_ENV['TMPDIR'])) {
-      return realpath($_ENV['TMPDIR']);
-    }
-    elseif (!empty($_ENV['TEMP'])) {
-      return realpath($_ENV['TEMP']);
-    }
-    else {
-      // Detect by creating a temporary file.
-      // Try to use system's temporary directory as random name
-      // shouldn't exist.
-      $temp_file = tempnam(md5(uniqid(rand(), TRUE)), '');
-      if ($temp_file) {
-        $temp_dir = realpath(dirname($temp_file));
-        unlink($temp_file);
-        return $temp_dir;
-      }
-      else {
-        return FALSE;
-      }
-    }
-  }
-}
-
-/**
  * Apply any defaults.
  *
  * @param array &$info
@@ -522,4 +501,45 @@ function make_apply_defaults(&$info) {
       }
     }
   }
+}
+
+/**
+ * Check if makefile overrides are allowed
+ *
+ * @param array $option
+ *   The option to check.
+ */
+function _make_is_override_allowed ($option) {
+  $allow_override = drush_get_option('allow-override', 'all');
+
+  if ($allow_override == 'all') {
+    $allow_override = array();
+  }
+  elseif (!is_array($allow_override)) {
+    $allow_override = _convert_csv_to_array($allow_override);
+  }
+
+  if ((empty($allow_override)) || ((in_array($option, $allow_override)) && (!in_array('none', $allow_override)))) {
+    return TRUE;
+  }
+  drush_log(dt("'!option' not allowed; use --allow-override=!option or --allow-override=all to permit", array("!option" => $option)), 'warning');
+  return FALSE;
+}
+
+/**
+ * Gather any working copy options.
+ *
+ * @param array $download
+ *   The download array.
+ */
+function _get_working_copy_option($download) {
+  $wc = '';
+
+  if (_make_is_override_allowed('working-copy') && isset ($download['working-copy'])) {
+    $wc = $download['working-copy'];
+  }
+  else {
+    $wc = drush_get_option('working-copy');
+  }
+  return $wc;
 }

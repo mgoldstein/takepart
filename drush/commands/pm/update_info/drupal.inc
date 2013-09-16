@@ -5,7 +5,8 @@ function pm_update_filter(&$project) {
   switch($project['status']) {
     case UPDATE_CURRENT:
       $status = dt('Up to date');
-      $project['candidate_version'] = $project['recommended'];
+      pm_release_recommended($project);
+      $project['updateable'] = FALSE;
       break;
     case UPDATE_NOT_CURRENT:
       $status = dt('Update available');
@@ -33,6 +34,7 @@ function pm_update_filter(&$project) {
   return $status;
 }
 
+// @todo This moved to state() in D8.
 function pm_update_last_check() {
   return variable_get('update_last_check', 0);
 }
@@ -117,11 +119,13 @@ function _pm_get_update_info($projects) {
     }
     // Add some info from the project to $data.
     $data[$project_name] += array(
-      'path'  => $projects[$project_name]['path'],
+      'path'  => isset($projects[$project_name]['path']) ? $projects[$project_name]['path'] : '',
       'label' => $projects[$project_name]['label'],
     );
     // Store all releases, not just the ones selected by update.module.
-    $data[$project_name]['releases'] = $available[$project_name]['releases'];
+    if (isset($available[$project_name]['releases'])) {
+      $data[$project_name]['releases'] = $available[$project_name]['releases'];
+    }
   }
 
   return $data;

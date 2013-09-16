@@ -21,6 +21,11 @@ define('DRUSH_TABLE_VERSION', '1.1.3');
 define('DRUSH_PEAR_BASE_URL', 'http://download.pear.php.net/package/');
 
 /**
+ * Used by outputformat engine and config-set in core.
+ */
+define('DRUSH_YAML_VERSION', '2.2.1');
+
+/**
  * Log PHP errors to the Drush log. This is in effect until Drupal's error
  * handler takes over.
  */
@@ -55,7 +60,7 @@ function drush_error_handler($errno, $message, $filename, $line, $context) {
   }
 }
 
-/*
+/**
  * Returns a localizable message about php.ini that
  * varies depending on whether the php_ini_loaded_file()
  * is available or not.
@@ -96,7 +101,7 @@ function _drush_environment_check_php_ini() {
     $ini_value = ini_get($prohibited_mode);
     $invalid_value = FALSE;
     if (empty($disallowed_value)) {
-      $invalid_value = !empty($ini_value);
+      $invalid_value = !empty($ini_value) && (strcasecmp($ini_value, 'off') != 0);
     }
     else {
       foreach ($disallowed_value as $test_value) {
@@ -116,7 +121,7 @@ function _drush_environment_check_php_ini() {
   return TRUE;
 }
 
-/*
+/**
  * Check for the existence of the specified lib directory, and create if needed.
  */
 function drush_environment_lib() {
@@ -381,12 +386,18 @@ function drush_locate_root($start_path = NULL) {
  *   a Drupal root.
  */
 function drush_valid_drupal_root($path) {
-  if (!empty($path) && is_dir($path)) {
-    $candidates = array('includes/common.inc', 'core/includes/common.inc');
-    foreach ($candidates as $candidate) {
-      if (file_exists($path . '/' . $candidate)) {
-        return $candidate;
-      }
+  if (!empty($path) && is_dir($path) && file_exists($path . '/index.php')) {
+    // Drupal 8 root. Additional check for the presence of core/composer.json to
+    // grant it is not a Drupal 7 site with a base folder named "core".
+    $candidate = 'core/includes/common.inc';
+    if (file_exists($path . '/' . $candidate) && file_exists($path . '/core/misc/drupal.js') && file_exists($path . '/composer.json')) {
+      return $candidate;
+    }
+    // Drupal 7 root. Additional check for the absence of core/composer.json to
+    // grant $path is not core/ of a Drupal 8 root.
+    $candidate = 'includes/common.inc';
+    if (file_exists($path . '/' . $candidate) && file_exists($path . '/misc/drupal.js') && ((basename($path) != 'core') || !file_exists($path . '/../composer.json'))) {
+      return $candidate;
     }
   }
   return FALSE;
@@ -467,7 +478,7 @@ function drush_valid_db_credentials() {
     case 7:
     default:
       $type = ( $type=='oracle' ? 'oci' : $type); // fix PDO driver name, should go away in Drupal 8
-      // Drupal >=7 requires PDO and drush requires php 5.2, that ships with PDO
+      // Drupal >=7 requires PDO and drush requires php 5.3 which ships with PDO
       // but it may be compiled with --disable-pdo.
       if (!class_exists('PDO')) {
         drush_log(dt('PDO support is required.'), 'bootstrap');
@@ -514,7 +525,7 @@ function drush_valid_db_credentials() {
         }
       }
       try {
-        $db = new PDO($constr, $creds['user'], $creds['pass']);
+        $db = new PDO($constr, $creds['user'], $creds['pass'], $creds['pdo']);
         $db = null;
       }
       catch (PDOException $e) {
@@ -610,9 +621,10 @@ function drush_build_drush_command($drush_path = NULL, $php = NULL, $os = NULL, 
       $additional_options .= ' --php-options=' . drush_escapeshellarg($php_options, $os);
     }
   }
-  else {
-    $php = '';
+  elseif ($php && drush_has_bash($os)) {
+    $php = 'DRUSH_PHP=' . drush_escapeshellarg($php, $os) . ' ';
   }
+
   return $php . drush_escapeshellarg($drush_path, $os) . $additional_options;
 }
 
@@ -640,21 +652,31 @@ function drush_is_mingw($os = NULL) {
   return _drush_test_os($os, array("MINGW"));
 }
 
-/*
+/**
  * Return tar executable name specific for the current OS
  */
 function drush_get_tar_executable() {
-  return drush_is_windows() ? "bsdtar.exe" : "tar";
+  return drush_is_windows() ? (drush_is_mingw() ? "tar.exe" : "bsdtar.exe") : "tar";
+}
+
+/**
+ * Check if the operating system is OS X.
+ * This will return TRUE for Mac OS X (Darwin).
+ */
+function drush_is_osx($os = NULL) {
+  return _drush_test_os($os, array("DARWIN"));
 }
 
 /**
  * Checks if the operating system has bash.
+ *
+ * MinGW has bash, but PHP isn't part of MinGW and hence doesn't run in bash.
  */
 function drush_has_bash($os = NULL) {
-  return drush_is_cygwin($os) || !drush_is_windows($os);
+  return (drush_is_cygwin($os) && !drush_is_mingw($os)) || !drush_is_windows($os);
 }
 
-/*
+/**
  * Checks operating system and returns
  * supported bit bucket folder.
  */
@@ -773,7 +795,14 @@ function drush_server_home() {
   return empty($home) ? NULL : $home;
 }
 
-/*
+/**
+ * Return the name of the user running drush.
+ */
+function drush_get_username() {
+  return drush_is_windows() ? getenv("username") : getenv("USER");
+}
+
+/**
  * The path to the global cache directory.
  *
  * @param subdir
@@ -789,7 +818,7 @@ function drush_directory_cache($subdir = '') {
   if ($home) {
     $cache_locations[$home] = '.drush/cache';
   }
-  $cache_locations[drush_find_tmp()] = 'drush/' . getenv('USER') . '/cache';
+  $cache_locations[drush_find_tmp()] = 'drush-' . drush_get_username() . '/cache';
   foreach ($cache_locations as $base => $dir) {
     if (!empty($base) && is_writable($base)) {
       $cache_dir = $base . '/' . $dir;
@@ -823,7 +852,13 @@ function drush_get_extensions($include_hidden = TRUE) {
   drush_include_engine('drupal', 'environment');
   $extensions = array_merge(drush_get_modules($include_hidden), drush_get_themes($include_hidden));
   foreach ($extensions as $name => $extension) {
-    $extensions[$name]->label = $extension->info['name'].' ('.$extension->name.')';
+    if (isset($extension->info['name'])) {
+      $extensions[$name]->label = $extension->info['name'].' ('.$extension->name.')';
+    }
+    else {
+      drush_log(dt("Extension !name provides no human-readable name in .info file.", array('!name' => $name), 'debug'));
+      $extensions[$name]->label = $name.' ('.$extension->name.')';
+    }
     if (empty($extension->info['package'])) {
       $extensions[$name]->info['package'] = dt('Other');
     }
@@ -835,15 +870,15 @@ function drush_get_extensions($include_hidden = TRUE) {
  * Test compatibility of a extension with version of drupal core and php.
  *
  * @param $file Extension object as returned by system_rebuild_module_data().
- * @return TRUE if the extension is incompatible.
+ * @return FALSE if the extension is compatible.
  */
 function drush_extension_check_incompatibility($file) {
-  if (!isset($file->info['core'])
-       || $file->info['core'] != DRUPAL_CORE_COMPATIBILITY
-       || version_compare(phpversion(), $file->info['php']) < 0) {
-    return TRUE;
+  if (!isset($file->info['core']) || $file->info['core'] != drush_get_drupal_core_compatibility()) {
+    return 'Drupal';
   }
-
+  if (version_compare(phpversion(), $file->info['php']) < 0) {
+    return 'PHP';
+  }
   return FALSE;
 }
 
@@ -873,4 +908,29 @@ function drush_theme_get_default() {
  */
 function drush_theme_get_admin() {
   return variable_get('admin_theme', drush_theme_get_default());
+}
+
+/**
+ * Returns the sitewide Drupal directory for extensions.
+ */
+function drush_drupal_sitewide_directory($major_version = NULL) {
+  if (!$major_version) {
+    $major_version = drush_drupal_major_version();
+  }
+  return ($major_version < 8) ? 'sites/all' : '';
+}
+
+/**
+ * Helper function to get core compatibility constant.
+ *
+ * @return string
+ *   The Drupal core compatibility constant.
+ */
+function drush_get_drupal_core_compatibility() {
+  if (defined('DRUPAL_CORE_COMPATIBILITY')) {
+    return DRUPAL_CORE_COMPATIBILITY;
+  }
+  elseif (defined('Drupal::CORE_COMPATIBILITY')) {
+    return Drupal::CORE_COMPATIBILITY;
+  }
 }

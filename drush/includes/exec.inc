@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * @file
  *   Functions for executing system commands. (e.g. exec(), system(), ...).
  */
@@ -77,6 +77,21 @@ function drush_shell_cd_and_exec($effective_wd, $cmd) {
  */
 function drush_shell_exec($cmd) {
   return _drush_shell_exec(func_get_args());
+}
+
+/**
+ * Returns executable code for invoking preferred test editor.
+ *
+ * The next line after calling this function is usually
+ *   @code drush_shell_exec_interactive($exec, $filepath, $filepath) @endcode
+ *
+ * @see drush_config_edit()
+ */
+function drush_get_editor() {
+  $bg = drush_get_option('bg') ? '&' : '';
+  // see http://drupal.org/node/1740294
+  $exec = drush_get_option('editor', '${VISUAL-${EDITOR-vi}}') . " %s $bg";
+  return $exec;
 }
 
 /**
@@ -162,15 +177,17 @@ function _drush_shell_exec($args, $interactive = FALSE) {
  * @param string $cd
  *   An optional directory to change into before executing the $command. Set to
  *   boolean TRUE to change into $site['root'] if available.
+ * @param boolean $interactive
+ *   Force creation of a tty
  * @return string
  *   A string suitable for execution with drush_shell_remote_exec().
  */
-function drush_shell_proc_build($site, $command = '', $cd = NULL) {
+function drush_shell_proc_build($site, $command = '', $cd = NULL, $interactive = FALSE) {
   // Build up the command. TODO: We maybe refactor this soon.
   $hostname = drush_remote_host($site);
   $ssh_options = drush_sitealias_get_option($site, 'ssh-options', "-o PasswordAuthentication=no");
   $os = drush_os($site);
-  if (drush_sitealias_get_option($site, 'tty')) {
+  if (drush_sitealias_get_option($site, 'tty') || $interactive) {
     $ssh_options .= ' -t';
   }
 
@@ -200,7 +217,7 @@ function drush_shell_proc_build($site, $command = '', $cd = NULL) {
   return $cmd;
 }
 
-/*
+/**
  * Execute bash command using proc_open().
  *
  * @returns
@@ -270,20 +287,12 @@ function drush_remote_host($site, $prefix = '') {
 /**
  * Make an attempt to simply wrap the arg with the
  * kind of quote characters it does not already contain.
- * If it contains both kinds, or if it contains no quote
- * characters, then this function reverts to drush_escapeshellarg.
- *
- * Note that this routine is only useful in certain very
- * specific circumstances (e.g. core-cli), as in general,
- * Windows -must- use double-quotes to escape a shell arg.
+ * If it contains both kinds, then this function reverts to drush_escapeshellarg.
  */
 function drush_wrap_with_quotes($arg) {
   $has_double = strpos($arg, '"') !== FALSE;
   $has_single = strpos($arg, "'") !== FALSE;
-  // If there are both kinds of quotes ($has_double == TRUE && $has_single == TRUE)
-  // or there are neither kind of quotes ($has_double == FALSE && $has_single == FALSE)
-  // then we call drush_escapeshellarg.  The relations above logically reduce to:
-  if ($has_double == $has_single) {
+  if ($has_double && $has_single) {
     return drush_escapeshellarg($arg);
   }
   elseif ($has_double) {
@@ -398,8 +407,8 @@ function drush_shell_exec_output() {
 function drush_start_browser($uri = NULL, $sleep = FALSE) {
   if ($browser = drush_get_option('browser', TRUE)) {
     // We can only open a browser if we have a DISPLAY environment variable on
-    // POSIX or are running Windows.
-    if (!drush_get_context('DRUSH_SIMULATE') && !getenv('DISPLAY') && !drush_is_windows()) {
+    // POSIX or are running Windows or OS X.
+    if (!drush_get_context('DRUSH_SIMULATE') && !getenv('DISPLAY') && !drush_is_windows() && !drush_is_osx()) {
       drush_log(dt('No graphical display appears to be available, not starting browser.'), 'notice');
       return FALSE;
     }
@@ -415,7 +424,7 @@ function drush_start_browser($uri = NULL, $sleep = FALSE) {
     $hosterror = (gethostbynamel($host) === FALSE);
     $iperror = (ip2long($host) && gethostbyaddr($host) == $host);
     if (!drush_get_context('DRUSH_SIMULATE') && ($hosterror || $iperror)) {
-      drush_log(dt('!host does not appear to be a resolvable hostname or IP, not starting browser.', array('!host' => $host)), 'warning');
+      drush_log(dt('!host does not appear to be a resolvable hostname or IP, not starting browser. You may need to use the --uri option in your command or site alias to indicate the correct URL of this site.', array('!host' => $host)), 'warning');
       return FALSE;
     }
     if ($browser === TRUE) {

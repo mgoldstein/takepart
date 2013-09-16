@@ -5,8 +5,9 @@ api = 2
 ; parameters are present.
 projects[cck_signup][download][revision] = "2fe932c"
 
-; Test that revision passed in main level works as shorthand for download revision.
-projects[context_admin][revision] = "eb9f05e"
+; Test that make defaults to download type of git if any download
+; parameters are present.
+projects[context_admin][download][revision] = "eb9f05e"
 
 ; When branch is passed in addition to revision, .info file rewriting has better versioning.
 projects[caption_filter][subdir] = "contrib"

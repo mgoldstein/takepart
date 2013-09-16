@@ -46,6 +46,7 @@ function drush_print_help($command) {
 
   // Give commandfiles an opportunity to add examples and options to the command.
   drush_bootstrap_max(DRUSH_BOOTSTRAP_DRUPAL_SITE);
+  drush_engine_add_help_topics($command);
   drush_command_invoke_all_ref('drush_help_alter', $command);
 
   drush_print(wordwrap(implode("\n", $help), drush_get_context('DRUSH_COLUMNS', 80)));
@@ -59,7 +60,7 @@ function drush_print_help($command) {
     if (!empty($command[$key])) {
       drush_print(dt($value) . ':');
       $rows = drush_format_help_section($command, $key);
-      drush_print_table($rows, FALSE, array(40));
+      drush_print_table($rows, FALSE, array('label' => 40));
       unset($rows);
       drush_print();
     }
@@ -134,7 +135,7 @@ function drush_format_help_section($command, $section) {
     $help_attributes['label'] = $name;
     call_user_func_array($formatter, array($command, &$help_attributes));
     if (!array_key_exists('hidden', $help_attributes)) {
-      $rows[] = array($help_attributes['label'], $help_attributes['description']);
+      $rows[] = array('label' => $help_attributes['label'], 'description' => $help_attributes['description']);
       // Process the subsections too, if any
       if (!empty($command['sub-' . $section]) && array_key_exists($name, $command['sub-' . $section])) {
         $rows = array_merge($rows, _drush_format_help_subsection($command, $section, $name, $formatter));
@@ -172,7 +173,7 @@ function _drush_format_help_subsection($command, $section, $subsection, $formatt
     $help_attributes['label'] = $name;
     call_user_func_array($formatter, array($command, &$help_attributes));
     if (!array_key_exists('hidden', $help_attributes)) {
-      $rows[] = array($prefix . $help_attributes['label'], $help_attributes['description']);
+      $rows[] = array('label' => $prefix . $help_attributes['label'], 'description' => $help_attributes['description']);
       // Process the subsections too, if any
       if (!empty($command['sub-' . $section]) && array_key_exists($name, $command['sub-' . $section])) {
         $rows = array_merge($rows, _drush_format_help_subsection($command, $section, $name, $formatter, $prefix . '  '));
@@ -244,6 +245,7 @@ function drush_global_options_command($brief = FALSE) {
   );
   $global_options_help += drush_command_defaults('global-options', 'global_options', __FILE__);
   drush_command_invoke_all_ref('drush_help_alter', $global_options_help);
+  ksort($global_options_help['options']);
 
   return $global_options_help;
 }
@@ -347,7 +349,7 @@ function drush_help_visible($command_categories) {
   return $all;
 }
 
-/*
+/**
  * Print CLI table or HTML table listing all commands.
  */
 function drush_help_listing_print($command_categories, $format) {
@@ -360,7 +362,7 @@ function drush_help_listing_print($command_categories, $format) {
     $rows = array();
     foreach($commands as $cmd => $command) {
       $name = $command['aliases'] ? $cmd . ' (' . implode(', ', $command['aliases']) . ')': $cmd;
-      $rows[$cmd] = array($name, $command['description']);
+      $rows[$cmd] = array('name' => $name, 'description' => $command['description']);
     }
 
     // Vary the output by mode: CLI or HTML
@@ -370,12 +372,12 @@ function drush_help_listing_print($command_categories, $format) {
     }
     else {
       drush_print($info['title'] . ": (" . $key . ")");
-      drush_print_table($rows, FALSE, array(0 => 20));
+      drush_print_table($rows, FALSE, array('name' => 20));
     }
   }
 }
 
-/*
+/**
  * Organize commands into categories
  */
 function drush_help_categorize($implemented) {

@@ -23,14 +23,36 @@ function queue_drush_command() {
   );
   $items['queue-list'] = array(
     'description' => 'Returns a list of all defined queues',
-    'options' => array(
-      'pipe' => 'Return a comma delimited list of queues.'
-    )
+    'outputformat' => array(
+      'default' => 'table',
+      'pipe-format' => 'csv',
+      'field-labels' => array(
+        'queue' => 'Queue',
+        'items' => 'Items',
+        'class' => 'Class',
+      ),
+      'ini-item' => 'items',
+      'table-metadata' => array(
+        'key-value-item' => 'items',
+      ),
+      'output-data-type' => 'format-table',
+    ),
   );
 
   return $items;
 }
 
+/**
+ * Call the correct queue factory method
+ */
+function drush_queue_get($name) {
+  if (drush_drupal_major_version() < 8) {
+    return DrupalQueue::get($name);
+  }
+  else {
+    return queue($name);
+  }
+}
 
 /**
  * Validation for Drupal 6 to ensure the drupal_queue module is enabled.
@@ -92,7 +114,7 @@ function drush_queue_run($queue_name) {
   $info = $queues[$queue_name];
   $function = $info['cron']['callback'];
   $end = time() + (isset($info['cron']['time']) ? $info['cron']['time'] : 15);
-  $queue = DrupalQueue::get($queue_name);
+  $queue = drush_queue_get($queue_name);
   while (time() < $end && ($item = $queue->claimItem())) {
     $function($item->data);
     $queue->deleteItem($item);
@@ -103,29 +125,19 @@ function drush_queue_run($queue_name) {
  * Command callback for drush queue-list.
  */
 function drush_queue_list() {
+  $result = array();
   $queues = drush_queue_get_queues();
   $default_class = variable_get('queue_default_class', 'SystemQueue');
-  $rows = array(array('Queue', 'Items', 'Class'));
   foreach (array_keys($queues) as $name) {
-    $q = DrupalQueue::get($name);
+    $q = drush_queue_get($name);
     $class = variable_get('queue_class_' . $name, $default_class);
-    $rows[] = array($name, $q->numberOfItems(), $class);
+    $result[$name] = array(
+      'queue' => $name,
+      'items' => $q->numberOfItems(),
+      'class' => $class,
+    );
   }
-
-  if (drush_get_option('pipe')) {
-    $pipe = array();
-    array_shift($rows);
-    foreach ($rows as $r) {
-      $pipe[] = implode(",", $r);
-    }
-    drush_print_pipe($pipe);
-  }
-  else {
-    drush_print_table($rows, TRUE);
-  }
-
-  // Return the result for backend invoke
-  return $rows;
+  return $result;
 }
 
 /**
@@ -137,13 +149,14 @@ function drush_queue_list() {
  */
 function drush_queue_get_queues() {
   static $queues;
+  $hook_name = (drush_drupal_major_version() < 8) ? 'cron_queue_info' : 'queue_info';
   if (!isset($queues)) {
     // Invoke hook_queue_info(), currently only defined by the queue_ui module.
     $queues = module_invoke_all('queue_info');
 
     // Merge in queues from modules that implement hook_cron_queue_info().
-    $cron_queues = module_invoke_all('cron_queue_info');
-    drupal_alter('cron_queue_info', $cron_queues);
+    $cron_queues = module_invoke_all($hook_name);
+    drupal_alter($hook_name, $cron_queues);
     foreach($cron_queues as $name => $queue) {
       $queues[$name] = array(
         'cron' => array(

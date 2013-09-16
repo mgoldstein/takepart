@@ -1,14 +1,15 @@
 <?php
 
-/*
+/**
  * @file
  *   Initialize a sandboxed environment. Starts with call unish_init() at bottom.
  */
 
 abstract class Drush_TestCase extends PHPUnit_Framework_TestCase {
 
-  function __construct() {
-    $this->_output = false;
+  function __construct($name = NULL, array $data = array(), $dataName = '') {
+    $this->_output = FALSE;
+    parent::__construct($name, $data, $dataName);
   }
 
   /**
@@ -204,6 +205,20 @@ abstract class Drush_TestCase extends PHPUnit_Framework_TestCase {
     return $this->_output;
   }
 
+  /**
+   *    Accessor for the last output, decoded from json.
+   *    @param key Optionally return only a top level element from the json object.
+   *    @return array         Output as php stdClass object.
+   *    @access public
+   */
+  function getOutputFromJSON($key = NULL) {
+    $json = json_decode(current($this->_output));
+    if (isset($key)) {
+      $json = $json->{$key}; // http://stackoverflow.com/questions/2925044/hyphens-in-keys-of-object
+    }
+    return $json;
+  }
+
   function webroot() {
     return UNISH_SANDBOX . '/web';
   }
@@ -216,15 +231,21 @@ abstract class Drush_TestCase extends PHPUnit_Framework_TestCase {
     return substr(UNISH_DB_URL, 0, 6) == 'sqlite'  ?  "sqlite://sites/$env/files/unish.sqlite" : UNISH_DB_URL . '/unish_' . $env;
   }
 
+  function db_driver($db_url = UNISH_DB_URL) {
+    return parse_url(UNISH_DB_URL, PHP_URL_SCHEME);
+  }
+
   function setUpDrupal($num_sites = 1, $install = FALSE, $version_string = UNISH_DRUPAL_MAJOR_VERSION, $profile = NULL) {
     $sites_subdirs_all = array('dev', 'stage', 'prod', 'retired', 'elderly', 'dead', 'dust');
     $sites_subdirs = array_slice($sites_subdirs_all, 0, $num_sites);
     $root = $this->webroot();
+    $major_version = substr($version_string, 0, 1);
 
     if (is_null($profile)) {
-      $profile = substr($version_string, 0, 1) >= 7 ? 'testing' : 'default';
+      $profile = $major_version >= 7 ? 'testing' : 'default';
     }
-    $db_driver = parse_url(UNISH_DB_URL, PHP_URL_SCHEME);
+    $db_driver = $this->db_driver(UNISH_DB_URL);
+
     $cache_keys = array($num_sites, $install ? 'install' : 'noinstall', $version_string, $profile, $db_driver);
     $source = $this->directory_cache('environments') . '/' . implode('-', $cache_keys) . '.tar.gz';
     if (file_exists($source)) {
@@ -237,13 +258,19 @@ abstract class Drush_TestCase extends PHPUnit_Framework_TestCase {
       foreach ($sites_subdirs as $subdir) {
         $this->fetchInstallDrupal($subdir, $install, $version_string, $profile);
       }
+      // Write an empty sites.php if we are on D8+. Needed for multi-site.
+      if ($major_version >= 8 && !file_exists($root . '/sites/sites.php')) {
+        copy($root . '/sites/example.sites.php', $root . '/sites/sites.php');
+      }
       $options = array(
         'destination' => $source,
         'root' => $root,
         'uri' => reset($sites_subdirs),
         'overwrite' => NULL,
       );
-      $this->drush('archive-dump', array('@sites'), $options);
+      if ($install) {
+        $this->drush('archive-dump', array('@sites'), $options);
+      }
     }
 
     // Stash details about each site.
@@ -253,7 +280,7 @@ abstract class Drush_TestCase extends PHPUnit_Framework_TestCase {
       );
       // Make an alias for the site
       $alias_definition = array($subdir => array('root' => $root,  'uri' => $subdir));
-      file_put_contents(UNISH_SANDBOX . '/etc/drush/' . $subdir . '.alias.drushrc.php', $this->file_aliases($alias_definition));
+      file_put_contents(UNISH_SANDBOX . '/etc/drush/' . $subdir . '.alias.drushrc.php', unish_file_aliases($alias_definition));
     }
     return $this->sites;
   }
@@ -261,6 +288,12 @@ abstract class Drush_TestCase extends PHPUnit_Framework_TestCase {
   function fetchInstallDrupal($env = 'dev', $install = FALSE, $version_string = UNISH_DRUPAL_MAJOR_VERSION, $profile = NULL) {
     $root = $this->webroot();
     $site = "$root/sites/$env";
+
+
+    // Validate
+    if (substr($version_string, 0, 1) == 6 && $this->db_driver(UNISH_DB_URL) == 'sqlite') {
+      $this->markTestSkipped("Drupal 6 does not support SQLite.");
+    }
 
     // Download Drupal if not already present.
     if (!file_exists($root)) {
@@ -272,7 +305,8 @@ abstract class Drush_TestCase extends PHPUnit_Framework_TestCase {
         'cache' => NULL,
       );
       $this->drush('pm-download', array("drupal-$version_string"), $options);
-      mkdir($root . '/sites/all/drush', 0777, TRUE);
+      // @todo This path is not proper in D8.
+      mkdir(UNISH_SANDBOX . '/web/sites/all/drush', 0777, 1);
     }
 
     // If specified, install Drupal as a multi-site.
@@ -293,6 +327,16 @@ abstract class Drush_TestCase extends PHPUnit_Framework_TestCase {
       touch("$site/settings.php");
     }
   }
+
+  /**
+   * @see drush_drupal_sitewide_directory()
+   */
+  function drupalSitewideDirectory($major_version = NULL) {
+    if (!$major_version) {
+      $major_version = UNISH_DRUPAL_MAJOR_VERSION;
+    }
+    return ($major_version < 8) ? 'sites/all' : '';
+  }
 }
 
 abstract class Drush_CommandTestCase extends Drush_TestCase {
@@ -300,7 +344,7 @@ abstract class Drush_CommandTestCase extends Drush_TestCase {
   // Unix exit codes.
   const EXIT_SUCCESS  = 0;
   const EXIT_ERROR = 1;
-  /*
+  /**
    * An array of Drupal sites that are setup in the drush-sandbox.
    */
   var $sites;
@@ -313,13 +357,24 @@ abstract class Drush_CommandTestCase extends Drush_TestCase {
    *   The actual command line to run.
    * @param integer $expected_return
    *   The return code to expect
+   * @param array $env
+   *   Extra environment variables
    * @return integer
    *   Exit code. Usually self::EXIT_ERROR or self::EXIT_SUCCESS.
    */
-  function execute($command, $expected_return = self::EXIT_SUCCESS) {
+  function execute($command, $expected_return = self::EXIT_SUCCESS, $env = array()) {
     $this->_output = FALSE;
+    $return = 1;
     $this->log("Executing: $command", 'notice');
-    exec($command, $this->_output, $return);
+
+    // Apply the environment variables we need for our test
+    // to the head of the command
+    $prefix = '';
+    foreach ($env as $env_name => $env_value) {
+      $prefix .= $env_name . '=' . self::escapeshellarg($env_value) . ' ';
+    }
+    exec($prefix . $command, $this->_output, $return);
+
     $this->assertEquals($expected_return, $return, 'Unexpected exit code: ' .  $command);
     return $return;
   }
@@ -344,8 +399,9 @@ abstract class Drush_CommandTestCase extends Drush_TestCase {
     * @return integer
     *   An exit code.
     */
-  function drush($command, array $args = array(), array $options = array(), $site_specification = NULL, $cd = NULL, $expected_return = self::EXIT_SUCCESS, $suffix = NULL) {
-    $global_option_list = array('simulate', 'root', 'uri', 'include', 'config', 'alias-path', 'ssh-options');
+  function drush($command, array $args = array(), array $options = array(), $site_specification = NULL, $cd = NULL, $expected_return = self::EXIT_SUCCESS, $suffix = NULL, $env = array()) {
+    $global_option_list = array('simulate', 'root', 'uri', 'include', 'config', 'alias-path', 'ssh-options', 'backend');
+    $hide_stderr = FALSE;
     // insert "cd ... ; drush"
     $cmd[] = $cd ? sprintf('cd %s &&', self::escapeshellarg($cd)) : NULL;
     $cmd[] = UNISH_DRUSH;
@@ -354,6 +410,10 @@ abstract class Drush_CommandTestCase extends Drush_TestCase {
     foreach ($options as $key => $value) {
       if (in_array($key, $global_option_list)) {
         unset($options[$key]);
+        if ($key == 'backend') {
+          $hide_stderr = TRUE;
+          $value = NULL;
+        }
         if (is_null($value)) {
           $cmd[] = "--$key";
         }
@@ -386,8 +446,11 @@ abstract class Drush_CommandTestCase extends Drush_TestCase {
       }
     }
     $cmd[] = $suffix;
+    if ($hide_stderr) {
+      $cmd[] = '2>/dev/null';
+    }
     $exec = array_filter($cmd, 'strlen'); // Remove NULLs
-    return $this->execute(implode(' ', $exec), $expected_return);
+    return $this->execute(implode(' ', $exec), $expected_return, $env);
   }
 
   function drush_major_version() {
@@ -399,17 +462,6 @@ abstract class Drush_CommandTestCase extends Drush_TestCase {
       list($major) = explode('.', $version);
     }
     return $major;
-  }
-
-  /*
-   * Prepare the contents of an aliases file.
-   */
-  function file_aliases($aliases) {
-    foreach ($aliases as $name => $alias) {
-      $records[] = sprintf('$aliases[\'%s\'] = %s;', $name, var_export($alias, TRUE));
-    }
-    $contents = "<?php\n\n" . implode("\n\n", $records);
-    return $contents;
   }
 }
 
@@ -438,6 +490,8 @@ abstract class Drush_UnitTestCase extends Drush_TestCase {
     parent::setUpBeforeClass();
     require_once(dirname(__FILE__) . '/../includes/bootstrap.inc');
     drush_bootstrap_prepare();
+    // Need to set DRUSH_COMMAND so that drush will be called and not phpunit
+    define('DRUSH_COMMAND', UNISH_DRUSH);
   }
 
   public static function tearDownAfterClass() {
@@ -450,14 +504,14 @@ abstract class Drush_UnitTestCase extends Drush_TestCase {
   }
 }
 
-/*
+/**
  * Initialize our environment at the start of each run (i.e. suite).
  */
 function unish_init() {
   // Default drupal major version to run tests over.
   $unish_drupal_major = '7';
   if (getenv('UNISH_DRUPAL_MAJOR_VERSION')) {
-    $unish_drupal_major = getenv('UNISH_DUPAL_MAJOR_VERSION');
+    $unish_drupal_major = getenv('UNISH_DRUPAL_MAJOR_VERSION');
   }
   elseif (isset($GLOBALS['UNISH_DRUPAL_MAJOR_VERSION'])) {
     $unish_drupal_major = $GLOBALS['UNISH_DRUPAL_MAJOR_VERSION'];
@@ -508,6 +562,7 @@ function unish_init() {
 
   putenv('ETC_PREFIX=' . UNISH_SANDBOX);
   putenv('SHARE_PREFIX=' . UNISH_SANDBOX);
+  putenv('TEMP=' . UNISH_TMP);
 
   define('UNISH_USERGROUP', isset($GLOBALS['UNISH_USERGROUP']) ? $GLOBALS['UNISH_USERGROUP'] : NULL);
 
@@ -560,6 +615,17 @@ function parse_backend_output($string) {
     }
   }
   return $string;
+}
+
+/**
+ * Prepare the contents of an aliases file.
+ */
+function unish_file_aliases($aliases) {
+  foreach ($aliases as $name => $alias) {
+    $records[] = sprintf('$aliases[\'%s\'] = %s;', $name, var_export($alias, TRUE));
+  }
+  $contents = "<?php\n\n" . implode("\n\n", $records);
+  return $contents;
 }
 
  // This code is in global scope.

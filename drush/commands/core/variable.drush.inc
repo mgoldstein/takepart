@@ -25,12 +25,15 @@ function variable_drush_command() {
       'drush vget site_mail --exact' => 'Show the variable with the exact key "site_mail".',
     ),
     'options' => array(
-      'format' => array(
-        'description' => 'Format to output the object. Use "print_r" for print_r (default), "export" for var_export, and "json" for JSON.',
-        'example-value' => 'export',
-      ),
-      'pipe' => 'A synonym for --format=export. Useful for pasting into code.',
       'exact' => 'Only get the one variable that exactly matches the specified name.',
+    ),
+    'outputformat' => array(
+      'default' => 'labeled-export',
+      'pipe-format' => 'config',
+      'variable-name' => 'variables',
+      'table-metadata' => array(
+        'format' => 'var_export',
+      ),
     ),
     'aliases' => array('vget'),
   );
@@ -119,7 +122,6 @@ function variable_complete_variables() {
  */
 function drush_variable_get() {
   global $conf;
-  $output = NULL;
 
   $keys = array_keys($conf);
   if ($args = func_get_args()) {
@@ -133,11 +135,8 @@ function drush_variable_get() {
   $pipe = array();
   foreach ($keys as $name) {
     $value = $conf[$name];
-    $pipe[] = drush_format($value, $name, 'export');
-    drush_print(drush_format($value, $name));
     $returns[$name] = $value;
   }
-  drush_print_pipe($pipe);
 
   if (empty($keys)) {
     return drush_set_error('No matching variable found.');
@@ -218,7 +217,7 @@ function drush_variable_set() {
 
 function _drush_variable_format($value, $format) {
   if ($format == 'auto') {
-    if (is_numeric($value)) {
+    if (is_int($value)) {
       $format = 'integer';
     }
     elseif (($value == 'TRUE') || ($value == 'FALSE')) {
