@@ -65,7 +65,7 @@
     </div>
   </section>
   <section class="right-rail">
-    <div class="ad"><img src="http://placehold.it/300x250"></div>
+    <div class="ad"><?php print (w('foodinc_awards_adblock') != NULL ? render(w('foodinc_awards_adblock')) : ''); ?></div>
     <div class="newsletter"><img src="http://placehold.it/300x500"></div>
   </section>
 </div>
