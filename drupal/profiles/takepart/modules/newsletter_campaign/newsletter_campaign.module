@@ -1339,7 +1339,7 @@ function newsletter_campaign_direct_signup_form_submit($form, &$form_state) {
 
   pm_signup_handle(array(
     'type' => 'newsletter',
-    'endpoint' => $this->signup_name,
+    'endpoint' => $config['signup_name'],
     'payload' => $payload,
   ));
 }
