@@ -54,7 +54,7 @@ class SignatureSignup extends Signup {
         'default' => '',
       ),
       'action.signature-type' => array(
-        'required' => TRUE,
+        'required' => FALSE,
         'default' => '',
       ),
       'action.message' => array(
@@ -151,7 +151,7 @@ class SignatureSignupEndpoint extends SignupEndpoint {
         'default' => '',
       ),
       'action.signature-type' => array(
-        'required' => TRUE,
+        'required' => FALSE,
         'default' => '',
       ),
       'action.message' => array(
