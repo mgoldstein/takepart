@@ -305,37 +305,39 @@ function pm_signup_api_callback() {
     catch (SignupNoSuchEndpointException $snsee) {
       $response[] = array(
         'type' => $signup['type'],
-        'endpoint' = $signup['endpoint'],
+        'endpoint' => $signup['endpoint'],
         'error' => 'No such endpoint.',
       );
     }
     catch (SignupValidationException $sve) {
       $response[] = array(
         'type' => $signup['type'],
-        'endpoint' = $signup['endpoint'],
+        'endpoint' => $signup['endpoint'],
         'error' => 'Signup validation failed.',
       );
     }
     catch (SignupDuplicateException $sde) {
       $response[] = array(
         'type' => $signup['type'],
-        'endpoint' = $signup['endpoint'],
+        'endpoint' => $signup['endpoint'],
         'error' => 'Duplicate signup.',
       );
     }
     catch (SignupSubmissionException $sse) {
       $response[] = array(
         'type' => $signup['type'],
-        'endpoint' = $signup['endpoint'],
+        'endpoint' => $signup['endpoint'],
         'error' => 'Signup processing failed.',
       );
     }
   }
 
   // If any signups failed, report the reason for the failure
-  if (count($reponse) > 0) {
-    'status' => '202 Accepted',
-    'payload' => $response,
+  if (count($response) > 0) {
+    return array(
+      'status' => '202 Accepted',
+      'payload' => $response,
+    );
   }
 
   // All signups were submitted sucessfully
