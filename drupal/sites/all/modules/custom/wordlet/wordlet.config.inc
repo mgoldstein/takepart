@@ -513,7 +513,7 @@ function _wordlet_configuration() {
     ),
 
 
-    // Food Inc About!!!
+    // Food Inc About
     'foodinc_howto' => array(
       'title' => 'FOODINC - howto',
       'path' => 'foodinc/awards/about',
@@ -555,7 +555,7 @@ function _wordlet_configuration() {
       'wrappers' => array('foodinc', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
-        'campaigns/teach/foodinc/foodinc.css',
+        'campaigns/foodinc/css/foodinc.css',
       ),
       'js' => array(
         'campaigns/campaign.js',
@@ -564,6 +564,22 @@ function _wordlet_configuration() {
       'load' => array('site', 'foodinc_campaign'),
     ),
 
+    // Food Inc Entry Received
+    'foodinc_entryreceived' => array(
+      'title' => 'FOODINC - EntryReceived',
+      'path' => 'foodinc/awards/enter/received',
+      'published' => TRUE,
+      'wrappers' => array('foodinc', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/foodinc/css/foodinc.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/foodinc/js/foodinc.js',
+      ),
+      'load' => array('site', 'foodinc_campaign'),
+    ),
 
 
 

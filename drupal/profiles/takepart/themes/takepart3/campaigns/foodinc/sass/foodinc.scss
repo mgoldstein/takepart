@@ -404,7 +404,53 @@
         height: 63px;
         background: url('../images/instruction-bottom.jpg') no-repeat top center;
       }
-
+    }
+  }
+  #foodinc-entryreceived{
+    section.page-body-content{
+      width: 68%;
+      float: left;
+    }
+    .page-title{
+      font-size: 20px;
+      font-style: italic;
+      color: #7C2E0B;
+    }
+    .additional-info{
+      margin-top: 20px;
+      .title{
+        font-size: 18px;
+        color: #7C2E0B;
+      }
+    }
+    .social-block{
+      clear: both;
+      height: auto;
+      overflow: hidden;
+      margin: 10px 0px 20px 20px;
+      .social{
+        display: block;
+        height: 40px;
+        width: 152px;
+        float: left;
+        margin-right: 8px;
+      }
+      .facebook{
+        background: url('../images/social_long_fb.png') no-repeat top center;
+      }
+      .twitter{
+        background: url('../images/social_long_twitter.png') no-repeat top center;
+      }
+      .googleplus{
+        background: url('../images/social_long_google.png') no-repeat top center;
+      }
+      .email{
+        background: url('../images/social_long_email.png') no-repeat top center;
+      }
+    }
+    section.right-rail{
+      width: 30%;
+      float: right;
     }
   }
 }
