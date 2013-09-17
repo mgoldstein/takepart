@@ -37,7 +37,7 @@
         <div class="row row-id-<?php print $key; ?> <?php print ($key % 2 == 0 ? 'row-odd' : 'row-even'); ?>">
           <div class="title"><?php print $w->single; ?></div>
           <div class="description"><?php print $w->multi; ?></div>
-          <?php if(w('foodinc_howto_intro')->video != NULL): ?>
+          <?php if($w->video != NULL): ?>
             <div class="video">
               <?php if(substr($w->video, 0, 7 ) === "http://"): ?>
                 <?php $youtube_id = substr($w->video, strrpos($w->video, '=') + 1);; ?>

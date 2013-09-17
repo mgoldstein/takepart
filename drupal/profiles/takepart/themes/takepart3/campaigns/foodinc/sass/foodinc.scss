@@ -254,6 +254,9 @@
       clear: both;
       line-height: 28px;
       font-size: 14px;
+      @media (max-width: 1000px) {
+        width: 100%;
+      }
       .page-title h3{
         font-size: 18px;
         color: #7C2E0B;
@@ -266,6 +269,22 @@
         }
         .video, img{
           margin: 20px 0;
+        }
+        .video{
+          position: relative;
+          @media (max-width: 620px) {
+            padding-bottom: 56.25%;
+            padding-top: 30px; height: 0; overflow: hidden;
+            width: 100%;
+            max-width: 620px;
+            iframe, object, embed{
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
+          }
         }
       }
     }
@@ -295,12 +314,37 @@
       .video, img{
         margin: 10px 0;
       }
+      .video{
+        position: relative;
+        @media (max-width: 620px) {
+          padding-bottom: 56.25%;
+          padding-top: 30px; height: 0; overflow: hidden;
+          width: 100%;
+          max-width: 620px;
+          iframe, object, embed{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
     }
     section.right-rail{
       float: right;
       width: 30%;
+      @media (max-width: 1000px) {
+        float: left;
+        clear: both;
+        width: 100%;
+      }
     }
     .instruction-block{
+      @media (max-width: 1000px) {
+        width: 300px;
+        margin: 0 auto;
+      }
       .top{
         width: 300px;
         height: 63px;
