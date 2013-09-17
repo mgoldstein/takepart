@@ -550,7 +550,7 @@ function _wordlet_configuration() {
     // Food Inc Entry
     'foodinc_entry' => array(
       'title' => 'FOODINC - Entry',
-      'path' => 'foodinc/entry',
+      'path' => 'foodinc/awards/enter',
       'published' => TRUE,
       'wrappers' => array('foodinc', 'campaign', 'html'),
       'css' => array(
