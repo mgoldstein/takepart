@@ -44,113 +44,126 @@
       border-right: 1px dotted #4c4c4c;
     }
   }
-  section.page-body-content{
-    width: 68%;
-    float: left;
-    clear: both;
-    #foodinc-categories{
-      font-size: 14px;
-      line-height: 28px;
-      font-family: Helvetica,Arial,sans-serif;
-      .row{
-        clear: both;
-        margin-bottom: 20px;
+  #foodinc-awards{
+    section.page-body-content{
+      width: 68%;
+      float: left;
+      clear: both;
+      #foodinc-categories{
+        font-size: 14px;
+        line-height: 28px;
+        font-family: Helvetica,Arial,sans-serif;
+        .row{
+          clear: both;
+          margin-bottom: 20px;
+          height: auto;
+          overflow: hidden;
+        }
+        .row-id-0{
+          .image{
+            float: left;
+          }
+          .category-title h2{
+            color: #5c2e13;
+          }
+          .category-info{
+            display: block;
+            float: left;
+            width: 430px;
+            position: relative;
+            z-index: 1;
+            margin-left: -20px;
+          }
+          .category-text{
+            padding-left: 20px;
+          }
+        }
+        .row-odd{
+          .image{
+            float: right;
+            margin-left: 10px;
+          }
+          .category-info{
+            display: block;
+          }
+        }
+        .row-even{
+          .image{
+            float: left;
+            margin-right: 10px
+          }
+          .category-info{
+            display: block;
+          }
+        }
+      }
+      .judges{
+        padding-bottom: 30px;
         height: auto;
         overflow: hidden;
-      }
-      .row-id-0{
-        .image{
-          float: left;
-        }
-        .category-title h2{
+        h2{
           color: #5c2e13;
+          margin: 0;
         }
-        .category-info{
-          display: block;
-          float: left;
-          width: 430px;
-          position: relative;
-          z-index: 1;
-          margin-left: -20px;
-        }
-        .category-text{
-          padding-left: 20px;
-        }
-      }
-      .row-odd{
-        .image{
-          float: right;
-          margin-left: 10px;
-        }
-        .category-info{
-          display: block;
-        }
-      }
-      .row-even{
-        .image{
-          float: left;
-          margin-right: 10px
-        }
-        .category-info{
-          display: block;
-        }
-      }
-    }
-    .judges{
-      padding-bottom: 30px;
-      height: auto;
-      overflow: hidden;
-      h2{
-        color: #5c2e13;
-        margin: 0;
-      }
-      .row{
-        width: 300px;
-        margin-top: 20px;
-        position:relative;
-        &.row-odd{
-          float: left;
-          clear: both;
-        }
-        &.row-even{
-          float: right;
-        }
-        img{
-          float: left;
-          margin-right: 10px;
-        }
-        .info{
-          margin-left: 110px;
-          .name{
-            color: #5c2e13;
-            font-size: 18px;
+        .row{
+          width: 300px;
+          margin-top: 20px;
+          position:relative;
+          &.row-odd{
+            float: left;
+            clear: both;
           }
-          .bio {
-            padding: 0 15px;
-            position:relative;
-            display: block;
-            text-overflow:ellipsis;
-            padding: 0;
+          &.row-even{
+            float: right;
           }
-          .show-more-height{
-            height: 58px;
-            overflow:hidden;
-            text-overflow:ellipsis;
+          img{
+            float: left;
+            margin-right: 10px;
           }
-          .show-more{
-            color: #1CA9E7;
-            cursor: pointer;
-            &:hover{
-              text-decoration: underline;
+          .info{
+            margin-left: 110px;
+            .name{
+              color: #5c2e13;
+              font-size: 18px;
+            }
+            .bio {
+              padding: 0 15px;
+              position:relative;
+              display: block;
+              text-overflow:ellipsis;
+              padding: 0;
+            }
+            .show-more-height{
+              height: 58px;
+              overflow:hidden;
+              text-overflow:ellipsis;
+            }
+            .show-more{
+              color: #1CA9E7;
+              cursor: pointer;
+              &:hover{
+                text-decoration: underline;
+              }
             }
           }
         }
       }
     }
+    section.right-rail{
+      float: right;
+      width: 30%;
+    }
   }
-  section.right-rail{
-    float: right;
-    width: 30%;
+  #foodinc-howto{
+    section.page-body-content{
+      width: 68%;
+      float: left;
+      clear: both;
+    }
+    section.right-rail{
+      float: right;
+      width: 30%;
+    }
   }
 }
 

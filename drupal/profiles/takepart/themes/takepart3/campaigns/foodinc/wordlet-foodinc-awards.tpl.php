@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" id="foodinc-awards">
   <header>
     <h2 class="content-header"><span><?=w('foodinc_title')?></span></h2>
     <div class="hero">
@@ -9,7 +9,7 @@
             <?php $youtube_id = substr(w('hero_content')->video, strrpos(w('hero_content')->video, '=') + 1);; ?>
             <iframe width="520" height="315" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
           <?php else: ?>
-            <script type="text/javascript" src="http://video.takepart.com/players/<?php print w('something')->video; ?>.js"></script>
+            <script type="text/javascript" src="http://video.takepart.com/players/<?php print w('hero_content')->video; ?>.js"></script>
           <?php endif; ?>
         </div>
       <?php else: ?>
@@ -70,5 +70,5 @@
   </section>
 </div>
 
-<?php print $messages; ?>
+
 
