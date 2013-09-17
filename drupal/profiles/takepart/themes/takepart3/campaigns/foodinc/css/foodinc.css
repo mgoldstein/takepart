@@ -34,14 +34,14 @@
 /* line 25, ../sass/foodinc.scss */
 #page-wrapper.foodinc .hero .video {
   position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 30px;
-  height: 0;
-  overflow: hidden;
 }
 @media (max-width: 620px) {
   /* line 25, ../sass/foodinc.scss */
   #page-wrapper.foodinc .hero .video {
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
     width: 100%;
     max-width: 620px;
   }
