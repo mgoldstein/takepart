@@ -17,8 +17,8 @@
       <?php endif; ?>
 
 
-      <div class="something"><?php print w('hero_content')->single; ?></div>
-      <div class="else"><?php print w('hero_content')->multi; ?></div>
+      <div class="hero-title"><?php print w('hero_content')->single; ?></div>
+      <div class="hero-description"><?php print w('hero_content')->multi; ?></div>
       <div class="learn-more">
         <p>Interested?</p>
         <?php foreach( wl('foodinc_awards_hero_links') as $key => $w ): ?>

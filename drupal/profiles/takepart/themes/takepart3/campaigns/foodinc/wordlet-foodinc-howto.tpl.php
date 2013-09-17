@@ -49,7 +49,6 @@
   </section>
     <section class="right-rail">
       <?php print w('foodinc_howto_instruction_block'); ?>
-    <div class="ad"><?php print (w('foodinc_awards_adblock') != NULL ? render(w('foodinc_awards_adblock')) : ''); ?></div>
-    <div class="newsletter"><img src="http://placehold.it/300x500"></div>
+    <div class="ad"><?php print (w('foodinc_howto_adblock') != NULL ? render(w('foodinc_howto_adblock')) : ''); ?></div>
   </section>
 </div>
