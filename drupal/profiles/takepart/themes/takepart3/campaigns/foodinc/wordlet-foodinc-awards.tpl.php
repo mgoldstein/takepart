@@ -20,10 +20,10 @@
       <div class="hero-title"><?php print w('hero_content')->single; ?></div>
       <div class="hero-description"><?php print w('hero_content')->multi; ?></div>
       <div class="learn-more">
-        <p>Interested?</p>
-        <?php foreach( wl('foodinc_awards_hero_links') as $key => $w ): ?>
-          <?php print l($w->single, $w->href); ?>
-        <? endforeach ?>
+<!--         <p>Interested?</p> -->
+        <?php //foreach( wl('foodinc_awards_hero_links') as $key => $w ): ?>
+          <?php // print l($w->single, $w->href); ?>
+        <?php // endforeach; ?>
       </div>
     </div>
   </header>
@@ -66,7 +66,12 @@
   </section>
   <section class="right-rail">
     <div class="ad"><?php print (w('foodinc_awards_adblock') != NULL ? render(w('foodinc_awards_adblock')) : ''); ?></div>
-    <div class="newsletter"><img src="http://placehold.it/300x500"></div>
+    <div class="newsletter">
+      <div class="top"><div class="title"><?php print w('foodinc_awards_stayconnected')->single; ?></div></div>
+      <div class="mid"><?php print w('foodinc_awards_stayconnected')->multi; ?></div>
+      <div class="bottom"></div>
+      <div class="extra"><?php print w('foodinc_awards_stayconnected')->block; ?></div>
+    </div>
   </section>
 </div>
 

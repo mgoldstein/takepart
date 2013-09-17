@@ -1,8 +1,10 @@
 #page-wrapper.foodinc{
-  padding: 10px 20px;
   background: #fff;
   max-width: 1000px;
   width: auto;
+  .page-wrap{
+    margin: 10px;
+  }
   .content{
     margin-top: 20px;
     h2{
@@ -20,6 +22,16 @@
       float: left;
       margin-right: 10px;
     }
+    .hero-title{
+      font-size: 18px;
+      color: #7C2E0B;
+      margin-bottom: 10px;
+      span{
+        display: block;
+        font-size: 24px;
+        font-style: italic;
+      }
+    }
     .learn-more{
       float: right;
       clear: both;
@@ -34,6 +46,7 @@
     background-color: black;
     list-style: none;
     overflow: hidden;
+    margin-top: -3px;
     li{
       display: block;
       float: left;
@@ -42,6 +55,17 @@
       margin: 0;
       padding: 0 25px;
       border-right: 1px dotted #4c4c4c;
+      a{
+        font-size: 19px;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        line-height: 28px;
+        color: #fff;
+        &:hover{
+          text-decoration: none;
+          color: #1CA9E7;
+        }
+      }
     }
   }
   #foodinc-awards{
@@ -69,10 +93,9 @@
           .category-info{
             display: block;
             float: left;
-            width: 430px;
+            width: 400px;
             position: relative;
             z-index: 1;
-            margin-left: -20px;
           }
           .category-text{
             padding-left: 20px;
@@ -152,6 +175,43 @@
     section.right-rail{
       float: right;
       width: 30%;
+      .newsletter{
+        .top{
+          width: 302px;
+          height: 53px;
+          background: url('../images/signup-block-top.jpg') no-repeat top center;
+          .title{
+            padding-top: 30px;
+            padding-left: 30px;
+            font-size: 20px;
+            color: #7C2E0B;
+          }
+        }
+        .mid{
+          width: 302px;
+          height: auto;
+          overflow: hidden;
+          background: url('../images/signup-block-mid.jpg') top center;
+          margin-top: -15px;
+          color: #7C2E0B;
+          p{
+            line-height: 20px;
+            font-size: 12px;
+            padding: 30px;
+          }
+        }
+        .bottom{
+          width: 302px;
+          height: 53px;
+          margin-top: -35px;
+          background: url('../images/signup-block-bottom.jpg') no-repeat bottom center;
+        }
+        .extra{
+          width: 302px;
+          height: 136px;
+          background: url('../images/signup-block-extra.jpg') no-repeat bottom center;
+        }
+      }
     }
   }
   #foodinc-howto{
