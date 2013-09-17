@@ -244,7 +244,6 @@ $drupal_hash_salt = '';
  * runtime settings and the .htaccess file for non-runtime settings. Settings
  * defined there should not be duplicated here so as to avoid conflict issues.
  */
-ini_set('memory_limit', '512M');
 
 /**
  * Some distributions of Linux (most notably Debian) ship their PHP
