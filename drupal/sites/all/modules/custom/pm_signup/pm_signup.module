@@ -245,7 +245,7 @@ function pm_signup_api_parse(&$request) {
 
     // The signup must be an array
     if (!is_array($signup)) {
-      return pm_signup_api_error(400, 'Invalid request format.');
+      return pm_signup_api_error(400, 'Invalid signup format.');
     }
 
     // The signup type is required and must be supported
@@ -299,30 +299,51 @@ function pm_signup_api_callback() {
   // Submit each signup
   $response = array();
   foreach ($request as $signup) {
-    $payload = array('success' => FALSE);
     try {
       pm_signup_queue($signup);
-      $payload['success'] = TRUE;
     }
     catch (SignupNoSuchEndpointException $snsee) {
-      $payload['error'] = 'No such endpoint.';
+      $response[] = array(
+        'type' => $signup['type'],
+        'endpoint' => $signup['endpoint'],
+        'error' => 'No such endpoint.',
+      );
     }
     catch (SignupValidationException $sve) {
-      $payload['error'] = 'Signup validation failed.';
+      $response[] = array(
+        'type' => $signup['type'],
+        'endpoint' => $signup['endpoint'],
+        'error' => 'Signup validation failed.',
+      );
     }
     catch (SignupDuplicateException $sde) {
-      $payload['error'] = 'Duplicate signup.';
+      $response[] = array(
+        'type' => $signup['type'],
+        'endpoint' => $signup['endpoint'],
+        'error' => 'Duplicate signup.',
+      );
     }
     catch (SignupSubmissionException $sse) {
-      $payload['error'] = 'Signup processing failed.';
+      $response[] = array(
+        'type' => $signup['type'],
+        'endpoint' => $signup['endpoint'],
+        'error' => 'Signup processing failed.',
+      );
     }
-    $response[] = $payload;
   }
 
-  // The signups were submitted, return the corresponding responses
+  // If any signups failed, report the reason for the failure
+  if (count($response) > 0) {
+    return array(
+      'status' => '202 Accepted',
+      'payload' => $response,
+    );
+  }
+
+  // All signups were submitted sucessfully
   return array(
     'status' => '200 OK',
-    'payload' => $response,
+    'payload' => '',
   );
 }
 
