@@ -22,6 +22,22 @@
       float: left;
       margin-right: 10px;
     }
+    .video{
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 30px; height: 0; overflow: hidden;
+      @media (max-width: 620px) {
+      width: 100%;
+      max-width: 620px;
+        iframe, object, embed{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
     .hero-title{
       font-size: 18px;
       color: #7C2E0B;
@@ -73,6 +89,9 @@
       width: 68%;
       float: left;
       clear: both;
+      @media (max-width: 1000px) {
+        width: 100%;
+      }
       #foodinc-categories{
         font-size: 14px;
         line-height: 28px;
@@ -138,6 +157,9 @@
           }
           &.row-even{
             float: right;
+            @media (max-width: 1000px) {
+              float: left;
+            }
           }
           img{
             float: left;
@@ -175,7 +197,18 @@
     section.right-rail{
       float: right;
       width: 30%;
+      margin-bottom: 30px;
+      @media (max-width: 1000px) {
+        float: left;
+        width: 100%;
+        clear: both;
+      }
       .newsletter{
+        display: block;
+        @media (max-width: 1000px) {
+          margin: 0 auto;
+          width: 302px;
+        }
         .top{
           width: 302px;
           height: 53px;
