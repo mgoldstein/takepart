@@ -1,5 +1,5 @@
 #page-wrapper.foodinc{
-  padding: 10px;
+  padding: 10px 20px;
   background: #fff;
   max-width: 1000px;
   width: auto;
@@ -7,7 +7,7 @@
     margin-top: 20px;
     h2{
       margin-bottom: 10px;
-      color: #5c2e13;
+      color: #7C2E0B;
     }
   }
   img{
@@ -159,10 +159,105 @@
       width: 68%;
       float: left;
       clear: both;
+      line-height: 28px;
+      font-size: 14px;
+      .page-title h3{
+        font-size: 18px;
+        color: #7C2E0B;
+      }
+      .intro{
+        .title{
+          color: #7C2E0B;
+          font-style: italic;
+          font-size: 18px;
+        }
+        .video, img{
+          margin: 20px 0;
+        }
+      }
+    }
+    .categories{
+      .row{
+        margin: 30px 0;
+      }
+      .title{
+        font-size:10px;
+        color: #7C2E0B;
+        margin-bottom: 10px;
+        span{
+          font-style: italic;
+          font-size: 24px;
+          vertical-align: middle;
+        }
+      }
+    }
+    .additional-info{
+      .row{
+        margin: 20px 0;
+      }
+      .title{
+        font-size: 20px;
+        color: #7C2E0B;
+      }
+      .video, img{
+        margin: 10px 0;
+      }
     }
     section.right-rail{
       float: right;
       width: 30%;
+    }
+    .instruction-block{
+      .top{
+        width: 300px;
+        height: 63px;
+        background: url('../images/instruction-top.jpg') no-repeat top center;
+      }
+      .mid{
+        width: 300px;
+        height: auto;
+        overflow: hidden;
+        background: url('../images/instruction-mid.jpg') top center;
+        margin-top: -15px;
+        color: #7C2E0B;
+        .item{
+          padding: 0 20px;
+          clear: both;
+          margin-bottom: 10px;
+          .number{
+            margin-right: 10px;
+            font-size: 21px;
+            float: left;
+            width: 10px;
+          }
+          span{
+            display: block;
+            margin-left: 20px;
+          }
+        }
+        .button a{
+          background: url('../images/contest-btn.png') top right no-repeat;
+          width: 238px;
+          height: 43px;
+          display: block;
+          margin: 0 auto;
+          text-align: center;
+          line-height: 43px;
+          font-size: 18px;
+          color: #fff;
+        }
+        .extra{
+          padding: 20px;
+          padding-bottom: 0;
+          text-align: center;
+        }
+      }
+      .bottom{
+        width: 300px;
+        height: 63px;
+        background: url('../images/instruction-bottom.jpg') no-repeat top center;
+      }
+
     }
   }
 }
