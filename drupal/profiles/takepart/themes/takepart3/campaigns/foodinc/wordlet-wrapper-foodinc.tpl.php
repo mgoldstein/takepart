@@ -3,9 +3,8 @@
 	global $base_url;
 ?>
 <div id="page-wrapper" class="campaign foodinc">
-	<?=$header ?>
+	<?php print (isset($_REQUEST['signed_request']) ? '' : render($header)); ?>
 
-	<!-- start -->
 
 	<div class="page-wrap">
 		<?=w('background_skin')?>
@@ -31,5 +30,5 @@
 
 	<!-- end -->
 
-	<?=$footer ?>
+  <?php print (isset($_REQUEST['signed_request']) ? '' : render($footer)); ?>
 </div>
