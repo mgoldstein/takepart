@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" id="foodinc-awards">
   <header>
     <h2 class="content-header"><span><?=w('foodinc_title')?></span></h2>
     <div class="hero">
@@ -9,7 +9,7 @@
             <?php $youtube_id = substr(w('hero_content')->video, strrpos(w('hero_content')->video, '=') + 1);; ?>
             <iframe width="520" height="315" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
           <?php else: ?>
-            <script type="text/javascript" src="http://video.takepart.com/players/<?php print w('something')->video; ?>.js"></script>
+            <script type="text/javascript" src="http://video.takepart.com/players/<?php print w('hero_content')->video; ?>.js"></script>
           <?php endif; ?>
         </div>
       <?php else: ?>
@@ -17,8 +17,8 @@
       <?php endif; ?>
 
 
-      <div class="something"><?php print w('hero_content')->single; ?></div>
-      <div class="else"><?php print w('hero_content')->multi; ?></div>
+      <div class="hero-title"><?php print w('hero_content')->single; ?></div>
+      <div class="hero-description"><?php print w('hero_content')->multi; ?></div>
       <div class="learn-more">
         <p>Interested?</p>
         <?php foreach( wl('foodinc_awards_hero_links') as $key => $w ): ?>
@@ -65,10 +65,10 @@
     </div>
   </section>
   <section class="right-rail">
-    <div class="ad"><img src="http://placehold.it/300x250"></div>
+    <div class="ad"><?php print (w('foodinc_awards_adblock') != NULL ? render(w('foodinc_awards_adblock')) : ''); ?></div>
     <div class="newsletter"><img src="http://placehold.it/300x500"></div>
   </section>
 </div>
 
-<?php print $messages; ?>
+
 

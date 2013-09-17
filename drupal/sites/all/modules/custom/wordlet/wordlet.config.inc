@@ -512,10 +512,11 @@ function _wordlet_configuration() {
       'title' => 'FOODINC Campaign',
     ),
 
-    // Food Inc Awards
-    'foodinc_awards' => array(
-      'title' => 'FOODINC - Awards',
-      'path' => 'foodinc/awards',
+
+    // Food Inc About!!!
+    'foodinc_howto' => array(
+      'title' => 'FOODINC - howto',
+      'path' => 'foodinc/awards/about',
       'published' => TRUE,
       'wrappers' => array('foodinc', 'campaign', 'html'),
       'css' => array(
@@ -529,10 +530,10 @@ function _wordlet_configuration() {
       'load' => array('site', 'foodinc_campaign'),
     ),
 
-    // Food Inc News
-    'foodinc_news' => array(
-      'title' => 'FOODINC - News',
-      'path' => 'foodinc/news',
+    // Food Inc Awards
+    'foodinc_awards' => array(
+      'title' => 'FOODINC - Awards',
+      'path' => 'foodinc/awards',
       'published' => TRUE,
       'wrappers' => array('foodinc', 'campaign', 'html'),
       'css' => array(
@@ -563,22 +564,9 @@ function _wordlet_configuration() {
       'load' => array('site', 'foodinc_campaign'),
     ),
 
-    // Food Inc How to Enter
-    'foodinc_howto' => array(
-      'title' => 'FOODINC - How To Enter',
-      'path' => 'foodinc/howto',
-      'published' => TRUE,
-      'wrappers' => array('foodinc', 'campaign', 'html'),
-      'css' => array(
-        'css/normalize_cms.css',
-        'campaigns/foodinc/css/foodinc.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/foodinc/js/foodinc.js',
-      ),
-      'load' => array('site', 'foodinc_campaign'),
-    ),
+
+
+
 
     // -----------------------------
     // CAN Campaign ----------------
