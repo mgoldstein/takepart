@@ -7,7 +7,7 @@
         <div class="video">
           <?php if(substr(w('hero_content')->video, 0, 7 ) === "http://"): ?>
             <?php $youtube_id = substr(w('hero_content')->video, strrpos(w('hero_content')->video, '=') + 1);; ?>
-            <iframe width="635" height="360" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
+            <iframe width="510" height="285" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
           <?php else: ?>
             <script type="text/javascript" src="http://video.takepart.com/players/<?php print w('hero_content')->video; ?>.js"></script>
           <?php endif; ?>
@@ -20,10 +20,10 @@
       <div class="hero-title"><?php print w('hero_content')->single; ?></div>
       <div class="hero-description"><?php print w('hero_content')->multi; ?></div>
       <div class="learn-more">
-<!--         <p>Interested?</p> -->
-        <?php //foreach( wl('foodinc_awards_hero_links') as $key => $w ): ?>
-          <?php // print l($w->single, $w->href); ?>
-        <?php // endforeach; ?>
+      <p>Interested?</p>
+        <?php foreach( wl('foodinc_awards_hero_links') as $key => $w ): ?>
+          <?php print l($w->single, $w->href); ?>
+        <?php endforeach; ?>
       </div>
     </div>
   </header>

@@ -24,11 +24,11 @@
     }
     .video{
       position: relative;
-      @media (max-width: 620px) {
+      @media (max-width: 585px) {
       padding-bottom: 56.25%;
       padding-top: 30px; height: 0; overflow: hidden;
       width: 100%;
-      max-width: 620px;
+      max-width: 585px;
         iframe, object, embed{
           position: absolute;
           top: 0;
@@ -55,6 +55,16 @@
         display: inline-block;
         color: #5c2e13;
         font-size: 18px;
+      }
+      a{
+        background: url("../images/learn-more-submit.png") top center no-repeat;
+        width: 137px;
+        height: 37px;
+        text-align: center;
+        line-height: 37px;
+        color: #fff;
+        font-size: 16px;
+        display: inline-block;
       }
     }
   }
@@ -272,11 +282,11 @@
         }
         .video{
           position: relative;
-          @media (max-width: 620px) {
+          @media (max-width: 585px) {
             padding-bottom: 56.25%;
             padding-top: 30px; height: 0; overflow: hidden;
             width: 100%;
-            max-width: 620px;
+            max-width: 585px;
             iframe, object, embed{
               position: absolute;
               top: 0;
@@ -316,11 +326,11 @@
       }
       .video{
         position: relative;
-        @media (max-width: 620px) {
+        @media (max-width: 585px) {
           padding-bottom: 56.25%;
           padding-top: 30px; height: 0; overflow: hidden;
           width: 100%;
-          max-width: 620px;
+          max-width: 585px;
           iframe, object, embed{
             position: absolute;
             top: 0;

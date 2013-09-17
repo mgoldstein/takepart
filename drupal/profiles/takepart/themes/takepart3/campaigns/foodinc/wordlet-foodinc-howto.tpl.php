@@ -11,7 +11,7 @@
         <div class="video">
           <?php if(substr(w('foodinc_howto_intro')->video, 0, 7 ) === "http://"): ?>
             <?php $youtube_id = substr(w('foodinc_howto_intro')->video, strrpos(w('foodinc_howto_intro')->video, '=') + 1);; ?>
-            <iframe width="635" height="360" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
+            <iframe width="510" height="285" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
           <?php else: ?>
             <script type="text/javascript" src="http://video.takepart.com/players/<?php print w('foodinc_howto_intro')->video; ?>.js"></script>
           <?php endif; ?>
@@ -41,7 +41,7 @@
             <div class="video">
               <?php if(substr($w->video, 0, 7 ) === "http://"): ?>
                 <?php $youtube_id = substr($w->video, strrpos($w->video, '=') + 1);; ?>
-                <iframe width="635" height="360" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
+                <iframe width="510" height="285" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
               <?php else: ?>
                 <script type="text/javascript" src="http://video.takepart.com/players/<?php print w('foodinc_howto_additional_info')->video; ?>.js"></script>
               <?php endif; ?>
