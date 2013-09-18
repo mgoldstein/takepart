@@ -5,14 +5,6 @@
 function takepart_metatags_init() {
 
    $extra_meta_tags = array(
-      'facebook_page' => array(
-            '#type' => 'html_tag',
-            '#tag' => 'meta',
-            '#attributes' => array(
-                'property' => 'fb:page_id',
-                'content' =>  '9287842439'
-            ),
-       ),
        'facebook_app' => array(
            '#type' => 'html_tag',
            '#tag' => 'meta',
@@ -26,7 +18,7 @@ function takepart_metatags_init() {
            '#tag' => 'meta',
            '#attributes' => array(
                'property' => 'fb:admins',
-               'content' =>  '789650214,1327833247'
+               'content' =>  '789650214,1327833247,792568495,658568746,13304443,100003533144273,721281337'
            ),
        ),
    );
