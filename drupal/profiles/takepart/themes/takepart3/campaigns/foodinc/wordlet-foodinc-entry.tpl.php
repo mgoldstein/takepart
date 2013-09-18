@@ -14,7 +14,9 @@
       </section>
     <? endforeach ?>
   </section>
+
   <section class="entry-form-container right-rail">
     <?= w('entry_form') ?>
   </section>
+
 </div>
