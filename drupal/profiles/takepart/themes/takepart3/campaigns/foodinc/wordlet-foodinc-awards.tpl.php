@@ -8,7 +8,7 @@
             <?php $youtube_id = substr(w('hero_content')->video, strrpos(w('hero_content')->video, '=') + 1);; ?>
             <iframe width="510" height="285" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
           <?php else: ?>
-            <script type="text/javascript" src="http://video.takepart.com/players/<?php print w('hero_content')->video; ?>.js"></script>
+            <div class="botr"><script type="text/javascript" src="http://video.takepart.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
           <?php endif; ?>
         </div>
       <?php else: ?>
