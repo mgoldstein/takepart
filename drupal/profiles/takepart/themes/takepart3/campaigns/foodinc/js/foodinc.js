@@ -12,7 +12,35 @@
       });
     }
   }
+  Drupal.behaviors.tpSocial={
+    attach: function(context) {
+      var tp_social_config = {
+        url_append: '?cmpid=organic-share-{{name}}',
+        services: [
+          {name: 'facebook'},
+          {
+            name: 'twitter',
+            text: '{{title}}',
+            via: 'TakePart'
+          },
+          {name: 'googleplus'},
+          {name: 'email'}
+        ]
+      };
+      $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+    }
+  }
+
 })(jQuery, Drupal, this, this.document);
+
+
+
+
+
+
+
+
+
 
 
 
