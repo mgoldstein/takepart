@@ -50,8 +50,6 @@
             <base href="<?php print 'http://' . $_SERVER['HTTP_HOST']; ?>" target="_parent" />
         <? endif ?>
         <meta name="viewport" content="width=device-width">
-        <meta property="fb:admins" content="1327833247" />
-        <meta property="fb:app_id" content="247137505296280" />
         <?php print $styles; ?>
         <!--[if lt IE 9]>
             <script src="/sites/all/themes/takepart_core/js/html5shiv.js"></script>
