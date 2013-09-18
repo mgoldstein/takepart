@@ -8,8 +8,6 @@
 	  ),
 	);
 	drupal_add_html_head($element, 'archer');
-	drupal_add_html_head($element, 'archer screensmart semibold italic');
-	drupal_add_js(drupal_get_path('module', 'dhtml_menu') .'/dhtml_menu.js');
 ?>
 
 
