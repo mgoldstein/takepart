@@ -1,5 +1,4 @@
 <div class="content" id="foodinc-entryreceived">
-  <h2>FOOD, INC. AWARDS 2013</h2> <!--how to add it back -->
   <section class="page-body-content cms">
 
     <!-- Entry Received  -->

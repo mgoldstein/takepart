@@ -1,6 +1,5 @@
 <div class="content" id="foodinc-awards">
   <header>
-    <h2 class="content-header"><span><?=w('foodinc_title')?></span></h2>
     <div class="hero">
 
       <?php if(w('hero_content')->video != NULL): ?>
