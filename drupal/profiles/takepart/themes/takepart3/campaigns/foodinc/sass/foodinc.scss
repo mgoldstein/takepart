@@ -490,6 +490,7 @@
               font-size: 18px;
               color: #fff;
               cursor: pointer;
+              white-space: nowrap;
               &:hover{
                 text-decoration: underline;
               }
@@ -673,6 +674,7 @@
           line-height: 43px;
           font-size: 18px;
           color: #fff;
+          white-space: nowrap;
         }
         .extra{
           padding: 20px;

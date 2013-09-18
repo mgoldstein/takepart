@@ -8,6 +8,7 @@
 	  ),
 	);
 	drupal_add_html_head($element, 'archer');
+	drupal_add_js('//connect.facebook.net/en_US/all.js');
 ?>
 
 
