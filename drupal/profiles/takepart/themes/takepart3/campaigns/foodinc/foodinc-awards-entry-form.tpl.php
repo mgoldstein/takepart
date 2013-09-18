@@ -1,5 +1,11 @@
 <?php $form = $variables['element']; ?>
 
+<!-- BEGIN REQUIRED DRUPAL STUFF -->
+<?php print render($form['form_build_id']); ?>
+<?php print render($form['form_token']); ?>
+<?php print render($form['form_id']); ?>
+<!-- END -->
+
 <!-- BEGIN -->
 <?php print render($form['about_you_heading']); ?>
 <!-- END -->
