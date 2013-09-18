@@ -223,6 +223,12 @@ $(function() {
 		var $gallery_main = $('#gallery-main');
 		var $slides = $('#gallery-content > ul');
 		var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
+                var query = '';
+                if(base_url.indexOf('?') > 0) {
+       	            query = base_url.substring(base_url.indexOf('?'), base_url.length);
+                    base_url = base_url.substring(0,base_url.indexOf('?'));
+                }
+                
 		var $fb_comment = $('.fb_comments');
 		var fb_comment_el = $fb_comment[0];
 
@@ -351,9 +357,9 @@ $(function() {
 
 			if ( !has_history() ) return;
 			if ( replace ) {
-				history.replaceState(null, title, base_url + '/' + token);
+				history.replaceState(null, title, base_url + '/' + token + query);
 			} else {
-				history.pushState(null, title, base_url + '/' + token);
+				history.pushState(null, title, base_url + '/' + token + query);
 			}
 		};
 
