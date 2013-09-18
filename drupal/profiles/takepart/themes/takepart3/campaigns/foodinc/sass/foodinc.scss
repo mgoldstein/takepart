@@ -68,7 +68,7 @@
       }
     }
   }
-  ul#main-navigation.menu{
+  #main-navigation ul{
     background-color: black;
     list-style: none;
     overflow: hidden;
@@ -87,7 +87,7 @@
         text-transform: uppercase;
         line-height: 28px;
         color: #fff;
-        &:hover{
+        &:hover, &.active, &.active-trail{
           text-decoration: none;
           color: #1CA9E7;
         }
