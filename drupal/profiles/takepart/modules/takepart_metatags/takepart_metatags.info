@@ -1,6 +1,0 @@
-name = TakePart Meta Tags
-description = Custom Meta Tags
-package = TakePart
-core = 7.x
-files[] = takepart_metatags.module
-files[] = takepart_metatags.install
