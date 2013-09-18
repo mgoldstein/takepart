@@ -25,6 +25,9 @@
     font-size: 14px;
     line-height: 28px;
     margin-left: 20px;
+    @media (max-width: 480px) {
+      margin-left: 5px;
+    }
     img, .video{
       float: left;
       margin-right: 30px;
@@ -32,11 +35,19 @@
     }
     .video{
       position: relative;
+      max-width: 510px;
+      width: 100%;
+      .botr {
+        width: 100%;
+        object{
+          max-width: 100%;
+        }
+      }
       @media (max-width: 585px) {
       padding-bottom: 56.25%;
       padding-top: 30px; height: 0; overflow: hidden;
       width: 100%;
-      max-width: 585px;
+      max-width: 510px;
         iframe, object, embed{
           position: absolute;
           top: 0;
@@ -60,6 +71,10 @@
     .learn-more{
       float: right;
       clear: both;
+      @media (max-width: 480px) {
+        float: none;
+        margin: 20px 0;
+      }
       p{
         display: inline-block;
         color: #5c2e13;
@@ -70,6 +85,9 @@
         vertical-align: top;
         margin-top: 10px;
         margin-right: 5px;
+        @media (max-width: 480px) {
+          display: none;
+        }
       }
       a{
         background: image-url("learn-more-submit.png") top center no-repeat;
@@ -173,6 +191,9 @@
           .image{
             float: right;
             margin-left: 10px;
+            @media (max-width: 480px) {
+              margin: 0;
+            }
           }
           .category-info{
             display: block;
@@ -184,7 +205,10 @@
         .row-even{
           .image{
             float: left;
-            margin-right: 10px
+            margin-right: 10px;
+            @media (max-width: 480px) {
+              margin: 0;
+            }
           }
           .category-info{
             display: block;
@@ -314,29 +338,48 @@
       clear: both;
       line-height: 28px;
       font-size: 14px;
+      margin-left: 20px;
       @media (max-width: 1000px) {
         width: 100%;
       }
+      @media (max-width: 680px) {
+        margin-left: 0;
+      }
       .page-title h3{
-        font-size: 18px;
+        font-size: 23px;
         color: #5c2e13;
+        font-family: 'Archer A', 'Archer B';
+        font-weight: 800;
+        font-style: normal;
+        margin: 5px 0;
       }
       .intro{
         .title{
           color: #5c2e13;
+          font-family: 'Archer A', 'Archer B';
+          font-weight: 500;
           font-style: italic;
-          font-size: 18px;
+          font-size: 33px;
+          margin-bottom: 5px;
         }
         .video, img{
           margin: 20px 0;
         }
         .video{
           position: relative;
-          @media (max-width: 585px) {
+          max-width: 635px;
+          margin: 0;
+          .botr {
+            width: 100%;
+            object{
+              max-width: 100%;
+            }
+          }
+          @media (max-width: 6355px) {
             padding-bottom: 56.25%;
             padding-top: 30px; height: 0; overflow: hidden;
             width: 100%;
-            max-width: 585px;
+            max-width: 635px;
             iframe, object, embed{
               position: absolute;
               top: 0;
@@ -353,13 +396,17 @@
         margin: 30px 0;
       }
       .title{
-        font-size:10px;
+        font-family: 'Archer A', 'Archer B'; font-weight: 500; font-style: italic;
+        font-size: 32px;
         color: #5c2e13;
-        margin-bottom: 10px;
         span{
-          font-style: italic;
-          font-size: 24px;
-          vertical-align: middle;
+          font-size: 11px;
+          font-style: normal;
+          font-family: Helvetica, Arial, sans-serif;
+          vertical-align: top;
+          padding-top: 10px;
+          line-height: 35px;
+          color: #555;
         }
       }
     }
@@ -368,8 +415,9 @@
         margin: 20px 0;
       }
       .title{
-        font-size: 20px;
+        font-size: 24px;
         color: #5c2e13;
+        font-family: 'Archer A', 'Archer B'; font-weight: 800; font-style: normal;
       }
       .video, img{
         margin: 10px 0;
@@ -402,10 +450,6 @@
       }
     }
     .instruction-block{
-      @media (max-width: 1000px) {
-        width: 300px;
-        margin: 0 auto;
-      }
       .top{
         width: 300px;
         height: 63px;
