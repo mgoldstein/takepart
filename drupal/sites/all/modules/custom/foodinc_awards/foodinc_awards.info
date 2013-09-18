@@ -1,0 +1,5 @@
+name = Food Inc. Awards Campaign Support
+description = Functional support for the Food Inc. Awards campaign.
+core = 7.x
+version = 7.x-1.0
+package = TakePart Campaigns
