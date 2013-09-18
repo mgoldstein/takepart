@@ -3,7 +3,7 @@
   <section class="left-rail">
     <? foreach (wl('howto_section') as $ws): ?>
       <section>
-        <h2><?= $ws->single ?><span><?= $ws->img_src ?></span></h2>
+        <h3><?= $ws->single ?><span><?= $ws->img_src ?></span></h3>
         <? if ($wis = wl($ws->token . '_items')): ?>
           <ul <?= wa($ws->token . '_items') ?>>
             <? foreach ($wis as $wi): ?>

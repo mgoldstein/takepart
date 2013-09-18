@@ -32,6 +32,13 @@
 						<?php print render($block['content']); ?>
 				</div>
 					<div class="logo"><img src="<?php print w('foodin_logo')->img_src; ?>" alt="<?php print w('foodin_logo')->single; ?>"></div>
+
+				<aside id="foodinc-social" class="social">
+					<h3 class="headline"><?php print t('SHARE'); ?></h3>
+					<div class="tp-social"></div>
+				</aside>
+
+
 			</header>
 			<main id="page">
 				<?=$content?>
