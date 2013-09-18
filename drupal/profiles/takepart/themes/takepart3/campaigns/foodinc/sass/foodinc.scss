@@ -753,6 +753,47 @@
       float: right;
       width: 570px;
     }
+
+    .entry-form-container {
+      section {
+        margin-bottom: 30px;
+        padding: 0px 15px 1px 15px;
+        background: image-url('entry-form-bg.jpg');
+        header {
+          padding: 25px 15px 1px 15px;
+          background:
+            image-url('entry-title-top.jpg') no-repeat -15px 0,
+            image-url('entry-title-mid.jpg') repeat-y -15px 0,
+            image-url('entry-title-bottom.jpg') no-repeat -15px bottom;
+            p {
+              color: $primary-color;
+              font: normal 12px/150% $body-font;
+            }
+        }
+        fieldset {
+          border: none;
+          label {
+            font: bold 14px/150% $header-font;
+            color: $primary-color;
+            text-transform: uppercase;
+          }
+          .form-text {
+            padding: 5px;
+            @include box-shadow(-1px 2px 3px #eee inset);
+            border: 1px solid #ddd;
+            font: normal 14px $header-font;
+            margin: 0;
+          }
+          &.column2 {
+            @include inline-block;
+            width: 48%;
+            &:nth-child(odd) {
+              margin-right: 15px;
+            }
+          }
+        }
+      }
+    }
   }
 }
 

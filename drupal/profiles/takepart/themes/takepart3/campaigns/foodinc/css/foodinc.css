@@ -133,7 +133,7 @@
 }
 /* line 95, ../sass/foodinc.scss */
 #page-wrapper.foodinc .hero .learn-more a {
-  background: url('../images/learn-more-submit.png?1379445211') top center no-repeat;
+  background: url('../images/learn-more-submit.png?1379472611') top center no-repeat;
   width: 137px;
   height: 37px;
   text-align: center;
@@ -212,72 +212,72 @@
 }
 /* line 165, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-facebook {
-  background-image: url('../images/share_facebook.png?1379534887');
+  background-image: url('../images/share_facebook.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 169, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-twitter {
-  background-image: url('../images/share_twitter.png?1379534887');
+  background-image: url('../images/share_twitter.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 173, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-googleplus {
-  background-image: url('../images/share_google.png?1379534887');
+  background-image: url('../images/share_google.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 177, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-email {
-  background-image: url('../images/share_email.png?1379534887');
+  background-image: url('../images/share_email.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 181, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-reddit {
-  background-image: url('../images/share_reddit.png?1379534887');
+  background-image: url('../images/share_reddit.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 185, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-pinterest {
-  background-image: url('../images/share_pinterest.png?1379534887');
+  background-image: url('../images/share_pinterest.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 189, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-tumblr {
-  background-image: url('../images/share_tumblr.png?1379534887');
+  background-image: url('../images/share_tumblr.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 194, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-facebook:hover {
-  background-image: url('../images/share_facebook_rollover.png?1379534887');
+  background-image: url('../images/share_facebook_rollover.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 198, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-twitter:hover {
-  background-image: url('../images/share_twitter_rollover.png?1379534887');
+  background-image: url('../images/share_twitter_rollover.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 202, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-googleplus:hover {
-  background-image: url('../images/share_google_rollover.png?1379534887');
+  background-image: url('../images/share_google_rollover.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 206, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-email:hover {
-  background-image: url('../images/share_email_rollover.png?1379534887');
+  background-image: url('../images/share_email_rollover.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 210, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-reddit:hover {
-  background-image: url('../images/share_reddit_rollover.png?1379534887');
+  background-image: url('../images/share_reddit_rollover.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 214, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-pinterest:hover {
-  background-image: url('../images/share_pinterest_rollover.png?1379534887');
+  background-image: url('../images/share_pinterest_rollover.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 218, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-tumblr:hover {
-  background-image: url('../images/share_tumblr_rollover.png?1379534887');
+  background-image: url('../images/share_tumblr_rollover.png?1379539108');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 223, ../sass/foodinc.scss */
@@ -296,7 +296,7 @@
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories {
   font-size: 14px;
   line-height: 28px;
-  font-family: "Helvetica, Arial, sans-serif";
+  font-family: Helvetica, Arial, sans-serif;
 }
 /* line 234, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row {
@@ -324,7 +324,7 @@
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row .categories-title span {
   font-size: 11px;
   font-style: normal;
-  font-family: "Helvetica, Arial, sans-serif";
+  font-family: Helvetica, Arial, sans-serif;
   vertical-align: top;
   padding-top: 10px;
   line-height: 35px;
@@ -529,7 +529,7 @@
   width: 302px;
   height: auto;
   overflow: hidden;
-  background: url('../images/signup-block-top.jpg?1379431464'), url('../images/signup-block-extra.jpg?1379431464');
+  background: url('../images/signup-block-top.jpg?1379472611'), url('../images/signup-block-extra.jpg?1379472611');
   background-position: center top, top center;
   background-repeat: no-repeat, repeat-y;
   margin-top: -50px;
@@ -543,7 +543,7 @@
   line-height: 18px;
   font-size: 12px;
   margin-top: 35px;
-  background: url('../images/signup-block-mid.jpg?1379431464'), url('../images/signup-block-bottom.jpg?1379431464');
+  background: url('../images/signup-block-mid.jpg?1379472611'), url('../images/signup-block-bottom.jpg?1379472611');
   background-position: center top, center bottom;
   background-repeat: repeat-y, no-repeat;
 }
@@ -588,7 +588,7 @@
 }
 /* line 461, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form input[type='text'] {
-  background: url('../images/signup-input.png?1379431464') top center;
+  background: url('../images/signup-input.png?1379472611') top center;
   height: 34px;
   width: 275px;
   border: none;
@@ -598,7 +598,7 @@
 }
 /* line 470, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form input[type='submit'] {
-  background: url('../images/singup-btn.png?1379431464') top center;
+  background: url('../images/singup-btn.png?1379472611') top center;
   height: 44px;
   width: 275px;
   border: none;
@@ -702,7 +702,7 @@
 #page-wrapper.foodinc #foodinc-howto .categories .title span {
   font-size: 11px;
   font-style: normal;
-  font-family: "Helvetica, Arial, sans-serif";
+  font-family: Helvetica, Arial, sans-serif;
   vertical-align: top;
   padding-top: 10px;
   line-height: 35px;
@@ -773,14 +773,14 @@
 #page-wrapper.foodinc #foodinc-howto .instruction-block .top {
   width: 300px;
   height: 63px;
-  background: url('../images/instruction-top.jpg?1379401670') no-repeat top center;
+  background: url('../images/instruction-top.jpg?1379472611') no-repeat top center;
 }
 /* line 615, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid {
   width: 300px;
   height: auto;
   overflow: hidden;
-  background: url('../images/instruction-mid.jpg?1379401670') top center;
+  background: url('../images/instruction-mid.jpg?1379472611') top center;
   margin-top: -15px;
   color: #5c2e13;
 }
@@ -807,7 +807,7 @@
 }
 /* line 638, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .button a {
-  background: url('../images/contest-btn.png?1379401670') top right no-repeat;
+  background: url('../images/contest-btn.png?1379472611') top right no-repeat;
   width: 238px;
   height: 43px;
   display: block;
@@ -827,7 +827,7 @@
 #page-wrapper.foodinc #foodinc-howto .instruction-block .bottom {
   width: 300px;
   height: 63px;
-  background: url('../images/instruction-bottom.jpg?1379401670') no-repeat top center;
+  background: url('../images/instruction-bottom.jpg?1379472611') no-repeat top center;
 }
 /* line 663, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived section.page-body-content {
@@ -866,19 +866,19 @@
 }
 /* line 691, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .facebook {
-  background: url('../images/social_long_fb.png?1379455007') no-repeat top center;
+  background: url('../images/social_long_fb.png?1379472611') no-repeat top center;
 }
 /* line 694, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .twitter {
-  background: url('../images/social_long_twitter.png?1379455007') no-repeat top center;
+  background: url('../images/social_long_twitter.png?1379472611') no-repeat top center;
 }
 /* line 697, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .googleplus {
-  background: url('../images/social_long_google.png?1379455007') no-repeat top center;
+  background: url('../images/social_long_google.png?1379472611') no-repeat top center;
 }
 /* line 700, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .email {
-  background: url('../images/social_long_email.png?1379455007') no-repeat top center;
+  background: url('../images/social_long_email.png?1379472611') no-repeat top center;
 }
 /* line 704, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived section.right-rail {
@@ -924,39 +924,39 @@
 }
 /* line 734, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-1 {
-  background-image: url('../images/entry-bullets/bullet-1.png?1379534887');
+  background-image: url('../images/entry-bullets/bullet-1.png?1379534603');
 }
 /* line 735, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-2 {
-  background-image: url('../images/entry-bullets/bullet-2.png?1379534887');
+  background-image: url('../images/entry-bullets/bullet-2.png?1379534603');
 }
 /* line 736, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-3 {
-  background-image: url('../images/entry-bullets/bullet-3.png?1379534887');
+  background-image: url('../images/entry-bullets/bullet-3.png?1379534603');
 }
 /* line 737, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-action {
-  background-image: url('../images/entry-bullets/bullet-action.png?1379534887');
+  background-image: url('../images/entry-bullets/bullet-action.png?1379534603');
 }
 /* line 738, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-camera {
-  background-image: url('../images/entry-bullets/bullet-camera.png?1379534887');
+  background-image: url('../images/entry-bullets/bullet-camera.png?1379534603');
 }
 /* line 739, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-clean {
-  background-image: url('../images/entry-bullets/bullet-clean.png?1379534887');
+  background-image: url('../images/entry-bullets/bullet-clean.png?1379534603');
 }
 /* line 740, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-focus {
-  background-image: url('../images/entry-bullets/bullet-focus.png?1379534887');
+  background-image: url('../images/entry-bullets/bullet-focus.png?1379534603');
 }
 /* line 741, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-lights {
-  background-image: url('../images/entry-bullets/bullet-lights.png?1379534887');
+  background-image: url('../images/entry-bullets/bullet-lights.png?1379534603');
 }
 /* line 742, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-pencil {
-  background-image: url('../images/entry-bullets/bullet-pencil.png?1379534887');
+  background-image: url('../images/entry-bullets/bullet-pencil.png?1379534603');
 }
 /* line 744, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li p {
@@ -972,4 +972,54 @@
   *display: inline;
   float: right;
   width: 570px;
+}
+/* line 753, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section {
+  margin-bottom: 30px;
+  padding: 0px 15px 1px 15px;
+  background: url('../images/entry-form-bg.jpg?1379472611');
+}
+/* line 757, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section header {
+  padding: 25px 15px 1px 15px;
+  background: url('../images/entry-title-top.jpg?1379472611') no-repeat -15px 0, url('../images/entry-title-mid.jpg?1379472611') repeat-y -15px 0, url('../images/entry-title-bottom.jpg?1379472611') no-repeat -15px bottom;
+}
+/* line 763, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section header p {
+  color: #5c2e13;
+  font: normal 12px/150% Helvetica, Arial, sans-serif;
+}
+/* line 768, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset {
+  border: none;
+}
+/* line 770, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset label {
+  font: bold 14px/150% "Archer A", "Archer B";
+  color: #5c2e13;
+  text-transform: uppercase;
+}
+/* line 775, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text {
+  padding: 5px;
+  -webkit-box-shadow: -1px 2px 3px #eeeeee inset;
+  -moz-box-shadow: -1px 2px 3px #eeeeee inset;
+  box-shadow: -1px 2px 3px #eeeeee inset;
+  border: 1px solid #ddd;
+  font: normal 14px "Archer A", "Archer B";
+  margin: 0;
+}
+/* line 782, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset.column2 {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  width: 48%;
+}
+/* line 785, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset.column2:nth-child(odd) {
+  margin-right: 15px;
 }
