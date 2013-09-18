@@ -35,7 +35,7 @@
           <div class="image"><img src="<?php print $w->img_src; ?>"></div>
           <div class="category-info">
             <div class="category-title"><h2>THE CATEGORIES</h2></div>
-            <div class="category-title"><?php print $w->single; ?></div>
+            <div class="categories-title"><?php print $w->single; ?></div>
             <div class="category-text"><?php print $w->multi; ?></div>
           </div>
         </div>
@@ -43,14 +43,14 @@
         <div class="row row-id-<?php print $key; ?> <?php print ($key % 2 == 0 ? 'row-even' : 'row-odd'); ?>">
           <div class="image"><img src="<?php print $w->img_src; ?>"></div>
           <div class="category-info">
-            <div class="category-title"><?php print $w->single; ?></div>
+            <div class="categories-title"><?php print $w->single; ?></div>
             <div class="category-text"><?php print $w->multi; ?></div>
           </div>
         </div>
       <?php endif; ?>
       <? endforeach ?>
     </div> <!-- end categories -->
-    <div class="judges">
+    <div class="judges" id="judges">
       <h2>THE JUDGES</h2>
       <?php foreach( wl('foodinc_awards_judges') as $key => $w ): ?>
         <div class="row row-id-<?php print $key; ?> <?php print ($key % 2 == 0 ? 'row-odd' : 'row-even'); ?>">
