@@ -28,7 +28,6 @@ function foodinc_awards_configuration_defaults($config) {
     'contest_rules_opt_in_label' => 'I agree to the <a href="" target="_blank">Official Contest Rules</a> and <a href="" target="_blank">Submission Agreement</a>',
     'terms_of_service_message' => '<p>By clicking "Submit" below, I agree to be bound by <a href="/privacy-policy" target="_blank">TakePart\'s Privacy Policy</a> and <a href="/terms-of-use" target="_blank">Terms of Use</a></p>',
     'submit_entry_label' => 'Submit Entry',
-
   );
   foreach ($default_config as $name => $value) {
     if (!isset($config[$name])) {
@@ -50,7 +49,7 @@ function foodinc_awards_split_list($value) {
   $lines = array_filter($trimmed, 'strlen');
   $options = array();
   foreach ($lines as $line) {
-    $pieces = split($line,'|');
+    $pieces = split('\|', $line);
     if (count($pieces) === 2) {
       $options[$pieces[0]] = $pieces[1];
     }
@@ -63,20 +62,14 @@ function foodinc_awards_entry_configuration($form, $config) {
 
   $config = foodinc_awards_configuration_defaults($config);
 
-  $form['about_you'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('About You Section'),
-    '#tree' => FALSE,
-  );
-
-  $form['about_you']['about_you_section_label'] = array(
+  $form['about_you_section_label'] = array(
     '#type' => 'textfield',
     '#maxlength' => 255,
     '#title' => t('About you section label'),
     '#default_value' => $config['about_you_section_label'],
   );
 
-  $form['about_you']['about_you_section_desc'] = array(
+  $form['about_you_section_desc'] = array(
     '#type' => 'textarea',
     '#title' => t('About you section description'),
     '#default_value' => $config['about_you_section_desc'],
@@ -95,7 +88,7 @@ function foodinc_awards_entry_configuration($form, $config) {
   );
 
   foreach ($about_you_field_labels as $name => $title) {
-    $form['about_you'][$name] = array(
+    $form[$name] = array(
       '#type' => 'textfield',
       '#maxlength' => 255,
       '#title' => $title,
@@ -103,107 +96,97 @@ function foodinc_awards_entry_configuration($form, $config) {
     );
   }
 
-  $form['about_you']['lifestyle_award_desc'] = array(
+  $form['lifestyle_award_desc'] = array(
     '#type' => 'textarea',
     '#title' => t('Lifestyle award description'),
     '#default_value' => $config['lifestyle_award_desc'],
   );
 
-  $form['about_you']['pioneer_award_desc'] = array(
+  $form['pioneer_award_desc'] = array(
     '#type' => 'textarea',
     '#title' => t('Pioneer award description'),
     '#default_value' => $config['pioneer_award_desc'],
   );
 
-  $form['about_you']['dob_month_list'] = array(
+  $form['dob_month_list'] = array(
     '#type' => 'textarea',
     '#title' => t('Date of birth month list'),
     '#default_value' => $config['dob_month_list'],
   );
 
-  $form['about_you']['dob_year_list'] = array(
+  $form['dob_year_list'] = array(
     '#type' => 'textarea',
     '#title' => t('Date of birth year list'),
     '#default_value' => $config['dob_year_list'],
   );
 
-  $form['about_you']['state_list'] = array(
+  $form['state_list'] = array(
     '#type' => 'textarea',
     '#title' => t('State list'),
     '#default_value' => $config['state_list'],
   );
 
-  $form['your_video'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Your video Section'),
-    '#tree' => FALSE,
-  );
-
-  $form['your_video']['your_video_section_label'] = array(
+  $form['your_video_section_label'] = array(
     '#type' => 'textfield',
     '#maxlength' => 255,
     '#title' => t('Your video section label'),
     '#default_value' => $config['your_video_section_label'],
   );
 
-  $form['your_video']['your_video_section_desc'] = array(
+  $form['your_video_section_desc'] = array(
     '#type' => 'textarea',
     '#title' => t('Your video section description'),
     '#default_value' => $config['your_video_section_desc'],
   );
 
-  $form['your_video']['video_link_label'] = array(
+  $form['video_link_label'] = array(
     '#type' => 'textfield',
     '#maxlength' => 255,
     '#title' => t('Video link field label'),
     '#default_value' => $config['video_link_label'],
   );
 
-  $form['submission'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Submission Section'),
-    '#tree' => FALSE,
-  );
-
-  $form['submission']['submission_section_label'] = array(
+  $form['submission_section_label'] = array(
     '#type' => 'textfield',
     '#maxlength' => 255,
     '#title' => t('Submission section label'),
     '#default_value' => $config['submission_section_label'],
   );
 
-  $form['submission']['submission_section_desc'] = array(
+  $form['submission_section_desc'] = array(
     '#type' => 'textarea',
     '#title' => t('Submission section description'),
     '#default_value' => $config['submission_section_desc'],
   );
 
-  $form['submission']['newsletter_opt_in_label'] = array(
+  $form['newsletter_opt_in_label'] = array(
     '#type' => 'textfield',
     '#maxlength' => 255,
     '#title' => t('Newsletter opt-in field label'),
     '#default_value' => $config['newsletter_opt_in_label'],
   );
 
-  $form['submission']['contest_rules_opt_in_label'] = array(
+  $form['contest_rules_opt_in_label'] = array(
     '#type' => 'textfield',
     '#maxlength' => 255,
     '#title' => t('Rules and submission opt-in field label'),
     '#default_value' => $config['contest_rules_opt_in_label'],
   );
 
-  $form['submission']['terms_of_service_message'] = array(
+  $form['terms_of_service_message'] = array(
     '#type' => 'textarea',
     '#title' => t('Terms of service message'),
     '#default_value' => $config['terms_of_service_message'],
   );
 
-  $form['submission']['submit_entry_label'] = array(
+  $form['submit_entry_label'] = array(
     '#type' => 'textfield',
     '#maxlength' => 255,
     '#title' => t('Submit entry button label'),
     '#default_value' => $config['submit_entry_label'],
   );
+
+  return $form;
 }
 
 function foodinc_awards_entry_form($form, &$form_state, $config) {
@@ -343,6 +326,24 @@ function foodinc_awards_entry_form($form, &$form_state, $config) {
 
   $form['submit'] = array(
     '#type' => 'submit',
-    '#title' => $config['submit_entry_label'],
+    '#value' => $config['submit_entry_label'],
   );
+
+  return $form;
+}
+
+function foodinc_awards_theme($existing, $type, $theme, $path) {
+  return array(
+    'foodinc_awards_entry_form' => array(
+      'render element' => 'element',
+    ),
+  );
+}
+
+function foodinc_awards_preprocess_foodinc_awards_entry_form(&$variables) {
+  $variables['theme_hook_suggestions'][] = 'foodinc-awards-entry-form';
+}
+
+function theme_foodinc_awards_entry_form($variables) {
+  return drupal_render_children($variables['element']);
 }
