@@ -567,6 +567,9 @@
       .row{
         margin: 20px 0;
       }
+      li{
+        margin: 0;
+      }
       .title{
         font-size: 24px;
         color: $primary-color;
@@ -603,6 +606,7 @@
       }
     }
     .instruction-block{
+      line-height: 17px;
       .top{
         width: 300px;
         height: 63px;
@@ -624,10 +628,11 @@
             font-size: 21px;
             float: left;
             width: 10px;
+            font-family: $header-font; font-weight: 800; font-style: normal;
           }
           span{
             display: block;
-            margin-left: 20px;
+            margin-left: 30px;
           }
         }
         .button a{
