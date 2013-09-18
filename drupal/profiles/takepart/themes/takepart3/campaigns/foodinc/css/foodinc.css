@@ -1,13 +1,16 @@
-/* line 1, ../sass/foodinc.scss */
+/* line 4, ../sass/foodinc.scss */
 #page-wrapper.foodinc {
   background: #fff;
   max-width: 1000px;
   width: auto;
 }
+<<<<<<< HEAD
 /* line 5, ../sass/foodinc.scss */
 #page-wrapper.foodinc .ad {
   margin: 30px 0;
 }
+=======
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 /* line 8, ../sass/foodinc.scss */
 #page-wrapper.foodinc .page-wrap {
   margin: 10px;
@@ -31,18 +34,30 @@
   line-height: 28px;
   margin-left: 20px;
 }
+<<<<<<< HEAD
 /* line 25, ../sass/foodinc.scss */
+=======
+/* line 24, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc .hero img, #page-wrapper.foodinc .hero .video {
   float: left;
   margin-right: 30px;
   margin-bottom: 20px;
 }
+<<<<<<< HEAD
 /* line 30, ../sass/foodinc.scss */
+=======
+/* line 28, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc .hero .video {
   position: relative;
 }
 @media (max-width: 585px) {
+<<<<<<< HEAD
   /* line 30, ../sass/foodinc.scss */
+=======
+  /* line 28, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc .hero .video {
     padding-bottom: 56.25%;
     padding-top: 30px;
@@ -51,7 +66,11 @@
     width: 100%;
     max-width: 585px;
   }
+<<<<<<< HEAD
   /* line 37, ../sass/foodinc.scss */
+=======
+  /* line 35, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc .hero .video iframe, #page-wrapper.foodinc .hero .video object, #page-wrapper.foodinc .hero .video embed {
     position: absolute;
     top: 0;
@@ -60,7 +79,11 @@
     height: 100%;
   }
 }
+<<<<<<< HEAD
 /* line 46, ../sass/foodinc.scss */
+=======
+/* line 44, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc .hero .hero-title {
   font-size: 21px;
   color: #5c2e13;
@@ -69,7 +92,11 @@
   font-weight: 800;
   font-style: italic;
 }
+<<<<<<< HEAD
 /* line 51, ../sass/foodinc.scss */
+=======
+/* line 48, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc .hero .hero-title span {
   display: block;
   font-size: 33px;
@@ -77,12 +104,20 @@
   font-weight: 500;
   font-style: italic;
 }
+<<<<<<< HEAD
 /* line 57, ../sass/foodinc.scss */
+=======
+/* line 54, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc .hero .learn-more {
   float: right;
   clear: both;
 }
+<<<<<<< HEAD
 /* line 60, ../sass/foodinc.scss */
+=======
+/* line 57, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc .hero .learn-more p {
   display: inline-block;
   color: #5c2e13;
@@ -94,9 +129,13 @@
   margin-top: 10px;
   margin-right: 5px;
 }
+<<<<<<< HEAD
 /* line 71, ../sass/foodinc.scss */
+=======
+/* line 62, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc .hero .learn-more a {
-  background: url("../images/learn-more-submit.png") top center no-repeat;
+  background: url('../images/learn-more-submit.png?1379456217') top center no-repeat;
   width: 137px;
   height: 37px;
   text-align: center;
@@ -105,6 +144,7 @@
   font-size: 15px;
   display: inline-block;
 }
+<<<<<<< HEAD
 /* line 83, ../sass/foodinc.scss */
 #page-wrapper.foodinc .logo {
   margin-top: 30px;
@@ -112,13 +152,22 @@
 }
 /* line 87, ../sass/foodinc.scss */
 #page-wrapper.foodinc #main-navigation ul {
+=======
+/* line 74, ../sass/foodinc.scss */
+#page-wrapper.foodinc ul#main-navigation.menu {
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   background-color: black;
   list-style: none;
   overflow: hidden;
   margin-top: -3px;
 }
+<<<<<<< HEAD
 /* line 92, ../sass/foodinc.scss */
 #page-wrapper.foodinc #main-navigation ul li {
+=======
+/* line 79, ../sass/foodinc.scss */
+#page-wrapper.foodinc ul#main-navigation.menu li {
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   display: block;
   float: left;
   font-family: 'TradeGothicLTStdCnBold';
@@ -127,44 +176,71 @@
   padding: 0 25px;
   border-right: 1px dotted #4c4c4c;
 }
+<<<<<<< HEAD
 /* line 100, ../sass/foodinc.scss */
 #page-wrapper.foodinc #main-navigation ul li a {
+=======
+/* line 87, ../sass/foodinc.scss */
+#page-wrapper.foodinc ul#main-navigation.menu li a {
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   font-size: 19px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   line-height: 28px;
   color: #fff;
 }
+<<<<<<< HEAD
 /* line 106, ../sass/foodinc.scss */
 #page-wrapper.foodinc #main-navigation ul li a:hover, #page-wrapper.foodinc #main-navigation ul li a.active, #page-wrapper.foodinc #main-navigation ul li a.active-trail {
   text-decoration: none;
   color: #1CA9E7;
 }
 /* line 114, ../sass/foodinc.scss */
+=======
+/* line 93, ../sass/foodinc.scss */
+#page-wrapper.foodinc ul#main-navigation.menu li a:hover {
+  text-decoration: none;
+  color: #1CA9E7;
+}
+/* line 101, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content {
   width: 66%;
   float: left;
   clear: both;
 }
 @media (max-width: 1000px) {
+<<<<<<< HEAD
   /* line 114, ../sass/foodinc.scss */
+=======
+  /* line 101, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc #foodinc-awards section.page-body-content {
     width: 100%;
   }
 }
+<<<<<<< HEAD
 /* line 121, ../sass/foodinc.scss */
+=======
+/* line 108, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories {
   font-size: 14px;
   line-height: 28px;
   font-family: Helvetica,Arial,sans-serif;
 }
+<<<<<<< HEAD
 /* line 125, ../sass/foodinc.scss */
+=======
+/* line 112, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row {
   clear: both;
   margin-bottom: 30px;
   height: auto;
   overflow: hidden;
 }
+<<<<<<< HEAD
 /* line 130, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row .categories-title {
   font-family: 'Archer A', 'Archer B';
@@ -193,6 +269,13 @@
   float: left;
 }
 /* line 151, ../sass/foodinc.scss */
+=======
+/* line 119, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 .image {
+  float: left;
+}
+/* line 122, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 .category-title h2 {
   color: #5c2e13;
   font-family: 'Archer A', 'Archer B';
@@ -200,7 +283,11 @@
   font-style: normal;
   font-size: 23px;
 }
+<<<<<<< HEAD
 /* line 158, ../sass/foodinc.scss */
+=======
+/* line 125, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 .category-info {
   display: block;
   float: left;
@@ -208,15 +295,24 @@
   position: relative;
   z-index: 1;
 }
+<<<<<<< HEAD
 /* line 165, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 .category-text {
   padding-left: 20px;
 }
 /* line 170, ../sass/foodinc.scss */
+=======
+/* line 132, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 .category-text {
+  padding-left: 20px;
+}
+/* line 137, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-odd .image {
   float: right;
   margin-left: 10px;
 }
+<<<<<<< HEAD
 /* line 174, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-odd .category-info {
   display: block;
@@ -226,21 +322,40 @@
   margin-left: 30px;
 }
 /* line 182, ../sass/foodinc.scss */
+=======
+/* line 141, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-odd .category-info {
+  display: block;
+}
+/* line 146, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-even .image {
   float: left;
   margin-right: 10px;
 }
+<<<<<<< HEAD
 /* line 186, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-even .category-info {
   display: block;
 }
 /* line 191, ../sass/foodinc.scss */
+=======
+/* line 150, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-even .category-info {
+  display: block;
+}
+/* line 155, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges {
   padding-bottom: 30px;
   height: auto;
   overflow: hidden;
 }
+<<<<<<< HEAD
 /* line 195, ../sass/foodinc.scss */
+=======
+/* line 159, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges h2 {
   color: #5c2e13;
   margin: 0;
@@ -249,37 +364,65 @@
   font-style: normal;
   font-size: 24px;
 }
+<<<<<<< HEAD
 /* line 203, ../sass/foodinc.scss */
+=======
+/* line 163, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row {
   width: 300px;
   margin-top: 20px;
   position: relative;
 }
+<<<<<<< HEAD
 /* line 207, ../sass/foodinc.scss */
+=======
+/* line 167, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row.row-odd {
   float: left;
   clear: both;
 }
+<<<<<<< HEAD
 /* line 211, ../sass/foodinc.scss */
+=======
+/* line 171, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row.row-even {
   float: right;
 }
 @media (max-width: 1000px) {
+<<<<<<< HEAD
   /* line 211, ../sass/foodinc.scss */
+=======
+  /* line 171, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row.row-even {
     float: left;
   }
 }
+<<<<<<< HEAD
 /* line 217, ../sass/foodinc.scss */
+=======
+/* line 177, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row img {
   float: left;
   margin-right: 15px;
 }
+<<<<<<< HEAD
 /* line 221, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row .info {
   margin-left: 110px;
 }
 /* line 223, ../sass/foodinc.scss */
+=======
+/* line 181, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row .info {
+  margin-left: 110px;
+}
+/* line 183, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row .info .name {
   color: #5c2e13;
   font-family: 'Archer A', 'Archer B';
@@ -287,7 +430,11 @@
   font-style: normal;
   font-size: 24px;
 }
+<<<<<<< HEAD
 /* line 230, ../sass/foodinc.scss */
+=======
+/* line 187, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row .info .bio {
   padding: 0 15px;
   position: relative;
@@ -295,22 +442,38 @@
   text-overflow: ellipsis;
   padding: 0;
 }
+<<<<<<< HEAD
 /* line 237, ../sass/foodinc.scss */
+=======
+/* line 194, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row .info .show-more-height {
   height: 58px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+<<<<<<< HEAD
 /* line 242, ../sass/foodinc.scss */
+=======
+/* line 199, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row .info .show-more {
   color: #1CA9E7;
   cursor: pointer;
 }
+<<<<<<< HEAD
 /* line 245, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row .info .show-more:hover {
   text-decoration: underline;
 }
 /* line 253, ../sass/foodinc.scss */
+=======
+/* line 202, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row .info .show-more:hover {
+  text-decoration: underline;
+}
+/* line 210, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.right-rail {
   float: right;
   width: 30%;
@@ -318,66 +481,106 @@
   margin-right: 10px;
 }
 @media (max-width: 1000px) {
+<<<<<<< HEAD
   /* line 253, ../sass/foodinc.scss */
+=======
+  /* line 210, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc #foodinc-awards section.right-rail {
     float: left;
     width: 100%;
     clear: both;
   }
 }
+<<<<<<< HEAD
 /* line 263, ../sass/foodinc.scss */
+=======
+/* line 219, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter {
   display: block;
 }
 @media (max-width: 1000px) {
+<<<<<<< HEAD
   /* line 263, ../sass/foodinc.scss */
+=======
+  /* line 219, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter {
     margin: 0 auto;
     width: 302px;
   }
 }
+<<<<<<< HEAD
 /* line 269, ../sass/foodinc.scss */
+=======
+/* line 225, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .top {
   width: 302px;
   height: 53px;
-  background: url("../images/signup-block-top.jpg") no-repeat top center;
+  background: url('../images/signup-block-top.jpg?1379456217') no-repeat top center;
 }
+<<<<<<< HEAD
 /* line 273, ../sass/foodinc.scss */
+=======
+/* line 229, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .top .title {
   padding-top: 30px;
   padding-left: 30px;
   font-size: 20px;
   color: #5c2e13;
 }
+<<<<<<< HEAD
 /* line 280, ../sass/foodinc.scss */
+=======
+/* line 236, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .mid {
   width: 302px;
   height: auto;
   overflow: hidden;
-  background: url("../images/signup-block-mid.jpg") top center;
+  background: url('../images/signup-block-mid.jpg?1379456217') top center;
   margin-top: -15px;
   color: #5c2e13;
 }
+<<<<<<< HEAD
 /* line 287, ../sass/foodinc.scss */
+=======
+/* line 243, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .mid p {
   line-height: 20px;
   font-size: 12px;
   padding: 30px;
 }
+<<<<<<< HEAD
 /* line 293, ../sass/foodinc.scss */
+=======
+/* line 249, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .bottom {
   width: 302px;
   height: 53px;
   margin-top: -35px;
-  background: url("../images/signup-block-bottom.jpg") no-repeat bottom center;
+  background: url('../images/signup-block-bottom.jpg?1379456217') no-repeat bottom center;
 }
+<<<<<<< HEAD
 /* line 299, ../sass/foodinc.scss */
+=======
+/* line 255, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .extra {
   width: 302px;
   height: 136px;
-  background: url("../images/signup-block-extra.jpg") no-repeat bottom center;
+  background: url('../images/signup-block-extra.jpg?1379456217') no-repeat bottom center;
 }
+<<<<<<< HEAD
 /* line 308, ../sass/foodinc.scss */
+=======
+/* line 264, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto section.page-body-content {
   width: 66%;
   float: left;
@@ -386,32 +589,56 @@
   font-size: 14px;
 }
 @media (max-width: 1000px) {
+<<<<<<< HEAD
   /* line 308, ../sass/foodinc.scss */
+=======
+  /* line 264, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc #foodinc-howto section.page-body-content {
     width: 100%;
   }
 }
+<<<<<<< HEAD
 /* line 317, ../sass/foodinc.scss */
+=======
+/* line 273, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .page-title h3 {
   font-size: 18px;
   color: #5c2e13;
 }
+<<<<<<< HEAD
 /* line 322, ../sass/foodinc.scss */
+=======
+/* line 278, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .title {
   color: #5c2e13;
   font-style: italic;
   font-size: 18px;
 }
+<<<<<<< HEAD
 /* line 327, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video, #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro img {
   margin: 20px 0;
 }
 /* line 330, ../sass/foodinc.scss */
+=======
+/* line 283, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video, #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro img {
+  margin: 20px 0;
+}
+/* line 286, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video {
   position: relative;
 }
 @media (max-width: 585px) {
+<<<<<<< HEAD
   /* line 330, ../sass/foodinc.scss */
+=======
+  /* line 286, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video {
     padding-bottom: 56.25%;
     padding-top: 30px;
@@ -420,7 +647,11 @@
     width: 100%;
     max-width: 585px;
   }
+<<<<<<< HEAD
   /* line 337, ../sass/foodinc.scss */
+=======
+  /* line 293, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video iframe, #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video object, #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video embed {
     position: absolute;
     top: 0;
@@ -429,41 +660,73 @@
     height: 100%;
   }
 }
+<<<<<<< HEAD
 /* line 349, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .categories .row {
   margin: 30px 0;
 }
 /* line 352, ../sass/foodinc.scss */
+=======
+/* line 305, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-howto .categories .row {
+  margin: 30px 0;
+}
+/* line 308, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto .categories .title {
   font-size: 10px;
   color: #5c2e13;
   margin-bottom: 10px;
 }
+<<<<<<< HEAD
 /* line 356, ../sass/foodinc.scss */
+=======
+/* line 312, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto .categories .title span {
   font-style: italic;
   font-size: 24px;
   vertical-align: middle;
 }
+<<<<<<< HEAD
 /* line 364, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .additional-info .row {
   margin: 20px 0;
 }
 /* line 367, ../sass/foodinc.scss */
+=======
+/* line 320, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-howto .additional-info .row {
+  margin: 20px 0;
+}
+/* line 323, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto .additional-info .title {
   font-size: 20px;
   color: #5c2e13;
 }
+<<<<<<< HEAD
 /* line 371, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .additional-info .video, #page-wrapper.foodinc #foodinc-howto .additional-info img {
   margin: 10px 0;
 }
 /* line 374, ../sass/foodinc.scss */
+=======
+/* line 327, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-howto .additional-info .video, #page-wrapper.foodinc #foodinc-howto .additional-info img {
+  margin: 10px 0;
+}
+/* line 330, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto .additional-info .video {
   position: relative;
 }
 @media (max-width: 585px) {
+<<<<<<< HEAD
   /* line 374, ../sass/foodinc.scss */
+=======
+  /* line 330, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc #foodinc-howto .additional-info .video {
     padding-bottom: 56.25%;
     padding-top: 30px;
@@ -472,7 +735,11 @@
     width: 100%;
     max-width: 585px;
   }
+<<<<<<< HEAD
   /* line 381, ../sass/foodinc.scss */
+=======
+  /* line 337, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc #foodinc-howto .additional-info .video iframe, #page-wrapper.foodinc #foodinc-howto .additional-info .video object, #page-wrapper.foodinc #foodinc-howto .additional-info .video embed {
     position: absolute;
     top: 0;
@@ -481,14 +748,22 @@
     height: 100%;
   }
 }
+<<<<<<< HEAD
 /* line 391, ../sass/foodinc.scss */
+=======
+/* line 347, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto section.right-rail {
   float: right;
   width: 30%;
   margin-right: 10px;
 }
 @media (max-width: 1000px) {
+<<<<<<< HEAD
   /* line 391, ../sass/foodinc.scss */
+=======
+  /* line 347, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc #foodinc-howto section.right-rail {
     float: left;
     clear: both;
@@ -496,48 +771,76 @@
   }
 }
 @media (max-width: 1000px) {
+<<<<<<< HEAD
   /* line 401, ../sass/foodinc.scss */
+=======
+  /* line 356, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
   #page-wrapper.foodinc #foodinc-howto .instruction-block {
     width: 300px;
     margin: 0 auto;
   }
 }
+<<<<<<< HEAD
 /* line 406, ../sass/foodinc.scss */
+=======
+/* line 361, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto .instruction-block .top {
   width: 300px;
   height: 63px;
-  background: url("../images/instruction-top.jpg") no-repeat top center;
+  background: url('../images/instruction-top.jpg?1379456217') no-repeat top center;
 }
+<<<<<<< HEAD
 /* line 411, ../sass/foodinc.scss */
+=======
+/* line 366, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid {
   width: 300px;
   height: auto;
   overflow: hidden;
-  background: url("../images/instruction-mid.jpg") top center;
+  background: url('../images/instruction-mid.jpg?1379456217') top center;
   margin-top: -15px;
   color: #5c2e13;
 }
+<<<<<<< HEAD
 /* line 418, ../sass/foodinc.scss */
+=======
+/* line 373, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .item {
   padding: 0 20px;
   clear: both;
   margin-bottom: 10px;
 }
+<<<<<<< HEAD
 /* line 422, ../sass/foodinc.scss */
+=======
+/* line 377, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .item .number {
   margin-right: 10px;
   font-size: 21px;
   float: left;
   width: 10px;
 }
+<<<<<<< HEAD
 /* line 428, ../sass/foodinc.scss */
+=======
+/* line 383, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .item span {
   display: block;
   margin-left: 20px;
 }
+<<<<<<< HEAD
 /* line 433, ../sass/foodinc.scss */
+=======
+/* line 388, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .button a {
-  background: url("../images/contest-btn.png") top right no-repeat;
+  background: url('../images/contest-btn.png?1379456217') top right no-repeat;
   width: 238px;
   height: 43px;
   display: block;
@@ -547,46 +850,78 @@
   font-size: 18px;
   color: #fff;
 }
+<<<<<<< HEAD
 /* line 444, ../sass/foodinc.scss */
+=======
+/* line 399, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .extra {
   padding: 20px;
   padding-bottom: 0;
   text-align: center;
 }
+<<<<<<< HEAD
 /* line 450, ../sass/foodinc.scss */
+=======
+/* line 405, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-howto .instruction-block .bottom {
   width: 300px;
   height: 63px;
-  background: url("../images/instruction-bottom.jpg") no-repeat top center;
+  background: url('../images/instruction-bottom.jpg?1379456217') no-repeat top center;
 }
+<<<<<<< HEAD
 /* line 458, ../sass/foodinc.scss */
+=======
+/* line 413, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-entryreceived section.page-body-content {
   width: 66%;
   float: left;
 }
+<<<<<<< HEAD
 /* line 462, ../sass/foodinc.scss */
+=======
+/* line 417, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-entryreceived .page-title {
   font-size: 20px;
   font-style: italic;
   color: #5c2e13;
 }
+<<<<<<< HEAD
 /* line 467, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .additional-info {
   margin-top: 20px;
 }
 /* line 469, ../sass/foodinc.scss */
+=======
+/* line 422, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryreceived .additional-info {
+  margin-top: 20px;
+}
+/* line 424, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-entryreceived .additional-info .title {
   font-size: 18px;
   color: #5c2e13;
 }
+<<<<<<< HEAD
 /* line 474, ../sass/foodinc.scss */
+=======
+/* line 429, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-entryreceived .social-block {
   clear: both;
   height: auto;
   overflow: hidden;
   margin: 10px 0px 20px 20px;
 }
+<<<<<<< HEAD
 /* line 479, ../sass/foodinc.scss */
+=======
+/* line 434, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .social {
   display: block;
   height: 40px;
@@ -594,25 +929,65 @@
   float: left;
   margin-right: 8px;
 }
+<<<<<<< HEAD
 /* line 486, ../sass/foodinc.scss */
+=======
+/* line 441, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .facebook {
-  background: url("../images/social_long_fb.png") no-repeat top center;
+  background: url('../images/social_long_fb.png?1379456217') no-repeat top center;
 }
+<<<<<<< HEAD
 /* line 489, ../sass/foodinc.scss */
+=======
+/* line 444, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .twitter {
-  background: url("../images/social_long_twitter.png") no-repeat top center;
+  background: url('../images/social_long_twitter.png?1379456217') no-repeat top center;
 }
+<<<<<<< HEAD
 /* line 492, ../sass/foodinc.scss */
+=======
+/* line 447, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .googleplus {
-  background: url("../images/social_long_google.png") no-repeat top center;
+  background: url('../images/social_long_google.png?1379456217') no-repeat top center;
 }
+<<<<<<< HEAD
 /* line 495, ../sass/foodinc.scss */
+=======
+/* line 450, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .email {
-  background: url("../images/social_long_email.png") no-repeat top center;
+  background: url('../images/social_long_email.png?1379456217') no-repeat top center;
 }
+<<<<<<< HEAD
 /* line 499, ../sass/foodinc.scss */
+=======
+/* line 454, ../sass/foodinc.scss */
+>>>>>>> TP-841 Add Food Inc Awards entry page intro text.
 #page-wrapper.foodinc #foodinc-entryreceived section.right-rail {
   width: 30%;
   float: right;
   margin-right: 10px;
+}
+/* line 461, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .left-rail {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  margin-right: 20px;
+}
+/* line 466, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .right-rail {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  float: right;
 }
