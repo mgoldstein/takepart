@@ -89,14 +89,14 @@
   display: inline-block;
 }
 /* line 71, ../sass/foodinc.scss */
-#page-wrapper.foodinc ul#main-navigation.menu {
+#page-wrapper.foodinc #main-navigation ul {
   background-color: black;
   list-style: none;
   overflow: hidden;
   margin-top: -3px;
 }
 /* line 76, ../sass/foodinc.scss */
-#page-wrapper.foodinc ul#main-navigation.menu li {
+#page-wrapper.foodinc #main-navigation ul li {
   display: block;
   float: left;
   font-family: 'TradeGothicLTStdCnBold';
@@ -106,7 +106,7 @@
   border-right: 1px dotted #4c4c4c;
 }
 /* line 84, ../sass/foodinc.scss */
-#page-wrapper.foodinc ul#main-navigation.menu li a {
+#page-wrapper.foodinc #main-navigation ul li a {
   font-size: 19px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -114,7 +114,7 @@
   color: #fff;
 }
 /* line 90, ../sass/foodinc.scss */
-#page-wrapper.foodinc ul#main-navigation.menu li a:hover {
+#page-wrapper.foodinc #main-navigation ul li a:hover, #page-wrapper.foodinc #main-navigation ul li a.active, #page-wrapper.foodinc #main-navigation ul li a.active-trail {
   text-decoration: none;
   color: #1CA9E7;
 }
