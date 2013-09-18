@@ -50,7 +50,7 @@
       <?php endif; ?>
       <? endforeach ?>
     </div> <!-- end categories -->
-    <div class="judges">
+    <div class="judges" id="judges">
       <h2>THE JUDGES</h2>
       <?php foreach( wl('foodinc_awards_judges') as $key => $w ): ?>
         <div class="row row-id-<?php print $key; ?> <?php print ($key % 2 == 0 ? 'row-odd' : 'row-even'); ?>">
