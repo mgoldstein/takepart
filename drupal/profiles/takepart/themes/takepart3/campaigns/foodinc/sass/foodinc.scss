@@ -623,8 +623,18 @@
         width: 100%;
       }
     }
+    .ad{
+      @media (max-width: 1000px) {
+        width: 302px;
+        margin: 0 auto;
+      }
+    }
     .instruction-block{
       line-height: 17px;
+      @media (max-width: 1000px) {
+        margin: 0 auto;
+        width: 300px;
+      }
       .top{
         width: 300px;
         height: 63px;
