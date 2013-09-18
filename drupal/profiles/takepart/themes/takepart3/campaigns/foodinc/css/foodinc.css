@@ -125,7 +125,7 @@
 }
 /* line 92, ../sass/foodinc.scss */
 #page-wrapper.foodinc .hero .learn-more a {
-  background: url('../img/learn-more-submit.png') top center no-repeat;
+  background: url('../images/learn-more-submit.png?1379445211') top center no-repeat;
   width: 137px;
   height: 37px;
   text-align: center;
@@ -381,7 +381,7 @@
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .top {
   width: 302px;
   height: 53px;
-  background: url('../img/signup-block-top.jpg') no-repeat top center;
+  background: url('../images/signup-block-top.jpg?1379431464') no-repeat top center;
 }
 /* line 300, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .top .title {
@@ -395,7 +395,7 @@
   width: 302px;
   height: auto;
   overflow: hidden;
-  background: url('../img/signup-block-mid.jpg') top center;
+  background: url('../images/signup-block-mid.jpg?1379431464') top center;
   margin-top: -15px;
   color: #5c2e13;
 }
@@ -410,13 +410,13 @@
   width: 302px;
   height: 53px;
   margin-top: -35px;
-  background: url('../img/signup-block-bottom.jpg') no-repeat bottom center;
+  background: url('../images/signup-block-bottom.jpg?1379431464') no-repeat bottom center;
 }
 /* line 326, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .extra {
   width: 302px;
   height: 136px;
-  background: url('../img/signup-block-extra.jpg') no-repeat bottom center;
+  background: url('../images/signup-block-extra.jpg?1379431464') no-repeat bottom center;
 }
 /* line 335, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto section.page-body-content {
@@ -573,14 +573,14 @@
 #page-wrapper.foodinc #foodinc-howto .instruction-block .top {
   width: 300px;
   height: 63px;
-  background: url('../img/instruction-top.jpg') no-repeat top center;
+  background: url('../images/instruction-top.jpg?1379401670') no-repeat top center;
 }
 /* line 458, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid {
   width: 300px;
   height: auto;
   overflow: hidden;
-  background: url('../img/instruction-mid.jpg') top center;
+  background: url('../images/instruction-mid.jpg?1379401670') top center;
   margin-top: -15px;
   color: #5c2e13;
 }
@@ -604,7 +604,7 @@
 }
 /* line 480, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .button a {
-  background: url('../img/contest-btn.png') top right no-repeat;
+  background: url('../images/contest-btn.png?1379401670') top right no-repeat;
   width: 238px;
   height: 43px;
   display: block;
@@ -624,7 +624,7 @@
 #page-wrapper.foodinc #foodinc-howto .instruction-block .bottom {
   width: 300px;
   height: 63px;
-  background: url('../img/instruction-bottom.jpg') no-repeat top center;
+  background: url('../images/instruction-bottom.jpg?1379401670') no-repeat top center;
 }
 /* line 505, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived section.page-body-content {
@@ -663,19 +663,19 @@
 }
 /* line 533, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .facebook {
-  background: url('../img/social_long_fb.png') no-repeat top center;
+  background: url('../images/social_long_fb.png?1379455007') no-repeat top center;
 }
 /* line 536, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .twitter {
-  background: url('../img/social_long_twitter.png') no-repeat top center;
+  background: url('../images/social_long_twitter.png?1379455007') no-repeat top center;
 }
 /* line 539, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .googleplus {
-  background: url('../img/social_long_google.png') no-repeat top center;
+  background: url('../images/social_long_google.png?1379455007') no-repeat top center;
 }
 /* line 542, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .email {
-  background: url('../img/social_long_email.png') no-repeat top center;
+  background: url('../images/social_long_email.png?1379455007') no-repeat top center;
 }
 /* line 546, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived section.right-rail {
