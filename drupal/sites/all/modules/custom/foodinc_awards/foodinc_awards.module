@@ -203,18 +203,21 @@ function foodinc_awards_entry_form($form, &$form_state, $config) {
     '#type' => 'textfield',
     '#title' => $config['first_name_label'],
     '#default_value' => '',
+    '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
   );
 
   $form['last_name'] = array(
     '#type' => 'textfield',
     '#title' => $config['last_name_label'],
     '#default_value' => '',
+    '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
   );
 
   $form['email'] = array(
     '#type' => 'textfield',
     '#title' => $config['email_label'],
     '#default_value' => '',
+    '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
   );
 
   $months = foodinc_awards_split_list($config['dob_month_list']);
@@ -223,6 +226,7 @@ function foodinc_awards_entry_form($form, &$form_state, $config) {
     '#title' => $config['dob_label'],
     '#default_value' => '',
     '#options' => $months,
+    '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
   );
 
   $years = foodinc_awards_split_list($config['dob_year_list']);
@@ -230,12 +234,14 @@ function foodinc_awards_entry_form($form, &$form_state, $config) {
     '#type' => 'select',
     '#default_value' => '',
     '#options' => $years,
+    '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
   );
 
   $form['city'] = array(
     '#type' => 'textfield',
     '#title' => $config['city_label'],
     '#default_value' => '',
+    '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
   );
 
   $states = foodinc_awards_split_list($config['state_list']);
@@ -244,6 +250,7 @@ function foodinc_awards_entry_form($form, &$form_state, $config) {
     '#title' => $config['state_label'],
     '#default_value' => '',
     '#options' => $states,
+    '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
   );
 
   $form['which_award_label'] = array(
@@ -251,19 +258,18 @@ function foodinc_awards_entry_form($form, &$form_state, $config) {
     '#markup' => $config['which_award_label'],
   );
 
-  $form['lifestyle_award'] = array(
-    '#type' => 'checkbox',
-    '#title' => $config['lifestyle_award_label'],
+  $form['which_award'] = array(
+    '#type' => 'radios',
+    '#options' => array(
+      'lifestyle' => $config['lifestyle_award_label'],
+      'pioneer' => $config['pioneer_award_label'],
+    ),
+    '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
   );
 
   $form['lifestyle_award_description'] = array(
     '#type' => 'markup',
     '#markup' => $config['lifestyle_award_desc'],
-  );
-
-  $form['pioneer_award'] = array(
-    '#type' => 'checkbox',
-    '#title' => $config['pioneer_award_label'],
   );
 
   $form['pioneer_award_description'] = array(
@@ -285,6 +291,7 @@ function foodinc_awards_entry_form($form, &$form_state, $config) {
     '#type' => 'textfield',
     '#title' => $config['video_link_label'],
     '#default_value' => '',
+    '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
   );
 
   $form['submission_heading'] = array(
@@ -300,11 +307,13 @@ function foodinc_awards_entry_form($form, &$form_state, $config) {
   $form['newsletter_opt_in'] = array(
     '#type' => 'checkbox',
     '#title' => $config['newsletter_opt_in_label'],
+    '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
   );
 
   $form['contest_rules_opt_in'] = array(
     '#type' => 'checkbox',
     '#title' => $config['contest_rules_opt_in_label'],
+    '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
   );
 
   $form['terms_of_service'] = array(
@@ -360,10 +369,9 @@ function foodinc_awards_entry_form_validate($form, &$form_state) {
     form_set_error('state', t('Please enter your state'));
   }
 
-  $lifestyle_award = trim($form_state['values']['lifestyle_award']);
-  $pioneer_award = trim($form_state['values']['pioneer_award']);
-  if (empty($lifestyle_award) && empty($pioneer_award)) {
-    form_set_error('pioneer_award', t('Please choose a category above'));
+  $which_award = trim($form_state['values']['which_award']);
+  if (!in_array($which_award, array('lifestyle', 'pioneer'))) {
+    form_set_error('which_award', t('Please choose a category above'));
   }
 
   $video_link = trim($form_state['values']['video_link']);
@@ -379,10 +387,8 @@ function foodinc_awards_entry_form_validate($form, &$form_state) {
 
 function foodinc_awards_entry_form_submit($form, &$form_state) {
 
-}
 
-function foodinc_awards_entry_form_callback($form, $form_state) {
-  return $form;
+  drupal_goto('foodinc/awards/enter/received');
 }
 
 function foodinc_awards_theme($existing, $type, $theme, $path) {
@@ -404,15 +410,6 @@ function foodinc_awards_preprocess_foodinc_awards_entry_form(&$variables) {
   if (!empty($errors)) {
     foreach ($errors as $field => $error) {
       if (isset($variables['element'][$field])) {
-        // Replace the default form_element wrapper with the custom
-        // inline error element wrapper
-        $wrappers = $variables['element'][$field]['#theme_wrappers'];
-        foreach ($wrappers as $index => $hook) {
-          if ($hook === 'form_element') {
-            $variables['element'][$field]['#theme_wrappers'][$index]
-              = 'foodinc_awards_inline_error_form_element';
-          }
-        }
         $variables['element'][$field]['#inline_error'] = $error;
       }
     }
@@ -432,23 +429,7 @@ function theme_foodinc_awards_inline_error_form_element($variables) {
     '#title_display' => 'before',
   );
 
-  // Add element #id for #type 'item'.
-  if (isset($element['#markup']) && !empty($element['#id'])) {
-    $attributes['id'] = $element['#id'];
-  }
-  // Add element's #type and #name as class to aid with JS/CSS selectors.
-  $attributes['class'] = array('form-item');
-  if (!empty($element['#type'])) {
-    $attributes['class'][] = 'form-type-' . strtr($element['#type'], '_', '-');
-  }
-  if (!empty($element['#name'])) {
-    $attributes['class'][] = 'form-item-' . strtr($element['#name'], array(' ' => '-', '_' => '-', '[' => '-', ']' => ''));
-  }
-  // Add a class for disabled elements to facilitate cross-browser styling.
-  if (!empty($element['#attributes']['disabled'])) {
-    $attributes['class'][] = 'form-disabled';
-  }
-  $output = '<div' . drupal_attributes($attributes) . '>' . "\n";
+  $output = '';
 
   // If #title is not set, we don't display any label or required marker.
   if (!isset($element['#title'])) {
@@ -481,8 +462,6 @@ function theme_foodinc_awards_inline_error_form_element($variables) {
   if (!empty($element['#description'])) {
     $output .= '<div class="description">' . $element['#description'] . "</div>\n";
   }
-
-  $output .= "</div>\n";
 
   return $output;
 }

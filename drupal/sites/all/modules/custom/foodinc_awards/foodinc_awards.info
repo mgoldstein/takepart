@@ -3,3 +3,5 @@ description = Functional support for the Food Inc. Awards campaign.
 core = 7.x
 version = 7.x-1.0
 package = TakePart Campaigns
+
+dependencies[] = pm_signup

@@ -47,15 +47,11 @@
 <!-- END -->
 
 <!-- BEGIN -->
-<?php print render($form['lifestyle_award']); ?>
+<?php print render($form['which_award']); ?>
 <!-- END -->
 
 <!-- BEGIN -->
 <?php print render($form['lifestyle_award_description']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['pioneer_award']); ?>
 <!-- END -->
 
 <!-- BEGIN -->
