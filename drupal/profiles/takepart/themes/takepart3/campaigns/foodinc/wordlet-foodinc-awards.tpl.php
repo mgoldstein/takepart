@@ -66,10 +66,10 @@
   <section class="right-rail">
     <div class="ad"><?php print (w('foodinc_awards_adblock') != NULL ? render(w('foodinc_awards_adblock')) : ''); ?></div>
     <div class="newsletter">
-      <div class="top"><div class="title"><?php print w('foodinc_awards_stayconnected')->single; ?></div></div>
-      <div class="mid"><?php print w('foodinc_awards_stayconnected')->multi; ?></div>
-      <div class="bottom"></div>
-      <div class="extra"><?php print w('foodinc_awards_stayconnected')->block; ?></div>
+      <div class="title"><?php print w('foodinc_awards_stayconnected')->single; ?></div>
+      <div class="form-wrapper-first">
+        <?php print w('foodinc_awards_stayconnected')->form; ?>
+      </div>
     </div>
   </section>
 </div>
