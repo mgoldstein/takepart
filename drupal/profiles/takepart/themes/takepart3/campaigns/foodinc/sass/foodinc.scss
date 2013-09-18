@@ -62,6 +62,9 @@
       color: $primary-color;
       margin-bottom: 10px;
       font-family: $header-font; font-weight: 800; font-style: italic;
+      @media (max-width: 1000px) {
+        clear: left;
+      }
       span{
         display: block;
         font-size: 33px;
@@ -118,6 +121,10 @@
       margin: 0;
       padding: 0 25px;
       border-right: 1px dotted #4c4c4c;
+      ul li{
+        clear: left;
+        border: none;
+      }
       a{
         font-size: 19px;
         letter-spacing: 0.03em;
@@ -234,6 +241,9 @@
             font-size: 32px;
             color: $primary-color;
             text-align: right;
+            @media (max-width: 680px) {
+              clear: left;
+            }
             span{
               font-size: 11px;
               font-style: normal;
@@ -344,6 +354,7 @@
               display: block;
               text-overflow:ellipsis;
               padding: 0;
+              margin-left: 5px;
             }
             .show-more-height{
               height: 58px;
@@ -371,11 +382,18 @@
         width: 100%;
         clear: both;
       }
+      .ad{
+        display: block;
+        @media (max-width: 1000px) {
+          width: 302px;
+          margin: 0 auto;
+        }
+      }
       .newsletter{
         display: block;
         @media (max-width: 1000px) {
-          margin: 0 auto;
           width: 302px;
+          margin: 0 auto;
         }
         .title{
           padding-top: 30px;
@@ -460,9 +478,6 @@
             }
             a{
               color: $primary-color;
-              &:hover{
-                text-decoration: none;
-              }
             }
           }
         }
