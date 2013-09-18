@@ -18,13 +18,13 @@
 
   <? if (isset($page)): ?>
       <?=$page ?>
-  <? endif ?>      
+  <? endif ?>
 
   <?=$scripts ?>
 
   <? if (isset($custom)): ?>
       <?=$custom ?>
-  <? endif ?>        
+  <? endif ?>
 
 
   <? if (isset($page_bottom)): ?>

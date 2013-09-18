@@ -2,6 +2,9 @@
   background: #fff;
   max-width: 1000px;
   width: auto;
+  .ad{
+    margin: 30px 0;
+  }
   .page-wrap{
     margin: 10px;
   }
@@ -20,7 +23,8 @@
     line-height: 28px;
     img, .video{
       float: left;
-      margin-right: 10px;
+      margin-right: 30px;
+      margin-bottom: 20px;
     }
     .video{
       position: relative;
@@ -122,7 +126,7 @@
           .category-info{
             display: block;
             float: left;
-            width: 400px;
+            width: 380px;
             position: relative;
             z-index: 1;
           }
@@ -208,6 +212,7 @@
       float: right;
       width: 30%;
       margin-bottom: 30px;
+      margin-right: 10px;
       @media (max-width: 1000px) {
         float: left;
         width: 100%;
@@ -259,7 +264,7 @@
   }
   #foodinc-howto{
     section.page-body-content{
-      width: 68%;
+      width: 65%;
       float: left;
       clear: both;
       line-height: 28px;
@@ -344,6 +349,7 @@
     section.right-rail{
       float: right;
       width: 30%;
+      margin-right: 10px;
       @media (max-width: 1000px) {
         float: left;
         clear: both;
@@ -451,6 +457,7 @@
     section.right-rail{
       width: 30%;
       float: right;
+      margin-right: 10px;
     }
   }
 }
