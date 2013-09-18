@@ -31,6 +31,7 @@
 						<?php $block = module_invoke('menu', 'block_view', 'food_inc_new_multipage_campaign'); ?>
 						<?php print render($block['content']); ?>
 				</div>
+					<div class="logo"><img src="<?php print w('foodin_logo')->img_src; ?>" alt="<?php print w('foodin_logo')->single; ?>"></div>
 			</header>
 			<main id="page">
 				<?=$content?>
