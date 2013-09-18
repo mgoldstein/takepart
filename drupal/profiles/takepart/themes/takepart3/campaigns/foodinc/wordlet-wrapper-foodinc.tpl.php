@@ -9,6 +9,7 @@
 	);
 	drupal_add_html_head($element, 'archer');
 	drupal_add_html_head($element, 'archer screensmart semibold italic');
+	drupal_add_js(drupal_get_path('module', 'dhtml_menu') .'/dhtml_menu.js');
 ?>
 
 
@@ -28,11 +29,9 @@
 				<span class="slug"><?=w('header_slug')?></span>
 				<h1 class="page-header"><?=w('header_title')?></h1>
 				<img src="<?php print $base_url; ?>/profiles/takepart/themes/takepart3/campaigns/foodinc/images/foodinc-banner.jpeg" alt="Food Inc">
-				<div class="menu-wrapper">
-					<ul id="main-navigation" class='menu' <?=wa('menu') ?>>
+				<div id="main-navigation" class="menu-wrapper">
 						<?php $block = module_invoke('menu', 'block_view', 'food_inc_new_multipage_campaign'); ?>
 						<?php print render($block['content']); ?>
-					</ul>
 				</div>
 			</header>
 			<main id="page">
