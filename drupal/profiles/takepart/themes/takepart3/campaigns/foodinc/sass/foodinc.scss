@@ -1,3 +1,6 @@
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+
 #page-wrapper.foodinc{
   background: #fff;
   max-width: 1000px;
@@ -69,7 +72,7 @@
         margin-right: 5px;
       }
       a{
-        background: url("../images/learn-more-submit.png") top center no-repeat;
+        background: image-url("learn-more-submit.png") top center no-repeat;
         width: 137px;
         height: 37px;
         text-align: center;
@@ -269,7 +272,7 @@
         .top{
           width: 302px;
           height: 53px;
-          background: url('../images/signup-block-top.jpg') no-repeat top center;
+          background: image-url('signup-block-top.jpg') no-repeat top center;
           .title{
             padding-top: 30px;
             padding-left: 30px;
@@ -281,7 +284,7 @@
           width: 302px;
           height: auto;
           overflow: hidden;
-          background: url('../images/signup-block-mid.jpg') top center;
+          background: image-url('signup-block-mid.jpg') top center;
           margin-top: -15px;
           color: #5c2e13;
           p{
@@ -294,12 +297,12 @@
           width: 302px;
           height: 53px;
           margin-top: -35px;
-          background: url('../images/signup-block-bottom.jpg') no-repeat bottom center;
+          background: image-url('signup-block-bottom.jpg') no-repeat bottom center;
         }
         .extra{
           width: 302px;
           height: 136px;
-          background: url('../images/signup-block-extra.jpg') no-repeat bottom center;
+          background: image-url('signup-block-extra.jpg') no-repeat bottom center;
         }
       }
     }
@@ -406,13 +409,13 @@
       .top{
         width: 300px;
         height: 63px;
-        background: url('../images/instruction-top.jpg') no-repeat top center;
+        background: image-url('instruction-top.jpg') no-repeat top center;
       }
       .mid{
         width: 300px;
         height: auto;
         overflow: hidden;
-        background: url('../images/instruction-mid.jpg') top center;
+        background: image-url('instruction-mid.jpg') top center;
         margin-top: -15px;
         color: #5c2e13;
         .item{
@@ -431,7 +434,7 @@
           }
         }
         .button a{
-          background: url('../images/contest-btn.png') top right no-repeat;
+          background: image-url('contest-btn.png') top right no-repeat;
           width: 238px;
           height: 43px;
           display: block;
@@ -450,7 +453,7 @@
       .bottom{
         width: 300px;
         height: 63px;
-        background: url('../images/instruction-bottom.jpg') no-repeat top center;
+        background: image-url('instruction-bottom.jpg') no-repeat top center;
       }
     }
   }
@@ -484,22 +487,34 @@
         margin-right: 8px;
       }
       .facebook{
-        background: url('../images/social_long_fb.png') no-repeat top center;
+        background: image-url('social_long_fb.png') no-repeat top center;
       }
       .twitter{
-        background: url('../images/social_long_twitter.png') no-repeat top center;
+        background: image-url('social_long_twitter.png') no-repeat top center;
       }
       .googleplus{
-        background: url('../images/social_long_google.png') no-repeat top center;
+        background: image-url('social_long_google.png') no-repeat top center;
       }
       .email{
-        background: url('../images/social_long_email.png') no-repeat top center;
+        background: image-url('social_long_email.png') no-repeat top center;
       }
     }
     section.right-rail{
       width: 30%;
       float: right;
       margin-right: 10px;
+    }
+  }
+
+  #foodinc-entryform {
+    .left-rail {
+      @include inline-block;
+      margin-right: 20px;
+    }
+
+    .right-rail {
+      @include inline-block;
+      float: right;
     }
   }
 }

@@ -1,0 +1,349 @@
+<?php
+
+function foodinc_awards_configuration_defaults($config) {
+
+  $default_config = array(
+    'about_you_section_label' => '<h2>About You</h2>',
+    'about_you_section_desc' => '<p>All fields are required</p>',
+    'first_name_label' => 'First Name',
+    'last_name_label' => 'Last Name',
+    'email_label' => 'Email',
+    'dob_label' => 'Date of Birth',
+    'city_label' => 'City',
+    'state_label' => 'State',
+    'which_award_label' => 'Which Award Are You Nominating Yourself?',
+    'lifestyle_award_label' => 'The Food, Inc. Lifestyle Award',
+    'pioneer_award_label' => 'The Food, Inc. Pioneer Award',
+    'lifestyle_award_desc' => '<p>This award recognizes an individual who embodies the sustainable and ethical "eating revolution" sparked by Food, Inc. The selected winner is someone who has completely changed the way they approach food on a daily basis by going the extra mile when it comes to sustainable and ethical eating practices.</p>',
+    'pioneer_award_desc' => '<p>This award recognizes a local leader who has created a community movement inspired by the film that encourages food habits involving more sustainable, responsible and organic choices.</p>',
+    'dob_month_list' => '',
+    'dob_year_list' => '',
+    'state_list' => '',
+    'your_video_section_label' => 'Your Video',
+    'your_video_section_desc' => '<p>Upload Your Video</p><p>Upload your submission video to YouTube. Copy and paste the link in the field below. Don\'t have a YouTube account? <a href="" target="_blank">Click here for instructions</a>.</p>',
+    'video_link_label' => 'Video Link',
+    'submission_section_label' => 'Submission',
+    'submission_section_desc' => '',
+    'newsletter_opt_in_label' => 'I want to receive news and updates from TakePart about the Contest and Food, Inc.',
+    'contest_rules_opt_in_label' => 'I agree to the <a href="" target="_blank">Official Contest Rules</a> and <a href="" target="_blank">Submission Agreement</a>',
+    'terms_of_service_message' => '<p>By clicking "Submit" below, I agree to be bound by <a href="/privacy-policy" target="_blank">TakePart\'s Privacy Policy</a> and <a href="/terms-of-use" target="_blank">Terms of Use</a></p>',
+    'submit_entry_label' => 'Submit Entry',
+  );
+  foreach ($default_config as $name => $value) {
+    if (!isset($config[$name])) {
+      $config[$name] = $value;
+    }
+  }
+  return $config;
+}
+
+function foodinc_awards_split_list($value) {
+  $delimiter = "\n";
+  $alternates = array("\r\n", "\r");
+  if (count($alternates) > 0) {
+    // Replace all alternate delimiters with the primary delimter.
+    $value = str_replace($alternates, $delimiter, $value);
+  }
+  $list = explode($delimiter, $value);
+  $trimmed = array_map('trim', $list);
+  $lines = array_filter($trimmed, 'strlen');
+  $options = array();
+  foreach ($lines as $line) {
+    $pieces = split('\|', $line);
+    if (count($pieces) === 2) {
+      $options[$pieces[0]] = $pieces[1];
+    }
+  }
+  return $options;
+}
+
+
+function foodinc_awards_entry_configuration($form, $config) {
+
+  $config = foodinc_awards_configuration_defaults($config);
+
+  $form['about_you_section_label'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 255,
+    '#title' => t('About you section label'),
+    '#default_value' => $config['about_you_section_label'],
+  );
+
+  $form['about_you_section_desc'] = array(
+    '#type' => 'textarea',
+    '#title' => t('About you section description'),
+    '#default_value' => $config['about_you_section_desc'],
+  );
+
+  $about_you_field_labels = array(
+    'first_name_label' => t('First name field label'),
+    'last_name_label' => t('Last name field label'),
+    'email_label' => t('Email field label'),
+    'dob_label' => t('Date of Birth field label'),
+    'city_label' => t('City field label'),
+    'state_label' => t('State field label'),
+    'which_award_label' => t('Which award label'),
+    'lifestyle_award_label' => t('Lifestyle award label'),
+    'pioneer_award_label' => t('Pioneer award label')
+  );
+
+  foreach ($about_you_field_labels as $name => $title) {
+    $form[$name] = array(
+      '#type' => 'textfield',
+      '#maxlength' => 255,
+      '#title' => $title,
+      '#default_value' => $config[$name],
+    );
+  }
+
+  $form['lifestyle_award_desc'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Lifestyle award description'),
+    '#default_value' => $config['lifestyle_award_desc'],
+  );
+
+  $form['pioneer_award_desc'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Pioneer award description'),
+    '#default_value' => $config['pioneer_award_desc'],
+  );
+
+  $form['dob_month_list'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Date of birth month list'),
+    '#default_value' => $config['dob_month_list'],
+  );
+
+  $form['dob_year_list'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Date of birth year list'),
+    '#default_value' => $config['dob_year_list'],
+  );
+
+  $form['state_list'] = array(
+    '#type' => 'textarea',
+    '#title' => t('State list'),
+    '#default_value' => $config['state_list'],
+  );
+
+  $form['your_video_section_label'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 255,
+    '#title' => t('Your video section label'),
+    '#default_value' => $config['your_video_section_label'],
+  );
+
+  $form['your_video_section_desc'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Your video section description'),
+    '#default_value' => $config['your_video_section_desc'],
+  );
+
+  $form['video_link_label'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 255,
+    '#title' => t('Video link field label'),
+    '#default_value' => $config['video_link_label'],
+  );
+
+  $form['submission_section_label'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 255,
+    '#title' => t('Submission section label'),
+    '#default_value' => $config['submission_section_label'],
+  );
+
+  $form['submission_section_desc'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Submission section description'),
+    '#default_value' => $config['submission_section_desc'],
+  );
+
+  $form['newsletter_opt_in_label'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 255,
+    '#title' => t('Newsletter opt-in field label'),
+    '#default_value' => $config['newsletter_opt_in_label'],
+  );
+
+  $form['contest_rules_opt_in_label'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 255,
+    '#title' => t('Rules and submission opt-in field label'),
+    '#default_value' => $config['contest_rules_opt_in_label'],
+  );
+
+  $form['terms_of_service_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Terms of service message'),
+    '#default_value' => $config['terms_of_service_message'],
+  );
+
+  $form['submit_entry_label'] = array(
+    '#type' => 'textfield',
+    '#maxlength' => 255,
+    '#title' => t('Submit entry button label'),
+    '#default_value' => $config['submit_entry_label'],
+  );
+
+  return $form;
+}
+
+function foodinc_awards_entry_form($form, &$form_state, $config) {
+
+  $config = foodinc_awards_configuration_defaults($config);
+
+  $form['about_you_heading'] = array(
+    '#type' => 'markup',
+    '#markup' => $config['about_you_section_label'],
+  );
+
+  $form['about_you_description'] = array(
+    '#type' => 'markup',
+    '#markup' => $config['about_you_section_desc'],
+  );
+
+  $form['first_name'] = array(
+    '#type' => 'textfield',
+    '#title' => $config['first_name_label'],
+    '#default_value' => '',
+    '#required' => TRUE,
+  );
+
+  $form['last_name'] = array(
+    '#type' => 'textfield',
+    '#title' => $config['last_name_label'],
+    '#default_value' => '',
+    '#required' => TRUE,
+  );
+
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#title' => $config['email_label'],
+    '#default_value' => '',
+    '#required' => TRUE,
+  );
+
+  $months = foodinc_awards_split_list($conf['dob_month_list']);
+  $form['dob_month'] = array(
+    '#type' => 'select',
+    '#title' => $config['dob_label'],
+    '#default_value' => '',
+    '#required' => TRUE,
+    '#options' => $months,
+  );
+
+  $years = foodinc_awards_split_list($config['dob_year_list']);
+  $form['dob_year'] = array(
+    '#type' => 'select',
+    '#default_value' => '',
+    '#required' => TRUE,
+    '#options' => $years,
+  );
+
+  $form['city'] = array(
+    '#type' => 'textfield',
+    '#title' => $config['city_label'],
+    '#default_value' => '',
+    '#required' => TRUE,
+  );
+
+  $states = foodinc_awards_split_list($config['state_list']);
+  $form['state'] = array(
+    '#type' => 'select',
+    '#title' => $config['state_label'],
+    '#default_value' => '',
+    '#required' => TRUE,
+    '#options' => $states,
+  );
+
+  $form['which_award_label'] = array(
+    '#type' => 'markup',
+    '#markup' => $config['which_award_label'],
+  );
+
+  $form['lifestyle_award'] = array(
+    '#type' => 'checkbox',
+    '#title' => $config['lifestyle_award_label'],
+  );
+
+  $form['lifestyle_award_description'] = array(
+    '#type' => 'markup',
+    '#markup' => $config['lifestyle_award_desc'],
+  );
+
+  $form['pioneer_award'] = array(
+    '#type' => 'checkbox',
+    '#title' => $config['pioneer_award_label'],
+  );
+
+  $form['pioneer_award_description'] = array(
+    '#type' => 'markup',
+    '#markup' => $config['pioneer_award_desc'],
+  );
+
+  $form['your_video_heading'] = array(
+    '#type' => 'markup',
+    '#markup' => $config['about_you_section_label'],
+  );
+
+  $form['your_video_description'] = array(
+    '#type' => 'markup',
+    '#markup' => $config['about_you_section_desc'],
+  );
+
+  $form['video_link'] = array(
+    '#type' => 'textfield',
+    '#title' => $config['video_link_label'],
+    '#default_value' => '',
+    '#required' => TRUE,
+  );
+
+  $form['submission_heading'] = array(
+    '#type' => 'markup',
+    '#markup' => $config['submission_section_label'],
+  );
+
+  $form['submission_description'] = array(
+    '#type' => 'markup',
+    '#markup' => $config['submission_section_desc'],
+  );
+
+  $form['newsletter_opt_in'] = array(
+    '#type' => 'checkbox',
+    '#title' => $config['newsletter_opt_in_label'],
+  );
+
+  $form['contest_rules_opt_in'] = array(
+    '#type' => 'checkbox',
+    '#title' => $config['contest_rules_opt_in_label'],
+  );
+
+  $form['terms_of_service'] = array(
+    '#type' => 'markup',
+    '#markup' => $config['terms_of_service_message'],
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => $config['submit_entry_label'],
+  );
+
+  return $form;
+}
+
+function foodinc_awards_theme($existing, $type, $theme, $path) {
+  return array(
+    'foodinc_awards_entry_form' => array(
+      'render element' => 'element',
+    ),
+  );
+}
+
+function foodinc_awards_preprocess_foodinc_awards_entry_form(&$variables) {
+  $variables['theme_hook_suggestions'][] = 'foodinc-awards-entry-form';
+}
+
+function theme_foodinc_awards_entry_form($variables) {
+  return drupal_render_children($variables['element']);
+}
