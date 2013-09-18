@@ -10,6 +10,8 @@
   }
   .page-wrap{
     margin: 10px;
+    height: auto;
+    overflow: hidden;
   }
   .content{
     margin-top: 20px;
@@ -107,6 +109,9 @@
   .logo{
     margin-top: 30px;
     margin-left: 20px;
+    @media (max-width: 585px) {
+      margin-left: 0px;
+    }
   }
   #main-navigation ul{
     background-color: black;
@@ -142,6 +147,11 @@
 .social{
   float: right;
   margin-top: -35px;
+  @media (max-width: 680px) {
+    float: left;
+    margin-top: 10px;
+    clear: left;
+  }
   .headline{
     display: inline-block;
     vertical-align: top;
@@ -242,6 +252,8 @@
             font-size: 32px;
             color: $primary-color;
             text-align: right;
+            margin-bottom: 10px;
+            line-height: 24px;
             @media (max-width: 680px) {
               clear: left;
             }
@@ -348,6 +360,8 @@
               font-weight: 500;
               font-style: normal;
               font-size: 24px;
+              line-height: 19px;
+              margin-bottom: 5px;
             }
             .bio {
               padding: 0 15px;
@@ -476,6 +490,9 @@
               font-size: 18px;
               color: #fff;
               cursor: pointer;
+              &:hover{
+                text-decoration: underline;
+              }
             }
             a{
               color: $primary-color;
