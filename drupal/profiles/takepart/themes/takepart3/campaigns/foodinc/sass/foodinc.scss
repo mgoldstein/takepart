@@ -293,40 +293,94 @@
           margin: 0 auto;
           width: 302px;
         }
-        .top{
-          width: 302px;
-          height: 53px;
-          background: image-url('signup-block-top.jpg') no-repeat top center;
-          .title{
-            padding-top: 30px;
-            padding-left: 30px;
-            font-size: 20px;
-            color: #5c2e13;
-          }
+        .title{
+          padding-top: 30px;
+          padding-left: 30px;
+          font-size: 23px;
+          color: #5c2e13;
+          font-family: 'Archer A', 'Archer B';
+          font-weight: 800;
+          font-style: normal;
+          position: relative;
+          z-index: 1;
         }
-        .mid{
+        .form-wrapper-first{
           width: 302px;
           height: auto;
           overflow: hidden;
-          background: image-url('signup-block-mid.jpg') top center;
-          margin-top: -15px;
-          color: #5c2e13;
-          p{
-            line-height: 20px;
+          background: image-url('signup-block-top.jpg'), image-url('signup-block-extra.jpg');
+          background-position: center top, top center;
+          background-repeat: no-repeat, repeat-y;
+          margin-top: -50px;
+          position: relative;
+          z-index: 0;
+          .thank-you-message p, form > div > p{
+            color: #5c2e13;
+            padding: 10px 20px;
+            line-height: 18px;
             font-size: 12px;
-            padding: 30px;
+            margin-top: 35px;
+            background: image-url('signup-block-mid.jpg'), image-url('signup-block-bottom.jpg');
+            background-position: center top, center bottom;
+            background-repeat: repeat-y, no-repeat;
           }
-        }
-        .bottom{
-          width: 302px;
-          height: 53px;
-          margin-top: -35px;
-          background: image-url('signup-block-bottom.jpg') no-repeat bottom center;
-        }
-        .extra{
-          width: 302px;
-          height: 136px;
-          background: image-url('signup-block-extra.jpg') no-repeat bottom center;
+          .thank-you-message p{
+            padding: 20px 30px;
+          }
+          form{
+            padding: 12px;
+            padding-top: 10px;
+            .throbber{
+              display: none;
+            }
+            div.error{
+              background: transparent;
+              border: none;
+              height: 10px;
+              margin: 0;
+              margin-bottom: -31px;
+              text-align: left;
+              color: red;
+              position: absolute;
+              bottom: 161px;
+              z-index: 2;
+            }
+            .form-item-email label{
+              font-family: 'Archer A', 'Archer B';
+              font-weight: 600;
+              font-style: normal;
+              font-size: 13px;
+              color: #5c2e13;
+              margin-bottom: 5px;
+              span{
+                display: none;
+              }
+            }
+            input[type='text']{
+              background: image-url('signup-input.png') top center;
+              height: 34px;
+              width: 275px;
+              border: none;
+              line-height: 37px;
+              font-size: 21px;
+              text-indent: 10px;
+            }
+            input[type='submit']{
+              background: image-url('singup-btn.png') top center;
+              height: 44px;
+              width: 275px;
+              border: none;
+              font-size: 18px;
+              color: #fff;
+              cursor: pointer;
+            }
+            a{
+              color: #5c2e13;
+              &:hover{
+                text-decoration: none;
+              }
+            }
+          }
         }
       }
     }
