@@ -1,95 +1,61 @@
-<?php $form = $variables['element']; ?>
+<? $form = $variables['element']; ?>
 
-<!-- BEGIN REQUIRED DRUPAL STUFF -->
-<?php print render($form['form_build_id']); ?>
-<?php print render($form['form_token']); ?>
-<?php print render($form['form_id']); ?>
-<!-- END -->
+<?= render($form['form_build_id']); ?>
+<?= render($form['form_token']); ?>
+<?= render($form['form_id']); ?>
 
-<!-- BEGIN -->
-<?php print render($form['about_you_heading']); ?>
-<!-- END -->
+<section>
+  <header>
+    <h3><?= render($form['about_you_heading']); ?></h3>
+    <p><?= render($form['about_you_description']); ?></p>
+  </header>
+  <fieldset class="column2">
+    <?= render($form['first_name']); ?>
+  </fieldset>
 
-<!-- BEGIN -->
-<?php print render($form['about_you_description']); ?>
-<!-- END -->
+  <fieldset class="column2">
+    <?= render($form['last_name']); ?>
+  </fieldset>
 
-<!-- BEGIN -->
-<?php print render($form['first_name']); ?>
-<!-- END -->
+  <fieldset class="column2">
+    <?= render($form['email']); ?>
+  </fieldset>
 
-<!-- BEGIN -->
-<?php print render($form['last_name']); ?>
-<!-- END -->
+  <fieldset>
+    <?= render($form['dob_month']); ?>
+    <?= render($form['dob_year']); ?>
+  </fieldset>
 
-<!-- BEGIN -->
-<?php print render($form['email']); ?>
-<!-- END -->
+  <fieldset class="column2">
+    <?= render($form['city']); ?>
+  </fieldset>
 
-<!-- BEGIN -->
-<?php print render($form['dob_month']); ?>
-<!-- END -->
+  <fieldset class="column2">
+    <?= render($form['state']); ?>
+  </fieldset>
 
-<!-- BEGIN -->
-<?php print render($form['dob_year']); ?>
-<!-- END -->
+  <fieldset>
+    <?= render($form['which_award_label']); ?>
+    <?= render($form['lifestyle_award']); ?>
+    <?= render($form['lifestyle_award_description']); ?>
+    <?= render($form['pioneer_award']); ?>
+    <?= render($form['pioneer_award_description']); ?>
+  </fieldset>
+</section>
 
-<!-- BEGIN -->
-<?php print render($form['city']); ?>
-<!-- END -->
+<section>
+  <header>
+    <?= render($form['your_video_heading']); ?>
+    <?= render($form['your_video_description']); ?>
+  </header>
+  <?= render($form['video_link']); ?>
+</section>
 
-<!-- BEGIN -->
-<?php print render($form['state']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['which_award_label']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['which_award']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['lifestyle_award_description']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['pioneer_award_description']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['your_video_heading']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['your_video_description']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['video_link']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['submission_heading']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['submission_description']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['newsletter_opt_in']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['contest_rules_opt_in']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['terms_of_service']); ?>
-<!-- END -->
-
-<!-- BEGIN -->
-<?php print render($form['submit']); ?>
-<!-- END -->
+<section>
+  <?= render($form['submission_heading']); ?>
+  <?= render($form['submission_description']); ?>
+  <?= render($form['newsletter_opt_in']); ?>
+  <?= render($form['contest_rules_opt_in']); ?>
+  <?= render($form['terms_of_service']); ?>
+  <?= render($form['submit']); ?>
+</section>
