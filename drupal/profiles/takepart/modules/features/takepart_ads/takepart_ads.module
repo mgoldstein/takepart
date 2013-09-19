@@ -7,6 +7,16 @@
 include_once('takepart_ads.features.inc');
 
 function takepart_ads_preprocess_page(&$vars) {
+
+    if (function_exists('wordlet_active_page')) {
+      $wordlet_page = wordlet_active_page();
+      if ($wordlet_page !== FALSE) {
+        if ($wordlet_page['suppress_ad_block']) {
+          return;
+        }
+      }
+    }
+
     // $ad_slots = array();
     $ad_slots = takepart_ads();
     $gptad_slots = takepart_gpt_ads();
@@ -131,7 +141,7 @@ GS_googleEnableAllServices();';
                   gads.async = true;
                   gads.type = 'text/javascript';
                   var useSSL = 'https:' == document.location.protocol;
-                  gads.src = (useSSL ? 'https:' : 'http:') + 
+                  gads.src = (useSSL ? 'https:' : 'http:') +
                   '//www.googletagservices.com/tag/js/gpt.js';
                   var node = document.getElementsByTagName('script')[0];
                   node.parentNode.insertBefore(gads, node);

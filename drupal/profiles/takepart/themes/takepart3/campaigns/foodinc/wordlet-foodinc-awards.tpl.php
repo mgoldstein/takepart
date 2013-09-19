@@ -8,7 +8,12 @@
             <?php $youtube_id = substr(w('hero_content')->video, strrpos(w('hero_content')->video, '=') + 1);; ?>
             <iframe width="510" height="285" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
           <?php else: ?>
-            <div class="botr"><script type="text/javascript" src="http://video.takepart.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
+            <div class="botr">
+              <?php if(isset($_REQUEST['signed_request'])): ?>
+                <script type="text/javascript" src="https://content.bitsontherun.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
+              <?php else: ?>
+                <script type="text/javascript" src="//video.takepart.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
+              <?php endif; ?>
           <?php endif; ?>
         </div>
       <?php else: ?>
@@ -57,7 +62,6 @@
           <div class="info">
             <div class="name"><?php print $w->single; ?></div>
             <div class="bio show-more-height"><?php print $w->multi; ?></div>
-            <div class="show-more">See More</div>
           </div>
         </div>
       <? endforeach ?>

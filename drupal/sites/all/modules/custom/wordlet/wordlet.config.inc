@@ -528,6 +528,7 @@ function _wordlet_configuration() {
         'campaigns/foodinc/js/foodinc.js',
       ),
       'load' => array('site', 'foodinc_campaign'),
+      'suppress_ad_block' => TRUE,
     ),
 
     // Food Inc Awards
@@ -545,6 +546,7 @@ function _wordlet_configuration() {
         'campaigns/foodinc/js/foodinc.js',
       ),
       'load' => array('site', 'foodinc_campaign'),
+      'suppress_ad_block' => TRUE,
     ),
 
     // Food Inc Entry
@@ -563,6 +565,7 @@ function _wordlet_configuration() {
         'campaigns/foodinc/js/tpselect.jquery.js',
       ),
       'load' => array('site', 'foodinc_campaign'),
+      'suppress_ad_block' => TRUE,
     ),
 
     // Food Inc Entry Received
@@ -580,6 +583,7 @@ function _wordlet_configuration() {
         'campaigns/foodinc/js/foodinc.js',
       ),
       'load' => array('site', 'foodinc_campaign'),
+      'suppress_ad_block' => TRUE,
     ),
 
 
