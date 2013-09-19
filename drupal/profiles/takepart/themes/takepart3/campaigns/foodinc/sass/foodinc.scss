@@ -802,6 +802,12 @@
         margin-bottom: 30px;
         padding: 0px 10px 1px 10px;
         background: image-url('entry-form-bg.jpg');
+
+        &.about-you {
+          .checks-radios label[for] {
+            text-transform: uppercase;
+          }
+        }
         header {
           padding: 25px 15px 1px 15px;
           background:
@@ -820,7 +826,6 @@
           label {
             font: bold 14px/170% $header-font;
             color: $primary-color;
-            text-transform: uppercase;
           }
           .form-text {
             @extend .input-field;
@@ -873,21 +878,46 @@
           }
         }/* textfields */
         .checks-radios {
-          margin-left: 2em;
+          margin-left: 4ex;
           input {
-            margin-left: -2em;
+            margin-left: -4ex;
+            margin-right: 1ex;
           }
           p {
             font: normal 13px/140% $body-font;
             color: #555;
           }
+          label[for] {
+            @include inline-block;
+            font: normal 12px/150% $body-font;
+            color: #555;
+          }
         }
       }/* section */
+
+      .form-submit {
+        -webkit-appearance: none;
+        display: block;
+        background-image: image-url('contest-btn.png');
+        font: normal 20px/100% $body-font;
+        color: white;
+        text-align: center;
+        border: none;
+        padding: 11px 46px;
+        max-width: 238px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        text-transform: uppercase;
+        @include border-radius(5px);
+        @include box-sizing(border-box);
+      }
+
 
       label.error {
         color: #ff1812;
         font: normal 12px $body-font;
         text-transform: none;
+        margin-top: 4px;
       }
     }/* .entry-form-container */
   }
