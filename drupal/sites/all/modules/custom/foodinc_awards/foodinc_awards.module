@@ -1,5 +1,144 @@
 <?php
 
+class FoodIncAwardsSignup extends Signup {
+
+  public static function fields() {
+    return array(
+      'name.first' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'name.last' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'email' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'address.city' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'address.state.code' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+
+      'partner.code' => array(
+        'required' => FALSE,
+        'default' => '',
+      ),
+
+      'foodinc-awards.dob.month' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'foodinc-awards.dob.year' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'foodinc-awards.category' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'foodinc-awards.video-link' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'foodinc-awards.newsletter-opt-in' => array(
+        'required' => FALSE,
+        'default' => '',
+      ),
+      'foodinc-awards.contest-rules-opt-in' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+    );
+  }
+
+  public function validate() {
+
+    // Do the standard validation.
+    parent::validate();
+
+    // Check that the contest rules and submission agreement has been accepted
+    if ($this['foodinc-awards.contest-rules-opt-in'] !== '1') {
+      throw new SignupValidationException(array('contest rules and submission agreement opt-in must be accepted'));
+    }
+  }
+}
+
+
+class FoodIncAwardsSignupEndpoint extends SignupEndpoint {
+
+  public static function fields() {
+    return array(
+      'name.first' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'name.last' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'email' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'address.city' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'address.state.code' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+
+      'partner.code' => array(
+        'required' => FALSE,
+        'default' => '',
+      ),
+
+      'foodinc-awards.dob.month' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'foodinc-awards.dob.year' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'foodinc-awards.category' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'foodinc-awards.video-link' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+      'foodinc-awards.newsletter-opt-in' => array(
+        'required' => FALSE,
+        'default' => '',
+      ),
+      'foodinc-awards.contest-rules-opt-in' => array(
+        'required' => TRUE,
+        'default' => '',
+      ),
+    );
+  }
+
+  protected function validate($signup) {
+
+    // Do the standard validation.
+    parent::validate($signup);
+
+    // Check that the contest rules and submission agreement has been accepted
+    if ($signup['foodinc-awards.contest-rules-opt-in'] !== '1') {
+      throw new SignupValidationException(array('contest rules and submission agreement opt-in must be accepted'));
+    }
+  }
+}
+
 function foodinc_awards_configuration_defaults($config) {
   $default_config = array(
     'about_you_section_label' => '<h2>About You</h2>',
@@ -261,15 +400,25 @@ function foodinc_awards_entry_form($form, &$form_state, $config) {
   $form['which_award'] = array(
     '#type' => 'radios',
     '#options' => array(
-      'lifestyle' => $config['lifestyle_award_label'],
-      'pioneer' => $config['pioneer_award_label'],
+      'lifestyle' => '',
+      'pioneer' => '',
     ),
     '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
+  );
+
+  $form['lifestyle_award_label'] = array(
+    '#type' => 'markup',
+    '#markup' => $config['lifestyle_award_label'],
   );
 
   $form['lifestyle_award_description'] = array(
     '#type' => 'markup',
     '#markup' => $config['lifestyle_award_desc'],
+  );
+
+  $form['pioneer_award_label'] = array(
+    '#type' => 'markup',
+    '#markup' => $config['pioneer_award_label'],
   );
 
   $form['pioneer_award_description'] = array(
@@ -306,6 +455,7 @@ function foodinc_awards_entry_form($form, &$form_state, $config) {
 
   $form['newsletter_opt_in'] = array(
     '#type' => 'checkbox',
+    '#default_value' => TRUE,
     '#title' => $config['newsletter_opt_in_label'],
     '#theme_wrappers' => array('foodinc_awards_inline_error_form_element'),
   );
@@ -385,9 +535,79 @@ function foodinc_awards_entry_form_validate($form, &$form_state) {
   }
 }
 
+function foodinc_awards_entry_signup($values) {
+
+  $signup = FoodIncAwardsSignup::create();
+
+  $signup['name.first'] = trim($values['first_name']);
+  $signup['name.last'] = trim($values['last_name']);
+  $signup['email'] = trim($values['email']);
+  $signup['address.city'] = trim($values['city']);
+  $signup['address.state.code'] = trim($values['state']);
+
+  $signup['foodinc-awards.dob.month'] = trim($values['dob_month']);
+  $signup['foodinc-awards.dob.year'] = trim($values['dob_year']);
+
+  $signup['foodinc-awards.category'] = trim($form_state['values']['which_award']);
+  $signup['foodinc-awards.video-link'] = trim($form_state['values']['video_link']);
+
+  $signup['foodinc-awards.newsletter-opt-in']
+    = empty($values['newsletter_opt_in']) ? '0' : '1';
+
+  $signup['foodinc-awards.contest-rules-opt-in']
+    = empty($values['contest_rules_opt_in']) ? '0' : '1';
+
+  $signup->validate();
+
+  return $signup;
+}
+
+function foodinc_awards_enrty_endpoint() {
+
+  $endpoint = new FoodIncAwardsSignupEndpoint();
+
+  $endpoint->setPluginEnabled('bluestatedigital.pm_signup.handler', TRUE);
+  $endpoint->setPluginConfiguration('bluestatedigital.pm_signup.handler', array(
+    'form-id' => 490,
+    'field-ids' => array(
+      'name.first' => 10212,
+      'name.last' => 10214,
+      'email' => 10210,
+      'address.city' => 10218,
+      'address.state.code' => 10217,
+      'foodinc-awards.dob.month' => 10224,
+      'foodinc-awards.dob.year' => 10225,
+      'foodinc-awards.category' => 10226,
+      'foodinc-awards.video-link' => 10227,
+      'foodinc-awards.newsletter-opt-in' => 10228,
+      'foodinc-awards.contest-rules-opt-in' => 10229,
+    ),
+  ));
+  return $endpoint;
+}
+
 function foodinc_awards_entry_form_submit($form, &$form_state) {
+  try {
 
+    // Send the entry to BSD
+    $signup = foodinc_awards_entry_signup($form_state['values']);
+    $endpoint = foodinc_awards_enrty_endpoint();
+    $endpoint->submit($signup);
 
+    if (!empty($form_state['values']['newsletter_opt_in'])) {
+      pm_signup_handle(array(
+        'type' => 'newsletter',
+        'endpoint' => 'food_inc_awards',
+        'payload' => array(
+          'email' => $email,
+        ),
+      ));
+    }
+  }
+  catch (SignupException $se) {
+    drupal_set_message(t('We were unable to process your entry at this time. Please try agin later.'), 'error');
+    return;
+  }
   drupal_goto('foodinc/awards/enter/received');
 }
 
