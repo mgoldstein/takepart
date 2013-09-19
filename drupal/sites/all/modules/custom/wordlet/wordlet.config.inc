@@ -560,6 +560,7 @@ function _wordlet_configuration() {
       'js' => array(
         'campaigns/campaign.js',
         'campaigns/foodinc/js/foodinc.js',
+        'campaigns/foodinc/js/tpselect.jquery.js',
       ),
       'load' => array('site', 'foodinc_campaign'),
     ),

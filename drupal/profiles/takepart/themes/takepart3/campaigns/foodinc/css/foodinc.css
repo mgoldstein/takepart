@@ -1059,61 +1059,100 @@
   color: #5c2e13;
   text-transform: uppercase;
 }
-/* line 818, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text {
-  padding: 5px;
-  -webkit-box-shadow: -1px 2px 3px #eeeeee inset;
-  -moz-box-shadow: -1px 2px 3px #eeeeee inset;
-  box-shadow: -1px 2px 3px #eeeeee inset;
-  border: 1px solid #ddd;
-  font: normal 19px "Archer A", "Archer B";
-  margin: 0;
-}
-/* line 824, ../sass/foodinc.scss */
+/* line 820, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text.error {
   border-color: #ff1812;
 }
-/* line 829, ../sass/foodinc.scss */
+/* line 824, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input {
+  position: relative;
+}
+/* line 827, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input select {
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 2;
+}
+/* line 832, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input span:after {
+  content: '\25bc';
+  font-size: 11px;
+  line-height: 34px;
+  color: #333;
+  text-align: center;
+  display: block;
+  border-left: 1px solid #ccc;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #dddddd));
+  background: -webkit-linear-gradient(#ffffff, #dddddd);
+  background: -moz-linear-gradient(#ffffff, #dddddd);
+  background: -o-linear-gradient(#ffffff, #dddddd);
+  background: linear-gradient(#ffffff, #dddddd);
+  width: 30px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0px;
+}
+/* line 849, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 831, ../sass/foodinc.scss */
+/* line 851, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset {
   float: left;
 }
-/* line 833, ../sass/foodinc.scss */
+/* line 853, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset .form-text {
   width: 250px;
 }
-/* line 836, ../sass/foodinc.scss */
+/* line 856, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset:nth-child(odd) {
   margin-right: 15px;
 }
-/* line 841, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .date .form-select {
-  width: 120px;
+/* line 860, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .tpselect_input {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  width: 110px;
 }
-/* line 843, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .date .form-select:nth-child(even) {
+/* line 863, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .tpselect_input:nth-child(even) {
   margin-right: 15px;
 }
-/* line 849, ../sass/foodinc.scss */
+/* line 868, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios {
   margin-left: 2em;
 }
-/* line 851, ../sass/foodinc.scss */
+/* line 870, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios input {
   margin-left: -2em;
 }
-/* line 854, ../sass/foodinc.scss */
+/* line 873, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios p {
   font: normal 13px/140% Helvetica, Arial, sans-serif;
   color: #555;
 }
-/* line 861, ../sass/foodinc.scss */
+/* line 880, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container label.error {
   color: #ff1812;
   font: normal 12px Helvetica, Arial, sans-serif;
   text-transform: none;
+}
+
+/* line 890, ../sass/foodinc.scss */
+.input-field, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input {
+  display: block;
+  padding: 5px;
+  background-color: white;
+  -webkit-box-shadow: -1px 2px 3px #eeeeee inset;
+  -moz-box-shadow: -1px 2px 3px #eeeeee inset;
+  box-shadow: -1px 2px 3px #eeeeee inset;
+  border: 1px solid #d6d6d6;
+  font: normal 16px/19px "Archer A", "Archer B";
+  margin: 0;
 }
