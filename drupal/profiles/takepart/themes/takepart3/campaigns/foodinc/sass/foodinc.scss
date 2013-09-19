@@ -374,18 +374,6 @@
               padding: 0;
               margin-left: 5px;
             }
-            .show-more-height{
-              height: 58px;
-              overflow:hidden;
-              text-overflow:ellipsis;
-            }
-            .show-more{
-              color: #1CA9E7;
-              cursor: pointer;
-              &:hover{
-                text-decoration: underline;
-              }
-            }
           }
         }
       }
