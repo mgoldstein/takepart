@@ -30,12 +30,6 @@
       $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
     }
   }
-  Drupal.behaviors.FBook={
-    attach: function(context) {
-      FB.Canvas.setSize({ width: 640, height: 1000 });
-    }
-  }
-
 })
 
 (jQuery, Drupal, this, this.document);
