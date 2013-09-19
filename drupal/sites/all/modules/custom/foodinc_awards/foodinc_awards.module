@@ -548,8 +548,8 @@ function foodinc_awards_entry_signup($values) {
   $signup['foodinc-awards.dob.month'] = trim($values['dob_month']);
   $signup['foodinc-awards.dob.year'] = trim($values['dob_year']);
 
-  $signup['foodinc-awards.category'] = trim($form_state['values']['which_award']);
-  $signup['foodinc-awards.video-link'] = trim($form_state['values']['video_link']);
+  $signup['foodinc-awards.category'] = trim($values['which_award']);
+  $signup['foodinc-awards.video-link'] = trim($values['video_link']);
 
   $signup['foodinc-awards.newsletter-opt-in']
     = empty($values['newsletter_opt_in']) ? '0' : '1';
@@ -599,14 +599,14 @@ function foodinc_awards_entry_form_submit($form, &$form_state) {
         'type' => 'newsletter',
         'endpoint' => 'food_inc_awards',
         'payload' => array(
-          'email' => $email,
+          'email' => $form_state['values']['email'],
         ),
       ));
     }
+    setcookie('foodinc_awards', 'true');
   }
   catch (SignupException $se) {
-    drupal_set_message(t('We were unable to process your entry at this time. Please try agin later.'), 'error');
-    return;
+    setcookie('foodinc_awards', 'false');
   }
   drupal_goto('foodinc/awards/enter/received');
 }
@@ -675,7 +675,7 @@ function theme_foodinc_awards_inline_error_form_element($variables) {
     case 'none':
     case 'attribute':
       // Output no label and no required marker, only the children.
-      $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
+      $output .= ' ' . $prefix . $element['#children'] . $suffix . $error . "\n";
       break;
   }
 
