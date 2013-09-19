@@ -102,6 +102,23 @@ class BlueStateDigitalSignupHandler {
     $this->sendSignupToServer($bsd_signup);
   }
 
+  protected function submitFoodIncAwardsSignup($signup) {
+
+    $fields = array();
+    foreach ($this->configuration['field-ids'] as $name => $id) {
+      $fields[$id] = array(
+        'value' => array(
+          'type' => 'value',
+          'value' => $signup[$name],
+        ),
+      );
+    }
+
+    $form_id = $this->configuration['form-id'];
+    $bsd_signup = array($form_id => $fields);
+    $this->sendSignupToServer($bsd_signup);
+  }
+
   public function submit($signup) {
     $signup_type = get_class($signup);
     if ($signup_type === 'NewsletterCampaignSignup') {
@@ -112,6 +129,9 @@ class BlueStateDigitalSignupHandler {
     }
     elseif ($signup_type === 'TakePartUserSignup') {
       $this->submitTakePartUserSignup($signup);
+    }
+    elseif ($signup_type === 'FoodIncAwardsSignup') {
+      $this->submitFoodIncAwardsSignup($signup);
     }
   }
 }
