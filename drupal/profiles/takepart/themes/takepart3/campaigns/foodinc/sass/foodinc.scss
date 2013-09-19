@@ -770,9 +770,21 @@
         li {
           background: no-repeat 0px 5px;
           padding-left: 4ex;
-          &.bullet-1 { background-image: image-url('entry-bullets/bullet-1.png'); }
-          &.bullet-2 { background-image: image-url('entry-bullets/bullet-2.png'); }
-          &.bullet-3 { background-image: image-url('entry-bullets/bullet-3.png'); }
+          position: relative;
+          &:before {
+            font: bold 26px "Archer A", "Archer B";
+            color: #5c2e13;
+            left: 2px;
+            top: -5px;
+            display: inline-block;
+            position: absolute;
+          }
+          &.bullet-1:before { content: '1'; }
+          &.bullet-2:before { content: '2'; }
+          &.bullet-3:before { content: '3'; }
+          &.bullet-4:before { content: '4'; }
+          &.bullet-5:before { content: '5'; }
+          &.bullet-6:before { content: '6'; }
           &.bullet-action { background-image: image-url('entry-bullets/bullet-action.png'); }
           &.bullet-camera { background-image: image-url('entry-bullets/bullet-camera.png'); }
           &.bullet-clean { background-image: image-url('entry-bullets/bullet-clean.png'); }
