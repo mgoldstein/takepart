@@ -1,6 +1,8 @@
 (function ($, Drupal, window, document, undefined) {
   $(document).ready(function() {
-    $('#foodinc-entryform select').tpselect();
+    $('#foodinc-entryform select').each(function() {
+      $(this).tpselect();
+    });
   });
 
   $.extend(true, Drupal, {behaviors: {

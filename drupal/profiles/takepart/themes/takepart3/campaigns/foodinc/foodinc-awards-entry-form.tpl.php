@@ -4,7 +4,7 @@
 <?= render($form['form_token']); ?>
 <?= render($form['form_id']); ?>
 
-<section>
+<section class="about-you">
   <header>
     <h3><?= render($form['about_you_heading']); ?></h3>
     <p><?= render($form['about_you_description']); ?></p>
@@ -47,12 +47,17 @@
     <input type="radio" name="which_award" value="pioneer" class="form-radio" id="pioneer_award" />
     <label for="pioneer_award"><?= render($form['pioneer_award_label']); ?></label>
     <?= render($form['pioneer_award_description']); ?>
+
+    <? if ( isset($form['which_award']['#inline_error']) ): ?>
+      <label class="error"><?= $form['which_award']['#inline_error'] ?></label>
+    <? endif ?>
   </fieldset>
+
 </section>
 
 
 
-<section>
+<section class="your-video">
   <header>
     <h3><?= render($form['your_video_heading']); ?></h3>
     <p><?= render($form['your_video_description']); ?></p>
@@ -64,7 +69,7 @@
   </div>
 </section>
 
-<section>
+<section class="submission">
   <header>
     <h3><?= render($form['submission_heading']); ?></h3>
     <p><?= render($form['submission_description']); ?></p>
