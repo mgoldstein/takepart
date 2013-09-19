@@ -797,6 +797,9 @@
   font: bold 16px/150% "Archer A", "Archer B";
   color: #5c2e13;
 }
+#page-wrapper.foodinc #foodinc-entryform p {
+  color: #555;
+}
 #page-wrapper.foodinc #foodinc-entryform .left-rail {
   display: -moz-inline-stack;
   display: inline-block;
@@ -865,9 +868,6 @@
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-pencil {
   background-image: url('../images/entry-bullets/bullet-pencil.png?1379550501');
 }
-#page-wrapper.foodinc #foodinc-entryform .left-rail ul li p {
-  color: #555;
-}
 #page-wrapper.foodinc #foodinc-entryform .right-rail {
   display: -moz-inline-stack;
   display: inline-block;
@@ -887,7 +887,7 @@
   background: url('../images/entry-form-bg.jpg?1379550516');
   /* textfields */
 }
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section.about-you .checks-radios label[for] {
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section.about-you label[for], #page-wrapper.foodinc #foodinc-entryform .entry-form-container section.your-video label[for] {
   text-transform: uppercase;
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section header {
@@ -909,6 +909,9 @@
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text.error {
   border-color: #ff1812;
+}
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text:focus, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_focus {
+  outline: 1px solid #999;
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input {
   position: relative;
@@ -1015,11 +1018,12 @@
 .input-field, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input {
   display: block;
   padding: 5px;
+  color: #555;
   background-color: white;
   -webkit-box-shadow: -1px 2px 3px #eeeeee inset;
   -moz-box-shadow: -1px 2px 3px #eeeeee inset;
   box-shadow: -1px 2px 3px #eeeeee inset;
   border: 1px solid #d6d6d6;
-  font: normal 15px/19px "Archer A", "Archer B";
+  font: normal 13px/19px Helvetica, Arial, sans-serif;
   margin: 0;
 }
