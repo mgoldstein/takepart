@@ -47,7 +47,7 @@
         <div class="row row-id-<?php print $key; ?> <?php print ($key % 2 == 0 ? 'row-even' : 'row-odd'); ?>">
           <div class="image"><img src="<?php print $w->img_src; ?>"></div>
           <div class="category-info">
-            <div class="categories-title"><?php print $w->single; ?></div>
+            <div class="title-wrapper"><div class="categories-title"><?php print $w->single; ?></div></div>
             <div class="category-text"><?php print $w->multi; ?></div>
           </div>
         </div>

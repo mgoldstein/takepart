@@ -76,6 +76,7 @@
     .learn-more{
       float: right;
       clear: both;
+      margin-top: -15px;
       @media (max-width: 480px) {
         float: none;
         margin: 20px 0;
@@ -90,6 +91,7 @@
         vertical-align: top;
         margin-top: 10px;
         margin-right: 5px;
+        margin-bottom: 12px;
         @media (max-width: 480px) {
           display: none;
         }
@@ -250,12 +252,15 @@
           margin-bottom: 30px;
           height: auto;
           overflow: hidden;
+          &:last-child{
+            margin-bottom: 20px;
+          }
           .categories-title{
             font-family: $header-font; font-weight: 500; font-style: italic;
             font-size: 32px;
             color: $primary-color;
             text-align: right;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             line-height: 24px;
             @media (max-width: 680px) {
               clear: left;
@@ -298,6 +303,9 @@
           }
         }
         .row-odd{
+          .title-wrapper{
+            width: 225px;
+          }
           .image{
             float: right;
             margin-left: 10px;
@@ -313,6 +321,11 @@
           }
         }
         .row-even{
+          .title-wrapper{
+            width: 225px;
+            float: right;
+            margin-right: 19px;
+          }
           .image{
             float: left;
             margin-right: 10px;
