@@ -746,10 +746,16 @@
     h3 {
       font: bold 24px $header-font;
       color: $primary-color;
+      text-transform: uppercase;
       span {
         font: italic normal 24px $header-font;
         margin-left: .5ex;
+        text-transform: none;
       }
+    }
+    h4 {
+      font: bold 16px/150% $header-font;
+      color: $primary-color;
     }
     .left-rail {
       @include inline-block;
@@ -787,7 +793,7 @@
     .entry-form-container {
       section {
         margin-bottom: 30px;
-        padding: 0px 15px 1px 15px;
+        padding: 0px 10px 1px 10px;
         background: image-url('entry-form-bg.jpg');
         header {
           padding: 25px 15px 1px 15px;
@@ -802,8 +808,10 @@
         }
         fieldset {
           border: none;
+          padding: 0;
+          margin: 10px 0 10px;
           label {
-            font: bold 14px/150% $header-font;
+            font: bold 14px/170% $header-font;
             color: $primary-color;
             text-transform: uppercase;
           }
@@ -811,19 +819,51 @@
             padding: 5px;
             @include box-shadow(-1px 2px 3px #eee inset);
             border: 1px solid #ddd;
-            font: normal 14px $header-font;
+            font: normal 19px $header-font;
             margin: 0;
+            &.error {
+              border-color: #ff1812;
+            }
           }
-          &.column2 {
-            @include inline-block;
-            width: 48%;
+        }
+        .textfields {
+          @include clearfix;
+          fieldset {
+            float: left;
+            .form-text {
+              width: 250px;
+            }
             &:nth-child(odd) {
               margin-right: 15px;
             }
           }
+          .date {
+            .form-select {
+              width: 120px;
+              &:nth-child(even) {
+                margin-right: 15px;
+              }
+            }
+          }
+        }/* textfields */
+        .checks-radios {
+          margin-left: 2em;
+          input {
+            margin-left: -2em;
+          }
+          p {
+            font: normal 13px/140% $body-font;
+            color: #555;
+          }
         }
+      }/* section */
+
+      label.error {
+        color: #ff1812;
+        font: normal 12px $body-font;
+        text-transform: none;
       }
-    }
+    }/* .entry-form-container */
   }
 }
 
