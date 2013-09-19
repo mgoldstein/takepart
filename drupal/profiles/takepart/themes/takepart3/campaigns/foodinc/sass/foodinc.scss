@@ -762,6 +762,10 @@
       margin-right: 20px;
       width: 370px;
       margin-right: 20px;
+      section {
+        margin-bottom: 20px;
+        @include clearfix;
+      }
       ul {
         list-style-type: none;
         li {

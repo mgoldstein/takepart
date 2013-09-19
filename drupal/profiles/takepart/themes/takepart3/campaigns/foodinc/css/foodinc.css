@@ -967,16 +967,22 @@
   margin-right: 20px;
 }
 /* line 765, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .left-rail section {
+  margin-bottom: 20px;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 769, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul {
   list-style-type: none;
 }
-/* line 767, ../sass/foodinc.scss */
+/* line 771, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li {
   background: no-repeat 0px 5px;
   padding-left: 4ex;
   position: relative;
 }
-/* line 771, ../sass/foodinc.scss */
+/* line 775, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li:before {
   font: bold 26px "Archer A", "Archer B";
   color: #5c2e13;
@@ -985,59 +991,59 @@
   display: inline-block;
   position: absolute;
 }
-/* line 779, ../sass/foodinc.scss */
+/* line 783, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-1:before {
   content: '1';
 }
-/* line 780, ../sass/foodinc.scss */
+/* line 784, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-2:before {
   content: '2';
 }
-/* line 781, ../sass/foodinc.scss */
+/* line 785, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-3:before {
   content: '3';
 }
-/* line 782, ../sass/foodinc.scss */
+/* line 786, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-4:before {
   content: '4';
 }
-/* line 783, ../sass/foodinc.scss */
+/* line 787, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-5:before {
   content: '5';
 }
-/* line 784, ../sass/foodinc.scss */
+/* line 788, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-6:before {
   content: '6';
 }
-/* line 785, ../sass/foodinc.scss */
+/* line 789, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-action {
   background-image: url('../images/entry-bullets/bullet-action.png?1379550501');
 }
-/* line 786, ../sass/foodinc.scss */
+/* line 790, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-camera {
   background-image: url('../images/entry-bullets/bullet-camera.png?1379550501');
 }
-/* line 787, ../sass/foodinc.scss */
+/* line 791, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-clean {
   background-image: url('../images/entry-bullets/bullet-clean.png?1379550501');
 }
-/* line 788, ../sass/foodinc.scss */
+/* line 792, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-focus {
   background-image: url('../images/entry-bullets/bullet-focus.png?1379550501');
 }
-/* line 789, ../sass/foodinc.scss */
+/* line 793, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-lights {
   background-image: url('../images/entry-bullets/bullet-lights.png?1379550501');
 }
-/* line 790, ../sass/foodinc.scss */
+/* line 794, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-pencil {
   background-image: url('../images/entry-bullets/bullet-pencil.png?1379550501');
 }
-/* line 792, ../sass/foodinc.scss */
+/* line 796, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li p {
   color: #555;
 }
-/* line 799, ../sass/foodinc.scss */
+/* line 803, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .right-rail {
   display: -moz-inline-stack;
   display: inline-block;
@@ -1048,54 +1054,54 @@
   float: right;
   width: 570px;
 }
-/* line 805, ../sass/foodinc.scss */
+/* line 809, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container {
   /* section */
 }
-/* line 806, ../sass/foodinc.scss */
+/* line 810, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section {
   margin-bottom: 30px;
   padding: 0px 10px 1px 10px;
   background: url('../images/entry-form-bg.jpg?1379550516');
   /* textfields */
 }
-/* line 810, ../sass/foodinc.scss */
+/* line 814, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section header {
   padding: 25px 15px 1px 15px;
   background: url('../images/entry-title-top.jpg?1379472611') no-repeat -15px 0, url('../images/entry-title-mid.jpg?1379472611') repeat-y -15px 0, url('../images/entry-title-bottom.jpg?1379472611') no-repeat -15px bottom;
 }
-/* line 816, ../sass/foodinc.scss */
+/* line 820, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section header p {
   color: #5c2e13;
   font: normal 12px/150% Helvetica, Arial, sans-serif;
 }
-/* line 821, ../sass/foodinc.scss */
+/* line 825, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset {
   border: none;
   padding: 0;
   margin: 10px 0 10px;
 }
-/* line 825, ../sass/foodinc.scss */
+/* line 829, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset label {
   font: bold 14px/170% "Archer A", "Archer B";
   color: #5c2e13;
   text-transform: uppercase;
 }
-/* line 832, ../sass/foodinc.scss */
+/* line 836, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text.error {
   border-color: #ff1812;
 }
-/* line 836, ../sass/foodinc.scss */
+/* line 840, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input {
   position: relative;
 }
-/* line 839, ../sass/foodinc.scss */
+/* line 843, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input select {
   min-width: 100%;
   min-height: 100%;
   z-index: 2;
 }
-/* line 844, ../sass/foodinc.scss */
+/* line 848, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input span:after {
   content: '\25bc';
   font-size: 11px;
@@ -1115,24 +1121,24 @@
   top: 0;
   bottom: 0px;
 }
-/* line 861, ../sass/foodinc.scss */
+/* line 865, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 863, ../sass/foodinc.scss */
+/* line 867, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset {
   float: left;
 }
-/* line 865, ../sass/foodinc.scss */
+/* line 869, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset .form-text {
   width: 250px;
 }
-/* line 868, ../sass/foodinc.scss */
+/* line 872, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset:nth-child(odd) {
   margin-right: 15px;
 }
-/* line 872, ../sass/foodinc.scss */
+/* line 876, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .tpselect_input {
   display: -moz-inline-stack;
   display: inline-block;
@@ -1142,31 +1148,31 @@
   *display: inline;
   width: 110px;
 }
-/* line 875, ../sass/foodinc.scss */
+/* line 879, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .tpselect_input:nth-child(even) {
   margin-right: 15px;
 }
-/* line 880, ../sass/foodinc.scss */
+/* line 884, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios {
   margin-left: 2em;
 }
-/* line 882, ../sass/foodinc.scss */
+/* line 886, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios input {
   margin-left: -2em;
 }
-/* line 885, ../sass/foodinc.scss */
+/* line 889, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios p {
   font: normal 13px/140% Helvetica, Arial, sans-serif;
   color: #555;
 }
-/* line 892, ../sass/foodinc.scss */
+/* line 896, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container label.error {
   color: #ff1812;
   font: normal 12px Helvetica, Arial, sans-serif;
   text-transform: none;
 }
 
-/* line 902, ../sass/foodinc.scss */
+/* line 906, ../sass/foodinc.scss */
 .input-field, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input {
   display: block;
   padding: 5px;
