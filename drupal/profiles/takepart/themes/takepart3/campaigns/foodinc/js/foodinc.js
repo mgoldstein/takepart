@@ -37,13 +37,6 @@
           };
           $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
         }
-      },
-
-      FBook:
-      {
-        attach: function(context) {
-          FB.Canvas.setSize({ width: 640, height: 1000 });
-        }
       }
     }
   })
