@@ -875,6 +875,10 @@
   float: right;
   margin-right: 10px;
 }
+/* line 706, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform {
+  /* .entry-form-container */
+}
 /* line 707, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform h2 {
   font: italic 36px "Archer A", "Archer B";
@@ -884,13 +888,20 @@
 #page-wrapper.foodinc #foodinc-entryform h3 {
   font: bold 24px "Archer A", "Archer B";
   color: #5c2e13;
+  text-transform: uppercase;
 }
-/* line 714, ../sass/foodinc.scss */
+/* line 715, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform h3 span {
   font: italic normal 24px "Archer A", "Archer B";
   margin-left: .5ex;
+  text-transform: none;
 }
-/* line 719, ../sass/foodinc.scss */
+/* line 721, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform h4 {
+  font: bold 16px/150% "Archer A", "Archer B";
+  color: #5c2e13;
+}
+/* line 725, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail {
   display: -moz-inline-stack;
   display: inline-block;
@@ -902,56 +913,56 @@
   width: 370px;
   margin-right: 20px;
 }
-/* line 724, ../sass/foodinc.scss */
+/* line 730, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul {
   list-style-type: none;
 }
-/* line 726, ../sass/foodinc.scss */
+/* line 732, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li {
   background: no-repeat 0px 5px;
   padding-left: 4ex;
 }
-/* line 729, ../sass/foodinc.scss */
+/* line 735, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-1 {
   background-image: url('../images/entry-bullets/bullet-1.png?1379534603');
 }
-/* line 730, ../sass/foodinc.scss */
+/* line 736, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-2 {
   background-image: url('../images/entry-bullets/bullet-2.png?1379534603');
 }
-/* line 731, ../sass/foodinc.scss */
+/* line 737, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-3 {
   background-image: url('../images/entry-bullets/bullet-3.png?1379534603');
 }
-/* line 732, ../sass/foodinc.scss */
+/* line 738, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-action {
   background-image: url('../images/entry-bullets/bullet-action.png?1379534603');
 }
-/* line 733, ../sass/foodinc.scss */
+/* line 739, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-camera {
   background-image: url('../images/entry-bullets/bullet-camera.png?1379534603');
 }
-/* line 734, ../sass/foodinc.scss */
+/* line 740, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-clean {
   background-image: url('../images/entry-bullets/bullet-clean.png?1379534603');
 }
-/* line 735, ../sass/foodinc.scss */
+/* line 741, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-focus {
   background-image: url('../images/entry-bullets/bullet-focus.png?1379534603');
 }
-/* line 736, ../sass/foodinc.scss */
+/* line 742, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-lights {
   background-image: url('../images/entry-bullets/bullet-lights.png?1379534603');
 }
-/* line 737, ../sass/foodinc.scss */
+/* line 743, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-pencil {
   background-image: url('../images/entry-bullets/bullet-pencil.png?1379534603');
 }
-/* line 739, ../sass/foodinc.scss */
+/* line 745, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li p {
   color: #555;
 }
-/* line 746, ../sass/foodinc.scss */
+/* line 752, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .right-rail {
   display: -moz-inline-stack;
   display: inline-block;
@@ -962,53 +973,94 @@
   float: right;
   width: 570px;
 }
-/* line 753, ../sass/foodinc.scss */
+/* line 758, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container {
+  /* section */
+}
+/* line 759, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section {
   margin-bottom: 30px;
-  padding: 0px 15px 1px 15px;
-  background: url('../images/entry-form-bg.jpg?1379472611');
+  padding: 0px 10px 1px 10px;
+  background: url('../images/entry-form-bg.jpg?1379549844');
+  /* textfields */
 }
-/* line 757, ../sass/foodinc.scss */
+/* line 763, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section header {
   padding: 25px 15px 1px 15px;
   background: url('../images/entry-title-top.jpg?1379472611') no-repeat -15px 0, url('../images/entry-title-mid.jpg?1379472611') repeat-y -15px 0, url('../images/entry-title-bottom.jpg?1379472611') no-repeat -15px bottom;
 }
-/* line 763, ../sass/foodinc.scss */
+/* line 769, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section header p {
   color: #5c2e13;
   font: normal 12px/150% Helvetica, Arial, sans-serif;
 }
-/* line 768, ../sass/foodinc.scss */
+/* line 774, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset {
   border: none;
+  padding: 0;
+  margin: 10px 0 10px;
 }
-/* line 770, ../sass/foodinc.scss */
+/* line 778, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset label {
-  font: bold 14px/150% "Archer A", "Archer B";
+  font: bold 14px/170% "Archer A", "Archer B";
   color: #5c2e13;
   text-transform: uppercase;
 }
-/* line 775, ../sass/foodinc.scss */
+/* line 783, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text {
   padding: 5px;
   -webkit-box-shadow: -1px 2px 3px #eeeeee inset;
   -moz-box-shadow: -1px 2px 3px #eeeeee inset;
   box-shadow: -1px 2px 3px #eeeeee inset;
   border: 1px solid #ddd;
-  font: normal 14px "Archer A", "Archer B";
+  font: normal 19px "Archer A", "Archer B";
   margin: 0;
 }
-/* line 782, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset.column2 {
-  display: -moz-inline-stack;
-  display: inline-block;
-  vertical-align: middle;
-  *vertical-align: auto;
-  zoom: 1;
-  *display: inline;
-  width: 48%;
+/* line 789, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text.error {
+  border-color: #ff1812;
 }
-/* line 785, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset.column2:nth-child(odd) {
+/* line 794, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields {
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 796, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset {
+  float: left;
+}
+/* line 798, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset .form-text {
+  width: 250px;
+}
+/* line 801, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset:nth-child(odd) {
   margin-right: 15px;
+}
+/* line 806, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .date .form-select {
+  width: 120px;
+}
+/* line 808, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .date .form-select:nth-child(even) {
+  margin-right: 15px;
+}
+/* line 814, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios {
+  margin-left: 2em;
+}
+/* line 816, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios input {
+  margin-left: -2em;
+}
+/* line 819, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios p {
+  font: normal 13px/140% Helvetica, Arial, sans-serif;
+  color: #555;
+}
+/* line 826, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container label.error {
+  color: #ff1812;
+  font: normal 12px Helvetica, Arial, sans-serif;
+  text-transform: none;
 }
