@@ -819,13 +819,33 @@
             text-transform: uppercase;
           }
           .form-text {
-            padding: 5px;
-            @include box-shadow(-1px 2px 3px #eee inset);
-            border: 1px solid #ddd;
-            font: normal 19px $header-font;
-            margin: 0;
+            @extend .input-field;
             &.error {
               border-color: #ff1812;
+            }
+          }
+          .tpselect_input {
+            @extend .input-field;
+            position: relative;
+            select {
+              min-width: 100%;
+              min-height: 100%;
+              z-index: 2;
+            }
+            span:after {
+              content: '\25bc';
+              font-size: 11px;
+              line-height: 34px;
+              color: #333;
+              text-align: center;
+              display: block;
+              border-left: 1px solid #ccc;
+              @include background(linear-gradient(#fff, #ddd));
+              width: 30px;
+              position: absolute;
+              right: 0;
+              top: 0;
+              bottom: 0px;
             }
           }
         }
@@ -840,12 +860,11 @@
               margin-right: 15px;
             }
           }
-          .date {
-            .form-select {
-              width: 120px;
-              &:nth-child(even) {
-                margin-right: 15px;
-              }
+          .tpselect_input {
+            @include inline-block;
+            width: 110px;
+            &:nth-child(even) {
+              margin-right: 15px;
             }
           }
         }/* textfields */
@@ -871,10 +890,12 @@
 }
 
 
-
-
-
-
-
-
-
+.input-field {
+  display: block;
+  padding: 5px;
+  background-color: white;
+  @include box-shadow(-1px 2px 3px #eee inset);
+  border: 1px solid #d6d6d6;
+  font: normal 16px/19px $header-font;
+  margin: 0;
+}

@@ -1,38 +1,53 @@
 (function ($, Drupal, window, document, undefined) {
-  Drupal.behaviors.expandJudges = {
-    attach: function (context) {
-      $(".show-more").click(function () {
-          if($(this).prev().hasClass("show-more-height")) {
-              $(this).text("See Less");
-          } else {
-              $(this).text("See More");
-          }
+  $(document).ready(function() {
+    $('#foodinc-entryform select').tpselect();
+  });
 
-          $(this).prev().toggleClass("show-more-height");
-      });
-    }
-  }
-  Drupal.behaviors.tpSocial={
-    attach: function(context) {
-      var tp_social_config = {
-        url_append: '?cmpid=organic-share-{{name}}',
-        services: [
-          {name: 'facebook'},
-          {
-            name: 'twitter',
-            text: '{{title}}',
-            via: 'TakePart'
-          },
-          {name: 'googleplus'},
-          {name: 'email'}
-        ]
-      };
-      $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
-    }
-  }
-})
+  $.extend(true, Drupal, {behaviors: {
+      expandJudges:
+      {
+        attach: function (context) {
+          $(".show-more").click(function () {
+              if($(this).prev().hasClass("show-more-height")) {
+                  $(this).text("See Less");
+              } else {
+                  $(this).text("See More");
+              }
 
-(jQuery, Drupal, this, this.document);
+              $(this).prev().toggleClass("show-more-height");
+          });
+        }
+      },
+
+      tpSocial:
+      {
+        attach: function(context) {
+          var tp_social_config = {
+            url_append: '?cmpid=organic-share-{{name}}',
+            services: [
+              {name: 'facebook'},
+              {
+                name: 'twitter',
+                text: '{{title}}',
+                via: 'TakePart'
+              },
+              {name: 'googleplus'},
+              {name: 'email'}
+            ]
+          };
+          $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+        }
+      },
+
+      FBook:
+      {
+        attach: function(context) {
+          FB.Canvas.setSize({ width: 640, height: 1000 });
+        }
+      }
+    }
+  })
+})(jQuery, Drupal, this, this.document);
 
 
 (function ($) {
@@ -68,22 +83,5 @@
             s.tl(true, 'o', 'Food Inc Awards Social Sharing');
         }
         );
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  });
 
