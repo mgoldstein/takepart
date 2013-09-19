@@ -947,3 +947,269 @@
   font: normal 15px/19px $header-font;
   margin: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+//
+//Responsive Global Nav
+//
+
+@media all and (max-width: 480px) {
+
+  #site-header {
+    padding: 0;
+    min-height: 0;
+    position: static;
+    margin-bottom: 0;
+  }
+
+  #site-header-inner {
+    padding: 7px;
+    min-height: auto;
+    overflow: hidden;
+    background: #fff;
+    position: relative;
+    z-index: 10;
+    display: inline-block; *display: inline; zoom: 1; vertical-align: bottom;
+    width: 100%;
+  }
+
+  .clickedon #site-header-inner {
+    overflow: visible;
+    padding-bottom: 62px;
+  }
+
+  .clickedon #site-header:after {
+    content: " ";
+    position: absolute;
+    min-height: 100%;
+    background: rgba(0,0,0,.8);
+    width: 100%;
+    left: 0;
+    z-index: 8;
+    width: 100%;
+  }
+
+  #site-header-inner:after {
+    content: " ";
+    float: right;
+    display: block;
+    background-repeat: no-repeat;
+    background-image: image-url('sitenav_open.png'); /** sprite-ref: mysprite; */
+    width: 25px;
+    height: 25px;
+    margin-top: 9px;
+    margin-right: .5em;
+  }
+
+  .clickedon #site-header-inner:after {
+    background-image: image-url('sitenav_close.png'); /** sprite-ref: mysprite; */
+  }
+
+  #site-participant-nav {
+    display: none;
+  }
+
+  #site-logo {
+    margin-bottom: 0;
+  }
+
+  #site-logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  #site-navs {
+    display: none;
+  }
+
+  .clickedon #site-navs {
+    display: block;
+  }
+
+  #site-main-nav {
+    border: none;
+    padding: 0;
+    background: #eff3f5;
+  }
+
+  #site-user-nav {
+    display: none;
+  }
+
+  .clickedon #site-user-nav {
+    display: block;
+    width: 100%;
+    background: #eff3f5;
+    position: absolute;
+    bottom: 0;
+    top: auto;
+  }
+
+  #site-user-nav ul {
+    width: 100%;
+    float: none;
+    padding: 0;
+  }
+
+  #site-user-nav li {
+    font-size: .75em;
+    width: 50%;
+    border-right: 1px solid #dbdbdb;
+  }
+
+  #site-user-nav li:last-child {
+    border-right: none;
+  }
+
+  #site-user-nav li {
+    font-size: 11px;
+    line-height: 5em;
+    font-weight: bold;
+  }
+
+  #site-user-nav li a {
+    display: block;
+    text-align: center;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  #site-navs #site-main-nav ul,
+  #site-navs #site-main-nav li,
+  #site-main-nav {
+    float: none;
+  }
+
+  #site-main-nav li {
+    padding: 0;
+  }
+
+  #site-main-nav a {
+    display: inline-block;
+    padding: .65rem 4rem .65em 1rem;
+    border-top: 1px solid #dbdbdb;
+    font-size: 18px;
+    line-height: 37px;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  #site-main-nav a:before {
+    width: 53px;
+    padding-right: 1rem;
+    height: 37px;
+    display: inline-block;
+    content: " ";
+    vertical-align: middle;
+    background-repeat: no-repeat;
+  }
+
+  #site-main-nav .text-culture a:before {
+    background-image: image-url('topic_culture.png'); /** sprite-ref: mysprite; */
+  }
+
+  #site-main-nav .text-food a:before {
+    background-image: image-url('topic_food.png'); /** sprite-ref: mysprite; */
+  }
+
+  #site-main-nav .text-environment a:before {
+    background-image: image-url('topic_environment.png'); /** sprite-ref: mysprite; */
+  }
+
+  #site-main-nav .text-wildlife a:before {
+    background-image: image-url('topic_wildlife.png'); /** sprite-ref: mysprite; */
+  }
+
+  #site-main-nav .text-social_justice a:before {
+    background-image: image-url('topic_social_justice.png'); /** sprite-ref: mysprite; */
+  }
+
+  #site-main-nav .text-education a:before {
+    background-image: image-url('topic_education.png'); /** sprite-ref: mysprite; */
+  }
+
+  #site-main-nav .text-health a:before {
+    background-image: image-url('topic_health.png'); /** sprite-ref: mysprite; */
+  }
+
+  #site-hot-nav {
+    display: none;
+  }
+
+  #site-miss-nav {
+    display: none;
+  }
+
+  #site-navs {
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+
+  #site-more-navs {
+    float: left;
+  }
+
+  #site-search .form-item input {
+    width: 150px;
+    font-size: 16px;
+  }
+
+  /* Top ad */
+  #site-top {
+    display: none;
+  }
+
+  /* Side bar */
+
+  #site-secondary {
+    width: auto;
+    float: none;
+  }
+
+  #site-secondary .block-boxes-ga_ad-bottom {
+    display: none;
+  }
+
+  #site-secondary .newsletter_social {
+    display: block;
+  }
+
+  /* Footer */
+  #site-connect,
+  #site-topics {
+    display: none;
+  }
+
+  #site-footer {
+    background: #f1f3f4;
+    display: inline-block; vertical-align: bottom;
+    width: 100%;
+  }
+
+  #site-footer section {
+    float: none;
+    text-align: center;
+    width: auto;
+  }
+
+  #site-footer #site-about {
+    text-align: center;
+  }
+
+  #site-footer li {
+    padding: 0 1em;
+    display: inline-block;
+  }
+}
