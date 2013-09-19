@@ -1,3 +1,5 @@
+<?php print (isset($_REQUEST['signed_request']) ? '' : render($header)); ?>
+
 <div class="content" id="foodinc-awards">
   <header>
     <div class="hero">
@@ -9,7 +11,11 @@
             <iframe width="510" height="285" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
           <?php else: ?>
             <div class="botr">
-              <script type="text/javascript" src="//video.takepart.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
+              <?php if(isset($_REQUEST['signed_request'])): ?>
+                <script type="text/javascript" src="https://content.bitsontherun.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
+              <?php else: ?>
+                <script type="text/javascript" src="//video.takepart.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
+              <?php endif; ?>
           <?php endif; ?>
         </div>
       <?php else: ?>
