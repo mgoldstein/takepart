@@ -35,9 +35,11 @@
       FB.Canvas.setSize({ width: 640, height: 1000 });
     }
   }
-  }
 
 })
+
+(jQuery, Drupal, this, this.document);
+
 
 (function ($) {
     $('a.tp-social-facebook').click(
@@ -50,7 +52,7 @@
             s.tl(true, 'o', 'Food Inc Awards Social Sharing');
         }
         );
-            
+
             $('a.tp-social-twitter').click(
         function(e) {
             var s=s_gi('takepartprod');
@@ -61,7 +63,7 @@
             s.tl(true, 'o', 'Food Inc Awards Social Sharing');
         }
         );
-            
+
             $('a.tp-social-googleplus').click(
         function(e) {
             var s=s_gi('takepartprod');
@@ -72,13 +74,8 @@
             s.tl(true, 'o', 'Food Inc Awards Social Sharing');
         }
         );
-            
+
 })
-
-(jQuery, Drupal, this, this.document);
-
-
-
 
 
 
