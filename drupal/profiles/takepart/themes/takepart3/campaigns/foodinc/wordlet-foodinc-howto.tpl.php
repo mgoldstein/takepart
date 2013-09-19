@@ -14,7 +14,7 @@
           <?php else: ?>
             <?php if(isset($_REQUEST['signed_request'])): ?>
               <script type="text/javascript" src="https://content.bitsontherun.com/players/<?php print w('foodinc_howto_intro')->video; ?>.js"></script>
-            <?php else; ?>
+            <?php else: ?>
               <script type="text/javascript" src="//video.takepart.com/players/<?php print w('foodinc_howto_intro')->video; ?>.js"></script>
             <?php endif; ?>
           <?php endif; ?>
