@@ -53,7 +53,7 @@
             s.eVar27="Facebook share";
             s.tl(true, 'o', 'Food Inc Awards Social Sharing');
         }
-      },
+      }
 
       tpSocial:
       {
