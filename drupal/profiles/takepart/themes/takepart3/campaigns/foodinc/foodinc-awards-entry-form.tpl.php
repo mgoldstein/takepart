@@ -9,53 +9,72 @@
     <h3><?= render($form['about_you_heading']); ?></h3>
     <p><?= render($form['about_you_description']); ?></p>
   </header>
-  <fieldset class="column2">
-    <?= render($form['first_name']); ?>
-  </fieldset>
+  <div class="textfields">
+    <fieldset>
+      <?= render($form['first_name']); ?>
+    </fieldset>
 
-  <fieldset class="column2">
-    <?= render($form['last_name']); ?>
-  </fieldset>
+    <fieldset>
+      <?= render($form['last_name']); ?>
+    </fieldset>
 
-  <fieldset class="column2">
-    <?= render($form['email']); ?>
-  </fieldset>
+    <fieldset>
+      <?= render($form['email']); ?>
+    </fieldset>
 
-  <fieldset>
-    <?= render($form['dob_month']); ?>
-    <?= render($form['dob_year']); ?>
-  </fieldset>
+    <fieldset class="date">
+      <?= render($form['dob_month']); ?>
+      <?= render($form['dob_year']); ?>
+    </fieldset>
 
-  <fieldset class="column2">
-    <?= render($form['city']); ?>
-  </fieldset>
+    <fieldset>
+      <?= render($form['city']); ?>
+    </fieldset>
 
-  <fieldset class="column2">
-    <?= render($form['state']); ?>
-  </fieldset>
+    <fieldset>
+      <?= render($form['state']); ?>
+    </fieldset>
+  </div>
 
-  <fieldset>
-    <?= render($form['which_award_label']); ?>
-    <?= render($form['lifestyle_award']); ?>
+    <h4><?= render($form['which_award_label']); ?></h4>
+  <fieldset class="checks-radios">
+    <input type="radio" name="which_award" value="lifestyle" class="form-radio" id="lifestyle_award" />
+    <label for="lifestyle_award"><?= render($form['lifestyle_award_label']); ?></label>
     <?= render($form['lifestyle_award_description']); ?>
-    <?= render($form['pioneer_award']); ?>
+    
+  </fieldset>
+  <fieldset class="checks-radios">
+    <input type="radio" name="which_award" value="pioneer" class="form-radio" id="pioneer_award" />
+    <label for="pioneer_award"><?= render($form['pioneer_award_label']); ?></label>
     <?= render($form['pioneer_award_description']); ?>
   </fieldset>
 </section>
 
+
+
 <section>
   <header>
-    <?= render($form['your_video_heading']); ?>
-    <?= render($form['your_video_description']); ?>
+    <h3><?= render($form['your_video_heading']); ?></h3>
+    <p><?= render($form['your_video_description']); ?></p>
   </header>
-  <?= render($form['video_link']); ?>
+  <div class="textfields">
+    <fieldset>
+      <?= render($form['video_link']); ?>
+    </fieldset>
+  </div>
 </section>
 
 <section>
-  <?= render($form['submission_heading']); ?>
-  <?= render($form['submission_description']); ?>
-  <?= render($form['newsletter_opt_in']); ?>
-  <?= render($form['contest_rules_opt_in']); ?>
+  <header>
+    <h3><?= render($form['submission_heading']); ?></h3>
+    <p><?= render($form['submission_description']); ?></p>
+  </header>
+  <fieldset class="checks-radios">
+    <?= render($form['newsletter_opt_in']); ?>
+  </fieldset>
+  <fieldset class="checks-radios">
+    <?= render($form['contest_rules_opt_in']); ?>
+  </fieldset>
   <?= render($form['terms_of_service']); ?>
   <?= render($form['submit']); ?>
 </section>
