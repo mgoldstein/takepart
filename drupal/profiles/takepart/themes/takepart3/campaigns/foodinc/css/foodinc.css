@@ -570,10 +570,6 @@
   margin: 0;
   margin-bottom: 5px;
 }
-<<<<<<< HEAD
-=======
-/* line 534, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .title {
   color: #5c2e13;
   font-family: "Archer A", "Archer B";
@@ -582,41 +578,21 @@
   font-size: 33px;
   margin-bottom: 5px;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video, #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro img {
   margin: 20px 0;
 }
-=======
-/* line 542, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video, #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro img {
-  margin: 20px 0;
-}
-/* line 545, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video {
   position: relative;
   max-width: 635px;
   margin: 0;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video .botr {
   width: 100%;
 }
-=======
-/* line 549, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video .botr {
-  width: 100%;
-}
-/* line 551, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video .botr object {
   max-width: 100%;
 }
 @media (max-width: 6355px) {
-<<<<<<< HEAD
-=======
-  /* line 545, ../sass/foodinc.scss */
->>>>>>> TP-885
   #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video {
     padding-bottom: 56.25%;
     padding-top: 30px;
@@ -625,10 +601,6 @@
     width: 100%;
     max-width: 635px;
   }
-<<<<<<< HEAD
-=======
-  /* line 560, ../sass/foodinc.scss */
->>>>>>> TP-885
   #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video iframe, #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video object, #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video embed {
     position: absolute;
     top: 0;
@@ -637,17 +609,9 @@
     height: 100%;
   }
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-howto .categories .row {
   margin: 30px 0;
 }
-=======
-/* line 572, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-howto .categories .row {
-  margin: 30px 0;
-}
-/* line 575, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto .categories .title {
   font-family: "Archer A", "Archer B";
   font-weight: 500;
@@ -655,10 +619,6 @@
   font-size: 32px;
   color: #5c2e13;
 }
-<<<<<<< HEAD
-=======
-/* line 579, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto .categories .title span {
   font-size: 11px;
   font-style: normal;
@@ -668,24 +628,12 @@
   line-height: 35px;
   color: #555;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-howto .additional-info .row {
   margin: 20px 0;
 }
 #page-wrapper.foodinc #foodinc-howto .additional-info li {
   margin: 0;
 }
-=======
-/* line 591, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-howto .additional-info .row {
-  margin: 20px 0;
-}
-/* line 594, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-howto .additional-info li {
-  margin: 0;
-}
-/* line 597, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto .additional-info .title {
   font-size: 24px;
   color: #5c2e13;
@@ -693,25 +641,13 @@
   font-weight: 800;
   font-style: normal;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-howto .additional-info .video, #page-wrapper.foodinc #foodinc-howto .additional-info img {
   margin: 10px 0;
 }
-=======
-/* line 602, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-howto .additional-info .video, #page-wrapper.foodinc #foodinc-howto .additional-info img {
-  margin: 10px 0;
-}
-/* line 605, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto .additional-info .video {
   position: relative;
 }
 @media (max-width: 585px) {
-<<<<<<< HEAD
-=======
-  /* line 605, ../sass/foodinc.scss */
->>>>>>> TP-885
   #page-wrapper.foodinc #foodinc-howto .additional-info .video {
     padding-bottom: 56.25%;
     padding-top: 30px;
@@ -720,10 +656,6 @@
     width: 100%;
     max-width: 585px;
   }
-<<<<<<< HEAD
-=======
-  /* line 612, ../sass/foodinc.scss */
->>>>>>> TP-885
   #page-wrapper.foodinc #foodinc-howto .additional-info .video iframe, #page-wrapper.foodinc #foodinc-howto .additional-info .video object, #page-wrapper.foodinc #foodinc-howto .additional-info .video embed {
     position: absolute;
     top: 0;
@@ -732,20 +664,12 @@
     height: 100%;
   }
 }
-<<<<<<< HEAD
-=======
-/* line 622, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto section.right-rail {
   float: right;
   width: 30%;
   margin-right: 10px;
 }
 @media (max-width: 1000px) {
-<<<<<<< HEAD
-=======
-  /* line 622, ../sass/foodinc.scss */
->>>>>>> TP-885
   #page-wrapper.foodinc #foodinc-howto section.right-rail {
     float: left;
     clear: both;
@@ -753,45 +677,25 @@
   }
 }
 @media (max-width: 1000px) {
-<<<<<<< HEAD
-=======
-  /* line 632, ../sass/foodinc.scss */
->>>>>>> TP-885
   #page-wrapper.foodinc #foodinc-howto .ad {
     width: 302px;
     margin: 0 auto;
   }
 }
-<<<<<<< HEAD
-=======
-/* line 638, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto .instruction-block {
   line-height: 17px;
 }
 @media (max-width: 1000px) {
-<<<<<<< HEAD
-=======
-  /* line 638, ../sass/foodinc.scss */
->>>>>>> TP-885
   #page-wrapper.foodinc #foodinc-howto .instruction-block {
     margin: 0 auto;
     width: 300px;
   }
 }
-<<<<<<< HEAD
-=======
-/* line 644, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto .instruction-block .top {
   width: 300px;
   height: 63px;
   background: url('../images/instruction-top.jpg?1379472611') no-repeat top center;
 }
-<<<<<<< HEAD
-=======
-/* line 649, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid {
   width: 300px;
   height: auto;
@@ -800,19 +704,11 @@
   margin-top: -15px;
   color: #5c2e13;
 }
-<<<<<<< HEAD
-=======
-/* line 656, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .item {
   padding: 0 20px;
   clear: both;
   margin-bottom: 10px;
 }
-<<<<<<< HEAD
-=======
-/* line 660, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .item .number {
   margin-right: 10px;
   font-size: 30px;
@@ -822,18 +718,10 @@
   font-weight: 800;
   font-style: normal;
 }
-<<<<<<< HEAD
-=======
-/* line 667, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .item span {
   display: block;
   margin-left: 30px;
 }
-<<<<<<< HEAD
-=======
-/* line 672, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .button a {
   background: url('../images/contest-btn.png?1379472611') top right no-repeat;
   width: 238px;
@@ -846,72 +734,38 @@
   color: #fff;
   white-space: nowrap;
 }
-<<<<<<< HEAD
-=======
-/* line 684, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .extra {
   padding: 20px;
   padding-bottom: 0;
   text-align: center;
 }
-<<<<<<< HEAD
-#page-wrapper.foodinc #foodinc-howto .instruction-block .bottom {
-  width: 300px;
-  height: 63px;
-  background: url('../images/instruction-bottom.jpg?1379472611') no-repeat top center;
-}
-=======
-/* line 690, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .bottom {
   width: 300px;
   height: 31px;
-  background: url('../images/instruction-bottom.jpg?1379401670') no-repeat bottom center;
+  background: url('../images/instruction-bottom.jpg?1379472611') no-repeat bottom center;
 }
-/* line 698, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryreceived section.page-body-content {
   width: 66%;
   float: left;
 }
-<<<<<<< HEAD
-=======
-/* line 702, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryreceived .page-title {
   font-size: 20px;
   font-style: italic;
   color: #5c2e13;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-entryreceived .additional-info {
   margin-top: 20px;
 }
-=======
-/* line 707, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryreceived .additional-info {
-  margin-top: 20px;
-}
-/* line 709, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryreceived .additional-info .title {
   font-size: 18px;
   color: #5c2e13;
 }
-<<<<<<< HEAD
-=======
-/* line 714, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryreceived .social-block {
   clear: both;
   height: auto;
   overflow: hidden;
   margin: 10px 0px 20px 20px;
 }
-<<<<<<< HEAD
-=======
-/* line 719, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .social {
   display: block;
   height: 40px;
@@ -919,88 +773,47 @@
   float: left;
   margin-right: 8px;
 }
-<<<<<<< HEAD
-=======
-/* line 726, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .facebook {
   background: url('../images/social_long_fb.png?1379472611') no-repeat top center;
 }
-<<<<<<< HEAD
-=======
-/* line 729, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .twitter {
   background: url('../images/social_long_twitter.png?1379472611') no-repeat top center;
 }
-<<<<<<< HEAD
-=======
-/* line 732, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .googleplus {
   background: url('../images/social_long_google.png?1379472611') no-repeat top center;
 }
-<<<<<<< HEAD
-=======
-/* line 735, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .email {
   background: url('../images/social_long_email.png?1379472611') no-repeat top center;
 }
-<<<<<<< HEAD
-=======
-/* line 739, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryreceived section.right-rail {
   width: 30%;
   float: right;
   margin-right: 10px;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-entryform {
   /* .entry-form-container */
 }
-=======
-/* line 746, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform {
-  /* .entry-form-container */
-}
-/* line 747, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform h2 {
   font: italic 36px "Archer A", "Archer B";
   color: #5c2e13;
 }
-<<<<<<< HEAD
-=======
-/* line 751, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform h3 {
   font: bold 24px "Archer A", "Archer B";
   color: #5c2e13;
   text-transform: uppercase;
 }
-<<<<<<< HEAD
-=======
-/* line 755, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform h3 span {
   font: italic normal 24px "Archer A", "Archer B";
   margin-left: .5ex;
   text-transform: none;
 }
-<<<<<<< HEAD
-=======
-/* line 761, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform h4 {
   font: bold 16px/150% "Archer A", "Archer B";
   color: #5c2e13;
 }
-<<<<<<< HEAD
-=======
-/* line 765, ../sass/foodinc.scss */
->>>>>>> TP-885
+#page-wrapper.foodinc #foodinc-entryform p {
+  color: #555;
+}
 #page-wrapper.foodinc #foodinc-entryform .left-rail {
   display: -moz-inline-stack;
   display: inline-block;
@@ -1012,35 +825,19 @@
   width: 370px;
   margin-right: 20px;
 }
-<<<<<<< HEAD
-=======
-/* line 770, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .left-rail section {
   margin-bottom: 20px;
   overflow: hidden;
   *zoom: 1;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul {
   list-style-type: none;
 }
-=======
-/* line 774, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .left-rail ul {
-  list-style-type: none;
-}
-/* line 776, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li {
   background: no-repeat 0px 5px;
   padding-left: 4ex;
   position: relative;
 }
-<<<<<<< HEAD
-=======
-/* line 780, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li:before {
   font: bold 26px "Archer A", "Archer B";
   color: #5c2e13;
@@ -1049,7 +846,6 @@
   display: inline-block;
   position: absolute;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-1:before {
   content: '1';
 }
@@ -1068,82 +864,24 @@
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-6:before {
   content: '6';
 }
-=======
-/* line 788, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-1:before {
-  content: '1';
-}
-/* line 789, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-2:before {
-  content: '2';
-}
-/* line 790, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-3:before {
-  content: '3';
-}
-/* line 791, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-4:before {
-  content: '4';
-}
-/* line 792, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-5:before {
-  content: '5';
-}
-/* line 793, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-6:before {
-  content: '6';
-}
-/* line 794, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-action {
   background-image: url('../images/entry-bullets/bullet-action.png?1379550501');
 }
-<<<<<<< HEAD
-=======
-/* line 795, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-camera {
   background-image: url('../images/entry-bullets/bullet-camera.png?1379550501');
 }
-<<<<<<< HEAD
-=======
-/* line 796, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-clean {
   background-image: url('../images/entry-bullets/bullet-clean.png?1379550501');
 }
-<<<<<<< HEAD
-=======
-/* line 797, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-focus {
   background-image: url('../images/entry-bullets/bullet-focus.png?1379550501');
 }
-<<<<<<< HEAD
-=======
-/* line 798, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-lights {
   background-image: url('../images/entry-bullets/bullet-lights.png?1379550501');
 }
-<<<<<<< HEAD
-=======
-/* line 799, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-pencil {
   background-image: url('../images/entry-bullets/bullet-pencil.png?1379550501');
 }
-<<<<<<< HEAD
-#page-wrapper.foodinc #foodinc-entryform .left-rail ul li p {
-  color: #555;
-}
-=======
-/* line 801, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .left-rail ul li p {
-  color: #555;
-}
-/* line 808, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .right-rail {
   display: -moz-inline-stack;
   display: inline-block;
@@ -1154,86 +892,49 @@
   float: right;
   width: 570px;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container {
   /* section */
 }
-=======
-/* line 814, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container {
-  /* section */
-}
-/* line 815, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section {
   margin-bottom: 30px;
   padding: 0px 10px 1px 10px;
   background: url('../images/entry-form-bg.jpg?1379550516');
   /* textfields */
 }
-<<<<<<< HEAD
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section.about-you .checks-radios label[for] {
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section.about-you label[for], #page-wrapper.foodinc #foodinc-entryform .entry-form-container section.your-video label[for] {
   text-transform: uppercase;
 }
-=======
-/* line 819, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section header {
   padding: 25px 15px 1px 15px;
   background: url('../images/entry-title-top.jpg?1379472611') no-repeat -15px 0, url('../images/entry-title-mid.jpg?1379472611') repeat-y -15px 0, url('../images/entry-title-bottom.jpg?1379472611') no-repeat -15px bottom;
 }
-<<<<<<< HEAD
-=======
-/* line 825, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section header p {
   color: #5c2e13;
   font: normal 12px/150% Helvetica, Arial, sans-serif;
 }
-<<<<<<< HEAD
-=======
-/* line 830, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset {
   border: none;
   padding: 0;
   margin: 10px 0 10px;
 }
-<<<<<<< HEAD
-=======
-/* line 834, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset label {
   font: bold 14px/170% "Archer A", "Archer B";
   color: #5c2e13;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text.error {
   border-color: #ff1812;
+}
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text:focus, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_focus {
+  outline: 1px solid #999;
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input {
   position: relative;
 }
-=======
-/* line 841, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text.error {
-  border-color: #ff1812;
-}
-/* line 845, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input {
-  position: relative;
-}
-/* line 848, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input select {
   min-width: 100%;
   min-height: 100%;
   z-index: 2;
 }
-<<<<<<< HEAD
-=======
-/* line 853, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input span:after {
   content: '\25bc';
   font-size: 11px;
@@ -1253,15 +954,10 @@
   top: 0;
   bottom: 0px;
 }
-<<<<<<< HEAD
-=======
-/* line 870, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields {
   overflow: hidden;
   *zoom: 1;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset {
   float: left;
 }
@@ -1271,21 +967,6 @@
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset:nth-child(odd) {
   margin-right: 15px;
 }
-=======
-/* line 872, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset {
-  float: left;
-}
-/* line 874, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset .form-text {
-  width: 250px;
-}
-/* line 877, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset:nth-child(odd) {
-  margin-right: 15px;
-}
-/* line 881, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .tpselect_input {
   display: -moz-inline-stack;
   display: inline-block;
@@ -1295,37 +976,20 @@
   *display: inline;
   width: 110px;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .tpselect_input:nth-child(even) {
   margin-right: 15px;
 }
-=======
-/* line 884, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .tpselect_input:nth-child(even) {
-  margin-right: 15px;
-}
-/* line 889, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios {
   margin-left: 4ex;
 }
-<<<<<<< HEAD
-=======
-/* line 891, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios input {
   margin-left: -4ex;
   margin-right: 1ex;
 }
-<<<<<<< HEAD
-=======
-/* line 894, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios p {
   font: normal 13px/140% Helvetica, Arial, sans-serif;
   color: #555;
 }
-<<<<<<< HEAD
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios label[for] {
   display: -moz-inline-stack;
   display: inline-block;
@@ -1358,9 +1022,6 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-=======
-/* line 901, ../sass/foodinc.scss */
->>>>>>> TP-885
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container label.error {
   color: #ff1812;
   font: normal 12px Helvetica, Arial, sans-serif;
@@ -1368,18 +1029,15 @@
   margin-top: 4px;
 }
 
-<<<<<<< HEAD
-=======
-/* line 911, ../sass/foodinc.scss */
->>>>>>> TP-885
 .input-field, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input {
   display: block;
   padding: 5px;
+  color: #555;
   background-color: white;
   -webkit-box-shadow: -1px 2px 3px #eeeeee inset;
   -moz-box-shadow: -1px 2px 3px #eeeeee inset;
   box-shadow: -1px 2px 3px #eeeeee inset;
   border: 1px solid #d6d6d6;
-  font: normal 15px/19px "Archer A", "Archer B";
+  font: normal 13px/19px Helvetica, Arial, sans-serif;
   margin: 0;
 }
