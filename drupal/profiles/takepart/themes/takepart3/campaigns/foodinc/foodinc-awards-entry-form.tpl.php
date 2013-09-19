@@ -36,7 +36,7 @@
     </fieldset>
   </div>
 
-    <h4><?= render($form['which_award_label']); ?></h4>
+  <h4><?= render($form['which_award_label']); ?></h4>
   <fieldset class="checks-radios">
     <input type="radio" name="which_award" value="lifestyle" class="form-radio" id="lifestyle_award" />
     <label for="lifestyle_award"><?= render($form['lifestyle_award_label']); ?></label>

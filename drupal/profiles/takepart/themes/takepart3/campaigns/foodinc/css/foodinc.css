@@ -1,3 +1,4 @@
+@import "//cloud.typography.com/625388/701462/css/fonts.css";
 /* line 3, ../sass/foodinc.scss */
 #page-wrapper.foodinc {
   -webkit-font-smoothing: antialiased;
@@ -229,72 +230,72 @@
 }
 /* line 176, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-facebook {
-  background-image: url('../images/share_facebook.png?1379539108');
+  background-image: url('../images/share_facebook.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 180, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-twitter {
-  background-image: url('../images/share_twitter.png?1379539108');
+  background-image: url('../images/share_twitter.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 184, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-googleplus {
-  background-image: url('../images/share_google.png?1379539108');
+  background-image: url('../images/share_google.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 188, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-email {
-  background-image: url('../images/share_email.png?1379539108');
+  background-image: url('../images/share_email.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 192, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-reddit {
-  background-image: url('../images/share_reddit.png?1379539108');
+  background-image: url('../images/share_reddit.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 196, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-pinterest {
-  background-image: url('../images/share_pinterest.png?1379539108');
+  background-image: url('../images/share_pinterest.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 200, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-tumblr {
-  background-image: url('../images/share_tumblr.png?1379539108');
+  background-image: url('../images/share_tumblr.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 205, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-facebook:hover {
-  background-image: url('../images/share_facebook_rollover.png?1379539108');
+  background-image: url('../images/share_facebook_rollover.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 209, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-twitter:hover {
-  background-image: url('../images/share_twitter_rollover.png?1379539108');
+  background-image: url('../images/share_twitter_rollover.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 213, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-googleplus:hover {
-  background-image: url('../images/share_google_rollover.png?1379539108');
+  background-image: url('../images/share_google_rollover.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 217, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-email:hover {
-  background-image: url('../images/share_email_rollover.png?1379539108');
+  background-image: url('../images/share_email_rollover.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 221, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-reddit:hover {
-  background-image: url('../images/share_reddit_rollover.png?1379539108');
+  background-image: url('../images/share_reddit_rollover.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 225, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-pinterest:hover {
-  background-image: url('../images/share_pinterest_rollover.png?1379539108');
+  background-image: url('../images/share_pinterest_rollover.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 229, ../sass/foodinc.scss */
 #page-wrapper.foodinc .social .tp-social-tumblr:hover {
-  background-image: url('../images/share_tumblr_rollover.png?1379539108');
+  background-image: url('../images/share_tumblr_rollover.png?1379550501');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 /* line 234, ../sass/foodinc.scss */
@@ -976,39 +977,39 @@
 }
 /* line 770, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-1 {
-  background-image: url('../images/entry-bullets/bullet-1.png?1379534603');
+  background-image: url('../images/entry-bullets/bullet-1.png?1379550501');
 }
 /* line 771, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-2 {
-  background-image: url('../images/entry-bullets/bullet-2.png?1379534603');
+  background-image: url('../images/entry-bullets/bullet-2.png?1379550501');
 }
 /* line 772, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-3 {
-  background-image: url('../images/entry-bullets/bullet-3.png?1379534603');
+  background-image: url('../images/entry-bullets/bullet-3.png?1379550501');
 }
 /* line 773, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-action {
-  background-image: url('../images/entry-bullets/bullet-action.png?1379534603');
+  background-image: url('../images/entry-bullets/bullet-action.png?1379550501');
 }
 /* line 774, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-camera {
-  background-image: url('../images/entry-bullets/bullet-camera.png?1379534603');
+  background-image: url('../images/entry-bullets/bullet-camera.png?1379550501');
 }
 /* line 775, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-clean {
-  background-image: url('../images/entry-bullets/bullet-clean.png?1379534603');
+  background-image: url('../images/entry-bullets/bullet-clean.png?1379550501');
 }
 /* line 776, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-focus {
-  background-image: url('../images/entry-bullets/bullet-focus.png?1379534603');
+  background-image: url('../images/entry-bullets/bullet-focus.png?1379550501');
 }
 /* line 777, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-lights {
-  background-image: url('../images/entry-bullets/bullet-lights.png?1379534603');
+  background-image: url('../images/entry-bullets/bullet-lights.png?1379550501');
 }
 /* line 778, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-pencil {
-  background-image: url('../images/entry-bullets/bullet-pencil.png?1379534603');
+  background-image: url('../images/entry-bullets/bullet-pencil.png?1379550501');
 }
 /* line 780, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li p {
@@ -1033,7 +1034,7 @@
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section {
   margin-bottom: 30px;
   padding: 0px 10px 1px 10px;
-  background: url('../images/entry-form-bg.jpg?1379550226');
+  background: url('../images/entry-form-bg.jpg?1379550516');
   /* textfields */
 }
 /* line 798, ../sass/foodinc.scss */
