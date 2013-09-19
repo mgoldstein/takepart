@@ -1,5 +1,3 @@
-<?php print (isset($_REQUEST['signed_request']) ? '' : render($header)); ?>
-
 <div class="content" id="foodinc-awards">
   <header>
     <div class="hero">
@@ -64,7 +62,6 @@
           <div class="info">
             <div class="name"><?php print $w->single; ?></div>
             <div class="bio show-more-height"><?php print $w->multi; ?></div>
-            <div class="show-more">See More</div>
           </div>
         </div>
       <? endforeach ?>
