@@ -867,7 +867,7 @@
       width: 550px;
     }
 
-   .entry-form-container {
+    .entry-form-container {
       section {
         margin-bottom: 30px;
         padding: 0px 10px 1px 10px;
@@ -1046,6 +1046,8 @@
     }
 
     @media (max-width: 700px) {
+      padding: 0;
+
       .left-rail, .right-rail {
         width: auto;
         display: block;
