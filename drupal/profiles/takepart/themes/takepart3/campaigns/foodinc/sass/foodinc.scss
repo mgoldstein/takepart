@@ -905,6 +905,7 @@
             }
             &.row-odd {
               margin-right: 15px;
+              clear: left;
             }
           }
           .tpselect_input {
@@ -983,8 +984,14 @@
           .tpselect_input {
             width: 83%;
           }
-          &.year .tpselect_input {
-            top: -6px;
+          &.year {
+            .error {
+              width: 100px;
+              margin-top: 1px;
+            }
+            .tpselect_input {
+              top: -5px;
+            }
           }
         }
       }

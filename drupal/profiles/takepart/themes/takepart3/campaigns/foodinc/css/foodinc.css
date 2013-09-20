@@ -986,6 +986,7 @@
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset.row-odd {
   margin-right: 15px;
+  clear: left;
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .tpselect_input {
   display: -moz-inline-stack;
@@ -1070,8 +1071,12 @@
   #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset.date .tpselect_input {
     width: 83%;
   }
+  #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset.date.year .error {
+    width: 100px;
+    margin-top: 1px;
+  }
   #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset.date.year .tpselect_input {
-    top: -6px;
+    top: -5px;
   }
 }
 @media (max-width: 700px) {
