@@ -4,7 +4,7 @@
     <!-- Entry Received  -->
     <div class="page-title"><?php print w('foodinc_entryreceived_main')->single; ?></h3></div>
     <div class="intro">
-      <div class="text"><?php print w('foodinc_entryreceived_main')->multi; ?></div>
+      <div class="text"><p><?php print w('foodinc_entryreceived_main')->multi; ?></p></div>
     </div>
 
 
@@ -16,21 +16,27 @@
           <div class="description"><?php print $w->multi; ?></div>
         </div>
       <? endforeach ?>
-    <div class="social-block">
-      <div class="facebook social"></div>
-      <div class="twitter social"></div>
-      <div class="googleplus social"></div>
-      <div class="email social"></div>
-    </div>
+      <aside id="foodinc-social" class="social entry-received">
+        <div class="tp-social"></div>
+      </aside>
+
     </div>
   </section>
 
     <section class="right-rail">
-    <div class="ad"><?php print (w('foodinc_entryreceived_adblock') != NULL ? render(w('foodinc_entryreceived_adblock')) : ''); ?></div>
+    <div class="ad">
+                  <!-- place in the <body> to display the 300x250 ad -->
+      <!-- TP3_ROS_RR_ATF_300x250 -->
+      <div id='div-gpt-ad-1379616725962-0' style='width:300px; height:250px;'>
+      <script type='text/javascript'>
+      googletag.cmd.push(function()
+      { googletag.display('div-gpt-ad-1379616725962-0'); }
+      );
+      </script>
+      </div>
+    </div>
   </section>
 </div>
-
-
 
 
 
