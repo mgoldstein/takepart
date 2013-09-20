@@ -5,6 +5,15 @@
     });
   });
 
+  Drupal.behaviors.newsletterSocialSignupSubmitted = {
+    attach: function (context) {
+      if ($(context).is('.newsletter-signup.thank-you-message')){
+         var name = context.attr('data-newsletter-name');
+         takepart.analytics.track('newsletter_signup', {name: name});
+      }
+    }
+  };
+
   $.extend(true, Drupal, {behaviors: {
       responsiveNav:
       {
