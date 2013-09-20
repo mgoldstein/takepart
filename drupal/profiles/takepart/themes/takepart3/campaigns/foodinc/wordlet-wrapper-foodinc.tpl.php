@@ -1,4 +1,12 @@
 <?php
+	$element = array(
+	  '#tag' => 'link',
+	  '#attributes' => array(
+	    'href' => '//cloud.typography.com/625388/701462/css/fonts.css',
+	    'rel' => 'stylesheet',
+	    'type' => 'text/css',
+	  ),
+	);
 	drupal_add_js('//connect.facebook.net/en_US/all.js');
 ?>
 

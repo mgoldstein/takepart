@@ -1,4 +1,8 @@
-<? $form = $variables['element']; ?>
+<?
+  $form = $variables['element'];
+  unset($form['which_award']['lifestyle']['#theme_wrappers']);
+  unset($form['which_award']['pioneer']['#theme_wrappers']);
+?>
 
 <?= render($form['form_build_id']); ?>
 <?= render($form['form_token']); ?>
@@ -10,7 +14,7 @@
     <p><?= render($form['about_you_description']); ?></p>
   </header>
   <div class="textfields">
-    <fieldset>
+    <fieldset class="row-odd">
       <?= render($form['first_name']); ?>
     </fieldset>
 
@@ -18,16 +22,19 @@
       <?= render($form['last_name']); ?>
     </fieldset>
 
-    <fieldset>
+    <fieldset class="row-odd">
       <?= render($form['email']); ?>
     </fieldset>
 
-    <fieldset class="date">
+    <fieldset class="date month">
       <?= render($form['dob_month']); ?>
+    </fieldset>
+
+    <fieldset class="date year">
       <?= render($form['dob_year']); ?>
     </fieldset>
 
-    <fieldset>
+    <fieldset class="row-odd">
       <?= render($form['city']); ?>
     </fieldset>
 
@@ -38,14 +45,14 @@
 
   <h4><?= render($form['which_award_label']); ?></h4>
   <fieldset class="checks-radios">
-    <input type="radio" name="which_award" value="lifestyle" class="form-radio" id="lifestyle_award" />
-    <label for="lifestyle_award"><?= render($form['lifestyle_award_label']); ?></label>
+    <?= render($form['which_award']['lifestyle']) ?>
+    <label for="edit-which-award-lifestyle"><?= render($form['lifestyle_award_label']); ?></label>
     <?= render($form['lifestyle_award_description']); ?>
-    
   </fieldset>
+
   <fieldset class="checks-radios">
-    <input type="radio" name="which_award" value="pioneer" class="form-radio" id="pioneer_award" />
-    <label for="pioneer_award"><?= render($form['pioneer_award_label']); ?></label>
+    <?= render($form['which_award']['pioneer']) ?>
+    <label for="edit-which-award-pioneer"><?= render($form['pioneer_award_label']); ?></label>
     <?= render($form['pioneer_award_description']); ?>
 
     <? if ( isset($form['which_award']['#inline_error']) ): ?>
@@ -54,8 +61,6 @@
   </fieldset>
 
 </section>
-
-
 
 <section class="your-video">
   <header>
