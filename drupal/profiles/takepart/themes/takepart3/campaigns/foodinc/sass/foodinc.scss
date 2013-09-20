@@ -255,6 +255,26 @@
           &:last-child{
             margin-bottom: 20px;
           }
+          @media (max-width: 700px) {
+            .image{
+              float: left;
+            }
+            .category-info{
+              clear: left;
+              .title-wrapper{
+                float: left;
+                width: 100%;
+              }
+              .categories-title{
+                text-align: left;
+                text-indent: 5px;
+              }
+              .category-text{
+                clear: left;
+                margin-left: 5px;
+              }
+            }
+          }
           .categories-title{
             font-family: $header-font; font-weight: 500; font-style: italic;
             font-size: 32px;
@@ -281,12 +301,20 @@
           .image{
             float: left;
           }
+          @media (max-width: 700px) {
+            .image{
+              float: left;
+            }
+          }
           .category-title h2{
             color: $primary-color;
             font-family: $header-font;
             font-weight: 900;
             font-style: normal;
             font-size: 23px;
+          }
+          .categories-title{
+            text-align: left;
           }
           .category-info{
             display: block;
@@ -309,6 +337,9 @@
           .image{
             float: right;
             margin-left: 10px;
+            @media (max-width: 700px) {
+              float: left;
+            }
             @media (max-width: 480px) {
               margin: 0;
             }

@@ -335,7 +335,32 @@
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row:last-child {
   margin-bottom: 20px;
 }
-/* line 258, ../sass/foodinc.scss */
+@media (max-width: 700px) {
+  /* line 259, ../sass/foodinc.scss */
+  #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row .image {
+    float: left;
+  }
+  /* line 262, ../sass/foodinc.scss */
+  #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row .category-info {
+    clear: left;
+  }
+  /* line 264, ../sass/foodinc.scss */
+  #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row .category-info .title-wrapper {
+    float: left;
+    width: 100%;
+  }
+  /* line 268, ../sass/foodinc.scss */
+  #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row .category-info .categories-title {
+    text-align: left;
+    text-indent: 5px;
+  }
+  /* line 272, ../sass/foodinc.scss */
+  #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row .category-info .category-text {
+    clear: left;
+    margin-left: 5px;
+  }
+}
+/* line 278, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row .categories-title {
   font-family: "Archer A", "Archer B";
   font-weight: 500;
@@ -347,12 +372,12 @@
   line-height: 24px;
 }
 @media (max-width: 680px) {
-  /* line 258, ../sass/foodinc.scss */
+  /* line 278, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row .categories-title {
     clear: left;
   }
 }
-/* line 268, ../sass/foodinc.scss */
+/* line 288, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row .categories-title span {
   font-size: 11px;
   font-style: normal;
@@ -362,15 +387,21 @@
   line-height: 35px;
   color: #555;
 }
-/* line 279, ../sass/foodinc.scss */
+/* line 299, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 {
   margin-bottom: 30px;
 }
-/* line 281, ../sass/foodinc.scss */
+/* line 301, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 .image {
   float: left;
 }
-/* line 284, ../sass/foodinc.scss */
+@media (max-width: 700px) {
+  /* line 305, ../sass/foodinc.scss */
+  #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 .image {
+    float: left;
+  }
+}
+/* line 309, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 .category-title h2 {
   color: #5c2e13;
   font-family: "Archer A", "Archer B";
@@ -378,7 +409,11 @@
   font-style: normal;
   font-size: 23px;
 }
-/* line 291, ../sass/foodinc.scss */
+/* line 316, ../sass/foodinc.scss */
+#page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 .categories-title {
+  text-align: left;
+}
+/* line 319, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 .category-info {
   display: block;
   float: left;
@@ -387,66 +422,72 @@
   z-index: 1;
 }
 @media (max-width: 480px) {
-  /* line 291, ../sass/foodinc.scss */
+  /* line 319, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 .category-info {
     width: 100%;
   }
 }
-/* line 301, ../sass/foodinc.scss */
+/* line 329, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-id-0 .category-text {
   padding-left: 20px;
 }
-/* line 306, ../sass/foodinc.scss */
+/* line 334, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-odd .title-wrapper {
   width: 225px;
 }
-/* line 309, ../sass/foodinc.scss */
+/* line 337, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-odd .image {
   float: right;
   margin-left: 10px;
 }
+@media (max-width: 700px) {
+  /* line 337, ../sass/foodinc.scss */
+  #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-odd .image {
+    float: left;
+  }
+}
 @media (max-width: 480px) {
-  /* line 309, ../sass/foodinc.scss */
+  /* line 337, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-odd .image {
     margin: 0;
   }
 }
-/* line 316, ../sass/foodinc.scss */
+/* line 347, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-odd .category-info {
   display: block;
 }
-/* line 319, ../sass/foodinc.scss */
+/* line 350, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-odd .category-text {
   margin-left: 30px;
 }
-/* line 324, ../sass/foodinc.scss */
+/* line 355, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-even .title-wrapper {
   width: 225px;
   float: right;
   margin-right: 19px;
 }
-/* line 329, ../sass/foodinc.scss */
+/* line 360, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-even .image {
   float: left;
   margin-right: 10px;
 }
 @media (max-width: 480px) {
-  /* line 329, ../sass/foodinc.scss */
+  /* line 360, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-even .image {
     margin: 0;
   }
 }
-/* line 336, ../sass/foodinc.scss */
+/* line 367, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row-even .category-info {
   display: block;
 }
-/* line 341, ../sass/foodinc.scss */
+/* line 372, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges {
   padding-bottom: 30px;
   height: auto;
   overflow: hidden;
 }
-/* line 345, ../sass/foodinc.scss */
+/* line 376, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges h2 {
   color: #5c2e13;
   margin: 0;
@@ -455,37 +496,37 @@
   font-style: normal;
   font-size: 24px;
 }
-/* line 353, ../sass/foodinc.scss */
+/* line 384, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row {
   width: 300px;
   margin-top: 20px;
   position: relative;
 }
-/* line 357, ../sass/foodinc.scss */
+/* line 388, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row.row-odd {
   float: left;
   clear: both;
 }
-/* line 361, ../sass/foodinc.scss */
+/* line 392, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row.row-even {
   float: right;
 }
 @media (max-width: 1000px) {
-  /* line 361, ../sass/foodinc.scss */
+  /* line 392, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row.row-even {
     float: left;
   }
 }
-/* line 367, ../sass/foodinc.scss */
+/* line 398, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row img {
   float: left;
   margin-right: 15px;
 }
-/* line 371, ../sass/foodinc.scss */
+/* line 402, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row .info {
   margin-left: 110px;
 }
-/* line 373, ../sass/foodinc.scss */
+/* line 404, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row .info .name {
   color: #5c2e13;
   font-family: "Archer A", "Archer B";
@@ -495,7 +536,7 @@
   line-height: 19px;
   margin-bottom: 5px;
 }
-/* line 382, ../sass/foodinc.scss */
+/* line 413, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.page-body-content .judges .row .info .bio {
   padding: 0 15px;
   position: relative;
@@ -504,7 +545,7 @@
   padding: 0;
   margin-left: 5px;
 }
-/* line 394, ../sass/foodinc.scss */
+/* line 425, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail {
   float: right;
   width: 30%;
@@ -512,36 +553,36 @@
   margin-right: 10px;
 }
 @media (max-width: 1000px) {
-  /* line 394, ../sass/foodinc.scss */
+  /* line 425, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-awards section.right-rail {
     float: left;
     width: 100%;
     clear: both;
   }
 }
-/* line 404, ../sass/foodinc.scss */
+/* line 435, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .ad {
   display: block;
 }
 @media (max-width: 1000px) {
-  /* line 404, ../sass/foodinc.scss */
+  /* line 435, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-awards section.right-rail .ad {
     width: 302px;
     margin: 0 auto;
   }
 }
-/* line 411, ../sass/foodinc.scss */
+/* line 442, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter {
   display: block;
 }
 @media (max-width: 1000px) {
-  /* line 411, ../sass/foodinc.scss */
+  /* line 442, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter {
     width: 302px;
     margin: 0 auto;
   }
 }
-/* line 417, ../sass/foodinc.scss */
+/* line 448, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .title {
   padding-top: 30px;
   padding-left: 30px;
@@ -553,7 +594,7 @@
   position: relative;
   z-index: 1;
 }
-/* line 428, ../sass/foodinc.scss */
+/* line 459, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first {
   width: 302px;
   height: auto;
@@ -565,7 +606,7 @@
   position: relative;
   z-index: 0;
 }
-/* line 438, ../sass/foodinc.scss */
+/* line 469, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first .thank-you-message p, #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form > div > p {
   color: #5c2e13;
   padding: 10px 20px;
@@ -576,16 +617,16 @@
   background-position: center top, center bottom;
   background-repeat: repeat-y, no-repeat;
 }
-/* line 448, ../sass/foodinc.scss */
+/* line 479, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first .thank-you-message p {
   padding: 20px 30px;
 }
-/* line 451, ../sass/foodinc.scss */
+/* line 482, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form {
   padding: 12px;
   padding-top: 10px;
 }
-/* line 457, ../sass/foodinc.scss */
+/* line 488, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form div.error {
   background: transparent;
   border: none;
@@ -598,7 +639,7 @@
   bottom: 161px;
   z-index: 2;
 }
-/* line 469, ../sass/foodinc.scss */
+/* line 500, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form .form-item-email label {
   font-family: "Archer A", "Archer B";
   font-weight: 600;
@@ -607,11 +648,11 @@
   color: #5c2e13;
   margin-bottom: 5px;
 }
-/* line 476, ../sass/foodinc.scss */
+/* line 507, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form .form-item-email label span {
   display: none;
 }
-/* line 480, ../sass/foodinc.scss */
+/* line 511, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form input[type='text'] {
   background: url('../images/signup-input.png?1379431464') top center;
   height: 34px;
@@ -621,7 +662,7 @@
   font-size: 21px;
   text-indent: 10px;
 }
-/* line 489, ../sass/foodinc.scss */
+/* line 520, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form input[type='submit'] {
   background: url('../images/singup-btn.png?1379431464') top center;
   height: 44px;
@@ -632,15 +673,15 @@
   cursor: pointer;
   white-space: nowrap;
 }
-/* line 498, ../sass/foodinc.scss */
+/* line 529, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form input[type='submit']:hover {
   text-decoration: underline;
 }
-/* line 502, ../sass/foodinc.scss */
+/* line 533, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form a {
   color: #5c2e13;
 }
-/* line 511, ../sass/foodinc.scss */
+/* line 542, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto section.page-body-content {
   width: 66%;
   float: left;
@@ -650,18 +691,18 @@
   margin-left: 20px;
 }
 @media (max-width: 1000px) {
-  /* line 511, ../sass/foodinc.scss */
+  /* line 542, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-howto section.page-body-content {
     width: 100%;
   }
 }
 @media (max-width: 680px) {
-  /* line 511, ../sass/foodinc.scss */
+  /* line 542, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-howto section.page-body-content {
     margin-left: 0;
   }
 }
-/* line 524, ../sass/foodinc.scss */
+/* line 555, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .page-title h3 {
   font-size: 23px;
   color: #5c2e13;
@@ -671,7 +712,7 @@
   margin: 0;
   margin-bottom: 5px;
 }
-/* line 534, ../sass/foodinc.scss */
+/* line 565, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .title {
   color: #5c2e13;
   font-family: "Archer A", "Archer B";
@@ -680,26 +721,26 @@
   font-size: 33px;
   margin-bottom: 5px;
 }
-/* line 542, ../sass/foodinc.scss */
+/* line 573, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video, #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro img {
   margin: 20px 0;
 }
-/* line 545, ../sass/foodinc.scss */
+/* line 576, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video {
   position: relative;
   max-width: 635px;
   margin: 0;
 }
-/* line 549, ../sass/foodinc.scss */
+/* line 580, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video .botr {
   width: 100%;
 }
-/* line 551, ../sass/foodinc.scss */
+/* line 582, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video .botr object {
   max-width: 100%;
 }
 @media (max-width: 6355px) {
-  /* line 545, ../sass/foodinc.scss */
+  /* line 576, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video {
     padding-bottom: 56.25%;
     padding-top: 30px;
@@ -708,7 +749,7 @@
     width: 100%;
     max-width: 635px;
   }
-  /* line 560, ../sass/foodinc.scss */
+  /* line 591, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video iframe, #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video object, #page-wrapper.foodinc #foodinc-howto section.page-body-content .intro .video embed {
     position: absolute;
     top: 0;
@@ -717,11 +758,11 @@
     height: 100%;
   }
 }
-/* line 572, ../sass/foodinc.scss */
+/* line 603, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .categories .row {
   margin: 30px 0;
 }
-/* line 575, ../sass/foodinc.scss */
+/* line 606, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .categories .title {
   font-family: "Archer A", "Archer B";
   font-weight: 500;
@@ -729,7 +770,7 @@
   font-size: 32px;
   color: #5c2e13;
 }
-/* line 579, ../sass/foodinc.scss */
+/* line 610, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .categories .title span {
   font-size: 11px;
   font-style: normal;
@@ -739,15 +780,15 @@
   line-height: 35px;
   color: #555;
 }
-/* line 591, ../sass/foodinc.scss */
+/* line 622, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .additional-info .row {
   margin: 20px 0;
 }
-/* line 594, ../sass/foodinc.scss */
+/* line 625, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .additional-info li {
   margin: 0;
 }
-/* line 597, ../sass/foodinc.scss */
+/* line 628, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .additional-info .title {
   font-size: 24px;
   color: #5c2e13;
@@ -755,16 +796,16 @@
   font-weight: 800;
   font-style: normal;
 }
-/* line 602, ../sass/foodinc.scss */
+/* line 633, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .additional-info .video, #page-wrapper.foodinc #foodinc-howto .additional-info img {
   margin: 10px 0;
 }
-/* line 605, ../sass/foodinc.scss */
+/* line 636, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .additional-info .video {
   position: relative;
 }
 @media (max-width: 585px) {
-  /* line 605, ../sass/foodinc.scss */
+  /* line 636, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-howto .additional-info .video {
     padding-bottom: 56.25%;
     padding-top: 30px;
@@ -773,7 +814,7 @@
     width: 100%;
     max-width: 585px;
   }
-  /* line 612, ../sass/foodinc.scss */
+  /* line 643, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-howto .additional-info .video iframe, #page-wrapper.foodinc #foodinc-howto .additional-info .video object, #page-wrapper.foodinc #foodinc-howto .additional-info .video embed {
     position: absolute;
     top: 0;
@@ -782,14 +823,14 @@
     height: 100%;
   }
 }
-/* line 622, ../sass/foodinc.scss */
+/* line 653, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto section.right-rail {
   float: right;
   width: 30%;
   margin-right: 10px;
 }
 @media (max-width: 1000px) {
-  /* line 622, ../sass/foodinc.scss */
+  /* line 653, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-howto section.right-rail {
     float: left;
     clear: both;
@@ -797,30 +838,30 @@
   }
 }
 @media (max-width: 1000px) {
-  /* line 632, ../sass/foodinc.scss */
+  /* line 663, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-howto .ad {
     width: 302px;
     margin: 0 auto;
   }
 }
-/* line 638, ../sass/foodinc.scss */
+/* line 669, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block {
   line-height: 17px;
 }
 @media (max-width: 1000px) {
-  /* line 638, ../sass/foodinc.scss */
+  /* line 669, ../sass/foodinc.scss */
   #page-wrapper.foodinc #foodinc-howto .instruction-block {
     margin: 0 auto;
     width: 300px;
   }
 }
-/* line 644, ../sass/foodinc.scss */
+/* line 675, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .top {
   width: 300px;
   height: 63px;
   background: url('../images/instruction-top.jpg?1379401670') no-repeat top center;
 }
-/* line 649, ../sass/foodinc.scss */
+/* line 680, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid {
   width: 300px;
   height: auto;
@@ -829,13 +870,13 @@
   margin-top: -15px;
   color: #5c2e13;
 }
-/* line 656, ../sass/foodinc.scss */
+/* line 687, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .item {
   padding: 0 20px;
   clear: both;
   margin-bottom: 10px;
 }
-/* line 660, ../sass/foodinc.scss */
+/* line 691, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .item .number {
   margin-right: 10px;
   font-size: 30px;
@@ -845,12 +886,12 @@
   font-weight: 800;
   font-style: normal;
 }
-/* line 667, ../sass/foodinc.scss */
+/* line 698, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .item span {
   display: block;
   margin-left: 30px;
 }
-/* line 672, ../sass/foodinc.scss */
+/* line 703, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .button a {
   background: url('../images/contest-btn.png?1379401670') top right no-repeat;
   width: 238px;
@@ -863,46 +904,46 @@
   color: #fff;
   white-space: nowrap;
 }
-/* line 684, ../sass/foodinc.scss */
+/* line 715, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .extra {
   padding: 20px;
   padding-bottom: 0;
   text-align: center;
 }
-/* line 690, ../sass/foodinc.scss */
+/* line 721, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-howto .instruction-block .bottom {
   width: 300px;
   height: 31px;
   background: url('../images/instruction-bottom.jpg?1379401670') no-repeat bottom center;
 }
-/* line 698, ../sass/foodinc.scss */
+/* line 729, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived section.page-body-content {
   width: 66%;
   float: left;
 }
-/* line 702, ../sass/foodinc.scss */
+/* line 733, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .page-title {
   font-size: 20px;
   font-style: italic;
   color: #5c2e13;
 }
-/* line 707, ../sass/foodinc.scss */
+/* line 738, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .additional-info {
   margin-top: 20px;
 }
-/* line 709, ../sass/foodinc.scss */
+/* line 740, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .additional-info .title {
   font-size: 18px;
   color: #5c2e13;
 }
-/* line 714, ../sass/foodinc.scss */
+/* line 745, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block {
   clear: both;
   height: auto;
   overflow: hidden;
   margin: 10px 0px 20px 20px;
 }
-/* line 719, ../sass/foodinc.scss */
+/* line 750, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .social {
   display: block;
   height: 40px;
@@ -910,59 +951,59 @@
   float: left;
   margin-right: 8px;
 }
-/* line 726, ../sass/foodinc.scss */
+/* line 757, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .facebook {
   background: url('../images/social_long_fb.png?1379455007') no-repeat top center;
 }
-/* line 729, ../sass/foodinc.scss */
+/* line 760, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .twitter {
   background: url('../images/social_long_twitter.png?1379455007') no-repeat top center;
 }
-/* line 732, ../sass/foodinc.scss */
+/* line 763, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .googleplus {
   background: url('../images/social_long_google.png?1379455007') no-repeat top center;
 }
-/* line 735, ../sass/foodinc.scss */
+/* line 766, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived .social-block .email {
   background: url('../images/social_long_email.png?1379455007') no-repeat top center;
 }
-/* line 739, ../sass/foodinc.scss */
+/* line 770, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryreceived section.right-rail {
   width: 30%;
   float: right;
   margin-right: 10px;
 }
-/* line 746, ../sass/foodinc.scss */
+/* line 777, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform {
   /* .entry-form-container */
 }
-/* line 747, ../sass/foodinc.scss */
+/* line 778, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform h2 {
   font: italic 36px "Archer A", "Archer B";
   color: #5c2e13;
 }
-/* line 751, ../sass/foodinc.scss */
+/* line 782, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform h3 {
   font: bold 24px "Archer A", "Archer B";
   color: #5c2e13;
   text-transform: uppercase;
 }
-/* line 755, ../sass/foodinc.scss */
+/* line 786, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform h3 span {
   font: italic normal 24px "Archer A", "Archer B";
   margin-left: .5ex;
   text-transform: none;
 }
-/* line 761, ../sass/foodinc.scss */
+/* line 792, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform h4 {
   font: bold 16px/150% "Archer A", "Archer B";
   color: #5c2e13;
 }
-/* line 765, ../sass/foodinc.scss */
+/* line 796, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform p {
   color: #555;
 }
-/* line 769, ../sass/foodinc.scss */
+/* line 800, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail {
   display: -moz-inline-stack;
   display: inline-block;
@@ -974,23 +1015,23 @@
   width: 370px;
   margin-right: 20px;
 }
-/* line 774, ../sass/foodinc.scss */
+/* line 805, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail section {
   margin-bottom: 20px;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 778, ../sass/foodinc.scss */
+/* line 809, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul {
   list-style-type: none;
 }
-/* line 780, ../sass/foodinc.scss */
+/* line 811, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li {
   background: no-repeat 0px 5px;
   padding-left: 4ex;
   position: relative;
 }
-/* line 784, ../sass/foodinc.scss */
+/* line 815, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li:before {
   font: bold 26px "Archer A", "Archer B";
   color: #5c2e13;
@@ -999,55 +1040,55 @@
   display: inline-block;
   position: absolute;
 }
-/* line 792, ../sass/foodinc.scss */
+/* line 823, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-1:before {
   content: '1';
 }
-/* line 793, ../sass/foodinc.scss */
+/* line 824, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-2:before {
   content: '2';
 }
-/* line 794, ../sass/foodinc.scss */
+/* line 825, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-3:before {
   content: '3';
 }
-/* line 795, ../sass/foodinc.scss */
+/* line 826, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-4:before {
   content: '4';
 }
-/* line 796, ../sass/foodinc.scss */
+/* line 827, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-5:before {
   content: '5';
 }
-/* line 797, ../sass/foodinc.scss */
+/* line 828, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-6:before {
   content: '6';
 }
-/* line 798, ../sass/foodinc.scss */
+/* line 829, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-action {
   background-image: url('../images/entry-bullets/bullet-action.png?1379534887');
 }
-/* line 799, ../sass/foodinc.scss */
+/* line 830, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-camera {
   background-image: url('../images/entry-bullets/bullet-camera.png?1379534887');
 }
-/* line 800, ../sass/foodinc.scss */
+/* line 831, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-clean {
   background-image: url('../images/entry-bullets/bullet-clean.png?1379534887');
 }
-/* line 801, ../sass/foodinc.scss */
+/* line 832, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-focus {
   background-image: url('../images/entry-bullets/bullet-focus.png?1379534887');
 }
-/* line 802, ../sass/foodinc.scss */
+/* line 833, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-lights {
   background-image: url('../images/entry-bullets/bullet-lights.png?1379534887');
 }
-/* line 803, ../sass/foodinc.scss */
+/* line 834, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-pencil {
   background-image: url('../images/entry-bullets/bullet-pencil.png?1379534887');
 }
-/* line 808, ../sass/foodinc.scss */
+/* line 839, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .right-rail {
   display: -moz-inline-stack;
   display: inline-block;
@@ -1058,61 +1099,61 @@
   float: right;
   width: 570px;
 }
-/* line 814, ../sass/foodinc.scss */
+/* line 845, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container {
   /* section */
 }
-/* line 815, ../sass/foodinc.scss */
+/* line 846, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section {
   margin-bottom: 30px;
   padding: 0px 10px 1px 10px;
   background: url('../images/entry-form-bg.jpg?1379550636');
   /* textfields */
 }
-/* line 821, ../sass/foodinc.scss */
+/* line 852, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section.about-you label[for], #page-wrapper.foodinc #foodinc-entryform .entry-form-container section.your-video label[for] {
   text-transform: uppercase;
 }
-/* line 825, ../sass/foodinc.scss */
+/* line 856, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section header {
   padding: 25px 15px 1px 15px;
   background: url('../images/entry-title-top.jpg?1379455001') no-repeat -15px 0, url('../images/entry-title-mid.jpg?1379455001') repeat-y -15px 0, url('../images/entry-title-bottom.jpg?1379455001') no-repeat -15px bottom;
 }
-/* line 831, ../sass/foodinc.scss */
+/* line 862, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section header p {
   color: #5c2e13;
   font: normal 12px/150% Helvetica, Arial, sans-serif;
 }
-/* line 836, ../sass/foodinc.scss */
+/* line 867, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset {
   border: none;
   padding: 0;
   margin: 10px 0 10px;
 }
-/* line 840, ../sass/foodinc.scss */
+/* line 871, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset label {
   font: bold 14px/170% "Archer A", "Archer B";
   color: #5c2e13;
 }
-/* line 846, ../sass/foodinc.scss */
+/* line 877, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text.error {
   border-color: #ff1812;
 }
-/* line 850, ../sass/foodinc.scss */
+/* line 881, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text:focus, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_focus {
   outline: 1px solid #999;
 }
-/* line 854, ../sass/foodinc.scss */
+/* line 885, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input {
   position: relative;
 }
-/* line 857, ../sass/foodinc.scss */
+/* line 888, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input select {
   min-width: 100%;
   min-height: 100%;
   z-index: 2;
 }
-/* line 862, ../sass/foodinc.scss */
+/* line 893, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input span:after {
   content: '\25bc';
   font-size: 11px;
@@ -1132,24 +1173,24 @@
   top: 0;
   bottom: 0px;
 }
-/* line 879, ../sass/foodinc.scss */
+/* line 910, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 881, ../sass/foodinc.scss */
+/* line 912, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset {
   float: left;
 }
-/* line 883, ../sass/foodinc.scss */
+/* line 914, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset .form-text {
   width: 250px;
 }
-/* line 886, ../sass/foodinc.scss */
+/* line 917, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset:nth-child(odd) {
   margin-right: 15px;
 }
-/* line 890, ../sass/foodinc.scss */
+/* line 921, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .tpselect_input {
   display: -moz-inline-stack;
   display: inline-block;
@@ -1159,25 +1200,25 @@
   *display: inline;
   width: 110px;
 }
-/* line 893, ../sass/foodinc.scss */
+/* line 924, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .tpselect_input:nth-child(even) {
   margin-right: 15px;
 }
-/* line 898, ../sass/foodinc.scss */
+/* line 929, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios {
   margin-left: 4ex;
 }
-/* line 900, ../sass/foodinc.scss */
+/* line 931, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios input {
   margin-left: -4ex;
   margin-right: 1ex;
 }
-/* line 904, ../sass/foodinc.scss */
+/* line 935, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios p {
   font: normal 13px/140% Helvetica, Arial, sans-serif;
   color: #555;
 }
-/* line 908, ../sass/foodinc.scss */
+/* line 939, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .checks-radios label[for] {
   display: -moz-inline-stack;
   display: inline-block;
@@ -1188,7 +1229,7 @@
   font: normal 12px/150% Helvetica, Arial, sans-serif;
   color: #555;
 }
-/* line 916, ../sass/foodinc.scss */
+/* line 947, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container .form-submit {
   -webkit-appearance: none;
   display: block;
@@ -1211,7 +1252,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 934, ../sass/foodinc.scss */
+/* line 965, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container label.error {
   color: #ff1812;
   font: normal 12px Helvetica, Arial, sans-serif;
@@ -1219,7 +1260,7 @@
   margin-top: 4px;
 }
 
-/* line 945, ../sass/foodinc.scss */
+/* line 976, ../sass/foodinc.scss */
 .input-field, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input {
   display: block;
   padding: 5px;
@@ -1234,7 +1275,7 @@
 }
 
 @media all and (max-width: 480px) {
-  /* line 972, ../sass/foodinc.scss */
+  /* line 1003, ../sass/foodinc.scss */
   #site-header {
     padding: 0;
     min-height: 0;
@@ -1242,7 +1283,7 @@
     margin-bottom: 0;
   }
 
-  /* line 979, ../sass/foodinc.scss */
+  /* line 1010, ../sass/foodinc.scss */
   #site-header-inner {
     padding: 7px;
     min-height: auto;
@@ -1257,13 +1298,13 @@
     width: 100%;
   }
 
-  /* line 990, ../sass/foodinc.scss */
+  /* line 1021, ../sass/foodinc.scss */
   .clickedon #site-header-inner {
     overflow: visible;
     padding-bottom: 62px;
   }
 
-  /* line 995, ../sass/foodinc.scss */
+  /* line 1026, ../sass/foodinc.scss */
   .clickedon #site-header:after {
     content: " ";
     position: absolute;
@@ -1275,7 +1316,7 @@
     width: 100%;
   }
 
-  /* line 1006, ../sass/foodinc.scss */
+  /* line 1037, ../sass/foodinc.scss */
   #site-header-inner:after {
     content: " ";
     float: right;
@@ -1289,51 +1330,51 @@
     margin-right: .5em;
   }
 
-  /* line 1018, ../sass/foodinc.scss */
+  /* line 1049, ../sass/foodinc.scss */
   .clickedon #site-header-inner:after {
     background-image: url('../images/sitenav_close.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
-  /* line 1022, ../sass/foodinc.scss */
+  /* line 1053, ../sass/foodinc.scss */
   #site-participant-nav {
     display: none;
   }
 
-  /* line 1026, ../sass/foodinc.scss */
+  /* line 1057, ../sass/foodinc.scss */
   #site-logo {
     margin-bottom: 0;
   }
 
-  /* line 1030, ../sass/foodinc.scss */
+  /* line 1061, ../sass/foodinc.scss */
   #site-logo img {
     width: 50px;
     height: 50px;
   }
 
-  /* line 1035, ../sass/foodinc.scss */
+  /* line 1066, ../sass/foodinc.scss */
   #site-navs {
     display: none;
   }
 
-  /* line 1039, ../sass/foodinc.scss */
+  /* line 1070, ../sass/foodinc.scss */
   .clickedon #site-navs {
     display: block;
   }
 
-  /* line 1043, ../sass/foodinc.scss */
+  /* line 1074, ../sass/foodinc.scss */
   #site-main-nav {
     border: none;
     padding: 0;
     background: #eff3f5;
   }
 
-  /* line 1049, ../sass/foodinc.scss */
+  /* line 1080, ../sass/foodinc.scss */
   #site-user-nav {
     display: none;
   }
 
-  /* line 1053, ../sass/foodinc.scss */
+  /* line 1084, ../sass/foodinc.scss */
   .clickedon #site-user-nav {
     display: block;
     width: 100%;
@@ -1343,33 +1384,33 @@
     top: auto;
   }
 
-  /* line 1062, ../sass/foodinc.scss */
+  /* line 1093, ../sass/foodinc.scss */
   #site-user-nav ul {
     width: 100%;
     float: none;
     padding: 0;
   }
 
-  /* line 1068, ../sass/foodinc.scss */
+  /* line 1099, ../sass/foodinc.scss */
   #site-user-nav li {
     font-size: .75em;
     width: 50%;
     border-right: 1px solid #dbdbdb;
   }
 
-  /* line 1074, ../sass/foodinc.scss */
+  /* line 1105, ../sass/foodinc.scss */
   #site-user-nav li:last-child {
     border-right: none;
   }
 
-  /* line 1078, ../sass/foodinc.scss */
+  /* line 1109, ../sass/foodinc.scss */
   #site-user-nav li {
     font-size: 11px;
     line-height: 5em;
     font-weight: bold;
   }
 
-  /* line 1084, ../sass/foodinc.scss */
+  /* line 1115, ../sass/foodinc.scss */
   #site-user-nav li a {
     display: block;
     text-align: center;
@@ -1379,19 +1420,19 @@
     white-space: nowrap;
   }
 
-  /* line 1095, ../sass/foodinc.scss */
+  /* line 1126, ../sass/foodinc.scss */
   #site-navs #site-main-nav ul,
   #site-navs #site-main-nav li,
   #site-main-nav {
     float: none;
   }
 
-  /* line 1099, ../sass/foodinc.scss */
+  /* line 1130, ../sass/foodinc.scss */
   #site-main-nav li {
     padding: 0;
   }
 
-  /* line 1103, ../sass/foodinc.scss */
+  /* line 1134, ../sass/foodinc.scss */
   #site-main-nav a {
     display: inline-block;
     padding: .65rem 4rem .65em 1rem;
@@ -1402,7 +1443,7 @@
     width: 100%;
   }
 
-  /* line 1113, ../sass/foodinc.scss */
+  /* line 1144, ../sass/foodinc.scss */
   #site-main-nav a:before {
     width: 53px;
     padding-right: 1rem;
@@ -1413,107 +1454,107 @@
     background-repeat: no-repeat;
   }
 
-  /* line 1123, ../sass/foodinc.scss */
+  /* line 1154, ../sass/foodinc.scss */
   #site-main-nav .text-culture a:before {
     background-image: url('../images/topic_culture.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
-  /* line 1127, ../sass/foodinc.scss */
+  /* line 1158, ../sass/foodinc.scss */
   #site-main-nav .text-food a:before {
     background-image: url('../images/topic_food.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
-  /* line 1131, ../sass/foodinc.scss */
+  /* line 1162, ../sass/foodinc.scss */
   #site-main-nav .text-environment a:before {
     background-image: url('../images/topic_environment.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
-  /* line 1135, ../sass/foodinc.scss */
+  /* line 1166, ../sass/foodinc.scss */
   #site-main-nav .text-wildlife a:before {
     background-image: url('../images/topic_wildlife.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
-  /* line 1139, ../sass/foodinc.scss */
+  /* line 1170, ../sass/foodinc.scss */
   #site-main-nav .text-social_justice a:before {
     background-image: url('../images/topic_social_justice.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
-  /* line 1143, ../sass/foodinc.scss */
+  /* line 1174, ../sass/foodinc.scss */
   #site-main-nav .text-education a:before {
     background-image: url('../images/topic_education.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
-  /* line 1147, ../sass/foodinc.scss */
+  /* line 1178, ../sass/foodinc.scss */
   #site-main-nav .text-health a:before {
     background-image: url('../images/topic_health.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
-  /* line 1151, ../sass/foodinc.scss */
+  /* line 1182, ../sass/foodinc.scss */
   #site-hot-nav {
     display: none;
   }
 
-  /* line 1155, ../sass/foodinc.scss */
+  /* line 1186, ../sass/foodinc.scss */
   #site-miss-nav {
     display: none;
   }
 
-  /* line 1159, ../sass/foodinc.scss */
+  /* line 1190, ../sass/foodinc.scss */
   #site-navs {
     position: absolute;
     top: 100%;
     left: 0;
   }
 
-  /* line 1165, ../sass/foodinc.scss */
+  /* line 1196, ../sass/foodinc.scss */
   #site-more-navs {
     float: left;
   }
 
-  /* line 1169, ../sass/foodinc.scss */
+  /* line 1200, ../sass/foodinc.scss */
   #site-search .form-item input {
     width: 150px;
     font-size: 16px;
   }
 
   /* Top ad */
-  /* line 1175, ../sass/foodinc.scss */
+  /* line 1206, ../sass/foodinc.scss */
   #site-top {
     display: none;
   }
 
   /* Side bar */
-  /* line 1181, ../sass/foodinc.scss */
+  /* line 1212, ../sass/foodinc.scss */
   #site-secondary {
     width: auto;
     float: none;
   }
 
-  /* line 1186, ../sass/foodinc.scss */
+  /* line 1217, ../sass/foodinc.scss */
   #site-secondary .block-boxes-ga_ad-bottom {
     display: none;
   }
 
-  /* line 1190, ../sass/foodinc.scss */
+  /* line 1221, ../sass/foodinc.scss */
   #site-secondary .newsletter_social {
     display: block;
   }
 
   /* Footer */
-  /* line 1196, ../sass/foodinc.scss */
+  /* line 1227, ../sass/foodinc.scss */
   #site-connect,
   #site-topics {
     display: none;
   }
 
-  /* line 1200, ../sass/foodinc.scss */
+  /* line 1231, ../sass/foodinc.scss */
   #site-footer {
     background: #f1f3f4;
     display: inline-block;
@@ -1521,19 +1562,19 @@
     width: 100%;
   }
 
-  /* line 1206, ../sass/foodinc.scss */
+  /* line 1237, ../sass/foodinc.scss */
   #site-footer section {
     float: none;
     text-align: center;
     width: auto;
   }
 
-  /* line 1212, ../sass/foodinc.scss */
+  /* line 1243, ../sass/foodinc.scss */
   #site-footer #site-about {
     text-align: center;
   }
 
-  /* line 1216, ../sass/foodinc.scss */
+  /* line 1247, ../sass/foodinc.scss */
   #site-footer li {
     padding: 0 1em;
     display: inline-block;
