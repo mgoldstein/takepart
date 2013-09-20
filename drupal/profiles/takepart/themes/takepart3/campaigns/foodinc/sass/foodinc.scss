@@ -730,12 +730,13 @@
   }
 
   #foodinc-entryform {
+    padding: 0 20px;
     h2 {
       font: italic 36px $header-font;
       color: $primary-color;
     }
     h3 {
-      font: bold 24px $header-font;
+      font: bold 23px $header-font;
       color: $primary-color;
       text-transform: uppercase;
       span {
@@ -755,7 +756,7 @@
     .left-rail {
       @include inline-block;
       margin-right: 20px;
-      width: 370px;
+      width: 365px;
       margin-right: 20px;
       section {
         margin-bottom: 20px;
@@ -794,7 +795,7 @@
     .right-rail {
       @include inline-block;
       float: right;
-      width: 570px;
+      width: 550px;
     }
 
     .entry-form-container {
@@ -807,6 +808,9 @@
           label[for] {
             text-transform: uppercase;
           }
+        }
+        p {
+          font: normal 12px/150% $body-font;
         }
         header {
           padding: 25px 15px 1px 15px;
@@ -823,6 +827,22 @@
           border: none;
           padding: 0;
           margin: 10px 0 10px;
+
+          &.date {
+            @include inline-block;
+            width: 54px;
+            float: left;
+            height: 60px;
+            .tpselect_input {
+              width: 106px;
+            }
+            &.month .error {
+              width: 100px;
+            }
+            &.year .tpselect_input {
+              margin-top: 23px;
+            }
+          }
           label {
             font: bold 14px/170% $header-font;
             color: $primary-color;
@@ -867,9 +887,9 @@
           fieldset {
             float: left;
             .form-text {
-              width: 250px;
+              width: 240px;
             }
-            &:nth-child(odd) {
+            &.row-odd {
               margin-right: 15px;
             }
           }

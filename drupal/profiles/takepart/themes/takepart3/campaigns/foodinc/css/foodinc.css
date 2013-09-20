@@ -777,6 +777,7 @@
   margin-right: 10px;
 }
 #page-wrapper.foodinc #foodinc-entryform {
+  padding: 0 20px;
   /* .entry-form-container */
 }
 #page-wrapper.foodinc #foodinc-entryform h2 {
@@ -784,7 +785,7 @@
   color: #5c2e13;
 }
 #page-wrapper.foodinc #foodinc-entryform h3 {
-  font: bold 24px "Archer A", "Archer B";
+  font: bold 23px "Archer A", "Archer B";
   color: #5c2e13;
   text-transform: uppercase;
 }
@@ -808,7 +809,7 @@
   zoom: 1;
   *display: inline;
   margin-right: 20px;
-  width: 370px;
+  width: 365px;
   margin-right: 20px;
 }
 #page-wrapper.foodinc #foodinc-entryform .left-rail section {
@@ -876,7 +877,7 @@
   zoom: 1;
   *display: inline;
   float: right;
-  width: 570px;
+  width: 550px;
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container {
   /* section */
@@ -890,6 +891,9 @@
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section.about-you label[for], #page-wrapper.foodinc #foodinc-entryform .entry-form-container section.your-video label[for] {
   text-transform: uppercase;
 }
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section p {
+  font: normal 12px/150% Helvetica, Arial, sans-serif;
+}
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section header {
   padding: 25px 15px 1px 15px;
   background: url('../images/entry-title-top.jpg?1379472611') no-repeat -15px 0, url('../images/entry-title-mid.jpg?1379472611') repeat-y -15px 0, url('../images/entry-title-bottom.jpg?1379472611') no-repeat -15px bottom;
@@ -902,6 +906,26 @@
   border: none;
   padding: 0;
   margin: 10px 0 10px;
+}
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset.date {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  width: 54px;
+  float: left;
+  height: 60px;
+}
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset.date .tpselect_input {
+  width: 106px;
+}
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset.date.month .error {
+  width: 100px;
+}
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset.date.year .tpselect_input {
+  margin-top: 23px;
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset label {
   font: bold 14px/170% "Archer A", "Archer B";
@@ -948,9 +972,9 @@
   float: left;
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset .form-text {
-  width: 250px;
+  width: 240px;
 }
-#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset:nth-child(odd) {
+#page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset.row-odd {
   margin-right: 15px;
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields .tpselect_input {
