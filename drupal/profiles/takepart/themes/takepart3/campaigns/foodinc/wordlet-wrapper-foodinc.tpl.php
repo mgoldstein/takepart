@@ -11,6 +11,21 @@
 	drupal_add_js('//connect.facebook.net/en_US/all.js');
 ?>
 
+<!-- Insert into HTML <head> -->
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function()
+{ var gads = document.createElement('script'); gads.async = true; gads.type = 'text/javascript'; var useSSL = 'https:' == document.location.protocol; gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js'; var node = document.getElementsByTagName('script')[0]; node.parentNode.insertBefore(gads, node); }
+)();
+</script>
+<script type='text/javascript'>
+googletag.cmd.push(function()
+{ googletag.defineSlot('/4355895/TP3_ROS_Background_1x1', [1, 1], 'div-gpt-ad-1379616672161-0').addService(googletag.pubads()); googletag.defineSlot('/4355895/TP3_ROS_RR_ATF_300x250', [300, 250], 'div-gpt-ad-1379616725962-0').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.pubads().setTargeting("Type", "wordlet"); googletag.pubads().setTargeting("Topic", "Food"); googletag.pubads().setTargeting("FreeTag", ["Food Inc. Awards", "Food Inc."]); googletag.pubads().setTargeting("PageTitle", "Food Inc. Awards"); googletag.enableServices(); }
+);
+</script>
+<!-- /Insert into HTML <head> -->
+
 
 <?php
 	$w = w('header_image');

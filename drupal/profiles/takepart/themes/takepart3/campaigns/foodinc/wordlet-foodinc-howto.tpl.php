@@ -73,7 +73,17 @@
         </div>
         <div class="bottom"></div>
       </div>
-    <div class="ad"><?php print (w('foodinc_howto_adblock') != NULL ? render(w('foodinc_howto_adblock')) : ''); ?></div>
+    <div class="ad">
+            <!-- place in the <body> to display the 300x250 ad -->
+      <!-- TP3_ROS_RR_ATF_300x250 -->
+      <div id='div-gpt-ad-1379616725962-0' style='width:300px; height:250px;'>
+      <script type='text/javascript'>
+      googletag.cmd.push(function()
+      { googletag.display('div-gpt-ad-1379616725962-0'); }
+      );
+      </script>
+      </div>
+    </div>
   </section>
 </div>
 
