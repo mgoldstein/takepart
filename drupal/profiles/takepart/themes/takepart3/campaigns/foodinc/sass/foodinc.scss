@@ -798,26 +798,6 @@
       color: #555;
     }
 
-    @media all and (max-width: 1000px) {
-      .left-rail {
-        width: 44%;
-      }
-
-      .right-rail {
-        width: 54%;
-      }
-    }
-
-    @media all and (max-width: 600px) {
-      .left-rail {
-        width: 44%;
-      }
-
-      .right-rail {
-        width: 54%;
-      }
-    }
-
     .left-rail {
       @include inline-block;
       margin-right: 20px;
@@ -1009,6 +989,70 @@
         margin-top: 4px;
       }
     }/* .entry-form-container */
+
+    @media (max-width: 1000px) {
+      .left-rail {
+        width: 43%;
+      }
+
+      .right-rail {
+        width: 52%;
+      }
+
+      .entry-form-container section .textfields fieldset {
+        width: 46%;
+        .form-text {
+          width: 99%;
+        }
+
+        label {
+          font-size: 11px;
+        }
+
+        &.date {
+          width: 24%;
+          .tpselect_input {
+            width: 83%;
+          }
+          &.year .tpselect_input {
+            top: -6px;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 700px) {
+      .left-rail, .right-rail {
+        width: auto;
+        display: block;
+        float: none;
+      }
+
+      .entry-form-container section .textfields fieldset {
+        float: none;
+        width: auto;
+        &.row-odd {
+          margin-right: 0;
+        }
+
+        &.date {
+          width: 49%;
+         .tpselect_input {
+          width: 90%;
+         }
+          &.year .tpselect_input {
+            top: -3px;
+          }
+        }
+      }
+
+      .form-submit {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+
   }
 }
 
