@@ -65,3 +65,13 @@ googletag.cmd.push(function()
 
   <?php print (isset($_REQUEST['signed_request']) ? '' : render($footer)); ?>
 </div>
+<!-- /place in the <body> to display the 300x250 ad -->
+<!-- place in the <body> to display the background skin ad -->
+<!-- TP3_ROS_Background_1x1 -->
+<div id='div-gpt-ad-1379616672161-0' style='width:1px; height:1px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function()
+{ googletag.display('div-gpt-ad-1379616672161-0'); }
+);
+</script>
+</div>
