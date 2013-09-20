@@ -811,22 +811,6 @@
 #page-wrapper.foodinc #foodinc-entryform p {
   color: #555;
 }
-@media all and (max-width: 1000px) {
-  #page-wrapper.foodinc #foodinc-entryform .left-rail {
-    width: 44%;
-  }
-  #page-wrapper.foodinc #foodinc-entryform .right-rail {
-    width: 54%;
-  }
-}
-@media all and (max-width: 600px) {
-  #page-wrapper.foodinc #foodinc-entryform .left-rail {
-    width: 44%;
-  }
-  #page-wrapper.foodinc #foodinc-entryform .right-rail {
-    width: 54%;
-  }
-}
 #page-wrapper.foodinc #foodinc-entryform .left-rail {
   display: -moz-inline-stack;
   display: inline-block;
@@ -1064,6 +1048,59 @@
   text-transform: none;
   margin-top: 4px;
 }
+@media (max-width: 1000px) {
+  #page-wrapper.foodinc #foodinc-entryform .left-rail {
+    width: 43%;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .right-rail {
+    width: 52%;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset {
+    width: 46%;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset .form-text {
+    width: 99%;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset label {
+    font-size: 11px;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset.date {
+    width: 24%;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset.date .tpselect_input {
+    width: 83%;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset.date.year .tpselect_input {
+    top: -6px;
+  }
+}
+@media (max-width: 700px) {
+  #page-wrapper.foodinc #foodinc-entryform .left-rail, #page-wrapper.foodinc #foodinc-entryform .right-rail {
+    width: auto;
+    display: block;
+    float: none;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset {
+    float: none;
+    width: auto;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset.row-odd {
+    margin-right: 0;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset.date {
+    width: 49%;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset.date .tpselect_input {
+    width: 90%;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .entry-form-container section .textfields fieldset.date.year .tpselect_input {
+    top: -3px;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .form-submit {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 .input-field, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .form-text, #page-wrapper.foodinc #foodinc-entryform .entry-form-container section fieldset .tpselect_input {
   display: block;
@@ -1121,7 +1158,7 @@
     float: right;
     display: block;
     background-repeat: no-repeat;
-    background-image: url('../images/sitenav_open.png?1379636197');
+    background-image: url('../images/sitenav_open.png?1379640278');
     /** sprite-ref: mysprite; */
     width: 25px;
     height: 25px;
@@ -1130,7 +1167,7 @@
   }
 
   .clickedon #site-header-inner:after {
-    background-image: url('../images/sitenav_close.png?1379636197');
+    background-image: url('../images/sitenav_close.png?1379640278');
     /** sprite-ref: mysprite; */
   }
 
@@ -1236,37 +1273,37 @@
   }
 
   #site-main-nav .text-culture a:before {
-    background-image: url('../images/topic_culture.png?1379636197');
+    background-image: url('../images/topic_culture.png?1379640278');
     /** sprite-ref: mysprite; */
   }
 
   #site-main-nav .text-food a:before {
-    background-image: url('../images/topic_food.png?1379636197');
+    background-image: url('../images/topic_food.png?1379640278');
     /** sprite-ref: mysprite; */
   }
 
   #site-main-nav .text-environment a:before {
-    background-image: url('../images/topic_environment.png?1379636197');
+    background-image: url('../images/topic_environment.png?1379640278');
     /** sprite-ref: mysprite; */
   }
 
   #site-main-nav .text-wildlife a:before {
-    background-image: url('../images/topic_wildlife.png?1379636197');
+    background-image: url('../images/topic_wildlife.png?1379640278');
     /** sprite-ref: mysprite; */
   }
 
   #site-main-nav .text-social_justice a:before {
-    background-image: url('../images/topic_social_justice.png?1379636197');
+    background-image: url('../images/topic_social_justice.png?1379640278');
     /** sprite-ref: mysprite; */
   }
 
   #site-main-nav .text-education a:before {
-    background-image: url('../images/topic_education.png?1379636197');
+    background-image: url('../images/topic_education.png?1379640278');
     /** sprite-ref: mysprite; */
   }
 
   #site-main-nav .text-health a:before {
-    background-image: url('../images/topic_health.png?1379636197');
+    background-image: url('../images/topic_health.png?1379640278');
     /** sprite-ref: mysprite; */
   }
 
