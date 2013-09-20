@@ -1075,6 +1075,9 @@
   }
 }
 @media (max-width: 700px) {
+  #page-wrapper.foodinc #foodinc-entryform {
+    padding: 0;
+  }
   #page-wrapper.foodinc #foodinc-entryform .left-rail, #page-wrapper.foodinc #foodinc-entryform .right-rail {
     width: auto;
     display: block;
