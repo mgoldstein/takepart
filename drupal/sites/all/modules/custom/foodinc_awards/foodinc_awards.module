@@ -193,6 +193,10 @@ function foodinc_awards_split_list($value) {
   return $options;
 }
 
+function foodinc_awards_is_embedded() {
+  return isset($_REQUEST['embedded']) && $_REQUEST['embedded'] === 'true';
+}
+
 function foodinc_awards_entry_configuration($form, $config) {
 
   $config = foodinc_awards_configuration_defaults($config);
@@ -531,7 +535,7 @@ function foodinc_awards_entry_form_validate($form, &$form_state) {
 
   $contest_rules_opt_in = trim($form_state['values']['contest_rules_opt_in']);
   if (empty($contest_rules_opt_in)) {
-    form_set_error('contest_rules_opt_in', t('If you would like to enter the Food, Inc. Awards contest, please agree to the Official Rules and that we we can share your information with third parties.'));
+    form_set_error('contest_rules_opt_in', t('If you would like to enter the Food, Inc. Awards contest, please agree to the Official Rules and Submission Agreement.'));
   }
 }
 
@@ -608,7 +612,14 @@ function foodinc_awards_entry_form_submit($form, &$form_state) {
   catch (SignupException $se) {
     setcookie('foodinc_awards', 'false');
   }
-  drupal_goto('foodinc/awards/enter/received');
+  if (foodinc_awards_is_embedded()) {
+    drupal_goto('foodinc/awards/enter/received', array('query' => array(
+      'embedded' => 'true',
+    )));
+  }
+  else {
+    drupal_goto('foodinc/awards/enter/received');
+  }
 }
 
 function foodinc_awards_theme($existing, $type, $theme, $path) {
@@ -684,4 +695,17 @@ function theme_foodinc_awards_inline_error_form_element($variables) {
   }
 
   return $output;
+}
+
+function foodinc_awards_preprocess_menu_link(&$variables) {
+  if (isset($variables['element']['#theme'])) {
+    $theme = $variables['element']['#theme'];
+    if ($theme === 'menu_link__food_inc_new_multipage_campaign') {
+      if (foodinc_awards_is_embedded()) {
+        $variables['element']['#localized_options']['query'] = array(
+          'embedded' => 'true',
+        );
+      }
+    }
+  }
 }

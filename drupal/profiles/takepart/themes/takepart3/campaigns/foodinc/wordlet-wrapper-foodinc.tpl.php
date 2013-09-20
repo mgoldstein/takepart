@@ -1,4 +1,6 @@
 <?
+	$menu_block = module_invoke('menu', 'block_view', 'food_inc_new_multipage_campaign');
+
 	$element = array(
 	  '#tag' => 'link',
 	  '#attributes' => array(
@@ -32,7 +34,7 @@ googletag.cmd.push(function()
 	global $base_url;
 ?>
 <div id="page-wrapper" class="campaign foodinc">
-	<?php print (isset($_REQUEST['signed_request']) ? '' : render($header)); ?>
+	<?php print foodinc_awards_is_embedded() ? '' : render($header); ?>
 
 
 	<div class="page-wrap">
@@ -44,8 +46,7 @@ googletag.cmd.push(function()
 				<h1 class="page-header"><?=w('header_title')?></h1>
 				<img src="<?php print $base_url; ?>/profiles/takepart/themes/takepart3/campaigns/foodinc/images/foodinc-banner.jpeg" alt="Food Inc">
 				<div id="main-navigation" class="menu-wrapper">
-						<?php $block = module_invoke('menu', 'block_view', 'food_inc_new_multipage_campaign'); ?>
-						<?php print render($block['content']); ?>
+						<?php print render($menu_block['content']); ?>
 				</div>
 					<div class="logo"><img src="<?php print w('foodin_logo')->img_src; ?>" alt="<?php print w('foodin_logo')->single; ?>"></div>
 					<?php if(current_path() == 'wordlet/foodinc_awards'): ?>
@@ -64,7 +65,7 @@ googletag.cmd.push(function()
 
 	<!-- end -->
 
-  <?php print (isset($_REQUEST['signed_request']) ? '' : render($footer)); ?>
+	<?php print foodinc_awards_is_embedded() ? '' : render($footer); ?>
 </div>
 <!-- /place in the <body> to display the 300x250 ad -->
 <!-- place in the <body> to display the background skin ad -->
