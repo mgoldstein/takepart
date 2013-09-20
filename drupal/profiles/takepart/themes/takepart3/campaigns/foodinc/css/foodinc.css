@@ -811,6 +811,22 @@
 #page-wrapper.foodinc #foodinc-entryform p {
   color: #555;
 }
+@media all and (max-width: 1000px) {
+  #page-wrapper.foodinc #foodinc-entryform .left-rail {
+    width: 44%;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .right-rail {
+    width: 54%;
+  }
+}
+@media all and (max-width: 600px) {
+  #page-wrapper.foodinc #foodinc-entryform .left-rail {
+    width: 44%;
+  }
+  #page-wrapper.foodinc #foodinc-entryform .right-rail {
+    width: 54%;
+  }
+}
 #page-wrapper.foodinc #foodinc-entryform .left-rail {
   display: -moz-inline-stack;
   display: inline-block;
