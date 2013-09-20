@@ -115,7 +115,7 @@
   }
 }
 #page-wrapper.foodinc .hero .learn-more a {
-  background: url('../images/learn-more-submit.png?1379472611') top center no-repeat;
+  background: url('../images/learn-more-submit.png?1379445211') top center no-repeat;
   width: 137px;
   height: 37px;
   text-align: center;
@@ -201,59 +201,59 @@
   background-repeat: no-repeat;
 }
 #page-wrapper.foodinc .social .tp-social-facebook {
-  background-image: url('../images/share_facebook.png?1379550501');
+  background-image: url('../images/share_facebook.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-twitter {
-  background-image: url('../images/share_twitter.png?1379550501');
+  background-image: url('../images/share_twitter.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-googleplus {
-  background-image: url('../images/share_google.png?1379550501');
+  background-image: url('../images/share_google.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-email {
-  background-image: url('../images/share_email.png?1379550501');
+  background-image: url('../images/share_email.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-reddit {
-  background-image: url('../images/share_reddit.png?1379550501');
+  background-image: url('../images/share_reddit.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-pinterest {
-  background-image: url('../images/share_pinterest.png?1379550501');
+  background-image: url('../images/share_pinterest.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-tumblr {
-  background-image: url('../images/share_tumblr.png?1379550501');
+  background-image: url('../images/share_tumblr.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-facebook:hover {
-  background-image: url('../images/share_facebook_rollover.png?1379550501');
+  background-image: url('../images/share_facebook_rollover.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-twitter:hover {
-  background-image: url('../images/share_twitter_rollover.png?1379550501');
+  background-image: url('../images/share_twitter_rollover.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-googleplus:hover {
-  background-image: url('../images/share_google_rollover.png?1379550501');
+  background-image: url('../images/share_google_rollover.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-email:hover {
-  background-image: url('../images/share_email_rollover.png?1379550501');
+  background-image: url('../images/share_email_rollover.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-reddit:hover {
-  background-image: url('../images/share_reddit_rollover.png?1379550501');
+  background-image: url('../images/share_reddit_rollover.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-pinterest:hover {
-  background-image: url('../images/share_pinterest_rollover.png?1379550501');
+  background-image: url('../images/share_pinterest_rollover.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc .social .tp-social-tumblr:hover {
-  background-image: url('../images/share_tumblr_rollover.png?1379550501');
+  background-image: url('../images/share_tumblr_rollover.png?1379534887');
   /** sprite-ref: mysprite; sprite-margin-top: 4px; */
 }
 #page-wrapper.foodinc #foodinc-awards section.page-body-content {
@@ -500,7 +500,7 @@
   width: 302px;
   height: auto;
   overflow: hidden;
-  background: url('../images/signup-block-top.jpg?1379472611'), url('../images/signup-block-extra.jpg?1379472611');
+  background: url('../images/signup-block-top.jpg?1379431464'), url('../images/signup-block-extra.jpg?1379431464');
   background-position: center top, top center;
   background-repeat: no-repeat, repeat-y;
   margin-top: -50px;
@@ -513,7 +513,7 @@
   line-height: 18px;
   font-size: 12px;
   margin-top: 35px;
-  background: url('../images/signup-block-mid.jpg?1379472611'), url('../images/signup-block-bottom.jpg?1379472611');
+  background: url('../images/signup-block-mid.jpg?1379431464'), url('../images/signup-block-bottom.jpg?1379431464');
   background-position: center top, center bottom;
   background-repeat: repeat-y, no-repeat;
 }
@@ -548,7 +548,7 @@
   display: none;
 }
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form input[type='text'] {
-  background: url('../images/signup-input.png?1379472611') top center;
+  background: url('../images/signup-input.png?1379431464') top center;
   height: 34px;
   width: 275px;
   border: none;
@@ -557,7 +557,7 @@
   text-indent: 10px;
 }
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form input[type='submit'] {
-  background: url('../images/singup-btn.png?1379472611') top center;
+  background: url('../images/singup-btn.png?1379431464') top center;
   height: 44px;
   width: 275px;
   border: none;
@@ -723,13 +723,13 @@
 #page-wrapper.foodinc #foodinc-howto .instruction-block .top {
   width: 300px;
   height: 63px;
-  background: url('../images/instruction-top.jpg?1379472611') no-repeat top center;
+  background: url('../images/instruction-top.jpg?1379401670') no-repeat top center;
 }
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid {
   width: 300px;
   height: auto;
   overflow: hidden;
-  background: url('../images/instruction-mid.jpg?1379472611') top center;
+  background: url('../images/instruction-mid.jpg?1379401670') top center;
   margin-top: -15px;
   color: #5c2e13;
 }
@@ -752,7 +752,7 @@
   margin-left: 30px;
 }
 #page-wrapper.foodinc #foodinc-howto .instruction-block .mid .button a {
-  background: url('../images/contest-btn.png?1379472611') top right no-repeat;
+  background: url('../images/contest-btn.png?1379401670') top right no-repeat;
   width: 238px;
   height: 43px;
   display: block;
@@ -771,16 +771,33 @@
 #page-wrapper.foodinc #foodinc-howto .instruction-block .bottom {
   width: 300px;
   height: 31px;
-  background: url('../images/instruction-bottom.jpg?1379472611') no-repeat bottom center;
+  background: url('../images/instruction-bottom.jpg?1379401670') no-repeat bottom center;
 }
 #page-wrapper.foodinc #foodinc-entryreceived section.page-body-content {
-  width: 66%;
+  width: 65%;
   float: left;
+  margin-left: 20px;
+  height: auto;
+  overflow: hidden;
+}
+@media (max-width: 1000px) {
+  #page-wrapper.foodinc #foodinc-entryreceived section.page-body-content {
+    width: 100%;
+  }
+}
+@media (max-width: 585px) {
+  #page-wrapper.foodinc #foodinc-entryreceived section.page-body-content {
+    margin-left: 5px;
+  }
 }
 #page-wrapper.foodinc #foodinc-entryreceived .page-title {
   font-size: 20px;
   font-style: italic;
   color: #5c2e13;
+  font-family: "Archer A", "Archer B";
+  font-weight: 500;
+  font-style: italic;
+  font-size: 32px;
 }
 #page-wrapper.foodinc #foodinc-entryreceived .additional-info {
   margin-top: 20px;
@@ -788,36 +805,53 @@
 #page-wrapper.foodinc #foodinc-entryreceived .additional-info .title {
   font-size: 18px;
   color: #5c2e13;
+  font-family: "Archer A", "Archer B";
+  font-weight: 800;
+  font-style: normal;
+  font-size: 24px;
 }
-#page-wrapper.foodinc #foodinc-entryreceived .social-block {
+#page-wrapper.foodinc #foodinc-entryreceived .social {
   clear: both;
   height: auto;
   overflow: hidden;
-  margin: 10px 0px 20px 20px;
+  margin: 10px 0px 20px 0px;
+  float: left;
 }
-#page-wrapper.foodinc #foodinc-entryreceived .social-block .social {
+#page-wrapper.foodinc #foodinc-entryreceived .social .tp-social-link {
   display: block;
   height: 40px;
   width: 152px;
   float: left;
-  margin-right: 8px;
+  margin: 0 7px 7px 0;
 }
-#page-wrapper.foodinc #foodinc-entryreceived .social-block .facebook {
-  background: url('../images/social_long_fb.png?1379472611') no-repeat top center;
+#page-wrapper.foodinc #foodinc-entryreceived .social .tp-social-link:last-child {
+  margin-right: 0;
 }
-#page-wrapper.foodinc #foodinc-entryreceived .social-block .twitter {
-  background: url('../images/social_long_twitter.png?1379472611') no-repeat top center;
+#page-wrapper.foodinc #foodinc-entryreceived .social a.tp-social-facebook {
+  background: url('../images/social_long_fb.png?1379455007') no-repeat top center;
 }
-#page-wrapper.foodinc #foodinc-entryreceived .social-block .googleplus {
-  background: url('../images/social_long_google.png?1379472611') no-repeat top center;
+#page-wrapper.foodinc #foodinc-entryreceived .social a.tp-social-twitter {
+  background: url('../images/social_long_twitter.png?1379455007') no-repeat top center;
 }
-#page-wrapper.foodinc #foodinc-entryreceived .social-block .email {
-  background: url('../images/social_long_email.png?1379472611') no-repeat top center;
+#page-wrapper.foodinc #foodinc-entryreceived .social a.tp-social-googleplus {
+  background: url('../images/social_long_google.png?1379455007') no-repeat top center;
+}
+#page-wrapper.foodinc #foodinc-entryreceived .social a.tp-social-email {
+  background: url('../images/social_long_email.png?1379455007') no-repeat top center;
 }
 #page-wrapper.foodinc #foodinc-entryreceived section.right-rail {
   width: 30%;
   float: right;
   margin-right: 10px;
+  height: auto;
+  overflow: hidden;
+}
+@media (max-width: 1000px) {
+  #page-wrapper.foodinc #foodinc-entryreceived section.right-rail {
+    float: none;
+    margin: 0 auto;
+    width: 300px;
+  }
 }
 #page-wrapper.foodinc #foodinc-entryform {
   padding: 0 20px;
@@ -895,22 +929,22 @@
   content: '6';
 }
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-action {
-  background-image: url('../images/entry-bullets/bullet-action.png?1379550501');
+  background-image: url('../images/entry-bullets/bullet-action.png?1379534887');
 }
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-camera {
-  background-image: url('../images/entry-bullets/bullet-camera.png?1379550501');
+  background-image: url('../images/entry-bullets/bullet-camera.png?1379534887');
 }
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-clean {
-  background-image: url('../images/entry-bullets/bullet-clean.png?1379550501');
+  background-image: url('../images/entry-bullets/bullet-clean.png?1379534887');
 }
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-focus {
-  background-image: url('../images/entry-bullets/bullet-focus.png?1379550501');
+  background-image: url('../images/entry-bullets/bullet-focus.png?1379534887');
 }
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-lights {
-  background-image: url('../images/entry-bullets/bullet-lights.png?1379550501');
+  background-image: url('../images/entry-bullets/bullet-lights.png?1379534887');
 }
 #page-wrapper.foodinc #foodinc-entryform .left-rail ul li.bullet-pencil {
-  background-image: url('../images/entry-bullets/bullet-pencil.png?1379550501');
+  background-image: url('../images/entry-bullets/bullet-pencil.png?1379534887');
 }
 #page-wrapper.foodinc #foodinc-entryform .right-rail {
   display: -moz-inline-stack;
@@ -928,7 +962,7 @@
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section {
   margin-bottom: 30px;
   padding: 0px 10px 1px 10px;
-  background: url('../images/entry-form-bg.jpg?1379550516');
+  background: url('../images/entry-form-bg.jpg?1379550636');
   /* textfields */
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section.about-you label[for], #page-wrapper.foodinc #foodinc-entryform .entry-form-container section.your-video label[for] {
@@ -939,7 +973,7 @@
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section header {
   padding: 25px 15px 1px 15px;
-  background: url('../images/entry-title-top.jpg?1379472611') no-repeat -15px 0, url('../images/entry-title-mid.jpg?1379472611') repeat-y -15px 0, url('../images/entry-title-bottom.jpg?1379472611') no-repeat -15px bottom;
+  background: url('../images/entry-title-top.jpg?1379455001') no-repeat -15px 0, url('../images/entry-title-mid.jpg?1379455001') repeat-y -15px 0, url('../images/entry-title-bottom.jpg?1379455001') no-repeat -15px bottom;
 }
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container section header p {
   color: #5c2e13;
@@ -1056,7 +1090,7 @@
 #page-wrapper.foodinc #foodinc-entryform .entry-form-container .form-submit {
   -webkit-appearance: none;
   display: block;
-  background-image: url('../images/contest-btn.png?1379472611');
+  background-image: url('../images/contest-btn.png?1379401670');
   font: normal 20px/100% Helvetica, Arial, sans-serif;
   color: white;
   text-align: center;
@@ -1066,11 +1100,11 @@
   margin-bottom: 20px;
   cursor: pointer;
   text-transform: uppercase;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
-  -o-border-radius: 6px;
-  border-radius: 6px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1149,6 +1183,10 @@
 }
 
 @media all and (max-width: 480px) {
+  .multipage-campaign #site-follow {
+    margin: 8px 7px 0 -10px;
+  }
+
   #site-header {
     padding: 0;
     min-height: 0;
@@ -1191,7 +1229,7 @@
     float: right;
     display: block;
     background-repeat: no-repeat;
-    background-image: url('../images/sitenav_open.png?1379640278');
+    background-image: url('../images/sitenav_open.png?1379634734');
     /** sprite-ref: mysprite; */
     width: 25px;
     height: 25px;
@@ -1200,7 +1238,7 @@
   }
 
   .clickedon #site-header-inner:after {
-    background-image: url('../images/sitenav_close.png?1379640278');
+    background-image: url('../images/sitenav_close.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
@@ -1306,37 +1344,37 @@
   }
 
   #site-main-nav .text-culture a:before {
-    background-image: url('../images/topic_culture.png?1379640278');
+    background-image: url('../images/topic_culture.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
   #site-main-nav .text-food a:before {
-    background-image: url('../images/topic_food.png?1379640278');
+    background-image: url('../images/topic_food.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
   #site-main-nav .text-environment a:before {
-    background-image: url('../images/topic_environment.png?1379640278');
+    background-image: url('../images/topic_environment.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
   #site-main-nav .text-wildlife a:before {
-    background-image: url('../images/topic_wildlife.png?1379640278');
+    background-image: url('../images/topic_wildlife.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
   #site-main-nav .text-social_justice a:before {
-    background-image: url('../images/topic_social_justice.png?1379640278');
+    background-image: url('../images/topic_social_justice.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
   #site-main-nav .text-education a:before {
-    background-image: url('../images/topic_education.png?1379640278');
+    background-image: url('../images/topic_education.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
   #site-main-nav .text-health a:before {
-    background-image: url('../images/topic_health.png?1379640278');
+    background-image: url('../images/topic_health.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 

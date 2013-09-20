@@ -48,11 +48,12 @@ googletag.cmd.push(function()
 						<?php print render($block['content']); ?>
 				</div>
 					<div class="logo"><img src="<?php print w('foodin_logo')->img_src; ?>" alt="<?php print w('foodin_logo')->single; ?>"></div>
-
-  				<aside id="foodinc-social" class="social">
-  					<h3 class="headline"><?php print t('SHARE'); ?></h3>
-  					<div class="tp-social"></div>
-  				</aside>
+					<?php if(current_path() == 'wordlet/foodinc_awards'): ?>
+	  				<aside id="foodinc-social" class="social">
+	  					<h3 class="headline"><?php print t('SHARE'); ?></h3>
+	  					<div class="tp-social"></div>
+	  				</aside>
+  				<?php endif; ?>
 
 			</header>
 			<main id="page">
