@@ -1,4 +1,4 @@
-<?=
+<?
 	$element = array(
 	  '#tag' => 'link',
 	  '#attributes' => array(
