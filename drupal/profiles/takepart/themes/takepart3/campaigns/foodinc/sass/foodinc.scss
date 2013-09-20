@@ -798,6 +798,26 @@
       color: #555;
     }
 
+    @media all and (max-width: 1000px) {
+      .left-rail {
+        width: 44%;
+      }
+
+      .right-rail {
+        width: 54%;
+      }
+    }
+
+    @media all and (max-width: 600px) {
+      .left-rail {
+        width: 44%;
+      }
+
+      .right-rail {
+        width: 54%;
+      }
+    }
+
     .left-rail {
       @include inline-block;
       margin-right: 20px;
